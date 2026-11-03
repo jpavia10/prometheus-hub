@@ -1,17 +1,10 @@
-/* Prometheus Hub shell. Network first. No third-party caches, no secrets. */
-var CACHE = "prometheus-hub-v6";
+/* Prometheus Hub. Network first. Same-origin shell only. No secrets. */
+var CACHE = "prometheus-hub-morph-v1";
 var SHELL = [
   "./",
   "./index.html",
   "./styles.css",
-  "./styles/themes.css",
-  "./styles/worlds.css",
-  "./styles/style-layer.css",
-  "./app.js",
-  "./splash.js",
-  "./js/worlds.js",
-  "./wings/themes/manifest.js",
-  "./projects.js",
+  "./hub.js",
   "./manifest.webmanifest",
   "./icons/favicon.svg",
   "./icons/favicon-32.png",

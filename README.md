@@ -1,35 +1,45 @@
 # Prometheus Hub
 
-Joseph’s flagship desk. The shell is the same night-museum family as [Titan Reliquary Preview](https://jpavia10.github.io/titan-reliquary-preview/): Fraunces wordmark, gold on near-black, and a bottom wing dock. The room itself is the desk, not a coin board and not a copied vault.
-
-Titan Reliquary is the primary extension. Ownership stays there. This page only links to the live preview and its repo. Sylade Fleet and Midas Ledger are the other two doors that already exist. Bench names wait in `projects.js` until they have an address.
-
-Nothing here signs in or stores a secret. Sylade’s charter stays in Drive as `SYLADE_CHARTER`.
-
-## Open
+Joseph’s desk. One page, midnight field, thin glass. The doors open outward.
 
 https://jpavia10.github.io/prometheus-hub/
 
-The first open of a session plays a fifteen-second fire. Tap, click, or Esc skips it. Reduced motion shows a still title and an Enter button instead of the film. A home-screen cold open is a new session, so it gets the full show. `?nosplash` skips. `?splash=1` forces it.
+Titan Reliquary, Sylade Fleet, and Midas Ledger keep their own work. This page only links to them, in a new tab. Nothing here signs in. No passwords, tokens, ledgers, or charter text are stored in this repo.
 
-iPhone: Safari → Share → Add to Home Screen. Android: Chrome → Install app. The icon is the gold P. The name is Prometheus Hub.
+## Particles
+
+The field is adapted from [MisterPrada/morph-particles](https://github.com/MisterPrada/morph-particles) (live reference: [christmas.misterprada.com](https://christmas.misterprada.com)). Positions sit in float textures. A simulation pass morphs four shapes as the page scrolls — nebula, ring, fleet, coin — and the pointer tugs the cloud. Shapes are drawn here. The christmas models are not included.
+
+## Doors
+
+- Titan Reliquary — https://jpavia10.github.io/titan-reliquary-preview/
+- Sylade Fleet Command — https://jpavia10.github.io/fleet-command/
+- Sylade Discord — https://discord.gg/YCam2NEkv9
+- Midas Ledger — https://jpavia10.github.io/midas-ledger/
+
+Change a door in `index.html`. Keep the address `https`. Leave it out until it is real.
+
+## Pages
+
+Publish the root of this repo to **jpavia10/prometheus-hub**, branch **main**, folder **/ (root)**. `.nojekyll` is included. GitHub Pages does not run a build; `hub.js` is already bundled.
+
+Build it again after editing `src/`:
+
+```bash
+npm install
+npm run build
+```
+
+`npm run build` bundles `src/main.js` to `hub.js` with esbuild. Three.js `0.164.1` matches the morph-particles demo.
 
 Locally:
 
 ```bash
+npm install
+npm run build
 python3 -m http.server 8742
 ```
 
-## Wings
+## Home screen
 
-- **Desk** — the hearth. Titan sits in the fire. Sylade and Midas flank it.
-- **Extensions** — the three live houses, plus the unlit slots.
-- **Ops** — what this desk is, what it refuses to keep, and how to add a name.
-
-## Add a project
-
-Append an object to `projects.js`. Use a real `https` link or leave `links` empty. Do not put passwords, tokens, or charter text in this file.
-
-## Pages
-
-Publish the root of this repo to **jpavia10/prometheus-hub**, branch **main**, folder **/ (root)**. There is no build step. `.nojekyll` is included.
+iPhone: Safari → Share → Add to Home Screen. Android: Chrome → Install app. The icon is a thin square. The name is Prometheus Hub.

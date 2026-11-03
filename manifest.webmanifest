@@ -2,12 +2,12 @@
   "id": "./",
   "name": "Prometheus Hub",
   "short_name": "Prometheus Hub",
-  "description": "Joseph’s flagship desk. Opens Titan Reliquary, Sylade Fleet, and Midas Ledger.",
+  "description": "The desk for Titan Reliquary, Sylade Fleet, and Midas Ledger.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#060605",
-  "theme_color": "#060605",
+  "background_color": "#05060a",
+  "theme_color": "#05060a",
   "lang": "en",
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
@@ -18,25 +18,19 @@
     {
       "name": "Titan Reliquary",
       "short_name": "Titan",
-      "url": "https://jpavia10.github.io/titan-reliquary-preview/",
+      "url": "./#titan",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Sylade Discord",
-      "short_name": "Discord",
-      "url": "https://discord.gg/YCam2NEkv9",
-      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
-    },
-    {
-      "name": "Fleet Command",
-      "short_name": "Fleet",
-      "url": "https://jpavia10.github.io/fleet-command/",
+      "name": "Sylade Fleet",
+      "short_name": "Sylade",
+      "url": "./#sylade",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Midas Ledger",
       "short_name": "Midas",
-      "url": "https://jpavia10.github.io/midas-ledger/",
+      "url": "./#midas",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
