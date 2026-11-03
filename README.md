@@ -1,25 +1,45 @@
 # Prometheus Hub
 
-Joseph’s desk. A dark field of morphing particles with a thin glass layer of links. It opens the specialists. It does not copy them.
+Joseph’s desk. One page, midnight field, thin glass. The doors open outward.
 
-- **Titan Reliquary** — https://jpavia10.github.io/titan-reliquary-preview/ and https://github.com/jpavia10/titan-reliquary-preview
-- **Sylade Fleet** — https://discord.gg/YCam2NEkv9 and https://jpavia10.github.io/fleet-command/
-- **Midas Ledger** — https://jpavia10.github.io/midas-ledger/ and https://github.com/jpavia10/midas-ledger
+https://jpavia10.github.io/prometheus-hub/
 
-Bench names (Hephaestus, Icarus Stake, Mail, Calendar, Health) stay in `projects.js` until they have an address. No passwords or tokens belong in this repo. Sylade’s charter stays in Drive as `SYLADE_CHARTER`.
+Titan Reliquary, Sylade Fleet, and Midas Ledger keep their own work. This page only links to them, in a new tab. Nothing here signs in. No passwords, tokens, ledgers, or charter text are stored in this repo.
 
-The particle field is adapted from [MisterPrada/morph-particles](https://github.com/MisterPrada/morph-particles): the same orange point-sprite falloff, morphing between forms. The shapes here are generated. That project’s models, debug UI, and analytics are not included.
+## Particles
 
-## Run
+The field is adapted from [MisterPrada/morph-particles](https://github.com/MisterPrada/morph-particles) (live reference: [christmas.misterprada.com](https://christmas.misterprada.com)). Positions sit in float textures. A simulation pass morphs four shapes as the page scrolls — nebula, ring, fleet, coin — and the pointer tugs the cloud. Shapes are drawn here. The christmas models are not included.
 
-```bash
-python3 -m http.server 8742
-```
+## Doors
 
-Open http://127.0.0.1:8742
+- Titan Reliquary — https://jpavia10.github.io/titan-reliquary-preview/
+- Sylade Fleet Command — https://jpavia10.github.io/fleet-command/
+- Sylade Discord — https://discord.gg/YCam2NEkv9
+- Midas Ledger — https://jpavia10.github.io/midas-ledger/
 
-On a phone, Add to Home Screen. The name is Prometheus Hub.
+Change a door in `index.html`. Keep the address `https`. Leave it out until it is real.
 
 ## Pages
 
-Publish the repository root to **jpavia10/prometheus-hub**, branch **main**, folder **/ (root)**. No build step. `.nojekyll` is included.
+Publish the root of this repo to **jpavia10/prometheus-hub**, branch **main**, folder **/ (root)**. `.nojekyll` is included. GitHub Pages does not run a build; `hub.js` is already bundled.
+
+Build it again after editing `src/`:
+
+```bash
+npm install
+npm run build
+```
+
+`npm run build` bundles `src/main.js` to `hub.js` with esbuild. Three.js `0.164.1` matches the morph-particles demo.
+
+Locally:
+
+```bash
+npm install
+npm run build
+python3 -m http.server 8742
+```
+
+## Home screen
+
+iPhone: Safari → Share → Add to Home Screen. Android: Chrome → Install app. The icon is a thin square. The name is Prometheus Hub.

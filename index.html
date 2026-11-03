@@ -3,49 +3,114 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
   <title>Prometheus Hub</title>
-  <meta name="description" content="Prometheus Hub. Joseph’s desk. Opens Titan Reliquary, Sylade Fleet, and Midas Ledger.">
+  <meta name="description" content="Prometheus Hub is the desk for Titan Reliquary, Sylade Fleet, and Midas Ledger.">
   <meta name="theme-color" content="#05060a">
   <meta name="color-scheme" content="dark">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Prometheus Hub">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&amp;display=swap">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <canvas id="field" class="field" aria-hidden="true"></canvas>
-  <div class="shade" aria-hidden="true"></div>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
 
-  <header class="top">
+  <header class="topbar">
     <a class="brand" href="#desk">
-      <span class="sq" aria-hidden="true"></span>Prometheus <span class="hub">Hub</span>
+      <span class="sq" aria-hidden="true"></span>
+      <span>Prometheus Hub</span>
     </a>
+    <nav class="topnav" aria-label="Desk">
+      <a href="#desk" aria-current="true">Desk</a>
+      <a href="#titan">Titan</a>
+      <a href="#sylade">Sylade</a>
+      <a href="#midas">Midas</a>
+    </nav>
   </header>
 
-  <main id="desk">
-    <p class="lede">Joseph’s desk. The specialists stay in their own houses. This page only opens them.</p>
-    <div class="pills" id="pills"></div>
-    <p class="waiting" id="waiting"></p>
+  <main>
+    <section id="desk" class="panel hero">
+      <div class="hero-mark">
+        <span class="sq big" aria-hidden="true"></span>
+        <h1>PROMETHEUS <span class="hub">hub</span></h1>
+      </div>
+      <div class="hero-copy">
+        <p>One desk for the houses that already exist. Titan keeps the vault. Sylade keeps the fleet. Midas keeps the ledger.</p>
+        <a class="pill" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Open Titan <span aria-hidden="true">→</span></a>
+        <a class="quiet" href="#titan">See the doors</a>
+      </div>
+    </section>
+
+    <section id="titan" class="panel">
+      <div class="copy">
+        <p class="kicker">Primary extension</p>
+        <h2>Titan Reliquary</h2>
+        <p>The live coin house. The collection stays there. This desk only opens the door.</p>
+        <div class="actions">
+          <a class="pill" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Open preview <span aria-hidden="true">→</span></a>
+          <a class="quiet" href="https://github.com/jpavia10/titan-reliquary-preview" target="_blank" rel="noopener noreferrer">Repository</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sylade" class="panel">
+      <div class="copy">
+        <p class="kicker">Agent-run social</p>
+        <h2>Sylade Fleet</h2>
+        <p>Shared identity across the fleet. Fleet Command is the bridge. Nothing on this desk signs in.</p>
+        <div class="actions">
+          <a class="pill" href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer">Fleet Command <span aria-hidden="true">→</span></a>
+          <a class="quiet" href="https://discord.gg/YCam2NEkv9" target="_blank" rel="noopener noreferrer">Discord</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="midas" class="panel">
+      <div class="copy">
+        <p class="kicker">Ledger</p>
+        <h2>Midas Ledger</h2>
+        <p>The password-locked book. Balances stay inside that app. No keys are kept here.</p>
+        <div class="actions">
+          <a class="pill" href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer">Open Midas <span aria-hidden="true">→</span></a>
+          <a class="quiet" href="https://github.com/jpavia10/midas-ledger" target="_blank" rel="noopener noreferrer">Repository</a>
+        </div>
+        <p class="credit">Particle field adapted from <a href="https://github.com/MisterPrada/morph-particles" target="_blank" rel="noopener noreferrer">MisterPrada / morph-particles</a>.</p>
+      </div>
+    </section>
   </main>
 
-  <nav class="dock" aria-label="Specialists">
-    <a href="https://jpavia10.github.io/titan-reliquary-preview/">Titan</a>
-    <a href="https://discord.gg/YCam2NEkv9">Sylade</a>
-    <a href="https://jpavia10.github.io/fleet-command/">Fleet</a>
-    <a href="https://jpavia10.github.io/midas-ledger/">Midas</a>
+  <nav class="dock" aria-label="Extension links">
+    <div class="dock-links">
+      <a href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Titan</a>
+      <span class="sep" aria-hidden="true">·</span>
+      <a href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer">Sylade</a>
+      <span class="sep" aria-hidden="true">·</span>
+      <a href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer">Midas</a>
+    </div>
+    <a class="dock-cta" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Open Titan <span aria-hidden="true">→</span></a>
   </nav>
 
-  <p class="credit">Particles adapted from MisterPrada/morph-particles</p>
+  <noscript>
+    <section class="fallback">
+      <h2>Prometheus Hub</h2>
+      <ul>
+        <li><a href="https://jpavia10.github.io/titan-reliquary-preview/">Titan Reliquary</a> · <a href="https://github.com/jpavia10/titan-reliquary-preview">repository</a></li>
+        <li><a href="https://jpavia10.github.io/fleet-command/">Sylade Fleet Command</a> · <a href="https://discord.gg/YCam2NEkv9">Discord</a></li>
+        <li><a href="https://jpavia10.github.io/midas-ledger/">Midas Ledger</a> · <a href="https://github.com/jpavia10/midas-ledger">repository</a></li>
+      </ul>
+    </section>
+  </noscript>
 
-  <script src="projects.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="./hub.js"></script>
 </body>
 </html>
