@@ -1,0 +1,117 @@
+/* Orbit — deep space, glass panels, amber and violet. No intro sequence. */
+html[data-theme="orbit"] {
+  --bg: #07061a;
+  --bg2: #0e0c2a;
+  --bg3: #17143d;
+  --panel: rgba(22, 18, 58, 0.55);
+  --border: rgba(167, 139, 250, 0.28);
+  --gold: #ffb35c;
+  --gold-soft: #ffd9a8;
+  --gold-dim: #c98a43;
+  --text: #f1ecff;
+  --muted: #b3aad6;
+  --ok: #7ef0c1;
+  --chip: rgba(30, 24, 74, 0.55);
+  --row-hover: rgba(167, 139, 250, 0.12);
+  --shadow: 0 18px 50px rgba(3, 2, 14, 0.55);
+  --radius: 18px;
+  --font: "Exo 2", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --disp: "Orbitron", "Exo 2", sans-serif;
+  --sticky: rgba(10, 8, 30, 0.72);
+  --foot: rgba(7, 6, 26, 0.82);
+  background:
+    radial-gradient(ellipse 70% 45% at 85% -5%, rgba(255, 150, 60, 0.22), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 0% 30%, rgba(124, 92, 255, 0.18), transparent 70%),
+    linear-gradient(180deg, #0a0822 0%, #07061a 50%, #050414 100%);
+  background-attachment: fixed;
+  min-height: 100%;
+}
+
+html[data-theme="orbit"] body { background: transparent; }
+html[data-theme="orbit"] #orb-stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+html[data-theme="orbit"] #app { position: relative; z-index: 1; }
+
+html[data-theme="orbit"] .brand h1 {
+  font-family: var(--disp);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  background: linear-gradient(90deg, #ffd9a8, #ffb35c 45%, #c9b6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html[data-theme="orbit"] .coin {
+  width: 52px;
+  height: 52px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  font-size: 0;
+}
+html[data-theme="orbit"] .coin svg {
+  width: 52px;
+  height: 52px;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(255, 170, 80, 0.45));
+}
+html[data-theme="orbit"] .coin-letter { display: none; }
+
+html[data-theme="orbit"] .chip,
+html[data-theme="orbit"] .theme-btn {
+  border-radius: 999px;
+  background: rgba(30, 24, 74, 0.5);
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+html[data-theme="orbit"] .badge.hold {
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 179, 92, 0.25), rgba(167, 139, 250, 0.25));
+  border-color: rgba(255, 179, 92, 0.65);
+  font-family: var(--disp);
+  letter-spacing: 0.16em;
+}
+
+html[data-theme="orbit"] .tabs {
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 999px;
+  background: rgba(20, 16, 52, 0.55);
+  border-color: rgba(167, 139, 250, 0.28);
+  backdrop-filter: blur(12px);
+}
+html[data-theme="orbit"] .tab {
+  border-radius: 999px;
+  font-family: var(--disp);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+html[data-theme="orbit"] .tab.active {
+  color: #1a0f05;
+  background: linear-gradient(135deg, #ffd29a, #ffb35c 60%, #ff9b4a);
+  box-shadow: 0 0 16px rgba(255, 170, 80, 0.4);
+}
+
+html[data-theme="orbit"] .card,
+html[data-theme="orbit"] .slot-card {
+  background: linear-gradient(160deg, rgba(40, 32, 96, 0.55), rgba(16, 13, 44, 0.68));
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px) saturate(130%);
+}
+html[data-theme="orbit"] .card h3 { font-family: var(--disp); color: var(--gold); letter-spacing: 0.16em; }
+html[data-theme="orbit"] .card .val { font-family: var(--disp); color: #fff; letter-spacing: 0.03em; }
+html[data-theme="orbit"] .btn { border-radius: 999px; }
+html[data-theme="orbit"] .note { background: rgba(8, 6, 24, 0.45); }

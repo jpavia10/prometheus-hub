@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <title>Prometheus</title>
+  <meta name="description" content="Prometheus is Joseph’s flagship desk. It links out to Titan Reliquary, Sylade Fleet, and Midas Ledger.">
+  <meta name="theme-color" content="#12100e">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Prometheus">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    /* Display theme. ?theme= previews without being the saved pick until chosen.
+       Classic is the default. There is no splash and no intro. */
+    (function () {
+      var FONTS = {
+        bridge: "family=Oxanium:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;600",
+        orbit: "family=Orbitron:wght@500;600;700;800&family=Exo+2:wght@400;500;600;700&family=JetBrains+Mono:wght@400",
+        terminal: "family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600"
+      };
+      var INK = { bridge: "#04070d", orbit: "#07061a", terminal: "#0d0e0f" };
+      var q = null, s = null, t = null;
+      try { q = new URLSearchParams(location.search).get("theme"); } catch (e) {}
+      if (q !== null) {
+        t = FONTS[q] ? q : null;
+      } else {
+        try { s = localStorage.getItem("prometheus_theme_v1"); } catch (e) {}
+        t = s === "classic" || !s ? null : (FONTS[s] ? s : null);
+      }
+      window.PROMETHEUS_THEME = t;
+      var color = t ? INK[t] : "#12100e";
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", color);
+      if (!t) return;
+      document.documentElement.setAttribute("data-theme", t);
+      document.write(
+        '<link rel="preconnect" href="https://fonts.googleapis.com">' +
+        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' +
+        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?' + FONTS[t] + '&display=swap">' +
+        '<link rel="stylesheet" href="themes/' + t + '.css">'
+      );
+    })();
+  </script>
+</head>
+<body>
+  <div id="app">
+    <div class="sticky">
+      <header class="top">
+        <div class="brand">
+          <button type="button" class="coin" id="theme-mark" aria-haspopup="menu" aria-label="Display theme" title="Display theme">
+            <span class="coin-letter">P</span>
+          </button>
+          <div class="brand-copy">
+            <h1>Prometheus</h1>
+            <p class="sub">Joseph’s desk. Each specialist keeps its own work.</p>
+            <p class="live-status" id="live-status" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="chips" id="hdr-chips"></div>
+        <div class="hdr-actions">
+          <button type="button" class="theme-btn" id="theme-btn">Theme</button>
+          <div class="badge hold" title="This desk only links out">LINK</div>
+        </div>
+      </header>
+      <nav class="tabs" role="tablist" aria-label="Desk">
+        <button type="button" class="tab active" id="tab-open" data-tab="open" role="tab" aria-selected="true" aria-controls="pane-open">Open now</button>
+        <button type="button" class="tab" id="tab-bench" data-tab="bench" role="tab" aria-selected="false" aria-controls="pane-bench">On the bench</button>
+      </nav>
+    </div>
+
+    <noscript>
+      <section class="fallback" aria-label="Project links">
+        <h2>Open now</h2>
+        <ul>
+          <li>Titan Reliquary — <a href="https://github.com/jpavia10/titan-reliquary">Public viewer</a>, <a href="https://jpavia10.github.io/titan-reliquary/">Pages</a>. Ownership stays with Titan Reliquary.</li>
+          <li>Sylade Fleet — <a href="https://discord.gg/YCam2NEkv9">Discord</a>, <a href="https://jpavia10.github.io/fleet-command/">Fleet Command</a>. Charter stays in Drive as SYLADE_CHARTER.</li>
+          <li>Finances — <a href="https://jpavia10.github.io/midas-ledger/">Midas Ledger</a>, <a href="https://github.com/jpavia10/midas-ledger">Repository</a>.</li>
+        </ul>
+      </section>
+    </noscript>
+
+    <main>
+      <section id="pane-open" class="pane active" role="tabpanel" aria-labelledby="tab-open"></section>
+      <section id="pane-bench" class="pane" role="tabpanel" aria-labelledby="tab-bench" hidden></section>
+    </main>
+
+    <footer class="foot">
+      <span id="foot-path">No keys stored here. Sylade’s charter stays in Drive as SYLADE_CHARTER.</span>
+      <span class="foot-mark">Prometheus</span>
+    </footer>
+  </div>
+  <script src="projects.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

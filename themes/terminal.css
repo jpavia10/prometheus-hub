@@ -1,0 +1,135 @@
+/* Tactical Terminal — graphite, amber phosphor, square modules. No intro sequence. */
+html[data-theme="terminal"] {
+  --bg: #0d0e0f;
+  --bg2: #141516;
+  --bg3: #1b1c1d;
+  --panel: #151617;
+  --border: #3a3328;
+  --gold: #ffb000;
+  --gold-soft: #ffcc5c;
+  --gold-dim: #a87400;
+  --text: #f2e6cc;
+  --muted: #b3a68a;
+  --ok: #9dff6a;
+  --warn: #ff9a2e;
+  --chip: #17181a;
+  --row-hover: #221e16;
+  --shadow: none;
+  --radius: 0px;
+  --font: "IBM Plex Mono", ui-monospace, monospace;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --sticky: rgba(13, 14, 15, 0.96);
+  --foot: rgba(13, 14, 15, 0.96);
+}
+
+html[data-theme="terminal"] body {
+  background: radial-gradient(ellipse 120% 80% at 50% 0%, #17181a, #0b0c0d 70%);
+  background-attachment: fixed;
+}
+
+html[data-theme="terminal"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.16) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse 110% 90% at 50% 50%, transparent 62%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+html[data-theme="terminal"] .brand h1 {
+  font-family: var(--cond);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 1.7rem;
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.45);
+}
+html[data-theme="terminal"] .brand h1::before { content: "> "; color: var(--gold-dim); }
+
+html[data-theme="terminal"] .coin {
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  font-size: 0;
+}
+html[data-theme="terminal"] .coin svg { width: 46px; height: 46px; display: block; filter: drop-shadow(0 0 4px rgba(255, 176, 0, 0.5)); }
+html[data-theme="terminal"] .coin-letter { display: none; }
+
+html[data-theme="terminal"] .chip,
+html[data-theme="terminal"] .theme-btn {
+  border-radius: 0;
+  background: #121314;
+  font-size: 0.75rem;
+}
+
+html[data-theme="terminal"] .badge.hold {
+  border-radius: 0;
+  background: var(--gold);
+  color: #120d00;
+  border: none;
+  font-family: var(--cond);
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+}
+
+html[data-theme="terminal"] .tabs { border-radius: 0; padding: 0; gap: 0; background: #101112; }
+html[data-theme="terminal"] .tab {
+  border-radius: 0;
+  font-family: var(--cond);
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-right: 1px solid var(--border);
+}
+html[data-theme="terminal"] .tab.active {
+  background: var(--gold);
+  color: #120d00;
+  box-shadow: none;
+}
+
+html[data-theme="terminal"] .card,
+html[data-theme="terminal"] .slot-card {
+  border-radius: 0;
+  background: linear-gradient(180deg, #17181a, #121314);
+  box-shadow: inset 0 0 0 1px #0a0a0a;
+}
+html[data-theme="terminal"] .card h3 {
+  margin: -1rem -1.1rem 0.75rem;
+  padding: 0.32rem 1.1rem;
+  background: #2a251c;
+  color: var(--gold);
+  font-family: var(--cond);
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  border-bottom: 1px solid var(--border);
+}
+html[data-theme="terminal"] .card .val {
+  font-family: var(--mono);
+  color: var(--gold);
+  text-shadow: 0 0 8px rgba(255, 176, 0, 0.35);
+}
+html[data-theme="terminal"] .btn {
+  border-radius: 0;
+  background: transparent;
+  font-family: var(--cond);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+html[data-theme="terminal"] .btn:hover { background: var(--gold); color: #120d00; }
+html[data-theme="terminal"] .btn:hover .btn-host { color: #3a2a00; }
+html[data-theme="terminal"] .note,
+html[data-theme="terminal"] .theme-pop,
+html[data-theme="terminal"] .slot-card { border-radius: 0; }
+html[data-theme="terminal"] .slot-card h3 {
+  font-family: var(--cond);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
