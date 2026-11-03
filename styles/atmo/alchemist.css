@@ -1,0 +1,197 @@
+/* ============================================================================
+   Atmosphere: THE ALCHEMIST  ·  a Renaissance transmutation laboratory.
+   Identity: bottle-green vitriol walls, lead-white parchment ink, gold leaf as
+   the one accent (the Work's goal), cinnabar only as a warning / seal. Engraved
+   double-rule plates, a slowly turning transmutation circle behind the title,
+   small-caps manuscript lettering. Green surfaces + gold ink (never red on
+   green) keep it calm and legible.
+   Legibility: parchment ink 14:1, gold leaf 8:1+, muted/faint >= contract.
+   Legacy rules overridden: styles.css "14. The Alchemist".
+   ========================================================================== */
+
+/* 1. Tokens -------------------------------------------------------------- */
+html[data-atmo="alchemist"] {
+  --scheme: dark;
+  color-scheme: dark;
+
+  --bg: #050f0a;
+  --bg2: #0a1b12;
+  --surface: #0c2016;      /* vitriol-green plate */
+  --surface2: #18382a;
+
+  --ink: #f4ecd4;          /* lead-white parchment */
+  --muted: #c4d0b4;        /* sage */
+  --faint: #98ad94;
+  --cardmeta: #d8dcbc;
+
+  --gold: #dfb75a;         /* gold leaf */
+  --gold-soft: #f5dfa0;
+  --gold-deep: #8d6a1e;
+  --on-gold: #1a1204;
+  --focus: #f5dfa0;
+
+  --line: rgba(223, 183, 90, 0.17);
+  --line-strong: rgba(223, 183, 90, 0.42);
+
+  --ok: #74d9a4;           /* verdigris */
+  --warn: #eda93f;
+  --bad: #f57e68;          /* cinnabar, lightened for text */
+
+  --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --radius: 4px;
+
+  --shadow: inset 0 1px 0 rgba(245, 223, 160, 0.06), 0 16px 44px rgba(0, 0, 0, 0.8);
+  --elev-1: inset 0 1px 0 rgba(245, 223, 160, 0.05), 0 2px 8px rgba(0, 0, 0, 0.55);
+  --elev-2: inset 0 1px 0 rgba(245, 223, 160, 0.08), 0 12px 30px rgba(0, 0, 0, 0.7);
+  --elev-3: inset 0 1px 0 rgba(245, 223, 160, 0.09), 0 28px 76px rgba(0, 0, 0, 0.85);
+  --scrim: rgba(2, 8, 5, 0.76);
+
+  --th-bg: #0c2016;
+  --tabgrad1: #2a3a1c; --tabgrad2: #0a1a10;
+  --toastgrad1: #1f3a26; --toastgrad2: #08160e;
+  --foot-bg: rgba(5, 15, 10, 0.95);
+  --drawerbar-bg: rgba(10, 30, 20, 0.96);
+  --ph-bg: #08170f;
+  --sel-bg: #1a3a27;
+  --row-hover: rgba(223, 183, 90, 0.08);
+  --hold-bg: linear-gradient(135deg, #2b3d1c, #0a1a10);
+  --skeleton1: #18382a; --skeleton2: #08170f;
+  --grain-op: 0.06;
+
+  --wing-dur: 0.7s;
+  --wing-rise: 14px;
+
+  scrollbar-color: #8d6a1e #050f0a;
+}
+
+/* 2. Laboratory air: green dark, cinnabar embers low left, engraving hatch ---- */
+html[data-atmo="alchemist"] body {
+  background-image:
+    radial-gradient(70% 40% at 50% 0%, rgba(74, 200, 140, 0.10), transparent 72%),
+    radial-gradient(60% 45% at 0% 100%, rgba(190, 60, 30, 0.10), transparent 70%),
+    radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0, 6, 3, 0.6) 100%);
+}
+html[data-atmo="alchemist"] body::before {
+  background-image: repeating-linear-gradient(45deg, rgba(223, 183, 90, 0.03) 0 1px, transparent 1px 7px);
+}
+html[data-atmo="alchemist"] ::selection { background: var(--gold); color: var(--on-gold); }
+
+/* 3. Wordmark + the transmutation circle -------------------------------------- */
+html[data-atmo="alchemist"] .wordmark {
+  font-weight: 500;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.07em;
+  color: #fbf3da;
+  text-shadow: 0 0 24px rgba(223, 183, 90, 0.4), 0 2px 0 rgba(0, 0, 0, 0.5) !important;
+}
+html[data-atmo="alchemist"] .hero::before {
+  /* circle > triangle > diamond > seed: an engraved transmutation circle, turning very slowly */
+  content: "";
+  position: absolute; z-index: -1; pointer-events: none;
+  left: 50%; top: 7.6rem; width: min(420px, 90vw); aspect-ratio: 1;   /* .hero spans the whole Hall header: anchor to the title */
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='%23dfb75a' stroke-opacity='.5' stroke-width='.6'%3E%3Ccircle cx='100' cy='100' r='96'/%3E%3Ccircle cx='100' cy='100' r='90' stroke-dasharray='1.5 3'/%3E%3Ccircle cx='100' cy='100' r='70'/%3E%3Cpath d='M100 30 160.6 135H39.4ZM100 30 170 100 100 170 30 100Z'/%3E%3Ccircle cx='100' cy='100' r='14'/%3E%3C/svg%3E") center / contain no-repeat;
+  animation: alch-turn 240s linear infinite;
+}
+@keyframes alch-turn { to { transform: translate(-50%, -50%) rotate(360deg); } }
+html[data-atmo="alchemist"] .hero-glow {
+  background: radial-gradient(ellipse 46% 55% at 50% 45%, rgba(223, 183, 90, 0.10), transparent 70%);
+}
+html[data-atmo="alchemist"] .hero-grand {
+  background-image: linear-gradient(135deg, #fbf3da 15%, var(--gold-soft) 55%, var(--gold) 100%);
+  text-shadow: none;
+  filter: drop-shadow(0 0 12px rgba(223, 183, 90, 0.3));
+}
+html[data-atmo="alchemist"] .wing-head h2 { font-weight: 500; letter-spacing: 0.04em; text-shadow: none; }
+
+/* 4. Picker swatch ---------------------------------------------------------- */
+.sw-alchemist {
+  background:
+    radial-gradient(circle at 50% 50%, #dfb75a 0 12%, transparent 13%),
+    conic-gradient(from 0deg, transparent 0 8%, rgba(223, 183, 90, 0.7) 8% 9%, transparent 9% 33%, rgba(223, 183, 90, 0.7) 33% 34%, transparent 34% 58%, rgba(223, 183, 90, 0.7) 58% 59%, transparent 59%),
+    radial-gradient(circle, #18382a 0 62%, #0a1b12 63%);
+  box-shadow: inset 0 0 0 2px #8d6a1e, inset 0 0 0 4px #0a1b12, inset 0 0 0 5px #dfb75a;
+}
+
+/* 5. Components ------------------------------------------------------------- */
+/* Engraved plates: a second hairline inside the border, like a copper-plate frame. */
+html[data-atmo="alchemist"] :is(.card, .tile, .exhibit, .vault-valuation-hub, .album-card, .latest-card, .sheet-card) {
+  border-color: var(--line-strong);
+  outline: 1px solid rgba(223, 183, 90, 0.16);
+  outline-offset: -5px;
+}
+html[data-atmo="alchemist"] .tile::before { width: 2px; background: var(--gold); }
+html[data-atmo="alchemist"] :is(.card h3, .tile .k, .hero-cap) { letter-spacing: 0.16em; }
+html[data-atmo="alchemist"] .tab.active { box-shadow: 0 2px 12px rgba(223, 183, 90, 0.3); }
+html[data-atmo="alchemist"] .tray-tab.active .tray-count { color: var(--on-gold); background: rgba(26, 18, 4, 0.16); }  /* styles.css hard-codes #fff */
+html[data-atmo="alchemist"] .badge.hold { color: var(--gold-soft); border-color: var(--gold); }
+html[data-atmo="alchemist"] :is(.lofi-bar, .player-bar, .mobile-wing-dock) { background: rgba(6, 20, 13, 0.97) !important; }
+html[data-atmo="alchemist"] .exhibit-bg {
+  background:
+    radial-gradient(60% 90% at 50% 0%, rgba(74, 200, 140, 0.12), transparent 70%),
+    radial-gradient(40% 60% at 90% 100%, rgba(190, 60, 30, 0.10), transparent 70%);
+}
+/* styles.css paints these panels warm/navy black in every atmosphere: retint to vitriol green. */
+html[data-atmo="alchemist"] .exhibit { background: linear-gradient(180deg, #10281c 0%, #06120c 100%); box-shadow: var(--elev-3); }
+html[data-atmo="alchemist"] .exhibit:hover { box-shadow: var(--elev-3), 0 0 30px rgba(223, 183, 90, 0.14); }
+html[data-atmo="alchemist"] .vault-valuation-hub { background: linear-gradient(180deg, rgba(20, 50, 36, 0.9), rgba(8, 22, 15, 0.96)); }
+html[data-atmo="alchemist"] .market-ticker-tape { background: #06120c; border-color: var(--line); }
+html[data-atmo="alchemist"] .ticker-badge { background: #0c2016; }
+html[data-atmo="alchemist"] :is(.study-nav-pills, .gallery-mode-switch) { background: rgba(10, 30, 20, 0.88); border-color: var(--line-strong); }
+html[data-atmo="alchemist"] .album-binder-card { background: #0a1f15; border-color: var(--line-strong); }
+
+/* 6. Reduced motion ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="alchemist"] .hero::before { animation: none; }
+}
+
+/* ============================================================================
+   The Alchemist v2 (Grok, 2026-10-20): every screen, not just home.
+   A Renaissance transmutation lab: vitriol-green glass plates edged in gold leaf, engraved double-rule frames, an athanor-glow coin stage under a circled-triangle sigil ring, and gold-leaf values.
+   Static decoration only (no animated filters or per-frame repaints); text keeps the token contrast checked above (AA or better);
+   every control is at least 44 px; reduced motion switches off every transition below.
+   ========================================================================== */
+html[data-atmo="alchemist"] :is(.gxd-stage, .gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window, .museum-slab, .gf-finder, .hg-tile, .vault-valuation-hub, .atmo-card){
+  background: linear-gradient(175deg, #0f2a1c, #081a11); border: 1px solid rgba(223,183,90,0.30); border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(223,183,90,0.10), 0 12px 30px rgba(0,0,0,0.6);
+}
+html[data-atmo="alchemist"] :is(#drawer-body, body) .drawer-inner{ background: radial-gradient(70% 30% at 50% 0%, rgba(223,183,90,0.10), transparent 70%), var(--bg); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .gxd-stage{ position: relative; background: radial-gradient(circle at 50% 45%, rgba(223,183,90,0.18), transparent 60%), #06140c; border: 1px solid rgba(223,183,90,0.5); border-radius: 10px; box-shadow: inset 0 0 0 3px #0c2016, inset 0 0 0 4px rgba(223,183,90,0.3), inset 0 0 40px rgba(0,0,0,0.6); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .museum-slab{  }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn, .gf-preset, .sb-btn){
+  min-height: 44px; min-width: 44px;
+  background: linear-gradient(180deg, #0f2a1c, #081a11); border: 1px solid rgba(223,183,90,0.42); border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(223,183,90,0.12); color: var(--ink);
+}
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .gxd-sec h4){ font-family: var(--serif, inherit); font-weight: 700; letter-spacing: 0.02em; }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt, .gxd-face figcaption, .slab-pedigree-title, .gf-count){ font-family: inherit; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--muted); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .gxd-value strong{ font-family: var(--serif, inherit); color: var(--gold-soft); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){  }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input){ min-height: 44px; color: var(--ink); background: #081a11; border: 1px solid rgba(223,183,90,0.5); border-radius: 10px; }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; color: var(--ink); background: linear-gradient(180deg, #0f2a1c, #081a11); border: 1px solid rgba(223,183,90,0.42); border-radius: 10px; }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: linear-gradient(180deg, #f5dfa0 0%, #dfb75a 55%, #9c7a2a 100%); color: var(--on-gold); box-shadow: 0 0 16px rgba(223,183,90,0.3); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active) :is(.gf-pt, .gf-pn, .sb-lbl){ color: inherit; }
+html[data-atmo="alchemist"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="alchemist"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 3px 0 var(--gold); color: var(--gold-soft); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .palette-sheet{ background: linear-gradient(175deg, #0f2a1c, #081a11); border: 1px solid rgba(223,183,90,0.30); border-radius: 10px; box-shadow: inset 0 1px 0 rgba(223,183,90,0.10), 0 12px 30px rgba(0,0,0,0.6), var(--elev-3); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px solid var(--line); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; }
+html[data-atmo="alchemist"] :focus-visible{ outline: 2.5px solid var(--focus); outline-offset: 3px; }
+
+@supports (-webkit-background-clip: text) {
+  html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gxd-value strong.gxd-est, .hero-grand){ background: linear-gradient(180deg, #f5dfa0 0%, #dfb75a 55%, #9c7a2a 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+}
+html[data-atmo="alchemist"] :is(#drawer-body, body) .gxd-face figcaption{ color: var(--muted); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border-color: rgba(223,183,90,0.5); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ box-shadow: inset 3px 0 0 var(--gold); }
+
+html[data-atmo="alchemist"] :is(#drawer-body, body) .gxd-coin{ border-radius: 50%; box-shadow: 0 0 0 3px #0c2016, 0 0 0 4px rgba(223,183,90,0.7), 0 0 0 9px rgba(12,32,22,0.9), 0 0 0 10px rgba(223,183,90,0.35), 0 0 30px rgba(223,183,90,0.2); }
+html[data-atmo="alchemist"] :is(#drawer-body, body) .slab-pedigree-header{ background: linear-gradient(90deg, #3d3010, #0c2016); color: #fff; }
+html[data-atmo="alchemist"] :is(#drawer-body, body) :is(.gxd-value > div){ outline: 1px solid rgba(223,183,90,0.18); outline-offset: -5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="alchemist"] *, html[data-atmo="alchemist"] *::before, html[data-atmo="alchemist"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

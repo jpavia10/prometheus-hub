@@ -1,0 +1,291 @@
+/* Atmosphere: Sunken Treasury (abyss)
+   Forty fathoms down. Abyssal navy water lit from above by faint god-rays,
+   bioluminescent aqua as the working accent (tabs, focus of attention, active states),
+   and wreck-brass for anything that is money or treasure (hero value, card values).
+   Loads after styles.css and overrides the legacy abyss block there (same selectors).
+   Contract (notes/agents/themes.md): ink >= 12:1, muted >= 7:1, faint >= 4.8:1 on every surface.
+   Motion: one slow sonar ping in the hero (transform/opacity only), off under reduced motion. */
+
+/* ============ Tokens ============ */
+html[data-atmo="abyss"] {
+  --scheme: dark;
+  color-scheme: dark;
+
+  /* water column: surface light fades to abyssal black-navy */
+  --bg: #03111c;            /* ink 17.2  muted 9.6  faint 6.6 */
+  --bg2: #051826;
+  --surface: #082233;       /* ink 14.7  muted 8.2  faint 5.6 */
+  --surface2: #0e2e42;      /* ink 12.7  muted 7.1  faint 4.9 */
+
+  --ink: #e6f6f8;
+  --muted: #9cbdc9;
+  --faint: #7a9dab;
+  --cardmeta: #bfdce3;
+
+  /* accent: bioluminescence (historical name --gold) */
+  --gold: #4fd6e2;          /* 9.4:1 on surface */
+  --gold-soft: #b2eef3;     /* 12.8:1 on surface */
+  --gold-deep: #1f7488;
+  /* treasure: brass glint for money values (theme-local) */
+  --abyss-brass: #f0c776;   /* 10.2:1 on surface */
+  --abyss-brass-deep: #9a7433;
+
+  --line: rgba(95, 205, 225, 0.17);
+  --line-strong: rgba(95, 205, 225, 0.42);
+
+  --ok: #5fe0a9;
+  --warn: #ffd166;
+  --bad: #ff8f85;
+
+  --on-gold: #021018;       /* 11:1 on --gold */
+  --focus: #ffd98a;         /* warm ring: reads on aqua fills and on navy */
+  --scrim: rgba(1, 8, 14, 0.72);
+
+  --elev-1: inset 0 1px 0 rgba(160, 235, 245, 0.07), 0 2px 4px rgba(0, 6, 12, 0.5), 0 8px 18px rgba(0, 8, 16, 0.45);
+  --elev-2: inset 0 1px 0 rgba(160, 235, 245, 0.1), 0 0 0 1px rgba(95, 205, 225, 0.14), 0 14px 32px rgba(0, 6, 14, 0.7);
+  --elev-3: inset 0 1px 0 rgba(160, 235, 245, 0.1), 0 30px 80px rgba(0, 4, 10, 0.85), 0 0 60px rgba(40, 170, 200, 0.08);
+  --shadow: var(--elev-1);
+
+  --th-bg: #061b29;
+  --tabgrad1: #0e2e42;
+  --tabgrad2: #051826;
+  --toastgrad1: #0f3348;
+  --toastgrad2: #061b29;
+  --foot-bg: rgba(3, 14, 23, 0.95);
+  --drawerbar-bg: rgba(5, 22, 34, 0.96);
+  --ph-bg: #041722;
+  --sel-bg: #0d3146;
+  --row-hover: rgba(79, 214, 226, 0.08);
+  --hold-bg: linear-gradient(135deg, #123a52 0%, #061b29 70%);
+  --skeleton1: #0c2a3c;
+  --skeleton2: #05192a;
+  --grain-op: 0.05;
+}
+
+/* ============ Water column ============ */
+html[data-atmo="abyss"] body {
+  background-color: var(--bg);
+  background-image:
+    /* god-rays slanting down from the surface */
+    linear-gradient(104deg, transparent 18%, rgba(140, 225, 245, 0.045) 22%, transparent 27%),
+    linear-gradient(98deg, transparent 52%, rgba(140, 225, 245, 0.035) 56%, transparent 61%),
+    linear-gradient(110deg, transparent 70%, rgba(140, 225, 245, 0.03) 73%, transparent 77%),
+    /* surface light and seabed dark */
+    radial-gradient(90% 38% at 50% -6%, rgba(46, 150, 185, 0.26), transparent 72%),
+    linear-gradient(180deg, #072235 0%, #03111c 42%, #020b13 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  animation: none;
+}
+html[data-atmo="abyss"] #dust-layer i {
+  background: radial-gradient(circle, rgba(170, 240, 250, 0.7), transparent 70%);
+  box-shadow: 0 0 0 1px rgba(170, 240, 250, 0.3);
+}
+
+/* ============ Hero ============ */
+html[data-atmo="abyss"] .hero { border-bottom-color: var(--line); }
+html[data-atmo="abyss"] .hero-glow {
+  background:
+    radial-gradient(ellipse 30% 40% at 50% 46%, rgba(240, 199, 118, 0.08), transparent 70%),
+    radial-gradient(ellipse 55% 60% at 50% 40%, rgba(79, 214, 226, 0.13), transparent 72%);
+  animation: none;
+}
+/* sonar ping: a single thin ring expanding from behind the value, every 9 s */
+html[data-atmo="abyss"] .hero::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 44%;
+  width: 11rem; height: 11rem;
+  border: 1.5px solid rgba(120, 225, 240, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+  animation: abyss-sonar 9s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+@keyframes abyss-sonar {
+  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 0.7; }
+  60% { opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+/* the shared performance shield forces a gold glow on every wordmark; give ours cold light */
+html[data-atmo="abyss"] .wordmark {
+  color: #eefbfc;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 28px rgba(79, 214, 226, 0.42), 0 2px 0 rgba(0, 0, 0, 0.45) !important;
+}
+html[data-atmo="abyss"] .hero-grand {
+  color: var(--abyss-brass);
+  text-shadow: 0 0 40px rgba(240, 199, 118, 0.28), 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+html[data-atmo="abyss"] .hero-cap { color: var(--muted); letter-spacing: 0.2em; }
+html[data-atmo="abyss"] .sigil { color: var(--gold); text-shadow: 0 0 18px rgba(79, 214, 226, 0.55); }
+html[data-atmo="abyss"] .ledger-chip { background: rgba(8, 34, 51, 0.85); border-color: var(--line-strong); color: var(--muted); }
+html[data-atmo="abyss"] .badge.hold {
+  background: var(--hold-bg);
+  border-color: var(--abyss-brass-deep);
+  color: var(--abyss-brass);
+}
+html[data-atmo="abyss"] .hero-crest-watermark,
+html[data-atmo="abyss"] .exhibit-crest-watermark,
+html[data-atmo="abyss"] .cf-crest-watermark { color: var(--gold); }
+
+/* ============ Section heads: a sounding line under each title ============ */
+html[data-atmo="abyss"] .sec-head {
+  border-bottom: 0;
+  position: relative;
+}
+/* the line is a pseudo-element so the heading text never sits on a gradient fill */
+html[data-atmo="abyss"] .sec-head::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, var(--gold-deep), rgba(31, 116, 136, 0.35) 45%, transparent 90%);
+}
+html[data-atmo="abyss"] .sec-head h2 { color: var(--ink); letter-spacing: 0.015em; }
+html[data-atmo="abyss"] .sec-head h2::before {
+  content: "";
+  display: inline-block;
+  width: 0.5em; height: 0.5em;
+  margin: 0 0.5em 0.12em 0;
+  border-radius: 50%;
+  vertical-align: middle;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(79, 214, 226, 0.7);
+}
+
+/* ============ Cards and tiles: lit from above ============ */
+html[data-atmo="abyss"] .card,
+html[data-atmo="abyss"] .tile,
+html[data-atmo="abyss"] .latest-card,
+html[data-atmo="abyss"] .album-card {
+  background-color: var(--surface);
+  background-image: linear-gradient(180deg, rgba(120, 215, 235, 0.05), transparent 45%);
+  border-color: var(--line);
+  box-shadow: var(--elev-1);
+}
+@media (hover: hover) {
+  html[data-atmo="abyss"] .card:hover,
+  html[data-atmo="abyss"] .tile:hover,
+  html[data-atmo="abyss"] .latest-card:hover,
+  html[data-atmo="abyss"] .album-card:hover {
+    border-color: var(--line-strong);
+    box-shadow: var(--elev-2);
+  }
+}
+html[data-atmo="abyss"] .tile::before {
+  background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+  box-shadow: 0 0 10px rgba(79, 214, 226, 0.45);
+}
+html[data-atmo="abyss"] .card .val,
+html[data-atmo="abyss"] .tile .v { color: var(--abyss-brass); }
+html[data-atmo="abyss"] .card h3,
+html[data-atmo="abyss"] .tile .k { color: var(--muted); }
+
+/* ============ Controls ============ */
+html[data-atmo="abyss"] .tab.active {
+  background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+  color: var(--on-gold);
+  box-shadow: 0 4px 16px rgba(79, 214, 226, 0.3);
+}
+html[data-atmo="abyss"] .btn {
+  background: var(--surface2);
+  border-color: var(--gold-deep);
+  color: var(--gold-soft);
+}
+html[data-atmo="abyss"] .btn:hover { border-color: var(--gold); box-shadow: 0 0 14px rgba(79, 214, 226, 0.2); }
+html[data-atmo="abyss"] :focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+html[data-atmo="abyss"] ::selection { background: rgba(79, 214, 226, 0.35); color: #fff; }
+
+/* ============ Wing navigation: a glass porthole bar ============ */
+html[data-atmo="abyss"] .wings {
+  background: var(--drawerbar-bg);
+  border-color: var(--line-strong);
+}
+@media (min-width: 768px) {
+  html[data-atmo="abyss"] .wings {
+    box-shadow: var(--elev-3);
+  }
+}
+html[data-atmo="abyss"] .wing { color: var(--muted); }
+html[data-atmo="abyss"] .wing.active { color: var(--gold-soft); }
+html[data-atmo="abyss"] .wing.active::before {
+  background: var(--gold);
+  box-shadow: 0 0 12px var(--gold), 0 0 26px rgba(79, 214, 226, 0.4);
+}
+html[data-atmo="abyss"] .wing.wing-3d {
+  color: var(--gold-soft);
+  background: linear-gradient(180deg, rgba(79, 214, 226, 0.1) 0%, transparent 100%);
+}
+html[data-atmo="abyss"] .wing.wing-3d svg { color: var(--gold); filter: drop-shadow(0 0 6px rgba(79, 214, 226, 0.5)); }
+html[data-atmo="abyss"] .wing.wing-3d:hover { color: #fff; background: linear-gradient(180deg, rgba(79, 214, 226, 0.2) 0%, transparent 100%); }
+/* the shared shield paints every dock warm black with !important; ours is deep water */
+html[data-atmo="abyss"] .lofi-bar,
+html[data-atmo="abyss"] .player-bar,
+html[data-atmo="abyss"] .mobile-wing-dock { background: rgba(4, 20, 31, 0.97) !important; }
+
+/* ============ Swatch (Atmosphere sheet) ============ */
+.sw-abyss {
+  background:
+    radial-gradient(circle at 68% 80%, #f0c776 0 6%, rgba(240, 199, 118, 0.35) 7%, transparent 16%),
+    linear-gradient(104deg, transparent 28%, rgba(140, 225, 245, 0.3) 36%, transparent 46%),
+    radial-gradient(70% 40% at 50% 0%, rgba(79, 214, 226, 0.5), transparent 75%),
+    linear-gradient(180deg, #0c3a55 0%, #082233 45%, #03111c 100%);
+}
+
+/* ============ Reduced motion ============ */
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="abyss"] .hero::before { animation: none; opacity: 0; }
+  html[data-atmo="abyss"] body,
+  html[data-atmo="abyss"] .hero-glow { animation: none; }
+  html[data-atmo="abyss"] .card,
+  html[data-atmo="abyss"] .tile { transition: none; }
+}
+
+/* ============================================================================
+   Sunken Treasury v2 (Grok, 2026-10-20): every screen, not just home.
+   Forty fathoms down: every panel is a pressure-glass viewport with a bioluminescent aqua rim and caustic light pooling from above, wreck-brass for money, rivet-ringed bathysphere porthole for the coin stage, and sonar-ring active tabs.
+   Static decoration only (no animated filters or per-frame repaints); text keeps the token contrast checked above (AA or better);
+   every control is at least 44 px; reduced motion switches off every transition below.
+   ========================================================================== */
+html[data-atmo="abyss"] :is(.gxd-stage, .gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window, .museum-slab, .gf-finder, .hg-tile, .vault-valuation-hub, .atmo-card){
+  background: radial-gradient(120% 60% at 50% -10%, rgba(79,214,226,0.12), transparent 60%), linear-gradient(180deg, #0a2638, #061a28); border: 1px solid rgba(79,214,226,0.30); border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(178,238,243,0.12), 0 0 18px rgba(79,214,226,0.08), 0 14px 32px rgba(0,6,12,0.65);
+}
+html[data-atmo="abyss"] :is(#drawer-body, body) .drawer-inner{ background: radial-gradient(70% 35% at 50% 0%, rgba(79,214,226,0.12), transparent 70%), linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.25)), var(--bg); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .gxd-stage{ position: relative; background: radial-gradient(circle at 50% 30%, rgba(79,214,226,0.18), transparent 65%), #051623; border: 2px solid rgba(224,169,72,0.55); border-radius: 24px; box-shadow: inset 0 0 0 5px #082233, inset 0 0 0 6px rgba(79,214,226,0.3), inset 0 0 40px rgba(0,0,0,0.6); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .museum-slab{  }
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn, .gf-preset, .sb-btn){
+  min-height: 44px; min-width: 44px;
+  background: linear-gradient(180deg, #0f3248, #082233); border: 1px solid rgba(79,214,226,0.40); border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(178,238,243,0.12), 0 2px 8px rgba(0,6,12,0.5); color: var(--ink);
+}
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .gxd-sec h4){ font-family: var(--serif, inherit); font-weight: 700; letter-spacing: 0.01em; }
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt, .gxd-face figcaption, .slab-pedigree-title, .gf-count){ font-family: inherit; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--muted); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .gxd-value strong{ font-family: var(--serif, inherit); color: #ffd98a; }
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){  }
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input){ min-height: 44px; color: var(--ink); background: #04131f; border: 1px solid rgba(79,214,226,0.5); border-radius: 14px; box-shadow: 0 0 12px rgba(79,214,226,0.15); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; color: var(--ink); background: linear-gradient(180deg, #0f3248, #082233); border: 1px solid rgba(79,214,226,0.40); border-radius: 14px; }
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: linear-gradient(180deg, #7fe6ee, #4fd6e2); color: var(--on-gold); box-shadow: 0 0 0 3px rgba(79,214,226,0.18), 0 0 18px rgba(79,214,226,0.4); }
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active) :is(.gf-pt, .gf-pn, .sb-lbl){ color: inherit; }
+html[data-atmo="abyss"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="abyss"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 3px 0 var(--gold); color: var(--gold-soft); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .palette-sheet{ background: radial-gradient(120% 60% at 50% -10%, rgba(79,214,226,0.12), transparent 60%), linear-gradient(180deg, #0a2638, #061a28); border: 1px solid rgba(79,214,226,0.30); border-radius: 16px; box-shadow: inset 0 1px 0 rgba(178,238,243,0.12), 0 0 18px rgba(79,214,226,0.08), 0 14px 32px rgba(0,6,12,0.65), var(--elev-3); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px solid var(--line); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; }
+html[data-atmo="abyss"] :focus-visible{ outline: 2.5px solid var(--focus); outline-offset: 3px; }
+
+@supports (-webkit-background-clip: text) {
+  html[data-atmo="abyss"] :is(#drawer-body, body) :is(.gxd-value strong.gxd-est, .hero-grand){ background: linear-gradient(180deg, #ffe0a0 0%, #e0a948 55%, #a8742a 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+}
+html[data-atmo="abyss"] :is(#drawer-body, body) .gxd-coin{ border-radius: 50%; box-shadow: 0 0 0 3px #082233, 0 0 0 5px rgba(224,169,72,0.6), 0 0 30px rgba(79,214,226,0.25); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .gxd-face figcaption{ color: var(--muted); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .slab-pedigree-header{ background: linear-gradient(90deg, #0e3a50, #5a3f14); color: #fff; }
+html[data-atmo="abyss"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border-color: rgba(79,214,226,0.5); }
+html[data-atmo="abyss"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ box-shadow: inset 3px 0 0 var(--gold); }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="abyss"] *, html[data-atmo="abyss"] *::before, html[data-atmo="abyss"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

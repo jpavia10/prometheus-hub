@@ -1,0 +1,127 @@
+/* ============================================================================
+   Atmosphere: BAUHAUS (bauhaus) · styles-20 #16 Bauhaus + #7 Kinetic type
+   Primary shapes and moving type: off-white poster paper, black rules, Bauhaus red, blue and yellow. Square corners, hard shadows.
+   Token-only (Signature rule 1, notes/agents/theme-pot.md + notes/agents/styles-20.md): every look below comes from tokens; the
+   shared treatments in styles/style-layer.css are switched on by the theme's `ui` list in wings/themes/manifest.js (html[data-ui]).
+   Legibility: every token pair checked against the template's rules (ink 7:1, muted 6:1, faint 4.5:1, accent 4.5:1).
+   ========================================================================== */
+html[data-atmo="bauhaus"] {
+  --scheme: light;
+  color-scheme: light;
+  --bg: #f2efe6;
+  --bg2: #ebe7db;
+  --surface: #ffffff;
+  --surface2: #e8e3d5;
+  --ink: #111111;
+  --muted: #2f2f2f;
+  --faint: #4f4f4f;
+  --cardmeta: #222222;
+  --gold: #b42416;
+  --gold-soft: #9d2112;
+  --gold-deep: #111111;
+  --on-gold: #ffffff;
+  --ink-soft: #2f2f2f;
+  --line: rgba(17, 17, 17, 0.25);
+  --line-strong: #111111;
+  --ok: #1f6b33;
+  --warn: #7f5800;
+  --bad: #b0220f;
+  --shadow: 0 1px 2px rgba(40, 30, 20, 0.10), 0 6px 18px rgba(40, 30, 20, 0.10);
+  --elev-1: 0 1px 2px rgba(40, 30, 20, 0.10), 0 3px 10px rgba(40, 30, 20, 0.08);
+  --elev-2: 0 2px 4px rgba(40, 30, 20, 0.10), 0 12px 28px rgba(40, 30, 20, 0.14);
+  --elev-3: 0 4px 10px rgba(40, 30, 20, 0.12), 0 28px 70px rgba(40, 30, 20, 0.22);
+  --scrim: rgba(30, 24, 18, 0.40);
+  --focus: #1d4ea1;
+  --th-bg: #e8e3d5;
+  --tabgrad1: #e8e3d5; --tabgrad2: #ffffff;
+  --toastgrad1: #e8e3d5; --toastgrad2: #ffffff;
+  --foot-bg: rgba(242, 239, 230, 0.94);
+  --drawerbar-bg: rgba(255, 255, 255, 0.96);
+  --ph-bg: #e8e3d5;
+  --sel-bg: rgba(195, 42, 23, 0.18);
+  --row-hover: rgba(195, 42, 23, 0.07);
+  --hold-bg: linear-gradient(135deg, #e8e3d5, #ffffff);
+  --skeleton1: #e8e3d5; --skeleton2: #f2efe6;
+  --grain-op: 0.03;
+  --wing-dur: 0.4s;
+  --wing-rise: 12px;
+  /* legacy aliases resolved on <html> */
+  --text: var(--ink); --panel: var(--surface); --chip: var(--surface2); --missing: var(--faint);
+  --border: var(--line); --gold-dim: var(--gold-deep); --danger: var(--bad);
+  --serif: Futura, "Century Gothic", "Avenir Next", "Trebuchet MS", system-ui, sans-serif;
+  --radius: 0px;
+  --bh-blue: #1d4ea1;
+  --bh-yellow: #f2c230;
+  --ui-bw: 2px;
+  --ui-edge: #111111;
+  --ui-hard: 4px 4px 0 #111111;
+  /* the dark display-case interior used by the instrument panels (styles/style-layer.css, ui "paper") */
+  --case-bg: #111111;
+  --case-bg2: #181818;
+  --case-surface: #1d1d1d;
+  --case-surface2: #2a2a2a;
+  --case-ink: #ffffff;
+  --case-muted: #d6d6d6;
+  --case-faint: #b0b0b0;
+  --case-gold: #f2c230;
+  --case-gold-soft: #ffe08a;
+  --case-on-gold: #111111;
+  /* the page palette again, for paper labels inside a case */
+  --paper-bg: #f2efe6;
+  --paper-bg2: #ebe7db;
+  --paper-surface: #ffffff;
+  --paper-surface2: #e8e3d5;
+  --paper-ink: #111111;
+  --paper-muted: #2f2f2f;
+  --paper-faint: #4f4f4f;
+  --paper-gold: #c32a17;
+  --paper-gold-soft: #9d2112;
+  --paper-on-gold: #ffffff;
+}
+
+/* ============================================================================
+   Bauhaus v2 (Grok, 2026-10-20): every screen, not just home.
+   Dessau workshop poster: hard black rules, primary red/blue/yellow blocks, zero-radius panels with an offset solid shadow, a red circle-square-triangle corner mark on cards, Futura caps labels, and a yellow-backed value plate.
+   Static decoration only (no animated filters or per-frame repaints); text keeps the token contrast checked above (AA or better);
+   every control is at least 44 px; reduced motion switches off every transition below.
+   ========================================================================== */
+html[data-atmo="bauhaus"] :is(.gxd-stage, .gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window, .museum-slab, .gf-finder, .hg-tile, .vault-valuation-hub, .atmo-card){
+  background: #ffffff; border: 2px solid #111111; border-radius: 0;
+  box-shadow: 5px 5px 0 #111111;
+}
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .drawer-inner{ background: linear-gradient(90deg, #b42416 0 10px, transparent 10px), var(--bg); }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .gxd-stage{ position: relative; background: linear-gradient(135deg, #f5c400 0 18%, transparent 18%), linear-gradient(315deg, #1d4ea1 0 7%, transparent 7%), #e8e3d5; border: 2px solid #111111; border-radius: 0; box-shadow: 5px 5px 0 #111111; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .museum-slab{  }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn, .gf-preset, .sb-btn){
+  min-height: 44px; min-width: 44px;
+  background: #ffffff; border: 2px solid #111111; border-radius: 0;
+  box-shadow: 3px 3px 0 #111111; color: var(--ink);
+}
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .gxd-sec h4){ font-family: var(--serif, inherit); font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt, .gxd-face figcaption, .slab-pedigree-title, .gf-count){ font-family: var(--serif, inherit); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: #111111; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .gxd-value strong{ font-family: var(--serif, inherit); color: #111111; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){  }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input){ min-height: 44px; color: var(--ink); background: #ffffff; border: 2px solid #111111; border-radius: 0; box-shadow: 3px 3px 0 #1d4ea1; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; color: var(--ink); background: #ffffff; border: 2px solid #111111; border-radius: 0; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: #b42416; color: #ffffff; box-shadow: 3px 3px 0 #111111; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active) :is(.gf-pt, .gf-pn, .sb-lbl){ color: inherit; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 4px 0 #b42416; color: #111111; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .palette-sheet{ background: #ffffff; border: 2px solid #111111; border-radius: 0; box-shadow: 5px 5px 0 #111111, var(--elev-3); }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px solid var(--line); }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; }
+html[data-atmo="bauhaus"] :focus-visible{ outline: 2.5px solid var(--focus); outline-offset: 3px; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .gallery-coverflow-wrap .cf-title{ color: #ffffff; }
+
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .gxd-value > div{ border-radius: 0; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .gxd-value > div:first-child{ background: #f5c400; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .gxd-coin{ border-radius: 50%; box-shadow: 0 0 0 3px #111111, 6px 6px 0 #b42416; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .gxd-face figcaption{ color: #111111; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .slab-pedigree-header{ background: #111111; color: #fff; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border: 2px solid #111111; border-radius: 0; }
+html[data-atmo="bauhaus"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ box-shadow: inset 6px 0 0 #b42416; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="bauhaus"] *, html[data-atmo="bauhaus"] *::before, html[data-atmo="bauhaus"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

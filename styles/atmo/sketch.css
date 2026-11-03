@@ -1,0 +1,197 @@
+/* ============================================================================
+   Atmosphere: SKETCHBOOK (sketch) · Hand-drawn
+   Pencil on drawing paper: doodles sketch themselves in the margins while the collection is drawn by hand.
+   Token-only (Signature rule 1, notes/agents/theme-pot.md): the shared treatments in styles/style-layer.css are switched on by
+   the theme's `ui` list in wings/themes/manifest.js (html[data-ui]); the effect is style-sketch (wings/fx/styles-e.js).
+   Legibility: checked with tools/themes/check_theme.js (ink 7:1, muted 6:1, faint 4.5:1, accent 4.5:1).
+   ========================================================================== */
+html[data-atmo="sketch"] {
+  --scheme: light;
+  color-scheme: light;
+  --bg: #f7f5ef;
+  --bg2: #efece3;
+  --surface: #fffefa;
+  --surface2: #ece8dc;
+  --ink: #22232a;
+  --muted: #3f414a;
+  --faint: #575a63;
+  --cardmeta: #2e3038;
+  --gold: #2b50a6;
+  --gold-soft: #1f3d85;
+  --gold-deep: #22232a;
+  --on-gold: #ffffff;
+  --ink-soft: #3f414a;
+  --line: rgba(34, 35, 42, 0.18);
+  --line-strong: #2b50a6;
+  --ok: #1f6b33;
+  --warn: #7f5800;
+  --bad: #b0220f;
+  --shadow: 0 1px 1px rgba(40, 40, 52, 0.14), 0 6px 0 -2px rgba(40, 40, 52, 0.10), 0 10px 18px rgba(40, 40, 52, 0.10);
+  --elev-1: 0 1px 1px rgba(40, 40, 52, 0.14), 0 3px 6px rgba(40, 40, 52, 0.10);
+  --elev-2: 0 2px 2px rgba(40, 40, 52, 0.14), 0 10px 22px rgba(40, 40, 52, 0.14);
+  --elev-3: 0 4px 6px rgba(40, 40, 52, 0.16), 0 24px 60px rgba(40, 40, 52, 0.22);
+  --scrim: rgba(34, 35, 42, 0.42);
+  --focus: #2f6fd6;
+  --th-bg: #ece8dc;
+  --tabgrad1: #ece8dc; --tabgrad2: #fffefa;
+  --toastgrad1: #ece8dc; --toastgrad2: #fffefa;
+  --foot-bg: rgba(247, 245, 239, 0.95);
+  --drawerbar-bg: rgba(255, 254, 250, 0.96);
+  --ph-bg: #ece8dc;
+  --sel-bg: rgba(43, 80, 166, 0.15);
+  --row-hover: rgba(43, 80, 166, 0.07);
+  --hold-bg: linear-gradient(135deg, #ece8dc, #fffefa);
+  --skeleton1: #ece8dc; --skeleton2: #f7f5ef;
+  --grain-op: 0.035;
+  --wing-dur: 0.42s;
+  --wing-rise: 14px;
+  /* legacy aliases resolved on <html> */
+  --text: var(--ink); --panel: var(--surface); --chip: var(--surface2); --missing: var(--faint);
+  --border: var(--line); --gold-dim: var(--gold-deep); --danger: var(--bad);
+  --serif: "Avenir Next", "Segoe UI", "Trebuchet MS", system-ui, -apple-system, sans-serif;
+  --hand: "Segoe Print", "Bradley Hand", "Chalkboard SE", "Comic Sans MS", "Marker Felt", cursive;
+  --radius: 14px;
+  /* the pencil lines of the sketch treatment (styles/style-layer.css, ui "sketch") */
+  --sk-line: rgba(34, 35, 42, 0.78);
+  --sk-echo: rgba(34, 35, 42, 0.30);
+  /* the dark display-case interior used by the instrument panels (styles/style-layer.css, ui "paper"): a graphite sketchbook cover */
+  --case-bg: #26282f;
+  --case-bg2: #2c2e36;
+  --case-surface: #33363f;
+  --case-surface2: #3e414b;
+  --case-ink: #ffffff;
+  --case-muted: #dfe1e8;
+  --case-faint: #bfc2cc;
+  --case-gold: #a9c1ff;
+  --case-gold-soft: #d2deff;
+  --case-on-gold: #26282f;
+  /* the page palette again, for paper labels inside a case */
+  --paper-bg: #f7f5ef;
+  --paper-bg2: #efece3;
+  --paper-surface: #fffefa;
+  --paper-surface2: #ece8dc;
+  --paper-ink: #22232a;
+  --paper-muted: #3f414a;
+  --paper-faint: #575a63;
+  --paper-gold: #2b50a6;
+  --paper-gold-soft: #1f3d85;
+  --paper-on-gold: #ffffff;
+}
+
+/* ============================================================================
+   Sketchbook v2 (Grok, 2026-10-20): every screen is a page in the sketchbook, not just home.
+   Home, gallery, coin page, search and menus share one vocabulary: graphite outlines with a lighter second pass, masking tape
+   holding photos and the coin page in, a ruled margin with handwritten notes, a pencil underline for search, and the
+   page tooth everywhere. Static textures only (no animated filters), so nothing repaints the page every frame. Contrast is
+   the token set above (ink 7:1 on paper); every control is at least 44 px.
+   ========================================================================== */
+html[data-atmo="sketch"]{
+  --sk-tape: rgba(236, 222, 170, 0.82);
+  --sk-tape-edge: rgba(150, 128, 70, 0.28);
+  --sk-rule: rgba(43, 80, 166, 0.10);
+  --sk-margin: rgba(176, 34, 15, 0.28);
+}
+/* the page: faint blue rules and a red margin line, like real sketchbook stock, behind the paper tooth */
+html[data-atmo="sketch"] body{
+  background-color: var(--bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.3' numOctaves='2' seed='3'/%3E%3CfeColorMatrix values='0 0 0 0 .2 0 0 0 0 .2 0 0 0 0 .24 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23f)'/%3E%3C/svg%3E"),
+    linear-gradient(90deg, transparent 0 30px, var(--sk-margin) 30px 31.5px, transparent 31.5px),
+    repeating-linear-gradient(180deg, transparent 0 31px, var(--sk-rule) 31px 32px);
+  background-attachment: scroll;
+}
+/* headings: hand-lettered, with a pencil underline that is a static SVG squiggle */
+html[data-atmo="sketch"] :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .vx-sec h2, .gxd-sec h4, .palette-sheet h2, .atmo-card-name){
+  font-family: var(--hand, cursive); letter-spacing: 0; text-transform: none; font-weight: 700;
+}
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2){
+  padding-bottom: 6px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='8' preserveAspectRatio='none'%3E%3Cpath d='M2 5 C60 2 120 7 180 4 S270 3 298 5' fill='none' stroke='%232b50a6' stroke-width='2' stroke-linecap='round' opacity='.7'/%3E%3C/svg%3E") left bottom / min(100%, 280px) 8px no-repeat;
+}
+html[data-atmo="sketch"] :is(#drawer-body, body) .gxd-sec h4{ color: var(--gold-soft); font-size: 1.12rem; }
+/* ---- coin page (drawer): the coin is a sketchbook page taped onto the desk ---- */
+html[data-atmo="sketch"] .drawer-inner{
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(90deg, transparent 0 22px, var(--sk-margin) 22px 23.5px, transparent 23.5px),
+    repeating-linear-gradient(180deg, transparent 0 31px, var(--sk-rule) 31px 32px);
+  border: 1.5px solid var(--sk-line);
+  border-radius: 26px 10px 0 0 / 12px 24px 0 0;
+  box-shadow: 4px -2px 0 -1px var(--surface), 4px -2px 0 0 var(--sk-echo), 0 -10px 30px rgba(40, 40, 52, 0.16);
+}
+html[data-atmo="sketch"] :is(#drawer-body, body) .drawer-bar{ background: var(--drawerbar-bg); border-bottom: 1.5px dashed var(--sk-echo); }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn){
+  min-height: 44px; min-width: 44px;
+  border: 1.5px solid var(--sk-line); border-radius: 12px 4px 14px 5px / 5px 13px 4px 12px;
+  box-shadow: 2px 2px 0 -1px var(--surface), 2px 2px 0 0 var(--sk-echo);
+  background: var(--surface);
+}
+html[data-atmo="sketch"] :is(#drawer-body, body) .gxd-stage{
+  background: var(--surface); border: 1.5px solid var(--sk-line);
+  border-radius: 20px 6px 24px 8px / 8px 22px 6px 20px;
+  box-shadow: 3px 3px 0 -1px var(--surface), 3px 3px 0 0 var(--sk-echo);
+  position: relative;
+}
+/* masking tape over two corners of the coin stage and of every gallery slab */
+html[data-atmo="sketch"] :is(.gxd-stage, .cf-card-inner, .gx-tile)::before,
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.gxd-stage, .cf-card-inner, .gx-tile)::after{
+  content: ""; position: absolute; z-index: 3; width: 64px; height: 20px; pointer-events: none;
+  background: var(--sk-tape); border-left: 1px dashed var(--sk-tape-edge); border-right: 1px dashed var(--sk-tape-edge);
+  box-shadow: 0 1px 2px rgba(60, 50, 20, 0.15);
+}
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.gxd-stage, .cf-card-inner, .gx-tile)::before{ top: -8px; left: -14px; transform: rotate(-32deg); }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.gxd-stage, .cf-card-inner, .gx-tile)::after{ top: -8px; right: -14px; transform: rotate(30deg); }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.cf-card-inner, .gx-tile){ position: relative; }
+/* the drawn obverse looks pencil-shaded, photos look like prints pasted in */
+html[data-atmo="sketch"] .gxd-coin{ filter: grayscale(0.55) contrast(1.08); }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.ph-slot img, .gxd-face img){ box-shadow: 2px 3px 0 -1px var(--surface), 2px 3px 0 0 var(--sk-echo); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .gxd-face figcaption{ font-family: var(--hand, cursive); text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--muted); }
+/* value boxes: index cards with a pencil box and a handwritten label */
+html[data-atmo="sketch"] :is(.gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window){
+  background: var(--surface); border: 1.5px solid var(--sk-line);
+  border-radius: 16px 5px 18px 6px / 6px 17px 5px 16px;
+  box-shadow: 3px 3px 0 -1px var(--surface), 3px 3px 0 0 var(--sk-echo);
+}
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt){ font-family: var(--hand, cursive); text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--muted); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .gxd-value strong{ color: var(--gold-soft); font-family: var(--hand, cursive); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .gxd-value strong.gxd-est { font-size: 1.7rem; }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border: 1.5px solid currentColor; border-radius: 999px 40px 999px 30px / 30px 999px 40px 999px; background: transparent; }
+html[data-atmo="sketch"] :is(#drawer-body, body) .gxd-story p{ line-height: 32px; }   /* sits on the page rules */
+html[data-atmo="sketch"] :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; font-family: var(--hand, cursive); }
+/* ---- gallery: slabs become taped-in drawings, search is a pencil line ---- */
+html[data-atmo="sketch"] .museum-slab{ background: var(--surface); border: 1.5px solid var(--sk-line); border-radius: 18px 6px 22px 7px / 7px 20px 6px 18px; box-shadow: 3px 3px 0 0 var(--sk-echo); }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){ display: none; }
+html[data-atmo="sketch"] :is(#drawer-body, body) .slab-pedigree-header{ background: transparent; color: var(--ink); border-bottom: 1.5px dashed var(--sk-echo); font-family: var(--hand, cursive); }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.slab-pedigree-title, .slab-pedigree-grade){ color: var(--ink); text-transform: none; letter-spacing: 0; }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input, .search-wrap input){
+  min-height: 44px; background: transparent; border: 0; border-bottom: 2px solid var(--sk-line); border-radius: 0;
+  font-family: var(--hand, cursive); font-size: 1.1rem; color: var(--ink); box-shadow: 0 3px 0 -1.5px var(--sk-echo);
+}
+html[data-atmo="sketch"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; border: 1.5px solid var(--sk-line); border-radius: 10px 4px 12px 4px / 4px 11px 4px 10px; background: var(--surface); color: var(--ink); }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: var(--sel-bg); color: var(--ink); box-shadow: inset 0 -3px 0 var(--gold), 2px 2px 0 0 var(--sk-echo); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .gf-preset.on :is(.gf-pt, .gf-pn){ color: var(--ink); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .gf-count{ font-family: var(--hand, cursive); }
+/* ---- search palette and menus: a loose sheet torn from the pad ---- */
+html[data-atmo="sketch"] :is(.palette-sheet, .atmo-sheet, .menu, .popover, .sheet){
+  background-color: var(--surface);
+  background-image: repeating-linear-gradient(180deg, transparent 0 31px, var(--sk-rule) 31px 32px);
+  border: 1.5px solid var(--sk-line); border-radius: 22px 8px 26px 7px / 7px 24px 9px 22px;
+  box-shadow: 4px 4px 0 -1px var(--surface), 4px 4px 0 0 var(--sk-echo), var(--elev-3);
+}
+html[data-atmo="sketch"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px dashed var(--sk-echo); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .atmo-card{ border: 1.5px solid var(--sk-line); border-radius: 16px 5px 18px 6px / 6px 17px 5px 16px; background: var(--surface); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .atmo-card[aria-pressed="true"], html[data-atmo="sketch"] :is(#drawer-body, body) .atmo-card.on{ box-shadow: 0 0 0 3px var(--gold); }
+/* ---- home: the hero total is written in, the ticker is a pencilled strip ---- */
+html[data-atmo="sketch"] .hero-grand{ font-family: var(--hand, cursive); color: var(--ink); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .market-ticker-tape{ background: var(--sk-tape); border-top: 1px dashed var(--sk-tape-edge); border-bottom: 1px dashed var(--sk-tape-edge); color: var(--ink); }
+html[data-atmo="sketch"] :is(#drawer-body, body) :is(.tk-sym, .tk-price){ color: var(--ink); }
+html[data-atmo="sketch"] :is(#drawer-body, body) .melt-allocation-bar{ border: 1.5px solid var(--sk-line); border-radius: 8px 3px 9px 3px / 3px 8px 3px 9px; }
+html[data-atmo="sketch"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="sketch"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 -3px 0 var(--gold); }
+html[data-atmo="sketch"] :focus-visible{ outline: 2.5px dashed var(--focus); outline-offset: 3px; }
+/* the Specimen Showcase is the sketchbook's graphite cover: it stays dark on purpose, with a pencil frame */
+html[data-atmo="sketch"] .gallery-coverflow-wrap{ border: 1.5px solid var(--sk-line); border-radius: 22px 8px 26px 7px / 7px 24px 9px 22px; box-shadow: 3px 3px 0 0 var(--sk-echo); }
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="sketch"] *, html[data-atmo="sketch"] *::before, html[data-atmo="sketch"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}

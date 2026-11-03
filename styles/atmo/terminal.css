@@ -1,0 +1,100 @@
+/* ============================================================================
+   Atmosphere: GRAND TERMINAL (terminal) · styles-20 #13 Split-flap
+   A grand railway hall at night: departure-board black, flap amber, cream type, station signage.
+   Token-only (Signature rule 1, notes/agents/theme-pot.md + notes/agents/styles-20.md): every look below comes from tokens; the
+   shared treatments in styles/style-layer.css are switched on by the theme's `ui` list in wings/themes/manifest.js (html[data-ui]).
+   Legibility: every token pair checked against the template's rules (ink 7:1, muted 6:1, faint 4.5:1, accent 4.5:1).
+   ========================================================================== */
+html[data-atmo="terminal"] {
+  --scheme: dark;
+  color-scheme: dark;
+  --bg: #0d0f12;
+  --bg2: #111418;
+  --surface: #171b20;
+  --surface2: #20252c;
+  --ink: #f6f3ea;
+  --muted: #d2cdbe;
+  --faint: #aaa493;
+  --cardmeta: #e2ddd0;
+  --gold: #ffc43d;
+  --gold-soft: #ffe199;
+  --gold-deep: #8a6a1a;
+  --on-gold: #15100a;
+  --ink-soft: #d2cdbe;
+  --line: rgba(246, 243, 234, 0.12);
+  --line-strong: rgba(255, 196, 61, 0.45);
+  --ok: #7fe39a;
+  --warn: #ffcf5c;
+  --bad: #ff8f7a;
+  --shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 50px rgba(0, 0, 0, 0.7);
+  --elev-1: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 2px 8px rgba(0, 0, 0, 0.45);
+  --elev-2: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 30px rgba(0, 0, 0, 0.55);
+  --elev-3: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 28px 80px rgba(0, 0, 0, 0.75);
+  --scrim: rgba(0, 0, 0, 0.62);
+  --focus: #ffe199;
+  --th-bg: #20252c;
+  --tabgrad1: #20252c; --tabgrad2: #171b20;
+  --toastgrad1: #20252c; --toastgrad2: #171b20;
+  --foot-bg: rgba(13, 15, 18, 0.94);
+  --drawerbar-bg: rgba(23, 27, 32, 0.96);
+  --ph-bg: #20252c;
+  --sel-bg: rgba(255, 196, 61, 0.18);
+  --row-hover: rgba(255, 196, 61, 0.07);
+  --hold-bg: linear-gradient(135deg, #20252c, #171b20);
+  --skeleton1: #20252c; --skeleton2: #0d0f12;
+  --grain-op: 0.05;
+  --wing-dur: 0.4s;
+  --wing-rise: 12px;
+  /* legacy aliases resolved on <html> */
+  --text: var(--ink); --panel: var(--surface); --chip: var(--surface2); --missing: var(--faint);
+  --border: var(--line); --gold-dim: var(--gold-deep); --danger: var(--bad);
+  --serif: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 6px;
+}
+
+/* ============================================================================
+   Grand Terminal v2 (Grok, 2026-10-20): every screen, not just home.
+   A station departures hall: every panel is a split-flap board with a mid-line seam, amber flap digits for values, a station-clock ring on the coin, and platform-sign headings.
+   Static decoration only (no animated filters or per-frame repaints); text keeps the token contrast checked above (AA or better);
+   every control is at least 44 px; reduced motion switches off every transition below.
+   ========================================================================== */
+html[data-atmo="terminal"] :is(.gxd-stage, .gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window, .museum-slab, .gf-finder, .hg-tile, .vault-valuation-hub, .atmo-card){
+  background: linear-gradient(175deg, #20252c, #14181d); border: 1px solid rgba(255,196,61,0.3); border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,196,61,0.10), 0 12px 30px rgba(0,0,0,0.6);
+}
+html[data-atmo="terminal"] :is(#drawer-body, body) .drawer-inner{ background: radial-gradient(70% 30% at 50% 0%, rgba(255,196,61,0.10), transparent 70%), var(--bg); }
+html[data-atmo="terminal"] :is(#drawer-body, body) .gxd-stage{ position: relative; background: linear-gradient(transparent calc(50% - 1px), rgba(0,0,0,0.6) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)), #111418; border: 2px solid #2c333c; border-radius: 6px; }
+html[data-atmo="terminal"] :is(#drawer-body, body) .museum-slab{  }
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn, .gf-preset, .sb-btn){
+  min-height: 44px; min-width: 44px;
+  background: linear-gradient(180deg, #20252c, #14181d); border: 1px solid rgba(255,196,61,0.5); border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,196,61,0.12); color: var(--ink);
+}
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .gxd-sec h4){ font-family: var(--serif, inherit); font-weight: 700; letter-spacing: 0.02em; }
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt, .gxd-face figcaption, .slab-pedigree-title, .gf-count){ font-family: inherit; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--muted); }
+html[data-atmo="terminal"] :is(#drawer-body, body) .gxd-value strong{ font-family: var(--serif, inherit); color: var(--gold-soft); }
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){  }
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input){ min-height: 44px; color: var(--ink); background: #20252c; border: 1px solid rgba(255,196,61,0.55); border-radius: 4px; }
+html[data-atmo="terminal"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; color: var(--ink); background: linear-gradient(180deg, #20252c, #14181d); border: 1px solid rgba(255,196,61,0.5); border-radius: 4px; }
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: linear-gradient(180deg, #ffe199, #ffc43d); color: var(--on-gold); box-shadow: 0 0 14px rgba(255,196,61,0.28); }
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active) :is(.gf-pt, .gf-pn, .sb-lbl){ color: inherit; }
+html[data-atmo="terminal"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="terminal"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 3px 0 var(--gold); color: var(--gold-soft); }
+html[data-atmo="terminal"] :is(#drawer-body, body) .palette-sheet{ background: linear-gradient(175deg, #20252c, #14181d); border: 1px solid rgba(255,196,61,0.3); border-radius: 4px; box-shadow: inset 0 1px 0 rgba(255,196,61,0.10), 0 12px 30px rgba(0,0,0,0.6), var(--elev-3); }
+html[data-atmo="terminal"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px solid var(--line); }
+html[data-atmo="terminal"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; }
+html[data-atmo="terminal"] :focus-visible{ outline: 2.5px solid var(--focus); outline-offset: 3px; }
+
+html[data-atmo="terminal"] :is(#drawer-body, body) .gxd-face figcaption{ color: var(--muted); }
+html[data-atmo="terminal"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border-color: rgba(255,196,61,0.55); }
+html[data-atmo="terminal"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ box-shadow: inset 3px 0 0 var(--gold); }
+
+html[data-atmo="terminal"] :is(#drawer-body, body) .gxd-value > div{ background-image: linear-gradient(transparent calc(50% - 1px), rgba(0,0,0,0.55) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)), linear-gradient(175deg, #20252c, #14181d); }
+html[data-atmo="terminal"] :is(#drawer-body, body) .gxd-coin{ border-radius: 50%; box-shadow: 0 0 0 3px #171b20, 0 0 0 6px #e8e8e8, 0 0 0 7px #000; }
+html[data-atmo="terminal"] :is(#drawer-body, body) .slab-pedigree-header{ background: #0a2a6a; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="terminal"] *, html[data-atmo="terminal"] *::before, html[data-atmo="terminal"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

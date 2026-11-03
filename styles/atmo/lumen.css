@@ -1,0 +1,64 @@
+/* ============================================================================
+   Atmosphere: LUMEN CIRCUIT (lumen) · Light grid
+   A black glass grid at night: runners of light race the lanes and leave walls of light behind them. Touch to launch your own.
+   Token-only (Signature rule 1, notes/agents/theme-pot.md): the shared treatments in styles/style-layer.css are switched on by
+   the theme's `ui` list in wings/themes/manifest.js (html[data-ui]); the effect is fxk (wings/fx/styles-e.js).
+   Legibility: checked with tools/themes/check_theme.js (ink 7:1, muted 6:1, faint 4.5:1, accent 4.5:1).
+   ========================================================================== */
+html[data-atmo="lumen"] {
+  --scheme: dark;
+  color-scheme: dark;
+  --bg: #03050b;
+  --bg2: #060914;
+  --surface: #0a0f1c;
+  --surface2: #101828;
+  --ink: #eaf6ff;
+  --muted: #b9cde0;
+  --faint: #8ea6bd;
+  --cardmeta: #d6e8f7;
+  --gold: #3fe0ff;
+  --gold-soft: #a8f1ff;
+  --gold-deep: #0e5a74;
+  --on-gold: #01111a;
+  --ink-soft: #b9cde0;
+  --line: rgba(220, 235, 245, 0.10);
+  --line-strong: rgba(63, 224, 255, 0.45);
+  --ok: #7fe3a8;
+  --warn: #ffd06b;
+  --bad: #ff8a7a;
+  --shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 18px 50px rgba(0, 0, 0, 0.75);
+  --elev-1: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 8px rgba(0, 0, 0, 0.5);
+  --elev-2: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 30px rgba(0, 0, 0, 0.6);
+  --elev-3: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 28px 80px rgba(0, 0, 0, 0.8);
+  --scrim: rgba(0, 0, 0, 0.66);
+  --focus: #a8f1ff;
+  --th-bg: #101828;
+  --tabgrad1: #101828; --tabgrad2: #0a0f1c;
+  --toastgrad1: #101828; --toastgrad2: #0a0f1c;
+  --foot-bg: rgba(3, 5, 11, 0.92);
+  --drawerbar-bg: rgba(10, 15, 28, 0.94);
+  --ph-bg: #101828;
+  --sel-bg: rgba(63, 224, 255, 0.16);
+  --row-hover: rgba(63, 224, 255, 0.06);
+  --hold-bg: linear-gradient(160deg, #0f1a2e, #03050b 60%);
+  --skeleton1: #101828; --skeleton2: #03050b;
+  --grain-op: 0.03;
+  --wing-dur: 0.5s;
+  --wing-rise: 14px;
+  --text: var(--ink); --panel: var(--surface); --chip: var(--surface2); --missing: var(--faint);
+  --border: var(--line); --gold-dim: var(--gold-deep); --danger: var(--bad);
+  --serif: "Eurostile", "Bank Gothic", "Orbitron", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 4px;
+}
+/* Lumen Circuit surfaces: panels are slabs of black glass on the grid, edged with a thin line of light that runs along the top
+   (a scan that travels the edge), cut corners like circuit traces, and a faint floor reflection. Scoped to the theme's own surfaces. */
+html[data-atmo="lumen"] .card, html[data-atmo="lumen"] .panel, html[data-atmo="lumen"] .gx-card {
+  background: linear-gradient(180deg, rgba(14,22,40,.78), rgba(3,5,11,.9)), repeating-linear-gradient(90deg, rgba(63,224,255,.035) 0 1px, transparent 1px 28px);
+  backdrop-filter: blur(12px) saturate(150%); -webkit-backdrop-filter: blur(12px) saturate(150%);
+  box-shadow: inset 0 1px 0 rgba(63,224,255,.55), inset 0 0 0 1px rgba(63,224,255,.14), 0 0 22px rgba(63,224,255,.10), 0 22px 50px rgba(0,0,0,.7);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  transition: box-shadow .3s, transform .3s cubic-bezier(.2,1.2,.4,1); }
+html[data-atmo="lumen"] .card:hover, html[data-atmo="lumen"] .gx-card:hover {
+  transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,190,90,.8), inset 0 0 0 1px rgba(63,224,255,.3), 0 0 30px rgba(63,224,255,.22), 0 26px 60px rgba(0,0,0,.75); }
+html[data-atmo="lumen"] h1, html[data-atmo="lumen"] h2 { letter-spacing: .08em; text-shadow: 0 0 12px rgba(63,224,255,.55), 0 0 2px rgba(220,250,255,.9); }

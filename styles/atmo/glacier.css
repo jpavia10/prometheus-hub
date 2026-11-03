@@ -1,0 +1,281 @@
+/* ============================================================================
+   Atmosphere: HYPERBOREAN VAULT  ·  a sub-zero bullion reserve in Svalbard bedrock.
+   Identity: blue-black permafrost, ice-white ink, one glacial cyan, and an
+   aurora that is green (never purple) drifting slowly over the top of every
+   page. Sharp 4px crystal corners, a lit upper-left edge on every panel, thin
+   airy lettering, a cracked-ice hairline under each wing title.
+   Legibility: ice ink 16:1, cyan accent 10:1, muted/faint >= contract.
+   Legacy rules overridden: styles.css "15. Hyperborean Vault".
+   ========================================================================== */
+
+/* 1. Tokens -------------------------------------------------------------- */
+html[data-atmo="glacier"] {
+  --scheme: dark;
+  color-scheme: dark;
+
+  --bg: #050b12;
+  --bg2: #0a1420;
+  --surface: #0b1724;      /* wet slate */
+  --surface2: #172a3d;
+
+  --ink: #eef8fd;          /* ice white */
+  --muted: #b7cee0;
+  --faint: #8ea9c0;
+  --cardmeta: #cbe0ee;
+
+  --gold: #7fdcff;         /* glacial cyan (the accent) */
+  --gold-soft: #cbf1ff;
+  --gold-deep: #2c86b0;
+  --on-gold: #04121c;
+  --focus: #ffffff;
+
+  --line: rgba(127, 220, 255, 0.16);
+  --line-strong: rgba(127, 220, 255, 0.4);
+
+  --ok: #62ecb0;           /* aurora green */
+  --warn: #ffcf6a;
+  --bad: #ff8f8f;
+
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --serif: "Segoe UI Light", "Segoe UI", "Helvetica Neue", "Avenir Next", system-ui, sans-serif;
+  --radius: 4px;
+
+  --shadow: inset 0 1px 0 rgba(203, 241, 255, 0.12), 0 16px 44px rgba(0, 4, 10, 0.85);
+  --elev-1: inset 0 1px 0 rgba(203, 241, 255, 0.10), 0 2px 8px rgba(0, 4, 10, 0.6);
+  --elev-2: inset 0 1px 0 rgba(203, 241, 255, 0.14), 0 0 22px rgba(127, 220, 255, 0.08), 0 12px 30px rgba(0, 4, 10, 0.75);
+  --elev-3: inset 0 1px 0 rgba(203, 241, 255, 0.16), 0 0 40px rgba(127, 220, 255, 0.10), 0 28px 76px rgba(0, 4, 10, 0.88);
+  --scrim: rgba(2, 6, 12, 0.76);
+
+  --th-bg: #0b1724;
+  --tabgrad1: #17384f; --tabgrad2: #0a1622;
+  --toastgrad1: #17384f; --toastgrad2: #0a1622;
+  --foot-bg: rgba(5, 11, 18, 0.95);
+  --drawerbar-bg: rgba(13, 26, 40, 0.96);
+  --ph-bg: #08121c;
+  --sel-bg: #153049;
+  --row-hover: rgba(127, 220, 255, 0.08);
+  --hold-bg: linear-gradient(135deg, #17384f, #0a1622);
+  --skeleton1: #172a3d; --skeleton2: #08121c;
+  --grain-op: 0.04;
+
+  --wing-dur: 0.5s;
+  --wing-rise: 8px;
+
+  scrollbar-color: #2c86b0 #050b12;
+}
+
+/* 2. Sky: an aurora curtain over the top of the page, fading into the dark ------ */
+html[data-atmo="glacier"] body {
+  background-image:
+    radial-gradient(90% 40% at 78% 0%, rgba(98, 236, 176, 0.07), transparent 72%),
+    radial-gradient(120% 60% at 50% 100%, rgba(127, 220, 255, 0.05), transparent 70%);
+}
+html[data-atmo="glacier"] body::before {
+  /* curtain rays (green + cyan) that fade out by mid-screen; drifts a few px, opacity-only shimmer */
+  background-image:
+    repeating-linear-gradient(97deg, transparent 0 46px, rgba(98, 236, 176, 0.075) 58px, transparent 74px 128px),
+    repeating-linear-gradient(83deg, transparent 0 70px, rgba(127, 220, 255, 0.05) 90px, transparent 112px 190px),
+    linear-gradient(180deg, rgba(98, 236, 176, 0.12), rgba(127, 220, 255, 0.04) 30%, transparent 55%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.55) 35%, transparent 62%);
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.55) 35%, transparent 62%);
+  animation: glc-aurora 16s ease-in-out infinite alternate !important;
+}
+@keyframes glc-aurora {
+  from { opacity: 0.65; transform: translate3d(-1.5%, 0, 0); }
+  to   { opacity: 1;    transform: translate3d(1.5%, 0, 0); }
+}
+html[data-atmo="glacier"] ::selection { background: var(--gold); color: var(--on-gold); }
+
+/* 3. Wordmark: thin, tracked, lit from above -------------------------------------- */
+html[data-atmo="glacier"] .wordmark {
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: #f6fcff;
+  text-shadow: 0 0 22px rgba(127, 220, 255, 0.5), 0 0 60px rgba(98, 236, 176, 0.18) !important;
+}
+html[data-atmo="glacier"] .wing-head h2 { font-weight: 300; letter-spacing: 0.06em; text-shadow: none; }
+html[data-atmo="glacier"] .hero-grand {
+  font-weight: 400;
+  background-image: linear-gradient(135deg, #ffffff 15%, var(--gold-soft) 55%, var(--gold) 100%);
+  text-shadow: none;
+  filter: drop-shadow(0 0 14px rgba(127, 220, 255, 0.3));
+}
+html[data-atmo="glacier"] .hero-glow {
+  background:
+    radial-gradient(ellipse 40% 45% at 50% 42%, rgba(203, 241, 255, 0.13), transparent 70%),
+    radial-gradient(ellipse 60% 55% at 50% 45%, rgba(98, 236, 176, 0.07), transparent 72%);
+}
+/* A hairline crack in the ice under each wing title, fading to nothing. */
+html[data-atmo="glacier"] .wing-head { position: relative; border-bottom-color: transparent; }
+html[data-atmo="glacier"] .wing-head::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, rgba(127, 220, 255, 0.6), rgba(127, 220, 255, 0.06) 70%, transparent);
+}
+
+/* 4. Picker swatch ---------------------------------------------------------- */
+.sw-glacier {
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.55) 0 8%, transparent 8% 100%),
+    linear-gradient(180deg, rgba(98, 236, 176, 0.75) 0%, rgba(127, 220, 255, 0.4) 34%, transparent 60%),
+    linear-gradient(180deg, #16344a, #050b12);
+}
+
+/* 5. Components ------------------------------------------------------------- */
+/* Crystal panels: a lit upper edge and a faint diagonal sheen, like light on ice. */
+html[data-atmo="glacier"] :is(.card, .tile, .exhibit, .album-card, .latest-card, .sheet-card) {
+  border-color: var(--line-strong);
+  border-top-color: rgba(203, 241, 255, 0.5);
+}
+html[data-atmo="glacier"] :is(.card, .tile) {
+  background-image: linear-gradient(115deg, rgba(203, 241, 255, 0.035) 0%, transparent 38%);
+}
+html[data-atmo="glacier"] .tile::before { width: 2px; background: linear-gradient(180deg, var(--gold-soft), var(--gold-deep)); }
+html[data-atmo="glacier"] :is(.card h3, .tile .k, .hero-cap) { letter-spacing: 0.18em; }
+html[data-atmo="glacier"] .tab.active { box-shadow: 0 2px 16px rgba(127, 220, 255, 0.35); }
+html[data-atmo="glacier"] .tray-tab.active .tray-count { color: var(--on-gold); background: rgba(4, 18, 28, 0.16); }  /* styles.css hard-codes #fff */
+html[data-atmo="glacier"] .wing.active::before { box-shadow: 0 0 12px var(--gold); }
+html[data-atmo="glacier"] :is(.lofi-bar, .player-bar, .mobile-wing-dock) { background: rgba(8, 18, 29, 0.97) !important; }
+html[data-atmo="glacier"] .exhibit-bg {
+  background:
+    radial-gradient(60% 90% at 50% 0%, rgba(127, 220, 255, 0.13), transparent 70%),
+    radial-gradient(40% 60% at 85% 100%, rgba(98, 236, 176, 0.07), transparent 70%);
+}
+/* styles.css paints these panels warm/navy black in every atmosphere: retint to slate. */
+html[data-atmo="glacier"] .exhibit { background: linear-gradient(180deg, #102236 0%, #060d16 100%); box-shadow: var(--elev-3); }
+html[data-atmo="glacier"] .exhibit:hover { box-shadow: var(--elev-3), 0 0 30px rgba(127, 220, 255, 0.16); }
+html[data-atmo="glacier"] .vault-valuation-hub { background: linear-gradient(180deg, rgba(18, 38, 58, 0.9), rgba(8, 18, 29, 0.96)); }
+html[data-atmo="glacier"] .market-ticker-tape { background: #060d16; border-color: var(--line); }
+html[data-atmo="glacier"] .ticker-badge { background: #0b1724; }
+html[data-atmo="glacier"] :is(.study-nav-pills, .gallery-mode-switch) { background: rgba(13, 26, 40, 0.88); border-color: var(--line-strong); }
+html[data-atmo="glacier"] .album-binder-card { background: #0a1723; border-color: var(--line-strong); }
+
+/* 6. Reduced motion ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="glacier"] body::before { animation: none !important; opacity: 0.9; }
+}
+
+/* 7. Style (styles-20): frosted glass ----------------------------------------------------------------
+   Glassmorphism for the main surfaces. Colour has to exist BEHIND a glass panel for the frost to mean anything, so the
+   page gets four large, soft aurora colour fields (html::before, below every other layer, compositor-only drift), and
+   the surfaces become semi-transparent slate with a blur and a 1px light edge. The TitanFX "style-glass" overlay draws
+   the same family of fields (plus glass orbs and frost glints) on top. Legibility: the panel colour stays at 74-80 %
+   opacity so body text holds >= 7:1 over the brightest field. Tokens, borders, backdrop and ornaments only: no layout. */
+html[data-atmo="glacier"] {
+  --glass-bg: rgba(11, 23, 36, 0.76);        /* panels */
+  --glass-bg2: rgba(23, 42, 61, 0.76);       /* small raised tiles and stat boxes (no blur of their own) */
+  --glass-edge: rgba(203, 241, 255, 0.26);   /* the light edge */
+  --glass-blur: blur(14px) saturate(140%);
+  --foot-bg: rgba(9, 19, 31, 0.76);          /* dock / bottom nav */
+  --drawerbar-bg: rgba(9, 19, 31, 0.78);     /* drawer header, scene bar, nav pills */
+}
+html[data-atmo="glacier"]::before {
+  content: "";
+  position: fixed; inset: -18%; z-index: -3; pointer-events: none;
+  background:
+    radial-gradient(38% 34% at 20% 24%, rgba(30, 205, 190, 0.2), transparent 70%),
+    radial-gradient(34% 30% at 80% 16%, rgba(60, 235, 130, 0.14), transparent 70%),
+    radial-gradient(40% 36% at 64% 72%, rgba(140, 80, 240, 0.22), transparent 70%),
+    radial-gradient(36% 34% at 14% 82%, rgba(50, 130, 255, 0.18), transparent 70%);
+  will-change: transform;
+  animation: glc-fields 72s ease-in-out infinite alternate;
+}
+@keyframes glc-fields {
+  from { transform: translate3d(-3%, -2%, 0) rotate(-1.5deg) scale(1.02); }
+  to   { transform: translate3d(3%, 2%, 0) rotate(1.5deg) scale(1.08); }
+}
+/* panels: frosted, blurred, lit upper-left edge, a soft shadow */
+html[data-atmo="glacier"] :is(.card, .tile, .album-card, .latest-card, .sheet-card, .gf-finder,
+  #pane-hall .vault-valuation-hub, #pane-hall .trading-terminal-hub, .trading-terminal-hub, .vault-valuation-hub) {
+  background-color: var(--glass-bg);
+  background-image: linear-gradient(135deg, rgba(203, 241, 255, 0.10) 0%, rgba(203, 241, 255, 0.025) 36%, transparent 62%);
+  border-color: var(--glass-edge);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: inset 0 0 0 1px rgba(203, 241, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 12px 32px rgba(0, 6, 14, 0.45);
+}
+/* repeated small surfaces: the same glass colour and edge, without a blur pass of their own */
+html[data-atmo="glacier"] :is(.hg-tile, #pane-gallery .gx-tile, .term-stat-box) {
+  background-color: var(--glass-bg2);
+  border-color: var(--glass-edge);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 22px rgba(0, 6, 14, 0.4);
+}
+/* dock, bars, pills, drawers: content scrolls behind these, so the blur does real work here */
+html[data-atmo="glacier"] :is(.wings, .scene-bar, .drawer-bar, .foot, .study-nav-pills, .gallery-mode-switch, .cf-placard) {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-color: var(--glass-edge);
+}
+html[data-atmo="glacier"] .wings { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 -10px 30px rgba(0, 6, 14, 0.4); }
+html[data-atmo="glacier"] :is(.study-nav-pills, .gallery-mode-switch) { background: rgba(13, 26, 40, 0.74); }
+html[data-atmo="glacier"] .drawer-inner {
+  background: rgba(10, 20, 32, 0.8);
+  border-color: var(--glass-edge);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 30px 90px rgba(0, 4, 10, 0.7);
+}
+@media (hover: none) and (pointer: coarse) {
+  html[data-atmo="glacier"] { --glass-blur: blur(10px) saturate(140%); }   /* phones: a cheaper blur */
+  /* phones: no blur pass on the panels themselves (behind them is only the smooth colour field, which a blur barely changes, and
+     every blurred panel costs a full-screen-sized backdrop read while scrolling); the dock and bars keep theirs */
+  html[data-atmo="glacier"] :is(.card, .tile, .album-card, .latest-card, .sheet-card, .gf-finder, .vault-valuation-hub, .trading-terminal-hub) {
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="glacier"]::before { animation: none !important; }
+}
+html[data-motion="calm"][data-atmo="glacier"]::before,
+html[data-motion="off"][data-atmo="glacier"]::before { animation: none !important; }
+/* the atlas legend's inline route colours were made for a near-black page: lift crimson on the glass */
+html[data-atmo="glacier"] .atlas-footer-bar strong[style*="#f43f5e"] { color: #ff8095 !important; }
+
+/* ============================================================================
+   Hyperborean Vault v2 (Grok, 2026-10-20): every screen, not just home.
+   An ice cave in Arctic bedrock: frosted, subsurface-blue ice panels veined with hairline cracks, coins set in carved ice niches with a cold rim light, icicles along the top of the coin page, thin light headings, glacial-cyan values, and the aurora-and-frost effect it was designed with (the rose window shown since tr122 was another theme's effect with the same name).
+   Static decoration only (no animated filters or per-frame repaints); text keeps the token contrast checked above (AA or better);
+   every control is at least 44 px; reduced motion switches off every transition below.
+   ========================================================================== */
+html[data-atmo="glacier"] :is(.gxd-stage, .gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window, .museum-slab, .gf-finder, .hg-tile, .vault-valuation-hub, .atmo-card){
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%23cbf1ff' stroke-opacity='.10' stroke-width='.8'%3E%3Cpath d='M0 40 L38 52 L60 30 L96 46 L130 20 L170 38 L220 26'/%3E%3Cpath d='M38 52 L44 90 L80 110 L74 150 L110 170'/%3E%3Cpath d='M130 20 L140 70 L180 96 L220 90'/%3E%3Cpath d='M80 110 L130 120 L160 160 L150 220'/%3E%3Cpath d='M0 150 L30 140 L74 150'/%3E%3C/g%3E%3C/svg%3E"), linear-gradient(170deg, rgba(40, 86, 120, 0.55) 0%, rgba(14, 32, 50, 0.85) 60%, rgba(8, 20, 33, 0.92) 100%); border: 1px solid rgba(203, 241, 255, 0.22); border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -18px 30px rgba(127,220,255,0.06), 0 12px 30px rgba(0,6,14,0.5);
+}
+html[data-atmo="glacier"] :is(#drawer-body, body) .drawer-inner{ background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='16' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H120 V3 L114 4 L111 13 L107 4 L96 5 L93 9 L89 4 L74 4 L70 15 L66 4 L52 5 L49 10 L45 4 L30 4 L27 12 L23 4 L10 5 L7 9 L3 4 L0 4Z' fill='%23cbf1ff' fill-opacity='.55'/%3E%3C/svg%3E") left top / 120px 16px repeat-x, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%23cbf1ff' stroke-opacity='.10' stroke-width='.8'%3E%3Cpath d='M0 40 L38 52 L60 30 L96 46 L130 20 L170 38 L220 26'/%3E%3Cpath d='M38 52 L44 90 L80 110 L74 150 L110 170'/%3E%3Cpath d='M130 20 L140 70 L180 96 L220 90'/%3E%3Cpath d='M80 110 L130 120 L160 160 L150 220'/%3E%3Cpath d='M0 150 L30 140 L74 150'/%3E%3C/g%3E%3C/svg%3E"), linear-gradient(180deg, #0c1c2c, var(--bg) 40%); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .gxd-stage{ position: relative; background: radial-gradient(110% 80% at 50% 0%, rgba(127,220,255,0.18), transparent 60%), linear-gradient(180deg, #0f2436, #07111c); border: 1px solid rgba(203,241,255,0.3); margin-top: 10px; }
+html[data-atmo="glacier"] :is(#drawer-body, body) .museum-slab{ border: 1px solid rgba(203,241,255,0.28); }
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn, .gf-preset, .sb-btn){
+  min-height: 44px; min-width: 44px;
+  background: linear-gradient(180deg, rgba(60,120,160,0.35), rgba(14,32,50,0.8)); border: 1px solid rgba(203,241,255,0.3); border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22); color: var(--ink);
+}
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .gxd-sec h4){ font-family: var(--serif); font-weight: 300; letter-spacing: 0.06em; color: #ffffff; text-shadow: 0 0 18px rgba(127,220,255,0.35); }
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt, .gxd-face figcaption, .slab-pedigree-title, .gf-count){ font-family: var(--serif); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--muted); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .gxd-value strong{ font-family: var(--serif); color: var(--gold-soft); }
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){ opacity: 0.6; }
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input){ min-height: 44px; color: var(--ink); background: rgba(4, 14, 24, 0.75); border: 1px solid rgba(203,241,255,0.35); border-radius: 14px; box-shadow: inset 0 0 18px rgba(127,220,255,0.10); caret-color: var(--gold); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; color: var(--ink); background: linear-gradient(180deg, rgba(60,120,160,0.35), rgba(14,32,50,0.8)); border: 1px solid rgba(203,241,255,0.3); border-radius: 12px; }
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: linear-gradient(180deg, #a8e8ff, #59bde6); color: var(--on-gold); box-shadow: 0 0 18px rgba(127,220,255,0.4), inset 0 1px 0 #fff; }
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active) :is(.gf-pt, .gf-pn, .sb-lbl){ color: inherit; }
+html[data-atmo="glacier"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="glacier"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 3px 0 var(--gold), 0 0 16px rgba(127,220,255,0.25); color: #fff; }
+html[data-atmo="glacier"] :is(#drawer-body, body) .palette-sheet{ background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%23cbf1ff' stroke-opacity='.10' stroke-width='.8'%3E%3Cpath d='M0 40 L38 52 L60 30 L96 46 L130 20 L170 38 L220 26'/%3E%3Cpath d='M38 52 L44 90 L80 110 L74 150 L110 170'/%3E%3Cpath d='M130 20 L140 70 L180 96 L220 90'/%3E%3Cpath d='M80 110 L130 120 L160 160 L150 220'/%3E%3Cpath d='M0 150 L30 140 L74 150'/%3E%3C/g%3E%3C/svg%3E"), linear-gradient(170deg, rgba(40, 86, 120, 0.55) 0%, rgba(14, 32, 50, 0.85) 60%, rgba(8, 20, 33, 0.92) 100%); border: 1px solid rgba(203, 241, 255, 0.22); border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -18px 30px rgba(127,220,255,0.06), 0 12px 30px rgba(0,6,14,0.5), var(--elev-3); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px solid var(--line); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; }
+html[data-atmo="glacier"] :focus-visible{ outline: 2.5px solid var(--focus); outline-offset: 3px; }
+
+/* carved ice niches: the coin sits in a recess with a cold rim light */
+html[data-atmo="glacier"] :is(.gxd-coin, .ph-slot.is-round){ border-radius: 50%; box-shadow: 0 0 0 6px rgba(8,20,33,0.9), 0 0 0 7px rgba(203,241,255,0.35), inset 0 0 0 1px rgba(255,255,255,0.25), 0 0 26px 6px rgba(127,220,255,0.22); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .gxd-face figcaption{ color: var(--muted); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .gxd-value strong{ text-shadow: 0 0 16px rgba(127,220,255,0.4); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .slab-pedigree-header{ background: linear-gradient(180deg, rgba(60,120,160,0.45), rgba(14,32,50,0.9)); color: #fff; }
+html[data-atmo="glacier"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border-color: rgba(203,241,255,0.45); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ box-shadow: inset 3px 0 0 var(--gold); }
+html[data-atmo="glacier"] :is(#drawer-body, body) .drawer-bar{ border-bottom: 1px solid rgba(203,241,255,0.18); }
+/* frost forming on the coin stage, once, when a coin page opens */
+@keyframes ice-form { from { box-shadow: inset 0 0 60px rgba(203,241,255,0.45); } to { box-shadow: inset 0 0 0 rgba(203,241,255,0); } }
+html[data-atmo="glacier"] body.drawer-open :is(#drawer-body, body) .gxd-stage{ animation: ice-form 0.9s ease-out 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="glacier"] *, html[data-atmo="glacier"] *::before, html[data-atmo="glacier"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

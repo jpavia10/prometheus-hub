@@ -1,0 +1,374 @@
+/* ==========================================================================
+   Atmosphere: The Cursed Wing  ·  "black lacquer, sealing wax, bone ink"
+   Owned by exactly one agent. Loads after styles.css and REPLACES the old block.
+
+   Point of view
+   - A sealed archive wing: walls of black lacquer with a wine undertone, doors closed
+     with vermilion sealing wax, labels written in bone-white ink on ash-rose paper.
+   - One accent only (sealing wax). Silver stays pewter. No neon, no glitch, no stamps
+     rotated for effect: the older reader must be able to read every label.
+   - Depth comes from three elevation recipes (--elev-1/2/3) plus a warm rim light on the
+     top edge of every raised surface, like lacquer catching candlelight.
+   - Everything static. Texture is one 28px SVG lattice tile on the fixed body::before layer.
+   ========================================================================== */
+
+html[data-atmo="cursedwing"] {
+  color-scheme: dark;
+  /* -- core -- */
+  --bg: #0a0507; --bg2: #110a0c;
+  --surface: #150b0e; --surface2: #201216;
+  --ink: #f2e8dc;            /* bone ink          16.7:1 on bg */
+  --muted: #b8a09a;          /* ash rose           7.4:1 on surface2 */
+  --faint: #94807b;          /* faded label        4.9:1 on surface2 */
+  --gold: #ea5f43;           /* sealing wax        5.4:1 on surface2 (used as th text) */
+  --gold-soft: #f8b6a5;      /* wax highlight     10.5:1 on surface2 */
+  --gold-deep: #7d2020;      /* dried wax / borders */
+  --line: rgba(234, 95, 67, 0.16);
+  --line-strong: rgba(234, 95, 67, 0.42);
+  --ok: #8fc27f; --warn: #e4b24e; --bad: #ff7a66;
+  --radius: 14px;
+  /* -- elevation: lacquer catching light on its top edge, black falling away beneath -- */
+  --elev-1: inset 0 1px 0 rgba(255, 150, 130, 0.06), 0 1px 2px rgba(0, 0, 0, 0.5), 0 3px 8px rgba(0, 0, 0, 0.45);
+  --elev-2: inset 0 1px 0 rgba(255, 150, 130, 0.07), 0 6px 18px rgba(0, 0, 0, 0.55), 0 16px 40px rgba(0, 0, 0, 0.55);
+  --elev-3: inset 0 1px 0 rgba(255, 150, 130, 0.10), 0 0 0 1px rgba(234, 95, 67, 0.22), 0 18px 44px rgba(0, 0, 0, 0.7), 0 34px 90px rgba(40, 0, 0, 0.55);
+  --shadow: var(--elev-2);
+  --focus: #ffa08c;          /* ember ring        10.3:1 on bg */
+  --on-gold: #1a0608;        /* text on wax        5.8:1 on --gold */
+  /* -- legacy component tokens (every one the old block defined) -- */
+  --th-bg: #190c10; --tabgrad1: #2a1216; --tabgrad2: #150b0e;
+  --foot-bg: rgba(10, 5, 7, 0.94); --ph-bg: #0e0709; --sel-bg: #2a1418;
+  --hold-bg: linear-gradient(135deg, #2a1216, #160a0d);
+  --drawerbar-bg: rgba(21, 11, 14, 0.95); --cardmeta: #dcc6bf;
+  --skeleton1: #24141a; --skeleton2: #120809;
+  --toastgrad1: #2a1216; --toastgrad2: #150b0e;
+  --row-hover: rgba(234, 95, 67, 0.08);
+  --chip: var(--surface2); --panel: var(--surface); --text: var(--ink);
+  --gold-dim: var(--gold-deep); --danger: var(--bad); --missing: var(--faint); --border: var(--line);
+  --grain-op: 0.07;
+  --wing-dur: 0.4s; --wing-rise: 6px;
+  scrollbar-color: #7d2020 #0a0507;
+}
+
+/* ---------- The room: lacquer wall, one candle low in the corner ---------- */
+html[data-atmo="cursedwing"] body {
+  background-color: var(--bg);
+  background-image: linear-gradient(180deg, #0f0709 0%, #0a0507 28%, #0a0507 100%);
+  animation: none;
+}
+/* Fixed, composited once: lattice tile (damask ghost), ember pool low-left, vignette. */
+html[data-atmo="cursedwing"] body::before {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M14 0L28 14L14 28L0 14Z' fill='none' stroke='%23ff7a60' stroke-opacity='.055'/%3E%3Ccircle cx='14' cy='14' r='.9' fill='%23ff7a60' fill-opacity='.10'/%3E%3C/svg%3E"),
+    radial-gradient(60% 45% at 12% 100%, rgba(190, 50, 30, 0.20), transparent 70%),
+    radial-gradient(45% 40% at 88% 8%, rgba(120, 20, 24, 0.18), transparent 70%),
+    radial-gradient(110% 90% at 50% 45%, transparent 50%, rgba(0, 0, 0, 0.62) 100%);
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 28px 28px, auto, auto, auto;
+}
+html[data-atmo="cursedwing"] ::selection { background: rgba(234, 95, 67, 0.55); color: #fff4ee; }
+html[data-atmo="cursedwing"] ::-webkit-scrollbar { width: 10px; height: 10px; }
+html[data-atmo="cursedwing"] ::-webkit-scrollbar-track { background: #0a0507; }
+html[data-atmo="cursedwing"] ::-webkit-scrollbar-thumb { background: #5a1818; border: 2px solid #0a0507; border-radius: 6px; }
+html[data-atmo="cursedwing"] ::-webkit-scrollbar-thumb:hover { background: #7d2020; }
+
+/* ---------- Focus: one ember ring, everywhere ---------- */
+html[data-atmo="cursedwing"] :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+html[data-atmo="cursedwing"] table.data tbody tr[data-scan]:focus { outline: 2px solid var(--focus); outline-offset: -2px; }
+
+/* ---------- Hero: bone wordmark, wax rule, ember behind ---------- */
+html[data-atmo="cursedwing"] .hero::before {
+  content: ""; position: absolute; inset: -1rem -2rem; pointer-events: none;
+  background: radial-gradient(ellipse 90% 100% at 50% 30%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+  animation: none;
+}
+html[data-atmo="cursedwing"] .hero-glow {
+  background:
+    radial-gradient(ellipse 30% 36% at 50% 46%, rgba(255, 120, 90, 0.16), transparent 70%),
+    radial-gradient(ellipse 55% 60% at 50% 45%, rgba(190, 50, 30, 0.14), transparent 70%);
+  animation: none;
+}
+html[data-atmo="cursedwing"] .hero-crest-watermark { opacity: 0.12; }
+html[data-atmo="cursedwing"] .exhibit-crest-watermark { opacity: 0.09; }
+html[data-atmo="cursedwing"] .wordmark {
+  color: var(--ink);
+  letter-spacing: 0.015em;
+  text-shadow: 0 0 34px rgba(234, 95, 67, 0.35), 0 1px 0 rgba(0, 0, 0, 0.6) !important;
+  animation: none !important;
+}
+/* the wax rule: a hairline that fades to nothing, sealed at the centre */
+html[data-atmo="cursedwing"] .wordmark::after {
+  content: ""; display: block; height: 3px; width: min(320px, 70%); margin: 0.55rem auto 0;
+  background:
+    radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 3.5px),
+    linear-gradient(90deg, transparent, var(--gold-deep) 25%, var(--gold) 50%, var(--gold-deep) 75%, transparent);
+  background-size: 100% 100%, 100% 1px; background-position: center, center; background-repeat: no-repeat;
+}
+html[data-atmo="cursedwing"] .hero-grand {
+  color: var(--gold-soft);
+  text-shadow: 0 0 46px rgba(234, 95, 67, 0.38), 0 2px 0 rgba(0, 0, 0, 0.55);
+}
+html[data-atmo="cursedwing"] .sigil { color: var(--gold); text-shadow: 0 0 18px rgba(234, 95, 67, 0.55); }
+html[data-atmo="cursedwing"] .ledger-chip { background: var(--surface); border-color: var(--line-strong); color: var(--muted); }
+html[data-atmo="cursedwing"] .badge.hold {
+  background: linear-gradient(180deg, #8f2424, #5c1414);
+  border: 1px solid #b4402e; color: #ffe1d8;
+  box-shadow: var(--elev-1), 0 0 18px rgba(234, 95, 67, 0.22);
+  border-radius: 4px;
+}
+
+/* ---------- Wing headings: a bar of wax at the margin ---------- */
+html[data-atmo="cursedwing"] .wing-head { border-bottom: 1px solid var(--line-strong); }
+html[data-atmo="cursedwing"] .wing-head h2 {
+  font-size: 2.2rem; letter-spacing: 0.01em;
+  padding-left: 0.85rem; border-left: 4px solid var(--gold);
+  text-shadow: 0 0 28px rgba(234, 95, 67, 0.25);
+}
+html[data-atmo="cursedwing"] .sec-head h2 { letter-spacing: 0.01em; }
+html[data-atmo="cursedwing"] .sec-head { border-bottom-color: var(--line); }
+
+/* ---------- Tabs: the active tab is a wax seal ---------- */
+html[data-atmo="cursedwing"] .tab { color: var(--muted); }
+html[data-atmo="cursedwing"] .tab:hover { color: var(--ink); background: rgba(234, 95, 67, 0.10); }
+html[data-atmo="cursedwing"] .tab:active { background: rgba(234, 95, 67, 0.18); }
+html[data-atmo="cursedwing"] .tab.active {
+  background: linear-gradient(180deg, #f47254, #e2553a);
+  color: var(--on-gold);
+  box-shadow: inset 0 1px 0 rgba(255, 220, 210, 0.35), 0 4px 14px rgba(234, 95, 67, 0.35);
+}
+
+/* ---------- Buttons: lacquer body, wax edge ---------- */
+html[data-atmo="cursedwing"] .btn,
+html[data-atmo="cursedwing"] .nav-btn,
+html[data-atmo="cursedwing"] .drawer-close {
+  background: linear-gradient(180deg, #241419, #1a0e12);
+  border: 1px solid #6a1f1f; color: var(--gold-soft);
+  box-shadow: var(--elev-1);
+  transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+html[data-atmo="cursedwing"] .btn:hover,
+html[data-atmo="cursedwing"] .nav-btn:hover:not(:disabled),
+html[data-atmo="cursedwing"] .drawer-close:hover {
+  border-color: var(--gold); color: #ffd6cb;
+  background: linear-gradient(180deg, #33181d, #221216);
+  box-shadow: var(--elev-1), 0 0 0 1px rgba(234, 95, 67, 0.25);
+  transform: translateY(-1px);
+}
+html[data-atmo="cursedwing"] .btn:active,
+html[data-atmo="cursedwing"] .nav-btn:active,
+html[data-atmo="cursedwing"] .drawer-close:active {
+  transform: translateY(0);
+  background: #160a0d;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+html[data-atmo="cursedwing"] .btn:disabled { opacity: 0.45; box-shadow: none; transform: none; }
+html[data-atmo="cursedwing"] .filter-ag.active { background: #2a2f36; border-color: #98a4b0; color: #eef2f6; }
+html[data-atmo="cursedwing"] .filter-p2.active { border-color: var(--ok); color: #b6dcae; }
+html[data-atmo="cursedwing"] .search-btn { background: var(--surface); border-color: var(--line-strong); box-shadow: var(--elev-1); }
+html[data-atmo="cursedwing"] .search-btn:hover {
+  border-color: var(--gold);
+  box-shadow: var(--elev-1), 0 0 0 1px var(--gold), 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+html[data-atmo="cursedwing"] .search-btn:active { transform: translateY(0); box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6); }
+html[data-atmo="cursedwing"] .search-btn kbd { color: var(--muted); border-color: var(--line-strong); }
+
+/* ---------- Chips and badges: labels in bone ink, no theatrical rotation ---------- */
+html[data-atmo="cursedwing"] .chip {
+  background: var(--surface2); border: 1px solid var(--line);
+  color: var(--ink); box-shadow: inset 0 1px 0 rgba(255, 150, 130, 0.05);
+}
+html[data-atmo="cursedwing"] .chip strong { color: var(--gold-soft); }
+html[data-atmo="cursedwing"] .chip.ag strong { color: #c9d1d8; }
+html[data-atmo="cursedwing"] .badge, html[data-atmo="cursedwing"] .badge-kind,
+html[data-atmo="cursedwing"] .badge-status {
+  border-radius: 4px; text-transform: uppercase; letter-spacing: 0.08em; transform: none; opacity: 1;
+}
+html[data-atmo="cursedwing"] .badge-kind { background: var(--surface2); border: 1px solid var(--line-strong); color: var(--muted); }
+html[data-atmo="cursedwing"] .badge-status { background: var(--surface2); border: 1px solid var(--line-strong); color: var(--muted); }
+html[data-atmo="cursedwing"] .badge-au { background: #3a1a12; border-color: var(--gold); color: var(--gold-soft); }
+html[data-atmo="cursedwing"] .badge-ag { background: #262b32; border-color: #8c98a4; color: #dde3e9; }
+html[data-atmo="cursedwing"] .badge-review, html[data-atmo="cursedwing"] .ph-badge.review { background: #431a16; border-color: var(--bad); color: #ffc9be; }
+html[data-atmo="cursedwing"] .asw-cell { color: #c9d1d8; }
+
+/* ---------- Tables: sealed ledger ---------- */
+html[data-atmo="cursedwing"] table.data th {
+  background: var(--th-bg); color: var(--gold);
+  border-bottom: 1px solid var(--line-strong);
+  letter-spacing: 0.12em;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+html[data-atmo="cursedwing"] table.data th:hover { color: var(--gold-soft); }
+html[data-atmo="cursedwing"] table.data th.sorted { color: var(--gold-soft); }
+html[data-atmo="cursedwing"] table.data td { border-bottom-color: rgba(234, 95, 67, 0.10); }
+html[data-atmo="cursedwing"] table.data tbody tr:hover { background: var(--row-hover); box-shadow: inset 3px 0 0 var(--gold); }
+html[data-atmo="cursedwing"] td.ser-primary { color: var(--gold-soft); }
+html[data-atmo="cursedwing"] td.scan-sec { color: var(--faint); }
+html[data-atmo="cursedwing"] .row-thumb { border-color: var(--line-strong); }
+
+/* ---------- Raised surfaces: consistent elevation ---------- */
+html[data-atmo="cursedwing"] .card,
+html[data-atmo="cursedwing"] .tile,
+html[data-atmo="cursedwing"] .metal-tile,
+html[data-atmo="cursedwing"] .note-card,
+html[data-atmo="cursedwing"] .wing-card,
+html[data-atmo="cursedwing"] .album-card,
+html[data-atmo="cursedwing"] .sheet-card {
+  background: linear-gradient(180deg, #170c10 0%, #130a0d 100%);
+  border: 1px solid var(--line);
+  box-shadow: var(--elev-2);
+}
+html[data-atmo="cursedwing"] .atmo-card { background: var(--surface2); box-shadow: var(--elev-1); }
+html[data-atmo="cursedwing"] .lab-banner { background: var(--hold-bg); border-color: var(--gold-deep); box-shadow: var(--elev-2); }
+@media (hover: hover) {
+  html[data-atmo="cursedwing"] .card:hover,
+  html[data-atmo="cursedwing"] .tile:hover,
+  html[data-atmo="cursedwing"] .metal-tile:hover,
+  html[data-atmo="cursedwing"] .album-card:hover { border-color: var(--line-strong); box-shadow: var(--elev-3); }
+  html[data-atmo="cursedwing"] .wing-card:hover { border-color: var(--line-strong); box-shadow: var(--elev-3); }
+}
+html[data-atmo="cursedwing"] .wing-card:active, html[data-atmo="cursedwing"] .card:active { box-shadow: var(--elev-1); }
+html[data-atmo="cursedwing"] .tile::before { background: linear-gradient(180deg, var(--gold), var(--gold-deep)); opacity: 1; }
+html[data-atmo="cursedwing"] .tile.hero-tile {
+  background: radial-gradient(ellipse 90% 120% at 50% -30%, rgba(234, 95, 67, 0.14), transparent 70%), linear-gradient(180deg, #170c10, #130a0d);
+}
+html[data-atmo="cursedwing"] .tile .bar-track { background: #0e0709; border-color: var(--line); }
+html[data-atmo="cursedwing"] .tile .bar-track > span,
+html[data-atmo="cursedwing"] .lab-progress > span { background: linear-gradient(90deg, var(--gold-deep), var(--gold)); }
+html[data-atmo="cursedwing"] .note-card .k { color: var(--faint); }
+html[data-atmo="cursedwing"] .wing-card svg { color: var(--gold); filter: drop-shadow(0 0 6px rgba(234, 95, 67, 0.35)); }
+html[data-atmo="cursedwing"] .wing-card .wc-stat { color: var(--gold-soft); }
+
+/* ---------- The exhibit: the one thing under glass ---------- */
+html[data-atmo="cursedwing"] .exhibit {
+  background: linear-gradient(180deg, #1a0d11 0%, #0d0608 100%);
+  border-color: var(--gold-deep);
+  box-shadow: var(--elev-3);
+}
+html[data-atmo="cursedwing"] .exhibit:hover {
+  border-color: var(--gold);
+  box-shadow: var(--elev-3), 0 0 36px rgba(234, 95, 67, 0.18);
+}
+html[data-atmo="cursedwing"] .exhibit-bg {
+  background:
+    radial-gradient(55% 80% at 50% 8%, rgba(234, 95, 67, 0.13), transparent 70%),
+    radial-gradient(40% 55% at 85% 95%, rgba(120, 20, 24, 0.32), transparent 70%);
+  animation: none;
+}
+html[data-atmo="cursedwing"] .exhibit-slide.on { animation: none; }
+html[data-atmo="cursedwing"] .exhibit-lamp { background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+html[data-atmo="cursedwing"] .exhibit-dots button { background: rgba(234, 95, 67, 0.28); }
+html[data-atmo="cursedwing"] .exhibit-dots button.on { background: var(--gold-soft); }
+html[data-atmo="cursedwing"] .exhibit-top-bar { border-bottom-color: var(--line); }
+html[data-atmo="cursedwing"] .ex-ctrl-btn { background: var(--surface2); border-color: var(--line-strong); color: var(--muted); }
+html[data-atmo="cursedwing"] .ex-ctrl-btn:hover { background: rgba(234, 95, 67, 0.14); color: var(--ink); border-color: var(--gold); }
+html[data-atmo="cursedwing"] .ex-ctrl-btn.active,
+html[data-atmo="cursedwing"] .ex-ctrl-btn.flip-btn:hover { background: var(--gold); color: var(--on-gold); border-color: var(--gold); }
+html[data-atmo="cursedwing"] .ex-ctrl-btn.flip-btn { color: var(--gold-soft); }
+html[data-atmo="cursedwing"] .ex-nav-btn {
+  background: rgba(21, 11, 14, 0.92); border-color: var(--line-strong); color: var(--gold-soft);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  box-shadow: var(--elev-1);
+}
+html[data-atmo="cursedwing"] .ex-nav-btn:hover { background: var(--gold); color: var(--on-gold); border-color: var(--gold); box-shadow: 0 0 24px rgba(234, 95, 67, 0.45); }
+
+/* ---------- Live wire ticker: the wire runs red here ---------- */
+html[data-atmo="cursedwing"] .ticker-badge { background: #1d0c10; }
+html[data-atmo="cursedwing"] .ticker-live-pulse { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+html[data-atmo="cursedwing"] .ticker-live-lbl { color: #ff9d8a; }
+
+/* ---------- Fixed bars: base forces an olive-black; this wing is wine-black ---------- */
+html[data-atmo="cursedwing"] .lofi-bar,
+html[data-atmo="cursedwing"] .player-bar,
+html[data-atmo="cursedwing"] .mobile-wing-dock { background: rgba(16, 8, 11, 0.97) !important; }
+
+/* ---------- Drifting motes: embers, not blood ---------- */
+html[data-atmo="cursedwing"] #dust-layer i {
+  background: radial-gradient(circle, rgba(255, 150, 110, 0.5), rgba(234, 95, 67, 0.18) 45%, transparent 70%);
+}
+
+/* ---------- Scrim, sheets and inputs ---------- */
+html[data-atmo="cursedwing"] {
+  --scheme: dark;
+  --scrim: rgba(6, 2, 3, 0.72);
+}
+html[data-atmo="cursedwing"] input,
+html[data-atmo="cursedwing"] select,
+html[data-atmo="cursedwing"] textarea { accent-color: var(--gold); }
+html[data-atmo="cursedwing"] .atmo-card.active,
+html[data-atmo="cursedwing"] .atmo-card[aria-pressed="true"] { border-color: var(--gold); box-shadow: var(--elev-2), 0 0 0 1px var(--gold); }
+
+/* ---------- Picker swatch: a wax seal pressed into black lacquer ---------- */
+.sw-cursedwing {
+  background:
+    radial-gradient(circle at 68% 50%, #ffb9a8 0 2px, #ea5f43 3px 11px, #8a2420 12px 14px, transparent 15px),
+    radial-gradient(circle at 68% 50%, rgba(234, 95, 67, 0.35) 0 16px, transparent 24px),
+    linear-gradient(135deg, #1d0f13 0%, #0a0507 60%, #140a0d 100%);
+}
+
+/* ---------- Easter-egg content that only exists in this wing (kept from the old block) ---------- */
+.egg-cursed { display: none; }
+html[data-atmo="cursedwing"] .egg-cursed { display: block; }
+html[data-atmo="cursedwing"] .egg-cursed.note-card { display: block; border-color: var(--gold-deep); }
+html[data-atmo="cursedwing"] p.egg-cursed.sub { color: var(--gold-soft); font-style: italic; letter-spacing: 0.08em; }
+
+/* ---------- Still room ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="cursedwing"] .wordmark, html[data-atmo="cursedwing"] body,
+  html[data-atmo="cursedwing"] .hero::before, html[data-atmo="cursedwing"] .hero-glow,
+  html[data-atmo="cursedwing"] .exhibit-slide.on, html[data-atmo="cursedwing"] .exhibit-bg,
+  html[data-atmo="cursedwing"] .ticker-live-pulse { animation: none; }
+  html[data-atmo="cursedwing"] .btn, html[data-atmo="cursedwing"] .search-btn,
+  html[data-atmo="cursedwing"] .card, html[data-atmo="cursedwing"] .tile,
+  html[data-atmo="cursedwing"] .wing-card, html[data-atmo="cursedwing"] .exhibit,
+  html[data-atmo="cursedwing"] .ex-nav-btn { transition: none; }
+  html[data-atmo="cursedwing"] .btn:hover, html[data-atmo="cursedwing"] .search-btn:hover,
+  html[data-atmo="cursedwing"] .exhibit:hover, html[data-atmo="cursedwing"] .wing-card:hover { transform: none; }
+}
+
+/* ============================================================================
+   The Cursed Wing v2 (Grok, 2026-10-20): every screen, not just home.
+   Black lacquer, sealing wax, bone ink: every panel is a lacquered reliquary box with a wax-red hairline and a bone-ink inner rule, a wax-seal disc behind the coin, cracked-wax active tabs, and gothic crimson headings.
+   Static decoration only (no animated filters or per-frame repaints); text keeps the token contrast checked above (AA or better);
+   every control is at least 44 px; reduced motion switches off every transition below.
+   ========================================================================== */
+html[data-atmo="cursedwing"] :is(.gxd-stage, .gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window, .museum-slab, .gf-finder, .hg-tile, .vault-valuation-hub, .atmo-card){
+  background: linear-gradient(175deg, #1d0f13, #120709); border: 1px solid rgba(234,95,67,0.30); border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(234,95,67,0.10), 0 12px 30px rgba(0,0,0,0.6);
+}
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .drawer-inner{ background: radial-gradient(70% 30% at 50% 0%, rgba(234,95,67,0.10), transparent 70%), var(--bg); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .gxd-stage{ position: relative; background: radial-gradient(circle at 50% 42%, rgba(234,95,67,0.16), transparent 62%), #0d0608; border: 1px solid rgba(234,95,67,0.4); border-radius: 6px; box-shadow: inset 0 0 0 4px #150b0e, inset 0 0 0 5px rgba(240,225,210,0.12), inset 0 0 40px rgba(0,0,0,0.7); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .museum-slab{  }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn, .gf-preset, .sb-btn){
+  min-height: 44px; min-width: 44px;
+  background: linear-gradient(180deg, #1d0f13, #120709); border: 1px solid rgba(234,95,67,0.42); border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(234,95,67,0.12); color: var(--ink);
+}
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .gxd-sec h4){ font-family: var(--serif, inherit); font-weight: 700; letter-spacing: 0.02em; }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt, .gxd-face figcaption, .slab-pedigree-title, .gf-count){ font-family: inherit; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--muted); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .gxd-value strong{ font-family: var(--serif, inherit); color: var(--gold-soft); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){  }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input){ min-height: 44px; color: var(--ink); background: #120709; border: 1px solid rgba(234,95,67,0.5); border-radius: 6px; }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; color: var(--ink); background: linear-gradient(180deg, #1d0f13, #120709); border: 1px solid rgba(234,95,67,0.42); border-radius: 6px; }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: linear-gradient(180deg, #f8b6a5 0%, #ea5f43 55%, #a8301f 100%); color: var(--on-gold); box-shadow: 0 0 16px rgba(234,95,67,0.3); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active) :is(.gf-pt, .gf-pn, .sb-lbl){ color: inherit; }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 3px 0 var(--gold); color: var(--gold-soft); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .palette-sheet{ background: linear-gradient(175deg, #1d0f13, #120709); border: 1px solid rgba(234,95,67,0.30); border-radius: 6px; box-shadow: inset 0 1px 0 rgba(234,95,67,0.10), 0 12px 30px rgba(0,0,0,0.6), var(--elev-3); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px solid var(--line); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; }
+html[data-atmo="cursedwing"] :focus-visible{ outline: 2.5px solid var(--focus); outline-offset: 3px; }
+
+@supports (-webkit-background-clip: text) {
+  html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.gxd-value strong.gxd-est, .hero-grand){ background: linear-gradient(180deg, #f8b6a5 0%, #ea5f43 55%, #a8301f 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+}
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .gxd-face figcaption{ color: var(--muted); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border-color: rgba(234,95,67,0.5); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ box-shadow: inset 3px 0 0 var(--gold); }
+
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .gxd-coin{ border-radius: 50%; box-shadow: 0 0 0 3px #150b0e, 0 0 0 6px rgba(234,95,67,0.55), 0 0 28px rgba(234,95,67,0.25); }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) .slab-pedigree-header{ background: linear-gradient(90deg, #5a1410, #201216); color: #fff; }
+html[data-atmo="cursedwing"] :is(#drawer-body, body) :is(.wing-head h2, .gxd-head h2){ text-shadow: 0 0 18px rgba(234,95,67,0.25); }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="cursedwing"] *, html[data-atmo="cursedwing"] *::before, html[data-atmo="cursedwing"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

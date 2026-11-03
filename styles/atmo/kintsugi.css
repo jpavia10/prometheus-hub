@@ -1,0 +1,64 @@
+/* ============================================================================
+   Atmosphere: KINTSUGI (kintsugi) · Gold-mended glaze
+   Black raku glaze mended with liquid gold. Tap to crack the glaze and watch gold run in and seal it.
+   Token-only (Signature rule 1, notes/agents/theme-pot.md): the shared treatments in styles/style-layer.css are switched on by
+   the theme's `ui` list in wings/themes/manifest.js (html[data-ui]); the effect is fxk (wings/fx/styles-e.js).
+   Legibility: checked with tools/themes/check_theme.js (ink 7:1, muted 6:1, faint 4.5:1, accent 4.5:1).
+   ========================================================================== */
+html[data-atmo="kintsugi"] {
+  --scheme: dark;
+  color-scheme: dark;
+  --bg: #0a0908;
+  --bg2: #100e0c;
+  --surface: #161310;
+  --surface2: #1e1a16;
+  --ink: #f3ece0;
+  --muted: #d2c6b4;
+  --faint: #a8998a;
+  --cardmeta: #e8dccb;
+  --gold: #e2b25c;
+  --gold-soft: #f3d79c;
+  --gold-deep: #8a6420;
+  --on-gold: #1a1205;
+  --ink-soft: #d2c6b4;
+  --line: rgba(220, 235, 245, 0.10);
+  --line-strong: rgba(226, 178, 92, 0.45);
+  --ok: #7fe3a8;
+  --warn: #ffd06b;
+  --bad: #ff8a7a;
+  --shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 18px 50px rgba(0, 0, 0, 0.75);
+  --elev-1: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 8px rgba(0, 0, 0, 0.5);
+  --elev-2: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 30px rgba(0, 0, 0, 0.6);
+  --elev-3: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 28px 80px rgba(0, 0, 0, 0.8);
+  --scrim: rgba(0, 0, 0, 0.66);
+  --focus: #f3d79c;
+  --th-bg: #1e1a16;
+  --tabgrad1: #1e1a16; --tabgrad2: #161310;
+  --toastgrad1: #1e1a16; --toastgrad2: #161310;
+  --foot-bg: rgba(10, 9, 8, 0.92);
+  --drawerbar-bg: rgba(22, 19, 16, 0.94);
+  --ph-bg: #1e1a16;
+  --sel-bg: rgba(226, 178, 92, 0.16);
+  --row-hover: rgba(226, 178, 92, 0.06);
+  --hold-bg: linear-gradient(160deg, #221d18, #0a0908 60%);
+  --skeleton1: #1e1a16; --skeleton2: #0a0908;
+  --grain-op: 0.03;
+  --wing-dur: 0.5s;
+  --wing-rise: 14px;
+  --text: var(--ink); --panel: var(--surface); --chip: var(--surface2); --missing: var(--faint);
+  --border: var(--line); --gold-dim: var(--gold-deep); --danger: var(--bad);
+  --serif: "Cormorant Garamond", "Hoefler Text", "Iowan Old Style", Georgia, serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 6px;
+}
+/* Kintsugi surfaces: panels are black raku glaze (soft crackle, a window sheen) and each carries one mended seam in gold along an
+   edge; hover warms the gold and lifts the panel as if picked up to the light. Scoped to own surfaces only. */
+html[data-atmo="kintsugi"] .card, html[data-atmo="kintsugi"] .panel, html[data-atmo="kintsugi"] .gx-card {
+  background: linear-gradient(118deg, transparent 0 62%, rgba(226,178,92,.0) 62.3%, rgba(240,200,120,.55) 62.6%, rgba(160,110,40,.35) 63%, transparent 63.3%),
+    radial-gradient(120% 70% at 20% 0%, rgba(255,240,220,.07), transparent 55%), linear-gradient(180deg, rgba(30,26,22,.88), rgba(10,9,8,.94));
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255,240,220,.09), inset 0 0 0 1px rgba(226,178,92,.14), 0 18px 46px rgba(0,0,0,.7);
+  transition: transform .5s cubic-bezier(.2,1,.3,1), box-shadow .5s; }
+html[data-atmo="kintsugi"] .card:hover, html[data-atmo="kintsugi"] .gx-card:hover {
+  transform: translateY(-3px); box-shadow: inset 0 1px 0 rgba(255,240,220,.14), inset 0 0 0 1px rgba(226,178,92,.4), 0 0 24px rgba(226,178,92,.12), 0 24px 56px rgba(0,0,0,.75); }
+html[data-atmo="kintsugi"] h1, html[data-atmo="kintsugi"] h2 { background: linear-gradient(180deg, #ffe7b0, #d4a24c 55%, #8a6420); -webkit-background-clip: text; background-clip: text; color: transparent; }

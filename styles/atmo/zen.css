@@ -1,0 +1,194 @@
+/* ============================================================================
+   Atmosphere: ZEN GARDEN  ·  a karesansui at night: raked gravel, wet slate, moss.
+   Identity: restraint. Charcoal slate, warm sand-white ink, one quiet moss
+   accent (the old neon lime is gone), flat panels with hairline edges and no
+   glow, raked-sand lines inside every surface, an unclosed ensō behind the
+   title, a short moss stroke under each wing title, generous spacing.
+   Legibility: sand ink 15:1, moss 9:1+, muted/faint >= contract.
+   Legacy rules overridden: styles.css "18. Zen Garden".
+   ========================================================================== */
+
+/* 1. Tokens -------------------------------------------------------------- */
+html[data-atmo="zen"] {
+  --scheme: dark;
+  color-scheme: dark;
+
+  --bg: #0a0c0d;
+  --bg2: #101315;
+  --surface: #151a1d;      /* wet river slate */
+  --surface2: #212830;
+
+  --ink: #f3efe5;          /* sand */
+  --muted: #cdd0c6;
+  --faint: #9ea49b;
+  --cardmeta: #dadcd0;
+
+  --gold: #b9d58a;         /* moss (the accent) */
+  --gold-soft: #dcebbc;
+  --gold-deep: #62793b;
+  --on-gold: #0d1405;
+  --focus: #eaf5cf;
+
+  --line: rgba(243, 239, 229, 0.11);
+  --line-strong: rgba(185, 213, 138, 0.38);
+
+  --ok: #9bd68c;
+  --warn: #f0b062;         /* persimmon */
+  --bad: #ff8466;          /* torii vermilion, lightened */
+
+  --font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --radius: 6px;
+
+  --shadow: inset 0 1px 0 rgba(243, 239, 229, 0.04), 0 10px 30px rgba(0, 0, 0, 0.5);
+  --elev-1: 0 1px 0 rgba(243, 239, 229, 0.03), 0 2px 8px rgba(0, 0, 0, 0.4);
+  --elev-2: 0 1px 0 rgba(243, 239, 229, 0.05), 0 10px 26px rgba(0, 0, 0, 0.55);
+  --elev-3: 0 1px 0 rgba(243, 239, 229, 0.06), 0 26px 70px rgba(0, 0, 0, 0.75);
+  --scrim: rgba(4, 6, 6, 0.74);
+
+  --th-bg: #151a1d;
+  --tabgrad1: #2b3a22; --tabgrad2: #101315;
+  --toastgrad1: #2b3a22; --toastgrad2: #101315;
+  --foot-bg: rgba(10, 12, 13, 0.95);
+  --drawerbar-bg: rgba(21, 26, 29, 0.96);
+  --ph-bg: #0e1113;
+  --sel-bg: #242f22;
+  --row-hover: rgba(185, 213, 138, 0.07);
+  --hold-bg: linear-gradient(135deg, #2b3a22, #101315);
+  --skeleton1: #212830; --skeleton2: #0e1113;
+  --grain-op: 0.035;
+
+  --wing-dur: 0.9s;        /* slow, exhaled */
+  --wing-rise: 6px;
+
+  scrollbar-color: #62793b #0a0c0d;
+}
+
+/* 2. Garden: raked lines across the ground, ripples around one stone ------------ */
+html[data-atmo="zen"] body {
+  background-image:
+    radial-gradient(80% 40% at 50% 0%, rgba(185, 213, 138, 0.06), transparent 75%),
+    radial-gradient(60% 40% at 8% 100%, rgba(245, 190, 205, 0.035), transparent 70%);
+}
+html[data-atmo="zen"] body::before {
+  background-image:
+    radial-gradient(circle at 86% 80%, #1f262a 0 26px, transparent 27px),
+    repeating-radial-gradient(circle at 86% 80%, transparent 0 34px, rgba(243, 239, 229, 0.045) 34px 35px),
+    repeating-linear-gradient(180deg, transparent 0 11px, rgba(243, 239, 229, 0.022) 11px 12px);
+}
+html[data-atmo="zen"] ::selection { background: var(--gold); color: var(--on-gold); }
+
+/* 3. Wordmark + the unclosed ensō -------------------------------------------------- */
+html[data-atmo="zen"] .wordmark {
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #f7f3ea;
+  text-shadow: 0 0 30px rgba(243, 239, 229, 0.18) !important;   /* no glow: only a breath of light */
+}
+html[data-atmo="zen"] .hero::before {
+  content: "";
+  position: absolute; z-index: -1; pointer-events: none;
+  left: 50%; top: 7.6rem; width: min(440px, 92vw); aspect-ratio: 1;
+  transform: translate(-50%, -50%);   /* .hero spans the whole Hall header: anchor to the title */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='none' stroke='%23f3efe5' stroke-linecap='round'%3E%3Cpath d='M100 20C146 20 180 54 180 100 180 146 146 180 100 180 54 180 20 146 20 100 20 68 40 40 68 28' stroke-width='10' stroke-opacity='.075'/%3E%3Cpath d='M100 22C145 22 178 55 178 100 178 145 145 178 100 178 55 178 22 145 22 100 22 70 42 43 68 31' stroke-width='3' stroke-opacity='.09'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+html[data-atmo="zen"] .hero-glow {
+  background: radial-gradient(ellipse 44% 46% at 50% 44%, rgba(243, 239, 229, 0.06), transparent 70%);
+}
+html[data-atmo="zen"] .hero-grand {
+  background-image: linear-gradient(135deg, #ffffff 10%, #f3efe5 50%, var(--gold-soft) 100%);
+  text-shadow: none;
+  filter: none;
+  letter-spacing: 0;
+}
+html[data-atmo="zen"] .wing-head h2 { font-weight: 500; letter-spacing: 0.06em; text-shadow: none; }
+/* A short moss stroke in place of a full-width rule: a pause, not a fence. */
+html[data-atmo="zen"] .wing-head { position: relative; border-bottom-color: var(--line); }
+html[data-atmo="zen"] .wing-head::after {
+  content: ""; position: absolute; left: 0; bottom: -1px; width: 64px; height: 2px; pointer-events: none;
+  background: var(--gold); border-radius: 2px; opacity: 0.85;
+}
+
+/* 4. Picker swatch ---------------------------------------------------------- */
+.sw-zen {
+  background:
+    radial-gradient(circle at 50% 50%, #151a1d 0 20%, transparent 21%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0 4px, rgba(243, 239, 229, 0.35) 4px 5px),
+    #1f262a;
+  box-shadow: inset 0 0 0 2px #b9d58a;
+}
+
+/* 5. Components ------------------------------------------------------------- */
+/* Flat slate panels, a hairline edge, raked lines inside; the accent is a thin moss edge. */
+html[data-atmo="zen"] :is(.card, .tile, .album-card, .latest-card, .sheet-card) {
+  background-image: repeating-linear-gradient(180deg, transparent 0 11px, rgba(243, 239, 229, 0.016) 11px 12px);
+  border-color: var(--line);
+}
+html[data-atmo="zen"] .tile::before { width: 2px; background: var(--gold); opacity: 0.7; }
+html[data-atmo="zen"] :is(.card h3, .tile .k, .hero-cap) { letter-spacing: 0.2em; }
+html[data-atmo="zen"] .tab.active { box-shadow: none; }
+html[data-atmo="zen"] .tray-tab.active .tray-count { color: var(--on-gold); background: rgba(13, 20, 5, 0.16); }  /* styles.css hard-codes #fff */
+html[data-atmo="zen"] .wing.active::before { box-shadow: none; }
+html[data-atmo="zen"] :is(.lofi-bar, .player-bar, .mobile-wing-dock) { background: rgba(16, 19, 21, 0.97) !important; }
+html[data-atmo="zen"] .exhibit-bg {
+  background: radial-gradient(60% 90% at 50% 0%, rgba(243, 239, 229, 0.07), transparent 70%);
+}
+/* styles.css paints these panels warm/navy black in every atmosphere: retint to slate. */
+html[data-atmo="zen"] .exhibit { background: linear-gradient(180deg, #1a2024 0%, #0c0f11 100%); box-shadow: var(--elev-3); border-color: var(--line-strong); }
+html[data-atmo="zen"] .exhibit:hover { box-shadow: var(--elev-3), 0 0 24px rgba(185, 213, 138, 0.10); }
+html[data-atmo="zen"] .vault-valuation-hub { background: linear-gradient(180deg, rgba(26, 32, 36, 0.92), rgba(12, 15, 17, 0.97)); }
+html[data-atmo="zen"] .market-ticker-tape { background: #0c0f11; border-color: var(--line); }
+html[data-atmo="zen"] .ticker-badge { background: #151a1d; }
+html[data-atmo="zen"] :is(.study-nav-pills, .gallery-mode-switch) { background: rgba(21, 26, 29, 0.9); border-color: var(--line-strong); }
+html[data-atmo="zen"] .album-binder-card { background: #111517; border-color: var(--line-strong); }
+
+/* 6. Reduced motion ---------------------------------------------------------- */
+/* Zen has no continuous motion of its own; only the slow wing entrance (--wing-dur) is stood down. */
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="zen"] .pane.active { animation: none; }
+}
+
+/* ============================================================================
+   Zen Garden v2 (Grok, 2026-10-20): every screen, not just home.
+   A karesansui at night: wet-slate panels with raked-gravel lines, a moss-green hairline, a stone-ring coin stage like a basin, and moss-lit values.
+   Static decoration only (no animated filters or per-frame repaints); text keeps the token contrast checked above (AA or better);
+   every control is at least 44 px; reduced motion switches off every transition below.
+   ========================================================================== */
+html[data-atmo="zen"] :is(.gxd-stage, .gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window, .museum-slab, .gf-finder, .hg-tile, .vault-valuation-hub, .atmo-card){
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 7px), linear-gradient(175deg, #212830, #141a1e); border: 1px solid rgba(185,213,138,0.3); border-radius: 20px;
+  box-shadow: inset 0 1px 0 rgba(185,213,138,0.10), 0 12px 30px rgba(0,0,0,0.6);
+}
+html[data-atmo="zen"] :is(#drawer-body, body) .drawer-inner{ background: radial-gradient(70% 30% at 50% 0%, rgba(185,213,138,0.10), transparent 70%), var(--bg); }
+html[data-atmo="zen"] :is(#drawer-body, body) .gxd-stage{ position: relative; background: repeating-radial-gradient(circle at 50% 45%, rgba(255,255,255,0.035) 0 2px, transparent 2px 10px), #10151a; border: 1px solid rgba(185,213,138,0.35); border-radius: 26px; }
+html[data-atmo="zen"] :is(#drawer-body, body) .museum-slab{  }
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn, .gf-preset, .sb-btn){
+  min-height: 44px; min-width: 44px;
+  background: linear-gradient(180deg, #212830, #141a1e); border: 1px solid rgba(185,213,138,0.5); border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(185,213,138,0.12); color: var(--ink);
+}
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .gxd-sec h4){ font-family: var(--serif, inherit); font-weight: 700; letter-spacing: 0.02em; }
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt, .gxd-face figcaption, .slab-pedigree-title, .gf-count){ font-family: inherit; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--muted); }
+html[data-atmo="zen"] :is(#drawer-body, body) .gxd-value strong{ font-family: var(--serif, inherit); color: var(--gold-soft); }
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){  }
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input){ min-height: 44px; color: var(--ink); background: #212830; border: 1px solid rgba(185,213,138,0.55); border-radius: 999px; }
+html[data-atmo="zen"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; color: var(--ink); background: linear-gradient(180deg, #212830, #141a1e); border: 1px solid rgba(185,213,138,0.5); border-radius: 999px; }
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: linear-gradient(180deg, #dcebbc, #b9d58a); color: var(--on-gold); box-shadow: 0 0 14px rgba(185,213,138,0.28); }
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active) :is(.gf-pt, .gf-pn, .sb-lbl){ color: inherit; }
+html[data-atmo="zen"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="zen"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 3px 0 var(--gold); color: var(--gold-soft); }
+html[data-atmo="zen"] :is(#drawer-body, body) .palette-sheet{ background: repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 7px), linear-gradient(175deg, #212830, #141a1e); border: 1px solid rgba(185,213,138,0.3); border-radius: 20px; box-shadow: inset 0 1px 0 rgba(185,213,138,0.10), 0 12px 30px rgba(0,0,0,0.6), var(--elev-3); }
+html[data-atmo="zen"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px solid var(--line); }
+html[data-atmo="zen"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; }
+html[data-atmo="zen"] :focus-visible{ outline: 2.5px solid var(--focus); outline-offset: 3px; }
+
+html[data-atmo="zen"] :is(#drawer-body, body) .gxd-face figcaption{ color: var(--muted); }
+html[data-atmo="zen"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border-color: rgba(185,213,138,0.55); }
+html[data-atmo="zen"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ box-shadow: inset 3px 0 0 var(--gold); }
+
+html[data-atmo="zen"] :is(#drawer-body, body) .gxd-coin{ border-radius: 50%; box-shadow: 0 0 0 6px #2a3238, 0 0 0 7px rgba(185,213,138,0.4), 0 8px 24px rgba(0,0,0,0.6); }
+html[data-atmo="zen"] :is(#drawer-body, body) .slab-pedigree-header{ background: linear-gradient(90deg, #3a4a2a, #212830); color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="zen"] *, html[data-atmo="zen"] *::before, html[data-atmo="zen"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

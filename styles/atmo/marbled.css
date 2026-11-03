@@ -1,0 +1,124 @@
+/* ============================================================================
+   Atmosphere: MARBLED ENDPAPERS (marbled) · Marbled paper
+   A bookbinder's endpapers: marbled paper in indigo, oxblood and ochre swirls slowly at the edges of every page.
+   Token-only (Signature rule 1, notes/agents/theme-pot.md): the shared treatments in styles/style-layer.css are switched on by
+   the theme's `ui` list in wings/themes/manifest.js (html[data-ui]); the effect is style-marble (wings/fx/styles-e.js).
+   Legibility: checked with tools/themes/check_theme.js (ink 7:1, muted 6:1, faint 4.5:1, accent 4.5:1).
+   ========================================================================== */
+html[data-atmo="marbled"] {
+  --scheme: light;
+  color-scheme: light;
+  --bg: #f3ecdc;
+  --bg2: #ebe2cd;
+  --surface: #fbf7ec;
+  --surface2: #e8dec6;
+  --ink: #231a16;
+  --muted: #46372f;
+  --faint: #5e4d43;
+  --cardmeta: #33261f;
+  --gold: #7a1f2b;
+  --gold-soft: #5f1520;
+  --gold-deep: #231a16;
+  --on-gold: #ffffff;
+  --ink-soft: #46372f;
+  --line: rgba(35, 26, 22, 0.18);
+  --line-strong: #7a1f2b;
+  --ok: #1f6b33;
+  --warn: #7f5800;
+  --bad: #b0220f;
+  --shadow: 0 1px 1px rgba(60, 35, 25, 0.14), 0 6px 0 -2px rgba(60, 35, 25, 0.10), 0 10px 18px rgba(60, 35, 25, 0.10);
+  --elev-1: 0 1px 1px rgba(60, 35, 25, 0.14), 0 3px 6px rgba(60, 35, 25, 0.10);
+  --elev-2: 0 2px 2px rgba(60, 35, 25, 0.14), 0 10px 22px rgba(60, 35, 25, 0.14);
+  --elev-3: 0 4px 6px rgba(60, 35, 25, 0.16), 0 24px 60px rgba(60, 35, 25, 0.22);
+  --scrim: rgba(35, 26, 22, 0.42);
+  --focus: #2f6fd6;
+  --th-bg: #e8dec6;
+  --tabgrad1: #e8dec6; --tabgrad2: #fbf7ec;
+  --toastgrad1: #e8dec6; --toastgrad2: #fbf7ec;
+  --foot-bg: rgba(243, 236, 220, 0.95);
+  --drawerbar-bg: rgba(251, 247, 236, 0.96);
+  --ph-bg: #e8dec6;
+  --sel-bg: rgba(122, 31, 43, 0.14);
+  --row-hover: rgba(122, 31, 43, 0.06);
+  --hold-bg: linear-gradient(135deg, #e8dec6, #fbf7ec);
+  --skeleton1: #e8dec6; --skeleton2: #f3ecdc;
+  --grain-op: 0.035;
+  --wing-dur: 0.42s;
+  --wing-rise: 14px;
+  /* legacy aliases resolved on <html> */
+  --text: var(--ink); --panel: var(--surface); --chip: var(--surface2); --missing: var(--faint);
+  --border: var(--line); --gold-dim: var(--gold-deep); --danger: var(--bad);
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --radius: 6px;
+  /* the endpaper treatment (styles/style-layer.css, ui "endpaper"): a gilt hairline inside each card */
+  --gilt: rgba(158, 118, 44, 0.75);
+  /* the dark display-case interior used by the instrument panels (styles/style-layer.css, ui "paper"): indigo bookcloth */
+  --case-bg: #1a2047;
+  --case-bg2: #1f2654;
+  --case-surface: #252d5f;
+  --case-surface2: #2f3870;
+  --case-ink: #ffffff;
+  --case-muted: #dde1f3;
+  --case-faint: #b8bedf;
+  --case-gold: #e7c27a;
+  --case-gold-soft: #f4dba5;
+  --case-on-gold: #1a2047;
+  /* the page palette again, for paper labels inside a case */
+  --paper-bg: #f3ecdc;
+  --paper-bg2: #ebe2cd;
+  --paper-surface: #fbf7ec;
+  --paper-surface2: #e8dec6;
+  --paper-ink: #231a16;
+  --paper-muted: #46372f;
+  --paper-faint: #5e4d43;
+  --paper-gold: #7a1f2b;
+  --paper-gold-soft: #5f1520;
+  --paper-on-gold: #ffffff;
+}
+
+/* ============================================================================
+   Marbled Endpapers v2 (Grok, 2026-10-20): every screen, not just home.
+   A bookbinder's endpaper: panels in cream laid paper with a marbled-swirl head band, leather-red headings, a gilt tooled double rule around the values, and the coin set into a marbled board.
+   Static decoration only (no animated filters or per-frame repaints); text keeps the token contrast checked above (AA or better);
+   every control is at least 44 px; reduced motion switches off every transition below.
+   ========================================================================== */
+html[data-atmo="marbled"] :is(.gxd-stage, .gxd-value > div, .gxd-fact, .gxd-gauge, .gxd-window, .museum-slab, .gf-finder, .hg-tile, .vault-valuation-hub, .atmo-card){
+  background: linear-gradient(175deg, #fbf7ec, #f2ead6); border: 1px solid rgba(122,31,43,0.45); border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(40,30,20,0.10), 0 8px 20px rgba(40,30,20,0.12);
+}
+html[data-atmo="marbled"] :is(#drawer-body, body) .drawer-inner{ background: radial-gradient(70% 30% at 50% 0%, rgba(122,31,43,0.10), transparent 70%), var(--bg); }
+html[data-atmo="marbled"] :is(#drawer-body, body) .gxd-stage{ position: relative; background: radial-gradient(ellipse 40% 20% at 20% 20%, rgba(122,31,43,0.10), transparent), radial-gradient(ellipse 30% 25% at 80% 30%, rgba(30,60,110,0.10), transparent), radial-gradient(ellipse 50% 20% at 50% 85%, rgba(160,120,40,0.12), transparent), #f3ecd8; border: 1px solid rgba(122,31,43,0.45); border-radius: 4px; box-shadow: inset 0 0 0 5px #fbf7ec, inset 0 0 0 6px rgba(160,120,40,0.45); }
+html[data-atmo="marbled"] :is(#drawer-body, body) .museum-slab{  }
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.nav-btn, .drawer-close, .gxd-act, .gf-filters-btn, .gf-link, .sim-toggle-btn, .gf-preset, .sb-btn){
+  min-height: 44px; min-width: 44px;
+  background: linear-gradient(180deg, #fbf7ec, #f2ead6); border: 1px solid rgba(122,31,43,0.5); border-radius: 4px;
+  box-shadow: none; color: var(--ink);
+}
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.gxd-head h2, .wing-head h2, .cf-title, .sec-head h2, .gxd-sec h4){ font-family: var(--serif, inherit); font-weight: 700; letter-spacing: 0.02em; }
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.gxd-k, .gxd-fact dt, .gxd-face figcaption, .slab-pedigree-title, .gf-count){ font-family: inherit; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; color: var(--muted); }
+html[data-atmo="marbled"] :is(#drawer-body, body) .gxd-value strong{ font-family: var(--serif, inherit); color: var(--gold-soft); }
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.slab-beveled-edge, .slab-optic-glare, .cf-glass-sheen){  }
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.gf-search, .palette-bar input){ min-height: 44px; color: var(--ink); background: #fbf7ec; border: 1px solid rgba(122,31,43,0.55); border-radius: 4px; }
+html[data-atmo="marbled"] :is(#drawer-body, body) .gf-bar select{ min-height: 44px; color: var(--ink); background: linear-gradient(180deg, #fbf7ec, #f2ead6); border: 1px solid rgba(122,31,43,0.5); border-radius: 4px; }
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active){ background: linear-gradient(180deg, #8a2a36, #5f1520); color: var(--on-gold); box-shadow: 0 0 14px rgba(122,31,43,0.28); }
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.gf-preset.on, .sb-btn.active) :is(.gf-pt, .gf-pn, .sb-lbl){ color: inherit; }
+html[data-atmo="marbled"] :is(#drawer-body, body) nav.wings .wing{ min-height: 48px; }
+html[data-atmo="marbled"] :is(#drawer-body, body) nav.wings .wing.active{ box-shadow: inset 0 3px 0 var(--gold); color: var(--gold-soft); }
+html[data-atmo="marbled"] :is(#drawer-body, body) .palette-sheet{ background: linear-gradient(175deg, #fbf7ec, #f2ead6); border: 1px solid rgba(122,31,43,0.45); border-radius: 4px; box-shadow: 0 1px 2px rgba(40,30,20,0.10), 0 8px 20px rgba(40,30,20,0.12), var(--elev-3); }
+html[data-atmo="marbled"] :is(#drawer-body, body) .pal-row{ min-height: 48px; border-bottom: 1px solid var(--line); }
+html[data-atmo="marbled"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ background: var(--sel-bg); }
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.gxd-history, .gxd-full) summary{ min-height: 44px; display: flex; align-items: center; }
+html[data-atmo="marbled"] :focus-visible{ outline: 2.5px solid var(--focus); outline-offset: 3px; }
+html[data-atmo="marbled"] :is(#drawer-body, body) .gallery-coverflow-wrap .cf-title{ color: #ffffff; }
+
+html[data-atmo="marbled"] :is(#drawer-body, body) .gxd-face figcaption{ color: var(--muted); }
+html[data-atmo="marbled"] :is(#drawer-body, body) :is(.gxd-badge, .gxd-cert){ border-color: rgba(122,31,43,0.55); }
+html[data-atmo="marbled"] :is(#drawer-body, body) .pal-row:is(:hover, [aria-selected="true"], .on){ box-shadow: inset 3px 0 0 var(--gold); }
+
+html[data-atmo="marbled"] :is(#drawer-body, body) .gxd-value > div{ outline: 1px solid rgba(160,120,40,0.45); outline-offset: -5px; }
+html[data-atmo="marbled"] :is(#drawer-body, body) .gxd-coin{ border-radius: 50%; box-shadow: 0 0 0 3px #fbf7ec, 0 0 0 5px rgba(122,31,43,0.6), 0 6px 16px rgba(40,30,20,0.25); }
+html[data-atmo="marbled"] :is(#drawer-body, body) .slab-pedigree-header{ background: #5f1520; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-atmo="marbled"] *, html[data-atmo="marbled"] *::before, html[data-atmo="marbled"] *::after{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

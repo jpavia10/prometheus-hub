@@ -31,6 +31,11 @@
   --drawerbar-bg: rgba(10, 10, 9, 0.92);
   --hold-bg: linear-gradient(135deg, #1e1808, #100c04);
   --glow: rgba(200, 169, 74, 0.16);
+  --ss-gold: var(--gold);
+  --ss-ink: var(--ink);
+  --ss-dim: var(--muted);
+  --ss-panel: var(--surface2);
+  --ss-line: var(--line);
   --nav-h: 66px;
   color-scheme: dark;
 }
@@ -504,6 +509,26 @@ a:focus-visible, button:focus-visible {
 }
 
 .atmo-open { cursor: pointer; color: var(--gold-soft); }
+.th-sheet {
+  position: fixed;
+  z-index: 55;
+  left: 50%;
+  top: 0.6rem;
+  transform: translateX(-50%);
+  width: min(1040px, calc(100vw - 1rem));
+  bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 0.7rem);
+  overflow: auto;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 0.85rem 0.95rem 1.2rem;
+}
+.th-sheet[hidden] { display: none; }
+.th-sheet-bar { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.4rem; }
+.th-sheet-bar .eyebrow { margin: 0; }
+.ops-atmo { grid-column: 1 / -1; }
 .atmo-sheet {
   position: fixed;
   z-index: 50;

@@ -1,0 +1,63 @@
+/* ============================================================================
+   Atmosphere: EVENT HORIZON (horizon) · Black hole
+   A black hole up close: a blazing accretion disk, light bent into rings, and stars smeared around the dark. Drag to orbit; hold to lean in.
+   Token-only (Signature rule 1, notes/agents/theme-pot.md): the shared treatments in styles/style-layer.css are switched on by
+   the theme's `ui` list in wings/themes/manifest.js (html[data-ui]); the effect is fxk (wings/fx/styles-e.js).
+   Legibility: checked with tools/themes/check_theme.js (ink 7:1, muted 6:1, faint 4.5:1, accent 4.5:1).
+   ========================================================================== */
+html[data-atmo="horizon"] {
+  --scheme: dark;
+  color-scheme: dark;
+  --bg: #030305;
+  --bg2: #07060b;
+  --surface: #0d0b12;
+  --surface2: #16131c;
+  --ink: #f6efe6;
+  --muted: #d3c6b6;
+  --faint: #a8998a;
+  --cardmeta: #ece0d2;
+  --gold: #ffae5c;
+  --gold-soft: #ffd6a8;
+  --gold-deep: #8a4a14;
+  --on-gold: #1a0b00;
+  --ink-soft: #d3c6b6;
+  --line: rgba(220, 235, 245, 0.10);
+  --line-strong: rgba(255, 174, 92, 0.45);
+  --ok: #7fe3a8;
+  --warn: #ffd06b;
+  --bad: #ff8a7a;
+  --shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 18px 50px rgba(0, 0, 0, 0.75);
+  --elev-1: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 8px rgba(0, 0, 0, 0.5);
+  --elev-2: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 30px rgba(0, 0, 0, 0.6);
+  --elev-3: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 28px 80px rgba(0, 0, 0, 0.8);
+  --scrim: rgba(0, 0, 0, 0.66);
+  --focus: #ffd6a8;
+  --th-bg: #16131c;
+  --tabgrad1: #16131c; --tabgrad2: #0d0b12;
+  --toastgrad1: #16131c; --toastgrad2: #0d0b12;
+  --foot-bg: rgba(3, 3, 5, 0.92);
+  --drawerbar-bg: rgba(13, 11, 18, 0.94);
+  --ph-bg: #16131c;
+  --sel-bg: rgba(255, 174, 92, 0.16);
+  --row-hover: rgba(255, 174, 92, 0.06);
+  --hold-bg: linear-gradient(160deg, #1c1622, #030305 60%);
+  --skeleton1: #16131c; --skeleton2: #030305;
+  --grain-op: 0.03;
+  --wing-dur: 0.5s;
+  --wing-rise: 14px;
+  --text: var(--ink); --panel: var(--surface); --chip: var(--surface2); --missing: var(--faint);
+  --border: var(--line); --gold-dim: var(--gold-deep); --danger: var(--bad);
+  --serif: "Avenir Next", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 16px;
+}
+/* Event Horizon surfaces: panels are smoked glass in orbit, edged by a thin warm rim like the photon ring (brighter on one side,
+   as the disk is), with the starfield bending faintly behind them. Hover pulls a panel a little toward you. Own surfaces only. */
+html[data-atmo="horizon"] .card, html[data-atmo="horizon"] .panel, html[data-atmo="horizon"] .gx-card {
+  background: radial-gradient(140% 90% at 0% 0%, rgba(255,174,92,.08), transparent 50%), linear-gradient(180deg, rgba(20,16,26,.72), rgba(4,3,7,.88));
+  backdrop-filter: blur(16px) saturate(130%); -webkit-backdrop-filter: blur(16px) saturate(130%);
+  box-shadow: inset 1px 1px 0 rgba(255,190,120,.35), inset -1px -1px 0 rgba(140,160,255,.12), 0 0 30px rgba(255,140,60,.06), 0 24px 60px rgba(0,0,0,.8);
+  transition: transform .45s cubic-bezier(.2,1,.3,1), box-shadow .45s; }
+html[data-atmo="horizon"] .card:hover, html[data-atmo="horizon"] .gx-card:hover {
+  transform: translateY(-3px) scale(1.005); box-shadow: inset 1px 1px 0 rgba(255,200,140,.6), inset -1px -1px 0 rgba(140,160,255,.2), 0 0 40px rgba(255,140,60,.14), 0 30px 70px rgba(0,0,0,.85); }
+html[data-atmo="horizon"] h1, html[data-atmo="horizon"] h2 { font-weight: 300; letter-spacing: .06em; text-shadow: 0 0 18px rgba(255,160,80,.35); }
