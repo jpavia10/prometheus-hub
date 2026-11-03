@@ -1,6 +1,6 @@
-/* Prometheus shell. Network first, so a refresh picks up desk edits.
+/* Prometheus Hub shell. Network first, so a refresh picks up desk edits.
    Static files only. No credentials, no third-party caches. */
-var CACHE = "prometheus-v1";
+var CACHE = "prometheus-v2";
 var SHELL = [
   "./",
   "./index.html",

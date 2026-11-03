@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Prometheus",
-  "short_name": "Prometheus",
+  "name": "Prometheus Hub",
+  "short_name": "Prometheus Hub",
   "description": "Joseph’s flagship desk. Links out to the specialists that own the work.",
   "start_url": "./",
   "scope": "./",

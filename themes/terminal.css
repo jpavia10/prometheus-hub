@@ -43,8 +43,8 @@ html[data-theme="terminal"] .brand h1 {
   font-family: var(--cond);
   text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+  font-size: 1.45rem;
   color: var(--gold);
   text-shadow: 0 0 8px rgba(255, 176, 0, 0.45);
 }

@@ -1,4 +1,4 @@
-/* Prometheus — the only list of projects.
+/* Prometheus Hub — the only list of projects.
    Append an object to add a card. Leave links empty until a real URL exists.
    Never put passwords, tokens, charter text, or other secrets in this file.
 

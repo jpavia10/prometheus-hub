@@ -47,9 +47,9 @@ html[data-theme="bridge"] body::after {
 html[data-theme="bridge"] .brand h1 {
   font-family: var(--disp);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   font-weight: 700;
-  font-size: 1.28rem;
+  font-size: 1.15rem;
   color: var(--gold-soft);
   text-shadow: 0 0 18px rgba(62, 230, 255, 0.4);
 }

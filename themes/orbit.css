@@ -42,9 +42,9 @@ html[data-theme="orbit"] #app { position: relative; z-index: 1; }
 html[data-theme="orbit"] .brand h1 {
   font-family: var(--disp);
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   background: linear-gradient(90deg, #ffd9a8, #ffb35c 45%, #c9b6ff);
   -webkit-background-clip: text;
   background-clip: text;

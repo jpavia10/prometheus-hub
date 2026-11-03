@@ -1,8 +1,8 @@
-# Prometheus
+# Prometheus Hub
 
 Joseph’s flagship desk. One screen that opens the specialists that already own the work — Titan Reliquary, Sylade Fleet, and Midas Ledger — and keeps named slots for the next ones.
 
-Prometheus does not sign in, store secrets, or re-implement those apps. The coin vault stays with Titan Reliquary. Sylade’s charter stays in Drive as `SYLADE_CHARTER`. The ledger stays inside Midas Ledger.
+Prometheus Hub does not sign in, store secrets, or re-implement those apps. The coin vault stays with Titan Reliquary. Sylade’s charter stays in Drive as `SYLADE_CHARTER`. The ledger stays inside Midas Ledger.
 
 ## Open on a phone
 
@@ -10,7 +10,7 @@ When this repo is published with GitHub Pages, the installable app is:
 
 **https://jpavia10.github.io/prometheus-hub/**
 
-iPhone: open that URL in Safari, tap Share, then **Add to Home Screen**. The icon is the gold P, and the home-screen name is Prometheus. It opens standalone, without Safari’s toolbar.
+iPhone: open that URL in Safari, tap Share, then **Add to Home Screen**. The icon is the gold P, and the home-screen name is Prometheus Hub. It opens standalone, without Safari’s toolbar.
 
 Android: open the URL in Chrome, then menu → **Install app** or **Add to Home screen**.
 
