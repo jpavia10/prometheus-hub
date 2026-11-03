@@ -22,11 +22,11 @@ window.PROMETHEUS_PROJECTS = [
     kicker: "Coin vault",
     tier: "primary",
     status: "live",
-    summary: "Portable viewer for the coin collection.",
-    note: "Ownership stays with Titan Reliquary. This hub only links.",
+    summary: "The live coin house. The collection stays there; this desk only opens the door.",
+    note: "Ownership stays with Titan Reliquary. Prometheus Hub only links.",
     links: [
-      { label: "Public viewer", href: "https://github.com/jpavia10/titan-reliquary" },
-      { label: "Pages", href: "https://jpavia10.github.io/titan-reliquary/" }
+      { label: "Open preview", href: "https://jpavia10.github.io/titan-reliquary-preview/" },
+      { label: "Repository", href: "https://github.com/jpavia10/titan-reliquary-preview" }
     ]
   },
   {

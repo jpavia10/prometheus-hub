@@ -1,69 +1,35 @@
 # Prometheus Hub
 
-Joseph’s flagship desk. One screen that opens the specialists that already own the work — Titan Reliquary, Sylade Fleet, and Midas Ledger — and keeps named slots for the next ones.
+Joseph’s flagship desk. The shell is the same night-museum family as [Titan Reliquary Preview](https://jpavia10.github.io/titan-reliquary-preview/): Fraunces wordmark, gold on near-black, and a bottom wing dock. The room itself is the desk, not a coin board and not a copied vault.
 
-Prometheus Hub does not sign in, store secrets, or re-implement those apps. The coin vault stays with Titan Reliquary. Sylade’s charter stays in Drive as `SYLADE_CHARTER`. The ledger stays inside Midas Ledger.
+Titan Reliquary is the primary extension. Ownership stays there. This page only links to the live preview and its repo. Sylade Fleet and Midas Ledger are the other two doors that already exist. Bench names wait in `projects.js` until they have an address.
 
-## Open on a phone
+Nothing here signs in or stores a secret. Sylade’s charter stays in Drive as `SYLADE_CHARTER`.
 
-When this repo is published with GitHub Pages, the installable app is:
+## Open
 
-**https://jpavia10.github.io/prometheus-hub/**
+https://jpavia10.github.io/prometheus-hub/
 
-iPhone: open that URL in Safari, tap Share, then **Add to Home Screen**. The icon is the gold P, and the home-screen name is Prometheus Hub. It opens standalone, without Safari’s toolbar.
+The first open of a session plays a fifteen-second fire. Tap, click, or Esc skips it. Reduced motion shows a still title and an Enter button instead of the film. A home-screen cold open is a new session, so it gets the full show. `?nosplash` skips. `?splash=1` forces it.
 
-Android: open the URL in Chrome, then menu → **Install app** or **Add to Home screen**.
+iPhone: Safari → Share → Add to Home Screen. Android: Chrome → Install app. The icon is the gold P. The name is Prometheus Hub.
 
-The manifest, 192 and 512 icons, Apple touch icon, `theme-color`, and a small service worker are what make that install real. There is no splash screen and no intro.
-
-## Open locally
+Locally:
 
 ```bash
 python3 -m http.server 8742
 ```
 
-Visit http://127.0.0.1:8742 — or open `index.html` directly. The project list is a plain script, so the links render from disk. The service worker registers on http://localhost and https only.
+## Wings
 
-## Themes
-
-Tap the **P** or **Theme**. Four looks, saved on this device only (`prometheus_theme_v1`):
-
-- Classic
-- Starship Bridge
-- Orbit
-- Tactical Terminal
-
-`?theme=bridge`, `?theme=orbit`, `?theme=terminal`, or `?theme=classic` previews a look. Choosing one in the menu saves it. These are display themes only. They do not play an intro.
+- **Desk** — the hearth. Titan sits in the fire. Sylade and Midas flank it.
+- **Extensions** — the three live houses, plus the unlit slots.
+- **Ops** — what this desk is, what it refuses to keep, and how to add a name.
 
 ## Add a project
 
-Edit `projects.js` and append an object:
+Append an object to `projects.js`. Use a real `https` link or leave `links` empty. Do not put passwords, tokens, or charter text in this file.
 
-```js
-{
-  id: "short-id",
-  name: "Visible name",
-  kicker: "What it is",
-  tier: "bench",       // "primary" for Open now, "bench" for the quieter row
-  status: "live",      // "live" with real links, "slot" when it is only a name
-  summary: "One sentence.",
-  note: "Optional. Use it when the boundary matters.",
-  links: [
-    { label: "Open", href: "https://example.com/" }
-  ]
-}
-```
+## Pages
 
-Leave `links` empty until a real `http` or `https` URL exists. Do not put passwords, tokens, or charter text in this repo.
-
-Current bench slots, still unlinked: Hephaestus (renovations), Icarus Stake (trading), Mail, Calendar, and Health.
-
-## GitHub Pages
-
-The site is the files at the repository root. No build step. `.nojekyll` keeps GitHub Pages from filtering them.
-
-1. Repository: **jpavia10/prometheus-hub** (public).
-2. Settings → Pages → Deploy from branch **main**, folder **/ (root)**.
-3. The phone URL is https://jpavia10.github.io/prometheus-hub/
-
-Paths are relative, so the same files work on that project URL and on your machine. `jarvis-hub` is unused.
+Publish the root of this repo to **jpavia10/prometheus-hub**, branch **main**, folder **/ (root)**. There is no build step. `.nojekyll` is included.

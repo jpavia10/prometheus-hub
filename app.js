@@ -1,281 +1,203 @@
 (function () {
   "use strict";
 
-  var THEMES = {
-    classic: "Classic",
-    bridge: "Starship Bridge",
-    orbit: "Orbit",
-    terminal: "Tactical Terminal"
-  };
-  var THEME_KEY = "prometheus_theme_v1";
+  var projects = Array.isArray(window.PROMETHEUS_PROJECTS) ? window.PROMETHEUS_PROJECTS : [];
+  var byId = {};
+  projects.forEach(function (project) { if (project && project.id) byId[project.id] = project; });
 
-  var projects = Array.isArray(window.PROMETHEUS_PROJECTS) ? window.PROMETHEUS_PROJECTS : null;
-  var openPane = document.getElementById("pane-open");
-  var benchPane = document.getElementById("pane-bench");
-  var statusEl = document.getElementById("live-status");
-  var chipsEl = document.getElementById("hdr-chips");
+  var live = projects.filter(function (p) { return p && p.status === "live"; });
+  var waiting = projects.filter(function (p) { return p && p.status === "slot"; });
 
-  if (!projects) {
-    if (openPane) {
-      openPane.innerHTML = '<p class="error" role="alert">The project list did not load. projects.js needs to sit beside this page.</p>';
-    }
-    return;
+  var stats = document.getElementById("desk-stats");
+  if (stats) {
+    stats.innerHTML = "<span><strong>" + live.length + "</strong> extensions live</span>" +
+      "<span><strong>" + waiting.length + "</strong> still waiting</span>" +
+      "<span><strong>Titan</strong> is the vault door</span>";
   }
 
-  var primary = projects.filter(function (p) { return p && p.tier === "primary"; });
-  var bench = projects.filter(function (p) { return p && p.tier !== "primary"; });
-  var linked = projects.filter(function (p) { return p && p.status === "live"; }).length;
-  var waiting = projects.filter(function (p) { return p && p.status === "slot"; }).length;
-
-  document.body.dataset.linked = String(linked);
-  document.body.dataset.waiting = String(waiting);
-
-  if (statusEl) {
-    statusEl.innerHTML = '<span class="dot" aria-hidden="true"></span>' + linked + " linked · " + waiting + " waiting";
-  }
-
-  if (chipsEl) {
-    chipsEl.innerHTML = primary.map(function (project) {
-      var link = firstLink(project);
-      var label = "<strong>" + esc(shortName(project)) + "</strong>";
-      if (!link) return '<span class="chip">' + label + "</span>";
-      return '<a class="chip" href="' + esc(link.href) + '" target="_blank" rel="noopener noreferrer">' +
-        label + "<span>" + esc(chipSub(project)) + "</span></a>";
+  var railList = document.getElementById("rail-list");
+  if (railList) {
+    railList.innerHTML = live.map(function (project) {
+      return "<li><span>" + esc(shortName(project)) + "</span><strong>open</strong></li>";
+    }).join("") + waiting.map(function (project) {
+      return "<li><span>" + esc(project.name || "") + "</span><strong>slot</strong></li>";
     }).join("");
   }
 
-  if (openPane) {
-    openPane.innerHTML = primary.length
-      ? '<div class="project-grid">' + primary.map(renderProject).join("") + "</div>"
-      : '<p class="error">No primary projects yet. Mark one with tier "primary" in projects.js.</p>';
+  var well = document.getElementById("well");
+  if (well) well.innerHTML = renderWell(byId["titan-reliquary"]);
+
+  var flank = document.getElementById("flank");
+  if (flank) {
+    flank.innerHTML = [byId["sylade-fleet"], byId["finances"]].filter(Boolean).map(renderSide).join("");
   }
 
-  if (benchPane) {
-    benchPane.innerHTML =
-      '<p class="pane-note">Named slots. Add a link in <code>projects.js</code> when a specialist has an address.</p>' +
-      (bench.length
-        ? '<div class="bench-grid">' + bench.map(renderSlot).join("") + "</div>"
-        : '<p class="error">No bench slots yet.</p>');
+  var wall = document.getElementById("ext-wall");
+  if (wall) {
+    var ordered = [byId["titan-reliquary"], byId["sylade-fleet"], byId["finances"]].filter(Boolean);
+    var bench = projects.filter(function (p) { return p && p.tier !== "primary"; });
+    wall.innerHTML = ordered.map(function (project) {
+      return renderPlaque(project, project.id === "titan-reliquary");
+    }).join("") + bench.map(function (project) { return renderPlaque(project, false); }).join("");
   }
 
-  bindTabs();
-  bindThemePicker();
+  bindWings();
   applyHash();
   window.addEventListener("hashchange", applyHash);
-
-  document.dispatchEvent(new CustomEvent("prometheus:render"));
-
-  if (window.PROMETHEUS_THEME) {
-    loadScripts(["themes/fx.js", "themes/" + window.PROMETHEUS_THEME + ".js"]);
-  }
+  tickClock();
+  setInterval(tickClock, 30000);
+  startWellFire();
 
   if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
     navigator.serviceWorker.register("sw.js").catch(function () {});
   }
 
-  function renderProject(project) {
-    var id = slug(project.id || project.name || "project");
-    var links = renderLinks(project.links || []);
-    var note = project.note ? '<p class="note">' + esc(project.note) + "</p>" : "";
-    return (
-      '<article class="card" id="' + id + '">' +
-        "<h3>" + esc(project.kicker || "Project") +
-          ' <span class="badge-status live">Linked</span></h3>' +
-        '<p class="val">' + esc(project.name || "Untitled") + "</p>" +
-        '<p class="hint">' + esc(project.summary || "") + "</p>" +
-        note +
-        links +
-      "</article>"
-    );
+  function renderWell(project) {
+    if (!project) return "<p>Titan Reliquary is not in projects.js.</p>";
+    return '<canvas id="desk-ember" aria-hidden="true"></canvas>' +
+      '<div class="well-copy">' +
+        '<p class="eyebrow">Primary extension</p>' +
+        "<h2>" + esc(project.name) + "</h2>" +
+        '<p class="lede">' + esc(project.summary || "") + "</p>" +
+        (project.note ? '<p class="bound">' + esc(project.note) + "</p>" : "") +
+        renderActions(project.links, true) +
+      "</div>";
   }
 
-  function renderSlot(project) {
-    var id = slug(project.id || project.name || "slot");
-    var status = project.status || "slot";
-    var foot = status === "empty"
-      ? '<p class="quiet-line">Add an object to <code>projects.js</code>.</p>'
-      : '<p class="quiet-line">No outbound link yet.</p>';
-    var links = renderLinks(project.links || []);
-    return (
-      '<article class="slot-card is-' + esc(status) + '" id="' + id + '">' +
-        '<p class="slot-kicker">' + esc(project.kicker || "Slot") + "</p>" +
-        "<h3>" + esc(project.name || "Untitled") + "</h3>" +
-        '<p class="hint">' + esc(project.summary || "") + "</p>" +
-        (links || foot) +
-      "</article>"
-    );
+  function renderSide(project) {
+    return '<article class="side">' +
+      '<p class="eyebrow">' + esc(project.kicker || "Extension") + "</p>" +
+      "<h3>" + esc(project.name || "") + "</h3>" +
+      "<p>" + esc(project.summary || "") + "</p>" +
+      renderActions(project.links, false) +
+    "</article>";
   }
 
-  function renderLinks(links) {
+  function renderPlaque(project, primary) {
+    var slot = project.status !== "live";
+    var cls = "plaque" + (primary ? " titan" : "") + (slot ? " slot" : "");
+    var foot = slot
+      ? '<p class="quiet">' + (project.status === "empty" ? "Add an object in projects.js." : "No outbound link yet.") + "</p>"
+      : (project.note ? '<p class="bound">' + esc(project.note) + "</p>" : "") + renderActions(project.links, primary);
+    return '<article class="' + cls + '" id="ext-' + slug(project.id) + '">' +
+      '<p class="eyebrow">' + esc(project.kicker || "Extension") + "</p>" +
+      "<h3>" + esc(project.name || "") + "</h3>" +
+      "<p>" + esc(project.summary || "") + "</p>" +
+      foot +
+    "</article>";
+  }
+
+  function renderActions(links, emphasizeFirst) {
     var safe = [];
     (links || []).forEach(function (link) {
-      if (!link) return;
-      var href = safeUrl(link.href);
-      var label = typeof link.label === "string" ? link.label.trim() : "";
-      if (!href || !label) return;
-      safe.push({ href: href, label: label });
+      var href = safeUrl(link && link.href);
+      var label = link && typeof link.label === "string" ? link.label.trim() : "";
+      if (href && label) safe.push({ href: href, label: label });
     });
     if (!safe.length) return "";
-    return (
-      '<div class="links">' +
-      safe.map(function (link, index) {
-        var quiet = index === 0 ? "" : " quiet";
-        return (
-          '<a class="btn' + quiet + '" href="' + esc(link.href) + '" target="_blank" rel="noopener noreferrer">' +
-            '<span class="btn-label">' + esc(link.label) + " ↗</span>" +
-            '<span class="btn-host">' + esc(hostLine(link.href)) + "</span>" +
-            '<span class="sr-only">Opens in a new tab</span>' +
-          "</a>"
-        );
-      }).join("") +
-      "</div>"
-    );
+    return '<div class="actions">' + safe.map(function (link, index) {
+      var primary = emphasizeFirst && index === 0 ? " primary" : "";
+      return '<a class="btn' + primary + '" href="' + esc(link.href) + '" target="_blank" rel="noopener noreferrer">' +
+        "<span>" + esc(link.label) + " ↗</span>" +
+        '<span class="btn-host">' + esc(hostLine(link.href)) + "</span>" +
+      "</a>";
+    }).join("") + "</div>";
   }
 
-  function firstLink(project) {
-    var links = project.links || [];
-    for (var i = 0; i < links.length; i++) {
-      var href = safeUrl(links[i] && links[i].href);
-      if (href) return { href: href, label: links[i].label || "Open" };
+  function bindWings() {
+    document.querySelectorAll(".wing").forEach(function (wing) {
+      wing.addEventListener("click", function () {
+        select(wing.getAttribute("data-wing"), true);
+      });
+    });
+  }
+
+  function select(name, write) {
+    var wing = name === "extensions" || name === "ops" ? name : "desk";
+    document.querySelectorAll(".wing").forEach(function (button) {
+      var on = button.getAttribute("data-wing") === wing;
+      button.classList.toggle("active", on);
+      if (on) button.setAttribute("aria-current", "page");
+      else button.removeAttribute("aria-current");
+    });
+    ["desk", "extensions", "ops"].forEach(function (id) {
+      var pane = document.getElementById("pane-" + id);
+      if (!pane) return;
+      var on = id === wing;
+      pane.classList.toggle("active", on);
+      pane.hidden = !on;
+    });
+    if (write) {
+      var hash = wing === "desk" ? "#desk" : "#" + wing;
+      if (location.hash !== hash) history.replaceState(null, "", hash);
     }
-    return null;
+  }
+
+  function applyHash() {
+    var hash = (location.hash || "").replace("#", "");
+    select(hash || "desk", false);
+  }
+
+  function tickClock() {
+    var el = document.getElementById("rail-time");
+    if (!el) return;
+    el.textContent = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit" }).format(new Date());
+  }
+
+  function startWellFire() {
+    var canvas = document.getElementById("desk-ember");
+    if (!canvas) return;
+    var rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (rm) return;
+    var ctx = canvas.getContext("2d");
+    var parts = [];
+    var n;
+    for (n = 0; n < 48; n++) parts.push({ x: Math.random(), y: Math.random(), v: 0.15 + Math.random() * 0.45, s: 0.4 + Math.random() });
+    function draw(now) {
+      var rect = canvas.getBoundingClientRect();
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var w = Math.max(1, rect.width);
+      var h = Math.max(1, rect.height);
+      if (canvas.width !== Math.round(w * dpr)) {
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+      }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, h);
+      var glow = ctx.createRadialGradient(w * 0.5, h * 0.82, 8, w * 0.5, h * 0.78, w * 0.46);
+      glow.addColorStop(0, "rgba(255,210,140,0.45)");
+      glow.addColorStop(0.4, "rgba(220,90,20,0.18)");
+      glow.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, w, h);
+      parts.forEach(function (p) {
+        p.y -= p.v * 0.004;
+        if (p.y < 0.15) p.y = 0.9 + Math.random() * 0.1;
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(255,190,90," + (0.25 + p.s * 0.4) + ")";
+        ctx.arc(p.x * w, p.y * h, p.s * 1.8, 0, 6.28);
+        ctx.fill();
+      });
+      if (!document.hidden && document.getElementById("pane-desk").classList.contains("active")) {
+        requestAnimationFrame(draw);
+      } else {
+        setTimeout(function () { requestAnimationFrame(draw); }, 400);
+      }
+    }
+    requestAnimationFrame(draw);
   }
 
   function shortName(project) {
     if (project.id === "titan-reliquary") return "Titan";
     if (project.id === "sylade-fleet") return "Sylade";
     if (project.id === "finances") return "Midas";
-    var name = project.name || "Open";
-    return name.split(" ")[0];
-  }
-
-  function chipSub(project) {
-    if (project.id === "finances") return "Ledger";
-    return project.kicker || "Open";
-  }
-
-  function bindTabs() {
-    var tabs = document.querySelectorAll(".tab");
-    tabs.forEach(function (tab) {
-      tab.addEventListener("click", function () { selectTab(tab.dataset.tab, true); });
-      tab.addEventListener("keydown", function (event) {
-        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-        event.preventDefault();
-        var list = Array.prototype.slice.call(tabs);
-        var i = list.indexOf(tab);
-        var next = event.key === "ArrowRight" ? (i + 1) % list.length : (i - 1 + list.length) % list.length;
-        list[next].focus();
-        selectTab(list[next].dataset.tab, true);
-      });
-    });
-  }
-
-  function selectTab(name, writeHash) {
-    var open = name !== "bench";
-    document.querySelectorAll(".tab").forEach(function (tab) {
-      var on = (tab.dataset.tab === "bench") !== open;
-      tab.classList.toggle("active", on);
-      tab.setAttribute("aria-selected", on ? "true" : "false");
-    });
-    if (openPane) {
-      openPane.classList.toggle("active", open);
-      openPane.hidden = !open;
-    }
-    if (benchPane) {
-      benchPane.classList.toggle("active", !open);
-      benchPane.hidden = open;
-    }
-    if (writeHash) {
-      var next = open ? "#open" : "#bench";
-      if (location.hash !== next) history.replaceState(null, "", next);
-    }
-  }
-
-  function applyHash() {
-    selectTab(location.hash === "#bench" ? "bench" : "open", false);
-  }
-
-  function bindThemePicker() {
-    function open() { themePicker(); }
-    var mark = document.getElementById("theme-mark");
-    var button = document.getElementById("theme-btn");
-    if (mark) mark.addEventListener("click", function (event) { event.stopPropagation(); open(); });
-    if (button) button.addEventListener("click", function (event) { event.stopPropagation(); open(); });
-  }
-
-  function themePicker() {
-    var existing = document.getElementById("theme-pop");
-    if (existing) { existing.remove(); return; }
-    var current = window.PROMETHEUS_THEME || "classic";
-    var params = new URLSearchParams(location.search);
-    var fromUrl = params.has("theme");
-    var pop = document.createElement("div");
-    pop.id = "theme-pop";
-    pop.className = "theme-pop";
-    pop.setAttribute("role", "menu");
-    pop.innerHTML = '<div class="tp-title">Display theme</div>' +
-      Object.keys(THEMES).map(function (key) {
-        var on = key === current;
-        return '<button type="button" role="menuitemradio" aria-checked="' + on + '" class="tp-item' +
-          (on ? " on" : "") + '" data-theme="' + key + '">' + esc(THEMES[key]) + "</button>";
-      }).join("") +
-      '<div class="tp-note">' + (fromUrl
-        ? "Previewing from the link. Picking one saves it on this device."
-        : "Saved on this device only.") + "</div>";
-    document.body.appendChild(pop);
-    var anchor = document.getElementById("theme-btn") || document.getElementById("theme-mark");
-    if (anchor) {
-      var rect = anchor.getBoundingClientRect();
-      var width = pop.offsetWidth || 240;
-      var left = Math.max(8, Math.min(rect.left, window.innerWidth - width - 8));
-      pop.style.top = Math.round(rect.bottom + 8) + "px";
-      pop.style.left = Math.round(left) + "px";
-    }
-    pop.querySelectorAll(".tp-item").forEach(function (item) {
-      item.addEventListener("click", function () {
-        var choice = item.getAttribute("data-theme");
-        try { localStorage.setItem(THEME_KEY, choice); } catch (err) {}
-        var url = new URL(location.href);
-        url.searchParams.delete("theme");
-        if (fromUrl) url.searchParams.set("theme", choice);
-        location.replace(url.pathname + url.search + location.hash);
-      });
-    });
-    setTimeout(function () {
-      document.addEventListener("click", function off(event) {
-        if (!pop.contains(event.target)) {
-          pop.remove();
-          document.removeEventListener("click", off);
-        }
-      });
-      document.addEventListener("keydown", function onKey(event) {
-        if (event.key === "Escape") {
-          pop.remove();
-          document.removeEventListener("keydown", onKey);
-        }
-      });
-    }, 0);
-  }
-
-  function loadScripts(sources) {
-    var i = 0;
-    function next() {
-      if (i >= sources.length) return;
-      var script = document.createElement("script");
-      script.src = sources[i++];
-      script.onload = next;
-      script.onerror = next;
-      document.body.appendChild(script);
-    }
-    next();
+    return (project.name || "").split(" ")[0];
   }
 
   function safeUrl(href) {
-    if (typeof href !== "string") return "";
-    var trimmed = href.trim();
-    if (!/^https?:\/\//i.test(trimmed)) return "";
+    if (typeof href !== "string" || !/^https?:\/\//i.test(href.trim())) return "";
     try {
-      var url = new URL(trimmed);
+      var url = new URL(href.trim());
       if (url.protocol !== "https:" && url.protocol !== "http:") return "";
       return url.href;
     } catch (err) {
@@ -289,7 +211,7 @@
   }
 
   function slug(value) {
-    return String(value).replace(/[^A-Za-z0-9_-]/g, "") || "project";
+    return String(value || "item").replace(/[^A-Za-z0-9_-]/g, "") || "item";
   }
 
   function esc(value) {
@@ -297,7 +219,6 @@
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
+      .replace(/"/g, "&quot;");
   }
 })();

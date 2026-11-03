@@ -2,38 +2,23 @@
   "id": "./",
   "name": "Prometheus Hub",
   "short_name": "Prometheus Hub",
-  "description": "Joseph’s flagship desk. Links out to the specialists that own the work.",
+  "description": "Joseph’s flagship desk. Opens Titan Reliquary, Sylade Fleet, and Midas Ledger.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#12100e",
-  "theme_color": "#12100e",
+  "background_color": "#060605",
+  "theme_color": "#060605",
   "lang": "en",
   "icons": [
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-maskable-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
     {
       "name": "Titan Reliquary",
       "short_name": "Titan",
-      "url": "https://jpavia10.github.io/titan-reliquary/",
+      "url": "https://jpavia10.github.io/titan-reliquary-preview/",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
