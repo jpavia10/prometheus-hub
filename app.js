@@ -1,224 +1,185 @@
+/* Particle field adapted from MisterPrada/morph-particles
+   (particles.frag point-sprite falloff, orange firefly color, morph between forms).
+   Shapes here are generated. The original models and tracking are not included. */
 (function () {
   "use strict";
 
   var projects = Array.isArray(window.PROMETHEUS_PROJECTS) ? window.PROMETHEUS_PROJECTS : [];
-  var byId = {};
-  projects.forEach(function (project) { if (project && project.id) byId[project.id] = project; });
+  var pills = document.getElementById("pills");
+  var waiting = document.getElementById("waiting");
 
-  var live = projects.filter(function (p) { return p && p.status === "live"; });
-  var waiting = projects.filter(function (p) { return p && p.status === "slot"; });
-
-  var stats = document.getElementById("desk-stats");
-  if (stats) {
-    stats.innerHTML = "<span><strong>" + live.length + "</strong> extensions live</span>" +
-      "<span><strong>" + waiting.length + "</strong> still waiting</span>" +
-      "<span><strong>Titan</strong> is the vault door</span>";
-  }
-
-  var railList = document.getElementById("rail-list");
-  if (railList) {
-    railList.innerHTML = live.map(function (project) {
-      return "<li><span>" + esc(shortName(project)) + "</span><strong>open</strong></li>";
-    }).join("") + waiting.map(function (project) {
-      return "<li><span>" + esc(project.name || "") + "</span><strong>slot</strong></li>";
-    }).join("");
-  }
-
-  var well = document.getElementById("well");
-  if (well) well.innerHTML = renderWell(byId["titan-reliquary"]);
-
-  var flank = document.getElementById("flank");
-  if (flank) {
-    flank.innerHTML = [byId["sylade-fleet"], byId["finances"]].filter(Boolean).map(renderSide).join("");
-  }
-
-  var wall = document.getElementById("ext-wall");
-  if (wall) {
-    var ordered = [byId["titan-reliquary"], byId["sylade-fleet"], byId["finances"]].filter(Boolean);
-    var bench = projects.filter(function (p) { return p && p.tier !== "primary"; });
-    wall.innerHTML = ordered.map(function (project) {
-      return renderPlaque(project, project.id === "titan-reliquary");
-    }).join("") + bench.map(function (project) { return renderPlaque(project, false); }).join("");
-  }
-
-  bindWings();
-  applyHash();
-  window.addEventListener("hashchange", applyHash);
-  tickClock();
-  setInterval(tickClock, 30000);
-  startWellFire();
-
-  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
-    navigator.serviceWorker.register("sw.js").catch(function () {});
-  }
-
-  function renderWell(project) {
-    if (!project) return "<p>Titan Reliquary is not in projects.js.</p>";
-    return '<canvas id="desk-ember" aria-hidden="true"></canvas>' +
-      '<div class="well-copy">' +
-        '<p class="eyebrow">Primary extension</p>' +
-        "<h2>" + esc(project.name) + "</h2>" +
-        '<p class="lede">' + esc(project.summary || "") + "</p>" +
-        (project.note ? '<p class="bound">' + esc(project.note) + "</p>" : "") +
-        renderActions(project.links, true) +
-      "</div>";
-  }
-
-  function renderSide(project) {
-    return '<article class="side">' +
-      '<p class="eyebrow">' + esc(project.kicker || "Extension") + "</p>" +
-      "<h3>" + esc(project.name || "") + "</h3>" +
-      "<p>" + esc(project.summary || "") + "</p>" +
-      renderActions(project.links, false) +
-    "</article>";
-  }
-
-  function renderPlaque(project, primary) {
-    var slot = project.status !== "live";
-    var cls = "plaque" + (primary ? " titan" : "") + (slot ? " slot" : "");
-    var foot = slot
-      ? '<p class="quiet">' + (project.status === "empty" ? "Add an object in projects.js." : "No outbound link yet.") + "</p>"
-      : (project.note ? '<p class="bound">' + esc(project.note) + "</p>" : "") + renderActions(project.links, primary);
-    return '<article class="' + cls + '" id="ext-' + slug(project.id) + '">' +
-      '<p class="eyebrow">' + esc(project.kicker || "Extension") + "</p>" +
-      "<h3>" + esc(project.name || "") + "</h3>" +
-      "<p>" + esc(project.summary || "") + "</p>" +
-      foot +
-    "</article>";
-  }
-
-  function renderActions(links, emphasizeFirst) {
-    var safe = [];
-    (links || []).forEach(function (link) {
-      var href = safeUrl(link && link.href);
-      var label = link && typeof link.label === "string" ? link.label.trim() : "";
-      if (href && label) safe.push({ href: href, label: label });
-    });
-    if (!safe.length) return "";
-    return '<div class="actions">' + safe.map(function (link, index) {
-      var primary = emphasizeFirst && index === 0 ? " primary" : "";
-      return '<a class="btn' + primary + '" href="' + esc(link.href) + '" target="_blank" rel="noopener noreferrer">' +
-        "<span>" + esc(link.label) + " ↗</span>" +
-        '<span class="btn-host">' + esc(hostLine(link.href)) + "</span>" +
-      "</a>";
-    }).join("") + "</div>";
-  }
-
-  function bindWings() {
-    document.querySelectorAll(".wing").forEach(function (wing) {
-      wing.addEventListener("click", function () {
-        select(wing.getAttribute("data-wing"), true);
-      });
+  function esc(v) {
+    return String(v == null ? "" : v).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
     });
   }
-
-  function select(name, write) {
-    var wing = name === "extensions" || name === "ops" ? name : "desk";
-    document.querySelectorAll(".wing").forEach(function (button) {
-      var on = button.getAttribute("data-wing") === wing;
-      button.classList.toggle("active", on);
-      if (on) button.setAttribute("aria-current", "page");
-      else button.removeAttribute("aria-current");
-    });
-    ["desk", "extensions", "ops"].forEach(function (id) {
-      var pane = document.getElementById("pane-" + id);
-      if (!pane) return;
-      var on = id === wing;
-      pane.classList.toggle("active", on);
-      pane.hidden = !on;
-    });
-    if (write) {
-      var hash = wing === "desk" ? "#desk" : "#" + wing;
-      if (location.hash !== hash) history.replaceState(null, "", hash);
-    }
-  }
-
-  function applyHash() {
-    var hash = (location.hash || "").replace("#", "");
-    select(hash || "desk", false);
-  }
-
-  function tickClock() {
-    var el = document.getElementById("rail-time");
-    if (!el) return;
-    el.textContent = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit" }).format(new Date());
-  }
-
-  function startWellFire() {
-    var canvas = document.getElementById("desk-ember");
-    if (!canvas) return;
-    var rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (rm) return;
-    var ctx = canvas.getContext("2d");
-    var parts = [];
-    var n;
-    for (n = 0; n < 48; n++) parts.push({ x: Math.random(), y: Math.random(), v: 0.15 + Math.random() * 0.45, s: 0.4 + Math.random() });
-    function draw(now) {
-      var rect = canvas.getBoundingClientRect();
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      var w = Math.max(1, rect.width);
-      var h = Math.max(1, rect.height);
-      if (canvas.width !== Math.round(w * dpr)) {
-        canvas.width = Math.round(w * dpr);
-        canvas.height = Math.round(h * dpr);
-      }
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
-      var glow = ctx.createRadialGradient(w * 0.5, h * 0.82, 8, w * 0.5, h * 0.78, w * 0.46);
-      glow.addColorStop(0, "rgba(255,210,140,0.45)");
-      glow.addColorStop(0.4, "rgba(220,90,20,0.18)");
-      glow.addColorStop(1, "rgba(0,0,0,0)");
-      ctx.fillStyle = glow;
-      ctx.fillRect(0, 0, w, h);
-      parts.forEach(function (p) {
-        p.y -= p.v * 0.004;
-        if (p.y < 0.15) p.y = 0.9 + Math.random() * 0.1;
-        ctx.beginPath();
-        ctx.fillStyle = "rgba(255,190,90," + (0.25 + p.s * 0.4) + ")";
-        ctx.arc(p.x * w, p.y * h, p.s * 1.8, 0, 6.28);
-        ctx.fill();
-      });
-      if (!document.hidden && document.getElementById("pane-desk").classList.contains("active")) {
-        requestAnimationFrame(draw);
-      } else {
-        setTimeout(function () { requestAnimationFrame(draw); }, 400);
-      }
-    }
-    requestAnimationFrame(draw);
-  }
-
-  function shortName(project) {
-    if (project.id === "titan-reliquary") return "Titan";
-    if (project.id === "sylade-fleet") return "Sylade";
-    if (project.id === "finances") return "Midas";
-    return (project.name || "").split(" ")[0];
-  }
-
   function safeUrl(href) {
     if (typeof href !== "string" || !/^https?:\/\//i.test(href.trim())) return "";
     try {
       var url = new URL(href.trim());
-      if (url.protocol !== "https:" && url.protocol !== "http:") return "";
-      return url.href;
-    } catch (err) {
-      return "";
-    }
+      return (url.protocol === "https:" || url.protocol === "http:") ? url.href : "";
+    } catch (e) { return ""; }
   }
-
-  function hostLine(href) {
+  function host(href) {
     var url = new URL(href);
     return url.hostname + url.pathname.replace(/\/$/, "");
   }
 
-  function slug(value) {
-    return String(value || "item").replace(/[^A-Za-z0-9_-]/g, "") || "item";
+  var live = projects.filter(function (p) { return p && p.status === "live"; });
+  var slots = projects.filter(function (p) { return p && p.status !== "live"; });
+  if (pills) {
+    pills.innerHTML = live.map(function (project) {
+      return (project.links || []).map(function (link, i) {
+        var href = safeUrl(link.href);
+        if (!href) return "";
+        return '<a class="pill' + (i ? " quiet" : "") + '" href="' + esc(href) + '" target="_blank" rel="noopener noreferrer">' +
+          "<strong>" + esc(link.label || project.name) + "</strong>" +
+          "<span>" + esc(host(href)) + "</span></a>";
+      }).join("");
+    }).join("");
+  }
+  if (waiting) {
+    waiting.textContent = slots.length
+      ? "Waiting: " + slots.map(function (p) { return p.name; }).join(", ")
+      : "";
   }
 
-  function esc(value) {
-    return String(value == null ? "" : value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
+  var canvas = document.getElementById("field");
+  var gl = canvas.getContext("webgl", { alpha: false, antialias: false, powerPreference: "high-performance" });
+  if (!gl) return;
+
+  var mobile = Math.min(window.innerWidth, window.innerHeight) < 760;
+  var N = mobile ? 7000 : 16000;
+  var forms = 4;
+  var data = new Float32Array(N * 3 * forms);
+
+  function rand(i, s) {
+    var x = Math.sin(i * 127.1 + s * 311.7) * 43758.5453;
+    return x - Math.floor(x);
+  }
+  function write(form, i, x, y, z) {
+    var o = (form * N + i) * 3;
+    data[o] = x; data[o + 1] = y; data[o + 2] = z;
+  }
+  for (var i = 0; i < N; i++) {
+    var a = rand(i, 1), b = rand(i, 2), c = rand(i, 3);
+    var arm = i % 2 === 0 ? 1 : -1;
+    var t = (i % (N / 2)) / (N / 2);
+    write(0, i, arm * (0.2 + t * 2.4) + (a - 0.5) * 0.18, Math.sin(t * 6.2 + arm) * 0.55 + (b - 0.5) * 0.22, (c - 0.5) * 0.45);
+    var g = Math.sqrt(-2 * Math.log(Math.max(1e-4, a)));
+    write(1, i, Math.cos(6.283 * b) * g * 0.55, Math.sin(6.283 * b) * g * 0.42, (c - 0.5) * g * 0.35);
+    var ang = 6.283 * a;
+    var rad = 1.15 + (b - 0.5) * 0.18;
+    write(2, i, Math.cos(ang) * rad, Math.sin(ang) * rad * 0.62, (c - 0.5) * 0.35);
+    var y = (a - 0.15) * 2.4;
+    var w = Math.max(0.05, 0.55 * (1.15 - y / 2.6));
+    write(3, i, (b - 0.5) * w, y - 0.4, (c - 0.5) * w);
+  }
+
+  var vs = [
+    "attribute vec3 a0;attribute vec3 a1;attribute vec3 a2;attribute vec3 a3;attribute float aSeed;",
+    "uniform float uMorph;uniform float uTime;uniform vec2 uMouse;uniform vec2 uRes;",
+    "varying float vHot;",
+    "vec3 pick(float m){",
+    "  float i=floor(m); float f=fract(m); f=f*f*(3.0-2.0*f);",
+    "  if(i<0.5) return mix(a0,a1,f);",
+    "  if(i<1.5) return mix(a1,a2,f);",
+    "  if(i<2.5) return mix(a2,a3,f);",
+    "  return mix(a3,a0,f);",
+    "}",
+    "void main(){",
+    "  vec3 p=pick(mod(uMorph,4.0));",
+    "  p.xy+=uMouse*0.28;",
+    "  p.x+=sin(uTime*0.6+aSeed*12.0)*0.03;",
+    "  p.xy*=0.42;",
+    "  gl_Position=vec4(p.xy,0.0,1.0);",
+    "  gl_PointSize=(3.0+aSeed*5.0)*uRes.y*0.0024*(1.15-p.z*0.12);",
+    "  vHot=p.y;",
+    "}"
+  ].join("");
+  var fs = [
+    "precision mediump float;",
+    "varying float vHot;",
+    "void main(){",
+    "  float d=distance(gl_PointCoord,vec2(0.5));",
+    "  float strength=0.05/d-0.1;",
+    "  if(strength<=0.0) discard;",
+    "  vec3 color=mix(vec3(1.0,0.28,0.02),vec3(1.0,0.72,0.2),clamp(vHot*0.4+0.45,0.0,1.0));",
+    "  gl_FragColor=vec4(color, clamp(strength,0.0,1.0));",
+    "}"
+  ].join("");
+
+  function shader(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.warn(gl.getShaderInfoLog(s));
+    return s;
+  }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, shader(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    console.error("link", gl.getProgramInfoLog(prog));
+  }
+  gl.useProgram(prog);
+
+  function buf(name, arr, size) {
+    var b = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, b);
+    gl.bufferData(gl.ARRAY_BUFFER, arr, gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(prog, name);
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, size, gl.FLOAT, false, 0, 0);
+  }
+  buf("a0", data.subarray(0, N * 3), 3);
+  buf("a1", data.subarray(N * 3, N * 6), 3);
+  buf("a2", data.subarray(N * 6, N * 9), 3);
+  buf("a3", data.subarray(N * 9, N * 12), 3);
+  var seeds = new Float32Array(N);
+  for (var s = 0; s < N; s++) seeds[s] = rand(s, 9);
+  buf("aSeed", seeds, 1);
+
+  var uMorph = gl.getUniformLocation(prog, "uMorph");
+  var uTime = gl.getUniformLocation(prog, "uTime");
+  var uMouse = gl.getUniformLocation(prog, "uMouse");
+  var uRes = gl.getUniformLocation(prog, "uRes");
+
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+  gl.clearColor(0.02, 0.024, 0.04, 1);
+
+  var mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  window.addEventListener("pointermove", function (e) {
+    mouse.tx = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouse.ty = (0.5 - e.clientY / window.innerHeight) * 2;
+  }, { passive: true });
+
+  var slow = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var start = performance.now();
+  function frame(now) {
+    var t = (now - start) / 1000;
+    mouse.x += (mouse.tx - mouse.x) * 0.05;
+    mouse.y += (mouse.ty - mouse.y) * 0.05;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = Math.floor(canvas.clientWidth * dpr);
+    var h = Math.floor(canvas.clientHeight * dpr);
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w; canvas.height = h;
+    }
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(uMorph, slow ? 1.2 : (t / 7) % 4);
+    gl.uniform1f(uTime, t);
+    gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.uniform2f(uRes, canvas.width, canvas.height);
+    gl.drawArrays(gl.POINTS, 0, N);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
   }
 })();

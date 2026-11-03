@@ -1,35 +1,25 @@
 # Prometheus Hub
 
-Joseph’s flagship desk. The shell is the same night-museum family as [Titan Reliquary Preview](https://jpavia10.github.io/titan-reliquary-preview/): Fraunces wordmark, gold on near-black, and a bottom wing dock. The room itself is the desk, not a coin board and not a copied vault.
+Joseph’s desk. A dark field of morphing particles with a thin glass layer of links. It opens the specialists. It does not copy them.
 
-Titan Reliquary is the primary extension. Ownership stays there. This page only links to the live preview and its repo. Sylade Fleet and Midas Ledger are the other two doors that already exist. Bench names wait in `projects.js` until they have an address.
+- **Titan Reliquary** — https://jpavia10.github.io/titan-reliquary-preview/ and https://github.com/jpavia10/titan-reliquary-preview
+- **Sylade Fleet** — https://discord.gg/YCam2NEkv9 and https://jpavia10.github.io/fleet-command/
+- **Midas Ledger** — https://jpavia10.github.io/midas-ledger/ and https://github.com/jpavia10/midas-ledger
 
-Nothing here signs in or stores a secret. Sylade’s charter stays in Drive as `SYLADE_CHARTER`.
+Bench names (Hephaestus, Icarus Stake, Mail, Calendar, Health) stay in `projects.js` until they have an address. No passwords or tokens belong in this repo. Sylade’s charter stays in Drive as `SYLADE_CHARTER`.
 
-## Open
+The particle field is adapted from [MisterPrada/morph-particles](https://github.com/MisterPrada/morph-particles): the same orange point-sprite falloff, morphing between forms. The shapes here are generated. That project’s models, debug UI, and analytics are not included.
 
-https://jpavia10.github.io/prometheus-hub/
-
-The first open of a session plays a fifteen-second fire. Tap, click, or Esc skips it. Reduced motion shows a still title and an Enter button instead of the film. A home-screen cold open is a new session, so it gets the full show. `?nosplash` skips. `?splash=1` forces it.
-
-iPhone: Safari → Share → Add to Home Screen. Android: Chrome → Install app. The icon is the gold P. The name is Prometheus Hub.
-
-Locally:
+## Run
 
 ```bash
 python3 -m http.server 8742
 ```
 
-## Wings
+Open http://127.0.0.1:8742
 
-- **Desk** — the hearth. Titan sits in the fire. Sylade and Midas flank it.
-- **Extensions** — the three live houses, plus the unlit slots.
-- **Ops** — what this desk is, what it refuses to keep, and how to add a name.
-
-## Add a project
-
-Append an object to `projects.js`. Use a real `https` link or leave `links` empty. Do not put passwords, tokens, or charter text in this file.
+On a phone, Add to Home Screen. The name is Prometheus Hub.
 
 ## Pages
 
-Publish the root of this repo to **jpavia10/prometheus-hub**, branch **main**, folder **/ (root)**. There is no build step. `.nojekyll` is included.
+Publish the repository root to **jpavia10/prometheus-hub**, branch **main**, folder **/ (root)**. No build step. `.nojekyll` is included.
