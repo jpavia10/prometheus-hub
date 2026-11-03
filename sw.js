@@ -1,9 +1,10 @@
 /* Prometheus Hub shell. Network first. No third-party caches, no secrets. */
-var CACHE = "prometheus-hub-v4";
+var CACHE = "prometheus-hub-v5";
 var SHELL = [
   "./",
   "./index.html",
   "./styles.css",
+  "./styles/atmospheres.css",
   "./app.js",
   "./splash.js",
   "./projects.js",

@@ -1,0 +1,147 @@
+/* Desk atmospheres. Token ports of Titan Reliquary Preview rooms.
+   Enough of the family to recolor the whole desk. Not the vault's component overrides. */
+html[data-atmo="conservator"] {
+  color-scheme: light;
+  --bg: #f1eadb; --bg2: #e7ddc5; --surface: #fbf7ee; --surface2: #f0e6cf;
+  --ink: #221c12; --muted: #5c4f3c; --faint: #72654b;
+  --gold: #7f5218; --gold-soft: #7a2e2e; --gold-deep: #a8894c;
+  --line: rgba(122, 46, 46, 0.22); --line-strong: rgba(122, 46, 46, 0.42);
+  --ok: #2f6b3a; --warn: #8a5a00; --bad: #a03024;
+  --glow: rgba(122, 46, 46, 0.16);
+  --shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 14px 34px rgba(60,45,20,0.16);
+  --drawerbar-bg: rgba(251, 247, 238, 0.94);
+  --foot-bg: rgba(241, 234, 219, 0.94);
+  --hold-bg: linear-gradient(135deg, #f3e6cf, #e4d3ae);
+  --radius: 10px;
+}
+html[data-atmo="colossus"] {
+  color-scheme: dark;
+  --bg: #170f06; --bg2: #1f1409; --surface: #251a0c; --surface2: #32220f;
+  --ink: #fbeed4; --muted: #c09a5e; --faint: #ac8853;
+  --gold: #f2a93b; --gold-soft: #ffd98c; --gold-deep: #9a651a;
+  --line: rgba(242, 169, 59, 0.22); --line-strong: rgba(242, 169, 59, 0.48);
+  --ok: #7fbf6a; --warn: #e0a93e; --bad: #e8735a;
+  --glow: rgba(242, 169, 59, 0.28);
+  --drawerbar-bg: rgba(37, 26, 12, 0.95);
+  --foot-bg: rgba(23, 15, 6, 0.94);
+  --hold-bg: linear-gradient(135deg, #3a240c, #1a1005);
+  --radius: 6px;
+}
+html[data-atmo="nocturne"] {
+  color-scheme: dark;
+  --bg: #070b16; --bg2: #0a0f1e; --surface: #0d1424; --surface2: #141c31;
+  --ink: #eae6da; --muted: #8f96ad; --faint: #7b839d;
+  --gold: #cfa95f; --gold-soft: #ecd096; --gold-deep: #77602f;
+  --line: rgba(140, 160, 210, 0.18); --line-strong: rgba(140, 160, 210, 0.4);
+  --ok: #6bbf7a; --glow: rgba(207, 169, 95, 0.18);
+  --drawerbar-bg: rgba(13, 20, 36, 0.94);
+  --foot-bg: rgba(7, 11, 22, 0.94);
+  --hold-bg: linear-gradient(135deg, #1a2238, #0a0f1e);
+}
+html[data-atmo="odyssey"] {
+  color-scheme: dark;
+  --bg: #04121a; --bg2: #071a24; --surface: #0a2230; --surface2: #0f2c3d;
+  --ink: #f2e8d5; --muted: #9db3b8; --faint: #7f99a3;
+  --gold: #ffb347; --gold-soft: #ffd9a0; --gold-deep: #8a5a1e;
+  --line: rgba(255, 179, 71, 0.22); --line-strong: rgba(255, 179, 71, 0.46);
+  --ok: #7fd6a0; --glow: rgba(255, 179, 71, 0.2);
+  --drawerbar-bg: rgba(10, 34, 48, 0.94);
+  --foot-bg: rgba(4, 18, 26, 0.94);
+  --hold-bg: linear-gradient(135deg, #123044, #071820);
+}
+html[data-atmo="abyss"] {
+  color-scheme: dark;
+  --bg: #03111c; --bg2: #051826; --surface: #082233; --surface2: #0e2e42;
+  --ink: #e6f6f8; --muted: #9cbdc9; --faint: #7a9dab;
+  --gold: #4fd6e2; --gold-soft: #b2eef3; --gold-deep: #1f7488;
+  --line: rgba(95, 205, 225, 0.2); --line-strong: rgba(95, 205, 225, 0.45);
+  --ok: #5fe0a9; --warn: #ffd166; --bad: #ff8f85;
+  --glow: rgba(79, 214, 226, 0.2);
+  --drawerbar-bg: rgba(8, 34, 51, 0.94);
+  --foot-bg: rgba(3, 17, 28, 0.94);
+  --hold-bg: linear-gradient(135deg, #0e3a4a, #041520);
+}
+html[data-atmo="neon"] {
+  color-scheme: dark;
+  --bg: #07060d; --bg2: #0c0a16; --surface: #12101c; --surface2: #1c1830;
+  --ink: #f4f1ff; --muted: #b7a9d4; --faint: #8d7eae;
+  --gold: #ff4fd8; --gold-soft: #9af7ff; --gold-deep: #7a2d86;
+  --line: rgba(255, 79, 216, 0.24); --line-strong: rgba(154, 247, 255, 0.42);
+  --ok: #5dffc3; --warn: #ffd15c; --bad: #ff6b8a;
+  --glow: rgba(255, 79, 216, 0.22);
+  --drawerbar-bg: rgba(12, 10, 22, 0.94);
+  --foot-bg: rgba(7, 6, 13, 0.94);
+  --hold-bg: linear-gradient(135deg, #2a1030, #120818);
+  --radius: 14px;
+}
+html[data-atmo="glacier"] {
+  color-scheme: dark;
+  --bg: #071018; --bg2: #0c1824; --surface: #0e1c2c; --surface2: #172a3d;
+  --ink: #eef8fd; --muted: #b7cee0; --faint: #8ea9c0;
+  --gold: #7fdcff; --gold-soft: #cbf1ff; --gold-deep: #2c86b0;
+  --line: rgba(127, 220, 255, 0.2); --line-strong: rgba(127, 220, 255, 0.45);
+  --ok: #62ecb0; --glow: rgba(127, 220, 255, 0.2);
+  --drawerbar-bg: rgba(14, 28, 44, 0.94);
+  --foot-bg: rgba(7, 16, 24, 0.94);
+  --hold-bg: linear-gradient(135deg, #143044, #071018);
+  --radius: 8px;
+}
+html[data-atmo="valhalla"] {
+  color-scheme: dark;
+  --bg: #0b0806; --bg2: #150e09; --surface: #1a120b; --surface2: #2b1e13;
+  --ink: #f8ecd6; --muted: #d0ba99; --faint: #a58f70;
+  --gold: #f39a3d; --gold-soft: #ffd18a; --gold-deep: #9a4b12;
+  --line: rgba(243, 154, 61, 0.22); --line-strong: rgba(243, 154, 61, 0.48);
+  --ok: #93cf62; --bad: #ff7b62; --glow: rgba(243, 154, 61, 0.24);
+  --drawerbar-bg: rgba(26, 18, 11, 0.95);
+  --foot-bg: rgba(11, 8, 6, 0.94);
+  --hold-bg: linear-gradient(135deg, #3a2412, #150e09);
+  --radius: 4px;
+}
+html[data-atmo="solaris"] {
+  color-scheme: dark;
+  --bg: #050507; --bg2: #0a0a0e; --surface: #111116; --surface2: #1b1c24;
+  --ink: #fff4dc; --muted: #d3c6a6; --faint: #a89c80;
+  --gold: #ffb52e; --gold-soft: #ffe08a; --gold-deep: #b56a08;
+  --line: rgba(255, 181, 46, 0.2); --line-strong: rgba(255, 181, 46, 0.46);
+  --ok: #86e3a6; --glow: rgba(255, 181, 46, 0.22);
+  --drawerbar-bg: rgba(17, 17, 22, 0.94);
+  --foot-bg: rgba(5, 5, 7, 0.94);
+  --hold-bg: linear-gradient(135deg, #2a220c, #0a0a0e);
+}
+html[data-atmo="zen"] {
+  color-scheme: dark;
+  --bg: #0a0c0d; --bg2: #101315; --surface: #151a1d; --surface2: #212830;
+  --ink: #f3efe5; --muted: #cdd0c6; --faint: #9ea49b;
+  --gold: #b9d58a; --gold-soft: #dcebbc; --gold-deep: #62793b;
+  --line: rgba(243, 239, 229, 0.12); --line-strong: rgba(185, 213, 138, 0.4);
+  --ok: #9bd68c; --warn: #f0b062; --bad: #ff8466;
+  --glow: rgba(185, 213, 138, 0.16);
+  --drawerbar-bg: rgba(21, 26, 29, 0.94);
+  --foot-bg: rgba(10, 12, 13, 0.94);
+  --hold-bg: linear-gradient(135deg, #243028, #101315);
+  --radius: 6px;
+}
+html[data-atmo="silkroad"] {
+  color-scheme: dark;
+  --bg: #050b16; --bg2: #0a1426; --surface: #0d1a33; --surface2: #182a4e;
+  --ink: #f9f0dc; --muted: #dbd0b4; --faint: #aeb0b6;
+  --gold: #e8ba4c; --gold-soft: #f8de98; --gold-deep: #a67a1c;
+  --line: rgba(232, 186, 76, 0.2); --line-strong: rgba(232, 186, 76, 0.46);
+  --ok: #45d6c6; --warn: #ff9f5a; --glow: rgba(232, 186, 76, 0.18);
+  --drawerbar-bg: rgba(13, 26, 51, 0.94);
+  --foot-bg: rgba(5, 11, 22, 0.94);
+  --hold-bg: linear-gradient(135deg, #1c3358, #0a1426);
+  --radius: 12px;
+}
+html[data-atmo="kaleido"] {
+  color-scheme: dark;
+  --bg: #130b20; --bg2: #190f2b; --surface: #1d1231; --surface2: #281a44;
+  --ink: #f6f0fb; --muted: #c3afdc; --faint: #9b86bb;
+  --gold: #ee6fd6; --gold-soft: #ffc6ee; --gold-deep: #9a3a86;
+  --line: rgba(238, 111, 214, 0.22); --line-strong: rgba(167, 139, 255, 0.4);
+  --ok: #6fd6de; --glow: rgba(238, 111, 214, 0.2);
+  --drawerbar-bg: rgba(29, 18, 49, 0.94);
+  --foot-bg: rgba(19, 11, 32, 0.94);
+  --hold-bg: linear-gradient(135deg, #3a2058, #190f2b);
+}
