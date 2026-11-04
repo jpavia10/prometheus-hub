@@ -1,8 +1,9 @@
 /* Prometheus Hub. Network first. Same-origin shell only. No secrets. */
-var CACHE = "prometheus-hub-morph-v1";
+var CACHE = "prometheus-hub-desk-v3";
 var SHELL = [
   "./",
   "./index.html",
+  "./sylade.html",
   "./styles.css",
   "./hub.js",
   "./manifest.webmanifest",
