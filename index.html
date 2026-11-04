@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
   <title>Prometheus Hub</title>
-  <meta name="description" content="Prometheus Hub is the desk for Titan Reliquary, Sylade Fleet, and Midas Ledger.">
-  <meta name="theme-color" content="#05060a">
+  <meta name="description" content="Prometheus Hub is the desk. Sylade stands beside it. Titan, Midas, and Hephaestus are open. Five seats are reserved. Fleet Command is idle.">
+  <meta name="theme-color" content="#05070e">
   <meta name="color-scheme" content="dark">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
@@ -20,8 +20,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&amp;display=swap">
   <link rel="stylesheet" href="./styles.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
-<body>
+<body data-page="desk" data-chapter="desk">
+  <a class="skip" href="#desk">Skip to the desk</a>
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="veil" aria-hidden="true"></div>
 
@@ -31,83 +33,309 @@
       <span>Prometheus Hub</span>
     </a>
     <nav class="topnav" aria-label="Desk">
-      <a href="#desk" aria-current="true">Desk</a>
-      <a href="#titan">Titan</a>
+      <a href="#desk" aria-current="true">Today</a>
       <a href="#sylade">Sylade</a>
-      <a href="#midas">Midas</a>
+      <a href="#houses">Houses</a>
+      <a href="#seats">Seats</a>
     </nav>
   </header>
 
   <main>
     <section id="desk" class="panel hero">
       <div class="hero-mark">
-        <span class="sq big" aria-hidden="true"></span>
+        <span class="sq" aria-hidden="true"></span>
         <h1>PROMETHEUS <span class="hub">hub</span></h1>
       </div>
-      <div class="hero-copy">
-        <p>One desk for the houses that already exist. Titan keeps the vault. Sylade keeps the fleet. Midas keeps the ledger.</p>
-        <a class="pill" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Open Titan <span aria-hidden="true">→</span></a>
-        <a class="quiet" href="#titan">See the doors</a>
-      </div>
-    </section>
-
-    <section id="titan" class="panel">
-      <div class="copy">
-        <p class="kicker">Primary extension</p>
-        <h2>Titan Reliquary</h2>
-        <p>The live coin house. The collection stays there. This desk only opens the door.</p>
-        <div class="actions">
-          <a class="pill" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Open preview <span aria-hidden="true">→</span></a>
-          <a class="quiet" href="https://github.com/jpavia10/titan-reliquary-preview" target="_blank" rel="noopener noreferrer">Repository</a>
+      <p class="lede">The desk keeps the room. The wings keep their own work. Nothing on this page signs in.</p>
+      <div class="deskglass">
+        <div class="clock-block">
+          <time class="clock" data-clock datetime="">—</time>
+          <p class="atmo"><span data-atmo>Quiet field</span></p>
+          <p class="day-line" data-day></p>
         </div>
+        <button type="button" class="arc-btn" data-open="kairos" aria-label="Open Kairos Meridian, the day seat">
+          <svg class="day-arc" viewBox="0 0 200 90" aria-hidden="true">
+            <path d="M14 72 A86 56 0 0 1 186 72" fill="none" stroke="rgba(201,184,234,0.7)" stroke-width="1.25"></path>
+            <path d="M14 74 H186" fill="none" stroke="rgba(244,247,251,0.2)" stroke-width="1"></path>
+            <circle class="arc-now" cx="100" cy="16" r="4.2" fill="#f4f7fb"></circle>
+          </svg>
+          <span class="arc-label">Day</span>
+        </button>
+        <p class="brief">Sylade stands beside this room. Three wings are open. Five seats are only marked. Lines you keep stay in this browser.</p>
+        <div class="status">
+          <a href="#houses">3 wings open</a>
+          <a href="#seats">5 seats reserved</a>
+          <button type="button" data-open="drive">Drive linked</button>
+          <button type="button" data-open="fleet">Fleet idle</button>
+          <button type="button" data-open="desk">About this desk</button>
+          <span data-notes>None yet</span>
+        </div>
+        <form class="focus" id="focus-form">
+          <label for="focus-input">On this device</label>
+          <div class="focus-row">
+            <input id="focus-input" name="focus" maxlength="80" placeholder="A line for this desk" autocomplete="off" enterkeyhint="done">
+            <button type="submit">Keep</button>
+          </div>
+          <p class="focus-empty" id="focus-empty">Nothing kept yet. Notes stay in this browser. They are not synced.</p>
+          <ul id="focus-list"></ul>
+        </form>
+        <a class="drive-row" href="https://drive.google.com/drive/folders/1ykx47zGga6Jbd4FrUzBWde2frT3_6cnP" target="_blank" rel="noopener noreferrer" data-open="drive">
+          <strong>Prometheus Hub Drive</strong>
+          <span>AI folders and Shared. Files stay in Drive.</span>
+          <em>Open the folder</em>
+        </a>
       </div>
     </section>
 
     <section id="sylade" class="panel">
-      <div class="copy">
-        <p class="kicker">Agent-run social</p>
-        <h2>Sylade Fleet</h2>
-        <p>Shared identity across the fleet. Fleet Command is the bridge. Nothing on this desk signs in.</p>
-        <div class="actions">
-          <a class="pill" href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer">Fleet Command <span aria-hidden="true">→</span></a>
-          <a class="quiet" href="https://discord.gg/YCam2NEkv9" target="_blank" rel="noopener noreferrer">Discord</a>
-        </div>
+      <div class="copy reveal">
+        <p class="kicker">Alter ego</p>
+        <h2>Sylade</h2>
+        <p>Alongside Prometheus. Mail, code, and the public room live here. Sylade is not Fleet Command, and not a wing you file work into.</p>
+      </div>
+      <div class="contacts reveal">
+        <a href="mailto:sylade.ais@gmail.com">
+          <strong>sylade.ais@gmail.com</strong>
+          <small>Public mail. Not an inbox on this desk.</small>
+          <em>Email</em>
+        </a>
+        <a href="https://github.com/sylade-ais" target="_blank" rel="noopener noreferrer">
+          <strong>github.com/sylade-ais</strong>
+          <small>Profile name Sylade. Shared AI identity.</small>
+          <em>GitHub</em>
+        </a>
+        <a href="https://discord.gg/YCam2NEkv9" target="_blank" rel="noopener noreferrer">
+          <strong>Sylade Fleet</strong>
+          <small>The public Discord room. Not the Fleet Command site.</small>
+          <em>Discord</em>
+        </a>
+      </div>
+      <div class="actions reveal">
+        <a class="pill" href="./sylade.html" data-handoff="Sylade">Enter presence <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <section id="midas" class="panel">
-      <div class="copy">
-        <p class="kicker">Ledger</p>
-        <h2>Midas Ledger</h2>
-        <p>The password-locked book. Balances stay inside that app. No keys are kept here.</p>
-        <div class="actions">
-          <a class="pill" href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer">Open Midas <span aria-hidden="true">→</span></a>
-          <a class="quiet" href="https://github.com/jpavia10/midas-ledger" target="_blank" rel="noopener noreferrer">Repository</a>
-        </div>
-        <p class="credit">Particle field adapted from <a href="https://github.com/MisterPrada/morph-particles" target="_blank" rel="noopener noreferrer">MisterPrada / morph-particles</a>.</p>
+    <section id="houses" class="panel">
+      <div class="copy reveal">
+        <p class="kicker">Open wings</p>
+        <h2>The houses</h2>
+        <p>Each one keeps its own work. Read it here, then leave the desk if you want the wing itself. Point at a house and the field takes its shape.</p>
       </div>
+      <div class="list reveal">
+        <a class="row" id="titan" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer" data-open="titan">
+          <span class="row-name">Titan Reliquary</span>
+          <span class="row-role">Coin house. The collection stays in the preview.</span>
+          <span class="row-status">Live</span>
+        </a>
+        <a class="row" id="midas" href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer" data-open="midas">
+          <span class="row-name">Midas Ledger</span>
+          <span class="row-role">Locked book. No balances render here.</span>
+          <span class="row-status">Live</span>
+        </a>
+        <a class="row" id="hearth" href="https://jpavia10.github.io/hephaestus-hearth/" target="_blank" rel="noopener noreferrer" data-open="hearth">
+          <span class="row-name">Hephaestus Hearth</span>
+          <span class="row-role">House and renovations. Bones of a 3D house.</span>
+          <span class="row-status">Live</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="seats" class="panel">
+      <div class="copy reveal">
+        <p class="kicker">Reserved</p>
+        <h2>The seats</h2>
+        <p>No pages yet. The seats are marked so the map is whole. Nothing private is stored for them.</p>
+      </div>
+      <div class="list reveal">
+        <a class="row" id="apollo" href="#apollo" data-open="apollo">
+          <span class="row-name">Apollo Temple</span>
+          <span class="row-role">Health, fitness, nutrition. No record on this desk.</span>
+          <span class="row-status is-seat">Body</span>
+        </a>
+        <a class="row" id="hermes" href="#hermes" data-open="hermes">
+          <span class="row-name">Hermes Post</span>
+          <span class="row-role">Mail seat. No inbox connected.</span>
+          <span class="row-status is-seat">Post</span>
+        </a>
+        <a class="row" id="kairos" href="#kairos" data-open="kairos">
+          <span class="row-name">Kairos Meridian</span>
+          <span class="row-role">Calendar seat. The clock and the day arc already run.</span>
+          <span class="row-status is-seat">Time</span>
+        </a>
+        <a class="row" id="icarus" href="#icarus" data-open="icarus">
+          <span class="row-name">Icarus Stake</span>
+          <span class="row-role">High-risk trading. Not connected. This desk does not trade.</span>
+          <span class="row-status is-seat">Risk</span>
+        </a>
+        <a class="row" id="argus" href="#argus" data-open="argus">
+          <span class="row-name">Argus Album</span>
+          <span class="row-role">Photos. No public album yet. No pictures kept here.</span>
+          <span class="row-status is-seat">Photos</span>
+        </a>
+      </div>
+      <p class="risk-note reveal">Icarus Stake is the high-risk trading seat. It is not connected to a broker. This desk does not show positions, balances, orders, or signals, and it cannot place a trade.</p>
+      <p class="fleet-line reveal" id="fleet">Fleet Command is idle on purpose. The build continues. The live bridge does not run, and it is not Sylade. <a href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer" data-open="fleet">The bridge</a> stays at its own address.</p>
+      <p class="credit reveal">Particle field adapted from <a href="https://github.com/MisterPrada/morph-particles" target="_blank" rel="noopener noreferrer">MisterPrada / morph-particles</a>.</p>
     </section>
   </main>
 
-  <nav class="dock" aria-label="Extension links">
-    <div class="dock-links">
-      <a href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Titan</a>
-      <span class="sep" aria-hidden="true">·</span>
-      <a href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer">Sylade</a>
-      <span class="sep" aria-hidden="true">·</span>
-      <a href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer">Midas</a>
+  <button type="button" id="field-hit" class="field-hit">About this desk</button>
+
+  <nav class="dock" aria-label="Wings">
+    <div class="dock-primary">
+      <div class="dock-links">
+        <a href="#sylade">Sylade</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="#titan" data-open="titan">Titan</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="#midas" data-open="midas">Midas</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="#hearth" data-open="hearth">Hearth</a>
+      </div>
+      <button type="button" class="dock-cta" id="dock-cta">Add a note</button>
     </div>
-    <a class="dock-cta" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Open Titan <span aria-hidden="true">→</span></a>
+    <div class="dock-quiet">
+      <a href="#apollo" data-open="apollo">Apollo</a>
+      <a href="#hermes" data-open="hermes">Hermes</a>
+      <a href="#kairos" data-open="kairos">Kairos</a>
+      <a href="#icarus" data-open="icarus">Icarus</a>
+      <a href="#argus" data-open="argus">Argus</a>
+      <a href="#drive" data-open="drive">Drive</a>
+      <a class="is-idle" href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer" data-open="fleet">Fleet · idle</a>
+    </div>
   </nav>
+
+  <div class="handoff" hidden>
+    <p class="kicker">Opening</p>
+    <p class="handoff-name">Sylade</p>
+  </div>
+  <div class="toast" hidden role="status"></div>
+
+  <dialog id="sheet-desk" class="sheet" aria-labelledby="desk-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">The desk</p>
+    <h3 id="desk-title">Prometheus</h3>
+    <p>This page is the room. It keeps a clock, a day arc, and focus lines in this browser. It does not sign in, and it does not store passwords, ledgers, photos, or trades.</p>
+    <p>Sylade stands beside the desk and is not a wing. Titan, Midas, and Hephaestus are open. Apollo, Hermes, Kairos, Icarus, and Argus have seats before they have pages. The Drive holds AI folders and Shared. Fleet Command is idle on purpose. Its build continues. The live bridge does not run.</p>
+  </dialog>
+
+  <dialog id="sheet-titan" class="sheet" aria-labelledby="titan-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Live wing · coin house</p>
+    <h3 id="titan-title">Titan Reliquary</h3>
+    <p>The collection stays in the reliquary. This desk only opens the door. There is no vault chrome here, and no balances.</p>
+    <div class="actions">
+      <a class="pill" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer" data-out="Opening Titan Reliquary">Open preview <span aria-hidden="true">→</span></a>
+      <a class="quiet" href="https://github.com/jpavia10/titan-reliquary-preview" target="_blank" rel="noopener noreferrer">Repository</a>
+    </div>
+  </dialog>
+
+  <dialog id="sheet-midas" class="sheet" aria-labelledby="midas-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Live wing · the book</p>
+    <h3 id="midas-title">Midas Ledger</h3>
+    <p>Password-locked, on its own origin. Figures never render on this desk. No key is stored in this repo.</p>
+    <div class="actions">
+      <a class="pill" href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer" data-out="Opening Midas Ledger">Open Midas <span aria-hidden="true">→</span></a>
+      <a class="quiet" href="https://github.com/jpavia10/midas-ledger" target="_blank" rel="noopener noreferrer">Repository</a>
+    </div>
+  </dialog>
+
+  <dialog id="sheet-hearth" class="sheet" aria-labelledby="hearth-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Live wing · house</p>
+    <h3 id="hearth-title">Hephaestus Hearth</h3>
+    <p>Renovations and the house itself. The landing draws the bones of a 3D house before the rooms are finished. This desk does not keep a project list or a budget for it.</p>
+    <div class="actions">
+      <a class="pill" href="https://jpavia10.github.io/hephaestus-hearth/" target="_blank" rel="noopener noreferrer" data-out="Opening Hephaestus Hearth">Open Hearth <span aria-hidden="true">→</span></a>
+      <a class="quiet" href="https://github.com/jpavia10/hephaestus-hearth" target="_blank" rel="noopener noreferrer">Repository</a>
+    </div>
+  </dialog>
+
+  <dialog id="sheet-apollo" class="sheet" aria-labelledby="apollo-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Seat · body</p>
+    <h3 id="apollo-title">Apollo Temple</h3>
+    <p>Health, fitness, and nutrition will live in their own wing. Nothing is recorded here — no weight, no meals, no sessions. The mark is only so Apollo is not missing from the map.</p>
+    <p>No page is linked yet.</p>
+  </dialog>
+
+  <dialog id="sheet-hermes" class="sheet" aria-labelledby="hermes-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Seat · mail</p>
+    <h3 id="hermes-title">Hermes Post</h3>
+    <p>The messenger between houses. No inbox is connected, and no message is stored on the desk. Sylade’s public address is the alter ego’s mail, not this post.</p>
+    <p>No page is linked yet.</p>
+  </dialog>
+
+  <dialog id="sheet-kairos" class="sheet" aria-labelledby="kairos-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Seat · time</p>
+    <h3 id="kairos-title">Kairos Meridian</h3>
+    <p>The day already shows on this desk. A full calendar wing is not linked, and no personal calendar is read from here.</p>
+    <svg class="day-arc" viewBox="0 0 200 90" aria-hidden="true">
+      <path d="M14 72 A86 56 0 0 1 186 72" fill="none" stroke="rgba(201,184,234,0.8)" stroke-width="1.4"></path>
+      <circle class="arc-now" cx="100" cy="16" r="4.5" fill="#f4f7fb"></circle>
+    </svg>
+    <p><time data-clock>—</time> · <span data-atmo>Quiet field</span> · <span data-day></span></p>
+  </dialog>
+
+  <dialog id="sheet-icarus" class="sheet" aria-labelledby="icarus-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Seat · high risk</p>
+    <h3 id="icarus-title">Icarus Stake</h3>
+    <p class="disclaimer">High-risk trading seat. Not connected to a broker. This desk does not show positions, balances, orders, or signals, and it cannot place a trade. Nothing here is advice. The seat exists so the risk has a name and stays off the other wings.</p>
+    <p>No page is linked yet.</p>
+  </dialog>
+
+  <dialog id="sheet-argus" class="sheet" aria-labelledby="argus-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Seat · photos</p>
+    <h3 id="argus-title">Argus Album</h3>
+    <p>No public album is linked, and no pictures are kept on this desk. Source repos exist under the Titan photo sets. They are not this album.</p>
+    <ul class="repos">
+      <li><a href="https://github.com/jpavia10/titan-photos-as" target="_blank" rel="noopener noreferrer">titan-photos-as</a></li>
+      <li><a href="https://github.com/jpavia10/titan-photos-eu" target="_blank" rel="noopener noreferrer">titan-photos-eu</a></li>
+      <li><a href="https://github.com/jpavia10/titan-photos-na" target="_blank" rel="noopener noreferrer">titan-photos-na</a></li>
+    </ul>
+  </dialog>
+
+  <dialog id="sheet-drive" class="sheet" aria-labelledby="drive-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Files</p>
+    <h3 id="drive-title">Prometheus Hub Drive</h3>
+    <p>AI folders and Shared. The files stay in Drive. This desk only opens the folder. Nothing from it is copied into the repo.</p>
+    <div class="actions">
+      <a class="pill" href="https://drive.google.com/drive/folders/1ykx47zGga6Jbd4FrUzBWde2frT3_6cnP" target="_blank" rel="noopener noreferrer" data-out="Opening the Drive">Open Drive <span aria-hidden="true">→</span></a>
+    </div>
+  </dialog>
+
+  <dialog id="sheet-fleet" class="sheet" aria-labelledby="fleet-title">
+    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
+    <p class="kicker">Idle</p>
+    <h3 id="fleet-title">Fleet Command</h3>
+    <p>The bridge is idle on purpose. The build continues. The live page does not run the fleet. It is not Sylade. Sylade is the alter ego: mail, GitHub, and the Discord room called Sylade Fleet.</p>
+    <div class="actions">
+      <a class="quiet" href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer" data-out="Fleet Command — idle">Open the idle bridge</a>
+    </div>
+  </dialog>
 
   <noscript>
     <section class="fallback">
       <h2>Prometheus Hub</h2>
+      <p>Sylade is separate from Fleet Command.</p>
       <ul>
-        <li><a href="https://jpavia10.github.io/titan-reliquary-preview/">Titan Reliquary</a> · <a href="https://github.com/jpavia10/titan-reliquary-preview">repository</a></li>
-        <li><a href="https://jpavia10.github.io/fleet-command/">Sylade Fleet Command</a> · <a href="https://discord.gg/YCam2NEkv9">Discord</a></li>
-        <li><a href="https://jpavia10.github.io/midas-ledger/">Midas Ledger</a> · <a href="https://github.com/jpavia10/midas-ledger">repository</a></li>
+        <li><a href="mailto:sylade.ais@gmail.com">sylade.ais@gmail.com</a></li>
+        <li><a href="https://github.com/sylade-ais">github.com/sylade-ais</a></li>
+        <li><a href="https://discord.gg/YCam2NEkv9">Discord · Sylade Fleet</a></li>
+        <li><a href="./sylade.html">Sylade presence</a></li>
+        <li><a href="https://jpavia10.github.io/titan-reliquary-preview/">Titan Reliquary</a></li>
+        <li><a href="https://jpavia10.github.io/midas-ledger/">Midas Ledger</a></li>
+        <li><a href="https://jpavia10.github.io/hephaestus-hearth/">Hephaestus Hearth</a></li>
+        <li><a href="https://drive.google.com/drive/folders/1ykx47zGga6Jbd4FrUzBWde2frT3_6cnP">Prometheus Hub Drive</a></li>
+        <li><a href="https://jpavia10.github.io/fleet-command/">Fleet Command (idle)</a></li>
       </ul>
+      <p>Apollo Temple, Hermes Post, Kairos Meridian, Icarus Stake, and Argus Album have no pages yet. Icarus is a high-risk trading seat and is not connected.</p>
     </section>
   </noscript>
 

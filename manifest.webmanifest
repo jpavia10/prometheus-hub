@@ -2,12 +2,12 @@
   "id": "./",
   "name": "Prometheus Hub",
   "short_name": "Prometheus Hub",
-  "description": "The desk for Titan Reliquary, Sylade Fleet, and Midas Ledger.",
+  "description": "The desk for Sylade, Titan Reliquary, Midas Ledger, and Hephaestus Hearth.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#05060a",
-  "theme_color": "#05060a",
+  "background_color": "#05070e",
+  "theme_color": "#05070e",
   "lang": "en",
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
@@ -16,21 +16,33 @@
   ],
   "shortcuts": [
     {
+      "name": "Sylade",
+      "short_name": "Sylade",
+      "url": "./sylade.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
       "name": "Titan Reliquary",
       "short_name": "Titan",
       "url": "./#titan",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Sylade Fleet",
-      "short_name": "Sylade",
-      "url": "./#sylade",
-      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
-    },
-    {
       "name": "Midas Ledger",
       "short_name": "Midas",
       "url": "./#midas",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Hephaestus Hearth",
+      "short_name": "Hearth",
+      "url": "./#hearth",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Drive",
+      "short_name": "Drive",
+      "url": "./#drive",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
