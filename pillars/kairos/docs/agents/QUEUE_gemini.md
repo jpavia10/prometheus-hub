@@ -2,7 +2,7 @@
 
 # Kairos Meridian · homework for Gemini
 
-Updated 2026-11-05 02:52 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 03:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)
 

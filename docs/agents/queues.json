@@ -8,6 +8,39 @@
    "name": "Gemini",
    "tasks": [
     {
+     "id": "HUB-GEM-00",
+     "title": "FIRST: the home-screen icons for Titan and Prometheus (6 images)",
+     "state": "now",
+     "due": "2026-11-06",
+     "why": "Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.",
+     "inputs": [
+      "the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)",
+      "Drive doc 'ART_START_HERE (any AI: images + video)'"
+     ],
+     "steps": [
+      "Claim it: save an empty file named artreq_20261105-0300_app-icons-titan-prometheus.CLAIMED-gemini.txt in the art-requests folder (skip the request if another AI claimed it less than 24 hours ago).",
+      "Make the 6 images with your own image model, one at a time, square, at least 1024x1024, full-bleed, the subject inside the central 66 % circle.",
+      "Save them with the exact file names into 'Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/'.",
+      "Write artreq_20261105-0300_app-icons-titan-prometheus.DONE.txt next to the request: one line per file, ok or skipped: reason, your model name and the date."
+     ],
+     "deliver": {
+      "file": "titan_icon_take1..3.png + prometheus_icon_take1..3.png",
+      "folder": "Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/",
+      "shape": "6 PNG files, square, >= 1024 px"
+     },
+     "count": 6,
+     "done_when": "6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.",
+     "checks": [
+      "Claude opens every image at full size and at 48x48 px, masked to a circle.",
+      "A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped."
+     ],
+     "rejected_if": [
+      "readable letters on any take but titan_icon_take3 (exactly TR)",
+      "rounded corners, a border or a white background",
+      "smaller than 1024x1024"
+     ]
+    },
+    {
      "id": "HUB-GEM-01",
      "title": "Reference wall: 40 live sites with the experimental, futuristic desk look",
      "state": "now",

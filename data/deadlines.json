@@ -1,6 +1,17 @@
 {
- "updated": "2026-11-05 02:52 UTC",
+ "updated": "2026-11-05 03:00 UTC",
  "tasks": [
+  {
+   "due": "2026-11-06",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-00",
+   "title": "FIRST: the home-screen icons for Titan and Prometheus (6 images)",
+   "state": "now",
+   "count": 6
+  },
   {
    "due": "2026-11-09",
    "pillar": "hub",

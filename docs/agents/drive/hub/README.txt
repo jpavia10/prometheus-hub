@@ -8,16 +8,18 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-05 02:52 UTC · 0 open in this pillar.
+Updated 2026-11-05 03:00 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Prometheus Hub right now.
 
 ## Gemini
 
-Updated 2026-11-05 02:52 UTC · 2 open in this pillar.
+Updated 2026-11-05 03:00 UTC · 3 open in this pillar.
 
 
+- HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
+    make: titan_icon_take1..3.png + prometheus_icon_take1..3.png · how many: 6 · done when: 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
 - HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look · due 2026-11-09
     make: hub_gemini_refs_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 objects, 40 different sites, every URL opens, 120 named techniques.
 - HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions · due 2026-11-10
@@ -25,7 +27,7 @@ Updated 2026-11-05 02:52 UTC · 2 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-05 02:52 UTC · 1 open in this pillar.
+Updated 2026-11-05 03:00 UTC · 1 open in this pillar.
 
 
 - HUB-MUS-01 · The words on every door: 11 doors, three lines each · due 2026-11-09
@@ -33,7 +35,7 @@ Updated 2026-11-05 02:52 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-05 02:52 UTC · 1 open in this pillar.
+Updated 2026-11-05 03:00 UTC · 1 open in this pillar.
 
 
 - HUB-GPT-01 · Phone audit of the desk: 25 findings · due 2026-11-12

@@ -1,27 +1,64 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-05 02:52 UTC. 32 open across 9 pillars.
+Updated 2026-11-05 03:00 UTC. 33 open across 9 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 TITAN RELIQUARY (its own loop, the exception): 14 homework sheets + 6 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 IN THIS ORDER:
-1. [Prometheus Hub] HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look · due 2026-11-09
-2. [Midas Ledger] MID-GEM-01 · 12 debt payoff cases worked to the cent · due 2026-11-09
-3. [Prometheus Hub] HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions · due 2026-11-10
-4. [Midas Ledger] MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI · due 2026-11-10
-5. [Midas Ledger] MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going · due 2026-11-11
-6. [Hephaestus Hearth] HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns · due 2026-11-11
-7. [Hephaestus Hearth] HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it · due 2026-11-12
-8. [Apollo Temple] APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses) · due 2026-11-12
-9. [Hermes Post] HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade)) · due 2026-11-12
-10. [Kairos Meridian] KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day) · due 2026-11-12
-11. [Icarus Stake] ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade) · due 2026-11-12
-12. [Argus Album] ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar) · due 2026-11-12
+1. [Prometheus Hub] HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
+2. [Prometheus Hub] HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look · due 2026-11-09
+3. [Midas Ledger] MID-GEM-01 · 12 debt payoff cases worked to the cent · due 2026-11-09
+4. [Prometheus Hub] HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions · due 2026-11-10
+5. [Midas Ledger] MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI · due 2026-11-10
+6. [Midas Ledger] MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going · due 2026-11-11
+7. [Hephaestus Hearth] HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns · due 2026-11-11
+8. [Hephaestus Hearth] HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it · due 2026-11-12
+9. [Apollo Temple] APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses) · due 2026-11-12
+10. [Hermes Post] HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade)) · due 2026-11-12
+11. [Kairos Meridian] KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day) · due 2026-11-12
+12. [Icarus Stake] ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade) · due 2026-11-12
+13. [Argus Album] ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar) · due 2026-11-12
 
 ==================== 1. PROMETHEUS HUB ====================
-## 1. HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look
+## 1. HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
+
+**Due:** 2026-11-06 · **State:** now
+
+**Why:** Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.
+
+**Read first:**
+- the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)
+- Drive doc 'ART_START_HERE (any AI: images + video)'
+
+**Do this:**
+1. Claim it: save an empty file named artreq_20261105-0300_app-icons-titan-prometheus.CLAIMED-gemini.txt in the art-requests folder (skip the request if another AI claimed it less than 24 hours ago).
+2. Make the 6 images with your own image model, one at a time, square, at least 1024x1024, full-bleed, the subject inside the central 66 % circle.
+3. Save them with the exact file names into 'Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/'.
+4. Write artreq_20261105-0300_app-icons-titan-prometheus.DONE.txt next to the request: one line per file, ok or skipped: reason, your model name and the date.
+
+**Make:** `titan_icon_take1..3.png + prometheus_icon_take1..3.png`
+
+**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+
+**Shape:** `6 PNG files, square, >= 1024 px`
+
+**How many:** 6
+
+**Done when:** 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+
+**How Claude checks it:**
+- Claude opens every image at full size and at 48x48 px, masked to a circle.
+- A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped.
+
+**Not done (sent back) if:**
+- readable letters on any take but titan_icon_take3 (exactly TR)
+- rounded corners, a border or a white background
+- smaller than 1024x1024
+
+==================== 2. PROMETHEUS HUB ====================
+## 2. HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look
 
 **Due:** 2026-11-09 · **State:** now
 
@@ -60,8 +97,8 @@ IN THIS ORDER:
 - two rows on the same site
 - a technique that is only an adjective
 
-==================== 2. MIDAS LEDGER ====================
-## 2. MID-GEM-01 · 12 debt payoff cases worked to the cent
+==================== 3. MIDAS LEDGER ====================
+## 3. MID-GEM-01 · 12 debt payoff cases worked to the cent
 
 **Due:** 2026-11-09 · **State:** now
 
@@ -92,8 +129,8 @@ IN THIS ORDER:
 - a month that does not follow the rules above
 - fewer than 12 cases
 
-==================== 3. PROMETHEUS HUB ====================
-## 3. HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions
+==================== 4. PROMETHEUS HUB ====================
+## 4. HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions
 
 **Due:** 2026-11-10 · **State:** now
 
@@ -130,8 +167,8 @@ IN THIS ORDER:
 - a shape that is a sphere, cube or noise cloud with a label on it
 - Math.random() anywhere
 
-==================== 4. MIDAS LEDGER ====================
-## 4. MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI
+==================== 5. MIDAS LEDGER ====================
+## 5. MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI
 
 **Due:** 2026-11-10 · **State:** now
 
@@ -164,8 +201,8 @@ IN THIS ORDER:
 - a quote that is not word for word
 - a blog or news article in place of a study
 
-==================== 5. MIDAS LEDGER ====================
-## 5. MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going
+==================== 6. MIDAS LEDGER ====================
+## 6. MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going
 
 **Due:** 2026-11-11 · **State:** now
 
@@ -200,8 +237,8 @@ IN THIS ORDER:
 - a file saved anywhere but the folder named here, or under another name
 - two rows that say the same thing about one app
 
-==================== 6. HEPHAESTUS HEARTH ====================
-## 6. HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns
+==================== 7. HEPHAESTUS HEARTH ====================
+## 7. HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns
 
 **Due:** 2026-11-11 · **State:** now
 
@@ -235,8 +272,8 @@ IN THIS ORDER:
 - a file saved anywhere but the folder named here, or under another name
 - a blank cell without 'not stated' and the page you checked
 
-==================== 7. HEPHAESTUS HEARTH ====================
-## 7. HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it
+==================== 8. HEPHAESTUS HEARTH ====================
+## 8. HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it
 
 **Due:** 2026-11-12 · **State:** now
 
@@ -266,8 +303,8 @@ IN THIS ORDER:
 - an example that fails its own schema
 - a real address, name or phone number
 
-==================== 8. APOLLO TEMPLE ====================
-## 8. APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)
+==================== 9. APOLLO TEMPLE ====================
+## 9. APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)
 
 **Due:** 2026-11-12 · **State:** now
 
@@ -306,8 +343,8 @@ IN THIS ORDER:
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
 
-==================== 9. HERMES POST ====================
-## 9. HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))
+==================== 10. HERMES POST ====================
+## 10. HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))
 
 **Due:** 2026-11-12 · **State:** now
 
@@ -346,8 +383,8 @@ IN THIS ORDER:
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
 
-==================== 10. KAIROS MERIDIAN ====================
-## 10. KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)
+==================== 11. KAIROS MERIDIAN ====================
+## 11. KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)
 
 **Due:** 2026-11-12 · **State:** now
 
@@ -386,8 +423,8 @@ IN THIS ORDER:
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
 
-==================== 11. ICARUS STAKE ====================
-## 11. ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)
+==================== 12. ICARUS STAKE ====================
+## 12. ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)
 
 **Due:** 2026-11-12 · **State:** now
 
@@ -426,8 +463,8 @@ IN THIS ORDER:
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
 
-==================== 12. ARGUS ALBUM ====================
-## 12. ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)
+==================== 13. ARGUS ALBUM ====================
+## 13. ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)
 
 **Due:** 2026-11-12 · **State:** now
 

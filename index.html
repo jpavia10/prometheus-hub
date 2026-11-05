@@ -68,6 +68,7 @@
           <button type="button" data-open="drive">Drive linked</button>
           <button type="button" data-open="fleet">Fleet idle</button>
           <button type="button" data-open="desk">About this desk</button>
+          <button type="button" id="install-app" hidden>Install on this phone</button>
           <span data-notes>None yet</span>
         </div>
         <form class="focus" id="focus-form">
@@ -352,6 +353,16 @@
     </section>
   </noscript>
 
+  <script>
+    /* One tap to put Prometheus on the home screen (owner, 2026-11-05: "an app link to the prometheus as an icon on my android same as titan").
+       Chrome offers the install once the page is an installable app (manifest + service worker); the button shows only then. */
+    (function () {
+      var ask = null, b = document.getElementById("install-app");
+      window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); ask = e; if (b) b.hidden = false; });
+      if (b) b.addEventListener("click", function () { if (!ask) return; ask.prompt(); ask.userChoice.then(function () { ask = null; b.hidden = true; }, function () {}); });
+      window.addEventListener("appinstalled", function () { if (b) b.hidden = true; });
+    })();
+  </script>
   <script type="module" src="./hub.js"></script>
 </body>
 </html>
