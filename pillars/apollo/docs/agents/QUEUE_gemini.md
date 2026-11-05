@@ -2,7 +2,7 @@
 
 # Apollo Temple · homework for Gemini
 
-Updated 2026-11-05 03:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)
 

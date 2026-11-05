@@ -2,6 +2,39 @@
 
 # Prometheus Hub · homework for Grok
 
-Updated 2026-11-05 03:00 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
+Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
 
-No homework for Grok in Prometheus Hub right now. Check your HOMEWORK doc for the other pillars.
+## 1. HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
+
+**Due:** 2026-11-06 · **State:** now
+
+**Why:** Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.
+
+**Read first:**
+- the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)
+- Drive doc 'ART_START_HERE (any AI: images + video)'
+
+**Do this:**
+1. Claim it: save an empty file named artreq_20261105-0300_app-icons-titan-prometheus.CLAIMED-grok.txt in the art-requests folder (skip it if Gemini claimed it if another AI claimed it less than 24 hours ago).
+2. Make the 6 images with your own image model, one at a time, square, at least 1024x1024, full-bleed, the subject inside the central 66 % circle.
+3. Save them with the exact file names into 'Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/'.
+4. Write artreq_20261105-0300_app-icons-titan-prometheus.DONE.txt next to the request: one line per file, ok or skipped: reason, your model name and the date.
+
+**Make:** `titan_icon_take1..3.png + prometheus_icon_take1..3.png`
+
+**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+
+**Shape:** `6 PNG files, square, >= 1024 px`
+
+**How many:** 6
+
+**Done when:** 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+
+**How Claude checks it:**
+- Claude opens every image at full size and at 48x48 px, masked to a circle.
+- A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped.
+
+**Not done (sent back) if:**
+- readable letters on any take but titan_icon_take3 (exactly TR)
+- rounded corners, a border or a white background
+- smaller than 1024x1024

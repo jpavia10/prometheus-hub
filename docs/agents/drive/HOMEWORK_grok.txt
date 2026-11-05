@@ -1,20 +1,57 @@
 HOMEWORK — Grok (every pillar)
 
-Updated 2026-11-05 03:00 UTC. 20 open across 5 pillars.
+Updated 2026-11-05 03:07 UTC. 21 open across 6 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 TITAN RELIQUARY (its own loop, the exception): 8 homework sheets + 7 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Grok' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_grok.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 IN THIS ORDER:
-1. [Midas Ledger] MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
-2. [Midas Ledger] MID-GRK-02 · A fresh book every Monday by noon PT · due 2026-11-09
-3. [Hephaestus Hearth] HEA-GRK-01 · Second reader on Gemini's scan-app table · due 2026-11-13 · waits for its input file
-4. [Hermes Post] HER-GRK-01 · Hermes Post: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
-5. [Icarus Stake] ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
+1. [Prometheus Hub] HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
+2. [Midas Ledger] MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
+3. [Midas Ledger] MID-GRK-02 · A fresh book every Monday by noon PT · due 2026-11-09
+4. [Hephaestus Hearth] HEA-GRK-01 · Second reader on Gemini's scan-app table · due 2026-11-13 · waits for its input file
+5. [Hermes Post] HER-GRK-01 · Hermes Post: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
+6. [Icarus Stake] ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
 
-==================== 1. MIDAS LEDGER ====================
-## 1. MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end
+==================== 1. PROMETHEUS HUB ====================
+## 1. HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
+
+**Due:** 2026-11-06 · **State:** now
+
+**Why:** Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.
+
+**Read first:**
+- the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)
+- Drive doc 'ART_START_HERE (any AI: images + video)'
+
+**Do this:**
+1. Claim it: save an empty file named artreq_20261105-0300_app-icons-titan-prometheus.CLAIMED-grok.txt in the art-requests folder (skip it if Gemini claimed it if another AI claimed it less than 24 hours ago).
+2. Make the 6 images with your own image model, one at a time, square, at least 1024x1024, full-bleed, the subject inside the central 66 % circle.
+3. Save them with the exact file names into 'Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/'.
+4. Write artreq_20261105-0300_app-icons-titan-prometheus.DONE.txt next to the request: one line per file, ok or skipped: reason, your model name and the date.
+
+**Make:** `titan_icon_take1..3.png + prometheus_icon_take1..3.png`
+
+**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+
+**Shape:** `6 PNG files, square, >= 1024 px`
+
+**How many:** 6
+
+**Done when:** 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+
+**How Claude checks it:**
+- Claude opens every image at full size and at 48x48 px, masked to a circle.
+- A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped.
+
+**Not done (sent back) if:**
+- readable letters on any take but titan_icon_take3 (exactly TR)
+- rounded corners, a border or a white background
+- smaller than 1024x1024
+
+==================== 2. MIDAS LEDGER ====================
+## 2. MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end
 
 **Due:** 2026-11-09 · **State:** now
 
@@ -47,8 +84,8 @@ IN THIS ORDER:
 - a number guessed or carried over without an as_of date
 - plaintext balances anywhere outside the encrypted book
 
-==================== 2. MIDAS LEDGER ====================
-## 2. MID-GRK-02 · A fresh book every Monday by noon PT
+==================== 3. MIDAS LEDGER ====================
+## 3. MID-GRK-02 · A fresh book every Monday by noon PT
 
 **Due:** 2026-11-09 · **State:** now
 
@@ -78,8 +115,8 @@ IN THIS ORDER:
 **Not done (sent back) if:**
 - a week missed
 
-==================== 3. HEPHAESTUS HEARTH ====================
-## 3. HEA-GRK-01 · Second reader on Gemini's scan-app table
+==================== 4. HEPHAESTUS HEARTH ====================
+## 4. HEA-GRK-01 · Second reader on Gemini's scan-app table
 
 **Due:** 2026-11-13 · **State:** next (starts when the file it checks is in the folder)
 
@@ -111,8 +148,8 @@ IN THIS ORDER:
 - fewer items than the count
 - a file saved anywhere but the folder named here, or under another name
 
-==================== 4. HERMES POST ====================
-## 4. HER-GRK-01 · Hermes Post: second reader on Gemini's spec
+==================== 5. HERMES POST ====================
+## 5. HER-GRK-01 · Hermes Post: second reader on Gemini's spec
 
 **Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
 
@@ -144,8 +181,8 @@ IN THIS ORDER:
 - fewer items than the count
 - a file saved anywhere but the folder named here, or under another name
 
-==================== 5. ICARUS STAKE ====================
-## 5. ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec
+==================== 6. ICARUS STAKE ====================
+## 6. ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec
 
 **Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
 
