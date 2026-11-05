@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-05 14:55 UTC. 72 open across 9 pillars.
+Updated 2026-11-05 15:02 UTC. 73 open across 9 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -25,7 +25,7 @@ IN THIS ORDER:
 9. [Hephaestus Hearth] HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns · due 2026-11-11
 10. [Prometheus Hub] HUB-GEM-05 · Motion spec: 20 desk moments, each with duration, easing and property from a published motion system · due 2026-11-12
 11. [Midas Ledger] MID-GEM-04 · Minimum payment formulas of 25 US card issuers, quoted from their cardholder agreements · due 2026-11-12
-12. [Hephaestus Hearth] HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it · due 2026-11-12
+12. [Hephaestus Hearth] HEA-GEM-02 · The Hearth data shape: rooms with measured walls, the assets in each room, renovation projects (JSON Schema + 3 examples) · due 2026-11-12
 13. [Apollo Temple] APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses) · due 2026-11-12
 14. [Hermes Post] HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade)) · due 2026-11-12
 15. [Hermes Post] HER-GEM-03 · Every Gmail search operator, with syntax and one example each · due 2026-11-12
@@ -37,31 +37,32 @@ IN THIS ORDER:
 21. [Argus Album] ARG-GEM-04 · Image formats on Android Chrome: 6 formats x 3 browser features · due 2026-11-12
 22. [Prometheus Hub] HUB-GEM-06 · 30 WCAG 2.2 checks that apply to the desk, each one Claude can run · due 2026-11-13
 23. [Midas Ledger] MID-GEM-05 · How 25 issuers compute interest: balance method, day count, compounding, grace · due 2026-11-13
-24. [Kairos Meridian] KAI-GEM-03 · 20 focus methods with their exact timing rules and primary source · due 2026-11-13
-25. [Argus Album] ARG-GEM-02 · 40 photo metadata tags that leak location or identity · due 2026-11-13
-26. [Midas Ledger] MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted · due 2026-11-14
-27. [Hephaestus Hearth] HEA-GEM-03 · 60 renovation unit costs, each with two retailer product pages · due 2026-11-14
-28. [Apollo Temple] APO-GEM-02 · 300 foods with their USDA FoodData Central numbers per 100 g · due 2026-11-14
-29. [Hermes Post] HER-GEM-02 · 60 US billers: the address their bill emails come from · due 2026-11-14
-30. [Kairos Meridian] KAI-GEM-04 · An ICS test file with 40 made-up events that cover every hard case · due 2026-11-14
-31. [Icarus Stake] ICA-GEM-02 · 25 journal metrics, each formula worked on the same 20 trades · due 2026-11-14
-32. [Argus Album] ARG-GEM-03 · The coin photo standard: 20 rules from professional numismatic photography · due 2026-11-14
-33. [Midas Ledger] MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask · due 2026-11-15
-34. [Hephaestus Hearth] HEA-GEM-04 · 30 IRC 2021 rules a homeowner renovating hits, with section numbers · due 2026-11-15
-35. [Apollo Temple] APO-GEM-03 · 150 exercises with their Compendium of Physical Activities code and MET · due 2026-11-15
-36. [Hermes Post] HER-GEM-04 · 30 phishing tells from FTC, CISA and Google, quoted · due 2026-11-15
-37. [Kairos Meridian] KAI-GEM-05 · Google Calendar Events resource: the 30 fields Kairos v2 reads · due 2026-11-15
-38. [Argus Album] ARG-GEM-05 · 6 perceptual hash methods: steps, threshold, source · due 2026-11-15
-39. [Midas Ledger] MID-GEM-08 · 12 daily-compounding interest cases worked to the cent · due 2026-11-16
-40. [Hephaestus Hearth] HEA-GEM-05 · 50 recurring home maintenance tasks with intervals from an authoritative source · due 2026-11-16
-41. [Apollo Temple] APO-GEM-04 · 40 health reference ranges from the guideline that sets them · due 2026-11-16
-42. [Hermes Post] HER-GEM-05 · Triage test set: 80 made-up emails, 20 per lane · due 2026-11-16
-43. [Icarus Stake] ICA-GEM-04 · Risk-of-ruin table: 135 cells from one cited formula · due 2026-11-16
-44. [Hephaestus Hearth] HEA-GEM-06 · 15 material quantity formulas with 3 worked examples each · due 2026-11-17
-45. [Apollo Temple] APO-GEM-05 · Android Health Connect: the 30 record types Apollo v2 would read · due 2026-11-17
-46. [Icarus Stake] ICA-GEM-05 · 30 rule checks Icarus can run on a trade, as formulas over its fields · due 2026-11-17
-47. [Apollo Temple] APO-GEM-06 · 25 meta-analyses on what keeps people training and eating to plan · due 2026-11-18
-48. [Icarus Stake] ICA-GEM-06 · 15 free market-data APIs: limits, key, browser use, quoted from their docs · due 2026-11-18
+24. [Hephaestus Hearth] HEA-GEM-07 · Home inventory: 120 asset categories, room by room, with the fields insurers ask for · due 2026-11-13
+25. [Kairos Meridian] KAI-GEM-03 · 20 focus methods with their exact timing rules and primary source · due 2026-11-13
+26. [Argus Album] ARG-GEM-02 · 40 photo metadata tags that leak location or identity · due 2026-11-13
+27. [Midas Ledger] MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted · due 2026-11-14
+28. [Hephaestus Hearth] HEA-GEM-08 · How accurate a phone floor plan really is: 12 published measurements · due 2026-11-14
+29. [Apollo Temple] APO-GEM-02 · 300 foods with their USDA FoodData Central numbers per 100 g · due 2026-11-14
+30. [Hermes Post] HER-GEM-02 · 60 US billers: the address their bill emails come from · due 2026-11-14
+31. [Kairos Meridian] KAI-GEM-04 · An ICS test file with 40 made-up events that cover every hard case · due 2026-11-14
+32. [Icarus Stake] ICA-GEM-02 · 25 journal metrics, each formula worked on the same 20 trades · due 2026-11-14
+33. [Argus Album] ARG-GEM-03 · The coin photo standard: 20 rules from professional numismatic photography · due 2026-11-14
+34. [Midas Ledger] MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask · due 2026-11-15
+35. [Hephaestus Hearth] HEA-GEM-09 · 10 floor-plan and 3D formats Hearth could import: what each one carries · due 2026-11-15
+36. [Apollo Temple] APO-GEM-03 · 150 exercises with their Compendium of Physical Activities code and MET · due 2026-11-15
+37. [Hermes Post] HER-GEM-04 · 30 phishing tells from FTC, CISA and Google, quoted · due 2026-11-15
+38. [Kairos Meridian] KAI-GEM-05 · Google Calendar Events resource: the 30 fields Kairos v2 reads · due 2026-11-15
+39. [Argus Album] ARG-GEM-05 · 6 perceptual hash methods: steps, threshold, source · due 2026-11-15
+40. [Midas Ledger] MID-GEM-08 · 12 daily-compounding interest cases worked to the cent · due 2026-11-16
+41. [Hephaestus Hearth] HEA-GEM-10 · Laser measures that send readings to an Android phone: 10 models compared · due 2026-11-16
+42. [Apollo Temple] APO-GEM-04 · 40 health reference ranges from the guideline that sets them · due 2026-11-16
+43. [Hermes Post] HER-GEM-05 · Triage test set: 80 made-up emails, 20 per lane · due 2026-11-16
+44. [Icarus Stake] ICA-GEM-04 · Risk-of-ruin table: 135 cells from one cited formula · due 2026-11-16
+45. [Hephaestus Hearth] HEA-GEM-11 · 10 home inventory and renovation apps taken apart: 50 features Hearth should have · due 2026-11-17
+46. [Apollo Temple] APO-GEM-05 · Android Health Connect: the 30 record types Apollo v2 would read · due 2026-11-17
+47. [Icarus Stake] ICA-GEM-05 · 30 rule checks Icarus can run on a trade, as formulas over its fields · due 2026-11-17
+48. [Apollo Temple] APO-GEM-06 · 25 meta-analyses on what keeps people training and eating to plan · due 2026-11-18
+49. [Icarus Stake] ICA-GEM-06 · 15 free market-data APIs: limits, key, browser use, quoted from their docs · due 2026-11-18
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
@@ -403,33 +404,39 @@ IN THIS ORDER:
 - anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
 
 ==================== 12. HEPHAESTUS HEARTH ====================
-## 12. HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it
+## 12. HEA-GEM-02 · The Hearth data shape: rooms with measured walls, the assets in each room, renovation projects (JSON Schema + 3 examples)
 
 **Due:** 2026-11-12 · **State:** now
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/hephaestus-hearth/main/README.md
+- https://jpavia10.github.io/hephaestus-hearth/ (the desk today: the stand-in house, the room list, three project slots)
 
 **Do this:**
-1. Write a JSON Schema (draft 2020-12) with: house, room (name, floor, size in feet and inches, photos), project (room, title, state: idea / quoted / booked / doing / done, budget, start, finish), task, cost_line (what, vendor, quote, paid, date, receipt photo), vendor (name, trade, phone optional), photo (file, room, date, before/after).
-2. Write 3 made-up projects (a bathroom, a deck, a paint job) as one JSON file that passes the schema.
+1. Write one JSON Schema (draft 2020-12) with these records: house (name, floors, origin note); room (id, name, floor, outline = a list of corner points [x, y] in inches, clockwise, from one fixed origin per floor; ceiling height in inches; openings = doors and windows, each with the wall it sits on (index of the outline edge), offset from that wall's first corner, width, height, sill height); asset (id, name, category, room id, position {x, y, z} in inches + rotation in degrees, brand, model, serial, purchase date, price, receipt photo, warranty end, photos, condition, notes); project (id, room ids, title, state: idea / quoted / booked / doing / done, budget, start, finish, tasks, cost lines with vendor / quote / paid / date / receipt photo, before and after photos, asset ids added and asset ids removed); photo (file, room id, date, kind: room / asset / receipt / before / after).
+2. Every length in inches (decimals allowed), every date YYYY-MM-DD, every id a short string; required fields marked.
+3. Write 3 made-up examples in one JSON file that pass the schema: (1) a bedroom drawn with 4 corners, 1 door and 2 windows, holding 8 assets; (2) an L-shaped kitchen with 6 corners and a renovation that removes 2 assets and adds 3; (3) a bathroom remodel in state 'doing' with 4 cost lines.
+4. Say the area of each example room in square feet (Claude recomputes it from the corners).
 
 **Make:** `hearth_gemini_schema_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `{"schema": {...}, "examples": [...3 projects]}`
+**Shape:** `{"schema": {...}, "examples": {"rooms": [...], "assets": [...], "projects": [...]}, "areas_sqft": {"room id": 132.5}}`
 
 **How many:** 3
 
-**Done when:** The schema is valid draft 2020-12 and all 3 examples pass it.
+**Done when:** The schema is valid draft 2020-12, all 3 examples pass it, every stated area matches the corners, every asset sits inside its room's outline.
 
 **How Claude checks it:**
 - Claude validates with python jsonschema.
+- Claude computes each room's area from its corners (shoelace) and compares within 0.5 sq ft.
+- Claude checks every asset position is inside its room's outline and every opening fits on its wall.
 
 **Not done (sent back) if:** (and the rules at the top)
 - an example that fails its own schema
-- a real address, name or phone number
+- a room outline that crosses itself or is not closed
+- an opening wider than its wall
+- a real address, name, serial number or phone number
 
 ==================== 13. APOLLO TEMPLE ====================
 ## 13. APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)
@@ -750,8 +757,35 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
 
-==================== 24. KAIROS MERIDIAN ====================
-## 24. KAI-GEM-03 · 20 focus methods with their exact timing rules and primary source
+==================== 24. HEPHAESTUS HEARTH ====================
+## 24. HEA-GEM-07 · Home inventory: 120 asset categories, room by room, with the fields insurers ask for
+
+**Due:** 2026-11-13 · **State:** now
+
+**Do this:**
+1. Use published home-inventory checklists: the Insurance Information Institute (iii.org), the NAIC (content.naic.org), FEMA / Ready.gov, or a major insurer's own checklist page.
+2. List 120 asset categories across kitchen, bathrooms, bedrooms, living areas, office, laundry, garage, basement, outdoor and the house systems (water heater, furnace, AC, electrical panel, sump pump).
+3. For each: category, the rooms it is usually in, the fields worth recording (from: brand, model, serial, purchase date, price, receipt, photo, warranty end, size), and the source page with a quote.
+
+**Make:** `hearth_gemini_inventory_categories_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"category":"refrigerator","rooms":["kitchen","garage"],"fields":["brand","model","serial","purchase date","price","receipt","photo","warranty end"],"url":"https://www.iii.org/...","quote":"..."}]`
+
+**How many:** 120
+
+**Done when:** 120 categories, every one traced to a checklist page.
+
+**How Claude checks it:**
+- Claude opens 10 source pages at random.
+- Duplicates (fridge / refrigerator) count once.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a category list from a blog instead of a checklist page
+
+==================== 25. KAIROS MERIDIAN ====================
+## 25. KAI-GEM-03 · 20 focus methods with their exact timing rules and primary source
 
 **Due:** 2026-11-13 · **State:** now
 
@@ -775,8 +809,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a method whose only source is a listicle
 
-==================== 25. ARGUS ALBUM ====================
-## 25. ARG-GEM-02 · 40 photo metadata tags that leak location or identity
+==================== 26. ARGUS ALBUM ====================
+## 26. ARG-GEM-02 · 40 photo metadata tags that leak location or identity
 
 **Due:** 2026-11-13 · **State:** now
 
@@ -800,8 +834,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a tag ID that does not match its name
 
-==================== 26. MIDAS LEDGER ====================
-## 26. MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted
+==================== 27. MIDAS LEDGER ====================
+## 27. MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted
 
 **Due:** 2026-11-14 · **State:** now
 
@@ -826,33 +860,35 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
 
-==================== 27. HEPHAESTUS HEARTH ====================
-## 27. HEA-GEM-03 · 60 renovation unit costs, each with two retailer product pages
+==================== 28. HEPHAESTUS HEARTH ====================
+## 28. HEA-GEM-08 · How accurate a phone floor plan really is: 12 published measurements
 
 **Due:** 2026-11-14 · **State:** now
 
 **Do this:**
-1. Pick 60 common line items (drywall sheet 4x8 1/2 in, joint compound 4.5 gal, interior paint 1 gal, primer, LVP per sq ft, ceramic tile per sq ft, thinset, grout, 2x4x8 stud, plywood 3/4, insulation batt R-13, outlet, GFCI outlet, light switch, LED recessed light, toilet, vanity 30 in, faucet, PEX 1/2 in 100 ft, shut-off valve, exterior door, interior door slab, door hinge, baseboard per ft, caulk, construction adhesive, deck screws 5 lb, concrete 80 lb bag, mulch 2 cu ft, smoke alarm ... up to 60).
-2. For each: one Home Depot and one Lowe's product page (homedepot.com/p/... and lowes.com/pd/...), the model or SKU, the price shown, the unit, and the date you saw it.
+1. Find 12 published tests (a paper with a DOI, a university or government test report, or a manufacturer's published validation) that measured floor-plan or room-dimension error.
+2. Cover at least: iPhone LiDAR / RoomPlan, Android ARCore depth, a handheld laser distance meter, and a tape measure baseline.
+3. For each: method and device, number of rooms or walls measured, the error as reported (mean and max, in cm or %), the room sizes, the DOI or URL and the quote with the numbers.
 
-**Make:** `hearth_gemini_unitcosts_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_accuracy_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `[{"n":1,"item":"drywall 4x8 ft 1/2 in","unit":"sheet","home_depot":{"url":"https://www.homedepot.com/p/...","sku":"...","price":15.98},"lowes":{"url":"https://www.lowes.com/pd/...","sku":"...","price":16.48},"seen":"2026-11-14"}]`
+**Shape:** `[{"n":1,"method":"iPhone 13 Pro LiDAR (RoomPlan)","walls":48,"mean_error_cm":2.1,"max_error_cm":6.5,"rooms":"3-5 m","doi":"10.xxxx/xxxxx","url":"https://...","quote":"..."}]`
 
-**How many:** 60
+**How many:** 12
 
-**Done when:** 60 items, 120 product pages.
+**Done when:** 12 tests, at least one per method named, every number quoted.
 
 **How Claude checks it:**
-- Claude opens 15 product pages at random (prices drift: within 20 % passes).
+- Claude resolves every DOI and finds each quote.
 
 **Not done (sent back) if:** (and the rules at the top)
-- a price from an article or a cost guide instead of a product page
+- an error number with no quote
+- a vendor marketing page as the only source for a scan method
 
-==================== 28. APOLLO TEMPLE ====================
-## 28. APO-GEM-02 · 300 foods with their USDA FoodData Central numbers per 100 g
+==================== 29. APOLLO TEMPLE ====================
+## 29. APO-GEM-02 · 300 foods with their USDA FoodData Central numbers per 100 g
 
 **Due:** 2026-11-14 · **State:** now
 
@@ -878,8 +914,8 @@ IN THIS ORDER:
 - a Branded entry
 - an FDC ID that does not match the description
 
-==================== 29. HERMES POST ====================
-## 29. HER-GEM-02 · 60 US billers: the address their bill emails come from
+==================== 30. HERMES POST ====================
+## 30. HER-GEM-02 · 60 US billers: the address their bill emails come from
 
 **Due:** 2026-11-14 · **State:** now
 
@@ -904,8 +940,8 @@ IN THIS ORDER:
 - a domain guessed from a company name
 - anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
 
-==================== 30. KAIROS MERIDIAN ====================
-## 30. KAI-GEM-04 · An ICS test file with 40 made-up events that cover every hard case
+==================== 31. KAIROS MERIDIAN ====================
+## 31. KAI-GEM-04 · An ICS test file with 40 made-up events that cover every hard case
 
 **Due:** 2026-11-14 · **State:** now
 
@@ -930,8 +966,8 @@ IN THIS ORDER:
 - a file that does not parse
 - a case missing from the list
 
-==================== 31. ICARUS STAKE ====================
-## 31. ICA-GEM-02 · 25 journal metrics, each formula worked on the same 20 trades
+==================== 32. ICARUS STAKE ====================
+## 32. ICA-GEM-02 · 25 journal metrics, each formula worked on the same 20 trades
 
 **Due:** 2026-11-14 · **State:** now
 
@@ -957,8 +993,8 @@ IN THIS ORDER:
 - values without the formula
 - anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
 
-==================== 32. ARGUS ALBUM ====================
-## 32. ARG-GEM-03 · The coin photo standard: 20 rules from professional numismatic photography
+==================== 33. ARGUS ALBUM ====================
+## 33. ARG-GEM-03 · The coin photo standard: 20 rules from professional numismatic photography
 
 **Due:** 2026-11-14 · **State:** now
 
@@ -982,8 +1018,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a rule from a general photography blog
 
-==================== 33. MIDAS LEDGER ====================
-## 33. MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask
+==================== 34. MIDAS LEDGER ====================
+## 34. MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask
 
 **Due:** 2026-11-15 · **State:** now
 
@@ -1008,34 +1044,33 @@ IN THIS ORDER:
 - a debt-settlement company's sales page as the source
 - anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
 
-==================== 34. HEPHAESTUS HEARTH ====================
-## 34. HEA-GEM-04 · 30 IRC 2021 rules a homeowner renovating hits, with section numbers
+==================== 35. HEPHAESTUS HEARTH ====================
+## 35. HEA-GEM-09 · 10 floor-plan and 3D formats Hearth could import: what each one carries
 
 **Due:** 2026-11-15 · **State:** now
 
 **Do this:**
-1. From the International Residential Code 2021 on codes.iccsafe.org/content/IRC2021P2 (free read view), pick 30 rules: stair rise/run/headroom, handrail height, guard height, egress window size and sill, smoke and CO alarm placement, GFCI and AFCI locations, bathroom ventilation, ceiling height, deck ledger, water heater relief valve, etc.
-2. For each: section number (e.g. R311.7.5.1), the rule in one sentence, every number in it with its unit, the URL and the quote.
+1. Formats: Apple RoomPlan (USDZ + its JSON), glTF / GLB, OBJ, USDZ, IFC, DXF, SVG, E57 point cloud, PLY, and the Magicplan export the app offers.
+2. For each: the specification page URL, the length unit it stores (or 'none'), and yes / no / partial for: walls, doors, windows, room names, floor levels, dimensions; and the three.js loader that reads it, named exactly as on threejs.org/docs (or 'none').
 
-**Make:** `hearth_gemini_irc_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_formats_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `[{"n":1,"section":"R311.7.5.1","topic":"stair riser height","rule":"riser height not more than 7 3/4 in","numbers":[{"value":7.75,"unit":"in","max":true}],"url":"https://codes.iccsafe.org/content/IRC2021P2/...","quote":"..."}]`
+**Shape:** `[{"n":1,"format":"IFC","spec_url":"https://...","units":"set in the file (IfcUnitAssignment)","walls":"yes","doors":"yes","windows":"yes","room_names":"yes","floors":"yes","dimensions":"yes","threejs_loader":"none","quote":"..."}]`
 
-**How many:** 30
+**How many:** 10
 
-**Done when:** 30 sections, every number quoted.
+**Done when:** 10 formats, every cell traced to the spec or the three.js docs.
 
 **How Claude checks it:**
-- Claude opens 10 sections at random.
+- Claude opens every spec page and checks each loader name on threejs.org/docs.
 
 **Not done (sent back) if:** (and the rules at the top)
-- a rule from a blog instead of the code text
-- a section number that does not exist in IRC 2021
+- a loader name that is not in the three.js docs or examples
 
-==================== 35. APOLLO TEMPLE ====================
-## 35. APO-GEM-03 · 150 exercises with their Compendium of Physical Activities code and MET
+==================== 36. APOLLO TEMPLE ====================
+## 36. APO-GEM-03 · 150 exercises with their Compendium of Physical Activities code and MET
 
 **Due:** 2026-11-15 · **State:** now
 
@@ -1059,8 +1094,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a MET from a calorie-calculator site
 
-==================== 36. HERMES POST ====================
-## 36. HER-GEM-04 · 30 phishing tells from FTC, CISA and Google, quoted
+==================== 37. HERMES POST ====================
+## 37. HER-GEM-04 · 30 phishing tells from FTC, CISA and Google, quoted
 
 **Due:** 2026-11-15 · **State:** now
 
@@ -1082,8 +1117,8 @@ IN THIS ORDER:
 - Claude opens 10 at random.
 - A test that is only 'looks suspicious' does not count.
 
-==================== 37. KAIROS MERIDIAN ====================
-## 37. KAI-GEM-05 · Google Calendar Events resource: the 30 fields Kairos v2 reads
+==================== 38. KAIROS MERIDIAN ====================
+## 38. KAI-GEM-05 · Google Calendar Events resource: the 30 fields Kairos v2 reads
 
 **Due:** 2026-11-15 · **State:** now
 
@@ -1107,8 +1142,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a field that is not on the reference page
 
-==================== 38. ARGUS ALBUM ====================
-## 38. ARG-GEM-05 · 6 perceptual hash methods: steps, threshold, source
+==================== 39. ARGUS ALBUM ====================
+## 39. ARG-GEM-05 · 6 perceptual hash methods: steps, threshold, source
 
 **Due:** 2026-11-15 · **State:** now
 
@@ -1132,8 +1167,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a threshold with no source
 
-==================== 39. MIDAS LEDGER ====================
-## 39. MID-GEM-08 · 12 daily-compounding interest cases worked to the cent
+==================== 40. MIDAS LEDGER ====================
+## 40. MID-GEM-08 · 12 daily-compounding interest cases worked to the cent
 
 **Due:** 2026-11-16 · **State:** now
 
@@ -1158,33 +1193,34 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - numbers copied from an online calculator without the cycle rows
 
-==================== 40. HEPHAESTUS HEARTH ====================
-## 40. HEA-GEM-05 · 50 recurring home maintenance tasks with intervals from an authoritative source
+==================== 41. HEPHAESTUS HEARTH ====================
+## 41. HEA-GEM-10 · Laser measures that send readings to an Android phone: 10 models compared
 
 **Due:** 2026-11-16 · **State:** now
 
 **Do this:**
-1. 50 tasks (HVAC filter, water heater flush, smoke alarm test and battery, dryer vent clean, gutter clean, sump pump test, GFCI test, caulk check, roof check, chimney sweep, garage door balance ...).
-2. For each: interval in days (or season), why, the source page and the quote with the interval.
+1. 10 Bluetooth laser distance meters (Bosch, Leica DISTO, Hilti, Stanley, DeWalt, Milwaukee, Makita and others).
+2. For each, from the maker's own product or spec page: accuracy (+/- mm), range (m), Bluetooth (yes / no), the Android app it pairs with and that app's Play Store URL, whether the app exports a floor plan (formats), price in USD from the maker or a named retailer, and the quote with the accuracy.
 
-**Make:** `hearth_gemini_upkeep_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_lasers_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `[{"n":1,"task":"test smoke alarms","interval_days":30,"season":null,"why":"...","url":"https://www.usfa.fema.gov/...","quote":"Test smoke alarms at least once a month"}]`
+**Shape:** `[{"n":1,"model":"...","maker_url":"https://...","accuracy_mm":1.5,"range_m":50,"bluetooth":true,"android_app":"...","play_url":"https://play.google.com/store/apps/details?id=...","exports":["PDF","DXF"],"price_usd":129.0,"price_url":"https://...","quote":"..."}]`
 
-**How many:** 50
+**How many:** 10
 
-**Done when:** 50 tasks, every interval quoted.
+**Done when:** 10 models, every accuracy and app from the maker's own pages.
 
 **How Claude checks it:**
-- Claude opens 10 at random.
+- Claude opens every maker page and every Play Store link.
 
 **Not done (sent back) if:** (and the rules at the top)
-- an interval from a home-improvement blog
+- a spec from a review site instead of the maker's page
+- an app that is iPhone-only listed as Android
 
-==================== 41. APOLLO TEMPLE ====================
-## 41. APO-GEM-04 · 40 health reference ranges from the guideline that sets them
+==================== 42. APOLLO TEMPLE ====================
+## 42. APO-GEM-04 · 40 health reference ranges from the guideline that sets them
 
 **Due:** 2026-11-16 · **State:** now
 
@@ -1208,8 +1244,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a range from a news article or a fitness blog
 
-==================== 42. HERMES POST ====================
-## 42. HER-GEM-05 · Triage test set: 80 made-up emails, 20 per lane
+==================== 43. HERMES POST ====================
+## 43. HER-GEM-05 · Triage test set: 80 made-up emails, 20 per lane
 
 **Due:** 2026-11-16 · **State:** now
 
@@ -1235,8 +1271,8 @@ IN THIS ORDER:
 - a real address or a real person's name
 - anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
 
-==================== 43. ICARUS STAKE ====================
-## 43. ICA-GEM-04 · Risk-of-ruin table: 135 cells from one cited formula
+==================== 44. ICARUS STAKE ====================
+## 44. ICA-GEM-04 · Risk-of-ruin table: 135 cells from one cited formula
 
 **Due:** 2026-11-16 · **State:** now
 
@@ -1261,33 +1297,35 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a formula with no source
 
-==================== 44. HEPHAESTUS HEARTH ====================
-## 44. HEA-GEM-06 · 15 material quantity formulas with 3 worked examples each
+==================== 45. HEPHAESTUS HEARTH ====================
+## 45. HEA-GEM-11 · 10 home inventory and renovation apps taken apart: 50 features Hearth should have
 
 **Due:** 2026-11-17 · **State:** now
 
 **Do this:**
-1. 15 formulas: paint gallons (walls + ceiling, two coats, coverage per gallon), primer, drywall sheets, joint compound, tile with waste, grout, thinset, LVP with waste, baseboard length, insulation batts, concrete bags for a slab, mulch bags, deck boards, screws per sq ft of deck, wallpaper rolls.
-2. Each: the formula with every constant named and its source (a manufacturer's coverage page or spec sheet), then 3 worked examples with real room sizes and the answer rounded up as a store sells it.
+1. Apps: HomeZada, Centriq, Encircle, Sortly, Nest Egg, Under My Roof, magicplan, Houzz, BluePlan or Homer, and one more of your choice that tracks assets per room.
+2. For each, 5 specific things on its screens about: assets per room, receipts and warranties, renovation projects with before/after, or the floor plan (example: 'tap a wall on the plan to see the paint colour and the date it was painted').
+3. Each row: app, screen, what it does, a URL where it can be seen (help article, store listing, screenshot page), and how Hearth could do it better.
 
-**Make:** `hearth_gemini_quantities_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_app-teardown_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `[{"n":1,"material":"interior paint","formula":"ceil((wall_area_sqft - openings_sqft) * coats / coverage_sqft_per_gal)","constants":{"coverage_sqft_per_gal":350},"url":"https://...","quote":"...","examples":[{"inputs":{"wall_area_sqft":420,"openings_sqft":40,"coats":2},"answer":3,"unit":"gal"}]}]`
+**Shape:** `[{"n":1,"app":"HomeZada","screen":"...","does":"...","url":"https://...","hearth":"..."}]`
 
-**How many:** 15
+**How many:** 50
 
-**Done when:** 15 formulas, 45 examples; Claude recomputes all 45.
+**Done when:** 50 rows, 5 per app, each about one of the three scope areas.
 
 **How Claude checks it:**
-- An example whose answer does not follow from its formula = the formula is sent back.
+- Claude opens 10 URLs at random.
+- A row about budgeting, shopping or maintenance reminders does not count (out of scope).
 
 **Not done (sent back) if:** (and the rules at the top)
-- a constant with no source
+- two rows that say the same thing about one app
 
-==================== 45. APOLLO TEMPLE ====================
-## 45. APO-GEM-05 · Android Health Connect: the 30 record types Apollo v2 would read
+==================== 46. APOLLO TEMPLE ====================
+## 46. APO-GEM-05 · Android Health Connect: the 30 record types Apollo v2 would read
 
 **Due:** 2026-11-17 · **State:** now
 
@@ -1311,8 +1349,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a class or permission name that is not on its reference page
 
-==================== 46. ICARUS STAKE ====================
-## 46. ICA-GEM-05 · 30 rule checks Icarus can run on a trade, as formulas over its fields
+==================== 47. ICARUS STAKE ====================
+## 47. ICA-GEM-05 · 30 rule checks Icarus can run on a trade, as formulas over its fields
 
 **Due:** 2026-11-17 · **State:** now
 
@@ -1338,8 +1376,8 @@ IN THIS ORDER:
 - a field Icarus does not have
 - anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
 
-==================== 47. APOLLO TEMPLE ====================
-## 47. APO-GEM-06 · 25 meta-analyses on what keeps people training and eating to plan
+==================== 48. APOLLO TEMPLE ====================
+## 48. APO-GEM-06 · 25 meta-analyses on what keeps people training and eating to plan
 
 **Due:** 2026-11-18 · **State:** now
 
@@ -1365,8 +1403,8 @@ IN THIS ORDER:
 - a DOI that resolves to another paper
 - a single study instead of a meta-analysis or systematic review
 
-==================== 48. ICARUS STAKE ====================
-## 48. ICA-GEM-06 · 15 free market-data APIs: limits, key, browser use, quoted from their docs
+==================== 49. ICARUS STAKE ====================
+## 49. ICA-GEM-06 · 15 free market-data APIs: limits, key, browser use, quoted from their docs
 
 **Due:** 2026-11-18 · **State:** now
 

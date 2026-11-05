@@ -75,7 +75,7 @@
   {
    "id": "hearth",
    "name": "Hephaestus Hearth",
-   "what": "The house: renovations, rooms, projects.",
+   "what": "The house: renovation projects, every asset in every room (the inventory), and a floor plan that gets accurate over time.",
    "repo": "jpavia10/hephaestus-hearth",
    "home": "",
    "live": "https://jpavia10.github.io/hephaestus-hearth/",

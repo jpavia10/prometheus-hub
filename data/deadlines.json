@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05 14:55 UTC",
+ "updated": "2026-11-05 15:02 UTC",
  "tasks": [
   {
    "due": "2026-11-06",
@@ -206,7 +206,7 @@
    "ai": "gemini",
    "ai_name": "Gemini",
    "id": "HEA-GEM-02",
-   "title": "The renovation data shape: JSON Schema + 3 made-up projects that pass it",
+   "title": "The Hearth data shape: rooms with measured walls, the assets in each room, renovation projects (JSON Schema + 3 examples)",
    "state": "now",
    "count": 3
   },
@@ -335,6 +335,17 @@
    "due": "2026-11-13",
    "pillar": "hearth",
    "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-07",
+   "title": "Home inventory: 120 asset categories, room by room, with the fields insurers ask for",
+   "state": "now",
+   "count": 120
+  },
+  {
+   "due": "2026-11-13",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
    "ai": "grok",
    "ai_name": "Grok",
    "id": "HEA-GRK-01",
@@ -425,10 +436,10 @@
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HEA-GEM-03",
-   "title": "60 renovation unit costs, each with two retailer product pages",
+   "id": "HEA-GEM-08",
+   "title": "How accurate a phone floor plan really is: 12 published measurements",
    "state": "now",
-   "count": 60
+   "count": 12
   },
   {
    "due": "2026-11-14",
@@ -546,10 +557,10 @@
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HEA-GEM-04",
-   "title": "30 IRC 2021 rules a homeowner renovating hits, with section numbers",
+   "id": "HEA-GEM-09",
+   "title": "10 floor-plan and 3D formats Hearth could import: what each one carries",
    "state": "now",
-   "count": 30
+   "count": 10
   },
   {
    "due": "2026-11-15",
@@ -601,10 +612,10 @@
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HEA-GEM-05",
-   "title": "50 recurring home maintenance tasks with intervals from an authoritative source",
+   "id": "HEA-GEM-10",
+   "title": "Laser measures that send readings to an Android phone: 10 models compared",
    "state": "now",
-   "count": 50
+   "count": 10
   },
   {
    "due": "2026-11-16",
@@ -656,10 +667,10 @@
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HEA-GEM-06",
-   "title": "15 material quantity formulas with 3 worked examples each",
+   "id": "HEA-GEM-11",
+   "title": "10 home inventory and renovation apps taken apart: 50 features Hearth should have",
    "state": "now",
-   "count": 15
+   "count": 50
   },
   {
    "due": "2026-11-17",

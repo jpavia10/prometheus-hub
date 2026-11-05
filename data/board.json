@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05 14:55 UTC",
+ "updated": "2026-11-05 15:02 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -46,7 +46,7 @@
    "live": "https://jpavia10.github.io/hephaestus-hearth/",
    "open": {
     "grok": 1,
-    "gemini": 6,
+    "gemini": 7,
     "muse": 0,
     "chatgpt": 0,
     "claude": 1

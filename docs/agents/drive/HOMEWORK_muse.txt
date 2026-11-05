@@ -1,6 +1,6 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-05 14:55 UTC. 20 open across 6 pillars.
+Updated 2026-11-05 15:02 UTC. 20 open across 6 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
