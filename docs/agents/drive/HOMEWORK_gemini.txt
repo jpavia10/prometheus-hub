@@ -1,5 +1,6 @@
 HOMEWORK — Gemini (every pillar)
-Updated 2026-11-05 02:26 UTC. 32 open across 9 pillars.
+
+Updated 2026-11-05 02:32 UTC. 32 open across 9 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -37,7 +38,9 @@ IN THIS ORDER:
 4. Say which part of Prometheus each one fits: desk, door, sheet, Sylade page, Midas, Hearth, or a seat.
 
 **Make:** `hub_gemini_refs_{YYYYMMDD-HHMM}.json`
+
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
 **Shape:** `[{"n":1,"url":"https://...","maker":"...","seen":"one sentence of what is on the page","techniques":["...","...","..."],"fits":"desk","works_on_phone":true}] (40 objects)`
 
 **How many:** 40
@@ -71,7 +74,9 @@ IN THIS ORDER:
 4. At least 3 cases must run longer than 36 months and at least 2 must have a debt paid off in the same month another target changes.
 
 **Make:** `midas_gemini_payoff-cases_{YYYYMMDD-HHMM}.json`
+
 **Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
 **Shape:** `[{"case":1,"method":"avalanche","budget":900,"debts":[{"name":"Card A","balance":4210.55,"apr":24.99,"min":95}],"months":[{"m":1,"interest":{"Card A":87.68},"paid":{"Card A":900},"balance":{"Card A":3398.23}}],"payoff_month":{"Card A":6},"total_interest":312.40}] (12 objects)`
 
 **How many:** 12
@@ -107,7 +112,9 @@ IN THIS ORDER:
 5. No imports, no DOM, no Three.js: plain functions in one file.
 
 **Make:** `hub_gemini_shapes_{YYYYMMDD-HHMM}.js`
+
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
 **Shape:** `one .js file: export function shapeTitan(n, rand) {...} ... (9 exports)`
 
 **How many:** 9
@@ -139,7 +146,9 @@ IN THIS ORDER:
 3. Quote the abstract sentence the finding comes from, word for word.
 
 **Make:** `midas_gemini_debt-research_{YYYYMMDD-HHMM}.json`
+
 **Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
 **Shape:** `[{"n":1,"citation":"Gal, D. & McShane, B. (2012) ...","doi":"10....","finding":"...","quote":"exact sentence from the abstract","midas":"show ..."}] (20 objects)`
 
 **How many:** 20
@@ -171,7 +180,9 @@ IN THIS ORDER:
 3. Each row: app, the screen it is on, what it does, a URL where it can be seen (a screenshot page, help article or store listing), and how Midas could do it better.
 
 **Make:** `midas_gemini_app-teardown_{YYYYMMDD-HHMM}.json`
+
 **Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
 **Shape:** `[{"app":"YNAB","screen":"...","move":"...","url":"https://...","midas":"..."}] (75 objects)`
 
 **How many:** 75
@@ -205,7 +216,9 @@ IN THIS ORDER:
 3. Every cell from the maker's own page, with the URL in the last column.
 
 **Make:** `hearth_gemini_scan-apps_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
 **Shape:** `one markdown table, 8 rows x 10 columns`
 
 **How many:** 8
@@ -237,7 +250,9 @@ IN THIS ORDER:
 2. Write 3 made-up projects (a bathroom, a deck, a paint job) as one JSON file that passes the schema.
 
 **Make:** `hearth_gemini_schema_{YYYYMMDD-HHMM}.json`
+
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
 **Shape:** `{"schema": {...}, "examples": [...3 projects]}`
 
 **How many:** 3
@@ -270,7 +285,9 @@ IN THIS ORDER:
 5. Health data stays on the device or in Joseph's own accounts; say which sources can export without a server.
 
 **Make:** `apollo_gemini_spec_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
 **Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
 
 **How many:** 6
@@ -308,7 +325,9 @@ IN THIS ORDER:
 5. No message text ever goes into the repo or Drive docs; only counts and labels on the page.
 
 **Make:** `hermes_gemini_spec_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
 **Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
 
 **How many:** 6
@@ -346,7 +365,9 @@ IN THIS ORDER:
 5. Event titles stay in Joseph's calendar; the page reads them live.
 
 **Make:** `kairos_gemini_spec_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
 **Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
 
 **How many:** 6
@@ -384,7 +405,9 @@ IN THIS ORDER:
 5. No broker keys in the browser; read-only exports or manual entry only. It never trades.
 
 **Make:** `icarus_gemini_spec_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
 **Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
 
 **How many:** 6
@@ -422,7 +445,9 @@ IN THIS ORDER:
 5. Photo location data (EXIF GPS) is stripped before anything is public.
 
 **Make:** `argus_gemini_spec_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
 **Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
 
 **How many:** 6

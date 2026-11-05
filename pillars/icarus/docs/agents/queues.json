@@ -51,7 +51,7 @@
    "name": "Grok",
    "tasks": [
     {
-     "id": "ICA-GRO-01",
+     "id": "ICA-GRK-01",
      "title": "Icarus Stake: second reader on Gemini's spec",
      "state": "next",
      "due": "2026-11-14",

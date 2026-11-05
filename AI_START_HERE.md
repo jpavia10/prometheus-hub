@@ -33,10 +33,8 @@ collaborators/CONTRIBUTOR_SCORES.md   every file you send, scored
 **Drive** `Prometheus Hub/Pillars/{Pillar}/`:
 
 ```
-README — {Pillar}                 what it is, its repo, its live link
-WORK QUEUE — {AI}                 your homework in this pillar (one per AI, even when empty)
+README — {Pillar}                 what it is, its repo, its live link, and every AI's homework here (a section each)
 incoming (AI drop files)/         where you save what you make
-reference/                        files Claude put there for you to read
 ```
 
 **Drive** `Prometheus Hub/{your folder}/`: `Instructions — {you}`, `HOMEWORK — {you} (every pillar)`, `FEEDBACK — {you} (every pillar)`.

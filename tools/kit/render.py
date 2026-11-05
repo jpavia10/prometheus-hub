@@ -5,7 +5,7 @@ Every pillar keeps its homework in docs/agents/queues.json (in its own repo, or 
   1. writes each pillar's docs/agents/QUEUE_{ai}.md (one page per AI, every AI, even when it has nothing there: predictable),
   2. writes HOMEWORK.md here (the board: every pillar x every AI) and data/board.json (the desk reads it),
   3. writes docs/agents/drive/HOMEWORK_{ai}.txt (the text of each AI's Drive doc 'HOMEWORK — {Name} (every pillar)') and
-     docs/agents/drive/{pillar}/QUEUE_{ai}.txt (the text of 'Prometheus Hub/Pillars/{Pillar}/WORK QUEUE — {Name}').
+     docs/agents/drive/{pillar}/README.txt (the text of 'Prometheus Hub/Pillars/{Pillar}/README — {Pillar}': what it is + each AI's list).
 Titan Reliquary keeps its own research loop; its open assignments are counted from its QUEUE_{ai}.md.
 
     python3 tools/kit/render.py [--root /home/user]     repos are found as {root}/{repo name}; default: the folder above this repo
@@ -54,9 +54,8 @@ def task_md(i, t, p, folder):
     if t.get("steps"): L += ["**Do this:**"] + [f"{n}. {s}" for n, s in enumerate(t["steps"], 1)] + [""]
     d = t.get("deliver") or {}
     if d:
-        L += [f"**Make:** `{d.get('file')}`", f"**Save in:** {d.get('folder')}"]
-        if d.get("shape"): L += [f"**Shape:** `{d['shape']}`"]
-        L += [""]
+        L += [f"**Make:** `{d.get('file')}`", "", f"**Save in:** {d.get('folder')}", ""]
+        if d.get("shape"): L += [f"**Shape:** `{d['shape']}`", ""]
     if t.get("count"): L += [f"**How many:** {t['count']}", ""]
     if t.get("done_when"): L += [f"**Done when:** {t['done_when']}", ""]
     if t.get("checks"): L += ["**How Claude checks it:**"] + [f"- {x}" for x in t["checks"]] + [""]
@@ -73,6 +72,21 @@ def queue_page(p, ai, tasks, stamp):
         L += [f"No homework for {ai['name']} in {p['name']} right now. Check your HOMEWORK doc for the other pillars.", ""]
     for i, t in enumerate(sorted(tasks, key=lambda t: (t.get("state") != "now", t.get("due", "9"))), 1):
         L += task_md(i, t, p, folder)
+    return "\n".join(L).rstrip() + "\n"
+
+
+def drive_queue(p, ai, tasks, stamp):
+    """The Drive doc 'Prometheus Hub/Pillars/{Pillar}/WORK QUEUE — {Name}': the list; the full text of every task is in the AI's HOMEWORK doc."""
+    L = [f"WORK QUEUE — {ai['name']} · {p['name']}", "", f"Updated {stamp} · {len(tasks)} open in this pillar.", "",
+         f"The full instructions for every task below (what to read, what to make, how many, how it is checked) are in your Drive doc "
+         f"'Prometheus Hub/{ai['drive_folder']}/HOMEWORK — {ai['name']} (every pillar)', in the order to do them. "
+         f"Save what you make in this folder's 'incoming (AI drop files)'.", ""]
+    if not tasks:
+        L += [f"No homework for {ai['name']} in {p['name']} right now."]
+    for t in sorted(tasks, key=lambda t: (t.get("state") != "now", t.get("due", "9"))):
+        d = t.get("deliver") or {}
+        L += [f"- {t['id']} · {t['title']} · due {t.get('due')}" + (" · waits for its input file" if t.get("state") == "next" else ""),
+              f"    make: {d.get('file')} · how many: {t.get('count')} · done when: {t.get('done_when')}"]
     return "\n".join(L).rstrip() + "\n"
 
 
@@ -95,6 +109,7 @@ def main(argv):
     out = {}            # path -> text
     board = {"updated": None, "pillars": []}
     per_ai = {a["id"]: [] for a in reg["ais"]}
+    drive_parts = {}    # pillar id -> (pillar, [each AI's section]) = the Drive doc 'README — {Pillar}' 
     for p in reg["pillars"]:
         row = {"id": p["id"], "name": p["name"], "state": p["state"], "live": p.get("live", ""), "open": {}}
         if p.get("paused"):
@@ -117,10 +132,22 @@ def main(argv):
             if a["id"] == "claude":
                 continue
             out[os.path.join(d, "docs", "agents", f"QUEUE_{a['id']}.md")] = queue_page(p, a, tasks, stamp or "{stamp}")
-            out[os.path.join(HUB, "docs", "agents", "drive", p["id"], f"QUEUE_{a['id']}.txt")] = queue_page(p, a, tasks, stamp or "{stamp}").replace(GEN + "\n\n", "")
+            drive_parts.setdefault(p["id"], (p, []))[1].append(drive_queue(p, a, tasks, stamp or "{stamp}"))
             for t in tasks:
                 per_ai[a["id"]].append((p, t, None))
         board["pillars"].append(row)
+
+    for pid, (p, parts) in drive_parts.items():
+        live = p.get("live") or "no page yet"
+        repo = p.get("repo") or f"jpavia10/prometheus-hub, folder {p.get('home')}/ (until it has its own repo)"
+        head = [f"README — {p['name']}", "", f"{p['what']}", "", f"Live: {live} · Code and rules: https://github.com/{repo.split(',')[0]} · State: {p['state']}" + (" · PRIVATE: made-up data or public research only" if p.get("private") else ""), "",
+                "Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Save what you make in this folder's 'incoming (AI drop files)' under the exact name your task gives. "
+                "Each AI's section below lists its homework here; the full instructions for each task are in that AI's own doc 'Prometheus Hub/{AI folder}/HOMEWORK — {Name} (every pillar)'.", ""]
+        body = []
+        for part in parts:
+            lines = part.splitlines()
+            body += ["## " + lines[0].replace("WORK QUEUE — ", "").split(" · ")[0]] + [l for l in lines[1:] if not l.startswith("The full instructions")] + [""]
+        out[os.path.join(HUB, "docs", "agents", "drive", pid, "README.txt")] = "\n".join(head + body).rstrip() + "\n"
 
     # each AI's one page for every pillar
     for a in reg["ais"]:
@@ -128,7 +155,7 @@ def main(argv):
         titan = [x for x in items if x[1] is None]
         work = sorted([x for x in items if x[1] is not None], key=lambda x: (x[1].get("state") != "now", x[1].get("due", "9")))
         n = len(work) + sum(c[0] + c[1] for _, _, c in titan)
-        L = [f"HOMEWORK — {a['name']} (every pillar)", f"Updated {stamp or '{stamp}'}. {n} open across {len({x[0]['id'] for x in items})} pillars.", "",
+        L = [f"HOMEWORK — {a['name']} (every pillar)", "", f"Updated {stamp or '{stamp}'}. {n} open across {len({x[0]['id'] for x in items})} pillars.", "",
              "When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. "
              "When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md "
              "(read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.", ""]

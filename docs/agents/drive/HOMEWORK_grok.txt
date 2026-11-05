@@ -1,5 +1,6 @@
 HOMEWORK — Grok (every pillar)
-Updated 2026-11-05 02:26 UTC. 20 open across 5 pillars.
+
+Updated 2026-11-05 02:32 UTC. 20 open across 5 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -9,8 +10,8 @@ IN THIS ORDER:
 1. [Midas Ledger] MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
 2. [Midas Ledger] MID-GRK-02 · A fresh book every Monday by noon PT · due 2026-11-09
 3. [Hephaestus Hearth] HEA-GRK-01 · Second reader on Gemini's scan-app table · due 2026-11-13 · waits for its input file
-4. [Hermes Post] HER-GRO-01 · Hermes Post: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
-5. [Icarus Stake] ICA-GRO-01 · Icarus Stake: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
+4. [Hermes Post] HER-GRK-01 · Hermes Post: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
+5. [Icarus Stake] ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
 
 ==================== 1. MIDAS LEDGER ====================
 ## 1. MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end
@@ -29,7 +30,9 @@ IN THIS ORDER:
 3. Rebuild and encrypt the book with publish.sh as you do now; the plaintext never goes to Drive, Discord or GitHub.
 
 **Make:** `the encrypted book (index.html #vault) via publish.sh`
+
 **Save in:** jpavia10/midas-ledger, a branch grok/... and a pull request
+
 **Shape:** `docs/BOOK_SCHEMA.md section 'debts'`
 
 **How many:** 1
@@ -60,7 +63,9 @@ IN THIS ORDER:
 2. Add one log line saying what changed (counts only, no amounts).
 
 **Make:** `the encrypted book`
+
 **Save in:** jpavia10/midas-ledger
+
 **Shape:** `as now`
 
 **How many:** 1
@@ -88,7 +93,9 @@ IN THIS ORDER:
 2. Write one line per cell you checked: row, column, Gemini's value, yours, the URL, agree/differ.
 
 **Make:** `hearth_grok_scan-apps-check_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
 **Shape:** `table: app | column | gemini | grok | url | agree/differ`
 
 **How many:** 32
@@ -105,7 +112,7 @@ IN THIS ORDER:
 - a file saved anywhere but the folder named here, or under another name
 
 ==================== 4. HERMES POST ====================
-## 4. HER-GRO-01 · Hermes Post: second reader on Gemini's spec
+## 4. HER-GRK-01 · Hermes Post: second reader on Gemini's spec
 
 **Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
 
@@ -119,7 +126,9 @@ IN THIS ORDER:
 2. Add up to 5 sources Gemini missed, same columns.
 
 **Make:** `hermes_grok_spec-check_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
 **Shape:** `table: source | gemini says | page says | url | agree/differ`
 
 **How many:** 6
@@ -136,7 +145,7 @@ IN THIS ORDER:
 - a file saved anywhere but the folder named here, or under another name
 
 ==================== 5. ICARUS STAKE ====================
-## 5. ICA-GRO-01 · Icarus Stake: second reader on Gemini's spec
+## 5. ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec
 
 **Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
 
@@ -150,7 +159,9 @@ IN THIS ORDER:
 2. Add up to 5 sources Gemini missed, same columns.
 
 **Make:** `icarus_grok_spec-check_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
 **Shape:** `table: source | gemini says | page says | url | agree/differ`
 
 **How many:** 6

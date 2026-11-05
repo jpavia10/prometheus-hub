@@ -2,7 +2,7 @@
 
 # Prometheus Hub · homework for ChatGPT
 
-Updated 2026-11-05 02:26 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/ChatGPT/HOMEWORK — ChatGPT (every pillar)'.
+Updated 2026-11-05 02:32 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/ChatGPT/HOMEWORK — ChatGPT (every pillar)'.
 
 ## 1. HUB-GPT-01 · Phone audit of the desk: 25 findings
 
@@ -19,7 +19,9 @@ Updated 2026-11-05 02:26 UTC · 1 open · Rules for every pillar: https://github
 3. At least 8 about the look (type, spacing, contrast, motion), at least 8 about use (what is hard to find or do).
 
 **Make:** `hub_chatgpt_audit_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
 **Shape:** `numbered list, 25 items, each with where / wrong / fix / severity`
 
 **How many:** 25

@@ -2,7 +2,7 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-05 02:26 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 02:32 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look
 
@@ -21,7 +21,9 @@ Updated 2026-11-05 02:26 UTC · 2 open · Rules for every pillar: https://github
 4. Say which part of Prometheus each one fits: desk, door, sheet, Sylade page, Midas, Hearth, or a seat.
 
 **Make:** `hub_gemini_refs_{YYYYMMDD-HHMM}.json`
+
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
 **Shape:** `[{"n":1,"url":"https://...","maker":"...","seen":"one sentence of what is on the page","techniques":["...","...","..."],"fits":"desk","works_on_phone":true}] (40 objects)`
 
 **How many:** 40
@@ -60,7 +62,9 @@ Updated 2026-11-05 02:26 UTC · 2 open · Rules for every pillar: https://github
 5. No imports, no DOM, no Three.js: plain functions in one file.
 
 **Make:** `hub_gemini_shapes_{YYYYMMDD-HHMM}.js`
+
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
 **Shape:** `one .js file: export function shapeTitan(n, rand) {...} ... (9 exports)`
 
 **How many:** 9

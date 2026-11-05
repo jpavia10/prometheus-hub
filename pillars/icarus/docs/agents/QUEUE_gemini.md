@@ -2,7 +2,7 @@
 
 # Icarus Stake · homework for Gemini
 
-Updated 2026-11-05 02:26 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 02:32 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)
 
@@ -22,7 +22,9 @@ Updated 2026-11-05 02:26 UTC · 1 open · Rules for every pillar: https://github
 5. No broker keys in the browser; read-only exports or manual entry only. It never trades.
 
 **Make:** `icarus_gemini_spec_{YYYYMMDD-HHMM}.md`
+
 **Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
 **Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
 
 **How many:** 6

@@ -12,7 +12,7 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
 
 ## The hub's own job: the kit
 
-- `pillars.json` is the list of every pillar. A new pillar: add it there, run `python3 tools/kit/scaffold.py --root /home/user {id}` (creates the standard files, never overwrites), give it tasks in its `docs/agents/queues.json`, run `python3 tools/kit/render.py --root /home/user`, then make its Drive folder (`Prometheus Hub/Pillars/{Pillar}/` with `README — {Pillar}`, `WORK QUEUE — {AI}` x4, `incoming (AI drop files)/`, `reference/`).
+- `pillars.json` is the list of every pillar. A new pillar: add it there, run `python3 tools/kit/scaffold.py --root /home/user {id}` (creates the standard files, never overwrites), give it tasks in its `docs/agents/queues.json`, run `python3 tools/kit/render.py --root /home/user`, then make its Drive folder (`Prometheus Hub/Pillars/{Pillar}/` with the doc `README — {Pillar}` from `docs/agents/drive/{id}/README.txt` and the folder `incoming (AI drop files)/`).
 - `python3 tools/kit/render.py --check` fails when a rendered page is out of date.
 - The layout and Claude's routine: `docs/PROMETHEUS_LAYOUT.md`. The rules every AI follows: `AI_START_HERE.md`.
 - The desk reads `data/board.json` (rendered) for each door's state and open homework.
