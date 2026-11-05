@@ -1,0 +1,8 @@
+.weekgrid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 700px) { .weekgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.wday { border: 1px solid var(--line); border-radius: 14px; padding: 10px; min-height: 96px; background: rgba(4, 6, 12, 0.35); }
+.wday.today { border-color: var(--accent); box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 25%, transparent); }
+.wd-h { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.wd-i { font-size: 13px; line-height: 1.3; padding: 4px 6px; border-left: 2px solid var(--accent-2); margin: 4px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wd-i.mine { border-left-color: var(--accent); }
+#k-filter { margin: 0 0 10px; }

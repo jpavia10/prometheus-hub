@@ -109,6 +109,7 @@ def main(argv):
     out = {}            # path -> text
     board = {"updated": None, "pillars": []}
     per_ai = {a["id"]: [] for a in reg["ais"]}
+    deadlines = []
     drive_parts = {}    # pillar id -> (pillar, [each AI's section]) = the Drive doc 'README — {Pillar}' 
     for p in reg["pillars"]:
         row = {"id": p["id"], "name": p["name"], "state": p["state"], "live": p.get("live", ""), "open": {}}
@@ -129,6 +130,9 @@ def main(argv):
         for a in reg["ais"] + [{"id": "claude", "name": "Claude", "drive_folder": "Claude"}]:
             tasks = open_tasks(q, a["id"])
             row["open"][a["id"]] = len(tasks)
+            for t in tasks:     # every open task with its due date: Kairos Meridian shows them on the calendar
+                deadlines.append({"due": t.get("due"), "pillar": p["id"], "pillar_name": p["name"], "ai": a["id"], "ai_name": a["name"],
+                                  "id": t["id"], "title": t["title"], "state": t.get("state"), "count": t.get("count")})
             if a["id"] == "claude":
                 continue
             out[os.path.join(d, "docs", "agents", f"QUEUE_{a['id']}.md")] = queue_page(p, a, tasks, stamp or "{stamp}")
@@ -182,6 +186,8 @@ def main(argv):
     out[os.path.join(HUB, "HOMEWORK.md")] = "\n".join(B) + "\n"
     board["updated"] = stamp
     out[os.path.join(HUB, "data", "board.json")] = json.dumps(board, indent=1, ensure_ascii=False) + "\n"
+    deadlines.sort(key=lambda d: (d["due"] or "9", d["pillar"], d["id"]))
+    out[os.path.join(HUB, "data", "deadlines.json")] = json.dumps({"updated": stamp, "tasks": deadlines}, indent=1, ensure_ascii=False) + "\n"
 
     stale = []
     for path, text in out.items():

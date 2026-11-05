@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05 02:32 UTC",
+ "updated": "2026-11-05 02:45 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -55,8 +55,8 @@
   {
    "id": "apollo",
    "name": "Apollo Temple",
-   "state": "seat",
-   "live": "",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/apollo/",
    "open": {
     "grok": 0,
     "gemini": 1,
@@ -68,8 +68,8 @@
   {
    "id": "hermes",
    "name": "Hermes Post",
-   "state": "seat",
-   "live": "",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
    "open": {
     "grok": 1,
     "gemini": 1,
@@ -81,8 +81,8 @@
   {
    "id": "kairos",
    "name": "Kairos Meridian",
-   "state": "seat",
-   "live": "",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
    "open": {
     "grok": 0,
     "gemini": 1,
@@ -94,8 +94,8 @@
   {
    "id": "icarus",
    "name": "Icarus Stake",
-   "state": "seat",
-   "live": "",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/icarus/",
    "open": {
     "grok": 1,
     "gemini": 1,
@@ -107,8 +107,8 @@
   {
    "id": "argus",
    "name": "Argus Album",
-   "state": "seat",
-   "live": "",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/argus/",
    "open": {
     "grok": 0,
     "gemini": 1,

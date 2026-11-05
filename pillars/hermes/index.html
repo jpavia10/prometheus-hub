@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hermes Post</title>
+  <meta name="description" content="Hermes Post, a pillar of Prometheus Hub.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#05070e">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="../../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../kit/prometheus.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body data-pillar="hermes">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="bar">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="name">Hermes Post</span>
+      <span class="spacer"></span>
+      <a class="back" href="../../">Prometheus</a>
+    </header>
+    <section class="hero">
+      <p class="kicker">Mail · messages</p>
+      <h1>Nothing <em>lost</em> in the post.</h1>
+      <p class="lede">What came in, what needs an answer, what is a bill and what you are waiting on, in one triage board.</p>
+    </section>
+    <main id="app"></main>
+    <footer class="foot">
+      <span>Your entries stay in this browser. Nothing is sent anywhere.</span>
+      <button class="btn quiet small" id="export" type="button">Export</button>
+      <button class="btn quiet small" id="import" type="button">Import</button>
+      <a href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hermes">Code and homework</a>
+    </footer>
+  </div>
+  <script src="../../kit/kit.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

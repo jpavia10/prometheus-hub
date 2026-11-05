@@ -1,0 +1,2 @@
+.list li .acts { display: flex; gap: 6px; flex: none; }
+.list li > span:first-child { min-width: 0; }

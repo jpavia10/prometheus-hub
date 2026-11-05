@@ -45,11 +45,11 @@ Sylade is the alter ego, not a wing and not Fleet Command.
 | Midas Ledger | https://jpavia10.github.io/midas-ledger/ |
 | Hephaestus Hearth | https://jpavia10.github.io/hephaestus-hearth/ |
 | Prometheus Hub Drive | https://drive.google.com/drive/folders/1ykx47zGga6Jbd4FrUzBWde2frT3_6cnP — AI folders and Shared. The folder stays in Drive. |
-| Apollo Temple | Seat only. Health, fitness, nutrition. No page yet. |
-| Hermes Post | Seat only. No inbox. |
-| Kairos Meridian | Seat only. The clock on the desk is the part that runs. |
-| Icarus Stake | Seat only. High-risk trading. Not connected. This desk does not trade. |
-| Argus Album | Seat only. No public album. Source repos: `titan-photos-as`, `titan-photos-eu`, `titan-photos-na`. |
+| Apollo Temple | Health, fitness, nutrition: `pillars/apollo/` (live at /pillars/apollo/) |
+| Hermes Post | Mail triage: `pillars/hermes/` (live at /pillars/hermes/) |
+| Kairos Meridian | Time, every deadline, focus clock: `pillars/kairos/` (live at /pillars/kairos/) |
+| Icarus Stake | High-risk trading journal, never trades: `pillars/icarus/` (live at /pillars/icarus/) |
+| Argus Album | Every photo the pillars use: `pillars/argus/` (live at /pillars/argus/) |
 | Fleet Command | Idle on purpose. The build continues. The live page does not run. Not Sylade. https://jpavia10.github.io/fleet-command/ |
 
 ## Sylade

@@ -1,0 +1,302 @@
+{
+ "updated": "2026-11-05 02:45 UTC",
+ "tasks": [
+  {
+   "due": "2026-11-08",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "claude",
+   "ai_name": "Claude",
+   "id": "MID-CLA-01",
+   "title": "Midas v2: a new design that makes the way out of debt visible",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-09",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-01",
+   "title": "Reference wall: 40 live sites with the experimental, futuristic desk look",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-11-09",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "HUB-MUS-01",
+   "title": "The words on every door: 11 doors, three lines each",
+   "state": "now",
+   "count": 11
+  },
+  {
+   "due": "2026-11-09",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-01",
+   "title": "12 debt payoff cases worked to the cent",
+   "state": "now",
+   "count": 12
+  },
+  {
+   "due": "2026-11-09",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "MID-GRK-01",
+   "title": "Give every debt in the book its APR, minimum, due day, limit and promo end",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-09",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "MID-GRK-02",
+   "title": "A fresh book every Monday by noon PT",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-10",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-02",
+   "title": "Nine particle shapes, one per door, as JavaScript functions",
+   "state": "now",
+   "count": 9
+  },
+  {
+   "due": "2026-11-10",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-02",
+   "title": "20 research findings on what really helps people pay off debt, each with its DOI",
+   "state": "now",
+   "count": 20
+  },
+  {
+   "due": "2026-11-10",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "MID-MUS-01",
+   "title": "The words of the way out: 24 milestone lines and 12 screen lines",
+   "state": "now",
+   "count": 36
+  },
+  {
+   "due": "2026-11-11",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-01",
+   "title": "Scan the house with a phone: 8 apps compared on 10 fixed columns",
+   "state": "now",
+   "count": 8
+  },
+  {
+   "due": "2026-11-11",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-03",
+   "title": "15 money apps taken apart: 75 things that make people keep going",
+   "state": "now",
+   "count": 75
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "apollo",
+   "pillar_name": "Apollo Temple",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "APO-GEM-01",
+   "title": "Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)",
+   "state": "now",
+   "count": 6
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "argus",
+   "pillar_name": "Argus Album",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ARG-GEM-01",
+   "title": "Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)",
+   "state": "now",
+   "count": 6
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "claude",
+   "ai_name": "Claude",
+   "id": "HEA-CLA-01",
+   "title": "Turn on Pages for the Hearth and save projects on the device",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-02",
+   "title": "The renovation data shape: JSON Schema + 3 made-up projects that pass it",
+   "state": "now",
+   "count": 3
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "hermes",
+   "pillar_name": "Hermes Post",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HER-GEM-01",
+   "title": "Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))",
+   "state": "now",
+   "count": 6
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "claude",
+   "ai_name": "Claude",
+   "id": "HUB-CLA-01",
+   "title": "Desk v2: a live status for every pillar on its door",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "chatgpt",
+   "ai_name": "ChatGPT",
+   "id": "HUB-GPT-01",
+   "title": "Phone audit of the desk: 25 findings",
+   "state": "now",
+   "count": 25
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "icarus",
+   "pillar_name": "Icarus Stake",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ICA-GEM-01",
+   "title": "Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)",
+   "state": "now",
+   "count": 6
+  },
+  {
+   "due": "2026-11-12",
+   "pillar": "kairos",
+   "pillar_name": "Kairos Meridian",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KAI-GEM-01",
+   "title": "Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)",
+   "state": "now",
+   "count": 6
+  },
+  {
+   "due": "2026-11-13",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "HEA-GRK-01",
+   "title": "Second reader on Gemini's scan-app table",
+   "state": "next",
+   "count": 32
+  },
+  {
+   "due": "2026-11-14",
+   "pillar": "apollo",
+   "pillar_name": "Apollo Temple",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "APO-MUS-01",
+   "title": "Apollo Temple: second reader on Gemini's spec",
+   "state": "next",
+   "count": 6
+  },
+  {
+   "due": "2026-11-14",
+   "pillar": "argus",
+   "pillar_name": "Argus Album",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "ARG-MUS-01",
+   "title": "Argus Album: second reader on Gemini's spec",
+   "state": "next",
+   "count": 6
+  },
+  {
+   "due": "2026-11-14",
+   "pillar": "hermes",
+   "pillar_name": "Hermes Post",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "HER-GRK-01",
+   "title": "Hermes Post: second reader on Gemini's spec",
+   "state": "next",
+   "count": 6
+  },
+  {
+   "due": "2026-11-14",
+   "pillar": "icarus",
+   "pillar_name": "Icarus Stake",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "ICA-GRK-01",
+   "title": "Icarus Stake: second reader on Gemini's spec",
+   "state": "next",
+   "count": 6
+  },
+  {
+   "due": "2026-11-14",
+   "pillar": "kairos",
+   "pillar_name": "Kairos Meridian",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "KAI-MUS-01",
+   "title": "Kairos Meridian: second reader on Gemini's spec",
+   "state": "next",
+   "count": 6
+  },
+  {
+   "due": "2026-11-14",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "chatgpt",
+   "ai_name": "ChatGPT",
+   "id": "MID-GPT-01",
+   "title": "Audit Midas v2 on the made-up book: 20 findings",
+   "state": "next",
+   "count": 20
+  }
+ ]
+}

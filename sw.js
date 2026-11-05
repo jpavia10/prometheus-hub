@@ -1,5 +1,5 @@
 /* Prometheus Hub. Network first. Same-origin shell only. No secrets. */
-var CACHE = "prometheus-hub-desk-v3";
+var CACHE = "prometheus-hub-desk-v4";
 var SHELL = [
   "./",
   "./index.html",
@@ -12,7 +12,12 @@ var SHELL = [
   "./icons/apple-touch-icon.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
-  "./icons/icon-maskable-512.png"
+  "./icons/icon-maskable-512.png",
+  "./kit/prometheus.css",
+  "./kit/kit.js",
+  "./kit/fonts/outfit-latin-300-normal.woff2",
+  "./kit/fonts/outfit-latin-400-normal.woff2",
+  "./kit/fonts/outfit-latin-500-normal.woff2"
 ];
 
 self.addEventListener("install", function (event) {

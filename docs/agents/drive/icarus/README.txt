@@ -2,13 +2,13 @@ README — Icarus Stake
 
 High-risk trading journal. It never trades.
 
-Live: no page yet · Code and rules: https://github.com/jpavia10/prometheus-hub · State: seat · PRIVATE: made-up data or public research only
+Live: https://jpavia10.github.io/prometheus-hub/pillars/icarus/ · Code and rules: https://github.com/jpavia10/prometheus-hub · State: live · PRIVATE: made-up data or public research only
 
 Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Save what you make in this folder's 'incoming (AI drop files)' under the exact name your task gives. Each AI's section below lists its homework here; the full instructions for each task are in that AI's own doc 'Prometheus Hub/{AI folder}/HOMEWORK — {Name} (every pillar)'.
 
 ## Grok
 
-Updated 2026-11-05 02:32 UTC · 1 open in this pillar.
+Updated 2026-11-05 02:45 UTC · 1 open in this pillar.
 
 
 - ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
@@ -16,7 +16,7 @@ Updated 2026-11-05 02:32 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-05 02:32 UTC · 1 open in this pillar.
+Updated 2026-11-05 02:45 UTC · 1 open in this pillar.
 
 
 - ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade) · due 2026-11-12
@@ -24,14 +24,14 @@ Updated 2026-11-05 02:32 UTC · 1 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-05 02:32 UTC · 0 open in this pillar.
+Updated 2026-11-05 02:45 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Icarus Stake right now.
 
 ## ChatGPT
 
-Updated 2026-11-05 02:32 UTC · 0 open in this pillar.
+Updated 2026-11-05 02:45 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Icarus Stake right now.
