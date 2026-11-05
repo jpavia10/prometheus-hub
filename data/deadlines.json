@@ -1,17 +1,6 @@
 {
- "updated": "2026-11-05 02:45 UTC",
+ "updated": "2026-11-05 02:52 UTC",
  "tasks": [
-  {
-   "due": "2026-11-08",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "claude",
-   "ai_name": "Claude",
-   "id": "MID-CLA-01",
-   "title": "Midas v2: a new design that makes the way out of debt visible",
-   "state": "now",
-   "count": 1
-  },
   {
    "due": "2026-11-09",
    "pillar": "hub",
@@ -295,7 +284,7 @@
    "ai_name": "ChatGPT",
    "id": "MID-GPT-01",
    "title": "Audit Midas v2 on the made-up book: 20 findings",
-   "state": "next",
+   "state": "now",
    "count": 20
   }
  ]

@@ -1,12 +1,12 @@
 HOMEWORK — ChatGPT (every pillar)
 
-Updated 2026-11-05 02:45 UTC. 2 open across 2 pillars.
+Updated 2026-11-05 02:52 UTC. 2 open across 2 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 IN THIS ORDER:
 1. [Prometheus Hub] HUB-GPT-01 · Phone audit of the desk: 25 findings · due 2026-11-12
-2. [Midas Ledger] MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14 · waits for its input file
+2. [Midas Ledger] MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GPT-01 · Phone audit of the desk: 25 findings
@@ -46,12 +46,12 @@ IN THIS ORDER:
 ==================== 2. MIDAS LEDGER ====================
 ## 2. MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings
 
-**Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
+**Due:** 2026-11-14 · **State:** now
 
 **Why:** After Claude ships the new design, a second pair of eyes on it.
 
 **Read first:**
-- https://jpavia10.github.io/midas-ledger/ (password-protected: use the made-up book Claude links in the README once v2 is live)
+- https://jpavia10.github.io/midas-ledger/ shows the password screen; to see every screen with a made-up book, run it locally: python3 -m http.server 8742 in a checkout, then http://127.0.0.1:8742/?hud=1 (README, 'Pages')
 
 **Do this:**
 1. Use every tab on a phone-sized screen.

@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-05 02:45 UTC. 32 open across 9 pillars.
+Updated 2026-11-05 02:52 UTC. 32 open across 9 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -69,7 +69,7 @@ IN THIS ORDER:
 
 **Do this:**
 1. Make 12 made-up cases: 4 avalanche, 4 snowball, 4 'custom order'. Each has 2 to 6 debts (name, balance, APR %, minimum payment) and one monthly budget at least the sum of the minimums.
-2. Rules, exactly: each month, interest = balance x APR / 12 / 100, rounded to the cent (half up); add it to the balance; pay every minimum (or the whole balance if smaller); the rest of the budget goes to the target debt (avalanche = highest APR, snowball = lowest balance, custom = the order you list); when a debt hits 0 its minimum joins the rest next month.
+2. Rules, exactly: each month, interest = balance x APR / 12 / 100, rounded to the cent (half up); add it to the balance; pay every minimum (or the whole balance if smaller); the rest of the budget goes to the target debt (avalanche = highest APR, snowball = lowest balance, custom = the order you list); if the target is paid off with money left, the rest goes to the next target the same month; when a debt hits 0 its minimum joins the rest from the next month.
 3. Work every case month by month until every balance is 0.
 4. At least 3 cases must run longer than 36 months and at least 2 must have a debt paid off in the same month another target changes.
 

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05 02:45 UTC",
+ "updated": "2026-11-05 02:52 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -36,7 +36,7 @@
     "gemini": 3,
     "muse": 1,
     "chatgpt": 1,
-    "claude": 1
+    "claude": 0
    }
   },
   {

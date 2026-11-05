@@ -2,7 +2,7 @@
 
 # Hermes Post · homework for Gemini
 
-Updated 2026-11-05 02:45 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 02:52 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))
 
