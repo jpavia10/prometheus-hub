@@ -1,0 +1,86 @@
+{
+ "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
+ "updated": "2026-11-05",
+ "pillar": "apollo",
+ "agents": [
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "tasks": [
+    {
+     "id": "APO-GEM-01",
+     "title": "Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)",
+     "state": "now",
+     "due": "2026-11-12",
+     "why": "Apollo Temple is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Write the spec for Apollo Temple: health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses.",
+      "At least 6 data sources with their real API names and documentation URLs (open each one); say plainly when something has no public API.",
+      "Four first screens, each listing every number on it and where it comes from.",
+      "Five 'done when' checks that can be tested on a phone.",
+      "Health data stays on the device or in Joseph's own accounts; say which sources can export without a server."
+     ],
+     "deliver": {
+      "file": "apollo_gemini_spec_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/",
+      "shape": "one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)"
+     },
+     "count": 6,
+     "done_when": "All 6 headings, at least 6 sources with working docs URLs, 4 screens, 5 testable checks.",
+     "checks": [
+      "Claude opens every docs URL.",
+      "Claude checks each 'done when' can be tested without asking Joseph."
+     ],
+     "rejected_if": [
+      "a row copied from another row with the names changed",
+      "a source URL that does not open or does not say what the row claims",
+      "fewer items than the count",
+      "a file saved anywhere but the folder named here, or under another name",
+      "an API that does not exist or a docs URL for something else",
+      "a screen that lists a number with no source"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "muse",
+   "name": "Muse",
+   "tasks": [
+    {
+     "id": "APO-MUS-01",
+     "title": "Apollo Temple: second reader on Gemini's spec",
+     "state": "next",
+     "due": "2026-11-14",
+     "why": "Every source in a spec gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file apollo_gemini_spec_*.md in the incoming folder (once it is there)"
+     ],
+     "steps": [
+      "Open every data source's docs URL; for each write: source, Gemini's claim (sign-in, cost, limits), what the page says, agree/differ.",
+      "Add up to 5 sources Gemini missed, same columns."
+     ],
+     "deliver": {
+      "file": "apollo_muse_spec-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/",
+      "shape": "table: source | gemini says | page says | url | agree/differ"
+     },
+     "count": 6,
+     "done_when": "Every source in Gemini's spec checked.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "a row copied from another row with the names changed",
+      "a source URL that does not open or does not say what the row claims",
+      "fewer items than the count",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  }
+ ]
+}

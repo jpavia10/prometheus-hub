@@ -1,0 +1,23 @@
+{
+  "about": "Every pillar of Prometheus in one list (Claude keeps it; tools/kit/render.py reads it). A pillar with a repo keeps its own homework in that repo (docs/agents/queues.json); a seat without a repo keeps it here under pillars/{id}/ until its repo exists. Titan Reliquary is the exception: its own research loop, its own Drive folder, its own look.",
+  "updated": "2026-11-05",
+  "ais": [
+    {"id": "grok", "name": "Grok", "also": "Grok Bot", "drive_folder": "Grok"},
+    {"id": "gemini", "name": "Gemini", "also": "Argon", "drive_folder": "Gemini"},
+    {"id": "muse", "name": "Muse", "also": "Sebastian", "drive_folder": "Sebastian"},
+    {"id": "chatgpt", "name": "ChatGPT", "also": "", "drive_folder": "ChatGPT"}
+  ],
+  "pillars": [
+    {"id": "hub", "name": "Prometheus Hub", "what": "The desk: every pillar opens from here.", "repo": "jpavia10/prometheus-hub", "home": "", "live": "https://jpavia10.github.io/prometheus-hub/", "state": "live", "look": "prometheus"},
+    {"id": "titan", "name": "Titan Reliquary", "what": "Coin and precious-metals collection.", "repo": "jpavia10/titan-reliquary-preview", "home": "", "live": "https://jpavia10.github.io/titan-reliquary-preview/", "state": "live", "look": "titan (own themes, the exception)", "own_loop": true,
+     "queue_url": "https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_{ai}.md", "drive": "Titan Reliquary/ (doc 'WORK QUEUE for {Name}')"},
+    {"id": "midas", "name": "Midas Ledger", "what": "Money: cash, debt and the way out of it. The book is encrypted; no AI sees real balances outside it.", "repo": "jpavia10/midas-ledger", "home": "", "live": "https://jpavia10.github.io/midas-ledger/", "state": "live", "look": "prometheus", "private": true},
+    {"id": "hearth", "name": "Hephaestus Hearth", "what": "The house: renovations, rooms, projects.", "repo": "jpavia10/hephaestus-hearth", "home": "", "live": "https://jpavia10.github.io/hephaestus-hearth/", "state": "bones", "look": "prometheus"},
+    {"id": "apollo", "name": "Apollo Temple", "what": "Health, fitness, nutrition.", "repo": "", "home": "pillars/apollo", "live": "", "state": "seat", "look": "prometheus"},
+    {"id": "hermes", "name": "Hermes Post", "what": "Mail and messages: what came in, what needs an answer.", "repo": "", "home": "pillars/hermes", "live": "", "state": "seat", "look": "prometheus", "private": true},
+    {"id": "kairos", "name": "Kairos Meridian", "what": "Time: calendar, deadlines, the day.", "repo": "", "home": "pillars/kairos", "live": "", "state": "seat", "look": "prometheus"},
+    {"id": "icarus", "name": "Icarus Stake", "what": "High-risk trading journal. It never trades.", "repo": "", "home": "pillars/icarus", "live": "", "state": "seat", "look": "prometheus", "private": true},
+    {"id": "argus", "name": "Argus Album", "what": "Photos: every picture the pillars use, in one place.", "repo": "", "home": "pillars/argus", "live": "", "state": "seat", "look": "prometheus"},
+    {"id": "fleet", "name": "Fleet Command", "what": "Paused by Joseph (2026-10-28). No AI reports to it.", "repo": "jpavia10/fleet-command", "home": "", "live": "https://jpavia10.github.io/fleet-command/", "state": "paused", "look": "", "paused": true}
+  ]
+}

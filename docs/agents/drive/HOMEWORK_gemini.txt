@@ -1,0 +1,442 @@
+HOMEWORK — Gemini (every pillar)
+Updated 2026-11-05 02:26 UTC. 32 open across 9 pillars.
+
+When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
+
+TITAN RELIQUARY (its own loop, the exception): 14 homework sheets + 6 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+
+IN THIS ORDER:
+1. [Prometheus Hub] HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look · due 2026-11-09
+2. [Midas Ledger] MID-GEM-01 · 12 debt payoff cases worked to the cent · due 2026-11-09
+3. [Prometheus Hub] HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions · due 2026-11-10
+4. [Midas Ledger] MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI · due 2026-11-10
+5. [Midas Ledger] MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going · due 2026-11-11
+6. [Hephaestus Hearth] HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns · due 2026-11-11
+7. [Hephaestus Hearth] HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it · due 2026-11-12
+8. [Apollo Temple] APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses) · due 2026-11-12
+9. [Hermes Post] HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade)) · due 2026-11-12
+10. [Kairos Meridian] KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day) · due 2026-11-12
+11. [Icarus Stake] ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade) · due 2026-11-12
+12. [Argus Album] ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar) · due 2026-11-12
+
+==================== 1. PROMETHEUS HUB ====================
+## 1. HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look
+
+**Due:** 2026-11-09 · **State:** now
+
+**Why:** Joseph landed on the experimental futuristic look for Prometheus and every pillar except Titan. Claude needs real references to build from, not adjectives.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/ (the desk today)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/README.md
+
+**Do this:**
+1. Find 40 different live websites or web apps (not videos, not Dribbble shots, not concept art) that show a spatial, futuristic interface: particle fields, depth, glass, light, motion that answers the pointer.
+2. For each: open it yourself and write what you saw on it, not what its maker claims.
+3. Name exactly 3 techniques per site in the words a builder uses (example: 'particles morph between two point clouds on scroll'; never 'modern', 'sleek', 'clean').
+4. Say which part of Prometheus each one fits: desk, door, sheet, Sylade page, Midas, Hearth, or a seat.
+
+**Make:** `hub_gemini_refs_{YYYYMMDD-HHMM}.json`
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+**Shape:** `[{"n":1,"url":"https://...","maker":"...","seen":"one sentence of what is on the page","techniques":["...","...","..."],"fits":"desk","works_on_phone":true}] (40 objects)`
+
+**How many:** 40
+
+**Done when:** 40 objects, 40 different sites, every URL opens, 120 named techniques.
+
+**How Claude checks it:**
+- Claude opens 10 of the URLs at random and compares 'seen' with the page.
+- Claude counts the objects and the distinct hosts.
+- Generic words (modern, sleek, clean, stunning, futuristic) in a technique = that row does not count.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- two rows on the same site
+- a technique that is only an adjective
+
+==================== 2. MIDAS LEDGER ====================
+## 2. MID-GEM-01 · 12 debt payoff cases worked to the cent
+
+**Due:** 2026-11-09 · **State:** now
+
+**Why:** Midas is getting a payoff planner (avalanche, snowball and Joseph's own order). Claude checks its engine against cases worked by someone else. No real balances: every case is made up.
+
+**Do this:**
+1. Make 12 made-up cases: 4 avalanche, 4 snowball, 4 'custom order'. Each has 2 to 6 debts (name, balance, APR %, minimum payment) and one monthly budget at least the sum of the minimums.
+2. Rules, exactly: each month, interest = balance x APR / 12 / 100, rounded to the cent (half up); add it to the balance; pay every minimum (or the whole balance if smaller); the rest of the budget goes to the target debt (avalanche = highest APR, snowball = lowest balance, custom = the order you list); when a debt hits 0 its minimum joins the rest next month.
+3. Work every case month by month until every balance is 0.
+4. At least 3 cases must run longer than 36 months and at least 2 must have a debt paid off in the same month another target changes.
+
+**Make:** `midas_gemini_payoff-cases_{YYYYMMDD-HHMM}.json`
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+**Shape:** `[{"case":1,"method":"avalanche","budget":900,"debts":[{"name":"Card A","balance":4210.55,"apr":24.99,"min":95}],"months":[{"m":1,"interest":{"Card A":87.68},"paid":{"Card A":900},"balance":{"Card A":3398.23}}],"payoff_month":{"Card A":6},"total_interest":312.40}] (12 objects)`
+
+**How many:** 12
+
+**Done when:** 12 cases, every month listed, and Claude's engine gets the same balance for every debt in every month.
+
+**How Claude checks it:**
+- Claude runs all 12 cases through its own engine; a balance more than $0.01 off in any month makes that case wrong.
+- Claude checks the 36-month and same-month conditions.
+
+**Not done (sent back) if:**
+- a case whose months stop before every balance is 0
+- a month that does not follow the rules above
+- fewer than 12 cases
+
+==================== 3. PROMETHEUS HUB ====================
+## 3. HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions
+
+**Due:** 2026-11-10 · **State:** now
+
+**Why:** Pointing at a door bends the desk's particle field into that door's shape. Today the shapes are rough. Each door needs a shape that reads at a glance.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/src/particles.js
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/src/shaders.js
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
+
+**Do this:**
+1. Read how src/particles.js builds its targets.
+2. Write one function per door: shapeTitan, shapeMidas, shapeHearth, shapeApollo, shapeHermes, shapeKairos, shapeIcarus, shapeArgus, shapeSylade.
+3. Each is function(n, rand) returning a Float32Array of exactly n*3 numbers (x, y, z), every value between -1 and 1, using only rand() for randomness (so the same rand gives the same shape).
+4. Shapes: Titan = a coin seen at 30 degrees with a raised rim; Midas = a rising stair of five steps; Hearth = a house with a pitched roof and a chimney; Apollo = a laurel wreath; Hermes = a winged envelope; Kairos = a clock face with two hands at 10:10; Icarus = one wing; Argus = an eye; Sylade = a standing figure in profile.
+5. No imports, no DOM, no Three.js: plain functions in one file.
+
+**Make:** `hub_gemini_shapes_{YYYYMMDD-HHMM}.js`
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+**Shape:** `one .js file: export function shapeTitan(n, rand) {...} ... (9 exports)`
+
+**How many:** 9
+
+**Done when:** 9 exported functions; each returns exactly n*3 numbers in [-1, 1] for n = 2000, 8000 and 24000, the same output for the same seed, and is recognisable in Claude's contact sheet.
+
+**How Claude checks it:**
+- Claude runs each function in node at three sizes and checks length, range and determinism.
+- Claude renders all nine as point clouds from the front and at 30 degrees and looks at them.
+
+**Not done (sent back) if:**
+- any function that throws, returns the wrong length or a value outside [-1, 1]
+- a shape that is a sphere, cube or noise cloud with a label on it
+- Math.random() anywhere
+
+==================== 4. MIDAS LEDGER ====================
+## 4. MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI
+
+**Due:** 2026-11-10 · **State:** now
+
+**Why:** Joseph: the app must inspire him to get out of debt. Claude designs from evidence, not slogans.
+
+**Read first:**
+- Google Scholar, journal pages, NBER, Federal Reserve, CFPB (no blogs, no listicles, no AI summaries)
+
+**Do this:**
+1. Find 20 different published studies or official reports about paying down debt, motivation, small wins, framing, mental accounting, or progress feedback.
+2. For each: full citation, DOI or official URL, the one finding in one sentence with its number (effect size, percent or dollars), and one concrete thing Midas should show because of it (a screen element, not advice).
+3. Quote the abstract sentence the finding comes from, word for word.
+
+**Make:** `midas_gemini_debt-research_{YYYYMMDD-HHMM}.json`
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+**Shape:** `[{"n":1,"citation":"Gal, D. & McShane, B. (2012) ...","doi":"10....","finding":"...","quote":"exact sentence from the abstract","midas":"show ..."}] (20 objects)`
+
+**How many:** 20
+
+**Done when:** 20 real studies, every DOI resolves to that paper, every quote is in its abstract.
+
+**How Claude checks it:**
+- Claude resolves all 20 DOIs and searches each quote in the abstract.
+- One invented paper or invented quote = the whole file is rejected.
+
+**Not done (sent back) if:**
+- any paper that does not exist
+- a quote that is not word for word
+- a blog or news article in place of a study
+
+==================== 5. MIDAS LEDGER ====================
+## 5. MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going
+
+**Due:** 2026-11-11 · **State:** now
+
+**Why:** Midas looked 'neon' and uninspiring. Claude wants the specific moves the best apps use.
+
+**Read first:**
+- the apps' own sites, help centres, App Store pages and press kits
+
+**Do this:**
+1. Apps: YNAB, Monarch Money, Copilot Money, Rocket Money, Undebt.it, Debt Payoff Planner, EveryDollar, Simplifi, Empower, Lunch Money, Actual Budget, Goodbudget, Origin, PocketGuard, Tiller.
+2. For each app, 5 specific things on its screens that make you want to keep paying down or keep checking in (example: 'debt-free date shown under the total and it moves when you add a payment').
+3. Each row: app, the screen it is on, what it does, a URL where it can be seen (a screenshot page, help article or store listing), and how Midas could do it better.
+
+**Make:** `midas_gemini_app-teardown_{YYYYMMDD-HHMM}.json`
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+**Shape:** `[{"app":"YNAB","screen":"...","move":"...","url":"https://...","midas":"..."}] (75 objects)`
+
+**How many:** 75
+
+**Done when:** 75 rows, 5 per app, every URL shows what the row says.
+
+**How Claude checks it:**
+- Claude opens 15 URLs at random.
+- Rows that only praise ('beautiful design') do not count.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- two rows that say the same thing about one app
+
+==================== 6. HEPHAESTUS HEARTH ====================
+## 6. HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns
+
+**Due:** 2026-11-11 · **State:** now
+
+**Why:** The house on the stand is placeholder boxes. The real model will come from Joseph scanning rooms with his phone.
+
+**Read first:**
+- each app's own site, App Store / Play listing and help pages
+
+**Do this:**
+1. Compare exactly these 8: Polycam, Scaniverse, Magicplan, RoomScan Pro, Canvas (Occipital), Matterport (phone capture), Metascan, KIRI Engine.
+2. Columns, exactly: app | iPhone LiDAR needed (yes/no/optional) | Android | room floor plan with measurements (yes/no) | export formats (list) | GLB or USDZ export on the free plan | price per month (USD) | accuracy the maker states (with its words) | max area per scan | source URLs.
+3. Every cell from the maker's own page, with the URL in the last column.
+
+**Make:** `hearth_gemini_scan-apps_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+**Shape:** `one markdown table, 8 rows x 10 columns`
+
+**How many:** 8
+
+**Done when:** 8 rows, 80 filled cells, every price and format on the cited page.
+
+**How Claude checks it:**
+- Claude opens the source URL of every price and export cell for 4 apps at random.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- a blank cell without 'not stated' and the page you checked
+
+==================== 7. HEPHAESTUS HEARTH ====================
+## 7. HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Projects, rooms and notes are empty on purpose. They need one shape before anything is saved.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/hephaestus-hearth/main/README.md
+
+**Do this:**
+1. Write a JSON Schema (draft 2020-12) with: house, room (name, floor, size in feet and inches, photos), project (room, title, state: idea / quoted / booked / doing / done, budget, start, finish), task, cost_line (what, vendor, quote, paid, date, receipt photo), vendor (name, trade, phone optional), photo (file, room, date, before/after).
+2. Write 3 made-up projects (a bathroom, a deck, a paint job) as one JSON file that passes the schema.
+
+**Make:** `hearth_gemini_schema_{YYYYMMDD-HHMM}.json`
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+**Shape:** `{"schema": {...}, "examples": [...3 projects]}`
+
+**How many:** 3
+
+**Done when:** The schema is valid draft 2020-12 and all 3 examples pass it.
+
+**How Claude checks it:**
+- Claude validates with python jsonschema.
+
+**Not done (sent back) if:**
+- an example that fails its own schema
+- a real address, name or phone number
+
+==================== 8. APOLLO TEMPLE ====================
+## 8. APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Apollo Temple is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Write the spec for Apollo Temple: health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses.
+2. At least 6 data sources with their real API names and documentation URLs (open each one); say plainly when something has no public API.
+3. Four first screens, each listing every number on it and where it comes from.
+4. Five 'done when' checks that can be tested on a phone.
+5. Health data stays on the device or in Joseph's own accounts; say which sources can export without a server.
+
+**Make:** `apollo_gemini_spec_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+**Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
+
+**How many:** 6
+
+**Done when:** All 6 headings, at least 6 sources with working docs URLs, 4 screens, 5 testable checks.
+
+**How Claude checks it:**
+- Claude opens every docs URL.
+- Claude checks each 'done when' can be tested without asking Joseph.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- an API that does not exist or a docs URL for something else
+- a screen that lists a number with no source
+
+==================== 9. HERMES POST ====================
+## 9. HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Hermes Post is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Write the spec for Hermes Post: mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade).
+2. At least 6 data sources with their real API names and documentation URLs (open each one); say plainly when something has no public API.
+3. Four first screens, each listing every number on it and where it comes from.
+4. Five 'done when' checks that can be tested on a phone.
+5. No message text ever goes into the repo or Drive docs; only counts and labels on the page.
+
+**Make:** `hermes_gemini_spec_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+**Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
+
+**How many:** 6
+
+**Done when:** All 6 headings, at least 6 sources with working docs URLs, 4 screens, 5 testable checks.
+
+**How Claude checks it:**
+- Claude opens every docs URL.
+- Claude checks each 'done when' can be tested without asking Joseph.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- an API that does not exist or a docs URL for something else
+- a screen that lists a number with no source
+
+==================== 10. KAIROS MERIDIAN ====================
+## 10. KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Kairos Meridian is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Write the spec for Kairos Meridian: time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day.
+2. At least 6 data sources with their real API names and documentation URLs (open each one); say plainly when something has no public API.
+3. Four first screens, each listing every number on it and where it comes from.
+4. Five 'done when' checks that can be tested on a phone.
+5. Event titles stay in Joseph's calendar; the page reads them live.
+
+**Make:** `kairos_gemini_spec_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+**Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
+
+**How many:** 6
+
+**Done when:** All 6 headings, at least 6 sources with working docs URLs, 4 screens, 5 testable checks.
+
+**How Claude checks it:**
+- Claude opens every docs URL.
+- Claude checks each 'done when' can be tested without asking Joseph.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- an API that does not exist or a docs URL for something else
+- a screen that lists a number with no source
+
+==================== 11. ICARUS STAKE ====================
+## 11. ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Icarus Stake is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Write the spec for Icarus Stake: a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade.
+2. At least 6 data sources with their real API names and documentation URLs (open each one); say plainly when something has no public API.
+3. Four first screens, each listing every number on it and where it comes from.
+4. Five 'done when' checks that can be tested on a phone.
+5. No broker keys in the browser; read-only exports or manual entry only. It never trades.
+
+**Make:** `icarus_gemini_spec_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+**Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
+
+**How many:** 6
+
+**Done when:** All 6 headings, at least 6 sources with working docs URLs, 4 screens, 5 testable checks.
+
+**How Claude checks it:**
+- Claude opens every docs URL.
+- Claude checks each 'done when' can be tested without asking Joseph.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- an API that does not exist or a docs URL for something else
+- a screen that lists a number with no source
+
+==================== 12. ARGUS ALBUM ====================
+## 12. ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Argus Album is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Write the spec for Argus Album: every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar.
+2. At least 6 data sources with their real API names and documentation URLs (open each one); say plainly when something has no public API.
+3. Four first screens, each listing every number on it and where it comes from.
+4. Five 'done when' checks that can be tested on a phone.
+5. Photo location data (EXIF GPS) is stripped before anything is public.
+
+**Make:** `argus_gemini_spec_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+**Shape:** `one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)`
+
+**How many:** 6
+
+**Done when:** All 6 headings, at least 6 sources with working docs URLs, 4 screens, 5 testable checks.
+
+**How Claude checks it:**
+- Claude opens every docs URL.
+- Claude checks each 'done when' can be tested without asking Joseph.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- an API that does not exist or a docs URL for something else
+- a screen that lists a number with no source

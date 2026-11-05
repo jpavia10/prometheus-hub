@@ -1,0 +1,128 @@
+{
+ "updated": "2026-11-05 02:26 UTC",
+ "pillars": [
+  {
+   "id": "hub",
+   "name": "Prometheus Hub",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/",
+   "open": {
+    "grok": 0,
+    "gemini": 2,
+    "muse": 1,
+    "chatgpt": 1,
+    "claude": 1
+   }
+  },
+  {
+   "id": "titan",
+   "name": "Titan Reliquary",
+   "state": "live",
+   "live": "https://jpavia10.github.io/titan-reliquary-preview/",
+   "open": {
+    "grok": 15,
+    "gemini": 20,
+    "muse": 14,
+    "chatgpt": 0
+   }
+  },
+  {
+   "id": "midas",
+   "name": "Midas Ledger",
+   "state": "live",
+   "live": "https://jpavia10.github.io/midas-ledger/",
+   "open": {
+    "grok": 2,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 1,
+    "claude": 1
+   }
+  },
+  {
+   "id": "hearth",
+   "name": "Hephaestus Hearth",
+   "state": "bones",
+   "live": "https://jpavia10.github.io/hephaestus-hearth/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
+    "muse": 0,
+    "chatgpt": 0,
+    "claude": 1
+   }
+  },
+  {
+   "id": "apollo",
+   "name": "Apollo Temple",
+   "state": "seat",
+   "live": "",
+   "open": {
+    "grok": 0,
+    "gemini": 1,
+    "muse": 1,
+    "chatgpt": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "hermes",
+   "name": "Hermes Post",
+   "state": "seat",
+   "live": "",
+   "open": {
+    "grok": 1,
+    "gemini": 1,
+    "muse": 0,
+    "chatgpt": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "kairos",
+   "name": "Kairos Meridian",
+   "state": "seat",
+   "live": "",
+   "open": {
+    "grok": 0,
+    "gemini": 1,
+    "muse": 1,
+    "chatgpt": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "icarus",
+   "name": "Icarus Stake",
+   "state": "seat",
+   "live": "",
+   "open": {
+    "grok": 1,
+    "gemini": 1,
+    "muse": 0,
+    "chatgpt": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "argus",
+   "name": "Argus Album",
+   "state": "seat",
+   "live": "",
+   "open": {
+    "grok": 0,
+    "gemini": 1,
+    "muse": 1,
+    "chatgpt": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "fleet",
+   "name": "Fleet Command",
+   "state": "paused",
+   "live": "https://jpavia10.github.io/fleet-command/",
+   "open": {}
+  }
+ ]
+}

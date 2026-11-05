@@ -1,0 +1,33 @@
+# Hephaestus Hearth · homework for Grok
+
+Updated 2026-11-05 02:26 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
+
+## 1. HEA-GRK-01 · Second reader on Gemini's scan-app table
+
+**Due:** 2026-11-13 · **State:** next (starts when the file it checks is in the folder)
+
+**Why:** Prices and export rules change often; a second reader catches what one missed.
+
+**Read first:**
+- Gemini's file hearth_gemini_scan-apps_*.md in the incoming folder (once it is there)
+
+**Do this:**
+1. Check every price, export and LiDAR cell against the cited page.
+2. Write one line per cell you checked: row, column, Gemini's value, yours, the URL, agree/differ.
+
+**Make:** `hearth_grok_scan-apps-check_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+**Shape:** `table: app | column | gemini | grok | url | agree/differ`
+
+**How many:** 32
+
+**Done when:** At least 32 cells checked (4 per app).
+
+**How Claude checks it:**
+- Claude spot-checks 5 of your 'differ' lines.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name

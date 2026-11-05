@@ -1,0 +1,72 @@
+HOMEWORK — ChatGPT (every pillar)
+Updated 2026-11-05 02:26 UTC. 2 open across 2 pillars.
+
+When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
+
+IN THIS ORDER:
+1. [Prometheus Hub] HUB-GPT-01 · Phone audit of the desk: 25 findings · due 2026-11-12
+2. [Midas Ledger] MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14 · waits for its input file
+
+==================== 1. PROMETHEUS HUB ====================
+## 1. HUB-GPT-01 · Phone audit of the desk: 25 findings
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Claude needs an outside eye on the desk before the next build.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/ on a phone-sized screen (390 x 844)
+
+**Do this:**
+1. Use the desk the way Joseph would: open every door sheet, scroll the whole page, add a note, rotate the phone.
+2. Write 25 findings, each: where (the exact element or text on screen), what is wrong, what to do instead, severity 1-3.
+3. At least 8 about the look (type, spacing, contrast, motion), at least 8 about use (what is hard to find or do).
+
+**Make:** `hub_chatgpt_audit_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+**Shape:** `numbered list, 25 items, each with where / wrong / fix / severity`
+
+**How many:** 25
+
+**Done when:** 25 findings Claude can find on the live page.
+
+**How Claude checks it:**
+- Claude reproduces 6 findings at random on a 390 x 844 screen.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- a finding about something not on the page
+
+==================== 2. MIDAS LEDGER ====================
+## 2. MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings
+
+**Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
+
+**Why:** After Claude ships the new design, a second pair of eyes on it.
+
+**Read first:**
+- https://jpavia10.github.io/midas-ledger/ (password-protected: use the made-up book Claude links in the README once v2 is live)
+
+**Do this:**
+1. Use every tab on a phone-sized screen.
+2. 20 findings: where / what is wrong / fix / severity 1-3; at least 6 about whether it makes you want to pay debt down.
+
+**Make:** `midas_chatgpt_audit_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+**Shape:** `numbered list, 20 items`
+
+**How many:** 20
+
+**Done when:** 20 findings Claude can reproduce.
+
+**How Claude checks it:**
+- Claude reproduces 5 at random.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name

@@ -1,0 +1,63 @@
+# Hephaestus Hearth · homework for Gemini
+
+Updated 2026-11-05 02:26 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+
+## 1. HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns
+
+**Due:** 2026-11-11 · **State:** now
+
+**Why:** The house on the stand is placeholder boxes. The real model will come from Joseph scanning rooms with his phone.
+
+**Read first:**
+- each app's own site, App Store / Play listing and help pages
+
+**Do this:**
+1. Compare exactly these 8: Polycam, Scaniverse, Magicplan, RoomScan Pro, Canvas (Occipital), Matterport (phone capture), Metascan, KIRI Engine.
+2. Columns, exactly: app | iPhone LiDAR needed (yes/no/optional) | Android | room floor plan with measurements (yes/no) | export formats (list) | GLB or USDZ export on the free plan | price per month (USD) | accuracy the maker states (with its words) | max area per scan | source URLs.
+3. Every cell from the maker's own page, with the URL in the last column.
+
+**Make:** `hearth_gemini_scan-apps_{YYYYMMDD-HHMM}.md`
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+**Shape:** `one markdown table, 8 rows x 10 columns`
+
+**How many:** 8
+
+**Done when:** 8 rows, 80 filled cells, every price and format on the cited page.
+
+**How Claude checks it:**
+- Claude opens the source URL of every price and export cell for 4 apps at random.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- a blank cell without 'not stated' and the page you checked
+
+## 2. HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Projects, rooms and notes are empty on purpose. They need one shape before anything is saved.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/hephaestus-hearth/main/README.md
+
+**Do this:**
+1. Write a JSON Schema (draft 2020-12) with: house, room (name, floor, size in feet and inches, photos), project (room, title, state: idea / quoted / booked / doing / done, budget, start, finish), task, cost_line (what, vendor, quote, paid, date, receipt photo), vendor (name, trade, phone optional), photo (file, room, date, before/after).
+2. Write 3 made-up projects (a bathroom, a deck, a paint job) as one JSON file that passes the schema.
+
+**Make:** `hearth_gemini_schema_{YYYYMMDD-HHMM}.json`
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+**Shape:** `{"schema": {...}, "examples": [...3 projects]}`
+
+**How many:** 3
+
+**Done when:** The schema is valid draft 2020-12 and all 3 examples pass it.
+
+**How Claude checks it:**
+- Claude validates with python jsonschema.
+
+**Not done (sent back) if:**
+- an example that fails its own schema
+- a real address, name or phone number

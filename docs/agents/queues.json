@@ -1,0 +1,202 @@
+{
+ "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
+ "updated": "2026-11-05",
+ "pillar": "hub",
+ "agents": [
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "tasks": [
+    {
+     "id": "HUB-GEM-01",
+     "title": "Reference wall: 40 live sites with the experimental, futuristic desk look",
+     "state": "now",
+     "due": "2026-11-09",
+     "why": "Joseph landed on the experimental futuristic look for Prometheus and every pillar except Titan. Claude needs real references to build from, not adjectives.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/ (the desk today)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/README.md"
+     ],
+     "steps": [
+      "Find 40 different live websites or web apps (not videos, not Dribbble shots, not concept art) that show a spatial, futuristic interface: particle fields, depth, glass, light, motion that answers the pointer.",
+      "For each: open it yourself and write what you saw on it, not what its maker claims.",
+      "Name exactly 3 techniques per site in the words a builder uses (example: 'particles morph between two point clouds on scroll'; never 'modern', 'sleek', 'clean').",
+      "Say which part of Prometheus each one fits: desk, door, sheet, Sylade page, Midas, Hearth, or a seat."
+     ],
+     "deliver": {
+      "file": "hub_gemini_refs_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"url\":\"https://...\",\"maker\":\"...\",\"seen\":\"one sentence of what is on the page\",\"techniques\":[\"...\",\"...\",\"...\"],\"fits\":\"desk\",\"works_on_phone\":true}] (40 objects)"
+     },
+     "count": 40,
+     "done_when": "40 objects, 40 different sites, every URL opens, 120 named techniques.",
+     "checks": [
+      "Claude opens 10 of the URLs at random and compares 'seen' with the page.",
+      "Claude counts the objects and the distinct hosts.",
+      "Generic words (modern, sleek, clean, stunning, futuristic) in a technique = that row does not count."
+     ],
+     "rejected_if": [
+      "a row copied from another row with the names changed",
+      "a source URL that does not open or does not say what the row claims",
+      "fewer items than the count",
+      "a file saved anywhere but the folder named here, or under another name",
+      "two rows on the same site",
+      "a technique that is only an adjective"
+     ]
+    },
+    {
+     "id": "HUB-GEM-02",
+     "title": "Nine particle shapes, one per door, as JavaScript functions",
+     "state": "now",
+     "due": "2026-11-10",
+     "why": "Pointing at a door bends the desk's particle field into that door's shape. Today the shapes are rough. Each door needs a shape that reads at a glance.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/src/particles.js",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/src/shaders.js",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json"
+     ],
+     "steps": [
+      "Read how src/particles.js builds its targets.",
+      "Write one function per door: shapeTitan, shapeMidas, shapeHearth, shapeApollo, shapeHermes, shapeKairos, shapeIcarus, shapeArgus, shapeSylade.",
+      "Each is function(n, rand) returning a Float32Array of exactly n*3 numbers (x, y, z), every value between -1 and 1, using only rand() for randomness (so the same rand gives the same shape).",
+      "Shapes: Titan = a coin seen at 30 degrees with a raised rim; Midas = a rising stair of five steps; Hearth = a house with a pitched roof and a chimney; Apollo = a laurel wreath; Hermes = a winged envelope; Kairos = a clock face with two hands at 10:10; Icarus = one wing; Argus = an eye; Sylade = a standing figure in profile.",
+      "No imports, no DOM, no Three.js: plain functions in one file."
+     ],
+     "deliver": {
+      "file": "hub_gemini_shapes_{YYYYMMDD-HHMM}.js",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "one .js file: export function shapeTitan(n, rand) {...} ... (9 exports)"
+     },
+     "count": 9,
+     "done_when": "9 exported functions; each returns exactly n*3 numbers in [-1, 1] for n = 2000, 8000 and 24000, the same output for the same seed, and is recognisable in Claude's contact sheet.",
+     "checks": [
+      "Claude runs each function in node at three sizes and checks length, range and determinism.",
+      "Claude renders all nine as point clouds from the front and at 30 degrees and looks at them."
+     ],
+     "rejected_if": [
+      "any function that throws, returns the wrong length or a value outside [-1, 1]",
+      "a shape that is a sphere, cube or noise cloud with a label on it",
+      "Math.random() anywhere"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "muse",
+   "name": "Muse",
+   "tasks": [
+    {
+     "id": "HUB-MUS-01",
+     "title": "The words on every door: 11 doors, three lines each",
+     "state": "now",
+     "due": "2026-11-09",
+     "why": "Half the doors still say placeholder things. Each door needs a plain name line, what it is for, and what you can really do there today.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/README.md",
+      "https://raw.githubusercontent.com/jpavia10/midas-ledger/main/README.md",
+      "https://raw.githubusercontent.com/jpavia10/hephaestus-hearth/main/README.md",
+      "https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/README.md"
+     ],
+     "steps": [
+      "For each of the 11 doors in pillars.json plus Sylade and the Drive door: a title (as is), a purpose line of at most 12 words, and up to 3 lines 'what you can do there today'.",
+      "Only things that exist now, from the READMEs. A seat with no page says what it will be in one line and 'Not built yet.'",
+      "Plain English, no exclamation marks, no 'unlock', 'elevate', 'seamless', 'journey'."
+     ],
+     "deliver": {
+      "file": "hub_muse_door-copy_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "one markdown table: door | purpose (<=12 words) | today 1 | today 2 | today 3"
+     },
+     "count": 11,
+     "done_when": "A row for every door; every 'today' line names a feature the README describes.",
+     "checks": [
+      "Claude checks every 'today' line against the README it came from.",
+      "Claude counts words in each purpose line."
+     ],
+     "rejected_if": [
+      "a row copied from another row with the names changed",
+      "a source URL that does not open or does not say what the row claims",
+      "fewer items than the count",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a feature that does not exist",
+      "a purpose line over 12 words"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chatgpt",
+   "name": "ChatGPT",
+   "tasks": [
+    {
+     "id": "HUB-GPT-01",
+     "title": "Phone audit of the desk: 25 findings",
+     "state": "now",
+     "due": "2026-11-12",
+     "why": "Claude needs an outside eye on the desk before the next build.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/ on a phone-sized screen (390 x 844)"
+     ],
+     "steps": [
+      "Use the desk the way Joseph would: open every door sheet, scroll the whole page, add a note, rotate the phone.",
+      "Write 25 findings, each: where (the exact element or text on screen), what is wrong, what to do instead, severity 1-3.",
+      "At least 8 about the look (type, spacing, contrast, motion), at least 8 about use (what is hard to find or do)."
+     ],
+     "deliver": {
+      "file": "hub_chatgpt_audit_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "numbered list, 25 items, each with where / wrong / fix / severity"
+     },
+     "count": 25,
+     "done_when": "25 findings Claude can find on the live page.",
+     "checks": [
+      "Claude reproduces 6 findings at random on a 390 x 844 screen."
+     ],
+     "rejected_if": [
+      "a row copied from another row with the names changed",
+      "a source URL that does not open or does not say what the row claims",
+      "fewer items than the count",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a finding about something not on the page"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "claude",
+   "name": "Claude",
+   "tasks": [
+    {
+     "id": "HUB-CLA-01",
+     "title": "Desk v2: a live status for every pillar on its door",
+     "state": "now",
+     "due": "2026-11-12",
+     "why": "Joseph: 'the main hub needs work then each pillar can be developed separately'. Each door shows its state, its last update and its open homework, read from pillars.json and each pillar's queues.",
+     "inputs": [
+      "pillars.json",
+      "every pillar's docs/agents/queues.json"
+     ],
+     "steps": [
+      "Build data/board.json from tools/kit/render.py",
+      "show it on each door and in each sheet",
+      "keep the look; no Titan gold"
+     ],
+     "deliver": {
+      "file": "the desk itself",
+      "folder": "jpavia10/prometheus-hub main",
+      "shape": "live page"
+     },
+     "count": 1,
+     "done_when": "Every door on the live desk shows its state and its open homework count from data/board.json.",
+     "checks": [
+      "smoke test on phone + desktop"
+     ],
+     "rejected_if": [
+      "a number typed by hand"
+     ]
+    }
+   ]
+  }
+ ]
+}

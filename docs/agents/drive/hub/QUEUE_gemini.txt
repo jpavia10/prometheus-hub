@@ -1,0 +1,75 @@
+# Prometheus Hub · homework for Gemini
+
+Updated 2026-11-05 02:26 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+
+## 1. HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look
+
+**Due:** 2026-11-09 · **State:** now
+
+**Why:** Joseph landed on the experimental futuristic look for Prometheus and every pillar except Titan. Claude needs real references to build from, not adjectives.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/ (the desk today)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/README.md
+
+**Do this:**
+1. Find 40 different live websites or web apps (not videos, not Dribbble shots, not concept art) that show a spatial, futuristic interface: particle fields, depth, glass, light, motion that answers the pointer.
+2. For each: open it yourself and write what you saw on it, not what its maker claims.
+3. Name exactly 3 techniques per site in the words a builder uses (example: 'particles morph between two point clouds on scroll'; never 'modern', 'sleek', 'clean').
+4. Say which part of Prometheus each one fits: desk, door, sheet, Sylade page, Midas, Hearth, or a seat.
+
+**Make:** `hub_gemini_refs_{YYYYMMDD-HHMM}.json`
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+**Shape:** `[{"n":1,"url":"https://...","maker":"...","seen":"one sentence of what is on the page","techniques":["...","...","..."],"fits":"desk","works_on_phone":true}] (40 objects)`
+
+**How many:** 40
+
+**Done when:** 40 objects, 40 different sites, every URL opens, 120 named techniques.
+
+**How Claude checks it:**
+- Claude opens 10 of the URLs at random and compares 'seen' with the page.
+- Claude counts the objects and the distinct hosts.
+- Generic words (modern, sleek, clean, stunning, futuristic) in a technique = that row does not count.
+
+**Not done (sent back) if:**
+- a row copied from another row with the names changed
+- a source URL that does not open or does not say what the row claims
+- fewer items than the count
+- a file saved anywhere but the folder named here, or under another name
+- two rows on the same site
+- a technique that is only an adjective
+
+## 2. HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions
+
+**Due:** 2026-11-10 · **State:** now
+
+**Why:** Pointing at a door bends the desk's particle field into that door's shape. Today the shapes are rough. Each door needs a shape that reads at a glance.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/src/particles.js
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/src/shaders.js
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
+
+**Do this:**
+1. Read how src/particles.js builds its targets.
+2. Write one function per door: shapeTitan, shapeMidas, shapeHearth, shapeApollo, shapeHermes, shapeKairos, shapeIcarus, shapeArgus, shapeSylade.
+3. Each is function(n, rand) returning a Float32Array of exactly n*3 numbers (x, y, z), every value between -1 and 1, using only rand() for randomness (so the same rand gives the same shape).
+4. Shapes: Titan = a coin seen at 30 degrees with a raised rim; Midas = a rising stair of five steps; Hearth = a house with a pitched roof and a chimney; Apollo = a laurel wreath; Hermes = a winged envelope; Kairos = a clock face with two hands at 10:10; Icarus = one wing; Argus = an eye; Sylade = a standing figure in profile.
+5. No imports, no DOM, no Three.js: plain functions in one file.
+
+**Make:** `hub_gemini_shapes_{YYYYMMDD-HHMM}.js`
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+**Shape:** `one .js file: export function shapeTitan(n, rand) {...} ... (9 exports)`
+
+**How many:** 9
+
+**Done when:** 9 exported functions; each returns exactly n*3 numbers in [-1, 1] for n = 2000, 8000 and 24000, the same output for the same seed, and is recognisable in Claude's contact sheet.
+
+**How Claude checks it:**
+- Claude runs each function in node at three sizes and checks length, range and determinism.
+- Claude renders all nine as point clouds from the front and at 30 degrees and looks at them.
+
+**Not done (sent back) if:**
+- any function that throws, returns the wrong length or a value outside [-1, 1]
+- a shape that is a sphere, cube or noise cloud with a label on it
+- Math.random() anywhere
