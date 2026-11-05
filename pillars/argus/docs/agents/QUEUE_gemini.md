@@ -2,7 +2,7 @@
 
 # Argus Album · homework for Gemini
 
-Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 14:55 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)
 
@@ -42,3 +42,126 @@ Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
+
+## 2. ARG-GEM-04 · Image formats on Android Chrome: 6 formats x 3 browser features
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Argus decides which format to store photos in on the phone.
+
+**Do this:**
+1. Formats: WebP, AVIF, HEIC, JPEG XL, PNG, JPEG. Features: shows in <img>, decodes with createImageBitmap, encodes with canvas.toBlob(type).
+2. For each of the 18 cells: yes / no / partial for Chrome for Android, the version it started, the caniuse.com or MDN URL and the quote.
+
+**Make:** `argus_gemini_formats_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `[{"format":"AVIF","feature":"canvas.toBlob","android_chrome":"no","since":null,"url":"https://caniuse.com/...","quote":"..."}]`
+
+**How many:** 18
+
+**Done when:** 18 cells, each quoted from caniuse or MDN.
+
+**How Claude checks it:**
+- Claude opens every URL.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+
+## 3. ARG-GEM-02 · 40 photo metadata tags that leak location or identity
+
+**Due:** 2026-11-13 · **State:** now
+
+**Why:** Argus strips EXIF and GPS from every photo it keeps; Claude needs the full list to test the strip.
+
+**Do this:**
+1. From exiftool.org/TagNames (EXIF, GPS, XMP, IPTC, MakerNotes pages) and the EXIF 2.32 spec: 40 tags that reveal where, when, who or which device (GPSLatitude, GPSLongitude, GPSAltitude, DateTimeOriginal, SerialNumber, BodySerialNumber, LensSerialNumber, OwnerName, Artist, XMP dc:creator, IPTC By-line, ...).
+2. For each: tag ID in hex (when it has one), name, group, what it leaks, the URL.
+
+**Make:** `argus_gemini_tags_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"tag_id":"0x0002","name":"GPSLatitude","group":"GPS","leaks":"where the photo was taken","url":"https://exiftool.org/TagNames/GPS.html"}]`
+
+**How many:** 40
+
+**Done when:** 40 tags, every ID and name as on exiftool.org.
+
+**How Claude checks it:**
+- Claude compares every row with exiftool.org.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a tag ID that does not match its name
+
+## 4. ARG-GEM-03 · The coin photo standard: 20 rules from professional numismatic photography
+
+**Due:** 2026-11-14 · **State:** now
+
+**Why:** Titan's Phase 2 pro photos (Argus keeps them) need one written standard before Joseph shoots 339 coins.
+
+**Do this:**
+1. 20 rules (lighting angle, light type, background, lens, aperture, focus stacking, white balance, scale, orientation, file format, resolution, toning, glare on proof coins, holder glare, ...), each from a named source: a numismatic photography book with page, PCGS or NGC imaging pages, the ANA, or a museum imaging guide.
+2. For each: the rule as a number or a yes/no where possible (e.g. 'light at 15-30 degrees from the coin face'), the source and the quote.
+
+**Make:** `argus_gemini_coinphoto_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"rule":"light the coin from 15-30 degrees above the face","value":{"min_deg":15,"max_deg":30},"source":"...","url":"https://...","quote":"..."}]`
+
+**How many:** 20
+
+**Done when:** 20 rules, each quoted from a numismatic or museum source.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a rule from a general photography blog
+
+## 5. ARG-GEM-05 · 6 perceptual hash methods: steps, threshold, source
+
+**Due:** 2026-11-15 · **State:** now
+
+**Why:** Argus (and Titan's dupes.py) should find the same coin photographed twice.
+
+**Do this:**
+1. Methods: aHash, dHash, pHash (DCT), wHash (wavelet), blockhash, colour-moment hash.
+2. For each: the steps numbered (resize size, colour, transform, bits), the hash length in bits, the Hamming distance below which two photos count as the same with its source, and a reference (paper DOI, the author's page, or the ImageHash library docs).
+
+**Make:** `argus_gemini_phash_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"method":"dHash","steps":["grayscale","resize to 9x8","compare each pixel to its right neighbour","64 bits"],"bits":64,"same_below":10,"threshold_source":"...","url":"https://...","quote":"..."}]`
+
+**How many:** 6
+
+**Done when:** 6 methods; Claude implements each from the steps and runs it on 20 Titan photo pairs.
+
+**How Claude checks it:**
+- A method whose steps cannot be implemented as written fails the row.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a threshold with no source

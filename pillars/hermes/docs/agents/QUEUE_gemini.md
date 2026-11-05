@@ -2,7 +2,7 @@
 
 # Hermes Post · homework for Gemini
 
-Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 14:55 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))
 
@@ -42,3 +42,129 @@ Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
+
+## 2. HER-GEM-03 · Every Gmail search operator, with syntax and one example each
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Hermes rules are written as Gmail searches.
+
+**Do this:**
+1. Open https://support.google.com/mail/answer/7190 and copy every operator on it (there are about 40), exactly as written, with what it does and one example of your own.
+
+**Make:** `hermes_gemini_operators_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"operator":"from:","does":"messages from a sender","example":"from:bills@example.com","url":"https://support.google.com/mail/answer/7190","quote":"..."}]`
+
+**How many:** 40
+
+**Done when:** Every operator on the page (Claude counts the page).
+
+**How Claude checks it:**
+- Claude compares the list with the page; a missing operator or an invented one fails the file.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- an operator that is not on that page
+
+## 3. HER-GEM-02 · 60 US billers: the address their bill emails come from
+
+**Due:** 2026-11-14 · **State:** now
+
+**Why:** Hermes sorts bills from the rest; knowing each biller's sending domain (from its own help page) makes the rule exact.
+
+**Do this:**
+1. 60 billers (power, gas, water, internet, mobile, streaming, car and home insurance, the 25 card issuers in MID-GEM-04, student loans, car loans).
+2. From each company's own help or security page ('our emails come from ...'): the sending domains, the usual subject words for a bill, the help URL and the quote.
+
+**Make:** `hermes_gemini_billers_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"biller":"...","kind":"internet","domains":["email.example-isp.com"],"subject_words":["your bill is ready"],"url":"https://...","quote":"..."}]`
+
+**How many:** 60
+
+**Done when:** 60 billers, every domain quoted from the company's own page.
+
+**How Claude checks it:**
+- Claude opens 15 at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a domain guessed from a company name
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+## 4. HER-GEM-04 · 30 phishing tells from FTC, CISA and Google, quoted
+
+**Due:** 2026-11-15 · **State:** now
+
+**Why:** Hermes should flag a fake bill before Joseph pays it.
+
+**Do this:**
+1. 30 tells (sender domain lookalike, urgent payment threat, gift-card ask, reply-to differs, link text differs from link target, ...), each from consumer.ftc.gov, cisa.gov or support.google.com.
+2. For each: the tell, a test Hermes can run on a message (headers or body), the URL and the quote.
+
+**Make:** `hermes_gemini_phishing_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"tell":"the reply-to address differs from the sender","test":"header Reply-To domain != From domain","url":"https://consumer.ftc.gov/...","quote":"..."}]`
+
+**How many:** 30
+
+**Done when:** 30 tells, each with a test written over headers or body.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+- A test that is only 'looks suspicious' does not count.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+
+## 5. HER-GEM-05 · Triage test set: 80 made-up emails, 20 per lane
+
+**Due:** 2026-11-16 · **State:** now
+
+**Why:** Claude tests Hermes's sorting on mail that is not Joseph's.
+
+**Do this:**
+1. Write 80 made-up emails: 20 'needs an answer', 20 'bill due in 7 days', 20 'waiting on others', 20 'read later'. Include 10 hard ones per lane (a bill that looks like news, a question buried in a newsletter, a reminder that is only an ad).
+2. Every sender uses an example.com, example.org or example.net address; no real person, no real company address.
+3. For each: from, subject, date (2026-11), the first 3 lines of the body, the lane, and one sentence why.
+
+**Make:** `hermes_gemini_testmail_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"from":"billing@power.example.com","subject":"...","date":"2026-11-03","body":"...","lane":"bill due in 7 days","hard":false,"why":"..."}]`
+
+**How many:** 80
+
+**Done when:** 80 emails, 20 per lane, 40 marked hard.
+
+**How Claude checks it:**
+- Claude counts lanes and checks every address is example.com/.org/.net.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a real address or a real person's name
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)

@@ -43,6 +43,125 @@
       "an API that does not exist or a docs URL for something else",
       "a screen that lists a number with no source"
      ]
+    },
+    {
+     "id": "ARG-GEM-02",
+     "title": "40 photo metadata tags that leak location or identity",
+     "state": "now",
+     "due": "2026-11-13",
+     "why": "Argus strips EXIF and GPS from every photo it keeps; Claude needs the full list to test the strip.",
+     "inputs": [],
+     "steps": [
+      "From exiftool.org/TagNames (EXIF, GPS, XMP, IPTC, MakerNotes pages) and the EXIF 2.32 spec: 40 tags that reveal where, when, who or which device (GPSLatitude, GPSLongitude, GPSAltitude, DateTimeOriginal, SerialNumber, BodySerialNumber, LensSerialNumber, OwnerName, Artist, XMP dc:creator, IPTC By-line, ...).",
+      "For each: tag ID in hex (when it has one), name, group, what it leaks, the URL."
+     ],
+     "deliver": {
+      "file": "argus_gemini_tags_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"tag_id\":\"0x0002\",\"name\":\"GPSLatitude\",\"group\":\"GPS\",\"leaks\":\"where the photo was taken\",\"url\":\"https://exiftool.org/TagNames/GPS.html\"}]"
+     },
+     "count": 40,
+     "done_when": "40 tags, every ID and name as on exiftool.org.",
+     "checks": [
+      "Claude compares every row with exiftool.org."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a tag ID that does not match its name"
+     ]
+    },
+    {
+     "id": "ARG-GEM-03",
+     "title": "The coin photo standard: 20 rules from professional numismatic photography",
+     "state": "now",
+     "due": "2026-11-14",
+     "why": "Titan's Phase 2 pro photos (Argus keeps them) need one written standard before Joseph shoots 339 coins.",
+     "inputs": [],
+     "steps": [
+      "20 rules (lighting angle, light type, background, lens, aperture, focus stacking, white balance, scale, orientation, file format, resolution, toning, glare on proof coins, holder glare, ...), each from a named source: a numismatic photography book with page, PCGS or NGC imaging pages, the ANA, or a museum imaging guide.",
+      "For each: the rule as a number or a yes/no where possible (e.g. 'light at 15-30 degrees from the coin face'), the source and the quote."
+     ],
+     "deliver": {
+      "file": "argus_gemini_coinphoto_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"rule\":\"light the coin from 15-30 degrees above the face\",\"value\":{\"min_deg\":15,\"max_deg\":30},\"source\":\"...\",\"url\":\"https://...\",\"quote\":\"...\"}]"
+     },
+     "count": 20,
+     "done_when": "20 rules, each quoted from a numismatic or museum source.",
+     "checks": [
+      "Claude opens 10 at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a rule from a general photography blog"
+     ]
+    },
+    {
+     "id": "ARG-GEM-04",
+     "title": "Image formats on Android Chrome: 6 formats x 3 browser features",
+     "state": "now",
+     "due": "2026-11-12",
+     "why": "Argus decides which format to store photos in on the phone.",
+     "inputs": [],
+     "steps": [
+      "Formats: WebP, AVIF, HEIC, JPEG XL, PNG, JPEG. Features: shows in <img>, decodes with createImageBitmap, encodes with canvas.toBlob(type).",
+      "For each of the 18 cells: yes / no / partial for Chrome for Android, the version it started, the caniuse.com or MDN URL and the quote."
+     ],
+     "deliver": {
+      "file": "argus_gemini_formats_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+      "shape": "[{\"format\":\"AVIF\",\"feature\":\"canvas.toBlob\",\"android_chrome\":\"no\",\"since\":null,\"url\":\"https://caniuse.com/...\",\"quote\":\"...\"}]"
+     },
+     "count": 18,
+     "done_when": "18 cells, each quoted from caniuse or MDN.",
+     "checks": [
+      "Claude opens every URL."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "ARG-GEM-05",
+     "title": "6 perceptual hash methods: steps, threshold, source",
+     "state": "now",
+     "due": "2026-11-15",
+     "why": "Argus (and Titan's dupes.py) should find the same coin photographed twice.",
+     "inputs": [],
+     "steps": [
+      "Methods: aHash, dHash, pHash (DCT), wHash (wavelet), blockhash, colour-moment hash.",
+      "For each: the steps numbered (resize size, colour, transform, bits), the hash length in bits, the Hamming distance below which two photos count as the same with its source, and a reference (paper DOI, the author's page, or the ImageHash library docs)."
+     ],
+     "deliver": {
+      "file": "argus_gemini_phash_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"method\":\"dHash\",\"steps\":[\"grayscale\",\"resize to 9x8\",\"compare each pixel to its right neighbour\",\"64 bits\"],\"bits\":64,\"same_below\":10,\"threshold_source\":\"...\",\"url\":\"https://...\",\"quote\":\"...\"}]"
+     },
+     "count": 6,
+     "done_when": "6 methods; Claude implements each from the steps and runs it on 20 Titan photo pairs.",
+     "checks": [
+      "A method whose steps cannot be implemented as written fails the row."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a threshold with no source"
+     ]
     }
    ]
   },

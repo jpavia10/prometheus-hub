@@ -2,7 +2,7 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-05 03:07 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 14:55 UTC · 7 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
 
@@ -78,7 +78,41 @@ Updated 2026-11-05 03:07 UTC · 3 open · Rules for every pillar: https://github
 - two rows on the same site
 - a technique that is only an adjective
 
-## 3. HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions
+## 3. HUB-GEM-04 · 60 icons for the 60 actions every pillar uses (Lucide, exact names)
+
+**Due:** 2026-11-09 · **State:** now
+
+**Why:** The shared kit (kit/kit.js) draws its glyphs by hand. One icon set (Lucide, ISC licence) for every pillar keeps them the same everywhere.
+
+**Do this:**
+1. For each of these 60 actions, in this order, pick the one Lucide icon that says it best: open, close, back, home, search, settings, add, edit, delete, save, export, import, share, copy, refresh, filter, sort, calendar, clock, timer, alarm, mail, inbox, send, reply, archive, star, pin, lock, unlock, show, hide, camera, image, album, folder, file, line chart, bar chart, wallet, credit card, savings, coins, receipt, trending up, trending down, target, streak, heart rate, workout, steps, sleep, weight, water, food, house, hammer, ruler, paint, person.
+2. Open https://lucide.dev/icons/{name} for each pick and copy the name exactly as the page shows it.
+3. Give a second choice for each, also checked on lucide.dev.
+
+**Make:** `hub_gemini_icons_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"action":"open","icon":"external-link","url":"https://lucide.dev/icons/external-link","second":"square-arrow-out-up-right"}]`
+
+**How many:** 60
+
+**Done when:** 60 rows in the order given, every icon page opens.
+
+**How Claude checks it:**
+- Claude opens all 60 lucide.dev URLs.
+- Two actions with the same first icon = both rows are checked by hand.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- an icon name that is not on lucide.dev
+- actions out of order or renamed
+
+## 4. HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions
 
 **Due:** 2026-11-10 · **State:** now
 
@@ -114,3 +148,106 @@ Updated 2026-11-05 03:07 UTC · 3 open · Rules for every pillar: https://github
 - any function that throws, returns the wrong length or a value outside [-1, 1]
 - a shape that is a sphere, cube or noise cloud with a label on it
 - Math.random() anywhere
+
+## 5. HUB-GEM-03 · Desk sound: 24 real recordings for the desk ambience (no synthesizers)
+
+**Due:** 2026-11-11 · **State:** now
+
+**Why:** Joseph dislikes computer-generated music. The desk needs a real-recording bed like Titan's: room tones, nature textures and acoustic drones.
+
+**Do this:**
+1. Find 24 recordings on Freesound (freesound.org/people/.../sounds/N/) or Wikimedia Commons (commons.wikimedia.org/wiki/File:...): 8 room tones (a real room, hall or machine hum), 8 nature textures (wind, rain, water, insects at night), 8 sustained tones from real instruments (bowed metal, singing bowl, organ pipe, cello drone).
+2. Licence must be CC0, CC BY or public domain, read on the file page itself. No 'AI', 'synth', 'generated' or 'synthesizer' in the title, tags or description.
+3. Length at least 60 seconds; note it in seconds from the page.
+4. Say in one builder sentence where it plays (desk idle, door hover, sheet open, night).
+
+**Make:** `hub_gemini_sounds_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"url":"https://freesound.org/people/NAME/sounds/123456/","title":"...","author":"...","licence":"CC0","duration_s":184,"kind":"room tone","plays":"desk idle, under everything"}]`
+
+**How many:** 24
+
+**Done when:** 24 rows (8 per kind), every licence and length as on the page.
+
+**How Claude checks it:**
+- Claude opens every page and compares licence, author and length.
+- A row tagged synth/AI/generated on its page is thrown out.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a recording shorter than 60 s
+- a licence other than CC0, CC BY or public domain
+- a synthesized or AI-made sound
+
+## 6. HUB-GEM-05 · Motion spec: 20 desk moments, each with duration, easing and property from a published motion system
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Every pillar should move the same way. Claude needs numbers, not adjectives.
+
+**Do this:**
+1. For each moment: door hover, door press, door open to its pillar, sheet slide in, sheet slide out, toast in, toast out, tab change, list item add, list item remove, number count-up, chart draw, card flip, field particles settle, page load reveal, button focus ring, error shake, success check, drawer open on phone, reduced-motion fallback.
+2. Take duration (ms), easing (a cubic-bezier with 4 numbers) and the CSS properties animated from a published system: Material 3 motion (m3.material.io/styles/motion), Apple Human Interface Guidelines (developer.apple.com/design/human-interface-guidelines/motion), IBM Carbon motion (carbondesignsystem.com/elements/motion), or Fluent 2 motion (fluent2.microsoft.design/motion).
+3. Quote the token name or the sentence the numbers come from.
+
+**Make:** `hub_gemini_motion_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"moment":"door hover","duration_ms":200,"easing":"cubic-bezier(0.2, 0, 0, 1)","properties":["transform","opacity"],"system":"Material 3","url":"https://m3.material.io/styles/motion/...","quote":"..."}]`
+
+**How many:** 20
+
+**Done when:** 20 rows, one per moment, numbers traceable to the quoted token.
+
+**How Claude checks it:**
+- Claude opens every URL and finds the token or sentence.
+- Easing must be 4 numbers; durations 50-1000 ms.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- an easing word (ease-in-out, smooth) instead of 4 numbers
+- a duration with no quote behind it
+
+## 7. HUB-GEM-06 · 30 WCAG 2.2 checks that apply to the desk, each one Claude can run
+
+**Due:** 2026-11-13 · **State:** now
+
+**Why:** The desk and every pillar must stay readable on Joseph's phone in light and dark.
+
+**Do this:**
+1. Pick the 30 WCAG 2.2 success criteria that apply to a particle-field desk with doors, sheets and tabs (contrast, focus, target size, motion, reflow...).
+2. For each: the criterion number and name, its w3.org Understanding page (www.w3.org/WAI/WCAG22/Understanding/...), the level (A/AA/AAA) and one concrete check written so Claude can run it in a browser script (e.g. 'every button is at least 24 x 24 CSS px').
+
+**Make:** `hub_gemini_wcag_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"sc":"2.5.8","name":"Target Size (Minimum)","level":"AA","url":"https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html","check":"every button and link box is at least 24x24 CSS px or has 24 px spacing"}]`
+
+**How many:** 30
+
+**Done when:** 30 different criteria, every check measurable.
+
+**How Claude checks it:**
+- Claude opens every URL.
+- A check that cannot be turned into a script (e.g. 'looks clear') does not count.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a criterion that is not in WCAG 2.2
+- a check with no number or no element named

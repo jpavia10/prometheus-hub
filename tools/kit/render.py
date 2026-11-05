@@ -47,9 +47,18 @@ def open_tasks(q, ai):
     return []
 
 
-def task_md(i, t, p, folder):
+# every task is sent back for these; the AI's Drive page states them once instead of under each task (2026-11-05: the page passed 90 KB)
+COMMON_REJECT = ["fewer rows than the count, or a row missing a field of the shape", "fewer items than the count",
+                 "a row copied from another row with the names changed",
+                 "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+                 "a source URL that does not open or does not say what the row claims",
+                 "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+                 "a file saved anywhere but the folder named here, or under another name"]
+
+
+def task_md(i, t, p, folder, common=False):
     L = [f"## {i}. {t['id']} · {t['title']}", "", f"**Due:** {t.get('due', '-')} · **State:** {t.get('state')}" + (" (starts when the file it checks is in the folder)" if t.get("state") == "next" else ""), ""]
-    if t.get("why"): L += [f"**Why:** {t['why']}", ""]
+    if t.get("why") and not common: L += [f"**Why:** {t['why']}", ""]      # the AI's Drive page leaves the why out (it is on the pillar's queue page)
     if t.get("inputs"): L += ["**Read first:**"] + [f"- {x}" for x in t["inputs"]] + [""]
     if t.get("steps"): L += ["**Do this:**"] + [f"{n}. {s}" for n, s in enumerate(t["steps"], 1)] + [""]
     d = t.get("deliver") or {}
@@ -59,7 +68,8 @@ def task_md(i, t, p, folder):
     if t.get("count"): L += [f"**How many:** {t['count']}", ""]
     if t.get("done_when"): L += [f"**Done when:** {t['done_when']}", ""]
     if t.get("checks"): L += ["**How Claude checks it:**"] + [f"- {x}" for x in t["checks"]] + [""]
-    if t.get("rejected_if"): L += ["**Not done (sent back) if:**"] + [f"- {x}" for x in t["rejected_if"]] + [""]
+    rej = [x for x in t.get("rejected_if") or [] if not (common and x in COMMON_REJECT)]
+    if rej: L += ["**Not done (sent back) if:**" + (" (and the rules at the top)" if common else "")] + [f"- {x}" for x in rej] + [""]
     return L
 
 
@@ -167,12 +177,13 @@ def main(argv):
             for p, _, c in titan:
                 L += [f"TITAN RELIQUARY (its own loop, the exception): {c[0]} homework sheets + {c[1]} projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for {a['name']}' "
                       f"(newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_{a['id']}.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.", ""]
+        L += ["EVERY TASK BELOW IS SENT BACK IF:"] + [f"- {x}" for x in COMMON_REJECT if x not in ("fewer items than the count", "a source URL that does not open or does not say what the row claims")] + [""]
         L += ["IN THIS ORDER:"]
         for i, (p, t, _) in enumerate(work, 1):
             L += [f"{i}. [{p['name']}] {t['id']} · {t['title']} · due {t.get('due')}" + (" · waits for its input file" if t.get("state") == "next" else "")]
         L += [""]
         for i, (p, t, _) in enumerate(work, 1):
-            L += [f"==================== {i}. {p['name'].upper()} ===================="] + task_md(i, t, p, "")
+            L += [f"==================== {i}. {p['name'].upper()} ===================="] + task_md(i, t, p, "", common=True)
         out[os.path.join(HUB, "docs", "agents", "drive", f"HOMEWORK_{a['id']}.txt")] = "\n".join(L).rstrip() + "\n"
 
     # the board

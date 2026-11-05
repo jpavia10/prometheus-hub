@@ -1,10 +1,17 @@
 HOMEWORK — Grok (every pillar)
 
-Updated 2026-11-05 03:07 UTC. 21 open across 6 pillars.
+Updated 2026-11-05 14:55 UTC. 21 open across 6 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 TITAN RELIQUARY (its own loop, the exception): 8 homework sheets + 7 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Grok' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_grok.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+
+EVERY TASK BELOW IS SENT BACK IF:
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
 1. [Prometheus Hub] HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
@@ -18,8 +25,6 @@ IN THIS ORDER:
 ## 1. HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
 
 **Due:** 2026-11-06 · **State:** now
-
-**Why:** Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.
 
 **Read first:**
 - the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)
@@ -45,7 +50,7 @@ IN THIS ORDER:
 - Claude opens every image at full size and at 48x48 px, masked to a circle.
 - A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped.
 
-**Not done (sent back) if:**
+**Not done (sent back) if:** (and the rules at the top)
 - readable letters on any take but titan_icon_take3 (exactly TR)
 - rounded corners, a border or a white background
 - smaller than 1024x1024
@@ -54,8 +59,6 @@ IN THIS ORDER:
 ## 2. MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end
 
 **Due:** 2026-11-09 · **State:** now
-
-**Why:** The new Debt screen plans the way out: it needs, for every card and loan, the numbers the bank shows. Without them it can only show balances.
 
 **Read first:**
 - https://raw.githubusercontent.com/jpavia10/midas-ledger/main/README.md
@@ -80,7 +83,7 @@ IN THIS ORDER:
 - Joseph opens the Debt screen; the app lists every debt missing a field.
 - test/book.test.mjs checks the shape of every debt.
 
-**Not done (sent back) if:**
+**Not done (sent back) if:** (and the rules at the top)
 - a number guessed or carried over without an as_of date
 - plaintext balances anywhere outside the encrypted book
 
@@ -88,8 +91,6 @@ IN THIS ORDER:
 ## 3. MID-GRK-02 · A fresh book every Monday by noon PT
 
 **Due:** 2026-11-09 · **State:** now
-
-**Why:** A ledger more than a week old makes every number on the screen a guess.
 
 **Read first:**
 - the 4 Plaid accounts
@@ -112,15 +113,13 @@ IN THIS ORDER:
 **How Claude checks it:**
 - the app shows the build age; Claude checks the commit dates
 
-**Not done (sent back) if:**
+**Not done (sent back) if:** (and the rules at the top)
 - a week missed
 
 ==================== 4. HEPHAESTUS HEARTH ====================
 ## 4. HEA-GRK-01 · Second reader on Gemini's scan-app table
 
 **Due:** 2026-11-13 · **State:** next (starts when the file it checks is in the folder)
-
-**Why:** Prices and export rules change often; a second reader catches what one missed.
 
 **Read first:**
 - Gemini's file hearth_gemini_scan-apps_*.md in the incoming folder (once it is there)
@@ -142,18 +141,10 @@ IN THIS ORDER:
 **How Claude checks it:**
 - Claude spot-checks 5 of your 'differ' lines.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
-
 ==================== 5. HERMES POST ====================
 ## 5. HER-GRK-01 · Hermes Post: second reader on Gemini's spec
 
 **Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
-
-**Why:** Every source in a spec gets a second reader before Claude builds on it.
 
 **Read first:**
 - Gemini's file hermes_gemini_spec_*.md in the incoming folder (once it is there)
@@ -175,18 +166,10 @@ IN THIS ORDER:
 **How Claude checks it:**
 - Claude spot-checks 3 'differ' lines.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
-
 ==================== 6. ICARUS STAKE ====================
 ## 6. ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec
 
 **Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
-
-**Why:** Every source in a spec gets a second reader before Claude builds on it.
 
 **Read first:**
 - Gemini's file icarus_gemini_spec_*.md in the incoming folder (once it is there)
@@ -207,9 +190,3 @@ IN THIS ORDER:
 
 **How Claude checks it:**
 - Claude spot-checks 3 'differ' lines.
-
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name

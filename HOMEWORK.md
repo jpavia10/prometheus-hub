@@ -2,19 +2,19 @@
 
 # Homework board: every pillar, every AI
 
-Updated 2026-11-05 03:07 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
+Updated 2026-11-05 14:55 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
 
 | Pillar | State | Grok | Gemini | Muse | ChatGPT | Claude |
 |---|---|---|---|---|---|---|
-| Prometheus Hub | live | 1 | 3 | 1 | 1 | 1 |
-| Titan Reliquary | live | 15 | 20 | 14 | — | — |
-| Midas Ledger | live | 2 | 3 | 1 | 1 | — |
-| Hephaestus Hearth | bones | 1 | 2 | — | — | 1 |
-| Apollo Temple | live | — | 1 | 1 | — | — |
-| Hermes Post | live | 1 | 1 | — | — | — |
-| Kairos Meridian | live | — | 1 | 1 | — | — |
-| Icarus Stake | live | 1 | 1 | — | — | — |
-| Argus Album | live | — | 1 | 1 | — | — |
+| Prometheus Hub | live | 1 | 7 | 1 | 1 | 1 |
+| Titan Reliquary | live | 15 | 24 | 15 | — | — |
+| Midas Ledger | live | 2 | 8 | 1 | 1 | — |
+| Hephaestus Hearth | bones | 1 | 6 | — | — | 1 |
+| Apollo Temple | live | — | 6 | 1 | — | — |
+| Hermes Post | live | 1 | 5 | — | — | — |
+| Kairos Meridian | live | — | 5 | 1 | — | — |
+| Icarus Stake | live | 1 | 6 | — | — | — |
+| Argus Album | live | — | 5 | 1 | — | — |
 | Fleet Command | paused | — | — | — | — | — |
 
 Each AI's full list, every pillar on one page: Drive 'Prometheus Hub/{AI folder}/HOMEWORK — {Name} (every pillar)' (text in docs/agents/drive/HOMEWORK_{ai}.txt).

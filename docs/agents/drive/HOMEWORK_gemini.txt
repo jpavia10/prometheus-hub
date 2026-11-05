@@ -1,32 +1,72 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-05 03:07 UTC. 33 open across 9 pillars.
+Updated 2026-11-05 14:55 UTC. 72 open across 9 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
-TITAN RELIQUARY (its own loop, the exception): 14 homework sheets + 6 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 16 homework sheets + 8 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+
+EVERY TASK BELOW IS SENT BACK IF:
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
 1. [Prometheus Hub] HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
 2. [Prometheus Hub] HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look · due 2026-11-09
-3. [Midas Ledger] MID-GEM-01 · 12 debt payoff cases worked to the cent · due 2026-11-09
-4. [Prometheus Hub] HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions · due 2026-11-10
-5. [Midas Ledger] MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI · due 2026-11-10
-6. [Midas Ledger] MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going · due 2026-11-11
-7. [Hephaestus Hearth] HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns · due 2026-11-11
-8. [Hephaestus Hearth] HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it · due 2026-11-12
-9. [Apollo Temple] APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses) · due 2026-11-12
-10. [Hermes Post] HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade)) · due 2026-11-12
-11. [Kairos Meridian] KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day) · due 2026-11-12
-12. [Icarus Stake] ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade) · due 2026-11-12
-13. [Argus Album] ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar) · due 2026-11-12
+3. [Prometheus Hub] HUB-GEM-04 · 60 icons for the 60 actions every pillar uses (Lucide, exact names) · due 2026-11-09
+4. [Midas Ledger] MID-GEM-01 · 12 debt payoff cases worked to the cent · due 2026-11-09
+5. [Prometheus Hub] HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions · due 2026-11-10
+6. [Midas Ledger] MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI · due 2026-11-10
+7. [Prometheus Hub] HUB-GEM-03 · Desk sound: 24 real recordings for the desk ambience (no synthesizers) · due 2026-11-11
+8. [Midas Ledger] MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going · due 2026-11-11
+9. [Hephaestus Hearth] HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns · due 2026-11-11
+10. [Prometheus Hub] HUB-GEM-05 · Motion spec: 20 desk moments, each with duration, easing and property from a published motion system · due 2026-11-12
+11. [Midas Ledger] MID-GEM-04 · Minimum payment formulas of 25 US card issuers, quoted from their cardholder agreements · due 2026-11-12
+12. [Hephaestus Hearth] HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it · due 2026-11-12
+13. [Apollo Temple] APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses) · due 2026-11-12
+14. [Hermes Post] HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade)) · due 2026-11-12
+15. [Hermes Post] HER-GEM-03 · Every Gmail search operator, with syntax and one example each · due 2026-11-12
+16. [Kairos Meridian] KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day) · due 2026-11-12
+17. [Kairos Meridian] KAI-GEM-02 · Fixed dates 2026-2028: federal holidays, tax deadlines, clock changes · due 2026-11-12
+18. [Icarus Stake] ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade) · due 2026-11-12
+19. [Icarus Stake] ICA-GEM-03 · Market holidays and early closes 2026-2028 (NYSE and Nasdaq) · due 2026-11-12
+20. [Argus Album] ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar) · due 2026-11-12
+21. [Argus Album] ARG-GEM-04 · Image formats on Android Chrome: 6 formats x 3 browser features · due 2026-11-12
+22. [Prometheus Hub] HUB-GEM-06 · 30 WCAG 2.2 checks that apply to the desk, each one Claude can run · due 2026-11-13
+23. [Midas Ledger] MID-GEM-05 · How 25 issuers compute interest: balance method, day count, compounding, grace · due 2026-11-13
+24. [Kairos Meridian] KAI-GEM-03 · 20 focus methods with their exact timing rules and primary source · due 2026-11-13
+25. [Argus Album] ARG-GEM-02 · 40 photo metadata tags that leak location or identity · due 2026-11-13
+26. [Midas Ledger] MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted · due 2026-11-14
+27. [Hephaestus Hearth] HEA-GEM-03 · 60 renovation unit costs, each with two retailer product pages · due 2026-11-14
+28. [Apollo Temple] APO-GEM-02 · 300 foods with their USDA FoodData Central numbers per 100 g · due 2026-11-14
+29. [Hermes Post] HER-GEM-02 · 60 US billers: the address their bill emails come from · due 2026-11-14
+30. [Kairos Meridian] KAI-GEM-04 · An ICS test file with 40 made-up events that cover every hard case · due 2026-11-14
+31. [Icarus Stake] ICA-GEM-02 · 25 journal metrics, each formula worked on the same 20 trades · due 2026-11-14
+32. [Argus Album] ARG-GEM-03 · The coin photo standard: 20 rules from professional numismatic photography · due 2026-11-14
+33. [Midas Ledger] MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask · due 2026-11-15
+34. [Hephaestus Hearth] HEA-GEM-04 · 30 IRC 2021 rules a homeowner renovating hits, with section numbers · due 2026-11-15
+35. [Apollo Temple] APO-GEM-03 · 150 exercises with their Compendium of Physical Activities code and MET · due 2026-11-15
+36. [Hermes Post] HER-GEM-04 · 30 phishing tells from FTC, CISA and Google, quoted · due 2026-11-15
+37. [Kairos Meridian] KAI-GEM-05 · Google Calendar Events resource: the 30 fields Kairos v2 reads · due 2026-11-15
+38. [Argus Album] ARG-GEM-05 · 6 perceptual hash methods: steps, threshold, source · due 2026-11-15
+39. [Midas Ledger] MID-GEM-08 · 12 daily-compounding interest cases worked to the cent · due 2026-11-16
+40. [Hephaestus Hearth] HEA-GEM-05 · 50 recurring home maintenance tasks with intervals from an authoritative source · due 2026-11-16
+41. [Apollo Temple] APO-GEM-04 · 40 health reference ranges from the guideline that sets them · due 2026-11-16
+42. [Hermes Post] HER-GEM-05 · Triage test set: 80 made-up emails, 20 per lane · due 2026-11-16
+43. [Icarus Stake] ICA-GEM-04 · Risk-of-ruin table: 135 cells from one cited formula · due 2026-11-16
+44. [Hephaestus Hearth] HEA-GEM-06 · 15 material quantity formulas with 3 worked examples each · due 2026-11-17
+45. [Apollo Temple] APO-GEM-05 · Android Health Connect: the 30 record types Apollo v2 would read · due 2026-11-17
+46. [Icarus Stake] ICA-GEM-05 · 30 rule checks Icarus can run on a trade, as formulas over its fields · due 2026-11-17
+47. [Apollo Temple] APO-GEM-06 · 25 meta-analyses on what keeps people training and eating to plan · due 2026-11-18
+48. [Icarus Stake] ICA-GEM-06 · 15 free market-data APIs: limits, key, browser use, quoted from their docs · due 2026-11-18
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
 
 **Due:** 2026-11-06 · **State:** now
-
-**Why:** Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.
 
 **Read first:**
 - the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)
@@ -52,7 +92,7 @@ IN THIS ORDER:
 - Claude opens every image at full size and at 48x48 px, masked to a circle.
 - A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped.
 
-**Not done (sent back) if:**
+**Not done (sent back) if:** (and the rules at the top)
 - readable letters on any take but titan_icon_take3 (exactly TR)
 - rounded corners, a border or a white background
 - smaller than 1024x1024
@@ -61,8 +101,6 @@ IN THIS ORDER:
 ## 2. HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look
 
 **Due:** 2026-11-09 · **State:** now
-
-**Why:** Joseph landed on the experimental futuristic look for Prometheus and every pillar except Titan. Claude needs real references to build from, not adjectives.
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/ (the desk today)
@@ -89,20 +127,42 @@ IN THIS ORDER:
 - Claude counts the objects and the distinct hosts.
 - Generic words (modern, sleek, clean, stunning, futuristic) in a technique = that row does not count.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
+**Not done (sent back) if:** (and the rules at the top)
 - two rows on the same site
 - a technique that is only an adjective
 
-==================== 3. MIDAS LEDGER ====================
-## 3. MID-GEM-01 · 12 debt payoff cases worked to the cent
+==================== 3. PROMETHEUS HUB ====================
+## 3. HUB-GEM-04 · 60 icons for the 60 actions every pillar uses (Lucide, exact names)
 
 **Due:** 2026-11-09 · **State:** now
 
-**Why:** Midas is getting a payoff planner (avalanche, snowball and Joseph's own order). Claude checks its engine against cases worked by someone else. No real balances: every case is made up.
+**Do this:**
+1. For each of these 60 actions, in this order, pick the one Lucide icon that says it best: open, close, back, home, search, settings, add, edit, delete, save, export, import, share, copy, refresh, filter, sort, calendar, clock, timer, alarm, mail, inbox, send, reply, archive, star, pin, lock, unlock, show, hide, camera, image, album, folder, file, line chart, bar chart, wallet, credit card, savings, coins, receipt, trending up, trending down, target, streak, heart rate, workout, steps, sleep, weight, water, food, house, hammer, ruler, paint, person.
+2. Open https://lucide.dev/icons/{name} for each pick and copy the name exactly as the page shows it.
+3. Give a second choice for each, also checked on lucide.dev.
+
+**Make:** `hub_gemini_icons_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"action":"open","icon":"external-link","url":"https://lucide.dev/icons/external-link","second":"square-arrow-out-up-right"}]`
+
+**How many:** 60
+
+**Done when:** 60 rows in the order given, every icon page opens.
+
+**How Claude checks it:**
+- Claude opens all 60 lucide.dev URLs.
+- Two actions with the same first icon = both rows are checked by hand.
+
+**Not done (sent back) if:** (and the rules at the top)
+- an icon name that is not on lucide.dev
+- actions out of order or renamed
+
+==================== 4. MIDAS LEDGER ====================
+## 4. MID-GEM-01 · 12 debt payoff cases worked to the cent
+
+**Due:** 2026-11-09 · **State:** now
 
 **Do this:**
 1. Make 12 made-up cases: 4 avalanche, 4 snowball, 4 'custom order'. Each has 2 to 6 debts (name, balance, APR %, minimum payment) and one monthly budget at least the sum of the minimums.
@@ -124,17 +184,15 @@ IN THIS ORDER:
 - Claude runs all 12 cases through its own engine; a balance more than $0.01 off in any month makes that case wrong.
 - Claude checks the 36-month and same-month conditions.
 
-**Not done (sent back) if:**
+**Not done (sent back) if:** (and the rules at the top)
 - a case whose months stop before every balance is 0
 - a month that does not follow the rules above
 - fewer than 12 cases
 
-==================== 4. PROMETHEUS HUB ====================
-## 4. HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions
+==================== 5. PROMETHEUS HUB ====================
+## 5. HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions
 
 **Due:** 2026-11-10 · **State:** now
-
-**Why:** Pointing at a door bends the desk's particle field into that door's shape. Today the shapes are rough. Each door needs a shape that reads at a glance.
 
 **Read first:**
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/src/particles.js
@@ -162,17 +220,15 @@ IN THIS ORDER:
 - Claude runs each function in node at three sizes and checks length, range and determinism.
 - Claude renders all nine as point clouds from the front and at 30 degrees and looks at them.
 
-**Not done (sent back) if:**
+**Not done (sent back) if:** (and the rules at the top)
 - any function that throws, returns the wrong length or a value outside [-1, 1]
 - a shape that is a sphere, cube or noise cloud with a label on it
 - Math.random() anywhere
 
-==================== 5. MIDAS LEDGER ====================
-## 5. MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI
+==================== 6. MIDAS LEDGER ====================
+## 6. MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI
 
 **Due:** 2026-11-10 · **State:** now
-
-**Why:** Joseph: the app must inspire him to get out of debt. Claude designs from evidence, not slogans.
 
 **Read first:**
 - Google Scholar, journal pages, NBER, Federal Reserve, CFPB (no blogs, no listicles, no AI summaries)
@@ -196,17 +252,45 @@ IN THIS ORDER:
 - Claude resolves all 20 DOIs and searches each quote in the abstract.
 - One invented paper or invented quote = the whole file is rejected.
 
-**Not done (sent back) if:**
+**Not done (sent back) if:** (and the rules at the top)
 - any paper that does not exist
 - a quote that is not word for word
 - a blog or news article in place of a study
 
-==================== 6. MIDAS LEDGER ====================
-## 6. MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going
+==================== 7. PROMETHEUS HUB ====================
+## 7. HUB-GEM-03 · Desk sound: 24 real recordings for the desk ambience (no synthesizers)
 
 **Due:** 2026-11-11 · **State:** now
 
-**Why:** Midas looked 'neon' and uninspiring. Claude wants the specific moves the best apps use.
+**Do this:**
+1. Find 24 recordings on Freesound (freesound.org/people/.../sounds/N/) or Wikimedia Commons (commons.wikimedia.org/wiki/File:...): 8 room tones (a real room, hall or machine hum), 8 nature textures (wind, rain, water, insects at night), 8 sustained tones from real instruments (bowed metal, singing bowl, organ pipe, cello drone).
+2. Licence must be CC0, CC BY or public domain, read on the file page itself. No 'AI', 'synth', 'generated' or 'synthesizer' in the title, tags or description.
+3. Length at least 60 seconds; note it in seconds from the page.
+4. Say in one builder sentence where it plays (desk idle, door hover, sheet open, night).
+
+**Make:** `hub_gemini_sounds_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"url":"https://freesound.org/people/NAME/sounds/123456/","title":"...","author":"...","licence":"CC0","duration_s":184,"kind":"room tone","plays":"desk idle, under everything"}]`
+
+**How many:** 24
+
+**Done when:** 24 rows (8 per kind), every licence and length as on the page.
+
+**How Claude checks it:**
+- Claude opens every page and compares licence, author and length.
+- A row tagged synth/AI/generated on its page is thrown out.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a recording shorter than 60 s
+- a licence other than CC0, CC BY or public domain
+- a synthesized or AI-made sound
+
+==================== 8. MIDAS LEDGER ====================
+## 8. MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going
+
+**Due:** 2026-11-11 · **State:** now
 
 **Read first:**
 - the apps' own sites, help centres, App Store pages and press kits
@@ -230,19 +314,13 @@ IN THIS ORDER:
 - Claude opens 15 URLs at random.
 - Rows that only praise ('beautiful design') do not count.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
+**Not done (sent back) if:** (and the rules at the top)
 - two rows that say the same thing about one app
 
-==================== 7. HEPHAESTUS HEARTH ====================
-## 7. HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns
+==================== 9. HEPHAESTUS HEARTH ====================
+## 9. HEA-GEM-01 · Scan the house with a phone: 8 apps compared on 10 fixed columns
 
 **Due:** 2026-11-11 · **State:** now
-
-**Why:** The house on the stand is placeholder boxes. The real model will come from Joseph scanning rooms with his phone.
 
 **Read first:**
 - each app's own site, App Store / Play listing and help pages
@@ -265,19 +343,69 @@ IN THIS ORDER:
 **How Claude checks it:**
 - Claude opens the source URL of every price and export cell for 4 apps at random.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
+**Not done (sent back) if:** (and the rules at the top)
 - a blank cell without 'not stated' and the page you checked
 
-==================== 8. HEPHAESTUS HEARTH ====================
-## 8. HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it
+==================== 10. PROMETHEUS HUB ====================
+## 10. HUB-GEM-05 · Motion spec: 20 desk moments, each with duration, easing and property from a published motion system
 
 **Due:** 2026-11-12 · **State:** now
 
-**Why:** Projects, rooms and notes are empty on purpose. They need one shape before anything is saved.
+**Do this:**
+1. For each moment: door hover, door press, door open to its pillar, sheet slide in, sheet slide out, toast in, toast out, tab change, list item add, list item remove, number count-up, chart draw, card flip, field particles settle, page load reveal, button focus ring, error shake, success check, drawer open on phone, reduced-motion fallback.
+2. Take duration (ms), easing (a cubic-bezier with 4 numbers) and the CSS properties animated from a published system: Material 3 motion (m3.material.io/styles/motion), Apple Human Interface Guidelines (developer.apple.com/design/human-interface-guidelines/motion), IBM Carbon motion (carbondesignsystem.com/elements/motion), or Fluent 2 motion (fluent2.microsoft.design/motion).
+3. Quote the token name or the sentence the numbers come from.
+
+**Make:** `hub_gemini_motion_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"moment":"door hover","duration_ms":200,"easing":"cubic-bezier(0.2, 0, 0, 1)","properties":["transform","opacity"],"system":"Material 3","url":"https://m3.material.io/styles/motion/...","quote":"..."}]`
+
+**How many:** 20
+
+**Done when:** 20 rows, one per moment, numbers traceable to the quoted token.
+
+**How Claude checks it:**
+- Claude opens every URL and finds the token or sentence.
+- Easing must be 4 numbers; durations 50-1000 ms.
+
+**Not done (sent back) if:** (and the rules at the top)
+- an easing word (ease-in-out, smooth) instead of 4 numbers
+- a duration with no quote behind it
+
+==================== 11. MIDAS LEDGER ====================
+## 11. MID-GEM-04 · Minimum payment formulas of 25 US card issuers, quoted from their cardholder agreements
+
+**Due:** 2026-11-12 · **State:** now
+
+**Do this:**
+1. Take the 25 largest US card issuers (Chase, American Express, Citi, Capital One, Bank of America, Discover, Synchrony, Wells Fargo, U.S. Bank, Barclays, Goldman Sachs/Apple Card, PNC, TD Bank, Navy Federal, USAA, Truist, Credit One, Comenity/Bread, Fifth Third, Citizens, Huntington, Regions, KeyBank, BMO, First National).
+2. From each one's own cardholder agreement or pricing page, copy the minimum payment rule: the percent of balance, what is added (interest, fees, past due), the dollar floor, and when the whole balance is due instead.
+3. Write the rule as a formula over balance B, interest I, fees F: e.g. max(35, 0.01*B + I + F), or B when B < 35.
+
+**Make:** `midas_gemini_minimums_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"issuer":"...","product":"the card or card family the agreement covers","formula":"max(40, 0.01*B + I + F)","floor_usd":40,"pct_of_balance":1,"adds":["interest","fees"],"url":"https://...","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 issuers, each formula traceable to the quoted agreement text.
+
+**How Claude checks it:**
+- Claude opens 10 agreements at random and recomputes the formula from the quote.
+- Claude runs each formula on B=5000, I=80, F=0 and on B=20.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a formula from a blog or a calculator site instead of the issuer's own agreement
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 12. HEPHAESTUS HEARTH ====================
+## 12. HEA-GEM-02 · The renovation data shape: JSON Schema + 3 made-up projects that pass it
+
+**Due:** 2026-11-12 · **State:** now
 
 **Read first:**
 - https://raw.githubusercontent.com/jpavia10/hephaestus-hearth/main/README.md
@@ -299,16 +427,14 @@ IN THIS ORDER:
 **How Claude checks it:**
 - Claude validates with python jsonschema.
 
-**Not done (sent back) if:**
+**Not done (sent back) if:** (and the rules at the top)
 - an example that fails its own schema
 - a real address, name or phone number
 
-==================== 9. APOLLO TEMPLE ====================
-## 9. APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)
+==================== 13. APOLLO TEMPLE ====================
+## 13. APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)
 
 **Due:** 2026-11-12 · **State:** now
-
-**Why:** Apollo Temple is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
 
 **Read first:**
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
@@ -335,20 +461,14 @@ IN THIS ORDER:
 - Claude opens every docs URL.
 - Claude checks each 'done when' can be tested without asking Joseph.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
+**Not done (sent back) if:** (and the rules at the top)
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
 
-==================== 10. HERMES POST ====================
-## 10. HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))
+==================== 14. HERMES POST ====================
+## 14. HER-GEM-01 · Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))
 
 **Due:** 2026-11-12 · **State:** now
-
-**Why:** Hermes Post is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
 
 **Read first:**
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
@@ -375,20 +495,38 @@ IN THIS ORDER:
 - Claude opens every docs URL.
 - Claude checks each 'done when' can be tested without asking Joseph.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
+**Not done (sent back) if:** (and the rules at the top)
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
 
-==================== 11. KAIROS MERIDIAN ====================
-## 11. KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)
+==================== 15. HERMES POST ====================
+## 15. HER-GEM-03 · Every Gmail search operator, with syntax and one example each
 
 **Due:** 2026-11-12 · **State:** now
 
-**Why:** Kairos Meridian is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
+**Do this:**
+1. Open https://support.google.com/mail/answer/7190 and copy every operator on it (there are about 40), exactly as written, with what it does and one example of your own.
+
+**Make:** `hermes_gemini_operators_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"operator":"from:","does":"messages from a sender","example":"from:bills@example.com","url":"https://support.google.com/mail/answer/7190","quote":"..."}]`
+
+**How many:** 40
+
+**Done when:** Every operator on the page (Claude counts the page).
+
+**How Claude checks it:**
+- Claude compares the list with the page; a missing operator or an invented one fails the file.
+
+**Not done (sent back) if:** (and the rules at the top)
+- an operator that is not on that page
+
+==================== 16. KAIROS MERIDIAN ====================
+## 16. KAI-GEM-01 · Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)
+
+**Due:** 2026-11-12 · **State:** now
 
 **Read first:**
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
@@ -415,20 +553,41 @@ IN THIS ORDER:
 - Claude opens every docs URL.
 - Claude checks each 'done when' can be tested without asking Joseph.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
+**Not done (sent back) if:** (and the rules at the top)
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
 
-==================== 12. ICARUS STAKE ====================
-## 12. ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)
+==================== 17. KAIROS MERIDIAN ====================
+## 17. KAI-GEM-02 · Fixed dates 2026-2028: federal holidays, tax deadlines, clock changes
 
 **Due:** 2026-11-12 · **State:** now
 
-**Why:** Icarus Stake is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
+**Do this:**
+1. US federal holidays 2026, 2027, 2028 with the observed date (opm.gov/policy-data-oversight/pay-leave/federal-holidays/).
+2. IRS individual deadlines 2026 and 2027 (filing day, the four estimated-tax days, extension day) from irs.gov.
+3. US daylight-saving start and end 2026-2028 (nist.gov or timeanddate.com).
+4. One row per date with the source URL and quote.
+
+**Make:** `kairos_gemini_dates_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `[{"date":"2026-11-26","name":"Thanksgiving Day","kind":"federal holiday","url":"https://www.opm.gov/...","quote":"..."}]`
+
+**How many:** 55
+
+**Done when:** At least 55 rows (33 holidays, 12 tax days, 6 clock changes), every date quoted.
+
+**How Claude checks it:**
+- Claude checks every holiday against OPM and every tax day against IRS.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a date from a calendar-app blog
+
+==================== 18. ICARUS STAKE ====================
+## 18. ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)
+
+**Due:** 2026-11-12 · **State:** now
 
 **Read first:**
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
@@ -455,20 +614,38 @@ IN THIS ORDER:
 - Claude opens every docs URL.
 - Claude checks each 'done when' can be tested without asking Joseph.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
+**Not done (sent back) if:** (and the rules at the top)
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
 
-==================== 13. ARGUS ALBUM ====================
-## 13. ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)
+==================== 19. ICARUS STAKE ====================
+## 19. ICA-GEM-03 · Market holidays and early closes 2026-2028 (NYSE and Nasdaq)
 
 **Due:** 2026-11-12 · **State:** now
 
-**Why:** Argus Album is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.
+**Do this:**
+1. From nyse.com/markets/hours-calendars and nasdaq.com's holiday page: every full closure and early close (1:00 p.m.) in 2026, 2027, 2028.
+
+**Make:** `icarus_gemini_marketdays_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `[{"date":"2026-11-27","exchange":"NYSE","kind":"early close 13:00 ET","name":"Day after Thanksgiving","url":"https://www.nyse.com/markets/hours-calendars","quote":"..."}]`
+
+**How many:** 30
+
+**Done when:** Every closure and early close the two pages list for the three years (about 30 rows per exchange).
+
+**How Claude checks it:**
+- Claude compares with both pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a date not on the exchange's own page
+
+==================== 20. ARGUS ALBUM ====================
+## 20. ARG-GEM-01 · Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)
+
+**Due:** 2026-11-12 · **State:** now
 
 **Read first:**
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
@@ -495,10 +672,721 @@ IN THIS ORDER:
 - Claude opens every docs URL.
 - Claude checks each 'done when' can be tested without asking Joseph.
 
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
+**Not done (sent back) if:** (and the rules at the top)
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
+
+==================== 21. ARGUS ALBUM ====================
+## 21. ARG-GEM-04 · Image formats on Android Chrome: 6 formats x 3 browser features
+
+**Due:** 2026-11-12 · **State:** now
+
+**Do this:**
+1. Formats: WebP, AVIF, HEIC, JPEG XL, PNG, JPEG. Features: shows in <img>, decodes with createImageBitmap, encodes with canvas.toBlob(type).
+2. For each of the 18 cells: yes / no / partial for Chrome for Android, the version it started, the caniuse.com or MDN URL and the quote.
+
+**Make:** `argus_gemini_formats_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `[{"format":"AVIF","feature":"canvas.toBlob","android_chrome":"no","since":null,"url":"https://caniuse.com/...","quote":"..."}]`
+
+**How many:** 18
+
+**Done when:** 18 cells, each quoted from caniuse or MDN.
+
+**How Claude checks it:**
+- Claude opens every URL.
+
+==================== 22. PROMETHEUS HUB ====================
+## 22. HUB-GEM-06 · 30 WCAG 2.2 checks that apply to the desk, each one Claude can run
+
+**Due:** 2026-11-13 · **State:** now
+
+**Do this:**
+1. Pick the 30 WCAG 2.2 success criteria that apply to a particle-field desk with doors, sheets and tabs (contrast, focus, target size, motion, reflow...).
+2. For each: the criterion number and name, its w3.org Understanding page (www.w3.org/WAI/WCAG22/Understanding/...), the level (A/AA/AAA) and one concrete check written so Claude can run it in a browser script (e.g. 'every button is at least 24 x 24 CSS px').
+
+**Make:** `hub_gemini_wcag_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"sc":"2.5.8","name":"Target Size (Minimum)","level":"AA","url":"https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html","check":"every button and link box is at least 24x24 CSS px or has 24 px spacing"}]`
+
+**How many:** 30
+
+**Done when:** 30 different criteria, every check measurable.
+
+**How Claude checks it:**
+- Claude opens every URL.
+- A check that cannot be turned into a script (e.g. 'looks clear') does not count.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a criterion that is not in WCAG 2.2
+- a check with no number or no element named
+
+==================== 23. MIDAS LEDGER ====================
+## 23. MID-GEM-05 · How 25 issuers compute interest: balance method, day count, compounding, grace
+
+**Due:** 2026-11-13 · **State:** now
+
+**Do this:**
+1. For the same 25 issuers as MID-GEM-04: from the agreement's 'How we calculate your balance / interest' section copy the balance method (e.g. average daily balance including new transactions), the daily periodic rate (APR/365 or /360), whether interest compounds daily, the grace period in days and the minimum interest charge.
+
+**Make:** `midas_gemini_interest_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"issuer":"...","method":"average daily balance (including new transactions)","day_count":365,"daily_compounding":true,"grace_days":25,"min_interest_usd":1.0,"url":"https://...","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 rows, every field quoted or marked null with the reason in quote.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+- day_count must be 360 or 365; grace_days a whole number.
+
+**Not done (sent back) if:** (and the rules at the top)
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 24. KAIROS MERIDIAN ====================
+## 24. KAI-GEM-03 · 20 focus methods with their exact timing rules and primary source
+
+**Due:** 2026-11-13 · **State:** now
+
+**Do this:**
+1. 20 methods (Pomodoro, 52/17, ultradian 90/20, time-boxing, Flowtime, timeblocking, Eat the Frog, 1-3-5, ...).
+2. For each: work minutes, short break, long break, cycles before the long break (null when the method has none), and the primary source: the creator's book with page, the creator's own site, or a paper's DOI.
+
+**Make:** `kairos_gemini_focus_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"method":"Pomodoro Technique","work_min":25,"short_break_min":5,"long_break_min":20,"cycles":4,"source":"Francesco Cirillo, The Pomodoro Technique (2018), p. ...","url":"https://...","quote":"..."}]`
+
+**How many:** 20
+
+**Done when:** 20 methods, timing traceable to the source.
+
+**How Claude checks it:**
+- Claude opens 10 sources.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a method whose only source is a listicle
+
+==================== 25. ARGUS ALBUM ====================
+## 25. ARG-GEM-02 · 40 photo metadata tags that leak location or identity
+
+**Due:** 2026-11-13 · **State:** now
+
+**Do this:**
+1. From exiftool.org/TagNames (EXIF, GPS, XMP, IPTC, MakerNotes pages) and the EXIF 2.32 spec: 40 tags that reveal where, when, who or which device (GPSLatitude, GPSLongitude, GPSAltitude, DateTimeOriginal, SerialNumber, BodySerialNumber, LensSerialNumber, OwnerName, Artist, XMP dc:creator, IPTC By-line, ...).
+2. For each: tag ID in hex (when it has one), name, group, what it leaks, the URL.
+
+**Make:** `argus_gemini_tags_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"tag_id":"0x0002","name":"GPSLatitude","group":"GPS","leaks":"where the photo was taken","url":"https://exiftool.org/TagNames/GPS.html"}]`
+
+**How many:** 40
+
+**Done when:** 40 tags, every ID and name as on exiftool.org.
+
+**How Claude checks it:**
+- Claude compares every row with exiftool.org.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a tag ID that does not match its name
+
+==================== 26. MIDAS LEDGER ====================
+## 26. MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted
+
+**Due:** 2026-11-14 · **State:** now
+
+**Do this:**
+1. Pick 20 products a US consumer meets: 10 store cards (Synchrony / Comenity / TD retail cards), 5 buy-now-pay-later (Affirm, Klarna, Afterpay, PayPal Pay Later, Zip), 5 balance-transfer cards.
+2. From each product's own terms page: promo type (deferred interest or 0 % intro APR), promo length, what happens when it ends, the go-to APR, the fee.
+
+**Make:** `midas_gemini_promos_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"product":"...","issuer":"...","type":"deferred","months":12,"at_end":"interest from the purchase date on the whole amount","go_to_apr":29.99,"fee":"none","url":"https://...","quote":"...","seen":"2026-11-14"}]`
+
+**How many:** 20
+
+**Done when:** 20 products, each type quoted from its own terms.
+
+**How Claude checks it:**
+- Claude opens every URL.
+- type must be deferred or zero_intro, never both.
+
+**Not done (sent back) if:** (and the rules at the top)
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 27. HEPHAESTUS HEARTH ====================
+## 27. HEA-GEM-03 · 60 renovation unit costs, each with two retailer product pages
+
+**Due:** 2026-11-14 · **State:** now
+
+**Do this:**
+1. Pick 60 common line items (drywall sheet 4x8 1/2 in, joint compound 4.5 gal, interior paint 1 gal, primer, LVP per sq ft, ceramic tile per sq ft, thinset, grout, 2x4x8 stud, plywood 3/4, insulation batt R-13, outlet, GFCI outlet, light switch, LED recessed light, toilet, vanity 30 in, faucet, PEX 1/2 in 100 ft, shut-off valve, exterior door, interior door slab, door hinge, baseboard per ft, caulk, construction adhesive, deck screws 5 lb, concrete 80 lb bag, mulch 2 cu ft, smoke alarm ... up to 60).
+2. For each: one Home Depot and one Lowe's product page (homedepot.com/p/... and lowes.com/pd/...), the model or SKU, the price shown, the unit, and the date you saw it.
+
+**Make:** `hearth_gemini_unitcosts_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"item":"drywall 4x8 ft 1/2 in","unit":"sheet","home_depot":{"url":"https://www.homedepot.com/p/...","sku":"...","price":15.98},"lowes":{"url":"https://www.lowes.com/pd/...","sku":"...","price":16.48},"seen":"2026-11-14"}]`
+
+**How many:** 60
+
+**Done when:** 60 items, 120 product pages.
+
+**How Claude checks it:**
+- Claude opens 15 product pages at random (prices drift: within 20 % passes).
+
+**Not done (sent back) if:** (and the rules at the top)
+- a price from an article or a cost guide instead of a product page
+
+==================== 28. APOLLO TEMPLE ====================
+## 28. APO-GEM-02 · 300 foods with their USDA FoodData Central numbers per 100 g
+
+**Due:** 2026-11-14 · **State:** now
+
+**Do this:**
+1. Pick 300 foods an American eats (meats, fish, eggs, dairy, grains, breads, fruits, vegetables, legumes, nuts, oils, sweets, drinks, 30 fast-food items).
+2. Use only Foundation or SR Legacy entries. For each: the FDC ID, the exact description, and per 100 g: energy (kcal), protein, total fat, carbohydrate, fiber (g), from https://fdc.nal.usda.gov/food-details/{FDC ID}/nutrients.
+3. Save in 3 files of 100 rows (part1, part2, part3).
+
+**Make:** `apollo_gemini_foods_partN_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"fdc_id":171077,"description":"Chicken, broilers or fryers, breast, meat only, cooked, roasted","data_type":"SR Legacy","kcal":165,"protein_g":31.0,"fat_g":3.6,"carb_g":0,"fiber_g":0,"url":"https://fdc.nal.usda.gov/food-details/171077/nutrients"}]`
+
+**How many:** 300
+
+**Done when:** 3 files, 300 foods, every FDC ID real.
+
+**How Claude checks it:**
+- Claude checks 30 FDC IDs at random against the FoodData Central API (a value off by more than 2 % fails the row).
+
+**Not done (sent back) if:** (and the rules at the top)
+- a Branded entry
+- an FDC ID that does not match the description
+
+==================== 29. HERMES POST ====================
+## 29. HER-GEM-02 · 60 US billers: the address their bill emails come from
+
+**Due:** 2026-11-14 · **State:** now
+
+**Do this:**
+1. 60 billers (power, gas, water, internet, mobile, streaming, car and home insurance, the 25 card issuers in MID-GEM-04, student loans, car loans).
+2. From each company's own help or security page ('our emails come from ...'): the sending domains, the usual subject words for a bill, the help URL and the quote.
+
+**Make:** `hermes_gemini_billers_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"biller":"...","kind":"internet","domains":["email.example-isp.com"],"subject_words":["your bill is ready"],"url":"https://...","quote":"..."}]`
+
+**How many:** 60
+
+**Done when:** 60 billers, every domain quoted from the company's own page.
+
+**How Claude checks it:**
+- Claude opens 15 at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a domain guessed from a company name
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 30. KAIROS MERIDIAN ====================
+## 30. KAI-GEM-04 · An ICS test file with 40 made-up events that cover every hard case
+
+**Due:** 2026-11-14 · **State:** now
+
+**Do this:**
+1. Write one valid iCalendar file (RFC 5545) with 40 VEVENTs: 5 all-day, 3 multi-day, 6 weekly RRULE (with BYDAY), 4 monthly RRULE (BYMONTHDAY and BYSETPOS), 3 with EXDATE, 3 in America/Los_Angeles, 3 in Europe/London, 3 in Asia/Tokyo (with VTIMEZONE blocks), 2 across the 2026-03-08 and 2026-11-01 US clock changes, 4 overlapping, 2 crossing midnight, 2 with a 0-minute duration.
+2. Put the case name in each SUMMARY (e.g. 'weekly MO,WE,FR until 2026-12-31').
+
+**Make:** `kairos_gemini_testcal_{YYYYMMDD-HHMM}.ics`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `BEGIN:VCALENDAR ... 40 x BEGIN:VEVENT ... END:VEVENT ... END:VCALENDAR`
+
+**How many:** 40
+
+**Done when:** One file that a strict parser (python icalendar) reads with no error, 40 events, every case present.
+
+**How Claude checks it:**
+- Claude parses it and expands the rules for Nov 2026 - Mar 2027.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a file that does not parse
+- a case missing from the list
+
+==================== 31. ICARUS STAKE ====================
+## 31. ICA-GEM-02 · 25 journal metrics, each formula worked on the same 20 trades
+
+**Due:** 2026-11-14 · **State:** now
+
+**Do this:**
+1. The 20 trades (made up): t1 2026-01-05 AAPL long 10 @190.00 exit 196.50 stop 186.00 fees 1.00 kept yes; t2 2026-01-06 TSLA long 5 @250.00 exit 241.00 stop 244.00 fees 1.00 kept no; t3 2026-01-07 SPY short 4 @480.00 exit 474.00 stop 485.00 fees 1.00 kept yes; t4 2026-01-08 NVDA long 3 @500.00 exit 520.00 stop 490.00 fees 1.00 kept yes; t5 2026-01-09 AMD long 20 @150.00 exit 147.00 stop 147.00 fees 1.00 kept yes; t6 2026-01-12 QQQ short 6 @410.00 exit 415.00 stop 414.00 fees 1.00 kept no; t7 2026-01-13 MSFT long 8 @380.00 exit 392.00 stop 374.00 fees 1.00 kept yes; t8 2026-01-14 META long 5 @360.00 exit 351.00 stop 354.00 fees 1.00 kept no; t9 2026-01-15 AMZN long 10 @155.00 exit 158.10 stop 152.00 fees 1.00 kept yes; t10 2026-01-16 IWM short 15 @200.00 exit 197.00 stop 202.00 fees 1.00 kept yes; t11 2026-01-20 GOOG long 12 @140.00 exit 138.00 stop 137.00 fees 1.00 kept yes; t12 2026-01-21 NFLX long 2 @480.00 exit 505.00 stop 470.00 fees 1.00 kept yes; t13 2026-01-22 COIN long 10 @130.00 exit 118.00 stop 124.00 fees 1.00 kept no; t14 2026-01-23 SPY long 4 @478.00 exit 484.00 stop 474.00 fees 1.00 kept yes; t15 2026-01-26 BA short 6 @210.00 exit 214.50 stop 214.00 fees 1.00 kept yes; t16 2026-01-27 JPM long 10 @170.00 exit 174.00 stop 167.00 fees 1.00 kept yes; t17 2026-01-28 SHOP long 15 @75.00 exit 72.00 stop 73.00 fees 1.00 kept no; t18 2026-01-29 AAPL long 10 @192.00 exit 192.00 stop 189.00 fees 1.00 kept yes; t19 2026-01-30 XOM short 10 @105.00 exit 101.00 stop 107.00 fees 1.00 kept yes; t20 2026-02-02 TSLA long 5 @240.00 exit 228.00 stop 234.00 fees 1.00 kept no. Bankroll at the start: 10,000.00. 'kept' = the trade kept the rules.
+2. 25 metrics: net P/L, win rate, average win, average loss, payoff ratio, expectancy per trade, expectancy in R (R = entry-stop distance x qty), profit factor, max drawdown in dollars and percent, longest losing streak, Sharpe per trade, Sortino per trade, Kelly fraction, SQN, average R, cost of broken rules (P/L of kept=no trades), win rate when kept=yes vs no, largest loss in R, recovery factor, ulcer index, gain-to-pain, average hold (all 1 day), percent of trades over 2R, fees share of gross.
+3. For each: the formula in words and in symbols, a primary source (a book with page, or a paper DOI; Van Tharp for SQN and R, Kelly 1956 for Kelly), and the value on the 20 trades to 4 decimals.
+
+**Make:** `icarus_gemini_metrics_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"metric":"profit factor","formula":"sum(winning P/L) / abs(sum(losing P/L))","value":1.2345,"source":"...","url":"https://...","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 metrics, every value matches Claude's own calculation on the 20 trades.
+
+**How Claude checks it:**
+- Claude computes all 25 in Python; a value off by more than 0.001 fails the row; 3 fails = the file is sent back.
+
+**Not done (sent back) if:** (and the rules at the top)
+- values without the formula
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 32. ARGUS ALBUM ====================
+## 32. ARG-GEM-03 · The coin photo standard: 20 rules from professional numismatic photography
+
+**Due:** 2026-11-14 · **State:** now
+
+**Do this:**
+1. 20 rules (lighting angle, light type, background, lens, aperture, focus stacking, white balance, scale, orientation, file format, resolution, toning, glare on proof coins, holder glare, ...), each from a named source: a numismatic photography book with page, PCGS or NGC imaging pages, the ANA, or a museum imaging guide.
+2. For each: the rule as a number or a yes/no where possible (e.g. 'light at 15-30 degrees from the coin face'), the source and the quote.
+
+**Make:** `argus_gemini_coinphoto_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"rule":"light the coin from 15-30 degrees above the face","value":{"min_deg":15,"max_deg":30},"source":"...","url":"https://...","quote":"..."}]`
+
+**How many:** 20
+
+**Done when:** 20 rules, each quoted from a numismatic or museum source.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a rule from a general photography blog
+
+==================== 33. MIDAS LEDGER ====================
+## 33. MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask
+
+**Due:** 2026-11-15 · **State:** now
+
+**Do this:**
+1. For 25 lenders (the 25 issuers above; swap in Discover Personal Loans, SoFi, LendingClub, Upstart for any with no public page): the program name, what it offers (APR cut, fee waiver, fixed payment plan, months), who qualifies, the phone path or web page to ask, and what it does to the account (closed, frozen, reported).
+2. Quote the issuer's own page; when only the CFPB or a state regulator documents it, cite that page.
+
+**Make:** `midas_gemini_hardship_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"lender":"...","program":"...","offers":"APR lowered to 9.99 % for 12 months","qualifies":"...","how_to_ask":"call the number on the back of the card, ask for the hardship team","account_effect":"card frozen during the plan","url":"https://...","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 rows, every offer quoted.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a debt-settlement company's sales page as the source
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 34. HEPHAESTUS HEARTH ====================
+## 34. HEA-GEM-04 · 30 IRC 2021 rules a homeowner renovating hits, with section numbers
+
+**Due:** 2026-11-15 · **State:** now
+
+**Do this:**
+1. From the International Residential Code 2021 on codes.iccsafe.org/content/IRC2021P2 (free read view), pick 30 rules: stair rise/run/headroom, handrail height, guard height, egress window size and sill, smoke and CO alarm placement, GFCI and AFCI locations, bathroom ventilation, ceiling height, deck ledger, water heater relief valve, etc.
+2. For each: section number (e.g. R311.7.5.1), the rule in one sentence, every number in it with its unit, the URL and the quote.
+
+**Make:** `hearth_gemini_irc_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"section":"R311.7.5.1","topic":"stair riser height","rule":"riser height not more than 7 3/4 in","numbers":[{"value":7.75,"unit":"in","max":true}],"url":"https://codes.iccsafe.org/content/IRC2021P2/...","quote":"..."}]`
+
+**How many:** 30
+
+**Done when:** 30 sections, every number quoted.
+
+**How Claude checks it:**
+- Claude opens 10 sections at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a rule from a blog instead of the code text
+- a section number that does not exist in IRC 2021
+
+==================== 35. APOLLO TEMPLE ====================
+## 35. APO-GEM-03 · 150 exercises with their Compendium of Physical Activities code and MET
+
+**Due:** 2026-11-15 · **State:** now
+
+**Do this:**
+1. 150 exercises and activities (lifts, machines, bodyweight, cardio machines, sports, walking and running speeds, yard and house work).
+2. For each: the 2024 Adult Compendium code and MET value from pacompendium.com (the activity's own row), primary muscles, equipment, and one form cue from a named source (ACE exercise library, NSCA, or a physiotherapy source).
+
+**Make:** `apollo_gemini_exercises_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"exercise":"barbell back squat","compendium_code":"02054","met":5.0,"muscles":["quadriceps","glutes"],"equipment":"barbell, rack","cue":"...","cue_url":"https://www.acefitness.org/...","url":"https://pacompendium.com/..."}]`
+
+**How many:** 150
+
+**Done when:** 150 rows, every code and MET from the Compendium.
+
+**How Claude checks it:**
+- Claude checks 20 codes at random on pacompendium.com.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a MET from a calorie-calculator site
+
+==================== 36. HERMES POST ====================
+## 36. HER-GEM-04 · 30 phishing tells from FTC, CISA and Google, quoted
+
+**Due:** 2026-11-15 · **State:** now
+
+**Do this:**
+1. 30 tells (sender domain lookalike, urgent payment threat, gift-card ask, reply-to differs, link text differs from link target, ...), each from consumer.ftc.gov, cisa.gov or support.google.com.
+2. For each: the tell, a test Hermes can run on a message (headers or body), the URL and the quote.
+
+**Make:** `hermes_gemini_phishing_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"tell":"the reply-to address differs from the sender","test":"header Reply-To domain != From domain","url":"https://consumer.ftc.gov/...","quote":"..."}]`
+
+**How many:** 30
+
+**Done when:** 30 tells, each with a test written over headers or body.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+- A test that is only 'looks suspicious' does not count.
+
+==================== 37. KAIROS MERIDIAN ====================
+## 37. KAI-GEM-05 · Google Calendar Events resource: the 30 fields Kairos v2 reads
+
+**Due:** 2026-11-15 · **State:** now
+
+**Do this:**
+1. From developers.google.com/calendar/api/v3/reference/events list 30 fields (id, summary, start.dateTime, start.date, start.timeZone, end..., recurrence, recurringEventId, status, transparency, attendees[].responseStatus, reminders.overrides[], ...).
+2. For each: exact path, type, writable or not, and the meaning quoted.
+
+**Make:** `kairos_gemini_gcalfields_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"path":"start.dateTime","type":"datetime","writable":true,"url":"https://developers.google.com/calendar/api/v3/reference/events","quote":"..."}]`
+
+**How many:** 30
+
+**Done when:** 30 fields, every path exact.
+
+**How Claude checks it:**
+- Claude compares with the reference page.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a field that is not on the reference page
+
+==================== 38. ARGUS ALBUM ====================
+## 38. ARG-GEM-05 · 6 perceptual hash methods: steps, threshold, source
+
+**Due:** 2026-11-15 · **State:** now
+
+**Do this:**
+1. Methods: aHash, dHash, pHash (DCT), wHash (wavelet), blockhash, colour-moment hash.
+2. For each: the steps numbered (resize size, colour, transform, bits), the hash length in bits, the Hamming distance below which two photos count as the same with its source, and a reference (paper DOI, the author's page, or the ImageHash library docs).
+
+**Make:** `argus_gemini_phash_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"method":"dHash","steps":["grayscale","resize to 9x8","compare each pixel to its right neighbour","64 bits"],"bits":64,"same_below":10,"threshold_source":"...","url":"https://...","quote":"..."}]`
+
+**How many:** 6
+
+**Done when:** 6 methods; Claude implements each from the steps and runs it on 20 Titan photo pairs.
+
+**How Claude checks it:**
+- A method whose steps cannot be implemented as written fails the row.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a threshold with no source
+
+==================== 39. MIDAS LEDGER ====================
+## 39. MID-GEM-08 · 12 daily-compounding interest cases worked to the cent
+
+**Due:** 2026-11-16 · **State:** now
+
+**Do this:**
+1. Make 12 cases with balances between 500 and 25,000, APRs between 9.99 and 29.99, three 30-day cycles each, one payment per cycle on day 20 (amount of your choice), no new purchases.
+2. Daily periodic rate = APR / 365 / 100; interest accrues on the day's balance and is added at the end of each cycle (state whether it compounds daily or monthly; do both for cases 1-3).
+3. Write every cycle: start balance, sum of daily balances, average daily balance, interest (rounded half up to the cent), payment, end balance.
+
+**Make:** `midas_gemini_dailycases_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"case":1,"balance":5000.00,"apr":24.99,"payment_day":20,"payments":[200,200,200],"compounding":"monthly","cycles":[{"start":5000.00,"sum_daily":147800.00,"adb":4926.67,"interest":101.19,"payment":200.00,"end":4901.19}]}] (days 1-19 at 5000.00, days 20-30 at 4800.00)`
+
+**How many:** 12
+
+**Done when:** 12 cases x 3 cycles; Claude recomputes every number in Python.
+
+**How Claude checks it:**
+- A cycle off by more than 1 cent = the case fails; 2 failing cases = the file is sent back.
+
+**Not done (sent back) if:** (and the rules at the top)
+- numbers copied from an online calculator without the cycle rows
+
+==================== 40. HEPHAESTUS HEARTH ====================
+## 40. HEA-GEM-05 · 50 recurring home maintenance tasks with intervals from an authoritative source
+
+**Due:** 2026-11-16 · **State:** now
+
+**Do this:**
+1. 50 tasks (HVAC filter, water heater flush, smoke alarm test and battery, dryer vent clean, gutter clean, sump pump test, GFCI test, caulk check, roof check, chimney sweep, garage door balance ...).
+2. For each: interval in days (or season), why, the source page and the quote with the interval.
+
+**Make:** `hearth_gemini_upkeep_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"task":"test smoke alarms","interval_days":30,"season":null,"why":"...","url":"https://www.usfa.fema.gov/...","quote":"Test smoke alarms at least once a month"}]`
+
+**How many:** 50
+
+**Done when:** 50 tasks, every interval quoted.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- an interval from a home-improvement blog
+
+==================== 41. APOLLO TEMPLE ====================
+## 41. APO-GEM-04 · 40 health reference ranges from the guideline that sets them
+
+**Due:** 2026-11-16 · **State:** now
+
+**Do this:**
+1. 40 ranges, each from the body that sets it: AHA (blood pressure categories), CDC/WHO (activity minutes, BMI classes), AASM (adult sleep hours), USDA Dietary Guidelines (sodium, added sugar, fiber), NIH ODS (vitamin D, water), ACSM (training), etc.
+2. For each: the metric, the unit, the bands with their numbers, the URL and the quote.
+
+**Make:** `apollo_gemini_ranges_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"metric":"blood pressure","unit":"mmHg","bands":[{"name":"normal","systolic_max":119,"diastolic_max":79}],"body":"AHA","url":"https://www.heart.org/...","quote":"..."}]`
+
+**How many:** 40
+
+**Done when:** 40 metrics, every band number quoted.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a range from a news article or a fitness blog
+
+==================== 42. HERMES POST ====================
+## 42. HER-GEM-05 · Triage test set: 80 made-up emails, 20 per lane
+
+**Due:** 2026-11-16 · **State:** now
+
+**Do this:**
+1. Write 80 made-up emails: 20 'needs an answer', 20 'bill due in 7 days', 20 'waiting on others', 20 'read later'. Include 10 hard ones per lane (a bill that looks like news, a question buried in a newsletter, a reminder that is only an ad).
+2. Every sender uses an example.com, example.org or example.net address; no real person, no real company address.
+3. For each: from, subject, date (2026-11), the first 3 lines of the body, the lane, and one sentence why.
+
+**Make:** `hermes_gemini_testmail_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"from":"billing@power.example.com","subject":"...","date":"2026-11-03","body":"...","lane":"bill due in 7 days","hard":false,"why":"..."}]`
+
+**How many:** 80
+
+**Done when:** 80 emails, 20 per lane, 40 marked hard.
+
+**How Claude checks it:**
+- Claude counts lanes and checks every address is example.com/.org/.net.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real address or a real person's name
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 43. ICARUS STAKE ====================
+## 43. ICA-GEM-04 · Risk-of-ruin table: 135 cells from one cited formula
+
+**Due:** 2026-11-16 · **State:** now
+
+**Do this:**
+1. Pick one closed-form risk-of-ruin formula for fixed-fraction betting with a payoff ratio, from a named book or paper (author, title, page or DOI), and quote it.
+2. Ruin = losing 50 % of the bankroll. Compute it for win rate 30, 35, 40, 45, 50, 55, 60, 65, 70 % x payoff ratio 0.5, 1, 1.5, 2, 3 x risk per trade 1, 2, 5 % (135 cells), to 4 decimals.
+3. If your formula needs a simulation instead, say so, give the seed and 10,000 runs of 1,000 trades each.
+
+**Make:** `icarus_gemini_ruin_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `{"formula":"...","source":"...","url":"https://...","quote":"...","cells":[{"win":0.30,"payoff":0.5,"risk":0.01,"ruin":0.9999}]}`
+
+**How many:** 135
+
+**Done when:** 135 cells; Claude recomputes 20 at random with the same formula (within 0.005).
+
+**How Claude checks it:**
+- A cell that does not follow the stated formula fails the file.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a formula with no source
+
+==================== 44. HEPHAESTUS HEARTH ====================
+## 44. HEA-GEM-06 · 15 material quantity formulas with 3 worked examples each
+
+**Due:** 2026-11-17 · **State:** now
+
+**Do this:**
+1. 15 formulas: paint gallons (walls + ceiling, two coats, coverage per gallon), primer, drywall sheets, joint compound, tile with waste, grout, thinset, LVP with waste, baseboard length, insulation batts, concrete bags for a slab, mulch bags, deck boards, screws per sq ft of deck, wallpaper rolls.
+2. Each: the formula with every constant named and its source (a manufacturer's coverage page or spec sheet), then 3 worked examples with real room sizes and the answer rounded up as a store sells it.
+
+**Make:** `hearth_gemini_quantities_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"material":"interior paint","formula":"ceil((wall_area_sqft - openings_sqft) * coats / coverage_sqft_per_gal)","constants":{"coverage_sqft_per_gal":350},"url":"https://...","quote":"...","examples":[{"inputs":{"wall_area_sqft":420,"openings_sqft":40,"coats":2},"answer":3,"unit":"gal"}]}]`
+
+**How many:** 15
+
+**Done when:** 15 formulas, 45 examples; Claude recomputes all 45.
+
+**How Claude checks it:**
+- An example whose answer does not follow from its formula = the formula is sent back.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a constant with no source
+
+==================== 45. APOLLO TEMPLE ====================
+## 45. APO-GEM-05 · Android Health Connect: the 30 record types Apollo v2 would read
+
+**Due:** 2026-11-17 · **State:** now
+
+**Do this:**
+1. From developer.android.com/reference/kotlin/androidx/health/connect/client/records/ list 30 record types (StepsRecord, SleepSessionRecord, WeightRecord, HeartRateRecord, ExerciseSessionRecord, NutritionRecord, HydrationRecord, RestingHeartRateRecord ...).
+2. For each: the exact class name, the fields Apollo needs with their unit types, the read permission string (android.permission.health.READ_...), and the reference URL.
+
+**Make:** `apollo_gemini_healthconnect_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"record":"StepsRecord","fields":[{"name":"count","type":"Long"}],"permission":"android.permission.health.READ_STEPS","url":"https://developer.android.com/reference/kotlin/androidx/health/connect/client/records/StepsRecord"}]`
+
+**How many:** 30
+
+**Done when:** 30 record types, every class and permission exact.
+
+**How Claude checks it:**
+- Claude opens every URL.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a class or permission name that is not on its reference page
+
+==================== 46. ICARUS STAKE ====================
+## 46. ICA-GEM-05 · 30 rule checks Icarus can run on a trade, as formulas over its fields
+
+**Due:** 2026-11-17 · **State:** now
+
+**Do this:**
+1. Icarus's trade fields are: date, sym, side (long/short), qty, entry, exit, stop, fees, kept (yes/no), why (text).
+2. Write 30 checks, each a formula over those fields only (plus the trades before it): e.g. 'no stop' = stop is empty; 'stop on the wrong side' = side=long and stop >= entry; 'revenge trade' = a loss closed the same day and the next trade's qty is more than 1.5x; 'loss past the stop' = side=long and exit < stop ...
+3. For each: name, formula, the mistake it catches, and a source that describes that mistake (a trading-psychology book with page, or a paper DOI).
+
+**Make:** `icarus_gemini_rulechecks_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"name":"stop on the wrong side","formula":"(side==\"long\" && stop>=entry) || (side==\"short\" && stop<=entry)","catches":"...","source":"...","url":"https://...","quote":"..."}]`
+
+**How many:** 30
+
+**Done when:** 30 checks, every formula uses only the fields named.
+
+**How Claude checks it:**
+- Claude runs all 30 on the 20 trades in ICA-GEM-02; a formula that does not run fails the row.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a field Icarus does not have
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 47. APOLLO TEMPLE ====================
+## 47. APO-GEM-06 · 25 meta-analyses on what keeps people training and eating to plan
+
+**Due:** 2026-11-18 · **State:** now
+
+**Do this:**
+1. 25 meta-analyses or systematic reviews (2010 or later) on adherence: self-monitoring, goal setting, habit formation, reminders, social support, streaks/gamification, implementation intentions.
+2. For each: DOI, first author, year, number of studies and participants, the main effect with its number (effect size, odds ratio or percent), and one sentence of what Apollo should do because of it.
+
+**Make:** `apollo_gemini_evidence_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"doi":"10.xxxx/xxxxx","author":"...","year":2019,"studies":21,"participants":4300,"effect":"d = 0.40 for self-monitoring of diet","apollo_should":"...","url":"https://doi.org/10.xxxx/xxxxx","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 papers, every DOI resolves to that paper.
+
+**How Claude checks it:**
+- Claude resolves every DOI.
+- An effect with no number does not count.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a DOI that resolves to another paper
+- a single study instead of a meta-analysis or systematic review
+
+==================== 48. ICARUS STAKE ====================
+## 48. ICA-GEM-06 · 15 free market-data APIs: limits, key, browser use, quoted from their docs
+
+**Due:** 2026-11-18 · **State:** now
+
+**Do this:**
+1. 15 APIs (Alpha Vantage, Finnhub, Twelve Data, Polygon, IEX Cloud successor, Yahoo endpoints, Stooq CSV, CoinGecko, Coinbase public, Binance public, FRED, Tiingo, Marketstack, FMP, EODHD).
+2. For each: free-tier requests per minute and per day, whether a key is needed, whether the docs say browser/CORS calls are allowed, symbols covered (US stocks, crypto, FX), the docs URL and the quote.
+
+**Make:** `icarus_gemini_apis_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"api":"...","per_min":5,"per_day":500,"key":true,"browser_ok":"yes / no / not stated","covers":["US stocks"],"url":"https://...","quote":"..."}]`
+
+**How many:** 15
+
+**Done when:** 15 APIs, every limit quoted from the API's own docs.
+
+**How Claude checks it:**
+- Claude opens every docs page.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a limit from a comparison blog
+- any step that connects or trades a real account

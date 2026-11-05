@@ -2,7 +2,7 @@
 
 # Icarus Stake · homework for Gemini
 
-Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 14:55 UTC · 6 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. ICA-GEM-01 · Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)
 
@@ -42,3 +42,163 @@ Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
+
+## 2. ICA-GEM-03 · Market holidays and early closes 2026-2028 (NYSE and Nasdaq)
+
+**Due:** 2026-11-12 · **State:** now
+
+**Why:** Icarus's journal skips days the market is closed.
+
+**Do this:**
+1. From nyse.com/markets/hours-calendars and nasdaq.com's holiday page: every full closure and early close (1:00 p.m.) in 2026, 2027, 2028.
+
+**Make:** `icarus_gemini_marketdays_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `[{"date":"2026-11-27","exchange":"NYSE","kind":"early close 13:00 ET","name":"Day after Thanksgiving","url":"https://www.nyse.com/markets/hours-calendars","quote":"..."}]`
+
+**How many:** 30
+
+**Done when:** Every closure and early close the two pages list for the three years (about 30 rows per exchange).
+
+**How Claude checks it:**
+- Claude compares with both pages.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a date not on the exchange's own page
+
+## 3. ICA-GEM-02 · 25 journal metrics, each formula worked on the same 20 trades
+
+**Due:** 2026-11-14 · **State:** now
+
+**Why:** Icarus shows win rate, expectancy, profit factor and drawdown today; it needs the rest with formulas Claude can test.
+
+**Do this:**
+1. The 20 trades (made up): t1 2026-01-05 AAPL long 10 @190.00 exit 196.50 stop 186.00 fees 1.00 kept yes; t2 2026-01-06 TSLA long 5 @250.00 exit 241.00 stop 244.00 fees 1.00 kept no; t3 2026-01-07 SPY short 4 @480.00 exit 474.00 stop 485.00 fees 1.00 kept yes; t4 2026-01-08 NVDA long 3 @500.00 exit 520.00 stop 490.00 fees 1.00 kept yes; t5 2026-01-09 AMD long 20 @150.00 exit 147.00 stop 147.00 fees 1.00 kept yes; t6 2026-01-12 QQQ short 6 @410.00 exit 415.00 stop 414.00 fees 1.00 kept no; t7 2026-01-13 MSFT long 8 @380.00 exit 392.00 stop 374.00 fees 1.00 kept yes; t8 2026-01-14 META long 5 @360.00 exit 351.00 stop 354.00 fees 1.00 kept no; t9 2026-01-15 AMZN long 10 @155.00 exit 158.10 stop 152.00 fees 1.00 kept yes; t10 2026-01-16 IWM short 15 @200.00 exit 197.00 stop 202.00 fees 1.00 kept yes; t11 2026-01-20 GOOG long 12 @140.00 exit 138.00 stop 137.00 fees 1.00 kept yes; t12 2026-01-21 NFLX long 2 @480.00 exit 505.00 stop 470.00 fees 1.00 kept yes; t13 2026-01-22 COIN long 10 @130.00 exit 118.00 stop 124.00 fees 1.00 kept no; t14 2026-01-23 SPY long 4 @478.00 exit 484.00 stop 474.00 fees 1.00 kept yes; t15 2026-01-26 BA short 6 @210.00 exit 214.50 stop 214.00 fees 1.00 kept yes; t16 2026-01-27 JPM long 10 @170.00 exit 174.00 stop 167.00 fees 1.00 kept yes; t17 2026-01-28 SHOP long 15 @75.00 exit 72.00 stop 73.00 fees 1.00 kept no; t18 2026-01-29 AAPL long 10 @192.00 exit 192.00 stop 189.00 fees 1.00 kept yes; t19 2026-01-30 XOM short 10 @105.00 exit 101.00 stop 107.00 fees 1.00 kept yes; t20 2026-02-02 TSLA long 5 @240.00 exit 228.00 stop 234.00 fees 1.00 kept no. Bankroll at the start: 10,000.00. 'kept' = the trade kept the rules.
+2. 25 metrics: net P/L, win rate, average win, average loss, payoff ratio, expectancy per trade, expectancy in R (R = entry-stop distance x qty), profit factor, max drawdown in dollars and percent, longest losing streak, Sharpe per trade, Sortino per trade, Kelly fraction, SQN, average R, cost of broken rules (P/L of kept=no trades), win rate when kept=yes vs no, largest loss in R, recovery factor, ulcer index, gain-to-pain, average hold (all 1 day), percent of trades over 2R, fees share of gross.
+3. For each: the formula in words and in symbols, a primary source (a book with page, or a paper DOI; Van Tharp for SQN and R, Kelly 1956 for Kelly), and the value on the 20 trades to 4 decimals.
+
+**Make:** `icarus_gemini_metrics_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"metric":"profit factor","formula":"sum(winning P/L) / abs(sum(losing P/L))","value":1.2345,"source":"...","url":"https://...","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 metrics, every value matches Claude's own calculation on the 20 trades.
+
+**How Claude checks it:**
+- Claude computes all 25 in Python; a value off by more than 0.001 fails the row; 3 fails = the file is sent back.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- values without the formula
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+## 4. ICA-GEM-04 · Risk-of-ruin table: 135 cells from one cited formula
+
+**Due:** 2026-11-16 · **State:** now
+
+**Why:** A high-risk journal should show how likely a 50 % drawdown is at the risk Joseph takes per trade.
+
+**Do this:**
+1. Pick one closed-form risk-of-ruin formula for fixed-fraction betting with a payoff ratio, from a named book or paper (author, title, page or DOI), and quote it.
+2. Ruin = losing 50 % of the bankroll. Compute it for win rate 30, 35, 40, 45, 50, 55, 60, 65, 70 % x payoff ratio 0.5, 1, 1.5, 2, 3 x risk per trade 1, 2, 5 % (135 cells), to 4 decimals.
+3. If your formula needs a simulation instead, say so, give the seed and 10,000 runs of 1,000 trades each.
+
+**Make:** `icarus_gemini_ruin_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `{"formula":"...","source":"...","url":"https://...","quote":"...","cells":[{"win":0.30,"payoff":0.5,"risk":0.01,"ruin":0.9999}]}`
+
+**How many:** 135
+
+**Done when:** 135 cells; Claude recomputes 20 at random with the same formula (within 0.005).
+
+**How Claude checks it:**
+- A cell that does not follow the stated formula fails the file.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a formula with no source
+
+## 5. ICA-GEM-05 · 30 rule checks Icarus can run on a trade, as formulas over its fields
+
+**Due:** 2026-11-17 · **State:** now
+
+**Why:** Icarus records whether a trade kept the rules; it should also catch the common mistakes itself.
+
+**Do this:**
+1. Icarus's trade fields are: date, sym, side (long/short), qty, entry, exit, stop, fees, kept (yes/no), why (text).
+2. Write 30 checks, each a formula over those fields only (plus the trades before it): e.g. 'no stop' = stop is empty; 'stop on the wrong side' = side=long and stop >= entry; 'revenge trade' = a loss closed the same day and the next trade's qty is more than 1.5x; 'loss past the stop' = side=long and exit < stop ...
+3. For each: name, formula, the mistake it catches, and a source that describes that mistake (a trading-psychology book with page, or a paper DOI).
+
+**Make:** `icarus_gemini_rulechecks_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"name":"stop on the wrong side","formula":"(side==\"long\" && stop>=entry) || (side==\"short\" && stop<=entry)","catches":"...","source":"...","url":"https://...","quote":"..."}]`
+
+**How many:** 30
+
+**Done when:** 30 checks, every formula uses only the fields named.
+
+**How Claude checks it:**
+- Claude runs all 30 on the 20 trades in ICA-GEM-02; a formula that does not run fails the row.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a field Icarus does not have
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+## 6. ICA-GEM-06 · 15 free market-data APIs: limits, key, browser use, quoted from their docs
+
+**Due:** 2026-11-18 · **State:** now
+
+**Why:** Icarus may show a live price next to an open trade; it must work from the phone with no server.
+
+**Do this:**
+1. 15 APIs (Alpha Vantage, Finnhub, Twelve Data, Polygon, IEX Cloud successor, Yahoo endpoints, Stooq CSV, CoinGecko, Coinbase public, Binance public, FRED, Tiingo, Marketstack, FMP, EODHD).
+2. For each: free-tier requests per minute and per day, whether a key is needed, whether the docs say browser/CORS calls are allowed, symbols covered (US stocks, crypto, FX), the docs URL and the quote.
+
+**Make:** `icarus_gemini_apis_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"api":"...","per_min":5,"per_day":500,"key":true,"browser_ok":"yes / no / not stated","covers":["US stocks"],"url":"https://...","quote":"..."}]`
+
+**How many:** 15
+
+**Done when:** 15 APIs, every limit quoted from the API's own docs.
+
+**How Claude checks it:**
+- Claude opens every docs page.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a limit from a comparison blog
+- any step that connects or trades a real account

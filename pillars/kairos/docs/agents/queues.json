@@ -43,6 +43,129 @@
       "an API that does not exist or a docs URL for something else",
       "a screen that lists a number with no source"
      ]
+    },
+    {
+     "id": "KAI-GEM-02",
+     "title": "Fixed dates 2026-2028: federal holidays, tax deadlines, clock changes",
+     "state": "now",
+     "due": "2026-11-12",
+     "why": "Kairos shows the day; these dates must be on it without anyone typing them.",
+     "inputs": [],
+     "steps": [
+      "US federal holidays 2026, 2027, 2028 with the observed date (opm.gov/policy-data-oversight/pay-leave/federal-holidays/).",
+      "IRS individual deadlines 2026 and 2027 (filing day, the four estimated-tax days, extension day) from irs.gov.",
+      "US daylight-saving start and end 2026-2028 (nist.gov or timeanddate.com).",
+      "One row per date with the source URL and quote."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_dates_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "[{\"date\":\"2026-11-26\",\"name\":\"Thanksgiving Day\",\"kind\":\"federal holiday\",\"url\":\"https://www.opm.gov/...\",\"quote\":\"...\"}]"
+     },
+     "count": 55,
+     "done_when": "At least 55 rows (33 holidays, 12 tax days, 6 clock changes), every date quoted.",
+     "checks": [
+      "Claude checks every holiday against OPM and every tax day against IRS."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a date from a calendar-app blog"
+     ]
+    },
+    {
+     "id": "KAI-GEM-03",
+     "title": "20 focus methods with their exact timing rules and primary source",
+     "state": "now",
+     "due": "2026-11-13",
+     "why": "Kairos's focus clock offers methods; each needs its real rules (minutes, breaks, cycles), not a blog summary.",
+     "inputs": [],
+     "steps": [
+      "20 methods (Pomodoro, 52/17, ultradian 90/20, time-boxing, Flowtime, timeblocking, Eat the Frog, 1-3-5, ...).",
+      "For each: work minutes, short break, long break, cycles before the long break (null when the method has none), and the primary source: the creator's book with page, the creator's own site, or a paper's DOI."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_focus_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"method\":\"Pomodoro Technique\",\"work_min\":25,\"short_break_min\":5,\"long_break_min\":20,\"cycles\":4,\"source\":\"Francesco Cirillo, The Pomodoro Technique (2018), p. ...\",\"url\":\"https://...\",\"quote\":\"...\"}]"
+     },
+     "count": 20,
+     "done_when": "20 methods, timing traceable to the source.",
+     "checks": [
+      "Claude opens 10 sources."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a method whose only source is a listicle"
+     ]
+    },
+    {
+     "id": "KAI-GEM-04",
+     "title": "An ICS test file with 40 made-up events that cover every hard case",
+     "state": "now",
+     "due": "2026-11-14",
+     "why": "Kairos will import calendars; Claude needs a file that breaks weak parsers.",
+     "inputs": [],
+     "steps": [
+      "Write one valid iCalendar file (RFC 5545) with 40 VEVENTs: 5 all-day, 3 multi-day, 6 weekly RRULE (with BYDAY), 4 monthly RRULE (BYMONTHDAY and BYSETPOS), 3 with EXDATE, 3 in America/Los_Angeles, 3 in Europe/London, 3 in Asia/Tokyo (with VTIMEZONE blocks), 2 across the 2026-03-08 and 2026-11-01 US clock changes, 4 overlapping, 2 crossing midnight, 2 with a 0-minute duration.",
+      "Put the case name in each SUMMARY (e.g. 'weekly MO,WE,FR until 2026-12-31')."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_testcal_{YYYYMMDD-HHMM}.ics",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "BEGIN:VCALENDAR ... 40 x BEGIN:VEVENT ... END:VEVENT ... END:VCALENDAR"
+     },
+     "count": 40,
+     "done_when": "One file that a strict parser (python icalendar) reads with no error, 40 events, every case present.",
+     "checks": [
+      "Claude parses it and expands the rules for Nov 2026 - Mar 2027."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a file that does not parse",
+      "a case missing from the list"
+     ]
+    },
+    {
+     "id": "KAI-GEM-05",
+     "title": "Google Calendar Events resource: the 30 fields Kairos v2 reads",
+     "state": "now",
+     "due": "2026-11-15",
+     "why": "For version 2 (Google Calendar sync), Claude needs the exact field names and types.",
+     "inputs": [],
+     "steps": [
+      "From developers.google.com/calendar/api/v3/reference/events list 30 fields (id, summary, start.dateTime, start.date, start.timeZone, end..., recurrence, recurringEventId, status, transparency, attendees[].responseStatus, reminders.overrides[], ...).",
+      "For each: exact path, type, writable or not, and the meaning quoted."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_gcalfields_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"path\":\"start.dateTime\",\"type\":\"datetime\",\"writable\":true,\"url\":\"https://developers.google.com/calendar/api/v3/reference/events\",\"quote\":\"...\"}]"
+     },
+     "count": 30,
+     "done_when": "30 fields, every path exact.",
+     "checks": [
+      "Claude compares with the reference page."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a field that is not on the reference page"
+     ]
     }
    ]
   },

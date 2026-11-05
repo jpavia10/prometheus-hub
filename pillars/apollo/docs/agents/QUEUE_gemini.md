@@ -2,7 +2,7 @@
 
 # Apollo Temple · homework for Gemini
 
-Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-05 14:55 UTC · 6 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. APO-GEM-01 · Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)
 
@@ -42,3 +42,162 @@ Updated 2026-11-05 03:07 UTC · 1 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - an API that does not exist or a docs URL for something else
 - a screen that lists a number with no source
+
+## 2. APO-GEM-02 · 300 foods with their USDA FoodData Central numbers per 100 g
+
+**Due:** 2026-11-14 · **State:** now
+
+**Why:** Apollo logs calories and protein; a food table from USDA (public domain) lets Joseph pick a food instead of typing numbers.
+
+**Do this:**
+1. Pick 300 foods an American eats (meats, fish, eggs, dairy, grains, breads, fruits, vegetables, legumes, nuts, oils, sweets, drinks, 30 fast-food items).
+2. Use only Foundation or SR Legacy entries. For each: the FDC ID, the exact description, and per 100 g: energy (kcal), protein, total fat, carbohydrate, fiber (g), from https://fdc.nal.usda.gov/food-details/{FDC ID}/nutrients.
+3. Save in 3 files of 100 rows (part1, part2, part3).
+
+**Make:** `apollo_gemini_foods_partN_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"fdc_id":171077,"description":"Chicken, broilers or fryers, breast, meat only, cooked, roasted","data_type":"SR Legacy","kcal":165,"protein_g":31.0,"fat_g":3.6,"carb_g":0,"fiber_g":0,"url":"https://fdc.nal.usda.gov/food-details/171077/nutrients"}]`
+
+**How many:** 300
+
+**Done when:** 3 files, 300 foods, every FDC ID real.
+
+**How Claude checks it:**
+- Claude checks 30 FDC IDs at random against the FoodData Central API (a value off by more than 2 % fails the row).
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a Branded entry
+- an FDC ID that does not match the description
+
+## 3. APO-GEM-03 · 150 exercises with their Compendium of Physical Activities code and MET
+
+**Due:** 2026-11-15 · **State:** now
+
+**Why:** Apollo can estimate calories from training only with a MET per activity; the 2024 Adult Compendium is the reference.
+
+**Do this:**
+1. 150 exercises and activities (lifts, machines, bodyweight, cardio machines, sports, walking and running speeds, yard and house work).
+2. For each: the 2024 Adult Compendium code and MET value from pacompendium.com (the activity's own row), primary muscles, equipment, and one form cue from a named source (ACE exercise library, NSCA, or a physiotherapy source).
+
+**Make:** `apollo_gemini_exercises_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"exercise":"barbell back squat","compendium_code":"02054","met":5.0,"muscles":["quadriceps","glutes"],"equipment":"barbell, rack","cue":"...","cue_url":"https://www.acefitness.org/...","url":"https://pacompendium.com/..."}]`
+
+**How many:** 150
+
+**Done when:** 150 rows, every code and MET from the Compendium.
+
+**How Claude checks it:**
+- Claude checks 20 codes at random on pacompendium.com.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a MET from a calorie-calculator site
+
+## 4. APO-GEM-04 · 40 health reference ranges from the guideline that sets them
+
+**Due:** 2026-11-16 · **State:** now
+
+**Why:** Apollo's trends need lines to compare against (resting heart rate, blood pressure, sleep, steps, BMI, waist, protein per kg).
+
+**Do this:**
+1. 40 ranges, each from the body that sets it: AHA (blood pressure categories), CDC/WHO (activity minutes, BMI classes), AASM (adult sleep hours), USDA Dietary Guidelines (sodium, added sugar, fiber), NIH ODS (vitamin D, water), ACSM (training), etc.
+2. For each: the metric, the unit, the bands with their numbers, the URL and the quote.
+
+**Make:** `apollo_gemini_ranges_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"metric":"blood pressure","unit":"mmHg","bands":[{"name":"normal","systolic_max":119,"diastolic_max":79}],"body":"AHA","url":"https://www.heart.org/...","quote":"..."}]`
+
+**How many:** 40
+
+**Done when:** 40 metrics, every band number quoted.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a range from a news article or a fitness blog
+
+## 5. APO-GEM-05 · Android Health Connect: the 30 record types Apollo v2 would read
+
+**Due:** 2026-11-17 · **State:** now
+
+**Why:** Joseph is on Android. Version 2 can read steps, sleep, weight and heart rate from Health Connect instead of typing them.
+
+**Do this:**
+1. From developer.android.com/reference/kotlin/androidx/health/connect/client/records/ list 30 record types (StepsRecord, SleepSessionRecord, WeightRecord, HeartRateRecord, ExerciseSessionRecord, NutritionRecord, HydrationRecord, RestingHeartRateRecord ...).
+2. For each: the exact class name, the fields Apollo needs with their unit types, the read permission string (android.permission.health.READ_...), and the reference URL.
+
+**Make:** `apollo_gemini_healthconnect_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"record":"StepsRecord","fields":[{"name":"count","type":"Long"}],"permission":"android.permission.health.READ_STEPS","url":"https://developer.android.com/reference/kotlin/androidx/health/connect/client/records/StepsRecord"}]`
+
+**How many:** 30
+
+**Done when:** 30 record types, every class and permission exact.
+
+**How Claude checks it:**
+- Claude opens every URL.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a class or permission name that is not on its reference page
+
+## 6. APO-GEM-06 · 25 meta-analyses on what keeps people training and eating to plan
+
+**Due:** 2026-11-18 · **State:** now
+
+**Why:** Apollo's nudges (streaks, goals, reminders) should follow evidence, not vibes.
+
+**Do this:**
+1. 25 meta-analyses or systematic reviews (2010 or later) on adherence: self-monitoring, goal setting, habit formation, reminders, social support, streaks/gamification, implementation intentions.
+2. For each: DOI, first author, year, number of studies and participants, the main effect with its number (effect size, odds ratio or percent), and one sentence of what Apollo should do because of it.
+
+**Make:** `apollo_gemini_evidence_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"doi":"10.xxxx/xxxxx","author":"...","year":2019,"studies":21,"participants":4300,"effect":"d = 0.40 for self-monitoring of diet","apollo_should":"...","url":"https://doi.org/10.xxxx/xxxxx","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 papers, every DOI resolves to that paper.
+
+**How Claude checks it:**
+- Claude resolves every DOI.
+- An effect with no number does not count.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a DOI that resolves to another paper
+- a single study instead of a meta-analysis or systematic review
