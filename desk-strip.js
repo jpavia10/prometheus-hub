@@ -72,6 +72,11 @@
     const line = doorLine(id, data); if (!line) continue;
     const st = row.querySelector(".row-status"); if (st) st.textContent = line;
   }
+  // live sheet lines (the door dialogs carry a data-live-for span)
+  for (const el of document.querySelectorAll("[data-live-for]")) {
+    const line = doorLine(el.getAttribute("data-live-for"), data);
+    if (line) el.textContent = line;
+  }
   // operating-picture band
   const el = document.getElementById("bus-strip"); if (!el) return;
   const overdue = PB.deadlines.overdue(), next = PB.deadlines.upcoming(14);
