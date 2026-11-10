@@ -1,6 +1,6 @@
 README — Midas Ledger
 
-Money: cash, debt and the way out of it. The book is encrypted; no AI sees real balances outside it.
+Money: cash, debt and the way out.
 
 Live: https://jpavia10.github.io/midas-ledger/ · Code and rules: https://github.com/jpavia10/midas-ledger · State: live · PRIVATE: made-up data or public research only
 
@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-09 22:26 UTC · 2 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 2 open in this pillar.
 
 
 - MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
@@ -18,21 +18,21 @@ Updated 2026-11-09 22:26 UTC · 2 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Gemini in Midas Ledger right now.
 
 ## Muse
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Midas Ledger right now.
 
 ## ChatGPT
 
-Updated 2026-11-09 22:26 UTC · 1 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
 
 
 - MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14

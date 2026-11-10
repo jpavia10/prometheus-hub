@@ -1,6 +1,6 @@
 README — Hermes Post
 
-Mail and messages: what came in, what needs an answer.
+Mail and messages that need an answer.
 
 Live: https://jpavia10.github.io/prometheus-hub/pillars/hermes/ · Code and rules: https://github.com/jpavia10/prometheus-hub · State: live · PRIVATE: made-up data or public research only
 
@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-09 22:26 UTC · 1 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
 
 
 - HER-GRK-01 · Hermes Post: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
@@ -16,21 +16,21 @@ Updated 2026-11-09 22:26 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Gemini in Hermes Post right now.
 
 ## Muse
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Hermes Post right now.
 
 ## ChatGPT
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Hermes Post right now.

@@ -1,6 +1,6 @@
 README — Hephaestus Hearth
 
-The house: renovation projects, every asset in every room (the inventory), and a floor plan that gets accurate over time.
+The house: projects, inventory and floor plan.
 
 Live: https://jpavia10.github.io/hephaestus-hearth/ · Code and rules: https://github.com/jpavia10/hephaestus-hearth · State: bones
 
@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-09 22:26 UTC · 1 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
 
 
 - HEA-GRK-01 · Second reader on Gemini's scan-app table · due 2026-11-13 · waits for its input file
@@ -16,21 +16,21 @@ Updated 2026-11-09 22:26 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Gemini in Hephaestus Hearth right now.
 
 ## Muse
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Hephaestus Hearth right now.
 
 ## ChatGPT
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Hephaestus Hearth right now.

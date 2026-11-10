@@ -1,6 +1,6 @@
 README — Argus Album
 
-Photos: every picture the pillars use, in one place.
+Every picture the pillars use, in one album.
 
 Live: https://jpavia10.github.io/prometheus-hub/pillars/argus/ · Code and rules: https://github.com/jpavia10/prometheus-hub · State: live
 
@@ -8,28 +8,28 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Argus Album right now.
 
 ## Gemini
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Gemini in Argus Album right now.
 
 ## Muse
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Argus Album right now.
 
 ## ChatGPT
 
-Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
+Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Argus Album right now.

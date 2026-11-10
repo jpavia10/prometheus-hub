@@ -1,6 +1,6 @@
 {
  "about": "Every pillar of Prometheus in one list (Claude keeps it; tools/kit/render.py reads it). A pillar with a repo keeps its own homework in that repo (docs/agents/queues.json); a seat without a repo keeps it here under pillars/{id}/ until its repo exists. Titan Reliquary is the exception: its own research loop, its own Drive folder, its own look.",
- "updated": "2026-11-05",
+ "updated": "2026-11-09",
  "ais": [
   {
    "id": "grok",
@@ -59,7 +59,7 @@
   {
    "id": "midas",
    "name": "Midas Ledger",
-   "what": "Money: cash, debt and the way out of it. The book is encrypted; no AI sees real balances outside it.",
+   "what": "Money: cash, debt and the way out.",
    "repo": "jpavia10/midas-ledger",
    "home": "",
    "live": "https://jpavia10.github.io/midas-ledger/",
@@ -75,7 +75,7 @@
   {
    "id": "hearth",
    "name": "Hephaestus Hearth",
-   "what": "The house: renovation projects, every asset in every room (the inventory), and a floor plan that gets accurate over time.",
+   "what": "The house: projects, inventory and floor plan.",
    "repo": "jpavia10/hephaestus-hearth",
    "home": "",
    "live": "https://jpavia10.github.io/hephaestus-hearth/",
@@ -90,7 +90,7 @@
   {
    "id": "apollo",
    "name": "Apollo Temple",
-   "what": "Health, fitness, nutrition.",
+   "what": "Health, fitness and nutrition.",
    "repo": "",
    "home": "pillars/apollo",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/apollo/",
@@ -105,7 +105,7 @@
   {
    "id": "hermes",
    "name": "Hermes Post",
-   "what": "Mail and messages: what came in, what needs an answer.",
+   "what": "Mail and messages that need an answer.",
    "repo": "",
    "home": "pillars/hermes",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
@@ -121,7 +121,7 @@
   {
    "id": "kairos",
    "name": "Kairos Meridian",
-   "what": "Time: calendar, deadlines, the day.",
+   "what": "Time: calendar, deadlines and the day.",
    "repo": "",
    "home": "pillars/kairos",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
@@ -152,7 +152,7 @@
   {
    "id": "argus",
    "name": "Argus Album",
-   "what": "Photos: every picture the pillars use, in one place.",
+   "what": "Every picture the pillars use, in one album.",
    "repo": "",
    "home": "pillars/argus",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/argus/",
@@ -167,7 +167,7 @@
   {
    "id": "fleet",
    "name": "Fleet Command",
-   "what": "Paused by Joseph (2026-10-28). No AI reports to it.",
+   "what": "Paused fleet dashboard. No AI reports to it.",
    "repo": "jpavia10/fleet-command",
    "home": "",
    "live": "https://jpavia10.github.io/fleet-command/",
