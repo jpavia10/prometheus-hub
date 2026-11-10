@@ -2,7 +2,11 @@
    The research deliverable (ICA-GEM-03) listed 68 rows, but every event was duplicated (the NYSE page's
    multi-column table scraped twice over): 34 unique events, all with correct dates. This file carries the
    34 deduplicated events plus 2027-12-31 (New Year 2028 observance) which the deliverable missed: 35 total
-   (30 full closures incl. the observance, 5 early closes at 13:00 ET). Source: nyse.com hours calendar. */
+   (30 full closures incl. the observance, 5 early closes at 13:00 ET). Source: nyse.com hours calendar.
+   FIX (Grok, 2026-11-10, ICARUS-GROK-marketdays2027_20261110-1652.json): removed 2027-12-31. NYSE footnote *:
+   "Because the holiday falls on Saturday, January 1, 2028, no New Year's Day holiday is observed." Fri 2027-12-31
+   is a normal NYSE trading day (it is only a federal/OPM observance). 2027 now = 11 NYSE rows (10 closures +
+   1 early close 2027-11-26), matching nyse.com. File total 34. */
 window.ICARUS_MARKET_DAYS = [
  {
   "date": "2026-01-01",
@@ -140,12 +144,6 @@ window.ICARUS_MARKET_DAYS = [
   "date": "2027-12-24",
   "kind": "full closure",
   "name": "Christmas Day (observed)",
-  "close": null
- },
- {
-  "date": "2027-12-31",
-  "kind": "full closure",
-  "name": "New Year's Day (observed, for Jan 1 2028)",
   "close": null
  },
  {
