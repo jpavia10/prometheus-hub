@@ -1,0 +1,727 @@
+{
+ "pack": "BASTION-GROK-frazier-readiness",
+ "asOf": "2026-11-10",
+ "place": {
+  "name": "Frazier Park, CA (Kern County)",
+  "lat": 34.82057,
+  "lon": -118.94543,
+  "elevation_ft_usgs_epqs": 4632,
+  "elevation_ft_wikipedia": 4639,
+  "population_2020": 2592,
+  "nws": {
+   "office": "HNX (Hanford/San Joaquin Valley)",
+   "grid": "67,10",
+   "forecast_zone": "CAZ336 Frazier Mountain Communities",
+   "fire_zone": "CAZ597 Fort Tejon",
+   "county": "CAC029 Kern",
+   "radar": "KVTX",
+   "source": "https://api.weather.gov/points/34.8206,-118.9454"
+  },
+  "active_alerts_at_check": 0,
+  "utility": "PG&E (Lebec/Frazier Park PSPS events: Mountain Enterprise 2020-09-08 https://mountainenterprise.com/story/pg-kern-opens-fp-cooling-center/ ; 23ABC \"Power still out for some in Lebec, Fraizer Park areas due to PG&E shut offs\")"
+ },
+ "risk_profile": [
+  {
+   "hazard": "Wildfire / PSPS",
+   "evidence": "CAZ597: {'Red Flag Warning': 19, 'Fire Weather Watch': 11} (2019-10-10→2026-10-15); PG&E de-energized Lebec Sept 8 2020 with a Frazier Mountain Park cooling center opened.",
+   "level": "high"
+  },
+  {
+   "hazard": "Earthquake",
+   "evidence": "San Andreas: 1857 Fort Tejon earthquake ~M7.9, ~225 mi rupture Parkfield→Wrightwood (Wikipedia \"1857 Fort Tejon earthquake\"). USGS: 31 M4+ within 50 km since 1970.",
+   "top5": [
+    {
+     "mag": 5.37,
+     "place": "16km NE of Lebec, CA",
+     "timeUtc": "1988-06-10",
+     "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci640798"
+    },
+    {
+     "mag": 5.22,
+     "place": "24 km SW of Lamont, CA",
+     "timeUtc": "2024-08-07",
+     "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci40865184"
+    },
+    {
+     "mag": 5.19,
+     "place": "21km SW of Lamont, California",
+     "timeUtc": "1993-05-28",
+     "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci3107503"
+    },
+    {
+     "mag": 4.71,
+     "place": "18km N of Pine Mountain Club, CA",
+     "timeUtc": "1981-11-10",
+     "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci526822"
+    },
+    {
+     "mag": 4.69,
+     "place": "14km NW of Grapevine, CA",
+     "timeUtc": "2005-09-22",
+     "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci14186612"
+    }
+   ],
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&latitude=34.8206&longitude=-118.9454&maxradiuskm=50&minmagnitude=4&starttime=1970-01-01&orderby=magnitude",
+   "level": "high (low frequency, extreme impact)"
+  },
+  {
+   "hazard": "Winter storm at altitude",
+   "evidence": "CAZ336 winter products 5 yrs: WWY 30, WSW 13, WSA 10, Blizzard 1; elevation ~4,632 ft; I-5 chain controls.",
+   "level": "high (most frequent alert class)"
+  },
+  {
+   "hazard": "Wind",
+   "evidence": "High Wind Warning 14, Wind Advisory 21 in 5 yrs.",
+   "level": "medium"
+  },
+  {
+   "hazard": "Heat / flood",
+   "evidence": "Heat products Jul/Aug; Flood Watch 16 in CAZ336; county-wide flash flood warnings frequent (polygon-based).",
+   "level": "medium"
+  }
+ ],
+ "alert_types": [
+  {
+   "alert": "Red Flag Warning",
+   "zone": "CAZ597",
+   "count_in_history": {
+    "Red Flag Warning": 19
+   },
+   "peak_months": {
+    "Red Flag Warning": {
+     "5": 1,
+     "6": 2,
+     "7": 4,
+     "8": 2,
+     "9": 1,
+     "10": 7,
+     "12": 2
+    }
+   },
+   "definition": "Critical fire weather ongoing or imminent; \"Be extremely careful with open flames.\"",
+   "definition_source": "https://www.weather.gov/safety/wildfire-ww",
+   "frazier_action": "No sparks (mowing, trailers, chains dragging), car fueled, go-bag by the door, check Genasys zone status, N95s staged. Peak months here: Oct, Jul."
+  },
+  {
+   "alert": "Fire Weather Watch",
+   "zone": "CAZ597",
+   "count_in_history": {
+    "Fire Weather Watch": 11
+   },
+   "peak_months": {
+    "Fire Weather Watch": {
+     "7": 2,
+     "8": 2,
+     "10": 5,
+     "12": 2
+    }
+   },
+   "definition": "\"Critical fire weather conditions are possible but not imminent or occurring.\"",
+   "definition_source": "https://www.weather.gov/safety/wildfire-ww",
+   "frazier_action": "Pre-stage: charge power banks, PSPS likely to follow — check PG&E PSPS 7-day forecast."
+  },
+  {
+   "alert": "Winter Storm Warning",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "Winter Storm Warning": 13
+   },
+   "peak_months": {
+    "Winter Storm Warning": {
+     "1": 1,
+     "2": 8,
+     "3": 2,
+     "11": 1,
+     "12": 1
+    }
+   },
+   "definition": "\"Significant winter weather event including snow, ice, sleet or blowing snow... Travel will become difficult or impossible.\"",
+   "definition_source": "https://www.weather.gov/safety/winter-ww",
+   "frazier_action": "Expect I-5 Grapevine/Tejon Pass closure + chain controls; stay put or leave early. Mostly Feb here."
+  },
+  {
+   "alert": "Winter Storm Watch",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "Winter Storm Watch": 10
+   },
+   "peak_months": {
+    "Winter Storm Watch": {
+     "2": 3,
+     "3": 3,
+     "11": 1,
+     "12": 3
+    }
+   },
+   "definition": "\"Conditions are favorable for a significant winter storm event.\"",
+   "definition_source": "https://www.weather.gov/safety/winter-ww",
+   "frazier_action": "Fill tank, check chains/traction devices, stock 3+ days food/water, top off meds."
+  },
+  {
+   "alert": "Winter Weather Advisory",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "Winter Weather Advisory": 30
+   },
+   "peak_months": {
+    "Winter Weather Advisory": {
+     "1": 7,
+     "2": 2,
+     "3": 10,
+     "4": 3,
+     "10": 1,
+     "11": 1,
+     "12": 6
+    }
+   },
+   "definition": "Wintry elements expected below warning criteria; \"Be prepared for winter driving conditions.\"",
+   "definition_source": "https://www.weather.gov/safety/winter-ww",
+   "frazier_action": "Most common alert here (30 in 5 yrs; Mar/Jan/Dec). Chains in car; check Caltrans CHIN 800-427-7623 before driving."
+  },
+  {
+   "alert": "Blizzard Warning",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "Blizzard Warning": 1
+   },
+   "peak_months": {
+    "Blizzard Warning": {
+     "2": 1
+    }
+   },
+   "definition": "\"Frequent gusts greater than or equal to 35 mph accompanied by falling and/or blowing snow, frequently reducing visibility to less than 1/4 mile for three hours or more.\"",
+   "definition_source": "https://www.weather.gov/safety/winter-ww",
+   "frazier_action": "Do not travel. If stranded, stay with vehicle. Rare (1 in 5 yrs) but highest-impact."
+  },
+  {
+   "alert": "High Wind Warning",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "High Wind Warning": 14
+   },
+   "peak_months": {
+    "High Wind Warning": {
+     "1": 4,
+     "2": 2,
+     "3": 3,
+     "4": 1,
+     "10": 1,
+     "12": 3
+    }
+   },
+   "definition": "\"Sustained, strong winds with even stronger gusts are happening. Seek shelter.\"",
+   "definition_source": "https://www.weather.gov/safety/wind-ww",
+   "frazier_action": "Downed lines / outages + fire spread risk; secure outdoor items; high-profile vehicles avoid I-5."
+  },
+  {
+   "alert": "High Wind Watch",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "High Wind Watch": 6
+   },
+   "peak_months": {
+    "High Wind Watch": {
+     "1": 1,
+     "3": 1,
+     "4": 1,
+     "10": 1,
+     "12": 2
+    }
+   },
+   "definition": "\"Sustained, strong winds are possible. Secure loose outdoor items.\"",
+   "definition_source": "https://www.weather.gov/safety/wind-ww",
+   "frazier_action": "Secure yard; charge devices."
+  },
+  {
+   "alert": "Wind Advisory",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "Wind Advisory": 21
+   },
+   "peak_months": {
+    "Wind Advisory": {
+     "1": 5,
+     "2": 6,
+     "3": 3,
+     "8": 1,
+     "10": 1,
+     "11": 1,
+     "12": 4
+    }
+   },
+   "definition": "\"Strong winds are occurring but are not so strong as to warrant a High Wind Warning.\"",
+   "definition_source": "https://www.weather.gov/safety/wind-ww",
+   "frazier_action": "Caution driving; secure items."
+  },
+  {
+   "alert": "Flood Watch",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "Flood Watch": 16
+   },
+   "peak_months": {
+    "Flood Watch": {
+     "1": 4,
+     "2": 2,
+     "3": 1,
+     "8": 2,
+     "9": 3,
+     "10": 1,
+     "11": 1,
+     "12": 2
+    }
+   },
+   "definition": "\"Conditions are favorable for flooding. It does not mean flooding will occur, but it is possible.\"",
+   "definition_source": "https://www.weather.gov/safety/flood-watch-warning",
+   "frazier_action": "Burn-scar debris flow risk after fires; avoid washes/low crossings."
+  },
+  {
+   "alert": "Flash Flood Warning",
+   "zone": "CAC029",
+   "count_in_history": {
+    "Flash Flood Warning": 109
+   },
+   "peak_months": {
+    "Flash Flood Warning": {
+     "1": 8,
+     "2": 6,
+     "3": 13,
+     "5": 8,
+     "6": 4,
+     "7": 4,
+     "8": 33,
+     "9": 17,
+     "10": 2,
+     "11": 5,
+     "12": 9
+    }
+   },
+   "definition": "\"A flash flood is imminent or occurring... move immediately to high ground.\"",
+   "definition_source": "https://www.weather.gov/safety/flood-watch-warning",
+   "frazier_action": "County-wide polygon count (not Frazier-specific). Never drive through water."
+  },
+  {
+   "alert": "Extreme Heat Warning / Heat Advisory",
+   "zone": "CAZ336",
+   "count_in_history": {
+    "Extreme Heat Warning": 1,
+    "Excessive Heat Warning": 4,
+    "Heat Advisory": 5,
+    "Excessive Heat Watch": 4
+   },
+   "peak_months": {
+    "Extreme Heat Warning": {
+     "8": 1
+    },
+    "Excessive Heat Warning": {
+     "7": 3,
+     "8": 1
+    },
+    "Heat Advisory": {
+     "7": 3,
+     "8": 1,
+     "9": 1
+    },
+    "Excessive Heat Watch": {
+     "7": 3,
+     "8": 1
+    }
+   },
+   "definition": "Extreme Heat Warning: \"extremely dangerous heat conditions are expected or occurring.\" (NWS renamed Excessive Heat → Extreme Heat; both appear in history.)",
+   "definition_source": "https://www.weather.gov/safety/heat-ww",
+   "frazier_action": "Jul/Aug. PSPS + heat = use cooling center (Kern opened Frazier Mountain Park cooling center during the Sept 2020 PSPS)."
+  }
+ ],
+ "alert_history": {
+  "CAZ336": {
+   "ugc": "CAZ336",
+   "events": 126,
+   "first": "2021-09-08T14:50:00Z",
+   "last": "2026-10-21T15:00:00Z",
+   "by_type": {
+    "Winter Weather Advisory": 30,
+    "Wind Advisory": 21,
+    "Flood Watch": 16,
+    "High Wind Warning": 14,
+    "Winter Storm Warning": 13,
+    "Winter Storm Watch": 10,
+    "High Wind Watch": 6,
+    "Heat Advisory": 5,
+    "Excessive Heat Warning": 4,
+    "Excessive Heat Watch": 4,
+    "Blizzard Warning": 1,
+    "Dense Fog Advisory": 1,
+    "Extreme Heat Warning": 1
+   },
+   "by_type_month": {
+    "Heat Advisory": {
+     "7": 3,
+     "8": 1,
+     "9": 1
+    },
+    "High Wind Warning": {
+     "1": 4,
+     "2": 2,
+     "3": 3,
+     "4": 1,
+     "10": 1,
+     "12": 3
+    },
+    "High Wind Watch": {
+     "1": 1,
+     "3": 1,
+     "4": 1,
+     "10": 1,
+     "12": 2
+    },
+    "Wind Advisory": {
+     "1": 5,
+     "2": 6,
+     "3": 3,
+     "8": 1,
+     "10": 1,
+     "11": 1,
+     "12": 4
+    },
+    "Winter Storm Watch": {
+     "2": 3,
+     "3": 3,
+     "11": 1,
+     "12": 3
+    },
+    "Winter Storm Warning": {
+     "1": 1,
+     "2": 8,
+     "3": 2,
+     "11": 1,
+     "12": 1
+    },
+    "Winter Weather Advisory": {
+     "1": 7,
+     "2": 2,
+     "3": 10,
+     "4": 3,
+     "10": 1,
+     "11": 1,
+     "12": 6
+    },
+    "Excessive Heat Warning": {
+     "7": 3,
+     "8": 1
+    },
+    "Excessive Heat Watch": {
+     "7": 3,
+     "8": 1
+    },
+    "Flood Watch": {
+     "1": 4,
+     "2": 2,
+     "3": 1,
+     "8": 2,
+     "9": 3,
+     "10": 1,
+     "11": 1,
+     "12": 2
+    },
+    "Blizzard Warning": {
+     "2": 1
+    },
+    "Dense Fog Advisory": {
+     "12": 1
+    },
+    "Extreme Heat Warning": {
+     "8": 1
+    }
+   },
+   "source": "https://mesonet.agron.iastate.edu/json/vtec_events_byugc.php?ugc=CAZ336"
+  },
+  "CAZ597": {
+   "ugc": "CAZ597",
+   "events": 30,
+   "first": "2019-10-10T17:00:00Z",
+   "last": "2026-10-15T13:00:00Z",
+   "by_type": {
+    "Red Flag Warning": 19,
+    "Fire Weather Watch": 11
+   },
+   "by_type_month": {
+    "Red Flag Warning": {
+     "5": 1,
+     "6": 2,
+     "7": 4,
+     "8": 2,
+     "9": 1,
+     "10": 7,
+     "12": 2
+    },
+    "Fire Weather Watch": {
+     "7": 2,
+     "8": 2,
+     "10": 5,
+     "12": 2
+    }
+   },
+   "source": "https://mesonet.agron.iastate.edu/json/vtec_events_byugc.php?ugc=CAZ597"
+  },
+  "CAC029": {
+   "ugc": "CAC029",
+   "events": 424,
+   "first": "2016-01-06T20:10:00Z",
+   "last": "2026-10-23T22:14:00Z",
+   "by_type": {
+    "Flood Advisory": 249,
+    "Flash Flood Warning": 109,
+    "Severe Thunderstorm Warning": 55,
+    "Flood Warning": 5,
+    "Tornado Warning": 4,
+    "Dust Storm Advisory": 2
+   },
+   "by_type_month": {
+    "Flood Advisory": {
+     "1": 49,
+     "2": 27,
+     "3": 30,
+     "4": 14,
+     "5": 23,
+     "6": 10,
+     "7": 2,
+     "8": 38,
+     "9": 12,
+     "10": 11,
+     "11": 14,
+     "12": 19
+    },
+    "Severe Thunderstorm Warning": {
+     "1": 2,
+     "2": 1,
+     "3": 8,
+     "4": 5,
+     "5": 10,
+     "6": 5,
+     "8": 6,
+     "9": 14,
+     "10": 3,
+     "12": 1
+    },
+    "Flash Flood Warning": {
+     "1": 8,
+     "2": 6,
+     "3": 13,
+     "5": 8,
+     "6": 4,
+     "7": 4,
+     "8": 33,
+     "9": 17,
+     "10": 2,
+     "11": 5,
+     "12": 9
+    },
+    "Flood Warning": {
+     "1": 2,
+     "2": 1,
+     "11": 1,
+     "12": 1
+    },
+    "Tornado Warning": {
+     "3": 3,
+     "10": 1
+    },
+    "Dust Storm Advisory": {
+     "11": 1,
+     "12": 1
+    }
+   },
+   "source": "https://mesonet.agron.iastate.edu/json/vtec_events_byugc.php?ugc=CAC029"
+  }
+ },
+ "channels": [
+  {
+   "name": "NWS forecast + alerts for Frazier Mountain Communities (zone CAZ336, office HNX Hanford)",
+   "url": "https://forecast.weather.gov/MapClick.php?lat=34.8206&lon=-118.9454",
+   "api": "https://api.weather.gov/alerts/active?zone=CAZ336"
+  },
+  {
+   "name": "NWS fire weather zone CAZ597 \"Fort Tejon\" (Red Flag lives here, not in CAZ336)",
+   "api": "https://api.weather.gov/alerts/active?zone=CAZ597"
+  },
+  {
+   "name": "ReadyKern (Kern County mass notification)",
+   "url": "https://kerncountyfire.org/education-safety/ready-kern/",
+   "facts": "Caller ID always begins with 661; confirm by listening and pressing 1; questions readykern@kerncountyfire.org or 211; opt-out by calling (661) 873-2602 (discouraged)."
+  },
+  {
+   "name": "Genasys Protect evacuation zones",
+   "url": "https://protect.genasys.com/",
+   "facts": "Kern zones live since Aug 18, 2023; look up your address, write the zone name down; ReadyKern alerts use zone names; app sends critical alerts.",
+   "source": "https://kerncountyfire.org/15143/a-new-evacuation-management-tool-activated-in-kern-county/"
+  },
+  {
+   "name": "PG&E PSPS updates + 7-day PSPS forecast",
+   "url": "https://pgealerts.alerts.pge.com/psps-updates/",
+   "url2": "https://pgealerts.alerts.pge.com/psps-updates/7day/",
+   "phone": "1-800-743-5002 (shown on page)"
+  },
+  {
+   "name": "PG&E outage/PSPS alerts (account holders; address alerts for non-account holders)",
+   "url": "https://www.pge.com/en/account/manage-my-account/online-account-preferences/outage-alerts.html"
+  },
+  {
+   "name": "Caltrans chain controls / road conditions",
+   "url": "https://dot.ca.gov/travel/winter-driving-tips/chain-controls",
+   "facts": "CHIN 800-427-7623; QuickMap; R1/R2/R3 chain requirements; max 25–30 mph with chains."
+  },
+  {
+   "name": "MyShake earthquake early warning app",
+   "url": "https://myshake.berkeley.edu/"
+  },
+  {
+   "name": "AirNow (smoke/AQI)",
+   "url": "https://www.airnow.gov/"
+  },
+  {
+   "name": "CAL FIRE incidents",
+   "url": "https://www.fire.ca.gov/incidents",
+   "note": "Live from Playwright; plain curl got 403."
+  }
+ ],
+ "gear_gap": {
+  "baseline": "American Red Cross minimum survival kit (3-day evac) — https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html",
+  "baseline_items": [
+   "Water 1 gal/person/day (3-day evac)",
+   "Food 3-day non-perishable",
+   "Flashlight",
+   "Battery/hand-crank radio (NOAA Weather Radio if possible)",
+   "Extra batteries",
+   "First aid kit",
+   "Medications 7-day + medical items",
+   "Multi-purpose tool",
+   "Sanitation & hygiene",
+   "Copies of personal documents",
+   "Cell phone with chargers",
+   "Family & emergency contact info",
+   "Extra cash",
+   "Emergency blanket",
+   "Map(s) of the area"
+  ],
+  "bastion_72h_bag": [
+   "Water (3L+)",
+   "Filtration or purification",
+   "Food for 3 days",
+   "Shelter/tarp",
+   "Warm layer + rain shell",
+   "Headlamp + batteries",
+   "First aid kit",
+   "Fire kit",
+   "Knife/multitool",
+   "Cash + documents copies",
+   "Phone battery bank",
+   "Meds (7-day buffer)"
+  ],
+  "rows": [
+   {
+    "item": "Water",
+    "bastion_72h_has": "Water (3L+)",
+    "standard_says": "Red Cross: 1 gallon/person/day → 3-day = 3 gal (~11.4 L)/person",
+    "frazier_verdict": "GAP: 3 L is ~1 day. Keep 3 L in bag + 3 gal/person in house/car.",
+    "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
+   },
+   {
+    "item": "Radio",
+    "bastion_72h_has": "—",
+    "standard_says": "NOAA Weather Radio (battery/hand-crank)",
+    "frazier_verdict": "GAP: not on Bastion list. Cell + power fail together in PSPS/quake.",
+    "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
+   },
+   {
+    "item": "Respirator",
+    "bastion_72h_has": "—",
+    "standard_says": "N95 masks (Red Cross \"consider\"; Ready.gov wildfire)",
+    "frazier_verdict": "GAP: wildfire smoke — Red Flag zone CAZ597 had 19 warnings.",
+    "source": "https://www.ready.gov/wildfires"
+   },
+   {
+    "item": "Maps",
+    "bastion_72h_has": "—",
+    "standard_says": "Map(s) of the area",
+    "frazier_verdict": "GAP: paper map of I-5/Frazier Mtn Park Rd/Lockwood Valley Rd egress; write Genasys zone on it.",
+    "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
+   },
+   {
+    "item": "Contacts",
+    "bastion_72h_has": "Cash + documents copies",
+    "standard_says": "Family & emergency contact info (written)",
+    "frazier_verdict": "PARTIAL: add written contact list + Genasys zone name.",
+    "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
+   },
+   {
+    "item": "Sanitation",
+    "bastion_72h_has": "—",
+    "standard_says": "Sanitation & personal hygiene items",
+    "frazier_verdict": "GAP.",
+    "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
+   },
+   {
+    "item": "Emergency blanket",
+    "bastion_72h_has": "Warm layer + rain shell",
+    "standard_says": "Emergency blanket; extra clothing, hat, sturdy shoes; blankets/sleeping bags",
+    "frazier_verdict": "PARTIAL: at ~4,600 ft add hat/gloves + blanket for winter storms.",
+    "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
+   },
+   {
+    "item": "Whistle / work gloves / duct tape",
+    "bastion_72h_has": "Knife/multitool",
+    "standard_says": "Whistle, work gloves, duct tape, plastic sheeting (\"consider\")",
+    "frazier_verdict": "GAP for quake debris.",
+    "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
+   },
+   {
+    "item": "Car: traction",
+    "bastion_72h_has": "Car kit (app)",
+    "standard_says": "Ready.gov car: chains; sand/cat litter; ice scraper; jumper cables; flares; blanket; map; car charger; keep tank full",
+    "frazier_verdict": "CHECK: Caltrans R2 requires chains/traction devices on Grapevine; carry them all winter.",
+    "source": "https://www.ready.gov/car"
+   },
+   {
+    "item": "House: CO detector",
+    "bastion_72h_has": "House shelter-in (app)",
+    "standard_says": "Ready.gov power outages: CO detectors; generators ≥20 ft from windows/doors",
+    "frazier_verdict": "GAP if running a generator during PSPS.",
+    "source": "https://www.ready.gov/power-outages"
+   },
+   {
+    "item": "House: food safety",
+    "bastion_72h_has": "—",
+    "standard_says": "Fridge ~4 h, full freezer ~48 h; discard food above 40°F",
+    "frazier_verdict": "ADD thermometer to fridge/freezer for multi-day PSPS.",
+    "source": "https://www.ready.gov/power-outages"
+   },
+   {
+    "item": "House: earthquake",
+    "bastion_72h_has": "—",
+    "standard_says": "Secure heavy items; Drop, Cover, Hold On",
+    "frazier_verdict": "GAP: San Andreas 1857 Fort Tejon M~7.9 ruptured here; strap water heater, bookcases.",
+    "source": "https://www.ready.gov/earthquakes"
+   },
+   {
+    "item": "Power",
+    "bastion_72h_has": "Phone battery bank",
+    "standard_says": "Cell phone with chargers; extra batteries",
+    "frazier_verdict": "OK; size for multi-day PSPS (Sept 2020 Lebec shutoff ran overnight).",
+    "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
+   }
+  ]
+ },
+ "blocked_sources": {
+  "readyforwildfire.org / fire.ca.gov (curl)": "403",
+  "cdc.gov": "403",
+  "fema.gov": "403",
+  "kerncounty.com OES": "Access Denied You don't have permission to access ... on this server.",
+  "caloes MyShake page": "404 Not Found",
+  "PG&E PSPS main page": "404",
+  "quickmap.dot.ca.gov": "net::ERR_CONNECTION_CLOSED"
+ },
+ "notes": [
+  "Counts are from IEM VTEC archive by UGC; CAZ336 history begins 2021-09-08 (zone re-numbering), CAZ597 2019-10-10.",
+  "Not a substitute for official orders: when told to evacuate, go."
+ ]
+}
