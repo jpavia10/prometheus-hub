@@ -78,13 +78,13 @@
     const list = MODULES.filter((m) => (groupFilter === "All" || m.group === groupFilter) && !hide.has(m.id))
       .slice().sort((a, b) => (pin.has(b.id) - pin.has(a.id)) || a.name.localeCompare(b.name));
     nav.innerHTML = `<div class="chips" id="group-chips">${groups.map((g) => `<button type="button" data-group="${esc(g)}" aria-pressed="${groupFilter === g}">${esc(g)}</button>`).join("")}</div>`
-      + `<p class="sw-k">Modules <span id="review-count"></span></p>` + list.map((m, i) => {
+      + `<p class="sw-k">Modules <span id="review-count"></span></p><div class="sw-row">` + list.map((m, i) => {
         const n = reviewFor(m.id);
         return `<button type="button" data-mod="${m.id}"><span>${i < 9 ? (i + 1) + " " : ""}${esc(m.name)}${n ? `<i class="dot">${n}</i>` : ""}${pin.has(m.id) ? " · pin" : ""}</span><small>${esc(m.what)}</small></button>`;
-      }).join("")
-      + `<p class="sw-k">Show or hide</p>` + MODULES.map((m) => `<button type="button" data-pin="${m.id}">${pin.has(m.id) ? "Unpin" : "Pin"} ${esc(m.name)}</button><button type="button" data-hide="${m.id}">${hide.has(m.id) ? "Show" : "Hide"} ${esc(m.name)}</button>`).join("")
-      + `<p class="sw-k">Other sites</p>` + EXTERNAL.map((m) =>
-      `<a class="sw-ext" href="${m.href}" target="_blank" rel="noopener noreferrer">${esc(m.name)}</a>`).join("")
+      }).join("") + `</div>`
+      + `<p class="sw-k">Show or hide</p><div class="sw-arrange">` + MODULES.map((m) => `<button type="button" data-pin="${m.id}">${pin.has(m.id) ? "Unpin" : "Pin"} ${esc(m.name)}</button><button type="button" data-hide="${m.id}">${hide.has(m.id) ? "Show" : "Hide"} ${esc(m.name)}</button>`).join("") + `</div>`
+      + `<p class="sw-k sw-keep">Other sites</p><div class="sw-row">` + EXTERNAL.map((m) =>
+      `<a class="sw-ext" href="${m.href}" target="_blank" rel="noopener noreferrer">${esc(m.name)}</a>`).join("") + `</div>`
       + `<p class="sw-paused">Fleet Command paused (2026-10-28)</p>`;
     const total = MODULES.reduce((n, m) => n + reviewFor(m.id), 0);
     const rc = $("#review-count");
@@ -280,7 +280,7 @@
     else showBoard();
   }
 
-  const BUILD = "v9";
+  const BUILD = "v10";
   function deskToast(msg) {
     const t = document.createElement("div");
     t.className = "toast";
