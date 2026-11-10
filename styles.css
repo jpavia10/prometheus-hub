@@ -641,3 +641,50 @@ dialog.sheet::backdrop {
   from { opacity: 0; transform: translateY(12px) scale(0.985); }
   to { opacity: 1; transform: none; }
 }
+
+/* ---- Operating picture band (moved out of an inline <style> inside the focus form; Grok, 2026-11-10) ---- */
+.bus-strip { grid-column: 1 / -1; margin-top: 10px; border: 1px solid rgba(159, 212, 230, 0.22); border-radius: 18px; padding: 12px 14px; background: rgba(10, 16, 28, 0.45); pointer-events: auto; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.bus-strip[hidden] { display: none; }
+.bus-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.bus-k { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan); }
+.bus-link { font-size: 13px; color: #cfe3f5; text-underline-offset: 3px; }
+.bus-late { color: #ffb4a2; font-size: 13.5px; }
+.bus-list { list-style: none; margin: 0; padding: 0; }
+.bus-list li { display: grid; grid-template-columns: 54px 1fr auto; gap: 10px; align-items: baseline; padding: 5px 0; font-size: 14px; color: #e8eef7; border-top: 1px solid rgba(214, 226, 245, 0.07); }
+.bus-list li:first-child { border-top: 0; }
+.bus-list li:only-child .bus-what:first-child { grid-column: 1 / -1; color: var(--muted); }
+.bus-when { color: #9fb4cc; font-variant-numeric: tabular-nums; }
+.bus-what { min-width: 0; overflow-wrap: anywhere; }
+.bus-src { color: #8d9fb7; font-size: 12px; letter-spacing: 0.02em; }
+.bus-more { color: #9fb4cc; font-size: 13px; }
+.op-away { border-radius: 12px; padding: 8px 10px; background: rgba(201, 184, 234, 0.12); border: 1px solid rgba(201, 184, 234, 0.3); color: var(--ink); font-size: 13.5px; }
+.op-row { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font-size: 13px; color: var(--muted); }
+.op-row b { color: var(--ink); font-weight: 500; }
+.op-search { margin: 0; display: flex; }
+.op-search input { flex: 1; min-width: 0; border-radius: 999px; border: 1px solid var(--line); background: rgba(5, 7, 14, 0.45); padding: 9px 14px; font-size: 14px; }
+.op-search input::placeholder { color: rgba(183, 196, 214, 0.75); }
+.op-results:empty { display: none; }
+.op-results li { grid-template-columns: 84px 1fr; }
+.op-btn { display: inline-flex; align-items: center; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.04); color: var(--ink); padding: 6px 12px; font-size: 12.5px; cursor: pointer; letter-spacing: 0.02em; }
+.op-btn:hover, .op-btn:focus-visible { border-color: var(--line-strong); background: rgba(255, 255, 255, 0.08); }
+.op-tools .bus-src { flex-basis: 100%; }
+
+/* ---- Paused (Fleet Command) reads as paused everywhere ---- */
+.paused-tag { display: inline-block; margin-right: 6px; padding: 1px 8px; border-radius: 999px; border: 1px solid rgba(183, 196, 214, 0.4); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(183, 196, 214, 0.9); vertical-align: 1px; }
+.dock-quiet a.is-paused { color: rgba(183, 196, 214, 0.55); font-style: italic; }
+.kicker.is-paused { color: rgba(183, 196, 214, 0.86); }
+
+/* Sheets: title, then the live Today line */
+.sheet-today { color: var(--ink) !important; }
+.sheet-today [data-live-for] { color: var(--cyan); }
+kbd { font: inherit; font-size: 0.85em; padding: 1px 6px; border-radius: 6px; border: 1px solid var(--line-strong); background: rgba(255, 255, 255, 0.05); }
+
+/* Door rows: live status lines can be long (e.g. "Next: Veterans Day · 2026-11-11"); keep the name readable */
+.row-status { max-width: 46%; text-align: right; line-height: 1.35; overflow-wrap: anywhere; }
+@media (max-width: 720px) {
+  .row { grid-template-columns: 1fr; grid-template-areas: "name" "role" "status"; }
+  .row-status { max-width: none; text-align: left; align-self: start; margin-top: 4px; }
+  .bus-list li { grid-template-columns: 46px 1fr; }
+  .bus-list li .bus-src { grid-column: 2; }
+  .op-results li { grid-template-columns: 1fr; }
+}
