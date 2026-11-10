@@ -1,5 +1,5 @@
 /* Prometheus Hub. Network first. Same-origin shell only. No secrets. */
-var CACHE = "prometheus-hub-desk-v10";
+var CACHE = "prometheus-hub-desk-v11";
 var SHELL = [
   "./",
   "./index.html",
@@ -21,7 +21,10 @@ var SHELL = [
   "./kit/bus.js",
   "./kit/fonts/outfit-latin-300-normal.woff2",
   "./kit/fonts/outfit-latin-400-normal.woff2",
-  "./kit/fonts/outfit-latin-500-normal.woff2"
+  "./kit/fonts/outfit-latin-500-normal.woff2",
+  "./kit/fonts/outfit-latin-ext-300-normal.woff2",
+  "./kit/fonts/outfit-latin-ext-400-normal.woff2",
+  "./kit/fonts/outfit-latin-ext-500-normal.woff2"
 ];
 
 self.addEventListener("install", function (event) {

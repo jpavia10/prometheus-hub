@@ -280,7 +280,7 @@
     else showBoard();
   }
 
-  const BUILD = "v10";
+  const BUILD = "v11";
   function deskToast(msg) {
     const t = document.createElement("div");
     t.className = "toast";
@@ -398,7 +398,7 @@
       const rows = PB.deadlines.upcoming(90).filter((d) => ["garage", "hearth", "odyssey", "bastion", "records"].includes(d.source));
       strip.innerHTML = rows.length
         ? rows.slice(0, 8).map((d) => `<li><span class="when">${esc(d.date)}</span><span class="what">${esc(d.title)}</span></li>`).join("")
-        : `<li><span class="what">No car or house dates on this device yet.</span></li>`;
+        : `<li><span class="what">No car or home dates on this device yet.</span></li>`;
     }
     paintReminders();
   }

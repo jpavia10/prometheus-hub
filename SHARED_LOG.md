@@ -82,3 +82,7 @@
 ### [2026-11-10] Grok hub loop: module strip on every pillar, phone desk unblocked
 - Pillar pages: the module row is on its own line. On a phone it had collapsed to nothing; on a wide window the page you were on sat past the end of the row. Previous and next sit on the ends, the current module is the light pill, and [ ] or Alt+arrows move between modules. Tab offers "Skip to this module."
 - Desk on a phone: the search field no longer covers the module list. Group chips wrap, and the modules scroll in their own row. Pin and hide stay on a wider screen. Shell cache is v10.
+
+### [2026-11-10] Grok hub loop: home desk on the kit
+- The home desk now loads kit/prometheus.css before styles.css, so Outfit, the pearl ink, cyan and lavender, the 22px radius, and the glass tokens are the ones on the page. The copied :root block is gone. Cards, panes, and the shortcut sheet use those tokens. The field and the veil stay. Fleet Command stays paused.
+- Shell cache is v11 and includes the Outfit woff2 files. Headless check: Outfit 300/400/500 loaded, computed font-family is Outfit, no page errors, search and all 14 modules open, the shortcut sheet opens, pillar pages still render. Phone search still sits above the module row.

@@ -98,7 +98,7 @@
     <ul id="op-results" class="bus-list op-results"></ul>
     <div class="op-row op-tools"><button class="op-btn" id="op-backup" type="button">Download deck backup</button>
     <label class="op-btn" for="op-restore-file" tabindex="0">Restore backup</label><input id="op-restore-file" type="file" accept="application/json" hidden>
-    <span class="bus-src">One file, every wing on this device. Keep it somewhere safe.</span></div>`;
+    <span class="bus-src">One file, every module on this device. Keep it somewhere safe.</span></div>`;
   const index = buildIndex(data);
   const results = document.getElementById("op-results");
   const q = document.getElementById("op-q");
