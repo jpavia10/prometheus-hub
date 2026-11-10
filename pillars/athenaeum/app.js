@@ -40,7 +40,7 @@
       el.append(h("div.idea", null,
         h("h3", null, i.title),
         h("div", null, i.body),
-        h("div", { style: "margin-top:4px" }, ...(i.tags || []).map((t) => h("span.tag", null, t)), h("span.stat-s", null, ` sparked ${i.created}${i.source ? " · via " + i.source : ""}${i.strength ? " · strength " + i.strength + "/5" : ""}`)),
+        h("div", { style: "margin-top:4px" }, ...(i.tags || []).map((t) => h("span.tag", null, t)), h("span.stat-s", null, ` sparked ${i.created}${i.source ? " · via " + i.source : ""}${i.strength ? " · strength " + i.strength + "/100" : ""}`)),
         h("div.chain", null, ...i.chain.map((c) => h("div", null, h("span.when", null, c.date + " — "), c.text))),
         h("div.row-actions", { style: "margin-top:6px" },
           h("button.btn.quiet.small", { type: "button", onclick: () => { const t = prompt("Refinement (appended with today's date — the original stays untouched):"); if (t) { i.chain.push({ date: day(), text: t }); i.lastResurfaced = day(); S.set("ideas", ideas); paint(); } } }, "Add refinement"),
