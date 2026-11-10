@@ -1,0 +1,364 @@
+{
+ "pack": "SELLING-GROK-fees-nov2026",
+ "asOf": "2026-11-10",
+ "fees": {
+  "ebay": {
+   "source": "https://www.ebay.com/help/selling/fees-credits-invoices/selling-fees?id=4822",
+   "checked": "2026-11-10",
+   "fvf_base": "total amount of the sale: item price + handling + shipping + sales tax + other applicable fees",
+   "per_order_fee": {
+    "order_total_le_10": 0.3,
+    "order_total_gt_10": 0.4
+   },
+   "insertion": {
+    "free_per_month": 250,
+    "after": 0.35
+   },
+   "categories": [
+    {
+     "cat": "Most categories",
+     "rate": "13.6% up to $7,500 per item; 2.35% on portion above"
+    },
+    {
+     "cat": "Books & Magazines; Movies & TV (except NFTs); Music (except Vinyl Records & NFTs)",
+     "rate": "15.3% up to $7,500; 2.35% above"
+    },
+    {
+     "cat": "Coins & Paper Money (except Bullion)",
+     "rate": "13.25% up to $7,500; 2.35% above"
+    },
+    {
+     "cat": "Bullion",
+     "rate": "13.6% if sale ≤ $7,500; 7% if > $7,500"
+    },
+    {
+     "cat": "Women's Bags & Handbags",
+     "rate": "15% if ≤ $2,000; 9% if > $2,000"
+    },
+    {
+     "cat": "Comics; Non-Sport Trading Cards; Sports Trading Cards; CCG",
+     "rate": "13.25% up to $7,500; 2.35% above"
+    },
+    {
+     "cat": "Jewelry & Watches (except Watches)",
+     "rate": "15% if ≤ $5,000; 9% if > $5,000"
+    },
+    {
+     "cat": "Watches",
+     "rate": "15% up to $1,000; 6.5% on $1,000–$7,500 portion; 3% above $7,500"
+    },
+    {
+     "cat": "NFT categories",
+     "rate": "5%"
+    },
+    {
+     "cat": "Select Business & Industrial",
+     "rate": "$20 insertion; 3% up to $15,000; 0.5% above"
+    },
+    {
+     "cat": "Guitars & Basses",
+     "rate": "free insertion; 6.7% up to $7,500; 2.35% above"
+    },
+    {
+     "cat": "Athletic shoes",
+     "rate": "≥ $150: 8% and no per-order fee (free insertion if start price ≥ $150); < $150: 13.6%"
+    }
+   ],
+   "seller_performance": {
+    "below_standard": "+6% (7% after 4+ consecutive months)",
+    "very_high_INAD": "+5% (6% ...)"
+   },
+   "other": {
+    "dispute_fee": 20.0,
+    "international_fee": "1.65% (not charged when using eBay International Shipping)",
+    "currency_conversion": "3.25%"
+   },
+   "shipping_rules": [
+    "Shipping is part of the FVF base.",
+    "If 1-day or international shipping is also offered, FVF on shipping uses the cheapest domestic option.",
+    "eBay International Shipping: FVF on shipping cost to the domestic hub.",
+    "Sneakers under Authenticity Guarantee: no FVF on shipping."
+   ],
+   "upgrades": {
+    "bold": "$2 auction / $4 GTC",
+    "subtitle": "$1.50–$3 auction; $2–$6 GTC",
+    "reserve": "$5 or 7.5% of reserve (max $250)"
+   },
+   "page_examples": [
+    {
+     "sale": 424,
+     "fvf": 58.06,
+     "check": "424×13.6% + 0.40 = 58.06 ✓"
+    },
+    {
+     "sale": 10070,
+     "fvf": 1054.55
+    }
+   ]
+  },
+  "mercari": {
+   "source": "https://www.mercari.com/us/help_center/article/169/",
+   "page_updated": "10/23/2026",
+   "selling_fee": "10% of item price + buyer-paid shipping (listings created/updated on or after Jan 6 2025; older un-updated listings: no selling fee until updated)",
+   "payment_processing": "none on new/updated listings",
+   "buyer_protection_fee": "3.6% — paid by buyer (does not reduce seller net)",
+   "withdrawals": {
+    "direct_deposit": 0,
+    "failed_deposit": 2,
+    "instant_pay": 3,
+    "instant_pay_limits": "up to $600/month, once per day"
+   },
+   "cancellation_fee": "5% of item price, max $25",
+   "authenticate": 5,
+   "certificate": 10,
+   "shipping": {
+    "prepaid_carriers": [
+     "USPS",
+     "FedEx",
+     "UPS"
+    ],
+    "max_lb": 100,
+    "longest_side_in": 30,
+    "girth_in": 130,
+    "over_150lb_freight": 2500,
+    "best_rates_note": "Best rates (black) vs standard (gray) per table",
+    "usps_effective": "10/19/2026",
+    "usps_best_le1lb": {
+     "0.25": {
+      "ground_adv": 5.39,
+      "priority": 6.49
+     },
+     "0.5": {
+      "ground_adv": 5.99,
+      "priority": 7.49
+     },
+     "0.75": {
+      "ground_adv": 7.39,
+      "priority": 8.49
+     },
+     "1": {
+      "ground_adv": 7.99,
+      "priority": 8.99
+     }
+    },
+    "usps_2_5lb_best_std": {
+     "2": {
+      "ga_best": 13.09,
+      "ga_std": 14.99,
+      "pm_best": 16.29,
+      "pm_std": 17.99
+     },
+     "3": {
+      "ga_best": 13.99,
+      "ga_std": 16.99,
+      "pm_best": 19.99,
+      "pm_std": 20.99
+     },
+     "4": {
+      "ga_best": 14.99,
+      "ga_std": 17.99,
+      "pm_best": 22.99,
+      "pm_std": 24.99
+     },
+     "5": {
+      "ga_best": 15.99,
+      "ga_std": 18.99,
+      "pm_best": 24.99,
+      "pm_std": 26.99
+     }
+    },
+    "media_mail": {
+     "1": 4.47,
+     "2": 5.22,
+     "3": 5.97
+    },
+    "first_class_envelope_promo": "$0 for 1 oz, $0.49 for 2–3 oz (effective 9/17/2026, ends Jan 4 2027)"
+   },
+   "flags": [
+    "The table column pairing (best vs standard) is inferred from the page layout (\"Best rates are listed in black and standard rates are listed below in gray\"); confirm in-app before relying on ≥2 lb numbers.",
+    "Page also still shows an older \"Current 2026 Shipping\" table with different numbers — the 10/19/2026 table is the newest."
+   ]
+  },
+  "poshmark": {
+   "source": "https://poshmark.com/posh_guide/get_started_on_poshmark",
+   "commission": "Sales under $15: flat $2.95. Sales $15 or more: 20%.",
+   "withdrawals": "free",
+   "shipping": {
+    "label": "$6.49 flat up to 5 lb, buyer-paid, USPS Ground Advantage (since Sept 12 2025)",
+    "label_source": "https://blog.poshmark.com/2025/09/08/lower-shipping-starting-september-12th/",
+    "heavier": "5.1–10 lb: $5.00 tier; 10.1–15 lb: $10.00 tier; seller pays the difference; max 15 lb",
+    "heavier_source": "https://blog.poshmark.com/2026/02/13/shipping-heavier-items-on-poshmark-is-now-simpler-and-cheaper/",
+    "priority_packaging": "$5 USPS fee if Priority Mail packaging is used",
+    "priority_source": "https://poshmark.com/posh_guide/how_to_ship",
+    "luxury": "Orders > $500 require signature confirmation"
+   }
+  },
+  "facebook_marketplace": {
+   "source": "https://www.facebook.com/help/620680138523186",
+   "selling_fee": "10% per shipped order, or $0.80 minimum per order, on total transaction value incl. shipping and applicable taxes; promotional rates may apply",
+   "payout": "Payout begins 15 days after marked shipped or 5 days after delivery; up to 20 days total",
+   "shipping": {
+    "rules_source": "https://www.facebook.com/help/376859780413203",
+    "label_rate": "depends on buyer location and weight; buyer pays shipping unless seller covers it",
+    "fee_base": "\"The selling fee is applied to the total cost, including tax and shipping.\"",
+    "ship_within": "3 business days",
+    "carriers": "prepaid labels: UPS and USPS only",
+    "ship_source": "https://www.facebook.com/help/323272082152625"
+   },
+   "flags": [
+    "Local pickup (cash/in-person) being fee-free was NOT confirmed on an official Meta page this session — only third-party sites. Treat as unverified."
+   ]
+  }
+ },
+ "calculator_examples": {
+  "rows": [
+   {
+    "price": 8,
+    "buyer_paid_shipping_assumed": 8.0,
+    "ebay": {
+     "fee": 2.58,
+     "pct_of_item": 32.2
+    },
+    "mercari": {
+     "fee": 1.6,
+     "pct_of_item": 20.0
+    },
+    "poshmark": {
+     "fee": 2.95,
+     "pct_of_item": 36.9
+    },
+    "facebook": {
+     "fee": 1.6,
+     "pct_of_item": 20.0
+    }
+   },
+   {
+    "price": 15,
+    "buyer_paid_shipping_assumed": 8.0,
+    "ebay": {
+     "fee": 3.53,
+     "pct_of_item": 23.5
+    },
+    "mercari": {
+     "fee": 2.3,
+     "pct_of_item": 15.3
+    },
+    "poshmark": {
+     "fee": 3.0,
+     "pct_of_item": 20.0
+    },
+    "facebook": {
+     "fee": 2.3,
+     "pct_of_item": 15.3
+    }
+   },
+   {
+    "price": 25,
+    "buyer_paid_shipping_assumed": 8.0,
+    "ebay": {
+     "fee": 4.89,
+     "pct_of_item": 19.6
+    },
+    "mercari": {
+     "fee": 3.3,
+     "pct_of_item": 13.2
+    },
+    "poshmark": {
+     "fee": 5.0,
+     "pct_of_item": 20.0
+    },
+    "facebook": {
+     "fee": 3.3,
+     "pct_of_item": 13.2
+    }
+   },
+   {
+    "price": 50,
+    "buyer_paid_shipping_assumed": 8.0,
+    "ebay": {
+     "fee": 8.29,
+     "pct_of_item": 16.6
+    },
+    "mercari": {
+     "fee": 5.8,
+     "pct_of_item": 11.6
+    },
+    "poshmark": {
+     "fee": 10.0,
+     "pct_of_item": 20.0
+    },
+    "facebook": {
+     "fee": 5.8,
+     "pct_of_item": 11.6
+    }
+   },
+   {
+    "price": 100,
+    "buyer_paid_shipping_assumed": 8.0,
+    "ebay": {
+     "fee": 15.09,
+     "pct_of_item": 15.1
+    },
+    "mercari": {
+     "fee": 10.8,
+     "pct_of_item": 10.8
+    },
+    "poshmark": {
+     "fee": 20.0,
+     "pct_of_item": 20.0
+    },
+    "facebook": {
+     "fee": 10.8,
+     "pct_of_item": 10.8
+    }
+   },
+   {
+    "price": 250,
+    "buyer_paid_shipping_assumed": 8.0,
+    "ebay": {
+     "fee": 35.49,
+     "pct_of_item": 14.2
+    },
+    "mercari": {
+     "fee": 25.8,
+     "pct_of_item": 10.3
+    },
+    "poshmark": {
+     "fee": 50.0,
+     "pct_of_item": 20.0
+    },
+    "facebook": {
+     "fee": 25.8,
+     "pct_of_item": 10.3
+    }
+   },
+   {
+    "price": 500,
+    "buyer_paid_shipping_assumed": 8.0,
+    "ebay": {
+     "fee": 69.49,
+     "pct_of_item": 13.9
+    },
+    "mercari": {
+     "fee": 50.8,
+     "pct_of_item": 10.2
+    },
+    "poshmark": {
+     "fee": 100.0,
+     "pct_of_item": 20.0
+    },
+    "facebook": {
+     "fee": 50.8,
+     "pct_of_item": 10.2
+    }
+   }
+  ],
+  "assumptions": [
+   "Item price p; buyer pays $8 shipping where platform charges fee on shipping (eBay, Mercari, Facebook). Poshmark fee on price only; Poshmark label is the flat buyer-paid $6.49 so it does not enter the fee.",
+   "Sales tax EXCLUDED — eBay and Facebook also take their % on sales tax, so real fees run slightly higher.",
+   "eBay = most-categories 13.6% + per-order fee; no performance surcharges, no promoted listings.",
+   "Net to seller = price − fee (shipping passes through when buyer pays the label)."
+  ]
+ },
+ "app_hint": "pillars/selling/calc.js uses net = price − fee − shipping − packaging with feePct default 10. Suggested per-platform feePct: eBay 13.6 (+$0.30/$0.40), Mercari 10 (on price+shipping), Poshmark 20 (or $2.95 flat < $15), Facebook 10 (min $0.80, on price+shipping+tax)."
+}

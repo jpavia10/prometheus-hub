@@ -1,0 +1,249 @@
+{
+ "pillar": "privacy",
+ "exported": "2026-11-10T00:00:00.000Z",
+ "_warning": "IMPORTING THIS REPLACES the 'brokers' key — any broker progress already tracked in the Privacy pillar is overwritten. Export your current data first.",
+ "data": {
+  "brokers": [
+   {
+    "id": "gk001",
+    "name": "Spokeo",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk002",
+    "name": "AnyWho",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk003",
+    "name": "Whitepages",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk004",
+    "name": "TruthFinder",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk005",
+    "name": "Instant Checkmate",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk006",
+    "name": "Intelius",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk007",
+    "name": "US Search",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk008",
+    "name": "PeopleFinders",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk009",
+    "name": "MyLife",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk010",
+    "name": "FastPeopleSearch",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk011",
+    "name": "SearchPeopleFree",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk012",
+    "name": "SmartBackgroundChecks",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk013",
+    "name": "USA People Search",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk014",
+    "name": "FastBackgroundCheck",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk015",
+    "name": "CyberBackgroundChecks",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk016",
+    "name": "PeopleSearchNow",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk017",
+    "name": "USPhoneBook",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk018",
+    "name": "Veripages",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk019",
+    "name": "CheckPeople",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk020",
+    "name": "InfoTracer",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk021",
+    "name": "Social Catfish",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk022",
+    "name": "SearchQuarry",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk023",
+    "name": "Archives.com",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk024",
+    "name": "PropertyRecs",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk025",
+    "name": "LocateFamily",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk026",
+    "name": "Sync.me",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk027",
+    "name": "PeopleWhiz",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk028",
+    "name": "FreePeopleDirectory",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk029",
+    "name": "Pipl",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk030",
+    "name": "PimEyes",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk031",
+    "name": "FaceCheck.ID",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk032",
+    "name": "Acxiom",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk033",
+    "name": "LexisNexis Risk Solutions",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk034",
+    "name": "Epsilon",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk035",
+    "name": "Experian",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk036",
+    "name": "TransUnion",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk037",
+    "name": "OptOutPrescreen (credit-bureau prescreen opt-out)",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk038",
+    "name": "ZoomInfo",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk039",
+    "name": "RocketReach",
+    "state": "not started",
+    "recheck": null
+   },
+   {
+    "id": "gk040",
+    "name": "Apollo.io",
+    "state": "not started",
+    "recheck": null
+   }
+  ]
+ }
+}
