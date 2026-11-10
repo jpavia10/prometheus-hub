@@ -4,6 +4,10 @@
   "use strict";
   const { $, h, day, toast, store, download, pickFile, tabs, field, G } = PK;
   const S = store("kairos");
+  // Revamp (Sebastian, 2026-11-09): publish the fixed dates to the shared deadlines bus, and do the
+  // same for Joseph's own events, so the desk and every other capability see one merged calendar.
+  if (window.PB && window.KAIROS_FIXED) for (const f of KAIROS_FIXED)
+    PB.deadlines.publish({ title: f.name, date: f.date, source: "kairos-fixed", kind: f.kind, ref: f.date + "|" + f.name });
   const app = $("#app");
 
   // a clock face with hands at 10:10
@@ -43,6 +47,7 @@
   const daysFrom = (iso) => Math.round((new Date(iso + "T12:00:00") - new Date(day() + "T12:00:00")) / 864e5);
   const rel = (n) => (n === 0 ? "today" : n === 1 ? "tomorrow" : n === -1 ? "yesterday" : n < 0 ? `${-n} days late` : `in ${n} days`);
   const all = () => [...deadlines.map((d) => ({ date: d.due, title: `${d.id} · ${d.title}`, who: d.ai_name, pillar: d.pillar_name, kind: "task" })),
+                     ...(window.PB ? PB.deadlines.list().filter((d) => !d.done).map((d) => ({ date: d.date, time: d.time, title: d.title, who: d.source === "kairos-fixed" ? "Fixed date" : d.source, pillar: d.source === "kairos-fixed" ? "Calendar" : "", kind: d.kind || "due" })) : []),
                      ...S.list("events").map((e) => ({ date: e.date, time: e.time, title: e.title, who: "You", pillar: e.pillar || "", kind: "mine", id: e.id }))]
                     .filter((x) => x.date).sort((a, b) => (a.date + (a.time || "")).localeCompare(b.date + (b.time || "")));
 
@@ -85,7 +90,7 @@
     const mine = S.list("events").sort((a, b) => (a.date + (a.time || "")).localeCompare(b.date + (b.time || "")));
     if (!mine.length) $("#k-mine").append(h("li.empty", null, "None yet."));
     mine.forEach((e) => $("#k-mine").append(h("li", null, h("span", null, `${e.date}${e.time ? " " + e.time : ""} · ${e.title}`),
-      h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("events", e.id); paint(); } }, "Remove"))));
+      h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("events", e.id); if (window.PB) PB.deadlines.unpublish("kairos", e.id); paint(); } }, "Remove"))));
   }
   function esc(s) { return String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 
@@ -104,7 +109,9 @@
 
   $("#k-form").date.value = day();
   $("#k-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
-    S.add("events", { title: f.title.value.trim(), date: f.date.value, time: f.time.value, pillar: f.pillar.value }); f.title.value = ""; toast("Added"); paint(); });
+    const ev = S.add("events", { title: f.title.value.trim(), date: f.date.value, time: f.time.value, pillar: f.pillar.value });
+    if (window.PB) PB.deadlines.publish({ title: ev.title, date: ev.date, time: ev.time || undefined, source: "kairos", kind: "mine", ref: ev.id });
+    f.title.value = ""; toast("Added"); paint(); });
 
   $("#export").onclick = () => download(`kairos_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
