@@ -195,7 +195,7 @@ function updateCta() {
   if (!hit) return;
   if (current === "sylade") hit.textContent = "Enter from the field";
   else if (current === "houses") hit.textContent = "Open the pointed house";
-  else if (current === "seats") hit.textContent = "Open the pointed seat";
+  else if (current === "seats") hit.textContent = "Open the pointed wing";
   else hit.textContent = "About this desk";
 }
 
