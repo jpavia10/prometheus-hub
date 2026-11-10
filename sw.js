@@ -1,5 +1,5 @@
 /* Prometheus Hub. Network first. Same-origin shell only. No secrets. */
-var CACHE = "prometheus-hub-desk-v6";
+var CACHE = "prometheus-hub-desk-v7";
 var SHELL = [
   "./",
   "./index.html",
@@ -7,6 +7,7 @@ var SHELL = [
   "./styles.css",
   "./hub.js",
   "./desk-strip.js",
+  "./desk-deck.js",
   "./pillars/kairos/fixed-dates.js",
   "./manifest.webmanifest",
   "./icons/favicon.svg",

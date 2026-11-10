@@ -1,0 +1,433 @@
+{
+  "file": "APOLLO-GROK-exercises-part2_20261110-1700.json",
+  "task": "WS-APOLLO Exercises part 2 (Prometheus one-day reset)",
+  "by": "Grok",
+  "created_utc": "20261110-1700",
+  "schema": [
+    "n",
+    "exercise",
+    "compendium_code",
+    "met",
+    "muscles",
+    "equipment",
+    "cue",
+    "cue_url",
+    "url"
+  ],
+  "schema_matches": "apollo_gemini_exercises_20261108-2345.json (merged per MERGED_MASTER_apollo_temple_20261109.json)",
+  "rows_verified_by_readback": 150,
+  "unique_compendium_codes": 150,
+  "n_range": [
+    151,
+    300
+  ],
+  "overlap_with_shipped_150": {
+    "by_compendium_code": 0,
+    "shipped_unique_codes": 54
+  },
+  "field_notes": "exercise = Compendium activity description verbatim; met = Compendium MET value verbatim. muscles, equipment, cue, cue_url are null: the Compendium does not give them, and nothing was invented. App lookup (lookup.js) uses only name + met, so these rows work as-is.",
+  "page_counts": {
+    "https://pacompendium.com/conditioning-exercise/": 58,
+    "https://pacompendium.com/running/": 35,
+    "https://pacompendium.com/bicycling/": 30,
+    "https://pacompendium.com/walking/": 15,
+    "https://pacompendium.com/water-activities/": 12
+  },
+  "selection": "Every Compendium code not already in the shipped set, taken in Compendium code order: all 58 remaining Conditioning Exercise codes, then the first 35 Running, 30 Bicycling, 15 Walking, and 12 Water Activities codes not yet covered.",
+  "sources": [
+    {
+      "url": "https://pacompendium.com/conditioning-exercise/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities)"
+    },
+    {
+      "url": "https://pacompendium.com/running/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities)"
+    },
+    {
+      "url": "https://pacompendium.com/bicycling/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities)"
+    },
+    {
+      "url": "https://pacompendium.com/walking/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities)"
+    },
+    {
+      "url": "https://pacompendium.com/water-activities/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities)"
+    },
+    {
+      "citation": "Herrmann SD, et al. 2024 Adult Compendium of Physical Activities: A third update of the energy costs of human activities. J Sport Health Sci. 2024;13(1):6-12. doi:10.1016/j.jshs.2023.10.010"
+    }
+  ],
+  "qa_finding_shipped_set": {
+    "shipped_rows_where_met_differs_from_compendium_code_or_code_missing": [
+      {
+        "n": 56,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 57,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 58,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 59,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 61,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 65,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 66,
+        "code": "02030",
+        "shipped_met": 2.8,
+        "compendium_met": 3.5
+      },
+      {
+        "n": 70,
+        "code": "02030",
+        "shipped_met": 2.8,
+        "compendium_met": 3.5
+      },
+      {
+        "n": 72,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 74,
+        "code": "02030",
+        "shipped_met": 2.8,
+        "compendium_met": 3.5
+      },
+      {
+        "n": 75,
+        "code": "02030",
+        "shipped_met": 2.8,
+        "compendium_met": 3.5
+      },
+      {
+        "n": 77,
+        "code": "02030",
+        "shipped_met": 2.8,
+        "compendium_met": 3.5
+      },
+      {
+        "n": 80,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 81,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 82,
+        "code": "02020",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 83,
+        "code": "02146",
+        "shipped_met": 7.8,
+        "compendium_met": null
+      },
+      {
+        "n": 84,
+        "code": "02146",
+        "shipped_met": 7.8,
+        "compendium_met": null
+      },
+      {
+        "n": 85,
+        "code": "02146",
+        "shipped_met": 7.8,
+        "compendium_met": null
+      },
+      {
+        "n": 86,
+        "code": "02143",
+        "shipped_met": 9.8,
+        "compendium_met": null
+      },
+      {
+        "n": 87,
+        "code": "02143",
+        "shipped_met": 9.8,
+        "compendium_met": null
+      },
+      {
+        "n": 88,
+        "code": "02143",
+        "shipped_met": 9.8,
+        "compendium_met": null
+      },
+      {
+        "n": 93,
+        "code": "02120",
+        "shipped_met": 3.5,
+        "compendium_met": 5.3
+      },
+      {
+        "n": 94,
+        "code": "02120",
+        "shipped_met": 3.5,
+        "compendium_met": 5.3
+      },
+      {
+        "n": 96,
+        "code": "02035",
+        "shipped_met": 4.3,
+        "compendium_met": 5.0
+      },
+      {
+        "n": 97,
+        "code": "02146",
+        "shipped_met": 7.8,
+        "compendium_met": null
+      },
+      {
+        "n": 99,
+        "code": "02150",
+        "shipped_met": 2.5,
+        "compendium_met": 2.3
+      },
+      {
+        "n": 100,
+        "code": "02160",
+        "shipped_met": 4.0,
+        "compendium_met": null
+      },
+      {
+        "n": 101,
+        "code": "02140",
+        "shipped_met": 3.3,
+        "compendium_met": 2.5
+      },
+      {
+        "n": 106,
+        "code": "02071",
+        "shipped_met": 7.0,
+        "compendium_met": 5.0
+      },
+      {
+        "n": 107,
+        "code": "02072",
+        "shipped_met": 8.5,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 108,
+        "code": "02073",
+        "shipped_met": 12.0,
+        "compendium_met": 11.0
+      },
+      {
+        "n": 109,
+        "code": "02011",
+        "shipped_met": 6.8,
+        "compendium_met": null
+      },
+      {
+        "n": 110,
+        "code": "02013",
+        "shipped_met": 8.8,
+        "compendium_met": null
+      },
+      {
+        "n": 111,
+        "code": "02017",
+        "shipped_met": 8.9,
+        "compendium_met": null
+      },
+      {
+        "n": 112,
+        "code": "02065",
+        "shipped_met": 5.0,
+        "compendium_met": 9.3
+      },
+      {
+        "n": 113,
+        "code": "02068",
+        "shipped_met": 9.0,
+        "compendium_met": 11.0
+      },
+      {
+        "n": 114,
+        "code": "02062",
+        "shipped_met": 8.8,
+        "compendium_met": 7.8
+      },
+      {
+        "n": 115,
+        "code": "02061",
+        "shipped_met": 11.8,
+        "compendium_met": 5.0
+      },
+      {
+        "n": 116,
+        "code": "02060",
+        "shipped_met": 12.3,
+        "compendium_met": 5.5
+      },
+      {
+        "n": 118,
+        "code": "02068",
+        "shipped_met": 8.0,
+        "compendium_met": 11.0
+      },
+      {
+        "n": 119,
+        "code": "02056",
+        "shipped_met": 7.5,
+        "compendium_met": 3.0
+      },
+      {
+        "n": 120,
+        "code": "02170",
+        "shipped_met": 5.3,
+        "compendium_met": 2.0
+      },
+      {
+        "n": 121,
+        "code": "02030",
+        "shipped_met": 7.8,
+        "compendium_met": 3.5
+      },
+      {
+        "n": 122,
+        "code": "17190",
+        "shipped_met": 4.3,
+        "compendium_met": 3.8
+      },
+      {
+        "n": 123,
+        "code": "17220",
+        "shipped_met": 5.0,
+        "compendium_met": 5.5
+      },
+      {
+        "n": 124,
+        "code": "17165",
+        "shipped_met": 8.0,
+        "compendium_met": null
+      },
+      {
+        "n": 125,
+        "code": "17080",
+        "shipped_met": 6.5,
+        "compendium_met": 6.0
+      },
+      {
+        "n": 126,
+        "code": "17134",
+        "shipped_met": 8.8,
+        "compendium_met": 9.3
+      },
+      {
+        "n": 127,
+        "code": "12020",
+        "shipped_met": 7.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 128,
+        "code": "12030",
+        "shipped_met": 8.3,
+        "compendium_met": 8.5
+      },
+      {
+        "n": 129,
+        "code": "12050",
+        "shipped_met": 9.8,
+        "compendium_met": 9.3
+      },
+      {
+        "n": 130,
+        "code": "12080",
+        "shipped_met": 11.0,
+        "compendium_met": 11.8
+      },
+      {
+        "n": 131,
+        "code": "12090",
+        "shipped_met": 11.8,
+        "compendium_met": 12.0
+      },
+      {
+        "n": 132,
+        "code": "12110",
+        "shipped_met": 12.8,
+        "compendium_met": 13.0
+      },
+      {
+        "n": 133,
+        "code": "12120",
+        "shipped_met": 14.5,
+        "compendium_met": 14.8
+      },
+      {
+        "n": 134,
+        "code": "12170",
+        "shipped_met": 9.3,
+        "compendium_met": null
+      },
+      {
+        "n": 135,
+        "code": "12190",
+        "shipped_met": 15.0,
+        "compendium_met": null
+      },
+      {
+        "n": 138,
+        "code": "01009",
+        "shipped_met": 8.5,
+        "compendium_met": null
+      },
+      {
+        "n": 140,
+        "code": "15535",
+        "shipped_met": 7.5,
+        "compendium_met": 7.3
+      },
+      {
+        "n": 141,
+        "code": "15055",
+        "shipped_met": 8.0,
+        "compendium_met": 7.5
+      },
+      {
+        "n": 142,
+        "code": "15675",
+        "shipped_met": 8.0,
+        "compendium_met": 6.8
+      }
+    ]
+  },
+  "sha256": "93a1558a7251d7a96d1f962028d1e64f7269f01b3ce6c61bede3ab215f918c5d"
+}
