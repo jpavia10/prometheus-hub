@@ -84,12 +84,26 @@
   let sel = 0;
   let groupFilter = "All";
 
+  function dayOffset(date) {
+    const n = Math.round((new Date(date + "T12:00:00") - new Date(iso(new Date()) + "T12:00:00")) / 864e5);
+    return n;
+  }
+
   function rel(date) {
-    const n = Math.round((new Date(date + "T12:00:00") - new Date(TODAY + "T12:00:00")) / 864e5);
+    const n = dayOffset(date);
     if (n === 0) return "today";
     if (n === 1) return "tomorrow";
     if (n > 1) return `in ${n} days`;
     return `${-n} days ago`;
+  }
+
+  function daysPill(date, horizon, quiet) {
+    const n = dayOffset(date);
+    const span = Math.max(7, horizon || 0);
+    const fill = n <= 0 ? 100 : Math.max(8, Math.round((1 - n / span) * 100));
+    const short = n === 0 ? "today" : n === 1 ? "1d" : n > 1 ? `${n}d` : `${-n}d ago`;
+    const name = quiet ? `aria-hidden="true"` : `aria-label="${esc(rel(date))}"`;
+    return `<span class="days-pill" ${name}><span class="days-bar" style="--fill:${fill}%" aria-hidden="true"></span><span class="days-n" ${quiet ? "" : `aria-hidden="true"`}>${esc(short)}</span></span>`;
   }
 
   function pretty(date) {
@@ -107,6 +121,142 @@
     if (hit && /full/i.test(hit.kind)) return { state: "Closed", why: hit.name };
     if (hit && /early/i.test(hit.kind)) return { state: "Early close", why: `${hit.name} · 13:00 ET` };
     return { state: "Open", why: "Regular session" };
+  }
+
+  const NY = "America/New_York";
+  const LA = "America/Los_Angeles";
+  const OPEN_MIN = 9 * 60 + 30;
+
+  function zoneParts(now, timeZone) {
+    const fmt = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23"
+    });
+    const p = {};
+    fmt.formatToParts(now).forEach((part) => { if (part.type !== "literal") p[part.type] = part.value; });
+    let hour = Number(p.hour);
+    if (hour === 24) hour = 0;
+    const minute = Number(p.minute);
+    return { date: `${p.year}-${p.month}-${p.day}`, hour, minute, minutes: hour * 60 + minute };
+  }
+
+  function shiftDay(day, n) {
+    const d = new Date(day + "T12:00:00Z");
+    d.setUTCDate(d.getUTCDate() + n);
+    return d.toISOString().slice(0, 10);
+  }
+
+  function wallToUtc(day, minutes, timeZone) {
+    const [y, m, d] = day.split("-").map(Number);
+    const hh = Math.floor(minutes / 60);
+    const mm = minutes % 60;
+    let t = Date.UTC(y, m - 1, d, hh, mm);
+    for (let i = 0; i < 3; i++) {
+      const got = zoneParts(new Date(t), timeZone);
+      const want = Date.parse(day + "T00:00:00Z") + minutes * 60000;
+      const have = Date.parse(got.date + "T00:00:00Z") + got.minutes * 60000;
+      if (want === have) break;
+      t += want - have;
+    }
+    return t;
+  }
+
+  function closeMinOf(day) {
+    const s = session(day);
+    if (s.state === "Early close") return 13 * 60;
+    if (s.state === "Open") return 16 * 60;
+    return null;
+  }
+
+  function nextTradingDay(day) {
+    let d = shiftDay(day, 1);
+    for (let i = 0; i < 16; i++) {
+      if (closeMinOf(d) != null) return d;
+      d = shiftDay(d, 1);
+    }
+    return d;
+  }
+
+  function prevTradingDay(day) {
+    let d = shiftDay(day, -1);
+    for (let i = 0; i < 16; i++) {
+      if (closeMinOf(d) != null) return d;
+      d = shiftDay(d, -1);
+    }
+    return d;
+  }
+
+  function spanLabel(verb, ms) {
+    if (ms <= 0) return `${verb} now`;
+    const total = Math.ceil(ms / 60000);
+    const days = Math.floor(total / 1440);
+    const hours = Math.floor((total % 1440) / 60);
+    const mins = total % 60;
+    let body = `${mins}m`;
+    if (days > 0) body = hours ? `${days}d ${hours}h` : `${days}d`;
+    else if (hours > 0) body = mins ? `${hours}h ${mins}m` : `${hours}h`;
+    return `${verb} in ${body}`;
+  }
+
+  function sessionPhase(now) {
+    const et = zoneParts(now, NY);
+    const ses = session(et.date);
+    const closeMin = closeMinOf(et.date);
+    const inSession = closeMin != null && et.minutes >= OPEN_MIN && et.minutes < closeMin;
+    if (inSession) {
+      const start = wallToUtc(et.date, OPEN_MIN, NY);
+      const end = wallToUtc(et.date, closeMin, NY);
+      const span = Math.max(1, end - start);
+      return {
+        state: ses.state,
+        why: ses.why,
+        phase: ses.state === "Early close" ? "early" : "session",
+        progress: Math.min(1, Math.max(0, (now.getTime() - start) / span)),
+        count: spanLabel("closes", end - now.getTime())
+      };
+    }
+    const openDay = closeMin != null && et.minutes < OPEN_MIN ? et.date : nextTradingDay(et.date);
+    const openMs = wallToUtc(openDay, OPEN_MIN, NY);
+    const prev = prevTradingDay(openDay);
+    const prevClose = closeMinOf(prev);
+    const prevMs = prevClose == null ? openMs : wallToUtc(prev, prevClose, NY);
+    const span = Math.max(1, openMs - prevMs);
+    let why = ses.why;
+    if (ses.state === "Early close") why = et.minutes < OPEN_MIN ? "Before the open · 13:00 ET" : ses.why;
+    else if (ses.state === "Open") why = et.minutes < OPEN_MIN ? "Before the open" : "After the close";
+    return {
+      state: "Closed",
+      why,
+      phase: "wait",
+      progress: Math.min(1, Math.max(0, (now.getTime() - prevMs) / span)),
+      count: spanLabel("opens", openMs - now.getTime())
+    };
+  }
+
+  let atmoNode = null;
+  function paintHeader() {
+    const now = new Date();
+    const la = zoneParts(now, LA);
+    if (!atmoNode) {
+      atmoNode = document.querySelector("[data-atmo]");
+      if (atmoNode) atmoNode.removeAttribute("data-atmo");
+    }
+    const part = la.hour < 5 ? "night" : la.hour < 12 ? "morning" : la.hour < 17 ? "afternoon" : la.hour < 21 ? "evening" : "night";
+    if (atmoNode) atmoNode.textContent = part.charAt(0).toUpperCase() + part.slice(1);
+    const line = $("#greet-line");
+    const time = $("#greet-time");
+    const greet = $("#greet");
+    if (line) line.textContent = `${part === "night" ? "Good night" : "Good " + part}, Joseph`;
+    if (time) {
+      time.textContent = now.toLocaleTimeString("en-US", { timeZone: LA, hour: "numeric", minute: "2-digit" });
+      time.dateTime = now.toISOString();
+    }
+    if (greet) greet.hidden = false;
   }
 
   function clean(s) {
@@ -192,28 +342,43 @@
   }
 
   function paintDates() {
-    const upcoming = dates().filter((d) => d.date >= TODAY);
+    const today = iso(new Date());
+    const upcoming = dates().filter((d) => d.date >= today);
+    const shown = upcoming.slice(0, 5);
+    const horizon = shown.reduce((max, d) => Math.max(max, dayOffset(d.date)), 7);
     const next = upcoming[0];
     const big = $("#next-date");
     const name = $("#next-name");
     const list = $("#next-list");
     if (big) big.textContent = next ? pretty(next.date) : "—";
-    if (name) name.textContent = next ? `${next.name} · ${rel(next.date)}` : "No later dates in the calendar";
+    if (name) {
+      name.innerHTML = next
+        ? `${esc(next.name)} · ${esc(rel(next.date))} ${daysPill(next.date, horizon, true)}`
+        : "No later dates in the calendar";
+    }
     if (list) {
-      list.innerHTML = upcoming.slice(1, 5).map((d) => `<li><span class="when">${esc(pretty(d.date))}</span><span class="what">${esc(d.name)}</span><span class="src">${esc(rel(d.date))}</span></li>`).join("");
+      list.innerHTML = upcoming.slice(1, 5).map((d) => `<li><span class="when">${esc(pretty(d.date))}</span><span class="what">${esc(d.name)}</span><span class="src">${daysPill(d.date, horizon)}</span></li>`).join("");
     }
   }
 
   function paintSession() {
-    const ses = session(TODAY);
+    const now = new Date();
+    const live = sessionPhase(now);
+    const tile = $("#tile-session");
+    if (tile) tile.dataset.phase = live.phase;
     const state = $("#session-state");
     if (state) {
-      state.textContent = ses.state;
-      state.dataset.state = ses.state.toLowerCase();
+      state.textContent = live.state;
+      state.dataset.state = live.state.toLowerCase();
     }
     const why = $("#session-why");
-    if (why) why.textContent = ses.why;
-    const nxt = market().find((d) => d.date >= TODAY);
+    if (why) why.textContent = live.why;
+    const count = $("#session-count");
+    if (count) count.textContent = live.count;
+    const ring = $("#session-ring .ring-prog");
+    if (ring) ring.setAttribute("stroke-dashoffset", (100 * (1 - live.progress)).toFixed(2));
+    const et = zoneParts(now, NY);
+    const nxt = market().find((d) => d.date >= et.date);
     const line = $("#session-next");
     if (line) line.textContent = nxt ? `Next mark ${pretty(nxt.date)} · ${nxt.name}` : "No later session marks in the file";
   }
@@ -273,12 +438,13 @@
     if (rc) rc.textContent = total ? `${total} to review` : "";
     if (!host) return;
     if (!lines.length) {
-      host.innerHTML = `<li><span class="what">Quiet on this device. The row above opens each module.</span></li>`;
+      host.innerHTML = `<li class="mod-quiet"><span class="status-orb" data-tone="quiet" aria-hidden="true"></span><span class="what">Quiet on this device. The row above opens each module.</span></li>`;
       return;
     }
     host.innerHTML = lines.map((l) => {
       const m = MODULES.find((x) => x.id === l.id);
-      return `<li><button type="button" data-mod="${esc(l.id)}"><span class="src">${esc(m ? m.name : l.id)}</span><span class="what">${esc(l.line)}</span></button></li>`;
+      const tone = /to review/i.test(l.line) ? "review" : "live";
+      return `<li><button type="button" data-mod="${esc(l.id)}"><span class="status-orb" data-tone="${tone}" aria-hidden="true"></span><span class="src">${esc(m ? m.name : l.id)}</span><span class="what">${esc(l.line)}</span></button></li>`;
     }).join("");
   }
 
@@ -293,8 +459,10 @@
       .filter((d) => LIFE.includes(d.source))
       .map((d) => ({ date: d.date, title: clean(d.title), source: d.source }))
       .filter((d) => d.title && !/\$/.test(d.title));
-    strip.innerHTML = rows.length
-      ? rows.slice(0, 6).map((d) => `<li><span class="when">${esc(d.date)}</span><span class="what">${esc(d.title)}</span><span class="src">${esc(LIFE_NAME[d.source] || d.source)}</span></li>`).join("")
+    const shown = rows.slice(0, 6);
+    const horizon = shown.reduce((max, d) => Math.max(max, dayOffset(d.date)), 7);
+    strip.innerHTML = shown.length
+      ? shown.map((d) => `<li><span class="when">${esc(d.date)}</span><span class="what">${esc(d.title)} ${daysPill(d.date, horizon)}</span><span class="src">${esc(LIFE_NAME[d.source] || d.source)}</span></li>`).join("")
       : `<li><span class="what">No car or home dates on this device yet.</span></li>`;
   }
 
@@ -495,7 +663,7 @@
     else showBoard();
   }
 
-  const BUILD = "v13";
+  const BUILD = "v14";
   function deskToast(msg, undo) {
     document.querySelectorAll(".toast").forEach((n) => n.remove());
     const t = document.createElement("div");
@@ -696,8 +864,14 @@
       const mod = e.target.closest("[data-mod]");
       if (mod) showModule(mod.dataset.mod);
     });
-    paintDates();
-    paintSession();
+    function paintLive() {
+      paintHeader();
+      paintDates();
+      paintSession();
+      paintLife();
+    }
+    paintLive();
+    window.setInterval(paintLive, 30000);
     const back = $("#module-back");
     if (back) back.addEventListener("click", showBoard);
     wireKeep();
