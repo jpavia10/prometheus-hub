@@ -302,7 +302,7 @@
    "name": "Garage \u00b7 2025 Sorento Hybrid",
    "kind": "capability",
    "route": "pillars/garage/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "garage"
   },
   {

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Garage · 2025 Sorento Hybrid</title>
+  <meta name="description" content="Garage, a capability of Prometheus Hub: maintenance and fuel for the 2025 Kia Sorento Hybrid.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#05070e">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="icon" href="../../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../kit/prometheus.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body data-pillar="garage">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="bar">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="name">Garage · 2025 Sorento Hybrid</span>
+      <span class="spacer"></span>
+      <a class="back" href="../../">Prometheus</a>
+    </header>
+    <section class="hero">
+      <p class="kicker">Garage · the Sorento, kept honest</p>
+      <h1>Due by <em>date or miles</em> — whichever first.</h1>
+      <p class="lede">Maintenance with dual triggers, a service history, and a fuel log that computes real MPG and cost per mile. Due dates publish to the shared calendar. Intervals below are starter values — set them from the owner's manual and they become the car's record.</p>
+    </section>
+    <main id="app"></main>
+    <footer class="foot">
+      <span>Your entries stay in this browser. Nothing is sent anywhere.</span>
+      <button class="btn quiet small" id="export" type="button">Export</button>
+      <button class="btn quiet small" id="import" type="button">Import</button>
+      <a href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage">Code and homework</a>
+    </footer>
+  </div>
+  <script src="../../kit/kit.js"></script>
+  <script src="../../kit/bus.js"></script>
+  <script src="calc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
