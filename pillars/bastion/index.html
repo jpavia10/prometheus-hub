@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bastion · Mountain Prep & Storm Watch</title>
+  <meta name="description" content="Bastion, a capability of Prometheus Hub: preparedness inventory, readiness checklists, and Frazier Park storm watch.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#05070e">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="icon" href="../../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../kit/prometheus.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body data-pillar="bastion">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="bar">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="name">Bastion · Mountain Prep</span>
+      <span class="spacer"></span>
+      <a class="back" href="../../">Prometheus</a>
+    </header>
+    <section class="hero">
+      <p class="kicker">Bastion · Frazier Park readiness</p>
+      <h1>Packed, weighed, <em>in date</em>.</h1>
+      <p class="lede">The bugout and household readiness ledger: every item with its weight and expiry, scenario checklists with an honest readiness score, and a National Weather Service panel for the mountain. Expiries publish to the shared calendar before they lapse.</p>
+    </section>
+    <main id="app"></main>
+    <footer class="foot">
+      <span>Your entries stay in this browser. Weather comes from the National Weather Service when you open this page — it does not monitor in the background and is not an emergency alert system.</span>
+      <button class="btn quiet small" id="export" type="button">Export</button>
+      <button class="btn quiet small" id="import" type="button">Import</button>
+      <a href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/bastion">Code and homework</a>
+    </footer>
+  </div>
+  <script src="../../kit/kit.js"></script>
+  <script src="../../kit/bus.js"></script>
+  <script src="calc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
