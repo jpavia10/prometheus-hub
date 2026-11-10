@@ -286,7 +286,7 @@
    "name": "Selling Pipeline",
    "kind": "capability",
    "route": "pillars/selling/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "selling"
   },
   {
