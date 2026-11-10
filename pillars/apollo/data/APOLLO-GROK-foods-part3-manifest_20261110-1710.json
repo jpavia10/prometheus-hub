@@ -1,0 +1,116 @@
+{
+  "file": "APOLLO-GROK-foods-part3_20261110-1710.json",
+  "task": "WS-APOLLO Foods part 3 (next 300 after part 2)",
+  "by": "Grok",
+  "created_utc": "20261110-1710",
+  "schema": [
+    "n",
+    "fdc_id",
+    "description",
+    "data_type",
+    "kcal",
+    "protein_g",
+    "fat_g",
+    "carb_g",
+    "fiber_g",
+    "url"
+  ],
+  "schema_matches": "apollo_gemini_foods_part1..3_20261108-2345.json and APOLLO-GROK-foods-part2_20261110-1659.json",
+  "units": "per 100 g edible portion; kcal = nutrient 1008 (208) rounded to whole kcal; protein_g 1003 (203); fat_g 1004 (204); carb_g 1005 (205, by difference); fiber_g 1079 (291); 0.1 g half-up",
+  "rows_verified_by_readback": 300,
+  "unique_fdc_ids": 300,
+  "unique_descriptions": 300,
+  "n_range": [
+    601,
+    900
+  ],
+  "overlap": {
+    "shipped_1_300": {
+      "by_fdc_id": 0,
+      "by_exact_description": 0
+    },
+    "part2_301_600": {
+      "by_fdc_id": 0,
+      "by_exact_description": 0
+    },
+    "also_excluded": "the real SR ids of every shipped description (so a re-key of the shipped set will not create a duplicate)"
+  },
+  "fiber_g_null_rows": 14,
+  "fiber_g_null_note": "SR Legacy reports no fiber value for these rows; left null rather than invented",
+  "selection_group_counts": {
+    "vegetables": 50,
+    "fruits": 32,
+    "legumes": 24,
+    "nuts and seeds": 14,
+    "grains and pasta": 22,
+    "poultry": 18,
+    "beef": 14,
+    "pork": 10,
+    "lamb veal game": 6,
+    "fish": 18,
+    "dairy": 26,
+    "fats": 10,
+    "spices herbs condiments": 24,
+    "soups": 5,
+    "baked": 12,
+    "sweets": 6,
+    "beverages": 4,
+    "breakfast cereals": 2,
+    "sausages and deli": 3
+  },
+  "sr_category_counts": {
+    "Vegetables and Vegetable Products": 53,
+    "Fruits and Fruit Juices": 32,
+    "Legumes and Legume Products": 22,
+    "Nut and Seed Products": 14,
+    "Cereal Grains and Pasta": 22,
+    "Poultry Products": 18,
+    "Beef Products": 14,
+    "Pork Products": 10,
+    "Lamb, Veal, and Game Products": 6,
+    "Finfish and Shellfish Products": 18,
+    "Dairy and Egg Products": 26,
+    "Fats and Oils": 10,
+    "Spices and Herbs": 14,
+    "Soups, Sauces, and Gravies": 12,
+    "Baked Products": 14,
+    "Sweets": 6,
+    "Beverages": 4,
+    "Breakfast Cereals": 2,
+    "Sausages and Luncheon Meats": 3
+  },
+  "selection": "Hand-written list of ~900 common household foods and everyday ingredients (staples, pantry, condiments, cuts, dairy, breads), matched to SR Legacy descriptions, minus exotic/brand/obscure rows, then capped per group with whole foods weighted heaviest (vegetables 50, fruits 32, legumes 24, dairy 26, spices+condiments 24, grains 22, poultry/eggs 18, fish 18, ...).",
+  "sources": [
+    {
+      "url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "took": "food.csv (fdc_id, description), food_nutrient.csv (amounts for nutrients 1008/1003/1004/1005/1079), nutrient.csv, food_category.csv; data_type SR Legacy (USDA, CC0). Values read straight from the raw CSV and cross-checked against a second parse."
+    },
+    {
+      "url": "https://api.nal.usda.gov/fdc/v1/food/{fdc_id}",
+      "took": "live spot-check of 4 rows (169231 Ginger root raw, 171464 Chicken light meat raw, 173871 Sausage turkey cooked, 173227 Tea black brewed): description, dataType, nutrients 208/203/204/205/291 match"
+    },
+    {
+      "url": "https://fdc.nal.usda.gov/food-details/{fdc_id}/nutrients",
+      "took": "per-row citation URL (same pattern as shipped set)"
+    }
+  ],
+  "sha256": "d2e5089ebc9ef087b4735442cab92ce7251d5c4f7b1b6d6b7b0bac84442ce5e1",
+  "readback": {
+    "method": "downloaded the file back from Drive after upload; bytes identical to local; JSON re-parsed",
+    "drive_file_id": "1g9OEor85nuW_qJtOPtPjMdS3_QmEjLKF",
+    "drive_link": "https://drive.google.com/file/d/1g9OEor85nuW_qJtOPtPjMdS3_QmEjLKF/view?usp=drivesdk",
+    "sha256_matches": true
+  },
+  "extras_in_same_drop": [
+    {
+      "file": "APOLLO-GROK-foods-shipped-audit_20261110-1711.json",
+      "drive_file_id": "1DNGdX54fKfaMDCiAhBT7SmQK5qFoZNGh",
+      "rows": 300,
+      "unique_n": 300
+    },
+    {
+      "file": "APOLLO-GROK-coverage-memo_20261110-1711.md",
+      "drive_file_id": "1LQEnszKBdkQAqsgMGacTffSNvxP43bec"
+    }
+  ]
+}

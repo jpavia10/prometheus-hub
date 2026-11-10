@@ -1,0 +1,82 @@
+{
+  "file": "APOLLO-GROK-exercises-part3_20261110-1711.json",
+  "task": "WS-APOLLO Exercises part 3 (next 150 after part 2)",
+  "by": "Grok",
+  "created_utc": "20261110-1711",
+  "schema": [
+    "n",
+    "exercise",
+    "compendium_code",
+    "met",
+    "muscles",
+    "equipment",
+    "cue",
+    "cue_url",
+    "url"
+  ],
+  "schema_matches": "apollo_gemini_exercises_20261108-2345.json and APOLLO-GROK-exercises-part2_20261110-1700.json",
+  "rows_verified_by_readback": 150,
+  "unique_compendium_codes": 150,
+  "n_range": [
+    301,
+    450
+  ],
+  "overlap": {
+    "shipped_1_150_by_code": 0,
+    "part2_151_300_by_code": 0
+  },
+  "field_notes": "exercise = Compendium activity description verbatim; met = Compendium MET value verbatim. muscles, equipment, cue, cue_url are null: the Compendium does not give them, and nothing was invented.",
+  "page_counts": {
+    "https://pacompendium.com/self-care/": 11,
+    "https://pacompendium.com/inactivity/": 17,
+    "https://pacompendium.com/transportation/": 12,
+    "https://pacompendium.com/home-activities/": 78,
+    "https://pacompendium.com/lawn-garden/": 32
+  },
+  "selection": "Daily-life activities first, every code in Compendium code order: all of Self Care (11), Inactivity (17), Transportation (12), Home Activities (78), then the first 32 Lawn & Garden codes. Sexual Activity page deliberately skipped.",
+  "sources": [
+    {
+      "url": "https://pacompendium.com/self-care/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities), fetched 2026-11-10"
+    },
+    {
+      "url": "https://pacompendium.com/inactivity/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities), fetched 2026-11-10"
+    },
+    {
+      "url": "https://pacompendium.com/transportation/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities), fetched 2026-11-10"
+    },
+    {
+      "url": "https://pacompendium.com/home-activities/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities), fetched 2026-11-10"
+    },
+    {
+      "url": "https://pacompendium.com/lawn-garden/",
+      "took": "Specific Activity Code, MET Value, Activity Description table (2024 Adult Compendium of Physical Activities), fetched 2026-11-10"
+    },
+    {
+      "citation": "Herrmann SD, et al. 2024 Adult Compendium of Physical Activities: A third update of the energy costs of human activities. J Sport Health Sci. 2024;13(1):6-12. doi:10.1016/j.jshs.2023.10.010"
+    }
+  ],
+  "qa_note_part2": "Re-parsing the 10 pages part 2 used finds more rows than part 2's parse kept (e.g. Home Activities 78 vs 59, Sports 156 vs 113, Conditioning Exercise 86 vs 82). Every MET part 2 shipped matches the page; the gap only means some codes were never offered for selection.",
+  "sha256": "bf00eee991c2becb4c699c0eae05fad7b6ad94dd6d27f4340553a9ee7dbfd154",
+  "readback": {
+    "method": "downloaded the file back from Drive after upload; bytes identical to local; JSON re-parsed",
+    "drive_file_id": "1bxXdDGtG6vZhbT-coo4xpBLOUL8wQHUh",
+    "drive_link": "https://drive.google.com/file/d/1bxXdDGtG6vZhbT-coo4xpBLOUL8wQHUh/view?usp=drivesdk",
+    "sha256_matches": true
+  },
+  "extras_in_same_drop": [
+    {
+      "file": "APOLLO-GROK-foods-shipped-audit_20261110-1711.json",
+      "drive_file_id": "1DNGdX54fKfaMDCiAhBT7SmQK5qFoZNGh",
+      "rows": 300,
+      "unique_n": 300
+    },
+    {
+      "file": "APOLLO-GROK-coverage-memo_20261110-1711.md",
+      "drive_file_id": "1LQEnszKBdkQAqsgMGacTffSNvxP43bec"
+    }
+  ]
+}
