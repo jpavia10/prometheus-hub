@@ -79,6 +79,16 @@
       .observe(d, { attributes: true, attributeFilter: ["open"] });
   }
 
+  // ---------- door counts, from the rows themselves ----------
+  {
+    const wings = document.querySelectorAll("#seats .row").length, houses = document.querySelectorAll("#houses .row").length;
+    const words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"];
+    for (const n of document.querySelectorAll("[data-count]")) {
+      const k = n.dataset.count;
+      n.textContent = k === "wings" ? wings : k === "open" ? wings + houses : k === "wings-word" ? (words[wings] || wings) : n.textContent;
+    }
+  }
+
   // ---------- what this device keeps, per wing ----------
   function keptFor(id) {
     let records = 0, keys = 0;
