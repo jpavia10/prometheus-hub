@@ -318,7 +318,7 @@
    "name": "Athenaeum \u00b7 Idea Vault",
    "kind": "capability",
    "route": "pillars/athenaeum/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "athenaeum"
   },
   {
@@ -326,7 +326,7 @@
    "name": "Odyssey \u00b7 Trips & Away Mode",
    "kind": "capability",
    "route": "pillars/odyssey/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "odyssey"
   },
   {
@@ -334,7 +334,7 @@
    "name": "Privacy \u00b7 CA DROP",
    "kind": "capability",
    "route": "pillars/privacy/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "privacy"
   },
   {
@@ -342,7 +342,7 @@
    "name": "Records \u00b7 Paper Killer",
    "kind": "capability",
    "route": "pillars/records/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "records"
   },
   {
