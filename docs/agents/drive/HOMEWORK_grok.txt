@@ -1,10 +1,10 @@
 HOMEWORK — Grok (every pillar)
 
-Updated 2026-11-05 15:02 UTC. 21 open across 6 pillars.
+Updated 2026-11-09 22:26 UTC. 24 open across 6 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
-TITAN RELIQUARY (its own loop, the exception): 8 homework sheets + 7 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Grok' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_grok.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 9 homework sheets + 9 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Grok' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_grok.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape

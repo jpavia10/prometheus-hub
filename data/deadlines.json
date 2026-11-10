@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05 15:02 UTC",
+ "updated": "2026-11-09 22:26 UTC",
  "tasks": [
   {
    "due": "2026-11-06",
@@ -25,50 +25,6 @@
   },
   {
    "due": "2026-11-09",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-01",
-   "title": "Reference wall: 40 live sites with the experimental, futuristic desk look",
-   "state": "now",
-   "count": 40
-  },
-  {
-   "due": "2026-11-09",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-04",
-   "title": "60 icons for the 60 actions every pillar uses (Lucide, exact names)",
-   "state": "now",
-   "count": 60
-  },
-  {
-   "due": "2026-11-09",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "HUB-MUS-01",
-   "title": "The words on every door: 11 doors, three lines each",
-   "state": "now",
-   "count": 11
-  },
-  {
-   "due": "2026-11-09",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-01",
-   "title": "12 debt payoff cases worked to the cent",
-   "state": "now",
-   "count": 12
-  },
-  {
-   "due": "2026-11-09",
    "pillar": "midas",
    "pillar_name": "Midas Ledger",
    "ai": "grok",
@@ -90,105 +46,6 @@
    "count": 1
   },
   {
-   "due": "2026-11-10",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-02",
-   "title": "Nine particle shapes, one per door, as JavaScript functions",
-   "state": "now",
-   "count": 9
-  },
-  {
-   "due": "2026-11-10",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-02",
-   "title": "20 research findings on what really helps people pay off debt, each with its DOI",
-   "state": "now",
-   "count": 20
-  },
-  {
-   "due": "2026-11-10",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "MID-MUS-01",
-   "title": "The words of the way out: 24 milestone lines and 12 screen lines",
-   "state": "now",
-   "count": 36
-  },
-  {
-   "due": "2026-11-11",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-01",
-   "title": "Scan the house with a phone: 8 apps compared on 10 fixed columns",
-   "state": "now",
-   "count": 8
-  },
-  {
-   "due": "2026-11-11",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-03",
-   "title": "Desk sound: 24 real recordings for the desk ambience (no synthesizers)",
-   "state": "now",
-   "count": 24
-  },
-  {
-   "due": "2026-11-11",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-03",
-   "title": "15 money apps taken apart: 75 things that make people keep going",
-   "state": "now",
-   "count": 75
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-01",
-   "title": "Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)",
-   "state": "now",
-   "count": 6
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-01",
-   "title": "Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)",
-   "state": "now",
-   "count": 6
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-04",
-   "title": "Image formats on Android Chrome: 6 formats x 3 browser features",
-   "state": "now",
-   "count": 18
-  },
-  {
    "due": "2026-11-12",
    "pillar": "hearth",
    "pillar_name": "Hephaestus Hearth",
@@ -198,39 +55,6 @@
    "title": "Turn on Pages for the Hearth and save projects on the device",
    "state": "now",
    "count": 1
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-02",
-   "title": "The Hearth data shape: rooms with measured walls, the assets in each room, renovation projects (JSON Schema + 3 examples)",
-   "state": "now",
-   "count": 3
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HER-GEM-01",
-   "title": "Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))",
-   "state": "now",
-   "count": 6
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HER-GEM-03",
-   "title": "Every Gmail search operator, with syntax and one example each",
-   "state": "now",
-   "count": 40
   },
   {
    "due": "2026-11-12",
@@ -247,100 +71,12 @@
    "due": "2026-11-12",
    "pillar": "hub",
    "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-05",
-   "title": "Motion spec: 20 desk moments, each with duration, easing and property from a published motion system",
-   "state": "now",
-   "count": 20
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
    "ai": "chatgpt",
    "ai_name": "ChatGPT",
    "id": "HUB-GPT-01",
    "title": "Phone audit of the desk: 25 findings",
    "state": "now",
    "count": 25
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "icarus",
-   "pillar_name": "Icarus Stake",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ICA-GEM-01",
-   "title": "Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)",
-   "state": "now",
-   "count": 6
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "icarus",
-   "pillar_name": "Icarus Stake",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ICA-GEM-03",
-   "title": "Market holidays and early closes 2026-2028 (NYSE and Nasdaq)",
-   "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-01",
-   "title": "Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)",
-   "state": "now",
-   "count": 6
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-02",
-   "title": "Fixed dates 2026-2028: federal holidays, tax deadlines, clock changes",
-   "state": "now",
-   "count": 55
-  },
-  {
-   "due": "2026-11-12",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-04",
-   "title": "Minimum payment formulas of 25 US card issuers, quoted from their cardholder agreements",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-11-13",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-02",
-   "title": "40 photo metadata tags that leak location or identity",
-   "state": "now",
-   "count": 40
-  },
-  {
-   "due": "2026-11-13",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-07",
-   "title": "Home inventory: 120 asset categories, room by room, with the fields insurers ask for",
-   "state": "now",
-   "count": 120
   },
   {
    "due": "2026-11-13",
@@ -352,105 +88,6 @@
    "title": "Second reader on Gemini's scan-app table",
    "state": "next",
    "count": 32
-  },
-  {
-   "due": "2026-11-13",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-06",
-   "title": "30 WCAG 2.2 checks that apply to the desk, each one Claude can run",
-   "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-11-13",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-03",
-   "title": "20 focus methods with their exact timing rules and primary source",
-   "state": "now",
-   "count": 20
-  },
-  {
-   "due": "2026-11-13",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-05",
-   "title": "How 25 issuers compute interest: balance method, day count, compounding, grace",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-02",
-   "title": "300 foods with their USDA FoodData Central numbers per 100 g",
-   "state": "now",
-   "count": 300
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "APO-MUS-01",
-   "title": "Apollo Temple: second reader on Gemini's spec",
-   "state": "next",
-   "count": 6
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-03",
-   "title": "The coin photo standard: 20 rules from professional numismatic photography",
-   "state": "now",
-   "count": 20
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "ARG-MUS-01",
-   "title": "Argus Album: second reader on Gemini's spec",
-   "state": "next",
-   "count": 6
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-08",
-   "title": "How accurate a phone floor plan really is: 12 published measurements",
-   "state": "now",
-   "count": 12
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HER-GEM-02",
-   "title": "60 US billers: the address their bill emails come from",
-   "state": "now",
-   "count": 60
   },
   {
    "due": "2026-11-14",
@@ -467,56 +104,12 @@
    "due": "2026-11-14",
    "pillar": "icarus",
    "pillar_name": "Icarus Stake",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ICA-GEM-02",
-   "title": "25 journal metrics, each formula worked on the same 20 trades",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "icarus",
-   "pillar_name": "Icarus Stake",
    "ai": "grok",
    "ai_name": "Grok",
    "id": "ICA-GRK-01",
    "title": "Icarus Stake: second reader on Gemini's spec",
    "state": "next",
    "count": 6
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-04",
-   "title": "An ICS test file with 40 made-up events that cover every hard case",
-   "state": "now",
-   "count": 40
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "KAI-MUS-01",
-   "title": "Kairos Meridian: second reader on Gemini's spec",
-   "state": "next",
-   "count": 6
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-06",
-   "title": "20 promo-rate products: deferred interest or true 0 %, quoted",
-   "state": "now",
-   "count": 20
   },
   {
    "due": "2026-11-14",
@@ -528,182 +121,6 @@
    "title": "Audit Midas v2 on the made-up book: 20 findings",
    "state": "now",
    "count": 20
-  },
-  {
-   "due": "2026-11-15",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-03",
-   "title": "150 exercises with their Compendium of Physical Activities code and MET",
-   "state": "now",
-   "count": 150
-  },
-  {
-   "due": "2026-11-15",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-05",
-   "title": "6 perceptual hash methods: steps, threshold, source",
-   "state": "now",
-   "count": 6
-  },
-  {
-   "due": "2026-11-15",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-09",
-   "title": "10 floor-plan and 3D formats Hearth could import: what each one carries",
-   "state": "now",
-   "count": 10
-  },
-  {
-   "due": "2026-11-15",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HER-GEM-04",
-   "title": "30 phishing tells from FTC, CISA and Google, quoted",
-   "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-11-15",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-05",
-   "title": "Google Calendar Events resource: the 30 fields Kairos v2 reads",
-   "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-11-15",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-07",
-   "title": "25 hardship programs: what each lender offers and how to ask",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-11-16",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-04",
-   "title": "40 health reference ranges from the guideline that sets them",
-   "state": "now",
-   "count": 40
-  },
-  {
-   "due": "2026-11-16",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-10",
-   "title": "Laser measures that send readings to an Android phone: 10 models compared",
-   "state": "now",
-   "count": 10
-  },
-  {
-   "due": "2026-11-16",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HER-GEM-05",
-   "title": "Triage test set: 80 made-up emails, 20 per lane",
-   "state": "now",
-   "count": 80
-  },
-  {
-   "due": "2026-11-16",
-   "pillar": "icarus",
-   "pillar_name": "Icarus Stake",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ICA-GEM-04",
-   "title": "Risk-of-ruin table: 135 cells from one cited formula",
-   "state": "now",
-   "count": 135
-  },
-  {
-   "due": "2026-11-16",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-08",
-   "title": "12 daily-compounding interest cases worked to the cent",
-   "state": "now",
-   "count": 12
-  },
-  {
-   "due": "2026-11-17",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-05",
-   "title": "Android Health Connect: the 30 record types Apollo v2 would read",
-   "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-11-17",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-11",
-   "title": "10 home inventory and renovation apps taken apart: 50 features Hearth should have",
-   "state": "now",
-   "count": 50
-  },
-  {
-   "due": "2026-11-17",
-   "pillar": "icarus",
-   "pillar_name": "Icarus Stake",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ICA-GEM-05",
-   "title": "30 rule checks Icarus can run on a trade, as formulas over its fields",
-   "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-11-18",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-06",
-   "title": "25 meta-analyses on what keeps people training and eating to plan",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-11-18",
-   "pillar": "icarus",
-   "pillar_name": "Icarus Stake",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ICA-GEM-06",
-   "title": "15 free market-data APIs: limits, key, browser use, quoted from their docs",
-   "state": "now",
-   "count": 15
   }
  ]
 }

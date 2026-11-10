@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05 15:02 UTC",
+ "updated": "2026-11-09 22:26 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -8,8 +8,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/",
    "open": {
     "grok": 1,
-    "gemini": 7,
-    "muse": 1,
+    "gemini": 1,
+    "muse": 0,
     "chatgpt": 1,
     "claude": 1
    }
@@ -20,8 +20,8 @@
    "state": "live",
    "live": "https://jpavia10.github.io/titan-reliquary-preview/",
    "open": {
-    "grok": 15,
-    "gemini": 24,
+    "grok": 18,
+    "gemini": 14,
     "muse": 15,
     "chatgpt": 0
    }
@@ -33,8 +33,8 @@
    "live": "https://jpavia10.github.io/midas-ledger/",
    "open": {
     "grok": 2,
-    "gemini": 8,
-    "muse": 1,
+    "gemini": 0,
+    "muse": 0,
     "chatgpt": 1,
     "claude": 0
    }
@@ -46,7 +46,7 @@
    "live": "https://jpavia10.github.io/hephaestus-hearth/",
    "open": {
     "grok": 1,
-    "gemini": 7,
+    "gemini": 0,
     "muse": 0,
     "chatgpt": 0,
     "claude": 1
@@ -59,8 +59,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/apollo/",
    "open": {
     "grok": 0,
-    "gemini": 6,
-    "muse": 1,
+    "gemini": 0,
+    "muse": 0,
     "chatgpt": 0,
     "claude": 0
    }
@@ -72,7 +72,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
    "open": {
     "grok": 1,
-    "gemini": 5,
+    "gemini": 0,
     "muse": 0,
     "chatgpt": 0,
     "claude": 0
@@ -85,8 +85,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
    "open": {
     "grok": 0,
-    "gemini": 5,
-    "muse": 1,
+    "gemini": 0,
+    "muse": 0,
     "chatgpt": 0,
     "claude": 0
    }
@@ -98,7 +98,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/icarus/",
    "open": {
     "grok": 1,
-    "gemini": 6,
+    "gemini": 0,
     "muse": 0,
     "chatgpt": 0,
     "claude": 0
@@ -111,8 +111,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/argus/",
    "open": {
     "grok": 0,
-    "gemini": 5,
-    "muse": 1,
+    "gemini": 0,
+    "muse": 0,
     "chatgpt": 0,
     "claude": 0
    }

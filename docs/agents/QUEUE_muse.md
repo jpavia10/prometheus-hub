@@ -2,44 +2,6 @@
 
 # Prometheus Hub · homework for Muse
 
-Updated 2026-11-05 15:02 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-09 22:26 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
-## 1. HUB-MUS-01 · The words on every door: 11 doors, three lines each
-
-**Due:** 2026-11-09 · **State:** now
-
-**Why:** Half the doors still say placeholder things. Each door needs a plain name line, what it is for, and what you can really do there today.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/README.md
-- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/README.md
-- https://raw.githubusercontent.com/jpavia10/hephaestus-hearth/main/README.md
-- https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/README.md
-
-**Do this:**
-1. For each of the 11 doors in pillars.json plus Sylade and the Drive door: a title (as is), a purpose line of at most 12 words, and up to 3 lines 'what you can do there today'.
-2. Only things that exist now, from the READMEs. A seat with no page says what it will be in one line and 'Not built yet.'
-3. Plain English, no exclamation marks, no 'unlock', 'elevate', 'seamless', 'journey'.
-
-**Make:** `hub_muse_door-copy_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
-
-**Shape:** `one markdown table: door | purpose (<=12 words) | today 1 | today 2 | today 3`
-
-**How many:** 11
-
-**Done when:** A row for every door; every 'today' line names a feature the README describes.
-
-**How Claude checks it:**
-- Claude checks every 'today' line against the README it came from.
-- Claude counts words in each purpose line.
-
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
-- a feature that does not exist
-- a purpose line over 12 words
+No homework for Muse in Prometheus Hub right now. Check your HOMEWORK doc for the other pillars.

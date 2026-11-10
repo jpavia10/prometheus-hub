@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-05",
+ "updated": "2026-11-09",
  "pillar": "apollo",
  "agents": [
   {
@@ -10,7 +10,7 @@
     {
      "id": "APO-GEM-01",
      "title": "Apollo Temple: the spec sheet (health, fitness and nutrition: workouts, steps, sleep, weight, meals, from Apple Health / Google Fit / the apps Joseph already uses)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Apollo Temple is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
      "inputs": [
@@ -47,7 +47,7 @@
     {
      "id": "APO-GEM-02",
      "title": "300 foods with their USDA FoodData Central numbers per 100 g",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-14",
      "why": "Apollo logs calories and protein; a food table from USDA (public domain) lets Joseph pick a food instead of typing numbers.",
      "inputs": [],
@@ -79,7 +79,7 @@
     {
      "id": "APO-GEM-03",
      "title": "150 exercises with their Compendium of Physical Activities code and MET",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-15",
      "why": "Apollo can estimate calories from training only with a MET per activity; the 2024 Adult Compendium is the reference.",
      "inputs": [],
@@ -109,7 +109,7 @@
     {
      "id": "APO-GEM-04",
      "title": "40 health reference ranges from the guideline that sets them",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-16",
      "why": "Apollo's trends need lines to compare against (resting heart rate, blood pressure, sleep, steps, BMI, waist, protein per kg).",
      "inputs": [],
@@ -139,7 +139,7 @@
     {
      "id": "APO-GEM-05",
      "title": "Android Health Connect: the 30 record types Apollo v2 would read",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-17",
      "why": "Joseph is on Android. Version 2 can read steps, sleep, weight and heart rate from Health Connect instead of typing them.",
      "inputs": [],
@@ -169,7 +169,7 @@
     {
      "id": "APO-GEM-06",
      "title": "25 meta-analyses on what keeps people training and eating to plan",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-18",
      "why": "Apollo's nudges (streaks, goals, reminders) should follow evidence, not vibes.",
      "inputs": [],
@@ -207,7 +207,7 @@
     {
      "id": "APO-MUS-01",
      "title": "Apollo Temple: second reader on Gemini's spec",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-14",
      "why": "Every source in a spec gets a second reader before Claude builds on it.",
      "inputs": [

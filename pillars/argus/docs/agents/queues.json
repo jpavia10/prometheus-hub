@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-05",
+ "updated": "2026-11-09",
  "pillar": "argus",
  "agents": [
   {
@@ -10,7 +10,7 @@
     {
      "id": "ARG-GEM-01",
      "title": "Argus Album: the spec sheet (every photo the pillars use: Titan's coin photos (titan-photos-as/eu/na), Hearth's room photos, Apollo's progress photos; one album, tagged by pillar)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Argus Album is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
      "inputs": [
@@ -47,7 +47,7 @@
     {
      "id": "ARG-GEM-02",
      "title": "40 photo metadata tags that leak location or identity",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-13",
      "why": "Argus strips EXIF and GPS from every photo it keeps; Claude needs the full list to test the strip.",
      "inputs": [],
@@ -77,7 +77,7 @@
     {
      "id": "ARG-GEM-03",
      "title": "The coin photo standard: 20 rules from professional numismatic photography",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-14",
      "why": "Titan's Phase 2 pro photos (Argus keeps them) need one written standard before Joseph shoots 339 coins.",
      "inputs": [],
@@ -107,7 +107,7 @@
     {
      "id": "ARG-GEM-04",
      "title": "Image formats on Android Chrome: 6 formats x 3 browser features",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Argus decides which format to store photos in on the phone.",
      "inputs": [],
@@ -136,7 +136,7 @@
     {
      "id": "ARG-GEM-05",
      "title": "6 perceptual hash methods: steps, threshold, source",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-15",
      "why": "Argus (and Titan's dupes.py) should find the same coin photographed twice.",
      "inputs": [],
@@ -172,7 +172,7 @@
     {
      "id": "ARG-MUS-01",
      "title": "Argus Album: second reader on Gemini's spec",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-14",
      "why": "Every source in a spec gets a second reader before Claude builds on it.",
      "inputs": [

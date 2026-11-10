@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-05",
+ "updated": "2026-11-09",
  "pillar": "icarus",
  "agents": [
   {
@@ -10,7 +10,7 @@
     {
      "id": "ICA-GEM-01",
      "title": "Icarus Stake: the spec sheet (a high-risk trading journal: positions, entries, exits, P/L, the rules Joseph sets for himself; it never places a trade)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Icarus Stake is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
      "inputs": [
@@ -47,7 +47,7 @@
     {
      "id": "ICA-GEM-02",
      "title": "25 journal metrics, each formula worked on the same 20 trades",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-14",
      "why": "Icarus shows win rate, expectancy, profit factor and drawdown today; it needs the rest with formulas Claude can test.",
      "inputs": [],
@@ -79,7 +79,7 @@
     {
      "id": "ICA-GEM-03",
      "title": "Market holidays and early closes 2026-2028 (NYSE and Nasdaq)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Icarus's journal skips days the market is closed.",
      "inputs": [],
@@ -108,7 +108,7 @@
     {
      "id": "ICA-GEM-04",
      "title": "Risk-of-ruin table: 135 cells from one cited formula",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-16",
      "why": "A high-risk journal should show how likely a 50 % drawdown is at the risk Joseph takes per trade.",
      "inputs": [],
@@ -139,7 +139,7 @@
     {
      "id": "ICA-GEM-05",
      "title": "30 rule checks Icarus can run on a trade, as formulas over its fields",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-17",
      "why": "Icarus records whether a trade kept the rules; it should also catch the common mistakes itself.",
      "inputs": [],
@@ -171,7 +171,7 @@
     {
      "id": "ICA-GEM-06",
      "title": "15 free market-data APIs: limits, key, browser use, quoted from their docs",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-18",
      "why": "Icarus may show a live price next to an open trade; it must work from the phone with no server.",
      "inputs": [],

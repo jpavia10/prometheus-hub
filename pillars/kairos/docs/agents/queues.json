@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-05",
+ "updated": "2026-11-09",
  "pillar": "kairos",
  "agents": [
   {
@@ -10,7 +10,7 @@
     {
      "id": "KAI-GEM-01",
      "title": "Kairos Meridian: the spec sheet (time: Google Calendar, deadlines from every pillar (homework due dates, bills from Midas), the shape of the day)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Kairos Meridian is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
      "inputs": [
@@ -47,7 +47,7 @@
     {
      "id": "KAI-GEM-02",
      "title": "Fixed dates 2026-2028: federal holidays, tax deadlines, clock changes",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Kairos shows the day; these dates must be on it without anyone typing them.",
      "inputs": [],
@@ -79,7 +79,7 @@
     {
      "id": "KAI-GEM-03",
      "title": "20 focus methods with their exact timing rules and primary source",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-13",
      "why": "Kairos's focus clock offers methods; each needs its real rules (minutes, breaks, cycles), not a blog summary.",
      "inputs": [],
@@ -109,7 +109,7 @@
     {
      "id": "KAI-GEM-04",
      "title": "An ICS test file with 40 made-up events that cover every hard case",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-14",
      "why": "Kairos will import calendars; Claude needs a file that breaks weak parsers.",
      "inputs": [],
@@ -140,7 +140,7 @@
     {
      "id": "KAI-GEM-05",
      "title": "Google Calendar Events resource: the 30 fields Kairos v2 reads",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-15",
      "why": "For version 2 (Google Calendar sync), Claude needs the exact field names and types.",
      "inputs": [],
@@ -176,7 +176,7 @@
     {
      "id": "KAI-MUS-01",
      "title": "Kairos Meridian: second reader on Gemini's spec",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-14",
      "why": "Every source in a spec gets a second reader before Claude builds on it.",
      "inputs": [

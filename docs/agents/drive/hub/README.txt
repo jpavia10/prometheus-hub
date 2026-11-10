@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-05 15:02 UTC · 1 open in this pillar.
+Updated 2026-11-09 22:26 UTC · 1 open in this pillar.
 
 
 - HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
@@ -16,35 +16,22 @@ Updated 2026-11-05 15:02 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-05 15:02 UTC · 7 open in this pillar.
+Updated 2026-11-09 22:26 UTC · 1 open in this pillar.
 
 
 - HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
     make: titan_icon_take1..3.png + prometheus_icon_take1..3.png · how many: 6 · done when: 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
-- HUB-GEM-01 · Reference wall: 40 live sites with the experimental, futuristic desk look · due 2026-11-09
-    make: hub_gemini_refs_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 objects, 40 different sites, every URL opens, 120 named techniques.
-- HUB-GEM-04 · 60 icons for the 60 actions every pillar uses (Lucide, exact names) · due 2026-11-09
-    make: hub_gemini_icons_{YYYYMMDD-HHMM}.json · how many: 60 · done when: 60 rows in the order given, every icon page opens.
-- HUB-GEM-02 · Nine particle shapes, one per door, as JavaScript functions · due 2026-11-10
-    make: hub_gemini_shapes_{YYYYMMDD-HHMM}.js · how many: 9 · done when: 9 exported functions; each returns exactly n*3 numbers in [-1, 1] for n = 2000, 8000 and 24000, the same output for the same seed, and is recognisable in Claude's contact sheet.
-- HUB-GEM-03 · Desk sound: 24 real recordings for the desk ambience (no synthesizers) · due 2026-11-11
-    make: hub_gemini_sounds_{YYYYMMDD-HHMM}.json · how many: 24 · done when: 24 rows (8 per kind), every licence and length as on the page.
-- HUB-GEM-05 · Motion spec: 20 desk moments, each with duration, easing and property from a published motion system · due 2026-11-12
-    make: hub_gemini_motion_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows, one per moment, numbers traceable to the quoted token.
-- HUB-GEM-06 · 30 WCAG 2.2 checks that apply to the desk, each one Claude can run · due 2026-11-13
-    make: hub_gemini_wcag_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 different criteria, every check measurable.
 
 ## Muse
 
-Updated 2026-11-05 15:02 UTC · 1 open in this pillar.
+Updated 2026-11-09 22:26 UTC · 0 open in this pillar.
 
 
-- HUB-MUS-01 · The words on every door: 11 doors, three lines each · due 2026-11-09
-    make: hub_muse_door-copy_{YYYYMMDD-HHMM}.md · how many: 11 · done when: A row for every door; every 'today' line names a feature the README describes.
+No homework for Muse in Prometheus Hub right now.
 
 ## ChatGPT
 
-Updated 2026-11-05 15:02 UTC · 1 open in this pillar.
+Updated 2026-11-09 22:26 UTC · 1 open in this pillar.
 
 
 - HUB-GPT-01 · Phone audit of the desk: 25 findings · due 2026-11-12

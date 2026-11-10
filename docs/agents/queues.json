@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-05",
+ "updated": "2026-11-09",
  "pillar": "hub",
  "agents": [
   {
@@ -82,7 +82,7 @@
     {
      "id": "HUB-GEM-01",
      "title": "Reference wall: 40 live sites with the experimental, futuristic desk look",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-09",
      "why": "Joseph landed on the experimental futuristic look for Prometheus and every pillar except Titan. Claude needs real references to build from, not adjectives.",
      "inputs": [
@@ -119,7 +119,7 @@
     {
      "id": "HUB-GEM-02",
      "title": "Nine particle shapes, one per door, as JavaScript functions",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-10",
      "why": "Pointing at a door bends the desk's particle field into that door's shape. Today the shapes are rough. Each door needs a shape that reads at a glance.",
      "inputs": [
@@ -154,7 +154,7 @@
     {
      "id": "HUB-GEM-03",
      "title": "Desk sound: 24 real recordings for the desk ambience (no synthesizers)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-11",
      "why": "Joseph dislikes computer-generated music. The desk needs a real-recording bed like Titan's: room tones, nature textures and acoustic drones.",
      "inputs": [],
@@ -189,7 +189,7 @@
     {
      "id": "HUB-GEM-04",
      "title": "60 icons for the 60 actions every pillar uses (Lucide, exact names)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-09",
      "why": "The shared kit (kit/kit.js) draws its glyphs by hand. One icon set (Lucide, ISC licence) for every pillar keeps them the same everywhere.",
      "inputs": [],
@@ -222,7 +222,7 @@
     {
      "id": "HUB-GEM-05",
      "title": "Motion spec: 20 desk moments, each with duration, easing and property from a published motion system",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Every pillar should move the same way. Claude needs numbers, not adjectives.",
      "inputs": [],
@@ -255,7 +255,7 @@
     {
      "id": "HUB-GEM-06",
      "title": "30 WCAG 2.2 checks that apply to the desk, each one Claude can run",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-13",
      "why": "The desk and every pillar must stay readable on Joseph's phone in light and dark.",
      "inputs": [],
@@ -293,7 +293,7 @@
     {
      "id": "HUB-MUS-01",
      "title": "The words on every door: 11 doors, three lines each",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-09",
      "why": "Half the doors still say placeholder things. Each door needs a plain name line, what it is for, and what you can really do there today.",
      "inputs": [
