@@ -1,0 +1,1050 @@
+[
+  {
+    "n": 1,
+    "tag_id": "mvhd.creation_time",
+    "name": "CreateDate",
+    "group": "ISOBMFF",
+    "leaks": "date and time the whole movie was recorded (UTC seconds since 1904), even when Exif-style dates are stripped",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#MovieHeader"
+  },
+  {
+    "n": 2,
+    "tag_id": "mvhd.modification_time",
+    "name": "ModifyDate",
+    "group": "ISOBMFF",
+    "leaks": "date and time the movie was last edited or re-muxed",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#MovieHeader"
+  },
+  {
+    "n": 3,
+    "tag_id": "tkhd.creation_time",
+    "name": "TrackCreateDate",
+    "group": "ISOBMFF",
+    "leaks": "per-track recording timestamp; survives on every video/audio track",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#TrackHeader"
+  },
+  {
+    "n": 4,
+    "tag_id": "tkhd.modification_time",
+    "name": "TrackModifyDate",
+    "group": "ISOBMFF",
+    "leaks": "per-track last-edit timestamp",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#TrackHeader"
+  },
+  {
+    "n": 5,
+    "tag_id": "mdhd.creation_time",
+    "name": "MediaCreateDate",
+    "group": "ISOBMFF",
+    "leaks": "per-media recording timestamp (a third copy of the capture time)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#MediaHeader"
+  },
+  {
+    "n": 6,
+    "tag_id": "mdhd.modification_time",
+    "name": "MediaModifyDate",
+    "group": "ISOBMFF",
+    "leaks": "per-media last-edit timestamp",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#MediaHeader"
+  },
+  {
+    "n": 7,
+    "tag_id": "mdhd.language",
+    "name": "MediaLanguageCode",
+    "group": "ISOBMFF",
+    "leaks": "language code of the track, hints at the recorder's locale",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#MediaHeader"
+  },
+  {
+    "n": 8,
+    "tag_id": "uuid BE7ACFCB-97A9-42E8-9C71-999491E3AFAC",
+    "name": "XMP",
+    "group": "ISOBMFF",
+    "leaks": "top-level XMP packet in MP4/HEIF: can carry GPS, creator, edit history and every XMP field",
+    "url": "https://github.com/adobe/XMP-Toolkit-SDK/blob/main/docs/XMPSpecificationPart3.pdf"
+  },
+  {
+    "n": 9,
+    "tag_id": "cprt",
+    "name": "Copyright",
+    "group": "ISOBMFF",
+    "leaks": "copyright holder name (user-data)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 10,
+    "tag_id": "tref.cdsc",
+    "name": "ContentDescribes (track)",
+    "group": "ISOBMFF",
+    "leaks": "marks a timed-metadata track (e.g. a GPS or motion log) as describing the video track",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/track-references.csv"
+  },
+  {
+    "n": 11,
+    "tag_id": "mebx",
+    "name": "Timed metadata multiplex",
+    "group": "ISOBMFF",
+    "leaks": "per-frame metadata track whose samples are decoded with the Keys table (e.g. detected faces)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/sample-entries.csv"
+  },
+  {
+    "n": 12,
+    "tag_id": "loci",
+    "name": "LocationInformation",
+    "group": "3GPP-udta",
+    "leaks": "named place, role, latitude, longitude and altitude of the recording",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 13,
+    "tag_id": "auth",
+    "name": "Author",
+    "group": "3GPP-udta",
+    "leaks": "author/recorder name",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 14,
+    "tag_id": "titl",
+    "name": "Title",
+    "group": "3GPP-udta",
+    "leaks": "title the user typed",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 15,
+    "tag_id": "dscp",
+    "name": "Description",
+    "group": "3GPP-udta",
+    "leaks": "free-text description",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 16,
+    "tag_id": "perf",
+    "name": "Performer",
+    "group": "3GPP-udta",
+    "leaks": "performer name",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 17,
+    "tag_id": "kywd",
+    "name": "Keywords",
+    "group": "3GPP-udta",
+    "leaks": "user keywords (people, places, events)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 18,
+    "tag_id": "yrrc",
+    "name": "Year",
+    "group": "3GPP-udta",
+    "leaks": "year the media was recorded",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 19,
+    "tag_id": "albm",
+    "name": "Album",
+    "group": "3GPP-udta",
+    "leaks": "album name, often an event or trip label",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 20,
+    "tag_id": "coll",
+    "name": "CollectionName",
+    "group": "3GPP-udta",
+    "leaks": "collection name the clip belongs to",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 21,
+    "tag_id": "thmb",
+    "name": "Thumbnail",
+    "group": "3GPP-udta",
+    "leaks": "embedded thumbnail image that may predate later edits or crops",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 22,
+    "tag_id": "manu",
+    "name": "Make",
+    "group": "Apple-udta",
+    "leaks": "camera manufacturer",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 23,
+    "tag_id": "modl",
+    "name": "Model",
+    "group": "Apple-udta",
+    "leaks": "camera model",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 24,
+    "tag_id": "slno",
+    "name": "SerialNumber",
+    "group": "Apple-udta",
+    "leaks": "camera serial number: ties every clip to one physical device",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 25,
+    "tag_id": "cmid",
+    "name": "CameraID",
+    "group": "Apple-udta",
+    "leaks": "camera identifier",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 26,
+    "tag_id": "cmnm",
+    "name": "Model",
+    "group": "Apple-udta",
+    "leaks": "name that identifies the camera",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 27,
+    "tag_id": "date",
+    "name": "DateTimeOriginal",
+    "group": "Apple-udta",
+    "leaks": "ISO 8601 date and time recording started",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 28,
+    "tag_id": "swre",
+    "name": "Software",
+    "group": "Apple-udta",
+    "leaks": "name and version of the software that wrote the movie",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 29,
+    "tag_id": "clfn",
+    "name": "ClipFileName",
+    "group": "Apple-udta",
+    "leaks": "original clip file name",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 30,
+    "tag_id": "clid",
+    "name": "ClipID",
+    "group": "Apple-udta",
+    "leaks": "clip identifier linking copies to the original capture",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 31,
+    "tag_id": "ades",
+    "name": "AccessibilityDescription",
+    "group": "Apple-udta",
+    "leaks": "free-text description of the content (alt text)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/boxes-udta.csv"
+  },
+  {
+    "n": 32,
+    "tag_id": "©xyz",
+    "name": "GPSCoordinates",
+    "group": "QuickTime-UserData",
+    "leaks": "ISO 6709 latitude/longitude/altitude where the video was shot",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 33,
+    "tag_id": "©day",
+    "name": "ContentCreateDate",
+    "group": "QuickTime-UserData",
+    "leaks": "capture date and time",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 34,
+    "tag_id": "©mak",
+    "name": "Make",
+    "group": "QuickTime-UserData",
+    "leaks": "device manufacturer",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 35,
+    "tag_id": "©mod",
+    "name": "Model",
+    "group": "QuickTime-UserData",
+    "leaks": "device model",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 36,
+    "tag_id": "©swr",
+    "name": "SoftwareVersion",
+    "group": "QuickTime-UserData",
+    "leaks": "firmware or app version",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 37,
+    "tag_id": "©too",
+    "name": "Encoder",
+    "group": "QuickTime-UserData",
+    "leaks": "encoder or editing app",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 38,
+    "tag_id": "©cmt",
+    "name": "Comment",
+    "group": "QuickTime-UserData",
+    "leaks": "free-text comment",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 39,
+    "tag_id": "©nam",
+    "name": "Title",
+    "group": "QuickTime-UserData",
+    "leaks": "title the user typed",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 40,
+    "tag_id": "©cpy",
+    "name": "Copyright",
+    "group": "QuickTime-UserData",
+    "leaks": "copyright holder",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 41,
+    "tag_id": "©inf",
+    "name": "Information",
+    "group": "QuickTime-UserData",
+    "leaks": "free-text information field",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 42,
+    "tag_id": "XMP_",
+    "name": "XMP",
+    "group": "QuickTime-UserData",
+    "leaks": "QuickTime XMP packet inside moov/udta",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 43,
+    "tag_id": "finm",
+    "name": "OriginalFileName",
+    "group": "QuickTime-UserData",
+    "leaks": "original file name on the recording device",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 44,
+    "tag_id": "fsid",
+    "name": "OriginalFilePath",
+    "group": "QuickTime-UserData",
+    "leaks": "original file path on the recording device (can include a user or folder name)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 45,
+    "tag_id": "SNum",
+    "name": "SerialNumber",
+    "group": "QuickTime-UserData",
+    "leaks": "camera serial number",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 46,
+    "tag_id": "LENS",
+    "name": "LensSerialNumber",
+    "group": "QuickTime-UserData",
+    "leaks": "lens serial number",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 47,
+    "tag_id": "CAME",
+    "name": "SerialNumberHash",
+    "group": "QuickTime-UserData",
+    "leaks": "hash of the camera serial number: still a stable device fingerprint",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 48,
+    "tag_id": "FIRM",
+    "name": "FirmwareVersion",
+    "group": "QuickTime-UserData",
+    "leaks": "camera firmware version",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 49,
+    "tag_id": "GPMF",
+    "name": "GoProGPMF",
+    "group": "QuickTime-UserData",
+    "leaks": "GoPro telemetry stream (GPS track, speed, sensors)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 50,
+    "tag_id": "©xsp",
+    "name": "SpeedX",
+    "group": "QuickTime-UserData",
+    "leaks": "device speed along X at capture",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 51,
+    "tag_id": "©gyw",
+    "name": "CameraYaw",
+    "group": "QuickTime-UserData",
+    "leaks": "camera yaw (heading) at capture",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#UserData"
+  },
+  {
+    "n": 52,
+    "tag_id": "com.apple.quicktime.location.ISO6709",
+    "name": "GPSCoordinates",
+    "group": "QuickTime-Keys",
+    "leaks": "latitude/longitude/altitude where an iPhone video or Live Photo was shot",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 53,
+    "tag_id": "com.apple.quicktime.location.name",
+    "name": "LocationName",
+    "group": "QuickTime-Keys",
+    "leaks": "place name of the recording",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 54,
+    "tag_id": "com.apple.quicktime.location.body",
+    "name": "LocationBody",
+    "group": "QuickTime-Keys",
+    "leaks": "astronomical body (location context)",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 55,
+    "tag_id": "com.apple.quicktime.location.note",
+    "name": "LocationNote",
+    "group": "QuickTime-Keys",
+    "leaks": "free-text location note",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 56,
+    "tag_id": "com.apple.quicktime.location.role",
+    "name": "LocationRole",
+    "group": "QuickTime-Keys",
+    "leaks": "whether the location is the shooting, real or fictional place",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 57,
+    "tag_id": "com.apple.quicktime.location.date",
+    "name": "LocationDate",
+    "group": "QuickTime-Keys",
+    "leaks": "time the location fix was taken",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 58,
+    "tag_id": "com.apple.quicktime.creationdate",
+    "name": "CreationDate",
+    "group": "QuickTime-Keys",
+    "leaks": "date the movie content was created (capture date)",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 59,
+    "tag_id": "com.apple.quicktime.software",
+    "name": "Software",
+    "group": "QuickTime-Keys",
+    "leaks": "iOS version that recorded the clip",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 60,
+    "tag_id": "com.apple.quicktime.author",
+    "name": "Author",
+    "group": "QuickTime-Keys",
+    "leaks": "author name",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 61,
+    "tag_id": "com.apple.quicktime.comment",
+    "name": "Comment",
+    "group": "QuickTime-Keys",
+    "leaks": "free-text comment",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 62,
+    "tag_id": "com.apple.quicktime.description",
+    "name": "Description",
+    "group": "QuickTime-Keys",
+    "leaks": "free-text description",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 63,
+    "tag_id": "com.apple.quicktime.keywords",
+    "name": "Keywords",
+    "group": "QuickTime-Keys",
+    "leaks": "user keywords",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 64,
+    "tag_id": "com.apple.quicktime.title",
+    "name": "Title",
+    "group": "QuickTime-Keys",
+    "leaks": "title",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 65,
+    "tag_id": "com.apple.quicktime.direction.facing",
+    "name": "CameraDirection",
+    "group": "QuickTime-Keys",
+    "leaks": "magnetic compass heading and tilt the camera faced during the shot",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 66,
+    "tag_id": "com.apple.quicktime.direction.motion",
+    "name": "CameraMotion",
+    "group": "QuickTime-Keys",
+    "leaks": "heading and tilt the camera was moving during the shot",
+    "url": "https://developer.apple.com/documentation/quicktime-file-format/quicktime_metadata_keys"
+  },
+  {
+    "n": 67,
+    "tag_id": "make",
+    "name": "Make",
+    "group": "QuickTime-Keys",
+    "leaks": "device manufacturer",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 68,
+    "tag_id": "model",
+    "name": "Model",
+    "group": "QuickTime-Keys",
+    "leaks": "exact iPhone/device model",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 69,
+    "tag_id": "location.accuracy.horizontal",
+    "name": "LocationAccuracyHorizontal",
+    "group": "QuickTime-Keys",
+    "leaks": "GPS fix accuracy in metres",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 70,
+    "tag_id": "content.identifier",
+    "name": "ContentIdentifier",
+    "group": "QuickTime-Keys",
+    "leaks": "UUID pairing a Live Photo video with its still (same ID as Apple MakerNote 0x0011)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 71,
+    "tag_id": "detected-face.bounds",
+    "name": "DetectedFaceBounds",
+    "group": "QuickTime-Keys",
+    "leaks": "rectangles of faces found in each frame",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 72,
+    "tag_id": "detected-face.face-id",
+    "name": "DetectedFaceID",
+    "group": "QuickTime-Keys",
+    "leaks": "per-face tracking ID across frames",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 73,
+    "tag_id": "scene-illuminance",
+    "name": "SceneIlluminance",
+    "group": "QuickTime-Keys",
+    "leaks": "measured scene light level (indoor vs outdoor hint)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 74,
+    "tag_id": "com.android.manufacturer",
+    "name": "AndroidMake",
+    "group": "QuickTime-Keys",
+    "leaks": "Android phone manufacturer",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 75,
+    "tag_id": "com.android.model",
+    "name": "AndroidModel",
+    "group": "QuickTime-Keys",
+    "leaks": "Android phone model",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 76,
+    "tag_id": "com.android.version",
+    "name": "AndroidVersion",
+    "group": "QuickTime-Keys",
+    "leaks": "Android OS version",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 77,
+    "tag_id": "samsung.android.utc_offset",
+    "name": "AndroidTimeZone",
+    "group": "QuickTime-Keys",
+    "leaks": "recording time zone (Samsung)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#Keys"
+  },
+  {
+    "n": 78,
+    "tag_id": "camera.identifier",
+    "name": "CameraIdentifier",
+    "group": "QuickTime-VideoKeys",
+    "leaks": "identifier of the camera module that recorded the clip",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#VideoKeys"
+  },
+  {
+    "n": 79,
+    "tag_id": "camera.lens_model",
+    "name": "LensModel",
+    "group": "QuickTime-VideoKeys",
+    "leaks": "lens model string of the recording camera",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#VideoKeys"
+  },
+  {
+    "n": 80,
+    "tag_id": "0x0010",
+    "name": "GPSLatitude",
+    "group": "QuickTime-camm6",
+    "leaks": "per-sample latitude in a camm type 6 track: a full route, not one point",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#camm6"
+  },
+  {
+    "n": 81,
+    "tag_id": "0x0018",
+    "name": "GPSLongitude",
+    "group": "QuickTime-camm6",
+    "leaks": "per-sample longitude (camm type 6)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#camm6"
+  },
+  {
+    "n": 82,
+    "tag_id": "0x0020",
+    "name": "GPSAltitude",
+    "group": "QuickTime-camm6",
+    "leaks": "per-sample altitude (camm type 6)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#camm6"
+  },
+  {
+    "n": 83,
+    "tag_id": "0x0004",
+    "name": "GPSDateTime",
+    "group": "QuickTime-camm6",
+    "leaks": "GPS time of each sample (camm type 6)",
+    "url": "https://exiftool.org/TagNames/QuickTime.html#camm6"
+  },
+  {
+    "n": 84,
+    "tag_id": "camm",
+    "name": "Camera motion metadata track",
+    "group": "ISOBMFF",
+    "leaks": "sample entry for a camera-motion track (gyro, accelerometer, GPS packets)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/sample-entries.csv"
+  },
+  {
+    "n": 85,
+    "tag_id": "Exif",
+    "name": "EXIF item",
+    "group": "HEIF-ItemType",
+    "leaks": "the full EXIF block (all 40 shipped JPEG tags incl. GPS) stored as an item; payload starts with a 4-byte TIFF header offset",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-types.csv"
+  },
+  {
+    "n": 86,
+    "tag_id": "mime",
+    "name": "XMP item (content_type application/rdf+xml)",
+    "group": "HEIF-ItemType",
+    "leaks": "XMP packet stored as a MIME item: GPS, creator, edit history",
+    "url": "https://github.com/AOMediaCodec/libavif/issues/247"
+  },
+  {
+    "n": 87,
+    "tag_id": "rgan",
+    "name": "Region item",
+    "group": "HEIF-ItemType",
+    "leaks": "annotated regions of the image (e.g. faces or people) with optional labels",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-types.csv"
+  },
+  {
+    "n": 88,
+    "tag_id": "mski",
+    "name": "Mask item",
+    "group": "HEIF-ItemType",
+    "leaks": "segmentation mask (e.g. a person cut-out) stored beside the image",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-types.csv"
+  },
+  {
+    "n": 89,
+    "tag_id": "tmap",
+    "name": "Tone map derived image (gain map)",
+    "group": "HEIF-ItemType",
+    "leaks": "hidden HDR gain-map image carried with the base image",
+    "url": "https://aomediacodec.github.io/av1-avif/"
+  },
+  {
+    "n": 90,
+    "tag_id": "thmb",
+    "name": "ThumbnailRef",
+    "group": "HEIF-ItemRef",
+    "leaks": "thumbnail item; may still show the uncropped or unedited original",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-references.csv"
+  },
+  {
+    "n": 91,
+    "tag_id": "cdsc",
+    "name": "ContentDescribes",
+    "group": "HEIF-ItemRef",
+    "leaks": "links Exif/XMP metadata items to the image they describe",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-references.csv"
+  },
+  {
+    "n": 92,
+    "tag_id": "auxl",
+    "name": "AuxiliaryImageRef",
+    "group": "HEIF-ItemRef",
+    "leaks": "links auxiliary images (depth map, alpha, matte) to the primary image",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-references.csv"
+  },
+  {
+    "n": 93,
+    "tag_id": "eroi",
+    "name": "RegionReference",
+    "group": "HEIF-ItemRef",
+    "leaks": "links a region item (faces, people) to the image",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-references.csv"
+  },
+  {
+    "n": 94,
+    "tag_id": "auxC",
+    "name": "AuxiliaryImageType",
+    "group": "HEIF-ItemProperty",
+    "leaks": "URN naming the auxiliary image type (depth, alpha, portrait matte)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 95,
+    "tag_id": "colr",
+    "name": "ICC_Profile",
+    "group": "HEIF-ItemProperty",
+    "leaks": "embedded ICC profile or colour info: device/software fingerprint",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 96,
+    "tag_id": "clap",
+    "name": "CleanAperture",
+    "group": "HEIF-ItemProperty",
+    "leaks": "display crop window: pixels outside the crop are still coded in the file",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 97,
+    "tag_id": "ispe",
+    "name": "ImageSpatialExtent",
+    "group": "HEIF-ItemProperty",
+    "leaks": "coded width and height (device sensor fingerprint)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 98,
+    "tag_id": "irot",
+    "name": "Rotation",
+    "group": "HEIF-ItemProperty",
+    "leaks": "rotation applied at display (how the phone was held)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 99,
+    "tag_id": "crtt",
+    "name": "CreationTime",
+    "group": "HEIF-ItemProperty",
+    "leaks": "item creation time",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 100,
+    "tag_id": "mdft",
+    "name": "ModificationTime",
+    "group": "HEIF-ItemProperty",
+    "leaks": "item modification time",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 101,
+    "tag_id": "udes",
+    "name": "UserDescription",
+    "group": "HEIF-ItemProperty",
+    "leaks": "user-entered name, description and tags",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 102,
+    "tag_id": "altt",
+    "name": "AccessibilityText",
+    "group": "HEIF-ItemProperty",
+    "leaks": "alt text describing the image",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 103,
+    "tag_id": "aebr",
+    "name": "AutoExposureInfo",
+    "group": "HEIF-ItemProperty",
+    "leaks": "auto-exposure bracketing information",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 104,
+    "tag_id": "afbr",
+    "name": "FlashExposureInfo",
+    "group": "HEIF-ItemProperty",
+    "leaks": "flash exposure information",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 105,
+    "tag_id": "fobr",
+    "name": "FocusInfo",
+    "group": "HEIF-ItemProperty",
+    "leaks": "focus information for focus-bracketed captures",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 106,
+    "tag_id": "dobr",
+    "name": "DepthOfFieldInfo",
+    "group": "HEIF-ItemProperty",
+    "leaks": "depth-of-field bracketing information",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 107,
+    "tag_id": "wbbr",
+    "name": "WhiteBalanceInfo",
+    "group": "HEIF-ItemProperty",
+    "leaks": "white balance bracketing information",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 108,
+    "tag_id": "rloc",
+    "name": "RelativeLocation",
+    "group": "HEIF-ItemProperty",
+    "leaks": "position of this image inside a larger reference image (shows it is a crop)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 109,
+    "tag_id": "hvcC",
+    "name": "HEVCConfiguration",
+    "group": "HEIF-ItemProperty",
+    "leaks": "HEVC encoder configuration: encoder/device fingerprint",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 110,
+    "tag_id": "altr",
+    "name": "AlternativeGroup",
+    "group": "HEIF-EntityGroup",
+    "leaks": "groups alternative versions of one image (e.g. original and edited)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/entity-groups.csv"
+  },
+  {
+    "n": 111,
+    "tag_id": "brst",
+    "name": "BurstGroup",
+    "group": "HEIF-EntityGroup",
+    "leaks": "marks a burst: the neighbouring frames are in the same file",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/entity-groups.csv"
+  },
+  {
+    "n": 112,
+    "tag_id": "iaug",
+    "name": "ImageWithAudio",
+    "group": "HEIF-EntityGroup",
+    "leaks": "image item paired with an audio track (sound recorded at capture)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/entity-groups.csv"
+  },
+  {
+    "n": 113,
+    "tag_id": "ster",
+    "name": "StereoGroup",
+    "group": "HEIF-EntityGroup",
+    "leaks": "left/right stereo pair (spatial photo)",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/entity-groups.csv"
+  },
+  {
+    "n": 114,
+    "tag_id": "pano",
+    "name": "PanoramaGroup",
+    "group": "HEIF-EntityGroup",
+    "leaks": "images that make up a panorama",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/entity-groups.csv"
+  },
+  {
+    "n": 115,
+    "tag_id": "favc",
+    "name": "FavoritesGroup",
+    "group": "HEIF-EntityGroup",
+    "leaks": "user favourites collection",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/entity-groups.csv"
+  },
+  {
+    "n": 116,
+    "tag_id": "av1C",
+    "name": "AV1Configuration",
+    "group": "AVIF",
+    "leaks": "AV1 encoder configuration: encoder fingerprint",
+    "url": "https://raw.githubusercontent.com/mp4ra/mp4ra.github.io/HEAD/data/item-properties.csv"
+  },
+  {
+    "n": 117,
+    "tag_id": "urn:mpeg:mpegB:cicp:systems:auxiliary:alpha",
+    "name": "AlphaAuxiliary",
+    "group": "AVIF",
+    "leaks": "alpha plane; transparent areas can still hold the original pixels",
+    "url": "https://aomediacodec.github.io/av1-avif/"
+  },
+  {
+    "n": 118,
+    "tag_id": "urn:mpeg:mpegB:cicp:systems:auxiliary:depth",
+    "name": "DepthAuxiliary",
+    "group": "AVIF",
+    "leaks": "depth map of the scene (3D shape of faces and rooms)",
+    "url": "https://aomediacodec.github.io/av1-avif/"
+  },
+  {
+    "n": 119,
+    "tag_id": "a1lx",
+    "name": "AV1LayeredImageIndexing",
+    "group": "AVIF",
+    "leaks": "layer sizes of a progressive image (earlier layers are separately decodable)",
+    "url": "https://aomediacodec.github.io/av1-avif/"
+  },
+  {
+    "n": 120,
+    "tag_id": "Camera:MotionPhoto",
+    "name": "MotionPhoto",
+    "group": "XMP-MotionPhoto",
+    "leaks": "flag that a video clip (with audio) is appended to the still",
+    "url": "https://developer.android.com/media/platform/motion-photo-format"
+  },
+  {
+    "n": 121,
+    "tag_id": "Camera:MotionPhotoPresentationTimestampUs",
+    "name": "MotionPhotoPresentationTimestampUs",
+    "group": "XMP-MotionPhoto",
+    "leaks": "which video frame is the still: the clip runs before and after the shot",
+    "url": "https://developer.android.com/media/platform/motion-photo-format"
+  },
+  {
+    "n": 122,
+    "tag_id": "Container:Directory",
+    "name": "Directory",
+    "group": "XMP-MotionPhoto",
+    "leaks": "list of media items packed in the file (primary image, gain map, video)",
+    "url": "https://developer.android.com/media/platform/motion-photo-format"
+  },
+  {
+    "n": 123,
+    "tag_id": "Item:Semantic",
+    "name": "Semantic",
+    "group": "XMP-MotionPhoto",
+    "leaks": "role of each packed item (Primary, GainMap, MotionPhoto)",
+    "url": "https://developer.android.com/media/platform/motion-photo-format"
+  },
+  {
+    "n": 124,
+    "tag_id": "Camera:MicroVideoOffset",
+    "name": "MicroVideoOffset",
+    "group": "XMP-MotionPhoto",
+    "leaks": "legacy (V1) offset to an embedded video; still in older files",
+    "url": "https://developer.android.com/media/platform/motion-photo-format"
+  },
+  {
+    "n": 125,
+    "tag_id": "mpvd",
+    "name": "Motion Photo Video Data box",
+    "group": "XMP-MotionPhoto",
+    "leaks": "box holding the appended MP4/MOV clip inside a HEIC/AVIF motion photo",
+    "url": "https://developer.android.com/media/platform/motion-photo-format"
+  },
+  {
+    "n": 126,
+    "tag_id": "uuid D8FEC3D6-1B0E-483C-9297-5828877EC481",
+    "name": "ContentProvenanceBox",
+    "group": "C2PA",
+    "leaks": "C2PA manifest store in MP4/HEIF/AVIF: signer identity, tools and history",
+    "url": "https://c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html"
+  },
+  {
+    "n": 127,
+    "tag_id": "c2pa.actions.v2",
+    "name": "Actions",
+    "group": "C2PA",
+    "leaks": "edit history: what was done to the image and by which tool",
+    "url": "https://c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html"
+  },
+  {
+    "n": 128,
+    "tag_id": "c2pa.ingredient.v3",
+    "name": "Ingredient",
+    "group": "C2PA",
+    "leaks": "source files the image was made from",
+    "url": "https://c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html"
+  },
+  {
+    "n": 129,
+    "tag_id": "c2pa.thumbnail.claim",
+    "name": "ClaimThumbnail",
+    "group": "C2PA",
+    "leaks": "thumbnail of the image at signing time",
+    "url": "https://c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html"
+  },
+  {
+    "n": 130,
+    "tag_id": "c2pa.metadata",
+    "name": "Metadata",
+    "group": "C2PA",
+    "leaks": "embedded metadata assertion that can include exif:GPSLatitude/Longitude",
+    "url": "https://c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html"
+  },
+  {
+    "n": 131,
+    "tag_id": "c2pa.depthmap.GDepth",
+    "name": "DepthMap",
+    "group": "C2PA",
+    "leaks": "depth map assertion",
+    "url": "https://c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html"
+  }
+]
