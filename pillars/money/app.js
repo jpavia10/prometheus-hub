@@ -7,7 +7,7 @@
   const app = $("#app");
   field({ count: 800, at: [0.74, 0.34], scale: 0.22, glyph: (n) => [...G.ring(Math.round(n * 0.6), 1), ...G.ring(Math.round(n * 0.4), 0.62)] });
 
-  const DEF = { principal: 20000, apr: 11.99, term: 24, actualPayment: 952.19, extra: 0, useBus: false };
+  const DEF = { principal: 5000, apr: 6, term: 12, actualPayment: 440, extra: 0, useBus: false };
   const cfg = () => ({ ...DEF, ...S.get("cfg", {}) });
   const busSales = () => (window.PB ? Math.max(0, PB.money.total("sale")) : 0);
 

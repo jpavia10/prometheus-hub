@@ -36,7 +36,7 @@
       const flag = c.flag === "urgent" ? `<span class="pill urgent">school · ${c.days}d</span>` : c.flag === "overdue" ? `<span class="pill over">overdue</span>` : c.flag === "soon" ? `<span class="pill soon">${c.days}d</span>` : c.flag === "ok" ? `<span class="pill">${c.days}d</span>` : "";
       el.append(h("div.kv", null,
         h("span", null, h("b", null, d.title), ` `, flag, h("br"), h("span.stat-s", null, `${d.category}${d.issuer ? " · " + esc(d.issuer) : ""}${d.due ? " · due " + d.due : ""}${d.where ? " · at " + esc(d.where) : ""}${d.notes ? " · " + esc(d.notes) : ""}`)),
-        h("button.btn.quiet.small", { type: "button", onclick: () => { if (window.PB) PB.deadlines.unpublish("records", d.id); S.remove("docs", d.id); paint(); } }, "Remove")));
+        h("button.btn.quiet.small", { type: "button", onclick: () => { const prev = S.list("docs"); if (window.PB) PB.deadlines.unpublish("records", d.id); S.remove("docs", d.id); paint(); toast("Removed", 6000, () => { S.set("docs", prev); paint(); }); } }, "Remove")));
     }
   }
   $("#r-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;

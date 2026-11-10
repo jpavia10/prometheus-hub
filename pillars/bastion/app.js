@@ -49,7 +49,7 @@
       const st = !it.expiry ? "" : it.expiry < day() ? `<span class="pill over">expired ${it.expiry}</span>` : it.expiry <= PB_safe_add(day(), 90) ? `<span class="pill soon">expires ${it.expiry}</span>` : `<span class="pill">to ${it.expiry}</span>`;
       $("#b-list").append(h("div.kv", null,
         h("span", null, `${it.name} ×${it.qty || 1} `, h("span.stat-s", null, `${it.category} · ${it.location || "bag"} · ${BASTION.fmtWeight((it.weightOz || 0) * (it.qty || 1))}`)),
-        h("span", null, st, " ", h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("items", it.id); if (window.PB) PB.deadlines.unpublish("bastion", it.id); paint(); } }, "Remove"))));
+        h("span", null, st, " ", h("button.btn.quiet.small", { type: "button", onclick: () => { const prev = S.list("items"); S.remove("items", it.id); if (window.PB) PB.deadlines.unpublish("bastion", it.id); paint(); toast("Removed", 6000, () => { S.set("items", prev); paint(); }); } }, "Remove"))));
     }
     const checks = S.get("checks", {});
     $("#b-scen").innerHTML = "";
