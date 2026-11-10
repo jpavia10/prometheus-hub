@@ -58,11 +58,11 @@ void main() {
   float range = 1.0 / 3.0;
   float wobble = uTime;
 
-  float sway = sin(wobble * 0.32);
-  vec3 A = rotX(sway * 0.1) * rotY(sin(wobble * 0.21) * 0.16) * texture2D(uA, vUv).xyz;
-  vec3 B = rotY(sin(wobble * 0.27) * 0.2) * texture2D(uB, vUv).xyz;
-  vec3 C = rotY(sin(wobble * 0.23) * 0.16) * texture2D(uC, vUv).xyz;
-  vec3 D = rotX(0.1 + sway * 0.06) * texture2D(uD, vUv).xyz;
+  float sway = sin(wobble * 0.22);
+  vec3 A = rotX(sway * 0.08) * rotY(sin(wobble * 0.15) * 0.12) * texture2D(uA, vUv).xyz;
+  vec3 B = rotY(sin(wobble * 0.18) * 0.14) * texture2D(uB, vUv).xyz;
+  vec3 C = rotY(sin(wobble * 0.16) * 0.12) * texture2D(uC, vUv).xyz;
+  vec3 D = rotX(0.08 + sway * 0.05) * texture2D(uD, vUv).xyz;
 
   float stagger = rand(vUv) * 0.14;
   vec3 pos;
@@ -78,11 +78,11 @@ void main() {
     pos = mix(C, D, t);
   }
 
-  vec3 focused = rotY(sin(wobble * 0.3) * 0.28) * texture2D(uFocus, vUv).xyz;
+  vec3 focused = rotY(sin(wobble * 0.2) * 0.18) * texture2D(uFocus, vUv).xyz;
   pos = mix(pos, focused, clamp(uFocusMix, 0.0, 1.0));
 
-  float breath = sin(wobble * 0.55 + vUv.x * 14.0) * cos(wobble * 0.42 + vUv.y * 11.0);
-  pos += breath * 0.012;
+  float breath = sin(wobble * 0.36 + vUv.x * 10.0) * cos(wobble * 0.28 + vUv.y * 8.0);
+  pos += breath * 0.007;
 
   vec2 aim = uPointer * vec2(1.85, 1.05);
   vec2 delta = aim - pos.xy;

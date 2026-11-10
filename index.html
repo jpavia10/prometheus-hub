@@ -16,7 +16,7 @@
   <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-  <meta name="desk-build" content="v12">
+  <meta name="desk-build" content="v13">
   <link rel="stylesheet" href="./kit/prometheus.css">
   <link rel="stylesheet" href="./styles.css">
   <script>document.documentElement.classList.add("js")</script>
@@ -41,7 +41,7 @@
 
     <form class="command" id="cmd-form" role="search">
       <label class="sr" for="cmd">Search the desk</label>
-      <input id="cmd" type="search" placeholder="Search the desk" aria-label="Search modules, dates, the session, or a public term" aria-controls="cmd-hits" aria-expanded="false" autocomplete="off" enterkeyhint="search">
+      <input id="cmd" type="search" placeholder="Search the desk" aria-label="Search modules, their pages, dates, the session, or a public term" aria-controls="cmd-hits" aria-autocomplete="list" aria-expanded="false" autocomplete="off" enterkeyhint="search">
       <button type="button" id="cmd-open" aria-keyshortcuts="/" aria-label="Focus search">/</button>
     </form>
     <div id="cmd-hits" class="cmd-hits" role="listbox" hidden></div>
@@ -128,7 +128,7 @@
     <p class="kicker">Shortcuts</p>
     <h3 id="help-title">Search</h3>
     <p>/ or Ctrl/Cmd+K focuses search. Arrow keys move through results, Enter opens, Esc closes. [ and ] or Alt+arrows move along the module row. 1–9 open the first nine modules in that row. ? opens this list.</p>
-    <p>Search reaches modules, calendar dates, NYSE sessions, Sorento service names, public card terms, and records stored on this device. Food and exercise stay in Apollo. Card terms open from search, or from Money.</p>
+    <p>Search reaches modules and their pages, calendar dates, NYSE sessions, Sorento service names, public card terms, and records stored on this device. Food and exercise stay in Apollo. Card terms open from search, or from Money.</p>
   </dialog>
 
   <footer class="site-foot">
