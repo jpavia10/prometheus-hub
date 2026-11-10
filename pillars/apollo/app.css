@@ -1,2 +1,4 @@
 .gb { margin: 10px 0 14px; }
 .gb-h { display: flex; justify-content: space-between; gap: 10px; font-size: 15px; margin-bottom: 6px; }
+
+.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}

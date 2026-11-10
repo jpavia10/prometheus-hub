@@ -1,2 +1,4 @@
 .list li .acts { display: flex; gap: 6px; flex: none; }
 .list li > span:first-child { min-width: 0; }
+
+.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}

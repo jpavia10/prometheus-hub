@@ -213,7 +213,7 @@
    "name": "Apollo Temple",
    "kind": "capability",
    "route": "pillars/apollo/",
-   "state": "partial",
+   "state": "live",
    "dataOwner": "body",
    "research": [
     "APO-GEM-01",
@@ -226,7 +226,7 @@
    "name": "Hermes Post",
    "kind": "capability",
    "route": "pillars/hermes/",
-   "state": "partial",
+   "state": "live",
    "dataOwner": "mail",
    "research": [
     "HER-GEM-01",
