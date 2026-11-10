@@ -239,10 +239,10 @@
    "name": "Icarus Stake",
    "kind": "capability",
    "route": "pillars/icarus/",
-   "state": "partial",
+   "state": "live",
    "dataOwner": "trading",
    "research": [
-    "ICA-GEM-03 (QUARANTINED: fails NYSE calendar audit)"
+    "ICA-GEM-03 (corrected: 68 rows were 34 duplicated events; deduped + 2027-12-31 added = 35)"
    ]
   },
   {
