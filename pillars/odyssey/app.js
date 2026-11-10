@@ -48,7 +48,7 @@
         h("div.row-actions", { style: "margin-top:8px" },
           isAway ? h("button.btn.quiet.small", { type: "button", onclick: () => { PB.meta.set("away", null); paint(); } }, "End away mode")
                  : h("button.btn.small", { type: "button", onclick: () => { if (window.PB) PB.meta.set("away", { tripId: t.id, name: t.name, until: t.end }); toast("Away mode on — the desk shows this trip"); paint(); } }, "Set away mode"),
-          h("button.btn.quiet.small", { type: "button", onclick: () => { if (window.PB) { PB.deadlines.unpublish("odyssey", t.id + ":out"); PB.deadlines.unpublish("odyssey", t.id + ":back"); } S.remove("trips", t.id); paint(); } }, "Delete trip"))));
+          h("button.btn.quiet.small", { type: "button", onclick: () => { const prev = S.list("trips"); if (window.PB) { PB.deadlines.unpublish("odyssey", t.id + ":out"); PB.deadlines.unpublish("odyssey", t.id + ":back"); } S.remove("trips", t.id); paint(); toast("Trip deleted", 6000, () => { S.set("trips", prev); prev.forEach((x) => publishTrip(x)); paint(); }); } }, "Delete trip"))));
     }
   }
   $("#o-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;

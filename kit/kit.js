@@ -28,10 +28,14 @@
   const pad = (n) => String(n).padStart(2, "0");
   const day = (d = new Date()) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
-  function toast(msg, ms = 2200) {
-    const t = h("div.toast", { role: "status", text: msg });
+  function toast(msg, ms = 6000, undo) {
+    const t = h("div.toast", { role: "status" });
+    t.append(document.createTextNode(msg));
+    if (typeof undo === "function") {
+      t.append(h("button", { type: "button", onclick: () => { undo(); t.remove(); } }, "Undo"));
+    }
     document.body.append(t);
-    setTimeout(() => t.remove(), ms);
+    setTimeout(() => { if (t.isConnected) t.remove(); }, ms);
   }
 
   /** Per-pillar storage: lists of records with ids, kept in localStorage, exportable as one JSON file. */
@@ -66,8 +70,11 @@
       try { localStorage.setItem(id, b.id); } catch (_) {}
       onShow && onShow(b.getAttribute("aria-controls"));
     };
-    btns.forEach((b) => b.addEventListener("click", () => show(b)));
-    let first = btns[0]; try { first = document.getElementById(localStorage.getItem(id)) || first; } catch (_) {}
+    btns.forEach((b) => b.addEventListener("click", () => { show(b); if (b.id) history.replaceState(null, "", "#" + b.id); }));
+    let first = btns[0];
+    const hashTab = document.getElementById((location.hash || "").slice(1));
+    if (hashTab && btns.includes(hashTab)) first = hashTab;
+    else { try { first = document.getElementById(localStorage.getItem(id)) || first; } catch (_) {} }
     if (first) show(first);
     return show;
   }
@@ -137,4 +144,19 @@
   };
 
   window.PK = { $, $$, h, money, num, day, toast, store, download, pickFile, tabs, spark, field, G, reduced };
+
+  if (new URLSearchParams(location.search).get("embed") === "1") document.documentElement.classList.add("is-embed");
+  const bar = document.querySelector("header.bar");
+  const parts = location.pathname.split("/").filter(Boolean);
+  const at = parts.indexOf("pillars");
+  if (bar && at >= 0 && parts[at + 1] && !document.documentElement.classList.contains("is-embed") && !bar.querySelector(".compass")) {
+    const here = parts[at + 1];
+    const seats = [["kairos", "Kairos"], ["apollo", "Apollo"], ["piano", "Piano"], ["hermes", "Hermes"], ["argus", "Argus"], ["money", "Money"], ["selling", "Selling"], ["icarus", "Icarus"], ["garage", "Garage"], ["odyssey", "Odyssey"], ["bastion", "Bastion"], ["records", "Records"], ["athenaeum", "Athenaeum"], ["privacy", "Privacy"]];
+    const nav = h("nav.compass", { "aria-label": "Modules" },
+      h("a", { href: "../../#board" }, "Desk"),
+      ...seats.map(([id, name]) => h("a", Object.assign({ href: "../" + id + "/" }, here === id ? { "aria-current": "page" } : {}), name)));
+    const spacer = bar.querySelector(".spacer");
+    if (spacer) spacer.replaceWith(nav);
+    else bar.append(nav);
+  }
 })();

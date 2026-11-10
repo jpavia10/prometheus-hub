@@ -29,13 +29,11 @@ let pointedWing = "";
 
 function atmosphere(date) {
   const hour = date.getHours();
-  if (hour < 5) return "Deep field";
-  if (hour < 8) return "Silver hour";
-  if (hour < 11) return "Clear field";
-  if (hour < 14) return "Meridian";
-  if (hour < 17) return "Long light";
-  if (hour < 20) return "Afterlight";
-  return hour < 23 ? "Quiet field" : "Deep field";
+  if (hour < 5) return "Night";
+  if (hour < 12) return "Morning";
+  if (hour < 17) return "Afternoon";
+  if (hour < 21) return "Evening";
+  return "Night";
 }
 
 function paintClock() {
@@ -195,7 +193,7 @@ function updateCta() {
   if (!hit) return;
   if (current === "sylade") hit.textContent = "Enter from the field";
   else if (current === "houses") hit.textContent = "Open the pointed house";
-  else if (current === "seats") hit.textContent = "Open the pointed wing";
+  else if (current === "seats") hit.textContent = "Open the module";
   else hit.textContent = "About this desk";
 }
 
