@@ -294,7 +294,7 @@
    "name": "Bossa Piano Studio",
    "kind": "capability",
    "route": "pillars/piano/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "piano"
   },
   {
@@ -310,7 +310,7 @@
    "name": "Bastion \u00b7 Mountain Prep",
    "kind": "capability",
    "route": "pillars/bastion/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "bastion"
   },
   {
