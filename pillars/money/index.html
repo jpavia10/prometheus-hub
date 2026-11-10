@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Money · Payoff Simulator</title>
+  <meta name="description" content="Money, a capability of Prometheus Hub: a sample-data payoff simulator.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#05070e">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="icon" href="../../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="../../kit/prometheus.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body data-pillar="money">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="bar">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="name">Money · Payoff Simulator</span>
+      <span class="spacer"></span>
+      <a class="back" href="../../">Prometheus</a>
+    </header>
+    <section class="hero">
+      <p class="kicker">Money · the payoff, simulated honestly</p>
+      <h1>Every dollar, <em>accounted</em>.</h1>
+      <p class="lede">A simulator with <strong>sample data only</strong> — it never reads Midas Ledger or any real balance. The preset is shaped like a real consolidation (its payment is the lender's actual quoted figure, not a textbook guess), and the math engine is verified against the research's own worked cases.</p>
+    </section>
+    <main id="app"></main>
+    <footer class="foot">
+      <span>Sample data only. Nothing here is a real balance, and nothing is sent anywhere.</span>
+      <button class="btn quiet small" id="export" type="button">Export</button>
+      <button class="btn quiet small" id="import" type="button">Import</button>
+      <a href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/money">Code and homework</a>
+    </footer>
+  </div>
+  <script src="../../kit/kit.js"></script>
+  <script src="../../kit/bus.js"></script>
+  <script src="engine.js"></script>
+  <script src="issuers.js"></script>
+  <script src="cases.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

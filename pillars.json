@@ -272,7 +272,7 @@
    "name": "Money \u00b7 payoff simulator",
    "kind": "capability",
    "route": "pillars/money/",
-   "state": "planned",
+   "state": "live",
    "dataOwner": "money",
    "research": [
     "MID-GEM-01",

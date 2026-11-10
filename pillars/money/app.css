@@ -1,0 +1,11 @@
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:700px){.compare{grid-template-columns:1fr}}
+.model h3{margin:0 0 4px;font-size:16px}
+.model .big{font-size:26px}
+.kv{display:flex;justify-content:space-between;padding:3px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}
+.kv b{font-weight:600}
+.issuer{padding:10px 0;border-bottom:1px solid rgba(159,180,204,.1)}
+.issuer h3{margin:0;font-size:15.5px}
+.issuer .formula{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:#9fd4e6;word-break:break-word}
+.sample{display:inline-block;font-size:11px;letter-spacing:.12em;border:1px solid rgba(255,180,162,.5);color:#ffb4a2;border-radius:999px;padding:2px 8px;vertical-align:middle}
+canvas.curve{width:100%;height:110px;display:block}
