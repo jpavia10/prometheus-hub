@@ -1,5 +1,5 @@
 /* Prometheus Hub. Network first. Same-origin shell only. No secrets. */
-var CACHE = "prometheus-hub-desk-v4";
+var CACHE = "prometheus-hub-desk-v5";
 var SHELL = [
   "./",
   "./index.html",
@@ -15,6 +15,7 @@ var SHELL = [
   "./icons/icon-maskable-512.png",
   "./kit/prometheus.css",
   "./kit/kit.js",
+  "./kit/bus.js",
   "./kit/fonts/outfit-latin-300-normal.woff2",
   "./kit/fonts/outfit-latin-400-normal.woff2",
   "./kit/fonts/outfit-latin-500-normal.woff2"
@@ -28,7 +29,7 @@ self.addEventListener("install", function (event) {
 
 self.addEventListener("activate", function (event) {
   event.waitUntil(caches.keys().then(function (keys) {
-    return Promise.all(keys.filter(function (key) { return key !== CACHE; }).map(function (key) {
+    return Promise.all(keys.filter(function (key) { return key.indexOf("prometheus-hub-") === 0 && key !== CACHE; }).map(function (key) {
       return caches.delete(key);
     }));
   }).then(function () { return self.clients.claim(); }));

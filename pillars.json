@@ -186,5 +186,203 @@
    "muse": "1eZa9R2ilnjNhWcnUwbX4RqqgQtznNUeK6EbFX7mFje4",
    "chatgpt": "1E_kRPm-G4fQF14JDjLePSD3AKkkod6RKN6v7l_Qmjeo"
   }
- }
+ },
+ "schemaVersion": 2,
+ "capabilities": [
+  {
+   "id": "arrival",
+   "name": "Arrival \u00b7 the desk",
+   "kind": "desk",
+   "route": "./",
+   "state": "live",
+   "dataOwner": "hub"
+  },
+  {
+   "id": "kairos",
+   "name": "Kairos Meridian",
+   "kind": "capability",
+   "route": "pillars/kairos/",
+   "state": "live",
+   "dataOwner": "time",
+   "research": [
+    "KAI-GEM-02"
+   ]
+  },
+  {
+   "id": "apollo",
+   "name": "Apollo Temple",
+   "kind": "capability",
+   "route": "pillars/apollo/",
+   "state": "partial",
+   "dataOwner": "body",
+   "research": [
+    "APO-GEM-01",
+    "APO-GEM-02",
+    "APO-GEM-03"
+   ]
+  },
+  {
+   "id": "hermes",
+   "name": "Hermes Post",
+   "kind": "capability",
+   "route": "pillars/hermes/",
+   "state": "partial",
+   "dataOwner": "mail",
+   "research": [
+    "HER-GEM-01",
+    "HER-GEM-02",
+    "HER-GEM-03"
+   ]
+  },
+  {
+   "id": "icarus",
+   "name": "Icarus Stake",
+   "kind": "capability",
+   "route": "pillars/icarus/",
+   "state": "partial",
+   "dataOwner": "trading",
+   "research": [
+    "ICA-GEM-03 (QUARANTINED: fails NYSE calendar audit)"
+   ]
+  },
+  {
+   "id": "argus",
+   "name": "Argus Album",
+   "kind": "capability",
+   "route": "pillars/argus/",
+   "state": "partial",
+   "dataOwner": "photos",
+   "research": [
+    "ARG-GEM-01",
+    "ARG-GEM-02",
+    "ARG-GEM-03"
+   ]
+  },
+  {
+   "id": "hearth",
+   "name": "Hephaestus Hearth \u00b7 House",
+   "kind": "capability",
+   "route": "https://jpavia10.github.io/hephaestus-hearth/",
+   "state": "partial",
+   "dataOwner": "house",
+   "note": "Lives in its own repo (external entry below); the desk links to it."
+  },
+  {
+   "id": "money",
+   "name": "Money \u00b7 payoff simulator",
+   "kind": "capability",
+   "route": "pillars/money/",
+   "state": "planned",
+   "dataOwner": "money",
+   "research": [
+    "MID-GEM-01",
+    "MID-GEM-02",
+    "MID-GEM-03"
+   ],
+   "note": "Hub-side SAMPLE simulator; Midas Ledger itself is a separate repo, link-only."
+  },
+  {
+   "id": "selling",
+   "name": "Selling Pipeline",
+   "kind": "capability",
+   "route": "pillars/selling/",
+   "state": "planned",
+   "dataOwner": "selling"
+  },
+  {
+   "id": "piano",
+   "name": "Bossa Piano Studio",
+   "kind": "capability",
+   "route": "pillars/piano/",
+   "state": "planned",
+   "dataOwner": "piano"
+  },
+  {
+   "id": "garage",
+   "name": "Garage \u00b7 2025 Sorento Hybrid",
+   "kind": "capability",
+   "route": "pillars/garage/",
+   "state": "planned",
+   "dataOwner": "garage"
+  },
+  {
+   "id": "bastion",
+   "name": "Bastion \u00b7 Mountain Prep",
+   "kind": "capability",
+   "route": "pillars/bastion/",
+   "state": "planned",
+   "dataOwner": "bastion"
+  },
+  {
+   "id": "athenaeum",
+   "name": "Athenaeum \u00b7 Idea Vault",
+   "kind": "capability",
+   "route": "pillars/athenaeum/",
+   "state": "planned",
+   "dataOwner": "athenaeum"
+  },
+  {
+   "id": "odyssey",
+   "name": "Odyssey \u00b7 Trips & Away Mode",
+   "kind": "capability",
+   "route": "pillars/odyssey/",
+   "state": "planned",
+   "dataOwner": "odyssey"
+  },
+  {
+   "id": "privacy",
+   "name": "Privacy \u00b7 CA DROP",
+   "kind": "capability",
+   "route": "pillars/privacy/",
+   "state": "planned",
+   "dataOwner": "privacy"
+  },
+  {
+   "id": "records",
+   "name": "Records \u00b7 Paper Killer",
+   "kind": "capability",
+   "route": "pillars/records/",
+   "state": "planned",
+   "dataOwner": "records"
+  },
+  {
+   "id": "presence",
+   "name": "Sylade \u00b7 Presence",
+   "kind": "capability",
+   "route": "sylade.html",
+   "state": "live",
+   "dataOwner": "presence"
+  }
+ ],
+ "external": [
+  {
+   "id": "titan",
+   "name": "Titan Reliquary",
+   "boundary": "locked_link_only",
+   "repo": "jpavia10/titan-reliquary-preview",
+   "live": "https://jpavia10.github.io/titan-reliquary-preview/"
+  },
+  {
+   "id": "midas",
+   "name": "Midas Ledger",
+   "boundary": "link_only",
+   "repo": "jpavia10/midas-ledger",
+   "live": "https://jpavia10.github.io/midas-ledger/"
+  },
+  {
+   "id": "hearth",
+   "name": "Hephaestus Hearth",
+   "boundary": "standalone_repo",
+   "repo": "jpavia10/hephaestus-hearth",
+   "live": "https://jpavia10.github.io/hephaestus-hearth/",
+   "note": "The HOUSE capability's home repo; hub links to it."
+  },
+  {
+   "id": "fleet",
+   "name": "Fleet Command",
+   "boundary": "paused",
+   "repo": "jpavia10/fleet-command",
+   "live": "https://jpavia10.github.io/fleet-command/"
+  }
+ ]
 }

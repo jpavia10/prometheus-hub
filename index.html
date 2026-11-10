@@ -79,6 +79,19 @@
           </div>
           <p class="focus-empty" id="focus-empty">Nothing kept yet. Notes stay in this browser. They are not synced.</p>
           <ul id="focus-list"></ul>
+        <div id="bus-strip" class="bus-strip" hidden></div>
+        <style>
+          .bus-strip{margin-top:18px;border:1px solid rgba(159,212,230,.22);border-radius:14px;padding:12px 14px;background:rgba(10,16,28,.45)}
+          .bus-head{display:flex;justify-content:space-between;align-items:baseline}
+          .bus-k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9fd4e6}
+          .bus-link{font-size:13px;color:#cfe3f5}
+          .bus-late{margin-top:6px;color:#ffb4a2;font-size:14px}
+          .bus-list{list-style:none;margin:8px 0 0;padding:0}
+          .bus-list li{display:flex;gap:10px;padding:4px 0;font-size:14.5px;color:#e8eef7;flex-wrap:wrap}
+          .bus-when{color:#9fb4cc;min-width:118px}
+          .bus-src{color:#7d90a9;font-size:12.5px}
+          .bus-more{margin-top:4px;color:#9fb4cc;font-size:13px}
+        </style>
         </form>
         <a class="drive-row" href="https://drive.google.com/drive/folders/1ykx47zGga6Jbd4FrUzBWde2frT3_6cnP" target="_blank" rel="noopener noreferrer" data-open="drive">
           <strong>Prometheus Hub Drive</strong>
@@ -374,5 +387,8 @@
     })();
   </script>
   <script type="module" src="./hub.js"></script>
+  <script src="kit/bus.js"></script>
+  <script src="pillars/kairos/fixed-dates.js"></script>
+  <script src="desk-strip.js"></script>
 </body>
 </html>
