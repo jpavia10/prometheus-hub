@@ -24,6 +24,47 @@
     { id: "midas", name: "Midas Ledger", href: "https://jpavia10.github.io/midas-ledger/" },
     { id: "hearth", name: "Hephaestus Hearth", href: "https://jpavia10.github.io/hephaestus-hearth/" }
   ];
+  const PAGES = [
+    { id: "kairos", hash: "t-now", name: "Now", words: "today focus clock" },
+    { id: "kairos", hash: "t-week", name: "Week", words: "calendar fourteen days" },
+    { id: "kairos", hash: "t-due", name: "Every deadline", words: "deadlines due" },
+    { id: "kairos", hash: "t-add", name: "Add an event", words: "event" },
+    { id: "apollo", hash: "t-today", name: "Today", words: "log day weight sleep steps training" },
+    { id: "apollo", hash: "t-trend", name: "Trends", words: "trend thirty day" },
+    { id: "apollo", hash: "t-hist", name: "Every day", words: "history days" },
+    { id: "apollo", hash: "t-goals", name: "Goals", words: "goals targets" },
+    { id: "piano", name: "Pattern player", words: "bossa tempo chords play" },
+    { id: "piano", name: "Chord library", words: "voicings" },
+    { id: "piano", name: "Clean-rep ladder", words: "practice bpm" },
+    { id: "piano", name: "Ear trainer", words: "chord quality" },
+    { id: "hermes", hash: "t-board", name: "Board", words: "triage mail inbox" },
+    { id: "hermes", hash: "t-add", name: "Add", words: "message" },
+    { id: "hermes", hash: "t-done", name: "Done", words: "finished" },
+    { id: "hermes", hash: "t-sylade", name: "Sylade", words: "alter ego" },
+    { id: "argus", hash: "t-all", name: "Album", words: "photos pictures" },
+    { id: "argus", hash: "t-add", name: "Add photos", words: "upload picture" },
+    { id: "money", hash: "t-cons", name: "The consolidation", words: "sample payoff simulator loan" },
+    { id: "money", hash: "t-strat", name: "Strategies", words: "avalanche snowball sample" },
+    { id: "money", hash: "t-iss", name: "Issuer rules", words: "minimum payment public terms" },
+    { id: "selling", name: "Pipeline", words: "staged listed shipped items" },
+    { id: "icarus", hash: "t-sum", name: "Summary", words: "journal curve" },
+    { id: "icarus", hash: "t-log", name: "Log a trade", words: "entry journal" },
+    { id: "icarus", hash: "t-all", name: "Every trade", words: "history journal" },
+    { id: "icarus", hash: "t-rules", name: "Rules", words: "bankroll stops" },
+    { id: "garage", name: "The car", words: "sorento odometer hybrid" },
+    { id: "garage", name: "Maintenance", words: "service oil filter tires" },
+    { id: "garage", name: "Fuel", words: "mpg gallons fill" },
+    { id: "odyssey", name: "Plan a trip", words: "packing away travel" },
+    { id: "bastion", name: "Storm watch", words: "weather frazier" },
+    { id: "bastion", name: "Inventory", words: "prep gear weight" },
+    { id: "bastion", name: "Readiness", words: "checklist bag" },
+    { id: "records", name: "The registry", words: "documents renewal school" },
+    { id: "athenaeum", name: "The vault", words: "ideas sparks" },
+    { id: "athenaeum", name: "Reading shelf", words: "history books" },
+    { id: "privacy", name: "California DROP", words: "deletion brokers" },
+    { id: "privacy", name: "Broker ledger", words: "opt out" },
+    { id: "privacy", name: "Account inventory", words: "accounts" }
+  ];
   const LIFE = ["garage", "hearth", "odyssey", "bastion", "records"];
   const LIFE_NAME = { garage: "Garage", hearth: "Hearth", odyssey: "Odyssey", bastion: "Bastion", records: "Records" };
   const SHAPES = new Set(["titan", "midas", "hearth", "apollo", "hermes", "kairos", "icarus", "argus"]);
@@ -257,61 +298,80 @@
       : `<li><span class="what">No car or home dates on this device yet.</span></li>`;
   }
 
+  function queryWords(q) {
+    return q.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  }
+  function queryHits(text, q) {
+    const raw = String(text || "").toLowerCase();
+    const parts = queryWords(q);
+    if (!parts.length || !raw) return false;
+    const words = raw.split(/[^a-z0-9]+/).filter(Boolean);
+    return parts.every((part) => words.some((word) => word.startsWith(part)) || (part.length >= 4 && raw.includes(part)));
+  }
   function buildHits(q) {
     const s = q.trim().toLowerCase();
     if (!s) return [];
     const out = [];
-    const room = () => out.length < 24;
+    const slot = () => out.length < 24;
     MODULES.forEach((m) => {
-      if (room() && `${m.name} ${m.what} ${m.group}`.toLowerCase().includes(s)) out.push({ kind: "module", id: m.id, label: m.name, hint: m.what });
+      if (slot() && queryHits(`${m.name} ${m.id} ${m.what} ${m.group}`, s)) out.push({ kind: "module", id: m.id, label: m.name, hint: m.what });
+    });
+    PAGES.forEach((page) => {
+      const mod = MODULES.find((m) => m.id === page.id);
+      if (!mod || !slot()) return;
+      if (s === mod.name.toLowerCase() || s === mod.id) return;
+      const local = `${page.name} ${page.words}`;
+      if (!queryHits(`${mod.name} ${mod.id} ${local}`, s)) return;
+      if (!queryHits(local, s)) return;
+      out.push({ kind: "module", id: mod.id, hash: page.hash || "", label: `${mod.name} · ${page.name}`, hint: "Page in " + mod.name });
     });
     EXTERNAL.forEach((m) => {
-      if (room() && m.name.toLowerCase().includes(s)) out.push({ kind: "external", href: m.href, label: m.name, hint: "Opens its own site" });
+      if (slot() && queryHits(m.name, s)) out.push({ kind: "external", href: m.href, label: m.name, hint: "Opens its own site" });
     });
     let n = 0;
     dates().forEach((d) => {
-      if (room() && n < 6 && `${d.name} ${d.kind} ${d.date}`.toLowerCase().includes(s)) {
+      if (slot() && n < 6 && queryHits(`${d.name} ${d.kind} ${d.date}`, s)) {
         n += 1;
-        out.push({ kind: "module", id: "kairos", label: d.name, hint: `${d.date} · ${d.kind}` });
+        out.push({ kind: "module", id: "kairos", hash: "t-due", label: d.name, hint: `${d.date} · ${d.kind}` });
       }
     });
     n = 0;
     market().forEach((d) => {
-      if (room() && n < 4 && `${d.name} ${d.date} nyse`.includes(s)) {
+      if (slot() && n < 4 && queryHits(`${d.name} ${d.date} nyse session`, s)) {
         n += 1;
         out.push({ kind: "module", id: "icarus", label: d.name, hint: `NYSE · ${d.date}` });
       }
     });
     n = 0;
     services().forEach((svc) => {
-      if (room() && n < 4 && String(svc.name || "").toLowerCase().includes(s)) {
+      if (slot() && n < 4 && queryHits(String(svc.name || ""), s)) {
         n += 1;
-        out.push({ kind: "module", id: "garage", label: svc.name, hint: "Opens Garage" });
+        out.push({ kind: "module", id: "garage", hash: "", label: svc.name, hint: "Opens Garage" });
       }
     });
     n = 0;
     offers().forEach((o) => {
-      if (room() && n < 4 && `${o.issuer} ${o.product}`.toLowerCase().includes(s)) {
+      if (slot() && n < 4 && queryHits(`${o.issuer} ${o.product}`, s)) {
         n += 1;
         out.push({ kind: "offer", href: o.url, label: `${o.issuer} · ${o.product}`, hint: `${o.months} months · public term` });
       }
     });
     hardship().forEach((o) => {
-      if (room() && n < 6 && `${o.lender} ${o.program}`.toLowerCase().includes(s)) {
+      if (slot() && n < 6 && queryHits(`${o.lender} ${o.program}`, s)) {
         n += 1;
         out.push({ kind: "offer", href: o.url, label: o.lender, hint: `${o.program} · public term` });
       }
     });
     if (window.PB) {
-      PB.deadlines.list().filter((d) => !d.done && d.source !== "kairos-fixed" && `${d.title} ${d.date}`.toLowerCase().includes(s) && !/\$/.test(String(d.title || "")))
+      PB.deadlines.list().filter((d) => !d.done && d.source !== "kairos-fixed" && queryHits(`${d.title} ${d.date}`, s) && !/\$/.test(String(d.title || "")))
         .slice(0, 4)
-        .forEach((d) => { if (room()) out.push({ kind: "module", id: MODULES.some((m) => m.id === d.source) ? d.source : "kairos", label: clean(d.title), hint: `${d.date} · ${d.source}` }); });
+        .forEach((d) => { if (slot()) out.push({ kind: "module", id: MODULES.some((m) => m.id === d.source) ? d.source : "kairos", label: clean(d.title), hint: `${d.date} · ${d.source}` }); });
     }
-    readList("prometheus.records.docs").forEach((d) => { if (room() && d && d.title && String(d.title).toLowerCase().includes(s)) out.push({ kind: "module", id: "records", label: d.title, hint: "Record on this device" }); });
-    readList("prometheus.kairos.events").forEach((d) => { if (room() && d && d.title && String(d.title).toLowerCase().includes(s)) out.push({ kind: "module", id: "kairos", label: d.title, hint: d.date || "Kairos" }); });
-    readList("prometheus.selling.items").forEach((d) => { if (room() && d && d.title && String(d.title).toLowerCase().includes(s) && !/\$/.test(String(d.title))) out.push({ kind: "module", id: "selling", label: d.title, hint: "Selling" }); });
-    readList("prometheus.bastion.items").forEach((d) => { if (room() && d && d.name && String(d.name).toLowerCase().includes(s)) out.push({ kind: "module", id: "bastion", label: d.name, hint: "Bastion" }); });
-    readList("prometheus.hermes.mail").forEach((d) => { if (room() && d && !d.done && `${d.from} ${d.about}`.toLowerCase().includes(s)) out.push({ kind: "module", id: "hermes", label: `${d.from || ""} · ${d.about || ""}`, hint: "Hermes" }); });
+    readList("prometheus.records.docs").forEach((d) => { if (slot() && d && d.title && queryHits(d.title, s)) out.push({ kind: "module", id: "records", label: d.title, hint: "Record on this device" }); });
+    readList("prometheus.kairos.events").forEach((d) => { if (slot() && d && d.title && queryHits(d.title, s)) out.push({ kind: "module", id: "kairos", label: d.title, hint: d.date || "Kairos" }); });
+    readList("prometheus.selling.items").forEach((d) => { if (slot() && d && d.title && queryHits(d.title, s) && !/\$/.test(String(d.title))) out.push({ kind: "module", id: "selling", label: d.title, hint: "Selling" }); });
+    readList("prometheus.bastion.items").forEach((d) => { if (slot() && d && d.name && queryHits(d.name, s)) out.push({ kind: "module", id: "bastion", label: d.name, hint: "Bastion" }); });
+    readList("prometheus.hermes.mail").forEach((d) => { if (slot() && d && !d.done && queryHits(`${d.from} ${d.about}`, s)) out.push({ kind: "module", id: "hermes", label: `${d.from || ""} · ${d.about || ""}`, hint: "Hermes" }); });
     const actions = [
       ["backup", "Download backup", "backup"],
       ["restore", "Restore a backup", "restore"],
@@ -320,7 +380,7 @@
       ["contrast", "High contrast", "contrast"],
       ["help", "Shortcut sheet", "help"]
     ];
-    actions.forEach(([word, label, id]) => { if (room() && (word.includes(s) || label.toLowerCase().includes(s))) out.push({ kind: "action", id, label, hint: "Action" }); });
+    actions.forEach(([word, label, id]) => { if (slot() && queryHits(`${word} ${label}`, s)) out.push({ kind: "action", id, label, hint: "Action" }); });
     if (s.startsWith("note ")) out.unshift({ kind: "action", id: "note-save", text: q.trim().slice(5), label: "Save today's note", hint: q.trim().slice(5) });
     if (s.startsWith("remind ")) out.unshift({ kind: "action", id: "remind-save", text: q.trim().slice(7), label: "Save reminder", hint: q.trim().slice(7) });
     return out.slice(0, 24);
@@ -331,21 +391,29 @@
     const input = $("#cmd");
     if (!box || !input) return;
     if (!hits.length) {
+      input.removeAttribute("aria-activedescendant");
       if (input.value.trim()) {
         box.hidden = false;
+        box.setAttribute("role", "status");
         input.setAttribute("aria-expanded", "true");
-        box.innerHTML = `<p class="cmd-empty">Nothing matches.</p>`;
+        box.innerHTML = `<p class="cmd-empty">No matches for “${esc(input.value.trim())}”. Try a module, one of its pages, or a date.</p>`;
         return;
       }
       box.hidden = true;
+      box.setAttribute("role", "listbox");
       input.setAttribute("aria-expanded", "false");
       box.innerHTML = "";
       return;
     }
     box.hidden = false;
+    box.setAttribute("role", "listbox");
     input.setAttribute("aria-expanded", "true");
+    input.setAttribute("aria-activedescendant", "hit-" + sel);
     box.innerHTML = hits.map((h, i) => `<button type="button" role="option" id="hit-${i}" class="${i === sel ? "on" : ""}" aria-selected="${i === sel}"><strong>${esc(clean(h.label))}</strong><small>${esc(clean(h.hint))}</small></button>`).join("");
-    box.querySelectorAll("button").forEach((b, i) => b.addEventListener("click", () => activate(hits[i])));
+    box.querySelectorAll("button").forEach((b, i) => {
+      b.addEventListener("mousedown", (e) => e.preventDefault());
+      b.addEventListener("click", () => activate(hits[i]));
+    });
     const on = box.querySelector(".on");
     if (on) on.scrollIntoView({ block: "nearest" });
   }
@@ -359,7 +427,7 @@
   function activate(hit) {
     if (!hit) return;
     if (hit.kind === "action") { runAction(hit); $("#cmd").value = ""; closeHits(); return; }
-    if (hit.kind === "module") showModule(hit.id);
+    if (hit.kind === "module") showModule(hit.id, hit.hash || "");
     else if (hit.kind === "external" || hit.kind === "offer") window.open(hit.href, "_blank", "noopener");
     $("#cmd").value = "";
     closeHits();
@@ -377,9 +445,20 @@
     paintSwitcher();
   }
 
-  function showModule(id) {
+  function framePage(id) {
+    const frame = $("#module-frame");
+    const mod = MODULES.find((m) => m.id === id);
+    if (!frame || !mod) return "";
+    const src = frame.getAttribute("src") || "";
+    if (src.indexOf(mod.href) !== 0) return "";
+    const cut = src.indexOf("#");
+    return cut >= 0 ? src.slice(cut + 1) : "";
+  }
+
+  function showModule(id, hash) {
     const mod = MODULES.find((m) => m.id === id);
     if (!mod) return;
+    const pageHash = hash == null ? framePage(id) : hash;
     const board = $("#board");
     const stage = $("#module-stage");
     if (board) board.hidden = true;
@@ -387,9 +466,10 @@
     const title = $("#module-title");
     if (title) title.textContent = mod.name;
     const open = $("#module-open");
-    if (open) open.href = mod.href;
+    const page = pageHash ? mod.href + "#" + pageHash : mod.href;
+    if (open) open.href = page;
     const frame = $("#module-frame");
-    const next = mod.href + "?embed=1";
+    const next = mod.href + "?embed=1" + (pageHash ? "#" + pageHash : "");
     if (frame && frame.getAttribute("src") !== next) frame.src = next;
     if (location.hash !== "#" + id) location.hash = id;
     focusField(id);
@@ -415,7 +495,7 @@
     else showBoard();
   }
 
-  const BUILD = "v12";
+  const BUILD = "v13";
   function deskToast(msg, undo) {
     document.querySelectorAll(".toast").forEach((n) => n.remove());
     const t = document.createElement("div");
@@ -629,16 +709,42 @@
     if (input && params.get("q")) { input.value = params.get("q"); hits = buildHits(input.value); sel = 0; paintHits(); }
     if (input) input.addEventListener("input", () => { hits = buildHits(input.value); sel = 0; paintHits(); });
     if (form) form.addEventListener("submit", (e) => { e.preventDefault(); if (hits[sel]) activate(hits[sel]); });
+    function moveHit(dir) {
+      if (!hits.length) return;
+      sel = dir < 0 ? Math.max(0, sel - 1) : Math.min(hits.length - 1, sel + 1);
+      paintHits();
+    }
     if (input) input.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowDown" && hits.length) { e.preventDefault(); sel = Math.min(hits.length - 1, sel + 1); paintHits(); }
-      else if (e.key === "ArrowUp" && hits.length) { e.preventDefault(); sel = Math.max(0, sel - 1); paintHits(); }
-      else if (e.key === "Escape") { input.value = ""; closeHits(); input.blur(); }
+      if (e.key === "ArrowDown") { e.preventDefault(); moveHit(1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); moveHit(-1); }
+      else if (e.key === "Enter") { if (hits[sel]) { e.preventDefault(); activate(hits[sel]); } }
+      else if (e.key === "Escape") {
+        e.preventDefault();
+        e.stopPropagation();
+        input.value = "";
+        closeHits();
+        input.blur();
+      }
     });
     document.addEventListener("keydown", (e) => {
-      if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
+      const dialogOpen = document.querySelector("dialog[open]");
+      if (e.key === "Escape" && !dialogOpen && (hits.length || document.activeElement === input)) {
+        e.preventDefault();
+        if (input) { input.value = ""; if (document.activeElement === input) input.blur(); }
+        closeHits();
+        return;
+      }
+      if ((e.key === "ArrowDown" || e.key === "ArrowUp") && hits.length && e.target.closest && e.target.closest("#cmd-hits")) {
+        e.preventDefault();
+        moveHit(e.key === "ArrowDown" ? 1 : -1);
+        if (input) input.focus();
+        return;
+      }
+      if (e.defaultPrevented || dialogOpen) return;
       const tag = document.activeElement && document.activeElement.tagName;
       const typing = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (document.activeElement && document.activeElement.isContentEditable);
-      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || (e.key === "/" && !typing)) {
+      const key = (e.key || "").toLowerCase();
+      if ((key === "k" && (e.metaKey || e.ctrlKey) && !e.altKey) || (e.key === "/" && !typing)) {
         e.preventDefault();
         if (input) { input.focus(); input.select(); }
       } else if (!typing && e.key === "?") {

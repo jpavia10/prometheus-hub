@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-10] Grok: command deck polish
+- Search on the home desk opens with / or Ctrl/Cmd+K, closes with Esc, and moves with the arrow keys and Enter. Results include modules and their pages, with a plain empty state. Visible copy says modules. Shell cache v13.
+
 ### [2026-11-10] Grok: command deck on the home page
 - Rebuilt the home desk around search, next dates, the NYSE session, car and home dates, since-you-were-away, and module status. Food and exercise stay in Apollo. Public card terms are search results. Outfit and the kit stay first. Shell cache v12.
 

@@ -13,7 +13,7 @@
       <div class="glass span-12"><h2>Capture a spark</h2>
         <form class="form" id="a-form"><label class="f wide">Title<input name="title" required maxlength="120"></label>
         <label class="f wide">The idea<textarea class="ta" name="body" required maxlength="2000"></textarea></label>
-        <label class="f wide">Tags (comma separated)<input name="tags" maxlength="120" placeholder="debt, history, house"></label>
+        <label class="f wide">Tags (comma separated)<input name="tags" maxlength="120" placeholder="debt, history, reading"></label>
         <button class="btn" type="submit">Keep it</button></form></div>
       <div class="glass span-12"><h2>The vault</h2>
         <form class="form"><label class="f wide">Search ideas and refinements<input id="a-q" type="search"></label></form>
