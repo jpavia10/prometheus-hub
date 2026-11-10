@@ -18,10 +18,11 @@ if (canvas) {
 
 const FOCUS_KEY = "prometheus-hub.focus.v1";
 const CHAPTERS = ["desk", "sylade", "houses", "seats"];
-const WING_HASHES = new Set([
-  "titan", "midas", "hearth", "apollo", "hermes", "kairos",
-  "icarus", "argus", "drive", "fleet"
-]);
+/* Every sheet on the desk is deep-linkable (#money, #records, ...). Derived from the dialogs themselves
+   so a new door can never be added without its hash working. */
+const WING_HASHES = new Set(Array.from(document.querySelectorAll("dialog.sheet[id^='sheet-']"), function (d) {
+  return d.id.replace(/^sheet-/, "");
+}).filter(function (id) { return CHAPTERS.indexOf(id) === -1; })); /* #desk is the Today chapter, not the About sheet */
 
 let openName = null;
 let pointedWing = "";
@@ -351,7 +352,8 @@ if ("IntersectionObserver" in window && panels.length) {
 
 function openHash() {
   const id = (location.hash || "").replace("#", "");
-  if (WING_HASHES.has(id)) openSheet(id);
+  if (WING_HASHES.has(id)) { openSheet(id); return; }
+  if (openName) { const open = document.getElementById("sheet-" + openName); if (open && open.open) open.close(); }
 }
 window.addEventListener("hashchange", openHash);
 openHash();
