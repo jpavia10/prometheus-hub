@@ -1,6 +1,9 @@
 /* Kairos fixed dates 2026-2028 (Sebastian, 2026-11-09): baked from research deliverable KAI-GEM-02
    (kairos_gemini_dates_20261106-1620.json — 58 dates: 33 federal holidays, 19 tax deadlines, 6 clock
-   changes; each row carried a source quote + URL in the deliverable, URLs kept here). Published to the
+   changes; each row carried a source quote + URL in the deliverable, URLs kept here).
+   2027 re-verified by Grok 2026-11-10 (KAIROS-GROK-dates2027_20261110-1652.json, 20 unique rows) against
+   OPM, IRS Pub 509 (2027 DRAFT), and 15 U.S.C. 260a; all 20 dates match. 2027 clock-change URLs now cite
+   the statute (GovInfo) instead of timeanddate.com. Published to the
    shared deadlines bus (kit/bus.js) by pillars/kairos/app.js so every capability sees them. */
 window.KAIROS_FIXED = [
  {
@@ -331,13 +334,13 @@ window.KAIROS_FIXED = [
   "date": "2027-03-14",
   "name": "US Daylight Saving Time Starts (Spring Forward)",
   "kind": "clock change",
-  "url": "https://www.timeanddate.com/time/change/usa?year=2027"
+  "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap6-subchapIX-sec260a.htm"
  },
  {
   "date": "2027-11-07",
   "name": "US Daylight Saving Time Ends (Fall Back)",
   "kind": "clock change",
-  "url": "https://www.timeanddate.com/time/change/usa?year=2027"
+  "url": "https://www.govinfo.gov/content/pkg/USCODE-2023-title15/html/USCODE-2023-title15-chap6-subchapIX-sec260a.htm"
  },
  {
   "date": "2028-03-12",
