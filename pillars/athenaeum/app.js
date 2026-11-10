@@ -40,7 +40,7 @@
       el.append(h("div.idea", null,
         h("h3", null, i.title),
         h("div", null, i.body),
-        h("div", { style: "margin-top:4px" }, ...(i.tags || []).map((t) => h("span.tag", null, t)), h("span.stat-s", null, ` sparked ${i.created}`)),
+        h("div", { style: "margin-top:4px" }, ...(i.tags || []).map((t) => h("span.tag", null, t)), h("span.stat-s", null, ` sparked ${i.created}${i.source ? " · via " + i.source : ""}${i.strength ? " · strength " + i.strength + "/5" : ""}`)),
         h("div.chain", null, ...i.chain.map((c) => h("div", null, h("span.when", null, c.date + " — "), c.text))),
         h("div.row-actions", { style: "margin-top:6px" },
           h("button.btn.quiet.small", { type: "button", onclick: () => { const t = prompt("Refinement (appended with today's date — the original stays untouched):"); if (t) { i.chain.push({ date: day(), text: t }); i.lastResurfaced = day(); S.set("ideas", ideas); paint(); } } }, "Add refinement"),
@@ -56,6 +56,45 @@
     S.add("shelf", { title: f.title.value.trim(), author: f.author.value.trim(), kind: f.kind.value, status: f.status.value, chain: f.chain.value.trim() }); f.reset(); paint(); });
   $("#a-q").addEventListener("input", paint);
   $("#export").onclick = () => download(`athenaeum_${day()}.json`, S.dump());
-  $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
+  $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try {
+      const incoming = JSON.parse(await f.text());
+      const ideas = Array.isArray(incoming) ? incoming : (incoming.ideas || []);
+      const shelf = Array.isArray(incoming) ? [] : (incoming.shelf || []);
+      const merged = ATH_MERGE.mergeIdeas(S.list("ideas"), ideas);
+      S.set("ideas", merged.all);
+      if (shelf.length) { const cur = S.list("shelf"); const seen = new Set(cur.map((b) => b.title.toLowerCase())); for (const b of shelf) if (!seen.has(b.title.toLowerCase())) cur.push(b); S.set("shelf", cur); }
+      toast(`Merged: ${merged.added} new idea(s), ${merged.updated} updated`); paint();
+    } catch (e) { toast(e.message); } };
   paint();
+})();
+
+/* Athenaeum import merge (Sebastian, 2026-11-10): imports MERGE, never replace.
+   Ideas match by normalized title; a match appends only the chain entries it lacks
+   (by date+text) and adopts source/strength when the stored idea has none.
+   window.ATH_MERGE = { mergeIdeas } — pure, unit-tested. */
+(function () {
+  "use strict";
+  const norm = (t) => String(t || "").toLowerCase().replace(/\s+/g, " ").trim();
+  function mergeIdeas(existing, incoming) {
+    const all = existing.map((i) => ({ ...i, chain: [...(i.chain || [])] }));
+    const byTitle = new Map(all.map((i) => [norm(i.title), i]));
+    let added = 0, updated = 0;
+    for (const inc of incoming || []) {
+      if (!inc || !inc.title) continue;
+      const key = norm(inc.title);
+      const cur = byTitle.get(key);
+      if (!cur) { const ni = { title: inc.title, body: inc.body || "", tags: inc.tags || [], created: inc.created || new Date().toISOString().slice(0, 10), chain: inc.chain || [], lastResurfaced: null, archived: false, ...(inc.source ? { source: inc.source } : {}), ...(inc.strength ? { strength: inc.strength } : {}) }; all.push(ni); byTitle.set(key, ni); added++; continue; }
+      let changed = false;
+      const have = new Set(cur.chain.map((c) => c.date + "|" + c.text));
+      for (const c of inc.chain || []) if (!have.has(c.date + "|" + c.text)) { cur.chain.push(c); changed = true; }
+      if (!cur.source && inc.source) { cur.source = inc.source; changed = true; }
+      if (!cur.strength && inc.strength) { cur.strength = inc.strength; changed = true; }
+      cur.chain.sort((a, b) => String(a.date).localeCompare(String(b.date)));
+      if (changed) updated++;
+    }
+    return { all, added, updated };
+  }
+  const M = { mergeIdeas };
+  if (typeof window !== "undefined") window.ATH_MERGE = M;
+  if (typeof globalThis !== "undefined") globalThis.ATH_MERGE = M;
 })();
