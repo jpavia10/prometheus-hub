@@ -1,4 +1,7 @@
 
+### [2026-11-10] Grok: home desk is a command deck
+- The home page leads with search (`/`, Ctrl/Cmd+K, arrows, Enter, Esc, `?`). Under it, the module row has previous/next and `[` `]` or Alt+arrows. The glass shows next dates, the NYSE session, car and home dates, since-you-were-away, and module status. Apollo food and exercise, and the public card-term tables, are off the home desk. Fleet Command stays paused. Shell cache is v12.
+
 ### [2026-11-09] Sebastian (acting integrator, follow-up): door copy applied to the desk
 - At Joseph's word after he saw no visible change from the merge: the verified HUB-MUS-01 copy is now ON the desk. index.html door rows carry the one-line purposes; every door sheet (Titan, Midas, Hearth, Apollo, Hermes, Kairos, Icarus, Argus, Drive, Fleet) gained its Today lines; the Drive card and the Sylade panel carry their door lines; sylade.html lede set to the Sylade purpose; pillars.json "what" fields aligned to the same copy. Re-rendered + Drive READMEs re-synced.
 

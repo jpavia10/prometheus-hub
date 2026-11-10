@@ -2,7 +2,7 @@
    Technique adapted from MisterPrada/morph-particles:
    https://github.com/MisterPrada/morph-particles
    Positions live in float data textures. A simulation pass mixes the
-   chapter shapes, then blends toward a focused wing. Points draw additively.
+   chapter shapes, then blends toward a focused module. Points draw additively.
    The palette is silver, ice, and muted lavender. No warm metal. */
 
 export const simulationVert = /* glsl */ `

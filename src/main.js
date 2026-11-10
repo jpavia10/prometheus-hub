@@ -6,9 +6,10 @@ document.documentElement.classList.add("js");
 
 const canvas = document.getElementById("field");
 let field = null;
-if (canvas) {
+  if (canvas) {
   try {
     field = startField(canvas);
+    window.PROMETHEUS_FIELD = field;
     document.documentElement.classList.add("has-gl");
   } catch (error) {
     document.documentElement.classList.add("no-gl");
@@ -99,9 +100,16 @@ function renderNotes() {
     button.textContent = "Done";
     button.addEventListener("click", function () {
       const next = readNotes();
+      const removed = next[index];
       next.splice(index, 1);
       writeNotes(next);
       renderNotes();
+      undoToast("Note removed", function () {
+        const back = readNotes();
+        back.splice(Math.min(index, back.length), 0, removed);
+        writeNotes(back);
+        renderNotes();
+      });
     });
     li.append(text, button);
     list.append(li);
@@ -111,9 +119,35 @@ function renderNotes() {
   if (input) input.disabled = items.length >= 4;
 }
 
+function undoToast(message, undo) {
+  let node = document.querySelector(".toast");
+  if (!node) {
+    node = document.createElement("div");
+    node.className = "toast";
+    node.setAttribute("role", "status");
+    document.body.append(node);
+  }
+  node.replaceChildren();
+  node.hidden = false;
+  node.append(document.createTextNode(message));
+  if (typeof undo === "function") {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = "Undo";
+    button.addEventListener("click", function () {
+      undo();
+      node.hidden = true;
+    });
+    node.append(button);
+  }
+  window.clearTimeout(undoToast.timer);
+  undoToast.timer = window.setTimeout(function () { node.hidden = true; }, 6000);
+}
+
 const focusForm = document.getElementById("focus-form");
 if (focusForm) {
   renderNotes();
+  document.addEventListener("desk-notes", renderNotes);
   focusForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const input = document.getElementById("focus-input");
@@ -177,12 +211,8 @@ function updateCta() {
     cta.textContent = "Enter Sylade →";
     cta.dataset.mode = "handoff";
     delete cta.dataset.wing;
-  } else if (current === "houses") {
-    cta.textContent = "Read a house";
-    cta.dataset.mode = "houses";
-    delete cta.dataset.wing;
   } else if (current === "seats") {
-    cta.textContent = "Read the day";
+    cta.textContent = "Open Kairos";
     cta.dataset.mode = "kairos";
     delete cta.dataset.wing;
   } else {
@@ -192,7 +222,6 @@ function updateCta() {
   }
   if (!hit) return;
   if (current === "sylade") hit.textContent = "Enter from the field";
-  else if (current === "houses") hit.textContent = "Open the pointed house";
   else if (current === "seats") hit.textContent = "Open the module";
   else hit.textContent = "About this desk";
 }
@@ -276,11 +305,6 @@ if (cta && isDesk) {
     }
     if (mode === "handoff") {
       handoff("sylade.html", "Sylade");
-      return;
-    }
-    if (mode === "houses") {
-      const target = pointedWing || "titan";
-      openSheet(target);
       return;
     }
     if (mode === "kairos") {

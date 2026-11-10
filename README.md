@@ -1,6 +1,6 @@
 # Prometheus Hub
 
-Joseph’s desk. One page, cool midnight, a field you can point at. The doors open outward. The room itself keeps the clock, the day, and a few lines on this device.
+Joseph’s desk. One page, cool midnight, a field you can point at. Search leads. The page keeps the clock, the next dates, the session, and a few lines on this device.
 
 https://jpavia10.github.io/prometheus-hub/
 
@@ -29,17 +29,17 @@ python3 -m http.server 8742
 
 ## What the desk keeps
 
-- A clock and a day arc, from the device clock. The word above the time is only the hour, still in the cool palette.
+- A clock, from the device clock. The word above the name is only the hour, still in the cool palette.
+- Search first: `/` or Ctrl/Cmd+K. Arrows move, Enter opens, Esc closes, `?` lists shortcuts. `[` `]` or Alt+arrows move along the module row.
+- Next dates, the NYSE session, car and home dates, since-you-were-away, and module status. Food and exercise stay in Apollo. Public card terms open from search, or from Money.
 - Focus lines in `localStorage` (`prometheus-hub.focus.v1`). They stay in that browser. They are not synced.
-- Desk rounds: a short daily checklist you write yourself, reset each morning with a streak (`prometheus-hub.rounds.v1`).
-- The deck layer (`desk-deck.js`): `/` or Ctrl/Cmd+K opens one search over every door, the records this device keeps and upcoming fixed dates; group chips and a filter over the wings (remembered in `prometheus-hub.deck.v1`); every sheet has Prev/Next (also ← →), what this device keeps for that wing, and a copyable deep link (`#money`, `#records`, …); the last door opened comes back as a Resume chip.
-- The deck backup includes every `prometheus.*` and `prometheus-hub.*` key.
-- In-hub sheets for every wing. Live wings open outward from the sheet. Reserved seats have no site yet.
-- A particle field, adapted from [MisterPrada/morph-particles](https://github.com/MisterPrada/morph-particles). Scroll moves nebula → twin → three houses → day arc. Pointing at a wing bends the field into that wing’s shape. Shapes are drawn here. The christmas models are not included.
+- The backup includes every `prometheus.*` and `prometheus-hub.*` key. A restore can be undone.
+- Modules open in the desk and on their own pages (`#kairos`, `#records`, and the rest).
+- A particle field, adapted from [MisterPrada/morph-particles](https://github.com/MisterPrada/morph-particles). Pointing at a module that has a shape bends the field. Shapes are drawn here. The christmas models are not included.
 
 ## Map
 
-Sylade is the alter ego, not a wing and not Fleet Command.
+Sylade is the alter ego, and not Fleet Command.
 
 | | Where it goes |
 | --- | --- |
@@ -65,7 +65,7 @@ Public contacts, also on `sylade.html`:
 
 That Discord room is not the Fleet Command site. No other Sylade addresses are published here.
 
-Change a door in `index.html` and, for Sylade, in `sylade.html`. Keep addresses `https`. Leave a seat without an outbound link until the page is real.
+Change a module in `index.html` and, for Sylade, in `sylade.html`. Keep addresses `https`. Leave a seat without an outbound link until the page is real.
 
 ## Home screen
 

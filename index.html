@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
   <title>Prometheus Hub</title>
-  <meta name="description" content="Prometheus Hub: calendar, market sessions, Sorento service schedule, food lookup, and public card terms. One desk, fourteen modules.">
+  <meta name="description" content="Prometheus Hub command desk: search, next dates, the NYSE session, car and home dates, and module status.">
   <meta name="theme-color" content="#05070e">
   <meta name="color-scheme" content="dark">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,140 +16,119 @@
   <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-  <meta name="desk-build" content="v11">
+  <meta name="desk-build" content="v12">
   <link rel="stylesheet" href="./kit/prometheus.css">
   <link rel="stylesheet" href="./styles.css">
   <script>document.documentElement.classList.add("js")</script>
 </head>
-<body data-page="desk" data-layout="work">
+<body data-page="desk" data-layout="command">
   <a class="skip" href="#board">Skip to the desk</a>
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="veil" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <a class="brand" href="#board">
-      <span class="sq" aria-hidden="true"></span>
-      <span>Prometheus</span>
-    </a>
-    <form class="cmd" id="cmd-form" role="search">
-      <button type="button" id="cmd-open">Search</button>
-      <input id="cmd" type="search" placeholder="Search modules, records, dates, actions  ·  /" aria-label="Search the desk" aria-controls="cmd-hits" aria-expanded="false" autocomplete="off" enterkeyhint="search">
-      <div id="cmd-hits" class="cmd-hits" role="listbox" hidden></div>
-    </form>
-    <div class="clock-block top-clock" id="away-clocks" hidden></div>
-    <div class="clock-block top-clock">
-      <time class="clock" data-clock datetime="">—</time>
-      <p class="day-line" data-day></p>
-    </div>
-  </header>
-
-  <div class="work">
-    <nav class="switcher" id="switcher" aria-label="Modules"></nav>
-
-    <div class="stage">
-      <div id="board">
-        <header class="board-head">
-          <h1>Desk</h1>
-          <p class="lede" id="board-lede">Loading the calendars and reference tables.</p>
-        </header>
-
-        <section class="dash" aria-label="Status">
-          <article class="tile" id="tile-session"><p class="k">NYSE</p><p class="v" id="session-state">—</p><p class="s" id="session-why"></p></article>
-          <article class="tile" id="tile-next"><p class="k">Next date</p><p class="v" id="next-date">—</p><p class="s" id="next-name"></p></article>
-          <article class="tile" id="tile-apollo"><p class="k">Apollo tables</p><p class="v" id="apollo-count">—</p><p class="s" id="apollo-split"></p></article>
-          <article class="tile" id="tile-offers"><p class="k">Public card terms</p><p class="v" id="offer-count">—</p><p class="s">Issuer pages, not an account</p></article>
-        </section>
-
-        <div class="cols">
-          <section class="pane" id="pane-cal">
-            <div class="pane-h">
-              <h2>Calendar</h2>
-              <div class="chips" id="cal-chips" role="group" aria-label="Calendar filter"></div>
-            </div>
-            <ul class="rows" id="cal-list"></ul>
-          </section>
-
-          <section class="pane" id="pane-market">
-            <div class="pane-h"><h2>NYSE sessions</h2><p class="s" id="market-note"></p></div>
-            <ul class="rows" id="market-list"></ul>
-          </section>
-
-          <section class="pane" id="pane-garage">
-            <div class="pane-h">
-              <h2>2025 Sorento Hybrid</h2>
-              <p class="s">Severe schedule. Mountain roads, Frazier Park. Kia owner's manual pp. 9-9–9-12.</p>
-            </div>
-            <div class="table-wrap"><table class="gridt" id="garage-table"><thead><tr><th>Service</th><th>Miles</th><th>Months</th></tr></thead><tbody></tbody></table></div>
-          </section>
-
-          <section class="pane" id="pane-food">
-            <div class="pane-h"><h2>Food and exercise</h2></div>
-            <form class="inline" id="food-form">
-              <input id="food-q" type="search" placeholder="Search foods or exercises" aria-label="Search Apollo tables" autocomplete="off">
-            </form>
-            <ul class="rows" id="food-list"></ul>
-          </section>
-
-          <section class="pane" id="pane-offers">
-            <div class="pane-h">
-              <h2>Balance transfer and hardship</h2>
-              <p class="s">Public terms read from issuer sites on 2026-11-10. No balances.</p>
-            </div>
-            <form class="inline" id="offer-form">
-              <input id="offer-q" type="search" placeholder="Issuer or product" aria-label="Search public card terms" autocomplete="off">
-              <div class="chips" id="offer-chips" role="group" aria-label="Term type"></div>
-            </form>
-            <ul class="rows" id="offer-list"></ul>
-          </section>
-
-          <section class="pane" id="pane-keep">
-            <div class="pane-h"><h2>This browser</h2><p class="s" id="build-stamp"></p></div>
-            <p class="s" id="away-card"></p>
-            <p class="s" id="data-where"></p>
-            <p class="s" id="backup-nudge"></p>
-            <div class="row-actions">
-              <button type="button" class="op-btn" id="backup-now">Download backup</button>
-              <button type="button" class="op-btn" id="restore-now">Restore</button>
-              <input id="restore-file" type="file" accept="application/json" hidden>
-              <button type="button" class="op-btn" id="reload-chip" hidden>New drop is live, reload</button>
-            </div>
-            <h2>Reminders</h2>
-            <ul class="rows" id="remind-list"></ul>
-            <h2>Car and home dates</h2>
-            <ul class="rows" id="date-strip"></ul>
-          </section>
-
-          <section class="pane" id="pane-notes">
-            <div class="pane-h"><h2>Notes on this device</h2></div>
-            <form class="focus" id="focus-form">
-              <label for="focus-input">Keep a line here</label>
-              <div class="focus-row">
-                <input id="focus-input" name="focus" maxlength="80" placeholder="A line for this browser" autocomplete="off" enterkeyhint="done">
-                <button type="submit">Keep</button>
-              </div>
-              <p class="focus-empty" id="focus-empty">Nothing kept yet. Notes stay in this browser.</p>
-              <ul id="focus-list"></ul>
-            </form>
-          </section>
-        </div>
+  <div class="deck">
+    <header class="mast">
+      <div class="mast-title">
+        <p class="kicker"><span class="sq" aria-hidden="true"></span> <span data-atmo>Evening</span></p>
+        <h1><a href="#board">Prometheus</a></h1>
       </div>
+      <div class="mast-time">
+        <div class="clock-block" id="away-clocks" hidden></div>
+        <time class="clock" data-clock datetime="">—</time>
+        <p class="day-line" data-day></p>
+      </div>
+    </header>
 
-      <section id="module-stage" class="module-stage" hidden>
-        <div class="module-bar">
-          <button type="button" id="module-back">Back to the desk</button>
-          <h2 id="module-title"></h2>
-          <a id="module-open" href="./">Open on its own page</a>
-        </div>
-        <iframe id="module-frame" title="Module"></iframe>
+    <form class="command" id="cmd-form" role="search">
+      <label class="sr" for="cmd">Search the desk</label>
+      <input id="cmd" type="search" placeholder="Search the desk" aria-label="Search modules, dates, the session, or a public term" aria-controls="cmd-hits" aria-expanded="false" autocomplete="off" enterkeyhint="search">
+      <button type="button" id="cmd-open" aria-keyshortcuts="/" aria-label="Focus search">/</button>
+    </form>
+    <div id="cmd-hits" class="cmd-hits" role="listbox" hidden></div>
+
+    <nav class="mod-strip" id="switcher" aria-label="Modules"></nav>
+
+    <div id="board">
+      <p class="away-banner" id="away-card" hidden></p>
+
+      <section class="status-grid" aria-label="Status">
+        <article class="glass-card lit" id="tile-next">
+          <p class="k">Next date</p>
+          <p class="v" id="next-date">—</p>
+          <p class="s" id="next-name"></p>
+          <ul class="quiet-list" id="next-list"></ul>
+        </article>
+        <article class="glass-card" id="tile-session">
+          <p class="k">NYSE</p>
+          <p class="v" id="session-state" data-state="">—</p>
+          <p class="s" id="session-why"></p>
+          <p class="s" id="session-next"></p>
+        </article>
+        <article class="glass-card span-2" id="tile-life">
+          <div class="card-h">
+            <h2>Car and home</h2>
+            <p class="s">Dates kept on this device</p>
+          </div>
+          <ul class="quiet-list" id="date-strip"></ul>
+        </article>
+        <article class="glass-card span-2" id="tile-modules">
+          <div class="card-h">
+            <h2>Module status</h2>
+            <p class="s" id="review-count"></p>
+          </div>
+          <ul class="quiet-list" id="mod-status"></ul>
+        </article>
+      </section>
+
+      <section class="lower">
+        <article class="glass-card" id="pane-notes">
+          <h2>Notes on this device</h2>
+          <form class="focus" id="focus-form">
+            <label for="focus-input">Keep a line here</label>
+            <div class="focus-row">
+              <input id="focus-input" name="focus" maxlength="80" placeholder="A line for this browser" autocomplete="off" enterkeyhint="done">
+              <button type="submit">Keep</button>
+            </div>
+            <p class="focus-empty" id="focus-empty">Nothing kept yet. Notes stay in this browser.</p>
+            <ul id="focus-list"></ul>
+          </form>
+        </article>
+
+        <article class="glass-card" id="pane-keep">
+          <div class="card-h">
+            <h2>This browser</h2>
+            <p class="s" id="build-stamp"></p>
+          </div>
+          <p class="s" id="data-where"></p>
+          <p class="s" id="backup-nudge"></p>
+          <div class="row-actions">
+            <button type="button" class="op-btn" id="backup-now">Download backup</button>
+            <button type="button" class="op-btn" id="restore-now">Restore</button>
+            <input id="restore-file" type="file" accept="application/json" hidden>
+            <button type="button" class="op-btn" id="reload-chip" hidden>New drop is live, reload</button>
+          </div>
+          <h2 class="later">Reminders</h2>
+          <ul class="quiet-list" id="remind-list"></ul>
+        </article>
       </section>
     </div>
+
+    <section id="module-stage" class="module-stage" hidden>
+      <div class="module-bar">
+        <button type="button" id="module-back">Back to the desk</button>
+        <h2 id="module-title"></h2>
+        <a id="module-open" href="./">Open on its own page</a>
+      </div>
+      <iframe id="module-frame" title="Module"></iframe>
+    </section>
   </div>
 
   <dialog id="help-sheet" class="sheet" aria-labelledby="help-title">
     <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
     <p class="kicker">Shortcuts</p>
     <h3 id="help-title">Search</h3>
-    <p>/ or Ctrl/Cmd+K focuses search. Arrow keys move, Enter opens, Esc closes. 1–9 open the first nine modules. ? opens this list. Search covers modules, calendar dates, NYSE sessions, the Sorento schedule, foods, exercises, public card terms, and records stored on this device.</p>
+    <p>/ or Ctrl/Cmd+K focuses search. Arrow keys move through results, Enter opens, Esc closes. [ and ] or Alt+arrows move along the module row. 1–9 open the first nine modules in that row. ? opens this list.</p>
+    <p>Search reaches modules, calendar dates, NYSE sessions, Sorento service names, public card terms, and records stored on this device. Food and exercise stay in Apollo. Card terms open from search, or from Money.</p>
   </dialog>
 
   <footer class="site-foot">
@@ -162,7 +141,7 @@
   <noscript>
     <section class="fallback">
       <h2>Prometheus Hub</h2>
-      <p>JavaScript draws the calendars, the Sorento schedule, and the search. Every module is still linked.</p>
+      <p>JavaScript draws the field, the dates, and the search. Every module is still linked.</p>
       <ul>
         <li><a href="pillars/kairos/">Kairos</a></li>
         <li><a href="pillars/apollo/">Apollo</a></li>
@@ -199,8 +178,6 @@
   <script src="pillars/kairos/fixed-dates.js"></script>
   <script src="pillars/icarus/market-days.js"></script>
   <script src="pillars/garage/schedule.js"></script>
-  <script src="pillars/apollo/foods.js"></script>
-  <script src="pillars/apollo/exercises.js"></script>
   <script src="pillars/money/offers.js"></script>
   <script src="desk-home.js"></script>
 </body>

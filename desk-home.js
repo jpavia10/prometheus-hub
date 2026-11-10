@@ -1,5 +1,6 @@
-/* Home desk. Real tables on first load: Kairos dates, NYSE sessions, Kia severe
-   schedule, Apollo food/exercise rows, public card terms. No personal balances. */
+/* Home command deck. Search first. Next dates, the NYSE session, car and home
+   dates, since-you-were-away, and module status. No balances. Food and exercise
+   stay in Apollo. Public card terms are search results, not a home table. */
 (function () {
   "use strict";
   const MODULES = [
@@ -23,6 +24,9 @@
     { id: "midas", name: "Midas Ledger", href: "https://jpavia10.github.io/midas-ledger/" },
     { id: "hearth", name: "Hephaestus Hearth", href: "https://jpavia10.github.io/hephaestus-hearth/" }
   ];
+  const LIFE = ["garage", "hearth", "odyssey", "bastion", "records"];
+  const LIFE_NAME = { garage: "Garage", hearth: "Hearth", odyssey: "Odyssey", bastion: "Bastion", records: "Records" };
+  const SHAPES = new Set(["titan", "midas", "hearth", "apollo", "hermes", "kairos", "icarus", "argus"]);
 
   const $ = (s, r = document) => r.querySelector(s);
   const pad = (n) => String(n).padStart(2, "0");
@@ -32,24 +36,27 @@
   const dates = () => (window.KAIROS_FIXED || []).slice().sort((a, b) => a.date.localeCompare(b.date));
   const market = () => (window.ICARUS_MARKET_DAYS || []).slice().sort((a, b) => a.date.localeCompare(b.date));
   const services = () => (window.GARAGE_SCHEDULE && GARAGE_SCHEDULE.garage_services_severe_frazier) || [];
-  const foods = () => window.APOLLO_FOODS || [];
-  const exercises = () => window.APOLLO_EXERCISES || [];
   const offers = () => (window.MONEY_OFFERS && MONEY_OFFERS.balance_transfer) || [];
   const hardship = () => (window.MONEY_OFFERS && MONEY_OFFERS.hardship) || [];
 
-  let extraFoods = [];
-  let extraExercises = [];
-  let calKind = "all";
-  let offerKind = "bt";
   let hits = [];
   let sel = 0;
+  let groupFilter = "All";
 
   function rel(date) {
     const n = Math.round((new Date(date + "T12:00:00") - new Date(TODAY + "T12:00:00")) / 864e5);
     if (n === 0) return "today";
     if (n === 1) return "tomorrow";
-    if (n > 1) return `in ${n}d`;
-    return `${-n}d ago`;
+    if (n > 1) return `in ${n} days`;
+    return `${-n} days ago`;
+  }
+
+  function pretty(date) {
+    const d = new Date(date + "T12:00:00");
+    const sameYear = d.getFullYear() === new Date().getFullYear();
+    return d.toLocaleDateString(undefined, sameYear
+      ? { month: "short", day: "numeric" }
+      : { month: "short", day: "numeric", year: "numeric" });
   }
 
   function session(day) {
@@ -61,134 +68,250 @@
     return { state: "Open", why: "Regular session" };
   }
 
+  function clean(s) {
+    return String(s ?? "")
+      .replace(/\$\s?\d[\d,]*(?:\.\d+)?/g, "")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+  }
+
   const pref = (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } };
   const put = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} };
   const pins = () => pref("prometheus.desk.pins", []);
   const hidden = () => pref("prometheus.desk.hidden", []);
-  let groupFilter = "All";
+  const readJson = (key, dflt) => { try { const v = JSON.parse(localStorage.getItem(key) || "null"); return v == null ? dflt : v; } catch (_) { return dflt; } };
+  function readList(key) { const v = readJson(key, []); return Array.isArray(v) ? v : []; }
+
+  function visibleModules() {
+    const hide = new Set(hidden());
+    const pin = new Set(pins());
+    return MODULES.filter((m) => (groupFilter === "All" || m.group === groupFilter) && !hide.has(m.id))
+      .slice()
+      .sort((a, b) => (pin.has(b.id) - pin.has(a.id)) || MODULES.indexOf(a) - MODULES.indexOf(b));
+  }
+
+  function currentId() {
+    const id = (location.hash || "").replace("#", "");
+    return MODULES.some((m) => m.id === id) ? id : "";
+  }
+
   function reviewFor(id) {
     if (!window.PB) return 0;
     return PB.deadlines.overdue().filter((d) => d.source === id).length;
   }
+
+  function focusField(name) {
+    const field = window.PROMETHEUS_FIELD;
+    if (!field) return;
+    if (name && SHAPES.has(name)) field.setFocus(name);
+    else field.setFocus(null);
+  }
+
+  function placeCurrent() {
+    const track = $("#mod-track");
+    if (!track) return;
+    const cur = track.querySelector('[aria-current="true"]');
+    if (!cur) return;
+    const left = cur.offsetLeft - (track.clientWidth - cur.offsetWidth) / 2;
+    track.scrollLeft = Math.max(0, left);
+  }
+
   function paintSwitcher() {
     const nav = $("#switcher");
+    if (!nav) return;
     const groups = ["All", ...new Set(MODULES.map((m) => m.group))];
     const hide = new Set(hidden());
     const pin = new Set(pins());
-    const list = MODULES.filter((m) => (groupFilter === "All" || m.group === groupFilter) && !hide.has(m.id))
-      .slice().sort((a, b) => (pin.has(b.id) - pin.has(a.id)) || a.name.localeCompare(b.name));
+    const list = visibleModules();
+    const open = currentId();
+    const idx = list.findIndex((m) => m.id === open);
+    const prev = idx > 0 ? list[idx - 1] : (idx === 0 ? null : null);
+    const next = idx >= 0 && idx < list.length - 1 ? list[idx + 1] : (idx < 0 && list[0] ? list[0] : null);
+    const prevName = idx <= 0 ? "Desk" : (prev ? prev.name : "Desk");
+    const nextName = next ? next.name : "";
+    const step = (dir, name, enabled) => {
+      const keys = dir < 0 ? "[" : "]";
+      const which = dir < 0 ? "Previous module" : "Next module";
+      return `<button type="button" class="mod-step" data-step="${dir}" ${enabled ? "" : "disabled"} aria-keyshortcuts="${keys}" aria-label="${which}${name ? ", " + esc(name) : ""}" title="${which}${name ? ", " + esc(name) : ""} (${keys})"><span aria-hidden="true">${dir < 0 ? "‹" : "›"}</span><span class="mod-step-name">${esc(name || "")}</span></button>`;
+    };
     nav.innerHTML = `<div class="chips" id="group-chips">${groups.map((g) => `<button type="button" data-group="${esc(g)}" aria-pressed="${groupFilter === g}">${esc(g)}</button>`).join("")}</div>`
-      + `<p class="sw-k">Modules <span id="review-count"></span></p><div class="sw-row">` + list.map((m, i) => {
+      + `<div class="mod-bar">${step(-1, prevName, idx > 0 || !!open)}`
+      + `<div class="mod-track" id="mod-track">${list.map((m, i) => {
         const n = reviewFor(m.id);
-        return `<button type="button" data-mod="${m.id}"><span>${i < 9 ? (i + 1) + " " : ""}${esc(m.name)}${n ? `<i class="dot">${n}</i>` : ""}${pin.has(m.id) ? " · pin" : ""}</span><small>${esc(m.what)}</small></button>`;
-      }).join("") + `</div>`
-      + `<p class="sw-k">Show or hide</p><div class="sw-arrange">` + MODULES.map((m) => `<button type="button" data-pin="${m.id}">${pin.has(m.id) ? "Unpin" : "Pin"} ${esc(m.name)}</button><button type="button" data-hide="${m.id}">${hide.has(m.id) ? "Show" : "Hide"} ${esc(m.name)}</button>`).join("") + `</div>`
-      + `<p class="sw-k sw-keep">Other sites</p><div class="sw-row">` + EXTERNAL.map((m) =>
-      `<a class="sw-ext" href="${m.href}" target="_blank" rel="noopener noreferrer">${esc(m.name)}</a>`).join("") + `</div>`
-      + `<p class="sw-paused">Fleet Command paused (2026-10-28)</p>`;
-    const total = MODULES.reduce((n, m) => n + reviewFor(m.id), 0);
-    const rc = $("#review-count");
-    if (rc) rc.textContent = total ? `· ${total} to review` : "";
-    nav.querySelectorAll("[data-group]").forEach((b) => b.addEventListener("click", () => { groupFilter = b.dataset.group; paintSwitcher(); }));
-    nav.querySelectorAll("[data-mod]").forEach((b) => b.addEventListener("click", () => showModule(b.dataset.mod)));
-    nav.querySelectorAll("[data-pin]").forEach((b) => b.addEventListener("click", () => {
-      const id = b.dataset.pin; const cur = pins(); put("prometheus.desk.pins", cur.includes(id) ? cur.filter((x) => x !== id) : cur.concat(id)); paintSwitcher();
-    }));
-    nav.querySelectorAll("[data-hide]").forEach((b) => b.addEventListener("click", () => {
-      const id = b.dataset.hide; const cur = hidden(); put("prometheus.desk.hidden", cur.includes(id) ? cur.filter((x) => x !== id) : cur.concat(id)); paintSwitcher();
-    }));
+        const on = open === m.id;
+        return `<button type="button" data-mod="${m.id}" ${on ? 'aria-current="true"' : ""}><span>${i < 9 ? (i + 1) + " " : ""}${esc(m.name)}${n ? `<i class="dot">${n}</i>` : ""}${pin.has(m.id) ? " · pin" : ""}</span></button>`;
+      }).join("")}</div>`
+      + `${step(1, nextName, !!next)}</div>`
+      + `<details class="mod-arrange"><summary>Arrange modules</summary><div class="sw-arrange">`
+      + MODULES.map((m) => `<button type="button" data-pin="${m.id}">${pin.has(m.id) ? "Unpin" : "Pin"} ${esc(m.name)}</button><button type="button" data-hide="${m.id}">${hide.has(m.id) ? "Show" : "Hide"} ${esc(m.name)}</button>`).join("")
+      + `</div></details>`
+      + `<p class="mod-else">${EXTERNAL.map((m) => `<a href="${m.href}" target="_blank" rel="noopener noreferrer">${esc(m.name)}</a>`).join('<span aria-hidden="true"> · </span>')}</p>`
+      + `<p class="sw-paused">Fleet Command is paused (2026-10-28)</p>`;
+    placeCurrent();
   }
 
-  function paintTiles() {
-    const ses = session(TODAY);
-    $("#session-state").textContent = ses.state;
-    $("#session-why").textContent = ses.why;
-    const next = dates().find((d) => d.date >= TODAY);
-    $("#next-date").textContent = next ? next.date.slice(5) : "—";
-    $("#next-name").textContent = next ? `${next.name} · ${rel(next.date)}` : "No later dates in the table";
-    const foodN = foods().length + extraFoods.length;
-    const exN = exercises().length + extraExercises.length;
-    $("#apollo-count").textContent = foodN && exN ? `${foodN} / ${exN}` : "—";
-    $("#apollo-split").textContent = `${foods().length} foods bundled${extraFoods.length ? ` + ${extraFoods.length} more` : ""} · ${exercises().length} exercises${extraExercises.length ? ` + ${extraExercises.length}` : ""}`;
-    $("#offer-count").textContent = String(offers().length + hardship().length);
-    const y2027 = dates().filter((d) => d.date.startsWith("2027")).length;
-    const nyse2027 = market().filter((d) => d.date.startsWith("2027")).length;
-    $("#board-lede").textContent = `${dates().length} calendar rows through 2028 (${y2027} in 2027). ${market().length} NYSE sessions on file (${nyse2027} in 2027, December 31 2027 is a normal session). ${services().length} severe-service rows for the Sorento Hybrid.`;
-  }
-
-  function paintCal() {
-    const box = $("#cal-chips");
-    const kinds = [["all", "All"], ["federal holiday", "Holidays"], ["tax deadline", "Tax"], ["clock change", "DST"]];
-    box.innerHTML = kinds.map(([id, label]) => `<button type="button" data-kind="${id}" aria-pressed="${calKind === id}">${label}</button>`).join("");
-    box.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { calKind = b.dataset.kind; paintCal(); }));
-    const rows = dates().filter((d) => d.date >= TODAY && (calKind === "all" || d.kind === calKind)).slice(0, 14);
-    $("#cal-list").innerHTML = rows.map((d) => `<li><span class="when">${esc(d.date.slice(5))} · ${rel(d.date)}</span><span class="what">${esc(d.name)}</span><span class="src">${esc(d.kind)}</span></li>`).join("")
-      || `<li><span class="what">Nothing later in this filter.</span></li>`;
-  }
-
-  function paintMarket() {
-    const rows = market().filter((d) => d.date >= TODAY).slice(0, 8);
-    $("#market-note").textContent = `Today is ${session(TODAY).state.toLowerCase()}.`;
-    $("#market-list").innerHTML = rows.map((d) => `<li><span class="when">${esc(d.date)} · ${rel(d.date)}</span><span class="what">${esc(d.name)}</span><span class="src">${esc(d.kind)}${d.close ? " · " + esc(d.close) : ""}</span></li>`).join("")
-      || `<li><span class="what">No later sessions in the file.</span></li>`;
-  }
-
-  function paintGarage() {
-    const body = $("#garage-table tbody");
-    body.innerHTML = services().map((s) => `<tr><td>${esc(s.name)}</td><td class="n">${s.miles ? Number(s.miles).toLocaleString("en-US") : "—"}</td><td class="n">${s.months || "—"}</td></tr>`).join("");
-  }
-
-  function paintFoods() {
-    const q = ($("#food-q").value || "").trim().toLowerCase();
-    const foodRows = foods().map((f) => ({ kind: "Food", name: f.n, detail: `${f.kcal} kcal · P ${f.p} · C ${f.c} · F ${f.f} / 100 g` }));
-    extraFoods.forEach((f) => foodRows.push({ kind: "Food", name: f.description, detail: `${f.kcal} kcal · P ${f.protein_g} / 100 g · part 2` }));
-    const exRows = exercises().map((e) => ({ kind: "Exercise", name: e.n, detail: `MET ${e.met}` }));
-    extraExercises.forEach((e) => exRows.push({ kind: "Exercise", name: e.n || e.description || e.name, detail: e.met ? `MET ${e.met} · part 2` : "part 2" }));
-    const all = q ? [...foodRows, ...exRows].filter((r) => String(r.name).toLowerCase().includes(q)).slice(0, 12) : foodRows.slice(0, 6);
-    $("#food-list").innerHTML = all.map((r) => `<li><span class="src">${esc(r.kind)}</span><span class="what">${esc(r.name)}</span><span class="when">${esc(r.detail)}</span></li>`).join("")
-      || `<li><span class="what">No row matches.</span></li>`;
-  }
-
-  function paintOffers() {
-    const chips = $("#offer-chips");
-    chips.innerHTML = [["bt", "Balance transfer"], ["hardship", "Hardship"]].map(([id, label]) =>
-      `<button type="button" data-okind="${id}" aria-pressed="${offerKind === id}">${label}</button>`).join("");
-    chips.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { offerKind = b.dataset.okind; paintOffers(); }));
-    const q = ($("#offer-q").value || "").trim().toLowerCase();
-    let rows;
-    if (offerKind === "bt") {
-      rows = offers().filter((o) => !q || `${o.issuer} ${o.product} ${o.fee}`.toLowerCase().includes(q)).slice(0, 10)
-        .map((o) => `<li><a href="${esc(o.url)}" target="_blank" rel="noopener noreferrer"><span class="what">${esc(o.issuer)} · ${esc(o.product)}</span><span class="when">${o.months} mo · ${esc(o.fee)} · APR ${esc(o.go_to_apr_range)}</span></a></li>`);
-    } else {
-      rows = hardship().filter((o) => !q || `${o.lender} ${o.program}`.toLowerCase().includes(q)).slice(0, 8)
-        .map((o) => `<li><a href="${esc(o.url)}" target="_blank" rel="noopener noreferrer"><span class="what">${esc(o.lender)}</span><span class="when">${esc(o.program)}</span></a></li>`);
+  function paintDates() {
+    const upcoming = dates().filter((d) => d.date >= TODAY);
+    const next = upcoming[0];
+    const big = $("#next-date");
+    const name = $("#next-name");
+    const list = $("#next-list");
+    if (big) big.textContent = next ? pretty(next.date) : "—";
+    if (name) name.textContent = next ? `${next.name} · ${rel(next.date)}` : "No later dates in the calendar";
+    if (list) {
+      list.innerHTML = upcoming.slice(1, 5).map((d) => `<li><span class="when">${esc(pretty(d.date))}</span><span class="what">${esc(d.name)}</span><span class="src">${esc(rel(d.date))}</span></li>`).join("");
     }
-    $("#offer-list").innerHTML = rows.join("") || `<li><span class="what">No public term matches.</span></li>`;
   }
 
-  function readList(key) { try { const v = JSON.parse(localStorage.getItem(key) || "null"); return Array.isArray(v) ? v : []; } catch (_) { return []; } }
+  function paintSession() {
+    const ses = session(TODAY);
+    const state = $("#session-state");
+    if (state) {
+      state.textContent = ses.state;
+      state.dataset.state = ses.state.toLowerCase();
+    }
+    const why = $("#session-why");
+    if (why) why.textContent = ses.why;
+    const nxt = market().find((d) => d.date >= TODAY);
+    const line = $("#session-next");
+    if (line) line.textContent = nxt ? `Next mark ${pretty(nxt.date)} · ${nxt.name}` : "No later session marks in the file";
+  }
+
+  function moduleStatuses() {
+    const lines = [];
+    const seen = new Set();
+    const push = (id, text) => {
+      const line = clean(text);
+      if (!line || /\$/.test(line) || seen.has(id)) return;
+      seen.add(id);
+      lines.push({ id, line });
+    };
+    const D = window.PB ? PB.deadlines.list() : [];
+    const nextOf = (src) => D.filter((d) => d.source === src && !d.done).sort((a, b) => a.date.localeCompare(b.date))[0];
+    const items = readList("prometheus.selling.items");
+    if (items.length) {
+      push("selling", `${items.length} item${items.length === 1 ? "" : "s"} · ${items.filter((x) => x.stage === "listed").length} listed · ${items.filter((x) => x.stage === "staged").length} staged`);
+    }
+    const garage = nextOf("garage");
+    if (garage) push("garage", `${String(garage.title || "").replace(/^Sorento:\s*/, "")} · ${garage.date}`);
+    const docs = readList("prometheus.records.docs");
+    if (docs.length) {
+      const due = nextOf("records");
+      push("records", `${docs.length} document${docs.length === 1 ? "" : "s"}${due ? " · next " + due.date : ""}`);
+    }
+    const ideas = readList("prometheus.athenaeum.ideas");
+    if (ideas.length) push("athenaeum", `${ideas.length} idea${ideas.length === 1 ? "" : "s"} kept`);
+    const gear = readList("prometheus.bastion.items");
+    if (gear.length) {
+      const oz = gear.reduce((s, x) => s + (Number(x.weightOz) || 0) * (Number(x.qty) || 1), 0);
+      push("bastion", `${gear.length} item${gear.length === 1 ? "" : "s"} · ${(oz / 16).toFixed(1)} lb packed`);
+    }
+    const bpm = readJson("prometheus.piano.ladder_bpm", 0);
+    if (bpm) push("piano", `Ladder at ${bpm} BPM`);
+    const events = readList("prometheus.kairos.events").filter((e) => e && e.title && e.date >= TODAY).sort((a, b) => String(a.date).localeCompare(String(b.date)));
+    if (events[0]) push("kairos", `${events[0].title} · ${events[0].date}`);
+    const trips = readList("prometheus.odyssey.trips").filter((t) => t && t.end >= TODAY).sort((a, b) => String(a.start).localeCompare(String(b.start)));
+    if (trips[0]) push("odyssey", `${trips[0].name} · ${trips[0].start}`);
+    const brokers = readList("prometheus.privacy.brokers");
+    if (brokers.length) {
+      const done = brokers.filter((x) => x.state === "confirmed removed").length;
+      push("privacy", `${done} of ${brokers.length} brokers confirmed removed`);
+    }
+    MODULES.forEach((m) => {
+      const n = reviewFor(m.id);
+      if (n) push(m.id, `${n} to review`);
+    });
+    return lines;
+  }
+
+  function paintModules() {
+    const host = $("#mod-status");
+    const rc = $("#review-count");
+    const lines = moduleStatuses();
+    const total = MODULES.reduce((n, m) => n + reviewFor(m.id), 0);
+    if (rc) rc.textContent = total ? `${total} to review` : "";
+    if (!host) return;
+    if (!lines.length) {
+      host.innerHTML = `<li><span class="what">Quiet on this device. The row above opens each module.</span></li>`;
+      return;
+    }
+    host.innerHTML = lines.map((l) => {
+      const m = MODULES.find((x) => x.id === l.id);
+      return `<li><button type="button" data-mod="${esc(l.id)}"><span class="src">${esc(m ? m.name : l.id)}</span><span class="what">${esc(l.line)}</span></button></li>`;
+    }).join("");
+  }
+
+  function paintLife() {
+    const strip = $("#date-strip");
+    if (!strip) return;
+    if (!window.PB) {
+      strip.innerHTML = `<li><span class="what">Dates load with this browser's saved desk.</span></li>`;
+      return;
+    }
+    const rows = PB.deadlines.upcoming(90)
+      .filter((d) => LIFE.includes(d.source))
+      .map((d) => ({ date: d.date, title: clean(d.title), source: d.source }))
+      .filter((d) => d.title && !/\$/.test(d.title));
+    strip.innerHTML = rows.length
+      ? rows.slice(0, 6).map((d) => `<li><span class="when">${esc(d.date)}</span><span class="what">${esc(d.title)}</span><span class="src">${esc(LIFE_NAME[d.source] || d.source)}</span></li>`).join("")
+      : `<li><span class="what">No car or home dates on this device yet.</span></li>`;
+  }
+
   function buildHits(q) {
     const s = q.trim().toLowerCase();
     if (!s) return [];
     const out = [];
-    MODULES.forEach((m) => { if (`${m.name} ${m.what} ${m.group}`.toLowerCase().includes(s)) out.push({ kind: "module", id: m.id, label: m.name, hint: m.what }); });
-    EXTERNAL.forEach((m) => { if (m.name.toLowerCase().includes(s)) out.push({ kind: "external", href: m.href, label: m.name, hint: "Opens its own site" }); });
-    dates().forEach((d) => { if (`${d.name} ${d.kind} ${d.date}`.toLowerCase().includes(s)) out.push({ kind: "cal", panel: "pane-cal", label: d.name, hint: `${d.date} · ${d.kind}` }); });
-    market().forEach((d) => { if (`${d.name} ${d.date} nyse`.includes(s)) out.push({ kind: "market", panel: "pane-market", label: d.name, hint: `NYSE · ${d.date}` }); });
-    services().forEach((svc) => { if (svc.name.toLowerCase().includes(s)) out.push({ kind: "service", panel: "pane-garage", label: svc.name, hint: "Sorento severe schedule" }); });
-    foods().forEach((f) => { if (f.n.toLowerCase().includes(s)) out.push({ kind: "food", panel: "pane-food", q: f.n, label: f.n, hint: `${f.kcal} kcal / 100 g` }); });
-    extraFoods.forEach((f) => { if (String(f.description || "").toLowerCase().includes(s)) out.push({ kind: "food", panel: "pane-food", q: f.description, label: f.description, hint: `${f.kcal} kcal / 100 g · part 2` }); });
-    exercises().forEach((e) => { if (e.n.toLowerCase().includes(s)) out.push({ kind: "exercise", panel: "pane-food", q: e.n, label: e.n, hint: `MET ${e.met}` }); });
-    offers().forEach((o) => { if (`${o.issuer} ${o.product}`.toLowerCase().includes(s)) out.push({ kind: "offer", href: o.url, label: `${o.issuer} · ${o.product}`, hint: `${o.months} mo intro · public term` }); });
+    const room = () => out.length < 24;
+    MODULES.forEach((m) => {
+      if (room() && `${m.name} ${m.what} ${m.group}`.toLowerCase().includes(s)) out.push({ kind: "module", id: m.id, label: m.name, hint: m.what });
+    });
+    EXTERNAL.forEach((m) => {
+      if (room() && m.name.toLowerCase().includes(s)) out.push({ kind: "external", href: m.href, label: m.name, hint: "Opens its own site" });
+    });
+    let n = 0;
+    dates().forEach((d) => {
+      if (room() && n < 6 && `${d.name} ${d.kind} ${d.date}`.toLowerCase().includes(s)) {
+        n += 1;
+        out.push({ kind: "module", id: "kairos", label: d.name, hint: `${d.date} · ${d.kind}` });
+      }
+    });
+    n = 0;
+    market().forEach((d) => {
+      if (room() && n < 4 && `${d.name} ${d.date} nyse`.includes(s)) {
+        n += 1;
+        out.push({ kind: "module", id: "icarus", label: d.name, hint: `NYSE · ${d.date}` });
+      }
+    });
+    n = 0;
+    services().forEach((svc) => {
+      if (room() && n < 4 && String(svc.name || "").toLowerCase().includes(s)) {
+        n += 1;
+        out.push({ kind: "module", id: "garage", label: svc.name, hint: "Opens Garage" });
+      }
+    });
+    n = 0;
+    offers().forEach((o) => {
+      if (room() && n < 4 && `${o.issuer} ${o.product}`.toLowerCase().includes(s)) {
+        n += 1;
+        out.push({ kind: "offer", href: o.url, label: `${o.issuer} · ${o.product}`, hint: `${o.months} months · public term` });
+      }
+    });
+    hardship().forEach((o) => {
+      if (room() && n < 6 && `${o.lender} ${o.program}`.toLowerCase().includes(s)) {
+        n += 1;
+        out.push({ kind: "offer", href: o.url, label: o.lender, hint: `${o.program} · public term` });
+      }
+    });
     if (window.PB) {
-      PB.deadlines.list().filter((d) => !d.done && d.source !== "kairos-fixed" && `${d.title} ${d.date}`.toLowerCase().includes(s))
-        .forEach((d) => out.push({ kind: "cal", panel: "pane-cal", label: d.title, hint: `${d.date} · ${d.source}` }));
+      PB.deadlines.list().filter((d) => !d.done && d.source !== "kairos-fixed" && `${d.title} ${d.date}`.toLowerCase().includes(s) && !/\$/.test(String(d.title || "")))
+        .slice(0, 4)
+        .forEach((d) => { if (room()) out.push({ kind: "module", id: MODULES.some((m) => m.id === d.source) ? d.source : "kairos", label: clean(d.title), hint: `${d.date} · ${d.source}` }); });
     }
-    readList("prometheus.records.docs").forEach((d) => { if (d && d.title && String(d.title).toLowerCase().includes(s)) out.push({ kind: "module", id: "records", label: d.title, hint: "Record on this device" }); });
-    readList("prometheus.kairos.events").forEach((d) => { if (d && d.title && String(d.title).toLowerCase().includes(s)) out.push({ kind: "module", id: "kairos", label: d.title, hint: d.date || "Kairos" }); });
-    readList("prometheus.selling.items").forEach((d) => { if (d && d.title && String(d.title).toLowerCase().includes(s)) out.push({ kind: "module", id: "selling", label: d.title, hint: "Selling" }); });
-    readList("prometheus.bastion.items").forEach((d) => { if (d && d.name && String(d.name).toLowerCase().includes(s)) out.push({ kind: "module", id: "bastion", label: d.name, hint: "Bastion" }); });
-    readList("prometheus.hermes.mail").forEach((d) => { if (d && !d.done && `${d.from} ${d.about}`.toLowerCase().includes(s)) out.push({ kind: "module", id: "hermes", label: `${d.from || ""} · ${d.about || ""}`, hint: "Hermes" }); });
+    readList("prometheus.records.docs").forEach((d) => { if (room() && d && d.title && String(d.title).toLowerCase().includes(s)) out.push({ kind: "module", id: "records", label: d.title, hint: "Record on this device" }); });
+    readList("prometheus.kairos.events").forEach((d) => { if (room() && d && d.title && String(d.title).toLowerCase().includes(s)) out.push({ kind: "module", id: "kairos", label: d.title, hint: d.date || "Kairos" }); });
+    readList("prometheus.selling.items").forEach((d) => { if (room() && d && d.title && String(d.title).toLowerCase().includes(s) && !/\$/.test(String(d.title))) out.push({ kind: "module", id: "selling", label: d.title, hint: "Selling" }); });
+    readList("prometheus.bastion.items").forEach((d) => { if (room() && d && d.name && String(d.name).toLowerCase().includes(s)) out.push({ kind: "module", id: "bastion", label: d.name, hint: "Bastion" }); });
+    readList("prometheus.hermes.mail").forEach((d) => { if (room() && d && !d.done && `${d.from} ${d.about}`.toLowerCase().includes(s)) out.push({ kind: "module", id: "hermes", label: `${d.from || ""} · ${d.about || ""}`, hint: "Hermes" }); });
     const actions = [
       ["backup", "Download backup", "backup"],
       ["restore", "Restore a backup", "restore"],
@@ -197,7 +320,7 @@
       ["contrast", "High contrast", "contrast"],
       ["help", "Shortcut sheet", "help"]
     ];
-    actions.forEach(([word, label, id]) => { if (word.includes(s) || label.toLowerCase().includes(s)) out.push({ kind: "action", id, label, hint: "Action" }); });
+    actions.forEach(([word, label, id]) => { if (room() && (word.includes(s) || label.toLowerCase().includes(s))) out.push({ kind: "action", id, label, hint: "Action" }); });
     if (s.startsWith("note ")) out.unshift({ kind: "action", id: "note-save", text: q.trim().slice(5), label: "Save today's note", hint: q.trim().slice(5) });
     if (s.startsWith("remind ")) out.unshift({ kind: "action", id: "remind-save", text: q.trim().slice(7), label: "Save reminder", hint: q.trim().slice(7) });
     return out.slice(0, 24);
@@ -206,6 +329,7 @@
   function paintHits() {
     const box = $("#cmd-hits");
     const input = $("#cmd");
+    if (!box || !input) return;
     if (!hits.length) {
       if (input.value.trim()) {
         box.hidden = false;
@@ -215,12 +339,15 @@
       }
       box.hidden = true;
       input.setAttribute("aria-expanded", "false");
+      box.innerHTML = "";
       return;
     }
     box.hidden = false;
     input.setAttribute("aria-expanded", "true");
-    box.innerHTML = hits.map((h, i) => `<button type="button" role="option" id="hit-${i}" class="${i === sel ? "on" : ""}" aria-selected="${i === sel}"><strong>${esc(h.label)}</strong><small>${esc(h.hint)}</small></button>`).join("");
+    box.innerHTML = hits.map((h, i) => `<button type="button" role="option" id="hit-${i}" class="${i === sel ? "on" : ""}" aria-selected="${i === sel}"><strong>${esc(clean(h.label))}</strong><small>${esc(clean(h.hint))}</small></button>`).join("");
     box.querySelectorAll("button").forEach((b, i) => b.addEventListener("click", () => activate(hits[i])));
+    const on = box.querySelector(".on");
+    if (on) on.scrollIntoView({ block: "nearest" });
   }
 
   function closeHits() {
@@ -234,44 +361,52 @@
     if (hit.kind === "action") { runAction(hit); $("#cmd").value = ""; closeHits(); return; }
     if (hit.kind === "module") showModule(hit.id);
     else if (hit.kind === "external" || hit.kind === "offer") window.open(hit.href, "_blank", "noopener");
-    else {
-      showBoard();
-      if (hit.kind === "food" || hit.kind === "exercise") {
-        $("#food-q").value = hit.q || hit.label;
-        paintFoods();
-      }
-      const panel = document.getElementById(hit.panel);
-      if (panel) panel.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
     $("#cmd").value = "";
     closeHits();
   }
 
   function showBoard() {
-    $("#board").hidden = false;
-    $("#module-stage").hidden = true;
+    const board = $("#board");
+    const stage = $("#module-stage");
+    if (board) board.hidden = false;
+    if (stage) stage.hidden = true;
     const frame = $("#module-frame");
-    if (frame.getAttribute("src")) frame.src = "about:blank";
+    if (frame && frame.getAttribute("src")) frame.src = "about:blank";
     if (location.hash && location.hash !== "#board") location.hash = "board";
-    document.querySelectorAll("[data-mod]").forEach((b) => b.removeAttribute("aria-current"));
+    focusField(null);
+    paintSwitcher();
   }
 
   function showModule(id) {
     const mod = MODULES.find((m) => m.id === id);
     if (!mod) return;
-    $("#board").hidden = true;
+    const board = $("#board");
     const stage = $("#module-stage");
-    stage.hidden = false;
-    $("#module-title").textContent = mod.name;
-    $("#module-open").href = mod.href;
+    if (board) board.hidden = true;
+    if (stage) stage.hidden = false;
+    const title = $("#module-title");
+    if (title) title.textContent = mod.name;
+    const open = $("#module-open");
+    if (open) open.href = mod.href;
     const frame = $("#module-frame");
     const next = mod.href + "?embed=1";
-    if (frame.getAttribute("src") !== next) frame.src = next;
+    if (frame && frame.getAttribute("src") !== next) frame.src = next;
     if (location.hash !== "#" + id) location.hash = id;
-    document.querySelectorAll("[data-mod]").forEach((b) => {
-      if (b.dataset.mod === id) b.setAttribute("aria-current", "true");
-      else b.removeAttribute("aria-current");
-    });
+    focusField(id);
+    paintSwitcher();
+  }
+
+  function moveModule(dir) {
+    const list = visibleModules();
+    const open = currentId();
+    const idx = list.findIndex((m) => m.id === open);
+    if (dir < 0) {
+      if (idx <= 0) showBoard();
+      else showModule(list[idx - 1].id);
+      return;
+    }
+    if (idx < 0) { if (list[0]) showModule(list[0].id); return; }
+    if (idx < list.length - 1) showModule(list[idx + 1].id);
   }
 
   function fromHash() {
@@ -280,28 +415,29 @@
     else showBoard();
   }
 
-  const BUILD = "v11";
-  function deskToast(msg) {
+  const BUILD = "v12";
+  function deskToast(msg, undo) {
+    document.querySelectorAll(".toast").forEach((n) => n.remove());
     const t = document.createElement("div");
     t.className = "toast";
-    t.textContent = msg;
+    t.setAttribute("role", "status");
+    t.append(document.createTextNode(msg));
+    if (typeof undo === "function") {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = "Undo";
+      b.addEventListener("click", () => { undo(); t.remove(); });
+      t.append(b);
+    }
     document.body.append(t);
-    setTimeout(() => t.remove(), 6000);
+    setTimeout(() => { if (t.isConnected) t.remove(); }, 6000);
   }
   function saveNote(text) {
     const key = "prometheus-hub.focus.v1";
-    const cur = readList(key);
-    const line = TODAY + " · " + text;
-    cur.push(line);
+    const cur = readList(key).filter((item) => typeof item === "string" && item.trim());
+    cur.push(TODAY + " · " + text);
     try { localStorage.setItem(key, JSON.stringify(cur.slice(-4))); } catch (_) {}
-    const list = $("#focus-list");
-    if (list) {
-      const li = document.createElement("li");
-      li.textContent = line;
-      list.append(li);
-      const empty = $("#focus-empty");
-      if (empty) empty.hidden = true;
-    }
+    document.dispatchEvent(new Event("desk-notes"));
     deskToast("Note kept for " + TODAY);
   }
   function reminders() { return readList("prometheus.desk.reminders"); }
@@ -312,14 +448,25 @@
     const list = reminders();
     host.innerHTML = list.map((r) => {
       const ask = r.until && r.until < TODAY && !r.kept;
-      return `<li><span class="what">${esc(r.text)}</span><span class="when">${r.until ? esc(r.until) : "no expiry"}${ask ? " · still relevant?" : ""}</span><button type="button" data-keep="${esc(r.id)}">Keep</button><button type="button" data-drop="${esc(r.id)}">Drop</button></li>`;
+      return `<li><span class="what">${esc(clean(r.text))}</span><span class="when">${r.until ? esc(r.until) : "no expiry"}${ask ? " · still relevant?" : ""}</span><span class="src"><button type="button" data-keep="${esc(r.id)}">Keep</button><button type="button" data-drop="${esc(r.id)}">Drop</button></span></li>`;
     }).join("") || `<li><span class="what">No reminders.</span></li>`;
     host.querySelectorAll("[data-keep]").forEach((b) => b.addEventListener("click", () => {
       const next = reminders().map((r) => r.id === b.dataset.keep ? { ...r, kept: true, until: "" } : r);
       saveReminders(next); paintReminders();
     }));
     host.querySelectorAll("[data-drop]").forEach((b) => b.addEventListener("click", () => {
-      saveReminders(reminders().filter((r) => r.id !== b.dataset.drop)); paintReminders();
+      const all = reminders();
+      const at = all.findIndex((r) => r.id === b.dataset.drop);
+      if (at < 0) return;
+      const removed = all[at];
+      saveReminders(all.filter((r) => r.id !== removed.id));
+      paintReminders();
+      deskToast("Reminder removed", () => {
+        const back = reminders();
+        back.splice(Math.min(at, back.length), 0, removed);
+        saveReminders(back);
+        paintReminders();
+      });
     }));
   }
   function addReminder(text) {
@@ -374,14 +521,19 @@
     const prev = localStorage.getItem("prometheus.desk.lastSeen");
     localStorage.setItem("prometheus.desk.lastSeen", new Date().toISOString());
     if (card) {
+      let text = "";
       if (prev) {
         const since = prev.slice(0, 10);
         const hours = (Date.now() - new Date(prev).getTime()) / 36e5;
-        const landed = window.PB ? PB.deadlines.list().filter((d) => !d.done && d.source !== "kairos-fixed" && d.date >= since && d.date <= TODAY) : [];
-        card.textContent = hours >= 12
-          ? (landed.length ? `Since you were away (${since}): ${landed.slice(0, 5).map((d) => d.date + " " + d.title).join("; ")}` : `Since you were away (${since}): no new obligations on this device.`)
-          : "";
-      } else card.textContent = "";
+        const landed = window.PB ? PB.deadlines.list().filter((d) => !d.done && d.source !== "kairos-fixed" && d.date >= since && d.date <= TODAY && !/\$/.test(String(d.title || ""))) : [];
+        if (hours >= 12) {
+          text = landed.length
+            ? `Since you were away (${since}): ${landed.slice(0, 5).map((d) => clean(d.date + " " + d.title)).filter(Boolean).join("; ")}`
+            : `Since you were away (${since}): no new obligations on this device.`;
+        }
+      }
+      card.textContent = text;
+      card.hidden = !text;
     }
     const clocks = $("#away-clocks");
     if (clocks) {
@@ -393,14 +545,9 @@
         clocks.innerHTML = `<span>Home ${fmt(homeTz)}</span><span>Away ${fmt(tz)}</span><span>until ${esc(away.until)}</span>`;
       } else clocks.hidden = true;
     }
-    const strip = $("#date-strip");
-    if (strip && window.PB) {
-      const rows = PB.deadlines.upcoming(90).filter((d) => ["garage", "hearth", "odyssey", "bastion", "records"].includes(d.source));
-      strip.innerHTML = rows.length
-        ? rows.slice(0, 8).map((d) => `<li><span class="when">${esc(d.date)}</span><span class="what">${esc(d.title)}</span></li>`).join("")
-        : `<li><span class="what">No car or home dates on this device yet.</span></li>`;
-    }
+    paintLife();
     paintReminders();
+    paintModules();
   }
   function wireKeep() {
     if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
@@ -414,11 +561,10 @@
         const obj = JSON.parse(await f.text());
         localStorage.setItem("prometheus.desk.restoreUndo", JSON.stringify(PB.dumpAll()));
         PB.loadAll(obj);
-        deskToast("Restored. Reload to undo from the saved snapshot.");
-        const undo = document.createElement("button");
-        undo.type = "button"; undo.className = "op-btn"; undo.textContent = "Undo restore";
-        undo.onclick = () => { PB.loadAll(JSON.parse(localStorage.getItem("prometheus.desk.restoreUndo"))); location.reload(); };
-        $("#pane-keep").append(undo);
+        deskToast("Restored. Undo puts the previous desk back.", () => {
+          PB.loadAll(JSON.parse(localStorage.getItem("prometheus.desk.restoreUndo")));
+          location.reload();
+        });
       } catch (_) { deskToast("That file is not a Prometheus backup."); }
     });
     const chip = $("#reload-chip");
@@ -431,64 +577,89 @@
       if (m && m[0] !== "prometheus-hub-desk-" + BUILD && chip) { chip.hidden = false; chip.onclick = () => location.reload(); }
     }).catch(() => {});
     paintKeep();
-    const asof = "As of 2026-11-10 files";
-    const note = $("#market-note");
-    if (note) note.textContent = `${note.textContent} ${asof}.`;
   }
+
   function boot() {
-    paintSwitcher();
-    paintTiles();
-    paintCal();
-    paintMarket();
-    paintGarage();
-    paintFoods();
-    paintOffers();
-    $("#food-q").addEventListener("input", paintFoods);
-    $("#food-form").addEventListener("submit", (e) => e.preventDefault());
-    $("#offer-q").addEventListener("input", paintOffers);
-    $("#offer-form").addEventListener("submit", (e) => e.preventDefault());
-    $("#module-back").addEventListener("click", showBoard);
+    const nav = $("#switcher");
+    if (nav) {
+      nav.addEventListener("click", (e) => {
+        const step = e.target.closest("[data-step]");
+        if (step && !step.disabled) { moveModule(Number(step.dataset.step)); return; }
+        const group = e.target.closest("[data-group]");
+        if (group) { groupFilter = group.dataset.group; paintSwitcher(); return; }
+        const mod = e.target.closest("[data-mod]");
+        if (mod) { showModule(mod.dataset.mod); return; }
+        const pin = e.target.closest("[data-pin]");
+        if (pin) {
+          const id = pin.dataset.pin;
+          const cur = pins();
+          put("prometheus.desk.pins", cur.includes(id) ? cur.filter((x) => x !== id) : cur.concat(id));
+          paintSwitcher();
+          return;
+        }
+        const hide = e.target.closest("[data-hide]");
+        if (hide) {
+          const id = hide.dataset.hide;
+          const cur = hidden();
+          put("prometheus.desk.hidden", cur.includes(id) ? cur.filter((x) => x !== id) : cur.concat(id));
+          paintSwitcher();
+        }
+      });
+      nav.addEventListener("pointerover", (e) => {
+        const mod = e.target.closest("[data-mod]");
+        if (mod && SHAPES.has(mod.dataset.mod)) focusField(mod.dataset.mod);
+      });
+      nav.addEventListener("pointerleave", () => focusField(currentId()));
+    }
+    const board = $("#board");
+    if (board) board.addEventListener("click", (e) => {
+      const mod = e.target.closest("[data-mod]");
+      if (mod) showModule(mod.dataset.mod);
+    });
+    paintDates();
+    paintSession();
+    const back = $("#module-back");
+    if (back) back.addEventListener("click", showBoard);
     wireKeep();
-    const openSearch = $("#cmd-open");
-    if (openSearch) openSearch.addEventListener("click", () => { input.focus(); input.select(); });
-    const params = new URLSearchParams(location.search);
-    if (params.get("q")) { input.value = params.get("q"); hits = buildHits(input.value); sel = 0; paintHits(); }
     const input = $("#cmd");
     const form = $("#cmd-form");
-    input.addEventListener("input", () => { hits = buildHits(input.value); sel = 0; paintHits(); });
-    form.addEventListener("submit", (e) => { e.preventDefault(); if (hits[sel]) activate(hits[sel]); });
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(hits.length - 1, sel + 1); paintHits(); }
-      else if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(0, sel - 1); paintHits(); }
-      else if (e.key === "Escape") closeHits();
+    const openSearch = $("#cmd-open");
+    if (openSearch && input) openSearch.addEventListener("click", () => { input.focus(); input.select(); });
+    const params = new URLSearchParams(location.search);
+    if (input && params.get("q")) { input.value = params.get("q"); hits = buildHits(input.value); sel = 0; paintHits(); }
+    if (input) input.addEventListener("input", () => { hits = buildHits(input.value); sel = 0; paintHits(); });
+    if (form) form.addEventListener("submit", (e) => { e.preventDefault(); if (hits[sel]) activate(hits[sel]); });
+    if (input) input.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown" && hits.length) { e.preventDefault(); sel = Math.min(hits.length - 1, sel + 1); paintHits(); }
+      else if (e.key === "ArrowUp" && hits.length) { e.preventDefault(); sel = Math.max(0, sel - 1); paintHits(); }
+      else if (e.key === "Escape") { input.value = ""; closeHits(); input.blur(); }
     });
     document.addEventListener("keydown", (e) => {
+      if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
       const tag = document.activeElement && document.activeElement.tagName;
-      const typing = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+      const typing = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (document.activeElement && document.activeElement.isContentEditable);
       if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || (e.key === "/" && !typing)) {
         e.preventDefault();
-        showBoard();
-        input.focus();
-        input.select();
+        if (input) { input.focus(); input.select(); }
       } else if (!typing && e.key === "?") {
         e.preventDefault();
         const d = $("#help-sheet"); if (d && d.showModal) d.showModal();
       } else if (!typing && /^[1-9]$/.test(e.key)) {
-        const mod = MODULES.filter((m) => !hidden().includes(m.id))[+e.key - 1];
+        const mod = visibleModules()[+e.key - 1];
         if (mod) { e.preventDefault(); showModule(mod.id); }
+      } else if (!typing) {
+        const chord = e.metaKey || e.ctrlKey || e.shiftKey;
+        const prevKey = e.key === "[" || (e.altKey && !chord && e.key === "ArrowLeft");
+        const nextKey = e.key === "]" || (e.altKey && !chord && e.key === "ArrowRight");
+        if ((e.key === "[" || e.key === "]") && (e.altKey || chord)) return;
+        if (!prevKey && !nextKey) return;
+        e.preventDefault();
+        moveModule(prevKey ? -1 : 1);
       }
     });
-    document.addEventListener("click", (e) => { if (!e.target.closest(".cmd")) closeHits(); });
+    document.addEventListener("click", (e) => { if (!e.target.closest(".command") && !e.target.closest(".cmd-hits")) closeHits(); });
     window.addEventListener("hashchange", fromHash);
     fromHash();
-    fetch("pillars/apollo/data/APOLLO-GROK-foods-part2_20261110-1659.json").then((r) => r.json()).then((rows) => {
-      extraFoods = Array.isArray(rows) ? rows : [];
-      paintTiles();
-    }).catch(() => {});
-    fetch("pillars/apollo/data/APOLLO-GROK-exercises-part2_20261110-1700.json").then((r) => r.json()).then((rows) => {
-      extraExercises = Array.isArray(rows) ? rows : [];
-      paintTiles();
-    }).catch(() => {});
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
