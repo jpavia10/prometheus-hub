@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-10] Grok: home desk HUD instruments
+- The session tile draws a thin ring and a live open/close countdown from the existing NYSE calendar. Next dates and car/home dates carry a days-out pill. The header greets Joseph in Pacific time, and module status uses soft cyan and lavender marks. Shell cache v14.
+
 ### [2026-11-10] Grok: command deck polish
 - Search on the home desk opens with / or Ctrl/Cmd+K, closes with Esc, and moves with the arrow keys and Enter. Results include modules and their pages, with a plain empty state. Visible copy says modules. Shell cache v13.
 

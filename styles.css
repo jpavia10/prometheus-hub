@@ -1096,6 +1096,148 @@ body[data-layout="command"] .cmd-hits {
 #session-state[data-state="early close"] { color: var(--warn); }
 #session-state[data-state="closed"] { color: var(--faint); }
 
+.greet {
+  margin: 2px 0 10px;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+  text-transform: none;
+}
+.greet time {
+  margin-left: 0.4em;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.session-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.session-copy { min-width: 0; flex: 1 1 auto; }
+#tile-session .v {
+  font-size: clamp(32px, 4.6vw, 48px);
+  overflow-wrap: normal;
+}
+.session-ring {
+  width: 68px;
+  height: 68px;
+  flex: none;
+}
+.session-ring circle {
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+.session-ring .ring-track { stroke: color-mix(in srgb, var(--pearl) 18%, transparent); }
+.session-ring .ring-prog {
+  stroke: var(--cyan);
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--cyan) 36%, transparent));
+}
+#tile-session[data-phase="wait"] .ring-prog {
+  stroke: var(--lavender);
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--lavender) 38%, transparent));
+}
+#tile-session[data-phase="early"] .ring-prog {
+  stroke: var(--warn);
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--warn) 32%, transparent));
+}
+.session-count {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: 0.01em;
+}
+
+.days-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  margin-left: 6px;
+  padding: 2px 8px 2px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--glass-2) 78%, transparent);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.days-bar {
+  position: relative;
+  width: 32px;
+  height: 3px;
+  flex: none;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--pearl) 12%, transparent);
+  overflow: hidden;
+}
+.days-bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--fill, 0%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--lavender), var(--cyan));
+}
+.days-n {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.status-orb {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  justify-self: center;
+  align-self: center;
+  background: color-mix(in srgb, var(--cyan) 76%, var(--pearl));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--cyan) 40%, transparent);
+}
+.status-orb[data-tone="review"] {
+  background: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--lavender) 86%, var(--pearl));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--lavender) 38%, transparent);
+}
+.status-orb[data-tone="quiet"] {
+  background: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--pearl) 36%, transparent);
+  box-shadow: none;
+}
+#mod-status button {
+  grid-template-columns: 16px minmax(0, 92px) minmax(0, 1fr);
+  align-items: center;
+}
+#mod-status .mod-quiet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .status-orb[data-tone="live"],
+  .status-orb[data-tone="review"] { animation: orb-glow 4.8s ease-in-out infinite; }
+  .session-ring .ring-prog { transition: stroke-dashoffset 0.8s ease; }
+}
+@keyframes orb-glow {
+  0%, 100% { opacity: 0.76; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .status-orb { animation: none; }
+  .session-ring .ring-prog { transition: none; }
+}
+
 .quiet-list { list-style: none; margin: 10px 0 0; padding: 0; }
 .quiet-list li {
   display: grid;
@@ -1155,6 +1297,10 @@ body[data-page="desk"] .toast { pointer-events: auto; }
   .mast .clock { font-size: clamp(30px, 9vw, 34px); }
   .command input { font-size: 16px; padding-top: 14px; padding-bottom: 14px; }
   .mast-time { text-align: left; padding-bottom: 0; width: 100%; }
+  .greet { font-size: 14px; margin-bottom: 8px; }
+  .session-ring { width: 60px; height: 60px; }
+  #tile-session .v { font-size: clamp(30px, 9vw, 40px); }
+  .days-pill { margin-left: 0; }
   .mod-arrange { display: none; }
   .status-grid, .lower { grid-template-columns: 1fr; }
   .status-grid .span-2 { grid-column: auto; }

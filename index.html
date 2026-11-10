@@ -16,7 +16,7 @@
   <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-  <meta name="desk-build" content="v13">
+  <meta name="desk-build" content="v14">
   <link rel="stylesheet" href="./kit/prometheus.css">
   <link rel="stylesheet" href="./styles.css">
   <script>document.documentElement.classList.add("js")</script>
@@ -30,6 +30,7 @@
     <header class="mast">
       <div class="mast-title">
         <p class="kicker"><span class="sq" aria-hidden="true"></span> <span data-atmo>Evening</span></p>
+        <p class="greet" id="greet" hidden><span id="greet-line">Hello, Joseph</span> <time id="greet-time" class="num" datetime="">—</time></p>
         <h1><a href="#board">Prometheus</a></h1>
       </div>
       <div class="mast-time">
@@ -58,10 +59,19 @@
           <p class="s" id="next-name"></p>
           <ul class="quiet-list" id="next-list"></ul>
         </article>
-        <article class="glass-card" id="tile-session">
-          <p class="k">NYSE</p>
-          <p class="v" id="session-state" data-state="">—</p>
+        <article class="glass-card" id="tile-session" data-phase="">
+          <div class="session-top">
+            <div class="session-copy">
+              <p class="k">NYSE</p>
+              <p class="v" id="session-state" data-state="">—</p>
+            </div>
+            <svg class="session-ring" id="session-ring" viewBox="0 0 72 72" aria-hidden="true">
+              <circle class="ring-track" cx="36" cy="36" r="30"></circle>
+              <circle class="ring-prog" cx="36" cy="36" r="30" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" transform="rotate(-90 36 36)"></circle>
+            </svg>
+          </div>
           <p class="s" id="session-why"></p>
+          <p class="s session-count" id="session-count"></p>
           <p class="s" id="session-next"></p>
         </article>
         <article class="glass-card span-2" id="tile-life">
