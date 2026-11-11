@@ -19,6 +19,26 @@
     { name: "Brake fluid", miles: null, months: 24 }, { name: "Engine coolant", miles: 60000, months: 60 },
     { name: "Spark plugs", miles: 97500, months: null }, { name: "Hybrid system / HSG belt inspection", miles: 7500, months: 12 },
   ]));
+
+  // Migration (Sebastian, 2026-11-10, completing Grok's schedule wiring): the seed above only
+  // reaches fresh profiles — a browser that stored the old starter services keeps them forever.
+  // Bring stored services to the same severe-use factory set once: serviced items keep their name
+  // (history links by name) and take the factory interval; unserviced items take factory names;
+  // factory items not yet present are added. The service log itself is never touched.
+  if (KIA && S.get("services") && !S.get("factoryV2")) {
+    const FACTORY = [{"name": "Engine oil + filter", "miles": 5000, "months": 6}, {"name": "Tire rotation", "miles": 8000, "months": 12}, {"name": "Cabin (climate control) air filter - replace", "miles": 16000, "months": 24}, {"name": "Engine air filter - replace", "miles": 24000, "months": 36}, {"name": "Brake fluid - replace", "miles": 48000, "months": 48}, {"name": "Spark plugs", "miles": 48000, "months": null}, {"name": "Engine coolant (first at 120k mi / 120 mo, then 24k/24)", "miles": 120000, "months": 120}, {"name": "Inverter coolant HEV (first at 120k mi / 120 mo, then 24k/24)", "miles": 120000, "months": 120}, {"name": "HSG belt - inspect", "miles": 5000, "months": 6}, {"name": "HSG belt - replace", "miles": 30000, "months": 24}, {"name": "Automatic transmission fluid - replace", "miles": 56000, "months": null}, {"name": "Rear differential oil - replace (AWD)", "miles": 72000, "months": null}, {"name": "Transfer case oil - replace (AWD)", "miles": 72000, "months": null}, {"name": "Multi-point inspection (brakes, suspension, steering, drive/prop shaft", "miles": 8000, "months": 12}];
+    const ALIAS = {"Engine oil + filter": "Engine oil + filter", "Tire rotation": "Tire rotation", "Cabin air filter": "Cabin (climate control) air filter - replace", "Engine air filter": "Engine air filter - replace", "Brake fluid": "Brake fluid - replace", "Spark plugs": "Spark plugs", "Engine coolant": "Engine coolant (first at 120k mi / 120 mo, then 24k/24)", "Hybrid system / HSG belt inspection": "HSG belt - inspect"};
+    const serviced = new Set(S.list("history").map((x) => x.service));
+    const byName = Object.fromEntries(FACTORY.map((f) => [f.name, f]));
+    const used = new Set();
+    let svcs = S.get("services", []).map((it) => {
+      const f = byName[ALIAS[it.name] || it.name]; if (!f) return it;
+      used.add(f.name);
+      return serviced.has(it.name) ? { ...it, miles: f.miles, months: f.months } : { ...it, name: f.name, miles: f.miles, months: f.months };
+    });
+    for (const f of FACTORY) if (!used.has(f.name) && !svcs.some((x) => x.name === f.name)) svcs.push({ id: Math.random().toString(36).slice(2, 8), ...f });
+    S.set("services", svcs); S.set("factoryV2", 1);
+  }
   const odo = () => S.get("odometer", 0);
   const lastFor = (name) => S.list("history").filter((x) => x.service === name).sort((a, b) => b.date.localeCompare(a.date))[0] || null;
 

@@ -7,13 +7,13 @@
   const S = store("apollo");
   const root = document.getElementById("apollo-data"); if (!root) return;
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  root.innerHTML = `<div class="glass" style="margin-top:14px"><h2>Food lookup — 300 USDA foods (per 100 g)</h2>
+  root.innerHTML = `<div class="glass" style="margin-top:14px"><h2>Food lookup — 900 USDA foods (per 100 g)</h2>
     <form class="form"><label class="f wide">Search foods<input id="fd-q" type="search" placeholder="chicken breast, oats, salmon…"></label></form>
     <div id="fd-list"></div>
     <h3 style="margin-top:16px">Meal builder</h3><div id="fd-meal" class="stat-s">Tap a food to add 100 g. Totals update as you build.</div>
     <div class="row-actions" style="margin-top:8px"><button class="btn small" id="fd-save" type="button">Save meal to Apollo</button><button class="btn quiet small" id="fd-clear" type="button">Clear</button></div>
     <div id="fd-saved" class="stat-s" style="margin-top:8px"></div></div>
-  <div class="glass" style="margin-top:14px"><h2>Exercise lookup — 150 activities (MET)</h2>
+  <div class="glass" style="margin-top:14px"><h2>Exercise lookup — 450 activities (MET)</h2>
     <form class="form"><label class="f wide">Search activities<input id="ex-q" type="search" placeholder="walking, rowing, cycling…"></label>
     <label class="f">Your weight (kg)<input id="ex-kg" type="number" value="90" min="30" max="300"></label>
     <label class="f">Minutes<input id="ex-min" type="number" value="30" min="1" max="600"></label></form>

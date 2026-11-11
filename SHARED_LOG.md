@@ -92,3 +92,16 @@
 
 ## 2026-11-10 (night) — Sebastian: correction — restore of Grok's day stands down
 My 5ec47d9 "restore" was the wrong call: Joseph had Grok's live state as his product, and rolling the tree back to the pre-Grok baseline removed work he could see and use. This commit returns the tree to Grok's head (1ff7d9b) exactly. The audit findings stand as findings (empty Midas memo, 37/60 billers, duplicate 2027 packs) — they never required a rollback. No further hub changes from Sebastian without a diff list Joseph approves first.
+
+## 2026-11-10 (night, later) — Sebastian: completions on Grok's build, per Joseph's directive
+Joseph: "Now fix it to my standards. Build off each others work. If you say its half done go more." So: Grok's desk and wiring stay exactly as shipped; what follows only completes what was dropped-but-not-wired, and fixes the seed-vs-stored gap.
+- Apollo: lookup now serves the full datasets — foods 900 (300 shipped + parts 2-3 from pillars/apollo/data/, deduped by name), exercises 450. Lookup headings corrected to the real counts.
+- Garage: Grok's schedule.js seed only reached FRESH profiles. Added a one-time migration in his app.js (his KIA/kiaSet idiom): stored starter services are brought to the severe-use factory set — serviced items keep their name (history links by name), unserviced take factory names, missing factory items are added. Verified on a simulated legacy profile (oil 8000/12 -> 5000/6, name kept).
+- Hermes: Grok's phishing-lures.js (23 sourced lures, richer fields than mine) was never loaded. New lures-panel.js renders it (pattern, tell, how-to-check, source) into a new #hermes-lures section; index loads his file + the panel.
+- Piano: standards.js (built earlier from the reset-day extraction) was in the tree unreferenced. Section + Play wiring added; 40 standards render with Changes strips.
+- Privacy: brokers-data.js was in the tree unreferenced. Union-merge added (existing brokers/states untouched; ledger 12 -> 42 on a fresh profile) and each broker row now links its verified opt-out URL.
+- Athenaeum: history-seed.js was in the tree unreferenced. Seed block added — 40 cause->event->consequence entries shelve once.
+- Bastion: alerts.js was in the tree unreferenced. Alert-types panel added, plus the Red Cross 72-hour baseline as a scenario (items taken from Grok's own data/frazier-readiness.json).
+- Selling: fee preset select (Facebook 10 / Mercari 10 / eBay 13.6 / Poshmark 20) from the reset-day fee pass.
+- Verified: full click-path harness on Grok's desk (doors pass; only the 2 known sandbox artifacts — Argus fetching live Titan data, Bastion's NWS call), targeted renders for every count above, node --check on all touched JS.
+- NOT touched: Grok's desk-home.js, hub structure, Kairos/Icarus sets (verified no duplicates in his tree), Money, Midas, Hearth, Titan, Fleet.

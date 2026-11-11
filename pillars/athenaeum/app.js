@@ -7,6 +7,12 @@
   const app = $("#app");
   field({ count: 800, at: [0.74, 0.34], scale: 0.22, glyph: (n) => [...G.ring(Math.round(n * 0.4), 0.5), ...G.ring(Math.round(n * 0.3), 0.9), ...G.ring(Math.round(n * 0.3), 0.16)] });
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  // History seed (Sebastian, 2026-11-10): the reset-day cause -> event -> consequence set
+  // (history-seed.js, from the data/ drop) shelved once. Existing shelf items are never touched.
+  if (!S.get("histSeedV1") && window.ATHENAEUM_HISTORY) {
+    for (const e of window.ATHENAEUM_HISTORY) S.add("shelf", { title: e.title, author: e.author, kind: "history", status: "done", chain: e.chain });
+    S.set("histSeedV1", 1);
+  }
   app.innerHTML = `
     <section class="grid">
       <div class="glass span-12" id="a-resurface-wrap"><h2>Resurfaced — still worth your attention</h2><div id="a-resurface"></div></div>

@@ -54,6 +54,9 @@
           <button class="btn quiet" id="p-stop" type="button">Stop</button></div>
         <p class="note">One bar per chord. Bass: root on 1, fifth on 3. Stabs on 1, the "a" of 1, the &amp; of 2, the &amp; of 3, and 4 — the classic bossa figure.</p></div>
       <div class="glass span-12"><h2>Chord library — tap to hear the voicing</h2><div class="chords" id="p-lib"></div></div>
+      <div class="glass span-12"><h2>Standards — the real changes</h2>
+        <p class="note">Forty bossa standards with their bar-by-bar chord maps (iReal charts, from the reset-day extraction in data/). Play runs the changes through the same bossa pattern — voicings are the studio's, so extended chords land as their nearest playable quality.</p>
+        <div id="p-standards"></div></div>
       <div class="glass span-6"><h2>Clean-rep ladder</h2>
         <div class="rep" id="p-reps">0 / 8</div><div class="stat-s" id="p-ladder-note">Eight clean reps at this tempo earns +4 BPM.</div>
         <div class="row-actions" style="margin-top:8px"><button class="btn" id="p-rep" type="button">Clean rep</button>
@@ -77,6 +80,32 @@
   $("#p-play-prog").onclick = () => startPlayer(M.progression($("#p-key").value), +$("#p-bpm").value || 60);
   $("#p-stop").onclick = stopPlayer;
 
+  // standards: parse chart chords into studio voicings and play the changes
+  const QMAP = { "": "maj7", "maj7": "maj7", "maj9": "maj9", "6": "maj7", "69": "maj9", "m": "m7", "m7": "m7", "m9": "m9", "7": "7", "9": "9", "13": "13", "7b13": "13", "7#11": "13", "7sus4": "7", "sus4": "7", "m7b5": "m7b5", "dim7": "m7b5", "dim": "m7b5" };
+  const FLAT = { Db: "C#", Eb: "D#", Gb: "F#", Ab: "G#", Bb: "A#" };
+  function chartChord(tok) {
+    const m = String(tok).split("/")[0].match(/^([A-G])(#|b)?(.*)$/); if (!m) return null;
+    const root = FLAT[m[1] + (m[2] || "")] || (m[1] + (m[2] || ""));
+    const q = QMAP[(m[3] || "").trim()]; if (!q) return null;
+    try { return M.chord(root, q); } catch (e) { return null; }
+  }
+  const stdBox = $("#p-standards");
+  if (window.BOSSA_STANDARDS) for (const t of window.BOSSA_STANDARDS) {
+    const parsed = t.bars.map((bar) => chartChord(String(bar).split(" ")[0]));
+    const playable = parsed.filter(Boolean).length;
+    const row = h("div.kv", null,
+      h("span", null, h("b", null, t.t), h("span.stat-s", null, ` · ${t.c || ""} · key ${t.key} · ${t.form} · ${t.bars.length} bars`)),
+      h("span.row-actions", null,
+        h("button.btn.quiet.small", { type: "button", onclick: (e) => {
+          const strip = e.target.closest(".kv").nextElementSibling;
+          strip.hidden = !strip.hidden;
+        } }, "Changes"),
+        playable >= Math.ceil(t.bars.length * 0.7) ? h("button.btn.small", { type: "button", onclick: () => {
+          startPlayer(parsed.map((c, i) => c || parsed.slice(0, i).reverse().find(Boolean) || LIBRARY[0]), +$("#p-bpm").value || 60);
+        } }, "Play") : null));
+    const strip = h("div.mono", { hidden: "" }, t.bars.join("  |  "));
+    stdBox.append(row, strip);
+  }
   // ladder
   let reps = S.get("ladder_reps", 0), bpm = S.get("ladder_bpm", 60);
   const paintLadder = () => { $("#p-reps").textContent = `${reps} / 8 at ${bpm} BPM`; $("#p-ladder-note").textContent = reps >= 8 ? "Ladder complete — press Clean rep once more to bank it and step up." : "Eight clean reps at this tempo earns +4 BPM."; if (document.activeElement !== $("#p-bpm")) $("#p-bpm").value = bpm; };
