@@ -7,7 +7,7 @@
   const app = $("#app");
   field({ count: 800, at: [0.74, 0.34], scale: 0.22, glyph: (n) => [...G.ring(Math.round(n * 0.6), 1), ...G.ring(Math.round(n * 0.4), 0.62)] });
 
-  const DEF = { principal: 15000, apr: 12.99, term: 24, actualPayment: 724.10, extra: 0, useBus: false };
+  const DEF = { principal: 5000, apr: 6, term: 12, actualPayment: 440, extra: 0, useBus: false };
   const cfg = () => ({ ...DEF, ...S.get("cfg", {}) });
   const busSales = () => (window.PB ? Math.max(0, PB.money.total("sale")) : 0);
 
@@ -100,20 +100,6 @@
   $("#s-case").addEventListener("change", paintStrat);
   $("#s-strat").addEventListener("change", paintStrat);
   $("#i-q").addEventListener("input", paintIss);
-  // Balance-transfer & hardship landscape (refreshed 2026-11-10, Grok reset-day pass; issuer pages
-  // re-read, terms changed vs the November baseline: none). Reference only — no personal data.
-  if (window.MONEY_OFFERS) {
-    const O = window.MONEY_OFFERS, grid = document.querySelector("#app .grid");
-    const sec = h("div.glass.span-12", null, h("h2", null, "Balance transfers & hardship — the current landscape"),
-      h("p.note", null, "Advertised terms re-read from issuer pages on 2026-11-10. An issuer listed as unverified was NOT guessed — its terms could not be read from a public page."),
-      ...(O.balance_transfer || []).map((r) => h("div.kv", null,
-        h("span", null, `${r.issuer} — ${r.product}`, h("span.stat-s", null, ` · ${r.months || "?"} ${r.months_unit || "months"} intro · fee ${r.fee || "?"}`)))),
-      ...(O.hardship || []).map((r) => h("div.kv", null,
-        h("span", null, `${r.lender} hardship`, h("span.stat-s", null, ` · ${String(r.program || "").slice(0, 90)}`)))),
-      ...(O.bt_not_verified || []).map((r) => h("div.kv", null,
-        h("span", null, `${r.issuer} — not verified`, h("span.stat-s", null, ` · ${String(r.reason || "").slice(0, 110)}`)))));
-    if (grid) grid.append(sec);
-  }
   $("#export").onclick = () => download(`money_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paintCons(); } catch (e) { toast(e.message); } };
   tabs(app, (id) => { if (id === "p-cons") paintCons(); if (id === "p-strat") paintStrat(); if (id === "p-iss") paintIss(); });

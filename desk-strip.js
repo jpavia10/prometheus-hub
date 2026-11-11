@@ -23,7 +23,8 @@
       case "bastion": { const it = data.bastion || []; if (!it.length) return null;
         const oz = it.reduce((s, x) => s + (x.weightOz || 0) * (x.qty || 1), 0); return `${it.length} items · ${(oz / 16).toFixed(1)} lb packed`; }
       case "piano": { const bpm = data.pianoBpm; return bpm ? `Ladder at ${bpm} BPM` : null; }
-      case "kairos": { const d = (data.deadlines || []).filter((x) => !x.done).sort((a, b) => a.date.localeCompare(b.date))[0];
+      case "kairos": { const t = data.today || "";
+        const d = (data.deadlines || []).filter((x) => !x.done && x.date >= t).sort((a, b) => a.date.localeCompare(b.date))[0];
         return d ? `Next: ${d.title} · ${d.date}` : null; }
       case "money": { const s = data.salesTotal || 0; return s > 0 ? `${money(s)} of sales on the bus` : null; }
       case "odyssey": { const t = (data.trips || []).filter((x) => x.end >= data.today).sort((a, b) => a.start.localeCompare(b.start))[0];
@@ -46,7 +47,7 @@
     for (const e of data.events || []) push("Time", e.title, "pillars/kairos/");
     return out;
   }
-  const search = (index, q) => { const s = String(q || "").toLowerCase(); if (!s) return []; return index.filter((x) => x.label.toLowerCase().includes(s)).slice(0, 8); };
+  const search = (index, q) => { const s = String(q || "").trim().toLowerCase(); if (!s) return []; return index.filter((x) => x.label.toLowerCase().includes(s)).slice(0, 8); };
 
   const DL = { doorLine, buildIndex, search };
   if (typeof window !== "undefined") window.DESK_LIVE = DL;
@@ -77,33 +78,41 @@
     const line = doorLine(el.getAttribute("data-live-for"), data);
     if (line) el.textContent = line;
   }
-  // operating-picture band
+  // operating-picture band (lives OUTSIDE the focus form: a nested <form> is dropped by the parser,
+  // which made Enter in search submit the focus line)
   const el = document.getElementById("bus-strip"); if (!el) return;
   const overdue = PB.deadlines.overdue(), next = PB.deadlines.upcoming(14);
+  const open = PB.deadlines.list().filter((d) => !d.done && d.source !== "kairos-fixed" && d.date >= data.today).length;
   const away = PB.meta.get("away", null);
   const awayOn = away && away.until >= data.today;
+  const srcName = (s) => ({ "kairos-fixed": "calendar", kairos: "Time" }[s] || s || "");
   el.hidden = false;
   el.innerHTML = `
     ${awayOn ? `<div class="op-away">Away — ${esc(away.name || "trip")} · back ${esc(away.until)} · ${next.filter((d) => d.date <= away.until).length} deadline(s) land while you're out</div>` : ""}
     <div class="bus-head"><span class="bus-k">Operating picture · next 14 days</span><a class="bus-link" href="pillars/kairos/">Open Time</a></div>
     ${overdue.length ? `<div class="bus-late">${overdue.length} overdue · oldest: ${esc(overdue[0].title)} (${esc(overdue[0].date)})</div>` : ""}
-    <ul class="bus-list">${next.slice(0, 5).map((d) => `<li><span class="bus-when">${esc(d.date.slice(5))}</span><span class="bus-what">${esc(d.title)}</span><span class="bus-src">${esc(d.source === "kairos-fixed" ? "Kairos" : d.source)}</span></li>`).join("") || `<li><span class="bus-what">Nothing due in the next 14 days.</span></li>`}</ul>
+    <ul class="bus-list">${next.slice(0, 5).map((d) => `<li><span class="bus-when">${esc(d.date.slice(5))}</span><span class="bus-what">${esc(d.title)}</span><span class="bus-src">${esc(srcName(d.source))}</span></li>`).join("") || `<li><span class="bus-what">Nothing due in the next 14 days.</span></li>`}</ul>
     ${next.length > 5 ? `<div class="bus-more">+ ${next.length - 5} more in Time</div>` : ""}
-    <div class="op-row"><span>Sales on the bus: <b>${money(data.salesTotal)}</b></span><span>${PB.deadlines.list().filter((d) => !d.done && d.source !== "kairos-fixed").length} open deadlines deck-wide</span></div>
-    <form class="op-search" id="op-search-form"><input id="op-q" type="search" placeholder="Search everything — items, documents, ideas, trips…" aria-label="Search the deck"></form>
-    <div id="op-results"></div>
-    <div class="op-row"><button class="btn quiet small" id="op-backup" type="button">Download full deck backup</button>
-    <label class="btn quiet small" for="op-restore-file">Restore backup</label><input id="op-restore-file" type="file" accept="application/json" hidden>
-    <span class="bus-src">One file, every capability. Keep it somewhere safe.</span></div>`;
+    <div class="op-row op-figures"><span>${data.salesTotal > 0 ? `Sales on the bus: <b>${money(data.salesTotal)}</b>` : "No sales recorded yet"}</span><span>${open} open deadline${open === 1 ? "" : "s"} across the deck</span></div>
+    <form class="op-search" id="op-search-form" role="search"><input id="op-q" type="search" placeholder="Search items, documents, ideas, trips…" aria-label="Search the deck's records" autocomplete="off"></form>
+    <ul id="op-results" class="bus-list op-results"></ul>
+    <div class="op-row op-tools"><button class="op-btn" id="op-backup" type="button">Download deck backup</button>
+    <label class="op-btn" for="op-restore-file" tabindex="0">Restore backup</label><input id="op-restore-file" type="file" accept="application/json" hidden>
+    <span class="bus-src">One file, every module on this device. Keep it somewhere safe.</span></div>`;
   const index = buildIndex(data);
-  let curHits = [];
-  document.getElementById("op-q").addEventListener("input", (e) => {
-    curHits = search(index, e.target.value);
-    document.getElementById("op-results").innerHTML = curHits.length
-      ? `<ul class="bus-list">${curHits.map((hgt) => `<li><span class="bus-src">${esc(hgt.cap)}</span><a class="bus-link" href="${hgt.href}">${esc(hgt.label)}</a></li>`).join("")}</ul>`
-      : (e.target.value ? `<p class="bus-more">No match for &ldquo;${esc(e.target.value)}&rdquo;.</p>` : "");
-  });
-  document.getElementById("op-search-form").addEventListener("submit", (e) => { e.preventDefault(); if (curHits.length) location.href = curHits[0].href; });
+  const results = document.getElementById("op-results");
+  const q = document.getElementById("op-q");
+  const paint = () => {
+    const v = q.value.trim();
+    const hits = search(index, v);
+    results.innerHTML = !v ? "" : hits.length
+      ? hits.map((h) => `<li><span class="bus-src">${esc(h.cap)}</span><a class="bus-link" href="${h.href}">${esc(h.label)}</a></li>`).join("")
+      : `<li><span class="bus-what">Nothing on this device matches “${esc(v)}”.</span></li>`;
+  };
+  q.addEventListener("input", paint);
+  document.getElementById("op-search-form").addEventListener("submit", (e) => { e.preventDefault(); const a = results.querySelector("a"); if (a) a.click(); });
+  const restoreLabel = el.querySelector('label[for="op-restore-file"]');
+  restoreLabel.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); document.getElementById("op-restore-file").click(); } });
   document.getElementById("op-backup").onclick = () => {
     const blob = new Blob([JSON.stringify(PB.dumpAll(), null, 1)], { type: "application/json" });
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "prometheus-backup-" + data.today + ".json";

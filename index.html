@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
   <title>Prometheus Hub</title>
-  <meta name="description" content="Prometheus Hub is the desk. Three houses, five seats and fourteen capabilities. Fleet Command is paused.">
+  <meta name="description" content="Prometheus Hub command desk: search, next dates, the NYSE session, car and home dates, and module status.">
   <meta name="theme-color" content="#05070e">
   <meta name="color-scheme" content="dark">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,528 +16,166 @@
   <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&amp;display=swap">
+  <meta name="desk-build" content="v14">
+  <link rel="stylesheet" href="./kit/prometheus.css">
   <link rel="stylesheet" href="./styles.css">
   <script>document.documentElement.classList.add("js")</script>
 </head>
-<body data-page="desk" data-chapter="desk">
-  <a class="skip" href="#desk">Skip to the desk</a>
+<body data-page="desk" data-layout="command">
+  <a class="skip" href="#board">Skip to the desk</a>
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="veil" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <a class="brand" href="#desk">
-      <span class="sq" aria-hidden="true"></span>
-      <span>Prometheus Hub</span>
-    </a>
-    <nav class="topnav" aria-label="Desk">
-      <a href="#desk" aria-current="true">Today</a>
-      <a href="#sylade">Sylade</a>
-      <a href="#houses">Houses</a>
-      <a href="#seats">Seats</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="desk" class="panel hero">
-      <div class="hero-mark">
-        <span class="sq" aria-hidden="true"></span>
-        <h1>PROMETHEUS <span class="hub">hub</span></h1>
+  <div class="deck">
+    <header class="mast">
+      <div class="mast-title">
+        <p class="kicker"><span class="sq" aria-hidden="true"></span> <span data-atmo>Evening</span></p>
+        <p class="greet" id="greet" hidden><span id="greet-line">Hello, Joseph</span> <time id="greet-time" class="num" datetime="">—</time></p>
+        <h1><a href="#board">Prometheus</a></h1>
       </div>
-      <p class="lede">The desk keeps the room. The wings keep their own work. Nothing on this page signs in.</p>
-      <div class="deskglass">
-        <div class="clock-block">
-          <time class="clock" data-clock datetime="">—</time>
-          <p class="atmo"><span data-atmo>Quiet field</span></p>
-          <p class="day-line" data-day></p>
-        </div>
-        <button type="button" class="arc-btn" data-open="kairos" aria-label="Open Kairos Meridian, the day seat">
-          <svg class="day-arc" viewBox="0 0 200 90" aria-hidden="true">
-            <path d="M14 72 A86 56 0 0 1 186 72" fill="none" stroke="rgba(201,184,234,0.7)" stroke-width="1.25"></path>
-            <path d="M14 74 H186" fill="none" stroke="rgba(244,247,251,0.2)" stroke-width="1"></path>
-            <circle class="arc-now" cx="100" cy="16" r="4.2" fill="#f4f7fb"></circle>
-          </svg>
-          <span class="arc-label">Day</span>
-        </button>
-        <p class="brief">Sylade stands beside this room. Three houses, five seats and fourteen capabilities are open. Lines you keep stay in this browser.</p>
-        <div class="status">
-          <a href="#houses">3 houses</a>
-          <a href="#seats">5 seats</a>
-          <button type="button" data-open="drive">Drive linked</button>
-          <button type="button" data-open="fleet">Fleet paused</button>
-          <button type="button" data-open="desk">About this desk</button>
-          <button type="button" id="install-app" hidden>Install on this phone</button>
-          <span data-notes>None yet</span>
-        </div>
-        <form class="focus" id="focus-form">
-          <label for="focus-input">On this device</label>
-          <div class="focus-row">
-            <input id="focus-input" name="focus" maxlength="80" placeholder="A line for this desk" autocomplete="off" enterkeyhint="done">
-            <button type="submit">Keep</button>
+      <div class="mast-time">
+        <div class="clock-block" id="away-clocks" hidden></div>
+        <time class="clock" data-clock datetime="">—</time>
+        <p class="day-line" data-day></p>
+      </div>
+    </header>
+
+    <form class="command" id="cmd-form" role="search">
+      <label class="sr" for="cmd">Search the desk</label>
+      <input id="cmd" type="search" placeholder="Search the desk" aria-label="Search modules, their pages, dates, the session, or a public term" aria-controls="cmd-hits" aria-autocomplete="list" aria-expanded="false" autocomplete="off" enterkeyhint="search">
+      <button type="button" id="cmd-open" aria-keyshortcuts="/" aria-label="Focus search">/</button>
+    </form>
+    <div id="cmd-hits" class="cmd-hits" role="listbox" hidden></div>
+
+    <nav class="mod-strip" id="switcher" aria-label="Modules"></nav>
+
+    <div id="board">
+      <p class="away-banner" id="away-card" hidden></p>
+
+      <section class="status-grid" aria-label="Status">
+        <article class="glass-card lit" id="tile-next">
+          <p class="k">Next date</p>
+          <p class="v" id="next-date">—</p>
+          <p class="s" id="next-name"></p>
+          <ul class="quiet-list" id="next-list"></ul>
+        </article>
+        <article class="glass-card" id="tile-session" data-phase="">
+          <div class="session-top">
+            <div class="session-copy">
+              <p class="k">NYSE</p>
+              <p class="v" id="session-state" data-state="">—</p>
+            </div>
+            <svg class="session-ring" id="session-ring" viewBox="0 0 72 72" aria-hidden="true">
+              <circle class="ring-track" cx="36" cy="36" r="30"></circle>
+              <circle class="ring-prog" cx="36" cy="36" r="30" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" transform="rotate(-90 36 36)"></circle>
+            </svg>
           </div>
-          <p class="focus-empty" id="focus-empty">Nothing kept yet. Notes stay in this browser. They are not synced.</p>
-          <ul id="focus-list"></ul>
+          <p class="s" id="session-why"></p>
+          <p class="s session-count" id="session-count"></p>
+          <p class="s" id="session-next"></p>
+        </article>
+        <article class="glass-card span-2" id="tile-life">
+          <div class="card-h">
+            <h2>Car and home</h2>
+            <p class="s">Dates kept on this device</p>
+          </div>
+          <ul class="quiet-list" id="date-strip"></ul>
+        </article>
+        <article class="glass-card span-2" id="tile-modules">
+          <div class="card-h">
+            <h2>Module status</h2>
+            <p class="s" id="review-count"></p>
+          </div>
+          <ul class="quiet-list" id="mod-status"></ul>
+        </article>
+      </section>
 
-        </form>
-        <div id="bus-strip" class="bus-strip" hidden></div>
-        <style>
-          .bus-strip{margin-top:18px;border:1px solid rgba(159,212,230,.22);border-radius:14px;padding:12px 14px;background:rgba(10,16,28,.45)}
-          .bus-head{display:flex;justify-content:space-between;align-items:baseline}
-          .bus-k{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9fd4e6}
-          .bus-link{font-size:13px;color:#cfe3f5}
-          .bus-late{margin-top:6px;color:#ffb4a2;font-size:14px}
-          .bus-list{list-style:none;margin:8px 0 0;padding:0}
-          .bus-list li{display:flex;gap:10px;padding:4px 0;font-size:14.5px;color:#e8eef7;flex-wrap:wrap}
-          .bus-when{color:#9fb4cc;min-width:118px}
-          .bus-src{color:#7d90a9;font-size:12.5px}
-          .bus-more{margin-top:4px;color:#9fb4cc;font-size:13px}
-        
-          .op-away{margin:6px 0;padding:8px 10px;border:1px solid rgba(255,180,162,.4);border-radius:10px;color:#ffd9cf;font-size:14px}
-          .op-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:14px;color:#e8eef7;align-items:center}
-          .op-search{margin-top:10px}
-          .op-search input{width:100%;box-sizing:border-box;background:rgba(5,8,16,.6);border:1px solid rgba(159,212,230,.25);border-radius:10px;color:#e8eef7;padding:9px 12px;font-size:14.5px}
-        </style>
-        <a class="drive-row" href="https://drive.google.com/drive/folders/1ykx47zGga6Jbd4FrUzBWde2frT3_6cnP" target="_blank" rel="noopener noreferrer" data-open="drive">
-          <strong>Prometheus Hub Drive</strong>
-          <span>The shared Drive folders for every AI.</span>
-          <em>Open the folder</em>
-        </a>
-      </div>
-    </section>
+      <section class="lower">
+        <article class="glass-card" id="pane-notes">
+          <h2>Notes on this device</h2>
+          <form class="focus" id="focus-form">
+            <label for="focus-input">Keep a line here</label>
+            <div class="focus-row">
+              <input id="focus-input" name="focus" maxlength="80" placeholder="A line for this browser" autocomplete="off" enterkeyhint="done">
+              <button type="submit">Keep</button>
+            </div>
+            <p class="focus-empty" id="focus-empty">Nothing kept yet. Notes stay in this browser.</p>
+            <ul id="focus-list"></ul>
+          </form>
+        </article>
 
-    <section id="sylade" class="panel">
-      <div class="copy reveal">
-        <p class="kicker">Alter ego</p>
-        <h2>Sylade</h2>
-        <p>The shared name the fleet uses in public.</p>
-      </div>
-      <div class="contacts reveal">
-        <a href="mailto:sylade.ais@gmail.com">
-          <strong>sylade.ais@gmail.com</strong>
-          <small>Public mail. Not an inbox on this desk.</small>
-          <em>Email</em>
-        </a>
-        <a href="https://github.com/sylade-ais" target="_blank" rel="noopener noreferrer">
-          <strong>github.com/sylade-ais</strong>
-          <small>Profile name Sylade. Shared AI identity.</small>
-          <em>GitHub</em>
-        </a>
-        <a href="https://discord.gg/YCam2NEkv9" target="_blank" rel="noopener noreferrer">
-          <strong>Sylade Fleet</strong>
-          <small>The public Discord room. Not the Fleet Command site.</small>
-          <em>Discord</em>
-        </a>
-      </div>
-      <div class="actions reveal">
-        <a class="pill" href="./sylade.html" data-handoff="Sylade">Enter presence <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-    <section id="houses" class="panel">
-      <div class="copy reveal">
-        <p class="kicker">Open wings</p>
-        <h2>The houses</h2>
-        <p>Each one keeps its own work. Read it here, then leave the desk if you want the wing itself. Point at a house and the field takes its shape.</p>
-      </div>
-      <div class="list reveal">
-        <a class="row" id="titan" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer" data-open="titan">
-          <span class="row-name">Titan Reliquary</span>
-          <span class="row-role">Coin and precious-metals collection.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="midas" href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer" data-open="midas">
-          <span class="row-name">Midas Ledger</span>
-          <span class="row-role">Money: cash, debt and the way out.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="hearth" href="https://jpavia10.github.io/hephaestus-hearth/" target="_blank" rel="noopener noreferrer" data-open="hearth">
-          <span class="row-name">Hephaestus Hearth</span>
-          <span class="row-role">The house: projects, inventory and floor plan.</span>
-          <span class="row-status">Live</span>
-        </a>
-      </div>
-    </section>
-
-    <section id="seats" class="panel">
-      <div class="copy reveal">
-        <p class="kicker">New wings</p>
-        <h2>The five seats</h2>
-        <p>Each one is its own page with its own homework. What you enter stays on your phone; nothing private is stored on this desk.</p>
-      </div>
-      <div class="list reveal">
-        <a class="row" id="apollo" href="pillars/apollo/" data-open="apollo">
-          <span class="row-name">Apollo Temple</span>
-          <span class="row-role">Health, fitness and nutrition.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="hermes" href="pillars/hermes/" data-open="hermes">
-          <span class="row-name">Hermes Post</span>
-          <span class="row-role">Mail and messages that need an answer.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="kairos" href="pillars/kairos/" data-open="kairos">
-          <span class="row-name">Kairos Meridian</span>
-          <span class="row-role">Time: calendar, deadlines and the day.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="icarus" href="pillars/icarus/" data-open="icarus">
-          <span class="row-name">Icarus Stake</span>
-          <span class="row-role">High-risk trading journal. It never trades.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="argus" href="pillars/argus/" data-open="argus">
-          <span class="row-name">Argus Album</span>
-          <span class="row-role">Every picture the pillars use, in one album.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="money" href="pillars/money/" data-open="money">
-          <span class="row-name">Money · Payoff Simulator</span>
-          <span class="row-role">The payoff, simulated honestly — sample data only.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="selling" href="pillars/selling/" data-open="selling">
-          <span class="row-name">Selling Pipeline</span>
-          <span class="row-role">Marketplace, shipping-only: staged to payout.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="garage" href="pillars/garage/" data-open="garage">
-          <span class="row-name">Garage · 2025 Sorento Hybrid</span>
-          <span class="row-role">Maintenance by date and miles, fuel and MPG.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="piano" href="pillars/piano/" data-open="piano">
-          <span class="row-name">Bossa Piano Studio</span>
-          <span class="row-role">Comping pattern player, chords, clean-rep ladder.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="bastion" href="pillars/bastion/" data-open="bastion">
-          <span class="row-name">Bastion · Mountain Prep</span>
-          <span class="row-role">Bugout inventory, readiness, storm watch.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="athenaeum" href="pillars/athenaeum/" data-open="athenaeum">
-          <span class="row-name">Athenaeum · Idea Vault</span>
-          <span class="row-role">Ideas with their refinements, and the history shelf.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="odyssey" href="pillars/odyssey/" data-open="odyssey">
-          <span class="row-name">Odyssey · Trips & Away</span>
-          <span class="row-role">Trip files, generated packing, away mode.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="privacy" href="pillars/privacy/" data-open="privacy">
-          <span class="row-name">Privacy · CA DROP</span>
-          <span class="row-role">Deletion requests and broker removals, tracked.</span>
-          <span class="row-status">Live</span>
-        </a>
-        <a class="row" id="records" href="pillars/records/" data-open="records">
-          <span class="row-name">Records · Paper Killer</span>
-          <span class="row-role">Document registry, renewal radar, school shield.</span>
-          <span class="row-status">Live</span>
-        </a>
-      </div>
-      <p class="risk-note reveal">Icarus Stake is the high-risk trading journal. It is not connected to a broker. This desk does not show positions, balances, orders, or signals, and it cannot place a trade.</p>
-      <p class="fleet-line reveal" id="fleet">Fleet Command is idle on purpose. The build continues. The live bridge does not run, and it is not Sylade. <a href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer" data-open="fleet">The bridge</a> stays at its own address.</p>
-      <p class="credit reveal">Particle field adapted from <a href="https://github.com/MisterPrada/morph-particles" target="_blank" rel="noopener noreferrer">MisterPrada / morph-particles</a>.</p>
-    </section>
-  </main>
-
-  <button type="button" id="field-hit" class="field-hit">About this desk</button>
-
-  <nav class="dock" aria-label="Wings">
-    <div class="dock-primary">
-      <div class="dock-links">
-        <a href="#sylade">Sylade</a>
-        <span class="sep" aria-hidden="true">·</span>
-        <a href="#titan" data-open="titan">Titan</a>
-        <span class="sep" aria-hidden="true">·</span>
-        <a href="#midas" data-open="midas">Midas</a>
-        <span class="sep" aria-hidden="true">·</span>
-        <a href="#hearth" data-open="hearth">Hearth</a>
-      </div>
-      <button type="button" class="dock-cta" id="dock-cta">Add a note</button>
+        <article class="glass-card" id="pane-keep">
+          <div class="card-h">
+            <h2>This browser</h2>
+            <p class="s" id="build-stamp"></p>
+          </div>
+          <p class="s" id="data-where"></p>
+          <p class="s" id="backup-nudge"></p>
+          <div class="row-actions">
+            <button type="button" class="op-btn" id="backup-now">Download backup</button>
+            <button type="button" class="op-btn" id="restore-now">Restore</button>
+            <input id="restore-file" type="file" accept="application/json" hidden>
+            <button type="button" class="op-btn" id="reload-chip" hidden>New drop is live, reload</button>
+          </div>
+          <h2 class="later">Reminders</h2>
+          <ul class="quiet-list" id="remind-list"></ul>
+        </article>
+      </section>
     </div>
-    <div class="dock-quiet">
-      <a href="#apollo" data-open="apollo">Apollo</a>
-      <a href="#hermes" data-open="hermes">Hermes</a>
-      <a href="#kairos" data-open="kairos">Kairos</a>
-      <a href="#icarus" data-open="icarus">Icarus</a>
-      <a href="#argus" data-open="argus">Argus</a>
-      <a href="#drive" data-open="drive">Drive</a>
-      <a class="is-idle" href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer" data-open="fleet">Fleet · paused</a>
-    </div>
-  </nav>
 
-  <div class="handoff" hidden>
-    <p class="kicker">Opening</p>
-    <p class="handoff-name">Sylade</p>
+    <section id="module-stage" class="module-stage" hidden>
+      <div class="module-bar">
+        <button type="button" id="module-back">Back to the desk</button>
+        <h2 id="module-title"></h2>
+        <a id="module-open" href="./">Open on its own page</a>
+      </div>
+      <iframe id="module-frame" title="Module"></iframe>
+    </section>
   </div>
-  <div class="toast" hidden role="status"></div>
 
-  <dialog id="sheet-desk" class="sheet" aria-labelledby="desk-title">
+  <dialog id="help-sheet" class="sheet" aria-labelledby="help-title">
     <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">The desk</p>
-    <h3 id="desk-title">Prometheus</h3>
-    <p>This page is the room. It keeps a clock, a day arc, and focus lines in this browser. It does not sign in, and it does not store passwords, ledgers, photos, or trades.</p>
-    <p>Sylade stands beside the desk and is not a wing. Titan, Midas, Hephaestus, Apollo, Hermes, Kairos, Icarus and Argus are open, each with its own page and its own homework for the AIs. The Drive holds AI folders and Shared. Fleet Command is idle on purpose. Its build continues. The live bridge does not run.</p>
+    <p class="kicker">Shortcuts</p>
+    <h3 id="help-title">Search</h3>
+    <p>/ or Ctrl/Cmd+K focuses search. Arrow keys move through results, Enter opens, Esc closes. [ and ] or Alt+arrows move along the module row. 1–9 open the first nine modules in that row. ? opens this list.</p>
+    <p>Search reaches modules and their pages, calendar dates, NYSE sessions, Sorento service names, public card terms, and records stored on this device. Food and exercise stay in Apollo. Card terms open from search, or from Money.</p>
   </dialog>
 
-  <dialog id="sheet-titan" class="sheet" aria-labelledby="titan-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Live wing · coin house</p>
-    <p>Today: Open the Gallery and tap a piece for its placard. Check the Vault for bullion, sets, housing and stamps. Read the Curator's Study annotations.</p>
-    <h3 id="titan-title">Titan Reliquary</h3>
-    <p>The collection stays in the reliquary. This desk only opens the door. There is no vault chrome here, and no balances.</p>
-    <div class="actions">
-      <a class="pill" href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer" data-out="Opening Titan Reliquary">Open preview <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/titan-reliquary-preview" target="_blank" rel="noopener noreferrer">Repository</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-midas" class="sheet" aria-labelledby="midas-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Live wing · the book</p>
-    <p>Today: See the debt-free month and the months left. Compare avalanche, snowball and minimums-only plans. Check spendable available on Home.</p>
-    <h3 id="midas-title">Midas Ledger</h3>
-    <p>Password-locked, on its own origin. Figures never render on this desk. No key is stored in this repo.</p>
-    <div class="actions">
-      <a class="pill" href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer" data-out="Opening Midas Ledger">Open Midas <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/midas-ledger" target="_blank" rel="noopener noreferrer">Repository</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-hearth" class="sheet" aria-labelledby="hearth-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Live wing · house</p>
-    <p>Today: Orbit, pan and zoom the stand-in house. Read the three empty project slots. Look at the room list and notes panel.</p>
-    <h3 id="hearth-title">Hephaestus Hearth</h3>
-    <p>Renovations and the house itself. The landing draws the bones of a 3D house before the rooms are finished. This desk does not keep a project list or a budget for it.</p>
-    <div class="actions">
-      <a class="pill" href="https://jpavia10.github.io/hephaestus-hearth/" target="_blank" rel="noopener noreferrer" data-out="Opening Hephaestus Hearth">Open Hearth <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/hephaestus-hearth" target="_blank" rel="noopener noreferrer">Repository</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-apollo" class="sheet" aria-labelledby="apollo-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Live wing · body</p>
-    <p>Today: Log weight, sleep, steps, training and food. See streaks and 30-day trends. Check the daily line against your goals.</p>
-    <h3 id="apollo-title">Apollo Temple</h3>
-    <p>One line a day: weight, sleep, steps, training, protein, water and mood. Streaks, 30-day trends and your own goals. Everything stays on your phone.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/apollo/" data-out="Opening Apollo Temple">Open Apollo <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/apollo" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-hermes" class="sheet" aria-labelledby="hermes-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Live wing · mail</p>
-    <p>Today: See what came in on one triage board. Sort what needs an answer from bills. Track what you are waiting on.</p>
-    <h3 id="hermes-title">Hermes Post</h3>
-    <p>A triage board for what came in: what needs an answer, the bills due this week, what you are waiting on. Labels only, never message text. Sylade’s addresses are on it too.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/hermes/" data-out="Opening Hermes Post">Open Hermes <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hermes" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-kairos" class="sheet" aria-labelledby="kairos-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Live wing · time</p>
-    <p>Today: See every Prometheus deadline on one calendar. Put your own events next to them. Run the focus clock for the next block.</p>
-    <h3 id="kairos-title">Kairos Meridian</h3>
-    <p>The day, every open deadline across Prometheus on one calendar, your own events next to them, and a focus clock for the next block of work.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/kairos/" data-out="Opening Kairos Meridian">Open Kairos <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-icarus" class="sheet" aria-labelledby="icarus-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Live wing · high risk</p>
-    <p>Today: Write down your rules. Log every trade. See what breaking a rule cost.</p>
-    <h3 id="icarus-title">Icarus Stake</h3>
-    <p>A trading journal that keeps you honest: your rules, every trade, and what breaking the rules cost. It holds no broker keys and cannot place a trade. Nothing here is advice.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/icarus/" data-out="Opening Icarus Stake">Open Icarus <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/icarus" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-argus" class="sheet" aria-labelledby="argus-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Live wing · photos</p>
-    <p>Today: Browse Titan's coin photos in one album. Find every picture the pillars use in one place.</p>
-    <h3 id="argus-title">Argus Album</h3>
-    <p>Every photo the pillars use in one album: Titan’s coin photos live now, your room and progress photos next, with location data stripped before anything is kept.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/argus/" data-out="Opening Argus Album">Open Argus <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/argus" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-drive" class="sheet" aria-labelledby="drive-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Files</p>
-    <p>Today: Open the AI folders and Shared. Find each pillar's folder in one place.</p>
-    <h3 id="drive-title">Prometheus Hub Drive</h3>
-    <p>AI folders and Shared. The files stay in Drive. This desk only opens the folder. Nothing from it is copied into the repo.</p>
-    <div class="actions">
-      <a class="pill" href="https://drive.google.com/drive/folders/1ykx47zGga6Jbd4FrUzBWde2frT3_6cnP" target="_blank" rel="noopener noreferrer" data-out="Opening the Drive">Open Drive <span aria-hidden="true">→</span></a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-fleet" class="sheet" aria-labelledby="fleet-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Idle</p>
-    <p>Today: Nothing runs here while it is paused.</p>
-    <h3 id="fleet-title">Fleet Command</h3>
-    <p>The bridge is idle on purpose. The build continues. The live page does not run the fleet. It is not Sylade. Sylade is the alter ego: mail, GitHub, and the Discord room called Sylade Fleet.</p>
-    <div class="actions">
-      <a class="quiet" href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer" data-out="Fleet Command — idle">Open the idle bridge</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-money" class="sheet" aria-labelledby="money-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · debt</p>
-    <p>Today: <span data-live-for="money">Run the consolidation both ways and watch the debt-free date move.</span></p>
-    <h3 id="money-title">Money · Debt Console</h3>
-    <p>The payoff engine, verified line-for-line against the twelve researched cases: any balance at any APR, extra payments, and avalanche vs snowball vs minimums-only across a whole wallet. A consolidation loan is modeled both ways — textbook amortization and the payment a card-based plan actually charges — labeled, neither hidden. Sample figures only; your real book stays in Midas.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/money/" data-out="Opening Money">Open Money <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/money" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-selling" class="sheet" aria-labelledby="selling-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · the sell-off</p>
-    <p>Today: <span data-live-for="selling">Move one item from staged to listed.</span></p>
-    <h3 id="selling-title">Selling · Marketplace Pipeline</h3>
-    <p>The debt-payoff engine room: every item tracked staged, listed, sold, shipped, closed — shipping-only, the way you sell. Net proceeds after the platform's cut, ship-by dates on the shared calendar the moment something sells, and payouts reach Money only when you tap Record payout. Nothing is posted from here; this is the ledger behind the listings.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/selling/" data-out="Opening Selling">Open Selling <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/selling" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-garage" class="sheet" aria-labelledby="garage-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · the Sorento</p>
-    <p>Today: <span data-live-for="garage">Log a fill-up or a service — the next due date keeps itself.</span></p>
-    <h3 id="garage-title">Garage · Sorento Keeper</h3>
-    <p>Maintenance for the 2025 Sorento Hybrid on both triggers, miles and months, whichever lands first — because a mountain car ages by calendar too. Fuel log with real MPG and cost per mile. Intervals ship as labeled starter values you can edit; the owner's manual outranks this page.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/garage/" data-out="Opening Garage">Open Garage <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-piano" class="sheet" aria-labelledby="piano-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · bossa nova</p>
-    <p>Today: <span data-live-for="piano">Five clean minutes: one progression, the ladder sets the tempo.</span></p>
-    <h3 id="piano-title">Piano School · Bossa Nova</h3>
-    <p>A practice room that plays: the comping pattern with the bass on 1 and the stabs where bossa puts them, a 16-chord library, ii–V–I–vi progressions in all twelve keys with the color tones in, a clean-rep ladder that raises the tempo only when you earn it, an ear trainer, and a practice log.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/piano/" data-out="Opening Piano School">Open Piano School <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/piano" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-bastion" class="sheet" aria-labelledby="bastion-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · readiness</p>
-    <p>Today: <span data-live-for="bastion">Weigh the bag; check what expires next.</span></p>
-    <h3 id="bastion-title">Bastion · Readiness & Storm Watch</h3>
-    <p>The preparedness ledger: every item with its weight by location — bag, house, car — expiry dates riding the shared calendar, readiness scores for the 72-hour bag, the car kit, and sheltering at home, and a plain list importer for gear you already own on paper. The weather panel reads the National Weather Service for Frazier Park when you open it; it does not monitor in the background and is not an emergency alert system.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/bastion/" data-out="Opening Bastion">Open Bastion <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/bastion" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-athenaeum" class="sheet" aria-labelledby="athenaeum-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · ideas</p>
-    <p>Today: <span data-live-for="athenaeum">Capture one spark before it evaporates.</span></p>
-    <h3 id="athenaeum-title">Athenaeum · Idea Vault</h3>
-    <p>Ideas kept whole: capture in seconds, and every refinement is appended with its date — the original spark is never overwritten, so an idea's whole growth stays readable. Ideas that go quiet for a month resurface on their own. The shelf beside it holds reading and history, causes and consequences attached.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/athenaeum/" data-out="Opening Athenaeum">Open Athenaeum <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/athenaeum" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-odyssey" class="sheet" aria-labelledby="odyssey-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · travel</p>
-    <p>Today: <span data-live-for="odyssey">Nothing on the road right now — plan the next one.</span></p>
-    <h3 id="odyssey-title">Odyssey · Trips & Away Mode</h3>
-    <p>Trip files with depart and return dates on the shared calendar, packing lists generated from the trip itself — nights counted, weather and passengers accounted for, no generic filler — a pre-departure checklist for the house, and Away Mode, which puts the trip on the desk until you are back.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/odyssey/" data-out="Opening Odyssey">Open Odyssey <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/odyssey" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-privacy" class="sheet" aria-labelledby="privacy-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · footprint</p>
-    <p>Today: <span data-live-for="privacy">Step one is the DROP — ten minutes at privacy.ca.gov.</span></p>
-    <h3 id="privacy-title">Privacy · CA DROP & Broker Shrink</h3>
-    <p>The deletion campaign in one place: your California DROP request tracked by date and state, a broker-by-broker removal ledger whose confirmations schedule their own six-month rechecks (brokers relist people; the recheck is the point), and an account inventory so nothing you ever signed up for is forgotten. Dates and states only — this page will never hold your DROP ID or a password.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/privacy/" data-out="Opening Privacy">Open Privacy <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/privacy" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
-
-  <dialog id="sheet-records" class="sheet" aria-labelledby="records-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">New capability · documents</p>
-    <p>Today: <span data-live-for="records">Register one document, and let the paper go.</span></p>
-    <h3 id="records-title">Records · Paper Killer</h3>
-    <p>The document registry: what it is, when it renews or falls due, and where the original lives — Drive, cabinet, or SSD — so the paper copy stops mattering. Renewals ride the shared calendar, and school paperwork inside seven days flags urgent: a TK deadline does not slip past this desk. Metadata only; this page never holds the document itself.</p>
-    <div class="actions">
-      <a class="pill" href="pillars/records/" data-out="Opening Records">Open Records <span aria-hidden="true">→</span></a>
-      <a class="quiet" href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/records" target="_blank" rel="noopener noreferrer">Code and homework</a>
-    </div>
-  </dialog>
+  <footer class="site-foot">
+    <p>Sylade · <a href="mailto:sylade.ais@gmail.com">sylade.ais@gmail.com</a> · <a href="https://github.com/sylade-ais" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://discord.gg/YCam2NEkv9" target="_blank" rel="noopener noreferrer">Discord</a> · <a href="./sylade.html">Presence</a></p>
+    <p class="elsewhere">Also linked: <a href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Titan Reliquary</a> · <a href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer">Midas Ledger</a> · <a href="https://jpavia10.github.io/hephaestus-hearth/" target="_blank" rel="noopener noreferrer">Hephaestus Hearth</a></p>
+    <p class="paused-line">Fleet Command is paused (2026-10-28). <a href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer">The paused page</a></p>
+    <p><button type="button" id="install-app" hidden>Install on this phone</button></p>
+  </footer>
 
   <noscript>
     <section class="fallback">
       <h2>Prometheus Hub</h2>
-      <p>Sylade is separate from Fleet Command.</p>
+      <p>JavaScript draws the field, the dates, and the search. Every module is still linked.</p>
       <ul>
-        <li><a href="mailto:sylade.ais@gmail.com">sylade.ais@gmail.com</a></li>
-        <li><a href="https://github.com/sylade-ais">github.com/sylade-ais</a></li>
-        <li><a href="https://discord.gg/YCam2NEkv9">Discord · Sylade Fleet</a></li>
-        <li><a href="./sylade.html">Sylade presence</a></li>
+        <li><a href="pillars/kairos/">Kairos</a></li>
+        <li><a href="pillars/apollo/">Apollo</a></li>
+        <li><a href="pillars/piano/">Piano</a></li>
+        <li><a href="pillars/hermes/">Hermes</a></li>
+        <li><a href="pillars/argus/">Argus</a></li>
+        <li><a href="pillars/money/">Money</a> (sample simulator only)</li>
+        <li><a href="pillars/selling/">Selling</a></li>
+        <li><a href="pillars/icarus/">Icarus</a> (journal only; it never trades)</li>
+        <li><a href="pillars/garage/">Garage</a></li>
+        <li><a href="pillars/bastion/">Bastion</a></li>
+        <li><a href="pillars/odyssey/">Odyssey</a></li>
+        <li><a href="pillars/records/">Records</a></li>
+        <li><a href="pillars/athenaeum/">Athenaeum</a></li>
+        <li><a href="pillars/privacy/">Privacy</a></li>
         <li><a href="https://jpavia10.github.io/titan-reliquary-preview/">Titan Reliquary</a></li>
         <li><a href="https://jpavia10.github.io/midas-ledger/">Midas Ledger</a></li>
         <li><a href="https://jpavia10.github.io/hephaestus-hearth/">Hephaestus Hearth</a></li>
-        <li><a href="https://drive.google.com/drive/folders/1ykx47zGga6Jbd4FrUzBWde2frT3_6cnP">Prometheus Hub Drive</a></li>
-        <li><a href="https://jpavia10.github.io/fleet-command/">Fleet Command (idle)</a></li>
-      </ul>
-      <ul>
-        <li><a href="pillars/apollo/">Apollo Temple</a></li>
-        <li><a href="pillars/hermes/">Hermes Post</a></li>
-        <li><a href="pillars/kairos/">Kairos Meridian</a></li>
-        <li><a href="pillars/icarus/">Icarus Stake</a> (journal only; it never trades)</li>
-        <li><a href="pillars/argus/">Argus Album</a></li>
+        <li><a href="https://jpavia10.github.io/fleet-command/">Fleet Command (paused 2026-10-28)</a></li>
       </ul>
     </section>
   </noscript>
 
   <script>
-    /* One tap to put Prometheus on the home screen (owner, 2026-11-05: "an app link to the prometheus as an icon on my android same as titan").
-       Chrome offers the install once the page is an installable app (manifest + service worker); the button shows only then. */
     (function () {
       var ask = null, b = document.getElementById("install-app");
       window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); ask = e; if (b) b.hidden = false; });
@@ -548,6 +186,9 @@
   <script type="module" src="./hub.js"></script>
   <script src="kit/bus.js"></script>
   <script src="pillars/kairos/fixed-dates.js"></script>
-  <script src="desk-strip.js"></script>
+  <script src="pillars/icarus/market-days.js"></script>
+  <script src="pillars/garage/schedule.js"></script>
+  <script src="pillars/money/offers.js"></script>
+  <script src="desk-home.js"></script>
 </body>
 </html>

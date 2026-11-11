@@ -90,7 +90,7 @@
     const mine = S.list("events").sort((a, b) => (a.date + (a.time || "")).localeCompare(b.date + (b.time || "")));
     if (!mine.length) $("#k-mine").append(h("li.empty", null, "None yet."));
     mine.forEach((e) => $("#k-mine").append(h("li", null, h("span", null, `${e.date}${e.time ? " " + e.time : ""} · ${e.title}`),
-      h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("events", e.id); if (window.PB) PB.deadlines.unpublish("kairos", e.id); paint(); } }, "Remove"))));
+      h("button.btn.quiet.small", { type: "button", onclick: () => { const prev = S.list("events"); S.remove("events", e.id); if (window.PB) PB.deadlines.unpublish("kairos", e.id); paint(); toast("Removed", 6000, () => { S.set("events", prev); prev.filter((x) => x.date).forEach((x) => { if (window.PB) PB.deadlines.publish({ title: x.title, date: x.date, time: x.time || undefined, source: "kairos", kind: "mine", ref: x.id }); }); paint(); }); } }, "Remove"))));
   }
   function esc(s) { return String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 

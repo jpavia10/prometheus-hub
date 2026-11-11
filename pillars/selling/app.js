@@ -20,12 +20,11 @@
           <label class="f">Batch<input name="batch" maxlength="30" placeholder="MLT-004"></label>
           <label class="f">List price $<input name="price" type="number" step="0.01" min="0" required></label>
           <label class="f">Fee % (assumption)<input name="feePct" type="number" step="0.1" min="0" value="10"></label>
-          <label class="f">Platform preset<select id="s-fee-preset"><option value="">Custom</option><option value="10">Facebook Marketplace — 10%</option><option value="10">Mercari — 10%</option><option value="13.6">eBay — 13.6%</option><option value="20">Poshmark — 20% (sales $15+)</option></select></label>
           <label class="f">Est. shipping $<input name="shipEst" type="number" step="0.01" min="0" value="0"></label>
           <label class="f">Packaging $<input name="packaging" type="number" step="0.01" min="0" value="0"></label>
           <button class="btn" type="submit">Stage it</button>
         </form>
-        <p class="note">Fee presets are the November 2026 published schedules (sourced in Grok's reset-day fee pass): Facebook Marketplace 10% ($0.80 min), Mercari 10%, eBay 13.6% in most categories, Poshmark 20% at $15+. The percentage stays an assumption you control. Shipping-only: there is no pickup stage, by design.</p>
+        <p class="note">The fee percentage is an assumption you control (Marketplace's selling fee has been 10% — confirm against your current seller terms). Shipping-only: there is no pickup stage, by design.</p>
       </div>
       <div class="glass span-12"><h2>Items</h2><div id="s-list"></div></div>
     </section>`;
@@ -71,8 +70,6 @@
     if (window.PB) PB.money.add({ kind: "sale", amount: r.net, label: it.title, source: "selling" });
     S.update("items", it.id, { busRecorded: true }); toast("Payout recorded: " + money(r.net)); paint();
   }
-  const preset = $("#s-fee-preset");
-  if (preset) preset.addEventListener("change", () => { if (preset.value) $("#s-form").feePct.value = preset.value; });
   $("#s-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
     S.add("items", { title: f.title.value.trim(), batch: f.batch.value.trim(), price: +f.price.value || 0, feePct: +f.feePct.value || 0, shipEst: +f.shipEst.value || 0, packaging: +f.packaging.value || 0, stage: "staged" });
     f.reset(); f.feePct.value = 10; toast("Staged"); paint(); });
