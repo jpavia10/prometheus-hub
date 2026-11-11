@@ -14,6 +14,7 @@
     "72-hour bag": ["Water (3L+)", "Filtration or purification", "Food for 3 days", "Shelter / tarp", "Warm layer + rain shell", "Headlamp + batteries", "First aid kit", "Fire kit", "Knife / multitool", "Cash + documents copies", "Phone battery bank", "Meds (7-day buffer)"],
     "Car kit": ["Water (1 gal)", "Blanket", "Jumper pack", "Tire repair + inflator", "Flashlight", "Snacks", "Ice scraper / chains as season needs", "Paper map of the mountain exits"],
     "House shelter-in": ["Water storage filled", "Pantry buffer (2 weeks)", "Propane / heat backup checked", "Flashlights + lantern batteries", "Generator or power station charged", "Pipes / freeze prep done", "Car fueled above half", "Medications buffer"],
+    "Red Cross 72-hour baseline": ["Water 1 gal/person/day (3-day evac)", "Food 3-day non-perishable", "Flashlight", "Battery/hand-crank radio (NOAA Weather Radio if possible)", "Extra batteries", "First aid kit", "Medications 7-day + medical items", "Multi-purpose tool", "Sanitation & hygiene", "Copies of personal documents", "Cell phone with chargers", "Family & emergency contact info", "Extra cash", "Emergency blanket", "Map(s) of the area"],
   };
 
   app.innerHTML = `
@@ -34,6 +35,8 @@
         <textarea class="ta" id="b-paste" placeholder="2x Water filter&#10;Headlamp&#10;MRE — 4"></textarea>
         <div class="row-actions" style="margin-top:8px"><button class="btn" id="b-import-list" type="button">Import lines</button></div></div>
       <div class="glass span-12"><h2>Readiness</h2><div id="b-scen"></div></div>
+      <div class="glass span-12"><h2>Alert types that matter here</h2><div id="b-alerts"></div>
+        <p class="note">The National Weather Service alert types Frazier Park actually sees, with recent-history counts — reference from Grok's reset-day readiness pass. The Storm watch panel above carries the live alerts.</p></div>
     </section>`;
 
   function paint() {
@@ -49,7 +52,7 @@
       const st = !it.expiry ? "" : it.expiry < day() ? `<span class="pill over">expired ${it.expiry}</span>` : it.expiry <= PB_safe_add(day(), 90) ? `<span class="pill soon">expires ${it.expiry}</span>` : `<span class="pill">to ${it.expiry}</span>`;
       $("#b-list").append(h("div.kv", null,
         h("span", null, `${it.name} ×${it.qty || 1} `, h("span.stat-s", null, `${it.category} · ${it.location || "bag"} · ${BASTION.fmtWeight((it.weightOz || 0) * (it.qty || 1))}`)),
-        h("span", null, st, " ", h("button.btn.quiet.small", { type: "button", onclick: () => { const prev = S.list("items"); S.remove("items", it.id); if (window.PB) PB.deadlines.unpublish("bastion", it.id); paint(); toast("Removed", 6000, () => { S.set("items", prev); paint(); }); } }, "Remove"))));
+        h("span", null, st, " ", h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("items", it.id); if (window.PB) PB.deadlines.unpublish("bastion", it.id); paint(); } }, "Remove"))));
     }
     const checks = S.get("checks", {});
     $("#b-scen").innerHTML = "";
@@ -72,6 +75,8 @@
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
   paint();
 
+  if (window.BASTION_ALERTS) $("#b-alerts").innerHTML = window.BASTION_ALERTS.map((a) =>
+    `<div class="kv"><span><b>${esc(a.a)}</b><br><span class="stat-s">${esc(a.d)}</span></span>${a.n != null ? `<b>${a.n} recent</b>` : ""}</div>`).join("");
   // NWS storm watch (foreground fetch; honest about freshness and failure)
   (async () => {
     const el = $("#b-wx");

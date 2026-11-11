@@ -10,6 +10,11 @@
   if (!S.get("brokers")) S.set("brokers", ["Acxiom", "LexisNexis Risk Solutions", "Epsilon", "Experian", "Equifax", "TransUnion", "Whitepages", "BeenVerified", "Spokeo", "PeopleFinders", "TruthFinder", "Intelius"]
     .map((name) => ({ id: Math.random().toString(36).slice(2, 8), name, state: "not started", recheck: null })));
   const STATES = ["not started", "opt-out sent", "confirmed removed", "recheck due"];
+  // Broker expansion (2026-11-10): union in the verified 40-site ledger (Grok reset-day pass).
+  // Existing brokers and their states are never touched — only missing names are added.
+  if (!S.get("brokersV2")) { const bs = S.get("brokers", []); const have = new Set(bs.map((b) => b.name));
+    for (const n of ["Spokeo", "AnyWho", "Whitepages", "TruthFinder", "Instant Checkmate", "Intelius", "US Search", "PeopleFinders", "MyLife", "FastPeopleSearch", "SearchPeopleFree", "SmartBackgroundChecks", "USA People Search", "FastBackgroundCheck", "CyberBackgroundChecks", "PeopleSearchNow", "USPhoneBook", "Veripages", "CheckPeople", "InfoTracer", "Social Catfish", "SearchQuarry", "Archives.com", "PropertyRecs", "LocateFamily", "Sync.me", "PeopleWhiz", "FreePeopleDirectory", "Pipl", "PimEyes", "FaceCheck.ID", "Acxiom", "LexisNexis Risk Solutions", "Epsilon", "Experian", "TransUnion", "OptOutPrescreen (credit-bureau prescreen opt-out)", "ZoomInfo", "RocketReach", "Apollo.io"]) if (!have.has(n)) bs.push({ id: Math.random().toString(36).slice(2, 8), name: n, state: "not started", recheck: null });
+    S.set("brokers", bs); S.set("brokersV2", 1); }
   app.innerHTML = `
     <section class="grid">
       <div class="glass span-12"><h2>California DROP</h2><div id="v-drop"></div>
@@ -39,7 +44,7 @@
     const brokers = S.get("brokers", []);
     $("#v-brokers").innerHTML = "";
     for (const b of brokers) $("#v-brokers").append(h("div.kv", null,
-      h("span", null, `${b.name} `, h("span.pill", null, b.state), b.recheck ? h("span.stat-s", null, ` recheck ${b.recheck}`) : null),
+      h("span", null, `${b.name} `, h("span.pill", null, b.state), (window.BROKER_OPTOUTS && window.BROKER_OPTOUTS[b.name]) ? h("a", { href: window.BROKER_OPTOUTS[b.name], target: "_blank", rel: "noopener", class: "stat-s" }, " opt out \u2197") : null, b.recheck ? h("span.stat-s", null, ` recheck ${b.recheck}`) : null),
       h("span", null, h("button.btn.quiet.small", { type: "button", onclick: () => {
         const i = STATES.indexOf(b.state); b.state = STATES[(i + 1) % STATES.length];
         if (b.state === "confirmed removed" && window.PB) { b.recheck = PB.addDays(day(), 182); PB.deadlines.publish({ title: "Recheck broker removal: " + b.name, date: b.recheck, source: "privacy", kind: "recheck", ref: b.id }); }

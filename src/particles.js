@@ -363,49 +363,24 @@ export function startField(canvas) {
   }
 
   let running = true;
-  let looping = false;
-  const motionQuery = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
-  let reduceMotion = motionQuery ? motionQuery.matches : reduce;
-  let settledFrames = 0;
-
-  function queue() {
-    if (!running || looping) return;
-    if (reduceMotion && settledFrames >= 3) return;
-    looping = true;
-    requestAnimationFrame(frame);
-  }
-
   document.addEventListener("visibilitychange", function () {
     running = !document.hidden;
-    if (running) {
-      clock.getDelta();
-      if (!reduceMotion) queue();
-    }
+    if (running) clock.getDelta();
   });
-  if (motionQuery && motionQuery.addEventListener) {
-    motionQuery.addEventListener("change", function () {
-      reduceMotion = motionQuery.matches;
-      simUniforms.uPull.value = reduceMotion ? 0 : 0.22;
-      if (!reduceMotion) {
-        settledFrames = 0;
-        queue();
-      }
-    });
-  }
 
   function frame() {
-    looping = false;
+    requestAnimationFrame(frame);
     if (!running) return;
 
     const delta = Math.min(0.05, clock.getDelta());
-    const elapsed = reduceMotion ? 0 : clock.elapsedTime;
+    const elapsed = reduce ? 0 : clock.elapsedTime;
     const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     const scrollTarget = locked === "sylade" ? 0.333 : window.scrollY / maxScroll;
-    const follow = reduceMotion ? 1 : 1 - Math.pow(0.001, delta);
-    scrollCurrent += (scrollTarget - scrollCurrent) * (reduceMotion ? 1 : follow);
-    focusMix += (focusTarget - focusMix) * (reduceMotion ? 1 : follow);
-    pointer.x += (pointerTarget.x - pointer.x) * (reduceMotion ? 1 : 0.07);
-    pointer.y += (pointerTarget.y - pointer.y) * (reduceMotion ? 1 : 0.07);
+    const follow = reduce ? 1 : 1 - Math.pow(0.001, delta);
+    scrollCurrent += (scrollTarget - scrollCurrent) * (reduce ? 1 : follow);
+    focusMix += (focusTarget - focusMix) * (reduce ? 1 : follow);
+    pointer.x += (pointerTarget.x - pointer.x) * (reduce ? 1 : 0.07);
+    pointer.y += (pointerTarget.y - pointer.y) * (reduce ? 1 : 0.07);
 
     simUniforms.uTime.value = elapsed;
     simUniforms.uScroll.value = scrollCurrent;
@@ -422,22 +397,19 @@ export function startField(canvas) {
     renderer.outputColorSpace = previous;
 
     const shiftGoal = sectionShift();
-    shiftCurrent += (shiftGoal - shiftCurrent) * (reduceMotion ? 1 : 0.06);
+    shiftCurrent += (shiftGoal - shiftCurrent) * (reduce ? 1 : 0.06);
     points.position.x = shiftCurrent;
     points.position.y = window.innerWidth < 720 ? 0.22 : 0.28;
-    const idle = reduceMotion ? 0 : Math.sin(elapsed * 0.16) * 0.045;
-    const camX = reduceMotion ? 0 : pointer.x * 0.2 + idle;
-    const camY = reduceMotion ? 0.04 : 0.04 + pointer.y * 0.12 + Math.cos(elapsed * 0.12) * 0.028;
+    const camX = reduce ? 0 : pointer.x * 0.28;
+    const camY = reduce ? 0.04 : 0.04 + pointer.y * 0.18;
     camera.position.x += (camX - camera.position.x) * 0.08;
     camera.position.y += (camY - camera.position.y) * 0.08;
     camera.lookAt(shiftCurrent * 0.28, 0.02, 0);
 
     renderer.render(scene, camera);
-    if (reduceMotion) settledFrames += 1;
-    queue();
   }
 
-  queue();
+  frame();
 
   return {
     setFocus(name) {
@@ -446,10 +418,6 @@ export function startField(canvas) {
         focusTarget = 1;
       } else {
         focusTarget = 0;
-      }
-      if (reduceMotion) {
-        settledFrames = 0;
-        queue();
       }
     },
     destroy() {

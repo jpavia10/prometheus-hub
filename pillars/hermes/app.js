@@ -53,15 +53,7 @@
       h("span.acts", null, h("button.btn.quiet.small", { type: "button", onclick: () => { S.update("mail", m.id, { done: day() }); paint(); } }, "Done"),
         h("button.btn.quiet.small", { type: "button", "aria-label": "Delete", onclick: () => { if (confirm("Delete it?")) { S.remove("mail", m.id); paint(); } } }, "×")));
   }
-  function syncBus() {
-    if (!window.PB) return;
-    for (const m of S.list("mail")) {
-      if (m.done || !m.due) PB.deadlines.unpublish("hermes", m.id);
-      else PB.deadlines.publish({ title: (KINDS[m.kind] || "Mail") + " · " + m.from, date: m.due, source: "hermes", kind: m.kind, ref: m.id });
-    }
-  }
   function paint() {
-    syncBus();
     const all = S.list("mail"), open = all.filter((m) => !m.done).sort((a, b) => (a.due || "9").localeCompare(b.due || "9"));
     for (const k of Object.keys(KINDS)) { const l = $("#l-" + k); l.innerHTML = ""; const its = open.filter((m) => m.kind === k); if (!its.length) l.append(h("li.empty", null, "Nothing here.")); its.forEach((m) => l.append(item(m))); }
     const reply = open.filter((m) => m.kind === "reply"), late = reply.filter((m) => m.due && daysTo(m.due) < 0);

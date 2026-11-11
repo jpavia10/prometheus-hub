@@ -6,10 +6,9 @@ document.documentElement.classList.add("js");
 
 const canvas = document.getElementById("field");
 let field = null;
-  if (canvas) {
+if (canvas) {
   try {
     field = startField(canvas);
-    window.PROMETHEUS_FIELD = field;
     document.documentElement.classList.add("has-gl");
   } catch (error) {
     document.documentElement.classList.add("no-gl");
@@ -19,22 +18,23 @@ let field = null;
 
 const FOCUS_KEY = "prometheus-hub.focus.v1";
 const CHAPTERS = ["desk", "sylade", "houses", "seats"];
-/* Every sheet on the desk is deep-linkable (#money, #records, ...). Derived from the dialogs themselves
-   so a new door can never be added without its hash working. */
-const WING_HASHES = new Set(Array.from(document.querySelectorAll("dialog.sheet[id^='sheet-']"), function (d) {
-  return d.id.replace(/^sheet-/, "");
-}).filter(function (id) { return CHAPTERS.indexOf(id) === -1; })); /* #desk is the Today chapter, not the About sheet */
+const WING_HASHES = new Set([
+  "titan", "midas", "hearth", "apollo", "hermes", "kairos",
+  "icarus", "argus", "drive", "fleet"
+]);
 
 let openName = null;
 let pointedWing = "";
 
 function atmosphere(date) {
   const hour = date.getHours();
-  if (hour < 5) return "Night";
-  if (hour < 12) return "Morning";
-  if (hour < 17) return "Afternoon";
-  if (hour < 21) return "Evening";
-  return "Night";
+  if (hour < 5) return "Deep field";
+  if (hour < 8) return "Silver hour";
+  if (hour < 11) return "Clear field";
+  if (hour < 14) return "Meridian";
+  if (hour < 17) return "Long light";
+  if (hour < 20) return "Afterlight";
+  return hour < 23 ? "Quiet field" : "Deep field";
 }
 
 function paintClock() {
@@ -100,16 +100,9 @@ function renderNotes() {
     button.textContent = "Done";
     button.addEventListener("click", function () {
       const next = readNotes();
-      const removed = next[index];
       next.splice(index, 1);
       writeNotes(next);
       renderNotes();
-      undoToast("Note removed", function () {
-        const back = readNotes();
-        back.splice(Math.min(index, back.length), 0, removed);
-        writeNotes(back);
-        renderNotes();
-      });
     });
     li.append(text, button);
     list.append(li);
@@ -119,35 +112,9 @@ function renderNotes() {
   if (input) input.disabled = items.length >= 4;
 }
 
-function undoToast(message, undo) {
-  let node = document.querySelector(".toast");
-  if (!node) {
-    node = document.createElement("div");
-    node.className = "toast";
-    node.setAttribute("role", "status");
-    document.body.append(node);
-  }
-  node.replaceChildren();
-  node.hidden = false;
-  node.append(document.createTextNode(message));
-  if (typeof undo === "function") {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = "Undo";
-    button.addEventListener("click", function () {
-      undo();
-      node.hidden = true;
-    });
-    node.append(button);
-  }
-  window.clearTimeout(undoToast.timer);
-  undoToast.timer = window.setTimeout(function () { node.hidden = true; }, 6000);
-}
-
 const focusForm = document.getElementById("focus-form");
 if (focusForm) {
   renderNotes();
-  document.addEventListener("desk-notes", renderNotes);
   focusForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const input = document.getElementById("focus-input");
@@ -211,8 +178,12 @@ function updateCta() {
     cta.textContent = "Enter Sylade →";
     cta.dataset.mode = "handoff";
     delete cta.dataset.wing;
+  } else if (current === "houses") {
+    cta.textContent = "Read a house";
+    cta.dataset.mode = "houses";
+    delete cta.dataset.wing;
   } else if (current === "seats") {
-    cta.textContent = "Open Kairos";
+    cta.textContent = "Read the day";
     cta.dataset.mode = "kairos";
     delete cta.dataset.wing;
   } else {
@@ -222,7 +193,8 @@ function updateCta() {
   }
   if (!hit) return;
   if (current === "sylade") hit.textContent = "Enter from the field";
-  else if (current === "seats") hit.textContent = "Open the module";
+  else if (current === "houses") hit.textContent = "Open the pointed house";
+  else if (current === "seats") hit.textContent = "Open the pointed seat";
   else hit.textContent = "About this desk";
 }
 
@@ -307,6 +279,11 @@ if (cta && isDesk) {
       handoff("sylade.html", "Sylade");
       return;
     }
+    if (mode === "houses") {
+      const target = pointedWing || "titan";
+      openSheet(target);
+      return;
+    }
     if (mode === "kairos") {
       openSheet("kairos");
       return;
@@ -374,8 +351,7 @@ if ("IntersectionObserver" in window && panels.length) {
 
 function openHash() {
   const id = (location.hash || "").replace("#", "");
-  if (WING_HASHES.has(id)) { openSheet(id); return; }
-  if (openName) { const open = document.getElementById("sheet-" + openName); if (open && open.open) open.close(); }
+  if (WING_HASHES.has(id)) openSheet(id);
 }
 window.addEventListener("hashchange", openHash);
 openHash();

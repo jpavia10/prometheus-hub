@@ -46,9 +46,7 @@
       return read(DKEY, []).filter((r) => !r.done && r.date >= from && r.date <= until)
         .sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
     },
-    /** Open obligations dated before today. Reference dates (holidays, clock changes, tax calendar from
-        Kairos's fixed list, source "kairos-fixed") pass on their own and are never "overdue". */
-    overdue(from = today()) { return read(DKEY, []).filter((r) => !r.done && r.date < from && r.source !== "kairos-fixed").sort((a, b) => (a.date < b.date ? -1 : 1)); },
+    overdue(from = today()) { return read(DKEY, []).filter((r) => !r.done && r.source !== "kairos-fixed" && r.date < from).sort((a, b) => (a.date < b.date ? -1 : 1)); },
   };
 
   const money = {
@@ -68,17 +66,16 @@
     set(k, v) { const m = read(METAKEY, {}); m[k] = v; write(METAKEY, m); },
   };
 
-  /** Full-deck backup: every prometheus.* key (and the desk's own prometheus-hub.* lines) in one versioned JSON object. */
+  /** Full-deck backup: every prometheus.* key in one versioned JSON object. */
   function dumpAll() {
     const keys = {};
-    const mine = (k) => k && (k.startsWith("prometheus.") || k.startsWith("prometheus-hub."));
-    const collect = (k) => { if (mine(k)) { const v = get(k); if (v != null) keys[k] = v; } };
+    const collect = (k) => { if (k && k.startsWith("prometheus.")) { const v = get(k); if (v != null) keys[k] = v; } };
     if (LS) { for (let i = 0; i < LS.length; i++) collect(LS.key(i)); } else for (const k of mem.keys()) collect(k);
     return { schema: "prometheus-backup", version: 2, exported: new Date().toISOString(), keys };
   }
   function loadAll(obj) {
     if (!obj || obj.schema !== "prometheus-backup" || !obj.keys) throw new Error("not a prometheus-backup file");
-    for (const [k, v] of Object.entries(obj.keys)) if (k.startsWith("prometheus.") || k.startsWith("prometheus-hub.")) set(k, v);
+    for (const [k, v] of Object.entries(obj.keys)) if (k.startsWith("prometheus.")) set(k, v);
     return Object.keys(obj.keys).length;
   }
 

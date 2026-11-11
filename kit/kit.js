@@ -28,14 +28,10 @@
   const pad = (n) => String(n).padStart(2, "0");
   const day = (d = new Date()) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
-  function toast(msg, ms = 6000, undo) {
-    const t = h("div.toast", { role: "status" });
-    t.append(document.createTextNode(msg));
-    if (typeof undo === "function") {
-      t.append(h("button", { type: "button", onclick: () => { undo(); t.remove(); } }, "Undo"));
-    }
+  function toast(msg, ms = 2200) {
+    const t = h("div.toast", { role: "status", text: msg });
     document.body.append(t);
-    setTimeout(() => { if (t.isConnected) t.remove(); }, ms);
+    setTimeout(() => t.remove(), ms);
   }
 
   /** Per-pillar storage: lists of records with ids, kept in localStorage, exportable as one JSON file. */
@@ -70,11 +66,8 @@
       try { localStorage.setItem(id, b.id); } catch (_) {}
       onShow && onShow(b.getAttribute("aria-controls"));
     };
-    btns.forEach((b) => b.addEventListener("click", () => { show(b); if (b.id) history.replaceState(null, "", "#" + b.id); }));
-    let first = btns[0];
-    const hashTab = document.getElementById((location.hash || "").slice(1));
-    if (hashTab && btns.includes(hashTab)) first = hashTab;
-    else { try { first = document.getElementById(localStorage.getItem(id)) || first; } catch (_) {} }
+    btns.forEach((b) => b.addEventListener("click", () => show(b)));
+    let first = btns[0]; try { first = document.getElementById(localStorage.getItem(id)) || first; } catch (_) {}
     if (first) show(first);
     return show;
   }
@@ -144,86 +137,4 @@
   };
 
   window.PK = { $, $$, h, money, num, day, toast, store, download, pickFile, tabs, spark, field, G, reduced };
-
-  if (new URLSearchParams(location.search).get("embed") === "1") document.documentElement.classList.add("is-embed");
-  const embedded = document.documentElement.classList.contains("is-embed");
-  const appMain = document.getElementById("app");
-  if (!embedded && appMain && !document.querySelector("a.skip")) {
-    if (!appMain.hasAttribute("tabindex")) appMain.setAttribute("tabindex", "-1");
-    document.body.prepend(h("a.skip", { href: "#app" }, "Skip to this module"));
-  }
-  const bar = document.querySelector("header.bar");
-  const parts = location.pathname.split("/").filter(Boolean);
-  const at = parts.indexOf("pillars");
-  if (bar && at >= 0 && parts[at + 1] && !embedded && !bar.querySelector(".compass")) {
-    const here = parts[at + 1];
-    const seats = [["kairos", "Kairos"], ["apollo", "Apollo"], ["piano", "Piano"], ["hermes", "Hermes"], ["argus", "Argus"], ["money", "Money"], ["selling", "Selling"], ["icarus", "Icarus"], ["garage", "Garage"], ["odyssey", "Odyssey"], ["bastion", "Bastion"], ["records", "Records"], ["athenaeum", "Athenaeum"], ["privacy", "Privacy"]];
-    const idx = seats.findIndex(([id]) => id === here);
-    const link = (id, name, current) => h("a", Object.assign({ href: id ? "../" + id + "/" : "../../#board" }, current ? { "aria-current": "page" } : {}), name);
-    const step = (seat, dir) => {
-      const id = seat ? seat[0] : "";
-      const name = seat ? seat[1] : "Desk";
-      const which = dir < 0 ? "Previous module" : "Next module";
-      const keys = dir < 0 ? "[" : "]";
-      return h("a.compass-step", {
-        href: id ? "../" + id + "/" : "../../#board",
-        "aria-label": which + ", " + name,
-        title: which + ", " + name + " (" + keys + ")",
-        "aria-keyshortcuts": keys
-      }, h("span.compass-go", { "aria-hidden": "true" }, dir < 0 ? "‹" : "›"), h("span.compass-name", null, name));
-    };
-    const prev = idx > 0 ? seats[idx - 1] : null;
-    const next = idx >= 0 && idx < seats.length - 1 ? seats[idx + 1] : null;
-    const track = h("div.compass-track", null,
-      link("", "Desk", false),
-      ...seats.map(([id, name]) => link(id, name, id === here)));
-    const nav = h("nav.compass", { "aria-label": "Modules" }, step(prev, -1), track, step(next, 1));
-    const spacer = bar.querySelector(".spacer");
-    if (spacer) spacer.replaceWith(nav);
-    else bar.append(nav);
-    const cur = track.querySelector('[aria-current="page"]');
-    if (cur) {
-      const edges = () => {
-        const box = track.getBoundingClientRect();
-        let left = 0, right = 0;
-        track.querySelectorAll("a").forEach((a) => {
-          const r = a.getBoundingClientRect();
-          if (r.left < box.left - 1 && r.right > box.left + 1) left = Math.ceil(r.right - box.left);
-          if (r.right > box.right + 1 && r.left < box.right - 1) right = Math.ceil(box.right - r.left);
-        });
-        if (left < 8) left = 0;
-        if (right < 8) right = 0;
-        const mask = !left && !right ? ""
-          : `linear-gradient(to right, transparent ${left}px, #000 ${left}px, #000 calc(100% - ${right}px), transparent calc(100% - ${right}px))`;
-        track.style.webkitMaskImage = mask;
-        track.style.maskImage = mask;
-      };
-      const place = () => {
-        const left = cur.getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
-        const max = Math.max(0, track.scrollWidth - track.clientWidth);
-        track.scrollLeft = Math.max(0, Math.min(max, left - (track.clientWidth - cur.offsetWidth) / 2));
-        edges();
-      };
-      track.addEventListener("scroll", edges, { passive: true });
-      place();
-      requestAnimationFrame(() => requestAnimationFrame(place));
-      addEventListener("resize", place, { passive: true });
-    }
-    const go = (dir) => {
-      const seat = dir < 0 ? prev : next;
-      location.href = seat ? "../" + seat[0] + "/" : "../../#board";
-    };
-    document.addEventListener("keydown", (e) => {
-      if (e.defaultPrevented || document.querySelector("dialog[open]")) return;
-      const typing = e.target && e.target.closest && e.target.closest("input, textarea, select, [contenteditable='true']");
-      if (typing) return;
-      const chord = e.metaKey || e.ctrlKey || e.shiftKey;
-      const prevKey = e.key === "[" || (e.altKey && !chord && e.key === "ArrowLeft");
-      const nextKey = e.key === "]" || (e.altKey && !chord && e.key === "ArrowRight");
-      if ((e.key === "[" || e.key === "]") && (e.altKey || chord)) return;
-      if (!prevKey && !nextKey) return;
-      e.preventDefault();
-      go(prevKey ? -1 : 1);
-    });
-  }
 })();
