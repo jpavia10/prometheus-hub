@@ -105,3 +105,6 @@ Joseph: "Now fix it to my standards. Build off each others work. If you say its 
 - Selling: fee preset select (Facebook 10 / Mercari 10 / eBay 13.6 / Poshmark 20) from the reset-day fee pass.
 - Verified: full click-path harness on Grok's desk (doors pass; only the 2 known sandbox artifacts — Argus fetching live Titan data, Bastion's NWS call), targeted renders for every count above, node --check on all touched JS.
 - NOT touched: Grok's desk-home.js, hub structure, Kairos/Icarus sets (verified no duplicates in his tree), Money, Midas, Hearth, Titan, Fleet.
+
+## 2026-11-10 (night) — Sebastian: Athenaeum ideas now ship in the pillar
+Joseph's correction: he sent the ChatGPT extractions to Sebastian to merge — handing him an import file to run himself was Sebastian pushing the work back. The canonical 11-idea set (v2 reconciliation, 39 chain entries) now ships as pillars/athenaeum/ideas-seed.js and app.js seeds it into the vault on open: matched by title, missing chain entries appended, existing vault content (imported or hand-typed) preserved, runs once. Verified fresh (11 ideas / 39 chains / 0 dupes) and with a pre-existing hand-typed idea (12, his kept). Future canonical sets ship as updated seeds the same way; the in-app Import remains for anything else.

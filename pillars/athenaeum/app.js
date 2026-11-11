@@ -9,6 +9,24 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   // History seed (Sebastian, 2026-11-10): the reset-day cause -> event -> consequence set
   // (history-seed.js, from the data/ drop) shelved once. Existing shelf items are never touched.
+  // Shipped ideas (Sebastian, 2026-11-10): Joseph's canonical set from his ChatGPT extractions
+  // (ideas-seed.js) belongs IN the vault — he sent the material to Sebastian to merge, so the app
+  // does it: matched by title, missing chain entries appended, new ideas added whole. Anything
+  // already in the vault (imported or typed) is preserved; runs once.
+  if (!S.get("ideasSeedV1") && window.ATHENAEUM_IDEAS) {
+    const norm = (t) => String(t || "").toLowerCase().replace(/\s+/g, " ").trim();
+    const cur = S.list("ideas"); const byTitle = new Map(cur.map((i) => [norm(i.title), i]));
+    for (const inc of window.ATHENAEUM_IDEAS) {
+      const hit = byTitle.get(norm(inc.title));
+      if (!hit) { cur.push(inc); byTitle.set(norm(inc.title), inc); continue; }
+      const have = new Set((hit.chain || []).map((c) => c.date + "|" + c.text));
+      for (const c of inc.chain || []) if (!have.has(c.date + "|" + c.text)) (hit.chain = hit.chain || []).push(c);
+      if (!hit.source && inc.source) hit.source = inc.source;
+      if (!hit.strength && inc.strength) hit.strength = inc.strength;
+      if (!hit.body && inc.body) hit.body = inc.body;
+    }
+    S.set("ideas", cur); S.set("ideasSeedV1", 1);
+  }
   if (!S.get("histSeedV1") && window.ATHENAEUM_HISTORY) {
     for (const e of window.ATHENAEUM_HISTORY) S.add("shelf", { title: e.title, author: e.author, kind: "history", status: "done", chain: e.chain });
     S.set("histSeedV1", 1);
