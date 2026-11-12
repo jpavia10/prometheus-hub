@@ -227,3 +227,100 @@
     });
   }
 })();
+
+/* ================================================================== pillar shell v2 (2026-11-12) ==================================================================
+   The default look of every pillar, upgraded in one place (owner: "level up the default pillar look ... I opened the piano one its
+   junk"). Nothing in a pillar's own code changes: this reads the page it finds and dresses it.
+   - a crest: the pillar's own cell from the hub's core, beside its name
+   - sections: a page that is one long stack of panels becomes tabs made from the panels' own titles (three or more panels)
+   - one tab rail for every pillar, with a light that slides to the chosen tab; the incoming section turns in from its side
+   - a dock like the hub's: previous pillar, back to the core, next pillar
+   - a ripple under the finger on anything pressable */
+(function () {
+  if (document.documentElement.classList.contains("is-embed")) return;
+  var body = document.body, pillar = body && body.dataset.pillar, shell = document.querySelector(".shell"), main = document.getElementById("app");
+  if (!pillar || !shell || !main) return;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ICON = { kairos: "M7 3.5h10M7 20.5h10M8 3.5c0 4 4 5.5 4 8.5s-4 4.5-4 8.5M16 3.5c0 4-4 5.5-4 8.5s4 4.5 4 8.5", apollo: "M12 8a4 4 0 1 0 0 8a4 4 0 0 0 0-8M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4",
+    piano: "M4 5h16v14H4zM8 5v8M12 5v8M16 5v8M8 13v6M12 13v6M16 13v6", hermes: "M4 6h16v12H4zM4 7l8 6l8-6", argus: "M2.5 12s3.5-6.5 9.5-6.5s9.5 6.5 9.5 6.5s-3.5 6.5-9.5 6.5S2.5 12 2.5 12M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6",
+    money: "M4 17a8 8 0 0 1 16 0M12 17V9M12 9l-3 3M12 9l3 3M4 20h16", selling: "M4 4h7l9 9-7 7-9-9zM8 8h.01", icarus: "M3 17c5 0 9-2 12-6c2-2.7 4-4 6-4c-1 5-4 9-9 10.5c-3 1-6 .7-9-.5M9 14.5c2-.5 4-2 5.5-4",
+    garage: "M5 16l1.5-5a2 2 0 0 1 2-1.5h7a2 2 0 0 1 2 1.5L19 16M4 16h16v3H4zM7 19v1.5M17 19v1.5M7.5 13.5h.01M16.5 13.5h.01", odyssey: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18M15.5 8.5l-2 5l-5 2l2-5z",
+    bastion: "M12 3l7 3v5.5c0 4.5-3 8-7 9.5c-4-1.500-7-5-7-9.500V6z", athenaeum: "M4 20h16M5 8h14L12 4zM7 8v9M12 8v9M17 8v9M5 17h14", privacy: "M6.5 11h11v9h-11zM8.5 11V8a3.5 3.5 0 0 1 7 0v3M12 14.5v2", records: "M7 3.5h7l4 4V20.5H7zM14 3.5v4h4" };
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  body.classList.add("pk-v2");
+
+  /* the crest */
+  var hero = shell.querySelector(".hero");
+  if (hero && !hero.querySelector(".pk-crest")) {
+    var crest = el("span", "pk-crest"); crest.setAttribute("aria-hidden", "true");
+    crest.innerHTML = '<i><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="' + (ICON[pillar] || "M12 5v14M5 12h14") + '"/></svg></i>';
+    hero.classList.add("pk-hero"); hero.prepend(crest);
+    var lede = hero.querySelector(".lede");
+    if (lede && lede.textContent.length > 110) { var more = el("button", "pk-more", "More"); more.type = "button"; more.setAttribute("aria-expanded", "false");
+      more.addEventListener("click", function () { var open = lede.classList.toggle("open"); more.textContent = open ? "Less" : "More"; more.setAttribute("aria-expanded", String(open)); }); lede.after(more); }
+  }
+
+  /* the dock: previous pillar, the core, next pillar */
+  var compass = document.querySelector("nav.compass"), steps = compass ? compass.querySelectorAll("a.compass-step") : [];
+  var dock = el("nav", "pk-dock"); dock.setAttribute("aria-label", "Pillars");
+  var core = el("a", "pk-core"); core.href = "../../"; core.setAttribute("aria-label", "Back to the core"); core.appendChild(el("span", null, "Core"));
+  if (steps[0]) dock.appendChild(steps[0]); else dock.appendChild(el("span", "pk-gap"));
+  dock.appendChild(core); if (steps[1]) dock.appendChild(steps[1]); else dock.appendChild(el("span", "pk-gap"));
+  body.appendChild(dock);
+
+  /* the light that slides under the chosen tab */
+  function ink(tabs) {
+    if (!tabs) return; var on = tabs.querySelector('.tab[aria-selected="true"]'), mark = tabs.querySelector(".pk-ink");
+    if (!mark) { mark = el("span", "pk-ink"); mark.setAttribute("aria-hidden", "true"); tabs.appendChild(mark); }
+    if (!on) { mark.style.opacity = "0"; return; }
+    mark.style.opacity = "1"; mark.style.width = on.offsetWidth + "px"; mark.style.transform = "translateX(" + on.offsetLeft + "px)";
+    var left = on.offsetLeft - 16, right = on.offsetLeft + on.offsetWidth + 16 - tabs.clientWidth; if (tabs.scrollLeft > left) tabs.scrollLeft = Math.max(0, left); else if (tabs.scrollLeft < right) tabs.scrollLeft = right;
+  }
+  function turnIn(panel, dir) { if (!panel || still) return; panel.style.setProperty("--pk-dir", dir < 0 ? "-1" : "1"); panel.classList.remove("pk-in"); void panel.offsetWidth; panel.classList.add("pk-in"); }
+
+  /* sections for a page that is one long stack */
+  var key = "prometheus.section." + location.pathname, made = null, active = 0, lastIdx = {};
+  try { active = parseInt(sessionStorage.getItem(key) || "0", 10) || 0; } catch (e) { active = 0; }
+  function label(h2) { var t = (h2.textContent || "").split(/ — | – | - |: |\. /)[0].replace(/^(The|Your|A|An) /i, "").trim(); t = t.charAt(0).toUpperCase() + t.slice(1); return t.length > 22 ? t.slice(0, 21).trim() + "…" : t; }
+  function sections() {
+    if (main.querySelector(":scope > .tabs:not(.pk-tabs)")) return;                 // the pillar has its own tabs
+    var grid = main.querySelector(":scope > section.grid"), panels = grid ? Array.prototype.filter.call(grid.children, function (c) { return c.classList.contains("glass") && c.querySelector(":scope > h2"); }) : [];
+    var old = main.querySelector(":scope > .pk-tabs");
+    if (panels.length < 3) { if (old) old.remove(); made = null; return; }
+    var names = panels.map(function (p) { return label(p.querySelector(":scope > h2")); }), sig = names.join("|");
+    if (!old || old.dataset.sig !== sig) {
+      if (old) old.remove(); old = el("div", "tabs pk-tabs"); old.setAttribute("role", "tablist"); old.dataset.sig = sig;
+      names.forEach(function (n, i) { var b = el("button", "tab", n); b.type = "button"; b.setAttribute("role", "tab"); b.addEventListener("click", function () { show(i, true); }); old.appendChild(b); });
+      main.insertBefore(old, grid);
+    }
+    made = { grid: grid, panels: panels, tabs: old }; grid.classList.add("pk-sections"); show(Math.min(active, panels.length - 1), false);
+  }
+  function show(i, byHand) {
+    if (!made) return; var prev = active; active = i; try { sessionStorage.setItem(key, String(i)); } catch (e) { /* fine */ }
+    var owner = null; Array.prototype.forEach.call(made.grid.children, function (c) { var k = made.panels.indexOf(c); if (k >= 0) owner = k; c.classList.toggle("pk-off", owner !== i); });   // loose blocks follow the panel above them
+    Array.prototype.forEach.call(made.tabs.querySelectorAll(".tab"), function (b, k) { b.setAttribute("aria-selected", String(k === i)); });
+    ink(made.tabs);
+    if (byHand) { turnIn(made.panels[i], i - prev); var top = made.tabs.getBoundingClientRect().top; if (top < 40) window.scrollTo({ top: window.scrollY + top - 70, behavior: still ? "auto" : "smooth" }); window.dispatchEvent(new Event("resize")); }
+  }
+
+  var queued = false;
+  function sync() { queued = false; sections(); Array.prototype.forEach.call(main.querySelectorAll(":scope > .tabs"), ink); }
+  function later() { if (!queued) { queued = true; requestAnimationFrame(sync); } }
+  new MutationObserver(function (list) {
+    for (var k = 0; k < list.length; k++) { var m = list[k];
+      if (m.type === "attributes" && m.target.classList && m.target.classList.contains("tab") && m.target.getAttribute("aria-selected") === "true" && !m.target.closest(".pk-tabs")) {   // a pillar's own tab changed
+        var tabs = m.target.closest(".tabs"), all = tabs ? Array.prototype.slice.call(tabs.querySelectorAll(".tab")) : [], idx = all.indexOf(m.target), id = tabs ? tabs.id || "t" : "t";
+        turnIn(document.getElementById(m.target.getAttribute("aria-controls")), idx - (lastIdx[id] || 0)); lastIdx[id] = idx; }
+    }
+    later();
+  }).observe(main, { childList: true, subtree: true, attributes: true, attributeFilter: ["aria-selected"] });
+  window.addEventListener("resize", later); window.addEventListener("load", later); if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
+  sync();
+
+  /* a ripple under the finger */
+  if (!still) document.addEventListener("pointerdown", function (e) {
+    var t = e.target.closest && e.target.closest(".btn, .tab, .chip, .chord, .compass-step, .pk-core"); if (!t) return;
+    var r = t.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, s = el("span", "pk-ripple"); s.style.width = s.style.height = d + "px"; s.style.left = e.clientX - r.left - d / 2 + "px"; s.style.top = e.clientY - r.top - d / 2 + "px";
+    t.appendChild(s); setTimeout(function () { s.remove(); }, 620);
+  }, { passive: true });
+})();
