@@ -39,8 +39,9 @@ with sync_playwright() as p:
     p2.evaluate("localStorage.setItem('prometheus.bus.deadlines', JSON.stringify([{ id: 't1', title: 'Proof: oil service', date: '2026-11-22', source: 'garage', ref: 'oil' }]))"); p2.reload(); p2.wait_for_selector(".reactor .hex"); p2.wait_for_timeout(600)
     got = p2.evaluate("""async () => { const f = await import(new URL('deck/core/feeds.js', document.baseURI).href); return { rows: f.rows('2026-11-20', '2026-11-30').filter((r) => r.bus).map((r) => r.title + ' / ' + r.cap), badge: (document.querySelector('.hex[data-pillar=garage] .hex-badge') || {}).textContent || '', runway: !!document.querySelector('.runway .day.level-0, .runway .day') }; }""")
     proof("CORE-3", "A pillar's own deadline (the shared bus) reaches the hub: in the feed and on its cell", len(got["rows"]) == 1 and got["badge"] == "2d", json.dumps(got))
+    p2.wait_for_timeout(2500); import time as _t; t0 = _t.time()                         # let the page finish starting (a test machine draws in software, slowly)
     p2.evaluate("document.querySelector('.hex[data-pillar=apollo] .hex-in').click()")
-    try: p2.wait_for_url("**/pillars/apollo/**", timeout=9000); p2.wait_for_selector(".shell", timeout=9000); landed = p2.title()
+    try: p2.wait_for_url("**/pillars/apollo/**", timeout=30000); took = _t.time() - t0; p2.wait_for_selector(".shell", timeout=15000); landed = f"{p2.title()} ({took:.1f} s on this machine)"
     except Exception as e: landed = "did not land: " + str(e)[:80]
     proof("CORE-4", "Tapping a cell warps into that pillar", "Apollo" in landed, landed); c2.close()
 

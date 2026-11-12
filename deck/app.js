@@ -13,7 +13,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d3";
+export const BUILD = "d4";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -29,6 +29,7 @@ export const ctx = {
 function parse(hash) { const p = (hash || "").replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent); return { cap: p[0] || "picture", tab: p[1] || "", arg: p[2] || "", key: p.join("/") }; }
 export function go(hash) { if (location.hash === hash) render(true); else location.hash = hash; }
 addEventListener("hashchange", () => render(false));
+addEventListener("pageshow", (e) => { if (e.persisted) render(true); });               // back from a pillar out of the browser's cache: rebuild the live view
 
 async function render(same) {
   const r = parse(location.hash); const known = r.cap === "picture" || r.cap === "system" || cap(r.cap);
