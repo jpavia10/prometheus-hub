@@ -1,6 +1,6 @@
 /* Time: the calendar. Quick add on top, then Day, Week, Month, Agenda, Risk and the Focus clock.
    Every dated row on the deck shows here, whichever capability owns it; rows Time owns open for editing, the others lead home. */
-import { h, $, icon, sheet, toast, field, seg, chip, ring, bars, download, pickFile, ask, plural } from "../core/ui.js";
+import { put, h, $, icon, sheet, toast, field, seg, chip, ring, bars, download, pickFile, ask, plural } from "../core/ui.js";
 import { clock, today, addDays, addMonths, fmtDay, fmtTime, dow, dowName, monName, startOfWeek, startOfMonth, endOfMonth, quickAdd, ruleText, isDay, diffDays, WEEKDAYS } from "../core/dates.js";
 import { rows, days, fixed } from "../core/feeds.js";
 import { rowItem, runway } from "./parts.js";
@@ -15,39 +15,30 @@ export function render(root, route, ctx) {
   let timer = null;
   const open = (r) => { if (r.cap === "time" && r.ref) eventSheet(ctx, r.ref.id, r.ref.base); else if (r.go && !r.fixed) ctx.go(r.go); else if (r.fixed) fixedSheet(r); };
 
-  /* quick add */
-  const input = h("input.quick-input", { type: "text", placeholder: "dentist Tue 3pm", autocomplete: "off", autocapitalize: "sentences", enterkeyhint: "done", "aria-label": "Add an event in plain words" });
-  const preview = h("div.quick-preview", { "aria-live": "polite" });
-  const read = () => { const q = quickAdd(input.value); if (!input.value.trim()) { preview.replaceChildren(h("span.quiet", "Type it the way you would say it: “smog check dec 5”, “trash every tue 7am”, “school: picture day fri”.")); return null; }
-    if (!q) { preview.replaceChildren(h("span.warn-text", "No day in that yet. Add one: tomorrow, fri, nov 20, 11/20, in 3 days.")); return null; }
-    const k = kindOf(q.title); preview.replaceChildren(icon("check", 16), h("span", h("b", k.title), ` · ${fmtDay(q.date, "long")}${q.time ? " · " + fmtTime(q.time) : ""}${q.rule ? " · " + ruleText(q.rule) : ""}${k.kind !== "event" ? " · " + KINDS[k.kind].label : ""}`)); return { ...q, title: k.title, kind: k.kind }; };
-  const add = () => { const q = read(); if (!q) { input.focus(); return; } store.update("time", (st) => st.events.push(makeEvent(q, { kind: q.kind, src: "quick" }))); input.value = ""; toast(`Added: ${q.title}, ${fmtDay(q.date)}${q.time ? " " + fmtTime(q.time) : ""}`); ctx.go(`#/time/day/${q.date}`); };
-  input.addEventListener("input", read); input.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); add(); } });
-  const quick = h("section.quick.panel", { "aria-label": "Quick add" }, h("div.quick-row", input, h("button.btn", { type: "button", onclick: add, "aria-label": "Add" }, icon("plus", 18), "Add"), h("button.icon-btn", { type: "button", "aria-label": "Add with the full form", onclick: () => eventSheet(ctx, null, null, arg) }, icon("edit", 18))), preview);
-  read();
-
   const tabs = h("nav.tabs", { "aria-label": "Time views" }, TABS.map(([id, name]) => h("a" + (id === tab ? ".on" : ""), { href: `#/time/${id}${id === "day" || id === "week" || id === "month" ? "/" + arg : ""}`, "aria-current": id === tab ? "page" : null }, name)));
-  const body = h("section.time-body");
-  const tools = h("div.row.tools", h("button.btn.ghost.small", { type: "button", onclick: () => filesSheet(ctx) }, icon("file", 16), "Calendar files"));
-  root.append(quick, tabs, body, tools);
+  const body = h("section.time-body.panel");
+  const tools = h("div.row.tools", h("button.btn.ghost.small", { type: "button", onclick: () => eventSheet(ctx, null, null, arg) }, icon("plus", 16), "New event"), h("button.btn.ghost.small", { type: "button", onclick: () => filesSheet(ctx) }, icon("file", 16), "Calendar files"));
+  put(root, tabs, body, tools);
 
   const nav = (prev, next, title, extra) => h("header.cal-nav", h("a.icon-btn", { href: prev, "aria-label": "Earlier" }, icon("left")), h("h2", title), h("a.icon-btn", { href: next, "aria-label": "Later" }, icon("right")), extra || null);
   const todayLink = (id) => (arg !== t ? h("a.btn.ghost.small", { href: `#/time/${id}/${t}` }, "Today") : null);
 
   if (tab === "day") {
-    const d = days(arg, 1)[0]; const mine = d.rows;
-    body.append(nav(`#/time/day/${addDays(arg, -1)}`, `#/time/day/${addDays(arg, 1)}`, arg === t ? "Today · " + fmtDay(arg) : fmtDay(arg, "long"), todayLink("day")),
+    const d = days(arg, 1)[0]; const mine = [...d.rows].sort((x, y) => (x.time ? 1 : 0) - (y.time ? 1 : 0) || (x.time || "").localeCompare(y.time || ""));
+    const nowT = clock.now(); const hm = `${String(nowT.getHours()).padStart(2, "0")}:${String(nowT.getMinutes()).padStart(2, "0")}`; const list = mine.map((r) => rowItem(r, { onopen: open, rel: arg === t }));
+    if (arg === t && mine.length) { const at = mine.findIndex((r) => r.time && r.time > hm); list.splice(at < 0 ? list.length : at, 0, h("div.now-line", { "aria-label": "Now" }, h("i"), h("span.num", "Now · " + fmtTime(hm)))); }
+    put(body, nav(`#/time/day/${addDays(arg, -1)}`, `#/time/day/${addDays(arg, 1)}`, arg === t ? "Today · " + fmtDay(arg) : fmtDay(arg, "long"), todayLink("day")),
       d.why ? h("div.banner.level-" + d.level, icon("alert", 18), h("span", h("b", d.level >= 3 ? "Collision day" : "Heavy day"), h("small", d.why))) : null,
-      h("div.items.day-list", mine.length ? mine.map((r) => rowItem(r, { onopen: open, rel: arg === t })) : h("div.empty", icon("calendar", 30), h("p", arg === t ? "Nothing dated today." : "Nothing dated this day."), h("button.btn.ghost.small", { type: "button", onclick: () => eventSheet(ctx, null, null, arg) }, "Add something here"))));
+      h("div.items.day-list.timeline", mine.length ? list : h("div.empty", icon("calendar", 30), h("p", arg === t ? "Nothing dated today." : "Nothing dated this day."), h("button.btn.ghost.small", { type: "button", onclick: () => eventSheet(ctx, null, null, arg) }, "Add something here"))));
   } else if (tab === "week") {
     const ws = startOfWeek(arg, store.get("time").prefs.weekStart || 0); const wk = days(ws, 7);
-    body.append(nav(`#/time/week/${addDays(ws, -7)}`, `#/time/week/${addDays(ws, 7)}`, `${fmtDay(ws, "md")} – ${fmtDay(addDays(ws, 6), "md")}`, todayLink("week")),
+    put(body, nav(`#/time/week/${addDays(ws, -7)}`, `#/time/week/${addDays(ws, 7)}`, `${fmtDay(ws, "md")} – ${fmtDay(addDays(ws, 6), "md")}`, todayLink("week")),
       ...wk.map((d) => h("div.week-day.level-" + d.level + (d.date === t ? ".today" : ""), h("header", h("a", { href: `#/time/day/${d.date}` }, h("b", d.date === t ? "Today" : dowName(d.date)), h("small.num", fmtDay(d.date, "md"))), d.why ? chip(d.why, d.level >= 3 ? "danger" : "warn") : null),
         d.rows.length ? h("div.items", d.rows.map((r) => rowItem(r, { onopen: open }))) : h("p.quiet", "—"))));
   } else if (tab === "month") {
     const ms = startOfMonth(arg), me = endOfMonth(arg); const gs = startOfWeek(ms, store.get("time").prefs.weekStart || 0); const n = Math.ceil((diffDays(gs, me) + 1) / 7) * 7; const grid = days(gs, n);
     const [y, m] = ms.split("-").map(Number); const ws0 = store.get("time").prefs.weekStart || 0;
-    body.append(nav(`#/time/month/${addMonths(ms, -1)}`, `#/time/month/${addMonths(ms, 1)}`, `${monName(m)} ${y}`, todayLink("month")),
+    put(body, nav(`#/time/month/${addMonths(ms, -1)}`, `#/time/month/${addMonths(ms, 1)}`, `${monName(m)} ${y}`, todayLink("month")),
       h("div.month", { role: "grid", "aria-label": `${monName(m)} ${y}` }, ...[0, 1, 2, 3, 4, 5, 6].map((i) => h("span.month-dow", { role: "columnheader" }, ["S", "M", "T", "W", "T", "F", "S"][(i + ws0) % 7])),
         ...grid.map((d) => { const mineRows = d.rows.filter((r) => !r.fixed && !r.done);
           return h("a.cell.level-" + d.level + (d.date === t ? ".today" : "") + (d.date < ms || d.date > me ? ".out" : "") + (d.holiday ? ".holiday" : ""), { href: `#/time/day/${d.date}`, role: "gridcell", "aria-label": `${fmtDay(d.date, "long")}: ${mineRows.length} items${d.holiday ? ", " + d.holiday : ""}${d.why ? ", " + d.why : ""}` },
@@ -55,18 +46,18 @@ export function render(root, route, ctx) {
       (() => { const flagged = grid.filter((d) => d.level >= 2 && d.date >= ms && d.date <= me); return flagged.length ? h("div.panel-sub", h("h3", "Days to watch this month"), ...flagged.map((d) => h("a.item.tone-deadline", { href: `#/time/day/${d.date}` }, h("span.pip"), h("span.item-main", h("b", fmtDay(d.date, "long")), h("small", d.why))))) : null; })());
   } else if (tab === "agenda") {
     const all = rows(t, addDays(t, 120)); const by = new Map(); for (const r of all) { if (!by.has(r.date)) by.set(r.date, []); by.get(r.date).push(r); }
-    body.append(h("header.cal-nav.plain", h("h2", "The next 120 days")), ...[...by.entries()].map(([date, list]) => h("div.agenda-day", h("header", h("a", { href: `#/time/day/${date}` }, h("b", date === t ? "Today" : fmtDay(date, "long")), h("small.num", date === t ? "" : `in ${diffDays(t, date)} ${diffDays(t, date) === 1 ? "day" : "days"}`))), h("div.items", list.map((r) => rowItem(r, { onopen: open }))))),
+    put(body, h("header.cal-nav.plain", h("h2", "The next 120 days")), ...[...by.entries()].map(([date, list]) => h("div.agenda-day", h("header", h("a", { href: `#/time/day/${date}` }, h("b", date === t ? "Today" : fmtDay(date, "long")), h("small.num", date === t ? "" : `in ${diffDays(t, date)} ${diffDays(t, date) === 1 ? "day" : "days"}`))), h("div.items", list.map((r) => rowItem(r, { onopen: open }))))),
       by.size ? null : h("div.empty", icon("list", 30), h("p", "Nothing dated in the next 120 days.")));
   } else if (tab === "risk") {
     const ws = startOfWeek(t, 0); const win = days(ws, 42); const flagged = win.filter((d) => d.date >= t && d.level >= 2);
-    body.append(h("header.cal-nav.plain", h("h2", "Deadline risk · six weeks")),
+    put(body, h("header.cal-nav.plain", h("h2", "Deadline risk · six weeks")),
       h("p.quiet", "A day glows when it is overloaded, when two hard deadlines land together, or when a deadline falls on a federal holiday (offices and banks closed)."),
       h("div.heat", { role: "grid", "aria-label": "Six weeks of load" }, ...win.map((d) => h("a.heat-cell.level-" + d.level + (d.date === t ? ".today" : "") + (d.date < t ? ".past" : ""), { href: `#/time/day/${d.date}`, role: "gridcell", "aria-label": `${fmtDay(d.date, "long")}: ${["clear", "busy", "heavy", "critical"][d.level]}${d.why ? ", " + d.why : ""}` }, h("span.num", String(Number(d.date.slice(8))))))),
       h("div.legend", ["clear", "busy", "heavy", "critical"].map((n, i) => h("span", h("i.heat-cell.level-" + i), n))),
       flagged.length ? h("div.panel-sub", h("h3", plural(flagged.length, "day") + " to get ahead of"), ...flagged.map((d) => h("div.risk-day.level-" + d.level, h("header", h("a", { href: `#/time/day/${d.date}` }, h("b", fmtDay(d.date, "long")), h("small.num", `in ${diffDays(t, d.date)} days`)), chip(d.why, d.level >= 3 ? "danger" : "warn")), h("div.items", d.rows.filter((r) => !r.done).map((r) => rowItem(r, { onopen: open }))))))
         : h("div.empty", icon("shield", 30), h("p", "No overloaded or colliding days in the next six weeks.")));
   } else if (tab === "focus") {
-    const box = h("div.focus"); body.append(box);
+    const box = h("div.focus"); put(body, box);
     const draw = () => {
       const st = store.get("time"); const evs = focusTick(st); if (evs.length) { store.update("time", () => {}); announce(evs); return; }
       const v = focusView(st); const m = v ? v.method : method(st.focus.method); const stats = focusStats(st, today());
@@ -99,7 +90,7 @@ function fixedSheet(r) {
 
 /* ------------------------------------------------------------------ the event sheet ------------------------------------------------------------------ */
 const REPEATS = [["", "Does not repeat"], ["DAILY:1", "Every day"], ["WEEKLY:1", "Every week"], ["WEEKLY:2", "Every 2 weeks"], ["MONTHLY:1", "Every month"], ["MONTHLY:3", "Every 3 months"], ["YEARLY:1", "Every year"]];
-function eventSheet(ctx, id, base, onDate) {
+export function eventSheet(ctx, id, base, onDate) {
   const { store } = ctx; const st = store.get("time"); const ev = id ? st.events.find((e) => e.id === id) : null;
   if (id && !ev) return;
   if (ev && ev.rule && base) return instanceSheet(ctx, ev, base);

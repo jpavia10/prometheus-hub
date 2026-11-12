@@ -1,7 +1,7 @@
 /* Money: the payoff machine. Plan (where the debt stands, by schedule), What-if (extra and windfalls, live), Bills and subscriptions,
    and the Library (minimum-payment trap, issuer rules, promo traps, hardship directory, the worked cases).
    A simulator on labelled presets: no account, no real balance, no credential ever lives here. */
-import { h, $, icon, sheet, toast, field, seg, chip, dial, spark, money, moneyC, pct, monthsText, plural, download, ask, countUp } from "../core/ui.js";
+import { put, h, $, icon, sheet, toast, field, seg, chip, dial, spark, money, moneyC, pct, monthsText, plural, download, ask, countUp } from "../core/ui.js";
 import { today, fmtDay, monName, addMonths, diffDays, isDay, relDay } from "../core/dates.js";
 import { simulate, position, compare, windfallPreview, minimumTrap, deferredExample, paymentFor, impliedApr, dueDate, burn, billDates, monthlyCost, cycleText, CYCLES, milestone, toCents } from "../models/money.js";
 import { WORDS, closerLine, fill } from "../data/money-words.js";
@@ -13,10 +13,10 @@ const load = async (name) => data[name] || (data[name] = await fetch(`./deck/dat
 
 export function render(root, route, ctx) {
   const { store } = ctx; const t = today(); const tab = TABS.some((x) => x[0] === route.tab) ? route.tab : "plan"; const m = store.get("money");
-  root.append(h("nav.tabs", { "aria-label": "Money views" }, TABS.map(([id, name]) => h("a" + (id === tab ? ".on" : ""), { href: `#/money/${id}`, "aria-current": id === tab ? "page" : null }, name))));
-  const body = h("section.money-body"); root.append(body);
+  put(root, h("nav.tabs", { "aria-label": "Money views" }, TABS.map(([id, name]) => h("a" + (id === tab ? ".on" : ""), { href: `#/money/${id}`, "aria-current": id === tab ? "page" : null }, name))));
+  const body = h("section.money-body"); put(root, body);
   if (tab === "plan") plan(body, ctx, m, t); else if (tab === "whatif") whatif(body, ctx, m, t); else if (tab === "bills") bills(body, ctx, m, t); else library(body, ctx, m);
-  root.append(h("div.row.tools", h("button.btn.ghost.small", { type: "button", onclick: () => download(`prometheus-money-${t}.json`, store.exportSlice("money")) }, icon("download", 16), "Export Money"), h("button.btn.ghost.small", { type: "button", onclick: () => ctx.loadSeedFile() }, icon("upload", 16), "Import")),
+  put(root, h("div.row.tools", h("button.btn.ghost.small", { type: "button", onclick: () => download(`prometheus-money-${t}.json`, store.exportSlice("money")) }, icon("download", 16), "Export Money"), h("button.btn.ghost.small", { type: "button", onclick: () => ctx.loadSeedFile() }, icon("upload", 16), "Import")),
     h("p.quiet.fine", "A simulator on presets you type or load. It never connects to a bank and never holds a real balance; the encrypted book lives in ", h("a", { href: "https://jpavia10.github.io/midas-ledger/", rel: "noopener" }, "Midas Ledger"), "."));
 }
 
@@ -26,19 +26,19 @@ function samplePlan(t) { const first = addMonths(t.slice(0, 8) + "05", -6); retu
 function plan(body, ctx, m, t) {
   const { store } = ctx;
   if (!m.plan || !m.plan.debts.length) {
-    body.append(h("div.empty.scene", icon("money", 36), h("h2", "No payoff plan on this device"), h("p", "Start from a labelled sample and edit every number, or add your first debt."),
+    put(body, h("div.empty.scene", icon("money", 36), h("h2", "No payoff plan on this device"), h("p", "Start from a labelled sample and edit every number, or add your first debt."),
       h("div.row.center", h("button.btn", { type: "button", onclick: () => store.update("money", (x) => { x.plan = samplePlan(t); }) }, "Start with a sample"), h("button.btn.ghost", { type: "button", onclick: () => debtSheet(ctx, null) }, icon("plus", 16), "Add a debt"))));
     return;
   }
   const pos = position(m.plan, m.events, t); const ms = milestone(pos.pct); const pctEl = h("span.num.dial-pct"); countUp(pctEl, pos.pct * 100, (v) => v.toFixed(v >= 99.95 ? 0 : 1) + "%");
   const curve = pos.run.curve.map((c) => c / 100);
-  body.append(h("section.panel.payoff.glow-mint",
-    h("header.panel-head", h("h2", m.plan.label || "The plan"), m.plan.sample ? chip("sample preset") : chip("preset"), h("button.btn.ghost.small", { type: "button", onclick: () => planSheet(ctx) }, icon("edit", 14), "Plan")),
+  put(body, h("section.panel.payoff.glow-mint",
+    h("header.panel-head", h("h2", "Payoff plan"), m.plan.sample ? chip("sample") : null, h("button.icon-btn.small", { type: "button", "aria-label": "Edit the plan", onclick: () => planSheet(ctx) }, icon("edit", 16))),
     h("div.dial-box", dial({ value: pos.pct, width: 300, tone: "mint", label: "Share of the starting debt paid, by schedule" }), h("div.dial-center", pctEl, h("small", "paid, by schedule"))),
     h("div.stats3",
       h("div", h("small", "Debt-free"), h("b.num", pos.done ? "Done" : pos.freeMonth ? my(pos.freeMonth) : "never"), h("small", pos.done ? "" : monthsText(pos.monthsLeft) + " left")),
-      h("div", h("small", "Next payment"), h("b.num", pos.next ? moneyC(pos.next.amountC) : "—"), h("small", pos.next ? `${fmtDay(pos.next.date)} · ${relDay(pos.next.date, t)}` : "")),
-      h("div", h("small", "Interest left"), h("b.num", moneyC(pos.interestLeftC)), h("small", `of ${moneyC(pos.totalInterestC)} on the plan`))),
+      h("div", h("small", "Next due"), h("b.num", pos.next ? moneyC(pos.next.amountC) : "—"), h("small", pos.next ? fmtDay(pos.next.date, "md") + " · " + relDay(pos.next.date, t) : "")),
+      h("div", h("small", "Interest left"), h("b.num", moneyC(pos.interestLeftC)), h("small", `of ${moneyC(pos.totalInterestC, 0)}`))),
     h("div.curve", spark(curve, { w: 320, h: 70, tone: "mint", marks: [pos.k], min: 0, label: "Balance by month" }), h("div.curve-axis", h("small", my(dueDate(m.plan, 1))), h("small.num", `${moneyC(pos.nowC)} by schedule today`), h("small", pos.freeMonth ? my(pos.freeMonth) : ""))),
     ms.hit ? h("p.voice", WORDS.pct[ms.hit]) : pos.k > 0 ? h("p.voice", WORDS.first) : null,
     pos.run.stalled ? h("div.banner.level-3", icon("alert", 18), h("span", h("b", "This plan never ends"), h("small", "The payments do not cover the interest. Raise a payment or the budget."))) : null));
@@ -46,25 +46,25 @@ function plan(body, ctx, m, t) {
   /* strategies */
   if (pos.run.debts.length > 1) {
     const cmp = compare(m.plan, m.events); const worst = Math.max(...Object.values(cmp).map((c) => (isFinite(c.interestC) ? c.interestC : 0))) || 1;
-    body.append(h("section.panel", h("header.panel-head", h("h2", "Three ways, same debts")),
+    put(body, h("section.panel", h("header.panel-head", h("h2", "Three ways, same debts")),
       h("div.lanes", [["avalanche", "Avalanche", "highest rate first"], ["snowball", "Snowball", "smallest balance first"], ["minimum", "Minimums only", "no extra, ever"]].map(([k, name, sub]) => { const c = cmp[k];
         return h("button.lane" + (m.plan.strategy === k ? ".on" : ""), { type: "button", disabled: k === "minimum", "aria-pressed": String(m.plan.strategy === k), onclick: () => store.update("money", (x) => { x.plan.strategy = k; }) },
           h("span.lane-name", h("b", name), h("small", sub)), h("span.lane-bar", h("i", { style: { width: Math.max(4, (c.interestC / worst) * 100) + "%" } })), h("span.lane-nums.num", h("b", c.stalled ? "never" : monthsText(c.months)), h("small", moneyC(c.interestC) + " interest"), h("small", c.freeMonth ? my(c.freeMonth) : ""))); })),
       h("p.quiet", "Tap a strategy to run the plan that way. Minimums-only is the comparison: what the same debts cost with no plan.")));
   } else {
     const d = pos.run.debts[0]; const n = pos.run.months.length; const text = paymentFor(d.balance, d.apr, n); const imp = impliedApr(d.balance, d.min, n);
-    body.append(h("section.panel", h("header.panel-head", h("h2", "The loan, two ways")),
-      h("div.stats3", h("div", h("small", "Your payment"), h("b.num", money(d.min)), h("small", `${n} payments`)), h("div", h("small", "Textbook payment"), h("b.num", money(text)), h("small", `${d.apr}% over ${n} months`)), h("div", h("small", "Rate your payment implies"), h("b.num", imp.toFixed(2) + "%"), h("small", "over the same months"))),
+    put(body, h("section.panel", h("header.panel-head", h("h2", "The loan, two ways")),
+      h("div.stats3", h("div", h("small", "You pay"), h("b.num", money(d.min)), h("small", `${n} payments`)), h("div", h("small", "Textbook"), h("b.num", money(text)), h("small", `${d.apr}% · ${n} mo`)), h("div", h("small", "Implied rate"), h("b.num", imp.toFixed(2) + "%"), h("small", "from your payment"))),
       h("p.quiet", Math.abs(text - d.min) < 0.02 ? "The payment matches the textbook amortization for this rate and term." : d.min > text ? `The payment is ${money(d.min - text)} a month above the textbook figure for this rate and term, so the last payment is smaller and the loan can end early.` : "The payment is below the textbook figure for this term: the loan runs longer than the term.")));
   }
 
   /* debts */
-  body.append(h("section.panel", h("header.panel-head", h("h2", plural(m.plan.debts.length, "debt")), h("button.btn.ghost.small", { type: "button", onclick: () => debtSheet(ctx, null) }, icon("plus", 14), "Add")),
+  put(body, h("section.panel", h("header.panel-head", h("h2", plural(m.plan.debts.length, "debt")), h("button.btn.ghost.small", { type: "button", onclick: () => debtSheet(ctx, null) }, icon("plus", 14), "Add")),
     h("div.items", m.plan.debts.map((d) => { const i = pos.run.debts.findIndex((x) => x.id === d.id); const nowC = i >= 0 ? (pos.k ? pos.run.months[Math.min(pos.k, pos.run.months.length) - 1].rows[i][2] : toCents(d.balance)) : 0; const pm = pos.run.payoffMonth[d.id];
       return h("a.item.tone-bill", { href: "#", onclick: (e) => { e.preventDefault(); debtSheet(ctx, d.id); } }, h("span.pip"), h("span.item-main", h("b", d.name), h("small", `${money(d.balance)} at ${d.apr}% · ${money(d.min)} a month${pm ? " · paid off " + my(dueDate(m.plan, pm)) : ""}`)), h("span.item-tags", h("span.amt.num", moneyC(nowC)), h("small.quiet", "by schedule"))); }))));
 
   /* windfalls logged */
-  if (m.events.length) body.append(h("section.panel", h("header.panel-head", h("h2", "Extra money applied"), h("b.num", moneyC(pos.windfallC))),
+  if (m.events.length) put(body, h("section.panel", h("header.panel-head", h("h2", "Extra money applied"), h("b.num", moneyC(pos.windfallC))),
     h("div.items", [...m.events].sort((a, b) => b.date.localeCompare(a.date)).map((e) => h("div.item.tone-event", h("span.pip"), h("span.item-main", h("b", e.label || "Windfall"), h("small", `${fmtDay(e.date)}${e.kind ? " · " + e.kind : ""}`)), h("span.item-tags", h("span.amt.num", money(e.amount)), h("button.icon-btn.small", { type: "button", "aria-label": "Remove " + (e.label || "windfall"), onclick: () => { const copy = { ...e }; store.update("money", (x) => { x.events = x.events.filter((y) => y.id !== e.id); }); toast("Removed.", { undo: () => store.update("money", (x) => x.events.push(copy)) }); } }, icon("x", 14))))))));
 }
 
@@ -95,7 +95,7 @@ function debtSheet(ctx, id) {
 /* ------------------------------------------------------------------ what-if ------------------------------------------------------------------ */
 function whatif(body, ctx, m, t) {
   const { store } = ctx;
-  if (!m.plan || !m.plan.debts.length) { body.append(h("div.empty.scene", icon("money", 36), h("h2", "What-if needs a plan"), h("a.btn", { href: "#/money" }, "Set up the plan"))); return; }
+  if (!m.plan || !m.plan.debts.length) { put(body, h("div.empty.scene", icon("money", 36), h("h2", "What-if needs a plan"), h("a.btn", { href: "#/money" }, "Set up the plan"))); return; }
   const base = position(m.plan, m.events, t);
   const extra = h("input", { type: "range", min: 0, max: 1000, step: 25, value: m.plan.extra || 0, "aria-label": "Extra per month" }), extraN = h("output.num.big"), wind = h("input", { type: "number", min: 0, step: "1", inputmode: "decimal", placeholder: "0", "aria-label": "One-time windfall in dollars" });
   const out = h("div.whatif-out", { "aria-live": "polite" }), alloc = h("div.alloc");
@@ -113,7 +113,7 @@ function whatif(body, ctx, m, t) {
   };
   extra.addEventListener("input", calc); wind.addEventListener("input", calc);
   const label = h("input", { type: "text", placeholder: "What was it? (sold the old mower)", maxlength: 80 });
-  body.append(h("section.panel.glow-mint", h("header.panel-head", h("h2", "What if"), chip(base.freeMonth ? "now: " + my(base.freeMonth) : "now: never")),
+  put(body, h("section.panel.glow-mint", h("header.panel-head", h("h2", "What if"), chip(base.freeMonth ? "now: " + my(base.freeMonth) : "now: never")),
     h("div.stack", h("div.slider", h("div.row.between", h("span", "Extra every month"), extraN), extra), field("A one-time windfall ($)", wind), out, alloc,
       h("div.row.end", h("button.btn.ghost", { type: "button", onclick: () => { store.update("money", (x) => { x.plan.extra = Number(extra.value) || 0; }); toast(`The plan now carries ${money(Number(extra.value) || 0, 0)} extra a month.`); } }, "Make the extra my plan"),
         h("button.btn", { type: "button", onclick: () => { const w = Number(wind.value) || 0; if (!(w > 0)) { toast("Type the windfall amount first.", { tone: "warn" }); wind.focus(); return; }
@@ -128,11 +128,11 @@ function bills(body, ctx, m, t) {
   const { store } = ctx; const b = burn(m.bills || []); const horizon = addMonths(t, 13);
   const next = (x) => billDates(x, t, horizon)[0] || null;
   const list = [...(m.bills || [])].map((x) => ({ x, next: next(x) })).sort((a, c) => (a.next || "9").localeCompare(c.next || "9"));
-  body.append(h("section.panel", h("header.panel-head", h("h2", "Recurring charges"), h("button.btn.ghost.small", { type: "button", onclick: () => billSheet(ctx, null) }, icon("plus", 14), "Add")),
+  put(body, h("section.panel", h("header.panel-head", h("h2", "Recurring charges"), h("button.btn.ghost.small", { type: "button", onclick: () => billSheet(ctx, null) }, icon("plus", 14), "Add")),
     list.length ? [h("div.stats3", h("div", h("small", "Every month"), h("b.num", money(b.monthly))), h("div", h("small", "Every year"), h("b.num", money(b.yearly, 0))), h("div", h("small", "Subscriptions"), h("b.num", money(b.subsMonthly)), h("small", "a month"))),
       h("div.items", list.map(({ x, next: n }) => h("a.item.tone-" + (x.kind === "sub" ? "sub" : "bill"), { href: "#", onclick: (e) => { e.preventDefault(); billSheet(ctx, x.id); } }, h("span.pip"), h("span.item-main", h("b", x.name), h("small", `${cycleText(x.every)}${n ? " · next " + fmtDay(n) : ""}${x.note ? " · " + x.note : ""}`)), h("span.item-tags", h("span.amt.num", money(x.amount)), x.autopay ? chip("autopay") : null, n ? h("span.until.num", relDay(n, t)) : null))))]
       : h("div.empty", icon("bell", 30), h("p", "No recurring charges listed. Add the bills and subscriptions you pay: each next-due date shows on the picture and in Time."))));
-  if (b.subs.length) body.append(h("section.panel", h("header.panel-head", h("h2", "Subscription audit"), h("b.num", money(b.subsMonthly * 12, 0) + " a year")),
+  if (b.subs.length) put(body, h("section.panel", h("header.panel-head", h("h2", "Subscription audit"), h("b.num", money(b.subsMonthly * 12, 0) + " a year")),
     h("p.quiet", "Recurring charges are quiet debt. Sorted by what each costs in a year."),
     h("div.items", b.subs.map((x) => { const idle = x.lastUsed ? diffDays(x.lastUsed, t) : null; return h("a.item.tone-sub", { href: "#", onclick: (e) => { e.preventDefault(); billSheet(ctx, x.id); } }, h("span.pip"), h("span.item-main", h("b", x.name), h("small", x.lastUsed ? `last used ${relDay(x.lastUsed, t)}` : "last use not noted")), h("span.item-tags", h("span.amt.num", money(x.yearly, 0) + "/yr"), idle != null && idle > 60 ? chip(`unused ${idle} days`, "warn") : null)); }))));
 }
@@ -153,7 +153,7 @@ function billSheet(ctx, id) {
 function library(body, ctx, m) {
   const tabs = [["trap", "Minimum trap"], ["issuers", "Issuers"], ["promos", "Promo traps"], ["hardship", "Hardship"], ["cases", "Worked cases"]];
   const box = h("div.lib"); const draw = async () => { box.replaceChildren(h("p.quiet", "Loading…")); try { const el = await ({ trap, issuers, promos, hardship, cases })[libTab](ctx, m); box.replaceChildren(el); } catch (e) { box.replaceChildren(h("div.empty", icon("alert", 28), h("p", "This part of the library needs a connection the first time it opens."))); } };
-  body.append(h("div.subtabs", seg(tabs, libTab, (v) => { libTab = v; draw(); }, "Library")), box); draw();
+  put(body, h("div.subtabs", seg(tabs, libTab, (v) => { libTab = v; draw(); }, "Library")), box); draw();
 }
 async function trap() {
   const iss = await load("issuers"); const flat = iss.flatMap((i) => i.minimums.map((mm) => ({ issuer: i.issuer, ...mm, method: i.method })));

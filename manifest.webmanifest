@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Prometheus Hub",
+  "name": "Prometheus",
   "short_name": "Prometheus",
-  "description": "Joseph's desk: every pillar opens from here (Titan, Midas, Hephaestus, Apollo, Hermes, Kairos, Icarus, Argus, Sylade).",
+  "description": "One deck for the day, the deadlines, the money and the house. Everything stays on the device.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -31,9 +31,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Sylade",
-      "short_name": "Sylade",
-      "url": "./sylade.html",
+      "name": "Time",
+      "short_name": "Time",
+      "url": "./#/time",
       "icons": [
         {
           "src": "icons/icon-192.png",
@@ -43,45 +43,9 @@
       ]
     },
     {
-      "name": "Titan Reliquary",
-      "short_name": "Titan",
-      "url": "./#titan",
-      "icons": [
-        {
-          "src": "icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Midas Ledger",
-      "short_name": "Midas",
-      "url": "./#midas",
-      "icons": [
-        {
-          "src": "icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Hephaestus Hearth",
-      "short_name": "Hearth",
-      "url": "./#hearth",
-      "icons": [
-        {
-          "src": "icons/icon-192.png",
-          "sizes": "192x192",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Kairos Meridian",
-      "short_name": "Kairos",
-      "url": "./pillars/kairos/",
+      "name": "Money",
+      "short_name": "Money",
+      "url": "./#/money",
       "icons": [
         {
           "src": "icons/icon-192.png",
@@ -90,5 +54,6 @@
         }
       ]
     }
-  ]
+  ],
+  "orientation": "any"
 }

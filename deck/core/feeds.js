@@ -27,8 +27,9 @@ export function within(hours, now) {
 /** The next `n` "big" dates: the owner's starred events first, then hard deadlines, then federal holidays to fill. */
 export function countdowns(n = 3, from = today()) {
   const all = rows(from, addDays(from, 400)); const pick = []; const seen = new Set();
-  const take = (f) => { for (const r of all) { if (pick.length >= n) return; if (r.done || seen.has(r.key) || !f(r)) continue; seen.add(r.key); pick.push(r); } };
-  take((r) => r.big); take((r) => !r.fixed && (r.weight || 0) >= 3 && r.date > from); take((r) => r.tone === "holiday" && r.date > from);
+  const idOf = (r) => (r.ref && r.ref.id) || r.key;                                  // one countdown per thing: the first day of a trip, the next turn of a repeat
+  const take = (f) => { for (const r of all) { if (pick.length >= n) return; if (r.done || seen.has(idOf(r)) || !f(r)) continue; seen.add(idOf(r)); pick.push(r); } };
+  take((r) => r.big); take((r) => !r.fixed && r.cap === "time" && !r.repeat && (r.weight || 0) >= 3 && r.date > from); take((r) => r.tone === "holiday" && r.date > from);
   return pick.sort((a, b) => a.date.localeCompare(b.date));
 }
 /** One search over every capability. Returns [{ title, sub, go, cap }] */

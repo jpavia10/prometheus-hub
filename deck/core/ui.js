@@ -3,7 +3,10 @@
 
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-export const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+let quiet = false;
+/** While quiet, instruments draw in place (a redraw of the same view should not replay its entrance). */
+export const setQuiet = (v) => { quiet = !!v; };
+export const reduced = () => quiet || matchMedia("(prefers-reduced-motion: reduce)").matches;
 const SVGNS = "http://www.w3.org/2000/svg";
 
 function build(el, attrs, kids) {
@@ -25,7 +28,9 @@ export function h(tag, attrs, ...kids) {
   const [name, ...cls] = tag.split("."); const el = document.createElement(name || "div"); if (cls.length) el.className = cls.join(" ");
   return build(el, attrs, kids);
 }
-export function s(tag, attrs, ...kids) { return build(document.createElementNS(SVGNS, tag), attrs, kids); }
+/** parent.append that ignores null and false (the native one prints "null"). */
+export function put(parent, ...kids) { for (const k of kids.flat(Infinity)) if (k != null && k !== false && k !== "") parent.append(k); return parent; }
+export function s(tag, attrs, ...kids) { if (attrs != null && (attrs.nodeType || typeof attrs !== "object" || Array.isArray(attrs))) { kids.unshift(attrs); attrs = null; } return build(document.createElementNS(SVGNS, tag), attrs, kids); }
 
 /* ---- formats ---- */
 export const money = (n, d = 2) => (n == null || isNaN(n) ? "—" : (n < 0 ? "−$" : "$") + Math.abs(n).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d }));
@@ -123,7 +128,7 @@ let gid = 0;
 /** A ring gauge. value 0..1. */
 export function ring({ value = 0, size = 96, stroke = 7, tone = "ice", center, label, track = true }) {
   const r = (size - stroke) / 2 - 2, c = 2 * Math.PI * r, v = Math.max(0, Math.min(1, value)); const id = "rg" + gid++;
-  const arc = s("circle", { cx: size / 2, cy: size / 2, r, fill: "none", stroke: `url(#${id})`, "stroke-width": stroke, "stroke-linecap": "round", "stroke-dasharray": `${c * v} ${c}`, transform: `rotate(-90 ${size / 2} ${size / 2})`, class: "ring-arc" });
+  const arc = s("circle", { cx: size / 2, cy: size / 2, r, fill: "none", stroke: `url(#${id})`, "stroke-width": stroke, "stroke-linecap": "round", "stroke-dasharray": `${c * v} ${c}`, transform: `rotate(-90 ${size / 2} ${size / 2})`, class: "ring-arc", opacity: v > 0 ? 1 : 0 });
   if (!reduced()) { arc.style.strokeDasharray = `0 ${c}`; requestAnimationFrame(() => requestAnimationFrame(() => { arc.style.transition = "stroke-dasharray .9s cubic-bezier(.2,.8,.2,1)"; arc.style.strokeDasharray = `${c * v} ${c}`; })); }
   const g = s("svg", { viewBox: `0 0 ${size} ${size}`, width: size, height: size, class: "ring tone-" + tone, role: "img", "aria-label": label || "" },
     s("defs", s("linearGradient", { id, x1: "0", y1: "0", x2: "1", y2: "1" }, s("stop", { offset: "0", class: "g0" }), s("stop", { offset: "1", class: "g1" }))),
@@ -131,7 +136,7 @@ export function ring({ value = 0, size = 96, stroke = 7, tone = "ice", center, l
   return h("div.ring-box", { style: { width: size + "px", height: size + "px" } }, g, center ? h("div.ring-center", center) : null);
 }
 /** A half-dial (the payoff instrument). value 0..1 */
-export function dial({ value = 0, width = 280, stroke = 12, tone = "mint", ticks = 24, label }) {
+export function dial({ value = 0, width = 300, stroke = 10, tone = "mint", ticks = 48, label }) {
   const r = width / 2 - stroke - 4, cx = width / 2, cy = width / 2, len = Math.PI * r, v = Math.max(0, Math.min(1, value)); const id = "dl" + gid++;
   const d = `M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`;
   const arc = s("path", { d, fill: "none", stroke: `url(#${id})`, "stroke-width": stroke, "stroke-linecap": "round", "stroke-dasharray": `${len * v} ${len}`, class: "ring-arc" });

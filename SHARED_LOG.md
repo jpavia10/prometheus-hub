@@ -1,4 +1,8 @@
 
+### [2026-11-12] Claude: the deck replaces the desk (build d1)
+- New product in `deck/`: one page, one store, a live sky, the day-ring arrival view, Time and Money finished to proof (`STATUS.md`, `proofs/run.py`: 8 of 8 pass; 17 unit tests). Design first: built for what it should be, not from the old pages.
+- `pillars/kairos/` and `pillars/money/` redirect into the deck; other old pillar pages are unlinked until rebuilt. Demo data only in the repo; the owner's presets load from his private Drive file.
+
 ### [2026-11-10] Grok: home desk is a command deck
 - The home page leads with search (`/`, Ctrl/Cmd+K, arrows, Enter, Esc, `?`). Under it, the module row has previous/next and `[` `]` or Alt+arrows. The glass shows next dates, the NYSE session, car and home dates, since-you-were-away, and module status. Apollo food and exercise, and the public card-term tables, are off the home desk. Fleet Command stays paused. Shell cache is v12.
 

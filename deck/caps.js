@@ -5,8 +5,8 @@ import * as money from "./models/money.js";
 import * as profile from "./models/profile.js";
 
 export const CAPS = [
-  { id: "time", name: "Time", icon: "time", tone: "ember", model: time, view: () => import("./views/time.js") },
-  { id: "money", name: "Money", icon: "money", tone: "mint", model: money, view: () => import("./views/money.js") },
+  { id: "time", name: "Time", icon: "time", tone: "ember", line: "Calendar, deadlines, the 58 fixed dates, risk, the focus clock", model: time, view: () => import("./views/time.js") },
+  { id: "money", name: "Money", icon: "money", tone: "mint", line: "The payoff plan, what-if, bills and subscriptions, the library", model: money, view: () => import("./views/money.js") },
 ];
 export const SLICES = [{ id: "profile", model: profile }, ...CAPS.map((c) => ({ id: c.id, model: c.model }))];
 export const cap = (id) => CAPS.find((c) => c.id === id);

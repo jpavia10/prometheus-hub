@@ -1,194 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-day="night">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="format-detection" content="telephone=no">
-  <title>Prometheus Hub</title>
-  <meta name="description" content="Prometheus Hub command desk: search, next dates, the NYSE session, car and home dates, and module status.">
-  <meta name="theme-color" content="#05070e">
-  <meta name="color-scheme" content="dark">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Prometheus Hub">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="./icons/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-  <meta name="desk-build" content="v14">
-  <link rel="stylesheet" href="./kit/prometheus.css">
-  <link rel="stylesheet" href="./styles.css">
-  <script>document.documentElement.classList.add("js")</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prometheus</title>
+<meta name="description" content="Prometheus: one deck for the day, the deadlines, the money and the house. Everything stays on the device.">
+<meta name="theme-color" content="#05070e">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Prometheus">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="deck/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>html,body{height:100%;margin:0;background:#05070e;color:#f4f7fc}#boot{position:fixed;inset:0;display:grid;place-items:center}#boot i{width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7),0 0 24px rgba(255,157,92,.5);background:radial-gradient(circle,#ffb26e 0 22%,transparent 26%)}</style>
+<link rel="stylesheet" href="deck/deck.css">
+<link rel="modulepreload" href="deck/app.js">
+<link rel="modulepreload" href="deck/core/store.js"><link rel="modulepreload" href="deck/core/dates.js"><link rel="modulepreload" href="deck/core/ui.js">
+<link rel="modulepreload" href="deck/caps.js"><link rel="modulepreload" href="deck/core/feeds.js"><link rel="modulepreload" href="deck/core/atmo.js"><link rel="modulepreload" href="deck/core/weather.js">
+<link rel="modulepreload" href="deck/models/time.js"><link rel="modulepreload" href="deck/models/money.js"><link rel="modulepreload" href="deck/models/profile.js">
+<link rel="modulepreload" href="deck/data/focus.js"><link rel="modulepreload" href="deck/data/demo.js"><link rel="modulepreload" href="deck/data/money-words.js">
+<link rel="modulepreload" href="deck/views/picture.js"><link rel="modulepreload" href="deck/views/parts.js">
 </head>
-<body data-page="desk" data-layout="command">
-  <a class="skip" href="#board">Skip to the desk</a>
-  <canvas id="field" aria-hidden="true"></canvas>
-  <div class="veil" aria-hidden="true"></div>
-
-  <div class="deck">
-    <header class="mast">
-      <div class="mast-title">
-        <p class="kicker"><span class="sq" aria-hidden="true"></span> <span data-atmo>Evening</span></p>
-        <p class="greet" id="greet" hidden><span id="greet-line">Hello, Joseph</span> <time id="greet-time" class="num" datetime="">—</time></p>
-        <h1><a href="#board">Prometheus</a></h1>
-      </div>
-      <div class="mast-time">
-        <div class="clock-block" id="away-clocks" hidden></div>
-        <time class="clock" data-clock datetime="">—</time>
-        <p class="day-line" data-day></p>
-      </div>
-    </header>
-
-    <form class="command" id="cmd-form" role="search">
-      <label class="sr" for="cmd">Search the desk</label>
-      <input id="cmd" type="search" placeholder="Search the desk" aria-label="Search modules, their pages, dates, the session, or a public term" aria-controls="cmd-hits" aria-autocomplete="list" aria-expanded="false" autocomplete="off" enterkeyhint="search">
-      <button type="button" id="cmd-open" aria-keyshortcuts="/" aria-label="Focus search">/</button>
-    </form>
-    <div id="cmd-hits" class="cmd-hits" role="listbox" hidden></div>
-
-    <nav class="mod-strip" id="switcher" aria-label="Modules"></nav>
-
-    <div id="board">
-      <p class="away-banner" id="away-card" hidden></p>
-
-      <section class="status-grid" aria-label="Status">
-        <article class="glass-card lit" id="tile-next">
-          <p class="k">Next date</p>
-          <p class="v" id="next-date">—</p>
-          <p class="s" id="next-name"></p>
-          <ul class="quiet-list" id="next-list"></ul>
-        </article>
-        <article class="glass-card" id="tile-session" data-phase="">
-          <div class="session-top">
-            <div class="session-copy">
-              <p class="k">NYSE</p>
-              <p class="v" id="session-state" data-state="">—</p>
-            </div>
-            <svg class="session-ring" id="session-ring" viewBox="0 0 72 72" aria-hidden="true">
-              <circle class="ring-track" cx="36" cy="36" r="30"></circle>
-              <circle class="ring-prog" cx="36" cy="36" r="30" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" transform="rotate(-90 36 36)"></circle>
-            </svg>
-          </div>
-          <p class="s" id="session-why"></p>
-          <p class="s session-count" id="session-count"></p>
-          <p class="s" id="session-next"></p>
-        </article>
-        <article class="glass-card span-2" id="tile-life">
-          <div class="card-h">
-            <h2>Car and home</h2>
-            <p class="s">Dates kept on this device</p>
-          </div>
-          <ul class="quiet-list" id="date-strip"></ul>
-        </article>
-        <article class="glass-card span-2" id="tile-modules">
-          <div class="card-h">
-            <h2>Module status</h2>
-            <p class="s" id="review-count"></p>
-          </div>
-          <ul class="quiet-list" id="mod-status"></ul>
-        </article>
-      </section>
-
-      <section class="lower">
-        <article class="glass-card" id="pane-notes">
-          <h2>Notes on this device</h2>
-          <form class="focus" id="focus-form">
-            <label for="focus-input">Keep a line here</label>
-            <div class="focus-row">
-              <input id="focus-input" name="focus" maxlength="80" placeholder="A line for this browser" autocomplete="off" enterkeyhint="done">
-              <button type="submit">Keep</button>
-            </div>
-            <p class="focus-empty" id="focus-empty">Nothing kept yet. Notes stay in this browser.</p>
-            <ul id="focus-list"></ul>
-          </form>
-        </article>
-
-        <article class="glass-card" id="pane-keep">
-          <div class="card-h">
-            <h2>This browser</h2>
-            <p class="s" id="build-stamp"></p>
-          </div>
-          <p class="s" id="data-where"></p>
-          <p class="s" id="backup-nudge"></p>
-          <div class="row-actions">
-            <button type="button" class="op-btn" id="backup-now">Download backup</button>
-            <button type="button" class="op-btn" id="restore-now">Restore</button>
-            <input id="restore-file" type="file" accept="application/json" hidden>
-            <button type="button" class="op-btn" id="reload-chip" hidden>New drop is live, reload</button>
-          </div>
-          <h2 class="later">Reminders</h2>
-          <ul class="quiet-list" id="remind-list"></ul>
-        </article>
-      </section>
-    </div>
-
-    <section id="module-stage" class="module-stage" hidden>
-      <div class="module-bar">
-        <button type="button" id="module-back">Back to the desk</button>
-        <h2 id="module-title"></h2>
-        <a id="module-open" href="./">Open on its own page</a>
-      </div>
-      <iframe id="module-frame" title="Module"></iframe>
-    </section>
-  </div>
-
-  <dialog id="help-sheet" class="sheet" aria-labelledby="help-title">
-    <form method="dialog" class="sheet-close"><button class="sheet-x">Close</button></form>
-    <p class="kicker">Shortcuts</p>
-    <h3 id="help-title">Search</h3>
-    <p>/ or Ctrl/Cmd+K focuses search. Arrow keys move through results, Enter opens, Esc closes. [ and ] or Alt+arrows move along the module row. 1–9 open the first nine modules in that row. ? opens this list.</p>
-    <p>Search reaches modules and their pages, calendar dates, NYSE sessions, Sorento service names, public card terms, and records stored on this device. Food and exercise stay in Apollo. Card terms open from search, or from Money.</p>
-  </dialog>
-
-  <footer class="site-foot">
-    <p>Sylade · <a href="mailto:sylade.ais@gmail.com">sylade.ais@gmail.com</a> · <a href="https://github.com/sylade-ais" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://discord.gg/YCam2NEkv9" target="_blank" rel="noopener noreferrer">Discord</a> · <a href="./sylade.html">Presence</a></p>
-    <p class="elsewhere">Also linked: <a href="https://jpavia10.github.io/titan-reliquary-preview/" target="_blank" rel="noopener noreferrer">Titan Reliquary</a> · <a href="https://jpavia10.github.io/midas-ledger/" target="_blank" rel="noopener noreferrer">Midas Ledger</a> · <a href="https://jpavia10.github.io/hephaestus-hearth/" target="_blank" rel="noopener noreferrer">Hephaestus Hearth</a></p>
-    <p class="paused-line">Fleet Command is paused (2026-10-28). <a href="https://jpavia10.github.io/fleet-command/" target="_blank" rel="noopener noreferrer">The paused page</a></p>
-    <p><button type="button" id="install-app" hidden>Install on this phone</button></p>
-  </footer>
-
-  <noscript>
-    <section class="fallback">
-      <h2>Prometheus Hub</h2>
-      <p>JavaScript draws the field, the dates, and the search. Every module is still linked.</p>
-      <ul>
-        <li><a href="pillars/kairos/">Kairos</a></li>
-        <li><a href="pillars/apollo/">Apollo</a></li>
-        <li><a href="pillars/piano/">Piano</a></li>
-        <li><a href="pillars/hermes/">Hermes</a></li>
-        <li><a href="pillars/argus/">Argus</a></li>
-        <li><a href="pillars/money/">Money</a> (sample simulator only)</li>
-        <li><a href="pillars/selling/">Selling</a></li>
-        <li><a href="pillars/icarus/">Icarus</a> (journal only; it never trades)</li>
-        <li><a href="pillars/garage/">Garage</a></li>
-        <li><a href="pillars/bastion/">Bastion</a></li>
-        <li><a href="pillars/odyssey/">Odyssey</a></li>
-        <li><a href="pillars/records/">Records</a></li>
-        <li><a href="pillars/athenaeum/">Athenaeum</a></li>
-        <li><a href="pillars/privacy/">Privacy</a></li>
-        <li><a href="https://jpavia10.github.io/titan-reliquary-preview/">Titan Reliquary</a></li>
-        <li><a href="https://jpavia10.github.io/midas-ledger/">Midas Ledger</a></li>
-        <li><a href="https://jpavia10.github.io/hephaestus-hearth/">Hephaestus Hearth</a></li>
-        <li><a href="https://jpavia10.github.io/fleet-command/">Fleet Command (paused 2026-10-28)</a></li>
-      </ul>
-    </section>
-  </noscript>
-
-  <script>
-    (function () {
-      var ask = null, b = document.getElementById("install-app");
-      window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); ask = e; if (b) b.hidden = false; });
-      if (b) b.addEventListener("click", function () { if (!ask) return; ask.prompt(); ask.userChoice.then(function () { ask = null; b.hidden = true; }, function () {}); });
-      window.addEventListener("appinstalled", function () { if (b) b.hidden = true; });
-    })();
-  </script>
-  <script type="module" src="./hub.js"></script>
-  <script src="kit/bus.js"></script>
-  <script src="pillars/kairos/fixed-dates.js"></script>
-  <script src="pillars/icarus/market-days.js"></script>
-  <script src="pillars/garage/schedule.js"></script>
-  <script src="pillars/money/offers.js"></script>
-  <script src="desk-home.js"></script>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div id="deck"><div id="boot" aria-label="Loading Prometheus"><i></i></div></div>
+<noscript><p style="position:fixed;inset:0;display:grid;place-items:center;padding:24px;text-align:center;font:16px system-ui">Prometheus needs JavaScript: it runs entirely in this browser and keeps your data on this device.</p></noscript>
+<script type="module" src="deck/app.js"></script>
 </body>
 </html>
