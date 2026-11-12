@@ -1,0 +1,40 @@
+import test from "node:test"; import assert from "node:assert/strict"; import { readFileSync } from "node:fs";
+import { slice, makeEvent, kindOf, feed, fixedFeed, risk, focusStart, focusTick, focusStop, focusPause, focusView, focusStats, phases, method, flowBreak, localOccurrences, search } from "../../deck/models/time.js";
+import { parseICS } from "../../deck/core/ics.js"; import { clock, quickAdd } from "../../deck/core/dates.js"; import { FOCUS } from "../../deck/data/focus.js";
+clock.set("2026-11-12T09:00:00");
+const fixed = JSON.parse(readFileSync(new URL("../../deck/data/fixed-dates.json", import.meta.url), "utf8"));
+test("feed, kinds, fixed dates and risk", () => {
+  const st = slice.init();
+  st.events.push(makeEvent(quickAdd("dentist Tue 3pm", "2026-11-12"), { kind: "appointment" }));
+  const k = kindOf("school: conference sign-up closes"); st.events.push(makeEvent({ title: k.title, date: "2026-11-26", time: null }, { kind: k.kind }));
+  st.events.push(makeEvent({ title: "Registration renewal due", date: "2026-11-26", time: null }, { kind: kindOf("Registration renewal due").kind }));
+  st.events.push(makeEvent(quickAdd("trash every thu 7am", "2026-11-12")));
+  const rows = [...feed(st, "2026-11-12", "2026-11-30"), ...fixedFeed(fixed, "2026-11-12", "2026-11-30")];
+  assert.equal(rows.filter((r) => r.title === "trash").length, 3); assert.equal(rows.find((r) => r.title === "Thanksgiving Day").tone, "holiday");
+  const days = risk(rows, "2026-11-12", "2026-11-30"); const tg = days.find((d) => d.date === "2026-11-26");
+  assert.equal(tg.collision, true); assert.equal(tg.level >= 2, true); assert.match(tg.why, /2 hard deadlines/); assert.equal(days.find((d) => d.date === "2026-11-17").level, 0);
+  assert.deepEqual(kindOf("pay water bill"), { kind: "event", title: "pay water bill" }); assert.equal(fixed.length, 58);
+  assert.ok(search(st, "dent", fixed).length === 1 && search(st, "thanksgiving", fixed).length >= 1 && search(st, "pomodoro", fixed).length === 1);
+});
+test("an event kept in another zone lands on this device's day; multi-day events cover every day", () => {
+  const { events } = parseICS(readFileSync(new URL("../fixtures/kairos_gemini_testcal_20261106-1620.ics", import.meta.url), "utf8"));
+  const c = (n) => events.find((e) => e.uid.includes(`case-${String(n).padStart(2, "0")}@`));
+  const six = localOccurrences(c(6), "2026-11-20", "2026-12-05"); assert.deepEqual(six.map((o) => [o.date, o.span]), [["2026-11-26", [1, 4]], ["2026-11-27", [2, 4]], ["2026-11-28", [3, 4]], ["2026-11-29", [4, 4]]]);
+  const tokyo = localOccurrences(c(28), "2026-11-15", "2026-11-20")[0];
+  const expect = new Date(Date.UTC(2026, 10, 18, 0, 0)); assert.equal(tokyo.time, String(expect.getHours()).padStart(2, "0") + ":" + String(expect.getMinutes()).padStart(2, "0"));
+  assert.equal(localOccurrences(c(1), "2026-11-11", "2026-11-12").length, 1);
+});
+test("the focus clock: phases, logging, pause, stop, flowtime", () => {
+  assert.equal(FOCUS.length, 20); assert.equal(new Set(FOCUS.map((m) => m.id)).size, 20);
+  assert.deepEqual(phases(method("pomodoro")).map((p) => [p.phase, p.minutes]), [["work", 25], ["short", 5], ["work", 25], ["short", 5], ["work", 25], ["short", 5], ["work", 25], ["long", 20]]);
+  assert.deepEqual(phases(method("52-17")).map((p) => [p.phase, p.minutes]), [["work", 52], ["short", 17]]);
+  const st = slice.init(); const t0 = new Date("2026-11-12T09:00:00").getTime(); const min = 60000;
+  focusStart(st, "pomodoro", "deck", t0); assert.equal(focusView(st, t0 + 5 * min).leftMs, 20 * min);
+  assert.deepEqual(focusTick(st, t0 + 26 * min), [{ type: "phase", phase: "short", n: 1 }]); assert.equal(st.focus.log.length, 1); assert.equal(st.focus.log[0].minutes, 25);
+  focusPause(st, t0 + 27 * min); assert.equal(focusView(st, t0 + 40 * min).paused, true); assert.deepEqual(focusTick(st, t0 + 40 * min), []); focusPause(st, t0 + 40 * min);
+  assert.equal(focusView(st, t0 + 40 * min).phase, "short"); assert.equal(focusView(st, t0 + 40 * min).leftMs, 3 * min);
+  const evs = focusTick(st, t0 + 400 * min); assert.equal(evs.at(-1).type, "done"); assert.equal(st.focus.run, null); assert.equal(st.focus.log.length, 4);
+  focusStart(st, "flowtime", "", t0); assert.equal(focusStop(st, t0 + 61 * min), 10); assert.equal(st.focus.log.at(-1).minutes, 61); assert.equal(flowBreak(20), 5);
+  focusStart(st, "52-17", "", t0); focusTick(st, t0 + 70 * min); assert.equal(focusView(st, t0 + 70 * min).phase, "work"); assert.equal(focusView(st, t0 + 70 * min).set, 2);
+  const s = focusStats(st, "2026-11-12"); assert.ok(s.today > 100 && s.streak === 1 && s.week.length === 7);
+});

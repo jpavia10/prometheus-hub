@@ -1,0 +1,55 @@
+{
+ "url": "http://127.0.0.1:8377/",
+ "ran": "2026-11-12T07:10Z",
+ "clock": "2026-11-20T09:00",
+ "results": [
+  {
+   "id": "DECK-1",
+   "name": "Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store",
+   "pass": true,
+   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"time\", \"money\", \"system\"], \"wide\": 390, \"build\": \"d1\"}"
+  },
+  {
+   "id": "TIME-1",
+   "name": "iCalendar: 40-event research file imports, exports and re-imports identical",
+   "pass": true,
+   "detail": "40 events in, 40 back, 0 differ, 0 parse notes"
+  },
+  {
+   "id": "TIME-2",
+   "name": "Day view: holiday + bill + school deadline collide and the day says so",
+   "pass": true,
+   "detail": "2026-11-26: \u201cCollision day2 hard deadlines on one day\u201d \u00b7 holiday ['Thanksgiving Day'] \u00b7 bill ['Water'] \u00b7 school ['Conference sign-up closes']"
+  },
+  {
+   "id": "TIME-3",
+   "name": "Quick add in plain words: \u201csmog check dec 5\u201d",
+   "pass": true,
+   "detail": "preview \u201cAdd: smog checkSaturday, December 5\u201d, stored on 2026-12-05: 1"
+  },
+  {
+   "id": "MONEY-1",
+   "name": "Payoff simulator matches the 12 worked cases to the cent (2 required)",
+   "pass": true,
+   "detail": "12 of 12 cases match; 4,134 figures compared"
+  },
+  {
+   "id": "MONEY-2",
+   "name": "Bills and the loan payment show as dated rows next to events (one feed)",
+   "pass": true,
+   "detail": "{\"bills\": 12, \"time\": 23}"
+  },
+  {
+   "id": "DATA-1",
+   "name": "Versioned export and import: the deck file restores Time and Money exactly",
+   "pass": true,
+   "detail": "{\"format\": 1, \"kind\": \"deck\", \"slices\": [\"profile\", \"time\", \"money\"]}"
+  },
+  {
+   "id": "DECK-2",
+   "name": "No script errors during the run",
+   "pass": true,
+   "detail": "none"
+  }
+ ]
+}

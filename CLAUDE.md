@@ -16,3 +16,13 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
 - `python3 tools/kit/render.py --check` fails when a rendered page is out of date.
 - The layout and Claude's routine: `docs/PROMETHEUS_LAYOUT.md`. The rules every AI follows: `AI_START_HERE.md`.
 - The desk reads `data/board.json` (rendered) for each door's state and open homework.
+
+## Where things stand (2026-11-12): the deck replaced the desk
+
+Read this first. The old desk (index.html + hub.js + pillar pages on kit/) is retired as the product; `archive/pre-deck-2026-11-12` has it.
+- **The product is `deck/`**: one page (`index.html` boots `deck/app.js`), native ES modules, no build step. One store (`deck/core/store.js`, localStorage `prom.deck.*`, versioned export/import), pure models (`deck/models/*.js`: slice, feed, search), views (`deck/views/*.js`), look in `deck/deck.css` (tokens at the top). The arrival view is `deck/views/picture.js` (the day ring). The sky is `deck/core/atmo.js` (WebGL, time of day + weather from `deck/core/weather.js`).
+- **Rule: a capability is listed in `deck/caps.js` only when its proof passes** (`proofs/run.py`, `STATUS.md`). Live now: Time, Money. Next: Garage, House, then the STATUS order.
+- **Privacy:** the repository is public. The owner's presets (loan, home point, house project, vehicle) live in a private deck file in his Drive that he loads on the device; the site ships invented demo data (`deck/data/demo.js`). Never commit personal details.
+- **Proof hooks:** `?now=2026-11-20T09:00` pins the clock, `?demo=1` loads the demo deck on a clean device, `window.__deck` exposes the store.
+- **Deploy:** push `main`, then update `DEPLOY_STAMP.txt` through the GitHub connector (Pages does not build for the Claude app's pushes) and confirm the "pages build and deployment" run.
+- Old files still in the tree because `sylade.html` uses them: `styles.css`, `hub.js`, `desk-*.js`, `src/`. Remove them when Presence is rebuilt. `pillars/kairos/` and `pillars/money/` now redirect into the deck; the other old pillar pages are unlinked until rebuilt.
