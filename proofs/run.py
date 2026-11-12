@@ -45,6 +45,16 @@ with sync_playwright() as p:
     except Exception as e: landed = "did not land: " + str(e)[:80]
     proof("CORE-4", "Tapping a cell warps into that pillar", "Apollo" in landed, landed); c2.close()
 
+    # PILLAR: the shared pillar shell (crest, automatic sections, dock), checked on the long Piano page
+    c3 = b.new_context(viewport={"width": 390, "height": 844}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))
+    p3.goto(f"{URL}pillars/piano/", wait_until="load"); p3.wait_for_selector(".pk-dock", timeout=15000); p3.wait_for_timeout(900)
+    def shell(): return p3.evaluate("""() => { const panels = [...document.querySelectorAll('main > section.grid > .glass')]; return { crest: !!document.querySelector('.pk-hero .pk-crest svg'), tabs: document.querySelectorAll('main > .pk-tabs .tab').length,
+      showing: panels.filter((x) => x.offsetParent !== null).map((x) => x.querySelector('h2').textContent.slice(0, 22)), core: (document.querySelector('.pk-dock .pk-core') || {}).href || '', steps: document.querySelectorAll('.pk-dock a.compass-step').length,
+      tall: document.documentElement.scrollHeight, wide: document.documentElement.scrollWidth }; }""")
+    s1 = shell(); p3.click("main > .pk-tabs .tab:nth-child(3)"); p3.wait_for_timeout(700); s2 = shell()
+    proof("PILLAR-1", "Every pillar's default shell: crest, sections from its own panels, a dock back to the core", s1["crest"] and s1["tabs"] >= 3 and len(s1["showing"]) == 1 and len(s2["showing"]) == 1 and s1["showing"] != s2["showing"] and s1["core"].endswith("/prometheus-hub/") | s1["core"].endswith(":8377/") and s1["steps"] >= 1 and s1["wide"] <= 390 and s1["tall"] < 2600,
+          f"Piano: {s1['tabs']} sections, showing {s1['showing']} then {s2['showing']}; page {s1['tall']} px tall at phone size (was 6,672); dock: core + {s1['steps']} neighbours"); c3.close()
+
     pg.goto(f"{URL}?now={NOW}&demo=1#/", wait_until="load"); pg.wait_for_selector(".dayring", timeout=20000); pg.wait_for_timeout(1200)
 
     # ARRIVAL: the picture is built from the data, not a placeholder

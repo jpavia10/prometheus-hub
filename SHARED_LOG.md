@@ -1,4 +1,8 @@
 
+### [2026-11-12] Claude: build d5, the default pillar look
+- Owner opened Piano: "its junk". The shared kit now dresses every pillar: hex crest, automatic sections from a page's own panels (Piano 6,672 px to one screen per section), one tab rail with a sliding light, a dock (previous, core, next), designed rows, buttons, fields and empty states. Only `kit/kit.js`, `kit/prometheus.css` and Piano's 8-line `app.css` changed.
+- Proof PILLAR-1 added. Pillar features themselves are unchanged; they are developed one by one later.
+
 ### [2026-11-12] Claude: build d3, the core is a live orrery
 - Owner on d2's hex grid: "make the main hub way better ... advanced motion and gui not a 1990s basic shit". The core is now a real-time 3D system (`deck/views/orrery.js`): pillars orbit a shader fire, drag spins it with inertia and snap, a tap swings the pillar forward and warps in, orbit and grid morph into each other; panels answer the scroll.
 - Same data, same proofs (12 of 12). Pillar pages untouched.

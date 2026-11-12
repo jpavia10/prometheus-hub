@@ -13,7 +13,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d4";
+export const BUILD = "d5";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
