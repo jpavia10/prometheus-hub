@@ -2,14 +2,12 @@ name: proofs-live
 # Runs the deck's proofs in a real browser against the live site after every Pages deployment (and on demand).
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["pages build and deployment"]
-    types: [completed]
+  deployment_status:
 permissions:
   contents: read
 jobs:
   proofs:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.deployment_status.state == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
