@@ -4,7 +4,7 @@
 What is on the live deck and what is not. A capability is on the deck only when its proof passes in a real browser
 (`python3 proofs/run.py <url>`; unit proofs `node --test proofs/unit/*.test.mjs`). Results of the last run: `proofs/results.json`.
 
-Build **d3** · 2026-11-12 · live at https://jpavia10.github.io/prometheus-hub/
+Build **d4** · 2026-11-12 · live at https://jpavia10.github.io/prometheus-hub/
 
 Owner, 2026-11-12: "Instead of making a demo you should have transformed what I have with the available data. Again you strip away my
 pillars ... The over the top futuristic dopamine loaded theme and transitions are what im seeking ... bring the project together and

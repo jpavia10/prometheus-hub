@@ -49,7 +49,7 @@ function scramble(el, text) {
 const FIRE = `precision mediump float; uniform vec2 r; uniform float t; uniform float e;
 float hash(vec2 p){ p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
 float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f); return mix(mix(hash(i), hash(i + vec2(1., 0.)), f.x), mix(hash(i + vec2(0., 1.)), hash(i + vec2(1., 1.)), f.x), f.y); }
-float fbm(vec2 p){ float a = .5, s = 0.; for (int i = 0; i < 5; i++) { s += a * noise(p); p = p * 2.03 + vec2(1.7, 9.2); a *= .5; } return s; }
+float fbm(vec2 p){ float a = .5, s = 0.; for (int i = 0; i < 4; i++) { s += a * noise(p); p = p * 2.03 + vec2(1.7, 9.2); a *= .5; } return s; }
 void main(){ vec2 p = (gl_FragCoord.xy * 2. - r) / min(r.x, r.y); float d = length(p); float R = .46; vec3 col = vec3(0.);
   if (d < R) { float z = sqrt(R * R - d * d); vec3 n = vec3(p, z) / R; vec2 uv = vec2(atan(n.x, n.z) + t * .16, asin(clamp(n.y, -1., 1.)));
     float f = fbm(uv * 3. + fbm(uv * 5. - t * .22) * 1.7), g = fbm(uv * 9. + t * .35); float heat = smoothstep(.22, .95, f * .78 + g * .34);
@@ -105,7 +105,7 @@ export function reactor(ctx) {
 
   /* entering a pillar: swing it to the front, then warp from where it sits */
   let fly = null, flyCb = null; const frontYaw = (i) => S.yaw + wrap(-nodes[i].ring.a0 - S.yaw);
-  function go(i) { const b = nodes[i].el.getBoundingClientRect(), sb = stage.getBoundingClientRect(); const x = b.left + b.width / 2, y = b.top + b.height / 2; waves.push({ x: x - sb.left, y: y - sb.top, t: 0, c: nodes[i].rgb }); energy = 1; wake(); warp(x, y, nodes[i].rgb, () => { location.href = nodes[i].p.route; }); }
+  function go(i) { const b = nodes[i].el.getBoundingClientRect(), sb = stage.getBoundingClientRect(); const x = b.left + b.width / 2, y = b.top + b.height / 2; waves.push({ x: x - sb.left, y: y - sb.top, t: 0, c: nodes[i].rgb }); energy = 1; wake(); warp(x, y, nodes[i].rgb, () => { location.href = nodes[i].p.route; }); setTimeout(() => { dead = true; }, 300); }   // the page is leaving: stop drawing so the way out is free
   function enter(i) { if (mode === "grid" || calm || i === focus) return go(i); fly = frontYaw(i); S.vel = 0; let done = false; flyCb = () => { if (!done) { done = true; go(i); } }; const cb = flyCb; setTimeout(() => { if (flyCb === cb) { fly = null; flyCb = null; cb(); } }, 900); wake(); }
 
   /* the finger: a sideways drag spins the system; up and down still scrolls the page */
