@@ -1,0 +1,42 @@
+name: proofs-live
+# Runs the deck's proofs in a real browser against the live site after every Pages deployment (and on demand).
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+permissions:
+  contents: read
+jobs:
+  proofs:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Browser
+        run: |
+          pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Unit proofs
+        run: node --test proofs/unit/*.test.mjs
+      - name: Proofs against the live site
+        run: |
+          sleep 20
+          python3 proofs/run.py https://jpavia10.github.io/prometheus-hub/ --out proofs-live.json
+      - name: Live build matches the repository
+        run: |
+          python3 - <<'PY'
+          import re, urllib.request
+          want = re.search(r'BUILD = "([^"]+)"', open("deck/app.js").read()).group(1)
+          got = re.search(r'BUILD = "([^"]+)"', urllib.request.urlopen("https://jpavia10.github.io/prometheus-hub/deck/app.js").read().decode()).group(1)
+          print("repository", want, "live", got); assert want == got
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: proofs-live
+          path: proofs-live.json
