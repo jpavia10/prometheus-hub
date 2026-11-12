@@ -17,14 +17,17 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
 - The layout and Claude's routine: `docs/PROMETHEUS_LAYOUT.md`. The rules every AI follows: `AI_START_HERE.md`.
 - The desk reads `data/board.json` (rendered) for each door's state and open homework.
 
-## Where things stand (2026-11-12, build d2): the hub holds every pillar
+## Where things stand (2026-11-12, build d3): the hub holds every pillar
 
 Read this first. Owner, 2026-11-12, after d1 hid 14 pillars behind a two-capability app with demo data: "you strip away my pillars so
 its irrelevant ... The over the top futuristic dopamine loaded theme and transitions are what im seeking ... bring the project
 together and we can develop them one by one later." **Standing direction: never hide or drop a pillar; the hub is the shell, loud and
 futuristic; real data only; individual pillars are developed later, one at a time, when he says.**
-- **The hub** (`index.html` boots `deck/app.js`, native ES modules, no build): the core is `deck/views/core.js` (hex reactor of all 18
-  pillars from `deck/pillars.js`, boot, ticker, briefs) on top of `deck/views/picture.js` (day ring, runway, countdowns, tiles).
+- **The hub** (`index.html` boots `deck/app.js`, native ES modules, no build): the core is `deck/views/orrery.js` (d3: a live 3D
+  orrery of all 18 pillars from `deck/pillars.js` around a shader fire; drag to spin, tap to swing-and-warp, orbit/grid morph, boot,
+  ticker, briefs; every position is computed per frame in script, light is drawn on a canvas) on top of `deck/views/picture.js`
+  (day ring, runway, countdowns, tiles). Owner, 2026-11-12: "I want advanced motion and gui not a 1990s basic shit": design the hub
+  around motion first; never ship a static grid of boxes as the main screen.
   Effects: `deck/core/fx.js` (warp, synthesized sound behind one switch, haptics). Look: `deck/deck.css` (tokens at the top, "d2: the core" at the end).
 - **Real data in:** `deck/core/legacy.js` reads the pillars' own storage (`prometheus.<pillar>.*`), the shared deadline bus
   (`prometheus.bus.deadlines`, `kit/bus.js`) and Titan's published ledger; `deck/core/feeds.js` merges them with the fixed dates.

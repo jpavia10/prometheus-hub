@@ -9,7 +9,7 @@ function tone(freq, dur, type = "sine", vol = 0.04, delay = 0, slide = 0) {
   o.type = type; o.frequency.setValueAtTime(freq, t); if (slide) o.frequency.exponentialRampToValueAtTime(Math.max(30, freq * slide), t + dur);
   g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + 0.02);
 }
-export const buzz = (ms = 12) => { try { if (navigator.vibrate) navigator.vibrate(ms); } catch (e) { /* no motor */ } };
+export const buzz = (ms = 12) => { try { if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate(ms); } catch (e) { /* no motor */ } };   // only after a touch: browsers refuse it before one
 export const tick = () => { tone(1320, 0.05, "triangle", 0.03); buzz(8); };
 export const blip = () => { tone(880, 0.07, "sine", 0.04); tone(1320, 0.09, "sine", 0.03, 0.05); };
 export const bootSound = () => { tone(110, 0.9, "sawtooth", 0.03, 0, 4); tone(220, 0.7, "sine", 0.04, 0.25, 3); tone(1760, 0.25, "sine", 0.03, 0.95); };

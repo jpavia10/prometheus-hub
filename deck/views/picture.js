@@ -10,7 +10,7 @@ import { position, milestone } from "../models/money.js";
 import { focusStats, focusView } from "../models/time.js";
 import * as wx from "../core/weather.js";
 import { WORDS } from "../data/money-words.js";
-import { reactor, titanTile, boot } from "./core.js";
+import { reactor, titanTile, boot } from "./orrery.js";
 
 /** The day ring. soon = rows in the next 24 hours; w = the weather reading (for sunrise and sunset) or null. */
 function dayRing(now, soon, w, t) {

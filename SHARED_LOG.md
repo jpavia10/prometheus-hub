@@ -1,4 +1,8 @@
 
+### [2026-11-12] Claude: build d3, the core is a live orrery
+- Owner on d2's hex grid: "make the main hub way better ... advanced motion and gui not a 1990s basic shit". The core is now a real-time 3D system (`deck/views/orrery.js`): pillars orbit a shader fire, drag spins it with inertia and snap, a tap swings the pillar forward and warps in, orbit and grid morph into each other; panels answer the scroll.
+- Same data, same proofs (12 of 12). Pillar pages untouched.
+
 ### [2026-11-12] Claude: build d2, the hub holds every pillar (owner's correction)
 - d1 hid 14 pillars and opened on demo data; the owner called it irrelevant. d2: all 18 pillars are cells of one reactor on the core (tap = warp in, hold = brief), boot sequence, sound switch, real data only (pillar storage, the shared bus, Titan's ledger, fixed dates).
 - One neon theme for every pillar page through `kit/prometheus.css`; Kairos and Money pillar pages restored. Pillars themselves are untouched and get developed one by one later. Proofs CORE-1..4 added (12 of 12 pass).
