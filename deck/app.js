@@ -5,13 +5,15 @@ import { store } from "./core/store.js";
 import { clock, today, fmtDay, fmtTime, quickAdd } from "./core/dates.js";
 import { h, $, icon, sheet, toast, pickFile, reduced, ask, sheetOpen, setQuiet } from "./core/ui.js";
 import { CAPS, SLICES, cap } from "./caps.js";
+import { PILLARS } from "./pillars.js";
 import { setFixed, searchAll } from "./core/feeds.js";
 import { startSky } from "./core/atmo.js";
 import * as wx from "./core/weather.js";
 import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
+import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d1";
+export const BUILD = "d2";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -31,8 +33,6 @@ addEventListener("hashchange", () => render(false));
 async function render(same) {
   const r = parse(location.hash); const known = r.cap === "picture" || r.cap === "system" || cap(r.cap);
   if (!known) { location.replace("#/"); return; }
-  const firstRun = store.pristine() && !store.get("profile").seed;
-  document.body.classList.toggle("first-run", firstRun);
   const load = r.cap === "picture" ? import("./views/picture.js") : r.cap === "system" ? import("./views/system.js") : cap(r.cap).view();
   const mod = await load; const prev = state.route; const swap = () => {
     if (state.cleanup) { try { state.cleanup(); } catch (e) { console.error(e); } state.cleanup = null; }
@@ -43,7 +43,7 @@ async function render(same) {
     document.title = r.cap === "picture" ? "Prometheus" : `${r.cap === "system" ? "System" : cap(r.cap).name} · Prometheus`;
   };
   const moving = !same && prev && prev.cap !== r.cap;
-  if (moving && document.startViewTransition && !reduced()) { const vt = document.startViewTransition(swap); vt.ready.catch(() => {}); vt.finished.catch(() => {}); vt.updateCallbackDone.catch(() => {}); } else swap();   // a newer change may skip an older transition: that is fine
+  if (moving && document.startViewTransition && !reduced()) { document.documentElement.classList.add("vt-inpage"); const vt = document.startViewTransition(swap); vt.finished.finally(() => document.documentElement.classList.remove("vt-inpage")); vt.ready.catch(() => {}); vt.finished.catch(() => {}); vt.updateCallbackDone.catch(() => {}); } else swap();   // a newer change may skip an older transition: that is fine
 }
 store.on(() => {                                                                  // any change: redraw the view, unless a sheet or a field has the floor
   const a = document.activeElement; const typing = a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && $("#view").contains(a);
@@ -68,14 +68,13 @@ function drawRail() {
     h("div.rail-right",
       p.demo ? h("button.chip.demo", { type: "button", onclick: demoSheet }, "Demo") : null,
       d ? h("a.sky-chip", { href: "#/", onclick: (e) => { e.preventDefault(); go("#/"); setTimeout(() => { const el = $("#sky-watch"); if (el) el.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "center" }); }, 120); }, "aria-label": `${Math.round(w.now.temp)} degrees, ${d.text}` }, icon(d.icon, 18), h("span.num", Math.round(w.now.temp) + "°")) : null,
-      h("a.icon-btn", { href: "#/system", "aria-label": "System: your data" }, icon("shield"))));
+      h("button.icon-btn", { type: "button", "aria-label": soundOn() ? "Sound is on: turn it off" : "Sound is off: turn it on", "aria-pressed": String(soundOn()), onclick: () => { setSound(!soundOn()); drawRail(); } }, icon(soundOn() ? "speaker" : "mute"))));
 }
 function drawDock() {
   const cur = state.route ? state.route.cap : parse(location.hash).cap;
   const item = (id, name, ic, href) => h("a.dock-item" + (cur === id ? ".on" : ""), { href, "aria-current": cur === id ? "page" : null, dataset: { cap: id } }, icon(ic, 22), h("span", name));
-  const items = [item("picture", "Picture", "picture", "#/"), ...CAPS.map((c) => item(c.id, c.name, c.icon, "#/" + c.id)), item("system", "System", "system", "#/system")];
-  const orb = h("button.dock-orb", { type: "button", id: "open-search", "aria-label": "Search or add (press /)", onclick: openSearch }, icon("plus", 24));
-  items.splice(Math.ceil(items.length / 2), 0, orb);                                // the command key sits in the middle, under the thumb
+  const orb = h("button.dock-orb", { type: "button", id: "open-search", "aria-label": "Search or add (press /)", onclick: () => { tick(); openSearch(); } }, icon("plus", 24));
+  const items = [item("picture", "Core", "picture", "#/"), orb, item("system", "System", "system", "#/system")];   // the pillars live on the core; the dock stays out of their way
   $("#dock").replaceChildren(h("div.dock-bar", items));
 }
 setInterval(() => { if ($("#rail")) drawRail(); const r = state.route; if (r && r.cap === "picture" && !sheetOpen() && !document.hidden) { const m = clock.now().getMinutes(); if (m !== state.minute) { state.minute = m; render(true); } } }, 15000);
@@ -93,7 +92,7 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) { ap
 /* ------------------------------------------------------------------ search and quick add (one input reaches anything) ------------------------------------------------------------------ */
 function openSearch() {
   if (sheetOpen()) return;
-  const input = h("input.search-input", { type: "search", placeholder: "dentist Tue 3pm · or find anything", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event" });
+  const input = h("input.search-input", { type: "search", placeholder: "A pillar, a date, or: dentist Tue 3pm", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event" });
   const list = h("div.results", { role: "listbox", "aria-label": "Results" }); let items = []; let sel = 0;
   const sh = sheet({ title: "Search · Add", tone: "search", body: h("div.stack", input, list) });
   const pick = (it) => { if (!it) return; if (it.run) it.run(); if (it.go) { sh.close(); setTimeout(() => go(it.go), 20); } else if (!it.keep) sh.close(); };
@@ -104,7 +103,8 @@ function openSearch() {
       run: () => { store.update("time", (t) => t.events.push(makeEvent({ ...add, title: k.title }, { kind: k.kind, src: "quick" }))); toast(`Added: ${k.title}, ${fmtDay(add.date)}${add.time ? " " + fmtTime(add.time) : ""}`); }, go: `#/time/day/${add.date}` }); }
     for (const r of searchAll(q)) items.push({ ...r, icon: (cap(r.cap) || {}).icon || "search" });
     if (!q) items.push({ title: "New event", sub: "The full form: repeats, place, notes, countdown", icon: "calendar", tone: "nav", keep: true, run: async () => { sh.close(); const m = await import("./views/time.js"); setTimeout(() => m.eventSheet(ctx, null, null, today()), 240); } });
-    const nav = [["Picture", "#/", "picture"], ...CAPS.map((c) => [c.name, "#/" + c.id, c.icon]), ["Time · week", "#/time/week", "calendar"], ["Time · month", "#/time/month", "grid"], ["Time · agenda", "#/time/agenda", "list"], ["Time · risk", "#/time/risk", "risk"], ["Time · focus clock", "#/time/focus", "flame"],
+    for (const p of PILLARS) if (q && (p.name + " " + p.what).toLowerCase().includes(q.toLowerCase())) items.push({ title: p.name, sub: p.what, icon: p.icon, tone: "nav", run: () => { location.href = p.route; } });
+    const nav = [["The core", "#/", "picture"], ...CAPS.map((c) => [c.name, "#/" + c.id, c.icon]), ["Time · week", "#/time/week", "calendar"], ["Time · month", "#/time/month", "grid"], ["Time · agenda", "#/time/agenda", "list"], ["Time · risk", "#/time/risk", "risk"], ["Time · focus clock", "#/time/focus", "flame"],
       ["Money · what-if", "#/money/whatif", "money"], ["Money · bills and subscriptions", "#/money/bills", "money"], ["Money · library", "#/money/library", "money"], ["System · your data, export, import", "#/system", "system"]];
     for (const [name, href, ic] of nav) if (!q || name.toLowerCase().includes(q.toLowerCase())) items.push({ title: name, sub: "Go", go: href, icon: ic, tone: "nav" });
     if (!items.length) items.push({ title: "Nothing matches", sub: "Try a name, a date, an issuer, or type an event with a day: “smog check dec 5”.", keep: true, icon: "search", tone: "none" });

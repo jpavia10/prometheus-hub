@@ -17,12 +17,23 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
 - The layout and Claude's routine: `docs/PROMETHEUS_LAYOUT.md`. The rules every AI follows: `AI_START_HERE.md`.
 - The desk reads `data/board.json` (rendered) for each door's state and open homework.
 
-## Where things stand (2026-11-12): the deck replaced the desk
+## Where things stand (2026-11-12, build d2): the hub holds every pillar
 
-Read this first. The old desk (index.html + hub.js + pillar pages on kit/) is retired as the product; `archive/pre-deck-2026-11-12` has it.
-- **The product is `deck/`**: one page (`index.html` boots `deck/app.js`), native ES modules, no build step. One store (`deck/core/store.js`, localStorage `prom.deck.*`, versioned export/import), pure models (`deck/models/*.js`: slice, feed, search), views (`deck/views/*.js`), look in `deck/deck.css` (tokens at the top). The arrival view is `deck/views/picture.js` (the day ring). The sky is `deck/core/atmo.js` (WebGL, time of day + weather from `deck/core/weather.js`).
-- **Rule: a capability is listed in `deck/caps.js` only when its proof passes** (`proofs/run.py`, `STATUS.md`). Live now: Time, Money. Next: Garage, House, then the STATUS order.
-- **Privacy:** the repository is public. The owner's presets (loan, home point, house project, vehicle) live in a private deck file in his Drive that he loads on the device; the site ships invented demo data (`deck/data/demo.js`). Never commit personal details.
-- **Proof hooks:** `?now=2026-11-20T09:00` pins the clock, `?demo=1` loads the demo deck on a clean device, `window.__deck` exposes the store.
-- **Deploy:** push `main`, then update `DEPLOY_STAMP.txt` through the GitHub connector (Pages does not build for the Claude app's pushes) and confirm the "pages build and deployment" run.
-- Old files still in the tree because `sylade.html` uses them: `styles.css`, `hub.js`, `desk-*.js`, `src/`. Remove them when Presence is rebuilt. `pillars/kairos/` and `pillars/money/` now redirect into the deck; the other old pillar pages are unlinked until rebuilt.
+Read this first. Owner, 2026-11-12, after d1 hid 14 pillars behind a two-capability app with demo data: "you strip away my pillars so
+its irrelevant ... The over the top futuristic dopamine loaded theme and transitions are what im seeking ... bring the project
+together and we can develop them one by one later." **Standing direction: never hide or drop a pillar; the hub is the shell, loud and
+futuristic; real data only; individual pillars are developed later, one at a time, when he says.**
+- **The hub** (`index.html` boots `deck/app.js`, native ES modules, no build): the core is `deck/views/core.js` (hex reactor of all 18
+  pillars from `deck/pillars.js`, boot, ticker, briefs) on top of `deck/views/picture.js` (day ring, runway, countdowns, tiles).
+  Effects: `deck/core/fx.js` (warp, synthesized sound behind one switch, haptics). Look: `deck/deck.css` (tokens at the top, "d2: the core" at the end).
+- **Real data in:** `deck/core/legacy.js` reads the pillars' own storage (`prometheus.<pillar>.*`), the shared deadline bus
+  (`prometheus.bus.deadlines`, `kit/bus.js`) and Titan's published ledger; `deck/core/feeds.js` merges them with the fixed dates.
+- **One theme for all pillar pages:** the block "deck theme" at the end of `kit/prometheus.css` (colours per pillar, glass, warp page
+  changes). Change the look there, not page by page. Titan, Midas and Hearth are separate repositories and were not touched.
+- **Consoles from d1** (`#/time` Kairos console, `#/money` Payoff console; engines in `deck/core/` and `deck/models/`) stay as hub
+  consoles. The Kairos and Money pillar pages are back at their addresses. Which one each pillar becomes is the owner's decision.
+- **Proofs:** `python3 proofs/run.py <url> [--mock-weather]` (CORE-1..4 plus the d1 proofs), `node --test proofs/unit/*.test.mjs`,
+  and `.github/workflows/proofs.yml` runs them against the live site after each deployment. `STATUS.md` is the honest list.
+- **Privacy:** public repository. No personal details in code; the owner's presets load from his private Drive file.
+- **Deploy:** push `main`, then update `DEPLOY_STAMP.txt` through the GitHub connector and confirm the Pages build and the proofs-live run.
+- **Titan is paused by the owner** (same day: "leave it for now"). Do not continue Titan's new front until he says.

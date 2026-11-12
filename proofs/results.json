@@ -1,13 +1,37 @@
 {
  "url": "http://127.0.0.1:8377/",
- "ran": "2026-11-12T07:10Z",
+ "ran": "2026-11-12T13:46Z",
  "clock": "2026-11-20T09:00",
  "results": [
+  {
+   "id": "CORE-1",
+   "name": "All 18 pillars are on the core; a clean device shows no sample data",
+   "pass": true,
+   "detail": "{\"hex\": 18, \"names\": [\"Kairos\", \"Midas\", \"Titan\", \"Hearth\", \"Garage\", \"Apollo\", \"Payoff\", \"Selling\", \"Records\", \"Icarus\", \"Hermes\", \"Piano\", \"Bastion\", \"Athenaeum\", \"Odyssey\", \"Privacy\", \"Argus\", \"Sylade\"], \"demo\": false, \"events\": 0, \"plan\": false, \"wide\": 390, \"ring\": true}"
+  },
+  {
+   "id": "CORE-2",
+   "name": "Every pillar page in this repository answers and wears the shared theme",
+   "pass": true,
+   "detail": "15 pages checked, 3 on their own sites"
+  },
+  {
+   "id": "CORE-3",
+   "name": "A pillar's own deadline (the shared bus) reaches the hub: in the feed and on its cell",
+   "pass": true,
+   "detail": "{\"rows\": [\"Proof: oil service / garage\"], \"badge\": \"2d\", \"runway\": true}"
+  },
+  {
+   "id": "CORE-4",
+   "name": "Tapping a cell warps into that pillar",
+   "pass": true,
+   "detail": "Apollo Temple"
+  },
   {
    "id": "DECK-1",
    "name": "Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store",
    "pass": true,
-   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"time\", \"money\", \"system\"], \"wide\": 390, \"build\": \"d1\"}"
+   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d2\"}"
   },
   {
    "id": "TIME-1",

@@ -1,4 +1,8 @@
 
+### [2026-11-12] Claude: build d2, the hub holds every pillar (owner's correction)
+- d1 hid 14 pillars and opened on demo data; the owner called it irrelevant. d2: all 18 pillars are cells of one reactor on the core (tap = warp in, hold = brief), boot sequence, sound switch, real data only (pillar storage, the shared bus, Titan's ledger, fixed dates).
+- One neon theme for every pillar page through `kit/prometheus.css`; Kairos and Money pillar pages restored. Pillars themselves are untouched and get developed one by one later. Proofs CORE-1..4 added (12 of 12 pass).
+
 ### [2026-11-12] Claude: the deck replaces the desk (build d1)
 - New product in `deck/`: one page, one store, a live sky, the day-ring arrival view, Time and Money finished to proof (`STATUS.md`, `proofs/run.py`: 8 of 8 pass; 17 unit tests). Design first: built for what it should be, not from the old pages.
 - `pillars/kairos/` and `pillars/money/` redirect into the deck; other old pillar pages are unlinked until rebuilt. Demo data only in the repo; the owner's presets load from his private Drive file.

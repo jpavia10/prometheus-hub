@@ -22,7 +22,28 @@ with sync_playwright() as p:
     pg = ctx.new_page(); errs = []
     pg.on("pageerror", lambda e: errs.append(str(e))); pg.on("console", lambda m: errs.append(m.text) if m.type == "error" and "ERR_" not in m.text else None)
     if MOCK:
-        pg.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pg.route("https://api.weather.gov/**", lambda route, request: route.abort())
+        pg.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pg.route("https://api.weather.gov/**", lambda route, request: route.abort()); pg.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())   # a local server has no Titan next door
+    # CORE: the hub as it opens on a clean device: every pillar, no sample data
+    c2 = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); p2 = c2.new_page(); p2.on("pageerror", lambda e: errs.append("core: " + str(e)))
+    if MOCK:
+        p2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p2.route("https://api.weather.gov/**", lambda route, request: route.abort()); p2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+    p2.goto(f"{URL}?now={NOW}#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
+    ci = p2.evaluate("""() => ({ hex: document.querySelectorAll('.reactor .hex:not(.core)').length, names: [...document.querySelectorAll('.reactor .hex:not(.core) .hex-name')].map((x) => x.textContent),
+      demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth, ring: !!document.querySelector('.dayring') })""")
+    proof("CORE-1", "All 18 pillars are on the core; a clean device shows no sample data", ci["hex"] == 18 and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"], json.dumps(ci))
+    routes = p2.evaluate("[...document.querySelectorAll('.reactor .hex:not(.core) a')].map((a) => a.getAttribute('href'))"); bad = []; local = [r for r in routes if not r.startswith("http")]
+    for r in local:
+        resp = p2.request.get(URL + r)
+        if resp.status != 200 or ("kit/prometheus.css" not in resp.text() and "sylade" not in r): bad.append(f"{r} ({resp.status})")
+    proof("CORE-2", "Every pillar page in this repository answers and wears the shared theme", not bad and len(local) >= 14, f"{len(local)} pages checked, {len(routes) - len(local)} on their own sites" + ("; bad: " + ", ".join(bad) if bad else ""))
+    p2.evaluate("localStorage.setItem('prometheus.bus.deadlines', JSON.stringify([{ id: 't1', title: 'Proof: oil service', date: '2026-11-22', source: 'garage', ref: 'oil' }]))"); p2.reload(); p2.wait_for_selector(".reactor .hex"); p2.wait_for_timeout(600)
+    got = p2.evaluate("""async () => { const f = await import(new URL('deck/core/feeds.js', document.baseURI).href); return { rows: f.rows('2026-11-20', '2026-11-30').filter((r) => r.bus).map((r) => r.title + ' / ' + r.cap), badge: (document.querySelector('.hex[data-pillar=garage] .hex-badge') || {}).textContent || '', runway: !!document.querySelector('.runway .day.level-0, .runway .day') }; }""")
+    proof("CORE-3", "A pillar's own deadline (the shared bus) reaches the hub: in the feed and on its cell", len(got["rows"]) == 1 and got["badge"] == "2d", json.dumps(got))
+    p2.evaluate("document.querySelector('.hex[data-pillar=apollo] .hex-in').click()")
+    try: p2.wait_for_url("**/pillars/apollo/**", timeout=9000); p2.wait_for_selector(".shell", timeout=9000); landed = p2.title()
+    except Exception as e: landed = "did not land: " + str(e)[:80]
+    proof("CORE-4", "Tapping a cell warps into that pillar", "Apollo" in landed, landed); c2.close()
+
     pg.goto(f"{URL}?now={NOW}&demo=1#/", wait_until="load"); pg.wait_for_selector(".dayring", timeout=20000); pg.wait_for_timeout(1200)
 
     # ARRIVAL: the picture is built from the data, not a placeholder

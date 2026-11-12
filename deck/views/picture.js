@@ -10,6 +10,7 @@ import { position, milestone } from "../models/money.js";
 import { focusStats, focusView } from "../models/time.js";
 import * as wx from "../core/weather.js";
 import { WORDS } from "../data/money-words.js";
+import { reactor, titanTile, boot } from "./core.js";
 
 /** The day ring. soon = rows in the next 24 hours; w = the weather reading (for sunrise and sunset) or null. */
 function dayRing(now, soon, w, t) {
@@ -47,7 +48,6 @@ const fmtHour = (x) => { const hh = Math.floor(x), mm = Math.min(59, Math.round(
 
 export function render(root, route, ctx) {
   const { store } = ctx; const profile = store.get("profile"); const now = clock.now(); const t = today();
-  if (store.pristine() && !profile.seed) return firstRun(root, ctx);
 
   const hour = now.getHours(); const hello = hour < 5 ? "Late night" : hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
   const w = ctx.weather(); const soon = within(24, now); const alerts = (w && w.alerts) || [];
@@ -86,7 +86,7 @@ export function render(root, route, ctx) {
         h("div", h("small", "Next due"), h("b.num", pos.next ? moneyC(pos.next.amountC) : "—"), h("small", pos.next ? (pos.next.in === 0 ? "due today" : pos.next.in === 1 ? "due tomorrow" : `in ${pos.next.in} days`) : "")),
         h("div", h("small", "Interest left"), h("b.num", moneyC(pos.interestLeftC)), h("small", pos.windfallC ? `${moneyC(pos.windfallC, 0)} extra applied` : "on the plan"))),
       ms.hit ? h("p.voice", WORDS.pct[ms.hit]) : null);
-  } else payoff = h("section.panel.payoff.invite", h("header.panel-head", h("h2", "Payoff")), h("p.quiet", "No payoff plan on this device yet."), h("a.btn", { href: "#/money" }, "Set up the plan"));
+  } else payoff = null;
 
   /* ambient tier */
   const tiles = [];
@@ -107,17 +107,8 @@ export function render(root, route, ctx) {
   for (const c of ctx.caps || []) if (c.model.tile) { try { const el = c.model.tile(store.get(c.id), t, { h, icon, ring, bars, spark, chip }); if (el) tiles.push(el); } catch (e) { console.error(e); } }
   const ambient = h("section.ambient", { "aria-label": "Ambient instruments" }, tiles);
 
-  put(root, hero, put(h("div.board"), first, run, count, payoff, ambient), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data · load your own" : "Your data stays on this device"), h("a.link", { href: "https://jpavia10.github.io/titan-reliquary-preview/", rel: "noopener" }, "Titan Reliquary")));
-}
-
-/* The first run: a scene, not a blank. Three honest ways in. */
-function firstRun(root, ctx) {
-  put(root, h("section.first", { "aria-label": "First run" },
-    h("div.first-mark", { "aria-hidden": "true" }, h("i"), h("i"), h("i")),
-    h("h1.first-title", "Prometheus"),
-    h("p.first-sub", "Your day, your deadlines, your money and your house on one deck. Everything stays on this device."),
-    h("div.first-actions",
-      h("button.btn.big", { type: "button", onclick: () => ctx.loadSeedFile() }, icon("upload", 20), h("span", h("b", "Load my deck"), h("small", "Pick your deck file, from Drive or this device"))),
-      h("button.btn.big.ghost", { type: "button", onclick: () => ctx.startDemo() }, icon("play", 20), h("span", h("b", "Fly the demo"), h("small", "Sample data, clearly marked, removable in one tap"))),
-      h("a.btn.big.ghost", { href: "#/time" }, icon("plus", 20), h("span", h("b", "Start empty"), h("small", "Add your first event in Time"))))));
+  tiles.push(titanTile(null));                                                       // filled from Titan's own ledger when it answers
+  const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
+  put(root, rx, hero, put(h("div.board"), first, run, count, payoff, ambient), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
+  return () => { if (rx.cleanup) rx.cleanup(); };
 }

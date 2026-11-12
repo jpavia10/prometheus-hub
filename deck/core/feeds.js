@@ -4,6 +4,9 @@ import { store } from "./store.js";
 import { CAPS } from "../caps.js";
 import { fixedFeed, risk } from "../models/time.js";
 import { addDays, today } from "./dates.js";
+import { busRows } from "./legacy.js";
+import { PILLARS } from "../pillars.js";
+const ROUTES = Object.fromEntries(PILLARS.map((p) => [p.id, p.route]));
 
 let FIXED = [];
 export const setFixed = (rows) => { FIXED = rows || []; };
@@ -13,6 +16,7 @@ export const fixed = () => FIXED;
 export function rows(from, to, { withFixed = true } = {}) {
   const out = withFixed ? fixedFeed(FIXED, from, to) : [];
   for (const c of CAPS) { try { out.push(...c.model.feed(store.get(c.id), from, to)); } catch (e) { console.error("[feed]", c.id, e); } }
+  try { out.push(...busRows(from, to, ROUTES)); } catch (e) { console.error("[feed] bus", e); }                  // what the pillars already published on this device
   const holidays = new Map(out.filter((r) => r.tone === "holiday").map((r) => [r.date, r.title]));
   for (const r of out) if (!r.fixed && (r.weight || 0) >= 3 && holidays.has(r.date)) r.holiday = holidays.get(r.date);
   return out.sort((a, b) => a.date.localeCompare(b.date) || (a.time || "").localeCompare(b.time || "") || (b.weight || 0) - (a.weight || 0) || a.title.localeCompare(b.title));

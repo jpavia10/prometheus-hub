@@ -15,7 +15,7 @@ function build(el, attrs, kids) {
     if (k.startsWith("on") && typeof v === "function") el.addEventListener(k.slice(2), v);
     else if (k === "html") el.innerHTML = v;
     else if (k === "text") el.textContent = v;
-    else if (k === "style" && typeof v === "object") Object.assign(el.style, v);
+    else if (k === "style" && typeof v === "object") { for (const [sk, sv] of Object.entries(v)) { if (sk.startsWith("--")) el.style.setProperty(sk, String(sv)); else el.style[sk] = sv; } }
     else if (k === "dataset") Object.assign(el.dataset, v);
     else el.setAttribute(k, v === true ? "" : v);
   }
@@ -61,6 +61,10 @@ const ICON = {
   rain: "M7 15a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 6.5a4.25 4.25 0 0 1 .5 8.5M9 18l-1 2.5M13 18l-1 2.5M17 18l-1 2.5",
   calendar: "M5 6h14v14H5zM5 10h14M9 3.5v4M15 3.5v4", list: "M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01", grid: "M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z",
   out: "M14 5h5v5M19 5l-8 8M11 6H6v12h12v-5", edit: "M5 19h4l10-10l-4-4L5 15zM13.5 6.5l4 4", trash: "M5 7h14M9 7V4.5h6V7M7 7l1 12.5h8L17 7", file: "M7 3.5h7l4 4V20.5H7zM14 3.5v4h4",
+  hourglass: "M7 3.5h10M7 20.5h10M8 3.5c0 4 4 5.5 4 8.5s-4 4.500-4 8.500M16 3.5c0 4-4 5.5-4 8.5s4 4.500 4 8.500", scale: "M12 4v16M7 20h10M5 8h14M5 8l-2.500 6a3 3 0 0 0 5 0zM19 8l-2.500 6a3 3 0 0 0 5 0z", coin: "M12 4a8 8 0 1 0 0 16a8 8 0 0 0 0-16M12 7.500a4.500 4.500 0 1 0 0 9a4.500 4.500 0 0 0 0-9",
+  anvil: "M4 8h13a3 3 0 0 0 3-2H4zM7 8c0 3 1 4 3 5v3M15 8c0 3-1 4-3 5M7 19h10M8.500 16h7v3h-7z", tag: "M4 4h7l9 9-7 7-9-9zM8 8h.010", wing: "M3 17c5 0 9-2 12-6c2-2.700 4-4 6-4c-1 5-4 9-9 10.500c-3 1-6 .700-9-.500M9 14.500c2-.500 4-2 5.500-4",
+  mail: "M4 6h16v12H4zM4 7l8 6l8-6", keys: "M4 5h16v14H4zM8 5v8M12 5v8M16 5v8M8 13v6M12 13v6M16 13v6", columns: "M4 20h16M5 8h14L12 4zM7 8v9M12 8v9M17 8v9M5 17h14", compass: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18M15.500 8.500l-2 5l-5 2l2-5z",
+  lock: "M6.500 11h11v9h-11zM8.500 11V8a3.500 3.500 0 0 1 7 0v3M12 14.500v2", eye: "M2.500 12s3.500-6.500 9.500-6.500s9.500 6.500 9.500 6.500s-3.500 6.500-9.500 6.500S2.500 12 2.500 12M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6", speaker: "M4 9.500v5h3.500l5 4v-13l-5 4zM16 9a4 4 0 0 1 0 6M18.500 6.500a8 8 0 0 1 0 11", mute: "M4 9.500v5h3.500l5 4v-13l-5 4zM16.500 9.500l4 5M20.500 9.500l-4 5",
   risk: "M4 19h16M6 19v-5M10 19V9M14 19v-8M18 19V5", shield: "M12 3l7 3v5.5c0 4.5-3 8-7 9.5c-4-1.5-7-5-7-9.5V6z", bell: "M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 2h-14zM10 20.5a2 2 0 0 0 4 0",
 };
 export function icon(name, size = 20) {

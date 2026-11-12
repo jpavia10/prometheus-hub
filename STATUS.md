@@ -4,24 +4,34 @@
 What is on the live deck and what is not. A capability is on the deck only when its proof passes in a real browser
 (`python3 proofs/run.py <url>`; unit proofs `node --test proofs/unit/*.test.mjs`). Results of the last run: `proofs/results.json`.
 
-Build **d1** · 2026-11-12 · live at https://jpavia10.github.io/prometheus-hub/
+Build **d2** · 2026-11-12 · live at https://jpavia10.github.io/prometheus-hub/
 
-## On the deck
+Owner, 2026-11-12: "Instead of making a demo you should have transformed what I have with the available data. Again you strip away my
+pillars ... The over the top futuristic dopamine loaded theme and transitions are what im seeking ... bring the project together and
+we can develop them one by one later." Build d2 is that correction: the hub is the shell that holds every pillar; the pillars keep
+their pages and get developed one at a time.
 
-| Capability | Verdict | Proof |
+## The hub
+
+| Part | Verdict | Proof |
 |---|---|---|
-| The picture (arrival view) | DONE | DECK-1: day ring, next 24 hours, 7-day runway, countdowns, payoff, storm watch and focus, all computed from the one store. Live sky follows the time of day and the weather. |
-| Time | DONE | TIME-1: the 40-event research calendar imports, exports and re-imports identical (40 of 40). TIME-2: a federal holiday, a bill and a school deadline on one day show as a collision in the day view. TIME-3: quick add in plain words. Also: 58 fixed dates, repeats with exceptions, week / month / agenda / risk views, focus clock with the 20 researched methods. |
-| Money | DONE, one part waiting | MONEY-1: the simulator matches all 12 worked payoff cases to the cent (4,134 figures; the brief asked for 2). MONEY-2: bills and the loan payment are dated rows in the same feed as events. Also: what-if (extra, windfall), three strategies side by side, minimum-payment trap for 25 issuers, deferred interest vs true 0 %, 22 promo offers, 23 hardship programs (2 lenders had none to cite). Waiting: selling totals flow in when Selling is built. |
-| System | DONE | DATA-1: versioned deck file out and back in restores Time and Money exactly; one file per capability; undo for the last load; erase. |
+| The core | DONE | CORE-1: all 18 pillars are cells of one reactor around the command key; a clean device shows no sample data. CORE-4: tapping a cell warps into that pillar. Hold a cell for its brief. Boot sequence once a session; sound behind one switch (off until turned on). |
+| One theme everywhere | DONE | CORE-2: all 15 pillar pages in this repository answer and take the shared theme from `kit/prometheus.css` (each in its own colour), with an animated page change where the browser supports it. Titan, Midas and Hearth are on their own sites and keep their own look. |
+| Real data on the hub | DONE | CORE-3: a deadline any pillar publishes to the shared bus shows in the hub's feed and as a badge on that pillar's cell. Cells also show how much each pillar holds on this device; Titan's cell and tile read its published ledger. Fixed dates: the 58 researched ones. |
+| Day ring, runway, countdowns, storm watch | DONE | DECK-1. They read the one feed (the bus, the fixed dates, the consoles below). |
+| Kairos console, Payoff console | DONE | TIME-1..3, MONEY-1..2. New consoles built in d1; reachable from the hub's instruments and search. They do not replace the Kairos and Money pillar pages, which are back at their addresses. |
+| System | DONE | DATA-1. |
 
-## Not on the deck yet (not shown; the old pages still answer at their old addresses until each is rebuilt)
+## The pillars (each keeps its own page; none was rebuilt in d2)
 
-In build order: Garage, House, Selling, Records, Body, Journal, Mail, Piano, Bastion, Athenaeum, Odyssey (with the away mode), Privacy, Photos, Presence (Sylade).
+Kairos Meridian, Midas Ledger, Titan Reliquary, Hephaestus Hearth, Garage, Apollo Temple, Money · payoff simulator, Selling Pipeline,
+Records, Icarus Stake, Hermes Post, Bossa Piano Studio, Bastion, Athenaeum, Odyssey, Privacy, Argus Album, Sylade.
+They are still mostly forms waiting for data; that is the next phase, one pillar at a time, in the owner's order.
 
 ## Known gaps in what is live
 
 - Tested in a desktop browser at phone size only. Not yet tried on the owner's phone.
-- No sound yet (it will sit behind one switch, never autoplay).
-- The owner's own presets load from a private deck file he keeps in his Drive; the public site ships invented demo data only.
+- Sound is synthesized interface sound only (ticks, the boot, the warp); no music or recordings.
+- Two things answer to "time" and to "payoff" right now (the pillar page and the new console). Which one each pillar becomes is the owner's call when that pillar is developed.
+- The hub shows what is on the device and what the pillars publish; it ships no sample data on the first screen (a sample deck exists only for the proofs and under System).
 - `Gemini STATUS_CLEAN_SLATE_v2` marked everything DONE. That file is wrong and its package is not deployed.

@@ -146,3 +146,43 @@ canvas.spark { width: 100%; height: 120px; display: block; }
 .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 20; background: var(--pearl); color: var(--ink-strong); border-radius: 999px; padding: 10px 18px; font-weight: 500; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* ================================================================== deck theme (2026-11-12) ==================================================================
+   One look across every pillar, set here once: the hub's night, neon in each pillar's own colour, light on glass, and a warp in
+   and out (the browser animates the page change itself where it can). Pillar pages need no change to pick this up. */
+@font-face { font-family: "Outfit"; font-weight: 100 900; font-display: swap; src: url("../deck/fonts/outfit-latin-wght-normal.woff2") format("woff2"); }
+:root { --bg: #03040b; --bg-2: #080c1a; --cyan: #4de8ff; --lavender: #b9a2ff; --good: #57efc0; --warn: #ffd27a; --bad: #ff6b81; --muted: #c3cee0; --glass: rgba(10, 14, 26, .68); --glass-2: rgba(24, 32, 58, .74); --line: rgba(190, 212, 255, .15); --line-strong: rgba(200, 220, 255, .32); }
+body[data-pillar="kairos"] { --accent: hsl(268 100% 74%); --accent-2: #4de8ff; } body[data-pillar="apollo"] { --accent: hsl(54 100% 66%); --accent-2: #ff9d5c; }
+body[data-pillar="garage"] { --accent: hsl(200 100% 66%); --accent-2: #b9a2ff; } body[data-pillar="money"] { --accent: hsl(152 100% 64%); --accent-2: #4de8ff; }
+body[data-pillar="selling"] { --accent: hsl(28 100% 66%); --accent-2: #ffd27a; } body[data-pillar="records"] { --accent: hsl(214 100% 72%); --accent-2: #4de8ff; }
+body[data-pillar="icarus"] { --accent: hsl(8 100% 68%); --accent-2: #ffd27a; } body[data-pillar="hermes"] { --accent: hsl(222 100% 74%); --accent-2: #4de8ff; }
+body[data-pillar="piano"] { --accent: hsl(318 100% 72%); --accent-2: #b9a2ff; } body[data-pillar="bastion"] { --accent: hsl(104 90% 62%); --accent-2: #ffd27a; }
+body[data-pillar="athenaeum"] { --accent: hsl(40 100% 66%); --accent-2: #b9a2ff; } body[data-pillar="odyssey"] { --accent: hsl(186 100% 60%); --accent-2: #57efc0; }
+body[data-pillar="privacy"] { --accent: hsl(244 100% 76%); --accent-2: #4de8ff; } body[data-pillar="argus"] { --accent: hsl(166 100% 60%); --accent-2: #b9a2ff; }
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: pk-leave .3s cubic-bezier(.7, 0, .9, .4) both; }
+::view-transition-new(root) { animation: pk-arrive .6s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes pk-leave { to { transform: scale(.5); filter: blur(14px) brightness(2); opacity: 0; } }
+@keyframes pk-arrive { from { transform: scale(2.2); filter: blur(16px) brightness(2.4); opacity: 0; } }
+@keyframes pk-rise { from { opacity: 0; transform: translateY(18px); } }
+@keyframes pk-glitch { 0% { opacity: 0; transform: translateX(-8px) skewX(-12deg); text-shadow: -6px 0 var(--accent-2), 6px 0 var(--accent); } 35% { opacity: 1; transform: translateX(5px) skewX(8deg); text-shadow: 5px 0 var(--accent-2), -5px 0 var(--accent); } 100% { transform: none; } }
+@keyframes pk-scan { from { transform: translateY(-170px); } to { transform: translateY(100vh); } }
+@keyframes pk-pulse { 50% { opacity: .55; transform: scale(1.12); } }
+body { background: radial-gradient(120% 70% at 50% -10%, color-mix(in srgb, var(--accent) 26%, #05070e), #03040b 62%) fixed, #03040b; }
+body::after { content: ""; position: fixed; left: 0; right: 0; top: 0; height: 150px; z-index: 30; pointer-events: none; background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 9%, transparent), transparent); animation: pk-scan 7.5s linear infinite; }
+.shell > * { animation: pk-rise .65s cubic-bezier(.2, .8, .2, 1) both; } .shell > :nth-child(2) { animation-delay: .07s; } .shell > :nth-child(3) { animation-delay: .14s; } .shell > :nth-child(n+4) { animation-delay: .2s; }
+.bar .mark { box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .8), 0 0 18px var(--accent); background: radial-gradient(circle, var(--accent) 0 26%, transparent 32%); animation: pk-pulse 3.2s ease-in-out infinite; }
+.bar .name { letter-spacing: .26em; text-transform: uppercase; font-size: 12px; font-weight: 500; }
+.bar a.back { display: inline-flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 14px 0 12px; border-radius: 999px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #fff; background: rgba(10, 14, 26, .6); border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent); box-shadow: 0 0 18px -4px var(--accent), inset 0 0 12px -6px var(--accent); text-decoration: none; }
+.bar a.back::before { content: ""; width: 9px; height: 10px; background: #ff9d5c; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); box-shadow: 0 0 10px #ff9d5c; }
+.kicker { letter-spacing: .28em; color: var(--accent); text-shadow: 0 0 16px color-mix(in srgb, var(--accent) 70%, transparent); }
+.hero h1 { font-weight: 200; letter-spacing: -.01em; animation: pk-glitch .8s .25s both; }
+.hero h1 em { color: var(--accent); text-shadow: 0 0 34px color-mix(in srgb, var(--accent) 75%, transparent); }
+.glass { position: relative; background: radial-gradient(90% 60% at 0% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%), linear-gradient(180deg, var(--glass-2), var(--glass) 46%); border: 1px solid var(--line); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 24px 44px -30px #000; }
+.glass::after { content: ""; position: absolute; top: -1px; left: 22px; right: 22px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); pointer-events: none; }
+.stat-v { text-shadow: 0 0 22px color-mix(in srgb, var(--accent) 45%, transparent); }
+.tab[aria-selected="true"] { box-shadow: 0 0 18px -4px var(--accent), inset 0 0 0 1px color-mix(in srgb, var(--accent) 70%, transparent); }
+.btn:not(.quiet) { box-shadow: 0 10px 26px -12px var(--accent); }
+input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent); outline: none; }
+.chip.on { box-shadow: 0 0 14px -3px var(--accent); }
+@media (prefers-reduced-motion: reduce) { body::after, .shell > *, .hero h1, .bar .mark { animation: none !important; } ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }
