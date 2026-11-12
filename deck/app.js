@@ -43,7 +43,7 @@ async function render(same) {
     document.title = r.cap === "picture" ? "Prometheus" : `${r.cap === "system" ? "System" : cap(r.cap).name} · Prometheus`;
   };
   const moving = !same && prev && prev.cap !== r.cap;
-  if (moving && document.startViewTransition && !reduced()) document.startViewTransition(swap); else swap();
+  if (moving && document.startViewTransition && !reduced()) { const vt = document.startViewTransition(swap); vt.ready.catch(() => {}); vt.finished.catch(() => {}); vt.updateCallbackDone.catch(() => {}); } else swap();   // a newer change may skip an older transition: that is fine
 }
 store.on(() => {                                                                  // any change: redraw the view, unless a sheet or a field has the floor
   const a = document.activeElement; const typing = a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && $("#view").contains(a);
