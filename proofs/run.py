@@ -71,6 +71,19 @@ with sync_playwright() as p:
         p4.close()
     proof("PILLAR-2", "Every pillar page runs without a script error, in every section", not dirty and len(local) >= 14, f"{len(local)} pages opened, {taps} sections tapped" + ("; errors: " + " | ".join(dirty) if dirty else ", no errors")); c4.close()
 
+    # STAGE-1: every kit pillar opens on its own signature picture (drawn from its data), with readouts, and no script errors
+    c7 = b.new_context(viewport={"width": 390, "height": 844}); bare = []; shown = []
+    for pid in "kairos garage piano money apollo hermes argus selling icarus odyssey bastion privacy records".split():
+        p7 = c7.new_page(); mine = []; p7.on("pageerror", lambda e, mine=mine: mine.append(str(e)[:100]))
+        if MOCK: p7.route("https://jpavia10.github.io/**", lambda route, request: route.abort()); p7.route("https://api.weather.gov/**", lambda route, request: route.abort())
+        p7.goto(f"{URL}pillars/{pid}/?still=1&today=2026-11-13", wait_until="load"); p7.wait_for_timeout(500)
+        st = p7.evaluate("""() => { const s = document.querySelector('.pk-stage'); if (!s) return null; const cv = s.querySelector('canvas'), g = cv.getContext('2d'), d = g.getImageData(0, 0, cv.width, cv.height).data; let lit = 0;
+          for (let i = 3; i < d.length; i += 4 * 53) if (d[i] > 40 && (d[i - 3] + d[i - 2] + d[i - 1]) > 120) lit++; const hero = document.querySelector('.hero'); return { lit, reads: s.querySelectorAll('.pk-read').length, h: Math.round(cv.getBoundingClientRect().height), after: !!hero && hero.nextElementSibling === s }; }""")
+        if not st or st["lit"] < 40 or st["reads"] < 3 or not st["after"] or mine: bare.append(f"{pid}: {st} {mine[:1]}")
+        else: shown.append(pid)
+        p7.close()
+    proof("STAGE-1", "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors", not bare and len(shown) == 13, f"{len(shown)} of 13 drawn: {', '.join(shown)}" + ("; missing: " + " | ".join(bare) if bare else "")); c7.close()
+
     # ATHENAEUM: the first pillar rebuilt to the charter's standard. A clean device, a fixed day, motion held still so positions can be read.
     c5 = b.new_context(viewport={"width": 390, "height": 844}, accept_downloads=True); p5 = c5.new_page(); p5.on("pageerror", lambda e: errs.append("athenaeum: " + str(e)[:160])); p5.on("console", lambda m: errs.append("athenaeum: " + m.text[:160]) if m.type == "error" and "ERR_" not in m.text and "Failed to load resource" not in m.text else None)
     A = f"{URL}pillars/athenaeum/?still=1&today=2026-11-13"

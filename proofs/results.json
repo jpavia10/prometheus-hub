@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:8377/",
- "ran": "2026-11-13T20:14Z",
+ "ran": "2026-11-13T21:14Z",
  "clock": "2026-11-20T09:00",
  "results": [
   {
@@ -25,19 +25,25 @@
    "id": "CORE-4",
    "name": "Tapping a cell warps into that pillar",
    "pass": true,
-   "detail": "Apollo Temple (4.2 s on this machine)"
+   "detail": "Apollo Temple (4.5 s on this machine)"
   },
   {
    "id": "PILLAR-1",
    "name": "Every pillar's default shell: crest, sections from its own panels, a dock back to the core",
    "pass": true,
-   "detail": "Piano: 6 sections, showing ['The pattern player'] then ['Standards \u2014 the real c']; page 946 px tall at phone size (was 6,672); dock: core + 2 neighbours"
+   "detail": "Piano: 6 sections, showing ['The pattern player'] then ['Standards \u2014 the real c']; page 1372 px tall at phone size (was 6,672); dock: core + 2 neighbours"
   },
   {
    "id": "PILLAR-2",
    "name": "Every pillar page runs without a script error, in every section",
    "pass": true,
    "detail": "15 pages opened, 47 sections tapped, no errors"
+  },
+  {
+   "id": "STAGE-1",
+   "name": "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors",
+   "pass": true,
+   "detail": "13 of 13 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records"
   },
   {
    "id": "ATH-1",
@@ -91,7 +97,7 @@
    "id": "DECK-1",
    "name": "Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store",
    "pass": true,
-   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d8\"}"
+   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d9\"}"
   },
   {
    "id": "TIME-1",

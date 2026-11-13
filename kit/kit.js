@@ -42,7 +42,7 @@
   function store(pillar) {
     const key = (k) => `prometheus.${pillar}.${k}`;
     const read = (k, dflt) => { try { const v = localStorage.getItem(key(k)); return v == null ? dflt : JSON.parse(v); } catch (_) { return dflt; } };
-    const write = (k, v) => { try { localStorage.setItem(key(k), JSON.stringify(v)); return true; } catch (_) { toast("This browser would not save. Export your data."); return false; } };
+    const write = (k, v) => { try { localStorage.setItem(key(k), JSON.stringify(v)); try { window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar, k } })); } catch (_) { /* old browser */ } return true; } catch (_) { toast("This browser would not save. Export your data."); return false; } };
     const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
     return {
       get: read, set: write,

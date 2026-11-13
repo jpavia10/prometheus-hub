@@ -8,7 +8,8 @@ You are taking over as lead engineer and designer for Joseph's Prometheus (this 
 4. `docs/pillars/athenaeum/BRIEF.md` and `docs/architecture/MANIFEST.md` (the one pillar rebuilt so far and the shared pieces it uses).
 
 ## State
-- **Live build d8** (`BUILD` in `deck/app.js`); Athenaeum holds the owner's 70 ideas (seed `ideasSeedV3`, pushed from his account 2026-11-13), main = `claude/deck`. 22 browser proofs and 26 unit proofs pass, also against the live site.
+- **d9: every kit pillar opens on its own signature picture** (`kit/stage.js` engine + `pillars/<id>/stage.js`, proof STAGE-1). Sylade still on the old desk styles.
+- **Live build d9 (was d8)** (`BUILD` in `deck/app.js`); Athenaeum holds the owner's 70 ideas (seed `ideasSeedV3`, pushed from his account 2026-11-13), main = `claude/deck`. 22 browser proofs and 26 unit proofs pass, also against the live site.
 - **Athenaeum** (`pillars/athenaeum/`) is rebuilt: a WebGL 3D sky of the owner's ideas, codex, time replay, chronicle, index, shelf, backup.
   Built and proven, **not accepted**: the charter's independent review never ran (the reviewer agent hit a usage limit before reporting).
 - **Titan is paused by the owner** ("leave it for now ... frustrated by your titan work overall"). Do not continue its new front (`next.html`) or

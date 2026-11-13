@@ -16,6 +16,7 @@
     "House shelter-in": ["Water storage filled", "Pantry buffer (2 weeks)", "Propane / heat backup checked", "Flashlights + lantern batteries", "Generator or power station charged", "Pipes / freeze prep done", "Car fueled above half", "Medications buffer"],
     "Red Cross 72-hour baseline": ["Water 1 gal/person/day (3-day evac)", "Food 3-day non-perishable", "Flashlight", "Battery/hand-crank radio (NOAA Weather Radio if possible)", "Extra batteries", "First aid kit", "Medications 7-day + medical items", "Multi-purpose tool", "Sanitation & hygiene", "Copies of personal documents", "Cell phone with chargers", "Family & emergency contact info", "Extra cash", "Emergency blanket", "Map(s) of the area"],
   };
+  window.BASTION_SCENARIOS = SCENARIOS;                                            // read by the stage at the top (stage.js)
 
   app.innerHTML = `
     <section class="grid">

@@ -54,6 +54,10 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   the Piano page: "its junk": raise the default here, in the kit, so all 14 pillars rise together; a pillar's own `app.css` stays tiny.
 - **One theme for all pillar pages:** the block "deck theme" at the end of `kit/prometheus.css` (colours per pillar, glass, warp page
   changes). Change the look there, not page by page. Titan, Midas and Hearth are separate repositories and were not touched.
+- **d9 (2026-11-13): each kit pillar has a signature picture at the top** (owner: "Run through each pillar and revamp"): the engine is
+  `kit/stage.js` (canvas, loop, pause off screen, reduced motion, redraw on save via the `pk:store` event from the kit store); each pillar's
+  picture is its own `pillars/<id>/stage.js`, reading only its own records and shipped data. Change a pillar's picture there; never move
+  pillar logic into the stage. Bastion exposes `window.BASTION_SCENARIOS` for it.
 - **d7 (2026-11-13): Athenaeum is the first pillar rebuilt under the charter** (owner: "Continue with whatever but 70 is low i want over 100
   beyond limits"). `pillars/athenaeum/`: ideas as stars in a raw-WebGL 3D sky (`js/sky.js`), relations and layout worked out on the device
   (`js/model.js`, pure, unit-tested), the app (`js/app.js`); same stored records, every old feature kept. Read `docs/pillars/athenaeum/BRIEF.md`
