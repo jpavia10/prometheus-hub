@@ -1,5 +1,5 @@
 import test from "node:test"; import assert from "node:assert/strict"; import { readFileSync } from "node:fs";
-import { terms, relate, skeleton, clusters, layout, span, tOf, dateAt, provenance, refinementBy, mentions, parseYear, arm, stats } from "../../pillars/athenaeum/js/model.js";
+import { tagsOf, terms, relate, skeleton, clusters, layout, span, tOf, dateAt, provenance, refinementBy, mentions, parseYear, arm, stats } from "../../pillars/athenaeum/js/model.js";
 
 const load = (file, name) => { const w = {}; new Function("window", "globalThis", readFileSync(new URL("../../pillars/athenaeum/" + file, import.meta.url), "utf8"))(w, w); return w[name]; };
 const IDEAS = load("ideas-seed.js", "ATHENAEUM_IDEAS"), MERGE = load("vault.js", "ATH_MERGE"), VAULT = load("vault.js", "VAULT");
@@ -25,14 +25,14 @@ test("constellations: every idea in exactly one group, named by a tag its member
   const E = relate(IDEAS), C = clusters(IDEAS, E);
   assert.ok(C.list.length > 1, "the set forms more than one constellation");
   assert.equal(C.list.reduce((s, c) => s + c.members.length, 0), IDEAS.length); assert.equal(new Set(C.list.flatMap((c) => c.members)).size, IDEAS.length);
-  for (const c of C.list) assert.ok(c.members.some((i) => (IDEAS[i].tags || []).includes(c.tag)), c.name);
+  for (const c of C.list) assert.ok(c.members.some((i) => tagsOf(IDEAS[i]).includes(c.tag)), c.name);   // tags match without case: "AI" = "ai"
 });
 
 test("the sky is the same every time, fits radius 1, keeps ideas apart, and a new idea barely moves the others", () => {
   const E = skeleton(IDEAS.length, relate(IDEAS)), P = layout(IDEAS, E), P2 = layout(IDEAS, E);
   assert.deepEqual(P, P2); let far = 0, near = 9;
   for (let a = 0; a < P.length; a++) { far = Math.max(far, Math.hypot(...P[a])); for (let b = a + 1; b < P.length; b++) near = Math.min(near, Math.hypot(P[a][0] - P[b][0], P[a][1] - P[b][1], P[a][2] - P[b][2])); }
-  assert.ok(Math.abs(far - 1) < 1e-6, "radius " + far); assert.ok(near > 0.1, "closest pair " + near);
+  assert.ok(far <= 1 + 1e-9 && far > 0.8, "everything within radius 1 (scaled to the bulk, outliers drawn in): " + far); assert.ok(near > 0.1, "closest pair " + near);
   const more = [...IDEAS, { id: "new1", title: "A note on tides", body: "Unrelated to the rest.", tags: ["ocean"], created: "2026-11-13", chain: [] }];
   const Q = layout(more, skeleton(more.length, relate(more))); let moved = 0; for (let i = 0; i < P.length; i++) moved = Math.max(moved, Math.hypot(P[i][0] - Q[i][0], P[i][1] - Q[i][1], P[i][2] - Q[i][2]));
   assert.ok(moved < 0.6, "largest move when one idea is added: " + moved.toFixed(2));

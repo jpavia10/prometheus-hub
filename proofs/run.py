@@ -30,7 +30,7 @@ with sync_playwright() as p:
     p2.goto(f"{URL}?now={NOW}#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
     ci = p2.evaluate("""() => ({ hex: document.querySelectorAll('.reactor .hex:not(.core)').length, names: [...document.querySelectorAll('.reactor .hex:not(.core) .hex-name')].map((x) => x.textContent),
       demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth, ring: !!document.querySelector('.dayring') })""")
-    proof("CORE-1", "All 18 pillars are on the core; a clean device shows no sample data", ci["hex"] == 18 and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"], json.dumps(ci))
+    proof("CORE-1", "Every pillar is on the core (19 since Games); a clean device shows no sample data", ci["hex"] == 19 and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"], json.dumps(ci))
     routes = p2.evaluate("[...document.querySelectorAll('.reactor .hex:not(.core) a')].map((a) => a.getAttribute('href'))"); bad = []; local = [r for r in routes if not r.startswith("http")]
     for r in local:
         resp = p2.request.get(URL + r)

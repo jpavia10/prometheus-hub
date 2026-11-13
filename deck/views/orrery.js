@@ -19,8 +19,8 @@ const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k)
 const S = { yaw: 0.26, vel: 0.5, born: false };                                    // survives a redraw of the view
 
 /* hex grid: the core in the middle, six around it, twelve outside */
-const CELLS = (() => { const out = []; for (let q = -2; q <= 2; q++) for (let r = -2; r <= 2; r++) { const d = Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r)); if (d <= 2 && d > 0) out.push({ d, x: Math.sqrt(3) * (q + r / 2), y: 1.5 * r }); }
-  const ang = (c) => (Math.atan2(c.y, c.x) + Math.PI * 2.5) % TAU; return [...out.filter((c) => c.d === 1).sort((a, b) => ang(a) - ang(b)), ...out.filter((c) => c.d === 2).sort((a, b) => ang(a) - ang(b))]; })();
+const CELLS = (() => { const out = []; for (let q = -3; q <= 3; q++) for (let r = -3; r <= 3; r++) { const d = Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r)); if (d <= 3 && d > 0) out.push({ d, x: Math.sqrt(3) * (q + r / 2), y: 1.5 * r }); }
+  const ang = (c) => (Math.atan2(c.y, c.x) + Math.PI * 2.5) % TAU; return [...out.filter((c) => c.d === 1).sort((a, b) => ang(a) - ang(b)), ...out.filter((c) => c.d === 2).sort((a, b) => ang(a) - ang(b)), ...out.filter((c) => c.d === 3).sort((a, b) => ang(a) - ang(b))]; })();   // a third ring only when there are more than 18 pillars
 
 function badgeFor(p, stats, t, tn) {
   if (p.id === "titan" && tn && tn.total) return "$" + (tn.total >= 1000 ? (tn.total / 1000).toFixed(1) + "k" : Math.round(tn.total));
@@ -73,8 +73,8 @@ export function reactor(ctx) {
   const t = today(); const stats = pillarStats(t); let tn = null; const calm = still();
   const W = Math.min(innerWidth, 460), H = Math.round(W * 0.98), cx = W / 2, cy = H / 2, M = 44;
   let mode = calm ? "grid" : ls("prom.deck.layout") || "orbit"; let mix = mode === "grid" ? 1 : 0; let birth = S.born || calm ? 1 : 0; S.born = true;
-  const gs = (W - 14) / (5 * Math.sqrt(3)), hw = Math.sqrt(3) * gs, hh = 2 * gs; const R1 = W * 0.255, R2 = W * 0.395, PITCH = 0.8, D = 1000;
-  const ringOf = (i) => (i < 6 ? { R: R1, a0: Math.PI / 12 + (i * TAU) / 6, tilt: 0.16, roll: 0.1 } : { R: R2, a0: ((i - 6) * TAU) / 12, tilt: -0.07, roll: -0.06 });
+  const used = CELLS.slice(0, PILLARS.length), mx = Math.max(...used.map((c) => Math.abs(c.x))), my = Math.max(...used.map((c) => Math.abs(c.y))), gs = Math.min((W - 14) / (2 * mx + Math.sqrt(3)), (H - 8) / (2 * my + 2)), hw = Math.sqrt(3) * gs, hh = 2 * gs; const R1 = W * 0.255, R2 = W * 0.395, PITCH = 0.8, D = 1000;
+  const ringOf = (i) => (i < 6 ? { R: R1, a0: Math.PI / 12 + (i * TAU) / 6, tilt: 0.16, roll: 0.1 } : { R: R2, a0: ((i - 6) * TAU) / Math.max(12, PILLARS.length - 6), tilt: -0.07, roll: -0.06 });
   let leanX = 0, leanY = 0, lx = 0, ly = 0;
   const proj = (R, a, tilt, roll, yo = 0) => { const P = PITCH + tilt + ly * 0.14, x0 = R * Math.sin(a), z0 = R * Math.cos(a); let y = yo * Math.cos(P) + z0 * Math.sin(P); const z = -yo * Math.sin(P) + z0 * Math.cos(P); const ro = roll + lx * 0.1; const x = x0 * Math.cos(ro) - y * Math.sin(ro); y = x0 * Math.sin(ro) + y * Math.cos(ro); const sc = D / (D - z); return [x * sc, y * sc, z, sc]; };
 

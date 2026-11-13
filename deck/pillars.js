@@ -19,6 +19,7 @@ export const PILLARS = [
   P("odyssey", "Odyssey · Trips & Away Mode", "Odyssey", "Trips, and what the house needs while away.", "pillars/odyssey/", 186, "compass"),
   P("privacy", "Privacy · CA DROP", "Privacy", "Shrinking the public footprint.", "pillars/privacy/", 244, "lock"),
   P("argus", "Argus Album", "Argus", "Every picture the pillars use, in one album.", "pillars/argus/", 166, "eye"),
+  P("games", "Ludus Arcade", "Games", "Games: the library in your own words, and the next session.", "pillars/games/", 330, "play"),
   P("presence", "Sylade · Presence", "Sylade", "The public presence page.", "sylade.html", 292, "star"),
 ];
 export const pillar = (id) => PILLARS.find((p) => p.id === id);
