@@ -1,6 +1,8 @@
 <!-- doc-status: current; normative: yes -->
 # Prometheus Hub: integrator notes (Claude)
 
+**New here? Read `docs/HANDOVER.md` first (2026-11-13): state, the owner's direction in his words, what to do next.**
+
 The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus-hub`, `pillars.json`). Live: https://jpavia10.github.io/prometheus-hub/.
 
 - **Ownership:** Claude integrates (reviews and merges every pull request and every Drive drop file). Grok, Gemini, Muse and ChatGPT contribute through homework (`docs/agents/queues.json`), Drive `Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/` and pull requests on `{ai}/...` branches.
