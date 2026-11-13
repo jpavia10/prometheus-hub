@@ -5,7 +5,7 @@
   "use strict";
   const { $, h, day, toast, store, download, pickFile } = PK;
   const S = store("forge"), app = $("#app"), AIS = ["Grok", "Gemini", "Muse", "ChatGPT", "Gemini API", "Claude"];
-  const QUEUES = [["Hub", "../../docs/agents/queues.json"], ...["kairos", "apollo", "hermes", "icarus", "argus"].map((p) => [p[0].toUpperCase() + p.slice(1), `../${p}/docs/agents/queues.json`])];
+  const QUEUES = [["Hub", "../../docs/agents/queues.json"], ...["kairos", "apollo", "hermes", "icarus", "argus", "hearth"].map((p) => [p[0].toUpperCase() + p.slice(1), `../${p}/docs/agents/queues.json`])];
   const SCORES = new URLSearchParams(location.search).get("scores") || new URL("/titan-reliquary-preview/collaborators/CONTRIBUTOR_SCORES.md", location.origin).href;
   const D = { tasks: [], scores: [], scoreState: "loading", queueState: "loading" };
   /** Titan's score sheet: "## Name (note)" sections, then rows "| n | date | submission | **x / 10** ... | notes |". */

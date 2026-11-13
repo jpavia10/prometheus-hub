@@ -8,6 +8,7 @@ You are taking over as lead engineer and designer for Joseph's Prometheus (this 
 4. `docs/pillars/athenaeum/BRIEF.md` and `docs/architecture/MANIFEST.md` (the one pillar rebuilt so far and the shared pieces it uses).
 
 ## State
+- **d11: Hearth moved into the hub** (`pillars/hearth/`); the old repository only carries a moved notice.
 - **d10: four new pillars, Forge, Foundry, Observatory, Kin** (owner: "Work on all of them"; Forge lifts the Fleet pause for itself only). 23 pillars on the hub.
 - **d9: every kit pillar opens on its own signature picture** (`kit/stage.js` engine + `pillars/<id>/stage.js`, proof STAGE-1). Sylade still on the old desk styles.
 - **Live build d9 (was d8)** (`BUILD` in `deck/app.js`); Athenaeum holds the owner's 70 ideas (seed `ideasSeedV3`, pushed from his account 2026-11-13), main = `claude/deck`. 22 browser proofs and 26 unit proofs pass, also against the live site.

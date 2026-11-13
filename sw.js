@@ -1,6 +1,6 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
    Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline. */
-var CACHE = "prometheus-hub-deck-d10";
+var CACHE = "prometheus-hub-deck-d11";
 var SHELL = [
   "./", "./index.html", "./manifest.webmanifest", "./deck/deck.css", "./deck/app.js", "./deck/caps.js", "./deck/pillars.js", "./deck/core/legacy.js", "./deck/core/fx.js", "./deck/views/orrery.js", "./kit/prometheus.css", "./kit/kit.js", "./kit/bus.js", "./kit/stage.js",
   "./deck/core/store.js", "./deck/core/dates.js", "./deck/core/ui.js", "./deck/core/feeds.js", "./deck/core/atmo.js", "./deck/core/weather.js", "./deck/core/ics.js",

@@ -5,7 +5,7 @@ export const PILLARS = [
   P("kairos", "Kairos Meridian", "Kairos", "Time: calendar, deadlines and the day.", "pillars/kairos/", 268, "hourglass"),
   P("midas", "Midas Ledger", "Midas", "Money: cash, debt and the way out.", "https://jpavia10.github.io/midas-ledger/", 46, "scale", { ext: true }),
   P("titan", "Titan Reliquary", "Titan", "Coin and precious-metals collection.", "https://jpavia10.github.io/titan-reliquary-preview/", 36, "coin", { ext: true }),
-  P("hearth", "Hephaestus Hearth", "Hearth", "The house: projects, inventory and floor plan.", "https://jpavia10.github.io/hephaestus-hearth/", 16, "anvil", { ext: true }),
+  P("hearth", "Hephaestus Hearth", "Hearth", "The house: renovations, what is in each room, and the plan.", "pillars/hearth/", 16, "anvil"),
   P("garage", "Garage", "Garage", "The car: service, fuel and paperwork.", "pillars/garage/", 200, "garage"),
   P("apollo", "Apollo Temple", "Apollo", "Health, fitness and nutrition.", "pillars/apollo/", 54, "sun"),
   P("money", "Money · payoff simulator", "Payoff", "The payoff simulator and the issuer library.", "pillars/money/", 152, "money"),

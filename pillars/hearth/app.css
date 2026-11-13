@@ -1,0 +1,5 @@
+/* Hearth: the kit carries the look; only what this pillar adds is here. */
+.row-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.sub { font-size: 13px; color: var(--muted); }
+.pill.hot { border-color: var(--accent); color: #fff; }
+.bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; } .bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }

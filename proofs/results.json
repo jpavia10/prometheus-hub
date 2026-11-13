@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:8377/",
- "ran": "2026-11-13T23:15Z",
+ "ran": "2026-11-13T23:40Z",
  "clock": "2026-11-20T09:00",
  "results": [
   {
@@ -13,7 +13,7 @@
    "id": "CORE-2",
    "name": "Every pillar page in this repository answers and wears the shared theme",
    "pass": true,
-   "detail": "20 pages checked, 3 on their own sites"
+   "detail": "21 pages checked, 2 on their own sites"
   },
   {
    "id": "CORE-3",
@@ -25,7 +25,7 @@
    "id": "CORE-4",
    "name": "Tapping a cell warps into that pillar",
    "pass": true,
-   "detail": "Apollo Temple (3.6 s on this machine)"
+   "detail": "Apollo Temple (3.8 s on this machine)"
   },
   {
    "id": "PILLAR-1",
@@ -37,19 +37,19 @@
    "id": "PILLAR-2",
    "name": "Every pillar page runs without a script error, in every section",
    "pass": true,
-   "detail": "20 pages opened, 62 sections tapped, no errors"
+   "detail": "21 pages opened, 66 sections tapped, no errors"
   },
   {
    "id": "STAGE-1",
    "name": "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors",
    "pass": true,
-   "detail": "17 of 17 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records, forge, foundry, observatory, kin"
+   "detail": "18 of 18 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records, forge, foundry, observatory, kin, hearth"
   },
   {
    "id": "NEW-1",
    "name": "The new pillars work on real data: Forge reads Titan's scored submissions and the live AI queues, Foundry starts a build from an Athenaeum invention without touching Athenaeum, Kin's custody pattern lands on the right days",
    "pass": true,
-   "detail": "Forge: 168 scores {'Muse': 52, 'Grok': 43, 'Gemini': 68, 'Gemini API': 3, 'ChatGPT': 2}, 43 queue tasks (6 open); Foundry: board 11 to 10, bench 1 at Research, Athenaeum unchanged True; Kin 2-2-3: ['you', 'you', 'other', 'you', 'you', 'other', 'you', 'other']"
+   "detail": "Forge: 168 scores {'Muse': 52, 'Grok': 43, 'Gemini': 68, 'Gemini API': 3, 'ChatGPT': 2}, 52 queue tasks (8 open); Foundry: board 11 to 10, bench 1 at Research, Athenaeum unchanged True; Kin 2-2-3: ['you', 'you', 'other', 'you', 'you', 'other', 'you', 'other']"
   },
   {
    "id": "ATH-1",
@@ -103,7 +103,7 @@
    "id": "DECK-1",
    "name": "Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store",
    "pass": true,
-   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d9\"}"
+   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d11\"}"
   },
   {
    "id": "TIME-1",

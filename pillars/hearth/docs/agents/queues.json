@@ -1,0 +1,301 @@
+{
+ "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
+ "updated": "2026-11-09",
+ "pillar": "hearth",
+ "agents": [
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "tasks": [
+    {
+     "id": "HEA-GEM-01",
+     "title": "Scan the house with a phone: 8 apps compared on 10 fixed columns",
+     "state": "done",
+     "due": "2026-11-11",
+     "why": "The house on the stand is placeholder boxes. The real model will come from Joseph scanning rooms with his phone.",
+     "inputs": [
+      "each app's own site, App Store / Play listing and help pages"
+     ],
+     "steps": [
+      "Compare exactly these 8: Polycam, Scaniverse, Magicplan, RoomScan Pro, Canvas (Occipital), Matterport (phone capture), Metascan, KIRI Engine.",
+      "Columns, exactly: app | iPhone LiDAR needed (yes/no/optional) | Android | room floor plan with measurements (yes/no) | export formats (list) | GLB or USDZ export on the free plan | price per month (USD) | accuracy the maker states (with its words) | max area per scan | source URLs.",
+      "Every cell from the maker's own page, with the URL in the last column."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_scan-apps_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "one markdown table, 8 rows x 10 columns"
+     },
+     "count": 8,
+     "done_when": "8 rows, 80 filled cells, every price and format on the cited page.",
+     "checks": [
+      "Claude opens the source URL of every price and export cell for 4 apps at random."
+     ],
+     "rejected_if": [
+      "a row copied from another row with the names changed",
+      "a source URL that does not open or does not say what the row claims",
+      "fewer items than the count",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a blank cell without 'not stated' and the page you checked"
+     ]
+    },
+    {
+     "id": "HEA-GEM-02",
+     "title": "The Hearth data shape: rooms with measured walls, the assets in each room, renovation projects (JSON Schema + 3 examples)",
+     "state": "done",
+     "due": "2026-11-12",
+     "why": "Rooms, assets and projects are empty on purpose. They need one shape before anything is saved. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
+     "inputs": [
+      "https://jpavia10.github.io/hephaestus-hearth/ (the desk today: the stand-in house, the room list, three project slots)"
+     ],
+     "steps": [
+      "Write one JSON Schema (draft 2020-12) with these records: house (name, floors, origin note); room (id, name, floor, outline = a list of corner points [x, y] in inches, clockwise, from one fixed origin per floor; ceiling height in inches; openings = doors and windows, each with the wall it sits on (index of the outline edge), offset from that wall's first corner, width, height, sill height); asset (id, name, category, room id, position {x, y, z} in inches + rotation in degrees, brand, model, serial, purchase date, price, receipt photo, warranty end, photos, condition, notes); project (id, room ids, title, state: idea / quoted / booked / doing / done, budget, start, finish, tasks, cost lines with vendor / quote / paid / date / receipt photo, before and after photos, asset ids added and asset ids removed); photo (file, room id, date, kind: room / asset / receipt / before / after).",
+      "Every length in inches (decimals allowed), every date YYYY-MM-DD, every id a short string; required fields marked.",
+      "Write 3 made-up examples in one JSON file that pass the schema: (1) a bedroom drawn with 4 corners, 1 door and 2 windows, holding 8 assets; (2) an L-shaped kitchen with 6 corners and a renovation that removes 2 assets and adds 3; (3) a bathroom remodel in state 'doing' with 4 cost lines.",
+      "Say the area of each example room in square feet (Claude recomputes it from the corners)."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_schema_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "{\"schema\": {...}, \"examples\": {\"rooms\": [...], \"assets\": [...], \"projects\": [...]}, \"areas_sqft\": {\"room id\": 132.5}}"
+     },
+     "count": 3,
+     "done_when": "The schema is valid draft 2020-12, all 3 examples pass it, every stated area matches the corners, every asset sits inside its room's outline.",
+     "checks": [
+      "Claude validates with python jsonschema.",
+      "Claude computes each room's area from its corners (shoelace) and compares within 0.5 sq ft.",
+      "Claude checks every asset position is inside its room's outline and every opening fits on its wall."
+     ],
+     "rejected_if": [
+      "an example that fails its own schema",
+      "a room outline that crosses itself or is not closed",
+      "an opening wider than its wall",
+      "a real address, name, serial number or phone number"
+     ]
+    },
+    {
+     "id": "HEA-GEM-07",
+     "title": "Home inventory: 120 asset categories, room by room, with the fields insurers ask for",
+     "state": "done",
+     "due": "2026-11-13",
+     "why": "Hearth lists what is in each room; the categories and the fields worth recording should come from a published home-inventory checklist, not guesses. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
+     "inputs": [],
+     "steps": [
+      "Use published home-inventory checklists: the Insurance Information Institute (iii.org), the NAIC (content.naic.org), FEMA / Ready.gov, or a major insurer's own checklist page.",
+      "List 120 asset categories across kitchen, bathrooms, bedrooms, living areas, office, laundry, garage, basement, outdoor and the house systems (water heater, furnace, AC, electrical panel, sump pump).",
+      "For each: category, the rooms it is usually in, the fields worth recording (from: brand, model, serial, purchase date, price, receipt, photo, warranty end, size), and the source page with a quote."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_inventory_categories_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"category\":\"refrigerator\",\"rooms\":[\"kitchen\",\"garage\"],\"fields\":[\"brand\",\"model\",\"serial\",\"purchase date\",\"price\",\"receipt\",\"photo\",\"warranty end\"],\"url\":\"https://www.iii.org/...\",\"quote\":\"...\"}]"
+     },
+     "count": 120,
+     "done_when": "120 categories, every one traced to a checklist page.",
+     "checks": [
+      "Claude opens 10 source pages at random.",
+      "Duplicates (fridge / refrigerator) count once."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a category list from a blog instead of a checklist page"
+     ]
+    },
+    {
+     "id": "HEA-GEM-08",
+     "title": "How accurate a phone floor plan really is: 12 published measurements",
+     "state": "done",
+     "due": "2026-11-14",
+     "why": "The layout must become accurate. Claude needs numbers on how close phone scans, phone AR and laser measures get to a tape measure. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
+     "inputs": [],
+     "steps": [
+      "Find 12 published tests (a paper with a DOI, a university or government test report, or a manufacturer's published validation) that measured floor-plan or room-dimension error.",
+      "Cover at least: iPhone LiDAR / RoomPlan, Android ARCore depth, a handheld laser distance meter, and a tape measure baseline.",
+      "For each: method and device, number of rooms or walls measured, the error as reported (mean and max, in cm or %), the room sizes, the DOI or URL and the quote with the numbers."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_accuracy_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"method\":\"iPhone 13 Pro LiDAR (RoomPlan)\",\"walls\":48,\"mean_error_cm\":2.1,\"max_error_cm\":6.5,\"rooms\":\"3-5 m\",\"doi\":\"10.xxxx/xxxxx\",\"url\":\"https://...\",\"quote\":\"...\"}]"
+     },
+     "count": 12,
+     "done_when": "12 tests, at least one per method named, every number quoted.",
+     "checks": [
+      "Claude resolves every DOI and finds each quote."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "an error number with no quote",
+      "a vendor marketing page as the only source for a scan method"
+     ]
+    },
+    {
+     "id": "HEA-GEM-09",
+     "title": "10 floor-plan and 3D formats Hearth could import: what each one carries",
+     "state": "done",
+     "due": "2026-11-15",
+     "why": "When a room is scanned or drawn, Hearth must read the file into its 3D view without losing walls, doors and real units. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
+     "inputs": [],
+     "steps": [
+      "Formats: Apple RoomPlan (USDZ + its JSON), glTF / GLB, OBJ, USDZ, IFC, DXF, SVG, E57 point cloud, PLY, and the Magicplan export the app offers.",
+      "For each: the specification page URL, the length unit it stores (or 'none'), and yes / no / partial for: walls, doors, windows, room names, floor levels, dimensions; and the three.js loader that reads it, named exactly as on threejs.org/docs (or 'none')."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_formats_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"format\":\"IFC\",\"spec_url\":\"https://...\",\"units\":\"set in the file (IfcUnitAssignment)\",\"walls\":\"yes\",\"doors\":\"yes\",\"windows\":\"yes\",\"room_names\":\"yes\",\"floors\":\"yes\",\"dimensions\":\"yes\",\"threejs_loader\":\"none\",\"quote\":\"...\"}]"
+     },
+     "count": 10,
+     "done_when": "10 formats, every cell traced to the spec or the three.js docs.",
+     "checks": [
+      "Claude opens every spec page and checks each loader name on threejs.org/docs."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a loader name that is not in the three.js docs or examples"
+     ]
+    },
+    {
+     "id": "HEA-GEM-10",
+     "title": "Laser measures that send readings to an Android phone: 10 models compared",
+     "state": "done",
+     "due": "2026-11-16",
+     "why": "Joseph's phone is Android (no LiDAR). A Bluetooth laser measure is the realistic path to an accurate plan; Claude needs the real specs. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
+     "inputs": [],
+     "steps": [
+      "10 Bluetooth laser distance meters (Bosch, Leica DISTO, Hilti, Stanley, DeWalt, Milwaukee, Makita and others).",
+      "For each, from the maker's own product or spec page: accuracy (+/- mm), range (m), Bluetooth (yes / no), the Android app it pairs with and that app's Play Store URL, whether the app exports a floor plan (formats), price in USD from the maker or a named retailer, and the quote with the accuracy."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_lasers_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"model\":\"...\",\"maker_url\":\"https://...\",\"accuracy_mm\":1.5,\"range_m\":50,\"bluetooth\":true,\"android_app\":\"...\",\"play_url\":\"https://play.google.com/store/apps/details?id=...\",\"exports\":[\"PDF\",\"DXF\"],\"price_usd\":129.0,\"price_url\":\"https://...\",\"quote\":\"...\"}]"
+     },
+     "count": 10,
+     "done_when": "10 models, every accuracy and app from the maker's own pages.",
+     "checks": [
+      "Claude opens every maker page and every Play Store link."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a spec from a review site instead of the maker's page",
+      "an app that is iPhone-only listed as Android"
+     ]
+    },
+    {
+     "id": "HEA-GEM-11",
+     "title": "10 home inventory and renovation apps taken apart: 50 features Hearth should have",
+     "state": "done",
+     "due": "2026-11-17",
+     "why": "Hearth should beat the apps people already use for 'what is in my house' and 'what did I do to it'. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
+     "inputs": [],
+     "steps": [
+      "Apps: HomeZada, Centriq, Encircle, Sortly, Nest Egg, Under My Roof, magicplan, Houzz, BluePlan or Homer, and one more of your choice that tracks assets per room.",
+      "For each, 5 specific things on its screens about: assets per room, receipts and warranties, renovation projects with before/after, or the floor plan (example: 'tap a wall on the plan to see the paint colour and the date it was painted').",
+      "Each row: app, screen, what it does, a URL where it can be seen (help article, store listing, screenshot page), and how Hearth could do it better."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_app-teardown_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "[{\"n\":1,\"app\":\"HomeZada\",\"screen\":\"...\",\"does\":\"...\",\"url\":\"https://...\",\"hearth\":\"...\"}]"
+     },
+     "count": 50,
+     "done_when": "50 rows, 5 per app, each about one of the three scope areas.",
+     "checks": [
+      "Claude opens 10 URLs at random.",
+      "A row about budgeting, shopping or maintenance reminders does not count (out of scope)."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "two rows that say the same thing about one app"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grok",
+   "name": "Grok",
+   "tasks": [
+    {
+     "id": "HEA-GRK-01",
+     "title": "Second reader on Gemini's scan-app table",
+     "state": "next",
+     "due": "2026-11-13",
+     "why": "Prices and export rules change often; a second reader catches what one missed.",
+     "inputs": [
+      "Gemini's file hearth_gemini_scan-apps_*.md in the incoming folder (once it is there)"
+     ],
+     "steps": [
+      "Check every price, export and LiDAR cell against the cited page.",
+      "Write one line per cell you checked: row, column, Gemini's value, yours, the URL, agree/differ."
+     ],
+     "deliver": {
+      "file": "hearth_grok_scan-apps-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "table: app | column | gemini | grok | url | agree/differ"
+     },
+     "count": 32,
+     "done_when": "At least 32 cells checked (4 per app).",
+     "checks": [
+      "Claude spot-checks 5 of your 'differ' lines."
+     ],
+     "rejected_if": [
+      "a row copied from another row with the names changed",
+      "a source URL that does not open or does not say what the row claims",
+      "fewer items than the count",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "claude",
+   "name": "Claude",
+   "tasks": [
+    {
+     "id": "HEA-CLA-01",
+     "title": "Turn on Pages for the Hearth and save projects on the device",
+     "state": "now",
+     "due": "2026-11-12",
+     "why": "The README says Pages was never enabled; the desk links to a page that may not load.",
+     "inputs": [],
+     "steps": [
+      "confirm the Pages state",
+      "store projects in the HEA-GEM-02 shape in IndexedDB"
+     ],
+     "deliver": {
+      "file": "the app",
+      "folder": "jpavia10/hephaestus-hearth main",
+      "shape": "live page"
+     },
+     "count": 1,
+     "done_when": "The Hearth loads at its address and a project survives a reload.",
+     "checks": [
+      "phone screenshot"
+     ],
+     "rejected_if": []
+    }
+   ]
+  }
+ ]
+}

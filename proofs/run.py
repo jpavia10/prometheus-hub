@@ -73,7 +73,7 @@ with sync_playwright() as p:
 
     # STAGE-1: every kit pillar opens on its own signature picture (drawn from its data), with readouts, and no script errors
     c7 = b.new_context(viewport={"width": 390, "height": 844}); bare = []; shown = []
-    for pid in "kairos garage piano money apollo hermes argus selling icarus odyssey bastion privacy records forge foundry observatory kin".split():
+    for pid in "kairos garage piano money apollo hermes argus selling icarus odyssey bastion privacy records forge foundry observatory kin hearth".split():
         p7 = c7.new_page(); mine = []; p7.on("pageerror", lambda e, mine=mine: mine.append(str(e)[:100]))
         if MOCK: p7.route("https://jpavia10.github.io/**", lambda route, request: route.abort()); p7.route("https://api.weather.gov/**", lambda route, request: route.abort())
         p7.goto(f"{URL}pillars/{pid}/?still=1&today=2026-11-13", wait_until="load"); p7.wait_for_timeout(500)
@@ -82,7 +82,7 @@ with sync_playwright() as p:
         if not st or st["lit"] < 40 or st["reads"] < 3 or not st["after"] or mine: bare.append(f"{pid}: {st} {mine[:1]}")
         else: shown.append(pid)
         p7.close()
-    proof("STAGE-1", "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors", not bare and len(shown) == 17, f"{len(shown)} of 17 drawn: {', '.join(shown)}" + ("; missing: " + " | ".join(bare) if bare else "")); c7.close()
+    proof("STAGE-1", "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors", not bare and len(shown) == 18, f"{len(shown)} of 18 drawn: {', '.join(shown)}" + ("; missing: " + " | ".join(bare) if bare else "")); c7.close()
 
     # NEW-1: the four pillars added 2026-11-13 do their jobs on real data
     c8 = b.new_context(viewport={"width": 390, "height": 844}); p8 = c8.new_page(); bad8 = []; p8.on("pageerror", lambda e: bad8.append(str(e)[:100]))

@@ -77,9 +77,9 @@
    "name": "Hephaestus Hearth",
    "what": "The house: projects, inventory and floor plan.",
    "repo": "jpavia10/hephaestus-hearth",
-   "home": "",
-   "live": "https://jpavia10.github.io/hephaestus-hearth/",
-   "state": "bones",
+   "home": "pillars/hearth/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+   "state": "live",
    "look": "prometheus",
    "drive": {
     "folder": "1tvzm62kI2L3DQXe8v5Z3bKmodIV--i-B",
@@ -262,10 +262,10 @@
    "id": "hearth",
    "name": "Hephaestus Hearth · House",
    "kind": "capability",
-   "route": "https://jpavia10.github.io/hephaestus-hearth/",
-   "state": "partial",
+   "route": "pillars/hearth/",
+   "state": "live",
    "dataOwner": "house",
-   "note": "Lives in its own repo (external entry below); the desk links to it."
+   "note": "Moved into the hub 2026-11-13 (owner: \"Hearth doesnt need an independent repo if its gonna stop you from working on it\"). The old site at jpavia10/hephaestus-hearth is left as it was."
   },
   {
    "id": "money",
@@ -400,14 +400,6 @@
    "boundary": "link_only",
    "repo": "jpavia10/midas-ledger",
    "live": "https://jpavia10.github.io/midas-ledger/"
-  },
-  {
-   "id": "hearth",
-   "name": "Hephaestus Hearth",
-   "boundary": "standalone_repo",
-   "repo": "jpavia10/hephaestus-hearth",
-   "live": "https://jpavia10.github.io/hephaestus-hearth/",
-   "note": "The HOUSE capability's home repo; hub links to it."
   },
   {
    "id": "fleet",
