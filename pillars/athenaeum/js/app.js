@@ -1,7 +1,7 @@
 /* Athenaeum: the place. Every idea is a star; what relates pulls together into constellations; each refinement is a moon; the slider
    replays the sky from the first spark to today; the chronicle winds in from deep time. Under the sky the records are exactly what
    they were: ideas are never edited, refinements only append, imports merge and never replace, nothing leaves this browser.
-   Storage (unchanged keys): prometheus.athenaeum.ideas / shelf / ideasSeedV2 / histSeedV1. */
+   Storage (unchanged keys): prometheus.athenaeum.ideas / shelf / ideasSeedV3 / histSeedV1. */
 import { createSky } from "./sky.js";
 import { relate, skeleton, clusters, layout, span, tOf, dateAt, provenance, refinementBy, mentions, arm, stats } from "./model.js";
 import { PILLARS } from "../../../deck/pillars.js";
@@ -23,14 +23,14 @@ const fill = (node, ...kids) => node.replaceChildren(...kids.flat().filter((k) =
 const icon = (d, w = 18) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("width", w); s.setAttribute("height", w); s.setAttribute("fill", "none"); s.setAttribute("stroke", "currentColor"); s.setAttribute("stroke-width", "1.7"); s.setAttribute("stroke-linecap", "round"); s.setAttribute("stroke-linejoin", "round"); s.setAttribute("aria-hidden", "true"); const p = document.createElementNS(s.namespaceURI, "path"); p.setAttribute("d", d); s.append(p); return s; };
 
 /* ---- the seeds, once (unchanged): the owner's canonical ideas and the history set ---- */
-if (!S.get("ideasSeedV2") && window.ATHENAEUM_IDEAS) {
+if (!S.get("ideasSeedV3") && window.ATHENAEUM_IDEAS) {
   const norm = (t) => String(t || "").toLowerCase().replace(/\s+/g, " ").trim(), cur = S.list("ideas"), byTitle = new Map(cur.map((i) => [norm(i.title), i]));
   for (const inc of window.ATHENAEUM_IDEAS) {
     const hit = byTitle.get(norm(inc.title)); if (!hit) { cur.push(inc); byTitle.set(norm(inc.title), inc); continue; }
     const have = new Set((hit.chain || []).map((c) => c.date + "|" + c.text)); for (const c of inc.chain || []) if (!have.has(c.date + "|" + c.text)) (hit.chain = hit.chain || []).push(c);
     if (!hit.source && inc.source) hit.source = inc.source; if (!hit.strength && inc.strength) hit.strength = inc.strength; if (!hit.body && inc.body) hit.body = inc.body;
   }
-  S.set("ideas", cur); S.set("ideasSeedV2", 1);
+  S.set("ideas", cur); S.set("ideasSeedV3", 1);
 }
 if (!S.get("histSeedV1") && window.ATHENAEUM_HISTORY) { for (const e of window.ATHENAEUM_HISTORY) S.add("shelf", { title: e.title, author: e.author, kind: "history", status: "done", chain: e.chain }); S.set("histSeedV1", 1); }
 { const l = S.list("ideas"); let fixed = false; for (const i of l) { if (!i.id) { i.id = mint(); fixed = true; } if (!Array.isArray(i.chain)) { i.chain = []; fixed = true; } } if (fixed) S.set("ideas", l); }   // a record needs a name to be linked to; nothing else is touched
