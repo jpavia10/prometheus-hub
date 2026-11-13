@@ -36,7 +36,7 @@ Sylade is one page on the old desk's styles.
 | Money (cell "Payoff") | 9 KB | 62 KB: issuers, offers, worked cases | a sample loan | money events |
 | Selling | 6 KB | 11 KB | zeros | deadlines, money events |
 | Icarus | 11 KB | 39 KB market calendar | empty journal | nothing |
-| Garage | 12 KB | 28 KB factory schedule | an odometer form, the schedule with every item "unknown" | deadlines |
+| Garage | 12 KB | 28 KB factory schedule | an odometer form, the schedule with every item "no service logged yet" | deadlines |
 | Odyssey | 5 KB | 1 KB | a trip form | deadlines |
 | Bastion | 9 KB | 24 KB | empty inventory, a weather-alert panel | deadlines |
 | Athenaeum | 9 KB | 63 KB: 11 of the owner's ideas with refinements, a history seed | real content | nothing |
@@ -94,11 +94,11 @@ know whether it happens on a phone. The proofs now count and report it instead o
 1. **No shared memory of what happened.** [V] The bus carries deadlines and money events only. There is no activity record, so the hub cannot show "since you were last here" or a timeline.
 2. **Search stops at the door.** [V] The command key finds pillar names and the two consoles. It cannot find an idea in Athenaeum, a document in Records or a service in Garage.
 3. **Capture goes to one place.** [V] Plain-words capture makes Kairos console events only. Nothing routes "idea: ..." to Athenaeum or "oil change 42,100 mi" to Garage.
-4. **Three hand-kept lists of pillars.** [V] `pillars.json`, `deck/pillars.js` and a list inside `kit/kit.js`. They already differ in names and order.
+4. **Three hand-kept lists of pillars.** [V] `pillars.json`, `deck/pillars.js` and a list inside `kit/kit.js`. They already differ in names ("Money" in one, "Payoff" in another) and in order.
 5. **Two stores, two backup formats.** [V] Pillars write `prometheus.<pillar>.*`; the hub's consoles write `prom.deck.*`. Each has its own export. One backup of everything does not exist.
-6. **No growth plan for storage.** [V] Everything except Argus is in localStorage (about 5 MB for the whole origin, shared with Titan, Midas and Hearth). No pillar has a migration step.
+6. **No growth plan for storage.** [V] Everything except Argus is in localStorage, and no pillar has a migration step: where a data shape changed, a new key name was used (`factoryV2`, `brokersV2`). [I] Browsers usually allow about 5 MB of it per origin, and Titan, Midas and Hearth share this origin.
 7. **No pillar has a signature.** [V] After d5 all 14 are the same composition in 14 colours: the homogenization the charter warns against (its section 8).
-8. **The spin has no keyboard equivalent.** [V] Pillars are reachable by Tab and by the grid switch, but the orbit itself cannot be turned from a keyboard.
+8. **The spin has no keyboard equivalent.** [V] Each pillar on the core is a link, so Tab reaches it, and there is a grid switch; the orbit itself has no key handling. [I] Not tried with a keyboard or a screen reader.
 9. **No test on the real device, no measured budget.** [V]
 10. **Personal details in a public repository.** [V] A town, a vehicle model and a family first name appear in pillar text and form options. Removing them from history needs the owner's decision.
 11. **Sylade sits outside the system.** [V] Old styles, a 488 KB script kept alive only for it, and a title overlapped by a glyph at phone width.
