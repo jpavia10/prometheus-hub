@@ -6,7 +6,7 @@
   "route": "pillars/athenaeum/",
   "mission": "Keep every idea whole, with everything it became, and show how ideas relate.",
   "signature": "The sky: ideas as stars drawn together by what they share, replayable from the first spark to today.",
-  "owns": ["prometheus.athenaeum.ideas", "prometheus.athenaeum.shelf", "prometheus.athenaeum.ideasSeedV1", "prometheus.athenaeum.histSeedV1"],
+  "owns": ["prometheus.athenaeum.ideas", "prometheus.athenaeum.shelf", "prometheus.athenaeum.ideasSeedV1", "prometheus.athenaeum.ideasSeedV3", "prometheus.athenaeum.histSeedV1"],
   "publishes": ["idea.captured", "idea.refined", "idea.archived", "shelf.added", "import.merged"],
   "search": [
     { "key": "prometheus.athenaeum.ideas", "kind": "idea", "title": "title", "text": ["body", "tags", "chain.text"], "skip": "archived", "open": "#idea/{id}" }

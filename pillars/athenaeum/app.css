@@ -167,6 +167,7 @@ body.ath .empty { color: var(--dim); text-align: center; padding: 22px 10px; }
 body.ath-open .pk-dock, body.ath-open .ath-time, body.ath-open .ath-spark, body.ath-open .ath-rail, body.ath-open .ath-hud, body.ath-finding .pk-dock { opacity: 0; pointer-events: none; }
 body.ath-open .pk-dock { translate: 0 130%; } body.ath .pk-dock { transition: opacity .3s, translate .3s; }
 body.ath :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+body.ath .ath-codex h2:focus, body.ath .ath-codex h2:focus-visible { outline: none; }
 body.ath .toast { z-index: 70; bottom: calc(24px + var(--safe-b)); max-width: calc(100vw - 32px); }
 
 @media (min-width: 900px) {

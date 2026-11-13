@@ -35,7 +35,8 @@
       const cur = byTitle.get(key);
       if (!cur) {                                                                  // a new idea comes in whole (its id, origin, links and archive state), so a backup restores as it was
         const id = inc.id && !used.has(inc.id) ? inc.id : "i" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); used.add(id);
-        const ni = { ...inc, id, body: inc.body || "", tags: inc.tags || [], created: inc.created || new Date().toISOString().slice(0, 10), chain: [...(inc.chain || [])], lastResurfaced: inc.lastResurfaced == null ? null : inc.lastResurfaced, archived: !!inc.archived };
+        const ni = { ...inc, id, chain: [...(inc.chain || [])] };                     // as it came: no fields added, key order kept, so a backup restores to the byte
+        if (ni.body == null) ni.body = ""; if (!Array.isArray(ni.tags)) ni.tags = []; if (!ni.created) ni.created = new Date().toISOString().slice(0, 10);
         all.push(ni); byTitle.set(key, ni); added++; continue; }
       let changed = false;
       const have = new Set(cur.chain.map((c) => c.date + "|" + c.text));

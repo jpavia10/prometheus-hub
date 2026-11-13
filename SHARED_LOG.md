@@ -1,4 +1,7 @@
 
+### [2026-11-13] Claude: build d8, Athenaeum holds the owner's 70 ideas
+- The owner's account pushed the full idea set (70 ideas, 339 refinements, 2023-2026). Fixed what it exposed: tags now match without case ("AI" = "ai"); a lone star joins its nearest relative's constellation (21 groups, 13 of one, became 15 with none alone); the sky scales to the bulk of the ideas and a full sky starts closer; an import no longer adds fields, so a backup restores byte for byte. Proofs now count from the data instead of assuming 11 ideas; ATH-1 also fails on a black sky.
+
 ### [2026-11-13] Claude: build d7, Athenaeum rebuilt (first pillar under the charter)
 - Owner: "Continue with whatever but 70 is low i want over 100 beyond limits"; he will make the repository private later. Athenaeum is now a 3D sky of his ideas (WebGL, no library): relations from shared tags and words computed on the device, constellations, a codex per idea with lineage and provenance, a time slider and replay, the 40 history entries as a spiral arm with cause, event, consequence. Same records, every old feature kept; two old faults fixed (an export could not be re-imported; imported ideas lost their ids).
 - Foundations: event log `PB.events`, the first pillar manifest, hub search and "idea: ..." hand-off through it (`docs/architecture/MANIFEST.md`). Proofs: 9 unit, ATH-1..7, CORE-5 (22 browser proofs in all).

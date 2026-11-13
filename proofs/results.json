@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:8377/",
- "ran": "2026-11-13T13:38Z",
+ "ran": "2026-11-13T20:14Z",
  "clock": "2026-11-20T09:00",
  "results": [
   {
@@ -25,7 +25,7 @@
    "id": "CORE-4",
    "name": "Tapping a cell warps into that pillar",
    "pass": true,
-   "detail": "Apollo Temple (4.4 s on this machine)"
+   "detail": "Apollo Temple (4.2 s on this machine)"
   },
   {
    "id": "PILLAR-1",
@@ -41,27 +41,27 @@
   },
   {
    "id": "ATH-1",
-   "name": "Athenaeum opens as a sky: the 11 kept ideas are stars in 3D, tied by what they share, in four constellations",
+   "name": "Athenaeum opens as a sky: every kept idea is a star in 3D, tied by what they share, in named constellations",
    "pass": true,
-   "detail": "WebGL True; 11 stars on screen, 16 ties drawn, 7 labels readable; constellations: AI 4, Numismatics 3, Research 2, Continuous improvement 2; 11 ideas \u00b7 39 refinements; page 390x844"
+   "detail": "WebGL True; 68 of 70 stars on screen, 91 ties drawn, 18 labels readable; constellations: AI 15, Invention 9, Infrastructure 8, AI training 6, Mining 5, Society 4, Software 3, Method 3, Systems 3, AI philosophy 3, Distributed systems 3, Interactive fiction 2, Policy 2, Worldview 2, Safety 2; 70 ideas \u00b7 339 refinements; page 390x844"
   },
   {
    "id": "ATH-2",
    "name": "Tapping a star opens the idea whole: its words unchanged, its lineage, where it came from, and what it connects to and why",
    "pass": true,
-   "detail": "Multi-AI collaboration with independent verification: 5 refinements on the spine, marked ['from the import']; ['Imported', '5 refinements']; connected: Independent blind audits for [shares AI, reliability \u00b7 both speak of blind, audit, multi]; Back closes it: True"
+   "detail": "Shattermind \u2014 an adaptive, paradox-driven interactive story world: 2 refinements on the spine, marked ['from the import']; ['Imported', '2 refinements']; connected: The intelligence-building in [shares interactive fiction \u00b7 both speak of interactive, story, intellectually]; Back closes it: True"
   },
   {
    "id": "ATH-3",
    "name": "Capture and refinement: a new idea becomes a star marked as typed by you, finds its relatives by itself, a refinement only appends, and no other record changes",
    "pass": true,
-   "detail": "12 stars; the 11 earlier records byte-identical: True; found by itself: ['Independent blind audits for A', 'Multi-AI collaboration with in']; refinement marked ['you']; events ['idea.captured:athenaeum', 'idea.refined:athenaeum']"
+   "detail": "71 stars; the 70 earlier records byte-identical: True; found by itself: ['Independent blind audits for A', 'AI should write its own OS and']; refinement marked ['you']; events ['idea.captured:athenaeum', 'idea.refined:athenaeum']"
   },
   {
    "id": "ATH-4",
    "name": "The time slider shows the sky as it was: only the ideas that existed on that day are lit",
    "pass": true,
-   "detail": "at Oct 15, 2026 \u00b7 4 ideas: 4 stars lit, 4 ideas existed by 2026-10-15; today 12"
+   "detail": "at Jul 19, 2024 \u00b7 4 ideas: 4 stars lit, 4 ideas existed by 2024-07-19; today 71"
   },
   {
    "id": "ATH-5",
@@ -73,25 +73,25 @@
    "id": "ATH-6",
    "name": "Backup: export, lose everything, import. The preview says what will change before anything does, and every idea comes back exactly as it was",
    "pass": true,
-   "detail": "wiped to 0; preview: 12 new ideas would be added / 40 new shelf entries; nothing applied until confirmed: True; restored ideas identical to the byte: True; shelf 40 of 40"
+   "detail": "wiped to 0; preview: 71 new ideas would be added / 40 new shelf entries; nothing applied until confirmed: True; restored ideas identical to the byte: True; shelf 40 of 40"
   },
   {
    "id": "ATH-7",
    "name": "Nothing the old page did is gone: search inside refinements, resurfacing, archive (now with undo), the shelf",
    "pass": true,
-   "detail": "search 'first reader' (words only in a refinement) finds ['Proof: second readers for every audit']; actions ['Seen \u00b7 resurface later', 'Archive']; archive 11 then undo 12; shelved ['Proof: a book']"
+   "detail": "search 'first reader' (words only in a refinement) finds ['Proof: second readers for every audit']; actions ['Seen \u00b7 resurface later', 'Archive']; archive 70 then undo 71; shelved ['Proof: a book']"
   },
   {
    "id": "CORE-5",
    "name": "The hub reaches into a pillar through its manifest: finds an idea by its title or its text, hands typed words to the pillar without writing its records, and shows what last happened there",
    "pass": true,
-   "detail": "'blind audits' -> Independent blind audits for AI change c (pillars/athenaeum/#idea/imp20261110-8); text match -> Athenaeum \u00b7 idea \u00b7 \u2026ter systems and the role of anti-corrosion additiv; ticker has the event: True; 'Capture an idea: test the handoff from t' opens Athenaeum with the title filled: 'test the handoff from the hub', ideas still 11"
+   "detail": "'blind audits' -> Independent blind audits for AI change c (pillars/athenaeum/#idea/imp20261110-8); text match -> Athenaeum \u00b7 idea \u00b7 \u2026residual contamination and anti-corrosion additive; ticker has the event: True; 'Capture an idea: test the handoff from t' opens Athenaeum with the title filled: 'test the handoff from the hub', ideas still 70"
   },
   {
    "id": "DECK-1",
    "name": "Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store",
    "pass": true,
-   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d7\"}"
+   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d8\"}"
   },
   {
    "id": "TIME-1",

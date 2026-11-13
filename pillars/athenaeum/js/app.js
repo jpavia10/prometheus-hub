@@ -14,7 +14,7 @@ const CALM = STILL || matchMedia("(prefers-reduced-motion: reduce)").matches;
 const PAL = [[1, .77, .32], [.73, .64, 1], [.44, .89, 1], [1, .56, .69], [.49, 1, .75], [.53, .66, 1], [1, .62, .36]];
 const css = (c) => `rgb(${c.map((x) => Math.round(x * 255)).join(",")})`;
 const fmt = (d) => { const x = new Date(String(d).slice(0, 10) + "T12:00:00"); return isNaN(x) ? String(d || "") : x.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); };
-const nice = (t) => (t.length <= 3 ? t.toUpperCase() : t.replace(/-/g, " "));
+const nice = (t) => String(t).replace(/-/g, " ").replace(/\b(ai|api|ui|3d)\b/gi, (w) => w.toUpperCase());
 const short = (t) => { const s = String(t).split(/ — | – | - |: /)[0].trim(); return s.length > 24 ? s.slice(0, 23).trim() + "…" : s; };
 const mint = () => "i" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 const emit = (type, ref, title) => { try { if (window.PB && PB.events) PB.events.publish({ type, pillar: "athenaeum", ref, title }); } catch (e) { /* the log is optional */ } };
@@ -82,7 +82,7 @@ function applyDim() {
 }
 function paintChrome() {
   const s = stats(all, shelf, chron); $("#ath-count").textContent = `${plural(s.ideas, "idea")} · ${plural(s.refinements, "refinement")}`;
-  legend.replaceChildren(...(groups.list.length > 1 ? groups.list.map((g) => h("button.ath-chip.c" + (st.cluster === g.index ? ".on" : ""), { type: "button", style: `--c:${css(PAL[g.index % PAL.length])}`, "aria-pressed": String(st.cluster === g.index), onclick: () => pickCluster(g.index) }, h("i"), g.name, h("b", null, g.members.length))) : []));
+  legend.replaceChildren(...(groups.list.length > 1 ? groups.list.filter((g) => g.members.length > 1 || st.cluster === g.index).slice(0, 10).map((g) => h("button.ath-chip.c" + (st.cluster === g.index ? ".on" : ""), { type: "button", style: `--c:${css(PAL[g.index % PAL.length])}`, "aria-pressed": String(st.cluster === g.index), onclick: () => pickCluster(g.index) }, h("i"), g.name, h("b", null, g.members.length))) : []));
   const res = VAULT.pickResurface(all, TODAY); resBtn.hidden = !res.length; resBtn.textContent = res.length ? `${res.length} worth revisiting` : ""; resBtn.title = "Ideas you have not come back to in 30 days";
   ticks.replaceChildren(...live.flatMap((i) => [h("i.s", { style: `left:${(tOf(sp, i.created) * 100).toFixed(2)}%` }), ...(i.chain || []).map((c) => h("i", { style: `left:${(tOf(sp, c.date || i.created) * 100).toFixed(2)}%` }))]));
   if (!live.length) { hint.textContent = "Nothing kept yet. The + button keeps your first idea."; hint.classList.remove("gone"); } else if (hint.textContent.startsWith("Nothing")) hint.textContent = "Drag to turn · pinch to zoom · tap a star";

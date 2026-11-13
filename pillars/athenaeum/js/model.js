@@ -35,11 +35,14 @@ export function vectors(ideas) {
   });
 }
 
+/** Tags compared without case or spacing: "AI", "ai" and "Ai " are one tag. */
+export const tagsOf = (i) => [...new Set((i.tags || []).map((t) => String(t).trim().toLowerCase().replace(/\s+/g, "-")).filter(Boolean))];
+
 /** Every pair that has something in common, with the reason kept: the shared tags, the shared words, a link made by hand. */
 export function relate(ideas) {
   const vec = vectors(ideas), edges = [];
   for (let a = 0; a < ideas.length; a++) for (let b = a + 1; b < ideas.length; b++) {
-    const A = ideas[a], B = ideas[b], ta = new Set(A.tags || []), tb = B.tags || [];
+    const A = ideas[a], B = ideas[b], ta = new Set(tagsOf(A)), tb = tagsOf(B);
     const tags = tb.filter((t) => ta.has(t));
     const tagScore = tags.length ? tags.length / Math.sqrt(Math.max(1, ta.size) * Math.max(1, tb.length)) : 0;
     let cos = 0; const shared = []; const [small, big] = vec[a].size < vec[b].size ? [vec[a], vec[b]] : [vec[b], vec[a]];
@@ -71,10 +74,12 @@ export function clusters(ideas, edges) {
   const best = new Array(n).fill(null);
   for (const e of edges) { if (!best[e.a]) best[e.a] = e; if (!best[e.b]) best[e.b] = e; }
   for (let i = 0; i < n; i++) if (best[i] && best[i].w >= 0.1) parent[find(best[i].a)] = find(best[i].b);
+  const size = new Map(); for (let i = 0; i < n; i++) size.set(find(i), (size.get(find(i)) || 0) + 1);
+  for (let i = 0; i < n; i++) if (size.get(find(i)) === 1 && best[i]) { const o = best[i].a === i ? best[i].b : best[i].a; parent[find(i)] = find(o); }   // a lone star joins the group of its closest relative
   const groups = new Map(); for (let i = 0; i < n; i++) { const r = find(i); if (!groups.has(r)) groups.set(r, []); groups.get(r).push(i); }
-  const used = new Set(); const nice = (t) => (t.length <= 3 ? t.toUpperCase() : t.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase()));
+  const used = new Set(); const nice = (t) => t.replace(/-/g, " ").replace(/\b(ai|api|ui|3d)\b/gi, (w) => w.toUpperCase()).replace(/^./, (c) => c.toUpperCase());
   const list = [...groups.values()].sort((x, y) => y.length - x.length || x[0] - y[0]).map((members) => {
-    const tally = new Map(); for (const i of members) for (const t of ideas[i].tags || []) tally.set(t, (tally.get(t) || 0) + 1);
+    const tally = new Map(); for (const i of members) for (const t of tagsOf(ideas[i])) tally.set(t, (tally.get(t) || 0) + 1);
     const ranked = [...tally.entries()].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0]));
     const pick = ranked.find(([t]) => !used.has(t)) || ranked[0]; const tag = pick ? pick[0] : "";
     if (tag) used.add(tag);
@@ -106,8 +111,9 @@ export function layout(ideas, edges) {
     for (let i = 0; i < n; i++) { for (let k = 0; k < 3; k++) { F[i][k] -= P[i][k] * 0.35; const m = Math.max(-1, Math.min(1, F[i][k])); P[i][k] += m * cool; } }
   }
   let cx = 0, cy = 0, cz = 0; for (const p of P) { cx += p[0]; cy += p[1]; cz += p[2]; } cx /= n; cy /= n; cz /= n;
-  let max = 1e-6; for (const p of P) { p[0] -= cx; p[1] -= cy; p[2] -= cz; p[1] *= 0.72; max = Math.max(max, Math.hypot(p[0], p[1], p[2])); }
-  for (const p of P) { p[0] /= max; p[1] /= max; p[2] /= max; }
+  for (const p of P) { p[0] -= cx; p[1] -= cy; p[2] -= cz; p[1] *= 0.72; }
+  const radii = P.map((p) => Math.hypot(p[0], p[1], p[2])).sort((a, b) => a - b), bulk = Math.max(1e-6, radii[Math.min(n - 1, Math.floor(n * 0.85))]);   // scale to the bulk, not the farthest outlier
+  for (const p of P) { const r = Math.hypot(p[0], p[1], p[2]) / bulk, s = r > 0.8 ? (0.8 + 0.2 * Math.tanh((r - 0.8) / 0.2)) / r : 1; p[0] *= s / bulk; p[1] *= s / bulk; p[2] *= s / bulk; }   // the few beyond it are drawn in softly, so everything stays within radius 1
   return P;
 }
 

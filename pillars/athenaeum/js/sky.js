@@ -128,7 +128,8 @@ export function createSky(canvas, layer, hooks = {}) {
     const r = canvas.getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
     dpr = Math.min(window.devicePixelRatio || 1, quality === 2 ? 2 : quality === 1 ? 1.5 : 1);
     const w = Math.round(W * dpr), h = Math.round(H * dpr); if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-    home = W / H < .75 ? 4.15 : W / H < 1.2 ? 3.6 : 3.0; if (gl) gl.viewport(0, 0, w, h);
+    home = (W / H < .75 ? 4.15 : W / H < 1.2 ? 3.6 : 3.0) * (ideas.length > 24 ? .8 : 1);   // a full sky starts closer, so it fills the screen
+    if (gl) gl.viewport(0, 0, w, h);
   }
 
   /* ---- geometry that only changes when the data does ---- */
@@ -281,7 +282,7 @@ export function createSky(canvas, layer, hooks = {}) {
 
   const api = {
     get ok() { return ok; },
-    setIdeas(list) { ideas = list; if (focusI >= ideas.length) focusI = -1; buildLines(); syncLabels(); },
+    setIdeas(list) { const was = ideas.length; ideas = list; if ((was > 24) !== (list.length > 24)) { const atHome = Math.abs(goal.dist - home) < .01; size(); if (atHome && focusI < 0 && chronI < 0) goal.dist = home; } if (focusI >= ideas.length) focusI = -1; buildLines(); syncLabels(); },
     setLinks(list) { links = list; buildLines(); },
     setChron(list) { chron = list; buildArm(); syncLabels(); },
     setClusters(list) { groups = list; syncLabels(); },
@@ -302,7 +303,7 @@ export function createSky(canvas, layer, hooks = {}) {
     ignite(i) { const r = el("i", "ath-ring"); r.setAttribute("aria-hidden", "true"); layer.append(r); rings.push({ i, node: r, at: performance.now() }); },
     nudge(dyaw, dpitch, zoom) { idle = 0; goal.yaw += dyaw; goal.pitch = Math.max(-1.25, Math.min(1.25, goal.pitch + dpitch)); if (zoom) goal.dist = Math.max(.9, Math.min(11, goal.dist * zoom)); },
     pause(p) { paused = p; }, project, setInsets(top, bottom) { inset[0] = top; inset[1] = bottom; },
-    debug() { return { ok, quality, focus: focusI, event: chronI, now, cam: { ...cam, t: [...cam.t] }, ideas: ideas.map((n) => n._s && { id: n.id, x: Math.round(n._s.x), y: Math.round(n._s.y), on: n._s.on && now >= n.born }), size: [W, H], sprites: ideas.length, lines: lineCount / 6, arm: armCount / 6 }; },
+    debug() { return { ok, quality, viewport: gl ? [...gl.getParameter(gl.VIEWPORT)] : null, canvas: [canvas.width, canvas.height], focus: focusI, event: chronI, now, cam: { ...cam, t: [...cam.t] }, ideas: ideas.map((n) => n._s && { id: n.id, x: Math.round(n._s.x), y: Math.round(n._s.y), on: n._s.on && now >= n.born }), size: [W, H], sprites: ideas.length, lines: lineCount / 6, arm: armCount / 6 }; },
     destroy() { cancelAnimationFrame(raf); window.removeEventListener("resize", onSize); },
   };
   if (init()) { goal.dist = cam.dist = home; if (still) draw(0); raf = requestAnimationFrame(frame); }
