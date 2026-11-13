@@ -2,7 +2,7 @@
    (pillars/<id>/pillar.json, format in docs/architecture/MANIFEST.md): which stored lists hold records worth finding, which fields to
    read, the address that opens one record, the commands it offers and the events it publishes. The hub reads storage directly and
    never loads a pillar's code; the pillar's record stays the authority and every result opens it there. */
-export const MANIFESTS = ["pillars/athenaeum/pillar.json"];
+export const MANIFESTS = ["pillars/athenaeum/pillar.json", "pillars/forge/pillar.json", "pillars/foundry/pillar.json", "pillars/observatory/pillar.json", "pillars/kin/pillar.json", "pillars/games/pillar.json"];
 let loaded = [];
 export function loadManifests() {
   return Promise.all(MANIFESTS.map((u) => fetch(u).then((r) => (r.ok ? r.json() : null)).catch(() => null))).then((l) => { loaded = l.filter((m) => m && m.manifest === 1 && m.id && m.route); return loaded; });

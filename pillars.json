@@ -191,7 +191,7 @@
  "capabilities": [
   {
    "id": "arrival",
-   "name": "Arrival \u00b7 the desk",
+   "name": "Arrival · the desk",
    "kind": "desk",
    "route": "./",
    "state": "live",
@@ -260,7 +260,7 @@
   },
   {
    "id": "hearth",
-   "name": "Hephaestus Hearth \u00b7 House",
+   "name": "Hephaestus Hearth · House",
    "kind": "capability",
    "route": "https://jpavia10.github.io/hephaestus-hearth/",
    "state": "partial",
@@ -269,7 +269,7 @@
   },
   {
    "id": "money",
-   "name": "Money \u00b7 payoff simulator",
+   "name": "Money · payoff simulator",
    "kind": "capability",
    "route": "pillars/money/",
    "state": "live",
@@ -299,7 +299,7 @@
   },
   {
    "id": "garage",
-   "name": "Garage \u00b7 2025 Sorento Hybrid",
+   "name": "Garage · 2025 Sorento Hybrid",
    "kind": "capability",
    "route": "pillars/garage/",
    "state": "live",
@@ -307,7 +307,7 @@
   },
   {
    "id": "bastion",
-   "name": "Bastion \u00b7 Mountain Prep",
+   "name": "Bastion · Mountain Prep",
    "kind": "capability",
    "route": "pillars/bastion/",
    "state": "live",
@@ -315,7 +315,7 @@
   },
   {
    "id": "athenaeum",
-   "name": "Athenaeum \u00b7 Idea Vault",
+   "name": "Athenaeum · Idea Vault",
    "kind": "capability",
    "route": "pillars/athenaeum/",
    "state": "live",
@@ -323,7 +323,7 @@
   },
   {
    "id": "odyssey",
-   "name": "Odyssey \u00b7 Trips & Away Mode",
+   "name": "Odyssey · Trips & Away Mode",
    "kind": "capability",
    "route": "pillars/odyssey/",
    "state": "live",
@@ -331,7 +331,7 @@
   },
   {
    "id": "privacy",
-   "name": "Privacy \u00b7 CA DROP",
+   "name": "Privacy · CA DROP",
    "kind": "capability",
    "route": "pillars/privacy/",
    "state": "live",
@@ -339,7 +339,7 @@
   },
   {
    "id": "records",
-   "name": "Records \u00b7 Paper Killer",
+   "name": "Records · Paper Killer",
    "kind": "capability",
    "route": "pillars/records/",
    "state": "live",
@@ -347,11 +347,43 @@
   },
   {
    "id": "presence",
-   "name": "Sylade \u00b7 Presence",
+   "name": "Sylade · Presence",
    "kind": "capability",
    "route": "sylade.html",
    "state": "live",
    "dataOwner": "presence"
+  },
+  {
+   "id": "forge",
+   "name": "Forge",
+   "what": "AI work: tasks handed to the other AIs, what is due back, reviews and scores.",
+   "route": "pillars/forge/",
+   "state": "live",
+   "added": "2026-11-13"
+  },
+  {
+   "id": "foundry",
+   "name": "Foundry",
+   "what": "Inventions turned into builds, stage by stage.",
+   "route": "pillars/foundry/",
+   "state": "live",
+   "added": "2026-11-13"
+  },
+  {
+   "id": "observatory",
+   "name": "Observatory",
+   "what": "Subjects you follow, with sources, kept apart from opinion.",
+   "route": "pillars/observatory/",
+   "state": "live",
+   "added": "2026-11-13"
+  },
+  {
+   "id": "kin",
+   "name": "Kin",
+   "what": "Family logistics: schedule, school paperwork, activities, trips.",
+   "route": "pillars/kin/",
+   "state": "live",
+   "added": "2026-11-13"
   }
  ],
  "external": [

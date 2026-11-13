@@ -30,7 +30,7 @@ with sync_playwright() as p:
     p2.goto(f"{URL}?now={NOW}#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
     ci = p2.evaluate("""() => ({ hex: document.querySelectorAll('.reactor .hex:not(.core)').length, names: [...document.querySelectorAll('.reactor .hex:not(.core) .hex-name')].map((x) => x.textContent),
       demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth, ring: !!document.querySelector('.dayring') })""")
-    proof("CORE-1", "Every pillar is on the core (19 since Games); a clean device shows no sample data", ci["hex"] == 19 and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"], json.dumps(ci))
+    proof("CORE-1", "Every pillar is on the core (23: Games, Forge, Foundry, Observatory and Kin added); a clean device shows no sample data", ci["hex"] == 23 and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"], json.dumps(ci))
     routes = p2.evaluate("[...document.querySelectorAll('.reactor .hex:not(.core) a')].map((a) => a.getAttribute('href'))"); bad = []; local = [r for r in routes if not r.startswith("http")]
     for r in local:
         resp = p2.request.get(URL + r)
@@ -73,7 +73,7 @@ with sync_playwright() as p:
 
     # STAGE-1: every kit pillar opens on its own signature picture (drawn from its data), with readouts, and no script errors
     c7 = b.new_context(viewport={"width": 390, "height": 844}); bare = []; shown = []
-    for pid in "kairos garage piano money apollo hermes argus selling icarus odyssey bastion privacy records".split():
+    for pid in "kairos garage piano money apollo hermes argus selling icarus odyssey bastion privacy records forge foundry observatory kin".split():
         p7 = c7.new_page(); mine = []; p7.on("pageerror", lambda e, mine=mine: mine.append(str(e)[:100]))
         if MOCK: p7.route("https://jpavia10.github.io/**", lambda route, request: route.abort()); p7.route("https://api.weather.gov/**", lambda route, request: route.abort())
         p7.goto(f"{URL}pillars/{pid}/?still=1&today=2026-11-13", wait_until="load"); p7.wait_for_timeout(500)
@@ -82,7 +82,24 @@ with sync_playwright() as p:
         if not st or st["lit"] < 40 or st["reads"] < 3 or not st["after"] or mine: bare.append(f"{pid}: {st} {mine[:1]}")
         else: shown.append(pid)
         p7.close()
-    proof("STAGE-1", "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors", not bare and len(shown) == 13, f"{len(shown)} of 13 drawn: {', '.join(shown)}" + ("; missing: " + " | ".join(bare) if bare else "")); c7.close()
+    proof("STAGE-1", "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors", not bare and len(shown) == 17, f"{len(shown)} of 17 drawn: {', '.join(shown)}" + ("; missing: " + " | ".join(bare) if bare else "")); c7.close()
+
+    # NEW-1: the four pillars added 2026-11-13 do their jobs on real data
+    c8 = b.new_context(viewport={"width": 390, "height": 844}); p8 = c8.new_page(); bad8 = []; p8.on("pageerror", lambda e: bad8.append(str(e)[:100]))
+    if MOCK:
+        import pathlib as _pl
+        _ledger = _pl.Path(__file__).resolve().parents[2] / "titan-reliquary-preview" / "collaborators" / "CONTRIBUTOR_SCORES.md"
+        p8.route("**/titan-reliquary-preview/collaborators/CONTRIBUTOR_SCORES.md", lambda route, request: route.fulfill(status=200, body=_ledger.read_text() if _ledger.exists() else "", headers={"content-type": "text/plain"}))
+    p8.goto(f"{URL}pillars/forge/?still=1", wait_until="load"); p8.wait_for_function("window.FORGE && FORGE.data().scoreState !== 'loading' && FORGE.data().queueState !== 'loading'", timeout=20000)
+    fg = p8.evaluate("() => { const d = FORGE.data(); const by = {}; for (const s of d.scores) by[s.ai] = (by[s.ai] || 0) + 1; return { scores: d.scores.length, by, tasks: d.tasks.length, open: d.tasks.filter((t) => t.state !== 'done').length }; }")
+    p8.goto(f"{URL}pillars/foundry/?still=1", wait_until="load"); p8.wait_for_timeout(400); ath_before = p8.evaluate("localStorage.getItem('prometheus.athenaeum.ideas')")
+    fd0 = p8.evaluate("FOUNDRY.data().board.length"); p8.evaluate("document.querySelector('#y-board .btn').click()"); p8.wait_for_timeout(300)
+    fd = p8.evaluate("(b) => { const d = FOUNDRY.data(); return { board: d.board.length, bench: d.projects.length, stage: d.STAGES[d.projects[0].stage], linked: !!d.projects[0].ideaId, same: localStorage.getItem('prometheus.athenaeum.ideas') === b }; }", ath_before)
+    p8.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); p8.wait_for_timeout(300)
+    kn = p8.evaluate("() => { const s = { pattern: '2-2-3', start: '2026-11-02' }; return ['2026-11-02','2026-11-03','2026-11-04','2026-11-06','2026-11-08','2026-11-09','2026-11-16','2026-11-15'].map((d) => KIN.whoHas(d, s)); }")
+    proof("NEW-1", "The new pillars work on real data: Forge reads Titan's scored submissions and the live AI queues, Foundry starts a build from an Athenaeum invention without touching Athenaeum, Kin's custody pattern lands on the right days",
+          fg["scores"] >= 100 and fg["by"].get("Grok", 0) >= 20 and fg["tasks"] >= 20 and fd["board"] == fd0 - 1 and fd["bench"] == 1 and fd["stage"] == "Research" and fd["linked"] and fd["same"] and kn == ["you", "you", "other", "you", "you", "other", "you", "other"] and not bad8,
+          f"Forge: {fg['scores']} scores {fg['by']}, {fg['tasks']} queue tasks ({fg['open']} open); Foundry: board {fd0} to {fd['board']}, bench {fd['bench']} at {fd['stage']}, Athenaeum unchanged {fd['same']}; Kin 2-2-3: {kn}" + (f"; errors {bad8}" if bad8 else "")); c8.close()
 
     # ATHENAEUM: the first pillar rebuilt to the charter's standard. A clean device, a fixed day, motion held still so positions can be read.
     c5 = b.new_context(viewport={"width": 390, "height": 844}, accept_downloads=True); p5 = c5.new_page(); p5.on("pageerror", lambda e: errs.append("athenaeum: " + str(e)[:160])); p5.on("console", lambda m: errs.append("athenaeum: " + m.text[:160]) if m.type == "error" and "ERR_" not in m.text and "Failed to load resource" not in m.text else None)

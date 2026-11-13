@@ -157,7 +157,7 @@
   const at = parts.indexOf("pillars");
   if (bar && at >= 0 && parts[at + 1] && !embedded && !bar.querySelector(".compass")) {
     const here = parts[at + 1];
-    const seats = [["kairos", "Kairos"], ["apollo", "Apollo"], ["piano", "Piano"], ["hermes", "Hermes"], ["argus", "Argus"], ["money", "Money"], ["selling", "Selling"], ["icarus", "Icarus"], ["garage", "Garage"], ["odyssey", "Odyssey"], ["bastion", "Bastion"], ["records", "Records"], ["athenaeum", "Athenaeum"], ["privacy", "Privacy"]];
+    const seats = [["kairos", "Kairos"], ["apollo", "Apollo"], ["piano", "Piano"], ["hermes", "Hermes"], ["argus", "Argus"], ["money", "Money"], ["selling", "Selling"], ["icarus", "Icarus"], ["garage", "Garage"], ["odyssey", "Odyssey"], ["bastion", "Bastion"], ["records", "Records"], ["athenaeum", "Athenaeum"], ["privacy", "Privacy"], ["games", "Games"], ["forge", "Forge"], ["foundry", "Foundry"], ["observatory", "Observatory"], ["kin", "Kin"]];
     const idx = seats.findIndex(([id]) => id === here);
     const link = (id, name, current) => h("a", Object.assign({ href: id ? "../" + id + "/" : "../../#board" }, current ? { "aria-current": "page" } : {}), name);
     const step = (seat, dir) => {
@@ -245,7 +245,7 @@
     piano: "M4 5h16v14H4zM8 5v8M12 5v8M16 5v8M8 13v6M12 13v6M16 13v6", hermes: "M4 6h16v12H4zM4 7l8 6l8-6", argus: "M2.5 12s3.5-6.5 9.5-6.5s9.5 6.5 9.5 6.5s-3.5 6.5-9.5 6.5S2.5 12 2.5 12M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6",
     money: "M4 17a8 8 0 0 1 16 0M12 17V9M12 9l-3 3M12 9l3 3M4 20h16", selling: "M4 4h7l9 9-7 7-9-9zM8 8h.01", icarus: "M3 17c5 0 9-2 12-6c2-2.7 4-4 6-4c-1 5-4 9-9 10.5c-3 1-6 .7-9-.5M9 14.5c2-.5 4-2 5.5-4",
     garage: "M5 16l1.5-5a2 2 0 0 1 2-1.5h7a2 2 0 0 1 2 1.5L19 16M4 16h16v3H4zM7 19v1.5M17 19v1.5M7.5 13.5h.01M16.5 13.5h.01", odyssey: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18M15.5 8.5l-2 5l-5 2l2-5z",
-    bastion: "M12 3l7 3v5.5c0 4.5-3 8-7 9.5c-4-1.500-7-5-7-9.500V6z", athenaeum: "M4 20h16M5 8h14L12 4zM7 8v9M12 8v9M17 8v9M5 17h14", privacy: "M6.5 11h11v9h-11zM8.5 11V8a3.5 3.5 0 0 1 7 0v3M12 14.5v2", records: "M7 3.5h7l4 4V20.5H7zM14 3.5v4h4" };
+    bastion: "M12 3l7 3v5.5c0 4.5-3 8-7 9.5c-4-1.500-7-5-7-9.500V6z", athenaeum: "M4 20h16M5 8h14L12 4zM7 8v9M12 8v9M17 8v9M5 17h14", privacy: "M6.5 11h11v9h-11zM8.5 11V8a3.5 3.5 0 0 1 7 0v3M12 14.5v2", forge: "M12 3c1 3 4 4.5 4 8a4 4 0 0 1-8 0c0-1.6.8-2.4 1.6-3.2c.4 1.6 1.2 2 1.6 2c0-2.4-.8-4 .8-6.800M5 20h14M8 20l1-3h6l1 3", foundry: "M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1", observatory: "M4 16l9-9l3 3l-9 9zM13 7l2.5-2.5l3 3L16 10M6 19l-2 2.5M9 21l1-3M15 4.5a5 5 0 0 1 4.5 4.5", kin: "M8.5 11a3 3 0 1 0 0-6a3 3 0 0 0 0 6M3 19.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5M16.5 10a2.5 2.5 0 1 0 0-5M17 14c2.5.3 4 2.4 4 5", games: "M6 9h12a3 3 0 0 1 3 3v2a3 3 0 0 1-5 2.2L14.5 15h-5L8 16.2A3 3 0 0 1 3 14v-2a3 3 0 0 1 3-3M8 11v3M6.5 12.5h3M15.5 12h.01M17.5 13.5h.01", records: "M7 3.5h7l4 4V20.5H7zM14 3.5v4h4" };
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   body.classList.add("pk-v2");
 

@@ -157,7 +157,7 @@ body[data-pillar="garage"] { --accent: #52c5ff; --accent-2: #b9a2ff; } body[data
 body[data-pillar="selling"] { --accent: #ffa352; --accent-2: #ffd27a; } body[data-pillar="records"] { --accent: #70aeff; --accent-2: #4de8ff; }
 body[data-pillar="icarus"] { --accent: #ff725c; --accent-2: #ffd27a; } body[data-pillar="hermes"] { --accent: #7aa2ff; --accent-2: #4de8ff; }
 body[data-pillar="piano"] { --accent: #ff70d4; --accent-2: #b9a2ff; } body[data-pillar="bastion"] { --accent: #75f547; --accent-2: #ffd27a; }
-body[data-pillar="athenaeum"] { --accent: #ffc552; --accent-2: #b9a2ff; } body[data-pillar="odyssey"] { --accent: #33ebff; --accent-2: #57efc0; }
+body[data-pillar="athenaeum"] { --accent: #ffc552; --accent-2: #b9a2ff; } body[data-pillar="forge"] { --accent: #ff8a3d; --accent-2: #ffd36b; } body[data-pillar="foundry"] { --accent: #4de8ff; --accent-2: #8ea2ff; } body[data-pillar="observatory"] { --accent: #9c8cff; --accent-2: #5ee7ff; } body[data-pillar="kin"] { --accent: #ff8fb8; --accent-2: #ffd27a; } body[data-pillar="games"] { --accent: #c77dff; --accent-2: #4de8ff; } body[data-pillar="odyssey"] { --accent: #33ebff; --accent-2: #57efc0; }
 body[data-pillar="privacy"] { --accent: #8d85ff; --accent-2: #4de8ff; } body[data-pillar="argus"] { --accent: #33ffcf; --accent-2: #b9a2ff; }
 @view-transition { navigation: auto; }
 ::view-transition-old(root) { animation: pk-leave .3s cubic-bezier(.7, 0, .9, .4) both; }

@@ -54,6 +54,9 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   the Piano page: "its junk": raise the default here, in the kit, so all 14 pillars rise together; a pillar's own `app.css` stays tiny.
 - **One theme for all pillar pages:** the block "deck theme" at the end of `kit/prometheus.css` (colours per pillar, glass, warp page
   changes). Change the look there, not page by page. Titan, Midas and Hearth are separate repositories and were not touched.
+- **d10 (2026-11-13): new pillars Forge, Foundry, Observatory, Kin** (owner chose all four; for Forge he lifted the Fleet pause: "Work on
+  all of them"). Forge only reads the AI queues and Titan's score sheet and never contacts an AI. Observatory sends subject words to
+  hn.algolia.com only when Scan is pressed (declared in its manifest). Kin keeps names on the device only.
 - **d9 (2026-11-13): each kit pillar has a signature picture at the top** (owner: "Run through each pillar and revamp"): the engine is
   `kit/stage.js` (canvas, loop, pause off screen, reduced motion, redraw on save via the `pk:store` event from the kit store); each pillar's
   picture is its own `pillars/<id>/stage.js`, reading only its own records and shipped data. Change a pillar's picture there; never move
