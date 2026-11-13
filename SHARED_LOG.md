@@ -1,4 +1,8 @@
 
+### [2026-11-13] Claude: the charter, its assessment, and build d6 (a fix and a proof)
+- The owner's Master Evolution Charter is in `docs/CHARTER.md` (normative, word for word). Its first deliverable is `docs/assessment/2026-11-13-transformation-assessment.md`: nine parts, every claim marked verified, inferred, proposed or longer-term. Self-score: hub about 65, default pillar about 54 of 100. Recommended: small shared foundations, then Athenaeum as the one pillar that proves the standard. No pillar was rebuilt.
+- d6: the audit found my d2 theme had broken the Money page's chart (colour format); fixed, and proof PILLAR-2 now opens every pillar page and taps every section (14 proofs). Open: the browser sometimes drops the hub-to-pillar page animation in the test browser, cause not found.
+
 ### [2026-11-12] Claude: build d5, the default pillar look
 - Owner opened Piano: "its junk". The shared kit now dresses every pillar: hex crest, automatic sections from a page's own panels (Piano 6,672 px to one screen per section), one tab rail with a sliding light, a dock (previous, core, next), designed rows, buttons, fields and empty states. Only `kit/kit.js`, `kit/prometheus.css` and Piano's 8-line `app.css` changed.
 - Proof PILLAR-1 added. Pillar features themselves are unchanged; they are developed one by one later.

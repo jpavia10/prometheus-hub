@@ -10,6 +10,22 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
 - **Deploying:** GitHub Pages may not rebuild for pushes made by the Claude GitHub app (it did not on Titan); after pushing `main`, check the Pages run and, if none started, update a file through the GitHub connector.
 - **Look:** the Prometheus look shared by every pillar except Titan.
 
+## The charter governs (owner, 2026-11-12)
+
+`docs/CHARTER.md` is the owner's Master Evolution Charter, kept word for word, and it is normative: read it before any design or
+build work. In short: Prometheus is a personal digital ecosystem, not a dashboard; assess before building; prove the new standard
+in **one** pillar before touching the rest ("Don't let Fable interpret this as permission to start rebuilding 18 pillars at once");
+every pillar becomes a distinct place with a signature interaction; score work with its section 12 table and have a second agent
+review it. Its section 16 protections are absolute: Titan is not modified, Midas internals are not modified, Fleet stays paused,
+Sylade stays presence-only, Icarus never trades or advises, nothing is fabricated, authoritative records are never silently changed,
+no mandatory backend or account. When an improvement conflicts with a protection: stop and explain.
+- **First deliverable, done:** `docs/assessment/2026-11-13-transformation-assessment.md` (audit, map, gaps, design and architecture
+  assessment, pillar proposals, concept, roadmap, first demonstration). Recommended next move there: small foundations (a manifest
+  per pillar and one registry, an event log, one backup, a proof per pillar), then Athenaeum as the first finished place, starting
+  from three rendered concepts.
+- **Waiting on the owner:** Athenaeum or Piano first; whether the two hub consoles become the Kairos and Money pillars; Forge
+  (it is what Fleet was, and Fleet is paused); removing personal details from this public repository and its history.
+
 ## The hub's own job: the kit
 
 - `pillars.json` is the list of every pillar. A new pillar: add it there, run `python3 tools/kit/scaffold.py --root /home/user {id}` (creates the standard files, never overwrites), give it tasks in its `docs/agents/queues.json`, run `python3 tools/kit/render.py --root /home/user`, then make its Drive folder (`Prometheus Hub/Pillars/{Pillar}/` with the doc `README — {Pillar}` from `docs/agents/drive/{id}/README.txt` and the folder `incoming (AI drop files)/`).
@@ -17,7 +33,7 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
 - The layout and Claude's routine: `docs/PROMETHEUS_LAYOUT.md`. The rules every AI follows: `AI_START_HERE.md`.
 - The desk reads `data/board.json` (rendered) for each door's state and open homework.
 
-## Where things stand (2026-11-12, build d5): the hub holds every pillar
+## Where things stand (2026-11-13, build d6): the hub holds every pillar
 
 Read this first. Owner, 2026-11-12, after d1 hid 14 pillars behind a two-capability app with demo data: "you strip away my pillars so
 its irrelevant ... The over the top futuristic dopamine loaded theme and transitions are what im seeking ... bring the project
@@ -36,6 +52,10 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   the Piano page: "its junk": raise the default here, in the kit, so all 14 pillars rise together; a pillar's own `app.css` stays tiny.
 - **One theme for all pillar pages:** the block "deck theme" at the end of `kit/prometheus.css` (colours per pillar, glass, warp page
   changes). Change the look there, not page by page. Titan, Midas and Hearth are separate repositories and were not touched.
+- **d6 (2026-11-13):** no new features. Pillar accent colours in the "deck theme" block must stay hex (`kit/kit.js` appends an alpha
+  pair to `--accent` for charts; the d2 `hsl()` values broke the Money chart on the live site for a day). Proof PILLAR-2 opens every
+  pillar page, taps every section and fails on any script error; keep it passing. Open: the browser sometimes drops the animated
+  page change from the hub to a pillar in the test browser (cause not found; the proofs report it).
 - **Consoles from d1** (`#/time` Kairos console, `#/money` Payoff console; engines in `deck/core/` and `deck/models/`) stay as hub
   consoles. The Kairos and Money pillar pages are back at their addresses. Which one each pillar becomes is the owner's decision.
 - **Proofs:** `python3 proofs/run.py <url> [--mock-weather]` (CORE-1..4 plus the d1 proofs), `node --test proofs/unit/*.test.mjs`,

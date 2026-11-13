@@ -13,7 +13,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d5";
+export const BUILD = "d6";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -44,7 +44,7 @@ async function render(same) {
     document.title = r.cap === "picture" ? "Prometheus" : `${r.cap === "system" ? "System" : cap(r.cap).name} · Prometheus`;
   };
   const moving = !same && prev && prev.cap !== r.cap;
-  if (moving && document.startViewTransition && !reduced()) { document.documentElement.classList.add("vt-inpage"); const vt = document.startViewTransition(swap); vt.finished.finally(() => document.documentElement.classList.remove("vt-inpage")); vt.ready.catch(() => {}); vt.finished.catch(() => {}); vt.updateCallbackDone.catch(() => {}); } else swap();   // a newer change may skip an older transition: that is fine
+  if (moving && document.startViewTransition && !reduced()) { document.documentElement.classList.add("vt-inpage"); const vt = document.startViewTransition(swap); const done = () => document.documentElement.classList.remove("vt-inpage"); vt.finished.then(done, done); vt.ready.catch(() => {}); vt.finished.catch(() => {}); vt.updateCallbackDone.catch(() => {}); } else swap();   // a newer change may skip an older transition: that is fine
 }
 store.on(() => {                                                                  // any change: redraw the view, unless a sheet or a field has the floor
   const a = document.activeElement; const typing = a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && $("#view").contains(a);

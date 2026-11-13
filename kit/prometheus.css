@@ -152,13 +152,13 @@ canvas.spark { width: 100%; height: 120px; display: block; }
    and out (the browser animates the page change itself where it can). Pillar pages need no change to pick this up. */
 @font-face { font-family: "Outfit"; font-weight: 100 900; font-display: swap; src: url("../deck/fonts/outfit-latin-wght-normal.woff2") format("woff2"); }
 :root { --bg: #03040b; --bg-2: #080c1a; --cyan: #4de8ff; --lavender: #b9a2ff; --good: #57efc0; --warn: #ffd27a; --bad: #ff6b81; --muted: #c3cee0; --glass: rgba(10, 14, 26, .68); --glass-2: rgba(24, 32, 58, .74); --line: rgba(190, 212, 255, .15); --line-strong: rgba(200, 220, 255, .32); }
-body[data-pillar="kairos"] { --accent: hsl(268 100% 74%); --accent-2: #4de8ff; } body[data-pillar="apollo"] { --accent: hsl(54 100% 66%); --accent-2: #ff9d5c; }
-body[data-pillar="garage"] { --accent: hsl(200 100% 66%); --accent-2: #b9a2ff; } body[data-pillar="money"] { --accent: hsl(152 100% 64%); --accent-2: #4de8ff; }
-body[data-pillar="selling"] { --accent: hsl(28 100% 66%); --accent-2: #ffd27a; } body[data-pillar="records"] { --accent: hsl(214 100% 72%); --accent-2: #4de8ff; }
-body[data-pillar="icarus"] { --accent: hsl(8 100% 68%); --accent-2: #ffd27a; } body[data-pillar="hermes"] { --accent: hsl(222 100% 74%); --accent-2: #4de8ff; }
-body[data-pillar="piano"] { --accent: hsl(318 100% 72%); --accent-2: #b9a2ff; } body[data-pillar="bastion"] { --accent: hsl(104 90% 62%); --accent-2: #ffd27a; }
-body[data-pillar="athenaeum"] { --accent: hsl(40 100% 66%); --accent-2: #b9a2ff; } body[data-pillar="odyssey"] { --accent: hsl(186 100% 60%); --accent-2: #57efc0; }
-body[data-pillar="privacy"] { --accent: hsl(244 100% 76%); --accent-2: #4de8ff; } body[data-pillar="argus"] { --accent: hsl(166 100% 60%); --accent-2: #b9a2ff; }
+body[data-pillar="kairos"] { --accent: #b87aff; --accent-2: #4de8ff; } body[data-pillar="apollo"] { --accent: #ffee52; --accent-2: #ff9d5c; }
+body[data-pillar="garage"] { --accent: #52c5ff; --accent-2: #b9a2ff; } body[data-pillar="money"] { --accent: #47ffa9; --accent-2: #4de8ff; }
+body[data-pillar="selling"] { --accent: #ffa352; --accent-2: #ffd27a; } body[data-pillar="records"] { --accent: #70aeff; --accent-2: #4de8ff; }
+body[data-pillar="icarus"] { --accent: #ff725c; --accent-2: #ffd27a; } body[data-pillar="hermes"] { --accent: #7aa2ff; --accent-2: #4de8ff; }
+body[data-pillar="piano"] { --accent: #ff70d4; --accent-2: #b9a2ff; } body[data-pillar="bastion"] { --accent: #75f547; --accent-2: #ffd27a; }
+body[data-pillar="athenaeum"] { --accent: #ffc552; --accent-2: #b9a2ff; } body[data-pillar="odyssey"] { --accent: #33ebff; --accent-2: #57efc0; }
+body[data-pillar="privacy"] { --accent: #8d85ff; --accent-2: #4de8ff; } body[data-pillar="argus"] { --accent: #33ffcf; --accent-2: #b9a2ff; }
 @view-transition { navigation: auto; }
 ::view-transition-old(root) { animation: pk-leave .3s cubic-bezier(.7, 0, .9, .4) both; }
 ::view-transition-new(root) { animation: pk-arrive .6s cubic-bezier(.2, .8, .2, 1) both; }
