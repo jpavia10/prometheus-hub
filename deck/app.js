@@ -5,15 +5,16 @@ import { store } from "./core/store.js";
 import { clock, today, fmtDay, fmtTime, quickAdd } from "./core/dates.js";
 import { h, $, icon, sheet, toast, pickFile, reduced, ask, sheetOpen, setQuiet } from "./core/ui.js";
 import { CAPS, SLICES, cap } from "./caps.js";
-import { PILLARS } from "./pillars.js";
+import { PILLARS, pillar } from "./pillars.js";
 import { setFixed, searchAll } from "./core/feeds.js";
+import { loadManifests, searchRecords, commands, handOff } from "./core/reach.js";
 import { startSky } from "./core/atmo.js";
 import * as wx from "./core/weather.js";
 import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d6";
+export const BUILD = "d7";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -93,7 +94,7 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) { ap
 /* ------------------------------------------------------------------ search and quick add (one input reaches anything) ------------------------------------------------------------------ */
 function openSearch() {
   if (sheetOpen()) return;
-  const input = h("input.search-input", { type: "search", placeholder: "A pillar, a date, or: dentist Tue 3pm", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event" });
+  const input = h("input.search-input", { type: "search", placeholder: "A pillar, an idea, a date, or: dentist Tue 3pm", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event" });
   const list = h("div.results", { role: "listbox", "aria-label": "Results" }); let items = []; let sel = 0;
   const sh = sheet({ title: "Search · Add", tone: "search", body: h("div.stack", input, list) });
   const pick = (it) => { if (!it) return; if (it.run) it.run(); if (it.go) { sh.close(); setTimeout(() => go(it.go), 20); } else if (!it.keep) sh.close(); };
@@ -102,7 +103,10 @@ function openSearch() {
     const add = quickAdd(q);
     if (add) { const k = kindOf(add.title); items.push({ title: `Add: ${k.title}`, sub: `${fmtDay(add.date, "long")}${add.time ? " · " + fmtTime(add.time) : ""}${add.rule ? " · repeats" : ""}${k.kind !== "event" ? " · " + k.kind : ""}`, tone: "add", icon: "plus",
       run: () => { store.update("time", (t) => t.events.push(makeEvent({ ...add, title: k.title }, { kind: k.kind, src: "quick" }))); toast(`Added: ${k.title}, ${fmtDay(add.date)}${add.time ? " " + fmtTime(add.time) : ""}`); }, go: `#/time/day/${add.date}` }); }
+    for (const c of commands(q)) if (c.hand) items.push({ title: c.title, sub: c.sub, icon: (pillar(c.pillar) || {}).icon || "plus", tone: "add", run: () => { handOff(c.hand); location.href = c.href; } });
     for (const r of searchAll(q)) items.push({ ...r, icon: (cap(r.cap) || {}).icon || "search" });
+    for (const r of searchRecords(q)) items.push({ title: r.title, sub: r.sub, icon: (pillar(r.pillar) || {}).icon || "search", tone: "nav", run: () => { location.href = r.href; } });
+    for (const c of commands(q)) if (!c.hand) items.push({ title: c.title, sub: c.sub, icon: (pillar(c.pillar) || {}).icon || "plus", tone: "nav", run: () => { location.href = c.href; } });
     if (!q) items.push({ title: "New event", sub: "The full form: repeats, place, notes, countdown", icon: "calendar", tone: "nav", keep: true, run: async () => { sh.close(); const m = await import("./views/time.js"); setTimeout(() => m.eventSheet(ctx, null, null, today()), 240); } });
     for (const p of PILLARS) if (q && (p.name + " " + p.what).toLowerCase().includes(q.toLowerCase())) items.push({ title: p.name, sub: p.what, icon: p.icon, tone: "nav", run: () => { location.href = p.route; } });
     const nav = [["The core", "#/", "picture"], ...CAPS.map((c) => [c.name, "#/" + c.id, c.icon]), ["Time · week", "#/time/week", "calendar"], ["Time · month", "#/time/month", "grid"], ["Time · agenda", "#/time/agenda", "list"], ["Time · risk", "#/time/risk", "risk"], ["Time · focus clock", "#/time/focus", "flame"],
@@ -144,16 +148,16 @@ function demoSheet() {
 
 /* ------------------------------------------------------------------ boot ------------------------------------------------------------------ */
 async function boot() {
-  drawShell();
+  drawShell(); const reach = loadManifests().catch(() => []);
   try { state.sky = startSky($("#sky")); } catch (e) { console.warn("[sky]", e); }
   if (!state.sky) document.documentElement.classList.add("no-sky");
   try { const r = await fetch("./deck/data/fixed-dates.json"); state.fixed = await r.json(); setFixed(state.fixed); } catch (e) { console.warn("fixed dates unavailable offline on a first visit", e); }
   if (params.get("demo") === "1" && store.pristine()) store.importFile(demoDeck(today(), state.fixed));
-  state.weather = wx.cached(store.get("profile").place); applySky();
+  state.weather = wx.cached(store.get("profile").place); applySky(); await reach;
   await render(false);
   document.documentElement.classList.add("ready");
   reloadWeather(false);
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("./sw.js").catch(() => {});
 }
-window.__deck = { store, clock, ctx, state, BUILD };                               // for the proofs and for the curious
+window.__deck = { store, clock, ctx, state, BUILD, reach: { searchRecords, commands } };                               // for the proofs and for the curious
 boot();

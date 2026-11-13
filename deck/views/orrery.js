@@ -3,6 +3,7 @@
    in. One switch morphs the orbit into a hex grid for speed. Drawn every frame: positions in script (spring and stagger), light on
    a canvas (rings, beams, dust, halos, reticle, shockwaves), the fire in a shader. Badges and readouts are real data only. */
 import { h, icon, sheet, money, plural, seg } from "../core/ui.js";
+import { recentEvents } from "../core/reach.js";
 import { clock, today, diffDays, fmtDay, fmtTime, addDays } from "../core/dates.js";
 import { PILLARS } from "../pillars.js";
 import { pillarStats, titan } from "../core/legacy.js";
@@ -159,6 +160,7 @@ export function reactor(ctx) {
   /* the ticker: one line of what is true right now */
   const facts = []; const soon = feedRows(t, addDays(t, 30)).filter((r) => !r.done); const fixedNext = soon.find((r) => r.fixed), mine = soon.filter((r) => !r.fixed);
   facts.push(`${PILLARS.length} pillars online`);
+  for (const e of recentEvents(2)) facts.push(e.say.length > 70 ? e.say.slice(0, 69) + "…" : e.say);                 // what last happened inside the pillars (the shared event log)
   if (mine[0]) facts.push(`next: ${mine[0].title} · ${diffDays(t, mine[0].date) === 0 ? "today" : "in " + plural(diffDays(t, mine[0].date), "day")}`);
   if (fixedNext) facts.push(`${fixedNext.title} in ${plural(diffDays(t, fixedNext.date), "day")}`);
   const held = Object.values(stats).reduce((n, x) => n + x.records, 0); if (held) facts.push(`${plural(held, "entry", "entries")} across the pillars on this device`);

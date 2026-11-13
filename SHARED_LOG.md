@@ -1,4 +1,9 @@
 
+### [2026-11-13] Claude: build d7, Athenaeum rebuilt (first pillar under the charter)
+- Owner: "Continue with whatever but 70 is low i want over 100 beyond limits"; he will make the repository private later. Athenaeum is now a 3D sky of his ideas (WebGL, no library): relations from shared tags and words computed on the device, constellations, a codex per idea with lineage and provenance, a time slider and replay, the 40 history entries as a spiral arm with cause, event, consequence. Same records, every old feature kept; two old faults fixed (an export could not be re-imported; imported ideas lost their ids).
+- Foundations: event log `PB.events`, the first pillar manifest, hub search and "idea: ..." hand-off through it (`docs/architecture/MANIFEST.md`). Proofs: 9 unit, ATH-1..7, CORE-5 (22 browser proofs in all).
+- Not done: the independent review (second agent stopped by a usage limit), a real phone, the generated registry, one backup.
+
 ### [2026-11-13] Claude: the charter, its assessment, and build d6 (a fix and a proof)
 - The owner's Master Evolution Charter is in `docs/CHARTER.md` (normative, word for word). Its first deliverable is `docs/assessment/2026-11-13-transformation-assessment.md`: nine parts, every claim marked verified, inferred, proposed or longer-term. Self-score: hub about 65, default pillar about 54 of 100. Recommended: small shared foundations, then Athenaeum as the one pillar that proves the standard. No pillar was rebuilt.
 - d6: the audit found my d2 theme had broken the Money page's chart (colour format); fixed, and proof PILLAR-2 now opens every pillar page and taps every section (14 proofs). Open: the browser sometimes drops the hub-to-pillar page animation in the test browser, cause not found.

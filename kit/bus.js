@@ -8,7 +8,7 @@
    - Meta: small shared state (e.g. Odyssey away mode) any page may read.
    Same-origin only by design: the desk and every seat page under /prometheus-hub/ share this
    localStorage. Midas's encrypted book lives on its own origin and is never touched from here.
-   Nothing here talks to a server. window.PB = { deadlines:{...}, money:{...}, meta:{...}, dumpAll, loadAll } */
+   Nothing here talks to a server. window.PB = { deadlines:{...}, money:{...}, meta:{...}, events:{...}, dumpAll, loadAll } */
 (function () {
   "use strict";
   const LS = typeof localStorage !== "undefined" ? localStorage : null;
@@ -69,6 +69,19 @@
   };
 
   /** Full-deck backup: every prometheus.* key (and the desk's own prometheus-hub.* lines) in one versioned JSON object. */
+  /* Events (2026-11-13): what happened, across pillars. Any pillar publishes; the hub reads. A log, not a store: the pillar's own
+     record stays the authority, an event only points at it. Record: {v:1, id, type "idea.captured", pillar, ref?, title, at ISO}. Newest last, capped. */
+  const EKEY = "prometheus.bus.events", ECAP = 400;
+  const events = {
+    list(opts) { const l = read(EKEY, []); const since = opts && opts.since; return since ? l.filter((e) => e.at > since) : l; },
+    publish(rec) {
+      if (!rec || !rec.type || !rec.pillar) throw new Error("event needs type + pillar");
+      const l = read(EKEY, []); const r = { v: 1, id: uid(), at: new Date().toISOString(), type: String(rec.type), pillar: String(rec.pillar), ref: rec.ref || "", title: String(rec.title || "").slice(0, 160) };
+      l.push(r); write(EKEY, l.slice(-ECAP)); return r;
+    },
+    clear() { write(EKEY, []); },
+  };
+
   function dumpAll() {
     const keys = {};
     const mine = (k) => k && (k.startsWith("prometheus.") || k.startsWith("prometheus-hub."));
@@ -82,7 +95,7 @@
     return Object.keys(obj.keys).length;
   }
 
-  const PB = { deadlines, money, meta, dumpAll, loadAll, today, addDays, _keys: { DKEY, MKEY, METAKEY } };
+  const PB = { deadlines, money, meta, events, dumpAll, loadAll, today, addDays, _keys: { DKEY, MKEY, METAKEY, EKEY } };
   if (typeof window !== "undefined") window.PB = PB;
   if (typeof globalThis !== "undefined") globalThis.PB = PB;
 })();

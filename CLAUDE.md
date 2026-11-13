@@ -33,7 +33,7 @@ no mandatory backend or account. When an improvement conflicts with a protection
 - The layout and Claude's routine: `docs/PROMETHEUS_LAYOUT.md`. The rules every AI follows: `AI_START_HERE.md`.
 - The desk reads `data/board.json` (rendered) for each door's state and open homework.
 
-## Where things stand (2026-11-13, build d6): the hub holds every pillar
+## Where things stand (2026-11-13, build d7): the hub holds every pillar
 
 Read this first. Owner, 2026-11-12, after d1 hid 14 pillars behind a two-capability app with demo data: "you strip away my pillars so
 its irrelevant ... The over the top futuristic dopamine loaded theme and transitions are what im seeking ... bring the project
@@ -52,6 +52,12 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   the Piano page: "its junk": raise the default here, in the kit, so all 14 pillars rise together; a pillar's own `app.css` stays tiny.
 - **One theme for all pillar pages:** the block "deck theme" at the end of `kit/prometheus.css` (colours per pillar, glass, warp page
   changes). Change the look there, not page by page. Titan, Midas and Hearth are separate repositories and were not touched.
+- **d7 (2026-11-13): Athenaeum is the first pillar rebuilt under the charter** (owner: "Continue with whatever but 70 is low i want over 100
+  beyond limits"). `pillars/athenaeum/`: ideas as stars in a raw-WebGL 3D sky (`js/sky.js`), relations and layout worked out on the device
+  (`js/model.js`, pure, unit-tested), the app (`js/app.js`); same stored records, every old feature kept. Read `docs/pillars/athenaeum/BRIEF.md`
+  before touching it. Shared foundations it uses: the event log `PB.events` in `kit/bus.js`, its manifest `pillars/athenaeum/pillar.json`, the
+  hub's reach through manifests `deck/core/reach.js` (`docs/architecture/MANIFEST.md`). **Not done: the independent review (the second agent
+  hit a usage limit), any real-phone test, the generated registry, one backup.** Next pillar only after the owner has seen this one.
 - **d6 (2026-11-13):** no new features. Pillar accent colours in the "deck theme" block must stay hex (`kit/kit.js` appends an alpha
   pair to `--accent` for charts; the d2 `hsl()` values broke the Money chart on the live site for a day). Proof PILLAR-2 opens every
   pillar page, taps every section and fails on any script error; keep it passing. Open: the browser sometimes drops the animated

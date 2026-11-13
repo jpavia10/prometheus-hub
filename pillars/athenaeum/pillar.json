@@ -1,0 +1,17 @@
+{
+  "manifest": 1,
+  "id": "athenaeum",
+  "name": "Athenaeum",
+  "state": "live",
+  "route": "pillars/athenaeum/",
+  "mission": "Keep every idea whole, with everything it became, and show how ideas relate.",
+  "signature": "The sky: ideas as stars drawn together by what they share, replayable from the first spark to today.",
+  "owns": ["prometheus.athenaeum.ideas", "prometheus.athenaeum.shelf", "prometheus.athenaeum.ideasSeedV1", "prometheus.athenaeum.histSeedV1"],
+  "publishes": ["idea.captured", "idea.refined", "idea.archived", "shelf.added", "import.merged"],
+  "search": [
+    { "key": "prometheus.athenaeum.ideas", "kind": "idea", "title": "title", "text": ["body", "tags", "chain.text"], "skip": "archived", "open": "#idea/{id}" }
+  ],
+  "commands": [
+    { "id": "capture", "label": "Capture an idea", "open": "#new", "words": ["idea", "spark", "thought"], "takesText": true }
+  ]
+}
