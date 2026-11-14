@@ -1,6 +1,8 @@
-/* Money: an empty consolidation form, a neutral worked example from deck/data/payoff-cases.json,
-   3-way Avalanche/Snowball/Minimum comparison, windfall allocator, deferred-interest trap, issuer rules, bills audit.
-   Nothing here is prefilled from a real account. */
+/* Money: the owner's real consolidation loan (Citi Flex, seeded once from real.js at Joseph's
+   2026-11-14 direction) driving a dual-model simulator — textbook amortization vs the plan's
+   actual payment, both labeled — plus a neutral worked example from deck/data/payoff-cases.json,
+   3-way Avalanche/Snowball/Minimum comparison, windfall allocator, deferred-interest trap,
+   issuer rules, bills audit. */
 (function () {
   "use strict";
   const { $, h, money, num, day, toast, store, download, pickFile, tabs, field, G } = PK;
@@ -14,6 +16,16 @@
   const cfg = () => ({ ...EMPTY, ...(S.get("cfg", {}) || {}) });
   const loanReady = (c) => Number(c.principal) > 0 && Number(c.term) > 0 && c.apr !== "" && c.actualPayment !== "";
 
+  /* Seed-once (Sebastian, 2026-11-14): a fresh device opens on the real Citi Flex Loan and the
+     real Starlink bill. Existing profiles are never overwritten, and the flag keeps a profile
+     the owner later cleared from being re-seeded. */
+  const R = window.MONEY_REAL || null;
+  if (R && !S.get("realSeedV1")) {
+    if (!S.get("cfg")) S.set("cfg", { principal: R.loan.principal, apr: R.loan.apr, term: R.loan.term, actualPayment: R.loan.actualPayment, extra: "", useBus: false });
+    if (!S.list("bills").length) for (const b of R.bills) S.add("bills", { name: b.name, amount: b.amount, cadence: b.cadence, due: b.due, cuttable: b.cuttable, note: b.note });
+    S.set("realSeedV1", 1);
+  }
+
   app.innerHTML = `
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="t-cons" aria-controls="p-cons">Consolidation</button>
@@ -23,6 +35,10 @@
     </div>
 
     <section id="p-cons" role="tabpanel" class="grid">
+      <div class="glass lit span-12">
+        <h2>Your Consolidation Loan <span class="sample">REAL</span></h2>
+        <div id="m-real"></div>
+      </div>
       <div class="glass span-12">
         <h2>Worked example <span class="sample">EXAMPLE</span></h2>
         <p class="note">A neutral case from the research set (deck/data/payoff-cases.json). It is not an account, and it is not loaded into the form.</p>
@@ -108,6 +124,24 @@
       <div class="glass span-12"><h2>Active Subscriptions &amp; Bills</h2><div id="m-bill-list"></div></div>
     </section>`;
 
+  function paintReal() {
+    const box = $("#m-real"); if (!box) return;
+    if (!R) { box.innerHTML = `<p class="empty">The real dataset did not load.</p>`; return; }
+    const L = R.loan, delta = L.actualPayment - L.textbookPayment;
+    box.innerHTML = `
+      <div class="kv"><span><b>${esc(L.name)} · ${esc(L.plan)}</b><br><small class="stat-s">${esc(L.account)} · ${esc(L.purpose)}</small></span><b>${money(L.principal)}</b></div>
+      <div class="kv"><span>Textbook amortization @ ${num(L.apr, 2)}% · ${L.term} mo</span><b>${money(L.textbookPayment)}/mo</b></div>
+      <div class="kv"><span>Citi Flex Plan actual payment</span><b>${money(L.actualPayment)}/mo</b></div>
+      <div class="kv"><span>Plan delta vs textbook (the plan's structure, not the rate)</span><b>+${money(delta)}/mo · ${money(L.totalPaid)} over the plan</b></div>
+      <div class="kv"><span>${esc(R.goal.label)} — the loan is the payoff vehicle</span><b>${money(R.goal.target)}</b></div>
+      <p class="note">${esc(L.fundsNote)} ${esc(R.goal.note)}</p>
+      <p class="sub" style="margin-top:12px">Recently paid — closed</p>
+      ${R.paid.map((x) => `<div class="kv"><span>${esc(x.label)}<br><small class="stat-s">${esc(x.detail)}</small></span><b class="up">${money(x.amount)} · ${esc(x.status)}</b></div>`).join("")}
+      <p class="note">${esc(R.paidNote)}</p>
+      <p class="sub" style="margin-top:12px">Coming up — autopay</p>
+      ${R.autopays.map((x) => `<div class="kv"><span>${esc(x.label)}<br><small class="stat-s">${esc(x.detail)}</small></span><b>${x.amount != null ? money(x.amount) : esc(x.amountNote)}</b></div>`).join("")}`;
+  }
+
   function notify() { window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "money", k: "cfg" } })); }
   function syncCfg(patch) {
     const next = { ...cfg(), ...patch, _ts: Date.now(), from: "pillar" };
@@ -152,7 +186,7 @@
     ["principal", "apr", "term", "actualPayment", "extra"].forEach((k) => { if (document.activeElement !== F[k]) F[k].value = c[k] ?? ""; });
     F.useBus.checked = !!c.useBus;
     if (!loanReady(c)) {
-      $("#m-cons-out").innerHTML = `<p class="empty">The form is empty. Type your own figures, or read the worked example above. Nothing here is an account.</p>`;
+      $("#m-cons-out").innerHTML = `<p class="empty">Enter loan figures to run the simulation — a fresh device starts prefilled with your Citi Flex Loan (Plan 4) from the panel above.</p>`;
       const cv = document.getElementById("m-cons-cv"); if (cv) { const g = cv.getContext("2d"); if (g) g.clearRect(0, 0, cv.width, cv.height); }
       return;
     }
@@ -164,9 +198,9 @@
     const atQuoted = M.simulateLoan({ principal: c.principal, apr: c.apr, payment: c.actualPayment, extraMonthly: +c.extra || 0, lump: busLump });
     const gapMonth = c.actualPayment - textbook;
     $("#m-cons-out").innerHTML = `
-      <div class="kv"><span>Textbook payment @ ${num(c.apr, 2)}% (${c.term}m)</span><b>${money(textbook)}/mo</b></div>
-      <div class="kv"><span>Actual payment (${money(c.actualPayment)}/mo) implies APR</span><b>${num(impliedApr, 2)}%</b></div>
-      <div class="kv"><span>Monthly quote delta vs textbook</span><b>${gapMonth >= 0 ? "+" : ""}${money(gapMonth)}/mo</b></div>
+      <div class="kv"><span>Model 1 — Textbook amortization @ ${num(c.apr, 2)}% (${c.term}m)</span><b>${money(textbook)}/mo</b></div>
+      <div class="kv"><span>Model 2 — Plan's actual payment (${money(c.actualPayment)}/mo) implies APR</span><b>${num(impliedApr, 2)}%</b></div>
+      <div class="kv"><span>Monthly delta, actual vs textbook</span><b>${gapMonth >= 0 ? "+" : ""}${money(gapMonth)}/mo</b></div>
       <div class="kv"><span>Interest at textbook vs your plan</span><b>${money(atBook.totalInterest)} vs ${money(atQuoted.totalInterest)}</b></div>
       <div class="kv"><span>Payoff horizon (with $${+c.extra || 0}/mo extra)</span><b>${atQuoted.months} months</b></div>
       ${c.useBus ? `<div class="kv"><span>Money Bus sales applied</span><b>${money(salesTotal)}</b></div>` : ""}`;
@@ -274,7 +308,7 @@
     if (!list.length) { box.innerHTML = `<p class="empty">No recurring bills logged yet.</p>`; return; }
     list.forEach((b) => {
       box.append(h("div.kv", null,
-        h("span", null, h("b", null, b.name), b.cuttable ? " [cuttable]" : "", ` · ${money(b.amount)}/${b.cadence}`, b.due ? ` · due ${b.due}` : ""),
+        h("span", null, h("b", null, b.name), b.cuttable ? " [cuttable]" : "", ` · ${money(b.amount)}/${b.cadence}`, b.due ? ` · due ${b.due}` : "", b.note ? h("small.stat-s", null, " — " + b.note) : null),
         h("span.row-actions", null,
           b.due && window.PB ? h("button.btn.quiet.small", { type: "button", onclick: () => { PB.deadlines.publish({ title: "Bill: " + b.name, date: b.due, source: "money", kind: "bill", ref: b.id, amount: b.amount }); toast("Pushed due date to Kairos"); } }, "-> Kairos") : null,
           h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("bills", b.id); paintBills(); } }, "Remove")
@@ -316,7 +350,7 @@
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paintCons(); paintStrat(); paintBills(); notify(); } catch (e) { toast(e.message); } };
 
   tabs(app, (id) => {
-    if (id === "p-cons") paintCons();
+    if (id === "p-cons") { paintReal(); paintCons(); }
     if (id === "p-strat") paintStrat();
     if (id === "p-iss") { paintDeferred(); paintIssuers(); }
     if (id === "p-bills") paintBills();
@@ -327,5 +361,6 @@
       + (c.debts || []).map((d) => `<div class="kv"><span>${esc(d.name)}</span><b>${money(d.balance)} at ${num(d.apr, 2)}% · min ${money(d.min)}</b></div>`).join("");
     window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "money" } }));
   }).catch(() => { const box = $("#m-example"); if (box) box.textContent = "The worked example could not be loaded."; });
+  paintReal();
   paintCons();
 })();
