@@ -199,10 +199,17 @@ input:focus, select:focus, textarea:focus { border-color: var(--accent); box-sha
 @keyframes pk-ripple { to { transform: scale(1); opacity: 0; } }
 @keyframes pk-away { to { opacity: 0; transform: translateY(-26px) scale(.93); filter: blur(5px); } }
 @keyframes pk-breathe { 50% { transform: scale(1.06); filter: brightness(1.25); } }
-body.pk-v2 { --pk-hex: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); --pk-bar: 52px; font-family: var(--sans); }
-body.pk-v2 .shell { padding: 0 16px calc(120px + env(safe-area-inset-bottom, 0px)); max-width: 1240px; }
-body.pk-v2 .bar { position: sticky; top: 0; z-index: 6; min-height: var(--pk-bar); padding: calc(8px + env(safe-area-inset-top, 0px)) 0 8px; margin: 0 -16px; padding-left: 16px; padding-right: 16px; flex-wrap: nowrap; border: 0; background: linear-gradient(180deg, rgba(3, 4, 11, .92) 55%, rgba(3, 4, 11, 0)); -webkit-backdrop-filter: none; backdrop-filter: none; }
-body.pk-v2 .bar .compass, body.pk-v2 .bar a.back { display: none; }
+body.pk-v2 { --pk-hex: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); --pk-bar: 54px; font-family: var(--sans); }
+body.pk-v2 .shell { padding: 0 16px calc(120px + env(safe-area-inset-bottom, 0px)); max-width: 1280px; }
+body.pk-v2 .bar { position: sticky; top: 0; z-index: 35; min-height: var(--pk-bar); padding: calc(8px + env(safe-area-inset-top, 0px)) 16px 8px; margin: 0 -16px; flex-wrap: wrap; gap: 6px 12px; border: 0; border-bottom: 1px solid rgba(190, 212, 255, .10); background: rgba(4, 6, 14, .88); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+body.pk-v2 .bar .compass { display: none; }
+body.pk-v2 .bar a.back { min-height: 30px; padding: 0 11px 0 9px; font-size: 10px; letter-spacing: .16em; }
+@media (min-width: 860px) {
+  body.pk-v2 .bar { padding-left: 24px; padding-right: 24px; margin: 0 -28px; }
+  body.pk-v2 .bar .compass { display: flex; flex: 1 1 100%; order: 4; margin-top: 2px; padding-top: 6px; border-top: 1px solid rgba(190, 212, 255, .08); }
+  body.pk-v2 .compass-track a { font-size: 11px; padding: 5px 9px; }
+  body.pk-v2 .tabs { top: calc(var(--pk-bar) + 38px); }
+}
 body.pk-v2 .bar .name { font-size: 12px; letter-spacing: .26em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 /* the crest */
@@ -301,3 +308,14 @@ body.pk-v2 .pk-read:hover { border-color: color-mix(in srgb, var(--accent-2) 40%
 .pk-pal-item:hover, .pk-pal-item.active { background: color-mix(in srgb, var(--accent) 16%, rgba(255, 255, 255, .04)); border-color: color-mix(in srgb, var(--accent) 44%, transparent); }
 .pk-pal-empty { padding: 20px; text-align: center; color: var(--muted); font-size: 13px; }
 .pk-pal-hint { padding: 8px 16px; border-top: 1px solid rgba(255, 255, 255, .06); font-size: 11px; color: var(--faint); letter-spacing: .04em; }
+
+/* all-in-one cockpit toggle (d15) */
+.pk-cockpit-btn { flex: none; margin-left: auto; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 45%, rgba(255, 255, 255, .2)); background: color-mix(in srgb, var(--accent) 12%, rgba(8, 12, 24, .85)); color: var(--ink); font: 500 11px var(--sans); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: background .2s, border-color .2s, color .2s, box-shadow .2s; }
+.pk-cockpit-btn:hover { border-color: var(--accent); color: #fff; }
+.pk-cockpit-btn[aria-pressed="true"] { color: #05070f; font-weight: 600; background: linear-gradient(180deg, #fff, var(--accent)); border-color: transparent; box-shadow: 0 0 18px -4px var(--accent); }
+body.pk-all-open [role="tabpanel"][hidden] { display: block !important; margin-top: 16px; }
+body.pk-all-open [role="tabpanel"].grid[hidden],
+body.pk-all-open .grid[role="tabpanel"][hidden] { display: grid !important; margin-top: 16px; }
+body.pk-all-open .pk-sections > .pk-off { display: block !important; }
+body.pk-all-open .pk-sections > .grid.pk-off { display: grid !important; }
+body.pk-all-open .pk-ink { opacity: .35 !important; }

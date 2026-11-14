@@ -35,6 +35,8 @@
     const sec = PK.h("section.pk-stage", { "aria-label": o.label || "At a glance" }, PK.h("div.pk-stage-frame", null, canvas, layer), reads);
     (hero && hero.nextSibling ? shell.insertBefore(sec, hero.nextSibling) : shell.insertBefore(sec, main));
     const g = canvas.getContext("2d"), S = { w: 1, h: 1, dpr: 1, t: 0, dt: 0, still: STILL, ptr: { x: -1, y: -1, on: false, down: false }, layer, canvas, data: null, accent: css("--accent", "#7fd1ff"), accent2: css("--accent-2", "#b9a2ff"), tick: 0 };
+    const ripples = [];
+    const pillarSlug = ((document.body && document.body.dataset.pillar) || "stage").toUpperCase();
     let raf = 0, last = 0, seen = true, dirty = true;
     const size = () => { const r = canvas.getBoundingClientRect(); S.w = Math.max(1, r.width); S.h = Math.max(1, r.height); S.dpr = Math.min(2, window.devicePixelRatio || 1); const w = Math.round(S.w * S.dpr), h = Math.round(S.h * S.dpr); if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; } dirty = true; };
     const frame = () => {
@@ -45,7 +47,7 @@
         canvas.__ac = cs.getPropertyValue("--accent").trim() || "#ff9d5c";
         canvas.__ac2 = cs.getPropertyValue("--accent-2").trim() || "#4de8ff";
       }
-      /* subtle perspective instrument grid + corner reticles */
+      /* subtle perspective instrument grid + corner reticles + telemetry scope label */
       g.save();
       g.strokeStyle = canvas.__ac2;
       g.globalAlpha = 0.065;
@@ -67,9 +69,24 @@
       g.moveTo(p, S.h - p - b); g.lineTo(p, S.h - p); g.lineTo(p + b, S.h - p);
       g.moveTo(S.w - p - b, S.h - p); g.lineTo(S.w - p, S.h - p); g.lineTo(S.w - p, S.h - p - b);
       g.stroke();
+      ink.text(g, `STAGE · ${pillarSlug} · LIVE`, p + 8, p + 8, { size: 9, weight: 600, color: canvas.__ac2, alpha: 0.45, spacing: 1.4 });
       g.restore();
 
       if (S.data != null) try { o.draw(g, S, ink); } catch (e) { console.error("[stage]", e); }
+      for (let i = ripples.length - 1; i >= 0; i--) {
+        const rp = ripples[i];
+        rp.t += S.dt || 0.016;
+        const a = 1 - rp.t / 0.65;
+        if (a <= 0) { ripples.splice(i, 1); continue; }
+        g.save();
+        g.strokeStyle = canvas.__ac;
+        g.globalAlpha = a * 0.65;
+        g.lineWidth = 1.6 * a + 0.5;
+        g.beginPath();
+        g.arc(rp.x, rp.y, 10 + rp.t * 140, 0, Math.PI * 2);
+        g.stroke();
+        g.restore();
+      }
       if (S.ptr && S.ptr.on) {
         g.save();
         g.strokeStyle = canvas.__ac2;
@@ -92,7 +109,7 @@
     const at = (e) => { const r = canvas.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
     canvas.addEventListener("pointermove", (e) => { [S.ptr.x, S.ptr.y] = at(e); S.ptr.on = true; if (STILL) frame(); });
     canvas.addEventListener("pointerleave", () => { S.ptr.on = false; S.ptr.down = false; });
-    canvas.addEventListener("pointerdown", (e) => { [S.ptr.x, S.ptr.y] = at(e); S.ptr.on = true; S.ptr.down = true; if (o.press) o.press(S.ptr.x, S.ptr.y, S); });
+    canvas.addEventListener("pointerdown", (e) => { [S.ptr.x, S.ptr.y] = at(e); S.ptr.on = true; S.ptr.down = true; if (!STILL) ripples.push({ x: S.ptr.x, y: S.ptr.y, t: 0 }); if (o.press) o.press(S.ptr.x, S.ptr.y, S); });
     canvas.addEventListener("pointerup", (e) => { S.ptr.down = false; const [x, y] = at(e); if (o.tap) { o.tap(x, y, S); refresh(); } });
     if (o.tap || o.press) { canvas.removeAttribute("aria-hidden"); canvas.setAttribute("role", "img"); canvas.setAttribute("aria-label", o.label || "Signature view"); canvas.style.cursor = "pointer"; }
     if ("IntersectionObserver" in window) new IntersectionObserver((es) => { seen = es[es.length - 1].isIntersecting; }, { rootMargin: "60px" }).observe(sec);

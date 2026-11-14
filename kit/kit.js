@@ -307,8 +307,41 @@
     if (byHand) { made.grid.classList.add("pk-picked"); turnIn(made.panels[i], i - prev); var top = made.tabs.getBoundingClientRect().top; if (top < 40) window.scrollTo({ top: window.scrollY + top - 70, behavior: still ? "auto" : "smooth" }); window.dispatchEvent(new Event("resize")); }
   }
 
+  function syncCockpitButtons() {
+    var on = body.classList.contains("pk-all-open");
+    var btns = document.querySelectorAll(".pk-cockpit-btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute("aria-pressed", String(on));
+      btns[i].textContent = on ? "All Panels: ON" : "All Panels";
+    }
+  }
+  function ensureCockpitBtn(tb) {
+    if (!tb || tb.querySelectorAll('.tab, [role="tab"]').length < 2) return;
+    var btn = tb.querySelector(".pk-cockpit-btn");
+    if (!btn) {
+      btn = el("button", "pk-cockpit-btn");
+      btn.type = "button";
+      if (!document.getElementById("pk-cockpit-btn")) btn.id = "pk-cockpit-btn";
+      btn.title = "Toggle simultaneous multi-panel cockpit view";
+      btn.addEventListener("click", function () {
+        body.classList.toggle("pk-all-open");
+        syncCockpitButtons();
+        window.dispatchEvent(new Event("resize"));
+      });
+      tb.appendChild(btn);
+    }
+    syncCockpitButtons();
+  }
+
   var queued = false;
-  function sync() { queued = false; sections(); Array.prototype.forEach.call(main.querySelectorAll(":scope > .tabs"), ink); }
+  function sync() {
+    queued = false;
+    sections();
+    Array.prototype.forEach.call(main.querySelectorAll(".tabs"), function (tb) {
+      ensureCockpitBtn(tb);
+      ink(tb);
+    });
+  }
   function later() { if (!queued) { queued = true; requestAnimationFrame(sync); } }
   new MutationObserver(function (list) {
     for (var k = 0; k < list.length; k++) { var m = list[k];

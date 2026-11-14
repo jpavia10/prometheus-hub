@@ -17,25 +17,31 @@ float fbm(vec2 p){ float a = .5, s = 0.; for (int i = 0; i < 4; i++) { if (float
 float ridge(float x, float seed){ return noise(vec2(x, seed)) * .6 + noise(vec2(x * 2.7, seed + 7.)) * .28 + noise(vec2(x * 7.1, seed + 19.)) * .12; }
 void main(){
   vec2 uv = gl_FragCoord.xy / uRes; float asp = uRes.x / uRes.y; vec2 p = vec2((uv.x - .5) * asp, uv.y);
-  vec3 col = mix(uLow, uMid, smoothstep(0., .5, uv.y)); col = mix(col, uTop, smoothstep(.38, 1., uv.y));
-  float d = distance(p, vec2((uSun.x - .5) * asp, uSun.y));
-  col += uGlow * (exp(-d * d * 22.) * .7 + exp(-d * 2.6) * .16) * (1. - uCloud * .75);
-  vec2 sg = p * 58.; vec2 si = floor(sg); vec2 sf = fract(sg) - .5; float sh = hash(si);
+  vec3 col = mix(uLow, uMid, smoothstep(0., .52, uv.y)); col = mix(col, uTop, smoothstep(.35, 1., uv.y));
+  vec2 sunPos = vec2((uSun.x - .5) * asp, uSun.y) + uPar * .018;
+  vec2 dv = p - sunPos; float d = length(dv);
+  float ray = fbm(vec2(atan(dv.y, dv.x + 1e-4) * 3.4, uT * .03));
+  col += uGlow * (exp(-d * d * 20.) * .76 + exp(-d * 2.4) * (.18 + .14 * ray)) * (1. - uCloud * .72);
+  float aurWave = sin(p.x * 2.6 + uT * .18 + fbm(vec2(p.x * 1.8 - uT * .04, uv.y * 2.2)) * 4.2);
+  float aurBand = smoothstep(.36, .74, uv.y) * (1. - smoothstep(.76, .98, uv.y)) * smoothstep(-.2, .85, aurWave);
+  vec3 aurCol = mix(vec3(.16, .86, .68), vec3(.52, .38, .96), clamp(uv.x + .2 * sin(uT * .12), 0., 1.));
+  col += aurCol * aurBand * (.11 + .24 * uStars) * (1. - uCloud * .65);
+  vec2 sg = p * 58. + uPar * .08; vec2 si = floor(sg); vec2 sf = fract(sg) - .5; float sh = hash(si);
   vec2 so = (vec2(hash(si + 7.3), hash(si + 13.7)) - .5) * .7; float sd = length(sf - so);
   float st = smoothstep(.05 + sh * .11, 0., sd) * step(.74, sh) * (.45 + .9 * hash(si + 29.));
   col += vec3(.84, .9, 1.) * st * (.62 + .38 * sin(uT * 1.6 + sh * 40.)) * uStars * smoothstep(.18, .7, uv.y) * (1. - uCloud);
-  vec2 q = p * vec2(1.5, 3.4) + vec2(uT * .012 * (1. + uWind * 5.), 0.) + uPar * .04;
+  vec2 q = p * vec2(1.5, 3.4) + vec2(uT * .012 * (1. + uWind * 5.), 0.) + uPar * .05;
   float c = fbm(q + vec2(fbm(q * 1.6 - uT * .008), 0.));
   float cov = smoothstep(.66 - uCloud * .4, .98 - uCloud * .3, c) * smoothstep(.12, .46, uv.y);
   vec3 lit = mix(uMid, uGlow, .35) + .12; vec3 dark = uLow * .55 + .02;
   col = mix(col, mix(lit, dark, smoothstep(.35, .95, c) * (.4 + .6 * uCloud)), cov * (.3 + .65 * uCloud));
   col += vec3(.72, .78, 1.) * uFlash * (.18 + cov * .95);
-  for (int i = 0; i < 3; i++) {
-    float fi = float(i); float y = .2 - fi * .055 + (ridge(p.x * (1.3 + fi * .9) + 3.7 * fi + uPar.x * (.02 + fi * .03), fi * 11.3) - .5) * (.2 - fi * .04);
+  for (int i = 0; i < 4; i++) {
+    float fi = float(i); float y = .245 - fi * .048 + (ridge(p.x * (1.1 + fi * .85) + 3.7 * fi + uPar.x * (.016 + fi * .028), fi * 11.3) - .5) * (.2 - fi * .034);
     float m = smoothstep(y + .0035, y - .0035, uv.y);
-    vec3 rc = mix(uLow * (.62 - fi * .16), uMid * .5, .28 - fi * .1) + vec3(.01, .014, .03) * (2. - fi);
-    col = mix(col, rc + uFlash * .06, m * (.86 + fi * .07));
-    col = mix(col, uMid * .8 + .02, (1. - m) * exp(-abs(uv.y - y) * 26.) * .1 * (1. + uCloud));
+    vec3 rc = mix(uLow * (.66 - fi * .12), uMid * .5, .30 - fi * .07) + vec3(.012, .016, .034) * (3. - fi);
+    col = mix(col, rc + uFlash * .06, m * (.84 + fi * .05));
+    col = mix(col, mix(uGlow, uMid, .5) * .95 + .03, (1. - m) * exp(-abs(uv.y - y) * 24.) * .11 * (1. + uCloud));
   }
   if (uRain > .01) {
     vec2 r = vec2(uv.x * asp * 46. + uv.y * 9. * (.25 + uWind), uv.y * 11. + uT * (9. + uWind * 5.));

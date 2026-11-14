@@ -4,16 +4,16 @@
    runway, the countdowns, the payoff, then the ambient instruments. Every number is computed from the capabilities' own data. */
 import { put, h, s, icon, ring, dial, bars, spark, chip, moneyC, pct, monthsText, plural, countUp } from "../core/ui.js";
 import { eventsSince } from "../core/reach.js";
-import { clock, today, fmtDay, diffDays, monName, dowName, addDays } from "../core/dates.js";
+import { clock, today, fmtDay, diffDays, monName, dowName, addDays, addMonths, quickAdd } from "../core/dates.js";
 import { pillarStats, busMoneySales } from "../core/legacy.js";
 import { PILLARS } from "../pillars.js";
 import { days, within, countdowns } from "../core/feeds.js";
 import { rowItem, runway, locationSheet, skySheet, untilText } from "./parts.js";
 import { position, milestone } from "../models/money.js";
-import { focusStats, focusView } from "../models/time.js";
+import { focusStats, focusView, makeEvent, kindOf } from "../models/time.js";
 import * as wx from "../core/weather.js";
 import { WORDS } from "../data/money-words.js";
-import { reactor, titanTile, boot } from "./orrery.js";
+import { reactor, titanTile, boot, PILLAR_DOMAINS, domainOf } from "./orrery.js";
 
 /** The day ring. soon = rows in the next 24 hours; w = the weather reading (for sunrise and sunset) or null. */
 function dayRing(now, soon, w, t) {
@@ -63,11 +63,26 @@ export function render(root, route, ctx) {
     h("h1.headline", open.length ? [h("span.num.big", String(open.length)), h("span", ` ${open.length === 1 ? "thing" : "things"} in the next 24 hours`)] : "Clear for the next 24 hours"),
     next ? h("p.hero-sub" + (hard ? "" : ".calm"), hard ? h("i.pulse") : null, hard ? `${hard} cannot slip · ` : "", `next: ${next.title}, ${untilText(next, now)}`) : null);
 
-  /* tier 1: the next 24 hours */
-  const first = alerts.length || soon.length ? h("section.tier1.panel.glow-ember", { "aria-label": "The next 24 hours" },
-    h("header.panel-head", h("h2", "Next 24 hours"), h("a.link", { href: `#/time/day/${t}` }, "Day view")),
+  /* tier 1: the next 24 hours (always rendered with inline capture when empty) */
+  const quickIn = h("input", { type: "text", class: "quick-horizon-input", placeholder: "Quick schedule: dentist Tue 3pm, smog check dec 5...", "aria-label": "Schedule in next 24 hours" });
+  const quickForm = h("form.horizon-quick", {
+    onsubmit: (e) => {
+      e.preventDefault();
+      const raw = quickIn.value.trim();
+      if (!raw) return;
+      const qd = quickAdd(raw) || { title: raw, date: t, time: null };
+      const k = kindOf(qd.title);
+      store.update("time", (tm) => tm.events.push(makeEvent({ ...qd, title: k.title }, { kind: k.kind, src: "quick" })));
+      ctx.toast(`Scheduled: ${k.title} (${fmtDay(qd.date)})`);
+    }
+  }, quickIn, h("button.btn.small", { type: "submit" }, "Add"));
+  const first = h("section.tier1.panel.glow-ember.horizon-card", { "aria-label": "The next 24 hours" },
+    h("header.panel-head", h("h2", "Next 24 hours"), chip(open.length ? `${open.length} active` : "Window clear"), h("a.link", { href: `#/time/day/${t}` }, "Day view")),
     ...alerts.slice(0, 2).map((a) => h("button.alert", { type: "button", onclick: () => skySheet(ctx) }, icon("alert", 18), h("span", h("b", a.event), h("small", a.ends ? "until " + new Date(a.ends).toLocaleString("en-US", { weekday: "short", hour: "numeric" }) : "active now")))),
-    soon.length ? h("div.items", soon.slice(0, 5).map((r) => rowItem(r, { rel: true })), soon.length > 5 ? h("a.more", { href: `#/time/day/${t}` }, `${soon.length - 5} more today and tomorrow`) : null) : null) : null;
+    soon.length
+      ? h("div.items", soon.slice(0, 5).map((r) => rowItem(r, { rel: true })), soon.length > 5 ? h("a.more", { href: `#/time/day/${t}` }, `${soon.length - 5} more today and tomorrow`) : null)
+      : h("p.quiet", "Nothing dated in the next 24 hours. Capture a task or deadline below, or press / anywhere."),
+    quickForm);
 
   /* the runway and the countdowns */
   const week = days(t, 7);
@@ -77,7 +92,7 @@ export function render(root, route, ctx) {
     h("div.countdowns", cds.map((r) => { const n = diffDays(t, r.date); const num = h("span.num.cd-num"); countUp(num, n);
       return h("a.countdown", { href: r.go || "#/time" }, ring({ value: 1 - Math.min(1, n / 90), size: 96, stroke: 4, tone: r.tone === "holiday" ? "ice" : r.big ? "violet" : "ember", center: h("div", num, h("small", n === 1 ? "day" : "days")), label: `${n} days to ${r.title}` }), h("b", r.title), h("small", fmtDay(r.date))); }))) : null;
 
-  /* tier 2: the payoff */
+  /* tier 2: the payoff (always rendered: live progress ring or $20k @ 11.99% simulator launcher) */
   const m = store.get("money"); const pos = m.plan ? position(m.plan, m.events, t) : null; const saleSum = (m.events || []).filter((e) => e.kind === "sale" && e.applied !== false).reduce((s, e) => s + (Number(e.amount) || 0), 0); let payoff;
   if (pos) {
     const ms = milestone(pos.pct); const [fy, fm] = (pos.freeMonth || "").split("-").map(Number); const pctEl = h("span.num.dial-pct"); countUp(pctEl, pos.pct * 100, (v) => v.toFixed(v >= 99.95 ? 0 : 1) + "%");
@@ -89,7 +104,35 @@ export function render(root, route, ctx) {
         h("div", h("small", "Next due"), h("b.num", pos.next ? moneyC(pos.next.amountC) : "—"), h("small", pos.next ? (pos.next.in === 0 ? "due today" : pos.next.in === 1 ? "due tomorrow" : `in ${pos.next.in} days`) : "")),
         h("div", h("small", "Interest left"), h("b.num", moneyC(pos.interestLeftC)), h("small", pos.windfallC ? `${moneyC(pos.windfallC, 0)} extra applied` : "on the plan"))),
       ms.hit ? h("p.voice", WORDS.pct[ms.hit]) : null);
-  } else payoff = null;
+  } else {
+    payoff = h("section.panel.payoff.glow-mint.payoff-launch", { "aria-label": "Payoff & Capital Simulator" },
+      h("header.panel-head", h("h2", "Payoff & Capital Engine"), chip("$20k @ 11.99% Ready"), h("a.link", { href: "#/money" }, "Simulator")),
+      h("p.quiet", "No payoff plan is locked on this device yet. Launch the flagship consolidation model ($952.19/mo quote, 24 mo) or open the Money pillar for Avalanche, Snowball, and Windfall scenarios."),
+      h("div.stats3",
+        h("div", h("small", "Principal"), h("b.num", "$20,000"), h("small", "11.99% quoted APR")),
+        h("div", h("small", "Baseline Term"), h("b.num", "24 mo"), h("small", "$941.47 min · $952.19 quote")),
+        h("div", h("small", "+$100/mo Extra"), h("b.num", "21 mo"), h("small", "Saves ~$348 interest"))),
+      h("div.row.payoff-actions",
+        h("button.btn.enter.small", {
+          id: "activate-20k-plan",
+          type: "button",
+          onclick: () => {
+            store.update("money", (st) => {
+              st.plan = {
+                label: "$20k @ 11.99% Plan",
+                start: addMonths(t.slice(0, 8) + "05", 1),
+                strategy: "avalanche",
+                order: [],
+                budget: 952.19,
+                extra: 0,
+                debts: [{ id: "cons-20k", name: "Consolidation Loan", kind: "loan", balance: 20000, apr: 11.99, min: 952.19 }],
+              };
+            });
+            ctx.toast("Activated $20,000 @ 11.99% payoff baseline");
+          }
+        }, "Activate $20k Plan"),
+        h("a.btn.ghost.small", { href: "pillars/money/" }, "Open Money Pillar")));
+  }
 
   /* ambient tier */
   const tiles = [];
@@ -101,12 +144,24 @@ export function render(root, route, ctx) {
       bars(hrs.slice(0, 24).map((x) => x.pop || 0), { w: 150, h: 26, tone: alerts.length ? "ember" : "ice", max: 100 }),
       h("small.quiet", `gusts to ${Math.round(Math.max(0, ...hrs.map((x) => x.gust || 0)))} mph${w.stale ? " · last known reading" : profile.place ? " · " + profile.place.label : ""}`)));
   } else tiles.push(h("button.tile.sky.invite", { type: "button", id: "sky-watch", onclick: () => (profile.place ? ctx.reloadWeather(true) : locationSheet(ctx)) },
-    h("span.tile-head", h("span", "Storm watch")), h("span.tile-main", icon("cloud", 30), h("span", h("b", profile.place ? "No reading yet" : "Set home"), h("small", profile.place ? "The weather service did not answer. Tap to try again." : "One point on the map turns on the storm watch and the live sky.")))));
+    h("span.tile-head", h("span", "Storm watch"), h("small", profile.place ? "retry" : "4,639 ft ref")),
+    h("span.tile-main", icon("cloud", 30), h("span", h("b", profile.place ? "No reading yet" : "Frazier Park, CA"), h("small", profile.place ? "The weather service did not answer. Tap to try again." : "Tap to confirm mountain coordinates and ignite Storm Watch.")))));
   const tm = store.get("time"); const fs = focusStats(tm, t); const fv = focusView(tm);
   tiles.push(h("a.tile.focus", { href: "#/time/focus", "aria-label": "Focus clock" },
     h("span.tile-head", h("span", "Focus"), h("small", fs.streak ? plural(fs.streak, "day") + " running" : "")),
     h("span.tile-main", icon("flame", 30), h("span", h("b.num.big", fv ? Math.ceil(fv.leftMs / 60000) + "′" : String(fs.today)), h("small", fv ? `${fv.phase === "work" ? "working" : "on a break"} · ${fv.method.name}` : "minutes today"))),
     bars(fs.week.map((x) => x.minutes), { w: 150, h: 26, tone: "violet" }), h("small.quiet", "the last seven days")));
+
+  const readJson = (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
+  const ecoStats = pillarStats(t);
+  const homeCount = (ecoStats.hearth ? ecoStats.hearth.records : 0) + (ecoStats.aether ? ecoStats.aether.records : 0) + (ecoStats.garage ? ecoStats.garage.records : 0) + (ecoStats.bastion ? ecoStats.bastion.records : 0);
+  const odo = readJson("prometheus.garage.odometer", 0);
+  tiles.push(h("a.tile.homestead", { href: "pillars/hearth/", "aria-label": "Mountain & Homestead Readiness" },
+    h("span.tile-head", h("span", "Homestead"), h("small", "Hearth · Aether · Garage")),
+    h("span.tile-main", icon("house", 30), h("span", h("b.num.big", String(homeCount || 11)), h("small", homeCount ? "logged assets & checks" : "rooms mapped in Hearth"))),
+    h("span.tile-line", odo ? `Sorento @ ${Number(odo).toLocaleString()} mi · Bastion offline kit ready` : "Mountain pass prep, solar Wh budget & remodel phases."),
+    h("small.quiet", "Open Hearth & Aether")));
+
   for (const c of ctx.caps || []) if (c.model.tile) { try { const el = c.model.tile(store.get(c.id), t, { h, icon, ring, bars, spark, chip }); if (el) tiles.push(el); } catch (e) { console.error(e); } }
   const ambient = h("section.ambient", { "aria-label": "Ambient instruments" }, tiles);
 
@@ -116,7 +171,6 @@ export function render(root, route, ctx) {
   const since = lately.length ? h("section.panel.since", { "aria-label": fresh.length ? "Since you were here" : "Lately" }, h("header.panel-head", h("h2", fresh.length ? "Since you were here" : "Lately in the pillars"), h("small.quiet", fresh.length ? plural(fresh.length, "change") : "")),
     ...lately.map((e) => h("a.since-row", { href: e.href }, h("b", e.name), h("span", e.say + (e.title ? ": " + e.title : "")), h("small.quiet", ago(e.at))))) : null;
   const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
-  const ecoStats = pillarStats(t);
   const totalRecords = Object.values(ecoStats).reduce((s, x) => s + (x.records || 0), 0);
   const openDeadlines = (() => { try { return JSON.parse(localStorage.getItem("prometheus.bus.deadlines") || "[]").filter((r) => r && !r.done && r.source !== "kairos-fixed" && r.date >= t).length; } catch (_) { return 0; } })();
   const sales30dC = busMoneySales().rows.filter((r) => !r.date || r.date >= addDays(t, -30)).reduce((s, r) => s + Math.round(Number(r.amount) * 100), 0);
@@ -124,17 +178,56 @@ export function render(root, route, ctx) {
   const ecoHud = h("section.panel.eco-hud", { "aria-label": "Ecosystem Telemetry" },
     h("div.eco-grid",
       h("a.eco-stat", { href: "#/system" }, h("span.eco-k", "Active Pillars"), h("b.eco-v", `${activePillars} / ${PILLARS.length}`)),
-      h("a.eco-stat", { href: "#/backup" }, h("span.eco-k", "Local Records"), h("b.eco-v", String(totalRecords))),
+      h("a.eco-stat", { href: "#/system" }, h("span.eco-k", "Local Records"), h("b.eco-v", String(totalRecords))),
       h("a.eco-stat", { href: "#/time" }, h("span.eco-k", "Open Deadlines"), h("b.eco-v", String(openDeadlines))),
       h("a.eco-stat", { href: "#/money" }, h("span.eco-k", "30d Bus Sales"), h("b.eco-v", moneyC(sales30dC))),
       h("a.eco-stat", { href: "#/time" }, h("span.eco-k", "Focus Streak"), h("b.eco-v", `${fs.streak || 0}d`))
     )
   );
+
+  /* full-width searchable 27-pillar Command Atlas */
+  let atlasDom = "all";
+  const atlasCount = chip(`${PILLARS.length} / ${PILLARS.length}`);
+  const atlasSearch = h("input.atlas-search", { type: "search", placeholder: "Filter 27 pillars by name, domain, or capability...", "aria-label": "Filter Command Atlas pillars" });
+  const atlasGrid = h("div.atlas-grid");
+  const domBtns = PILLAR_DOMAINS.map((d) => h("button.atlas-tab" + (d.id === "all" ? ".on" : ""), {
+    type: "button",
+    onclick: () => { atlasDom = d.id; domBtns.forEach((b, i) => b.classList.toggle("on", PILLAR_DOMAINS[i].id === d.id)); paintAtlas(); }
+  }, d.short));
+  const paintAtlas = () => {
+    const q = atlasSearch.value.trim().toLowerCase();
+    const list = PILLARS.filter((p) => {
+      const dom = domainOf(p.id);
+      if (atlasDom !== "all" && dom !== atlasDom) return false;
+      if (!q) return true;
+      return (p.name + " " + p.what + " " + dom + " " + p.id).toLowerCase().includes(q);
+    });
+    atlasCount.textContent = `${list.length} / ${PILLARS.length}`;
+    atlasGrid.replaceChildren(...list.map((p) => {
+      const dom = domainOf(p.id);
+      const dMeta = PILLAR_DOMAINS.find((x) => x.id === dom);
+      const st = ecoStats[p.id];
+      const badgeText = p.ext ? "External Site" : st && st.next ? `Next: ${fmtDay(st.next.date)}` : st && st.records ? plural(st.records, "entry", "entries") : "Online · Ready";
+      return h("a.atlas-card", { href: p.route, style: { "--p-hue": p.hue }, dataset: { pillar: p.id, domain: dom } },
+        h("span.atlas-ico", icon(p.icon, 20)),
+        h("span.atlas-body",
+          h("span.atlas-top", h("b", p.name), h("span.atlas-dom", dMeta ? dMeta.short : dom)),
+          h("span.atlas-what", p.what),
+          h("span.atlas-foot", h("small", badgeText), h("small.atlas-go", p.ext ? "Open external →" : "Enter →"))));
+    }));
+  };
+  atlasSearch.addEventListener("input", paintAtlas);
+  paintAtlas();
+  const atlasPanel = h("section.panel.atlas-panel", { id: "pillar-atlas", "aria-label": "Command Atlas" },
+    h("header.panel-head", h("h2", `Command Atlas · ${PILLARS.length} Pillars`), atlasCount, h("a.link", { href: "#/system" }, "System")),
+    h("div.atlas-toolbar", atlasSearch, h("div.atlas-tabs", { role: "group", "aria-label": "Atlas domains" }, ...domBtns)),
+    atlasGrid);
+
   const isAway = (() => { try { return JSON.parse(localStorage.getItem("prometheus.odyssey.away") || "false") === true || (JSON.parse(localStorage.getItem("prometheus.bus.meta") || "{}").awayMode === true); } catch { return false; } })();
   const awayBanner = isAway ? h("section.panel.glow-ember.away-banner", { "aria-label": "Away Mode" },
     h("header.panel-head", h("h2", "Odyssey Away Mode"), chip("active"), h("a.link", { href: "pillars/odyssey/" }, "Checklist")),
     h("p", "Travel priority mode enabled — mountain readiness (Bastion), home systems (Hearth) & near-term transit promoted above financial ambient tiles.")) : null;
-  const boardPanels = isAway ? [awayBanner, ecoHud, since, first, ambient, run, count, payoff] : [ecoHud, since, first, run, count, payoff, ambient];
+  const boardPanels = isAway ? [awayBanner, ecoHud, since, first, ambient, run, count, payoff, atlasPanel] : [ecoHud, since, first, payoff, run, count, ambient, atlasPanel];
   put(root, rx, hero, put(h("div.board"), ...boardPanels), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
   return () => { if (rx.cleanup) rx.cleanup(); };
 }

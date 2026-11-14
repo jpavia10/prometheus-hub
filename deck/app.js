@@ -15,7 +15,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d14";
+export const BUILD = "d15";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -67,10 +67,26 @@ function drawShell() {
 }
 function drawRail() {
   const p = store.get("profile"); const w = state.weather; const here = (state.route || parse(location.hash)).cap; const d = w && w.now ? wx.describe(w.now.code, w.now.isDay) : null;
+  const navLink = (label, href, on) => h("a.rail-link" + (on ? ".on" : ""), { href, "aria-current": on ? "page" : null }, label);
   $("#rail").replaceChildren(
-    h("a.brand", { href: "#/", "aria-label": "Prometheus: the picture" }, h("span.brand-mark", { "aria-hidden": "true" }), h("span.brand-day", here === "picture" ? "Prometheus" : here === "system" ? "System" : (cap(here) || {}).name || "")),
+    h("a.brand", { href: "#/", "aria-label": "Prometheus: the picture" },
+      h("span.brand-mark", { "aria-hidden": "true" }),
+      h("span.brand-day", here === "picture" ? "Prometheus" : here === "system" ? "System" : (cap(here) || {}).name || ""),
+      h("span.rail-build", `BUILD ${BUILD.toUpperCase()} · ${PILLARS.length} PILLARS`)),
+    h("nav.rail-nav", { "aria-label": "Command stations" },
+      navLink("Core", "#/", here === "picture"),
+      navLink("Time", "#/time", here === "time"),
+      navLink("Money", "#/money", here === "money"),
+      navLink("Athenaeum", "./pillars/athenaeum/", false),
+      navLink("Hearth", "./pillars/hearth/", false),
+      navLink("System", "#/system", here === "system")),
     h("div.rail-right",
-      p.demo ? h("button.chip.demo", { type: "button", onclick: demoSheet }, "Demo") : null,
+      h("button.chip.rail-search", { type: "button", "aria-label": "Search or capture (/)" , onclick: () => { tick(); openSearch(); } }, icon("search", 13), h("span", "Search · Capture"), h("kbd", "/")),
+      p.demo
+        ? h("button.chip.demo", { type: "button", onclick: demoSheet }, "Demo · Active")
+        : store.pristine()
+          ? h("button.chip.preset-btn", { type: "button", onclick: () => { tick(); startDemo(); toast("Loaded sample mountain & payoff telemetry"); } }, "Load Sample")
+          : null,
       d ? h("a.sky-chip", { href: "#/", onclick: (e) => { e.preventDefault(); go("#/"); setTimeout(() => { const el = $("#sky-watch"); if (el) el.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "center" }); }, 120); }, "aria-label": `${Math.round(w.now.temp)} degrees, ${d.text}` }, icon(d.icon, 18), h("span.num", Math.round(w.now.temp) + "°")) : null,
       h("button.icon-btn", { type: "button", "aria-label": soundOn() ? "Sound is on: turn it off" : "Sound is off: turn it on", "aria-pressed": String(soundOn()), onclick: () => { setSound(!soundOn()); drawRail(); } }, icon(soundOn() ? "speaker" : "mute"))));
 }
@@ -78,7 +94,13 @@ function drawDock() {
   const cur = state.route ? state.route.cap : parse(location.hash).cap;
   const item = (id, name, ic, href) => h("a.dock-item" + (cur === id ? ".on" : ""), { href, "aria-current": cur === id ? "page" : null, dataset: { cap: id } }, icon(ic, 22), h("span", name));
   const orb = h("button.dock-orb", { type: "button", id: "open-search", "aria-label": "Search or add (press /)", onclick: () => { tick(); openSearch(); } }, icon("plus", 24));
-  const items = [item("picture", "Core", "picture", "#/"), orb, item("system", "System", "system", "#/system")];   // the pillars live on the core; the dock stays out of their way
+  const items = [
+    item("picture", "Core", "picture", "#/"),
+    item("time", "Time", "time", "#/time"),
+    orb,
+    item("money", "Money", "money", "#/money"),
+    item("system", "System", "system", "#/system"),
+  ];
   $("#dock").replaceChildren(h("div.dock-bar", items));
 }
 setInterval(() => { if ($("#rail")) drawRail(); const r = state.route; if (r && r.cap === "picture" && !sheetOpen() && !document.hidden) { const m = clock.now().getMinutes(); if (m !== state.minute) { state.minute = m; render(true); } } }, 15000);

@@ -4,6 +4,15 @@
 What is on the live deck and what is not. A capability is on the deck only when its proof passes in a real browser
 (`python3 proofs/run.py <url>`; unit proofs `node --test proofs/unit/*.test.mjs`). Results of the last run: `proofs/results.json`.
 
+Build **d15** · 2026-11-13 · live at https://jpavia10.github.io/prometheus-hub/
+
+**Iteration 3 Visual & Spatial Overhaul (d15, 2026-11-13):**
+- **Command Bridge Rail & 5-Station Dock (`deck/app.js`, `deck/deck.css`):** Upgraded top rail with `BUILD D15 · 27 PILLARS` telemetry pill, `6`-link navigation (`Core`, `Time`, `Money`, `Athenaeum`, `Hearth`, `System`), quick `/` search trigger, clean-profile `Load Sample` launcher, and expanded bottom dock to `5` stations (`Core`, `Time`, central Command orb, `Money`, `System`).
+- **Atmospheric WebGL Sky (`deck/core/atmo.js`):** Upgraded fragment shader with crepuscular corona rays around `uSun`, layered emerald/cyan/violet aurora ribbons, `4`-ridge mountain parallax silhouettes, and valley mist rim-glow.
+- **3-Mode Orrery & 27-Pillar Command Atlas (`deck/views/orrery.js`, `deck/views/picture.js`, `deck/deck.css`):** Added `3D Orbit` / `Hex Matrix` / `Synapse Web` mode switching, `5` domain filter pills (`All`, `Finance`, `Homestead`, `Mind & Studio`, `Civic & Security`), clickable synapse peer chips, wide `1460px` CSS Grid Overview (`Next 24 Hours` quick-add card, always-on `$20k @ 11.99%` payoff launcher without mutating pristine boot, `Frazier Park, CA` Storm Watch card, `5`-stat `.eco-hud`, and searchable `27`-pillar `#pillar-atlas` grid).
+- **25-Pillar Cockpit Upgrade (`kit/prometheus.css`, `kit/kit.js`, `kit/stage.js`):** Widened `.shell` to `1280px`, restored visible top `.back` + desktop `.compass` navigation, added `#pk-cockpit-btn` (`All Panels` simultaneous multi-panel view), and added click-triggered radial shockwave ripples + `STAGE · <PILLAR> · LIVE` HUD telemetry on stage canvases.
+- **Verified (d15):** `node --check` (`125/125` JS/MJS, `failed=0`), JSON check (`62/62`, `failed=0`), `proofs/unit/*.test.mjs` (`26/26` pass, `0` fail, `0` skipped), Chromium CDP (`30/30` routes pass at `1440x900` & `390x844`, `0` failures, `0` internal 404s, `<= 390px` width on all `30` routes, plus Hub + `13` interactive domain suites).
+
 Build **d14** · 2026-11-13 · live at https://jpavia10.github.io/prometheus-hub/
 
 **Iteration 2 Overhaul (d14, 2026-11-13):**

@@ -19,15 +19,57 @@ const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k)
 const S = { yaw: 0.26, vel: 0.5, pitch: 0, zoom: 1, born: false };                                    // survives a redraw of the view
 const SYNAPSES = [
   ["selling", "money", "105,240,195"],
+  ["money", "midas", "87,239,192"],
+  ["midas", "titan", "255,210,122"],
+  ["titan", "argus", "255,210,122"],
+  ["selling", "titan", "255,195,115"],
+  ["icarus", "observatory", "255,130,110"],
   ["kairos", "kin", "185,155,255"],
+  ["kairos", "apollo", "255,220,120"],
   ["hermes", "privacy", "140,185,255"],
+  ["hermes", "polis", "122,168,255"],
   ["argus", "hearth", "255,175,115"],
   ["odyssey", "bastion", "130,230,175"],
+  ["odyssey", "garage", "90,210,255"],
   ["aether", "bastion", "125,240,210"],
+  ["aether", "hearth", "125,240,210"],
+  ["records", "garage", "140,200,255"],
+  ["records", "kin", "180,190,255"],
   ["foundry", "athenaeum", "255,205,120"],
+  ["forge", "foundry", "255,165,90"],
   ["continuity", "privacy", "200,245,140"],
+  ["continuity", "bastion", "245,180,70"],
   ["mythos", "piano", "235,150,255"],
+  ["mythos", "presence", "220,150,255"],
+  ["observatory", "athenaeum", "165,155,255"],
+  ["games", "piano", "210,145,255"],
 ];
+
+export const PILLAR_DOMAINS = [
+  { id: "all", label: "All 27", short: "All", tone: "ember" },
+  { id: "finance", label: "Finance & Capital", short: "Finance", tone: "mint", quad: [-0.26, -0.23] },
+  { id: "homestead", label: "Mountain & Home", short: "Homestead", tone: "ice", quad: [0.26, -0.23] },
+  { id: "mind", label: "Mind & Studio", short: "Studio", tone: "violet", quad: [-0.26, 0.23] },
+  { id: "civic", label: "Civic & Sovereign", short: "Civic", tone: "gold", quad: [0.26, 0.23] },
+];
+
+export const DOMAIN_BY_ID = {
+  money: "finance", midas: "finance", titan: "finance", selling: "finance", icarus: "finance",
+  hearth: "homestead", garage: "homestead", bastion: "homestead", aether: "homestead", odyssey: "homestead", records: "homestead", argus: "homestead", kin: "homestead",
+  kairos: "mind", apollo: "mind", athenaeum: "mind", piano: "mind", mythos: "mind", foundry: "mind", forge: "mind", observatory: "mind", games: "mind", presence: "mind",
+  polis: "civic", privacy: "civic", continuity: "civic", hermes: "civic",
+};
+
+export const domainOf = (id) => DOMAIN_BY_ID[id] || "mind";
+
+function peersFor(id) {
+  const seen = new Set();
+  for (const [a, b] of SYNAPSES) {
+    if (a === id) seen.add(b);
+    else if (b === id) seen.add(a);
+  }
+  return Array.from(seen).map((pid) => PILLARS.find((p) => p.id === pid)).filter(Boolean);
+}
 
 /* hex grid: the core in the middle, six around it, twelve outside */
 const CELLS = (() => { const out = []; for (let q = -3; q <= 3; q++) for (let r = -3; r <= 3; r++) { const d = Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r)); if (d <= 3 && d > 0) out.push({ d, x: Math.sqrt(3) * (q + r / 2), y: 1.5 * r }); }
@@ -84,7 +126,11 @@ export function reactor(ctx) {
   const t = today(); const stats = pillarStats(t); let tn = null; const calm = still();
   const W = innerWidth >= 1080 ? Math.min(600, Math.max(460, Math.round(innerWidth * 0.42))) : Math.min(innerWidth, 460);
   const H = Math.round(W * 0.96), cx = W / 2, cy = H / 2, M = 44;
-  let mode = calm ? "grid" : ls("prom.deck.layout") || "orbit"; let mix = mode === "grid" ? 1 : 0; let birth = S.born || calm ? 1 : 0; S.born = true;
+  let mode = calm ? "grid" : ls("prom.deck.layout") || "orbit";
+  if (!["orbit", "grid", "web"].includes(mode)) mode = "orbit";
+  let mix = mode === "grid" ? 1 : 0, wmix = mode === "web" ? 1 : 0;
+  let domainFilter = "all";
+  let birth = S.born || calm ? 1 : 0; S.born = true;
   const used = CELLS.slice(0, PILLARS.length), mx = Math.max(...used.map((c) => Math.abs(c.x))), my = Math.max(...used.map((c) => Math.abs(c.y))), gs = Math.min((W - 14) / (2 * mx + Math.sqrt(3)), (H - 8) / (2 * my + 2)), hw = Math.sqrt(3) * gs, hh = 2 * gs;
   const R1 = W * 0.22, R2 = W * 0.335, R3 = W * 0.43, PITCH = 0.8, D = 1000;
   const ringOf = (i) => i < 6
@@ -92,6 +138,19 @@ export function reactor(ctx) {
     : i < 18
       ? { R: R2, a0: ((i - 6) * TAU) / 12, tilt: -0.07, roll: -0.06 }
       : { R: R3, a0: ((i - 18) * TAU) / Math.max(6, PILLARS.length - 18), tilt: 0.11, roll: -0.11 };
+  const webGroups = { finance: [], homestead: [], mind: [], civic: [] };
+  PILLARS.forEach((p, idx) => webGroups[domainOf(p.id)].push(idx));
+  const webPos = {};
+  for (const dom of PILLAR_DOMAINS) {
+    if (!dom.quad) continue;
+    const list = webGroups[dom.id] || [];
+    const qx = dom.quad[0] * W, qy = dom.quad[1] * H, rad = Math.min(W, H) * 0.145;
+    list.forEach((idx, j) => {
+      const a = (j / Math.max(1, list.length)) * TAU - Math.PI / 2;
+      const rScale = list.length > 7 && j % 2 ? rad * 1.15 : rad * 0.88;
+      webPos[idx] = [qx + Math.cos(a) * rScale, qy + Math.sin(a) * rScale];
+    });
+  }
   let leanX = 0, leanY = 0, lx = 0, ly = 0;
   const proj = (R, a, tilt, roll, yo = 0) => { const zr = R * S.zoom, P = PITCH + tilt + S.pitch + ly * 0.14, x0 = zr * Math.sin(a), z0 = zr * Math.cos(a); let y = yo * Math.cos(P) + z0 * Math.sin(P); const z = -yo * Math.sin(P) + z0 * Math.cos(P); const ro = roll + lx * 0.1; const x = x0 * Math.cos(ro) - y * Math.sin(ro); y = x0 * Math.sin(ro) + y * Math.cos(ro); const sc = D / (D - z); return [x * sc, y * sc, z, sc]; };
 
@@ -104,27 +163,33 @@ export function reactor(ctx) {
   const stage = h("div.rx-stage", { style: { width: W + "px", height: H + "px" } }, fx, coreCv, coreBtn);
   let moved = false;
   const nodes = PILLARS.map((p, i) => { const badge = h("i.hex-badge", { hidden: true }); let held = false, timer = null;
+    const dom = domainOf(p.id);
     const a = h("a.hex-in", { href: p.route, "aria-label": `${p.name}: ${p.what}`, draggable: "false", oncontextmenu: (e) => e.preventDefault(),
       onpointerdown: () => { held = false; timer = setTimeout(() => { if (moved) return; held = true; buzz(18); brief(p, stats, tn, () => go(i)); }, 480); }, onpointerup: () => clearTimeout(timer), onpointerleave: () => clearTimeout(timer), onpointercancel: () => clearTimeout(timer),
       onclick: (e) => { e.preventDefault(); clearTimeout(timer); if (held || moved) return; tick(); enter(i); } }, icon(p.icon, Math.round(gs * 0.5)), h("span.hex-name", p.short), badge);
-    const el = h("div.hex", { style: { width: hw.toFixed(1) + "px", height: hh.toFixed(1) + "px", "--c": `hsl(${p.hue} 100% 68%)` }, dataset: { pillar: p.id } }, a); stage.append(el);
-    return { p, el, badge, ring: ringOf(i), grid: [CELLS[i].x * gs, CELLS[i].y * gs], rgb: `hsl(${p.hue} 100% 66%)`, x: 0, y: 0, sc: 1, z: 0, al: 1 }; });
+    const el = h("div.hex", { style: { width: hw.toFixed(1) + "px", height: hh.toFixed(1) + "px", "--c": `hsl(${p.hue} 100% 68%)` }, dataset: { pillar: p.id, domain: dom } }, a); stage.append(el);
+    return { p, dom, el, badge, ring: ringOf(i), grid: [CELLS[i].x * gs, CELLS[i].y * gs], web: webPos[i] || [0, 0], rgb: `hsl(${p.hue} 100% 66%)`, x: 0, y: 0, sc: 1, z: 0, al: 1 }; });
   const halo = nodes.map((n) => { const c = document.createElement("canvas"); c.width = c.height = 96; const k = c.getContext("2d"); const gr = k.createRadialGradient(48, 48, 2, 48, 48, 48); gr.addColorStop(0, `hsla(${n.p.hue}, 100%, 70%, .55)`); gr.addColorStop(0.4, `hsla(${n.p.hue}, 100%, 60%, .16)`); gr.addColorStop(1, `hsla(${n.p.hue}, 100%, 60%, 0)`); k.fillStyle = gr; k.fillRect(0, 0, 96, 96); return c; });
   const dust = Array.from({ length: calm ? 0 : 190 }, (_, i) => ({ R: W * (0.13 + Math.random() * 0.43), a: Math.random() * TAU, v: 0.05 + Math.random() * 0.22, tilt: (Math.random() - 0.5) * 0.5, y: (Math.random() - 0.5) * 26, s: 0.8 + Math.random() * 1.7, c: i % 3 }));
   const waves = [];
 
   /* the readout under the system */
-  const nameEl = h("b.rx-name", ""), whatEl = h("small.rx-what", ""); const enterBtn = h("button.btn.enter.rx-enter", { type: "button", onclick: () => { tick(); go(focus); } }, "Enter", icon("right", 18));
-  const read = h("div.rx-read", { "aria-live": "polite" }, h("span.rx-text", nameEl, whatEl), enterBtn);
+  const domEl = h("span.rx-dom-badge", ""); const nameEl = h("b.rx-name", ""); const whatEl = h("small.rx-what", ""); const peersEl = h("div.rx-peers");
+  const enterBtn = h("button.btn.enter.rx-enter", { type: "button", onclick: () => { tick(); go(focus); } }, "Enter", icon("right", 18));
+  const read = h("div.rx-read", { "aria-live": "polite" }, h("span.rx-text", h("span.rx-head-row", domEl, nameEl), whatEl, peersEl), enterBtn);
   let focus = -1; const setFocus = (i, loud) => { if (i === focus) return; focus = i; const n = nodes[i]; nodes.forEach((x, j) => x.el.classList.toggle("focus", j === i)); read.style.setProperty("--c", n.rgb);
-    const [head, tail] = n.p.name.split(" · "); scramble(nameEl, head); const f = factsFor(n.p, stats, tn); whatEl.textContent = f[0] || (tail ? tail + ": " : "") + n.p.what; if (loud) tick(); };
+    const dMeta = PILLAR_DOMAINS.find((d) => d.id === n.dom); domEl.textContent = dMeta ? dMeta.short : "";
+    const [head, tail] = n.p.name.split(" · "); scramble(nameEl, head); const f = factsFor(n.p, stats, tn); whatEl.textContent = f[0] || (tail ? tail + ": " : "") + n.p.what;
+    const peerList = peersFor(n.p.id);
+    peersEl.replaceChildren(...(peerList.length ? [h("small.rx-peers-lbl", "Synapses: "), ...peerList.slice(0, 3).map((pr) => h("button.rx-peer-chip", { type: "button", style: { "--pc": `hsl(${pr.hue} 100% 68%)` }, onclick: () => { const pi = nodes.findIndex((nn) => nn.p.id === pr.id); if (pi >= 0) { tick(); lastTouch = performance.now(); fly = mode === "orbit" ? frontYaw(pi) : null; S.vel = 0; setFocus(pi, true); wake(); } } }, pr.short))] : []));
+    if (loud) tick(); };
   const paintBadges = () => { for (const n of nodes) { const v = badgeFor(n.p, stats, t, tn); if (v) { n.badge.textContent = v; n.badge.hidden = false; } } };
   paintBadges(); titan().then((d) => { tn = d; if (!d) return; paintBadges(); const tl = document.getElementById("titan-live"); if (tl) tl.replaceWith(titanTile(d)); if (focus >= 0 && nodes[focus].p.id === "titan") whatEl.textContent = factsFor(nodes[focus].p, stats, tn)[0]; });
 
   /* entering a pillar: swing it to the front, then warp from where it sits */
   let fly = null, flyCb = null; const frontYaw = (i) => S.yaw + wrap(-nodes[i].ring.a0 - S.yaw);
   function go(i) { const b = nodes[i].el.getBoundingClientRect(), sb = stage.getBoundingClientRect(); const x = b.left + b.width / 2, y = b.top + b.height / 2; waves.push({ x: x - sb.left, y: y - sb.top, t: 0, c: nodes[i].rgb }); energy = 1; wake(); warp(x, y, nodes[i].rgb, () => { location.href = nodes[i].p.route; }); setTimeout(() => { dead = true; }, 300); }   // the page is leaving: stop drawing so the way out is free
-  function enter(i) { if (mode === "grid" || calm || i === focus) return go(i); fly = frontYaw(i); S.vel = 0; let done = false; flyCb = () => { if (!done) { done = true; go(i); } }; const cb = flyCb; setTimeout(() => { if (flyCb === cb) { fly = null; flyCb = null; cb(); } }, 900); wake(); }
+  function enter(i) { if (mode !== "orbit" || calm || i === focus) return go(i); fly = frontYaw(i); S.vel = 0; let done = false; flyCb = () => { if (!done) { done = true; go(i); } }; const cb = flyCb; setTimeout(() => { if (flyCb === cb) { fly = null; flyCb = null; cb(); } }, 900); wake(); }
 
   /* the finger: a sideways drag spins the system; up and down still scrolls the page */
   let drag = null, lastTouch = 0, lastX = 0, lastT = 0;
@@ -139,41 +204,75 @@ export function reactor(ctx) {
   /* one frame */
   let raf = 0, last = 0, time = 0, seen = true, slow = 0, dead = false;
   function frame(now) {
-    raf = 0; if (dead) return; const real = Math.min(0.25, last ? (now - last) / 1000 : 0.016), dt = Math.min(0.05, real); last = now; time += dt;   // entrances follow the real clock even on a slow frame if (dt > 0.03) slow++; else slow = Math.max(0, slow - 1); if (slow > 50 && dust.length > 80) dust.length = 80;
+    raf = 0; if (dead) return; const real = Math.min(0.25, last ? (now - last) / 1000 : 0.016), dt = Math.min(0.05, real); last = now; time += dt;
     if (!document.body.classList.contains("booting")) birth = Math.min(1, birth + real / 1.7);
-    const goal = mode === "grid" ? 1 : 0; mix = Math.abs(goal - mix) < 0.002 ? goal : mix + (goal - mix) * Math.min(1, real * 4.2); lx += (leanX - lx) * Math.min(1, dt * 4); ly += (leanY - ly) * Math.min(1, dt * 4); energy *= Math.pow(0.08, dt);
+    const goal = mode === "grid" ? 1 : 0, wGoal = mode === "web" ? 1 : 0;
+    mix = Math.abs(goal - mix) < 0.002 ? goal : mix + (goal - mix) * Math.min(1, real * 4.2);
+    wmix = Math.abs(wGoal - wmix) < 0.002 ? wGoal : wmix + (wGoal - wmix) * Math.min(1, real * 4.2);
+    lx += (leanX - lx) * Math.min(1, dt * 4); ly += (leanY - ly) * Math.min(1, dt * 4); energy *= Math.pow(0.08, dt);
     if (mode === "orbit" && !drag) {
       if (fly != null) { const d = fly - S.yaw; S.yaw += d * Math.min(1, dt * 8.5); if (Math.abs(d) < 0.012) { S.yaw = fly; fly = null; const cb = flyCb; flyCb = null; if (cb) cb(); } }
       else { S.yaw += S.vel * dt; S.vel *= Math.pow(0.1, dt); const idle = now - lastTouch > 3200;
         if (idle) S.vel += (0.11 - S.vel) * Math.min(1, dt * 0.9); else if (Math.abs(S.vel) < 0.5 && focus >= 0) { S.vel *= Math.pow(0.02, dt); S.yaw += (frontYaw(focus) - S.yaw) * Math.min(1, dt * 6.5); } } }
-    let best = 0, bv = -2; nodes.forEach((n, i) => { const v = Math.cos(n.ring.a0 + S.yaw); if (v > bv) { bv = v; best = i; } }); if (fly == null) setFocus(best, !!drag || now - lastTouch < 1500);
-    const km = smooth(mix);
-    nodes.forEach((n, i) => { const bi = clamp(birth * 1.9 - (i / nodes.length) * 0.9), mi = smooth(clamp(mix * 1.5 - (i / nodes.length) * 0.5)); const o = proj(n.ring.R, n.ring.a0 + S.yaw - (1 - bi) * 2.6 + mi * (1 - mi) * 3.2, n.ring.tilt, n.ring.roll);
+    if (mode === "orbit") {
+      let best = 0, bv = -2;
+      nodes.forEach((n, i) => {
+        if (domainFilter !== "all" && n.dom !== domainFilter) return;
+        const v = Math.cos(n.ring.a0 + S.yaw); if (v > bv) { bv = v; best = i; }
+      });
+      if (fly == null) setFocus(best, !!drag || now - lastTouch < 1500);
+    } else if (focus < 0) setFocus(0, false);
+    const km = smooth(mix), kw = smooth(wmix), flatK = Math.max(km, kw);
+    nodes.forEach((n, i) => {
+      const bi = clamp(birth * 1.9 - (i / nodes.length) * 0.9), mi = smooth(clamp(mix * 1.5 - (i / nodes.length) * 0.5)), wi = smooth(clamp(wmix * 1.5 - (i / nodes.length) * 0.5));
+      const o = proj(n.ring.R, n.ring.a0 + S.yaw - (1 - bi) * 2.6 + mi * (1 - mi) * 3.2, n.ring.tilt, n.ring.roll);
       const fz = clamp((o[2] / R2 + 1) / 2); const osc = (0.5 + 0.36 * fz) * (i === focus ? 1.22 : 1) * o[3]; const bb = bi <= 0 ? 0 : back(bi);
-      n.x = lerp(o[0], n.grid[0], mi) * bb; n.y = lerp(o[1], n.grid[1], mi) * bb; n.sc = lerp(osc, 1, mi) * clamp(bb, 0, 1.15); n.z = lerp(o[2], 0, mi); n.al = lerp(0.42 + 0.58 * fz, 1, mi) * clamp(bi * 3);
-      n.el.style.transform = `translate3d(${(cx + n.x - hw / 2).toFixed(1)}px,${(cy + n.y - hh / 2).toFixed(1)}px,0) scale(${n.sc.toFixed(3)})`; n.el.style.opacity = n.al.toFixed(2); n.el.style.zIndex = String(500 + Math.round(n.z) + (i === focus && mi < 0.5 ? 400 : 0)); });
-    const cs = lerp(1, 0.5, km) * (0.3 + 0.7 * clamp(birth * 2.2)) * (1 + energy * 0.12); coreCv.style.transform = `scale(${cs.toFixed(3)})`; if (drawFire) drawFire(time, energy + (1 - clamp(birth * 1.4)) * 1.5);
+      const matchDom = domainFilter === "all" || n.dom === domainFilter;
+      const fx0 = lerp(lerp(o[0], n.grid[0], mi), n.web[0], wi), fy0 = lerp(lerp(o[1], n.grid[1], mi), n.web[1], wi);
+      n.x = fx0 * bb; n.y = fy0 * bb;
+      n.sc = lerp(lerp(osc, 1, mi), 0.96, wi) * clamp(bb, 0, 1.15) * (matchDom ? 1 : 0.84);
+      n.z = lerp(o[2], 0, Math.max(mi, wi));
+      n.al = lerp(0.42 + 0.58 * fz, 1, Math.max(mi, wi)) * clamp(bi * 3) * (matchDom ? 1 : 0.24);
+      n.el.style.transform = `translate3d(${(cx + n.x - hw / 2).toFixed(1)}px,${(cy + n.y - hh / 2).toFixed(1)}px,0) scale(${n.sc.toFixed(3)})`;
+      n.el.style.opacity = n.al.toFixed(2);
+      n.el.style.zIndex = String(500 + Math.round(n.z) + (i === focus && flatK < 0.5 ? 400 : 0));
+    });
+    const cs = lerp(1, 0.5, flatK) * (0.3 + 0.7 * clamp(birth * 2.2)) * (1 + energy * 0.12); coreCv.style.transform = `scale(${cs.toFixed(3)})`; if (drawFire) drawFire(time, energy + (1 - clamp(birth * 1.4)) * 1.5);
 
     /* light */
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W + M * 2, H + M * 2); g.translate(cx + M, cy + M); g.globalCompositeOperation = "lighter";
     const idxMap = new Map(nodes.map((n, idx) => [n.p.id, idx]));
-    const orbitA = (1 - km) * clamp(birth * 1.6 - 0.3);
+    const orbitA = (1 - flatK) * clamp(birth * 1.6 - 0.3);
     if (orbitA > 0.01) for (const [R, tilt, roll, col] of [[R1, 0.16, 0.1, "255,170,100"], [R2, -0.07, -0.06, "110,220,255"], [R3, 0.11, -0.11, "190,150,255"]]) {
       for (const front of [false, true]) { g.beginPath(); let pen = false; for (let k = 0; k <= 72; k++) { const q = proj(R, (k / 72) * TAU + S.yaw, tilt, roll); if (q[2] > 0 === front) { if (pen) g.lineTo(q[0], q[1]); else { g.moveTo(q[0], q[1]); pen = true; } } else pen = false; }
         g.strokeStyle = `rgba(${col},${(front ? 0.8 : 0.3) * orbitA})`; g.lineWidth = front ? 1.6 : 1; g.stroke(); g.strokeStyle = `rgba(${col},${(front ? 0.16 : 0.06) * orbitA})`; g.lineWidth = 6; g.stroke(); }
       for (let k = 0; k < 36; k++) { const q = proj(R * 1.07, (k / 36) * TAU + S.yaw, tilt, roll), q2 = proj(R * (k % 3 ? 1.09 : 1.12), (k / 36) * TAU + S.yaw, tilt, roll); g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(q2[0], q2[1]); g.strokeStyle = `rgba(${col},${(q[2] > 0 ? 0.42 : 0.12) * orbitA})`; g.lineWidth = 1; g.stroke(); } }
+    /* cluster halos & labels in Synapse Web mode */
+    if (kw > 0.05) {
+      for (const dom of PILLAR_DOMAINS) {
+        if (!dom.quad) continue;
+        const qx = dom.quad[0] * W, qy = dom.quad[1] * H;
+        g.strokeStyle = `rgba(190, 220, 255, ${0.14 * kw})`; g.lineWidth = 1;
+        g.beginPath(); g.arc(qx, qy, Math.min(W, H) * 0.14, 0, TAU); g.stroke();
+        g.fillStyle = `rgba(220, 236, 255, ${0.42 * kw})`; g.font = "600 9.5px Outfit, sans-serif"; g.textAlign = "center";
+        g.fillText(dom.short.toUpperCase(), qx, qy);
+      }
+    }
     /* animated quadratic Bezier inter-pillar synapses */
     SYNAPSES.forEach(([aId, bId, col], si) => {
       const ia = idxMap.get(aId), ib = idxMap.get(bId);
       if (ia == null || ib == null) return;
       const a = nodes[ia], b = nodes[ib];
       if (a.al < 0.08 || b.al < 0.08) return;
-      const mx0 = (a.x + b.x) * 0.38, my0 = (a.y + b.y) * 0.38 - 18;
-      g.strokeStyle = `rgba(${col},${0.16 * birth * (1 - km * 0.5)})`; g.lineWidth = 1; g.beginPath(); g.moveTo(a.x, a.y); g.quadraticCurveTo(mx0, my0, b.x, b.y); g.stroke();
+      const touchingFocus = focus === ia || focus === ib;
+      const mx0 = (a.x + b.x) * (touchingFocus ? 0.28 : 0.38), my0 = (a.y + b.y) * (touchingFocus ? 0.28 : 0.38) - 18;
+      const alpha = (touchingFocus ? 0.42 : 0.14 + kw * 0.18) * birth * (1 - km * 0.65);
+      g.strokeStyle = `rgba(${col},${alpha})`; g.lineWidth = touchingFocus ? 1.5 : 1; g.beginPath(); g.moveTo(a.x, a.y); g.quadraticCurveTo(mx0, my0, b.x, b.y); g.stroke();
       const u = (time * 0.42 + si * 0.19) % 1, iu = 1 - u;
       const px = iu * iu * a.x + 2 * iu * u * mx0 + u * u * b.x, py = iu * iu * a.y + 2 * iu * u * my0 + u * u * b.y;
-      g.fillStyle = `rgba(${col},${0.9 * birth})`; g.beginPath(); g.arc(px, py, 1.9, 0, TAU); g.fill();
+      g.fillStyle = `rgba(${col},${(touchingFocus ? 1 : 0.78) * birth})`; g.beginPath(); g.arc(px, py, touchingFocus ? 2.4 : 1.7, 0, TAU); g.fill();
     });
-    const cols = ["255,255,255", "255,180,110", "120,225,255"]; for (let c = 0; c < 3; c++) { g.fillStyle = `rgb(${cols[c]})`; for (const d of dust) { if (d.c !== c) continue; d.a += d.v * dt; const q = proj(d.R, d.a + S.yaw * 0.6, d.tilt, 0, d.y); g.globalAlpha = (0.12 + 0.5 * clamp((q[2] / (W * 0.5) + 1) / 2)) * clamp(birth * 1.4) * (1 - km * 0.55); const sz = d.s * q[3]; g.fillRect(q[0], q[1], sz, sz); } } g.globalAlpha = 1;
+    const cols = ["255,255,255", "255,180,110", "120,225,255"]; for (let c = 0; c < 3; c++) { g.fillStyle = `rgb(${cols[c]})`; for (const d of dust) { if (d.c !== c) continue; d.a += d.v * dt; const q = proj(d.R, d.a + S.yaw * 0.6, d.tilt, 0, d.y); g.globalAlpha = (0.12 + 0.5 * clamp((q[2] / (W * 0.5) + 1) / 2)) * clamp(birth * 1.4) * (1 - flatK * 0.55); const sz = d.s * q[3]; g.fillRect(q[0], q[1], sz, sz); } } g.globalAlpha = 1;
     nodes.forEach((n, i) => { if (n.al < 0.03) return; const pulse = (time * 0.55 + i * 0.137) % 1; g.strokeStyle = n.rgb; g.globalAlpha = n.al * (i < 6 ? 0.34 : 0.16) * (1 - km * 0.3); g.lineWidth = 1; g.beginPath(); g.moveTo(0, 0); g.lineTo(n.x, n.y); g.stroke();
       g.globalAlpha = n.al * 0.95; g.fillStyle = "#fff"; g.beginPath(); g.arc(n.x * pulse, n.y * pulse, 1.5 + (i < 6 ? 0.6 : 0), 0, TAU); g.fill();
       const hs = (i === focus && km < 0.5 ? 190 : 118) * n.sc * (1 + 0.08 * Math.sin(time * 2 + i)); g.globalAlpha = n.al * (i === focus ? 0.95 : 0.6); g.drawImage(halo[i], n.x - hs / 2, n.y - hs / 2, hs, hs);
@@ -185,7 +284,25 @@ export function reactor(ctx) {
     if (seen && !document.hidden && !calm) raf = requestAnimationFrame(frame);
   }
   const wake = () => { if (!raf && !dead) { last = 0; raf = requestAnimationFrame(frame); } };
-  const modeSeg = calm ? null : seg([["orbit", "Orbit"], ["grid", "Grid"]], mode, (v) => { mode = v; ls("prom.deck.layout", v); tick(); el.dataset.mode = v; wake(); }, "Layout");
+  const modeSeg = calm ? null : seg([["orbit", "3D Orbit"], ["grid", "Hex Matrix"], ["web", "Synapse Web"]], mode, (v) => { mode = v; ls("prom.deck.layout", v); tick(); el.dataset.mode = v; wake(); }, "Layout");
+  if (modeSeg) modeSeg.querySelectorAll("button").forEach((b) => b.classList.add("rx-mode"));
+  const domBtns = [];
+  const domBar = h("div.rx-domains", { role: "group", "aria-label": "Filter pillars by domain" },
+    PILLAR_DOMAINS.map((d) => {
+      const btn = h("button.rx-domain-btn" + (d.id === domainFilter ? ".on" : ""), {
+        type: "button",
+        onclick: () => {
+          domainFilter = d.id;
+          domBtns.forEach((b) => b.classList.toggle("on", b === btn));
+          tick();
+          const firstMatch = d.id === "all" ? 0 : nodes.findIndex((n) => n.dom === d.id);
+          if (firstMatch >= 0) { lastTouch = performance.now(); if (mode === "orbit") fly = frontYaw(firstMatch); S.vel = 0; setFocus(firstMatch, false); }
+          wake();
+        }
+      }, d.short);
+      domBtns.push(btn);
+      return btn;
+    }));
   const zoomCtl = calm ? null : h("div.rx-zoom", h("button.btn.ghost.small", { type: "button", "aria-label": "Zoom out", onclick: () => { S.zoom = clamp(S.zoom - 0.12, 0.8, 1.28); wake(); } }, "−"), h("button.btn.ghost.small", { type: "button", "aria-label": "Reset orbit view", onclick: () => { S.zoom = 1; S.pitch = 0; wake(); } }, "1×"), h("button.btn.ghost.small", { type: "button", "aria-label": "Zoom in", onclick: () => { S.zoom = clamp(S.zoom + 0.12, 0.8, 1.28); wake(); } }, "+"));
   const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => { seen = es[0].isIntersecting; if (seen) wake(); }) : null; if (io) io.observe(stage);
   const onVis = () => { if (!document.hidden) wake(); }; document.addEventListener("visibilitychange", onVis);
@@ -218,7 +335,7 @@ export function reactor(ctx) {
   const line = () => facts.map((f) => h("span", f)); const tickerEl = h("div.ticker", { "aria-label": facts.join(". ") }, h("div.ticker-run", { "aria-hidden": "true" }, line(), line()));
   titan().then((d) => { if (d && d.total && tickerEl.isConnected) { facts.push(`Titan ${money(d.total)} · ${d.flips} specimens`); tickerEl.firstChild.replaceChildren(...line(), ...line()); } });
 
-  const el = h("section.reactor.live", { "aria-label": "The pillars", dataset: { mode } }, stage, h("div.rx-hud", read, h("div.rx-controls", modeSeg, zoomCtl)), tickerEl);
+  const el = h("section.reactor.live", { "aria-label": "The pillars", dataset: { mode } }, stage, h("div.rx-hud", read, domBar, h("div.rx-controls", modeSeg, zoomCtl)), tickerEl);
   el.cleanup = () => { dead = true; cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("visibilitychange", onVis); document.removeEventListener("keydown", onKey); removeEventListener("pointermove", onMove); removeEventListener("pointerup", onUp); removeEventListener("pointercancel", onUp); removeEventListener("deviceorientation", onTilt); };
   frame(performance.now());
   return el;
