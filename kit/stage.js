@@ -37,7 +37,53 @@
     const g = canvas.getContext("2d"), S = { w: 1, h: 1, dpr: 1, t: 0, dt: 0, still: STILL, ptr: { x: -1, y: -1, on: false, down: false }, layer, canvas, data: null, accent: css("--accent", "#7fd1ff"), accent2: css("--accent-2", "#b9a2ff"), tick: 0 };
     let raf = 0, last = 0, seen = true, dirty = true;
     const size = () => { const r = canvas.getBoundingClientRect(); S.w = Math.max(1, r.width); S.h = Math.max(1, r.height); S.dpr = Math.min(2, window.devicePixelRatio || 1); const w = Math.round(S.w * S.dpr), h = Math.round(S.h * S.dpr); if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; } dirty = true; };
-    const frame = () => { g.setTransform(S.dpr, 0, 0, S.dpr, 0, 0); g.clearRect(0, 0, S.w, S.h); if (S.data != null) try { o.draw(g, S, ink); } catch (e) { console.error("[stage]", e); } ink.noGlow(g); g.globalAlpha = 1; g.globalCompositeOperation = "source-over"; dirty = false; };
+    const frame = () => {
+      g.setTransform(S.dpr, 0, 0, S.dpr, 0, 0);
+      g.clearRect(0, 0, S.w, S.h);
+      if (!canvas.__ac) {
+        const cs = getComputedStyle(document.body);
+        canvas.__ac = cs.getPropertyValue("--accent").trim() || "#ff9d5c";
+        canvas.__ac2 = cs.getPropertyValue("--accent-2").trim() || "#4de8ff";
+      }
+      /* subtle perspective instrument grid + corner reticles */
+      g.save();
+      g.strokeStyle = canvas.__ac2;
+      g.globalAlpha = 0.065;
+      g.lineWidth = 1;
+      const hz = S.h * 0.42;
+      for (let i = 1; i <= 5; i++) {
+        const y = hz + Math.pow(i / 5, 1.55) * (S.h - hz);
+        g.beginPath(); g.moveTo(0, y); g.lineTo(S.w, y); g.stroke();
+      }
+      for (let k = -4; k <= 4; k++) {
+        g.beginPath(); g.moveTo(S.w * 0.5 + k * 28, hz); g.lineTo(S.w * 0.5 + k * (S.w * 0.16), S.h); g.stroke();
+      }
+      g.strokeStyle = canvas.__ac;
+      g.globalAlpha = 0.22;
+      const b = 12, p = 10;
+      g.beginPath();
+      g.moveTo(p, p + b); g.lineTo(p, p); g.lineTo(p + b, p);
+      g.moveTo(S.w - p - b, p); g.lineTo(S.w - p, p); g.lineTo(S.w - p, p + b);
+      g.moveTo(p, S.h - p - b); g.lineTo(p, S.h - p); g.lineTo(p + b, S.h - p);
+      g.moveTo(S.w - p - b, S.h - p); g.lineTo(S.w - p, S.h - p); g.lineTo(S.w - p, S.h - p - b);
+      g.stroke();
+      g.restore();
+
+      if (S.data != null) try { o.draw(g, S, ink); } catch (e) { console.error("[stage]", e); }
+      if (S.ptr && S.ptr.on) {
+        g.save();
+        g.strokeStyle = canvas.__ac2;
+        g.globalAlpha = 0.28;
+        g.lineWidth = 1;
+        g.beginPath();
+        g.moveTo(S.ptr.x - 10, S.ptr.y); g.lineTo(S.ptr.x + 10, S.ptr.y);
+        g.moveTo(S.ptr.x, S.ptr.y - 10); g.lineTo(S.ptr.x, S.ptr.y + 10);
+        g.arc(S.ptr.x, S.ptr.y, 14, 0, Math.PI * 2);
+        g.stroke();
+        g.restore();
+      }
+      ink.noGlow(g); g.globalAlpha = 1; g.globalCompositeOperation = "source-over"; dirty = false;
+    };
     const loop = (t) => { raf = requestAnimationFrame(loop); if (!seen || document.hidden) { last = t; return; } S.dt = Math.min(0.05, (t - last) / 1000 || 0.016); last = t; S.t += S.dt; S.tick++; if (!STILL || dirty) frame(); };
     let shown = [];
     const paintReads = () => { let list = []; try { list = (S.data != null && o.readouts && o.readouts(S.data, S)) || []; } catch (e) { console.error("[stage readouts]", e); } const same = list.length === shown.length && list.every((r, i) => shown[i] && shown[i].v === r.v && shown[i].k === r.k);

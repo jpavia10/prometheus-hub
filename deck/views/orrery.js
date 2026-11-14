@@ -189,6 +189,23 @@ export function reactor(ctx) {
   const zoomCtl = calm ? null : h("div.rx-zoom", h("button.btn.ghost.small", { type: "button", "aria-label": "Zoom out", onclick: () => { S.zoom = clamp(S.zoom - 0.12, 0.8, 1.28); wake(); } }, "−"), h("button.btn.ghost.small", { type: "button", "aria-label": "Reset orbit view", onclick: () => { S.zoom = 1; S.pitch = 0; wake(); } }, "1×"), h("button.btn.ghost.small", { type: "button", "aria-label": "Zoom in", onclick: () => { S.zoom = clamp(S.zoom + 0.12, 0.8, 1.28); wake(); } }, "+"));
   const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => { seen = es[0].isIntersecting; if (seen) wake(); }) : null; if (io) io.observe(stage);
   const onVis = () => { if (!document.hidden) wake(); }; document.addEventListener("visibilitychange", onVis);
+  const onKey = (e) => {
+    const tag = (document.activeElement && document.activeElement.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || document.querySelector(".modal-back, .sheet-back")) return;
+    if (mode !== "orbit" || calm || !nodes.length) return;
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+      e.preventDefault();
+      const cur = focus >= 0 ? focus : 0;
+      const next = (cur + (e.key === "ArrowLeft" ? -1 : 1) + nodes.length) % nodes.length;
+      lastTouch = performance.now();
+      fly = frontYaw(next); S.vel = 0; focus = next;
+      wake();
+    } else if (e.key === "Enter" && focus >= 0 && document.activeElement === document.body) {
+      e.preventDefault();
+      go(focus);
+    }
+  };
+  document.addEventListener("keydown", onKey);
 
   /* the ticker: one line of what is true right now */
   const facts = []; const soon = feedRows(t, addDays(t, 30)).filter((r) => !r.done); const fixedNext = soon.find((r) => r.fixed), mine = soon.filter((r) => !r.fixed);
@@ -202,7 +219,7 @@ export function reactor(ctx) {
   titan().then((d) => { if (d && d.total && tickerEl.isConnected) { facts.push(`Titan ${money(d.total)} · ${d.flips} specimens`); tickerEl.firstChild.replaceChildren(...line(), ...line()); } });
 
   const el = h("section.reactor.live", { "aria-label": "The pillars", dataset: { mode } }, stage, h("div.rx-hud", read, h("div.rx-controls", modeSeg, zoomCtl)), tickerEl);
-  el.cleanup = () => { dead = true; cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("visibilitychange", onVis); removeEventListener("pointermove", onMove); removeEventListener("pointerup", onUp); removeEventListener("pointercancel", onUp); removeEventListener("deviceorientation", onTilt); };
+  el.cleanup = () => { dead = true; cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("visibilitychange", onVis); document.removeEventListener("keydown", onKey); removeEventListener("pointermove", onMove); removeEventListener("pointerup", onUp); removeEventListener("pointercancel", onUp); removeEventListener("deviceorientation", onTilt); };
   frame(performance.now());
   return el;
 }

@@ -96,6 +96,25 @@
         </form>
         <div id="g-fills" style="margin-top:10px"></div>
       </div>
+
+      <div class="glass lit span-6"><h2>CA DMV, Insurance &amp; Winter Paperwork Radar</h2>
+        <p class="sub">Track TX&rarr;CA DMV registration, smog, auto insurance renewal, and Big Bear winter tire/chain inspection. Auto-publishes due dates to Kairos.</p>
+        <form class="form" id="g-paper-form">
+          <label class="f wide">Compliance / Paperwork Item<input name="title" required maxlength="90" placeholder="CA DMV Registration, Auto Policy Renewal, Tire Chain Check"></label>
+          <label class="f">Due Date<input name="due" type="date" required></label>
+          <label class="f">Type<select name="kind"><option value="dmv">CA DMV / Title</option><option value="insurance">Insurance</option><option value="winter">Mountain / Winter Prep</option><option value="warranty">Warranty</option></select></label>
+          <button class="btn small" type="submit">Track &amp; Sync</button>
+        </form>
+        <div id="g-paper-list" style="margin-top:10px"></div>
+      </div>
+
+      <div class="glass span-6"><h2>1-Tap Sorento Resale Dossier</h2>
+        <p class="sub">Compile odometer, verified MPG &amp; cost-per-mile, completed service receipts, and open factory intervals into a clean buyer-ready dossier.</p>
+        <div class="row-actions" style="margin-top:8px">
+          <button class="btn" id="g-dossier-btn" type="button">Export Resale Dossier (.txt)</button>
+        </div>
+        <pre id="g-dossier-preview" style="margin-top:10px;padding:10px;border-radius:10px;background:rgba(5,8,16,0.65);border:1px solid rgba(255,255,255,0.08);font-size:11.5px;white-space:pre-wrap;max-height:175px;overflow:auto"></pre>
+      </div>
     </section>`;
 
   function paintTrip() {
@@ -167,7 +186,45 @@
     f.reset(); f.date.value = day(); toast("Fill logged"); paint(); });
 
   $("#g-log").date.value = day(); $("#g-fuel").date.value = day();
+  function paintPaperworkAndDossier() {
+    const t = day();
+    const docs = S.list("paperwork");
+    const box = $("#g-paper-list"); if (box) {
+      box.innerHTML = "";
+      docs.forEach((p) => {
+        if (window.PB && p.due) PB.deadlines.publish({ title: `Sorento: ${p.title}`, date: p.due, source: "garage", kind: p.kind || "vehicle", ref: "pap_" + p.id });
+        const daysLeft = Math.round((new Date(p.due + "T12:00:00") - new Date(t + "T12:00:00")) / 864e5);
+        box.append(h("div.kv", null,
+          h("span", null, h("b", { className: daysLeft <= 14 ? "warn" : "" }, p.title), ` · ${p.kind || "doc"} · due ${p.due} (${daysLeft}d)`),
+          h("button.btn.quiet.small", { type: "button", onclick: () => { if (window.PB) PB.deadlines.unpublish("garage", "pap_" + p.id); S.remove("paperwork", p.id); paintPaperworkAndDossier(); } }, "Done")
+        ));
+      });
+      if (!docs.length) box.innerHTML = `<p class="empty">No CA DMV / winter compliance items tracked yet.</p>`;
+    }
+    const hist = S.list("history").sort((a, b) => (b.odometer || 0) - (a.odometer || 0));
+    const fs = GARAGE.fuelStats(S.list("fuel"));
+    const dossier = [
+      `VEHICLE MAINTENANCE & COMPLIANCE DOSSIER — ${t}`,
+      `Vehicle: 2025 Kia Sorento Hybrid (HEV)`,
+      `Current Odometer: ${num(odo())} mi`,
+      `Verified Fuel Span: ${fs.mpg ? `${num(fs.mpg, 1)} MPG (${money(fs.costPerMile, 3)}/mi over ${num(fs.miles)} mi)` : "Collecting baseline fills"}`,
+      `Completed Services (${hist.length}):`,
+      ...(hist.length ? hist.map((x) => `  - ${x.date} @ ${num(x.odometer)} mi: ${x.service}${x.cost ? ` (${money(x.cost)})` : ""}${x.notes ? ` — ${x.notes}` : ""}`) : ["  - No logged services yet"]),
+      `Compliance & Paperwork (${docs.length}):`,
+      ...(docs.length ? docs.map((d) => `  - [${d.kind}] ${d.title} (due ${d.due})`) : ["  - None active"])
+    ].join("\n");
+    const pre = $("#g-dossier-preview"); if (pre) pre.textContent = dossier;
+    return dossier;
+  }
+  $("#g-paper-form").addEventListener("submit", (e) => {
+    e.preventDefault(); const f = e.target;
+    S.add("paperwork", { title: f.title.value.trim(), due: f.due.value, kind: f.kind.value });
+    f.reset(); toast("Paperwork deadline tracked"); paintPaperworkAndDossier();
+  });
+  $("#g-dossier-btn").onclick = () => download(`sorento_resale_dossier_${day()}.txt`, paintPaperworkAndDossier());
+  paintPaperworkAndDossier();
+
   $("#export").onclick = () => download(`garage_${day()}.json`, S.dump());
-  $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
+  $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); paintPaperworkAndDossier(); } catch (e) { toast(e.message); } };
   paint();
 })();

@@ -15,7 +15,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d13";
+export const BUILD = "d14";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -102,6 +102,138 @@ function openSearch() {
   const pick = (it) => { if (!it) return; if (it.run) it.run(); if (it.go) { sh.close(); setTimeout(() => go(it.go), 20); } else if (!it.keep) sh.close(); };
   const draw = () => {
     const q = input.value.trim(); items = [];
+    const nlRead = (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } };
+    const nlWrite = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} };
+    const nlEvent = (type, pillarName, title) => {
+      try {
+        if (window.PB && PB.events) { PB.events.publish({ type, pillar: pillarName, title }); return; }
+        const ev = nlRead("prometheus.bus.events", []);
+        ev.push({ v: 1, id: Date.now().toString(36), at: new Date().toISOString(), type, pillar: pillarName, title });
+        nlWrite("prometheus.bus.events", ev.slice(-400));
+      } catch (_) {}
+    };
+    const tday = today();
+
+    /* 1. Apollo biometrics: weight 182 sleep 7.5 protein 160 steps 8500 */
+    if (/^(?=.*\b(?:weight|sleep|protein|steps|water|train)\b\s*[:=]?\s*\d)/i.test(q)) {
+      const patch = {};
+      for (const k of ["weight", "sleep", "protein", "steps", "water", "train"]) {
+        const m = q.match(new RegExp("\\b" + k + "\\b\\s*[:=]?\\s*(\\d+(?:\\.\\d+)?)", "i"));
+        if (m) patch[k] = Number(m[1]);
+      }
+      const summary = Object.entries(patch).map(([k, v]) => `${k} ${v}`).join(" · ");
+      if (summary) items.push({
+        title: `Apollo log: ${summary}`,
+        sub: `Save to today's biometrics (${fmtDay(tday)})`,
+        tone: "add", icon: "plus",
+        run: () => {
+          const daysMap = nlRead("prometheus.apollo.days", {});
+          daysMap[tday] = { ...(daysMap[tday] || {}), ...patch };
+          nlWrite("prometheus.apollo.days", daysMap);
+          nlEvent("apollo.day.logged", "apollo", summary);
+          toast(`Apollo logged: ${summary}`); render(false);
+        }
+      });
+    }
+
+    /* 2. Athenaeum idea: idea: <title> */
+    const ideaM = q.match(/^idea:\s*(.+)$/i);
+    if (ideaM && ideaM[1].trim()) {
+      const ideaTitle = ideaM[1].trim();
+      items.push({
+        title: `Idea → Athenaeum: ${ideaTitle}`,
+        sub: "Capture note into Athenaeum archive",
+        tone: "add", icon: "plus",
+        run: () => {
+          const arr = nlRead("prometheus.athenaeum.ideas", []);
+          arr.unshift({ id: "q_" + Date.now().toString(36), date: tday, at: new Date().toISOString(), title: ideaTitle, body: "", tags: ["quick"], chain: [] });
+          nlWrite("prometheus.athenaeum.ideas", arr);
+          nlEvent("idea.captured", "athenaeum", ideaTitle);
+          toast(`Idea captured: ${ideaTitle}`); render(false);
+        }
+      });
+    }
+
+    /* 3. Garage fuel: fuel 11.4gal $48.20 14320mi */
+    const fuelM = q.match(/^fuel\s+(.+)$/i);
+    if (fuelM) {
+      const rest = fuelM[1];
+      const galM = rest.match(/(\d+(?:\.\d+)?)\s*(?:gal|g\b)?/i);
+      const costM = rest.match(/\$\s*(\d+(?:\.\d{1,2})?)/);
+      const odoM = rest.match(/(\d{3,7})\s*(?:mi|miles)?\b/i);
+      const gal = galM ? Number(galM[1]) : 0, cost = costM ? Number(costM[1]) : 0, odo = odoM ? Number(odoM[1]) : nlRead("prometheus.garage.odometer", 0);
+      if (gal > 0 && cost > 0) {
+        items.push({
+          title: `Garage fuel: ${gal} gal · $${cost.toFixed(2)}${odo ? ` @ ${odo.toLocaleString()} mi` : ""}`,
+          sub: "Save to 2025 Sorento fuel log + Money Bus",
+          tone: "add", icon: "plus",
+          run: () => {
+            const fills = nlRead("prometheus.garage.fuel", []);
+            fills.push({ id: "q_" + Date.now().toString(36), date: tday, odometer: odo, gallons: gal, cost, busLogged: true });
+            nlWrite("prometheus.garage.fuel", fills);
+            if (odo > (nlRead("prometheus.garage.odometer", 0) || 0)) nlWrite("prometheus.garage.odometer", odo);
+            const mb = nlRead("prometheus.bus.money", []);
+            mb.push({ id: "qm_" + Date.now().toString(36), kind: "fuel", amount: -Math.abs(cost), date: tday, source: "garage", label: `Sorento Fuel · ${gal} gal` });
+            nlWrite("prometheus.bus.money", mb);
+            nlEvent("fuel.logged", "garage", `${gal} gal $${cost.toFixed(2)}`);
+            toast(`Garage fuel logged ($${cost.toFixed(2)})`); render(false);
+          }
+        });
+      }
+    }
+
+    /* 4. Selling payout: sold <item> $<net> */
+    const soldM = q.match(/^sold\s+(.+?)\s+\$?(\d+(?:\.\d{1,2})?)$/i);
+    if (soldM) {
+      const itemTitle = soldM[1].trim(), net = Number(soldM[2]);
+      if (itemTitle && net > 0) {
+        items.push({
+          title: `Sold: ${itemTitle} ($${net.toFixed(2)})`,
+          sub: "Log in Selling Pipeline + credit Money Bus",
+          tone: "add", icon: "plus",
+          run: () => {
+            const list = nlRead("prometheus.selling.items", []);
+            list.push({ id: "q_" + Date.now().toString(36), date: tday, title: itemTitle, batch: "QUICK", price: net, soldPrice: net, feePct: 0, feeFixed: 0, shipEst: 0, packaging: 0, stage: "sold", busRecorded: true });
+            nlWrite("prometheus.selling.items", list);
+            const mb = nlRead("prometheus.bus.money", []);
+            mb.push({ id: "qs_" + Date.now().toString(36), type: "sale", kind: "sale", amount: net, date: tday, source: "selling", note: itemTitle, label: itemTitle });
+            nlWrite("prometheus.bus.money", mb);
+            nlEvent("sale.logged", "selling", `${itemTitle} · $${net.toFixed(2)}`);
+            toast(`Sale logged: ${itemTitle} (+$${net.toFixed(2)})`); render(false);
+          }
+        });
+      }
+    }
+
+    /* 5. Watch item: watch: <ticker or subject> */
+    const watchM = q.match(/^watch:\s*(.+)$/i);
+    if (watchM && watchM[1].trim()) {
+      const wVal = watchM[1].trim();
+      const isSym = /^\$?[A-Za-z]{1,5}$/.test(wVal);
+      const sym = wVal.replace(/^\$/, "").toUpperCase();
+      items.push({
+        title: isSym ? `Watch ticker: $${sym}` : `Watch subject: ${wVal}`,
+        sub: isSym ? "Add to Icarus watchlist (read-only journal)" : "Add to Observatory & Polis watch",
+        tone: "add", icon: "plus",
+        run: () => {
+          if (isSym) {
+            const wl = nlRead("prometheus.icarus.watchlist", []);
+            wl.unshift({ id: "q_" + Date.now().toString(36), date: tday, sym, status: "watching", notes: "Hub quick capture" });
+            nlWrite("prometheus.icarus.watchlist", wl);
+            nlEvent("watch.added", "icarus", `$${sym}`);
+            toast(`Watching $${sym} in Icarus`);
+          } else {
+            const notes = nlRead("prometheus.observatory.notes", []);
+            notes.unshift({ id: "q_" + Date.now().toString(36), date: tday, text: wVal, subject: "watchlist", kind: "watch", url: "" });
+            nlWrite("prometheus.observatory.notes", notes);
+            nlEvent("watch.added", "observatory", wVal);
+            toast(`Added to Observatory watch: ${wVal}`);
+          }
+          render(false);
+        }
+      });
+    }
+
     const add = quickAdd(q);
     if (add) { const k = kindOf(add.title); items.push({ title: `Add: ${k.title}`, sub: `${fmtDay(add.date, "long")}${add.time ? " · " + fmtTime(add.time) : ""}${add.rule ? " · repeats" : ""}${k.kind !== "event" ? " · " + k.kind : ""}`, tone: "add", icon: "plus",
       run: () => { store.update("time", (t) => t.events.push(makeEvent({ ...add, title: k.title }, { kind: k.kind, src: "quick" }))); toast(`Added: ${k.title}, ${fmtDay(add.date)}${add.time ? " " + fmtTime(add.time) : ""}`); }, go: `#/time/day/${add.date}` }); }

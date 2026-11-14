@@ -4,7 +4,9 @@
    runway, the countdowns, the payoff, then the ambient instruments. Every number is computed from the capabilities' own data. */
 import { put, h, s, icon, ring, dial, bars, spark, chip, moneyC, pct, monthsText, plural, countUp } from "../core/ui.js";
 import { eventsSince } from "../core/reach.js";
-import { clock, today, fmtDay, diffDays, monName, dowName } from "../core/dates.js";
+import { clock, today, fmtDay, diffDays, monName, dowName, addDays } from "../core/dates.js";
+import { pillarStats, busMoneySales } from "../core/legacy.js";
+import { PILLARS } from "../pillars.js";
 import { days, within, countdowns } from "../core/feeds.js";
 import { rowItem, runway, locationSheet, skySheet, untilText } from "./parts.js";
 import { position, milestone } from "../models/money.js";
@@ -114,11 +116,25 @@ export function render(root, route, ctx) {
   const since = lately.length ? h("section.panel.since", { "aria-label": fresh.length ? "Since you were here" : "Lately" }, h("header.panel-head", h("h2", fresh.length ? "Since you were here" : "Lately in the pillars"), h("small.quiet", fresh.length ? plural(fresh.length, "change") : "")),
     ...lately.map((e) => h("a.since-row", { href: e.href }, h("b", e.name), h("span", e.say + (e.title ? ": " + e.title : "")), h("small.quiet", ago(e.at))))) : null;
   const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
+  const ecoStats = pillarStats(t);
+  const totalRecords = Object.values(ecoStats).reduce((s, x) => s + (x.records || 0), 0);
+  const openDeadlines = (() => { try { return JSON.parse(localStorage.getItem("prometheus.bus.deadlines") || "[]").filter((r) => r && !r.done && r.source !== "kairos-fixed" && r.date >= t).length; } catch (_) { return 0; } })();
+  const sales30dC = busMoneySales().rows.filter((r) => !r.date || r.date >= addDays(t, -30)).reduce((s, r) => s + Math.round(Number(r.amount) * 100), 0);
+  const activePillars = PILLARS.filter((p) => !p.ext).length;
+  const ecoHud = h("section.panel.eco-hud", { "aria-label": "Ecosystem Telemetry" },
+    h("div.eco-grid",
+      h("a.eco-stat", { href: "#/system" }, h("span.eco-k", "Active Pillars"), h("b.eco-v", `${activePillars} / ${PILLARS.length}`)),
+      h("a.eco-stat", { href: "#/backup" }, h("span.eco-k", "Local Records"), h("b.eco-v", String(totalRecords))),
+      h("a.eco-stat", { href: "#/time" }, h("span.eco-k", "Open Deadlines"), h("b.eco-v", String(openDeadlines))),
+      h("a.eco-stat", { href: "#/money" }, h("span.eco-k", "30d Bus Sales"), h("b.eco-v", moneyC(sales30dC))),
+      h("a.eco-stat", { href: "#/time" }, h("span.eco-k", "Focus Streak"), h("b.eco-v", `${fs.streak || 0}d`))
+    )
+  );
   const isAway = (() => { try { return JSON.parse(localStorage.getItem("prometheus.odyssey.away") || "false") === true || (JSON.parse(localStorage.getItem("prometheus.bus.meta") || "{}").awayMode === true); } catch { return false; } })();
   const awayBanner = isAway ? h("section.panel.glow-ember.away-banner", { "aria-label": "Away Mode" },
     h("header.panel-head", h("h2", "Odyssey Away Mode"), chip("active"), h("a.link", { href: "pillars/odyssey/" }, "Checklist")),
     h("p", "Travel priority mode enabled — mountain readiness (Bastion), home systems (Hearth) & near-term transit promoted above financial ambient tiles.")) : null;
-  const boardPanels = isAway ? [awayBanner, since, first, ambient, run, count, payoff] : [since, first, run, count, payoff, ambient];
+  const boardPanels = isAway ? [awayBanner, ecoHud, since, first, ambient, run, count, payoff] : [ecoHud, since, first, run, count, payoff, ambient];
   put(root, rx, hero, put(h("div.board"), ...boardPanels), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
   return () => { if (rx.cleanup) rx.cleanup(); };
 }

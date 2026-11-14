@@ -106,11 +106,11 @@
       <button class="tab" type="button" role="tab" data-tab="checklist" aria-selected="false">Binder Readiness Checklist</button>
     </div>
     <section id="co-pane-vault" class="grid">
-      <div class="glass span-12">
+      <div class="glass span-7">
         <h2>Zero-Knowledge WebCrypto Vault</h2>
         <div class="vault-banner" id="co-vstate">Checking vault status...</div>
         <form class="form" id="co-unlock-form" autocomplete="off">
-          <label class="f wide">Passphrase (min 8 chars · never saved)<input name="pass" type="password" minlength="8" required autocomplete="new-password" placeholder="Enter master passphrase to unlock or seal"></label>
+          <label class="f wide">Passphrase (min 8 chars · never saved)<input name="pass" id="co-pass" type="password" minlength="8" required autocomplete="new-password" placeholder="Enter master passphrase to unlock or seal"></label>
           <button class="btn" id="co-btn-unlock" type="submit">Unlock Vault</button>
           <button class="btn quiet" id="co-btn-lock" type="button" hidden>Lock &amp; Wipe Memory</button>
         </form>
@@ -124,6 +124,15 @@
           </div>
         </div>
         <div id="co-envelope" style="margin-top:12px"></div>
+      </div>
+      <div class="glass lit span-5">
+        <h2>Entropy Meter &amp; Recovery Sheet</h2>
+        <p class="sub">Evaluates passphrase strength live in RAM + compiles a printable non-secret recovery sheet.</p>
+        <div id="co-meter" class="kv"><span>Passphrase entropy</span><b>0 bits (Type above to check)</b></div>
+        <div id="co-readiness" style="margin-top:8px"></div>
+        <div class="row-actions" style="margin-top:12px">
+          <button class="btn quiet small" id="co-print" type="button">Export Recovery Sheet (.txt)</button>
+        </div>
       </div>
     </section>
     <section id="co-pane-checklist" class="grid" hidden>
@@ -182,6 +191,47 @@
         h("button.btn.quiet.small", { type: "button", onclick: () => { S.update("sections", s.id, { status: NEXT_ST[s.status] || "ready" }); paint(); emitStore(); } }, "Cycle"),
         h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("sections", s.id); paint(); emitStore(); } }, "Remove"))
     )));
+
+    const ready = D.sections.filter((s) => s.status === "ready").length, tot = D.sections.length || 1;
+    const rdBox = document.getElementById("co-readiness");
+    if (rdBox) {
+      rdBox.innerHTML = `<div class="kv"><span>Binder readiness</span><b>${ready} / ${D.sections.length} (${Math.round(ready / tot * 100)}%)</b></div>`
+        + `<div class="kv"><span>Cipher &amp; KDF</span><b>AES-256-GCM / PBKDF2 310k</b></div>`;
+    }
+  }
+
+  const passIn = document.getElementById("co-pass");
+  if (passIn) {
+    passIn.addEventListener("input", () => {
+      const p = passIn.value || "";
+      let pool = 0;
+      if (/[a-z]/.test(p)) pool += 26; if (/[A-Z]/.test(p)) pool += 26;
+      if (/\d/.test(p)) pool += 10; if (/[^A-Za-z0-9]/.test(p)) pool += 32;
+      const bits = p.length && pool ? Math.round(p.length * Math.log2(pool)) : 0;
+      const tier = bits >= 80 ? "Strong (centuries+)" : bits >= 56 ? "Moderate (use longer phrase)" : "Weak";
+      $("#co-meter").innerHTML = `<span>Passphrase entropy (RAM only)</span><b>${bits} bits · ${tier}</b>`;
+    });
+  }
+  const printBtn = document.getElementById("co-print");
+  if (printBtn) {
+    printBtn.onclick = () => {
+      const vault = S.get("vault", null), secs = S.list("sections");
+      const sheet = [
+        `SOVEREIGN CONTINUITY RECOVERY SHEET — ${day()}`,
+        `IMPORTANT: This sheet holds ZERO secrets or passphrases.`,
+        ``,
+        `1. VAULT ENVELOPE METADATA`,
+        vault ? `Cipher: ${vault.cipher} | KDF: ${vault.kdf} (${vault.iter} iterations) | Salt: ${vault.salt} | Updated: ${vault.updatedAt}` : `Status: No vault sealed yet.`,
+        ``,
+        `2. NON-SECRET PHYSICAL & DIGITAL LOCATORS`,
+        ...secs.map((s, i) => `${i + 1}. [${s.status.toUpperCase()}] ${s.name} -> ${s.locator}`),
+        ``,
+        `3. DECRYPTION INSTRUCTIONS`,
+        `Open Prometheus Hub -> Continuity Sovereign Vault, load .vault.json (or local browser storage), enter master passphrase.`
+      ].join("\n");
+      download(`continuity_recovery_sheet_${day()}.txt`, sheet);
+      toast("Downloaded non-secret recovery sheet");
+    };
   }
 
   $("#co-unlock-form").addEventListener("submit", async (e) => {

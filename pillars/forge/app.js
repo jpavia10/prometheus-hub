@@ -23,7 +23,11 @@
     const got = await Promise.all(QUEUES.map(([where, url]) => fetch(url).then((r) => (r.ok ? r.json() : null)).then((q) => ({ where, q })).catch(() => ({ where, q: null }))));
     D.tasks = []; for (const { where, q } of got) if (q && Array.isArray(q.agents)) for (const a of q.agents) for (const t of a.tasks || []) D.tasks.push({ ai: a.name || a.id, where, id: t.id, title: t.title, state: t.state || "next", due: t.due || "", why: t.why || "" });
     D.queueState = got.some((g) => g.q) ? "ok" : "unreachable";
-    try { const r = await fetch(SCORES); if (!r.ok) throw new Error(r.status); D.scores = parseScores(await r.text()); D.scoreState = D.scores.length ? "ok" : "empty"; } catch (e) { D.scores = []; D.scoreState = "unreachable"; }
+    try {
+      const explicitScores = new URLSearchParams(location.search).get("scores");
+      if (!explicitScores && /^(localhost|127\.0\.0\.1)$/i.test(location.hostname)) { D.scores = []; D.scoreState = "local"; }
+      else { const r = await fetch(SCORES); if (!r.ok) throw new Error(r.status); D.scores = parseScores(await r.text()); D.scoreState = D.scores.length ? "ok" : "empty"; }
+    } catch (e) { D.scores = []; D.scoreState = "unreachable"; }
     paint(); window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "forge", k: "remote" } }));
   }
   const per = (ai) => { const sc = D.scores.filter((s) => s.ai === ai), open = D.tasks.filter((t) => t.ai === ai && t.state !== "done"), mine = S.list("assignments").filter((a) => a.ai === ai && a.state !== "reviewed");

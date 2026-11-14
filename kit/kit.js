@@ -102,6 +102,7 @@
   /** The field: drifting points in the pillar's accent that gather into its glyph (glyph(n, rand) -> [x,y] in -1..1) and part around the pointer. */
   function field(o = {}) {
     const cv = document.getElementById("field"); if (!cv) return;
+    cv.dataset.lit = "1";
     const c = cv.getContext("2d"); let W = 0, H = 0, dpr = 1, raf = 0, t0 = performance.now();
     const N = Math.round((o.count || 900) * (matchMedia("(max-width: 700px)").matches ? 0.55 : 1));
     let seed = 7; const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
@@ -260,12 +261,15 @@
       more.addEventListener("click", function () { var open = lede.classList.toggle("open"); more.textContent = open ? "Less" : "More"; more.setAttribute("aria-expanded", String(open)); }); lede.after(more); }
   }
 
-  /* the dock: previous pillar, the core, next pillar */
+  /* the dock: previous pillar, the core, next pillar, plus command launcher */
   var compass = document.querySelector("nav.compass"), steps = compass ? compass.querySelectorAll("a.compass-step") : [];
   var dock = el("nav", "pk-dock"); dock.setAttribute("aria-label", "Pillars");
   var core = el("a", "pk-core"); core.href = "../../"; core.setAttribute("aria-label", "Back to the core"); core.appendChild(el("span", null, "Core"));
   if (steps[0]) dock.appendChild(steps[0]); else dock.appendChild(el("span", "pk-gap"));
   dock.appendChild(core); if (steps[1]) dock.appendChild(steps[1]); else dock.appendChild(el("span", "pk-gap"));
+  var cmdBtn = el("button", "pk-cmd-btn"); cmdBtn.type = "button"; cmdBtn.setAttribute("aria-label", "Open Pillar Command Palette"); cmdBtn.title = "Command Palette (Ctrl+K)";
+  cmdBtn.innerHTML = "<span>&#8984;K</span>";
+  dock.appendChild(cmdBtn);
   body.appendChild(dock);
 
   /* the light that slides under the chosen tab */
@@ -300,7 +304,7 @@
     var owner = null; Array.prototype.forEach.call(made.grid.children, function (c) { var k = made.panels.indexOf(c); if (k >= 0) owner = k; c.classList.toggle("pk-off", owner !== i); });   // loose blocks follow the panel above them
     Array.prototype.forEach.call(made.tabs.querySelectorAll(".tab"), function (b, k) { b.setAttribute("aria-selected", String(k === i)); });
     ink(made.tabs);
-    if (byHand) { turnIn(made.panels[i], i - prev); var top = made.tabs.getBoundingClientRect().top; if (top < 40) window.scrollTo({ top: window.scrollY + top - 70, behavior: still ? "auto" : "smooth" }); window.dispatchEvent(new Event("resize")); }
+    if (byHand) { made.grid.classList.add("pk-picked"); turnIn(made.panels[i], i - prev); var top = made.tabs.getBoundingClientRect().top; if (top < 40) window.scrollTo({ top: window.scrollY + top - 70, behavior: still ? "auto" : "smooth" }); window.dispatchEvent(new Event("resize")); }
   }
 
   var queued = false;
@@ -319,8 +323,260 @@
 
   /* a ripple under the finger */
   if (!still) document.addEventListener("pointerdown", function (e) {
-    var t = e.target.closest && e.target.closest(".btn, .tab, .chip, .chord, .compass-step, .pk-core"); if (!t) return;
+    var t = e.target.closest && e.target.closest(".btn, .tab, .chip, .chord, .compass-step, .pk-core, .pk-cmd-btn"); if (!t) return;
     var r = t.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2, s = el("span", "pk-ripple"); s.style.width = s.style.height = d + "px"; s.style.left = e.clientX - r.left - d / 2 + "px"; s.style.top = e.clientY - r.top - d / 2 + "px";
     t.appendChild(s); setTimeout(function () { s.remove(); }, 620);
   }, { passive: true });
+
+  /* Auto-ignite unlit #field canvases across all 25 pillars with reactive themed presets */
+  function igniteAutoField() {
+    var cv = document.getElementById("field");
+    if (!cv || cv.dataset.lit) return;
+    cv.dataset.lit = "auto";
+    var ctx = cv.getContext("2d");
+    if (!ctx) return;
+    var slug = (body.dataset.pillar || "").toLowerCase();
+    var mode = ({
+      apollo: "orbital", kairos: "orbital", odyssey: "orbital", observatory: "orbital",
+      piano: "waves", aether: "waves", sylade: "waves",
+      garage: "compass", records: "compass", kin: "compass", polis: "compass",
+      bastion: "lattice", privacy: "lattice", argus: "lattice", continuity: "lattice", foundry: "lattice",
+      forge: "sparks", hearth: "sparks", money: "sparks", selling: "sparks", games: "sparks", icarus: "sparks"
+    })[slug] || "constellation";
+
+    var cs = getComputedStyle(body);
+    var c1 = cs.getPropertyValue("--accent").trim() || "#ff9d5c";
+    var c2 = cs.getPropertyValue("--accent-2").trim() || "#4de8ff";
+    var W = 0, H = 0, dpr = 1, raf = 0, ptr = { x: 0.5, y: 0.4, tx: 0.5, ty: 0.4 };
+    var nodes = [];
+    for (var i = 0; i < 44; i++) {
+      nodes.push({
+        x: (i * 0.6180339887) % 1,
+        y: ((i * 0.381966 + 0.17) * 1.37) % 1,
+        vx: (Math.sin(i * 2.1) * 0.00018),
+        vy: (Math.cos(i * 1.7) * 0.00018),
+        r: 1.1 + (i % 4) * 0.65,
+        p: i * 0.43
+      });
+    }
+
+    function resize() {
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = Math.max(1, window.innerWidth);
+      H = Math.max(1, window.innerHeight);
+      cv.width = Math.round(W * dpr);
+      cv.height = Math.round(H * dpr);
+    }
+
+    function paint(ts) {
+      raf = 0;
+      var t = (ts || 0) * 0.001;
+      ptr.x += (ptr.tx - ptr.x) * 0.06;
+      ptr.y += (ptr.ty - ptr.y) * 0.06;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      var cx = W * (0.5 + (ptr.x - 0.5) * 0.08), cy = H * (0.34 + (ptr.y - 0.5) * 0.06);
+      var rad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, H) * 0.62);
+      rad.addColorStop(0, c1 + "1a");
+      rad.addColorStop(0.45, c2 + "0d");
+      rad.addColorStop(1, "transparent");
+      ctx.fillStyle = rad;
+      ctx.fillRect(0, 0, W, H);
+
+      if (mode === "orbital" || mode === "compass") {
+        ctx.save();
+        ctx.strokeStyle = c1;
+        ctx.globalAlpha = 0.09;
+        ctx.lineWidth = 1;
+        for (var rIdx = 1; rIdx <= 3; rIdx++) {
+          ctx.beginPath();
+          ctx.arc(cx, cy, Math.min(W, H) * (0.14 * rIdx), 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        if (mode === "compass") {
+          for (var a = 0; a < 12; a++) {
+            var ang = (a / 12) * Math.PI * 2 + t * 0.04;
+            var r0 = Math.min(W, H) * 0.39, r1 = r0 + (a % 3 === 0 ? 14 : 6);
+            ctx.beginPath();
+            ctx.moveTo(cx + Math.cos(ang) * r0, cy + Math.sin(ang) * r0);
+            ctx.lineTo(cx + Math.cos(ang) * r1, cy + Math.sin(ang) * r1);
+            ctx.stroke();
+          }
+        }
+        ctx.restore();
+      } else if (mode === "waves") {
+        ctx.save();
+        ctx.lineWidth = 1.1;
+        for (var w = 0; w < 3; w++) {
+          ctx.strokeStyle = w % 2 ? c2 : c1;
+          ctx.globalAlpha = 0.11 - w * 0.025;
+          ctx.beginPath();
+          for (var x = 0; x <= W; x += 24) {
+            var y = H * (0.28 + w * 0.14) + Math.sin(x * 0.006 + t * (0.6 + w * 0.2) + ptr.x * 2) * (18 + w * 8);
+            if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      /* drift nodes & connect close pairs */
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        if (!still) {
+          n.x = (n.x + n.vx + (mode === "sparks" ? 0 : 0) + 1) % 1;
+          n.y = (n.y + n.vy + (mode === "sparks" ? -0.00022 : 0) + 1) % 1;
+        }
+        var nx = n.x * W + (ptr.x - 0.5) * 18 * ((i % 3) + 1) * 0.25;
+        var ny = n.y * H + (ptr.y - 0.5) * 18 * ((i % 3) + 1) * 0.25;
+        n._px = nx; n._py = ny;
+      }
+
+      if (mode === "lattice" || mode === "constellation" || mode === "orbital") {
+        ctx.lineWidth = 0.8;
+        for (var i = 0; i < nodes.length; i++) {
+          var aNode = nodes[i];
+          for (var j = i + 1; j < nodes.length; j++) {
+            var bNode = nodes[j];
+            var dx = aNode._px - bNode._px, dy = aNode._py - bNode._py;
+            var d2 = dx * dx + dy * dy;
+            if (d2 < 17500) {
+              ctx.strokeStyle = (i + j) % 2 ? c2 : c1;
+              ctx.globalAlpha = (1 - d2 / 17500) * 0.16;
+              ctx.beginPath(); ctx.moveTo(aNode._px, aNode._py); ctx.lineTo(bNode._px, bNode._py); ctx.stroke();
+            }
+          }
+        }
+      }
+
+      for (var k = 0; k < nodes.length; k++) {
+        var nd = nodes[k];
+        var pulse = still ? 0.5 : 0.45 + 0.35 * Math.sin(t * 1.4 + nd.p);
+        ctx.fillStyle = k % 3 === 0 ? c2 : c1;
+        ctx.globalAlpha = 0.24 + pulse * 0.28;
+        ctx.beginPath();
+        ctx.arc(nd._px, nd._py, nd.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      if (!still && !document.hidden) raf = requestAnimationFrame(paint);
+    }
+
+    resize();
+    paint(0);
+    window.addEventListener("resize", function () { resize(); if (still && !raf) raf = requestAnimationFrame(paint); }, { passive: true });
+    document.addEventListener("pointermove", function (e) {
+      ptr.tx = e.clientX / Math.max(1, W);
+      ptr.ty = e.clientY / Math.max(1, H);
+    }, { passive: true });
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden && !still && !raf) raf = requestAnimationFrame(paint);
+    });
+  }
+
+  if (document.readyState === "complete") setTimeout(igniteAutoField, 30);
+  else window.addEventListener("load", function () { setTimeout(igniteAutoField, 30); });
+
+  /* In-pillar Cmd+K / Ctrl+K Command Palette */
+  var PAL_ROUTES = [
+    { name: "Hub Core · Orrery", sub: "3D live orbital core & cross-pillar telemetry", href: "../../#/", k: "hub core home orrery" },
+    { name: "Hub · Money Console", sub: "Payoff timeline & recurring bills", href: "../../#/money", k: "hub money debt payoff" },
+    { name: "Hub · Kairos Console", sub: "Schedule & calendar view", href: "../../#/time", k: "hub time kairos schedule" },
+    { name: "Hub · Backup Vault", sub: "Export & restore entire ecosystem", href: "../../#/backup", k: "hub backup export json" },
+    { name: "Kairos Meridian", sub: "Deadlines, collisions & focus sprint timer", href: "../kairos/", k: "time deadlines schedule pomodoro" },
+    { name: "Money · Payoff Simulator", sub: "Consolidation, windfall & hardship simulator", href: "../money/", k: "finance debt apr avalanche snowball" },
+    { name: "Apollo Temple", sub: "Biometrics, radar, clinical review & training", href: "../apollo/", k: "health sleep steps weight radar" },
+    { name: "Garage", sub: "Maintenance, CA DMV radar & resale dossier", href: "../garage/", k: "car vehicle fuel oil maintenance" },
+    { name: "Records · Paper Killer", sub: "Warranties, TK school expiry & serial vault", href: "../records/", k: "documents serial receipt expiry" },
+    { name: "Bossa Piano Studio", sub: "16-step comping sequencer, BPM ladder & staff", href: "../piano/", k: "music jazz bossa chords sightread" },
+    { name: "Selling Pipeline", sub: "FB Marketplace shipping-only copy & profit ledger", href: "../selling/", k: "sales inventory shipping profit" },
+    { name: "Bastion · Mountain Prep", sub: "Big Bear storm & outage readiness", href: "../bastion/", k: "emergency battery mountain prep" },
+    { name: "Athenaeum", sub: "Ideas, notes & cross-pillar handoff", href: "../athenaeum/", k: "notes writing ideas handoff" },
+    { name: "Forge", sub: "3D & physical fabrication queue", href: "../forge/", k: "print 3d projects hardware" },
+    { name: "Foundry", sub: "Software builds, shipped tools & repos", href: "../foundry/", k: "code dev software builds" },
+    { name: "Observatory", sub: "Deep reading, study & research", href: "../observatory/", k: "reading books articles study" },
+    { name: "Kin", sub: "Family & household moments", href: "../kin/", k: "family sebastian care moments" },
+    { name: "Hephaestus Hearth", sub: "11-room build phases, materials & budget", href: "../hearth/", k: "house renovation materials budget" },
+    { name: "Aether · Field Lab", sub: "Atmospheric telemetry, solar & air quality", href: "../aether/", k: "weather power solar grid field" },
+    { name: "Polis · Civic Watch", sub: "CA state & local legal/civic watchlist", href: "../polis/", k: "policy law ca legislature bills" },
+    { name: "Mythos · Lore Studio", sub: "Worldbuilding, entity graph & chapters", href: "../mythos/", k: "story lore graph characters" },
+    { name: "Continuity · Sovereign Vault", sub: "AES-256-GCM encrypted emergency continuity box", href: "../continuity/", k: "crypto encrypt vault emergency" },
+    { name: "Privacy · CA DROP", sub: "Data broker opt-out & digital footprint audit", href: "../privacy/", k: "privacy delete broker security" },
+    { name: "Odyssey · Trips & Away", sub: "Pack lists, itineraries & Away mode", href: "../odyssey/", k: "travel trips away mode" },
+    { name: "Ludus Arcade", sub: "Focus warmups & reflex challenges", href: "../games/", k: "games reflex play" },
+    { name: "Argus Album", sub: "Visual inspection & gallery archive", href: "../argus/", k: "photos album media archive" },
+    { name: "Hermes Post", sub: "Outbound correspondence & follow-up log", href: "../hermes/", k: "mail post messages correspondence" },
+    { name: "Icarus Stake", sub: "Risk watchlist & paper journal (read-only)", href: "../icarus/", k: "stocks watchlist paper market" },
+    { name: "Sylade · Presence", sub: "Calm attention & mindful stillness", href: "../sylade/", k: "presence breath stillness" }
+  ];
+
+  var palBack = null, palInput = null, palList = null, palSel = 0, palItems = [];
+  function renderPalette() {
+    if (!palList) return;
+    var q = (palInput.value || "").trim().toLowerCase();
+    palItems = !q ? PAL_ROUTES.slice(0, 10) : PAL_ROUTES.filter(function (r) {
+      return (r.name + " " + r.sub + " " + r.k).toLowerCase().indexOf(q) !== -1;
+    }).slice(0, 12);
+    if (palSel >= palItems.length) palSel = Math.max(0, palItems.length - 1);
+    palList.innerHTML = "";
+    if (!palItems.length) {
+      palList.appendChild(el("div", "pk-pal-empty", "No matching pillars or consoles"));
+      return;
+    }
+    palItems.forEach(function (item, idx) {
+      var btn = el("a", "pk-pal-item" + (idx === palSel ? " active" : ""));
+      btn.href = item.href;
+      var t = el("b", null, item.name), s = el("span", null, item.sub);
+      btn.appendChild(t); btn.appendChild(s);
+      btn.addEventListener("mouseenter", function () { palSel = idx; highlightPal(); });
+      palList.appendChild(btn);
+    });
+  }
+  function highlightPal() {
+    if (!palList) return;
+    var els = palList.querySelectorAll(".pk-pal-item");
+    for (var i = 0; i < els.length; i++) els[i].classList.toggle("active", i === palSel);
+  }
+  function openPalette() {
+    if (!palBack) {
+      palBack = el("div", "pk-palette-back");
+      palBack.setAttribute("role", "dialog"); palBack.setAttribute("aria-modal", "true"); palBack.setAttribute("aria-label", "Pillar Command Palette");
+      var box = el("div", "pk-palette");
+      palInput = document.createElement("input"); palInput.type = "search"; palInput.className = "pk-pal-in"; palInput.placeholder = "Jump to any pillar or Hub console...";
+      palList = el("div", "pk-pal-list");
+      var hint = el("div", "pk-pal-hint", "Arrows select · Enter jump · Esc close");
+      box.appendChild(palInput); box.appendChild(palList); box.appendChild(hint);
+      palBack.appendChild(box);
+      palBack.addEventListener("click", function (e) { if (e.target === palBack) closePalette(); });
+      palInput.addEventListener("input", function () { palSel = 0; renderPalette(); });
+      palInput.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { e.preventDefault(); closePalette(); }
+        else if (e.key === "ArrowDown") { e.preventDefault(); palSel = (palSel + 1) % Math.max(1, palItems.length); highlightPal(); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); palSel = (palSel - 1 + Math.max(1, palItems.length)) % Math.max(1, palItems.length); highlightPal(); }
+        else if (e.key === "Enter" && palItems[palSel]) { e.preventDefault(); window.location.href = palItems[palSel].href; }
+      });
+      body.appendChild(palBack);
+    }
+    palBack.hidden = false;
+    palSel = 0;
+    palInput.value = "";
+    renderPalette();
+    setTimeout(function () { palInput.focus(); }, 20);
+  }
+  function closePalette() { if (palBack) palBack.hidden = true; }
+  cmdBtn.addEventListener("click", function () { if (palBack && !palBack.hidden) closePalette(); else openPalette(); });
+  document.addEventListener("keydown", function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      if (palBack && !palBack.hidden) closePalette(); else openPalette();
+    } else if (e.key === "/" && !e.metaKey && !e.ctrlKey && !e.altKey) {
+      var tag = (document.activeElement && document.activeElement.tagName) || "";
+      if (tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") {
+        e.preventDefault();
+        openPalette();
+      }
+    }
+  });
 })();

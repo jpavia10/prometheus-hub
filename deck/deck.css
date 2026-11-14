@@ -575,3 +575,10 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
 /* since you were here (2026-11-13): what changed in the pillars, newest first */
 .since .since-row { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 10px; align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(255, 255, 255, .07); text-decoration: none; color: inherit; }
 .since .since-row b { font-weight: 600; font-size: 13px; color: var(--accent, #ffd08a); white-space: nowrap; } .since .since-row span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+/* ecosystem telemetry hud */
+.eco-hud { padding: 12px 14px; }
+.eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); gap: 8px; }
+.eco-stat { display: grid; gap: 2px; padding: 8px 10px; border-radius: 12px; text-decoration: none; color: inherit; background: rgba(255, 255, 255, .03); border: 1px solid rgba(255, 255, 255, .08); transition: border-color .2s, transform .2s; }
+.eco-stat:hover { border-color: var(--ember); transform: translateY(-1px); }
+.eco-k { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.eco-v { font-size: 17px; font-weight: 600; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

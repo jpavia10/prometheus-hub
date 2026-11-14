@@ -42,7 +42,7 @@
       <button class="tab" type="button" role="tab" data-tab="motifs" aria-selected="false">Guitar, Lyrics &amp; Motifs</button>
     </div>
     <section id="my-pane-lore" class="grid">
-      <div class="glass span-12">
+      <div class="glass span-6">
         <h2>Write Lore, Essay or Draft</h2>
         <form class="form" id="my-eform">
           <label class="f">Category<select name="kind">${KINDS.map((k) => `<option>${k}</option>`).join("")}</select></label>
@@ -51,7 +51,15 @@
           <label class="f wide">Body<textarea class="ta" name="body" required maxlength="2500" placeholder="Keep voice raw and vivid..."></textarea></label>
           <button class="btn" type="submit">Commit Entry</button>
         </form>
-        <div id="my-ath-row" style="margin-top:12px"></div>
+      </div>
+      <div class="glass lit span-6">
+        <h2>Lore &amp; Motif Relationship Constellation</h2>
+        <p class="sub">Maps entries, story beats, and motifs with resonance links across shared tags and keywords.</p>
+        <canvas id="my-graph" style="width:100%;height:260px;display:block;margin-top:8px"></canvas>
+      </div>
+      <div class="glass span-12">
+        <h2>Athenaeum Seed &amp; Lore Entries</h2>
+        <div id="my-ath-row" style="margin-top:8px"></div>
         <div id="my-entries" style="margin-top:12px"></div>
       </div>
     </section>
@@ -93,6 +101,39 @@
 
   function paint() {
     const D = window.MYTHOS.data();
+    const cv = document.getElementById("my-graph");
+    if (cv) {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const W = Math.max(240, cv.clientWidth || 440), H = cv.clientHeight || 260;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      const g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+      const all = [
+        ...D.entries.map((e) => ({ label: e.title, text: (e.title + " " + e.tag + " " + e.body).toLowerCase(), col: "#e599f7" })),
+        ...D.beats.map((b) => ({ label: b.title, text: (b.title + " " + (b.summary || "")).toLowerCase(), col: "#748ffc" })),
+        ...D.motifs.map((m) => ({ label: m.key, text: (m.key + " " + m.note).toLowerCase(), col: "#ffd43b" }))
+      ].slice(0, 14);
+      const cx = W / 2, cy = H / 2, R = Math.min(W, H) * 0.36;
+      const pts = all.map((n, i) => {
+        const a = -Math.PI / 2 + (i / Math.max(1, all.length)) * Math.PI * 2;
+        return { ...n, x: cx + Math.cos(a) * R, y: cy + Math.sin(a) * R };
+      });
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const wi = pts[i].text.split(/\W+/).filter((w) => w.length > 3);
+          const shared = wi.some((w) => pts[j].text.includes(w));
+          if (shared || (i + j) % 5 === 0) {
+            g.strokeStyle = shared ? "rgba(229,153,247,0.45)" : "rgba(116,143,252,0.14)";
+            g.lineWidth = shared ? 1.6 : 0.8;
+            g.beginPath(); g.moveTo(pts[i].x, pts[i].y); g.lineTo(pts[j].x, pts[j].y); g.stroke();
+          }
+        }
+      }
+      g.font = "10.5px system-ui, sans-serif";
+      pts.forEach((p) => {
+        g.fillStyle = p.col; g.beginPath(); g.arc(p.x, p.y, 5, 0, Math.PI * 2); g.fill();
+        g.fillStyle = "#eef4ff"; g.fillText(p.label.slice(0, 18), Math.max(6, Math.min(W - 90, p.x - 24)), p.y - 9);
+      });
+    }
     const ideas = readAthenaeum().slice(0, 12);
     if (ideas.length) {
       const sel = h("select", { "aria-label": "Import Athenaeum idea" }, ...ideas.map((i) => h("option", { value: i.id }, i.title.slice(0, 64))));

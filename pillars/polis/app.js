@@ -42,7 +42,7 @@
       <button class="tab" type="button" role="tab" data-tab="dir" aria-selected="false">Civic Directory</button>
     </div>
     <section id="po-pane-watches" class="grid">
-      <div class="glass span-12">
+      <div class="glass span-6">
         <h2>Add Permit, Rule or Consumer Watch</h2>
         <form class="form" id="po-wform">
           <label class="f">Jurisdiction<select name="jurisdiction"><option>Local</option><option>County</option><option>State</option><option>Federal</option></select></label>
@@ -51,7 +51,15 @@
           <label class="f wide">Rule / Action Summary<input name="rule" maxlength="200" placeholder="Statutory threshold, inspection item, or protection rule"></label>
           <button class="btn" type="submit">Track Rule</button>
         </form>
-        <div id="po-watches" style="margin-top:12px"></div>
+      </div>
+      <div class="glass lit span-6">
+        <h2>Jurisdiction &amp; Urgency Matrix</h2>
+        <p class="sub">Distribution across Local, County, State, and Federal watches highlighting urgent action items.</p>
+        <canvas id="po-chart" style="width:100%;height:190px;display:block;margin-top:8px"></canvas>
+      </div>
+      <div class="glass span-12">
+        <h2>Active Civic &amp; Statutory Watchlist</h2>
+        <div id="po-watches" style="margin-top:8px"></div>
       </div>
     </section>
     <section id="po-pane-ballot" class="grid" hidden>
@@ -90,6 +98,28 @@
 
   function paint() {
     const D = window.POLIS.data();
+    const cv = document.getElementById("po-chart");
+    if (cv) {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const W = Math.max(220, cv.clientWidth || 420), H = cv.clientHeight || 190;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      const g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+      const lvls = ["Local", "County", "State", "Federal"];
+      const counts = lvls.map((l) => {
+        const sub = D.watches.filter((w) => (w.jurisdiction || "Local") === l);
+        return { l, total: sub.length, urgent: sub.filter((w) => w.status === "action-needed").length };
+      });
+      const maxC = Math.max(2, ...counts.map((c) => c.total));
+      counts.forEach((c, idx) => {
+        const y = 26 + idx * 38, bw = (W - 140) * (c.total / maxC), uw = (W - 140) * (c.urgent / maxC);
+        g.font = "12px system-ui, sans-serif"; g.fillStyle = "#eef4ff"; g.fillText(`${c.l} (${c.total})`, 10, y + 14);
+        g.fillStyle = "rgba(255,255,255,0.08)"; g.fillRect(105, y, W - 125, 20);
+        g.fillStyle = "#ffd43b"; g.fillRect(105, y, bw, 20);
+        if (uw > 0) { g.fillStyle = "#ff6b6b"; g.fillRect(105, y, uw, 20); }
+      });
+      g.font = "10px system-ui, sans-serif"; g.fillStyle = "#ffd43b"; g.fillText("Total Watched", 105, 14);
+      g.fillStyle = "#ff6b6b"; g.fillText("Action Needed", 205, 14);
+    }
     const watches = [...D.watches].sort((a, b) => (a.status === "action-needed" ? 0 : 1) - (b.status === "action-needed" ? 0 : 1));
     $("#po-watches").replaceChildren(...(watches.length ? watches.map((w) => h("div.kv", null,
       h("span", null, h("b", null, w.title), " ", h("span." + (PILL[w.status] || "pill"), null, w.status), h("br"),

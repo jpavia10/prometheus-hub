@@ -78,7 +78,7 @@
       <button class="tab" type="button" role="tab" data-tab="psps" aria-selected="false">PSPS Outage Log</button>
     </div>
     <section id="ae-pane-solar" class="grid">
-      <div class="glass span-12">
+      <div class="glass span-6">
         <h2>Frazier Park Solar &amp; Power Station Budget</h2>
         <p class="sub">Peak sun hours at 34.82°N / 4,636 ft minus inverter/charge derating vs essential appliances.</p>
         <form class="form" id="ae-cfg">
@@ -89,6 +89,11 @@
           <button class="btn" type="submit">Update Sizing</button>
         </form>
         <div class="grid-2" id="ae-summary" style="margin-top:12px"></div>
+      </div>
+      <div class="glass lit span-6">
+        <h2>24-Hour Solar Yield vs Load &amp; Battery SoC</h2>
+        <p class="sub">Hourly PV bell curve against active critical loads (00:00–24:00 PST).</p>
+        <canvas id="ae-curve" style="width:100%;height:240px;display:block;margin-top:8px"></canvas>
       </div>
       <div class="glass span-12">
         <h2>Appliance Load Schedule</h2>
@@ -163,6 +168,45 @@
         h("span", { style: "display:flex;align-items:center;gap:8px" }, hrs, h("span.stat-s", null, "h/d"), h("span.pill", null, `${r.wh} Wh`))
       );
     }));
+
+    // 24h Solar vs Critical Load & SoC Canvas Curve
+    const cv = document.getElementById("ae-curve");
+    if (cv) {
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const W = Math.max(240, cv.clientWidth || 460), H = cv.clientHeight || 240;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      const g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      g.clearRect(0, 0, W, H);
+      const padL = 40, padR = 14, padT = 22, padB = 26;
+      const pvCurve = [], loadCurve = [], socCurve = [];
+      let socWh = B.bankWh * 0.72;
+      const avgLoadW = B.loadWh / 24;
+      for (let hr = 0; hr < 24; hr++) {
+        const sun = hr >= 6 && hr <= 18 ? Math.sin(((hr - 6) / 12) * Math.PI) : 0;
+        const pvW = Math.round(B.arrayW * B.derate * sun * (B.season.peakSunH / 5.2));
+        const ldW = Math.round(avgLoadW * (hr >= 7 && hr <= 22 ? 1.15 : 0.7));
+        socWh = Math.max(0, Math.min(B.bankWh, socWh + pvW - ldW));
+        pvCurve.push(pvW); loadCurve.push(ldW); socCurve.push((socWh / Math.max(1, B.bankWh)) * 100);
+      }
+      const maxW = Math.max(200, ...pvCurve, ...loadCurve);
+      const X = (i) => padL + (i / 23) * (W - padL - padR);
+      const YW = (v) => padT + (1 - v / maxW) * (H - padT - padB);
+      const YS = (pct) => padT + (1 - pct / 100) * (H - padT - padB);
+      g.strokeStyle = "rgba(255,255,255,0.08)"; g.lineWidth = 1;
+      [0, 0.5, 1].forEach((f) => { const yy = padT + f * (H - padT - padB); g.beginPath(); g.moveTo(padL, yy); g.lineTo(W - padR, yy); g.stroke(); });
+      g.beginPath(); pvCurve.forEach((v, i) => (i === 0 ? g.moveTo(X(i), YW(v)) : g.lineTo(X(i), YW(v))));
+      g.strokeStyle = "#38d9a9"; g.lineWidth = 2.4; g.stroke();
+      g.beginPath(); loadCurve.forEach((v, i) => (i === 0 ? g.moveTo(X(i), YW(v)) : g.lineTo(X(i), YW(v))));
+      g.strokeStyle = "#ff8a3d"; g.lineWidth = 2; g.stroke();
+      g.beginPath(); socCurve.forEach((v, i) => (i === 0 ? g.moveTo(X(i), YS(v)) : g.lineTo(X(i), YS(v))));
+      g.strokeStyle = "#74c0fc"; g.lineWidth = 1.8; g.setLineDash([4, 3]); g.stroke(); g.setLineDash([]);
+      g.font = "10px system-ui, sans-serif";
+      g.fillStyle = "#38d9a9"; g.fillText("Solar W", padL, 12);
+      g.fillStyle = "#ff8a3d"; g.fillText("Load W", padL + 62, 12);
+      g.fillStyle = "#74c0fc"; g.fillText("Battery SoC %", padL + 120, 12);
+      g.fillStyle = "rgba(200,220,255,0.65)";
+      [0, 6, 12, 18, 23].forEach((hr) => g.fillText(`${hr}:00`, X(hr) - 10, H - 8));
+    }
 
     const wx = D.wx;
     $("#ae-wx-status").textContent = wx
