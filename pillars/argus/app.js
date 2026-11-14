@@ -2,8 +2,16 @@
    20-rule numismatic optical grader, obverse/reverse pairing & Hearth before/after split slider. */
 (function () {
   "use strict";
-  const { $, h, day, toast, tabs, field, G, download, pickFile } = PK;
+  const { $, h, day, toast, tabs, field, G, download, pickFile, store } = PK;
+  const S = store("argus");
   const app = $("#app");
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  /* The corpus binder's data is Joseph's real photo program (corpus-data.js), seeded once into this
+     pillar's own store; after the seed the stored copy is the record and the shipped file only
+     matters for fresh devices. */
+  if (!S.get("corpusSeedV1") && window.ARGUS_CORPUS) { S.set("corpus", window.ARGUS_CORPUS); S.set("corpusSeedV1", 1); }
+  const corpus = () => S.get("corpus", null) || window.ARGUS_CORPUS || null;
   const TITAN = new URLSearchParams(location.search).get("titan") || "https://jpavia10.github.io/titan-reliquary-preview/";
 
   field({ count: 900, at: [0.72, 0.34], scale: 0.3, glyph: (n) => [
@@ -14,6 +22,7 @@
   app.innerHTML = `
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="t-all" aria-controls="p-all">Album & Clusters</button>
+      <button class="tab" role="tab" id="t-corpus" aria-controls="p-corpus">Corpus Binder</button>
       <button class="tab" role="tab" id="t-add" aria-controls="p-add">Ingest & Scrub</button>
       <button class="tab" role="tab" id="t-exif" aria-controls="p-exif">EXIF Forensics</button>
       <button class="tab" role="tab" id="t-coin" aria-controls="p-coin">Coin 20-Rule QC</button>
@@ -28,6 +37,25 @@
         </div>
       </div>
       <div id="g-grid" class="album"></div><p class="note" id="g-src"></p>
+    </section>
+    <section id="p-corpus" role="tabpanel">
+      <div class="grid">
+        <div class="glass lit span-5"><h2>Duplicate review — the queue</h2><div id="c-dup"></div></div>
+        <div class="glass span-7"><h2>Batch protocol (strict, set 2026-09-25)</h2><div id="c-protocol"></div></div>
+        <div class="glass span-6"><h2>The Vault — where keepers land</h2><div id="c-vault"></div></div>
+        <div class="glass span-6"><h2>Cleanup boundaries</h2><div id="c-bounds"></div></div>
+        <div class="glass span-12"><h2>Titan coin-photo pipeline — the second corpus</h2><div id="c-titan"></div></div>
+        <div class="glass span-12"><h2>Review batches logged on this device</h2>
+          <form class="form" id="c-batch-form">
+            <label class="f">Date<input name="date" type="date" required></label>
+            <label class="f">Pairs reviewed<input name="pairs" type="number" min="1" max="10" required></label>
+            <label class="f wide">Note<input name="note" maxlength="120" placeholder="Decision code verified · staging folder trashed · keeps relocated"></label>
+            <button class="btn" type="submit">Log batch</button>
+          </form>
+          <div id="c-batches" style="margin-top:10px"></div>
+          <p class="note">This log lives on this device and doesn't change the Drive queue — Sebastian executes the grouped trash from the decision code in chat, per the protocol above.</p>
+        </div>
+      </div>
     </section>
     <section id="p-add" role="tabpanel" class="grid"><div class="glass span-12"><h2>Add & strip metadata locally</h2>
       <form class="form" id="g-form">
@@ -47,6 +75,7 @@
       <div id="qc-rules" class="qc-grid"></div>
     </div></section>
     <section id="p-cmp" role="tabpanel" class="grid"><div class="glass span-12"><h2>Hearth Before / After Split Compare</h2>
+      <p class="note">Compares photos you added on this device (Ingest &amp; Scrub, pair roles Before / After). There are no demo images — an empty album shows an empty compare.</p>
       <form class="form"><label class="f">Left (Before)<select id="cmp-a"></select></label><label class="f">Right (After)<select id="cmp-b"></select></label></form>
       <div class="cmp-wrap" id="cmp-box"><canvas id="cmp-ca"></canvas><canvas id="cmp-cb" class="cmp-after"></canvas><div class="cmp-line"></div><span class="cmp-label left">BEFORE</span><span class="cmp-label right">AFTER</span></div>
       <input id="cmp-range" type="range" min="0" max="100" value="50" style="width:100%" aria-label="Before and after split position">
@@ -215,23 +244,26 @@
     d.showModal();
   }
 
-  function paintSyntheticCompare(cv, variant) {
+  /* No demo images: with no photos of the user's own on this device, the compare shows an honest
+     empty state instead of a painted stand-in. */
+  function paintEmptyCompare(cv) {
     cv.width = 640; cv.height = 400; const g = cv.getContext("2d");
-    g.fillStyle = variant === "before" ? "#1d1a18" : "#121d24"; g.fillRect(0, 0, 640, 400);
-    g.strokeStyle = variant === "before" ? "rgba(255,150,90,.55)" : "rgba(120,235,195,.75)";
-    for (let i = 0; i < 12; i++) {
-      const y = 90 + i * 22; g.lineWidth = 14; g.beginPath(); g.moveTo(40, y); g.lineTo(600, y); g.stroke();
-      if (variant === "before" && i % 3 === 1) { g.fillStyle = "rgba(255,95,70,.45)"; g.fillRect(190, y - 7, 130, 14); }
-    }
-    g.fillStyle = "#e6eef9"; g.font = "600 18px Outfit, sans-serif";
-    g.fillText(variant === "before" ? "BEFORE · 2x6x12 weathered boards & orange joist zone" : "AFTER · sanded joists, butyl tape, L-flashing & 21 new courses", 28, 46);
+    g.fillStyle = "#10151d"; g.fillRect(0, 0, 640, 400);
+    g.strokeStyle = "rgba(159,212,230,.35)"; g.lineWidth = 2; g.strokeRect(14, 14, 612, 372);
+    g.textAlign = "center";
+    g.fillStyle = "#dfe6f5"; g.font = "600 19px Outfit, sans-serif";
+    g.fillText("No photos on this device yet", 320, 182);
+    g.font = "400 14px Outfit, sans-serif"; g.fillStyle = "rgba(223,230,245,.72)";
+    g.fillText("Add a real before / after pair in Ingest & Scrub,", 320, 212);
+    g.fillText("then pick the pair here to compare it.", 320, 234);
+    g.textAlign = "left";
   }
 
   function syncCompareOptions() {
     const sa = $("#cmp-a"), sb = $("#cmp-b"); if (!sa || !sb) return;
     const opts = local.map((p, idx) => `<option value="${idx}">${(p.caption || p.pillar)} (${p.pairRole || "photo"})</option>`).join("");
-    sa.innerHTML = opts || `<option value="demo-before">Demo Before · Hearth Deck Rev 6</option>`;
-    sb.innerHTML = opts || `<option value="demo-after">Demo After · Hearth Deck Complete</option>`;
+    sa.innerHTML = opts || `<option value="">No photos on this device yet</option>`;
+    sb.innerHTML = opts || `<option value="">No photos on this device yet</option>`;
     if (local.length > 1) sb.selectedIndex = Math.min(1, local.length - 1);
     drawCompare();
   }
@@ -239,7 +271,7 @@
   async function drawCompare() {
     const ca = $("#cmp-ca"), cb = $("#cmp-cb"); if (!ca || !cb) return;
     const va = $("#cmp-a").value, vb = $("#cmp-b").value;
-    if (!local.length || va === "demo-before") { paintSyntheticCompare(ca, "before"); paintSyntheticCompare(cb, "after"); return; }
+    if (!local.length) { paintEmptyCompare(ca); paintEmptyCompare(cb); return; }
     for (const [el, val] of [[ca, va], [cb, vb]]) {
       const item = local[Number(val)] || local[0]; if (!item) continue;
       const bmp = await createImageBitmap(item.blob); el.width = 640; el.height = 400; el.getContext("2d").drawImage(bmp, 0, 0, 640, 400);
@@ -273,18 +305,65 @@
     local = await allLocal(); syncIdbMirror(local); render();
   });
 
-  $("#export").onclick = () => download(`argus_${day()}.json`, { v: 2, pillar: "argus", exported: new Date().toISOString(), meta: local.map(({ id, pillar, caption, at, dhash, grade, pairId, pairRole }) => ({ id, pillar, caption, at, dhash, grade, pairId, pairRole })) });
+  const numRows = (arr) => arr.map((x, i) => `<div class="kv"><span>${i + 1}. ${esc(x)}</span></div>`).join("");
+  const dotRows = (arr) => arr.map((x) => `<div class="kv"><span>· ${esc(x)}</span></div>`).join("");
+
+  function paintCorpus() {
+    const C = corpus(); if (!C) return;
+    const D = C.dupReview;
+    $("#c-dup").innerHTML = `
+      <div class="stat-k">Pairs remaining</div><div class="stat-v big">${esc(D.remainingLabel)}</div>
+      <div class="stat-s">as of ${esc(D.remainingAsOf)} — ${esc(D.countNote)}</div>
+      <div class="kv"><span>Queue file (one file, link-shared)</span><b>${esc(D.queuePath)}</b></div>
+      <div class="kv"><span>How a review runs</span></div>${numRows(D.flow)}
+      <div class="row-actions" style="margin-top:10px"><a class="btn small" href="${esc(D.appUrl)}" target="_blank" rel="noopener noreferrer">Open the review app</a></div>`;
+    $("#c-protocol").innerHTML = dotRows(D.protocol);
+    $("#c-vault").innerHTML = C.vault.targets.map((t) => `<div class="kv"><span>${esc(t.kind)}</span><b>${esc(t.path)}</b></div>`).join("")
+      + `<p class="note">${esc(C.vault.yearRule)}</p><p class="note">${esc(C.vault.rootNote)}</p>`;
+    $("#c-bounds").innerHTML = `<div class="kv"><span><b>Never target</b></span></div>${dotRows(C.boundaries.never)}`
+      + `<div class="kv"><span><b>Hunt first</b></span></div>${dotRows(C.boundaries.hunt)}`
+      + `<div class="kv"><span><b>Standing rules</b></span></div>${dotRows(C.boundaries.rules)}`;
+    const T = C.titan;
+    $("#c-titan").innerHTML = `
+      <div class="kv"><span>Photo naming</span><b>${esc(T.naming)}</b></div>
+      <div class="kv"><span>Real staged examples</span><b>${T.examples.map(esc).join("<br>")}</b></div>
+      <div class="kv"><span>${esc(T.staging.label)}</span><b>${esc(T.staging.id)}</b></div>
+      <div class="kv"><span>${esc(T.drop.label)}</span><b>${esc(T.drop.id)}</b></div>
+      <div class="kv"><span>How a coin photo travels</span></div>${numRows(T.flow)}
+      <div class="kv"><span>Pipeline rules</span></div>${dotRows(T.rules)}`;
+    paintBatches();
+  }
+
+  function paintBatches() {
+    const box = $("#c-batches"); if (!box) return;
+    const rows = S.list("batches").slice().sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    const total = rows.reduce((s, r) => s + (+r.pairs || 0), 0);
+    box.innerHTML = (rows.length ? `<div class="kv"><span>Logged here: ${rows.length} batch${rows.length === 1 ? "" : "es"} · ${total} pairs</span></div>` : "")
+      + (rows.map((r) => `<div class="kv"><span>${esc(r.date)} · ${esc(r.pairs)} pairs${r.note ? ` · ${esc(r.note)}` : ""}</span><span class="row-actions"><button class="btn quiet small" type="button" data-batch-del="${esc(r.id)}">Remove</button></span></div>`).join("")
+      || `<p class="empty">No batches logged yet. The pre-app batches (1–7) were executed from chat decision codes; log new ones here as they run.</p>`);
+    box.querySelectorAll("[data-batch-del]").forEach((b) => (b.onclick = () => { S.remove("batches", b.dataset.batchDel); paintBatches(); }));
+  }
+
+  $("#c-batch-form").addEventListener("submit", (e) => {
+    e.preventDefault(); const f = e.target;
+    S.add("batches", { date: f.date.value, pairs: +f.pairs.value || 0, note: f.note.value.trim() });
+    f.reset(); toast("Batch logged"); paintBatches();
+  });
+
+  $("#export").onclick = () => download(`argus_${day()}.json`, { v: 2, pillar: "argus", exported: new Date().toISOString(), meta: local.map(({ id, pillar, caption, at, dhash, grade, pairId, pairRole }) => ({ id, pillar, caption, at, dhash, grade, pairId, pairRole })), corpus: S.get("corpus", null), batches: S.list("batches") });
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { const obj = JSON.parse(await f.text()); toast(`Read ${obj.meta ? obj.meta.length : 0} photo metadata records (binary blobs stay local)`); } catch (e) { toast(e.message); } };
 
+  $("#c-batch-form").date.value = day();
+  paintCorpus();
   tabs(app, () => requestAnimationFrame(render));
   allLocal().then((r) => { local = r; syncIdbMirror(local); render(); });
   fetch(TITAN + "data/index.json").then((r) => (r.ok ? r.json() : Promise.reject(r.status))).then((d) => {
     titan = (d.flips || []).filter((c) => c.thumb).map((c) => ({
       src: TITAN + c.thumb.replace("photos/p1/", "photos/cut/"), pillar: "Titan",
       title: c.label || `${c.country} ${c.year}`, sub: c.id || "", group: c.country || "Coin", id: c.id || "",
-      link: `${TITAN}#flips`, grade: 95,
+      link: `${TITAN}#flips`, grade: null,
     }));
-    $("#g-src").textContent = `${titan.length} Titan coin photos loaded live.`;
+    $("#g-src").textContent = `${titan.length} Titan coin photos loaded live from the Titan Reliquary — borrowed for viewing as published; Argus does not grade another pillar's photos.`;
     render();
   }).catch(() => { $("#g-src").textContent = "Could not load Titan coin archive (offline or local test mode). Local vault ready."; render(); });
 })();
