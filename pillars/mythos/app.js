@@ -8,16 +8,21 @@
   const ARCS = ["Spark", "Threshold", "Ordeal", "Revelation", "Return"];
   const KINDS = ["World / Setting", "Character / Archetype", "Faction / Order", "Sylade Lore", "Guitar / Lyric Notebook", "Essay / Draft"];
 
-  if (!S.get("seededV1", false) && !S.list("entries").length) {
-    S.set("entries", [
-      { id: "my-1", kind: "Sylade Lore", title: "Sylade · Starlight Sanctuary Boundary", body: "Public companion presence remains untouched by engineering chaos; origin folklore & visual symbolism grow here in Mythos.", tag: "canon", updated: day() },
-      { id: "my-2", kind: "World / Setting", title: "Ridge observatory", body: "A high-pine station where cold air sharpens the constellations and paper notebooks outlast the network.", tag: "setting", updated: day() },
-    ]);
-    S.set("beats", [
-      { id: "mb-1", arc: 0, title: "Ignition above the Valley", summary: "Ordinary craft interrupted by a signal across empty spectrum.", seq: 1 },
-      { id: "mb-2", arc: 1, title: "Crossing the Pine Pass", summary: "Leaving familiar dependencies behind with only local notebooks and instruments.", seq: 2 },
-    ]);
+  /* Real canon seed (Sebastian, 2026-11-14): the pillar originally seeded INVENTED lore
+     (my-1/my-2, mb-1/mb-2). canonSeedV2 removes exactly those invented ids wherever they
+     sit and merges in Joseph's real creative canon (canon-data.js) by id — user-added
+     entries, beats and edits are never touched, and deletions stick. */
+  if (!S.get("canonSeedV2", false)) {
+    const INVENTED_E = ["my-1", "my-2"], INVENTED_B = ["mb-1", "mb-2"];
+    const CANON = window.MYTHOS_CANON || { entries: [], beats: [] };
+    const es = S.list("entries").filter((e) => !INVENTED_E.includes(e.id));
+    for (const c of CANON.entries) if (!es.some((e) => e.id === c.id)) es.push({ ...c });
+    S.set("entries", es);
+    const bs = S.list("beats").filter((b) => !INVENTED_B.includes(b.id));
+    for (const c of CANON.beats) if (!bs.some((b) => b.id === c.id)) bs.push({ ...c });
+    S.set("beats", bs);
     S.set("seededV1", true);
+    S.set("canonSeedV2", true);
   }
 
   const readAthenaeum = () => {
