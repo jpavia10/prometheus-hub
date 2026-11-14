@@ -1,7 +1,15 @@
 
 ### [2026-11-14] Pre-merge checks, money guard, shipped defaults
 - `checks.yml` runs the registry, syntax, JSON, unit proofs, the money guard, and browser proofs against this checkout on pull request and push. The storm-watch card starts empty, the homestead line uses a name stored on the device, and the hub links out to Titan without copying a collection total. Games and Athenaeum ship example notes. Shell cache `prometheus-hub-deck-d20` (main already used `d19` for the cool-core chrome).
-- Local verification: registry OK, `node --check` 136/136, JSON 62/62, unit proofs 55/55, guard OK on the clean tree and failing when `$952.19` is planted in a view, browser proofs 26/26 on `http://prometheus.test:8377/ --mock-weather`. Not deployed, so the proofs-live quote in STATUS.md is still the previous d17 run.
+- After merging main: registry OK, unit proofs `59/59`, money guard OK (a planted `$952.19` in a view fails it), browser proofs `26/26` on `http://prometheus.test:8377/ --mock-weather`. Not deployed, so the proofs-live quote is still run 43575963969.
+
+### [2026-11-14] Build d19: pearl, cyan, and lavender hub chrome
+- Retuned the core shader and sky glow off the orange sun. Enter and the dock + are pearl glass with a cyan edge. A unit test fails if a hub chrome colour token has hue 20–60. Each pillar cell keeps its own hue.
+- Replaced the five `icons/` PNGs from the pearl-flame master, dropped the `favicon.svg` link and its service-worker entry, and bumped the shell cache to `prometheus-hub-deck-d19`. After merging main: unit `59/59`, browser `26/26`. Screenshots: `artifacts/screenshots/d19/home-390x844.png`, `artifacts/screenshots/d19/home-1440x900.png`.
+
+### [2026-11-14] Grok: Icarus metric notes and Apollo SR food values
+- Sharpe, Sortino and ulcer notes on the ICA-GEM-02 20-trade sample now use the file's own sample standard deviation (54.6477) and a fresh recomputation. The worked `value` fields were already right.
+- The first 300 Apollo foods take numeric kcal, protein, fat, carb and fiber from the 2026-11-10 shipped audit, plus the fdc id that audit names. 48 descriptions it could not match keep their shipped nutrients and are tagged unmatched. Four null fiber cells were left as shipped.
 
 ### [2026-11-14] Proofs: the live run is what STATUS quotes
 - CORE-1 now counts the live destinations in `pillars.json` (the desk and paused fleet are not drawn). BACKUP-1 still requires every store the backup claims to cover; the old refusal phrase no longer matched the error `previewRestore` throws, and that was the failure. `idea:` from hub search hands the words to Athenaeum and opens it; closing the search sheet no longer cancels that navigation.

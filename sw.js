@@ -18,7 +18,7 @@ var SHELL = [
   "./deck/fonts/outfit-latin-wght-normal.woff2",
   "./kit/prometheus.css", "./kit/kit.js", "./kit/bus.js", "./kit/links.js", "./kit/stage.js",
   "./kit/fonts/outfit-latin-300-normal.woff2", "./kit/fonts/outfit-latin-400-normal.woff2", "./kit/fonts/outfit-latin-500-normal.woff2",
-  "./icons/favicon.svg", "./icons/favicon-32.png", "./icons/apple-touch-icon.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png"
+  "./icons/favicon-32.png", "./icons/apple-touch-icon.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png"
 ].concat(PILLAR_IDS.reduce(function (acc, id) {
   acc.push("./pillars/" + id + "/", "./pillars/" + id + "/index.html", "./pillars/" + id + "/pillar.json", "./pillars/" + id + "/app.css", "./pillars/" + id + "/app.js");
   if (id !== "athenaeum") acc.push("./pillars/" + id + "/stage.js");
