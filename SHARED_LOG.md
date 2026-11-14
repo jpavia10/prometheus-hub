@@ -1,4 +1,8 @@
 
+### [2026-11-14] Grok: Icarus metric notes and Apollo SR food values
+- Sharpe, Sortino and ulcer notes on the ICA-GEM-02 20-trade sample now use the file's own sample standard deviation (54.6477) and a fresh recomputation. The worked `value` fields were already right.
+- The first 300 Apollo foods take numeric kcal, protein, fat, carb and fiber from the 2026-11-10 shipped audit, plus the fdc id that audit names. 48 descriptions it could not match keep their shipped nutrients and are tagged unmatched. Four null fiber cells were left as shipped.
+
 ### [2026-11-14] Proofs: the live run is what STATUS quotes
 - CORE-1 now counts the live destinations in `pillars.json` (the desk and paused fleet are not drawn). BACKUP-1 still requires every store the backup claims to cover; the old refusal phrase no longer matched the error `previewRestore` throws, and that was the failure. `idea:` from hub search hands the words to Athenaeum and opens it; closing the search sheet no longer cancels that navigation.
 - proofs-live writes the browser run into `STATUS.md`, failed lines included, and commits only when the pass/fail set changes. The d14 and d15 notes no longer repeat a private loan quote.

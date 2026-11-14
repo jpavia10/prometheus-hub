@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Grok: metric notes on the 20-trade sample
+- Sharpe now divides by the sample standard deviation 54.6477 (the "standard deviation of P/L" row), Sortino's downside is 39.2441 net and 38.6523 gross, and the gross ulcer index is 0.7783, matching the Martin ratio note.
+- Worked values were already -0.0009, -0.0013 and 0.8082. No `value` field changed. The journal still does not trade.
+
 ### [2026-11-09] Sebastian (acting integrator, for Claude): non-Titan homework merge
 - ICA-GEM-01..06 delivered to the pillar's Drive incoming, reconciled by Gemini into the pillar MERGED_MASTER + SPEC, and verified against the original drops by Sebastian (counts; Muse's spec-check merged in full). Tasks closed in docs/agents/queues.json; board re-rendered from the hub.
 
