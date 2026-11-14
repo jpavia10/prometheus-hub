@@ -1,4 +1,4 @@
-/* Bastion v2: Frazier Park readiness (4,632 ft · CAZ336 · CAZ597 · San Andreas · PG&E PSPS), inventory weights with 25 lb / 30 lb go-bag cap,
+/* Bastion v2: the mountain community readiness (4,632 ft · CAZ336 · CAZ597 · San Andreas · PG&E PSPS), inventory weights with 25 lb / 30 lb go-bag cap,
    scenario auto-matching against packed items, seasonal mode toggle (Winter Chains/Freeze vs Summer Wildfire/PSPS), and live NWS watch. */
 (function () {
   "use strict";
@@ -21,14 +21,14 @@
     <section class="grid">
       <div class="glass span-6">
         <div class="row-actions" style="justify-content:space-between">
-          <h2>Storm watch · Frazier Park</h2>
+          <h2>Storm watch</h2>
           <button class="btn quiet small" id="b-season-btn" type="button"></button>
         </div>
         <div id="b-wx" class="stat-s">Loading National Weather Service outlook…</div>
       </div>
       <div class="glass span-6">
         <h2>Local Risk Profile (CAZ336 / CAZ597)</h2>
-        <div id="b-profile" class="stat-s">Loading Frazier Park hazard baseline…</div>
+        <div id="b-profile" class="stat-s">Loading the hazard baseline…</div>
       </div>
       <div class="glass span-12">
         <h2>Inventory &amp; 25 lb Go-Bag Weight Cap</h2>
@@ -52,7 +52,7 @@
         <div class="row-actions" style="margin-top:8px"><button class="btn" id="b-import-list" type="button">Import lines</button></div>
       </div>
       <div class="glass span-12"><h2>Readiness Checklists (Auto-Cross-Checked with Gear)</h2><div id="b-scen"></div></div>
-      <div class="glass span-12"><h2>Frazier Park NWS Alert Types</h2><div id="b-alerts"></div></div>
+      <div class="glass span-12"><h2>NWS alert types</h2><div id="b-alerts"></div></div>
     </section>`;
 
   const PB_safe_add = (ds, n) => { const d = new Date(ds + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
@@ -145,7 +145,7 @@
   fetch("./data/frazier-readiness.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
     if (!d) return;
     const p = d.place || {};
-    $("#b-profile").innerHTML = `<div class="kv"><span>Location</span><b>${esc(p.name || "Frazier Park")} · ${p.elevation_ft_usgs_epqs || 4632} ft</b></div>
+    $("#b-profile").innerHTML = `<div class="kv"><span>Location</span><b>${esc(p.name || "Set a place")}</b></div>
       <div class="kv"><span>NWS Zones</span><b>${esc((p.nws && p.nws.forecast_zone) || "CAZ336")} / ${esc((p.nws && p.nws.fire_zone) || "CAZ597")}</b></div>
       ${(d.risk_profile || []).map((r) => `<div class="kv"><span><b>${esc(r.hazard)}</b><br><span class="stat-s">${esc(r.evidence.slice(0, 100))}</span></span><b>${esc(r.level)}</b></div>`).join("")}`;
   }).catch(() => {});

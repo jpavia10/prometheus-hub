@@ -1042,7 +1042,7 @@
   },
   {
    "id": "garage",
-   "name": "Garage · 2025 Sorento Hybrid",
+   "name": "Garage",
    "kind": "capability",
    "route": "pillars/garage/",
    "state": "live",

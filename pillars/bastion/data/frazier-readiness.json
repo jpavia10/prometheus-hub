@@ -2,28 +2,28 @@
  "pack": "BASTION-GROK-frazier-readiness",
  "asOf": "2026-11-10",
  "place": {
-  "name": "Frazier Park, CA (Kern County)",
+  "name": "Mountain community",
   "lat": 34.82057,
   "lon": -118.94543,
   "elevation_ft_usgs_epqs": 4632,
-  "elevation_ft_wikipedia": 4639,
+  "elevation_ft_wikipedia": null,
   "population_2020": 2592,
   "nws": {
    "office": "HNX (Hanford/San Joaquin Valley)",
    "grid": "67,10",
-   "forecast_zone": "CAZ336 Frazier Mountain Communities",
+   "forecast_zone": "CAZ336 mountain communities",
    "fire_zone": "CAZ597 Fort Tejon",
    "county": "CAC029 Kern",
    "radar": "KVTX",
    "source": "https://api.weather.gov/points/34.8206,-118.9454"
   },
   "active_alerts_at_check": 0,
-  "utility": "PG&E (Lebec/Frazier Park PSPS events: Mountain Enterprise 2020-09-08 https://mountainenterprise.com/story/pg-kern-opens-fp-cooling-center/ ; 23ABC \"Power still out for some in Lebec, Fraizer Park areas due to PG&E shut offs\")"
+  "utility": "PG&E (Lebec/the mountain community PSPS events: Mountain Enterprise 2020-09-08 https://mountainenterprise.com/story/pg-kern-opens-fp-cooling-center/ ; 23ABC \"Power still out for some in Lebec, the mountain community areas due to PG&E shut offs\")"
  },
  "risk_profile": [
   {
    "hazard": "Wildfire / PSPS",
-   "evidence": "CAZ597: {'Red Flag Warning': 19, 'Fire Weather Watch': 11} (2019-10-10→2026-10-15); PG&E de-energized Lebec Sept 8 2020 with a Frazier Mountain Park cooling center opened.",
+   "evidence": "CAZ597: {'Red Flag Warning': 19, 'Fire Weather Watch': 11} (2019-10-10→2026-10-15); PG&E de-energized Lebec Sept 8 2020 with a the mountain park cooling center opened.",
    "level": "high"
   },
   {
@@ -298,7 +298,7 @@
    },
    "definition": "\"A flash flood is imminent or occurring... move immediately to high ground.\"",
    "definition_source": "https://www.weather.gov/safety/flood-watch-warning",
-   "frazier_action": "County-wide polygon count (not Frazier-specific). Never drive through water."
+   "frazier_action": "County-wide polygon count (not place-specific). Never drive through water."
   },
   {
    "alert": "Extreme Heat Warning / Heat Advisory",
@@ -329,7 +329,7 @@
    },
    "definition": "Extreme Heat Warning: \"extremely dangerous heat conditions are expected or occurring.\" (NWS renamed Excessive Heat → Extreme Heat; both appear in history.)",
    "definition_source": "https://www.weather.gov/safety/heat-ww",
-   "frazier_action": "Jul/Aug. PSPS + heat = use cooling center (Kern opened Frazier Mountain Park cooling center during the Sept 2020 PSPS)."
+   "frazier_action": "Jul/Aug. PSPS + heat = use cooling center (Kern opened the mountain park cooling center during the Sept 2020 PSPS)."
   }
  ],
  "alert_history": {
@@ -536,7 +536,7 @@
  },
  "channels": [
   {
-   "name": "NWS forecast + alerts for Frazier Mountain Communities (zone CAZ336, office HNX Hanford)",
+   "name": "NWS forecast + alerts for mountain communities (zone CAZ336, office HNX Hanford)",
    "url": "https://forecast.weather.gov/MapClick.php?lat=34.8206&lon=-118.9454",
    "api": "https://api.weather.gov/alerts/active?zone=CAZ336"
   },
@@ -643,7 +643,7 @@
     "item": "Maps",
     "bastion_72h_has": "—",
     "standard_says": "Map(s) of the area",
-    "frazier_verdict": "GAP: paper map of I-5/Frazier Mtn Park Rd/Lockwood Valley Rd egress; write Genasys zone on it.",
+    "frazier_verdict": "GAP: paper map of I-5/the mountain road/Lockwood Valley Rd egress; write Genasys zone on it.",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    },
    {

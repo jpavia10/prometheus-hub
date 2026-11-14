@@ -1,1 +1,1 @@
-deck d17 2026-11-13 overhaul
+deck d20 2026-11-14 pre-merge checks and privacy sweep

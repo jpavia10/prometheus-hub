@@ -19,7 +19,7 @@ export const PILLARS = [
   P("odyssey", "Odyssey · Trips & Away Mode", "Odyssey", "Trips, and what the house needs while away.", "pillars/odyssey/", 186, "compass"),
   P("privacy", "Privacy · CA DROP", "Privacy", "Shrinking the public footprint.", "pillars/privacy/", 244, "lock"),
   P("argus", "Argus Album", "Argus", "Every picture the pillars use, in one album.", "pillars/argus/", 166, "eye"),
-  P("games", "Ludus Arcade", "Games", "Games: the library in your own words, and the next session.", "pillars/games/", 330, "pad"),
+  P("games", "Ludus Arcade", "Games", "Games: an example library, your notes, and the next session.", "pillars/games/", 330, "pad"),
   P("forge", "Forge", "Forge", "AI work: every task handed to Grok, Gemini, Muse and ChatGPT, and how each one scores.", "pillars/forge/", 18, "forge"),
   P("foundry", "Foundry", "Foundry", "Inventions: ideas turned into builds, stage by stage.", "pillars/foundry/", 192, "gear"),
   P("observatory", "Observatory", "Observatory", "What is happening in the subjects you think about, with sources.", "pillars/observatory/", 250, "scope"),

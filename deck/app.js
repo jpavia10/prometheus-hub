@@ -15,7 +15,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d17";
+export const BUILD = "d20";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -168,7 +168,7 @@ function openSearch() {
     /* "idea: …" is Athenaeum's manifest command, added with the other commands below.
        It hands the words to the pillar and opens the capture form. Writing the record here skipped that handoff, so search never left the hub. */
 
-    /* 3. Garage fuel: fuel 11.4gal $48.20 14320mi */
+    /* 3. Garage fuel: fuel 11.4gal 48.20 14320mi */
     const fuelM = q.match(/^fuel\s+(.+)$/i);
     if (fuelM) {
       const rest = fuelM[1];
@@ -179,7 +179,7 @@ function openSearch() {
       if (gal > 0 && cost > 0) {
         items.push({
           title: `Garage fuel: ${gal} gal · $${cost.toFixed(2)}${odo ? ` @ ${odo.toLocaleString()} mi` : ""}`,
-          sub: "Save to 2025 Sorento fuel log + Money Bus",
+          sub: "Save to the vehicle fuel log and the money bus",
           tone: "add", icon: "plus",
           run: () => {
             const fills = nlRead("prometheus.garage.fuel", []);
@@ -187,7 +187,8 @@ function openSearch() {
             nlWrite("prometheus.garage.fuel", fills);
             if (odo > (nlRead("prometheus.garage.odometer", 0) || 0)) nlWrite("prometheus.garage.odometer", odo);
             const mb = nlRead("prometheus.bus.money", []);
-            mb.push({ id: "qm_" + Date.now().toString(36), kind: "fuel", amount: -Math.abs(cost), date: tday, source: "garage", label: `Sorento Fuel · ${gal} gal` });
+            const named = (() => { try { const v = JSON.parse(localStorage.getItem("prometheus.garage.vehicle") || "null"); return v && String(v.name || "").trim(); } catch (e) { return ""; } })();
+            mb.push({ id: "qm_" + Date.now().toString(36), kind: "fuel", amount: -Math.abs(cost), date: tday, source: "garage", label: `${named || "Vehicle"} fuel · ${gal} gal` });
             nlWrite("prometheus.bus.money", mb);
             nlEvent("fuel.logged", "garage", `${gal} gal $${cost.toFixed(2)}`);
             toast(`Garage fuel logged ($${cost.toFixed(2)})`); render(false);

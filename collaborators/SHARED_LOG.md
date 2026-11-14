@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Pre-merge checks and shipped defaults
+- Checks run before a merge, the money guard rejects a planted amount in a view, and the hub no longer ships a town, an elevation, a vehicle model, or a collection total. Games and Athenaeum notes are examples. Cache d20. Local browser proofs 26/26. The live proofs-live quote is still the previous run.
+
 ### [2026-11-14] Proofs quote the live run
 - CORE-1 reads its pillar count from `pillars.json`. The backup proof matches the stores `backupAll` covers and the refusal it actually throws. Hub search `idea:` opens Athenaeum with the words filled in, and proofs-live writes that run into `STATUS.md`, failures included.
 

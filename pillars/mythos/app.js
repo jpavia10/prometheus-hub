@@ -11,7 +11,7 @@
   if (!S.get("seededV1", false) && !S.list("entries").length) {
     S.set("entries", [
       { id: "my-1", kind: "Sylade Lore", title: "Sylade · Starlight Sanctuary Boundary", body: "Public companion presence remains untouched by engineering chaos; origin folklore & visual symbolism grow here in Mythos.", tag: "canon", updated: day() },
-      { id: "my-2", kind: "World / Setting", title: "Frazier Elevation Observatory", body: "High-pine ridge station above the Tejon fault line where cold winter air sharpens constellations and analog notebooks outlast networks.", tag: "setting", updated: day() },
+      { id: "my-2", kind: "World / Setting", title: "Ridge observatory", body: "A high-pine station where cold air sharpens the constellations and paper notebooks outlast the network.", tag: "setting", updated: day() },
     ]);
     S.set("beats", [
       { id: "mb-1", arc: 0, title: "Ignition above the Valley", summary: "Ordinary craft interrupted by a signal across empty spectrum.", seq: 1 },

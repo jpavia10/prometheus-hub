@@ -1,4 +1,4 @@
-/* Garage v2: 2025 Sorento Hybrid maintenance + fuel + Money Bus fuel expense publishing + Frazier Park Trip Cost Estimator. */
+/* Garage v2: hybrid SUV maintenance + fuel + Money Bus fuel expense publishing + the mountain community Trip Cost Estimator. */
 (function () {
   "use strict";
   const { $, h, money, num, day, toast, store, download, pickFile, field, G } = PK;
@@ -35,6 +35,7 @@
   }
 
   const odo = () => S.get("odometer", 0);
+  const vehicleName = () => { const v = S.get("vehicle", null); const n = v && String(v.name || "").trim(); return n || "Vehicle"; };
   const lastFor = (name) => S.list("history").filter((x) => x.service === name).sort((a, b) => b.date.localeCompare(a.date))[0] || null;
   const fallbackAddMonths = (ds, m) => { const d = new Date(ds + "T12:00:00"); d.setMonth(d.getMonth() + m); return d.toISOString().slice(0, 10); };
   const getGarageMath = () => (typeof window !== "undefined" && window.GARAGE) || (typeof globalThis !== "undefined" && globalThis.GARAGE) || {};
@@ -62,7 +63,7 @@
     const g = getGarageMath();
     const fs = g.fuelStats ? g.fuelStats(fuelEntries) : { mpg: null, costPerMile: null };
     const usedLogged = fs.costPerMile != null && fs.mpg != null;
-    const mpg = usedLogged ? fs.mpg : 34; // Sorento HEV AWD ~34 MPG combined EPA reference when <2 fills logged
+    const mpg = usedLogged ? fs.mpg : 34; // hybrid SUV AWD ~34 MPG combined EPA reference when <2 fills logged
     const costPerMile = usedLogged ? fs.costPerMile : (gasPrice / mpg);
     const gallons = mpg > 0 ? miles / mpg : 0;
     const cost = miles * costPerMile;
@@ -111,8 +112,9 @@
 
   app.innerHTML = `
     <section class="grid">
-      <div class="glass span-6"><h2>2025 Sorento Hybrid · Odometer &amp; Economy</h2>
+      <div class="glass span-6"><h2>Odometer &amp; economy</h2>
         <form class="form" id="g-odo">
+          <label class="f">Name on this device<input name="vehicle" maxlength="40" placeholder="Vehicle"></label>
           <label class="f">Current odometer (mi)<input name="odometer" type="number" min="0" step="1"></label>
           <label class="f">As of<input name="date" type="date"></label>
           <button class="btn" type="submit">Update</button>
@@ -120,12 +122,12 @@
         <div id="g-fuel-sum" style="margin-top:10px"></div>
       </div>
 
-      <div class="glass lit span-6"><h2>Frazier Park Trip Cost Estimator</h2>
+      <div class="glass lit span-6"><h2>Trip cost</h2>
         <form class="form" id="g-trip">
-          <label class="f">Corridor preset<select id="g-route">
-            <option value="84">Frazier Park &harr; Bakersfield (84 mi RT)</option>
-            <option value="116">Frazier Park &harr; LA / Sylmar (116 mi RT)</option>
-            <option value="28">Frazier Park &harr; Pine Mtn Club (28 mi RT)</option>
+          <label class="f">Distance preset<select id="g-route">
+            <option value="84">Round trip · 84 mi</option>
+            <option value="116">Round trip · 116 mi</option>
+            <option value="28">Round trip · 28 mi</option>
             <option value="custom">Custom round-trip miles</option>
           </select></label>
           <label class="f">Round-trip miles<input id="g-trip-mi" type="number" min="1" value="84"></label>
@@ -135,7 +137,7 @@
       </div>
 
       <div class="glass span-12"><h2>Maintenance (Severe Mountain Schedule)</h2><div id="g-services"></div>
-        <p class="note">${KIA ? `Intervals from Kia's 2025 Sorento Hybrid Owner's Manual (severe-usage schedule Condition G for Frazier Park).` : "Starter intervals."} Logging a service resets both clocks and republishes the due date.</p>
+        <p class="note">${KIA ? "Intervals from the hybrid SUV maintenance table (severe mountain-road schedule, or the normal table)." : "Starter intervals."} Logging a service resets both clocks and republishes the due date.</p>
         ${KIA ? `<div class="row-actions" style="margin-bottom:10px"><button class="btn quiet small" id="g-kia-severe" type="button">Load Kia severe schedule</button><button class="btn quiet small" id="g-kia-normal" type="button">Load Kia normal schedule</button></div>` : ""}
         <form class="form" id="g-addsvc">
           <label class="f wide">New service<input name="name" required maxlength="80"></label>
@@ -180,7 +182,7 @@
         <div id="g-paper-list" style="margin-top:10px"></div>
       </div>
 
-      <div class="glass span-6"><h2>1-Tap Sorento Resale Dossier</h2>
+      <div class="glass span-6"><h2>Resale dossier</h2>
         <p class="sub">Compile odometer, verified MPG &amp; cost-per-mile, completed service receipts, and open factory intervals into a clean buyer-ready dossier.</p>
         <div class="row-actions" style="margin-top:8px">
           <button class="btn" id="g-dossier-btn" type="button">Export Resale Dossier (.txt)</button>
@@ -192,18 +194,18 @@
   function paintTrip() {
     const est = estimateTrip();
     $("#g-trip-out").innerHTML = `<div class="kv"><span>Estimated fuel for ${num(est.miles)} mi</span><b>${money(est.cost)}</b></div>
-      <div class="stat-s">${est.source === "logged" ? `Using your logged ${num(est.mpg, 1)} MPG (${money(est.costPerMile, 3)}/mi)` : `Using ${est.mpg} MPG Sorento HEV EPA estimate @ ${money(est.gasPrice)}/gal (${money(est.costPerMile, 3)}/mi)`}</div>`;
+      <div class="stat-s">${est.source === "logged" ? `Using your logged ${num(est.mpg, 1)} MPG (${money(est.costPerMile, 3)}/mi)` : `Using ${est.mpg} MPG hybrid SUV EPA estimate @ ${money(est.gasPrice)}/gal (${money(est.costPerMile, 3)}/mi)`}</div>`;
   }
 
   function paint() {
     const now = { date: day(), odometer: odo() };
     const pb = getPB();
     const g = getGarageMath();
-    $("#g-odo").odometer.value = odo() || ""; $("#g-odo").date.value = day();
+    $("#g-odo").odometer.value = odo() || ""; $("#g-odo").date.value = day(); $("#g-odo").vehicle.value = S.get("vehicle", null)?.name || "";
     const svcs = S.get("services", []);
     $("#g-services").innerHTML = svcs.map((it) => {
       const st = g.dueStatus(it, lastFor(it.name), now);
-      if (pb && pb.deadlines && st.dueDate && st.state !== "unknown") pb.deadlines.publish({ title: "Sorento: " + it.name, date: st.dueDate, source: "garage", kind: "service", ref: it.id });
+      if (pb && pb.deadlines && st.dueDate && st.state !== "unknown") pb.deadlines.publish({ title: vehicleName() + ": " + it.name, date: st.dueDate, source: "garage", kind: "service", ref: it.id });
       const nextDueDate = computeNextDueDate(it, st, now.date);
       const cls = st.state === "overdue" ? "over" : st.state === "due soon" ? "soon" : "";
       const detail = st.state === "unknown"
@@ -221,7 +223,7 @@
         toast("No due date yet — log this service or set a month interval first");
         return;
       }
-      const title = "Sorento: " + it.name;
+      const title = vehicleName() + ": " + it.name;
       const bus = getPB();
       if (bus && bus.deadlines) bus.deadlines.publish({ title, date: nextDueDate, source: "garage", kind: "service", ref: it.id });
       if (bus && bus.events) bus.events.publish({ type: "deadline:garage", pillar: "garage", title });
@@ -255,21 +257,21 @@
   const loadKia = (which) => { if (!KIA || !confirm(`Replace the service list with Kia's ${which} schedule? Logged history stays.`)) return; S.set("services", kiaSet(which)); toast(`Kia ${which} schedule loaded`); paint(); };
   if (KIA) { $("#g-kia-severe").onclick = () => loadKia("severe"); $("#g-kia-normal").onclick = () => loadKia("normal"); }
 
-  $("#g-odo").addEventListener("submit", (e) => { e.preventDefault(); S.set("odometer", +e.target.odometer.value || 0); toast("Odometer updated"); paint(); });
+  $("#g-odo").addEventListener("submit", (e) => { e.preventDefault(); S.set("odometer", +e.target.odometer.value || 0); S.set("vehicle", { name: e.target.vehicle.value.trim() }); toast("Odometer updated"); paint(); });
   $("#g-addsvc").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; const svcs = S.get("services", []);
     svcs.push({ id: Math.random().toString(36).slice(2, 8), name: f.name.value.trim(), miles: f.miles.value ? +f.miles.value : null, months: f.months.value ? +f.months.value : null });
     S.set("services", svcs); f.reset(); paint(); });
   $("#g-log").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
     S.add("history", { service: f.service.value, date: f.date.value, odometer: +f.odometer.value || 0, cost: +f.cost.value || 0, notes: f.notes.value.trim() });
     if (+f.odometer.value > odo()) S.set("odometer", +f.odometer.value);
-    if (window.PB && +f.cost.value > 0) PB.money.add({ kind: "service", amount: -Math.abs(+f.cost.value), date: f.date.value, source: "garage", label: "Sorento: " + f.service.value });
+    if (window.PB && +f.cost.value > 0) PB.money.add({ kind: "service", amount: -Math.abs(+f.cost.value), date: f.date.value, source: "garage", label: vehicleName() + ": " + f.service.value });
     toast("Service logged"); paint(); });
   $("#g-fuel").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
     const cost = +f.cost.value || 0;
     const rec = { date: f.date.value, odometer: +f.odometer.value || 0, gallons: +f.gallons.value || 0, cost, busLogged: !!f.toBus.checked };
     S.add("fuel", rec);
     if (+f.odometer.value > odo()) S.set("odometer", +f.odometer.value);
-    if (window.PB && rec.busLogged && cost > 0) PB.money.add({ kind: "fuel", amount: -Math.abs(cost), date: f.date.value, source: "garage", label: `Sorento Fuel · ${num(rec.gallons, 1)} gal` });
+    if (window.PB && rec.busLogged && cost > 0) PB.money.add({ kind: "fuel", amount: -Math.abs(cost), date: f.date.value, source: "garage", label: `${vehicleName()} fuel · ${num(rec.gallons, 1)} gal` });
     f.reset(); f.date.value = day(); toast("Fill logged"); paint(); });
 
   $("#g-log").date.value = day(); $("#g-fuel").date.value = day();
@@ -279,7 +281,7 @@
     const box = $("#g-paper-list"); if (box) {
       box.innerHTML = "";
       docs.forEach((p) => {
-        if (window.PB && p.due) PB.deadlines.publish({ title: `Sorento: ${p.title}`, date: p.due, source: "garage", kind: p.kind || "vehicle", ref: "pap_" + p.id });
+        if (window.PB && p.due) PB.deadlines.publish({ title: `${vehicleName()}: ${p.title}`, date: p.due, source: "garage", kind: p.kind || "vehicle", ref: "pap_" + p.id });
         const daysLeft = Math.round((new Date(p.due + "T12:00:00") - new Date(t + "T12:00:00")) / 864e5);
         box.append(h("div.kv", null,
           h("span", null, h("b", { className: daysLeft <= 14 ? "warn" : "" }, p.title), ` · ${p.kind || "doc"} · due ${p.due} (${daysLeft}d)`),
@@ -292,7 +294,7 @@
     const fs = GARAGE.fuelStats(S.list("fuel"));
     const dossier = [
       `VEHICLE MAINTENANCE & COMPLIANCE DOSSIER — ${t}`,
-      `Vehicle: 2025 Kia Sorento Hybrid (HEV)`,
+      `Vehicle: ${vehicleName()}`,
       `Current Odometer: ${num(odo())} mi`,
       `Verified Fuel Span: ${fs.mpg ? `${num(fs.mpg, 1)} MPG (${money(fs.costPerMile, 3)}/mi over ${num(fs.miles)} mi)` : "Collecting baseline fills"}`,
       `Completed Services (${hist.length}):`,
@@ -308,7 +310,7 @@
     S.add("paperwork", { title: f.title.value.trim(), due: f.due.value, kind: f.kind.value });
     f.reset(); toast("Paperwork deadline tracked"); paintPaperworkAndDossier();
   });
-  $("#g-dossier-btn").onclick = () => download(`sorento_resale_dossier_${day()}.txt`, paintPaperworkAndDossier());
+  $("#g-dossier-btn").onclick = () => download(`vehicle_dossier_${day()}.txt`, paintPaperworkAndDossier());
   paintPaperworkAndDossier();
 
   $("#export").onclick = () => download(`garage_${day()}.json`, S.dump());

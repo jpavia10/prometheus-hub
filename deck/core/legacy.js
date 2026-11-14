@@ -100,15 +100,8 @@ export function pillarStats(today) {
   for (const r of read("prometheus.bus.deadlines", [])) { if (!r || r.done || r.date < today || r.source === "kairos-fixed") continue; const s = at(pid(r.source)); if (!s.next || r.date < s.next.date) s.next = { date: r.date, title: r.title }; }
   return out;
 }
-/** Titan's ledger as published by its own pipeline. null when it cannot be reached (offline, or a local test server). */
+/** The hub links out to Titan. It does not copy the collection total, metal weights, or ledger into this page. */
 let titanAsked = null;
 export function titan() {
-  return titanAsked || (titanAsked = (async () => {
-    try { const c = JSON.parse(sessionStorage.getItem("prom.deck.titan") || "null"); if (c && Date.now() - c.at < 30 * 60000) return c; } catch (e) { /* no cache */ }
-    try { if (/^(localhost|127\.0\.0\.1)$/i.test(location.hostname)) return null; const base = new URL("/titan-reliquary-preview/", location.origin).href; const r = await fetch(base + "data/index.json", { cache: "no-cache" }); if (!r.ok) return null; const d = await r.json();
-      const flips = d.flips || []; const newest = flips.filter((c) => c.thumb).sort((a, b) => String(b.added).localeCompare(String(a.added)) || String(b.scan).localeCompare(String(a.scan))).slice(0, 4).map((c) => ({ label: c.label, img: base + c.thumb.replace("photos/p1/", "photos/cut/") }));
-      const out = { at: Date.now(), total: d.board && d.board.grand, pieces: d.counts && d.counts.vault, flips: flips.length, countries: d.counts && d.counts.countries, ag: d.metals && d.metals.oz && d.metals.oz.ag, au: d.metals && d.metals.oz && d.metals.oz.au, newest, url: base };
-      try { sessionStorage.setItem("prom.deck.titan", JSON.stringify(out)); } catch (e) { /* fine */ } return out;
-    } catch (e) { return null; }
-  })());
+  return titanAsked || (titanAsked = Promise.resolve(null));
 }

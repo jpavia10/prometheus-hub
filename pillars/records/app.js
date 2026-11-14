@@ -13,7 +13,7 @@
     { title: "IRS Federal Return / Extension (Form 1040 / 4868)", category: "financial", issuer: "IRS", due: "2026-04-15", where: "Drive / Taxes 2026", serial: "1040-2026", notes: "7-day tax shield check" },
     { title: "CA Franchise Tax Board (Form 540)", category: "financial", issuer: "CA FTB", due: "2026-04-15", where: "Drive / Taxes 2026", serial: "540-2026", notes: "State parity deadline" },
     { title: "Kern County Property Tax — 1st Installment", category: "home", issuer: "Kern County Treasurer", due: "2026-12-10", where: "Drive / House", serial: "KERN-PROP-26", notes: "Delinquent after 5 PM" },
-    { title: "TX -> CA DMV Registration & Title Renewal", category: "vehicle", issuer: "CA DMV", due: "2026-06-30", where: "Glovebox + Drive", serial: "SORENTO-2025", notes: "2025 Sorento Hybrid smog/VIN verify" },
+    { title: "Registration and title renewal", category: "vehicle", issuer: "DMV", due: "2026-06-30", where: "Glovebox", serial: "VEHICLE-SAMPLE", notes: "Example vehicle record. Replace it with your own." },
     { title: "Violet TK Enrollment / Shot Record Packet", category: "school", issuer: "El Tejon / District", due: "2026-08-01", where: "Binder + Drive", serial: "TK-IMMUN-26", notes: "Flags urgent inside 7 days" }
   ];
 
@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="glass span-6"><h2>Instant Serial &amp; Vault Search</h2>
-        <form class="form"><label class="f wide">Search title, serial #, issuer, location<input id="r-q" type="search" placeholder="SN-…, Yamaha, Sorento, TK…"></label></form>
+        <form class="form"><label class="f wide">Search title, serial, issuer, location<input id="r-q" type="search" placeholder="Serial, issuer, or place"></label></form>
         <div class="stat-s" id="r-count" style="margin-top:8px"></div>
       </div>
       <div class="glass span-6"><h2>Register a Document or Warranty</h2>
