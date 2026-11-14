@@ -14,6 +14,7 @@ import * as wx from "./core/weather.js";
 import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
+import { startShellUpdates } from "../kit/update.js";
 
 export const BUILD = "d20";
 const params = new URLSearchParams(location.search);
@@ -315,7 +316,7 @@ async function boot() {
   await render(false);
   document.documentElement.classList.add("ready");
   reloadWeather(false);
-  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("./sw.js").catch(() => {});
+  startShellUpdates();
 }
 window.__deck = { store, clock, ctx, state, BUILD, reach: { searchRecords, commands } };                               // for the proofs and for the curious
 boot();

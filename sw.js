@@ -1,39 +1,27 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
-   Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline. */
-var CACHE = "prometheus-hub-deck-d20";
-var PILLAR_IDS = [
-  "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
-  "piano", "bastion", "athenaeum", "odyssey", "privacy", "argus", "games", "forge", "foundry",
-  "observatory", "kin", "sylade", "aether", "polis", "mythos", "continuity"
-];
-var SHELL = [
-  "./", "./index.html", "./manifest.webmanifest", "./pillars.json",
-  "./pillars/kairos/methods.js",
-  "./deck/deck.css", "./deck/app.js", "./deck/caps.js", "./deck/pillars.js",
-  "./deck/core/legacy.js", "./deck/core/fx.js", "./deck/core/reach.js",
-  "./deck/core/store.js", "./deck/core/dates.js", "./deck/core/ui.js", "./deck/core/feeds.js", "./deck/core/atmo.js", "./deck/core/weather.js", "./deck/core/ics.js",
-  "./deck/models/time.js", "./deck/models/money.js", "./deck/models/profile.js",
-  "./deck/views/picture.js", "./deck/views/parts.js", "./deck/views/orrery.js", "./deck/views/time.js", "./deck/views/money.js", "./deck/views/system.js",
-  "./deck/data/focus.js", "./deck/data/demo.js", "./deck/data/money-words.js", "./deck/data/fixed-dates.json", "./deck/data/issuers.json", "./deck/data/offers.json", "./deck/data/payoff-cases.json",
-  "./deck/fonts/outfit-latin-wght-normal.woff2",
-  "./kit/prometheus.css", "./kit/kit.js", "./kit/bus.js", "./kit/links.js", "./kit/stage.js",
-  "./kit/fonts/outfit-latin-300-normal.woff2", "./kit/fonts/outfit-latin-400-normal.woff2", "./kit/fonts/outfit-latin-500-normal.woff2",
-  "./icons/favicon-32.png", "./icons/apple-touch-icon.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png"
-].concat(PILLAR_IDS.reduce(function (acc, id) {
-  acc.push("./pillars/" + id + "/", "./pillars/" + id + "/index.html", "./pillars/" + id + "/pillar.json", "./pillars/" + id + "/app.css", "./pillars/" + id + "/app.js");
-  if (id !== "athenaeum") acc.push("./pillars/" + id + "/stage.js");
-  return acc;
-}, [])).concat([
-  "./pillars/athenaeum/vault.js", "./pillars/athenaeum/ideas-seed.js", "./pillars/athenaeum/history-seed.js",
-  "./pillars/athenaeum/js/app.js", "./pillars/athenaeum/js/sky.js", "./pillars/athenaeum/js/model.js", "./pillars/athenaeum/data/cause-event-consequence.json"
-]);
+   Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline.
+   The url list is generated (sw-precache.js). A waiting worker stays waiting until the page's Update ready chip asks it to take over. */
+importScripts("./sw-precache.js");
+var CACHE = "prometheus-hub-deck-d21";
+var SHELL = self.PRECACHE || [];
+
+function addAll(cache, urls) {
+  var queue = urls.slice();
+  function pump() {
+    if (!queue.length) return Promise.resolve();
+    var url = queue.shift();
+    return cache.add(url).catch(function () { return null; }).then(pump);
+  }
+  var workers = [];
+  for (var i = 0; i < 6; i++) workers.push(pump());
+  return Promise.all(workers);
+}
 
 self.addEventListener("install", function (event) {
-  event.waitUntil(
-    caches.open(CACHE).then(function (cache) {
-      return Promise.allSettled(SHELL.map(function (url) { return cache.add(url); }));
-    }).then(function () { return self.skipWaiting(); })
-  );
+  event.waitUntil(caches.open(CACHE).then(function (cache) { return addAll(cache, SHELL); }));
+});
+self.addEventListener("message", function (event) {
+  if (event.data && event.data.type === "SKIP_WAITING") self.skipWaiting();
 });
 self.addEventListener("activate", function (event) {
   event.waitUntil(caches.keys().then(function (keys) {

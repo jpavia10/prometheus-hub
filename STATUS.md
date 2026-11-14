@@ -43,6 +43,11 @@ PASS DECK-2  No script errors during the run  ::  none; the browser skipped the 
 
 The quote above is the last proofs-live run against the deployed site (run 43575963969). It is not a result for the checkout below.
 
+**Offline shell (cache `prometheus-hub-deck-d21`, `BUILD` still `d20`):**
+- `sw-precache.js` is generated from `pillars.json` and each local pillar's `index.html` script, style, and data references (`node tools/registry/precache.mjs`, also written by `tools/registry/sync.mjs`). `sw.js` imports it with `importScripts`. The list has 246 urls, including Apollo `foods.js` / `exercises.js` / `lookup.js`, Piano `music.js` / `standards.js`, Hearth `data/reference.js`, and Privacy `brokers-data.js`. Titan and Midas are not listed. `node tools/registry/validate.mjs` and the precache step in `checks.yml` fail when the file is stale.
+- Install no longer calls `skipWaiting()`. A waiting worker shows an **Update ready** chip (pearl glass, cyan edge). A tap posts `SKIP_WAITING` and reloads.
+- **Verified locally after this checkout, not on the live site:** registry `REGISTRY_OK`, precache `PRECACHE_OK` (246 urls, 25 local), `node --test proofs/unit/*.test.mjs` (`62/62` pass, `0` failed, `0` skipped), money guard `GUARD_OK`, and `python3 proofs/run.py http://prometheus.test:8377/ --mock-weather` (`28/28` pass, `0` failed). OFFLINE-1 cached `prometheus-hub-deck-d21` (246 urls, Apollo foods present) and opened all 25 local pillars with the network cut and no script errors. UPDATE-1 showed the chip (`border rgb(159, 212, 230)`, pill radius) and a tap left the cache `prometheus-hub-deck-d21b` with the chip gone. Screenshot: `artifacts/screenshots/d21/update-ready-390x844.png`.
+
 Build **d20** · 2026-11-14 · not deployed yet
 
 **Pre-merge checks and a privacy sweep of shipped defaults (d20):**

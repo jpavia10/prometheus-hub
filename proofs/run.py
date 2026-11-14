@@ -10,6 +10,7 @@ NOW = "2026-11-20T09:00"
 # The core draws every live destination in the registry. The hub desk is the centre, and paused fleet is not drawn.
 _registry = json.loads((pathlib.Path(__file__).resolve().parents[1] / "pillars.json").read_text())
 CORE_IDS = [p["id"] for p in _registry["pillars"] if p.get("state") == "live" and p.get("hostingType") != "desk"]
+LOCAL_PILLARS = [p for p in _registry["pillars"] if p.get("state") == "live" and p.get("hostingType") == "local"]
 results = []
 def proof(pid, name, ok, detail): results.append({"id": pid, "name": name, "pass": bool(ok), "detail": detail}); print(("PASS " if ok else "FAIL ") + pid + "  " + name + "  ::  " + detail)
 
@@ -243,6 +244,117 @@ with sync_playwright() as p:
 
     skipped = [e for e in errs if "ViewTransition opt-in disabled" in e]; errs = [e for e in errs if e not in skipped]   # the browser dropping its own page-to-page morph is reported, not failed: no script of ours is involved and the page still lands
     proof("DECK-2", "No script errors during the run", not errs, ("; ".join(errs[:4]) or "none") + (f"; the browser skipped the page-to-page morph {len(skipped)} time(s) (open item: cause not found)" if skipped else ""))
+
+    # OFFLINE-1: the generated precache opens every local pillar with the network cut.
+    # UPDATE-1: a second deploy of sw.js waits, and the pearl-glass chip reloads on tap.
+    from urllib.parse import urlparse as _urlparse
+    _u = _urlparse(URL)
+    SHELL = f"http://127.0.0.1:{_u.port or 80}/" if (_u.hostname or "") in ("127.0.0.1", "localhost", "prometheus.test") else URL
+    DATA_JS = {
+        "apollo": "Array.isArray(window.APOLLO_FOODS) && window.APOLLO_FOODS.length > 50 && Array.isArray(window.APOLLO_EXERCISES) && window.APOLLO_EXERCISES.length > 10",
+        "piano": "!!(window.PIANO_MUSIC && typeof window.PIANO_MUSIC.chord === 'function') && Array.isArray(window.BOSSA_STANDARDS) && window.BOSSA_STANDARDS.length > 5",
+        "hearth": "Array.isArray(window.HEARTH_CHECKS) && window.HEARTH_CHECKS.length > 20 && Array.isArray(window.HEARTH_CATEGORIES) && window.HEARTH_CATEGORIES.length > 20",
+        "privacy": "!!window.BROKER_OPTOUTS && Object.keys(window.BROKER_OPTOUTS).length > 5",
+    }
+    def _abort_external(ctx):
+        for pat in ("https://api.open-meteo.com/**", "https://api.weather.gov/**", "https://hn.algolia.com/**", "**/titan-reliquary-preview/**"):
+            ctx.route(pat, lambda route: route.abort())
+    try:
+        c_off = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US", service_workers="allow")
+        _abort_external(c_off)
+        hpage = c_off.new_page()
+        hpage.goto(SHELL, wait_until="load", timeout=30000)
+        hpage.wait_for_selector(".reactor .hex", timeout=20000)
+        hpage.wait_for_function("() => !!(navigator.serviceWorker && navigator.serviceWorker.controller)", timeout=120000)
+        cached = hpage.evaluate("""async () => { const names = await caches.keys(); const name = names.find((n) => n.indexOf('prometheus-hub-') === 0); if (!name) return { names, n: 0, foods: false };
+          const keys = await (await caches.open(name)).keys(); return { name, n: keys.length, foods: keys.some((k) => k.url.indexOf('pillars/apollo/foods.js') !== -1) }; }""")
+        c_off.set_offline(True)
+        canary = hpage.evaluate("""async () => { try { const r = await fetch(new URL('__offline_canary__?n=' + Date.now(), location.href).href, { cache: 'no-store' }); return { threw: false, status: r.status, onLine: navigator.onLine }; }
+          catch (e) { return { threw: true, onLine: navigator.onLine }; } }""")
+        bad_off = []
+        opened = []
+        for pillar in LOCAL_PILLARS:
+            route = pillar["route"]
+            pid = route.strip("/").split("/")[-1]
+            pg_off = c_off.new_page()
+            mine = []
+            pg_off.on("pageerror", lambda e, mine=mine: mine.append(str(e)[:140]))
+            try:
+                pg_off.goto(SHELL + route, wait_until="load", timeout=30000)
+                pg_off.wait_for_timeout(400)
+                got = pg_off.evaluate("""async (expr) => {
+                  const srcs = [...document.querySelectorAll('script[src], link[rel=stylesheet]')].map((el) => el.src || el.href).filter((u) => u && u.startsWith(location.origin));
+                  const missing = [];
+                  for (const u of srcs) { if (!(await caches.match(u))) missing.push(u.replace(location.origin, '')); }
+                  let data = true;
+                  if (expr) { try { data = !!eval(expr); } catch (e) { data = false; } }
+                  return { pillar: document.body.dataset.pillar || '', shell: !!document.querySelector('.shell'), missing, data };
+                }""", DATA_JS.get(pid))
+            except Exception as e:
+                got = {"pillar": "", "shell": False, "missing": [], "data": False}
+                mine.append("did not load: " + str(e)[:80])
+            if mine or not got["shell"] or not got["pillar"] or got["missing"] or not got["data"]:
+                bad_off.append(f"{pid}: pillar={got['pillar']!r} shell={got['shell']} data={got['data']} missing={got['missing'][:3]} err={mine[:1]}")
+            else:
+                opened.append(pid)
+            pg_off.close()
+        proof("OFFLINE-1", "With the network cut, all 25 local pillars open from the generated precache and their data files run",
+              cached.get("foods") and canary.get("threw") and canary.get("onLine") is False and len(LOCAL_PILLARS) == 25 and not bad_off and len(opened) == 25,
+              f"cache {cached.get('name')} {cached.get('n')} urls, foods cached {cached.get('foods')}; offline canary threw {canary.get('threw')} onLine {canary.get('onLine')}; {len(opened)} of {len(LOCAL_PILLARS)} opened" + ("; bad: " + " | ".join(bad_off[:4]) if bad_off else ""))
+        c_off.close()
+    except Exception as e:
+        proof("OFFLINE-1", "With the network cut, all 25 local pillars open from the generated precache and their data files run", False, "did not finish: " + str(e)[:200])
+
+    # The browser's update check fetches sw.js outside Playwright's router, so a new deploy is the file the server reads.
+    sw_path = pathlib.Path(__file__).resolve().parents[1] / "sw.js"
+    orig_sw = sw_path.read_text()
+    httpd = None
+    c_up = None
+    recorded = False
+    try:
+        update_origin = SHELL
+        if (_u.hostname or "") not in ("127.0.0.1", "localhost", "prometheus.test"):
+            import functools, threading
+            from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
+            class _Quiet(SimpleHTTPRequestHandler):
+                def log_message(self, format, *args):
+                    return
+            httpd = ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(_Quiet, directory=str(sw_path.parent)))
+            threading.Thread(target=httpd.serve_forever, daemon=True).start()
+            update_origin = f"http://127.0.0.1:{httpd.server_address[1]}/"
+        c_up = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US", service_workers="allow")
+        _abort_external(c_up)
+        up = c_up.new_page()
+        up.goto(update_origin, wait_until="load", timeout=30000)
+        up.wait_for_selector(".reactor .hex", timeout=20000)
+        up.wait_for_function("() => !!(navigator.serviceWorker && navigator.serviceWorker.controller)", timeout=120000)
+        quiet = up.evaluate("() => !document.querySelector('button.update-ready')")
+        nxt = orig_sw.replace('var CACHE = "prometheus-hub-deck-d21";', 'var CACHE = "prometheus-hub-deck-d21b";', 1)
+        if nxt == orig_sw: raise RuntimeError("sw.js has no d21 cache name to bump")
+        sw_path.write_text(nxt + "\n/* simulated deploy */\n")
+        up.evaluate("async () => { const reg = await navigator.serviceWorker.ready; await reg.update(); }")
+        up.wait_for_selector("button.update-ready", timeout=120000)
+        chip = up.evaluate("""() => { const b = document.querySelector('button.update-ready'); const s = getComputedStyle(b);
+          return { text: (b.textContent || '').trim(), border: s.borderTopColor, bg: s.backgroundImage, radius: s.borderTopLeftRadius, color: s.color }; }""")
+        shot = sw_path.parent / "artifacts" / "screenshots" / "d21" / "update-ready-390x844.png"
+        shot.parent.mkdir(parents=True, exist_ok=True)
+        up.screenshot(path=str(shot))
+        with up.expect_navigation(wait_until="load", timeout=30000):
+            up.click("button.update-ready")
+        up.wait_for_timeout(400)
+        after = up.evaluate("""async () => ({ names: await caches.keys(), chip: !!document.querySelector('button.update-ready') })""")
+        pearl = "159, 212, 230" in (chip.get("border") or "") or "215, 246, 255" in (chip.get("border") or "")
+        proof("UPDATE-1", "A simulated deploy shows Update ready (pearl glass, cyan edge) and a tap reloads into the new shell",
+              quiet and chip.get("text") == "Update ready" and pearl and "gradient" in (chip.get("bg") or "") and str(chip.get("radius") or "").startswith("999") and (not after.get("chip")) and any("d21b" in n for n in after.get("names") or []),
+              f"chip {chip}; after reload caches {after.get('names')} chip {after.get('chip')}; shot {shot.name}")
+        recorded = True
+    except Exception as e:
+        if not recorded:
+            proof("UPDATE-1", "A simulated deploy shows Update ready (pearl glass, cyan edge) and a tap reloads into the new shell", False, "did not finish: " + str(e)[:220])
+    finally:
+        sw_path.write_text(orig_sw)
+        if c_up: c_up.close()
+        if httpd: httpd.shutdown()
     b.close()
 
 if OUT: json.dump({"url": URL, "ran": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "clock": NOW, "results": results}, open(OUT, "w"), indent=1)
