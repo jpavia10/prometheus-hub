@@ -22,6 +22,17 @@
     S.set("brokers", bs); S.set("brokersV2", 1);
   }
 
+  /* Extras union (Sebastian, 2026-11-14): data/broker-optouts.json's "extras" that are trackable
+     opt-out actions (the CA DROP extra is skipped — it is this pillar's headline feature, not a broker). */
+  if (!S.get("brokersV3")) {
+    const bs = S.get("brokers", []);
+    const have = new Set(bs.map((b) => b.name));
+    for (const n of ["Clearview AI", "Nuwber", "Cocofinder", "Neighbor.report", "NAI opt-out"]) {
+      if (!have.has(n)) bs.push({ id: Math.random().toString(36).slice(2, 8), name: n, state: "not started", recheck: null });
+    }
+    S.set("brokers", bs); S.set("brokersV3", 1);
+  }
+
   const S24_CHECKS = [
     "SIM PIN lock enabled (carrier theft protection)",
     "Private DNS set to encrypted resolver (Quad9 / Cloudflare)",

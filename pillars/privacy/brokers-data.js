@@ -1,5 +1,8 @@
 /* Privacy broker opt-out URLs (Sebastian, 2026-11-10): verified live 2026-11-10 in Grok's reset-day
    broker pass (40-site ledger; dead/blocked sites dropped there with reasons). window.BROKER_OPTOUTS. */
+/* Extras union (Sebastian, 2026-11-14): the last five entries come from data/broker-optouts.json's
+   "extras" — Clearview AI + NAI are tier A-live; Nuwber/Cocofinder/Neighbor.report are tier
+   B-snapshot (live hosts block bots; opt-out pages confirmed in Wayback snapshots, per the pack). */
 window.BROKER_OPTOUTS = {
  "Spokeo": "https://www.spokeo.com/optout",
  "AnyWho": "https://www.spokeo.com/optout",
@@ -40,5 +43,10 @@ window.BROKER_OPTOUTS = {
  "OptOutPrescreen (credit-bureau prescreen opt-out)": "https://www.optoutprescreen.com/",
  "ZoomInfo": "https://www.zoominfo.com/trust-center/your-privacy",
  "RocketReach": "https://rocketreach.co/remove-profile",
- "Apollo.io": "https://www.apollo.io/privacy-policy/remove"
+ "Apollo.io": "https://www.apollo.io/privacy-policy/remove",
+ "Clearview AI": "https://www.clearview.ai/privacy-and-requests",
+ "NAI opt-out": "https://thenai.org/how-to-opt-out/",
+ "Nuwber": "https://nuwber.com/removal/link",
+ "Cocofinder": "https://cocofinder.com/remove-my-info",
+ "Neighbor.report": "https://neighbor.report/remove",
 };

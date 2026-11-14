@@ -680,9 +680,12 @@
     }
     for (const t of list) {
       const parsed = t.bars.map((bar) => chartChord(String(bar).split(" ")[0]));
-      const strip = h("div.mono", { hidden: "" }, t.bars.join("  |  "));
+      const prog = (window.BOSSA_PROGRESSIONS || {})[t.t] || null;
+      const strip = h("div", { hidden: "" },
+        ...(prog && prog.sections ? prog.sections.map((s) => h("div.mono", null, `${s.label} (${s.bars.length}) — ${s.bars.join("  |  ")}`)) : []),
+        h("div.mono", null, t.bars.join("  |  ")));
       box.append(h("div.kv", null,
-        h("span", null, h("b", null, t.t), h("span.stat-s", null, ` · ${t.c || ""} · ${t.key} · ${t.bars.length} bars`)),
+        h("span", null, h("b", null, t.t), h("span.stat-s", null, ` · ${t.c || ""} · ${t.key} · ${t.bars.length} bars${prog ? ` · form ${prog.form}${prog.time ? ` · ${prog.time}` : ""}${prog.coda ? " · coda/segno" : ""}` : ""}`)),
         h("span.row-actions", null,
           h("button.btn.quiet.small", { type: "button", onclick: () => { strip.hidden = !strip.hidden; } }, "Changes"),
           parsed.filter(Boolean).length >= Math.ceil(t.bars.length * 0.7)
