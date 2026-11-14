@@ -1,7 +1,9 @@
 /* Observatory (Claude, 2026-11-13): the subjects your ideas keep returning to, and what is happening in them. Subjects start from the
    commonest tags in Athenaeum; you can add or drop any. Headlines arrive only when you press Scan: each subject word is sent to the
    public Hacker News search (hn.algolia.com) and nothing else leaves the device. Every headline is marked unverified; your own notes
-   are kept apart and marked verified, opinion or question. window.OBSERVATORY = { data, scan, classifySignal, filterView } */
+   are kept apart and marked verified, opinion or question. Subjects ship seeded from the Athenaeum canon
+   (subjects-seed.js: the real tag clusters with counts, spans, and the strongest thread's own words), so the dome
+   stands on its own; Scan still refreshes signals on top. window.OBSERVATORY = { data, scan, classifySignal, filterView } */
 (function () {
   "use strict";
   const { $, h, day, toast, store, download, pickFile } = PK;
@@ -13,6 +15,15 @@
     return [...tally.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6).map(([t, n]) => ({ id: "t-" + t, name: t.replace(/-/g, " ").replace(/\bai\b/g, "AI"), q: t.replace(/-/g, " "), ideas: n, from: "athenaeum" })); };
   const subjects = () => S.get("subjects", null) || fromIdeas();
   const signals = () => S.get("signals", []);
+
+  /* Seed-once (Sebastian, 2026-11-14): the shipped canon subjects land in an empty subjects store exactly once.
+     A stored list — seeded, derived-and-edited, or hand-built — is never overwritten, and dropping every
+     subject sticks (the flag stays set). Guarded so harnesses without the seed file behave as before. */
+  const OBS_SEED = (typeof window !== "undefined" && window.OBSERVATORY_SUBJECTS) || (typeof globalThis !== "undefined" && globalThis.OBSERVATORY_SUBJECTS) || null;
+  if (Array.isArray(OBS_SEED) && OBS_SEED.length && !S.get("subjectsSeedV1")) {
+    if (!S.get("subjects", null)) S.set("subjects", OBS_SEED.map((s) => ({ ...s })));
+    S.set("subjectsSeedV1", 1);
+  }
 
   let st = "idle";
   let lastError = "";
@@ -180,7 +191,8 @@
       sigEls.push(h("p.empty", null, emptyMsg));
     }
     $("#o-signals").replaceChildren(...sigEls);
-    $("#o-subjects").replaceChildren(...subs.map((s) => h("div.kv", null, h("span", null, h("b", null, s.name), h("br"), h("span.stat-s", null, s.from === "athenaeum" ? `from ${s.ideas} of your ideas` : "added by you")),
+    $("#o-subjects").replaceChildren(...subs.map((s) => h("div.kv", null, h("span", null, h("b", null, s.name), h("br"), h("span.stat-s", null, s.from === "athenaeum" ? `from ${s.ideas} of your ideas${s.spanStart ? ` · ${s.spanStart} – ${s.spanEnd}` : ""}` : "added by you"),
+      ...(s.quote ? [h("br"), h("span.stat-s", null, `\u201C${s.quote}\u201D — ${s.top || "strongest thread"}${s.quoteDate ? ` · ${s.quoteDate}` : ""}`)] : [])),
       h("button.btn.quiet.small", { type: "button", onclick: () => { S.set("subjects", subs.filter((x) => x.id !== s.id)); paint(); } }, "Drop"))));
     const sel = $("#o-note").subject; sel.replaceChildren(...subs.map((s) => h("option", { value: s.id }, s.name)));
     const noteEls = view.notes.length

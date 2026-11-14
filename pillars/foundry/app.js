@@ -1,6 +1,8 @@
 /* Foundry (Claude, 2026-11-13): inventions turned into builds. The drawing board is every idea tagged as an invention in Athenaeum (read
    from this browser's Athenaeum, or the ideas it ships); starting a build makes a project here that moves through six stages with its
-   parts, their cost, a log and the one next step. Athenaeum's records are only read. window.FOUNDRY = { STAGES, data } */
+   parts, their cost, a log and the one next step. Athenaeum's records are only read. Every board idea also carries a
+   real build state (build-states.js: all 11 inventions cross-checked against the hub and MEMORY.md on 2026-11-14,
+   evidence cited per idea). window.FOUNDRY = { STAGES, data } */
 (function () {
   "use strict";
   const { $, h, day, toast, store, download, pickFile } = PK;
@@ -9,7 +11,9 @@
   const ideas = () => { let l = []; try { l = JSON.parse(localStorage.getItem("prometheus.athenaeum.ideas") || "[]"); } catch (e) { l = []; } if (!l.length) l = window.ATHENAEUM_IDEAS || []; return l.filter((i) => !i.archived && (i.tags || []).some((t) => /invent/i.test(t))); };
   const projects = () => S.list("projects");
   const cost = (p) => (p.parts || []).reduce((s, x) => s + (+x.cost || 0), 0);
-  window.FOUNDRY = { STAGES, data: () => { const P = projects(), started = new Set(P.map((p) => p.ideaId).filter(Boolean)); return { STAGES, projects: P, board: ideas().filter((i) => !started.has(i.id)), ideas: ideas(), cost: P.reduce((s, p) => s + cost(p), 0) }; } };
+  const BUILD_STATES = (typeof window !== "undefined" && window.FOUNDRY_BUILD_STATES) || (typeof globalThis !== "undefined" && globalThis.FOUNDRY_BUILD_STATES) || [];
+  const stateFor = (i) => BUILD_STATES.find((r) => (i.id && r.id === i.id) || r.title === i.title || (r.altTitle && r.altTitle === i.title)) || null;
+  window.FOUNDRY = { STAGES, data: () => { const P = projects(), started = new Set(P.map((p) => p.ideaId).filter(Boolean)); return { STAGES, projects: P, board: ideas().filter((i) => !started.has(i.id)).map((i) => { const st = stateFor(i); return { ...i, buildState: st ? st.state : "concept", buildEvidence: st ? st.evidence : "" }; }), ideas: ideas(), cost: P.reduce((s, p) => s + cost(p), 0) }; } };
   app.innerHTML = `
     <section class="grid">
       <div class="glass span-12"><h2>On the bench</h2><div id="y-bench"></div></div>
@@ -95,7 +99,7 @@
   function paint() {
     const D = window.FOUNDRY.data();
     $("#y-bench").replaceChildren(...(D.projects.length ? D.projects.sort((a, b) => b.stage - a.stage).map(card) : [h("p.empty", null, "Nothing on the bench yet. Start one from the drawing board.")]));
-    $("#y-board").replaceChildren(...(D.board.length ? D.board.map((i) => h("div.kv", null, h("span", null, h("b", null, i.title), h("br"), h("span.stat-s", null, `kept ${i.created || ""}${i.strength ? " · strength " + i.strength : ""}`)),
+    $("#y-board").replaceChildren(...(D.board.length ? D.board.map((i) => h("div.kv", null, h("span", null, h("b", null, i.title), h("br"), h("span.stat-s", null, `kept ${i.created || ""}${i.strength ? " · strength " + i.strength : ""} · build state: ${i.buildState || "concept"}`), ...(i.buildEvidence ? [h("br"), h("span.stat-s", null, i.buildEvidence)] : [])),
       h("button.btn.quiet.small", { type: "button", onclick: () => { const p = S.add("projects", { title: i.title, ideaId: i.id, stage: 1, next: "", parts: [], started: day(), log: [{ date: day(), text: "Started from the idea kept " + (i.created || "") }] }); linkFromAthenaeum(i.id, p && p.id, i.title); if (window.PB && PB.events) PB.events.publish({ type: "build.started", pillar: "foundry", ref: p.id, title: p.title }); toast("On the bench"); paint(); } }, "Start the build"))) : [h("p.empty", null, D.ideas.length ? "Every invention is on the bench." : "No ideas tagged invention in Athenaeum yet.")]));
   }
   $("#y-form").addEventListener("submit", (e) => {
