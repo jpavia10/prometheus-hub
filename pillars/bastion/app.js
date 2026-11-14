@@ -142,27 +142,31 @@
     ).join("");
   }
 
-  fetch("./data/frazier-readiness.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
+  fetch("./data/readiness.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
     if (!d) return;
     const p = d.place || {};
-    $("#b-profile").innerHTML = `<div class="kv"><span>Location</span><b>${esc(p.name || "Set a place")}</b></div>
+    const here = (PK.devicePlace && PK.devicePlace()) || null;
+    $("#b-profile").innerHTML = `<div class="kv"><span>Location</span><b>${esc(here ? here.label : "Set a location")}</b></div>
       <div class="kv"><span>NWS Zones</span><b>${esc((p.nws && p.nws.forecast_zone) || "CAZ336")} / ${esc((p.nws && p.nws.fire_zone) || "CAZ597")}</b></div>
       ${(d.risk_profile || []).map((r) => `<div class="kv"><span><b>${esc(r.hazard)}</b><br><span class="stat-s">${esc(r.evidence.slice(0, 100))}</span></span><b>${esc(r.level)}</b></div>`).join("")}`;
   }).catch(() => {});
 
   (async () => {
     const el = $("#b-wx");
+    const place = PK.devicePlace && PK.devicePlace();
+    if (!place) { el.textContent = "Set a location"; return; }
     try {
-      const pt = await (await fetch("https://api.weather.gov/points/34.82057,-118.94543", { headers: { Accept: "application/geo+json" } })).json();
+      const point = `${place.lat},${place.lon}`;
+      const pt = await (await fetch(`https://api.weather.gov/points/${point}`, { headers: { Accept: "application/geo+json" } })).json();
       const [fc, al] = await Promise.all([
         fetch(pt.properties.forecast, { headers: { Accept: "application/geo+json" } }).then((r) => r.json()),
-        fetch("https://api.weather.gov/alerts/active?point=34.82057,-118.94543", { headers: { Accept: "application/geo+json" } }).then((r) => r.json()),
+        fetch(`https://api.weather.gov/alerts/active?point=${point}`, { headers: { Accept: "application/geo+json" } }).then((r) => r.json()),
       ]);
       const periods = (fc.properties.periods || []).slice(0, 4);
       const alerts = al.features || [];
       el.innerHTML = (alerts.length ? alerts.map((a) => `<div class="kv"><span><b>${esc(a.properties.event)}</b> — ${esc(a.properties.headline || "")}</span></div>`).join("") : `<div class="kv"><span>Active NWS alerts</span><b>None</b></div>`)
         + periods.map((p) => `<div class="kv"><span>${esc(p.name)}</span><b>${p.temperature}°${p.temperatureUnit} · ${esc(p.shortForecast)}</b></div>`).join("")
-        + `<div class="stat-s" style="margin-top:6px">NWS HNX · fetched ${new Date().toLocaleTimeString("en-US")}</div>`;
+        + `<div class="stat-s" style="margin-top:6px">NWS · fetched ${new Date().toLocaleTimeString("en-US")}</div>`;
     } catch (_) {
       el.textContent = "Weather unavailable right now (offline or unreachable). All offline checklists remain active.";
     }

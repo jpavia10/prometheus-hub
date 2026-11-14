@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Event envelope and device location
+- Every bus event carries `{type, pillar, at, v}`, and older rows are migrated without changing a backup's bytes. All 25 local manifests declare records, commands, and events (`25/25 complete`). Bastion and Aether read the storm-sheet place and do not fetch when it is empty. The readiness file is `readiness.json`. Athenaeum personal titles, including the early-illness title, are example titles. Shell cache d21.
+
 ### [2026-11-14] Pre-merge checks and shipped defaults
 - Checks run before a merge, the money guard rejects a planted amount in a view, and the hub no longer ships a town, an elevation, a vehicle model, or a collection total. Games and Athenaeum notes are examples. Cache d20. The live proofs-live quote is still run 43575963969.
 

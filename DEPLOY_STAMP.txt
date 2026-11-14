@@ -1,1 +1,1 @@
-deck d20 2026-11-14 checks and privacy sweep, after d19 chrome
+deck d20 2026-11-14 event envelope, manifest records, device location; shell cache d21

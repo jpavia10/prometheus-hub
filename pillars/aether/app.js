@@ -1,4 +1,5 @@
-/* Aether · Atmospheric & Field Lab. The fetch below uses one field point until a place is chosen on the device.
+/* Aether · Atmospheric & Field Lab. Live weather uses the place the hub storm sheet saved on this device.
+   With no place saved, Fetch does not call out and the status line says "Set a location".
    window.AETHER = { SEASONS, APPLIANCES, computeBudget, data } */
 (function () {
   "use strict";
@@ -209,9 +210,12 @@
     }
 
     const wx = D.wx;
-    $("#ae-wx-status").textContent = wx
-      ? `Last Open-Meteo sample (${wx.at}): ${wx.tempF}°F · Wind ${wx.windMph} mph · Precip ${wx.precipMm} mm.`
-      : "Stored baseline corridor logs shared read-only to Bastion (prometheus.aether.alerts).";
+    const place = PK.devicePlace && PK.devicePlace();
+    $("#ae-wx-status").textContent = !place
+      ? "Set a location"
+      : wx
+        ? `Last Open-Meteo sample (${wx.at}): ${wx.tempF}°F · Wind ${wx.windMph} mph · Precip ${wx.precipMm} mm.`
+        : "Stored baseline corridor logs shared read-only to Bastion (prometheus.aether.alerts).";
 
     const pills = { clear: "pill", advisory: "pill warn", watch: "pill warn", closed: "pill hot" };
     $("#ae-alerts").replaceChildren(...D.alerts.map((a) => h("div.kv", null,
@@ -269,9 +273,16 @@
 
   $("#ae-fetch").addEventListener("click", async () => {
     const btn = $("#ae-fetch");
+    const place = PK.devicePlace && PK.devicePlace();
+    if (!place) {
+      const status = $("#ae-wx-status");
+      if (status) status.textContent = "Set a location";
+      toast("Set a location");
+      return;
+    }
     btn.disabled = true;
     try {
-      const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude=34.8228&longitude=-118.9448&current=temperature_2m,wind_speed_10m,precipitation&temperature_unit=fahrenheit&wind_speed_unit=mph");
+      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${place.lat}&longitude=${place.lon}&current=temperature_2m,wind_speed_10m,precipitation&temperature_unit=fahrenheit&wind_speed_unit=mph`);
       if (!r.ok) throw new Error(String(r.status));
       const j = await r.json(), c = j.current || {};
       const wx = { tempF: Math.round(c.temperature_2m || 0), windMph: Math.round(c.wind_speed_10m || 0), precipMm: c.precipitation || 0, at: day() };

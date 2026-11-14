@@ -120,6 +120,7 @@ export function validateRegistry({ rootDir = DEFAULT_ROOT } = {}) {
   if (manifests.length !== manifestSet.size) errors.push("deck/core/reach.js: duplicate entries in MANIFESTS");
 
   const kitIcons = parseKitIcons(readText("kit/kit.js"));
+  let completeManifests = 0;
 
   for (const r of extActive) {
     if (r.manifestPath && manifestSet.has(r.manifestPath)) errors.push(`External pillar '${r.id}' must not be in deck/core/reach.js MANIFESTS`);
@@ -142,18 +143,45 @@ export function validateRegistry({ rootDir = DEFAULT_ROOT } = {}) {
       if (!manifestSet.has(r.manifestPath)) errors.push(`Local pillar '${r.id}': '${r.manifestPath}' missing from deck/core/reach.js MANIFESTS`);
       try {
         const man = JSON.parse(readText(r.manifestPath));
-        if (man.manifest !== 1) errors.push(`${r.manifestPath}: manifest version must be 1`);
-        if (!man.id || !man.name || !man.mission || !man.signature) errors.push(`${r.manifestPath}: missing core metadata fields`);
-        if (man.route !== r.route) errors.push(`${r.manifestPath}: route '${man.route}' != '${r.route}'`);
+        const gap = [];
+        const note = (msg) => { errors.push(msg); gap.push(msg); };
+        if (man.manifest !== 1) note(`${r.manifestPath}: manifest version must be 1`);
+        if (!man.id || !man.name || !man.mission || !man.signature) note(`${r.manifestPath}: missing core metadata fields`);
+        if (man.route !== r.route) note(`${r.manifestPath}: route '${man.route}' != '${r.route}'`);
         if (!Array.isArray(man.owns) || !Array.isArray(man.publishes) || !Array.isArray(man.search) || !Array.isArray(man.commands)) {
-          errors.push(`${r.manifestPath}: owns/publishes/search/commands must be arrays`);
+          note(`${r.manifestPath}: owns/publishes/search/commands must be arrays`);
+        }
+        if (!Array.isArray(man.records)) note(`${r.manifestPath}: records must be an array`);
+        else {
+          for (const rec of man.records) {
+            if (!rec || typeof rec.key !== "string" || !rec.key || typeof rec.kind !== "string" || !rec.kind || typeof rec.title !== "string" || !rec.title) {
+              note(`${r.manifestPath}: record needs key, kind, and title`);
+            }
+          }
+          const recordKeys = new Set(man.records.map((rec) => rec && rec.key));
+          for (const s of man.search || []) {
+            if (s && s.key && !recordKeys.has(s.key)) note(`${r.manifestPath}: search key '${s.key}' is not declared in records`);
+          }
+          if ((man.owns || []).length && man.records.length === 0) note(`${r.manifestPath}: owns storage keys but declares no records`);
+        }
+        if (!Array.isArray(man.commands) || man.commands.length < 1) note(`${r.manifestPath}: commands must declare at least one action`);
+        for (const c of man.commands || []) {
+          if (!c.id || !c.label || c.open == null) note(`${r.manifestPath}: command entry missing id/label/open`);
+        }
+        if (!Array.isArray(man.events)) note(`${r.manifestPath}: events must be an array`);
+        else {
+          for (const ev of man.events) {
+            if (!ev || typeof ev.type !== "string" || !ev.type || ev.pillar !== man.id) note(`${r.manifestPath}: event needs type and pillar '${man.id}'`);
+          }
+          const eventTypes = new Set(man.events.map((ev) => ev && ev.type));
+          for (const p of man.publishes || []) {
+            if (!eventTypes.has(p)) note(`${r.manifestPath}: publishes '${p}' is not declared in events`);
+          }
         }
         for (const s of man.search || []) {
-          if (!s.key || !s.title || s.open == null) errors.push(`${r.manifestPath}: search entry missing key/title/open`);
+          if (!s.key || !s.title || s.open == null) note(`${r.manifestPath}: search entry missing key/title/open`);
         }
-        for (const c of man.commands || []) {
-          if (!c.id || !c.label || c.open == null) errors.push(`${r.manifestPath}: command entry missing id/label/open`);
-        }
+        if (gap.length === 0) completeManifests += 1;
       } catch (e) {
         errors.push(`${r.manifestPath}: invalid JSON (${e.message})`);
       }
@@ -183,6 +211,7 @@ export function validateRegistry({ rootDir = DEFAULT_ROOT } = {}) {
       localPillars: localActive.length,
       externalPillars: extActive.length,
       manifests: manifests.length,
+      completeManifests,
       capabilities: (reg.capabilities || []).length,
     },
   };
@@ -191,11 +220,14 @@ export function validateRegistry({ rootDir = DEFAULT_ROOT } = {}) {
 const isCli = process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
 if (isCli) {
   const res = validateRegistry({ rootDir: process.cwd() });
+  const fraction = res.stats ? `${res.stats.completeManifests}/${res.stats.localPillars} complete` : "0/0 complete";
   if (res.ok) {
     console.log("REGISTRY_OK", JSON.stringify(res.stats));
+    console.log(fraction);
     process.exit(0);
   } else {
     console.error("REGISTRY_FAILED", res.errors.join("\n"));
+    console.error(fraction);
     process.exit(1);
   }
 }

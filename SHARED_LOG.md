@@ -1,4 +1,7 @@
 
+### [2026-11-14] Event envelope and device location
+- Bus events use a `{type, pillar, at, v}` envelope, with a migration for rows already stored. The 25 local manifests declare records, commands, and events. Bastion and Aether take weather from the place saved on the device, or show "Set a location" and do not fetch. `pillars/bastion/data/readiness.json` replaces the place-named readiness file. Athenaeum personal titles are example titles. Shell cache `prometheus-hub-deck-d21`.
+
 ### [2026-11-14] Pre-merge checks, money guard, shipped defaults
 - `checks.yml` runs the registry, syntax, JSON, unit proofs, the money guard, and browser proofs against this checkout on pull request and push. The storm-watch card starts empty, the homestead line uses a name stored on the device, and the hub links out to Titan without copying a collection total. Games and Athenaeum ship example notes. Shell cache `prometheus-hub-deck-d20` (main already used `d19` for the cool-core chrome).
 - After merging main: registry OK, unit proofs `59/59`, money guard OK (a planted `$952.19` in a view fails it), browser proofs `26/26` on `http://prometheus.test:8377/ --mock-weather`. Not deployed, so the proofs-live quote is still run 43575963969.
