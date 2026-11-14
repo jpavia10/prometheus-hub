@@ -1,4 +1,70 @@
+/* Selling design (Sebastian, 2026-11-14): a mission board for the $20,000 payoff.
+   Kit tokens only — pearl ink, the pillar's gold accent, cyan/lavender cool core.
+   Every figure on the gauges is drawn from pipeline-data.js at true scale. */
+
 .kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}
+.kv b, .mlt-band, .ledger-net, .goal-fig{font-variant-numeric:tabular-nums}
+
+/* ---------- Mission board: the payoff gauge ---------- */
+.goal-head{display:flex;flex-wrap:wrap;gap:18px 34px;align-items:flex-end;margin:2px 0 16px}
+.goal-fig{font-size:15px;color:var(--muted)}
+.goal-fig b{display:block;font-size:27px;font-weight:600;color:var(--ink);line-height:1.15;letter-spacing:.01em}
+.goal-fig.hero b{font-size:40px;color:var(--pearl)}
+.goal-fig.hero b i{font-style:normal;color:var(--accent)}
+.goal-fig .stat-k{display:block;margin-bottom:2px}
+
+.gauge{margin:28px 0 4px}
+.gauge-zoom .gauge{margin:22px 0 2px}
+.gauge-track{position:relative;height:16px;border:1px solid var(--line-strong);border-radius:999px;background:rgba(4,6,12,.55);overflow:visible}
+.gauge-band{position:absolute;top:2px;bottom:2px;border-radius:999px;background:linear-gradient(90deg,var(--accent-2),var(--accent));box-shadow:0 0 12px color-mix(in srgb,var(--accent) 55%,transparent)}
+.gauge-mark{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--cyan);box-shadow:0 0 8px color-mix(in srgb,var(--cyan) 70%,transparent)}
+.gauge-mark::after{content:attr(data-lbl);position:absolute;top:-19px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan)}
+.gauge-mark.start::after{transform:translateX(-6%)}
+.gauge-mark.end::after{transform:translateX(-94%)}
+.gauge-scale{display:flex;justify-content:space-between;font-size:11.5px;color:var(--faint);margin-top:6px;letter-spacing:.04em}
+.gauge-zoom{margin:22px 0 2px;padding:12px 14px 8px;border:1px dashed color-mix(in srgb,var(--cyan) 40%,transparent);border-radius:var(--radius-s);background:rgba(159,212,230,.04)}
+.gauge-zoom .stat-k{color:var(--cyan)}
+.gauge-zoom .gauge-track{height:12px}
+.gauge-note{font-size:13px;color:var(--faint);margin:8px 0 0}
+
+.pace{margin-top:16px}
+.pace-track{position:relative;height:10px;border-radius:999px;background:rgba(4,6,12,.55);border:1px solid var(--line);margin-top:6px}
+.pace-band{position:absolute;top:1px;bottom:1px;border-radius:999px;background:linear-gradient(90deg,color-mix(in srgb,var(--lavender) 45%,transparent),var(--lavender))}
+.pace-lbl{font-size:13.5px;color:var(--muted)}
+.pace-lbl b{color:var(--ink)}
+
+/* ---------- MLT pipeline cards ---------- */
+.mlt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+@media (max-width:700px){.mlt-grid{grid-template-columns:1fr}}
+.mlt-card{border:1px solid var(--line);border-radius:var(--radius-s);padding:13px 15px 11px;background:var(--glass-2);position:relative}
+.mlt-card::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--bad)}
+.mlt-card.parked::before{background:var(--lavender)}
+.mlt-card.parked{border-style:dashed;background:rgba(10,15,28,.4)}
+.mlt-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mlt-sku{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--pearl)}
+.mlt-state{font-size:10.5px;font-weight:700;letter-spacing:.14em;padding:3px 9px;border-radius:999px;border:1px solid var(--bad);color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.mlt-card.parked .mlt-state{border-color:var(--lavender);color:var(--lavender);background:color-mix(in srgb,var(--lavender) 10%,transparent)}
+.mlt-title{font-size:15.5px;font-weight:500;margin-top:5px;line-height:1.35}
+.mlt-band{font-size:14px;color:var(--accent);margin-top:2px}
+.mlt-card.parked .mlt-band{color:var(--muted)}
+.mlt-blocker{font-size:13.5px;color:var(--faint);line-height:1.45;margin-top:7px}
+.mlt-blocker b{color:var(--bad);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:11px;display:block;margin-bottom:1px}
+.mlt-card.parked .mlt-blocker b{color:var(--lavender)}
+
+/* ---------- Batch ledger strip ---------- */
+#s-batches .kv{padding:7px 2px;font-size:15px}
+#s-batches .kv span b{color:var(--pearl)}
+.ledger-total{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:9px 2px 2px;font-size:15.5px;border-top:2px solid var(--line-strong);margin-top:2px}
+.ledger-total .ledger-net{font-size:18px;color:var(--good)}
+
+/* ---------- Inventory items as pipeline cards ---------- */
 .stage{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(159,212,230,.4);color:#9fd4e6;border-radius:999px;padding:2px 8px}
-.item{padding:10px 0;border-bottom:1px solid rgba(159,180,204,.1)}
-.item h3{margin:0 0 2px;font-size:16px}
+.stage.st-staged{border-color:color-mix(in srgb,var(--accent-2) 55%,transparent);color:var(--accent-2)}
+.stage.st-listed{border-color:color-mix(in srgb,var(--cyan) 55%,transparent);color:var(--cyan)}
+.stage.st-sold{border-color:color-mix(in srgb,var(--lavender) 55%,transparent);color:var(--lavender)}
+.stage.st-shipped{border-color:color-mix(in srgb,var(--good) 55%,transparent);color:var(--good)}
+.stage.st-closed{border-color:var(--good);color:var(--ink-strong);background:var(--good)}
+.item{padding:13px 14px;margin:0 0 10px;border:1px solid var(--line);border-radius:var(--radius-s);background:var(--glass-2)}
+.item h3{margin:0 0 3px;font-size:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.item h3 .t{flex:1}
+.item .stat-s{line-height:1.5}

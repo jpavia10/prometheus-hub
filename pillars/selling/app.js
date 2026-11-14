@@ -97,12 +97,29 @@
     if (PIPE) {
       const g = PIPE.goal;
       const pct = (v) => Math.round((v / g.monthlyPayment) * 100);
+      const gp = (v) => (v / g.target) * 100;            // position on the $20,000 gauge
+      const gz = (v) => Math.min(100, (v / 1000) * 100); // position on the magnified first-$1,000 strip
       $("#s-goal").innerHTML =
-        `<div class="kv"><span>Payoff target</span><b>${money(g.target, 0)}</b></div>`
-        + `<div class="kv"><span>Draft pipeline estimate (batch 2026-10-14)</span><b>${money(g.draftLow, 0)}–${money(g.draftHigh, 0)}+</b></div>`
-        + `<div class="kv"><span>Still to go after this batch sells</span><b>${money(g.target - g.draftHigh, 0)}–${money(g.target - g.draftLow, 0)}</b></div>`
-        + `<div class="kv"><span>Pace check — one ${esc(g.paymentLabel)} is ${money(g.monthlyPayment)}</span><b>this batch ≈ ${pct(g.draftLow)}–${pct(g.draftHigh)}% of one payment</b></div>`
-        + PIPE.skus.map((s) => `<div class="kv"><span><b>${esc(s.sku)}</b> · ${esc(s.band)} · <b>${esc(s.state.toUpperCase())}</b><br><span class="stat-s">${esc(s.blocker)}</span></span></div>`).join("")
+        `<div class="goal-head">`
+        + `<div class="goal-fig hero"><span class="stat-k">Still to go after this batch</span><b>${money(g.target - g.draftHigh, 0)}–${money(g.target - g.draftLow, 0)}</b></div>`
+        + `<div class="goal-fig"><span class="stat-k">Payoff target</span><b>${money(g.target, 0)}</b></div>`
+        + `<div class="goal-fig"><span class="stat-k">Draft pipeline · batch 2026-10-14</span><b>${money(g.draftLow, 0)}–${money(g.draftHigh, 0)}+</b></div>`
+        + `</div>`
+        + `<div class="gauge"><div class="gauge-track">`
+        + `<div class="gauge-band" style="left:${gp(g.draftLow)}%;width:${Math.max(0.6, gp(g.draftHigh) - gp(g.draftLow))}%"></div>`
+        + `<div class="gauge-mark start" style="left:${gp(g.monthlyPayment)}%" data-lbl="one payment · ${money(g.monthlyPayment, 0)}"></div>`
+        + `</div><div class="gauge-scale"><span>$0</span><span>${money(g.target * 0.25, 0)}</span><span>${money(g.target * 0.5, 0)}</span><span>${money(g.target * 0.75, 0)}</span><span>${money(g.target, 0)}</span></div></div>`
+        + `<div class="gauge-zoom"><span class="stat-k">The first $1,000 — magnified ×20</span>`
+        + `<div class="gauge"><div class="gauge-track">`
+        + `<div class="gauge-band" style="left:${gz(g.draftLow)}%;width:${gz(g.draftHigh) - gz(g.draftLow)}%"></div>`
+        + `<div class="gauge-mark end" style="left:${gz(g.monthlyPayment)}%" data-lbl="one payment"></div>`
+        + `</div><div class="gauge-scale"><span>$0</span><span>$500</span><span>$1,000</span></div></div></div>`
+        + `<p class="gauge-note">Drawn at true linear scale: the whole first batch is the sliver at the far left of the top gauge. No fake fullness — the board's job is watching the sliver grow.</p>`
+        + `<div class="pace"><div class="pace-lbl">Pace — one ${esc(g.paymentLabel)} is <b>${money(g.monthlyPayment)}</b>; this batch covers <b>≈ ${pct(g.draftLow)}–${pct(g.draftHigh)}% of one payment</b></div>`
+        + `<div class="pace-track"><div class="pace-band" style="left:${pct(g.draftLow)}%;width:${pct(g.draftHigh) - pct(g.draftLow)}%"></div></div></div>`
+        + `<div class="mlt-grid">`
+        + PIPE.skus.map((s) => `<div class="mlt-card${s.state === "parked" ? " parked" : ""}"><div class="mlt-top"><span class="mlt-sku">${esc(s.sku)}</span><span class="mlt-state">${esc(s.state.toUpperCase())}</span></div><div class="mlt-title">${esc(s.title)}</div><div class="mlt-band">${esc(s.band)}</div><p class="mlt-blocker"><b>${s.state === "parked" ? "Why parked" : "Blocker"}</b>${esc(s.blocker)}</p></div>`).join("")
+        + `</div>`
         + `<p class="note">${esc(g.source)} Channel: ${esc(g.channel)}. Nothing here is listed or published — drafts finalize only after photos and facts.</p>`;
     } else {
       $("#s-goal").innerHTML = `<p class="empty">No draft pipeline loaded.</p>`;
@@ -159,7 +176,11 @@
       const r = it.soldPrice != null ? SELLING.net({ price: it.soldPrice, fee: it.feeActual, shipping: it.shipActual, packaging: it.packaging }) : SELLING.net({ price: it.price, feePct: it.feePct, shipping: it.shipEst, packaging: it.packaging });
       byBatch[k].count++; byBatch[k].gross += +(it.soldPrice != null ? it.soldPrice : it.price) || 0; byBatch[k].net += r.net - (+it.feeFixed || 0);
     }
-    $("#s-batches").innerHTML = Object.entries(byBatch).map(([k, v]) => `<div class="kv"><span><b>${esc(k)}</b> (${v.count} items · ${money(v.gross)})</span><b>${money(v.net)} net</b></div>`).join("") || `<p class="empty">No batches yet.</p>`;
+    const batchRows = Object.entries(byBatch).map(([k, v]) => `<div class="kv"><span><b>${esc(k)}</b> (${v.count} items · ${money(v.gross)})</span><b>${money(v.net)} net</b></div>`);
+    const bTotals = Object.values(byBatch).reduce((a, v) => ({ count: a.count + v.count, gross: a.gross + v.gross, net: a.net + v.net }), { count: 0, gross: 0, net: 0 });
+    $("#s-batches").innerHTML = batchRows.length
+      ? batchRows.join("") + `<div class="ledger-total"><span>All batches · ${bTotals.count} items · ${money(bTotals.gross)}</span><span class="ledger-net">${money(bTotals.net)} net</span></div>`
+      : `<p class="empty">No batches yet.</p>`;
 
     const el = $("#s-list"); if (!list.length) { el.innerHTML = `<p class="empty">Nothing staged yet.</p>`; return; }
     el.innerHTML = "";
@@ -167,7 +188,7 @@
       const pred = SELLING.net({ price: it.price, feePct: it.feePct, shipping: it.shipEst, packaging: it.packaging }).net - (+it.feeFixed || 0);
       const real = it.soldPrice != null ? SELLING.net({ price: it.soldPrice, fee: it.feeActual, shipping: it.shipActual, packaging: it.packaging }) : null;
       el.append(h("div.item", null,
-        h("h3", null, `${it.title} `, h("span.stage", null, it.stage)),
+        h("h3", null, h("span.t", null, it.title), h("span.stage st-" + it.stage, null, it.stage)),
         h("div.stat-s", null, `${it.batch ? it.batch + " · " : ""}list ${money(it.price)} · est net ${money(pred)}${real ? ` · actual ${money(real.net)}` : ""}${it.tracking ? ` · ${it.tracking}` : ""}${it.busRecorded ? " · on bus" : ""}`),
         h("div.row-actions", { style: "margin-top:6px" },
           h("button.btn.quiet.small", { type: "button", onclick: () => { $("#s-copy-box").value = buildFbCopy(it.title, it.price); toast("Generated FB copy above"); } }, "FB Copy"),
