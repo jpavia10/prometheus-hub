@@ -1,0 +1,6 @@
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{background:rgba(12,18,32,.65);border:1px solid rgba(159,180,204,.22);border-radius:999px;color:#b8c7dc;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.tab[aria-selected="true"]{border-color:rgba(228,122,255,.7);background:rgba(228,122,255,.16);color:#fceeff}
+.kv{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;padding:8px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08);flex-wrap:wrap}
+.pill{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(228,122,255,.48);color:#eeb8ff}
+textarea.ta{width:100%;min-height:84px;background:rgba(10,16,28,.55);border:1px solid rgba(159,180,204,.25);border-radius:10px;color:#e8eef7;padding:10px;font:inherit}

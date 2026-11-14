@@ -187,7 +187,7 @@
    "chatgpt": "1E_kRPm-G4fQF14JDjLePSD3AKkkod6RKN6v7l_Qmjeo"
   }
  },
- "schemaVersion": 2,
+ "schemaVersion": 3,
  "capabilities": [
   {
    "id": "arrival",
@@ -349,7 +349,7 @@
    "id": "presence",
    "name": "Sylade · Presence",
    "kind": "capability",
-   "route": "sylade.html",
+   "route": "pillars/sylade/",
    "state": "live",
    "dataOwner": "presence"
   },
@@ -383,6 +383,47 @@
    "what": "Family logistics: schedule, school paperwork, activities, trips.",
    "route": "pillars/kin/",
    "state": "live",
+   "added": "2026-11-13"
+  },
+  {
+   "id": "aether",
+   "name": "Aether · Atmospheric & Field Lab",
+   "kind": "capability",
+   "what": "Local weather, wildfire/AQI, solar & lunar ephemeris, and mountain pass readiness.",
+   "route": "pillars/aether/",
+   "state": "live",
+   "dataOwner": "aether",
+   "added": "2026-11-13"
+  },
+  {
+   "id": "polis",
+   "name": "Polis · Civic & Legal Watch",
+   "kind": "capability",
+   "what": "California & Kern County policy tracking, ballot measures, HOA/permit rules & consumer protections.",
+   "route": "pillars/polis/",
+   "state": "live",
+   "dataOwner": "polis",
+   "added": "2026-11-13"
+  },
+  {
+   "id": "mythos",
+   "name": "Mythos · Creative & Lore Studio",
+   "kind": "capability",
+   "what": "Worldbuilding, fiction drafts, guitar & lyric notebooks, moodboards and personal essays.",
+   "route": "pillars/mythos/",
+   "state": "live",
+   "dataOwner": "mythos",
+   "added": "2026-11-13"
+  },
+  {
+   "id": "continuity",
+   "name": "Continuity · Sovereign Vault",
+   "kind": "capability",
+   "what": "Zero-knowledge WebCrypto encrypted emergency instructions, digital inheritance & offline survival runbook.",
+   "route": "pillars/continuity/",
+   "state": "live",
+   "private": true,
+   "dataOwner": "continuity",
    "added": "2026-11-13"
   }
  ],

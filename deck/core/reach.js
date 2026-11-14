@@ -2,7 +2,17 @@
    (pillars/<id>/pillar.json, format in docs/architecture/MANIFEST.md): which stored lists hold records worth finding, which fields to
    read, the address that opens one record, the commands it offers and the events it publishes. The hub reads storage directly and
    never loads a pillar's code; the pillar's record stays the authority and every result opens it there. */
-export const MANIFESTS = ["pillars/athenaeum/pillar.json", "pillars/forge/pillar.json", "pillars/foundry/pillar.json", "pillars/observatory/pillar.json", "pillars/kin/pillar.json", "pillars/games/pillar.json", "pillars/hearth/pillar.json"];
+export const MANIFESTS = [
+  "pillars/kairos/pillar.json", "pillars/hearth/pillar.json", "pillars/garage/pillar.json",
+  "pillars/apollo/pillar.json", "pillars/money/pillar.json", "pillars/selling/pillar.json",
+  "pillars/records/pillar.json", "pillars/icarus/pillar.json", "pillars/hermes/pillar.json",
+  "pillars/piano/pillar.json", "pillars/bastion/pillar.json", "pillars/athenaeum/pillar.json",
+  "pillars/odyssey/pillar.json", "pillars/privacy/pillar.json", "pillars/argus/pillar.json",
+  "pillars/games/pillar.json", "pillars/forge/pillar.json", "pillars/foundry/pillar.json",
+  "pillars/observatory/pillar.json", "pillars/kin/pillar.json", "pillars/sylade/pillar.json",
+  "pillars/aether/pillar.json", "pillars/polis/pillar.json", "pillars/mythos/pillar.json",
+  "pillars/continuity/pillar.json"
+];
 let loaded = [];
 export function loadManifests() {
   return Promise.all(MANIFESTS.map((u) => fetch(u).then((r) => (r.ok ? r.json() : null)).catch(() => null))).then((l) => { loaded = l.filter((m) => m && m.manifest === 1 && m.id && m.route); return loaded; });
@@ -51,8 +61,22 @@ export function eventsSince(iso, n = 8) {
 /* One backup of everything on this device: every pillar's records, the shared bus, the hub's own consoles and the deck's stage store.
    A restore shows what it would change first and never deletes a key the file does not hold. */
 const OURS = (k) => /^(prometheus\.|prom\.deck\.|hearth\.)/.test(k);
+export async function snapshotIndexedDB() {
+  if (typeof indexedDB === "undefined") return {};
+  const meta = {};
+  try {
+    const db = await new Promise((res, rej) => { const r = indexedDB.open("prometheus-argus", 1); r.onupgradeneeded = () => { if (!r.result.objectStoreNames.contains("photos")) r.result.createObjectStore("photos", { keyPath: "id" }); }; r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+    const rows = await new Promise((res, rej) => { const t = db.transaction("photos", "readonly"); const rq = t.objectStore("photos").getAll(); rq.onsuccess = () => res(rq.result || []); rq.onerror = () => rej(rq.error); });
+    db.close();
+    meta["prometheus-argus/photos"] = rows.map(({ id, pillar, caption, at, dhash, grade, pairId, pairRole }) => ({ id, pillar, caption, at, dhash, grade, pairId, pairRole }));
+    try { localStorage.setItem("prometheus.argus.idbMeta", JSON.stringify(meta["prometheus-argus/photos"])); } catch {}
+  } catch {}
+  return meta;
+}
+if (typeof window !== "undefined" && typeof indexedDB !== "undefined") setTimeout(() => { snapshotIndexedDB().catch(() => {}); }, 300);
 export function backupAll() { const keys = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (OURS(k)) keys[k] = localStorage.getItem(k); }
-  return { format: "prometheus-device", v: 1, exported: new Date().toISOString(), count: Object.keys(keys).length, keys }; }
+  let idb = {}; try { const raw = keys["prometheus.argus.idbMeta"]; if (raw) idb["prometheus-argus/photos"] = JSON.parse(raw); } catch {}
+  return { format: "prometheus-device", v: 1, exported: new Date().toISOString(), count: Object.keys(keys).length, keys, idb }; }
 export function previewRestore(file) { if (!file || file.format !== "prometheus-device" || !file.keys) throw new Error("This is not a whole-device backup.");
   const add = [], change = [], same = []; for (const [k, v] of Object.entries(file.keys)) { if (!OURS(k)) continue; const cur = localStorage.getItem(k); (cur == null ? add : cur === v ? same : change).push(k); }
   return { add, change, same, pillars: [...new Set([...add, ...change].map((k) => k.split(".")[1]))] }; }

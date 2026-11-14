@@ -64,6 +64,19 @@
     const a = S.add("assignments", { ai: f.ai.value, title: f.title.value.trim(), due: f.due.value, pillar: f.pillar.value.trim(), state: "out", given: day() });
     if (window.PB && a.due) PB.deadlines.publish({ title: `Back from ${a.ai}: ${a.title}`, date: a.due, source: "forge", kind: "homework", ref: a.id });
     if (window.PB && PB.events) PB.events.publish({ type: "forge.out", pillar: "forge", ref: a.id, title: a.title }); f.reset(); toast("Handed out"); paint(); });
+  try {
+    const raw = sessionStorage.getItem("prometheus.handoff");
+    if (raw) {
+      const handoff = JSON.parse(raw);
+      if (handoff && handoff.pillar === "forge") {
+        sessionStorage.removeItem("prometheus.handoff");
+        const f = $("#f-form");
+        f.title.value = String(handoff.title || "").slice(0, 160);
+        f.pillar.value = "Athenaeum";
+        toast("Idea routed from Athenaeum into Forge assignment");
+      }
+    }
+  } catch (e) { /* sessionStorage optional */ }
   $("#export").onclick = () => download(`forge_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
   paint(); load();

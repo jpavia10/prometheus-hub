@@ -25,5 +25,9 @@ export const PILLARS = [
   P("observatory", "Observatory", "Observatory", "What is happening in the subjects you think about, with sources.", "pillars/observatory/", 250, "scope"),
   P("kin", "Kin", "Kin", "Family: the kids' schedule, school paperwork and plans in one place.", "pillars/kin/", 340, "people"),
   P("presence", "Sylade · Presence", "Sylade", "The public presence page.", "pillars/sylade/", 292, "star"),
+  P("aether", "Aether · Atmospheric & Field Lab", "Aether", "Weather, wildfire/AQI, solar & lunar ephemeris, and mountain pass readiness.", "pillars/aether/", 134, "aurora"),
+  P("polis", "Polis · Civic & Legal Watch", "Polis", "CA & Kern policy tracking, ballot measures, HOA/permit rules & consumer protections.", "pillars/polis/", 228, "civic"),
+  P("mythos", "Mythos · Creative & Lore Studio", "Mythos", "Worldbuilding, fiction drafts, guitar & lyric notebooks, moodboards and essays.", "pillars/mythos/", 304, "feather"),
+  P("continuity", "Continuity · Sovereign Vault", "Continuity", "Zero-knowledge encrypted emergency instructions, digital inheritance & survival runbook.", "pillars/continuity/", 84, "vault"),
 ];
 export const pillar = (id) => PILLARS.find((p) => p.id === id);

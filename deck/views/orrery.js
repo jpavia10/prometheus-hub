@@ -16,7 +16,18 @@ const lerp = (a, b, k) => a + (b - a) * k, clamp = (x, a = 0, b = 1) => Math.max
 const wrap = (a) => { a = (a + Math.PI) % TAU; return (a < 0 ? a + TAU : a) - Math.PI; };
 const back = (k) => { const c = 1.9; return 1 + (c + 1) * Math.pow(k - 1, 3) + c * Math.pow(k - 1, 2); };
 const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } };
-const S = { yaw: 0.26, vel: 0.5, born: false };                                    // survives a redraw of the view
+const S = { yaw: 0.26, vel: 0.5, pitch: 0, zoom: 1, born: false };                                    // survives a redraw of the view
+const SYNAPSES = [
+  ["selling", "money", "105,240,195"],
+  ["kairos", "kin", "185,155,255"],
+  ["hermes", "privacy", "140,185,255"],
+  ["argus", "hearth", "255,175,115"],
+  ["odyssey", "bastion", "130,230,175"],
+  ["aether", "bastion", "125,240,210"],
+  ["foundry", "athenaeum", "255,205,120"],
+  ["continuity", "privacy", "200,245,140"],
+  ["mythos", "piano", "235,150,255"],
+];
 
 /* hex grid: the core in the middle, six around it, twelve outside */
 const CELLS = (() => { const out = []; for (let q = -3; q <= 3; q++) for (let r = -3; r <= 3; r++) { const d = Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r)); if (d <= 3 && d > 0) out.push({ d, x: Math.sqrt(3) * (q + r / 2), y: 1.5 * r }); }
@@ -71,12 +82,18 @@ function fire(canvas) {
 
 export function reactor(ctx) {
   const t = today(); const stats = pillarStats(t); let tn = null; const calm = still();
-  const W = Math.min(innerWidth, 460), H = Math.round(W * 0.98), cx = W / 2, cy = H / 2, M = 44;
+  const W = innerWidth >= 1080 ? Math.min(600, Math.max(460, Math.round(innerWidth * 0.42))) : Math.min(innerWidth, 460);
+  const H = Math.round(W * 0.96), cx = W / 2, cy = H / 2, M = 44;
   let mode = calm ? "grid" : ls("prom.deck.layout") || "orbit"; let mix = mode === "grid" ? 1 : 0; let birth = S.born || calm ? 1 : 0; S.born = true;
-  const used = CELLS.slice(0, PILLARS.length), mx = Math.max(...used.map((c) => Math.abs(c.x))), my = Math.max(...used.map((c) => Math.abs(c.y))), gs = Math.min((W - 14) / (2 * mx + Math.sqrt(3)), (H - 8) / (2 * my + 2)), hw = Math.sqrt(3) * gs, hh = 2 * gs; const R1 = W * 0.255, R2 = W * 0.395, PITCH = 0.8, D = 1000;
-  const ringOf = (i) => (i < 6 ? { R: R1, a0: Math.PI / 12 + (i * TAU) / 6, tilt: 0.16, roll: 0.1 } : { R: R2, a0: ((i - 6) * TAU) / Math.max(12, PILLARS.length - 6), tilt: -0.07, roll: -0.06 });
+  const used = CELLS.slice(0, PILLARS.length), mx = Math.max(...used.map((c) => Math.abs(c.x))), my = Math.max(...used.map((c) => Math.abs(c.y))), gs = Math.min((W - 14) / (2 * mx + Math.sqrt(3)), (H - 8) / (2 * my + 2)), hw = Math.sqrt(3) * gs, hh = 2 * gs;
+  const R1 = W * 0.22, R2 = W * 0.335, R3 = W * 0.43, PITCH = 0.8, D = 1000;
+  const ringOf = (i) => i < 6
+    ? { R: R1, a0: Math.PI / 12 + (i * TAU) / 6, tilt: 0.16, roll: 0.1 }
+    : i < 18
+      ? { R: R2, a0: ((i - 6) * TAU) / 12, tilt: -0.07, roll: -0.06 }
+      : { R: R3, a0: ((i - 18) * TAU) / Math.max(6, PILLARS.length - 18), tilt: 0.11, roll: -0.11 };
   let leanX = 0, leanY = 0, lx = 0, ly = 0;
-  const proj = (R, a, tilt, roll, yo = 0) => { const P = PITCH + tilt + ly * 0.14, x0 = R * Math.sin(a), z0 = R * Math.cos(a); let y = yo * Math.cos(P) + z0 * Math.sin(P); const z = -yo * Math.sin(P) + z0 * Math.cos(P); const ro = roll + lx * 0.1; const x = x0 * Math.cos(ro) - y * Math.sin(ro); y = x0 * Math.sin(ro) + y * Math.cos(ro); const sc = D / (D - z); return [x * sc, y * sc, z, sc]; };
+  const proj = (R, a, tilt, roll, yo = 0) => { const zr = R * S.zoom, P = PITCH + tilt + S.pitch + ly * 0.14, x0 = zr * Math.sin(a), z0 = zr * Math.cos(a); let y = yo * Math.cos(P) + z0 * Math.sin(P); const z = -yo * Math.sin(P) + z0 * Math.cos(P); const ro = roll + lx * 0.1; const x = x0 * Math.cos(ro) - y * Math.sin(ro); y = x0 * Math.sin(ro) + y * Math.cos(ro); const sc = D / (D - z); return [x * sc, y * sc, z, sc]; };
 
   /* the pieces */
   const fx = h("canvas.rx-fx", { "aria-hidden": "true" }); const dpr = Math.min(2, devicePixelRatio || 1); fx.width = (W + M * 2) * dpr; fx.height = (H + M * 2) * dpr; const g = fx.getContext("2d");
@@ -138,15 +155,30 @@ export function reactor(ctx) {
     const cs = lerp(1, 0.5, km) * (0.3 + 0.7 * clamp(birth * 2.2)) * (1 + energy * 0.12); coreCv.style.transform = `scale(${cs.toFixed(3)})`; if (drawFire) drawFire(time, energy + (1 - clamp(birth * 1.4)) * 1.5);
 
     /* light */
-    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W + M * 2, H + M * 2); g.translate(M + cx, M + cy); g.globalCompositeOperation = "lighter"; const orbitA = (1 - km) * clamp(birth * 1.6 - 0.3);
-    if (orbitA > 0.01) for (const [R, tilt, roll, col] of [[R1, 0.16, 0.1, "255,170,100"], [R2, -0.07, -0.06, "110,220,255"]]) {
+    const idxMap = new Map(nodes.map((n, idx) => [n.p.id, idx]));
+    const orbitA = (1 - km) * clamp(birth * 1.6 - 0.3);
+    if (orbitA > 0.01) for (const [R, tilt, roll, col] of [[R1, 0.16, 0.1, "255,170,100"], [R2, -0.07, -0.06, "110,220,255"], [R3, 0.11, -0.11, "190,150,255"]]) {
       for (const front of [false, true]) { g.beginPath(); let pen = false; for (let k = 0; k <= 72; k++) { const q = proj(R, (k / 72) * TAU + S.yaw, tilt, roll); if (q[2] > 0 === front) { if (pen) g.lineTo(q[0], q[1]); else { g.moveTo(q[0], q[1]); pen = true; } } else pen = false; }
         g.strokeStyle = `rgba(${col},${(front ? 0.8 : 0.3) * orbitA})`; g.lineWidth = front ? 1.6 : 1; g.stroke(); g.strokeStyle = `rgba(${col},${(front ? 0.16 : 0.06) * orbitA})`; g.lineWidth = 6; g.stroke(); }
       for (let k = 0; k < 36; k++) { const q = proj(R * 1.07, (k / 36) * TAU + S.yaw, tilt, roll), q2 = proj(R * (k % 3 ? 1.09 : 1.12), (k / 36) * TAU + S.yaw, tilt, roll); g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(q2[0], q2[1]); g.strokeStyle = `rgba(${col},${(q[2] > 0 ? 0.42 : 0.12) * orbitA})`; g.lineWidth = 1; g.stroke(); } }
+    /* animated quadratic Bezier inter-pillar synapses */
+    SYNAPSES.forEach(([aId, bId, col], si) => {
+      const ia = idxMap.get(aId), ib = idxMap.get(bId);
+      if (ia == null || ib == null) return;
+      const a = nodes[ia], b = nodes[ib];
+      if (a.al < 0.08 || b.al < 0.08) return;
+      const mx0 = (a.x + b.x) * 0.38, my0 = (a.y + b.y) * 0.38 - 18;
+      g.strokeStyle = `rgba(${col},${0.16 * birth * (1 - km * 0.5)})`; g.lineWidth = 1; g.beginPath(); g.moveTo(a.x, a.y); g.quadraticCurveTo(mx0, my0, b.x, b.y); g.stroke();
+      const u = (time * 0.42 + si * 0.19) % 1, iu = 1 - u;
+      const px = iu * iu * a.x + 2 * iu * u * mx0 + u * u * b.x, py = iu * iu * a.y + 2 * iu * u * my0 + u * u * b.y;
+      g.fillStyle = `rgba(${col},${0.9 * birth})`; g.beginPath(); g.arc(px, py, 1.9, 0, TAU); g.fill();
+    });
     const cols = ["255,255,255", "255,180,110", "120,225,255"]; for (let c = 0; c < 3; c++) { g.fillStyle = `rgb(${cols[c]})`; for (const d of dust) { if (d.c !== c) continue; d.a += d.v * dt; const q = proj(d.R, d.a + S.yaw * 0.6, d.tilt, 0, d.y); g.globalAlpha = (0.12 + 0.5 * clamp((q[2] / (W * 0.5) + 1) / 2)) * clamp(birth * 1.4) * (1 - km * 0.55); const sz = d.s * q[3]; g.fillRect(q[0], q[1], sz, sz); } } g.globalAlpha = 1;
     nodes.forEach((n, i) => { if (n.al < 0.03) return; const pulse = (time * 0.55 + i * 0.137) % 1; g.strokeStyle = n.rgb; g.globalAlpha = n.al * (i < 6 ? 0.34 : 0.16) * (1 - km * 0.3); g.lineWidth = 1; g.beginPath(); g.moveTo(0, 0); g.lineTo(n.x, n.y); g.stroke();
       g.globalAlpha = n.al * 0.95; g.fillStyle = "#fff"; g.beginPath(); g.arc(n.x * pulse, n.y * pulse, 1.5 + (i < 6 ? 0.6 : 0), 0, TAU); g.fill();
-      const hs = (i === focus && km < 0.5 ? 190 : 118) * n.sc * (1 + 0.08 * Math.sin(time * 2 + i)); g.globalAlpha = n.al * (i === focus ? 0.95 : 0.6); g.drawImage(halo[i], n.x - hs / 2, n.y - hs / 2, hs, hs); });
+      const hs = (i === focus && km < 0.5 ? 190 : 118) * n.sc * (1 + 0.08 * Math.sin(time * 2 + i)); g.globalAlpha = n.al * (i === focus ? 0.95 : 0.6); g.drawImage(halo[i], n.x - hs / 2, n.y - hs / 2, hs, hs);
+      const stP = stats[n.p.id]; const dueSoon = stP && stP.next && diffDays(t, stP.next.date) <= 3;
+      if (dueSoon && birth > 0.7) { g.strokeStyle = "rgba(255,155,95,.68)"; g.lineWidth = 1.4; g.globalAlpha = 0.55 + 0.35 * Math.sin(time * 3.8 + i); g.beginPath(); g.arc(n.x, n.y, hh * 0.52 * n.sc, 0, TAU); g.stroke(); } });
     if (focus >= 0 && km < 0.5 && birth > 0.9) { const n = nodes[focus], rr = hh * 0.62 * n.sc; g.globalAlpha = 1 - km * 2; g.strokeStyle = n.rgb; g.lineWidth = 1.6; for (let k = 0; k < 3; k++) { const a = time * 1.3 + (k * TAU) / 3; g.beginPath(); g.arc(n.x, n.y, rr, a, a + 1.1); g.stroke(); } g.lineWidth = 1; g.globalAlpha *= 0.5; g.beginPath(); g.arc(n.x, n.y, rr + 6, -time * 0.8, -time * 0.8 + 4.4); g.stroke(); }
     for (let k = waves.length - 1; k >= 0; k--) { const w = waves[k]; w.t += dt; const a = 1 - w.t / 0.7; if (a <= 0) { waves.splice(k, 1); continue; } g.globalAlpha = a; g.strokeStyle = w.c; g.lineWidth = 2.5 * a + 0.5; g.beginPath(); g.arc(w.x - cx, w.y - cy, 16 + w.t * 330, 0, TAU); g.stroke(); }
     g.globalAlpha = 1; g.globalCompositeOperation = "source-over";
@@ -154,6 +186,7 @@ export function reactor(ctx) {
   }
   const wake = () => { if (!raf && !dead) { last = 0; raf = requestAnimationFrame(frame); } };
   const modeSeg = calm ? null : seg([["orbit", "Orbit"], ["grid", "Grid"]], mode, (v) => { mode = v; ls("prom.deck.layout", v); tick(); el.dataset.mode = v; wake(); }, "Layout");
+  const zoomCtl = calm ? null : h("div.rx-zoom", h("button.btn.ghost.small", { type: "button", "aria-label": "Zoom out", onclick: () => { S.zoom = clamp(S.zoom - 0.12, 0.8, 1.28); wake(); } }, "−"), h("button.btn.ghost.small", { type: "button", "aria-label": "Reset orbit view", onclick: () => { S.zoom = 1; S.pitch = 0; wake(); } }, "1×"), h("button.btn.ghost.small", { type: "button", "aria-label": "Zoom in", onclick: () => { S.zoom = clamp(S.zoom + 0.12, 0.8, 1.28); wake(); } }, "+"));
   const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => { seen = es[0].isIntersecting; if (seen) wake(); }) : null; if (io) io.observe(stage);
   const onVis = () => { if (!document.hidden) wake(); }; document.addEventListener("visibilitychange", onVis);
 
@@ -168,7 +201,7 @@ export function reactor(ctx) {
   const line = () => facts.map((f) => h("span", f)); const tickerEl = h("div.ticker", { "aria-label": facts.join(". ") }, h("div.ticker-run", { "aria-hidden": "true" }, line(), line()));
   titan().then((d) => { if (d && d.total && tickerEl.isConnected) { facts.push(`Titan ${money(d.total)} · ${d.flips} specimens`); tickerEl.firstChild.replaceChildren(...line(), ...line()); } });
 
-  const el = h("section.reactor.live", { "aria-label": "The pillars", dataset: { mode } }, stage, h("div.rx-hud", read, modeSeg), tickerEl);
+  const el = h("section.reactor.live", { "aria-label": "The pillars", dataset: { mode } }, stage, h("div.rx-hud", read, h("div.rx-controls", modeSeg, zoomCtl)), tickerEl);
   el.cleanup = () => { dead = true; cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("visibilitychange", onVis); removeEventListener("pointermove", onMove); removeEventListener("pointerup", onUp); removeEventListener("pointercancel", onUp); removeEventListener("deviceorientation", onTilt); };
   frame(performance.now());
   return el;

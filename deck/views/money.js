@@ -65,7 +65,7 @@ function plan(body, ctx, m, t) {
 
   /* windfalls logged */
   if (m.events.length) put(body, h("section.panel", h("header.panel-head", h("h2", "Extra money applied"), h("b.num", moneyC(pos.windfallC))),
-    h("div.items", [...m.events].sort((a, b) => b.date.localeCompare(a.date)).map((e) => h("div.item.tone-event", h("span.pip"), h("span.item-main", h("b", e.label || "Windfall"), h("small", `${fmtDay(e.date)}${e.kind ? " · " + e.kind : ""}`)), h("span.item-tags", h("span.amt.num", money(e.amount)), h("button.icon-btn.small", { type: "button", "aria-label": "Remove " + (e.label || "windfall"), onclick: () => { const copy = { ...e }; store.update("money", (x) => { x.events = x.events.filter((y) => y.id !== e.id); }); toast("Removed.", { undo: () => store.update("money", (x) => x.events.push(copy)) }); } }, icon("x", 14))))))));
+    h("div.items", [...m.events].sort((a, b) => b.date.localeCompare(a.date)).map((e) => h("div.item.tone-event", h("span.pip"), h("span.item-main", h("b", e.label || "Windfall"), h("small", `${fmtDay(e.date)}${e.kind ? " · " + e.kind : ""}`)), h("span.item-tags", h("span.amt.num", money(e.amount)), h("button.icon-btn.small", { type: "button", "aria-label": "Remove " + (e.label || "windfall"), onclick: () => { const copy = { ...e }; store.update("money", (x) => { x.events = x.events.filter((y) => y.id !== e.id); if (e.busId) (x.dismissedBus = x.dismissedBus || []).push(e.busId); }); toast("Removed.", { undo: () => store.update("money", (x) => { x.events.push(copy); if (e.busId && x.dismissedBus) x.dismissedBus = x.dismissedBus.filter((b) => b !== e.busId); }) }); } }, icon("x", 14))))))));
 }
 
 function planSheet(ctx) {

@@ -96,7 +96,24 @@
       || `<p class="empty">No issuer matches.</p>`;
   }
 
-  $("#c-form").addEventListener("input", () => { const f = $("#c-form"); const c = { principal: +f.principal.value || 0, apr: +f.apr.value || 0, term: Math.max(1, +f.term.value || 24), actualPayment: +f.actualPayment.value || 0, extra: +f.extra.value || 0, useBus: cfg().useBus }; S.set("cfg", c); paintCons(); });
+  function syncToDeck(c) {
+    try {
+      const m = JSON.parse(localStorage.getItem("prom.deck.money") || "null") || { plan: null, events: [], bills: [], seen: { pct: 0 } };
+      if (!m.plan) {
+        m.plan = { label: "Consolidation plan", sample: false, start: day(), strategy: "avalanche", order: [], budget: null, extra: +c.extra || 0,
+          debts: [{ id: "d_cons", name: "Consolidation loan", kind: "loan", balance: +c.principal || 5000, apr: +c.apr || 6, min: +c.actualPayment || 440 }] };
+      } else if (m.plan.debts && m.plan.debts[0]) {
+        m.plan.debts[0].balance = +c.principal || m.plan.debts[0].balance;
+        m.plan.debts[0].apr = +c.apr ?? m.plan.debts[0].apr;
+        m.plan.debts[0].min = +c.actualPayment || m.plan.debts[0].min;
+        m.plan.extra = +c.extra || 0;
+      }
+      m._ts = Date.now();
+      localStorage.setItem("prom.deck.money", JSON.stringify(m));
+    } catch {}
+  }
+
+  $("#c-form").addEventListener("input", () => { const f = $("#c-form"); const c = { principal: +f.principal.value || 0, apr: +f.apr.value || 0, term: Math.max(1, +f.term.value || 24), actualPayment: +f.actualPayment.value || 0, extra: +f.extra.value || 0, useBus: cfg().useBus, from: "pillar", _ts: Date.now() }; S.set("cfg", c); syncToDeck(c); paintCons(); });
   $("#s-case").addEventListener("change", paintStrat);
   $("#s-strat").addEventListener("change", paintStrat);
   $("#i-q").addEventListener("input", paintIss);

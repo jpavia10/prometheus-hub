@@ -28,6 +28,7 @@
       <button class="tab" role="tab" id="t-trend" aria-controls="p-trend">Trends</button>
       <button class="tab" role="tab" id="t-hist" aria-controls="p-hist">Every day</button>
       <button class="tab" role="tab" id="t-goals" aria-controls="p-goals">Goals</button>
+      <button class="tab" role="tab" id="t-lab" aria-controls="p-lab">Food, Exercise & Lab</button>
     </div>
     <section id="p-today" role="tabpanel" class="grid">
       <div class="glass lit span-4"><div class="stat-k">Streak</div><div class="stat-v big" id="a-streak">0</div><div class="stat-s" id="a-streak-s">days logged in a row</div></div>
@@ -46,7 +47,11 @@
       <label class="f">Target weight (lb)<input name="weight" type="number" step="0.1"></label><label class="f">Sleep (h)<input name="sleep" type="number" step="0.25"></label>
       <label class="f">Steps<input name="steps" type="number"></label><label class="f">Training (min a day)<input name="train" type="number"></label>
       <label class="f">Protein (g)<input name="protein" type="number"></label><label class="f">Water (glasses)<input name="water" type="number"></label>
-      <button class="btn" type="submit">Save goals</button></form></div></section>`;
+      <button class="btn" type="submit">Save goals</button></form></div></section>
+    <section id="p-lab" role="tabpanel" class="grid">
+      <div id="apollo-data" class="span-12"></div>
+      <div id="apollo-biomarkers" class="glass span-12"></div>
+    </section>`;
 
   const days = () => S.get("days", {});
   function streak(d) { let n = 0; const t = new Date(); if (!d[day(t)]) t.setDate(t.getDate() - 1); while (d[day(t)]) { n++; t.setDate(t.getDate() - 1); } return n; }

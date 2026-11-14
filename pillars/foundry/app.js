@@ -37,7 +37,21 @@
     $("#y-board").replaceChildren(...(D.board.length ? D.board.map((i) => h("div.kv", null, h("span", null, h("b", null, i.title), h("br"), h("span.stat-s", null, `kept ${i.created || ""}${i.strength ? " · strength " + i.strength : ""}`)),
       h("button.btn.quiet.small", { type: "button", onclick: () => { const p = S.add("projects", { title: i.title, ideaId: i.id, stage: 1, next: "", parts: [], started: day(), log: [{ date: day(), text: "Started from the idea kept " + (i.created || "") }] }); if (window.PB && PB.events) PB.events.publish({ type: "build.started", pillar: "foundry", ref: p.id, title: p.title }); toast("On the bench"); paint(); } }, "Start the build"))) : [h("p.empty", null, D.ideas.length ? "Every invention is on the bench." : "No ideas tagged invention in Athenaeum yet.")]));
   }
-  $("#y-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.add("projects", { title: f.title.value.trim(), ideaId: null, stage: 0, next: f.next.value.trim(), parts: [], started: day(), log: [{ date: day(), text: "Started" }] }); f.reset(); toast("On the bench"); paint(); });
+  $("#y-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.add("projects", { title: f.title.value.trim(), ideaId: f.dataset.ideaId || null, stage: 0, next: f.next.value.trim(), parts: [], started: day(), log: [{ date: day(), text: f.dataset.ideaId ? "Started from Athenaeum handoff" : "Started" }] }); delete f.dataset.ideaId; f.reset(); toast("On the bench"); paint(); });
+  try {
+    const raw = sessionStorage.getItem("prometheus.handoff");
+    if (raw) {
+      const handoff = JSON.parse(raw);
+      if (handoff && handoff.pillar === "foundry") {
+        sessionStorage.removeItem("prometheus.handoff");
+        const f = $("#y-form");
+        f.title.value = String(handoff.title || "").slice(0, 120);
+        f.next.value = String(handoff.text || "").slice(0, 160);
+        if (handoff.ideaId) f.dataset.ideaId = String(handoff.ideaId);
+        toast("Routed from Athenaeum — ready to start build");
+      }
+    }
+  } catch (e) { /* sessionStorage optional */ }
   $("#export").onclick = () => download(`foundry_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
   paint();

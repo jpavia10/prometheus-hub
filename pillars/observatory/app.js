@@ -46,6 +46,17 @@
   }
   $("#o-scan").addEventListener("click", scan);
   $("#o-add").addEventListener("submit", (e) => { e.preventDefault(); const v = e.target.name.value.trim(); if (!v) return; S.set("subjects", [...subjects(), { id: "u-" + Date.now().toString(36), name: v, q: v, from: "you" }]); e.target.reset(); paint(); });
+  try {
+    const raw = sessionStorage.getItem("prometheus.handoff");
+    if (raw) {
+      const handoff = JSON.parse(raw);
+      if (handoff && handoff.pillar === "observatory") {
+        sessionStorage.removeItem("prometheus.handoff");
+        $("#o-add").name.value = String(handoff.title || "").slice(0, 60);
+        toast("Idea routed from Athenaeum — click Watch it to add subject");
+      }
+    }
+  } catch (e) { /* sessionStorage optional */ }
   $("#o-note").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.add("notes", { subject: f.subject.value, kind: f.kind.value, text: f.text.value.trim(), url: f.url.value.trim() }); f.text.value = ""; f.url.value = ""; toast("Kept"); paint(); });
   $("#export").onclick = () => download(`observatory_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };

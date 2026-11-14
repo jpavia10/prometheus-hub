@@ -1,4 +1,8 @@
-.list li .acts { display: flex; gap: 6px; flex: none; }
+.list li .acts { display: flex; flex-wrap: wrap; gap: 6px; flex: none; }
 .list li > span:first-child { min-width: 0; }
-
-.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}
+.kv { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 4px 0; font-size: 14.5px; border-bottom: 1px solid rgba(159, 180, 204, .08); }
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.badge-jump { display: inline-block; padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #ffc552; background: rgba(255, 197, 82, 0.14); border: 1px solid rgba(255, 197, 82, 0.4); }
+.risk-high { border-left: 3px solid var(--bad); padding-left: 10px; }
+.risk-med { border-left: 3px solid var(--warn); padding-left: 10px; }
+.risk-low { border-left: 3px solid var(--good); padding-left: 10px; }

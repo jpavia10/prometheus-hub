@@ -148,6 +148,16 @@ function codex(k) {
     others.length ? h("section", null, h("h3", null, "Link it yourself"), h("div.ath-add", null, pick, h("button.btn.quiet.small", { type: "button", onclick: () => { if (!pick.value) return; (i.links = i.links || []).push(pick.value); save(); rebuild(); showIdea(live.findIndex((x) => x.id === i.id), true); toast("Linked. The sky moved to match."); } }, "Link"))) : null,
     men.length ? h("section", null, h("h3", null, "Names these pillars"), h("div.ath-tags", null, ...men.map((p) => h("a.ath-tag.go", { href: p.ext ? p.route : "../../" + p.route }, p.name + " →")))) : null,
     chron.length && /\bhistor/i.test([i.title, i.body, ...(i.tags || [])].join(" ")) ? h("section", null, h("h3", null, "In the same sky"), h("button.ath-jump", { type: "button", onclick: () => go("chronicle", true) }, h("b", null, "The Chronicle"), h("span", null, `${chron.length} moments of cause and consequence, ${chron[0].short} to ${chron[chron.length - 1].short} →`))) : null,
+    h("section", null, h("h3", null, "Route to Pillar"), h("div.ath-tags", null,
+      ...[["foundry", "Foundry"], ["observatory", "Observatory"], ["forge", "Forge"], ["hearth", "Hearth"], ["bastion", "Bastion"]].map(([pillar, label]) =>
+        h("button.ath-tag.go", {
+          type: "button",
+          onclick: () => {
+            try { sessionStorage.setItem("prometheus.handoff", JSON.stringify({ pillar, title: i.title, text: i.body, ideaId: i.id })); } catch (e) { /* storage optional */ }
+            emit("idea.routed", i.id, `${i.title} → ${label}`);
+            location.href = `../${pillar}/`;
+          }
+        }, label + " →")))),
     h("section.ath-prov", null, h("h3", null, "Where this comes from"), h("p", null, pv.label + "."), pv.kind === "imported" ? h("p", null, "The words above are a summary made from your conversations, not text you typed here. Refinements you append are marked as yours.") : null, h("p", null, "Kept in this browser only.")),
     h("div.ath-actions", null,
       res ? h("button.btn.quiet.small", { type: "button", onclick: () => { i.lastResurfaced = TODAY; save("Seen. It will come back in 30 days."); paintChrome(); showIdea(k, true); } }, "Seen · resurface later") : null,

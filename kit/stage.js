@@ -53,6 +53,15 @@
     window.addEventListener("resize", () => { size(); if (STILL) frame(); });
     window.addEventListener("pk:store", refresh); window.addEventListener("storage", refresh); window.addEventListener("focus", refresh);
     size(); if (o.init) o.init(S, ink); refresh(); if (STILL) { S.t = 2.4; frame(); } raf = requestAnimationFrame(loop);
+    if (!window.__pkSpecular) {
+      window.__pkSpecular = true;
+      document.addEventListener("pointermove", (e) => {
+        const gEl = e.target && e.target.closest ? e.target.closest(".glass, .pk-read") : null;
+        if (!gEl) return; const rc = gEl.getBoundingClientRect();
+        gEl.style.setProperty("--mx", ((e.clientX - rc.left) / Math.max(1, rc.width) * 100).toFixed(1) + "%");
+        gEl.style.setProperty("--my", ((e.clientY - rc.top) / Math.max(1, rc.height) * 100).toFixed(1) + "%");
+      }, { passive: true });
+    }
     const api = { S, refresh, frame: () => frame(), section: sec };
     (window.__stage = window.__stage || []).push(api);
     return api;

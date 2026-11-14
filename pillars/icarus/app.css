@@ -1,2 +1,10 @@
 .disclaimer { border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; background: rgba(4, 6, 12, 0.5); }
 #i-risk b { color: var(--ink); }
+.ruin-grid { border-collapse: collapse; width: 100%; font-size: 12px; text-align: center; }
+.ruin-grid th, .ruin-grid td { border: 1px solid rgba(159, 180, 204, 0.14); padding: 6px 4px; }
+.ruin-grid th { color: var(--muted); font-weight: 600; background: rgba(255, 255, 255, 0.03); }
+.ruin-cell { font-variant-numeric: tabular-nums; transition: outline 0.15s ease; }
+.ruin-cell.you { outline: 2px solid #ffffff; outline-offset: -2px; font-weight: 700; color: #ffffff; box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.25); }
+.rule-hit { border-left: 3px solid var(--bad); padding-left: 8px; }
+.rule-ok { border-left: 3px solid var(--good); padding-left: 8px; }
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }

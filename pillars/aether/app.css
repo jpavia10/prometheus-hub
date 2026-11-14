@@ -1,0 +1,13 @@
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{background:rgba(12,18,32,.65);border:1px solid rgba(159,180,204,.22);border-radius:999px;color:#b8c7dc;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.tab[aria-selected="true"]{border-color:rgba(75,227,138,.65);background:rgba(75,227,138,.14);color:#e9fff2}
+.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08);flex-wrap:wrap}
+.pill{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(75,227,138,.45);color:#7dffc0}
+.pill.warn{border-color:rgba(255,209,102,.6);color:#ffd166}
+.pill.hot{border-color:rgba(255,140,148,.65);color:#ff9ba3}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.stat-box{background:rgba(10,16,28,.55);border:1px solid rgba(159,180,204,.16);border-radius:12px;padding:12px}
+.stat-box b{display:block;font-size:20px;margin-top:4px}
+.check-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(159,180,204,.08);font-size:14px;flex-wrap:wrap}
+.check-row label{display:flex;align-items:center;gap:8px;cursor:pointer}
+.num-in{width:64px;padding:4px 6px;border-radius:8px;border:1px solid rgba(159,180,204,.25);background:rgba(10,16,28,.65);color:#e8eef7;font:inherit;font-size:13px}

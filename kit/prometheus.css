@@ -270,6 +270,9 @@ body.pk-v2 .foot { margin-top: 28px; font-size: 12px; align-items: center; }
 .pk-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; background: radial-gradient(120% 90% at 50% 40%, color-mix(in srgb, var(--accent) 10%, rgba(4, 6, 14, .2)), rgba(3, 4, 11, .55) 70%); }
 .pk-stage-layer { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .pk-stage-reads { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; padding: 10px 16px 0; }
+[hidden] { display: none !important; }
+body.pk-v2 .glass:hover { border-color: color-mix(in srgb, var(--accent) 44%, rgba(200, 220, 255, .25)); }
+body.pk-v2 .glass { background-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 65%); }
 .pk-read { position: relative; display: grid; gap: 2px; padding: 9px 12px 10px; border-radius: 16px; background: rgba(10, 14, 26, .62); border: 1px solid rgba(200, 220, 255, .12); overflow: hidden; }
 .pk-read::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); box-shadow: 0 0 12px var(--accent); }
 .pk-read b { font: 500 21px/1.1 var(--sans); letter-spacing: -.01em; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

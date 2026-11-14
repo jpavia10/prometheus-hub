@@ -1,0 +1,10 @@
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{background:rgba(12,18,32,.65);border:1px solid rgba(159,180,204,.22);border-radius:999px;color:#b8c7dc;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.tab[aria-selected="true"]{border-color:rgba(184,233,74,.7);background:rgba(184,233,74,.14);color:#f3ffe0}
+.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08);flex-wrap:wrap}
+.pill{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(184,233,74,.48);color:#cfff82}
+.pill.warn{border-color:rgba(255,209,102,.65);color:#ffd166}
+.pill.hot{border-color:rgba(255,140,148,.65);color:#ff9ba3}
+textarea.ta{width:100%;min-height:170px;background:rgba(10,16,28,.6);border:1px solid rgba(159,180,204,.25);border-radius:10px;color:#e8eef7;padding:12px;font:13.5px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}
+.vault-banner{background:rgba(12,20,16,.65);border:1px solid rgba(184,233,74,.32);border-radius:12px;padding:12px;margin-bottom:12px;font-size:13.5px}
+.mono-box{font:12px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;background:rgba(8,12,20,.65);border:1px solid rgba(159,180,204,.16);border-radius:10px;padding:10px;color:#9fb4cc}

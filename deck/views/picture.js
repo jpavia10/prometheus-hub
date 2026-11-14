@@ -76,11 +76,11 @@ export function render(root, route, ctx) {
       return h("a.countdown", { href: r.go || "#/time" }, ring({ value: 1 - Math.min(1, n / 90), size: 96, stroke: 4, tone: r.tone === "holiday" ? "ice" : r.big ? "violet" : "ember", center: h("div", num, h("small", n === 1 ? "day" : "days")), label: `${n} days to ${r.title}` }), h("b", r.title), h("small", fmtDay(r.date))); }))) : null;
 
   /* tier 2: the payoff */
-  const m = store.get("money"); const pos = m.plan ? position(m.plan, m.events, t) : null; let payoff;
+  const m = store.get("money"); const pos = m.plan ? position(m.plan, m.events, t) : null; const saleSum = (m.events || []).filter((e) => e.kind === "sale" && e.applied !== false).reduce((s, e) => s + (Number(e.amount) || 0), 0); let payoff;
   if (pos) {
     const ms = milestone(pos.pct); const [fy, fm] = (pos.freeMonth || "").split("-").map(Number); const pctEl = h("span.num.dial-pct"); countUp(pctEl, pos.pct * 100, (v) => v.toFixed(v >= 99.95 ? 0 : 1) + "%");
     payoff = h("section.panel.payoff.glow-mint", { "aria-label": "The payoff" },
-      h("header.panel-head", h("h2", "Payoff"), m.plan.sample ? chip("sample preset") : m.plan.label ? chip(m.plan.label) : null, h("a.link", { href: "#/money" }, "Open")),
+      h("header.panel-head", h("h2", "Payoff"), m.plan.sample ? chip("sample preset") : m.plan.label ? chip(m.plan.label) : null, saleSum > 0 ? chip(`+${moneyC(Math.round(saleSum * 100), 0)} sales`) : null, h("a.link", { href: "#/money" }, "Open")),
       h("a.dial-box", { href: "#/money", "aria-label": `Payoff: ${pct(pos.pct, 1)} paid by schedule` }, dial({ value: pos.pct, width: 300, stroke: 10, ticks: 48, tone: "mint", label: "Share of the starting debt paid" }), h("div.dial-center", pctEl, h("small", "paid, by schedule"))),
       h("div.stats3",
         h("div", h("small", "Debt-free"), h("b.num", pos.done ? "Done" : pos.freeMonth ? `${monName(fm, 1)} ${fy}` : "never"), h("small", pos.done ? "" : monthsText(pos.monthsLeft) + " left")),
@@ -114,6 +114,11 @@ export function render(root, route, ctx) {
   const since = lately.length ? h("section.panel.since", { "aria-label": fresh.length ? "Since you were here" : "Lately" }, h("header.panel-head", h("h2", fresh.length ? "Since you were here" : "Lately in the pillars"), h("small.quiet", fresh.length ? plural(fresh.length, "change") : "")),
     ...lately.map((e) => h("a.since-row", { href: e.href }, h("b", e.name), h("span", e.say + (e.title ? ": " + e.title : "")), h("small.quiet", ago(e.at))))) : null;
   const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
-  put(root, rx, hero, put(h("div.board"), since, first, run, count, payoff, ambient), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
+  const isAway = (() => { try { return JSON.parse(localStorage.getItem("prometheus.odyssey.away") || "false") === true || (JSON.parse(localStorage.getItem("prometheus.bus.meta") || "{}").awayMode === true); } catch { return false; } })();
+  const awayBanner = isAway ? h("section.panel.glow-ember.away-banner", { "aria-label": "Away Mode" },
+    h("header.panel-head", h("h2", "Odyssey Away Mode"), chip("active"), h("a.link", { href: "pillars/odyssey/" }, "Checklist")),
+    h("p", "Travel priority mode enabled — mountain readiness (Bastion), home systems (Hearth) & near-term transit promoted above financial ambient tiles.")) : null;
+  const boardPanels = isAway ? [awayBanner, since, first, ambient, run, count, payoff] : [since, first, run, count, payoff, ambient];
+  put(root, rx, hero, put(h("div.board"), ...boardPanels), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
   return () => { if (rx.cleanup) rx.cleanup(); };
 }

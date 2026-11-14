@@ -1,5 +1,12 @@
-/* Hearth: the kit carries the look; only what this pillar adds is here. */
+/* Hearth: styles for renovation phases, field requests, BOM & cost ledger */
 .row-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .sub { font-size: 13px; color: var(--muted); }
 .pill.hot { border-color: var(--accent); color: #fff; }
-.bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; } .bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.pill.gate-ok { border-color: rgba(125, 255, 192, 0.55); color: var(--good); background: rgba(125, 255, 192, 0.08); }
+.pill.gate-hold { border-color: rgba(255, 197, 82, 0.55); color: var(--warn); background: rgba(255, 197, 82, 0.08); }
+.bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; }
+.bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.kv { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 8px 0; font-size: 14px; border-bottom: 1px solid rgba(159,180,204,.08); }
+.badge-phase { display: inline-block; padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: .04em; background: rgba(255, 179, 71, 0.14); color: #ffc552; border: 1px solid rgba(255, 179, 71, 0.35); }
+.phase-card { padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.025); margin-bottom: 10px; }

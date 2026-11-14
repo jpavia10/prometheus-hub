@@ -92,7 +92,7 @@ export function startSky(canvas) {
   const U = {}; for (const n of ["uRes", "uT", "uTop", "uMid", "uLow", "uGlow", "uSun", "uStars", "uCloud", "uRain", "uSnow", "uWind", "uFlash", "uPar", "uOct"]) U[n] = gl.getUniformLocation(prog, n);
 
   const still = matchMedia("(prefers-reduced-motion: reduce)");
-  const st = { phase: 0.5, cloud: 0.1, rain: 0, snow: 0, wind: 0.1, storm: 0, flash: 0, par: [0, 0], scale: 0.55, oct: 4, tier: 2, raf: 0, last: 0, t0: performance.now(), frames: 0, slow: 0, nextBolt: 0, stopped: false };
+  const st = { phase: 0.5, cloud: 0.1, rain: 0, snow: 0, wind: 0.1, storm: 0, flash: 0, par: [0, 0], scale: 0.72, oct: 4, tier: 2, raf: 0, last: 0, t0: performance.now(), frames: 0, slow: 0, nextBolt: 0, stopped: false };
   const cur = { cloud: 0.1, rain: 0, snow: 0, wind: 0.1, storm: 0 };              // eased toward st.*
 
   function size() {
@@ -114,7 +114,7 @@ export function startSky(canvas) {
   }
   function frame(now) {
     st.raf = 0; if (st.stopped || document.hidden) return;
-    const gap = st.tier === 0 || still.matches ? 20000 : 33;
+    const gap = st.tier === 0 || still.matches ? 20000 : 16;
     if (now - st.last >= gap - 2) {
       const before = performance.now(); draw(now); gl.finish && st.frames < 40 && gl.finish(); const cost = performance.now() - before;
       if (st.frames > 6 && st.frames < 40 && cost > 24) st.slow++;

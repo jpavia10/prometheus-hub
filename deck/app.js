@@ -7,6 +7,7 @@ import { h, $, icon, sheet, toast, pickFile, reduced, ask, sheetOpen, setQuiet }
 import { CAPS, SLICES, cap } from "./caps.js";
 import { PILLARS, pillar } from "./pillars.js";
 import { setFixed, searchAll } from "./core/feeds.js";
+import { syncBridges, mirrorDeckToPillars } from "./core/legacy.js";
 import { loadManifests, searchRecords, commands, handOff } from "./core/reach.js";
 import { startSky } from "./core/atmo.js";
 import * as wx from "./core/weather.js";
@@ -14,7 +15,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d12";
+export const BUILD = "d13";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -47,7 +48,8 @@ async function render(same) {
   const moving = !same && prev && prev.cap !== r.cap;
   if (moving && document.startViewTransition && !reduced()) { document.documentElement.classList.add("vt-inpage"); const vt = document.startViewTransition(swap); const done = () => document.documentElement.classList.remove("vt-inpage"); vt.finished.then(done, done); vt.ready.catch(() => {}); vt.finished.catch(() => {}); vt.updateCallbackDone.catch(() => {}); } else swap();   // a newer change may skip an older transition: that is fine
 }
-store.on(() => {                                                                  // any change: redraw the view, unless a sheet or a field has the floor
+store.on(() => {                                                                  // any change: mirror to pillars, then redraw unless typing
+  mirrorDeckToPillars(store);
   const a = document.activeElement; const typing = a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && $("#view").contains(a);
   if (sheetOpen() || typing) { state.dirty = true; return; }
   render(true);
@@ -153,6 +155,15 @@ async function boot() {
   if (!state.sky) document.documentElement.classList.add("no-sky");
   try { const r = await fetch("./deck/data/fixed-dates.json"); state.fixed = await r.json(); setFixed(state.fixed); } catch (e) { console.warn("fixed dates unavailable offline on a first visit", e); }
   if (params.get("demo") === "1" && store.pristine()) store.importFile(demoDeck(today(), state.fixed));
+  syncBridges(store);
+  addEventListener("storage", () => { syncBridges(store); render(true); });
+  addEventListener("focus", () => { syncBridges(store); });
+  document.addEventListener("pointermove", (e) => {
+    const t = e.target && e.target.closest ? e.target.closest(".panel, .tile, .rx-read") : null;
+    if (!t) return; const r = t.getBoundingClientRect();
+    t.style.setProperty("--mx", ((e.clientX - r.left) / Math.max(1, r.width) * 100).toFixed(1) + "%");
+    t.style.setProperty("--my", ((e.clientY - r.top) / Math.max(1, r.height) * 100).toFixed(1) + "%");
+  }, { passive: true });
   state.weather = wx.cached(store.get("profile").place); applySky(); await reach;
   await render(false);
   document.documentElement.classList.add("ready");

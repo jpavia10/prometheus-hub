@@ -67,6 +67,8 @@ const ICON = {
   mail: "M4 6h16v12H4zM4 7l8 6l8-6", keys: "M4 5h16v14H4zM8 5v8M12 5v8M16 5v8M8 13v6M12 13v6M16 13v6", columns: "M4 20h16M5 8h14L12 4zM7 8v9M12 8v9M17 8v9M5 17h14", compass: "M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18M15.500 8.500l-2 5l-5 2l2-5z",
   lock: "M6.500 11h11v9h-11zM8.500 11V8a3.500 3.500 0 0 1 7 0v3M12 14.500v2", eye: "M2.500 12s3.500-6.500 9.500-6.500s9.500 6.500 9.500 6.500s-3.500 6.500-9.500 6.500S2.500 12 2.500 12M12 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6", speaker: "M4 9.500v5h3.500l5 4v-13l-5 4zM16 9a4 4 0 0 1 0 6M18.500 6.500a8 8 0 0 1 0 11", mute: "M4 9.500v5h3.500l5 4v-13l-5 4zM16.500 9.500l4 5M20.500 9.500l-4 5",
   risk: "M4 19h16M6 19v-5M10 19V9M14 19v-8M18 19V5", shield: "M12 3l7 3v5.5c0 4.5-3 8-7 9.5c-4-1.5-7-5-7-9.5V6z", bell: "M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 2h-14zM10 20.5a2 2 0 0 0 4 0",
+  aurora: "M3 16c3-6 5-10 9-6s6 0 9-6M3 20c4-4 6-6 10-3s5 1 8-3", civic: "M3 20h18M4 10h16M6 10v10M10 10v10M14 10v10M18 10v10M12 3l9 7H3z",
+  feather: "M20 4a6 6 0 0 0-8.5 0L5 10.5V19h8.5L20 12.5A6 6 0 0 0 20 4M16 8L2 22M17.5 15H9", vault: "M4 5h16v14H4zM8 19v1.5M16 19v1.5M12 12a3 3 0 1 0 0 .01M12 9v1M12 14v1M9 12h1M14 12h1",
 };
 export function icon(name, size = 20) {
   return s("svg", { viewBox: "0 0 24 24", width: size, height: size, fill: "none", stroke: "currentColor", "stroke-width": 1.6, "stroke-linecap": "round", "stroke-linejoin": "round", "aria-hidden": "true", class: "ic" }, s("path", { d: ICON[name] || ICON.system }));

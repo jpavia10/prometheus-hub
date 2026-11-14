@@ -1,0 +1,7 @@
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{background:rgba(12,18,32,.65);border:1px solid rgba(159,180,204,.22);border-radius:999px;color:#b8c7dc;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.tab[aria-selected="true"]{border-color:rgba(123,156,255,.7);background:rgba(123,156,255,.16);color:#edf2ff}
+.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08);flex-wrap:wrap}
+.pill{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(123,156,255,.45);color:#adc2ff}
+.pill.hot{border-color:rgba(255,169,140,.7);color:#ffb8a0}
+.pill.good{border-color:rgba(125,255,192,.55);color:#7dffc0}

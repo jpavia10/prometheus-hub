@@ -1,6 +1,5 @@
-/* Bastion (Sebastian, 2026-11-09): preparedness inventory with live weights, expiry radar on the
-   deadlines bus, scenario readiness checklists, paste-import, and a foreground NWS panel for
-   Frazier Park (34.82057, -118.94543). No background monitoring is promised or implied. */
+/* Bastion v2: Frazier Park readiness (4,632 ft · CAZ336 · CAZ597 · San Andreas · PG&E PSPS), inventory weights with 25 lb / 30 lb go-bag cap,
+   scenario auto-matching against packed items, seasonal mode toggle (Winter Chains/Freeze vs Summer Wildfire/PSPS), and live NWS watch. */
 (function () {
   "use strict";
   const { $, h, day, toast, store, download, pickFile, field, G } = PK;
@@ -16,12 +15,26 @@
     "House shelter-in": ["Water storage filled", "Pantry buffer (2 weeks)", "Propane / heat backup checked", "Flashlights + lantern batteries", "Generator or power station charged", "Pipes / freeze prep done", "Car fueled above half", "Medications buffer"],
     "Red Cross 72-hour baseline": ["Water 1 gal/person/day (3-day evac)", "Food 3-day non-perishable", "Flashlight", "Battery/hand-crank radio (NOAA Weather Radio if possible)", "Extra batteries", "First aid kit", "Medications 7-day + medical items", "Multi-purpose tool", "Sanitation & hygiene", "Copies of personal documents", "Cell phone with chargers", "Family & emergency contact info", "Extra cash", "Emergency blanket", "Map(s) of the area"],
   };
-  window.BASTION_SCENARIOS = SCENARIOS;                                            // read by the stage at the top (stage.js)
+  window.BASTION_SCENARIOS = SCENARIOS;
 
   app.innerHTML = `
     <section class="grid">
-      <div class="glass span-12"><h2>Storm watch — Frazier Park</h2><div id="b-wx" class="stat-s">Loading the National Weather Service outlook…</div></div>
-      <div class="glass span-12"><h2>Inventory</h2><div id="b-sum"></div><div id="b-list" style="margin-top:8px"></div></div>
+      <div class="glass span-6">
+        <div class="row-actions" style="justify-content:space-between">
+          <h2>Storm watch · Frazier Park</h2>
+          <button class="btn quiet small" id="b-season-btn" type="button"></button>
+        </div>
+        <div id="b-wx" class="stat-s">Loading National Weather Service outlook…</div>
+      </div>
+      <div class="glass span-6">
+        <h2>Local Risk Profile (CAZ336 / CAZ597)</h2>
+        <div id="b-profile" class="stat-s">Loading Frazier Park hazard baseline…</div>
+      </div>
+      <div class="glass span-12">
+        <h2>Inventory &amp; 25 lb Go-Bag Weight Cap</h2>
+        <div id="b-sum"></div>
+        <div id="b-list" style="margin-top:8px"></div>
+      </div>
       <div class="glass span-6"><h2>Add an item</h2>
         <form class="form" id="b-form">
           <label class="f wide">Name<input name="name" required maxlength="100"></label>
@@ -30,68 +43,130 @@
           <label class="f">Qty<input name="qty" type="number" min="1" value="1"></label>
           <label class="f">Weight each (oz)<input name="weightOz" type="number" step="0.1" min="0" value="0"></label>
           <label class="f">Expires<input name="expiry" type="date"></label>
-          <button class="btn" type="submit">Add</button></form></div>
+          <button class="btn" type="submit">Add</button>
+        </form>
+      </div>
       <div class="glass span-6"><h2>Paste-import a list</h2>
-        <p class="stat-s">One item per line — from your "Bugout gear" list or anywhere. Understands "2x Name", "Name x2", "Name — 3". Imported items land in the bag with no weight until you set it.</p>
+        <p class="stat-s">One item per line ("2x Name", "Name x2", "Name — 3"). Imported items land in bag at 0 oz until weighed.</p>
         <textarea class="ta" id="b-paste" placeholder="2x Water filter&#10;Headlamp&#10;MRE — 4"></textarea>
-        <div class="row-actions" style="margin-top:8px"><button class="btn" id="b-import-list" type="button">Import lines</button></div></div>
-      <div class="glass span-12"><h2>Readiness</h2><div id="b-scen"></div></div>
-      <div class="glass span-12"><h2>Alert types that matter here</h2><div id="b-alerts"></div>
-        <p class="note">The National Weather Service alert types Frazier Park actually sees, with recent-history counts — from the reset-day readiness data (data/). The Storm watch panel above carries the live alerts.</p></div>
+        <div class="row-actions" style="margin-top:8px"><button class="btn" id="b-import-list" type="button">Import lines</button></div>
+      </div>
+      <div class="glass span-12"><h2>Readiness Checklists (Auto-Cross-Checked with Gear)</h2><div id="b-scen"></div></div>
+      <div class="glass span-12"><h2>Frazier Park NWS Alert Types</h2><div id="b-alerts"></div></div>
     </section>`;
 
+  const PB_safe_add = (ds, n) => { const d = new Date(ds + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+
+  function itemMatchesEntry(items, entry) {
+    const tokens = entry.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter((w) => w.length >= 4 && !["for", "with", "days", "hour", "extra", "your", "that", "half", "area"].includes(w));
+    return items.some((it) => {
+      const hay = (it.name + " " + it.category).toLowerCase();
+      return tokens.some((t) => hay.includes(t));
+    });
+  }
+
   function paint() {
+    const season = S.get("season", "winter");
+    const sb = $("#b-season-btn");
+    sb.textContent = season === "winter" ? "Mode: Winter (Snow / Freeze)" : "Mode: Summer (Wildfire / PSPS)";
+    sb.onclick = () => { S.set("season", season === "winter" ? "summer" : "winter"); paint(); };
+
     const list = S.list("items");
     const w = BASTION.totalWeight(list);
+    const bagOz = w.byLoc.bag || 0;
+    const bagStatus = bagOz > 480 ? `<span class="pill over">OVER 30 LB MAX</span>` : bagOz > 400 ? `<span class="pill soon">Over 25 lb target</span>` : bagOz > 0 ? `<span class="pill">Under 25 lb cap</span>` : "";
     const soon = list.filter((i) => i.expiry && i.expiry <= PB_safe_add(day(), 90));
+
     $("#b-sum").innerHTML = `<div class="kv"><span>Total weight (all locations)</span><b>${BASTION.fmtWeight(w.totalOz)}</b></div>`
-      + LOCS.map((l) => `<div class="kv"><span>${l}</span><b>${BASTION.fmtWeight(w.byLoc[l] || 0)} · ${list.filter((i) => (i.location || "bag") === l).length} items</b></div>`).join("")
+      + LOCS.map((l) => `<div class="kv"><span>${l}${l === "bag" ? " " + bagStatus : ""}</span><b>${BASTION.fmtWeight(w.byLoc[l] || 0)} · ${list.filter((i) => (i.location || "bag") === l).length} items</b></div>`).join("")
       + (soon.length ? `<div class="kv"><span>Expiring within 90 days</span><b>${soon.length}</b></div>` : "");
+
     for (const it of list) if (window.PB && it.expiry) PB.deadlines.publish({ title: "Expires: " + it.name, date: it.expiry, source: "bastion", kind: "expiry", ref: it.id });
+
     $("#b-list").innerHTML = list.length ? "" : `<p class="empty">Nothing inventoried yet.</p>`;
     for (const it of list) {
       const st = !it.expiry ? "" : it.expiry < day() ? `<span class="pill over">expired ${it.expiry}</span>` : it.expiry <= PB_safe_add(day(), 90) ? `<span class="pill soon">expires ${it.expiry}</span>` : `<span class="pill">to ${it.expiry}</span>`;
       $("#b-list").append(h("div.kv", null,
         h("span", null, `${it.name} ×${it.qty || 1} `, h("span.stat-s", null, `${it.category} · ${it.location || "bag"} · ${BASTION.fmtWeight((it.weightOz || 0) * (it.qty || 1))}`)),
-        h("span", null, st, " ", h("button.btn.quiet.small", { type: "button", onclick: () => { const prev = S.list("items"); S.remove("items", it.id); if (window.PB) PB.deadlines.unpublish("bastion", it.id); paint(); toast("Removed", 6000, () => { S.set("items", prev); paint(); }); } }, "Remove"))));
+        h("span", null, h("span", { innerHTML: st }), " ", h("button.btn.quiet.small", {
+          type: "button",
+          onclick: () => {
+            const prev = S.list("items"); S.remove("items", it.id);
+            if (window.PB) PB.deadlines.unpublish("bastion", it.id); paint();
+            toast("Removed", 6000, () => { S.set("items", prev); paint(); });
+          },
+        }, "Remove"))));
     }
+
     const checks = S.get("checks", {});
     $("#b-scen").innerHTML = "";
     for (const [name, entries] of Object.entries(SCENARIOS)) {
-      const box = h("div", null, h("h3", null, `${name} — ${BASTION.readiness(Object.fromEntries(entries.map((e) => [e, !!(checks[name] || {})[e]])))}%`));
-      for (const e of entries) box.append(h("label.check", null,
-        h("input", { type: "checkbox", ...(checks[name] && checks[name][e] ? { checked: "" } : {}), onchange: (ev) => { const c = S.get("checks", {}); c[name] = c[name] || {}; c[name][e] = ev.target.checked; S.set("checks", c); paint(); } }), e));
+      const box = h("div", { style: "margin-bottom:12px" },
+        h("h3", null, `${name} — ${BASTION.readiness(Object.fromEntries(entries.map((e) => [e, !!(checks[name] || {})[e]])))}%`)
+      );
+      for (const e of entries) {
+        const matched = itemMatchesEntry(list, e);
+        const seasonal = (season === "winter" && /blanket|freeze|chains|warm/i.test(e)) || (season === "summer" && /water|power|evac|map|generator|radio/i.test(e));
+        box.append(h("label.check", null,
+          h("input", {
+            type: "checkbox",
+            ...(checks[name] && checks[name][e] ? { checked: "" } : {}),
+            onchange: (ev) => { const c = S.get("checks", {}); c[name] = c[name] || {}; c[name][e] = ev.target.checked; S.set("checks", c); paint(); },
+          }),
+          " ", e, " ",
+          matched ? h("span.pill", { style: "margin-left:4px" }, "packed in inventory") : null,
+          seasonal ? h("span.pill.soon", { style: "margin-left:4px" }, season + " priority") : null
+        ));
+      }
       $("#b-scen").append(box);
     }
   }
-  const PB_safe_add = (ds, n) => { const d = new Date(ds + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
-  $("#b-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
+
+  $("#b-form").addEventListener("submit", (e) => {
+    e.preventDefault(); const f = e.target;
     S.add("items", { name: f.name.value.trim(), category: f.category.value, location: f.location.value, qty: +f.qty.value || 1, weightOz: +f.weightOz.value || 0, expiry: f.expiry.value || null });
-    f.reset(); f.qty.value = 1; toast("Added"); paint(); });
-  $("#b-import-list").onclick = () => { const rows = BASTION.parseImport($("#b-paste").value);
+    f.reset(); f.qty.value = 1; toast("Added"); paint();
+  });
+  $("#b-import-list").onclick = () => {
+    const rows = BASTION.parseImport($("#b-paste").value);
     if (!rows.length) { toast("Nothing to import"); return; }
     for (const r of rows) S.add("items", { name: r.name, qty: r.qty, category: "other", location: "bag", weightOz: 0, expiry: null });
-    $("#b-paste").value = ""; toast(`Imported ${rows.length} items`); paint(); };
+    $("#b-paste").value = ""; toast(`Imported ${rows.length} items`); paint();
+  };
   $("#export").onclick = () => download(`bastion_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
-  paint();
 
-  if (window.BASTION_ALERTS) $("#b-alerts").innerHTML = window.BASTION_ALERTS.map((a) =>
-    `<div class="kv"><span><b>${esc(a.a)}</b><br><span class="stat-s">${esc(a.d)}</span></span>${a.n != null ? `<b>${a.n} recent</b>` : ""}</div>`).join("");
-  // NWS storm watch (foreground fetch; honest about freshness and failure)
+  if (window.BASTION_ALERTS) {
+    $("#b-alerts").innerHTML = window.BASTION_ALERTS.map((a) =>
+      `<div class="kv"><span><b>${esc(a.a)}</b><br><span class="stat-s">${esc(a.d)}</span></span>${a.n != null ? `<b>${a.n} recent</b>` : ""}</div>`
+    ).join("");
+  }
+
+  fetch("./data/frazier-readiness.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
+    if (!d) return;
+    const p = d.place || {};
+    $("#b-profile").innerHTML = `<div class="kv"><span>Location</span><b>${esc(p.name || "Frazier Park")} · ${p.elevation_ft_usgs_epqs || 4632} ft</b></div>
+      <div class="kv"><span>NWS Zones</span><b>${esc((p.nws && p.nws.forecast_zone) || "CAZ336")} / ${esc((p.nws && p.nws.fire_zone) || "CAZ597")}</b></div>
+      ${(d.risk_profile || []).map((r) => `<div class="kv"><span><b>${esc(r.hazard)}</b><br><span class="stat-s">${esc(r.evidence.slice(0, 100))}</span></span><b>${esc(r.level)}</b></div>`).join("")}`;
+  }).catch(() => {});
+
   (async () => {
     const el = $("#b-wx");
     try {
-      const pt = await (await fetch("https://api.weather.gov/points/34.82057,-118.94543", { headers: { "Accept": "application/geo+json" } })).json();
+      const pt = await (await fetch("https://api.weather.gov/points/34.82057,-118.94543", { headers: { Accept: "application/geo+json" } })).json();
       const [fc, al] = await Promise.all([
-        fetch(pt.properties.forecast, { headers: { "Accept": "application/geo+json" } }).then((r) => r.json()),
-        fetch("https://api.weather.gov/alerts/active?point=34.82057,-118.94543", { headers: { "Accept": "application/geo+json" } }).then((r) => r.json()),
+        fetch(pt.properties.forecast, { headers: { Accept: "application/geo+json" } }).then((r) => r.json()),
+        fetch("https://api.weather.gov/alerts/active?point=34.82057,-118.94543", { headers: { Accept: "application/geo+json" } }).then((r) => r.json()),
       ]);
       const periods = (fc.properties.periods || []).slice(0, 4);
       const alerts = al.features || [];
-      el.innerHTML = (alerts.length ? alerts.map((a) => `<div class="kv"><span><b>${esc(a.properties.event)}</b> — ${esc(a.properties.headline || "")}</span></div>`).join("") : `<div class="kv"><span>Active alerts</span><b>None</b></div>`)
+      el.innerHTML = (alerts.length ? alerts.map((a) => `<div class="kv"><span><b>${esc(a.properties.event)}</b> — ${esc(a.properties.headline || "")}</span></div>`).join("") : `<div class="kv"><span>Active NWS alerts</span><b>None</b></div>`)
         + periods.map((p) => `<div class="kv"><span>${esc(p.name)}</span><b>${p.temperature}°${p.temperatureUnit} · ${esc(p.shortForecast)}</b></div>`).join("")
-        + `<div class="stat-s" style="margin-top:6px">National Weather Service · fetched ${new Date().toLocaleTimeString("en-US")} · refresh by reopening this page.</div>`;
-    } catch (_) { el.textContent = "Weather unavailable right now (offline or the Weather Service did not answer). Your inventory and checklists below work regardless."; }
+        + `<div class="stat-s" style="margin-top:6px">NWS HNX · fetched ${new Date().toLocaleTimeString("en-US")}</div>`;
+    } catch (_) {
+      el.textContent = "Weather unavailable right now (offline or unreachable). All offline checklists remain active.";
+    }
   })();
+
+  paint();
 })();

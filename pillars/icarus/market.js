@@ -1,18 +1,45 @@
-/* Icarus market calendar (Sebastian, 2026-11-09): the corrected NYSE calendar as a working panel —
-   today's session status and the road ahead. Reference only; the journal never trades. */
+/* Icarus market calendar: NYSE holidays + early closes 2026-2028 (deduplicated & filterable). */
 (function () {
   "use strict";
-  const { $, day } = PK;
-  const root = document.getElementById("icarus-market"); if (!root) return;
-  const byDate = {}; for (const e of ICARUS_MARKET_DAYS) byDate[e.date] = e;
-  const today = day();
-  const t = byDate[today];
-  const status = t ? (t.kind === "full closure" ? `Closed today — ${t.name}.` : `Early close today — ${t.name} (13:00 ET).`) : "Regular session today (no holiday or early close on the NYSE calendar).";
-  const ahead = ICARUS_MARKET_DAYS.filter((e) => e.date >= today).slice(0, 6);
+  const { day } = PK;
+  const root = document.getElementById("icarus-market");
+  if (!root || !window.ICARUS_MARKET_DAYS) return;
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  root.innerHTML = `<div class="glass" style="margin-top:14px"><h2>Market calendar — NYSE 2026–2028</h2>
-    <p><b>${esc(status)}</b></p>
-    ${ahead.map((e) => `<div class="kv"><span>${e.date}</span><b>${esc(e.name)} · ${e.kind}${e.close ? " " + e.close : ""}</b></div>`).join("")}
-    <p class="note">35 events: 30 full closures, 5 early closes. Corrected from the research deliverable, which duplicated every row (68 rows, 34 unique events) and missed the Dec 31, 2027 observance. Source: NYSE hours calendar.</p></div>
-  <style>.kv{display:flex;justify-content:space-between;gap:10px;padding:4px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}</style>`;
+  const events = window.ICARUS_MARKET_DAYS;
+  const today = day();
+  const byDate = {};
+  for (const e of events) byDate[e.date] = e;
+  const t = byDate[today];
+  const status = t
+    ? (t.kind === "full closure" ? `Closed today — ${t.name}.` : `Early close today — ${t.name} (13:00 ET).`)
+    : "Regular session today (no holiday or early close on the NYSE calendar).";
+
+  let mode = "upcoming";
+  function render() {
+    const filtered = events.filter((e) => {
+      if (mode === "upcoming") return e.date >= today;
+      if (mode === "early") return e.kind !== "full closure";
+      if (mode === "full") return e.kind === "full closure";
+      return true;
+    }).slice(0, mode === "upcoming" ? 8 : 40);
+
+    root.innerHTML = `<div class="glass">
+      <div class="row-actions" style="justify-content:space-between">
+        <h2>NYSE Market Calendar (${events.length} events · 2026–2028)</h2>
+        <div class="row-actions">
+          <button class="btn quiet small" data-mk="upcoming" type="button">Upcoming</button>
+          <button class="btn quiet small" data-mk="full" type="button">Full closures</button>
+          <button class="btn quiet small" data-mk="early" type="button">Early closes</button>
+          <button class="btn quiet small" data-mk="all" type="button">All</button>
+        </div>
+      </div>
+      <p style="margin:6px 0"><b>${esc(status)}</b></p>
+      ${filtered.map((e) => `<div class="kv"><span>${esc(e.date)}</span><b>${esc(e.name)} · ${esc(e.kind)}${e.close ? " " + esc(e.close) : ""}</b></div>`).join("") || '<p class="empty">No matching calendar events.</p>'}
+    </div>`;
+    root.querySelectorAll("[data-mk]").forEach((b) => {
+      if (b.dataset.mk === mode) b.classList.remove("quiet");
+      b.onclick = () => { mode = b.dataset.mk; render(); };
+    });
+  }
+  render();
 })();

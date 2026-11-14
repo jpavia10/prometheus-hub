@@ -39,11 +39,27 @@
     $("#k-item").who.replaceChildren(h("option", { value: "" }, "everyone"), ...D.people.filter((p) => p.role === "kid").map((p) => h("option", { value: p.id }, p.name)));
     const f = $("#k-sch"); if (D.sch) { f.pattern.value = D.sch.pattern || ""; f.start.value = D.sch.start || ""; }
     $("#k-people").replaceChildren(...D.people.map((p) => { const b = nextBirthday(p.born, D.today); return h("div.kv", null, h("span", null, h("b", null, p.name), h("br"), h("span.stat-s", null, `${p.role}${b ? ` · birthday in ${b.days} d, turns ${b.age}` : ""}`)), h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("people", p.id); paint(); } }, "Remove")); }));
-    $("#k-other").replaceChildren(...(D.school.length || D.trips.length ? [...D.school.map((s) => h("div.kv", null, h("span", null, h("b", null, s.title), h("br"), h("span.stat-s", null, `Records · school${s.due ? " · due " + s.due : ""}`)))), ...D.trips.map((t) => h("div.kv", null, h("span", null, h("b", null, t.name || t.dest), h("br"), h("span.stat-s", null, `Odyssey · with the kids · ${t.start}${t.end ? " to " + t.end : ""}`))))]
-      : [h("p.empty", null, "School documents in Records and trips marked kids in Odyssey show up here.")]));
+    $("#k-other").replaceChildren(...(D.school.length || D.trips.length ? [
+      ...D.school.map((s) => h("div.kv", null, h("span", null, h("b", null, s.title), h("br"), h("span.stat-s", null, `Records · school${s.due ? " · due " + s.due : ""}`)), h("a.btn.quiet.small", { href: "../records/" }, "Open Records →"))),
+      ...D.trips.map((t) => h("div.kv", null, h("span", null, h("b", null, t.name || t.dest), h("br"), h("span.stat-s", null, `Odyssey · with the kids · ${t.start}${t.end ? " to " + t.end : ""}`)), h("a.btn.quiet.small", { href: "../odyssey/" }, "Open Odyssey →")))
+    ] : [
+      h("p.empty", null, "School documents in Records and trips marked kids in Odyssey show up here."),
+      h("div.kv", null, h("span.stat-s", null, "Add school records or family trips in linked pillars:"), h("span", null, h("a.btn.quiet.small", { href: "../records/" }, "Records →"), " ", h("a.btn.quiet.small", { href: "../odyssey/" }, "Odyssey →")))
+    ]));
   }
   $("#k-item").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; const it = S.add("items", { title: f.title.value.trim(), kind: f.kind.value, who: f.who.value, date: f.date.value, time: f.time.value });
     if (window.PB) PB.deadlines.publish({ title: (it.kind === "school" ? "School: " : "") + it.title, date: it.date, time: it.time || undefined, source: "kin", kind: it.kind, ref: it.id }); f.reset(); toast("Added"); paint(); });
+  try {
+    const raw = sessionStorage.getItem("prometheus.handoff");
+    if (raw) {
+      const handoff = JSON.parse(raw);
+      if (handoff && handoff.pillar === "kin") {
+        sessionStorage.removeItem("prometheus.handoff");
+        $("#k-item").title.value = String(handoff.title || "").slice(0, 120);
+        toast("Routed from Athenaeum into Kin date planner");
+      }
+    }
+  } catch (e) { /* sessionStorage optional */ }
   $("#k-sch").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.set("schedule", f.pattern.value ? { pattern: f.pattern.value, start: f.start.value || day() } : null); toast("Pattern saved"); paint(); });
   $("#k-person").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.add("people", { name: f.name.value.trim(), role: f.role.value, born: f.born.value }); f.reset(); paint(); });
   $("#export").onclick = () => download(`kin_${day()}.json`, S.dump());
