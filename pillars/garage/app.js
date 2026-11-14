@@ -130,6 +130,10 @@
         <div class="row-actions" id="g-vehicles" style="margin-bottom:8px"></div>
         <p class="note">Each vehicle keeps its own odometer, service list, fuel log and paperwork on this device. The Sorento's records are exactly where they always were.</p>
       </div>
+      <div class="glass span-12"><h2>Vehicles in 3D</h2>
+        <canvas id="g-3d" aria-label="Interactive 3D model of the active vehicle"></canvas>
+        <p class="note" id="g-3d-cap" style="margin-top:8px"></p>
+      </div>
       <div class="glass span-6"><h2>Odometer &amp; economy</h2>
         <form class="form" id="g-odo">
           <label class="f">Name on this device<input name="vehicle" maxlength="40" placeholder="Vehicle"></label>
@@ -223,6 +227,7 @@
     const pb = getPB();
     const g = getGarageMath();
     const vNow = veh();
+    if (window.G3D) window.G3D.setVehicle(vNow.key);
     $("#g-vehicles").innerHTML = VEHICLES.map((v) => `<button class="btn ${v.key === vNow.key ? "" : "quiet"} small" data-veh="${v.key}" type="button">${esc(v.label)}${v.key === vNow.key ? " · active" : ""}</button>`).join("");
     $("#g-vehicles").querySelectorAll("[data-veh]").forEach((b) => (b.onclick = () => { S.set("activeVehicle", b.dataset.veh); paint(); paintPaperworkAndDossier(); }));
     const isBike = vNow.key === "mt07";
@@ -349,5 +354,6 @@
 
   $("#export").onclick = () => download(`garage_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); paintPaperworkAndDossier(); } catch (e) { toast(e.message); } };
+  if (window.G3D) window.G3D.attach($("#g-3d"), $("#g-3d-cap"));
   paint();
 })();

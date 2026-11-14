@@ -2,3 +2,5 @@
 .pill{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(159,212,230,.4);color:#9fd4e6}
 .pill.soon{border-color:rgba(255,214,162,.6);color:#ffd6a2}
 .pill.over{border-color:rgba(255,180,162,.6);color:#ffb4a2}
+#g-3d{width:100%;height:auto;display:block;touch-action:none;cursor:grab;border-radius:10px}
+#g-3d:active{cursor:grabbing}
