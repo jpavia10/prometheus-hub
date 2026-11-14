@@ -11,6 +11,14 @@
   const diff = (a, b) => Math.round((new Date(b + "T12:00:00") - new Date(a + "T12:00:00")) / 864e5);
   function whoHas(date, sch) { if (!sch || !PATTERNS[sch.pattern] || !sch.start) return null; const c = PATTERNS[sch.pattern].cycle, k = ((diff(sch.start, date) % c.length) + c.length) % c.length; return c[k] ? "you" : "other"; }
   const other = (key, pid) => { try { return JSON.parse(localStorage.getItem(`prometheus.${pid}.${key}`) || "[]"); } catch (e) { return []; } };
+  if (!S.get("peopleSeedV1") && window.KIN_PEOPLE) {
+    if (!S.list("people").length) {
+      const ids = {};
+      for (const p of window.KIN_PEOPLE) ids[p.name] = S.add("people", p).id;
+      for (const it of window.KIN_ITEMS || []) S.add("items", { title: it.title, kind: it.kind, who: ids[it.who] || "", date: it.date, time: it.time || "" });
+    }
+    S.set("peopleSeedV1", 1);
+  }
   window.KIN = { PATTERNS, whoHas, data: () => { const today = new URLSearchParams(location.search).get("today") || day(); return { today, sch: S.get("schedule", null), people: S.list("people"), items: S.list("items"), school: other("docs", "records").filter((d) => d.category === "school"), trips: other("trips", "odyssey").filter((t) => t.kids) }; } };
   app.innerHTML = `
     <section class="grid">
@@ -38,7 +46,7 @@
         who ? h("span.pill" + (who === "you" ? ".hot" : ""), null, who === "you" ? "with you" : "with the other parent") : null); }).filter(Boolean));
     $("#k-item").who.replaceChildren(h("option", { value: "" }, "everyone"), ...D.people.filter((p) => p.role === "kid").map((p) => h("option", { value: p.id }, p.name)));
     const f = $("#k-sch"); if (D.sch) { f.pattern.value = D.sch.pattern || ""; f.start.value = D.sch.start || ""; }
-    $("#k-people").replaceChildren(...D.people.map((p) => { const b = nextBirthday(p.born, D.today); return h("div.kv", null, h("span", null, h("b", null, p.name), h("br"), h("span.stat-s", null, `${p.role}${b ? ` · birthday in ${b.days} d, turns ${b.age}` : ""}`)), h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("people", p.id); paint(); } }, "Remove")); }));
+    $("#k-people").replaceChildren(...D.people.map((p) => { const b = nextBirthday(p.born, D.today); return h("div.kv", null, h("span", null, h("b", null, p.name), h("br"), h("span.stat-s", null, `${p.role}${p.note ? " · " + p.note : ""}${b ? ` · birthday in ${b.days} d, turns ${b.age}` : ""}`)), h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("people", p.id); paint(); } }, "Remove")); }));
     $("#k-other").replaceChildren(...(D.school.length || D.trips.length ? [
       ...D.school.map((s) => h("div.kv", null, h("span", null, h("b", null, s.title), h("br"), h("span.stat-s", null, `Records · school${s.due ? " · due " + s.due : ""}`)), h("a.btn.quiet.small", { href: "../records/" }, "Open Records →"))),
       ...D.trips.map((t) => h("div.kv", null, h("span", null, h("b", null, t.name || t.dest), h("br"), h("span.stat-s", null, `Odyssey · with the kids · ${t.start}${t.end ? " to " + t.end : ""}`)), h("a.btn.quiet.small", { href: "../odyssey/" }, "Open Odyssey →")))
