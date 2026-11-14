@@ -1,4 +1,8 @@
 
+### [2026-11-14] Build d19: pearl, cyan, and lavender hub chrome
+- Retuned the core shader and sky glow off the orange sun. Enter and the dock + are pearl glass with a cyan edge. A unit test fails if a hub chrome colour token has hue 20–60. Each pillar cell keeps its own hue.
+- Replaced the five `icons/` PNGs from the pearl-flame master, dropped the `favicon.svg` link and its service-worker entry, and bumped the shell cache to `prometheus-hub-deck-d19`. Local proofs: unit `57/57`, browser `26/26`. Screenshots: `artifacts/screenshots/d19/home-390x844.png`, `artifacts/screenshots/d19/home-1440x900.png`.
+
 ### [2026-11-14] Proofs: the live run is what STATUS quotes
 - CORE-1 now counts the live destinations in `pillars.json` (the desk and paused fleet are not drawn). BACKUP-1 still requires every store the backup claims to cover; the old refusal phrase no longer matched the error `previewRestore` throws, and that was the failure. `idea:` from hub search hands the words to Athenaeum and opens it; closing the search sheet no longer cancels that navigation.
 - proofs-live writes the browser run into `STATUS.md`, failed lines included, and commits only when the pass/fail set changes. The d14 and d15 notes no longer repeat a private loan quote.

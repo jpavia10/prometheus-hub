@@ -41,6 +41,12 @@ PASS DECK-2  No script errors during the run  ::  none
 
 <!-- proofs-live:end -->
 
+Build **d19** · 2026-11-14 · not yet the live site. The quote above is still the last proofs-live run (d17).
+
+**Cool chrome (d19):** the core shader is a pearl body with a cyan heart and a lavender halo. Primary actions (Enter, Activate, the dock +) are pearl glass with a cyan edge. Hub chrome tokens no longer sit in hue 20–60. Each pillar keeps its own hue on its cell. The app icon is the pearl flame. `favicon.svg` is no longer linked or precached. Shell cache is `prometheus-hub-deck-d19`.
+
+**Verified locally (d19):** `tools/registry/validate.mjs` (`REGISTRY_OK`: 27 active, 25 local manifests, 2 external), `node --check` (`136/136` JS/MJS, `failed=0`), JSON check (`62/62`, `failed=0`), `node --test proofs/unit/*.test.mjs` (`57/57` pass, `0` failed, `0` skipped), `python3 proofs/run.py` (`26/26` pass, `0` failed, including the new chrome-token hue check). Home screenshots: `artifacts/screenshots/d19/home-390x844.png` and `artifacts/screenshots/d19/home-1440x900.png`. This note does not replace the live quote above.
+
 Build **d17** · 2026-11-13 · live at https://jpavia10.github.io/prometheus-hub/
 
 **Sprints 4b, 6, 7 & 8 Overhaul — Motion Hardening, Piano Harmonic Studio, Pillar Depth Wave & Cross-Pillar Typed Links (d17, 2026-11-13):**

@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Build d19: cool hub chrome
+- The core is pearl and cyan with a lavender halo. Primary buttons and the dock + are pearl glass with a cyan edge. Amber is gone from the hub chrome tokens. The app icon is the pearl flame. Shell cache d19.
+
 ### [2026-11-14] Proofs quote the live run
 - CORE-1 reads its pillar count from `pillars.json`. The backup proof matches the stores `backupAll` covers and the refusal it actually throws. Hub search `idea:` opens Athenaeum with the words filled in, and proofs-live writes that run into `STATUS.md`, failures included.
 

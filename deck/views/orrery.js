@@ -1,7 +1,7 @@
-/* The core: a live orrery. Every pillar orbits the fire in 3D; the whole system is one moving thing you can spin with a finger
+/* The core: a live orrery. Every pillar orbits a pearl and cyan light in 3D; the whole system is one moving thing you can spin with a finger
    (inertia, then it settles on the nearest pillar with a tick), tap a pillar and the system swings it to the front and the deck warps
    in. One switch morphs the orbit into a hex grid for speed. Drawn every frame: positions in script (spring and stagger), light on
-   a canvas (rings, beams, dust, halos, reticle, shockwaves), the fire in a shader. Badges and readouts are real data only. */
+   a canvas (rings, beams, dust, halos, reticle, shockwaves), the light in a shader. Badges and readouts are real data only. */
 import { h, icon, sheet, money, plural, seg } from "../core/ui.js";
 import { recentEvents } from "../core/reach.js";
 import { clock, today, diffDays, fmtDay, fmtTime, addDays } from "../core/dates.js";
@@ -20,25 +20,25 @@ const S = { yaw: 0.26, vel: 0.5, pitch: 0, zoom: 1, born: false };              
 const SYNAPSES = [
   ["selling", "money", "105,240,195"],
   ["money", "midas", "87,239,192"],
-  ["midas", "titan", "255,210,122"],
-  ["titan", "argus", "255,210,122"],
-  ["selling", "titan", "255,195,115"],
-  ["icarus", "observatory", "255,130,110"],
+  ["midas", "titan", "201,184,234"],
+  ["titan", "argus", "184,206,234"],
+  ["selling", "titan", "159,212,230"],
+  ["icarus", "observatory", "232,168,190"],
   ["kairos", "kin", "185,155,255"],
-  ["kairos", "apollo", "255,220,120"],
+  ["kairos", "apollo", "176,206,228"],
   ["hermes", "privacy", "140,185,255"],
   ["hermes", "polis", "122,168,255"],
-  ["argus", "hearth", "255,175,115"],
+  ["argus", "hearth", "159,212,230"],
   ["odyssey", "bastion", "130,230,175"],
   ["odyssey", "garage", "90,210,255"],
   ["aether", "bastion", "125,240,210"],
   ["aether", "hearth", "125,240,210"],
   ["records", "garage", "140,200,255"],
   ["records", "kin", "180,190,255"],
-  ["foundry", "athenaeum", "255,205,120"],
-  ["forge", "foundry", "255,165,90"],
-  ["continuity", "privacy", "200,245,140"],
-  ["continuity", "bastion", "245,180,70"],
+  ["foundry", "athenaeum", "201,184,234"],
+  ["forge", "foundry", "159,212,230"],
+  ["continuity", "privacy", "200,230,210"],
+  ["continuity", "bastion", "201,184,234"],
   ["mythos", "piano", "235,150,255"],
   ["mythos", "presence", "220,150,255"],
   ["observatory", "athenaeum", "165,155,255"],
@@ -46,11 +46,11 @@ const SYNAPSES = [
 ];
 
 export const PILLAR_DOMAINS = [
-  { id: "all", label: "All 27", short: "All", tone: "ember" },
+  { id: "all", label: "All 27", short: "All", tone: "ice" },
   { id: "finance", label: "Finance & Capital", short: "Finance", tone: "mint", quad: [-0.26, -0.23] },
   { id: "homestead", label: "Mountain & Home", short: "Homestead", tone: "ice", quad: [0.26, -0.23] },
   { id: "mind", label: "Mind & Studio", short: "Studio", tone: "violet", quad: [-0.26, 0.23] },
-  { id: "civic", label: "Civic & Sovereign", short: "Civic", tone: "gold", quad: [0.26, 0.23] },
+  { id: "civic", label: "Civic & Sovereign", short: "Civic", tone: "violet", quad: [0.26, 0.23] },
 ];
 
 export const DOMAIN_BY_ID = {
@@ -99,18 +99,18 @@ function scramble(el, text) {
   requestAnimationFrame(step);
 }
 
-/* the fire: a small shader of its own */
+/* the core light: a pearl body, a cyan heart, a lavender halo */
 const FIRE = `precision mediump float; uniform vec2 r; uniform float t; uniform float e;
 float hash(vec2 p){ p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
 float noise(vec2 p){ vec2 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f); return mix(mix(hash(i), hash(i + vec2(1., 0.)), f.x), mix(hash(i + vec2(0., 1.)), hash(i + vec2(1., 1.)), f.x), f.y); }
 float fbm(vec2 p){ float a = .5, s = 0.; for (int i = 0; i < 4; i++) { s += a * noise(p); p = p * 2.03 + vec2(1.7, 9.2); a *= .5; } return s; }
 void main(){ vec2 p = (gl_FragCoord.xy * 2. - r) / min(r.x, r.y); float d = length(p); float R = .46; vec3 col = vec3(0.);
-  if (d < R) { float z = sqrt(R * R - d * d); vec3 n = vec3(p, z) / R; vec2 uv = vec2(atan(n.x, n.z) + t * .16, asin(clamp(n.y, -1., 1.)));
-    float f = fbm(uv * 3. + fbm(uv * 5. - t * .22) * 1.7), g = fbm(uv * 9. + t * .35); float heat = smoothstep(.22, .95, f * .78 + g * .34);
-    vec3 fire = mix(vec3(.85, .14, .02), vec3(1., .66, .16), heat); fire = mix(fire, vec3(1., .97, .86), smoothstep(.72, 1., heat));
-    float limb = pow(z / R, .5); col = fire * (.5 + .8 * limb) * (1. + e * .9) + vec3(1., .5, .16) * pow(1. - z / R, 3.) * 1.3; }
-  float o = max(d - R, 0.); float rays = fbm(vec2(atan(p.y, p.x) * 2.6, d * 3.6 - t * .55)); float c = exp(-o * 6.5) * step(R, d);
-  col += vec3(1., .46, .13) * c * (.5 + rays) * (1. + e * 1.2) + vec3(.35, .65, 1.) * exp(-o * 2.4) * .13 * step(R, d) + vec3(1., .3, .8) * exp(-o * 3.6) * .1 * step(R, d);
+  if (d < R) { float z = sqrt(R * R - d * d); vec3 n = vec3(p, z) / R; vec2 uv = vec2(atan(n.x, n.z) + t * .12, asin(clamp(n.y, -1., 1.)));
+    float f = fbm(uv * 3. + fbm(uv * 5. - t * .18) * 1.7), g = fbm(uv * 9. + t * .28); float heat = smoothstep(.18, .92, f * .74 + g * .32);
+    vec3 body = mix(vec3(.42, .72, .84), vec3(.93, .96, .99), heat); body = mix(body, vec3(.98, .99, 1.), smoothstep(.76, 1., heat));
+    float limb = pow(z / R, .55); col = body * (.5 + .7 * limb) * (1. + e * .5) + vec3(.58, .48, .9) * pow(1. - z / R, 2.6) * .9; }
+  float o = max(d - R, 0.); float rays = fbm(vec2(atan(p.y, p.x) * 2.4, d * 3.2 - t * .32)); float c = exp(-o * 7.) * step(R, d);
+  col += vec3(.62, .84, .93) * c * (.4 + rays * .55) * (1. + e * .75) + vec3(.62, .5, .92) * exp(-o * 2.1) * .4 * step(R, d) + vec3(.86, .91, .98) * exp(-o * 4.2) * .14 * step(R, d);
   gl_FragColor = vec4(col, clamp(max(col.r, max(col.g, col.b)), 0., 1.)); }`;
 function fire(canvas) {
   let gl; try { gl = canvas.getContext("webgl", { premultipliedAlpha: true, alpha: true, antialias: false, powerPreference: "high-performance" }); } catch (e) { gl = null; } if (!gl) return null;
@@ -243,7 +243,7 @@ export function reactor(ctx) {
     g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W + M * 2, H + M * 2); g.translate(cx + M, cy + M); g.globalCompositeOperation = "lighter";
     const idxMap = new Map(nodes.map((n, idx) => [n.p.id, idx]));
     const orbitA = (1 - flatK) * clamp(birth * 1.6 - 0.3);
-    if (orbitA > 0.01) for (const [R, tilt, roll, col] of [[R1, 0.16, 0.1, "255,170,100"], [R2, -0.07, -0.06, "110,220,255"], [R3, 0.11, -0.11, "190,150,255"]]) {
+    if (orbitA > 0.01) for (const [R, tilt, roll, col] of [[R1, 0.16, 0.1, "210,228,242"], [R2, -0.07, -0.06, "159,212,230"], [R3, 0.11, -0.11, "201,184,234"]]) {
       for (const front of [false, true]) { g.beginPath(); let pen = false; for (let k = 0; k <= 72; k++) { const q = proj(R, (k / 72) * TAU + S.yaw, tilt, roll); if (q[2] > 0 === front) { if (pen) g.lineTo(q[0], q[1]); else { g.moveTo(q[0], q[1]); pen = true; } } else pen = false; }
         g.strokeStyle = `rgba(${col},${(front ? 0.8 : 0.3) * orbitA})`; g.lineWidth = front ? 1.6 : 1; g.stroke(); g.strokeStyle = `rgba(${col},${(front ? 0.16 : 0.06) * orbitA})`; g.lineWidth = 6; g.stroke(); }
       for (let k = 0; k < 36; k++) { const q = proj(R * 1.07, (k / 36) * TAU + S.yaw, tilt, roll), q2 = proj(R * (k % 3 ? 1.09 : 1.12), (k / 36) * TAU + S.yaw, tilt, roll); g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(q2[0], q2[1]); g.strokeStyle = `rgba(${col},${(q[2] > 0 ? 0.42 : 0.12) * orbitA})`; g.lineWidth = 1; g.stroke(); } }
@@ -272,12 +272,12 @@ export function reactor(ctx) {
       const px = iu * iu * a.x + 2 * iu * u * mx0 + u * u * b.x, py = iu * iu * a.y + 2 * iu * u * my0 + u * u * b.y;
       g.fillStyle = `rgba(${col},${(touchingFocus ? 1 : 0.78) * birth})`; g.beginPath(); g.arc(px, py, touchingFocus ? 2.4 : 1.7, 0, TAU); g.fill();
     });
-    const cols = ["255,255,255", "255,180,110", "120,225,255"]; for (let c = 0; c < 3; c++) { g.fillStyle = `rgb(${cols[c]})`; for (const d of dust) { if (d.c !== c) continue; d.a += d.v * dt; const q = proj(d.R, d.a + S.yaw * 0.6, d.tilt, 0, d.y); g.globalAlpha = (0.12 + 0.5 * clamp((q[2] / (W * 0.5) + 1) / 2)) * clamp(birth * 1.4) * (1 - flatK * 0.55); const sz = d.s * q[3]; g.fillRect(q[0], q[1], sz, sz); } } g.globalAlpha = 1;
+    const cols = ["244,247,251", "201,184,234", "159,212,230"]; for (let c = 0; c < 3; c++) { g.fillStyle = `rgb(${cols[c]})`; for (const d of dust) { if (d.c !== c) continue; d.a += d.v * dt; const q = proj(d.R, d.a + S.yaw * 0.6, d.tilt, 0, d.y); g.globalAlpha = (0.12 + 0.5 * clamp((q[2] / (W * 0.5) + 1) / 2)) * clamp(birth * 1.4) * (1 - flatK * 0.55); const sz = d.s * q[3]; g.fillRect(q[0], q[1], sz, sz); } } g.globalAlpha = 1;
     nodes.forEach((n, i) => { if (n.al < 0.03) return; const pulse = (time * 0.55 + i * 0.137) % 1; g.strokeStyle = n.rgb; g.globalAlpha = n.al * (i < 6 ? 0.34 : 0.16) * (1 - km * 0.3); g.lineWidth = 1; g.beginPath(); g.moveTo(0, 0); g.lineTo(n.x, n.y); g.stroke();
       g.globalAlpha = n.al * 0.95; g.fillStyle = "#fff"; g.beginPath(); g.arc(n.x * pulse, n.y * pulse, 1.5 + (i < 6 ? 0.6 : 0), 0, TAU); g.fill();
       const hs = (i === focus && km < 0.5 ? 190 : 118) * n.sc * (1 + 0.08 * Math.sin(time * 2 + i)); g.globalAlpha = n.al * (i === focus ? 0.95 : 0.6); g.drawImage(halo[i], n.x - hs / 2, n.y - hs / 2, hs, hs);
       const stP = stats[n.p.id]; const dueSoon = stP && stP.next && diffDays(t, stP.next.date) <= 3;
-      if (dueSoon && birth > 0.7) { g.strokeStyle = "rgba(255,155,95,.68)"; g.lineWidth = 1.4; g.globalAlpha = 0.55 + 0.35 * Math.sin(time * 3.8 + i); g.beginPath(); g.arc(n.x, n.y, hh * 0.52 * n.sc, 0, TAU); g.stroke(); } });
+      if (dueSoon && birth > 0.7) { g.strokeStyle = "rgba(159,212,230,.72)"; g.lineWidth = 1.4; g.globalAlpha = 0.55 + 0.35 * Math.sin(time * 3.8 + i); g.beginPath(); g.arc(n.x, n.y, hh * 0.52 * n.sc, 0, TAU); g.stroke(); } });
     if (focus >= 0 && km < 0.5 && birth > 0.9) { const n = nodes[focus], rr = hh * 0.62 * n.sc; g.globalAlpha = 1 - km * 2; g.strokeStyle = n.rgb; g.lineWidth = 1.6; for (let k = 0; k < 3; k++) { const a = time * 1.3 + (k * TAU) / 3; g.beginPath(); g.arc(n.x, n.y, rr, a, a + 1.1); g.stroke(); } g.lineWidth = 1; g.globalAlpha *= 0.5; g.beginPath(); g.arc(n.x, n.y, rr + 6, -time * 0.8, -time * 0.8 + 4.4); g.stroke(); }
     for (let k = waves.length - 1; k >= 0; k--) { const w = waves[k]; w.t += dt; const a = 1 - w.t / 0.7; if (a <= 0) { waves.splice(k, 1); continue; } g.globalAlpha = a; g.strokeStyle = w.c; g.lineWidth = 2.5 * a + 0.5; g.beginPath(); g.arc(w.x - cx, w.y - cy, 16 + w.t * 330, 0, TAU); g.stroke(); }
     g.globalAlpha = 1; g.globalCompositeOperation = "source-over";
