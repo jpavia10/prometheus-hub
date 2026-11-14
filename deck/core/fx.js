@@ -15,21 +15,77 @@ export const blip = () => { tone(880, 0.07, "sine", 0.04); tone(1320, 0.09, "sin
 export const bootSound = () => { tone(110, 0.9, "sawtooth", 0.03, 0, 4); tone(220, 0.7, "sine", 0.04, 0.25, 3); tone(1760, 0.25, "sine", 0.03, 0.95); };
 export const warpSound = () => { tone(180, 0.7, "sawtooth", 0.035, 0, 9); tone(90, 0.75, "sine", 0.05, 0, 0.5); };
 
-const still = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const still = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+let activeRaf = null;
+let activeTimer = null;
+let warping = false;
+let warpToken = 0;
+
+/** Whether a warp transition is currently in progress. */
+export const isWarping = () => warping;
+
 /** Warp out from a point on the screen in a colour, then run `then` (the navigation). The deck is pulled into the point; stars streak past. */
 export function warp(x, y, color, then) {
-  if (still()) return then(); warpSound(); buzz(22);
-  const cv = document.createElement("canvas"); cv.className = "warp"; const dpr = Math.min(2, devicePixelRatio || 1); const W = innerWidth, H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; document.body.append(cv);
-  const g = cv.getContext("2d"); g.scale(dpr, dpr); const stars = Array.from({ length: 150 }, () => ({ a: Math.random() * Math.PI * 2, r: 6 + Math.random() * 60, v: 0.5 + Math.random() * 1.6, w: 0.6 + Math.random() * 1.6 }));
-  const deck = document.getElementById("deck"); deck.style.setProperty("--wx", x + "px"); deck.style.setProperty("--wy", y + "px"); document.body.classList.add("warping"); document.body.style.setProperty("--warp", color);
+  unwarp();
+  if (still()) return typeof then === "function" ? then() : undefined;
+  warpSound(); buzz(22);
+  const cv = document.createElement("canvas"); cv.className = "warp";
+  const dpr = Math.min(2, (typeof devicePixelRatio !== "undefined" && devicePixelRatio) || 1);
+  const W = typeof innerWidth !== "undefined" ? innerWidth : 0;
+  const H = typeof innerHeight !== "undefined" ? innerHeight : 0;
+  cv.width = W * dpr; cv.height = H * dpr; document.body.append(cv);
+  const g = cv.getContext ? cv.getContext("2d") : null; if (g) g.scale(dpr, dpr);
+  const stars = Array.from({ length: 150 }, () => ({ a: Math.random() * Math.PI * 2, r: 6 + Math.random() * 60, v: 0.5 + Math.random() * 1.6, w: 0.6 + Math.random() * 1.6 }));
+  const deck = document.getElementById("deck");
+  if (deck) { deck.style.setProperty("--wx", x + "px"); deck.style.setProperty("--wy", y + "px"); }
+  document.body.classList.add("warping"); document.body.style.setProperty("--warp", color);
+  const token = ++warpToken; warping = true;
   const t0 = performance.now(), dur = 640; let done = false;
-  const frame = (t) => { const k = Math.min(1, (t - t0) / dur), e = k * k * k; g.clearRect(0, 0, W, H); g.lineCap = "round";
-    for (const s of stars) { const r1 = s.r + e * s.v * Math.max(W, H) * 1.15, r0 = Math.max(s.r, r1 - (10 + e * 260) * s.v); g.strokeStyle = s.w > 1.5 ? color : "rgba(235,245,255,.95)"; g.globalAlpha = Math.min(1, 0.25 + k * 1.1); g.lineWidth = s.w * (0.6 + e * 1.8);
-      g.beginPath(); g.moveTo(x + Math.cos(s.a) * r0, y + Math.sin(s.a) * r0); g.lineTo(x + Math.cos(s.a) * r1, y + Math.sin(s.a) * r1); g.stroke(); }
-    if (k > 0.78) { g.globalAlpha = (k - 0.78) / 0.22; g.fillStyle = "#fff"; g.fillRect(0, 0, W, H); }
-    if (k < 1) requestAnimationFrame(frame); else if (!done) { done = true; then(); } };
-  requestAnimationFrame(frame); setTimeout(() => { if (!done) { done = true; then(); } }, dur + 400);
+  const finish = () => {
+    if (done || token !== warpToken) return;
+    done = true;
+    if (activeRaf !== null) { cancelAnimationFrame(activeRaf); activeRaf = null; }
+    if (activeTimer !== null) { clearTimeout(activeTimer); activeTimer = null; }
+    warping = false;
+    if (typeof then === "function") then();
+  };
+  const frame = (t) => {
+    if (done || token !== warpToken) return;
+    const k = Math.min(1, (t - t0) / dur), e = k * k * k;
+    if (g) {
+      g.clearRect(0, 0, W, H); g.lineCap = "round";
+      for (const s of stars) { const r1 = s.r + e * s.v * Math.max(W, H) * 1.15, r0 = Math.max(s.r, r1 - (10 + e * 260) * s.v); g.strokeStyle = s.w > 1.5 ? color : "rgba(235,245,255,.95)"; g.globalAlpha = Math.min(1, 0.25 + k * 1.1); g.lineWidth = s.w * (0.6 + e * 1.8);
+        g.beginPath(); g.moveTo(x + Math.cos(s.a) * r0, y + Math.sin(s.a) * r0); g.lineTo(x + Math.cos(s.a) * r1, y + Math.sin(s.a) * r1); g.stroke(); }
+      if (k > 0.78) { g.globalAlpha = (k - 0.78) / 0.22; g.fillStyle = "#fff"; g.fillRect(0, 0, W, H); }
+    }
+    if (k < 1) {
+      const nextRaf = requestAnimationFrame(frame);
+      if (!done && token === warpToken) activeRaf = nextRaf;
+      else cancelAnimationFrame(nextRaf);
+    } else finish();
+  };
+  const firstRaf = requestAnimationFrame(frame);
+  if (!done && token === warpToken) activeRaf = firstRaf;
+  else cancelAnimationFrame(firstRaf);
+  const timerId = setTimeout(finish, dur + 400);
+  if (!done && token === warpToken) activeTimer = timerId;
+  else clearTimeout(timerId);
 }
 /** Coming back (the page is restored from the browser's cache, or a transition was cancelled): put the deck back. */
-export function unwarp() { document.body.classList.remove("warping"); document.querySelectorAll("canvas.warp").forEach((c) => c.remove()); }
-addEventListener("pageshow", unwarp);
+export function unwarp() {
+  warpToken++;
+  warping = false;
+  if (activeRaf !== null) { cancelAnimationFrame(activeRaf); activeRaf = null; }
+  if (activeTimer !== null) { clearTimeout(activeTimer); activeTimer = null; }
+  if (typeof document !== "undefined") {
+    if (document.body && document.body.classList) document.body.classList.remove("warping");
+    if (document.querySelectorAll) document.querySelectorAll("canvas.warp").forEach((c) => c.remove());
+  }
+}
+if (typeof addEventListener === "function") {
+  addEventListener("pageshow", unwarp);
+  addEventListener("pagehide", unwarp);
+}
+if (typeof document !== "undefined" && typeof document.addEventListener === "function") {
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") unwarp(); });
+}

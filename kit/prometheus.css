@@ -162,11 +162,13 @@ body[data-pillar="athenaeum"] { --accent: #ffc552; --accent-2: #b9a2ff; } body[d
 body[data-pillar="privacy"] { --accent: #8d85ff; --accent-2: #4de8ff; } body[data-pillar="argus"] { --accent: #33ffcf; --accent-2: #b9a2ff; }
 body[data-pillar="aether"] { --accent: #38d9a9; --accent-2: #74c0fc; } body[data-pillar="polis"] { --accent: #ff6b6b; --accent-2: #ffd43b; }
 body[data-pillar="mythos"] { --accent: #e599f7; --accent-2: #748ffc; } body[data-pillar="continuity"] { --accent: #f59f00; --accent-2: #ffd43b; }
-@view-transition { navigation: auto; }
-::view-transition-old(root) { animation: pk-leave .3s cubic-bezier(.7, 0, .9, .4) both; }
-::view-transition-new(root) { animation: pk-arrive .6s cubic-bezier(.2, .8, .2, 1) both; }
-@keyframes pk-leave { to { transform: scale(.5); filter: blur(14px) brightness(2); opacity: 0; } }
-@keyframes pk-arrive { from { transform: scale(2.2); filter: blur(16px) brightness(2.4); opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: pk-leave .24s cubic-bezier(.4, 0, 1, 1) both; }
+  ::view-transition-new(root) { animation: pk-arrive .34s cubic-bezier(.2, .8, .2, 1) both; }
+  @keyframes pk-leave { from { opacity: 1; } to { opacity: 0; } }
+  @keyframes pk-arrive { from { opacity: 0; } to { opacity: 1; } }
+}
 @keyframes pk-rise { from { opacity: 0; transform: translateY(18px); } }
 @keyframes pk-glitch { 0% { opacity: 0; transform: translateX(-8px) skewX(-12deg); text-shadow: -6px 0 var(--accent-2), 6px 0 var(--accent); } 35% { opacity: 1; transform: translateX(5px) skewX(8deg); text-shadow: 5px 0 var(--accent-2), -5px 0 var(--accent); } 100% { transform: none; } }
 @keyframes pk-scan { from { transform: translateY(-170px); } to { transform: translateY(100vh); } }

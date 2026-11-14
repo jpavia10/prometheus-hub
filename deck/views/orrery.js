@@ -125,7 +125,7 @@ function fire(canvas) {
 export function reactor(ctx) {
   const t = today(); const stats = pillarStats(t); let tn = null; const calm = still();
   const W = innerWidth >= 1080 ? Math.min(600, Math.max(460, Math.round(innerWidth * 0.42))) : Math.min(innerWidth, 460);
-  const H = Math.round(W * 0.96), cx = W / 2, cy = H / 2, M = 44;
+  const H = innerWidth <= 600 ? Math.round(W * 0.78) : Math.round(W * 0.96), cx = W / 2, cy = H / 2, M = 44;
   let mode = calm ? "grid" : ls("prom.deck.layout") || "orbit";
   if (!["orbit", "grid", "web"].includes(mode)) mode = "orbit";
   let mix = mode === "grid" ? 1 : 0, wmix = mode === "web" ? 1 : 0;

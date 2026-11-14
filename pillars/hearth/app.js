@@ -138,6 +138,91 @@
   const usd = (n) => "$" + Math.round(n).toLocaleString("en-US");
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+  function readRecordsDocs() {
+    try {
+      const raw = localStorage.getItem("prometheus.records.docs");
+      const parsed = raw ? JSON.parse(raw) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (_) { return []; }
+  }
+
+  function ensureRecordAndLink({ itemId, itemTitle, docTitle, category, where, notes }) {
+    const docs = readRecordsDocs();
+    const norm = (v) => String(v || "").trim().toLowerCase();
+    let doc = docs.find((d) => d && (
+      d.hearthRef === itemId ||
+      norm(d.title) === norm(docTitle) ||
+      (itemTitle && norm(d.title).includes(norm(itemTitle)))
+    ));
+    if (!doc) {
+      doc = {
+        id: "rec_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        at: new Date().toISOString(),
+        title: docTitle,
+        category: category || "warranty",
+        issuer: "Hephaestus Hearth",
+        serial: "",
+        date: day(),
+        due: "",
+        where: where || "Hearth",
+        notes: notes || "",
+        hearthRef: itemId,
+      };
+      docs.push(doc);
+      try {
+        localStorage.setItem("prometheus.records.docs", JSON.stringify(docs));
+        window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "records", k: "docs" } }));
+      } catch (_) { /* storage optional */ }
+    }
+    let linked = null;
+    if (typeof window !== "undefined" && window.PLinks) {
+      linked = window.PLinks.link({
+        fromPillar: "hearth",
+        fromId: itemId,
+        toPillar: "records",
+        toId: doc.id,
+        kind: "documented-by",
+        label: doc.title,
+      });
+    }
+    toast("Linked in Records: " + doc.title);
+    paint();
+    return { doc, link: linked };
+  }
+
+  function renderRecordBadges(itemId, altId) {
+    if (typeof window === "undefined" || !window.PLinks) return null;
+    const raw = [
+      ...window.PLinks.forRecord("hearth", itemId),
+      ...(altId != null ? window.PLinks.forRecord("hearth", altId) : []),
+    ];
+    const seen = new Set();
+    const links = raw.filter((lk) => {
+      if (!lk || seen.has(lk.id)) return false;
+      seen.add(lk.id);
+      return true;
+    });
+    if (!links.length) return null;
+    return h("div.row-actions", { "data-links-for": itemId, style: "margin-top:6px;gap:6px;flex-wrap:wrap" },
+      ...links.map((lk) => {
+        const res = window.PLinks.resolve(lk);
+        const outbound = lk.fromPillar === "hearth" && (String(lk.fromId) === String(itemId) || (altId != null && String(lk.fromId) === String(altId)));
+        const peer = outbound ? res.to : res.from;
+        const rawTitle = peer.title || lk.label || peer.id;
+        const shortTitle = rawTitle.length > 42 ? rawTitle.slice(0, 41).trim() + "…" : rawTitle;
+        const st = peer.status || "filed";
+        return h("a.chip.link-badge", {
+          href: `../${encodeURIComponent(peer.pillar)}/`,
+          "data-link-id": lk.id,
+          "data-kind": lk.kind,
+          "data-peer": peer.pillar,
+          style: "text-decoration:none;max-width:100%;overflow:hidden;text-overflow:ellipsis",
+          title: `${lk.kind}: ${peer.pillar} · ${rawTitle} (${st})`,
+        }, `${peer.pillar}: ${shortTitle} (${st})`);
+      })
+    );
+  }
+
   let inspectedRoomId = null;
   window.HEARTH = {
     DECK,
@@ -290,7 +375,8 @@
       const gate = phaseGateStatus(p.id);
       const rm = roomName(p.room);
       const photoKey = "photosConfirmed." + p.id;
-      return h("div.phase-card", null,
+      const phaseItemId = "phase-" + p.id;
+      return h("div.phase-card", { "data-phase-id": p.id },
         h("div.kv", { style: "border-bottom:none;padding:0 0 4px" },
           h("span", null, h("b", null, p.title), " ", h("span.meta", null, `(${rm})`)),
           h("span.pill." + (gate.ready ? "gate-ok" : "gate-hold"), null, gate.ready ? "Gate Clear" : "Hold: " + gate.missing.join(" · "))
@@ -311,8 +397,22 @@
               onchange: (e) => { S.set(photoKey, !!e.target.checked); paint(); },
             }),
             ` Before-photos verified (${argusPhotoCountForHearth()} in Argus)`
-          )
-        )
+          ),
+          h("button.btn.quiet.small", {
+            type: "button",
+            "data-action": "link-records",
+            "data-item-id": phaseItemId,
+            onclick: () => ensureRecordAndLink({
+              itemId: phaseItemId,
+              itemTitle: p.title,
+              docTitle: `Warranty / Permit · ${p.title}`,
+              category: "home",
+              where: `Hearth Phase ${p.id} (${rm})`,
+              notes: p.summary,
+            }),
+          }, "Link Warranty / Permit in Records")
+        ),
+        renderRecordBadges(phaseItemId, String(p.id))
       );
     }));
 
@@ -398,30 +498,57 @@
     $("#h-cost-act").textContent = actualSpent ? usd(actualSpent) : "$0";
 
     const mb = $("#h-mats-body");
-    mb.innerHTML = "";
-    visMats.forEach((m) => {
-      const tr = document.createElement("tr");
+    mb.replaceChildren(...visMats.map((m) => {
       const lineTotal = (m.qty != null && m.unitCost != null) ? usd(m.qty * m.unitCost) : "—";
-      tr.innerHTML = `<td><span class="badge-phase">P${m.phase}</span></td><td><b>${esc(m.name)}</b> <span class="meta">(${esc(m.unit)})</span></td><td>${esc(m.category)}</td>
-        <td class="n">${m.qty ?? "—"}</td><td class="n">${m.unitCost != null ? "$" + Number(m.unitCost).toFixed(2) : "—"}</td><td class="n">${lineTotal}</td>
-        <td>${esc(m.status)}</td><td><button class="btn quiet small" type="button">Price / Qty</button></td>`;
-      tr.querySelector("button").onclick = () => {
-        const qStr = prompt(`Quantity (${m.unit}s) for ${m.name}:`, m.qty ?? "");
-        if (qStr === null) return;
-        const cStr = prompt(`Unit cost ($) for ${m.name}:`, m.unitCost ?? "");
-        if (cStr === null) return;
-        const aStr = prompt(`Actual receipt spent ($) if purchased (blank if not bought yet):`, m.actualPaid ?? "");
-        if (aStr === null) return;
-        S.update("materials", m.id, {
-          qty: qStr.trim() === "" ? null : +qStr,
-          unitCost: cStr.trim() === "" ? null : +cStr,
-          actualPaid: aStr.trim() === "" ? null : +aStr,
-          status: aStr.trim() !== "" ? "purchased" : (cStr.trim() !== "" ? "quoted" : "planned"),
-        });
-        paint();
-      };
-      mb.appendChild(tr);
-    });
+      return h("tr", { "data-material-id": m.id },
+        h("td", null, h("span.badge-phase", null, `P${m.phase}`)),
+        h("td", null,
+          h("b", null, m.name), " ", h("span.meta", null, `(${m.unit})`),
+          renderRecordBadges(String(m.id))
+        ),
+        h("td", null, m.category),
+        h("td.n", null, m.qty ?? "—"),
+        h("td.n", null, m.unitCost != null ? "$" + Number(m.unitCost).toFixed(2) : "—"),
+        h("td.n", null, lineTotal),
+        h("td", null, m.status),
+        h("td", null,
+          h("span.row-actions", null,
+            h("button.btn.quiet.small", {
+              type: "button",
+              "data-action": "price-qty",
+              onclick: () => {
+                const qStr = prompt(`Quantity (${m.unit}s) for ${m.name}:`, m.qty ?? "");
+                if (qStr === null) return;
+                const cStr = prompt(`Unit cost ($) for ${m.name}:`, m.unitCost ?? "");
+                if (cStr === null) return;
+                const aStr = prompt(`Actual receipt spent ($) if purchased (blank if not bought yet):`, m.actualPaid ?? "");
+                if (aStr === null) return;
+                S.update("materials", m.id, {
+                  qty: qStr.trim() === "" ? null : +qStr,
+                  unitCost: cStr.trim() === "" ? null : +cStr,
+                  actualPaid: aStr.trim() === "" ? null : +aStr,
+                  status: aStr.trim() !== "" ? "purchased" : (cStr.trim() !== "" ? "quoted" : "planned"),
+                });
+                paint();
+              },
+            }, "Price / Qty"),
+            h("button.btn.quiet.small", {
+              type: "button",
+              "data-action": "link-records",
+              "data-item-id": m.id,
+              onclick: () => ensureRecordAndLink({
+                itemId: String(m.id),
+                itemTitle: m.name,
+                docTitle: `Warranty / Permit · ${m.name}`,
+                category: "warranty",
+                where: `Hearth BOM (Phase ${m.phase})`,
+                notes: `${m.category} (${m.unit}) for Hearth Phase ${m.phase}`,
+              }),
+            }, "Link Warranty / Permit in Records")
+          )
+        )
+      );
+    }));
 
     // 6. Rooms (click "Measure" to set W x L so canvas draws it)
     $("#h-rooms").replaceChildren(...(D.rooms.length ? D.rooms.map((r) => {

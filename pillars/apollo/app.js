@@ -80,13 +80,18 @@
       </div>
     </section>`;
 
+  const REVIEW_KEYS = ["weight", "sleep", "steps", "train", "protein", "calories"];
   const days = () => S.get("days", {});
   const notify = () => window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "apollo", k: "days" } }));
-  const backDate = (n) => { const d = new Date(day() + "T12:00:00"); d.setDate(d.getDate() - n); return d.toISOString().slice(0, 10); };
+  const backDateFrom = (anchor, n) => { const d = new Date(anchor + "T12:00:00"); d.setDate(d.getDate() - n); return d.toISOString().slice(0, 10); };
+  const backDate = (n) => backDateFrom(day(), n);
 
-  function lastN(d, k, n) {
+  function lastN(d, k, n, anchor = day()) {
     const out = [];
-    for (let i = n - 1; i >= 0; i--) { const dt = backDate(i), r = d[dt]; if (r && r[k] != null) out.push({ d: dt, y: +r[k] }); }
+    for (let i = n - 1; i >= 0; i--) {
+      const dt = backDateFrom(anchor, i), r = d && d[dt];
+      if (r && r[k] != null && r[k] !== "" && !Number.isNaN(+r[k])) out.push({ d: dt, y: +r[k] });
+    }
     return out;
   }
   const avg = (arr) => (arr.length ? arr.reduce((s, x) => s + x.y, 0) / arr.length : null);
@@ -96,12 +101,52 @@
     return n;
   }
 
+  function resolveAnchor(d, asOfOpt) {
+    if (typeof asOfOpt === "string" && /^\d{4}-\d{2}-\d{2}$/.test(asOfOpt)) return asOfOpt;
+    if (asOfOpt && typeof asOfOpt === "object" && /^\d{4}-\d{2}-\d{2}$/.test(asOfOpt.today || "")) return asOfOpt.today;
+    const todayStr = day();
+    const keys = Object.keys(d || {}).filter((k) => /^\d{4}-\d{2}-\d{2}$/.test(k)).sort();
+    if (!keys.length) return todayStr;
+    const winStart = backDateFrom(todayStr, 29);
+    if (keys.some((k) => k >= winStart && k <= todayStr)) return todayStr;
+    return keys[keys.length - 1];
+  }
+
+  function computeReview(daysMap, asOfOpt) {
+    const d = daysMap && typeof daysMap === "object" ? daysMap : days();
+    const anchor = resolveAnchor(d, asOfOpt);
+    const metrics = {};
+    for (const k of REVIEW_KEYS) {
+      const f = FIELDS.find((x) => x[0] === k) || [k, k, ""];
+      const w7 = lastN(d, k, 7, anchor);
+      const w30 = lastN(d, k, 30, anchor);
+      const avg7 = avg(w7);
+      const avg30 = avg(w30);
+      const delta = avg7 != null && avg30 != null ? avg7 - avg30 : null;
+      metrics[k] = { key: k, label: f[1], unit: f[2], avg7, avg30, delta, count7: w7.length, count30: w30.length };
+    }
+    const latestWeight = lastN(d, "weight", 30, anchor).slice(-1)[0]?.y ?? null;
+    const proteinAnchor = latestWeight ? Math.round(latestWeight * 0.8) : null;
+    return { asOf: anchor, metrics, ...metrics, latestWeight, proteinAnchor, daysCount: Object.keys(d).length };
+  }
+
+  const APOLLO_API = {
+    data: () => {
+      const d = days();
+      return { days: d, goals: { ...GOALS, ...S.get("goals", GOALS) }, streak: streak(d), review: computeReview(d, day()), labs: S.get("labs", {}), meals: S.list("meals") };
+    },
+    computeReview,
+  };
+  if (typeof window !== "undefined") window.APOLLO = APOLLO_API;
+  if (typeof globalThis !== "undefined") globalThis.APOLLO = APOLLO_API;
+
   function drawRadar(d, g) {
     const cv = document.getElementById("a-radar"); if (!cv) return;
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     const W = Math.max(220, cv.clientWidth || 260), H = cv.clientHeight || 220;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    const c = cv.getContext("2d"); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const c = cv.getContext ? cv.getContext("2d") : null; if (!c) return;
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
     c.clearRect(0, 0, W, H);
     const axes = [
       ["Sleep", avg(lastN(d, "sleep", 7)), g.sleep || 7.5],
@@ -113,7 +158,8 @@
       ["Mood", avg(lastN(d, "mood", 7)), g.mood || 4]
     ];
     const cx = W / 2, cy = H / 2 + 4, R = Math.min(W, H) * 0.34;
-    const cs = getComputedStyle(document.body), ac = cs.getPropertyValue("--accent").trim() || "#ff9d5c", ac2 = cs.getPropertyValue("--accent-2").trim() || "#4de8ff";
+    const cs = typeof getComputedStyle === "function" ? getComputedStyle(document.body) : { getPropertyValue: () => "" };
+    const ac = cs.getPropertyValue("--accent").trim() || "#ff9d5c", ac2 = cs.getPropertyValue("--accent-2").trim() || "#4de8ff";
     c.strokeStyle = "rgba(255,255,255,0.1)"; c.lineWidth = 1;
     [0.33, 0.66, 1].forEach((f) => {
       c.beginPath();
@@ -153,18 +199,17 @@
     }).join("");
     drawRadar(d, g);
 
-    const revRows = ["weight", "sleep", "steps", "train", "protein", "water"].map((k) => {
-      const f = FIELDS.find((x) => x[0] === k), a7 = avg(lastN(d, k, 7)), a30 = avg(lastN(d, k, 30));
+    const rev = computeReview(d, day());
+    const revRows = REVIEW_KEYS.map((k) => {
+      const m = rev.metrics[k];
       const dec = k === "weight" || k === "sleep" ? 1 : 0;
-      const delta = a7 != null && a30 != null ? a7 - a30 : null;
       const tgt = g[k] ? ` (target ${g[k]})` : "";
-      return `<div class="kv"><span>${f[1]}${tgt}</span><b>7d: ${a7 == null ? "—" : num(a7, dec)} · 30d: ${a30 == null ? "—" : num(a30, dec)}${delta != null ? ` (${delta >= 0 ? "+" : ""}${num(delta, dec)})` : ""}</b></div>`;
+      return `<div class="kv"><span>${m.label}${tgt}</span><b>7d: ${m.avg7 == null ? "—" : num(m.avg7, dec)} · 30d: ${m.avg30 == null ? "—" : num(m.avg30, dec)}${m.delta != null ? ` (${m.delta >= 0 ? "+" : ""}${num(m.delta, dec)})` : ""}</b></div>`;
     });
-    const lastW = lastN(d, "weight", 30).slice(-1)[0]?.y;
-    if (lastW) revRows.push(`<div class="kv"><span>Recommended protein anchor (~0.8g/lb)</span><b>${Math.round(lastW * 0.8)} g/day</b></div>`);
+    if (rev.proteinAnchor) revRows.push(`<div class="kv"><span>Recommended protein anchor (~0.8g/lb)</span><b>${rev.proteinAnchor} g/day</b></div>`);
     $("#a-review").innerHTML = revRows.join("");
 
-    for (const k of ["weight", "sleep", "steps", "train", "protein", "calories"]) {
+    for (const k of REVIEW_KEYS) {
       const l = lastN(d, k, 30), a = avg(l), f = FIELDS.find((x) => x[0] === k);
       const dec = k === "weight" || k === "sleep" ? 1 : 0;
       $("#at-" + k + "-v").textContent = a == null ? "—" : num(a, dec) + (f[2] ? " " + f[2] : "");

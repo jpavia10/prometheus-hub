@@ -36,6 +36,78 @@
 
   const odo = () => S.get("odometer", 0);
   const lastFor = (name) => S.list("history").filter((x) => x.service === name).sort((a, b) => b.date.localeCompare(a.date))[0] || null;
+  const fallbackAddMonths = (ds, m) => { const d = new Date(ds + "T12:00:00"); d.setMonth(d.getMonth() + m); return d.toISOString().slice(0, 10); };
+  const getGarageMath = () => (typeof window !== "undefined" && window.GARAGE) || (typeof globalThis !== "undefined" && globalThis.GARAGE) || {};
+  const getPB = () => (typeof window !== "undefined" && window.PB) || (typeof globalThis !== "undefined" && globalThis.PB) || null;
+
+  function computeNextDueDate(it, st, baseDate) {
+    if (st && st.dueDate) return st.dueDate;
+    const g = getGarageMath();
+    const addMo = g.addMonths || fallbackAddMonths;
+    if (it && it.months) return addMo(baseDate, it.months);
+    if (st && st.milesLeft != null && st.milesLeft <= 0) return baseDate;
+    return null;
+  }
+
+  function estimateTrip(milesOrOpts, gasPriceOpt, fuelOpt) {
+    const opts = (milesOrOpts && typeof milesOrOpts === "object")
+      ? milesOrOpts
+      : { miles: milesOrOpts, gasPrice: gasPriceOpt, fuel: fuelOpt };
+    const miEl = $("#g-trip-mi"), gasEl = $("#g-gas-price");
+    const milesRaw = opts.miles !== undefined ? opts.miles : (miEl ? +miEl.value : 0);
+    const gasRaw = opts.gasPrice !== undefined ? opts.gasPrice : (gasEl ? +gasEl.value : 4.65);
+    const miles = Math.max(0, Number(milesRaw) || 0);
+    const gasPrice = Math.max(0, Number(gasRaw) || 4.65);
+    const fuelEntries = Array.isArray(opts.fuel) ? opts.fuel : S.list("fuel");
+    const g = getGarageMath();
+    const fs = g.fuelStats ? g.fuelStats(fuelEntries) : { mpg: null, costPerMile: null };
+    const usedLogged = fs.costPerMile != null && fs.mpg != null;
+    const mpg = usedLogged ? fs.mpg : 34; // Sorento HEV AWD ~34 MPG combined EPA reference when <2 fills logged
+    const costPerMile = usedLogged ? fs.costPerMile : (gasPrice / mpg);
+    const gallons = mpg > 0 ? miles / mpg : 0;
+    const cost = miles * costPerMile;
+    return { miles, gasPrice, mpg, costPerMile, gallons, cost, estCost: cost, source: usedLogged ? "logged" : "epa" };
+  }
+
+  function nextDueServices(nowOpt) {
+    const now = {
+      date: (nowOpt && nowOpt.date) || day(),
+      odometer: (nowOpt && nowOpt.odometer != null) ? Number(nowOpt.odometer) : odo(),
+    };
+    const g = getGarageMath();
+    const svcs = S.get("services", []);
+    const rank = { overdue: 0, "due soon": 1, ok: 2, unknown: 3 };
+    return svcs.map((it) => {
+      const last = lastFor(it.name);
+      const st = g.dueStatus ? g.dueStatus(it, last, now) : { state: "unknown", dueDate: null, dueMiles: null };
+      const nextDueDate = computeNextDueDate(it, st, now.date);
+      return { id: it.id, name: it.name, miles: it.miles, months: it.months, last, ...st, nextDueDate };
+    }).sort((a, b) => {
+      const ra = rank[a.state] ?? 4, rb = rank[b.state] ?? 4;
+      if (ra !== rb) return ra - rb;
+      const da = a.daysLeft ?? 1e9, db = b.daysLeft ?? 1e9;
+      if (da !== db) return da - db;
+      return (a.milesLeft ?? 1e9) - (b.milesLeft ?? 1e9);
+    });
+  }
+
+  function data() {
+    const g = getGarageMath();
+    const fuel = S.list("fuel");
+    return {
+      odometer: odo(),
+      services: S.get("services", []),
+      history: S.list("history"),
+      fuel,
+      paperwork: S.list("paperwork"),
+      fuelStats: g.fuelStats ? g.fuelStats(fuel) : null,
+      nextDue: nextDueServices(),
+    };
+  }
+
+  const GARAGE_API = Object.assign(getGarageMath(), { data, estimateTrip, nextDueServices });
+  if (typeof window !== "undefined") window.GARAGE = GARAGE_API;
+  if (typeof globalThis !== "undefined") globalThis.GARAGE = GARAGE_API;
 
   app.innerHTML = `
     <section class="grid">
@@ -118,28 +190,43 @@
     </section>`;
 
   function paintTrip() {
-    const miles = +$("#g-trip-mi").value || 0;
-    const gas = +$("#g-gas-price").value || 4.65;
-    const fs = GARAGE.fuelStats(S.list("fuel"));
-    const effMpg = fs.mpg || 34; // Sorento HEV AWD ~34 MPG combined EPA reference when <2 fills logged
-    const cpm = fs.costPerMile != null ? fs.costPerMile : (gas / effMpg);
-    const estCost = miles * cpm;
-    $("#g-trip-out").innerHTML = `<div class="kv"><span>Estimated fuel for ${num(miles)} mi</span><b>${money(estCost)}</b></div>
-      <div class="stat-s">${fs.costPerMile != null ? `Using your logged ${num(fs.mpg, 1)} MPG (${money(fs.costPerMile, 3)}/mi)` : `Using ${effMpg} MPG Sorento HEV EPA estimate @ ${money(gas)}/gal (${money(cpm, 3)}/mi)`}</div>`;
+    const est = estimateTrip();
+    $("#g-trip-out").innerHTML = `<div class="kv"><span>Estimated fuel for ${num(est.miles)} mi</span><b>${money(est.cost)}</b></div>
+      <div class="stat-s">${est.source === "logged" ? `Using your logged ${num(est.mpg, 1)} MPG (${money(est.costPerMile, 3)}/mi)` : `Using ${est.mpg} MPG Sorento HEV EPA estimate @ ${money(est.gasPrice)}/gal (${money(est.costPerMile, 3)}/mi)`}</div>`;
   }
 
   function paint() {
     const now = { date: day(), odometer: odo() };
+    const pb = getPB();
+    const g = getGarageMath();
     $("#g-odo").odometer.value = odo() || ""; $("#g-odo").date.value = day();
     const svcs = S.get("services", []);
     $("#g-services").innerHTML = svcs.map((it) => {
-      const st = GARAGE.dueStatus(it, lastFor(it.name), now);
-      if (window.PB && st.dueDate && st.state !== "unknown") PB.deadlines.publish({ title: "Sorento: " + it.name, date: st.dueDate, source: "garage", kind: "service", ref: it.id });
+      const st = g.dueStatus(it, lastFor(it.name), now);
+      if (pb && pb.deadlines && st.dueDate && st.state !== "unknown") pb.deadlines.publish({ title: "Sorento: " + it.name, date: st.dueDate, source: "garage", kind: "service", ref: it.id });
+      const nextDueDate = computeNextDueDate(it, st, now.date);
       const cls = st.state === "overdue" ? "over" : st.state === "due soon" ? "soon" : "";
-      const detail = st.state === "unknown" ? "no service logged yet" : `due ${st.dueDate || ""}${st.dueMiles ? ` / ${num(st.dueMiles)} mi` : ""} · ${st.milesLeft != null ? num(st.milesLeft) + " mi left" : ""}${st.daysLeft != null ? ` · ${st.daysLeft} days` : ""}`;
+      const detail = st.state === "unknown"
+        ? (nextDueDate ? `no service logged yet · est. next ${nextDueDate}` : "no service logged yet")
+        : `due ${st.dueDate || ""}${st.dueMiles ? ` / ${num(st.dueMiles)} mi` : ""} · ${st.milesLeft != null ? num(st.milesLeft) + " mi left" : ""}${st.daysLeft != null ? ` · ${st.daysLeft} days` : ""}`;
       return `<div class="kv"><span>${esc(it.name)} <span class="pill ${cls}">${st.state}</span><br><span class="stat-s">${detail} · every ${it.miles ? num(it.miles) + " mi" : ""}${it.miles && it.months ? " / " : ""}${it.months ? it.months + " mo" : ""}</span></span>
-        <span><button class="btn quiet small" data-edit="${it.id}" type="button">Edit interval</button></span></div>`;
+        <span class="row-actions"><button class="btn quiet small" data-sync="${esc(it.id)}" type="button">Sync to Kairos</button><button class="btn quiet small" data-edit="${esc(it.id)}" type="button">Edit interval</button></span></div>`;
     }).join("") || `<p class="empty">No services defined.</p>`;
+
+    $("#g-services").querySelectorAll("[data-sync]").forEach((b) => (b.onclick = () => {
+      const it = svcs.find((x) => x.id === b.dataset.sync); if (!it) return;
+      const st = g.dueStatus(it, lastFor(it.name), now);
+      const nextDueDate = computeNextDueDate(it, st, now.date);
+      if (!nextDueDate) {
+        toast("No due date yet — log this service or set a month interval first");
+        return;
+      }
+      const title = "Sorento: " + it.name;
+      const bus = getPB();
+      if (bus && bus.deadlines) bus.deadlines.publish({ title, date: nextDueDate, source: "garage", kind: "service", ref: it.id });
+      if (bus && bus.events) bus.events.publish({ type: "deadline:garage", pillar: "garage", title });
+      toast(`Synced "${it.name}" (${nextDueDate}) to Kairos`);
+    }));
 
     $("#g-services").querySelectorAll("[data-edit]").forEach((b) => (b.onclick = () => {
       const it = svcs.find((x) => x.id === b.dataset.edit); if (!it) return;

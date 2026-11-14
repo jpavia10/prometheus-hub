@@ -17,6 +17,83 @@
     { title: "Violet TK Enrollment / Shot Record Packet", category: "school", issuer: "El Tejon / District", due: "2026-08-01", where: "Binder + Drive", serial: "TK-IMMUN-26", notes: "Flags urgent inside 7 days" }
   ];
 
+  const getRecordsMath = () => (typeof window !== "undefined" && window.RECORDS) || (typeof globalThis !== "undefined" && globalThis.RECORDS);
+  const getPB = () => (typeof window !== "undefined" && window.PB) || (typeof globalThis !== "undefined" && globalThis.PB) || null;
+
+  function exportShieldSummary(todayOpt, docsOpt) {
+    const opts = (todayOpt && typeof todayOpt === "object" && !Array.isArray(todayOpt))
+      ? todayOpt
+      : { today: todayOpt, docs: docsOpt };
+    const t = opts.today || day();
+    const docs = Array.isArray(opts.docs) ? opts.docs : S.list("docs");
+    const recMath = getRecordsMath();
+    const overdueItems = [];
+    const urgentItems = [];
+    const soonItems = [];
+    let okCount = 0;
+    let noneCount = 0;
+    for (const d of docs) {
+      const c = recMath.classify(d, t);
+      if (c.flag === "overdue") overdueItems.push({ d, c });
+      else if (c.flag === "urgent") urgentItems.push({ d, c });
+      else if (c.flag === "soon") soonItems.push({ d, c });
+      else if (c.flag === "ok") okCount++;
+      else noneCount++;
+    }
+    const byDays = (a, b) => a.c.days - b.c.days;
+    overdueItems.sort(byDays);
+    urgentItems.sort(byDays);
+    soonItems.sort(byDays);
+    const fmtItem = ({ d, c }) =>
+      `  - ${d.title} [${d.category || "other"}]${d.serial ? ` (#${d.serial})` : ""} — due ${d.due} (${c.days < 0 ? `${Math.abs(c.days)}d overdue` : `${c.days}d`})${d.where ? ` · loc: ${d.where}` : ""}`;
+    const lines = [
+      `RECORDS SHIELD SUMMARY — ${t}`,
+      `Total Documents: ${docs.length}`,
+      `Overdue: ${overdueItems.length} | 7-Day School Shield (Urgent): ${urgentItems.length} | 30-Day Renewals: ${soonItems.length}`,
+    ];
+    if (overdueItems.length) lines.push("OVERDUE:", ...overdueItems.map(fmtItem));
+    if (urgentItems.length) lines.push("7-DAY URGENT SCHOOL SHIELD:", ...urgentItems.map(fmtItem));
+    if (soonItems.length) lines.push("30-DAY RENEWALS:", ...soonItems.map(fmtItem));
+    if (!overdueItems.length && !urgentItems.length && !soonItems.length) {
+      lines.push("Status: Clear — no overdue items, 7-day school deadlines, or 30-day renewals.");
+    }
+    const summary = lines.join("\n");
+    return {
+      today: t,
+      total: docs.length,
+      overdue: overdueItems.length,
+      urgentSchool: urgentItems.length,
+      urgent: urgentItems.length,
+      renewals30: soonItems.length,
+      soon: soonItems.length,
+      within30: urgentItems.length + soonItems.length,
+      ok: okCount,
+      undated: noneCount,
+      counts: {
+        overdue: overdueItems.length,
+        urgentSchool: urgentItems.length,
+        renewals30: soonItems.length,
+        within30: urgentItems.length + soonItems.length,
+        ok: okCount,
+        none: noneCount,
+      },
+      items: {
+        overdue: overdueItems.map(({ d, c }) => ({ ...d, flag: c.flag, days: c.days })),
+        urgentSchool: urgentItems.map(({ d, c }) => ({ ...d, flag: c.flag, days: c.days })),
+        renewals30: soonItems.map(({ d, c }) => ({ ...d, flag: c.flag, days: c.days })),
+      },
+      summary,
+      text: summary,
+    };
+  }
+
+  const RECORDS_APP_API = {
+    data: () => ({ today: day(), docs: S.list("docs"), shield: exportShieldSummary() }),
+    exportShieldSummary,
+  };
+  if (typeof window !== "undefined") window.RECORDS_APP = RECORDS_APP_API;
+  if (typeof globalThis !== "undefined") globalThis.RECORDS_APP = RECORDS_APP_API;
+
   app.innerHTML = `
     <section class="grid">
       <div class="glass lit span-12"><h2>Urgent Shield &amp; 30-Day Renewal Radar</h2><div id="r-alerts"></div></div>
@@ -25,6 +102,7 @@
         <div class="row-actions" id="r-tpls" style="flex-wrap:wrap;gap:6px;margin-top:8px"></div>
         <div class="row-actions" style="margin-top:10px">
           <button class="btn small" id="r-seed-demo" type="button">Seed Sample Warranty + 5-Day TK Alert</button>
+          <button class="btn quiet small" id="r-export-shield" type="button">Export Shield Summary</button>
         </div>
       </div>
       <div class="glass span-6"><h2>Instant Serial &amp; Vault Search</h2>
@@ -64,12 +142,18 @@
     toast("Seeded Warranty + 5-day TK alert!"); paint();
   };
 
+  $("#r-export-shield").onclick = () => {
+    const res = exportShieldSummary();
+    download(`records_shield_${res.today}.json`, res);
+    toast(`Shield: ${res.overdue} overdue · ${res.urgentSchool} 7d school · ${res.renewals30} 30d renewals`);
+  };
+
   function paint() {
-    const t = day(), docs = S.list("docs");
+    const t = day(), docs = S.list("docs"), recMath = getRecordsMath(), pb = getPB();
     const alerts = [];
     for (const d of docs) {
-      if (window.PB && d.due) PB.deadlines.publish({ title: (d.category === "school" ? "School: " : "Renewal: ") + d.title, date: d.due, source: "records", kind: d.category === "school" ? "school" : "renewal", ref: d.id });
-      const c = RECORDS.classify(d, t);
+      if (pb && pb.deadlines && d.due) pb.deadlines.publish({ title: (d.category === "school" ? "School: " : "Renewal: ") + d.title, date: d.due, source: "records", kind: d.category === "school" ? "school" : "renewal", ref: d.id });
+      const c = recMath.classify(d, t);
       if (c.flag === "overdue" || c.flag === "urgent" || c.flag === "soon") alerts.push({ d, c });
     }
     $("#r-alerts").innerHTML = alerts.length
@@ -81,11 +165,11 @@
     $("#r-count").textContent = `Showing ${shown.length} of ${docs.length} registered documents.`;
     const el = $("#r-list"); el.innerHTML = shown.length ? "" : `<p class="empty">No matching records.</p>`;
     for (const d of shown) {
-      const c = RECORDS.classify(d, t);
+      const c = recMath.classify(d, t);
       const badge = c.flag === "urgent" ? `[SCHOOL ${c.days}d]` : c.flag === "overdue" ? "[OVERDUE]" : c.flag === "soon" ? `[${c.days}d]` : c.flag === "ok" ? `${c.days}d` : "";
       el.append(h("div.kv", null,
         h("span", null, h("b", null, d.title), badge ? ` ${badge}` : "", h("br"), h("span.stat-s", null, `${d.category}${d.serial ? " · #" + esc(d.serial) : ""}${d.issuer ? " · " + esc(d.issuer) : ""}${d.due ? " · due " + d.due : ""}${d.where ? " · " + esc(d.where) : ""}`)),
-        h("button.btn.quiet.small", { type: "button", onclick: () => { if (window.PB) PB.deadlines.unpublish("records", d.id); S.remove("docs", d.id); paint(); toast("Removed"); } }, "Remove")
+        h("button.btn.quiet.small", { type: "button", onclick: () => { if (pb && pb.deadlines) pb.deadlines.unpublish("records", d.id); S.remove("docs", d.id); paint(); toast("Removed"); } }, "Remove")
       ));
     }
   }

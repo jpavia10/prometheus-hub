@@ -468,7 +468,7 @@ html.vt-inpage::view-transition-old(root), html.vt-inpage::view-transition-new(r
 .brand-day { background: linear-gradient(90deg, #fff, var(--ember-2), var(--cyan), #fff); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 9s linear infinite; }
 @keyframes shimmer { to { background-position: -300% 0; } }
 
-.reactor { display: grid; justify-items: center; gap: 12px; margin: 0 -10px; padding-top: 2px; }
+.reactor { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 12px; margin: 0 -10px; padding-top: 2px; }
 .rx-wrap { perspective: 900px; }
 .rx-stage { position: relative; transform-style: preserve-3d; transform: rotateX(var(--ty, 0deg)) rotateY(var(--tx, 0deg)); transition: transform .3s ease-out; }
 .rx-stage::before { content: ""; position: absolute; inset: 8% 4%; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 140, 70, .34), rgba(255, 79, 216, .1) 45%, transparent 72%); filter: blur(22px); animation: breathe 4.5s ease-in-out infinite; pointer-events: none; }
@@ -552,7 +552,7 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
 .reactor.live[data-mode="orbit"] .hex:not(.focus) .hex-name { opacity: .85; }
 .reactor.live[data-mode="grid"] .hex.focus { filter: none; }
 .reactor.live .hex-in { touch-action: pan-y; }
-.rx-hud { width: 100%; max-width: 460px; padding: 0 18px; display: grid; gap: 10px; justify-items: center; }
+.rx-hud { width: 100%; max-width: 460px; min-width: 0; padding: 0 18px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; justify-items: center; }
 .rx-read { --c: var(--ember); width: 100%; min-height: 62px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 10px 10px 18px; border-radius: 20px; position: relative;
   background: linear-gradient(90deg, color-mix(in srgb, var(--c) 22%, rgba(10, 14, 26, .7)), rgba(10, 14, 26, .62) 70%); border: 1px solid color-mix(in srgb, var(--c) 55%, transparent); box-shadow: 0 0 26px -8px var(--c), inset 0 1px 0 rgba(255, 255, 255, .08); transition: background .4s, border-color .4s, box-shadow .4s, opacity .3s; }
 .rx-read::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: var(--c); box-shadow: 0 0 14px var(--c); }
@@ -601,7 +601,6 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
 .chip.preset-btn { height: 34px; color: var(--mint-2); border-color: rgba(87, 239, 192, .45); background: rgba(87, 239, 192, .11); }
 .chip.preset-btn:hover { background: rgba(87, 239, 192, .2); }
 @media (max-width: 960px) { .rail-nav, .rail-build { display: none; } }
-@media (max-width: 600px) { .rail-search span, .rail-search kbd, .chip.preset-btn { display: none; } }
 
 .rx-domains { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; width: 100%; }
 .rx-domain-btn { padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line); background: rgba(10, 14, 26, .52); color: var(--ink-2); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; transition: border-color .18s, background .18s, color .18s; }
@@ -641,4 +640,19 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
   .tile.homestead { grid-column: 1 / -1; min-height: 0; }
   .horizon-quick { flex-direction: column; }
   .atlas-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .rail-search span, .rail-search kbd, .chip.preset-btn { display: none; }
+  .reactor.live { grid-template-columns: minmax(0, 1fr); max-width: calc(100% + 28px); margin: -6px -14px 0; gap: 6px; overflow-x: clip; }
+  .reactor.live .rx-stage { max-width: 100%; overflow-x: clip; }
+  .reactor.live .hex-name { font-size: 6.8px; letter-spacing: .03em; }
+  .rx-hud { grid-template-columns: minmax(0, 1fr); width: 100%; max-width: 100%; min-width: 0; margin-top: 10px; padding: 0 12px; gap: 7px; }
+  .rx-read { min-height: 54px; padding: 8px 10px 8px 14px; gap: 10px; }
+  .rx-enter { min-height: 38px; padding: 0 12px 0 14px; font-size: 13.5px; }
+  .rx-domains { gap: 4px; }
+  .rx-domain-btn { padding: 4px 8px; font-size: 9.5px; letter-spacing: .04em; }
+  .rx-controls { width: 100%; max-width: 100%; gap: 6px; }
+  .rx-hud .seg { max-width: 100%; }
+  .rx-hud .seg button { min-height: 30px; padding: 0 10px; font-size: 10px; letter-spacing: .1em; }
+  .rx-zoom .btn.small { min-height: 30px; padding: 0 10px; font-size: 12px; }
 }
