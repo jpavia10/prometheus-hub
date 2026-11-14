@@ -1,4 +1,4 @@
-/* Aether · Atmospheric & Field Lab (Frazier Park 34.8228°N, 118.9448°W · 4,636 ft).
+/* Aether · Atmospheric & Field Lab. The fetch below uses one field point until a place is chosen on the device.
    window.AETHER = { SEASONS, APPLIANCES, computeBudget, data } */
 (function () {
   "use strict";
@@ -24,7 +24,7 @@
 
   const DEFAULT_CORRIDORS = [
     { id: "tejon", corridor: "I-5 Tejon / Grapevine (4,144 ft)", status: "clear", aqi: 34, windMph: 14, note: "Nominal pass flow · carry winter chains Nov–Apr", updated: day() },
-    { id: "frazier", corridor: "Frazier Mountain Park Rd / Cuddy Valley", status: "clear", aqi: 29, windMph: 11, note: "Dry pavement · frost watch overnight", updated: day() },
+    { id: "frazier", corridor: "mountain road / valley", status: "clear", aqi: 29, windMph: 11, note: "Dry pavement · frost watch overnight", updated: day() },
     { id: "pmc", corridor: "Mil Potrero Hwy · Pine Mountain Club (5,550 ft)", status: "advisory", aqi: 28, windMph: 18, note: "Gusts above 5,000 ft · shaded ice patches after storms", updated: day() },
   ];
 
@@ -79,8 +79,8 @@
     </div>
     <section id="ae-pane-solar" class="grid">
       <div class="glass span-6">
-        <h2>Frazier Park Solar &amp; Power Station Budget</h2>
-        <p class="sub">Peak sun hours at 34.82°N / 4,636 ft minus inverter/charge derating vs essential appliances.</p>
+        <h2>Solar and power-station budget</h2>
+        <p class="sub">Peak sun hours minus inverter and charge losses, against the loads you mark essential.</p>
         <form class="form" id="ae-cfg">
           <label class="f">Season<select name="season">${Object.entries(SEASONS).map(([k, s]) => `<option value="${k}">${s.label} · ${s.peakSunH}h</option>`).join("")}</select></label>
           <label class="f">Solar Array (W)<input name="arrayW" type="number" min="0" max="20000" step="50" value="400"></label>
@@ -106,7 +106,7 @@
         <h2>Mountain Corridor &amp; Ephemeris Telemetry</h2>
         <p class="sub" id="ae-wx-status">Stored baseline pass status (shared read-only to Bastion via prometheus.aether.alerts).</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-          <button class="btn" id="ae-fetch" type="button">Fetch Telemetry (Open-Meteo 34.82°N)</button>
+          <button class="btn" id="ae-fetch" type="button">Fetch telemetry</button>
           <button class="btn quiet" id="ae-sched" type="button">Publish Winter Chain &amp; PSPS Check → Calendar</button>
         </div>
         <div id="ae-alerts"></div>
@@ -210,7 +210,7 @@
 
     const wx = D.wx;
     $("#ae-wx-status").textContent = wx
-      ? `Last Open-Meteo sample (${wx.at}): ${wx.tempF}°F · Wind ${wx.windMph} mph · Precip ${wx.precipMm} mm (Frazier Park 34.82°N).`
+      ? `Last Open-Meteo sample (${wx.at}): ${wx.tempF}°F · Wind ${wx.windMph} mph · Precip ${wx.precipMm} mm.`
       : "Stored baseline corridor logs shared read-only to Bastion (prometheus.aether.alerts).";
 
     const pills = { clear: "pill", advisory: "pill warn", watch: "pill warn", closed: "pill hot" };
@@ -278,7 +278,7 @@
       S.set("wx", wx);
       const alerts = getAlerts().map((a, idx) => idx === 1 ? { ...a, windMph: wx.windMph, status: wx.windMph >= 35 ? "advisory" : a.status, updated: day() } : a);
       S.set("alerts", alerts);
-      toast(`Synced Frazier Park (${wx.tempF}°F, ${wx.windMph} mph wind)`);
+      toast(`Synced the field reading (${wx.tempF}°F, ${wx.windMph} mph wind)`);
       paint();
       emitStore();
     } catch (e) {

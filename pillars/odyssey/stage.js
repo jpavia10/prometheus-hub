@@ -1,4 +1,4 @@
-/* Odyssey signature: departure board orbit + geodesic departure arc from Frazier Park origin. */
+/* Odyssey signature: departure board orbit + geodesic departure arc from the mountain community origin. */
 (function () {
   const S = PK.store("odyssey"), I = PK.ink;
   PK.stage({

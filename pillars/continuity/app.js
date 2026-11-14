@@ -8,7 +8,7 @@
 
   const DEFAULT_SECTIONS = [
     { id: "cs-1", name: "Vital Contacts & Kin Handoff", status: "partial", locator: "Printed card in red emergency binder + Kin pillar" },
-    { id: "cs-2", name: "Medical Directives, Allergies & Rx", status: "ready", locator: "Fireproof pouch · Frazier Park hallway closet" },
+    { id: "cs-2", name: "Medical Directives, Allergies and Rx", status: "ready", locator: "Fireproof pouch · hallway closet" },
     { id: "cs-3", name: "Property Deeds, Title & Hearth Keys", status: "partial", locator: "Safe deposit box + Kern County Recorder copy" },
     { id: "cs-4", name: "Tax Returns, CPA & Policy Locators", status: "missing", locator: "Records pillar + physical CPA folder" },
     { id: "cs-5", name: "Hardware Security Keys & Digital Estate", status: "partial", locator: "Offline YubiKey backup location (inside encrypted vault only)" },

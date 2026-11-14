@@ -73,7 +73,7 @@
       const packs = t.packState || {};
       const isAway = !!(awayMeta && awayMeta.tripId === t.id);
       const roadNote = t.car
-        ? `Bastion car kit: ${health.carItems} item(s) packed · Sorento services due <=500 mi: ${health.sDue}`
+        ? `Bastion car kit: ${health.carItems} item(s) packed · Vehicle services due <=500 mi: ${health.sDue}`
         : "";
       el.append(h("div.trip", null,
         h("h3", null, `${t.name} `, isAway ? h("span.pill.soon", null, "Away mode on · Home screen prioritized") : null),

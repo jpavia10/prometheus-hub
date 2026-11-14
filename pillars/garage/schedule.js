@@ -1,17 +1,17 @@
-/* Garage factory schedule (Grok, 2026-11-10): 2025 Kia Sorento Hybrid (HEV, US) — Kia America Owner's Manual,
+/* Garage factory schedule (Grok, 2026-11-10): hybrid SUV (US maintenance table) — Kia America Owner's Manual,
    Maintenance ch. 9: severe conditions p. 9-9, normal table p. 9-10, footnotes p. 9-11, severe table p. 9-12.
-   Source PDF via owners.kia.com > Manuals (documentId 328$6829), sha256 in .source. Every interval below is
+   Source PDF via owners.kia.com > Manuals (document 328-6829), sha256 in .source. Every interval below is
    transcribed from those pages; 'More frequently' rows carry no number in the manual and are flagged, not guessed.
    Drive drop: GARAGE-GROK-kia-maintenance_20261110-1656.json (Prometheus Hub incoming). */
 window.GARAGE_SCHEDULE = {
  "dataset": "GARAGE-GROK-kia-maintenance",
- "vehicle": "2025 Kia Sorento Hybrid (HEV), US edition",
+ "vehicle": "hybrid SUV, US maintenance table",
  "generated_utc": "2026-11-10T16:56Z",
  "source": {
-  "title": "2025 Sorento Hybrid Owner's Manual (Kia America, (c)2024; file '2025 Sorento P(HEV) OM 1.pdf', 620 pages, PDF created 2024-03-26, modified 2024-04-23)",
+  "title": "hybrid SUV owner's manual (Kia America, (c)2024; file 'hybrid-suv-om.pdf', 620 pages, PDF created 2024-03-26, modified 2024-04-23)",
   "portal": "https://owners.kia.com/us/en/manuals.html",
-  "portal_path": "owners.kia.com > Manuals > 2025 > Sorento HEV > '2025 Sorento Hybrid Owner's Manual' (documentId 328$6829)",
-  "pdf_url": "https://www.kiatechinfo.com/files/328/6829/2025%20Sorento%20P(HEV)%20OM%201.pdf",
+  "portal_path": "owners.kia.com > Manuals > 2025 > hybrid SUV > 'hybrid SUV owner's manual' (document 328-6829)",
+  "pdf_url": "https://www.kiatechinfo.com/files/328/6829/hybrid-suv-om.pdf",
   "pdf_url_note": "PDF is served by Kia's KGIS host after the owners.kia.com Manuals page hands off a session token; open via the portal if the direct link 403s/empties",
   "sha256": "c04bb5cf3e70e23ee4639c48e3ccd0010eb26a72ed60213fdc3fec5ef54aa9c7",
   "sections": {
@@ -43,7 +43,7 @@ window.GARAGE_SCHEDULE = {
   "J": "Frequently high speed or rapid accel/decel",
   "K": "Frequently stop-and-go"
  },
- "frazier_park_note": "Condition G (uphill/downhill/mountain roads repeatedly) applies per Joseph's Frazier Park profile. Condition D (salt / very cold weather) likely applies in winter and is the trigger for the 5,000 mi / 6 mo oil interval - G alone does not change the oil interval in Kia's table. Flagged, not assumed.",
+ "frazier_park_note": "Condition G (uphill/downhill/mountain roads repeatedly) applies per a mountain-road profile. Condition D (salt / very cold weather) likely applies in winter and is the trigger for the 5,000 mi / 6 mo oil interval - G alone does not change the oil interval in Kia's table. Flagged, not assumed.",
  "items": [
   {
    "n": 1,

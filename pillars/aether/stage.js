@@ -2,7 +2,7 @@
 (function () {
   const I = PK.ink;
   PK.stage({
-    label: "Frazier Park solar horizon arc and battery autonomy ring",
+    label: "Solar horizon arc and battery autonomy ring",
     data() {
       const D = window.AETHER ? window.AETHER.data() : { budget: { arrayW: 400, bankWh: 2048, yieldWh: 1800, loadWh: 1500, netWh: 300, autonomyH: 32, autonomyDays: 1.4, season: { label: "Autumn", peakSunH: 5.5 } }, alerts: [] };
       const activeAlerts = (D.alerts || []).filter((a) => a.status !== "clear").length;

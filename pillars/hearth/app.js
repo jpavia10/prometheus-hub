@@ -1,4 +1,4 @@
-/* Hephaestus Hearth: 5-phase Renovation Tracker + 8-stage Deck Rev 7 + 11 Rooms + 13 BOM SKUs + 5 Field Requests + Planned vs Actual Costs + Frazier Park Maintenance + 124 Checkpoints.
+/* Hephaestus Hearth: 5-phase Renovation Tracker + 8-stage Deck Rev 7 + 11 Rooms + 13 BOM SKUs + 5 Field Requests + Planned vs Actual Costs + the mountain community Maintenance + 124 Checkpoints.
    Preserves window.HEARTH = { DECK, data } for stage.js and cross-pillar hooks. */
 (function () {
   "use strict";
@@ -81,12 +81,12 @@
     { id: "req-05", phase: 3, room: "", title: "Locate and mark stair footing locations (Phase 3)", logged: "2026-09-25", status: "open", answer: "" },
   ];
 
-  // Frazier Park mountain home seasonal recurring maintenance deadlines
+  // Seasonal home maintenance deadlines. The place is whatever this device is used for.
   const SEASONAL_MAINT = [
-    { id: "fp-pine", title: "Frazier Park: Roof, gutter & defensible-space pine-needle clear", date: "2026-05-15", cadence: "Annual spring" },
+    { id: "fp-pine", title: "Roof, gutter, and defensible-space clear", date: "2026-05-15", cadence: "Annual spring" },
     { id: "fp-deck-seal", title: "Deck UV seal & flashing caulk inspection", date: "2026-08-20", cadence: "Annual summer" },
     { id: "fp-hvac", title: "HVAC furnace filter & heat-pump check", date: "2026-10-01", cadence: "Quarterly / pre-winter" },
-    { id: "fp-freeze", title: "Exterior hose bibbs & crawlspace pipe freeze wrap (4,600 ft)", date: "2026-11-01", cadence: "Annual pre-frost" },
+    { id: "fp-freeze", title: "Exterior hose bibbs and crawlspace pipe freeze wrap", date: "2026-11-01", cadence: "Annual pre-frost" },
     { id: "fp-co", title: "Smoke & CO detector battery swap", date: "2026-11-02", cadence: "Semi-annual DST" },
     { id: "fp-snow", title: "Snow-load overhang & garage apron seal check", date: "2026-12-10", cadence: "Annual winter" },
   ];
@@ -325,7 +325,7 @@
         </form>
       </div>
       <div class="glass span-5">
-        <h2>Frazier Park Seasonal Maintenance</h2>
+        <h2>Seasonal maintenance</h2>
         <p class="sub">Mountain deadlines published to Chronos & Hub Orrery.</p>
         <div id="h-maint"></div>
       </div>
@@ -577,7 +577,7 @@
       );
     }) : [h("p.empty", null, "No rooms yet.")]));
 
-    // 7. Frazier Park Seasonal Maintenance
+    // 7. the mountain community Seasonal Maintenance
     const maints = S.get("maint", SEASONAL_MAINT);
     $("#h-maint").replaceChildren(...maints.map((m) =>
       h("div.kv", null,

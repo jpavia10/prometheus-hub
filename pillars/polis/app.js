@@ -1,4 +1,4 @@
-/* Polis · Civic & Legal Watch (Kern County / Frazier Park / CA protections). window.POLIS = { DIRECTORY, data } */
+/* Polis · Civic & Legal Watch (Kern County / the mountain community / CA protections). window.POLIS = { DIRECTORY, data } */
 (function () {
   "use strict";
   const { $, h, day, toast, store, download, pickFile } = PK;
@@ -7,10 +7,10 @@
   const DIRECTORY = [
     { id: "kern-bldg", level: "County", agency: "Kern County Building & Safety", scope: "Residential permits, electrical/structural inspections, Hearth rehab compliance", contact: "(661) 862-8650 · kernpublicworks.com" },
     { id: "kern-assessor", level: "County", agency: "Kern County Assessor-Recorder", scope: "Property tax rolls, Prop 19 / exemptions, recorded deeds & parcel maps", contact: "(661) 868-3485 · assessor.kerncounty.com" },
-    { id: "kcfd-57", level: "Local", agency: "Kern County Fire Station 57 (Frazier Park)", scope: "PRC 4291 100-ft defensible space inspections & hazard abatement", contact: "(661) 245-3706 · 1420 Mt Pinos Way" },
-    { id: "fppud", level: "Local", agency: "Frazier Park Public Utility District (FPPUD)", scope: "Mountain community water service, meter & boil/conservation advisories", contact: "(661) 245-3734 · 4020 Park Dr" },
+    { id: "kcfd-57", level: "Local", agency: "Kern County Fire Station 57", scope: "PRC 4291 100-ft defensible space inspections & hazard abatement", contact: "(661) 245-3706 · 1420 Mt Pinos Way" },
+    { id: "fppud", level: "Local", agency: "local public utility district", scope: "Mountain community water service, meter & boil/conservation advisories", contact: "(661) 245-3734 · 4020 Park Dr" },
     { id: "kern-elections", level: "County", agency: "Kern County Elections & Voter Lookup", scope: "Registration verification, vote-by-mail tracking, local district ballots", contact: "(661) 868-3590 · kernvote.com" },
-    { id: "ca-cslb", level: "State", agency: "CA Contractors State License Board (CSLB)", scope: "License bond & workers' comp verification before hiring contractors over $500", contact: "(800) 321-2752 · cslb.ca.gov" },
+    { id: "ca-cslb", level: "State", agency: "CA Contractors State License Board (CSLB)", scope: "License bond and workers' comp verification before hiring contractors over 500 dollars", contact: "(800) 321-2752 · cslb.ca.gov" },
     { id: "ca-drop", level: "State", agency: "CA Privacy Protection Agency · DROP", scope: "California Delete Act data-broker mass opt-out compliance watch", contact: "cppa.ca.gov · coordinate with Privacy pillar" },
   ];
 
@@ -77,7 +77,7 @@
     </section>
     <section id="po-pane-dir" class="grid" hidden>
       <div class="glass span-12">
-        <h2>Frazier Park · Kern County · California Public Directory</h2>
+        <h2>Local, county, and state directory</h2>
         <div id="po-dir"></div>
       </div>
     </section>`;

@@ -1,6 +1,6 @@
-# Frazier Park alert-watch cheat sheet (Grok, 2026-11-10)
+# the mountain community alert-watch cheat sheet (Grok, 2026-11-10)
 
-Where: Frazier Park, Kern Co. · ~4,632 ft · NWS Hanford (HNX) · forecast zone **CAZ336** · fire zone **CAZ597** (Red Flag shows up here, not in CAZ336).
+Where: a mountain community · ~4,632 ft · NWS Hanford (HNX) · forecast zone **CAZ336** · fire zone **CAZ597** (Red Flag shows up here, not in CAZ336).
 
 | Alert | Count (CAZ336 2021-09→2026-10; CAZ597 2019-10→2026-10; CAC029 2016-01→2026-10) | Peak months | Do this |
 |---|---|---|---|
@@ -14,12 +14,12 @@ Where: Frazier Park, Kern Co. · ~4,632 ft · NWS Hanford (HNX) · forecast zone
 | High Wind Watch (CAZ336) | High Wind Watch 6 | Dec:2,Jan:1,Mar:1 | Secure yard; charge devices. |
 | Wind Advisory (CAZ336) | Wind Advisory 21 | Feb:6,Jan:5,Dec:4 | Caution driving; secure items. |
 | Flood Watch (CAZ336) | Flood Watch 16 | Jan:4,Sep:3,Feb:2 | Burn-scar debris flow risk after fires; avoid washes/low crossings. |
-| Flash Flood Warning (CAC029) | Flash Flood Warning 109 | Aug:33,Sep:17,Mar:13 | County-wide polygon count (not Frazier-specific). Never drive through water. |
-| Extreme Heat Warning / Heat Advisory (CAZ336) | Extreme Heat Warning 1, Excessive Heat Warning 4, Heat Advisory 5, Excessive Heat Watch 4 | Aug:1; Jul:3,Aug:1; Jul:3,Aug:1,Sep:1; Jul:3,Aug:1 | Jul/Aug. PSPS + heat = use cooling center (Kern opened Frazier Mountain Park cooling center during the Sept 2020 PSPS). |
+| Flash Flood Warning (CAC029) | Flash Flood Warning 109 | Aug:33,Sep:17,Mar:13 | County-wide polygon count (not place-specific). Never drive through water. |
+| Extreme Heat Warning / Heat Advisory (CAZ336) | Extreme Heat Warning 1, Excessive Heat Warning 4, Heat Advisory 5, Excessive Heat Watch 4 | Aug:1; Jul:3,Aug:1; Jul:3,Aug:1,Sep:1; Jul:3,Aug:1 | Jul/Aug. PSPS + heat = use cooling center (Kern opened the mountain park cooling center during the Sept 2020 PSPS). |
 
 **Channels**
 
-- NWS forecast + alerts for Frazier Mountain Communities (zone CAZ336, office HNX Hanford): https://forecast.weather.gov/MapClick.php?lat=34.8206&lon=-118.9454
+- NWS forecast + alerts for mountain communities (zone CAZ336, office HNX Hanford): https://forecast.weather.gov/MapClick.php?lat=34.8206&lon=-118.9454
 - NWS fire weather zone CAZ597 "Fort Tejon" (Red Flag lives here, not in CAZ336): https://api.weather.gov/alerts/active?zone=CAZ597
 - ReadyKern (Kern County mass notification): https://kerncountyfire.org/education-safety/ready-kern/ — Caller ID always begins with 661; confirm by listening and pressing 1; questions readykern@kerncountyfire.org or 211; opt-out by calling (661) 873-2602 (discouraged).
 - Genasys Protect evacuation zones: https://protect.genasys.com/ — Kern zones live since Aug 18, 2023; look up your address, write the zone name down; ReadyKern alerts use zone names; app sends critical alerts.

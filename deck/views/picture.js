@@ -12,7 +12,7 @@ import { rowItem, runway, locationSheet, skySheet, untilText } from "./parts.js"
 import { position } from "../models/money.js";
 import { focusStats, focusView, makeEvent, kindOf } from "../models/time.js";
 import * as wx from "../core/weather.js";
-import { reactor, titanTile, boot, PILLAR_DOMAINS, domainOf } from "./orrery.js";
+import { reactor, boot, PILLAR_DOMAINS, domainOf } from "./orrery.js";
 
 /** The day ring. soon = rows in the next 24 hours; w = the weather reading (for sunrise and sunset) or null. */
 function dayRing(now, soon, w, t) {
@@ -110,8 +110,8 @@ export function render(root, route, ctx) {
       bars(hrs.slice(0, 24).map((x) => x.pop || 0), { w: 150, h: 26, tone: alerts.length ? "ember" : "ice", max: 100 }),
       h("small.quiet", `gusts to ${Math.round(Math.max(0, ...hrs.map((x) => x.gust || 0)))} mph${w.stale ? " · last known reading" : profile.place ? " · " + profile.place.label : ""}`)));
   } else tiles.push(h("button.tile.sky.invite", { type: "button", id: "sky-watch", onclick: () => (profile.place ? ctx.reloadWeather(true) : locationSheet(ctx)) },
-    h("span.tile-head", h("span", "Storm watch"), h("small", profile.place ? "retry" : "4,639 ft ref")),
-    h("span.tile-main", icon("cloud", 30), h("span", h("b", profile.place ? "No reading yet" : "Frazier Park, CA"), h("small", profile.place ? "The weather service did not answer. Tap to try again." : "Tap to confirm mountain coordinates and ignite Storm Watch.")))));
+    h("span.tile-head", h("span", "Storm watch"), h("small", profile.place ? "retry" : "on this device")),
+    h("span.tile-main", icon("cloud", 30), h("span", h("b", profile.place ? "No reading yet" : "Set a location"), h("small", profile.place ? "The weather service did not answer. Tap to try again." : "Add a place. Nothing is saved until you do.")))));
   const tm = store.get("time"); const fs = focusStats(tm, t); const fv = focusView(tm);
   tiles.push(h("a.tile.focus", { href: "#/time/focus", "aria-label": "Focus clock" },
     h("span.tile-head", h("span", "Focus"), h("small", fs.streak ? plural(fs.streak, "day") + " running" : "")),
@@ -122,16 +122,22 @@ export function render(root, route, ctx) {
   const ecoStats = pillarStats(t);
   const homeCount = (ecoStats.hearth ? ecoStats.hearth.records : 0) + (ecoStats.aether ? ecoStats.aether.records : 0) + (ecoStats.garage ? ecoStats.garage.records : 0) + (ecoStats.bastion ? ecoStats.bastion.records : 0);
   const odo = readJson("prometheus.garage.odometer", 0);
-  tiles.push(h("a.tile.homestead", { href: "pillars/hearth/", "aria-label": "Mountain & Homestead Readiness" },
+  const vehicleRec = readJson("prometheus.garage.vehicle", null);
+  const vehicleName = vehicleRec && String(vehicleRec.name || "").trim();
+  tiles.push(h("a.tile.homestead", { href: "pillars/hearth/", "aria-label": "Homestead" },
     h("span.tile-head", h("span", "Homestead"), h("small", "Hearth · Aether · Garage")),
     h("span.tile-main", icon("house", 30), h("span", h("b.num.big", String(homeCount || 11)), h("small", homeCount ? "logged assets & checks" : "rooms mapped in Hearth"))),
-    h("span.tile-line", odo ? `Sorento @ ${Number(odo).toLocaleString()} mi · Bastion offline kit ready` : "Mountain pass prep, solar Wh budget & remodel phases."),
-    h("small.quiet", "Open Hearth & Aether")));
+    h("span.tile-line", odo ? `${vehicleName || "Vehicle"} @ ${Number(odo).toLocaleString()} mi · offline kit ready` : "Pass prep, power budget, and remodel phases."),
+    h("small.quiet", "Open Hearth")));
 
   for (const c of ctx.caps || []) if (c.model.tile) { try { const el = c.model.tile(store.get(c.id), t, { h, icon, ring, bars, spark, chip }); if (el) tiles.push(el); } catch (e) { console.error(e); } }
   const ambient = h("section.ambient", { "aria-label": "Ambient instruments" }, tiles);
 
-  tiles.push(titanTile(null));                                                       // filled from Titan's own ledger when it answers
+  const titan = PILLARS.find((p) => p.id === "titan");
+  if (titan) tiles.push(h("a.tile.titan", { href: titan.route, rel: "noopener", "aria-label": "Titan Reliquary" },
+    h("span.tile-head", h("span", "Titan Reliquary"), h("small", "own site")),
+    h("span.tile-main", icon("coin", 30), h("span", h("b", "Open the collection"), h("small", "The ledger stays on its own site."))),
+    h("small.quiet", "Link out")));
   const seenKey = "prom.deck.lastSeen"; let lastSeen = null; try { lastSeen = sessionStorage.getItem(seenKey + ".s") || localStorage.getItem(seenKey); sessionStorage.setItem(seenKey + ".s", lastSeen || ""); localStorage.setItem(seenKey, new Date().toISOString()); } catch (e) { /* first visit */ }
   const fresh = eventsSince(lastSeen || "", 8), lately = fresh.length ? fresh : eventsSince("", 4), ago = (iso) => { const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + " min" : m < 1440 ? Math.round(m / 60) + " h" : Math.round(m / 1440) + " d"; };
   const since = lately.length ? h("section.panel.since", { "aria-label": fresh.length ? "Since you were here" : "Lately" }, h("header.panel-head", h("h2", fresh.length ? "Since you were here" : "Lately in the pillars"), h("small.quiet", fresh.length ? plural(fresh.length, "change") : "")),

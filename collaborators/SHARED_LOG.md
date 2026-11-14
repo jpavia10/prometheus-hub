@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Pre-merge checks and shipped defaults
+- Checks run before a merge, the money guard rejects a planted amount in a view, and the hub no longer ships a town, an elevation, a vehicle model, or a collection total. Games and Athenaeum notes are examples. Cache d20. The live proofs-live quote is still run 43575963969.
+
 ### [2026-11-14] Build d19: cool hub chrome
 - The core is pearl and cyan with a lavender halo. Primary buttons and the dock + are pearl glass with a cyan edge. Amber is gone from the hub chrome tokens. The app icon is the pearl flame. Shell cache d19.
 

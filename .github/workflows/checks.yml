@@ -1,0 +1,64 @@
+name: checks
+# Pre-merge gate. proofs-live still runs after GitHub Pages deploys; this job runs on the
+# pull request and on the push, against this checkout, so a broken tree does not have to
+# reach the live site first.
+on:
+  pull_request:
+  push:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Registry
+        run: node tools/registry/validate.mjs
+      - name: JavaScript syntax
+        run: |
+          set -euo pipefail
+          fail=0
+          while IFS= read -r -d '' f; do
+            node --check "$f" || fail=1
+          done < <(find . -type f \( -name '*.js' -o -name '*.mjs' \) -not -path './.git/*' -not -path './node_modules/*' -print0)
+          exit "$fail"
+      - name: JSON parse
+        run: |
+          set -euo pipefail
+          fail=0
+          while IFS= read -r -d '' f; do
+            node --input-type=module -e 'import { readFileSync } from "node:fs"; JSON.parse(readFileSync(process.argv[1], "utf8"))' "$f" || fail=1
+          done < <(find . -type f \( -name '*.json' -o -name '*.webmanifest' \) -not -path './.git/*' -not -path './node_modules/*' -print0)
+          exit "$fail"
+      - name: Unit proofs
+        run: node --test proofs/unit/*.test.mjs
+      - name: Money and contact guard
+        run: node tools/guard/money.mjs
+      - name: Browser
+        run: |
+          pip install --quiet playwright
+          python -m playwright install --with-deps chromium
+      - name: Proofs against this checkout
+        run: |
+          set -euo pipefail
+          grep -q '[[:space:]]prometheus\.test$' /etc/hosts || echo '127.0.0.1 prometheus.test' | sudo tee -a /etc/hosts >/dev/null
+          # NEW-1 reads Titan's public score sheet. On prometheus.test the proof fulfills that
+          # request from a sibling checkout. Download the published file only; do not clone or edit Titan.
+          score_dir="$(dirname "$GITHUB_WORKSPACE")/titan-reliquary-preview/collaborators"
+          mkdir -p "$score_dir"
+          curl -fsSL -o "$score_dir/CONTRIBUTOR_SCORES.md" \
+            https://jpavia10.github.io/titan-reliquary-preview/collaborators/CONTRIBUTOR_SCORES.md
+          python3 -m http.server 8377 --bind 127.0.0.1 >/tmp/http-server.log 2>&1 &
+          for _ in $(seq 1 50); do
+            curl -sf -o /dev/null http://127.0.0.1:8377/ && break
+            sleep 0.2
+          done
+          curl -sf -o /dev/null http://127.0.0.1:8377/ || { echo "server did not start"; cat /tmp/http-server.log; exit 1; }
+          python3 proofs/run.py http://prometheus.test:8377/ --mock-weather --out proofs-ci.json

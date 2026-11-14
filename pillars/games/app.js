@@ -1,6 +1,5 @@
-/* Ludus Arcade (Sebastian, 2026-11-13): Joseph's game library from his own words.
-   Shipped dataset (games-data.js) is read-only truth; his own backlog additions layer on top
-   in this browser (prometheus.games.backlog). The GTA VI date publishes to the deadlines bus. */
+/* Ludus Arcade. The shipped library is a neutral example. Notes you add stay in this browser
+   (prometheus.games.backlog). The example release date publishes to the deadlines bus. */
 (function () {
   "use strict";
   const { $, h, toast, store, download, pickFile, field, G } = PK;
@@ -12,10 +11,9 @@
   const hueOf = (t) => { let x = 0; for (const c of String(t)) x = (x * 31 + c.charCodeAt(0)) % 997; return (x * 47) % 360; };
   const mono = (t) => String(t).replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase() || "•";
 
-  try { if (window.PB) PB.deadlines.publish({ source: "games", ref: "gta-vi", title: "GTA VI — playable on PS5", date: (D.now.countdown || {}).date || "2026-11-18" }); } catch (e) { /* bus is optional */ }
-
   /* ---- countdown hero ---- */
-  const cd = D.now.countdown || { title: "GTA VI", date: "2026-11-18", detail: "" };
+  const cd = D.now.countdown || { title: "Example release", date: "2026-11-18", detail: "A placeholder date you can replace" };
+  try { if (window.PB && cd.date) PB.deadlines.publish({ source: "games", ref: "next-release", title: cd.title, date: cd.date }); } catch (e) { /* bus is optional */ }
   const target = new Date(cd.date + "T00:00:00");
   const clockEl = h("div.cd-clock", null, "…");
   const tickClock = () => {
@@ -32,7 +30,7 @@
       clockEl,
       h("div.cd-detail", null, `${cd.detail} · unlocks ${cd.date}`)),
     h("h2", null, "Now playing"),
-    h("div.g-now", null, ...nowGames.map((g) => h("div.g-nowcard", null, h("b", null, g.title), h("span", null, `${ST[g.status]}${g.coopDad ? " · with Dad" : ""}${(g.platforms || []).length ? " · " + g.platforms.join(", ") : ""}`))))
+    h("div.g-now", null, ...nowGames.map((g) => h("div.g-nowcard", null, h("b", null, g.title), h("span", null, `${ST[g.status]}${g.coopDad ? " · co-op" : ""}${(g.platforms || []).length ? " · " + g.platforms.join(", ") : ""}`))))
   );
 
   /* ---- library ---- */
@@ -65,7 +63,7 @@
           h("div.g-tags", null,
             h("span.chip.st-" + g.status, null, ST[g.status] || g.status),
             ...(g.platforms || []).map((p) => h("span.chip", null, p)),
-            g.coopDad ? h("span.chip.dad", null, "with Dad") : null,
+            g.coopDad ? h("span.chip.dad", null, "co-op") : null,
             g.genre ? h("span.chip", null, g.genre) : null)))));
     if (!list.length) grid.append(h("p.empty", null, "Nothing matches — loosen the filters."));
   }
@@ -73,11 +71,11 @@
 
   /* ---- co-op with Dad ---- */
   const coop = D.games.filter((g) => g.coopDad);
-  if (coop.length) app.append(h("h2", null, "Co-op with Dad"), h("div.g-now", null, ...coop.map((g) => h("div.g-nowcard", null, h("b", null, g.title), h("span", null, g.note || "")))));
+  if (coop.length) app.append(h("h2", null, "Co-op"), h("div.g-now", null, ...coop.map((g) => h("div.g-nowcard", null, h("b", null, g.title), h("span", null, g.note || "")))));
 
   /* ---- his takes ---- */
   const takes = [...(D.takes || [])].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
-  if (takes.length) app.append(h("h2", null, "His takes"), h("div.g-takes", null, ...takes.map((t) => h("div.g-take-row", null, h("time", null, t.date || ""), h("p", null, `“${t.quote}”`, t.game ? h("span.g-meta", null, ` — ${t.game}`) : null)))));
+  if (takes.length) app.append(h("h2", null, "Notes"), h("div.g-takes", null, ...takes.map((t) => h("div.g-take-row", null, h("time", null, t.date || ""), h("p", null, `“${t.quote}”`, t.game ? h("span.g-meta", null, ` — ${t.game}`) : null)))));
 
   /* ---- next up + personal backlog ---- */
   app.append(h("h2", null, "Next up"));

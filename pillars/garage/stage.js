@@ -1,9 +1,9 @@
-/* Garage signature: the road ahead + 2025 Sorento Hybrid chassis diagram in the upper telemetry band. */
+/* Garage signature: the road ahead + hybrid SUV chassis diagram in the upper telemetry band. */
 (function () {
   const S = PK.store("garage"), I = PK.ink;
   const fmt = (n) => Math.round(n).toLocaleString("en-US");
   PK.stage({
-    label: "2025 Sorento Hybrid road horizon & due services",
+    label: "hybrid SUV road horizon & due services",
     data() {
       const odo = +S.get("odometer", 0) || 0, hist = S.list("history"), today = I.today(), last = {};
       for (const h of hist) if (!last[h.service] || h.date > last[h.service].date) last[h.service] = h;
@@ -26,7 +26,7 @@
       const sky = g.createLinearGradient(0, 0, 0, vy + 30); sky.addColorStop(0, I.rgba(B, 0.08)); sky.addColorStop(1, I.rgba(A, 0.2)); g.fillStyle = sky; g.fillRect(0, 0, w, vy + 30);
       I.halo(g, vx, vy, w * 0.5, A, 0.35);
 
-      // Subtle Sorento Hybrid chassis blueprint silhouette upper-right
+      // Subtle hybrid SUV chassis blueprint silhouette upper-right
       const cx0 = w - 108, cy0 = 28;
       g.save();
       g.strokeStyle = I.rgba(B, 0.42);
@@ -37,7 +37,7 @@
       g.stroke();
       I.arc(g, cx0 + 14, cy0 + 24, 6, 0, Math.PI * 2, A, 1.5, 0.8);
       I.arc(g, cx0 + 64, cy0 + 24, 6, 0, Math.PI * 2, A, 1.5, 0.8);
-      I.text(g, "25 SORENTO HEV", cx0 + 38, cy0 - 5, { size: 7.5, weight: 700, align: "center", color: B, alpha: 0.7, spacing: 1 });
+      I.text(g, "HYBRID", cx0 + 38, cy0 - 5, { size: 7.5, weight: 700, align: "center", color: B, alpha: 0.7, spacing: 1 });
       g.restore();
 
       const rnd = I.rand(7); for (let i = 0; i < 36; i++) I.dot(g, rnd() * w, rnd() * vy * 0.9, rnd() * 1.1 + 0.2, "#ffffff", 0.2 + rnd() * 0.5);

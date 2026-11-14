@@ -665,7 +665,7 @@ test("garage: preserves DOM IDs & calc math, estimates trips (EPA + logged MPG),
   assert.ok(dl, "deadline published to PB.deadlines");
   assert.equal(dl.date, "2027-09-01");
   assert.equal(dl.kind, "service");
-  assert.equal(dl.title, "Sorento: Tire rotation");
+  assert.equal(dl.title, "Vehicle: Tire rotation");
 
   const ev = env.PB.events.list().find((e) => e.type === "deadline:garage");
   assert.ok(ev, "deadline:garage event published to PB.events");

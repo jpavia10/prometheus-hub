@@ -41,7 +41,7 @@ Canonical registry: [pillars.json](pillars.json) (validated against `deck/pillar
 |---|---|---|
 | Kairos Meridian | `pillars/kairos/` | Calendar, deadlines, focus timer, and `.ics` round-trip |
 | Hephaestus Hearth | `pillars/hearth/` | House renovations, rooms, assets, and measured floor plans |
-| Garage | `pillars/garage/` | 2025 Sorento Hybrid maintenance, service timeline & paperwork |
+| Garage | `pillars/garage/` | Vehicle maintenance, service timeline, and paperwork |
 | Apollo Temple | `pillars/apollo/` | Health, fitness, training load, and nutrition logging |
 | Money · Payoff Simulator | `pillars/money/` | Client-side debt payoff curves, APR trap lab & issuer library |
 | Selling Pipeline | `pillars/selling/` | Items from listing to shipped, marketplace fees & windfalls |
@@ -49,7 +49,7 @@ Canonical registry: [pillars.json](pillars.json) (validated against `deck/pillar
 | Icarus Stake | `pillars/icarus/` | Analytical trading journal & rule checks (never executes trades) |
 | Hermes Post | `pillars/hermes/` | Mail triage, urgency queue, and response tracking |
 | Bossa Piano Studio | `pillars/piano/` | 16-step sequencer, chord/voicing studio, practice & bossa path |
-| Bastion · Mountain Prep | `pillars/bastion/` | Frazier Park preparedness, storm alerts, supplies & scenarios |
+| Bastion · Mountain Prep | `pillars/bastion/` | Preparedness, storm alerts, supplies, and scenarios |
 | Athenaeum · Idea Vault | `pillars/athenaeum/` | WebGL 3D idea sky, TF-IDF constellations, Chronicle & vault |
 | Odyssey · Trips & Away Mode | `pillars/odyssey/` | Trips, away-mode checklist & shared home alerts |
 | Privacy · CA DROP | `pillars/privacy/` | Data broker removals, opt-out status & digital footprint |

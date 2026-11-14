@@ -63,7 +63,7 @@
         </div>
         <p class="sub">Runs purely in RAM against 97 known billers + 23 2026 phishing lures. Nothing pasted here is ever saved.</p>
         <form class="form" id="hc-form">
-          <label class="f wide">Sender email or domain<input id="hc-sender" placeholder="alerts@e.chase.com or billing@chase-verify-support.xyz"></label>
+          <label class="f wide">Sender email or domain<input id="hc-sender" placeholder="alerts@example.com or billing@example.com"></label>
           <label class="f wide">Subject line or snippet<textarea id="hc-subj" rows="2" placeholder="Paste subject line e.g. 'URGENT: scan QR code within 2h to prevent disconnection'"></textarea></label>
           <button class="btn small" type="submit">Screen message</button>
         </form>
