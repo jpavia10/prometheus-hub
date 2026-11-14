@@ -121,7 +121,14 @@ function openSearch() {
   const input = h("input.search-input", { type: "search", placeholder: "A pillar, an idea, a date, or: dentist Tue 3pm", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event" });
   const list = h("div.results", { role: "listbox", "aria-label": "Results" }); let items = []; let sel = 0;
   const sh = sheet({ title: "Search · Add", tone: "search", body: h("div.stack", input, list) });
-  const pick = (it) => { if (!it) return; if (it.run) it.run(); if (it.go) { sh.close(); setTimeout(() => go(it.go), 20); } else if (!it.keep) sh.close(); };
+  const pick = (it) => {
+    if (!it) return;
+    // A result that leaves this document must not close the sheet with history.back(): the sheet pushed an entry, and going back cancels the navigation.
+    if (it.leave) { if (it.run) it.run(); sh.close(true); location.href = it.leave; return; }
+    if (it.run) it.run();
+    if (it.go) { sh.close(); setTimeout(() => go(it.go), 20); }
+    else if (!it.keep) sh.close();
+  };
   const draw = () => {
     const q = input.value.trim(); items = [];
     const nlRead = (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } };
@@ -158,23 +165,8 @@ function openSearch() {
       });
     }
 
-    /* 2. Athenaeum idea: idea: <title> */
-    const ideaM = q.match(/^idea:\s*(.+)$/i);
-    if (ideaM && ideaM[1].trim()) {
-      const ideaTitle = ideaM[1].trim();
-      items.push({
-        title: `Idea → Athenaeum: ${ideaTitle}`,
-        sub: "Capture note into Athenaeum archive",
-        tone: "add", icon: "plus",
-        run: () => {
-          const arr = nlRead("prometheus.athenaeum.ideas", []);
-          arr.unshift({ id: "q_" + Date.now().toString(36), date: tday, at: new Date().toISOString(), title: ideaTitle, body: "", tags: ["quick"], chain: [] });
-          nlWrite("prometheus.athenaeum.ideas", arr);
-          nlEvent("idea.captured", "athenaeum", ideaTitle);
-          toast(`Idea captured: ${ideaTitle}`); render(false);
-        }
-      });
-    }
+    /* "idea: …" is Athenaeum's manifest command, added with the other commands below.
+       It hands the words to the pillar and opens the capture form. Writing the record here skipped that handoff, so search never left the hub. */
 
     /* 3. Garage fuel: fuel 11.4gal $48.20 14320mi */
     const fuelM = q.match(/^fuel\s+(.+)$/i);
@@ -259,12 +251,12 @@ function openSearch() {
     const add = quickAdd(q);
     if (add) { const k = kindOf(add.title); items.push({ title: `Add: ${k.title}`, sub: `${fmtDay(add.date, "long")}${add.time ? " · " + fmtTime(add.time) : ""}${add.rule ? " · repeats" : ""}${k.kind !== "event" ? " · " + k.kind : ""}`, tone: "add", icon: "plus",
       run: () => { store.update("time", (t) => t.events.push(makeEvent({ ...add, title: k.title }, { kind: k.kind, src: "quick" }))); toast(`Added: ${k.title}, ${fmtDay(add.date)}${add.time ? " " + fmtTime(add.time) : ""}`); }, go: `#/time/day/${add.date}` }); }
-    for (const c of commands(q)) if (c.hand) items.push({ title: c.title, sub: c.sub, icon: (pillar(c.pillar) || {}).icon || "plus", tone: "add", run: () => { handOff(c.hand); location.href = c.href; } });
+    for (const c of commands(q)) if (c.hand) items.push({ title: c.title, sub: c.sub, icon: (pillar(c.pillar) || {}).icon || "plus", tone: "add", leave: c.href, run: () => handOff(c.hand) });
     for (const r of searchAll(q)) items.push({ ...r, icon: (cap(r.cap) || {}).icon || "search" });
-    for (const r of searchRecords(q)) items.push({ title: r.title, sub: r.sub, icon: (pillar(r.pillar) || {}).icon || "search", tone: "nav", run: () => { location.href = r.href; } });
-    for (const c of commands(q)) if (!c.hand) items.push({ title: c.title, sub: c.sub, icon: (pillar(c.pillar) || {}).icon || "plus", tone: "nav", run: () => { location.href = c.href; } });
+    for (const r of searchRecords(q)) items.push({ title: r.title, sub: r.sub, icon: (pillar(r.pillar) || {}).icon || "search", tone: "nav", leave: r.href });
+    for (const c of commands(q)) if (!c.hand) items.push({ title: c.title, sub: c.sub, icon: (pillar(c.pillar) || {}).icon || "plus", tone: "nav", leave: c.href });
     if (!q) items.push({ title: "New event", sub: "The full form: repeats, place, notes, countdown", icon: "calendar", tone: "nav", keep: true, run: async () => { sh.close(); const m = await import("./views/time.js"); setTimeout(() => m.eventSheet(ctx, null, null, today()), 240); } });
-    for (const p of PILLARS) if (q && (p.name + " " + p.what).toLowerCase().includes(q.toLowerCase())) items.push({ title: p.name, sub: p.what, icon: p.icon, tone: "nav", run: () => { location.href = p.route; } });
+    for (const p of PILLARS) if (q && (p.name + " " + p.what).toLowerCase().includes(q.toLowerCase())) items.push({ title: p.name, sub: p.what, icon: p.icon, tone: "nav", leave: p.route });
     const nav = [["The core", "#/", "picture"], ...CAPS.map((c) => [c.name, "#/" + c.id, c.icon]), ["Time · week", "#/time/week", "calendar"], ["Time · month", "#/time/month", "grid"], ["Time · agenda", "#/time/agenda", "list"], ["Time · risk", "#/time/risk", "risk"], ["Time · focus clock", "#/time/focus", "flame"],
       ["Money · what-if", "#/money/whatif", "money"], ["Money · bills and subscriptions", "#/money/bills", "money"], ["Money · library", "#/money/library", "money"], ["System · your data, export, import", "#/system", "system"]];
     for (const [name, href, ic] of nav) if (!q || name.toLowerCase().includes(q.toLowerCase())) items.push({ title: name, sub: "Go", go: href, icon: ic, tone: "nav" });

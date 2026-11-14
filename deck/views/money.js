@@ -21,13 +21,17 @@ export function render(root, route, ctx) {
 }
 
 /* ------------------------------------------------------------------ plan ------------------------------------------------------------------ */
-function samplePlan(t) { const first = addMonths(t.slice(0, 8) + "05", -6); return { label: "Sample consolidation", sample: true, start: first, strategy: "avalanche", order: [], budget: null, extra: 0, debts: [{ id: "d" + Date.now().toString(36), name: "Sample consolidation loan", kind: "loan", balance: 12000, apr: 9.99, min: Math.ceil(paymentFor(12000, 9.99, 24) * 100) / 100 }] }; }
-
 function plan(body, ctx, m, t) {
   const { store } = ctx;
   if (!m.plan || !m.plan.debts.length) {
-    put(body, h("div.empty.scene", icon("money", 36), h("h2", "No payoff plan on this device"), h("p", "Start from a labelled sample and edit every number, or add your first debt."),
-      h("div.row.center", h("button.btn", { type: "button", onclick: () => store.update("money", (x) => { x.plan = samplePlan(t); }) }, "Start with a sample"), h("button.btn.ghost", { type: "button", onclick: () => debtSheet(ctx, null) }, icon("plus", 16), "Add a debt"))));
+    const example = h("div.stack");
+    load("payoff-cases").then((cases) => {
+      const c = cases && cases[0]; if (!c || !example.isConnected) return;
+      example.replaceChildren(h("p.quiet", `Worked example ${c.case} of ${cases.length} (${c.method}). A research case from the shared set, not an account, and not loaded as a plan.`),
+        h("div.items", c.debts.map((d) => h("div.item", h("span.item-main", h("b", d.name), h("small", `${money(d.balance)} at ${d.apr}% · minimum ${money(d.min)}`))))));
+    }).catch(() => { if (example.isConnected) example.replaceChildren(h("p.quiet", "The worked example could not be loaded.")); });
+    put(body, h("div.empty.scene", icon("money", 36), h("h2", "No payoff plan on this device"), h("p", "The form starts empty. The worked example below is a neutral research case."),
+      example, h("div.row.center", h("button.btn", { type: "button", onclick: () => debtSheet(ctx, null) }, icon("plus", 16), "Add a debt"))));
     return;
   }
   const pos = position(m.plan, m.events, t); const ms = milestone(pos.pct); const pctEl = h("span.num.dial-pct"); countUp(pctEl, pos.pct * 100, (v) => v.toFixed(v >= 99.95 ? 0 : 1) + "%");

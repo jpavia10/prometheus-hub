@@ -1,12 +1,15 @@
 """Proofs for the deck, run in a real browser at phone size against a URL (local server or the live site).
    python3 proofs/run.py http://127.0.0.1:8377/ [--mock-weather] [--out proofs/results.json]
    Each proof is a thing the page itself does; nothing here re-implements the app. Exit code 1 if any proof fails."""
-import sys, json, datetime
+import sys, json, datetime, pathlib
 from playwright.sync_api import sync_playwright
 
 URL = sys.argv[1].rstrip("/") + "/"; MOCK = "--mock-weather" in sys.argv
 OUT = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else None
 NOW = "2026-11-20T09:00"
+# The core draws every live destination in the registry. The hub desk is the centre, and paused fleet is not drawn.
+_registry = json.loads((pathlib.Path(__file__).resolve().parents[1] / "pillars.json").read_text())
+CORE_IDS = [p["id"] for p in _registry["pillars"] if p.get("state") == "live" and p.get("hostingType") != "desk"]
 results = []
 def proof(pid, name, ok, detail): results.append({"id": pid, "name": name, "pass": bool(ok), "detail": detail}); print(("PASS " if ok else "FAIL ") + pid + "  " + name + "  ::  " + detail)
 
@@ -28,9 +31,12 @@ with sync_playwright() as p:
     if MOCK:
         p2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p2.route("https://api.weather.gov/**", lambda route, request: route.abort()); p2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
     p2.goto(f"{URL}?now={NOW}#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
-    ci = p2.evaluate("""() => ({ hex: document.querySelectorAll('.reactor .hex:not(.core)').length, names: [...document.querySelectorAll('.reactor .hex:not(.core) .hex-name')].map((x) => x.textContent),
+    ci = p2.evaluate("""() => ({ ids: [...document.querySelectorAll('.reactor .hex:not(.core)')].map((x) => x.dataset.pillar),
       demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth, ring: !!document.querySelector('.dayring') })""")
-    proof("CORE-1", "Every pillar is on the core (23: Games, Forge, Foundry, Observatory and Kin added); a clean device shows no sample data", ci["hex"] == 23 and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"], json.dumps(ci))
+    missing = [i for i in CORE_IDS if i not in ci["ids"]]; extra = [i for i in ci["ids"] if i not in CORE_IDS]
+    proof("CORE-1", f"Every pillar in pillars.json is on the core ({len(CORE_IDS)} live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data",
+          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"],
+          json.dumps({"expected": len(CORE_IDS), "drawn": len(ci["ids"]), "missing": missing, "extra": extra, "demo": ci["demo"], "events": ci["events"], "plan": ci["plan"], "wide": ci["wide"], "ring": ci["ring"]}))
     routes = p2.evaluate("[...document.querySelectorAll('.reactor .hex:not(.core) a')].map((a) => a.getAttribute('href'))"); bad = []; local = [r for r in routes if not r.startswith("http")]
     for r in local:
         resp = p2.request.get(URL + r)
@@ -114,9 +120,14 @@ with sync_playwright() as p:
     p9.evaluate("localStorage.setItem('prometheus.kin.people', JSON.stringify([{ id: 'p1', name: 'Proof kid', role: 'kid' }])); localStorage.setItem('hearth.deck.stages.v1', JSON.stringify({ 'paint-left': { done: true } }))")
     bk = p9.evaluate("async () => { const m = await import(new URL('deck/core/reach.js', document.baseURI).href); const before = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); before[k] = localStorage.getItem(k); } const file = m.backupAll(); const keys = Object.keys(file.keys);" +
       " for (const k of keys) localStorage.removeItem(k); localStorage.setItem('unrelated.key', 'stays'); const pv = m.previewRestore(JSON.parse(JSON.stringify(file))); m.restoreAll(file); let same = true; for (const k of keys) if (localStorage.getItem(k) !== before[k]) same = false;" +
-      " let bad = ''; try { m.previewRestore({ format: 'other' }); } catch (e) { bad = e.message; } return { count: file.count, add: pv.add.length, change: pv.change.length, same, kept: localStorage.getItem('unrelated.key') === 'stays', bad, has: ['prometheus.kin.people', 'hearth.deck.stages.v1', 'prometheus.bus.events'].every((k) => keys.includes(k)) }; }")
-    proof("BACKUP-1", "One file backs up every pillar, the shared bus, the hub's consoles and the deck project; a restore previews first, brings every store back exactly and touches nothing else", bk["count"] >= 3 and bk["has"] and bk["add"] == bk["count"] and bk["same"] and bk["kept"] and "not a whole-device backup" in bk["bad"] and not bad9,
-          f"{bk['count']} stores in the file (Kin, the deck project and the activity log among them); after wiping them the preview counts {bk['add']} to add; restored identical: {bk['same']}; an unrelated key left alone: {bk['kept']}; a wrong file refused: {bk['bad']!r}"); c9.close()
+      " let bad = ''; try { m.previewRestore({ format: 'other' }); } catch (e) { bad = e.message; } const covered = (k) => /^(prometheus\\.|prometheus-hub\\.|prom\\.deck\\.|hearth\\.)/.test(k);" +
+      " const want = ['prometheus.kin.people', 'hearth.deck.stages.v1', 'prometheus.bus.events']; const present = Object.keys(before).filter(covered);" +
+      " const missed = present.filter((k) => !keys.includes(k)); const absent = want.filter((k) => !keys.includes(k));" +
+      " return { count: file.count, add: pv.add.length, change: pv.change.length, same, kept: localStorage.getItem('unrelated.key') === 'stays', bad, has: absent.length === 0, absent, missed, keys }; }")
+    refused = "not a valid whole-device" in (bk.get("bad") or "")
+    proof("BACKUP-1", "One file backs up every pillar, the shared bus, the hub's consoles and the deck project; a restore previews first, brings every store back exactly and touches nothing else",
+          bk["count"] >= 3 and bk["has"] and not bk["missed"] and bk["add"] == bk["count"] and bk["same"] and bk["kept"] and refused and not bad9,
+          f"{bk['count']} stores backed up ({', '.join(bk['keys'])}); planted stores missing: {bk['absent'] or 'none'}; covered stores left out: {bk['missed'] or 'none'}; preview adds {bk['add']}; restored identical: {bk['same']}; unrelated key kept: {bk['kept']}; wrong file refused: {bk['bad']!r}"); c9.close()
 
     # ATHENAEUM: the first pillar rebuilt to the charter's standard. A clean device, a fixed day, motion held still so positions can be read.
     c5 = b.new_context(viewport={"width": 390, "height": 844}, accept_downloads=True); p5 = c5.new_page(); p5.on("pageerror", lambda e: errs.append("athenaeum: " + str(e)[:160])); p5.on("console", lambda m: errs.append("athenaeum: " + m.text[:160]) if m.type == "error" and "ERR_" not in m.text and "Failed to load resource" not in m.text else None)
