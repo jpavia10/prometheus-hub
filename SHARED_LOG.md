@@ -1,4 +1,8 @@
 
+### [2026-11-14] Build d19: pearl, cyan, and lavender hub chrome
+- Retuned the core shader and sky glow off the orange sun. Enter and the dock + are pearl glass with a cyan edge. A unit test fails if a hub chrome colour token has hue 20–60. Each pillar cell keeps its own hue.
+- Replaced the five `icons/` PNGs from the pearl-flame master, dropped the `favicon.svg` link and its service-worker entry, and bumped the shell cache to `prometheus-hub-deck-d19`. After merging main: unit `59/59`, browser `26/26`. Screenshots: `artifacts/screenshots/d19/home-390x844.png`, `artifacts/screenshots/d19/home-1440x900.png`.
+
 ### [2026-11-14] Grok: Icarus metric notes and Apollo SR food values
 - Sharpe, Sortino and ulcer notes on the ICA-GEM-02 20-trade sample now use the file's own sample standard deviation (54.6477) and a fresh recomputation. The worked `value` fields were already right.
 - The first 300 Apollo foods take numeric kcal, protein, fat, carb and fiber from the 2026-11-10 shipped audit, plus the fdc id that audit names. 48 descriptions it could not match keep their shipped nutrients and are tagged unmatched. Four null fiber cells were left as shipped.
