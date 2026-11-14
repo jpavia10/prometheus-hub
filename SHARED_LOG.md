@@ -1,4 +1,8 @@
 
+### [2026-11-14] Proofs: the live run is what STATUS quotes
+- CORE-1 now counts the live destinations in `pillars.json` (the desk and paused fleet are not drawn). BACKUP-1 still requires every store the backup claims to cover; the old refusal phrase no longer matched the error `previewRestore` throws, and that was the failure. `idea:` from hub search hands the words to Athenaeum and opens it; closing the search sheet no longer cancels that navigation.
+- proofs-live writes the browser run into `STATUS.md`, failed lines included, and commits only when the pass/fail set changes. The d14 and d15 notes no longer repeat a private loan quote.
+
 ### [2026-11-14] Privacy: home payoff no longer prints a loan quote
 - The home payoff card now says only whether a plan is locked on this device, with the progress ring and no dollar amounts, and the activate control is gone. Money opens on an empty form beside worked example 1 from `deck/data/payoff-cases.json`. The 30-day bus sales slot stays and shows a count. Service-worker cache is `prometheus-hub-deck-d18`. Older log lines that repeated the quote now say the figures were removed.
 

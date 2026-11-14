@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Proofs quote the live run
+- CORE-1 reads its pillar count from `pillars.json`. The backup proof matches the stores `backupAll` covers and the refusal it actually throws. Hub search `idea:` opens Athenaeum with the words filled in, and proofs-live writes that run into `STATUS.md`, failures included.
+
 ### [2026-11-14] Privacy: home payoff quote removed
 - The home payoff card shows only whether a plan is locked on this device, plus the progress ring, with no dollar amounts and no activate control. Money opens on an empty form next to a research worked example. The 30-day bus sales slot shows a count. Shell cache d18.
 

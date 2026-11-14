@@ -1,10 +1,12 @@
 name: proofs-live
 # Runs the deck's proofs in a real browser against the live site after every Pages deployment (and on demand).
+# The result, failed lines included, is written into STATUS.md. The commit happens only when the pass/fail
+# set changes, so a green run does not redeploy the site and start this workflow again.
 on:
   workflow_dispatch:
   deployment_status:
 permissions:
-  contents: read
+  contents: write
 jobs:
   proofs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.deployment_status.state == 'success' }}
@@ -22,10 +24,29 @@ jobs:
       - name: Unit proofs
         run: node --test proofs/unit/*.test.mjs
       - name: Proofs against the live site
+        id: live
+        continue-on-error: true
         run: |
           sleep 20
           python3 proofs/run.py https://jpavia10.github.io/prometheus-hub/ --out proofs-live.json
+      - name: Write the live result into STATUS.md
+        if: always()
+        env:
+          PROOFS_LIVE_NOTE: "Quoted from ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}."
+        run: |
+          if [ ! -f proofs-live.json ]; then echo "no proof report to record"; exit 0; fi
+          python3 proofs/write_status.py proofs-live.json STATUS.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add STATUS.md
+          if git diff --cached --quiet; then
+            echo "STATUS.md already quotes this outcome"
+          else
+            git commit -m "status: quote proofs-live run ${{ github.run_id }}"
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
       - name: Live build matches the repository
+        if: steps.live.outcome == 'success'
         run: |
           python3 - <<'PY'
           import re, urllib.request
@@ -33,6 +54,9 @@ jobs:
           got = re.search(r'BUILD = "([^"]+)"', urllib.request.urlopen("https://jpavia10.github.io/prometheus-hub/deck/app.js").read().decode()).group(1)
           print("repository", want, "live", got); assert want == got
           PY
+      - name: Proofs must pass
+        if: steps.live.outcome == 'failure'
+        run: exit 1
       - uses: actions/upload-artifact@v4
         if: always()
         with:
