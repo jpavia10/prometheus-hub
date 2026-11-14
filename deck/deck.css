@@ -659,6 +659,19 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
   .rx-zoom .btn.small { min-height: 30px; padding: 0 10px; font-size: 12px; }
 }
 
+/* A waiting shell. Pearl glass, cyan edge — the same tokens as the kit. */
+button.update-ready {
+  position: fixed; z-index: 80; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+  margin: 0; padding: 10px 18px; border-radius: 999px; cursor: pointer;
+  font: 500 14px/1.2 var(--sans, var(--f, "Outfit", sans-serif)); letter-spacing: 0.01em; color: var(--ink-strong);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--pearl) 96%, transparent), color-mix(in srgb, var(--pearl) 70%, var(--glass)));
+  border: 1px solid var(--cyan);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cyan) 70%, transparent), 0 12px 28px -14px color-mix(in srgb, var(--cyan) 65%, transparent), inset 0 1px 0 color-mix(in srgb, var(--pearl) 85%, transparent);
+}
+button.update-ready:hover, button.update-ready:focus-visible {
+  box-shadow: 0 0 0 1px var(--cyan), 0 0 22px color-mix(in srgb, var(--cyan) 45%, transparent), inset 0 1px 0 color-mix(in srgb, var(--pearl) 85%, transparent);
+}
+
 /* High contrast and forced colours: the pearl glass stays a button, and the type stays readable. */
 @media (prefers-contrast: more) {
   :root {
@@ -668,11 +681,11 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
     --cyan: #d7f6ff; --lavender: #efe6ff;
     --ember: #d7f6ff; --ember-2: #f4fbff; --gold: #efe6ff;
   }
-  .btn, .btn.enter, .dock-orb, .rx-enter, .panel, .tile, .rx-read { border-width: 2px; }
+  .btn, .btn.enter, .dock-orb, .rx-enter, .panel, .tile, .rx-read, .update-ready { border-width: 2px; }
 }
 @media (forced-colors: active) {
   :focus-visible { outline: 2px solid Highlight; }
-  .btn, .btn.enter, .dock-orb, .rx-enter, .rail-link.on, .atlas-tab.on, .rx-hud .seg button.on {
+  .btn, .btn.enter, .dock-orb, .rx-enter, .rail-link.on, .atlas-tab.on, .rx-hud .seg button.on, .update-ready {
     forced-color-adjust: none; background: ButtonFace; color: ButtonText; border: 1px solid ButtonText; box-shadow: none;
   }
   .panel, .tile, .dock-bar, .rx-read, .sheet { background: Canvas; color: CanvasText; border-color: CanvasText; }

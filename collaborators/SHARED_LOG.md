@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Offline precache and the Update ready chip
+- The shell list is generated (`sw-precache.js`, 246 urls) from the registry and each local pillar page, so Apollo, Piano, Hearth, and Privacy data files are cached. A stale list fails the pre-merge check. Cache name `prometheus-hub-deck-d21`.
+- A new deploy waits for an Update ready chip (pearl glass, cyan edge) instead of taking over silently. Offline proof: 25/25 local pillars. Browser proofs 28/28.
+
 ### [2026-11-14] Pre-merge checks and shipped defaults
 - Checks run before a merge, the money guard rejects a planted amount in a view, and the hub no longer ships a town, an elevation, a vehicle model, or a collection total. Games and Athenaeum notes are examples. Cache d20. The live proofs-live quote is still run 43575963969.
 
