@@ -352,13 +352,14 @@ test("deck/views/orrery.js and deck/deck.css enforce 390x844 mobile Orrery clear
   const orreryJs = readFileSync(path.join(ROOT, "deck/views/orrery.js"), "utf8");
   const deckCss = readFileSync(path.join(ROOT, "deck/deck.css"), "utf8");
 
-  assert.match(orreryJs, /const\s+H\s*=\s*innerWidth\s*<=\s*600\s*\?\s*Math\.round\(W\s*\*\s*0\.78\)\s*:\s*Math\.round\(W\s*\*\s*0\.96\)/);
+  assert.match(orreryJs, /const phone = innerWidth <= 600;/);
+  assert.match(orreryJs, /phone \? Math\.round\(W \* 0\.54\)/);
   const mobileW = Math.min(390, 460);
-  const mobileH = Math.round(mobileW * 0.78);
-  assert.equal(mobileH, 304);
-  const desktopW = Math.min(600, Math.max(460, Math.round(1440 * 0.42)));
-  const desktopH = Math.round(desktopW * 0.96);
-  assert.equal(desktopH, 576);
+  const mobileH = Math.round(mobileW * 0.54);
+  assert.equal(mobileH, 211);
+  assert.ok(mobileH <= 220 && mobileH >= 180, "the phone stage leaves room for the now line and one card above the dock");
+  const desktopW = Math.min(560, Math.max(420, Math.round(1440 * 0.36)));
+  assert.equal(desktopW, 518);
 
   const mobileMedia = deckCss.match(/@media\s*\(max-width:\s*600px\)\s*\{([\s\S]*?)\n\}/);
   assert.ok(mobileMedia, "expected @media (max-width: 600px) block in deck/deck.css");

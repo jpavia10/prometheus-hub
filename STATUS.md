@@ -43,6 +43,15 @@ PASS DECK-2  No script errors during the run  ::  none; the browser skipped the 
 
 The quote above is the last proofs-live run against the deployed site (run 43575963969). It is not a result for the checkout below.
 
+Build **d21** · 2026-11-14 · not deployed yet
+
+**Arrival is the core, one line, and one card (d21):**
+- Home (`deck/views/picture.js`) is the orrery, a now line (next event, next deadline, NYSE open or closed), and one contextual card (since you were here, away, a weather alert, or a quiet line). No KPI strip, no runway, no countdowns, no storm tile, no focus tile, no homestead tile, no payoff ring, no atlas, no dollar figure, no table.
+- Time (`deck/views/time.js`, day view) holds the day ring, the next 24 hours, the runway, countdowns, and the focus tile. Money already holds the payoff ring. System (`deck/views/system.js`) holds the counts, storm watch, homestead, the pillar list, and Load sample. The rail no longer offers Load sample.
+- DECK-1 checks the new arrival and that the moved instruments still read the store. DECK-3 checks that the home renders no `table` and no `$`. The phone stage is `W * 0.54` so 390×844 fits above the dock. Shell cache `prometheus-hub-deck-d21`. `BUILD` is `d21`.
+- Screenshots: `artifacts/screenshots/d21/home-390x844.png` and `artifacts/screenshots/d21/home-1440x900.png`.
+- **Verified locally after merging main, not on the live site:** `node tools/registry/validate.mjs` (`REGISTRY_OK`), `node --test proofs/unit/*.test.mjs` (`60/60` pass, `0` failed, `0` skipped), money guard `GUARD_OK`, and `python3 proofs/run.py http://prometheus.test:8377/ --mock-weather` (`27/27` pass, `0` failed, including DECK-1 and DECK-3, build `d21`). The phone home fits above the dock (`fits: true`, width 390). This checkout is not what the proofs-live quote above describes.
+
 Build **d20** · 2026-11-14 · not deployed yet
 
 **Pre-merge checks and a privacy sweep of shipped defaults (d20):**
@@ -122,7 +131,8 @@ their pages and get developed one at a time.
 | Athenaeum | BUILT, NOT REVIEWED | ATH-1..7: the 11 kept ideas as stars in 3D with four constellations found from their own tags and words; an idea opens whole with lineage, provenance and reasons for each connection; capture and append-only refinement leave every other record byte-identical; the time slider shows the sky on a past day; the 40 history entries as cause, event, consequence with sources; export, wipe, import restores to the byte, with a preview first; search, resurfacing, archive with undo and the shelf all still work. |
 | The hub reaches into a pillar | DONE (one pillar) | CORE-5: through Athenaeum's manifest the command key finds an idea by title or text and opens it, "idea: ..." hands the words to the pillar without writing its records, and the ticker shows the pillar's latest event. |
 | Real data on the hub | DONE | CORE-3: a deadline any pillar publishes to the shared bus shows in the hub's feed and as a badge on that pillar's cell. Cells also show how much each pillar holds on this device; Titan's cell and tile read its published ledger. Fixed dates: the 58 researched ones. |
-| Day ring, runway, countdowns, storm watch | DONE | DECK-1. They read the one feed (the bus, the fixed dates, the consoles below). |
+| Arrival | DONE | DECK-1, DECK-3 (d21). The home is the core, one now line, and one card. It fits above the dock at 390×844 and renders no table and no dollar figure. | 
+| Day ring, runway, countdowns, focus, storm, homestead | DONE | They read the same feed, on Time (day ring, runway, countdowns, focus) and System (storm, homestead, counts). The payoff ring is on Money. |
 | Kairos console, Payoff console | DONE | TIME-1..3, MONEY-1..2. New consoles built in d1; reachable from the hub's instruments and search. They do not replace the Kairos and Money pillar pages, which are back at their addresses. |
 | System | DONE | DATA-1. |
 

@@ -15,7 +15,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d20";
+export const BUILD = "d21";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -82,12 +82,8 @@ function drawRail() {
       navLink("System", "#/system", here === "system")),
     h("div.rail-right",
       h("button.chip.rail-search", { type: "button", "aria-label": "Search or capture (/)" , onclick: () => { tick(); openSearch(); } }, icon("search", 13), h("span", "Search · Capture"), h("kbd", "/")),
-      p.demo
-        ? h("button.chip.demo", { type: "button", onclick: demoSheet }, "Demo · Active")
-        : store.pristine()
-          ? h("button.chip.preset-btn", { type: "button", onclick: () => { tick(); startDemo(); toast("Loaded sample mountain & payoff telemetry"); } }, "Load Sample")
-          : null,
-      d ? h("a.sky-chip", { href: "#/", onclick: (e) => { e.preventDefault(); go("#/"); setTimeout(() => { const el = $("#sky-watch"); if (el) el.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "center" }); }, 120); }, "aria-label": `${Math.round(w.now.temp)} degrees, ${d.text}` }, icon(d.icon, 18), h("span.num", Math.round(w.now.temp) + "°")) : null,
+      p.demo ? h("button.chip.demo", { type: "button", onclick: demoSheet }, "Demo · Active") : null,
+      d ? h("a.sky-chip", { href: "#/system", onclick: (e) => { e.preventDefault(); go("#/system"); setTimeout(() => { const el = $("#sky-watch"); if (el) el.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "center" }); }, 160); }, "aria-label": `${Math.round(w.now.temp)} degrees, ${d.text}` }, icon(d.icon, 18), h("span.num", Math.round(w.now.temp) + "°")) : null,
       h("button.icon-btn", { type: "button", "aria-label": soundOn() ? "Sound is on: turn it off" : "Sound is off: turn it on", "aria-pressed": String(soundOn()), onclick: () => { setSound(!soundOn()); drawRail(); } }, icon(soundOn() ? "speaker" : "mute"))));
 }
 function drawDock() {
@@ -109,7 +105,7 @@ setInterval(() => { if ($("#rail")) drawRail(); const r = state.route; if (r && 
 function applySky() { if (!state.sky) return; state.sky.set({ phase: wx.phaseOf(state.weather), ...wx.skyOf(state.weather) }); document.documentElement.dataset.day = (() => { const ph = wx.phaseOf(state.weather); return ph > 0.27 && ph < 0.73 ? "day" : ph >= 0.23 && ph <= 0.27 ? "dawn" : ph >= 0.73 && ph <= 0.79 ? "dusk" : "night"; })(); }
 async function reloadWeather(force) {
   const place = store.get("profile").place; state.weather = wx.cached(place); applySky();
-  const fresh = await wx.load(place, { force }); if (fresh) { state.weather = fresh; applySky(); drawRail(); if (state.route && state.route.cap === "picture" && !sheetOpen()) render(true); }
+  const fresh = await wx.load(place, { force }); if (fresh) { state.weather = fresh; applySky(); drawRail(); if (state.route && (state.route.cap === "picture" || state.route.cap === "system") && !sheetOpen()) render(true); }
   return state.weather;
 }
 setInterval(() => { applySky(); if (!document.hidden) reloadWeather(false); }, 10 * 60000);
