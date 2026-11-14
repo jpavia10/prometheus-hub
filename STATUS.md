@@ -4,7 +4,9 @@
 What is on the live deck and what is not. A capability is on the deck only when its proof passes in a real browser
 (`python3 proofs/run.py <url>`; unit proofs `node --test proofs/unit/*.test.mjs`). Results of the last run: `proofs/results.json`.
 
-Build **d15** · 2026-11-13 · live at https://jpavia10.github.io/prometheus-hub/
+Build **d16** · 2026-11-13 · live at https://jpavia10.github.io/prometheus-hub/
+
+**Iteration 4 Foundations & Antigravity Execution Discipline (d16, 2026-11-13):** Root `AGENTS.md`, repeatable `.agents/workflows/prometheus-delivery.md`, and `docs/antigravity/WORKBOARD.md`; synchronized `README.md`, `CLAUDE.md`, `docs/HANDOVER.md`, and `docs/architecture/MANIFEST.md`; `pillars.json` (`schemaVersion: 4`) reconciled as single canonical registry across all 27 active Hub destinations (`25` local pillars + `2` external protected pillars) + `hub` desk + paused `fleet`, validated by `tools/registry/validate.mjs`; unified whole-device backup (`deck/core/reach.js`, `kit/bus.js`) covering all local stores plus Argus IndexedDB photo blobs with `fnv2:` checksum verification and rollback snapshots; expanded `SAY` activity translations across all 25 local pillar manifests; Forge (`pillars/forge/app.js`) upgraded with `Argon` & `Hydrogen` roles and branch/commit/deliverable fields; independent 100-point Charter review of Athenaeum (`docs/pillars/athenaeum/REVIEW.md`, 91/100); desktop + mobile screenshot proofs archived under `artifacts/screenshots/d16/`.
 
 **Iteration 3 Visual & Spatial Overhaul (d15, 2026-11-13):**
 - **Command Bridge Rail & 5-Station Dock (`deck/app.js`, `deck/deck.css`):** Upgraded top rail with `BUILD D15 · 27 PILLARS` telemetry pill, `6`-link navigation (`Core`, `Time`, `Money`, `Athenaeum`, `Hearth`, `System`), quick `/` search trigger, clean-profile `Load Sample` launcher, and expanded bottom dock to `5` stations (`Core`, `Time`, central Command orb, `Money`, `System`).

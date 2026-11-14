@@ -4,7 +4,8 @@
 (function () {
   "use strict";
   const { $, h, day, toast, store, download, pickFile } = PK;
-  const S = store("forge"), app = $("#app"), AIS = ["Grok", "Gemini", "Muse", "ChatGPT", "Gemini API", "Claude"];
+  const S = store("forge"), app = $("#app"), AIS = ["Argon", "Hydrogen", "Grok", "Gemini", "Muse", "ChatGPT", "Gemini API", "Claude"];
+  const ROLE_TAG = { Argon: "Orchestrator & Reviewer", Hydrogen: "Executor & Verifier" };
   const QUEUES = [["Hub", "../../docs/agents/queues.json"], ...["kairos", "apollo", "hermes", "icarus", "argus", "hearth"].map((p) => [p[0].toUpperCase() + p.slice(1), `../${p}/docs/agents/queues.json`])];
   const SCORES = new URLSearchParams(location.search).get("scores") || new URL("/titan-reliquary-preview/collaborators/CONTRIBUTOR_SCORES.md", location.origin).href;
   const D = { tasks: [], scores: [], scoreState: "loading", queueState: "loading" };
@@ -39,23 +40,28 @@
       <div class="glass span-12"><h2>The floor</h2><div id="f-floor"></div></div>
       <div class="glass span-12"><h2>Homework out</h2><p class="sub" id="f-qstate"></p><div id="f-tasks"></div></div>
       <div class="glass span-12"><h2>Hand out work</h2>
-        <form class="form" id="f-form"><label class="f">To<select name="ai">${AIS.filter((a) => a !== "Gemini API").map((a) => `<option>${a}</option>`).join("")}</select></label>
+        <form class="form" id="f-form"><label class="f">To<select name="ai">${AIS.filter((a) => a !== "Gemini API").map((a) => `<option value="${a}">${a}${ROLE_TAG[a] ? " (" + ROLE_TAG[a] + ")" : ""}</option>`).join("")}</select></label>
           <label class="f wide">The task<input name="title" required maxlength="160" placeholder="What exactly, what file back, how you will check it"></label>
           <label class="f">Due back<input name="due" type="date"></label><label class="f">Pillar<input name="pillar" maxlength="40" placeholder="Titan, Kairos…"></label>
-          <button class="btn" type="submit">Hand it out</button></form><div id="f-mine"></div></div>
+          <label class="f">Branch<input name="branch" maxlength="60" placeholder="antigravity/d16-foundations"></label>
+          <label class="f">Commit SHA<input name="commitSha" maxlength="40" placeholder="short SHA or pending"></label>
+          <label class="f wide">Deliverable / Evidence<input name="deliverable" maxlength="160" placeholder="tests, screenshot paths, REVIEW.md"></label>
+          <button class="btn" type="submit">Hand it out</button></form>
+        <p class="note">Records AI assignments, branch/commit references, and Charter scores locally on this device. Forge reads published queues statically and never remote-controls AI runtimes.</p>
+        <div id="f-mine"></div></div>
       <div class="glass span-12"><h2>Scores</h2><p class="sub" id="f-sstate"></p><div id="f-scores"></div></div>
     </section>`;
   const STEP = { out: "back", back: "reviewed" };
   function paint() {
-    const P = AIS.map(per).filter((p) => p.n || p.open.length || p.mine.length || p.done);
-    $("#f-floor").replaceChildren(...(P.length ? P.map((p) => h("div.kv", null, h("span", null, h("b", null, p.ai), p.probation ? h("span.pill.hot", null, " on probation") : null, h("br"),
+    const P = AIS.map(per).filter((p) => p.n || p.open.length || p.mine.length || p.done || ROLE_TAG[p.ai]);
+    $("#f-floor").replaceChildren(...(P.length ? P.map((p) => h("div.kv", null, h("span", null, h("b", null, p.ai), ROLE_TAG[p.ai] ? h("span.pill", null, " " + ROLE_TAG[p.ai]) : null, p.probation ? h("span.pill.hot", null, " on probation") : null, h("br"),
       h("span.stat-s", null, `${p.open.length} open · ${p.mine.length} of yours out · ${p.done} done${p.last ? " · last " + p.last.score + "/10 on " + p.last.date : ""}`)),
       h("b", null, p.avg == null ? "—" : p.avg.toFixed(1) + " avg"))) : [h("p.empty", null, "No queues or scores reached yet.")]));
     $("#f-qstate").textContent = D.queueState === "loading" ? "Reading the queues…" : D.queueState === "ok" ? `${D.tasks.length} tasks across ${new Set(D.tasks.map((t) => t.where)).size} queues, read from this site.` : "The queues could not be read just now.";
     const open = D.tasks.filter((t) => t.state !== "done").sort((a, b) => (a.state === "now" ? 0 : 1) - (b.state === "now" ? 0 : 1) || String(a.due).localeCompare(String(b.due)));
     $("#f-tasks").replaceChildren(...(open.length ? open.map((t) => h("div.kv", null, h("span", null, h("b", null, t.title), h("br"), h("span.stat-s", null, `${t.ai} · ${t.where} · ${t.id}${t.due ? " · due " + t.due : ""}`)), h("span.pill" + (t.state === "now" ? ".hot" : ""), null, t.state))) : [h("p.empty", null, D.queueState === "ok" ? "Every published task is done." : "")]));
     const mine = S.list("assignments").sort((a, b) => String(a.due || "9").localeCompare(String(b.due || "9")));
-    $("#f-mine").replaceChildren(...mine.map((a) => h("div.kv", null, h("span", null, h("b", null, a.title), h("br"), h("span.stat-s", null, `${a.ai}${a.pillar ? " · " + a.pillar : ""}${a.due ? " · due " + a.due : ""} · ${a.state}${a.score != null ? " · scored " + a.score + "/10" : ""}`)),
+    $("#f-mine").replaceChildren(...mine.map((a) => h("div.kv", null, h("span", null, h("b", null, a.title), h("br"), h("span.stat-s", null, `${a.ai}${a.pillar ? " · " + a.pillar : ""}${a.branch ? " · " + a.branch : ""}${a.commitSha ? " (" + a.commitSha + ")" : ""}${a.due ? " · due " + a.due : ""} · ${a.state}${a.deliverable ? " · " + a.deliverable : ""}${a.score != null ? " · scored " + a.score + "/10" : ""}`)),
       a.state === "reviewed" ? h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("assignments", a.id); if (window.PB) PB.deadlines.unpublish("forge", a.id); paint(); } }, "Clear")
         : h("button.btn.quiet.small", { type: "button", onclick: () => { const next = STEP[a.state]; let patch = { state: next };
           if (next === "reviewed") { const v = prompt("Score it out of 10 (place, accepted, accurate, complete, on the sheet):"); if (v === null) return; const n = Math.max(0, Math.min(10, Math.round(+v))); if (!Number.isFinite(n)) return; patch.score = n; patch.reviewed = day(); if (window.PB) PB.deadlines.unpublish("forge", a.id); }
@@ -65,7 +71,7 @@
       h("div.bar-mini", null, h("i", { style: `width:${p.avg * 10}%` })), h("span.stat-s", null, "Last: " + (p.last ? `${p.last.score}/10 · ${p.last.what.slice(0, 90)}` : "")))));
   }
   $("#f-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
-    const a = S.add("assignments", { ai: f.ai.value, title: f.title.value.trim(), due: f.due.value, pillar: f.pillar.value.trim(), state: "out", given: day() });
+    const a = S.add("assignments", { ai: f.ai.value, title: f.title.value.trim(), due: f.due.value, pillar: f.pillar.value.trim(), branch: f.branch.value.trim(), commitSha: f.commitSha.value.trim(), deliverable: f.deliverable.value.trim(), state: "out", given: day() });
     if (window.PB && a.due) PB.deadlines.publish({ title: `Back from ${a.ai}: ${a.title}`, date: a.due, source: "forge", kind: "homework", ref: a.id });
     if (window.PB && PB.events) PB.events.publish({ type: "forge.out", pillar: "forge", ref: a.id, title: a.title }); f.reset(); toast("Handed out"); paint(); });
   try {

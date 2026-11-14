@@ -1,5 +1,7 @@
 <!-- doc-status: current; normative: yes -->
-# Handover to the next agent (written 2026-11-13 by Claude, at the end of its usage)
+# Handover to the next agent (Antigravity Argon + Hydrogen sync, 2026-11-13)
+
+> **Current baseline (Build d16, 2026-11-13):** Read `AGENTS.md`, `docs/CHARTER.md`, `docs/antigravity/WORKBOARD.md`, and `STATUS.md` first. Since the historical `d9` handover below, the ecosystem has grown to **`27` active Hub destinations** (`25` local pillars under `pillars/<id>/`, `100%` with `pillar.json` manifests and signature stages/WebGL skies, plus external `titan` and `midas`; `fleet` remains paused), canonical validation (`tools/registry/validate.mjs`), unified device backup including Argus IndexedDB photo blobs, and completed Athenaeum independent review (`docs/pillars/athenaeum/REVIEW.md`). Historical handover notes below are preserved verbatim.
 
 You are taking over as lead engineer and designer for Joseph's Prometheus (this repository) and Titan Reliquary. Read in this order:
 1. `docs/CHARTER.md` (the owner's charter, normative; its section 16 protections are absolute).

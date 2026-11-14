@@ -62,10 +62,22 @@
   const allLocal = () => tx("readonly", (s) => s.getAll());
 
   function syncIdbMirror(rows) {
+    const list = rows || [];
     try {
-      const meta = (rows || []).map(({ id, pillar, caption, at, dhash, grade, pairId, pairRole }) => ({ id, pillar, caption, at, dhash, grade, pairId, pairRole }));
+      const meta = list.map(({ id, pillar, caption, at, dhash, grade, pairId, pairRole, width, height }) => ({ id, pillar, caption, at, dhash, grade, pairId, pairRole, width, height }));
       localStorage.setItem("prometheus.argus.idbMeta", JSON.stringify(meta));
     } catch {}
+    Promise.all(list.map((r) => new Promise((res) => {
+      const base = { id: r.id, pillar: r.pillar, caption: r.caption, at: r.at, dhash: r.dhash, grade: r.grade, pairId: r.pairId, pairRole: r.pairRole, width: r.width, height: r.height };
+      if (r.blobDataUrl) return res({ ...base, blobDataUrl: r.blobDataUrl });
+      if (!r.blob) return res({ ...base, blobDataUrl: null });
+      const fr = new FileReader();
+      fr.onload = () => res({ ...base, blobDataUrl: typeof fr.result === "string" ? fr.result : null });
+      fr.onerror = () => res({ ...base, blobDataUrl: null });
+      fr.readAsDataURL(r.blob);
+    }))).then((full) => {
+      try { localStorage.setItem("prometheus.argus.idbSnapshot", JSON.stringify(full)); } catch {}
+    }).catch(() => {});
   }
 
   function dHashFromCanvas(srcCv) {

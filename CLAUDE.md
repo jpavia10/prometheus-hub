@@ -1,7 +1,9 @@
 <!-- doc-status: current; normative: yes -->
-# Prometheus Hub: integrator notes (Claude)
+# Prometheus Hub: integrator & orchestration notes (`AGENTS.md` + `CLAUDE.md`)
 
-**New here? Read `docs/HANDOVER.md` first (2026-11-13): state, the owner's direction in his words, what to do next.**
+> **Antigravity Operating Sync (2026-11-13, Build d16):** Current operating rules are in `AGENTS.md`, `.agents/workflows/prometheus-delivery.md`, and `docs/antigravity/WORKBOARD.md` (Orchestrator **Argon** + Executor **Hydrogen**). Current ecosystem: **`27` active Hub destinations** (`25` local pillars under `pillars/<id>/`, each with its own `pillar.json` manifest and signature stage/sky, plus protected external `titan` and `midas`), with `fleet` paused. Registry & manifest parity is enforced by `node tools/registry/validate.mjs`; unified backup covers `localStorage` + Argus IndexedDB photo blobs. Historical `d7`–`d12` notes below are preserved for provenance.
+
+**New here? Read `AGENTS.md` and `docs/HANDOVER.md` first:** state, the owner's direction in his words, and what to do next.
 
 The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus-hub`, `pillars.json`). Live: https://jpavia10.github.io/prometheus-hub/.
 

@@ -1,7 +1,7 @@
 /* System: where the data lives and how it leaves. One deck file in and out, one file per capability, the home point, the sky,
    and the honest list of what is on the deck. Nothing here talks to a server. */
 import { put, h, icon, toast, ask, download, pickFile, chip } from "../core/ui.js";
-import { backupAll, previewRestore, restoreAll } from "../core/reach.js";
+import { backupAll, previewRestore, restoreAll, snapshotIndexedDB, restoreIndexedDB, rollbackRestore } from "../core/reach.js";
 import { today } from "../core/dates.js";
 import { locationSheet } from "./parts.js";
 
@@ -10,15 +10,18 @@ export function render(root, route, ctx) {
   const bytes = (() => { try { let n = 0; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith("prom.deck.")) n += k.length + (localStorage.getItem(k) || "").length; } return n; } catch (e) { return 0; } })();
   const name = h("input", { type: "text", value: p.name || "", maxlength: 30, placeholder: "How the deck greets you", onchange: (e) => store.update("profile", (x) => { x.name = e.target.value.trim(); }) });
 
+  const hasRollback = (() => { try { return !!sessionStorage.getItem("prometheus.backup.rollback"); } catch (e) { return false; } })();
+
   put(root, 
     h("section.hero.small", h("p.kicker", "System"), h("h1.headline", "Your data stays on this device")),
-    h("section.panel", h("header.panel-head", h("h2", "Everything on this device"), chip("all pillars")),
-      h("p.quiet", "One file with every pillar's records, the shared calendar and activity, the hub's consoles and the deck project. Restoring shows what would change first and never deletes anything the file does not hold."),
-      h("div.row", h("button.btn", { type: "button", id: "backup-all", onclick: () => { const b = backupAll(); download(`prometheus-everything-${t}.json`, b); toast(`Saved ${b.count} stores to your downloads.`); } }, icon("download", 18), "Back up everything"),
-        h("button.btn.ghost", { type: "button", id: "restore-all", onclick: async () => { const f = await pickFile(); if (!f) return; let file, p; try { file = JSON.parse(await f.text()); p = previewRestore(file); } catch (e) { return toast(e.message || "That file could not be read."); }
-          if (!p.add.length && !p.change.length) return toast("Nothing to restore: this device already holds the same.");
-          const ok = await ask("Restore from this backup?", `${p.add.length} new and ${p.change.length} changed stores (${p.pillars.join(", ")}). ${p.same.length} are already the same. Nothing else is touched.`, "Restore");
-          if (ok) { restoreAll(file); toast("Restored. Reloading."); setTimeout(() => location.reload(), 600); } } }, "Restore from a file"))),
+    h("section.panel", h("header.panel-head", h("h2", "Everything on this device"), chip("all local pillars + argus idb")),
+      h("p.quiet", "One integrity-checked archive covering every local pillar's localStorage stores, shared buses, deck settings, and Argus IndexedDB photo blobs. External Titan Reliquary and Midas Ledger maintain separate backups on their own origins and are excluded."),
+      h("div.row", h("button.btn", { type: "button", id: "backup-all", onclick: async () => { await snapshotIndexedDB(); const b = backupAll(); download(`prometheus-everything-${t}.json`, b); toast(`Saved ${b.count} stores and ${b.idbCount || 0} Argus photo blobs.`); } }, icon("download", 18), "Back up everything"),
+        h("button.btn.ghost", { type: "button", id: "restore-all", onclick: async () => { const f = await pickFile(); if (!f) return; let file, pr; try { file = JSON.parse(await f.text()); pr = previewRestore(file); } catch (e) { return toast(e.message || "That file could not be read."); }
+          if (!pr.add.length && !pr.change.length && !pr.idbCount) return toast("Nothing to restore: this device already holds the same.");
+          const ok = await ask("Restore from this backup?", `${pr.add.length} new, ${pr.change.length} changed stores (${pr.pillars.join(", ") || "deck"}), and ${pr.idbCount || 0} Argus photo blobs. ${pr.same.length} stores unchanged. External (${(pr.excludedExternal || []).join(", ")}) untouched.`, "Restore");
+          if (ok) { restoreAll(file); await restoreIndexedDB(file); toast("Restored with rollback snapshot. Reloading."); setTimeout(() => location.reload(), 600); } } }, "Restore from a file"),
+        hasRollback ? h("button.btn.ghost.small", { type: "button", id: "rollback-restore", onclick: () => { const n = rollbackRestore(); toast(`Rolled back ${n} stores. Reloading.`); setTimeout(() => location.reload(), 400); } }, "Rollback restore") : null)),
     h("section.panel", h("header.panel-head", h("h2", "The deck file"), p.demo ? chip("demo data", "warn") : p.seed ? chip(p.seed.label || "loaded") : chip("this device only")),
       h("p.quiet", "One file holds everything on the deck. Keep a copy in your Drive; load it on another device to pick up where you left off."),
       h("div.row", h("button.btn", { type: "button", onclick: () => { download(`prometheus-deck-${t}.json`, store.exportDeck()); toast("Deck file saved to your downloads."); } }, icon("download", 18), "Export the deck"),

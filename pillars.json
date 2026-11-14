@@ -1,6 +1,6 @@
 {
- "about": "Every pillar of Prometheus in one list (Claude keeps it; tools/kit/render.py reads it). A pillar with a repo keeps its own homework in that repo (docs/agents/queues.json); a seat without a repo keeps it here under pillars/{id}/ until its repo exists. Titan Reliquary is the exception: its own research loop, its own Drive folder, its own look.",
- "updated": "2026-11-09",
+ "about": "Canonical Prometheus Hub registry (schema v4, validated by tools/registry/validate.mjs): hub desk + 25 active local pillars + 2 external protected pillars (titan, midas) + paused fleet.",
+ "updated": "2026-11-13",
  "ais": [
   {
    "id": "grok",
@@ -25,6 +25,20 @@
    "name": "ChatGPT",
    "also": "",
    "drive_folder": "ChatGPT"
+  },
+  {
+   "id": "argon",
+   "name": "Argon",
+   "also": "Orchestrator",
+   "role": "planner_reviewer",
+   "drive_folder": "Argon"
+  },
+  {
+   "id": "hydrogen",
+   "name": "Hydrogen",
+   "also": "Executor",
+   "role": "implementer_verifier",
+   "drive_folder": "Hydrogen"
   }
  ],
  "pillars": [
@@ -41,20 +55,59 @@
     "folder": "16nBBcyoe2awsYyNmbmfNw_NzNlG1BEMB",
     "incoming": "1o_hzoxIOGfbbY01CyZVOKlsWEU49UzxQ",
     "readme_doc": "1uNQv61ju77-xdGGXZaeGi3rNHhhrmwEHovpCGbiG3Ng"
-   }
+   },
+   "shortName": "Hub",
+   "route": "./",
+   "category": "core",
+   "hostingType": "desk",
+   "dataOwner": "hub",
+   "manifestPath": null,
+   "visualIdentity": {
+    "hue": 210,
+    "icon": "core",
+    "look": "prometheus"
+   },
+   "signatureComponent": "deck/views/orrery.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": []
   },
   {
-   "id": "titan",
-   "name": "Titan Reliquary",
-   "what": "Coin and precious-metals collection.",
-   "repo": "jpavia10/titan-reliquary-preview",
-   "home": "",
-   "live": "https://jpavia10.github.io/titan-reliquary-preview/",
+   "id": "kairos",
+   "name": "Kairos Meridian",
+   "what": "Time: calendar, deadlines and the day.",
+   "repo": "",
+   "home": "pillars/kairos",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
    "state": "live",
-   "look": "titan (own themes, the exception)",
-   "own_loop": true,
-   "queue_url": "https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_{ai}.md",
-   "drive": "Titan Reliquary/ (doc 'WORK QUEUE for {Name}')"
+   "look": "prometheus",
+   "drive": {
+    "folder": "1gMZmDeqaO7og6Aj_lJFki3RPAXgOa1DX",
+    "incoming": "19ZRlXGcHh_qiC69Q5PaMIhUR5FNzKSsI",
+    "readme_doc": "1YniSVpmviAFf2JpSgwKlVcvRSD7wgleDVxUMkkJr7Zw"
+   },
+   "shortName": "Kairos",
+   "route": "pillars/kairos/",
+   "category": "mind",
+   "hostingType": "local",
+   "dataOwner": "time",
+   "manifestPath": "pillars/kairos/pillar.json",
+   "visualIdentity": {
+    "hue": 268,
+    "icon": "hourglass",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/kairos/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "kin",
+    "apollo",
+    "odyssey",
+    "garage"
+   ]
   },
   {
    "id": "midas",
@@ -70,12 +123,57 @@
     "folder": "1hcdao1Ld2_5kJkXhTZPI3yzlTsiwKzJI",
     "incoming": "1q09aDb__i_eY6kUiETakIsyZ6XEv3stD",
     "readme_doc": "1vVuBs1LQP_vmOIpivQRY70ifqiIIwvf-2aY0pXTWcag"
-   }
+   },
+   "shortName": "Midas",
+   "route": "https://jpavia10.github.io/midas-ledger/",
+   "category": "finance",
+   "hostingType": "external",
+   "dataOwner": "midas",
+   "manifestPath": null,
+   "visualIdentity": {
+    "hue": 46,
+    "icon": "scale",
+    "look": "prometheus"
+   },
+   "signatureComponent": null,
+   "searchEnabled": false,
+   "eventPublishingEnabled": false,
+   "protectionLevel": "link_only",
+   "dependencies": []
+  },
+  {
+   "id": "titan",
+   "name": "Titan Reliquary",
+   "what": "Coin and precious-metals collection.",
+   "repo": "jpavia10/titan-reliquary-preview",
+   "home": "",
+   "live": "https://jpavia10.github.io/titan-reliquary-preview/",
+   "state": "live",
+   "look": "titan (own themes, the exception)",
+   "own_loop": true,
+   "queue_url": "https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_{ai}.md",
+   "drive": "Titan Reliquary/ (doc 'WORK QUEUE for {Name}')",
+   "shortName": "Titan",
+   "route": "https://jpavia10.github.io/titan-reliquary-preview/",
+   "category": "finance",
+   "hostingType": "external",
+   "dataOwner": "titan",
+   "manifestPath": null,
+   "visualIdentity": {
+    "hue": 36,
+    "icon": "coin",
+    "look": "titan"
+   },
+   "signatureComponent": null,
+   "searchEnabled": false,
+   "eventPublishingEnabled": false,
+   "protectionLevel": "locked_link_only",
+   "dependencies": []
   },
   {
    "id": "hearth",
    "name": "Hephaestus Hearth",
-   "what": "The house: projects, inventory and floor plan.",
+   "what": "The house: renovations, what is in each room, and the plan.",
    "repo": "jpavia10/hephaestus-hearth",
    "home": "pillars/hearth/",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
@@ -85,7 +183,57 @@
     "folder": "1tvzm62kI2L3DQXe8v5Z3bKmodIV--i-B",
     "incoming": "12owi0zaLe3reUHuiqyaVPC3jYR9m2ZUc",
     "readme_doc": "1hUZbk1-h_-T4lNPbx1Jp_yOKHiDTsQ5SO2eP2zIP8wU"
-   }
+   },
+   "shortName": "Hearth",
+   "route": "pillars/hearth/",
+   "category": "homestead",
+   "hostingType": "local",
+   "dataOwner": "house",
+   "manifestPath": "pillars/hearth/pillar.json",
+   "visualIdentity": {
+    "hue": 16,
+    "icon": "anvil",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/hearth/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "argus",
+    "records",
+    "aether"
+   ]
+  },
+  {
+   "id": "garage",
+   "name": "Garage",
+   "shortName": "Garage",
+   "what": "The car: service, fuel and paperwork.",
+   "repo": "",
+   "home": "pillars/garage",
+   "route": "pillars/garage/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+   "category": "homestead",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "garage",
+   "manifestPath": "pillars/garage/pillar.json",
+   "visualIdentity": {
+    "hue": 200,
+    "icon": "garage",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/garage/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "records",
+    "odyssey",
+    "money"
+   ]
   },
   {
    "id": "apollo",
@@ -100,38 +248,110 @@
     "folder": "1T0ylaJjTNLk_Hhmjjzt4tsUIIshkbfKF",
     "incoming": "13SG4fh4OfX9Pan7Gu2l11lHly5SZx8A2",
     "readme_doc": "1dyyBuWYdmy1KFvuSLi76dLiY8fwnPjBF9nI0DqRCXiI"
-   }
+   },
+   "shortName": "Apollo",
+   "route": "pillars/apollo/",
+   "category": "mind",
+   "hostingType": "local",
+   "dataOwner": "body",
+   "manifestPath": "pillars/apollo/pillar.json",
+   "visualIdentity": {
+    "hue": 54,
+    "icon": "sun",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/apollo/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": []
   },
   {
-   "id": "hermes",
-   "name": "Hermes Post",
-   "what": "Mail and messages that need an answer.",
+   "id": "money",
+   "name": "Money · payoff simulator",
+   "shortName": "Payoff",
+   "what": "The payoff simulator and the issuer library.",
    "repo": "",
-   "home": "pillars/hermes",
-   "live": "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
+   "home": "pillars/money",
+   "route": "pillars/money/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/money/",
+   "category": "finance",
    "state": "live",
    "look": "prometheus",
-   "private": true,
-   "drive": {
-    "folder": "1Lz4uvI1U18AJneu7lWxNwBd528DPjAM2",
-    "incoming": "1Wiz4qi0ZgHqNMPeUxRL-ay4tktJAUeur",
-    "readme_doc": "1ylmCQsFClZJLq57wr1QzxuBCMN1HK0FgpbT2wkWXZ-8"
-   }
+   "hostingType": "local",
+   "dataOwner": "money",
+   "manifestPath": "pillars/money/pillar.json",
+   "visualIdentity": {
+    "hue": 152,
+    "icon": "money",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/money/stage.js",
+   "searchEnabled": false,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "sample_local",
+   "dependencies": [
+    "selling",
+    "garage"
+   ]
   },
   {
-   "id": "kairos",
-   "name": "Kairos Meridian",
-   "what": "Time: calendar, deadlines and the day.",
+   "id": "selling",
+   "name": "Selling Pipeline",
+   "shortName": "Selling",
+   "what": "Items for sale, from listing to shipped.",
    "repo": "",
-   "home": "pillars/kairos",
-   "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
+   "home": "pillars/selling",
+   "route": "pillars/selling/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/selling/",
+   "category": "finance",
    "state": "live",
    "look": "prometheus",
-   "drive": {
-    "folder": "1gMZmDeqaO7og6Aj_lJFki3RPAXgOa1DX",
-    "incoming": "19ZRlXGcHh_qiC69Q5PaMIhUR5FNzKSsI",
-    "readme_doc": "1YniSVpmviAFf2JpSgwKlVcvRSD7wgleDVxUMkkJr7Zw"
-   }
+   "hostingType": "local",
+   "dataOwner": "selling",
+   "manifestPath": "pillars/selling/pillar.json",
+   "visualIdentity": {
+    "hue": 28,
+    "icon": "tag",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/selling/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "money"
+   ]
+  },
+  {
+   "id": "records",
+   "name": "Records · Paper Killer",
+   "shortName": "Records",
+   "what": "Paper turned into findable records.",
+   "repo": "",
+   "home": "pillars/records",
+   "route": "pillars/records/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/records/",
+   "category": "homestead",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "records",
+   "manifestPath": "pillars/records/pillar.json",
+   "visualIdentity": {
+    "hue": 214,
+    "icon": "file",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/records/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "garage",
+    "hearth",
+    "kin"
+   ]
   },
   {
    "id": "icarus",
@@ -147,7 +367,207 @@
     "folder": "1Pff3ctrslCsobTP21UAzgN4q4u_o-dWN",
     "incoming": "1w3zkOFtmKBtyzP1XaZJUWxLW6jFBoYLV",
     "readme_doc": "1oxJ80XPChVdVertk0SHfGm-47euSQWb5iIbRUVLR_rs"
-   }
+   },
+   "shortName": "Icarus",
+   "route": "pillars/icarus/",
+   "category": "finance",
+   "hostingType": "local",
+   "dataOwner": "trading",
+   "manifestPath": "pillars/icarus/pillar.json",
+   "visualIdentity": {
+    "hue": 8,
+    "icon": "wing",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/icarus/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "journal_only",
+   "dependencies": [
+    "observatory"
+   ]
+  },
+  {
+   "id": "hermes",
+   "name": "Hermes Post",
+   "what": "Mail and messages that need an answer.",
+   "repo": "",
+   "home": "pillars/hermes",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
+   "state": "live",
+   "look": "prometheus",
+   "private": true,
+   "drive": {
+    "folder": "1Lz4uvI1U18AJneu7lWxNwBd528DPjAM2",
+    "incoming": "1Wiz4qi0ZgHqNMPeUxRL-ay4tktJAUeur",
+    "readme_doc": "1ylmCQsFClZJLq57wr1QzxuBCMN1HK0FgpbT2wkWXZ-8"
+   },
+   "shortName": "Hermes",
+   "route": "pillars/hermes/",
+   "category": "civic",
+   "hostingType": "local",
+   "dataOwner": "mail",
+   "manifestPath": "pillars/hermes/pillar.json",
+   "visualIdentity": {
+    "hue": 222,
+    "icon": "mail",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/hermes/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "private_local",
+   "dependencies": [
+    "privacy",
+    "polis"
+   ]
+  },
+  {
+   "id": "piano",
+   "name": "Bossa Piano Studio",
+   "shortName": "Piano",
+   "what": "Practice, streaks and the bossa nova path.",
+   "repo": "",
+   "home": "pillars/piano",
+   "route": "pillars/piano/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/piano/",
+   "category": "mind",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "piano",
+   "manifestPath": "pillars/piano/pillar.json",
+   "visualIdentity": {
+    "hue": 318,
+    "icon": "keys",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/piano/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "mythos",
+    "games"
+   ]
+  },
+  {
+   "id": "bastion",
+   "name": "Bastion · Mountain Prep",
+   "shortName": "Bastion",
+   "what": "Supplies and readiness on the mountain.",
+   "repo": "",
+   "home": "pillars/bastion",
+   "route": "pillars/bastion/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/bastion/",
+   "category": "homestead",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "bastion",
+   "manifestPath": "pillars/bastion/pillar.json",
+   "visualIdentity": {
+    "hue": 104,
+    "icon": "shield",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/bastion/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "aether",
+    "odyssey",
+    "continuity"
+   ]
+  },
+  {
+   "id": "athenaeum",
+   "name": "Athenaeum · Idea Vault",
+   "shortName": "Athenaeum",
+   "what": "Ideas and history, kept and connected.",
+   "repo": "",
+   "home": "pillars/athenaeum",
+   "route": "pillars/athenaeum/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/",
+   "category": "mind",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "athenaeum",
+   "manifestPath": "pillars/athenaeum/pillar.json",
+   "visualIdentity": {
+    "hue": 40,
+    "icon": "columns",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/athenaeum/js/sky.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": []
+  },
+  {
+   "id": "odyssey",
+   "name": "Odyssey · Trips & Away Mode",
+   "shortName": "Odyssey",
+   "what": "Trips, and what the house needs while away.",
+   "repo": "",
+   "home": "pillars/odyssey",
+   "route": "pillars/odyssey/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/odyssey/",
+   "category": "homestead",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "odyssey",
+   "manifestPath": "pillars/odyssey/pillar.json",
+   "visualIdentity": {
+    "hue": 186,
+    "icon": "compass",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/odyssey/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "bastion",
+    "garage",
+    "kairos",
+    "kin"
+   ]
+  },
+  {
+   "id": "privacy",
+   "name": "Privacy · CA DROP",
+   "shortName": "Privacy",
+   "what": "Shrinking the public footprint.",
+   "repo": "",
+   "home": "pillars/privacy",
+   "route": "pillars/privacy/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
+   "category": "civic",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "privacy",
+   "manifestPath": "pillars/privacy/pillar.json",
+   "visualIdentity": {
+    "hue": 244,
+    "icon": "lock",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/privacy/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "private_local",
+   "dependencies": [
+    "hermes",
+    "continuity",
+    "polis"
+   ],
+   "private": true
   },
   {
    "id": "argus",
@@ -162,7 +582,314 @@
     "folder": "1694D75FjKmelqFJzvsVnr4yiL4v4agwM",
     "incoming": "18ix8zymOoLLD_ffA_ixDstfcdPe6AxbH",
     "readme_doc": "1f-U14Tf7S9TmwqoxJBu2kp46Pcw83E07PuruEqOJJdQ"
-   }
+   },
+   "shortName": "Argus",
+   "route": "pillars/argus/",
+   "category": "homestead",
+   "hostingType": "local",
+   "dataOwner": "photos",
+   "manifestPath": "pillars/argus/pillar.json",
+   "visualIdentity": {
+    "hue": 166,
+    "icon": "eye",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/argus/stage.js",
+   "searchEnabled": false,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "hearth",
+    "titan"
+   ]
+  },
+  {
+   "id": "games",
+   "name": "Ludus Arcade",
+   "shortName": "Games",
+   "what": "Games: the library in your own words, and the next session.",
+   "repo": "",
+   "home": "pillars/games",
+   "route": "pillars/games/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/games/",
+   "category": "mind",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "games",
+   "manifestPath": "pillars/games/pillar.json",
+   "visualIdentity": {
+    "hue": 330,
+    "icon": "pad",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/games/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": []
+  },
+  {
+   "id": "forge",
+   "name": "Forge",
+   "shortName": "Forge",
+   "what": "AI work: every task handed to Grok, Gemini, Muse and ChatGPT, and how each one scores.",
+   "repo": "",
+   "home": "pillars/forge",
+   "route": "pillars/forge/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/forge/",
+   "category": "mind",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "forge",
+   "manifestPath": "pillars/forge/pillar.json",
+   "visualIdentity": {
+    "hue": 18,
+    "icon": "forge",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/forge/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "foundry"
+   ]
+  },
+  {
+   "id": "foundry",
+   "name": "Foundry",
+   "shortName": "Foundry",
+   "what": "Inventions: ideas turned into builds, stage by stage.",
+   "repo": "",
+   "home": "pillars/foundry",
+   "route": "pillars/foundry/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/foundry/",
+   "category": "mind",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "foundry",
+   "manifestPath": "pillars/foundry/pillar.json",
+   "visualIdentity": {
+    "hue": 192,
+    "icon": "gear",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/foundry/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "athenaeum",
+    "forge"
+   ]
+  },
+  {
+   "id": "observatory",
+   "name": "Observatory",
+   "shortName": "Observatory",
+   "what": "What is happening in the subjects you think about, with sources.",
+   "repo": "",
+   "home": "pillars/observatory",
+   "route": "pillars/observatory/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/observatory/",
+   "category": "mind",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "observatory",
+   "manifestPath": "pillars/observatory/pillar.json",
+   "visualIdentity": {
+    "hue": 250,
+    "icon": "scope",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/observatory/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "athenaeum",
+    "icarus"
+   ]
+  },
+  {
+   "id": "kin",
+   "name": "Kin",
+   "shortName": "Kin",
+   "what": "Family: the kids' schedule, school paperwork and plans in one place.",
+   "repo": "",
+   "home": "pillars/kin",
+   "route": "pillars/kin/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/kin/",
+   "category": "homestead",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "kin",
+   "manifestPath": "pillars/kin/pillar.json",
+   "visualIdentity": {
+    "hue": 340,
+    "icon": "people",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/kin/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "private_local",
+   "dependencies": [
+    "kairos",
+    "records",
+    "odyssey"
+   ],
+   "private": true
+  },
+  {
+   "id": "presence",
+   "name": "Sylade · Presence",
+   "shortName": "Sylade",
+   "what": "The public presence page.",
+   "repo": "",
+   "home": "pillars/sylade",
+   "route": "pillars/sylade/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/sylade/",
+   "category": "mind",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "presence",
+   "manifestPath": "pillars/sylade/pillar.json",
+   "visualIdentity": {
+    "hue": 292,
+    "icon": "star",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/sylade/stage.js",
+   "searchEnabled": false,
+   "eventPublishingEnabled": false,
+   "protectionLevel": "presence_only",
+   "dependencies": [
+    "mythos"
+   ]
+  },
+  {
+   "id": "aether",
+   "name": "Aether · Atmospheric & Field Lab",
+   "shortName": "Aether",
+   "what": "Weather, wildfire/AQI, solar & lunar ephemeris, and mountain pass readiness.",
+   "repo": "",
+   "home": "pillars/aether",
+   "route": "pillars/aether/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/aether/",
+   "category": "homestead",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "aether",
+   "manifestPath": "pillars/aether/pillar.json",
+   "visualIdentity": {
+    "hue": 134,
+    "icon": "aurora",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/aether/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "bastion",
+    "hearth"
+   ]
+  },
+  {
+   "id": "polis",
+   "name": "Polis · Civic & Legal Watch",
+   "shortName": "Polis",
+   "what": "CA & Kern policy tracking, ballot measures, HOA/permit rules & consumer protections.",
+   "repo": "",
+   "home": "pillars/polis",
+   "route": "pillars/polis/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/polis/",
+   "category": "civic",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "polis",
+   "manifestPath": "pillars/polis/pillar.json",
+   "visualIdentity": {
+    "hue": 228,
+    "icon": "civic",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/polis/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "hermes",
+    "privacy"
+   ]
+  },
+  {
+   "id": "mythos",
+   "name": "Mythos · Creative & Lore Studio",
+   "shortName": "Mythos",
+   "what": "Worldbuilding, fiction drafts, guitar & lyric notebooks, moodboards and essays.",
+   "repo": "",
+   "home": "pillars/mythos",
+   "route": "pillars/mythos/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/mythos/",
+   "category": "mind",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "mythos",
+   "manifestPath": "pillars/mythos/pillar.json",
+   "visualIdentity": {
+    "hue": 304,
+    "icon": "feather",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/mythos/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "standard",
+   "dependencies": [
+    "piano",
+    "presence"
+   ]
+  },
+  {
+   "id": "continuity",
+   "name": "Continuity · Sovereign Vault",
+   "shortName": "Continuity",
+   "what": "Zero-knowledge encrypted emergency instructions, digital inheritance & survival runbook.",
+   "repo": "",
+   "home": "pillars/continuity",
+   "route": "pillars/continuity/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/continuity/",
+   "category": "civic",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "continuity",
+   "manifestPath": "pillars/continuity/pillar.json",
+   "visualIdentity": {
+    "hue": 84,
+    "icon": "vault",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/continuity/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "ram_crypto_only",
+   "dependencies": [
+    "privacy",
+    "bastion"
+   ],
+   "private": true
   },
   {
    "id": "fleet",
@@ -173,7 +900,23 @@
    "live": "https://jpavia10.github.io/fleet-command/",
    "state": "paused",
    "look": "",
-   "paused": true
+   "paused": true,
+   "shortName": "Fleet",
+   "route": "https://jpavia10.github.io/fleet-command/",
+   "category": "civic",
+   "hostingType": "external",
+   "dataOwner": "fleet",
+   "manifestPath": null,
+   "visualIdentity": {
+    "hue": 215,
+    "icon": "compass",
+    "look": "paused"
+   },
+   "signatureComponent": null,
+   "searchEnabled": false,
+   "eventPublishingEnabled": false,
+   "protectionLevel": "paused",
+   "dependencies": []
   }
  ],
  "drive": {
@@ -187,7 +930,7 @@
    "chatgpt": "1E_kRPm-G4fQF14JDjLePSD3AKkkod6RKN6v7l_Qmjeo"
   }
  },
- "schemaVersion": 3,
+ "schemaVersion": 4,
  "capabilities": [
   {
    "id": "arrival",
@@ -352,6 +1095,15 @@
    "route": "pillars/sylade/",
    "state": "live",
    "dataOwner": "presence"
+  },
+  {
+   "id": "games",
+   "name": "Ludus Arcade",
+   "kind": "capability",
+   "what": "Games: the library in your own words, and the next session.",
+   "route": "pillars/games/",
+   "state": "live",
+   "dataOwner": "games"
   },
   {
    "id": "forge",

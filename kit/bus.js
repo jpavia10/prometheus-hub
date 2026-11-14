@@ -84,15 +84,21 @@
 
   function dumpAll() {
     const keys = {};
-    const mine = (k) => k && (k.startsWith("prometheus.") || k.startsWith("prometheus-hub."));
+    const mine = (k) => Boolean(k && /^(prometheus\.|prometheus-hub\.|prom\.deck\.|hearth\.)/.test(k));
     const collect = (k) => { if (mine(k)) { const v = get(k); if (v != null) keys[k] = v; } };
     if (LS) { for (let i = 0; i < LS.length; i++) collect(LS.key(i)); } else for (const k of mem.keys()) collect(k);
-    return { schema: "prometheus-backup", version: 2, exported: new Date().toISOString(), keys };
+    let idb = {};
+    try {
+      const snap = keys["prometheus.argus.idbSnapshot"] || keys["prometheus.argus.idbMeta"];
+      if (snap) idb["prometheus-argus/photos"] = JSON.parse(snap);
+    } catch (_) {}
+    return { format: "prometheus-device", schema: "prometheus-backup", v: 2, version: 2, exported: new Date().toISOString(), count: Object.keys(keys).length, excludedExternal: ["titan", "midas"], keys, idb };
   }
   function loadAll(obj) {
-    if (!obj || obj.schema !== "prometheus-backup" || !obj.keys) throw new Error("not a prometheus-backup file");
-    for (const [k, v] of Object.entries(obj.keys)) if (k.startsWith("prometheus.") || k.startsWith("prometheus-hub.")) set(k, v);
-    return Object.keys(obj.keys).length;
+    if (!obj || (obj.schema !== "prometheus-backup" && obj.format !== "prometheus-device") || !obj.keys) throw new Error("not a prometheus-backup file");
+    const mine = (k) => Boolean(k && /^(prometheus\.|prometheus-hub\.|prom\.deck\.|hearth\.)/.test(k));
+    for (const [k, v] of Object.entries(obj.keys)) if (mine(k)) set(k, v);
+    return Object.keys(obj.keys).filter(mine).length;
   }
 
   const PB = { deadlines, money, meta, events, dumpAll, loadAll, today, addDays, _keys: { DKEY, MKEY, METAKEY, EKEY } };

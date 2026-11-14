@@ -1,19 +1,23 @@
 <!-- doc-status: current; normative: yes -->
-# Pillar manifests, the event log, and handing words over
+# Pillar manifests, the event log, the canonical registry, and unified backup
 
-Stage 2 of `docs/CHARTER.md`, started 2026-11-13 with one pillar (Athenaeum). The rest get manifests as each is rebuilt.
+Architecture Stage 2 of `docs/CHARTER.md`. Initially started with Athenaeum, now active across **all `25` local pillars** (`MANIFESTS` in `deck/core/reach.js`) and validated automatically by `tools/registry/validate.mjs`.
 
-**Manifest** (`pillars/<id>/pillar.json`, read by `deck/core/reach.js`; add the path to `MANIFESTS` there):
-`manifest: 1`, `id`, `name`, `state`, `route` (from the hub root), `mission`, `signature`, `owns` (storage keys), `publishes` (event
-types), `search` (a list of `{ key, kind, title, text: [fields, "list.field"], skip, open: "#.../{id}" }`) and `commands`
-(`{ id, label, open, words, takesText }`). The hub reads the named storage keys directly and never loads the pillar's code. Every
-result opens the record in its own pillar, which stays the authority.
+## 1. Canonical Registry (`pillars.json`)
+`pillars.json` (`schemaVersion: 4`) is the single authoritative list of the ecosystem:
+- `25` active local pillars (`pillars/<id>/`)
+- `2` active external protected pillars (`titan`, `midas`)
+- `1` desktop Hub entry (`hub`)
+- `1` paused entry (`fleet`, excluded from `deck/pillars.js` active destinations and `MANIFESTS`)
 
-**Event log** (`kit/bus.js`, `PB.events.publish({ type, pillar, ref, title })`, `PB.events.list({ since })`): what happened, newest
-last, capped at 400, each `{ v: 1, id, at, type, pillar, ref, title }`. A log, not a store: an event only points at a record.
+Run `node tools/registry/validate.mjs` to fail CI/checks on duplicate IDs, route collisions, missing HTML/manifest/stage files, active `fleet` leaks, or external pillar boundary violations.
 
-**Handing words over**: a command with `takesText` matches "word: text" in the hub's command key. The hub leaves
-`{ pillar, command, text }` in `sessionStorage["prometheus.handoff"]` and opens the pillar, which reads it once and still does the
-keeping itself. The hub never writes a pillar's records.
+## 2. Pillar Manifests (`pillars/<id>/pillar.json`)
+Every local pillar ships a manifest (`manifest: 1`, `id`, `name`, `state`, `route`, `mission`, `signature`, `owns`, `publishes`, `search`, `commands`) read by `deck/core/reach.js`. The Hub reads declared `localStorage` keys strictly read-only without importing pillar code; every search result opens the authoritative record inside its own pillar.
 
-Not done yet: one generated registry replacing `pillars.json`, `deck/pillars.js` and the list in `kit/kit.js`; one backup of everything.
+## 3. Shared Event Log (`kit/bus.js` + `deck/core/reach.js`)
+`PB.events.publish({ type, pillar, ref, title })` appends concise event pointers (max `400`, `{ v: 1, id, at, type, pillar, ref, title }`) without leaking private bodies, financial totals, or secret strings. `SAY` in `deck/core/reach.js` formats events across all active local pillars.
+
+## 4. Whole-Device Backup & Restore (`deck/core/reach.js` + `kit/bus.js`)
+- Covers all `prometheus.*`, `prometheus-hub.*`, `prom.deck.*`, and `hearth.*` `localStorage` keys **plus** Argus IndexedDB photo payloads (`prometheus-argus/photos`, preserved with `blobDataUrl` and metadata).
+- Computes an integrity checksum (`integrity`), records a session rollback snapshot (`prometheus.backup.rollback`) before writing, never deletes keys absent from the backup file, and explicitly lists external protected sites in `excludedExternal: ["titan", "midas"]`.
