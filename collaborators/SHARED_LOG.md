@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Privacy: home payoff quote removed
+- The home payoff card shows only whether a plan is locked on this device, plus the progress ring, with no dollar amounts and no activate control. Money opens on an empty form next to a research worked example. The 30-day bus sales slot shows a count. Shell cache d18.
+
 ### [2026-11-10] Grok: home desk HUD instruments
 - The session tile draws a thin ring and a live open/close countdown from the existing NYSE calendar. Next dates and car/home dates carry a days-out pill. The header greets Joseph in Pacific time, and module status uses soft cyan and lavender marks. Shell cache v14.
 

@@ -1,4 +1,6 @@
-/* Money v3: Consolidation ($20k @ 11.99% preset + solved APR), 3-way Avalanche/Snowball/Minimum canvas comparator + Windfall Allocator + 12 Worked Cases, Deferred-Interest & 25-Issuer Hardship matrix, Recurring Subscriptions Audit. */
+/* Money: an empty consolidation form, a neutral worked example from deck/data/payoff-cases.json,
+   3-way Avalanche/Snowball/Minimum comparison, windfall allocator, deferred-interest trap, issuer rules, bills audit.
+   Nothing here is prefilled from a real account. */
 (function () {
   "use strict";
   const { $, h, money, num, day, toast, store, download, pickFile, tabs, field, G } = PK;
@@ -8,8 +10,9 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   field({ count: 900, at: [0.76, 0.3], scale: 0.25, glyph: (n) => [...G.ring(Math.round(n * 0.65), 0.72), ...G.line(Math.round(n * 0.35), -0.4, 0, 0.4, 0)] });
 
-  const DEF = { principal: 5000, apr: 6, term: 12, actualPayment: 440, extra: 0, useBus: false };
-  const cfg = () => ({ ...DEF, ...S.get("cfg", {}) });
+  const EMPTY = { principal: "", apr: "", term: "", actualPayment: "", extra: "", useBus: false };
+  const cfg = () => ({ ...EMPTY, ...(S.get("cfg", {}) || {}) });
+  const loanReady = (c) => Number(c.principal) > 0 && Number(c.term) > 0 && c.apr !== "" && c.actualPayment !== "";
 
   app.innerHTML = `
     <div class="tabs" role="tablist">
@@ -21,11 +24,9 @@
 
     <section id="p-cons" role="tabpanel" class="grid">
       <div class="glass span-12">
-        <h2>Benchmark Presets</h2>
-        <div class="row-actions" style="flex-wrap:wrap;gap:8px;margin-top:6px">
-          <button class="btn small" id="m-preset-20k" type="button">Load $20,000 @ 11.99% · 24 mo · $952.19 quote</button>
-          <button class="btn quiet small" id="m-preset-5k" type="button">Load $5,000 @ 6% · 12 mo · $440 quote (Sample)</button>
-        </div>
+        <h2>Worked example <span class="sample">EXAMPLE</span></h2>
+        <p class="note">A neutral case from the research set (deck/data/payoff-cases.json). It is not an account, and it is not loaded into the form.</p>
+        <div id="m-example" class="stat-s">Loading the worked example…</div>
       </div>
       <div class="glass span-6"><h2>The Consolidation Loan</h2>
         <form class="form" id="m-cons">
@@ -148,8 +149,13 @@
 
   function paintCons() {
     const c = cfg(), F = $("#m-cons");
-    ["principal", "apr", "term", "actualPayment", "extra"].forEach((k) => (F[k].value = c[k] ?? ""));
+    ["principal", "apr", "term", "actualPayment", "extra"].forEach((k) => { if (document.activeElement !== F[k]) F[k].value = c[k] ?? ""; });
     F.useBus.checked = !!c.useBus;
+    if (!loanReady(c)) {
+      $("#m-cons-out").innerHTML = `<p class="empty">The form is empty. Type your own figures, or read the worked example above. Nothing here is an account.</p>`;
+      const cv = document.getElementById("m-cons-cv"); if (cv) { const g = cv.getContext("2d"); if (g) g.clearRect(0, 0, cv.width, cv.height); }
+      return;
+    }
     const salesTotal = window.PB ? Math.max(0, PB.money.total("sale")) : 0;
     const busLump = c.useBus && salesTotal > 0 ? [{ month: 1, amount: salesTotal }] : [];
     const textbook = M.paymentFor(c.principal, c.apr, c.term);
@@ -258,12 +264,12 @@
     const totalMo = list.reduce((s, b) => s + normMo(b), 0);
     const cutMo = list.filter((b) => b.cuttable).reduce((s, b) => s + normMo(b), 0);
     const c = cfg();
-    const baseLoan = M.simulateLoan({ principal: c.principal, apr: c.apr, payment: c.actualPayment, extraMonthly: +c.extra || 0 });
-    const cutLoan = cutMo > 0 ? M.simulateLoan({ principal: c.principal, apr: c.apr, payment: c.actualPayment, extraMonthly: (+c.extra || 0) + cutMo }) : baseLoan;
+    const baseLoan = loanReady(c) ? M.simulateLoan({ principal: c.principal, apr: c.apr, payment: c.actualPayment, extraMonthly: +c.extra || 0 }) : { months: 0, totalInterest: 0 };
+    const cutLoan = loanReady(c) && cutMo > 0 ? M.simulateLoan({ principal: c.principal, apr: c.apr, payment: c.actualPayment, extraMonthly: (+c.extra || 0) + cutMo }) : baseLoan;
     $("#m-bill-sum").innerHTML = `
       <div class="kv"><span>Total recurring burn</span><b>${money(totalMo)}/mo (${money(totalMo * 12)}/yr)</b></div>
       <div class="kv"><span>Non-essential cuttable pool</span><b class="warn">${money(cutMo)}/mo</b></div>
-      <div class="kv"><span>If cut &rarr; applied to loan extra</span><b class="up">${Math.max(0, baseLoan.months - cutLoan.months)} mo faster · ${money(Math.max(0, baseLoan.totalInterest - cutLoan.totalInterest))} saved</b></div>`;
+      <div class="kv"><span>If cut &rarr; applied to loan extra</span><b class="up">${loanReady(c) ? `${Math.max(0, baseLoan.months - cutLoan.months)} mo faster · ${money(Math.max(0, baseLoan.totalInterest - cutLoan.totalInterest))} saved` : "Enter a loan on the consolidation form first."}</b></div>`;
     const box = $("#m-bill-list"); box.innerHTML = "";
     if (!list.length) { box.innerHTML = `<p class="empty">No recurring bills logged yet.</p>`; return; }
     list.forEach((b) => {
@@ -277,8 +283,6 @@
     });
   }
 
-  $("#m-preset-20k").onclick = () => { syncCfg({ principal: 20000, apr: 11.99, term: 24, actualPayment: 952.19, extra: 0 }); toast("Loaded $20,000 @ 11.99% preset"); paintCons(); };
-  $("#m-preset-5k").onclick = () => { syncCfg({ ...DEF }); toast("Loaded $5,000 sample preset"); paintCons(); };
   $("#m-cons").addEventListener("submit", (e) => {
     e.preventDefault(); const f = e.target;
     syncCfg({ principal: +f.principal.value, apr: +f.apr.value, term: +f.term.value, actualPayment: +f.actualPayment.value, extra: +f.extra.value || 0, useBus: f.useBus.checked });
@@ -317,5 +321,11 @@
     if (id === "p-iss") { paintDeferred(); paintIssuers(); }
     if (id === "p-bills") paintBills();
   });
+  fetch("../../deck/data/payoff-cases.json").then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); }).then((cases) => {
+    const c = cases && cases[0]; const box = $("#m-example"); if (!box || !c) return;
+    box.innerHTML = `<p>Case ${esc(c.case)} of ${cases.length} · ${esc(c.method)} · budget ${money(c.budget)} a month.</p>`
+      + (c.debts || []).map((d) => `<div class="kv"><span>${esc(d.name)}</span><b>${money(d.balance)} at ${num(d.apr, 2)}% · min ${money(d.min)}</b></div>`).join("");
+    window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "money" } }));
+  }).catch(() => { const box = $("#m-example"); if (box) box.textContent = "The worked example could not be loaded."; });
   paintCons();
 })();

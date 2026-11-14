@@ -2,17 +2,16 @@
    The hero is the day ring: a 24-hour dial with noon at the top, night shaded from the real sunset to the real sunrise, the present
    as a bright marker, and everything timed in the next 24 hours placed where it falls. Under it: what cannot slip, the seven-day
    runway, the countdowns, the payoff, then the ambient instruments. Every number is computed from the capabilities' own data. */
-import { put, h, s, icon, ring, dial, bars, spark, chip, moneyC, pct, monthsText, plural, countUp } from "../core/ui.js";
+import { put, h, s, icon, ring, dial, bars, spark, chip, plural, countUp } from "../core/ui.js";
 import { eventsSince } from "../core/reach.js";
-import { clock, today, fmtDay, diffDays, monName, dowName, addDays, addMonths, quickAdd } from "../core/dates.js";
+import { clock, today, fmtDay, diffDays, monName, dowName, addDays, quickAdd } from "../core/dates.js";
 import { pillarStats, busMoneySales } from "../core/legacy.js";
 import { PILLARS } from "../pillars.js";
 import { days, within, countdowns } from "../core/feeds.js";
 import { rowItem, runway, locationSheet, skySheet, untilText } from "./parts.js";
-import { position, milestone } from "../models/money.js";
+import { position } from "../models/money.js";
 import { focusStats, focusView, makeEvent, kindOf } from "../models/time.js";
 import * as wx from "../core/weather.js";
-import { WORDS } from "../data/money-words.js";
 import { reactor, titanTile, boot, PILLAR_DOMAINS, domainOf } from "./orrery.js";
 
 /** The day ring. soon = rows in the next 24 hours; w = the weather reading (for sunrise and sunset) or null. */
@@ -92,47 +91,14 @@ export function render(root, route, ctx) {
     h("div.countdowns", cds.map((r) => { const n = diffDays(t, r.date); const num = h("span.num.cd-num"); countUp(num, n);
       return h("a.countdown", { href: r.go || "#/time" }, ring({ value: 1 - Math.min(1, n / 90), size: 96, stroke: 4, tone: r.tone === "holiday" ? "ice" : r.big ? "violet" : "ember", center: h("div", num, h("small", n === 1 ? "day" : "days")), label: `${n} days to ${r.title}` }), h("b", r.title), h("small", fmtDay(r.date))); }))) : null;
 
-  /* tier 2: the payoff (always rendered: live progress ring or $20k @ 11.99% simulator launcher) */
-  const m = store.get("money"); const pos = m.plan ? position(m.plan, m.events, t) : null; const saleSum = (m.events || []).filter((e) => e.kind === "sale" && e.applied !== false).reduce((s, e) => s + (Number(e.amount) || 0), 0); let payoff;
-  if (pos) {
-    const ms = milestone(pos.pct); const [fy, fm] = (pos.freeMonth || "").split("-").map(Number); const pctEl = h("span.num.dial-pct"); countUp(pctEl, pos.pct * 100, (v) => v.toFixed(v >= 99.95 ? 0 : 1) + "%");
-    payoff = h("section.panel.payoff.glow-mint", { "aria-label": "The payoff" },
-      h("header.panel-head", h("h2", "Payoff"), m.plan.sample ? chip("sample preset") : m.plan.label ? chip(m.plan.label) : null, saleSum > 0 ? chip(`+${moneyC(Math.round(saleSum * 100), 0)} sales`) : null, h("a.link", { href: "#/money" }, "Open")),
-      h("a.dial-box", { href: "#/money", "aria-label": `Payoff: ${pct(pos.pct, 1)} paid by schedule` }, dial({ value: pos.pct, width: 300, stroke: 10, ticks: 48, tone: "mint", label: "Share of the starting debt paid" }), h("div.dial-center", pctEl, h("small", "paid, by schedule"))),
-      h("div.stats3",
-        h("div", h("small", "Debt-free"), h("b.num", pos.done ? "Done" : pos.freeMonth ? `${monName(fm, 1)} ${fy}` : "never"), h("small", pos.done ? "" : monthsText(pos.monthsLeft) + " left")),
-        h("div", h("small", "Next due"), h("b.num", pos.next ? moneyC(pos.next.amountC) : "—"), h("small", pos.next ? (pos.next.in === 0 ? "due today" : pos.next.in === 1 ? "due tomorrow" : `in ${pos.next.in} days`) : "")),
-        h("div", h("small", "Interest left"), h("b.num", moneyC(pos.interestLeftC)), h("small", pos.windfallC ? `${moneyC(pos.windfallC, 0)} extra applied` : "on the plan"))),
-      ms.hit ? h("p.voice", WORDS.pct[ms.hit]) : null);
-  } else {
-    payoff = h("section.panel.payoff.glow-mint.payoff-launch", { "aria-label": "Payoff & Capital Simulator" },
-      h("header.panel-head", h("h2", "Payoff & Capital Engine"), chip("$20k @ 11.99% Ready"), h("a.link", { href: "#/money" }, "Simulator")),
-      h("p.quiet", "No payoff plan is locked on this device yet. Launch the flagship consolidation model ($952.19/mo quote, 24 mo) or open the Money pillar for Avalanche, Snowball, and Windfall scenarios."),
-      h("div.stats3",
-        h("div", h("small", "Principal"), h("b.num", "$20,000"), h("small", "11.99% quoted APR")),
-        h("div", h("small", "Baseline Term"), h("b.num", "24 mo"), h("small", "$941.47 min · $952.19 quote")),
-        h("div", h("small", "+$100/mo Extra"), h("b.num", "21 mo"), h("small", "Saves ~$348 interest"))),
-      h("div.row.payoff-actions",
-        h("button.btn.enter.small", {
-          id: "activate-20k-plan",
-          type: "button",
-          onclick: () => {
-            store.update("money", (st) => {
-              st.plan = {
-                label: "$20k @ 11.99% Plan",
-                start: addMonths(t.slice(0, 8) + "05", 1),
-                strategy: "avalanche",
-                order: [],
-                budget: 952.19,
-                extra: 0,
-                debts: [{ id: "cons-20k", name: "Consolidation Loan", kind: "loan", balance: 20000, apr: 11.99, min: 952.19 }],
-              };
-            });
-            ctx.toast("Activated $20,000 @ 11.99% payoff baseline");
-          }
-        }, "Activate $20k Plan"),
-        h("a.btn.ghost.small", { href: "pillars/money/" }, "Open Money Pillar")));
-  }
+  /* tier 2: the payoff. Locked or not on this device, plus the progress ring. No dollar amounts. */
+  const m = store.get("money"); const pos = m.plan && m.plan.debts && m.plan.debts.length ? position(m.plan, m.events, t) : null; const locked = !!pos;
+  const pctEl = h("span.num.dial-pct"); if (locked) countUp(pctEl, pos.pct * 100, (v) => v.toFixed(v >= 99.95 ? 0 : 1) + "%"); else pctEl.textContent = "0%";
+  const payoff = h("section.panel.payoff.glow-mint" + (locked ? "" : ".payoff-launch"), { "aria-label": locked ? "Payoff plan locked on this device" : "No payoff plan on this device" },
+    h("header.panel-head", h("h2", "Payoff"), chip(locked ? "Plan locked" : "No plan on this device"), h("a.link", { href: "#/money" }, "Open")),
+    h("a.dial-box", { href: "#/money", "aria-label": locked ? "Payoff plan locked on this device" : "No payoff plan is locked on this device" },
+      dial({ value: locked ? pos.pct : 0, width: 300, stroke: 10, ticks: 48, tone: "mint", label: locked ? "Share of the starting debt paid" : "No plan locked" }),
+      h("div.dial-center", pctEl, h("small", locked ? "paid, by schedule" : "nothing locked"))));
 
   /* ambient tier */
   const tiles = [];
@@ -173,14 +139,14 @@ export function render(root, route, ctx) {
   const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
   const totalRecords = Object.values(ecoStats).reduce((s, x) => s + (x.records || 0), 0);
   const openDeadlines = (() => { try { return JSON.parse(localStorage.getItem("prometheus.bus.deadlines") || "[]").filter((r) => r && !r.done && r.source !== "kairos-fixed" && r.date >= t).length; } catch (_) { return 0; } })();
-  const sales30dC = busMoneySales().rows.filter((r) => !r.date || r.date >= addDays(t, -30)).reduce((s, r) => s + Math.round(Number(r.amount) * 100), 0);
+  const sales30d = busMoneySales().rows.filter((r) => !r.date || r.date >= addDays(t, -30)).length;
   const activePillars = PILLARS.filter((p) => !p.ext).length;
   const ecoHud = h("section.panel.eco-hud", { "aria-label": "Ecosystem Telemetry" },
     h("div.eco-grid",
       h("a.eco-stat", { href: "#/system" }, h("span.eco-k", "Active Pillars"), h("b.eco-v", `${activePillars} / ${PILLARS.length}`)),
       h("a.eco-stat", { href: "#/system" }, h("span.eco-k", "Local Records"), h("b.eco-v", String(totalRecords))),
       h("a.eco-stat", { href: "#/time" }, h("span.eco-k", "Open Deadlines"), h("b.eco-v", String(openDeadlines))),
-      h("a.eco-stat", { href: "#/money" }, h("span.eco-k", "30d Bus Sales"), h("b.eco-v", moneyC(sales30dC))),
+      h("a.eco-stat", { href: "#/money", "aria-label": sales30d + " sales recorded on the money bus in 30 days" }, h("span.eco-k", "30d Bus Sales"), h("b.eco-v", String(sales30d))),
       h("a.eco-stat", { href: "#/time" }, h("span.eco-k", "Focus Streak"), h("b.eco-v", `${fs.streak || 0}d`))
     )
   );
