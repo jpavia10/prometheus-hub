@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { checkPrecache } from "./precache.mjs";
 
 const DEFAULT_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..", "..");
 
@@ -38,7 +39,7 @@ function parseKitIcons(src) {
   return keys;
 }
 
-export function validateRegistry({ rootDir = DEFAULT_ROOT } = {}) {
+export function validateRegistry({ rootDir = DEFAULT_ROOT, precacheText } = {}) {
   const errors = [];
   const readText = (rel) => fs.readFileSync(path.join(rootDir, rel), "utf8");
   const exists = (rel) => fs.existsSync(path.join(rootDir, rel));
@@ -173,6 +174,15 @@ export function validateRegistry({ rootDir = DEFAULT_ROOT } = {}) {
     if (!capIds.has(r.id)) errors.push(`pillars.json capabilities missing active local pillar '${r.id}'`);
   }
   if ((reg.capabilities || []).length !== capIds.size) errors.push("pillars.json capabilities contains duplicate IDs");
+
+  if (exists("index.html")) {
+    try {
+      const pc = checkPrecache(rootDir, precacheText);
+      for (const e of pc.errors) errors.push(e);
+    } catch (e) {
+      errors.push(`precache check failed: ${e.message}`);
+    }
+  }
 
   return {
     ok: errors.length === 0,

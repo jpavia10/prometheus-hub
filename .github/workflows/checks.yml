@@ -21,6 +21,8 @@ jobs:
           python-version: "3.12"
       - name: Registry
         run: node tools/registry/validate.mjs
+      - name: Precache manifest
+        run: node tools/registry/precache.mjs --check
       - name: JavaScript syntax
         run: |
           set -euo pipefail

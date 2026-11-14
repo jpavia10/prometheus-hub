@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { writePrecache } from "./precache.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..", "..");
 
@@ -177,3 +178,5 @@ reg.about = "Canonical Prometheus Hub registry (schema v4, validated by tools/re
 reg.pillars = newPillars;
 fs.writeFileSync(regPath, JSON.stringify(reg, null, 1) + "\n", "utf8");
 console.log("SYNCED pillars.json entries=" + newPillars.length);
+const precache = writePrecache(ROOT);
+console.log("SYNCED precache count=" + precache.count + (precache.errors.length ? " ERRORS " + precache.errors.join("; ") : ""));
