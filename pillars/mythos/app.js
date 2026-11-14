@@ -25,6 +25,19 @@
     S.set("canonSeedV2", true);
   }
 
+  /* canonSeedV3 (Sebastian, 2026-11-14, at Joseph's direction: "Delete xien"): removes the
+     myth-xien entry and the myth-b1 beat wherever V2 seeded them, and refreshes the shipped
+     myth-shattermind entry — its body named her — to the current shipped text. */
+  if (!S.get("canonSeedV3", false)) {
+    const es3 = S.list("entries").filter((e) => e.id !== "myth-xien");
+    const sm3 = ((window.MYTHOS_CANON || {}).entries || []).find((c) => c.id === "myth-shattermind");
+    const ix3 = es3.findIndex((e) => e.id === "myth-shattermind");
+    if (sm3 && ix3 >= 0) es3[ix3] = { ...sm3 };
+    S.set("entries", es3);
+    S.set("beats", S.list("beats").filter((b) => b.id !== "myth-b1"));
+    S.set("canonSeedV3", true);
+  }
+
   const readAthenaeum = () => {
     try { return JSON.parse(localStorage.getItem("prometheus.athenaeum.ideas") || "[]").filter((x) => !x.archived); } catch (e) { return []; }
   };
