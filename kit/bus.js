@@ -69,18 +69,45 @@
   };
 
   /** Full-deck backup: every prometheus.* key (and the desk's own prometheus-hub.* lines) in one versioned JSON object. */
-  /* Events (2026-11-13): what happened, across pillars. Any pillar publishes; the hub reads. A log, not a store: the pillar's own
-     record stays the authority, an event only points at it. Record: {v:1, id, type "idea.captured", pillar, ref?, title, at ISO}. Newest last, capped. */
+  /* Events: what happened, across pillars. Any pillar publishes; the hub reads. A log, not a store: the pillar's own
+     record stays the authority, an event only points at it. Envelope: {type, pillar, at, v} plus id, ref, title.
+     Newest last, capped. Older rows missing any envelope field are migrated in place. dumpAll/loadAll copy the stored
+     string unchanged, so a backup still round-trips byte for byte. */
   const EKEY = "prometheus.bus.events", ECAP = 400;
+  const eventComplete = (e) => !!(e && typeof e === "object" && typeof e.type === "string" && e.type && typeof e.pillar === "string" && e.pillar && typeof e.at === "string" && e.at && e.v === 1);
+  function envelopeOf(rec) {
+    const src = rec && typeof rec === "object" ? rec : {};
+    const type = String(src.type || src.kind || "event");
+    const pillar = String(src.pillar || src.source || "hub");
+    let at = typeof src.at === "string" && src.at ? src.at : "";
+    if (!at && typeof src.date === "string" && /^\d{4}-\d{2}-\d{2}/.test(src.date)) at = src.date.length > 10 ? src.date : src.date + "T12:00:00.000Z";
+    if (!at) at = "1970-01-01T00:00:00.000Z";
+    return { type, pillar, at, v: 1, id: src.id ? String(src.id) : uid(), ref: src.ref != null ? String(src.ref) : "", title: String(src.title || src.label || "").slice(0, 160) };
+  }
+  /** Rewrite stored events that lack the envelope. Rows that already have {type, pillar, at, v:1} are left as stored. */
+  function migrateEvents() {
+    const raw = get(EKEY);
+    if (raw == null) return [];
+    let parsed;
+    try { parsed = JSON.parse(raw); } catch (_) { return []; }
+    if (!Array.isArray(parsed)) return [];
+    let changed = false;
+    const next = parsed.map((e) => { if (eventComplete(e)) return e; changed = true; return envelopeOf(e); });
+    if (changed) write(EKEY, next);
+    return next;
+  }
   const events = {
-    list(opts) { const l = read(EKEY, []); const since = opts && opts.since; return since ? l.filter((e) => e.at > since) : l; },
+    list(opts) { const l = migrateEvents(); const since = opts && opts.since; return since ? l.filter((e) => e.at > since) : l; },
     publish(rec) {
       if (!rec || !rec.type || !rec.pillar) throw new Error("event needs type + pillar");
-      const l = read(EKEY, []); const r = { v: 1, id: uid(), at: new Date().toISOString(), type: String(rec.type), pillar: String(rec.pillar), ref: rec.ref || "", title: String(rec.title || "").slice(0, 160) };
+      const l = migrateEvents();
+      const r = envelopeOf({ type: rec.type, pillar: rec.pillar, ref: rec.ref, title: rec.title, at: new Date().toISOString() });
       l.push(r); write(EKEY, l.slice(-ECAP)); return r;
     },
+    migrate: migrateEvents,
     clear() { write(EKEY, []); },
   };
+  migrateEvents();
 
   function dumpAll() {
     const keys = {};

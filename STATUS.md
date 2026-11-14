@@ -43,6 +43,16 @@ PASS DECK-2  No script errors during the run  ::  none; the browser skipped the 
 
 The quote above is the last proofs-live run against the deployed site (run 43575963969). It is not a result for the checkout below.
 
+Build **d20** shell, cache **d21** · 2026-11-14 · not deployed yet
+
+**Event envelope, manifest contracts, and leftover location privacy:**
+- `PB.events` stores `{ type, pillar, at, v: 1, id, ref, title }`. A stored row missing any of `type`, `pillar`, `at`, or `v` is migrated in place. `dumpAll` / `loadAll` copy the stored string unchanged, so BACKUP-1 still restores byte for byte.
+- Each of the 25 local `pillar.json` files declares `records`, `commands`, and `events`. `node tools/registry/validate.mjs` prints `25/25 complete`.
+- Bastion and Aether request weather only for the place the hub storm sheet saved at `prom.deck.profile`. With no place, they do not fetch and the panel says "Set a location". The readiness reference is `pillars/bastion/data/readiness.json` (and `alert-cheatsheet.md`); the fixed point is gone.
+- Athenaeum seed titles that were personal, including the early-illness title, are neutral example titles. ATH unit proofs and ATH-3 / CORE-5 name the new titles and still require the same idea, the same hand-made link, and the same water hit.
+- `BUILD` stays `d20`. The shell cache is `prometheus-hub-deck-d21` so the new bus and manifests are not served from the previous cache. Titan and Midas were not edited.
+- **Verified locally, not on the live site:** `node tools/registry/validate.mjs` prints `REGISTRY_OK` and `25/25 complete`. `node --check` on every `.js`/`.mjs` and JSON parse of every `.json`/`.webmanifest` failed `0`. `node --test proofs/unit/*.test.mjs` is `62/62` pass, `0` failed, `0` skipped. Money guard `GUARD_OK`. `python3 proofs/run.py http://prometheus.test:8377/ --mock-weather` is `26/26` pass, including BACKUP-1 restored identical and ATH-3 / CORE-5 on the new titles. A search of `pillars/bastion` and `pillars/aether` finds no fixed coordinates. With no place saved, both pillars show "Set a location" and make no weather request. With a place saved on the device, both request that point.
+
 Build **d20** · 2026-11-14 · not deployed yet
 
 **Pre-merge checks and a privacy sweep of shipped defaults (d20):**

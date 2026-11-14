@@ -7,7 +7,7 @@ const PACK = JSON.parse(readFileSync(new URL("../../pillars/athenaeum/data/cause
 const title = (re) => IDEAS.findIndex((i) => re.test(i.title));
 
 test("relations come from the ideas' own tags and words, with the reason kept", () => {
-  const E = relate(IDEAS), a = title(/^Multi-AI collaboration/), b = title(/^Independent blind audits/);
+  const E = relate(IDEAS), a = title(/^Example: multi-model collaboration/), b = title(/^Example: Independent blind audits/);
   const e = E.find((x) => (x.a === a && x.b === b) || (x.a === b && x.b === a));
   assert.ok(e, "the two verification ideas are related");
   assert.ok(e.tags.length || e.terms.length || e.linked, "their tie keeps its reason");
@@ -16,7 +16,7 @@ test("relations come from the ideas' own tags and words, with the reason kept", 
 });
 
 test("a link made by hand always counts and is always drawn", () => {
-  const a = title(/^Environmental impacts/), b = title(/^History as a way/), mine = IDEAS.map((i, k) => (k === a ? { ...i, links: [IDEAS[b].id] } : i));
+  const a = title(/^Example: environmental impacts/), b = title(/^Example: history as a way/), mine = IDEAS.map((i, k) => (k === a ? { ...i, links: [IDEAS[b].id] } : i));
   const E = relate(mine), e = E.find((x) => (x.a === a && x.b === b) || (x.a === b && x.b === a));
   assert.ok(e && e.linked && e.w >= 0.6); assert.ok(skeleton(mine.length, E).includes(e));
 });
@@ -71,10 +71,19 @@ test("import merges and never replaces; a backup of an empty vault restores ever
   assert.equal(mine[0].chain.length, 1, "the input list is left alone");
 });
 
+test("shipped titles are neutral examples, including the early-setback idea", () => {
+  const early = IDEAS.find((i) => i.id === "imp20261113-39");
+  assert.equal(early.title, "An early setback can forge a long view");
+  assert.equal(/leukemia|cancer/i.test(JSON.stringify(early)), false);
+  assert.equal(IDEAS.filter((i) => /leukemia|cancer|SR-138|my intellectual history|personal collection|my own digital|Give me the fact/i.test(i.title)).length, 0);
+  assert.equal(IDEAS.filter((i) => i.title.startsWith("Example: Independent blind audits")).length, 1);
+  assert.equal(IDEAS.filter((i) => i.title.startsWith("Example: environmental impacts should be compared proportionally")).length, 1);
+});
+
 test("resurfacing and search keep working as before", () => {
   const list = [{ id: "1", title: "Old", created: "2026-01-01", chain: [], lastResurfaced: null }, { id: "2", title: "Seen", created: "2026-01-02", chain: [], lastResurfaced: "2026-11-01" }, { id: "3", title: "Gone", created: "2026-01-03", chain: [], archived: true, lastResurfaced: null }];
   assert.deepEqual(VAULT.pickResurface(list, "2026-11-13").map((i) => i.id), ["1"]); assert.deepEqual(VAULT.pickResurface(list, "2026-12-05").map((i) => i.id), ["1", "2"]);
-  const water = VAULT.search(IDEAS, "water"); assert.ok(water.some((i) => i.title === "Environmental impacts should be compared proportionally"), "the water idea is found");
+  const water = VAULT.search(IDEAS, "water"); assert.ok(water.some((i) => i.title === "Example: environmental impacts should be compared proportionally"), "the water idea is found");
   for (const i of water) assert.ok(JSON.stringify([i.title, i.body, i.tags, i.chain]).toLowerCase().includes("water"), "every result mentions water: " + i.title);
   assert.deepEqual(stats(list, [{}, {}], [{}]), { ideas: 2, refinements: 0, archived: 1, shelf: 2, chronicle: 1 });
 });
