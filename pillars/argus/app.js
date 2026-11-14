@@ -305,32 +305,56 @@
     local = await allLocal(); syncIdbMirror(local); render();
   });
 
-  const numRows = (arr) => arr.map((x, i) => `<div class="kv"><span>${i + 1}. ${esc(x)}</span></div>`).join("");
-  const dotRows = (arr) => arr.map((x) => `<div class="kv"><span>· ${esc(x)}</span></div>`).join("");
+  /* Auditor's-console renderers for the Corpus Binder: numbered rails, a directory tree,
+     audit lists and step flows. Presentation only — every string comes from corpus-data.js. */
+  const railRows = (arr) => `<ol class="rail">${arr.map((x, i) => `<li><span class="rail-n">${String(i + 1).padStart(2, "0")}</span><span class="rail-t">${esc(x)}</span></li>`).join("")}</ol>`;
+  const flowSteps = (arr) => `<ol class="flow">${arr.map((x, i) => `<li><span class="flow-n">Step ${i + 1}</span><span class="flow-t">${esc(x)}</span></li>`).join("")}</ol>`;
+  const auditList = (arr, cls) => `<ul class="audit ${cls}">${arr.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
 
   function paintCorpus() {
     const C = corpus(); if (!C) return;
     const D = C.dupReview;
+    const figParts = String(D.remainingLabel).split(" ");
+    const figNum = figParts.shift() || D.remainingLabel, figUnit = figParts.join(" ");
     $("#c-dup").innerHTML = `
-      <div class="stat-k">Pairs remaining</div><div class="stat-v big">${esc(D.remainingLabel)}</div>
-      <div class="stat-s">as of ${esc(D.remainingAsOf)} — ${esc(D.countNote)}</div>
-      <div class="kv"><span>Queue file (one file, link-shared)</span><b>${esc(D.queuePath)}</b></div>
-      <div class="kv"><span>How a review runs</span></div>${numRows(D.flow)}
-      <div class="row-actions" style="margin-top:10px"><a class="btn small" href="${esc(D.appUrl)}" target="_blank" rel="noopener noreferrer">Open the review app</a></div>`;
-    $("#c-protocol").innerHTML = dotRows(D.protocol);
-    $("#c-vault").innerHTML = C.vault.targets.map((t) => `<div class="kv"><span>${esc(t.kind)}</span><b>${esc(t.path)}</b></div>`).join("")
-      + `<p class="note">${esc(C.vault.yearRule)}</p><p class="note">${esc(C.vault.rootNote)}</p>`;
-    $("#c-bounds").innerHTML = `<div class="kv"><span><b>Never target</b></span></div>${dotRows(C.boundaries.never)}`
-      + `<div class="kv"><span><b>Hunt first</b></span></div>${dotRows(C.boundaries.hunt)}`
-      + `<div class="kv"><span><b>Standing rules</b></span></div>${dotRows(C.boundaries.rules)}`;
+      <div class="snap">
+        <div class="snap-fig">
+          <div class="stat-k">Pairs remaining</div>
+          <div class="snap-num">${esc(figNum)}${figUnit ? ` <small>${esc(figUnit)}</small>` : ""}</div>
+        </div>
+        <div class="stamp" role="img" aria-label="Snapshot as of ${esc(D.remainingAsOf)} — not a live count">
+          <span class="stamp-k">Snapshot</span><span class="stamp-d">${esc(D.remainingAsOf)}</span><span class="stamp-s">Not a live count</span>
+        </div>
+      </div>
+      <p class="note snap-note">${esc(D.countNote)}</p>
+      <div class="kv"><span>Queue file · one file, link-shared</span><b class="mono">${esc(D.queuePath)}</b></div>
+      <div class="kv"><span>Drive file ID</span><b class="mono">${esc(D.queueFileId)}</b></div>
+      <h3 class="sub-h">How a review runs</h3>${railRows(D.flow)}
+      <div class="row-actions" style="margin-top:12px"><a class="btn small" href="${esc(D.appUrl)}" target="_blank" rel="noopener noreferrer">Open the review app</a></div>`;
+    $("#c-protocol").innerHTML = railRows(D.protocol);
+    $("#c-vault").innerHTML = `
+      <div class="tree">
+        <div class="tree-root mono">Sebastian/</div>
+        <div class="tree-node mono">Vault/</div>
+        <div class="tree-kids">${C.vault.targets.map((t) => `<div class="tree-row"><span class="tree-kind">${esc(t.kind)}</span><span class="tree-path mono">${esc(t.path)}</span></div>`).join("")}</div>
+      </div>
+      <p class="note">${esc(C.vault.yearRule)}</p><p class="note">${esc(C.vault.rootNote)}</p>`;
+    $("#c-bounds").innerHTML = `<h3 class="sub-h bad-h">Never target</h3>${auditList(C.boundaries.never, "never")}`
+      + `<h3 class="sub-h good-h">Hunt first</h3>${auditList(C.boundaries.hunt, "hunt")}`
+      + `<h3 class="sub-h">Standing rules</h3>${auditList(C.boundaries.rules, "rules")}`;
     const T = C.titan;
     $("#c-titan").innerHTML = `
-      <div class="kv"><span>Photo naming</span><b>${esc(T.naming)}</b></div>
-      <div class="kv"><span>Real staged examples</span><b>${T.examples.map(esc).join("<br>")}</b></div>
-      <div class="kv"><span>${esc(T.staging.label)}</span><b>${esc(T.staging.id)}</b></div>
-      <div class="kv"><span>${esc(T.drop.label)}</span><b>${esc(T.drop.id)}</b></div>
-      <div class="kv"><span>How a coin photo travels</span></div>${numRows(T.flow)}
-      <div class="kv"><span>Pipeline rules</span></div>${dotRows(T.rules)}`;
+      <div class="specimen">
+        <div class="stat-k">Photo naming — the NOID pattern</div>
+        <div class="specimen-pattern mono">${esc(T.naming)}</div>
+        <div class="specimen-ex">${T.examples.map((e) => `<span class="mono-chip">${esc(e)}</span>`).join("")}</div>
+      </div>
+      <div class="folders">
+        <div class="folder"><div class="stat-k">Drive folder</div><div class="folder-label">${esc(T.staging.label)}</div><div class="mono folder-id">${esc(T.staging.id)}</div></div>
+        <div class="folder"><div class="stat-k">Drive folder</div><div class="folder-label">${esc(T.drop.label)}</div><div class="mono folder-id">${esc(T.drop.id)}</div></div>
+      </div>
+      <h3 class="sub-h">How a coin photo travels</h3>${flowSteps(T.flow)}
+      <h3 class="sub-h">Pipeline rules</h3>${auditList(T.rules, "check")}`;
     paintBatches();
   }
 
