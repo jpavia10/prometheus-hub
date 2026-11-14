@@ -54,6 +54,9 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   the Piano page: "its junk": raise the default here, in the kit, so all 14 pillars rise together; a pillar's own `app.css` stays tiny.
 - **One theme for all pillar pages:** the block "deck theme" at the end of `kit/prometheus.css` (colours per pillar, glass, warp page
   changes). Change the look there, not page by page. Titan, Midas and Hearth are separate repositories and were not touched.
+- **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
+  add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
+  Sylade is `pillars/sylade/`; the old desk files are gone.
 - **d11 (2026-11-13): Hearth lives here now** (`pillars/hearth/`; owner: "Hearth doesnt need an independent repo"). Scope stays the owner's three
   things: renovation projects, assets per room, a plan that gets accurate as it is measured; no price research, code lookups or upkeep
   calendars unless he asks. The deck's stage store keeps its old key `hearth.deck.stages.v1`. The old repo `jpavia10/hephaestus-hearth`

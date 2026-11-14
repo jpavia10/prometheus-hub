@@ -566,3 +566,7 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
 }
 @media (prefers-reduced-motion: reduce) { .view-inner[data-cap="picture"] .board > *, .view-inner[data-cap="picture"] > .hero, .reactor.live .rx-stage { animation: none !important; } }
 @media (min-width: 1080px) { .view-inner[data-cap="picture"] > .reactor.live { margin: 0; } .view-inner[data-cap="picture"] { grid-template-columns: 470px minmax(0, 1fr); } }
+
+/* since you were here (2026-11-13): what changed in the pillars, newest first */
+.since .since-row { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 10px; align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(255, 255, 255, .07); text-decoration: none; color: inherit; }
+.since .since-row b { font-weight: 600; font-size: 13px; color: var(--accent, #ffd08a); white-space: nowrap; } .since .since-row span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }

@@ -1,6 +1,6 @@
 {
  "url": "http://localhost:8377/",
- "ran": "2026-11-13T23:40Z",
+ "ran": "2026-11-14T02:17Z",
  "clock": "2026-11-20T09:00",
  "results": [
   {
@@ -25,7 +25,7 @@
    "id": "CORE-4",
    "name": "Tapping a cell warps into that pillar",
    "pass": true,
-   "detail": "Apollo Temple (3.8 s on this machine)"
+   "detail": "Apollo Temple (3.4 s on this machine)"
   },
   {
    "id": "PILLAR-1",
@@ -43,13 +43,25 @@
    "id": "STAGE-1",
    "name": "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors",
    "pass": true,
-   "detail": "18 of 18 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records, forge, foundry, observatory, kin, hearth"
+   "detail": "19 of 19 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records, forge, foundry, observatory, kin, hearth, sylade"
   },
   {
    "id": "NEW-1",
    "name": "The new pillars work on real data: Forge reads Titan's scored submissions and the live AI queues, Foundry starts a build from an Athenaeum invention without touching Athenaeum, Kin's custody pattern lands on the right days",
    "pass": true,
    "detail": "Forge: 168 scores {'Muse': 52, 'Grok': 43, 'Gemini': 68, 'Gemini API': 3, 'ChatGPT': 2}, 52 queue tasks (8 open); Foundry: board 11 to 10, bench 1 at Research, Athenaeum unchanged True; Kin 2-2-3: ['you', 'you', 'other', 'you', 'you', 'other', 'you', 'other']"
+  },
+  {
+   "id": "SINCE-1",
+   "name": "The hub says what changed in the pillars since your last visit, each line opening its pillar",
+   "pass": true,
+   "detail": "first visit shows nothing: True; next visit: 'Since you were here' ['Athenaeumnew idea: Proof: a new idea0 min -> pillars/athenaeum/']"
+  },
+  {
+   "id": "BACKUP-1",
+   "name": "One file backs up every pillar, the shared bus, the hub's consoles and the deck project; a restore previews first, brings every store back exactly and touches nothing else",
+   "pass": true,
+   "detail": "4 stores in the file (Kin, the deck project and the activity log among them); after wiping them the preview counts 4 to add; restored identical: True; an unrelated key left alone: True; a wrong file refused: 'This is not a whole-device backup.'"
   },
   {
    "id": "ATH-1",
@@ -103,7 +115,7 @@
    "id": "DECK-1",
    "name": "Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store",
    "pass": true,
-   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d11\"}"
+   "detail": "{\"ring\": true, \"rows\": 2, \"days\": 7, \"payoff\": \"28.6%\", \"caps\": [\"picture\", \"system\"], \"wide\": 390, \"build\": \"d12\"}"
   },
   {
    "id": "TIME-1",

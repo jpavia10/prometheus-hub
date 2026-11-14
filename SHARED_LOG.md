@@ -1,4 +1,8 @@
 
+### [2026-11-14] Claude: build d12, the hub notices; one backup; Sylade on the kit
+- Owner: "Do whatever you want." The hub now opens with "Since you were here": every change any pillar logged since the last visit (the shared event log), each line opening its pillar. System has "Back up everything": one file with every pillar's stores, the bus, the consoles and the deck project; restore previews first and never deletes what the file does not hold. Proofs SINCE-1, BACKUP-1.
+- Sylade moved onto the kit (`pillars/sylade/`, presence only, its twin mark as the centrepiece); `sylade.html` redirects there. The old desk bundle it alone kept alive (hub.js 488 KB, styles.css, desk-*.js, src/, package.json) is retired; git history has it.
+
 ### [2026-11-13] Claude: build d11, Hearth moves into the hub
 - Owner: "Hearth doesnt need an independent repo if its gonna stop you from working on it". `pillars/hearth/` on the kit, on the owner's scope (renovation projects, assets per room, the plan): the deck rebuild's 8 stages keep their storage (`hearth.deck.stages.v1`) so progress carries over; rooms with measured sizes; assets with model, serial, warranty (warranty dates on the calendar) and receipt location; the 124 cited room checkpoints and 120 verified inventory categories from Grok's packs (`data/reference.js`); its AI queue now in `pillars/hearth/docs/agents/` so Forge reads it. Centrepiece: the plan drawn only from measurements, the deck to its specified size and pattern. The placeholder 3D house of the old site was not carried over (it said itself it was not a measured drawing). The old repository is left as it was, with a notice that work continues here.
 

@@ -34,9 +34,26 @@ export function commands(q) {
 /** Hand words to a pillar: left in this tab's session for the pillar to pick up once. Nothing is written into the pillar's records from here. */
 export function handOff(hand) { try { sessionStorage.setItem("prometheus.handoff", JSON.stringify(hand)); } catch (e) { /* the pillar opens empty */ } }
 
-const SAY = { "idea.captured": "new idea", "idea.refined": "idea refined", "idea.archived": "idea archived", "shelf.added": "shelved", "import.merged": "backup merged" };
+const SAY = { "idea.captured": "new idea", "idea.refined": "idea refined", "idea.archived": "idea archived", "shelf.added": "shelved", "import.merged": "backup merged", "forge.out": "handed out", "forge.back": "came back", "forge.reviewed": "scored", "deck.stage": "deck stage done", "build.started": "build started", "build.stage": "build moved on", "scan.done": "scanned" };
 /** The newest things that happened in any pillar (the shared event log, kit/bus.js). */
 export function recentEvents(n = 3) {
   let l = []; try { l = JSON.parse(localStorage.getItem("prometheus.bus.events") || "[]"); } catch (e) { l = []; }
   return (Array.isArray(l) ? l : []).slice(-n).reverse().map((e) => ({ ...e, say: `${(loaded.find((m) => m.id === e.pillar) || {}).name || e.pillar} · ${SAY[e.type] || e.type}${e.title ? ": " + e.title : ""}` }));
 }
+
+/** Everything that happened in any pillar after a moment, newest first, with where to open it. */
+export function eventsSince(iso, n = 8) {
+  let l = []; try { l = JSON.parse(localStorage.getItem("prometheus.bus.events") || "[]"); } catch (e) { l = []; }
+  const route = (id) => { const m = loaded.find((x) => x.id === id); return m ? m.route : `pillars/${id}/`; };
+  return (Array.isArray(l) ? l : []).filter((e) => !iso || e.at > iso).slice(-n).reverse().map((e) => ({ ...e, href: route(e.pillar), name: (loaded.find((m) => m.id === e.pillar) || {}).name || e.pillar, say: SAY[e.type] || e.type.replace(/[.:]/g, " ") }));
+}
+
+/* One backup of everything on this device: every pillar's records, the shared bus, the hub's own consoles and the deck's stage store.
+   A restore shows what it would change first and never deletes a key the file does not hold. */
+const OURS = (k) => /^(prometheus\.|prom\.deck\.|hearth\.)/.test(k);
+export function backupAll() { const keys = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (OURS(k)) keys[k] = localStorage.getItem(k); }
+  return { format: "prometheus-device", v: 1, exported: new Date().toISOString(), count: Object.keys(keys).length, keys }; }
+export function previewRestore(file) { if (!file || file.format !== "prometheus-device" || !file.keys) throw new Error("This is not a whole-device backup.");
+  const add = [], change = [], same = []; for (const [k, v] of Object.entries(file.keys)) { if (!OURS(k)) continue; const cur = localStorage.getItem(k); (cur == null ? add : cur === v ? same : change).push(k); }
+  return { add, change, same, pillars: [...new Set([...add, ...change].map((k) => k.split(".")[1]))] }; }
+export function restoreAll(file) { const p = previewRestore(file); for (const k of [...p.add, ...p.change]) localStorage.setItem(k, file.keys[k]); return p; }

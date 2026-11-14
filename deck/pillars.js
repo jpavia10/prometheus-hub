@@ -24,6 +24,6 @@ export const PILLARS = [
   P("foundry", "Foundry", "Foundry", "Inventions: ideas turned into builds, stage by stage.", "pillars/foundry/", 192, "gear"),
   P("observatory", "Observatory", "Observatory", "What is happening in the subjects you think about, with sources.", "pillars/observatory/", 250, "scope"),
   P("kin", "Kin", "Kin", "Family: the kids' schedule, school paperwork and plans in one place.", "pillars/kin/", 340, "people"),
-  P("presence", "Sylade · Presence", "Sylade", "The public presence page.", "sylade.html", 292, "star"),
+  P("presence", "Sylade · Presence", "Sylade", "The public presence page.", "pillars/sylade/", 292, "star"),
 ];
 export const pillar = (id) => PILLARS.find((p) => p.id === id);

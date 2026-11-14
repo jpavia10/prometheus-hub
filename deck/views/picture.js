@@ -3,6 +3,7 @@
    as a bright marker, and everything timed in the next 24 hours placed where it falls. Under it: what cannot slip, the seven-day
    runway, the countdowns, the payoff, then the ambient instruments. Every number is computed from the capabilities' own data. */
 import { put, h, s, icon, ring, dial, bars, spark, chip, moneyC, pct, monthsText, plural, countUp } from "../core/ui.js";
+import { eventsSince } from "../core/reach.js";
 import { clock, today, fmtDay, diffDays, monName, dowName } from "../core/dates.js";
 import { days, within, countdowns } from "../core/feeds.js";
 import { rowItem, runway, locationSheet, skySheet, untilText } from "./parts.js";
@@ -108,7 +109,11 @@ export function render(root, route, ctx) {
   const ambient = h("section.ambient", { "aria-label": "Ambient instruments" }, tiles);
 
   tiles.push(titanTile(null));                                                       // filled from Titan's own ledger when it answers
+  const seenKey = "prom.deck.lastSeen"; let lastSeen = null; try { lastSeen = sessionStorage.getItem(seenKey + ".s") || localStorage.getItem(seenKey); sessionStorage.setItem(seenKey + ".s", lastSeen || ""); localStorage.setItem(seenKey, new Date().toISOString()); } catch (e) { /* first visit */ }
+  const fresh = eventsSince(lastSeen || "", 8), lately = fresh.length ? fresh : eventsSince("", 4), ago = (iso) => { const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + " min" : m < 1440 ? Math.round(m / 60) + " h" : Math.round(m / 1440) + " d"; };
+  const since = lately.length ? h("section.panel.since", { "aria-label": fresh.length ? "Since you were here" : "Lately" }, h("header.panel-head", h("h2", fresh.length ? "Since you were here" : "Lately in the pillars"), h("small.quiet", fresh.length ? plural(fresh.length, "change") : "")),
+    ...lately.map((e) => h("a.since-row", { href: e.href }, h("b", e.name), h("span", e.say + (e.title ? ": " + e.title : "")), h("small.quiet", ago(e.at))))) : null;
   const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
-  put(root, rx, hero, put(h("div.board"), first, run, count, payoff, ambient), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
+  put(root, rx, hero, put(h("div.board"), since, first, run, count, payoff, ambient), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
   return () => { if (rx.cleanup) rx.cleanup(); };
 }
