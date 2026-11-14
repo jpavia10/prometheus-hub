@@ -6,7 +6,12 @@
   const S = store("continuity"), app = $("#app");
   const KDF_ITERATIONS = 250000;
 
-  const DEFAULT_SECTIONS = [
+  /* The binder (Sebastian, 2026-11-14): rebuilt from Joseph's real records — see binder-seed.js.
+     The previously shipped template asserted "ready" for things no record backs (a fireproof
+     pouch, a safe deposit box); those rows were fiction. Migration, run once (binderSeedV1):
+     rows that exactly match the old template are dropped, user-added or user-edited rows are
+     kept untouched, and real binder sections not already present are appended. */
+  const OLD_TEMPLATE = [
     { id: "cs-1", name: "Vital Contacts & Kin Handoff", status: "partial", locator: "Printed card in red emergency binder + Kin pillar" },
     { id: "cs-2", name: "Medical Directives, Allergies and Rx", status: "ready", locator: "Fireproof pouch · hallway closet" },
     { id: "cs-3", name: "Property Deeds, Title & Hearth Keys", status: "partial", locator: "Safe deposit box + Kern County Recorder copy" },
@@ -15,9 +20,13 @@
     { id: "cs-6", name: "Mountain Evacuation & Pet Go-Bag Plan", status: "ready", locator: "Garage bin + Bastion pillar checklist" },
   ];
 
-  if (!S.get("seededV1", false) && !S.list("sections").length) {
-    S.set("sections", DEFAULT_SECTIONS);
-    S.set("seededV1", true);
+  if (!S.get("binderSeedV1", false)) {
+    const isTpl = (s) => OLD_TEMPLATE.some((d) => d.id === s.id && d.name === s.name && d.status === s.status && d.locator === s.locator);
+    const kept = S.list("sections").filter((s) => !isTpl(s));
+    const have = new Set(kept.map((s) => s.id));
+    const binder = (window.CONTINUITY_BINDER || []).filter((s) => !have.has(s.id));
+    S.set("sections", [...kept, ...binder]);
+    S.set("binderSeedV1", true);
   }
 
   const te = new TextEncoder(), td = new TextDecoder();
