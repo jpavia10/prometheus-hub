@@ -30,13 +30,17 @@ with sync_playwright() as p:
     c2 = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); p2 = c2.new_page(); p2.on("pageerror", lambda e: errs.append("core: " + str(e)))
     if MOCK:
         p2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p2.route("https://api.weather.gov/**", lambda route, request: route.abort()); p2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    p2.goto(f"{URL}?now={NOW}#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
-    ci = p2.evaluate("""() => ({ ids: [...document.querySelectorAll('.reactor .hex:not(.core)')].map((x) => x.dataset.pillar),
-      demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth, ring: !!document.querySelector('.dayring') })""")
+    p2.goto(f"{URL}?now={NOW}#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_selector(".now-line", timeout=20000); p2.wait_for_timeout(900)
+    ci = p2.evaluate("""async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      const view = document.querySelector('#view'); const card = document.querySelector('.context-card'); const dockTop = document.querySelector('.dock').getBoundingClientRect().top;
+      return { ids: [...document.querySelectorAll('.reactor .hex:not(.core)')].map((x) => x.dataset.pillar),
+      demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth,
+      now: !!document.querySelector('.now-line'), cards: document.querySelectorAll('.context-card').length,
+      fits: view.scrollHeight <= view.clientHeight + 2 && !!card && card.getBoundingClientRect().bottom <= dockTop + 2 }; }""")
     missing = [i for i in CORE_IDS if i not in ci["ids"]]; extra = [i for i in ci["ids"] if i not in CORE_IDS]
     proof("CORE-1", f"Every pillar in pillars.json is on the core ({len(CORE_IDS)} live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data",
-          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"],
-          json.dumps({"expected": len(CORE_IDS), "drawn": len(ci["ids"]), "missing": missing, "extra": extra, "demo": ci["demo"], "events": ci["events"], "plan": ci["plan"], "wide": ci["wide"], "ring": ci["ring"]}))
+          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["now"] and ci["cards"] == 1 and ci["fits"],
+          json.dumps({"expected": len(CORE_IDS), "drawn": len(ci["ids"]), "missing": missing, "extra": extra, "demo": ci["demo"], "events": ci["events"], "plan": ci["plan"], "wide": ci["wide"], "now": ci["now"], "cards": ci["cards"], "fits": ci["fits"]}))
     routes = p2.evaluate("[...document.querySelectorAll('.reactor .hex:not(.core) a')].map((a) => a.getAttribute('href'))"); bad = []; local = [r for r in routes if not r.startswith("http")]
     for r in local:
         resp = p2.request.get(URL + r)
@@ -194,12 +198,26 @@ with sync_playwright() as p:
           len(hits) >= 1 and hits[0]["title"].startswith("Independent blind audits") and "#idea/" in hits[0]["href"] and len(deep) >= 1 and "Athenaeum · idea" in deep[0]["sub"] and "Athenaeum · idea refined: Proof event" in tick_line and first.startswith("Capture an idea: test the handoff") and landed["title"] == "test the handoff from the hub" and landed["kept"] == a1["n"],
           f"'blind audits' -> {hits[0]['title'][:40] if hits else None} ({hits[0]['href'] if hits else ''}); text match -> {deep[0]['sub'][:70] if deep else None}; ticker has the event: {'Proof event' in tick_line}; '{first[:40]}' opens Athenaeum with the title filled: {landed['title']!r}, ideas still {landed['kept']}"); c6.close()
 
-    pg.goto(f"{URL}?now={NOW}&demo=1#/", wait_until="load"); pg.wait_for_selector(".dayring", timeout=20000); pg.wait_for_timeout(1200)
+    pg.goto(f"{URL}?now={NOW}&demo=1#/", wait_until="load"); pg.wait_for_selector(".now-line", timeout=20000); pg.wait_for_timeout(900)
 
-    # ARRIVAL: the picture is built from the data, not a placeholder
-    info = pg.evaluate("""() => ({ ring: !!document.querySelector('.dayring svg'), rows: document.querySelectorAll('.tier1 .item').length, days: document.querySelectorAll('.runway .day').length,
-      payoff: (document.querySelector('.dial-pct') || {}).textContent, caps: [...document.querySelectorAll('.dock-item')].map((x) => x.dataset.cap), wide: document.documentElement.scrollWidth, build: window.__deck.BUILD })""")
-    proof("DECK-1", "Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store", info["ring"] and info["days"] == 7 and info["payoff"] and info["wide"] <= 390, json.dumps(info))
+    # ARRIVAL: the core, one now line, one card. The old instruments still read the store on Time and Money.
+    home = pg.evaluate("""async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      const view = document.querySelector('#view'); const card = document.querySelector('.context-card'); const dockTop = document.querySelector('.dock').getBoundingClientRect().top;
+      const bits = [view.innerText, ...[...view.querySelectorAll('[aria-label],[title]')].map((el) => (el.getAttribute('aria-label') || '') + ' ' + (el.getAttribute('title') || ''))].join('\\n');
+      const m = await import(new URL('deck/core/now.js', document.baseURI).href); const facts = m.nowFacts(window.__deck.clock.now()); const line = document.querySelector('.now-line').textContent;
+      return { core: document.querySelectorAll('.reactor .hex:not(.core)').length, line, cards: document.querySelectorAll('.context-card').length,
+        event: !!(facts.event && line.includes(facts.event.title)), deadline: !!(facts.deadline && line.includes(facts.deadline.title)),
+        nyse: facts.session.label, nyseOnLine: line.includes(facts.session.label),
+        fits: view.scrollTop === 0 && view.scrollHeight <= view.clientHeight + 2 && !!card && card.getBoundingClientRect().bottom <= dockTop + 2,
+        wide: document.documentElement.scrollWidth, tables: view.querySelectorAll('table').length, dollars: bits.includes('$'), build: window.__deck.BUILD }; }""")
+    proof("DECK-3", "The home renders no table and no dollar figure", home["tables"] == 0 and not home["dollars"] and home["cards"] == 1, json.dumps({"tables": home["tables"], "dollars": home["dollars"], "cards": home["cards"]}))
+    pg.goto(f"{URL}?now={NOW}&demo=1#/time", wait_until="load"); pg.wait_for_selector(".dayring svg", timeout=20000); pg.wait_for_selector(".runway .day", timeout=10000); pg.wait_for_timeout(400)
+    moved = pg.evaluate("""() => ({ ring: !!document.querySelector('.dayring svg'), days: document.querySelectorAll('.runway .day').length, focus: !!document.querySelector('a.tile.focus'), countdowns: document.querySelectorAll('.countdown').length })""")
+    pg.goto(f"{URL}?now={NOW}&demo=1#/money", wait_until="load"); pg.wait_for_selector(".dial-pct", timeout=15000); pg.wait_for_timeout(300)
+    payoff = pg.evaluate("() => (document.querySelector('.dial-pct') || {}).textContent || ''")
+    proof("DECK-1", "Arrival view: the core, one now line (next event, next deadline, NYSE open or closed) and one card, fitting above the dock; the day ring, 7-day runway, countdowns and payoff ring still read the store",
+          home["core"] == len(CORE_IDS) and home["event"] and home["deadline"] and home["nyseOnLine"] and home["nyse"] in ("NYSE open", "NYSE closed") and home["cards"] == 1 and home["fits"] and home["wide"] <= 390 and moved["ring"] and moved["days"] == 7 and moved["focus"] and moved["countdowns"] >= 1 and bool(payoff),
+          json.dumps({"line": home["line"], "nyse": home["nyse"], "fits": home["fits"], "wide": home["wide"], "build": home["build"], "moved": moved, "payoff": payoff}, default=str))
 
     # TIME-1: the 40-event research calendar goes in and comes back out the same
     r = pg.evaluate(ICS_JS)

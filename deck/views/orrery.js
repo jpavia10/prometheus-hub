@@ -2,7 +2,7 @@
    (inertia, then it settles on the nearest pillar with a tick), tap a pillar and the system swings it to the front and the deck warps
    in. One switch morphs the orbit into a hex grid for speed. Drawn every frame: positions in script (spring and stagger), light on
    a canvas (rings, beams, dust, halos, reticle, shockwaves), the light in a shader. Badges and readouts are real data only. */
-import { h, icon, sheet, money, plural, seg } from "../core/ui.js";
+import { h, icon, sheet, plural, seg } from "../core/ui.js";
 import { recentEvents } from "../core/reach.js";
 import { clock, today, diffDays, fmtDay, fmtTime, addDays } from "../core/dates.js";
 import { PILLARS } from "../pillars.js";
@@ -76,14 +76,14 @@ const CELLS = (() => { const out = []; for (let q = -3; q <= 3; q++) for (let r 
   const ang = (c) => (Math.atan2(c.y, c.x) + Math.PI * 2.5) % TAU; return [...out.filter((c) => c.d === 1).sort((a, b) => ang(a) - ang(b)), ...out.filter((c) => c.d === 2).sort((a, b) => ang(a) - ang(b)), ...out.filter((c) => c.d === 3).sort((a, b) => ang(a) - ang(b))]; })();   // a third ring only when there are more than 18 pillars
 
 function badgeFor(p, stats, t, tn) {
-  if (p.id === "titan" && tn && tn.total) return "$" + (tn.total >= 1000 ? (tn.total / 1000).toFixed(1) + "k" : Math.round(tn.total));
+  if (p.id === "titan" && tn && tn.flips) return String(tn.flips);
   const st = stats[p.id]; if (!st) return null;
   if (st.next) { const n = diffDays(t, st.next.date); return n === 0 ? "today" : n + "d"; }
   return st.records ? String(st.records) : null;
 }
 function factsFor(p, stats, tn) {
   const st = stats[p.id] || {}; const out = [];
-  if (p.id === "titan" && tn) out.push(`${money(tn.total)} · ${tn.flips} specimens · ${tn.countries} countries`);
+  if (p.id === "titan" && tn) out.push(`${tn.flips} specimens · ${tn.countries} countries`);
   if (st.next) out.push(`Next: ${st.next.title}, ${fmtDay(st.next.date)}`);
   if (st.records) out.push(`${plural(st.records, "entry", "entries")} on this device`);
   return out;
@@ -124,8 +124,9 @@ function fire(canvas) {
 
 export function reactor(ctx) {
   const t = today(); const stats = pillarStats(t); let tn = null; const calm = still();
-  const W = innerWidth >= 1080 ? Math.min(600, Math.max(460, Math.round(innerWidth * 0.42))) : Math.min(innerWidth, 460);
-  const H = innerWidth <= 600 ? Math.round(W * 0.78) : Math.round(W * 0.96), cx = W / 2, cy = H / 2, M = 44;
+  const phone = innerWidth <= 600;
+  const W = innerWidth >= 1080 ? Math.min(560, Math.max(420, Math.round(innerWidth * 0.36))) : Math.min(innerWidth, 460);
+  const H = phone ? Math.round(W * 0.54) : Math.min(Math.round(W * 0.7), Math.max(240, innerHeight - 420)), cx = W / 2, cy = H / 2, M = 44;
   let mode = calm ? "grid" : ls("prom.deck.layout") || "orbit";
   if (!["orbit", "grid", "web"].includes(mode)) mode = "orbit";
   let mix = mode === "grid" ? 1 : 0, wmix = mode === "web" ? 1 : 0;
@@ -333,7 +334,7 @@ export function reactor(ctx) {
   const held = Object.values(stats).reduce((n, x) => n + x.records, 0); if (held) facts.push(`${plural(held, "entry", "entries")} across the pillars on this device`);
   const w = ctx.weather(); if (w && w.now) facts.push(`${Math.round(w.now.temp)}° outside${(w.alerts || []).length ? " · " + w.alerts[0].event : ""}`);
   const line = () => facts.map((f) => h("span", f)); const tickerEl = h("div.ticker", { "aria-label": facts.join(". ") }, h("div.ticker-run", { "aria-hidden": "true" }, line(), line()));
-  titan().then((d) => { if (d && d.total && tickerEl.isConnected) { facts.push(`Titan ${money(d.total)} · ${d.flips} specimens`); tickerEl.firstChild.replaceChildren(...line(), ...line()); } });
+  titan().then((d) => { if (d && tickerEl.isConnected) { facts.push(`Titan · ${d.flips} specimens`); tickerEl.firstChild.replaceChildren(...line(), ...line()); } });
 
   const el = h("section.reactor.live", { "aria-label": "The pillars", dataset: { mode } }, stage, h("div.rx-hud", read, domBar, h("div.rx-controls", modeSeg, zoomCtl)), tickerEl);
   el.cleanup = () => { dead = true; cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("visibilitychange", onVis); document.removeEventListener("keydown", onKey); removeEventListener("pointermove", onMove); removeEventListener("pointerup", onUp); removeEventListener("pointercancel", onUp); removeEventListener("deviceorientation", onTilt); };
@@ -341,12 +342,12 @@ export function reactor(ctx) {
   return el;
 }
 
-/** Titan on the hub: its real total and its newest coins, straight from its published ledger. */
+/** Titan on the hub: a link to its own site. The ledger total stays there. */
 export function titanTile(d) {
   if (!d) return h("span", { id: "titan-live", hidden: true });
   return h("a.tile.titan", { id: "titan-live", href: d.url, "aria-label": "Titan Reliquary" }, h("span.tile-head", h("span", "Titan Reliquary"), h("small", `${d.flips} specimens`)),
-    h("span.tile-main", h("span", h("b.num.big", money(d.total, 0)), h("small", `${Number(d.ag).toFixed(2)} oz silver · ${Number(d.au).toFixed(4)} oz gold`))),
-    h("span.coins", d.newest.map((c) => h("img", { src: c.img, alt: "", loading: "lazy", decoding: "async", width: 96, height: 96 }))), h("small.quiet", "newest arrivals"));
+    h("span.tile-main", h("span", h("b", "Open the collection"), h("small", `${d.flips} specimens · ${d.countries} countries`))),
+    h("span.coins", (d.newest || []).map((c) => h("img", { src: c.img, alt: "", loading: "lazy", decoding: "async", width: 96, height: 96 }))), h("small.quiet", "newest arrivals"));
 }
 
 /** The boot: once a session. A line ignites, the systems count in, the core lights. Tap to skip. */
