@@ -11,7 +11,7 @@ import { addMonths, diffDays, ruleDates, today as todayFn } from "../core/dates.
 
 export const toCents = (n) => Math.round(Number(n) * 100);
 export const fromCents = (c) => c / 100;
-const aprMilli = (apr) => Math.round(Number(apr) * 1000);                         // 11.99 % -> 11990
+const aprMilli = (apr) => Math.round(Number(apr) * 1000);                         // 6 % -> 6000
 /** One month's interest in cents on a balance in cents: apr/12, rounded half up (the rule that reproduces the worked ledgers). */
 export const monthInterest = (balC, apr) => Math.floor((balC * aprMilli(apr) + 600000) / 1200000);
 

@@ -120,7 +120,7 @@ export function startSky(canvas) {
   }
   function frame(now) {
     st.raf = 0; if (st.stopped || document.hidden) return;
-    const gap = st.tier === 0 || still.matches ? 20000 : 16;
+    const gap = st.tier === 0 || still.matches ? 20 * 1000 : 16;
     if (now - st.last >= gap - 2) {
       const before = performance.now(); draw(now); gl.finish && st.frames < 40 && gl.finish(); const cost = performance.now() - before;
       if (st.frames > 6 && st.frames < 40 && cost > 24) st.slow++;
@@ -129,7 +129,7 @@ export function startSky(canvas) {
       if (st.flash > 0.01) st.flash *= 0.82; else st.flash = 0;
       if (cur.storm > 0.5 && !still.matches && now > st.nextBolt) { st.flash = 0.9; st.nextBolt = now + 5000 + Math.random() * 14000; }
     }
-    if (st.tier === 0 || still.matches) setTimeout(() => { if (!st.raf && !st.stopped) st.raf = requestAnimationFrame(frame); }, 20000); else st.raf = requestAnimationFrame(frame);
+    if (st.tier === 0 || still.matches) setTimeout(() => { if (!st.raf && !st.stopped) st.raf = requestAnimationFrame(frame); }, 20 * 1000); else st.raf = requestAnimationFrame(frame);
   }
   const kick = () => { if (!st.raf && !st.stopped && !document.hidden) st.raf = requestAnimationFrame(frame); };
   document.addEventListener("visibilitychange", kick); addEventListener("resize", () => { st.last = 0; kick(); });
