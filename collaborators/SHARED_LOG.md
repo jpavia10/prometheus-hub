@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-14] Arrival is the core, one line, and one card
+- The home keeps the orrery, a now line (next event, next deadline, NYSE open or closed), and one card. Runway, countdowns, the day ring, and focus moved to Time. Storm, homestead, the counts, the pillar list, and Load sample moved to System. The payoff ring stays on Money. DECK-3 fails if the home renders a table or a dollar figure. Shell cache d21.
+
 ### [2026-11-14] Pre-merge checks and shipped defaults
 - Checks run before a merge, the money guard rejects a planted amount in a view, and the hub no longer ships a town, an elevation, a vehicle model, or a collection total. Games and Athenaeum notes are examples. Cache d20. The live proofs-live quote is still run 43575963969.
 

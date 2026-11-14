@@ -1,4 +1,7 @@
 
+### [2026-11-14] Build d21: the arrival is the core, one now line, and one card
+- Home no longer stacks the KPI strip, next-24 list, payoff ring, runway, countdowns, storm, focus, or homestead around the orrery. Those instruments moved to Time, Money, and System. Load sample moved to System. DECK-1 matches the new arrival. DECK-3 checks that the home has no table and no dollar figure. Shell cache d21.
+
 ### [2026-11-14] Pre-merge checks, money guard, shipped defaults
 - `checks.yml` runs the registry, syntax, JSON, unit proofs, the money guard, and browser proofs against this checkout on pull request and push. The storm-watch card starts empty, the homestead line uses a name stored on the device, and the hub links out to Titan without copying a collection total. Games and Athenaeum ship example notes. Shell cache `prometheus-hub-deck-d20` (main already used `d19` for the cool-core chrome).
 - After merging main: registry OK, unit proofs `59/59`, money guard OK (a planted `$952.19` in a view fails it), browser proofs `26/26` on `http://prometheus.test:8377/ --mock-weather`. Not deployed, so the proofs-live quote is still run 43575963969.
@@ -17,6 +20,9 @@
 
 ### [2026-11-14] Privacy: home payoff no longer prints a loan quote
 - The home payoff card now says only whether a plan is locked on this device, with the progress ring and no dollar amounts, and the activate control is gone. Money opens on an empty form beside worked example 1 from `deck/data/payoff-cases.json`. The 30-day bus sales slot stays and shows a count. Service-worker cache is `prometheus-hub-deck-d18`. Older log lines that repeated the quote now say the figures were removed.
+
+### [2026-11-14] Build d21: the arrival is the core, one now line, and one card
+- Home no longer stacks the KPI strip, next-24 list, payoff ring, runway, countdowns, storm, focus, or homestead around the orrery. Those instruments moved to Time, Money, and System. Load sample moved to System. DECK-1 matches the new arrival. DECK-3 checks that the home has no table and no dollar figure. Shell cache d21.
 
 ### [2026-11-13] Build d17: Motion & Mobile Polish, Piano Voicing Studio, Pillar Depth Wave & Cross-Pillar Typed Links
 - **Motion, Warp Hardening & Mobile Clearance (`AGY-009` — `deck/core/fx.js`, `deck/views/orrery.js`, `deck/deck.css`, `kit/prometheus.css`, `pillars/athenaeum/app.css`, `proofs/unit/navigation.test.mjs`):** Hardened `warp()`/`unwarp()` with active rAF/timer tracking, token guards, `isWarping()`, null-safe `#deck`, and `pagehide`/`pageshow`/`visibilitychange` cleanup (`20`-hop stress tests pass); added reduced-motion-guarded `@view-transition { navigation: auto; }` fade keyframes; tuned `390x844` mobile Orrery stage height (`W * 0.78`) and `.rx-controls` spacing clear of the bottom dock; hid `.pk-cockpit-btn` in Athenaeum, prevented `"Chronicle"` tab clipping, and widened `.ath-time` (`right: 82px`) clear of `.ath-spark`.

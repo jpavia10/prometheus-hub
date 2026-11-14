@@ -1,6 +1,6 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
    Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline. */
-var CACHE = "prometheus-hub-deck-d20";
+var CACHE = "prometheus-hub-deck-d21";
 var PILLAR_IDS = [
   "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
   "piano", "bastion", "athenaeum", "odyssey", "privacy", "argus", "games", "forge", "foundry",
