@@ -8,6 +8,18 @@
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const items = () => S.list("items");
 
+  /* Real draft pipeline seed (Sebastian, 2026-11-14): Joseph's 2026-10-14 Marketplace draft
+     batch (MLT-001..004) as staged ledger lines at the FLOOR of each draft ask band, with the
+     blocker in the title. Seeds once, only into an empty pipeline; the flag keeps a later
+     delete-everything from resurrecting drafts. Prices are draft bands — see the goal panel. */
+  const PIPE = window.SELLING_PIPELINE || null;
+  if (PIPE && !S.get("pipelineSeedV1")) {
+    if (!items().length) {
+      for (const s of PIPE.skus) S.add("items", { date: "2026-10-14", title: s.seedTitle, batch: s.sku, price: s.low, feePct: 10, feeFixed: 0, shipEst: 0, packaging: 0, stage: "staged" });
+    }
+    S.set("pipelineSeedV1", 1);
+  }
+
   const BASE_PRESETS = [
     { label: "Facebook Marketplace (shipped) — 10% ($0.80 min)", pct: 10, fixed: 0 },
     { label: "Mercari — 10%", pct: 10, fixed: 0 },
@@ -19,6 +31,7 @@
 
   app.innerHTML = `
     <section class="grid">
+      <div class="glass lit span-12"><h2>The $20,000 Payoff — Draft Pipeline</h2><div id="s-goal"></div></div>
       <div class="glass span-4"><h2>Pipeline Totals</h2><div id="s-sum"></div></div>
       <div class="glass span-4"><h2>Predicted vs Actual Drift</h2><div id="s-drift"></div></div>
       <div class="glass lit span-4"><h2>7-Day Stale Relist Radar</h2><div id="s-stale"></div></div>
@@ -80,6 +93,20 @@
 
   function paint() {
     const t = day(), list = items(), sum = SELLING.summarize(list);
+    // $20K payoff goal panel: draft truth from pipeline-data.js, independent of ledger stages.
+    if (PIPE) {
+      const g = PIPE.goal;
+      const pct = (v) => Math.round((v / g.monthlyPayment) * 100);
+      $("#s-goal").innerHTML =
+        `<div class="kv"><span>Payoff target</span><b>${money(g.target, 0)}</b></div>`
+        + `<div class="kv"><span>Draft pipeline estimate (batch 2026-10-14)</span><b>${money(g.draftLow, 0)}–${money(g.draftHigh, 0)}+</b></div>`
+        + `<div class="kv"><span>Still to go after this batch sells</span><b>${money(g.target - g.draftHigh, 0)}–${money(g.target - g.draftLow, 0)}</b></div>`
+        + `<div class="kv"><span>Pace check — one ${esc(g.paymentLabel)} is ${money(g.monthlyPayment)}</span><b>this batch ≈ ${pct(g.draftLow)}–${pct(g.draftHigh)}% of one payment</b></div>`
+        + PIPE.skus.map((s) => `<div class="kv"><span><b>${esc(s.sku)}</b> · ${esc(s.band)} · <b>${esc(s.state.toUpperCase())}</b><br><span class="stat-s">${esc(s.blocker)}</span></span></div>`).join("")
+        + `<p class="note">${esc(g.source)} Channel: ${esc(g.channel)}. Nothing here is listed or published — drafts finalize only after photos and facts.</p>`;
+    } else {
+      $("#s-goal").innerHTML = `<p class="empty">No draft pipeline loaded.</p>`;
+    }
     $("#s-sum").innerHTML = SELLING.STAGES.map((s) => `<div class="kv"><span>${s}</span><b>${sum.counts[s] || 0}</b></div>`).join("")
       + `<div class="kv"><span>Predicted net (listed + sold)</span><b>${money(sum.predictedNet)}</b></div>`
       + `<div class="kv"><span>Realized net (shipped + closed)</span><b>${money(sum.realizedNet)}</b></div>`
