@@ -1,5 +1,64 @@
-/* Observatory: the kit carries the look; only what this pillar adds is here. */
-.row-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+/* Observatory design (Sebastian, 2026-11-14): a signals instrument in two layers.
+   CANON — the Dome constellation chart and the subject readouts: deep-space, precise, yours.
+   LIVE SKY — the Hacker News scan feed: dashed off as external, with a live pulse, so a headline
+   never wears the canon's clothes. Kit tokens only; subject colors match stage.js (page and dome agree). */
 .sub { font-size: 13px; color: var(--muted); }
-.pill.hot { border-color: var(--accent); color: #fff; }
-.bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; } .bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.bar-mini { display: block; height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; }
+.bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+/* — The Dome: constellation chart — */
+.o-dome .note { max-width: 76ch; }
+#o-chart { margin-top: 10px; }
+#o-chart svg { display: block; width: 100%; height: auto; }
+#o-chart .o-field { fill: #fff; }
+#o-chart .o-arc { fill: none; stroke: color-mix(in srgb, var(--accent) 26%, transparent); stroke-width: 1; }
+#o-chart .o-spoke { stroke: color-mix(in srgb, var(--accent) 13%, transparent); stroke-width: 1; }
+#o-chart .o-sweep { stroke: color-mix(in srgb, var(--accent) 32%, transparent); stroke-width: 1.5; }
+#o-chart .o-horizon { stroke: color-mix(in srgb, var(--accent-2) 45%, transparent); stroke-width: 1; }
+#o-chart .o-link { fill: none; stroke: color-mix(in srgb, var(--accent-2) 38%, transparent); stroke-width: 1; stroke-dasharray: 3 5; }
+#o-chart .o-halo { opacity: .16; }
+#o-chart .o-heart { fill: #fff; }
+#o-chart .o-name { font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: .05em; }
+#o-chart .o-meta { font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; fill: var(--muted); }
+#o-chart .o-chart-empty { font-family: var(--sans); font-size: 14px; fill: var(--muted); }
+.o-chart-cap { margin-top: 8px; font-variant-numeric: tabular-nums; }
+/* Phone: the chart scales to ~0.46×, so its labels are set larger in chart units to stay legible;
+   the readout cards below carry the same figures at full size. */
+@media (max-width: 719px) {
+  #o-chart .o-name { font-size: 20px; }
+  #o-chart .o-meta { font-size: 14.5px; }
+}
+
+/* — Subjects: canon readouts — */
+body .kv.o-subj { align-items: flex-start; }
+.o-subj-main { display: block; }
+.o-subj-head { display: flex; align-items: center; gap: 9px; }
+.o-dot { flex: none; width: 9px; height: 9px; border-radius: 50%; box-shadow: 0 0 10px currentColor; }
+.o-mag { margin-left: auto; padding-left: 14px; display: inline-flex; align-items: baseline; gap: 5px; }
+.o-mag-n { font-size: 21px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.o-mag-k { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.o-magbar { max-width: 340px; }
+.o-quote { display: block; margin-top: 10px; padding: 10px 14px 11px; border-left: 2px solid var(--sc, var(--accent)); border-radius: 0 var(--radius-s) var(--radius-s) 0; background: color-mix(in srgb, var(--sc, var(--accent)) 7%, transparent); }
+.o-quote-k { display: block; margin-bottom: 5px; font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--sc, var(--accent)); }
+.o-quote-text { display: block; font-size: 15px; line-height: 1.55; color: var(--ink); white-space: pre-line; }
+.o-quote-attr { display: block; margin-top: 6px; }
+
+/* — Live Sky: the external scan feed, kept visibly separate from the canon — */
+.o-live { border-style: dashed; border-color: color-mix(in srgb, var(--accent-2) 40%, var(--line)); }
+.o-live::after { background: linear-gradient(90deg, transparent, var(--accent-2), transparent); }
+.o-livebar { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-2); }
+.o-live-src { margin-left: auto; color: var(--muted); letter-spacing: .1em; font-variant-numeric: tabular-nums; }
+.o-pulse { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 10px var(--accent-2); animation: o-pulse 2.2s ease-in-out infinite; }
+@keyframes o-pulse { 50% { opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .o-pulse { animation: none; } }
+.o-sig { position: relative; padding-left: 16px; }
+.o-sig::before { content: ""; position: absolute; left: 1px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--sc, var(--accent-2)), transparent); }
+.o-sig-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 8px; vertical-align: 2px; box-shadow: 0 0 8px currentColor; }
+
+/* — Observations: kind tick — */
+.o-note { position: relative; padding-left: 16px; }
+.o-note::before { content: ""; position: absolute; left: 1px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px; background: var(--nc, var(--muted)); }
+.o-note-verified-fact { --nc: var(--good); }
+.o-note-opinion { --nc: var(--accent-2); }
+.o-note-question { --nc: var(--warn); }
+.o-note-unverified-signal { --nc: var(--muted); }
