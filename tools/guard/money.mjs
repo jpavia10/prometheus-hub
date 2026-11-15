@@ -24,6 +24,7 @@ export const ALLOW = [
   ["pillars/money/cases.js", "worked cases"],
   ["pillars/money/engine.js", "amortization engine over those cases"],
   ["pillars/money/app.js", "simulator chrome only: windfall chips and the empty-trap line"],
+  ["pillars/money/real.js", "Joseph's real consolidation book, public on the pillar at his direction 2026-11-14 (privacy revoked for the hub; the deck passcode gate is his chosen mitigation) — same policy as the narrowed private-loan unit test"],
   ["pillars/icarus/", "sample journal, rule formulas, and market-day reference"],
   ["pillars/apollo/foods.js", "food reference"],
   ["pillars/apollo/lookup.js", "nutrition lookup reference"],
