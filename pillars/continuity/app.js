@@ -145,19 +145,28 @@
       </div>
     </section>
     <section id="co-pane-checklist" class="grid" hidden>
-      <div class="glass span-12">
+      <div class="glass span-12 co-folio">
         <h2>Emergency Binder Readiness (Non-Secret Locators)</h2>
-        <p class="sub">Do not put secrets or passwords here — record where sealed physical &amp; digital packets live so kin can act fast.</p>
-        <div style="margin-bottom:10px">
-          <button class="btn quiet small" id="co-drill" type="button">Schedule 6-Month Continuity Drill → Calendar</button>
+        <div class="co-titleblock">
+          <div class="co-tb-main">
+            <p class="sub">Do not put secrets or passwords here — record where sealed physical &amp; digital packets live so kin can act fast. What this binder does not hold is listed on the docket, in the open — a gap is never dressed as a record.</p>
+          </div>
+          <div class="co-tb-side">
+            <div id="co-folio-summary" aria-label="Binder completeness by chapter"></div>
+            <button class="btn quiet small" id="co-drill" type="button">Schedule 6-Month Continuity Drill → Calendar</button>
+          </div>
         </div>
-        <form class="form" id="co-sform">
-          <label class="f">Category<input name="name" required maxlength="80" placeholder="Trust binder, spare vehicle key..."></label>
-          <label class="f">Status<select name="status"><option value="ready">ready</option><option value="partial">partial</option><option value="missing">missing</option></select></label>
-          <label class="f wide">Physical / Non-Secret Locator<input name="locator" required maxlength="160" placeholder="Fireproof safe shelf B, CPA phone..."></label>
-          <button class="btn" type="submit">Add Locator</button>
-        </form>
-        <div id="co-sections" style="margin-top:12px"></div>
+        <div id="co-docket"></div>
+        <div id="co-sections"></div>
+        <div class="co-amend">
+          <h3 class="co-amend-h">Amend This Record</h3>
+          <form class="form" id="co-sform">
+            <label class="f">Category<input name="name" required maxlength="80" placeholder="Trust binder, spare vehicle key..."></label>
+            <label class="f">Status<select name="status"><option value="ready">ready</option><option value="partial">partial</option><option value="missing">missing</option></select></label>
+            <label class="f wide">Physical / Non-Secret Locator<input name="locator" required maxlength="160" placeholder="Fireproof safe shelf B, CPA phone..."></label>
+            <button class="btn" type="submit">Add Locator</button>
+          </form>
+        </div>
       </div>
     </section>`;
 
@@ -173,7 +182,26 @@
   }
 
   const NEXT_ST = { missing: "partial", partial: "ready", ready: "missing" };
-  const PILL = { ready: "pill", partial: "pill warn", missing: "pill hot" };
+
+  /* Folio presentation (design pass): chapters carry an honest seal — solid for recorded,
+     half for partial, dashed and empty for not recorded — and the seal is always paired
+     with its word, never color alone. Gap clauses inside a locator (the segments that say
+     "not recorded yet") are set apart in the text itself; the words are never altered. */
+  const STATUS_LABEL = { ready: "Recorded", partial: "Partially recorded", missing: "Not recorded" };
+  const sealEl = (status) => h("span.co-seal", { "data-status": status, role: "img", "aria-label": STATUS_LABEL[status] || status },
+    h("span.co-seal-disc", null, status === "ready" ? "✓" : ""));
+  const locatorNodes = (locator) => {
+    const out = [];
+    String(locator || "").split(" · ").forEach((part, idx) => {
+      if (idx) out.push(h("span.co-sep", { "aria-hidden": "true" }, " · "));
+      out.push(/not recorded yet/i.test(part) ? h("span.co-gap", null, part) : part);
+    });
+    return out;
+  };
+  const gapText = (s) => {
+    const gaps = String(s.locator || "").split(" · ").filter((part) => /not recorded yet/i.test(part));
+    return gaps.length ? gaps.join(" · ") : String(s.locator || "");
+  };
 
   function paint() {
     const vault = S.get("vault", null), D = window.CONTINUITY.data();
@@ -190,22 +218,65 @@
       $("#co-btn-lock").hidden = true;
     }
 
+    banner.dataset.state = unlockedText !== null ? "open" : vault ? "sealed" : "empty";
+
     $("#co-envelope").replaceChildren(vault
       ? h("div.mono-box", null, `Authenticated Envelope v${vault.v} · Salt(${vault.salt.slice(0, 12)}…) · IV(${vault.iv.slice(0, 10)}…) · Ciphertext(${vault.ct.length} b64 chars)`)
       : h("p.stat-s", null, "Nothing encrypted yet. Zero plaintext secrets exist in localStorage."));
 
-    $("#co-sections").replaceChildren(...D.sections.map((s) => h("div.kv", null,
-      h("span", null, h("b", null, s.name), " ", h("span." + (PILL[s.status] || "pill"), null, s.status), h("br"), h("span.stat-s", null, s.locator)),
-      h("span", { style: "display:flex;gap:6px" },
-        h("button.btn.quiet.small", { type: "button", onclick: () => { S.update("sections", s.id, { status: NEXT_ST[s.status] || "ready" }); paint(); emitStore(); } }, "Cycle"),
-        h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("sections", s.id); paint(); emitStore(); } }, "Remove"))
-    )));
+    const secNo = (i) => "§ " + String(i + 1).padStart(2, "0");
+
+    const sumEl = $("#co-folio-summary");
+    if (sumEl) {
+      const nR = D.sections.filter((s) => s.status === "ready").length;
+      const nP = D.sections.filter((s) => s.status === "partial").length;
+      const nM = D.sections.filter((s) => s.status === "missing").length;
+      const totS = D.sections.length || 1;
+      sumEl.replaceChildren(
+        h("span.co-sum-line", null,
+          h("b", null, String(nR)), " recorded · ", h("b", null, String(nP)), " partial · ", h("b", null, String(nM)), " not recorded"),
+        h("span.co-meter3", { "aria-hidden": "true" },
+          h("i.co-m3-r", { style: `width:${(nR / totS) * 100}%` }),
+          h("i.co-m3-p", { style: `width:${(nP / totS) * 100}%` }),
+          h("i.co-m3-m", { style: `width:${(nM / totS) * 100}%` })));
+    }
+
+    const docket = $("#co-docket");
+    if (docket) {
+      const open = D.sections.map((s, i) => ({ s, i })).filter(({ s }) => s.status !== "ready");
+      docket.replaceChildren(
+        h("div.co-docket-head", null,
+          h("h3.co-docket-title", null, "Open Items Docket"),
+          h("span.co-docket-note", null, open.length ? `${open.length} of ${D.sections.length} chapters are not fully recorded` : "Nothing outstanding")),
+        ...(open.length
+          ? open.map(({ s, i }) => h("a.co-docket-row", { href: "#co-ch-" + s.id, "data-status": s.status },
+              h("span.co-docket-sec", null, secNo(i)),
+              h("span.co-docket-main", null,
+                h("b", null, s.name),
+                h("span.co-docket-gap", null, gapText(s))),
+              h("span.co-docket-state", null, STATUS_LABEL[s.status] || s.status)))
+          : [h("p.co-docket-clear", null, "No open items — every chapter of this binder is recorded in full.")]));
+    }
+
+    $("#co-sections").replaceChildren(...D.sections.map((s, i) => h("article.co-chapter", { id: "co-ch-" + s.id, "data-status": s.status },
+      h("div.co-ch-rail", null,
+        h("span.co-sec", null, secNo(i)),
+        sealEl(s.status)),
+      h("div.co-ch-main", null,
+        h("div.co-ch-head", null,
+          h("h3.co-ch-name", null, s.name),
+          h("span.co-ch-state", null, STATUS_LABEL[s.status] || s.status)),
+        h("p.co-locator", null, locatorNodes(s.locator)),
+        h("div.co-ch-actions", null,
+          h("button.btn.quiet.small", { type: "button", onclick: () => { S.update("sections", s.id, { status: NEXT_ST[s.status] || "ready" }); paint(); emitStore(); } }, "Cycle status"),
+          h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("sections", s.id); paint(); emitStore(); } }, "Remove"))))));
 
     const ready = D.sections.filter((s) => s.status === "ready").length, tot = D.sections.length || 1;
     const rdBox = document.getElementById("co-readiness");
     if (rdBox) {
       rdBox.innerHTML = `<div class="kv"><span>Binder readiness</span><b>${ready} / ${D.sections.length} (${Math.round(ready / tot * 100)}%)</b></div>`
-        + `<div class="kv"><span>Cipher &amp; KDF</span><b>AES-256-GCM / PBKDF2 310k</b></div>`;
+        + `<div class="kv"><span>Cipher &amp; KDF</span><b>AES-256-GCM / PBKDF2 310k</b></div>`
+        + `<div class="kv"><span>Open items on the docket</span><b>${D.sections.length - ready} of ${D.sections.length} chapters</b></div>`;
     }
   }
 
