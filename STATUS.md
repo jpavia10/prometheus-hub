@@ -8,14 +8,14 @@ The block below is written by the proofs-live workflow from the browser run agai
 
 <!-- proofs-live:begin -->
 
-**26 passed, 0 failed** against https://jpavia10.github.io/prometheus-hub. Every proof in this run passed.
+**25 passed, 1 failed** against https://jpavia10.github.io/prometheus-hub. A FAIL line is a failure. This file does not call a failed run clean.
 
-Quoted from https://github.com/jpavia10/prometheus-hub/actions/runs/43760979031.
+Quoted from https://github.com/jpavia10/prometheus-hub/actions/runs/43761505445.
 
 PASS CORE-1  Every pillar in pillars.json is on the core (27 live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data  ::  {"expected": 27, "drawn": 27, "missing": [], "extra": [], "demo": false, "events": 0, "plan": false, "wide": 390, "ring": true}
 PASS CORE-2  Every pillar page in this repository answers and wears the shared theme  ::  25 pages checked, 2 on their own sites
 PASS CORE-3  A pillar's own deadline (the shared bus) reaches the hub: in the feed and on its cell  ::  {"rows": ["Proof: oil service / garage"], "badge": "2d", "runway": true}
-PASS CORE-4  Tapping a cell warps into that pillar  ::  Apollo Temple (5.1 s on this machine)
+PASS CORE-4  Tapping a cell warps into that pillar  ::  Apollo Temple (4.8 s on this machine)
 PASS PILLAR-1  Every pillar's default shell: crest, sections from its own panels, a dock back to the core  ::  Piano: 6 sections, showing ['Harmonic Studio — Sequ'] then ['Ear & Interval Trainer']; page 2283 px tall at phone size (was 6,672); dock: core + 2 neighbours
 PASS PILLAR-2  Every pillar page runs without a script error, in every section  ::  25 pages opened, 111 sections tapped, no errors
 PASS STAGE-1  Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors  ::  19 of 19 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records, forge, foundry, observatory, kin, hearth, sylade
@@ -37,7 +37,7 @@ PASS TIME-3  Quick add in plain words: “smog check dec 5”  ::  preview “Ad
 PASS MONEY-1  Payoff simulator matches the 12 worked cases to the cent (2 required)  ::  12 of 12 cases match; 4,134 figures compared
 PASS MONEY-2  Bills and the loan payment show as dated rows next to events (one feed)  ::  {"bills": 12, "time": 23}
 PASS DATA-1  Versioned export and import: the deck file restores Time and Money exactly  ::  {"format": 1, "kind": "deck", "slices": ["profile", "time", "money"]}
-PASS DECK-2  No script errors during the run  ::  none; the browser skipped the page-to-page morph 1 time(s) (open item: cause not found)
+FAIL DECK-2  No script errors during the run  ::  Failed to load resource: the server responded with a status of 429 (Too Many Requests)
 
 <!-- proofs-live:end -->
 
