@@ -82,7 +82,7 @@
       <div class="glass span-6">
         <h2>Solar and power-station budget</h2>
         <p class="sub">Peak sun hours minus inverter and charge losses, against the loads you mark essential.</p>
-        <form class="form" id="ae-cfg">
+        <form class="form ae-plate" id="ae-cfg">
           <label class="f">Season<select name="season">${Object.entries(SEASONS).map(([k, s]) => `<option value="${k}">${s.label} · ${s.peakSunH}h</option>`).join("")}</select></label>
           <label class="f">Solar Array (W)<input name="arrayW" type="number" min="0" max="20000" step="50" value="400"></label>
           <label class="f">Battery Bank (Wh)<input name="bankWh" type="number" min="200" max="50000" step="64" value="2048"></label>
@@ -105,13 +105,13 @@
     <section id="ae-pane-pass" class="grid" hidden>
       <div class="glass span-12">
         <h2>Mountain Corridor &amp; Ephemeris Telemetry</h2>
-        <p class="sub" id="ae-wx-status">Stored baseline pass status (shared read-only to Bastion via prometheus.aether.alerts).</p>
+        <p class="sub ae-wx" id="ae-wx-status">Stored baseline pass status (shared read-only to Bastion via prometheus.aether.alerts).</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
           <button class="btn" id="ae-fetch" type="button">Fetch telemetry</button>
           <button class="btn quiet" id="ae-sched" type="button">Publish Winter Chain &amp; PSPS Check → Calendar</button>
         </div>
         <div id="ae-alerts"></div>
-        <form class="form" id="ae-alert-form" style="margin-top:14px">
+        <form class="form ae-plate" id="ae-alert-form" style="margin-top:14px">
           <label class="f">Corridor<select name="id"></select></label>
           <label class="f">Status<select name="status"><option value="clear">clear</option><option value="advisory">advisory</option><option value="watch">watch</option><option value="closed">closed</option></select></label>
           <label class="f">Wind (mph)<input name="windMph" type="number" min="0" max="150" value="14"></label>
@@ -123,7 +123,7 @@
     <section id="ae-pane-psps" class="grid" hidden>
       <div class="glass span-12">
         <h2>SCE PSPS &amp; Grid Outage Log</h2>
-        <form class="form" id="ae-outage-form">
+        <form class="form ae-plate" id="ae-outage-form">
           <label class="f">Date<input name="date" type="date" required></label>
           <label class="f">Duration (hrs)<input name="durationH" type="number" min="0.5" max="240" step="0.5" required value="6"></label>
           <label class="f">Cause<select name="cause"><option value="SCE PSPS">SCE PSPS</option><option value="Storm / Ice">Storm / Ice</option><option value="Equipment Fault">Equipment Fault</option><option value="Planned Maintenance">Planned Maintenance</option></select></label>
@@ -155,17 +155,17 @@
 
     const netCls = B.netWh >= 0 ? "pill" : B.netWh >= -400 ? "pill warn" : "pill hot";
     $("#ae-summary").replaceChildren(
-      h("div.stat-box", null, h("span.stat-s", null, `Solar Yield (${B.season.peakSunH}h peak sun)`), h("b", null, `${B.yieldWh} Wh/day`), h("span.stat-s", null, `Daylight ${B.season.daylight} · snow line ~${B.season.snowLineFt} ft`)),
-      h("div.stat-box", null, h("span.stat-s", null, "Daily Consumption"), h("b", null, `${B.loadWh} Wh/day`), h("span.stat-s", null, `Continuous active peak: ${B.peakW} W`)),
-      h("div.stat-box", null, h("span.stat-s", null, "Zero-Sun Autonomy"), h("b", null, B.autonomyDays >= 99 ? "∞" : `${B.autonomyH} hrs`), h("span.stat-s", null, `${B.autonomyDays} days from ${B.bankWh} Wh bank`)),
-      h("div.stat-box", null, h("span.stat-s", null, "Daily Net Solar Balance"), h("b", null, `${B.netWh >= 0 ? "+" : ""}${B.netWh} Wh/d`), h("span." + netCls, null, B.netWh >= 0 ? "Surplus" : "Deficit"))
+      h("div.stat-box.ae-gauge.g-yield", null, h("span.stat-s", null, `Solar Yield (${B.season.peakSunH}h peak sun)`), h("b", null, `${B.yieldWh} Wh/day`), h("span.stat-s", null, `Daylight ${B.season.daylight} · snow line ~${B.season.snowLineFt} ft`)),
+      h("div.stat-box.ae-gauge.g-load", null, h("span.stat-s", null, "Daily Consumption"), h("b", null, `${B.loadWh} Wh/day`), h("span.stat-s", null, `Continuous active peak: ${B.peakW} W`)),
+      h("div.stat-box.ae-gauge.g-auto", null, h("span.stat-s", null, "Zero-Sun Autonomy"), h("b", null, B.autonomyDays >= 99 ? "∞" : `${B.autonomyH} hrs`), h("span.ae-bar", null, h("i", { style: `width:${Math.min(100, Math.round((B.autonomyH / 48) * 100))}%` })), h("span.stat-s", null, `${B.autonomyDays} days from ${B.bankWh} Wh bank`)),
+      h("div.stat-box.ae-gauge.g-net", null, h("span.stat-s", null, "Daily Net Solar Balance"), h("b", null, `${B.netWh >= 0 ? "+" : ""}${B.netWh} Wh/d`), h("span." + netCls, null, B.netWh >= 0 ? "Surplus" : "Deficit"))
     );
 
     $("#ae-loads").replaceChildren(...B.rows.map((r) => {
       const cb = h("input", { type: "checkbox", ...(r.on ? { checked: "" } : {}), onchange: () => saveLoad(r.id, cb.checked, +hrs.value) });
       const hrs = h("input.num-in", { type: "number", min: "0", max: "24", step: "0.5", value: String(r.hours), onchange: () => saveLoad(r.id, cb.checked, +hrs.value) });
-      return h("div.check-row", null,
-        h("label", null, cb, h("b", null, r.name), h("span.stat-s", null, `(${r.watts}W)`)),
+      return h("div.check-row.ae-load" + (r.on ? " on" : " off") + (r.essential ? " ess" : ""), null,
+        h("label", null, cb, h("b", null, r.name), h("span.stat-s", null, `(${r.watts}W)`), r.essential ? h("span.ae-tag", null, "ESSENTIAL") : null),
         h("span", { style: "display:flex;align-items:center;gap:8px" }, hrs, h("span.stat-s", null, "h/d"), h("span.pill", null, `${r.wh} Wh`))
       );
     }));
@@ -211,21 +211,23 @@
 
     const wx = D.wx;
     const place = PK.devicePlace && PK.devicePlace();
-    $("#ae-wx-status").textContent = !place
+    const wxEl = $("#ae-wx-status");
+    wxEl.textContent = !place
       ? "Set a location"
       : wx
         ? `Last Open-Meteo sample (${wx.at}): ${wx.tempF}°F · Wind ${wx.windMph} mph · Precip ${wx.precipMm} mm.`
         : "Stored baseline corridor logs shared read-only to Bastion (prometheus.aether.alerts).";
+    wxEl.setAttribute("data-state", !place ? "noloc" : wx ? "sample" : "baseline");
 
     const pills = { clear: "pill", advisory: "pill warn", watch: "pill warn", closed: "pill hot" };
-    $("#ae-alerts").replaceChildren(...D.alerts.map((a) => h("div.kv", null,
+    $("#ae-alerts").replaceChildren(...D.alerts.map((a) => h("div.kv.ae-corr.st-" + (a.status || "clear"), null,
       h("span", null, h("b", null, a.corridor), h("br"), h("span.stat-s", null, `${a.note} · Wind ${a.windMph} mph · AQI ${a.aqi} · ${a.updated}`)),
       h("span." + (pills[a.status] || "pill"), null, a.status)
     )));
     $("#ae-alert-form").id.replaceChildren(...D.alerts.map((a) => h("option", { value: a.id }, a.corridor)));
 
     const outs = D.outages.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-    $("#ae-outages").replaceChildren(...(outs.length ? outs.map((o) => h("div.kv", null,
+    $("#ae-outages").replaceChildren(...(outs.length ? outs.map((o) => h("div.kv.ae-out", null,
       h("span", null, h("b", null, `${o.date} · ${o.cause} (${o.durationH}h)`), h("br"), h("span.stat-s", null, o.note)),
       h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("outages", o.id); paint(); emitStore(); } }, "Delete")
     )) : [h("p.empty", null, "No PSPS or grid outages logged yet.")]));
