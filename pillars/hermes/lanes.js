@@ -18,7 +18,7 @@
     { name: "Travel", q: 'subject:(itinerary OR "booking confirmation" OR "flight" OR "check-in") has:attachment', why: "Trips, with their documents attached." },
     { name: "Newsletters (bulk-clear candidates)", q: "label:promotions OR category:promotions older_than:90d", why: "Old bulk mail — review before any bulk action; Hermes never deletes." },
   ];
-  root.innerHTML = `<div class="glass" style="margin-top:14px"><h2>Find a bill — 60 known billers</h2>
+  root.innerHTML = `<div class="glass" style="margin-top:14px"><h2>Find a bill — ${BILLERS.length} known billers</h2>
     <form class="form"><label class="f wide">Biller<select id="hl-biller">${BILLERS.map((b, i) => `<option value="${i}">${esc(b.b)} (${esc(b.k.replace(/_/g, " "))})</option>`).join("")}</select></label></form>
     <div class="bill" style="margin-top:8px"><div class="bill-when">Exact Gmail search</div><div class="mono" id="hl-q"></div>
     <div class="row-actions"><a class="btn small" id="hl-open" target="_blank" rel="noopener">Open in Gmail</a>
