@@ -235,7 +235,7 @@ function paintIndex() {
     const card = (i) => { const k = live.findIndex((x) => x.id === i.id), c = k >= 0 ? css(nodes[k].color) : "#8b93a7";
       const d = new Date(String(i.created).slice(0, 10) + "T12:00:00"), dd = isNaN(d) ? "" : String(d.getDate()), my = isNaN(d) ? String(i.created || "") : d.toLocaleDateString("en-US", { month: "short", year: "2-digit" }).replace(" ", " ’");
       return h("div.ath-row", { style: `--c:${c}` }, h("button.ath-rowmain", { type: "button", disabled: i.archived, onclick: () => go("idea/" + encodeURIComponent(i.id), !!st.sel) },
-        h("span.ath-kept", null, h("i"), h("b", null, dd), h("em", null, my)),
+        h("span.ath-kept", null, h("i"), h("span.ath-kept-d", null, dd), h("em", null, my)),
         h("span", null, h("b", null, i.title), h("small", null, i.body), h("em", null, `${fmt(i.created)} · ${plural(i.chain.length, "refinement")}${i.strength ? " · strength " + i.strength : ""}`),
           i.chain.length ? h("span.ath-threadbar", null, h("i", { style: `width:${Math.max(3, Math.round((i.chain.length / maxChain) * 100))}%` })) : null)),
         i.archived ? h("button.btn.quiet.small", { type: "button", onclick: () => { i.archived = false; save("Restored to the sky."); rebuild(); } }, "Restore") : null); };
