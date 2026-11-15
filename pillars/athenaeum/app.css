@@ -72,6 +72,10 @@ span.ath-chip { cursor: default; }
 .ath-spark { position: fixed; right: 14px; bottom: calc(100px + var(--safe-b)); z-index: 6; width: 54px; height: 54px; display: grid; place-items: center; border: 0; border-radius: 50%; color: #1a1204; background: radial-gradient(circle at 35% 30%, #fff3cf, var(--gold) 55%, #c98a1c); box-shadow: 0 0 0 5px rgba(255, 197, 82, .14), 0 0 30px rgba(255, 197, 82, .5); cursor: pointer; transition: opacity .3s, translate .3s, scale .2s; }
 .ath-spark:active { scale: .92; }
 @media (max-width: 600px) {
+  .ath-era-year { font-size: 24px; }
+  .ath-era-head { gap: 10px; margin-top: 24px; }
+  .ath-rowmain > span.ath-kept { width: 40px; padding-right: 8px; }
+  .ath-folio { gap: 4px 12px; }
   body.ath.pk-v2 .ath-modes { left: 10px; right: 10px; }
   body.ath.pk-v2 .ath-modes .tab { padding: 0 10px; font-size: 12.5px; }
   .ath-time { left: 10px; right: 82px; column-gap: 8px; padding: 8px 12px 8px 8px; }
@@ -92,15 +96,35 @@ span.ath-chip { cursor: default; }
 .ath-page > * { max-width: 720px; margin-left: auto; margin-right: auto; }
 .ath-pagehead { display: grid; gap: 10px; margin-bottom: 12px; }
 .ath-pagehead h2 { margin: 4px 0 0; font: 400 28px/1.1 var(--serif); color: #fff; }
+/* the folio: the archive's register line, counted from the records themselves */
+.ath-folio { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin: 2px 0 0; padding: 9px 2px 10px; border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); font: 500 10.5px/1.5 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--dim); font-variant-numeric: tabular-nums; }
+.ath-folio b { font: 400 16px/1 var(--serif); letter-spacing: 0; text-transform: none; color: #ffe2a3; }
+.ath-pagehead input[type="search"]::placeholder { letter-spacing: .04em; }
+.ath-sorts .ath-chip { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+/* era heads in the register: the year, its true volume, and the volume drawn to scale */
+.ath-era-head { display: flex; align-items: baseline; gap: 14px; margin: 30px 2px 2px; }
+.ath-list > .ath-era-head:first-child { margin-top: 8px; }
+.ath-era-year { font: 400 30px/1 var(--serif); color: #fff; }
+.ath-era-count { flex: none; font: 500 10.5px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--dim); font-variant-numeric: tabular-nums; }
+.ath-era-bar { flex: 1; align-self: center; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, .07); overflow: hidden; }
+.ath-era-bar i { display: block; height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--violet)); opacity: .75; }
 .ath-page input[type="search"], .ath-findbar input, .ath-form input, .ath-form textarea, .ath-form select, .ath-add textarea, .ath-add select { width: 100%; min-height: 46px; padding: 11px 14px; border: 1px solid var(--hair); border-radius: 14px; background: rgba(6, 8, 18, .7); color: #f2f5fc; font: 400 16px/1.4 var(--sans); outline: none; transition: border-color .2s, box-shadow .2s; }
 .ath-page input:focus, .ath-findbar input:focus, .ath-form input:focus, .ath-form textarea:focus, .ath-form select:focus, .ath-add textarea:focus, .ath-add select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(255, 197, 82, .16); }
 .ath-sorts { display: flex; flex-wrap: wrap; gap: 6px; }
 .ath-list { display: grid; gap: 8px; }
-.ath-row { display: flex; align-items: center; gap: 10px; padding: 4px 12px 4px 4px; border: 1px solid var(--hair); border-radius: 18px; background: rgba(10, 12, 24, .7); }
+.ath-row { display: flex; align-items: center; gap: 10px; padding: 4px 12px 4px 4px; border: 1px solid var(--hair); border-radius: 18px; background: rgba(10, 12, 24, .7); transition: border-color .2s, background .2s; }
+.ath-row:hover { border-color: color-mix(in srgb, var(--c) 55%, transparent); background: rgba(14, 16, 32, .78); }
 .ath-rowmain { flex: 1; min-width: 0; display: flex; gap: 12px; align-items: flex-start; padding: 10px 6px 10px 10px; border: 0; background: none; color: inherit; text-align: left; font-family: var(--sans); cursor: pointer; }
 .ath-rowmain[disabled] { opacity: .6; cursor: default; }
-.ath-rowmain > i { flex: none; width: 9px; height: 9px; margin-top: 7px; border-radius: 50%; background: var(--c); box-shadow: 0 0 12px var(--c); }
+/* the accession stamp: the star, over the day and month the idea was kept */
+.ath-rowmain > span.ath-kept { flex: none; width: 48px; display: grid; justify-items: center; gap: 3px; padding: 3px 10px 3px 0; border-right: 1px solid var(--hair); }
+.ath-kept i { width: 9px; height: 9px; margin-bottom: 2px; border-radius: 50%; background: var(--c); box-shadow: 0 0 12px var(--c); }
+.ath-rowmain .ath-kept b { font: 400 18px/1 var(--serif); color: #fff; font-variant-numeric: tabular-nums; }
+.ath-rowmain .ath-kept em { font: 600 9px/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #8f9bb3; white-space: nowrap; }
 .ath-rowmain > span { min-width: 0; display: grid; gap: 3px; }
+/* the thread, drawn to scale against the deepest chain in the archive */
+.ath-threadbar { display: block; height: 3px; margin-top: 6px; border-radius: 2px; background: rgba(255, 255, 255, .07); overflow: hidden; }
+.ath-threadbar i { display: block; height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--c), var(--violet)); opacity: .8; }
 .ath-rowmain b { font: 400 17.5px/1.22 var(--serif); color: #fff; }
 .ath-rowmain small { font-size: 13.5px; line-height: 1.4; color: var(--dim); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .ath-rowmain em { font: normal 500 11px/1.3 var(--sans); letter-spacing: .06em; color: #8f9bb3; }
@@ -132,7 +156,9 @@ body.ath .empty { color: var(--dim); text-align: center; padding: 22px 10px; }
 .ath-codex h3, .ath-found h3 { margin: 0 0 10px; font: 600 10.5px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--dim); }
 .ath-codex section > p, .ath-codex small { font: 400 13.5px/1.5 var(--sans); color: var(--dim); margin: 0 0 6px; } .ath-codex small { display: block; margin-top: 8px; font-size: 12.5px; }
 .ath-codex a { color: #ffe2a3; }
+.ath-thread { margin: -4px 0 14px; font: 500 11px/1.5 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: #e8c98a; font-variant-numeric: tabular-nums; }
 .ath-spine { list-style: none; margin: 0; padding: 0 0 0 24px; position: relative; }
+.ath-spine time { font-variant-numeric: tabular-nums; }
 .ath-spine::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 26px; width: 2px; border-radius: 1px; background: linear-gradient(180deg, var(--c), var(--violet) 70%, rgba(185, 162, 255, .15)); box-shadow: 0 0 10px color-mix(in srgb, var(--c) 60%, transparent); }
 .ath-spine li { position: relative; padding: 0 0 16px; }
 .ath-spine li::before { content: ""; position: absolute; left: -22px; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: #0a0c18; border: 2px solid var(--violet); }

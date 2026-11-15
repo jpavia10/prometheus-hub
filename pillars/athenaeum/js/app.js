@@ -133,6 +133,9 @@ function codex(k) {
   const rel = edges.filter((e) => e.a === k || e.b === k).slice(0, 5), men = mentions(i, PILLARS), others = live.filter((o) => o.id !== i.id && !(i.links || []).includes(o.id));
   const ta = h("textarea", { rows: "2", maxlength: "2000", placeholder: "What did it become?", "aria-label": "A refinement" }), pick = h("select", { "aria-label": "Another idea" }, ...others.map((o) => h("option", { value: o.id }, short(o.title))));
   const add = () => { const t = ta.value.trim(); if (!t) return ta.focus(); i.chain.push({ date: TODAY, text: t, by: "you" }); i.lastResurfaced = TODAY; save(); emit("idea.refined", i.id, i.title); rebuild(); const k2 = live.findIndex((x) => x.id === i.id); sky.ignite(k2); blip(); showIdea(k2, true); toast("Appended. Nothing above it changed."); };
+  const chainDates = (i.chain || []).map((c) => c.date).filter(Boolean).sort(), lastD = chainDates.length ? chainDates[chainDates.length - 1] : i.created,
+    threadDays = Math.max(0, Math.round((new Date(String(lastD).slice(0, 10) + "T12:00:00") - new Date(String(i.created).slice(0, 10) + "T12:00:00")) / 864e5));
+  const thread = h("p.ath-thread", null, i.chain.length ? `Thread · ${fmt(i.created)} → ${fmt(lastD)} · ${plural(i.chain.length, "refinement")} · ${threadDays <= 1 ? "a single day" : plural(threadDays, "day")}` : `Kept ${fmt(i.created)} · the thread starts here`);
   return h("article.ath-codex", { style: `--c:${css(PAL[g.index % PAL.length])}` },
     h("p.ath-eyebrow", null, h("span.ath-chip.c", null, h("i"), g.name), h("span", null, "Sparked " + fmt(i.created))),
     h("h2", { tabindex: "-1" }, i.title),
@@ -140,7 +143,7 @@ function codex(k) {
       h("span.ath-pv." + pv.kind, null, pv.kind === "typed" ? "Typed by you" : "Imported"), h("span.ath-pv", null, plural(i.chain.length, "refinement"))),
     h("p.ath-text", null, i.body),
     (i.tags || []).length ? h("div.ath-tags", null, ...i.tags.map((t) => h("button.ath-tag", { type: "button", onclick: () => { closeRecord(); openFind("\"" + t + "\""); } }, nice(t)))) : null,
-    h("section", null, h("h3", null, "Lineage"),
+    h("section", null, h("h3", null, "Lineage"), thread,
       h("ol.ath-spine", null, h("li.spark", null, h("time", null, fmt(i.created)), h("p", null, "The spark, as it was first kept.")),
         ...i.chain.map((c) => h("li" + (refinementBy(i, c) === "you" ? ".you" : ""), null, h("time", null, fmt(c.date), h("em", null, refinementBy(i, c) === "you" ? "you" : "from the import")), h("p", null, c.text))),
         h("li.next", null, h("div.ath-add", null, ta, h("button.btn.small", { type: "button", onclick: add }, "Append")), h("small", null, "Added with today's date. Nothing above is ever rewritten.")))),
@@ -220,13 +223,31 @@ function capture() {
 function paintIndex() {
   const q = h("input", { id: "a-q", type: "search", value: st.q, placeholder: "Search ideas and refinements", "aria-label": "Search ideas and refinements", oninput: (e) => { st.q = e.target.value; list.replaceChildren(...rows()); applyDim(); } });
   const sorts = [["new", "Newest"], ["strong", "Strongest"], ["deep", "Most refined"], ["az", "A to Z"]], by = { new: (a, b) => b.created.localeCompare(a.created), strong: (a, b) => (b.strength || 0) - (a.strength || 0), deep: (a, b) => b.chain.length - a.chain.length, az: (a, b) => a.title.localeCompare(b.title) };
-  const rows = () => { const src = VAULT.search(st.archived ? all.filter((i) => i.archived) : live, st.q).slice().sort(by[st.sort]);
-    return src.length ? src.map((i) => { const k = live.findIndex((x) => x.id === i.id), c = k >= 0 ? css(nodes[k].color) : "#8b93a7";
-      return h("div.ath-row", { style: `--c:${c}` }, h("button.ath-rowmain", { type: "button", disabled: i.archived, onclick: () => go("idea/" + encodeURIComponent(i.id), !!st.sel) }, h("i"), h("span", null, h("b", null, i.title), h("small", null, i.body), h("em", null, `${fmt(i.created)} · ${plural(i.chain.length, "refinement")}${i.strength ? " · strength " + i.strength : ""}`))),
-        i.archived ? h("button.btn.quiet.small", { type: "button", onclick: () => { i.archived = false; save("Restored to the sky."); rebuild(); } }, "Restore") : null); })
-      : [h("p.empty", null, st.archived ? "Nothing is archived." : st.q ? "Nothing matches." : "No ideas yet. The + button keeps the first one.")]; };
+  /* the register: era volumes and the archive's span, counted from the records themselves */
+  const srcSet = st.archived ? all.filter((i) => i.archived) : live, eraOf = (d) => String(d || "").slice(0, 4), eraStats = new Map();
+  for (const i of srcSet) { const y = eraOf(i.created); if (!y) continue; const e = eraStats.get(y) || { ideas: 0, refs: 0 }; e.ideas++; e.refs += (i.chain || []).length; eraStats.set(y, e); }
+  const maxEra = Math.max(1, ...[...eraStats.values()].map((e) => e.ideas)), maxChain = Math.max(1, ...srcSet.map((i) => (i.chain || []).length));
+  let first = null, last = null;
+  for (const i of srcSet) for (const d of [i.created, ...(i.chain || []).map((c) => c.date)]) { if (!d) continue; if (!first || d < first) first = d; if (!last || d > last) last = d; }
+  const folio = first ? h("p.ath-folio", null, h("b", null, plural(srcSet.length, "idea")), h("span", null, plural(srcSet.reduce((s, i) => s + (i.chain || []).length, 0), "refinement")), h("span", null, `kept ${fmt(first)} — ${fmt(last)}`), h("span", null, plural(eraStats.size, "era"))) : null;
+  const rows = () => { const src = VAULT.search(srcSet, st.q).slice().sort(by[st.sort]);
+    if (!src.length) return [h("p.empty", null, st.archived ? "Nothing is archived." : st.q ? "Nothing matches." : "No ideas yet. The + button keeps the first one.")];
+    const card = (i) => { const k = live.findIndex((x) => x.id === i.id), c = k >= 0 ? css(nodes[k].color) : "#8b93a7";
+      const d = new Date(String(i.created).slice(0, 10) + "T12:00:00"), dd = isNaN(d) ? "" : String(d.getDate()), my = isNaN(d) ? String(i.created || "") : d.toLocaleDateString("en-US", { month: "short", year: "2-digit" }).replace(" ", " ’");
+      return h("div.ath-row", { style: `--c:${c}` }, h("button.ath-rowmain", { type: "button", disabled: i.archived, onclick: () => go("idea/" + encodeURIComponent(i.id), !!st.sel) },
+        h("span.ath-kept", null, h("i"), h("b", null, dd), h("em", null, my)),
+        h("span", null, h("b", null, i.title), h("small", null, i.body), h("em", null, `${fmt(i.created)} · ${plural(i.chain.length, "refinement")}${i.strength ? " · strength " + i.strength : ""}`),
+          i.chain.length ? h("span.ath-threadbar", null, h("i", { style: `width:${Math.max(3, Math.round((i.chain.length / maxChain) * 100))}%` })) : null)),
+        i.archived ? h("button.btn.quiet.small", { type: "button", onclick: () => { i.archived = false; save("Restored to the sky."); rebuild(); } }, "Restore") : null); };
+    if (st.sort !== "new") return src.map(card);
+    const out = []; let year = null;
+    for (const i of src) { const y = eraOf(i.created);
+      if (y !== year) { year = y; const e = eraStats.get(y) || { ideas: 0, refs: 0 };
+        out.push(h("div.ath-era-head", null, h("span.ath-era-year", null, y || "Undated"), h("span.ath-era-count", null, `${plural(e.ideas, "idea")} · ${plural(e.refs, "refinement")}`), h("span.ath-era-bar", null, h("i", { style: `width:${Math.round((e.ideas / maxEra) * 100)}%` })))); }
+      out.push(card(i)); }
+    return out; };
   const list = h("div.ath-list", null, ...rows()), arch = all.length - live.length;
-  fill(pageIndex, h("div.ath-pagehead", null, h("h2", null, st.archived ? "Archived" : "Every idea"), q,
+  fill(pageIndex, h("div.ath-pagehead", null, h("h2", null, st.archived ? "Archived" : "Every idea"), folio, q,
     h("div.ath-sorts", { role: "group", "aria-label": "Order" }, ...sorts.map(([id, n]) => h("button.ath-chip" + (st.sort === id ? ".on" : ""), { type: "button", "aria-pressed": String(st.sort === id), onclick: () => { st.sort = id; paintIndex(); } }, n)),
       arch || st.archived ? h("button.ath-chip" + (st.archived ? ".on" : ""), { type: "button", "aria-pressed": String(st.archived), onclick: () => { st.archived = !st.archived; paintIndex(); } }, `Archived ${arch}`) : null)), list);
 }
