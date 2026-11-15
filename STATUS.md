@@ -8,14 +8,14 @@ The block below is written by the proofs-live workflow from the browser run agai
 
 <!-- proofs-live:begin -->
 
-**25 passed, 1 failed** against https://jpavia10.github.io/prometheus-hub. A FAIL line is a failure. This file does not call a failed run clean.
+**26 passed, 0 failed** against https://jpavia10.github.io/prometheus-hub. Every proof in this run passed.
 
-Quoted from https://github.com/jpavia10/prometheus-hub/actions/runs/43761505445.
+Quoted from https://github.com/jpavia10/prometheus-hub/actions/runs/43762028851.
 
 PASS CORE-1  Every pillar in pillars.json is on the core (27 live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data  ::  {"expected": 27, "drawn": 27, "missing": [], "extra": [], "demo": false, "events": 0, "plan": false, "wide": 390, "ring": true}
 PASS CORE-2  Every pillar page in this repository answers and wears the shared theme  ::  25 pages checked, 2 on their own sites
 PASS CORE-3  A pillar's own deadline (the shared bus) reaches the hub: in the feed and on its cell  ::  {"rows": ["Proof: oil service / garage"], "badge": "2d", "runway": true}
-PASS CORE-4  Tapping a cell warps into that pillar  ::  Apollo Temple (4.8 s on this machine)
+PASS CORE-4  Tapping a cell warps into that pillar  ::  Apollo Temple (5.5 s on this machine)
 PASS PILLAR-1  Every pillar's default shell: crest, sections from its own panels, a dock back to the core  ::  Piano: 6 sections, showing ['Harmonic Studio — Sequ'] then ['Ear & Interval Trainer']; page 2283 px tall at phone size (was 6,672); dock: core + 2 neighbours
 PASS PILLAR-2  Every pillar page runs without a script error, in every section  ::  25 pages opened, 111 sections tapped, no errors
 PASS STAGE-1  Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors  ::  19 of 19 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records, forge, foundry, observatory, kin, hearth, sylade
@@ -30,14 +30,14 @@ PASS ATH-5  The chronicle: 40 history entries along one arm of time; each opens 
 PASS ATH-6  Backup: export, lose everything, import. The preview says what will change before anything does, and every idea comes back exactly as it was  ::  wiped to 0; preview: 71 new ideas would be added / 40 new shelf entries; nothing applied until confirmed: True; restored ideas identical to the byte: True; shelf 40 of 40
 PASS ATH-7  Nothing the old page did is gone: search inside refinements, resurfacing, archive (now with undo), the shelf  ::  search 'first reader' (words only in a refinement) finds ['Proof: second readers for every audit']; actions ['Seen · resurface later', 'Archive']; archive 70 then undo 71; shelved ['Proof: a book']
 PASS CORE-5  The hub reaches into a pillar through its manifest: finds an idea by its title or its text, hands typed words to the pillar without writing its records, and shows what last happened there  ::  'blind audits' -> Example: Independent blind audits for ch (pillars/athenaeum/#idea/imp20261110-8); text match -> Athenaeum · idea · …re area worth investigating anti-corrosion cooling; ticker has the event: True; 'Capture an idea: test the handoff from t' opens Athenaeum with the title filled: 'test the handoff from the hub', ideas still 70
-PASS DECK-1  Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store  ::  {"ring": true, "rows": 2, "days": 7, "payoff": "28.6%", "caps": ["picture", "time", "money", "system"], "wide": 390, "build": "d20"}
+PASS DECK-1  Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store  ::  {"ring": true, "rows": 2, "days": 7, "payoff": "26.5%", "caps": ["picture", "time", "money", "system"], "wide": 390, "build": "d20"}
 PASS TIME-1  iCalendar: 40-event research file imports, exports and re-imports identical  ::  40 events in, 40 back, 0 differ, 0 parse notes
 PASS TIME-2  Day view: holiday + bill + school deadline collide and the day says so  ::  2026-11-26: “Collision day2 hard deadlines on one day” · holiday ['Thanksgiving Day'] · bill ['Water'] · school ['Conference sign-up closes']
 PASS TIME-3  Quick add in plain words: “smog check dec 5”  ::  preview “Add: smog checkSaturday, December 5”, stored on 2026-12-05: 1
 PASS MONEY-1  Payoff simulator matches the 12 worked cases to the cent (2 required)  ::  12 of 12 cases match; 4,134 figures compared
 PASS MONEY-2  Bills and the loan payment show as dated rows next to events (one feed)  ::  {"bills": 12, "time": 23}
 PASS DATA-1  Versioned export and import: the deck file restores Time and Money exactly  ::  {"format": 1, "kind": "deck", "slices": ["profile", "time", "money"]}
-FAIL DECK-2  No script errors during the run  ::  Failed to load resource: the server responded with a status of 429 (Too Many Requests)
+PASS DECK-2  No script errors during the run  ::  none
 
 <!-- proofs-live:end -->
 
