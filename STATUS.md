@@ -8,14 +8,14 @@ The block below is written by the proofs-live workflow from the browser run agai
 
 <!-- proofs-live:begin -->
 
-**25 passed, 1 failed** against https://jpavia10.github.io/prometheus-hub. A FAIL line is a failure. This file does not call a failed run clean.
+**26 passed, 0 failed** against https://jpavia10.github.io/prometheus-hub. Every proof in this run passed.
 
-Quoted from https://github.com/jpavia10/prometheus-hub/actions/runs/43672005357.
+Quoted from https://github.com/jpavia10/prometheus-hub/actions/runs/43751479915.
 
 PASS CORE-1  Every pillar in pillars.json is on the core (27 live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data  ::  {"expected": 27, "drawn": 27, "missing": [], "extra": [], "demo": false, "events": 0, "plan": false, "wide": 390, "ring": true}
 PASS CORE-2  Every pillar page in this repository answers and wears the shared theme  ::  25 pages checked, 2 on their own sites
 PASS CORE-3  A pillar's own deadline (the shared bus) reaches the hub: in the feed and on its cell  ::  {"rows": ["Proof: oil service / garage"], "badge": "2d", "runway": true}
-PASS CORE-4  Tapping a cell warps into that pillar  ::  Apollo Temple (3.6 s on this machine)
+PASS CORE-4  Tapping a cell warps into that pillar  ::  Apollo Temple (3.7 s on this machine)
 PASS PILLAR-1  Every pillar's default shell: crest, sections from its own panels, a dock back to the core  ::  Piano: 6 sections, showing ['Harmonic Studio — Sequ'] then ['Ear & Interval Trainer']; page 2283 px tall at phone size (was 6,672); dock: core + 2 neighbours
 PASS PILLAR-2  Every pillar page runs without a script error, in every section  ::  25 pages opened, 111 sections tapped, no errors
 PASS STAGE-1  Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors  ::  19 of 19 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records, forge, foundry, observatory, kin, hearth, sylade
@@ -28,7 +28,7 @@ PASS ATH-3  Capture and refinement: a new idea becomes a star marked as typed by
 PASS ATH-4  The time slider shows the sky as it was: only the ideas that existed on that day are lit  ::  at Jul 19, 2024 · 4 ideas: 4 stars lit, 4 ideas existed by 2024-07-19; today 71
 PASS ATH-5  The chronicle: 40 history entries along one arm of time; each opens as cause, event, consequence with the source's own words and a link  ::  Fall of Constantinople: ['Cause', 'Event', 'Consequence'], 3 quotes, source https://en.wikipedia.org/wiki/Fall_of_Constantin; 40 entries on the rail; marked as not the owner's writing: True
 PASS ATH-6  Backup: export, lose everything, import. The preview says what will change before anything does, and every idea comes back exactly as it was  ::  wiped to 0; preview: 71 new ideas would be added / 40 new shelf entries; nothing applied until confirmed: True; restored ideas identical to the byte: True; shelf 40 of 40
-FAIL ATH-7  Nothing the old page did is gone: search inside refinements, resurfacing, archive (now with undo), the shelf  ::  search 'first reader' (words only in a refinement) finds ['13', 'Proof: second readers for every audit']; actions ['Seen · resurface later', 'Archive']; archive 70 then undo 71; shelved ['Proof: a book']
+PASS ATH-7  Nothing the old page did is gone: search inside refinements, resurfacing, archive (now with undo), the shelf  ::  search 'first reader' (words only in a refinement) finds ['Proof: second readers for every audit']; actions ['Seen · resurface later', 'Archive']; archive 70 then undo 71; shelved ['Proof: a book']
 PASS CORE-5  The hub reaches into a pillar through its manifest: finds an idea by its title or its text, hands typed words to the pillar without writing its records, and shows what last happened there  ::  'blind audits' -> Example: Independent blind audits for ch (pillars/athenaeum/#idea/imp20261110-8); text match -> Athenaeum · idea · …re area worth investigating anti-corrosion cooling; ticker has the event: True; 'Capture an idea: test the handoff from t' opens Athenaeum with the title filled: 'test the handoff from the hub', ideas still 70
 PASS DECK-1  Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store  ::  {"ring": true, "rows": 2, "days": 7, "payoff": "28.6%", "caps": ["picture", "time", "money", "system"], "wide": 390, "build": "d20"}
 PASS TIME-1  iCalendar: 40-event research file imports, exports and re-imports identical  ::  40 events in, 40 back, 0 differ, 0 parse notes
