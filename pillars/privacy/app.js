@@ -46,7 +46,7 @@
 
   app.innerHTML = `
     <section class="grid">
-      <div class="glass lit span-6"><h2>California DROP (45-Day Statutory Clock)</h2><div id="v-drop"></div>
+      <div class="glass lit span-6 docket"><p class="dock-eyebrow">Docket · State of California — Delete Request</p><h2>California DROP (45-Day Statutory Clock)</h2><div id="v-drop"></div>
         <form class="form" id="v-drop-form">
           <label class="f">Status<select name="status"><option>not submitted</option><option>submitted</option><option>processing</option><option>complete</option></select></label>
           <label class="f">Submission date<input name="submitted" type="date"></label>
@@ -74,7 +74,7 @@
         <div id="v-accts" style="margin-top:10px"></div>
       </div>
 
-      <div class="glass span-12"><h2>Data Broker Ledger (40+ Brokers · 6-Mo Recheck)</h2><div id="v-brokers"></div>
+      <div class="glass span-12"><h2>Data Broker Ledger · 6-Month Recheck Cycle</h2><div id="v-plate"></div><div id="v-brokers"></div>
         <form class="form" id="v-broker-form" style="margin-top:10px"><label class="f wide">Add broker / sender<input name="name" required maxlength="80"></label><button class="btn" type="submit">Add</button></form>
       </div>
     </section>`;
@@ -93,13 +93,14 @@
     if (d.submitted && window.PB) {
       const target45 = PB.addDays(d.submitted, 45);
       const rem = daysBetween(today, target45);
-      clockStr = `<div class="kv"><span>45-Day Statutory Window</span><b>${rem >= 0 ? `${rem} days left (${target45})` : `Window passed (${target45})`}</b></div>`;
+      clockStr = `<div class="kv drow"><span>45-Day Statutory Window</span><b>${rem >= 0 ? `${rem} days left (<span class="mono">${target45}</span>)` : `Window passed (<span class="mono">${target45}</span>)`}</b></div>`;
       PB.deadlines.publish({ title: "CA DROP 45-day check", date: target45, source: "privacy", kind: "drop", ref: "ca-drop-45" });
     }
-    $("#v-drop").innerHTML = `<div class="kv"><span>Status</span><b>${esc(d.status)}</b></div>`
-      + (d.submitted ? `<div class="kv"><span>Submitted</span><b>${d.submitted}</b></div>` : "")
+    const stampCls = d.status === "complete" ? "stamp ok" : (d.status === "submitted" || d.status === "processing") ? "stamp pend" : "stamp open";
+    $("#v-drop").innerHTML = `<div class="kv drow"><span>Status</span><span class="${stampCls}">${esc(d.status)}</span></div>`
+      + (d.submitted ? `<div class="kv drow"><span>Submitted</span><b class="mono">${d.submitted}</b></div>` : "")
       + clockStr
-      + (d.checked ? `<div class="kv"><span>Last checked</span><b>${d.checked}</b></div>` : "");
+      + (d.checked ? `<div class="kv drow"><span>Last checked</span><b class="mono">${d.checked}</b></div>` : "");
 
     const f = $("#v-drop-form");
     f.status.value = d.status; f.submitted.value = d.submitted || ""; f.checked.value = d.checked || "";
@@ -144,17 +145,28 @@
     $("#v-accts").innerHTML = accts.map((a) => {
       const age = a.rotated ? daysBetween(a.rotated, today) : null;
       const stale = a.status === "active" && age != null && age > 365;
-      return `<div class="kv"><span><b>${esc(a.service)}</b> · ${esc(a.email || "")}${stale ? ' <span class="pill over">Rotate (&gt;365d)</span>' : ""}${a.tfa === "off" ? ' <span class="pill soon">No 2FA</span>' : ""}</span><b>2FA ${esc(a.tfa)} · ${esc(a.status)}</b></div>`;
+      return `<div class="kv arow"><span><b>${esc(a.service)}</b> · ${esc(a.email || "")}${stale ? ' <span class="pill over">Rotate (&gt;365d)</span>' : ""}${a.tfa === "off" ? ' <span class="pill soon">No 2FA</span>' : ""}</span><b>2FA ${esc(a.tfa)} · ${esc(a.status)}</b></div>`;
     }).join("") || `<p class="empty">No accounts inventoried yet.</p>`;
 
-    // Brokers
+    // Brokers — the exposure plate: counts and scale drawn from the ledger itself, never hard-coded.
     const brokers = S.get("brokers", []);
+    const STCLS = { "not started": "st-open", "opt-out sent": "st-sent", "confirmed removed": "st-done", "recheck due": "st-recheck" };
+    const counts = {}; for (const s of STATES) counts[s] = brokers.filter((b) => b.state === s).length;
+    const routed = brokers.filter((b) => window.BROKER_OPTOUTS && window.BROKER_OPTOUTS[b.name]).length;
+    const seg = (s) => counts[s] ? `<span class="seg ${STCLS[s]}" style="flex-grow:${counts[s]}" title="${esc(s)}: ${counts[s]}"></span>` : "";
+    const leg = (s) => `<span class="leg-item"><span class="leg-dot ${STCLS[s]}"></span>${esc(s)} <b class="mono">${counts[s]}</b></span>`;
+    $("#v-plate").innerHTML = `<div class="plate">
+      <div class="plate-head"><span class="plate-big">${brokers.length}</span><span class="plate-k">brokers tracked<br>in the ledger</span></div>
+      <div class="plate-bar">${["not started", "opt-out sent", "recheck due", "confirmed removed"].map(seg).join("")}</div>
+      <div class="plate-legend">${["confirmed removed", "opt-out sent", "recheck due", "not started"].map(leg).join("")}</div>
+      <p class="plate-sub">Opt-out routes published for <b>${routed}</b> of ${brokers.length} · every confirmed removal is rechecked on a 6-month cycle · the bar reads left to right: still exposed, in motion, due a recheck, then dark.</p>
+    </div>`;
     $("#v-brokers").innerHTML = "";
     for (const b of brokers) {
-      $("#v-brokers").append(h("div.kv", null,
-        h("span", null, `${b.name} `, h("span.pill", null, b.state),
-          (window.BROKER_OPTOUTS && window.BROKER_OPTOUTS[b.name]) ? h("a", { href: window.BROKER_OPTOUTS[b.name], target: "_blank", rel: "noopener", class: "stat-s" }, " opt out ↗") : null,
-          b.recheck ? h("span.stat-s", null, ` recheck ${b.recheck}`) : null),
+      $("#v-brokers").append(h("div.kv.brow " + (STCLS[b.state] || "st-open"), null,
+        h("span", null, h("b.bname", null, b.name), " ", h("span", { class: "pill " + (STCLS[b.state] || "st-open") }, b.state),
+          (window.BROKER_OPTOUTS && window.BROKER_OPTOUTS[b.name]) ? h("a", { href: window.BROKER_OPTOUTS[b.name], target: "_blank", rel: "noopener", class: "stat-s route" }, " opt out ↗") : null,
+          b.recheck ? h("span.stat-s.mono", null, ` recheck ${b.recheck}`) : null),
         h("button.btn.quiet.small", {
           type: "button",
           onclick: () => {

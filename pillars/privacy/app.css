@@ -1,2 +1,62 @@
+/* Privacy design sheet — the exposure ledger.
+   Ruled rows, tabular numerals, small-caps dockets. State colours echo the pillar's
+   own stage palette (stage.js): exposed rose, in-motion amber, recheck orange, removed mint. */
 .kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}
 .pill{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(159,212,230,.4);color:#9fd4e6}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;font-size:.92em}
+
+/* ---------- the DROP docket ---------- */
+.dock-eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 2px}
+.drow{padding:7px 0}
+.drow>span:first-child{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.drow b{font-variant-numeric:tabular-nums}
+.stamp{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:4px 12px 5px;border:1.5px solid currentColor;border-radius:4px;transform:rotate(-1.4deg)}
+.stamp.open{color:#ff7a8c;background:rgba(255,122,140,.07)}
+.stamp.pend{color:#ffd27a;background:rgba(255,210,122,.07)}
+.stamp.ok{color:#7dffc0;background:rgba(125,255,192,.07)}
+
+/* ---------- the exposure plate ---------- */
+.plate{border:1px solid var(--line);border-radius:var(--radius-s);padding:14px 16px 12px;margin:4px 0 14px;
+  background:linear-gradient(180deg,rgba(179,184,240,.05),transparent 70%)}
+.plate-head{display:flex;align-items:center;gap:14px}
+.plate-big{font-size:52px;line-height:1;font-weight:700;letter-spacing:-.01em;color:var(--pearl);font-variant-numeric:tabular-nums}
+.plate-k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+.plate-bar{display:flex;gap:2px;height:12px;margin:14px 0 10px;border-radius:3px;overflow:hidden;background:rgba(159,180,204,.08)}
+.plate-bar .seg{display:block;min-width:0}
+.seg.st-open,.leg-dot.st-open{background:#ff7a8c}
+.seg.st-sent,.leg-dot.st-sent{background:#ffd27a}
+.seg.st-recheck,.leg-dot.st-recheck{background:#ff9d5c}
+.seg.st-done,.leg-dot.st-done{background:#7dffc0}
+.plate-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.leg-item{display:inline-flex;align-items:center;gap:7px}
+.leg-item b{color:var(--ink);font-size:12.5px}
+.leg-dot{width:8px;height:8px;border-radius:2px;display:inline-block}
+.plate-sub{margin:10px 0 0;font-size:12.5px;color:var(--muted);line-height:1.55}
+.plate-sub b{color:var(--ink)}
+
+/* ---------- broker ledger rows: state rails ---------- */
+.brow{padding:8px 0 8px 14px;box-shadow:inset 3px 0 0 rgba(159,180,204,.25)}
+.brow.st-open{box-shadow:inset 3px 0 0 #ff7a8c}
+.brow.st-sent{box-shadow:inset 3px 0 0 #ffd27a}
+.brow.st-recheck{box-shadow:inset 3px 0 0 #ff9d5c}
+.brow.st-done{box-shadow:inset 3px 0 0 #7dffc0}
+.bname{color:var(--ink-strong);font-weight:600}
+.pill.st-open{border-color:rgba(255,122,140,.45);color:#ff7a8c}
+.pill.st-sent{border-color:rgba(255,210,122,.45);color:#ffd27a}
+.pill.st-recheck{border-color:rgba(255,157,92,.5);color:#ff9d5c}
+.pill.st-done{border-color:rgba(125,255,192,.45);color:#7dffc0}
+.brow .route{color:var(--accent-2);text-decoration:none;white-space:nowrap}
+.brow .route:hover{text-decoration:underline}
+
+/* ---------- accounts & checklist: same ledger register ---------- */
+.arow b{font-variant-numeric:tabular-nums}
+.check{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(159,180,204,.08);font-size:14px;cursor:pointer}
+.check input{margin-top:3px;accent-color:var(--accent)}
+
+@media (max-width:480px){
+  .plate-big{font-size:42px}
+  .plate{padding:12px 12px 10px}
+  .brow{padding-left:11px}
+  .stamp{font-size:11.5px;padding:3px 9px 4px}
+}
