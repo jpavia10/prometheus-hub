@@ -59,6 +59,7 @@
       </div>
       <div class="glass span-12">
         <h2>Active Civic &amp; Statutory Watchlist</h2>
+        <div id="po-plate" class="po-plate"></div>
         <div id="po-watches" style="margin-top:8px"></div>
       </div>
     </section>
@@ -72,6 +73,7 @@
           <label class="f wide">Note<input name="text" required maxlength="240" placeholder="Key language, effective date, or fiscal summary"></label>
           <button class="btn" type="submit">Keep Note</button>
         </form>
+        <p id="po-noteplate" class="po-noteplate"></p>
         <div id="po-notes" style="margin-top:12px"></div>
       </div>
     </section>
@@ -121,7 +123,22 @@
       g.fillStyle = "#ff6b6b"; g.fillText("Action Needed", 205, 14);
     }
     const watches = [...D.watches].sort((a, b) => (a.status === "action-needed" ? 0 : 1) - (b.status === "action-needed" ? 0 : 1));
-    $("#po-watches").replaceChildren(...(watches.length ? watches.map((w) => h("div.kv", null,
+    const actN = D.watches.filter((w) => w.status === "action-needed").length;
+    const resN = D.watches.filter((w) => w.status === "resolved").length;
+    const today0 = new Date(); today0.setHours(0, 0, 0, 0);
+    const dated = D.watches.filter((w) => w.due && w.status !== "resolved")
+      .map((w) => ({ w, t: new Date(w.due + "T00:00:00") })).filter((x) => !isNaN(x.t))
+      .sort((a, b) => a.t - b.t);
+    const nx = dated[0] || null;
+    const nxDays = nx ? Math.round((nx.t - today0) / 86400000) : null;
+    const nxDist = nx ? (nxDays === 0 ? "TODAY" : nxDays > 0 ? `IN ${nxDays}D` : `${-nxDays}D PAST`) : "NONE ON FILE";
+    $("#po-plate").replaceChildren(
+      h("div.po-cell", null, h("span.po-num", null, String(D.watches.length)), h("span.po-lab", null, "On the docket")),
+      h("div.po-cell" + (actN ? ".bad" : ""), null, h("span.po-num", null, String(actN)), h("span.po-lab", null, "Action needed")),
+      h("div.po-cell", null, h("span.po-num", null, String(resN)), h("span.po-lab", null, "Resolved")),
+      h("div.po-cell", null, h("span.po-num.date", null, nx ? nx.w.due : "—"), h("span.po-lab", null, `Next date · ${nxDist}`))
+    );
+    $("#po-watches").replaceChildren(...(watches.length ? watches.map((w) => h("div.kv.po-wrow.st-" + (w.status || "watching"), null,
       h("span", null, h("b", null, w.title), " ", h("span." + (PILL[w.status] || "pill"), null, w.status), h("br"),
         h("span.stat-s", null, `${w.jurisdiction}${w.due ? " · due " + w.due : ""}${w.rule ? " · " + w.rule : ""}`)),
       h("span", { style: "display:flex;gap:6px;flex-wrap:wrap" },
@@ -131,21 +148,33 @@
     )) : [h("p.empty", null, "No civic or legal watches tracked yet.")]));
 
     const notes = [...D.notes].sort((a, b) => String(b.at || "").localeCompare(String(a.at || "")));
-    $("#po-notes").replaceChildren(...(notes.length ? notes.map((n) => h("div.kv", null,
-      h("span", null, h("b", null, n.topic), " ", h("span.pill", null, n.kind), h("br"), h("span.stat-s", null, n.text)),
+    const kindLab = [["verified-fact", "Verified fact"], ["fiscal-impact", "Fiscal impact"], ["open-question", "Open question"]];
+    $("#po-noteplate").textContent = [`${notes.length} on file`,
+      ...kindLab.filter(([k]) => notes.some((n) => n.kind === k)).map(([k, lab]) => `${lab} ${notes.filter((n) => n.kind === k).length}`)].join(" · ");
+    $("#po-notes").replaceChildren(...(notes.length ? notes.map((n) => h("div.kv.po-nrow", null,
+      h("span", null, h("b", null, n.topic), " ", h("span.pill.nk-" + n.kind, null, n.kind), h("br"), h("span.stat-s", null, n.text)),
       h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("notes", n.id); paint(); emitStore(); } }, "Remove")
     )) : [h("p.empty", null, "No ballot or policy research notes yet.")]));
 
-    $("#po-dir").replaceChildren(...D.directory.map((d) => h("div.kv", null,
-      h("span", null, h("b", null, d.agency), " ", h("span.pill", null, d.level), h("br"), h("span.stat-s", null, `${d.scope} · ${d.contact}`)),
-      h("button.btn.quiet.small", { type: "button", onclick: () => {
-        S.add("watches", { jurisdiction: d.level, title: `Check ${d.agency}`, rule: d.scope, due: "", status: "watching" });
-        toast(`Added ${d.agency} to watchlist`);
-        switchTab("watches");
-        paint();
-        emitStore();
-      } }, "Watch")
-    )));
+    const dirKids = [];
+    ["Local", "County", "State", "Federal"].forEach((lv) => {
+      const sub = D.directory.filter((d) => d.level === lv);
+      if (!sub.length) return;
+      dirKids.push(h("div.po-dirhead", null,
+        h("span.po-dirname", null, lv),
+        h("span.po-dircount", null, `${sub.length} on file`)));
+      sub.forEach((d) => dirKids.push(h("div.kv.po-drow", null,
+        h("span", null, h("b", null, d.agency), " ", h("span.pill", null, d.level), h("br"), h("span.stat-s", null, `${d.scope} · ${d.contact}`)),
+        h("button.btn.quiet.small", { type: "button", onclick: () => {
+          S.add("watches", { jurisdiction: d.level, title: `Check ${d.agency}`, rule: d.scope, due: "", status: "watching" });
+          toast(`Added ${d.agency} to watchlist`);
+          switchTab("watches");
+          paint();
+          emitStore();
+        } }, "Watch")
+      )));
+    });
+    $("#po-dir").replaceChildren(...dirKids);
   }
 
   $("#po-wform").addEventListener("submit", (e) => {
