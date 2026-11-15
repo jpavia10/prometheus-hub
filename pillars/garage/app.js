@@ -19,6 +19,14 @@
   ];
   const veh = () => VEHICLES.find((v) => v.key === S.get("activeVehicle", "sorento")) || VEHICLES[0];
   const K = (base) => veh().prefix + base;
+  /* Spec-plate figures (presentation only): the factory dimensions and power outputs exactly as
+     carried by model3d.js's captions — Sorento 4,815 × 1,900 × 1,695 mm, WB 2,815, 227 hp combined;
+     MT-07 2,085 × 795 × 1,095 mm, WB 1,400, 72.4 hp (54 kW). If a figure is ever corrected there,
+     correct it here too — the plate must never disagree with the model. */
+  const PLATES = {
+    sorento: { bay: "Bay 01", power: "1.6L turbo hybrid · 227 hp combined", dims: [["Length", "4,815 mm"], ["Width", "1,900 mm"], ["Height", "1,695 mm"], ["Wheelbase", "2,815 mm"]], src: "Kia factory dimensions · severe mountain schedule on file" },
+    mt07: { bay: "Bay 02", power: "689cc CP2 twin · 72.4 hp (54 kW)", dims: [["Length", "2,085 mm"], ["Width", "795 mm"], ["Height", "1,095 mm"], ["Wheelbase", "1,400 mm"]], src: "Yamaha factory dimensions · owner's manual BAT-28199-10" },
+  };
   const mt07Set = () => MT07 ? withIds(MT07.services.map((x) => ({ name: x.name, miles: x.miles, months: x.months }))) : null;
   if (!S.get("mt07.services")) { const s = mt07Set(); if (s) S.set("mt07.services", s); }
   if (!S.get("mt07.vehicle")) S.set("mt07.vehicle", { name: "2021 Yamaha MT-07" });
@@ -126,15 +134,17 @@
 
   app.innerHTML = `
     <section class="grid">
-      <div class="glass span-12"><h2>Vehicles</h2>
+      <div class="glass span-12 bay-panel"><h2>Vehicles — the bays</h2>
         <div class="row-actions" id="g-vehicles" style="margin-bottom:8px"></div>
+        <div id="g-plate"></div>
         <p class="note">Each vehicle keeps its own odometer, service list, fuel log and paperwork on this device. The Sorento's records are exactly where they always were.</p>
       </div>
-      <div class="glass span-12"><h2>Vehicles in 3D</h2>
-        <canvas id="g-3d" aria-label="Interactive 3D model of the active vehicle"></canvas>
+      <div class="glass span-12 showroom"><h2>Vehicles in 3D — showroom</h2>
+        <div class="stage-frame"><canvas id="g-3d" aria-label="Interactive 3D model of the active vehicle"></canvas></div>
         <p class="note" id="g-3d-cap" style="margin-top:8px"></p>
       </div>
       <div class="glass span-6"><h2>Odometer &amp; economy</h2>
+        <div id="g-odo-plate"></div>
         <form class="form" id="g-odo">
           <label class="f">Name on this device<input name="vehicle" maxlength="40" placeholder="Vehicle"></label>
           <label class="f">Current odometer (mi)<input name="odometer" type="number" min="0" step="1"></label>
@@ -158,7 +168,7 @@
         <div id="g-trip-out" style="margin-top:8px"></div>
       </div>
 
-      <div class="glass span-12"><h2 id="g-maint-title">Maintenance</h2><div id="g-services"></div>
+      <div class="glass span-12 board-panel"><h2 id="g-maint-title">Maintenance</h2><div id="g-services"></div>
         <p class="note" id="g-maint-note"></p>
         <div id="g-specs" style="margin-bottom:10px"></div>
         ${KIA ? `<div class="row-actions" id="g-kia-btns" style="margin-bottom:10px"><button class="btn quiet small" id="g-kia-severe" type="button">Load Kia severe schedule</button><button class="btn quiet small" id="g-kia-normal" type="button">Load Kia normal schedule</button></div>` : ""}
@@ -218,7 +228,7 @@
   function paintTrip() {
     const est = estimateTrip();
     if (est.mpg == null) { $("#g-trip-out").innerHTML = `<div class="stat-s">Log two fuel fills on the MT-07 to compute its real trip cost — Yamaha publishes no EPA figure to fall back on.</div>`; return; }
-    $("#g-trip-out").innerHTML = `<div class="kv"><span>Estimated fuel for ${num(est.miles)} mi</span><b>${money(est.cost)}</b></div>
+    $("#g-trip-out").innerHTML = `<div class="trip-read"><span class="stat-k">Estimated fuel · ${num(est.miles)} mi</span><b class="trip-cost">${money(est.cost)}</b></div>
       <div class="stat-s">${est.source === "logged" ? `Using your logged ${num(est.mpg, 1)} MPG (${money(est.costPerMile, 3)}/mi)` : `Using ${est.mpg} MPG hybrid SUV EPA estimate @ ${money(est.gasPrice)}/gal (${money(est.costPerMile, 3)}/mi)`}</div>`;
   }
 
@@ -230,6 +240,14 @@
     if (window.G3D) window.G3D.setVehicle(vNow.key);
     $("#g-vehicles").innerHTML = VEHICLES.map((v) => `<button class="btn ${v.key === vNow.key ? "" : "quiet"} small" data-veh="${v.key}" type="button">${esc(v.label)}${v.key === vNow.key ? " · active" : ""}</button>`).join("");
     $("#g-vehicles").querySelectorAll("[data-veh]").forEach((b) => (b.onclick = () => { S.set("activeVehicle", b.dataset.veh); paint(); paintPaperworkAndDossier(); }));
+    const plate = PLATES[vNow.key] || PLATES.sorento;
+    $("#g-plate").innerHTML = `<div class="plate">
+      <div class="plate-id"><span class="plate-bay">${plate.bay} · in the bay</span><span class="plate-name">${esc(vNow.label)}</span><span class="plate-power">${esc(plate.power)}</span></div>
+      ${plate.dims.map(([k, v]) => `<div class="plate-cell"><span class="plate-k">${k}</span><span class="plate-v">${v}</span></div>`).join("")}
+      <div class="plate-cell hot"><span class="plate-k">Odometer</span><span class="plate-v">${num(odo())} mi</span></div>
+      <div class="plate-src">${esc(plate.src)}</div>
+    </div>`;
+    $("#g-odo-plate").innerHTML = `<div class="odo-read"><span class="odo-v">${num(odo())}</span><span class="odo-u">mi on the clock</span></div><div class="odo-name">${esc(vehicleName())} · this device's record</div>`;
     const isBike = vNow.key === "mt07";
     $("#g-maint-title").textContent = isBike ? "Maintenance (Yamaha Factory Schedule)" : "Maintenance (Severe Mountain Schedule)";
     $("#g-maint-note").textContent = isBike
@@ -237,7 +255,7 @@
       : "Intervals from the hybrid SUV maintenance table (severe mountain-road schedule, or the normal table). Logging a service resets both clocks and republishes the due date.";
     const kb = $("#g-kia-btns"); if (kb) kb.hidden = isBike;
     const mb = $("#g-mt07-btns"); if (mb) mb.hidden = !isBike;
-    $("#g-specs").innerHTML = isBike && MT07 ? `<div class="kv"><span class="stat-s">${MT07.specs.map(esc).join("<br>")}</span></div>` : "";
+    $("#g-specs").innerHTML = isBike && MT07 ? `<div class="spec-sheet">${MT07.specs.map((s) => { const i = s.indexOf(":"); const k = i > 0 ? s.slice(0, i) : "Spec"; const v = i > 0 ? s.slice(i + 1).trim() : s; return `<div class="spec-row"><span class="spec-k">${esc(k)}</span><span class="spec-v">${esc(v)}</span></div>`; }).join("")}</div>` : "";
     $("#g-odo").odometer.value = odo() || ""; $("#g-odo").date.value = day(); $("#g-odo").vehicle.value = S.get(K("vehicle"), null)?.name || "";
     const svcs = S.get(K("services"), []);
     $("#g-services").innerHTML = svcs.map((it) => {
@@ -248,7 +266,9 @@
       const detail = st.state === "unknown"
         ? (nextDueDate ? `no service logged yet · est. next ${nextDueDate}` : "no service logged yet")
         : `due ${st.dueDate || ""}${st.dueMiles ? ` / ${num(st.dueMiles)} mi` : ""} · ${st.milesLeft != null ? num(st.milesLeft) + " mi left" : ""}${st.daysLeft != null ? ` · ${st.daysLeft} days` : ""}`;
-      return `<div class="kv"><span>${esc(it.name)} <span class="pill ${cls}">${st.state}</span><br><span class="stat-s">${detail} · every ${it.miles ? num(it.miles) + " mi" : ""}${it.miles && it.months ? " / " : ""}${it.months ? it.months + " mo" : ""}</span></span>
+      const interval = (it.miles || it.months) ? `every ${it.miles ? num(it.miles) + " mi" : ""}${it.miles && it.months ? " / " : ""}${it.months ? it.months + " mo" : ""}` : "—";
+      return `<div class="kv svc ${cls}"><span class="svc-main"><span class="svc-name">${esc(it.name)}</span> <span class="pill ${cls}">${st.state}</span><br><span class="stat-s">${detail}</span></span>
+        <span class="svc-int">${interval}</span>
         <span class="row-actions"><button class="btn quiet small" data-sync="${esc(it.id)}" type="button">Sync to Kairos</button><button class="btn quiet small" data-edit="${esc(it.id)}" type="button">Edit interval</button></span></div>`;
     }).join("") || `<p class="empty">No services defined.</p>`;
 
@@ -281,7 +301,7 @@
     const fills = S.list(K("fuel")).sort((a, b) => b.odometer - a.odometer);
     const fs = GARAGE.fuelStats(S.list(K("fuel")));
     $("#g-fuel-sum").innerHTML = fs.mpg
-      ? `<div class="kv"><span>Fuel economy (logged span)</span><b>${num(fs.mpg, 1)} MPG · ${money(fs.costPerMile, 3)}/mi · ${money(fs.totalCost)} over ${num(fs.miles)} mi</b></div>`
+      ? `<div class="stat-strip"><div class="stat-cell"><span class="stat-k">Fuel economy · logged span</span><b>${num(fs.mpg, 1)} MPG</b></div><div class="stat-cell"><span class="stat-k">Cost / mile</span><b>${money(fs.costPerMile, 3)}</b></div><div class="stat-cell"><span class="stat-k">Fuel spend</span><b>${money(fs.totalCost)}</b></div><div class="stat-cell"><span class="stat-k">Logged span</span><b>${num(fs.miles)} mi</b></div></div>`
       : `<div class="stat-s">Log two fills to unlock measured MPG and $/mi.</div>`;
     $("#g-fills").innerHTML = fills.slice(0, 10).map((x) => `<div class="kv"><span>${x.date} · ${num(x.odometer)} mi · ${num(x.gallons, 2)} gal${x.busLogged ? " · on bus" : ""}</span><b>${money(x.cost)}</b></div>`).join("") || `<p class="empty">No fills logged yet.</p>`;
     paintTrip();
