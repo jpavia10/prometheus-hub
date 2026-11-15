@@ -1,12 +1,150 @@
-/* Hearth: styles for renovation phases, field requests, BOM & cost ledger */
+/* Hearth — the Job Book: a workshop work ledger.
+   Phases are job cards with gate stamps, the deck is a numbered course ledger,
+   field requests are open work orders, the BOM is the materials ledger.
+   Presentation only: every figure is computed in app.js from the pillar's data. */
+
+/* The forge runs warm: timber accent for this pillar alone. */
+body[data-pillar="hearth"] { --accent: #f2b879; --accent-2: #9fd4e6; }
+
 .row-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .sub { font-size: 13px; color: var(--muted); }
 .pill.hot { border-color: var(--accent); color: #fff; }
 .pill.gate-ok { border-color: rgba(125, 255, 192, 0.55); color: var(--good); background: rgba(125, 255, 192, 0.08); }
-.pill.gate-hold { border-color: rgba(255, 197, 82, 0.55); color: var(--warn); background: rgba(255, 197, 82, 0.08); }
+.pill.gate-hold { border-color: rgba(255, 197, 82, 0.55); color: #ffc552; background: rgba(255, 197, 82, 0.08); }
 .bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; }
 .bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
 .row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .kv { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 8px 0; font-size: 14px; border-bottom: 1px solid rgba(159,180,204,.08); }
 .badge-phase { display: inline-block; padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: .04em; background: rgba(255, 179, 71, 0.14); color: #ffc552; border: 1px solid rgba(255, 179, 71, 0.35); }
 .phase-card { padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.025); margin-bottom: 10px; }
+
+/* ---- The job plate: one ruled register line over the whole book ---- */
+.h-plate {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11.5px; letter-spacing: .13em; color: var(--muted);
+  padding: 10px 12px; margin: 2px 0 16px;
+  border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong);
+  border-left: 3px solid var(--accent);
+  background:
+    repeating-linear-gradient(180deg, transparent 0 23px, rgba(159, 180, 204, .05) 23px 24px),
+    rgba(242, 184, 121, .04);
+  border-radius: 0 8px 8px 0;
+}
+
+/* ---- Inspector strip: a note pinned to the top of the job book ---- */
+#h-inspector {
+  border: 1px dashed var(--line-strong); border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0; padding: 10px 12px;
+  background: rgba(242, 184, 121, .05); color: var(--muted);
+}
+
+/* ---- Job cards: phases with a state rail and a gate stamp ---- */
+#h-phases-list { counter-reset: job; }
+.phase-card {
+  counter-increment: job; position: relative;
+  border-left: 3px solid rgba(255, 197, 82, .55);
+  background:
+    repeating-linear-gradient(180deg, transparent 0 27px, rgba(159, 180, 204, .045) 27px 28px),
+    rgba(255, 255, 255, .025);
+  padding: 12px 14px;
+}
+.phase-card::before {
+  content: "JOB № " counter(job, decimal-leading-zero);
+  display: block; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10px; letter-spacing: .22em; color: var(--faint); margin-bottom: 6px;
+}
+.phase-card:has(.pill.gate-ok) { border-left-color: var(--good); }
+.phase-card .pill {
+  transform: rotate(-1.6deg); font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; border-width: 1.5px;
+}
+
+/* ---- Checkbox labels in ledger rows: the kit's base input rule stretches
+   checkboxes to full width, which floats the glyph mid-row; set the box beside
+   the entry instead, with the meta line ruled beneath the title. ---- */
+#app .kv label, .phase-card .row-actions label { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 4px 8px; }
+#app .kv label input[type="checkbox"], .phase-card .row-actions label input[type="checkbox"] { width: auto; flex: none; margin-top: 3px; }
+#app .kv label .stat-s { flex: 1 1 100%; padding-left: 25px; }
+
+/* ---- The deck ledger: numbered stages, done rows ruled off in green ---- */
+#h-deck > div { counter-reset: stage; }
+#h-deck .kv:has(> label) {
+  counter-increment: stage;
+  border-left: 3px solid transparent; padding-left: 8px;
+}
+#h-deck .kv:has(> label)::before {
+  content: counter(stage, decimal-leading-zero);
+  flex: 0 0 36px; text-align: center; padding: 4px 0;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px; color: var(--muted);
+  border: 1px solid var(--line-strong); border-radius: 6px;
+}
+#h-deck .kv:has(> label input:checked) { border-left-color: var(--good); }
+#h-deck .kv:has(> label input:checked)::before { color: var(--good); border-color: rgba(125, 255, 192, .55); }
+#h-deck .kv:has(> label input:checked) label { color: var(--faint); }
+#h-deck .kv > b { font-size: 24px; font-weight: 300; font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* The progress bar reads as the eight stages: one segment per stage. */
+#h-deck .bar-mini { height: 10px; border-radius: 4px; position: relative; }
+#h-deck .bar-mini::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(90deg, transparent 0, transparent calc(12.5% - 1px), rgba(5, 7, 14, .65) calc(12.5% - 1px), rgba(5, 7, 14, .65) 12.5%);
+}
+
+/* ---- Renovation log: underway jobs carry the accent rail, finished ones green ---- */
+#h-projects .kv { border-left: 3px solid transparent; padding-left: 8px; }
+#h-projects .kv:has(> .btn) { border-left-color: var(--accent); }
+#h-projects .kv:not(:has(> .btn)) { border-left-color: rgba(125, 255, 192, .45); }
+
+/* ---- Field requests: open work orders in amber, resolved ruled off ---- */
+#h-reqs-list .kv { border-left: 3px solid transparent; padding-left: 8px; }
+#h-reqs-list .kv:has(> button.btn:not(.quiet)) { border-left-color: #ffc552; }
+#h-reqs-list .kv:has(> button.btn.quiet) { border-left-color: rgba(125, 255, 192, .45); }
+
+/* ---- Materials ledger: cost plates and the BOM table ---- */
+#p-mats > .glass.span-4 { border-top: 3px solid color-mix(in srgb, var(--accent) 65%, transparent); }
+#p-mats table.t tbody tr td:first-child { box-shadow: inset 3px 0 transparent; }
+#p-mats table.t tbody tr.st-quoted td:first-child { box-shadow: inset 3px 0 rgba(255, 197, 82, .6); }
+#p-mats table.t tbody tr.st-purchased td:first-child { box-shadow: inset 3px 0 var(--good); }
+.h-status {
+  display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .09em;
+  text-transform: uppercase; white-space: nowrap;
+  border: 1px solid var(--line-strong); border-radius: 999px; padding: 2px 8px; color: var(--muted);
+}
+tr.st-quoted .h-status { color: #ffc552; border-color: rgba(255, 197, 82, .55); transform: rotate(-1.2deg); }
+tr.st-purchased .h-status { color: var(--good); border-color: rgba(125, 255, 192, .55); transform: rotate(-1.2deg); }
+
+/* ---- Rooms: the status reads as a filed tag on the ledger line ---- */
+.h-tag {
+  display: inline-block; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint);
+  border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; vertical-align: 2px;
+}
+
+/* ---- Seasonal maintenance: date stamps down the job list ---- */
+#h-maint .kv > .h-date { flex: 0 0 46px; }
+.h-date {
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+  border: 1px solid var(--line-strong); border-radius: 8px; padding: 4px 0 3px;
+  background: rgba(255, 255, 255, .03);
+}
+.h-date-d { font-size: 17px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.h-date-m { font-size: 9px; letter-spacing: .24em; color: var(--accent); }
+#h-maint .kv { border-left: 3px solid transparent; padding-left: 8px; }
+#h-maint .kv:has(input:checked) { border-left-color: var(--good); }
+#h-maint .kv:has(input:checked) label { color: var(--faint); }
+#h-maint .kv:has(input:checked) .h-date { border-color: rgba(125, 255, 192, .55); }
+
+/* ---- Checklists: every checkpoint carries its citation ID in the margin ---- */
+.h-chkid {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px; letter-spacing: .06em; color: var(--accent);
+}
+#h-checks .kv { border-left: 3px solid transparent; padding-left: 8px; }
+#h-checks .kv:has(input:checked) { border-left-color: rgba(125, 255, 192, .45); }
+#h-checks .kv:has(input:checked) label { color: var(--faint); }
+
+@media (max-width: 480px) {
+  .h-plate { font-size: 10.5px; letter-spacing: .09em; }
+  #h-deck .kv > b { font-size: 20px; }
+  .phase-card .pill { transform: rotate(-1.2deg); }
+}

@@ -136,6 +136,7 @@
 
   const ROOM_TYPES = ["kitchen", "bathrooms", "bedrooms", "living areas", "laundry", "garage", "basement", "outdoor", "house systems", "whole house"];
   const usd = (n) => "$" + Math.round(n).toLocaleString("en-US");
+  const MON = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function readRecordsDocs() {
@@ -261,6 +262,7 @@
       <div class="glass lit span-12">
         <h2>Phase-Gate Readiness (P1–P5)</h2>
         <p class="sub">Rule: a phase is clear to start only after open field measurements verify, before-photos exist in Argus, and BOM SKUs have prices.</p>
+        <div id="h-plate" class="h-plate"></div>
         <div id="h-phases-list"></div>
       </div>
       <div class="glass span-12">
@@ -368,6 +370,12 @@
     const D = window.HEARTH.data();
     const roomName = (id) => (D.rooms.find((r) => r.id === id) || {}).name || "Whole house";
     paintInspector();
+
+    // 0. The job plate: one ruled register line over the job book, read live from the same data
+    const gatesClear = D.phases.filter((p) => phaseGateStatus(p.id).ready).length;
+    const deckDoneN = DECK.stages.filter((s) => (D.deck[s.id] || {}).done).length;
+    const openReqN = D.requests.filter((r) => r.status !== "resolved").length;
+    $("#h-plate").textContent = `THE JOB BOOK · ${D.phases.length} PHASES · ${gatesClear} GATE${gatesClear === 1 ? "" : "S"} CLEAR · DECK ${deckDoneN} / ${DECK.stages.length} STAGES · ${openReqN} FIELD REQUEST${openReqN === 1 ? "" : "S"} OPEN`;
 
     // 1. Phases + Phase-Gate badges
     const phBox = $("#h-phases-list");
@@ -500,7 +508,7 @@
     const mb = $("#h-mats-body");
     mb.replaceChildren(...visMats.map((m) => {
       const lineTotal = (m.qty != null && m.unitCost != null) ? usd(m.qty * m.unitCost) : "—";
-      return h("tr", { "data-material-id": m.id },
+      return h("tr.st-" + (m.status || "planned"), { "data-material-id": m.id },
         h("td", null, h("span.badge-phase", null, `P${m.phase}`)),
         h("td", null,
           h("b", null, m.name), " ", h("span.meta", null, `(${m.unit})`),
@@ -510,7 +518,7 @@
         h("td.n", null, m.qty ?? "—"),
         h("td.n", null, m.unitCost != null ? "$" + Number(m.unitCost).toFixed(2) : "—"),
         h("td.n", null, lineTotal),
-        h("td", null, m.status),
+        h("td", null, h("span.h-status", null, m.status)),
         h("td", null,
           h("span.row-actions", null,
             h("button.btn.quiet.small", {
@@ -557,7 +565,8 @@
       return h("div.kv", null,
         h("span", null,
           r.phase ? h("span.badge-phase", null, `P${r.phase}`) : null, " ",
-          h("b", null, r.name),
+          h("b", null, r.name), " ",
+          h("span.h-tag", null, r.status),
           h("div.stat-s", null, `${r.type} · fl ${r.floor}${r.w && r.l ? ` · ${r.w} × ${r.l} ft (${Math.round(r.w * r.l)} ft²)` : " · unmeasured"} · ${a} items · ${p} proj`)
         ),
         h("span.row-actions", null,
@@ -581,6 +590,10 @@
     const maints = S.get("maint", SEASONAL_MAINT);
     $("#h-maint").replaceChildren(...maints.map((m) =>
       h("div.kv", null,
+        h("span.h-date", null,
+          h("span.h-date-d", null, String(Number(m.date.slice(8, 10)))),
+          h("span.h-date-m", null, MON[Number(m.date.slice(5, 7)) - 1] || "")
+        ),
         h("label", null,
           h("input", {
             type: "checkbox", ...(m.done ? { checked: "" } : {}),
@@ -617,7 +630,7 @@
             onchange: (e) => { const m = S.get("checked", {}); if (e.target.checked) m[c.id] = day(); else delete m[c.id]; S.set("checked", m); },
           }),
           " ", h("b", null, c.title),
-          h("div.stat-s", null, `${c.phase} · ${c.trade} · ${c.check} `, c.url ? h("a", { href: c.url, target: "_blank", rel: "noopener" }, c.cite || "source") : (c.cite || ""))
+          h("div.stat-s", null, h("span.h-chkid", null, c.id), ` · ${c.phase} · ${c.trade} · ${c.check} `, c.url ? h("a", { href: c.url, target: "_blank", rel: "noopener" }, c.cite || "source") : (c.cite || ""))
         )
       )
     ));
