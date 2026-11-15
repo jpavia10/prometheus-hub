@@ -96,8 +96,8 @@
 
   app.innerHTML = `
     <section class="grid">
-      <div class="glass lit span-12"><h2>Urgent Shield &amp; 30-Day Renewal Radar</h2><div id="r-alerts"></div></div>
-      <div class="glass span-6">
+      <div class="glass lit span-12 docket-panel"><h2>Action Docket — Urgent Shield &amp; 30-Day Renewal Radar</h2><div id="r-plate"></div><div id="r-alerts"></div></div>
+      <div class="glass span-6 tpl-panel">
         <h2>2026 Templates &amp; 1-Tap Test Seed</h2>
         <div class="row-actions" id="r-tpls" style="flex-wrap:wrap;gap:6px;margin-top:8px"></div>
         <div class="row-actions" style="margin-top:10px">
@@ -105,11 +105,11 @@
           <button class="btn quiet small" id="r-export-shield" type="button">Export Shield Summary</button>
         </div>
       </div>
-      <div class="glass span-6"><h2>Instant Serial &amp; Vault Search</h2>
+      <div class="glass span-6 index-panel"><h2>Vault Index — Serial &amp; Title Search</h2>
         <form class="form"><label class="f wide">Search title, serial, issuer, location<input id="r-q" type="search" placeholder="Serial, issuer, or place"></label></form>
         <div class="stat-s" id="r-count" style="margin-top:8px"></div>
       </div>
-      <div class="glass span-6"><h2>Register a Document or Warranty</h2>
+      <div class="glass span-12 slip-panel"><h2>New Entry — Register a Document or Warranty</h2>
         <form class="form" id="r-form">
           <label class="f wide">Title<input name="title" required maxlength="120"></label>
           <label class="f">Category<select name="category">${CATS.map((c) => `<option>${c}</option>`).join("")}</select></label>
@@ -122,7 +122,7 @@
           <button class="btn" type="submit">Register</button>
         </form>
       </div>
-      <div class="glass span-6"><h2>Document &amp; Serial Registry</h2><div id="r-list"></div></div>
+      <div class="glass span-12 register-panel"><h2>The Register — Documents &amp; Serials, by Drawer</h2><div id="r-list"></div></div>
     </section>`;
 
   TEMPLATES_2026.forEach((tpl) => {
@@ -151,26 +151,81 @@
   function paint() {
     const t = day(), docs = S.list("docs"), recMath = getRecordsMath(), pb = getPB();
     const alerts = [];
+    const tally = { overdue: 0, urgent: 0, soon: 0 };
     for (const d of docs) {
       if (pb && pb.deadlines && d.due) pb.deadlines.publish({ title: (d.category === "school" ? "School: " : "Renewal: ") + d.title, date: d.due, source: "records", kind: d.category === "school" ? "school" : "renewal", ref: d.id });
       const c = recMath.classify(d, t);
-      if (c.flag === "overdue" || c.flag === "urgent" || c.flag === "soon") alerts.push({ d, c });
+      if (c.flag === "overdue" || c.flag === "urgent" || c.flag === "soon") { alerts.push({ d, c }); tally[c.flag]++; }
     }
+
+    /* The register plate: the office's own counts, read straight off the classifications above. */
+    const cell = (n, k, cls) => `<div class="plate-cell ${cls || ""}"><span class="plate-v">${n}</span><span class="plate-k">${k}</span></div>`;
+    $("#r-plate").innerHTML =
+      cell(docs.length, "On file") +
+      cell(tally.overdue, "Overdue", tally.overdue ? "is-bad" : "") +
+      cell(tally.urgent, "7-day school shield", tally.urgent ? "is-bad" : "") +
+      cell(tally.soon, "Renewals ≤ 30 days", tally.soon ? "is-warn" : "");
+
+    const stampFor = (c) => c.flag === "overdue" ? "Overdue" : c.flag === "urgent" ? "School shield" : "Renewal";
     $("#r-alerts").innerHTML = alerts.length
-      ? alerts.sort((a, b) => a.c.days - b.c.days).map(({ d, c }) => `<div class="kv"><span><b class="${c.flag === "overdue" || c.flag === "urgent" ? "down" : "warn"}">${c.flag.toUpperCase()} (${c.days}d)</b> · ${esc(d.title)}${d.serial ? ` · <code>${esc(d.serial)}</code>` : ""}</span><b>due ${d.due}</b></div>`).join("")
+      ? alerts.sort((a, b) => a.c.days - b.c.days).map(({ d, c }) => `<div class="docket-row f-${c.flag}"><span class="stamp ${c.flag === "soon" ? "warn" : "bad"}">${stampFor(c)} · ${c.days}d</span><span class="docket-main"><b>${esc(d.title)}</b>${d.serial ? ` · <code>${esc(d.serial)}</code>` : ""}</span><b class="docket-due">due ${d.due}</b></div>`).join("")
       : `<p class="empty">No school packets inside 7 days or renewals inside 30 days.</p>`;
 
     const q = ($("#r-q").value || "").toLowerCase();
-    const shown = docs.filter((d) => !q || JSON.stringify(d).toLowerCase().includes(q)).sort((a, b) => (a.due || "9999").localeCompare(b.due || "9999"));
+    const byDue = (a, b) => (a.due || "9999").localeCompare(b.due || "9999") || String(a.title).localeCompare(String(b.title));
+    const shown = docs.filter((d) => !q || JSON.stringify(d).toLowerCase().includes(q)).sort(byDue);
     $("#r-count").textContent = `Showing ${shown.length} of ${docs.length} registered documents.`;
+
+    /* Folio numbers: an entry's fixed place in the bound register — its position in the
+       full register sorted by due date, assigned before any search filter is applied. */
+    const folio = new Map([...docs].sort(byDue).map((d, i) => [d.id, i + 1]));
+    const pad3 = (n) => String(n).padStart(3, "0");
+
     const el = $("#r-list"); el.innerHTML = shown.length ? "" : `<p class="empty">No matching records.</p>`;
-    for (const d of shown) {
-      const c = recMath.classify(d, t);
-      const badge = c.flag === "urgent" ? `[SCHOOL ${c.days}d]` : c.flag === "overdue" ? "[OVERDUE]" : c.flag === "soon" ? `[${c.days}d]` : c.flag === "ok" ? `${c.days}d` : "";
-      el.append(h("div.kv", null,
-        h("span", null, h("b", null, d.title), badge ? ` ${badge}` : "", h("br"), h("span.stat-s", null, `${d.category}${d.serial ? " · #" + esc(d.serial) : ""}${d.issuer ? " · " + esc(d.issuer) : ""}${d.due ? " · due " + d.due : ""}${d.where ? " · " + esc(d.where) : ""}`)),
-        h("button.btn.quiet.small", { type: "button", onclick: () => { if (pb && pb.deadlines) pb.deadlines.unpublish("records", d.id); S.remove("docs", d.id); paint(); toast("Removed"); } }, "Remove")
+    if (shown.length) el.append(h("div.led-head", null,
+      h("span", null, "Folio · Filed"),
+      h("span", null, "Document"),
+      h("span", null, "Original lives"),
+      h("span.led-head-due", null, "Due · Status"),
+      h("span", null, "")
+    ));
+    const extraCats = [...new Set(shown.map((d) => d.category || "other"))].filter((c) => !CATS.includes(c));
+    for (const cat of [...CATS, ...extraCats]) {
+      const group = shown.filter((d) => (d.category || "other") === cat);
+      if (!group.length) continue;
+      el.append(h("div.drawer-h", null,
+        h("span.drawer-tab", null, cat),
+        h("span.drawer-count", null, `${group.length} on file`)
       ));
+      for (const d of group) {
+        const c = recMath.classify(d, t);
+        const stamp = c.flag === "overdue" ? h("span.stamp.bad", null, "Overdue")
+          : c.flag === "urgent" ? h("span.stamp.bad", null, "School shield")
+          : c.flag === "soon" ? h("span.stamp.warn", null, "Renewal")
+          : c.flag === "none" ? h("span.stamp.dim", null, "No date filed") : "";
+        const daysLine = c.flag === "none" ? "no due date"
+          : c.days < 0 ? `${Math.abs(c.days)}d overdue`
+          : c.days === 0 ? "due today" : `in ${c.days}d`;
+        const sub = [d.issuer || "", d.serial ? "#" + d.serial : ""].filter(Boolean).join(" · ");
+        el.append(h("div.led-row.f-" + c.flag, null,
+          h("div.led-folio", null,
+            h("span.led-no", null, "№ " + pad3(folio.get(d.id) || 0)),
+            d.date ? h("span.led-date", null, d.date) : ""
+          ),
+          h("div.led-main", null,
+            h("div.led-title", null, h("b", null, d.title), stamp),
+            sub ? h("div.led-sub", null, sub) : ""
+          ),
+          h("div.led-meta", null,
+            h("div.led-loc", null, d.where || "—"),
+            h("div.led-due", null,
+              h("span.led-due-date", null, d.due || "—"),
+              h("span.led-days", null, daysLine)
+            ),
+            h("button.btn.quiet.small", { type: "button", onclick: () => { if (pb && pb.deadlines) pb.deadlines.unpublish("records", d.id); S.remove("docs", d.id); paint(); toast("Removed"); } }, "Remove")
+          )
+        ));
+      }
     }
   }
 
