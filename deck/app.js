@@ -83,7 +83,7 @@ function drawRail() {
     h("div.rail-right",
       h("button.chip.rail-search", { type: "button", "aria-label": "Search or capture (/)" , onclick: () => { tick(); openSearch(); } }, icon("search", 13), h("span", "Search · Capture"), h("kbd", "/")),
       p.demo
-        ? h("button.chip.demo", { type: "button", onclick: demoSheet }, "Demo · Active")
+        ? h("button.chip.demo", { type: "button", onclick: demoSheet, "aria-label": "Demo is active" }, "Demo", h("span.demo-x", " · Active"))
         : store.pristine()
           ? h("button.chip.preset-btn", { type: "button", onclick: () => { tick(); startDemo(); toast("Loaded sample mountain & payoff telemetry"); } }, "Load Sample")
           : null,
@@ -103,6 +103,7 @@ function drawDock() {
   ];
   $("#dock").replaceChildren(h("div.dock-bar", items));
 }
+window.addEventListener("pk:lock", () => { if (state.route && state.route.cap === "system") render(true); });   // the passcode panel follows the lock
 setInterval(() => { if ($("#rail")) drawRail(); const r = state.route; if (r && r.cap === "picture" && !sheetOpen() && !document.hidden) { const m = clock.now().getMinutes(); if (m !== state.minute) { state.minute = m; render(true); } } }, 15000);
 
 /* ------------------------------------------------------------------ sky + weather ------------------------------------------------------------------ */

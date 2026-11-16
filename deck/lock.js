@@ -28,8 +28,7 @@
     "#pk-lock input{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#f4f7fb;font-size:16px;text-align:center}",
     "#pk-lock button{margin-top:10px;width:100%;padding:11px;border-radius:10px;border:0;background:#9fd4e6;color:#05070e;font-size:15px;font-weight:600;cursor:pointer}",
     "#pk-lock .err{color:#ff8f9d;font-size:13px;min-height:18px;margin-top:8px}",
-    "#pk-lock .fine{font-size:11px;opacity:.5;margin-top:14px}",
-    "#pk-lock-btn{position:fixed;right:10px;bottom:10px;z-index:9998;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(5,7,14,.72);color:#f4f7fb;font:12px system-ui;cursor:pointer;opacity:.75}"
+    "#pk-lock .fine{font-size:11px;opacity:.5;margin-top:14px}"
   ].join("");
   document.head.appendChild(style);
 
@@ -41,10 +40,12 @@
       '<input id="pk-lock-in" type="password" autocomplete="off" placeholder="Passcode">' +
       (setup ? '<input id="pk-lock-in2" type="password" autocomplete="off" placeholder="Again" style="margin-top:8px">' : "") +
       '<button id="pk-lock-go" type="button">' + (setup ? "Set passcode & lock" : "Unlock") + "</button>" +
+      (setup ? '<button id="pk-lock-cancel" type="button" style="background:transparent;color:#f4f7fb;border:1px solid rgba(255,255,255,.25)">Not now</button>' : "") +
       '<div class="err" id="pk-lock-err"></div>' +
       '<div class="fine">Forgotten it? Clearing this browser\'s site data resets the lock — and the hub\'s on-device data. Keep a deck backup.</div></div>';
     document.body.appendChild(el);
     var input = document.getElementById("pk-lock-in"); input.focus();
+    var cancel = document.getElementById("pk-lock-cancel"); if (cancel) cancel.onclick = function () { el.remove(); };
     document.getElementById("pk-lock-go").onclick = function () {
       var v = input.value, err = document.getElementById("pk-lock-err");
       if (setup) {
@@ -62,15 +63,15 @@
     input.addEventListener("keydown", function (e) { if (e.key === "Enter") document.getElementById("pk-lock-go").click(); });
   }
 
-  function mountButton() {
-    if (document.getElementById("pk-lock-btn")) return;
-    var b = document.createElement("button"); b.id = "pk-lock-btn"; b.type = "button";
-    var has = !!localStorage.getItem(HKEY);
-    b.textContent = has ? "🔒 Lock" : "🔒 Set passcode";
-    b.title = has ? "Lock the deck now" : "Set a passcode for this device";
-    b.onclick = function () { if (localStorage.getItem(HKEY)) { sessionStorage.removeItem(SKEY); showLock(false); } else showLock(true); };
-    document.body.appendChild(b);
-  }
+  /* The passcode lives in System (2026-11-16: the floating chip sat on the dock's Money and System buttons).
+     mountButton is kept as the hook the unlock path calls; it tells the deck to redraw its System panel. */
+  function mountButton() { try { window.dispatchEvent(new CustomEvent("pk:lock")); } catch (e) {} }
+  window.PromLock = {
+    has: function () { return !!localStorage.getItem(HKEY); },
+    setup: function () { showLock(true); },
+    lock: function () { if (localStorage.getItem(HKEY)) { sessionStorage.removeItem(SKEY); showLock(false); } },
+    off: function () { if (sessionStorage.getItem(SKEY) === "1" || !localStorage.getItem(HKEY)) { localStorage.removeItem(HKEY); sessionStorage.removeItem(SKEY); mountButton(); return true; } return false; }
+  };
 
   function boot() {
     if (localStorage.getItem(HKEY) && sessionStorage.getItem(SKEY) !== "1") showLock(false);

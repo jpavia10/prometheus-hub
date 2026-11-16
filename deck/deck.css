@@ -645,6 +645,15 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
 }
 @media (max-width: 600px) {
   .rail-search span, .rail-search kbd, .chip.preset-btn { display: none; }
+  /* 2026-11-16: at 390 px a long console name, the demo chip, the weather and the sound button ran off the right edge. */
+  .rail { gap: 8px; }
+  .brand { min-width: 0; flex: 1 1 auto; }
+  .brand-mark { flex: 0 0 auto; }
+  .brand-day { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 11px; letter-spacing: .14em; }
+  .chip.demo .demo-x { display: none; }
+  .rail-right { flex: 0 0 auto; gap: 6px; }
+  .chip.demo { height: 28px; padding: 0 9px; font-size: 10px; letter-spacing: .08em; }
+  .sky-chip { height: 34px; padding: 0 10px; }
   .reactor.live { grid-template-columns: minmax(0, 1fr); max-width: calc(100% + 28px); margin: -6px -14px 0; gap: 6px; overflow-x: clip; }
   .reactor.live .rx-stage { max-width: 100%; overflow-x: clip; }
   .reactor.live .hex-name { font-size: 6.8px; letter-spacing: .03em; }

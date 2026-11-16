@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-16] Phone fixes on the core (Claude), shell cache d26
+- The passcode chip sat on the dock's Money and System buttons on every tab: the passcode now lives in System (set, lock now, turn off; setup has "Not now"). The top bar no longer runs off a 390 px screen (titles shrink, the demo chip reads "Demo"). The outer orbit rings pulled in on phones: no hex past the edge at 360, 390 or 430 px (was up to 6 px).
+- Checks: registry OK, unit 62/62, money guard OK, browser proofs 26/26 (one earlier run had PILLAR-1 fail on Piano's section tap, then pass: an intermittent tap, queued as AGY-017).
+
 ### [2026-11-16] Intake: Grok's three second-reader checks (Claude)
 - Grok's Nov 14 checks of Gemini's specs are filed: `pillars/{hermes,icarus,hearth}/research/`, tasks HER-GRK-01, ICA-GRK-01 and HEA-GRK-01 marked done with a review note, and the first score rows in those pillars' `collaborators/CONTRIBUTOR_SCORES.md`. Accepted and accurate stay pending until Claude spot-checks the "differ" lines, because the vendor hosts are blocked from the build session.
 - `tools/kit/render.py` now renders Hearth's homework from `pillars/hearth/` (it was still reading the old hephaestus-hearth repo). The money guard lists the two research folders as public vendor-price references.

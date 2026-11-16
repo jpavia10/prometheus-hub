@@ -41,6 +41,10 @@ PASS DECK-2  No script errors during the run  ::  none
 
 <!-- proofs-live:end -->
 
+Shell cache **d26** · 2026-11-16 · Claude
+
+**Phone fixes on the core:** the passcode moved from a floating chip over the dock into System; the top bar fits 390 px; the outer orbit rings stay on screen at 360-430 px. Verified locally: unit 62/62, money guard OK, browser proofs 26/26 on `prometheus.test` with mocked weather.
+
 The quote above is the last proofs-live run against the deployed site (run 43575963969). It is not a result for the checkout below.
 
 Build **d20** shell, cache **d21** · 2026-11-14 · not deployed yet

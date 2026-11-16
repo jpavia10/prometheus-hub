@@ -22,6 +22,11 @@ export function render(root, route, ctx) {
           const ok = await ask("Restore from this backup?", `${pr.add.length} new, ${pr.change.length} changed stores (${pr.pillars.join(", ") || "deck"}), and ${pr.idbCount || 0} Argus photo blobs. ${pr.same.length} stores unchanged. External (${(pr.excludedExternal || []).join(", ")}) untouched.`, "Restore");
           if (ok) { restoreAll(file); await restoreIndexedDB(file); toast("Restored with rollback snapshot. Reloading."); setTimeout(() => location.reload(), 600); } } }, "Restore from a file"),
         hasRollback ? h("button.btn.ghost.small", { type: "button", id: "rollback-restore", onclick: () => { const n = rollbackRestore(); toast(`Rolled back ${n} stores. Reloading.`); setTimeout(() => location.reload(), 400); } }, "Rollback restore") : null)),
+    (() => { const L = window.PromLock; if (!L) return null; const on = L.has();
+      return h("section.panel", { id: "lock-panel" }, h("header.panel-head", h("h2", "Passcode"), chip(on ? "on" : "off", on ? "" : "warn")),
+        h("p.quiet", on ? "The deck asks for your passcode once per browser session. It keeps casual eyes out; it is not encryption." : "Lock the deck's front door on this device with a passcode. It keeps casual eyes out; it is not encryption."),
+        h("div.row", on ? h("button.btn", { type: "button", onclick: () => L.lock() }, icon("lock", 18), "Lock now") : h("button.btn", { type: "button", onclick: () => L.setup() }, icon("lock", 18), "Set a passcode"),
+          on ? h("button.btn.ghost", { type: "button", onclick: async () => { if (await ask("Turn the passcode off?", "The deck opens without a passcode on this device until you set one again.", "Turn off", "danger") && L.off()) { toast("Passcode off."); ctx.go("#/system"); } } }, "Turn off") : null)); })(),
     h("section.panel", h("header.panel-head", h("h2", "The deck file"), p.demo ? chip("demo data", "warn") : p.seed ? chip(p.seed.label || "loaded") : chip("this device only")),
       h("p.quiet", "One file holds everything on the deck. Keep a copy in your Drive; load it on another device to pick up where you left off."),
       h("div.row", h("button.btn", { type: "button", onclick: () => { download(`prometheus-deck-${t}.json`, store.exportDeck()); toast("Deck file saved to your downloads."); } }, icon("download", 18), "Export the deck"),
