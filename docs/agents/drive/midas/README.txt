@@ -8,47 +8,41 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 2 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 3 open in this pillar.
 
 
 - MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
     make: the encrypted book (index.html #vault) via publish.sh · how many: 1 · done when: On the Debt screen, no card or loan shows 'APR missing' or 'minimum missing'.
 - MID-GRK-02 · A fresh book every Monday by noon PT · due 2026-11-09
     make: the encrypted book · how many: 1 · done when: The app's 'built' stamp is never older than 7 days.
+- MID-GRK-04 · Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: midas_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 8 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 3 open in this pillar.
 
 
-- MID-GEM-01 · 12 debt payoff cases worked to the cent · due 2026-11-09
-    make: midas_gemini_payoff-cases_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 cases, every month listed, and Claude's engine gets the same balance for every debt in every month.
-- MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI · due 2026-11-10
-    make: midas_gemini_debt-research_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 real studies, every DOI resolves to that paper, every quote is in its abstract.
-- MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going · due 2026-11-11
-    make: midas_gemini_app-teardown_{YYYYMMDD-HHMM}.json · how many: 75 · done when: 75 rows, 5 per app, every URL shows what the row says.
-- MID-GEM-04 · Minimum payment formulas of 25 US card issuers, quoted from their cardholder agreements · due 2026-11-12
-    make: midas_gemini_minimums_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 issuers, each formula traceable to the quoted agreement text.
-- MID-GEM-05 · How 25 issuers compute interest: balance method, day count, compounding, grace · due 2026-11-13
-    make: midas_gemini_interest_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows, every field quoted or marked null with the reason in quote.
-- MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted · due 2026-11-14
-    make: midas_gemini_promos_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 products, each type quoted from its own terms.
-- MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask · due 2026-11-15
-    make: midas_gemini_hardship_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows, every offer quoted.
-- MID-GEM-08 · 12 daily-compounding interest cases worked to the cent · due 2026-11-16
-    make: midas_gemini_dailycases_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 cases x 3 cycles; Claude recomputes every number in Python.
+- MID-GEM-09 · Midas Ledger: how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages · due 2026-11-19
+    make: midas_gemini_flex-terms_{YYYYMMDD-HHMM}.json · how many: 15 · done when: 15 rows exactly in the shape, every self-check line true.
+- MID-GEM-10 · Midas Ledger: 25 test cases for the ledger parser · due 2026-11-22
+    make: midas_gemini_parser-cases_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows exactly in the shape, every self-check line true.
+- MID-GEM-11 · Midas Ledger: the function spec, written as the build plan · due 2026-11-24
+    make: midas_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- MID-MUS-01 · The words of the way out: 24 milestone lines and 12 screen lines · due 2026-11-10
-    make: midas_muse_milestones_{YYYYMMDD-HHMM}.md · how many: 36 · done when: 36 lines, all within the limits.
+- MID-MUS-03 · Midas Ledger: second reader on Gemini's 'how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages' · due 2026-11-22 · waits for its input file
+    make: midas_muse_flex-terms-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+- MID-MUS-02 · Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser' · due 2026-11-25 · waits for its input file
+    make: midas_muse_parser-cases-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
 - MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14
@@ -56,14 +50,14 @@ Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Midas Ledger right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Midas Ledger right now.

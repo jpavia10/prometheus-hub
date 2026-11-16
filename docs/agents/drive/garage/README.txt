@@ -8,37 +8,37 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- GAR-GRK-01 · Garage: second reader on Gemini's 'Recalls and service bulletins for the 2025 Kia Sorento Hybrid' · due 2026-11-22 · waits for its input file
-    make: garage_grok_sorento-recalls-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: garage_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 4 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 3 open in this pillar.
 
 
-- GAR-GEM-01 · Garage: Recalls and service bulletins for the 2025 Kia Sorento Hybrid · due 2026-11-19
-    make: garage_gemini_sorento-recalls_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- GAR-GEM-02 · Garage: Caltrans chain-control rules and I-5 Tejon Pass closures · due 2026-11-21
-    make: garage_gemini_chain-control_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- GAR-GEM-03 · Garage: California weekly regular gasoline prices, Jan 2024 to now · due 2026-11-23
-    make: garage_gemini_fuel-prices_{YYYYMMDD-HHMM}.json · how many: 100 · done when: 100 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- GAR-GEM-04 · Garage: 20 features the best car maintenance and fuel logs have · due 2026-11-28
-    make: garage_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- GAR-GEM-05 · Garage: every recall and service campaign for both vehicles · due 2026-11-19
+    make: garage_gemini_recalls_{YYYYMMDD-HHMM}.json · how many: 1 · done when: 1 rows exactly in the shape, every self-check line true.
+- GAR-GEM-06 · Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures · due 2026-11-21
+    make: garage_gemini_chain-control_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows exactly in the shape, every self-check line true.
+- GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-24
+    make: garage_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- GAR-MUS-01 · Garage: second reader on Gemini's 'Caltrans chain-control rules and I-5 Tejon Pass closures' · due 2026-11-24 · waits for its input file
-    make: garage_muse_chain-control-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- GAR-MUS-02 · Garage: second reader on Gemini's 'every recall and service campaign for both vehicles' · due 2026-11-22 · waits for its input file
+    make: garage_muse_recalls-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+- GAR-MUS-03 · Garage: second reader on Gemini's 'Caltrans chain-control rules and recent I-5 Tejon Pass closures' · due 2026-11-24 · waits for its input file
+    make: garage_muse_chain-control-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
 - GAR-GPT-01 · Garage: phone audit: 15 findings · due 2026-11-24
@@ -46,14 +46,14 @@ Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Garage right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Garage right now.

@@ -8,49 +8,44 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- ICA-GRK-02 · Icarus Stake: second reader on Gemini's 'The 2028 NYSE and Nasdaq holiday and early-close calendar' · due 2026-11-22 · waits for its input file
-    make: icarus_grok_calendar-2028-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- ICA-GRK-03 · Icarus Stake: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: icarus_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 3 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- ICA-GEM-07 · Icarus Stake: The 2028 NYSE and Nasdaq holiday and early-close calendar · due 2026-11-19
-    make: icarus_gemini_calendar-2028_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- ICA-GEM-08 · Icarus Stake: 40 worked risk-of-ruin and position-sizing cases · due 2026-11-21
-    make: icarus_gemini_ruin-cases_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- ICA-GEM-09 · Icarus Stake: 20 features the best trading journals have · due 2026-11-28
-    make: icarus_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan · due 2026-11-24
+    make: icarus_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
-- ICA-MUS-01 · Icarus Stake: second reader on Gemini's '40 worked risk-of-ruin and position-sizing cases' · due 2026-11-24 · waits for its input file
-    make: icarus_muse_ruin-cases-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+No homework for Muse in Icarus Stake right now.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Icarus Stake right now.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Icarus Stake right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Icarus Stake right now.

@@ -8,46 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- CON-GRK-01 · Continuity: second reader on Gemini's 'Legacy-contact and inactive-account policies of 30 services' · due 2026-11-22 · waits for its input file
-    make: continuity_grok_legacy-policies-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: continuity_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 2 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- CON-GEM-01 · Continuity: Legacy-contact and inactive-account policies of 30 services · due 2026-11-19
-    make: continuity_gemini_legacy-policies_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- CON-GEM-02 · Continuity: 20 features the best digital-legacy and emergency vaults have · due 2026-11-28
-    make: continuity_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- CON-GEM-03 · Continuity: what happens to each account when its owner dies or goes silent · due 2026-11-21
+    make: continuity_gemini_legacy-policies_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows exactly in the shape, every self-check line true.
+- CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-24
+    make: continuity_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Continuity · Sovereign Vault right now.
+- CON-MUS-01 · Continuity: second reader on Gemini's 'what happens to each account when its owner dies or goes silent' · due 2026-11-24 · waits for its input file
+    make: continuity_muse_legacy-policies-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Continuity · Sovereign Vault right now.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Continuity · Sovereign Vault right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Continuity · Sovereign Vault right now.

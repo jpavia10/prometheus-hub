@@ -8,49 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- ODY-GRK-01 · Odyssey: second reader on Gemini's 'An away-mode checklist for a mountain home in winter' · due 2026-11-22 · waits for its input file
-    make: odyssey_grok_away-house-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- ODY-GRK-02 · Odyssey: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: odyssey_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 3 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
 - ODY-GEM-01 · Odyssey: An away-mode checklist for a mountain home in winter · due 2026-11-19
     make: odyssey_gemini_away-house_{YYYYMMDD-HHMM}.json · how many: 50 · done when: 50 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- ODY-GEM-02 · Odyssey: Travel facts for the Philippines as of now · due 2026-11-21
-    make: odyssey_gemini_ph-entry_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- ODY-GEM-03 · Odyssey: 20 features the best trip planners have · due 2026-11-28
-    make: odyssey_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-24
+    make: odyssey_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- ODY-MUS-01 · Odyssey: second reader on Gemini's 'Travel facts for the Philippines as of now' · due 2026-11-24 · waits for its input file
-    make: odyssey_muse_ph-entry-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- ODY-MUS-02 · Odyssey: second reader on Gemini's 'An away-mode checklist for a mountain home in winter' · due 2026-11-22 · waits for its input file
+    make: odyssey_muse_away-house-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Odyssey · Trips & Away Mode right now.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Odyssey · Trips & Away Mode right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Odyssey · Trips & Away Mode right now.

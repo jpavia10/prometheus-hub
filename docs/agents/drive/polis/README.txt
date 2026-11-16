@@ -8,49 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- POL-GRK-01 · Polis: second reader on Gemini's '30 Kern County rules a homeowner meets' · due 2026-11-22 · waits for its input file
-    make: polis_grok_kern-ordinances-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- POL-GRK-03 · Polis: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: polis_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 3 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- POL-GEM-01 · Polis: 30 Kern County rules a homeowner meets · due 2026-11-19
-    make: polis_gemini_kern-ordinances_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- POL-GEM-02 · Polis: The California measures on the November 2026 ballot · due 2026-11-21
-    make: polis_gemini_ballot-2026_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- POL-GEM-03 · Polis: 20 features the best civic and legislation trackers have · due 2026-11-28
-    make: polis_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- POL-GEM-04 · Polis: the Kern County rules a homeowner runs into · due 2026-11-22
+    make: polis_gemini_kern-ordinances_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows exactly in the shape, every self-check line true.
+- POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-24
+    make: polis_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- POL-MUS-01 · Polis: second reader on Gemini's 'The California measures on the November 2026 ballot' · due 2026-11-24 · waits for its input file
-    make: polis_muse_ballot-2026-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- POL-MUS-02 · Polis: second reader on Gemini's 'the Kern County rules a homeowner runs into' · due 2026-11-25 · waits for its input file
+    make: polis_muse_kern-ordinances-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Polis · Civic & Legal Watch right now.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Polis · Civic & Legal Watch right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Polis · Civic & Legal Watch right now.

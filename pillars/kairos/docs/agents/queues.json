@@ -170,7 +170,7 @@
     {
      "id": "KAI-GEM-06",
      "title": "Kairos Meridian: 40 California household deadlines that repeat every year",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-19",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
      "inputs": [
@@ -199,12 +199,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
     },
     {
      "id": "KAI-GEM-07",
      "title": "Kairos Meridian: The 2026-27 school calendar for El Tejon Unified and Kern High School District",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-21",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
      "inputs": [
@@ -232,12 +233,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     },
     {
      "id": "KAI-GEM-08",
      "title": "Kairos Meridian: Sunrise, sunset, moonrise and moon phase for every day of 2027 at Frazier Park, CA",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-23",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
      "inputs": [
@@ -265,12 +267,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     },
     {
      "id": "KAI-GEM-09",
      "title": "Kairos Meridian: 20 features the best calendar and time-blocking apps have",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-28",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
      "inputs": [
@@ -300,6 +303,210 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "KAI-GEM-10",
+     "title": "Kairos Meridian: the yearly deadlines a California homeowner and driver actually has",
+     "state": "now",
+     "due": "2026-11-18",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Kairos puts each one on the calendar with its real rule, so property tax, registration and tax dates stop being remembered by hand.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "List every yearly deadline from these agencies that applies to someone who owns a home in Kern County, drives a registered car and a registered motorcycle, and files California and federal income tax: Kern County Treasurer-Tax Collector (both property-tax installments, supplemental bills), California DMV (vehicle and motorcycle registration, smog check rule for a 2025 hybrid, license renewal), Franchise Tax Board and IRS (filing, extension, the four estimated-tax dates), Covered California open enrollment, voter registration deadlines.",
+      "Open the agency's own page for each and copy the rule as written; compute next_due from today.",
+      "Leave out anything that does not apply to that person; say 'not stated' rather than guess."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_ca-deadlines_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below and nothing else"
+     },
+     "count": 30,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": "what is due, under 60 characters, e.g. 'Property tax, first installment'"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "the date rule exactly as the agency states it, e.g. 'due Nov 1, delinquent after Dec 10 at 5 p.m.'"
+      },
+      {
+       "name": "next_due",
+       "type": "date YYYY-MM-DD",
+       "rule": "the next date this falls on from today; if the rule moves for weekends, apply it"
+      },
+      {
+       "name": "repeats",
+       "type": "one of: yearly, every 2 years, twice a year, monthly",
+       "rule": "how often"
+      },
+      {
+       "name": "applies_if",
+       "type": "text",
+       "rule": "who it applies to, e.g. 'owns a home in Kern County', 'has a registered vehicle'"
+      },
+      {
+       "name": "penalty",
+       "type": "text",
+       "rule": "the penalty in the agency's words, or 'not stated'"
+      },
+      {
+       "name": "agency",
+       "type": "text",
+       "rule": "the agency's name"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the exact page that shows this row, opened by you today; never a home page or search page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the sentence on that page that proves the row, copied word for word (under 300 characters)"
+      },
+      {
+       "name": "as_of",
+       "type": "date YYYY-MM-DD",
+       "rule": "the date you read the page"
+      }
+     ],
+     "example": {
+      "n": 1,
+      "title": "Property tax, first installment",
+      "rule": "Due November 1; delinquent after 5 p.m. December 10",
+      "next_due": "2026-12-10",
+      "repeats": "yearly",
+      "applies_if": "owns real property in Kern County",
+      "penalty": "10% penalty if not paid by the delinquency date",
+      "agency": "Kern County Treasurer-Tax Collector",
+      "url": "https://...",
+      "quote": "...",
+      "as_of": "2026-11-17"
+     },
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).",
+      "Every quote is copied word for word from that page and is on it now.",
+      "No row is a copy of another with the names changed.",
+      "Numbers have their unit in the field name or the unit field, never inside the text.",
+      "The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.",
+      "30 rows, or fewer with a line at the end of the file saying which agencies had nothing more."
+     ],
+     "done_when": "30 rows exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
+     ]
+    },
+    {
+     "id": "KAI-GEM-11",
+     "title": "Kairos Meridian: the function spec, written as the build plan",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Kairos Meridian from, step by step.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
+      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)"
+     ],
+     "steps": [
+      "Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/kairos/) on a phone-sized browser and use every section.",
+      "Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos): every file the page loads, and pillar.json.",
+      "Write section A from what is there now, with file:line for each item; then B to H.",
+      "Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_function-spec_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "A What it does today",
+       "type": "list",
+       "rule": "every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)"
+      },
+      {
+       "name": "B What Joseph needs it to do",
+       "type": "8+ user stories",
+       "rule": "'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life"
+      },
+      {
+       "name": "C Data",
+       "type": "table",
+       "rule": "record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar"
+      },
+      {
+       "name": "D Screens",
+       "type": "per screen",
+       "rule": "purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state"
+      },
+      {
+       "name": "E Rules and edge cases",
+       "type": "10+",
+       "rule": "dates and time zones, missing data, offline, two devices, a value of 0 vs unknown"
+      },
+      {
+       "name": "F Acceptance tests",
+       "type": "12+",
+       "rule": "Given / When / Then, each checkable in a phone browser in under two minutes"
+      },
+      {
+       "name": "G Order of work",
+       "type": "numbered steps",
+       "rule": "each step small enough for one build, with what Joseph can use after it"
+      },
+      {
+       "name": "H Must not",
+       "type": "list",
+       "rule": "the charter's protections that apply, no server or account, no made-up numbers"
+      }
+     ],
+     "example": "F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.",
+     "self_check": [
+      "Every item in A has a file:line that exists.",
+      "B has 8+ stories and none invents a personal fact.",
+      "C names every field with type and example.",
+      "F has 12+ tests, each with one Given, one When, one Then.",
+      "G steps are in an order that can ship one by one.",
+      "All eight headings, in order."
+     ],
+     "done_when": "1 file exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
     }
    ]
@@ -341,7 +548,7 @@
     {
      "id": "KAI-MUS-02",
      "title": "Kairos Meridian: second reader on Gemini's 'The 2026-27 school calendar for El Tejon Unified and Kern High School District'",
-     "state": "next",
+     "state": "withdrawn",
      "due": "2026-11-24",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [
@@ -368,6 +575,52 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "KAI-MUS-03",
+     "title": "Kairos Meridian: second reader on Gemini's 'the yearly deadlines a California homeowner and driver actually has'",
+     "state": "next",
+     "due": "2026-11-21",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file kairos_gemini_ca-deadlines_*.json in the folder below (KAI-GEM-10)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "kairos_muse_ca-deadlines-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
      ]
     }
    ]
@@ -379,7 +632,7 @@
     {
      "id": "KAI-GRK-01",
      "title": "Kairos Meridian: second reader on Gemini's '40 California household deadlines that repeat every year'",
-     "state": "next",
+     "state": "withdrawn",
      "due": "2026-11-22",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [
@@ -402,6 +655,53 @@
      ],
      "rejected_if": [
       "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
+    },
+    {
+     "id": "KAI-GRK-03",
+     "title": "Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan'",
+     "state": "next",
+     "due": "2026-11-27",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file kairos_gemini_function-spec_*.md in the folder below (KAI-GEM-11)"
+     ],
+     "steps": [
+      "Open Gemini's file and the code it describes.",
+      "Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.",
+      "Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.",
+      "List up to 10 things the pillar needs that the spec leaves out, each with why."
+     ],
+     "deliver": {
+      "file": "kairos_grok_function-spec-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
       "a row copied from another row with the names changed",
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",

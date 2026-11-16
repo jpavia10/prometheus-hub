@@ -64,6 +64,8 @@
     const reg = await get(ROOT + "pillars.json"); const list = reg ? (Array.isArray(reg) ? reg : reg.pillars || []) : [];
     D.pillars = list.filter((p) => p.id === "hub" || (p.home && p.state !== "paused" && p.id !== "presence"))   /* Sylade stays presence-only (charter): no homework */.map((p) => ({ id: p.id, name: (p.name || p.id).split(" · ")[0], q: p.id === "hub" ? ROOT + "docs/agents/queues.json" : ROOT + p.home.replace(/\/?$/, "/") + "docs/agents/queues.json",
       scores: p.id === "hub" ? ROOT + "collaborators/CONTRIBUTOR_SCORES.md" : ROOT + p.home.replace(/\/?$/, "/") + "collaborators/CONTRIBUTOR_SCORES.md", page: p.id === "hub" ? "docs/agents/" : p.home.replace(/\/?$/, "/") + "docs/agents/" }));
+    const midas = list.find((p) => p.id === "midas");           // Midas keeps its homework in its own repository (owner, 2026-11-16: Midas is Claude's to work on)
+    if (midas) D.pillars.push({ id: "midas", name: "Midas Ledger", q: Q.get("midas") || new URL("/midas-ledger/docs/agents/queues.json", location.origin).href, scores: "", page: "", ext: true });
     const tasks = [];
     const hubQ = await Promise.all(D.pillars.map((p) => get(p.q).then((q) => ({ p, q }))));
     let qOK = 0;
@@ -71,7 +73,7 @@
       for (const a of q.agents) for (const t of a.tasks || []) {
         const dl = t.deliver || {};
         tasks.push({ ai: ai(a.name || a.id), src: "hub", where: p.name, pid: p.id, id: t.id, title: t.title, state: t.state || "next", due: t.due || "", items: t.count || 0, review: t.review || "",
-          detail: { why: t.why || "", steps: t.steps || [], make: dl.file || "", folder: dl.folder || "", shape: dl.shape || "", done: t.done_when || "", checks: t.checks || [], link: `https://github.com/jpavia10/prometheus-hub/blob/main/${p.page}QUEUE_${(a.id || "").toLowerCase()}.md` } }); } }
+          detail: { why: t.why || "", steps: t.steps || [], make: dl.file || "", folder: dl.folder || "", shape: dl.shape || "", done: t.done_when || "", checks: t.checks || [], link: p.ext ? `https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_${(a.id || "").toLowerCase()}.md` : `https://github.com/jpavia10/prometheus-hub/blob/main/${p.page}QUEUE_${(a.id || "").toLowerCase()}.md` } }); } }
     D.sources.hub = qOK ? `${qOK} of ${D.pillars.length} queues read` : "not reached";
     const tAis = ["gemini", "grok", "muse", "chatgpt", "gemini-api"];
     const tl = await Promise.all(tAis.map((k) => get(TITAN + `docs/agents/homework/${k}.json`).then((j) => ({ k, j }))));
@@ -94,7 +96,7 @@
       if (!Q.get("scores") && /^(localhost|127\.0\.0\.1)$/i.test(location.hostname)) { D.scores = []; D.scoreState = "local"; }
       else { const r = await fetch(SCORES); if (!r.ok) throw new Error(r.status); D.scores = parseScores(await r.text()); D.scoreState = D.scores.length ? "ok" : "empty"; }
     } catch (e) { D.scores = []; D.scoreState = "unreachable"; }
-    const hs = await Promise.all(D.pillars.map((p) => get(p.scores, "text").then((t) => (t ? parseHubScores(t, p.name) : []))));
+    const hs = await Promise.all(D.pillars.map((p) => (p.scores ? get(p.scores, "text") : Promise.resolve(null)).then((t) => (t ? parseHubScores(t, p.name) : []))));
     D.hubScores = hs.flat();
     paint(); window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "forge", k: "remote" } }));
   }

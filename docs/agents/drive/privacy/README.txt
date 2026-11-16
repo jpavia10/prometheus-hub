@@ -8,49 +8,51 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- PRI-GRK-01 · Privacy: second reader on Gemini's '30 more data brokers with their opt-out routes' · due 2026-11-22 · waits for its input file
-    make: privacy_grok_brokers-48-77-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: privacy_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 3 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 3 open in this pillar.
 
 
-- PRI-GEM-01 · Privacy: 30 more data brokers with their opt-out routes · due 2026-11-19
-    make: privacy_gemini_brokers-48-77_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- PRI-GEM-02 · Privacy: The California DROP (Delete Request and Opt-out Platform) timeline · due 2026-11-21
-    make: privacy_gemini_drop-dates_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- PRI-GEM-03 · Privacy: 20 features the best data-removal services have · due 2026-11-28
-    make: privacy_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- PRI-GEM-04 · Privacy: data brokers not yet on the list, with their opt-out routes · due 2026-11-19
+    make: privacy_gemini_brokers_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 rows exactly in the shape, every self-check line true.
+- PRI-GEM-05 · Privacy: the California DROP timeline · due 2026-11-21
+    make: privacy_gemini_drop-dates_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-24
+    make: privacy_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- PRI-MUS-01 · Privacy: second reader on Gemini's 'The California DROP (Delete Request and Opt-out Platform) timeline' · due 2026-11-24 · waits for its input file
-    make: privacy_muse_drop-dates-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- PRI-MUS-02 · Privacy: second reader on Gemini's 'data brokers not yet on the list, with their opt-out routes' · due 2026-11-22 · waits for its input file
+    make: privacy_muse_brokers-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+- PRI-MUS-03 · Privacy: second reader on Gemini's 'the California DROP timeline' · due 2026-11-24 · waits for its input file
+    make: privacy_muse_drop-dates-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Privacy · CA DROP right now.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Privacy · CA DROP right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Privacy · CA DROP right now.

@@ -8,49 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- SEL-GRK-01 · Selling Pipeline: second reader on Gemini's 'Marketplace fees as of December 2026' · due 2026-11-22 · waits for its input file
-    make: selling_grok_fees-dec2026-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- SEL-GRK-03 · Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: selling_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 3 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- SEL-GEM-01 · Selling Pipeline: Marketplace fees as of December 2026 · due 2026-11-19
-    make: selling_gemini_fees-dec2026_{YYYYMMDD-HHMM}.md · how many: 6 · done when: 6 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- SEL-GEM-02 · Selling Pipeline: USPS Ground Advantage and Priority Mail retail rates 2026 · due 2026-11-21
-    make: selling_gemini_usps-rates_{YYYYMMDD-HHMM}.json · how many: 180 · done when: 180 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- SEL-GEM-03 · Selling Pipeline: 20 features the best reselling and listing tools have · due 2026-11-28
-    make: selling_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- SEL-GEM-04 · Selling Pipeline: marketplace fees as of today · due 2026-11-19
+    make: selling_gemini_fees_{YYYYMMDD-HHMM}.json · how many: 6 · done when: 6 rows exactly in the shape, every self-check line true.
+- SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan · due 2026-11-24
+    make: selling_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- SEL-MUS-01 · Selling Pipeline: second reader on Gemini's 'USPS Ground Advantage and Priority Mail retail rates 2026' · due 2026-11-24 · waits for its input file
-    make: selling_muse_usps-rates-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- SEL-MUS-02 · Selling Pipeline: second reader on Gemini's 'marketplace fees as of today' · due 2026-11-22 · waits for its input file
+    make: selling_muse_fees-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Selling Pipeline right now.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Selling Pipeline right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Selling Pipeline right now.

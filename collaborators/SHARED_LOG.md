@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-16] Homework rewritten: detailed and legit; Midas included (Claude)
+- Owner: homework hyperdetailed, legit not busywork (the nutrition and exercise sets were dumb), Midas is Claude's too. 108 tasks withdrawn (padding, computable tables, stale items, generic feature lists) and 92 written to a new standard: what it unlocks, every field defined, a finished example, a self-check. Every pillar and Midas has a Gemini function spec (A today, B stories, C data, D screens, E edge cases, F acceptance tests, G order of work, H must not), Grok checks each against the code; Muse second-reads the data tasks. Open: Gemini 47, Grok 28, Muse 21, ChatGPT 6 (plus Titan). The Forge reads Midas' queue too.
+
 ### [2026-11-16] Homework loaded everywhere; the Forge rebuilt to show it (Claude), shell cache d28
 - Owner: "aggressively assign homework for all hubs all titan aspects ... very heavy on gemini. I want to see clearly on the forge." Every pillar now has a queue (19 new; Sylade stays presence-only): open hub tasks Gemini 69, Grok 25, Muse 16, ChatGPT 6; Titan adds 19 Gemini projects from its trust gaps plus the loop (Gemini 107 open in all). Rule in CLAUDE.md: refill after every intake or catch-up, Gemini heaviest; floors Gemini 30, Grok 6, Muse 6, ChatGPT 2.
 - Forge reads every pillar queue, Titan's loop and projects, the workboard and every score sheet: workload per AI by source against its floor, a filterable task list with what to make and where, a matrix of every place. Proof FORGE-1; browser proofs 28/28.

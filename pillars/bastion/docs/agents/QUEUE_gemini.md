@@ -2,111 +2,191 @@
 
 # Bastion · Mountain Prep · homework for Gemini
 
-Updated 2026-11-16 06:08 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-16 13:40 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-## 1. BAS-GEM-01 · Bastion: A 72-hour kit for 4 people and pets, with shelf lives
+## 1. BAS-GEM-04 · Bastion: Kern County alert systems and evacuation zones
 
-**Due:** 2026-11-19 · **State:** now
+**Due:** 2026-11-20 · **State:** now
 
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Bastion uses.
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
 
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. From Ready.gov, FEMA, the Red Cross and Kern County OES.
-
-**Make:** `bastion_gemini_kit-items_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of objects, one per row: {"n","item","quantity for 4","shelf life","check every","source","url"}`
-
-**How many:** 60
-
-**Done when:** 60 rows (or the whole document) in the shape, every source opening and saying what the row says.
-
-**How Claude checks it:**
-- Claude opens 10 rows at random.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
-
-## 2. BAS-GEM-02 · Bastion: Kern County evacuation zones and alert systems
-
-**Due:** 2026-11-21 · **State:** now
-
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Bastion uses.
+**What it unlocks:** Bastion links the right alert sign-ups and shows which evacuation zone system to check.
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/pillars/bastion/
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 **Do this:**
-1. Kern County OES and Genasys pages only.
+1. Kern County OES, the county's alert provider and CAL FIRE pages only.
+2. Say which system covers the mountain communities (Frazier Park, Lebec, Pine Mountain Club).
 
 **Make:** `bastion_gemini_kern-alerts_{YYYYMMDD-HHMM}.md`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `one markdown file: every alert system (name, how to sign up, URL), how zones are named, where the live map is, each with a quote`
+**Shape:** `one markdown file with headings: 1 Alert systems | 2 Evacuation zones | 3 Live map | 4 What to sign up for | 5 Sources`
+
+**Every field, exactly:**
+- `each alert system` (markdown table): name | what it sends | how to sign up | URL | quote
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| ReadyKern | text, call and email alerts | sign up at ... | https://... | "..." |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL and a quote.
+- [ ] All five headings, in order.
 
 **How many:** 1
 
-**Done when:** 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
+**Done when:** 1 file exactly in the shape, every self-check line true.
 
 **How Claude checks it:**
-- Claude opens 10 rows at random.
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
 - a URL that does not open, is a front page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 3. BAS-GEM-03 · Bastion: 20 features the best preparedness and inventory apps have
+## 2. BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives
 
-**Due:** 2026-11-28 · **State:** now
+**Due:** 2026-11-22 · **State:** now
 
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Bastion uses.
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Bastion's checklist uses real quantities and expiry checks instead of a generic list.
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/pillars/bastion/
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 **Do this:**
-1. Look at preparedness and inventory apps (FEMA app, Prepper inventory tools, Sortly).
-2. Only features the app's own page, help centre or store listing shows; no guesses.
-3. Sort by how much the feature would help a person using this pillar every day.
+1. Ready.gov, FEMA and the Red Cross only; quantities scaled to 4 people and 3 days; pets: one dog.
 
-**Make:** `bastion_gemini_features_{YYYYMMDD-HHMM}.json`
+**Make:** `bastion_gemini_kit-items_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
 
-**How many:** 20
+**Every field, exactly:**
+- `n` (integer): row
+- `item` (text): what
+- `qty_for_4` (number): for 4 people for 72 hours
+- `unit` (text): gallons, items, days ...
+- `shelf_life_months` (number or empty): if it expires
+- `check_every_months` (number): how often to check
+- `source` (text): Ready.gov, FEMA, Red Cross
+- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
+- `quote` (text): the sentence on that page that proves the row, copied word for word (under 300 characters)
 
-**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+{
+ "n": 1,
+ "item": "Drinking water",
+ "qty_for_4": 12,
+ "unit": "gallons",
+ "shelf_life_months": 6,
+ "check_every_months": 6,
+ "source": "Ready.gov",
+ "url": "https://www.ready.gov/...",
+ "quote": "one gallon of water per person per day"
+}
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
+- [ ] Every quote is copied word for word from that page and is on it now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
+- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
+
+**How many:** 40
+
+**Done when:** 40 rows exactly in the shape, every self-check line true.
 
 **How Claude checks it:**
-- Claude opens 10 rows at random.
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
 - a URL that does not open, is a front page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 3. BAS-GEM-06 · Bastion: the function spec, written as the build plan
+
+**Due:** 2026-11-24 · **State:** now
+
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Bastion from, step by step.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
+- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/bastion
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
+
+**Do this:**
+1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/bastion/) on a phone-sized browser and use every section.
+2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/bastion): every file the page loads, and pillar.json.
+3. Write section A from what is there now, with file:line for each item; then B to H.
+4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
+
+**Make:** `bastion_gemini_function-spec_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
+
+**Every field, exactly:**
+- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
+- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
+- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
+- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
+- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
+- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
+- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
+- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every item in A has a file:line that exists.
+- [ ] B has 8+ stories and none invents a personal fact.
+- [ ] C names every field with type and example.
+- [ ] F has 12+ tests, each with one Given, one When, one Then.
+- [ ] G steps are in an order that can ship one by one.
+- [ ] All eight headings, in order.
+
+**How many:** 1
+
+**Done when:** 1 file exactly in the shape, every self-check line true.
+
+**How Claude checks it:**
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names

@@ -2,146 +2,208 @@
 
 # Garage · homework for Gemini
 
-Updated 2026-11-16 06:08 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-16 13:40 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-## 1. GAR-GEM-01 · Garage: Recalls and service bulletins for the 2025 Kia Sorento Hybrid
+## 1. GAR-GEM-05 · Garage: every recall and service campaign for both vehicles
 
 **Due:** 2026-11-19 · **State:** now
 
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Garage shows open recalls on each vehicle's card and reminds Joseph until each is marked done.
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/pillars/garage/
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 **Do this:**
-1. From nhtsa.gov/recalls and Kia's own recall page; say 'none' plainly if a list is empty.
+1. Search nhtsa.gov/recalls by year, make and model for both: 2025 Kia Sorento Hybrid and 2021 Yamaha MT-07 (and MT07).
+2. Add the maker's own recall pages (Kia, Yamaha) for anything NHTSA does not list.
+3. If a vehicle has none, add one row with campaign 'none' and, as its url, the NHTSA results page for that exact year, make and model (the one place a results page is allowed).
 
-**Make:** `garage_gemini_sorento-recalls_{YYYYMMDD-HHMM}.md`
+**Make:** `garage_gemini_recalls_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `one markdown table: campaign number | date | what | remedy | NHTSA URL`
+**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
+
+**Every field, exactly:**
+- `vehicle` (one of: 2025 Kia Sorento Hybrid, 2021 Yamaha MT-07): which vehicle
+- `campaign` (text): the NHTSA campaign number, e.g. 25V123000, or the maker's code
+- `date` (date YYYY-MM-DD): report date
+- `component` (text): as NHTSA names it
+- `summary` (text): one sentence
+- `remedy` (text): one sentence
+- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+{
+ "vehicle": "2021 Yamaha MT-07",
+ "campaign": "21V000000",
+ "date": "2021-01-01",
+ "component": "...",
+ "summary": "...",
+ "remedy": "...",
+ "url": "https://www.nhtsa.gov/..."
+}
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
+- [ ] Every quote is copied word for word from that page and is on it now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
+- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
 
 **How many:** 1
 
-**Done when:** 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
+**Done when:** 1 rows exactly in the shape, every self-check line true.
 
 **How Claude checks it:**
-- Claude opens 10 rows at random.
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
 - a URL that does not open, is a front page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 2. GAR-GEM-02 · Garage: Caltrans chain-control rules and I-5 Tejon Pass closures
+## 2. GAR-GEM-06 · Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures
 
 **Due:** 2026-11-21 · **State:** now
 
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Garage and Aether warn before a mountain drive when chains are required or the pass is closed.
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/pillars/garage/
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 **Do this:**
-1. The R1/R2/R3 rules from Caltrans, then 29 closures of I-5 at Tejon Pass in 2023-2026 from Caltrans or CHP releases.
+1. Rows 1-3: the R1, R2 and R3 rules from Caltrans' chain-control page.
+2. Rows 4+: I-5 closures at Tejon Pass (the Grapevine) since 2023 from Caltrans District 7 or CHP news releases.
 
 **Make:** `garage_gemini_chain-control_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array of objects, one per row: {"n","date","what happened (closure, chain control R1/R2/R3)","hours","source","url"}`
+**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
 
-**How many:** 30
+**Every field, exactly:**
+- `n` (integer): row
+- `kind` (one of: rule, closure): a chain-control rule or a past closure
+- `date` (date YYYY-MM-DD or empty): for closures
+- `what` (text): R1/R2/R3 meaning, or what closed and why
+- `hours` (number or empty): closure length
+- `applies_to_awd_hybrid` (yes / no / not stated): for the rules: does it apply to an AWD SUV with snow tires
+- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
+- `quote` (text): the sentence on that page that proves the row, copied word for word (under 300 characters)
 
-**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+**One finished row, as an example (use your own data, never copy this):**
 
-**How Claude checks it:**
-- Claude opens 10 rows at random.
+```
+{
+ "n": 1,
+ "kind": "rule",
+ "date": "",
+ "what": "R2: chains required on all vehicles except 4WD/AWD with snow tires on all four wheels",
+ "hours": null,
+ "applies_to_awd_hybrid": "no",
+ "url": "https://dot.ca.gov/...",
+ "quote": "..."
+}
+```
 
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
-
-## 3. GAR-GEM-03 · Garage: California weekly regular gasoline prices, Jan 2024 to now
-
-**Due:** 2026-11-23 · **State:** now
-
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/garage/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. EIA weekly retail gasoline series for California only.
-
-**Make:** `garage_gemini_fuel-prices_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of objects, one per row: {"week","price_usd_per_gal","series","url"}`
-
-**How many:** 100
-
-**Done when:** 100 rows (or the whole document) in the shape, every source opening and saying what the row says.
-
-**How Claude checks it:**
-- Claude opens 10 rows at random.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
-
-## 4. GAR-GEM-04 · Garage: 20 features the best car maintenance and fuel logs have
-
-**Due:** 2026-11-28 · **State:** now
-
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/garage/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Look at car maintenance and fuel logs (Fuelly, Drivvo, CARFAX Car Care).
-2. Only features the app's own page, help centre or store listing shows; no guesses.
-3. Sort by how much the feature would help a person using this pillar every day.
-
-**Make:** `garage_gemini_features_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
+- [ ] Every quote is copied word for word from that page and is on it now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
+- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
 
 **How many:** 20
 
-**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+**Done when:** 20 rows exactly in the shape, every self-check line true.
 
 **How Claude checks it:**
-- Claude opens 10 rows at random.
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
 - a URL that does not open, is a front page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 3. GAR-GEM-07 · Garage: the function spec, written as the build plan
+
+**Due:** 2026-11-24 · **State:** now
+
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Garage from, step by step.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/garage/
+- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
+
+**Do this:**
+1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/garage/) on a phone-sized browser and use every section.
+2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage): every file the page loads, and pillar.json.
+3. Write section A from what is there now, with file:line for each item; then B to H.
+4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
+
+**Make:** `garage_gemini_function-spec_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
+
+**Every field, exactly:**
+- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
+- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
+- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
+- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
+- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
+- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
+- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
+- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every item in A has a file:line that exists.
+- [ ] B has 8+ stories and none invents a personal fact.
+- [ ] C names every field with type and example.
+- [ ] F has 12+ tests, each with one Given, one When, one Then.
+- [ ] G steps are in an order that can ship one by one.
+- [ ] All eight headings, in order.
+
+**How many:** 1
+
+**Done when:** 1 file exactly in the shape, every self-check line true.
+
+**How Claude checks it:**
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names

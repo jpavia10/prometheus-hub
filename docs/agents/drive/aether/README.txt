@@ -8,49 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- AET-GRK-01 · Aether: second reader on Gemini's 'Data feeds for air quality, wildfire, weather and the mountain pass' · due 2026-11-22 · waits for its input file
-    make: aether_grok_feeds-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- AET-GRK-03 · Aether: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: aether_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 3 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- AET-GEM-01 · Aether: Data feeds for air quality, wildfire, weather and the mountain pass · due 2026-11-19
-    make: aether_gemini_feeds_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- AET-GEM-02 · Aether: Wildfires within 25 miles of Frazier Park since 2015 · due 2026-11-21
-    make: aether_gemini_fire-history_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- AET-GEM-03 · Aether: 20 features the best weather, fire and air apps have · due 2026-11-28
-    make: aether_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- AET-GEM-04 · Aether: the live data feeds for air, fire, weather and the pass · due 2026-11-20
+    make: aether_gemini_feeds_{YYYYMMDD-HHMM}.json · how many: 10 · done when: 10 rows exactly in the shape, every self-check line true.
+- AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-24
+    make: aether_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- AET-MUS-01 · Aether: second reader on Gemini's 'Wildfires within 25 miles of Frazier Park since 2015' · due 2026-11-24 · waits for its input file
-    make: aether_muse_fire-history-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- AET-MUS-02 · Aether: second reader on Gemini's 'the live data feeds for air, fire, weather and the pass' · due 2026-11-23 · waits for its input file
+    make: aether_muse_feeds-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Aether · Atmospheric & Field Lab right now.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Aether · Atmospheric & Field Lab right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Aether · Atmospheric & Field Lab right now.

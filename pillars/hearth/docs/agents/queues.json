@@ -233,7 +233,7 @@
     {
      "id": "HEA-GEM-12",
      "title": "Hephaestus Hearth: Deck refurbish specs from the makers' own pages",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-19",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
      "inputs": [
@@ -261,12 +261,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
     },
     {
      "id": "HEA-GEM-13",
      "title": "Hephaestus Hearth: When Kern County needs a permit for deck repair or replacement",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-21",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
      "inputs": [
@@ -294,12 +295,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
     },
     {
      "id": "HEA-GEM-14",
      "title": "Hephaestus Hearth: A seasonal checklist for a mountain home at about 5,000 ft",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-23",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
      "inputs": [
@@ -327,12 +329,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     },
     {
      "id": "HEA-GEM-15",
      "title": "Hephaestus Hearth: 20 features the best home renovation and home-inventory apps have",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-28",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
      "inputs": [
@@ -362,6 +365,252 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "HEA-GEM-16",
+     "title": "Hephaestus Hearth: deck rebuild specs from the makers' installation guides",
+     "state": "now",
+     "due": "2026-11-20",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Hearth's deck stage checks each course against the real spacing, gap and span numbers before a board goes down.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "The deck is 23 x 10 ft on the second floor, rebuilt in 21 staggered courses (Hearth's stage). Cover cedar and the two composite lines most sold at Home Depot and Lowe's (name them).",
+      "For each product take the installation guide PDF from the maker's site and copy every spacing, gap, span, fastener and finishing number.",
+      "One spec per row; never combine two numbers in one row."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_deck-specs_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below and nothing else"
+     },
+     "count": 40,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row number"
+      },
+      {
+       "name": "part",
+       "type": "one of: decking, fastener, joist, joist tape, flashing, stain, railing",
+       "rule": "what the spec is for"
+      },
+      {
+       "name": "product",
+       "type": "text",
+       "rule": "the exact product name and maker"
+      },
+      {
+       "name": "spec",
+       "type": "text",
+       "rule": "what is measured, e.g. 'gap between boards', 'joist span at 16 in on center'"
+      },
+      {
+       "name": "value",
+       "type": "number",
+       "rule": "the number"
+      },
+      {
+       "name": "unit",
+       "type": "text",
+       "rule": "in, mm, ft, coats, hours ..."
+      },
+      {
+       "name": "condition",
+       "type": "text",
+       "rule": "when it applies, e.g. 'installed below 60 F'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the exact page that shows this row, opened by you today; never a home page or search page"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": "page or section of the guide"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the sentence on that page that proves the row, copied word for word (under 300 characters)"
+      }
+     ],
+     "example": {
+      "n": 1,
+      "part": "decking",
+      "product": "Trex Transcend",
+      "spec": "gap between board ends at 40 F or above",
+      "value": 0.0625,
+      "unit": "in",
+      "condition": "above 40 F",
+      "url": "https://...",
+      "page": "p. 4",
+      "quote": "..."
+     },
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).",
+      "Every quote is copied word for word from that page and is on it now.",
+      "No row is a copy of another with the names changed.",
+      "Numbers have their unit in the field name or the unit field, never inside the text.",
+      "The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked."
+     ],
+     "done_when": "40 rows exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
+     ]
+    },
+    {
+     "id": "HEA-GEM-17",
+     "title": "Hephaestus Hearth: when Kern County needs a permit for this deck",
+     "state": "now",
+     "due": "2026-11-22",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Hearth marks the deck stages that need a permit or an inspection before work starts.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Use only Kern County Public Works / Building Inspection pages and the county code they cite.",
+      "Answer for this deck: second floor, 23 x 10 ft, boards and railing replaced, joists possibly replaced.",
+      "If the county site does not say, write 'not stated on the county site' under that heading."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_kern-permits_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "one markdown file with exactly these headings: 1 The rule | 2 Exceptions | 3 Fees | 4 How to apply | 5 Inspections | 6 Sources"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "each heading",
+       "type": "markdown",
+       "rule": "under each heading: plain sentences, every one ending with the Kern County page it came from in brackets"
+      }
+     ],
+     "example": "## 1 The rule\nA permit is required to repair or replace a deck more than 30 in above grade [https://... Kern County Public Works, 'Decks', section 2].",
+     "self_check": [
+      "Every sentence ends with its source in brackets.",
+      "Nothing comes from a contractor's blog.",
+      "All six headings are there in this order."
+     ],
+     "done_when": "1 file exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
+     ]
+    },
+    {
+     "id": "HEA-GEM-18",
+     "title": "Hephaestus Hearth: the function spec, written as the build plan",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Hephaestus Hearth from, step by step.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hearth/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)"
+     ],
+     "steps": [
+      "Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/hearth/) on a phone-sized browser and use every section.",
+      "Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hearth/): every file the page loads, and pillar.json.",
+      "Write section A from what is there now, with file:line for each item; then B to H.",
+      "Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_function-spec_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "A What it does today",
+       "type": "list",
+       "rule": "every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)"
+      },
+      {
+       "name": "B What Joseph needs it to do",
+       "type": "8+ user stories",
+       "rule": "'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life"
+      },
+      {
+       "name": "C Data",
+       "type": "table",
+       "rule": "record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar"
+      },
+      {
+       "name": "D Screens",
+       "type": "per screen",
+       "rule": "purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state"
+      },
+      {
+       "name": "E Rules and edge cases",
+       "type": "10+",
+       "rule": "dates and time zones, missing data, offline, two devices, a value of 0 vs unknown"
+      },
+      {
+       "name": "F Acceptance tests",
+       "type": "12+",
+       "rule": "Given / When / Then, each checkable in a phone browser in under two minutes"
+      },
+      {
+       "name": "G Order of work",
+       "type": "numbered steps",
+       "rule": "each step small enough for one build, with what Joseph can use after it"
+      },
+      {
+       "name": "H Must not",
+       "type": "list",
+       "rule": "the charter's protections that apply, no server or account, no made-up numbers"
+      }
+     ],
+     "example": "F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.",
+     "self_check": [
+      "Every item in A has a file:line that exists.",
+      "B has 8+ stories and none invents a personal fact.",
+      "C names every field with type and example.",
+      "F has 12+ tests, each with one Given, one When, one Then.",
+      "G steps are in an order that can ship one by one.",
+      "All eight headings, in order."
+     ],
+     "done_when": "1 file exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
     }
    ]
@@ -404,7 +653,7 @@
     {
      "id": "HEA-GRK-02",
      "title": "Hephaestus Hearth: second reader on Gemini's 'Deck refurbish specs from the makers' own pages'",
-     "state": "next",
+     "state": "withdrawn",
      "due": "2026-11-22",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [
@@ -427,6 +676,53 @@
      ],
      "rejected_if": [
       "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
+    },
+    {
+     "id": "HEA-GRK-04",
+     "title": "Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan'",
+     "state": "next",
+     "due": "2026-11-27",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file hearth_gemini_function-spec_*.md in the folder below (HEA-GEM-18)"
+     ],
+     "steps": [
+      "Open Gemini's file and the code it describes.",
+      "Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.",
+      "Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.",
+      "List up to 10 things the pillar needs that the spec leaves out, each with why."
+     ],
+     "deliver": {
+      "file": "hearth_grok_function-spec-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
       "a row copied from another row with the names changed",
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
@@ -472,7 +768,7 @@
     {
      "id": "HEA-MUS-01",
      "title": "Hephaestus Hearth: second reader on Gemini's 'When Kern County needs a permit for deck repair or replacement'",
-     "state": "next",
+     "state": "withdrawn",
      "due": "2026-11-24",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [
@@ -495,6 +791,97 @@
      ],
      "rejected_if": [
       "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
+    },
+    {
+     "id": "HEA-MUS-02",
+     "title": "Hephaestus Hearth: second reader on Gemini's 'when Kern County needs a permit for this deck'",
+     "state": "next",
+     "due": "2026-11-25",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file hearth_gemini_kern-permits_*.md in the folder below (HEA-GEM-17)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "hearth_muse_kern-permits-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "HEA-MUS-03",
+     "title": "Hephaestus Hearth: second reader on Gemini's 'deck rebuild specs from the makers' installation guides'",
+     "state": "next",
+     "due": "2026-11-23",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file hearth_gemini_deck-specs_*.json in the folder below (HEA-GEM-16)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "hearth_muse_deck-specs-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
       "a row copied from another row with the names changed",
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",

@@ -61,12 +61,16 @@ COMMON_REJECT = ["fewer rows than the count, or a row missing a field of the sha
 def task_md(i, t, p, folder, common=False):
     L = [f"## {i}. {t['id']} · {t['title']}", "", f"**Due:** {t.get('due', '-')} · **State:** {t.get('state')}" + (" (starts when the file it checks is in the folder)" if t.get("state") == "next" else ""), ""]
     if t.get("why") and not common: L += [f"**Why:** {t['why']}", ""]      # the AI's Drive page leaves the why out (it is on the pillar's queue page)
+    if t.get("unlocks"): L += [f"**What it unlocks:** {t['unlocks']}", ""]           # 2026-11-16 (owner): every task says what it is for in the app
     if t.get("inputs"): L += ["**Read first:**"] + [f"- {x}" for x in t["inputs"]] + [""]
     if t.get("steps"): L += ["**Do this:**"] + [f"{n}. {s}" for n, s in enumerate(t["steps"], 1)] + [""]
     d = t.get("deliver") or {}
     if d:
         L += [f"**Make:** `{d.get('file')}`", "", f"**Save in:** {d.get('folder')}", ""]
         if d.get("shape"): L += [f"**Shape:** `{d['shape']}`", ""]
+    if t.get("fields"): L += ["**Every field, exactly:**"] + [f"- `{f['name']}` ({f.get('type', 'text')}): {f.get('rule', '')}" for f in t["fields"]] + [""]
+    if t.get("example"): L += ["**One finished row, as an example (use your own data, never copy this):**", "", "```", t["example"] if isinstance(t["example"], str) else json.dumps(t["example"], ensure_ascii=False, indent=1), "```", ""]
+    if t.get("self_check"): L += ["**Before you save, check every one of these yourself:**"] + [f"- [ ] {x}" for x in t["self_check"]] + [""]
     if t.get("count"): L += [f"**How many:** {t['count']}", ""]
     if t.get("done_when"): L += [f"**Done when:** {t['done_when']}", ""]
     if t.get("checks"): L += ["**How Claude checks it:**"] + [f"- {x}" for x in t["checks"]] + [""]

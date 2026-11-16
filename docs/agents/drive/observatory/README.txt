@@ -8,46 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- OBS-GRK-01 · Observatory: second reader on Gemini's '10 primary sources for each of the 8 subjects' · due 2026-11-22 · waits for its input file
-    make: observatory_grok_sources-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- OBS-GRK-03 · Observatory: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: observatory_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 2 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- OBS-GEM-01 · Observatory: 10 primary sources for each of the 8 subjects · due 2026-11-19
-    make: observatory_gemini_sources_{YYYYMMDD-HHMM}.json · how many: 80 · done when: 80 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- OBS-GEM-02 · Observatory: 20 features the best news and signal trackers have · due 2026-11-28
-    make: observatory_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- OBS-GEM-03 · Observatory: primary sources for each subject Observatory watches · due 2026-11-22
+    make: observatory_gemini_sources_{YYYYMMDD-HHMM}.json · how many: 64 · done when: 64 rows exactly in the shape, every self-check line true.
+- OBS-GEM-04 · Observatory: the function spec, written as the build plan · due 2026-11-24
+    make: observatory_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Observatory right now.
+- OBS-MUS-01 · Observatory: second reader on Gemini's 'primary sources for each subject Observatory watches' · due 2026-11-25 · waits for its input file
+    make: observatory_muse_sources-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Observatory right now.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Observatory right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Observatory right now.

@@ -8,37 +8,37 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- HEA-GRK-02 · Hephaestus Hearth: second reader on Gemini's 'Deck refurbish specs from the makers' own pages' · due 2026-11-22 · waits for its input file
-    make: hearth_grok_deck-specs-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: hearth_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 4 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 3 open in this pillar.
 
 
-- HEA-GEM-12 · Hephaestus Hearth: Deck refurbish specs from the makers' own pages · due 2026-11-19
-    make: hearth_gemini_deck-specs_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- HEA-GEM-13 · Hephaestus Hearth: When Kern County needs a permit for deck repair or replacement · due 2026-11-21
-    make: hearth_gemini_kern-permits_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- HEA-GEM-14 · Hephaestus Hearth: A seasonal checklist for a mountain home at about 5,000 ft · due 2026-11-23
-    make: hearth_gemini_mountain-home_{YYYYMMDD-HHMM}.json · how many: 60 · done when: 60 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- HEA-GEM-15 · Hephaestus Hearth: 20 features the best home renovation and home-inventory apps have · due 2026-11-28
-    make: hearth_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- HEA-GEM-16 · Hephaestus Hearth: deck rebuild specs from the makers' installation guides · due 2026-11-20
+    make: hearth_gemini_deck-specs_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 rows exactly in the shape, every self-check line true.
+- HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck · due 2026-11-22
+    make: hearth_gemini_kern-permits_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-24
+    make: hearth_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 
-- HEA-MUS-01 · Hephaestus Hearth: second reader on Gemini's 'When Kern County needs a permit for deck repair or replacement' · due 2026-11-24 · waits for its input file
-    make: hearth_muse_kern-permits-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- HEA-MUS-03 · Hephaestus Hearth: second reader on Gemini's 'deck rebuild specs from the makers' installation guides' · due 2026-11-23 · waits for its input file
+    make: hearth_muse_deck-specs-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+- HEA-MUS-02 · Hephaestus Hearth: second reader on Gemini's 'when Kern County needs a permit for this deck' · due 2026-11-25 · waits for its input file
+    make: hearth_muse_kern-permits-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
 - HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings · due 2026-11-24
@@ -46,14 +46,14 @@ Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Hephaestus Hearth right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Hephaestus Hearth right now.

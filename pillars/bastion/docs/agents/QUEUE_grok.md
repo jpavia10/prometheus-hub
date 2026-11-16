@@ -2,37 +2,53 @@
 
 # Bastion · Mountain Prep · homework for Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
+Updated 2026-11-16 13:40 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
 
-## 1. BAS-GRK-01 · Bastion: second reader on Gemini's 'A 72-hour kit for 4 people and pets, with shelf lives'
+## 1. BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan'
 
-**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+**Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
-**Why:** Every Gemini dataset gets a second reader before Claude builds on it.
+**Why:** Nothing Gemini delivers is built on until a second reader has checked it.
+
+**What it unlocks:** Claude builds from the file only after this check.
 
 **Read first:**
-- Gemini's file bastion_gemini_kit-items_*.json in the folder below (once it is there)
+- Gemini's file bastion_gemini_function-spec_*.md in the folder below (BAS-GEM-06)
 
 **Do this:**
-1. Open 15 rows at random (or every row if fewer) and the source each cites.
-2. For each: what Gemini says, what the page says, agree/differ.
-3. Add up to 5 rows Gemini missed, same shape.
+1. Open Gemini's file and the code it describes.
+2. Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.
+3. Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.
+4. List up to 10 things the pillar needs that the spec leaves out, each with why.
 
-**Make:** `bastion_grok_kit-items-check_{YYYYMMDD-HHMM}.md`
+**Make:** `bastion_grok_function-spec-check_{YYYYMMDD-HHMM}.md`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `table: row | gemini says | page says | url | agree/differ`
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
 
-**How many:** 15
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
 
-**Done when:** 15 rows checked with the page each opened.
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
 
 **How Claude checks it:**
-- Claude spot-checks 3 'differ' lines.
+- Claude re-checks 3 of your differ lines.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
 - a URL that does not open, is a front page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens 10 rows at random)

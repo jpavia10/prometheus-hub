@@ -10,7 +10,7 @@
     {
      "id": "KIN-GEM-01",
      "title": "Kin: California custody schedule templates",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-19",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kin uses.",
      "inputs": [
@@ -38,12 +38,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     },
     {
      "id": "KIN-GEM-02",
      "title": "Kin: The yearly school paperwork for El Tejon Unified families",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-21",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kin uses.",
      "inputs": [
@@ -71,12 +72,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     },
     {
      "id": "KIN-GEM-03",
      "title": "Kin: 20 features the best co-parenting and family apps have",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-28",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kin uses.",
      "inputs": [
@@ -106,6 +108,96 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "KIN-GEM-04",
+     "title": "Kin: the function spec, written as the build plan",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Kin from, step by step.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/kin/",
+      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kin",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)"
+     ],
+     "steps": [
+      "Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/kin/) on a phone-sized browser and use every section.",
+      "Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kin): every file the page loads, and pillar.json.",
+      "Write section A from what is there now, with file:line for each item; then B to H.",
+      "Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'."
+     ],
+     "deliver": {
+      "file": "kin_gemini_function-spec_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "A What it does today",
+       "type": "list",
+       "rule": "every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)"
+      },
+      {
+       "name": "B What Joseph needs it to do",
+       "type": "8+ user stories",
+       "rule": "'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life"
+      },
+      {
+       "name": "C Data",
+       "type": "table",
+       "rule": "record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar"
+      },
+      {
+       "name": "D Screens",
+       "type": "per screen",
+       "rule": "purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state"
+      },
+      {
+       "name": "E Rules and edge cases",
+       "type": "10+",
+       "rule": "dates and time zones, missing data, offline, two devices, a value of 0 vs unknown"
+      },
+      {
+       "name": "F Acceptance tests",
+       "type": "12+",
+       "rule": "Given / When / Then, each checkable in a phone browser in under two minutes"
+      },
+      {
+       "name": "G Order of work",
+       "type": "numbered steps",
+       "rule": "each step small enough for one build, with what Joseph can use after it"
+      },
+      {
+       "name": "H Must not",
+       "type": "list",
+       "rule": "the charter's protections that apply, no server or account, no made-up numbers"
+      }
+     ],
+     "example": "F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.",
+     "self_check": [
+      "Every item in A has a file:line that exists.",
+      "B has 8+ stories and none invents a personal fact.",
+      "C names every field with type and example.",
+      "F has 12+ tests, each with one Given, one When, one Then.",
+      "G steps are in an order that can ship one by one.",
+      "All eight headings, in order."
+     ],
+     "done_when": "1 file exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
     }
    ]
@@ -117,7 +209,7 @@
     {
      "id": "KIN-GRK-01",
      "title": "Kin: second reader on Gemini's 'California custody schedule templates'",
-     "state": "next",
+     "state": "withdrawn",
      "due": "2026-11-22",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [
@@ -144,6 +236,53 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "KIN-GRK-02",
+     "title": "Kin: second reader on Gemini's 'the function spec, written as the build plan'",
+     "state": "next",
+     "due": "2026-11-27",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file kin_gemini_function-spec_*.md in the folder below (KIN-GEM-04)"
+     ],
+     "steps": [
+      "Open Gemini's file and the code it describes.",
+      "Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.",
+      "Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.",
+      "List up to 10 things the pillar needs that the spec leaves out, each with why."
+     ],
+     "deliver": {
+      "file": "kin_grok_function-spec-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
      ]
     }
    ]
@@ -155,7 +294,7 @@
     {
      "id": "KIN-MUS-01",
      "title": "Kin: second reader on Gemini's 'The yearly school paperwork for El Tejon Unified families'",
-     "state": "next",
+     "state": "withdrawn",
      "due": "2026-11-24",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [
@@ -182,7 +321,8 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     }
    ]
   },

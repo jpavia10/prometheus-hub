@@ -8,35 +8,30 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- MON-GRK-01 · Money: second reader on Gemini's 'Hardship programs and promo terms of 30 more card and loan issuers' · due 2026-11-22 · waits for its input file
-    make: money_grok_issuers-more-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+- MON-GRK-02 · Money: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: money_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-16 06:08 UTC · 3 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
-- MON-GEM-01 · Money: Hardship programs and promo terms of 30 more card and loan issuers · due 2026-11-19
-    make: money_gemini_issuers-more_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- MON-GEM-02 · Money: 12 more payoff cases checked to the cent · due 2026-11-21
-    make: money_gemini_worked-cases_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 rows (or the whole document) in the shape, every source opening and saying what the row says.
-- MON-GEM-03 · Money: 20 features the best debt payoff planners have · due 2026-11-28
-    make: money_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-24
+    make: money_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
-- MON-MUS-01 · Money: second reader on Gemini's '12 more payoff cases checked to the cent' · due 2026-11-24 · waits for its input file
-    make: money_muse_worked-cases-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
+No homework for Muse in Money · payoff simulator right now.
 
 ## ChatGPT
 
-Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 
 - MON-GPT-01 · Money: phone audit: 15 findings · due 2026-11-24
@@ -44,14 +39,14 @@ Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Money · payoff simulator right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Money · payoff simulator right now.

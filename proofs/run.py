@@ -123,10 +123,10 @@ with sync_playwright() as p:
     fo = p8.evaluate("""() => { const d = FORGE.data(); const g = d.per.find((p) => p.ai === 'Gemini');
       const b = [...document.querySelectorAll('.lrow')].find((x) => x.querySelector('b').textContent === 'Gemini'); if (b) b.click();
       const rows = [...document.querySelectorAll('#f-tasks details.trow .stat-s')].map((x) => x.textContent.split(' · ')[0]);
-      return { hub: d.sources.hub, board: d.sources.board, pillars: d.pillars.length, matrix: document.querySelectorAll('#f-matrix tbody tr').length, gemini: g ? g.open.length : 0,
+      return { hub: d.sources.hub, board: d.sources.board, pillars: d.pillars.filter((p) => !p.ext).length, matrix: document.querySelectorAll('#f-matrix tbody tr').length, gemini: g ? g.open.length : 0,
         shown: rows.length, onlyGemini: rows.length > 0 && rows.every((r) => r === 'Gemini'), lrows: document.querySelectorAll('.lrow').length }; }""")
     proof("FORGE-1", "The Forge reads every pillar's homework, the workboard and Titan's loop, shows each AI's load against its floor, a matrix of every place, and filters to one AI",
-          fo["hub"].startswith(str(fo["pillars"])) and fo["board"] == "read" and fo["matrix"] >= fo["pillars"] and fo["lrows"] >= 4 and fo["onlyGemini"],
+          int(fo["hub"].split(" ")[0] if fo["hub"][:1].isdigit() else 0) >= fo["pillars"] and fo["board"] == "read" and fo["matrix"] >= fo["pillars"] and fo["lrows"] >= 4 and fo["onlyGemini"],
           f"queues {fo['hub']}; workboard {fo['board']}; matrix rows {fo['matrix']}; {fo['lrows']} AI rows; Gemini {fo['gemini']} open, filter shows {fo['shown']} Gemini rows only: {fo['onlyGemini']}")
     p8.goto(f"{URL}pillars/foundry/?still=1", wait_until="load"); p8.wait_for_timeout(400); ath_before = p8.evaluate("localStorage.getItem('prometheus.athenaeum.ideas')")
     fd0 = p8.evaluate("FOUNDRY.data().board.length"); p8.evaluate("document.querySelector('#y-board .btn').click()"); p8.wait_for_timeout(300)

@@ -2,146 +2,198 @@
 
 # Hephaestus Hearth · homework for Gemini
 
-Updated 2026-11-16 06:08 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-16 13:40 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-## 1. HEA-GEM-12 · Hephaestus Hearth: Deck refurbish specs from the makers' own pages
+## 1. HEA-GEM-16 · Hephaestus Hearth: deck rebuild specs from the makers' installation guides
 
-**Due:** 2026-11-19 · **State:** now
+**Due:** 2026-11-20 · **State:** now
 
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Hearth's deck stage checks each course against the real spacing, gap and span numbers before a board goes down.
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/pillars/hearth/
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 **Do this:**
-1. The 23 x 10 ft second-floor deck: board gaps, fastener spacing, joist spans, finishing; every number from the maker's installation guide.
+1. The deck is 23 x 10 ft on the second floor, rebuilt in 21 staggered courses (Hearth's stage). Cover cedar and the two composite lines most sold at Home Depot and Lowe's (name them).
+2. For each product take the installation guide PDF from the maker's site and copy every spacing, gap, span, fastener and finishing number.
+3. One spec per row; never combine two numbers in one row.
 
 **Make:** `hearth_gemini_deck-specs_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `JSON array of objects, one per row: {"n","product (cedar, composite, fastener, joist tape, stain)","spec (spacing, gap, span, coats)","value","maker","url","quote"}`
+**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
+
+**Every field, exactly:**
+- `n` (integer): row number
+- `part` (one of: decking, fastener, joist, joist tape, flashing, stain, railing): what the spec is for
+- `product` (text): the exact product name and maker
+- `spec` (text): what is measured, e.g. 'gap between boards', 'joist span at 16 in on center'
+- `value` (number): the number
+- `unit` (text): in, mm, ft, coats, hours ...
+- `condition` (text): when it applies, e.g. 'installed below 60 F'
+- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
+- `page` (text): page or section of the guide
+- `quote` (text): the sentence on that page that proves the row, copied word for word (under 300 characters)
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+{
+ "n": 1,
+ "part": "decking",
+ "product": "Trex Transcend",
+ "spec": "gap between board ends at 40 F or above",
+ "value": 0.0625,
+ "unit": "in",
+ "condition": "above 40 F",
+ "url": "https://...",
+ "page": "p. 4",
+ "quote": "..."
+}
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
+- [ ] Every quote is copied word for word from that page and is on it now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
+- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
 
 **How many:** 40
 
-**Done when:** 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
+**Done when:** 40 rows exactly in the shape, every self-check line true.
 
 **How Claude checks it:**
-- Claude opens 10 rows at random.
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
 - a URL that does not open, is a front page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 2. HEA-GEM-13 · Hephaestus Hearth: When Kern County needs a permit for deck repair or replacement
+## 2. HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck
 
-**Due:** 2026-11-21 · **State:** now
+**Due:** 2026-11-22 · **State:** now
 
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Hearth marks the deck stages that need a permit or an inspection before work starts.
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/pillars/hearth/
 - https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 **Do this:**
-1. Kern County Public Works / Building Inspection pages only.
+1. Use only Kern County Public Works / Building Inspection pages and the county code they cite.
+2. Answer for this deck: second floor, 23 x 10 ft, boards and railing replaced, joists possibly replaced.
+3. If the county site does not say, write 'not stated on the county site' under that heading.
 
 **Make:** `hearth_gemini_kern-permits_{YYYYMMDD-HHMM}.md`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `one markdown file: the rule, the exceptions, the fee table, how to apply, each with the Kern County page URL and a quote`
+**Shape:** `one markdown file with exactly these headings: 1 The rule | 2 Exceptions | 3 Fees | 4 How to apply | 5 Inspections | 6 Sources`
+
+**Every field, exactly:**
+- `each heading` (markdown): under each heading: plain sentences, every one ending with the Kern County page it came from in brackets
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+## 1 The rule
+A permit is required to repair or replace a deck more than 30 in above grade [https://... Kern County Public Works, 'Decks', section 2].
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every sentence ends with its source in brackets.
+- [ ] Nothing comes from a contractor's blog.
+- [ ] All six headings are there in this order.
 
 **How many:** 1
 
-**Done when:** 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
+**Done when:** 1 file exactly in the shape, every self-check line true.
 
 **How Claude checks it:**
-- Claude opens 10 rows at random.
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
 - a URL that does not open, is a front page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 3. HEA-GEM-14 · Hephaestus Hearth: A seasonal checklist for a mountain home at about 5,000 ft
+## 3. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
 
-**Due:** 2026-11-23 · **State:** now
+**Due:** 2026-11-24 · **State:** now
 
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Hephaestus Hearth from, step by step.
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/pillars/hearth/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hearth/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
 
 **Do this:**
-1. Snow load, roof and gutters, defensible space (CAL FIRE), wood stove, pipes, propane; official or manufacturer sources.
+1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/hearth/) on a phone-sized browser and use every section.
+2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hearth/): every file the page loads, and pillar.json.
+3. Write section A from what is there now, with file:line for each item; then B to H.
+4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
 
-**Make:** `hearth_gemini_mountain-home_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_function-spec_{YYYYMMDD-HHMM}.md`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `JSON array of objects, one per row: {"n","season","task","why","how often","source","url"}`
+**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
 
-**How many:** 60
+**Every field, exactly:**
+- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
+- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
+- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
+- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
+- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
+- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
+- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
+- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
 
-**Done when:** 60 rows (or the whole document) in the shape, every source opening and saying what the row says.
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every item in A has a file:line that exists.
+- [ ] B has 8+ stories and none invents a personal fact.
+- [ ] C names every field with type and example.
+- [ ] F has 12+ tests, each with one Given, one When, one Then.
+- [ ] G steps are in an order that can ship one by one.
+- [ ] All eight headings, in order.
+
+**How many:** 1
+
+**Done when:** 1 file exactly in the shape, every self-check line true.
 
 **How Claude checks it:**
-- Claude opens 10 rows at random.
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
 - a URL that does not open, is a front page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
-
-## 4. HEA-GEM-15 · Hephaestus Hearth: 20 features the best home renovation and home-inventory apps have
-
-**Due:** 2026-11-28 · **State:** now
-
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Look at home renovation and home-inventory apps (HomeZada, Centriq, magicplan).
-2. Only features the app's own page, help centre or store listing shows; no guesses.
-3. Sort by how much the feature would help a person using this pillar every day.
-
-**Make:** `hearth_gemini_features_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
-
-**How many:** 20
-
-**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
-
-**How Claude checks it:**
-- Claude opens 10 rows at random.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names

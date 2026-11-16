@@ -10,7 +10,7 @@
     {
      "id": "GAR-GEM-01",
      "title": "Garage: Recalls and service bulletins for the 2025 Kia Sorento Hybrid",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-19",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
      "inputs": [
@@ -38,12 +38,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     },
     {
      "id": "GAR-GEM-02",
      "title": "Garage: Caltrans chain-control rules and I-5 Tejon Pass closures",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-21",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
      "inputs": [
@@ -71,12 +72,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
     },
     {
      "id": "GAR-GEM-03",
      "title": "Garage: California weekly regular gasoline prices, Jan 2024 to now",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-23",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
      "inputs": [
@@ -104,12 +106,13 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     },
     {
      "id": "GAR-GEM-04",
      "title": "Garage: 20 features the best car maintenance and fuel logs have",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-28",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
      "inputs": [
@@ -139,6 +142,279 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "GAR-GEM-05",
+     "title": "Garage: every recall and service campaign for both vehicles",
+     "state": "now",
+     "due": "2026-11-19",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Garage shows open recalls on each vehicle's card and reminds Joseph until each is marked done.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Search nhtsa.gov/recalls by year, make and model for both: 2025 Kia Sorento Hybrid and 2021 Yamaha MT-07 (and MT07).",
+      "Add the maker's own recall pages (Kia, Yamaha) for anything NHTSA does not list.",
+      "If a vehicle has none, add one row with campaign 'none' and, as its url, the NHTSA results page for that exact year, make and model (the one place a results page is allowed)."
+     ],
+     "deliver": {
+      "file": "garage_gemini_recalls_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below and nothing else"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "vehicle",
+       "type": "one of: 2025 Kia Sorento Hybrid, 2021 Yamaha MT-07",
+       "rule": "which vehicle"
+      },
+      {
+       "name": "campaign",
+       "type": "text",
+       "rule": "the NHTSA campaign number, e.g. 25V123000, or the maker's code"
+      },
+      {
+       "name": "date",
+       "type": "date YYYY-MM-DD",
+       "rule": "report date"
+      },
+      {
+       "name": "component",
+       "type": "text",
+       "rule": "as NHTSA names it"
+      },
+      {
+       "name": "summary",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "remedy",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the exact page that shows this row, opened by you today; never a home page or search page"
+      }
+     ],
+     "example": {
+      "vehicle": "2021 Yamaha MT-07",
+      "campaign": "21V000000",
+      "date": "2021-01-01",
+      "component": "...",
+      "summary": "...",
+      "remedy": "...",
+      "url": "https://www.nhtsa.gov/..."
+     },
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).",
+      "Every quote is copied word for word from that page and is on it now.",
+      "No row is a copy of another with the names changed.",
+      "Numbers have their unit in the field name or the unit field, never inside the text.",
+      "The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked."
+     ],
+     "done_when": "1 rows exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
+     ]
+    },
+    {
+     "id": "GAR-GEM-06",
+     "title": "Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures",
+     "state": "now",
+     "due": "2026-11-21",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Garage and Aether warn before a mountain drive when chains are required or the pass is closed.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Rows 1-3: the R1, R2 and R3 rules from Caltrans' chain-control page.",
+      "Rows 4+: I-5 closures at Tejon Pass (the Grapevine) since 2023 from Caltrans District 7 or CHP news releases."
+     ],
+     "deliver": {
+      "file": "garage_gemini_chain-control_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below and nothing else"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "one of: rule, closure",
+       "rule": "a chain-control rule or a past closure"
+      },
+      {
+       "name": "date",
+       "type": "date YYYY-MM-DD or empty",
+       "rule": "for closures"
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": "R1/R2/R3 meaning, or what closed and why"
+      },
+      {
+       "name": "hours",
+       "type": "number or empty",
+       "rule": "closure length"
+      },
+      {
+       "name": "applies_to_awd_hybrid",
+       "type": "yes / no / not stated",
+       "rule": "for the rules: does it apply to an AWD SUV with snow tires"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the exact page that shows this row, opened by you today; never a home page or search page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the sentence on that page that proves the row, copied word for word (under 300 characters)"
+      }
+     ],
+     "example": {
+      "n": 1,
+      "kind": "rule",
+      "date": "",
+      "what": "R2: chains required on all vehicles except 4WD/AWD with snow tires on all four wheels",
+      "hours": null,
+      "applies_to_awd_hybrid": "no",
+      "url": "https://dot.ca.gov/...",
+      "quote": "..."
+     },
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).",
+      "Every quote is copied word for word from that page and is on it now.",
+      "No row is a copy of another with the names changed.",
+      "Numbers have their unit in the field name or the unit field, never inside the text.",
+      "The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked."
+     ],
+     "done_when": "20 rows exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
+     ]
+    },
+    {
+     "id": "GAR-GEM-07",
+     "title": "Garage: the function spec, written as the build plan",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Garage from, step by step.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)"
+     ],
+     "steps": [
+      "Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/garage/) on a phone-sized browser and use every section.",
+      "Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage): every file the page loads, and pillar.json.",
+      "Write section A from what is there now, with file:line for each item; then B to H.",
+      "Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'."
+     ],
+     "deliver": {
+      "file": "garage_gemini_function-spec_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "A What it does today",
+       "type": "list",
+       "rule": "every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)"
+      },
+      {
+       "name": "B What Joseph needs it to do",
+       "type": "8+ user stories",
+       "rule": "'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life"
+      },
+      {
+       "name": "C Data",
+       "type": "table",
+       "rule": "record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar"
+      },
+      {
+       "name": "D Screens",
+       "type": "per screen",
+       "rule": "purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state"
+      },
+      {
+       "name": "E Rules and edge cases",
+       "type": "10+",
+       "rule": "dates and time zones, missing data, offline, two devices, a value of 0 vs unknown"
+      },
+      {
+       "name": "F Acceptance tests",
+       "type": "12+",
+       "rule": "Given / When / Then, each checkable in a phone browser in under two minutes"
+      },
+      {
+       "name": "G Order of work",
+       "type": "numbered steps",
+       "rule": "each step small enough for one build, with what Joseph can use after it"
+      },
+      {
+       "name": "H Must not",
+       "type": "list",
+       "rule": "the charter's protections that apply, no server or account, no made-up numbers"
+      }
+     ],
+     "example": "F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.",
+     "self_check": [
+      "Every item in A has a file:line that exists.",
+      "B has 8+ stories and none invents a personal fact.",
+      "C names every field with type and example.",
+      "F has 12+ tests, each with one Given, one When, one Then.",
+      "G steps are in an order that can ship one by one.",
+      "All eight headings, in order."
+     ],
+     "done_when": "1 file exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
     }
    ]
@@ -150,7 +426,7 @@
     {
      "id": "GAR-GRK-01",
      "title": "Garage: second reader on Gemini's 'Recalls and service bulletins for the 2025 Kia Sorento Hybrid'",
-     "state": "next",
+     "state": "withdrawn",
      "due": "2026-11-22",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [
@@ -177,6 +453,53 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "GAR-GRK-04",
+     "title": "Garage: second reader on Gemini's 'the function spec, written as the build plan'",
+     "state": "next",
+     "due": "2026-11-27",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file garage_gemini_function-spec_*.md in the folder below (GAR-GEM-07)"
+     ],
+     "steps": [
+      "Open Gemini's file and the code it describes.",
+      "Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.",
+      "Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.",
+      "List up to 10 things the pillar needs that the spec leaves out, each with why."
+     ],
+     "deliver": {
+      "file": "garage_grok_function-spec-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
      ]
     }
    ]
@@ -188,7 +511,7 @@
     {
      "id": "GAR-MUS-01",
      "title": "Garage: second reader on Gemini's 'Caltrans chain-control rules and I-5 Tejon Pass closures'",
-     "state": "next",
+     "state": "withdrawn",
      "due": "2026-11-24",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [
@@ -211,6 +534,97 @@
      ],
      "rejected_if": [
       "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
+    },
+    {
+     "id": "GAR-MUS-02",
+     "title": "Garage: second reader on Gemini's 'every recall and service campaign for both vehicles'",
+     "state": "next",
+     "due": "2026-11-22",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file garage_gemini_recalls_*.json in the folder below (GAR-GEM-05)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "garage_muse_recalls-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "GAR-MUS-03",
+     "title": "Garage: second reader on Gemini's 'Caltrans chain-control rules and recent I-5 Tejon Pass closures'",
+     "state": "next",
+     "due": "2026-11-24",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file garage_gemini_chain-control_*.json in the folder below (GAR-GEM-06)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "garage_muse_chain-control-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
       "a row copied from another row with the names changed",
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
