@@ -1,1 +1,1 @@
-deck d20 2026-11-16 core on phones: passcode in System, top bar fits, orbit on screen; shell cache d26
+deck d20 2026-11-16 the home is a game menu: 27 levels in a full-screen world, Today on top, orbit and briefing kept; shell cache d27
