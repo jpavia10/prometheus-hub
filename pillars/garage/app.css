@@ -41,6 +41,10 @@
 .stage-frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent);border-bottom-right-radius:var(--radius-s)}
 #g-3d{width:100%;height:auto;display:block;touch-action:none;cursor:grab;border-radius:8px}
 #g-3d:active{cursor:grabbing}
+#g-3d[hidden]{display:none}
+#g-3d{-webkit-mask-image:radial-gradient(120% 95% at 50% 42%,#000 62%,transparent 100%);mask-image:radial-gradient(120% 95% at 50% 42%,#000 62%,transparent 100%)}
+.g3d-still{display:block;width:100%;height:auto;border-radius:8px}
+.g3d-still[hidden]{display:none}
 #g-3d-cap{border-left:2px solid var(--accent);padding-left:12px;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
 
 /* — odometer readout plate — */
