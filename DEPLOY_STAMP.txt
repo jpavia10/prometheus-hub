@@ -1,1 +1,1 @@
-deck d20 2026-11-16 homework rewritten: detailed and legit, Midas included, Forge reads Midas; shell cache d29
+deck d20 2026-11-16 homework doc links point at the rewritten Drive pages; shell cache d29
