@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-16] Homework loaded everywhere; the Forge rebuilt to show it (Claude), shell cache d28
+- Owner: "aggressively assign homework for all hubs all titan aspects ... very heavy on gemini. I want to see clearly on the forge." Every pillar now has a queue (19 new; Sylade stays presence-only): open hub tasks Gemini 69, Grok 25, Muse 16, ChatGPT 6; Titan adds 19 Gemini projects from its trust gaps plus the loop (Gemini 107 open in all). Rule in CLAUDE.md: refill after every intake or catch-up, Gemini heaviest; floors Gemini 30, Grok 6, Muse 6, ChatGPT 2.
+- Forge reads every pillar queue, Titan's loop and projects, the workboard and every score sheet: workload per AI by source against its floor, a filterable task list with what to make and where, a matrix of every place. Proof FORGE-1; browser proofs 28/28.
+
 ### [2026-11-16] The home is a game menu (Claude), shell cache d27
 - Owner, 2026-11-16: the project is a 1/100 (cheap, every pillar the same, empty, does not help the day); the target is a AAA game menu. New `deck/views/menu.js`: a full-screen world in the level's colour (WebGL, painted sky until art exists), the 27 pillars as levels (swipe, arrows, the level strip), each with its crest, what it is (its manifest's mission), and one live line (its next dated thing on the bus, Kairos' next date, or its first command), Today on top, Enter warps in. The orbit is one tap away (Orbit / Menu, `?home=orbit|menu` pins it) and the whole briefing is right below. Nothing removed.
 - Art: `docs/art/requests/artreq_20261116-0300_prometheus-worlds.json` (28 worlds: home + 27, portrait with depth and light layers) is in the Drive art queue for Gemini; `art/worlds/index.json` lists the worlds that have landed, and the menu layers them live (depth parallax, light, dust) when they do. Proof MENU-1 added; the orbit proofs pin `home=orbit`. Browser proofs 27/27.

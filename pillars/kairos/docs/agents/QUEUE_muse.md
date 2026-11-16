@@ -2,6 +2,38 @@
 
 # Kairos Meridian · homework for Muse
 
-Updated 2026-11-10 03:42 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-16 06:08 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
-No homework for Muse in Kairos Meridian right now. Check your HOMEWORK doc for the other pillars.
+## 1. KAI-MUS-02 · Kairos Meridian: second reader on Gemini's 'The 2026-27 school calendar for El Tejon Unified and Kern High School District'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Why:** Every Gemini dataset gets a second reader before Claude builds on it.
+
+**Read first:**
+- Gemini's file kairos_gemini_school-calendar_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `kairos_muse_school-calendar-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name

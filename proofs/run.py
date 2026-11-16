@@ -119,6 +119,15 @@ with sync_playwright() as p:
         p8.route("**/titan-reliquary-preview/collaborators/CONTRIBUTOR_SCORES.md", lambda route, request: route.fulfill(status=200, body=_ledger.read_text() if _ledger.exists() else "", headers={"content-type": "text/plain"}))
     p8.goto(f"{URL}pillars/forge/?still=1", wait_until="load"); p8.wait_for_function("window.FORGE && FORGE.data().scoreState !== 'loading' && FORGE.data().queueState !== 'loading'", timeout=20000)
     fg = p8.evaluate("() => { const d = FORGE.data(); const by = {}; for (const s of d.scores) by[s.ai] = (by[s.ai] || 0) + 1; return { scores: d.scores.length, by, tasks: d.tasks.length, open: d.tasks.filter((t) => t.state !== 'done').length }; }")
+    p8.goto(f"{URL}pillars/forge/?still=1", wait_until="load"); p8.wait_for_function("window.FORGE && FORGE.data().queueState !== 'loading'", timeout=30000); p8.wait_for_timeout(300)
+    fo = p8.evaluate("""() => { const d = FORGE.data(); const g = d.per.find((p) => p.ai === 'Gemini');
+      const b = [...document.querySelectorAll('.lrow')].find((x) => x.querySelector('b').textContent === 'Gemini'); if (b) b.click();
+      const rows = [...document.querySelectorAll('#f-tasks details.trow .stat-s')].map((x) => x.textContent.split(' · ')[0]);
+      return { hub: d.sources.hub, board: d.sources.board, pillars: d.pillars.length, matrix: document.querySelectorAll('#f-matrix tbody tr').length, gemini: g ? g.open.length : 0,
+        shown: rows.length, onlyGemini: rows.length > 0 && rows.every((r) => r === 'Gemini'), lrows: document.querySelectorAll('.lrow').length }; }""")
+    proof("FORGE-1", "The Forge reads every pillar's homework, the workboard and Titan's loop, shows each AI's load against its floor, a matrix of every place, and filters to one AI",
+          fo["hub"].startswith(str(fo["pillars"])) and fo["board"] == "read" and fo["matrix"] >= fo["pillars"] and fo["lrows"] >= 4 and fo["onlyGemini"],
+          f"queues {fo['hub']}; workboard {fo['board']}; matrix rows {fo['matrix']}; {fo['lrows']} AI rows; Gemini {fo['gemini']} open, filter shows {fo['shown']} Gemini rows only: {fo['onlyGemini']}")
     p8.goto(f"{URL}pillars/foundry/?still=1", wait_until="load"); p8.wait_for_timeout(400); ath_before = p8.evaluate("localStorage.getItem('prometheus.athenaeum.ideas')")
     fd0 = p8.evaluate("FOUNDRY.data().board.length"); p8.evaluate("document.querySelector('#y-board .btn').click()"); p8.wait_for_timeout(300)
     fd = p8.evaluate("(b) => { const d = FOUNDRY.data(); return { board: d.board.length, bench: d.projects.length, stage: d.STAGES[d.projects[0].stage], linked: !!d.projects[0].ideaId, same: localStorage.getItem('prometheus.athenaeum.ideas') === b }; }", ath_before)

@@ -1,10 +1,10 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-10 03:42 UTC. 15 open across 1 pillars.
+Updated 2026-11-16 06:08 UTC. 28 open across 18 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
-TITAN RELIQUARY (its own loop, the exception): 10 homework sheets + 5 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 5 homework sheets + 6 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -14,3 +14,467 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
+1. [Midas Ledger] MID-MUS-01 · The words of the way out: 24 milestone lines and 12 screen lines · due 2026-11-10
+2. [Kairos Meridian] KAI-MUS-02 · Kairos Meridian: second reader on Gemini's 'The 2026-27 school calendar for El Tejon Unified and Kern High School District' · due 2026-11-24 · waits for its input file
+3. [Hephaestus Hearth] HEA-MUS-01 · Hephaestus Hearth: second reader on Gemini's 'When Kern County needs a permit for deck repair or replacement' · due 2026-11-24 · waits for its input file
+4. [Garage] GAR-MUS-01 · Garage: second reader on Gemini's 'Caltrans chain-control rules and I-5 Tejon Pass closures' · due 2026-11-24 · waits for its input file
+5. [Apollo Temple] APO-MUS-02 · Apollo Temple: second reader on Gemini's '30 facts on training, sleep and hydration at about 5,000 ft' · due 2026-11-24 · waits for its input file
+6. [Money · payoff simulator] MON-MUS-01 · Money: second reader on Gemini's '12 more payoff cases checked to the cent' · due 2026-11-24 · waits for its input file
+7. [Selling Pipeline] SEL-MUS-01 · Selling Pipeline: second reader on Gemini's 'USPS Ground Advantage and Priority Mail retail rates 2026' · due 2026-11-24 · waits for its input file
+8. [Records · Paper Killer] REC-MUS-01 · Records: second reader on Gemini's 'Renewal cycles of 30 California documents' · due 2026-11-24 · waits for its input file
+9. [Icarus Stake] ICA-MUS-01 · Icarus Stake: second reader on Gemini's '40 worked risk-of-ruin and position-sizing cases' · due 2026-11-24 · waits for its input file
+10. [Hermes Post] HER-MUS-01 · Hermes Post: second reader on Gemini's '60 new phishing and scam lures seen in 2026' · due 2026-11-24 · waits for its input file
+11. [Bastion · Mountain Prep] BAS-MUS-01 · Bastion: second reader on Gemini's 'Kern County evacuation zones and alert systems' · due 2026-11-24 · waits for its input file
+12. [Odyssey · Trips & Away Mode] ODY-MUS-01 · Odyssey: second reader on Gemini's 'Travel facts for the Philippines as of now' · due 2026-11-24 · waits for its input file
+13. [Privacy · CA DROP] PRI-MUS-01 · Privacy: second reader on Gemini's 'The California DROP (Delete Request and Opt-out Platform) timeline' · due 2026-11-24 · waits for its input file
+14. [Argus Album] ARG-MUS-02 · Argus Album: second reader on Gemini's 'EXIF and HEIF metadata fields of 6 current phones' · due 2026-11-24 · waits for its input file
+15. [Kin] KIN-MUS-01 · Kin: second reader on Gemini's 'The yearly school paperwork for El Tejon Unified families' · due 2026-11-24 · waits for its input file
+16. [Aether · Atmospheric & Field Lab] AET-MUS-01 · Aether: second reader on Gemini's 'Wildfires within 25 miles of Frazier Park since 2015' · due 2026-11-24 · waits for its input file
+17. [Polis · Civic & Legal Watch] POL-MUS-01 · Polis: second reader on Gemini's 'The California measures on the November 2026 ballot' · due 2026-11-24 · waits for its input file
+
+==================== 1. MIDAS LEDGER ====================
+## 1. MID-MUS-01 · The words of the way out: 24 milestone lines and 12 screen lines
+
+**Due:** 2026-11-10 · **State:** now
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/README.md
+
+**Do this:**
+1. 24 milestone lines, one per event: first payment logged; each of 5%, 10%, 25%, 33%, 50%, 66%, 75%, 90%, 100% of starting debt paid; first card paid off; each further card paid off; debt-free date moves 1 month closer; 3, 6, 12 months in a row on plan; a month over plan; a month under plan (kind, no guilt); a new debt added (no guilt, a plan).
+2. Each at most 90 characters, no exclamation marks, no emoji, uses {amount}, {months}, {name} where a number belongs (never a made-up number).
+3. 12 screen lines: one plain sentence under each main number on Home, Debt and Flow saying what it means.
+
+**Make:** `midas_muse_milestones_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `two tables: event | line ; number | line`
+
+**How many:** 36
+
+**Done when:** 36 lines, all within the limits.
+
+**How Claude checks it:**
+- Claude counts characters and placeholders.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a line over 90 characters
+- a number that is not a placeholder
+- 'journey', 'crush', 'smash', 'unlock'
+
+==================== 2. KAIROS MERIDIAN ====================
+## 2. KAI-MUS-02 · Kairos Meridian: second reader on Gemini's 'The 2026-27 school calendar for El Tejon Unified and Kern High School District'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file kairos_gemini_school-calendar_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `kairos_muse_school-calendar-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 3. HEPHAESTUS HEARTH ====================
+## 3. HEA-MUS-01 · Hephaestus Hearth: second reader on Gemini's 'When Kern County needs a permit for deck repair or replacement'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file hearth_gemini_kern-permits_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `hearth_muse_kern-permits-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 4. GARAGE ====================
+## 4. GAR-MUS-01 · Garage: second reader on Gemini's 'Caltrans chain-control rules and I-5 Tejon Pass closures'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file garage_gemini_chain-control_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `garage_muse_chain-control-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 5. APOLLO TEMPLE ====================
+## 5. APO-MUS-02 · Apollo Temple: second reader on Gemini's '30 facts on training, sleep and hydration at about 5,000 ft'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file apollo_gemini_altitude-training_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `apollo_muse_altitude-training-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 6. MONEY · PAYOFF SIMULATOR ====================
+## 6. MON-MUS-01 · Money: second reader on Gemini's '12 more payoff cases checked to the cent'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file money_gemini_worked-cases_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `money_muse_worked-cases-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 7. SELLING PIPELINE ====================
+## 7. SEL-MUS-01 · Selling Pipeline: second reader on Gemini's 'USPS Ground Advantage and Priority Mail retail rates 2026'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file selling_gemini_usps-rates_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `selling_muse_usps-rates-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 8. RECORDS · PAPER KILLER ====================
+## 8. REC-MUS-01 · Records: second reader on Gemini's 'Renewal cycles of 30 California documents'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file records_gemini_renewals_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `records_muse_renewals-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 9. ICARUS STAKE ====================
+## 9. ICA-MUS-01 · Icarus Stake: second reader on Gemini's '40 worked risk-of-ruin and position-sizing cases'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file icarus_gemini_ruin-cases_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `icarus_muse_ruin-cases-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 10. HERMES POST ====================
+## 10. HER-MUS-01 · Hermes Post: second reader on Gemini's '60 new phishing and scam lures seen in 2026'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file hermes_gemini_lures-3_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `hermes_muse_lures-3-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 11. BASTION · MOUNTAIN PREP ====================
+## 11. BAS-MUS-01 · Bastion: second reader on Gemini's 'Kern County evacuation zones and alert systems'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file bastion_gemini_kern-alerts_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `bastion_muse_kern-alerts-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 12. ODYSSEY · TRIPS & AWAY MODE ====================
+## 12. ODY-MUS-01 · Odyssey: second reader on Gemini's 'Travel facts for the Philippines as of now'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file odyssey_gemini_ph-entry_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `odyssey_muse_ph-entry-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 13. PRIVACY · CA DROP ====================
+## 13. PRI-MUS-01 · Privacy: second reader on Gemini's 'The California DROP (Delete Request and Opt-out Platform) timeline'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file privacy_gemini_drop-dates_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `privacy_muse_drop-dates-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 14. ARGUS ALBUM ====================
+## 14. ARG-MUS-02 · Argus Album: second reader on Gemini's 'EXIF and HEIF metadata fields of 6 current phones'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file argus_gemini_exif-phones_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `argus_muse_exif-phones-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 15. KIN ====================
+## 15. KIN-MUS-01 · Kin: second reader on Gemini's 'The yearly school paperwork for El Tejon Unified families'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file kin_gemini_school-forms_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `kin_muse_school-forms-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 16. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 16. AET-MUS-01 · Aether: second reader on Gemini's 'Wildfires within 25 miles of Frazier Park since 2015'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file aether_gemini_fire-history_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `aether_muse_fire-history-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 17. POLIS · CIVIC & LEGAL WATCH ====================
+## 17. POL-MUS-01 · Polis: second reader on Gemini's 'The California measures on the November 2026 ballot'
+
+**Due:** 2026-11-24 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file polis_gemini_ballot-2026_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `polis_muse_ballot-2026-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.

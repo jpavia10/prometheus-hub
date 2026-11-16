@@ -1,10 +1,10 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-10 03:42 UTC. 15 open across 2 pillars.
+Updated 2026-11-16 06:08 UTC. 115 open across 27 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
-TITAN RELIQUARY (its own loop, the exception): 10 homework sheets + 4 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 16 homework sheets + 22 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -14,38 +14,2357 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
-1. [Prometheus Hub] HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
+1. [Midas Ledger] MID-GEM-01 · 12 debt payoff cases worked to the cent · due 2026-11-09
+2. [Midas Ledger] MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI · due 2026-11-10
+3. [Midas Ledger] MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going · due 2026-11-11
+4. [Midas Ledger] MID-GEM-04 · Minimum payment formulas of 25 US card issuers, quoted from their cardholder agreements · due 2026-11-12
+5. [Midas Ledger] MID-GEM-05 · How 25 issuers compute interest: balance method, day count, compounding, grace · due 2026-11-13
+6. [Midas Ledger] MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted · due 2026-11-14
+7. [Midas Ledger] MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask · due 2026-11-15
+8. [Midas Ledger] MID-GEM-08 · 12 daily-compounding interest cases worked to the cent · due 2026-11-16
+9. [Prometheus Hub] HUB-GEM-07 · Prometheus Hub: Phone audit of the new home menu: 25 findings · due 2026-11-19
+10. [Kairos Meridian] KAI-GEM-06 · Kairos Meridian: 40 California household deadlines that repeat every year · due 2026-11-19
+11. [Hephaestus Hearth] HEA-GEM-12 · Hephaestus Hearth: Deck refurbish specs from the makers' own pages · due 2026-11-19
+12. [Garage] GAR-GEM-01 · Garage: Recalls and service bulletins for the 2025 Kia Sorento Hybrid · due 2026-11-19
+13. [Apollo Temple] APO-GEM-07 · Apollo Temple: Foods 901-1200 from USDA FoodData Central · due 2026-11-19
+14. [Money · payoff simulator] MON-GEM-01 · Money: Hardship programs and promo terms of 30 more card and loan issuers · due 2026-11-19
+15. [Selling Pipeline] SEL-GEM-01 · Selling Pipeline: Marketplace fees as of December 2026 · due 2026-11-19
+16. [Records · Paper Killer] REC-GEM-01 · Records: How long to keep 60 kinds of documents · due 2026-11-19
+17. [Icarus Stake] ICA-GEM-07 · Icarus Stake: The 2028 NYSE and Nasdaq holiday and early-close calendar · due 2026-11-19
+18. [Hermes Post] HER-GEM-06 · Hermes Post: Billing rules of 40 California utilities, insurers and lenders · due 2026-11-19
+19. [Bossa Piano Studio] PIA-GEM-01 · Bossa Piano Studio: 40 more bossa nova standards: key, form and first eight chords · due 2026-11-19
+20. [Bastion · Mountain Prep] BAS-GEM-01 · Bastion: A 72-hour kit for 4 people and pets, with shelf lives · due 2026-11-19
+21. [Athenaeum · Idea Vault] ATH-GEM-01 · Athenaeum: 40 more cause, event and consequence entries · due 2026-11-19
+22. [Odyssey · Trips & Away Mode] ODY-GEM-01 · Odyssey: An away-mode checklist for a mountain home in winter · due 2026-11-19
+23. [Privacy · CA DROP] PRI-GEM-01 · Privacy: 30 more data brokers with their opt-out routes · due 2026-11-19
+24. [Argus Album] ARG-GEM-06 · Argus Album: 30 rules for photographing coins for the Phase 2 pro scans · due 2026-11-19
+25. [Ludus Arcade] GAM-GEM-01 · Ludus Arcade: 60 major game releases for 2026-27 on PS5 and PC · due 2026-11-19
+26. [Forge] FOR-GEM-01 · Forge: Check the scoring rubric against 20 scored files · due 2026-11-19
+27. [Foundry] FDY-GEM-01 · Foundry: Prior art for the 11 inventions · due 2026-11-19
+28. [Observatory] OBS-GEM-01 · Observatory: 10 primary sources for each of the 8 subjects · due 2026-11-19
+29. [Kin] KIN-GEM-01 · Kin: California custody schedule templates · due 2026-11-19
+30. [Aether · Atmospheric & Field Lab] AET-GEM-01 · Aether: Data feeds for air quality, wildfire, weather and the mountain pass · due 2026-11-19
+31. [Polis · Civic & Legal Watch] POL-GEM-01 · Polis: 30 Kern County rules a homeowner meets · due 2026-11-19
+32. [Mythos · Creative & Lore Studio] MYT-GEM-01 · Mythos: 30 public-domain myth and folklore references for the canon · due 2026-11-19
+33. [Continuity · Sovereign Vault] CON-GEM-01 · Continuity: Legacy-contact and inactive-account policies of 30 services · due 2026-11-19
+34. [Kairos Meridian] KAI-GEM-07 · Kairos Meridian: The 2026-27 school calendar for El Tejon Unified and Kern High School District · due 2026-11-21
+35. [Hephaestus Hearth] HEA-GEM-13 · Hephaestus Hearth: When Kern County needs a permit for deck repair or replacement · due 2026-11-21
+36. [Garage] GAR-GEM-02 · Garage: Caltrans chain-control rules and I-5 Tejon Pass closures · due 2026-11-21
+37. [Apollo Temple] APO-GEM-08 · Apollo Temple: 30 facts on training, sleep and hydration at about 5,000 ft · due 2026-11-21
+38. [Money · payoff simulator] MON-GEM-02 · Money: 12 more payoff cases checked to the cent · due 2026-11-21
+39. [Selling Pipeline] SEL-GEM-02 · Selling Pipeline: USPS Ground Advantage and Priority Mail retail rates 2026 · due 2026-11-21
+40. [Records · Paper Killer] REC-GEM-02 · Records: Renewal cycles of 30 California documents · due 2026-11-21
+41. [Icarus Stake] ICA-GEM-08 · Icarus Stake: 40 worked risk-of-ruin and position-sizing cases · due 2026-11-21
+42. [Hermes Post] HER-GEM-07 · Hermes Post: 60 new phishing and scam lures seen in 2026 · due 2026-11-21
+43. [Bastion · Mountain Prep] BAS-GEM-02 · Bastion: Kern County evacuation zones and alert systems · due 2026-11-21
+44. [Odyssey · Trips & Away Mode] ODY-GEM-02 · Odyssey: Travel facts for the Philippines as of now · due 2026-11-21
+45. [Privacy · CA DROP] PRI-GEM-02 · Privacy: The California DROP (Delete Request and Opt-out Platform) timeline · due 2026-11-21
+46. [Argus Album] ARG-GEM-07 · Argus Album: EXIF and HEIF metadata fields of 6 current phones · due 2026-11-21
+47. [Kin] KIN-GEM-02 · Kin: The yearly school paperwork for El Tejon Unified families · due 2026-11-21
+48. [Aether · Atmospheric & Field Lab] AET-GEM-02 · Aether: Wildfires within 25 miles of Frazier Park since 2015 · due 2026-11-21
+49. [Polis · Civic & Legal Watch] POL-GEM-02 · Polis: The California measures on the November 2026 ballot · due 2026-11-21
+50. [Kairos Meridian] KAI-GEM-08 · Kairos Meridian: Sunrise, sunset, moonrise and moon phase for every day of 2027 at Frazier Park, CA · due 2026-11-23
+51. [Hephaestus Hearth] HEA-GEM-14 · Hephaestus Hearth: A seasonal checklist for a mountain home at about 5,000 ft · due 2026-11-23
+52. [Garage] GAR-GEM-03 · Garage: California weekly regular gasoline prices, Jan 2024 to now · due 2026-11-23
+53. [Prometheus Hub] HUB-GEM-08 · Prometheus Hub: 20 features the best personal dashboards and launchers have · due 2026-11-28
+54. [Kairos Meridian] KAI-GEM-09 · Kairos Meridian: 20 features the best calendar and time-blocking apps have · due 2026-11-28
+55. [Hephaestus Hearth] HEA-GEM-15 · Hephaestus Hearth: 20 features the best home renovation and home-inventory apps have · due 2026-11-28
+56. [Garage] GAR-GEM-04 · Garage: 20 features the best car maintenance and fuel logs have · due 2026-11-28
+57. [Apollo Temple] APO-GEM-09 · Apollo Temple: 20 features the best fitness and nutrition trackers have · due 2026-11-28
+58. [Money · payoff simulator] MON-GEM-03 · Money: 20 features the best debt payoff planners have · due 2026-11-28
+59. [Selling Pipeline] SEL-GEM-03 · Selling Pipeline: 20 features the best reselling and listing tools have · due 2026-11-28
+60. [Records · Paper Killer] REC-GEM-03 · Records: 20 features the best document scanners and vaults have · due 2026-11-28
+61. [Icarus Stake] ICA-GEM-09 · Icarus Stake: 20 features the best trading journals have · due 2026-11-28
+62. [Hermes Post] HER-GEM-08 · Hermes Post: 20 features the best mail triage and bill-reminder apps have · due 2026-11-28
+63. [Bossa Piano Studio] PIA-GEM-02 · Bossa Piano Studio: 20 features the best piano practice apps have · due 2026-11-28
+64. [Bastion · Mountain Prep] BAS-GEM-03 · Bastion: 20 features the best preparedness and inventory apps have · due 2026-11-28
+65. [Athenaeum · Idea Vault] ATH-GEM-02 · Athenaeum: 20 features the best idea and knowledge tools have · due 2026-11-28
+66. [Odyssey · Trips & Away Mode] ODY-GEM-03 · Odyssey: 20 features the best trip planners have · due 2026-11-28
+67. [Privacy · CA DROP] PRI-GEM-03 · Privacy: 20 features the best data-removal services have · due 2026-11-28
+68. [Argus Album] ARG-GEM-08 · Argus Album: 20 features the best photo library and metadata tools have · due 2026-11-28
+69. [Ludus Arcade] GAM-GEM-02 · Ludus Arcade: 20 features the best game library and backlog trackers have · due 2026-11-28
+70. [Forge] FOR-GEM-02 · Forge: 20 features the best AI and team task boards have · due 2026-11-28
+71. [Foundry] FDY-GEM-02 · Foundry: 20 features the best invention and product-build trackers have · due 2026-11-28
+72. [Observatory] OBS-GEM-02 · Observatory: 20 features the best news and signal trackers have · due 2026-11-28
+73. [Kin] KIN-GEM-03 · Kin: 20 features the best co-parenting and family apps have · due 2026-11-28
+74. [Aether · Atmospheric & Field Lab] AET-GEM-03 · Aether: 20 features the best weather, fire and air apps have · due 2026-11-28
+75. [Polis · Civic & Legal Watch] POL-GEM-03 · Polis: 20 features the best civic and legislation trackers have · due 2026-11-28
+76. [Mythos · Creative & Lore Studio] MYT-GEM-02 · Mythos: 20 features the best worldbuilding and writing apps have · due 2026-11-28
+77. [Continuity · Sovereign Vault] CON-GEM-02 · Continuity: 20 features the best digital-legacy and emergency vaults have · due 2026-11-28
 
-==================== 1. PROMETHEUS HUB ====================
-## 1. HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
+==================== 1. MIDAS LEDGER ====================
+## 1. MID-GEM-01 · 12 debt payoff cases worked to the cent
 
-**Due:** 2026-11-06 · **State:** now
-
-**Read first:**
-- the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)
-- Drive doc 'ART_START_HERE (any AI: images + video)'
+**Due:** 2026-11-09 · **State:** now
 
 **Do this:**
-1. Claim it: save an empty file named artreq_20261105-0300_app-icons-titan-prometheus.CLAIMED-gemini.txt in the art-requests folder (skip the request if another AI claimed it less than 24 hours ago).
-2. Make the 6 images with your own image model, one at a time, square, at least 1024x1024, full-bleed, the subject inside the central 66 % circle.
-3. Save them with the exact file names into 'Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/'.
-4. Write artreq_20261105-0300_app-icons-titan-prometheus.DONE.txt next to the request: one line per file, ok or skipped: reason, your model name and the date.
+1. Make 12 made-up cases: 4 avalanche, 4 snowball, 4 'custom order'. Each has 2 to 6 debts (name, balance, APR %, minimum payment) and one monthly budget at least the sum of the minimums.
+2. Rules, exactly: each month, interest = balance x APR / 12 / 100, rounded to the cent (half up); add it to the balance; pay every minimum (or the whole balance if smaller); the rest of the budget goes to the target debt (avalanche = highest APR, snowball = lowest balance, custom = the order you list); if the target is paid off with money left, the rest goes to the next target the same month; when a debt hits 0 its minimum joins the rest from the next month.
+3. Work every case month by month until every balance is 0.
+4. At least 3 cases must run longer than 36 months and at least 2 must have a debt paid off in the same month another target changes.
 
-**Make:** `titan_icon_take1..3.png + prometheus_icon_take1..3.png`
+**Make:** `midas_gemini_payoff-cases_{YYYYMMDD-HHMM}.json`
 
-**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
 
-**Shape:** `6 PNG files, square, >= 1024 px`
+**Shape:** `[{"case":1,"method":"avalanche","budget":900,"debts":[{"name":"Card A","balance":4210.55,"apr":24.99,"min":95}],"months":[{"m":1,"interest":{"Card A":87.68},"paid":{"Card A":900},"balance":{"Card A":3398.23}}],"payoff_month":{"Card A":6},"total_interest":312.40}] (12 objects)`
+
+**How many:** 12
+
+**Done when:** 12 cases, every month listed, and Claude's engine gets the same balance for every debt in every month.
+
+**How Claude checks it:**
+- Claude runs all 12 cases through its own engine; a balance more than $0.01 off in any month makes that case wrong.
+- Claude checks the 36-month and same-month conditions.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a case whose months stop before every balance is 0
+- a month that does not follow the rules above
+- fewer than 12 cases
+
+==================== 2. MIDAS LEDGER ====================
+## 2. MID-GEM-02 · 20 research findings on what really helps people pay off debt, each with its DOI
+
+**Due:** 2026-11-10 · **State:** now
+
+**Read first:**
+- Google Scholar, journal pages, NBER, Federal Reserve, CFPB (no blogs, no listicles, no AI summaries)
+
+**Do this:**
+1. Find 20 different published studies or official reports about paying down debt, motivation, small wins, framing, mental accounting, or progress feedback.
+2. For each: full citation, DOI or official URL, the one finding in one sentence with its number (effect size, percent or dollars), and one concrete thing Midas should show because of it (a screen element, not advice).
+3. Quote the abstract sentence the finding comes from, word for word.
+
+**Make:** `midas_gemini_debt-research_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"citation":"Gal, D. & McShane, B. (2012) ...","doi":"10....","finding":"...","quote":"exact sentence from the abstract","midas":"show ..."}] (20 objects)`
+
+**How many:** 20
+
+**Done when:** 20 real studies, every DOI resolves to that paper, every quote is in its abstract.
+
+**How Claude checks it:**
+- Claude resolves all 20 DOIs and searches each quote in the abstract.
+- One invented paper or invented quote = the whole file is rejected.
+
+**Not done (sent back) if:** (and the rules at the top)
+- any paper that does not exist
+- a quote that is not word for word
+- a blog or news article in place of a study
+
+==================== 3. MIDAS LEDGER ====================
+## 3. MID-GEM-03 · 15 money apps taken apart: 75 things that make people keep going
+
+**Due:** 2026-11-11 · **State:** now
+
+**Read first:**
+- the apps' own sites, help centres, App Store pages and press kits
+
+**Do this:**
+1. Apps: YNAB, Monarch Money, Copilot Money, Rocket Money, Undebt.it, Debt Payoff Planner, EveryDollar, Simplifi, Empower, Lunch Money, Actual Budget, Goodbudget, Origin, PocketGuard, Tiller.
+2. For each app, 5 specific things on its screens that make you want to keep paying down or keep checking in (example: 'debt-free date shown under the total and it moves when you add a payment').
+3. Each row: app, the screen it is on, what it does, a URL where it can be seen (a screenshot page, help article or store listing), and how Midas could do it better.
+
+**Make:** `midas_gemini_app-teardown_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"app":"YNAB","screen":"...","move":"...","url":"https://...","midas":"..."}] (75 objects)`
+
+**How many:** 75
+
+**Done when:** 75 rows, 5 per app, every URL shows what the row says.
+
+**How Claude checks it:**
+- Claude opens 15 URLs at random.
+- Rows that only praise ('beautiful design') do not count.
+
+**Not done (sent back) if:** (and the rules at the top)
+- two rows that say the same thing about one app
+
+==================== 4. MIDAS LEDGER ====================
+## 4. MID-GEM-04 · Minimum payment formulas of 25 US card issuers, quoted from their cardholder agreements
+
+**Due:** 2026-11-12 · **State:** now
+
+**Do this:**
+1. Take the 25 largest US card issuers (Chase, American Express, Citi, Capital One, Bank of America, Discover, Synchrony, Wells Fargo, U.S. Bank, Barclays, Goldman Sachs/Apple Card, PNC, TD Bank, Navy Federal, USAA, Truist, Credit One, Comenity/Bread, Fifth Third, Citizens, Huntington, Regions, KeyBank, BMO, First National).
+2. From each one's own cardholder agreement or pricing page, copy the minimum payment rule: the percent of balance, what is added (interest, fees, past due), the dollar floor, and when the whole balance is due instead.
+3. Write the rule as a formula over balance B, interest I, fees F: e.g. max(35, 0.01*B + I + F), or B when B < 35.
+
+**Make:** `midas_gemini_minimums_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"issuer":"...","product":"the card or card family the agreement covers","formula":"max(40, 0.01*B + I + F)","floor_usd":40,"pct_of_balance":1,"adds":["interest","fees"],"url":"https://...","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 issuers, each formula traceable to the quoted agreement text.
+
+**How Claude checks it:**
+- Claude opens 10 agreements at random and recomputes the formula from the quote.
+- Claude runs each formula on B=5000, I=80, F=0 and on B=20.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a formula from a blog or a calculator site instead of the issuer's own agreement
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 5. MIDAS LEDGER ====================
+## 5. MID-GEM-05 · How 25 issuers compute interest: balance method, day count, compounding, grace
+
+**Due:** 2026-11-13 · **State:** now
+
+**Do this:**
+1. For the same 25 issuers as MID-GEM-04: from the agreement's 'How we calculate your balance / interest' section copy the balance method (e.g. average daily balance including new transactions), the daily periodic rate (APR/365 or /360), whether interest compounds daily, the grace period in days and the minimum interest charge.
+
+**Make:** `midas_gemini_interest_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"issuer":"...","method":"average daily balance (including new transactions)","day_count":365,"daily_compounding":true,"grace_days":25,"min_interest_usd":1.0,"url":"https://...","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 rows, every field quoted or marked null with the reason in quote.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+- day_count must be 360 or 365; grace_days a whole number.
+
+**Not done (sent back) if:** (and the rules at the top)
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 6. MIDAS LEDGER ====================
+## 6. MID-GEM-06 · 20 promo-rate products: deferred interest or true 0 %, quoted
+
+**Due:** 2026-11-14 · **State:** now
+
+**Do this:**
+1. Pick 20 products a US consumer meets: 10 store cards (Synchrony / Comenity / TD retail cards), 5 buy-now-pay-later (Affirm, Klarna, Afterpay, PayPal Pay Later, Zip), 5 balance-transfer cards.
+2. From each product's own terms page: promo type (deferred interest or 0 % intro APR), promo length, what happens when it ends, the go-to APR, the fee.
+
+**Make:** `midas_gemini_promos_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"product":"...","issuer":"...","type":"deferred","months":12,"at_end":"interest from the purchase date on the whole amount","go_to_apr":29.99,"fee":"none","url":"https://...","quote":"...","seen":"2026-11-14"}]`
+
+**How many:** 20
+
+**Done when:** 20 products, each type quoted from its own terms.
+
+**How Claude checks it:**
+- Claude opens every URL.
+- type must be deferred or zero_intro, never both.
+
+**Not done (sent back) if:** (and the rules at the top)
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 7. MIDAS LEDGER ====================
+## 7. MID-GEM-07 · 25 hardship programs: what each lender offers and how to ask
+
+**Due:** 2026-11-15 · **State:** now
+
+**Do this:**
+1. For 25 lenders (the 25 issuers above; swap in Discover Personal Loans, SoFi, LendingClub, Upstart for any with no public page): the program name, what it offers (APR cut, fee waiver, fixed payment plan, months), who qualifies, the phone path or web page to ask, and what it does to the account (closed, frozen, reported).
+2. Quote the issuer's own page; when only the CFPB or a state regulator documents it, cite that page.
+
+**Make:** `midas_gemini_hardship_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"n":1,"lender":"...","program":"...","offers":"APR lowered to 9.99 % for 12 months","qualifies":"...","how_to_ask":"call the number on the back of the card, ask for the hardship team","account_effect":"card frozen during the plan","url":"https://...","quote":"..."}]`
+
+**How many:** 25
+
+**Done when:** 25 rows, every offer quoted.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a debt-settlement company's sales page as the source
+- anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)
+
+==================== 8. MIDAS LEDGER ====================
+## 8. MID-GEM-08 · 12 daily-compounding interest cases worked to the cent
+
+**Due:** 2026-11-16 · **State:** now
+
+**Do this:**
+1. Make 12 cases with balances between 500 and 25,000, APRs between 9.99 and 29.99, three 30-day cycles each, one payment per cycle on day 20 (amount of your choice), no new purchases.
+2. Daily periodic rate = APR / 365 / 100; interest accrues on the day's balance and is added at the end of each cycle (state whether it compounds daily or monthly; do both for cases 1-3).
+3. Write every cycle: start balance, sum of daily balances, average daily balance, interest (rounded half up to the cent), payment, end balance.
+
+**Make:** `midas_gemini_dailycases_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `[{"case":1,"balance":5000.00,"apr":24.99,"payment_day":20,"payments":[200,200,200],"compounding":"monthly","cycles":[{"start":5000.00,"sum_daily":147800.00,"adb":4926.67,"interest":101.19,"payment":200.00,"end":4901.19}]}] (days 1-19 at 5000.00, days 20-30 at 4800.00)`
+
+**How many:** 12
+
+**Done when:** 12 cases x 3 cycles; Claude recomputes every number in Python.
+
+**How Claude checks it:**
+- A cycle off by more than 1 cent = the case fails; 2 failing cases = the file is sent back.
+
+**Not done (sent back) if:** (and the rules at the top)
+- numbers copied from an online calculator without the cycle rows
+
+==================== 9. PROMETHEUS HUB ====================
+## 9. HUB-GEM-07 · Prometheus Hub: Phone audit of the new home menu: 25 findings
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/./
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Open https://jpavia10.github.io/prometheus-hub/ on a phone; swipe every level; only what you saw.
+
+**Make:** `hub_gemini_menu-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","where (level, strip, today, enter)","what is wrong","why it matters","fix in one sentence"}`
+
+**How many:** 25
+
+**Done when:** 25 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 10. KAIROS MERIDIAN ====================
+## 10. KAI-GEM-06 · Kairos Meridian: 40 California household deadlines that repeat every year
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Property tax installments, vehicle registration, smog, state and federal tax, estimated tax, HSA/IRA deadlines, voter registration, open enrollment and the like.
+2. Each row from the agency's own page (ftb.ca.gov, dmv.ca.gov, irs.gov, the county tax collector); quote the sentence that gives the date.
+
+**Make:** `kairos_gemini_ca-deadlines_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","title","when (rule, e.g. Nov 1 due, Dec 10 delinquent)","who it applies to","penalty if missed","official_url","quote"}`
+
+**How many:** 40
+
+**Done when:** 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 11. HEPHAESTUS HEARTH ====================
+## 11. HEA-GEM-12 · Hephaestus Hearth: Deck refurbish specs from the makers' own pages
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. The 23 x 10 ft second-floor deck: board gaps, fastener spacing, joist spans, finishing; every number from the maker's installation guide.
+
+**Make:** `hearth_gemini_deck-specs_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","product (cedar, composite, fastener, joist tape, stain)","spec (spacing, gap, span, coats)","value","maker","url","quote"}`
+
+**How many:** 40
+
+**Done when:** 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 12. GARAGE ====================
+## 12. GAR-GEM-01 · Garage: Recalls and service bulletins for the 2025 Kia Sorento Hybrid
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/garage/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From nhtsa.gov/recalls and Kia's own recall page; say 'none' plainly if a list is empty.
+
+**Make:** `garage_gemini_sorento-recalls_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown table: campaign number | date | what | remedy | NHTSA URL`
+
+**How many:** 1
+
+**Done when:** 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 13. APOLLO TEMPLE ====================
+## 13. APO-GEM-07 · Apollo Temple: Foods 901-1200 from USDA FoodData Central
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/apollo/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Common grocery and restaurant foods not already in the list (open pillars/apollo/foods.js first and skip any name already there).
+2. Every row from its FoodData Central page; fdc_id must open.
+
+**Make:** `apollo_gemini_foods-part4_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row in the shape of Apollo's foods.js: {"n","name","serving_g","kcal","protein_g","carb_g","fat_g","fiber_g","fdc_id","url"}`
+
+**How many:** 300
+
+**Done when:** 300 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 14. MONEY · PAYOFF SIMULATOR ====================
+## 14. MON-GEM-01 · Money: Hardship programs and promo terms of 30 more card and loan issuers
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/money/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Issuers not already in pillars/money/issuers.js; from each issuer's own page.
+
+**Make:** `money_gemini_issuers-more_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","issuer","program","what it offers","how to ask","promo APR terms","as_of","url","quote"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 15. SELLING PIPELINE ====================
+## 15. SEL-GEM-01 · Selling Pipeline: Marketplace fees as of December 2026
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/selling/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From each marketplace's own fee page, with its as-of date.
+
+**Make:** `selling_gemini_fees-dec2026_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown table per marketplace (eBay, Mercari, Facebook Marketplace shipping, OfferUp, Poshmark, Swappa): fee | rate | cap | payout timing | URL | quote`
 
 **How many:** 6
 
-**Done when:** 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+**Done when:** 6 rows (or the whole document) in the shape, every source opening and saying what the row says.
 
 **How Claude checks it:**
-- Claude opens every image at full size and at 48x48 px, masked to a circle.
-- A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped.
+- Claude opens 10 rows at random.
 
 **Not done (sent back) if:** (and the rules at the top)
-- readable letters on any take but titan_icon_take3 (exactly TR)
-- rounded corners, a border or a white background
-- smaller than 1024x1024
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 16. RECORDS · PAPER KILLER ====================
+## 16. REC-GEM-01 · Records: How long to keep 60 kinds of documents
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/records/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Tax, mortgage, vehicle, medical, school, insurance, warranties; official sources first.
+
+**Make:** `records_gemini_retention_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","document","keep for","why","source (IRS, CA FTB, lender)","url","quote"}`
+
+**How many:** 60
+
+**Done when:** 60 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 17. ICARUS STAKE ====================
+## 17. ICA-GEM-07 · Icarus Stake: The 2028 NYSE and Nasdaq holiday and early-close calendar
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/icarus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From nyse.com and nasdaq.com; say if 2028 is not published yet and give the rule instead.
+
+**Make:** `icarus_gemini_calendar-2028_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"date","market","closed or early close (time)","reason","url","quote"}`
+
+**How many:** 12
+
+**Done when:** 12 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 18. HERMES POST ====================
+## 18. HER-GEM-06 · Hermes Post: Billing rules of 40 California utilities, insurers and lenders
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hermes/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. SoCalGas, Southern California Edison, the Frazier Park and Lebec water and trash providers, the big auto and home insurers, the big card issuers.
+2. From each company's own billing or terms page.
+
+**Make:** `hermes_gemini_bill-rules_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","company","service","bill cycle","due-day rule","grace days","late fee","autopay page URL","quote"}`
+
+**How many:** 40
+
+**Done when:** 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 19. BOSSA PIANO STUDIO ====================
+## 19. PIA-GEM-01 · Bossa Piano Studio: 40 more bossa nova standards: key, form and first eight chords
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/piano/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Standards not already in the 40; chords from a published lead sheet, never guessed.
+
+**Make:** `piano_gemini_standards-41-80_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","title","composer","usual key","form","first 8 chords","source (lead sheet book and page or a published chart)"}`
+
+**How many:** 40
+
+**Done when:** 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 20. BASTION · MOUNTAIN PREP ====================
+## 20. BAS-GEM-01 · Bastion: A 72-hour kit for 4 people and pets, with shelf lives
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From Ready.gov, FEMA, the Red Cross and Kern County OES.
+
+**Make:** `bastion_gemini_kit-items_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","item","quantity for 4","shelf life","check every","source","url"}`
+
+**How many:** 60
+
+**Done when:** 60 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 21. ATHENAEUM · IDEA VAULT ====================
+## 21. ATH-GEM-01 · Athenaeum: 40 more cause, event and consequence entries
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Ancient to modern, a different region each time; each entry quotes its source.
+
+**Make:** `athenaeum_gemini_chronicle-41-80_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON in the shape of pillars/athenaeum/data/cause-event-consequence.json, entries 41-80`
+
+**How many:** 40
+
+**Done when:** 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 22. ODYSSEY · TRIPS & AWAY MODE ====================
+## 22. ODY-GEM-01 · Odyssey: An away-mode checklist for a mountain home in winter
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Pipes, heat setting, mail hold (USPS), propane, security; official or maker sources.
+
+**Make:** `odyssey_gemini_away-house_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","task","when (days before)","why","source","url"}`
+
+**How many:** 50
+
+**Done when:** 50 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 23. PRIVACY · CA DROP ====================
+## 23. PRI-GEM-01 · Privacy: 30 more data brokers with their opt-out routes
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/privacy/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Not already among the 47; check each against the CPPA data broker registry.
+
+**Make:** `privacy_gemini_brokers-48-77_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","broker","opt-out URL","what they need from you","registered in CA (yes/no, CPPA registry URL)"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 24. ARGUS ALBUM ====================
+## 24. ARG-GEM-06 · Argus Album: 30 rules for photographing coins for the Phase 2 pro scans
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/argus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Lighting angle, diffusion, white balance, scale, focus stacking, both sides, edge; from numismatic photography guides (PCGS, NGC, ANA).
+
+**Make:** `argus_gemini_coin-photo-rules_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","rule","why","setting or number","source","url"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 25. LUDUS ARCADE ====================
+## 25. GAM-GEM-01 · Ludus Arcade: 60 major game releases for 2026-27 on PS5 and PC
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/games/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From the publisher's or platform's own page; a window when no date is set.
+
+**Make:** `games_gemini_releases-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","title","publisher","platforms","date (or window)","source URL"}`
+
+**How many:** 60
+
+**Done when:** 60 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 26. FORGE ====================
+## 26. FOR-GEM-01 · Forge: Check the scoring rubric against 20 scored files
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/forge/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Pick 20 rows of collaborators/CONTRIBUTOR_SCORES.md in Titan that are not yours; score each again by the rubric at the top.
+
+**Make:** `forge_gemini_rubric-check_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","file","task","score on record","your score by the rubric","differ? why"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 27. FOUNDRY ====================
+## 27. FDY-GEM-01 · Foundry: Prior art for the 11 inventions
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/foundry/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Five per invention in pillars/foundry; patents from Google Patents, products from the maker's page.
+
+**Make:** `foundry_gemini_prior-art_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"invention","n (1-5)","patent or product","owner","year","link","how close (one sentence)"}`
+
+**How many:** 55
+
+**Done when:** 55 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 28. OBSERVATORY ====================
+## 28. OBS-GEM-01 · Observatory: 10 primary sources for each of the 8 subjects
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/observatory/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Subjects as in pillars/observatory; primary sources only, no aggregators.
+
+**Make:** `observatory_gemini_sources_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"subject","n","source","kind (journal, agency, feed)","URL","feed URL if any","updates (daily/weekly)"}`
+
+**How many:** 80
+
+**Done when:** 80 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 29. KIN ====================
+## 29. KIN-GEM-01 · Kin: California custody schedule templates
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. courts.ca.gov self-help and county family court pages.
+
+**Make:** `kin_gemini_custody-templates_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown file: each common schedule (2-2-3, 2-2-5-5, alternating weeks, 3-4-4-3 ...) with its pattern, pros and cons, and the California Courts self-help URL`
+
+**How many:** 8
+
+**Done when:** 8 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 30. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 30. AET-GEM-01 · Aether: Data feeds for air quality, wildfire, weather and the mountain pass
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/aether/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. AirNow, CAL FIRE incidents, NWS alerts, Caltrans QuickMap, PurpleAir, NOAA; open each docs page.
+
+**Make:** `aether_gemini_feeds_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feed","what it gives","endpoint","auth","limits","docs URL","quote"}`
+
+**How many:** 12
+
+**Done when:** 12 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 31. POLIS · CIVIC & LEGAL WATCH ====================
+## 31. POL-GEM-01 · Polis: 30 Kern County rules a homeowner meets
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/polis/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Kern County Ordinance Code and department pages.
+
+**Make:** `polis_gemini_kern-ordinances_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","rule (burn permits, wood stoves, dogs, short-term rentals, noise)","code section","summary","url"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 32. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 32. MYT-GEM-01 · Mythos: 30 public-domain myth and folklore references for the canon
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/mythos/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Only public-domain texts (Project Gutenberg, sacred-texts); no fan wikis.
+
+**Make:** `mythos_gemini_myth-refs_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","figure or tale","culture","one-line summary","public-domain source (book, year)","url"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 33. CONTINUITY · SOVEREIGN VAULT ====================
+## 33. CON-GEM-01 · Continuity: Legacy-contact and inactive-account policies of 30 services
+
+**Due:** 2026-11-19 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/continuity/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Google Inactive Account Manager, Apple Legacy Contact, Facebook, Microsoft, banks, password managers; each from its own help page.
+
+**Make:** `continuity_gemini_legacy-policies_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","service","what happens when you die or go inactive","how to set it up","URL","quote"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 34. KAIROS MERIDIAN ====================
+## 34. KAI-GEM-07 · Kairos Meridian: The 2026-27 school calendar for El Tejon Unified and Kern High School District
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From each district's own published calendar (PDF or page); every date in the calendar, nothing estimated.
+
+**Make:** `kairos_gemini_school-calendar_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `one markdown file: per district a table date | what (first day, holiday, break, minimum day, last day) | source URL`
+
+**How many:** 2
+
+**Done when:** 2 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 35. HEPHAESTUS HEARTH ====================
+## 35. HEA-GEM-13 · Hephaestus Hearth: When Kern County needs a permit for deck repair or replacement
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Kern County Public Works / Building Inspection pages only.
+
+**Make:** `hearth_gemini_kern-permits_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `one markdown file: the rule, the exceptions, the fee table, how to apply, each with the Kern County page URL and a quote`
+
+**How many:** 1
+
+**Done when:** 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 36. GARAGE ====================
+## 36. GAR-GEM-02 · Garage: Caltrans chain-control rules and I-5 Tejon Pass closures
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/garage/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. The R1/R2/R3 rules from Caltrans, then 29 closures of I-5 at Tejon Pass in 2023-2026 from Caltrans or CHP releases.
+
+**Make:** `garage_gemini_chain-control_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","date","what happened (closure, chain control R1/R2/R3)","hours","source","url"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 37. APOLLO TEMPLE ====================
+## 37. APO-GEM-08 · Apollo Temple: 30 facts on training, sleep and hydration at about 5,000 ft
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/apollo/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From ACSM, CDC, NIH or peer-reviewed papers; no blogs.
+
+**Make:** `apollo_gemini_altitude-training_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","fact","number (if any)","source_title","url","quote"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 38. MONEY · PAYOFF SIMULATOR ====================
+## 38. MON-GEM-02 · Money: 12 more payoff cases checked to the cent
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/money/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Compute each with the standard amortization formula and show the formula; Claude recomputes every one.
+
+**Make:** `money_gemini_worked-cases_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row in the shape of the existing cases (deck/data): balance, apr, payment, months, total_interest, schedule`
+
+**How many:** 12
+
+**Done when:** 12 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 39. SELLING PIPELINE ====================
+## 39. SEL-GEM-02 · Selling Pipeline: USPS Ground Advantage and Priority Mail retail rates 2026
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/selling/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. 1 to 20 lb, zones 1 to 9, from the USPS Notice 123 price list.
+
+**Make:** `selling_gemini_usps-rates_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"service","weight_lb","zone","price_usd","url"}`
+
+**How many:** 180
+
+**Done when:** 180 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 40. RECORDS · PAPER KILLER ====================
+## 40. REC-GEM-02 · Records: Renewal cycles of 30 California documents
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/records/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Driver license, registration, passport, REAL ID, professional licenses; from the agency's page.
+
+**Make:** `records_gemini_renewals_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","document","renews every","how early you may renew","fee","url"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 41. ICARUS STAKE ====================
+## 41. ICA-GEM-08 · Icarus Stake: 40 worked risk-of-ruin and position-sizing cases
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/icarus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Use one cited formula (e.g. from a textbook or paper) and compute every case; show the formula once and the inputs per row.
+
+**Make:** `icarus_gemini_ruin-cases_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","win_rate","payoff_ratio","risk_per_trade_pct","trades","ruin_probability","formula","source"}`
+
+**How many:** 40
+
+**Done when:** 40 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 42. HERMES POST ====================
+## 42. HER-GEM-07 · Hermes Post: 60 new phishing and scam lures seen in 2026
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hermes/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Toll-road texts, USPS redelivery, DMV, bank fraud alerts, package and job scams; only lures an official source describes.
+
+**Make:** `hermes_gemini_lures-3_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row in the shape of phishing-lures.js: {"n","channel (sms/email/call)","pretend to be","the hook","tell-tale sign","source (FTC, FBI IC3, the company)","url"}`
+
+**How many:** 60
+
+**Done when:** 60 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 43. BASTION · MOUNTAIN PREP ====================
+## 43. BAS-GEM-02 · Bastion: Kern County evacuation zones and alert systems
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Kern County OES and Genasys pages only.
+
+**Make:** `bastion_gemini_kern-alerts_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown file: every alert system (name, how to sign up, URL), how zones are named, where the live map is, each with a quote`
+
+**How many:** 1
+
+**Done when:** 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 44. ODYSSEY · TRIPS & AWAY MODE ====================
+## 44. ODY-GEM-02 · Odyssey: Travel facts for the Philippines as of now
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From the Philippine government (eTravel, Bureau of Immigration) and the US State Department.
+
+**Make:** `odyssey_gemini_ph-entry_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","fact (entry rules, eTravel, visa-free days, plugs, currency)","value","url","quote"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 45. PRIVACY · CA DROP ====================
+## 45. PRI-GEM-02 · Privacy: The California DROP (Delete Request and Opt-out Platform) timeline
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/privacy/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. cppa.ca.gov only.
+
+**Make:** `privacy_gemini_drop-dates_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown file: every date and step the CPPA has published, with quotes and URLs`
+
+**How many:** 1
+
+**Done when:** 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 46. ARGUS ALBUM ====================
+## 46. ARG-GEM-07 · Argus Album: EXIF and HEIF metadata fields of 6 current phones
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/argus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Galaxy S24 Ultra, Pixel 9, iPhone 15 and 16; from exiftool docs and the makers' pages.
+
+**Make:** `argus_gemini_exif-phones_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `one markdown table per phone: field | example value | privacy risk (location, serial, owner) | how to strip it`
+
+**How many:** 6
+
+**Done when:** 6 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 47. KIN ====================
+## 47. KIN-GEM-02 · Kin: The yearly school paperwork for El Tejon Unified families
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From the district's own site.
+
+**Make:** `kin_gemini_school-forms_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","form","when","where to get it","URL"}`
+
+**How many:** 15
+
+**Done when:** 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 48. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 48. AET-GEM-02 · Aether: Wildfires within 25 miles of Frazier Park since 2015
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/aether/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. CAL FIRE and USFS incident pages.
+
+**Make:** `aether_gemini_fire-history_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","name","year","acres","dates","source","url"}`
+
+**How many:** 25
+
+**Done when:** 25 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 49. POLIS · CIVIC & LEGAL WATCH ====================
+## 49. POL-GEM-02 · Polis: The California measures on the November 2026 ballot
+
+**Due:** 2026-11-21 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/polis/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. LAO and the Secretary of State only.
+
+**Make:** `polis_gemini_ballot-2026_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown file: each measure, its title, the LAO summary in one paragraph, fiscal effect, URL`
+
+**How many:** 1
+
+**Done when:** 1 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 50. KAIROS MERIDIAN ====================
+## 50. KAI-GEM-08 · Kairos Meridian: Sunrise, sunset, moonrise and moon phase for every day of 2027 at Frazier Park, CA
+
+**Due:** 2026-11-23 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From the US Naval Observatory or timeanddate.com tables for Frazier Park (34.82 N, 118.94 W), Pacific time with DST.
+
+**Make:** `kairos_gemini_moon-sun-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"date","sunrise","sunset","moon_phase","illumination_pct","source"}`
+
+**How many:** 365
+
+**Done when:** 365 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 51. HEPHAESTUS HEARTH ====================
+## 51. HEA-GEM-14 · Hephaestus Hearth: A seasonal checklist for a mountain home at about 5,000 ft
+
+**Due:** 2026-11-23 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Snow load, roof and gutters, defensible space (CAL FIRE), wood stove, pipes, propane; official or manufacturer sources.
+
+**Make:** `hearth_gemini_mountain-home_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","season","task","why","how often","source","url"}`
+
+**How many:** 60
+
+**Done when:** 60 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 52. GARAGE ====================
+## 52. GAR-GEM-03 · Garage: California weekly regular gasoline prices, Jan 2024 to now
+
+**Due:** 2026-11-23 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/garage/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. EIA weekly retail gasoline series for California only.
+
+**Make:** `garage_gemini_fuel-prices_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"week","price_usd_per_gal","series","url"}`
+
+**How many:** 100
+
+**Done when:** 100 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 53. PROMETHEUS HUB ====================
+## 53. HUB-GEM-08 · Prometheus Hub: 20 features the best personal dashboards and launchers have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/./
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at personal dashboards and launchers (Notion home pages, Raycast, Home Assistant dashboards).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `hub_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 54. KAIROS MERIDIAN ====================
+## 54. KAI-GEM-09 · Kairos Meridian: 20 features the best calendar and time-blocking apps have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at calendar and time-blocking apps (Fantastical, Google Calendar, Sunsama, Motion).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `kairos_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 55. HEPHAESTUS HEARTH ====================
+## 55. HEA-GEM-15 · Hephaestus Hearth: 20 features the best home renovation and home-inventory apps have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at home renovation and home-inventory apps (HomeZada, Centriq, magicplan).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `hearth_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 56. GARAGE ====================
+## 56. GAR-GEM-04 · Garage: 20 features the best car maintenance and fuel logs have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/garage/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at car maintenance and fuel logs (Fuelly, Drivvo, CARFAX Car Care).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `garage_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 57. APOLLO TEMPLE ====================
+## 57. APO-GEM-09 · Apollo Temple: 20 features the best fitness and nutrition trackers have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/apollo/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at fitness and nutrition trackers (MacroFactor, Strong, Cronometer, Whoop).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `apollo_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 58. MONEY · PAYOFF SIMULATOR ====================
+## 58. MON-GEM-03 · Money: 20 features the best debt payoff planners have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/money/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at debt payoff planners (Undebt.it, Debt Payoff Planner, YNAB loan planner).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `money_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 59. SELLING PIPELINE ====================
+## 59. SEL-GEM-03 · Selling Pipeline: 20 features the best reselling and listing tools have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/selling/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at reselling and listing tools (Vendoo, List Perfectly, Flyp).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `selling_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 60. RECORDS · PAPER KILLER ====================
+## 60. REC-GEM-03 · Records: 20 features the best document scanners and vaults have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/records/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at document scanners and vaults (Adobe Scan, Paperless-ngx, Trusted).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `records_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 61. ICARUS STAKE ====================
+## 61. ICA-GEM-09 · Icarus Stake: 20 features the best trading journals have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/icarus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at trading journals (TraderSync, Edgewonk, Tradervue).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `icarus_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 62. HERMES POST ====================
+## 62. HER-GEM-08 · Hermes Post: 20 features the best mail triage and bill-reminder apps have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hermes/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at mail triage and bill-reminder apps (SaneBox, Superhuman, Prism-style bill trackers).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `hermes_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 63. BOSSA PIANO STUDIO ====================
+## 63. PIA-GEM-02 · Bossa Piano Studio: 20 features the best piano practice apps have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/piano/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at piano practice apps (Simply Piano, Flowkey, iReal Pro).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `piano_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 64. BASTION · MOUNTAIN PREP ====================
+## 64. BAS-GEM-03 · Bastion: 20 features the best preparedness and inventory apps have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at preparedness and inventory apps (FEMA app, Prepper inventory tools, Sortly).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `bastion_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 65. ATHENAEUM · IDEA VAULT ====================
+## 65. ATH-GEM-02 · Athenaeum: 20 features the best idea and knowledge tools have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at idea and knowledge tools (Obsidian, Heptabase, Tana).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `athenaeum_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 66. ODYSSEY · TRIPS & AWAY MODE ====================
+## 66. ODY-GEM-03 · Odyssey: 20 features the best trip planners have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at trip planners (TripIt, Wanderlog, Roadtrippers).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `odyssey_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 67. PRIVACY · CA DROP ====================
+## 67. PRI-GEM-03 · Privacy: 20 features the best data-removal services have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/privacy/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at data-removal services (DeleteMe, Optery, Incogni).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `privacy_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 68. ARGUS ALBUM ====================
+## 68. ARG-GEM-08 · Argus Album: 20 features the best photo library and metadata tools have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/argus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at photo library and metadata tools (Lightroom, PhotoPrism, ExifTool GUIs).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `argus_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 69. LUDUS ARCADE ====================
+## 69. GAM-GEM-02 · Ludus Arcade: 20 features the best game library and backlog trackers have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/games/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at game library and backlog trackers (Backloggd, HowLongToBeat, Grouvee).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `games_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 70. FORGE ====================
+## 70. FOR-GEM-02 · Forge: 20 features the best AI and team task boards have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/forge/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at AI and team task boards (Linear, Asana, GitHub Projects).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `forge_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 71. FOUNDRY ====================
+## 71. FDY-GEM-02 · Foundry: 20 features the best invention and product-build trackers have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/foundry/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at invention and product-build trackers (Notion product templates, Quip, maker project logs).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `foundry_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 72. OBSERVATORY ====================
+## 72. OBS-GEM-02 · Observatory: 20 features the best news and signal trackers have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/observatory/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at news and signal trackers (Feedly, Inoreader, Google Alerts).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `observatory_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 73. KIN ====================
+## 73. KIN-GEM-03 · Kin: 20 features the best co-parenting and family apps have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at co-parenting and family apps (OurFamilyWizard, TalkingParents, Cozi).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `kin_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 74. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 74. AET-GEM-03 · Aether: 20 features the best weather, fire and air apps have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/aether/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at weather, fire and air apps (Windy, Watch Duty, AirNow, PurpleAir).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `aether_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 75. POLIS · CIVIC & LEGAL WATCH ====================
+## 75. POL-GEM-03 · Polis: 20 features the best civic and legislation trackers have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/polis/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at civic and legislation trackers (Countable, BillTrack50, CalMatters' tools).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `polis_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 76. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 76. MYT-GEM-02 · Mythos: 20 features the best worldbuilding and writing apps have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/mythos/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at worldbuilding and writing apps (World Anvil, Campfire, Scrivener).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `mythos_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 77. CONTINUITY · SOVEREIGN VAULT ====================
+## 77. CON-GEM-02 · Continuity: 20 features the best digital-legacy and emergency vaults have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/continuity/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at digital-legacy and emergency vaults (Everplans, Trustworthy, 1Password Emergency Kit).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `continuity_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)

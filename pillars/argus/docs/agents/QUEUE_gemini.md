@@ -2,6 +2,111 @@
 
 # Argus Album · homework for Gemini
 
-Updated 2026-11-10 03:42 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-16 06:08 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-No homework for Gemini in Argus Album right now. Check your HOMEWORK doc for the other pillars.
+## 1. ARG-GEM-06 · Argus Album: 30 rules for photographing coins for the Phase 2 pro scans
+
+**Due:** 2026-11-19 · **State:** now
+
+**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Argus Album uses.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/argus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Lighting angle, diffusion, white balance, scale, focus stacking, both sides, edge; from numismatic photography guides (PCGS, NGC, ANA).
+
+**Make:** `argus_gemini_coin-photo-rules_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","rule","why","setting or number","source","url"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+## 2. ARG-GEM-07 · Argus Album: EXIF and HEIF metadata fields of 6 current phones
+
+**Due:** 2026-11-21 · **State:** now
+
+**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Argus Album uses.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/argus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Galaxy S24 Ultra, Pixel 9, iPhone 15 and 16; from exiftool docs and the makers' pages.
+
+**Make:** `argus_gemini_exif-phones_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `one markdown table per phone: field | example value | privacy risk (location, serial, owner) | how to strip it`
+
+**How many:** 6
+
+**Done when:** 6 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+## 3. ARG-GEM-08 · Argus Album: 20 features the best photo library and metadata tools have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Argus Album uses.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/argus/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at photo library and metadata tools (Lightroom, PhotoPrism, ExifTool GUIs).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `argus_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10 03:42 UTC",
+ "updated": "2026-11-16 06:08 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -8,73 +8,11 @@
    "live": "https://jpavia10.github.io/prometheus-hub/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 1,
-    "claude": 1
-   }
-  },
-  {
-   "id": "titan",
-   "name": "Titan Reliquary",
-   "state": "live",
-   "live": "https://jpavia10.github.io/titan-reliquary-preview/",
-   "open": {
-    "grok": 18,
-    "gemini": 14,
-    "muse": 15,
-    "chatgpt": 0
-   }
-  },
-  {
-   "id": "midas",
-   "name": "Midas Ledger",
-   "state": "live",
-   "live": "https://jpavia10.github.io/midas-ledger/",
-   "open": {
-    "grok": 2,
-    "gemini": 0,
-    "muse": 0,
-    "chatgpt": 1,
-    "claude": 0
-   }
-  },
-  {
-   "id": "hearth",
-   "name": "Hephaestus Hearth",
-   "state": "bones",
-   "live": "https://jpavia10.github.io/hephaestus-hearth/",
-   "open": {
-    "grok": 1,
-    "gemini": 0,
-    "muse": 0,
-    "chatgpt": 0,
-    "claude": 1
-   }
-  },
-  {
-   "id": "apollo",
-   "name": "Apollo Temple",
-   "state": "live",
-   "live": "https://jpavia10.github.io/prometheus-hub/pillars/apollo/",
-   "open": {
-    "grok": 0,
-    "gemini": 0,
-    "muse": 0,
-    "chatgpt": 0,
-    "claude": 0
-   }
-  },
-  {
-   "id": "hermes",
-   "name": "Hermes Post",
-   "state": "live",
-   "live": "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
-   "open": {
-    "grok": 1,
-    "gemini": 0,
-    "muse": 0,
-    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
     "claude": 0
    }
   },
@@ -84,10 +22,131 @@
    "state": "live",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
    "open": {
-    "grok": 0,
-    "gemini": 0,
-    "muse": 0,
+    "grok": 1,
+    "gemini": 4,
+    "muse": 1,
+    "chatgpt": 1,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "midas",
+   "name": "Midas Ledger",
+   "state": "live",
+   "live": "https://jpavia10.github.io/midas-ledger/",
+   "open": {
+    "grok": 2,
+    "gemini": 8,
+    "muse": 1,
+    "chatgpt": 1,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "titan",
+   "name": "Titan Reliquary",
+   "state": "live",
+   "live": "https://jpavia10.github.io/titan-reliquary-preview/",
+   "open": {
+    "grok": 19,
+    "gemini": 38,
+    "muse": 11,
     "chatgpt": 0,
+    "argon": null,
+    "hydrogen": null
+   }
+  },
+  {
+   "id": "hearth",
+   "name": "Hephaestus Hearth",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+   "open": {
+    "grok": 1,
+    "gemini": 4,
+    "muse": 1,
+    "chatgpt": 1,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "garage",
+   "name": "Garage",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+   "open": {
+    "grok": 1,
+    "gemini": 4,
+    "muse": 1,
+    "chatgpt": 1,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "apollo",
+   "name": "Apollo Temple",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/apollo/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "money",
+   "name": "Money · payoff simulator",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/money/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 1,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "selling",
+   "name": "Selling Pipeline",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/selling/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "records",
+   "name": "Records · Paper Killer",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/records/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
     "claude": 0
    }
   },
@@ -98,9 +157,101 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/icarus/",
    "open": {
     "grok": 1,
-    "gemini": 0,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "hermes",
+   "name": "Hermes Post",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "piano",
+   "name": "Bossa Piano Studio",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/piano/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "bastion",
+   "name": "Bastion · Mountain Prep",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/bastion/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "athenaeum",
+   "name": "Athenaeum · Idea Vault",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
+    "muse": 0,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "odyssey",
+   "name": "Odyssey · Trips & Away Mode",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/odyssey/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "privacy",
+   "name": "Privacy · CA DROP",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
     "claude": 0
    }
   },
@@ -110,10 +261,154 @@
    "state": "live",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/argus/",
    "open": {
-    "grok": 0,
-    "gemini": 0,
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "games",
+   "name": "Ludus Arcade",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/games/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "forge",
+   "name": "Forge",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/forge/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
+    "muse": 0,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "foundry",
+   "name": "Foundry",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/foundry/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
+    "muse": 0,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "observatory",
+   "name": "Observatory",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/observatory/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
+    "muse": 0,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "kin",
+   "name": "Kin",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/kin/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 1,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "presence",
+   "name": "Sylade · Presence",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/sylade/",
+   "open": {}
+  },
+  {
+   "id": "aether",
+   "name": "Aether · Atmospheric & Field Lab",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/aether/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "polis",
+   "name": "Polis · Civic & Legal Watch",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/polis/",
+   "open": {
+    "grok": 1,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "mythos",
+   "name": "Mythos · Creative & Lore Studio",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/mythos/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
+    "muse": 0,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "continuity",
+   "name": "Continuity · Sovereign Vault",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/continuity/",
+   "open": {
+    "grok": 1,
+    "gemini": 2,
+    "muse": 0,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
     "claude": 0
    }
   },

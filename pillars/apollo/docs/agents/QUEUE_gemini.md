@@ -2,6 +2,112 @@
 
 # Apollo Temple · homework for Gemini
 
-Updated 2026-11-10 03:42 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-16 06:08 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-No homework for Gemini in Apollo Temple right now. Check your HOMEWORK doc for the other pillars.
+## 1. APO-GEM-07 · Apollo Temple: Foods 901-1200 from USDA FoodData Central
+
+**Due:** 2026-11-19 · **State:** now
+
+**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Apollo Temple uses.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/apollo/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Common grocery and restaurant foods not already in the list (open pillars/apollo/foods.js first and skip any name already there).
+2. Every row from its FoodData Central page; fdc_id must open.
+
+**Make:** `apollo_gemini_foods-part4_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row in the shape of Apollo's foods.js: {"n","name","serving_g","kcal","protein_g","carb_g","fat_g","fiber_g","fdc_id","url"}`
+
+**How many:** 300
+
+**Done when:** 300 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+## 2. APO-GEM-08 · Apollo Temple: 30 facts on training, sleep and hydration at about 5,000 ft
+
+**Due:** 2026-11-21 · **State:** now
+
+**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Apollo Temple uses.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/apollo/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. From ACSM, CDC, NIH or peer-reviewed papers; no blogs.
+
+**Make:** `apollo_gemini_altitude-training_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","fact","number (if any)","source_title","url","quote"}`
+
+**How many:** 30
+
+**Done when:** 30 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+## 3. APO-GEM-09 · Apollo Temple: 20 features the best fitness and nutrition trackers have
+
+**Due:** 2026-11-28 · **State:** now
+
+**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Apollo Temple uses.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/apollo/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Look at fitness and nutrition trackers (MacroFactor, Strong, Cronometer, Whoop).
+2. Only features the app's own page, help centre or store listing shows; no guesses.
+3. Sort by how much the feature would help a person using this pillar every day.
+
+**Make:** `apollo_gemini_features_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","feature","which app has it (name)","what it does for the user in one sentence","how it would work here","url of the app page that shows it"}`
+
+**How many:** 20
+
+**Done when:** 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)

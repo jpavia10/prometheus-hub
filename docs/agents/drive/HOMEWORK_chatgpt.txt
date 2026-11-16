@@ -1,6 +1,6 @@
 HOMEWORK — ChatGPT (every pillar)
 
-Updated 2026-11-10 03:42 UTC. 2 open across 2 pillars.
+Updated 2026-11-16 06:08 UTC. 7 open across 7 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -14,6 +14,11 @@ EVERY TASK BELOW IS SENT BACK IF:
 IN THIS ORDER:
 1. [Prometheus Hub] HUB-GPT-01 · Phone audit of the desk: 25 findings · due 2026-11-12
 2. [Midas Ledger] MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14
+3. [Kairos Meridian] KAI-GPT-01 · Kairos Meridian: phone audit: 15 findings · due 2026-11-24
+4. [Hephaestus Hearth] HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings · due 2026-11-24
+5. [Garage] GAR-GPT-01 · Garage: phone audit: 15 findings · due 2026-11-24
+6. [Money · payoff simulator] MON-GPT-01 · Money: phone audit: 15 findings · due 2026-11-24
+7. [Kin] KIN-GPT-01 · Kin: phone audit: 15 findings · due 2026-11-24
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GPT-01 · Phone audit of the desk: 25 findings
@@ -68,3 +73,148 @@ IN THIS ORDER:
 
 **How Claude checks it:**
 - Claude reproduces 5 at random.
+
+==================== 3. KAIROS MERIDIAN ====================
+## 3. KAI-GPT-01 · Kairos Meridian: phone audit: 15 findings
+
+**Due:** 2026-11-24 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Open the pillar on a phone; use every section; only what you saw.
+
+**Make:** `kairos_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","where","what is wrong","why it matters","fix in one sentence"}`
+
+**How many:** 15
+
+**Done when:** 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 4. HEPHAESTUS HEARTH ====================
+## 4. HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings
+
+**Due:** 2026-11-24 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Open the pillar on a phone; use every section; only what you saw.
+
+**Make:** `hearth_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","where","what is wrong","why it matters","fix in one sentence"}`
+
+**How many:** 15
+
+**Done when:** 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 5. GARAGE ====================
+## 5. GAR-GPT-01 · Garage: phone audit: 15 findings
+
+**Due:** 2026-11-24 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/garage/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Open the pillar on a phone; use every section; only what you saw.
+
+**Make:** `garage_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","where","what is wrong","why it matters","fix in one sentence"}`
+
+**How many:** 15
+
+**Done when:** 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 6. MONEY · PAYOFF SIMULATOR ====================
+## 6. MON-GPT-01 · Money: phone audit: 15 findings
+
+**Due:** 2026-11-24 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/money/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Open the pillar on a phone; use every section; only what you saw.
+
+**Make:** `money_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","where","what is wrong","why it matters","fix in one sentence"}`
+
+**How many:** 15
+
+**Done when:** 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+
+==================== 7. KIN ====================
+## 7. KIN-GPT-01 · Kin: phone audit: 15 findings
+
+**Due:** 2026-11-24 · **State:** now
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Open the pillar on a phone; use every section; only what you saw.
+
+**Make:** `kin_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of objects, one per row: {"n","where","what is wrong","why it matters","fix in one sentence"}`
+
+**How many:** 15
+
+**Done when:** 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a real private person's name, address or phone number
+- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)

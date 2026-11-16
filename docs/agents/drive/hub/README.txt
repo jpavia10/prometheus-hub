@@ -8,31 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
+Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
 
 
-- HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
-    make: titan_icon_take1..3.png + prometheus_icon_take1..3.png · how many: 6 · done when: 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+- HUB-GRK-01 · Prometheus Hub: second reader on Gemini's 'Phone audit of the new home menu: 25 findings' · due 2026-11-22 · waits for its input file
+    make: hub_grok_menu-audit-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: 15 rows checked with the page each opened.
 
 ## Gemini
 
-Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
+Updated 2026-11-16 06:08 UTC · 2 open in this pillar.
 
 
-- HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
-    make: titan_icon_take1..3.png + prometheus_icon_take1..3.png · how many: 6 · done when: 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+- HUB-GEM-07 · Prometheus Hub: Phone audit of the new home menu: 25 findings · due 2026-11-19
+    make: hub_gemini_menu-audit_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows (or the whole document) in the shape, every source opening and saying what the row says.
+- HUB-GEM-08 · Prometheus Hub: 20 features the best personal dashboards and launchers have · due 2026-11-28
+    make: hub_gemini_features_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows (or the whole document) in the shape, every source opening and saying what the row says.
 
 ## Muse
 
-Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
+Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Prometheus Hub right now.
 
 ## ChatGPT
 
-Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
+Updated 2026-11-16 06:08 UTC · 1 open in this pillar.
 
 
 - HUB-GPT-01 · Phone audit of the desk: 25 findings · due 2026-11-12
     make: hub_chatgpt_audit_{YYYYMMDD-HHMM}.md · how many: 25 · done when: 25 findings Claude can find on the live page.
+
+## Argon
+
+Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+
+
+No homework for Argon in Prometheus Hub right now.
+
+## Hydrogen
+
+Updated 2026-11-16 06:08 UTC · 0 open in this pillar.
+
+
+No homework for Hydrogen in Prometheus Hub right now.

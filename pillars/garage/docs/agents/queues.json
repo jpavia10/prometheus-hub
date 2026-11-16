@@ -1,0 +1,262 @@
+{
+ "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
+ "updated": "2026-11-16",
+ "pillar": "garage",
+ "agents": [
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "tasks": [
+    {
+     "id": "GAR-GEM-01",
+     "title": "Garage: Recalls and service bulletins for the 2025 Kia Sorento Hybrid",
+     "state": "now",
+     "due": "2026-11-19",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "From nhtsa.gov/recalls and Kia's own recall page; say 'none' plainly if a list is empty."
+     ],
+     "deliver": {
+      "file": "garage_gemini_sorento-recalls_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "one markdown table: campaign number | date | what | remedy | NHTSA URL"
+     },
+     "count": 1,
+     "done_when": "1 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "GAR-GEM-02",
+     "title": "Garage: Caltrans chain-control rules and I-5 Tejon Pass closures",
+     "state": "now",
+     "due": "2026-11-21",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "The R1/R2/R3 rules from Caltrans, then 29 closures of I-5 at Tejon Pass in 2023-2026 from Caltrans or CHP releases."
+     ],
+     "deliver": {
+      "file": "garage_gemini_chain-control_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"date\",\"what happened (closure, chain control R1/R2/R3)\",\"hours\",\"source\",\"url\"}"
+     },
+     "count": 30,
+     "done_when": "30 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "GAR-GEM-03",
+     "title": "Garage: California weekly regular gasoline prices, Jan 2024 to now",
+     "state": "now",
+     "due": "2026-11-23",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "EIA weekly retail gasoline series for California only."
+     ],
+     "deliver": {
+      "file": "garage_gemini_fuel-prices_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"week\",\"price_usd_per_gal\",\"series\",\"url\"}"
+     },
+     "count": 100,
+     "done_when": "100 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "GAR-GEM-04",
+     "title": "Garage: 20 features the best car maintenance and fuel logs have",
+     "state": "now",
+     "due": "2026-11-28",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Look at car maintenance and fuel logs (Fuelly, Drivvo, CARFAX Car Care).",
+      "Only features the app's own page, help centre or store listing shows; no guesses.",
+      "Sort by how much the feature would help a person using this pillar every day."
+     ],
+     "deliver": {
+      "file": "garage_gemini_features_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"feature\",\"which app has it (name)\",\"what it does for the user in one sentence\",\"how it would work here\",\"url of the app page that shows it\"}"
+     },
+     "count": 20,
+     "done_when": "20 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grok",
+   "name": "Grok",
+   "tasks": [
+    {
+     "id": "GAR-GRK-01",
+     "title": "Garage: second reader on Gemini's 'Recalls and service bulletins for the 2025 Kia Sorento Hybrid'",
+     "state": "next",
+     "due": "2026-11-22",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file garage_gemini_sorento-recalls_*.md in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "garage_grok_sorento-recalls-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "muse",
+   "name": "Muse",
+   "tasks": [
+    {
+     "id": "GAR-MUS-01",
+     "title": "Garage: second reader on Gemini's 'Caltrans chain-control rules and I-5 Tejon Pass closures'",
+     "state": "next",
+     "due": "2026-11-24",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file garage_gemini_chain-control_*.json in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "garage_muse_chain-control-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chatgpt",
+   "name": "ChatGPT",
+   "tasks": [
+    {
+     "id": "GAR-GPT-01",
+     "title": "Garage: phone audit: 15 findings",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Open the pillar on a phone; use every section; only what you saw."
+     ],
+     "deliver": {
+      "file": "garage_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"where\",\"what is wrong\",\"why it matters\",\"fix in one sentence\"}"
+     },
+     "count": 15,
+     "done_when": "15 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    }
+   ]
+  }
+ ]
+}

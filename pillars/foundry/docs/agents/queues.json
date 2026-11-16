@@ -1,0 +1,129 @@
+{
+ "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
+ "updated": "2026-11-16",
+ "pillar": "foundry",
+ "agents": [
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "tasks": [
+    {
+     "id": "FDY-GEM-01",
+     "title": "Foundry: Prior art for the 11 inventions",
+     "state": "now",
+     "due": "2026-11-19",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Foundry uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/foundry/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Five per invention in pillars/foundry; patents from Google Patents, products from the maker's page."
+     ],
+     "deliver": {
+      "file": "foundry_gemini_prior-art_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"invention\",\"n (1-5)\",\"patent or product\",\"owner\",\"year\",\"link\",\"how close (one sentence)\"}"
+     },
+     "count": 55,
+     "done_when": "55 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "FDY-GEM-02",
+     "title": "Foundry: 20 features the best invention and product-build trackers have",
+     "state": "now",
+     "due": "2026-11-28",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Foundry uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/foundry/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Look at invention and product-build trackers (Notion product templates, Quip, maker project logs).",
+      "Only features the app's own page, help centre or store listing shows; no guesses.",
+      "Sort by how much the feature would help a person using this pillar every day."
+     ],
+     "deliver": {
+      "file": "foundry_gemini_features_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"feature\",\"which app has it (name)\",\"what it does for the user in one sentence\",\"how it would work here\",\"url of the app page that shows it\"}"
+     },
+     "count": 20,
+     "done_when": "20 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grok",
+   "name": "Grok",
+   "tasks": [
+    {
+     "id": "FDY-GRK-01",
+     "title": "Foundry: second reader on Gemini's 'Prior art for the 11 inventions'",
+     "state": "next",
+     "due": "2026-11-22",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file foundry_gemini_prior-art_*.json in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "foundry_grok_prior-art-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "muse",
+   "name": "Muse",
+   "tasks": []
+  },
+  {
+   "id": "chatgpt",
+   "name": "ChatGPT",
+   "tasks": []
+  }
+ ]
+}

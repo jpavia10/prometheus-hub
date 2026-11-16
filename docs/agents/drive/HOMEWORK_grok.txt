@@ -1,10 +1,10 @@
 HOMEWORK — Grok (every pillar)
 
-Updated 2026-11-10 03:42 UTC. 24 open across 6 pillars.
+Updated 2026-11-16 06:08 UTC. 46 open across 27 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
-TITAN RELIQUARY (its own loop, the exception): 9 homework sheets + 9 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Grok' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_grok.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 9 homework sheets + 10 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Grok' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_grok.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -14,49 +14,36 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
-1. [Prometheus Hub] HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
-2. [Midas Ledger] MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
-3. [Midas Ledger] MID-GRK-02 · A fresh book every Monday by noon PT · due 2026-11-09
-4. [Hephaestus Hearth] HEA-GRK-01 · Second reader on Gemini's scan-app table · due 2026-11-13 · waits for its input file
-5. [Hermes Post] HER-GRK-01 · Hermes Post: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
-6. [Icarus Stake] ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
+1. [Midas Ledger] MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
+2. [Midas Ledger] MID-GRK-02 · A fresh book every Monday by noon PT · due 2026-11-09
+3. [Prometheus Hub] HUB-GRK-01 · Prometheus Hub: second reader on Gemini's 'Phone audit of the new home menu: 25 findings' · due 2026-11-22 · waits for its input file
+4. [Kairos Meridian] KAI-GRK-01 · Kairos Meridian: second reader on Gemini's '40 California household deadlines that repeat every year' · due 2026-11-22 · waits for its input file
+5. [Hephaestus Hearth] HEA-GRK-02 · Hephaestus Hearth: second reader on Gemini's 'Deck refurbish specs from the makers' own pages' · due 2026-11-22 · waits for its input file
+6. [Garage] GAR-GRK-01 · Garage: second reader on Gemini's 'Recalls and service bulletins for the 2025 Kia Sorento Hybrid' · due 2026-11-22 · waits for its input file
+7. [Apollo Temple] APO-GRK-01 · Apollo Temple: second reader on Gemini's 'Foods 901-1200 from USDA FoodData Central' · due 2026-11-22 · waits for its input file
+8. [Money · payoff simulator] MON-GRK-01 · Money: second reader on Gemini's 'Hardship programs and promo terms of 30 more card and loan issuers' · due 2026-11-22 · waits for its input file
+9. [Selling Pipeline] SEL-GRK-01 · Selling Pipeline: second reader on Gemini's 'Marketplace fees as of December 2026' · due 2026-11-22 · waits for its input file
+10. [Records · Paper Killer] REC-GRK-01 · Records: second reader on Gemini's 'How long to keep 60 kinds of documents' · due 2026-11-22 · waits for its input file
+11. [Icarus Stake] ICA-GRK-02 · Icarus Stake: second reader on Gemini's 'The 2028 NYSE and Nasdaq holiday and early-close calendar' · due 2026-11-22 · waits for its input file
+12. [Hermes Post] HER-GRK-02 · Hermes Post: second reader on Gemini's 'Billing rules of 40 California utilities, insurers and lenders' · due 2026-11-22 · waits for its input file
+13. [Bossa Piano Studio] PIA-GRK-01 · Bossa Piano Studio: second reader on Gemini's '40 more bossa nova standards: key, form and first eight chords' · due 2026-11-22 · waits for its input file
+14. [Bastion · Mountain Prep] BAS-GRK-01 · Bastion: second reader on Gemini's 'A 72-hour kit for 4 people and pets, with shelf lives' · due 2026-11-22 · waits for its input file
+15. [Athenaeum · Idea Vault] ATH-GRK-01 · Athenaeum: second reader on Gemini's '40 more cause, event and consequence entries' · due 2026-11-22 · waits for its input file
+16. [Odyssey · Trips & Away Mode] ODY-GRK-01 · Odyssey: second reader on Gemini's 'An away-mode checklist for a mountain home in winter' · due 2026-11-22 · waits for its input file
+17. [Privacy · CA DROP] PRI-GRK-01 · Privacy: second reader on Gemini's '30 more data brokers with their opt-out routes' · due 2026-11-22 · waits for its input file
+18. [Argus Album] ARG-GRK-01 · Argus Album: second reader on Gemini's '30 rules for photographing coins for the Phase 2 pro scans' · due 2026-11-22 · waits for its input file
+19. [Ludus Arcade] GAM-GRK-01 · Ludus Arcade: second reader on Gemini's '60 major game releases for 2026-27 on PS5 and PC' · due 2026-11-22 · waits for its input file
+20. [Forge] FOR-GRK-01 · Forge: second reader on Gemini's 'Check the scoring rubric against 20 scored files' · due 2026-11-22 · waits for its input file
+21. [Foundry] FDY-GRK-01 · Foundry: second reader on Gemini's 'Prior art for the 11 inventions' · due 2026-11-22 · waits for its input file
+22. [Observatory] OBS-GRK-01 · Observatory: second reader on Gemini's '10 primary sources for each of the 8 subjects' · due 2026-11-22 · waits for its input file
+23. [Kin] KIN-GRK-01 · Kin: second reader on Gemini's 'California custody schedule templates' · due 2026-11-22 · waits for its input file
+24. [Aether · Atmospheric & Field Lab] AET-GRK-01 · Aether: second reader on Gemini's 'Data feeds for air quality, wildfire, weather and the mountain pass' · due 2026-11-22 · waits for its input file
+25. [Polis · Civic & Legal Watch] POL-GRK-01 · Polis: second reader on Gemini's '30 Kern County rules a homeowner meets' · due 2026-11-22 · waits for its input file
+26. [Mythos · Creative & Lore Studio] MYT-GRK-01 · Mythos: second reader on Gemini's '30 public-domain myth and folklore references for the canon' · due 2026-11-22 · waits for its input file
+27. [Continuity · Sovereign Vault] CON-GRK-01 · Continuity: second reader on Gemini's 'Legacy-contact and inactive-account policies of 30 services' · due 2026-11-22 · waits for its input file
 
-==================== 1. PROMETHEUS HUB ====================
-## 1. HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
-
-**Due:** 2026-11-06 · **State:** now
-
-**Read first:**
-- the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)
-- Drive doc 'ART_START_HERE (any AI: images + video)'
-
-**Do this:**
-1. Claim it: save an empty file named artreq_20261105-0300_app-icons-titan-prometheus.CLAIMED-grok.txt in the art-requests folder (skip it if Gemini claimed it if another AI claimed it less than 24 hours ago).
-2. Make the 6 images with your own image model, one at a time, square, at least 1024x1024, full-bleed, the subject inside the central 66 % circle.
-3. Save them with the exact file names into 'Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/'.
-4. Write artreq_20261105-0300_app-icons-titan-prometheus.DONE.txt next to the request: one line per file, ok or skipped: reason, your model name and the date.
-
-**Make:** `titan_icon_take1..3.png + prometheus_icon_take1..3.png`
-
-**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
-
-**Shape:** `6 PNG files, square, >= 1024 px`
-
-**How many:** 6
-
-**Done when:** 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
-
-**How Claude checks it:**
-- Claude opens every image at full size and at 48x48 px, masked to a circle.
-- A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped.
-
-**Not done (sent back) if:** (and the rules at the top)
-- readable letters on any take but titan_icon_take3 (exactly TR)
-- rounded corners, a border or a white background
-- smaller than 1024x1024
-
-==================== 2. MIDAS LEDGER ====================
-## 2. MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end
+==================== 1. MIDAS LEDGER ====================
+## 1. MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end
 
 **Due:** 2026-11-09 · **State:** now
 
@@ -87,8 +74,8 @@ IN THIS ORDER:
 - a number guessed or carried over without an as_of date
 - plaintext balances anywhere outside the encrypted book
 
-==================== 3. MIDAS LEDGER ====================
-## 3. MID-GRK-02 · A fresh book every Monday by noon PT
+==================== 2. MIDAS LEDGER ====================
+## 2. MID-GRK-02 · A fresh book every Monday by noon PT
 
 **Due:** 2026-11-09 · **State:** now
 
@@ -116,77 +103,652 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a week missed
 
-==================== 4. HEPHAESTUS HEARTH ====================
-## 4. HEA-GRK-01 · Second reader on Gemini's scan-app table
+==================== 3. PROMETHEUS HUB ====================
+## 3. HUB-GRK-01 · Prometheus Hub: second reader on Gemini's 'Phone audit of the new home menu: 25 findings'
 
-**Due:** 2026-11-13 · **State:** next (starts when the file it checks is in the folder)
-
-**Read first:**
-- Gemini's file hearth_gemini_scan-apps_*.md in the incoming folder (once it is there)
-
-**Do this:**
-1. Check every price, export and LiDAR cell against the cited page.
-2. Write one line per cell you checked: row, column, Gemini's value, yours, the URL, agree/differ.
-
-**Make:** `hearth_grok_scan-apps-check_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `table: app | column | gemini | grok | url | agree/differ`
-
-**How many:** 32
-
-**Done when:** At least 32 cells checked (4 per app).
-
-**How Claude checks it:**
-- Claude spot-checks 5 of your 'differ' lines.
-
-==================== 5. HERMES POST ====================
-## 5. HER-GRK-01 · Hermes Post: second reader on Gemini's spec
-
-**Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
 
 **Read first:**
-- Gemini's file hermes_gemini_spec_*.md in the incoming folder (once it is there)
+- Gemini's file hub_gemini_menu-audit_*.json in the folder below (once it is there)
 
 **Do this:**
-1. Open every data source's docs URL; for each write: source, Gemini's claim (sign-in, cost, limits), what the page says, agree/differ.
-2. Add up to 5 sources Gemini missed, same columns.
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
 
-**Make:** `hermes_grok_spec-check_{YYYYMMDD-HHMM}.md`
+**Make:** `hub_grok_menu-audit-check_{YYYYMMDD-HHMM}.md`
 
-**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `table: source | gemini says | page says | url | agree/differ`
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
 
-**How many:** 6
+**How many:** 15
 
-**Done when:** Every source in Gemini's spec checked.
+**Done when:** 15 rows checked with the page each opened.
 
 **How Claude checks it:**
 - Claude spot-checks 3 'differ' lines.
 
-==================== 6. ICARUS STAKE ====================
-## 6. ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec
+==================== 4. KAIROS MERIDIAN ====================
+## 4. KAI-GRK-01 · Kairos Meridian: second reader on Gemini's '40 California household deadlines that repeat every year'
 
-**Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
 
 **Read first:**
-- Gemini's file icarus_gemini_spec_*.md in the incoming folder (once it is there)
+- Gemini's file kairos_gemini_ca-deadlines_*.json in the folder below (once it is there)
 
 **Do this:**
-1. Open every data source's docs URL; for each write: source, Gemini's claim (sign-in, cost, limits), what the page says, agree/differ.
-2. Add up to 5 sources Gemini missed, same columns.
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
 
-**Make:** `icarus_grok_spec-check_{YYYYMMDD-HHMM}.md`
+**Make:** `kairos_grok_ca-deadlines-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 5. HEPHAESTUS HEARTH ====================
+## 5. HEA-GRK-02 · Hephaestus Hearth: second reader on Gemini's 'Deck refurbish specs from the makers' own pages'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file hearth_gemini_deck-specs_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `hearth_grok_deck-specs-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 6. GARAGE ====================
+## 6. GAR-GRK-01 · Garage: second reader on Gemini's 'Recalls and service bulletins for the 2025 Kia Sorento Hybrid'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file garage_gemini_sorento-recalls_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `garage_grok_sorento-recalls-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 7. APOLLO TEMPLE ====================
+## 7. APO-GRK-01 · Apollo Temple: second reader on Gemini's 'Foods 901-1200 from USDA FoodData Central'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file apollo_gemini_foods-part4_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `apollo_grok_foods-part4-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 8. MONEY · PAYOFF SIMULATOR ====================
+## 8. MON-GRK-01 · Money: second reader on Gemini's 'Hardship programs and promo terms of 30 more card and loan issuers'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file money_gemini_issuers-more_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `money_grok_issuers-more-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 9. SELLING PIPELINE ====================
+## 9. SEL-GRK-01 · Selling Pipeline: second reader on Gemini's 'Marketplace fees as of December 2026'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file selling_gemini_fees-dec2026_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `selling_grok_fees-dec2026-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 10. RECORDS · PAPER KILLER ====================
+## 10. REC-GRK-01 · Records: second reader on Gemini's 'How long to keep 60 kinds of documents'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file records_gemini_retention_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `records_grok_retention-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 11. ICARUS STAKE ====================
+## 11. ICA-GRK-02 · Icarus Stake: second reader on Gemini's 'The 2028 NYSE and Nasdaq holiday and early-close calendar'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file icarus_gemini_calendar-2028_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `icarus_grok_calendar-2028-check_{YYYYMMDD-HHMM}.md`
 
 **Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
 
-**Shape:** `table: source | gemini says | page says | url | agree/differ`
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
 
-**How many:** 6
+**How many:** 15
 
-**Done when:** Every source in Gemini's spec checked.
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 12. HERMES POST ====================
+## 12. HER-GRK-02 · Hermes Post: second reader on Gemini's 'Billing rules of 40 California utilities, insurers and lenders'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file hermes_gemini_bill-rules_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `hermes_grok_bill-rules-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 13. BOSSA PIANO STUDIO ====================
+## 13. PIA-GRK-01 · Bossa Piano Studio: second reader on Gemini's '40 more bossa nova standards: key, form and first eight chords'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file piano_gemini_standards-41-80_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `piano_grok_standards-41-80-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 14. BASTION · MOUNTAIN PREP ====================
+## 14. BAS-GRK-01 · Bastion: second reader on Gemini's 'A 72-hour kit for 4 people and pets, with shelf lives'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file bastion_gemini_kit-items_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `bastion_grok_kit-items-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 15. ATHENAEUM · IDEA VAULT ====================
+## 15. ATH-GRK-01 · Athenaeum: second reader on Gemini's '40 more cause, event and consequence entries'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file athenaeum_gemini_chronicle-41-80_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `athenaeum_grok_chronicle-41-80-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 16. ODYSSEY · TRIPS & AWAY MODE ====================
+## 16. ODY-GRK-01 · Odyssey: second reader on Gemini's 'An away-mode checklist for a mountain home in winter'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file odyssey_gemini_away-house_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `odyssey_grok_away-house-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 17. PRIVACY · CA DROP ====================
+## 17. PRI-GRK-01 · Privacy: second reader on Gemini's '30 more data brokers with their opt-out routes'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file privacy_gemini_brokers-48-77_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `privacy_grok_brokers-48-77-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 18. ARGUS ALBUM ====================
+## 18. ARG-GRK-01 · Argus Album: second reader on Gemini's '30 rules for photographing coins for the Phase 2 pro scans'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file argus_gemini_coin-photo-rules_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `argus_grok_coin-photo-rules-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 19. LUDUS ARCADE ====================
+## 19. GAM-GRK-01 · Ludus Arcade: second reader on Gemini's '60 major game releases for 2026-27 on PS5 and PC'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file games_gemini_releases-2027_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `games_grok_releases-2027-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 20. FORGE ====================
+## 20. FOR-GRK-01 · Forge: second reader on Gemini's 'Check the scoring rubric against 20 scored files'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file forge_gemini_rubric-check_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `forge_grok_rubric-check-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 21. FOUNDRY ====================
+## 21. FDY-GRK-01 · Foundry: second reader on Gemini's 'Prior art for the 11 inventions'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file foundry_gemini_prior-art_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `foundry_grok_prior-art-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 22. OBSERVATORY ====================
+## 22. OBS-GRK-01 · Observatory: second reader on Gemini's '10 primary sources for each of the 8 subjects'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file observatory_gemini_sources_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `observatory_grok_sources-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 23. KIN ====================
+## 23. KIN-GRK-01 · Kin: second reader on Gemini's 'California custody schedule templates'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file kin_gemini_custody-templates_*.md in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `kin_grok_custody-templates-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 24. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 24. AET-GRK-01 · Aether: second reader on Gemini's 'Data feeds for air quality, wildfire, weather and the mountain pass'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file aether_gemini_feeds_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `aether_grok_feeds-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 25. POLIS · CIVIC & LEGAL WATCH ====================
+## 25. POL-GRK-01 · Polis: second reader on Gemini's '30 Kern County rules a homeowner meets'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file polis_gemini_kern-ordinances_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `polis_grok_kern-ordinances-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 26. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 26. MYT-GRK-01 · Mythos: second reader on Gemini's '30 public-domain myth and folklore references for the canon'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file mythos_gemini_myth-refs_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `mythos_grok_myth-refs-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+==================== 27. CONTINUITY · SOVEREIGN VAULT ====================
+## 27. CON-GRK-01 · Continuity: second reader on Gemini's 'Legacy-contact and inactive-account policies of 30 services'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Read first:**
+- Gemini's file continuity_gemini_legacy-policies_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `continuity_grok_legacy-policies-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
 
 **How Claude checks it:**
 - Claude spot-checks 3 'differ' lines.

@@ -2,6 +2,38 @@
 
 # Hephaestus Hearth · homework for Grok
 
-Updated 2026-11-16 01:58 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
+Updated 2026-11-16 06:08 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
 
-No homework for Grok in Hephaestus Hearth right now. Check your HOMEWORK doc for the other pillars.
+## 1. HEA-GRK-02 · Hephaestus Hearth: second reader on Gemini's 'Deck refurbish specs from the makers' own pages'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**Why:** Every Gemini dataset gets a second reader before Claude builds on it.
+
+**Read first:**
+- Gemini's file hearth_gemini_deck-specs_*.json in the folder below (once it is there)
+
+**Do this:**
+1. Open 15 rows at random (or every row if fewer) and the source each cites.
+2. For each: what Gemini says, what the page says, agree/differ.
+3. Add up to 5 rows Gemini missed, same shape.
+
+**Make:** `hearth_grok_deck-specs-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `table: row | gemini says | page says | url | agree/differ`
+
+**How many:** 15
+
+**Done when:** 15 rows checked with the page each opened.
+
+**How Claude checks it:**
+- Claude spot-checks 3 'differ' lines.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field of the shape
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name

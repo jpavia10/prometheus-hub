@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-09",
+ "updated": "2026-11-16",
  "pillar": "kairos",
  "agents": [
   {
@@ -166,6 +166,141 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a field that is not on the reference page"
      ]
+    },
+    {
+     "id": "KAI-GEM-06",
+     "title": "Kairos Meridian: 40 California household deadlines that repeat every year",
+     "state": "now",
+     "due": "2026-11-19",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Property tax installments, vehicle registration, smog, state and federal tax, estimated tax, HSA/IRA deadlines, voter registration, open enrollment and the like.",
+      "Each row from the agency's own page (ftb.ca.gov, dmv.ca.gov, irs.gov, the county tax collector); quote the sentence that gives the date."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_ca-deadlines_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"title\",\"when (rule, e.g. Nov 1 due, Dec 10 delinquent)\",\"who it applies to\",\"penalty if missed\",\"official_url\",\"quote\"}"
+     },
+     "count": 40,
+     "done_when": "40 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "KAI-GEM-07",
+     "title": "Kairos Meridian: The 2026-27 school calendar for El Tejon Unified and Kern High School District",
+     "state": "now",
+     "due": "2026-11-21",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "From each district's own published calendar (PDF or page); every date in the calendar, nothing estimated."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_school-calendar_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "one markdown file: per district a table date | what (first day, holiday, break, minimum day, last day) | source URL"
+     },
+     "count": 2,
+     "done_when": "2 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "KAI-GEM-08",
+     "title": "Kairos Meridian: Sunrise, sunset, moonrise and moon phase for every day of 2027 at Frazier Park, CA",
+     "state": "now",
+     "due": "2026-11-23",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "From the US Naval Observatory or timeanddate.com tables for Frazier Park (34.82 N, 118.94 W), Pacific time with DST."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_moon-sun-2027_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"date\",\"sunrise\",\"sunset\",\"moon_phase\",\"illumination_pct\",\"source\"}"
+     },
+     "count": 365,
+     "done_when": "365 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "KAI-GEM-09",
+     "title": "Kairos Meridian: 20 features the best calendar and time-blocking apps have",
+     "state": "now",
+     "due": "2026-11-28",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Look at calendar and time-blocking apps (Fantastical, Google Calendar, Sunsama, Motion).",
+      "Only features the app's own page, help centre or store listing shows; no guesses.",
+      "Sort by how much the feature would help a person using this pillar every day."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_features_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"feature\",\"which app has it (name)\",\"what it does for the user in one sentence\",\"how it would work here\",\"url of the app page that shows it\"}"
+     },
+     "count": 20,
+     "done_when": "20 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
     }
    ]
   },
@@ -201,6 +336,115 @@
       "a source URL that does not open or does not say what the row claims",
       "fewer items than the count",
       "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "KAI-MUS-02",
+     "title": "Kairos Meridian: second reader on Gemini's 'The 2026-27 school calendar for El Tejon Unified and Kern High School District'",
+     "state": "next",
+     "due": "2026-11-24",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file kairos_gemini_school-calendar_*.md in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "kairos_muse_school-calendar-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grok",
+   "name": "Grok",
+   "tasks": [
+    {
+     "id": "KAI-GRK-01",
+     "title": "Kairos Meridian: second reader on Gemini's '40 California household deadlines that repeat every year'",
+     "state": "next",
+     "due": "2026-11-22",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file kairos_gemini_ca-deadlines_*.json in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "kairos_grok_ca-deadlines-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chatgpt",
+   "name": "ChatGPT",
+   "tasks": [
+    {
+     "id": "KAI-GPT-01",
+     "title": "Kairos Meridian: phone audit: 15 findings",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Open the pillar on a phone; use every section; only what you saw."
+     ],
+     "deliver": {
+      "file": "kairos_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"where\",\"what is wrong\",\"why it matters\",\"fix in one sentence\"}"
+     },
+     "count": 15,
+     "done_when": "15 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
      ]
     }
    ]

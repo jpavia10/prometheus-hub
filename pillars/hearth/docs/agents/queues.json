@@ -229,6 +229,140 @@
       "a file saved anywhere but the folder named here, or under another name",
       "two rows that say the same thing about one app"
      ]
+    },
+    {
+     "id": "HEA-GEM-12",
+     "title": "Hephaestus Hearth: Deck refurbish specs from the makers' own pages",
+     "state": "now",
+     "due": "2026-11-19",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "The 23 x 10 ft second-floor deck: board gaps, fastener spacing, joist spans, finishing; every number from the maker's installation guide."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_deck-specs_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"product (cedar, composite, fastener, joist tape, stain)\",\"spec (spacing, gap, span, coats)\",\"value\",\"maker\",\"url\",\"quote\"}"
+     },
+     "count": 40,
+     "done_when": "40 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "HEA-GEM-13",
+     "title": "Hephaestus Hearth: When Kern County needs a permit for deck repair or replacement",
+     "state": "now",
+     "due": "2026-11-21",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Kern County Public Works / Building Inspection pages only."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_kern-permits_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "one markdown file: the rule, the exceptions, the fee table, how to apply, each with the Kern County page URL and a quote"
+     },
+     "count": 1,
+     "done_when": "1 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "HEA-GEM-14",
+     "title": "Hephaestus Hearth: A seasonal checklist for a mountain home at about 5,000 ft",
+     "state": "now",
+     "due": "2026-11-23",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Snow load, roof and gutters, defensible space (CAL FIRE), wood stove, pipes, propane; official or manufacturer sources."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_mountain-home_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"season\",\"task\",\"why\",\"how often\",\"source\",\"url\"}"
+     },
+     "count": 60,
+     "done_when": "60 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
+    },
+    {
+     "id": "HEA-GEM-15",
+     "title": "Hephaestus Hearth: 20 features the best home renovation and home-inventory apps have",
+     "state": "now",
+     "due": "2026-11-28",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Look at home renovation and home-inventory apps (HomeZada, Centriq, magicplan).",
+      "Only features the app's own page, help centre or store listing shows; no guesses.",
+      "Sort by how much the feature would help a person using this pillar every day."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_features_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"feature\",\"which app has it (name)\",\"what it does for the user in one sentence\",\"how it would work here\",\"url of the app page that shows it\"}"
+     },
+     "count": 20,
+     "done_when": "20 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
     }
    ]
   },
@@ -266,6 +400,38 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "review": "Reviewed by Claude 2026-11-16: 33 cells (4+ per app), table shape right; named HEARTH-GROK-... instead of hearth_grok_...; kept in pillars/hearth/research/. Spot-check of the 'differ' lines (Polycam Business promo, Scaniverse GLB on Free, Twindo Scale price) pending: those hosts are blocked from the build session."
+    },
+    {
+     "id": "HEA-GRK-02",
+     "title": "Hephaestus Hearth: second reader on Gemini's 'Deck refurbish specs from the makers' own pages'",
+     "state": "next",
+     "due": "2026-11-22",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file hearth_gemini_deck-specs_*.json in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "hearth_grok_deck-specs-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
     }
    ]
   },
@@ -296,6 +462,83 @@
      ],
      "rejected_if": [],
      "review": "Superseded 2026-11-16: Hearth moved into the hub (pillars/hearth/, live on the hub's Pages since 2026-11-14); its old site redirects there, and its projects are saved on the device through the kit store and the hub backup."
+    }
+   ]
+  },
+  {
+   "id": "muse",
+   "name": "Muse",
+   "tasks": [
+    {
+     "id": "HEA-MUS-01",
+     "title": "Hephaestus Hearth: second reader on Gemini's 'When Kern County needs a permit for deck repair or replacement'",
+     "state": "next",
+     "due": "2026-11-24",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file hearth_gemini_kern-permits_*.md in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "hearth_muse_kern-permits-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chatgpt",
+   "name": "ChatGPT",
+   "tasks": [
+    {
+     "id": "HEA-GPT-01",
+     "title": "Hephaestus Hearth: phone audit: 15 findings",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Open the pillar on a phone; use every section; only what you saw."
+     ],
+     "deliver": {
+      "file": "hearth_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"where\",\"what is wrong\",\"why it matters\",\"fix in one sentence\"}"
+     },
+     "count": 15,
+     "done_when": "15 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ]
     }
    ]
   }

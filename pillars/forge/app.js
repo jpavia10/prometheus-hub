@@ -1,44 +1,122 @@
-/* Forge (Claude, 2026-11-13; owner lifted the Fleet pause for it the same day): the AI work floor. Reads, never writes, the homework
-   queues this hub publishes (docs/agents/queues.json and each pillar's own) and Titan's score sheet (same site, read as text); keeps
-   the owner's own assignments here. Nothing on this page talks to an AI. window.FORGE = { parseScores, load, data } */
+/* Forge (Claude, 2026-11-13; rebuilt 2026-11-16 at the owner's word: "aggressively assign homework ... I want to see clearly on the forge.
+   Spend time to level it up"): the AI work floor. It reads, never writes, every place work is handed out: the homework queue of the hub and of
+   every pillar (pillars.json lists them), Titan's research loop (each AI's open assignments) and Titan's hand-written projects, the Gemini
+   coding agents' workboard (docs/antigravity/WORKBOARD.md), and the score sheets (Titan's ledger and each pillar's). It shows, per AI, how
+   much is out and from where, against a floor (Gemini is loaded heaviest), what is due or late, and which pillar has nothing assigned.
+   The owner's own hand-outs stay on this device. Nothing on this page talks to an AI. window.FORGE = { parseScores, load, data } */
 (function () {
   "use strict";
   const { $, h, day, toast, store, download, pickFile } = PK;
-  const S = store("forge"), app = $("#app"), AIS = ["Argon", "Hydrogen", "Grok", "Gemini", "Muse", "ChatGPT", "Gemini API", "Claude"];
-  const ROLE_TAG = { Argon: "Orchestrator & Reviewer", Hydrogen: "Executor & Verifier" };
-  const QUEUES = [["Hub", "../../docs/agents/queues.json"], ...["kairos", "apollo", "hermes", "icarus", "argus", "hearth"].map((p) => [p[0].toUpperCase() + p.slice(1), `../${p}/docs/agents/queues.json`])];
-  const SCORES = new URLSearchParams(location.search).get("scores") || new URL("/titan-reliquary-preview/collaborators/CONTRIBUTOR_SCORES.md", location.origin).href;
-  const D = { tasks: [], scores: [], scoreState: "loading", queueState: "loading" };
+  const S = store("forge"), app = $("#app"), Q = new URLSearchParams(location.search);
+  const AIS = ["Gemini", "Grok", "Muse", "ChatGPT", "Gemini API", "Argon", "Hydrogen", "Claude"];
+  const FLOOR = { Gemini: 30, Grok: 6, Muse: 6, ChatGPT: 2, "Gemini API": 1, Argon: 1, Hydrogen: 1 };     // owner, 2026-11-16: everyone loaded, Gemini very heavy
+  const ROLE_TAG = { Argon: "Gemini agent · orchestrator", Hydrogen: "Gemini agent · executor", "Gemini API": "the API, one sub-source per model" };
+  const NAME = { gemini: "Gemini", grok: "Grok", muse: "Muse", chatgpt: "ChatGPT", "gemini-api": "Gemini API", claude: "Claude", argon: "Argon", hydrogen: "Hydrogen" };
+  const SRC = { titan: "Titan · research loop", tproj: "Titan · projects", hub: "Prometheus pillars", board: "Gemini agents' workboard", mine: "Your hand-outs" };
+  const SRC_SHORT = { titan: "Titan loop", tproj: "Titan projects", hub: "Pillars", board: "Workboard", mine: "Yours" };
+  const ROOT = "../../";
+  const TITAN = Q.get("titan") || new URL("/titan-reliquary-preview/", location.origin).href;
+  const TRAW = "https://github.com/jpavia10/titan-reliquary-preview/blob/main/";
+  const SCORES = Q.get("scores") || new URL("collaborators/CONTRIBUTOR_SCORES.md", TITAN).href;
+  const KIND = { cite: "Cite catalogue facts", catno: "Settle catalogue numbers", verify: "Verify facts others wrote", "read-mint": "Read mint marks from photos", "story-check": "Fact-check stories",
+    "plain-story": "Rewrite stories in plain English", research: "Research open questions", value: "Price coins with a dated source", arbitrate: "Third reader on disagreements", contradiction: "Settle contradictions", fill: "Fill Phase 2 facts" };
+  const D = { tasks: [], scores: [], hubScores: [], scoreState: "loading", queueState: "loading", sources: {}, pillars: [] };
+  const today = day();
+  const ai = (x) => NAME[String(x || "").toLowerCase()] || x;
+  const days = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
+
   /** Titan's score sheet: "## Name (note)" sections, then rows "| n | date | submission | **x / 10** ... | notes |". */
   function parseScores(md) {
-    const out = []; let ai = null, probation = false;
+    const out = []; let who = null, probation = false;
     for (const line of String(md).split("\n")) {
-      const sec = line.match(/^## (.+?)\s*(\((.*)\))?\s*$/); if (sec) { const name = sec[1].trim(); ai = AIS.includes(name) ? name : null; probation = /on probation/i.test(sec[3] || "") && !/not on probation/i.test(sec[3] || ""); continue; }
-      if (!ai || !/^\|\s*\d+\s*\|/.test(line)) continue;
+      const sec = line.match(/^## (.+?)\s*(\((.*)\))?\s*$/); if (sec) { const name = sec[1].trim(); who = AIS.includes(name) ? name : null; probation = /on probation/i.test(sec[3] || "") && !/not on probation/i.test(sec[3] || ""); continue; }
+      if (!who || !/^\|\s*\d+\s*\|/.test(line)) continue;
       const cells = line.split("|").map((c) => c.trim()), m = line.match(/\*\*(\d+(?:\.\d+)?)\s*\/\s*10\*\*/); if (!m) continue;
-      out.push({ ai, probation, n: +cells[1], date: cells[2], what: cells[3].replace(/`/g, ""), score: +m[1] });
+      out.push({ ai: who, probation, n: +cells[1], date: cells[2], what: cells[3].replace(/`/g, ""), score: +m[1], where: "Titan" });
     }
     return out;
   }
+  /** A Prometheus pillar's score sheet: "| # | Date | AI | File | Task | Place | Accepted | Accurate | Complete | On sheet | Score | Notes |". */
+  function parseHubScores(md, where) {
+    const out = [];
+    for (const line of String(md).split("\n")) {
+      if (!/^\|\s*\d+\s*\|/.test(line)) continue; const c = line.split("|").map((x) => x.trim()); if (c.length < 13) continue;
+      const sc = c[11], num = /^\d+(\.\d+)?$/.test(sc) ? +sc : null;
+      out.push({ ai: ai(c[3]), date: c[2], what: c[4].replace(/`/g, ""), task: c[5], score: num, pending: num == null, note: sc, where });
+    }
+    return out;
+  }
+  /** The workboard table: | `AGY-017` | Sprint 10 | title | owner | STATUS | deps | acceptance | evidence | */
+  function parseBoard(md) {
+    const out = [];
+    for (const line of String(md).split("\n")) {
+      const m = line.match(/^\|\s*`(AGY-\d+)`\s*\|/); if (!m) continue; const c = line.split("|").map((x) => x.trim());
+      const status = (c[5] || "").toUpperCase(), done = status === "DONE";
+      for (const who of (c[4] || "").split("/").map((x) => x.trim()).filter(Boolean))
+        out.push({ ai: ai(who), src: "board", where: "Workboard", id: m[1], title: c[3], state: done ? "done" : /WAIT/.test(status) ? "waiting" : "now", status, due: "", items: 0,
+          detail: { what: c[7] ? "Done when: " + c[7] : "", link: "https://github.com/jpavia10/prometheus-hub/blob/main/docs/antigravity/WORKBOARD.md" } });
+    }
+    return out;
+  }
+  const get = (url, as) => fetch(url, { cache: "no-cache" }).then((r) => (r.ok ? (as === "text" ? r.text() : r.json()) : null)).catch(() => null);
+
   async function load() {
-    const got = await Promise.all(QUEUES.map(([where, url]) => fetch(url).then((r) => (r.ok ? r.json() : null)).then((q) => ({ where, q })).catch(() => ({ where, q: null }))));
-    D.tasks = []; for (const { where, q } of got) if (q && Array.isArray(q.agents)) for (const a of q.agents) for (const t of a.tasks || []) D.tasks.push({ ai: a.name || a.id, where, id: t.id, title: t.title, state: t.state || "next", due: t.due || "", why: t.why || "" });
-    D.queueState = got.some((g) => g.q) ? "ok" : "unreachable";
+    const reg = await get(ROOT + "pillars.json"); const list = reg ? (Array.isArray(reg) ? reg : reg.pillars || []) : [];
+    D.pillars = list.filter((p) => p.id === "hub" || (p.home && p.state !== "paused" && p.id !== "presence"))   /* Sylade stays presence-only (charter): no homework */.map((p) => ({ id: p.id, name: (p.name || p.id).split(" · ")[0], q: p.id === "hub" ? ROOT + "docs/agents/queues.json" : ROOT + p.home.replace(/\/?$/, "/") + "docs/agents/queues.json",
+      scores: p.id === "hub" ? ROOT + "collaborators/CONTRIBUTOR_SCORES.md" : ROOT + p.home.replace(/\/?$/, "/") + "collaborators/CONTRIBUTOR_SCORES.md", page: p.id === "hub" ? "docs/agents/" : p.home.replace(/\/?$/, "/") + "docs/agents/" }));
+    const tasks = [];
+    const hubQ = await Promise.all(D.pillars.map((p) => get(p.q).then((q) => ({ p, q }))));
+    let qOK = 0;
+    for (const { p, q } of hubQ) { if (!q || !Array.isArray(q.agents)) continue; qOK++;
+      for (const a of q.agents) for (const t of a.tasks || []) {
+        const dl = t.deliver || {};
+        tasks.push({ ai: ai(a.name || a.id), src: "hub", where: p.name, pid: p.id, id: t.id, title: t.title, state: t.state || "next", due: t.due || "", items: t.count || 0, review: t.review || "",
+          detail: { why: t.why || "", steps: t.steps || [], make: dl.file || "", folder: dl.folder || "", shape: dl.shape || "", done: t.done_when || "", checks: t.checks || [], link: `https://github.com/jpavia10/prometheus-hub/blob/main/${p.page}QUEUE_${(a.id || "").toLowerCase()}.md` } }); } }
+    D.sources.hub = qOK ? `${qOK} of ${D.pillars.length} queues read` : "not reached";
+    const tAis = ["gemini", "grok", "muse", "chatgpt", "gemini-api"];
+    const tl = await Promise.all(tAis.map((k) => get(TITAN + `docs/agents/homework/${k}.json`).then((j) => ({ k, j }))));
+    let tOK = 0;
+    for (const { k, j } of tl) { if (!j) continue; tOK++;
+      for (const a of j.assignments || []) { const lease = String(a.lease_until || "").slice(0, 10), closed = a.status !== "open";
+        tasks.push({ ai: ai(k), src: "titan", where: "Titan", id: a.id, title: `${KIND[a.kind] || a.kind} · ${(a.items || []).length} ${(a.items || []).length === 1 ? "item" : "items"}`, state: closed ? "done" : "now", closedAs: closed ? a.status : "", due: lease, items: (a.items || []).length,
+          detail: { why: "Generated by Titan's research loop from a gap in the collection data.", make: `changes_${k}_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)`, folder: "Titan Reliquary/collection-incoming (AI change files)/", sheet: `${TRAW}docs/agents/homework/sheets/${a.id}.jsonl`, link: `${TRAW}docs/agents/QUEUE_${k}.md` } }); } }
+    D.sources.titan = tOK ? `${tOK} of ${tAis.length} AI files read` : "not reached";
+    const tp = await get(TITAN + "docs/agents/queues.json");
+    if (tp && Array.isArray(tp.agents)) {
+      for (const a of tp.agents) for (const t of a.tasks || []) { const st = t.state || "now", open = ["now", "next", "later", "always"].includes(st);
+        tasks.push({ ai: ai(a.id), src: "tproj", where: "Titan", id: "T-" + a.id + "-" + t.n, title: t.title, state: open ? st : "done", closedAs: open ? "" : st, due: t.due || "", items: 0,
+          detail: { what: t.what || "", done: t.done_when || "", link: `${TRAW}docs/agents/QUEUE_${a.id}.md` } }); }
+      D.sources.tproj = "read";
+    } else D.sources.tproj = "not reached";
+    const wb = await get(ROOT + "docs/antigravity/WORKBOARD.md", "text"); if (wb) { tasks.push(...parseBoard(wb)); D.sources.board = "read"; } else D.sources.board = "not reached";
+    D.tasks = tasks; D.queueState = tasks.length ? "ok" : "unreachable";
     try {
-      const explicitScores = new URLSearchParams(location.search).get("scores");
-      if (!explicitScores && /^(localhost|127\.0\.0\.1)$/i.test(location.hostname)) { D.scores = []; D.scoreState = "local"; }
+      if (!Q.get("scores") && /^(localhost|127\.0\.0\.1)$/i.test(location.hostname)) { D.scores = []; D.scoreState = "local"; }
       else { const r = await fetch(SCORES); if (!r.ok) throw new Error(r.status); D.scores = parseScores(await r.text()); D.scoreState = D.scores.length ? "ok" : "empty"; }
     } catch (e) { D.scores = []; D.scoreState = "unreachable"; }
+    const hs = await Promise.all(D.pillars.map((p) => get(p.scores, "text").then((t) => (t ? parseHubScores(t, p.name) : []))));
+    D.hubScores = hs.flat();
     paint(); window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "forge", k: "remote" } }));
   }
-  const per = (ai) => { const sc = D.scores.filter((s) => s.ai === ai), open = D.tasks.filter((t) => t.ai === ai && t.state !== "done"), mine = S.list("assignments").filter((a) => a.ai === ai && a.state !== "reviewed");
-    const last10 = sc.slice(-10); return { ai, sc, n: sc.length, avg: sc.length ? sc.reduce((s, x) => s + x.score, 0) / sc.length : null, recent: last10.length ? last10.reduce((s, x) => s + x.score, 0) / last10.length : null, last: sc[sc.length - 1] || null, probation: sc.length ? sc[sc.length - 1].probation : false, open, mine, done: D.tasks.filter((t) => t.ai === ai && t.state === "done").length }; };
-  window.FORGE = { parseScores, load, data: () => ({ ...D, per: AIS.map(per), assignments: S.list("assignments") }) };
 
+  const isOpen = (t) => t.state !== "done";
+  const mineAll = () => S.list("assignments").map((a) => ({ ai: a.ai, src: "mine", where: a.pillar || "Yours", id: a.id, title: a.title, state: a.state === "reviewed" ? "done" : "now", due: a.due || "", items: 0, own: a,
+    detail: { what: [a.deliverable, a.branch && "branch " + a.branch, a.commitSha && "commit " + a.commitSha].filter(Boolean).join(" · ") } }));
+  const allTasks = () => [...D.tasks, ...mineAll()];
+  const per = (who) => { const sc = D.scores.filter((s) => s.ai === who), all = allTasks().filter((t) => t.ai === who), open = all.filter(isOpen), mine = S.list("assignments").filter((a) => a.ai === who && a.state !== "reviewed");
+    const last10 = sc.slice(-10), by = {}; for (const t of open) by[t.src] = (by[t.src] || 0) + 1;
+    const late = open.filter((t) => t.due && t.due < today && t.state !== "waiting").length, soon = open.filter((t) => t.due && t.due >= today && days(today, t.due) <= 7).length;
+    return { ai: who, sc, n: sc.length, avg: sc.length ? sc.reduce((s, x) => s + x.score, 0) / sc.length : null, recent: last10.length ? last10.reduce((s, x) => s + x.score, 0) / last10.length : null, last: sc[sc.length - 1],
+      probation: sc.length ? sc[sc.length - 1].probation : false, open, mine, done: all.filter((t) => !isOpen(t)).length, by, late, soon, items: open.reduce((s, t) => s + (t.items || 0), 0), floor: FLOOR[who] || 0 }; };
+  window.FORGE = { parseScores, parseHubScores, parseBoard, load, data: () => ({ ...D, per: AIS.map(per), assignments: S.list("assignments") }) };
+
+  const F = { ai: Q.get("ai") || "all", src: "all", where: "all", state: "open", q: "" };
   app.innerHTML = `
     <section class="grid">
-      <div class="glass span-12"><h2>The floor</h2><div id="f-floor"></div></div>
-      <div class="glass span-12"><h2>Homework out</h2><p class="sub" id="f-qstate"></p><div id="f-tasks"></div></div>
+      <div class="glass span-12"><h2>Workload</h2><p class="sub" id="f-src"></p><div id="f-load"></div></div>
+      <div class="glass span-12"><h2>Tasks</h2><div id="f-filters"></div><div id="f-tasks"></div></div>
+      <div class="glass span-12"><h2>Pillars</h2><p class="sub">Open tasks per place and AI. A row with nothing open is a pillar nobody is working on: give it homework.</p><div id="f-matrix"></div></div>
+      <div class="glass span-12"><h2>Scores</h2><p class="sub" id="f-sstate"></p><div id="f-scores"></div></div>
       <div class="glass span-12"><h2>Hand out work</h2>
         <form class="form" id="f-form"><label class="f">To<select name="ai">${AIS.filter((a) => a !== "Gemini API").map((a) => `<option value="${a}">${a}${ROLE_TAG[a] ? " (" + ROLE_TAG[a] + ")" : ""}</option>`).join("")}</select></label>
           <label class="f wide">The task<input name="title" required maxlength="160" placeholder="What exactly, what file back, how you will check it"></label>
@@ -47,58 +125,112 @@
           <label class="f">Commit SHA<input name="commitSha" maxlength="40" placeholder="short SHA or pending"></label>
           <label class="f wide">Deliverable / Evidence<input name="deliverable" maxlength="160" placeholder="tests, screenshot paths, REVIEW.md"></label>
           <button class="btn" type="submit">Hand it out</button></form>
-        <p class="note">Records AI assignments, branch/commit references, and Charter scores locally on this device. Forge reads published queues statically and never remote-controls AI runtimes.</p>
+        <p class="note">Your hand-outs stay on this device and count in the workload above. The queues are read from the published sites; Forge never sends anything to an AI.</p>
         <div id="f-mine"></div></div>
-      <div class="glass span-12"><h2>Scores</h2><p class="sub" id="f-sstate"></p><div id="f-scores"></div></div>
     </section>`;
-  const STEP = { out: "back", back: "reviewed" };
-  function paint() {
-    const P = AIS.map(per).filter((p) => p.n || p.open.length || p.mine.length || p.done || ROLE_TAG[p.ai]);
-    const ranked = [...P].sort((a, b) => (b.avg == null ? -1 : b.avg) - (a.avg == null ? -1 : a.avg) || b.n - a.n || a.ai.localeCompare(b.ai));
-    let rk = 0; const rankOf = {}; for (const p of ranked) rankOf[p.ai] = p.avg == null ? null : ++rk;
-    const tot = D.scores.length, favg = tot ? D.scores.reduce((s, x) => s + x.score, 0) / tot : null, outNow = D.tasks.filter((t) => t.state !== "done").length + S.list("assignments").filter((a) => a.state !== "reviewed").length;
-    const best = [...P].filter((p) => p.recent != null).sort((a, b) => b.recent - a.recent)[0];
+
+  const rel = (d) => { if (!d) return ""; const n = days(today, d); return n < 0 ? `${-n} d late` : n === 0 ? "due today" : n === 1 ? "due tomorrow" : `due in ${n} d`; };
+  const chip = (txt, cls = "") => h("span.pill" + (cls ? "." + cls : ""), null, txt);
+  function seg(label, opts, cur, set) { return h("div.seg", { role: "group", "aria-label": label }, ...opts.map(([v, t]) => h("button.segb" + (v === cur ? ".on" : ""), { type: "button", "aria-pressed": String(v === cur), onclick: () => { set(v); paintTasks(); paintFilters(); } }, t))); }
+
+  function paintLoad() {
+    const P = AIS.map(per).filter((p) => p.open.length || p.floor);
+    const open = allTasks().filter(isOpen), late = open.filter((t) => t.due && t.due < today && t.state !== "waiting").length, wk = open.filter((t) => t.due && t.due >= today && days(today, t.due) <= 7).length;
+    const g = P.find((p) => p.ai === "Gemini"), share = open.length && g ? Math.round((100 * g.open.length) / open.length) : 0;
     const plate = h("div.wall-plate", null,
-      h("div.wp-cell", null, h("span.wp-v", null, tot ? String(tot) : "—"), h("span.wp-k", null, tot ? "Scored submissions · Titan's ledger" : "Titan's ledger not read here")),
-      h("div.wp-cell", null, h("span.wp-v", null, favg == null ? "—" : favg.toFixed(1)), h("span.wp-k", null, "Fleet average / 10")),
-      h("div.wp-cell", null, h("span.wp-v", null, String(outNow)), h("span.wp-k", null, "Tasks out now")),
-      h("div.wp-cell", null, h("span.wp-v", null, best ? best.ai : "—"), h("span.wp-k", null, best ? `Best last 10 · ${best.recent.toFixed(1)}` : "Best last 10")));
-    $("#f-floor").replaceChildren(...(P.length ? [plate, ...ranked.map((p) => h("div.kv.frow", null, h("span", null, h("span.rank", null, rankOf[p.ai] == null ? "—" : String(rankOf[p.ai]).padStart(2, "0")), h("b", null, p.ai), ROLE_TAG[p.ai] ? h("span.pill", null, " " + ROLE_TAG[p.ai]) : null, p.probation ? h("span.pill.hot", null, " on probation") : null, h("br"),
-      h("span.stat-s", null, `${p.open.length} open · ${p.mine.length} of yours out · ${p.done} done${p.last ? " · last " + p.last.score + "/10 on " + p.last.date : ""}`)),
-      h("b", null, p.avg == null ? "—" : p.avg.toFixed(1) + " avg")))] : [h("p.empty", null, "No queues or scores reached yet.")]));
-    $("#f-qstate").textContent = D.queueState === "loading" ? "Reading the queues…" : D.queueState === "ok" ? `${D.tasks.length} tasks across ${new Set(D.tasks.map((t) => t.where)).size} queues, read from this site.` : "The queues could not be read just now.";
-    const open = D.tasks.filter((t) => t.state !== "done").sort((a, b) => (a.state === "now" ? 0 : 1) - (b.state === "now" ? 0 : 1) || String(a.due).localeCompare(String(b.due)));
-    $("#f-tasks").replaceChildren(...(open.length ? open.map((t) => h("div.kv.qrow" + (t.state === "now" ? ".now" : ""), null, h("span", null, h("b", null, t.title), h("br"), h("span.stat-s", null, `${t.ai} · ${t.where} · ${t.id}${t.due ? " · due " + t.due : ""}`)), h("span.pill" + (t.state === "now" ? ".hot" : ""), null, t.state))) : [h("p.empty", null, D.queueState === "ok" ? "Every published task is done." : "")]));
-    const mine = S.list("assignments").sort((a, b) => String(a.due || "9").localeCompare(String(b.due || "9")));
-    const mHead = mine.length ? [h("div.reg-head", null, h("span", null, "The register"), h("span", null, `${mine.filter((a) => a.state === "out").length} out · ${mine.filter((a) => a.state === "back").length} back · ${mine.filter((a) => a.state === "reviewed").length} reviewed`))] : [];
-    $("#f-mine").replaceChildren(...mHead, ...mine.map((a) => h("div.kv.arow.s-" + a.state, null, h("span", null, h("b", null, a.title), h("br"), h("span.stat-s", null, `${a.ai}${a.pillar ? " · " + a.pillar : ""}${a.branch ? " · " + a.branch : ""}${a.commitSha ? " (" + a.commitSha + ")" : ""}${a.due ? " · due " + a.due : ""} · ${a.state}${a.deliverable ? " · " + a.deliverable : ""}${a.score != null ? " · scored " + a.score + "/10" : ""}`)),
-      a.state === "reviewed" ? h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("assignments", a.id); if (window.PB) PB.deadlines.unpublish("forge", a.id); paint(); } }, "Clear")
-        : h("button.btn.quiet.small", { type: "button", onclick: () => { const next = STEP[a.state]; let patch = { state: next };
-          if (next === "reviewed") { const v = prompt("Score it out of 10 (place, accepted, accurate, complete, on the sheet):"); if (v === null) return; const n = Math.max(0, Math.min(10, Math.round(+v))); if (!Number.isFinite(n)) return; patch.score = n; patch.reviewed = day(); if (window.PB) PB.deadlines.unpublish("forge", a.id); }
-          S.update("assignments", a.id, patch); if (window.PB && PB.events) PB.events.publish({ type: "forge." + next, pillar: "forge", ref: a.id, title: a.title }); paint(); } }, a.state === "out" ? "It's back" : "Score it"))));
-    $("#f-sstate").textContent = D.scoreState === "ok" ? `${D.scores.length} scored submissions from Titan's ledger.` : D.scoreState === "loading" ? "Reading Titan's ledger…" : "Titan's ledger could not be read just now.";
-    const sRows = AIS.map(per).filter((p) => p.n);
-    $("#f-scores").replaceChildren(...(sRows.length ? [h("div.board-head", null, h("span", null, "AI · submissions"), h("span", null, "All-time · last 10"))] : []), ...sRows.map((p) => h("div.srow", { style: "margin:10px 0" }, h("div.kv", null, h("span", null, h("b", null, p.ai), ` · ${p.n} scored`), h("b", null, `${p.avg.toFixed(1)} all · ${p.recent.toFixed(1)} last 10`)),
-      h("div.bar-mini", null, h("i", { style: `width:${p.avg * 10}%` }), h("span.tick", { style: `left:${p.recent * 10}%` })), h("span.stat-s", null, "Last: " + (p.last ? `${p.last.score}/10 · ${p.last.what.slice(0, 90)}` : "")), h("span.fdelta" + ((p.recent - p.avg) > 0.05 ? ".up" : (p.recent - p.avg) < -0.05 ? ".down" : ""), null, ` · last-10 form ${(p.recent - p.avg) >= 0 ? "+" : ""}${(p.recent - p.avg).toFixed(1)}`))));
+      h("div.wp-cell", null, h("span.wp-v", null, String(open.length)), h("span.wp-k", null, "Tasks out now")),
+      h("div.wp-cell", null, h("span.wp-v", null, String(wk)), h("span.wp-k", null, "Due in 7 days")),
+      h("div.wp-cell" + (late ? ".bad" : ""), null, h("span.wp-v", null, String(late)), h("span.wp-k", null, "Late")),
+      h("div.wp-cell", null, h("span.wp-v", null, share + "%"), h("span.wp-k", null, "Gemini's share")));
+    const max = Math.max(1, ...P.map((p) => Math.max(p.open.length, p.floor)));
+    const rows = P.sort((a, b) => b.open.length - a.open.length).map((p) => {
+      const low = p.open.length < p.floor, seg_ = Object.keys(SRC).filter((k) => p.by[k]).map((k) => h("i.src-" + k, { style: `width:${(100 * p.by[k]) / max}%`, title: `${SRC[k]}: ${p.by[k]}` }));
+      return h("button.lrow" + (F.ai === p.ai ? ".on" : "") + (low ? ".low" : ""), { type: "button", onclick: () => { F.ai = F.ai === p.ai ? "all" : p.ai; paintAll(); document.getElementById("f-filters").scrollIntoView({ behavior: "smooth", block: "start" }); } },
+        h("span.lname", null, h("b", null, p.ai), ROLE_TAG[p.ai] ? h("small", null, ROLE_TAG[p.ai]) : null),
+        h("span.lbar", null, ...seg_, p.floor ? h("span.lfloor", { style: `left:${(100 * p.floor) / max}%`, title: `floor ${p.floor}` }) : null),
+        h("span.lnum", null, h("b", null, String(p.open.length)), h("small", null, low ? `below ${p.floor}` : [p.late ? `${p.late} late` : "", p.soon ? `${p.soon} this week` : "", p.items ? `${p.items} items` : ""].filter(Boolean).join(" · ") || "open")));
+    });
+    const legend = h("div.legend", null, ...Object.keys(SRC).map((k) => h("span", null, h("i.src-" + k), SRC_SHORT[k])), h("span", null, h("i.floor-k"), "floor"));
+    $("#f-load").replaceChildren(plate, legend, ...rows);
+    const st = D.sources; $("#f-src").textContent = D.queueState === "loading" ? "Reading every queue…" : `Prometheus: ${st.hub || "…"} · Titan loop: ${st.titan || "…"} · Titan projects: ${st.tproj || "…"} · workboard: ${st.board || "…"}`;
   }
+  function paintFilters() {
+    const ais = ["all", ...AIS.filter((a) => allTasks().some((t) => t.ai === a))];
+    const wh = ["all", ...new Set(allTasks().filter(isOpen).map((t) => t.where))].sort((a, b) => (a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b)));
+    const sel = h("select.fsel", { "aria-label": "Place", onchange: (e) => { F.where = e.target.value; paintTasks(); } }, ...wh.map((w) => h("option", { value: w, selected: w === F.where }, w === "all" ? "Every place" : w)));
+    const q = h("input.fq", { type: "search", placeholder: "Search tasks", value: F.q, oninput: (e) => { F.q = e.target.value; paintTasks(); } });
+    $("#f-filters").replaceChildren(
+      seg("AI", ais.map((a) => [a, a === "all" ? "All" : a]), F.ai, (v) => (F.ai = v)),
+      seg("Source", [["all", "All"], ...Object.keys(SRC).map((k) => [k, SRC_SHORT[k]])], F.src, (v) => (F.src = v)),
+      seg("State", [["open", "Open"], ["late", "Late"], ["week", "This week"], ["waiting", "Waiting"], ["done", "Done"]], F.state, (v) => (F.state = v)),
+      h("div.frow2", null, sel, q));
+  }
+  function paintTasks() {
+    const qq = F.q.trim().toLowerCase();
+    const L = allTasks().filter((t) => (F.ai === "all" || t.ai === F.ai) && (F.src === "all" || t.src === F.src) && (F.where === "all" || t.where === F.where)
+      && (F.state === "open" ? isOpen(t) : F.state === "done" ? !isOpen(t) : F.state === "late" ? isOpen(t) && t.due && t.due < today && t.state !== "waiting" : F.state === "week" ? isOpen(t) && t.due && t.due >= today && days(today, t.due) <= 7 : F.state === "waiting" ? isOpen(t) && (t.state === "next" || t.state === "waiting" || t.state === "later") : true)
+      && (!qq || (t.title + " " + t.id + " " + t.where + " " + t.ai).toLowerCase().includes(qq)));
+    L.sort((a, b) => (a.due ? 0 : 1) - (b.due ? 0 : 1) || String(a.due).localeCompare(String(b.due)) || a.ai.localeCompare(b.ai));
+    const head = h("p.sub", null, `${L.length} ${L.length === 1 ? "task" : "tasks"}${F.ai !== "all" ? " for " + F.ai : ""}${F.where !== "all" ? " in " + F.where : ""}`);
+    const shown = L.slice(0, 160);
+    $("#f-tasks").replaceChildren(head, ...shown.map((t) => {
+      const d = t.detail || {}, late = isOpen(t) && t.due && t.due < today && t.state !== "waiting";
+      const body = h("div.tbody", null,
+        d.why ? h("p", null, d.why) : null, d.what ? h("p", null, d.what) : null,
+        d.steps && d.steps.length ? h("ol", null, ...d.steps.map((s) => h("li", null, s))) : null,
+        d.make ? h("p", null, h("b", null, "Make: "), d.make) : null, d.folder ? h("p", null, h("b", null, "Save in: "), d.folder) : null, d.shape ? h("p.mono", null, d.shape) : null,
+        d.done ? h("p", null, h("b", null, "Done when: "), d.done) : null, t.review ? h("p.review", null, t.review) : null,
+        h("p.links", null, d.link ? h("a", { href: d.link, target: "_blank", rel: "noopener" }, "The AI's page") : null, d.sheet ? h("a", { href: d.sheet, target: "_blank", rel: "noopener" }, "Answer sheet") : null,
+          t.own ? h("button.btn.quiet.small", { type: "button", onclick: () => advance(t.own) }, t.own.state === "out" ? "It's back" : t.own.state === "back" ? "Score it" : "Clear") : null));
+      return h("details.trow.s-" + t.src + (late ? ".late" : "") + (isOpen(t) ? "" : ".closed"), null,
+        h("summary", null, h("span.tmain", null, h("b", null, t.title), h("span.stat-s", null, `${t.ai} · ${t.where} · ${t.id}`)),
+          h("span.tside", null, chip(late ? rel(t.due) : isOpen(t) ? (t.state === "now" ? rel(t.due) || "now" : t.state) : t.closedAs || "done", late ? "bad" : t.state === "now" ? "hot" : ""))), body);
+    }), L.length > shown.length ? h("p.sub", null, `${L.length - shown.length} more: narrow it with the filters.`) : null);
+  }
+  function paintMatrix() {
+    const cols = AIS.filter((a) => allTasks().some((t) => t.ai === a && isOpen(t)));
+    const places = [...D.pillars.map((p) => p.name), "Titan", "Workboard"];
+    const cell = (w, a) => allTasks().filter((t) => isOpen(t) && t.where === w && (!a || t.ai === a)).length;
+    const head = h("tr", null, h("th", null, "Place"), ...cols.map((c) => h("th", null, c)), h("th", null, "All"));
+    const body = places.map((w) => { const tot = cell(w); return h("tr" + (tot ? "" : ".zero"), { onclick: () => { F.where = w; F.ai = "all"; F.state = "open"; paintAll(); document.getElementById("f-filters").scrollIntoView({ behavior: "smooth" }); } },
+      h("td", null, w), ...cols.map((c) => { const n = cell(w, c); return h("td" + (n ? "" : ".nil"), { style: n ? `--k:${Math.min(1, n / 12)}` : "" }, n ? String(n) : "·"); }), h("td", null, h("b", null, String(tot)))); });
+    $("#f-matrix").replaceChildren(h("div.mwrap", null, h("table.matrix", null, h("thead", null, head), h("tbody", null, ...body))));
+  }
+  function paintScores() {
+    const all = [...D.scores, ...D.hubScores.filter((s) => s.score != null)];
+    $("#f-sstate").textContent = `${D.scores.length} scored in Titan's ledger${D.scoreState === "ok" ? "" : " (" + D.scoreState + ")"} · ${D.hubScores.length} in the Prometheus pillars (${D.hubScores.filter((s) => s.pending).length} waiting on a check)`;
+    const rows = AIS.map((a) => { const sc = all.filter((s) => s.ai === a); if (!sc.length) return null; const avg = sc.reduce((s, x) => s + x.score, 0) / sc.length, r10 = sc.slice(-10), rec = r10.reduce((s, x) => s + x.score, 0) / r10.length, last = sc[sc.length - 1];
+      return h("div.srow", { style: "margin:10px 0" }, h("div.kv", null, h("span", null, h("b", null, a), ` · ${sc.length} scored`), h("b", null, `${avg.toFixed(1)} · ${rec.toFixed(1)}`)),
+        h("div.bar-mini", null, h("i", { style: `width:${avg * 10}%` }), h("span.tick", { style: `left:${rec * 10}%` })), h("span.stat-s", null, `Last: ${last.score}/10 · ${last.where} · ${String(last.what).slice(0, 90)}`)); }).filter(Boolean);
+    const pend = D.hubScores.filter((s) => s.pending);
+    $("#f-scores").replaceChildren(...(rows.length ? [h("div.board-head", null, h("span", null, "AI · submissions"), h("span", null, "All-time · last 10"))] : [h("p.sub", null, "No scores read yet.")]), ...rows,
+      ...(pend.length ? [h("div.board-head", { style: "margin-top:14px" }, h("span", null, "Waiting on Claude's check"), h("span", null, String(pend.length))), ...pend.map((s) => h("div.kv", null, h("span", null, h("b", null, s.ai), ` · ${s.where} · ${s.task}`), h("span.stat-s", null, s.note)))] : []));
+  }
+  const STEP = { out: "back", back: "reviewed" };
+  function advance(a) {
+    if (a.state === "reviewed") { S.remove("assignments", a.id); if (window.PB) PB.deadlines.unpublish("forge", a.id); paintAll(); return; }
+    const next = STEP[a.state]; const patch = { state: next };
+    if (next === "reviewed") { const v = prompt("Score it out of 10 (place, accepted, accurate, complete, on the sheet):"); if (v === null) return; const n = Math.max(0, Math.min(10, Math.round(+v))); if (!Number.isFinite(n)) return; patch.score = n; patch.reviewed = day(); if (window.PB) PB.deadlines.unpublish("forge", a.id); }
+    S.update("assignments", a.id, patch); if (window.PB && PB.events) PB.events.publish({ type: "forge." + next, pillar: "forge", ref: a.id, title: a.title }); paintAll();
+  }
+  function paintMine() {
+    const mine = S.list("assignments").sort((a, b) => String(a.due || "9").localeCompare(String(b.due || "9")));
+    $("#f-mine").replaceChildren(...(mine.length ? [h("div.reg-head", null, h("span", null, "Your register"), h("span", null, `${mine.filter((a) => a.state === "out").length} out · ${mine.filter((a) => a.state === "back").length} back · ${mine.filter((a) => a.state === "reviewed").length} reviewed`))] : []),
+      ...mine.map((a) => h("div.kv.arow.s-" + a.state, null, h("span", null, h("b", null, a.title), h("br"), h("span.stat-s", null, `${a.ai}${a.pillar ? " · " + a.pillar : ""}${a.due ? " · " + rel(a.due) : ""}${a.score != null ? " · " + a.score + "/10" : ""}`)),
+        h("button.btn.quiet.small", { type: "button", onclick: () => advance(a) }, a.state === "out" ? "It's back" : a.state === "back" ? "Score it" : "Clear"))));
+  }
+  function paintAll() { paintLoad(); paintFilters(); paintTasks(); paintMatrix(); paintScores(); paintMine(); }
+  const paint = paintAll;
+
   $("#f-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
     const a = S.add("assignments", { ai: f.ai.value, title: f.title.value.trim(), due: f.due.value, pillar: f.pillar.value.trim(), branch: f.branch.value.trim(), commitSha: f.commitSha.value.trim(), deliverable: f.deliverable.value.trim(), state: "out", given: day() });
     if (window.PB && a.due) PB.deadlines.publish({ title: `Back from ${a.ai}: ${a.title}`, date: a.due, source: "forge", kind: "homework", ref: a.id });
-    if (window.PB && PB.events) PB.events.publish({ type: "forge.out", pillar: "forge", ref: a.id, title: a.title }); f.reset(); toast("Handed out"); paint(); });
+    if (window.PB && PB.events) PB.events.publish({ type: "forge.out", pillar: "forge", ref: a.id, title: a.title }); f.reset(); toast("Handed out"); paintAll(); });
   try {
     const raw = sessionStorage.getItem("prometheus.handoff");
-    if (raw) {
-      const handoff = JSON.parse(raw);
-      if (handoff && handoff.pillar === "forge") {
-        sessionStorage.removeItem("prometheus.handoff");
-        const f = $("#f-form");
-        f.title.value = String(handoff.title || "").slice(0, 160);
-        f.pillar.value = "Athenaeum";
-        toast("Idea routed from Athenaeum into Forge assignment");
-      }
-    }
+    if (raw) { const handoff = JSON.parse(raw); if (handoff && handoff.pillar === "forge") { sessionStorage.removeItem("prometheus.handoff"); const f = $("#f-form"); f.title.value = String(handoff.title || "").slice(0, 160); f.pillar.value = "Athenaeum"; toast("Idea routed from Athenaeum into Forge assignment"); } }
   } catch (e) { /* sessionStorage optional */ }
   $("#export").onclick = () => download(`forge_${day()}.json`, S.dump());
-  $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
+  $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paintAll(); } catch (e) { toast(e.message); } };
   paint(); load();
 })();
