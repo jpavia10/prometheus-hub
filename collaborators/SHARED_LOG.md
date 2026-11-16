@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-16] The home is a game menu (Claude), shell cache d27
+- Owner, 2026-11-16: the project is a 1/100 (cheap, every pillar the same, empty, does not help the day); the target is a AAA game menu. New `deck/views/menu.js`: a full-screen world in the level's colour (WebGL, painted sky until art exists), the 27 pillars as levels (swipe, arrows, the level strip), each with its crest, what it is (its manifest's mission), and one live line (its next dated thing on the bus, Kairos' next date, or its first command), Today on top, Enter warps in. The orbit is one tap away (Orbit / Menu, `?home=orbit|menu` pins it) and the whole briefing is right below. Nothing removed.
+- Art: `docs/art/requests/artreq_20261116-0300_prometheus-worlds.json` (28 worlds: home + 27, portrait with depth and light layers) is in the Drive art queue for Gemini; `art/worlds/index.json` lists the worlds that have landed, and the menu layers them live (depth parallax, light, dust) when they do. Proof MENU-1 added; the orbit proofs pin `home=orbit`. Browser proofs 27/27.
+
 ### [2026-11-16] Phone fixes on the core (Claude), shell cache d26
 - The passcode chip sat on the dock's Money and System buttons on every tab: the passcode now lives in System (set, lock now, turn off; setup has "Not now"). The top bar no longer runs off a 390 px screen (titles shrink, the demo chip reads "Demo"). The outer orbit rings pulled in on phones: no hex past the edge at 360, 390 or 430 px (was up to 6 px).
 - Checks: registry OK, unit 62/62, money guard OK, browser proofs 26/26 (one earlier run had PILLAR-1 fail on Piano's section tap, then pass: an intermittent tap, queued as AGY-017).

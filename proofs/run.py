@@ -30,7 +30,7 @@ with sync_playwright() as p:
     c2 = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); p2 = c2.new_page(); p2.on("pageerror", lambda e: errs.append("core: " + str(e)))
     if MOCK:
         p2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p2.route("https://api.weather.gov/**", lambda route, request: route.abort()); p2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    p2.goto(f"{URL}?now={NOW}#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
+    p2.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
     ci = p2.evaluate("""() => ({ ids: [...document.querySelectorAll('.reactor .hex:not(.core)')].map((x) => x.dataset.pillar),
       demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth, ring: !!document.querySelector('.dayring') })""")
     missing = [i for i in CORE_IDS if i not in ci["ids"]]; extra = [i for i in ci["ids"] if i not in CORE_IDS]
@@ -50,6 +50,27 @@ with sync_playwright() as p:
     try: p2.wait_for_url("**/pillars/apollo/**", timeout=30000); took = _t.time() - t0; p2.wait_for_selector(".shell", timeout=15000); landed = f"{p2.title()} ({took:.1f} s on this machine)"
     except Exception as e: landed = "did not land: " + str(e)[:80]
     proof("CORE-4", "Tapping a cell warps into that pillar", "Apollo" in landed, landed); c2.close()
+    # MENU-1: the home is a game menu (owner, 2026-11-16): every pillar a level, its own light, a live line, Today on top, the orbit and the briefing kept
+    cm = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pm = cm.new_page(); bm = []; pm.on("pageerror", lambda e: bm.append(str(e)[:120]))
+    if MOCK: pm.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pm.route("https://api.weather.gov/**", lambda route, request: route.abort())
+    try:
+        pm.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pm.wait_for_selector(".menu .mn-lvl", timeout=20000); pm.wait_for_timeout(900)
+        m0 = pm.evaluate("""() => ({ levels: document.querySelectorAll('.menu .mn-lvl').length, title: document.querySelector('.mn-title').textContent, live: document.querySelector('.mn-live').textContent,
+          today: document.querySelectorAll('.mn-today .mn-trow').length, gl: !!document.querySelector('canvas.menu-world') && !document.querySelector('canvas.menu-world.flat'), briefing: !!document.getElementById('briefing'),
+          enter: document.querySelector('.mn-enter').getBoundingClientRect().bottom < innerHeight - 80, wide: document.documentElement.scrollWidth, hue: getComputedStyle(document.querySelector('.menu')).getPropertyValue('--h').trim() })""")
+        pm.keyboard.press("ArrowRight"); pm.wait_for_timeout(500)
+        m1 = pm.evaluate("() => ({ title: document.querySelector('.mn-title').textContent, on: (document.querySelector('.mn-lvl.on') || {}).dataset ? document.querySelector('.mn-lvl.on').dataset.pillar : null, hue: getComputedStyle(document.querySelector('.menu')).getPropertyValue('--h').trim() })")
+        pm.click(".mn-mode"); pm.wait_for_selector(".reactor .hex", timeout=20000); orbit = pm.evaluate("() => !document.querySelector('.menu') && !!document.querySelector('.mn-back')")
+        pm.click(".mn-back"); pm.wait_for_selector(".menu .mn-lvl", timeout=20000); back = pm.evaluate("() => !document.querySelector('.reactor') && document.querySelector('.mn-title').textContent")
+        pm.evaluate("document.querySelectorAll('.mn-lvl')[3].click()"); pm.wait_for_timeout(400); lvl = pm.evaluate("document.querySelector('.mn-lvl.on').dataset.pillar")
+        pm.click(".mn-enter"); pm.wait_for_url("**/pillars/**", timeout=30000); landed = pm.url.split("/pillars/")[1].split("/")[0]
+        mskip = [e for e in bm if "ViewTransition opt-in disabled" in e or "Transition was aborted" in e]; bm = [e for e in bm if e not in mskip]   # the browser dropping its own morph, as in DECK-2
+        ok = (m0["levels"] == 27 and m0["today"] >= 1 and m0["gl"] and m0["briefing"] and m0["enter"] and m0["wide"] <= 390 and m1["title"] != m0["title"] and m1["hue"] != m0["hue"]
+              and orbit and back == m1["title"] and landed == lvl and not bm)
+        proof("MENU-1", "The home is a game menu: 27 levels with their own light and a live line, Today on top, swipe or arrow keys move, Enter warps in, the orbit and the briefing are one tap away",
+              ok, f"{m0['levels']} levels; '{m0['title']}' -> '{m1['title']}' (hue {m0['hue']} -> {m1['hue']}); live: {m0['live'][:60]}; today rows {m0['today']}; WebGL {m0['gl']}; orbit and back {orbit}/{bool(back)}; entered {landed} from level {lvl}" + (f"; errors {bm[:2]}" if bm else "") + (f"; the browser skipped {len(mskip)} morph(s)" if mskip else ""))
+    except Exception as e: proof("MENU-1", "The home is a game menu", False, "did not finish: " + str(e)[:200])
+    cm.close()
 
     # PILLAR: the shared pillar shell (crest, automatic sections, dock), checked on the long Piano page
     c3 = b.new_context(viewport={"width": 390, "height": 844}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))
@@ -111,10 +132,10 @@ with sync_playwright() as p:
     c9 = b.new_context(viewport={"width": 390, "height": 844}, accept_downloads=True); p9 = c9.new_page(); bad9 = []; p9.on("pageerror", lambda e: bad9.append(str(e)[:100]))
     if MOCK:
         p9.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p9.route("https://api.weather.gov/**", lambda route, request: route.abort()); p9.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    p9.goto(f"{URL}?now={NOW}#/", wait_until="load"); p9.wait_for_selector(".reactor .hex", timeout=20000); p9.wait_for_timeout(400)
+    p9.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p9.wait_for_selector(".reactor .hex", timeout=20000); p9.wait_for_timeout(400)
     first_visit = p9.evaluate("!!document.querySelector('.since')")
     p9.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); p9.wait_for_timeout(300); p9.evaluate("PB.events.publish({ type: 'idea.captured', pillar: 'athenaeum', ref: 'x', title: 'Proof: a new idea' })")
-    p9.evaluate("sessionStorage.clear()"); p9.goto(f"{URL}?now={NOW}#/", wait_until="load"); p9.wait_for_selector(".reactor .hex", timeout=20000); p9.wait_for_timeout(400)
+    p9.evaluate("sessionStorage.clear()"); p9.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p9.wait_for_selector(".reactor .hex", timeout=20000); p9.wait_for_timeout(400)
     rows = p9.evaluate("[...document.querySelectorAll('.since .since-row')].map((a) => a.textContent + ' -> ' + a.getAttribute('href'))"); head = p9.evaluate("(document.querySelector('.since h2') || {}).textContent || ''")
     proof("SINCE-1", "The hub says what changed in the pillars since your last visit, each line opening its pillar", not first_visit and head == "Since you were here" and len(rows) == 1 and "Proof: a new idea" in rows[0] and "pillars/athenaeum/" in rows[0], f"first visit shows nothing: {not first_visit}; next visit: {head!r} {rows}")
     p9.evaluate("localStorage.setItem('prometheus.kin.people', JSON.stringify([{ id: 'p1', name: 'Proof kid', role: 'kid' }])); localStorage.setItem('hearth.deck.stages.v1', JSON.stringify({ 'paint-left': { done: true } }))")
@@ -184,7 +205,7 @@ with sync_playwright() as p:
     if MOCK:
         p6.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p6.route("https://api.weather.gov/**", lambda route, request: route.abort()); p6.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
     p6.goto(A, wait_until="load"); p6.wait_for_function("window.__ath && window.__ath.ready", timeout=30000); p6.evaluate("PB.events.publish({ type: 'idea.refined', pillar: 'athenaeum', ref: 'x', title: 'Proof event' })")
-    p6.goto(f"{URL}?now={NOW}#/", wait_until="load"); p6.wait_for_selector(".reactor .hex", timeout=20000); p6.wait_for_timeout(700)
+    p6.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p6.wait_for_selector(".reactor .hex", timeout=20000); p6.wait_for_timeout(700)
     tick_line = p6.evaluate("document.querySelector('.ticker').getAttribute('aria-label')"); hits = p6.evaluate("window.__deck.reach.searchRecords('blind audits')"); deep = p6.evaluate("window.__deck.reach.searchRecords('anti-corrosion')")
     p6.click("#open-search"); p6.wait_for_selector(".search-input"); p6.fill(".search-input", "idea: test the handoff from the hub"); p6.wait_for_timeout(250); first = p6.evaluate("document.querySelector('.results .result b').textContent")
     p6.evaluate("document.querySelector('.results .result').click()")

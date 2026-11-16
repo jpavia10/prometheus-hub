@@ -41,6 +41,10 @@ PASS DECK-2  No script errors during the run  ::  none
 
 <!-- proofs-live:end -->
 
+Shell cache **d27** · 2026-11-16 · Claude
+
+**The home is a game menu:** the pillars are levels in a full-screen world (MENU-1); the orbit and the briefing are kept. Painted worlds are requested from Gemini (`docs/art/requests/artreq_20261116-0300_prometheus-worlds.json`). Verified locally: unit 62/62, money guard OK, browser proofs 27/27 on `prometheus.test` with mocked weather.
+
 Shell cache **d26** · 2026-11-16 · Claude
 
 **Phone fixes on the core:** the passcode moved from a floating chip over the dock into System; the top bar fits 390 px; the outer orbit rings stay on screen at 360-430 px. Verified locally: unit 62/62, money guard OK, browser proofs 26/26 on `prometheus.test` with mocked weather.

@@ -1,0 +1,215 @@
+{
+ "request_id": "artreq_20261116-0300_prometheus-worlds",
+ "status": "open",
+ "assigned_to": "Gemini first (Nano Banana Pro or the best image model you have); Grok and Muse take worlds nobody has claimed",
+ "requested_by": "Claude (integrator)",
+ "created": "2026-11-16T03:00:00Z",
+ "why": "Joseph, 2026-11-16: Prometheus is a 1/100 today: it looks cheap, every pillar looks the same, it feels empty, and it does not help his day. His target is a AAA game menu. The home becomes a game main menu (the pillars as levels you swipe through) and every pillar gets its own world. The worlds are images made by you, with the app layering live depth, light, particles and sound over them (the same method Joseph chose for Titan's rooms), never 3D drawn in code.",
+ "global_style": "Cinematic key art for a AAA game's level-select screen, made as a photoreal matte painting: real materials, volumetric light and haze, deep blacks that still hold detail, a filmic colour grade, tack sharp. The Prometheus palette is deep midnight blue-black lit with pearl white, ice cyan and soft lavender; each world adds the one accent colour named for it. Futuristic but grounded and elegant, like a premium sci-fi game; never cartoon, never clip-art, never a flat illustration, never cluttered neon.",
+ "scene_rule": "Portrait 9:16 for a phone held upright. The world's main subject sits in the upper-middle third. The bottom 40 % is calmer and darker (floor, water, mist or ground) because the app lays its menu card there; the top 10 % is quiet sky or ceiling for the title bar. Light sources stay inside the frame (the app makes them glow and flicker live), the air in the middle stays open (the app adds live particles there), and nothing important sits within 6 % of the edges. An empty place waiting for the player: no people.",
+ "negative": "no readable text, letters, numbers, logos, brand marks or interface; no people, faces or hands; no watermark or frame; no cartoon or plastic 3D-render look; no oversaturation or HDR halos; no tilted horizon or fisheye; coins only in the titan world",
+ "deliverable_spec": "Three files per world, the same size and lined up pixel for pixel: world_{id}.png (the image), world_{id}_depth.png and world_{id}_lights.png. Portrait 9:16 at the largest size your tool offers (4K or 2K if it lets you choose; at least 1080 x 1920). PNG, never upscaled with another tool, never cropped.",
+ "instructions": "Follow 'ART_START_HERE (any AI: images + video)'. One world at a time: before a world, look in the output folder for a claim file; if there is none (or it is older than 24 h with no files), save 'artreq_20261116-0300_prometheus-worlds.CLAIMED-{you}-{id}.txt' and do that world. Gemini starts at the top of the list (home first); Grok and Muse start from the bottom and work upward. For each world: (1) make world_{id}.png from the world's prompt + the scene_rule + the global_style, 9:16, at the size above; look at it and remake it (at most 3 tries) if it has letters, a person, a face, a crooked horizon, or looks like a cartoon or a cheap render. (2) Then work FROM THAT SAME IMAGE with image editing, one edit per step, so the files line up: the two edit prompts are in 'edits' (fill in {id}). Save every file to 'Titan Reliquary/art-incoming (AI images + video)/artreq_20261116-0300_prometheus-worlds/' with the exact names. After each world, add one line per file to 'artreq_20261116-0300_prometheus-worlds.DONE-{you}.txt' (file name, ok or skipped: reason, size in pixels, model name, date). Stop at the first failure or quota warning and say in your DONE file how far you got; the next run continues. Save files in Drive only: Joseph must never be asked to copy anything.",
+ "edits": {
+  "depth": "Using this image, make its depth map: the same framing and the same size, greyscale only, white for what is nearest the camera, black for the farthest, smooth gradients, sharp edges where objects end, no text and nothing else. Save as world_{id}_depth.png.",
+  "lights": "Using this image, make a light mask: the same framing and the same size, pure black everywhere except the light sources and the brightest light they throw (windows, sun and moon, lamps, flames, screens, glowing lines, embers), which are white with soft edges. Save as world_{id}_lights.png."
+ },
+ "worlds": [
+  {
+   "id": "home",
+   "world": "Prometheus, the core",
+   "accent": "pearl gold",
+   "files": "world_home{,_depth,_lights}.png",
+   "prompt": "A vast dark circular observatory hall high above a night mountain range. At its centre a sphere of pearl-white fire floats inside three slow concentric rings of ice-cyan and lavender light, like an orrery; thin beams reach from it to many small glowing alcoves set around the curved walls. A polished black floor mirrors the fire; stars show through an open dome."
+  },
+  {
+   "id": "kairos",
+   "world": "Kairos Meridian (time)",
+   "accent": "violet",
+   "files": "world_kairos{,_depth,_lights}.png",
+   "prompt": "A monumental clock chamber: a giant ring of brushed brass and glass hangs in the air, its dial marked only by small points of light (no numerals), one slim hand of light sweeping across it. A floor of still dark water mirrors the ring. Through a tall arched window behind, the sky runs from dawn on one side to night on the other."
+  },
+  {
+   "id": "midas",
+   "world": "Midas Ledger (money, encrypted)",
+   "accent": "warm gold",
+   "files": "world_midas{,_depth,_lights}.png",
+   "prompt": "A quiet vault of dark marble and brass: one lectern holds a closed leather ledger in a pool of warm light; behind it a round vault door stands ajar with soft gold light inside; fine gold dust drifts in the air."
+  },
+  {
+   "id": "titan",
+   "world": "Titan Reliquary (coin collection)",
+   "accent": "antique gold",
+   "files": "world_titan{,_depth,_lights}.png",
+   "prompt": "A collector's reliquary room in dark walnut and brass: rows of shallow glass display drawers glow softly, a few silver and gold coins visible under the glass (no legible legends), a velvet tray in front lit by one lamp."
+  },
+  {
+   "id": "hearth",
+   "world": "Hephaestus Hearth (the house and its renovation)",
+   "accent": "ember orange",
+   "files": "world_hearth{,_depth,_lights}.png",
+   "prompt": "A mountain house at blue hour seen from below its second-floor wooden deck, which is being rebuilt: fresh cedar boards laid in staggered courses, a work light glowing on a sawhorse, warm light in the windows, pines and a mountain range beyond."
+  },
+  {
+   "id": "garage",
+   "world": "Garage (the car: service, fuel, paperwork)",
+   "accent": "cool cyan",
+   "files": "world_garage{,_depth,_lights}.png",
+   "prompt": "A clean modern home garage at night: a dark mid-size hybrid SUV with no badges or logos, half lit by a strip of cool light; a wall of neatly hung tools; a glowing service bay light on the floor; a mountain road visible through the open door."
+  },
+  {
+   "id": "apollo",
+   "world": "Apollo Temple (health and training)",
+   "accent": "sun yellow",
+   "files": "world_apollo{,_depth,_lights}.png",
+   "prompt": "A training temple on a mountain terrace at sunrise: pale stone columns, a single kettlebell and a rolled mat on polished stone, low sun raking between the columns, a reflecting pool, morning mist in the valley."
+  },
+  {
+   "id": "money",
+   "world": "Money (the payoff, simulated)",
+   "accent": "emerald",
+   "files": "world_money{,_depth,_lights}.png",
+   "prompt": "A dark hall where a ribbon of green light descends in one long smooth curve from a high balcony down to a bright open doorway at floor level, like a payoff curve made of light; polished floor, quiet air."
+  },
+  {
+   "id": "selling",
+   "world": "Selling Pipeline (staged, listed, sold, shipped)",
+   "accent": "amber",
+   "files": "world_selling{,_depth,_lights}.png",
+   "prompt": "A tidy shipping room at night: a long workbench with neatly taped boxes, a roll of kraft paper, a parcel scale and a warm desk lamp; a line of boxes leads to an open roller door where a delivery van's tail lights wait outside (no logos)."
+  },
+  {
+   "id": "records",
+   "world": "Records (paper turned into findable records)",
+   "accent": "steel blue",
+   "files": "world_records{,_depth,_lights}.png",
+   "prompt": "A future archive: tall dark shelves of softly glowing file drawers fading into darkness; above a scanner's glass bed a single blank sheet of paper floats and unravels into thin lines of blue light that rise into the drawers."
+  },
+  {
+   "id": "icarus",
+   "world": "Icarus Stake (a high-risk trading journal)",
+   "accent": "crimson",
+   "files": "world_icarus{,_depth,_lights}.png",
+   "prompt": "Twilight above the clouds: a pair of great feathered wings mounted on a dark stand at the edge of a high stone ledge; the sun low and blazing on the horizon; a thin line of red light traces the tops of the clouds like a chart line."
+  },
+  {
+   "id": "hermes",
+   "world": "Hermes Post (mail that needs an answer)",
+   "accent": "royal blue",
+   "files": "world_hermes{,_depth,_lights}.png",
+   "prompt": "A night post office of the future: a high wall of small glass mail cubbies, a few glowing to show something is waiting; brass pneumatic tubes along the ceiling; a winged weathervane silhouetted through a skylight. No writing on anything."
+  },
+  {
+   "id": "piano",
+   "world": "Bossa Piano Studio (bossa nova practice)",
+   "accent": "magenta",
+   "files": "world_piano{,_depth,_lights}.png",
+   "prompt": "A late-night bossa nova room by the sea: a black grand piano with its lid raised under a warm lamp, a nylon-string guitar resting on a chair, tall open shutters onto a moonlit bay with a dome-shaped granite hill, palm shadows on the floor."
+  },
+  {
+   "id": "bastion",
+   "world": "Bastion (mountain readiness)",
+   "accent": "pine green",
+   "files": "world_bastion{,_depth,_lights}.png",
+   "prompt": "A mountain cabin's ready room: a neat wall of packed go-bags, water containers, a lantern and a hand radio on a shelf; through the window a pine ridge under a dramatic storm sky with distant lightning."
+  },
+  {
+   "id": "athenaeum",
+   "world": "Athenaeum (the idea vault)",
+   "accent": "gold",
+   "files": "world_athenaeum{,_depth,_lights}.png",
+   "prompt": "An endless library under the night sky: curved shelves rise into darkness, the ceiling is open to a sky full of stars joined by faint golden lines into constellations, and a reading table holds an open book that glows softly."
+  },
+  {
+   "id": "odyssey",
+   "world": "Odyssey (trips and away mode)",
+   "accent": "teal",
+   "files": "world_odyssey{,_depth,_lights}.png",
+   "prompt": "An observation deck at dusk whose great window looks onto a turquoise tropical lagoon with limestone cliffs; a carry-on suitcase and a folded jacket wait on a bench; on the window ledge a small model of a mountain house with one light on."
+  },
+  {
+   "id": "privacy",
+   "world": "Privacy (shrinking the public footprint)",
+   "accent": "indigo",
+   "files": "world_privacy{,_depth,_lights}.png",
+   "prompt": "A dark corridor of tall hanging glass panes; on the far panes faint glowing records and map pins; on the nearer panes those records dissolve into drifting particles of light, leaving clean dark glass; one indigo beam down the middle."
+  },
+  {
+   "id": "argus",
+   "world": "Argus Album (every picture, inspected)",
+   "accent": "sea green",
+   "files": "world_argus{,_depth,_lights}.png",
+   "prompt": "A darkroom observatory: a huge circular glass lens hangs in the centre like an eye, catching a beam of sea-green light; around it many small photographs on thin wires glow faintly (landscapes and objects only), a light table below."
+  },
+  {
+   "id": "games",
+   "world": "Ludus Arcade (games)",
+   "accent": "purple",
+   "files": "world_games{,_depth,_lights}.png",
+   "prompt": "A private arcade at night: a row of dark cabinet screens glowing with abstract colour (no characters, no logos, no recognisable game), a deep gaming chair facing a large curved screen showing a sweeping alien landscape, purple and pink light on a glossy floor."
+  },
+  {
+   "id": "forge",
+   "world": "Forge (the AI work floor)",
+   "accent": "molten orange",
+   "files": "world_forge{,_depth,_lights}.png",
+   "prompt": "A forge for machines: four glowing anvils in a dark stone hall, each with a molten core of a different colour, sparks rising, chains and tools on the walls, and a board of plain lights (no numbers) on the far wall."
+  },
+  {
+   "id": "foundry",
+   "world": "Foundry (inventions turned into builds)",
+   "accent": "cyan",
+   "files": "world_foundry{,_depth,_lights}.png",
+   "prompt": "An inventor's workshop at night: a large drafting table with glowing blueprint lines of light projected on it, half-built prototypes of brass and glass on shelves, a robot arm at rest on the bench, a big window onto a starry sky."
+  },
+  {
+   "id": "observatory",
+   "world": "Observatory (signals in the subjects you follow)",
+   "accent": "deep indigo",
+   "files": "world_observatory{,_depth,_lights}.png",
+   "prompt": "A mountaintop observatory dome open to the night: a large telescope aimed at a sky crossed by faint glowing signal lines and points, the Milky Way overhead, town lights far below in a valley."
+  },
+  {
+   "id": "kin",
+   "world": "Kin (the family and the kids' schedule)",
+   "accent": "rose",
+   "files": "world_kin{,_depth,_lights}.png",
+   "prompt": "A warm family kitchen in the evening seen from the doorway: a big wooden table with two school backpacks, two small pairs of shoes by the door, a wall calendar with coloured pins (no writing), warm pendant lights, snowy pines outside the window."
+  },
+  {
+   "id": "presence",
+   "world": "Sylade (the public presence page)",
+   "accent": "soft violet",
+   "files": "world_presence{,_depth,_lights}.png",
+   "prompt": "A calm minimal space: one soft violet sphere of light floats above still water in a dark room, gentle ripples spreading from beneath it, nothing else."
+  },
+  {
+   "id": "aether",
+   "world": "Aether (weather, fire, sun, moon and the mountain pass)",
+   "accent": "green-teal",
+   "files": "world_aether{,_depth,_lights}.png",
+   "prompt": "A high mountain pass at golden hour with dramatic weather: a small weather station mast with a wind vane and a solar panel on a rock outcrop, wind-driven clouds, the sun low on one side and a pale moon rising on the other, a road winding through the pass."
+  },
+  {
+   "id": "polis",
+   "world": "Polis (civic and legal watch)",
+   "accent": "civic blue",
+   "files": "world_polis{,_depth,_lights}.png",
+   "prompt": "A small-town civic hall at night: a classical portico with softly lit columns, a large brass balance scale on a plinth in front, high-desert hills and wind turbines behind under the stars."
+  },
+  {
+   "id": "mythos",
+   "world": "Mythos (worlds, stories, lyrics)",
+   "accent": "violet",
+   "files": "world_mythos{,_depth,_lights}.png",
+   "prompt": "A storyteller's tower room: a hand-drawn map of an invented land spread on a desk under candlelight (no legible writing), an acoustic guitar against the wall, a window onto a fantastic landscape with floating islands and a distant castle under two moons."
+  },
+  {
+   "id": "continuity",
+   "world": "Continuity (the sovereign emergency vault)",
+   "accent": "olive gold",
+   "files": "world_continuity{,_depth,_lights}.png",
+   "prompt": "A secure vault chamber: one dark steel case on a plinth with a soft gold seal light, thin gold beams forming a lattice around it, a heavy round vault door behind, dust floating in a single beam of light."
+  }
+ ]
+}
