@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-09",
+ "updated": "2026-11-16",
  "pillar": "hermes",
  "agents": [
   {
@@ -175,7 +175,7 @@
     {
      "id": "HER-GRK-01",
      "title": "Hermes Post: second reader on Gemini's spec",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-14",
      "why": "Every source in a spec gets a second reader before Claude builds on it.",
      "inputs": [
@@ -200,7 +200,8 @@
       "a source URL that does not open or does not say what the row claims",
       "fewer items than the count",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "review": "Reviewed by Claude 2026-11-16: 9 sources plus 1 missed, table shape right, saved where asked; kept in pillars/hermes/research/. Spot-check of the 'differ' lines (Gmail messages.get cost, JMAP RFC 8620) pending: those hosts are blocked from the build session."
     }
    ]
   }

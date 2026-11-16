@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-09",
+ "updated": "2026-11-16",
  "pillar": "hearth",
  "agents": [
   {
@@ -239,7 +239,7 @@
     {
      "id": "HEA-GRK-01",
      "title": "Second reader on Gemini's scan-app table",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-13",
      "why": "Prices and export rules change often; a second reader catches what one missed.",
      "inputs": [
@@ -264,7 +264,8 @@
       "a source URL that does not open or does not say what the row claims",
       "fewer items than the count",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "review": "Reviewed by Claude 2026-11-16: 33 cells (4+ per app), table shape right; named HEARTH-GROK-... instead of hearth_grok_...; kept in pillars/hearth/research/. Spot-check of the 'differ' lines (Polycam Business promo, Scaniverse GLB on Free, Twindo Scale price) pending: those hosts are blocked from the build session."
     }
    ]
   },

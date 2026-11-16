@@ -27,6 +27,8 @@ def load(p):
 
 
 def pillar_dir(p, root):
+    if p.get("home"):   # lives in the hub (Hearth moved in 2026-11-14; its old repo only redirects)
+        return os.path.join(HUB, p["home"])
     if p.get("repo") and p["id"] != "hub":
         d = os.path.join(root, p["repo"].split("/")[1])
         return d if os.path.isdir(d) else None

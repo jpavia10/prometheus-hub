@@ -39,6 +39,8 @@ export const ALLOW = [
   ["pillars/athenaeum/data/", "chronicle reference"],
   ["pillars/bastion/data/", "public-agency contacts in the readiness reference"],
   ["pillars/sylade/", "public presence address, not a private inbox"],
+  ["pillars/hermes/research/", "public vendor quotas and prices (second-reader checks)"],
+  ["pillars/hearth/research/", "public scan-app prices (second-reader checks)"],
 ];
 
 const ALLOW_EMAIL = new Set([

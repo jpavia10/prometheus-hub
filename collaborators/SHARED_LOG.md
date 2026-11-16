@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-16] Intake: Grok's three second-reader checks (Claude)
+- Grok's Nov 14 checks of Gemini's specs are filed: `pillars/{hermes,icarus,hearth}/research/`, tasks HER-GRK-01, ICA-GRK-01 and HEA-GRK-01 marked done with a review note, and the first score rows in those pillars' `collaborators/CONTRIBUTOR_SCORES.md`. Accepted and accurate stay pending until Claude spot-checks the "differ" lines, because the vendor hosts are blocked from the build session.
+- `tools/kit/render.py` now renders Hearth's homework from `pillars/hearth/` (it was still reading the old hephaestus-hearth repo). The money guard lists the two research folders as public vendor-price references.
+
 ### [2026-11-14] Event envelope and device location
 - Every bus event carries `{type, pillar, at, v}`, and older rows are migrated without changing a backup's bytes. All 25 local manifests declare records, commands, and events (`25/25 complete`). Bastion and Aether read the storm-sheet place and do not fetch when it is empty. The readiness file is `readiness.json`. Athenaeum personal titles, including the early-illness title, are example titles. Shell cache d21.
 
