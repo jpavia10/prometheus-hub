@@ -1,1 +1,1 @@
-deck d20 2026-11-16 homework for every pillar (Gemini heaviest) and the Forge rebuilt to show all of it; shell cache d28
+deck d20 2026-11-16 homework rewritten: detailed and legit, Midas included, Forge reads Midas; shell cache d29
