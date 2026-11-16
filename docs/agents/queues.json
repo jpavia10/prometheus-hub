@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-09",
+ "updated": "2026-11-16",
  "pillar": "hub",
  "agents": [
   {
@@ -10,7 +10,7 @@
     {
      "id": "HUB-GRK-00",
      "title": "FIRST: the home-screen icons for Titan and Prometheus (6 images)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-06",
      "why": "Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.",
      "inputs": [
@@ -38,7 +38,8 @@
       "readable letters on any take but titan_icon_take3 (exactly TR)",
       "rounded corners, a border or a white background",
       "smaller than 1024x1024"
-     ]
+     ],
+     "review": "Reviewed by Claude 2026-11-16: Prometheus half shipped. Grok's take4 (pearl flame over a ring, recoloured from Gemini take1's composition) is the live app icon since #24 (2026-11-14), all five sizes plus the 1024 master, with a sha256 manifest. Titan half not made: Titan is paused by the owner."
     }
    ]
   },
