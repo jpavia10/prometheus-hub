@@ -1,1 +1,1 @@
-deck d20 2026-11-14 event envelope, manifest records, device location; shell cache d21
+deck d20 2026-11-16 core on phones: passcode in System, top bar fits, orbit on screen; shell cache d26
