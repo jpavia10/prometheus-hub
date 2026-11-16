@@ -50,7 +50,7 @@
     {
      "id": "HUB-GEM-00",
      "title": "FIRST: the home-screen icons for Titan and Prometheus (6 images)",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-06",
      "why": "Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.",
      "inputs": [
@@ -78,7 +78,8 @@
       "readable letters on any take but titan_icon_take3 (exactly TR)",
       "rounded corners, a border or a white background",
       "smaller than 1024x1024"
-     ]
+     ],
+     "review": "Reviewed by Claude 2026-11-16: all six takes delivered 2026-11-05 (titan_icon_take1-3_gemini, prometheus_icon_take1-3_gemini). Gemini's take1 composition (flame over a pearl ring) is the base of the live hub icon since #24, recoloured by Grok's take4. The Titan icon waits while Titan is paused."
     },
     {
      "id": "HUB-GEM-01",
@@ -376,7 +377,7 @@
     {
      "id": "HUB-CLA-01",
      "title": "Desk v2: a live status for every pillar on its door",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "Joseph: 'the main hub needs work then each pillar can be developed separately'. Each door shows its state, its last update and its open homework, read from pillars.json and each pillar's queues.",
      "inputs": [
@@ -400,7 +401,8 @@
      ],
      "rejected_if": [
       "a number typed by hand"
-     ]
+     ],
+     "review": "Superseded 2026-11-16: the desk was replaced by the orrery core; each pillar's door carries live badges from its own data (CORE-3), and every pillar opens on its own live stage (STAGE-1)."
     }
    ]
   }

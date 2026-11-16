@@ -276,7 +276,7 @@
     {
      "id": "HEA-CLA-01",
      "title": "Turn on Pages for the Hearth and save projects on the device",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-12",
      "why": "The README says Pages was never enabled; the desk links to a page that may not load.",
      "inputs": [],
@@ -294,7 +294,8 @@
      "checks": [
       "phone screenshot"
      ],
-     "rejected_if": []
+     "rejected_if": [],
+     "review": "Superseded 2026-11-16: Hearth moved into the hub (pillars/hearth/, live on the hub's Pages since 2026-11-14); its old site redirects there, and its projects are saved on the device through the kit store and the hub backup."
     }
    ]
   }
