@@ -1,1 +1,1 @@
-deck d20 2026-11-17 Gemini homework batch 20261116-2040 integrated (11 tickets, verified + corrected datasets) and 12 Forge queue completions re-rendered; shell cache d29
+deck d21 2026-11-17 Forge completions ledger (Forge marks delivered work live from a Drive ledger any AI appends to) + 11 delivered Gemini dataset tasks flipped in the queues, Forge re-rendered; shell cache d29

@@ -2,7 +2,7 @@
 
 # Hephaestus Hearth · homework for Muse
 
-Updated 2026-11-17 10:53 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-17 16:29 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 ## 1. HEA-MUS-02 · Hephaestus Hearth: second reader on Gemini's 'when Kern County needs a permit for this deck'
 

@@ -2,44 +2,9 @@
 
 # Odyssey · Trips & Away Mode · homework for Gemini
 
-Updated 2026-11-17 10:53 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-17 16:29 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-## 1. ODY-GEM-01 · Odyssey: An away-mode checklist for a mountain home in winter
-
-**Due:** 2026-11-19 · **State:** now
-
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Odyssey uses.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Pipes, heat setting, mail hold (USPS), propane, security; official or maker sources.
-
-**Make:** `odyssey_gemini_away-house_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of objects, one per row: {"n","task","when (days before)","why","source","url"}`
-
-**How many:** 50
-
-**Done when:** 50 rows (or the whole document) in the shape, every source opening and saying what the row says.
-
-**How Claude checks it:**
-- Claude opens 10 rows at random.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
-
-## 2. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
+## 1. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 

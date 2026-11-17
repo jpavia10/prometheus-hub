@@ -438,7 +438,7 @@
     {
      "id": "HUB-GEM-09",
      "title": "Prometheus Hub: phone audit of the new home menu",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-19",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Claude fixes what you find in the next build.",

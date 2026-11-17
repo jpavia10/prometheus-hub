@@ -2,87 +2,9 @@
 
 # Kairos Meridian · homework for Gemini
 
-Updated 2026-11-17 10:53 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-17 16:29 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-## 1. KAI-GEM-10 · Kairos Meridian: the yearly deadlines a California homeowner and driver actually has
-
-**Due:** 2026-11-18 · **State:** now
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Kairos puts each one on the calendar with its real rule, so property tax, registration and tax dates stop being remembered by hand.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. List every yearly deadline from these agencies that applies to someone who owns a home in Kern County, drives a registered car and a registered motorcycle, and files California and federal income tax: Kern County Treasurer-Tax Collector (both property-tax installments, supplemental bills), California DMV (vehicle and motorcycle registration, smog check rule for a 2025 hybrid, license renewal), Franchise Tax Board and IRS (filing, extension, the four estimated-tax dates), Covered California open enrollment, voter registration deadlines.
-2. Open the agency's own page for each and copy the rule as written; compute next_due from today.
-3. Leave out anything that does not apply to that person; say 'not stated' rather than guess.
-
-**Make:** `kairos_gemini_ca-deadlines_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
-
-**Every field, exactly:**
-- `n` (integer): 1, 2, 3 ...
-- `title` (text): what is due, under 60 characters, e.g. 'Property tax, first installment'
-- `rule` (text): the date rule exactly as the agency states it, e.g. 'due Nov 1, delinquent after Dec 10 at 5 p.m.'
-- `next_due` (date YYYY-MM-DD): the next date this falls on from today; if the rule moves for weekends, apply it
-- `repeats` (one of: yearly, every 2 years, twice a year, monthly): how often
-- `applies_if` (text): who it applies to, e.g. 'owns a home in Kern County', 'has a registered vehicle'
-- `penalty` (text): the penalty in the agency's words, or 'not stated'
-- `agency` (text): the agency's name
-- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
-- `quote` (text): the sentence on that page that proves the row, copied word for word (under 300 characters)
-- `as_of` (date YYYY-MM-DD): the date you read the page
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{
- "n": 1,
- "title": "Property tax, first installment",
- "rule": "Due November 1; delinquent after 5 p.m. December 10",
- "next_due": "2026-12-10",
- "repeats": "yearly",
- "applies_if": "owns real property in Kern County",
- "penalty": "10% penalty if not paid by the delinquency date",
- "agency": "Kern County Treasurer-Tax Collector",
- "url": "https://...",
- "quote": "...",
- "as_of": "2026-11-17"
-}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
-- [ ] Every quote is copied word for word from that page and is on it now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
-- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
-- [ ] 30 rows, or fewer with a line at the end of the file saying which agencies had nothing more.
-
-**How many:** 30
-
-**Done when:** 30 rows exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
+## 1. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 

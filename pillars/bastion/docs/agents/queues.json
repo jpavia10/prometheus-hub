@@ -114,7 +114,7 @@
     {
      "id": "BAS-GEM-04",
      "title": "Bastion: Kern County alert systems and evacuation zones",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-20",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Bastion links the right alert sign-ups and shows which evacuation zone system to check.",

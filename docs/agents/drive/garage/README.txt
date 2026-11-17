@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 1 open in this pillar.
 
 
 - GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
@@ -16,26 +16,22 @@ Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-17 10:53 UTC · 3 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 1 open in this pillar.
 
 
-- GAR-GEM-05 · Garage: every recall and service campaign for both vehicles · due 2026-11-19
-    make: garage_gemini_recalls_{YYYYMMDD-HHMM}.json · how many: 1 · done when: 1 rows exactly in the shape, every self-check line true.
-- GAR-GEM-06 · Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures · due 2026-11-21
-    make: garage_gemini_chain-control_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 rows exactly in the shape, every self-check line true.
 - GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-24
     make: garage_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Garage right now.
 
 ## ChatGPT
 
-Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 1 open in this pillar.
 
 
 - GAR-GPT-01 · Garage: phone audit: 15 findings · due 2026-11-24
@@ -43,14 +39,14 @@ Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Garage right now.
 
 ## Hydrogen
 
-Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Garage right now.

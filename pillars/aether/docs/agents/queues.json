@@ -114,7 +114,7 @@
     {
      "id": "AET-GEM-04",
      "title": "Aether: the live data feeds for air, fire, weather and the pass",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-20",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Aether pulls real readings from these instead of placeholders.",

@@ -148,7 +148,7 @@
     {
      "id": "GAR-GEM-05",
      "title": "Garage: every recall and service campaign for both vehicles",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-19",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Garage shows open recalls on each vehicle's card and reminds Joseph until each is marked done.",
@@ -237,7 +237,7 @@
     {
      "id": "GAR-GEM-06",
      "title": "Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-21",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Garage and Aether warn before a mountain drive when chains are required or the pass is closed.",

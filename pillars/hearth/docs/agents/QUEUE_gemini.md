@@ -2,84 +2,9 @@
 
 # Hephaestus Hearth · homework for Gemini
 
-Updated 2026-11-17 10:53 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-17 16:29 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-## 1. HEA-GEM-16 · Hephaestus Hearth: deck rebuild specs from the makers' installation guides
-
-**Due:** 2026-11-20 · **State:** now
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Hearth's deck stage checks each course against the real spacing, gap and span numbers before a board goes down.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. The deck is 23 x 10 ft on the second floor, rebuilt in 21 staggered courses (Hearth's stage). Cover cedar and the two composite lines most sold at Home Depot and Lowe's (name them).
-2. For each product take the installation guide PDF from the maker's site and copy every spacing, gap, span, fastener and finishing number.
-3. One spec per row; never combine two numbers in one row.
-
-**Make:** `hearth_gemini_deck-specs_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
-
-**Every field, exactly:**
-- `n` (integer): row number
-- `part` (one of: decking, fastener, joist, joist tape, flashing, stain, railing): what the spec is for
-- `product` (text): the exact product name and maker
-- `spec` (text): what is measured, e.g. 'gap between boards', 'joist span at 16 in on center'
-- `value` (number): the number
-- `unit` (text): in, mm, ft, coats, hours ...
-- `condition` (text): when it applies, e.g. 'installed below 60 F'
-- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
-- `page` (text): page or section of the guide
-- `quote` (text): the sentence on that page that proves the row, copied word for word (under 300 characters)
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{
- "n": 1,
- "part": "decking",
- "product": "Trex Transcend",
- "spec": "gap between board ends at 40 F or above",
- "value": 0.0625,
- "unit": "in",
- "condition": "above 40 F",
- "url": "https://...",
- "page": "p. 4",
- "quote": "..."
-}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
-- [ ] Every quote is copied word for word from that page and is on it now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
-- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
-
-**How many:** 40
-
-**Done when:** 40 rows exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck
+## 1. HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck
 
 **Due:** 2026-11-22 · **State:** now
 
@@ -133,7 +58,7 @@ A permit is required to repair or replace a deck more than 30 in above grade [ht
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 3. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
+## 2. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 

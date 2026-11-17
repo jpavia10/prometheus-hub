@@ -2,60 +2,9 @@
 
 # Bastion · Mountain Prep · homework for Gemini
 
-Updated 2026-11-17 10:53 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-17 16:29 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-## 1. BAS-GEM-04 · Bastion: Kern County alert systems and evacuation zones
-
-**Due:** 2026-11-20 · **State:** now
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Bastion links the right alert sign-ups and shows which evacuation zone system to check.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Kern County OES, the county's alert provider and CAL FIRE pages only.
-2. Say which system covers the mountain communities (Frazier Park, Lebec, Pine Mountain Club).
-
-**Make:** `bastion_gemini_kern-alerts_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with headings: 1 Alert systems | 2 Evacuation zones | 3 Live map | 4 What to sign up for | 5 Sources`
-
-**Every field, exactly:**
-- `each alert system` (markdown table): name | what it sends | how to sign up | URL | quote
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-| ReadyKern | text, call and email alerts | sign up at ... | https://... | "..." |
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL and a quote.
-- [ ] All five headings, in order.
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives
+## 1. BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives
 
 **Due:** 2026-11-22 · **State:** now
 
@@ -126,7 +75,7 @@ Updated 2026-11-17 10:53 UTC · 3 open · Rules for every pillar: https://github
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 3. BAS-GEM-06 · Bastion: the function spec, written as the build plan
+## 2. BAS-GEM-06 · Bastion: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
