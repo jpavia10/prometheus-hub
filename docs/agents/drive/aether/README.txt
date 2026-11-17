@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 1 open in this pillar.
 
 
 - AET-GRK-03 · Aether: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
@@ -16,38 +16,36 @@ Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-17 10:53 UTC · 2 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 1 open in this pillar.
 
 
-- AET-GEM-04 · Aether: the live data feeds for air, fire, weather and the pass · due 2026-11-20
-    make: aether_gemini_feeds_{YYYYMMDD-HHMM}.json · how many: 10 · done when: 10 rows exactly in the shape, every self-check line true.
 - AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-24
     make: aether_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Aether · Atmospheric & Field Lab right now.
 
 ## ChatGPT
 
-Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Aether · Atmospheric & Field Lab right now.
 
 ## Argon
 
-Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Aether · Atmospheric & Field Lab right now.
 
 ## Hydrogen
 
-Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
+Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Aether · Atmospheric & Field Lab right now.

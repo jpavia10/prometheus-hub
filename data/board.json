@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17 10:53 UTC",
+ "updated": "2026-11-17 16:29 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -8,7 +8,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/",
    "open": {
     "grok": 1,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -23,7 +23,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
    "open": {
     "grok": 1,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 1,
     "argon": 0,
@@ -59,7 +59,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
    "open": {
     "grok": 1,
-    "gemini": 3,
+    "gemini": 2,
     "muse": 1,
     "chatgpt": 1,
     "argon": 0,
@@ -74,7 +74,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
    "open": {
     "grok": 1,
-    "gemini": 3,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 1,
     "argon": 0,
@@ -119,7 +119,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/selling/",
    "open": {
     "grok": 1,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -194,7 +194,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/bastion/",
    "open": {
     "grok": 1,
-    "gemini": 3,
+    "gemini": 2,
     "muse": 1,
     "chatgpt": 0,
     "argon": 0,
@@ -224,7 +224,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/odyssey/",
    "open": {
     "grok": 1,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -239,7 +239,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
    "open": {
     "grok": 1,
-    "gemini": 3,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -351,7 +351,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/aether/",
    "open": {
     "grok": 1,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,

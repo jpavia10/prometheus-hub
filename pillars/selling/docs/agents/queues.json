@@ -114,7 +114,7 @@
     {
      "id": "SEL-GEM-04",
      "title": "Selling Pipeline: marketplace fees as of today",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-19",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Selling's net-proceeds math uses the real fee for each marketplace instead of a typed guess.",

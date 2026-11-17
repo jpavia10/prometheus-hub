@@ -1,105 +1,6 @@
 {
- "updated": "2026-11-17 10:53 UTC",
+ "updated": "2026-11-17 16:29 UTC",
  "tasks": [
-  {
-   "due": "2026-11-18",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-10",
-   "title": "Kairos Meridian: the yearly deadlines a California homeowner and driver actually has",
-   "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-11-19",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAR-GEM-05",
-   "title": "Garage: every recall and service campaign for both vehicles",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-19",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-09",
-   "title": "Prometheus Hub: phone audit of the new home menu",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-11-19",
-   "pillar": "odyssey",
-   "pillar_name": "Odyssey · Trips & Away Mode",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ODY-GEM-01",
-   "title": "Odyssey: An away-mode checklist for a mountain home in winter",
-   "state": "now",
-   "count": 50
-  },
-  {
-   "due": "2026-11-19",
-   "pillar": "privacy",
-   "pillar_name": "Privacy · CA DROP",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "PRI-GEM-04",
-   "title": "Privacy: data brokers not yet on the list, with their opt-out routes",
-   "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-11-19",
-   "pillar": "selling",
-   "pillar_name": "Selling Pipeline",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "SEL-GEM-04",
-   "title": "Selling Pipeline: marketplace fees as of today",
-   "state": "now",
-   "count": 6
-  },
-  {
-   "due": "2026-11-20",
-   "pillar": "aether",
-   "pillar_name": "Aether · Atmospheric & Field Lab",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "AET-GEM-04",
-   "title": "Aether: the live data feeds for air, fire, weather and the pass",
-   "state": "now",
-   "count": 10
-  },
-  {
-   "due": "2026-11-20",
-   "pillar": "bastion",
-   "pillar_name": "Bastion · Mountain Prep",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "BAS-GEM-04",
-   "title": "Bastion: Kern County alert systems and evacuation zones",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-20",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-16",
-   "title": "Hephaestus Hearth: deck rebuild specs from the makers' installation guides",
-   "state": "now",
-   "count": 40
-  },
   {
    "due": "2026-11-20",
    "pillar": "records",
@@ -132,28 +33,6 @@
    "title": "Continuity: what happens to each account when its owner dies or goes silent",
    "state": "now",
    "count": 25
-  },
-  {
-   "due": "2026-11-21",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAR-GEM-06",
-   "title": "Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures",
-   "state": "now",
-   "count": 20
-  },
-  {
-   "due": "2026-11-21",
-   "pillar": "privacy",
-   "pillar_name": "Privacy · CA DROP",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "PRI-GEM-05",
-   "title": "Privacy: the California DROP timeline",
-   "state": "now",
-   "count": 1
   },
   {
    "due": "2026-11-22",

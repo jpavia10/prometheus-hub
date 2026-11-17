@@ -114,7 +114,7 @@
     {
      "id": "PRI-GEM-04",
      "title": "Privacy: data brokers not yet on the list, with their opt-out routes",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-19",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Privacy's exposure ledger covers more brokers, each with a working opt-out link.",
@@ -202,7 +202,7 @@
     {
      "id": "PRI-GEM-05",
      "title": "Privacy: the California DROP timeline",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-21",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Privacy shows when the one-stop delete request can be filed and when brokers must act.",

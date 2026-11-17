@@ -2,72 +2,9 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-17 10:53 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-17 16:29 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-## 1. HUB-GEM-09 · Prometheus Hub: phone audit of the new home menu
-
-**Due:** 2026-11-19 · **State:** now
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Claude fixes what you find in the next build.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/./
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Open https://jpavia10.github.io/prometheus-hub/ at 390 x 844; swipe every level, tap Enter on five, use Orbit and Briefing.
-2. Only what you saw; at least 8 about use, at least 8 about the look.
-
-**Make:** `hub_gemini_menu-audit_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per finding`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `where` (text): level name, Today, the strip, Enter, Orbit, Briefing
-- `what_is_wrong` (text): what you saw
-- `why_it_matters` (text): one sentence
-- `fix` (text): one sentence
-- `severity` (1-3): 3 = blocks use
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{
- "n": 1,
- "where": "level strip",
- "what_is_wrong": "...",
- "why_it_matters": "...",
- "fix": "...",
- "severity": 2
-}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] 25 findings, each something Claude can see on the page.
-- [ ] No finding is a matter of taste only without a reason.
-
-**How many:** 25
-
-**Done when:** 25 rows exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
+## 1. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 

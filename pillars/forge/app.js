@@ -91,6 +91,16 @@
       D.sources.tproj = "read";
     } else D.sources.tproj = "not reached";
     const wb = await get(ROOT + "docs/antigravity/WORKBOARD.md", "text"); if (wb) { tasks.push(...parseBoard(wb)); D.sources.board = "read"; } else D.sources.board = "not reached";
+    /* The completions ledger (owner, 2026-11-17): one Drive file every AI appends to when it finishes a task, so Forge shows the work as
+       delivered the moment the worker is done, whoever did it, instead of waiting for the integrator to flip the queue in its repo.
+       An entry means DELIVERED (the file is in the named folder), not accepted; the repo queue flip stays the permanent record. */
+    const LEDGER = Q.get("done") || "https://drive.google.com/uc?export=download&id=1QEaQylVPtfbAczGDBkt4GAwIVGyY372W";
+    const lj = await get(LEDGER);
+    if (lj && Array.isArray(lj.done)) {
+      const led = new Map(lj.done.filter((e) => e && e.key).map((e) => [e.key, e])); let marked = 0;
+      for (const t of tasks) { const e = led.get(t.id); if (e && t.state !== "done") { t.state = "done"; t.closedAs = "delivered"; t.detail = { ...(t.detail || {}), delivered: `${e.what || "the deliverable"} · by ${e.by || "?"} · ${String(e.ts || "").slice(0, 10)} (completions ledger: delivered, awaiting the integrator's check; the queue in its own repo still shows it open until the flip lands)` }; marked++; } }
+      D.sources.done = marked ? `${marked} delivered per the ledger` : "read, nothing new";
+    } else D.sources.done = "not reached";
     D.tasks = tasks; D.queueState = tasks.length ? "ok" : "unreachable";
     try {
       if (!Q.get("scores") && /^(localhost|127\.0\.0\.1)$/i.test(location.hostname)) { D.scores = []; D.scoreState = "local"; }
@@ -154,7 +164,7 @@
     });
     const legend = h("div.legend", null, ...Object.keys(SRC).map((k) => h("span", null, h("i.src-" + k), SRC_SHORT[k])), h("span", null, h("i.floor-k"), "floor"));
     $("#f-load").replaceChildren(plate, legend, ...rows);
-    const st = D.sources; $("#f-src").textContent = D.queueState === "loading" ? "Reading every queue…" : `Prometheus: ${st.hub || "…"} · Titan loop: ${st.titan || "…"} · Titan projects: ${st.tproj || "…"} · workboard: ${st.board || "…"}`;
+    const st = D.sources; $("#f-src").textContent = D.queueState === "loading" ? "Reading every queue…" : `Prometheus: ${st.hub || "…"} · Titan loop: ${st.titan || "…"} · Titan projects: ${st.tproj || "…"} · workboard: ${st.board || "…"} · completions ledger: ${st.done || "…"}`;
   }
   function paintFilters() {
     const ais = ["all", ...AIS.filter((a) => allTasks().some((t) => t.ai === a))];
@@ -181,7 +191,7 @@
         d.why ? h("p", null, d.why) : null, d.what ? h("p", null, d.what) : null,
         d.steps && d.steps.length ? h("ol", null, ...d.steps.map((s) => h("li", null, s))) : null,
         d.make ? h("p", null, h("b", null, "Make: "), d.make) : null, d.folder ? h("p", null, h("b", null, "Save in: "), d.folder) : null, d.shape ? h("p.mono", null, d.shape) : null,
-        d.done ? h("p", null, h("b", null, "Done when: "), d.done) : null, t.review ? h("p.review", null, t.review) : null,
+        d.done ? h("p", null, h("b", null, "Done when: "), d.done) : null, d.delivered ? h("p", null, h("b", null, "Delivered: "), d.delivered) : null, t.review ? h("p.review", null, t.review) : null,
         h("p.links", null, d.link ? h("a", { href: d.link, target: "_blank", rel: "noopener" }, "The AI's page") : null, d.sheet ? h("a", { href: d.sheet, target: "_blank", rel: "noopener" }, "Answer sheet") : null,
           t.own ? h("button.btn.quiet.small", { type: "button", onclick: () => advance(t.own) }, t.own.state === "out" ? "It's back" : t.own.state === "back" ? "Score it" : "Clear") : null));
       return h("details.trow.s-" + t.src + (late ? ".late" : "") + (isOpen(t) ? "" : ".closed"), null,
