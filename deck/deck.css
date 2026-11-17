@@ -794,3 +794,5 @@ body.menu-on:not(.menu-off) #sky { opacity: 0 !important; }
 @media (max-height: 700px) { .menu { gap: 6px; } .mn-emblem { width: min(36vw, 140px); } .mn-what { -webkit-line-clamp: 2; } }
 @media (min-width: 900px) { .menu { grid-template-rows: auto minmax(220px, 1fr) auto auto auto; } .mn-emblem { width: 230px; } }
 @media (prefers-reduced-motion: reduce) { .mn-emblem, .mn-ring, .mn-enter::after, .mn-dot.hard, .in-r, .in-l { animation: none !important; } }
+.view-fallback{max-width:520px;margin:12vh auto;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--glass-2);text-align:left}
+.view-fallback h2{margin:0 0 8px}

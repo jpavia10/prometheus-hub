@@ -426,7 +426,7 @@
     {
      "id": "AET-MUS-02",
      "title": "Aether: second reader on Gemini's 'the live data feeds for air, fire, weather and the pass'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-23",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",

@@ -168,6 +168,7 @@
         <div id="g-trip-out" style="margin-top:8px"></div>
       </div>
 
+      <div class="glass span-12 board-panel"><h2>Factory Recalls & Winter Pass</h2><div id="g-recalls"></div><div id="g-chain"></div></div>
       <div class="glass span-12 board-panel"><h2 id="g-maint-title">Maintenance</h2><div id="g-services"></div>
         <p class="note" id="g-maint-note"></p>
         <div id="g-specs" style="margin-bottom:10px"></div>
@@ -349,6 +350,53 @@
       });
       if (!docs.length) box.innerHTML = `<p class="empty">No CA DMV / winter compliance items tracked yet.</p>`;
     }
+    /* GAR-GEM-05/06 (2026-11-17): recall tracker + Caltrans chain-control reference.
+       Completion state lives in the kit store under "recalls" (localStorage
+       prometheus.garage.recalls); open recalls publish to the shared deadlines bus.
+       §H: AWD does NOT exempt the Sorento from carrying chains under R-1/R-2 — the
+       panel says so in plain text. */
+    const vNow = veh();
+    const recState = S.get("recalls", {});
+    const recFor = (vkey) => (window.GARAGE_RECALLS || []).filter((r) => vkey === "sorento" ? /Sorento/.test(r.vehicle) : /MT-07/.test(r.vehicle));
+    const myRecalls = recFor(vNow.key);
+    if (window.PB) for (const r of myRecalls) {
+      if (r.campaign === "none") continue;
+      const done = !!(recState[r.campaign] && recState[r.campaign].done);
+      PB.deadlines.publish({ title: `Recall ${r.campaign} — ${r.component.split("(")[0].trim()}`, date: r.date, source: "garage-recall", kind: "recall", ref: "recall-" + r.campaign, done });
+    }
+    const recBox = $("#g-recalls");
+    if (recBox) {
+      recBox.innerHTML = "";
+      if (!myRecalls.length) recBox.innerHTML = `<p class="empty">No recall data for this vehicle.</p>`;
+      for (const r of myRecalls) {
+        const st = recState[r.campaign] || {};
+        const row = h("div.kv.brow", null,
+          h("span", null,
+            h("b", null, r.campaign === "none" ? "No open recalls" : `Recall ${r.campaign}`),
+            ` · ${r.component} `,
+            h("a", { href: r.url, target: "_blank", rel: "noopener", class: "stat-s" }, "NHTSA ↗")),
+          r.campaign === "none"
+            ? h("span.stat-s", null, `checked ${r.date}`)
+            : h("button.btn.quiet.small", { type: "button", onclick: () => { const m = S.get("recalls", {}); m[r.campaign] = { done: !(m[r.campaign] && m[r.campaign].done), date: day() }; S.set("recalls", m); paintPaperworkAndDossier(); paint(); } }, st.done ? `Completed ${st.date || ""}` : "Mark completed"));
+        recBox.append(row);
+        recBox.append(h("p.note", null, `${r.summary} Remedy: ${r.remedy}`));
+      }
+    }
+    const chainBox = $("#g-chain");
+    if (chainBox && window.GARAGE_CHAIN) {
+      const cc = S.get("chainControl", {});
+      chainBox.innerHTML = `<h3 class="subhead">Winter Pass & Chain Control — I-5 Tejon Pass / Grapevine</h3>
+        <p class="note">Caltrans R-1/R-2: the AWD Sorento may be exempt from <i>mounting</i> chains on snow tires, but it is <b>never exempt from carrying them</b>. R-3: chains on everything, no exceptions. Motorcycles are excluded from chain controls — the MT-07 stays home.</p>
+        <label class="check"><input type="checkbox" id="g-chains-carried" ${cc.carried ? "checked" : ""}> Chains/cables for the Sorento are in the vehicle</label>
+        <details><summary>Chain-control rules (10) & Tejon Pass closure ledger (10)</summary>
+        ${window.GARAGE_CHAIN.rules.map((r) => `<div class="kv"><span>${esc(r.what)}</span></div>`).join("")}
+        <p class="note" style="margin-top:8px">Closure ledger (dates + events as dropped; per-closure hour counts were unsourced and are omitted):</p>
+        ${window.GARAGE_CHAIN.closures.map((c) => `<div class="kv"><span><b class="mono">${esc(c.date || "")}</b> · ${esc(c.what || "")}</span></div>`).join("")}
+        </details>`;
+      const cb = $("#g-chains-carried");
+      if (cb) cb.onchange = () => { const m = S.get("chainControl", {}); m.carried = cb.checked; S.set("chainControl", m); };
+    }
+
     const hist = S.list(K("history")).sort((a, b) => (b.odometer || 0) - (a.odometer || 0));
     const fs = GARAGE.fuelStats(S.list(K("fuel")));
     const dossier = [
@@ -359,7 +407,9 @@
       `Completed Services (${hist.length}):`,
       ...(hist.length ? hist.map((x) => `  - ${x.date} @ ${num(x.odometer)} mi: ${x.service}${x.cost ? ` (${money(x.cost)})` : ""}${x.notes ? ` — ${x.notes}` : ""}`) : ["  - No logged services yet"]),
       `Compliance & Paperwork (${docs.length}):`,
-      ...(docs.length ? docs.map((d) => `  - [${d.kind}] ${d.title} (due ${d.due})`) : ["  - None active"])
+      ...(docs.length ? docs.map((d) => `  - [${d.kind}] ${d.title} (due ${d.due})`) : ["  - None active"]),
+      `Factory Recalls:`,
+      ...recFor(vNow.key).map((r) => r.campaign === "none" ? `  - No open NHTSA campaigns (checked ${r.date})` : `  - ${r.campaign}: ${r.component} — ${recState[r.campaign] && recState[r.campaign].done ? `COMPLETED ${recState[r.campaign].date || ""}` : "OPEN"}`)
     ].join("\n");
     const pre = $("#g-dossier-preview"); if (pre) pre.textContent = dossier;
     return dossier;

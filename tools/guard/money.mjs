@@ -25,6 +25,8 @@ export const ALLOW = [
   ["pillars/money/engine.js", "amortization engine over those cases"],
   ["pillars/money/app.js", "simulator chrome only: windfall chips and the empty-trap line"],
   ["pillars/money/real.js", "Joseph's real consolidation book, public on the pillar at his direction 2026-11-14 (privacy revoked for the hub; the deck passcode gate is his chosen mitigation) — same policy as the narrowed private-loan unit test"],
+  ["pillars/money/flex.js", "Citi Flex Plan published rules reference (MID-GEM-09, Gemini 20261116 drop, corrected at integration) — same class as issuers.js/offers.js reference data"],
+  ["pillars/kairos/fixed-dates.js", "statutory deadline reference (KAI-GEM-10): Kern County / DMV penalty schedules carry fixed statutory costs ($10 installment cost, $15 redemption fee) — public fee schedules, not account data"],
   ["pillars/icarus/", "sample journal, rule formulas, and market-day reference"],
   ["pillars/apollo/foods.js", "food reference"],
   ["pillars/apollo/lookup.js", "nutrition lookup reference"],

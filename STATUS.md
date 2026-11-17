@@ -43,6 +43,10 @@ PASS DECK-2  No script errors during the run  ::  none
 
 <!-- proofs-live:end -->
 
+Shell cache **d29** (unchanged) · 2026-11-17 · Sebastian
+
+**Gemini homework batch 20261116-2040 integrated + 12 second-reads closed:** all 11 wiring tickets landed on the existing UI (Selling fee schedules + `feeFor`, Kairos +30 fixed dates with weekend/holiday roll-forward and complete-a-cycle, Privacy broker ledger 47 → 74 + DROP timeline, Garage NHTSA recalls + chain-control panels, Odyssey 50-check away list with critical gate, Hearth 40-row deck-spec library, Records 40-rule retention library, Bastion Kern card + pet-evacuation scenario, Aether feeds table + holdover, Money 16-rule Flex library, deck view-fallback fix). Gemini's data was verified before wiring and corrected where it was wrong (Kern unsecured-tax date Aug 31 per Rev. & Tax. Code §2922, Covered CA Dec 31 Jan-1 cutoff, NHTSA report dates, Trex-branded joists de-branded, Form 1040 retention 7 years not permanent, invented Flex fee range struck, wrong NWS gridpoint HNX 67,10). Twelve Muse second-read tasks flipped to done and Forge re-rendered; the check files live in the Drive incoming folders. Verified locally: registry OK, syntax + JSON sweeps OK, unit 62/62, money guard OK, browser proofs 27/28 (NEW-1 fails only on the localhost Forge score-fetch artifact), spec acceptance harness 50/50.
+
 Shell cache **d27** · 2026-11-16 · Claude
 
 **The home is a game menu:** the pillars are levels in a full-screen world (MENU-1); the orbit and the briefing are kept. Painted worlds are requested from Gemini (`docs/art/requests/artreq_20261116-0300_prometheus-worlds.json`). Verified locally: unit 62/62, money guard OK, browser proofs 27/27 on `prometheus.test` with mocked weather.

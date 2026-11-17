@@ -2,6 +2,6 @@
 
 # Mythos · Creative & Lore Studio · homework for Muse
 
-Updated 2026-11-16 13:40 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-17 10:53 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 No homework for Muse in Mythos · Creative & Lore Studio right now. Check your HOMEWORK doc for the other pillars.

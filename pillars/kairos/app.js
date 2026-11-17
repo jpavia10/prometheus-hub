@@ -9,8 +9,53 @@
   field({ count: 950, at: [0.76, 0.3], scale: 0.24, glyph: (n) => [...G.ring(Math.round(n * 0.72), 0.78), ...G.line(Math.round(n * 0.14), 0, 0, 0, -0.62), ...G.line(Math.round(n * 0.14), 0, 0, 0.45, 0.18)] });
 
   const METHODS = window.KAIROS_METHODS || [{ id: "pomodoro", name: "Pomodoro (25/5)", work: 25, short: 5, source: "Cirillo (2006)", quote: "25 min work + 5 min rest" }];
+
+  /* KAI-GEM-10 (2026-11-17): cycle completion for the merged deadline ledger. Completing a
+     cycle records the roll-forward in localStorage["prometheus.kairos.completedCycles"]
+     (ref -> the date the cycle was completed from); the row's effective date advances by
+     its own repeats cadence and is business-day adjusted via KICS.effectiveDueDate.
+     Custom user events in prometheus.kairos.events are never touched (§H). */
+  const CYCLES_KEY = "prometheus.kairos.completedCycles";
+  const readCycles = () => { try { return JSON.parse(localStorage.getItem(CYCLES_KEY) || "{}"); } catch (_) { return {}; } };
+  const advanceBy = (iso, repeats) => {
+    const d = new Date(iso + "T12:00:00");
+    if (repeats === "yearly") d.setFullYear(d.getFullYear() + 1);
+    else if (repeats === "monthly") d.setMonth(d.getMonth() + 1);
+    else if (repeats === "twice a year") d.setMonth(d.getMonth() + 6);
+    else if (repeats === "every 2 years") d.setFullYear(d.getFullYear() + 2);
+    else if (repeats === "every 5 years") d.setFullYear(d.getFullYear() + 5);
+    else return null;
+    const p = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  };
+  const fixedRows = () => {
+    const cycles = readCycles();
+    const out = [];
+    for (const f of window.KAIROS_FIXED || []) {
+      const ref = f.date + "_" + f.name;
+      if (cycles[ref] === "done") continue;
+      out.push({ ...f, date: cycles[ref] || f.date, ref });
+    }
+    return out;
+  };
+  function completeCycle(ref) {
+    const cur = fixedRows().find((f) => f.ref === ref);
+    if (!cur) return;
+    const raw = advanceBy(cur.date, cur.repeats);
+    const next = raw && window.KICS && KICS.effectiveDueDate ? KICS.effectiveDueDate(raw) : raw;
+    const cycles = readCycles();
+    cycles[ref] = next || "done";
+    try { localStorage.setItem(CYCLES_KEY, JSON.stringify(cycles)); } catch (_) {}
+    if (window.PB) {
+      for (const b of PB.deadlines.list()) if (b.source === "kairos-fixed" && b.ref === ref && b.id) PB.deadlines.setDone(b.id, true);
+      if (next) PB.deadlines.publish({ title: cur.name, date: next, source: "kairos-fixed", kind: cur.kind, ref });
+    }
+    toast(next ? `Cycle complete — next: ${next}` : "Cycle complete");
+    paint();
+  }
+
   if (window.PB && window.KAIROS_FIXED) {
-    for (const f of KAIROS_FIXED) PB.deadlines.publish({ title: f.name, date: f.date, source: "kairos-fixed", kind: f.kind, ref: f.date + "_" + f.name });
+    for (const f of fixedRows()) PB.deadlines.publish({ title: f.name, date: f.date, source: "kairos-fixed", kind: f.kind, ref: f.ref });
   }
 
   app.innerHTML = `
@@ -80,7 +125,7 @@
   const allDeadlines = () => {
     const t = day();
     const bus = (window.PB ? PB.deadlines.list() : []).filter((b) => !b.done && b.source !== "kairos-fixed" && !(b.source === "kairos" && b.date < t));
-    const fixed = (window.KAIROS_FIXED || []).filter((f) => f.date >= t).map((f) => ({ id: "fx_" + f.date, title: f.name, date: f.date, source: "kairos-fixed", kind: f.kind, fixed: true }));
+    const fixed = fixedRows().filter((f) => f.date >= t).map((f) => ({ id: "fx_" + f.date, title: f.name, date: f.date, source: "kairos-fixed", kind: f.kind, fixed: true, penalty: f.penalty, url: f.url, agency: f.agency, repeats: f.repeats, ref: f.ref }));
     return [...bus, ...fixed].sort((a, b) => a.date.localeCompare(b.date));
   };
 
@@ -157,8 +202,10 @@
         h("div.trail-main", null,
           h("span.trail-date", null, r.date + (r.time ? " " + r.time : "")),
           h("b.trail-title", null, r.title),
-          h("small.trail-src", null, r.fixed ? r.kind : r.source)),
-        r.fixed ? h("span.stat-s", null, "ref") : h("button.btn.quiet.small", { type: "button", onclick: () => { if (window.PB && r.id) PB.deadlines.setDone(r.id, true); toast("Marked done"); paint(); } }, "Done")
+          h("small.trail-src", null, r.fixed ? r.kind : r.source),
+          r.penalty ? h("small.trail-pen", null, `Penalty: ${r.penalty} · `, h("a", { href: r.url, target: "_blank", rel: "noopener" }, r.agency || "agency source")) : null),
+        r.fixed && r.repeats ? h("button.btn.quiet.small", { type: "button", onclick: () => completeCycle(r.ref) }, "Complete cycle")
+          : r.fixed ? h("span.stat-s", null, "ref") : h("button.btn.quiet.small", { type: "button", onclick: () => { if (window.PB && r.id) PB.deadlines.setDone(r.id, true); toast("Marked done"); paint(); } }, "Done")
       ));
     });
     box.append(rail);

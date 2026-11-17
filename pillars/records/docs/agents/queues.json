@@ -421,7 +421,7 @@
     {
      "id": "REC-MUS-02",
      "title": "Records: second reader on Gemini's 'how long to keep each kind of household paper'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-23",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",

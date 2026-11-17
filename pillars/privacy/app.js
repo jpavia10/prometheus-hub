@@ -33,6 +33,19 @@
     S.set("brokers", bs); S.set("brokersV3", 1);
   }
 
+  /* PRI-GEM-04 (Sebastian, 2026-11-17): Gemini's 30 additional CPPA-registered brokers
+     (privacy_gemini_brokers_20261116-2040.json) as a versioned union — existing states and
+     confirmed-removed recheck dates are never touched (§H). Three of the 30 were already
+     in the ledger and are skipped by the name check: BeenVerified, Clearview AI, Nuwber. */
+  if (!S.get("brokersV4")) {
+    const bs = S.get("brokers", []);
+    const have = new Set(bs.map((b) => b.name));
+    for (const n of ["People Data Labs", "LiveRamp", "The Work Number (Equifax)", "Fideo", "LexisNexis (Professional & Marketing Data)", "Data Axle", "PropertyRadar", "Thomson Reuters CLEAR", "Checksecrets", "USPeopleSearch", "Public Data Check", "Spyfly", "Search Public Records", "Public Information Services", "Private Reports", "PrivateRecords.net", "We Inform (TruthRecord)", "Information.com", "FreePeopleSearch", "TrestleIQ", "IDI (idiCORE)", "FOREWARN", "Seamless.AI", "Lusha", "LeadIQ", "UpLead", "Crunchbase"]) {
+      if (!have.has(n)) bs.push({ id: Math.random().toString(36).slice(2, 8), name: n, state: "not started", recheck: null });
+    }
+    S.set("brokers", bs); S.set("brokersV4", 1);
+  }
+
   const S24_CHECKS = [
     "SIM PIN lock enabled (carrier theft protection)",
     "Private DNS set to encrypted resolver (Quad9 / Cloudflare)",
@@ -54,6 +67,7 @@
           <button class="btn" type="submit">Save</button>
         </form>
         <p class="note">Never store your DROP ID here. Submit at <a href="https://privacy.ca.gov/drop/" target="_blank" rel="noopener">privacy.ca.gov/drop</a>; broker statutory window starts 45 days post-submission.</p>
+        <div id="v-drop-timeline"></div>
       </div>
 
       <div class="glass span-6"><h2>Galaxy S24 Ultra Hardening &amp; Hermes Intake</h2>
@@ -74,7 +88,7 @@
         <div id="v-accts" style="margin-top:10px"></div>
       </div>
 
-      <div class="glass span-12"><h2>Data Broker Ledger · 6-Month Recheck Cycle</h2><div id="v-plate"></div><div id="v-brokers"></div>
+      <div class="glass span-12"><h2>Data Broker Ledger · 6-Month Recheck Cycle</h2><div id="v-plate"></div><label class="f" style="max-width:260px;margin:6px 0">Show<select id="v-bfilter"><option value="">All brokers</option><option>not started</option><option>opt-out sent</option><option>confirmed removed</option><option>recheck due</option></select></label><div id="v-brokers"></div>
         <form class="form" id="v-broker-form" style="margin-top:10px"><label class="f wide">Add broker / sender<input name="name" required maxlength="80"></label><button class="btn" type="submit">Add</button></form>
       </div>
     </section>`;
@@ -104,6 +118,21 @@
 
     const f = $("#v-drop-form");
     f.status.value = d.status; f.submitted.value = d.submitted || ""; f.checked.value = d.checked || "";
+
+    /* PRI-GEM-05 (2026-11-17): the CPPA Delete Act statutory timeline, from
+       privacy_gemini_drop-dates_20261116-2040.md (quotes + cppa.ca.gov sources). The
+       2026-09-15 status-report date is the 45-day arithmetic consequence of the Aug 1
+       pull start, not a date the statute names — it is labeled as inferred in the UI. */
+    $("#v-drop-timeline").innerHTML = `<details class="drop-tl"><summary>CPPA Delete Act — statutory dates (cppa.ca.gov)</summary><table class="fee-cmp"><thead><tr><th>Date</th><th>Step</th><th>Who</th></tr></thead><tbody>${[
+      ["2024-01-01", "Data broker registry administration transfers from the Attorney General to the CPPA", "CPPA"],
+      ["2025-11-13", "DROP system regulations approved", "CPPA"],
+      ["2026-01-01", "DROP opens to consumers — one deletion request reaches every registered broker", "Consumers"],
+      ["2026-01-31", "Annual data broker registration deadline", "Brokers"],
+      ["2026-08-01", "Brokers must begin pulling DROP requests at least every 45 days", "Brokers"],
+      ["2026-09-15", "First 45-day status-report point (inferred: Aug 1 pull + 45 days)", "Brokers"],
+      ["2028-01-01", "Triennial compliance audits begin; 6-year record retention applies", "CPPA / Brokers"],
+    ].map(([dt, step, who]) => `<tr><td class="mono">${dt}</td><td>${esc(step)}</td><td>${esc(who)}</td></tr>`).join("")}</tbody></table>
+    <p class="note">Full quotes and sources: <a href="https://cppa.ca.gov" target="_blank" rel="noopener">cppa.ca.gov</a> · submit at <a href="https://privacy.ca.gov/drop/" target="_blank" rel="noopener">privacy.ca.gov/drop</a></p></details>`;
 
     // S24 Ultra checklist
     const s24 = S.get("s24", {});
@@ -162,7 +191,9 @@
       <p class="plate-sub">Opt-out routes published for <b>${routed}</b> of ${brokers.length} · every confirmed removal is rechecked on a 6-month cycle · the bar reads left to right: still exposed, in motion, due a recheck, then dark.</p>
     </div>`;
     $("#v-brokers").innerHTML = "";
+    const bf = ($("#v-bfilter") || {}).value || "";
     for (const b of brokers) {
+      if (bf && b.state !== bf) continue;
       $("#v-brokers").append(h("div.kv.brow " + (STCLS[b.state] || "st-open"), null,
         h("span", null, h("b.bname", null, b.name), " ", h("span", { class: "pill " + (STCLS[b.state] || "st-open") }, b.state),
           (window.BROKER_OPTOUTS && window.BROKER_OPTOUTS[b.name]) ? h("a", { href: window.BROKER_OPTOUTS[b.name], target: "_blank", rel: "noopener", class: "stat-s route" }, " opt out ↗") : null,
@@ -184,6 +215,7 @@
   }
 
   $("#v-drop-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.set("drop", { status: f.status.value, submitted: f.submitted.value, checked: f.checked.value }); toast("DROP status saved"); paint(); });
+  $("#v-bfilter").addEventListener("change", () => paint());
   $("#v-broker-form").addEventListener("submit", (e) => { e.preventDefault(); const bs = S.get("brokers", []); bs.push({ id: Math.random().toString(36).slice(2, 8), name: e.target.name.value.trim(), state: "not started", recheck: null }); S.set("brokers", bs); e.target.reset(); paint(); });
   $("#v-acct-form").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.add("accounts", { service: f.service.value.trim(), email: f.email.value.trim(), tfa: f.tfa.value, rotated: f.rotated.value, status: f.status.value }); f.reset(); paint(); });
   $("#export").onclick = () => download(`privacy_${day()}.json`, S.dump());

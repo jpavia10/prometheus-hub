@@ -650,7 +650,7 @@
     {
      "id": "HUB-MUS-02",
      "title": "Prometheus Hub: second reader on Gemini's 'phone audit of the new home menu'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-22",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",

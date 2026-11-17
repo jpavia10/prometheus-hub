@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 
 - HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
@@ -16,7 +16,7 @@ Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 2 open in this pillar.
 
 
 - HUB-GEM-09 · Prometheus Hub: phone audit of the new home menu · due 2026-11-19
@@ -26,29 +26,28 @@ Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
-- HUB-MUS-02 · Prometheus Hub: second reader on Gemini's 'phone audit of the new home menu' · due 2026-11-22 · waits for its input file
-    make: hub_muse_menu-audit-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+No homework for Muse in Prometheus Hub right now.
 
 ## ChatGPT
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Prometheus Hub right now.
 
 ## Argon
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Prometheus Hub right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Prometheus Hub right now.

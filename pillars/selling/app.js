@@ -20,12 +20,14 @@
     S.set("pipelineSeedV1", 1);
   }
 
-  const BASE_PRESETS = [
-    { label: "Facebook Marketplace (shipped) — 10% ($0.80 min)", pct: 10, fixed: 0 },
-    { label: "Mercari — 10%", pct: 10, fixed: 0 },
-    { label: "eBay Most Categories — 13.6% + $0.40", pct: 13.6, fixed: 0.4 },
-    { label: "Poshmark ($15+) — 20%", pct: 20, fixed: 0 }
-  ];
+  /* SEL-GEM-04 (2026-11-17): presets now derive from SELLING.FEES (calc.js) — the six
+     verified Nov 2026 schedules with their piecewise rules and source URLs. Picking a
+     preset fills the editable fee fields with the headline rate AND arms the rule
+     (min fee / under-$15 flat / $7,500 cap) for the preview and the staged item. */
+  const BASE_PRESETS = Object.entries(SELLING.FEES).map(([key, r]) => ({
+    rule: key, pct: r.pct, fixed: r.fixed || 0, url: r.url,
+    label: `${r.label} — ${key === "poshmark" ? "$2.95 under $15, else 20%" : key === "ebay" ? "13.6% + $0.40 ($0.30 ≤ $10), 2.35% over $7,500" : key === "facebook" ? "10% ($0.80 min)" : key === "offerup" ? "12.9% ($1.99 min)" : key === "swappa" ? "6.49% + $0.49" : "10%"}`,
+  }));
   let presets = [...BASE_PRESETS];
   const daysBetween = (d1, d2) => Math.round((new Date(d2 + "T12:00:00") - new Date(d1 + "T12:00:00")) / 864e5);
 
@@ -86,9 +88,16 @@
   }
   function updatePreview() {
     const f = $("#s-form"), price = +f.price.value || 0, feePct = +f.feePct.value || 0, feeFixed = +f.feeFixed.value || 0, ship = +f.shipEst.value || 0, pack = +f.packaging.value || 0;
-    const estFee = Math.round(((price + ship) * (feePct / 100) + feeFixed) * 100) / 100;
+    const ruleKey = f.dataset.rule || "";
+    const estFee = ruleKey && SELLING.FEES[ruleKey] ? SELLING.feeFor(SELLING.FEES[ruleKey], price) : Math.round(((price + ship) * (feePct / 100) + feeFixed) * 100) / 100;
     const net = Math.round((price - estFee - ship - pack) * 100) / 100;
-    $("#s-preview").innerHTML = price > 0 ? `Projected fee: <b>${money(estFee)}</b> · Projected net: <b class="${net >= 0 ? "up" : "down"}">${money(net)}</b>` : "";
+    if (!(price > 0)) { $("#s-preview").innerHTML = ""; return; }
+    const rows = Object.entries(SELLING.FEES).map(([k, r]) => {
+      const fee = SELLING.feeFor(r, price), n = Math.round((price - fee - ship - pack) * 100) / 100;
+      return `<tr${k === ruleKey ? " class=\"sel\"" : ""}><td><a href="${r.url}" target="_blank" rel="noopener">${esc(r.label)}</a></td><td>${money(fee)}</td><td class="${n >= 0 ? "up" : "down"}">${money(n)}</td></tr>`;
+    }).join("");
+    $("#s-preview").innerHTML = `Projected fee: <b>${money(estFee)}</b> · Projected net: <b class="${net >= 0 ? "up" : "down"}">${money(net)}</b>
+      <table class="fee-cmp"><thead><tr><th>Platform (Nov 2026 schedule)</th><th>Fee</th><th>Net</th></tr></thead><tbody>${rows}</tbody></table>`;
   }
 
   function paint() {
@@ -133,7 +142,7 @@
     const completed = list.filter((it) => it.soldPrice != null);
     let predSum = 0, realSum = 0;
     const dRows = completed.slice(0, 6).map((it) => {
-      const p = SELLING.net({ price: it.price, feePct: it.feePct, shipping: it.shipEst, packaging: it.packaging }).net - (+it.feeFixed || 0);
+      const p = it.feeRule ? SELLING.net({ price: it.price, feeRule: it.feeRule, shipping: it.shipEst, packaging: it.packaging }).net : SELLING.net({ price: it.price, feePct: it.feePct, shipping: it.shipEst, packaging: it.packaging }).net - (+it.feeFixed || 0);
       const r = SELLING.net({ price: it.soldPrice, fee: it.feeActual, shipping: it.shipActual, packaging: it.packaging }).net;
       predSum += p; realSum += r;
       const diff = r - p;
@@ -173,7 +182,7 @@
     for (const it of list) {
       const k = (it.batch || "Unbatched").trim() || "Unbatched";
       if (!byBatch[k]) byBatch[k] = { count: 0, gross: 0, net: 0 };
-      const r = it.soldPrice != null ? SELLING.net({ price: it.soldPrice, fee: it.feeActual, shipping: it.shipActual, packaging: it.packaging }) : SELLING.net({ price: it.price, feePct: it.feePct, shipping: it.shipEst, packaging: it.packaging });
+      const r = it.soldPrice != null ? SELLING.net({ price: it.soldPrice, fee: it.feeActual, shipping: it.shipActual, packaging: it.packaging }) : SELLING.net({ price: it.price, feePct: it.feePct, feeRule: it.feeRule, shipping: it.shipEst, packaging: it.packaging });
       byBatch[k].count++; byBatch[k].gross += +(it.soldPrice != null ? it.soldPrice : it.price) || 0; byBatch[k].net += r.net - (+it.feeFixed || 0);
     }
     const batchRows = Object.entries(byBatch).map(([k, v]) => `<div class="kv"><span><b>${esc(k)}</b> (${v.count} items · ${money(v.gross)})</span><b>${money(v.net)} net</b></div>`);
@@ -185,7 +194,7 @@
     const el = $("#s-list"); if (!list.length) { el.innerHTML = `<p class="empty">Nothing staged yet.</p>`; return; }
     el.innerHTML = "";
     for (const it of list) {
-      const pred = SELLING.net({ price: it.price, feePct: it.feePct, shipping: it.shipEst, packaging: it.packaging }).net - (+it.feeFixed || 0);
+      const pred = it.feeRule ? SELLING.net({ price: it.price, feeRule: it.feeRule, shipping: it.shipEst, packaging: it.packaging }).net : SELLING.net({ price: it.price, feePct: it.feePct, shipping: it.shipEst, packaging: it.packaging }).net - (+it.feeFixed || 0);
       const real = it.soldPrice != null ? SELLING.net({ price: it.soldPrice, fee: it.feeActual, shipping: it.shipActual, packaging: it.packaging }) : null;
       el.append(h("div.item", null,
         h("h3", null, h("span.t", null, it.title), h("span.stage st-" + it.stage, null, it.stage)),
@@ -222,12 +231,12 @@
     S.update("items", it.id, { busRecorded: true }); toast("Payout recorded: " + money(r.net)); paint();
   }
 
-  $("#s-fee-preset").addEventListener("change", (e) => { const p = presets[+e.target.value]; if (!p) return; $("#s-form").feePct.value = p.pct; $("#s-form").feeFixed.value = p.fixed; updatePreview(); });
+  $("#s-fee-preset").addEventListener("change", (e) => { const p = presets[+e.target.value]; const f = $("#s-form"); if (!p) { delete f.dataset.rule; updatePreview(); return; } f.feePct.value = p.pct; f.feeFixed.value = p.fixed; if (p.rule) f.dataset.rule = p.rule; else delete f.dataset.rule; updatePreview(); });
   ["price", "feePct", "feeFixed", "shipEst", "packaging"].forEach((k) => $("#s-form")[k].addEventListener("input", updatePreview));
   $("#s-form").addEventListener("submit", (e) => {
     e.preventDefault(); const f = e.target;
-    S.add("items", { date: day(), title: f.title.value.trim(), batch: f.batch.value.trim(), price: +f.price.value || 0, feePct: +f.feePct.value || 0, feeFixed: +f.feeFixed.value || 0, shipEst: +f.shipEst.value || 0, packaging: +f.packaging.value || 0, stage: "staged" });
-    f.reset(); f.feePct.value = 10; f.feeFixed.value = 0; updatePreview(); toast("Staged"); paint();
+    S.add("items", { date: day(), title: f.title.value.trim(), batch: f.batch.value.trim(), price: +f.price.value || 0, feePct: +f.feePct.value || 0, feeFixed: +f.feeFixed.value || 0, feeRule: f.dataset.rule || undefined, shipEst: +f.shipEst.value || 0, packaging: +f.packaging.value || 0, stage: "staged" });
+    f.reset(); f.feePct.value = 10; f.feeFixed.value = 0; delete f.dataset.rule; updatePreview(); toast("Staged"); paint();
   });
   $("#s-sup-form").addEventListener("submit", (e) => {
     e.preventDefault(); const f = e.target;

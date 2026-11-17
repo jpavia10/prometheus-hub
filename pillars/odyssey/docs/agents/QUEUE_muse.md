@@ -2,38 +2,6 @@
 
 # Odyssey · Trips & Away Mode · homework for Muse
 
-Updated 2026-11-16 13:40 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-17 10:53 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
-## 1. ODY-MUS-02 · Odyssey: second reader on Gemini's 'An away-mode checklist for a mountain home in winter'
-
-**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
-
-**Why:** Every Gemini dataset gets a second reader before Claude builds on it.
-
-**Read first:**
-- Gemini's file odyssey_gemini_away-house_*.json in the folder below (once it is there)
-
-**Do this:**
-1. Open 15 rows at random (or every row if fewer) and the source each cites.
-2. For each: what Gemini says, what the page says, agree/differ.
-3. Add up to 5 rows Gemini missed, same shape.
-
-**Make:** `odyssey_muse_away-house-check_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `table: row | gemini says | page says | url | agree/differ`
-
-**How many:** 15
-
-**Done when:** 15 rows checked with the page each opened.
-
-**How Claude checks it:**
-- Claude spot-checks 3 'differ' lines.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
+No homework for Muse in Odyssey · Trips & Away Mode right now. Check your HOMEWORK doc for the other pillars.

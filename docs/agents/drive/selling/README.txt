@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 
 - SEL-GRK-03 · Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
@@ -16,7 +16,7 @@ Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 2 open in this pillar.
 
 
 - SEL-GEM-04 · Selling Pipeline: marketplace fees as of today · due 2026-11-19
@@ -26,29 +26,28 @@ Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
-- SEL-MUS-02 · Selling Pipeline: second reader on Gemini's 'marketplace fees as of today' · due 2026-11-22 · waits for its input file
-    make: selling_muse_fees-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+No homework for Muse in Selling Pipeline right now.
 
 ## ChatGPT
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Selling Pipeline right now.
 
 ## Argon
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Selling Pipeline right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Selling Pipeline right now.

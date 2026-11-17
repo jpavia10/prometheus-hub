@@ -268,6 +268,7 @@
       <div class="glass span-12">
         <h2>2nd-Floor Deck Refurbish · Blueprint Rev 7</h2>
         <div id="h-deck"></div>
+        <div id="h-specs"></div>
       </div>
       <div class="glass span-12">
         <h2>General Renovation Log</h2>
@@ -304,6 +305,7 @@
       <div class="glass span-12">
         <div class="row-actions" style="justify-content:space-between">
           <h2>Materials Bill of Materials (BOM)</h2>
+          <button class="btn quiet small" id="h-basis-btn" type="button">Sync Capital Basis → Records</button>
           <form class="row-actions">
             <label class="f">Phase <select id="h-mat-phase"><option value="all">All</option><option value="1">P1</option><option value="2">P2</option><option value="3">P3</option><option value="4">P4</option></select></label>
             <label class="f">Category <select id="h-mat-cat"><option value="all">All</option><option>lumber</option><option>flashing</option><option>sealant</option><option>concrete</option><option>fasteners</option><option>finish</option></select></label>
@@ -364,6 +366,13 @@
     const reqs = S.list("requests").filter((r) => r.room === rm.id);
     const open = reqs.filter((r) => r.status !== "resolved").length;
     el.innerHTML = `<b>Selected room: ${esc(rm.name)}</b> · ${rm.w && rm.l ? `${rm.w} × ${rm.l} ft` : "unmeasured"} · ${rm.phase ? `Phase ${rm.phase}` : "unscheduled"} · ${open} open field request(s) ${rm.notes ? `— ${esc(rm.notes)}` : ""}`;
+    /* HEA-GEM-16 temp check (2026-11-17): shared weather cache (prometheus.shared.wx,
+       written by Aether/Bastion fetches). Below 50°F, composite decking work follows
+       the manufacturers' cold-weather fastener guidance. */
+    try {
+      const wx = JSON.parse(localStorage.getItem("prometheus.shared.wx") || "null");
+      if (wx && typeof wx.tempF === "number") el.innerHTML += `<br>Field temp (shared wx): <b>${wx.tempF}°F</b>${wx.tempF < 50 ? " — below 50°F: cold-weather install rules apply (pre-drill composite fasteners, expect brittle boards)." : " — standard install temperatures."}`;
+    } catch (_) {}
   }
 
   function paint() {
@@ -455,6 +464,25 @@
       )
     );
 
+    /* HEA-GEM-16 (2026-11-17): the TimberTech/Trex/IRC spec table (window.HEARTH_SPECS,
+       specs.js) — searchable by part, product, or spec text; source PDFs linked. */
+    const specBox = $("#h-specs");
+    if (specBox && window.HEARTH_SPECS) {
+      const q = (window.__hearthSpecQ || "").toLowerCase();
+      const rows = window.HEARTH_SPECS.filter((r) => !q || (r.part + " " + r.product + " " + r.spec).toLowerCase().includes(q));
+      specBox.replaceChildren(
+        h("div", { style: "padding:10px 0 4px" },
+          h("div.kv", null, h("b", null, "Deck Spec Library (TimberTech / Trex / IRC)"), h("span.stat-s", null, `${rows.length} / ${window.HEARTH_SPECS.length} specs`)),
+          h("label.f", { style: "display:block;margin:6px 0" }, "Filter ", Object.assign(h("input", { type: "search", placeholder: "fastener, flashing, joist…", value: window.__hearthSpecQ || "" }), {})),
+          ...rows.map((r) => h("div.kv", null,
+            h("span", null, h("b", null, `${r.value} ${r.unit}`), ` — ${esc(r.spec)} `, h("span.stat-s", null, `${r.part} · ${esc(r.product)} · ${esc(r.page)}`), r.flag ? h("span.pill warn", null, " unverified") : null, r.corrected ? h("span.pill", null, " corrected") : null),
+            h("a", { href: r.url, target: "_blank", rel: "noopener", class: "stat-s" }, "guide ↗")))
+        )
+      );
+      const inp = specBox.querySelector("input[type=search]");
+      if (inp) inp.oninput = () => { window.__hearthSpecQ = inp.value; paint(); const n = $("#h-specs input[type=search]"); if (n) { n.focus(); n.setSelectionRange(n.value.length, n.value.length); } };
+    }
+
     // 3. General projects + room dropdowns
     $("#h-projects").replaceChildren(...D.projects.sort((a, b) => String(b.start || "").localeCompare(String(a.start || ""))).map((p) =>
       h("div.kv", null,
@@ -505,6 +533,22 @@
     $("#h-cost-plan-s").textContent = `${allMats.length - pricedCount} SKU(s) still awaiting store quote`;
     $("#h-cost-act").textContent = actualSpent ? usd(actualSpent) : "$0";
 
+    /* HEA-GEM-16 basis sync (2026-11-17): write the cumulative capital-improvement
+       materials total into Records' doc register (localStorage prometheus.records.docs)
+       as one upserted property doc — Records' retention rules treat property-basis
+       records as permanent. §H: no labor estimates are folded in; materials only. */
+    const basisBtn = $("#h-basis-btn");
+    if (basisBtn) basisBtn.onclick = () => {
+      const total = Math.round(plannedTotal * 100) / 100;
+      let docs = [];
+      try { docs = JSON.parse(localStorage.getItem("prometheus.records.docs") || "[]"); } catch (_) { docs = []; }
+      const rec = { id: "hearth-basis", title: "Capital improvements — Hearth BOM materials total (property basis)", category: "property", issuer: "Prometheus Hearth", serial: "", date: day(), due: "", where: "Hearth BOM", notes: `Cumulative planned materials total $${total.toFixed(2)} across ${allMats.length} BOM lines, synced from Hearth. Materials only — no labor. Keep permanently (property basis).` };
+      const i = docs.findIndex((d) => d.id === "hearth-basis");
+      if (i >= 0) docs[i] = { ...docs[i], ...rec }; else docs.push(rec);
+      try { localStorage.setItem("prometheus.records.docs", JSON.stringify(docs)); toast(`Capital basis synced to Records: ${usd(total)}`); }
+      catch (_) { toast("Records store unavailable in this browser"); }
+    };
+
     const mb = $("#h-mats-body");
     mb.replaceChildren(...visMats.map((m) => {
       const lineTotal = (m.qty != null && m.unitCost != null) ? usd(m.qty * m.unitCost) : "—";
@@ -531,12 +575,19 @@
                 if (cStr === null) return;
                 const aStr = prompt(`Actual receipt spent ($) if purchased (blank if not bought yet):`, m.actualPaid ?? "");
                 if (aStr === null) return;
+                const prevPaid = +m.actualPaid || 0;
+                const newPaid = aStr.trim() === "" ? null : +aStr;
                 S.update("materials", m.id, {
                   qty: qStr.trim() === "" ? null : +qStr,
                   unitCost: cStr.trim() === "" ? null : +cStr,
-                  actualPaid: aStr.trim() === "" ? null : +aStr,
+                  actualPaid: newPaid,
                   status: aStr.trim() !== "" ? "purchased" : (cStr.trim() !== "" ? "quoted" : "planned"),
                 });
+                /* HEA-GEM-16 §F.3: purchases post to the shared money bus by DELTA so
+                   re-editing a receipt never double-posts (amount is negative = money out). */
+                if (window.PB && newPaid != null && newPaid !== prevPaid) {
+                  try { PB.money.publish({ kind: "expense", amount: -(newPaid - prevPaid), date: day(), source: "hearth", label: m.name, ref: "hearth-mat-" + m.id + "-" + Date.now() }); } catch (_) {}
+                }
                 paint();
               },
             }, "Price / Qty"),

@@ -2,7 +2,7 @@
 
 # Foundry · homework for Muse
 
-Updated 2026-11-16 13:40 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-17 10:53 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 ## 1. FDY-MUS-01 · Foundry: second reader on Gemini's 'prior art for each of the 11 inventions'
 

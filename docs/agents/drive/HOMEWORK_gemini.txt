@@ -1,10 +1,8 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-16 13:40 UTC. 85 open across 27 pillars.
+Updated 2026-11-17 10:53 UTC. 44 open across 25 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
-
-TITAN RELIQUARY (its own loop, the exception): 16 homework sheets + 22 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -16,51 +14,48 @@ EVERY TASK BELOW IS SENT BACK IF:
 IN THIS ORDER:
 1. [Kairos Meridian] KAI-GEM-10 · Kairos Meridian: the yearly deadlines a California homeowner and driver actually has · due 2026-11-18
 2. [Prometheus Hub] HUB-GEM-09 · Prometheus Hub: phone audit of the new home menu · due 2026-11-19
-3. [Midas Ledger] MID-GEM-09 · Midas Ledger: how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages · due 2026-11-19
-4. [Garage] GAR-GEM-05 · Garage: every recall and service campaign for both vehicles · due 2026-11-19
-5. [Selling Pipeline] SEL-GEM-04 · Selling Pipeline: marketplace fees as of today · due 2026-11-19
-6. [Odyssey · Trips & Away Mode] ODY-GEM-01 · Odyssey: An away-mode checklist for a mountain home in winter · due 2026-11-19
-7. [Privacy · CA DROP] PRI-GEM-04 · Privacy: data brokers not yet on the list, with their opt-out routes · due 2026-11-19
-8. [Hephaestus Hearth] HEA-GEM-16 · Hephaestus Hearth: deck rebuild specs from the makers' installation guides · due 2026-11-20
-9. [Records · Paper Killer] REC-GEM-04 · Records: how long to keep each kind of household paper · due 2026-11-20
-10. [Bastion · Mountain Prep] BAS-GEM-04 · Bastion: Kern County alert systems and evacuation zones · due 2026-11-20
-11. [Aether · Atmospheric & Field Lab] AET-GEM-04 · Aether: the live data feeds for air, fire, weather and the pass · due 2026-11-20
-12. [Garage] GAR-GEM-06 · Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures · due 2026-11-21
-13. [Privacy · CA DROP] PRI-GEM-05 · Privacy: the California DROP timeline · due 2026-11-21
-14. [Argus Album] ARG-GEM-09 · Argus Album: the rules for Titan's Phase 2 pro coin photos · due 2026-11-21
-15. [Continuity · Sovereign Vault] CON-GEM-03 · Continuity: what happens to each account when its owner dies or goes silent · due 2026-11-21
-16. [Midas Ledger] MID-GEM-10 · Midas Ledger: 25 test cases for the ledger parser · due 2026-11-22
-17. [Hephaestus Hearth] HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck · due 2026-11-22
-18. [Bastion · Mountain Prep] BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives · due 2026-11-22
-19. [Observatory] OBS-GEM-03 · Observatory: primary sources for each subject Observatory watches · due 2026-11-22
-20. [Polis · Civic & Legal Watch] POL-GEM-04 · Polis: the Kern County rules a homeowner runs into · due 2026-11-22
-21. [Foundry] FDY-GEM-03 · Foundry: prior art for each of the 11 inventions · due 2026-11-23
-22. [Prometheus Hub] HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan · due 2026-11-24
-23. [Kairos Meridian] KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan · due 2026-11-24
-24. [Midas Ledger] MID-GEM-11 · Midas Ledger: the function spec, written as the build plan · due 2026-11-24
-25. [Hephaestus Hearth] HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-24
-26. [Garage] GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-24
-27. [Apollo Temple] APO-GEM-10 · Apollo Temple: the function spec, written as the build plan · due 2026-11-24
-28. [Money · payoff simulator] MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-24
-29. [Selling Pipeline] SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan · due 2026-11-24
-30. [Records · Paper Killer] REC-GEM-05 · Records: the function spec, written as the build plan · due 2026-11-24
-31. [Icarus Stake] ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan · due 2026-11-24
-32. [Hermes Post] HER-GEM-09 · Hermes Post: the function spec, written as the build plan · due 2026-11-24
-33. [Bossa Piano Studio] PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan · due 2026-11-24
-34. [Bastion · Mountain Prep] BAS-GEM-06 · Bastion: the function spec, written as the build plan · due 2026-11-24
-35. [Athenaeum · Idea Vault] ATH-GEM-03 · Athenaeum: the function spec, written as the build plan · due 2026-11-24
-36. [Odyssey · Trips & Away Mode] ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-24
-37. [Privacy · CA DROP] PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-24
-38. [Argus Album] ARG-GEM-10 · Argus Album: the function spec, written as the build plan · due 2026-11-24
-39. [Ludus Arcade] GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan · due 2026-11-24
-40. [Forge] FOR-GEM-03 · Forge: the function spec, written as the build plan · due 2026-11-24
-41. [Foundry] FDY-GEM-04 · Foundry: the function spec, written as the build plan · due 2026-11-24
-42. [Observatory] OBS-GEM-04 · Observatory: the function spec, written as the build plan · due 2026-11-24
-43. [Kin] KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-24
-44. [Aether · Atmospheric & Field Lab] AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-24
-45. [Polis · Civic & Legal Watch] POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-24
-46. [Mythos · Creative & Lore Studio] MYT-GEM-03 · Mythos: the function spec, written as the build plan · due 2026-11-24
-47. [Continuity · Sovereign Vault] CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-24
+3. [Garage] GAR-GEM-05 · Garage: every recall and service campaign for both vehicles · due 2026-11-19
+4. [Selling Pipeline] SEL-GEM-04 · Selling Pipeline: marketplace fees as of today · due 2026-11-19
+5. [Odyssey · Trips & Away Mode] ODY-GEM-01 · Odyssey: An away-mode checklist for a mountain home in winter · due 2026-11-19
+6. [Privacy · CA DROP] PRI-GEM-04 · Privacy: data brokers not yet on the list, with their opt-out routes · due 2026-11-19
+7. [Hephaestus Hearth] HEA-GEM-16 · Hephaestus Hearth: deck rebuild specs from the makers' installation guides · due 2026-11-20
+8. [Records · Paper Killer] REC-GEM-04 · Records: how long to keep each kind of household paper · due 2026-11-20
+9. [Bastion · Mountain Prep] BAS-GEM-04 · Bastion: Kern County alert systems and evacuation zones · due 2026-11-20
+10. [Aether · Atmospheric & Field Lab] AET-GEM-04 · Aether: the live data feeds for air, fire, weather and the pass · due 2026-11-20
+11. [Garage] GAR-GEM-06 · Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures · due 2026-11-21
+12. [Privacy · CA DROP] PRI-GEM-05 · Privacy: the California DROP timeline · due 2026-11-21
+13. [Argus Album] ARG-GEM-09 · Argus Album: the rules for Titan's Phase 2 pro coin photos · due 2026-11-21
+14. [Continuity · Sovereign Vault] CON-GEM-03 · Continuity: what happens to each account when its owner dies or goes silent · due 2026-11-21
+15. [Hephaestus Hearth] HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck · due 2026-11-22
+16. [Bastion · Mountain Prep] BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives · due 2026-11-22
+17. [Observatory] OBS-GEM-03 · Observatory: primary sources for each subject Observatory watches · due 2026-11-22
+18. [Polis · Civic & Legal Watch] POL-GEM-04 · Polis: the Kern County rules a homeowner runs into · due 2026-11-22
+19. [Foundry] FDY-GEM-03 · Foundry: prior art for each of the 11 inventions · due 2026-11-23
+20. [Prometheus Hub] HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan · due 2026-11-24
+21. [Kairos Meridian] KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan · due 2026-11-24
+22. [Hephaestus Hearth] HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-24
+23. [Garage] GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-24
+24. [Apollo Temple] APO-GEM-10 · Apollo Temple: the function spec, written as the build plan · due 2026-11-24
+25. [Money · payoff simulator] MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-24
+26. [Selling Pipeline] SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan · due 2026-11-24
+27. [Records · Paper Killer] REC-GEM-05 · Records: the function spec, written as the build plan · due 2026-11-24
+28. [Icarus Stake] ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan · due 2026-11-24
+29. [Hermes Post] HER-GEM-09 · Hermes Post: the function spec, written as the build plan · due 2026-11-24
+30. [Bossa Piano Studio] PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan · due 2026-11-24
+31. [Bastion · Mountain Prep] BAS-GEM-06 · Bastion: the function spec, written as the build plan · due 2026-11-24
+32. [Athenaeum · Idea Vault] ATH-GEM-03 · Athenaeum: the function spec, written as the build plan · due 2026-11-24
+33. [Odyssey · Trips & Away Mode] ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-24
+34. [Privacy · CA DROP] PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-24
+35. [Argus Album] ARG-GEM-10 · Argus Album: the function spec, written as the build plan · due 2026-11-24
+36. [Ludus Arcade] GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan · due 2026-11-24
+37. [Forge] FOR-GEM-03 · Forge: the function spec, written as the build plan · due 2026-11-24
+38. [Foundry] FDY-GEM-04 · Foundry: the function spec, written as the build plan · due 2026-11-24
+39. [Observatory] OBS-GEM-04 · Observatory: the function spec, written as the build plan · due 2026-11-24
+40. [Kin] KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-24
+41. [Aether · Atmospheric & Field Lab] AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-24
+42. [Polis · Civic & Legal Watch] POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-24
+43. [Mythos · Creative & Lore Studio] MYT-GEM-03 · Mythos: the function spec, written as the build plan · due 2026-11-24
+44. [Continuity · Sovereign Vault] CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-24
 
 ==================== 1. KAIROS MERIDIAN ====================
 ## 1. KAI-GEM-10 · Kairos Meridian: the yearly deadlines a California homeowner and driver actually has
@@ -193,70 +188,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 3. MIDAS LEDGER ====================
-## 3. MID-GEM-09 · Midas Ledger: how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages
-
-**Due:** 2026-11-19 · **State:** now
-
-**What it unlocks:** Midas models the Flex balance the way Citi applies payments and fees, not as ordinary revolving debt.
-
-**Read first:**
-- https://github.com/jpavia10/midas-ledger
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Citi's own product pages, FAQs and card agreements only; the CFPB page on payment allocation for the federal rule.
-
-**Make:** `midas_gemini_flex-terms_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `product` (one of: Citi Flex Plan, Citi Flex Loan): which
-- `topic` (text): payment allocation, monthly fee or APR, term choices, effect on the credit line, payoff early, minimum payment
-- `rule` (text): one sentence in plain words
-- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
-- `quote` (text): the sentence on that page that proves the row, copied word for word (under 300 characters)
-- `as_of` (date YYYY-MM-DD): the date you read the page
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{
- "n": 1,
- "product": "Citi Flex Plan",
- "topic": "payment allocation",
- "rule": "...",
- "url": "https://www.citi.com/...",
- "quote": "...",
- "as_of": "2026-11-17"
-}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
-- [ ] Every quote is copied word for word from that page and is on it now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
-- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
-
-**How many:** 15
-
-**Done when:** 15 rows exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-==================== 4. GARAGE ====================
-## 4. GAR-GEM-05 · Garage: every recall and service campaign for both vehicles
+==================== 3. GARAGE ====================
+## 3. GAR-GEM-05 · Garage: every recall and service campaign for both vehicles
 
 **Due:** 2026-11-19 · **State:** now
 
@@ -319,8 +252,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 5. SELLING PIPELINE ====================
-## 5. SEL-GEM-04 · Selling Pipeline: marketplace fees as of today
+==================== 4. SELLING PIPELINE ====================
+## 4. SEL-GEM-04 · Selling Pipeline: marketplace fees as of today
 
 **Due:** 2026-11-19 · **State:** now
 
@@ -388,8 +321,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 6. ODYSSEY · TRIPS & AWAY MODE ====================
-## 6. ODY-GEM-01 · Odyssey: An away-mode checklist for a mountain home in winter
+==================== 5. ODYSSEY · TRIPS & AWAY MODE ====================
+## 5. ODY-GEM-01 · Odyssey: An away-mode checklist for a mountain home in winter
 
 **Due:** 2026-11-19 · **State:** now
 
@@ -417,8 +350,8 @@ IN THIS ORDER:
 - a real private person's name, address or phone number
 - anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
 
-==================== 7. PRIVACY · CA DROP ====================
-## 7. PRI-GEM-04 · Privacy: data brokers not yet on the list, with their opt-out routes
+==================== 6. PRIVACY · CA DROP ====================
+## 6. PRI-GEM-04 · Privacy: data brokers not yet on the list, with their opt-out routes
 
 **Due:** 2026-11-19 · **State:** now
 
@@ -480,8 +413,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 8. HEPHAESTUS HEARTH ====================
-## 8. HEA-GEM-16 · Hephaestus Hearth: deck rebuild specs from the makers' installation guides
+==================== 7. HEPHAESTUS HEARTH ====================
+## 7. HEA-GEM-16 · Hephaestus Hearth: deck rebuild specs from the makers' installation guides
 
 **Due:** 2026-11-20 · **State:** now
 
@@ -550,8 +483,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 9. RECORDS · PAPER KILLER ====================
-## 9. REC-GEM-04 · Records: how long to keep each kind of household paper
+==================== 8. RECORDS · PAPER KILLER ====================
+## 8. REC-GEM-04 · Records: how long to keep each kind of household paper
 
 **Due:** 2026-11-20 · **State:** now
 
@@ -615,8 +548,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 10. BASTION · MOUNTAIN PREP ====================
-## 10. BAS-GEM-04 · Bastion: Kern County alert systems and evacuation zones
+==================== 9. BASTION · MOUNTAIN PREP ====================
+## 9. BAS-GEM-04 · Bastion: Kern County alert systems and evacuation zones
 
 **Due:** 2026-11-20 · **State:** now
 
@@ -661,8 +594,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 11. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 11. AET-GEM-04 · Aether: the live data feeds for air, fire, weather and the pass
+==================== 10. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 10. AET-GEM-04 · Aether: the live data feeds for air, fire, weather and the pass
 
 **Due:** 2026-11-20 · **State:** now
 
@@ -727,8 +660,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 12. GARAGE ====================
-## 12. GAR-GEM-06 · Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures
+==================== 11. GARAGE ====================
+## 11. GAR-GEM-06 · Garage: Caltrans chain-control rules and recent I-5 Tejon Pass closures
 
 **Due:** 2026-11-21 · **State:** now
 
@@ -792,8 +725,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 13. PRIVACY · CA DROP ====================
-## 13. PRI-GEM-05 · Privacy: the California DROP timeline
+==================== 12. PRIVACY · CA DROP ====================
+## 12. PRI-GEM-05 · Privacy: the California DROP timeline
 
 **Due:** 2026-11-21 · **State:** now
 
@@ -836,8 +769,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 14. ARGUS ALBUM ====================
-## 14. ARG-GEM-09 · Argus Album: the rules for Titan's Phase 2 pro coin photos
+==================== 13. ARGUS ALBUM ====================
+## 13. ARG-GEM-09 · Argus Album: the rules for Titan's Phase 2 pro coin photos
 
 **Due:** 2026-11-21 · **State:** now
 
@@ -898,8 +831,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 15. CONTINUITY · SOVEREIGN VAULT ====================
-## 15. CON-GEM-03 · Continuity: what happens to each account when its owner dies or goes silent
+==================== 14. CONTINUITY · SOVEREIGN VAULT ====================
+## 14. CON-GEM-03 · Continuity: what happens to each account when its owner dies or goes silent
 
 **Due:** 2026-11-21 · **State:** now
 
@@ -960,70 +893,8 @@ IN THIS ORDER:
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 16. MIDAS LEDGER ====================
-## 16. MID-GEM-10 · Midas Ledger: 25 test cases for the ledger parser
-
-**Due:** 2026-11-22 · **State:** now
-
-**What it unlocks:** Each case becomes a test in test/test_build.py, so a wrong balance can never ship again.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/docs/BOOK_SCHEMA.md
-- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/build.py
-
-**Do this:**
-1. Read BOOK_SCHEMA.md and build.py.
-2. Write 25 cases, at least two for every rule in BOOK_SCHEMA.md (ids with letter suffixes, $0 vs unknown minimums, promo vs purchase APR, Flex as installment, mortgage P&I/escrow/half-draft, net worth INCOMPLETE).
-3. Made-up numbers only, never Joseph's real figures.
-
-**Make:** `midas_gemini_parser-cases_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per case`
-
-**Every field, exactly:**
-- `n` (integer): case number
-- `rule` (text): the BOOK_SCHEMA.md heading and sentence this case tests
-- `ledger_text` (text): the exact ledger lines, made-up numbers only
-- `expect` (object): the fields build.py must produce, e.g. {"balance": 1234.56, "min_payment": 0, "kind": "installment"}
-- `why_tricky` (text): the mistake it guards against
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{
- "n": 1,
- "rule": "debt balance is the first outstanding figure, not the autopay",
- "ledger_text": "L4 Depot: outstanding $1,234.56 · autopay $50.00 · min $35",
- "expect": {
-  "balance": 1234.56,
-  "autopay": 50.0,
-  "min_payment": 35.0
- },
- "why_tricky": "the last dollar on the line is the autopay"
-}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every rule in BOOK_SCHEMA.md has at least two cases.
-- [ ] No real balance from Joseph's book appears.
-- [ ] expect uses the exact field names build.py writes.
-
-**How many:** 25
-
-**Done when:** 25 rows exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-==================== 17. HEPHAESTUS HEARTH ====================
-## 17. HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck
+==================== 15. HEPHAESTUS HEARTH ====================
+## 15. HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck
 
 **Due:** 2026-11-22 · **State:** now
 
@@ -1071,8 +942,8 @@ A permit is required to repair or replace a deck more than 30 in above grade [ht
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 18. BASTION · MOUNTAIN PREP ====================
-## 18. BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives
+==================== 16. BASTION · MOUNTAIN PREP ====================
+## 16. BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives
 
 **Due:** 2026-11-22 · **State:** now
 
@@ -1137,8 +1008,8 @@ A permit is required to repair or replace a deck more than 30 in above grade [ht
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 19. OBSERVATORY ====================
-## 19. OBS-GEM-03 · Observatory: primary sources for each subject Observatory watches
+==================== 17. OBSERVATORY ====================
+## 17. OBS-GEM-03 · Observatory: primary sources for each subject Observatory watches
 
 **Due:** 2026-11-22 · **State:** now
 
@@ -1199,8 +1070,8 @@ A permit is required to repair or replace a deck more than 30 in above grade [ht
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 20. POLIS · CIVIC & LEGAL WATCH ====================
-## 20. POL-GEM-04 · Polis: the Kern County rules a homeowner runs into
+==================== 18. POLIS · CIVIC & LEGAL WATCH ====================
+## 18. POL-GEM-04 · Polis: the Kern County rules a homeowner runs into
 
 **Due:** 2026-11-22 · **State:** now
 
@@ -1259,8 +1130,8 @@ A permit is required to repair or replace a deck more than 30 in above grade [ht
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 21. FOUNDRY ====================
-## 21. FDY-GEM-03 · Foundry: prior art for each of the 11 inventions
+==================== 19. FOUNDRY ====================
+## 19. FDY-GEM-03 · Foundry: prior art for each of the 11 inventions
 
 **Due:** 2026-11-23 · **State:** now
 
@@ -1321,8 +1192,8 @@ A permit is required to repair or replace a deck more than 30 in above grade [ht
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 22. PROMETHEUS HUB ====================
-## 22. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
+==================== 20. PROMETHEUS HUB ====================
+## 20. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1381,8 +1252,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 23. KAIROS MERIDIAN ====================
-## 23. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
+==================== 21. KAIROS MERIDIAN ====================
+## 21. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1441,68 +1312,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 24. MIDAS LEDGER ====================
-## 24. MID-GEM-11 · Midas Ledger: the function spec, written as the build plan
-
-**Due:** 2026-11-24 · **State:** now
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Midas Ledger from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/midas-ledger/ (locked; run it locally with ?hud=1 for the made-up book, README 'Pages')
-- https://github.com/jpavia10/midas-ledger
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/midas-ledger/ (locked; run it locally with ?hud=1 for the made-up book, README 'Pages')) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/midas-ledger): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `midas_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-==================== 25. HEPHAESTUS HEARTH ====================
-## 25. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
+==================== 22. HEPHAESTUS HEARTH ====================
+## 22. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1561,8 +1372,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 26. GARAGE ====================
-## 26. GAR-GEM-07 · Garage: the function spec, written as the build plan
+==================== 23. GARAGE ====================
+## 23. GAR-GEM-07 · Garage: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1621,8 +1432,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 27. APOLLO TEMPLE ====================
-## 27. APO-GEM-10 · Apollo Temple: the function spec, written as the build plan
+==================== 24. APOLLO TEMPLE ====================
+## 24. APO-GEM-10 · Apollo Temple: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1681,8 +1492,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 28. MONEY · PAYOFF SIMULATOR ====================
-## 28. MON-GEM-04 · Money: the function spec, written as the build plan
+==================== 25. MONEY · PAYOFF SIMULATOR ====================
+## 25. MON-GEM-04 · Money: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1741,8 +1552,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 29. SELLING PIPELINE ====================
-## 29. SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan
+==================== 26. SELLING PIPELINE ====================
+## 26. SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1801,8 +1612,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 30. RECORDS · PAPER KILLER ====================
-## 30. REC-GEM-05 · Records: the function spec, written as the build plan
+==================== 27. RECORDS · PAPER KILLER ====================
+## 27. REC-GEM-05 · Records: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1861,8 +1672,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 31. ICARUS STAKE ====================
-## 31. ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan
+==================== 28. ICARUS STAKE ====================
+## 28. ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1921,8 +1732,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 32. HERMES POST ====================
-## 32. HER-GEM-09 · Hermes Post: the function spec, written as the build plan
+==================== 29. HERMES POST ====================
+## 29. HER-GEM-09 · Hermes Post: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -1981,8 +1792,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 33. BOSSA PIANO STUDIO ====================
-## 33. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
+==================== 30. BOSSA PIANO STUDIO ====================
+## 30. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2041,8 +1852,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 34. BASTION · MOUNTAIN PREP ====================
-## 34. BAS-GEM-06 · Bastion: the function spec, written as the build plan
+==================== 31. BASTION · MOUNTAIN PREP ====================
+## 31. BAS-GEM-06 · Bastion: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2101,8 +1912,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 35. ATHENAEUM · IDEA VAULT ====================
-## 35. ATH-GEM-03 · Athenaeum: the function spec, written as the build plan
+==================== 32. ATHENAEUM · IDEA VAULT ====================
+## 32. ATH-GEM-03 · Athenaeum: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2161,8 +1972,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 36. ODYSSEY · TRIPS & AWAY MODE ====================
-## 36. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
+==================== 33. ODYSSEY · TRIPS & AWAY MODE ====================
+## 33. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2221,8 +2032,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 37. PRIVACY · CA DROP ====================
-## 37. PRI-GEM-06 · Privacy: the function spec, written as the build plan
+==================== 34. PRIVACY · CA DROP ====================
+## 34. PRI-GEM-06 · Privacy: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2281,8 +2092,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 38. ARGUS ALBUM ====================
-## 38. ARG-GEM-10 · Argus Album: the function spec, written as the build plan
+==================== 35. ARGUS ALBUM ====================
+## 35. ARG-GEM-10 · Argus Album: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2341,8 +2152,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 39. LUDUS ARCADE ====================
-## 39. GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan
+==================== 36. LUDUS ARCADE ====================
+## 36. GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2401,8 +2212,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 40. FORGE ====================
-## 40. FOR-GEM-03 · Forge: the function spec, written as the build plan
+==================== 37. FORGE ====================
+## 37. FOR-GEM-03 · Forge: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2461,8 +2272,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 41. FOUNDRY ====================
-## 41. FDY-GEM-04 · Foundry: the function spec, written as the build plan
+==================== 38. FOUNDRY ====================
+## 38. FDY-GEM-04 · Foundry: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2521,8 +2332,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 42. OBSERVATORY ====================
-## 42. OBS-GEM-04 · Observatory: the function spec, written as the build plan
+==================== 39. OBSERVATORY ====================
+## 39. OBS-GEM-04 · Observatory: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2581,8 +2392,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 43. KIN ====================
-## 43. KIN-GEM-04 · Kin: the function spec, written as the build plan
+==================== 40. KIN ====================
+## 40. KIN-GEM-04 · Kin: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2641,8 +2452,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 44. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 44. AET-GEM-05 · Aether: the function spec, written as the build plan
+==================== 41. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 41. AET-GEM-05 · Aether: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2701,8 +2512,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 45. POLIS · CIVIC & LEGAL WATCH ====================
-## 45. POL-GEM-05 · Polis: the function spec, written as the build plan
+==================== 42. POLIS · CIVIC & LEGAL WATCH ====================
+## 42. POL-GEM-05 · Polis: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2761,8 +2572,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 46. MYTHOS · CREATIVE & LORE STUDIO ====================
-## 46. MYT-GEM-03 · Mythos: the function spec, written as the build plan
+==================== 43. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 43. MYT-GEM-03 · Mythos: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -2821,8 +2632,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-==================== 47. CONTINUITY · SOVEREIGN VAULT ====================
-## 47. CON-GEM-04 · Continuity: the function spec, written as the build plan
+==================== 44. CONTINUITY · SOVEREIGN VAULT ====================
+## 44. CON-GEM-04 · Continuity: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 

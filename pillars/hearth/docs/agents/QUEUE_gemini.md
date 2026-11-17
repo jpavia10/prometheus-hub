@@ -2,7 +2,7 @@
 
 # Hephaestus Hearth · homework for Gemini
 
-Updated 2026-11-16 13:40 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-17 10:53 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 ## 1. HEA-GEM-16 · Hephaestus Hearth: deck rebuild specs from the makers' installation guides
 

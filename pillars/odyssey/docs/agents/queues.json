@@ -293,7 +293,7 @@
     {
      "id": "ODY-MUS-02",
      "title": "Odyssey: second reader on Gemini's 'An away-mode checklist for a mountain home in winter'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-22",
      "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
      "inputs": [

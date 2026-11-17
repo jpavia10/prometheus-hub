@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16 13:40 UTC",
+ "updated": "2026-11-17 10:53 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -9,7 +9,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 1,
+    "muse": 0,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -24,7 +24,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 1,
+    "muse": 0,
     "chatgpt": 1,
     "argon": 0,
     "hydrogen": 0,
@@ -36,15 +36,7 @@
    "name": "Midas Ledger",
    "state": "live",
    "live": "https://jpavia10.github.io/midas-ledger/",
-   "open": {
-    "grok": 3,
-    "gemini": 3,
-    "muse": 2,
-    "chatgpt": 1,
-    "argon": 0,
-    "hydrogen": 0,
-    "claude": 0
-   }
+   "open": {}
   },
   {
    "id": "titan",
@@ -52,10 +44,10 @@
    "state": "live",
    "live": "https://jpavia10.github.io/titan-reliquary-preview/",
    "open": {
-    "grok": 19,
-    "gemini": 38,
-    "muse": 11,
-    "chatgpt": 0,
+    "grok": null,
+    "gemini": null,
+    "muse": null,
+    "chatgpt": null,
     "argon": null,
     "hydrogen": null
    }
@@ -68,7 +60,7 @@
    "open": {
     "grok": 1,
     "gemini": 3,
-    "muse": 2,
+    "muse": 1,
     "chatgpt": 1,
     "argon": 0,
     "hydrogen": 0,
@@ -83,7 +75,7 @@
    "open": {
     "grok": 1,
     "gemini": 3,
-    "muse": 2,
+    "muse": 0,
     "chatgpt": 1,
     "argon": 0,
     "hydrogen": 0,
@@ -128,7 +120,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 1,
+    "muse": 0,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -143,7 +135,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 1,
+    "muse": 0,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -203,7 +195,7 @@
    "open": {
     "grok": 1,
     "gemini": 3,
-    "muse": 2,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -233,7 +225,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 1,
+    "muse": 0,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -248,7 +240,7 @@
    "open": {
     "grok": 1,
     "gemini": 3,
-    "muse": 2,
+    "muse": 0,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -360,7 +352,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 1,
+    "muse": 0,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,

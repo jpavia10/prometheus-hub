@@ -68,3 +68,6 @@
 .item h3{margin:0 0 3px;font-size:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .item h3 .t{flex:1}
 .item .stat-s{line-height:1.5}
+.fee-cmp{width:100%;border-collapse:collapse;margin-top:8px;font-size:12.5px}
+.fee-cmp th,.fee-cmp td{text-align:left;padding:4px 6px;border-bottom:1px solid var(--line)}
+.fee-cmp tr.sel td{color:var(--ink-strong);font-weight:600}

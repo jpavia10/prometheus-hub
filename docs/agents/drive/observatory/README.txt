@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 
 - OBS-GRK-03 · Observatory: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
@@ -16,7 +16,7 @@ Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 2 open in this pillar.
 
 
 - OBS-GEM-03 · Observatory: primary sources for each subject Observatory watches · due 2026-11-22
@@ -26,7 +26,7 @@ Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 
 - OBS-MUS-01 · Observatory: second reader on Gemini's 'primary sources for each subject Observatory watches' · due 2026-11-25 · waits for its input file
@@ -34,21 +34,21 @@ Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Observatory right now.
 
 ## Argon
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Observatory right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Observatory right now.
