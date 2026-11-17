@@ -37,7 +37,37 @@
     return DEFAULT_CORRIDORS;
   };
 
+  /* AET-GEM-04 feed table (2026-11-17): the 10 verified data feeds from
+     aether_gemini_feeds_20261116-2040.json. USNO endpoints are TEMPLATES — the drop
+     hardcoded date=2026-11-16 and tz=-8, which would have frozen the almanac on one
+     day and broken daylight time; {date} and {tz} are substituted at click time.
+     AirNow needs Joseph's own free key (stored locally as prometheus.aether.airnowKey,
+     never in source — §H). */
+  const FEEDS = [
+    { n: 1, feed: "NWS active alerts (point)", endpoint: "https://api.weather.gov/alerts/active?point=34.8228,-118.9448", auth: "none", cors: "yes", limits: "no key; honor user-agent etiquette", docs_url: "https://www.weather.gov/documentation/services-web-API", gives: "Active watches/warnings for Frazier Park" },
+    { n: 2, feed: "NWS point lookup", endpoint: "https://api.weather.gov/points/34.8228,-118.9448", auth: "none", cors: "yes", limits: "cache the grid mapping", docs_url: "https://www.weather.gov/documentation/services-web-API", gives: "Grid office + forecast URLs for the point" },
+    { n: 3, feed: "NWS gridpoint forecast — HNX/67,10", endpoint: "https://api.weather.gov/gridpoints/HNX/67,10/forecast", auth: "none", cors: "yes", limits: "updates a few times daily", docs_url: "https://www.weather.gov/documentation/services-web-API", gives: "Period forecast (Hanford office grid)" },
+    { n: 4, feed: "NWS gridpoint hourly — HNX/67,10", endpoint: "https://api.weather.gov/gridpoints/HNX/67,10/forecast/hourly", auth: "none", cors: "yes", limits: "updates hourly", docs_url: "https://www.weather.gov/documentation/services-web-API", gives: "Hourly temperature/wind for pass timing" },
+    { n: 5, feed: "NWS station observations (KSDB)", endpoint: "https://api.weather.gov/stations/KSDB/observations/latest", auth: "none", cors: "yes", limits: "latest observation only", docs_url: "https://www.weather.gov/documentation/services-web-API", gives: "Nearest station ground truth" },
+    { n: 6, feed: "USNO sunrise/sunset + twilight", endpoint: "https://aa.usno.navy.mil/api/rstt/oneday?date={date}&coords=34.82,-118.94&tz={tz}", auth: "none", cors: "yes", limits: "one day per call", docs_url: "https://aa.usno.navy.mil/data/api", gives: "Sun/moon rise-set and twilight for the date" },
+    { n: 7, feed: "USNO moon phases", endpoint: "https://aa.usno.navy.mil/api/moon/phases/date?date={date}&nump=12", auth: "none", cors: "yes", limits: "12 phases per call", docs_url: "https://aa.usno.navy.mil/data/api", gives: "Upcoming moon phase dates" },
+    { n: 8, feed: "AirNow current AQI (lat/long)", endpoint: "https://www.airnowapi.org/aq/observation/latLong/current/?format=application/json&latitude=34.8228&longitude=-118.9448&distance=25&API_KEY=<your-key>", auth: "free key", cors: "unknown", limits: "500 requests/hour per key", docs_url: "https://docs.airnowapi.org/webservices", gives: "Current AQI near Frazier Park" },
+    { n: 9, feed: "AirNow AQI forecast (ZIP 93225)", endpoint: "https://www.airnowapi.org/aq/forecast/zipCode/?format=application/json&zipCode=93225&date={date}&distance=25&API_KEY=<your-key>", auth: "free key", cors: "unknown", limits: "500 requests/hour per key", docs_url: "https://docs.airnowapi.org/faq", gives: "AQI forecast for smoke planning" },
+    { n: 10, feed: "SWPC aurora (OVATION)", endpoint: "https://services.swpc.noaa.gov/json/ovation_aurora_latest.json", auth: "none", cors: "yes", limits: "refreshes ~30 min", docs_url: "https://www.spaceweather.gov/products/aurora-30-minute-forecast", gives: "30-minute aurora probability grid" },
+  ];
+  const feedUrl = (f) => {
+    const now = new Date();
+    const iso = now.toISOString().slice(0, 10);
+    const tz = String(-now.getTimezoneOffset() / 60);
+    return f.endpoint.replaceAll("{date}", iso).replaceAll("{tz}", tz);
+  };
+
   function computeBudget(cfg, catalog) {
+    /* AET-GEM-04 spec vocabulary (2026-11-17): accept {arrayKw, batteryKwh, reservePct,
+       season:"Winter"} alongside the shipped {arrayW, bankWh, derate, season:"winter"}. */
+    if (cfg && (cfg.arrayKw != null || cfg.batteryKwh != null)) {
+      cfg = { ...cfg, arrayW: (cfg.arrayKw || 0) * 1000, bankWh: (cfg.batteryKwh || 0) * 1000, season: String(cfg.season || "autumn").toLowerCase() };
+    }
     const season = SEASONS[cfg.season] || SEASONS.autumn;
     const derate = Math.max(0.4, Math.min(0.95, +cfg.derate || 0.78));
     const arrayW = Math.max(0, +cfg.arrayW || 0);
@@ -55,12 +85,16 @@
     const netWh = yieldWh - loadWh;
     const autonomyH = loadWh > 0 ? Math.round((bankWh / (loadWh / 24)) * 10) / 10 : 999;
     const autonomyDays = loadWh > 0 ? Math.round((bankWh / loadWh) * 10) / 10 : 99;
-    return { seasonKey: cfg.season || "autumn", season, arrayW, bankWh, derate, yieldWh, loadWh, netWh, peakW, autonomyH, autonomyDays, rows };
+    const reservePct = Math.max(0, Math.min(90, +(cfg && cfg.reservePct) || 0));
+    const usableKwh = Math.round((bankWh / 1000) * (1 - reservePct / 100) * 100) / 100;
+    return { seasonKey: cfg.season || "autumn", season, arrayW, bankWh, derate, yieldWh, loadWh, netWh, peakW, autonomyH, autonomyDays, rows, usableKwh, genKwh: yieldWh / 1000, loadKwh: loadWh / 1000, netKwh: netWh / 1000 };
   }
 
   window.AETHER = {
     SEASONS,
     APPLIANCES,
+    FEEDS,
+    feedUrl,
     computeBudget,
     data: () => ({
       solar: getSolar(),
@@ -99,6 +133,7 @@
       <div class="glass span-12">
         <h2>Appliance Load Schedule</h2>
         <p class="sub">Toggle devices and hours/day to size runtime and daily solar surplus or deficit.</p>
+        <button class="btn quiet" id="ae-holdover" type="button" style="margin-bottom:10px">PSPS Critical Holdover Mode — essentials only</button>
         <div id="ae-loads"></div>
       </div>
     </section>
@@ -111,6 +146,7 @@
           <button class="btn quiet" id="ae-sched" type="button">Publish Winter Chain &amp; PSPS Check → Calendar</button>
         </div>
         <div id="ae-alerts"></div>
+        <div id="ae-feeds"></div>
         <form class="form ae-plate" id="ae-alert-form" style="margin-top:14px">
           <label class="f">Corridor<select name="id"></select></label>
           <label class="f">Status<select name="status"><option value="clear">clear</option><option value="advisory">advisory</option><option value="watch">watch</option><option value="closed">closed</option></select></label>
@@ -226,6 +262,16 @@
     )));
     $("#ae-alert-form").id.replaceChildren(...D.alerts.map((a) => h("option", { value: a.id }, a.corridor)));
 
+    /* AET-GEM-04 (2026-11-17): the verified feed table — endpoint, auth, CORS, limits,
+       docs — rendered in the telemetry pane. */
+    const feedsBox = $("#ae-feeds");
+    if (feedsBox) feedsBox.replaceChildren(
+      h("h3", { style: "margin:14px 0 6px" }, "Data feeds (AET-GEM-04)"),
+      ...FEEDS.map((f) => h("div.kv", null,
+        h("span", null, h("b", null, f.feed), h("br"), h("span.stat-s", null, `${f.gives} · auth: ${f.auth} · CORS: ${f.cors} · ${f.limits}`)),
+        h("span", null, h("a", { href: feedUrl(f), target: "_blank", rel: "noopener", class: "stat-s" }, "endpoint ↗"), " ", h("a", { href: f.docs_url, target: "_blank", rel: "noopener", class: "stat-s" }, "docs ↗"))))
+    );
+
     const outs = D.outages.sort((a, b) => String(b.date).localeCompare(String(a.date)));
     $("#ae-outages").replaceChildren(...(outs.length ? outs.map((o) => h("div.kv.ae-out", null,
       h("span", null, h("b", null, `${o.date} · ${o.cause} (${o.durationH}h)`), h("br"), h("span.stat-s", null, o.note)),
@@ -240,6 +286,26 @@
     paint();
     emitStore();
   }
+
+  /* AET-GEM-04 PSPS Critical Holdover (2026-11-17): one click sheds every
+     non-essential load so the bank serves essentials only; autonomy recomputes on
+     the next paint. (The spec named an RTX 4090 / OLED / TV-PS5 trio — those loads
+     do not exist in the shipped catalog; holdover applies to the real catalog's
+     non-essentials: router/laptop and the electric blanket.) */
+  const holdBtn = $("#ae-holdover");
+  if (holdBtn) holdBtn.addEventListener("click", () => {
+    const cfg = getSolar();
+    const loads = { ...(cfg.loads || {}) };
+    for (const a of APPLIANCES) {
+      if (a.essential) continue;
+      const cur = loads[a.id] || {};
+      loads[a.id] = { on: false, hours: cur.hours != null ? cur.hours : a.defaultH };
+    }
+    S.set("solar", { ...cfg, loads });
+    toast("PSPS Critical Holdover — non-essential loads shed");
+    paint();
+    emitStore();
+  });
 
   $("#ae-cfg").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -289,6 +355,9 @@
       const j = await r.json(), c = j.current || {};
       const wx = { tempF: Math.round(c.temperature_2m || 0), windMph: Math.round(c.wind_speed_10m || 0), precipMm: c.precipitation || 0, at: day() };
       S.set("wx", wx);
+      /* BAS-GEM-04 / AET-GEM-04 shared cache (2026-11-17): prometheus.shared.wx is the
+         cross-pillar weather snapshot Bastion and Hearth's temp check read. */
+      try { localStorage.setItem("prometheus.shared.wx", JSON.stringify({ fetchedAt: new Date().toISOString(), tempF: wx.tempF, windMph: wx.windMph, alerts: [] })); } catch (_) {}
       const alerts = getAlerts().map((a, idx) => idx === 1 ? { ...a, windMph: wx.windMph, status: wx.windMph >= 35 ? "advisory" : a.status, updated: day() } : a);
       S.set("alerts", alerts);
       toast(`Synced the field reading (${wx.tempF}°F, ${wx.windMph} mph wind)`);

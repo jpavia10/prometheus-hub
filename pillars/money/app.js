@@ -107,6 +107,7 @@
       </div>
       <div class="glass span-6"><h2>0% Balance Transfer Offers</h2><div id="m-bt-list"></div></div>
       <div class="glass span-6"><h2>Hardship Programs &amp; Minimum Rules</h2><div id="m-hard-list"></div></div>
+      <div class="glass span-12"><h2>Citi Flex Plan — Rules &amp; Implied-APR Traps (MID-GEM-09)</h2><div id="m-flex-list"></div></div>
     </section>
 
     <section id="p-bills" role="tabpanel" class="grid">
@@ -380,6 +381,14 @@
     ].join("") || `<p class="empty">No matching issuers.</p>`;
   }
 
+  /* MID-GEM-09 (2026-11-17): the Flex rules reference (flex.js, window.MONEY_FLEX),
+     rendered with the issuers panel. §H honored: no same-issuer transfer advice is
+     generated here — this is published-rules reference only. */
+  function paintFlex() {
+    const box = $("#m-flex-list"); if (!box) return;
+    box.innerHTML = (window.MONEY_FLEX || []).map((r) => `<div class="kv"><span><b>${esc(r.topic)}</b><br><small class="stat-s">${esc(r.rule)}</small>${r.corrected ? `<br><small class="stat-s">Integration note: ${esc(r.corrected)}</small>` : ""}</span><a class="stat-s" href="${esc(r.url)}" target="_blank" rel="noopener">source ↗</a></div>`).join("") || `<p class="empty">Flex rules not loaded.</p>`;
+  }
+
   function paintBills() {
     const list = S.list("bills");
     const normMo = (b) => b.cadence === "annual" ? b.amount / 12 : b.cadence === "weekly" ? b.amount * 4.333 : b.amount;
@@ -440,7 +449,7 @@
   tabs(app, (id) => {
     if (id === "p-cons") { paintReal(); paintCons(); }
     if (id === "p-strat") paintStrat();
-    if (id === "p-iss") { paintDeferred(); paintIssuers(); }
+    if (id === "p-iss") { paintDeferred(); paintIssuers(); paintFlex(); }
     if (id === "p-bills") paintBills();
   });
   fetch("../../deck/data/payoff-cases.json").then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); }).then((cases) => {

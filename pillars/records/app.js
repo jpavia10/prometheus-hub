@@ -119,6 +119,7 @@
           <label class="f">Renewal / due date<input name="due" type="date"></label>
           <label class="f wide">Original location<input name="where" maxlength="160" placeholder="Drive Sebastian/…, drawer 2…"></label>
           <label class="f wide">Notes<input name="notes" maxlength="200"></label>
+          <label class="f wide">Retention preset (REC-GEM-04 — IRS/FTB rules)<select id="r-preset"><option value="">No preset</option></select></label>
           <button class="btn" type="submit">Register</button>
         </form>
       </div>
@@ -214,7 +215,12 @@
           ),
           h("div.led-main", null,
             h("div.led-title", null, h("b", null, d.title), stamp),
-            sub ? h("div.led-sub", null, sub) : ""
+            sub ? h("div.led-sub", null, sub) : "",
+            /* REC-GEM-04 (2026-11-17): retention verdict per doc — keep-until label,
+               shred eligibility, and the rule's source link. */
+            (() => { const ss = recMath.shredStatus ? recMath.shredStatus(d, t) : null; if (!ss) return "";
+              return h("div.led-sub", null, `${ss.canShred ? "Safe to shred — " : ""}${ss.keepUntilLabel}`,
+                ss.rule ? h("a", { href: ss.rule.url, target: "_blank", rel: "noopener", class: "stat-s" }, ` ${ss.rule.source} ↗`) : null); })()
           ),
           h("div.led-meta", null,
             h("div.led-loc", null, d.where || "—"),
@@ -227,6 +233,25 @@
         ));
       }
     }
+  }
+
+  /* REC-GEM-04 (2026-11-17): retention preset selector — choosing a rule pre-fills the
+     register form with the rule's document class; permanent rules stamp the notes so
+     the never-shred class is visible at filing time. */
+  const presetSel = $("#r-preset");
+  if (presetSel && window.RECORDS_RETENTION) {
+    for (const r of window.RECORDS_RETENTION) {
+      const o = document.createElement("option");
+      o.value = String(r.n); o.textContent = `${r.document} — keep ${r.keep}`;
+      presetSel.append(o);
+    }
+    presetSel.addEventListener("change", () => {
+      const r = (window.RECORDS_RETENTION || []).find((x) => String(x.n) === presetSel.value);
+      const f = $("#r-form"); if (!r || !f) return;
+      f.title.value = r.document;
+      f.notes.value = r.keep_years === "permanent" ? "Retention: PERMANENT (never shred) — " + r.source : `Retention: keep ${r.keep} — ${r.source}`;
+      toast(`Preset: keep ${r.keep}`);
+    });
   }
 
   $("#r-form").addEventListener("submit", (e) => {

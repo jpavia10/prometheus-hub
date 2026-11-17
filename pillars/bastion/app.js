@@ -14,6 +14,8 @@
     "Car kit": ["Water (1 gal)", "Blanket", "Jumper pack", "Tire repair + inflator", "Flashlight", "Snacks", "Ice scraper / chains as season needs", "Paper map of the mountain exits"],
     "House shelter-in": ["Water storage filled", "Pantry buffer (2 weeks)", "Propane / heat backup checked", "Flashlights + lantern batteries", "Generator or power station charged", "Pipes / freeze prep done", "Car fueled above half", "Medications buffer"],
     "Red Cross 72-hour baseline": ["Water 1 gal/person/day (3-day evac)", "Food 3-day non-perishable", "Flashlight", "Battery/hand-crank radio (NOAA Weather Radio if possible)", "Extra batteries", "First aid kit", "Medications 7-day + medical items", "Multi-purpose tool", "Sanitation & hygiene", "Copies of personal documents", "Cell phone with chargers", "Family & emergency contact info", "Extra cash", "Emergency blanket", "Map(s) of the area"],
+    /* BAS-GEM-04 (2026-11-17): pet evacuation, from Gemini's Kern alerts guide. */
+    "Pet evacuation": ["Wolfgang: harness, leash, 3-day food, water bowl", "Cat carriers ×4, labeled", "Petlibro feeders: fresh D-cell backup batteries", "Litter + waste bags (3 days)", "Pet meds + vet record copies", "Recent photo of each pet (ID if separated)"],
   };
   window.BASTION_SCENARIOS = SCENARIOS;
 
@@ -29,6 +31,7 @@
       <div class="glass span-6">
         <h2>Local Risk Profile (CAZ336 / CAZ597)</h2>
         <div id="b-profile" class="stat-s">Loading the hazard baseline…</div>
+        <div id="b-kern" style="margin-top:10px"></div>
       </div>
       <div class="glass span-12">
         <h2>Inventory &amp; 25 lb Go-Bag Weight Cap</h2>
@@ -155,6 +158,18 @@
     ).join("");
   }
 
+  /* BAS-GEM-04 (2026-11-17): Kern County alert stack, from Gemini's
+     bastion_gemini_kern-alerts_20261116-2040.md. The guide's honest core: it does NOT
+     know Joseph's Genasys zone — it tells him to look it up. The card therefore links
+     the lookup instead of inventing a KCF- code. (Odyssey's checklist carries the
+     drop's KCF-114 assertion flagged unconfirmed.) Rendered unconditionally so the
+     links survive a readiness.json failure (§H offline behavior). */
+  const kernBox = $("#b-kern");
+  if (kernBox) kernBox.innerHTML = `<div class="kv"><span><b>ReadyKern</b> — Kern County's emergency alert system (calls, texts, email)</span><a class="stat-s" href="https://www.kerncounty.com/emergency/readykern" target="_blank" rel="noopener">sign up ↗</a></div>
+    <div class="kv"><span><b>Genasys Protect</b> — look up your evacuation zone (KCF-…) for your home address and save it here once known</span><a class="stat-s" href="https://protect.genasys.com" target="_blank" rel="noopener">zone lookup ↗</a></div>
+    <div class="kv"><span><b>Caltrans QuickMap</b> — live chain control + closures for I-5 Tejon Pass</span><a class="stat-s" href="https://quickmap.dot.ca.gov" target="_blank" rel="noopener">quickmap ↗</a></div>
+    <div class="kv"><span><b>SCE PSPS</b> — outage alerts arrive ahead of shutoffs (roughly 48h / 24h / 1–4h notices)</span><a class="stat-s" href="https://www.sce.com/outage-center" target="_blank" rel="noopener">sce ↗</a></div>`;
+
   fetch("./data/readiness.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
     if (!d) return;
     const p = d.place || {};
@@ -177,6 +192,19 @@
       ]);
       const periods = (fc.properties.periods || []).slice(0, 4);
       const alerts = al.features || [];
+      /* BAS-GEM-04 shared weather cache (2026-11-17): prometheus.shared.wx, 15-minute
+         freshness by convention — readers (Hearth's temp check) judge staleness from
+         fetchedAt. Written here and by Aether's telemetry fetch. */
+      try {
+        const p0 = periods[0] || {};
+        const windNums = String(p0.windSpeed || "").match(/\d+/g) || [];
+        localStorage.setItem("prometheus.shared.wx", JSON.stringify({
+          fetchedAt: new Date().toISOString(),
+          tempF: typeof p0.temperature === "number" ? p0.temperature : null,
+          windMph: windNums.length ? Math.max(...windNums.map(Number)) : null,
+          alerts: alerts.map((a) => a.properties.event),
+        }));
+      } catch (_) {}
       el.innerHTML = (alerts.length ? alerts.map((a) => `<div class="kv"><span><b>${esc(a.properties.event)}</b> — ${esc(a.properties.headline || "")}</span></div>`).join("") : `<div class="kv"><span>Active NWS alerts</span><b>None</b></div>`)
         + periods.map((p) => `<div class="kv"><span>${esc(p.name)}</span><b>${p.temperature}°${p.temperatureUnit} · ${esc(p.shortForecast)}</b></div>`).join("")
         + `<div class="stat-s" style="margin-top:6px">NWS · fetched ${new Date().toLocaleTimeString("en-US")}</div>`;

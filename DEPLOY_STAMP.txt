@@ -1,1 +1,1 @@
-deck d20 2026-11-16 homework doc links point at the rewritten Drive pages; shell cache d29
+deck d20 2026-11-17 Gemini homework batch 20261116-2040 integrated (11 tickets, verified + corrected datasets) and 12 Forge queue completions re-rendered; shell cache d29

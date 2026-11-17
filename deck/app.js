@@ -42,7 +42,11 @@ async function render(same) {
     const main = $("#view"); const keep = same && prev && prev.key === r.key ? main.scrollTop : 0;
     const fresh = !same || !prev || prev.key !== r.key;                              // a new place animates in; a redraw of the same place does not
     const box = h("div.view-inner" + (fresh ? ".enter" : ""), { dataset: { cap: r.cap } }); main.replaceChildren(box); main.dataset.cap = r.cap; document.body.dataset.cap = r.cap;
-    setQuiet(!fresh); try { state.cleanup = mod.render(box, r, ctx) || null; } finally { setQuiet(false); } main.scrollTop = keep; state.route = r; state.dirty = false; drawDock(); drawRail();
+    /* HUB-GEM-09 (2026-11-17, from the 1930 audit's stage-fallback item + hub spec §H):
+       a view that throws during render must not take the deck's navigation with it —
+       the route still lands, the dock/rail still draw, and the pane shows a fallback
+       card instead of a blank or a dead shell. */
+    setQuiet(!fresh); try { state.cleanup = mod.render(box, r, ctx) || null; } catch (e) { console.error("[deck] view render failed", r.cap, e); state.cleanup = null; box.replaceChildren(h("div.view-fallback", null, h("h2", null, "This pillar hit a snag"), h("p", null, "The view failed to render, but the deck is fine — pick another pillar, or reload to try again."), h("p.stat-s", null, String((e && e.message) || e)))); } finally { setQuiet(false); } main.scrollTop = keep; state.route = r; state.dirty = false; drawDock(); drawRail();
     document.title = r.cap === "picture" ? "Prometheus" : `${r.cap === "system" ? "System" : cap(r.cap).name} · Prometheus`;
   };
   const moving = !same && prev && prev.cap !== r.cap;

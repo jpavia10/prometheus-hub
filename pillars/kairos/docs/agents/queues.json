@@ -581,7 +581,7 @@
     {
      "id": "KAI-MUS-03",
      "title": "Kairos Meridian: second reader on Gemini's 'the yearly deadlines a California homeowner and driver actually has'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-21",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",

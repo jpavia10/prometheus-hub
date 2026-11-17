@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 
 - BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
@@ -16,7 +16,7 @@ Updated 2026-11-16 13:40 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-16 13:40 UTC · 3 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 3 open in this pillar.
 
 
 - BAS-GEM-04 · Bastion: Kern County alert systems and evacuation zones · due 2026-11-20
@@ -28,31 +28,29 @@ Updated 2026-11-16 13:40 UTC · 3 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-16 13:40 UTC · 2 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 1 open in this pillar.
 
 
-- BAS-MUS-02 · Bastion: second reader on Gemini's 'Kern County alert systems and evacuation zones' · due 2026-11-23 · waits for its input file
-    make: bastion_muse_kern-alerts-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 - BAS-MUS-03 · Bastion: second reader on Gemini's 'a 72-hour kit for four people and pets, with shelf lives' · due 2026-11-25 · waits for its input file
     make: bastion_muse_kit-items-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Bastion · Mountain Prep right now.
 
 ## Argon
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Bastion · Mountain Prep right now.
 
 ## Hydrogen
 
-Updated 2026-11-16 13:40 UTC · 0 open in this pillar.
+Updated 2026-11-17 10:53 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Bastion · Mountain Prep right now.

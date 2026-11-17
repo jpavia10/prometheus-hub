@@ -1,6 +1,6 @@
 HOMEWORK — ChatGPT (every pillar)
 
-Updated 2026-11-16 13:40 UTC. 6 open across 6 pillars.
+Updated 2026-11-17 10:53 UTC. 5 open across 5 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -12,40 +12,14 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
-1. [Midas Ledger] MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14
-2. [Kairos Meridian] KAI-GPT-01 · Kairos Meridian: phone audit: 15 findings · due 2026-11-24
-3. [Hephaestus Hearth] HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings · due 2026-11-24
-4. [Garage] GAR-GPT-01 · Garage: phone audit: 15 findings · due 2026-11-24
-5. [Money · payoff simulator] MON-GPT-01 · Money: phone audit: 15 findings · due 2026-11-24
-6. [Kin] KIN-GPT-01 · Kin: phone audit: 15 findings · due 2026-11-24
+1. [Kairos Meridian] KAI-GPT-01 · Kairos Meridian: phone audit: 15 findings · due 2026-11-24
+2. [Hephaestus Hearth] HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings · due 2026-11-24
+3. [Garage] GAR-GPT-01 · Garage: phone audit: 15 findings · due 2026-11-24
+4. [Money · payoff simulator] MON-GPT-01 · Money: phone audit: 15 findings · due 2026-11-24
+5. [Kin] KIN-GPT-01 · Kin: phone audit: 15 findings · due 2026-11-24
 
-==================== 1. MIDAS LEDGER ====================
-## 1. MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings
-
-**Due:** 2026-11-14 · **State:** now
-
-**Read first:**
-- https://jpavia10.github.io/midas-ledger/ shows the password screen; to see every screen with a made-up book, run it locally: python3 -m http.server 8742 in a checkout, then http://127.0.0.1:8742/?hud=1 (README, 'Pages')
-
-**Do this:**
-1. Use every tab on a phone-sized screen.
-2. 20 findings: where / what is wrong / fix / severity 1-3; at least 6 about whether it makes you want to pay debt down.
-
-**Make:** `midas_chatgpt_audit_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
-
-**Shape:** `numbered list, 20 items`
-
-**How many:** 20
-
-**Done when:** 20 findings Claude can reproduce.
-
-**How Claude checks it:**
-- Claude reproduces 5 at random.
-
-==================== 2. KAIROS MERIDIAN ====================
-## 2. KAI-GPT-01 · Kairos Meridian: phone audit: 15 findings
+==================== 1. KAIROS MERIDIAN ====================
+## 1. KAI-GPT-01 · Kairos Meridian: phone audit: 15 findings
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -73,8 +47,8 @@ IN THIS ORDER:
 - a real private person's name, address or phone number
 - anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
 
-==================== 3. HEPHAESTUS HEARTH ====================
-## 3. HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings
+==================== 2. HEPHAESTUS HEARTH ====================
+## 2. HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -102,8 +76,8 @@ IN THIS ORDER:
 - a real private person's name, address or phone number
 - anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
 
-==================== 4. GARAGE ====================
-## 4. GAR-GPT-01 · Garage: phone audit: 15 findings
+==================== 3. GARAGE ====================
+## 3. GAR-GPT-01 · Garage: phone audit: 15 findings
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -131,8 +105,8 @@ IN THIS ORDER:
 - a real private person's name, address or phone number
 - anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
 
-==================== 5. MONEY · PAYOFF SIMULATOR ====================
-## 5. MON-GPT-01 · Money: phone audit: 15 findings
+==================== 4. MONEY · PAYOFF SIMULATOR ====================
+## 4. MON-GPT-01 · Money: phone audit: 15 findings
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -160,8 +134,8 @@ IN THIS ORDER:
 - a real private person's name, address or phone number
 - anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
 
-==================== 6. KIN ====================
-## 6. KIN-GPT-01 · Kin: phone audit: 15 findings
+==================== 5. KIN ====================
+## 5. KIN-GPT-01 · Kin: phone audit: 15 findings
 
 **Due:** 2026-11-24 · **State:** now
 

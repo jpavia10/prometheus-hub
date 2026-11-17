@@ -39,7 +39,23 @@
     return { carItems, sDue };
   }
 
-  function setAway(trip) {
+  /* ODY-GEM-01 gate (2026-11-17): away mode will not arm while a critical freeze or
+     pet-care check is unticked — the first click names what's missing, the second
+     click (same trip, same paint) overrides. Ending away mode is never gated, and
+     clearing always clears PB.meta too (§H: no stale away state after return). */
+  let awayWarnedFor = null;
+  function setAway(trip, force) {
+    if (trip && !force) {
+      const missing = TRIP.HOME_CHECKS.filter((c) => c.critical && !(trip.homeState || {})[c.task]);
+      if (missing.length) {
+        if (awayWarnedFor !== trip.id) {
+          awayWarnedFor = trip.id;
+          toast(`Away gate: ${missing.length} critical check${missing.length === 1 ? "" : "s"} unticked — ${missing.slice(0, 2).map((c) => c.task.slice(0, 42)).join("; ")}${missing.length > 2 ? "…" : ""} Click Set Away again to override.`, 6000);
+          return;
+        }
+      }
+    }
+    awayWarnedFor = null;
     const val = trip ? { active: true, tripId: trip.id, name: trip.name, dest: trip.dest || "", until: trip.end } : null;
     if (window.PB) PB.meta.set("away", val);
     try {
@@ -173,11 +189,17 @@
           ))
         ),
         h("div.check-col", null,
-          h("h4", null, "Before you leave — the house"),
-          ...TRIP.HOME_CHECKS.map((c) => h("label.check", null,
-            h("input", { type: "checkbox", ...((t.homeState || {})[c] ? { checked: "" } : {}), onchange: (ev) => { t.homeState = t.homeState || {}; t.homeState[c] = ev.target.checked; S.set("trips", trips); } }),
-            " ", c
-          ))
+          h("h4", null, "Before you leave — the house (winter countdown)"),
+          ...[7, 5, 4, 3, 2, 1, 0].flatMap((d) => {
+            const group = TRIP.HOME_CHECKS.filter((c) => c.daysBefore === d);
+            if (!group.length) return [];
+            return [h("p.stat-s", { style: "margin:8px 0 2px;font-weight:700" }, d === 0 ? "Departure day" : `${d} day${d === 1 ? "" : "s"} before`),
+              ...group.map((c) => h("label.check", null,
+                h("input", { type: "checkbox", ...((t.homeState || {})[c.task] ? { checked: "" } : {}), onchange: (ev) => { t.homeState = t.homeState || {}; t.homeState[c.task] = ev.target.checked; S.set("trips", trips); } }),
+                " ", c.task, c.critical ? h("span.pill over", null, " critical") : null,
+                c.url ? h("a", { href: c.url, target: "_blank", rel: "noopener", class: "stat-s" }, " source ↗") : null
+              ))];
+          })
         )
       ));
       card.append(h("div.row-actions", { style: "margin-top:8px" },

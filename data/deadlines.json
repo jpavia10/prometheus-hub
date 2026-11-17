@@ -1,39 +1,6 @@
 {
- "updated": "2026-11-16 13:40 UTC",
+ "updated": "2026-11-17 10:53 UTC",
  "tasks": [
-  {
-   "due": "2026-11-09",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "grok",
-   "ai_name": "Grok",
-   "id": "MID-GRK-01",
-   "title": "Give every debt in the book its APR, minimum, due day, limit and promo end",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-09",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "grok",
-   "ai_name": "Grok",
-   "id": "MID-GRK-02",
-   "title": "A fresh book every Monday by noon PT",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-14",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "chatgpt",
-   "ai_name": "ChatGPT",
-   "id": "MID-GPT-01",
-   "title": "Audit Midas v2 on the made-up book: 20 findings",
-   "state": "now",
-   "count": 20
-  },
   {
    "due": "2026-11-18",
    "pillar": "kairos",
@@ -66,17 +33,6 @@
    "title": "Prometheus Hub: phone audit of the new home menu",
    "state": "now",
    "count": 25
-  },
-  {
-   "due": "2026-11-19",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-09",
-   "title": "Midas Ledger: how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages",
-   "state": "now",
-   "count": 15
   },
   {
    "due": "2026-11-19",
@@ -190,17 +146,6 @@
   },
   {
    "due": "2026-11-21",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "KAI-MUS-03",
-   "title": "Kairos Meridian: second reader on Gemini's 'the yearly deadlines a California homeowner and driver actually has'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-21",
    "pillar": "privacy",
    "pillar_name": "Privacy · CA DROP",
    "ai": "gemini",
@@ -223,17 +168,6 @@
   },
   {
    "due": "2026-11-22",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "GAR-MUS-02",
-   "title": "Garage: second reader on Gemini's 'every recall and service campaign for both vehicles'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-22",
    "pillar": "hearth",
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
@@ -242,39 +176,6 @@
    "title": "Hephaestus Hearth: when Kern County needs a permit for this deck",
    "state": "now",
    "count": 1
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "HUB-MUS-02",
-   "title": "Prometheus Hub: second reader on Gemini's 'phone audit of the new home menu'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-10",
-   "title": "Midas Ledger: 25 test cases for the ledger parser",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "MID-MUS-03",
-   "title": "Midas Ledger: second reader on Gemini's 'how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages'",
-   "state": "next",
-   "count": 15
   },
   {
    "due": "2026-11-22",
@@ -289,17 +190,6 @@
   },
   {
    "due": "2026-11-22",
-   "pillar": "odyssey",
-   "pillar_name": "Odyssey · Trips & Away Mode",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "ODY-MUS-02",
-   "title": "Odyssey: second reader on Gemini's 'An away-mode checklist for a mountain home in winter'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-22",
    "pillar": "polis",
    "pillar_name": "Polis · Civic & Legal Watch",
    "ai": "gemini",
@@ -308,50 +198,6 @@
    "title": "Polis: the Kern County rules a homeowner runs into",
    "state": "now",
    "count": 25
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "privacy",
-   "pillar_name": "Privacy · CA DROP",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "PRI-MUS-02",
-   "title": "Privacy: second reader on Gemini's 'data brokers not yet on the list, with their opt-out routes'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "selling",
-   "pillar_name": "Selling Pipeline",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "SEL-MUS-02",
-   "title": "Selling Pipeline: second reader on Gemini's 'marketplace fees as of today'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-23",
-   "pillar": "aether",
-   "pillar_name": "Aether · Atmospheric & Field Lab",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "AET-MUS-02",
-   "title": "Aether: second reader on Gemini's 'the live data feeds for air, fire, weather and the pass'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-23",
-   "pillar": "bastion",
-   "pillar_name": "Bastion · Mountain Prep",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "BAS-MUS-02",
-   "title": "Bastion: second reader on Gemini's 'Kern County alert systems and evacuation zones'",
-   "state": "next",
-   "count": 15
   },
   {
    "due": "2026-11-23",
@@ -363,28 +209,6 @@
    "title": "Foundry: prior art for each of the 11 inventions",
    "state": "now",
    "count": 55
-  },
-  {
-   "due": "2026-11-23",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "HEA-MUS-03",
-   "title": "Hephaestus Hearth: second reader on Gemini's 'deck rebuild specs from the makers' installation guides'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-23",
-   "pillar": "records",
-   "pillar_name": "Records · Paper Killer",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "REC-MUS-02",
-   "title": "Records: second reader on Gemini's 'how long to keep each kind of household paper'",
-   "state": "next",
-   "count": 15
   },
   {
    "due": "2026-11-24",
@@ -531,17 +355,6 @@
   },
   {
    "due": "2026-11-24",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "GAR-MUS-03",
-   "title": "Garage: second reader on Gemini's 'Caltrans chain-control rules and recent I-5 Tejon Pass closures'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-24",
    "pillar": "hearth",
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
@@ -641,17 +454,6 @@
   },
   {
    "due": "2026-11-24",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-11",
-   "title": "Midas Ledger: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-24",
    "pillar": "money",
    "pillar_name": "Money · payoff simulator",
    "ai": "gemini",
@@ -740,17 +542,6 @@
   },
   {
    "due": "2026-11-24",
-   "pillar": "privacy",
-   "pillar_name": "Privacy · CA DROP",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "PRI-MUS-03",
-   "title": "Privacy: second reader on Gemini's 'the California DROP timeline'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-24",
    "pillar": "records",
    "pillar_name": "Records · Paper Killer",
    "ai": "gemini",
@@ -790,17 +581,6 @@
    "ai_name": "Muse",
    "id": "HEA-MUS-02",
    "title": "Hephaestus Hearth: second reader on Gemini's 'when Kern County needs a permit for this deck'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-25",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "MID-MUS-02",
-   "title": "Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser'",
    "state": "next",
    "count": 15
   },
@@ -1010,17 +790,6 @@
    "ai_name": "Grok",
    "id": "KIN-GRK-02",
    "title": "Kin: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
-   "count": 10
-  },
-  {
-   "due": "2026-11-27",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "grok",
-   "ai_name": "Grok",
-   "id": "MID-GRK-04",
-   "title": "Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan'",
    "state": "next",
    "count": 10
   },

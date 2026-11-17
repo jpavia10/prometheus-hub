@@ -473,7 +473,7 @@
     {
      "id": "BAS-MUS-02",
      "title": "Bastion: second reader on Gemini's 'Kern County alert systems and evacuation zones'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-23",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",

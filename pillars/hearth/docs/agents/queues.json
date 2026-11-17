@@ -846,7 +846,7 @@
     {
      "id": "HEA-MUS-03",
      "title": "Hephaestus Hearth: second reader on Gemini's 'deck rebuild specs from the makers' installation guides'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-23",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",

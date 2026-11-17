@@ -544,7 +544,7 @@
     {
      "id": "GAR-MUS-02",
      "title": "Garage: second reader on Gemini's 'every recall and service campaign for both vehicles'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-22",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -589,7 +589,7 @@
     {
      "id": "GAR-MUS-03",
      "title": "Garage: second reader on Gemini's 'Caltrans chain-control rules and recent I-5 Tejon Pass closures'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-24",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
