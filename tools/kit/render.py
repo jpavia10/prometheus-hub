@@ -79,11 +79,18 @@ def task_md(i, t, p, folder, common=False):
     return L
 
 
+# Owner, 2026-11-18: finished work shows on the Forge by itself, from one Drive file every AI edits in place (docs/agents/COMPLETIONS.md).
+LEDGER_RULE = ("WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json "
+               "(Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "
+               "\"done\" list, {\"key\": \"<task id>\", \"by\": \"<your name>\", \"what\": \"<file name> in <folder>\", \"ts\": \"<now, UTC, ISO 8601>\"}, set \"updated\", save. "
+               "Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold, the original shows within 10-20 minutes.")
+
+
 def queue_page(p, ai, tasks, stamp):
     folder = DRIVE_ROOT.format(name=p["name"]) + "incoming (AI drop files)/"
     start = GH.format(repo="jpavia10/prometheus-hub", path="AI_START_HERE.md")
     L = [GEN, "", f"# {p['name']} · homework for {ai['name']}", "",
-         f"Updated {stamp} · {len(tasks)} open · Rules for every pillar: {start}. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/{ai['drive_folder']}/HOMEWORK — {ai['name']} (every pillar)'.", ""]
+         f"Updated {stamp} · {len(tasks)} open · Rules for every pillar: {start}. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/{ai['drive_folder']}/HOMEWORK — {ai['name']} (every pillar)'.", "", "**" + LEDGER_RULE + "**", ""]
     if not tasks:
         L += [f"No homework for {ai['name']} in {p['name']} right now. Check your HOMEWORK doc for the other pillars.", ""]
     for i, t in enumerate(sorted(tasks, key=lambda t: (t.get("state") != "now", t.get("due", "9"))), 1):
@@ -178,7 +185,7 @@ def main(argv):
         L = [f"HOMEWORK — {a['name']} (every pillar)", "", f"Updated {stamp or '{stamp}'}. {n} open across {len({x[0]['id'] for x in items})} pillars.", "",
              "When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. "
              "When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md "
-             "(read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.", ""]
+             "(read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.", "", LEDGER_RULE, ""]
         if titan:
             for p, _, c in titan:
                 L += [f"TITAN RELIQUARY (its own loop, the exception): {c[0]} homework sheets + {c[1]} projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for {a['name']}' "
