@@ -93,14 +93,16 @@
     const wb = await get(ROOT + "docs/antigravity/WORKBOARD.md", "text"); if (wb) { tasks.push(...parseBoard(wb)); D.sources.board = "read"; } else D.sources.board = "not reached";
     /* The completions ledger (owner, 2026-11-17; read path fixed 2026-11-18): one Drive file every AI appends to when it finishes a task, so Forge shows the work as
        delivered the moment the worker is done, whoever did it, instead of waiting for the integrator to flip the queue in its repo. Forge reads an in-repo mirror
-       (docs/agents/completions.json) because Drive download URLs send no CORS headers and browsers block the cross-origin fetch; Sebastian refreshes the mirror
-       from the Drive file whenever he folds entries. An entry means DELIVERED (the file is in the named folder), not accepted; the repo queue flip stays the permanent record. */
+       (docs/agents/completions.json) because Drive download URLs send no CORS headers and browsers block the cross-origin fetch; .github/workflows/ledger.yml copies
+       the Drive file into the mirror every 10 minutes (tools/forge/sync_ledger.py, owner 2026-11-18: no waiting on an auditor to fold it in). An entry means
+       DELIVERED (the file is in the named folder), not accepted; the repo queue flip stays the permanent record. */
     const LEDGER = Q.get("done") || ROOT + "docs/agents/completions.json";
     const lj = await get(LEDGER);
     if (lj && Array.isArray(lj.done)) {
       const led = new Map(lj.done.filter((e) => e && e.key).map((e) => [e.key, e])); let marked = 0;
       for (const t of tasks) { const e = led.get(t.id); if (e && t.state !== "done") { t.state = "done"; t.closedAs = "delivered"; t.detail = { ...(t.detail || {}), delivered: `${e.what || "the deliverable"} · by ${e.by || "?"} · ${String(e.ts || "").slice(0, 10)} (completions ledger: delivered, awaiting the integrator's check; the queue in its own repo still shows it open until the flip lands)` }; marked++; } }
-      D.sources.done = marked ? `${marked} delivered per the ledger` : "read, nothing new";
+      const synced = lj.synced ? ` · synced ${new Date(lj.synced).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}` : "";
+      D.sources.done = (marked ? `${marked} delivered, awaiting the check` : "read, nothing new") + synced;
     } else D.sources.done = "not reached";
     D.tasks = tasks; D.queueState = tasks.length ? "ok" : "unreachable";
     try {

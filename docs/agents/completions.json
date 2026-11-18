@@ -4,87 +4,15 @@
  "about": "Forge completions ledger. When ANY fleet AI finishes a task, it appends one entry here: {key, by, what, ts}. key = the task id exactly as Forge shows it (hub/Midas task id like KAI-GEM-10 or MID-MUS-03; Titan homework id like HW-muse-verify-20261113-1; Titan project key T-<ai>-<n> like T-muse-12). Forge (Prometheus Hub, pillars/forge) reads this file live and shows a listed task as 'delivered' even before the integrator flips the queue in its repo. An entry means DELIVERED (the file is in the named Drive folder), not accepted: the integrator's check still decides acceptance, and the queue flip in the repo remains the permanent record. If you cannot edit this file, save DONE_<key>.json with the same fields into the same Drive folder as your deliverable and say so in your report; Sebastian folds those in.",
  "done": [
   {
-   "key": "HW-muse-fill-20261116-1",
-   "by": "muse",
-   "what": "changes_muse_20261117-1101.jsonl in Titan collection-incoming",
-   "ts": "2026-11-17T11:01:00Z"
-  },
-  {
-   "key": "HW-muse-verify-20261114-1",
-   "by": "muse",
-   "what": "changes_muse_20261117-1102.jsonl in Titan collection-incoming",
-   "ts": "2026-11-17T11:02:00Z"
-  },
-  {
-   "key": "HW-muse-arbitrate-20261114-1",
-   "by": "muse",
-   "what": "changes_muse_20261117-1103.jsonl in Titan collection-incoming",
-   "ts": "2026-11-17T11:03:00Z"
-  },
-  {
-   "key": "HW-muse-verify-20261113-1",
-   "by": "muse",
-   "what": "changes_muse_20261117-1110.jsonl in Titan collection-incoming",
-   "ts": "2026-11-17T11:10:00Z"
-  },
-  {
-   "key": "HW-muse-verify-20261116-1",
-   "by": "muse",
-   "what": "changes_muse_20261117-1112.jsonl in Titan collection-incoming",
-   "ts": "2026-11-17T11:12:00Z"
-  },
-  {
-   "key": "T-muse-12",
-   "by": "muse",
-   "what": "changes_muse_20261117-1517.jsonl in Titan collection-incoming (blind read 1-180: 160 lines)",
-   "ts": "2026-11-17T15:17:00Z"
-  },
-  {
-   "key": "T-muse-13",
-   "by": "muse",
-   "what": "changes_muse_20261117-1524.jsonl in Titan collection-incoming (blind read 181-360: 55 lines)",
-   "ts": "2026-11-17T15:24:00Z"
-  },
-  {
-   "key": "T-muse-7",
-   "by": "muse",
-   "what": "changes_muse_20261117-1551..1555.jsonl in Titan collection-incoming (era re-citations: 188 lines, 56 corrections)",
-   "ts": "2026-11-17T15:55:00Z"
-  },
-  {
-   "key": "T-muse-10",
-   "by": "muse",
-   "what": "sound_muse_20261117-1605.json in Titan sound-incoming (35 finds, 73 not_found)",
-   "ts": "2026-11-17T16:05:00Z"
-  },
-  {
-   "key": "T-muse-2",
-   "by": "muse",
-   "what": "covered by the verify homework files changes_muse_20261117-1110.jsonl + changes_muse_20261117-1112.jsonl (the queue's own substitution rule)",
-   "ts": "2026-11-17T11:12:00Z"
-  },
-  {
-   "key": "MID-GEM-09",
+   "key": "FOR-GEM-03",
    "by": "gemini",
-   "what": "midas_gemini_flex-terms_20261116-2040.json in Midas incoming; integrated into the Hub Money pillar 2026-11-17",
-   "ts": "2026-11-16T20:40:00Z"
-  },
-  {
-   "key": "MID-MUS-03",
-   "by": "muse",
-   "what": "midas_muse_flex-terms-check_20261117-1040.md in Midas incoming (scored 6/10)",
-   "ts": "2026-11-17T10:40:00Z"
+   "what": "forge_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T19:30:00Z"
   },
   {
    "key": "HUB-GEM-10",
    "by": "gemini",
    "what": "hub_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-   "ts": "2026-11-16T19:30:00Z"
-  },
-  {
-   "key": "FOR-GEM-03",
-   "by": "gemini",
-   "what": "forge_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
    "ts": "2026-11-16T19:30:00Z"
   },
   {
@@ -178,6 +106,12 @@
    "ts": "2026-11-16T20:40:00Z"
   },
   {
+   "key": "MID-GEM-09",
+   "by": "gemini",
+   "what": "midas_gemini_flex-terms_20261116-2040.json in Midas incoming; integrated into the Hub Money pillar 2026-11-17",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
    "key": "MYT-GEM-03",
    "by": "gemini",
    "what": "mythos_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
@@ -226,16 +160,16 @@
    "ts": "2026-11-16T20:40:00Z"
   },
   {
+   "key": "MID-MUS-03",
+   "by": "muse",
+   "what": "midas_muse_flex-terms-check_20261117-1040.md in Midas incoming (scored 6/10)",
+   "ts": "2026-11-17T10:40:00Z"
+  },
+  {
    "key": "ARG-GEM-09",
    "by": "gemini",
    "what": "argus_gemini_coin-photo-rules_20261117-1047.json in Argus incoming",
    "ts": "2026-11-17T10:47:51Z"
-  },
-  {
-   "key": "BAS-GEM-05",
-   "by": "gemini",
-   "what": "bastion_gemini_kit-items_20261117-1047.json in hub incoming",
-   "ts": "2026-11-17T10:47:53Z"
   },
   {
    "key": "CON-GEM-03",
@@ -244,16 +178,22 @@
    "ts": "2026-11-17T10:47:51Z"
   },
   {
-   "key": "FDY-GEM-03",
-   "by": "gemini",
-   "what": "foundry_gemini_prior-art_20261117-1047.json in hub incoming",
-   "ts": "2026-11-17T10:47:58Z"
-  },
-  {
    "key": "HEA-GEM-17",
    "by": "gemini",
    "what": "hearth_gemini_kern-permits_20261117-1047.md in Hearth incoming",
    "ts": "2026-11-17T10:47:52Z"
+  },
+  {
+   "key": "BAS-GEM-05",
+   "by": "gemini",
+   "what": "bastion_gemini_kit-items_20261117-1047.json in hub incoming",
+   "ts": "2026-11-17T10:47:53Z"
+  },
+  {
+   "key": "MID-GEM-10",
+   "by": "gemini",
+   "what": "midas_gemini_parser-cases_20261117-1047.json in Midas incoming",
+   "ts": "2026-11-17T10:47:53Z"
   },
   {
    "key": "OBS-GEM-03",
@@ -262,16 +202,76 @@
    "ts": "2026-11-17T10:47:53Z"
   },
   {
+   "key": "FDY-GEM-03",
+   "by": "gemini",
+   "what": "foundry_gemini_prior-art_20261117-1047.json in hub incoming",
+   "ts": "2026-11-17T10:47:58Z"
+  },
+  {
    "key": "POL-GEM-04",
    "by": "gemini",
    "what": "polis_gemini_kern-ordinances_20261117-1047.json in hub incoming",
    "ts": "2026-11-17T10:47:58Z"
   },
   {
-   "key": "MID-GEM-10",
-   "by": "gemini",
-   "what": "midas_gemini_parser-cases_20261117-1047.json in Midas incoming",
-   "ts": "2026-11-17T10:47:53Z"
+   "key": "HW-muse-fill-20261116-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1101.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:01:00Z"
+  },
+  {
+   "key": "HW-muse-verify-20261114-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1102.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:02:00Z"
+  },
+  {
+   "key": "HW-muse-arbitrate-20261114-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1103.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:03:00Z"
+  },
+  {
+   "key": "HW-muse-verify-20261113-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1110.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:10:00Z"
+  },
+  {
+   "key": "HW-muse-verify-20261116-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1112.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:12:00Z"
+  },
+  {
+   "key": "T-muse-2",
+   "by": "muse",
+   "what": "covered by the verify homework files changes_muse_20261117-1110.jsonl + changes_muse_20261117-1112.jsonl (the queue's own substitution rule)",
+   "ts": "2026-11-17T11:12:00Z"
+  },
+  {
+   "key": "T-muse-12",
+   "by": "muse",
+   "what": "changes_muse_20261117-1517.jsonl in Titan collection-incoming (blind read 1-180: 160 lines)",
+   "ts": "2026-11-17T15:17:00Z"
+  },
+  {
+   "key": "T-muse-13",
+   "by": "muse",
+   "what": "changes_muse_20261117-1524.jsonl in Titan collection-incoming (blind read 181-360: 55 lines)",
+   "ts": "2026-11-17T15:24:00Z"
+  },
+  {
+   "key": "T-muse-7",
+   "by": "muse",
+   "what": "changes_muse_20261117-1551..1555.jsonl in Titan collection-incoming (era re-citations: 188 lines, 56 corrections)",
+   "ts": "2026-11-17T15:55:00Z"
+  },
+  {
+   "key": "T-muse-10",
+   "by": "muse",
+   "what": "sound_muse_20261117-1605.json in Titan sound-incoming (35 finds, 73 not_found)",
+   "ts": "2026-11-17T16:05:00Z"
   },
   {
    "key": "ARG-MUS-03",
@@ -304,6 +304,12 @@
    "ts": "2026-11-17T17:25:00Z"
   },
   {
+   "key": "MID-MUS-02",
+   "by": "muse",
+   "what": "midas_muse_parser-cases-check_20261117-1725.md in Midas incoming (scored 3/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
    "key": "OBS-MUS-01",
    "by": "muse",
    "what": "observatory_muse_sources-check_20261117-1725.md in hub incoming (scored 5/10)",
@@ -316,27 +322,9 @@
    "ts": "2026-11-17T17:25:00Z"
   },
   {
-   "key": "MID-MUS-02",
-   "by": "muse",
-   "what": "midas_muse_parser-cases-check_20261117-1725.md in Midas incoming (scored 3/10)",
-   "ts": "2026-11-17T17:25:00Z"
-  },
-  {
-   "key": "FDY-GEM-03",
+   "key": "ARG-GEM-09",
    "by": "gemini",
-   "what": "foundry_gemini_prior-art_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
-   "ts": "2026-11-17T17:35:00Z"
-  },
-  {
-   "key": "POL-GEM-04",
-   "by": "gemini",
-   "what": "polis_gemini_kern-ordinances_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
-   "ts": "2026-11-17T17:35:00Z"
-  },
-  {
-   "key": "OBS-GEM-03",
-   "by": "gemini",
-   "what": "observatory_gemini_sources_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
+   "what": "argus_gemini_coin-photo-rules_20261117-1735.json in Argus Album/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
@@ -352,9 +340,9 @@
    "ts": "2026-11-17T17:35:00Z"
   },
   {
-   "key": "ARG-GEM-09",
+   "key": "FDY-GEM-03",
    "by": "gemini",
-   "what": "argus_gemini_coin-photo-rules_20261117-1735.json in Argus Album/incoming (AI drop files) (redo after second-read)",
+   "what": "foundry_gemini_prior-art_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
@@ -364,15 +352,27 @@
    "ts": "2026-11-17T17:35:00Z"
   },
   {
+   "key": "MID-GEM-10",
+   "by": "gemini",
+   "what": "midas_gemini_parser-cases_20261117-1735.json in Midas Ledger/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
    "key": "MID-GEM-11",
    "by": "gemini",
    "what": "midas_gemini_function-spec_20261117-1735.md in Midas Ledger/incoming (AI drop files)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
-   "key": "MID-GEM-10",
+   "key": "OBS-GEM-03",
    "by": "gemini",
-   "what": "midas_gemini_parser-cases_20261117-1735.json in Midas Ledger/incoming (AI drop files) (redo after second-read)",
+   "what": "observatory_gemini_sources_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "POL-GEM-04",
+   "by": "gemini",
+   "what": "polis_gemini_kern-ordinances_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
@@ -390,56 +390,57 @@
   {
    "key": "ARG-MUS-03",
    "by": "muse",
-   "what": "Recheck of Gemini's 1735 redo (ARG-MUS-03): 7/10 REJECT \u2014 all 5 named defects fixed, but 2 of 8 regression rows carry new invented numeric settings; argus_muse_coin-photo-rules-recheck_20261118-1615.md in the hub incoming folder",
+   "what": "Recheck of Gemini's 1735 redo (ARG-MUS-03): 7/10 REJECT — all 5 named defects fixed, but 2 of 8 regression rows carry new invented numeric settings; argus_muse_coin-photo-rules-recheck_20261118-1615.md in the hub incoming folder",
    "ts": "2026-11-18T16:20:00Z"
   },
   {
    "key": "BAS-MUS-03",
    "by": "muse",
-   "what": "Recheck of Gemini's 1735 redo (BAS-MUS-03): 6/10 REJECT \u2014 duct-tape defect fixed, flagged shelf-life rows untouched, same defect class in 3 of 10 regression rows; bastion_muse_kit-items-recheck_20261118-1615.md in the hub incoming folder",
+   "what": "Recheck of Gemini's 1735 redo (BAS-MUS-03): 6/10 REJECT — duct-tape defect fixed, flagged shelf-life rows untouched, same defect class in 3 of 10 regression rows; bastion_muse_kit-items-recheck_20261118-1615.md in the hub incoming folder",
    "ts": "2026-11-18T16:20:00Z"
   },
   {
    "key": "CON-MUS-01",
    "by": "muse",
-   "what": "Recheck of Gemini's 1735 redo (CON-MUS-01): 8/10 ACCEPT \u2014 all 7 named defects eliminated (4 corrected, 3 rows deleted), no new fabrication; continuity_muse_legacy-policies-recheck_20261118-1615.md in the hub incoming folder",
+   "what": "Recheck of Gemini's 1735 redo (CON-MUS-01): 8/10 ACCEPT — all 7 named defects eliminated (4 corrected, 3 rows deleted), no new fabrication; continuity_muse_legacy-policies-recheck_20261118-1615.md in the hub incoming folder",
    "ts": "2026-11-18T16:20:00Z"
   },
   {
    "key": "FDY-MUS-01",
    "by": "muse",
-   "what": "Recheck of Gemini's 1735 redo (FDY-MUS-01): 4/10 REJECT \u2014 8 named fabricated owners genuinely corrected, but 6 of 8 regression rows still fabricate owners; foundry_muse_prior-art-recheck_20261118-1615.md in the hub incoming folder",
+   "what": "Recheck of Gemini's 1735 redo (FDY-MUS-01): 4/10 REJECT — 8 named fabricated owners genuinely corrected, but 6 of 8 regression rows still fabricate owners; foundry_muse_prior-art-recheck_20261118-1615.md in the hub incoming folder",
    "ts": "2026-11-18T16:20:00Z"
   },
   {
    "key": "HEA-MUS-02",
    "by": "muse",
-   "what": "Recheck of Gemini's 1735 redo (HEA-MUS-02): 9/10 ACCEPT \u2014 R105.2 exemption splice truly fixed, all defects resolved, regression 6/6; hearth_muse_kern-permits-recheck_20261118-1615.md in the Hearth incoming folder",
-   "ts": "2026-11-18T16:20:00Z"
-  },
-  {
-   "key": "OBS-MUS-01",
-   "by": "muse",
-   "what": "Recheck of Gemini's 1735 redo (OBS-MUS-01): 5/10 REJECT \u2014 0 of 8 dead feeds repaired (rows deleted instead), defect alive in remaining rows; observatory_muse_sources-recheck_20261118-1615.md in the hub incoming folder",
-   "ts": "2026-11-18T16:20:00Z"
-  },
-  {
-   "key": "POL-MUS-02",
-   "by": "muse",
-   "what": "Recheck of Gemini's 1735 redo (POL-MUS-02): 8/10 ACCEPT \u2014 invented abatement mechanism removed and inverted to the verbatim KCFD position, quote discipline fixed; polis_muse_kern-ordinances-recheck_20261118-1615.md in the hub incoming folder",
-   "ts": "2026-11-18T16:20:00Z"
-  },
-  {
-   "key": "MID-MUS-02",
-   "by": "muse",
-   "what": "Recheck of Gemini's 1735 parser-case redo (MID-MUS-02): 7/10 REJECT \u2014 21 of 25 cases now agree with build.py (was 0 of 15), 4 precise failures + coverage shortfalls remain; midas_muse_parser-cases-recheck_20261118-1615.md in the Midas incoming folder",
+   "what": "Recheck of Gemini's 1735 redo (HEA-MUS-02): 9/10 ACCEPT — R105.2 exemption splice truly fixed, all defects resolved, regression 6/6; hearth_muse_kern-permits-recheck_20261118-1615.md in the Hearth incoming folder",
    "ts": "2026-11-18T16:20:00Z"
   },
   {
    "key": "MID-GEM-11",
    "by": "muse",
-   "what": "Sebastian first read of the MID-GEM-11 spec: 5/10 REJECT \u2014 A\u2013H structure complete and schema reading strong, but the app it specifies is invented (no such six-tab app/storage exists) and rule E8 inverts the available-balance rule; midas_muse_function-spec-check_20261118-1615.md in the Midas incoming folder",
+   "what": "Sebastian first read of the MID-GEM-11 spec: 5/10 REJECT — A–H structure complete and schema reading strong, but the app it specifies is invented (no such six-tab app/storage exists) and rule E8 inverts the available-balance rule; midas_muse_function-spec-check_20261118-1615.md in the Midas incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "MID-MUS-02",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 parser-case redo (MID-MUS-02): 7/10 REJECT — 21 of 25 cases now agree with build.py (was 0 of 15), 4 precise failures + coverage shortfalls remain; midas_muse_parser-cases-recheck_20261118-1615.md in the Midas incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "OBS-MUS-01",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (OBS-MUS-01): 5/10 REJECT — 0 of 8 dead feeds repaired (rows deleted instead), defect alive in remaining rows; observatory_muse_sources-recheck_20261118-1615.md in the hub incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "POL-MUS-02",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (POL-MUS-02): 8/10 ACCEPT — invented abatement mechanism removed and inverted to the verbatim KCFD position, quote discipline fixed; polis_muse_kern-ordinances-recheck_20261118-1615.md in the hub incoming folder",
    "ts": "2026-11-18T16:20:00Z"
   }
- ]
+ ],
+ "synced": "2026-11-18T20:28:31Z"
 }
