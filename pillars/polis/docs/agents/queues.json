@@ -408,7 +408,7 @@
     {
      "id": "POL-MUS-02",
      "title": "Polis: second reader on Gemini's 'the Kern County rules a homeowner runs into'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-25",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -448,7 +448,8 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "review": "Second read by Sebastian 2026-11-17: scored 4/10 (4 agree / 11 differ; 10 of 15 'quotes' are labels/paraphrases, row 16 invents an enforcement mechanism its source contradicts). polis_muse_kern-ordinances-check_20261117-1725.md in hub incoming."
     }
    ]
   },

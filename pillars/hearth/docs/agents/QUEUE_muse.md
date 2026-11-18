@@ -2,53 +2,6 @@
 
 # Hephaestus Hearth · homework for Muse
 
-Updated 2026-11-17 16:29 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-17 17:27 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
-## 1. HEA-MUS-02 · Hephaestus Hearth: second reader on Gemini's 'when Kern County needs a permit for this deck'
-
-**Due:** 2026-11-25 · **State:** next (starts when the file it checks is in the folder)
-
-**Why:** Nothing Gemini delivers is built on until a second reader has checked it.
-
-**What it unlocks:** Claude builds from the file only after this check.
-
-**Read first:**
-- Gemini's file hearth_gemini_kern-permits_*.md in the folder below (HEA-GEM-17)
-
-**Do this:**
-1. Open Gemini's file. Pick 15 rows at random (every row if fewer).
-2. For each, open its URL and compare every field with the page: agree, or what the page says instead.
-3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
-
-**Make:** `hearth_muse_kern-permits-check_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
-
-**Every field, exactly:**
-- `agree/differ` (agree or differ): differ needs what you found and where
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every differ line says where you looked.
-- [ ] You did not change Gemini's file.
-
-**How many:** 15
-
-**Done when:** Every picked item checked with where you looked.
-
-**How Claude checks it:**
-- Claude re-checks 3 of your differ lines.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
+No homework for Muse in Hephaestus Hearth right now. Check your HOMEWORK doc for the other pillars.

@@ -801,7 +801,7 @@
     {
      "id": "HEA-MUS-02",
      "title": "Hephaestus Hearth: second reader on Gemini's 'when Kern County needs a permit for this deck'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-25",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -841,7 +841,8 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "review": "Second read by Sebastian 2026-11-17: scored 6/10 (11 agree / 4 differ; the permit exemption is spliced — real test is CRC R105.2 item 10: 200 sq ft cap + not serving the exit door). hearth_muse_kern-permits-check_20261117-1725.md in Hearth incoming."
     },
     {
      "id": "HEA-MUS-03",

@@ -7,6 +7,8 @@ The ledger fixes that. It is one file on Google Drive:
 - **File:** `forge-completions.json`, in the **Sebastian** folder (Drive id `1QEaQylVPtfbAczGDBkt4GAwIVGyY372W`, link-shared read-only).
 - **Forge reads it on every page load** and shows any listed task as **delivered**, on top of whatever its queue says. If the file cannot be fetched, Forge falls back to the queues alone — nothing breaks.
 
+**Read-path update (2026-11-18):** Drive download URLs send no CORS headers, so a browser blocks Forge's cross-origin fetch of the Drive file (this also failed the repo's PILLAR-2 proof in CI — the blocked fetch logs as a console error). Forge now reads an in-repo mirror, `docs/agents/completions.json`, on every page load. **Nothing changes for workers:** keep appending to the Drive file (or dropping `DONE_` markers) exactly as below. Sebastian refreshes the mirror from the Drive file whenever he folds entries, and the mirror ships with the next hub push.
+
 ## The end-of-work rule (every AI, every repo)
 
 When you finish a task, before you report it:
