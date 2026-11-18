@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17 16:29 UTC",
+ "updated": "2026-11-17 17:27 UTC",
  "tasks": [
   {
    "due": "2026-11-20",
@@ -124,17 +124,6 @@
   },
   {
    "due": "2026-11-24",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "ARG-MUS-03",
-   "title": "Argus Album: second reader on Gemini's 'the rules for Titan's Phase 2 pro coin photos'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-24",
    "pillar": "athenaeum",
    "pillar_name": "Athenaeum · Idea Vault",
    "ai": "gemini",
@@ -165,17 +154,6 @@
    "title": "Continuity: the function spec, written as the build plan",
    "state": "now",
    "count": 1
-  },
-  {
-   "due": "2026-11-24",
-   "pillar": "continuity",
-   "pillar_name": "Continuity · Sovereign Vault",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "CON-MUS-01",
-   "title": "Continuity: second reader on Gemini's 'what happens to each account when its owner dies or goes silent'",
-   "state": "next",
-   "count": 15
   },
   {
    "due": "2026-11-24",
@@ -440,61 +418,6 @@
    "title": "Selling Pipeline: the function spec, written as the build plan",
    "state": "now",
    "count": 1
-  },
-  {
-   "due": "2026-11-25",
-   "pillar": "bastion",
-   "pillar_name": "Bastion · Mountain Prep",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "BAS-MUS-03",
-   "title": "Bastion: second reader on Gemini's 'a 72-hour kit for four people and pets, with shelf lives'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-25",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "HEA-MUS-02",
-   "title": "Hephaestus Hearth: second reader on Gemini's 'when Kern County needs a permit for this deck'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-25",
-   "pillar": "observatory",
-   "pillar_name": "Observatory",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "OBS-MUS-01",
-   "title": "Observatory: second reader on Gemini's 'primary sources for each subject Observatory watches'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-25",
-   "pillar": "polis",
-   "pillar_name": "Polis · Civic & Legal Watch",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "POL-MUS-02",
-   "title": "Polis: second reader on Gemini's 'the Kern County rules a homeowner runs into'",
-   "state": "next",
-   "count": 15
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "foundry",
-   "pillar_name": "Foundry",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "FDY-MUS-01",
-   "title": "Foundry: second reader on Gemini's 'prior art for each of the 11 inventions'",
-   "state": "next",
-   "count": 15
   },
   {
    "due": "2026-11-27",

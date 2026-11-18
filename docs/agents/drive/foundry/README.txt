@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-17 16:29 UTC · 1 open in this pillar.
+Updated 2026-11-17 17:27 UTC · 1 open in this pillar.
 
 
 - FDY-GRK-03 · Foundry: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
@@ -16,7 +16,7 @@ Updated 2026-11-17 16:29 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-17 16:29 UTC · 2 open in this pillar.
+Updated 2026-11-17 17:27 UTC · 2 open in this pillar.
 
 
 - FDY-GEM-03 · Foundry: prior art for each of the 11 inventions · due 2026-11-23
@@ -26,29 +26,28 @@ Updated 2026-11-17 16:29 UTC · 2 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-17 16:29 UTC · 1 open in this pillar.
+Updated 2026-11-17 17:27 UTC · 0 open in this pillar.
 
 
-- FDY-MUS-01 · Foundry: second reader on Gemini's 'prior art for each of the 11 inventions' · due 2026-11-26 · waits for its input file
-    make: foundry_muse_prior-art-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+No homework for Muse in Foundry right now.
 
 ## ChatGPT
 
-Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
+Updated 2026-11-17 17:27 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Foundry right now.
 
 ## Argon
 
-Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
+Updated 2026-11-17 17:27 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Foundry right now.
 
 ## Hydrogen
 
-Updated 2026-11-17 16:29 UTC · 0 open in this pillar.
+Updated 2026-11-17 17:27 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Foundry right now.

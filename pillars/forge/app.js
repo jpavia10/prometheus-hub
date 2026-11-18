@@ -91,10 +91,11 @@
       D.sources.tproj = "read";
     } else D.sources.tproj = "not reached";
     const wb = await get(ROOT + "docs/antigravity/WORKBOARD.md", "text"); if (wb) { tasks.push(...parseBoard(wb)); D.sources.board = "read"; } else D.sources.board = "not reached";
-    /* The completions ledger (owner, 2026-11-17): one Drive file every AI appends to when it finishes a task, so Forge shows the work as
-       delivered the moment the worker is done, whoever did it, instead of waiting for the integrator to flip the queue in its repo.
-       An entry means DELIVERED (the file is in the named folder), not accepted; the repo queue flip stays the permanent record. */
-    const LEDGER = Q.get("done") || "https://drive.google.com/uc?export=download&id=1QEaQylVPtfbAczGDBkt4GAwIVGyY372W";
+    /* The completions ledger (owner, 2026-11-17; read path fixed 2026-11-18): one Drive file every AI appends to when it finishes a task, so Forge shows the work as
+       delivered the moment the worker is done, whoever did it, instead of waiting for the integrator to flip the queue in its repo. Forge reads an in-repo mirror
+       (docs/agents/completions.json) because Drive download URLs send no CORS headers and browsers block the cross-origin fetch; Sebastian refreshes the mirror
+       from the Drive file whenever he folds entries. An entry means DELIVERED (the file is in the named folder), not accepted; the repo queue flip stays the permanent record. */
+    const LEDGER = Q.get("done") || ROOT + "docs/agents/completions.json";
     const lj = await get(LEDGER);
     if (lj && Array.isArray(lj.done)) {
       const led = new Map(lj.done.filter((e) => e && e.key).map((e) => [e.key, e])); let marked = 0;

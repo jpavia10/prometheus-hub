@@ -347,7 +347,7 @@
     {
      "id": "CON-MUS-01",
      "title": "Continuity: second reader on Gemini's 'what happens to each account when its owner dies or goes silent'",
-     "state": "next",
+     "state": "done",
      "due": "2026-11-24",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -387,7 +387,8 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "review": "Second read by Sebastian 2026-11-17: scored 6/10 (8 agree / 7 differ; Coinbase quote fabricated). continuity_muse_legacy-policies-check_20261117-1725.md in hub incoming."
     }
    ]
   },
