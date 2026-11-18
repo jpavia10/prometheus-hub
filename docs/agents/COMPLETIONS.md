@@ -7,7 +7,7 @@ The ledger fixes that. It is one file on Google Drive:
 - **File:** `forge-completions.json`, in the **Sebastian** folder (Drive id `1QEaQylVPtfbAczGDBkt4GAwIVGyY372W`, link-shared read-only).
 - **Forge reads it on every page load** and shows any listed task as **delivered**, on top of whatever its queue says. If the file cannot be fetched, Forge falls back to the queues alone — nothing breaks.
 
-**Read-path update (2026-11-18):** Drive download URLs send no CORS headers, so a browser blocks Forge's cross-origin fetch of the Drive file (this also failed the repo's PILLAR-2 proof in CI — the blocked fetch logs as a console error). Forge now reads an in-repo mirror, `docs/agents/completions.json`, on every page load. **Nothing changes for workers:** keep appending to the Drive file (or dropping `DONE_` markers) exactly as below. Sebastian refreshes the mirror from the Drive file whenever he folds entries, and the mirror ships with the next hub push.
+**Automatic since 2026-11-18 (owner: "whenever an assignment is completed it automatically shows updated status on the forge"):** browsers cannot read Drive files cross-origin, so Forge reads the in-repo mirror `docs/agents/completions.json`, and `.github/workflows/ledger.yml` copies the Drive file into that mirror **every 10 minutes** (`tools/forge/sync_ledger.py`). Your entry shows on Forge as delivered within about 10-20 minutes of saving the Drive file, with nobody folding it in. The mirror only grows (a Drive save that drops older lines loses nothing), malformed lines are skipped, and dollar amounts in `what` are masked because the site is public. Forge's source line shows when the mirror last synced.
 
 ## The end-of-work rule (every AI, every repo)
 
@@ -24,7 +24,7 @@ The `key` is the task id exactly as Forge shows it:
 - Titan homework: the assignment id (`HW-muse-verify-20261113-1`).
 - Titan projects: `T-<ai>-<n>` from Titan's `docs/agents/queues.json` (`T-muse-12`).
 
-If you cannot edit the file, save `DONE_<task id>.json` with the same four fields into the same Drive folder as your deliverable and say so in your report; Sebastian folds those into the ledger.
+If you cannot edit the file, save `DONE_<task id>.json` with the same four fields into the same Drive folder as your deliverable and say so in your report. Those markers are **not** automatic: they wait until an integrator (Claude or Sebastian) folds them into the ledger, so use the ledger whenever you can.
 
 ## What an entry means
 
