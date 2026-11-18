@@ -1,8 +1,12 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-17 17:27 UTC. 0 open across 0 pillars.
+Updated 2026-11-18 21:39 UTC. 11 open across 2 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
+
+WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold, the original shows within 10-20 minutes.
+
+TITAN RELIQUARY (its own loop, the exception): 5 homework sheets + 4 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -12,3 +16,93 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
+1. [Midas Ledger] MID-MUS-03 · Midas Ledger: second reader on Gemini's 'how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages' · due 2026-11-22 · waits for its input file
+2. [Midas Ledger] MID-MUS-02 · Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser' · due 2026-11-25 · waits for its input file
+
+==================== 1. MIDAS LEDGER ====================
+## 1. MID-MUS-03 · Midas Ledger: second reader on Gemini's 'how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages'
+
+**Due:** 2026-11-22 · **State:** next (starts when the file it checks is in the folder)
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file midas_gemini_flex-terms_*.json in the folder below (MID-GEM-09)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer).
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `midas_muse_flex-terms-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 2. MIDAS LEDGER ====================
+## 2. MID-MUS-02 · Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser'
+
+**Due:** 2026-11-25 · **State:** next (starts when the file it checks is in the folder)
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file midas_gemini_parser-cases_*.json in the folder below (MID-GEM-10)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer).
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `midas_muse_parser-cases-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17 17:27 UTC",
+ "updated": "2026-11-18 21:39 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -36,7 +36,15 @@
    "name": "Midas Ledger",
    "state": "live",
    "live": "https://jpavia10.github.io/midas-ledger/",
-   "open": {}
+   "open": {
+    "grok": 3,
+    "gemini": 3,
+    "muse": 2,
+    "chatgpt": 1,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
   },
   {
    "id": "titan",
@@ -44,10 +52,10 @@
    "state": "live",
    "live": "https://jpavia10.github.io/titan-reliquary-preview/",
    "open": {
-    "grok": null,
-    "gemini": null,
-    "muse": null,
-    "chatgpt": null,
+    "grok": 21,
+    "gemini": 10,
+    "muse": 9,
+    "chatgpt": 0,
     "argon": null,
     "hydrogen": null
    }

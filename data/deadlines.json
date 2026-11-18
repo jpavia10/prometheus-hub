@@ -1,6 +1,50 @@
 {
- "updated": "2026-11-17 17:27 UTC",
+ "updated": "2026-11-18 21:39 UTC",
  "tasks": [
+  {
+   "due": "2026-11-09",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "MID-GRK-01",
+   "title": "Give every debt in the book its APR, minimum, due day, limit and promo end",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-09",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "MID-GRK-02",
+   "title": "A fresh book every Monday by noon PT",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-14",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "chatgpt",
+   "ai_name": "ChatGPT",
+   "id": "MID-GPT-01",
+   "title": "Audit Midas v2 on the made-up book: 20 findings",
+   "state": "now",
+   "count": 20
+  },
+  {
+   "due": "2026-11-19",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-09",
+   "title": "Midas Ledger: how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages",
+   "state": "now",
+   "count": 15
+  },
   {
    "due": "2026-11-20",
    "pillar": "records",
@@ -55,6 +99,28 @@
    "title": "Hephaestus Hearth: when Kern County needs a permit for this deck",
    "state": "now",
    "count": 1
+  },
+  {
+   "due": "2026-11-22",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-10",
+   "title": "Midas Ledger: 25 test cases for the ledger parser",
+   "state": "now",
+   "count": 25
+  },
+  {
+   "due": "2026-11-22",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "MID-MUS-03",
+   "title": "Midas Ledger: second reader on Gemini's 'how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages'",
+   "state": "next",
+   "count": 15
   },
   {
    "due": "2026-11-22",
@@ -311,6 +377,17 @@
   },
   {
    "due": "2026-11-24",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-11",
+   "title": "Midas Ledger: the function spec, written as the build plan",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-24",
    "pillar": "money",
    "pillar_name": "Money · payoff simulator",
    "ai": "gemini",
@@ -418,6 +495,17 @@
    "title": "Selling Pipeline: the function spec, written as the build plan",
    "state": "now",
    "count": 1
+  },
+  {
+   "due": "2026-11-25",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "MID-MUS-02",
+   "title": "Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser'",
+   "state": "next",
+   "count": 15
   },
   {
    "due": "2026-11-27",
@@ -592,6 +680,17 @@
    "ai_name": "Grok",
    "id": "KIN-GRK-02",
    "title": "Kin: second reader on Gemini's 'the function spec, written as the build plan'",
+   "state": "next",
+   "count": 10
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "MID-GRK-04",
+   "title": "Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan'",
    "state": "next",
    "count": 10
   },

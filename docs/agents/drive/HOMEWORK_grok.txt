@@ -1,8 +1,12 @@
 HOMEWORK — Grok (every pillar)
 
-Updated 2026-11-17 17:27 UTC. 25 open across 25 pillars.
+Updated 2026-11-18 21:39 UTC. 49 open across 27 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
+
+WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold, the original shows within 10-20 minutes.
+
+TITAN RELIQUARY (its own loop, the exception): 11 homework sheets + 10 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Grok' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_grok.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -12,34 +16,98 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
-1. [Prometheus Hub] HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-2. [Kairos Meridian] KAI-GRK-03 · Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-3. [Hephaestus Hearth] HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-4. [Garage] GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-5. [Apollo Temple] APO-GRK-02 · Apollo Temple: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-6. [Money · payoff simulator] MON-GRK-02 · Money: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-7. [Selling Pipeline] SEL-GRK-03 · Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-8. [Records · Paper Killer] REC-GRK-03 · Records: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-9. [Icarus Stake] ICA-GRK-03 · Icarus Stake: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-10. [Hermes Post] HER-GRK-03 · Hermes Post: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-11. [Bossa Piano Studio] PIA-GRK-02 · Bossa Piano Studio: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-12. [Bastion · Mountain Prep] BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-13. [Athenaeum · Idea Vault] ATH-GRK-02 · Athenaeum: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-14. [Odyssey · Trips & Away Mode] ODY-GRK-02 · Odyssey: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-15. [Privacy · CA DROP] PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-16. [Argus Album] ARG-GRK-03 · Argus Album: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-17. [Ludus Arcade] GAM-GRK-02 · Ludus Arcade: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-18. [Forge] FOR-GRK-02 · Forge: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-19. [Foundry] FDY-GRK-03 · Foundry: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-20. [Observatory] OBS-GRK-03 · Observatory: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-21. [Kin] KIN-GRK-02 · Kin: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-22. [Aether · Atmospheric & Field Lab] AET-GRK-03 · Aether: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-23. [Polis · Civic & Legal Watch] POL-GRK-03 · Polis: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-24. [Mythos · Creative & Lore Studio] MYT-GRK-02 · Mythos: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
-25. [Continuity · Sovereign Vault] CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+1. [Midas Ledger] MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
+2. [Midas Ledger] MID-GRK-02 · A fresh book every Monday by noon PT · due 2026-11-09
+3. [Prometheus Hub] HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+4. [Kairos Meridian] KAI-GRK-03 · Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+5. [Midas Ledger] MID-GRK-04 · Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+6. [Hephaestus Hearth] HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+7. [Garage] GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+8. [Apollo Temple] APO-GRK-02 · Apollo Temple: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+9. [Money · payoff simulator] MON-GRK-02 · Money: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+10. [Selling Pipeline] SEL-GRK-03 · Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+11. [Records · Paper Killer] REC-GRK-03 · Records: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+12. [Icarus Stake] ICA-GRK-03 · Icarus Stake: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+13. [Hermes Post] HER-GRK-03 · Hermes Post: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+14. [Bossa Piano Studio] PIA-GRK-02 · Bossa Piano Studio: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+15. [Bastion · Mountain Prep] BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+16. [Athenaeum · Idea Vault] ATH-GRK-02 · Athenaeum: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+17. [Odyssey · Trips & Away Mode] ODY-GRK-02 · Odyssey: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+18. [Privacy · CA DROP] PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+19. [Argus Album] ARG-GRK-03 · Argus Album: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+20. [Ludus Arcade] GAM-GRK-02 · Ludus Arcade: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+21. [Forge] FOR-GRK-02 · Forge: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+22. [Foundry] FDY-GRK-03 · Foundry: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+23. [Observatory] OBS-GRK-03 · Observatory: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+24. [Kin] KIN-GRK-02 · Kin: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+25. [Aether · Atmospheric & Field Lab] AET-GRK-03 · Aether: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+26. [Polis · Civic & Legal Watch] POL-GRK-03 · Polis: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+27. [Mythos · Creative & Lore Studio] MYT-GRK-02 · Mythos: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+28. [Continuity · Sovereign Vault] CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
 
-==================== 1. PROMETHEUS HUB ====================
-## 1. HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 1. MIDAS LEDGER ====================
+## 1. MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end
+
+**Due:** 2026-11-09 · **State:** now
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/README.md
+- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/docs/BOOK_SCHEMA.md
+
+**Do this:**
+1. For every card and loan in the private ledger, add: apr (percent), min_payment, due_day (1-31), credit_limit (cards), promo_apr and promo_end (YYYY-MM-DD) when there is one, as_of (the statement date you read them from).
+2. Read them from the statements and alerts in Joseph's email or the lender's site, never from memory.
+3. Rebuild and encrypt the book with publish.sh as you do now; the plaintext never goes to Drive, Discord or GitHub.
+
+**Make:** `the encrypted book (index.html #vault) via publish.sh`
+
+**Save in:** jpavia10/midas-ledger, a branch grok/... and a pull request
+
+**Shape:** `docs/BOOK_SCHEMA.md section 'debts'`
+
+**How many:** 1
+
+**Done when:** On the Debt screen, no card or loan shows 'APR missing' or 'minimum missing'.
+
+**How Claude checks it:**
+- Joseph opens the Debt screen; the app lists every debt missing a field.
+- test/book.test.mjs checks the shape of every debt.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a number guessed or carried over without an as_of date
+- plaintext balances anywhere outside the encrypted book
+
+==================== 2. MIDAS LEDGER ====================
+## 2. MID-GRK-02 · A fresh book every Monday by noon PT
+
+**Due:** 2026-11-09 · **State:** now
+
+**Read first:**
+- the 4 Plaid accounts
+- Joseph's email (bills, statements, alerts)
+
+**Do this:**
+1. Every Monday by 12:00 PT: refresh the 4 Plaid accounts, update balances, holds, stale/past-due/need-you marks, rebuild and encrypt with publish.sh.
+2. Add one log line saying what changed (counts only, no amounts).
+
+**Make:** `the encrypted book`
+
+**Save in:** jpavia10/midas-ledger
+
+**Shape:** `as now`
+
+**How many:** 1
+
+**Done when:** The app's 'built' stamp is never older than 7 days.
+
+**How Claude checks it:**
+- the app shows the build age; Claude checks the commit dates
+
+**Not done (sent back) if:** (and the rules at the top)
+- a week missed
+
+==================== 3. PROMETHEUS HUB ====================
+## 3. HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -83,8 +151,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 2. KAIROS MERIDIAN ====================
-## 2. KAI-GRK-03 · Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 4. KAIROS MERIDIAN ====================
+## 4. KAI-GRK-03 · Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -128,8 +196,53 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 3. HEPHAESTUS HEARTH ====================
-## 3. HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 5. MIDAS LEDGER ====================
+## 5. MID-GRK-04 · Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan'
+
+**Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file midas_gemini_function-spec_*.md in the folder below (MID-GEM-11)
+
+**Do this:**
+1. Open Gemini's file and the code it describes.
+2. Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.
+3. Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.
+4. List up to 10 things the pillar needs that the spec leaves out, each with why.
+
+**Make:** `midas_grok_function-spec-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 6. HEPHAESTUS HEARTH ====================
+## 6. HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -173,8 +286,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 4. GARAGE ====================
-## 4. GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 7. GARAGE ====================
+## 7. GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -218,8 +331,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 5. APOLLO TEMPLE ====================
-## 5. APO-GRK-02 · Apollo Temple: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 8. APOLLO TEMPLE ====================
+## 8. APO-GRK-02 · Apollo Temple: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -263,8 +376,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 6. MONEY · PAYOFF SIMULATOR ====================
-## 6. MON-GRK-02 · Money: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 9. MONEY · PAYOFF SIMULATOR ====================
+## 9. MON-GRK-02 · Money: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -308,8 +421,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 7. SELLING PIPELINE ====================
-## 7. SEL-GRK-03 · Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 10. SELLING PIPELINE ====================
+## 10. SEL-GRK-03 · Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -353,8 +466,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 8. RECORDS · PAPER KILLER ====================
-## 8. REC-GRK-03 · Records: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 11. RECORDS · PAPER KILLER ====================
+## 11. REC-GRK-03 · Records: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -398,8 +511,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 9. ICARUS STAKE ====================
-## 9. ICA-GRK-03 · Icarus Stake: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 12. ICARUS STAKE ====================
+## 12. ICA-GRK-03 · Icarus Stake: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -443,8 +556,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 10. HERMES POST ====================
-## 10. HER-GRK-03 · Hermes Post: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 13. HERMES POST ====================
+## 13. HER-GRK-03 · Hermes Post: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -488,8 +601,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 11. BOSSA PIANO STUDIO ====================
-## 11. PIA-GRK-02 · Bossa Piano Studio: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 14. BOSSA PIANO STUDIO ====================
+## 14. PIA-GRK-02 · Bossa Piano Studio: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -533,8 +646,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 12. BASTION · MOUNTAIN PREP ====================
-## 12. BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 15. BASTION · MOUNTAIN PREP ====================
+## 15. BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -578,8 +691,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 13. ATHENAEUM · IDEA VAULT ====================
-## 13. ATH-GRK-02 · Athenaeum: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 16. ATHENAEUM · IDEA VAULT ====================
+## 16. ATH-GRK-02 · Athenaeum: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -623,8 +736,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 14. ODYSSEY · TRIPS & AWAY MODE ====================
-## 14. ODY-GRK-02 · Odyssey: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 17. ODYSSEY · TRIPS & AWAY MODE ====================
+## 17. ODY-GRK-02 · Odyssey: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -668,8 +781,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 15. PRIVACY · CA DROP ====================
-## 15. PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 18. PRIVACY · CA DROP ====================
+## 18. PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -713,8 +826,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 16. ARGUS ALBUM ====================
-## 16. ARG-GRK-03 · Argus Album: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 19. ARGUS ALBUM ====================
+## 19. ARG-GRK-03 · Argus Album: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -758,8 +871,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 17. LUDUS ARCADE ====================
-## 17. GAM-GRK-02 · Ludus Arcade: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 20. LUDUS ARCADE ====================
+## 20. GAM-GRK-02 · Ludus Arcade: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -803,8 +916,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 18. FORGE ====================
-## 18. FOR-GRK-02 · Forge: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 21. FORGE ====================
+## 21. FOR-GRK-02 · Forge: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -848,8 +961,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 19. FOUNDRY ====================
-## 19. FDY-GRK-03 · Foundry: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 22. FOUNDRY ====================
+## 22. FDY-GRK-03 · Foundry: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -893,8 +1006,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 20. OBSERVATORY ====================
-## 20. OBS-GRK-03 · Observatory: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 23. OBSERVATORY ====================
+## 23. OBS-GRK-03 · Observatory: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -938,8 +1051,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 21. KIN ====================
-## 21. KIN-GRK-02 · Kin: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 24. KIN ====================
+## 24. KIN-GRK-02 · Kin: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -983,8 +1096,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 22. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 22. AET-GRK-03 · Aether: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 25. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 25. AET-GRK-03 · Aether: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -1028,8 +1141,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 23. POLIS · CIVIC & LEGAL WATCH ====================
-## 23. POL-GRK-03 · Polis: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 26. POLIS · CIVIC & LEGAL WATCH ====================
+## 26. POL-GRK-03 · Polis: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -1073,8 +1186,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 24. MYTHOS · CREATIVE & LORE STUDIO ====================
-## 24. MYT-GRK-02 · Mythos: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 27. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 27. MYT-GRK-02 · Mythos: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
@@ -1118,8 +1231,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 25. CONTINUITY · SOVEREIGN VAULT ====================
-## 25. CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan'
+==================== 28. CONTINUITY · SOVEREIGN VAULT ====================
+## 28. CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan'
 
 **Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
 
