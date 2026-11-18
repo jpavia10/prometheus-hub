@@ -9,6 +9,10 @@ The ledger fixes that. It is one file on Google Drive:
 
 **Automatic since 2026-11-18 (owner: "whenever an assignment is completed it automatically shows updated status on the forge"):** browsers cannot read Drive files cross-origin, so Forge reads the in-repo mirror `docs/agents/completions.json`, and `.github/workflows/ledger.yml` copies the Drive file into that mirror **every 10 minutes** (`tools/forge/sync_ledger.py`). Your entry shows on Forge as delivered within about 10-20 minutes of saving the Drive file, with nobody folding it in. The mirror only grows (a Drive save that drops older lines loses nothing), malformed lines are skipped, and dollar amounts in `what` are masked because the site is public. Forge's source line shows when the mirror last synced.
 
+**Copies and markers fold in by themselves too.** Some workers cannot replace a Drive file, so they upload a new `forge-completions.json` beside the original (Gemini does) or a `DONE_<key>.json` marker. Those files are private, so the 10-minute job cannot see them; an hourly scheduled Claude run (no auditor) searches Drive for every `forge-completions*.json` copy and `DONE_*.json` marker from the last two days, downloads them into one folder and runs `tools/forge/sync_ledger.py docs/agents/completions.json --source-dir <folder>`, then pushes when the mirror changed. So a copy or a marker shows on Forge within about an hour; an edit to the original file within about 10-20 minutes.
+
+**Titan projects** count under either name: the Forge id `T-<ai>-<n>` or the project's own `run_id` (for example `GT-LEDGER-p2`, the name its instructions tell you to put in the file).
+
 ## The end-of-work rule (every AI, every repo)
 
 When you finish a task, before you report it:

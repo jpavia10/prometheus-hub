@@ -86,7 +86,9 @@
     const tp = await get(TITAN + "docs/agents/queues.json");
     if (tp && Array.isArray(tp.agents)) {
       for (const a of tp.agents) for (const t of a.tasks || []) { const st = t.state || "now", open = ["now", "next", "later", "always"].includes(st);
-        tasks.push({ ai: ai(a.id), src: "tproj", where: "Titan", id: "T-" + a.id + "-" + t.n, title: t.title, state: open ? st : "done", closedAs: open ? "" : st, due: t.due || "", items: 0,
+        // A Titan project names its own run_id ("provenance ... run_id 'GT-LEDGER-p2'"); workers report that name in the ledger, so it counts as this task's key too.
+        const runId = ((t.what || "").match(/run_id '([A-Za-z0-9._:-]+)'/) || [])[1] || "";
+        tasks.push({ ai: ai(a.id), src: "tproj", where: "Titan", id: "T-" + a.id + "-" + t.n, alias: runId, title: t.title, state: open ? st : "done", closedAs: open ? "" : st, due: t.due || "", items: 0,
           detail: { what: t.what || "", done: t.done_when || "", link: `${TRAW}docs/agents/QUEUE_${a.id}.md` } }); }
       D.sources.tproj = "read";
     } else D.sources.tproj = "not reached";
@@ -100,7 +102,7 @@
     const lj = await get(LEDGER);
     if (lj && Array.isArray(lj.done)) {
       const led = new Map(lj.done.filter((e) => e && e.key).map((e) => [e.key, e])); let marked = 0;
-      for (const t of tasks) { const e = led.get(t.id); if (e && t.state !== "done") { t.state = "done"; t.closedAs = "delivered"; t.detail = { ...(t.detail || {}), delivered: `${e.what || "the deliverable"} · by ${e.by || "?"} · ${String(e.ts || "").slice(0, 10)} (completions ledger: delivered, awaiting the integrator's check; the queue in its own repo still shows it open until the flip lands)` }; marked++; } }
+      for (const t of tasks) { const e = led.get(t.id) || (t.alias && led.get(t.alias)); if (e && t.state !== "done") { t.state = "done"; t.closedAs = "delivered"; t.detail = { ...(t.detail || {}), delivered: `${e.what || "the deliverable"} · by ${e.by || "?"} · ${String(e.ts || "").slice(0, 10)} (completions ledger: delivered, awaiting the integrator's check; the queue in its own repo still shows it open until the flip lands)` }; marked++; } }
       const synced = lj.synced ? ` · synced ${new Date(lj.synced).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}` : "";
       D.sources.done = (marked ? `${marked} delivered, awaiting the check` : "read, nothing new") + synced;
     } else D.sources.done = "not reached";
