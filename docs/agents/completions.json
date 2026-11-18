@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-18T16:20:00Z",
+ "updated": "2026-11-18T19:15:00Z",
  "about": "Forge completions ledger. When ANY fleet AI finishes a task, it appends one entry here: {key, by, what, ts}. key = the task id exactly as Forge shows it (hub/Midas task id like KAI-GEM-10 or MID-MUS-03; Titan homework id like HW-muse-verify-20261113-1; Titan project key T-<ai>-<n> like T-muse-12). Forge (Prometheus Hub, pillars/forge) reads this file live and shows a listed task as 'delivered' even before the integrator flips the queue in its repo. An entry means DELIVERED (the file is in the named Drive folder), not accepted: the integrator's check still decides acceptance, and the queue flip in the repo remains the permanent record. If you cannot edit this file, save DONE_<key>.json with the same fields into the same Drive folder as your deliverable and say so in your report; Sebastian folds those in.",
  "done": [
   {
@@ -418,6 +418,54 @@
    "ts": "2026-11-18T16:20:00Z"
   },
   {
+   "key": "HW-gemini-cite-20261117-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-cite-20261117-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (4 lines: EC.KM.37 2004, GT.KM.277.6a 2010, JM.KM.190 2015, TT.KM.32 2014 checked on Numista N#5712, N#42670, N#14370, N#1159 and secondary catalogues)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261107-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-fill-20261107-1.jsonl (and re-issued HW-gemini-fill-20261118-1) in Titan Reliquary/collection-incoming (AI change files) (2 lines: GT.KM.277.6a and JM.KM.190 design.designers verified on Numista N#42670, N#14370, N#934)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261117-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-fill-20261117-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (8 lines: JM.KM.65, JM.KM.146, JM.KM.189 credited to Christopher Ironside via Numista N#934/N#6476; IN.KM.92.2, JP.Y.73a, JP.Y.74, MX.KM.415, MX.KM.424 verified on Numista/Greysheet)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261118-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-fill-20261118-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (2 lines: GT.KM.277.6a and JM.KM.190 design.designers verified on Numista N#42670, N#14370, N#934)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-read-mint-20261112-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-read-mint-20261112-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (6 lines: C287 Italy 1979 50 lire mint mark R read below 0 of L.50 on C287_Italy_1979_50Lire_rev.jpg; C006 and C050 flagged for obverse reshoot)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-research-20261115-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-research-20261115-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 line: C300 Bahamas 1984 25 cents N#9352 1984 FM proof-only mintage 1,036 verified; Drive photo check confirms has_photo=false / requires physical coin)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-verify-20261112-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-verify-20261112-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 line: C053 Germany 2011 20 euro cent mint mark verified on C053_Germany_2011-J_20EuroCent_rev.jpeg)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-verify-20261116-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-verify-20261116-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 line: C037 Germany 2002 10 euro cent mint mark J below 2002 verified on C037_Germany_2002_10EuroCent_rev.jpeg)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
    "key": "MID-GEM-11",
    "by": "muse",
    "what": "Sebastian first read of the MID-GEM-11 spec: 5/10 REJECT — A–H structure complete and schema reading strong, but the app it specifies is invented (no such six-tab app/storage exists) and rule E8 inverts the available-balance rule; midas_muse_function-spec-check_20261118-1615.md in the Midas incoming folder",
@@ -440,7 +488,127 @@
    "by": "muse",
    "what": "Recheck of Gemini's 1735 redo (POL-MUS-02): 8/10 ACCEPT — invented abatement mechanism removed and inverted to the verbatim KCFD position, quote discipline fixed; polis_muse_kern-ordinances-recheck_20261118-1615.md in the hub incoming folder",
    "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-24",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1615_GT-LEDGER-p1.jsonl in Titan Reliquary/collection-incoming (AI change files) (90 lines: items 1-90 C001-C047 confirmed from specimen photos in Titan Reliquary/_raw_capture/_phase1/coins) (Titan project task T-gemini-24; folded from Gemini's DONE_GT-LEDGER-p1 marker)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-25",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1615_GT-LEDGER-p2.jsonl in Titan Reliquary/collection-incoming (AI change files) (90 lines: items 91-180 C047-C090 confirmed from specimen photos in Titan Reliquary/_raw_capture/_phase1/coins) (Titan project task T-gemini-25; folded from Gemini's DONE_GT-LEDGER-p2 marker)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-32",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_GT-AIFACTS-p1.jsonl in Titan Reliquary/collection-incoming (AI change files) (52 lines: items 1-52 of titan-ai-facts.json replaced with cited Numista N# Obverse/Reverse design descriptions) (Titan project task T-gemini-32; folded from Gemini's DONE_GT-AIFACTS-p1 marker)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-33",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_GT-AIFACTS-p2.jsonl in Titan Reliquary/collection-incoming (AI change files) (51 lines: items 53-103 of titan-ai-facts.json replaced with cited Numista N# Obverse/Reverse design descriptions and dated price table rows) (Titan project task T-gemini-33; folded from Gemini's DONE_GT-AIFACTS-p2 marker)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-26",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p3.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-26; folded from Gemini's DONE_GT-LEDGER-p3 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-27",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p4.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-27; folded from Gemini's DONE_GT-LEDGER-p4 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-28",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p5.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-28; folded from Gemini's DONE_GT-LEDGER-p5 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-29",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p6.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-29; folded from Gemini's DONE_GT-LEDGER-p6 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-30",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p7.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-30; folded from Gemini's DONE_GT-LEDGER-p7 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-31",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p8.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-31; folded from Gemini's DONE_GT-LEDGER-p8 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-34",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p1.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-34; folded from Gemini's DONE_GT-SECOND-p1 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-35",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p2.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-35; folded from Gemini's DONE_GT-SECOND-p2 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-36",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p3.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-36; folded from Gemini's DONE_GT-SECOND-p3 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-37",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p4.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-37; folded from Gemini's DONE_GT-SECOND-p4 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-38",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p5.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-38; folded from Gemini's DONE_GT-SECOND-p5 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-39",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p6.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-39; folded from Gemini's DONE_GT-SECOND-p6 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-40",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p7.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-40; folded from Gemini's DONE_GT-SECOND-p7 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-41",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p8.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-41; folded from Gemini's DONE_GT-SECOND-p8 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-42",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p9.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-42; folded from Gemini's DONE_GT-SECOND-p9 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-NOID",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1915_T-gemini-NOID.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T19:15:00Z"
   }
  ],
- "synced": "2026-11-18T20:28:31Z"
+ "synced": "2026-11-18T20:38:15Z"
 }
