@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-18] The Forge updates itself when an AI finishes (Claude), shell cache d30
+- Owner: "whenever an assignment is completed it automatically shows updated status on the forge", not waiting on an auditor. `.github/workflows/ledger.yml` copies the Drive ledger `forge-completions.json` into `docs/agents/completions.json` every 10 minutes (`tools/forge/sync_ledger.py`: merge-only, malformed lines skipped, dollar amounts masked); the bot's push redeploys Pages by itself. First runs: 73 to 101 entries from the Drive file, then 171 after folding the three private copies Gemini uploaded beside it and its DONE_ markers.
+- Forge counts a Titan project under its own run_id too (GT-LEDGER-p2 ...), so Gemini's 19 ledger and second-source parts show as delivered; the source line shows when the ledger last synced. Private copies and markers still need a Drive reader: an hourly fold by Claude is proposed to the owner (needs his OK).
+
 ### [2026-11-16] Homework rewritten: detailed and legit; Midas included (Claude)
 - Owner: homework hyperdetailed, legit not busywork (the nutrition and exercise sets were dumb), Midas is Claude's too. 108 tasks withdrawn (padding, computable tables, stale items, generic feature lists) and 92 written to a new standard: what it unlocks, every field defined, a finished example, a self-check. Every pillar and Midas has a Gemini function spec (A today, B stories, C data, D screens, E edge cases, F acceptance tests, G order of work, H must not), Grok checks each against the code; Muse second-reads the data tasks. Open: Gemini 47, Grok 28, Muse 21, ChatGPT 6 (plus Titan). The Forge reads Midas' queue too.
 - Drive: the seven AI pages (WORK QUEUE for Gemini, Grok, Muse; HOMEWORK for Gemini, Grok, Muse, ChatGPT) are fresh docs with the same names in the same folders; the older copies are renamed "(superseded 2026-11-16) ..." and point to the new ones, and `pillars.json` `drive.homework_docs` links the new ones.
