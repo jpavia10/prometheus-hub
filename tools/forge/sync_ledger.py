@@ -15,7 +15,11 @@ Rules:
 - If Drive cannot be read or the file is not ledger JSON, the mirror stays as it is and the run says why (exit 0, so a
   Drive hiccup does not mail a failure every 10 minutes).
 
-Usage: sync_ledger.py MIRROR [--source URL_OR_PATH]   (default source: the Drive file, id below)
+Usage: sync_ledger.py MIRROR [--source URL_OR_PATH ...] [--source-dir DIR]
+  Default source: the Drive file (id below). --source may repeat; --source-dir reads every *.json in DIR. A source may be a whole
+  ledger ({"done": [...]}, e.g. the extra forge-completions.json copies Gemini uploads beside the original), a list of entries, or
+  one entry (a DONE_<key>.json marker). The hourly fold (docs/agents/COMPLETIONS.md) downloads the private copies and markers
+  into a folder and runs this with --source-dir.
 Exit 0 always; prints "changed" or "unchanged" on the last line for the workflow.
 """
 import datetime as dt
@@ -82,20 +86,41 @@ def main(argv):
         print(__doc__)
         return 0
     mirror_path = argv[0]
-    src = argv[argv.index("--source") + 1] if "--source" in argv else DEFAULT_SOURCE
+    srcs = [argv[i + 1] for i, a in enumerate(argv[:-1]) if a == "--source"]
+    if "--source-dir" in argv:
+        import glob, os
+        d = argv[argv.index("--source-dir") + 1]
+        srcs += sorted(glob.glob(os.path.join(d, "*.json")))
+    if not srcs:
+        srcs = [DEFAULT_SOURCE]
     try:
         with open(mirror_path, encoding="utf-8") as f:
             mirror = json.load(f)
     except FileNotFoundError:
         mirror = {"version": 1, "done": []}
-    try:
-        drive = json.loads(read_source(src))
-        if not isinstance(drive, dict) or not isinstance(drive.get("done"), list):
-            raise ValueError("no 'done' list")
-    except Exception as err:  # Drive down, not shared, HTML interstitial, bad JSON: keep the mirror
-        note(f"ledger not read ({type(err).__name__}: {err}); mirror unchanged")
+    incoming, meta, read = [], {}, 0
+    for src in srcs:
+        try:
+            doc = json.loads(read_source(src))
+        except Exception as err:  # Drive down, not shared, HTML interstitial, bad JSON: skip this source
+            note(f"{src.rsplit('/', 1)[-1]} not read ({type(err).__name__}: {str(err)[:120]})")
+            continue
+        if isinstance(doc, dict) and isinstance(doc.get("done"), list):
+            incoming += doc["done"]
+            meta.update({k: doc[k] for k in ("about", "version") if k in doc})
+        elif isinstance(doc, list):
+            incoming += doc
+        elif isinstance(doc, dict) and "key" in doc:
+            incoming.append(doc)
+        else:
+            note(f"{src.rsplit('/', 1)[-1]} is not a ledger, a list of entries or a DONE marker")
+            continue
+        read += 1
+    if not read:
+        note("no source could be read; mirror unchanged")
         print("unchanged")
         return 0
+    drive = {"done": incoming, **meta}
 
     merged, skipped = {}, 0
     for e in list(mirror.get("done", [])) + drive["done"]:
