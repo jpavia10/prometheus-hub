@@ -89,6 +89,24 @@ with sync_playwright() as p:
               ok, f"{w['worlds']} worlds ({w['painted']} of {w['levels']} levels painted, home {w['home']}); missing {w['miss'][:4]}; '{s0['title']}' painted {s0['art']}, crest opacity {s0['crest']}; title screen {'home painting' if 'world_home' in boot else boot[:60]}" + (f"; errors {bw[:2]}" if bw else ""))
     except Exception as e: proof("MENU-2", "Every level stands in its own painted world", False, "did not finish: " + str(e)[:200])
     cw.close()
+    # TODAY-1 (2026-11-19, the hub's weakest link): on a fresh device the home's Today leads with the real deadlines it knows without any pillar
+    # being opened (Kern County, California and federal dates from Kairos), holidays only fill; the daily background run of the publishing
+    # pillars fills the shared deadlines without a visit
+    ct = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pt = ct.new_page(); bt = []; pt.on("pageerror", lambda e: bt.append(str(e)[:120]))
+    if MOCK: pt.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pt.route("https://api.weather.gov/**", lambda route, request: route.abort())
+    try:
+        pt.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pt.wait_for_selector(".mn-today .mn-trow", timeout=20000); pt.wait_for_timeout(900)
+        t0 = pt.evaluate("""async () => { const f = await import(new URL('deck/core/feeds.js', document.baseURI).href); const cds = f.countdowns(3, '2026-11-20');
+          return { rows: [...document.querySelectorAll('.mn-today .mn-trow b')].map((x) => x.textContent), hol: cds.filter((r) => r.tone === 'holiday').length,
+            first: cds[0] ? cds[0].date + ' ' + cds[0].title : '' }; }""")
+        pt.goto(f"{URL}?now={NOW}&home=menu&sweep=now#/", wait_until="load"); pt.wait_for_function("() => window.__deck && window.__deck.state.sweep", timeout=240000)
+        sw = pt.evaluate("() => ({ ...window.__deck.state.sweep, sources: [...new Set(JSON.parse(localStorage.getItem('prometheus.bus.deadlines') || '[]').map((r) => r.source))] })")
+        kern = [r for r in t0["rows"] if "Kern County" in r]
+        ok = len(t0["rows"]) == 3 and len(kern) >= 2 and t0["hol"] == 0 and t0["first"].startswith("2026-11-30") and sw["ran"] >= 14 and sw["after"] >= 50 and len(sw["sources"]) >= 3 and not bt
+        proof("TODAY-1", "The core sees every deadline: a fresh device's Today leads with the real Kern / California deadlines, holidays only fill, and the daily background run fills the shared deadlines without opening a pillar",
+              ok, f"Today: {t0['rows']}; holidays among the next 3: {t0['hol']}; next: {t0['first']}; background run: {sw['ran']} pillars, deadlines {sw['before']} -> {sw['after']} from {len(sw['sources'])} sources" + (f"; errors {bt[:2]}" if bt else ""))
+    except Exception as e: proof("TODAY-1", "The core sees every deadline", False, "did not finish: " + str(e)[:200])
+    ct.close()
 
     # PILLAR: the shared pillar shell (crest, automatic sections, dock), checked on the long Piano page
     c3 = b.new_context(viewport={"width": 390, "height": 844}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))

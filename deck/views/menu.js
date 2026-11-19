@@ -162,9 +162,15 @@ export function menu(ctx, opts = {}) {
   const W = world(); const sky = document.getElementById("sky"); (sky && sky.parentNode ? sky.after(...W.els) : document.body.prepend(...W.els)); document.body.classList.add("menu-on");
 
   /* Today: the next things across every pillar (the calendar, the bus, the bills), then the next big date */
-  const soon = within(24, now).filter((r) => !r.done).slice(0, 2); const cd = countdowns(2, t);
-  const todayRows = soon.length ? soon.map((r) => h("a.mn-trow", { href: r.go || `#/time/day/${r.date}` }, h("i.mn-dot" + ((r.weight || 0) >= 2 ? ".hard" : "")), h("b", r.title), h("small", untilText(r, now))))
-    : cd.slice(0, 2).map((r) => h("a.mn-trow", { href: r.go || "#/time/agenda" }, h("i.mn-dot.calm"), h("b", r.title), h("small", fmtDay(r.date))));
+  /* Today: the next 24 h first, then the next real deadlines across every pillar (county, state and federal dates, bills, what the pillars
+     publish) with the days left; holidays only fill (2026-11-19: it used to show holidays and nothing else). */
+  const soon = within(24, now).filter((r) => !r.done).slice(0, 3); const seenK = new Set(soon.map((r) => r.key));
+  const left = (d) => { const n = Math.round((new Date(d + "T12:00:00") - new Date(t + "T12:00:00")) / 864e5); return n <= 0 ? "today" : n === 1 ? "tomorrow" : `${n} d`; };
+  const short = (d) => `${monName(Number(d.slice(5, 7)), 1)} ${Number(d.slice(8))}`;
+  const cd = countdowns(6, t).filter((r) => !seenK.has(r.key)).slice(0, Math.max(0, 3 - soon.length));
+  const todayRows = [...soon.map((r) => h("a.mn-trow", { href: r.go || `#/time/day/${r.date}` }, h("i.mn-dot" + ((r.weight || 0) >= 2 ? ".hard" : "")), h("b", r.title), h("small", untilText(r, now)))),
+    ...cd.map((r) => { const l = left(r.date), hot = r.tone !== "holiday" && /^(today|tomorrow|[1-7] d)$/.test(l);
+      return h("a.mn-trow", { href: r.go || "#/time/agenda", title: [r.title, r.agency].filter(Boolean).join(" · ") }, h("i.mn-dot" + (r.tone === "holiday" ? ".calm" : hot ? ".hard" : "")), h("b", r.title), h("small", `${short(r.date)} · ${l}`)); })];
   const today_ = h("a.mn-today", { href: "#/time", "aria-label": "Today across every pillar" },
     h("span.mn-tk", h("span", "Today"), h("small", `${dowName(t, 1)} · ${monName(Number(t.slice(5, 7)), 1)} ${Number(t.slice(8))}`), h("small.mn-clear", soon.length ? `${within(24, now).filter((r) => !r.done).length} in the next 24 h` : "clear for 24 h")),
     todayRows.length ? h("span.mn-trows", ...todayRows) : h("span.mn-trows", h("span.mn-trow", h("i.mn-dot.calm"), h("b", "Nothing dated yet"), h("small", "add one with +"))));
