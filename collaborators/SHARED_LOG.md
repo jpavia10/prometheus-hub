@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-19] Ledger folded twice a day; Muse checks Gemini's redo batch; Drive homework docs point to GitHub (Claude)
+- Gemini's three extra `forge-completions.json` copies were folded into `docs/agents/completions.json` (171 entries). Every homework page now says in bold: edit the one original ledger, never upload a copy. A scheduled fold at 11:44 and 22:44 Pacific downloads copies and DONE markers once the owner adds Google Drive to that scheduled task (the API could not attach it). GitHub runs the 10-minute sync late on this account, so the Forge catches up a few times a day, not every 10 minutes.
+- New HUB-MUS-03: Muse second-reads Gemini's 23 redo files from 2026-11-18 (`*_20261118-1940`); nothing from them is built until checked. The four Drive docs `HOMEWORK — {AI}` were copies from Nov 16 (Gemini's still said 85 open; the live page says 46): they now only point to `docs/agents/drive/HOMEWORK_{ai}.txt` and the QUEUE pages, with the ledger rule.
+
 ### [2026-11-18] The Forge updates itself when an AI finishes (Claude), shell cache d30
 - Owner: "whenever an assignment is completed it automatically shows updated status on the forge", not waiting on an auditor. `.github/workflows/ledger.yml` copies the Drive ledger `forge-completions.json` into `docs/agents/completions.json` every 10 minutes (`tools/forge/sync_ledger.py`: merge-only, malformed lines skipped, dollar amounts masked); the bot's push redeploys Pages by itself. First runs: 73 to 101 entries from the Drive file, then 171 after folding the three private copies Gemini uploaded beside it and its DONE_ markers.
 - Forge counts a Titan project under its own run_id too (GT-LEDGER-p2 ...), so Gemini's 19 ledger and second-source parts show as delivered; the source line shows when the ledger last synced. Private copies and markers still need a Drive reader: an hourly fold by Claude is proposed to the owner (needs his OK).
