@@ -10,16 +10,31 @@
   field({ count: 800, at: [0.74, 0.34], scale: 0.22, glyph: (n) => [...G.poly(Math.round(n * 0.6), [[-0.9, 0.5], [-0.2, -0.4], [0.5, 0.2], [0.9, -0.6]]), ...G.ring(Math.round(n * 0.4), 0.12)] });
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  /* Real-history seed (Sebastian, 2026-11-14): Joseph's own dated trip, mined from his
-     ChatGPT export (see odyssey-data.js for the evidence notes). Once-only, Athenaeum-style
-     flag; merged by id so his edits and deletions stick — nothing is silently overwritten. */
+  /* Real-history seeds (Sebastian, 2026-11-14; two more trips 2026-11-19): Joseph's own dated trips (see odyssey-data.js for the
+     evidence notes). Each seed is filed once, by id, and its id is remembered in tripsSeeded, so his edits and deletions stick and a
+     new seed reaches a phone that already had the first one (tripsSeedV1 = the Philippines September trip). Only the trip's own fields
+     are stored; its legs, budget and planning notes stay in the shipped file and are looked up by id. */
   const OD = window.ODYSSEY_DATA || null;
-  if (OD && !S.get("tripsSeedV1")) {
-    const cur = S.list("trips");
-    const have = new Set(cur.map((t) => t.id));
-    S.set("trips", [...cur, ...OD.seedTrips.filter((t) => !have.has(t.id))]);
-    S.set("tripsSeedV1", 1);
+  const KEEP = ["id", "name", "dest", "start", "end", "cold", "rain", "beach", "work", "car", "kids", "notes"];
+  if (OD) {
+    const done = S.get("tripsSeeded", null) || (S.get("tripsSeedV1") ? ["seed-philippines-2024"] : []);
+    const fresh = OD.seedTrips.filter((t) => !done.includes(t.id));
+    if (fresh.length) {
+      const cur = S.list("trips"), have = new Set(cur.map((t) => t.id));
+      const add = fresh.filter((t) => !have.has(t.id)).map((t) => {
+        const r = Object.fromEntries(KEEP.filter((k) => k in t).map((k) => [k, t[k]]));
+        if (t.legs) r.stops = [...new Set(t.legs.filter((l) => !l.home).map((l) => l.name))].join(", ");   // for the hub's search
+        return r;
+      });
+      S.set("trips", [...cur, ...add]);
+      S.set("tripsSeeded", [...done, ...fresh.map((t) => t.id)]);
+    }
   }
+  const seedOf = (t) => (OD && OD.seedTrips.find((x) => x.id === t.id)) || null;
+  const legsOf = (t) => t.legs || (seedOf(t) || {}).legs || null;
+  const fromOf = (t) => t.from || (seedOf(t) || {}).from || { code: "FP", name: "Frazier Park" };
+  const TODAY = day();
+  const isPast = (t) => !!t.end && t.end < TODAY;
 
   function readPillarHealth() {
     let carItems = 0, sDue = 0;
@@ -103,32 +118,119 @@
   const dlabel = (ds) => { const d = dparse(ds); return MON[d.getMonth()] + " " + d.getDate(); };
   const nights = (t) => Math.max(0, Math.round((dparse(t.end) - dparse(t.start)) / 864e5));
 
-  /* The one fully-dated journey on record gets its real legs (from its own filed notes);
-     every other trip flies the generic home -> destination arc. */
-  const SEED_LEGS = [
-    { at: "2024-08-30", code: "LAX", name: "Los Angeles", note: "Out of LAX, late night" },
-    { at: "2024-09-01", code: "MNL", name: "Manila", note: "Lands Manila · Hotel Okura" },
-    { at: "2024-09-02", code: "ENI", name: "El Nido", note: "El Nido Sep 2–6 · Tour A, canopy walk, Nagkalit-kalit Falls" },
-    { at: "2024-09-09", code: "FP", name: "Frazier Park", note: "Back via BGC (Sep 7) · out of NAIA Sep 9" },
-  ];
+  /* A trip with legs on record (odyssey-data.js) draws them: on a map when its stops have coordinates and a base map covers them,
+     else on the arc; every other trip flies the generic home -> destination arc. */
+  const MODE = { flight: "Flight", train: "Train", bus: "Bus", ferry: "Ferry" };
+  const money = (v) => "$" + Number(v).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const r2 = (v) => Math.round(v * 100) / 100;
+  const miles = (a, b) => {                                    // great-circle distance between two stops, statute miles
+    const R = 3958.8, f = Math.PI / 180, dLat = (b.lat - a.lat) * f, dLon = (b.lon - a.lon) * f;
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * f) * Math.cos(b.lat * f) * Math.sin(dLon / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  };
 
   function arcSVG(t) {
     // Quadratic great-circle arc, home on the left; waypoint dots ride the curve.
     const W = 640, H = 118, x0 = 34, x1 = W - 34, yb = 96, yc = 6;
     const pt = (f) => { const u = 1 - f; return { x: u * u * x0 + 2 * u * f * ((x0 + x1) / 2) + f * f * x1, y: u * u * yb + 2 * u * f * yc + f * f * yb }; };
-    const legs = t.id === "seed-philippines-2024" ? SEED_LEGS : null;
-    const stops = legs
-      ? [{ code: "FP", name: "Frazier Park", f: 0 }, ...legs.map((l, i) => ({ code: l.code, name: l.name, f: (i + 1) / legs.length }))]
-      : [{ code: "FP", name: "Frazier Park", f: 0 }, { code: "", name: (t.dest || t.name || "Away"), f: 1 }];
+    const legs = legsOf(t), from = fromOf(t);
+    const stops = legs && legs.length <= 6
+      ? [{ code: from.code, name: from.name, f: 0 }, ...legs.map((l, i) => ({ code: l.code, name: l.name, f: (i + 1) / legs.length }))]
+      : [{ code: from.code, name: from.name, f: 0 }, { code: "", name: (t.dest || t.name || "Away"), f: 1 }];
     const dots = stops.map((s) => {
       const p = pt(s.f);
       return `<circle class="arc-node" cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${s.f === 0 || s.f === 1 ? 4.5 : 3.5}"/><text class="arc-code" x="${p.x.toFixed(1)}" y="${(p.y - 10).toFixed(1)}" text-anchor="middle">${esc(s.code)}</text>`;
     }).join("");
-    return `<svg class="arc" viewBox="0 0 ${W} ${H}" role="img" aria-label="Route arc from Frazier Park to ${esc(t.dest || t.name || "")}">
+    return `<svg class="arc" viewBox="0 0 ${W} ${H}" role="img" aria-label="Route arc from ${esc(from.name)} to ${esc(t.dest || t.name || "")}">
       <path class="arc-line" d="M ${x0} ${yb} Q ${(x0 + x1) / 2} ${yc} ${x1} ${yb}"/>
       <path class="arc-ghost" d="M ${x0} ${yb} Q ${(x0 + x1) / 2} ${yc + 34} ${x1} ${yb}"/>${dots}
-      <text class="arc-name" x="${x0}" y="${H - 2}">FRAZIER PARK</text>
+      <text class="arc-name" x="${x0}" y="${H - 2}">${esc(from.name.toUpperCase())}</text>
       <text class="arc-name" x="${x1}" y="${H - 2}" text-anchor="end">${esc((stops[stops.length - 1].name || "").toUpperCase())}</text></svg>`;
+  }
+
+  /* The route on a map (2026-11-19): the trip's stops at their real coordinates (equirectangular, cos(mid-latitude)), over the
+     Natural Earth outlines in basemap.js when one region holds the whole view. Out and back between two stops bow to opposite sides,
+     so a return shows as its own line. Labels take the first free spot around their dot, longest stays first; a stop with no room keeps
+     its dot and its name in the logbook below. */
+  function mapSVG(t) {
+    const legs = legsOf(t); if (!legs) return null;
+    const pts = legs.filter((l) => !l.home && Number.isFinite(l.lat) && Number.isFinite(l.lon));
+    if (pts.length < 2) return null;
+    const lats = pts.map((p) => p.lat), lons = pts.map((p) => p.lon);
+    const k = Math.cos(((Math.min(...lats) + Math.max(...lats)) / 2) * Math.PI / 180);
+    const X = (lon) => lon * 100 * k, Y = (lat) => -lat * 100;
+    let x0 = X(Math.min(...lons)), x1 = X(Math.max(...lons)), y0 = Y(Math.max(...lats)), y1 = Y(Math.min(...lats));
+    const pad = Math.max(x1 - x0, y1 - y0) * 0.1 + 45; x0 -= pad; x1 += pad; y0 -= pad; y1 += pad;
+    let W = x1 - x0, H = y1 - y0;
+    if (H / W > 1.2) { const a = (H / 1.2 - W) / 2; x0 -= a; x1 += a; W = x1 - x0; }
+    if (H / W < 0.72) { const a = (W * 0.72 - H) / 2; y0 -= a; y1 += a; H = y1 - y0; }
+    const west = x0 / k / 100, east = x1 / k / 100, north = -y0 / 100, south = -y1 / 100;
+    const base = (window.ODYSSEY_BASEMAP || []).find((r) => west >= r.bbox[0] && east <= r.bbox[2] && south >= r.bbox[1] && north <= r.bbox[3]);
+    const fs = W / 29, rad = fs * 0.3, f1 = (v) => v.toFixed(1);
+    let g = "";                                                 // graticule: every 5 degrees, or 2 on a small map
+    const step = (east - west) > 12 ? 5 : 2;
+    for (let lo = Math.ceil(west / step) * step; lo <= east; lo += step) g += `M${f1(X(lo))} ${f1(y0)}V${f1(y1)}`;
+    for (let la = Math.ceil(south / step) * step; la <= north; la += step) g += `M${f1(x0)} ${f1(Y(la))}H${f1(x1)}`;
+    let segs = "";
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1], b = pts[i], ax = X(a.lon), ay = Y(a.lat), bx = X(b.lon), by = Y(b.lat), dx = bx - ax, dy = by - ay;
+      const bow = b.by === "flight" ? 0.2 : 0.09, cx = (ax + bx) / 2 + dy * bow, cy = (ay + by) / 2 - dx * bow;
+      segs += `<path class="map-seg ${b.by || "land"}" vector-effect="non-scaling-stroke" d="M${f1(ax)} ${f1(ay)}Q${f1(cx)} ${f1(cy)} ${f1(bx)} ${f1(by)}"><title>${esc(a.name)} → ${esc(b.name)}${b.by ? " · " + MODE[b.by] : ""}</title></path>`;
+    }
+    const uniq = []; for (const p of pts) if (!uniq.some((u) => u.code === p.code)) uniq.push({ ...p, stay: pts.filter((q) => q.code === p.code).reduce((s, q) => s + (q.nights || 0), 0) });
+    const boxes = uniq.map((p) => ({ x: X(p.lon) - rad * 1.3, y: Y(p.lat) - rad * 1.3, w: rad * 2.6, h: rad * 2.6 }));
+    const hit = (b) => b.x < x0 + 4 || b.y < y0 + 4 || b.x + b.w > x1 - 4 || b.y + b.h > y1 - 4 || boxes.some((o) => b.x < o.x + o.w && o.x < b.x + b.w && b.y < o.y + o.h && o.y < b.y + b.h);
+    let labels = "", named = 0;
+    for (const p of [...uniq].sort((a, b) => b.stay - a.stay)) {
+      const px = X(p.lon), py = Y(p.lat), tw = p.name.length * fs * 0.56, gap = rad + fs * 0.3;
+      const spots = [[gap, fs * 0.36, "start"], [-gap, fs * 0.36, "end"], [0, -gap, "middle"], [0, gap + fs * 0.75, "middle"],
+        [gap * 0.8, -gap * 0.6, "start"], [gap * 0.8, gap * 0.6 + fs * 0.7, "start"], [-gap * 0.8, -gap * 0.6, "end"], [-gap * 0.8, gap * 0.6 + fs * 0.7, "end"]];
+      for (const [dx, dy, anchor] of spots) {
+        const lx = px + dx, ly = py + dy, bx = anchor === "start" ? lx : anchor === "end" ? lx - tw : lx - tw / 2;
+        const box = { x: bx - fs * 0.1, y: ly - fs * 0.82, w: tw + fs * 0.2, h: fs * 1.02 };
+        if (hit(box)) continue;
+        boxes.push(box); named++;
+        labels += `<text class="map-lab" x="${f1(lx)}" y="${f1(ly)}" text-anchor="${anchor}" font-size="${f1(fs)}" stroke-width="${f1(fs * 0.24)}">${esc(p.name)}</text>`;
+        break;
+      }
+    }
+    const dots = uniq.map((p, i) => `<circle class="map-dot${i === 0 ? " start" : ""}${p.approx ? " approx" : ""}" vector-effect="non-scaling-stroke" cx="${f1(X(p.lon))}" cy="${f1(Y(p.lat))}" r="${f1(rad)}"><title>${esc(p.name)}${p.country ? ", " + esc(p.country) : ""}${p.approx ? " (approximate)" : ""}</title></circle>`).join("");
+    let dist = 0; for (let i = 1; i < pts.length; i++) dist += miles(pts[i - 1], pts[i]);
+    const used = [...new Set(pts.slice(1).map((p) => p.by).filter(Boolean))];
+    const key = used.map((m) => `<span class="mk"><svg viewBox="0 0 26 8" aria-hidden="true"><path class="map-seg ${m}" d="M1 4H25"/></svg>${MODE[m]} ${pts.slice(1).filter((p) => p.by === m).length}</span>`).join("");
+    const svg = `<svg class="tmap" viewBox="${f1(x0)} ${f1(y0)} ${f1(W)} ${f1(H)}" role="img" data-stops="${uniq.length}" data-named="${named}" aria-label="Map of the route: ${esc(uniq.map((p) => p.name).join(", "))}">
+      <rect class="map-sea" x="${f1(x0)}" y="${f1(y0)}" width="${f1(W)}" height="${f1(H)}"/>
+      ${base ? `<path class="map-land" vector-effect="non-scaling-stroke" transform="scale(${k.toFixed(5)} 1)" d="${base.d}"/>` : ""}
+      <path class="map-grat" vector-effect="non-scaling-stroke" d="${g}"/>${segs}${dots}${labels}</svg>`;
+    return `<figure class="tmap-wrap">${svg}<figcaption class="map-key">${key}<span class="mk">${Math.round(dist).toLocaleString("en-US")} mi stop to stop, straight-line</span>${base ? "" : '<span class="mk">no outline map for this region yet</span>'}</figcaption></figure>`;
+  }
+
+  /* The logbook: every leg as its source records it (date, how, times, fare, where he stayed), and anything the source contradicts. */
+  function legsHTML(legs) {
+    return `<div class="legs">${legs.map((l) => {
+      const rich = l.nights != null || l.by || l.stay;
+      if (!rich) return `<div class="leg"><span class="leg-date">${dlabel(l.at)}</span><span class="leg-note"><b>${esc(l.code)}</b> · ${esc(l.note || l.name)}</span></div>`;
+      const head = `<b>${esc(l.code)}</b> ${esc(l.name)}${l.country ? `<span class="leg-c">, ${esc(l.country)}</span>` : ""}${l.nights != null ? ` · ${l.nights === 0 ? "day stop" : l.nights + (l.nights === 1 ? " night" : " nights")}` : l.home ? " · home" : ""}`;
+      const how = [l.by ? MODE[l.by] : "", l.ref || "", l.dep && l.arr ? `${l.dep} → ${l.arr}` : "", l.fare != null ? money(l.fare) : (l.by && !l.home && l.dep ? "no fare listed" : "")].filter(Boolean).join(" · ");
+      const stay = [l.stay ? l.stay + (l.booked ? ` (${l.booked})` : "") : "", l.note || ""].filter(Boolean).join(" · ");
+      return `<div class="leg rich"><span class="leg-date">${dlabel(l.at)}</span><span class="leg-note"><span class="leg-h">${head}</span>${how ? `<span class="leg-how">${esc(how)}</span>` : ""}${stay ? `<span class="leg-stay">${esc(stay)}</span>` : ""}${l.check ? `<span class="leg-check"><span class="pill warn">check</span> ${esc(l.check)}</span>` : ""}</span></div>`;
+    }).join("")}</div>`;
+  }
+
+  /* The planned budget, added up here from the sheet's own rows and set against the total the sheet shows. */
+  function budgetHTML(b, legs) {
+    const daily = b.perDay.reduce((s, r) => s + r[1], 0), plan = r2(daily * b.nights);
+    const booked = r2(b.booked.reduce((s, r) => s + r[1], 0)), total = r2(plan + booked), withC = r2(total * (1 + b.contingency));
+    const pct = Math.round(b.contingency * 100) + "%";
+    const diff = r2(total - b.sheetTotal), gone = b.booked.find((r) => Math.abs(r[1] - diff) < 0.005);
+    const priced = (legs || []).filter((l) => l.fare != null), fares = r2(priced.reduce((s, l) => s + l.fare, 0));
+    const row = (k, v, cls) => `<div class="kv${cls ? " " + cls : ""}"><span>${esc(k)}</span><b>${v}</b></div>`;
+    return `<div class="budget"><h4>The plan's budget</h4>
+      ${b.perDay.map((r) => row(`${r[0]} · $${r[1]} a day × ${b.nights}`, money(r[1] * b.nights))).join("")}
+      ${b.booked.map((r) => row(r[0], money(r[1]))).join("")}
+      ${row("Total", money(total), "sum")}${row(`With ${pct} for the unexpected`, money(withC), "sum")}
+      ${diff ? `<p class="budget-check"><span class="pill warn">check</span> The sheet's own total is ${money(b.sheetTotal)} (${money(b.sheetWithContingency)} with ${pct}): ${gone ? `it leaves out the ${esc(gone[0].split(",")[0].toLowerCase())} row, ${money(gone[1])}.` : `${money(Math.abs(diff))} ${diff > 0 ? "less" : "more"} than its rows add up to.`}</p>` : ""}
+      ${priced.length ? `<p class="stat-s">Fares on the legs: ${money(fares)} over ${priced.length} legs; ${legs.length - priced.length} list none.</p>` : ""}</div>`;
   }
 
   function timelineHTML(t) {
@@ -136,8 +238,8 @@
     const ticks = Math.min(days, 62);
     let cells = "";
     for (let i = 0; i < ticks; i++) cells += `<span class="tl-tick${i === 0 || i === ticks - 1 ? " end" : ""}"></span>`;
-    const legs = t.id === "seed-philippines-2024" ? SEED_LEGS : null;
-    const legRows = legs ? `<div class="legs">${legs.map((l) => `<div class="leg"><span class="leg-date">${dlabel(l.at)}</span><span class="leg-note"><b>${esc(l.code)}</b> · ${esc(l.note)}</span></div>`).join("")}</div>` : "";
+    const legs = legsOf(t);
+    const legRows = legs ? legsHTML(legs) : "";
     return `<div class="tl"><div class="tl-head"><span>${dlabel(t.start)} ${dparse(t.start).getFullYear()}</span><span class="tl-mid">${days} DAYS · ${n} NIGHTS</span><span>${dlabel(t.end)} ${dparse(t.end).getFullYear()}</span></div><div class="tl-track">${cells}</div>${legRows}</div>`;
   }
 
@@ -151,36 +253,47 @@
     /* Departure-board strip: the anchor + the state of the board, at a glance. */
     const board = $("#o-board");
     const totalNights = trips.reduce((s, t) => s + nights(t), 0);
+    const countries = new Set(trips.flatMap((t) => (legsOf(t) || []).filter((l) => !l.home && l.country).map((l) => l.country)));
     board.innerHTML = `<div class="board">
       <div class="board-cell"><span class="board-k">Home base</span><span class="board-v">${OD ? esc(OD.home.name.split(",")[0]) : "—"}</span></div>
       <div class="board-cell"><span class="board-k">Coordinates</span><span class="board-v board-coords">${OD ? OD.home.lat.toFixed(5) + "° N · " + Math.abs(OD.home.lon).toFixed(5) + "° W" : "—"}</span></div>
       <div class="board-cell"><span class="board-k">Trips filed</span><span class="board-v">${trips.length}</span></div>
       <div class="board-cell"><span class="board-k">Nights on record</span><span class="board-v">${totalNights}</span></div>
+      <div class="board-cell"><span class="board-k">Countries</span><span class="board-v">${countries.size}</span></div>
       <div class="board-cell"><span class="board-k">Away mode</span><span class="board-v ${awayMeta ? "board-away" : ""}">${awayMeta ? "ON" : "OFF"}</span></div>
     </div>`;
 
     for (const t of trips) {
       const packs = t.packState || {};
       const isAway = !!(awayMeta && awayMeta.tripId === t.id);
+      const past = isPast(t), seed = seedOf(t), from = fromOf(t);
       const roadNote = t.car
         ? `Bastion car kit: ${health.carItems} item(s) packed · Vehicle services due <=500 mi: ${health.sDue}`
         : "";
-      const card = h("div.trip", null,
+      const card = h("div.trip" + (past ? ".past" : ""), { "data-trip": t.id },
         h("div.trip-head", null,
           h("div.trip-route", null,
-            h("span.trip-from", null, "FRAZIER PARK"),
+            h("span.trip-from", null, from.name.toUpperCase()),
             h("span.trip-arrow", null, "⟶"),
             h("span.trip-to", null, (t.dest || t.name || "").toUpperCase())
           ),
-          isAway ? h("span.pill.soon", null, "Away mode on · Home screen prioritized") : null
+          isAway ? h("span.pill.soon", null, "Away mode on · Home screen prioritized") : past ? h("span.pill.rec", null, "On record · " + t.start.slice(0, 4)) : null
         ),
         h("h3", null, t.name),
         h("div.stat-s", null, `${t.dest ? esc(t.dest) + " · " : ""}${t.start} → ${t.end}${roadNote ? " · " + roadNote : ""}`)
       );
-      const arc = h("div.journey", null); arc.innerHTML = arcSVG(t); card.append(arc);
+      const arc = h("div.journey", null); arc.innerHTML = mapSVG(t) || arcSVG(t); card.append(arc);
+      if (t.notes && past) card.append(h("p.trip-notes", null, t.notes));          // a trip on record: what it was, then its log
       const tl = h("div", null); tl.innerHTML = timelineHTML(t); card.append(tl);
-      if (t.notes) card.append(h("p.trip-notes", null, t.notes));
-      card.append(h("div.checks", null,
+      if (t.notes && !past) card.append(h("p.trip-notes", null, t.notes));
+      if (seed && seed.budget) { const b = h("div", null); b.innerHTML = budgetHTML(seed.budget, legsOf(t)); card.append(b); }
+      if (seed && seed.plans) {
+        const d = h("details.plans", null, h("summary", null, `Planning notes from the sheet (${seed.plans.length})`));
+        for (const p of seed.plans) d.append(h("p", null, h("b", null, p.at), " · ", p.text));
+        card.append(d);
+      }
+      if (seed && seed.source) card.append(h("p.stat-s.trip-src", null, "Source: " + seed.source));
+      if (!past) card.append(h("div.checks", null,
         h("div.check-col", null,
           h("h4", null, "Packing — generated from this trip"),
           ...TRIP.packingList(t).map((p) => h("label.check", null,
@@ -205,7 +318,7 @@
       card.append(h("div.row-actions", { style: "margin-top:8px" },
         isAway
           ? h("button.btn.quiet.small", { type: "button", onclick: () => { setAway(null); paint(); } }, "End away mode")
-          : h("button.btn.small", { type: "button", onclick: () => { setAway(t); toast("Away mode ON — Hub Picture panel switched"); paint(); } }, "Set away mode"),
+          : past ? null : h("button.btn.small", { type: "button", onclick: () => { setAway(t); toast("Away mode ON — Hub Picture panel switched"); paint(); } }, "Set away mode"),
         h("button.btn.quiet.small", {
           type: "button",
           onclick: () => {

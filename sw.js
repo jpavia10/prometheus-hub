@@ -1,6 +1,6 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
    Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline. */
-var CACHE = "prometheus-hub-deck-d33";
+var CACHE = "prometheus-hub-deck-d34";
 var PILLAR_IDS = [
   "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
   "piano", "bastion", "athenaeum", "odyssey", "privacy", "argus", "games", "forge", "foundry",
@@ -25,7 +25,7 @@ var SHELL = [
   return acc;
 }, [])).concat([
   "./pillars/athenaeum/vault.js", "./pillars/athenaeum/ideas-seed.js", "./pillars/athenaeum/history-seed.js",
-  "./pillars/odyssey/odyssey-data.js", "./pillars/polis/kern-rules.js", "./pillars/continuity/legacy-policies.js", "./pillars/hearth/permits.js", "./pillars/argus/corpus-data.js", "./pillars/observatory/subjects-seed.js",
+  "./pillars/odyssey/odyssey-data.js", "./pillars/odyssey/basemap.js", "./pillars/polis/kern-rules.js", "./pillars/continuity/legacy-policies.js", "./pillars/hearth/permits.js", "./pillars/argus/corpus-data.js", "./pillars/observatory/subjects-seed.js",
   "./pillars/athenaeum/js/app.js", "./pillars/athenaeum/js/sky.js", "./pillars/athenaeum/js/model.js", "./pillars/athenaeum/data/cause-event-consequence.json"
 ]);
 

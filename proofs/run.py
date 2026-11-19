@@ -108,6 +108,43 @@ with sync_playwright() as p:
     except Exception as e: proof("TODAY-1", "The core sees every deadline", False, "did not finish: " + str(e)[:200])
     ct.close()
 
+    # ODY-1 (2026-11-19): his own trips on record. A fresh device files the 2015 Eurotrip (his sheet) and both 2024 Philippines trips; the
+    # Eurotrip draws 20 stops on the Natural Earth map, its logbook holds all 21 legs (56 nights), the budget adds up from the sheet's rows
+    # and names the row the sheet's own total leaves out; past trips carry no packing or away controls. A phone that had the first seed
+    # gets the two new trips once, keeps its own trip, and a deleted seed stays deleted. The hub's search finds a trip by a city on it.
+    co = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); po = co.new_page(); bo = []
+    po.on("pageerror", lambda e: bo.append(str(e)[:120]))
+    if MOCK: po.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); po.route("https://api.weather.gov/**", lambda route, request: route.abort()); po.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+    try:
+        po.goto(f"{URL}pillars/odyssey/", wait_until="load"); po.wait_for_selector(".trip .tmap", state="attached", timeout=15000)
+        o1 = po.evaluate("""() => { const e = document.querySelector('.trip[data-trip="seed-eurotrip-2015"]'), m = e.querySelector('.tmap');
+          return { trips: document.querySelectorAll('.trip').length, stops: +m.dataset.stops, named: +m.dataset.named, land: (m.querySelector('.map-land') || { getAttribute: () => '' }).getAttribute('d').length,
+            legs: e.querySelectorAll('.leg').length, nights: [...e.querySelectorAll('.leg-h')].reduce((s, x) => s + (+((x.textContent.match(/(\\d+) nights?/) || [0, 0])[1])), 0),
+            total: [...e.querySelectorAll('.budget .kv.sum b')].map((x) => x.textContent), check: (e.querySelector('.budget-check') || {}).textContent || '',
+            pastCtl: document.querySelectorAll('.trip.past .checks, .trip.past .row-actions .btn:not(.quiet)').length, past: document.querySelectorAll('.trip.past').length,
+            countries: [...document.querySelectorAll('.board-cell')].find((c) => /Countries/.test(c.textContent)).querySelector('.board-v').textContent }; }""")
+        co2 = b.new_context(viewport={"width": 390, "height": 844}); po2 = co2.new_page(); po2.on("pageerror", lambda e: bo.append(str(e)[:120]))
+        po2.goto(f"{URL}pillars/odyssey/", wait_until="commit")
+        po2.evaluate("""() => { localStorage.clear(); localStorage.setItem('prometheus.odyssey.tripsSeedV1', '1');
+          localStorage.setItem('prometheus.odyssey.trips', JSON.stringify([{ id: 'seed-philippines-2024', name: 'Manila & El Nido — Philippines', dest: 'Manila and El Nido, Philippines', start: '2024-08-30', end: '2024-09-09', notes: 'kept as he left it' },
+            { id: 'mine1', name: 'Coast weekend', dest: 'Monterey', start: '2027-03-05', end: '2027-03-07' }])); }""")
+        po2.reload(wait_until="load"); po2.wait_for_selector(".trip", state="attached", timeout=15000)
+        m1 = po2.evaluate("() => { const t = JSON.parse(localStorage.getItem('prometheus.odyssey.trips')); return { ids: t.map((x) => x.id).sort(), notes: t.find((x) => x.id === 'seed-philippines-2024').notes, ctl: document.querySelectorAll('.trip[data-trip=mine1] .checks').length }; }")
+        po2.evaluate("""() => [...document.querySelectorAll('.trip[data-trip="seed-eurotrip-2015"] button')].find((x) => x.textContent === 'Delete trip').click()""")
+        po2.reload(wait_until="load"); po2.wait_for_selector(".trip", state="attached", timeout=15000)
+        m2 = po2.evaluate("() => JSON.parse(localStorage.getItem('prometheus.odyssey.trips')).map((x) => x.id).sort()")
+        po2.goto(f"{URL}?now={NOW}&home=orbit&nosweep=1#/", wait_until="load"); po2.wait_for_function("window.__deck && window.__deck.reach", timeout=20000); po2.wait_for_timeout(1500)
+        hit = po2.evaluate("window.__deck.reach.searchRecords('Tagaytay')"); co2.close()
+        ok = (o1["trips"] == 3 and o1["stops"] == 20 and o1["named"] >= 17 and o1["land"] > 5000 and o1["legs"] == 21 and o1["nights"] == 56 and o1["total"] == ["$5,583.00", "$6,699.60"]
+              and "ferry row, $62.00" in o1["check"] and o1["pastCtl"] == 0 and o1["past"] == 3 and o1["countries"] == "11"
+              and m1["ids"] == ["mine1", "seed-eurotrip-2015", "seed-philippines-2024", "seed-philippines-2024-04"] and m1["notes"] == "kept as he left it" and m1["ctl"] == 1
+              and m2 == ["mine1", "seed-philippines-2024", "seed-philippines-2024-04"] and len(hit) >= 1 and hit[0]["title"].startswith("Manila, Tagaytay") and not bo)
+        proof("ODY-1", "His own trips on record: the 2015 Eurotrip and both 2024 Philippines trips filed once each, drawn on a map from real coordinates, every leg in the logbook, the plan's budget added up from the sheet's rows with the row its total leaves out named, past trips as records; an older phone gets the new trips, keeps its own, and a deleted trip stays deleted",
+              ok, f"fresh device: {o1['trips']} trips, map {o1['stops']} stops ({o1['named']} named, land path {o1['land']:,} chars), logbook {o1['legs']} legs / {o1['nights']} nights, budget {o1['total']}, check: {o1['check'][6:70]!r}…, past-trip controls {o1['pastCtl']}, countries {o1['countries']}; "
+                 f"older phone: {m1['ids']}, its note kept: {m1['notes'] == 'kept as he left it'}; after deleting the Eurotrip and reloading: {m2}; hub search 'Tagaytay' -> {hit[0]['title'] if hit else None}" + (f"; errors {bo[:2]}" if bo else ""))
+    except Exception as e: proof("ODY-1", "His own trips on record", False, "did not finish: " + str(e)[:200])
+    co.close()
+
     # PILLAR: the shared pillar shell (crest, automatic sections, dock), checked on the long Piano page
     c3 = b.new_context(viewport={"width": 390, "height": 844}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))
     p3.goto(f"{URL}pillars/piano/", wait_until="load"); p3.wait_for_selector(".pk-dock", timeout=15000); p3.wait_for_timeout(900)
