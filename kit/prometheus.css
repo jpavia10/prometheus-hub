@@ -318,7 +318,7 @@ body.pk-v2 .pk-read:hover { border-color: color-mix(in srgb, var(--accent-2) 40%
 .pk-pal-hint { padding: 8px 16px; border-top: 1px solid rgba(255, 255, 255, .06); font-size: 11px; color: var(--faint); letter-spacing: .04em; }
 
 /* all-in-one cockpit toggle (d15). The tablist is only the tabs; the toggle sits beside it. */
-.pk-tablist { display: flex; flex: 1 1 auto; min-width: 0; gap: inherit; align-items: center; }
+.pk-tablist { display: flex; flex: 0 0 auto; gap: inherit; align-items: center; }   /* 2026-11-19: never shrinks, so the strip (.tabs) scrolls and no tab slides under the cockpit button */
 .pk-cockpit-btn { flex: none; margin-left: auto; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--accent) 45%, rgba(255, 255, 255, .2)); background: color-mix(in srgb, var(--accent) 12%, rgba(8, 12, 24, .85)); color: var(--ink); font: 500 11px var(--sans); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; cursor: pointer; transition: background .2s, border-color .2s, color .2s, box-shadow .2s; }
 .pk-cockpit-btn:hover { border-color: var(--accent); color: #fff; }
 .pk-cockpit-btn[aria-pressed="true"] { color: var(--ink-strong); font-weight: 600; background: linear-gradient(180deg, rgba(244, 247, 251, .96), rgba(214, 228, 242, .78)); border-color: var(--cyan); box-shadow: 0 0 0 1px var(--cyan); }

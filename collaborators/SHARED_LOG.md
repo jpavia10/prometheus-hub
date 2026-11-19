@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-19] The Forge rebuilt: one builder, one snapshot, honest states (d38)
+- Owner: "it seems dated ... never accurate when I check". Causes found: withdrawn tasks counted as open (Gemini showed 87 out, 19 real; Grok 50, 26 real), a delivered task showed as done before anyone checked it, "Gemini (4 Neon)" score rows counted as another AI, and nothing said how old the numbers were.
+- tools/forge/build.py now reads every queue, Titan's loop and projects, the workboard, the ledger and all score sheets and writes docs/agents/forge.json (to do / later / delivered-not-checked / done / withdrawn); ledger.yml runs it every 10 minutes and on every push; the page only draws it, with "as of", a stale warning after 4 h and a list of anything it could not place. Tests: tools/forge/test_build.py (9) and FORGE-2. Kit: tabs no longer slide under the "All panels" button.
+
 ### [2026-11-19] Gemini 4 Neon's run checked and built into eight pillars (d37)
 - 18 of 20 tasks accepted (scores #8-#25, average 9.4): Aether "Light today" (offline sun clock, agrees with USNO on 60 of 60 values within 1 min) and its 12 nearby sensors; Garage manual specs, 28 service bulletins, tires and chain controls, EPA baseline with this week's CA gas price; Hearth shelf prices, application limits, design loads, permit answers; GTA VI facts, Google privacy settings, 2026 tax forms, bossa ladder; Polis and Continuity rows appended. New shared kit/ref.js (searchable sourced lists, "more" opens detail and quote).
 - Kairos: the RFC 5545 examples found a real bug (YEARLY;BYDAY=20MO gave nothing) and two missing rule kinds (BYYEARDAY, BYWEEKNO), all fixed; proofs rrule-rfc and aether-sun added (unit 81/81). Gemini's tools/kit/check_delivery.mjs is in the repo. AET-GEM-08 and PRI-GEM-07 stay open (broker names put in Drive); Muse has a 20% source re-read (HUB-MUS-04).

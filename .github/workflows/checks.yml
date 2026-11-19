@@ -39,6 +39,8 @@ jobs:
           exit "$fail"
       - name: Unit proofs
         run: node --test proofs/unit/*.test.mjs
+      - name: Forge builder rules
+        run: python3 tools/forge/test_build.py
       - name: Money and contact guard
         run: node tools/guard/money.mjs
       - name: Browser

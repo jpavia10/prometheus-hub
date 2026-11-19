@@ -1,4 +1,5 @@
 name: forge-ledger
+# 2026-11-19: also rebuilds docs/agents/forge.json (tools/forge/build.py), the one file the Forge page draws.
 # Copies the completions ledger from Drive into docs/agents/completions.json (tools/forge/sync_ledger.py), so Forge shows
 # finished work as delivered without anyone folding it in (owner, 2026-11-18). It runs on a schedule and on every push to
 # main: GitHub had not started the schedule at all in its first 5 hours (2026-11-18/19), and pushes land several times a
@@ -24,12 +25,15 @@ jobs:
       - name: Read the Drive ledger into the mirror
         id: sync
         run: echo "result=$(python3 tools/forge/sync_ledger.py docs/agents/completions.json | tail -1)" >> "$GITHUB_OUTPUT"
+      - name: Rebuild the Forge's snapshot (every queue, Titan's loop and projects, scores, the ledger)
+        id: build
+        run: echo "result=$(python3 tools/forge/build.py | tail -1)" >> "$GITHUB_OUTPUT"
       - name: Commit when it changed
-        if: steps.sync.outputs.result == 'changed'
+        if: steps.sync.outputs.result == 'changed' || steps.build.outputs.result == 'changed'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/agents/completions.json
-          git commit -m "forge: completions ledger synced from Drive ($(python3 -c "import json;print(len(json.load(open('docs/agents/completions.json'))['done']))") entries)"
+          git add docs/agents/completions.json docs/agents/forge.json
+          git commit -m "forge: snapshot rebuilt ($(python3 -c "import json;d=json.load(open('docs/agents/forge.json'));t=d['totals'];print(f\"{t['todo']} to do, {t['delivered']} delivered, ledger {d['sources']['ledger']['entries']}\")"))"
           for i in 1 2 3; do git push origin "HEAD:${{ github.ref_name }}" && exit 0; git pull --rebase origin "${{ github.ref_name }}"; done
           exit 1

@@ -238,6 +238,15 @@ with sync_playwright() as p:
     proof("FORGE-1", "The Forge reads every pillar's homework, the workboard and Titan's loop, shows each AI's load against its floor, a matrix of every place, and filters to one AI",
           int(fo["hub"].split(" ")[0] if fo["hub"][:1].isdigit() else 0) >= fo["pillars"] and fo["board"] == "read" and fo["matrix"] >= fo["pillars"] and fo["lrows"] >= 4 and fo["onlyGemini"],
           f"queues {fo['hub']}; workboard {fo['board']}; matrix rows {fo['matrix']}; {fo['lrows']} AI rows; Gemini {fo['gemini']} open, filter shows {fo['shown']} Gemini rows only: {fo['onlyGemini']}")
+    # FORGE-2 (2026-11-19 rebuild): the page draws one snapshot (docs/agents/forge.json, tools/forge/build.py) and its numbers equal the snapshot's
+    p8.goto(f"{URL}pillars/forge/?still=1", wait_until="load"); p8.wait_for_function("window.FORGE && FORGE.data().snapState !== 'loading'", timeout=20000); p8.wait_for_timeout(300)
+    f2 = p8.evaluate("""() => { const d = FORGE.data(), s = d.snapshot || {}, t = s.totals || {}; const v = [...document.querySelectorAll('#f-load .wp-v')].map((x) => x.textContent);
+      const head = (document.querySelector('#f-tasks .sub') || {}).textContent || ''; const withdrawnShown = [...document.querySelectorAll('#f-tasks details.trow .pill')].filter((x) => x.textContent === 'withdrawn').length;
+      return { ok: d.snapState, todo: t.todo, delivered: t.delivered, late: t.late, page: v.slice(0, 3), head, withdrawnShown, fresh: (document.querySelector('#f-src') || {}).textContent || '', warnings: (s.warnings || []).length,
+        names: [...new Set((s.tasks || []).map((x) => x.ai))].filter((a) => !['Gemini','Grok','Muse','ChatGPT','Gemini API','Argon','Hydrogen','Claude'].includes(a)) }; }""")
+    proof("FORGE-2", "The Forge draws one snapshot: its headline numbers equal the snapshot's, it says how old they are, withdrawn tasks are never counted, every AI name is one of the eight",
+          f2["ok"] == "ok" and f2["page"] == [str(f2["todo"]), str(f2["delivered"]), str(f2["late"])] and f2["head"].startswith(f"{f2['todo']} task") and f2["withdrawnShown"] == 0 and f2["fresh"].startswith("As of") and not f2["names"],
+          f"snapshot {f2['ok']}: to do {f2['todo']}, delivered {f2['delivered']}, late {f2['late']}; page shows {f2['page']}; list '{f2['head'][:40]}'; withdrawn shown {f2['withdrawnShown']}; '{f2['fresh'][:60]}'; {f2['warnings']} warnings; odd names {f2['names']}")
     p8.goto(f"{URL}pillars/foundry/?still=1", wait_until="load"); p8.wait_for_timeout(400); ath_before = p8.evaluate("localStorage.getItem('prometheus.athenaeum.ideas')")
     fd0 = p8.evaluate("FOUNDRY.data().board.length"); p8.evaluate("document.querySelector('#y-board .btn').click()"); p8.wait_for_timeout(300)
     fd = p8.evaluate("(b) => { const d = FOUNDRY.data(); return { board: d.board.length, bench: d.projects.length, stage: d.STAGES[d.projects[0].stage], linked: !!d.projects[0].ideaId, same: localStorage.getItem('prometheus.athenaeum.ideas') === b }; }", ath_before)

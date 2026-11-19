@@ -80,3 +80,15 @@ table.matrix { border-collapse: collapse; width: 100%; font-size: 12.5px; font-v
 .matrix tr { cursor: pointer; } .matrix tr:hover td { outline: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
 .matrix tr.zero td { color: var(--bad); } .matrix tr.zero td:first-child::after { content: "  · nothing assigned"; font-size: 10.5px; }
 @media (max-width: 520px) { .lrow { grid-template-columns: 78px minmax(0, 1fr) auto; gap: 8px; } .frow2 { grid-template-columns: 1fr; } }
+
+/* 2026-11-19 rebuild: freshness line, warnings, delivered (not yet checked) */
+.f-fresh[data-state="stale"], .f-fresh[data-state="bad"] { color: var(--bad); }
+.f-warnings { margin: 4px 0 10px; font-size: 13.5px; color: var(--muted); }
+.f-warnings summary { cursor: pointer; color: #ffd36b; }
+.f-warnings ul { margin: 6px 0 0 18px; padding: 0; }
+.wall-plate.five { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 700px) { .wall-plate.five { grid-template-columns: 1fr 1fr; } .wall-plate.five .wp-cell:nth-child(5) { grid-column: 1 / -1; border-left: 0; } }
+.wp-cell.warn .wp-v { color: #ffd36b; }
+.src-delivered { background: repeating-linear-gradient(135deg, #ffd36b 0 4px, color-mix(in srgb, #ffd36b 35%, transparent) 4px 8px); }
+.pill.warn { border-color: color-mix(in srgb, #ffd36b 65%, transparent); color: #ffd36b; }
+.matrix td.dl { color: #ffd36b; font-weight: 600; }
