@@ -92,8 +92,10 @@ export function buildPrecache(rootDir = DEFAULT_ROOT) {
     seen.add(rel);
     (bucket || urls).push(rel);
     const ext = path.posix.extname(rel).toLowerCase();
-    if (ext === ".js" || ext === ".mjs") walkJs(rel, pageDir);
-    else if (ext === ".css") walkCss(rel);
+    if (ext === ".js" || ext === ".mjs") {
+      walkJs(rel, pageDir);
+      if (rel.endsWith("pillars/odyssey/photos.js")) walkTripPhotos(rel);
+    } else if (ext === ".css") walkCss(rel);
     else if (ext === ".webmanifest") walkManifest(rel);
     else if (rel.endsWith("art/worlds/index.json")) walkWorlds(rel);
   }
@@ -149,6 +151,17 @@ export function buildPrecache(rootDir = DEFAULT_ROOT) {
     for (const id of json.worlds || []) {
       if (!/^[a-z0-9-]+$/i.test(String(id))) continue;
       for (const suffix of ["", "_depth", "_lights"]) include(path.posix.join(pageDir, `world_${id}${suffix}.webp`), "");
+    }
+  }
+
+  function walkTripPhotos(rel) {
+    let src;
+    try { src = fs.readFileSync(path.join(rootDir, rel), "utf8"); } catch { return; }
+    const dir = path.posix.dirname(rel);
+    for (const m of src.matchAll(/"id":"([^"]+)"/g)) {
+      if (!/^[a-z0-9-]+$/i.test(m[1])) continue;
+      include(`${dir}/photos/${m[1]}.webp`, "");
+      include(`${dir}/photos/t/${m[1]}.webp`, "");
     }
   }
 

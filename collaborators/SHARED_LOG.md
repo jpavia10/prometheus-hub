@@ -2,9 +2,13 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
-### [2026-11-19] Offline precache merged onto main (shell cache d35)
-- The hand-written shell list is replaced by `sw-precache.js` (354 urls), generated from the registry and each local pillar page, including the files added on main through d34. A stale list fails the pre-merge check. Cache name `prometheus-hub-deck-d35`, above main's d34. Titan and Midas stay out of the cache.
-- A new shell waits for the Update ready chip. After the merge: unit proofs `65/65`, browser proofs `33/33`, including all 25 local pillars offline.
+### [2026-11-19] Offline precache merged onto main (shell cache d36)
+- The hand-written shell list is replaced by `sw-precache.js` (427 urls), generated from the registry and each local pillar page, including Odyssey's trip photos. A stale list fails the pre-merge check. Cache name `prometheus-hub-deck-d36`, above main's d35. Titan and Midas stay out of the cache.
+- A new shell waits for the Update ready chip. After the merge: unit proofs `65/65`, browser proofs `34/34`, including all 25 local pillars offline.
+
+### [2026-11-19] Odyssey: his trip photos as a journey; the 2024 trips corrected from his bookings (Claude), shell cache d35
+- Owner: he skipped Nueva Ecija and stayed in Manila; asked for the second trip's details and his Drive photos "interactive but flagship level quality". April 2024 rebuilt from his booking emails (Kingsford, Quest Tagaytay, Airswift via Clark to Coron, Zuri, Okura, Sofitel, PAL PR102) with the last four nights in Manila; September 2024 filled in (PR103 / PR102, Airswift T6142 / T6147, Okura, H Hotel El Nido, Residences at BCCT): the return to BGC was Sep 6, not Sep 7 as the message-based note said. Eurotrip: his photos settle the Malta date (Montserrat Aug 18, Plaça d'Espanya Aug 19, so the flight was the 19th: Barcelona 6 nights, Malta 4). No booking ids, prices or the partner's name in the repo.
+- 36 of his photos (Drive, 2015 and 2024), each reviewed: scenery only, people cropped or left out (one dropped for tourists on a boat), metadata stripped, WebP 1280 px + 360 px thumbs (6.3 MB), `tools/odyssey/photos.py` -> `pillars/odyssey/photos.js`. Each past trip opens on a journey: photo stage over a blurred copy, place, day and caption, filmstrip, scrubber, Play with a slow push-in, full screen with swipe and keys; the map draws the route up to the photo's stop and rings it, a stop opens its photos. Seeds carry a rev: shipped fields refresh on phones that had them, his own marks stay. Proofs ODY-1 (updated) and ODY-2.
 
 ### [2026-11-19] Odyssey: two of his real trips on record, on a map (Claude), shell cache d34
 - Owner shared his EUROTRIP 2015 sheet ("u can use this") and a screenshot of his April 2024 itinerary. Filed as trips: the Eurotrip (Michigan, Aug 4 - Sep 30, 2015: 20 cities in 10 countries, 56 nights, every leg with mode, times, fare and flight numbers, the plan's budget, the planning notes per city) and his first Philippines visit (LAX, Apr 6 - 21, 2024: Manila, Tagaytay, Coron, Nueva Ecija, each stay and where it was booked; his Apr 2024 photos and the Expedia booking in Drive match). Left out of the public repo: seat, insurance link, other people's names, the birthday. The Manila place note now has the first visit's dates; three places added.

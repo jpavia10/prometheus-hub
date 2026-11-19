@@ -23,6 +23,7 @@ test("generated precache lists local pillar data and leaves Titan and Midas out"
     "./pillars/bastion/data/readiness.json",
     "./pillars/odyssey/odyssey-data.js",
     "./pillars/odyssey/basemap.js",
+    "./pillars/odyssey/photos.js",
     "./pillars/polis/kern-rules.js",
     "./pillars/continuity/legacy-policies.js",
     "./pillars/hearth/permits.js",
@@ -55,7 +56,7 @@ test("validator fails when the generated precache is stale", () => {
 test("the shell waits for the Update ready chip instead of skipping the wait", () => {
   const sw = fs.readFileSync(path.join(ROOT, "sw.js"), "utf8");
   assert.match(sw, /importScripts\("\.\/sw-precache\.js"\)/);
-  assert.match(sw, /var CACHE = "prometheus-hub-deck-d35"/);
+  assert.match(sw, /var CACHE = "prometheus-hub-deck-d36"/);
   assert.match(sw, /SKIP_WAITING/);
   assert.doesNotMatch(sw, /return self\.skipWaiting\(\)/);
   const client = fs.readFileSync(path.join(ROOT, "kit/update.js"), "utf8");
