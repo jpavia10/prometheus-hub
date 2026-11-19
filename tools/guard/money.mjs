@@ -43,6 +43,7 @@ export const ALLOW = [
   ["pillars/sylade/", "public presence address, not a private inbox"],
   ["pillars/hermes/research/", "public vendor quotas and prices (second-reader checks)"],
   ["pillars/hearth/research/", "public scan-app prices (second-reader checks)"],
+  ["pillars/odyssey/photos.js", "Odyssey trip photos (2026-11-19): the ids are camera timestamps (YYYYMMDDhhmmss), not card numbers"],
   ["pillars/polis/kern-rules.js", "Kern County ordinance reference (POL-GEM-04, 2026-11-19): statutory stop-work fines quoted from the county code, not money of Joseph's"],
   ["pillars/hearth/permits.js", "building-code reference (HEA-GEM-17): CRC R315's $1,000-of-work threshold for CO alarms"],
   ["pillars/continuity/legacy-policies.js", "provider legacy-policy reference (CON-GEM-03): a help-centre URL's article id matches the card pattern; no account numbers"],
