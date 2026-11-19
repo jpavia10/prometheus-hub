@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-19] Every pillar has its own painted world (Claude), shell cache d31
+- The 28 world paintings (`docs/art/requests/artreq_20261116-0300_prometheus-worlds.json`) had no claim after three days, so Claude painted them through the Gemini API (Nano Banana Pro, 2K 9:16, owner's paid key; about $4 for 32 pictures) with `tools/art/worlds.py`, looked at each, and repainted two: the garage now shows the owner's own Mineral Blue 2025 Sorento Hybrid and matte black 2021 MT-07, and games lost an empty top band. Depth and light maps are estimated from each painting (`worlds.py prep`), 2.8 MB for all 84 files.
+- Menu: the level's painting with live parallax, breathing light and dust; the crest steps back and the card gets a soft shade (MENU-2). Pillar pages: the painting behind the header (`kit/kit.js`, `.pk-world`). Passcode and loading screens open on the home painting. Checks: registry OK, unit 62/62, money guard OK, browser proofs 29/30 locally (NEW-1 needs Titan's score sheet beside the checkout, as in CI).
+
 ### [2026-11-19] Ledger folded twice a day; Muse checks Gemini's redo batch; Drive homework docs point to GitHub (Claude)
 - Gemini's three extra `forge-completions.json` copies were folded into `docs/agents/completions.json` (171 entries). Every homework page now says in bold: edit the one original ledger, never upload a copy. A scheduled fold at 11:44 and 22:44 Pacific downloads copies and DONE markers once the owner adds Google Drive to that scheduled task (the API could not attach it). GitHub runs the 10-minute sync late on this account, so the Forge catches up a few times a day, not every 10 minutes.
 - New HUB-MUS-03: Muse second-reads Gemini's 23 redo files from 2026-11-18 (`*_20261118-1940`); nothing from them is built until checked. The four Drive docs `HOMEWORK — {AI}` were copies from Nov 16 (Gemini's still said 85 open; the live page says 46): they now only point to `docs/agents/drive/HOMEWORK_{ai}.txt` and the QUEUE pages, with the ledger rule.

@@ -760,6 +760,10 @@ body.menu-on:not(.menu-off) #sky { opacity: 0 !important; }
 .mn-ring.r2 { width: 86%; height: 86%; border-color: hsl(var(--h) 90% 75% / .18); border-top-color: hsl(var(--h) 95% 75% / .9); border-width: 2px; animation: mnspin 7s linear infinite reverse; }
 .mn-ring.r3 { width: 112%; height: 112%; border: 0; background: conic-gradient(from 0deg, transparent 0 82%, hsl(var(--h) 95% 72% / .55) 90%, transparent 98%); -webkit-mask: radial-gradient(closest-side, transparent 96%, #000 97%); mask: radial-gradient(closest-side, transparent 96%, #000 97%); animation: mnspin 4.5s linear infinite; }
 .mn-card { text-align: center; display: grid; justify-items: center; gap: 6px; }
+.mn-emblem { transition: opacity .6s var(--ease); }
+.menu.art .mn-emblem { opacity: 0; pointer-events: none; }
+.menu.art .mn-sub, .menu.art .mn-what { color: var(--ink); text-shadow: 0 1px 2px rgba(0, 0, 0, .9), 0 0 18px rgba(2, 4, 10, .95); }
+.menu.art .mn-kick { text-shadow: 0 1px 2px rgba(0, 0, 0, .9), 0 0 14px hsl(var(--h) 95% 40% / .8); }
 .mn-kick { margin: 0; font-size: 10.5px; letter-spacing: .32em; text-transform: uppercase; color: var(--a); text-shadow: 0 0 14px hsl(var(--h) 95% 60% / .6); }
 .mn-title { margin: 0; font-size: clamp(38px, 11.5vw, 64px); line-height: .98; font-weight: 600; letter-spacing: -.012em; text-wrap: balance;
   background: linear-gradient(180deg, #ffffff 0%, #eef3ff 45%, hsl(var(--h) 90% 78%) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 4px 22px hsl(var(--h) 95% 55% / .45)); }

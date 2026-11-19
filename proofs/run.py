@@ -71,6 +71,24 @@ with sync_playwright() as p:
               ok, f"{m0['levels']} levels; '{m0['title']}' -> '{m1['title']}' (hue {m0['hue']} -> {m1['hue']}); live: {m0['live'][:60]}; today rows {m0['today']}; WebGL {m0['gl']}; orbit and back {orbit}/{bool(back)}; entered {landed} from level {lvl}" + (f"; errors {bm[:2]}" if bm else "") + (f"; the browser skipped {len(mskip)} morph(s)" if mskip else ""))
     except Exception as e: proof("MENU-1", "The home is a game menu", False, "did not finish: " + str(e)[:200])
     cm.close()
+    # MENU-2: every level stands in its own painted world (2026-11-19): every world in art/worlds/index.json has its three files, the menu shows
+    # the painting behind the level and steps the crest back, and the title screen (lock and loading) uses the home painting
+    cw = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pw = cw.new_page(); bw = []; pw.on("pageerror", lambda e: bw.append(str(e)[:120]))
+    if MOCK: pw.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pw.route("https://api.weather.gov/**", lambda route, request: route.abort())
+    try:
+        pw.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pw.wait_for_selector(".menu .mn-lvl", timeout=20000); pw.wait_for_timeout(1200)
+        w = pw.evaluate("""async () => { const idx = await (await fetch('art/worlds/index.json')).json(); const miss = [];
+          for (const id of idx.worlds) for (const s of ['', '_depth', '_lights']) { const r = await fetch(`art/worlds/world_${id}${s}.webp`); if (!r.ok) miss.push(id + s); }
+          const ids = [...document.querySelectorAll('.mn-lvl')].map((b) => b.dataset.pillar); const painted = ids.filter((id) => idx.worlds.includes(id));
+          return { worlds: idx.worlds.length, home: idx.worlds.includes('home'), miss, levels: ids.length, painted: painted.length, first: ids[0] }; }""")
+        pw.evaluate("document.querySelectorAll('.mn-lvl')[1].click()"); pw.wait_for_timeout(900)   # the second level: a tap on the open one would enter it
+        s0 = pw.evaluate("() => ({ art: document.querySelector('.menu').classList.contains('art'), crest: getComputedStyle(document.querySelector('.mn-emblem')).opacity, title: document.querySelector('.mn-title').textContent })")
+        boot = pw.evaluate("() => { const d = document.createElement('div'); d.id = 'boot'; document.body.append(d); const bg = getComputedStyle(d, '::before').backgroundImage; d.remove(); return bg; }")
+        ok = w["worlds"] >= 28 and w["home"] and not w["miss"] and w["painted"] == w["levels"] and s0["art"] and float(s0["crest"]) < 0.05 and "world_home.webp" in boot and not bw
+        proof("MENU-2", "Every level stands in its own painted world: the three files of every world load, the painting is behind the level and the crest steps back, the title screen is the home painting",
+              ok, f"{w['worlds']} worlds ({w['painted']} of {w['levels']} levels painted, home {w['home']}); missing {w['miss'][:4]}; '{s0['title']}' painted {s0['art']}, crest opacity {s0['crest']}; title screen {'home painting' if 'world_home' in boot else boot[:60]}" + (f"; errors {bw[:2]}" if bw else ""))
+    except Exception as e: proof("MENU-2", "Every level stands in its own painted world", False, "did not finish: " + str(e)[:200])
+    cw.close()
 
     # PILLAR: the shared pillar shell (crest, automatic sections, dock), checked on the long Piano page
     c3 = b.new_context(viewport={"width": 390, "height": 844}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))

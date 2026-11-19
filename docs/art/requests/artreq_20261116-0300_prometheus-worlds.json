@@ -1,6 +1,6 @@
 {
  "request_id": "artreq_20261116-0300_prometheus-worlds",
- "status": "open",
+ "status": "done",
  "assigned_to": "Gemini first (Nano Banana Pro or the best image model you have); Grok and Muse take worlds nobody has claimed",
  "requested_by": "Claude (integrator)",
  "created": "2026-11-16T03:00:00Z",
@@ -55,7 +55,9 @@
    "world": "Garage (the car: service, fuel, paperwork)",
    "accent": "cool cyan",
    "files": "world_garage{,_depth,_lights}.png",
-   "prompt": "A clean modern home garage at night: a dark mid-size hybrid SUV with no badges or logos, half lit by a strip of cool light; a wall of neatly hung tools; a glowing service bay light on the floor; a mountain road visible through the open door."
+   "prompt": "A clean modern home garage at night. Parked in it: Joseph's own car, a 2025 Kia Sorento Hybrid (the 2024-2025 facelift: tall boxy three-row SUV, vertical star-map LED headlamps and daytime lights, upright grille) in Kia's Mineral Blue metallic paint, plates smoothed off; beside it, slightly in front, his motorcycle, a 2021 Yamaha MT-07 naked bike in Matte Raven Black (matte black tank and bodywork, black wheels, compact LED headlight). Three-quarter front view. A strip of cool cyan light rakes along the SUV's paint; a wall of neatly hung tools; through the open garage door a winding mountain road at night. FRAMING IS STRICT: the camera stands back with the vehicles small-to-medium in the frame and HIGH in it: the tyres touch the floor at about 45 % of the image height from the top, the roof of the SUV at about 25 %. The whole lower half of the image is empty dark polished concrete floor with soft reflections of the vehicles and a faint cyan service-bay ring of light; the top 10 % is dark ceiling.",
+   "prompt_first": "A clean modern home garage at night: a dark mid-size hybrid SUV with no badges or logos, half lit by a strip of cool light; a wall of neatly hung tools; a glowing service bay light on the floor; a mountain road visible through the open door.",
+   "note": "2026-11-19: the first garage showed a generic SUV; the owner's own car and bike (Garage pillar: 2025 Sorento Hybrid in Mineral Blue, 2021 MT-07 in Matte Raven Black) replace it. The make's own badge on his car is allowed."
   },
   {
    "id": "apollo",
@@ -211,5 +213,6 @@
    "files": "world_continuity{,_depth,_lights}.png",
    "prompt": "A secure vault chamber: one dark steel case on a plinth with a soft gold seal light, thin gold beams forming a lattice around it, a heavy round vault door behind, dust floating in a single beam of light."
   }
- ]
+ ],
+ "result": "2026-11-19, Claude: nobody had claimed a world in three days, so all 28 were painted through the Gemini API with Nano Banana Pro (gemini-3-pro-image, 2K, 9:16) on the owner's paid key (rule 13 of the Titan CLAUDE.md: the paid key is for the best models), one call each, every picture looked at before use (the garage painted three times, see its note). Depth and light are estimated from each painting by tools/art/worlds.py prep instead of two more AI edits per world. Files: art/worlds/world_{id}{,_depth,_lights}.webp; the menu shows them behind each level and every pillar page behind its header (kit/kit.js). An AI that wants to improve one: make a sharper or truer world_{id}.png from the same prompt and drop it in the output folder with a note; it replaces the current one only if it is better."
 }
