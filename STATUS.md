@@ -46,6 +46,8 @@ PASS DATA-1  Versioned export and import: the deck file restores Time and Money 
 PASS DECK-2  No script errors during the run  ::  none
 
 <!-- proofs-live:end -->
+> **Note (shell d37) · 2026-11-19** — **Search · Capture is a combobox.** Focus stays in the field; Arrow keys set `aria-activedescendant`; Enter accepts; Esc returns to the trigger. Manifest verbs `open`, `add`, `log`, `find`, `start`, and `remind` show a write preview before anything is stored. `?` lists every shortcut outside a text field. KEY-1 and KEY-2 pass. CORE-5 stays green. Local browser run on `127.0.0.1`: 34 pass, NEW-1 fail only because Forge skips Titan's score sheet on that hostname; the same Forge read on `prometheus.test` is 172 scores. Unit proofs 65/65. Not deployed.
+
 > **Note (shell d33) · 2026-11-19 · Claude** — **The core sees every deadline.** Today and the countdowns used to show only federal holidays; now a fresh device leads with the real Kern County, California and federal deadlines (Kairos's 88 dates merged at boot), pillar deadlines fill in once a day in the background without opening each pillar, and the deck asks the browser to keep its data (TODAY-1).
 
 > **Note (shell d32) · 2026-11-19 · Claude** — Three checked datasets are built: Polis **Kern County Rules** (19 rules with the code's own words, Watch adds one to the watchlist), Continuity **Accounts After Death** (25 services, what to set up now and what the family does after, a set-up mark per account), Hearth **Kern County permit check** (the exemption test run on the real deck). Grok's 25 second reads of Gemini's function specs are started (they had waited on files already delivered).
@@ -74,6 +76,10 @@ Shell cache **d26** · 2026-11-16 · Claude
 **Phone fixes on the core:** the passcode moved from a floating chip over the dock into System; the top bar fits 390 px; the outer orbit rings stay on screen at 360-430 px. Verified locally: unit 62/62, money guard OK, browser proofs 26/26 on `prometheus.test` with mocked weather.
 
 The quote above is the last proofs-live run against the deployed site (run 43575963969). It is not a result for the checkout below.
+
+Build **d35** · 2026-11-19 · not deployed yet
+
+**Orbit arrival kept, and PILLAR-1 no longer races the tab row.** The orbit home (`?home=orbit`) is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and waits until that section is showing: a coordinate click was landing on a button the kit had just replaced, so one of the two checks runs on `9456a3f` still saw the first section after a fixed 700 ms. Shell cache `prometheus-hub-deck-d35`.
 
 Build **d20** shell, cache **d21** · 2026-11-14 · not deployed yet
 
@@ -164,7 +170,8 @@ their pages and get developed one at a time.
 | Athenaeum | BUILT, NOT REVIEWED | ATH-1..7: the 11 kept ideas as stars in 3D with four constellations found from their own tags and words; an idea opens whole with lineage, provenance and reasons for each connection; capture and append-only refinement leave every other record byte-identical; the time slider shows the sky on a past day; the 40 history entries as cause, event, consequence with sources; export, wipe, import restores to the byte, with a preview first; search, resurfacing, archive with undo and the shelf all still work. |
 | The hub reaches into a pillar | DONE (one pillar) | CORE-5: through Athenaeum's manifest the command key finds an idea by title or text and opens it, "idea: ..." hands the words to the pillar without writing its records, and the ticker shows the pillar's latest event. |
 | Real data on the hub | DONE | CORE-3: a deadline any pillar publishes to the shared bus shows in the hub's feed and as a badge on that pillar's cell. Cells also show how much each pillar holds on this device; Titan's cell and tile read its published ledger. Fixed dates: the 58 researched ones. |
-| Day ring, runway, countdowns, storm watch | DONE | DECK-1. They read the one feed (the bus, the fixed dates, the consoles below). |
+| Arrival | DONE | DECK-1, DECK-3 (d21). The home is the core, one now line, and one card. It fits above the dock at 390×844 and renders no table and no dollar figure. | 
+| Day ring, runway, countdowns, focus, storm, homestead | DONE | They read the same feed, on Time (day ring, runway, countdowns, focus) and System (storm, homestead, counts). The payoff ring is on Money. |
 | Kairos console, Payoff console | DONE | TIME-1..3, MONEY-1..2. New consoles built in d1; reachable from the hub's instruments and search. They do not replace the Kairos and Money pillar pages, which are back at their addresses. |
 | System | DONE | DATA-1. |
 
