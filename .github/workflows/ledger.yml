@@ -1,10 +1,14 @@
 name: forge-ledger
-# Copies the completions ledger from Drive into docs/agents/completions.json every 10 minutes (tools/forge/sync_ledger.py),
-# so Forge shows finished work as delivered without anyone folding it in (owner, 2026-11-18). It commits only when the ledger
-# changed; that bot push redeploys Pages by itself. Drive unreachable or not JSON: the mirror stays as it is and the run passes.
+# Copies the completions ledger from Drive into docs/agents/completions.json (tools/forge/sync_ledger.py), so Forge shows
+# finished work as delivered without anyone folding it in (owner, 2026-11-18). It runs on a schedule and on every push to
+# main: GitHub had not started the schedule at all in its first 5 hours (2026-11-18/19), and pushes land several times a
+# day. It commits only when the ledger changed; that bot push redeploys Pages and, made with the workflow token, starts no
+# new run (no loop). Drive unreachable or not JSON: the mirror stays as it is and the run passes.
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "4,14,24,34,44,54 * * * *"  # every 10 minutes, off the crowded top of the hour
+  push:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write
