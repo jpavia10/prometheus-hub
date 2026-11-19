@@ -654,6 +654,351 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' and name the page you checked)"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "Hearth will not clear a renovation phase until every material has a price (Phase-Gate rule), and 13 of 13 materials have none; 9 have no quantity. This is the shopping list for the deck job.",
+     "unlocks": "Hearth's phase gates P1 and P3 can clear, and the planned-vs-actual cost panel gets real numbers.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/ (Phase-Gate Readiness and the 2nd-Floor Deck Refurbish)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/app.js (SEED_MATERIALS: the 13 items with id, name, unit, qty) and DECK (23 x 10 ft, 21 courses)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/specs.js (the deck spec library: board and fastener rules)"
+     ],
+     "steps": [
+      "Stores: the Home Depot and the Lowe's nearest to Frazier Park, CA 93225 by road. Name each store with its store number and city as the store page shows it, and the driving miles from the store locator.",
+      "For each of the 13 items in SEED_MATERIALS, pick the one product at each store that matches it best: exact product name, the store's own item or model number, the price shown, the pack size, and whether that store has it in stock on the day you check (yes / no / limited). That is 26 rows.",
+      "Deck boards get 4 more rows: at each store, the 12-ft board of the composite line the spec library names (TimberTech or Trex: say which product) as well as pressure-treated 2x6x12. 30 rows in all.",
+      "unit_price_usd is the price for ONE of the item's own unit in SEED_MATERIALS (board, ft, roll, post, bag, stick, box, tub, gallon, tube): divide a pack price by the pack count and show it in pack.",
+      "qty_needed: work it out only where the deck's size decides it, and show the arithmetic in qty_math. Joists run the 10-ft depth at 16 in on centre (say if Hearth's notes give another spacing): joist count = 23 x 12 / 16 + 1, rounded up. Screws = 2 per board at every joist crossing, plus 10 %; butyl tape = joist tops + ledger length, plus 10 %. Where the deck's size does not decide it (trim run, paint area, footings), write null and say in qty_math exactly which measurement Hearth's field requests must supply."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_bom-prices_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of 30 objects with exactly the fields below"
+     },
+     "count": 30,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "item_id",
+       "type": "text",
+       "rule": "the id from SEED_MATERIALS, e.g. decking-2x6x12"
+      },
+      {
+       "name": "store",
+       "type": "text",
+       "rule": "e.g. 'Home Depot #6681 Bakersfield (41 mi)'"
+      },
+      {
+       "name": "product",
+       "type": "text",
+       "rule": "exact name as the store lists it"
+      },
+      {
+       "name": "item_no",
+       "type": "text",
+       "rule": "the store's item or model number"
+      },
+      {
+       "name": "price_usd",
+       "type": "number",
+       "rule": "shelf price as shown, no $ sign"
+      },
+      {
+       "name": "pack",
+       "type": "text",
+       "rule": "e.g. 'box of 350' or 'each'"
+      },
+      {
+       "name": "unit_price_usd",
+       "type": "number",
+       "rule": "price for one item unit, 2 decimals"
+      },
+      {
+       "name": "stock",
+       "type": "text",
+       "rule": "yes / no / limited, for that store"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the product page"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "qty_needed",
+       "type": "number or null",
+       "rule": "see step 5"
+      },
+      {
+       "name": "qty_math",
+       "type": "text",
+       "rule": "the arithmetic, or which measurement is missing"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "30 rows, every price and item number on the cited product page, every computed quantity with its arithmetic.",
+     "checks": [
+      "Claude opens 8 product URLs and compares name, item number and price.",
+      "Claude redoes every qty_math."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-20",
+     "title": "Hearth: price the deck materials list at the two stores Joseph would drive to, and work out the quantities the deck's size decides",
+     "due": "2026-11-25",
+     "example": {
+      "n": 1,
+      "item_id": "screws-ext",
+      "store": "Lowe's #1234 Santa Clarita (52 mi)",
+      "product": "...",
+      "item_no": "...",
+      "price_usd": 0,
+      "pack": "box of 350",
+      "unit_price_usd": 0,
+      "stock": "yes",
+      "url": "https://...",
+      "checked": "2026-11-20",
+      "qty_needed": 3,
+      "qty_math": "19 joists x 21 courses x 2 = 798 x 1.1 = 878 screws / 350 per box = 2.5 -> 3 boxes"
+     }
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "The deck is a second-floor deck at about 4,600 ft in the mountains. Joist size and footing depth depend on the snow load and frost depth the county requires there, and Hearth does not know them.",
+     "unlocks": "Hearth's permit check and spec library can say which joist span table row and footing depth apply to this deck, instead of the generic minimums.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/ (Kern County permit check under the deck blueprint)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/permits.js"
+     ],
+     "steps": [
+      "Use Frazier Park town centre, 34.8228 N, 118.9445 W, and state the elevation you used (from a USGS or county source).",
+      "Find these 10 numbers from the agency that sets them: (1) ground snow load (psf) Kern County requires at that elevation, (2) roof/deck design snow load if the county gives one, (3) frost depth for footings (in), (4) basic design wind speed (mph, risk category II), (5) seismic design category, (6) CA Building Energy Climate Zone for 93225, (7) deck live load (psf, CRC R507 / Table R301.5), (8) whether snow load or live load governs deck joist sizing at this site and why, (9) the CRC Table R507.6 joist span for 2x8 and (10) for 2x10 Hem-Fir #2 at 16 in o.c. under the governing load.",
+      "Sources: Kern County Building Inspection's design-criteria page or handout, the ASCE Hazard Tool or ATC hazards tool output for the coordinates, the California Energy Commission climate zone tool, and the CRC itself. Quote the line that gives each number.",
+      "If Kern County does not publish a number, write 'not stated', list the county pages you checked, and give the code default separately in applies_how."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_design-loads_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of 10 objects with exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "1-10 in the order above"
+      },
+      {
+       "name": "criterion",
+       "type": "text",
+       "rule": "as named in step 2"
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "the number or 'not stated'"
+      },
+      {
+       "name": "unit",
+       "type": "text",
+       "rule": "psf, in, mph, category, zone, ft"
+      },
+      {
+       "name": "applies_how",
+       "type": "text",
+       "rule": "one sentence: what it changes on this deck"
+      },
+      {
+       "name": "source",
+       "type": "text",
+       "rule": "agency and document name"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the page or PDF"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the line that gives the value, word for word, under 300 characters"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "10 rows, each value on its cited page, or 'not stated' with the pages checked.",
+     "checks": [
+      "Claude opens every URL and finds each quote; Claude reads the two span-table rows in the CRC."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-21",
+     "title": "Hearth: the structural numbers for a deck at Frazier Park (snow load, frost depth, wind, seismic, climate zone)",
+     "due": "2026-11-26",
+     "example": {
+      "n": 3,
+      "criterion": "frost depth for footings",
+      "value": "...",
+      "unit": "in",
+      "applies_how": "Footings must reach below this, deeper than the 12 in CRC minimum if larger.",
+      "source": "...",
+      "url": "https://...",
+      "quote": "..."
+     }
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "The deck job is paint, prime and caulk outdoors at 4,600 ft in late autumn. Each product has a minimum temperature and a recoat/rain-free time; get it wrong and the coat fails. Hearth has no product data.",
+     "unlocks": "Hearth can say 'paint day: yes/no' from Aether's forecast against the product's own limits.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/app.js (SEED_MATERIALS: primer, paint, caulk, wood-filler, joist-tape)",
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/"
+     ],
+     "steps": [
+      "Products: the two most-sold products in each of these categories at Home Depot and Lowe's (name them): exterior oil/bonding primer, exterior acrylic trim and soffit paint (satin), polyurethane exterior sealant/caulk, exterior wood filler, butyl joist flashing tape. 10 products.",
+      "From each maker's own technical data sheet (TDS) or product data PDF, never the store page: minimum and maximum application temperature (air and surface, F), maximum relative humidity, dew-point rule if stated, dry-to-touch time, recoat time, rain-free / water-resistance time, full cure time, coverage (sq ft per gal or per tube/roll), and the TDS's page/section.",
+      "Where the TDS gives two values (e.g. at 77 F / 50 % RH and at lower temperature), give both in the field, labelled."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_product-limits_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of 10 objects, exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "category",
+       "type": "text",
+       "rule": "primer / paint / caulk / filler / tape"
+      },
+      {
+       "name": "product",
+       "type": "text",
+       "rule": "maker and exact product name"
+      },
+      {
+       "name": "min_temp_f",
+       "type": "text",
+       "rule": "air and surface, as the TDS gives"
+      },
+      {
+       "name": "max_temp_f",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "max_rh_pct",
+       "type": "text",
+       "rule": "or 'not stated'"
+      },
+      {
+       "name": "dew_point_rule",
+       "type": "text",
+       "rule": "or 'not stated'"
+      },
+      {
+       "name": "dry_touch",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "recoat",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "rain_free",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "cure",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "coverage",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "tds_url",
+       "type": "URL",
+       "rule": "the maker's TDS PDF or page"
+      },
+      {
+       "name": "tds_section",
+       "type": "text",
+       "rule": "page or section"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the TDS line with the minimum temperature, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "10 products, every limit from the maker's own data sheet.",
+     "checks": [
+      "Claude opens 5 TDS documents and compares every field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-22",
+     "title": "Hearth: when the primer, paint and caulk can go on: temperature, humidity, recoat and cure from the makers' data sheets",
+     "due": "2026-11-27"
     }
    ]
   },

@@ -298,6 +298,243 @@
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "Aether gets sun times from the USNO API, so offline (or when the API is down) it has none. A mountain field lab needs dawn and dusk without signal.",
+     "unlocks": "Aether shows today's light schedule offline for any date and place, checked against USNO.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (feed 6: USNO rstt/oneday)",
+      "NOAA 'General Solar Position Calculations' (gml.noaa.gov) and the NOAA Solar Calculator page",
+      "https://aa.usno.navy.mil/data/api (USNO API documentation)"
+     ],
+     "steps": [
+      "Write one plain JavaScript file (no imports, no libraries, under 160 lines) that defines window.AETHER_SUN = { times(dateISO, lat, lon, tzOffsetHours) }. It returns { astroDawn, nauticalDawn, civilDawn, sunrise, noon, sunset, civilDusk, nauticalDusk, astroDusk } as local 'HH:MM' strings, null when the event does not happen that day. Use the NOAA equations (cite the document in a comment): solar declination, equation of time, hour angle for zenith 90.833, 96, 102 and 108 degrees.",
+      "Make 12 test vectors for Frazier Park (34.8228, -118.9445) from the USNO API itself: https://aa.usno.navy.mil/api/rstt/oneday?date=YYYY-MM-DD&coords=34.8228,-118.9445&tz=-8 (tz -7 on daylight-time dates). Dates: 2026-12-21, 2027-01-15, 2027-02-15, 2027-03-14, 2027-03-20, 2027-04-15, 2027-06-21, 2027-08-15, 2027-09-23, 2027-10-15, 2027-11-07, 2027-12-21. Copy USNO's begin civil twilight, rise, upper transit, set and end civil twilight exactly as its JSON gives them, with the exact API URL per vector.",
+      "Your times() must match every USNO value within 2 minutes. Run it yourself on the 12 vectors and include the result table (expected, got, difference in minutes) in the test file's 'run' field."
+     ],
+     "deliver": {
+      "file": "aether_gemini_suntimes_{YYYYMMDD-HHMM}.js + aether_gemini_suntimes-tests_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "the .js file and a JSON object {vectors: [12 x {date, tz, url, usno: {civilDawn, sunrise, noon, sunset, civilDusk}}], run: [12 x {date, field, expected, got, diff_min}]}"
+     },
+     "count": 12,
+     "fields": [],
+     "self_check": [
+      "The .js file runs in a browser with nothing else loaded and defines window.AETHER_SUN.",
+      "Every USNO value is copied from the API response at the URL given.",
+      "Every difference in 'run' is 2 minutes or less."
+     ],
+     "done_when": "Claude runs times() on all 12 vectors and every value is within 2 minutes of USNO.",
+     "checks": [
+      "Claude runs the file in Node with the 12 vectors.",
+      "Claude opens 3 of the USNO URLs and compares."
+     ],
+     "rejected_if": [
+      "any value more than 2 minutes from USNO",
+      "a library, import or network call in the .js file",
+      "a USNO value that is not what its URL returns",
+      "files saved anywhere but the folder named here"
+     ],
+     "id": "AET-GEM-07",
+     "title": "Aether: sunrise, sunset and twilight worked out on the phone (NOAA method), with 12 tests from the US Naval Observatory",
+     "due": "2026-11-27"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "Aether shows live readings with nothing to compare them to. 'Normal for November here' needs the 30-year normals for the nearest NOAA station, and Hearth needs them to plan paint and concrete days (most primers need 50 F and above).",
+     "unlocks": "Aether can say 'colder than normal' with the real normal, and Hearth can mark the months that suit outdoor painting and pouring.",
+     "inputs": [
+      "https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals",
+      "https://www.ncei.noaa.gov/data/normals-monthly/1991-2020/access/ (one CSV per station)"
+     ],
+     "steps": [
+      "Find the NCEI 1991-2020 monthly normals station nearest to Frazier Park (34.8228, -118.9445) that has temperature AND precipitation normals; give its station id, name, latitude, longitude, elevation (ft) and distance from Frazier Park (mi). If the nearest has no snowfall normals, also name the nearest that has.",
+      "From that station's CSV in the access folder, copy for each month: MLY-TMAX-NORMAL, MLY-TMIN-NORMAL, MLY-TAVG-NORMAL, MLY-PRCP-NORMAL, MLY-SNOW-NORMAL (or null), MLY-TMIN-AVGNDS-LSTH032 (days with min at or below 32 F), MLY-TMAX-AVGNDS-GRTH090 (days with max at or above 90 F) where present. Use the CSV's own column names in a 'columns' list.",
+      "Add one derived field per month, paint_ok_days: the CSV's count of days with max at or above 50 F if the file has it (MLY-TMAX-AVGNDS-GRTH050), else null. Never estimate."
+     ],
+     "deliver": {
+      "file": "aether_gemini_normals_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "{station: {id, name, lat, lon, elev_ft, dist_mi, csv_url}, columns: [...], months: [12 objects]}"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "month",
+       "type": "integer",
+       "rule": "1-12"
+      },
+      {
+       "name": "tmax_f",
+       "type": "number",
+       "rule": "MLY-TMAX-NORMAL"
+      },
+      {
+       "name": "tmin_f",
+       "type": "number",
+       "rule": "MLY-TMIN-NORMAL"
+      },
+      {
+       "name": "tavg_f",
+       "type": "number",
+       "rule": "MLY-TAVG-NORMAL"
+      },
+      {
+       "name": "prcp_in",
+       "type": "number",
+       "rule": "MLY-PRCP-NORMAL"
+      },
+      {
+       "name": "snow_in",
+       "type": "number or null",
+       "rule": "MLY-SNOW-NORMAL"
+      },
+      {
+       "name": "days_min_le_32",
+       "type": "number or null",
+       "rule": ""
+      },
+      {
+       "name": "days_max_ge_90",
+       "type": "number or null",
+       "rule": ""
+      },
+      {
+       "name": "paint_ok_days",
+       "type": "number or null",
+       "rule": "MLY-TMAX-AVGNDS-GRTH050"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "12 months, every value exactly as in the station's CSV.",
+     "checks": [
+      "Claude downloads the CSV and compares all 12 months."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-08",
+     "title": "Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file",
+     "due": "2026-11-26"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "Aether reads a few regional feeds; a reading from a station 40 miles away and 3,000 ft lower is wrong for a mountain town. Aether needs the nearest real stations and how to ask each one.",
+     "unlocks": "Aether shows the nearest station's reading, its distance and elevation, and falls back to the next one when a station is offline.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (the feeds table)",
+      "https://api.weather.gov (NWS API: /points, /stations/{id}/observations/latest)"
+     ],
+     "steps": [
+      "Within 30 miles of Frazier Park (34.8228, -118.9445): NWS/FAA observing stations (from api.weather.gov /points/{lat},{lon}/stations), RAWS fire-weather stations (from the WRCC/MesoWest station pages), and AirNow / EPA air monitors. 12 in all, nearest first, at least 6 NWS.",
+      "For each: station id, name, network, latitude, longitude, elevation (ft), distance (mi, great-circle from the coordinates above), what it measures, the exact request URL that returns its latest reading (no key, or say which key), and the latest observation time the call returned when you ran it.",
+      "Say for each whether a browser on jpavia10.github.io can call it directly (CORS), tested from a browser console."
+     ],
+     "deliver": {
+      "file": "aether_gemini_stations_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 12 objects, exactly the fields below"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "nearest first"
+      },
+      {
+       "name": "id",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "name",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "network",
+       "type": "text",
+       "rule": "NWS / RAWS / AirNow / other"
+      },
+      {
+       "name": "lat",
+       "type": "number",
+       "rule": ""
+      },
+      {
+       "name": "lon",
+       "type": "number",
+       "rule": ""
+      },
+      {
+       "name": "elev_ft",
+       "type": "number",
+       "rule": ""
+      },
+      {
+       "name": "dist_mi",
+       "type": "number",
+       "rule": "1 decimal"
+      },
+      {
+       "name": "measures",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "latest_url",
+       "type": "URL",
+       "rule": "the request that returns the latest reading"
+      },
+      {
+       "name": "observed",
+       "type": "text",
+       "rule": "timestamp the call returned"
+      },
+      {
+       "name": "cors",
+       "type": "text",
+       "rule": "yes / no / not tested"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "12 stations within 30 miles, each latest_url returning a reading.",
+     "checks": [
+      "Claude calls 6 latest_url requests and recomputes 4 distances."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-09",
+     "title": "Aether: the 12 public weather and air sensors nearest Frazier Park, each with the exact call that returns its latest reading",
+     "due": "2026-11-27"
     }
    ]
   },

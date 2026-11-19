@@ -293,6 +293,96 @@
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "Records keeps paper and Kairos keeps dates, but nothing says which forms to expect for the 2026 return, by when, and where each number goes. That is the list Joseph needs in January.",
+     "unlocks": "Records shows a tax-season checklist that ticks off as each form arrives, and Kairos gets the furnish-by dates.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/records/retention.js",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/kairos/fixed-dates.js"
+     ],
+     "steps": [
+      "Forms: W-2, W-2G, 1099-INT, 1099-DIV, 1099-B, 1099-NEC, 1099-MISC, 1099-K, 1099-R, 1099-G (state refund and unemployment), 1099-SA, 1098 (mortgage interest), 1098-E, 1098-T, 1095-A, 1095-B, 1095-C, 5498, 5498-SA, SSA-1099, and the Kern County property tax bill (secured). 21 rows.",
+      "For each: who sends it, the date it must be furnished to the recipient for tax year 2026 (the 2027 date, after weekend/holiday rules) from the IRS 2026 General Instructions for Certain Information Returns or the form's own instructions, and the exact line or schedule it feeds on the 2026 Form 1040 and on the 2026 California Form 540 (or 'none'), from the 2026 instructions (or the 2025 instructions if 2026 are not out yet: say which).",
+      "Quote the instruction line that gives each furnish-by date."
+     ],
+     "deliver": {
+      "file": "records_gemini_tax-forms_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 21 objects, exactly the fields below"
+     },
+     "count": 21,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "form",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "sender",
+       "type": "text",
+       "rule": "who sends it"
+      },
+      {
+       "name": "furnish_by",
+       "type": "date",
+       "rule": "YYYY-MM-DD in 2027"
+      },
+      {
+       "name": "feeds_1040",
+       "type": "text",
+       "rule": "line/schedule"
+      },
+      {
+       "name": "feeds_540",
+       "type": "text",
+       "rule": "line/schedule or 'none'"
+      },
+      {
+       "name": "instructions_year",
+       "type": "text",
+       "rule": "2026 or 2025"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "IRS / FTB instructions page or PDF"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the furnish-by line, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "21 rows, every date and line on the cited instructions.",
+     "checks": [
+      "Claude opens 8 rows' instructions and recomputes every weekend/holiday roll."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "REC-GEM-06",
+     "title": "Records: the tax-year 2026 paperwork checklist: every form a W-2 homeowner may get, when it must arrive, and which 1040 / CA 540 line it feeds",
+     "due": "2026-11-28"
     }
    ]
   },

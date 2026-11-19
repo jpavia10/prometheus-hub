@@ -332,6 +332,175 @@
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "California's DROP sends one deletion request to every broker on the state registry. Privacy lists 72 brokers but does not know which ones DROP covers, so Joseph cannot tell which still need a manual opt-out.",
+     "unlocks": "Privacy splits the list into 'DROP covers this' and 'opt out by hand', which halves the manual work.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/privacy/brokers-data.js (window.BROKER_OPTOUTS: the 72 names)",
+      "https://cppa.ca.gov/data_broker_registry/ (the registry)"
+     ],
+     "steps": [
+      "For every one of the 72 names in BROKER_OPTOUTS, search the California Data Broker Registry (CPPA) and record whether the brand or its parent company is registered, the registered legal name, the registration year(s) shown (2025, 2026), and the registry entry URL.",
+      "Brands often register under a parent (e.g. one company for several people-search sites): give the parent's registered name and say which brand it covers in note.",
+      "If a name is not on the registry, write registered 'no' and in note what you searched for (exact search strings)."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_registry_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 72 objects, one per BROKER_OPTOUTS name, exactly the fields below"
+     },
+     "count": 72,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "broker",
+       "type": "text",
+       "rule": "exactly as the key in BROKER_OPTOUTS"
+      },
+      {
+       "name": "registered",
+       "type": "text",
+       "rule": "yes / no"
+      },
+      {
+       "name": "registrant",
+       "type": "text",
+       "rule": "registered legal name, or ''"
+      },
+      {
+       "name": "years",
+       "type": "text",
+       "rule": "e.g. '2025, 2026'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the registry entry, or the registry search page only when registered is no"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "parent/brand link or the search strings tried"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "72 rows, every 'yes' with its registry entry URL.",
+     "checks": [
+      "Claude opens 12 registry entries at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PRI-GEM-07",
+     "title": "Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them",
+     "due": "2026-11-27"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "Brokers are half of Joseph's footprint; his own Google account is the other half (location history, web activity, ad profile, public profile). Privacy has nothing on it.",
+     "unlocks": "Privacy's footprint checklist gets a Google section Joseph can work through on his phone, one tap per setting.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/"
+     ],
+     "steps": [
+      "25 settings across: Web & App Activity, Timeline / Location History, YouTube history, ad personalization (My Ad Center), auto-delete for each, third-party app access, Google Profile visibility (About me), Find My Device, Gmail smart features, Chrome sync, Android location accuracy, Google Photos face groups, Assistant / Gemini activity, shared endorsements, partner sign-ins.",
+      "For each: what it collects (Google's words), the exact path on Android (Settings > Google > ...) and on myaccount.google.com, the safest setting, what breaks if turned off (Google's words where given), and the help page URL.",
+      "Use only support.google.com and myaccount.google.com/policies.google.com pages."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_google-settings_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 25 objects, exactly the fields below"
+     },
+     "count": 25,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "setting",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "collects",
+       "type": "text",
+       "rule": "Google's words"
+      },
+      {
+       "name": "android_path",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "web_path",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "safest",
+       "type": "text",
+       "rule": "the value to set"
+      },
+      {
+       "name": "breaks",
+       "type": "text",
+       "rule": "what stops working, or 'nothing stated'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the Google help page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the help page's line that says what it collects, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "25 settings, each on its Google help page.",
+     "checks": [
+      "Claude opens 8 help pages at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PRI-GEM-08",
+     "title": "Privacy: Google account settings that leak the most, each with the exact path to turn it off, from Google's own help pages",
+     "due": "2026-11-27"
     }
    ]
   },
