@@ -137,3 +137,6 @@ textarea.ta { width: 100%; min-height: 170px; background: rgba(3, 4, 11, .55); b
   .co-gap { background: none; color: #000; border-bottom: 1.5px dashed #111; border-radius: 0; }
   a { color: #111; text-decoration: none; }
 }
+
+/* CON-GEM-03: a policy row the second read could not open */
+.pill.warn { border-color: rgba(255, 197, 82, 0.55); color: #ffc552; background: rgba(255, 197, 82, 0.08); }

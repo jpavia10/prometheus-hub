@@ -2,65 +2,11 @@
 
 # Hephaestus Hearth · homework for Gemini
 
-Updated 2026-11-19 01:22 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 04:28 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck
-
-**Due:** 2026-11-22 · **State:** now
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Hearth marks the deck stages that need a permit or an inspection before work starts.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Use only Kern County Public Works / Building Inspection pages and the county code they cite.
-2. Answer for this deck: second floor, 23 x 10 ft, boards and railing replaced, joists possibly replaced.
-3. If the county site does not say, write 'not stated on the county site' under that heading.
-
-**Make:** `hearth_gemini_kern-permits_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings: 1 The rule | 2 Exceptions | 3 Fees | 4 How to apply | 5 Inspections | 6 Sources`
-
-**Every field, exactly:**
-- `each heading` (markdown): under each heading: plain sentences, every one ending with the Kern County page it came from in brackets
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-## 1 The rule
-A permit is required to repair or replace a deck more than 30 in above grade [https://... Kern County Public Works, 'Decks', section 2].
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every sentence ends with its source in brackets.
-- [ ] Nothing comes from a contractor's blog.
-- [ ] All six headings are there in this order.
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
+## 1. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -124,3 +70,46 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. HEA-GEM-19 · Hearth: is re-decking on the existing frame an ordinary repair in Kern County, or does it need a permit?
+
+**Due:** 2026-11-25 · **State:** now
+
+**Why:** Hearth's permit check (2026-11-19) shows a new or rebuilt 23 x 10 ft second-floor deck needs a permit, but Joseph's job is a refurbish: new boards, flashing and joist repair on the existing frame. Whether that is an 'ordinary repair' (no permit) decides whether he must apply before the demo-and-repair stage.
+
+**What it unlocks:** The permit check answers his actual job instead of saying 'ask the county'.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/hearth/ (2nd-Floor Deck Refurbish: Kern County permit check)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/permits.js
+
+**Do this:**
+1. Find the code text that defines ordinary repairs that need no permit in the California Residential Code (R105.2.2) and any California or Kern County amendment that limits it (e.g. repairs may not cut away a structural member, replace a guard, or change the means of egress).
+2. Find Kern County Public Works / Building Inspection's own words on deck re-surfacing, re-decking, or replacing deck boards or guards, if any page says it. If none does, say 'not found' and list the pages you checked.
+3. Answer three questions, each with its quote and URL: (a) Does replacing deck boards on the existing joists need a permit? (b) Does replacing or repairing joists or the ledger need one? (c) Does replacing the guardrail need one?
+
+**Make:** `hearth_gemini_redeck-permit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `JSON array of 3 objects: {q, answer (yes / no / not stated), code_section, url, quote}`
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's or provider's own site (not a blog, forum, wiki or AI summary).
+- [ ] Every quote is copied word for word from that page and is on it now, and it states the rule itself, not just the topic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 3
+
+**Done when:** 3 answers, each backed by a quote on the cited code or county page, or 'not stated' with the pages checked.
+
+**How Claude checks it:**
+- Claude opens every URL and finds each quote word for word.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites, or a quote that names the topic but does not state the rule (the Nov 17 habit: one generic FAQ sentence carrying four different rules)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (say 'not found' and name the page you checked)

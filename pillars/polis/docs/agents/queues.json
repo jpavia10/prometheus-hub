@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-16",
+ "updated": "2026-11-19",
  "pillar": "polis",
  "agents": [
   {
@@ -114,7 +114,7 @@
     {
      "id": "POL-GEM-04",
      "title": "Polis: the Kern County rules a homeowner runs into",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-22",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Polis lists the rules that touch Joseph's house with the code section to read.",
@@ -190,7 +190,9 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
-     ]
+     ],
+     "review": "Done 2026-11-19 (Claude): the 20261117-1735 redo, accepted by Muse 8/10, is live as Polis's Kern County Rules tab (kern-rules.js, 19 rows). Left out: rows 22-25 (one generic FAQ fragment carrying rules it does not state), 17 (label quote), 9 (duplicate of 19). Score 8/10 (hub score sheet #2). The 20261118-1940 version is with Muse's check (HUB-MUS-03).",
+     "closed": "2026-11-19"
     },
     {
      "id": "POL-GEM-05",
@@ -280,6 +282,48 @@
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
+    },
+    {
+     "id": "POL-GEM-06",
+     "title": "Polis: the five Kern rules left out, each with the county's own words",
+     "state": "now",
+     "due": "2026-11-26",
+     "why": "Five rows of the accepted Polis list were left out on 2026-11-19 because their quote did not state their rule: ADUs, re-roofing, electrical and plumbing permits, encroachment permits, grading permits. They are the rules Joseph is most likely to hit on the house.",
+     "unlocks": "Polis's Kern County Rules tab gains the five rules, each one he can act on with the section to read.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/polis/ (tab Kern County Rules: the 19 rows that passed)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/polis/kern-rules.js",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Exactly these five topics: (1) accessory dwelling units in unincorporated Kern County, (2) re-roofing, incl. the roof class required in a Very High Fire Hazard Severity Zone, (3) electrical and plumbing alterations, (4) encroachment permits for work in the county road right-of-way, (5) grading permits and the volume that triggers one.",
+      "For each, find the Kern County page or code section that states the rule itself (Kern County Ordinance Code on the county's code host, Kern Public Works or Planning pages, or the California code section Kern adopts). The quote must contain the rule: a threshold, a must, or a may-not.",
+      "If the county's own text does not state a number (e.g. the grading volume), write 'not stated' in rule and name the pages you checked in quote; do not take a number from a blog or a different county.",
+      "Use the same fields as kern-rules.js: n, topic, rule, code_section, url, quote."
+     ],
+     "deliver": {
+      "file": "polis_gemini_kern-rules-five_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 5 objects with exactly the fields n, topic, rule, code_section, url, quote"
+     },
+     "count": 5,
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's or provider's own site (not a blog, forum, wiki or AI summary).",
+      "Every quote is copied word for word from that page and is on it now, and it states the rule itself, not just the topic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "5 rows, each quote states its rule on the cited county or code page.",
+     "checks": [
+      "Claude opens all 5 URLs and finds each quote word for word, and reads whether it states the rule."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites, or a quote that names the topic but does not state the rule (the Nov 17 habit: one generic FAQ sentence carrying four different rules)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' and name the page you checked)"
+     ]
     }
    ]
   },
@@ -323,11 +367,12 @@
     {
      "id": "POL-GRK-03",
      "title": "Polis: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "next",
+     "state": "now",
      "due": "2026-11-27",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
      "inputs": [
+      "Gemini's file to check (POL-GEM-05): polis_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
       "Gemini's file polis_gemini_function-spec_*.md in the folder below (POL-GEM-05)"
      ],
      "steps": [
@@ -364,7 +409,9 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "input_file": "polis_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
     }
    ]
   },

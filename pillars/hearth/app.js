@@ -269,6 +269,7 @@
         <h2>2nd-Floor Deck Refurbish · Blueprint Rev 7</h2>
         <div id="h-deck"></div>
         <div id="h-specs"></div>
+        <div id="h-permit"></div>
       </div>
       <div class="glass span-12">
         <h2>General Renovation Log</h2>
@@ -481,6 +482,36 @@
       );
       const inp = specBox.querySelector("input[type=search]");
       if (inp) inp.oninput = () => { window.__hearthSpecQ = inp.value; paint(); const n = $("#h-specs input[type=search]"); if (n) { n.focus(); n.setSelectionRange(n.value.length, n.value.length); } };
+    }
+
+    /* HEA-GEM-17 (2026-11-19): the Kern County permit check, run against this deck as Hearth records it (window.HEARTH_PERMITS,
+       permits.js; Muse-checked 9/10). It tests the four-condition exemption and says what the guide does not cover. */
+    const permitBox = $("#h-permit");
+    if (permitBox && window.HEARTH_PERMITS) {
+      const P = window.HEARTH_PERMITS, area = DECK.widthFt * DECK.depthFt;
+      const conds = [
+        { t: "Not over 200 sq ft", ok: area <= 200, why: `${DECK.widthFt} × ${DECK.depthFt} ft = ${area} sq ft` },
+        { t: "Not more than 30 in above grade", ok: false, why: "a 2nd-floor deck" },
+        { t: "Not attached to the house", ok: false, why: "first board sits on the house ledger" },
+        { t: "Does not serve the required exit door", ok: null, why: "not recorded: is the deck door the house's required exit (R311.4)?" },
+      ];
+      const fails = conds.filter((c) => c.ok === false).length;
+      const mark = (c) => h("span.pill" + (c.ok === true ? ".gate-ok" : c.ok === false ? ".fail" : ".gate-hold"), null, c.ok === true ? "meets" : c.ok === false ? "fails" : "unknown");
+      const list = (arr) => h("ul", { style: "margin:4px 0 8px 18px;padding:0" }, ...arr.map((x) => h("li", { style: "margin:3px 0" }, x)));
+      permitBox.replaceChildren(
+        h("div", { style: "padding:12px 0 4px;border-top:1px solid var(--line);margin-top:10px" },
+          h("div.kv", null, h("b", null, "Kern County permit check"), h("span.stat-s", null, P.exemption.cite)),
+          h("p.sub", { style: "margin:4px 0 8px" }, P.exemption.rule),
+          ...conds.map((c) => h("div.kv", null, h("span", null, h("b", null, c.t), h("br"), h("span.stat-s", null, c.why)), mark(c))),
+          h("p", { style: "margin:10px 0 4px" }, h("b", null, fails ? `A new or rebuilt deck like this needs a permit: ${fails} of 4 exemption conditions fail.` : "This deck would be permit-exempt.")),
+          h("p.stat-s", { style: "margin:0 0 8px" }, "Not in the guide: whether replacing boards and flashing on the existing frame counts as an ordinary repair. Ask Kern Building Inspection before the demo-and-repair stage."),
+          h("details", null, h("summary", null, "The numbers an inspector checks"),
+            ...P.numbers.map((n) => h("div.kv", null, h("span", null, h("b", null, n.k), h("br"), h("span.stat-s", null, n.cite + (n.note ? " · " + n.note : ""))), h("span", null, n.v)))),
+          h("details", null, h("summary", null, "How to apply, fees and inspections"), list(P.apply), list(P.inspections)),
+          h("details", null, h("summary", null, "Fire clearance by June 1"), h("p.sub", null, P.fire.rule + " ", h("a", { href: P.fire.url, target: "_blank", rel: "noopener" }, P.fire.cite + " ↗"))),
+          h("details", null, h("summary", null, "Sources"), list(P.sources.map(([t, u]) => h("a", { href: u, target: "_blank", rel: "noopener" }, t + " ↗")))),
+        )
+      );
     }
 
     // 3. General projects + room dropdowns

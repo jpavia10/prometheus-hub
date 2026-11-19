@@ -10,6 +10,7 @@ body[data-pillar="hearth"] { --accent: #f2b879; --accent-2: #9fd4e6; }
 .sub { font-size: 13px; color: var(--muted); }
 .pill.hot { border-color: var(--accent); color: #fff; }
 .pill.gate-ok { border-color: rgba(125, 255, 192, 0.55); color: var(--good); background: rgba(125, 255, 192, 0.08); }
+.pill.fail { border-color: rgba(255, 128, 112, 0.6); color: #ff9a8a; background: rgba(255, 128, 112, 0.08); }
 .pill.gate-hold { border-color: rgba(255, 197, 82, 0.55); color: #ffc552; background: rgba(255, 197, 82, 0.08); }
 .bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; }
 .bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }

@@ -38,6 +38,7 @@
   app.innerHTML = `
     <div class="tabs" role="tablist" aria-label="Polis views">
       <button class="tab" type="button" role="tab" data-tab="watches" aria-selected="true">Ordinances &amp; Protections</button>
+      <button class="tab" type="button" role="tab" data-tab="rules" aria-selected="false">Kern County Rules</button>
       <button class="tab" type="button" role="tab" data-tab="ballot" aria-selected="false">Ballot &amp; Policy Notes</button>
       <button class="tab" type="button" role="tab" data-tab="dir" aria-selected="false">Civic Directory</button>
     </div>
@@ -61,6 +62,14 @@
         <h2>Active Civic &amp; Statutory Watchlist</h2>
         <div id="po-plate" class="po-plate"></div>
         <div id="po-watches" style="margin-top:8px"></div>
+      </div>
+    </section>
+    <section id="po-pane-rules" class="grid" hidden>
+      <div class="glass span-12">
+        <h2>Kern County rules a homeowner runs into</h2>
+        <p class="sub">Each rule with the source's own words and a link to it. Checked by a second reader (POL-GEM-04, 8/10); rows the check could not back are left out.</p>
+        <label class="f wide" style="display:block;margin:6px 0 10px">Search<input id="po-rq" type="search" placeholder="fence, deck, June 1, dogs, permit…"></label>
+        <div id="po-rules"></div>
       </div>
     </section>
     <section id="po-pane-ballot" class="grid" hidden>
@@ -87,7 +96,7 @@
   function switchTab(next) {
     tab = next;
     app.querySelectorAll(".tab").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === next)));
-    ["watches", "ballot", "dir"].forEach((k) => { $("#po-pane-" + k).hidden = k !== next; });
+    ["watches", "rules", "ballot", "dir"].forEach((k) => { $("#po-pane-" + k).hidden = k !== next; });
   }
   app.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => switchTab(b.dataset.tab)));
 
@@ -176,6 +185,22 @@
     });
     $("#po-dir").replaceChildren(...dirKids);
   }
+
+  /* POL-GEM-04 (2026-11-19): the checked Kern County rules (window.POLIS_KERN_RULES, kern-rules.js), searchable; Watch puts one on the watchlist. */
+  function paintRules() {
+    const box = $("#po-rules"); if (!box || !window.POLIS_KERN_RULES) return;
+    const q = ($("#po-rq").value || "").toLowerCase();
+    const rows = window.POLIS_KERN_RULES.filter((r) => !q || (r.topic + " " + r.rule + " " + r.code_section + " " + r.quote).toLowerCase().includes(q));
+    box.replaceChildren(h("p.stat-s", null, `${rows.length} of ${window.POLIS_KERN_RULES.length} rules`), ...rows.map((r) => h("div.kv.po-drow", null,
+      h("span", null, h("b", null, r.topic), " ", h("span.pill", null, r.code_section), h("br"), r.rule, h("br"),
+        h("q.stat-s", { style: "display:block;margin:4px 0;font-style:italic" }, r.quote), r.note ? h("span.stat-s", { style: "display:block" }, "Note: " + r.note) : null,
+        h("a.stat-s", { href: r.url, target: "_blank", rel: "noopener" }, "source ↗")),
+      h("button.btn.quiet.small", { type: "button", onclick: () => {
+        S.add("watches", { jurisdiction: "County", title: r.topic, rule: r.rule.slice(0, 200), due: "", status: "watching" });
+        toast(`Watching: ${r.topic}`); paint(); emitStore();
+      } }, "Watch"))));
+  }
+  if ($("#po-rq")) { $("#po-rq").addEventListener("input", paintRules); paintRules(); }
 
   $("#po-wform").addEventListener("submit", (e) => {
     e.preventDefault();

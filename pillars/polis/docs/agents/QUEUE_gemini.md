@@ -2,76 +2,11 @@
 
 # Polis · Civic & Legal Watch · homework for Gemini
 
-Updated 2026-11-19 01:22 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 04:28 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. POL-GEM-04 · Polis: the Kern County rules a homeowner runs into
-
-**Due:** 2026-11-22 · **State:** now
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Polis lists the rules that touch Joseph's house with the code section to read.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/polis/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Kern County Ordinance Code and the county department pages only.
-
-**Make:** `polis_gemini_kern-ordinances_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `topic` (text): burn permits, wood stoves, dogs, short-term rentals, noise, weeds and defensible space, building
-- `rule` (text): one sentence
-- `code_section` (text): Kern County Ordinance Code section
-- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
-- `quote` (text): the sentence on that page that proves the row, copied word for word (under 300 characters)
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{
- "n": 1,
- "topic": "dog licensing",
- "rule": "...",
- "code_section": "7.08.xxx",
- "url": "https://...",
- "quote": "..."
-}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
-- [ ] Every quote is copied word for word from that page and is on it now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
-- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
-
-**How many:** 25
-
-**Done when:** 25 rows exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. POL-GEM-05 · Polis: the function spec, written as the build plan
+## 1. POL-GEM-05 · Polis: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -135,3 +70,48 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. POL-GEM-06 · Polis: the five Kern rules left out, each with the county's own words
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Five rows of the accepted Polis list were left out on 2026-11-19 because their quote did not state their rule: ADUs, re-roofing, electrical and plumbing permits, encroachment permits, grading permits. They are the rules Joseph is most likely to hit on the house.
+
+**What it unlocks:** Polis's Kern County Rules tab gains the five rules, each one he can act on with the section to read.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/polis/ (tab Kern County Rules: the 19 rows that passed)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/polis/kern-rules.js
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. Exactly these five topics: (1) accessory dwelling units in unincorporated Kern County, (2) re-roofing, incl. the roof class required in a Very High Fire Hazard Severity Zone, (3) electrical and plumbing alterations, (4) encroachment permits for work in the county road right-of-way, (5) grading permits and the volume that triggers one.
+2. For each, find the Kern County page or code section that states the rule itself (Kern County Ordinance Code on the county's code host, Kern Public Works or Planning pages, or the California code section Kern adopts). The quote must contain the rule: a threshold, a must, or a may-not.
+3. If the county's own text does not state a number (e.g. the grading volume), write 'not stated' in rule and name the pages you checked in quote; do not take a number from a blog or a different county.
+4. Use the same fields as kern-rules.js: n, topic, rule, code_section, url, quote.
+
+**Make:** `polis_gemini_kern-rules-five_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 5 objects with exactly the fields n, topic, rule, code_section, url, quote`
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's or provider's own site (not a blog, forum, wiki or AI summary).
+- [ ] Every quote is copied word for word from that page and is on it now, and it states the rule itself, not just the topic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 5
+
+**Done when:** 5 rows, each quote states its rule on the cited county or code page.
+
+**How Claude checks it:**
+- Claude opens all 5 URLs and finds each quote word for word, and reads whether it states the rule.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites, or a quote that names the topic but does not state the rule (the Nov 17 habit: one generic FAQ sentence carrying four different rules)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (say 'not found' and name the page you checked)

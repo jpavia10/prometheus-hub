@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 01:22 UTC",
+ "updated": "2026-11-19 04:28 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -52,9 +52,9 @@
    "state": "live",
    "live": "https://jpavia10.github.io/titan-reliquary-preview/",
    "open": {
-    "grok": 21,
-    "gemini": 10,
-    "muse": 9,
+    "grok": 23,
+    "gemini": 11,
+    "muse": 10,
     "chatgpt": 0,
     "argon": null,
     "hydrogen": null
@@ -403,7 +403,7 @@
    "state": "live",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/continuity/",
    "open": {
-    "grok": 1,
+    "grok": 2,
     "gemini": 2,
     "muse": 0,
     "chatgpt": 0,

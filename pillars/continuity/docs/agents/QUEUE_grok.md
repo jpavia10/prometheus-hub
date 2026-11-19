@@ -2,19 +2,52 @@
 
 # Continuity · Sovereign Vault · homework for Grok
 
-Updated 2026-11-19 01:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
+Updated 2026-11-19 04:28 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan'
+## 1. CON-GRK-04 · Continuity: second reader on the three account policies nobody could open (TikTok, Vanguard, Robinhood)
 
-**Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
+**Due:** 2026-11-24 · **State:** now
+
+**Why:** Muse's recheck could not open these three pages (rate limit), so they show 'not second-read' in Continuity. A second reader clears or corrects them.
+
+**What it unlocks:** The 'not second-read' marks come off, or the rows get fixed.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/legacy-policies.js (rows n 19, 22, 23)
+
+**Do this:**
+1. For each of the three rows open its url, find the quote word for word, and check set_up_now and after_death against the page.
+2. Verdict per row: agree, or differ with the page's own words.
+
+**Make:** `continuity_grok_three-policies-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown: one section per row with quote found yes/no, each field agree/differ, the page's words where it differs`
+
+**How many:** 3
+
+**Done when:** 3 rows read against their live pages.
+
+**How Claude checks it:**
+- Claude opens one of the three pages and compares.
+
+**Not done (sent back) if:**
+- a verdict without the page's own words
+- a file saved anywhere but the folder named here
+
+## 2. CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan'
+
+**Due:** 2026-11-27 · **State:** now
 
 **Why:** Nothing Gemini delivers is built on until a second reader has checked it.
 
 **What it unlocks:** Claude builds from the file only after this check.
 
 **Read first:**
+- Gemini's file to check (CON-GEM-04): continuity_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)
 - Gemini's file continuity_gemini_function-spec_*.md in the folder below (CON-GEM-04)
 
 **Do this:**

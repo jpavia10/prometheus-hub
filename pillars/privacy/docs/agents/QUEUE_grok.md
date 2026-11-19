@@ -2,19 +2,20 @@
 
 # Privacy · CA DROP · homework for Grok
 
-Updated 2026-11-19 01:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
+Updated 2026-11-19 04:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
 ## 1. PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan'
 
-**Due:** 2026-11-27 · **State:** next (starts when the file it checks is in the folder)
+**Due:** 2026-11-27 · **State:** now
 
 **Why:** Nothing Gemini delivers is built on until a second reader has checked it.
 
 **What it unlocks:** Claude builds from the file only after this check.
 
 **Read first:**
+- Gemini's file to check (PRI-GEM-06): privacy_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)
 - Gemini's file privacy_gemini_function-spec_*.md in the folder below (PRI-GEM-06)
 
 **Do this:**

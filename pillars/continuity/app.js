@@ -113,6 +113,7 @@
     <div class="tabs" role="tablist" aria-label="Continuity views">
       <button class="tab" type="button" role="tab" data-tab="vault" aria-selected="true">Encrypted Sovereign Vault</button>
       <button class="tab" type="button" role="tab" data-tab="checklist" aria-selected="false">Binder Readiness Checklist</button>
+      <button class="tab" type="button" role="tab" data-tab="accounts" aria-selected="false">Accounts After Death</button>
     </div>
     <section id="co-pane-vault" class="grid">
       <div class="glass span-7">
@@ -168,12 +169,21 @@
           </form>
         </div>
       </div>
+    </section>
+    <section id="co-pane-accounts" class="grid" hidden>
+      <div class="glass span-12">
+        <h2>What happens to each account when its owner dies</h2>
+        <p class="sub">25 services: what to set up now, what the family can do after, in the provider's own words with a link (CON-GEM-03, checked 8/10). Mark one when it is set up; nothing here stores a password.</p>
+        <div id="co-acc-sum" class="kv" style="margin:6px 0 10px"></div>
+        <label class="f wide" style="display:block;margin:0 0 10px">Search<input id="co-aq" type="search" placeholder="Google, bank, crypto, password manager…"></label>
+        <div id="co-accounts"></div>
+      </div>
     </section>`;
 
   function switchTab(next) {
     tab = next;
     app.querySelectorAll(".tab").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === next)));
-    ["vault", "checklist"].forEach((k) => { $("#co-pane-" + k).hidden = k !== next; });
+    ["vault", "checklist", "accounts"].forEach((k) => { $("#co-pane-" + k).hidden = k !== next; });
   }
   app.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => switchTab(b.dataset.tab)));
 
@@ -202,6 +212,27 @@
     const gaps = String(s.locator || "").split(" · ").filter((part) => /not recorded yet/i.test(part));
     return gaps.length ? gaps.join(" · ") : String(s.locator || "");
   };
+
+  /* CON-GEM-03 (2026-11-19): every service's legacy policy (window.CONTINUITY_POLICIES, legacy-policies.js); "set up" marks live in
+     this pillar's store under "legacySetup" as { n: date }. */
+  function paintAccounts() {
+    const box = $("#co-accounts"); if (!box || !window.CONTINUITY_POLICIES) return;
+    const done = S.get("legacySetup", {}), all = window.CONTINUITY_POLICIES, q = ($("#co-aq").value || "").toLowerCase();
+    const rows = all.filter((r) => !q || (r.service + " " + r.feature + " " + r.set_up_now + " " + r.after_death).toLowerCase().includes(q));
+    const n = all.filter((r) => done[r.n]).length;
+    $("#co-acc-sum").replaceChildren(h("span", null, h("b", null, `${n} of ${all.length}`), " set up"), h("div.meter", { style: "flex:1;margin-left:12px" }, h("i", { style: `width:${Math.round((n / all.length) * 100)}%` })));
+    box.replaceChildren(...rows.map((r) => h("div.kv", { style: "align-items:flex-start" },
+      h("span", null, h("b", null, r.service), " ", h("span.pill", null, r.feature), r.unchecked ? h("span.pill.warn", null, " not second-read") : null, h("br"),
+        h("span", null, h("b", null, "Now: "), r.set_up_now), h("br"),
+        h("span.stat-s", null, h("b", null, "After: "), r.after_death),
+        h("q.stat-s", { style: "display:block;margin:4px 0;font-style:italic" }, r.quote),
+        r.note ? h("span.stat-s", { style: "display:block" }, "Note: " + r.note) : null,
+        h("a.stat-s", { href: r.url, target: "_blank", rel: "noopener" }, "provider's page ↗")),
+      h("button.btn.small" + (done[r.n] ? "" : ".quiet"), { type: "button", "aria-pressed": String(!!done[r.n]), onclick: () => {
+        const d = S.get("legacySetup", {}); if (d[r.n]) delete d[r.n]; else d[r.n] = day(); S.set("legacySetup", d); paintAccounts(); emitStore();
+      } }, done[r.n] ? "Set up ✓" : "Mark set up"))));
+  }
+  if ($("#co-aq")) { $("#co-aq").addEventListener("input", paintAccounts); paintAccounts(); }
 
   function paint() {
     const vault = S.get("vault", null), D = window.CONTINUITY.data();
