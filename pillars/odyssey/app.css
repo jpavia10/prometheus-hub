@@ -126,3 +126,43 @@
 .plans p{font-size:14px;line-height:1.55;color:var(--muted);margin:6px 0}
 .plans p b{color:var(--ink);font-weight:550}
 .trip-src{margin-top:8px}
+
+/* ---- the journey: his photos tied to the map (2026-11-19) ---- */
+.pill.ok{border-color:color-mix(in srgb,#5cc98a 60%,transparent);color:#5cc98a;font-size:10px;padding:1px 7px;margin-right:4px}
+.jr{margin:12px 0 4px;max-width:720px}
+.jr-stage{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:#05070e;cursor:zoom-in;touch-action:pan-y;outline-offset:3px;isolation:isolate}
+@media (min-width:700px){.jr-stage{aspect-ratio:16/10}}
+.jr-bg{position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;filter:blur(26px) saturate(1.15) brightness(.55);transform:scale(1.04)}
+.jr-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .7s ease;will-change:opacity,transform}
+.jr-img.on{opacity:1}
+.jr-img.kb{animation:jr-kb 6.5s ease-out forwards}
+@keyframes jr-kb{from{transform:scale(1)}to{transform:scale(1.07)}}
+.jr-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 13px;display:flex;flex-direction:column;gap:3px;background:linear-gradient(transparent,rgba(3,5,10,.82));color:#f4f1ea;pointer-events:none}
+.jr-place{font-size:10.5px;letter-spacing:.22em;color:color-mix(in srgb,var(--accent) 70%,#fff)}
+.jr-title{font-size:16px;font-weight:550;line-height:1.3;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.jr-when{font-size:12px;color:rgba(244,241,234,.75);font-variant-numeric:tabular-nums}
+.jr-count{position:absolute;top:10px;right:12px;font-size:11px;letter-spacing:.12em;color:#f4f1ea;background:rgba(3,5,10,.5);padding:3px 8px;border-radius:99px;font-variant-numeric:tabular-nums}
+.jr-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(3,5,10,.45);color:#fff;font-size:24px;line-height:1;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.jr-nav.prev{left:10px}.jr-nav.next{right:10px}
+.jr-nav:focus-visible,.jr-th:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.jr-bar{display:flex;align-items:center;gap:12px;margin:10px 0 8px}
+.jr-play{flex:none;min-width:132px}
+.jr-scrub{flex:1;min-width:0;accent-color:var(--accent)}
+.jr-strip{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 2px 8px;scrollbar-width:thin}
+.jr-th{flex:none;height:64px;width:calc(64px * var(--ar));min-width:44px;max-width:120px;padding:0;border:0;border-radius:8px;overflow:hidden;background:#111;cursor:pointer;scroll-snap-align:center;opacity:.55;transition:opacity .25s,transform .25s;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.jr-th img{width:100%;height:100%;object-fit:cover;display:block}
+.jr-th.on{opacity:1;box-shadow:0 0 0 2px var(--accent);transform:translateY(-2px)}
+.jr-th:hover{opacity:.9}
+.map-seg{transition:stroke-opacity .5s ease}
+.map-seg.todo{stroke-opacity:.18}
+.map-dot.has-ph{cursor:pointer}
+.map-dot.here{fill:var(--accent)}
+.map-here{fill:none;stroke:var(--accent);stroke-width:1.5;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;animation:jr-ping 1.8s ease-out infinite;pointer-events:none}
+@keyframes jr-ping{0%{opacity:.9;transform:scale(.45)}100%{opacity:0;transform:scale(1.4)}}
+.jr-lb{position:fixed;inset:0;z-index:2147483000;background:#020307;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+.jr-lb-img{max-width:100vw;max-height:100dvh;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.jr-lb-cap{position:fixed;left:0;right:0;bottom:0;padding:48px 18px max(16px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:3px;background:linear-gradient(transparent,rgba(2,3,7,.9));color:#f4f1ea;pointer-events:none}
+.jr-lb-cap b{font-size:17px;font-weight:550}
+.jr-lb-x{position:fixed;top:max(12px,env(safe-area-inset-top));right:14px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(3,5,10,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+.jr-lb .jr-nav{position:fixed}
+@media (prefers-reduced-motion:reduce){.jr-img{transition:none}.jr-img.kb{animation:none}.map-here{animation:none;opacity:.8}.jr-th{transition:none}}
