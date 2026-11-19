@@ -2,36 +2,57 @@
 
 # Hermes Post · homework for Grok
 
-Updated 2026-11-10 03:42 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
+Updated 2026-11-19 04:52 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
 
-## 1. HER-GRK-01 · Hermes Post: second reader on Gemini's spec
+**WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-**Due:** 2026-11-14 · **State:** next (starts when the file it checks is in the folder)
+## 1. HER-GRK-03 · Hermes Post: second reader on Gemini's 'the function spec, written as the build plan'
 
-**Why:** Every source in a spec gets a second reader before Claude builds on it.
+**Due:** 2026-11-27 · **State:** now
+
+**Why:** Nothing Gemini delivers is built on until a second reader has checked it.
+
+**What it unlocks:** Claude builds from the file only after this check.
 
 **Read first:**
-- Gemini's file hermes_gemini_spec_*.md in the incoming folder (once it is there)
+- Gemini's file to check (HER-GEM-09): hermes_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)
+- Gemini's file hermes_gemini_function-spec_*.md in the folder below (HER-GEM-09)
 
 **Do this:**
-1. Open every data source's docs URL; for each write: source, Gemini's claim (sign-in, cost, limits), what the page says, agree/differ.
-2. Add up to 5 sources Gemini missed, same columns.
+1. Open Gemini's file and the code it describes.
+2. Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.
+3. Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.
+4. List up to 10 things the pillar needs that the spec leaves out, each with why.
 
-**Make:** `hermes_grok_spec-check_{YYYYMMDD-HHMM}.md`
+**Make:** `hermes_grok_function-spec-check_{YYYYMMDD-HHMM}.md`
 
 **Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
 
-**Shape:** `table: source | gemini says | page says | url | agree/differ`
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
 
-**How many:** 6
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
 
-**Done when:** Every source in Gemini's spec checked.
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
 
 **How Claude checks it:**
-- Claude spot-checks 3 'differ' lines.
+- Claude re-checks 3 of your differ lines.
 
 **Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
 - a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name

@@ -1,7 +1,60 @@
+/* Polis · The Civic Docket — a county clerk's docket book.
+   Presentation only: every figure is computed in app.js from the pillar's own data. */
+
+/* — Section tabs as docket dividers — */
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 .tab{background:rgba(12,18,32,.65);border:1px solid rgba(159,180,204,.22);border-radius:999px;color:#b8c7dc;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
-.tab[aria-selected="true"]{border-color:rgba(123,156,255,.7);background:rgba(123,156,255,.16);color:#edf2ff}
+.tab[aria-selected="true"]{border-color:rgba(123,156,255,.7);background:rgba(123,156,255,.16);color:#edf2ff;box-shadow:inset 0 -2px 0 var(--accent)}
+
+/* — Ledger rows (shared base, unchanged semantics) — */
 .kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08);flex-wrap:wrap}
 .pill{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(123,156,255,.45);color:#adc2ff}
 .pill.hot{border-color:rgba(255,169,140,.7);color:#ffb8a0}
 .pill.good{border-color:rgba(125,255,192,.55);color:#7dffc0}
+
+/* — The docket plate: ruled four-cell strip over the watchlist — */
+.po-plate{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--radius-s);overflow:hidden;margin:10px 0 4px;background:rgba(6,10,20,.35)}
+.po-cell{display:flex;flex-direction:column;gap:2px;padding:10px 14px 9px;border-left:1px solid var(--line)}
+.po-cell:first-child{border-left:none}
+.po-num{font-size:26px;font-weight:600;line-height:1.05;color:var(--ink);font-variant-numeric:tabular-nums}
+.po-num.date{font-size:19px;padding-top:4px;letter-spacing:.02em}
+.po-lab{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.po-cell.bad .po-num{color:#ffb8a0}
+.po-cell.bad .po-lab{color:#ffb8a0}
+
+/* — Watch rows as docket entries: status rail down the left edge — */
+.po-wrow{position:relative;padding:10px 0 10px 14px}
+.po-wrow::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:2px;background:rgba(123,156,255,.55)}
+.po-wrow.st-action-needed::before{background:#ff6b6b;box-shadow:0 0 8px rgba(255,107,107,.65)}
+.po-wrow.st-resolved::before{background:rgba(125,255,192,.6)}
+.po-wrow .pill{border-radius:4px;transform:rotate(-1.3deg);font-weight:600;background:rgba(123,156,255,.07)}
+.po-wrow .pill.hot{background:rgba(255,107,107,.1)}
+.po-wrow .pill.good{background:rgba(125,255,192,.07)}
+.po-wrow .stat-s{display:inline-block;margin-top:3px;line-height:1.45}
+
+/* — Ballot notebook: register line + classified slips — */
+.po-noteplate{margin:14px 0 0;padding-top:10px;border-top:1px solid var(--line);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-variant-numeric:tabular-nums}
+.po-nrow{position:relative;padding-left:14px}
+.po-nrow::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:2px;background:rgba(159,180,204,.35)}
+.po-nrow .pill{border-radius:4px;font-weight:600}
+.pill.nk-verified-fact{border-color:rgba(125,255,192,.55);color:#7dffc0;background:rgba(125,255,192,.06)}
+.pill.nk-fiscal-impact{border-color:rgba(255,212,59,.55);color:#ffd43b;background:rgba(255,212,59,.06)}
+.pill.nk-open-question{border-color:rgba(123,156,255,.45);color:#adc2ff;background:rgba(123,156,255,.06)}
+.po-nrow .stat-s{display:inline-block;margin-top:3px;line-height:1.45}
+
+/* — Directory: jurisdiction drawers in the register's fixed order — */
+.po-dirhead{display:flex;align-items:baseline;gap:10px;margin:16px 0 2px}
+.po-dirhead:first-child{margin-top:4px}
+.po-dirname{font-family:Georgia,"Times New Roman",serif;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);border:1px solid var(--line-strong);border-bottom:none;border-radius:6px 6px 0 0;padding:4px 12px 5px;background:rgba(123,156,255,.07)}
+.po-dircount{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-variant-numeric:tabular-nums}
+.po-dirhead::after{content:"";flex:1;border-top:1px solid var(--line);transform:translateY(-3px)}
+.po-drow .stat-s{display:inline-block;margin-top:3px;line-height:1.45}
+
+@media (max-width:560px){
+  .po-plate{grid-template-columns:1fr 1fr}
+  .po-cell:nth-child(3){border-left:none}
+  .po-cell{border-top:1px solid var(--line)}
+  .po-cell:nth-child(-n+2){border-top:none}
+  .po-num{font-size:22px}
+  .po-num.date{font-size:16px}
+}

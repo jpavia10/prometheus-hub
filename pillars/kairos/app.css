@@ -1,8 +1,85 @@
-.weekgrid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
-@media (max-width: 700px) { .weekgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.wday { border: 1px solid var(--line); border-radius: 14px; padding: 10px; min-height: 96px; background: rgba(4, 6, 12, 0.35); }
-.wday.today { border-color: var(--accent); box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 25%, transparent); }
-.wd-h { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-.wd-i { font-size: 13px; line-height: 1.3; padding: 4px 6px; border-left: 2px solid var(--accent-2); margin: 4px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.wd-i.mine { border-left-color: var(--accent); }
-#k-filter { margin: 0 0 10px; }
+/* Kairos design: the chronometer. Time itself is the visual material — today's date set as
+   the dial, the next deadline as a countdown readout, every obligation on a ruled distance
+   rail (overdue in the kit's bad red, due-soon in warn, never softened), the fortnight as a
+   day strip, and the focus methods as cycle diagrams around a progress ring.
+   Kit tokens only; the legacy .weekgrid/.wday rules are gone (no markup uses them). */
+
+/* ——— Chronometer hero: now / next ——— */
+.chrono { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 36px; align-items: center; }
+.chrono-eyebrow, .chrono-next-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.chrono-eyebrow { color: var(--accent); }
+.chrono-date { display: flex; align-items: flex-start; gap: 16px; margin-top: 2px; }
+.chrono-day { font-size: clamp(84px, 13vw, 128px); font-weight: 200; line-height: 0.92; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; text-shadow: 0 0 34px color-mix(in srgb, var(--accent) 45%, transparent); }
+.chrono-my { display: flex; flex-direction: column; padding-top: 12px; }
+.chrono-my span:first-child { font-size: clamp(22px, 3.4vw, 32px); font-weight: 500; line-height: 1.15; }
+.chrono-my span:last-child { font-size: clamp(22px, 3.4vw, 32px); font-weight: 200; line-height: 1.15; color: var(--muted); font-variant-numeric: tabular-nums; }
+.chrono-iso { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; letter-spacing: 0.18em; color: var(--faint); margin: 8px 0 0; }
+.chrono-next { border-left: 1px solid var(--line); padding-left: 36px; }
+.chrono-count { font-size: clamp(34px, 5.4vw, 52px); font-weight: 300; line-height: 1.05; color: var(--accent-2); font-variant-numeric: tabular-nums; margin: 4px 0 2px; }
+.chrono-next-title { font-size: 17px; margin: 2px 0 0; }
+.chrono-next-meta { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 5px 0 0; }
+.chrono-overdue { margin: 12px 0 0; font-size: 13px; letter-spacing: 0.06em; color: var(--bad); }
+@media (max-width: 700px) {
+  .chrono { grid-template-columns: 1fr; }
+  .chrono-next { border-left: none; border-top: 1px solid var(--line); padding: 16px 0 0; }
+}
+
+/* ——— Today rows ——— */
+.trow .today-chip { color: var(--ink-strong); background: var(--accent); border-radius: 999px; padding: 2px 10px; font-size: 11px; letter-spacing: 0.14em; }
+
+/* ——— Focus clock: progress ring + method cycle strip ——— */
+.clock-ring { --p: 1; width: min(232px, 62vw); aspect-ratio: 1; margin: 16px auto 10px; border-radius: 50%; display: grid; place-items: center; position: relative;
+  background: conic-gradient(var(--accent) calc(var(--p) * 1turn), color-mix(in srgb, var(--accent) 12%, transparent) 0); }
+.clock-ring::before { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: var(--bg-2); border: 1px solid var(--line); }
+.clock-ring .stat-v { position: relative; z-index: 1; margin: 0; }
+.cycle { display: flex; height: 8px; border-radius: 999px; overflow: hidden; margin-top: 10px; background: color-mix(in srgb, var(--accent-2) 16%, transparent); }
+.cycle-work { background: var(--accent); }
+.cycle-break { background: var(--accent-2); opacity: 0.55; }
+.cycle-cap { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.16em; color: var(--muted); margin-top: 5px; }
+
+/* ——— Fortnight strip: 15 day cells, today lit ——— */
+.wstrip { display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 6px; }
+.wcell { border: 1px solid var(--line); border-radius: var(--radius-s); padding: 8px 7px 9px; min-height: 110px; background: rgba(4, 6, 12, 0.35); overflow: hidden; }
+.wcell.today { border-color: var(--accent); box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 25%, transparent); }
+.wc-dow { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.wcell.today .wc-dow { color: var(--accent); }
+.wc-day { font-size: 24px; font-weight: 300; line-height: 1.1; margin: 0; font-variant-numeric: tabular-nums; }
+.wc-mon { font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); margin: 0 0 5px; }
+.wc-i { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 9.8px; line-height: 1.3; padding: 3px 5px; margin-top: 4px; border-left: 2px solid var(--accent-2); background: rgba(255, 255, 255, 0.03); overflow: hidden; }
+.wc-i.fixed { border-left-color: var(--accent); }
+.wc-more { display: block; font-size: 10px; color: var(--muted); margin-top: 4px; }
+.wc-none { color: var(--faint); font-size: 12px; margin: 2px 0 0; }
+@media (max-width: 900px) { .wstrip { grid-template-columns: repeat(5, minmax(0, 1fr)); } .wcell { min-height: 94px; } }
+@media (max-width: 420px) { .wstrip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ——— Every Deadline: the ruled distance rail ——— */
+.trail { position: relative; margin-top: 6px; }
+.trail::before { content: ""; position: absolute; left: 114px; top: 10px; bottom: 10px; width: 1px; background: var(--line-strong); }
+.trail-row { position: relative; display: flex; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.trail-row:last-child { border-bottom: none; }
+.trail-dist { flex: 0 0 96px; display: flex; flex-direction: column; text-align: right; }
+.trail-d { font-size: 21px; font-weight: 300; line-height: 1; font-variant-numeric: tabular-nums; }
+.trail-dl { font-size: 9.5px; letter-spacing: 0.18em; color: var(--muted); margin-top: 3px; }
+.trail-node { flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); z-index: 1; }
+.trail-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.trail-date { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 11.5px; letter-spacing: 0.1em; color: var(--muted); }
+.trail-title { font-size: 15px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trail-src { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+.trail-row[data-state="overdue"] .trail-d, .trail-row[data-state="overdue"] .trail-dl { color: var(--bad); }
+.trail-row[data-state="overdue"] .trail-date { color: var(--bad); }
+.trail-row[data-state="overdue"] .trail-node { border-color: var(--bad); background: var(--bad); box-shadow: 0 0 10px color-mix(in srgb, var(--bad) 55%, transparent); }
+.trail-row[data-state="today"] .trail-d { color: var(--accent); }
+.trail-row[data-state="today"] .trail-node { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 55%, transparent); }
+.trail-row[data-state="soon"] .trail-d { color: var(--warn); }
+.trail-row[data-state="soon"] .trail-node { border-color: var(--warn); }
+@media (max-width: 700px) {
+  .trail::before { left: 84px; }
+  .trail-dist { flex-basis: 66px; }
+  .trail-d { font-size: 17px; }
+  .trail-title { white-space: normal; }
+}
+
+/* ——— Risk radar: state-railed readout cards ——— */
+.risk-card { border-left: 3px solid var(--line-strong); padding-left: 12px; }
+.risk-overdue { border-left-color: var(--bad); }
+.risk-cluster, .risk-overlap { border-left-color: var(--warn); }

@@ -17,6 +17,13 @@
       now: {date, odometer}. Due when EITHER trigger passes; the sooner trigger governs. */
   function dueStatus(item, last, now) {
     if (!last) return { state: "unknown", dueDate: null, dueMiles: null };
+    /* GAR-GEM-05 acceptance vocabulary (2026-11-17): Gemini's spec calls this with
+       {everyMiles, everyMonths} intervals and {miles} odometer readings. Normalize
+       those aliases to the shipped field names; shipped callers are unaffected. */
+    if (item.everyMiles != null && item.miles == null) item = { ...item, miles: item.everyMiles };
+    if (item.everyMonths != null && item.months == null) item = { ...item, months: item.everyMonths };
+    if (last.odometer == null && last.miles != null) last = { ...last, odometer: last.miles };
+    if (now.odometer == null && now.miles != null) now = { ...now, odometer: now.miles };
     const dueDate = item.months ? addMonths(last.date, item.months) : null;
     const dueMiles = item.miles ? last.odometer + item.miles : null;
     const milesLeft = dueMiles != null ? dueMiles - now.odometer : null;

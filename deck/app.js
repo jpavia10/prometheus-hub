@@ -7,6 +7,7 @@ import { h, $, icon, sheet, toast, pickFile, reduced, ask, sheetOpen, setQuiet }
 import { CAPS, SLICES, cap } from "./caps.js";
 import { PILLARS, pillar } from "./pillars.js";
 import { setFixed, searchAll } from "./core/feeds.js";
+import { referenceDeadlines, sweepPillars, keepData } from "./core/deadlines.js";
 import { syncBridges, mirrorDeckToPillars } from "./core/legacy.js";
 import { loadManifests, searchRecords, commands, handOff } from "./core/reach.js";
 import { startSky } from "./core/atmo.js";
@@ -15,7 +16,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d21";
+export const BUILD = "d35";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -42,7 +43,11 @@ async function render(same) {
     const main = $("#view"); const keep = same && prev && prev.key === r.key ? main.scrollTop : 0;
     const fresh = !same || !prev || prev.key !== r.key;                              // a new place animates in; a redraw of the same place does not
     const box = h("div.view-inner" + (fresh ? ".enter" : ""), { dataset: { cap: r.cap } }); main.replaceChildren(box); main.dataset.cap = r.cap; document.body.dataset.cap = r.cap;
-    setQuiet(!fresh); try { state.cleanup = mod.render(box, r, ctx) || null; } finally { setQuiet(false); } main.scrollTop = keep; state.route = r; state.dirty = false; drawDock(); drawRail();
+    /* HUB-GEM-09 (2026-11-17, from the 1930 audit's stage-fallback item + hub spec §H):
+       a view that throws during render must not take the deck's navigation with it —
+       the route still lands, the dock/rail still draw, and the pane shows a fallback
+       card instead of a blank or a dead shell. */
+    setQuiet(!fresh); try { state.cleanup = mod.render(box, r, ctx) || null; } catch (e) { console.error("[deck] view render failed", r.cap, e); state.cleanup = null; box.replaceChildren(h("div.view-fallback", null, h("h2", null, "This pillar hit a snag"), h("p", null, "The view failed to render, but the deck is fine — pick another pillar, or reload to try again."), h("p.stat-s", null, String((e && e.message) || e)))); } finally { setQuiet(false); } main.scrollTop = keep; state.route = r; state.dirty = false; drawDock(); drawRail();
     document.title = r.cap === "picture" ? "Prometheus" : `${r.cap === "system" ? "System" : cap(r.cap).name} · Prometheus`;
   };
   const moving = !same && prev && prev.cap !== r.cap;
@@ -82,7 +87,7 @@ function drawRail() {
       navLink("System", "#/system", here === "system")),
     h("div.rail-right",
       h("button.chip.rail-search", { type: "button", "aria-label": "Search or capture (/)" , onclick: () => { tick(); openSearch(); } }, icon("search", 13), h("span", "Search · Capture"), h("kbd", "/")),
-      p.demo ? h("button.chip.demo", { type: "button", onclick: demoSheet }, "Demo · Active") : null,
+      p.demo ? h("button.chip.demo", { type: "button", onclick: demoSheet, "aria-label": "Demo is active" }, "Demo", h("span.demo-x", " · Active")) : null,
       d ? h("a.sky-chip", { href: "#/system", onclick: (e) => { e.preventDefault(); go("#/system"); setTimeout(() => { const el = $("#sky-watch"); if (el) el.scrollIntoView({ behavior: reduced() ? "auto" : "smooth", block: "center" }); }, 160); }, "aria-label": `${Math.round(w.now.temp)} degrees, ${d.text}` }, icon(d.icon, 18), h("span.num", Math.round(w.now.temp) + "°")) : null,
       h("button.icon-btn", { type: "button", "aria-label": soundOn() ? "Sound is on: turn it off" : "Sound is off: turn it on", "aria-pressed": String(soundOn()), onclick: () => { setSound(!soundOn()); drawRail(); } }, icon(soundOn() ? "speaker" : "mute"))));
 }
@@ -99,6 +104,7 @@ function drawDock() {
   ];
   $("#dock").replaceChildren(h("div.dock-bar", items));
 }
+window.addEventListener("pk:lock", () => { if (state.route && state.route.cap === "system") render(true); });   // the passcode panel follows the lock
 setInterval(() => { if ($("#rail")) drawRail(); const r = state.route; if (r && r.cap === "picture" && !sheetOpen() && !document.hidden) { const m = clock.now().getMinutes(); if (m !== state.minute) { state.minute = m; render(true); } } }, 15000);
 
 /* ------------------------------------------------------------------ sky + weather ------------------------------------------------------------------ */
@@ -296,7 +302,8 @@ async function boot() {
   drawShell(); const reach = loadManifests().catch(() => []);
   try { state.sky = startSky($("#sky")); } catch (e) { console.warn("[sky]", e); }
   if (!state.sky) document.documentElement.classList.add("no-sky");
-  try { const r = await fetch("./deck/data/fixed-dates.json"); state.fixed = await r.json(); setFixed(state.fixed); } catch (e) { console.warn("fixed dates unavailable offline on a first visit", e); }
+  try { state.fixed = await referenceDeadlines(); setFixed(state.fixed); } catch (e) { console.warn("fixed dates unavailable offline on a first visit", e); }
+  keepData().then((k) => { state.kept = k; });
   if (params.get("demo") === "1" && store.pristine()) store.importFile(demoDeck(today(), state.fixed));
   syncBridges(store);
   addEventListener("storage", () => { syncBridges(store); render(true); });
@@ -312,6 +319,14 @@ async function boot() {
   document.documentElement.classList.add("ready");
   reloadWeather(false);
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("./sw.js").catch(() => {});
+  /* once a day, when idle: each publishing pillar runs in a hidden frame so its deadlines reach Today without a visit (core/deadlines.js).
+     Pinned-clock proof runs skip it unless they ask (?sweep=now); ?nosweep=1 turns it off. */
+  const sw = params.get("sweep");
+  if (params.get("nosweep") !== "1" && (sw === "now" || !params.get("now"))) {
+    const go = () => sweepPillars(Object.fromEntries(PILLARS.map((p) => [p.id, p.route])), { force: sw === "now" })
+      .then((r) => { state.sweep = r; if (r.after !== r.before) { syncBridges(store); render(true); } }).catch((e) => console.warn("[sweep]", e));
+    setTimeout(() => (window.requestIdleCallback ? requestIdleCallback(go, { timeout: 8000 }) : go()), sw === "now" ? 300 : 6000);
+  }
 }
 window.__deck = { store, clock, ctx, state, BUILD, reach: { searchRecords, commands } };                               // for the proofs and for the curious
 boot();

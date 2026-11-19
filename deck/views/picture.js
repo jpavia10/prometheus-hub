@@ -1,14 +1,21 @@
 /* The arrival view. The core, one line of what is true right now, and one card.
    Runway, countdowns, focus and the day ring live on Time. Storm, homestead, the counts and the atlas live on System.
-   The payoff ring lives on Money. Nothing here is a table, and nothing here is a dollar figure. */
-import { put, h, plural } from "../core/ui.js";
+   The payoff ring lives on Money. Nothing here is a table, and nothing here is a dollar figure.
+   The game menu (owner, 2026-11-16) is the other home; ?home=orbit|menu pins one for the proofs. */
+import { put, h, icon, plural } from "../core/ui.js";
 import { eventsSince } from "../core/reach.js";
 import { clock } from "../core/dates.js";
 import { nowFacts } from "../core/now.js";
 import { untilText } from "./parts.js";
 import { reactor, boot } from "./orrery.js";
+import { menu, unpin } from "./menu.js";
 
 const ago = (iso) => { const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + " min" : m < 1440 ? Math.round(m / 60) + " h" : Math.round(m / 1440) + " d"; };
+function homeMode() {
+  const q = new URLSearchParams(location.search).get("home");
+  if (q === "orbit" || q === "menu") return q;
+  try { return localStorage.getItem("prom.deck.home") === "orbit" ? "orbit" : "menu"; } catch (e) { return "menu"; }
+}
 
 export function render(root, route, ctx) {
   const now = clock.now();
@@ -45,7 +52,13 @@ export function render(root, route, ctx) {
       h("p.quiet", "The core is home. Runway, countdowns and focus are in Time. Storm, homestead and the counts are in System."));
   }
 
+  if (homeMode() !== "orbit") {
+    const rx = menu(ctx, { rerender: () => { if (rx && rx.cleanup) rx.cleanup(); location.hash = "#/"; dispatchEvent(new HashChangeEvent("hashchange")); } });
+    put(root, rx, h("div.briefing", { id: "briefing" }, nowLine, card));
+    return () => { if (rx && rx.cleanup) rx.cleanup(); };
+  }
   const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
-  put(root, rx, nowLine, card);
+  const toMenu = h("button.mn-back", { type: "button", onclick: () => { try { localStorage.setItem("prom.deck.home", "menu"); } catch (e) { /* this visit */ } unpin(); if (rx.cleanup) rx.cleanup(); location.hash = "#/"; dispatchEvent(new HashChangeEvent("hashchange")); } }, icon("grid", 15), h("span", "Menu"));
+  put(root, toMenu, rx, nowLine, card);
   return () => { if (rx.cleanup) rx.cleanup(); };
 }

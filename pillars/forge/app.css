@@ -1,5 +1,82 @@
-/* Forge: the kit carries the look; only what this pillar adds is here. */
+/* Forge — the scoreboard wall: standings read off Titan's ledger, the queue board, the assignment
+   register. The kit carries the base look; this sheet is the wall. Kit tokens only. */
 .row-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .sub { font-size: 13px; color: var(--muted); }
-.pill.hot { border-color: var(--accent); color: #fff; }
-.bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; } .bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+.pill { display: inline-block; padding: 1px 8px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); vertical-align: 2px; }
+.pill.hot { border-color: var(--accent); color: #fff; background: color-mix(in srgb, var(--accent) 22%, transparent); box-shadow: 0 0 12px -4px var(--accent); }
+
+/* The wall plate: the floor's totals, computed at render from the ledger and the queues. */
+.wall-plate { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-top: 2px solid var(--accent); border-radius: 10px; overflow: hidden; margin-bottom: 6px; background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent 70%); }
+.wp-cell { padding: 12px 14px 10px; border-left: 1px solid var(--line); min-width: 0; }
+.wp-cell:first-child { border-left: 0; }
+.wp-v { display: block; font-size: 27px; font-weight: 600; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wp-k { display: block; margin-top: 3px; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+@media (max-width: 700px) { .wall-plate { grid-template-columns: 1fr 1fr; } .wp-cell:nth-child(3) { border-left: 0; } .wp-cell:nth-child(n+3) { border-top: 1px solid var(--line); } .wp-v { font-size: 22px; } }
+
+/* Standings lines: rank chip, name, the average as the big board figure. */
+.frow > b { font-size: 25px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink); text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 40%, transparent); white-space: nowrap; }
+.rank { display: inline-block; min-width: 30px; margin-right: 9px; padding: 2px 0; text-align: center; font: 600 12px ui-monospace, "SF Mono", Menlo, Consolas, monospace; color: var(--accent-2); border: 1px solid color-mix(in srgb, var(--accent-2) 45%, transparent); border-radius: 6px; vertical-align: 2px; }
+
+/* The queue board: state rail down the left edge, lit for what is on now. */
+body[data-pillar="forge"] .qrow { position: relative; padding-left: 14px; }
+.qrow::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 2px; background: var(--line-strong); }
+.qrow.now::before { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+
+/* The hand-out slip and the register of your own assignments. */
+#f-form { border: 1px dashed var(--line-strong); border-radius: 12px; padding: 14px; background: color-mix(in srgb, var(--accent) 4%, transparent); }
+.reg-head { display: flex; justify-content: space-between; gap: 10px; margin: 16px 0 2px; padding-bottom: 6px; border-bottom: 1px solid var(--line-strong); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+body[data-pillar="forge"] .arow { position: relative; padding-left: 14px; }
+.arow::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 2px; background: var(--line-strong); }
+.arow.s-out::before { background: var(--accent); box-shadow: 0 0 8px -2px var(--accent); }
+.arow.s-back::before { background: var(--accent-2); }
+.arow.s-reviewed { opacity: .62; }
+
+/* The ledger board: all-time bar in molten metal, a white tick where the last 10 sit. */
+.board-head { display: flex; justify-content: space-between; gap: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line-strong); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
+.srow .kv > b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bar-mini { position: relative; height: 8px; border-radius: 4px; background: rgba(255,255,255,.08); box-shadow: inset 0 1px 2px rgba(0,0,0,.5); overflow: hidden; margin-top: 6px; }
+.bar-mini i { display: block; height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 10px -2px var(--accent); }
+.bar-mini .tick { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; opacity: .9; }
+.fdelta { font-size: 14px; color: var(--faint); }
+.fdelta.up { color: var(--good); }
+.fdelta.down { color: var(--bad); }
+
+/* 2026-11-16: the workload board, the task list with filters, the pillar matrix (function first, owner). */
+.wp-cell.bad .wp-v { color: var(--bad); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 10px 0 6px; font-size: 11px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; } .legend i { display: inline-block; width: 12px; height: 8px; border-radius: 2px; }
+.src-titan { background: #ffd36b; } .src-tproj { background: #ff7aa8; } .src-hub { background: var(--accent); } .src-board { background: #9fd4e6; } .src-mine { background: #c9b8ea; }
+.floor-k { background: #fff; width: 2px !important; height: 12px !important; }
+.lrow { width: 100%; display: grid; grid-template-columns: minmax(84px, 120px) minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 6px; border: 0; border-top: 1px solid var(--line); background: none; color: inherit; text-align: left; cursor: pointer; font: inherit; }
+.lrow:hover, .lrow.on { background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.lname { display: grid; } .lname b { font-size: 15px; } .lname small { font-size: 10px; color: var(--faint); letter-spacing: .04em; }
+.lbar { position: relative; display: flex; height: 14px; border-radius: 4px; background: rgba(255,255,255,.06); overflow: visible; }
+.lbar i { display: block; height: 100%; } .lbar i:first-child { border-radius: 4px 0 0 4px; } .lbar i:last-of-type { border-radius: 0 4px 4px 0; }
+.lfloor { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 6px #fff; }
+.lnum { display: grid; justify-items: end; } .lnum b { font-size: 22px; font-variant-numeric: tabular-nums; line-height: 1; } .lnum small { font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+.lrow.low .lnum b, .lrow.low .lnum small { color: var(--bad); }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+.segb { padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: rgba(255,255,255,.03); color: var(--muted); font: inherit; font-size: 12px; cursor: pointer; }
+.segb.on { color: #fff; border-color: var(--accent); background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.frow2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 8px; margin: 2px 0 10px; }
+.fsel, .fq { width: 100%; min-height: 38px; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line-strong); background: rgba(255,255,255,.04); color: var(--ink); font: inherit; font-size: 13px; }
+details.trow { border-top: 1px solid var(--line); position: relative; padding-left: 12px; }
+details.trow::before { content: ""; position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px; border-radius: 2px; background: var(--line-strong); }
+details.trow.s-titan::before { background: #ffd36b; } details.trow.s-tproj::before { background: #ff7aa8; } details.trow.s-hub::before { background: var(--accent); } details.trow.s-board::before { background: #9fd4e6; } details.trow.s-mine::before { background: #c9b8ea; }
+details.trow.closed { opacity: .6; } details.trow.late .tmain b { color: var(--bad); }
+details.trow summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 2px; cursor: pointer; }
+details.trow summary::-webkit-details-marker { display: none; }
+.tmain { display: grid; gap: 2px; min-width: 0; } .tmain b { font-weight: 600; font-size: 14px; line-height: 1.3; } .tside { flex: none; }
+.pill.bad { border-color: var(--bad); color: #fff; background: color-mix(in srgb, var(--bad) 25%, transparent); }
+.tbody { padding: 2px 4px 14px; font-size: 13px; color: var(--muted); display: grid; gap: 6px; } .tbody p { margin: 0; } .tbody b { color: var(--ink); } .tbody ol { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+.tbody .mono { font: 12px ui-monospace, Menlo, Consolas, monospace; color: var(--ink); background: rgba(255,255,255,.04); border-radius: 8px; padding: 8px; overflow-wrap: anywhere; }
+.tbody .review { color: var(--good); } .tbody .links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; } .tbody .links a { color: var(--accent-2); }
+.mwrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table.matrix { border-collapse: collapse; width: 100%; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.matrix th { position: sticky; top: 0; text-align: right; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-weight: 600; padding: 6px 8px; border-bottom: 1px solid var(--line-strong); white-space: nowrap; }
+.matrix th:first-child, .matrix td:first-child { text-align: left; position: sticky; left: 0; background: var(--panel, #0b0f1c); }
+.matrix td { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--accent) calc(var(--k, 0) * 40%), transparent); white-space: nowrap; }
+.matrix td.nil { color: var(--faint); background: none; }
+.matrix tr { cursor: pointer; } .matrix tr:hover td { outline: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.matrix tr.zero td { color: var(--bad); } .matrix tr.zero td:first-child::after { content: "  · nothing assigned"; font-size: 10.5px; }
+@media (max-width: 520px) { .lrow { grid-template-columns: 78px minmax(0, 1fr) auto; gap: 8px; } .frow2 { grid-template-columns: 1fr; } }

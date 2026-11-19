@@ -17,18 +17,33 @@
   }
 
   const wInfo = latestWeightKg();
-  root.innerHTML = `<div class="glass"><h2>Food lookup — 900 USDA foods (scalable portion)</h2>
+  const FOODS = window.APOLLO_FOODS || [], EXERCISES = window.APOLLO_EXERCISES || [];
+  const exGroupOf = (e) => (e.muscles && e.muscles.length ? e.muscles[0] : "Compendium activity");
+  const groupCounts = new Map();
+  for (const e of EXERCISES) groupCounts.set(exGroupOf(e), (groupCounts.get(exGroupOf(e)) || 0) + 1);
+  const withMuscles = EXERCISES.filter((e) => e.muscles && e.muscles.length).length;
+  const topGroups = [...groupCounts.entries()].filter(([g]) => g !== "Compendium activity").sort((a, b) => b[1] - a[1]).slice(0, 6);
+  root.innerHTML = `<div class="glass lit ap-plate"><div class="ap-plate-h">The Corpus — Reference Plate</div>
+    <div class="ap-cells">
+      <div class="ap-cell"><div class="ap-v">${FOODS.length}</div><div class="ap-k">USDA Foods</div><div class="ap-s">per 100 g · kcal &amp; macros</div></div>
+      <div class="ap-cell"><div class="ap-v">${EXERCISES.length}</div><div class="ap-k">Activities</div><div class="ap-s">Compendium MET · ${withMuscles} with muscle data</div></div>
+      <div class="ap-cell"><div class="ap-v" id="ap-bio-n">—</div><div class="ap-k">Biomarkers</div><div class="ap-s">clinical vs longevity range</div></div>
+    </div>
+    <div class="ap-comp"><b>Movement groups</b>${topGroups.map(([g, n]) => `${esc(g)} ${n}`).join(" · ")}</div></div>
+  <div class="glass"><h2>Food lookup — ${FOODS.length} USDA foods (scalable portion)</h2>
     <form class="form"><label class="f wide">Search foods<input id="fd-q" type="search" placeholder="chicken breast, oats, salmon…"></label>
     <label class="f">Portion (g)<input id="fd-g" type="number" value="100" min="5" max="2000" step="5"></label></form>
     <div id="fd-list"></div>
     <h3 style="margin-top:16px">Meal builder</h3><div id="fd-meal" class="stat-s">Tap a food to add your chosen portion.</div>
     <div class="row-actions" style="margin-top:8px"><button class="btn small" id="fd-save" type="button">Save meal & add to today's day log</button><button class="btn quiet small" id="fd-clear" type="button">Clear</button></div>
     <div id="fd-saved" class="stat-s" style="margin-top:8px"></div></div>
-  <div class="glass" style="margin-top:14px"><h2>Exercise lookup — 450 activities (MET · auto weight)</h2>
+  <div class="glass" style="margin-top:14px"><h2>Exercise lookup — ${EXERCISES.length} activities (MET · auto weight)</h2>
+    <div class="ex-chips" id="ex-chips"></div>
     <form class="form"><label class="f wide">Search activities<input id="ex-q" type="search" placeholder="walking, rowing, cycling…"></label>
     <label class="f">Weight (kg) ${wInfo.from ? `· from ${wInfo.lb} lb (${wInfo.from})` : ""}<input id="ex-kg" type="number" value="${wInfo.kg}" min="30" max="300" step="0.5"></label>
     <label class="f">Minutes<input id="ex-min" type="number" value="30" min="1" max="600"></label></form>
     <div id="ex-list"></div>
+    <div id="ex-count" class="stat-s" style="margin-top:8px"></div>
     <p class="note">Energy is MET × 3.5 × kg ÷ 200 per minute. Tap "+ log" on any exercise to add its minutes to today's Apollo training ring.</p></div>`;
 
   let meal = [];
@@ -37,8 +52,8 @@
   function paintMeal() {
     const t = totals();
     $("#fd-meal").innerHTML = meal.length
-      ? meal.map((f, i) => `${esc(f.n)} (${f.grams}g) <button class="btn quiet small" data-rm="${i}" type="button">×</button>`).join("<br>")
-        + `<br><b>${Math.round(t.kcal)} kcal · protein ${num(t.p, 0)} g · carbs ${num(t.c, 0)} g · fat ${num(t.f, 0)} g · fiber ${num(t.fib, 0)} g</b>`
+      ? meal.map((f, i) => `<div class="fd-meal-row"><span>${esc(f.n)} <small class="meta">(${f.grams}g)</small></span><span class="fd-meal-k">${Math.round(f.kcal)} kcal <button class="btn quiet small" data-rm="${i}" type="button">×</button></span></div>`).join("")
+        + `<div class="fd-meal-total"><span class="fd-kcal">${Math.round(t.kcal)}<small>kcal</small></span><span>protein <b>${num(t.p, 0)} g</b></span><span>carbs <b>${num(t.c, 0)} g</b></span><span>fat <b>${num(t.f, 0)} g</b></span><span>fiber <b>${num(t.fib, 0)} g</b></span></div>`
       : "Tap a food above to build a meal. Totals sync to Today when saved.";
     $("#fd-meal").querySelectorAll("[data-rm]").forEach((b) => (b.onclick = () => { meal.splice(+b.dataset.rm, 1); paintMeal(); }));
     const saved = S.list("meals").filter((m) => m.date === day());
@@ -49,7 +64,14 @@
     const q = ($("#fd-q").value || "").toLowerCase();
     const g = Math.max(1, +$("#fd-g").value || 100), k = g / 100;
     const rows = (window.APOLLO_FOODS || []).filter((f) => !q || f.n.toLowerCase().includes(q)).slice(0, 12);
-    $("#fd-list").innerHTML = rows.map((f) => `<div class="kv"><span>${esc(f.n)} <small class="meta">(${g}g)</small></span><b>${Math.round(f.kcal * k)} kcal · P ${num(f.p * k, 1)} · C ${num(f.c * k, 1)} · F ${num(f.f * k, 1)}</b> <button class="btn quiet small" data-add="${esc(f.n)}" type="button">+ ${g}g</button></div>`).join("")
+    $("#fd-list").innerHTML = rows.map((f) => {
+      const pk = f.p * k * 4, ck = f.c * k * 4, fk = f.f * k * 9, tot = pk + ck + fk;
+      const seg = (v) => (tot > 0 ? Math.max(0, (v / tot) * 100).toFixed(1) : 0);
+      return `<div class="fd-row"><div class="fd-main"><div class="fd-name">${esc(f.n)}<span class="fd-portion">${g} g</span></div>`
+        + `<div class="fd-bar" role="img" aria-label="Energy share by macro"><i class="fd-bp" style="width:${seg(pk)}%"></i><i class="fd-bc" style="width:${seg(ck)}%"></i><i class="fd-bf" style="width:${seg(fk)}%"></i></div>`
+        + `<div class="fd-macros"><b class="fd-mp">P</b> ${num(f.p * k, 1)} g · <b class="fd-mc">C</b> ${num(f.c * k, 1)} g · <b class="fd-mf">F</b> ${num(f.f * k, 1)} g · Fiber ${num((f.fib || 0) * k, 1)} g</div></div>`
+        + `<div class="fd-side"><div class="fd-kcal">${Math.round(f.kcal * k)}<small>kcal</small></div><button class="btn quiet small" data-add="${esc(f.n)}" type="button">+ ${g}g</button></div></div>`;
+    }).join("")
       || `<p class="empty">No matches.</p>`;
     $("#fd-list").querySelectorAll("[data-add]").forEach((b) => (b.onclick = () => {
       const f = (window.APOLLO_FOODS || []).find((x) => x.n === b.dataset.add);
@@ -59,13 +81,27 @@
     }));
   }
 
+  let exGroup = "All";
+  function paintChips() {
+    const major = [...groupCounts.entries()].filter(([g, n]) => g === "Compendium activity" || n >= 3).sort((a, b) => b[1] - a[1]).map(([g]) => g);
+    const groups = ["All", ...major];
+    $("#ex-chips").innerHTML = groups.map((g) => `<button class="ex-chip${g === exGroup ? " on" : ""}" data-grp="${esc(g)}" type="button">${esc(g)}<span class="n">${g === "All" ? EXERCISES.length : groupCounts.get(g)}</span></button>`).join("");
+    $("#ex-chips").querySelectorAll("[data-grp]").forEach((b) => (b.onclick = () => { exGroup = b.dataset.grp; paintChips(); paintEx(); }));
+  }
+
   function paintEx() {
     const q = ($("#ex-q").value || "").toLowerCase(), kg = +$("#ex-kg").value || 90, min = +$("#ex-min").value || 30;
-    const rows = (window.APOLLO_EXERCISES || []).filter((e) => !q || e.n.toLowerCase().includes(q)).slice(0, 12);
-    $("#ex-list").innerHTML = rows.map((e) => {
+    const matched = (window.APOLLO_EXERCISES || []).filter((e) => (exGroup === "All" || exGroupOf(e) === exGroup) && (!q || e.n.toLowerCase().includes(q)));
+    const rows = matched.slice(0, 12);
+    $("#ex-list").innerHTML = rows.length ? `<div class="ex-grid">${rows.map((e) => {
       const kcal = Math.round(e.met * 3.5 * kg / 200 * min);
-      return `<div class="kv"><span>${esc(e.n)}</span><b>MET ${e.met} · ~${kcal} kcal / ${min}m</b> <button class="btn quiet small" data-ex="${esc(e.n)}" data-kcal="${kcal}" type="button">+ ${min}m</button></div>`;
-    }).join("") || `<p class="empty">No matches.</p>`;
+      return `<article class="ex-card"><div class="ex-top"><span class="ex-group">${esc(exGroupOf(e))}</span><span class="ex-met">MET ${e.met}</span></div>`
+        + `<div class="ex-name">${esc(e.n)}</div>`
+        + (e.muscles && e.muscles.length ? `<div class="ex-muscles">${esc(e.muscles.join(" · "))}</div>` : "")
+        + (e.equipment ? `<div class="ex-eq">${esc(e.equipment)}</div>` : "")
+        + `<div class="ex-foot"><span class="ex-kcal">~${kcal}<small>kcal / ${min}m</small></span><button class="btn quiet small" data-ex="${esc(e.n)}" data-kcal="${kcal}" type="button">+ ${min}m</button></div></article>`;
+    }).join("")}</div>` : `<p class="empty">No matches.</p>`;
+    $("#ex-count").textContent = `Showing ${rows.length} of ${matched.length}${exGroup === "All" ? "" : ` in ${exGroup}`} · ${EXERCISES.length} activities in the corpus`;
     $("#ex-list").querySelectorAll("[data-ex]").forEach((b) => (b.onclick = () => {
       const today = day(), days = S.get("days", {}), cur = days[today] || {};
       cur.train = Math.round((+cur.train || 0) + min);
@@ -108,10 +144,16 @@
     bioBox.innerHTML = `<h2>Biomarker Reference — 40 Markers (Clinical vs Longevity Target)</h2>
       <form class="form"><label class="f wide">Filter 40 markers<input id="bio-q" type="search" placeholder="ApoB, ferritin, thyroid, testosterone…"></label></form>
       <div class="scroll-x"><table class="t"><thead><tr><th>Marker</th><th>Panel</th><th>Clinical</th><th>Optimal</th><th>Your latest</th></tr></thead><tbody id="bio-rows"></tbody></table></div>`;
+    const plateN = document.getElementById("ap-bio-n"); if (plateN) plateN.textContent = BIO.length;
     const paintBio = () => {
       const q = ($("#bio-q").value || "").toLowerCase(), vals = S.get("labs", {});
       const rows = BIO.filter((b) => !q || b[0].toLowerCase().includes(q) || b[1].toLowerCase().includes(q));
-      $("#bio-rows").innerHTML = rows.map(([m, p, c, o]) => `<tr><td><b>${m}</b></td><td>${p}</td><td>${c}</td><td><b>${o}</b></td><td><input class="bio-in" data-bio="${m}" value="${esc(vals[m] || "")}" placeholder="—" style="max-width:90px"></td></tr>`).join("");
+      let lastPanel = null;
+      $("#bio-rows").innerHTML = rows.map(([m, p, c, o]) => {
+        const gh = p !== lastPanel ? `<tr class="bio-gh"><td colspan="5">${p}</td></tr>` : "";
+        lastPanel = p;
+        return gh + `<tr><td><b>${m}</b></td><td>${p}</td><td>${c}</td><td><b>${o}</b></td><td><input class="bio-in" data-bio="${m}" value="${esc(vals[m] || "")}" placeholder="—" style="max-width:90px"></td></tr>`;
+      }).join("");
       $("#bio-rows").querySelectorAll(".bio-in").forEach((inp) => inp.addEventListener("change", () => {
         const cur = S.get("labs", {}); if (inp.value.trim()) cur[inp.dataset.bio] = inp.value.trim(); else delete cur[inp.dataset.bio]; S.set("labs", cur); toast("Saved biomarker");
       }));
@@ -120,5 +162,5 @@
     paintBio();
   }
 
-  paintFoods(); paintEx(); paintMeal();
+  paintChips(); paintFoods(); paintEx(); paintMeal();
 })();

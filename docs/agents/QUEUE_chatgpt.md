@@ -2,38 +2,8 @@
 
 # Prometheus Hub · homework for ChatGPT
 
-Updated 2026-11-10 03:42 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/ChatGPT/HOMEWORK — ChatGPT (every pillar)'.
+Updated 2026-11-19 04:52 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/ChatGPT/HOMEWORK — ChatGPT (every pillar)'.
 
-## 1. HUB-GPT-01 · Phone audit of the desk: 25 findings
+**WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-**Due:** 2026-11-12 · **State:** now
-
-**Why:** Claude needs an outside eye on the desk before the next build.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/ on a phone-sized screen (390 x 844)
-
-**Do this:**
-1. Use the desk the way Joseph would: open every door sheet, scroll the whole page, add a note, rotate the phone.
-2. Write 25 findings, each: where (the exact element or text on screen), what is wrong, what to do instead, severity 1-3.
-3. At least 8 about the look (type, spacing, contrast, motion), at least 8 about use (what is hard to find or do).
-
-**Make:** `hub_chatgpt_audit_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
-
-**Shape:** `numbered list, 25 items, each with where / wrong / fix / severity`
-
-**How many:** 25
-
-**Done when:** 25 findings Claude can find on the live page.
-
-**How Claude checks it:**
-- Claude reproduces 6 findings at random on a 390 x 844 screen.
-
-**Not done (sent back) if:**
-- a row copied from another row with the names changed
-- a source URL that does not open or does not say what the row claims
-- fewer items than the count
-- a file saved anywhere but the folder named here, or under another name
-- a finding about something not on the page
+No homework for ChatGPT in Prometheus Hub right now. Check your HOMEWORK doc for the other pillars.

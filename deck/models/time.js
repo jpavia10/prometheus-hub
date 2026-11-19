@@ -57,8 +57,8 @@ export function feed(st, from, to) {
 }
 /** The fixed dates as reference rows. */
 export function fixedFeed(fixed, from, to) {
-  const tone = { "federal holiday": "holiday", "tax deadline": "tax", "clock change": "clock" };
-  return (fixed || []).filter((r) => r.date >= from && r.date <= to).map((r) => ({ key: `fixed:${r.date}:${r.name}`, date: r.date, time: null, title: r.name, cap: "fixed", tone: tone[r.kind] || "holiday", weight: 0, fixed: true, url: r.url, go: `#/time/day/${r.date}` }));
+  const tone = { "federal holiday": "holiday", "tax deadline": "tax", "clock change": "clock", deadline: "deadline" };       // deadline: Kairos's CA / Kern dates (core/deadlines.js)
+  return (fixed || []).filter((r) => r.date >= from && r.date <= to).map((r) => ({ key: `fixed:${r.date}:${r.name}`, date: r.date, time: null, title: r.name, cap: "fixed", tone: tone[r.kind] || "holiday", weight: 0, fixed: true, url: r.url, agency: r.agency || "", go: `#/time/day/${r.date}` }));
 }
 
 /** Per-day load for the risk view. rows = everything dated in the window (all capabilities + fixed).

@@ -10,6 +10,27 @@
   const withIds = (arr) => arr.map((x) => ({ id: Math.random().toString(36).slice(2, 8), ...x }));
   const kiaSet = (which) => KIA ? withIds(which === "normal" ? KIA.garage_services_normal : KIA.garage_services_severe_frazier) : null;
 
+  /* Two vehicles (Sebastian, 2026-11-14): the Sorento keeps the original flat keys, so every
+     existing profile is untouched; the MT-07 lives under mt07.* keys with its own factory seed. */
+  const MT07 = window.MT07_SCHEDULE || null;
+  const VEHICLES = [
+    { key: "sorento", prefix: "", label: "2025 Sorento Hybrid" },
+    { key: "mt07", prefix: "mt07.", label: "2021 Yamaha MT-07" },
+  ];
+  const veh = () => VEHICLES.find((v) => v.key === S.get("activeVehicle", "sorento")) || VEHICLES[0];
+  const K = (base) => veh().prefix + base;
+  /* Spec-plate figures (presentation only): the factory dimensions and power outputs exactly as
+     carried by model3d.js's captions — Sorento 4,815 × 1,900 × 1,695 mm, WB 2,815, 227 hp combined;
+     MT-07 2,085 × 795 × 1,095 mm, WB 1,400, 72.4 hp (54 kW). If a figure is ever corrected there,
+     correct it here too — the plate must never disagree with the model. */
+  const PLATES = {
+    sorento: { bay: "Bay 01", power: "1.6L turbo hybrid · 227 hp combined", dims: [["Length", "4,815 mm"], ["Width", "1,900 mm"], ["Height", "1,695 mm"], ["Wheelbase", "2,815 mm"]], src: "Kia factory dimensions · severe mountain schedule on file" },
+    mt07: { bay: "Bay 02", power: "689cc CP2 twin · 72.4 hp (54 kW)", dims: [["Length", "2,085 mm"], ["Width", "795 mm"], ["Height", "1,095 mm"], ["Wheelbase", "1,400 mm"]], src: "Yamaha factory dimensions · owner's manual BAT-28199-10" },
+  };
+  const mt07Set = () => MT07 ? withIds(MT07.services.map((x) => ({ name: x.name, miles: x.miles, months: x.months }))) : null;
+  if (!S.get("mt07.services")) { const s = mt07Set(); if (s) S.set("mt07.services", s); }
+  if (!S.get("mt07.vehicle")) S.set("mt07.vehicle", { name: "2021 Yamaha MT-07" });
+
   if (!S.get("services")) S.set("services", kiaSet("severe") || withIds([
     { name: "Engine oil + filter", miles: 5000, months: 6 },
     { name: "Tire rotation", miles: 8000, months: 12 },
@@ -34,9 +55,9 @@
     S.set("services", svcs); S.set("factoryV2", 1);
   }
 
-  const odo = () => S.get("odometer", 0);
-  const vehicleName = () => { const v = S.get("vehicle", null); const n = v && String(v.name || "").trim(); return n || "Vehicle"; };
-  const lastFor = (name) => S.list("history").filter((x) => x.service === name).sort((a, b) => b.date.localeCompare(a.date))[0] || null;
+  const odo = () => S.get(K("odometer"), 0);
+  const vehicleName = () => { const v = S.get(K("vehicle"), null); const n = v && String(v.name || "").trim(); return n || "Vehicle"; };
+  const lastFor = (name) => S.list(K("history")).filter((x) => x.service === name).sort((a, b) => b.date.localeCompare(a.date))[0] || null;
   const fallbackAddMonths = (ds, m) => { const d = new Date(ds + "T12:00:00"); d.setMonth(d.getMonth() + m); return d.toISOString().slice(0, 10); };
   const getGarageMath = () => (typeof window !== "undefined" && window.GARAGE) || (typeof globalThis !== "undefined" && globalThis.GARAGE) || {};
   const getPB = () => (typeof window !== "undefined" && window.PB) || (typeof globalThis !== "undefined" && globalThis.PB) || null;
@@ -59,15 +80,16 @@
     const gasRaw = opts.gasPrice !== undefined ? opts.gasPrice : (gasEl ? +gasEl.value : 4.65);
     const miles = Math.max(0, Number(milesRaw) || 0);
     const gasPrice = Math.max(0, Number(gasRaw) || 4.65);
-    const fuelEntries = Array.isArray(opts.fuel) ? opts.fuel : S.list("fuel");
+    const fuelEntries = Array.isArray(opts.fuel) ? opts.fuel : S.list(K("fuel"));
     const g = getGarageMath();
     const fs = g.fuelStats ? g.fuelStats(fuelEntries) : { mpg: null, costPerMile: null };
     const usedLogged = fs.costPerMile != null && fs.mpg != null;
-    const mpg = usedLogged ? fs.mpg : 34; // hybrid SUV AWD ~34 MPG combined EPA reference when <2 fills logged
-    const costPerMile = usedLogged ? fs.costPerMile : (gasPrice / mpg);
+    const fbMpg = veh().key === "mt07" ? null : 34; // Sorento: hybrid SUV AWD ~34 MPG combined EPA reference when <2 fills logged. MT-07: no honest factory figure — logged fills only.
+    const mpg = usedLogged ? fs.mpg : fbMpg;
+    const costPerMile = usedLogged ? fs.costPerMile : (mpg ? gasPrice / mpg : null);
     const gallons = mpg > 0 ? miles / mpg : 0;
     const cost = miles * costPerMile;
-    return { miles, gasPrice, mpg, costPerMile, gallons, cost, estCost: cost, source: usedLogged ? "logged" : "epa" };
+    return { miles, gasPrice, mpg, costPerMile, gallons, cost: cost || 0, estCost: cost || 0, source: usedLogged ? "logged" : "epa" };
   }
 
   function nextDueServices(nowOpt) {
@@ -76,7 +98,7 @@
       odometer: (nowOpt && nowOpt.odometer != null) ? Number(nowOpt.odometer) : odo(),
     };
     const g = getGarageMath();
-    const svcs = S.get("services", []);
+    const svcs = S.get(K("services"), []);
     const rank = { overdue: 0, "due soon": 1, ok: 2, unknown: 3 };
     return svcs.map((it) => {
       const last = lastFor(it.name);
@@ -94,13 +116,13 @@
 
   function data() {
     const g = getGarageMath();
-    const fuel = S.list("fuel");
+    const fuel = S.list(K("fuel"));
     return {
       odometer: odo(),
-      services: S.get("services", []),
-      history: S.list("history"),
+      services: S.get(K("services"), []),
+      history: S.list(K("history")),
       fuel,
-      paperwork: S.list("paperwork"),
+      paperwork: S.list(K("paperwork")),
       fuelStats: g.fuelStats ? g.fuelStats(fuel) : null,
       nextDue: nextDueServices(),
     };
@@ -112,7 +134,17 @@
 
   app.innerHTML = `
     <section class="grid">
+      <div class="glass span-12 bay-panel"><h2>Vehicles — the bays</h2>
+        <div class="row-actions" id="g-vehicles" style="margin-bottom:8px"></div>
+        <div id="g-plate"></div>
+        <p class="note">Each vehicle keeps its own odometer, service list, fuel log and paperwork on this device. The Sorento's records are exactly where they always were.</p>
+      </div>
+      <div class="glass span-12 showroom"><h2>Vehicles in 3D — showroom</h2>
+        <div class="stage-frame"><canvas id="g-3d" aria-label="Interactive 3D model of the active vehicle"></canvas></div>
+        <p class="note" id="g-3d-cap" style="margin-top:8px"></p>
+      </div>
       <div class="glass span-6"><h2>Odometer &amp; economy</h2>
+        <div id="g-odo-plate"></div>
         <form class="form" id="g-odo">
           <label class="f">Name on this device<input name="vehicle" maxlength="40" placeholder="Vehicle"></label>
           <label class="f">Current odometer (mi)<input name="odometer" type="number" min="0" step="1"></label>
@@ -136,9 +168,12 @@
         <div id="g-trip-out" style="margin-top:8px"></div>
       </div>
 
-      <div class="glass span-12"><h2>Maintenance (Severe Mountain Schedule)</h2><div id="g-services"></div>
-        <p class="note">${KIA ? "Intervals from the hybrid SUV maintenance table (severe mountain-road schedule, or the normal table)." : "Starter intervals."} Logging a service resets both clocks and republishes the due date.</p>
-        ${KIA ? `<div class="row-actions" style="margin-bottom:10px"><button class="btn quiet small" id="g-kia-severe" type="button">Load Kia severe schedule</button><button class="btn quiet small" id="g-kia-normal" type="button">Load Kia normal schedule</button></div>` : ""}
+      <div class="glass span-12 board-panel"><h2>Factory Recalls & Winter Pass</h2><div id="g-recalls"></div><div id="g-chain"></div></div>
+      <div class="glass span-12 board-panel"><h2 id="g-maint-title">Maintenance</h2><div id="g-services"></div>
+        <p class="note" id="g-maint-note"></p>
+        <div id="g-specs" style="margin-bottom:10px"></div>
+        ${KIA ? `<div class="row-actions" id="g-kia-btns" style="margin-bottom:10px"><button class="btn quiet small" id="g-kia-severe" type="button">Load Kia severe schedule</button><button class="btn quiet small" id="g-kia-normal" type="button">Load Kia normal schedule</button></div>` : ""}
+        <div class="row-actions" id="g-mt07-btns" style="margin-bottom:10px" hidden><button class="btn quiet small" id="g-mt07-load" type="button">Reload Yamaha factory schedule</button></div>
         <form class="form" id="g-addsvc">
           <label class="f wide">New service<input name="name" required maxlength="80"></label>
           <label class="f">Every (miles)<input name="miles" type="number" min="0"></label>
@@ -193,7 +228,8 @@
 
   function paintTrip() {
     const est = estimateTrip();
-    $("#g-trip-out").innerHTML = `<div class="kv"><span>Estimated fuel for ${num(est.miles)} mi</span><b>${money(est.cost)}</b></div>
+    if (est.mpg == null) { $("#g-trip-out").innerHTML = `<div class="stat-s">Log two fuel fills on the MT-07 to compute its real trip cost — Yamaha publishes no EPA figure to fall back on.</div>`; return; }
+    $("#g-trip-out").innerHTML = `<div class="trip-read"><span class="stat-k">Estimated fuel · ${num(est.miles)} mi</span><b class="trip-cost">${money(est.cost)}</b></div>
       <div class="stat-s">${est.source === "logged" ? `Using your logged ${num(est.mpg, 1)} MPG (${money(est.costPerMile, 3)}/mi)` : `Using ${est.mpg} MPG hybrid SUV EPA estimate @ ${money(est.gasPrice)}/gal (${money(est.costPerMile, 3)}/mi)`}</div>`;
   }
 
@@ -201,8 +237,28 @@
     const now = { date: day(), odometer: odo() };
     const pb = getPB();
     const g = getGarageMath();
-    $("#g-odo").odometer.value = odo() || ""; $("#g-odo").date.value = day(); $("#g-odo").vehicle.value = S.get("vehicle", null)?.name || "";
-    const svcs = S.get("services", []);
+    const vNow = veh();
+    if (window.G3D) window.G3D.setVehicle(vNow.key);
+    $("#g-vehicles").innerHTML = VEHICLES.map((v) => `<button class="btn ${v.key === vNow.key ? "" : "quiet"} small" data-veh="${v.key}" type="button">${esc(v.label)}${v.key === vNow.key ? " · active" : ""}</button>`).join("");
+    $("#g-vehicles").querySelectorAll("[data-veh]").forEach((b) => (b.onclick = () => { S.set("activeVehicle", b.dataset.veh); paint(); paintPaperworkAndDossier(); }));
+    const plate = PLATES[vNow.key] || PLATES.sorento;
+    $("#g-plate").innerHTML = `<div class="plate">
+      <div class="plate-id"><span class="plate-bay">${plate.bay} · in the bay</span><span class="plate-name">${esc(vNow.label)}</span><span class="plate-power">${esc(plate.power)}</span></div>
+      ${plate.dims.map(([k, v]) => `<div class="plate-cell"><span class="plate-k">${k}</span><span class="plate-v">${v}</span></div>`).join("")}
+      <div class="plate-cell hot"><span class="plate-k">Odometer</span><span class="plate-v">${num(odo())} mi</span></div>
+      <div class="plate-src">${esc(plate.src)}</div>
+    </div>`;
+    $("#g-odo-plate").innerHTML = `<div class="odo-read"><span class="odo-v">${num(odo())}</span><span class="odo-u">mi on the clock</span></div><div class="odo-name">${esc(vehicleName())} · this device's record</div>`;
+    const isBike = vNow.key === "mt07";
+    $("#g-maint-title").textContent = isBike ? "Maintenance (Yamaha Factory Schedule)" : "Maintenance (Severe Mountain Schedule)";
+    $("#g-maint-note").textContent = isBike
+      ? "Intervals from the 2021 MT-07 owner's manual (BAT-28199-10) periodic charts — US chart. Logging a service resets both clocks and republishes the due date."
+      : "Intervals from the hybrid SUV maintenance table (severe mountain-road schedule, or the normal table). Logging a service resets both clocks and republishes the due date.";
+    const kb = $("#g-kia-btns"); if (kb) kb.hidden = isBike;
+    const mb = $("#g-mt07-btns"); if (mb) mb.hidden = !isBike;
+    $("#g-specs").innerHTML = isBike && MT07 ? `<div class="spec-sheet">${MT07.specs.map((s) => { const i = s.indexOf(":"); const k = i > 0 ? s.slice(0, i) : "Spec"; const v = i > 0 ? s.slice(i + 1).trim() : s; return `<div class="spec-row"><span class="spec-k">${esc(k)}</span><span class="spec-v">${esc(v)}</span></div>`; }).join("")}</div>` : "";
+    $("#g-odo").odometer.value = odo() || ""; $("#g-odo").date.value = day(); $("#g-odo").vehicle.value = S.get(K("vehicle"), null)?.name || "";
+    const svcs = S.get(K("services"), []);
     $("#g-services").innerHTML = svcs.map((it) => {
       const st = g.dueStatus(it, lastFor(it.name), now);
       if (pb && pb.deadlines && st.dueDate && st.state !== "unknown") pb.deadlines.publish({ title: vehicleName() + ": " + it.name, date: st.dueDate, source: "garage", kind: "service", ref: it.id });
@@ -211,7 +267,9 @@
       const detail = st.state === "unknown"
         ? (nextDueDate ? `no service logged yet · est. next ${nextDueDate}` : "no service logged yet")
         : `due ${st.dueDate || ""}${st.dueMiles ? ` / ${num(st.dueMiles)} mi` : ""} · ${st.milesLeft != null ? num(st.milesLeft) + " mi left" : ""}${st.daysLeft != null ? ` · ${st.daysLeft} days` : ""}`;
-      return `<div class="kv"><span>${esc(it.name)} <span class="pill ${cls}">${st.state}</span><br><span class="stat-s">${detail} · every ${it.miles ? num(it.miles) + " mi" : ""}${it.miles && it.months ? " / " : ""}${it.months ? it.months + " mo" : ""}</span></span>
+      const interval = (it.miles || it.months) ? `every ${it.miles ? num(it.miles) + " mi" : ""}${it.miles && it.months ? " / " : ""}${it.months ? it.months + " mo" : ""}` : "—";
+      return `<div class="kv svc ${cls}"><span class="svc-main"><span class="svc-name">${esc(it.name)}</span> <span class="pill ${cls}">${st.state}</span><br><span class="stat-s">${detail}</span></span>
+        <span class="svc-int">${interval}</span>
         <span class="row-actions"><button class="btn quiet small" data-sync="${esc(it.id)}" type="button">Sync to Kairos</button><button class="btn quiet small" data-edit="${esc(it.id)}" type="button">Edit interval</button></span></div>`;
     }).join("") || `<p class="empty">No services defined.</p>`;
 
@@ -234,17 +292,17 @@
       const it = svcs.find((x) => x.id === b.dataset.edit); if (!it) return;
       const mi = prompt("Every how many miles? (blank = none)", it.miles || ""); if (mi === null) return;
       const mo = prompt("Every how many months? (blank = none)", it.months || ""); if (mo === null) return;
-      it.miles = mi ? +mi : null; it.months = mo ? +mo : null; S.set("services", svcs); paint();
+      it.miles = mi ? +mi : null; it.months = mo ? +mo : null; S.set(K("services"), svcs); paint();
     }));
 
     $("#g-log-sel").innerHTML = svcs.map((it) => `<option>${esc(it.name)}</option>`).join("");
-    const hist = S.list("history").sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
+    const hist = S.list(K("history")).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
     $("#g-history").innerHTML = hist.map((x) => `<div class="kv"><span>${x.date} · ${esc(x.service)} @ ${num(x.odometer)} mi</span><b>${x.cost ? money(x.cost) : ""}</b></div>`).join("") || `<p class="empty">No services logged yet.</p>`;
 
-    const fills = S.list("fuel").sort((a, b) => b.odometer - a.odometer);
-    const fs = GARAGE.fuelStats(S.list("fuel"));
+    const fills = S.list(K("fuel")).sort((a, b) => b.odometer - a.odometer);
+    const fs = GARAGE.fuelStats(S.list(K("fuel")));
     $("#g-fuel-sum").innerHTML = fs.mpg
-      ? `<div class="kv"><span>Fuel economy (logged span)</span><b>${num(fs.mpg, 1)} MPG · ${money(fs.costPerMile, 3)}/mi · ${money(fs.totalCost)} over ${num(fs.miles)} mi</b></div>`
+      ? `<div class="stat-strip"><div class="stat-cell"><span class="stat-k">Fuel economy · logged span</span><b>${num(fs.mpg, 1)} MPG</b></div><div class="stat-cell"><span class="stat-k">Cost / mile</span><b>${money(fs.costPerMile, 3)}</b></div><div class="stat-cell"><span class="stat-k">Fuel spend</span><b>${money(fs.totalCost)}</b></div><div class="stat-cell"><span class="stat-k">Logged span</span><b>${num(fs.miles)} mi</b></div></div>`
       : `<div class="stat-s">Log two fills to unlock measured MPG and $/mi.</div>`;
     $("#g-fills").innerHTML = fills.slice(0, 10).map((x) => `<div class="kv"><span>${x.date} · ${num(x.odometer)} mi · ${num(x.gallons, 2)} gal${x.busLogged ? " · on bus" : ""}</span><b>${money(x.cost)}</b></div>`).join("") || `<p class="empty">No fills logged yet.</p>`;
     paintTrip();
@@ -254,30 +312,32 @@
   $("#g-trip-mi").addEventListener("input", () => { $("#g-route").value = "custom"; paintTrip(); });
   $("#g-gas-price").addEventListener("input", paintTrip);
 
-  const loadKia = (which) => { if (!KIA || !confirm(`Replace the service list with Kia's ${which} schedule? Logged history stays.`)) return; S.set("services", kiaSet(which)); toast(`Kia ${which} schedule loaded`); paint(); };
+  const loadKia = (which) => { if (!KIA || !confirm(`Replace the service list with Kia's ${which} schedule? Logged history stays.`)) return; S.set(K("services"), kiaSet(which)); toast(`Kia ${which} schedule loaded`); paint(); };
   if (KIA) { $("#g-kia-severe").onclick = () => loadKia("severe"); $("#g-kia-normal").onclick = () => loadKia("normal"); }
+  const loadMt07 = () => { const s = mt07Set(); if (!s || !confirm("Replace the MT-07 service list with Yamaha's factory schedule? Logged history stays.")) return; S.set("mt07.services", s); toast("Yamaha factory schedule loaded"); paint(); };
+  const lm = $("#g-mt07-load"); if (lm) lm.onclick = loadMt07;
 
-  $("#g-odo").addEventListener("submit", (e) => { e.preventDefault(); S.set("odometer", +e.target.odometer.value || 0); S.set("vehicle", { name: e.target.vehicle.value.trim() }); toast("Odometer updated"); paint(); });
-  $("#g-addsvc").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; const svcs = S.get("services", []);
+  $("#g-odo").addEventListener("submit", (e) => { e.preventDefault(); S.set(K("odometer"), +e.target.odometer.value || 0); S.set(K("vehicle"), { name: e.target.vehicle.value.trim() }); toast("Odometer updated"); paint(); });
+  $("#g-addsvc").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; const svcs = S.get(K("services"), []);
     svcs.push({ id: Math.random().toString(36).slice(2, 8), name: f.name.value.trim(), miles: f.miles.value ? +f.miles.value : null, months: f.months.value ? +f.months.value : null });
-    S.set("services", svcs); f.reset(); paint(); });
+    S.set(K("services"), svcs); f.reset(); paint(); });
   $("#g-log").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
-    S.add("history", { service: f.service.value, date: f.date.value, odometer: +f.odometer.value || 0, cost: +f.cost.value || 0, notes: f.notes.value.trim() });
-    if (+f.odometer.value > odo()) S.set("odometer", +f.odometer.value);
+    S.add(K("history"), { service: f.service.value, date: f.date.value, odometer: +f.odometer.value || 0, cost: +f.cost.value || 0, notes: f.notes.value.trim() });
+    if (+f.odometer.value > odo()) S.set(K("odometer"), +f.odometer.value);
     if (window.PB && +f.cost.value > 0) PB.money.add({ kind: "service", amount: -Math.abs(+f.cost.value), date: f.date.value, source: "garage", label: vehicleName() + ": " + f.service.value });
     toast("Service logged"); paint(); });
   $("#g-fuel").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target;
     const cost = +f.cost.value || 0;
     const rec = { date: f.date.value, odometer: +f.odometer.value || 0, gallons: +f.gallons.value || 0, cost, busLogged: !!f.toBus.checked };
-    S.add("fuel", rec);
-    if (+f.odometer.value > odo()) S.set("odometer", +f.odometer.value);
+    S.add(K("fuel"), rec);
+    if (+f.odometer.value > odo()) S.set(K("odometer"), +f.odometer.value);
     if (window.PB && rec.busLogged && cost > 0) PB.money.add({ kind: "fuel", amount: -Math.abs(cost), date: f.date.value, source: "garage", label: `${vehicleName()} fuel · ${num(rec.gallons, 1)} gal` });
     f.reset(); f.date.value = day(); toast("Fill logged"); paint(); });
 
   $("#g-log").date.value = day(); $("#g-fuel").date.value = day();
   function paintPaperworkAndDossier() {
     const t = day();
-    const docs = S.list("paperwork");
+    const docs = S.list(K("paperwork"));
     const box = $("#g-paper-list"); if (box) {
       box.innerHTML = "";
       docs.forEach((p) => {
@@ -285,13 +345,60 @@
         const daysLeft = Math.round((new Date(p.due + "T12:00:00") - new Date(t + "T12:00:00")) / 864e5);
         box.append(h("div.kv", null,
           h("span", null, h("b", { className: daysLeft <= 14 ? "warn" : "" }, p.title), ` · ${p.kind || "doc"} · due ${p.due} (${daysLeft}d)`),
-          h("button.btn.quiet.small", { type: "button", onclick: () => { if (window.PB) PB.deadlines.unpublish("garage", "pap_" + p.id); S.remove("paperwork", p.id); paintPaperworkAndDossier(); } }, "Done")
+          h("button.btn.quiet.small", { type: "button", onclick: () => { if (window.PB) PB.deadlines.unpublish("garage", "pap_" + p.id); S.remove(K("paperwork"), p.id); paintPaperworkAndDossier(); } }, "Done")
         ));
       });
       if (!docs.length) box.innerHTML = `<p class="empty">No CA DMV / winter compliance items tracked yet.</p>`;
     }
-    const hist = S.list("history").sort((a, b) => (b.odometer || 0) - (a.odometer || 0));
-    const fs = GARAGE.fuelStats(S.list("fuel"));
+    /* GAR-GEM-05/06 (2026-11-17): recall tracker + Caltrans chain-control reference.
+       Completion state lives in the kit store under "recalls" (localStorage
+       prometheus.garage.recalls); open recalls publish to the shared deadlines bus.
+       §H: AWD does NOT exempt the Sorento from carrying chains under R-1/R-2 — the
+       panel says so in plain text. */
+    const vNow = veh();
+    const recState = S.get("recalls", {});
+    const recFor = (vkey) => (window.GARAGE_RECALLS || []).filter((r) => vkey === "sorento" ? /Sorento/.test(r.vehicle) : /MT-07/.test(r.vehicle));
+    const myRecalls = recFor(vNow.key);
+    if (window.PB) for (const r of myRecalls) {
+      if (r.campaign === "none") continue;
+      const done = !!(recState[r.campaign] && recState[r.campaign].done);
+      PB.deadlines.publish({ title: `Recall ${r.campaign} — ${r.component.split("(")[0].trim()}`, date: r.date, source: "garage-recall", kind: "recall", ref: "recall-" + r.campaign, done });
+    }
+    const recBox = $("#g-recalls");
+    if (recBox) {
+      recBox.innerHTML = "";
+      if (!myRecalls.length) recBox.innerHTML = `<p class="empty">No recall data for this vehicle.</p>`;
+      for (const r of myRecalls) {
+        const st = recState[r.campaign] || {};
+        const row = h("div.kv.brow", null,
+          h("span", null,
+            h("b", null, r.campaign === "none" ? "No open recalls" : `Recall ${r.campaign}`),
+            ` · ${r.component} `,
+            h("a", { href: r.url, target: "_blank", rel: "noopener", class: "stat-s" }, "NHTSA ↗")),
+          r.campaign === "none"
+            ? h("span.stat-s", null, `checked ${r.date}`)
+            : h("button.btn.quiet.small", { type: "button", onclick: () => { const m = S.get("recalls", {}); m[r.campaign] = { done: !(m[r.campaign] && m[r.campaign].done), date: day() }; S.set("recalls", m); paintPaperworkAndDossier(); paint(); } }, st.done ? `Completed ${st.date || ""}` : "Mark completed"));
+        recBox.append(row);
+        recBox.append(h("p.note", null, `${r.summary} Remedy: ${r.remedy}`));
+      }
+    }
+    const chainBox = $("#g-chain");
+    if (chainBox && window.GARAGE_CHAIN) {
+      const cc = S.get("chainControl", {});
+      chainBox.innerHTML = `<h3 class="subhead">Winter Pass & Chain Control — I-5 Tejon Pass / Grapevine</h3>
+        <p class="note">Caltrans R-1/R-2: the AWD Sorento may be exempt from <i>mounting</i> chains on snow tires, but it is <b>never exempt from carrying them</b>. R-3: chains on everything, no exceptions. Motorcycles are excluded from chain controls — the MT-07 stays home.</p>
+        <label class="check"><input type="checkbox" id="g-chains-carried" ${cc.carried ? "checked" : ""}> Chains/cables for the Sorento are in the vehicle</label>
+        <details><summary>Chain-control rules (10) & Tejon Pass closure ledger (10)</summary>
+        ${window.GARAGE_CHAIN.rules.map((r) => `<div class="kv"><span>${esc(r.what)}</span></div>`).join("")}
+        <p class="note" style="margin-top:8px">Closure ledger (dates + events as dropped; per-closure hour counts were unsourced and are omitted):</p>
+        ${window.GARAGE_CHAIN.closures.map((c) => `<div class="kv"><span><b class="mono">${esc(c.date || "")}</b> · ${esc(c.what || "")}</span></div>`).join("")}
+        </details>`;
+      const cb = $("#g-chains-carried");
+      if (cb) cb.onchange = () => { const m = S.get("chainControl", {}); m.carried = cb.checked; S.set("chainControl", m); };
+    }
+
+    const hist = S.list(K("history")).sort((a, b) => (b.odometer || 0) - (a.odometer || 0));
+    const fs = GARAGE.fuelStats(S.list(K("fuel")));
     const dossier = [
       `VEHICLE MAINTENANCE & COMPLIANCE DOSSIER — ${t}`,
       `Vehicle: ${vehicleName()}`,
@@ -300,14 +407,16 @@
       `Completed Services (${hist.length}):`,
       ...(hist.length ? hist.map((x) => `  - ${x.date} @ ${num(x.odometer)} mi: ${x.service}${x.cost ? ` (${money(x.cost)})` : ""}${x.notes ? ` — ${x.notes}` : ""}`) : ["  - No logged services yet"]),
       `Compliance & Paperwork (${docs.length}):`,
-      ...(docs.length ? docs.map((d) => `  - [${d.kind}] ${d.title} (due ${d.due})`) : ["  - None active"])
+      ...(docs.length ? docs.map((d) => `  - [${d.kind}] ${d.title} (due ${d.due})`) : ["  - None active"]),
+      `Factory Recalls:`,
+      ...recFor(vNow.key).map((r) => r.campaign === "none" ? `  - No open NHTSA campaigns (checked ${r.date})` : `  - ${r.campaign}: ${r.component} — ${recState[r.campaign] && recState[r.campaign].done ? `COMPLETED ${recState[r.campaign].date || ""}` : "OPEN"}`)
     ].join("\n");
     const pre = $("#g-dossier-preview"); if (pre) pre.textContent = dossier;
     return dossier;
   }
   $("#g-paper-form").addEventListener("submit", (e) => {
     e.preventDefault(); const f = e.target;
-    S.add("paperwork", { title: f.title.value.trim(), due: f.due.value, kind: f.kind.value });
+    S.add(K("paperwork"), { title: f.title.value.trim(), due: f.due.value, kind: f.kind.value });
     f.reset(); toast("Paperwork deadline tracked"); paintPaperworkAndDossier();
   });
   $("#g-dossier-btn").onclick = () => download(`vehicle_dossier_${day()}.txt`, paintPaperworkAndDossier());
@@ -315,5 +424,6 @@
 
   $("#export").onclick = () => download(`garage_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); paintPaperworkAndDossier(); } catch (e) { toast(e.message); } };
+  if (window.G3D) window.G3D.attach($("#g-3d"), $("#g-3d-cap"));
   paint();
 })();

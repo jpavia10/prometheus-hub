@@ -34,9 +34,11 @@
     </div>
 
     <section id="p-board" role="tabpanel" class="grid">
+      <div class="span-12 desk-plate" id="m-plate"></div>
       <div class="glass lit span-4"><div class="stat-k">Needs an answer</div><div class="stat-v big" id="m-reply">0</div><div class="stat-s" id="m-reply-s"></div></div>
       <div class="glass span-4"><div class="stat-k">Bills due in 7 days</div><div class="stat-v big" id="m-pay">$0</div><div class="stat-s" id="m-pay-s"></div></div>
       <div class="glass span-4"><div class="stat-k">Waiting on others</div><div class="stat-v big" id="m-wait">0</div><div class="stat-s" id="m-wait-s"></div></div>
+      <div class="glass lit span-12"><h2>Dispatch — due next</h2><div id="m-dispatch"></div></div>
       <div class="span-12" id="m-alerts"></div>
       ${Object.entries(KINDS).map(([k, l]) => `<div class="glass span-6"><h2>${l}</h2><ul class="list" id="l-${k}"></ul></div>`).join("")}
     </section>
@@ -61,7 +63,7 @@
           <h2>Local Phishing &amp; Biller Screener</h2>
           <button class="btn quiet small" id="hc-bench" type="button">Run 80-Message Self-Test</button>
         </div>
-        <p class="sub">Runs purely in RAM against 97 known billers + 23 2026 phishing lures. Nothing pasted here is ever saved.</p>
+        <p class="sub">Runs purely in RAM against ${(window.BILLERS || []).length} known billers + ${(window.PHISHING_LURES || []).length} 2026 phishing lures. Nothing pasted here is ever saved.</p>
         <form class="form" id="hc-form">
           <label class="f wide">Sender email or domain<input id="hc-sender" placeholder="alerts@example.com or billing@example.com"></label>
           <label class="f wide">Subject line or snippet<textarea id="hc-subj" rows="2" placeholder="Paste subject line e.g. 'URGENT: scan QR code within 2h to prevent disconnection'"></textarea></label>
@@ -221,6 +223,16 @@
   const daysTo = (iso) => (iso ? Math.round((new Date(iso + "T12:00:00") - new Date(day() + "T12:00:00")) / 864e5) : null);
   const when = (n) => (n == null ? "" : n < 0 ? `${-n} day${n === -1 ? "" : "s"} late` : n === 0 ? "today" : n === 1 ? "tomorrow" : `in ${n} days`);
 
+  // Display-only date stamps for the ledger: split an ISO date into a day/month stamp; no date math.
+  const MON = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  const MONL = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const stampEl = (iso) => {
+    const p = String(iso || "").split("-");
+    return p.length === 3 && MON[+p[1] - 1]
+      ? h("span.dstamp", null, h("b", null, String(+p[2])), h("small", null, MON[+p[1] - 1]))
+      : h("span.dstamp.none", null, "—");
+  };
+
   // Compute average historical bill per normalized sender
   function billAverages(all) {
     const map = {};
@@ -244,10 +256,16 @@
     const isJump = avg != null && +m.amount >= avg * 1.15;
     const jumpPct = isJump ? Math.round(((+m.amount - avg) / avg) * 100) : 0;
     return h("li", null,
-      h("span", null,
+      stampEl(m.due),
+      h("span.dmain", null,
         h("b", null, m.from), " · ", m.about, " ",
         isJump ? h("span.badge-jump", null, `↑ +${jumpPct}% vs avg ${money(avg)}`) : null,
-        h("div.meta", null, [m.box, m.amount ? money(+m.amount) : "", m.due ? `by ${m.due} (${when(n)})` : ""].filter(Boolean).join(" · "))
+        h("div.meta", null,
+          m.box || "",
+          m.box && m.amount ? " · " : "",
+          m.amount ? h("span.amt", null, money(+m.amount)) : "",
+          (m.box || m.amount) && m.due ? " · " : "",
+          m.due ? `by ${m.due} (${when(n)})` : "")
       ),
       h("span.acts", null,
         m.kind === "pay" && m.amount > 0 ? h("button.btn.quiet.small", { type: "button", title: "Mark done & record payment on bus", onclick: () => sendPaidToBus(m) }, "Pay") : null,
@@ -277,6 +295,23 @@
       ? `<div class="glass risk-med"><b>Bill Jump Alert (${jumps.length}):</b> ${jumps.map((j) => `${esc(j.from)} is ${money(j.amount)} (avg ${money(avgMap[String(j.from || "").trim().toLowerCase()])})`).join(" · ")}</div>`
       : "";
 
+    // Desk plate + dispatch board: display only, read from the same sorted open list, soonest first.
+    const tp = day().split("-");
+    $("#m-plate").innerHTML = `<span class="dp-l">The Desk</span><span class="dp-d">${esc(MONL[+tp[1] - 1] || "")} ${+tp[2]}, ${tp[0]}</span><span class="dp-r">${open.length} open · ${open.filter((m) => m.due).length} dated</span>`;
+    const db = $("#m-dispatch"); db.innerHTML = "";
+    const dated = open.filter((m) => m.due);
+    if (!dated.length) db.append(h("p.empty", null, "Nothing dated on the desk — add a due date and it posts here."));
+    dated.slice(0, 6).forEach((m) => {
+      const n = daysTo(m.due);
+      db.append(h("div.drow", null,
+        stampEl(m.due),
+        h("span.dmain", null, h("b", null, m.from), " · ", m.about,
+          h("div.meta", null, [KINDS[m.kind] || "", m.box || ""].filter(Boolean).join(" · "))),
+        h("span.damt", null, m.amount ? money(+m.amount) : ""),
+        h("span" + (n < 0 ? ".dwhen.late" : n <= 3 ? ".dwhen.soon" : ".dwhen"), null, when(n))
+      ));
+    });
+
     for (const k of Object.keys(KINDS)) {
       const l = $("#l-" + k); l.innerHTML = "";
       const its = open.filter((m) => m.kind === k);
@@ -299,7 +334,7 @@
     const done = all.filter((m) => m.done).sort((a, b) => String(b.done).localeCompare(String(a.done)));
     const dl = $("#l-done"); dl.innerHTML = "";
     if (!done.length) dl.append(h("li.empty", null, "Nothing archived yet."));
-    done.slice(0, 100).forEach((m) => dl.append(h("li", null, h("span", null, `${m.from} · ${m.about}`), h("span.meta", null, `done ${m.done}`))));
+    done.slice(0, 100).forEach((m) => dl.append(h("li", null, stampEl(m.done), h("span.dmain", null, `${m.from} · ${m.about}`), h("span.meta", null, `done ${m.done}`))));
   }
 
   $("#m-form").addEventListener("submit", (e) => {
