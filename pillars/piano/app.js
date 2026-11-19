@@ -98,6 +98,33 @@
   app.innerHTML = `
     <section class="grid">
       <div class="glass lit span-12">
+       <div class="p-desk">
+        <div class="p-desk-pattern">
+          <p class="p-desk-kicker">Your pattern &middot; the whole method, for now</p>
+          <h2 class="p-desk-title">Three notes at a time.</h2>
+          <div class="p-anchor" aria-hidden="true">
+            <div class="p-stabs">
+              <div class="p-stab"><span class="p-tones"><span class="p-note n-3">3</span><span class="p-note n-7">7</span></span><span class="p-stem"></span><span class="p-note n-r">R</span></div>
+              <div class="p-stab"><span class="p-tones"><span class="p-note n-3">3</span><span class="p-note n-7">7</span></span><span class="p-stem"></span><span class="p-note n-r">R</span></div>
+              <div class="p-stab"><span class="p-tones"><span class="p-note n-3">3</span><span class="p-note n-7">7</span></span><span class="p-stem"></span><span class="p-note n-r">R</span></div>
+            </div>
+            <div class="p-beatruler"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+          </div>
+          <p class="p-desk-words">Root down low, two chord tones up top &mdash; <b>&ldquo;1 plus 2, three times&rdquo;</b> a bar. One root, the two guide tones, nothing else yet. That is the bossa comping pattern you are building first.</p>
+          <p class="stat-s" id="p-desk-state"></p>
+          <div class="row-actions" style="margin-top:10px">
+            <button class="btn small" id="p-desk-load" type="button">Load &ldquo;1 + 2&rdquo; in the sequencer</button>
+          </div>
+        </div>
+        <div class="p-desk-tonight">
+          <p class="p-desk-kicker">On the stand tonight</p>
+          <div id="p-tonight"></div>
+          <p class="stat-s" style="margin-top:10px">Three picks from the book, rotating daily &mdash; a practice rail, not a wall of 40. The full setlist is down the page.</p>
+        </div>
+       </div>
+      </div>
+
+      <div class="glass lit span-12">
         <h2>Harmonic Studio &mdash; Sequencer, Voicings, Staff &amp; Keyboard</h2>
         <div class="p-studio-top">
           <div class="p-studio-comp">
@@ -669,6 +696,26 @@
     try { return q ? M.chord(r, q) : null; } catch (_) { return null; }
   };
 
+  const parsedOf = (t) => t.bars.map((bar) => chartChord(String(bar).split(" ")[0]));
+  const playableOf = (t) => parsedOf(t).filter(Boolean).length >= Math.ceil(t.bars.length * 0.7);
+  function playStandard(t) {
+    const parsed = parsedOf(t);
+    const rawProg = parsed.map((c, i) => c || parsed.slice(0, i).reverse().find(Boolean) || LIBRARY[0]);
+    const voicedProg = voiceLedActive ? M.voiceLead(rawProg) : rawProg.map((c) => M.invertChord(c, activeInv));
+    startPlayer(voicedProg, +$("#p-bpm").value || 60);
+  }
+  function formSegs(t) {
+    const prog = (window.BOSSA_PROGRESSIONS || {})[t.t] || null;
+    if (prog && prog.sections) return prog.sections.map((s) => ({ label: s.label, bars: s.bars.length }));
+    return (String(t.form || "").match(/([A-Z])\((\d+)\)/g) || []).map((x) => { const mm = x.match(/([A-Z])\((\d+)\)/); return { label: mm[1], bars: +mm[2] }; });
+  }
+  const formStrip = (t, prog) => {
+    const segs = formSegs(t);
+    if (!segs.length) return null;
+    return h("div.p-formstrip", { "aria-label": `Form ${prog ? prog.form : t.form}` },
+      ...segs.map((s) => h("span.p-fseg", { style: `flex-grow:${s.bars}` }, h("b", null, s.label), h("i", null, `${s.bars} bars`))));
+  };
+
   function renderStandards(query = "") {
     const box = $("#p-standards"); if (!box || !window.BOSSA_STANDARDS) return;
     const q = String(query || "").trim().toLowerCase();
@@ -679,28 +726,64 @@
       return;
     }
     for (const t of list) {
-      const parsed = t.bars.map((bar) => chartChord(String(bar).split(" ")[0]));
-      const strip = h("div.mono", { hidden: "" }, t.bars.join("  |  "));
-      box.append(h("div.kv", null,
-        h("span", null, h("b", null, t.t), h("span.stat-s", null, ` · ${t.c || ""} · ${t.key} · ${t.bars.length} bars`)),
-        h("span.row-actions", null,
+      const prog = (window.BOSSA_PROGRESSIONS || {})[t.t] || null;
+      const strip = h("div.p-systems", { hidden: "" },
+        ...(prog && prog.sections ? prog.sections.map((s) => h("div.p-sys", null, h("span.p-sys-tab", null, s.label), h("span.mono.p-sys-line", null, s.bars.join("  |  ")))) : []),
+        h("div.p-sys", null, h("span.p-sys-tab", null, "All"), h("span.mono.p-sys-line", null, t.bars.join("  |  "))));
+      box.append(h("article.p-sheet", null,
+        h("div.p-sheet-head", null,
+          h("div.p-sheet-id", null,
+            h("h3.p-sheet-title", null, t.t),
+            h("p.p-sheet-comp", null, t.c || "")),
+          h("div.p-sheet-meta", null,
+            h("span.p-keychip", null, `Key of ${t.key}`),
+            prog && prog.time ? h("span.p-metachip", null, prog.time) : null,
+            h("span.p-metachip", null, `${t.bars.length} bars played`),
+            prog ? h("span.p-metachip", null, `${prog.written} written`) : null,
+            prog && prog.coda ? h("span.p-metachip.p-coda", null, "coda / segno") : null)),
+        formStrip(t, prog),
+        h("div.p-sheet-actions", null,
           h("button.btn.quiet.small", { type: "button", onclick: () => { strip.hidden = !strip.hidden; } }, "Changes"),
-          parsed.filter(Boolean).length >= Math.ceil(t.bars.length * 0.7)
-            ? h("button.btn.small", {
-              type: "button",
-              onclick: () => {
-                const rawProg = parsed.map((c, i) => c || parsed.slice(0, i).reverse().find(Boolean) || LIBRARY[0]);
-                const voicedProg = voiceLedActive ? M.voiceLead(rawProg) : rawProg.map((c) => M.invertChord(c, activeInv));
-                startPlayer(voicedProg, +$("#p-bpm").value || 60);
-              }
-            }, "Play")
-            : null
-        )
-      ), strip);
+          playableOf(t) ? h("button.btn.small", { type: "button", onclick: () => playStandard(t) }, "Play") : null),
+        strip));
     }
   }
   renderStandards();
   $("#p-std-filter").addEventListener("input", (e) => renderStandards(e.target.value));
+
+  function renderTonight() {
+    const box = $("#p-tonight"); if (!box || !window.BOSSA_STANDARDS) return;
+    const now = new Date();
+    const doy = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 864e5);
+    const list = window.BOSSA_STANDARDS;
+    box.innerHTML = "";
+    [0, 1, 2].map((i) => list[(doy * 3 + i * 13) % list.length]).forEach((t, i) => {
+      const prog = (window.BOSSA_PROGRESSIONS || {})[t.t] || null;
+      box.append(h("article.p-tonight-card", null,
+        h("div.p-tonight-top", null,
+          h("span.p-tonight-no", null, `0${i + 1}`),
+          h("span.p-keychip", null, `Key of ${t.key}`),
+          prog && prog.time ? h("span.p-metachip", null, prog.time) : null),
+        h("h3.p-tonight-title", null, t.t),
+        h("p.p-sheet-comp", null, t.c || ""),
+        formStrip(t, prog),
+        h("p.mono.p-tonight-open", null, t.bars.slice(0, 4).join("  |  ") + "  …"),
+        playableOf(t) ? h("button.btn.small", { type: "button", onclick: () => playStandard(t) }, "Play") : null));
+    });
+  }
+  renderTonight();
+
+  function paintDesk() {
+    const el = $("#p-desk-state"); if (!el) return;
+    const bpmNow = S.get("ladder_bpm", 60), repsNow = S.get("ladder_reps", 0);
+    const ss = S.list("sessions");
+    const mins = ss.reduce((a, s) => a + (+s.minutes || 0), 0);
+    el.textContent = ss.length
+      ? `Where you are: ladder at ${bpmNow} BPM, ${repsNow}/8 clean reps toward the next rung · ${ss.length} session${ss.length === 1 ? "" : "s"} logged, ${mins} minutes total. Beginner reps, honestly counted.`
+      : `Where you are: ladder at ${bpmNow} BPM, ${repsNow}/8 clean reps toward the next rung · no sessions logged yet — the practice log is at the foot of the page.`;
+  }
+  const deskLoad = $("#p-desk-load");
+  if (deskLoad) deskLoad.onclick = () => { const b = $("#p-pat-sparse"); if (b) b.click(); };
 
   let reps = S.get("ladder_reps", 0), bpm = S.get("ladder_bpm", 60);
   const paintLadder = () => {
@@ -713,6 +796,7 @@
     });
     $("#p-reps").textContent = `${reps} / 8 at ${bpm} BPM`;
     $("#p-ladder-note").textContent = reps >= 8 ? "Rung ready — tap Clean rep once more to advance!" : "Eight clean reps promotes you to the next BPM rung.";
+    paintDesk();
     if (document.activeElement !== $("#p-bpm")) $("#p-bpm").value = bpm;
   };
   $("#p-rep").onclick = () => {
@@ -750,6 +834,7 @@
   const paintLog = () => {
     const ss = S.list("sessions").sort((a, b) => b.at.localeCompare(a.at)).slice(0, 8);
     $("#p-sessions").innerHTML = ss.map((s) => `<div class="kv"><span>${s.date} · ${esc(s.focus || "Practice")}</span><b>${s.minutes} min</b></div>`).join("") || `<p class="empty">No sessions logged yet.</p>`;
+    paintDesk();
   };
   $("#p-log").addEventListener("submit", (e) => {
     e.preventDefault();

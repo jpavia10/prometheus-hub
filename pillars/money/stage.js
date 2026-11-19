@@ -1,5 +1,6 @@
-/* Money signature: the descent. With nothing typed, the curve is worked example 1 from deck/data/payoff-cases.json.
-   Once a loan is entered on this device, the curve follows that loan. The picture never invents a private quote. */
+/* Money signature: the descent. Before the Money pillar is first opened, the curve is worked example 1
+   from deck/data/payoff-cases.json. Once the pillar seeds the owner's real Citi Flex Loan into cfg
+   (Joseph's direction, 2026-11-14), the curve follows that loan. */
 (function () {
   const S = PK.store("money"), I = PK.ink;
   const usd = (n) => "$" + Math.round(n).toLocaleString("en-US");

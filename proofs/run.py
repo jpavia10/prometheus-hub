@@ -31,7 +31,7 @@ with sync_playwright() as p:
     c2 = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); p2 = c2.new_page(); p2.on("pageerror", lambda e: errs.append("core: " + str(e)))
     if MOCK:
         p2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p2.route("https://api.weather.gov/**", lambda route, request: route.abort()); p2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    p2.goto(f"{URL}?now={NOW}#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
+    p2.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
     ci = p2.evaluate("""() => ({ ids: [...document.querySelectorAll('.reactor .hex:not(.core)')].map((x) => x.dataset.pillar),
       demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth, ring: !!document.querySelector('.dayring') })""")
     missing = [i for i in CORE_IDS if i not in ci["ids"]]; extra = [i for i in ci["ids"] if i not in CORE_IDS]
@@ -51,6 +51,100 @@ with sync_playwright() as p:
     try: p2.wait_for_url("**/pillars/apollo/**", timeout=30000); took = _t.time() - t0; p2.wait_for_selector(".shell", timeout=15000); landed = f"{p2.title()} ({took:.1f} s on this machine)"
     except Exception as e: landed = "did not land: " + str(e)[:80]
     proof("CORE-4", "Tapping a cell warps into that pillar", "Apollo" in landed, landed); c2.close()
+    # MENU-1: the home is a game menu (owner, 2026-11-16): every pillar a level, its own light, a live line, Today on top, the orbit and the briefing kept
+    cm = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pm = cm.new_page(); bm = []; pm.on("pageerror", lambda e: bm.append(str(e)[:120]))
+    if MOCK: pm.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pm.route("https://api.weather.gov/**", lambda route, request: route.abort())
+    try:
+        pm.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pm.wait_for_selector(".menu .mn-lvl", timeout=20000); pm.wait_for_timeout(900)
+        m0 = pm.evaluate("""() => ({ levels: document.querySelectorAll('.menu .mn-lvl').length, title: document.querySelector('.mn-title').textContent, live: document.querySelector('.mn-live').textContent,
+          today: document.querySelectorAll('.mn-today .mn-trow').length, gl: !!document.querySelector('canvas.menu-world') && !document.querySelector('canvas.menu-world.flat'), briefing: !!document.getElementById('briefing'),
+          enter: document.querySelector('.mn-enter').getBoundingClientRect().bottom < innerHeight - 80, wide: document.documentElement.scrollWidth, hue: getComputedStyle(document.querySelector('.menu')).getPropertyValue('--h').trim() })""")
+        pm.keyboard.press("ArrowRight"); pm.wait_for_timeout(500)
+        m1 = pm.evaluate("() => ({ title: document.querySelector('.mn-title').textContent, on: (document.querySelector('.mn-lvl.on') || {}).dataset ? document.querySelector('.mn-lvl.on').dataset.pillar : null, hue: getComputedStyle(document.querySelector('.menu')).getPropertyValue('--h').trim() })")
+        pm.click(".mn-mode"); pm.wait_for_selector(".reactor .hex", timeout=20000); orbit = pm.evaluate("() => !document.querySelector('.menu') && !!document.querySelector('.mn-back')")
+        pm.click(".mn-back"); pm.wait_for_selector(".menu .mn-lvl", timeout=20000); back = pm.evaluate("() => !document.querySelector('.reactor') && document.querySelector('.mn-title').textContent")
+        pm.evaluate("document.querySelectorAll('.mn-lvl')[3].click()"); pm.wait_for_timeout(400); lvl = pm.evaluate("document.querySelector('.mn-lvl.on').dataset.pillar")
+        pm.click(".mn-enter"); pm.wait_for_url("**/pillars/**", timeout=30000); landed = pm.url.split("/pillars/")[1].split("/")[0]
+        mskip = [e for e in bm if "ViewTransition opt-in disabled" in e or "Transition was aborted" in e]; bm = [e for e in bm if e not in mskip]   # the browser dropping its own morph, as in DECK-2
+        ok = (m0["levels"] == 27 and m0["today"] >= 1 and m0["gl"] and m0["briefing"] and m0["enter"] and m0["wide"] <= 390 and m1["title"] != m0["title"] and m1["hue"] != m0["hue"]
+              and orbit and back == m1["title"] and landed == lvl and not bm)
+        proof("MENU-1", "The home is a game menu: 27 levels with their own light and a live line, Today on top, swipe or arrow keys move, Enter warps in, the orbit and the briefing are one tap away",
+              ok, f"{m0['levels']} levels; '{m0['title']}' -> '{m1['title']}' (hue {m0['hue']} -> {m1['hue']}); live: {m0['live'][:60]}; today rows {m0['today']}; WebGL {m0['gl']}; orbit and back {orbit}/{bool(back)}; entered {landed} from level {lvl}" + (f"; errors {bm[:2]}" if bm else "") + (f"; the browser skipped {len(mskip)} morph(s)" if mskip else ""))
+    except Exception as e: proof("MENU-1", "The home is a game menu", False, "did not finish: " + str(e)[:200])
+    cm.close()
+    # MENU-2: every level stands in its own painted world (2026-11-19): every world in art/worlds/index.json has its three files, the menu shows
+    # the painting behind the level and steps the crest back, and the title screen (lock and loading) uses the home painting
+    cw = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pw = cw.new_page(); bw = []; pw.on("pageerror", lambda e: bw.append(str(e)[:120]))
+    if MOCK: pw.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pw.route("https://api.weather.gov/**", lambda route, request: route.abort())
+    try:
+        pw.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pw.wait_for_selector(".menu .mn-lvl", timeout=20000); pw.wait_for_timeout(1200)
+        w = pw.evaluate("""async () => { const idx = await (await fetch('art/worlds/index.json')).json(); const miss = [];
+          for (const id of idx.worlds) for (const s of ['', '_depth', '_lights']) { const r = await fetch(`art/worlds/world_${id}${s}.webp`); if (!r.ok) miss.push(id + s); }
+          const ids = [...document.querySelectorAll('.mn-lvl')].map((b) => b.dataset.pillar); const painted = ids.filter((id) => idx.worlds.includes(id));
+          return { worlds: idx.worlds.length, home: idx.worlds.includes('home'), miss, levels: ids.length, painted: painted.length, first: ids[0] }; }""")
+        pw.evaluate("document.querySelectorAll('.mn-lvl')[1].click()"); pw.wait_for_timeout(900)   # the second level: a tap on the open one would enter it
+        s0 = pw.evaluate("() => ({ art: document.querySelector('.menu').classList.contains('art'), crest: getComputedStyle(document.querySelector('.mn-emblem')).opacity, title: document.querySelector('.mn-title').textContent })")
+        boot = pw.evaluate("() => { const d = document.createElement('div'); d.id = 'boot'; document.body.append(d); const bg = getComputedStyle(d, '::before').backgroundImage; d.remove(); return bg; }")
+        ok = w["worlds"] >= 28 and w["home"] and not w["miss"] and w["painted"] == w["levels"] and s0["art"] and float(s0["crest"]) < 0.05 and "world_home.webp" in boot and not bw
+        proof("MENU-2", "Every level stands in its own painted world: the three files of every world load, the painting is behind the level and the crest steps back, the title screen is the home painting",
+              ok, f"{w['worlds']} worlds ({w['painted']} of {w['levels']} levels painted, home {w['home']}); missing {w['miss'][:4]}; '{s0['title']}' painted {s0['art']}, crest opacity {s0['crest']}; title screen {'home painting' if 'world_home' in boot else boot[:60]}" + (f"; errors {bw[:2]}" if bw else ""))
+    except Exception as e: proof("MENU-2", "Every level stands in its own painted world", False, "did not finish: " + str(e)[:200])
+    cw.close()
+    # TODAY-1 (2026-11-19, the hub's weakest link): on a fresh device the home's Today leads with the real deadlines it knows without any pillar
+    # being opened (Kern County, California and federal dates from Kairos), holidays only fill; the daily background run of the publishing
+    # pillars fills the shared deadlines without a visit
+    ct = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pt = ct.new_page(); bt = []; pt.on("pageerror", lambda e: bt.append(str(e)[:120]))
+    if MOCK: pt.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pt.route("https://api.weather.gov/**", lambda route, request: route.abort())
+    try:
+        pt.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pt.wait_for_selector(".mn-today .mn-trow", timeout=20000); pt.wait_for_timeout(900)
+        t0 = pt.evaluate("""async () => { const f = await import(new URL('deck/core/feeds.js', document.baseURI).href); const cds = f.countdowns(3, '2026-11-20');
+          return { rows: [...document.querySelectorAll('.mn-today .mn-trow b')].map((x) => x.textContent), hol: cds.filter((r) => r.tone === 'holiday').length,
+            first: cds[0] ? cds[0].date + ' ' + cds[0].title : '' }; }""")
+        pt.goto(f"{URL}?now={NOW}&home=menu&sweep=now#/", wait_until="load"); pt.wait_for_function("() => window.__deck && window.__deck.state.sweep", timeout=240000)
+        sw = pt.evaluate("() => ({ ...window.__deck.state.sweep, sources: [...new Set(JSON.parse(localStorage.getItem('prometheus.bus.deadlines') || '[]').map((r) => r.source))] })")
+        kern = [r for r in t0["rows"] if "Kern County" in r]
+        ok = len(t0["rows"]) == 3 and len(kern) >= 2 and t0["hol"] == 0 and t0["first"].startswith("2026-11-30") and sw["ran"] >= 14 and sw["after"] >= 50 and len(sw["sources"]) >= 3 and not bt
+        proof("TODAY-1", "The core sees every deadline: a fresh device's Today leads with the real Kern / California deadlines, holidays only fill, and the daily background run fills the shared deadlines without opening a pillar",
+              ok, f"Today: {t0['rows']}; holidays among the next 3: {t0['hol']}; next: {t0['first']}; background run: {sw['ran']} pillars, deadlines {sw['before']} -> {sw['after']} from {len(sw['sources'])} sources" + (f"; errors {bt[:2]}" if bt else ""))
+    except Exception as e: proof("TODAY-1", "The core sees every deadline", False, "did not finish: " + str(e)[:200])
+    ct.close()
+
+    # ODY-1 (2026-11-19): his own trips on record. A fresh device files the 2015 Eurotrip (his sheet) and both 2024 Philippines trips; the
+    # Eurotrip draws 20 stops on the Natural Earth map, its logbook holds all 21 legs (56 nights), the budget adds up from the sheet's rows
+    # and names the row the sheet's own total leaves out; past trips carry no packing or away controls. A phone that had the first seed
+    # gets the two new trips once, keeps its own trip, and a deleted seed stays deleted. The hub's search finds a trip by a city on it.
+    co = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); po = co.new_page(); bo = []
+    po.on("pageerror", lambda e: bo.append(str(e)[:120]))
+    if MOCK: po.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); po.route("https://api.weather.gov/**", lambda route, request: route.abort()); po.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+    try:
+        po.goto(f"{URL}pillars/odyssey/", wait_until="load"); po.wait_for_selector(".trip .tmap", state="attached", timeout=15000)
+        o1 = po.evaluate("""() => { const e = document.querySelector('.trip[data-trip="seed-eurotrip-2015"]'), m = e.querySelector('.tmap');
+          return { trips: document.querySelectorAll('.trip').length, stops: +m.dataset.stops, named: +m.dataset.named, land: (m.querySelector('.map-land') || { getAttribute: () => '' }).getAttribute('d').length,
+            legs: e.querySelectorAll('.leg').length, nights: [...e.querySelectorAll('.leg-h')].reduce((s, x) => s + (+((x.textContent.match(/(\\d+) nights?/) || [0, 0])[1])), 0),
+            total: [...e.querySelectorAll('.budget .kv.sum b')].map((x) => x.textContent), check: (e.querySelector('.budget-check') || {}).textContent || '',
+            pastCtl: document.querySelectorAll('.trip.past .checks, .trip.past .row-actions .btn:not(.quiet)').length, past: document.querySelectorAll('.trip.past').length,
+            countries: [...document.querySelectorAll('.board-cell')].find((c) => /Countries/.test(c.textContent)).querySelector('.board-v').textContent }; }""")
+        co2 = b.new_context(viewport={"width": 390, "height": 844}); po2 = co2.new_page(); po2.on("pageerror", lambda e: bo.append(str(e)[:120]))
+        po2.goto(f"{URL}pillars/odyssey/", wait_until="commit")
+        po2.evaluate("""() => { localStorage.clear(); localStorage.setItem('prometheus.odyssey.tripsSeedV1', '1');
+          localStorage.setItem('prometheus.odyssey.trips', JSON.stringify([{ id: 'seed-philippines-2024', name: 'Manila & El Nido — Philippines', dest: 'Manila and El Nido, Philippines', start: '2024-08-30', end: '2024-09-09', notes: 'kept as he left it' },
+            { id: 'mine1', name: 'Coast weekend', dest: 'Monterey', start: '2027-03-05', end: '2027-03-07' }])); }""")
+        po2.reload(wait_until="load"); po2.wait_for_selector(".trip", state="attached", timeout=15000)
+        m1 = po2.evaluate("() => { const t = JSON.parse(localStorage.getItem('prometheus.odyssey.trips')); return { ids: t.map((x) => x.id).sort(), notes: t.find((x) => x.id === 'seed-philippines-2024').notes, ctl: document.querySelectorAll('.trip[data-trip=mine1] .checks').length }; }")
+        po2.evaluate("""() => [...document.querySelectorAll('.trip[data-trip="seed-eurotrip-2015"] button')].find((x) => x.textContent === 'Delete trip').click()""")
+        po2.reload(wait_until="load"); po2.wait_for_selector(".trip", state="attached", timeout=15000)
+        m2 = po2.evaluate("() => JSON.parse(localStorage.getItem('prometheus.odyssey.trips')).map((x) => x.id).sort()")
+        po2.goto(f"{URL}?now={NOW}&home=orbit&nosweep=1#/", wait_until="load"); po2.wait_for_function("window.__deck && window.__deck.reach", timeout=20000); po2.wait_for_timeout(1500)
+        hit = po2.evaluate("window.__deck.reach.searchRecords('Tagaytay')"); co2.close()
+        ok = (o1["trips"] == 3 and o1["stops"] == 20 and o1["named"] >= 17 and o1["land"] > 5000 and o1["legs"] == 21 and o1["nights"] == 56 and o1["total"] == ["$5,583.00", "$6,699.60"]
+              and "ferry row, $62.00" in o1["check"] and o1["pastCtl"] == 0 and o1["past"] == 3 and o1["countries"] == "11"
+              and m1["ids"] == ["mine1", "seed-eurotrip-2015", "seed-philippines-2024", "seed-philippines-2024-04"] and m1["notes"] == "kept as he left it" and m1["ctl"] == 1
+              and m2 == ["mine1", "seed-philippines-2024", "seed-philippines-2024-04"] and len(hit) >= 1 and hit[0]["title"].startswith("Manila, Tagaytay") and not bo)
+        proof("ODY-1", "His own trips on record: the 2015 Eurotrip and both 2024 Philippines trips filed once each, drawn on a map from real coordinates, every leg in the logbook, the plan's budget added up from the sheet's rows with the row its total leaves out named, past trips as records; an older phone gets the new trips, keeps its own, and a deleted trip stays deleted",
+              ok, f"fresh device: {o1['trips']} trips, map {o1['stops']} stops ({o1['named']} named, land path {o1['land']:,} chars), logbook {o1['legs']} legs / {o1['nights']} nights, budget {o1['total']}, check: {o1['check'][6:70]!r}…, past-trip controls {o1['pastCtl']}, countries {o1['countries']}; "
+                 f"older phone: {m1['ids']}, its note kept: {m1['notes'] == 'kept as he left it'}; after deleting the Eurotrip and reloading: {m2}; hub search 'Tagaytay' -> {hit[0]['title'] if hit else None}" + (f"; errors {bo[:2]}" if bo else ""))
+    except Exception as e: proof("ODY-1", "His own trips on record", False, "did not finish: " + str(e)[:200])
+    co.close()
 
     # PILLAR: the shared pillar shell (crest, automatic sections, dock), checked on the long Piano page
     c3 = b.new_context(viewport={"width": 390, "height": 844}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))
@@ -99,6 +193,15 @@ with sync_playwright() as p:
         p8.route("**/titan-reliquary-preview/collaborators/CONTRIBUTOR_SCORES.md", lambda route, request: route.fulfill(status=200, body=_ledger.read_text() if _ledger.exists() else "", headers={"content-type": "text/plain"}))
     p8.goto(f"{URL}pillars/forge/?still=1", wait_until="load"); p8.wait_for_function("window.FORGE && FORGE.data().scoreState !== 'loading' && FORGE.data().queueState !== 'loading'", timeout=20000)
     fg = p8.evaluate("() => { const d = FORGE.data(); const by = {}; for (const s of d.scores) by[s.ai] = (by[s.ai] || 0) + 1; return { scores: d.scores.length, by, tasks: d.tasks.length, open: d.tasks.filter((t) => t.state !== 'done').length }; }")
+    p8.goto(f"{URL}pillars/forge/?still=1", wait_until="load"); p8.wait_for_function("window.FORGE && FORGE.data().queueState !== 'loading'", timeout=30000); p8.wait_for_timeout(300)
+    fo = p8.evaluate("""() => { const d = FORGE.data(); const g = d.per.find((p) => p.ai === 'Gemini');
+      const b = [...document.querySelectorAll('.lrow')].find((x) => x.querySelector('b').textContent === 'Gemini'); if (b) b.click();
+      const rows = [...document.querySelectorAll('#f-tasks details.trow .stat-s')].map((x) => x.textContent.split(' · ')[0]);
+      return { hub: d.sources.hub, board: d.sources.board, pillars: d.pillars.filter((p) => !p.ext).length, matrix: document.querySelectorAll('#f-matrix tbody tr').length, gemini: g ? g.open.length : 0,
+        shown: rows.length, onlyGemini: rows.length > 0 && rows.every((r) => r === 'Gemini'), lrows: document.querySelectorAll('.lrow').length }; }""")
+    proof("FORGE-1", "The Forge reads every pillar's homework, the workboard and Titan's loop, shows each AI's load against its floor, a matrix of every place, and filters to one AI",
+          int(fo["hub"].split(" ")[0] if fo["hub"][:1].isdigit() else 0) >= fo["pillars"] and fo["board"] == "read" and fo["matrix"] >= fo["pillars"] and fo["lrows"] >= 4 and fo["onlyGemini"],
+          f"queues {fo['hub']}; workboard {fo['board']}; matrix rows {fo['matrix']}; {fo['lrows']} AI rows; Gemini {fo['gemini']} open, filter shows {fo['shown']} Gemini rows only: {fo['onlyGemini']}")
     p8.goto(f"{URL}pillars/foundry/?still=1", wait_until="load"); p8.wait_for_timeout(400); ath_before = p8.evaluate("localStorage.getItem('prometheus.athenaeum.ideas')")
     fd0 = p8.evaluate("FOUNDRY.data().board.length"); p8.evaluate("document.querySelector('#y-board .btn').click()"); p8.wait_for_timeout(300)
     fd = p8.evaluate("(b) => { const d = FOUNDRY.data(); return { board: d.board.length, bench: d.projects.length, stage: d.STAGES[d.projects[0].stage], linked: !!d.projects[0].ideaId, same: localStorage.getItem('prometheus.athenaeum.ideas') === b }; }", ath_before)
@@ -112,10 +215,10 @@ with sync_playwright() as p:
     c9 = b.new_context(viewport={"width": 390, "height": 844}, accept_downloads=True); p9 = c9.new_page(); bad9 = []; p9.on("pageerror", lambda e: bad9.append(str(e)[:100]))
     if MOCK:
         p9.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p9.route("https://api.weather.gov/**", lambda route, request: route.abort()); p9.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    p9.goto(f"{URL}?now={NOW}#/", wait_until="load"); p9.wait_for_selector(".reactor .hex", timeout=20000); p9.wait_for_timeout(400)
+    p9.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p9.wait_for_selector(".reactor .hex", timeout=20000); p9.wait_for_timeout(400)
     first_visit = p9.evaluate("!!document.querySelector('.since')")
     p9.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); p9.wait_for_timeout(300); p9.evaluate("PB.events.publish({ type: 'idea.captured', pillar: 'athenaeum', ref: 'x', title: 'Proof: a new idea' })")
-    p9.evaluate("sessionStorage.clear()"); p9.goto(f"{URL}?now={NOW}#/", wait_until="load"); p9.wait_for_selector(".reactor .hex", timeout=20000); p9.wait_for_timeout(400)
+    p9.evaluate("sessionStorage.clear()"); p9.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p9.wait_for_selector(".reactor .hex", timeout=20000); p9.wait_for_timeout(400)
     rows = p9.evaluate("[...document.querySelectorAll('.since .since-row')].map((a) => a.textContent + ' -> ' + a.getAttribute('href'))"); head = p9.evaluate("(document.querySelector('.since h2') || {}).textContent || ''")
     proof("SINCE-1", "The hub says what changed in the pillars since your last visit, each line opening its pillar", not first_visit and head == "Since you were here" and len(rows) == 1 and "Proof: a new idea" in rows[0] and "pillars/athenaeum/" in rows[0], f"first visit shows nothing: {not first_visit}; next visit: {head!r} {rows}")
     p9.evaluate("localStorage.setItem('prometheus.kin.people', JSON.stringify([{ id: 'p1', name: 'Proof kid', role: 'kid' }])); localStorage.setItem('hearth.deck.stages.v1', JSON.stringify({ 'paint-left': { done: true } }))")
@@ -151,9 +254,9 @@ with sync_playwright() as p:
     p5.fill(".ath-add textarea", "The second reader must not see the first reader's notes."); p5.click(".ath-spine .btn"); p5.wait_for_timeout(600)
     a3 = p5.evaluate("""(before) => { const was = JSON.parse(before), now = JSON.parse(localStorage.getItem('prometheus.athenaeum.ideas')), mine = now[now.length - 1];
       return { added: now.length - was.length, untouched: JSON.stringify(now.slice(0, was.length)) === JSON.stringify(was), mine: { origin: mine.origin, tags: mine.tags, created: mine.created, chain: mine.chain }, stars: window.__ath.sky.debug().ideas.length,
-        rel: [...document.querySelectorAll('.ath-rel b')].map((x) => x.textContent.slice(0, 30)), marks: [...document.querySelectorAll('.ath-spine li.you time em')].map((x) => x.textContent), events: PB.events.list().map((e) => e.type + ':' + e.pillar) }; }""", before)
+        rel: [...document.querySelectorAll('.ath-rel b')].map((x) => x.textContent.slice(0, 48)), marks: [...document.querySelectorAll('.ath-spine li.you time em')].map((x) => x.textContent), events: PB.events.list().map((e) => e.type + ':' + e.pillar) }; }""", before)
     proof("ATH-3", "Capture and refinement: a new idea becomes a star marked as typed by you, finds its relatives by itself, a refinement only appends, and no other record changes",
-          a3["added"] == 1 and a3["untouched"] and a3["mine"]["origin"] == "typed" and a3["mine"]["created"] == "2026-11-13" and len(a3["mine"]["chain"]) == 1 and a3["mine"]["chain"][0].get("by") == "you" and a3["stars"] == a1["n"] + 1 and any("Independent blind audits" in x for x in a3["rel"]) and a3["marks"] == ["you"] and a3["events"] == ["idea.captured:athenaeum", "idea.refined:athenaeum"],
+          a3["added"] == 1 and a3["untouched"] and a3["mine"]["origin"] == "typed" and a3["mine"]["created"] == "2026-11-13" and len(a3["mine"]["chain"]) == 1 and a3["mine"]["chain"][0].get("by") == "you" and a3["stars"] == a1["n"] + 1 and any("Example: Independent blind audits" in x for x in a3["rel"]) and a3["marks"] == ["you"] and a3["events"] == ["idea.captured:athenaeum", "idea.refined:athenaeum"],
           f"{a3['stars']} stars; the {a1['n']} earlier records byte-identical: {a3['untouched']}; found by itself: {a3['rel'][:2]}; refinement marked {a3['marks']}; events {a3['events']}")
     p5.evaluate("window.__ath.go('', true); window.__ath.setT(0.4)"); p5.wait_for_timeout(300)
     a4 = p5.evaluate("""() => { const d = window.__ath.sky.debug(), txt = document.querySelector('.ath-when').textContent, day = new Date(txt.split(' · ')[0] + ' 12:00').toLocaleDateString('en-CA'); return { txt, lit: d.ideas.filter((n) => n && n.on).length, due: window.__ath.live.filter((i) => i.created <= day).length, day }; }""")
@@ -185,14 +288,14 @@ with sync_playwright() as p:
     if MOCK:
         p6.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p6.route("https://api.weather.gov/**", lambda route, request: route.abort()); p6.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
     p6.goto(A, wait_until="load"); p6.wait_for_function("window.__ath && window.__ath.ready", timeout=30000); p6.evaluate("PB.events.publish({ type: 'idea.refined', pillar: 'athenaeum', ref: 'x', title: 'Proof event' })")
-    p6.goto(f"{URL}?now={NOW}#/", wait_until="load"); p6.wait_for_selector(".reactor .hex", timeout=20000); p6.wait_for_timeout(700)
+    p6.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p6.wait_for_selector(".reactor .hex", timeout=20000); p6.wait_for_timeout(700)
     tick_line = p6.evaluate("document.querySelector('.ticker').getAttribute('aria-label')"); hits = p6.evaluate("window.__deck.reach.searchRecords('blind audits')"); deep = p6.evaluate("window.__deck.reach.searchRecords('anti-corrosion')")
     p6.click("#open-search"); p6.wait_for_selector(".search-input"); p6.fill(".search-input", "idea: test the handoff from the hub"); p6.wait_for_timeout(250); first = p6.evaluate("document.querySelector('.results .result b').textContent")
     p6.evaluate("document.querySelector('.results .result').click()")
     try: p6.wait_for_url("**/pillars/athenaeum/**", timeout=30000); p6.wait_for_selector(".ath-form input[name=title]", timeout=20000); p6.wait_for_timeout(300); landed = p6.evaluate("({ title: document.querySelector('.ath-form input[name=title]').value, kept: JSON.parse(localStorage.getItem('prometheus.athenaeum.ideas')).length })")
     except Exception as e: landed = {"title": "did not land: " + str(e)[:60], "kept": -1}
     proof("CORE-5", "The hub reaches into a pillar through its manifest: finds an idea by its title or its text, hands typed words to the pillar without writing its records, and shows what last happened there",
-          len(hits) >= 1 and hits[0]["title"].startswith("Independent blind audits") and "#idea/" in hits[0]["href"] and len(deep) >= 1 and "Athenaeum · idea" in deep[0]["sub"] and "Athenaeum · idea refined: Proof event" in tick_line and first.startswith("Capture an idea: test the handoff") and landed["title"] == "test the handoff from the hub" and landed["kept"] == a1["n"],
+          len(hits) >= 1 and hits[0]["title"].startswith("Example: Independent blind audits") and "#idea/" in hits[0]["href"] and len(deep) >= 1 and "Athenaeum · idea" in deep[0]["sub"] and "Athenaeum · idea refined: Proof event" in tick_line and first.startswith("Capture an idea: test the handoff") and landed["title"] == "test the handoff from the hub" and landed["kept"] == a1["n"],
           f"'blind audits' -> {hits[0]['title'][:40] if hits else None} ({hits[0]['href'] if hits else ''}); text match -> {deep[0]['sub'][:70] if deep else None}; ticker has the event: {'Proof event' in tick_line}; '{first[:40]}' opens Athenaeum with the title filled: {landed['title']!r}, ideas still {landed['kept']}"); c6.close()
 
     pg.goto(f"{URL}?now={NOW}&demo=1#/", wait_until="load"); pg.wait_for_selector(".dayring", timeout=20000); pg.wait_for_timeout(1200)
@@ -263,8 +366,8 @@ with sync_playwright() as p:
         c_off = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US", service_workers="allow")
         _abort_external(c_off)
         hpage = c_off.new_page()
-        hpage.goto(SHELL, wait_until="load", timeout=30000)
-        hpage.wait_for_selector(".reactor .hex", timeout=20000)
+        hpage.goto(SHELL + "?nosweep=1&home=menu#/", wait_until="load", timeout=30000)
+        hpage.wait_for_selector(".menu .mn-lvl", timeout=30000)
         hpage.wait_for_function("() => !!(navigator.serviceWorker && navigator.serviceWorker.controller)", timeout=120000)
         cached = hpage.evaluate("""async () => { const names = await caches.keys(); const name = names.find((n) => n.indexOf('prometheus-hub-') === 0); if (!name) return { names, n: 0, foods: false };
           const keys = await (await caches.open(name)).keys(); return { name, n: keys.length, foods: keys.some((k) => k.url.indexOf('pillars/apollo/foods.js') !== -1) }; }""")
@@ -325,18 +428,18 @@ with sync_playwright() as p:
         c_up = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US", service_workers="allow")
         _abort_external(c_up)
         up = c_up.new_page()
-        up.goto(update_origin, wait_until="load", timeout=30000)
-        up.wait_for_selector(".reactor .hex", timeout=20000)
+        up.goto(update_origin + "?nosweep=1&home=menu#/", wait_until="load", timeout=30000)
+        up.wait_for_selector(".menu .mn-lvl", timeout=30000)
         up.wait_for_function("() => !!(navigator.serviceWorker && navigator.serviceWorker.controller)", timeout=120000)
         quiet = up.evaluate("() => !document.querySelector('button.update-ready')")
-        nxt = orig_sw.replace('var CACHE = "prometheus-hub-deck-d21";', 'var CACHE = "prometheus-hub-deck-d21b";', 1)
-        if nxt == orig_sw: raise RuntimeError("sw.js has no d21 cache name to bump")
+        nxt = orig_sw.replace('var CACHE = "prometheus-hub-deck-d35";', 'var CACHE = "prometheus-hub-deck-d35b";', 1)
+        if nxt == orig_sw: raise RuntimeError("sw.js has no d35 cache name to bump")
         sw_path.write_text(nxt + "\n/* simulated deploy */\n")
         up.evaluate("async () => { const reg = await navigator.serviceWorker.ready; await reg.update(); }")
         up.wait_for_selector("button.update-ready", timeout=120000)
         chip = up.evaluate("""() => { const b = document.querySelector('button.update-ready'); const s = getComputedStyle(b);
           return { text: (b.textContent || '').trim(), border: s.borderTopColor, bg: s.backgroundImage, radius: s.borderTopLeftRadius, color: s.color }; }""")
-        shot = sw_path.parent / "artifacts" / "screenshots" / "d21" / "update-ready-390x844.png"
+        shot = sw_path.parent / "artifacts" / "screenshots" / "d35" / "update-ready-390x844.png"
         shot.parent.mkdir(parents=True, exist_ok=True)
         up.screenshot(path=str(shot))
         with up.expect_navigation(wait_until="load", timeout=30000):
@@ -345,7 +448,7 @@ with sync_playwright() as p:
         after = up.evaluate("""async () => ({ names: await caches.keys(), chip: !!document.querySelector('button.update-ready') })""")
         pearl = "159, 212, 230" in (chip.get("border") or "") or "215, 246, 255" in (chip.get("border") or "")
         proof("UPDATE-1", "A simulated deploy shows Update ready (pearl glass, cyan edge) and a tap reloads into the new shell",
-              quiet and chip.get("text") == "Update ready" and pearl and "gradient" in (chip.get("bg") or "") and str(chip.get("radius") or "").startswith("999") and (not after.get("chip")) and any("d21b" in n for n in after.get("names") or []),
+              quiet and chip.get("text") == "Update ready" and pearl and "gradient" in (chip.get("bg") or "") and str(chip.get("radius") or "").startswith("999") and (not after.get("chip")) and any("d35b" in n for n in after.get("names") or []),
               f"chip {chip}; after reload caches {after.get('names')} chip {after.get('chip')}; shot {shot.name}")
         recorded = True
     except Exception as e:

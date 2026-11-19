@@ -14,6 +14,8 @@
     "Car kit": ["Water (1 gal)", "Blanket", "Jumper pack", "Tire repair + inflator", "Flashlight", "Snacks", "Ice scraper / chains as season needs", "Paper map of the mountain exits"],
     "House shelter-in": ["Water storage filled", "Pantry buffer (2 weeks)", "Propane / heat backup checked", "Flashlights + lantern batteries", "Generator or power station charged", "Pipes / freeze prep done", "Car fueled above half", "Medications buffer"],
     "Red Cross 72-hour baseline": ["Water 1 gal/person/day (3-day evac)", "Food 3-day non-perishable", "Flashlight", "Battery/hand-crank radio (NOAA Weather Radio if possible)", "Extra batteries", "First aid kit", "Medications 7-day + medical items", "Multi-purpose tool", "Sanitation & hygiene", "Copies of personal documents", "Cell phone with chargers", "Family & emergency contact info", "Extra cash", "Emergency blanket", "Map(s) of the area"],
+    /* BAS-GEM-04 (2026-11-17): pet evacuation, from Gemini's Kern alerts guide. */
+    "Pet evacuation": ["Wolfgang: harness, leash, 3-day food, water bowl", "Cat carriers ×4, labeled", "Petlibro feeders: fresh D-cell backup batteries", "Litter + waste bags (3 days)", "Pet meds + vet record copies", "Recent photo of each pet (ID if separated)"],
   };
   window.BASTION_SCENARIOS = SCENARIOS;
 
@@ -29,6 +31,7 @@
       <div class="glass span-6">
         <h2>Local Risk Profile (CAZ336 / CAZ597)</h2>
         <div id="b-profile" class="stat-s">Loading the hazard baseline…</div>
+        <div id="b-kern" style="margin-top:10px"></div>
       </div>
       <div class="glass span-12">
         <h2>Inventory &amp; 25 lb Go-Bag Weight Cap</h2>
@@ -77,8 +80,11 @@
     const bagStatus = bagOz > 480 ? `<span class="pill over">OVER 30 LB MAX</span>` : bagOz > 400 ? `<span class="pill soon">Over 25 lb target</span>` : bagOz > 0 ? `<span class="pill">Under 25 lb cap</span>` : "";
     const soon = list.filter((i) => i.expiry && i.expiry <= PB_safe_add(day(), 90));
 
-    $("#b-sum").innerHTML = `<div class="kv"><span>Total weight (all locations)</span><b>${BASTION.fmtWeight(w.totalOz)}</b></div>`
-      + LOCS.map((l) => `<div class="kv"><span>${l}${l === "bag" ? " " + bagStatus : ""}</span><b>${BASTION.fmtWeight(w.byLoc[l] || 0)} · ${list.filter((i) => (i.location || "bag") === l).length} items</b></div>`).join("")
+    const bagTone = bagOz > 480 ? "bad" : bagOz > 400 ? "warn" : "good";
+    const bagPct = Math.min(100, (bagOz / 480) * 100);
+    $("#b-sum").innerHTML = `<div class="kv total"><span>Total weight (all locations)</span><b>${BASTION.fmtWeight(w.totalOz)}</b></div>`
+      + LOCS.map((l) => `<div class="kv"><span>${l}${l === "bag" ? " " + bagStatus : ""}</span><b>${BASTION.fmtWeight(w.byLoc[l] || 0)} · ${list.filter((i) => (i.location || "bag") === l).length} items</b></div>`
+        + (l === "bag" && bagOz > 0 ? `<div class="gauge ${bagTone}" role="img" aria-label="Go-bag weight against the 25 lb target and 30 lb maximum"><div class="gauge-fill" style="width:${bagPct}%"></div><i class="gauge-tick" style="left:${(400 / 480) * 100}%"></i><span class="gauge-cap">25 lb target · 30 lb max</span></div>` : "")).join("")
       + (soon.length ? `<div class="kv"><span>Expiring within 90 days</span><b>${soon.length}</b></div>` : "");
 
     for (const it of list) if (window.PB && it.expiry) PB.deadlines.publish({ title: "Expires: " + it.name, date: it.expiry, source: "bastion", kind: "expiry", ref: it.id });
@@ -86,9 +92,10 @@
     $("#b-list").innerHTML = list.length ? "" : `<p class="empty">Nothing inventoried yet.</p>`;
     for (const it of list) {
       const st = !it.expiry ? "" : it.expiry < day() ? `<span class="pill over">expired ${it.expiry}</span>` : it.expiry <= PB_safe_add(day(), 90) ? `<span class="pill soon">expires ${it.expiry}</span>` : `<span class="pill">to ${it.expiry}</span>`;
-      $("#b-list").append(h("div.kv", null,
-        h("span", null, `${it.name} ×${it.qty || 1} `, h("span.stat-s", null, `${it.category} · ${it.location || "bag"} · ${BASTION.fmtWeight((it.weightOz || 0) * (it.qty || 1))}`)),
-        h("span", null, h("span", { innerHTML: st }), " ", h("button.btn.quiet.small", {
+      const rail = !it.expiry ? "div.kv.plate" : it.expiry < day() ? "div.kv.plate.bad" : it.expiry <= PB_safe_add(day(), 90) ? "div.kv.plate.warn" : "div.kv.plate";
+      $("#b-list").append(h(rail, null,
+        h("span", null, `${it.name} `, h("span.qty", null, `×${it.qty || 1}`), " ", h("span.stat-s", null, `${it.category} · ${it.location || "bag"} · ${BASTION.fmtWeight((it.weightOz || 0) * (it.qty || 1))}`)),
+        h("span", null, h("span", { html: st }), " ", h("button.btn.quiet.small", {
           type: "button",
           onclick: () => {
             const prev = S.list("items"); S.remove("items", it.id);
@@ -101,8 +108,17 @@
     const checks = S.get("checks", {});
     $("#b-scen").innerHTML = "";
     for (const [name, entries] of Object.entries(SCENARIOS)) {
-      const box = h("div", { style: "margin-bottom:12px" },
-        h("h3", null, `${name} — ${BASTION.readiness(Object.fromEntries(entries.map((e) => [e, !!(checks[name] || {})[e]])))}%`)
+      const pct = BASTION.readiness(Object.fromEntries(entries.map((e) => [e, !!(checks[name] || {})[e]])));
+      const done = entries.filter((e) => (checks[name] || {})[e]).length;
+      const state = pct >= 80 ? "ready" : pct >= 40 ? "partial" : "gap";
+      const box = h("div.board." + state + (name.startsWith("Red Cross") ? ".baseline" : ""), null,
+        h("div.board-head", null,
+          h("h3", null, name),
+          h("span.board-meta", null,
+            h("span.board-state", null, state),
+            h("span.board-count", null, `${done} / ${entries.length} checked`),
+            h("span.board-pct", null, `${pct}%`))
+        )
       );
       for (const e of entries) {
         const matched = itemMatchesEntry(list, e);
@@ -142,27 +158,56 @@
     ).join("");
   }
 
-  fetch("./data/frazier-readiness.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
+  /* BAS-GEM-04 (2026-11-17): Kern County alert stack, from Gemini's
+     bastion_gemini_kern-alerts_20261116-2040.md. The guide's honest core: it does NOT
+     know Joseph's Genasys zone — it tells him to look it up. The card therefore links
+     the lookup instead of inventing a KCF- code. (Odyssey's checklist carries the
+     drop's KCF-114 assertion flagged unconfirmed.) Rendered unconditionally so the
+     links survive a readiness.json failure (§H offline behavior). */
+  const kernBox = $("#b-kern");
+  if (kernBox) kernBox.innerHTML = `<div class="kv"><span><b>ReadyKern</b> — Kern County's emergency alert system (calls, texts, email)</span><a class="stat-s" href="https://www.kerncounty.com/emergency/readykern" target="_blank" rel="noopener">sign up ↗</a></div>
+    <div class="kv"><span><b>Genasys Protect</b> — look up your evacuation zone (KCF-…) for your home address and save it here once known</span><a class="stat-s" href="https://protect.genasys.com" target="_blank" rel="noopener">zone lookup ↗</a></div>
+    <div class="kv"><span><b>Caltrans QuickMap</b> — live chain control + closures for I-5 Tejon Pass</span><a class="stat-s" href="https://quickmap.dot.ca.gov" target="_blank" rel="noopener">quickmap ↗</a></div>
+    <div class="kv"><span><b>SCE PSPS</b> — outage alerts arrive ahead of shutoffs (roughly 48h / 24h / 1–4h notices)</span><a class="stat-s" href="https://www.sce.com/outage-center" target="_blank" rel="noopener">sce ↗</a></div>`;
+
+  fetch("./data/readiness.json").then((r) => (r.ok ? r.json() : null)).then((d) => {
     if (!d) return;
     const p = d.place || {};
-    $("#b-profile").innerHTML = `<div class="kv"><span>Location</span><b>${esc(p.name || "Set a place")}</b></div>
+    const here = (PK.devicePlace && PK.devicePlace()) || null;
+    $("#b-profile").innerHTML = `<div class="kv"><span>Location</span><b>${esc(here ? here.label : "Set a location")}</b></div>
       <div class="kv"><span>NWS Zones</span><b>${esc((p.nws && p.nws.forecast_zone) || "CAZ336")} / ${esc((p.nws && p.nws.fire_zone) || "CAZ597")}</b></div>
-      ${(d.risk_profile || []).map((r) => `<div class="kv"><span><b>${esc(r.hazard)}</b><br><span class="stat-s">${esc(r.evidence.slice(0, 100))}</span></span><b>${esc(r.level)}</b></div>`).join("")}`;
+      ${(d.risk_profile || []).map((r) => { const tone = /^high/i.test(r.level) ? "bad" : /^med/i.test(r.level) ? "warn" : ""; return `<div class="kv risk ${tone}"><span><b>${esc(r.hazard)}</b><br><span class="stat-s">${esc(r.evidence.slice(0, 100))}</span></span><b class="risk-level">${esc(r.level)}</b></div>`; }).join("")}`;
   }).catch(() => {});
 
   (async () => {
     const el = $("#b-wx");
+    const place = PK.devicePlace && PK.devicePlace();
+    if (!place) { el.textContent = "Set a location"; return; }
     try {
-      const pt = await (await fetch("https://api.weather.gov/points/34.82057,-118.94543", { headers: { Accept: "application/geo+json" } })).json();
+      const point = `${place.lat},${place.lon}`;
+      const pt = await (await fetch(`https://api.weather.gov/points/${point}`, { headers: { Accept: "application/geo+json" } })).json();
       const [fc, al] = await Promise.all([
         fetch(pt.properties.forecast, { headers: { Accept: "application/geo+json" } }).then((r) => r.json()),
-        fetch("https://api.weather.gov/alerts/active?point=34.82057,-118.94543", { headers: { Accept: "application/geo+json" } }).then((r) => r.json()),
+        fetch(`https://api.weather.gov/alerts/active?point=${point}`, { headers: { Accept: "application/geo+json" } }).then((r) => r.json()),
       ]);
       const periods = (fc.properties.periods || []).slice(0, 4);
       const alerts = al.features || [];
+      /* BAS-GEM-04 shared weather cache (2026-11-17): prometheus.shared.wx, 15-minute
+         freshness by convention — readers (Hearth's temp check) judge staleness from
+         fetchedAt. Written here and by Aether's telemetry fetch. */
+      try {
+        const p0 = periods[0] || {};
+        const windNums = String(p0.windSpeed || "").match(/\d+/g) || [];
+        localStorage.setItem("prometheus.shared.wx", JSON.stringify({
+          fetchedAt: new Date().toISOString(),
+          tempF: typeof p0.temperature === "number" ? p0.temperature : null,
+          windMph: windNums.length ? Math.max(...windNums.map(Number)) : null,
+          alerts: alerts.map((a) => a.properties.event),
+        }));
+      } catch (_) {}
       el.innerHTML = (alerts.length ? alerts.map((a) => `<div class="kv"><span><b>${esc(a.properties.event)}</b> — ${esc(a.properties.headline || "")}</span></div>`).join("") : `<div class="kv"><span>Active NWS alerts</span><b>None</b></div>`)
         + periods.map((p) => `<div class="kv"><span>${esc(p.name)}</span><b>${p.temperature}°${p.temperatureUnit} · ${esc(p.shortForecast)}</b></div>`).join("")
-        + `<div class="stat-s" style="margin-top:6px">NWS HNX · fetched ${new Date().toLocaleTimeString("en-US")}</div>`;
+        + `<div class="stat-s" style="margin-top:6px">NWS · fetched ${new Date().toLocaleTimeString("en-US")}</div>`;
     } catch (_) {
       el.textContent = "Weather unavailable right now (offline or unreachable). All offline checklists remain active.";
     }

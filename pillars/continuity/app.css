@@ -1,10 +1,142 @@
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.tab{background:rgba(12,18,32,.65);border:1px solid rgba(159,180,204,.22);border-radius:999px;color:#b8c7dc;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
-.tab[aria-selected="true"]{border-color:rgba(184,233,74,.7);background:rgba(184,233,74,.14);color:#f3ffe0}
-.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08);flex-wrap:wrap}
-.pill{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(184,233,74,.48);color:#cfff82}
-.pill.warn{border-color:rgba(255,209,102,.65);color:#ffd166}
-.pill.hot{border-color:rgba(255,140,148,.65);color:#ff9ba3}
-textarea.ta{width:100%;min-height:170px;background:rgba(10,16,28,.6);border:1px solid rgba(159,180,204,.25);border-radius:10px;color:#e8eef7;padding:12px;font:13.5px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}
-.vault-banner{background:rgba(12,20,16,.65);border:1px solid rgba(184,233,74,.32);border-radius:12px;padding:12px;margin-bottom:12px;font-size:13.5px}
-.mono-box{font:12px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;background:rgba(8,12,20,.65);border:1px solid rgba(159,180,204,.16);border-radius:10px;padding:10px;color:#9fb4cc}
+/* Continuity · Sovereign Vault — the folio (design pass, presentation only).
+   A document of record: numbered chapters, an honest seal per chapter (solid =
+   recorded, half = partially recorded, dashed and empty = not recorded, always
+   paired with its word), and the Open Items Docket at the top of the binder —
+   gaps are stated in the open, never dressed as records. Kit tokens only. */
+
+/* ---------- the vault, kept as a sealed instrument ---------- */
+.vault-banner { position: relative; background: rgba(3, 4, 11, .5); border: 1px solid var(--line-strong); border-radius: var(--radius-s); padding: 14px 16px 14px 66px; margin-bottom: 14px; font-size: 14px; line-height: 1.55; color: var(--ink); }
+.vault-banner::before { content: ""; position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--line-strong); }
+.vault-banner::after { content: ""; position: absolute; left: 23px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--line); }
+.vault-banner[data-state="sealed"] { border-color: color-mix(in srgb, var(--accent) 55%, transparent); }
+.vault-banner[data-state="sealed"]::before { border-color: var(--accent); }
+.vault-banner[data-state="sealed"]::after { border-color: color-mix(in srgb, var(--accent) 60%, transparent); }
+.vault-banner[data-state="open"]::before { border-color: var(--good); }
+.vault-banner[data-state="open"]::after { border-color: color-mix(in srgb, var(--good) 60%, transparent); }
+.vault-banner[data-state="empty"]::before { border-style: dashed; }
+
+textarea.ta { width: 100%; min-height: 170px; background: rgba(3, 4, 11, .55); border: 1px solid var(--line-strong); border-radius: var(--radius-s); color: var(--ink); padding: 12px; font: 13.5px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+
+.mono-box { font: 12px/1.45 ui-monospace, SFMono-Regular, Consolas, monospace; word-break: break-all; background: rgba(3, 4, 11, .55); border: 1px solid var(--line); border-radius: var(--radius-s); padding: 10px 12px; color: var(--muted); }
+.mono-box::before { content: "Authenticated envelope · metadata only — no plaintext"; display: block; font-family: var(--sans); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 8px; }
+
+/* ---------- the folio: title block ---------- */
+.co-titleblock { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; align-items: start; border-top: 3px double var(--line-strong); border-bottom: 1px solid var(--line); padding: 14px 0 16px; }
+.co-tb-main { flex: 1 1 340px; min-width: 0; }
+.co-tb-main .sub { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--muted); max-width: 62ch; }
+.co-tb-side { display: grid; gap: 10px; justify-items: start; }
+#co-folio-summary { display: grid; gap: 8px; }
+.co-sum-line { font-size: 14px; letter-spacing: .03em; color: var(--muted); white-space: nowrap; }
+.co-sum-line b { color: var(--ink); font-weight: 600; }
+.co-meter3 { display: flex; height: 6px; min-width: 216px; border-radius: 999px; overflow: hidden; background: rgba(255, 255, 255, .06); }
+.co-meter3 i { display: block; height: 100%; }
+.co-m3-r { background: var(--good); }
+.co-m3-p { background: var(--accent-2); }
+.co-m3-m { background: var(--bad); }
+
+/* ---------- the Open Items Docket ---------- */
+#co-docket { margin: 18px 0 4px; border: 1px solid var(--line-strong); border-radius: var(--radius-s); background: rgba(3, 4, 11, .45); padding: 4px 16px 8px; }
+.co-docket-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.co-docket-title { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+.co-docket-note { margin-left: auto; font-size: 12.5px; color: var(--faint); }
+.co-docket-row { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 2px 14px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: inherit; }
+.co-docket-row:last-child { border-bottom: 0; }
+.co-docket-row:hover .co-docket-main b { color: var(--accent-2); }
+.co-docket-sec { font-size: 12px; letter-spacing: .14em; color: var(--faint); font-variant-numeric: tabular-nums; }
+.co-docket-main b { display: block; font-weight: 500; font-size: 15px; color: var(--ink); transition: color .2s; }
+.co-docket-gap { display: block; margin-top: 2px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+.co-docket-state { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+.co-docket-row[data-status="partial"] .co-docket-state { color: var(--accent-2); }
+.co-docket-row[data-status="missing"] .co-docket-state { color: var(--bad); }
+.co-docket-clear { margin: 0; padding: 10px 0 12px; font-size: 14px; color: var(--muted); }
+
+/* ---------- chapters ---------- */
+.co-chapter { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 4px 18px; padding: 22px 0 20px; }
+.co-chapter + .co-chapter { border-top: 1px solid var(--line); }
+.co-ch-rail { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.co-sec { font-size: 12px; letter-spacing: .18em; color: var(--faint); font-variant-numeric: tabular-nums; }
+.co-seal { position: relative; flex: none; width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--line-strong); display: grid; place-items: center; }
+.co-seal::after { content: ""; position: absolute; inset: 4px; border-radius: 50%; border: 1px solid var(--line); pointer-events: none; }
+.co-seal[data-status="ready"] { border-color: var(--good); }
+.co-seal[data-status="partial"] { border-color: var(--accent-2); }
+.co-seal[data-status="missing"] { border-color: var(--bad); border-style: dashed; }
+.co-seal-disc { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 600; line-height: 1; }
+.co-seal[data-status="ready"] .co-seal-disc { background: var(--good); color: var(--ink-strong); }
+.co-seal[data-status="partial"] .co-seal-disc { background: linear-gradient(90deg, var(--accent-2) 0 50%, transparent 50%); border: 1px solid color-mix(in srgb, var(--accent-2) 65%, transparent); }
+.co-ch-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.co-ch-name { margin: 0; font-size: 19px; font-weight: 500; letter-spacing: .01em; color: var(--ink); }
+.co-ch-state { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+.co-chapter[data-status="ready"] .co-ch-state { color: var(--good); }
+.co-chapter[data-status="partial"] .co-ch-state { color: var(--accent-2); }
+.co-chapter[data-status="missing"] .co-ch-state { color: var(--bad); }
+.co-locator { margin: 8px 0 0; font-size: 15.5px; line-height: 1.65; color: var(--muted); max-width: 74ch; }
+.co-sep { color: var(--faint); }
+.co-gap { color: var(--ink); background: color-mix(in srgb, var(--bad) 9%, transparent); border-bottom: 1px dashed var(--bad); border-radius: 3px; padding: 0 2px; }
+.co-ch-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+/* ---------- amendments ---------- */
+.co-amend { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 16px; }
+.co-amend-h { margin: 0 0 12px; font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+@media (max-width: 700px) {
+  .co-chapter { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 18px 0 16px; }
+  .co-ch-rail { flex-direction: row; align-items: center; }
+  .co-seal { width: 40px; height: 40px; }
+  .co-seal-disc { width: 20px; height: 20px; font-size: 11px; }
+  .co-docket-row { grid-template-columns: 44px minmax(0, 1fr); }
+  .co-docket-state { grid-column: 2; }
+  .co-docket-note { margin-left: 0; }
+  .vault-banner { padding-left: 58px; }
+  .co-meter3 { min-width: 180px; }
+}
+
+/* ---------- print: the binder on paper, in an emergency ----------
+   Black on white, both panes, no controls, no chrome. Seals keep their
+   shape in ink (solid / half / dashed) and every seal keeps its word. */
+@media print {
+  @page { margin: 14mm; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #fff !important; color: #111; }
+  body::after, #field, .veil, .bar, .pk-dock, .tabs, .pk-stage, .foot, .toast, form, button, .co-ch-actions, .co-amend, #co-editor { display: none !important; }
+  .shell { max-width: none; padding: 0; }
+  .shell > * { animation: none !important; }
+  .hero { padding: 0 0 12px; }
+  .hero h1 { font-size: 30px; color: #000 !important; text-shadow: none !important; animation: none !important; }
+  .hero h1 em { color: #000 !important; text-shadow: none !important; }
+  .kicker, .lede { color: #333 !important; text-shadow: none !important; }
+  section.grid { display: block !important; }
+  #co-pane-vault, #co-pane-checklist { display: block !important; }
+  .grid > .glass { margin: 0 0 14px; }
+  .glass { background: #fff !important; border: 1.5px solid #111 !important; border-radius: 6px; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; color: #111; }
+  .glass::after { display: none; }
+  .glass h2 { color: #111 !important; }
+  .glass h2::before { background: #111 !important; box-shadow: none !important; }
+  .vault-banner, .mono-box { background: #fff; border: 1.5px solid #111; color: #111; }
+  .vault-banner::before, .vault-banner::after { border-color: #111 !important; }
+  .mono-box::before { color: #333; border-bottom-color: #111; }
+  .kv { border-bottom: 1px solid #999; color: #111 !important; }
+  .kv b { color: #111 !important; }
+  .stat-s { color: #333 !important; }
+  .co-titleblock { border-top: 3px double #111; border-bottom: 1px solid #111; }
+  .co-tb-main .sub, .co-sum-line, .co-docket-note, .co-docket-gap, .co-locator, .co-sec, .co-docket-sec { color: #222 !important; }
+  .co-sum-line b, .co-docket-main b, .co-ch-name { color: #000 !important; }
+  #co-docket { background: #fff; border: 1.5px solid #111; }
+  .co-docket-title { color: #000; }
+  .co-docket-row, .co-docket-head { border-bottom-color: #999; }
+  .co-docket-state, .co-ch-state { color: #000 !important; }
+  .co-meter3 { border: 1px solid #111; background: #fff; }
+  .co-m3-r { background: #111; }
+  .co-m3-p { background: #999; }
+  .co-m3-m { background: #fff; }
+  .co-chapter { break-inside: avoid; }
+  .co-chapter + .co-chapter { border-top: 1px solid #111; }
+  .co-seal { border-color: #111 !important; }
+  .co-seal::after { border-color: #999; }
+  .co-seal[data-status="ready"] .co-seal-disc { background: #111; color: #fff; }
+  .co-seal[data-status="partial"] .co-seal-disc { background: linear-gradient(90deg, #111 0 50%, #fff 50%); border-color: #111; }
+  .co-gap { background: none; color: #000; border-bottom: 1.5px dashed #111; border-radius: 0; }
+  a { color: #111; text-decoration: none; }
+}
+
+/* CON-GEM-03: a policy row the second read could not open */
+.pill.warn { border-color: rgba(255, 197, 82, 0.55); color: #ffc552; background: rgba(255, 197, 82, 0.08); }

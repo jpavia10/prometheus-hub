@@ -8,32 +8,56 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-10 03:42 UTC · 2 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 3 open in this pillar.
 
 
 - MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
     make: the encrypted book (index.html #vault) via publish.sh · how many: 1 · done when: On the Debt screen, no card or loan shows 'APR missing' or 'minimum missing'.
 - MID-GRK-02 · A fresh book every Monday by noon PT · due 2026-11-09
     make: the encrypted book · how many: 1 · done when: The app's 'built' stamp is never older than 7 days.
+- MID-GRK-04 · Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+    make: midas_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 3 open in this pillar.
 
 
-No homework for Gemini in Midas Ledger right now.
+- MID-GEM-09 · Midas Ledger: how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages · due 2026-11-19 · DELIVERED 2026-11-18, waiting for its check (do not redo)
+    make: midas_gemini_flex-terms_{YYYYMMDD-HHMM}.json · how many: 15 · done when: 15 rows exactly in the shape, every self-check line true.
+- MID-GEM-10 · Midas Ledger: 25 test cases for the ledger parser · due 2026-11-22 · DELIVERED 2026-11-18, waiting for its check (do not redo)
+    make: midas_gemini_parser-cases_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows exactly in the shape, every self-check line true.
+- MID-GEM-11 · Midas Ledger: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-18, waiting for its check (do not redo)
+    make: midas_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 2 open in this pillar.
 
 
-No homework for Muse in Midas Ledger right now.
+- MID-MUS-03 · Midas Ledger: second reader on Gemini's 'how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages' · due 2026-11-22 · DELIVERED 2026-11-17, waiting for its check (do not redo)
+    make: midas_muse_flex-terms-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+- MID-MUS-02 · Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser' · due 2026-11-25 · DELIVERED 2026-11-18, waiting for its check (do not redo)
+    make: midas_muse_parser-cases-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 
 - MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14
     make: midas_chatgpt_audit_{YYYYMMDD-HHMM}.md · how many: 20 · done when: 20 findings Claude can reproduce.
+
+## Argon
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Argon in Midas Ledger right now.
+
+## Hydrogen
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Hydrogen in Midas Ledger right now.

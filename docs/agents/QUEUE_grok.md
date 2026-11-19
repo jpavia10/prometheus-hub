@@ -2,39 +2,57 @@
 
 # Prometheus Hub · homework for Grok
 
-Updated 2026-11-10 03:42 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
+Updated 2026-11-19 04:52 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Grok/HOMEWORK — Grok (every pillar)'.
 
-## 1. HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images)
+**WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-**Due:** 2026-11-06 · **State:** now
+## 1. HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan'
 
-**Why:** Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.
+**Due:** 2026-11-27 · **State:** now
+
+**Why:** Nothing Gemini delivers is built on until a second reader has checked it.
+
+**What it unlocks:** Claude builds from the file only after this check.
 
 **Read first:**
-- the art request in Drive 'Titan Reliquary/art-requests (any AI: images + video)/artreq_20261105-0300_app-icons-titan-prometheus.json' (every prompt, file name and size is in it)
-- Drive doc 'ART_START_HERE (any AI: images + video)'
+- Gemini's file to check (HUB-GEM-10): hub_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)
+- Gemini's file hub_gemini_function-spec_*.md in the folder below (HUB-GEM-10)
 
 **Do this:**
-1. Claim it: save an empty file named artreq_20261105-0300_app-icons-titan-prometheus.CLAIMED-grok.txt in the art-requests folder (skip it if Gemini claimed it if another AI claimed it less than 24 hours ago).
-2. Make the 6 images with your own image model, one at a time, square, at least 1024x1024, full-bleed, the subject inside the central 66 % circle.
-3. Save them with the exact file names into 'Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/'.
-4. Write artreq_20261105-0300_app-icons-titan-prometheus.DONE.txt next to the request: one line per file, ok or skipped: reason, your model name and the date.
+1. Open Gemini's file and the code it describes.
+2. Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.
+3. Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.
+4. List up to 10 things the pillar needs that the spec leaves out, each with why.
 
-**Make:** `titan_icon_take1..3.png + prometheus_icon_take1..3.png`
+**Make:** `hub_grok_function-spec-check_{YYYYMMDD-HHMM}.md`
 
-**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `6 PNG files, square, >= 1024 px`
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
 
-**How many:** 6
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
 
-**Done when:** 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
 
 **How Claude checks it:**
-- Claude opens every image at full size and at 48x48 px, masked to a circle.
-- A weak one (plastic render look, warped coin, stray letters, subject cut by the circle) is re-requested, not shipped.
+- Claude re-checks 3 of your differ lines.
 
 **Not done (sent back) if:**
-- readable letters on any take but titan_icon_take3 (exactly TR)
-- rounded corners, a border or a white background
-- smaller than 1024x1024
+- fewer rows than the count, or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name

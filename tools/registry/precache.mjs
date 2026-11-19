@@ -9,7 +9,7 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..", "..");
 export const PRECACHE_FILE = "sw-precache.js";
 
-const ASSET_EXT = /\.(?:js|mjs|css|json|webmanifest|woff2|png|svg|html)$/i;
+const ASSET_EXT = /\.(?:js|mjs|css|json|webmanifest|woff2|png|svg|html|webp)$/i;
 const BLOCK_SEG = new Set(["titan", "midas", "fleet"]);
 const SKIP_PREFIX = ["proofs/", "tools/", "artifacts/", "collaborators/", ".github/", "node_modules/", ".git/"];
 
@@ -95,6 +95,7 @@ export function buildPrecache(rootDir = DEFAULT_ROOT) {
     if (ext === ".js" || ext === ".mjs") walkJs(rel, pageDir);
     else if (ext === ".css") walkCss(rel);
     else if (ext === ".webmanifest") walkManifest(rel);
+    else if (rel.endsWith("art/worlds/index.json")) walkWorlds(rel);
   }
 
   function addExisting(fromFile, spec, pageDir) {
@@ -116,6 +117,7 @@ export function buildPrecache(rootDir = DEFAULT_ROOT) {
     for (const spec of specs(src, DYN_RE)) addExisting(rel, spec, pageDir);
     for (const spec of specs(src, SIDE_RE)) addExisting(rel, spec, pageDir);
     for (const spec of specs(src, FETCH_RE)) addExisting(rel, spec, pageDir);
+    for (const spec of specs(src, URL_RE)) addExisting(rel, spec, pageDir);
     for (const spec of specs(src, LIT_RE)) if (looksLikeAsset(spec)) addExisting(rel, spec, pageDir);
   }
 
@@ -140,6 +142,16 @@ export function buildPrecache(rootDir = DEFAULT_ROOT) {
     }
   }
 
+  function walkWorlds(rel) {
+    let json;
+    try { json = JSON.parse(fs.readFileSync(path.join(rootDir, rel), "utf8")); } catch { return; }
+    const pageDir = path.posix.dirname(rel);
+    for (const id of json.worlds || []) {
+      if (!/^[a-z0-9-]+$/i.test(String(id))) continue;
+      for (const suffix of ["", "_depth", "_lights"]) include(path.posix.join(pageDir, `world_${id}${suffix}.webp`), "");
+    }
+  }
+
   function addHtml(htmlRel, pageDir) {
     let html;
     try { html = fs.readFileSync(path.join(rootDir, htmlRel), "utf8"); }
@@ -149,6 +161,10 @@ export function buildPrecache(rootDir = DEFAULT_ROOT) {
       if (!resolved || blocked(resolved) || !ASSET_EXT.test(resolved)) continue;
       if (!isFile(resolved)) { errors.push(`${htmlRel} references missing '${resolved}'`); continue; }
       include(resolved, pageDir);
+    }
+    for (const spec of specs(html, URL_RE)) {
+      const resolved = resolveFrom(htmlRel, spec);
+      if (resolved && ASSET_EXT.test(resolved) && isFile(resolved)) include(resolved, pageDir);
     }
   }
 

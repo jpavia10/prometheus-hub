@@ -13,6 +13,7 @@ import { position } from "../models/money.js";
 import { focusStats, focusView, makeEvent, kindOf } from "../models/time.js";
 import * as wx from "../core/weather.js";
 import { reactor, boot, PILLAR_DOMAINS, domainOf } from "./orrery.js";
+import { menu, unpin } from "./menu.js";
 
 /** The day ring. soon = rows in the next 24 hours; w = the weather reading (for sunrise and sunset) or null. */
 function dayRing(now, soon, w, t) {
@@ -142,7 +143,10 @@ export function render(root, route, ctx) {
   const fresh = eventsSince(lastSeen || "", 8), lately = fresh.length ? fresh : eventsSince("", 4), ago = (iso) => { const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + " min" : m < 1440 ? Math.round(m / 60) + " h" : Math.round(m / 1440) + " d"; };
   const since = lately.length ? h("section.panel.since", { "aria-label": fresh.length ? "Since you were here" : "Lately" }, h("header.panel-head", h("h2", fresh.length ? "Since you were here" : "Lately in the pillars"), h("small.quiet", fresh.length ? plural(fresh.length, "change") : "")),
     ...lately.map((e) => h("a.since-row", { href: e.href }, h("b", e.name), h("span", e.say + (e.title ? ": " + e.title : "")), h("small.quiet", ago(e.at))))) : null;
-  const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
+  /* home: the game menu (owner, 2026-11-16) or the orbit; ?home=orbit|menu pins it for the proofs */
+  const homeMode = (() => { const q = new URLSearchParams(location.search).get("home"); if (q === "orbit" || q === "menu") return q; try { return localStorage.getItem("prom.deck.home") === "orbit" ? "orbit" : "menu"; } catch (e) { return "menu"; } })();
+  const rx = homeMode === "orbit" ? reactor(ctx) : menu(ctx, { rerender: () => { if (rx && rx.cleanup) rx.cleanup(); location.hash = "#/"; dispatchEvent(new HashChangeEvent("hashchange")); } });
+  if (homeMode === "orbit") boot(new URLSearchParams(location.search).get("boot") === "1");
   const totalRecords = Object.values(ecoStats).reduce((s, x) => s + (x.records || 0), 0);
   const openDeadlines = (() => { try { return JSON.parse(localStorage.getItem("prometheus.bus.deadlines") || "[]").filter((r) => r && !r.done && r.source !== "kairos-fixed" && r.date >= t).length; } catch (_) { return 0; } })();
   const sales30d = busMoneySales().rows.filter((r) => !r.date || r.date >= addDays(t, -30)).length;
@@ -200,6 +204,7 @@ export function render(root, route, ctx) {
     h("header.panel-head", h("h2", "Odyssey Away Mode"), chip("active"), h("a.link", { href: "pillars/odyssey/" }, "Checklist")),
     h("p", "Travel priority mode enabled — mountain readiness (Bastion), home systems (Hearth) & near-term transit promoted above financial ambient tiles.")) : null;
   const boardPanels = isAway ? [awayBanner, ecoHud, since, first, ambient, run, count, payoff, atlasPanel] : [ecoHud, since, first, payoff, run, count, ambient, atlasPanel];
-  put(root, rx, hero, put(h("div.board"), ...boardPanels), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
+  const toMenu = homeMode === "orbit" ? h("button.mn-back", { type: "button", onclick: () => { try { localStorage.setItem("prom.deck.home", "menu"); } catch (e) { /* this visit */ } unpin(); if (rx.cleanup) rx.cleanup(); location.hash = "#/"; dispatchEvent(new HashChangeEvent("hashchange")); } }, icon("grid", 15), h("span", "Menu")) : null;
+  put(root, rx, toMenu, h("div.briefing", { id: "briefing" }, hero), put(h("div.board"), ...boardPanels), h("footer.foot", h("a.link", { href: "#/system" }, profile.demo ? "Sample data is loaded · remove it" : "Your data stays on this device"), h("a.link", { href: "#/time" }, "Kairos console"), h("a.link", { href: "#/money" }, "Payoff console")));
   return () => { if (rx.cleanup) rx.cleanup(); };
 }

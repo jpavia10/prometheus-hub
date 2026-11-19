@@ -1,0 +1,55 @@
+README — Privacy · CA DROP
+
+Shrinking the public footprint.
+
+Live: https://jpavia10.github.io/prometheus-hub/pillars/privacy/ · Code and rules: https://github.com/jpavia10/prometheus-hub · State: live · PRIVATE: made-up data or public research only
+
+Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Save what you make in this folder's 'incoming (AI drop files)' under the exact name your task gives. Each AI's section below lists its homework here; the full instructions for each task are in that AI's own doc 'Prometheus Hub/{AI folder}/HOMEWORK — {Name} (every pillar)'.
+
+## Grok
+
+Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
+
+
+- PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
+    make: privacy_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+
+## Gemini
+
+Updated 2026-11-19 04:52 UTC · 3 open in this pillar.
+
+
+- PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
+    make: privacy_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
+    make: privacy_gemini_registry_{YYYYMMDD-HHMM}.json · how many: 72 · done when: 72 rows, every 'yes' with its registry entry URL.
+- PRI-GEM-08 · Privacy: Google account settings that leak the most, each with the exact path to turn it off, from Google's own help pages · due 2026-11-27
+    make: privacy_gemini_google-settings_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 settings, each on its Google help page.
+
+## Muse
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Muse in Privacy · CA DROP right now.
+
+## ChatGPT
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for ChatGPT in Privacy · CA DROP right now.
+
+## Argon
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Argon in Privacy · CA DROP right now.
+
+## Hydrogen
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Hydrogen in Privacy · CA DROP right now.

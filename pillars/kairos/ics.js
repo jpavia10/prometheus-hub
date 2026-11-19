@@ -34,7 +34,25 @@
     }
     return out;
   }
-  const K = { buildICS, expandRecurring, esc };
+  /* KAI-GEM-10 (2026-11-17): business-day roll-forward. A deadline that lands on a Saturday,
+     Sunday, or a federal holiday (from window.KAIROS_FIXED when present) moves to the next
+     business day — the same rule the agencies themselves apply (e.g. Rev. & Tax. §75.52(d)). */
+  function effectiveDueDate(isoDate) {
+    const holidays = new Set();
+    if (typeof window !== "undefined" && Array.isArray(window.KAIROS_FIXED)) {
+      for (const f of window.KAIROS_FIXED) if (f.kind === "federal holiday") holidays.add(f.date);
+    }
+    const d = new Date(isoDate + "T12:00:00");
+    const fmt = (x) => `${x.getFullYear()}-${pad(x.getMonth() + 1)}-${pad(x.getDate())}`;
+    let guard = 0;
+    while (guard++ < 10) {
+      const dow = d.getDay();
+      if (dow !== 0 && dow !== 6 && !holidays.has(fmt(d))) break;
+      d.setDate(d.getDate() + 1);
+    }
+    return fmt(d);
+  }
+  const K = { buildICS, expandRecurring, esc, effectiveDueDate };
   if (typeof window !== "undefined") window.KICS = K;
   if (typeof globalThis !== "undefined") globalThis.KICS = K;
   if (typeof document === "undefined") return;

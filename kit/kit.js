@@ -1,5 +1,5 @@
 /* Prometheus kit (Claude, 2026-11-05): the field, on-device storage and small UI helpers every pillar shares.
-   window.PK = { field(opts), store(pillar), $, $$, h, money, num, day, toast, tabs(root), spark(canvas, series, opts), download(name, obj), pickFile() }
+   window.PK = { field(opts), store(pillar), $, $$, h, money, num, day, toast, tabs(root), spark(canvas, series, opts), download(name, obj), pickFile(), devicePlace() }
    Nothing here talks to a server. Data stays in this browser (localStorage) until the owner exports it. */
 (function () {
   "use strict";
@@ -60,6 +60,20 @@
   }
   function pickFile(accept = "application/json") {
     return new Promise((res) => { const i = h("input", { type: "file", accept }); i.onchange = () => res(i.files[0] || null); i.click(); });
+  }
+
+  /** The place the hub storm sheet saved on this device (prom.deck.profile). Null when none is set, so a pillar does not guess a point. */
+  function devicePlace() {
+    try {
+      const raw = localStorage.getItem("prom.deck.profile");
+      if (!raw) return null;
+      const o = JSON.parse(raw);
+      const place = o && o.data ? o.data.place : null;
+      if (!place || place.lat == null || place.lon == null || place.lat === "" || place.lon === "") return null;
+      const lat = Number(place.lat), lon = Number(place.lon);
+      if (!Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return null;
+      return { label: String(place.label || "Home"), lat, lon };
+    } catch (_) { return null; }
   }
 
   /** Tabs: buttons [role=tab][aria-controls] inside root; remembers the last one per page. */
@@ -144,7 +158,7 @@
       const out = []; for (let i = 1; i < pts.length; i++) out.push(...G.line(Math.max(2, Math.round(n * segs[i - 1] / L)), ...pts[i - 1], ...pts[i])); return out; },
   };
 
-  window.PK = { $, $$, h, money, num, day, toast, store, download, pickFile, tabs, spark, field, G, reduced };
+  window.PK = { $, $$, h, money, num, day, toast, store, download, pickFile, devicePlace, tabs, spark, field, G, reduced };
 
   if (new URLSearchParams(location.search).get("embed") === "1") document.documentElement.classList.add("is-embed");
   const embedded = document.documentElement.classList.contains("is-embed");
@@ -511,6 +525,22 @@
 
   if (document.readyState === "complete") setTimeout(igniteAutoField, 30);
   else window.addEventListener("load", function () { setTimeout(igniteAutoField, 30); });
+
+  /* The pillar's own world (2026-11-19): the painting it has on the hub's menu (art/worlds/, tools/art/worlds.py) stands behind the page,
+     faded into the dark below the top so every panel stays readable; the live field still moves over it. No painting yet: nothing changes. */
+  (function world() {
+    var slug = pillar === "sylade" ? "presence" : pillar;
+    var src = (document.querySelector('script[src$="kit/kit.js"]') || {}).src;
+    if (!slug || !src || (navigator.connection && navigator.connection.saveData)) return;
+    var url = new URL("../art/worlds/world_" + slug + ".webp", src).href, im = new Image();
+    im.decoding = "async";
+    im.onload = function () {
+      var w = el("div", "pk-world"); w.setAttribute("aria-hidden", "true"); w.style.backgroundImage = 'url("' + url + '")';
+      var field = document.getElementById("field"); body.insertBefore(w, field || body.firstChild); body.classList.add("has-world");
+      requestAnimationFrame(function () { requestAnimationFrame(function () { w.classList.add("on"); }); });
+    };
+    im.src = url;
+  })();
 
   /* In-pillar Cmd+K / Ctrl+K Command Palette */
   var PAL_ROUTES = [

@@ -8,3 +8,65 @@
 .rule-hit { border-left: 3px solid var(--bad); padding-left: 8px; }
 .rule-ok { border-left: 3px solid var(--good); padding-left: 8px; }
 .row-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* ——— The exchange board (market calendar, design pass 2026-11-14) ———
+   Numbers are the decoration: tabular exchange type, ruled hairlines, the tape of
+   session ticks under the plate, each year ruled as its own ledger line. */
+#icarus-market .mk-board { font-variant-numeric: tabular-nums; }
+#icarus-market .mk-status { display: flex; align-items: center; gap: 8px; }
+#icarus-market .mk-dot { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--good); box-shadow: 0 0 8px var(--good); }
+#icarus-market .mk-dot.closed { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+#icarus-market .mk-dot.early { background: var(--accent-2); box-shadow: 0 0 8px var(--accent-2); }
+
+#icarus-market .mk-plate { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line); margin: 12px 0 4px; }
+#icarus-market .mk-cell { padding: 10px 14px 9px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 1px; }
+#icarus-market .mk-cell:first-child { border-left: 0; padding-left: 2px; }
+#icarus-market .mk-v { font-size: 27px; font-weight: 300; line-height: 1.05; color: var(--ink); letter-spacing: 0.01em; }
+#icarus-market .mk-k { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+#icarus-market .mk-tape { margin: 10px 0 2px; display: flex; flex-direction: column; gap: 5px; }
+#icarus-market .mk-tape-row { display: flex; align-items: flex-end; gap: 10px; }
+#icarus-market .mk-tape-y { flex: none; width: 34px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; color: var(--muted); padding-bottom: 1px; }
+#icarus-market .mk-ticks { flex: 1; display: flex; align-items: flex-end; gap: 3px; height: 26px; border-bottom: 1px solid var(--line); }
+#icarus-market .mk-tick { flex: 1; min-width: 3px; height: var(--h); background: var(--muted); opacity: 0.75; border-radius: 1px 1px 0 0; }
+#icarus-market .mk-tick.early { background: var(--accent-2); opacity: 0.95; }
+#icarus-market .mk-tick.past { opacity: 0.28; }
+#icarus-market .mk-tick.next { background: var(--accent); opacity: 1; box-shadow: 0 0 7px var(--accent); }
+#icarus-market .mk-tick.today { outline: 1px solid var(--ink); outline-offset: 1px; opacity: 1; }
+#icarus-market .mk-tape-n { flex: none; width: 20px; text-align: right; font-size: 11px; color: var(--faint); padding-bottom: 1px; }
+
+#icarus-market .mk-ledger { margin-top: 8px; }
+#icarus-market .mk-row { display: flex; align-items: center; gap: 12px; padding: 8px 2px; border-bottom: 1px solid var(--line); }
+#icarus-market .mk-row.is-past { opacity: 0.45; }
+#icarus-market .mk-row.is-next { box-shadow: inset 2px 0 0 var(--accent); padding-left: 8px; }
+#icarus-market .mk-date { flex: none; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--ink); }
+#icarus-market .mk-wd { flex: none; width: 30px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--faint); }
+#icarus-market .mk-name { flex: 1; min-width: 0; display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; font-size: 13.5px; }
+#icarus-market .mk-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; padding: 2px 7px; white-space: nowrap; }
+#icarus-market .mk-tag.early { color: var(--accent-2); border-color: var(--accent-2); }
+#icarus-market .mk-tag.next { color: var(--ink-strong); background: var(--accent); border-color: var(--accent); }
+#icarus-market .mk-tag.today { color: var(--ink-strong); background: var(--pearl); border-color: var(--pearl); }
+#icarus-market .mk-sess { flex: none; display: flex; align-items: center; gap: 8px; }
+#icarus-market .mk-sess-track { display: block; width: 74px; height: 5px; border: 1px solid var(--line-strong); border-radius: 3px; overflow: hidden; }
+#icarus-market .mk-sess-fill { display: block; height: 100%; background: var(--accent-2); }
+#icarus-market .mk-sess-lab { font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); white-space: nowrap; }
+
+#icarus-market .mk-years { margin-top: 12px; border-top: 1px solid var(--line-strong); }
+#icarus-market .mk-year { display: flex; align-items: center; gap: 12px; padding: 7px 2px; border-bottom: 1px solid var(--line); font-size: 12px; }
+#icarus-market .mk-year-y { flex: none; width: 34px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink); }
+#icarus-market .mk-year-bar { flex: 1; display: flex; height: 6px; border-radius: 3px; overflow: hidden; background: rgba(255, 255, 255, 0.04); }
+#icarus-market .mk-year-full { background: var(--muted); opacity: 0.65; }
+#icarus-market .mk-year-early { background: var(--accent-2); }
+#icarus-market .mk-year-n { flex: none; color: var(--muted); }
+#icarus-market .mk-year-n b { color: var(--ink); }
+
+@media (max-width: 640px) {
+  #icarus-market .mk-plate { grid-template-columns: repeat(2, 1fr); }
+  #icarus-market .mk-cell:nth-child(3) { border-left: 0; padding-left: 2px; }
+  #icarus-market .mk-cell { padding: 8px 10px 7px; }
+  #icarus-market .mk-v { font-size: 23px; }
+  #icarus-market .mk-row { flex-wrap: wrap; gap: 4px 10px; }
+  #icarus-market .mk-name { flex-basis: calc(100% - 130px); }
+  #icarus-market .mk-sess { margin-left: 42px; }
+  #icarus-market .mk-year { flex-wrap: wrap; }
+}

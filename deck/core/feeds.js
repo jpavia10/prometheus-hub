@@ -28,12 +28,14 @@ export function within(hours, now) {
   const t0 = today(); const all = rows(t0, addDays(t0, Math.ceil(hours / 24) + 1), { withFixed: false }); const end = now.getTime() + hours * 3600000;
   return all.filter((r) => { if (r.done) return false; const [y, m, d] = r.date.split("-").map(Number); const [hh, mm] = (r.time || "23:59").split(":").map(Number); const at = new Date(y, m - 1, d, hh, mm).getTime(); return at >= now.getTime() - (r.time ? 0 : 0) && at <= end || (!r.time && r.date === t0); });
 }
-/** The next `n` "big" dates: the owner's starred events first, then hard deadlines, then federal holidays to fill. */
+/** The next `n` "big" dates: the owner's starred events, his own important events, then hard deadlines (tax, bills, county and state
+    deadlines, what the pillars publish), then federal holidays only to fill (2026-11-19: before this, holidays were all it ever showed). */
 export function countdowns(n = 3, from = today()) {
   const all = rows(from, addDays(from, 400)); const pick = []; const seen = new Set();
   const idOf = (r) => (r.ref && r.ref.id) || r.key;                                  // one countdown per thing: the first day of a trip, the next turn of a repeat
   const take = (f) => { for (const r of all) { if (pick.length >= n) return; if (r.done || seen.has(idOf(r)) || !f(r)) continue; seen.add(idOf(r)); pick.push(r); } };
-  take((r) => r.big); take((r) => !r.fixed && r.cap === "time" && !r.repeat && (r.weight || 0) >= 3 && r.date > from); take((r) => r.tone === "holiday" && r.date > from);
+  const hard = (r) => (r.tone === "tax" || r.tone === "deadline" || r.tone === "bill") && r.date >= from;
+  take((r) => r.big); take((r) => !r.fixed && r.cap === "time" && !r.repeat && (r.weight || 0) >= 3 && r.date > from); take(hard); take((r) => r.tone === "holiday" && r.date > from);
   return pick.sort((a, b) => a.date.localeCompare(b.date));
 }
 /** One search over every capability. Returns [{ title, sub, go, cap }] */

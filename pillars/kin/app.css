@@ -1,5 +1,95 @@
-/* Kin: the kit carries the look; only what this pillar adds is here. */
+/* Kin — the warm household register (Sebastian, 2026-11-14).
+   The kit carries the shell; this sheet gives the pillar its depth: a featured next-connection
+   card, the fortnight as a quiet timeline, and the family as portrait-initial cards grouped by
+   circle. Tokens only — Kin's own rose (--accent) and gold (--accent-2), pearl type, glass. */
+
+/* kept from the original sheet */
 .row-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .sub { font-size: 13px; color: var(--muted); }
-.pill.hot { border-color: var(--accent); color: #fff; }
 .bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; } .bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+/* who-has-them pill */
+.pill { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.pill::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--lavender); }
+.pill.hot { border-color: color-mix(in srgb, var(--accent) 65%, transparent); color: #fff; background: color-mix(in srgb, var(--accent) 15%, transparent); }
+.pill.hot::before { background: var(--accent); box-shadow: 0 0 9px var(--accent); }
+
+/* ——— next connection: the featured card ——— */
+.next-main { display: flex; gap: 24px; align-items: center; }
+.next-date { flex: none; display: grid; justify-items: center; gap: 1px; min-width: 124px; padding: 16px 18px 14px; border-radius: 18px; text-align: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--line));
+  background: radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 70%), rgba(255,255,255,.03);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 14px 30px -20px color-mix(in srgb, var(--accent) 70%, transparent); }
+.next-wd { font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); }
+.next-num { font-size: 58px; font-weight: 200; line-height: 1.04; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.next-my { font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.next-body { min-width: 0; }
+.next-rel { display: inline-flex; padding: 4px 13px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-strong);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 18px -4px var(--accent); }
+.next-title { margin: 12px 0 5px; font-size: clamp(21px, 3.4vw, 29px); font-weight: 400; line-height: 1.28; text-wrap: balance; }
+.next-meta { margin: 0; font-size: 14px; color: var(--muted); }
+.next-then { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px 20px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.next-then-k { font-size: 10.5px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--faint); }
+.next-then-it { font-size: 14px; color: var(--muted); }
+.next-then-it b { margin-right: 7px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) {
+  .next-main { flex-direction: column; align-items: stretch; gap: 16px; }
+  .next-date { grid-auto-flow: column; align-items: baseline; justify-content: start; gap: 10px; min-width: 0; padding: 10px 16px; text-align: left; }
+  .next-num { font-size: 38px; }
+}
+
+/* ——— the fortnight: a quiet timeline ——— */
+#k-days { position: relative; }
+#k-days::before { content: ""; position: absolute; left: 12px; top: 16px; bottom: 16px; width: 1px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 60%, transparent), var(--line) 34%, var(--line)); }
+.day-row { position: relative; display: flex; align-items: flex-start; gap: 18px; padding: 13px 8px 13px 26px; border-bottom: 1px solid var(--line); border-radius: 14px; }
+.day-row:last-child { border-bottom: 0; }
+.day-row::before { content: ""; position: absolute; left: 12px; top: 21px; width: 7px; height: 7px; border-radius: 50%; transform: translateX(-50%);
+  background: var(--bg-2); border: 1.5px solid color-mix(in srgb, var(--muted) 65%, transparent); }
+.day-row.today { background: radial-gradient(75% 110% at 0% 50%, color-mix(in srgb, var(--accent) 11%, transparent), transparent 72%); }
+.day-row.today::before { width: 10px; height: 10px; top: 19px; background: var(--accent); border-color: var(--accent); box-shadow: 0 0 12px var(--accent); }
+.day-when { flex: none; width: 68px; display: grid; justify-items: center; gap: 1px; text-align: center; }
+.day-wd { font-size: 10.5px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+.day-num { font-size: 27px; font-weight: 300; line-height: 1.12; font-variant-numeric: tabular-nums; }
+.day-mo { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+.day-row.today .day-wd, .day-row.today .day-mo { color: var(--accent); }
+.day-row.today .day-num { color: var(--accent); text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 55%, transparent); }
+.day-what { flex: 1; min-width: 0; display: grid; gap: 6px; padding-top: 5px; }
+.day-ev { display: flex; align-items: baseline; gap: 10px; font-size: 15px; line-height: 1.45; color: var(--ink); }
+.day-ev .dot { flex: none; width: 7px; height: 7px; border-radius: 50%; transform: translateY(-1px); background: var(--pearl); }
+.day-ev .dot.k-school { background: var(--accent-2); box-shadow: 0 0 8px color-mix(in srgb, var(--accent-2) 80%, transparent); }
+.day-ev .dot.k-trip { background: var(--cyan); box-shadow: 0 0 8px color-mix(in srgb, var(--cyan) 80%, transparent); }
+.day-ev .dot.k-birthday { background: var(--accent); box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 80%, transparent); }
+.day-ev .dot.k-handoff { background: var(--lavender); }
+.day-none { padding-top: 2px; font-size: 14px; color: var(--faint); }
+.day-row .pill { flex: none; margin: 4px 0 0 auto; }
+@media (max-width: 560px) {
+  .day-row { flex-wrap: wrap; row-gap: 8px; }
+  .day-row .pill { margin-left: 112px; margin-top: 0; }
+}
+
+/* ——— the family: portrait-initial cards by circle ——— */
+.circle-h { display: flex; align-items: center; gap: 12px; margin: 22px 0 12px; font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+.circle-h:first-child { margin-top: 2px; }
+.circle-h::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line-strong), var(--line), transparent); }
+.people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.person { display: grid; gap: 11px; padding: 17px; border-radius: var(--radius-s); border: 1px solid var(--line);
+  background: radial-gradient(90% 70% at 0% 0%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.014)); }
+.person-head { display: flex; align-items: center; gap: 15px; }
+.person-head .btn { flex: none; margin-left: auto; }
+.person-id { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.avatar { flex: none; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; font-weight: 500; color: var(--ink-strong);
+  background: linear-gradient(140deg, var(--accent), var(--accent-2)); box-shadow: 0 0 20px -5px var(--accent), inset 0 1px 0 rgba(255,255,255,.55); }
+.person.c-family .avatar { background: linear-gradient(140deg, var(--accent-2), color-mix(in srgb, var(--accent) 55%, var(--accent-2))); box-shadow: 0 0 20px -6px var(--accent-2), inset 0 1px 0 rgba(255,255,255,.55); }
+.person.c-school .avatar { background: linear-gradient(140deg, var(--lavender), var(--cyan)); box-shadow: 0 0 20px -6px var(--lavender), inset 0 1px 0 rgba(255,255,255,.55); }
+.person.c-wider .avatar { background: linear-gradient(140deg, var(--lavender), var(--accent-2)); box-shadow: 0 0 20px -6px var(--lavender), inset 0 1px 0 rgba(255,255,255,.55); }
+.person-name { font-size: 18.5px; font-weight: 500; letter-spacing: .01em; line-height: 1.2; }
+.person-role { font-size: 10.5px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.person.c-family .person-role { color: var(--accent-2); }
+.person.c-school .person-role, .person.c-wider .person-role { color: var(--lavender); }
+.person-note { margin: 0; font-size: 14px; line-height: 1.58; color: var(--muted); }
+.person-bday { margin: 0; font-size: 13px; color: var(--accent-2); }
+@media (max-width: 560px) { .people-grid { grid-template-columns: 1fr; } }
+
+/* ——— from the other pillars ——— */
+#k-other .kv b { font-size: 15.5px; }

@@ -1,6 +1,8 @@
 /* Foundry (Claude, 2026-11-13): inventions turned into builds. The drawing board is every idea tagged as an invention in Athenaeum (read
    from this browser's Athenaeum, or the ideas it ships); starting a build makes a project here that moves through six stages with its
-   parts, their cost, a log and the one next step. Athenaeum's records are only read. window.FOUNDRY = { STAGES, data } */
+   parts, their cost, a log and the one next step. Athenaeum's records are only read. Every board idea also carries a
+   real build state (build-states.js: all 11 inventions cross-checked against the hub and MEMORY.md on 2026-11-14,
+   evidence cited per idea). window.FOUNDRY = { STAGES, data } */
 (function () {
   "use strict";
   const { $, h, day, toast, store, download, pickFile } = PK;
@@ -9,11 +11,14 @@
   const ideas = () => { let l = []; try { l = JSON.parse(localStorage.getItem("prometheus.athenaeum.ideas") || "[]"); } catch (e) { l = []; } if (!l.length) l = window.ATHENAEUM_IDEAS || []; return l.filter((i) => !i.archived && (i.tags || []).some((t) => /invent/i.test(t))); };
   const projects = () => S.list("projects");
   const cost = (p) => (p.parts || []).reduce((s, x) => s + (+x.cost || 0), 0);
-  window.FOUNDRY = { STAGES, data: () => { const P = projects(), started = new Set(P.map((p) => p.ideaId).filter(Boolean)); return { STAGES, projects: P, board: ideas().filter((i) => !started.has(i.id)), ideas: ideas(), cost: P.reduce((s, p) => s + cost(p), 0) }; } };
+  const BUILD_STATES = (typeof window !== "undefined" && window.FOUNDRY_BUILD_STATES) || (typeof globalThis !== "undefined" && globalThis.FOUNDRY_BUILD_STATES) || [];
+  const stateFor = (i) => BUILD_STATES.find((r) => (i.id && r.id === i.id) || r.title === i.title || (r.altTitle && r.altTitle === i.title)) || null;
+  window.FOUNDRY = { STAGES, data: () => { const P = projects(), started = new Set(P.map((p) => p.ideaId).filter(Boolean)); return { STAGES, projects: P, board: ideas().filter((i) => !started.has(i.id)).map((i) => { const st = stateFor(i); return { ...i, buildState: st ? st.state : "concept", buildEvidence: st ? st.evidence : "" }; }), ideas: ideas(), cost: P.reduce((s, p) => s + cost(p), 0) }; } };
   app.innerHTML = `
     <section class="grid">
+      <div class="glass span-12"><h2>The honest count</h2><div id="y-plate"></div></div>
       <div class="glass span-12"><h2>On the bench</h2><div id="y-bench"></div></div>
-      <div class="glass span-12"><h2>Drawing board</h2><p class="sub">Every idea you tagged as an invention in Athenaeum. Starting a build keeps the idea as it is and links back to it.</p><div id="y-board"></div></div>
+      <div class="glass span-12"><h2>Drawing board</h2><p class="sub">Every idea you tagged as an invention in Athenaeum, pinned to the wall as a drawing sheet. Starting a build keeps the idea as it is and links back to it.</p><div id="y-board"></div></div>
       <div class="glass span-12"><h2>Start from scratch</h2>
         <form class="form" id="y-form"><label class="f wide">What it is<input name="title" required maxlength="120"></label>
           <label class="f wide">The first next step<input name="next" maxlength="160" placeholder="The one thing that moves it forward"></label><button class="btn" type="submit">Start the build</button></form></div>
@@ -92,11 +97,58 @@
       window.PLinks.link({ fromPillar: "athenaeum", fromId: ideaId, toPillar: "foundry", toId: projectId, kind: "builds-from", label });
     }
   };
+  /* The wall is grouped by theme, read off each idea's own Athenaeum tags — order fixed, anything unmatched stays on the board. */
+  const THEMES = [
+    { name: "Deep speculation", re: /speculative|moonshot|far.future/i },
+    { name: "Sky & space", re: /space|hypersonic|aircraft|propulsion|plasma/i },
+    { name: "Compute & agents", re: /comput|distributed|gpu|artificial|\bai\b|agent|health/i },
+    { name: "Earth & field systems", re: /environment|ocean|agricultur|biotech|mining|land|irrigation|waste|insect|climate/i },
+  ];
+  const themeFor = (i) => { const tags = (i.tags || []).join(" "); const t = THEMES.find((x) => x.re.test(tags)); return t ? t.name : "On the board"; };
+  const startBuild = (i) => { const p = S.add("projects", { title: i.title, ideaId: i.id, stage: 1, next: "", parts: [], started: day(), log: [{ date: day(), text: "Started from the idea kept " + (i.created || "") }] }); linkFromAthenaeum(i.id, p && p.id, i.title); if (window.PB && PB.events) PB.events.publish({ type: "build.started", pillar: "foundry", ref: p.id, title: p.title }); toast("On the bench"); paint(); };
+  /* One invention as a blueprint sheet: drawing number, state stamp, the idea in his words, and the cited build check. */
+  function sheet(i, n) {
+    const tags = (i.tags || []).filter((t) => !/invent/i.test(t));
+    return h("article.sheet", null,
+      h("div.sheet-top", null,
+        h("span.sheet-dwg", null, "DWG-" + String(n).padStart(2, "0")),
+        h("span.sheet-stamp", null, String(i.buildState || "concept").toUpperCase())),
+      h("h3.sheet-title", null, i.title),
+      i.body ? h("div.spec", null, h("span.spec-k", null, "The idea — in his words"), h("p.spec-v", null, i.body)) : null,
+      i.buildEvidence ? h("div.spec", null, h("span.spec-k", null, "Build check — prior art & the record"), h("p.spec-v dim", null, i.buildEvidence)) : null,
+      h("div.sheet-meta", null,
+        h("span.sheet-kept", null, `Kept ${i.created || "—"}${i.strength ? " · strength " + i.strength : ""}`),
+        tags.length ? h("span.sheet-tags", null, ...tags.map((t) => h("span.chip", null, t))) : null),
+      h("div.sheet-foot", null,
+        h("button.btn.quiet.small", { type: "button", onclick: () => startBuild(i) }, "Start the build")));
+  }
   function paint() {
     const D = window.FOUNDRY.data();
-    $("#y-bench").replaceChildren(...(D.projects.length ? D.projects.sort((a, b) => b.stage - a.stage).map(card) : [h("p.empty", null, "Nothing on the bench yet. Start one from the drawing board.")]));
-    $("#y-board").replaceChildren(...(D.board.length ? D.board.map((i) => h("div.kv", null, h("span", null, h("b", null, i.title), h("br"), h("span.stat-s", null, `kept ${i.created || ""}${i.strength ? " · strength " + i.strength : ""}`)),
-      h("button.btn.quiet.small", { type: "button", onclick: () => { const p = S.add("projects", { title: i.title, ideaId: i.id, stage: 1, next: "", parts: [], started: day(), log: [{ date: day(), text: "Started from the idea kept " + (i.created || "") }] }); linkFromAthenaeum(i.id, p && p.id, i.title); if (window.PB && PB.events) PB.events.publish({ type: "build.started", pillar: "foundry", ref: p.id, title: p.title }); toast("On the bench"); paint(); } }, "Start the build"))) : [h("p.empty", null, D.ideas.length ? "Every invention is on the bench." : "No ideas tagged invention in Athenaeum yet.")]));
+    const shipped = D.projects.filter((p) => p.stage >= STAGES.length - 1).length;
+    const inProgress = D.projects.length - shipped;
+    const stageCount = (ix) => D.projects.filter((p) => p.stage === ix).length;
+    $("#y-plate").replaceChildren(
+      h("div.plate", null,
+        h("div.plate-cell", null, h("span.plate-v", null, String(shipped)), h("span.plate-k", null, "Shipped")),
+        h("div.plate-cell", null, h("span.plate-v", null, String(inProgress)), h("span.plate-k", null, "In progress")),
+        h("div.plate-cell hot", null, h("span.plate-v", null, String(D.board.length)), h("span.plate-k", null, "Concept — on the wall"))),
+      h("div.ruler", { "aria-hidden": "true" },
+        h("span.ruler-tick on", null, h("b", null, String(D.board.length)), "Concept"),
+        ...STAGES.map((s, ix) => h("span.ruler-tick" + (stageCount(ix) ? " on" : ""), null, h("b", null, String(stageCount(ix))), s))),
+      h("p.plate-note", null, "The count is the design: every sheet on the wall below carries its build state and the check that set it, cited on the sheet. Nothing here is called built until it is — a sheet leaves the wall only when a build actually starts."));
+    $("#y-bench").replaceChildren(...(D.projects.length ? D.projects.sort((a, b) => b.stage - a.stage).map(card) : [h("div.bench-clear", null, h("span.bench-stamp", null, "Bench clear"), h("p", null, "Nothing is being built right now — the bench is empty on purpose, not by accident. When a sheet leaves the wall, its build lands here with parts, cost and the one next step."))]));
+    if (!D.board.length) {
+      $("#y-board").replaceChildren(h("p.empty", null, D.ideas.length ? "Every invention is on the bench." : "No ideas tagged invention in Athenaeum yet."));
+    } else {
+      const groups = new Map();
+      D.board.forEach((i, ix) => { const t = themeFor(i); if (!groups.has(t)) groups.set(t, []); groups.get(t).push({ i, n: ix + 1 }); });
+      const nodes = [];
+      for (const [name, items] of groups) {
+        nodes.push(h("div.wall-group", null, h("span.wall-group-name", null, name), h("span.wall-group-n", null, items.length + (items.length === 1 ? " sheet" : " sheets"))));
+        nodes.push(h("div.sheets", null, ...items.map(({ i, n }) => sheet(i, n))));
+      }
+      $("#y-board").replaceChildren(...nodes);
+    }
   }
   $("#y-form").addEventListener("submit", (e) => {
     e.preventDefault();

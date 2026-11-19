@@ -27,6 +27,8 @@ def load(p):
 
 
 def pillar_dir(p, root):
+    if p.get("home"):   # lives in the hub (Hearth moved in 2026-11-14; its old repo only redirects)
+        return os.path.join(HUB, p["home"])
     if p.get("repo") and p["id"] != "hub":
         d = os.path.join(root, p["repo"].split("/")[1])
         return d if os.path.isdir(d) else None
@@ -38,6 +40,34 @@ def queue_path(p):
     if p.get("home"):
         return "jpavia10/prometheus-hub", p["home"] + "/docs/agents/queues.json"
     return p["repo"], "docs/agents/queues.json"
+
+
+# 2026-11-19: a task whose file is in the completions ledger (docs/agents/completions.json) is delivered and waits for its check;
+# the AI's page lists it apart as 'do not redo' (on Nov 18 Gemini re-delivered 23 files its page still showed as to do). A reviewer who
+# wants a redo sets "reopened": "YYYY-MM-DD" on the task; a delivery older than that date no longer counts.
+def _ledger():
+    try:
+        rows = json.load(open(os.path.join(HUB, "docs", "agents", "completions.json"), encoding="utf-8")).get("done", [])
+    except (OSError, ValueError):
+        rows = []
+    last = {}
+    for e in rows:
+        k = e.get("key")
+        if k and (k not in last or e.get("ts", "") > last[k].get("ts", "")):
+            last[k] = e
+    return last
+
+
+LEDGER = _ledger()
+
+
+def awaiting(t):
+    e = LEDGER.get(t.get("id"))
+    if not e or t.get("state") not in ("now", "next"):
+        return None
+    if t.get("reopened") and str(e.get("ts", ""))[:10] < str(t["reopened"]):
+        return None
+    return e
 
 
 def open_tasks(q, ai):
@@ -57,14 +87,20 @@ COMMON_REJECT = ["fewer rows than the count, or a row missing a field of the sha
 
 
 def task_md(i, t, p, folder, common=False):
-    L = [f"## {i}. {t['id']} · {t['title']}", "", f"**Due:** {t.get('due', '-')} · **State:** {t.get('state')}" + (" (starts when the file it checks is in the folder)" if t.get("state") == "next" else ""), ""]
+    w = awaiting(t)
+    state = (f"delivered {str(w.get('ts', ''))[:10]}, waiting for its check: do not redo it unless a review reopens it" if w else t.get("state")) + (" (starts when the file it checks is in the folder)" if t.get("state") == "next" and not w else "")
+    L = [f"## {i}. {t['id']} · {t['title']}", "", f"**Due:** {t.get('due', '-')} · **State:** {state}", ""]
     if t.get("why") and not common: L += [f"**Why:** {t['why']}", ""]      # the AI's Drive page leaves the why out (it is on the pillar's queue page)
+    if t.get("unlocks"): L += [f"**What it unlocks:** {t['unlocks']}", ""]           # 2026-11-16 (owner): every task says what it is for in the app
     if t.get("inputs"): L += ["**Read first:**"] + [f"- {x}" for x in t["inputs"]] + [""]
     if t.get("steps"): L += ["**Do this:**"] + [f"{n}. {s}" for n, s in enumerate(t["steps"], 1)] + [""]
     d = t.get("deliver") or {}
     if d:
         L += [f"**Make:** `{d.get('file')}`", "", f"**Save in:** {d.get('folder')}", ""]
         if d.get("shape"): L += [f"**Shape:** `{d['shape']}`", ""]
+    if t.get("fields"): L += ["**Every field, exactly:**"] + [f"- `{f['name']}` ({f.get('type', 'text')}): {f.get('rule', '')}" for f in t["fields"]] + [""]
+    if t.get("example"): L += ["**One finished row, as an example (use your own data, never copy this):**", "", "```", t["example"] if isinstance(t["example"], str) else json.dumps(t["example"], ensure_ascii=False, indent=1), "```", ""]
+    if t.get("self_check"): L += ["**Before you save, check every one of these yourself:**"] + [f"- [ ] {x}" for x in t["self_check"]] + [""]
     if t.get("count"): L += [f"**How many:** {t['count']}", ""]
     if t.get("done_when"): L += [f"**Done when:** {t['done_when']}", ""]
     if t.get("checks"): L += ["**How Claude checks it:**"] + [f"- {x}" for x in t["checks"]] + [""]
@@ -73,11 +109,18 @@ def task_md(i, t, p, folder, common=False):
     return L
 
 
+# Owner, 2026-11-18: finished work shows on the Forge by itself, from one Drive file every AI edits in place (docs/agents/COMPLETIONS.md).
+LEDGER_RULE = ("WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json "
+               "(Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "
+               "\"done\" list, {\"key\": \"<task id>\", \"by\": \"<your name>\", \"what\": \"<file name> in <folder>\", \"ts\": \"<now, UTC, ISO 8601>\"}, set \"updated\", save. "
+               "Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).")
+
+
 def queue_page(p, ai, tasks, stamp):
     folder = DRIVE_ROOT.format(name=p["name"]) + "incoming (AI drop files)/"
     start = GH.format(repo="jpavia10/prometheus-hub", path="AI_START_HERE.md")
     L = [GEN, "", f"# {p['name']} · homework for {ai['name']}", "",
-         f"Updated {stamp} · {len(tasks)} open · Rules for every pillar: {start}. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/{ai['drive_folder']}/HOMEWORK — {ai['name']} (every pillar)'.", ""]
+         f"Updated {stamp} · {len(tasks)} open · Rules for every pillar: {start}. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/{ai['drive_folder']}/HOMEWORK — {ai['name']} (every pillar)'.", "", "**" + LEDGER_RULE + "**", ""]
     if not tasks:
         L += [f"No homework for {ai['name']} in {p['name']} right now. Check your HOMEWORK doc for the other pillars.", ""]
     for i, t in enumerate(sorted(tasks, key=lambda t: (t.get("state") != "now", t.get("due", "9"))), 1):
@@ -95,7 +138,8 @@ def drive_queue(p, ai, tasks, stamp):
         L += [f"No homework for {ai['name']} in {p['name']} right now."]
     for t in sorted(tasks, key=lambda t: (t.get("state") != "now", t.get("due", "9"))):
         d = t.get("deliver") or {}
-        L += [f"- {t['id']} · {t['title']} · due {t.get('due')}" + (" · waits for its input file" if t.get("state") == "next" else ""),
+        w = awaiting(t)
+        L += [f"- {t['id']} · {t['title']} · due {t.get('due')}" + (f" · DELIVERED {str(w.get('ts', ''))[:10]}, waiting for its check (do not redo)" if w else " · waits for its input file" if t.get("state") == "next" else ""),
               f"    make: {d.get('file')} · how many: {t.get('count')} · done when: {t.get('done_when')}"]
     return "\n".join(L).rstrip() + "\n"
 
@@ -167,12 +211,15 @@ def main(argv):
     for a in reg["ais"]:
         items = per_ai[a["id"]]
         titan = [x for x in items if x[1] is None]
-        work = sorted([x for x in items if x[1] is not None], key=lambda x: (x[1].get("state") != "now", x[1].get("due", "9")))
+        allw = sorted([x for x in items if x[1] is not None], key=lambda x: (x[1].get("state") != "now", x[1].get("due", "9")))
+        work = [x for x in allw if not awaiting(x[1])]
+        waits = [x for x in allw if awaiting(x[1])]
         n = len(work) + sum(c[0] + c[1] for _, _, c in titan)
-        L = [f"HOMEWORK — {a['name']} (every pillar)", "", f"Updated {stamp or '{stamp}'}. {n} open across {len({x[0]['id'] for x in items})} pillars.", "",
+        L = [f"HOMEWORK — {a['name']} (every pillar)", "", f"Updated {stamp or '{stamp}'}. {n} to do across {len({x[0]['id'] for x in items if not (x[1] and awaiting(x[1]))})} pillars"
+             + (f"; {len(waits)} more delivered and waiting for their check (listed at the end: do not redo them)." if waits else "."), "",
              "When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. "
              "When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md "
-             "(read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.", ""]
+             "(read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.", "", LEDGER_RULE, ""]
         if titan:
             for p, _, c in titan:
                 L += [f"TITAN RELIQUARY (its own loop, the exception): {c[0]} homework sheets + {c[1]} projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for {a['name']}' "
@@ -184,6 +231,11 @@ def main(argv):
         L += [""]
         for i, (p, t, _) in enumerate(work, 1):
             L += [f"==================== {i}. {p['name'].upper()} ===================="] + task_md(i, t, p, "", common=True)
+        if waits:
+            L += ["", "DELIVERED, WAITING FOR THEIR CHECK (do not redo these; if a check needs a redo, the task comes back above with the reason):"]
+            for p, t, _ in waits:
+                w = awaiting(t)
+                L += [f"- [{p['name']}] {t['id']} · {t['title']} · delivered {str(w.get('ts', ''))[:10]}: {str(w.get('what', ''))[:140]}"]
         out[os.path.join(HUB, "docs", "agents", "drive", f"HOMEWORK_{a['id']}.txt")] = "\n".join(L).rstrip() + "\n"
 
     # the board
