@@ -1,3 +1,7 @@
+### [2026-11-19] Offline precache above main's arrival shell, cache d37
+- `tools/registry/sync.mjs` rewrites `sw-precache.js` from `pillars.json` and each local pillar page, including the arrival now-line modules. A stale list fails the pre-merge check. Titan and Midas are not cached. Main's cache is `prometheus-hub-deck-d36`; this shell is `d37`.
+- Install still waits for the Update ready chip. The orbit arrival and the daily pillar sweep stay.
+
 ### [2026-11-18] Sebastian: Forge ledger read-path fix — Drive fetch was CORS-blocked; mirror ships with d22
 
 Owning this one: the completions-ledger overlay shipped in d21 never worked in a real browser. Drive download URLs (both `drive.google.com/uc?export=download` and the `drive.usercontent.google.com` form, verified live 2026-11-18) send no CORS headers, so Forge's fetch is blocked cross-origin; production Forge has shown "completions ledger: not reached" and queues-only state since d21. My pre-ship verification used a same-origin test rig, which structurally cannot see a CORS failure — CI could, and did: on 6bb41b2 both `checks` and `proofs-live` failed on exactly one proof, PILLAR-2, because Chromium logs the blocked fetch as a console error. Everything else in both runs passed. The fix (Joseph's call): Forge now reads an in-repo mirror, `docs/agents/completions.json` (73 entries at ship time), same-origin on every load; the Drive file and the append/DONE-marker protocol in `docs/agents/COMPLETIONS.md` are unchanged for every AI — Sebastian refreshes the mirror whenever he folds entries. The `?done=<url>` override remains for testing. This deck also carries the batch-2 second-read flips detailed in the entry below.
@@ -22,6 +26,8 @@ Correction first: the 8 datasets my earlier sweep reported missing (ARG-GEM-09, 
 ### [2026-11-14] Event envelope and device location
 - Bus events use a `{type, pillar, at, v}` envelope, with a migration for rows already stored. The 25 local manifests declare records, commands, and events. Bastion and Aether take weather from the place saved on the device, or show "Set a location" and do not fetch. `pillars/bastion/data/readiness.json` replaces the place-named readiness file. Athenaeum personal titles are example titles. Shell cache `prometheus-hub-deck-d21`.
 
+### [2026-11-14] Offline precache and the Update ready chip
+- `tools/registry/sync.mjs` writes `sw-precache.js` from `pillars.json` and each local pillar's script, style, and data references. `validate.mjs` and `checks.yml` fail if it is stale. A new shell waits for the Update ready chip.
 ### [2026-11-14] Build d21: the arrival is the core, one now line, and one card
 - Home no longer stacks the KPI strip, next-24 list, payoff ring, runway, countdowns, storm, focus, or homestead around the orrery. Those instruments moved to Time, Money, and System. Load sample moved to System. DECK-1 matches the new arrival. DECK-3 checks that the home has no table and no dollar figure. Shell cache d21.
 

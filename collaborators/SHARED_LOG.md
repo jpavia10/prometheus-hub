@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-19] Offline precache above main's d36 (shell cache d37)
+- The hand-written shell list is replaced by `sw-precache.js`, generated from the registry and each local pillar page. A stale list fails the pre-merge check. Cache name `prometheus-hub-deck-d37`, above main's d36. Titan and Midas stay out of the cache.
+- A new shell waits for the Update ready chip. After merging main's d36 arrival: unit proofs `66/66`, browser proofs `35/35`, including all 25 local pillars offline.
+
 ### [2026-11-19] Arrival orbit kept; PILLAR-1 waits on the section
 - The orbit home is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and continues only once that section is the one on screen, because a coordinate click was landing on a tab the page had just replaced. Shell cache d36.
 
@@ -69,7 +73,6 @@ Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entr
 
 ### [2026-11-14] Event envelope and device location
 - Every bus event carries `{type, pillar, at, v}`, and older rows are migrated without changing a backup's bytes. All 25 local manifests declare records, commands, and events (`25/25 complete`). Bastion and Aether read the storm-sheet place and do not fetch when it is empty. The readiness file is `readiness.json`. Athenaeum personal titles, including the early-illness title, are example titles. Shell cache d21.
-
 ### [2026-11-14] Pre-merge checks and shipped defaults
 - Checks run before a merge, the money guard rejects a planted amount in a view, and the hub no longer ships a town, an elevation, a vehicle model, or a collection total. Games and Athenaeum notes are examples. Cache d20. The live proofs-live quote is still run 43575963969.
 

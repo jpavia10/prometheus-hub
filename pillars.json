@@ -607,7 +607,7 @@
    "id": "games",
    "name": "Ludus Arcade",
    "shortName": "Games",
-   "what": "Games: the library in your own words, and the next session.",
+   "what": "Games: an example library, your notes, and the next session.",
    "repo": "",
    "home": "pillars/games",
    "route": "pillars/games/",

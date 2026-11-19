@@ -664,4 +664,8 @@
       }
     }
   });
+  var shellUpdate = document.createElement("script");
+  shellUpdate.type = "module";
+  shellUpdate.src = new URL("../../kit/update.js", document.baseURI).href;
+  document.head.appendChild(shellUpdate);
 })();

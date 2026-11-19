@@ -76,6 +76,11 @@ Shell cache **d26** · 2026-11-16 · Claude
 
 The quote above is the last proofs-live run against the deployed site (run 43575963969). It is not a result for the checkout below.
 
+**Offline shell, above main's d36 cache (`prometheus-hub-deck-d37`, `BUILD` still `d20`):**
+- `sw-precache.js` is generated from `pillars.json` and each local pillar page (`node tools/registry/sync.mjs`). `sw.js` imports it. Titan and Midas are not listed. The pre-merge check fails if the file is stale.
+- Install no longer calls `skipWaiting()`. A waiting worker shows an **Update ready** chip (pearl glass, cyan edge). A tap reloads. The orbit arrival and the daily pillar sweep stay.
+- **Verified locally after merging main (cache d36), not on the live site:** registry `REGISTRY_OK` and `25/25 complete`, precache `PRECACHE_OK` (429 urls, 25 local), `node --test proofs/unit/*.test.mjs` (`66/66` pass, `0` failed, `0` skipped), money guard `GUARD_OK`, and `python3 proofs/run.py http://prometheus.test:8377/ --mock-weather` (`35/35` pass, `0` failed). OFFLINE-1 cached `prometheus-hub-deck-d37` (429 urls, Apollo foods present) and opened all 25 local pillars with the network cut and no script errors. UPDATE-1 showed the chip (`border rgb(159, 212, 230)`, pill radius) and a tap left the cache `prometheus-hub-deck-d37b` with the chip gone. Screenshot: `artifacts/screenshots/d37/update-ready-390x844.png`.
+
 Build **d35** · 2026-11-19 · not deployed yet
 
 **Orbit arrival kept, and PILLAR-1 no longer races the tab row.** The orbit home (`?home=orbit`) is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and waits until that section is showing: a coordinate click was landing on a button the kit had just replaced, so one of the two checks runs on `9456a3f` still saw the first section after a fixed 700 ms. Shell cache `prometheus-hub-deck-d35`.
@@ -89,7 +94,6 @@ Build **d20** shell, cache **d21** · 2026-11-14 · not deployed yet
 - Athenaeum seed titles that were personal, including the early-illness title, are neutral example titles. ATH unit proofs and ATH-3 / CORE-5 name the new titles and still require the same idea, the same hand-made link, and the same water hit.
 - `BUILD` stays `d20`. The shell cache is `prometheus-hub-deck-d21` so the new bus and manifests are not served from the previous cache. Titan and Midas were not edited.
 - **Verified locally, not on the live site:** `node tools/registry/validate.mjs` prints `REGISTRY_OK` and `25/25 complete`. `node --check` on every `.js`/`.mjs` and JSON parse of every `.json`/`.webmanifest` failed `0`. `node --test proofs/unit/*.test.mjs` is `62/62` pass, `0` failed, `0` skipped. Money guard `GUARD_OK`. `python3 proofs/run.py http://prometheus.test:8377/ --mock-weather` is `26/26` pass, including BACKUP-1 restored identical and ATH-3 / CORE-5 on the new titles. A search of `pillars/bastion` and `pillars/aether` finds no fixed coordinates. With no place saved, both pillars show "Set a location" and make no weather request. With a place saved on the device, both request that point.
-
 Build **d20** · 2026-11-14 · not deployed yet
 
 **Pre-merge checks and a privacy sweep of shipped defaults (d20):**

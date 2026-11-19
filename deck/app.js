@@ -15,6 +15,7 @@ import * as wx from "./core/weather.js";
 import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
+import { startShellUpdates } from "../kit/update.js";
 
 export const BUILD = "d36";
 const params = new URLSearchParams(location.search);
@@ -332,10 +333,7 @@ window.__deck = { store, clock, ctx, state, BUILD, reach: { searchRecords, comma
    prometheus.test stays plain http, so the proofs do not register it. The script
    URL is next to this module, so GitHub Pages' /prometheus-hub/ base still resolves. */
 function registerShellWorker() {
-  if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return;
-  const host = location.hostname;
-  if (location.protocol !== "https:" && host !== "localhost" && host !== "127.0.0.1") return;
-  navigator.serviceWorker.register(new URL("../sw.js", import.meta.url)).catch(() => {});
+  startShellUpdates();
 }
 registerShellWorker();
 boot();

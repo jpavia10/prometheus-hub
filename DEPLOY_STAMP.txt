@@ -1,1 +1,1 @@
-deck d36 2026-11-19 arrival orbit kept; shell cache d36 above main d35; PILLAR-1 waits on the section change
+deck d20 2026-11-19 offline precache d37 and update chip, after main shell cache d36
