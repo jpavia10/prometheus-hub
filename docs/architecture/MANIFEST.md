@@ -20,6 +20,7 @@ Each of the 25 local manifests also declares three arrays. A pillar is complete 
 - `records`: the stored lists worth finding. Each entry is `{ key, kind, title }`. Every `search` key is listed here, and a pillar that `owns` storage keys declares at least one record. Sylade owns none, so its `records` array is empty on purpose.
 - `commands`: actions the hub may offer. Each entry is `{ id, label, open }` (`open` may be `""`, `words` is optional). Every local pillar declares at least one. Sylade's command only opens the presence page.
 - `events`: event types the pillar publishes. Each entry is `{ type, pillar }` and `pillar` is that manifest's `id`. Every string in `publishes` appears here. A pillar that publishes nothing (Sylade) declares an empty `events` array.
+- `verbs`: the six palette verbs, each `{ verb, label }` with `verb` one of `open`, `add`, `log`, `find`, `start`, `remind`. A verb that stores something sets `writes: true` and `store`. The palette shows that preview and writes only after confirm. `open`, `find`, and `start` navigate. `add` and `log` append one capture on `prometheus.hub.captures` and may hand the words to the pillar. `remind` appends one deadline on `prometheus.bus.deadlines`.
 
 `node tools/registry/validate.mjs` prints `25/25 complete` when all 25 local manifests pass this check.
 

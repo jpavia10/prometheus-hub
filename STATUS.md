@@ -47,6 +47,8 @@ PASS DATA-1  Versioned export and import: the deck file restores Time and Money 
 PASS DECK-2  No script errors during the run  ::  none
 
 <!-- proofs-live:end -->
+> **Note (shell d37) · 2026-11-19** — **Search · Capture is a combobox.** Focus stays in the field; Arrow keys set `aria-activedescendant`; Enter accepts; Esc returns to the trigger. Manifest verbs `open`, `add`, `log`, `find`, `start`, and `remind` show a write preview before anything is stored. `?` lists every shortcut outside a text field. KEY-1 and KEY-2 pass. CORE-5 stays green. Local browser run on `127.0.0.1`: 34 pass, NEW-1 fail only because Forge skips Titan's score sheet on that hostname; the same Forge read on `prometheus.test` is 172 scores. Unit proofs 65/65. Not deployed.
+
 > **Note (shell d33) · 2026-11-19 · Claude** — **The core sees every deadline.** Today and the countdowns used to show only federal holidays; now a fresh device leads with the real Kern County, California and federal deadlines (Kairos's 88 dates merged at boot), pillar deadlines fill in once a day in the background without opening each pillar, and the deck asks the browser to keep its data (TODAY-1).
 
 > **Note (shell d32) · 2026-11-19 · Claude** — Three checked datasets are built: Polis **Kern County Rules** (19 rules with the code's own words, Watch adds one to the watchlist), Continuity **Accounts After Death** (25 services, what to set up now and what the family does after, a set-up mark per account), Hearth **Kern County permit check** (the exemption test run on the real deck). Grok's 25 second reads of Gemini's function specs are started (they had waited on files already delivered).

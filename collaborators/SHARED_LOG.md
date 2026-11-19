@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-19] Search · Capture is a combobox
+- The palette keeps focus in the field. Arrow keys move `aria-activedescendant`, Enter accepts, Esc returns to the trigger. Each pillar manifest declares open, add, log, find, start, and remind. A write shows its preview and stores nothing until confirm. `?` lists every shortcut when you are not typing. Shell cache d37. Titan and Midas were not edited.
+
 ### [2026-11-19] Arrival orbit kept; PILLAR-1 waits on the section
 - The orbit home is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and continues only once that section is the one on screen, because a coordinate click was landing on a tab the page had just replaced. Shell cache d36.
 

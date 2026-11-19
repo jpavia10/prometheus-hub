@@ -3,13 +3,13 @@
    Proof hooks (documented in proofs/README.md): ?now=2026-11-20T09:00 pins the clock, ?demo=1 loads the demo deck on a clean device. */
 import { store } from "./core/store.js";
 import { clock, today, fmtDay, fmtTime, quickAdd } from "./core/dates.js";
-import { h, $, icon, sheet, toast, pickFile, reduced, ask, sheetOpen, setQuiet } from "./core/ui.js";
+import { h, $, icon, sheet, toast, pickFile, reduced, ask, sheetOpen, setQuiet, combobox, shortcutSheet, SHORTCUTS } from "./core/ui.js";
 import { CAPS, SLICES, cap } from "./caps.js";
 import { PILLARS, pillar } from "./pillars.js";
 import { setFixed, searchAll } from "./core/feeds.js";
 import { referenceDeadlines, sweepPillars, keepData } from "./core/deadlines.js";
 import { syncBridges, mirrorDeckToPillars } from "./core/legacy.js";
-import { loadManifests, searchRecords, commands, handOff } from "./core/reach.js";
+import { loadManifests, searchRecords, commands, handOff, verbs, commitVerb } from "./core/reach.js";
 import { startSky } from "./core/atmo.js";
 import * as wx from "./core/weather.js";
 import { makeEvent, kindOf } from "./models/time.js";
@@ -120,18 +120,52 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) { ap
 /* ------------------------------------------------------------------ search and quick add (one input reaches anything) ------------------------------------------------------------------ */
 function openSearch() {
   if (sheetOpen()) return;
-  const input = h("input.search-input", { type: "search", placeholder: "A pillar, an idea, a date, or: dentist Tue 3pm", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event" });
-  const list = h("div.results", { role: "listbox", "aria-label": "Results" }); let items = []; let sel = 0;
-  const sh = sheet({ title: "Search · Add", tone: "search", body: h("div.stack", input, list) });
+  const input = h("input.search-input", { type: "text", placeholder: "A pillar, an idea, a date, or: dentist Tue 3pm", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event" });
+  const previewEl = h("div.verb-preview", { id: "verb-preview", hidden: true, role: "region", "aria-live": "polite", "aria-label": "Write preview" });
+  const list = h("div.results", { "aria-label": "Results" });
+  let items = [];
+  let previewing = null;
+  const sh = sheet({ title: "Search · Capture", tone: "search", body: h("div.stack", input, previewEl, list) });
+  const box = combobox(input, list);
+  const option = (it) => h("div.result" + (it.tone ? "." + it.tone : ""), icon(it.icon || "search", 18), h("span.result-text", h("b", it.title), h("small", it.sub || "")));
+  const showPreview = (pv) => {
+    if (!pv) { previewEl.hidden = true; previewEl.replaceChildren(); box.describe(null); return; }
+    previewEl.hidden = false;
+    previewEl.replaceChildren(...pv.lines.map((line) => h("p", line)));
+    box.describe("verb-preview");
+  };
   const pick = (it) => {
-    if (!it) return;
+    if (!it || it.inert) return;
+    if (it.back) { previewing = null; box.reset(); draw(); return; }
+    if (it.writes && !it.confirm) { previewing = it; box.reset(); draw(); return; }
+    if (it.confirm) {
+      const act = previewing;
+      previewing = null;
+      if (act && act.run) act.run();
+      if (act && act.leave) { sh.close(true); location.href = act.leave; return; }
+      if (act && act.go) { sh.close(); setTimeout(() => go(act.go), 20); return; }
+      if (!act || !act.keep) sh.close();
+      return;
+    }
     // A result that leaves this document must not close the sheet with history.back(): the sheet pushed an entry, and going back cancels the navigation.
     if (it.leave) { if (it.run) it.run(); sh.close(true); location.href = it.leave; return; }
     if (it.run) it.run();
     if (it.go) { sh.close(); setTimeout(() => go(it.go), 20); }
     else if (!it.keep) sh.close();
   };
+  box.onAccept = (i) => pick(items[i]);
   const draw = () => {
+    if (previewing) {
+      showPreview(previewing.preview);
+      items = [
+        { title: "Write this", sub: previewing.preview.line, icon: "check", tone: "add", confirm: true },
+        { title: "Go back", sub: "Nothing was stored", icon: "left", tone: "nav", back: true },
+      ];
+      box.render(items.map(option));
+      box.open();
+      return;
+    }
+    showPreview(null);
     const q = input.value.trim(); items = [];
     const nlRead = (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (_) { return d; } };
     const nlWrite = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} };
@@ -155,7 +189,7 @@ function openSearch() {
       const summary = Object.entries(patch).map(([k, v]) => `${k} ${v}`).join(" · ");
       if (summary) items.push({
         title: `Apollo log: ${summary}`,
-        sub: `Save to today's biometrics (${fmtDay(tday)})`,
+        sub: `Preview · nothing stored yet · save to today's biometrics (${fmtDay(tday)})`,
         tone: "add", icon: "plus",
         run: () => {
           const daysMap = nlRead("prometheus.apollo.days", {});
@@ -181,7 +215,7 @@ function openSearch() {
       if (gal > 0 && cost > 0) {
         items.push({
           title: `Garage fuel: ${gal} gal · $${cost.toFixed(2)}${odo ? ` @ ${odo.toLocaleString()} mi` : ""}`,
-          sub: "Save to the vehicle fuel log and the money bus",
+          sub: "Preview · nothing stored yet · save to the vehicle fuel log and the money bus",
           tone: "add", icon: "plus",
           run: () => {
             const fills = nlRead("prometheus.garage.fuel", []);
@@ -206,7 +240,7 @@ function openSearch() {
       if (itemTitle && net > 0) {
         items.push({
           title: `Sold: ${itemTitle} ($${net.toFixed(2)})`,
-          sub: "Log in Selling Pipeline + credit Money Bus",
+          sub: "Preview · nothing stored yet · log in Selling Pipeline and credit the money bus",
           tone: "add", icon: "plus",
           run: () => {
             const list = nlRead("prometheus.selling.items", []);
@@ -230,7 +264,7 @@ function openSearch() {
       const sym = wVal.replace(/^\$/, "").toUpperCase();
       items.push({
         title: isSym ? `Watch ticker: $${sym}` : `Watch subject: ${wVal}`,
-        sub: isSym ? "Add to Icarus watchlist (read-only journal)" : "Add to Observatory & Polis watch",
+        sub: isSym ? "Preview · nothing stored yet · add to the Icarus watchlist (the journal only records it)" : "Preview · nothing stored yet · add to the Observatory watch",
         tone: "add", icon: "plus",
         run: () => {
           if (isSym) {
@@ -252,8 +286,17 @@ function openSearch() {
     }
 
     const add = quickAdd(q);
-    if (add) { const k = kindOf(add.title); items.push({ title: `Add: ${k.title}`, sub: `${fmtDay(add.date, "long")}${add.time ? " · " + fmtTime(add.time) : ""}${add.rule ? " · repeats" : ""}${k.kind !== "event" ? " · " + k.kind : ""}`, tone: "add", icon: "plus",
+    if (add) { const k = kindOf(add.title); const when = `${fmtDay(add.date, "long")}${add.time ? " · " + fmtTime(add.time) : ""}${add.rule ? " · repeats" : ""}${k.kind !== "event" ? " · " + k.kind : ""}`; items.push({ title: `Add: ${k.title}`, sub: `Preview · nothing stored yet · ${when}`, tone: "add", icon: "plus",
       run: () => { store.update("time", (t) => t.events.push(makeEvent({ ...add, title: k.title }, { kind: k.kind, src: "quick" }))); toast(`Added: ${k.title}, ${fmtDay(add.date)}${add.time ? " " + fmtTime(add.time) : ""}`); }, go: `#/time/day/${add.date}` }); }
+    for (const v of verbs(q, { today: tday })) {
+      const ic = (pillar(v.pillar) || {}).icon || (v.writes ? "plus" : "search");
+      if (v.writes) items.push({ title: v.title, sub: v.preview.line, icon: ic, tone: "add", writes: true, preview: v.preview, run: () => {
+        const res = commitVerb(v.preview);
+        if (res.wrote && v.preview.handoff) handOff({ pillar: v.pillar, command: v.id, text: v.preview.text });
+        toast(res.wrote ? `Saved ${v.verb}: ${v.preview.record.title}` : "Nothing was written.");
+      } });
+      else items.push({ title: v.title, sub: v.sub, icon: ic, tone: "nav", leave: v.href });
+    }
     for (const c of commands(q)) if (c.hand) items.push({ title: c.title, sub: c.sub, icon: (pillar(c.pillar) || {}).icon || "plus", tone: "add", leave: c.href, run: () => handOff(c.hand) });
     for (const r of searchAll(q)) items.push({ ...r, icon: (cap(r.cap) || {}).icon || "search" });
     for (const r of searchRecords(q)) items.push({ title: r.title, sub: r.sub, icon: (pillar(r.pillar) || {}).icon || "search", tone: "nav", leave: r.href });
@@ -264,15 +307,27 @@ function openSearch() {
       ["Money · what-if", "#/money/whatif", "money"], ["Money · bills and subscriptions", "#/money/bills", "money"], ["Money · library", "#/money/library", "money"], ["System · your data, export, import", "#/system", "system"]];
     for (const [name, href, ic] of nav) if (!q || name.toLowerCase().includes(q.toLowerCase())) items.push({ title: name, sub: "Go", go: href, icon: ic, tone: "nav" });
     if (!items.length) items.push({ title: "Nothing matches", sub: "Try a name, a date, an issuer, or type an event with a day: “smog check dec 5”.", keep: true, icon: "search", tone: "none" });
-    sel = Math.min(sel, items.length - 1);
-    list.replaceChildren(...items.slice(0, 30).map((it, i) => h("button.result" + (i === sel ? ".sel" : "") + (it.tone ? "." + it.tone : ""), { type: "button", role: "option", "aria-selected": String(i === sel), onclick: () => pick(it) }, icon(it.icon, 18), h("span.result-text", h("b", it.title), h("small", it.sub || "")))));
+    items = items.slice(0, 30);
+    box.render(items.map(option));
+    box.open();
   };
-  input.addEventListener("input", () => { sel = 0; draw(); });
-  input.addEventListener("keydown", (e) => { if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(items.length - 1, sel + 1); draw(); } else if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(0, sel - 1); draw(); } else if (e.key === "Enter") { e.preventDefault(); pick(items[sel]); } });
+  input.addEventListener("input", () => { previewing = null; box.reset(); draw(); });
   draw();
 }
-document.addEventListener("keydown", (e) => { const a = document.activeElement; const typing = a && (/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) || a.isContentEditable);
-  if (!typing && !e.metaKey && !e.ctrlKey && !e.altKey && (e.key === "/" || e.key === "k")) { e.preventDefault(); openSearch(); } });
+document.addEventListener("keydown", (e) => {
+  const a = document.activeElement;
+  const typing = a && (/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) || a.isContentEditable);
+  if (typing || e.metaKey || e.ctrlKey || e.altKey || e.defaultPrevented) return;
+  if (e.key === "/" || e.key === "k") {
+    e.preventDefault();
+    const trigger = document.getElementById("open-search");
+    if (trigger) trigger.focus({ preventScroll: true });
+    openSearch();
+  } else if (e.key === "?") {
+    e.preventDefault();
+    shortcutSheet();
+  }
+});
 
 /* ------------------------------------------------------------------ seed, demo, first run ------------------------------------------------------------------ */
 /** Read a deck, capability or seed file and load it (after showing what it holds). Returns true when something was loaded. */
@@ -327,7 +382,7 @@ async function boot() {
     setTimeout(() => (window.requestIdleCallback ? requestIdleCallback(go, { timeout: 8000 }) : go()), sw === "now" ? 300 : 6000);
   }
 }
-window.__deck = { store, clock, ctx, state, BUILD, reach: { searchRecords, commands } };                               // for the proofs and for the curious
+window.__deck = { store, clock, ctx, state, BUILD, shortcuts: SHORTCUTS, reach: { searchRecords, commands, verbs } };                               // for the proofs and for the curious
 /* Shell worker: https, and localhost, which Lighthouse treats as a secure context.
    prometheus.test stays plain http, so the proofs do not register it. The script
    URL is next to this module, so GitHub Pages' /prometheus-hub/ base still resolves. */
