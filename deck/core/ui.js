@@ -132,12 +132,14 @@ export function chip(text, tone) { return h("span.chip" + (tone ? "." + tone : "
 
 /* ---- instruments ---- */
 let gid = 0;
+/** A chart is an image only when it has a name. An empty aria-label fails the SVG text-alternative check. */
+function picture(label) { return label ? { role: "img", "aria-label": label } : { "aria-hidden": "true" }; }
 /** A ring gauge. value 0..1. */
 export function ring({ value = 0, size = 96, stroke = 7, tone = "ice", center, label, track = true }) {
   const r = (size - stroke) / 2 - 2, c = 2 * Math.PI * r, v = Math.max(0, Math.min(1, value)); const id = "rg" + gid++;
   const arc = s("circle", { cx: size / 2, cy: size / 2, r, fill: "none", stroke: `url(#${id})`, "stroke-width": stroke, "stroke-linecap": "round", "stroke-dasharray": `${c * v} ${c}`, transform: `rotate(-90 ${size / 2} ${size / 2})`, class: "ring-arc", opacity: v > 0 ? 1 : 0 });
   if (!reduced()) { arc.style.strokeDasharray = `0 ${c}`; requestAnimationFrame(() => requestAnimationFrame(() => { arc.style.transition = "stroke-dasharray .9s cubic-bezier(.2,.8,.2,1)"; arc.style.strokeDasharray = `${c * v} ${c}`; })); }
-  const g = s("svg", { viewBox: `0 0 ${size} ${size}`, width: size, height: size, class: "ring tone-" + tone, role: "img", "aria-label": label || "" },
+  const g = s("svg", { viewBox: `0 0 ${size} ${size}`, width: size, height: size, class: "ring tone-" + tone, ...picture(label) },
     s("defs", s("linearGradient", { id, x1: "0", y1: "0", x2: "1", y2: "1" }, s("stop", { offset: "0", class: "g0" }), s("stop", { offset: "1", class: "g1" }))),
     track ? s("circle", { cx: size / 2, cy: size / 2, r, fill: "none", class: "ring-track", "stroke-width": stroke }) : null, arc);
   return h("div.ring-box", { style: { width: size + "px", height: size + "px" } }, g, center ? h("div.ring-center", center) : null);
@@ -150,7 +152,7 @@ export function dial({ value = 0, width = 300, stroke = 10, tone = "mint", ticks
   if (!reduced()) { arc.style.strokeDasharray = `0 ${len}`; requestAnimationFrame(() => requestAnimationFrame(() => { arc.style.transition = "stroke-dasharray 1.1s cubic-bezier(.2,.8,.2,1)"; arc.style.strokeDasharray = `${len * v} ${len}`; })); }
   const tk = []; for (let i = 0; i <= ticks; i++) { const a = Math.PI - (i / ticks) * Math.PI; const r1 = r + stroke / 2 + 5, r2 = r1 + (i % 6 === 0 ? 7 : 3.5);
     tk.push(s("line", { x1: cx + Math.cos(a) * r1, y1: cy - Math.sin(a) * r1, x2: cx + Math.cos(a) * r2, y2: cy - Math.sin(a) * r2, class: "dial-tick" + (i / ticks <= v ? " on" : "") })); }
-  return s("svg", { viewBox: `0 0 ${width} ${cy + stroke}`, width, height: cy + stroke, class: "dial tone-" + tone, role: "img", "aria-label": label || "" },
+  return s("svg", { viewBox: `0 0 ${width} ${cy + stroke}`, width, height: cy + stroke, class: "dial tone-" + tone, ...picture(label) },
     s("defs", s("linearGradient", { id, x1: "0", y1: "0", x2: "1", y2: "0" }, s("stop", { offset: "0", class: "g0" }), s("stop", { offset: "1", class: "g1" }))),
     s("path", { d, fill: "none", class: "ring-track", "stroke-width": stroke, "stroke-linecap": "round" }), ...tk, arc);
 }
@@ -159,7 +161,7 @@ export function spark(values, { w = 160, h: ht = 40, tone = "ice", fill = true, 
   const v = values.length ? values : [0]; const lo = min != null ? min : Math.min(...v), hi = max != null ? max : Math.max(...v); const span = hi - lo || 1; const n = Math.max(1, v.length - 1);
   const x = (i) => (i / n) * (w - 4) + 2, y = (val) => ht - 3 - ((val - lo) / span) * (ht - 6);
   const line = v.map((val, i) => `${i ? "L" : "M"}${x(i).toFixed(1)} ${y(val).toFixed(1)}`).join(" "); const id = "sp" + gid++;
-  return s("svg", { viewBox: `0 0 ${w} ${ht}`, width: w, height: ht, class: "spark tone-" + tone, preserveAspectRatio: "none", role: "img", "aria-label": label || "" },
+  return s("svg", { viewBox: `0 0 ${w} ${ht}`, width: w, height: ht, class: "spark tone-" + tone, preserveAspectRatio: "none", ...picture(label) },
     s("defs", s("linearGradient", { id, x1: "0", y1: "0", x2: "0", y2: "1" }, s("stop", { offset: "0", class: "f0" }), s("stop", { offset: "1", class: "f1" }))),
     fill ? s("path", { d: `${line} L${x(n)} ${ht} L${x(0)} ${ht} Z`, fill: `url(#${id})`, stroke: "none" }) : null,
     s("path", { d: line, fill: "none", class: "spark-line" }), ...marks.filter((i) => i >= 0 && i < v.length).map((i) => s("circle", { cx: x(i), cy: y(v[i]), r: 3, class: "spark-dot" })));
@@ -167,7 +169,7 @@ export function spark(values, { w = 160, h: ht = 40, tone = "ice", fill = true, 
 /** Small vertical bars (a week of minutes, a stack of loads). */
 export function bars(values, { w = 140, h: ht = 36, tone = "ice", labels, max } = {}) {
   const hi = max || Math.max(1, ...values); const bw = w / values.length;
-  return s("svg", { viewBox: `0 0 ${w} ${ht}`, width: w, height: ht, class: "bars tone-" + tone, role: "img", "aria-label": labels ? labels.map((l, i) => `${l} ${values[i]}`).join(", ") : "" },
+  return s("svg", { viewBox: `0 0 ${w} ${ht}`, width: w, height: ht, class: "bars tone-" + tone, ...picture(labels ? labels.map((l, i) => `${l} ${values[i]}`).join(", ") : "") },
     ...values.map((v, i) => { const bh = Math.max(2, (v / hi) * (ht - 2)); return s("rect", { x: i * bw + bw * 0.2, y: ht - bh, width: bw * 0.6, height: bh, rx: 2, class: v ? "bar on" : "bar" }); }));
 }
 

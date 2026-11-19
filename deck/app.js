@@ -322,7 +322,6 @@ async function boot() {
   await render(false);
   document.documentElement.classList.add("ready");
   reloadWeather(false);
-  if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("./sw.js").catch(() => {});
   /* once a day, when idle: each publishing pillar runs in a hidden frame so its deadlines reach Today without a visit (core/deadlines.js).
      Pinned-clock proof runs skip it unless they ask (?sweep=now); ?nosweep=1 turns it off. */
   const sw = params.get("sweep");
@@ -333,4 +332,14 @@ async function boot() {
   }
 }
 window.__deck = { store, clock, ctx, state, BUILD, reach: { searchRecords, commands } };                               // for the proofs and for the curious
+/* Shell worker: https, and localhost, which Lighthouse treats as a secure context.
+   prometheus.test stays plain http, so the proofs do not register it. The script
+   URL is next to this module, so GitHub Pages' /prometheus-hub/ base still resolves. */
+function registerShellWorker() {
+  if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return;
+  const host = location.hostname;
+  if (location.protocol !== "https:" && host !== "localhost" && host !== "127.0.0.1") return;
+  navigator.serviceWorker.register(new URL("../sw.js", import.meta.url)).catch(() => {});
+}
+registerShellWorker();
 boot();
