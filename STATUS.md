@@ -8,17 +8,18 @@ The block below is written by the proofs-live workflow from the browser run agai
 
 <!-- proofs-live:begin -->
 
-**30 passed, 0 failed** against https://jpavia10.github.io/prometheus-hub. Every proof in this run passed.
+**31 passed, 0 failed** against https://jpavia10.github.io/prometheus-hub. Every proof in this run passed.
 
-Quoted from https://github.com/jpavia10/prometheus-hub/actions/runs/44558841764.
+Quoted from https://github.com/jpavia10/prometheus-hub/actions/runs/44585344550.
 
 PASS CORE-1  Every pillar in pillars.json is on the core (27 live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data  ::  {"expected": 27, "drawn": 27, "missing": [], "extra": [], "demo": false, "events": 0, "plan": false, "wide": 390, "ring": true}
 PASS CORE-2  Every pillar page in this repository answers and wears the shared theme  ::  25 pages checked, 2 on their own sites
 PASS CORE-3  A pillar's own deadline (the shared bus) reaches the hub: in the feed and on its cell  ::  {"rows": ["Proof: oil service / garage"], "badge": "2d", "runway": true}
 PASS CORE-4  Tapping a cell warps into that pillar  ::  Apollo Temple (5.2 s on this machine)
-PASS MENU-1  The home is a game menu: 27 levels with their own light and a live line, Today on top, swipe or arrow keys move, Enter warps in, the orbit and the briefing are one tap away  ::  27 levels; 'Kairos Meridian' -> 'Midas Ledger' (hue 268 -> 46); live: Next · Mon, Nov 30Kern County Regular Assessment Appeal Fili; today rows 3; WebGL True; orbit and back True/True; entered hearth from level hearth
+PASS MENU-1  The home is a game menu: 27 levels with their own light and a live line, Today on top, swipe or arrow keys move, Enter warps in, the orbit and the briefing are one tap away  ::  27 levels; 'Kairos Meridian' -> 'Midas Ledger' (hue 268 -> 46); live: Next · Mon, Nov 30Kern County Regular Assessment Appeal Fili; today rows 3; WebGL True; orbit and back True/True; entered hearth from level hearth; the browser skipped 1 morph(s)
 PASS MENU-2  Every level stands in its own painted world: the three files of every world load, the painting is behind the level and the crest steps back, the title screen is the home painting  ::  28 worlds (27 of 27 levels painted, home True); missing []; 'Midas Ledger' painted True, crest opacity 0; title screen home painting
 PASS TODAY-1  The core sees every deadline: a fresh device's Today leads with the real Kern / California deadlines, holidays only fill, and the daily background run fills the shared deadlines without opening a pillar  ::  Today: ['Kern County Regular Assessment Appeal Filing Window', 'Kern County Property Tax 1st Installment Delinquent', 'Kern County Supplemental Tax 1st Installment (Nov-Jun Mail)']; holidays among the next 3: 0; next: 2026-11-30 Kern County Regular Assessment Appeal Filing Window; background run: 15 pillars, deadlines 0 -> 97 from 4 sources
+PASS ODY-1  His own trips on record: the 2015 Eurotrip and both 2024 Philippines trips filed once each, drawn on a map from real coordinates, every leg in the logbook, the plan's budget added up from the sheet's rows with the row its total leaves out named, past trips as records; an older phone gets the new trips, keeps its own, and a deleted trip stays deleted  ::  fresh device: 3 trips, map 20 stops (19 named, land path 25,050 chars), logbook 21 legs / 56 nights, budget ['$5,583.00', '$6,699.60'], check: "The sheet's own total is $5,521.00 ($6,625.20 with 20%): it leav"…, past-trip controls 0, countries 11; older phone: ['mine1', 'seed-eurotrip-2015', 'seed-philippines-2024', 'seed-philippines-2024-04'], its note kept: True; after deleting the Eurotrip and reloading: ['mine1', 'seed-philippines-2024', 'seed-philippines-2024-04']; hub search 'Tagaytay' -> Manila, Tagaytay & Coron — first visit
 PASS PILLAR-1  Every pillar's default shell: crest, sections from its own panels, a dock back to the core  ::  Piano: 6 sections, showing ['Harmonic Studio — Sequ'] then ['Ear & Interval Trainer']; page 2283 px tall at phone size (was 6,672); dock: core + 2 neighbours
 PASS PILLAR-2  Every pillar page runs without a script error, in every section  ::  25 pages opened, 115 sections tapped, no errors
 PASS STAGE-1  Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors  ::  19 of 19 drawn: kairos, garage, piano, money, apollo, hermes, argus, selling, icarus, odyssey, bastion, privacy, records, forge, foundry, observatory, kin, hearth, sylade
@@ -41,7 +42,7 @@ PASS TIME-3  Quick add in plain words: “smog check dec 5”  ::  preview “Ad
 PASS MONEY-1  Payoff simulator matches the 12 worked cases to the cent (2 required)  ::  12 of 12 cases match; 4,134 figures compared
 PASS MONEY-2  Bills and the loan payment show as dated rows next to events (one feed)  ::  {"bills": 12, "time": 23}
 PASS DATA-1  Versioned export and import: the deck file restores Time and Money exactly  ::  {"format": 1, "kind": "deck", "slices": ["profile", "time", "money"]}
-PASS DECK-2  No script errors during the run  ::  none; the browser skipped the page-to-page morph 1 time(s) (open item: cause not found)
+PASS DECK-2  No script errors during the run  ::  none
 
 <!-- proofs-live:end -->
 > **Note (shell d33) · 2026-11-19 · Claude** — **The core sees every deadline.** Today and the countdowns used to show only federal holidays; now a fresh device leads with the real Kern County, California and federal deadlines (Kairos's 88 dates merged at boot), pillar deadlines fill in once a day in the background without opening each pillar, and the deck asks the browser to keep its data (TODAY-1).
