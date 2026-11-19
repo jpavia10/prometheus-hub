@@ -130,10 +130,10 @@ with sync_playwright() as p:
         co2 = b.new_context(viewport={"width": 390, "height": 844}); po2 = co2.new_page(); po2.on("pageerror", lambda e: bo.append(str(e)[:120]))
         po2.goto(f"{URL}pillars/odyssey/", wait_until="commit")
         po2.evaluate("""() => { localStorage.clear(); localStorage.setItem('prometheus.odyssey.tripsSeedV1', '1');
-          localStorage.setItem('prometheus.odyssey.trips', JSON.stringify([{ id: 'seed-philippines-2024', name: 'Manila & El Nido — Philippines', dest: 'Manila and El Nido, Philippines', start: '2024-08-30', end: '2024-09-09', notes: 'kept as he left it' },
+          localStorage.setItem('prometheus.odyssey.trips', JSON.stringify([{ id: 'seed-philippines-2024', name: 'Manila & El Nido — Philippines', dest: 'Manila and El Nido, Philippines', start: '2024-08-30', end: '2024-09-09', notes: 'the old shipped note', packState: { 'his mark': true } },
             { id: 'mine1', name: 'Coast weekend', dest: 'Monterey', start: '2027-03-05', end: '2027-03-07' }])); }""")
         po2.reload(wait_until="load"); po2.wait_for_selector(".trip", state="attached", timeout=15000)
-        m1 = po2.evaluate("() => { const t = JSON.parse(localStorage.getItem('prometheus.odyssey.trips')); return { ids: t.map((x) => x.id).sort(), notes: t.find((x) => x.id === 'seed-philippines-2024').notes, ctl: document.querySelectorAll('.trip[data-trip=mine1] .checks').length }; }")
+        m1 = po2.evaluate("() => { const t = JSON.parse(localStorage.getItem('prometheus.odyssey.trips')), s = t.find((x) => x.id === 'seed-philippines-2024'); return { ids: t.map((x) => x.id).sort(), notes: /BGC residences Sep 6/.test(s.notes) && s.rev === 2, mark: !!(s.packState || {})['his mark'], ctl: document.querySelectorAll('.trip[data-trip=mine1] .checks').length }; }")
         po2.evaluate("""() => [...document.querySelectorAll('.trip[data-trip="seed-eurotrip-2015"] button')].find((x) => x.textContent === 'Delete trip').click()""")
         po2.reload(wait_until="load"); po2.wait_for_selector(".trip", state="attached", timeout=15000)
         m2 = po2.evaluate("() => JSON.parse(localStorage.getItem('prometheus.odyssey.trips')).map((x) => x.id).sort()")
@@ -141,13 +141,41 @@ with sync_playwright() as p:
         hit = po2.evaluate("window.__deck.reach.searchRecords('Tagaytay')"); co2.close()
         ok = (o1["trips"] == 3 and o1["stops"] == 20 and o1["named"] >= 17 and o1["land"] > 5000 and o1["legs"] == 21 and o1["nights"] == 56 and o1["total"] == ["$5,583.00", "$6,699.60"]
               and "ferry row, $62.00" in o1["check"] and o1["pastCtl"] == 0 and o1["past"] == 3 and o1["countries"] == "11"
-              and m1["ids"] == ["mine1", "seed-eurotrip-2015", "seed-philippines-2024", "seed-philippines-2024-04"] and m1["notes"] == "kept as he left it" and m1["ctl"] == 1
+              and m1["ids"] == ["mine1", "seed-eurotrip-2015", "seed-philippines-2024", "seed-philippines-2024-04"] and m1["notes"] and m1["mark"] and m1["ctl"] == 1
               and m2 == ["mine1", "seed-philippines-2024", "seed-philippines-2024-04"] and len(hit) >= 1 and hit[0]["title"].startswith("Manila, Tagaytay") and not bo)
-        proof("ODY-1", "His own trips on record: the 2015 Eurotrip and both 2024 Philippines trips filed once each, drawn on a map from real coordinates, every leg in the logbook, the plan's budget added up from the sheet's rows with the row its total leaves out named, past trips as records; an older phone gets the new trips, keeps its own, and a deleted trip stays deleted",
+        proof("ODY-1", "His own trips on record: the 2015 Eurotrip and both 2024 Philippines trips filed once each, drawn on a map from real coordinates, every leg in the logbook, the plan's budget added up from the sheet's rows with the row its total leaves out named, past trips as records; an older phone gets the new trips and the corrected notes, keeps its own trips and marks, and a deleted trip stays deleted",
               ok, f"fresh device: {o1['trips']} trips, map {o1['stops']} stops ({o1['named']} named, land path {o1['land']:,} chars), logbook {o1['legs']} legs / {o1['nights']} nights, budget {o1['total']}, check: {o1['check'][6:70]!r}…, past-trip controls {o1['pastCtl']}, countries {o1['countries']}; "
-                 f"older phone: {m1['ids']}, its note kept: {m1['notes'] == 'kept as he left it'}; after deleting the Eurotrip and reloading: {m2}; hub search 'Tagaytay' -> {hit[0]['title'] if hit else None}" + (f"; errors {bo[:2]}" if bo else ""))
+                 f"older phone: {m1['ids']}, shipped note refreshed to the bookings: {m1['notes']}, his own mark kept: {m1['mark']}; after deleting the Eurotrip and reloading: {m2}; hub search 'Tagaytay' -> {hit[0]['title'] if hit else None}" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("ODY-1", "His own trips on record", False, "did not finish: " + str(e)[:200])
+    # ODY-2 (2026-11-19): his trip photos as a journey. Each past trip with photos opens on them (Eurotrip 16, April 2024 15, September
+    # 2024 5); every photo and thumbnail is served; picking a photo moves the map (route drawn up to that stop, the stop ringed); tapping a
+    # stop on the map jumps to its first photo; full screen opens, steps with the arrow keys, closes with Escape; Play advances by itself.
+    try:
+        po.goto(f"{URL}pillars/odyssey/", wait_until="load"); po.wait_for_selector(".jr .jr-th", state="attached", timeout=15000)
+        j1 = po.evaluate("""async () => { const P = window.ODYSSEY_PHOTOS, ids = Object.values(P).flat().map((p) => p.id); let bad = 0;
+          for (const id of ids) for (const u of ['photos/' + id + '.webp', 'photos/t/' + id + '.webp']) { const r = await fetch(u); if (!r.ok || !(r.headers.get('content-type') || '').includes('webp')) bad++; }
+          const n = Object.fromEntries([...document.querySelectorAll('.trip')].map((t) => [t.dataset.trip, t.querySelectorAll('.jr-th').length]));
+          return { n, files: ids.length, bad }; }""")
+        po.evaluate("document.querySelector('.pk-tabs .tab:nth-child(2)') && document.querySelector('.pk-tabs .tab:nth-child(2)').click()"); po.wait_for_timeout(300)
+        E = '.trip[data-trip="seed-eurotrip-2015"] '
+        po.click(E + '.jr-th[data-i="6"]'); po.wait_for_timeout(600)
+        j2 = po.evaluate("""(E) => { const c = document.querySelector(E.trim()); return { place: c.querySelector('.jr-place').textContent, here: [...c.querySelectorAll('.map-dot.here')].map((d) => d.dataset.code), todo: c.querySelectorAll('.map-seg.todo').length }; }""", E)
+        po.evaluate("""(E) => { const d = document.querySelector(E + '.map-dot[data-code=PRG]'); d.dispatchEvent(new MouseEvent('click', { bubbles: true })); }""", E); po.wait_for_timeout(500)
+        j3 = po.evaluate("(E) => document.querySelector(E + '.jr-place').textContent", E)
+        po.click(E + '.jr-stage'); po.wait_for_selector('.jr-lb', timeout=5000); po.keyboard.press('ArrowRight'); po.wait_for_timeout(300)
+        lb = po.evaluate("document.querySelector('.jr-lb b').textContent"); po.keyboard.press('Escape'); po.wait_for_timeout(200)
+        gone = po.evaluate("!document.querySelector('.jr-lb')")
+        P2 = '.trip[data-trip="seed-philippines-2024-04"] '
+        po.click(P2 + '.jr-play'); po.wait_for_timeout(4700)
+        played = po.evaluate("(P) => document.querySelector(P + '.jr-count').textContent", P2)
+        wide = po.evaluate("document.documentElement.scrollWidth")
+        ok = (j1["n"] == {"seed-eurotrip-2015": 16, "seed-philippines-2024-04": 15, "seed-philippines-2024": 5} and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
+              and j2["todo"] == 15 and j3.startswith("PRAGUE") and lb and gone and played.startswith("2 /") and wide <= 390 and not bo)
+        proof("ODY-2", "His trip photos as a journey: each past trip opens on its own photos, every photo is served, the map follows the photo (route drawn to that stop, the stop ringed), a stop on the map opens its photos, full screen steps and closes from the keyboard, Play walks the trip",
+              ok, f"photos per trip {j1['n']}, {j1['files']} photos and their thumbnails served, {j1['bad']} missing; photo 7 -> {j2['place']}, ringed {j2['here']}, {j2['todo']} legs still ahead; tapping Prague on the map -> {j3}; full screen next -> {lb!r}, Escape closes: {gone}; Play after 4.7 s -> {played}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
+    except Exception as e: proof("ODY-2", "His trip photos as a journey", False, "did not finish: " + str(e)[:200])
     co.close()
+
 
     # PILLAR: the shared pillar shell (crest, automatic sections, dock), checked on the long Piano page
     c3 = b.new_context(viewport={"width": 390, "height": 844}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))

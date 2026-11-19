@@ -15,20 +15,29 @@
      new seed reaches a phone that already had the first one (tripsSeedV1 = the Philippines September trip). Only the trip's own fields
      are stored; its legs, budget and planning notes stay in the shipped file and are looked up by id. */
   const OD = window.ODYSSEY_DATA || null;
-  const KEEP = ["id", "name", "dest", "start", "end", "cold", "rain", "beach", "work", "car", "kids", "notes"];
+  /* A seed with a higher rev (2026-11-19: his corrections, his bookings, his photos) refreshes the fields the app ships on a phone
+     that already has it (name, dates, notes, stops); his own marks on it (packing, house checks) stay as they are. */
+  const KEEP = ["id", "rev", "name", "dest", "start", "end", "cold", "rain", "beach", "work", "car", "kids", "notes"];
+  const shipped = (t) => {
+    const r = Object.fromEntries(KEEP.filter((k) => k in t).map((k) => [k, t[k]]));
+    if (t.legs) r.stops = [...new Set(t.legs.filter((l) => !l.home).map((l) => l.name))].join(", ");   // for the hub's search
+    return r;
+  };
   if (OD) {
     const done = S.get("tripsSeeded", null) || (S.get("tripsSeedV1") ? ["seed-philippines-2024"] : []);
     const fresh = OD.seedTrips.filter((t) => !done.includes(t.id));
+    let cur = S.list("trips"), changed = false;
     if (fresh.length) {
-      const cur = S.list("trips"), have = new Set(cur.map((t) => t.id));
-      const add = fresh.filter((t) => !have.has(t.id)).map((t) => {
-        const r = Object.fromEntries(KEEP.filter((k) => k in t).map((k) => [k, t[k]]));
-        if (t.legs) r.stops = [...new Set(t.legs.filter((l) => !l.home).map((l) => l.name))].join(", ");   // for the hub's search
-        return r;
-      });
-      S.set("trips", [...cur, ...add]);
-      S.set("tripsSeeded", [...done, ...fresh.map((t) => t.id)]);
+      const have = new Set(cur.map((t) => t.id));
+      cur = [...cur, ...fresh.filter((t) => !have.has(t.id)).map(shipped)];
+      S.set("tripsSeeded", [...done, ...fresh.map((t) => t.id)]); changed = true;
     }
+    cur = cur.map((t) => {
+      const sd = OD.seedTrips.find((x) => x.id === t.id);
+      if (!sd || (t.rev || 1) >= (sd.rev || 1)) return t;
+      changed = true; return { ...t, ...shipped(sd) };
+    });
+    if (changed) S.set("trips", cur);
   }
   const seedOf = (t) => (OD && OD.seedTrips.find((x) => x.id === t.id)) || null;
   const legsOf = (t) => t.legs || (seedOf(t) || {}).legs || null;
@@ -175,7 +184,7 @@
     for (let i = 1; i < pts.length; i++) {
       const a = pts[i - 1], b = pts[i], ax = X(a.lon), ay = Y(a.lat), bx = X(b.lon), by = Y(b.lat), dx = bx - ax, dy = by - ay;
       const bow = b.by === "flight" ? 0.2 : 0.09, cx = (ax + bx) / 2 + dy * bow, cy = (ay + by) / 2 - dx * bow;
-      segs += `<path class="map-seg ${b.by || "land"}" vector-effect="non-scaling-stroke" d="M${f1(ax)} ${f1(ay)}Q${f1(cx)} ${f1(cy)} ${f1(bx)} ${f1(by)}"><title>${esc(a.name)} → ${esc(b.name)}${b.by ? " · " + MODE[b.by] : ""}</title></path>`;
+      segs += `<path class="map-seg ${b.by || "land"}" data-i="${i}" vector-effect="non-scaling-stroke" d="M${f1(ax)} ${f1(ay)}Q${f1(cx)} ${f1(cy)} ${f1(bx)} ${f1(by)}"><title>${esc(a.name)} → ${esc(b.name)}${b.by ? " · " + MODE[b.by] : ""}</title></path>`;
     }
     const uniq = []; for (const p of pts) if (!uniq.some((u) => u.code === p.code)) uniq.push({ ...p, stay: pts.filter((q) => q.code === p.code).reduce((s, q) => s + (q.nights || 0), 0) });
     const boxes = uniq.map((p) => ({ x: X(p.lon) - rad * 1.3, y: Y(p.lat) - rad * 1.3, w: rad * 2.6, h: rad * 2.6 }));
@@ -194,14 +203,14 @@
         break;
       }
     }
-    const dots = uniq.map((p, i) => `<circle class="map-dot${i === 0 ? " start" : ""}${p.approx ? " approx" : ""}" vector-effect="non-scaling-stroke" cx="${f1(X(p.lon))}" cy="${f1(Y(p.lat))}" r="${f1(rad)}"><title>${esc(p.name)}${p.country ? ", " + esc(p.country) : ""}${p.approx ? " (approximate)" : ""}</title></circle>`).join("");
+    const dots = uniq.map((p, i) => `<circle class="map-dot${i === 0 ? " start" : ""}${p.approx ? " approx" : ""}" data-code="${esc(p.code)}" vector-effect="non-scaling-stroke" cx="${f1(X(p.lon))}" cy="${f1(Y(p.lat))}" r="${f1(rad)}"><title>${esc(p.name)}${p.country ? ", " + esc(p.country) : ""}${p.approx ? " (approximate)" : ""}</title></circle>`).join("");
     let dist = 0; for (let i = 1; i < pts.length; i++) dist += miles(pts[i - 1], pts[i]);
     const used = [...new Set(pts.slice(1).map((p) => p.by).filter(Boolean))];
     const key = used.map((m) => `<span class="mk"><svg viewBox="0 0 26 8" aria-hidden="true"><path class="map-seg ${m}" d="M1 4H25"/></svg>${MODE[m]} ${pts.slice(1).filter((p) => p.by === m).length}</span>`).join("");
     const svg = `<svg class="tmap" viewBox="${f1(x0)} ${f1(y0)} ${f1(W)} ${f1(H)}" role="img" data-stops="${uniq.length}" data-named="${named}" aria-label="Map of the route: ${esc(uniq.map((p) => p.name).join(", "))}">
       <rect class="map-sea" x="${f1(x0)}" y="${f1(y0)}" width="${f1(W)}" height="${f1(H)}"/>
       ${base ? `<path class="map-land" vector-effect="non-scaling-stroke" transform="scale(${k.toFixed(5)} 1)" d="${base.d}"/>` : ""}
-      <path class="map-grat" vector-effect="non-scaling-stroke" d="${g}"/>${segs}${dots}${labels}</svg>`;
+      <path class="map-grat" vector-effect="non-scaling-stroke" d="${g}"/>${segs}<circle class="map-here" r="${f1(rad * 2.4)}" cx="${f1(x0 - 999)}" cy="${f1(y0 - 999)}"/>${dots}${labels}</svg>`;
     return `<figure class="tmap-wrap">${svg}<figcaption class="map-key">${key}<span class="mk">${Math.round(dist).toLocaleString("en-US")} mi stop to stop, straight-line</span>${base ? "" : '<span class="mk">no outline map for this region yet</span>'}</figcaption></figure>`;
   }
 
@@ -213,7 +222,7 @@
       const head = `<b>${esc(l.code)}</b> ${esc(l.name)}${l.country ? `<span class="leg-c">, ${esc(l.country)}</span>` : ""}${l.nights != null ? ` · ${l.nights === 0 ? "day stop" : l.nights + (l.nights === 1 ? " night" : " nights")}` : l.home ? " · home" : ""}`;
       const how = [l.by ? MODE[l.by] : "", l.ref || "", l.dep && l.arr ? `${l.dep} → ${l.arr}` : "", l.fare != null ? money(l.fare) : (l.by && !l.home && l.dep ? "no fare listed" : "")].filter(Boolean).join(" · ");
       const stay = [l.stay ? l.stay + (l.booked ? ` (${l.booked})` : "") : "", l.note || ""].filter(Boolean).join(" · ");
-      return `<div class="leg rich"><span class="leg-date">${dlabel(l.at)}</span><span class="leg-note"><span class="leg-h">${head}</span>${how ? `<span class="leg-how">${esc(how)}</span>` : ""}${stay ? `<span class="leg-stay">${esc(stay)}</span>` : ""}${l.check ? `<span class="leg-check"><span class="pill warn">check</span> ${esc(l.check)}</span>` : ""}</span></div>`;
+      return `<div class="leg rich"><span class="leg-date">${dlabel(l.at)}</span><span class="leg-note"><span class="leg-h">${head}</span>${how ? `<span class="leg-how">${esc(how)}</span>` : ""}${stay ? `<span class="leg-stay">${esc(stay)}</span>` : ""}${l.check ? `<span class="leg-check"><span class="pill warn">check</span> ${esc(l.check)}</span>` : ""}${l.fixed ? `<span class="leg-check"><span class="pill ok">settled</span> ${esc(l.fixed)}</span>` : ""}</span></div>`;
     }).join("")}</div>`;
   }
 
@@ -233,6 +242,113 @@
       ${priced.length ? `<p class="stat-s">Fares on the legs: ${money(fares)} over ${priced.length} legs; ${legs.length - priced.length} list none.</p>` : ""}</div>`;
   }
 
+  /* The journey (2026-11-19): his own photos from the trip (photos.js), in time order. A stage with the photo over a blurred copy of
+     itself (any shape fits), its place, day and caption; a filmstrip; a scrubber; Play walks the trip with a slow push-in; tap the stage
+     for full screen (swipe, arrow keys, Escape). The map follows: the route is drawn up to the photo's stop and that stop is ringed;
+     tapping a stop jumps to its first photo. Reduced motion: no push-in. */
+  const PH = window.ODYSSEY_PHOTOS || {};
+  const timers = new Set();
+  const DOW = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const longDate = (ds) => { const d = dparse(ds); return `${DOW[d.getDay()]}, ${MON[d.getMonth()][0] + MON[d.getMonth()].slice(1).toLowerCase()} ${d.getDate()}, ${d.getFullYear()}`; };
+  const calm = () => { try { return matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; } };
+
+  function journey(t, card) {
+    const photos = PH[t.id]; if (!photos || !photos.length) return null;
+    const pts = (legsOf(t) || []).filter((l) => !l.home && Number.isFinite(l.lat));
+    const legOf = (p) => { let k = 0; pts.forEach((l, i) => { if (l.at <= p.at) k = i; }); return k; };
+    const dayOf = (p) => Math.round((dparse(p.at) - dparse(t.start)) / 864e5) + 1, days = nights(t) + 1;
+    const root = h("div.jr", { "data-n": photos.length });
+    root.innerHTML = `<div class="jr-stage" tabindex="0" role="button" aria-label="Open this photo full screen">
+        <img class="jr-bg" alt="" aria-hidden="true"><img class="jr-img a" alt=""><img class="jr-img b" alt="" aria-hidden="true">
+        <div class="jr-cap"><span class="jr-place"></span><b class="jr-title"></b><span class="jr-when"></span></div>
+        <button class="jr-nav prev" type="button" aria-label="Previous photo">‹</button><button class="jr-nav next" type="button" aria-label="Next photo">›</button>
+        <span class="jr-count"></span></div>
+      <div class="jr-bar"><button class="btn small jr-play" type="button" aria-pressed="false">▶ Play the trip</button>
+        <input class="jr-scrub" type="range" min="0" max="${photos.length - 1}" step="1" value="0" aria-label="Move through the trip's photos"></div>
+      <div class="jr-strip" role="listbox" aria-label="Photos from this trip">${photos.map((p, i) => `<button class="jr-th" type="button" role="option" data-i="${i}" aria-label="${esc(p.cap)}" style="--ar:${(p.w / p.h).toFixed(3)}"><img loading="lazy" decoding="async" src="photos/t/${p.id}.webp" alt=""></button>`).join("")}</div>`;
+    const $$ = (q) => root.querySelector(q), stage = $$(".jr-stage"), A = $$(".jr-img.a"), B = $$(".jr-img.b"), bg = $$(".jr-bg");
+    let cur = -1, front = A, timer = 0;
+    const map = () => card.querySelector(".tmap");
+    const paintMap = (k) => {
+      const m = map(); if (!m) return;
+      m.querySelectorAll(".map-seg").forEach((sg) => sg.classList.toggle("todo", +sg.dataset.i > k));
+      m.querySelectorAll(".map-dot").forEach((d) => d.classList.toggle("here", d.dataset.code === pts[k].code));
+      const d = m.querySelector(`.map-dot[data-code="${CSS.escape(pts[k].code)}"]`), ring = m.querySelector(".map-here");
+      if (d && ring) { ring.setAttribute("cx", d.getAttribute("cx")); ring.setAttribute("cy", d.getAttribute("cy")); }
+    };
+    const go = (i, quiet) => {
+      i = (i + photos.length) % photos.length; if (i === cur) return; cur = i;
+      const p = photos[i], k = legOf(p), l = pts[k] || {}, src = `photos/${p.id}.webp`;
+      const back = front === A ? B : A;
+      back.classList.remove("kb"); back.onload = () => { back.classList.add("on"); front.classList.remove("on"); if (timer && !calm()) back.classList.add("kb"); front = back; };
+      back.src = src; back.alt = p.cap; bg.src = `photos/t/${p.id}.webp`;
+      $$(".jr-place").textContent = `${l.name || ""}${l.country ? " · " + l.country : ""}`.toUpperCase();
+      $$(".jr-title").textContent = p.cap;
+      $$(".jr-when").textContent = `${longDate(p.at)} · ${p.t} · day ${dayOf(p)} of ${days}`;
+      $$(".jr-count").textContent = `${i + 1} / ${photos.length}`;
+      $$(".jr-scrub").value = i;
+      root.querySelectorAll(".jr-th").forEach((b) => { const on = +b.dataset.i === i; b.classList.toggle("on", on); b.setAttribute("aria-selected", on); });
+      const th = root.querySelector(`.jr-th[data-i="${i}"]`), strip = $$(".jr-strip");
+      if (th && !quiet) strip.scrollTo({ left: th.offsetLeft - strip.clientWidth / 2 + th.offsetWidth / 2, behavior: calm() ? "auto" : "smooth" });
+      paintMap(k);
+      if (photos[i + 1]) { const pre = new Image(); pre.src = `photos/${photos[i + 1].id}.webp`; }
+    };
+    const stop = () => { if (!timer) return; clearInterval(timer); timers.delete(timer); timer = 0; const b = $$(".jr-play"); b.textContent = "▶ Play the trip"; b.setAttribute("aria-pressed", "false"); root.classList.remove("playing"); };
+    const play = () => {
+      if (timer) return stop();
+      if (cur === photos.length - 1) go(0);
+      timer = setInterval(() => { if (document.hidden) return; if (cur >= photos.length - 1) return stop(); go(cur + 1); }, 4200); timers.add(timer);
+      const b = $$(".jr-play"); b.textContent = "❚❚ Pause"; b.setAttribute("aria-pressed", "true"); root.classList.add("playing");
+      if (!calm()) front.classList.add("kb");
+    };
+    $$(".jr-play").onclick = play;
+    $$(".jr-nav.prev").onclick = (e) => { e.stopPropagation(); stop(); go(cur - 1); };
+    $$(".jr-nav.next").onclick = (e) => { e.stopPropagation(); stop(); go(cur + 1); };
+    $$(".jr-scrub").oninput = (e) => { stop(); go(+e.target.value); };
+    $$(".jr-strip").onclick = (e) => { const b = e.target.closest(".jr-th"); if (b) { stop(); go(+b.dataset.i); } };
+    stage.onclick = () => { stop(); lightbox(photos, cur, (i) => go(i, true), pts, legOf); };
+    stage.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); stage.click(); } else if (e.key === "ArrowRight") { stop(); go(cur + 1); } else if (e.key === "ArrowLeft") { stop(); go(cur - 1); } };
+    let sx = null; stage.addEventListener("pointerdown", (e) => { sx = e.clientX; });
+    stage.addEventListener("pointerup", (e) => { if (sx == null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) { stop(); go(cur + (dx < 0 ? 1 : -1)); stage.dataset.swiped = "1"; setTimeout(() => delete stage.dataset.swiped, 0); } });
+    stage.addEventListener("click", (e) => { if (stage.dataset.swiped) e.stopImmediatePropagation(); }, true);
+    root.bindMap = () => {
+      const m = map(); if (!m) return;
+      m.querySelectorAll(".map-dot").forEach((d) => {
+        const i = photos.findIndex((p) => pts[legOf(p)].code === d.dataset.code);
+        if (i < 0) return;
+        d.classList.add("has-ph"); d.setAttribute("tabindex", "0"); d.setAttribute("role", "button");
+        const jump = () => { stop(); go(i); root.scrollIntoView({ block: "nearest", behavior: calm() ? "auto" : "smooth" }); };
+        d.addEventListener("click", jump); d.addEventListener("keydown", (e) => { if (e.key === "Enter") jump(); });
+      });
+      paintMap(legOf(photos[Math.max(cur, 0)]));
+    };
+    root.start = () => go(0, true);
+    return root;
+  }
+
+  function lightbox(photos, at, sync, pts, legOf) {
+    const lb = h("div.jr-lb", { role: "dialog", "aria-modal": "true", "aria-label": "Trip photos" });
+    lb.innerHTML = `<img class="jr-lb-img" alt=""><div class="jr-lb-cap"><span class="jr-place"></span><b></b><span class="jr-when"></span></div>
+      <button class="jr-lb-x" type="button" aria-label="Close">×</button><button class="jr-nav prev" type="button" aria-label="Previous photo">‹</button><button class="jr-nav next" type="button" aria-label="Next photo">›</button>`;
+    const img = lb.querySelector(".jr-lb-img"); let i = at;
+    const show = (k) => {
+      i = (k + photos.length) % photos.length; const p = photos[i], l = pts[legOf(p)] || {};
+      img.src = `photos/${p.id}.webp`; img.alt = p.cap;
+      lb.querySelector(".jr-place").textContent = `${l.name || ""}${l.country ? " · " + l.country : ""}`.toUpperCase();
+      lb.querySelector("b").textContent = p.cap; lb.querySelector(".jr-when").textContent = `${longDate(p.at)} · ${p.t} · ${i + 1} / ${photos.length}`;
+      sync(i);
+    };
+    const close = () => { document.removeEventListener("keydown", key); lb.remove(); document.body.style.overflow = ""; };
+    const key = (e) => { if (e.key === "Escape") close(); else if (e.key === "ArrowRight") show(i + 1); else if (e.key === "ArrowLeft") show(i - 1); };
+    lb.querySelector(".jr-lb-x").onclick = close;
+    lb.querySelector(".prev").onclick = () => show(i - 1); lb.querySelector(".next").onclick = () => show(i + 1);
+    lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
+    let sx = null; img.addEventListener("pointerdown", (e) => { sx = e.clientX; });
+    img.addEventListener("pointerup", (e) => { if (sx == null) return; const dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1)); });
+    document.addEventListener("keydown", key); document.body.appendChild(lb); document.body.style.overflow = "hidden";
+    show(at); lb.querySelector(".jr-lb-x").focus();
+  }
+
   function timelineHTML(t) {
     const n = nights(t), days = n + 1;
     const ticks = Math.min(days, 62);
@@ -244,6 +360,7 @@
   }
 
   function paint() {
+    timers.forEach((x) => clearInterval(x)); timers.clear();
     const trips = S.list("trips").sort((a, b) => a.start.localeCompare(b.start));
     const el = $("#o-list");
     el.innerHTML = trips.length ? "" : `<p class="empty">No trips yet.</p>`;
@@ -282,7 +399,9 @@
         h("h3", null, t.name),
         h("div.stat-s", null, `${t.dest ? esc(t.dest) + " · " : ""}${t.start} → ${t.end}${roadNote ? " · " + roadNote : ""}`)
       );
+      const jr = journey(t, card); if (jr) card.append(jr);
       const arc = h("div.journey", null); arc.innerHTML = mapSVG(t) || arcSVG(t); card.append(arc);
+      if (jr) { jr.start(); jr.bindMap(); }
       if (t.notes && past) card.append(h("p.trip-notes", null, t.notes));          // a trip on record: what it was, then its log
       const tl = h("div", null); tl.innerHTML = timelineHTML(t); card.append(tl);
       if (t.notes && !past) card.append(h("p.trip-notes", null, t.notes));
