@@ -2,7 +2,9 @@
    and the honest list of what is on the deck. Nothing here talks to a server. */
 import { put, h, icon, toast, ask, download, pickFile, chip, bars, plural } from "../core/ui.js";
 import { backupAll, previewRestore, restoreAll, snapshotIndexedDB, restoreIndexedDB, rollbackRestore } from "../core/reach.js";
-import { today, addDays, fmtDay } from "../core/dates.js";
+import { today, addDays, fmtDay, clock } from "../core/dates.js";
+import { fixed } from "../core/feeds.js";
+import { loadBrief, spoken } from "../models/brief.js";
 import { pillarStats, busMoneySales } from "../core/legacy.js";
 import { PILLARS } from "../pillars.js";
 import { focusStats } from "../models/time.js";
@@ -17,8 +19,10 @@ export function render(root, route, ctx) {
 
   const hasRollback = (() => { try { return !!sessionStorage.getItem("prometheus.backup.rollback"); } catch (e) { return false; } })();
 
+  const brief = briefPanel(store);
   put(root, 
     h("section.hero.small", h("p.kicker", "System"), h("h1.headline", "Your data stays on this device")),
+    brief.panel,
     countsPanel(store, t),
     stormTile(ctx, store.get("profile"), t),
     homesteadTile(t),
@@ -61,6 +65,41 @@ export function render(root, route, ctx) {
       h("div.row", h("button.btn.ghost.danger", { type: "button", onclick: async () => { if (await ask("Erase the deck on this device?", "Every event, plan and setting is removed from this browser. A deck file you exported is not touched.", "Erase", "danger")) { store.wipe(); toast("Erased."); ctx.go("#/"); } } }, icon("trash", 16), "Erase this device"))),
     h("footer.foot", h("span.quiet", `Prometheus deck · build ${ctx.build}`), h("a.link", { href: "https://jpavia10.github.io/titan-reliquary-preview/", rel: "noopener" }, "Titan Reliquary")));
   void pickFile;
+  return brief.stop;
+}
+
+function briefPanel(store) {
+  let lastSeen = "";
+  try { lastSeen = sessionStorage.getItem("prom.deck.lastSeen.s") || localStorage.getItem("prom.deck.lastSeen") || ""; } catch (e) { lastSeen = ""; }
+  const lines = loadBrief((k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, {
+    today: today(), now: clock.now().toISOString(), lastSeen, time: store.get("time"), money: store.get("money"), fixed: fixed(),
+  });
+  const speech = readAloud(lines);
+  const body = lines.length
+    ? h("div.brief-list", lines.map((l) => h("a.brief-row", { href: l.href, dataset: { rule: l.rule } }, h("b", l.label), h("span", l.text))))
+    : h("p.quiet", "Nothing on the brief.");
+  return {
+    panel: h("section.panel", { id: "brief", "aria-label": "Brief" }, h("header.panel-head", h("h2", "Brief"), speech.button), body),
+    stop: speech.stop,
+  };
+}
+
+function readAloud(lines) {
+  const synth = typeof window !== "undefined" ? window.speechSynthesis : null;
+  const text = spoken(lines);
+  if (!text || !synth || typeof SpeechSynthesisUtterance !== "function") return { button: null, stop() {} };
+  const button = h("button.btn.ghost.small", { type: "button", id: "read-brief", "aria-pressed": "false" }, "Read aloud");
+  const stop = () => { try { synth.cancel(); } catch (e) { /* already quiet */ } button.setAttribute("aria-pressed", "false"); };
+  button.addEventListener("click", () => {
+    if (button.getAttribute("aria-pressed") === "true") { stop(); return; }
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "en-US";
+    utter.onend = () => button.setAttribute("aria-pressed", "false");
+    utter.onerror = () => button.setAttribute("aria-pressed", "false");
+    button.setAttribute("aria-pressed", "true");
+    try { synth.cancel(); synth.speak(utter); } catch (e) { stop(); }
+  });
+  return { button, stop };
 }
 
 function readJson(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }

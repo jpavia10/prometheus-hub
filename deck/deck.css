@@ -685,10 +685,16 @@ body.warping #sky { filter: brightness(1.6) saturate(1.8); transition: filter .5
 .view-inner[data-cap="picture"] .now-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin: 0; padding: 8px 14px; border-radius: var(--r); background: var(--glass); border: 1px solid var(--line); color: var(--pearl); font-family: var(--f); font-size: 13px; line-height: 1.35; text-align: center; }
 .view-inner[data-cap="picture"] .now-line b { font-weight: 500; color: var(--cyan); letter-spacing: .04em; }
 .view-inner[data-cap="picture"] .now-session { color: var(--lavender); }
-.view-inner[data-cap="picture"] .context-card { padding: 10px 14px 12px; }
+.view-inner[data-cap="picture"] .context-card { padding: 10px 14px 12px; overflow: hidden; }
 .view-inner[data-cap="picture"] .context-card .panel-head { margin-bottom: 4px; min-height: 0; }
 .view-inner[data-cap="picture"] .context-card p { color: var(--ink-2); font-size: 13.5px; line-height: 1.4; }
 .view-inner[data-cap="picture"] .since .since-row { padding: 6px 0; }
+.briefing { min-width: 0; max-width: 100%; }
+.context-card .brief-line, .brief-row span { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--pearl); font-family: var(--f); text-decoration: none; }
+.brief-list { display: grid; }
+.brief-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: baseline; padding: 8px 0; border-top: 1px solid var(--line); color: var(--pearl); font-family: var(--f); text-decoration: none; }
+.brief-row b { font-weight: 500; color: var(--cyan); letter-spacing: .04em; }
+.brief-row[data-rule="overdue"] b, .brief-row[data-rule="collision"] b { color: var(--lavender); }
 .now-mark { display: flex; align-items: center; gap: 8px; margin: 8px 0; color: var(--cyan); font-size: 12px; letter-spacing: .08em; }
 .now-mark i { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); }
 @media (max-width: 600px) {

@@ -76,6 +76,11 @@ Shell cache **d26** · 2026-11-16 · Claude
 
 The quote above is the last proofs-live run against the deployed site (run 43575963969). It is not a result for the checkout below.
 
+Build **d36** · 2026-11-19 · not deployed yet
+
+**Ranked brief.** The home card shows the top line from `deck/models/brief.js` (overdue, a date collision, away mode, a change since the last visit, a streak). Each line links to its record. With nothing stored, the card says "Nothing on the brief." System lists every line and offers Read aloud through `window.speechSynthesis`. No network call and no model. Titan and Midas are not read.
+- **Verified locally, not on the live site:** registry `REGISTRY_OK` and `25/25 complete`. `node --test proofs/unit/*.test.mjs` is `72/72` pass, `0` failed, `0` skipped. Money guard `GUARD_OK`. `python3 proofs/run.py http://prometheus.test:8377/ --mock-weather` passed, including CORE-1 (clean device, one card, fits above the dock), SINCE-1, DECK-1, and DECK-3 (no table, no dollar figure). A device with sample records shows Overdue, Collision, Away, Since, and Streak on System, and Read aloud toggles with `speechSynthesis`.
+
 Build **d35** · 2026-11-19 · not deployed yet
 
 **Orbit arrival kept, and PILLAR-1 no longer races the tab row.** The orbit home (`?home=orbit`) is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and waits until that section is showing: a coordinate click was landing on a button the kit had just replaced, so one of the two checks runs on `9456a3f` still saw the first section after a fixed 700 ms. Shell cache `prometheus-hub-deck-d35`.
