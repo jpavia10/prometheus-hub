@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 00:12 UTC",
+ "updated": "2026-11-19 01:22 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -9,7 +9,7 @@
    "open": {
     "grok": 1,
     "gemini": 1,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
