@@ -2,7 +2,7 @@
 
 # Aether · Atmospheric & Field Lab · homework for Gemini
 
-Updated 2026-11-19 23:32 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 23:35 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -126,3 +126,56 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a number that is not on its source and not shown as arithmetic
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 3. AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Aether logs outages by hand. SCE publishes a report for every PSPS event with the circuits it cut.
+
+**What it unlocks:** Aether's PSPS log starts with the real history: how often, how long, which months.
+
+**Read first:**
+- SCE's PSPS event reports (sce.com, 'Post Event Reports' to the CPUC) and the CPUC's PSPS page (cpuc.ca.gov)
+
+**Do this:**
+1. For each PSPS event 2019-2026 whose report lists a circuit serving Frazier Park, Lake of the Woods, Pinon Pines or Pine Mountain Club: event dates, circuit names, customers de-energized on those circuits, outage start and restore times, and the report's URL and page.
+
+**Make:** `aether_gemini_psps-history_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per event and circuit`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `event` (text): SCE's event name or dates
+- `circuit` (text): 
+- `community` (text): 
+- `customers` (integer): 
+- `off` (text): YYYY-MM-DD HH:MM
+- `on` (text): YYYY-MM-DD HH:MM
+- `url` (URL): the report
+- `page` (text): 
+- `quote` (text): the table row
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every event with a mountain-community circuit, or 'none found' rows per year with the reports checked.
+
+**How Claude checks it:**
+- Claude opens 5 reports.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)

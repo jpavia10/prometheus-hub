@@ -1007,6 +1007,87 @@
      "due": "2026-11-27",
      "review": "Done 2026-11-19: Hearth 'When each product can go on', 10 makers' limits from their data sheets. Score 10/10 (#16).",
      "closed": "2026-11-19"
+    },
+    {
+     "id": "HEA-GEM-23",
+     "title": "Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Your HEA-GEM-21 found Kern's 30 psf ground-snow table against ASCE 7-22's much higher value. The joist size depends on which one Kern enforces now.",
+     "unlocks": "Hearth sizes the deck joists to the load Kern actually enforces.",
+     "inputs": [
+      "Kern County Code of Building Regulations as adopted for the 2025 California codes (the Board of Supervisors' ordinance adopting the 2025 cycle, Chapter 17.06)",
+      "kernpublicworks.com Building Inspection pages and bulletins"
+     ],
+     "steps": [
+      "Find the ordinance that adopted the 2025 California Building and Residential Codes in Kern County: its number, date, and the section on snow loads.",
+      "Quote the snow-load section word for word; say whether it keeps the elevation table (and the value at 4,000-5,000 ft) or defers to ASCE 7-22.",
+      "If Building Inspection publishes a snow-load bulletin or design-criteria sheet, quote it too."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_snow-load-rule_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of rows"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "document",
+       "type": "text",
+       "rule": "ordinance or bulletin, number and date"
+      },
+      {
+       "name": "section",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "says",
+       "type": "text",
+       "rule": "plain reading"
+      },
+      {
+       "name": "value_psf",
+       "type": "text",
+       "rule": "number or 'not stated'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "The adopting ordinance found and its snow section quoted, or 'not found' with every place searched.",
+     "checks": [
+      "Claude opens every URL."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

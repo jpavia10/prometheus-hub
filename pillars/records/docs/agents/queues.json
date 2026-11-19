@@ -385,6 +385,84 @@
      "due": "2026-11-28",
      "review": "Done 2026-11-19: Records 'Tax forms on their way (2026 tax year)'. Date rolls re-checked. Row 16 (1095-B) quotes last year's text ('February 2, 2026'). Score 9/10 (#23).",
      "closed": "2026-11-19"
+    },
+    {
+     "id": "REC-GEM-07",
+     "title": "Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Records knows which forms arrive. It does not know what Joseph owes and when: estimated tax, the April deadline, CA's own dates, property tax.",
+     "unlocks": "Every payment or filing date of 2027 shows up in the core's deadlines with its source.",
+     "inputs": [
+      "irs.gov Publication 509 (2027 Tax Calendars), ftb.ca.gov due dates, Kern County Treasurer-Tax Collector (kcttc.co.kern.ca.us) installment dates"
+     ],
+     "steps": [
+      "Every 2027 individual deadline: federal return, extension, four estimated payments (federal and California, CA's 30/40/0/30 split), property tax installments and delinquency dates, IRA/HSA contribution deadline. Weekend and holiday rolls applied and shown."
+     ],
+     "deliver": {
+      "file": "records_gemini_2027-deadlines_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of rows"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "after the roll"
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "who",
+       "type": "text",
+       "rule": "IRS / FTB / Kern County"
+      },
+      {
+       "name": "rolled_from",
+       "type": "text",
+       "rule": "'' or the original date and why"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every 2027 individual deadline from the three sources.",
+     "checks": [
+      "Claude checks every roll and opens 5 URLs."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

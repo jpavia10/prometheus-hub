@@ -2,7 +2,7 @@
 
 # Bossa Piano Studio · homework for Gemini
 
-Updated 2026-11-19 23:32 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 23:35 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -70,3 +70,53 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key)
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** The ladder names 24 tunes; Joseph needs the sheet music. Each is in a published fake book or a licensed single sheet.
+
+**What it unlocks:** Each tune in the ladder links to the exact book and page, or the licensed sheet.
+
+**Read first:**
+- Your piano_gemini_bossa-ladder_20261119-0922.json
+- halleonard.com song lists for The Real Book (vols 1-3), The Brazilian Real Book (Sher Music), The Jobim Songbook; musicnotes.com
+
+**Do this:**
+1. For each of the 24: the book (publisher, title, edition), page, key printed there; or the licensed single sheet's URL and its key. Two sources when the tune is in more than one book.
+
+**Make:** `piano_gemini_bossa-sources_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one or two rows per tune`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `tune` (text): as in the ladder
+- `source` (text): book title, publisher, edition / or the sheet
+- `page` (text): or 'single sheet'
+- `key` (text): as printed
+- `url` (URL): the publisher's song list or the sheet
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every tune with at least one legal source.
+
+**How Claude checks it:**
+- Claude opens 8 rows.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)

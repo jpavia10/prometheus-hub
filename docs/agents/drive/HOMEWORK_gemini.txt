@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-19 23:32 UTC. 13 to do across 3 pillars; 33 more delivered and waiting for their check (listed at the end: do not redo them).
+Updated 2026-11-19 23:35 UTC. 30 to do across 12 pillars; 33 more delivered and waiting for their check (listed at the end: do not redo them).
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -16,11 +16,703 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
-1. [Aether · Atmospheric & Field Lab] AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file · due 2026-11-26
-2. [Privacy · CA DROP] PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
+1. [Kairos Meridian] KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools) · due 2026-11-26
+2. [Hephaestus Hearth] HEA-GEM-23 · Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word) · due 2026-11-26
+3. [Garage] GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027 · due 2026-11-26
+4. [Records · Paper Killer] REC-GEM-07 · Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028 · due 2026-11-26
+5. [Bossa Piano Studio] PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key) · due 2026-11-26
+6. [Odyssey · Trips & Away Mode] ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026 · due 2026-11-26
+7. [Odyssey · Trips & Away Mode] ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos) · due 2026-11-26
+8. [Odyssey · Trips & Away Mode] ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos · due 2026-11-26
+9. [Odyssey · Trips & Away Mode] ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos · due 2026-11-26
+10. [Odyssey · Trips & Away Mode] ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts · due 2026-11-26
+11. [Odyssey · Trips & Away Mode] ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language) · due 2026-11-26
+12. [Odyssey · Trips & Away Mode] ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app · due 2026-11-26
+13. [Odyssey · Trips & Away Mode] ODY-GEM-12 · Odyssey: the best 10 photos of every trip you found (no people) · due 2026-11-26
+14. [Ludus Arcade] GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages · due 2026-11-26
+15. [Aether · Atmospheric & Field Lab] AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file · due 2026-11-26
+16. [Aether · Atmospheric & Field Lab] AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026 · due 2026-11-26
+17. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2026-11-26
+18. [Continuity · Sovereign Vault] CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers · due 2026-11-26
+19. [Privacy · CA DROP] PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
 
-==================== 1. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 1. AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file
+==================== 1. KAIROS MERIDIAN ====================
+## 1. KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Every 2027 holiday, school break and county closure is in Kairos before January.
+
+**Read first:**
+- opm.gov federal holidays 2027; calhr.ca.gov state holidays; kerncounty.com holiday schedule; El Tejon Unified School District 2026-27 and 2027-28 calendars (etusd.org)
+
+**Do this:**
+1. Every 2027 date from those four sources: name, date, which calendar, whether offices close, and the source URL and quote.
+2. School: first and last day, breaks, minimum days, no-school days.
+
+**Make:** `kairos_gemini_2027-dates_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per date`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): 
+- `name` (text): 
+- `calendar` (text): federal / California / Kern County / El Tejon USD
+- `closed` (text): yes / no / not stated
+- `url` (URL): 
+- `quote` (text): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every 2027 date from the four sources.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 2. HEPHAESTUS HEARTH ====================
+## 2. HEA-GEM-23 · Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Hearth sizes the deck joists to the load Kern actually enforces.
+
+**Read first:**
+- Kern County Code of Building Regulations as adopted for the 2025 California codes (the Board of Supervisors' ordinance adopting the 2025 cycle, Chapter 17.06)
+- kernpublicworks.com Building Inspection pages and bulletins
+
+**Do this:**
+1. Find the ordinance that adopted the 2025 California Building and Residential Codes in Kern County: its number, date, and the section on snow loads.
+2. Quote the snow-load section word for word; say whether it keeps the elevation table (and the value at 4,000-5,000 ft) or defers to ASCE 7-22.
+3. If Building Inspection publishes a snow-load bulletin or design-criteria sheet, quote it too.
+
+**Make:** `hearth_gemini_snow-load-rule_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `JSON array of rows`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `document` (text): ordinance or bulletin, number and date
+- `section` (text): 
+- `says` (text): plain reading
+- `value_psf` (text): number or 'not stated'
+- `url` (URL): 
+- `quote` (text): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** The adopting ordinance found and its snow section quoted, or 'not found' with every place searched.
+
+**How Claude checks it:**
+- Claude opens every URL.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 3. GARAGE ====================
+## 3. GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** The registration renewal shows its expected parts and whether a smog check is due.
+
+**Read first:**
+- dmv.ca.gov registration fees and smog pages; bar.ca.gov Smog Check rules; leginfo (Vehicle Code / Revenue and Taxation Code sections)
+
+**Do this:**
+1. Rows for each vehicle: smog check due or exempt (and until which model-year age), the registration fee parts that apply (registration fee, CHP fee, vehicle license fee rate, transportation improvement fee bands, county fees for Kern, the road improvement fee for zero-emission vehicles: does it apply to a hybrid?), motorcycle safety fee, and each one's amount or rate with its source.
+
+**Make:** `garage_gemini_ca-fees_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of rows`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `vehicle` (text): '2025 Kia Sorento Hybrid' or '2021 Yamaha MT-07' or 'both'
+- `item` (text): 
+- `amount` (text): dollars, rate or 'exempt until ...'
+- `rule` (text): plain reading
+- `url` (URL): 
+- `quote` (text): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every fee part and smog rule for both vehicles.
+
+**How Claude checks it:**
+- Claude opens 5 URLs.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 4. RECORDS · PAPER KILLER ====================
+## 4. REC-GEM-07 · Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Every payment or filing date of 2027 shows up in the core's deadlines with its source.
+
+**Read first:**
+- irs.gov Publication 509 (2027 Tax Calendars), ftb.ca.gov due dates, Kern County Treasurer-Tax Collector (kcttc.co.kern.ca.us) installment dates
+
+**Do this:**
+1. Every 2027 individual deadline: federal return, extension, four estimated payments (federal and California, CA's 30/40/0/30 split), property tax installments and delinquency dates, IRA/HSA contribution deadline. Weekend and holiday rolls applied and shown.
+
+**Make:** `records_gemini_2027-deadlines_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of rows`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): after the roll
+- `what` (text): 
+- `who` (text): IRS / FTB / Kern County
+- `rolled_from` (text): '' or the original date and why
+- `url` (URL): 
+- `quote` (text): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every 2027 individual deadline from the three sources.
+
+**How Claude checks it:**
+- Claude checks every roll and opens 5 URLs.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 5. BOSSA PIANO STUDIO ====================
+## 5. PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key)
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Each tune in the ladder links to the exact book and page, or the licensed sheet.
+
+**Read first:**
+- Your piano_gemini_bossa-ladder_20261119-0922.json
+- halleonard.com song lists for The Real Book (vols 1-3), The Brazilian Real Book (Sher Music), The Jobim Songbook; musicnotes.com
+
+**Do this:**
+1. For each of the 24: the book (publisher, title, edition), page, key printed there; or the licensed single sheet's URL and its key. Two sources when the tune is in more than one book.
+
+**Make:** `piano_gemini_bossa-sources_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one or two rows per tune`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `tune` (text): as in the ladder
+- `source` (text): book title, publisher, edition / or the sheet
+- `page` (text): or 'single sheet'
+- `key` (text): as printed
+- `url` (URL): the publisher's song list or the sheet
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every tune with at least one legal source.
+
+**How Claude checks it:**
+- Claude opens 8 rows.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 6. ODYSSEY · TRIPS & AWAY MODE ====================
+## 6. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Odyssey adds each trip to the map and timeline, with its own photo journey once Claude picks the photos.
+
+**Read first:**
+- Drive folders named 'Photos from YYYY' (Google Takeout copies; years 2008-2026), e.g. Photos from 2015 = https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf, Photos from 2024 = https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2, and the same photos in Google Photos (its Info panel shows the date, time zone, camera and the place Google estimates).
+- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/ (the three trips already there: do not list them again except to correct them)
+
+**Do this:**
+1. Go year by year through Google Photos (the map view and each photo's Info panel). A trip is 2 or more days with photos taken more than 60 miles from home (Frazier Park, CA; before 2020 also the Los Angeles area and Michigan, where Joseph lived).
+2. For each trip: first and last photo date, the places in order (city, region, country) as Google Photos names them, how many photos, the Google Photos place shown for the first photo of each place, and 2 Drive file ids per place as evidence.
+3. Mark each trip 'sure' (Google shows a location on the photos) or 'from pictures only' (no location; you recognised the place: say what you recognised).
+
+**Make:** `odyssey_gemini_trips-from-photos_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per trip, oldest first, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `start` (date): first photo
+- `end` (date): last photo
+- `places` (text): in order: 'City, Region, Country; ...'
+- `photos` (integer): count
+- `evidence` (text): 2 Drive file ids per place, 'file id = place'
+- `certainty` (text): 'sure' or 'from pictures only: <what you recognised>'
+- `note` (text): anything odd (e.g. a gap of days with no photos)
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** Every trip 2008-2026 with its places, dates, counts and evidence ids.
+
+**How Claude checks it:**
+- Claude opens 10 evidence ids at random and checks the place and date.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 7. ODYSSEY · TRIPS & AWAY MODE ====================
+## 7. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** A USA map in Odyssey: states visited, cities, first and last visit, how often.
+
+**Read first:**
+- Drive folders named 'Photos from YYYY' (Google Takeout copies; years 2008-2026), e.g. Photos from 2015 = https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf, Photos from 2024 = https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2, and the same photos in Google Photos (its Info panel shows the date, time zone, camera and the place Google estimates).
+
+**Do this:**
+1. List every US state with photos, and in each state every city or national park with 3+ photos, with first and last date and photo count.
+2. Leave out home (Frazier Park, Lebec, Gorman and the Tejon Pass towns) but count Los Angeles, Bakersfield and everywhere else.
+
+**Make:** `odyssey_gemini_usa-from-photos_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per city or park, grouped by state`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `state` (text): two-letter code
+- `place` (text): city or park as Google Photos names it
+- `first` (date): 
+- `last` (date): 
+- `photos` (integer): 
+- `visits` (integer): separate trips (a gap of 7+ days starts a new visit)
+- `evidence` (text): 2 Drive file ids
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** Every US place with 3+ photos, every state.
+
+**How Claude checks it:**
+- Claude opens 10 evidence ids at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 8. ODYSSEY · TRIPS & AWAY MODE ====================
+## 8. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Each day of the journey shows where he was and what he saw; the map shows the real route.
+
+**Read first:**
+- Photos from 2015: https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf and https://drive.google.com/drive/folders/1ayg3f3PtX7FX3Fwys5U-avKvUzMW6uTo
+- The trip as Odyssey has it: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-eurotrip-2015)
+
+**Do this:**
+1. One row per calendar day with photos, July to September 2015: the city, the 1-3 places photographed (landmark, museum, street, beach), first and last photo time (local time, say the zone), photo count, 2 Drive ids.
+2. Where the photos disagree with Odyssey's legs (a different city or date), say so in disagrees.
+
+**Make:** `odyssey_gemini_eurotrip-days_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per day, in order`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): 
+- `city` (text): 
+- `places` (text): 1-3 names, as on the place's own sign or official site
+- `first_time` (text): HH:MM zone
+- `last_time` (text): HH:MM zone
+- `photos` (integer): 
+- `evidence` (text): 2 Drive ids
+- `disagrees` (text): '' or what Odyssey has wrong
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** Every day with photos, July-September 2015.
+
+**How Claude checks it:**
+- Claude opens 10 days at random and checks the photos.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 9. ODYSSEY · TRIPS & AWAY MODE ====================
+## 9. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Each day shows where he was and what he saw (Tagaytay, Coron, El Nido, Manila, BGC).
+
+**Read first:**
+- Photos from 2024: https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2 and https://drive.google.com/drive/folders/1XEREfvi7JLrf5aWoY3MqhR59-IWGI4OH
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-philippines-2024-04 and seed-philippines-2024)
+
+**Do this:**
+1. Same as ODY-GEM-07 for April 6-21 and September 2024: one row per day with photos.
+2. Island hops and boat tours: name the island, beach or lagoon as the tour operator or tourism office names it.
+
+**Make:** `odyssey_gemini_philippines-days_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per day, in order`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `trip` (text): 'April 2024' or 'September 2024'
+- `date` (date): 
+- `city` (text): 
+- `places` (text): 1-3 names
+- `photos` (integer): 
+- `evidence` (text): 2 Drive ids
+- `disagrees` (text): '' or what Odyssey has wrong
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** Every day with photos on both trips.
+
+**How Claude checks it:**
+- Claude opens 10 days at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 10. ODYSSEY · TRIPS & AWAY MODE ====================
+## 10. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Every photo of a landmark gets its name, a pin on the map and two true lines about it.
+
+**Read first:**
+- Your ODY-GEM-07 and ODY-GEM-08 files (the places column)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/photos.js (the 36 photos already in Odyssey: their place and caption)
+
+**Do this:**
+1. 60 or more landmarks across the three trips (every landmark in the 36 photos first).
+2. For each: official name and local name, city, country, latitude and longitude (from Wikidata's coordinate location, with the Q-number), year completed or founded, height or length if it is famous for it, UNESCO World Heritage id if listed, the official site, and one fact with its quote from the official site or UNESCO's page.
+
+**Make:** `odyssey_gemini_landmarks_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 60+ objects, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `name` (text): English
+- `local_name` (text): 
+- `city` (text): 
+- `country` (text): 
+- `lat` (number): Wikidata P625
+- `lon` (number): Wikidata P625
+- `wikidata` (text): Q-number
+- `year` (text): completed or founded
+- `unesco` (text): id or 'no'
+- `url` (URL): official site or UNESCO page
+- `fact` (text): one sentence
+- `quote` (text): the source's words for the fact
+- `photo` (text): Drive id of one of Joseph's photos of it, or ''
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 60
+
+**Done when:** 60+ landmarks, each with coordinates, an official URL and a quoted fact.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random (Wikidata coordinates and the quote).
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 11. ODYSSEY · TRIPS & AWAY MODE ====================
+## 11. ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language)
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Tap a dot: the city's card. Totals per trip (people, countries, time zones crossed).
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (every stop code in seedTrips: about 30)
+
+**Do this:**
+1. For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words.
+
+**Make:** `odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per stop code`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `code` (text): stop code as in odyssey-data.js
+- `city` (text): 
+- `country` (text): 
+- `population` (integer): 
+- `pop_year` (integer): 
+- `pop_url` (URL): statistics office or Wikidata
+- `elevation_m` (number): 
+- `tz` (text): IANA
+- `currency` (text): now (and in 2015 if different)
+- `language` (text): 
+- `known_for` (text): 
+- `quote` (text): 
+- `url` (URL): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** One card per stop code, every number sourced.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 12. ODYSSEY · TRIPS & AWAY MODE ====================
+## 12. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Each photo's caption and map pin come from its own record; any wrong caption is fixed.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/tools/odyssey/photos.manifest.json (the 36 photos: Drive id, file name, the place Odyssey gives)
+
+**Do this:**
+1. For each of the 36: open it in Google Photos and copy the Info panel: date and time with zone, the place Google shows (and 'none' if it shows none), camera make and model.
+2. Say 'agrees' or what Odyssey has wrong.
+
+**Make:** `odyssey_gemini_photo-info_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 36 objects`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `drive_id` (text): 
+- `file` (text): 
+- `taken` (text): YYYY-MM-DD HH:MM and zone as Google shows it
+- `place` (text): as Google shows it, or 'none'
+- `camera` (text): 
+- `odyssey` (text): 'agrees' or what is wrong
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**How many:** 36
+
+**Done when:** All 36.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 13. ODYSSEY · TRIPS & AWAY MODE ====================
+## 13. ODY-GEM-12 · Odyssey: the best 10 photos of every trip you found (no people)
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Every trip in ODY-GEM-05 gets its own photo journey in Odyssey.
+
+**Read first:**
+- Your ODY-GEM-05 file
+
+**Do this:**
+1. For each trip in ODY-GEM-05 (oldest first, up to 25 trips): 8-12 photos that are sharp, well lit and show the place (landscape, landmark, street, food, view), in time order.
+2. Never a photo with a person as its subject, a face, a document, a screen, a licence plate or the inside of a home.
+
+**Make:** `odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per photo`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `trip` (integer): n of the trip in your ODY-GEM-05 file
+- `drive_id` (text): 
+- `file` (text): 
+- `taken` (text): date and time
+- `place` (text): 
+- `why` (text): what the photo shows, 8 words max
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** 8-12 photos for every trip, all privacy-safe.
+
+**How Claude checks it:**
+- Claude looks at every photo before it goes in.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 14. LUDUS ARCADE ====================
+## 14. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Games shows the current patch, known issues and fixes without Joseph searching.
+
+**Read first:**
+- rockstargames.com/newswire, support.rockstargames.com (Grand Theft Auto VI: known issues, patch notes, title update pages)
+
+**Do this:**
+1. Every title update and known-issue post for GTA VI from Nov 19 to the day you run this: date, version or title update number, platform, what it fixes (Rockstar's words), and its URL.
+
+**Make:** `games_gemini_gta6-week1_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of rows`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): 
+- `kind` (text): title update / known issue / hotfix
+- `version` (text): or 'not stated'
+- `platform` (text): 
+- `what` (text): Rockstar's words
+- `url` (URL): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every post from launch to the run date.
+
+**How Claude checks it:**
+- Claude opens every URL.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 15. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 15. AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -73,8 +765,147 @@ IN THIS ORDER:
 - a number that is not on its source and not shown as arithmetic
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 2. PRIVACY · CA DROP ====================
-## 2. PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them
+==================== 16. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 16. AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Aether's PSPS log starts with the real history: how often, how long, which months.
+
+**Read first:**
+- SCE's PSPS event reports (sce.com, 'Post Event Reports' to the CPUC) and the CPUC's PSPS page (cpuc.ca.gov)
+
+**Do this:**
+1. For each PSPS event 2019-2026 whose report lists a circuit serving Frazier Park, Lake of the Woods, Pinon Pines or Pine Mountain Club: event dates, circuit names, customers de-energized on those circuits, outage start and restore times, and the report's URL and page.
+
+**Make:** `aether_gemini_psps-history_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per event and circuit`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `event` (text): SCE's event name or dates
+- `circuit` (text): 
+- `community` (text): 
+- `customers` (integer): 
+- `off` (text): YYYY-MM-DD HH:MM
+- `on` (text): YYYY-MM-DD HH:MM
+- `url` (URL): the report
+- `page` (text): 
+- `quote` (text): the table row
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every event with a mountain-community circuit, or 'none found' rows per year with the reports checked.
+
+**How Claude checks it:**
+- Claude opens 5 reports.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 17. POLIS · CIVIC & LEGAL WATCH ====================
+## 17. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Polis shows the next meeting that could touch Joseph's mountain: MAC, Board of Supervisors, Planning Commission.
+
+**Read first:**
+- kerncounty.com Board of Supervisors 2027 meeting calendar; Kern County Planning Commission; the Frazier Park Municipal Advisory Council (Mountain Communities MAC) pages; Supervisor District 4 (or the district that covers Frazier Park: say which)
+
+**Do this:**
+1. Every 2027 meeting date published so far for the Board of Supervisors, the Planning Commission and the mountain MAC: date, time, place, how to watch or comment, and the source URL. Name the supervisor and district for ZIP 93225 with the county's own district map page.
+
+**Make:** `polis_gemini_2027-meetings_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of rows`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `body` (text): 
+- `date` (date): 
+- `time` (text): 
+- `place` (text): 
+- `how` (text): watch / comment
+- `url` (URL): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every published 2027 date for the three bodies, plus the district row.
+
+**How Claude checks it:**
+- Claude opens 5 URLs.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 18. CONTINUITY · SOVEREIGN VAULT ====================
+## 18. CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers
+
+**Due:** 2026-11-26 · **State:** now
+
+**What it unlocks:** Continuity can say 'this estate skips probate' or not, with the 2026 thresholds.
+
+**Read first:**
+- leginfo.legislature.ca.gov (Probate Code 13100, 13050, 13151, 5600-5698, 890) and courts.ca.gov small-estate forms (DE-305, DE-310)
+
+**Do this:**
+1. 10 rows: the small-estate limit now in force (and since when), what counts toward it, the 40-day wait, the affidavit form, the real-property limit, transfer-on-death deed requirements, when a TOD deed must be recorded, the witnesses rule, who can revoke it, and the court form numbers. Each with the code section and its words.
+
+**Make:** `continuity_gemini_ca-small-estate_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 10 rows`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `rule` (text): plain reading
+- `value` (text): amount, days or form number
+- `code_section` (text): 
+- `url` (URL): 
+- `quote` (text): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** 10 rows with current numbers.
+
+**How Claude checks it:**
+- Claude opens 5 sections.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 19. PRIVACY · CA DROP ====================
+## 19. PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them
 
 **Due:** 2026-11-27 · **State:** now
 

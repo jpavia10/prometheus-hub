@@ -241,6 +241,84 @@
      "due": "2026-11-24",
      "review": "Done 2026-11-19: Games 'Grand Theft Auto VI, from Rockstar' (gta6-facts.js). Unstated items marked so. Minor: two price quotes are a bare list price with no product name. Score 9/10 (#10).",
      "closed": "2026-11-19"
+    },
+    {
+     "id": "GAM-GEM-05",
+     "title": "Games: GTA VI's first week, from Rockstar's own pages",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "GTA VI came out on November 19, 2026. The first patches and known issues land this week.",
+     "unlocks": "Games shows the current patch, known issues and fixes without Joseph searching.",
+     "inputs": [
+      "rockstargames.com/newswire, support.rockstargames.com (Grand Theft Auto VI: known issues, patch notes, title update pages)"
+     ],
+     "steps": [
+      "Every title update and known-issue post for GTA VI from Nov 19 to the day you run this: date, version or title update number, platform, what it fixes (Rockstar's words), and its URL."
+     ],
+     "deliver": {
+      "file": "games_gemini_gta6-week1_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of rows"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": ""
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "title update / known issue / hotfix"
+      },
+      {
+       "name": "version",
+       "type": "text",
+       "rule": "or 'not stated'"
+      },
+      {
+       "name": "platform",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": "Rockstar's words"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every post from launch to the run date.",
+     "checks": [
+      "Claude opens every URL."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

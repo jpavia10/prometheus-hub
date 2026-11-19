@@ -540,6 +540,99 @@
      "due": "2026-11-27",
      "review": "Done 2026-11-19: Aether 'Sensors around Frazier Park'; all 12 distances re-computed from the coordinates and match. Score 10/10 (#21).",
      "closed": "2026-11-19"
+    },
+    {
+     "id": "AET-GEM-10",
+     "title": "Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Aether logs outages by hand. SCE publishes a report for every PSPS event with the circuits it cut.",
+     "unlocks": "Aether's PSPS log starts with the real history: how often, how long, which months.",
+     "inputs": [
+      "SCE's PSPS event reports (sce.com, 'Post Event Reports' to the CPUC) and the CPUC's PSPS page (cpuc.ca.gov)"
+     ],
+     "steps": [
+      "For each PSPS event 2019-2026 whose report lists a circuit serving Frazier Park, Lake of the Woods, Pinon Pines or Pine Mountain Club: event dates, circuit names, customers de-energized on those circuits, outage start and restore times, and the report's URL and page."
+     ],
+     "deliver": {
+      "file": "aether_gemini_psps-history_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per event and circuit"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "event",
+       "type": "text",
+       "rule": "SCE's event name or dates"
+      },
+      {
+       "name": "circuit",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "community",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "customers",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "off",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM"
+      },
+      {
+       "name": "on",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the report"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the table row"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every event with a mountain-community circuit, or 'none found' rows per year with the reports checked.",
+     "checks": [
+      "Claude opens 5 reports."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

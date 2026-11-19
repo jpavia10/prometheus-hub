@@ -744,6 +744,84 @@
      "due": "2026-11-28",
      "review": "Done 2026-11-19: Garage's 'Mileage baseline and gas price'. Claude re-fetched both EPA ids (exact) and checked CORS: fueleconomy.gov answers browsers (Access-Control-Allow-Origin: *), so the page's 'Check live' works. Score 8/10 (#19).",
      "closed": "2026-11-19"
+    },
+    {
+     "id": "GAR-GEM-12",
+     "title": "Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Garage has a paperwork radar but no real numbers: registration fee parts, smog exemptions for a new hybrid and a motorcycle, the hybrid's CA vehicle fees.",
+     "unlocks": "The registration renewal shows its expected parts and whether a smog check is due.",
+     "inputs": [
+      "dmv.ca.gov registration fees and smog pages; bar.ca.gov Smog Check rules; leginfo (Vehicle Code / Revenue and Taxation Code sections)"
+     ],
+     "steps": [
+      "Rows for each vehicle: smog check due or exempt (and until which model-year age), the registration fee parts that apply (registration fee, CHP fee, vehicle license fee rate, transportation improvement fee bands, county fees for Kern, the road improvement fee for zero-emission vehicles: does it apply to a hybrid?), motorcycle safety fee, and each one's amount or rate with its source."
+     ],
+     "deliver": {
+      "file": "garage_gemini_ca-fees_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of rows"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "vehicle",
+       "type": "text",
+       "rule": "'2025 Kia Sorento Hybrid' or '2021 Yamaha MT-07' or 'both'"
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "amount",
+       "type": "text",
+       "rule": "dollars, rate or 'exempt until ...'"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "plain reading"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every fee part and smog rule for both vehicles.",
+     "checks": [
+      "Claude opens 5 URLs."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

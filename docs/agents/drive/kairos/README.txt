@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 23:32 UTC · 1 open in this pillar.
+Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
 
 
 - KAI-GRK-03 · Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,22 +16,24 @@ Updated 2026-11-19 23:32 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-19 23:32 UTC · 1 open in this pillar.
+Updated 2026-11-19 23:35 UTC · 2 open in this pillar.
 
 
 - KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
     make: kairos_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools) · due 2026-11-26
+    make: kairos_gemini_2027-dates_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every 2027 date from the four sources.
 
 ## Muse
 
-Updated 2026-11-19 23:32 UTC · 0 open in this pillar.
+Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Kairos Meridian right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 23:32 UTC · 1 open in this pillar.
+Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
 
 
 - KAI-GPT-01 · Kairos Meridian: phone audit: 15 findings · due 2026-11-24
@@ -39,14 +41,14 @@ Updated 2026-11-19 23:32 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-19 23:32 UTC · 0 open in this pillar.
+Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Kairos Meridian right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 23:32 UTC · 0 open in this pillar.
+Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Kairos Meridian right now.

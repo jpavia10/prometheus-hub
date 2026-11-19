@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 23:32 UTC",
+ "updated": "2026-11-19 23:35 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -23,7 +23,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 1,
     "argon": 0,
@@ -67,7 +67,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 1,
     "argon": 0,
@@ -82,7 +82,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/garage/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 1,
     "argon": 0,
@@ -142,7 +142,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/records/",
    "open": {
     "grok": 1,
-    "gemini": 2,
+    "gemini": 3,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -187,7 +187,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/piano/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -232,7 +232,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/odyssey/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 9,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -277,7 +277,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/games/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -359,7 +359,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/aether/",
    "open": {
     "grok": 1,
-    "gemini": 2,
+    "gemini": 3,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -374,7 +374,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/polis/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -404,7 +404,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/continuity/",
    "open": {
     "grok": 2,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,

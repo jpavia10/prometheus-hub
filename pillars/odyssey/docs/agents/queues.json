@@ -198,6 +198,743 @@
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
+    },
+    {
+     "id": "ODY-GEM-05",
+     "title": "Odyssey: every trip in Joseph's Google Photos, 2008-2026",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Odyssey knows three trips (Eurotrip 2015, Philippines April 2024, Manila and El Nido September 2024). Joseph has photos from 2008 to 2026 and wants every trip on the map.",
+     "unlocks": "Odyssey adds each trip to the map and timeline, with its own photo journey once Claude picks the photos.",
+     "inputs": [
+      "Drive folders named 'Photos from YYYY' (Google Takeout copies; years 2008-2026), e.g. Photos from 2015 = https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf, Photos from 2024 = https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2, and the same photos in Google Photos (its Info panel shows the date, time zone, camera and the place Google estimates).",
+      "https://jpavia10.github.io/prometheus-hub/pillars/odyssey/ (the three trips already there: do not list them again except to correct them)"
+     ],
+     "steps": [
+      "Go year by year through Google Photos (the map view and each photo's Info panel). A trip is 2 or more days with photos taken more than 60 miles from home (Frazier Park, CA; before 2020 also the Los Angeles area and Michigan, where Joseph lived).",
+      "For each trip: first and last photo date, the places in order (city, region, country) as Google Photos names them, how many photos, the Google Photos place shown for the first photo of each place, and 2 Drive file ids per place as evidence.",
+      "Mark each trip 'sure' (Google shows a location on the photos) or 'from pictures only' (no location; you recognised the place: say what you recognised)."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_trips-from-photos_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per trip, oldest first, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "start",
+       "type": "date",
+       "rule": "first photo"
+      },
+      {
+       "name": "end",
+       "type": "date",
+       "rule": "last photo"
+      },
+      {
+       "name": "places",
+       "type": "text",
+       "rule": "in order: 'City, Region, Country; ...'"
+      },
+      {
+       "name": "photos",
+       "type": "integer",
+       "rule": "count"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "2 Drive file ids per place, 'file id = place'"
+      },
+      {
+       "name": "certainty",
+       "type": "text",
+       "rule": "'sure' or 'from pictures only: <what you recognised>'"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "anything odd (e.g. a gap of days with no photos)"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked.",
+      "Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere."
+     ],
+     "done_when": "Every trip 2008-2026 with its places, dates, counts and evidence ids.",
+     "checks": [
+      "Claude opens 10 evidence ids at random and checks the place and date."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-06",
+     "title": "Odyssey: Joseph's USA, state by state and city by city (from his photos)",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Joseph asked for his USA travels. Odyssey has none. Google Photos knows where most US photos were taken.",
+     "unlocks": "A USA map in Odyssey: states visited, cities, first and last visit, how often.",
+     "inputs": [
+      "Drive folders named 'Photos from YYYY' (Google Takeout copies; years 2008-2026), e.g. Photos from 2015 = https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf, Photos from 2024 = https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2, and the same photos in Google Photos (its Info panel shows the date, time zone, camera and the place Google estimates)."
+     ],
+     "steps": [
+      "List every US state with photos, and in each state every city or national park with 3+ photos, with first and last date and photo count.",
+      "Leave out home (Frazier Park, Lebec, Gorman and the Tejon Pass towns) but count Los Angeles, Bakersfield and everywhere else."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_usa-from-photos_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per city or park, grouped by state"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "state",
+       "type": "text",
+       "rule": "two-letter code"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": "city or park as Google Photos names it"
+      },
+      {
+       "name": "first",
+       "type": "date",
+       "rule": ""
+      },
+      {
+       "name": "last",
+       "type": "date",
+       "rule": ""
+      },
+      {
+       "name": "photos",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "visits",
+       "type": "integer",
+       "rule": "separate trips (a gap of 7+ days starts a new visit)"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "2 Drive file ids"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked.",
+      "Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere."
+     ],
+     "done_when": "Every US place with 3+ photos, every state.",
+     "checks": [
+      "Claude opens 10 evidence ids at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-07",
+     "title": "Odyssey: the 2015 Eurotrip day by day, from the photos",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Odyssey has the Eurotrip's 21 legs from Joseph's planning sheet, but not what he actually did each day. Two dates were already corrected from photos (Montserrat Aug 18, Malta from Aug 19).",
+     "unlocks": "Each day of the journey shows where he was and what he saw; the map shows the real route.",
+     "inputs": [
+      "Photos from 2015: https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf and https://drive.google.com/drive/folders/1ayg3f3PtX7FX3Fwys5U-avKvUzMW6uTo",
+      "The trip as Odyssey has it: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-eurotrip-2015)"
+     ],
+     "steps": [
+      "One row per calendar day with photos, July to September 2015: the city, the 1-3 places photographed (landmark, museum, street, beach), first and last photo time (local time, say the zone), photo count, 2 Drive ids.",
+      "Where the photos disagree with Odyssey's legs (a different city or date), say so in disagrees."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_eurotrip-days_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per day, in order"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": ""
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "places",
+       "type": "text",
+       "rule": "1-3 names, as on the place's own sign or official site"
+      },
+      {
+       "name": "first_time",
+       "type": "text",
+       "rule": "HH:MM zone"
+      },
+      {
+       "name": "last_time",
+       "type": "text",
+       "rule": "HH:MM zone"
+      },
+      {
+       "name": "photos",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "2 Drive ids"
+      },
+      {
+       "name": "disagrees",
+       "type": "text",
+       "rule": "'' or what Odyssey has wrong"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked.",
+      "Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere."
+     ],
+     "done_when": "Every day with photos, July-September 2015.",
+     "checks": [
+      "Claude opens 10 days at random and checks the photos."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-08",
+     "title": "Odyssey: the two 2024 Philippines trips day by day, from the photos",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Odyssey has both 2024 trips from the booking emails (hotels and flights) but not the days in between.",
+     "unlocks": "Each day shows where he was and what he saw (Tagaytay, Coron, El Nido, Manila, BGC).",
+     "inputs": [
+      "Photos from 2024: https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2 and https://drive.google.com/drive/folders/1XEREfvi7JLrf5aWoY3MqhR59-IWGI4OH",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-philippines-2024-04 and seed-philippines-2024)"
+     ],
+     "steps": [
+      "Same as ODY-GEM-07 for April 6-21 and September 2024: one row per day with photos.",
+      "Island hops and boat tours: name the island, beach or lagoon as the tour operator or tourism office names it."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_philippines-days_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per day, in order"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "trip",
+       "type": "text",
+       "rule": "'April 2024' or 'September 2024'"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": ""
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "places",
+       "type": "text",
+       "rule": "1-3 names"
+      },
+      {
+       "name": "photos",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "2 Drive ids"
+      },
+      {
+       "name": "disagrees",
+       "type": "text",
+       "rule": "'' or what Odyssey has wrong"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked.",
+      "Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere."
+     ],
+     "done_when": "Every day with photos on both trips.",
+     "checks": [
+      "Claude opens 10 days at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-09",
+     "title": "Odyssey: the landmarks Joseph photographed, with official facts",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Odyssey's journeys show a photo and a city. Joseph wants the monuments and landmarks named and explained.",
+     "unlocks": "Every photo of a landmark gets its name, a pin on the map and two true lines about it.",
+     "inputs": [
+      "Your ODY-GEM-07 and ODY-GEM-08 files (the places column)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/photos.js (the 36 photos already in Odyssey: their place and caption)"
+     ],
+     "steps": [
+      "60 or more landmarks across the three trips (every landmark in the 36 photos first).",
+      "For each: official name and local name, city, country, latitude and longitude (from Wikidata's coordinate location, with the Q-number), year completed or founded, height or length if it is famous for it, UNESCO World Heritage id if listed, the official site, and one fact with its quote from the official site or UNESCO's page."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_landmarks_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 60+ objects, exactly the fields below"
+     },
+     "count": 60,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "name",
+       "type": "text",
+       "rule": "English"
+      },
+      {
+       "name": "local_name",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "country",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "lat",
+       "type": "number",
+       "rule": "Wikidata P625"
+      },
+      {
+       "name": "lon",
+       "type": "number",
+       "rule": "Wikidata P625"
+      },
+      {
+       "name": "wikidata",
+       "type": "text",
+       "rule": "Q-number"
+      },
+      {
+       "name": "year",
+       "type": "text",
+       "rule": "completed or founded"
+      },
+      {
+       "name": "unesco",
+       "type": "text",
+       "rule": "id or 'no'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "official site or UNESCO page"
+      },
+      {
+       "name": "fact",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the source's words for the fact"
+      },
+      {
+       "name": "photo",
+       "type": "text",
+       "rule": "Drive id of one of Joseph's photos of it, or ''"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "60+ landmarks, each with coordinates, an official URL and a quoted fact.",
+     "checks": [
+      "Claude opens 10 rows at random (Wikidata coordinates and the quote)."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-10",
+     "title": "Odyssey: a city card for every stop (population, elevation, time zone, money, language)",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Each stop on Odyssey's map is a name and a dot. A card with the city's basic facts makes the map worth opening.",
+     "unlocks": "Tap a dot: the city's card. Totals per trip (people, countries, time zones crossed).",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (every stop code in seedTrips: about 30)"
+     ],
+     "steps": [
+      "For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per stop code"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "code",
+       "type": "text",
+       "rule": "stop code as in odyssey-data.js"
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "country",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "population",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "pop_year",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "pop_url",
+       "type": "URL",
+       "rule": "statistics office or Wikidata"
+      },
+      {
+       "name": "elevation_m",
+       "type": "number",
+       "rule": ""
+      },
+      {
+       "name": "tz",
+       "type": "text",
+       "rule": "IANA"
+      },
+      {
+       "name": "currency",
+       "type": "text",
+       "rule": "now (and in 2015 if different)"
+      },
+      {
+       "name": "language",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "known_for",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "One card per stop code, every number sourced.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-11",
+     "title": "Odyssey: what Google Photos knows about the 36 photos already in the app",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "The 36 photos in Odyssey were placed by their file names and by eye. Google Photos has their exact time, zone and place.",
+     "unlocks": "Each photo's caption and map pin come from its own record; any wrong caption is fixed.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/tools/odyssey/photos.manifest.json (the 36 photos: Drive id, file name, the place Odyssey gives)"
+     ],
+     "steps": [
+      "For each of the 36: open it in Google Photos and copy the Info panel: date and time with zone, the place Google shows (and 'none' if it shows none), camera make and model.",
+      "Say 'agrees' or what Odyssey has wrong."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_photo-info_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 36 objects"
+     },
+     "count": 36,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "drive_id",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "file",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "taken",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM and zone as Google shows it"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": "as Google shows it, or 'none'"
+      },
+      {
+       "name": "camera",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "odyssey",
+       "type": "text",
+       "rule": "'agrees' or what is wrong"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked.",
+      "Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere."
+     ],
+     "done_when": "All 36.",
+     "checks": [
+      "Claude opens 10 at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-12",
+     "title": "Odyssey: the best 10 photos of every trip you found (no people)",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in.",
+     "unlocks": "Every trip in ODY-GEM-05 gets its own photo journey in Odyssey.",
+     "inputs": [
+      "Your ODY-GEM-05 file"
+     ],
+     "steps": [
+      "For each trip in ODY-GEM-05 (oldest first, up to 25 trips): 8-12 photos that are sharp, well lit and show the place (landscape, landmark, street, food, view), in time order.",
+      "Never a photo with a person as its subject, a face, a document, a screen, a licence plate or the inside of a home."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per photo"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "trip",
+       "type": "integer",
+       "rule": "n of the trip in your ODY-GEM-05 file"
+      },
+      {
+       "name": "drive_id",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "file",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "taken",
+       "type": "text",
+       "rule": "date and time"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "why",
+       "type": "text",
+       "rule": "what the photo shows, 8 words max"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked.",
+      "Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere."
+     ],
+     "done_when": "8-12 photos for every trip, all privacy-safe.",
+     "checks": [
+      "Claude looks at every photo before it goes in."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

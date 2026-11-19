@@ -2,7 +2,7 @@
 
 # Ludus Arcade · homework for Gemini
 
-Updated 2026-11-19 23:32 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 23:35 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -70,3 +70,53 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** GTA VI came out on November 19, 2026. The first patches and known issues land this week.
+
+**What it unlocks:** Games shows the current patch, known issues and fixes without Joseph searching.
+
+**Read first:**
+- rockstargames.com/newswire, support.rockstargames.com (Grand Theft Auto VI: known issues, patch notes, title update pages)
+
+**Do this:**
+1. Every title update and known-issue post for GTA VI from Nov 19 to the day you run this: date, version or title update number, platform, what it fixes (Rockstar's words), and its URL.
+
+**Make:** `games_gemini_gta6-week1_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of rows`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): 
+- `kind` (text): title update / known issue / hotfix
+- `version` (text): or 'not stated'
+- `platform` (text): 
+- `what` (text): Rockstar's words
+- `url` (URL): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every post from launch to the run date.
+
+**How Claude checks it:**
+- Claude opens every URL.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)

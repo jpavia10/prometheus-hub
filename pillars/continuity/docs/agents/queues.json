@@ -296,6 +296,79 @@
      ],
      "review": "Done 2026-11-19: rows 26-27 of Continuity's accounts after death (Capital One 360 POD/joint, FDIC six-month grace). Score 10/10 (#15).",
      "closed": "2026-11-19"
+    },
+    {
+     "id": "CON-GEM-06",
+     "title": "Continuity: California's small-estate and transfer-on-death rules in 2026 numbers",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Continuity lists what happens to accounts. The state rules decide whether an estate needs probate at all.",
+     "unlocks": "Continuity can say 'this estate skips probate' or not, with the 2026 thresholds.",
+     "inputs": [
+      "leginfo.legislature.ca.gov (Probate Code 13100, 13050, 13151, 5600-5698, 890) and courts.ca.gov small-estate forms (DE-305, DE-310)"
+     ],
+     "steps": [
+      "10 rows: the small-estate limit now in force (and since when), what counts toward it, the 40-day wait, the affidavit form, the real-property limit, transfer-on-death deed requirements, when a TOD deed must be recorded, the witnesses rule, who can revoke it, and the court form numbers. Each with the code section and its words."
+     ],
+     "deliver": {
+      "file": "continuity_gemini_ca-small-estate_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 10 rows"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "plain reading"
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "amount, days or form number"
+      },
+      {
+       "name": "code_section",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "10 rows with current numbers.",
+     "checks": [
+      "Claude opens 5 sections."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

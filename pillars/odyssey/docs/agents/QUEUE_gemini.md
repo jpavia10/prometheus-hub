@@ -2,7 +2,7 @@
 
 # Odyssey · Trips & Away Mode · homework for Gemini
 
-Updated 2026-11-19 23:32 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 23:35 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -70,3 +70,444 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Odyssey knows three trips (Eurotrip 2015, Philippines April 2024, Manila and El Nido September 2024). Joseph has photos from 2008 to 2026 and wants every trip on the map.
+
+**What it unlocks:** Odyssey adds each trip to the map and timeline, with its own photo journey once Claude picks the photos.
+
+**Read first:**
+- Drive folders named 'Photos from YYYY' (Google Takeout copies; years 2008-2026), e.g. Photos from 2015 = https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf, Photos from 2024 = https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2, and the same photos in Google Photos (its Info panel shows the date, time zone, camera and the place Google estimates).
+- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/ (the three trips already there: do not list them again except to correct them)
+
+**Do this:**
+1. Go year by year through Google Photos (the map view and each photo's Info panel). A trip is 2 or more days with photos taken more than 60 miles from home (Frazier Park, CA; before 2020 also the Los Angeles area and Michigan, where Joseph lived).
+2. For each trip: first and last photo date, the places in order (city, region, country) as Google Photos names them, how many photos, the Google Photos place shown for the first photo of each place, and 2 Drive file ids per place as evidence.
+3. Mark each trip 'sure' (Google shows a location on the photos) or 'from pictures only' (no location; you recognised the place: say what you recognised).
+
+**Make:** `odyssey_gemini_trips-from-photos_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per trip, oldest first, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `start` (date): first photo
+- `end` (date): last photo
+- `places` (text): in order: 'City, Region, Country; ...'
+- `photos` (integer): count
+- `evidence` (text): 2 Drive file ids per place, 'file id = place'
+- `certainty` (text): 'sure' or 'from pictures only: <what you recognised>'
+- `note` (text): anything odd (e.g. a gap of days with no photos)
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** Every trip 2008-2026 with its places, dates, counts and evidence ids.
+
+**How Claude checks it:**
+- Claude opens 10 evidence ids at random and checks the place and date.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 3. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Joseph asked for his USA travels. Odyssey has none. Google Photos knows where most US photos were taken.
+
+**What it unlocks:** A USA map in Odyssey: states visited, cities, first and last visit, how often.
+
+**Read first:**
+- Drive folders named 'Photos from YYYY' (Google Takeout copies; years 2008-2026), e.g. Photos from 2015 = https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf, Photos from 2024 = https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2, and the same photos in Google Photos (its Info panel shows the date, time zone, camera and the place Google estimates).
+
+**Do this:**
+1. List every US state with photos, and in each state every city or national park with 3+ photos, with first and last date and photo count.
+2. Leave out home (Frazier Park, Lebec, Gorman and the Tejon Pass towns) but count Los Angeles, Bakersfield and everywhere else.
+
+**Make:** `odyssey_gemini_usa-from-photos_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per city or park, grouped by state`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `state` (text): two-letter code
+- `place` (text): city or park as Google Photos names it
+- `first` (date): 
+- `last` (date): 
+- `photos` (integer): 
+- `visits` (integer): separate trips (a gap of 7+ days starts a new visit)
+- `evidence` (text): 2 Drive file ids
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** Every US place with 3+ photos, every state.
+
+**How Claude checks it:**
+- Claude opens 10 evidence ids at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 4. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Odyssey has the Eurotrip's 21 legs from Joseph's planning sheet, but not what he actually did each day. Two dates were already corrected from photos (Montserrat Aug 18, Malta from Aug 19).
+
+**What it unlocks:** Each day of the journey shows where he was and what he saw; the map shows the real route.
+
+**Read first:**
+- Photos from 2015: https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf and https://drive.google.com/drive/folders/1ayg3f3PtX7FX3Fwys5U-avKvUzMW6uTo
+- The trip as Odyssey has it: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-eurotrip-2015)
+
+**Do this:**
+1. One row per calendar day with photos, July to September 2015: the city, the 1-3 places photographed (landmark, museum, street, beach), first and last photo time (local time, say the zone), photo count, 2 Drive ids.
+2. Where the photos disagree with Odyssey's legs (a different city or date), say so in disagrees.
+
+**Make:** `odyssey_gemini_eurotrip-days_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per day, in order`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): 
+- `city` (text): 
+- `places` (text): 1-3 names, as on the place's own sign or official site
+- `first_time` (text): HH:MM zone
+- `last_time` (text): HH:MM zone
+- `photos` (integer): 
+- `evidence` (text): 2 Drive ids
+- `disagrees` (text): '' or what Odyssey has wrong
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** Every day with photos, July-September 2015.
+
+**How Claude checks it:**
+- Claude opens 10 days at random and checks the photos.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 5. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Odyssey has both 2024 trips from the booking emails (hotels and flights) but not the days in between.
+
+**What it unlocks:** Each day shows where he was and what he saw (Tagaytay, Coron, El Nido, Manila, BGC).
+
+**Read first:**
+- Photos from 2024: https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2 and https://drive.google.com/drive/folders/1XEREfvi7JLrf5aWoY3MqhR59-IWGI4OH
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-philippines-2024-04 and seed-philippines-2024)
+
+**Do this:**
+1. Same as ODY-GEM-07 for April 6-21 and September 2024: one row per day with photos.
+2. Island hops and boat tours: name the island, beach or lagoon as the tour operator or tourism office names it.
+
+**Make:** `odyssey_gemini_philippines-days_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per day, in order`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `trip` (text): 'April 2024' or 'September 2024'
+- `date` (date): 
+- `city` (text): 
+- `places` (text): 1-3 names
+- `photos` (integer): 
+- `evidence` (text): 2 Drive ids
+- `disagrees` (text): '' or what Odyssey has wrong
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** Every day with photos on both trips.
+
+**How Claude checks it:**
+- Claude opens 10 days at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 6. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Odyssey's journeys show a photo and a city. Joseph wants the monuments and landmarks named and explained.
+
+**What it unlocks:** Every photo of a landmark gets its name, a pin on the map and two true lines about it.
+
+**Read first:**
+- Your ODY-GEM-07 and ODY-GEM-08 files (the places column)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/photos.js (the 36 photos already in Odyssey: their place and caption)
+
+**Do this:**
+1. 60 or more landmarks across the three trips (every landmark in the 36 photos first).
+2. For each: official name and local name, city, country, latitude and longitude (from Wikidata's coordinate location, with the Q-number), year completed or founded, height or length if it is famous for it, UNESCO World Heritage id if listed, the official site, and one fact with its quote from the official site or UNESCO's page.
+
+**Make:** `odyssey_gemini_landmarks_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 60+ objects, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `name` (text): English
+- `local_name` (text): 
+- `city` (text): 
+- `country` (text): 
+- `lat` (number): Wikidata P625
+- `lon` (number): Wikidata P625
+- `wikidata` (text): Q-number
+- `year` (text): completed or founded
+- `unesco` (text): id or 'no'
+- `url` (URL): official site or UNESCO page
+- `fact` (text): one sentence
+- `quote` (text): the source's words for the fact
+- `photo` (text): Drive id of one of Joseph's photos of it, or ''
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 60
+
+**Done when:** 60+ landmarks, each with coordinates, an official URL and a quoted fact.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random (Wikidata coordinates and the quote).
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 7. ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language)
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Each stop on Odyssey's map is a name and a dot. A card with the city's basic facts makes the map worth opening.
+
+**What it unlocks:** Tap a dot: the city's card. Totals per trip (people, countries, time zones crossed).
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (every stop code in seedTrips: about 30)
+
+**Do this:**
+1. For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words.
+
+**Make:** `odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per stop code`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `code` (text): stop code as in odyssey-data.js
+- `city` (text): 
+- `country` (text): 
+- `population` (integer): 
+- `pop_year` (integer): 
+- `pop_url` (URL): statistics office or Wikidata
+- `elevation_m` (number): 
+- `tz` (text): IANA
+- `currency` (text): now (and in 2015 if different)
+- `language` (text): 
+- `known_for` (text): 
+- `quote` (text): 
+- `url` (URL): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** One card per stop code, every number sourced.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 8. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** The 36 photos in Odyssey were placed by their file names and by eye. Google Photos has their exact time, zone and place.
+
+**What it unlocks:** Each photo's caption and map pin come from its own record; any wrong caption is fixed.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/tools/odyssey/photos.manifest.json (the 36 photos: Drive id, file name, the place Odyssey gives)
+
+**Do this:**
+1. For each of the 36: open it in Google Photos and copy the Info panel: date and time with zone, the place Google shows (and 'none' if it shows none), camera make and model.
+2. Say 'agrees' or what Odyssey has wrong.
+
+**Make:** `odyssey_gemini_photo-info_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 36 objects`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `drive_id` (text): 
+- `file` (text): 
+- `taken` (text): YYYY-MM-DD HH:MM and zone as Google shows it
+- `place` (text): as Google shows it, or 'none'
+- `camera` (text): 
+- `odyssey` (text): 'agrees' or what is wrong
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**How many:** 36
+
+**Done when:** All 36.
+
+**How Claude checks it:**
+- Claude opens 10 at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 9. ODY-GEM-12 · Odyssey: the best 10 photos of every trip you found (no people)
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in.
+
+**What it unlocks:** Every trip in ODY-GEM-05 gets its own photo journey in Odyssey.
+
+**Read first:**
+- Your ODY-GEM-05 file
+
+**Do this:**
+1. For each trip in ODY-GEM-05 (oldest first, up to 25 trips): 8-12 photos that are sharp, well lit and show the place (landscape, landmark, street, food, view), in time order.
+2. Never a photo with a person as its subject, a face, a document, a screen, a licence plate or the inside of a home.
+
+**Make:** `odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per photo`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `trip` (integer): n of the trip in your ODY-GEM-05 file
+- `drive_id` (text): 
+- `file` (text): 
+- `taken` (text): date and time
+- `place` (text): 
+- `why` (text): what the photo shows, 8 words max
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+
+**Done when:** 8-12 photos for every trip, all privacy-safe.
+
+**How Claude checks it:**
+- Claude looks at every photo before it goes in.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)

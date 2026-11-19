@@ -2,7 +2,7 @@
 
 # Continuity · Sovereign Vault · homework for Gemini
 
-Updated 2026-11-19 23:32 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 23:35 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -70,3 +70,54 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** Continuity lists what happens to accounts. The state rules decide whether an estate needs probate at all.
+
+**What it unlocks:** Continuity can say 'this estate skips probate' or not, with the 2026 thresholds.
+
+**Read first:**
+- leginfo.legislature.ca.gov (Probate Code 13100, 13050, 13151, 5600-5698, 890) and courts.ca.gov small-estate forms (DE-305, DE-310)
+
+**Do this:**
+1. 10 rows: the small-estate limit now in force (and since when), what counts toward it, the 40-day wait, the affidavit form, the real-property limit, transfer-on-death deed requirements, when a TOD deed must be recorded, the witnesses rule, who can revoke it, and the court form numbers. Each with the code section and its words.
+
+**Make:** `continuity_gemini_ca-small-estate_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 10 rows`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `rule` (text): plain reading
+- `value` (text): amount, days or form number
+- `code_section` (text): 
+- `url` (URL): 
+- `quote` (text): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** 10 rows with current numbers.
+
+**How Claude checks it:**
+- Claude opens 5 sections.
+
+**Not done (sent back) if:**
+- fewer rows than the count (where a count is set), or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' or 'not found' instead)

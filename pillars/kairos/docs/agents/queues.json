@@ -591,6 +591,85 @@
      "count_note": "every example in RFC 5545 section 3.8.5.3 (about 40)",
      "review": "Done 2026-11-19: proofs/unit/rrule-rfc.test.mjs runs all 39 examples. The file exposed a real Kairos bug (YEARLY;BYDAY=20MO gave no dates) and two missing rule kinds (BYYEARDAY, BYWEEKNO), all fixed. Missing: the RFC's second ('or') forms of examples 5, 9 and 36 (Claude added two). Count 40 was 'about 40'; corrected. Score 9/10 (#22).",
      "closed": "2026-11-19"
+    },
+    {
+     "id": "KAI-GEM-13",
+     "title": "Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Kairos has 2026's fixed dates. 2027 starts in six weeks.",
+     "unlocks": "Every 2027 holiday, school break and county closure is in Kairos before January.",
+     "inputs": [
+      "opm.gov federal holidays 2027; calhr.ca.gov state holidays; kerncounty.com holiday schedule; El Tejon Unified School District 2026-27 and 2027-28 calendars (etusd.org)"
+     ],
+     "steps": [
+      "Every 2027 date from those four sources: name, date, which calendar, whether offices close, and the source URL and quote.",
+      "School: first and last day, breaks, minimum days, no-school days."
+     ],
+     "deliver": {
+      "file": "kairos_gemini_2027-dates_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+      "shape": "JSON array, one object per date"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": ""
+      },
+      {
+       "name": "name",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "calendar",
+       "type": "text",
+       "rule": "federal / California / Kern County / El Tejon USD"
+      },
+      {
+       "name": "closed",
+       "type": "text",
+       "rule": "yes / no / not stated"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every 2027 date from the four sources.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

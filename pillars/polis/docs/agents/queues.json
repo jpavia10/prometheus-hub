@@ -326,6 +326,84 @@
      ],
      "review": "Done 2026-11-19: rows 26-30 of Polis's Kern rules. Row 27 cites the 2022 California Building Code; the 2025 edition has been in force since 2026-01-01 (the Chapter 7A rule carries over). Score 9/10 (#14).",
      "closed": "2026-11-19"
+    },
+    {
+     "id": "POL-GEM-07",
+     "title": "Polis: who decides things for Frazier Park and when they meet in 2027",
+     "state": "now",
+     "added": "2026-11-19",
+     "due": "2026-11-26",
+     "why": "Polis lists Kern rules but not the meetings where they change.",
+     "unlocks": "Polis shows the next meeting that could touch Joseph's mountain: MAC, Board of Supervisors, Planning Commission.",
+     "inputs": [
+      "kerncounty.com Board of Supervisors 2027 meeting calendar; Kern County Planning Commission; the Frazier Park Municipal Advisory Council (Mountain Communities MAC) pages; Supervisor District 4 (or the district that covers Frazier Park: say which)"
+     ],
+     "steps": [
+      "Every 2027 meeting date published so far for the Board of Supervisors, the Planning Commission and the mountain MAC: date, time, place, how to watch or comment, and the source URL. Name the supervisor and district for ZIP 93225 with the county's own district map page."
+     ],
+     "deliver": {
+      "file": "polis_gemini_2027-meetings_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of rows"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "body",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": ""
+      },
+      {
+       "name": "time",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "how",
+       "type": "text",
+       "rule": "watch / comment"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every published 2027 date for the three bodies, plus the district row.",
+     "checks": [
+      "Claude opens 5 URLs."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
     }
    ]
   },

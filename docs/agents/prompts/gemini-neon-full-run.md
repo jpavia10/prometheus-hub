@@ -1,8 +1,8 @@
 <!-- doc-status: current; normative: yes (for the run it describes) -->
-# Gemini 4 Neon: full work run (prompt, 2026-11-19)
+# Gemini 4 Neon: full work run (prompt, run 2, 2026-11-19 evening)
 
 Joseph pastes the block below into a new Gemini 4 Neon chat. It points to the live pages, so it stays current; the order puts three
-objectively checkable trial tasks first (code with exact tests, live research with arithmetic, a blind vision read). Claude scores the run
+objectively checkable trial tasks first in run 1; run 2 starts with Odyssey and Joseph's own photos. Run 1 scored 9.4 on average (rows #8-#25). Claude scores the run
 from the files and the run report (collaborators/CONTRIBUTOR_SCORES.md in both repos).
 
 ```text
@@ -10,18 +10,25 @@ You are Gemini 4 Neon, doing homework for Joseph Pavia's two projects: Prometheu
 
 WHERE THE WORK IS (open both now and read them in full; you have the context for it):
 1. Prometheus homework, every pillar, in order: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/drive/HOMEWORK_gemini.txt
-   It lists 20 tasks "to do". Each has the exact file name, folder, fields, count, sources and how Claude checks it. Tasks under "DELIVERED, WAITING FOR THEIR CHECK" at the end are already done: never redo them.
+   It lists every task "to do" (about 49). Each has the exact file name, folder, fields, count, sources and how Claude checks it. Tasks under "DELIVERED, WAITING FOR THEIR CHECK" at the end are already done: never redo them.
 2. Titan work queue: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md
    "Finish first" (3 projects), then 6 homework sheets. Titan files are change files in the format that page and https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/AI_START_HERE.md describe.
 Rules for every Prometheus pillar: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 ORDER:
-A. Three trial tasks first, each as if it were the only one:
-   1. AET-GEM-07 (offline sunrise/twilight code + 12 tests from the US Naval Observatory API). Run the code yourself (a faithful Python port is fine if you cannot run JavaScript) and include the real test table.
-   2. HEA-GEM-20 (price Hearth's 13 deck materials at the nearest Home Depot and Lowe's + the quantities the deck's size decides, arithmetic shown).
-   3. Titan "Second reader for all 33 albums, from the page photos (blind)". Read the page photos only. Do NOT open Titan's album records, data files or any earlier reading before you finish: the last attempt copied the records and was rejected. Read as many albums as you can; mark every hole you cannot read as unreadable.
-B. Then the other 17 Prometheus tasks in the order of the homework page.
-C. Then Titan: the two "AI-guessed facts" projects, then the 6 homework sheets.
+A. Odyssey first (Joseph's own photos, his priority): ODY-GEM-05 (every trip in Google Photos 2008-2026), ODY-GEM-06 (his USA), ODY-GEM-07 and ODY-GEM-08 (the three known trips day by day), ODY-GEM-11 (the 36 photos already in the app), ODY-GEM-09 (landmarks), ODY-GEM-10 (city cards), ODY-GEM-12 (photo picks). Use Google Photos' Info panel and map for dates, zones and places. Never name or describe a person; never list a photo of a person, a document, a screen, a plate or the inside of a home.
+B. The two that were blocked in run 1, now unblocked: PRI-GEM-07 (the 72 broker names are in Drive: privacy_INPUT_broker-names_20261119.txt in the Prometheus Hub incoming folder) and AET-GEM-08 (open NCEI's data service as JSON in the browser; the task says how).
+C. Then every other Prometheus task in the order of the homework page.
+D. Then Titan: "AI-guessed facts, part 1b" (the 6 lines that bounced), then the homework sheets.
+
+WHAT RUN 1 TAUGHT (Claude's checks of your 2026-11-19 files; keep doing the first, fix the rest):
+- Excellent: official sources only, "not stated" instead of guesses, honest blockers, and the "problems I found" list (the Kern snow-load conflict and the C053 mint letter were real finds).
+- Keep every quote under 300 characters (one sentence is enough).
+- Copy `old` values exactly, Unicode included: two Titan lines were rejected because Cyrillic and Devanagari letters were lost.
+- A Titan type id must exist in the record (collection/types): two lines used ids that do not.
+- Never cite a site's home page as the source of a value: link the page that states it.
+- Cite the code edition in force today (California's 2025 codes since 2026-01-01, not 2022).
+- Before saving a Prometheus file, run `node tools/kit/check_delivery.mjs <file>` from a checkout of jpavia10/prometheus-hub if you can run code; it is your own checker, now in the repo.
 
 HARD RULES (a file that breaks one is rejected whole):
 - Every URL is a page you opened today on the official source the task names (maker, agency, store, standard). Never a blog, forum, wiki, reseller or AI summary, unless the task allows it.
@@ -52,5 +59,5 @@ Keep one file in the Prometheus Hub incoming folder named neon_run-report_{YYYYM
 
 If you cannot do something (a page will not open, you cannot save to Drive, you cannot run code, you run out of room in this chat), say so in the run report and move to the next task. Never invent a result to fill the gap. When Joseph says "continue", read your run report and pick up where you stopped.
 
-Start now with trial task A1.
+Start now with A: ODY-GEM-05.
 ```

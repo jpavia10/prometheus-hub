@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 23:32 UTC",
+ "updated": "2026-11-19 23:35 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -517,6 +517,193 @@
    "title": "Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file",
    "state": "now",
    "count": 12
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AET-GEM-10",
+   "title": "Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "continuity",
+   "pillar_name": "Continuity · Sovereign Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "CON-GEM-06",
+   "title": "Continuity: California's small-estate and transfer-on-death rules in 2026 numbers",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "games",
+   "pillar_name": "Ludus Arcade",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAM-GEM-05",
+   "title": "Games: GTA VI's first week, from Rockstar's own pages",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "garage",
+   "pillar_name": "Garage",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAR-GEM-12",
+   "title": "Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-23",
+   "title": "Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "kairos",
+   "pillar_name": "Kairos Meridian",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KAI-GEM-13",
+   "title": "Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-05",
+   "title": "Odyssey: every trip in Joseph's Google Photos, 2008-2026",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-06",
+   "title": "Odyssey: Joseph's USA, state by state and city by city (from his photos)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-07",
+   "title": "Odyssey: the 2015 Eurotrip day by day, from the photos",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-08",
+   "title": "Odyssey: the two 2024 Philippines trips day by day, from the photos",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-09",
+   "title": "Odyssey: the landmarks Joseph photographed, with official facts",
+   "state": "now",
+   "count": 60
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-10",
+   "title": "Odyssey: a city card for every stop (population, elevation, time zone, money, language)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-11",
+   "title": "Odyssey: what Google Photos knows about the 36 photos already in the app",
+   "state": "now",
+   "count": 36
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-12",
+   "title": "Odyssey: the best 10 photos of every trip you found (no people)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "piano",
+   "pillar_name": "Bossa Piano Studio",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PIA-GEM-05",
+   "title": "Piano: where each of the 24 bossa tunes is legally printed (book, page, key)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "polis",
+   "pillar_name": "Polis · Civic & Legal Watch",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "POL-GEM-07",
+   "title": "Polis: who decides things for Frazier Park and when they meet in 2027",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "records",
+   "pillar_name": "Records · Paper Killer",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "REC-GEM-07",
+   "title": "Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028",
+   "state": "now",
+   "count": 0
   },
   {
    "due": "2026-11-27",
