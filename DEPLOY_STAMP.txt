@@ -1,1 +1,1 @@
-deck d20 2026-11-19 offline precache d35 and update chip, after main shell cache d34
+deck d20 2026-11-19 offline precache d36 and update chip, after main shell cache d35

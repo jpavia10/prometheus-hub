@@ -1,9 +1,9 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
    Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline.
    The url list is generated (sw-precache.js). A waiting worker stays waiting until the page's Update ready chip asks it to take over.
-   Main's shell cache is d34; this one is d35 so a merged tree is not served from that cache. */
+   Main's shell cache is d35; this one is d36 so a merged tree is not served from that cache. */
 importScripts("./sw-precache.js");
-var CACHE = "prometheus-hub-deck-d35";
+var CACHE = "prometheus-hub-deck-d36";
 var SHELL = self.PRECACHE || [];
 
 function addAll(cache, urls) {

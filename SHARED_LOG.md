@@ -1,6 +1,6 @@
-### [2026-11-19] Offline precache merged onto main, shell cache d35
-- `tools/registry/sync.mjs` rewrote `sw-precache.js` (354 urls) from `pillars.json` and each local pillar page, including the files main added through d34 (deadlines, menu, painted worlds, Odyssey map, Kern rules, permits, readiness). A stale list fails the pre-merge check. Titan and Midas are not cached. Main's cache was `prometheus-hub-deck-d34`; this shell is `d35`.
-- Install still waits for the Update ready chip. The daily pillar sweep stays. After the merge: unit `65/65`, browser `33/33` including OFFLINE-1 (25/25 with the network cut) and UPDATE-1.
+### [2026-11-19] Offline precache merged onto main, shell cache d36
+- `tools/registry/sync.mjs` rewrote `sw-precache.js` (427 urls) from `pillars.json` and each local pillar page, including the files main added through d35 (deadlines, menu, painted worlds, Odyssey map and trip photos, Kern rules, permits, readiness). A stale list fails the pre-merge check. Titan and Midas are not cached. Main's cache is `prometheus-hub-deck-d35`; this shell is `d36`.
+- Install still waits for the Update ready chip. The daily pillar sweep stays. After the merge: unit `65/65`, browser `34/34` including OFFLINE-1 (25/25 with the network cut) and UPDATE-1.
 
 ### [2026-11-18] Sebastian: Forge ledger read-path fix — Drive fetch was CORS-blocked; mirror ships with d22
 
