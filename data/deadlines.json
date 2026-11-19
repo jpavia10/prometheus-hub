@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 00:12 UTC",
+ "updated": "2026-11-19 01:22 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -154,6 +154,17 @@
    "title": "Foundry: prior art for each of the 11 inventions",
    "state": "now",
    "count": 55
+  },
+  {
+   "due": "2026-11-23",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "HUB-MUS-03",
+   "title": "Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940)",
+   "state": "now",
+   "count": 23
   },
   {
    "due": "2026-11-24",
