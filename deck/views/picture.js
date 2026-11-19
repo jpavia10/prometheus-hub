@@ -2,19 +2,33 @@
    Runway, countdowns, focus and the day ring live on Time. Storm, homestead, the counts and the atlas live on System.
    The payoff ring lives on Money. Nothing here is a table, and nothing here is a dollar figure.
    The game menu (owner, 2026-11-16) is the other home; ?home=orbit|menu pins one for the proofs. */
-import { put, h, icon, plural } from "../core/ui.js";
-import { eventsSince } from "../core/reach.js";
-import { clock } from "../core/dates.js";
+import { put, h, icon } from "../core/ui.js";
+import { clock, today } from "../core/dates.js";
 import { nowFacts } from "../core/now.js";
+import { fixed } from "../core/feeds.js";
+import { loadBrief } from "../models/brief.js";
 import { untilText } from "./parts.js";
 import { reactor, boot } from "./orrery.js";
 import { menu, unpin } from "./menu.js";
 
-const ago = (iso) => { const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + " min" : m < 1440 ? Math.round(m / 60) + " h" : Math.round(m / 1440) + " d"; };
 function homeMode() {
   const q = new URLSearchParams(location.search).get("home");
   if (q === "orbit" || q === "menu") return q;
   try { return localStorage.getItem("prom.deck.home") === "orbit" ? "orbit" : "menu"; } catch (e) { return "menu"; }
+}
+
+/** The one card. The top ranked line, or a quiet card when the device has nothing to brief. */
+function contextCard(lines) {
+  const top = lines[0];
+  if (!top) return h("section.panel.context-card", { "aria-label": "Brief" }, h("header.panel-head", h("h2", "Brief")), h("p.quiet", "Nothing on the brief."));
+  if (top.rule === "since") {
+    return h("section.panel.since.context-card", { "aria-label": "Since you were here" },
+      h("header.panel-head", h("h2", "Since you were here")),
+      h("a.since-row", { href: top.href }, h("b", top.where || top.label), h("span", top.say || top.text), top.when ? h("small.quiet", top.when) : null));
+  }
+  return h("section.panel.context-card", { "aria-label": top.label },
+    h("header.panel-head", h("h2", top.label)),
+    h("a.brief-line", { href: top.href }, top.text));
 }
 
 export function render(root, route, ctx) {
@@ -29,28 +43,10 @@ export function render(root, route, ctx) {
 
   const seenKey = "prom.deck.lastSeen"; let lastSeen = null;
   try { lastSeen = sessionStorage.getItem(seenKey + ".s") || localStorage.getItem(seenKey); sessionStorage.setItem(seenKey + ".s", lastSeen || ""); localStorage.setItem(seenKey, new Date().toISOString()); } catch (e) { /* first visit */ }
-  const fresh = eventsSince(lastSeen || "", 8), lately = (fresh.length ? fresh : eventsSince("", 4)).slice(0, 2);
-  const w = ctx.weather(); const alerts = (w && w.alerts) || [];
-  const away = (() => { try { return JSON.parse(localStorage.getItem("prometheus.odyssey.away") || "false") === true || (JSON.parse(localStorage.getItem("prometheus.bus.meta") || "{}").awayMode === true); } catch { return false; } })();
-
-  let card;
-  if (lately.length) {
-    card = h("section.panel.since.context-card", { "aria-label": fresh.length ? "Since you were here" : "Lately" },
-      h("header.panel-head", h("h2", fresh.length ? "Since you were here" : "Lately in the pillars"), h("small.quiet", fresh.length ? plural(fresh.length, "change") : "")),
-      ...lately.map((e) => h("a.since-row", { href: e.href }, h("b", e.name), h("span", e.say + (e.title ? ": " + e.title : "")), h("small.quiet", ago(e.at)))));
-  } else if (away) {
-    card = h("section.panel.context-card.away-banner", { "aria-label": "Away" },
-      h("header.panel-head", h("h2", "Away"), h("a.link", { href: "pillars/odyssey/" }, "Checklist")),
-      h("p.quiet", "Travel is on. The checklist is in Odyssey."));
-  } else if (alerts.length) {
-    card = h("section.panel.context-card", { "aria-label": "Weather alert" },
-      h("header.panel-head", h("h2", alerts[0].event), h("a.link", { href: "#/system" }, "Storm watch")),
-      h("p.quiet", alerts[0].headline || "A weather alert is active."));
-  } else {
-    card = h("section.panel.context-card", { "aria-label": "On this device" },
-      h("header.panel-head", h("h2", "On this device"), h("a.link", { href: "#/time" }, "Time")),
-      h("p.quiet", "The core is home. Runway, countdowns and focus are in Time. Storm, homestead and the counts are in System."));
-  }
+  const lines = loadBrief((k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, {
+    today: today(), now: now.toISOString(), lastSeen: lastSeen || "", time: ctx.store.get("time"), money: ctx.store.get("money"), fixed: fixed(),
+  });
+  const card = contextCard(lines);
 
   if (homeMode() !== "orbit") {
     const rx = menu(ctx, { rerender: () => { if (rx && rx.cleanup) rx.cleanup(); location.hash = "#/"; dispatchEvent(new HashChangeEvent("hashchange")); } });

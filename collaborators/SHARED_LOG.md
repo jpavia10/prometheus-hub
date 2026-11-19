@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-19] Ranked brief on the home card and in System
+- `deck/models/brief.js` ranks overdue items, date collisions, away mode, changes since the last visit, and streaks from the bus and the pillar stores. Each line links to its record. A device with none of those has no line. The home card shows the top line. System lists the rest and can read it aloud with `speechSynthesis`. Titan and Midas are not read.
+
 ### [2026-11-19] Arrival orbit kept; PILLAR-1 waits on the section
 - The orbit home is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and continues only once that section is the one on screen, because a coordinate click was landing on a tab the page had just replaced. Shell cache d36.
 
