@@ -7,6 +7,7 @@ import { h, $, icon, sheet, toast, pickFile, reduced, ask, sheetOpen, setQuiet }
 import { CAPS, SLICES, cap } from "./caps.js";
 import { PILLARS, pillar } from "./pillars.js";
 import { setFixed, searchAll } from "./core/feeds.js";
+import { referenceDeadlines, sweepPillars, keepData } from "./core/deadlines.js";
 import { syncBridges, mirrorDeckToPillars } from "./core/legacy.js";
 import { loadManifests, searchRecords, commands, handOff } from "./core/reach.js";
 import { startSky } from "./core/atmo.js";
@@ -305,7 +306,8 @@ async function boot() {
   drawShell(); const reach = loadManifests().catch(() => []);
   try { state.sky = startSky($("#sky")); } catch (e) { console.warn("[sky]", e); }
   if (!state.sky) document.documentElement.classList.add("no-sky");
-  try { const r = await fetch("./deck/data/fixed-dates.json"); state.fixed = await r.json(); setFixed(state.fixed); } catch (e) { console.warn("fixed dates unavailable offline on a first visit", e); }
+  try { state.fixed = await referenceDeadlines(); setFixed(state.fixed); } catch (e) { console.warn("fixed dates unavailable offline on a first visit", e); }
+  keepData().then((k) => { state.kept = k; });
   if (params.get("demo") === "1" && store.pristine()) store.importFile(demoDeck(today(), state.fixed));
   syncBridges(store);
   addEventListener("storage", () => { syncBridges(store); render(true); });
@@ -321,6 +323,14 @@ async function boot() {
   document.documentElement.classList.add("ready");
   reloadWeather(false);
   if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("./sw.js").catch(() => {});
+  /* once a day, when idle: each publishing pillar runs in a hidden frame so its deadlines reach Today without a visit (core/deadlines.js).
+     Pinned-clock proof runs skip it unless they ask (?sweep=now); ?nosweep=1 turns it off. */
+  const sw = params.get("sweep");
+  if (params.get("nosweep") !== "1" && (sw === "now" || !params.get("now"))) {
+    const go = () => sweepPillars(Object.fromEntries(PILLARS.map((p) => [p.id, p.route])), { force: sw === "now" })
+      .then((r) => { state.sweep = r; if (r.after !== r.before) { syncBridges(store); render(true); } }).catch((e) => console.warn("[sweep]", e));
+    setTimeout(() => (window.requestIdleCallback ? requestIdleCallback(go, { timeout: 8000 }) : go()), sw === "now" ? 300 : 6000);
+  }
 }
 window.__deck = { store, clock, ctx, state, BUILD, reach: { searchRecords, commands } };                               // for the proofs and for the curious
 boot();

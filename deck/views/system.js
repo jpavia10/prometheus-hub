@@ -16,6 +16,10 @@ export function render(root, route, ctx) {
     h("section.hero.small", h("p.kicker", "System"), h("h1.headline", "Your data stays on this device")),
     h("section.panel", h("header.panel-head", h("h2", "Everything on this device"), chip("all local pillars + argus idb")),
       h("p.quiet", "One integrity-checked archive covering every local pillar's localStorage stores, shared buses, deck settings, and Argus IndexedDB photo blobs. External Titan Reliquary and Midas Ledger maintain separate backups on their own origins and are excluded."),
+      (() => { const S = (window.__deck && window.__deck.state) || {}, k = S.kept, sw = S.sweep;                                  // 2026-11-19: core/deadlines.js
+        return h("p.quiet", { id: "keep-state" }, k === true ? "This browser has agreed to keep Prometheus's data (it is not cleared when the phone runs low on space). Clearing browsing data still wipes it: keep a backup."
+          : k === false ? "This browser has not agreed to keep Prometheus's data yet: it may clear it when space runs low. Installing Prometheus to the home screen usually fixes that. Keep a backup."
+          : "Storage protection: not reported by this browser. Keep a backup.", sw && sw.ran ? ` Pillars checked in the background today: ${sw.ran}, deadlines known: ${sw.after}.` : ""); })(),
       h("div.row", h("button.btn", { type: "button", id: "backup-all", onclick: async () => { await snapshotIndexedDB(); const b = backupAll(); download(`prometheus-everything-${t}.json`, b); toast(`Saved ${b.count} stores and ${b.idbCount || 0} Argus photo blobs.`); } }, icon("download", 18), "Back up everything"),
         h("button.btn.ghost", { type: "button", id: "restore-all", onclick: async () => { const f = await pickFile(); if (!f) return; let file, pr; try { file = JSON.parse(await f.text()); pr = previewRestore(file); } catch (e) { return toast(e.message || "That file could not be read."); }
           if (!pr.add.length && !pr.change.length && !pr.idbCount) return toast("Nothing to restore: this device already holds the same.");
