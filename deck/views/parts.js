@@ -1,6 +1,6 @@
 /* Pieces more than one view uses: a dated row, the day runway, the home-location sheet, the sky sheet. */
-import { h, icon, sheet, field, toast, money, chip, bars, spark } from "../core/ui.js";
-import { clock, today, fmtDay, fmtTime, relDay, addDays, dowName, diffDays } from "../core/dates.js";
+import { h, s, icon, sheet, field, toast, money, chip, bars, spark } from "../core/ui.js";
+import { clock, today, fmtDay, fmtTime, relDay, addDays, dowName, monName, diffDays } from "../core/dates.js";
 import * as wx from "../core/weather.js";
 
 export const TONE_LABEL = { event: "Event", deadline: "Deadline", school: "School", appointment: "Appointment", bill: "Bill", sub: "Subscription", holiday: "Federal holiday", tax: "Tax date", clock: "Clock change", service: "Service", upkeep: "Upkeep", project: "Project", paper: "Paperwork" };
@@ -77,4 +77,38 @@ export function skySheet(ctx) {
     h("p.quiet", `Read ${new Date(w.at).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}${w.stale ? " (offline: last known reading)" : ""}. Forecast: Open-Meteo. Alerts: US National Weather Service${w.alertsFailed ? " (alerts did not load this time)" : ""}.`),
     h("div.row.end", h("button.btn.ghost", { type: "button", onclick: () => locationSheet(ctx) }, "Change location"), h("button.btn", { type: "button", onclick: async (e) => { e.currentTarget.disabled = true; await ctx.reloadWeather(true); toast("Weather refreshed."); } }, "Refresh"))) });
 }
+/** The day ring. soon = rows in the next 24 hours; w = the weather reading (for sunrise and sunset) or null. */
+export function dayRing(now, soon, w, t) {
+  const S = 340, c = S / 2, R = 140;
+  const deg = (hrs) => ((hrs / 24) * 360 + 180) % 360;
+  const pt = (d, r) => { const a = ((d - 90) * Math.PI) / 180; return [c + Math.cos(a) * r, c + Math.sin(a) * r]; };
+  const arc = (a0, a1, r) => { let d = (a1 - a0 + 360) % 360; if (d < 0.01) d = 359.99; const [x0, y0] = pt(a0, r), [x1, y1] = pt(a0 + d, r); return `M${x0.toFixed(2)} ${y0.toFixed(2)} A${r} ${r} 0 ${d > 180 ? 1 : 0} 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`; };
+  const hm = (iso) => (iso && iso.length >= 16 ? Number(iso.slice(11, 13)) + Number(iso.slice(14, 16)) / 60 : null);
+  const d0 = w && w.days ? w.days.find((x) => x.date === t) : null;
+  const rise = (d0 && hm(d0.sunrise)) || 6.5, set = (d0 && hm(d0.sunset)) || 17.75;
+  const hrs = now.getHours() + now.getMinutes() / 60; const nowDeg = deg(hrs); const isDay = hrs >= rise && hrs < set;
+  const g = [];
+  g.push(s("circle", { cx: c, cy: c, r: R - 26, class: "dr-inner" }));
+  g.push(s("path", { d: arc(deg(set), deg(rise), R), class: "dr-night" }), s("path", { d: arc(deg(rise), deg(set), R), class: "dr-day" }));
+  for (let i = 0; i < 96; i++) { const major = i % 4 === 0, card = i % 24 === 0; const [x1, y1] = pt(i * 3.75, R + 9), [x2, y2] = pt(i * 3.75, R + (card ? 21 : major ? 15 : 12)); g.push(s("line", { x1, y1, x2, y2, class: "dr-tick" + (card ? " card" : major ? " major" : "") })); }
+  for (const [label, hr] of [["12", 12], ["18", 18], ["00", 0], ["06", 6]]) { const [x, y] = pt(deg(hr), R - 15); g.push(s("text", { x, y: y + 3.5, class: "dr-label", "text-anchor": "middle" }, label)); }
+  for (let k = 0; k < 8; k++) g.push(s("path", { d: arc(nowDeg + k * 11.25, nowDeg + (k + 1) * 11.25 + 0.4, R), class: "dr-ahead", style: `opacity:${(0.5 * (1 - k / 8)).toFixed(3)}` }));
+  for (const [hr, cls] of [[rise, "rise"], [set, "set"]]) { const [x, y] = pt(deg(hr), R); g.push(s("circle", { cx: x, cy: y, r: 2.6, class: "dr-sun " + cls })); }
+  const timed = soon.filter((r) => r.time && !r.done);
+  timed.forEach((r, i) => { const [hh, mm] = r.time.split(":").map(Number); const [x, y] = pt(deg(hh + mm / 60), R); const hard = (r.weight || 0) >= 2;
+    g.push(s("g", { class: "dr-pip tone-" + (r.tone || "event") + (hard ? " hard" : ""), style: `--i:${i}` }, s("circle", { cx: x, cy: y, r: hard ? 11 : 8, class: "halo" }), s("circle", { cx: x, cy: y, r: hard ? 5 : 3.6, class: "dot" }))); });
+  const [nx1, ny1] = pt(nowDeg, R - 20), [nx2, ny2] = pt(nowDeg, R + 24), [nx, ny] = pt(nowDeg, R);
+  g.push(s("g", { class: "dr-now" + (isDay ? " day" : " night") }, s("line", { x1: nx1, y1: ny1, x2: nx2, y2: ny2 }), s("circle", { cx: nx, cy: ny, r: 13, class: "glow" }), s("circle", { cx: nx, cy: ny, r: 5.2, class: "core" })));
+  const h12 = now.getHours() % 12 || 12; const allDay = soon.filter((r) => !r.time && !r.done).length;
+  const fmtHour = (x) => { const hh = Math.floor(x), mm = Math.min(59, Math.round((x - hh) * 60)); return `${hh % 12 || 12}:${String(mm).padStart(2, "0")}`; };
+  const label = `${fmtDay(t, "long")}, ${h12}:${String(now.getMinutes()).padStart(2, "0")} ${now.getHours() < 12 ? "AM" : "PM"}. ${timed.length} timed and ${allDay} all-day in the next 24 hours.`;
+  return h("div.dayring", { role: "img", "aria-label": label },
+    h("div.dr-sweep", { style: `--now:${nowDeg}deg`, "aria-hidden": "true" }),
+    s("svg", { viewBox: `0 0 ${S} ${S}`, class: "dr-svg", "aria-hidden": "true" }, ...g),
+    h("div.dr-center", { "aria-hidden": "true" },
+      h("span.dr-date", `${dowName(t, 1)} · ${monName(Number(t.slice(5, 7)), 1)} ${Number(t.slice(8))}`),
+      h("span.dr-time.num", `${h12}:${String(now.getMinutes()).padStart(2, "0")}`, h("small", now.getHours() < 12 ? "AM" : "PM")),
+      h("span.dr-sun-times.num", icon("sun", 12), fmtHour(rise), h("i"), icon("moon", 12), fmtHour(set))));
+}
+
 export { addDays };
