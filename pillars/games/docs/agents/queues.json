@@ -165,6 +165,80 @@
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "GTA VI launched on 2026-11-19. Joseph wants it in the Games pillar; launch week is full of rumours, so the pillar needs only what Rockstar and the platform stores say.",
+     "unlocks": "A 'Now playing' card in Ludus Arcade with the facts that matter (editions, size, online date, known issues) and links.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/games/"
+     ],
+     "steps": [
+      "Sources: rockstargames.com (Newswire and the game's page), support.rockstargames.com, and the PlayStation Store / Microsoft Store listings only. No press, wiki, Reddit or YouTube.",
+      "20 facts: platforms; release date and unlock time; every edition and what it adds; price per edition on each store; install size per platform; GTA Online (or its successor) availability date and what Rockstar says about it; accessibility options Rockstar lists; photo mode; save/cross-progression; launch patch number and its notes; every known issue Rockstar support acknowledges with its workaround; age rating and descriptors.",
+      "posted is the date on the source page."
+     ],
+     "deliver": {
+      "file": "games_gemini_gta6-facts_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 20 objects, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "topic",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "fact",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the Rockstar or store page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "word for word, under 300 characters"
+      },
+      {
+       "name": "posted",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "20 facts, each quoted from Rockstar or a console store page.",
+     "checks": [
+      "Claude opens 8 URLs at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "GAM-GEM-04",
+     "title": "Ludus Arcade: Grand Theft Auto VI at launch, the official facts only (Rockstar and the console stores)",
+     "due": "2026-11-24"
     }
    ]
   },

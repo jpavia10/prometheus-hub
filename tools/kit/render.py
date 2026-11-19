@@ -42,6 +42,34 @@ def queue_path(p):
     return p["repo"], "docs/agents/queues.json"
 
 
+# 2026-11-19: a task whose file is in the completions ledger (docs/agents/completions.json) is delivered and waits for its check;
+# the AI's page lists it apart as 'do not redo' (on Nov 18 Gemini re-delivered 23 files its page still showed as to do). A reviewer who
+# wants a redo sets "reopened": "YYYY-MM-DD" on the task; a delivery older than that date no longer counts.
+def _ledger():
+    try:
+        rows = json.load(open(os.path.join(HUB, "docs", "agents", "completions.json"), encoding="utf-8")).get("done", [])
+    except (OSError, ValueError):
+        rows = []
+    last = {}
+    for e in rows:
+        k = e.get("key")
+        if k and (k not in last or e.get("ts", "") > last[k].get("ts", "")):
+            last[k] = e
+    return last
+
+
+LEDGER = _ledger()
+
+
+def awaiting(t):
+    e = LEDGER.get(t.get("id"))
+    if not e or t.get("state") not in ("now", "next"):
+        return None
+    if t.get("reopened") and str(e.get("ts", ""))[:10] < str(t["reopened"]):
+        return None
+    return e
+
+
 def open_tasks(q, ai):
     for a in q.get("agents", []):
         if a["id"] == ai:
@@ -59,7 +87,9 @@ COMMON_REJECT = ["fewer rows than the count, or a row missing a field of the sha
 
 
 def task_md(i, t, p, folder, common=False):
-    L = [f"## {i}. {t['id']} · {t['title']}", "", f"**Due:** {t.get('due', '-')} · **State:** {t.get('state')}" + (" (starts when the file it checks is in the folder)" if t.get("state") == "next" else ""), ""]
+    w = awaiting(t)
+    state = (f"delivered {str(w.get('ts', ''))[:10]}, waiting for its check: do not redo it unless a review reopens it" if w else t.get("state")) + (" (starts when the file it checks is in the folder)" if t.get("state") == "next" and not w else "")
+    L = [f"## {i}. {t['id']} · {t['title']}", "", f"**Due:** {t.get('due', '-')} · **State:** {state}", ""]
     if t.get("why") and not common: L += [f"**Why:** {t['why']}", ""]      # the AI's Drive page leaves the why out (it is on the pillar's queue page)
     if t.get("unlocks"): L += [f"**What it unlocks:** {t['unlocks']}", ""]           # 2026-11-16 (owner): every task says what it is for in the app
     if t.get("inputs"): L += ["**Read first:**"] + [f"- {x}" for x in t["inputs"]] + [""]
@@ -108,7 +138,8 @@ def drive_queue(p, ai, tasks, stamp):
         L += [f"No homework for {ai['name']} in {p['name']} right now."]
     for t in sorted(tasks, key=lambda t: (t.get("state") != "now", t.get("due", "9"))):
         d = t.get("deliver") or {}
-        L += [f"- {t['id']} · {t['title']} · due {t.get('due')}" + (" · waits for its input file" if t.get("state") == "next" else ""),
+        w = awaiting(t)
+        L += [f"- {t['id']} · {t['title']} · due {t.get('due')}" + (f" · DELIVERED {str(w.get('ts', ''))[:10]}, waiting for its check (do not redo)" if w else " · waits for its input file" if t.get("state") == "next" else ""),
               f"    make: {d.get('file')} · how many: {t.get('count')} · done when: {t.get('done_when')}"]
     return "\n".join(L).rstrip() + "\n"
 
@@ -180,9 +211,12 @@ def main(argv):
     for a in reg["ais"]:
         items = per_ai[a["id"]]
         titan = [x for x in items if x[1] is None]
-        work = sorted([x for x in items if x[1] is not None], key=lambda x: (x[1].get("state") != "now", x[1].get("due", "9")))
+        allw = sorted([x for x in items if x[1] is not None], key=lambda x: (x[1].get("state") != "now", x[1].get("due", "9")))
+        work = [x for x in allw if not awaiting(x[1])]
+        waits = [x for x in allw if awaiting(x[1])]
         n = len(work) + sum(c[0] + c[1] for _, _, c in titan)
-        L = [f"HOMEWORK — {a['name']} (every pillar)", "", f"Updated {stamp or '{stamp}'}. {n} open across {len({x[0]['id'] for x in items})} pillars.", "",
+        L = [f"HOMEWORK — {a['name']} (every pillar)", "", f"Updated {stamp or '{stamp}'}. {n} to do across {len({x[0]['id'] for x in items if not (x[1] and awaiting(x[1]))})} pillars"
+             + (f"; {len(waits)} more delivered and waiting for their check (listed at the end: do not redo them)." if waits else "."), "",
              "When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. "
              "When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md "
              "(read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.", "", LEDGER_RULE, ""]
@@ -197,6 +231,11 @@ def main(argv):
         L += [""]
         for i, (p, t, _) in enumerate(work, 1):
             L += [f"==================== {i}. {p['name'].upper()} ===================="] + task_md(i, t, p, "", common=True)
+        if waits:
+            L += ["", "DELIVERED, WAITING FOR THEIR CHECK (do not redo these; if a check needs a redo, the task comes back above with the reason):"]
+            for p, t, _ in waits:
+                w = awaiting(t)
+                L += [f"- [{p['name']}] {t['id']} · {t['title']} · delivered {str(w.get('ts', ''))[:10]}: {str(w.get('what', ''))[:140]}"]
         out[os.path.join(HUB, "docs", "agents", "drive", f"HOMEWORK_{a['id']}.txt")] = "\n".join(L).rstrip() + "\n"
 
     # the board

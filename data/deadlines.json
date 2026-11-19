@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 04:28 UTC",
+ "updated": "2026-11-19 04:52 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -242,6 +242,17 @@
    "title": "Ludus Arcade: the function spec, written as the build plan",
    "state": "now",
    "count": 1
+  },
+  {
+   "due": "2026-11-24",
+   "pillar": "games",
+   "pillar_name": "Ludus Arcade",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAM-GEM-04",
+   "title": "Ludus Arcade: Grand Theft Auto VI at launch, the official facts only (Rockstar and the console stores)",
+   "state": "now",
+   "count": 20
   },
   {
    "due": "2026-11-24",
@@ -498,6 +509,17 @@
   },
   {
    "due": "2026-11-25",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-20",
+   "title": "Hearth: price the deck materials list at the two stores Joseph would drive to, and work out the quantities the deck's size decides",
+   "state": "now",
+   "count": 30
+  },
+  {
+   "due": "2026-11-25",
    "pillar": "midas",
    "pillar_name": "Midas Ledger",
    "ai": "muse",
@@ -506,6 +528,17 @@
    "title": "Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser'",
    "state": "next",
    "count": 15
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AET-GEM-08",
+   "title": "Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file",
+   "state": "now",
+   "count": 12
   },
   {
    "due": "2026-11-26",
@@ -520,6 +553,28 @@
   },
   {
    "due": "2026-11-26",
+   "pillar": "garage",
+   "pillar_name": "Garage",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAR-GEM-08",
+   "title": "Garage: fluids, capacities, torques and service specs for both vehicles, from their owner's manuals with page numbers",
+   "state": "now",
+   "count": 30
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-21",
+   "title": "Hearth: the structural numbers for a deck at Frazier Park (snow load, frost depth, wind, seismic, climate zone)",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-11-26",
    "pillar": "polis",
    "pillar_name": "Polis · Civic & Legal Watch",
    "ai": "gemini",
@@ -528,6 +583,28 @@
    "title": "Polis: the five Kern rules left out, each with the county's own words",
    "state": "now",
    "count": 5
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AET-GEM-07",
+   "title": "Aether: sunrise, sunset and twilight worked out on the phone (NOAA method), with 12 tests from the US Naval Observatory",
+   "state": "now",
+   "count": 12
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AET-GEM-09",
+   "title": "Aether: the 12 public weather and air sensors nearest Frazier Park, each with the exact call that returns its latest reading",
+   "state": "now",
+   "count": 12
   },
   {
    "due": "2026-11-27",
@@ -632,10 +709,43 @@
    "due": "2026-11-27",
    "pillar": "garage",
    "pillar_name": "Garage",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAR-GEM-09",
+   "title": "Garage: every technical service bulletin NHTSA lists for the 2025 Sorento Hybrid and the 2021 MT-07",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "garage",
+   "pillar_name": "Garage",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAR-GEM-10",
+   "title": "Garage: tires for the Grapevine: OE tire, size and load rating for both vehicles, and three winter-capable replacements for the Sorento",
+   "state": "now",
+   "count": 9
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "garage",
+   "pillar_name": "Garage",
    "ai": "grok",
    "ai_name": "Grok",
    "id": "GAR-GRK-04",
    "title": "Garage: second reader on Gemini's 'the function spec, written as the build plan'",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-22",
+   "title": "Hearth: when the primer, paint and caulk can go on: temperature, humidity, recoat and cure from the makers' data sheets",
    "state": "now",
    "count": 10
   },
@@ -786,6 +896,28 @@
    "due": "2026-11-27",
    "pillar": "privacy",
    "pillar_name": "Privacy · CA DROP",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PRI-GEM-07",
+   "title": "Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them",
+   "state": "now",
+   "count": 72
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "privacy",
+   "pillar_name": "Privacy · CA DROP",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PRI-GEM-08",
+   "title": "Privacy: Google account settings that leak the most, each with the exact path to turn it off, from Google's own help pages",
+   "state": "now",
+   "count": 25
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "privacy",
+   "pillar_name": "Privacy · CA DROP",
    "ai": "grok",
    "ai_name": "Grok",
    "id": "PRI-GRK-04",
@@ -814,6 +946,61 @@
    "title": "Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan'",
    "state": "now",
    "count": 10
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "forge",
+   "pillar_name": "Forge",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "FOR-GEM-04",
+   "title": "Forge: a checker that tells an AI (and Claude) whether a homework file matches its task before it is saved",
+   "state": "now",
+   "count": 12
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "garage",
+   "pillar_name": "Garage",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAR-GEM-11",
+   "title": "Garage: the official mileage baseline and the live California gas price, as API calls Garage can make",
+   "state": "now",
+   "count": 6
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "kairos",
+   "pillar_name": "Kairos Meridian",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KAI-GEM-12",
+   "title": "Kairos: RFC 5545's own recurrence examples as test cases, every occurrence written out",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "piano",
+   "pillar_name": "Bossa Piano Studio",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PIA-GEM-04",
+   "title": "Piano: a 24-tune bossa nova ladder for an adult who reads chord symbols, easiest first, each with key, form and the hard spot",
+   "state": "now",
+   "count": 24
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "records",
+   "pillar_name": "Records · Paper Killer",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "REC-GEM-06",
+   "title": "Records: the tax-year 2026 paperwork checklist: every form a W-2 homeowner may get, when it must arrive, and which 1040 / CA 540 line it feeds",
+   "state": "now",
+   "count": 21
   }
  ]
 }

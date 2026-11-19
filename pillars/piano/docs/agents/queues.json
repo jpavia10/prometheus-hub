@@ -165,6 +165,105 @@
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "Bossa Piano Studio has no repertoire. A ladder that adds one new skill per tune is what turns practice into progress.",
+     "unlocks": "The Piano pillar's repertoire list, in teaching order, with what each tune adds.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/piano/"
+     ],
+     "steps": [
+      "Pick 24 bossa nova tunes (Jobim, Bonfa, Menescal, Lyra, Valle, Donato and others; at least 14 by Jobim), ordered so each tune adds one skill the earlier ones did not need (e.g. ii-V-I in one key, then minor ii-V, then modulation up a half step, then a 64-bar form).",
+      "For each: original key and form exactly as jazzstandards.com (or the composer's official songbook page) gives them, with that URL; composer(s) and year; a tempo range in bpm that you take from two named recordings (artist, album, year); the hardest 2-to-4-bar spot written as Roman numerals in the original key (e.g. 'bars 9-12: iim7 - V7/ii - iim7 - bII7'); and the skill this rung adds (one sentence).",
+      "No lyrics, no full chord charts (copyright); Roman-numeral analysis of a few bars only."
+     ],
+     "deliver": {
+      "file": "piano_gemini_bossa-ladder_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 24 objects, exactly the fields below, in ladder order"
+     },
+     "count": 24,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "rung, 1 = easiest"
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "composers",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "year",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "key",
+       "type": "text",
+       "rule": "as the source gives it"
+      },
+      {
+       "name": "form",
+       "type": "text",
+       "rule": "e.g. 'AABA, 32 bars'"
+      },
+      {
+       "name": "source_url",
+       "type": "URL",
+       "rule": "jazzstandards.com song page or the official songbook page"
+      },
+      {
+       "name": "tempo_bpm",
+       "type": "text",
+       "rule": "e.g. '120-140'"
+      },
+      {
+       "name": "recordings",
+       "type": "text",
+       "rule": "two: artist, album, year"
+      },
+      {
+       "name": "hard_spot",
+       "type": "text",
+       "rule": "bars + Roman numerals"
+      },
+      {
+       "name": "adds",
+       "type": "text",
+       "rule": "the new skill, one sentence"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "24 tunes in teaching order, key and form matching their cited page.",
+     "checks": [
+      "Claude opens 8 source URLs and compares key and form; Claude reads the order for a skill that appears before it is taught."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PIA-GEM-04",
+     "title": "Piano: a 24-tune bossa nova ladder for an adult who reads chord symbols, easiest first, each with key, form and the hard spot",
+     "due": "2026-11-28"
     }
    ]
   },

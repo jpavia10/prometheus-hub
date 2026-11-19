@@ -72,7 +72,7 @@
     for (const { p, q } of hubQ) { if (!q || !Array.isArray(q.agents)) continue; qOK++;
       for (const a of q.agents) for (const t of a.tasks || []) {
         const dl = t.deliver || {};
-        tasks.push({ ai: ai(a.name || a.id), src: "hub", where: p.name, pid: p.id, id: t.id, title: t.title, state: t.state || "next", due: t.due || "", items: t.count || 0, review: t.review || "",
+        tasks.push({ ai: ai(a.name || a.id), src: "hub", where: p.name, pid: p.id, id: t.id, title: t.title, state: t.state || "next", due: t.due || "", items: t.count || 0, review: t.review || "", reopened: t.reopened || "",
           detail: { why: t.why || "", steps: t.steps || [], make: dl.file || "", folder: dl.folder || "", shape: dl.shape || "", done: t.done_when || "", checks: t.checks || [], link: p.ext ? `https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_${(a.id || "").toLowerCase()}.md` : `https://github.com/jpavia10/prometheus-hub/blob/main/${p.page}QUEUE_${(a.id || "").toLowerCase()}.md` } }); } }
     D.sources.hub = qOK ? `${qOK} of ${D.pillars.length} queues read` : "not reached";
     const tAis = ["gemini", "grok", "muse", "chatgpt", "gemini-api"];
@@ -102,7 +102,7 @@
     const lj = await get(LEDGER);
     if (lj && Array.isArray(lj.done)) {
       const led = new Map(lj.done.filter((e) => e && e.key).map((e) => [e.key, e])); let marked = 0;
-      for (const t of tasks) { const e = led.get(t.id) || (t.alias && led.get(t.alias)); if (e && t.state !== "done") { t.state = "done"; t.closedAs = "delivered"; t.detail = { ...(t.detail || {}), delivered: `${e.what || "the deliverable"} · by ${e.by || "?"} · ${String(e.ts || "").slice(0, 10)} (completions ledger: delivered, awaiting the integrator's check; the queue in its own repo still shows it open until the flip lands)` }; marked++; } }
+      for (const t of tasks) { const e = led.get(t.id) || (t.alias && led.get(t.alias)); if (e && t.state !== "done" && !(t.reopened && String(e.ts || "").slice(0, 10) < t.reopened)) { t.state = "done"; t.closedAs = "delivered"; t.detail = { ...(t.detail || {}), delivered: `${e.what || "the deliverable"} · by ${e.by || "?"} · ${String(e.ts || "").slice(0, 10)} (completions ledger: delivered, awaiting the integrator's check; the queue in its own repo still shows it open until the flip lands)` }; marked++; } }
       const synced = lj.synced ? ` · synced ${new Date(lj.synced).toLocaleString([], { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}` : "";
       D.sources.done = (marked ? `${marked} delivered, awaiting the check` : "read, nothing new") + synced;
     } else D.sources.done = "not reached";

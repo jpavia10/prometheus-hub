@@ -2,13 +2,13 @@
 
 # Privacy · CA DROP · homework for Gemini
 
-Updated 2026-11-19 04:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 04:52 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
 ## 1. PRI-GEM-06 · Privacy: the function spec, written as the build plan
 
-**Due:** 2026-11-24 · **State:** now
+**Due:** 2026-11-24 · **State:** delivered 2026-11-16, waiting for its check: do not redo it unless a review reopens it
 
 **Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
 
@@ -70,3 +70,112 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them
+
+**Due:** 2026-11-27 · **State:** now
+
+**Why:** California's DROP sends one deletion request to every broker on the state registry. Privacy lists 72 brokers but does not know which ones DROP covers, so Joseph cannot tell which still need a manual opt-out.
+
+**What it unlocks:** Privacy splits the list into 'DROP covers this' and 'opt out by hand', which halves the manual work.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/privacy/brokers-data.js (window.BROKER_OPTOUTS: the 72 names)
+- https://cppa.ca.gov/data_broker_registry/ (the registry)
+
+**Do this:**
+1. For every one of the 72 names in BROKER_OPTOUTS, search the California Data Broker Registry (CPPA) and record whether the brand or its parent company is registered, the registered legal name, the registration year(s) shown (2025, 2026), and the registry entry URL.
+2. Brands often register under a parent (e.g. one company for several people-search sites): give the parent's registered name and say which brand it covers in note.
+3. If a name is not on the registry, write registered 'no' and in note what you searched for (exact search strings).
+
+**Make:** `privacy_gemini_registry_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 72 objects, one per BROKER_OPTOUTS name, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `broker` (text): exactly as the key in BROKER_OPTOUTS
+- `registered` (text): yes / no
+- `registrant` (text): registered legal name, or ''
+- `years` (text): e.g. '2025, 2026'
+- `url` (URL): the registry entry, or the registry search page only when registered is no
+- `note` (text): parent/brand link or the search strings tried
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
+
+**How many:** 72
+
+**Done when:** 72 rows, every 'yes' with its registry entry URL.
+
+**How Claude checks it:**
+- Claude opens 12 registry entries at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a number that is not on its source and not shown as arithmetic
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 3. PRI-GEM-08 · Privacy: Google account settings that leak the most, each with the exact path to turn it off, from Google's own help pages
+
+**Due:** 2026-11-27 · **State:** now
+
+**Why:** Brokers are half of Joseph's footprint; his own Google account is the other half (location history, web activity, ad profile, public profile). Privacy has nothing on it.
+
+**What it unlocks:** Privacy's footprint checklist gets a Google section Joseph can work through on his phone, one tap per setting.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/privacy/
+
+**Do this:**
+1. 25 settings across: Web & App Activity, Timeline / Location History, YouTube history, ad personalization (My Ad Center), auto-delete for each, third-party app access, Google Profile visibility (About me), Find My Device, Gmail smart features, Chrome sync, Android location accuracy, Google Photos face groups, Assistant / Gemini activity, shared endorsements, partner sign-ins.
+2. For each: what it collects (Google's words), the exact path on Android (Settings > Google > ...) and on myaccount.google.com, the safest setting, what breaks if turned off (Google's words where given), and the help page URL.
+3. Use only support.google.com and myaccount.google.com/policies.google.com pages.
+
+**Make:** `privacy_gemini_google-settings_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 25 objects, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `setting` (text): 
+- `collects` (text): Google's words
+- `android_path` (text): 
+- `web_path` (text): 
+- `safest` (text): the value to set
+- `breaks` (text): what stops working, or 'nothing stated'
+- `url` (URL): the Google help page
+- `quote` (text): the help page's line that says what it collects, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
+
+**How many:** 25
+
+**Done when:** 25 settings, each on its Google help page.
+
+**How Claude checks it:**
+- Claude opens 8 help pages at random.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a number that is not on its source and not shown as arithmetic
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)

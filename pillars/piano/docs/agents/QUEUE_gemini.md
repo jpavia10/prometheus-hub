@@ -2,13 +2,13 @@
 
 # Bossa Piano Studio · homework for Gemini
 
-Updated 2026-11-19 04:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 04:52 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
 ## 1. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
 
-**Due:** 2026-11-24 · **State:** now
+**Due:** 2026-11-24 · **State:** delivered 2026-11-16, waiting for its check: do not redo it unless a review reopens it
 
 **Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
 
@@ -70,3 +70,60 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. PIA-GEM-04 · Piano: a 24-tune bossa nova ladder for an adult who reads chord symbols, easiest first, each with key, form and the hard spot
+
+**Due:** 2026-11-28 · **State:** now
+
+**Why:** Bossa Piano Studio has no repertoire. A ladder that adds one new skill per tune is what turns practice into progress.
+
+**What it unlocks:** The Piano pillar's repertoire list, in teaching order, with what each tune adds.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/piano/
+
+**Do this:**
+1. Pick 24 bossa nova tunes (Jobim, Bonfa, Menescal, Lyra, Valle, Donato and others; at least 14 by Jobim), ordered so each tune adds one skill the earlier ones did not need (e.g. ii-V-I in one key, then minor ii-V, then modulation up a half step, then a 64-bar form).
+2. For each: original key and form exactly as jazzstandards.com (or the composer's official songbook page) gives them, with that URL; composer(s) and year; a tempo range in bpm that you take from two named recordings (artist, album, year); the hardest 2-to-4-bar spot written as Roman numerals in the original key (e.g. 'bars 9-12: iim7 - V7/ii - iim7 - bII7'); and the skill this rung adds (one sentence).
+3. No lyrics, no full chord charts (copyright); Roman-numeral analysis of a few bars only.
+
+**Make:** `piano_gemini_bossa-ladder_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 24 objects, exactly the fields below, in ladder order`
+
+**Every field, exactly:**
+- `n` (integer): rung, 1 = easiest
+- `title` (text): 
+- `composers` (text): 
+- `year` (integer): 
+- `key` (text): as the source gives it
+- `form` (text): e.g. 'AABA, 32 bars'
+- `source_url` (URL): jazzstandards.com song page or the official songbook page
+- `tempo_bpm` (text): e.g. '120-140'
+- `recordings` (text): two: artist, album, year
+- `hard_spot` (text): bars + Roman numerals
+- `adds` (text): the new skill, one sentence
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
+
+**How many:** 24
+
+**Done when:** 24 tunes in teaching order, key and form matching their cited page.
+
+**How Claude checks it:**
+- Claude opens 8 source URLs and compares key and form; Claude reads the order for a skill that appears before it is taught.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a number that is not on its source and not shown as arithmetic
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
