@@ -1,0 +1,35 @@
+name: forge-ledger
+# Copies the completions ledger from Drive into docs/agents/completions.json (tools/forge/sync_ledger.py), so Forge shows
+# finished work as delivered without anyone folding it in (owner, 2026-11-18). It runs on a schedule and on every push to
+# main: GitHub had not started the schedule at all in its first 5 hours (2026-11-18/19), and pushes land several times a
+# day. It commits only when the ledger changed; that bot push redeploys Pages and, made with the workflow token, starts no
+# new run (no loop). Drive unreachable or not JSON: the mirror stays as it is and the run passes.
+on:
+  schedule:
+    - cron: "4,14,24,34,44,54 * * * *"  # every 10 minutes, off the crowded top of the hour
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: forge-ledger
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read the Drive ledger into the mirror
+        id: sync
+        run: echo "result=$(python3 tools/forge/sync_ledger.py docs/agents/completions.json | tail -1)" >> "$GITHUB_OUTPUT"
+      - name: Commit when it changed
+        if: steps.sync.outputs.result == 'changed'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/agents/completions.json
+          git commit -m "forge: completions ledger synced from Drive ($(python3 -c "import json;print(len(json.load(open('docs/agents/completions.json'))['done']))") entries)"
+          for i in 1 2 3; do git push origin "HEAD:${{ github.ref_name }}" && exit 0; git pull --rebase origin "${{ github.ref_name }}"; done
+          exit 1

@@ -1,21 +1,18 @@
 {
- "pack": "BASTION-GROK-frazier-readiness",
+ "pack": "BASTION-readiness",
  "asOf": "2026-11-10",
  "place": {
   "name": "Mountain community",
-  "lat": 34.82057,
-  "lon": -118.94543,
   "elevation_ft_usgs_epqs": 4632,
   "elevation_ft_wikipedia": null,
   "population_2020": 2592,
   "nws": {
    "office": "HNX (Hanford/San Joaquin Valley)",
-   "grid": "67,10",
    "forecast_zone": "CAZ336 mountain communities",
    "fire_zone": "CAZ597 Fort Tejon",
    "county": "CAC029 Kern",
    "radar": "KVTX",
-   "source": "https://api.weather.gov/points/34.8206,-118.9454"
+   "source": "https://api.weather.gov/points"
   },
   "active_alerts_at_check": 0,
   "utility": "PG&E (Lebec/the mountain community PSPS events: Mountain Enterprise 2020-09-08 https://mountainenterprise.com/story/pg-kern-opens-fp-cooling-center/ ; 23ABC \"Power still out for some in Lebec, the mountain community areas due to PG&E shut offs\")"
@@ -61,7 +58,7 @@
      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci14186612"
     }
    ],
-   "source": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&latitude=34.8206&longitude=-118.9454&maxradiuskm=50&minmagnitude=4&starttime=1970-01-01&orderby=magnitude",
+   "source": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&maxradiuskm=50&minmagnitude=4&starttime=1970-01-01&orderby=magnitude",
    "level": "high (low frequency, extreme impact)"
   },
   {
@@ -100,7 +97,7 @@
    },
    "definition": "Critical fire weather ongoing or imminent; \"Be extremely careful with open flames.\"",
    "definition_source": "https://www.weather.gov/safety/wildfire-ww",
-   "frazier_action": "No sparks (mowing, trailers, chains dragging), car fueled, go-bag by the door, check Genasys zone status, N95s staged. Peak months here: Oct, Jul."
+   "action": "No sparks (mowing, trailers, chains dragging), car fueled, go-bag by the door, check Genasys zone status, N95s staged. Peak months here: Oct, Jul."
   },
   {
    "alert": "Fire Weather Watch",
@@ -118,7 +115,7 @@
    },
    "definition": "\"Critical fire weather conditions are possible but not imminent or occurring.\"",
    "definition_source": "https://www.weather.gov/safety/wildfire-ww",
-   "frazier_action": "Pre-stage: charge power banks, PSPS likely to follow — check PG&E PSPS 7-day forecast."
+   "action": "Pre-stage: charge power banks, PSPS likely to follow — check PG&E PSPS 7-day forecast."
   },
   {
    "alert": "Winter Storm Warning",
@@ -137,7 +134,7 @@
    },
    "definition": "\"Significant winter weather event including snow, ice, sleet or blowing snow... Travel will become difficult or impossible.\"",
    "definition_source": "https://www.weather.gov/safety/winter-ww",
-   "frazier_action": "Expect I-5 Grapevine/Tejon Pass closure + chain controls; stay put or leave early. Mostly Feb here."
+   "action": "Expect I-5 Grapevine/Tejon Pass closure + chain controls; stay put or leave early. Mostly Feb here."
   },
   {
    "alert": "Winter Storm Watch",
@@ -155,7 +152,7 @@
    },
    "definition": "\"Conditions are favorable for a significant winter storm event.\"",
    "definition_source": "https://www.weather.gov/safety/winter-ww",
-   "frazier_action": "Fill tank, check chains/traction devices, stock 3+ days food/water, top off meds."
+   "action": "Fill tank, check chains/traction devices, stock 3+ days food/water, top off meds."
   },
   {
    "alert": "Winter Weather Advisory",
@@ -176,7 +173,7 @@
    },
    "definition": "Wintry elements expected below warning criteria; \"Be prepared for winter driving conditions.\"",
    "definition_source": "https://www.weather.gov/safety/winter-ww",
-   "frazier_action": "Most common alert here (30 in 5 yrs; Mar/Jan/Dec). Chains in car; check Caltrans CHIN 800-427-7623 before driving."
+   "action": "Most common alert here (30 in 5 yrs; Mar/Jan/Dec). Chains in car; check Caltrans CHIN 800-427-7623 before driving."
   },
   {
    "alert": "Blizzard Warning",
@@ -191,7 +188,7 @@
    },
    "definition": "\"Frequent gusts greater than or equal to 35 mph accompanied by falling and/or blowing snow, frequently reducing visibility to less than 1/4 mile for three hours or more.\"",
    "definition_source": "https://www.weather.gov/safety/winter-ww",
-   "frazier_action": "Do not travel. If stranded, stay with vehicle. Rare (1 in 5 yrs) but highest-impact."
+   "action": "Do not travel. If stranded, stay with vehicle. Rare (1 in 5 yrs) but highest-impact."
   },
   {
    "alert": "High Wind Warning",
@@ -211,7 +208,7 @@
    },
    "definition": "\"Sustained, strong winds with even stronger gusts are happening. Seek shelter.\"",
    "definition_source": "https://www.weather.gov/safety/wind-ww",
-   "frazier_action": "Downed lines / outages + fire spread risk; secure outdoor items; high-profile vehicles avoid I-5."
+   "action": "Downed lines / outages + fire spread risk; secure outdoor items; high-profile vehicles avoid I-5."
   },
   {
    "alert": "High Wind Watch",
@@ -230,7 +227,7 @@
    },
    "definition": "\"Sustained, strong winds are possible. Secure loose outdoor items.\"",
    "definition_source": "https://www.weather.gov/safety/wind-ww",
-   "frazier_action": "Secure yard; charge devices."
+   "action": "Secure yard; charge devices."
   },
   {
    "alert": "Wind Advisory",
@@ -251,7 +248,7 @@
    },
    "definition": "\"Strong winds are occurring but are not so strong as to warrant a High Wind Warning.\"",
    "definition_source": "https://www.weather.gov/safety/wind-ww",
-   "frazier_action": "Caution driving; secure items."
+   "action": "Caution driving; secure items."
   },
   {
    "alert": "Flood Watch",
@@ -273,7 +270,7 @@
    },
    "definition": "\"Conditions are favorable for flooding. It does not mean flooding will occur, but it is possible.\"",
    "definition_source": "https://www.weather.gov/safety/flood-watch-warning",
-   "frazier_action": "Burn-scar debris flow risk after fires; avoid washes/low crossings."
+   "action": "Burn-scar debris flow risk after fires; avoid washes/low crossings."
   },
   {
    "alert": "Flash Flood Warning",
@@ -298,7 +295,7 @@
    },
    "definition": "\"A flash flood is imminent or occurring... move immediately to high ground.\"",
    "definition_source": "https://www.weather.gov/safety/flood-watch-warning",
-   "frazier_action": "County-wide polygon count (not place-specific). Never drive through water."
+   "action": "County-wide polygon count (not place-specific). Never drive through water."
   },
   {
    "alert": "Extreme Heat Warning / Heat Advisory",
@@ -329,7 +326,7 @@
    },
    "definition": "Extreme Heat Warning: \"extremely dangerous heat conditions are expected or occurring.\" (NWS renamed Excessive Heat → Extreme Heat; both appear in history.)",
    "definition_source": "https://www.weather.gov/safety/heat-ww",
-   "frazier_action": "Jul/Aug. PSPS + heat = use cooling center (Kern opened the mountain park cooling center during the Sept 2020 PSPS)."
+   "action": "Jul/Aug. PSPS + heat = use cooling center (Kern opened the mountain park cooling center during the Sept 2020 PSPS)."
   }
  ],
  "alert_history": {
@@ -537,7 +534,7 @@
  "channels": [
   {
    "name": "NWS forecast + alerts for mountain communities (zone CAZ336, office HNX Hanford)",
-   "url": "https://forecast.weather.gov/MapClick.php?lat=34.8206&lon=-118.9454",
+   "url": "https://forecast.weather.gov/MapClick.php",
    "api": "https://api.weather.gov/alerts/active?zone=CAZ336"
   },
   {
@@ -622,91 +619,91 @@
     "item": "Water",
     "bastion_72h_has": "Water (3L+)",
     "standard_says": "Red Cross: 1 gallon/person/day → 3-day = 3 gal (~11.4 L)/person",
-    "frazier_verdict": "GAP: 3 L is ~1 day. Keep 3 L in bag + 3 gal/person in house/car.",
+    "verdict": "GAP: 3 L is ~1 day. Keep 3 L in bag + 3 gal/person in house/car.",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    },
    {
     "item": "Radio",
     "bastion_72h_has": "—",
     "standard_says": "NOAA Weather Radio (battery/hand-crank)",
-    "frazier_verdict": "GAP: not on Bastion list. Cell + power fail together in PSPS/quake.",
+    "verdict": "GAP: not on Bastion list. Cell + power fail together in PSPS/quake.",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    },
    {
     "item": "Respirator",
     "bastion_72h_has": "—",
     "standard_says": "N95 masks (Red Cross \"consider\"; Ready.gov wildfire)",
-    "frazier_verdict": "GAP: wildfire smoke — Red Flag zone CAZ597 had 19 warnings.",
+    "verdict": "GAP: wildfire smoke — Red Flag zone CAZ597 had 19 warnings.",
     "source": "https://www.ready.gov/wildfires"
    },
    {
     "item": "Maps",
     "bastion_72h_has": "—",
     "standard_says": "Map(s) of the area",
-    "frazier_verdict": "GAP: paper map of I-5/the mountain road/Lockwood Valley Rd egress; write Genasys zone on it.",
+    "verdict": "GAP: paper map of I-5/the mountain road/Lockwood Valley Rd egress; write Genasys zone on it.",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    },
    {
     "item": "Contacts",
     "bastion_72h_has": "Cash + documents copies",
     "standard_says": "Family & emergency contact info (written)",
-    "frazier_verdict": "PARTIAL: add written contact list + Genasys zone name.",
+    "verdict": "PARTIAL: add written contact list + Genasys zone name.",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    },
    {
     "item": "Sanitation",
     "bastion_72h_has": "—",
     "standard_says": "Sanitation & personal hygiene items",
-    "frazier_verdict": "GAP.",
+    "verdict": "GAP.",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    },
    {
     "item": "Emergency blanket",
     "bastion_72h_has": "Warm layer + rain shell",
     "standard_says": "Emergency blanket; extra clothing, hat, sturdy shoes; blankets/sleeping bags",
-    "frazier_verdict": "PARTIAL: at ~4,600 ft add hat/gloves + blanket for winter storms.",
+    "verdict": "PARTIAL: at ~4,600 ft add hat/gloves + blanket for winter storms.",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    },
    {
     "item": "Whistle / work gloves / duct tape",
     "bastion_72h_has": "Knife/multitool",
     "standard_says": "Whistle, work gloves, duct tape, plastic sheeting (\"consider\")",
-    "frazier_verdict": "GAP for quake debris.",
+    "verdict": "GAP for quake debris.",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    },
    {
     "item": "Car: traction",
     "bastion_72h_has": "Car kit (app)",
     "standard_says": "Ready.gov car: chains; sand/cat litter; ice scraper; jumper cables; flares; blanket; map; car charger; keep tank full",
-    "frazier_verdict": "CHECK: Caltrans R2 requires chains/traction devices on Grapevine; carry them all winter.",
+    "verdict": "CHECK: Caltrans R2 requires chains/traction devices on Grapevine; carry them all winter.",
     "source": "https://www.ready.gov/car"
    },
    {
     "item": "House: CO detector",
     "bastion_72h_has": "House shelter-in (app)",
     "standard_says": "Ready.gov power outages: CO detectors; generators ≥20 ft from windows/doors",
-    "frazier_verdict": "GAP if running a generator during PSPS.",
+    "verdict": "GAP if running a generator during PSPS.",
     "source": "https://www.ready.gov/power-outages"
    },
    {
     "item": "House: food safety",
     "bastion_72h_has": "—",
     "standard_says": "Fridge ~4 h, full freezer ~48 h; discard food above 40°F",
-    "frazier_verdict": "ADD thermometer to fridge/freezer for multi-day PSPS.",
+    "verdict": "ADD thermometer to fridge/freezer for multi-day PSPS.",
     "source": "https://www.ready.gov/power-outages"
    },
    {
     "item": "House: earthquake",
     "bastion_72h_has": "—",
     "standard_says": "Secure heavy items; Drop, Cover, Hold On",
-    "frazier_verdict": "GAP: San Andreas 1857 Fort Tejon M~7.9 ruptured here; strap water heater, bookcases.",
+    "verdict": "GAP: San Andreas 1857 Fort Tejon M~7.9 ruptured here; strap water heater, bookcases.",
     "source": "https://www.ready.gov/earthquakes"
    },
    {
     "item": "Power",
     "bastion_72h_has": "Phone battery bank",
     "standard_says": "Cell phone with chargers; extra batteries",
-    "frazier_verdict": "OK; size for multi-day PSPS (Sept 2020 Lebec shutoff ran overnight).",
+    "verdict": "OK; size for multi-day PSPS (Sept 2020 Lebec shutoff ran overnight).",
     "source": "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/survival-kit-supplies.html"
    }
   ]

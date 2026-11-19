@@ -8,31 +8,45 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 
-- HUB-GRK-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
-    make: titan_icon_take1..3.png + prometheus_icon_take1..3.png · how many: 6 · done when: 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+- HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
+    make: hub_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 
-- HUB-GEM-00 · FIRST: the home-screen icons for Titan and Prometheus (6 images) · due 2026-11-06
-    make: titan_icon_take1..3.png + prometheus_icon_take1..3.png · how many: 6 · done when: 6 square PNGs in the folder and the DONE note; Claude ships the best of each to Joseph's phone.
+- HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
+    make: hub_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Prometheus Hub right now.
+- HUB-MUS-03 · Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940) · due 2026-11-23
+    make: {pillar}_muse_{dataset}-check3_{YYYYMMDD-HHMM}.md (one file per Gemini file, e.g. garage_muse_recalls-check3_20261120-0900.md) · how many: 23 · done when: A check3 file for each of the 23 redo files, each with a score and ACCEPT/REJECT; then one line per file in forge-completions.json (edit the original), key HUB-MUS-03.
 
 ## ChatGPT
 
-Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
 
 
-- HUB-GPT-01 · Phone audit of the desk: 25 findings · due 2026-11-12
-    make: hub_chatgpt_audit_{YYYYMMDD-HHMM}.md · how many: 25 · done when: 25 findings Claude can find on the live page.
+No homework for ChatGPT in Prometheus Hub right now.
+
+## Argon
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Argon in Prometheus Hub right now.
+
+## Hydrogen
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Hydrogen in Prometheus Hub right now.

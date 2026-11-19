@@ -1,0 +1,23 @@
+# ICA-GRK-01 · Icarus Stake: second reader on Gemini's spec
+By Grok · 2026-11-14 07:55 UTC (2026-11-13 23:55 PT) · checks `icarus_gemini_spec_20261106-2320.md` (ICA-GEM-01), section 2 "Data sources".
+Method: opened each docs URL (or the vendor's own pricing/limits page where the docs URL is a JS shell) with a plain HTTP fetch on 2026-11-14 UTC and compared the exact claim. "unconfirmed" = the page did not load as text or did not state the figure; no value was guessed.
+Context: Icarus is already built in prometheus-hub (pillars/icarus, journal only, no market feeds wired). These checks matter only if a quote feed is ever added.
+
+| source | gemini says | page says | url | agree/differ |
+|---|---|---|---|---|
+| Finnhub Stock API | Free tier: 60 API calls per minute; token query param | Rate-limit section: "If your limit is exceeded, you will receive ... 429. On top of all plan's limit, there is a 30 API calls/ second limit." Auth: `token=apiKey` or header `X-Finnhub-Token`. The 60/min free figure is not on this page. | https://finnhub.io/docs/api/rate-limit | agree (auth, 30/s cap); 60/min unconfirmed |
+| Massive (formerly Polygon.io) Stocks | Free Stocks Basic: 5 calls/min, 2 years history, end-of-day/minute aggregates; paid from $29/mo | Stocks Basic tier: "5 API Calls / Minute", "2 Years Historical Data", "End of Day Data", minute aggregates available; the $29/month on the pricing page is the separate "Financials & Ratios" product, not the first stocks tier | https://massive.com/pricing | agree (5/min, 2 y, EOD); differ on "$29/mo" as the stocks upgrade price |
+| Alpha Vantage | Free key: 25 requests per day | "our standard API usage limit (25 API requests per day)" | https://www.alphavantage.co/premium/ | agree |
+| CoinGecko Demo API | Demo: 30 calls/min, 10,000 calls/month | "The Demo API plan ... stable rate limit of 100 calls/min and a monthly cap of 10,000 calls. Paid plans start at $35/mo ... 300 calls/min" | https://www.coingecko.com/en/api/pricing | differ (rate is 100/min, not 30/min; monthly cap agrees) |
+| SEC EDGAR (data.sec.gov) | No sign-in; User-Agent header; no browser CORS; 10 requests/second | "data.sec.gov does not support Cross Origin Resource Scripting (CORS). Automated access must comply with SEC.gov's Privacy and Security Policy". The 10 req/s figure is in the linked Developer FAQ, not on this page. | https://www.sec.gov/search-filings/edgar-application-programming-interfaces | agree (no CORS); 10 req/s unconfirmed on this page |
+| TradingView Lightweight Charts | Apache-2.0, client-side, attribution link required | README: "Licensed under the Apache License, Version 2.0"; "You shall add the 'attribution notice' from the NOTICE file and a link to ... your website or mobile application"; `attributionLogo` chart option | https://github.com/tradingview/lightweight-charts (README + NOTICE) | agree |
+| Browser IndexedDB (local journal store) | Up to 60% of available disk | MDN: Chromium "an origin can store up to 60% of the total disk size"; WebKit (macOS 14 / iOS 17+) "around 60% of total disk" for browser apps, "around 15%" for other embedding apps. Note: the 60% is of total disk, not available disk. | https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria | agree, with the wording fix (total, not available) |
+| Robinhood reports/statements (CSV import) | No public equities REST API; import read-only CSV exports | "You can access custom account activity reports and account statements within your Robinhood account settings." The page does not discuss an API either way. | https://robinhood.com/us/en/support/articles/finding-your-reports-and-statements/ | agree (export path exists); "no public API" not stated on this page |
+| Charles Schwab Trader API (Individual) | OAuth Trader API (never used by Icarus) | Page is a JavaScript-only portal; the fetched HTML carries no product text | https://developer.schwab.com/products/trader-api--individual | unconfirmed (page does not render without JS) |
+
+Missed sources worth adding (verified this session):
+| source | gemini says | page says | url | agree/differ |
+|---|---|---|---|---|
+| MDN Storage quotas and eviction (persistence) | not listed | Documents `navigator.storage.persist()` and best-effort vs persistent eviction; Icarus keeps all trades in browser storage, so persistence is the relevant control | https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria | missed (add) |
+
+Summary: 9 sources checked. Differ: 2 (CoinGecko rate is 100/min; Massive $29 is a different product). Unconfirmed figures: 4 (Finnhub 60/min, SEC 10 req/s, Robinhood "no API", Schwab page). No numbers invented.

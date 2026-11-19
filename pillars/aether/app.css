@@ -1,13 +1,87 @@
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.tab{background:rgba(12,18,32,.65);border:1px solid rgba(159,180,204,.22);border-radius:999px;color:#b8c7dc;padding:7px 14px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
-.tab[aria-selected="true"]{border-color:rgba(75,227,138,.65);background:rgba(75,227,138,.14);color:#e9fff2}
-.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08);flex-wrap:wrap}
-.pill{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(75,227,138,.45);color:#7dffc0}
-.pill.warn{border-color:rgba(255,209,102,.6);color:#ffd166}
-.pill.hot{border-color:rgba(255,140,148,.65);color:#ff9ba3}
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.stat-box{background:rgba(10,16,28,.55);border:1px solid rgba(159,180,204,.16);border-radius:12px;padding:12px}
-.stat-box b{display:block;font-size:20px;margin-top:4px}
-.check-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(159,180,204,.08);font-size:14px;flex-wrap:wrap}
-.check-row label{display:flex;align-items:center;gap:8px;cursor:pointer}
-.num-in{width:64px;padding:4px 6px;border-radius:8px;border:1px solid rgba(159,180,204,.25);background:rgba(10,16,28,.65);color:#e8eef7;font:inherit;font-size:13px}
+/* Aether design: the field instrument. Every panel is a station instrument — gauges with engraved
+   labels and tabular figures, the 24h curve on a gridded screen, loads as a ruled schedule ledger,
+   the weather line as a station log stamp that shows its own state (no fix / baseline / sampled,
+   with the sample's own date — never freshened), corridors and outages as log entries with rails.
+   Kit tokens only; the instrument palette extends the canvas curve's own colours. */
+:root {
+  --ae-amber: #ffd166;
+  --ae-orange: #ff8a3d;
+  --ae-red: #ff9ba3;
+  --ae-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* status stamps (corridor states, Wh readouts, surplus/deficit) */
+.pill { display: inline-block; font-family: var(--ae-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; border-radius: 6px; padding: 3px 8px; border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); color: var(--accent); white-space: nowrap; }
+.pill.warn { border-color: color-mix(in srgb, var(--ae-amber) 65%, transparent); color: var(--ae-amber); }
+.pill.hot { border-color: color-mix(in srgb, var(--ae-red) 65%, transparent); color: var(--ae-red); }
+
+/* ruled rows */
+.kv { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 8px 0; font-size: 14.5px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+
+/* ---- solar gauges ---- */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.ae-gauge { position: relative; overflow: hidden; background: rgba(3, 5, 10, .5); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px 12px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05), inset 0 0 26px rgba(0, 0, 0, .35); }
+.ae-gauge::before { content: ""; position: absolute; top: 0; left: 14px; right: 14px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); }
+.ae-gauge.g-load::before { background: linear-gradient(90deg, var(--ae-orange), transparent); }
+.ae-gauge.g-auto::before { background: linear-gradient(90deg, var(--accent-2), transparent); }
+.ae-gauge.g-net:has(.pill.warn)::before { background: linear-gradient(90deg, var(--ae-amber), transparent); }
+.ae-gauge.g-net:has(.pill.hot)::before { background: linear-gradient(90deg, var(--ae-red), transparent); }
+.ae-gauge.g-net:has(.pill.hot) { border-color: color-mix(in srgb, var(--ae-red) 40%, var(--line)); }
+.ae-gauge.g-net:has(.pill.warn) { border-color: color-mix(in srgb, var(--ae-amber) 40%, var(--line)); }
+.ae-gauge > .stat-s:first-child { display: block; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); }
+.ae-gauge b { display: block; font-size: 27px; font-weight: 300; letter-spacing: -.01em; margin: 5px 0 3px; color: #fff; font-variant-numeric: tabular-nums; text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 35%, transparent); }
+.ae-gauge.g-load b { text-shadow: 0 0 18px color-mix(in srgb, var(--ae-orange) 35%, transparent); }
+.ae-gauge.g-auto b { text-shadow: 0 0 18px color-mix(in srgb, var(--accent-2) 35%, transparent); }
+.ae-gauge > .stat-s:last-child { display: block; font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 7px; margin-top: 7px; }
+.ae-gauge .pill { margin-top: 6px; }
+.ae-bar { display: block; height: 6px; border-radius: 999px; background: rgba(255, 255, 255, .07); overflow: hidden; margin: 7px 0 2px; }
+.ae-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent-2), var(--accent)); box-shadow: 0 0 10px color-mix(in srgb, var(--accent-2) 60%, transparent); }
+
+/* ---- the curve screen ---- */
+#ae-curve { border: 1px solid var(--line-strong); border-radius: 14px; box-shadow: inset 0 0 34px rgba(0, 0, 0, .5);
+  background:
+    radial-gradient(85% 90% at 50% 0%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 60%),
+    linear-gradient(rgba(159, 180, 204, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(159, 180, 204, .055) 1px, transparent 1px),
+    rgba(3, 5, 10, .5);
+  background-size: 100% 100%, 100% 28px, 28px 100%, 100% 100%; }
+
+/* ---- sizing / entry plates ---- */
+.ae-plate { background: rgba(3, 5, 10, .35); border: 1px solid var(--line); border-radius: 14px; padding: 12px; box-shadow: inset 0 0 22px rgba(0, 0, 0, .28); }
+
+/* ---- load schedule ledger ---- */
+.check-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 9px 2px; border-bottom: 1px solid var(--line); font-size: 14px; flex-wrap: wrap; }
+.check-row label { display: flex; align-items: center; gap: 8px; cursor: pointer; flex-wrap: wrap; }
+.check-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); flex: none; }
+.ae-load .pill { font-variant-numeric: tabular-nums; min-width: 74px; text-align: center; }
+.ae-load.off label b { color: var(--muted); }
+.ae-load.off .pill { opacity: .45; }
+.ae-load.off { border-bottom-color: rgba(214, 226, 245, .06); }
+.ae-tag { font-family: var(--ae-mono); font-size: 9px; letter-spacing: .14em; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent); border-radius: 5px; padding: 2px 5px; }
+.num-in { width: 68px; padding: 4px 6px; border-radius: 8px; border: 1px solid var(--line-strong); background: rgba(3, 5, 10, .6); color: var(--ink); font-family: var(--ae-mono); font-size: 13px; text-align: center; }
+
+/* ---- station log stamp: the weather line, honest about its state ---- */
+.ae-wx { font-family: var(--ae-mono); font-size: 12.5px; line-height: 1.6; color: var(--muted); margin: 0 0 12px; padding: 11px 13px; border: 1px solid var(--line-strong); border-radius: 12px; background: rgba(3, 5, 10, .45); box-shadow: inset 0 0 18px rgba(0, 0, 0, .3); }
+.ae-wx[data-state="sample"] { border-color: color-mix(in srgb, var(--accent) 55%, transparent); color: var(--ink); }
+.ae-wx[data-state="noloc"] { border-style: dashed; border-color: color-mix(in srgb, var(--ae-amber) 60%, transparent); color: var(--ae-amber); }
+
+/* ---- corridor log ---- */
+body.pk-v2 .ae-corr { position: relative; padding-left: 15px; }
+.ae-corr::before { content: ""; position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 55%, transparent); }
+.ae-corr.st-advisory::before, .ae-corr.st-watch::before { background: var(--ae-amber); box-shadow: 0 0 8px color-mix(in srgb, var(--ae-amber) 55%, transparent); }
+.ae-corr.st-closed { background: linear-gradient(90deg, rgba(255, 120, 130, .07), transparent 62%); }
+.ae-corr.st-closed::before { background: var(--ae-red); box-shadow: 0 0 8px color-mix(in srgb, var(--ae-red) 55%, transparent); }
+.ae-corr .stat-s { font-family: var(--ae-mono); font-size: 12px; }
+
+/* ---- outage log ---- */
+body.pk-v2 .ae-out { position: relative; padding-left: 15px; }
+.ae-out::before { content: ""; position: absolute; left: 0; top: 12px; bottom: 12px; width: 3px; border-radius: 2px; background: var(--accent-2); box-shadow: 0 0 8px color-mix(in srgb, var(--accent-2) 55%, transparent); }
+
+@media (max-width: 560px) {
+  .grid-2 { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .ae-gauge { padding: 11px 12px 10px; }
+  .ae-gauge b { font-size: 20px; }
+  .ae-gauge > .stat-s:first-child { font-size: 9px; }
+  .ae-gauge > .stat-s:last-child { font-size: 11.5px; }
+  .ae-load .pill { min-width: 64px; }
+}

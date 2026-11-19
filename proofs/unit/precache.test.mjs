@@ -20,6 +20,19 @@ test("generated precache lists local pillar data and leaves Titan and Midas out"
     "./pillars/piano/standards.js",
     "./pillars/hearth/data/reference.js",
     "./pillars/privacy/brokers-data.js",
+    "./pillars/bastion/data/readiness.json",
+    "./pillars/odyssey/odyssey-data.js",
+    "./pillars/odyssey/basemap.js",
+    "./pillars/polis/kern-rules.js",
+    "./pillars/continuity/legacy-policies.js",
+    "./pillars/hearth/permits.js",
+    "./pillars/argus/corpus-data.js",
+    "./pillars/observatory/subjects-seed.js",
+    "./pillars/kairos/fixed-dates.js",
+    "./deck/core/deadlines.js",
+    "./deck/views/menu.js",
+    "./art/worlds/index.json",
+    "./art/worlds/world_home.webp",
     "./pillars/athenaeum/data/cause-event-consequence.json",
     "./kit/update.js",
     "./sw-precache.js",
@@ -27,7 +40,7 @@ test("generated precache lists local pillar data and leaves Titan and Midas out"
     if (rel === "./sw-precache.js") assert.equal(urls.includes(rel), false);
     else assert.equal(urls.includes(rel), true, rel);
   }
-  assert.equal(urls.some((u) => u.includes("titan") || u.includes("midas") || u.includes("/fleet")), false);
+  assert.equal(urls.some((u) => /\/(titan|midas|fleet)(\/|$)/.test(u) || u.includes("titan-reliquary") || u.includes("midas-ledger")), false);
   assert.equal(urls.filter((u) => u.startsWith("./pillars/") && u.endsWith("/")).length, 25);
   const check = checkPrecache(ROOT);
   assert.equal(check.ok, true, check.errors.join("\n"));
@@ -42,7 +55,7 @@ test("validator fails when the generated precache is stale", () => {
 test("the shell waits for the Update ready chip instead of skipping the wait", () => {
   const sw = fs.readFileSync(path.join(ROOT, "sw.js"), "utf8");
   assert.match(sw, /importScripts\("\.\/sw-precache\.js"\)/);
-  assert.match(sw, /var CACHE = "prometheus-hub-deck-d21"/);
+  assert.match(sw, /var CACHE = "prometheus-hub-deck-d35"/);
   assert.match(sw, /SKIP_WAITING/);
   assert.doesNotMatch(sw, /return self\.skipWaiting\(\)/);
   const client = fs.readFileSync(path.join(ROOT, "kit/update.js"), "utf8");

@@ -24,6 +24,9 @@ export const ALLOW = [
   ["pillars/money/cases.js", "worked cases"],
   ["pillars/money/engine.js", "amortization engine over those cases"],
   ["pillars/money/app.js", "simulator chrome only: windfall chips and the empty-trap line"],
+  ["pillars/money/real.js", "Joseph's real consolidation book, public on the pillar at his direction 2026-11-14 (privacy revoked for the hub; the deck passcode gate is his chosen mitigation) — same policy as the narrowed private-loan unit test"],
+  ["pillars/money/flex.js", "Citi Flex Plan published rules reference (MID-GEM-09, Gemini 20261116 drop, corrected at integration) — same class as issuers.js/offers.js reference data"],
+  ["pillars/kairos/fixed-dates.js", "statutory deadline reference (KAI-GEM-10): Kern County / DMV penalty schedules carry fixed statutory costs ($10 installment cost, $15 redemption fee) — public fee schedules, not account data"],
   ["pillars/icarus/", "sample journal, rule formulas, and market-day reference"],
   ["pillars/apollo/foods.js", "food reference"],
   ["pillars/apollo/lookup.js", "nutrition lookup reference"],
@@ -38,6 +41,11 @@ export const ALLOW = [
   ["pillars/athenaeum/data/", "chronicle reference"],
   ["pillars/bastion/data/", "public-agency contacts in the readiness reference"],
   ["pillars/sylade/", "public presence address, not a private inbox"],
+  ["pillars/hermes/research/", "public vendor quotas and prices (second-reader checks)"],
+  ["pillars/hearth/research/", "public scan-app prices (second-reader checks)"],
+  ["pillars/polis/kern-rules.js", "Kern County ordinance reference (POL-GEM-04, 2026-11-19): statutory stop-work fines quoted from the county code, not money of Joseph's"],
+  ["pillars/hearth/permits.js", "building-code reference (HEA-GEM-17): CRC R315's $1,000-of-work threshold for CO alarms"],
+  ["pillars/continuity/legacy-policies.js", "provider legacy-policy reference (CON-GEM-03): a help-centre URL's article id matches the card pattern; no account numbers"],
 ];
 
 const ALLOW_EMAIL = new Set([

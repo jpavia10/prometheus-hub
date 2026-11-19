@@ -2,6 +2,125 @@
 
 # Kairos Meridian · homework for Gemini
 
-Updated 2026-11-10 03:42 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 04:52 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
-No homework for Gemini in Kairos Meridian right now. Check your HOMEWORK doc for the other pillars.
+**WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
+
+## 1. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
+
+**Due:** 2026-11-24 · **State:** delivered 2026-11-16, waiting for its check: do not redo it unless a review reopens it
+
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Kairos Meridian from, step by step.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
+- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
+
+**Do this:**
+1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/kairos/) on a phone-sized browser and use every section.
+2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos): every file the page loads, and pillar.json.
+3. Write section A from what is there now, with file:line for each item; then B to H.
+4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
+
+**Make:** `kairos_gemini_function-spec_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
+
+**Every field, exactly:**
+- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
+- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
+- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
+- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
+- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
+- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
+- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
+- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every item in A has a file:line that exists.
+- [ ] B has 8+ stories and none invents a personal fact.
+- [ ] C names every field with type and example.
+- [ ] F has 12+ tests, each with one Given, one When, one Then.
+- [ ] G steps are in an order that can ship one by one.
+- [ ] All eight headings, in order.
+
+**How many:** 1
+
+**Done when:** 1 file exactly in the shape, every self-check line true.
+
+**How Claude checks it:**
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. KAI-GEM-12 · Kairos: RFC 5545's own recurrence examples as test cases, every occurrence written out
+
+**Due:** 2026-11-28 · **State:** now
+
+**Why:** Kairos imports and exports recurring events (RRULE) but has no test that its recurrences land on the right days. RFC 5545 section 3.8.5.3 lists about 40 worked examples with their answers: turned into data, they are the test.
+
+**What it unlocks:** A Kairos proof that runs every RFC example through its recurrence code, so a recurring bill or custody day is never off by one.
+
+**Read first:**
+- https://www.rfc-editor.org/rfc/rfc5545#section-3.8.5.3
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/deck/core/ics.js (the RRULE part)
+
+**Do this:**
+1. Take every example in RFC 5545 section 3.8.5.3 in order (they start 'Daily for 10 occurrences').
+2. For each: the RFC's description line, its DTSTART line, its RRULE line (and RDATE/EXDATE if the example has them), and the occurrences the RFC lists after '==>', written out as full ISO local datetimes in America/New_York (e.g. 1997-09-02T09:00). Where the RFC lists more than 20 or the rule is unbounded, give the first 20 and set truncated true.
+3. Do not compute occurrences the RFC does not list; copy its own answers. Where the RFC's answer shows a range ('September 2-11'), expand it to every date in the range.
+
+**Make:** `kairos_gemini_rrule-tests_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per RFC example, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): example number in RFC order
+- `description` (text): the RFC's line, word for word
+- `dtstart` (text): the RFC's DTSTART line
+- `rrule` (text): the RFC's RRULE line, or '' for RDATE-only examples
+- `extra` (text): RDATE/EXDATE lines, or ''
+- `occurrences` (array of text): ISO local datetimes
+- `truncated` (boolean): true when only the first 20 are given
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
+
+**How many:** 40
+
+**Done when:** Every example in section 3.8.5.3, each with the RFC's own occurrences.
+
+**How Claude checks it:**
+- Claude runs every example through an independent recurrence library and through Kairos's ics.js; any disagreement with the RFC is a defect in the file.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a number that is not on its source and not shown as arithmetic
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)

@@ -136,6 +136,7 @@
 
   const ROOM_TYPES = ["kitchen", "bathrooms", "bedrooms", "living areas", "laundry", "garage", "basement", "outdoor", "house systems", "whole house"];
   const usd = (n) => "$" + Math.round(n).toLocaleString("en-US");
+  const MON = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function readRecordsDocs() {
@@ -261,11 +262,14 @@
       <div class="glass lit span-12">
         <h2>Phase-Gate Readiness (P1–P5)</h2>
         <p class="sub">Rule: a phase is clear to start only after open field measurements verify, before-photos exist in Argus, and BOM SKUs have prices.</p>
+        <div id="h-plate" class="h-plate"></div>
         <div id="h-phases-list"></div>
       </div>
       <div class="glass span-12">
         <h2>2nd-Floor Deck Refurbish · Blueprint Rev 7</h2>
         <div id="h-deck"></div>
+        <div id="h-specs"></div>
+        <div id="h-permit"></div>
       </div>
       <div class="glass span-12">
         <h2>General Renovation Log</h2>
@@ -302,6 +306,7 @@
       <div class="glass span-12">
         <div class="row-actions" style="justify-content:space-between">
           <h2>Materials Bill of Materials (BOM)</h2>
+          <button class="btn quiet small" id="h-basis-btn" type="button">Sync Capital Basis → Records</button>
           <form class="row-actions">
             <label class="f">Phase <select id="h-mat-phase"><option value="all">All</option><option value="1">P1</option><option value="2">P2</option><option value="3">P3</option><option value="4">P4</option></select></label>
             <label class="f">Category <select id="h-mat-cat"><option value="all">All</option><option>lumber</option><option>flashing</option><option>sealant</option><option>concrete</option><option>fasteners</option><option>finish</option></select></label>
@@ -362,12 +367,25 @@
     const reqs = S.list("requests").filter((r) => r.room === rm.id);
     const open = reqs.filter((r) => r.status !== "resolved").length;
     el.innerHTML = `<b>Selected room: ${esc(rm.name)}</b> · ${rm.w && rm.l ? `${rm.w} × ${rm.l} ft` : "unmeasured"} · ${rm.phase ? `Phase ${rm.phase}` : "unscheduled"} · ${open} open field request(s) ${rm.notes ? `— ${esc(rm.notes)}` : ""}`;
+    /* HEA-GEM-16 temp check (2026-11-17): shared weather cache (prometheus.shared.wx,
+       written by Aether/Bastion fetches). Below 50°F, composite decking work follows
+       the manufacturers' cold-weather fastener guidance. */
+    try {
+      const wx = JSON.parse(localStorage.getItem("prometheus.shared.wx") || "null");
+      if (wx && typeof wx.tempF === "number") el.innerHTML += `<br>Field temp (shared wx): <b>${wx.tempF}°F</b>${wx.tempF < 50 ? " — below 50°F: cold-weather install rules apply (pre-drill composite fasteners, expect brittle boards)." : " — standard install temperatures."}`;
+    } catch (_) {}
   }
 
   function paint() {
     const D = window.HEARTH.data();
     const roomName = (id) => (D.rooms.find((r) => r.id === id) || {}).name || "Whole house";
     paintInspector();
+
+    // 0. The job plate: one ruled register line over the job book, read live from the same data
+    const gatesClear = D.phases.filter((p) => phaseGateStatus(p.id).ready).length;
+    const deckDoneN = DECK.stages.filter((s) => (D.deck[s.id] || {}).done).length;
+    const openReqN = D.requests.filter((r) => r.status !== "resolved").length;
+    $("#h-plate").textContent = `THE JOB BOOK · ${D.phases.length} PHASES · ${gatesClear} GATE${gatesClear === 1 ? "" : "S"} CLEAR · DECK ${deckDoneN} / ${DECK.stages.length} STAGES · ${openReqN} FIELD REQUEST${openReqN === 1 ? "" : "S"} OPEN`;
 
     // 1. Phases + Phase-Gate badges
     const phBox = $("#h-phases-list");
@@ -447,6 +465,55 @@
       )
     );
 
+    /* HEA-GEM-16 (2026-11-17): the TimberTech/Trex/IRC spec table (window.HEARTH_SPECS,
+       specs.js) — searchable by part, product, or spec text; source PDFs linked. */
+    const specBox = $("#h-specs");
+    if (specBox && window.HEARTH_SPECS) {
+      const q = (window.__hearthSpecQ || "").toLowerCase();
+      const rows = window.HEARTH_SPECS.filter((r) => !q || (r.part + " " + r.product + " " + r.spec).toLowerCase().includes(q));
+      specBox.replaceChildren(
+        h("div", { style: "padding:10px 0 4px" },
+          h("div.kv", null, h("b", null, "Deck Spec Library (TimberTech / Trex / IRC)"), h("span.stat-s", null, `${rows.length} / ${window.HEARTH_SPECS.length} specs`)),
+          h("label.f", { style: "display:block;margin:6px 0" }, "Filter ", Object.assign(h("input", { type: "search", placeholder: "fastener, flashing, joist…", value: window.__hearthSpecQ || "" }), {})),
+          ...rows.map((r) => h("div.kv", null,
+            h("span", null, h("b", null, `${r.value} ${r.unit}`), ` — ${esc(r.spec)} `, h("span.stat-s", null, `${r.part} · ${esc(r.product)} · ${esc(r.page)}`), r.flag ? h("span.pill warn", null, " unverified") : null, r.corrected ? h("span.pill", null, " corrected") : null),
+            h("a", { href: r.url, target: "_blank", rel: "noopener", class: "stat-s" }, "guide ↗")))
+        )
+      );
+      const inp = specBox.querySelector("input[type=search]");
+      if (inp) inp.oninput = () => { window.__hearthSpecQ = inp.value; paint(); const n = $("#h-specs input[type=search]"); if (n) { n.focus(); n.setSelectionRange(n.value.length, n.value.length); } };
+    }
+
+    /* HEA-GEM-17 (2026-11-19): the Kern County permit check, run against this deck as Hearth records it (window.HEARTH_PERMITS,
+       permits.js; Muse-checked 9/10). It tests the four-condition exemption and says what the guide does not cover. */
+    const permitBox = $("#h-permit");
+    if (permitBox && window.HEARTH_PERMITS) {
+      const P = window.HEARTH_PERMITS, area = DECK.widthFt * DECK.depthFt;
+      const conds = [
+        { t: "Not over 200 sq ft", ok: area <= 200, why: `${DECK.widthFt} × ${DECK.depthFt} ft = ${area} sq ft` },
+        { t: "Not more than 30 in above grade", ok: false, why: "a 2nd-floor deck" },
+        { t: "Not attached to the house", ok: false, why: "first board sits on the house ledger" },
+        { t: "Does not serve the required exit door", ok: null, why: "not recorded: is the deck door the house's required exit (R311.4)?" },
+      ];
+      const fails = conds.filter((c) => c.ok === false).length;
+      const mark = (c) => h("span.pill" + (c.ok === true ? ".gate-ok" : c.ok === false ? ".fail" : ".gate-hold"), null, c.ok === true ? "meets" : c.ok === false ? "fails" : "unknown");
+      const list = (arr) => h("ul", { style: "margin:4px 0 8px 18px;padding:0" }, ...arr.map((x) => h("li", { style: "margin:3px 0" }, x)));
+      permitBox.replaceChildren(
+        h("div", { style: "padding:12px 0 4px;border-top:1px solid var(--line);margin-top:10px" },
+          h("div.kv", null, h("b", null, "Kern County permit check"), h("span.stat-s", null, P.exemption.cite)),
+          h("p.sub", { style: "margin:4px 0 8px" }, P.exemption.rule),
+          ...conds.map((c) => h("div.kv", null, h("span", null, h("b", null, c.t), h("br"), h("span.stat-s", null, c.why)), mark(c))),
+          h("p", { style: "margin:10px 0 4px" }, h("b", null, fails ? `A new or rebuilt deck like this needs a permit: ${fails} of 4 exemption conditions fail.` : "This deck would be permit-exempt.")),
+          h("p.stat-s", { style: "margin:0 0 8px" }, "Not in the guide: whether replacing boards and flashing on the existing frame counts as an ordinary repair. Ask Kern Building Inspection before the demo-and-repair stage."),
+          h("details", null, h("summary", null, "The numbers an inspector checks"),
+            ...P.numbers.map((n) => h("div.kv", null, h("span", null, h("b", null, n.k), h("br"), h("span.stat-s", null, n.cite + (n.note ? " · " + n.note : ""))), h("span", null, n.v)))),
+          h("details", null, h("summary", null, "How to apply, fees and inspections"), list(P.apply), list(P.inspections)),
+          h("details", null, h("summary", null, "Fire clearance by June 1"), h("p.sub", null, P.fire.rule + " ", h("a", { href: P.fire.url, target: "_blank", rel: "noopener" }, P.fire.cite + " ↗"))),
+          h("details", null, h("summary", null, "Sources"), list(P.sources.map(([t, u]) => h("a", { href: u, target: "_blank", rel: "noopener" }, t + " ↗")))),
+        )
+      );
+    }
+
     // 3. General projects + room dropdowns
     $("#h-projects").replaceChildren(...D.projects.sort((a, b) => String(b.start || "").localeCompare(String(a.start || ""))).map((p) =>
       h("div.kv", null,
@@ -497,10 +564,26 @@
     $("#h-cost-plan-s").textContent = `${allMats.length - pricedCount} SKU(s) still awaiting store quote`;
     $("#h-cost-act").textContent = actualSpent ? usd(actualSpent) : "$0";
 
+    /* HEA-GEM-16 basis sync (2026-11-17): write the cumulative capital-improvement
+       materials total into Records' doc register (localStorage prometheus.records.docs)
+       as one upserted property doc — Records' retention rules treat property-basis
+       records as permanent. §H: no labor estimates are folded in; materials only. */
+    const basisBtn = $("#h-basis-btn");
+    if (basisBtn) basisBtn.onclick = () => {
+      const total = Math.round(plannedTotal * 100) / 100;
+      let docs = [];
+      try { docs = JSON.parse(localStorage.getItem("prometheus.records.docs") || "[]"); } catch (_) { docs = []; }
+      const rec = { id: "hearth-basis", title: "Capital improvements — Hearth BOM materials total (property basis)", category: "property", issuer: "Prometheus Hearth", serial: "", date: day(), due: "", where: "Hearth BOM", notes: `Cumulative planned materials total $${total.toFixed(2)} across ${allMats.length} BOM lines, synced from Hearth. Materials only — no labor. Keep permanently (property basis).` };
+      const i = docs.findIndex((d) => d.id === "hearth-basis");
+      if (i >= 0) docs[i] = { ...docs[i], ...rec }; else docs.push(rec);
+      try { localStorage.setItem("prometheus.records.docs", JSON.stringify(docs)); toast(`Capital basis synced to Records: ${usd(total)}`); }
+      catch (_) { toast("Records store unavailable in this browser"); }
+    };
+
     const mb = $("#h-mats-body");
     mb.replaceChildren(...visMats.map((m) => {
       const lineTotal = (m.qty != null && m.unitCost != null) ? usd(m.qty * m.unitCost) : "—";
-      return h("tr", { "data-material-id": m.id },
+      return h("tr.st-" + (m.status || "planned"), { "data-material-id": m.id },
         h("td", null, h("span.badge-phase", null, `P${m.phase}`)),
         h("td", null,
           h("b", null, m.name), " ", h("span.meta", null, `(${m.unit})`),
@@ -510,7 +593,7 @@
         h("td.n", null, m.qty ?? "—"),
         h("td.n", null, m.unitCost != null ? "$" + Number(m.unitCost).toFixed(2) : "—"),
         h("td.n", null, lineTotal),
-        h("td", null, m.status),
+        h("td", null, h("span.h-status", null, m.status)),
         h("td", null,
           h("span.row-actions", null,
             h("button.btn.quiet.small", {
@@ -523,12 +606,19 @@
                 if (cStr === null) return;
                 const aStr = prompt(`Actual receipt spent ($) if purchased (blank if not bought yet):`, m.actualPaid ?? "");
                 if (aStr === null) return;
+                const prevPaid = +m.actualPaid || 0;
+                const newPaid = aStr.trim() === "" ? null : +aStr;
                 S.update("materials", m.id, {
                   qty: qStr.trim() === "" ? null : +qStr,
                   unitCost: cStr.trim() === "" ? null : +cStr,
-                  actualPaid: aStr.trim() === "" ? null : +aStr,
+                  actualPaid: newPaid,
                   status: aStr.trim() !== "" ? "purchased" : (cStr.trim() !== "" ? "quoted" : "planned"),
                 });
+                /* HEA-GEM-16 §F.3: purchases post to the shared money bus by DELTA so
+                   re-editing a receipt never double-posts (amount is negative = money out). */
+                if (window.PB && newPaid != null && newPaid !== prevPaid) {
+                  try { PB.money.publish({ kind: "expense", amount: -(newPaid - prevPaid), date: day(), source: "hearth", label: m.name, ref: "hearth-mat-" + m.id + "-" + Date.now() }); } catch (_) {}
+                }
                 paint();
               },
             }, "Price / Qty"),
@@ -557,7 +647,8 @@
       return h("div.kv", null,
         h("span", null,
           r.phase ? h("span.badge-phase", null, `P${r.phase}`) : null, " ",
-          h("b", null, r.name),
+          h("b", null, r.name), " ",
+          h("span.h-tag", null, r.status),
           h("div.stat-s", null, `${r.type} · fl ${r.floor}${r.w && r.l ? ` · ${r.w} × ${r.l} ft (${Math.round(r.w * r.l)} ft²)` : " · unmeasured"} · ${a} items · ${p} proj`)
         ),
         h("span.row-actions", null,
@@ -581,6 +672,10 @@
     const maints = S.get("maint", SEASONAL_MAINT);
     $("#h-maint").replaceChildren(...maints.map((m) =>
       h("div.kv", null,
+        h("span.h-date", null,
+          h("span.h-date-d", null, String(Number(m.date.slice(8, 10)))),
+          h("span.h-date-m", null, MON[Number(m.date.slice(5, 7)) - 1] || "")
+        ),
         h("label", null,
           h("input", {
             type: "checkbox", ...(m.done ? { checked: "" } : {}),
@@ -617,7 +712,7 @@
             onchange: (e) => { const m = S.get("checked", {}); if (e.target.checked) m[c.id] = day(); else delete m[c.id]; S.set("checked", m); },
           }),
           " ", h("b", null, c.title),
-          h("div.stat-s", null, `${c.phase} · ${c.trade} · ${c.check} `, c.url ? h("a", { href: c.url, target: "_blank", rel: "noopener" }, c.cite || "source") : (c.cite || ""))
+          h("div.stat-s", null, h("span.h-chkid", null, c.id), ` · ${c.phase} · ${c.trade} · ${c.check} `, c.url ? h("a", { href: c.url, target: "_blank", rel: "noopener" }, c.cite || "source") : (c.cite || ""))
         )
       )
     ));

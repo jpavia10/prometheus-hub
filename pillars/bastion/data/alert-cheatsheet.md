@@ -19,7 +19,7 @@ Where: a mountain community · ~4,632 ft · NWS Hanford (HNX) · forecast zone *
 
 **Channels**
 
-- NWS forecast + alerts for mountain communities (zone CAZ336, office HNX Hanford): https://forecast.weather.gov/MapClick.php?lat=34.8206&lon=-118.9454
+- NWS forecast + alerts for mountain communities (zone CAZ336, office HNX Hanford): https://api.weather.gov/zones/forecast/CAZ336
 - NWS fire weather zone CAZ597 "Fort Tejon" (Red Flag lives here, not in CAZ336): https://api.weather.gov/alerts/active?zone=CAZ597
 - ReadyKern (Kern County mass notification): https://kerncountyfire.org/education-safety/ready-kern/ — Caller ID always begins with 661; confirm by listening and pressing 1; questions readykern@kerncountyfire.org or 211; opt-out by calling (661) 873-2602 (discouraged).
 - Genasys Protect evacuation zones: https://protect.genasys.com/ — Kern zones live since Aug 18, 2023; look up your address, write the zone name down; ReadyKern alerts use zone names; app sends critical alerts.
