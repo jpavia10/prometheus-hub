@@ -396,31 +396,31 @@
   {
    "key": "ARG-GEM-09",
    "by": "gemini",
-   "what": "argus_gemini_coin-photo-rules_20261117-1735.json in Argus Album/incoming (AI drop files)",
+   "what": "argus_gemini_coin-photo-rules_20261117-1735.json in Argus Album/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
    "key": "BAS-GEM-05",
    "by": "gemini",
-   "what": "bastion_gemini_kit-items_20261117-1735.json in Prometheus Hub/incoming (AI drop files)",
+   "what": "bastion_gemini_kit-items_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
    "key": "CON-GEM-03",
    "by": "gemini",
-   "what": "continuity_gemini_legacy-policies_20261117-1735.json in Prometheus Hub/incoming (AI drop files)",
+   "what": "continuity_gemini_legacy-policies_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
    "key": "FDY-GEM-03",
    "by": "gemini",
-   "what": "foundry_gemini_prior-art_20261117-1735.json in Prometheus Hub/incoming (AI drop files)",
+   "what": "foundry_gemini_prior-art_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
    "key": "HEA-GEM-17",
    "by": "gemini",
-   "what": "hearth_gemini_kern-permits_20261117-1735.md in Hephaestus Hearth/incoming (AI drop files)",
+   "what": "hearth_gemini_kern-permits_20261117-1735.md in Hephaestus Hearth/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
@@ -468,7 +468,7 @@
   {
    "key": "MID-GEM-10",
    "by": "gemini",
-   "what": "midas_gemini_parser-cases_20261117-1735.json in Midas Ledger/incoming (AI drop files)",
+   "what": "midas_gemini_parser-cases_20261117-1735.json in Midas Ledger/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
@@ -480,13 +480,13 @@
   {
    "key": "OBS-GEM-03",
    "by": "gemini",
-   "what": "observatory_gemini_sources_20261117-1735.json in Prometheus Hub/incoming (AI drop files)",
+   "what": "observatory_gemini_sources_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
    "key": "POL-GEM-04",
    "by": "gemini",
-   "what": "polis_gemini_kern-ordinances_20261117-1735.json in Prometheus Hub/incoming (AI drop files)",
+   "what": "polis_gemini_kern-ordinances_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
    "ts": "2026-11-17T17:35:00Z"
   },
   {
@@ -1030,5 +1030,5 @@
    "ts": "2026-11-18T19:40:00Z"
   }
  ],
- "synced": "2026-11-18T20:39:58Z"
+ "synced": "2026-11-19T01:28:44Z"
 }
