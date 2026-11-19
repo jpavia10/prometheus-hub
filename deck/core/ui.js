@@ -113,6 +113,103 @@ export function sheet({ title, body, tone, onclose }) {
   requestAnimationFrame(() => { wrap.classList.add("in"); const f = panel.querySelector("[autofocus]") || panel; f.focus({ preventScroll: true }); });
   api.el = panel; return api;
 }
+/* ---- combobox: W3C APG list autocomplete. Focus stays in the input; the active option is aria-activedescendant. ---- */
+let comboN = 0;
+/**
+ * Wire an input and a listbox as a combobox. `render` replaces the options (plain elements).
+ * ArrowDown / ArrowUp / Home / End move the active option. Enter calls `onAccept(index)`.
+ * Escape is left to bubble so the sheet can close and return focus to whatever opened it.
+ */
+export function combobox(input, list) {
+  const listId = list.id || (list.id = "cbx-" + (++comboN));
+  input.setAttribute("role", "combobox");
+  input.setAttribute("aria-autocomplete", "list");
+  input.setAttribute("aria-haspopup", "listbox");
+  input.setAttribute("aria-expanded", "false");
+  input.setAttribute("aria-controls", listId);
+  input.removeAttribute("aria-activedescendant");
+  list.setAttribute("role", "listbox");
+  let active = 0;
+  let nodes = [];
+  let onAccept = () => {};
+  function sync() {
+    nodes.forEach((el, n) => {
+      const on = n === active;
+      el.classList.toggle("sel", on);
+      el.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    const cur = nodes[active];
+    if (cur && input.getAttribute("aria-expanded") === "true") input.setAttribute("aria-activedescendant", cur.id);
+    else input.removeAttribute("aria-activedescendant");
+  }
+  function move(to) {
+    if (!nodes.length) return;
+    active = Math.max(0, Math.min(nodes.length - 1, to));
+    sync();
+    if (nodes[active] && nodes[active].scrollIntoView) nodes[active].scrollIntoView({ block: "nearest" });
+  }
+  const api = {
+    set onAccept(fn) { onAccept = typeof fn === "function" ? fn : () => {}; },
+    open() { input.setAttribute("aria-expanded", "true"); sync(); },
+    close() { input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); },
+    reset() { active = 0; },
+    get active() { return active; },
+    describe(id) { if (id) input.setAttribute("aria-describedby", id); else input.removeAttribute("aria-describedby"); },
+    render(els) {
+      nodes = els.filter(Boolean);
+      list.replaceChildren(...nodes);
+      if (active > nodes.length - 1) active = Math.max(0, nodes.length - 1);
+      nodes.forEach((el, n) => {
+        if (!el.id) el.id = listId + "-opt-" + n;
+        el.setAttribute("role", "option");
+        el.setAttribute("aria-selected", "false");
+        el.addEventListener("mousedown", (e) => e.preventDefault());
+        el.addEventListener("click", () => { active = n; sync(); onAccept(n); });
+      });
+      sync();
+    },
+  };
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); e.stopPropagation(); move(active + 1); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); e.stopPropagation(); move(active - 1); }
+    else if (e.key === "Home") { e.preventDefault(); e.stopPropagation(); move(0); }
+    else if (e.key === "End") { e.preventDefault(); e.stopPropagation(); move(Math.max(0, nodes.length - 1)); }
+    else if (e.key === "Enter") { e.preventDefault(); if (nodes.length) onAccept(active); }
+  });
+  return api;
+}
+
+/** Every shortcut the hub and the pillar shell actually honor. The ? sheet renders this list and nothing else. */
+export const SHORTCUTS = Object.freeze([
+  { keys: "/", does: "Open Search · Capture" },
+  { keys: "k", does: "Open Search · Capture" },
+  { keys: "?", does: "Show this shortcut sheet" },
+  { keys: "Esc", does: "Close the open sheet and return focus to the trigger" },
+  { keys: "Arrow Down", does: "Next result. Focus stays in the field." },
+  { keys: "Arrow Up", does: "Previous result. Focus stays in the field." },
+  { keys: "Home", does: "First result. Focus stays in the field." },
+  { keys: "End", does: "Last result. Focus stays in the field." },
+  { keys: "Enter", does: "Accept the active result. A write shows its preview first." },
+  { keys: "Arrow Left", does: "Previous pillar on the orbit, or the previous menu level" },
+  { keys: "Arrow Right", does: "Next pillar on the orbit, or the next menu level" },
+  { keys: "Enter on the page", does: "Open the focused pillar when the page itself has focus" },
+  { keys: "[", does: "Previous module, on a pillar page" },
+  { keys: "]", does: "Next module, on a pillar page" },
+  { keys: "Alt Left or Alt Right", does: "Previous or next module, on a pillar page" },
+  { keys: "Ctrl K or Cmd K", does: "Command palette, on a pillar page" },
+  { keys: "/ on a pillar page", does: "Open that page's command palette" },
+]);
+
+/** The shortcut sheet. Does nothing while another sheet is open, so ? inside the palette stays a typed character. */
+export function shortcutSheet() {
+  if (sheetOpen()) return null;
+  return sheet({
+    title: "Keyboard shortcuts",
+    body: h("div.shortcut-sheet", { role: "list", "aria-label": "Keyboard shortcuts" },
+      ...SHORTCUTS.map((s) => h("div.shortcut-row", { role: "listitem" }, h("kbd", s.keys), h("span", s.does)))),
+  });
+}
+
 /** A yes/no question as a sheet. Resolves true or false. */
 export function ask(title, text, yes = "Yes", tone) {
   return new Promise((ok) => { let ans = false;
