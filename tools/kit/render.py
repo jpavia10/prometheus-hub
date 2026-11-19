@@ -83,7 +83,7 @@ def task_md(i, t, p, folder, common=False):
 LEDGER_RULE = ("WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json "
                "(Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "
                "\"done\" list, {\"key\": \"<task id>\", \"by\": \"<your name>\", \"what\": \"<file name> in <folder>\", \"ts\": \"<now, UTC, ISO 8601>\"}, set \"updated\", save. "
-               "Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold, the original shows within 10-20 minutes.")
+               "Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).")
 
 
 def queue_page(p, ai, tasks, stamp):
