@@ -1,6 +1,89 @@
+/* Bastion design (Sebastian, 2026-11-14): the watch floor. Readiness reads as a status board —
+   scenario checklists are ruled boards with state rails (ready / partial / gap in the kit's
+   good/warn/bad, thresholds matching the pillar's own stage: 80% / 40%), supplies are inventory
+   plates railed by expiry state, quantities and weights tabular throughout. Utilitarian,
+   high-contrast, no camo. Presentation only: every id, store key and handler is app.js's own. */
+
+/* ---- board headers: every panel head is a ruled watch-board title ---- */
+.glass h2{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pearl);
+  border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
+.glass h2::before{content:"";display:inline-block;width:7px;height:7px;margin-right:9px;
+  background:var(--accent);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+
+/* ---- ruled rows ---- */
 .kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}
-.pill{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(159,212,230,.4);color:#9fd4e6}
-.pill.over{border-color:rgba(255,180,162,.6);color:#ffb4a2}
-.pill.soon{border-color:rgba(255,214,162,.6);color:#ffd6a2}
-.check{display:flex;gap:8px;align-items:center;padding:4px 0;font-size:15px}
+.kv b{font-variant-numeric:tabular-nums}
+.kv.total{font-size:15.5px;border-bottom:1px solid var(--line-strong);padding-bottom:7px}
+.kv.total b{color:var(--pearl)}
+
+/* ---- the go-bag cap gauge: true scale against the 30 lb maximum,
+        tick at the 25 lb target (400 oz of 480 oz) ---- */
+.gauge{position:relative;height:8px;margin:7px 0 20px;border:1px solid var(--line-strong);
+  border-radius:99px;background:rgba(255,255,255,.03)}
+.gauge-fill{height:100%;border-radius:99px;background:var(--good)}
+.gauge.warn .gauge-fill{background:var(--warn)}
+.gauge.bad .gauge-fill{background:var(--bad)}
+.gauge-tick{position:absolute;top:-3px;width:2px;height:12px;background:var(--pearl)}
+.gauge-cap{position:absolute;right:0;top:11px;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint);font-variant-numeric:tabular-nums}
+
+/* ---- state pills, re-toned to kit vars ---- */
+.pill{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid var(--accent-2);color:var(--accent-2)}
+.pill.over{border-color:var(--bad);color:var(--bad)}
+.pill.soon{border-color:var(--warn);color:var(--warn)}
+
+/* ---- inventory plates: one per item, railed by expiry state ---- */
+.plate{border-left:3px solid var(--line-strong);padding:7px 0 7px 11px}
+.plate.warn{border-left-color:var(--warn)}
+.plate.bad{border-left-color:var(--bad)}
+.qty{font-variant-numeric:tabular-nums;font-weight:600;color:var(--pearl)}
+
+/* ---- readiness boards: one per scenario, state rail + header plate ---- */
+.board{border:1px solid var(--line);border-left:3px solid var(--line-strong);border-radius:var(--radius-s);
+  background:rgba(255,255,255,.02);padding:12px 14px 8px;margin-bottom:12px;counter-reset:step}
+.board.ready{border-left-color:var(--good)}
+.board.partial{border-left-color:var(--warn)}
+.board.gap{border-left-color:var(--bad)}
+.board.baseline{border-top:3px double var(--accent-2)}
+.board-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:6px;flex-wrap:wrap}
+.board-head h3{font-size:16.5px;color:var(--pearl);margin:0}
+.board-meta{display:flex;align-items:baseline;gap:12px;font-variant-numeric:tabular-nums}
+.board-state{font-size:11px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line-strong);
+  border-radius:999px;padding:2px 9px;color:var(--muted)}
+.board.ready .board-state{color:var(--good);border-color:var(--good)}
+.board.partial .board-state{color:var(--warn);border-color:var(--warn)}
+.board.gap .board-state{color:var(--bad);border-color:var(--bad)}
+.board-count{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.board-pct{font-size:23px;font-weight:600;color:var(--pearl);min-width:3.2ch;text-align:right}
+.board.ready .board-pct{color:var(--good)}
+.board.partial .board-pct{color:var(--warn)}
+.board.gap .board-pct{color:var(--bad)}
+
+/* ---- playbook entries: numbered, ruled, state-tinted when checked ---- */
+.check{display:flex;gap:8px;align-items:center;padding:5px 0;font-size:15px;
+  border-bottom:1px solid rgba(159,180,204,.06);counter-increment:step}
+.check::before{content:counter(step,decimal-leading-zero);font-size:11px;min-width:3ch;
+  color:var(--faint);font-variant-numeric:tabular-nums;letter-spacing:.05em}
+.check:has(input:checked){background:rgba(125,255,192,.045)}
+.check input{accent-color:var(--good);width:17px;height:17px;flex:none}
+
+/* ---- risk register: rows railed by the data's own level ---- */
+.kv.risk{border-left:3px solid var(--line-strong);padding-left:11px}
+.kv.risk.bad{border-left-color:var(--bad)}
+.kv.risk.warn{border-left-color:var(--warn)}
+.risk-level{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;text-align:right;max-width:42%}
+
+/* ---- alert register ---- */
+#b-alerts .kv b{font-variant-numeric:tabular-nums}
+#b-wx .kv b{font-variant-numeric:tabular-nums}
+
 textarea.ta{width:100%;min-height:90px;background:rgba(10,16,28,.5);border:1px solid rgba(159,180,204,.25);border-radius:10px;color:#e8eef7;padding:10px;font:inherit}
+
+@media (max-width:480px){
+  .board{padding:10px 11px 6px}
+  .board-pct{font-size:20px}
+  .board-head h3{font-size:15.5px}
+  .check{font-size:14.5px}
+  .risk-level{max-width:38%}
+}

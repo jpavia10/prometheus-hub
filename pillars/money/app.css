@@ -1,11 +1,63 @@
+/* Money — private-bank statement presentation (Sebastian, 2026-11-14).
+   Kit tokens only; the pillar accent comes from body[data-pillar="money"] in the kit.
+   Dense, calm, ruled like a statement: hairlines, tabular figures, one hero descent. */
+
+/* shared rows (simulator, issuers, bills) */
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media (max-width:700px){.compare{grid-template-columns:1fr}}
 .model h3{margin:0 0 4px;font-size:16px}
 .model .big{font-size:26px}
-.kv{display:flex;justify-content:space-between;padding:3px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}
+.kv{display:flex;justify-content:space-between;padding:6px 0;font-size:14.5px;border-bottom:1px solid var(--line)}
 .kv b{font-weight:600}
-.issuer{padding:10px 0;border-bottom:1px solid rgba(159,180,204,.1)}
+.issuer{padding:10px 0;border-bottom:1px solid var(--line)}
 .issuer h3{margin:0;font-size:15.5px}
-.issuer .formula{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:#9fd4e6;word-break:break-word}
+.issuer .formula{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--cyan);word-break:break-word}
 .sample{display:inline-block;font-size:11px;letter-spacing:.12em;border:1px solid rgba(255,180,162,.5);color:#ffb4a2;border-radius:999px;padding:2px 8px;vertical-align:middle}
+.sample.real{border-color:color-mix(in srgb,var(--accent) 65%,transparent);color:var(--accent)}
 canvas.curve{width:100%;height:110px;display:block}
+
+/* ===== the statement (Consolidation hero, #m-real) ===== */
+.statement{padding:24px 26px}
+.stmt-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 28px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line-strong)}
+.stmt-name{font-size:23px;font-weight:500;letter-spacing:-.01em;line-height:1.15}
+.stmt-plan{display:inline-block;margin-left:8px;padding:3px 10px;border:1px solid var(--line-strong);border-radius:999px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);vertical-align:middle;white-space:nowrap}
+.stmt-acct{margin-top:5px;color:var(--faint);font-size:13.5px}
+.stmt-principal{text-align:right}
+.stmt-amt{font-weight:300;font-size:clamp(34px,5vw,46px);line-height:1.02;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+
+.statband{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 22px;padding:15px 0 17px;border-bottom:1px solid var(--line)}
+.stat .stat-n{font-weight:300;font-size:clamp(21px,2.6vw,27px);line-height:1.15;margin-top:3px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stat .stat-n small{font-size:13px;color:var(--faint)}
+
+.hero-cv{display:block;width:100%;height:236px;margin-top:14px}
+.hero-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin-top:10px;font-size:13px;color:var(--muted)}
+.hero-legend .lg{display:inline-flex;align-items:center;gap:8px}
+.sw{display:inline-block;width:22px;height:0;border-top:3px solid var(--accent);border-radius:2px}
+.sw.book{border-top:2px dashed var(--lavender)}
+.delta-chip{display:inline-flex;flex-wrap:wrap;gap:4px;align-items:baseline;border:1px solid var(--line-strong);border-radius:999px;padding:4px 12px;color:var(--muted)}
+.delta-chip b{color:var(--ink);font-weight:600}
+
+.goal-line{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-top:16px;padding:11px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14.5px}
+.goal-line b{font-size:16px;font-variant-numeric:tabular-nums}
+
+.ledger-head{margin:22px 0 4px;font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.ledger-row{display:flex;align-items:center;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)}
+.ledger-main{flex:1 1 auto;min-width:0;display:grid;gap:1px}
+.ledger-main b{font-weight:500;font-size:15px}
+.ledger-amt{flex:none;font-size:16px;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stamp{flex:none;display:inline-block;padding:3px 9px;border:1.5px solid var(--good);border-radius:4px;color:var(--good);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;transform:rotate(-4deg);opacity:.92}
+
+.rail{display:flex;gap:10px;overflow-x:auto;padding:4px 1px 8px;scrollbar-width:thin}
+.rail-card{flex:0 0 auto;width:228px;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 14px;background:rgba(255,255,255,.03)}
+.rail-date{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.rail-label{margin-top:6px;font-size:13.5px;line-height:1.4;color:var(--ink);min-height:38px}
+.rail-amt{margin-top:8px;font-size:17px;font-weight:500;font-variant-numeric:tabular-nums}
+
+@media (max-width:700px){
+  .statement{padding:18px}
+  .stmt-principal{text-align:left}
+  .statband{grid-template-columns:1fr 1fr}
+  .hero-cv{height:198px}
+  .ledger-main b{font-size:14.5px}
+  .rail-card{width:206px}
+}

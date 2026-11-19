@@ -1,0 +1,33 @@
+{
+ "about": "Painted worlds for the menu (docs/art/requests/artreq_20261116-0300_prometheus-worlds.json). An id is listed only when world_{id}.webp, world_{id}_depth.webp and world_{id}_lights.webp are all here.",
+ "worlds": [
+  "home",
+  "kairos",
+  "midas",
+  "titan",
+  "hearth",
+  "garage",
+  "apollo",
+  "money",
+  "selling",
+  "records",
+  "icarus",
+  "hermes",
+  "piano",
+  "bastion",
+  "athenaeum",
+  "odyssey",
+  "privacy",
+  "argus",
+  "games",
+  "forge",
+  "foundry",
+  "observatory",
+  "kin",
+  "presence",
+  "aether",
+  "polis",
+  "mythos",
+  "continuity"
+ ]
+}

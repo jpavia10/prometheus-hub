@@ -54,3 +54,6 @@ You are taking over as lead engineer and designer for Joseph's Prometheus (this 
   unless asked. Never print or commit tokens or API keys.
 - Known open item: in the test browser the animated page change from the hub into a pillar is sometimes dropped (cause not found).
 - After every change: a 2-3 line entry in `SHARED_LOG.md`, and keep `STATUS.md` honest (proved, built-not-reviewed, or not done).
+
+## Homework workflow (owner, 2026-11-16)
+After every intake, catch-up or processing round: new homework for every active AI across the hub, every pillar and Titan, Gemini loaded heaviest (floors: Gemini 30, Grok 6, Muse 6, ChatGPT 2). Check it on the Forge (`pillars/forge/`): every AI above its floor, no pillar row empty. Details in CLAUDE.md under Homework.

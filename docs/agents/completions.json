@@ -1,0 +1,1034 @@
+{
+ "version": 1,
+ "updated": "2026-11-18T19:40:00Z",
+ "about": "Forge completions ledger. When ANY fleet AI finishes a task, it appends one entry here: {key, by, what, ts}. key = the task id exactly as Forge shows it (hub/Midas task id like KAI-GEM-10 or MID-MUS-03; Titan homework id like HW-muse-verify-20261113-1; Titan project key T-<ai>-<n> like T-muse-12). Forge (Prometheus Hub, pillars/forge) reads this file live and shows a listed task as 'delivered' even before the integrator flips the queue in its repo. An entry means DELIVERED (the file is in the named Drive folder), not accepted: the integrator's check still decides acceptance, and the queue flip in the repo remains the permanent record. If you cannot edit this file, save DONE_<key>.json with the same fields into the same Drive folder as your deliverable and say so in your report; Sebastian folds those in.",
+ "done": [
+  {
+   "key": "FOR-GEM-03",
+   "by": "gemini",
+   "what": "forge_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T19:30:00Z"
+  },
+  {
+   "key": "HUB-GEM-10",
+   "by": "gemini",
+   "what": "hub_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T19:30:00Z"
+  },
+  {
+   "key": "MON-GEM-04",
+   "by": "gemini",
+   "what": "money_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T19:30:00Z"
+  },
+  {
+   "key": "AET-GEM-04",
+   "by": "gemini",
+   "what": "aether_gemini_feeds_20261116-2040.json in Aether/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "AET-GEM-05",
+   "by": "gemini",
+   "what": "aether_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "APO-GEM-10",
+   "by": "gemini",
+   "what": "apollo_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "ARG-GEM-10",
+   "by": "gemini",
+   "what": "argus_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "ATH-GEM-03",
+   "by": "gemini",
+   "what": "athenaeum_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "BAS-GEM-04",
+   "by": "gemini",
+   "what": "bastion_gemini_kern-alerts_20261116-2040.json in Bastion/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "BAS-GEM-06",
+   "by": "gemini",
+   "what": "bastion_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "CON-GEM-04",
+   "by": "gemini",
+   "what": "continuity_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "FDY-GEM-04",
+   "by": "gemini",
+   "what": "foundry_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "GAM-GEM-03",
+   "by": "gemini",
+   "what": "games_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "GAR-GEM-05",
+   "by": "gemini",
+   "what": "garage_gemini_recalls_20261116-2040.json in Garage/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "GAR-GEM-06",
+   "by": "gemini",
+   "what": "garage_gemini_chain-control_20261116-2040.json in Garage/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "GAR-GEM-07",
+   "by": "gemini",
+   "what": "garage_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "HEA-GEM-16",
+   "by": "gemini",
+   "what": "hearth_gemini_deck-specs_20261116-2040.json in Hephaestus Hearth/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "HEA-GEM-18",
+   "by": "gemini",
+   "what": "hearth_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "HER-GEM-09",
+   "by": "gemini",
+   "what": "hermes_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "HUB-GEM-09",
+   "by": "gemini",
+   "what": "hub_gemini_menu-audit_20261116-2040.md in Prometheus Hub/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "ICA-GEM-10",
+   "by": "gemini",
+   "what": "icarus_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "KAI-GEM-10",
+   "by": "gemini",
+   "what": "kairos_gemini_ca-deadlines_20261116-2040.json in Kairos Meridian/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "KAI-GEM-11",
+   "by": "gemini",
+   "what": "kairos_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "KIN-GEM-04",
+   "by": "gemini",
+   "what": "kin_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "MID-GEM-09",
+   "by": "gemini",
+   "what": "midas_gemini_flex-terms_20261116-2040.json in Midas incoming; integrated into the Hub Money pillar 2026-11-17",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "MYT-GEM-03",
+   "by": "gemini",
+   "what": "mythos_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "OBS-GEM-04",
+   "by": "gemini",
+   "what": "observatory_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "ODY-GEM-01",
+   "by": "gemini",
+   "what": "odyssey_gemini_away-house_20261116-2040.json in Odyssey/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "ODY-GEM-04",
+   "by": "gemini",
+   "what": "odyssey_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "PIA-GEM-03",
+   "by": "gemini",
+   "what": "piano_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "POL-GEM-05",
+   "by": "gemini",
+   "what": "polis_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "PRI-GEM-04",
+   "by": "gemini",
+   "what": "privacy_gemini_brokers_20261116-2040.json in Privacy/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "PRI-GEM-05",
+   "by": "gemini",
+   "what": "privacy_gemini_drop-dates_20261116-2040.json in Privacy/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "PRI-GEM-06",
+   "by": "gemini",
+   "what": "privacy_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "REC-GEM-04",
+   "by": "gemini",
+   "what": "records_gemini_retention_20261116-2040.json in Records/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "REC-GEM-05",
+   "by": "gemini",
+   "what": "records_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "SEL-GEM-04",
+   "by": "gemini",
+   "what": "selling_gemini_fees_20261116-2040.json in Selling Pipeline/incoming (AI drop files) (integrated 2026-11-17)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "SEL-GEM-05",
+   "by": "gemini",
+   "what": "selling_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+   "ts": "2026-11-16T20:40:00Z"
+  },
+  {
+   "key": "MID-MUS-03",
+   "by": "muse",
+   "what": "midas_muse_flex-terms-check_20261117-1040.md in Midas incoming (scored 6/10)",
+   "ts": "2026-11-17T10:40:00Z"
+  },
+  {
+   "key": "ARG-GEM-09",
+   "by": "gemini",
+   "what": "argus_gemini_coin-photo-rules_20261117-1047.json in Argus incoming",
+   "ts": "2026-11-17T10:47:51Z"
+  },
+  {
+   "key": "CON-GEM-03",
+   "by": "gemini",
+   "what": "continuity_gemini_legacy-policies_20261117-1047.json in hub incoming",
+   "ts": "2026-11-17T10:47:51Z"
+  },
+  {
+   "key": "HEA-GEM-17",
+   "by": "gemini",
+   "what": "hearth_gemini_kern-permits_20261117-1047.md in Hearth incoming",
+   "ts": "2026-11-17T10:47:52Z"
+  },
+  {
+   "key": "BAS-GEM-05",
+   "by": "gemini",
+   "what": "bastion_gemini_kit-items_20261117-1047.json in hub incoming",
+   "ts": "2026-11-17T10:47:53Z"
+  },
+  {
+   "key": "MID-GEM-10",
+   "by": "gemini",
+   "what": "midas_gemini_parser-cases_20261117-1047.json in Midas incoming",
+   "ts": "2026-11-17T10:47:53Z"
+  },
+  {
+   "key": "OBS-GEM-03",
+   "by": "gemini",
+   "what": "observatory_gemini_sources_20261117-1047.json in hub incoming",
+   "ts": "2026-11-17T10:47:53Z"
+  },
+  {
+   "key": "FDY-GEM-03",
+   "by": "gemini",
+   "what": "foundry_gemini_prior-art_20261117-1047.json in hub incoming",
+   "ts": "2026-11-17T10:47:58Z"
+  },
+  {
+   "key": "POL-GEM-04",
+   "by": "gemini",
+   "what": "polis_gemini_kern-ordinances_20261117-1047.json in hub incoming",
+   "ts": "2026-11-17T10:47:58Z"
+  },
+  {
+   "key": "HW-muse-fill-20261116-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1101.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:01:00Z"
+  },
+  {
+   "key": "HW-muse-verify-20261114-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1102.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:02:00Z"
+  },
+  {
+   "key": "HW-muse-arbitrate-20261114-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1103.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:03:00Z"
+  },
+  {
+   "key": "HW-muse-verify-20261113-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1110.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:10:00Z"
+  },
+  {
+   "key": "HW-muse-verify-20261116-1",
+   "by": "muse",
+   "what": "changes_muse_20261117-1112.jsonl in Titan collection-incoming",
+   "ts": "2026-11-17T11:12:00Z"
+  },
+  {
+   "key": "T-muse-2",
+   "by": "muse",
+   "what": "covered by the verify homework files changes_muse_20261117-1110.jsonl + changes_muse_20261117-1112.jsonl (the queue's own substitution rule)",
+   "ts": "2026-11-17T11:12:00Z"
+  },
+  {
+   "key": "T-muse-12",
+   "by": "muse",
+   "what": "changes_muse_20261117-1517.jsonl in Titan collection-incoming (blind read 1-180: 160 lines)",
+   "ts": "2026-11-17T15:17:00Z"
+  },
+  {
+   "key": "T-muse-13",
+   "by": "muse",
+   "what": "changes_muse_20261117-1524.jsonl in Titan collection-incoming (blind read 181-360: 55 lines)",
+   "ts": "2026-11-17T15:24:00Z"
+  },
+  {
+   "key": "T-muse-7",
+   "by": "muse",
+   "what": "changes_muse_20261117-1551..1555.jsonl in Titan collection-incoming (era re-citations: 188 lines, 56 corrections)",
+   "ts": "2026-11-17T15:55:00Z"
+  },
+  {
+   "key": "T-muse-10",
+   "by": "muse",
+   "what": "sound_muse_20261117-1605.json in Titan sound-incoming (35 finds, 73 not_found)",
+   "ts": "2026-11-17T16:05:00Z"
+  },
+  {
+   "key": "ARG-MUS-03",
+   "by": "muse",
+   "what": "argus_muse_coin-photo-rules-check_20261117-1725.md in Argus incoming (scored 6/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
+   "key": "BAS-MUS-03",
+   "by": "muse",
+   "what": "bastion_muse_kit-items-check_20261117-1725.md in hub incoming (scored 8/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
+   "key": "CON-MUS-01",
+   "by": "muse",
+   "what": "continuity_muse_legacy-policies-check_20261117-1725.md in hub incoming (scored 6/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
+   "key": "FDY-MUS-01",
+   "by": "muse",
+   "what": "foundry_muse_prior-art-check_20261117-1725.md in hub incoming (scored 4/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
+   "key": "HEA-MUS-02",
+   "by": "muse",
+   "what": "hearth_muse_kern-permits-check_20261117-1725.md in Hearth incoming (scored 6/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
+   "key": "MID-MUS-02",
+   "by": "muse",
+   "what": "midas_muse_parser-cases-check_20261117-1725.md in Midas incoming (scored 3/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
+   "key": "OBS-MUS-01",
+   "by": "muse",
+   "what": "observatory_muse_sources-check_20261117-1725.md in hub incoming (scored 5/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
+   "key": "POL-MUS-02",
+   "by": "muse",
+   "what": "polis_muse_kern-ordinances-check_20261117-1725.md in hub incoming (scored 4/10)",
+   "ts": "2026-11-17T17:25:00Z"
+  },
+  {
+   "key": "ARG-GEM-09",
+   "by": "gemini",
+   "what": "argus_gemini_coin-photo-rules_20261117-1735.json in Argus Album/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "BAS-GEM-05",
+   "by": "gemini",
+   "what": "bastion_gemini_kit-items_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "CON-GEM-03",
+   "by": "gemini",
+   "what": "continuity_gemini_legacy-policies_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "FDY-GEM-03",
+   "by": "gemini",
+   "what": "foundry_gemini_prior-art_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "HEA-GEM-17",
+   "by": "gemini",
+   "what": "hearth_gemini_kern-permits_20261117-1735.md in Hephaestus Hearth/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "HW-gemini-cite-20261111-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261117-1735_HW-gemini-cite-20261111-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (53 lines; answers_gemini_HW-gemini-PACK-20261111_part1..6 also in incoming)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261111-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261117-1735_HW-gemini-fill-20261111-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (74 lines; answers_gemini_HW-gemini-PACK-20261111_part1..6 also in incoming)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261111-2",
+   "by": "gemini",
+   "what": "changes_gemini_20261117-1735_HW-gemini-fill-20261111-2.jsonl in Titan Reliquary/collection-incoming (AI change files) (2 lines)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "HW-gemini-story-check-20261111-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261117-1735_HW-gemini-story-check-20261111-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (12 lines; answers_gemini_HW-gemini-PACK-20261111_part1..6 also in incoming)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "HW-gemini-value-20261111-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261117-1735_HW-gemini-value-20261111-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (23 lines; answers_gemini_HW-gemini-PACK-20261111_part1..6 also in incoming)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "HW-gemini-verify-20261111-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261117-1735_HW-gemini-verify-20261111-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (15 lines; answers_gemini_HW-gemini-PACK-20261111_part1..6 also in incoming)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "HW-gemini-verify-20261111-2",
+   "by": "gemini",
+   "what": "changes_gemini_20261117-1735_HW-gemini-verify-20261111-2.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 lines; answers_gemini_HW-gemini-PACK-20261111_part1..6 also in incoming)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "MID-GEM-10",
+   "by": "gemini",
+   "what": "midas_gemini_parser-cases_20261117-1735.json in Midas Ledger/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "MID-GEM-11",
+   "by": "gemini",
+   "what": "midas_gemini_function-spec_20261117-1735.md in Midas Ledger/incoming (AI drop files)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "OBS-GEM-03",
+   "by": "gemini",
+   "what": "observatory_gemini_sources_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "POL-GEM-04",
+   "by": "gemini",
+   "what": "polis_gemini_kern-ordinances_20261117-1735.json in Prometheus Hub/incoming (AI drop files) (redo after second-read)",
+   "ts": "2026-11-17T17:35:00Z"
+  },
+  {
+   "key": "T-gemini-2",
+   "by": "gemini",
+   "what": "albums_gemini_20261117-2025.json in Titan Reliquary/reviews-incoming (AI deep reviews) (33 albums, 1770 slots)",
+   "ts": "2026-11-17T20:25:00Z"
+  },
+  {
+   "key": "T-gemini-3",
+   "by": "gemini",
+   "what": "albums_gemini_20261117-2025.json in Titan Reliquary/reviews-incoming (AI deep reviews) (33 albums, 1770 slots)",
+   "ts": "2026-11-17T20:25:00Z"
+  },
+  {
+   "key": "HW-gemini-PACK-20261106",
+   "by": "gemini",
+   "what": "answers_gemini_HW-gemini-PACK-20261106_part1_20261118-0525.jsonl in Titan Reliquary/collection-incoming (AI change files) (26 rows covering HW-gemini-fill-20261106-1, HW-gemini-verify-20261106-1, HW-gemini-story-check-20261106-1, HW-gemini-cite-20261106-1)",
+   "ts": "2026-11-18T05:25:00Z"
+  },
+  {
+   "key": "HW-gemini-arbitrate-20261104-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-0525_HW-gemini-arbitrate-20261104-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 line: D0150 SA.KM.20 design.text verified vs Numista N# 2940)",
+   "ts": "2026-11-18T05:25:00Z"
+  },
+  {
+   "key": "HW-gemini-cite-20261106-1",
+   "by": "gemini",
+   "what": "answers_gemini_HW-gemini-PACK-20261106_part1_20261118-0525.jsonl in Titan Reliquary/collection-incoming (AI change files) (4 lines C1-C4 checked on Numista: no mintage figures published for those years, reported cannot per Rule 6)",
+   "ts": "2026-11-18T05:25:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261106-1",
+   "by": "gemini",
+   "what": "answers_gemini_HW-gemini-PACK-20261106_part1_20261118-0525.jsonl in Titan Reliquary/collection-incoming (AI change files) (8 lines F1-F8 checked on Numista: no designers listed, reported cannot per Rule 6)",
+   "ts": "2026-11-18T05:25:00Z"
+  },
+  {
+   "key": "HW-gemini-story-check-20261106-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-0525_HW-gemini-story-check-20261106-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 line S1 C244 verified on Numista N# 959)",
+   "ts": "2026-11-18T05:25:00Z"
+  },
+  {
+   "key": "HW-gemini-verify-20261106-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-0525_HW-gemini-verify-20261106-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (3 mintage lines V2/V3/V5 verified on Numista; 10 blind lines in answers_gemini_HW-gemini-PACK-20261106_part1_20261118-0525.jsonl)",
+   "ts": "2026-11-18T05:25:00Z"
+  },
+  {
+   "key": "HW-gemini-read-mint-20261104-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1515_HW-gemini-read-mint-20261104-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (2 lines: C298 Italy 1978 50 lire mint mark R below L.50 read from C298_Italy_1978_50Lire_rev.jpg)",
+   "ts": "2026-11-18T15:15:00Z"
+  },
+  {
+   "key": "HW-gemini-verify-20261111-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1515_HW-gemini-verify-20261111-1.jsonl in collection-incoming",
+   "ts": "2026-11-18T15:17:22Z"
+  },
+  {
+   "key": "HW-gemini-read-mint-20261111-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1522_HW-gemini-read-mint-20261111-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (2 lines: C351 France 1867 10 centimes Bordeaux mint mark K read from C351_rev.webp; also in answers_gemini_HW-gemini-PACK-20261111_part4_20261118-1522.jsonl)",
+   "ts": "2026-11-18T15:22:00Z"
+  },
+  {
+   "key": "HW-gemini-read-mint-20261111-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1522_HW-gemini-read-mint-20261111-1.jsonl in collection-incoming",
+   "ts": "2026-11-18T15:22:31Z"
+  },
+  {
+   "key": "ARG-MUS-03",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (ARG-MUS-03): 7/10 REJECT — all 5 named defects fixed, but 2 of 8 regression rows carry new invented numeric settings; argus_muse_coin-photo-rules-recheck_20261118-1615.md in the hub incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "BAS-MUS-03",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (BAS-MUS-03): 6/10 REJECT — duct-tape defect fixed, flagged shelf-life rows untouched, same defect class in 3 of 10 regression rows; bastion_muse_kit-items-recheck_20261118-1615.md in the hub incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "CON-MUS-01",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (CON-MUS-01): 8/10 ACCEPT — all 7 named defects eliminated (4 corrected, 3 rows deleted), no new fabrication; continuity_muse_legacy-policies-recheck_20261118-1615.md in the hub incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "FDY-MUS-01",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (FDY-MUS-01): 4/10 REJECT — 8 named fabricated owners genuinely corrected, but 6 of 8 regression rows still fabricate owners; foundry_muse_prior-art-recheck_20261118-1615.md in the hub incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "GT-AIFACTS-p1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_GT-AIFACTS-p1.jsonl in Titan Reliquary/collection-incoming (AI change files) (52 lines: items 1-52 of titan-ai-facts.json replaced with cited Numista N# Obverse/Reverse design descriptions)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "GT-AIFACTS-p2",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_GT-AIFACTS-p2.jsonl in Titan Reliquary/collection-incoming (AI change files) (51 lines: items 53-103 of titan-ai-facts.json replaced with cited Numista N# Obverse/Reverse design descriptions and dated price table rows)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "GT-LEDGER-p1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1615_GT-LEDGER-p1.jsonl in Titan Reliquary/collection-incoming (AI change files) (90 lines: items 1-90 C001-C047 confirmed from specimen photos in Titan Reliquary/_raw_capture/_phase1/coins)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "GT-LEDGER-p2",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1615_GT-LEDGER-p2.jsonl in Titan Reliquary/collection-incoming (AI change files) (90 lines: items 91-180 C047-C090 confirmed from specimen photos in Titan Reliquary/_raw_capture/_phase1/coins)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HEA-MUS-02",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (HEA-MUS-02): 9/10 ACCEPT — R105.2 exemption splice truly fixed, all defects resolved, regression 6/6; hearth_muse_kern-permits-recheck_20261118-1615.md in the Hearth incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-cite-20261117-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-cite-20261117-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (4 lines: EC.KM.37 2004, GT.KM.277.6a 2010, JM.KM.190 2015, TT.KM.32 2014 checked on Numista N#5712, N#42670, N#14370, N#1159 and secondary catalogues)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261107-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-fill-20261107-1.jsonl (and re-issued HW-gemini-fill-20261118-1) in Titan Reliquary/collection-incoming (AI change files) (2 lines: GT.KM.277.6a and JM.KM.190 design.designers verified on Numista N#42670, N#14370, N#934)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261117-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-fill-20261117-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (8 lines: JM.KM.65, JM.KM.146, JM.KM.189 credited to Christopher Ironside via Numista N#934/N#6476; IN.KM.92.2, JP.Y.73a, JP.Y.74, MX.KM.415, MX.KM.424 verified on Numista/Greysheet)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-fill-20261118-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-fill-20261118-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (2 lines: GT.KM.277.6a and JM.KM.190 design.designers verified on Numista N#42670, N#14370, N#934)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-read-mint-20261112-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-read-mint-20261112-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (6 lines: C287 Italy 1979 50 lire mint mark R read below 0 of L.50 on C287_Italy_1979_50Lire_rev.jpg; C006 and C050 flagged for obverse reshoot)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-research-20261115-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-research-20261115-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 line: C300 Bahamas 1984 25 cents N#9352 1984 FM proof-only mintage 1,036 verified; Drive photo check confirms has_photo=false / requires physical coin)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-verify-20261112-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-verify-20261112-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 line: C053 Germany 2011 20 euro cent mint mark verified on C053_Germany_2011-J_20EuroCent_rev.jpeg)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "HW-gemini-verify-20261116-1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_HW-gemini-verify-20261116-1.jsonl in Titan Reliquary/collection-incoming (AI change files) (1 line: C037 Germany 2002 10 euro cent mint mark J below 2002 verified on C037_Germany_2002_10EuroCent_rev.jpeg)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "MID-GEM-11",
+   "by": "muse",
+   "what": "Sebastian first read of the MID-GEM-11 spec: 5/10 REJECT — A–H structure complete and schema reading strong, but the app it specifies is invented (no such six-tab app/storage exists) and rule E8 inverts the available-balance rule; midas_muse_function-spec-check_20261118-1615.md in the Midas incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "MID-MUS-02",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 parser-case redo (MID-MUS-02): 7/10 REJECT — 21 of 25 cases now agree with build.py (was 0 of 15), 4 precise failures + coverage shortfalls remain; midas_muse_parser-cases-recheck_20261118-1615.md in the Midas incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "OBS-MUS-01",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (OBS-MUS-01): 5/10 REJECT — 0 of 8 dead feeds repaired (rows deleted instead), defect alive in remaining rows; observatory_muse_sources-recheck_20261118-1615.md in the hub incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "POL-MUS-02",
+   "by": "muse",
+   "what": "Recheck of Gemini's 1735 redo (POL-MUS-02): 8/10 ACCEPT — invented abatement mechanism removed and inverted to the verbatim KCFD position, quote discipline fixed; polis_muse_kern-ordinances-recheck_20261118-1615.md in the hub incoming folder",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-24",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1615_GT-LEDGER-p1.jsonl in Titan Reliquary/collection-incoming (AI change files) (90 lines: items 1-90 C001-C047 confirmed from specimen photos in Titan Reliquary/_raw_capture/_phase1/coins) (Titan project task T-gemini-24; folded from Gemini's DONE_GT-LEDGER-p1 marker)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-25",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1615_GT-LEDGER-p2.jsonl in Titan Reliquary/collection-incoming (AI change files) (90 lines: items 91-180 C047-C090 confirmed from specimen photos in Titan Reliquary/_raw_capture/_phase1/coins) (Titan project task T-gemini-25; folded from Gemini's DONE_GT-LEDGER-p2 marker)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-32",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_GT-AIFACTS-p1.jsonl in Titan Reliquary/collection-incoming (AI change files) (52 lines: items 1-52 of titan-ai-facts.json replaced with cited Numista N# Obverse/Reverse design descriptions) (Titan project task T-gemini-32; folded from Gemini's DONE_GT-AIFACTS-p1 marker)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "T-gemini-33",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1610_GT-AIFACTS-p2.jsonl in Titan Reliquary/collection-incoming (AI change files) (51 lines: items 53-103 of titan-ai-facts.json replaced with cited Numista N# Obverse/Reverse design descriptions and dated price table rows) (Titan project task T-gemini-33; folded from Gemini's DONE_GT-AIFACTS-p2 marker)",
+   "ts": "2026-11-18T16:20:00Z"
+  },
+  {
+   "key": "GT-LEDGER-p3",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p3.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-LEDGER-p4",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p4.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-LEDGER-p5",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p5.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-LEDGER-p6",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p6.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-LEDGER-p7",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p7.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-LEDGER-p8",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p8.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p1",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p1.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p2",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p2.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p3",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p3.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p4",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p4.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p5",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p5.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p6",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p6.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p7",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p7.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p8",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p8.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "GT-SECOND-p9",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p9.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-26",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p3.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-26; folded from Gemini's DONE_GT-LEDGER-p3 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-27",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p4.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-27; folded from Gemini's DONE_GT-LEDGER-p4 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-28",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p5.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-28; folded from Gemini's DONE_GT-LEDGER-p5 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-29",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p6.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-29; folded from Gemini's DONE_GT-LEDGER-p6 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-30",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p7.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-30; folded from Gemini's DONE_GT-LEDGER-p7 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-31",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-LEDGER-p8.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-31; folded from Gemini's DONE_GT-LEDGER-p8 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-34",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p1.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-34; folded from Gemini's DONE_GT-SECOND-p1 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-35",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p2.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-35; folded from Gemini's DONE_GT-SECOND-p2 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-36",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p3.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-36; folded from Gemini's DONE_GT-SECOND-p3 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-37",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p4.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-37; folded from Gemini's DONE_GT-SECOND-p4 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-38",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p5.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-38; folded from Gemini's DONE_GT-SECOND-p5 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-39",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p6.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-39; folded from Gemini's DONE_GT-SECOND-p6 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-40",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p7.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-40; folded from Gemini's DONE_GT-SECOND-p7 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-41",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p8.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-41; folded from Gemini's DONE_GT-SECOND-p8 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-42",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1710_GT-SECOND-p9.jsonl in Titan Reliquary/collection-incoming (AI change files) (Titan project task T-gemini-42; folded from Gemini's DONE_GT-SECOND-p9 marker)",
+   "ts": "2026-11-18T17:10:00Z"
+  },
+  {
+   "key": "T-gemini-NOID",
+   "by": "gemini",
+   "what": "changes_gemini_20261118-1915_T-gemini-NOID.jsonl in Titan Reliquary/collection-incoming (AI change files)",
+   "ts": "2026-11-18T19:15:00Z"
+  },
+  {
+   "key": "AET-GEM-04",
+   "by": "gemini",
+   "what": "aether_gemini_feeds_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "ARG-GEM-09",
+   "by": "gemini",
+   "what": "argus_gemini_coin-photo-rules_20261118-1940.json in Argus Album/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "BAS-GEM-04",
+   "by": "gemini",
+   "what": "bastion_gemini_kern-alerts_20261118-1940.md in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "BAS-GEM-05",
+   "by": "gemini",
+   "what": "bastion_gemini_kit-items_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "CON-GEM-03",
+   "by": "gemini",
+   "what": "continuity_gemini_legacy-policies_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "FDY-GEM-03",
+   "by": "gemini",
+   "what": "foundry_gemini_prior-art_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "GAR-GEM-05",
+   "by": "gemini",
+   "what": "garage_gemini_recalls_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "GAR-GEM-06",
+   "by": "gemini",
+   "what": "garage_gemini_chain-control_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "HEA-GEM-16",
+   "by": "gemini",
+   "what": "hearth_gemini_deck-specs_20261118-1940.json in Hephaestus Hearth/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "HEA-GEM-17",
+   "by": "gemini",
+   "what": "hearth_gemini_kern-deck-permit_20261118-1940.md in Hephaestus Hearth/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "HUB-GEM-09",
+   "by": "gemini",
+   "what": "hub_gemini_menu-audit_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "KAI-GEM-10",
+   "by": "gemini",
+   "what": "kairos_gemini_ca-deadlines_20261118-1940.json in Kairos Meridian/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "MID-GEM-09",
+   "by": "gemini",
+   "what": "midas_gemini_flex-terms_20261118-1940.json in Midas Ledger/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "MID-GEM-10",
+   "by": "gemini",
+   "what": "midas_gemini_parser-cases_20261118-1940.json in Midas Ledger/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "MID-GEM-11",
+   "by": "gemini",
+   "what": "midas_gemini_function-spec_20261118-1940.md in Midas Ledger/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "OBS-GEM-03",
+   "by": "gemini",
+   "what": "observatory_gemini_sources_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "ODY-GEM-01",
+   "by": "gemini",
+   "what": "odyssey_gemini_away-house_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "POL-GEM-04",
+   "by": "gemini",
+   "what": "polis_gemini_kern-ordinances_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "PRI-GEM-04",
+   "by": "gemini",
+   "what": "privacy_gemini_brokers_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "PRI-GEM-05",
+   "by": "gemini",
+   "what": "privacy_gemini_drop-dates_20261118-1940.md in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "REC-GEM-04",
+   "by": "gemini",
+   "what": "records_gemini_retention_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  },
+  {
+   "key": "SEL-GEM-04",
+   "by": "gemini",
+   "what": "selling_gemini_fees_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
+   "ts": "2026-11-18T19:40:00Z"
+  }
+ ],
+ "synced": "2026-11-19T01:28:44Z"
+}

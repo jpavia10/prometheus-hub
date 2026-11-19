@@ -8,29 +8,44 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-10 03:42 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 
-- HER-GRK-01 · Hermes Post: second reader on Gemini's spec · due 2026-11-14 · waits for its input file
-    make: hermes_grok_spec-check_{YYYYMMDD-HHMM}.md · how many: 6 · done when: Every source in Gemini's spec checked.
+- HER-GRK-03 · Hermes Post: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
+    make: hermes_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 
-No homework for Gemini in Hermes Post right now.
+- HER-GEM-09 · Hermes Post: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
+    make: hermes_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Hermes Post right now.
 
 ## ChatGPT
 
-Updated 2026-11-10 03:42 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Hermes Post right now.
+
+## Argon
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Argon in Hermes Post right now.
+
+## Hydrogen
+
+Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+
+
+No homework for Hydrogen in Hermes Post right now.

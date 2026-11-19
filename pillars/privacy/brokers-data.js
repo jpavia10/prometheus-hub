@@ -1,5 +1,8 @@
 /* Privacy broker opt-out URLs (Sebastian, 2026-11-10): verified live 2026-11-10 in Grok's reset-day
    broker pass (40-site ledger; dead/blocked sites dropped there with reasons). window.BROKER_OPTOUTS. */
+/* Extras union (Sebastian, 2026-11-14): the last five entries come from data/broker-optouts.json's
+   "extras" — Clearview AI + NAI are tier A-live; Nuwber/Cocofinder/Neighbor.report are tier
+   B-snapshot (live hosts block bots; opt-out pages confirmed in Wayback snapshots, per the pack). */
 window.BROKER_OPTOUTS = {
  "Spokeo": "https://www.spokeo.com/optout",
  "AnyWho": "https://www.spokeo.com/optout",
@@ -40,5 +43,45 @@ window.BROKER_OPTOUTS = {
  "OptOutPrescreen (credit-bureau prescreen opt-out)": "https://www.optoutprescreen.com/",
  "ZoomInfo": "https://www.zoominfo.com/trust-center/your-privacy",
  "RocketReach": "https://rocketreach.co/remove-profile",
- "Apollo.io": "https://www.apollo.io/privacy-policy/remove"
+ "Apollo.io": "https://www.apollo.io/privacy-policy/remove",
+ "Clearview AI": "https://www.clearview.ai/privacy-and-requests",
+ "NAI opt-out": "https://thenai.org/how-to-opt-out/",
+ "Nuwber": "https://nuwber.com/removal/link",
+ "Cocofinder": "https://cocofinder.com/remove-my-info",
+ "Neighbor.report": "https://neighbor.report/remove",
 };
+
+/* PRI-GEM-04 (Sebastian, 2026-11-17): routes for the CPPA-registered brokers added by the
+   brokersV4 ledger union in app.js, from privacy_gemini_brokers_20261116-2040.json. URLs are
+   Gemini's as dropped; several are privacy-notice pages rather than direct opt-out forms
+   (People Data Labs, Fideo, LexisNexis P&M, TrestleIQ, FOREWARN, FreePeopleSearch) — flagged
+   in the integration report, kept because the registry row still routes the request. */
+Object.assign(window.BROKER_OPTOUTS, {
+ "People Data Labs": "https://privacy.peopledatalabs.com/policies?name=privacy-policy",
+ "LiveRamp": "https://www.liveramp.com/privacy/my-privacy-choices/",
+ "The Work Number (Equifax)": "https://www.equifax.com/personal/my-privacy/",
+ "Fideo": "https://www.fideo.ai/privacy/privacy-policy/",
+ "LexisNexis (Professional & Marketing Data)": "https://www.lexisnexis.com/en-us/terms/us-privacy-notice.page",
+ "Data Axle": "https://www.data-axle.com/do-not-sell-my-data/",
+ "PropertyRadar": "https://www.propertyradar.com/privacy-requests",
+ "Thomson Reuters CLEAR": "https://www.thomsonreuters.com/en/privacy-statement#california",
+ "Checksecrets": "https://www.checksecrets.com/privacy",
+ "USPeopleSearch": "https://www.uspeoplesearch.com/purge-my-data/",
+ "Public Data Check": "https://www.publicdatacheck.com/help-center/privacy-requests",
+ "Spyfly": "https://www.spyfly.com/help-center/privacy-requests",
+ "Search Public Records": "https://www.searchpublicrecords.com/help-center/privacy-requests",
+ "Public Information Services": "https://www.publicinfoservices.com/help-center/privacy-requests",
+ "Private Reports": "https://www.privatereports.com/optOut/name/landing",
+ "PrivateRecords.net": "https://www.privaterecords.net/optOut/name/landing",
+ "We Inform (TruthRecord)": "https://www.weinform.org/optOut/name/landing",
+ "Information.com": "https://www.information.com/remove-my-info/",
+ "FreePeopleSearch": "https://www.freepeoplesearch.com/privacy-policy/",
+ "TrestleIQ": "https://www.trestleiq.com/privacy-policy-2022/",
+ "IDI (idiCORE)": "https://www.ididata.com/idis-privacy-statement/#privacy",
+ "FOREWARN": "https://www.forewarn.com/privacy-policy/",
+ "Seamless.AI": "https://login.seamless.ai/personalDataRequest",
+ "Lusha": "https://www.lusha.com/legal/ccpa/",
+ "LeadIQ": "https://www.leadiq.com/privacy-center",
+ "UpLead": "https://www.uplead.com/privacy/",
+ "Crunchbase": "https://preferences.crunchbase.com/",
+});

@@ -1,6 +1,6 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
    Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline. */
-var CACHE = "prometheus-hub-deck-d21";
+var CACHE = "prometheus-hub-deck-d35";
 var PILLAR_IDS = [
   "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
   "piano", "bastion", "athenaeum", "odyssey", "privacy", "argus", "games", "forge", "foundry",
@@ -8,12 +8,12 @@ var PILLAR_IDS = [
 ];
 var SHELL = [
   "./", "./index.html", "./manifest.webmanifest", "./pillars.json",
-  "./pillars/kairos/methods.js",
-  "./deck/deck.css", "./deck/app.js", "./deck/caps.js", "./deck/pillars.js",
+  "./pillars/kairos/methods.js", "./pillars/kairos/fixed-dates.js", "./deck/core/deadlines.js",
+  "./deck/deck.css", "./deck/lock.js", "./deck/app.js", "./deck/caps.js", "./deck/pillars.js",
   "./deck/core/legacy.js", "./deck/core/fx.js", "./deck/core/reach.js",
-  "./deck/core/store.js", "./deck/core/dates.js", "./deck/core/ui.js", "./deck/core/feeds.js", "./deck/core/atmo.js", "./deck/core/weather.js", "./deck/core/ics.js",
+  "./deck/core/store.js", "./deck/core/dates.js", "./deck/core/ui.js", "./deck/core/feeds.js", "./deck/core/atmo.js", "./deck/core/weather.js", "./deck/core/ics.js", "./deck/core/now.js", "./deck/core/session.js",
   "./deck/models/time.js", "./deck/models/money.js", "./deck/models/profile.js",
-  "./deck/views/picture.js", "./deck/views/parts.js", "./deck/views/orrery.js", "./deck/views/time.js", "./deck/views/money.js", "./deck/views/system.js",
+  "./deck/views/picture.js", "./deck/views/menu.js", "./art/worlds/index.json", "./art/worlds/world_home.webp", "./deck/views/parts.js", "./deck/views/orrery.js", "./deck/views/time.js", "./deck/views/money.js", "./deck/views/system.js",
   "./deck/data/focus.js", "./deck/data/demo.js", "./deck/data/money-words.js", "./deck/data/fixed-dates.json", "./deck/data/issuers.json", "./deck/data/offers.json", "./deck/data/payoff-cases.json",
   "./deck/fonts/outfit-latin-wght-normal.woff2",
   "./kit/prometheus.css", "./kit/kit.js", "./kit/bus.js", "./kit/links.js", "./kit/stage.js",
@@ -25,6 +25,7 @@ var SHELL = [
   return acc;
 }, [])).concat([
   "./pillars/athenaeum/vault.js", "./pillars/athenaeum/ideas-seed.js", "./pillars/athenaeum/history-seed.js",
+  "./pillars/odyssey/odyssey-data.js", "./pillars/odyssey/basemap.js", "./pillars/polis/kern-rules.js", "./pillars/continuity/legacy-policies.js", "./pillars/hearth/permits.js", "./pillars/argus/corpus-data.js", "./pillars/observatory/subjects-seed.js",
   "./pillars/athenaeum/js/app.js", "./pillars/athenaeum/js/sky.js", "./pillars/athenaeum/js/model.js", "./pillars/athenaeum/data/cause-event-consequence.json"
 ]);
 

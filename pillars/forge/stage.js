@@ -21,7 +21,7 @@
         const embers = p.open.length + p.mine.length; for (let k = 0; k < Math.min(14, embers * 2); k++) { const r = I.rand(i * 99 + k)(), life = S.still ? r : ((S.t * (0.25 + r * 0.3) + r) % 1), ex = cx + (r - 0.5) * cw * 0.8 + Math.sin(S.t * 2 + k) * 4, ey = top - life * (top - 8);
           I.halo(g, ex, ey, 6, "#ffb347", (1 - life) * 0.9); I.dot(g, ex, ey, 1.4, "#fff4d6", 1 - life); }
         I.text(g, p.ai, cx, bot + 22, { size: 11.5, weight: 600, align: "center" });
-        I.text(g, p.avg == null ? (p.open.length ? p.open.length + " open" : "no scores") : p.avg.toFixed(1) + " / 10", cx, bot + 37, { size: 10, align: "center", color: lvl ? heat : "#cfd8ea", alpha: 0.9 }); });
+        I.text(g, (p.avg == null ? "" : p.avg.toFixed(1) + " · ") + p.open.length + " open", cx, bot + 37, { size: 10, align: "center", color: lvl ? heat : "#cfd8ea", alpha: 0.9 }); });
     },
   });
 })();

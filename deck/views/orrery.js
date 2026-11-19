@@ -133,7 +133,8 @@ export function reactor(ctx) {
   let domainFilter = "all";
   let birth = S.born || calm ? 1 : 0; S.born = true;
   const used = CELLS.slice(0, PILLARS.length), mx = Math.max(...used.map((c) => Math.abs(c.x))), my = Math.max(...used.map((c) => Math.abs(c.y))), gs = Math.min((W - 14) / (2 * mx + Math.sqrt(3)), (H - 8) / (2 * my + 2)), hw = Math.sqrt(3) * gs, hh = 2 * gs;
-  const R1 = W * 0.22, R2 = W * 0.335, R3 = W * 0.43, PITCH = 0.8, D = 1000;
+  const ph = innerWidth < 440 ? 0.92 : 1;   // phones: the outer rings ran up to 6 px past the screen edge at 360 and 390 px (2026-11-16)
+  const R1 = W * 0.22, R2 = W * 0.335 * ph, R3 = W * 0.43 * ph, PITCH = 0.8, D = 1000;
   const ringOf = (i) => i < 6
     ? { R: R1, a0: Math.PI / 12 + (i * TAU) / 6, tilt: 0.16, roll: 0.1 }
     : i < 18

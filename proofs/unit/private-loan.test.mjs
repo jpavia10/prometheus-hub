@@ -1,12 +1,15 @@
-/* The public hub must not ship the owner's loan quote. Fails if those figures appear in the
-   files the home and Money pages serve. A bare 20000 is the principal; 1200000 (the interest divisor) does not count. */
+/* The public home must not ship the owner's loan quote. Fails if those figures appear in the
+   files the home serves (deck + kit). The Money pillar is exempt since 2026-11-14: Joseph lifted
+   the hub privacy constraint and directed that the pillar carry his real Citi Flex Loan on his own
+   device ("I dont care about privacy i can always add a passcode"), so pillars/money/real.js holds
+   the figures deliberately. A bare 20000 is the principal; 1200000 (the interest divisor) does not count. */
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..", "..");
-const ROOTS = ["deck", "kit", "pillars/money"];
+const ROOTS = ["deck", "kit"];
 const NEEDLES = ["952.19", "941.47", "11.99", "20,000", "$20k"];
 
 function walk(dir, out) {
@@ -17,7 +20,7 @@ function walk(dir, out) {
   }
 }
 
-test("deck, kit, and Money do not ship the private loan quote", () => {
+test("deck and kit do not ship the private loan quote", () => {
   const files = [];
   for (const rel of ROOTS) walk(path.join(ROOT, rel), files);
   const hits = [];

@@ -1,5 +1,128 @@
-.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid rgba(159,180,204,.08)}
-.check{display:flex;gap:8px;align-items:center;padding:4px 0;font-size:15px}
-.trip{padding:12px 0;border-bottom:1px solid rgba(159,180,204,.12)}
-.trip h3{margin:0 0 4px;font-size:17px}
-.pill{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid rgba(159,212,230,.4);color:#9fd4e6}
+/* Odyssey design (Sebastian, 2026-11-14): departure board + atlas, on kit tokens only.
+   Board language: letter-spaced small caps, tabular numerals, hairline rules, dashed
+   great-circle arcs — an echo of the stage's orbit, flattened for the page. */
+.kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid var(--line)}
+.check{display:flex;gap:8px;align-items:center;padding:4px 0;font-size:15px;text-align:left}
+.check input[type="checkbox"]{width:16px;height:16px;flex:none;margin:0;accent-color:var(--accent)}
+.pill{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);color:var(--accent)}
+.pill.soon{border-color:color-mix(in srgb,var(--accent-2) 55%,transparent);color:var(--accent-2)}
+
+/* ---- departure-board strip ---- */
+.board{display:grid;grid-template-columns:1.2fr 1.6fr .7fr .9fr .7fr .7fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.board-cell{background:var(--glass-2);padding:12px 16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.board-k{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.board-v{font-size:19px;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.board-coords{font-size:15.5px;letter-spacing:.04em;padding-top:3px}
+.board-away{color:var(--accent-2)}
+@media (max-width:860px){.board{grid-template-columns:1fr 1fr}.board-cell{padding:10px 12px}.board-v{font-size:16px}.board-coords{font-size:13.5px}}
+
+/* ---- home base anchor ---- */
+.anchor{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.anchor-main{min-width:230px;flex:1}
+.anchor-name{font-size:clamp(24px,4.5vw,34px);font-weight:550;line-height:1.15;margin:4px 0 2px}
+.anchor-coords{font-size:clamp(17px,3vw,22px);letter-spacing:.14em;font-variant-numeric:tabular-nums;color:var(--accent);margin-bottom:10px}
+.anchor-dot{margin:0 8px;color:var(--faint)}
+.anchor-glyph{flex:none;margin-left:auto}
+.glyph{width:118px;height:118px;display:block}
+.g-ring{fill:none;stroke:color-mix(in srgb,var(--accent) 38%,transparent);stroke-width:1}
+.g-ring.faint{stroke:color-mix(in srgb,var(--accent) 18%,transparent)}
+.g-orbit{fill:none;stroke:color-mix(in srgb,var(--accent-2) 45%,transparent);stroke-width:1;stroke-dasharray:3 5}
+.g-core{fill:var(--pearl)}
+.g-sat{fill:var(--accent)}
+.g-lab{fill:var(--muted);font-size:8.5px;letter-spacing:.18em;font-family:var(--sans)}
+.anchor-log{margin-top:14px;border-top:1px solid var(--line)}
+.log-row{display:flex;gap:14px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14.5px;align-items:baseline}
+.log-ix{font-size:11px;letter-spacing:.14em;color:var(--accent);font-variant-numeric:tabular-nums;flex:none}
+@media (max-width:860px){.anchor-glyph{margin:0 auto}}
+
+/* ---- trip files as journey cards ---- */
+.trip{padding:16px 0 18px;border-bottom:1px solid var(--line)}
+.trip:last-child{border-bottom:0}
+.trip-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.trip-route{display:flex;gap:10px;align-items:baseline;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);flex-wrap:wrap}
+.trip-from{color:var(--faint)}
+.trip-arrow{color:var(--accent);letter-spacing:0}
+.trip-to{color:var(--accent);font-weight:600}
+.trip h3{margin:6px 0 4px;font-size:21px;font-weight:550}
+.trip-notes{color:var(--muted);font-size:14.5px;line-height:1.55;max-width:72ch;margin:10px 0 0}
+.journey{margin:8px 0 0}
+.arc{width:100%;height:auto;display:block}
+.arc-line{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-dasharray:5 4}
+.arc-ghost{fill:none;stroke:color-mix(in srgb,var(--accent-2) 30%,transparent);stroke-width:1}
+.arc-node{fill:var(--bg);stroke:var(--accent);stroke-width:1.6}
+.arc-code{fill:var(--ink);font-size:11px;font-weight:600;letter-spacing:.12em;font-family:var(--sans)}
+.arc-name{fill:var(--muted);font-size:9.5px;letter-spacing:.2em;font-family:var(--sans)}
+.tl{margin:2px 0 4px}
+.tl-head{display:flex;justify-content:space-between;gap:8px;font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}
+.tl-mid{color:var(--accent)}
+.tl-track{display:flex;gap:2px;margin-top:7px}
+.tl-tick{flex:1;height:9px;border-radius:2px;background:color-mix(in srgb,var(--accent) 22%,transparent)}
+.tl-tick.end{background:var(--accent)}
+.legs{margin-top:10px;display:grid;gap:5px}
+.leg{display:flex;gap:12px;font-size:13.5px;align-items:baseline}
+.leg-date{flex:none;width:58px;font-size:11px;letter-spacing:.14em;color:var(--accent);font-variant-numeric:tabular-nums}
+.leg-note{color:var(--muted)}
+.leg-note b{color:var(--ink);letter-spacing:.08em}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;margin-top:12px}
+.check-col h4{margin:0 0 4px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
+@media (max-width:860px){.checks{grid-template-columns:1fr}.arc-code{font-size:15px}.arc-name{font-size:12.5px}}
+
+/* ---- routes as distance bars ---- */
+.route{padding:11px 0 3px}
+.route-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.route-dest{font-size:18px;font-weight:550}
+.route-miles{font-size:19px;font-weight:550;font-variant-numeric:tabular-nums;color:var(--accent);letter-spacing:.06em;white-space:nowrap}
+.route-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:1px 0 7px;flex-wrap:wrap}
+.bar{height:8px;border-radius:99px;background:color-mix(in srgb,var(--accent) 12%,transparent);overflow:hidden}
+.bar-fill{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 55%,transparent),var(--accent) 70%,var(--accent-2))}
+.route-note{padding:7px 0 10px;border-bottom:1px solid var(--line)}
+.waypoints{display:flex;align-items:center;flex-wrap:wrap;gap:5px 7px;margin-top:9px}
+.wp{display:inline-flex;align-items:center;gap:6px;font-size:12px;letter-spacing:.05em;color:var(--ink)}
+.wp i{width:6px;height:6px;border-radius:50%;background:var(--accent-2);flex:none}
+.wp-link{width:14px;border-top:1px dashed color-mix(in srgb,var(--accent) 50%,transparent)}
+
+/* ---- places as a gazetteer ---- */
+.gazetteer{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.place{padding:11px 0;border-bottom:1px solid var(--line)}
+.place-head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.place-ix{font-size:11px;letter-spacing:.14em;color:var(--accent);font-variant-numeric:tabular-nums}
+.place-name{font-size:16.5px;font-weight:550}
+.place-kind{margin-left:auto;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2)}
+.place-note{margin:4px 0 2px;color:var(--muted);font-size:14px;line-height:1.55}
+@media (max-width:860px){.gazetteer{grid-template-columns:1fr}}
+
+/* ---- trips on record (2026-11-19): the route on a map, the logbook, the plan's budget, planning notes ---- */
+.pill.rec{border-color:color-mix(in srgb,var(--muted) 45%,transparent);color:var(--muted)}
+.pill.warn{border-color:color-mix(in srgb,#e0a640 60%,transparent);color:#e0a640;font-size:10px;padding:1px 7px;margin-right:4px}
+.tmap-wrap{margin:10px 0 6px;max-width:560px}
+.tmap{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.map-sea{fill:color-mix(in srgb,var(--accent) 5%,var(--bg))}
+.map-land{fill:color-mix(in srgb,var(--ink) 10%,var(--bg));stroke:color-mix(in srgb,var(--ink) 30%,transparent);stroke-width:.7;stroke-linejoin:round}
+.map-grat{fill:none;stroke:color-mix(in srgb,var(--muted) 18%,transparent);stroke-width:.6}
+.map-seg{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round}
+.map-seg.flight{stroke:var(--accent-2);stroke-width:1.7;stroke-dasharray:6 5}
+.map-seg.bus{stroke-width:2.6;stroke-dasharray:.5 5}
+.map-seg.ferry{stroke-dasharray:7 3 1.5 3}
+.map-seg.land{stroke-opacity:.7}
+.map-dot{fill:var(--bg);stroke:var(--accent);stroke-width:2}
+.map-dot.start{fill:var(--accent)}
+.map-dot.approx{stroke-dasharray:2 2}
+.map-lab{fill:var(--ink);font-family:var(--sans);font-weight:560;letter-spacing:.02em;paint-order:stroke;stroke:color-mix(in srgb,var(--bg) 88%,transparent);stroke-linejoin:round}
+.map-key{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:7px;font-size:11.5px;letter-spacing:.06em;color:var(--muted)}
+.mk{display:inline-flex;align-items:center;gap:6px}
+.mk svg{width:26px;height:8px;overflow:visible}
+.leg.rich{display:grid;grid-template-columns:58px minmax(0,1fr);gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}
+.leg.rich .leg-note{display:flex;flex-direction:column;gap:2px;min-width:0}
+.leg-h{color:var(--ink)}
+.leg-c{color:var(--muted)}
+.leg-how,.leg-stay{font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+.leg-check{font-size:12.5px;color:var(--ink)}
+.budget{margin-top:14px;max-width:560px}
+.budget h4,.plans summary{margin:0 0 4px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.budget .kv.sum b{color:var(--accent)}
+.budget-check{font-size:13.5px;margin:10px 0 4px;line-height:1.5}
+.plans{margin-top:14px;max-width:72ch}
+.plans summary{cursor:pointer;padding:6px 0}
+.plans p{font-size:14px;line-height:1.55;color:var(--muted);margin:6px 0}
+.plans p b{color:var(--ink);font-weight:550}
+.trip-src{margin-top:8px}

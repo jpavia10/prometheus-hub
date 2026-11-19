@@ -40,6 +40,7 @@ test("canonical registry passes validation across all 27 destinations and 25 man
     localPillars: 25,
     externalPillars: 2,
     manifests: 25,
+    completeManifests: 25,
     capabilities: 26,
   });
 });
@@ -76,6 +77,26 @@ test("registry validator rejects active fleet leakage and external boundary viol
     assert.equal(res.ok, false);
     assert.ok(res.errors.some((e) => e.includes("fleet")));
     assert.ok(res.errors.some((e) => e.includes("titan")));
+  } finally {
+    fs.rmSync(tmp, { recursive: true, force: true });
+  }
+});
+
+test("registry validator requires records, commands, and events on every local manifest", () => {
+  const tmp = makeSandboxCopy();
+  try {
+    const p = path.join(tmp, "pillars/kairos/pillar.json");
+    const man = JSON.parse(fs.readFileSync(p, "utf8"));
+    delete man.records;
+    delete man.events;
+    man.commands = [];
+    fs.writeFileSync(p, JSON.stringify(man));
+    const res = validateRegistry({ rootDir: tmp });
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some((e) => e.includes("records must be an array")));
+    assert.ok(res.errors.some((e) => e.includes("events must be an array")));
+    assert.ok(res.errors.some((e) => e.includes("commands must declare")));
+    assert.ok(res.stats.completeManifests < 25);
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
   }

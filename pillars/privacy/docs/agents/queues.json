@@ -1,0 +1,730 @@
+{
+ "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
+ "updated": "2026-11-19",
+ "pillar": "privacy",
+ "agents": [
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "tasks": [
+    {
+     "id": "PRI-GEM-01",
+     "title": "Privacy: 30 more data brokers with their opt-out routes",
+     "state": "withdrawn",
+     "due": "2026-11-19",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Privacy uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Not already among the 47; check each against the CPPA data broker registry."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_brokers-48-77_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"broker\",\"opt-out URL\",\"what they need from you\",\"registered in CA (yes/no, CPPA registry URL)\"}"
+     },
+     "count": 30,
+     "done_when": "30 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "PRI-GEM-02",
+     "title": "Privacy: The California DROP (Delete Request and Opt-out Platform) timeline",
+     "state": "withdrawn",
+     "due": "2026-11-21",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Privacy uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "cppa.ca.gov only."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_drop-dates_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "one markdown file: every date and step the CPPA has published, with quotes and URLs"
+     },
+     "count": 1,
+     "done_when": "1 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
+    },
+    {
+     "id": "PRI-GEM-03",
+     "title": "Privacy: 20 features the best data-removal services have",
+     "state": "withdrawn",
+     "due": "2026-11-28",
+     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Privacy uses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Look at data-removal services (DeleteMe, Optery, Incogni).",
+      "Only features the app's own page, help centre or store listing shows; no guesses.",
+      "Sort by how much the feature would help a person using this pillar every day."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_features_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of objects, one per row: {\"n\",\"feature\",\"which app has it (name)\",\"what it does for the user in one sentence\",\"how it would work here\",\"url of the app page that shows it\"}"
+     },
+     "count": 20,
+     "done_when": "20 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a real private person's name, address or phone number",
+      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "PRI-GEM-04",
+     "title": "Privacy: data brokers not yet on the list, with their opt-out routes",
+     "state": "done",
+     "due": "2026-11-19",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Privacy's exposure ledger covers more brokers, each with a working opt-out link.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "Open pillars/privacy in the repo and skip every broker already there (47).",
+      "Take brokers from the CPPA registry that sell people-search or contact data."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_brokers_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below and nothing else"
+     },
+     "count": 30,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "broker",
+       "type": "text",
+       "rule": "company name"
+      },
+      {
+       "name": "registered_ca",
+       "type": "yes / no",
+       "rule": "on the CPPA data broker registry"
+      },
+      {
+       "name": "registry_url",
+       "type": "URL",
+       "rule": "its registry entry"
+      },
+      {
+       "name": "optout_url",
+       "type": "URL",
+       "rule": "the opt-out page"
+      },
+      {
+       "name": "needs",
+       "type": "text",
+       "rule": "what the opt-out asks for (email, ID, phone)"
+      },
+      {
+       "name": "days_to_complete",
+       "type": "number or 'not stated'",
+       "rule": "as the broker states"
+      }
+     ],
+     "example": {
+      "n": 1,
+      "broker": "Example Data Inc.",
+      "registered_ca": "yes",
+      "registry_url": "https://cppa.ca.gov/...",
+      "optout_url": "https://...",
+      "needs": "email",
+      "days_to_complete": 45
+     },
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).",
+      "Every quote is copied word for word from that page and is on it now.",
+      "No row is a copy of another with the names changed.",
+      "Numbers have their unit in the field name or the unit field, never inside the text.",
+      "The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked."
+     ],
+     "done_when": "30 rows exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
+     ]
+    },
+    {
+     "id": "PRI-GEM-05",
+     "title": "Privacy: the California DROP timeline",
+     "state": "done",
+     "due": "2026-11-21",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Privacy shows when the one-stop delete request can be filed and when brokers must act.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+     ],
+     "steps": [
+      "cppa.ca.gov only."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_drop-dates_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "one markdown file: a table date | step | who | quote | URL, then a paragraph on what a resident has to do"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "each row",
+       "type": "table row",
+       "rule": "every date the CPPA has published about DROP"
+      }
+     ],
+     "example": "| 2026-01-01 | DROP opens to residents | CPPA | \"...\" | https://cppa.ca.gov/... |",
+     "self_check": [
+      "Every date has a quote and URL from cppa.ca.gov."
+     ],
+     "done_when": "1 file exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
+     ]
+    },
+    {
+     "id": "PRI-GEM-06",
+     "title": "Privacy: the function spec, written as the build plan",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+     "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Privacy from, step by step.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
+      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/privacy",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)"
+     ],
+     "steps": [
+      "Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/privacy/) on a phone-sized browser and use every section.",
+      "Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/privacy): every file the page loads, and pillar.json.",
+      "Write section A from what is there now, with file:line for each item; then B to H.",
+      "Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_function-spec_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "A What it does today",
+       "type": "list",
+       "rule": "every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)"
+      },
+      {
+       "name": "B What Joseph needs it to do",
+       "type": "8+ user stories",
+       "rule": "'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life"
+      },
+      {
+       "name": "C Data",
+       "type": "table",
+       "rule": "record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar"
+      },
+      {
+       "name": "D Screens",
+       "type": "per screen",
+       "rule": "purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state"
+      },
+      {
+       "name": "E Rules and edge cases",
+       "type": "10+",
+       "rule": "dates and time zones, missing data, offline, two devices, a value of 0 vs unknown"
+      },
+      {
+       "name": "F Acceptance tests",
+       "type": "12+",
+       "rule": "Given / When / Then, each checkable in a phone browser in under two minutes"
+      },
+      {
+       "name": "G Order of work",
+       "type": "numbered steps",
+       "rule": "each step small enough for one build, with what Joseph can use after it"
+      },
+      {
+       "name": "H Must not",
+       "type": "list",
+       "rule": "the charter's protections that apply, no server or account, no made-up numbers"
+      }
+     ],
+     "example": "F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.",
+     "self_check": [
+      "Every item in A has a file:line that exists.",
+      "B has 8+ stories and none invents a personal fact.",
+      "C names every field with type and example.",
+      "F has 12+ tests, each with one Given, one When, one Then.",
+      "G steps are in an order that can ship one by one.",
+      "All eight headings, in order."
+     ],
+     "done_when": "1 file exactly in the shape, every self-check line true.",
+     "checks": [
+      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' instead)",
+      "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "California's DROP sends one deletion request to every broker on the state registry. Privacy lists 72 brokers but does not know which ones DROP covers, so Joseph cannot tell which still need a manual opt-out.",
+     "unlocks": "Privacy splits the list into 'DROP covers this' and 'opt out by hand', which halves the manual work.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/privacy/brokers-data.js (window.BROKER_OPTOUTS: the 72 names)",
+      "https://cppa.ca.gov/data_broker_registry/ (the registry)"
+     ],
+     "steps": [
+      "For every one of the 72 names in BROKER_OPTOUTS, search the California Data Broker Registry (CPPA) and record whether the brand or its parent company is registered, the registered legal name, the registration year(s) shown (2025, 2026), and the registry entry URL.",
+      "Brands often register under a parent (e.g. one company for several people-search sites): give the parent's registered name and say which brand it covers in note.",
+      "If a name is not on the registry, write registered 'no' and in note what you searched for (exact search strings)."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_registry_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 72 objects, one per BROKER_OPTOUTS name, exactly the fields below"
+     },
+     "count": 72,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "broker",
+       "type": "text",
+       "rule": "exactly as the key in BROKER_OPTOUTS"
+      },
+      {
+       "name": "registered",
+       "type": "text",
+       "rule": "yes / no"
+      },
+      {
+       "name": "registrant",
+       "type": "text",
+       "rule": "registered legal name, or ''"
+      },
+      {
+       "name": "years",
+       "type": "text",
+       "rule": "e.g. '2025, 2026'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the registry entry, or the registry search page only when registered is no"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "parent/brand link or the search strings tried"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "72 rows, every 'yes' with its registry entry URL.",
+     "checks": [
+      "Claude opens 12 registry entries at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PRI-GEM-07",
+     "title": "Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them",
+     "due": "2026-11-27"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-19",
+     "why": "Brokers are half of Joseph's footprint; his own Google account is the other half (location history, web activity, ad profile, public profile). Privacy has nothing on it.",
+     "unlocks": "Privacy's footprint checklist gets a Google section Joseph can work through on his phone, one tap per setting.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/"
+     ],
+     "steps": [
+      "25 settings across: Web & App Activity, Timeline / Location History, YouTube history, ad personalization (My Ad Center), auto-delete for each, third-party app access, Google Profile visibility (About me), Find My Device, Gmail smart features, Chrome sync, Android location accuracy, Google Photos face groups, Assistant / Gemini activity, shared endorsements, partner sign-ins.",
+      "For each: what it collects (Google's words), the exact path on Android (Settings > Google > ...) and on myaccount.google.com, the safest setting, what breaks if turned off (Google's words where given), and the help page URL.",
+      "Use only support.google.com and myaccount.google.com/policies.google.com pages."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_google-settings_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 25 objects, exactly the fields below"
+     },
+     "count": 25,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "setting",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "collects",
+       "type": "text",
+       "rule": "Google's words"
+      },
+      {
+       "name": "android_path",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "web_path",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "safest",
+       "type": "text",
+       "rule": "the value to set"
+      },
+      {
+       "name": "breaks",
+       "type": "text",
+       "rule": "what stops working, or 'nothing stated'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the Google help page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the help page's line that says what it collects, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "25 settings, each on its Google help page.",
+     "checks": [
+      "Claude opens 8 help pages at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a number that is not on its source and not shown as arithmetic",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PRI-GEM-08",
+     "title": "Privacy: Google account settings that leak the most, each with the exact path to turn it off, from Google's own help pages",
+     "due": "2026-11-27"
+    }
+   ]
+  },
+  {
+   "id": "grok",
+   "name": "Grok",
+   "tasks": [
+    {
+     "id": "PRI-GRK-01",
+     "title": "Privacy: second reader on Gemini's '30 more data brokers with their opt-out routes'",
+     "state": "withdrawn",
+     "due": "2026-11-22",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file privacy_gemini_brokers-48-77_*.json in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "privacy_grok_brokers-48-77-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "PRI-GRK-04",
+     "title": "Privacy: second reader on Gemini's 'the function spec, written as the build plan'",
+     "state": "now",
+     "due": "2026-11-27",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file to check (PRI-GEM-06): privacy_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+      "Gemini's file privacy_gemini_function-spec_*.md in the folder below (PRI-GEM-06)"
+     ],
+     "steps": [
+      "Open Gemini's file and the code it describes.",
+      "Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.",
+      "Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.",
+      "List up to 10 things the pillar needs that the spec leaves out, each with why."
+     ],
+     "deliver": {
+      "file": "privacy_grok_function-spec-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "input_file": "privacy_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
+    }
+   ]
+  },
+  {
+   "id": "muse",
+   "name": "Muse",
+   "tasks": [
+    {
+     "id": "PRI-MUS-01",
+     "title": "Privacy: second reader on Gemini's 'The California DROP (Delete Request and Opt-out Platform) timeline'",
+     "state": "withdrawn",
+     "due": "2026-11-24",
+     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+     "inputs": [
+      "Gemini's file privacy_gemini_drop-dates_*.md in the folder below (once it is there)"
+     ],
+     "steps": [
+      "Open 15 rows at random (or every row if fewer) and the source each cites.",
+      "For each: what Gemini says, what the page says, agree/differ.",
+      "Add up to 5 rows Gemini missed, same shape."
+     ],
+     "deliver": {
+      "file": "privacy_muse_drop-dates-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "table: row | gemini says | page says | url | agree/differ"
+     },
+     "count": 15,
+     "done_when": "15 rows checked with the page each opened.",
+     "checks": [
+      "Claude spot-checks 3 'differ' lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field of the shape",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "review": "Replaced 2026-11-16 by the detailed version of the same task."
+    },
+    {
+     "id": "PRI-MUS-02",
+     "title": "Privacy: second reader on Gemini's 'data brokers not yet on the list, with their opt-out routes'",
+     "state": "done",
+     "due": "2026-11-22",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file privacy_gemini_brokers_*.json in the folder below (PRI-GEM-04)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "privacy_muse_brokers-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "PRI-MUS-03",
+     "title": "Privacy: second reader on Gemini's 'the California DROP timeline'",
+     "state": "done",
+     "due": "2026-11-24",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file privacy_gemini_drop-dates_*.md in the folder below (PRI-GEM-05)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "privacy_muse_drop-dates-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chatgpt",
+   "name": "ChatGPT",
+   "tasks": []
+  }
+ ]
+}

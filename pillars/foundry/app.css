@@ -1,5 +1,71 @@
-/* Foundry: the kit carries the look; only what this pillar adds is here. */
+/* Foundry: the blueprint wall. Kit tokens only — cyan on deep, hairline rules, spec-sheet type.
+   The workshop is honestly empty (0 shipped · 0 in progress · all concept), so the design makes
+   the empty states read as intention: a stamped tally plate, a clear bench, sheets on the wall. */
 .row-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .sub { font-size: 13px; color: var(--muted); }
 .pill.hot { border-color: var(--accent); color: #fff; }
 .bar-mini { height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); overflow: hidden; margin-top: 6px; } .bar-mini i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+/* — the honest count: a stamped plate, not a dashboard — */
+.plate { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line-strong); border-radius: var(--radius-s); overflow: hidden; }
+.plate-cell { display: grid; gap: 2px; padding: 16px 18px 14px; background: color-mix(in srgb, var(--accent) 4%, transparent); }
+.plate-cell + .plate-cell { border-left: 1px dashed var(--line-strong); }
+.plate-cell.hot { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.plate-v { font-weight: 300; font-size: clamp(38px, 7vw, 58px); line-height: 1; font-variant-numeric: tabular-nums; color: var(--ink); }
+.plate-cell.hot .plate-v { color: var(--accent); }
+.plate-k { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.plate-note { margin: 14px 0 0; color: var(--faint); font-size: 14px; max-width: 92ch; }
+
+/* the scale rule under the plate: concept, then the six stages, counts on the ticks */
+.ruler { display: flex; flex-wrap: wrap; margin-top: 16px; border-top: 2px solid var(--line-strong); }
+.ruler-tick { position: relative; flex: 1 1 0; min-width: 86px; padding: 8px 8px 0 0; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+.ruler-tick::before { content: ""; position: absolute; top: -2px; left: 0; width: 1px; height: 9px; background: var(--line-strong); }
+.ruler-tick b { display: block; font-size: 17px; font-weight: 500; letter-spacing: 0; color: var(--faint); font-variant-numeric: tabular-nums; }
+.ruler-tick.on { color: var(--muted); }
+.ruler-tick.on b { color: var(--accent); }
+
+/* — the bench, clear on purpose — */
+.bench-clear { display: grid; justify-items: center; gap: 12px; padding: 30px 18px; text-align: center; border: 1px dashed var(--line-strong); border-radius: var(--radius-s);
+  background-image: linear-gradient(color-mix(in srgb, var(--accent) 5%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--accent) 5%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px; }
+.bench-clear p { margin: 0; color: var(--muted); line-height: 1.55; max-width: 56ch; }
+.bench-stamp { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); border: 1.5px solid color-mix(in srgb, var(--accent) 65%, transparent); border-radius: 4px; padding: 6px 12px 6px 15px; transform: rotate(-2.5deg); }
+#y-bench [data-project-id] { position: relative; }
+#y-bench [data-project-id]::before { content: ""; position: absolute; left: -18px; top: 14px; bottom: 14px; width: 2px; background: linear-gradient(180deg, var(--accent), transparent); opacity: .55; }
+
+/* — the wall: theme dividers and drawing sheets — */
+.wall-group { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 22px 0 12px; padding-bottom: 7px; border-bottom: 1px dashed var(--line-strong); }
+.wall-group:first-child { margin-top: 4px; }
+.wall-group-name { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink); }
+.wall-group-name::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 9px; background: var(--accent); box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 70%, transparent); }
+.wall-group-n { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); white-space: nowrap; }
+.sheets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 860px) { .sheets { grid-template-columns: 1fr; } }
+
+.sheet { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 16px 16px 14px; border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--line)); border-radius: 6px;
+  background-color: color-mix(in srgb, var(--accent) 5%, var(--glass-2));
+  background-image: linear-gradient(color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px; }
+/* registration ticks on two corners, like a pinned drawing */
+.sheet::before, .sheet::after { content: ""; position: absolute; width: 13px; height: 13px; pointer-events: none; }
+.sheet::before { top: -1px; left: -1px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); border-top-left-radius: 6px; }
+.sheet::after { bottom: -1px; right: -1px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent); border-bottom-right-radius: 6px; }
+.sheet-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.sheet-dwg { font-size: 11.5px; letter-spacing: .22em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.sheet-stamp { font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--accent); border: 1.5px solid color-mix(in srgb, var(--accent) 65%, transparent); border-radius: 4px; padding: 4px 8px 4px 11px; transform: rotate(2deg); white-space: nowrap; }
+.sheet-title { margin: 0; font-weight: 500; font-size: 18.5px; line-height: 1.28; color: var(--ink); }
+.spec { border-top: 1px solid var(--line); padding-top: 9px; }
+.spec-k { display: block; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); margin-bottom: 4px; }
+.spec-v { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--ink); }
+.spec-v.dim { color: var(--muted); font-size: 13.5px; }
+.sheet-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 10px; margin-top: auto; padding-top: 4px; }
+.sheet-kept { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); font-variant-numeric: tabular-nums; }
+.sheet-tags { display: inline-flex; flex-wrap: wrap; gap: 5px; }
+.sheet-tags .chip { font-size: 12px; padding: 2px 9px; }
+.sheet-foot { border-top: 1px dashed var(--line-strong); padding-top: 11px; display: flex; justify-content: flex-end; }
+
+@media (max-width: 560px) {
+  .plate-cell { padding: 13px 13px 11px; }
+  .ruler-tick { min-width: 30%; }
+  .sheet { padding: 14px 13px 12px; }
+}

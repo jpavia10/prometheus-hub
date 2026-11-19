@@ -1,16 +1,17 @@
-/* Garage signature: the road ahead + hybrid SUV chassis diagram in the upper telemetry band. */
+/* Garage signature: the road ahead + the active vehicle's diagram in the upper telemetry band. */
 (function () {
   const S = PK.store("garage"), I = PK.ink;
+  const PFX = () => (S.get("activeVehicle", "sorento") === "mt07" ? "mt07." : "");
   const fmt = (n) => Math.round(n).toLocaleString("en-US");
   PK.stage({
-    label: "hybrid SUV road horizon & due services",
+    label: "road horizon & due services",
     data() {
-      const odo = +S.get("odometer", 0) || 0, hist = S.list("history"), today = I.today(), last = {};
+      const P = PFX(); const odo = +S.get(P + "odometer", 0) || 0, hist = S.list(P + "history"), today = I.today(), last = {};
       for (const h of hist) if (!last[h.service] || h.date > last[h.service].date) last[h.service] = h;
-      const items = S.get("services", []).map((it) => ({ it, st: window.GARAGE ? GARAGE.dueStatus(it, last[it.name], { odometer: odo, date: today }) : { state: "unknown" } }));
+      const items = S.get(P + "services", []).map((it) => ({ it, st: window.GARAGE ? GARAGE.dueStatus(it, last[it.name], { odometer: odo, date: today }) : { state: "unknown" } }));
       const known = items.filter((x) => x.st.state !== "unknown").sort((a, b) => (a.st.milesLeft ?? 1e9) - (b.st.milesLeft ?? 1e9));
-      const fs = window.GARAGE && GARAGE.fuelStats ? GARAGE.fuelStats(S.list("fuel")) : null;
-      return { odo, known, unknown: items.filter((x) => x.st.state === "unknown"), mpg: fs && (fs.avgMpg || fs.mpg), logs: hist.length };
+      const fs = window.GARAGE && GARAGE.fuelStats ? GARAGE.fuelStats(S.list(P + "fuel")) : null;
+      return { odo, known, unknown: items.filter((x) => x.st.state === "unknown"), mpg: fs && (fs.avgMpg || fs.mpg), logs: hist.length, bike: P === "mt07." };
     },
     readouts(D) {
       const n = D.known[0];
@@ -26,18 +27,29 @@
       const sky = g.createLinearGradient(0, 0, 0, vy + 30); sky.addColorStop(0, I.rgba(B, 0.08)); sky.addColorStop(1, I.rgba(A, 0.2)); g.fillStyle = sky; g.fillRect(0, 0, w, vy + 30);
       I.halo(g, vx, vy, w * 0.5, A, 0.35);
 
-      // Subtle hybrid SUV chassis blueprint silhouette upper-right
+      // Subtle vehicle blueprint silhouette upper-right: SUV for the Sorento, a naked-bike profile for the MT-07
       const cx0 = w - 108, cy0 = 28;
       g.save();
       g.strokeStyle = I.rgba(B, 0.42);
       g.lineWidth = 1.2;
-      g.beginPath();
-      g.moveTo(cx0, cy0 + 18); g.lineTo(cx0 + 12, cy0 + 6); g.lineTo(cx0 + 48, cy0 + 4); g.lineTo(cx0 + 72, cy0 + 14);
-      g.lineTo(cx0 + 82, cy0 + 22); g.lineTo(cx0 - 4, cy0 + 22); g.closePath();
-      g.stroke();
-      I.arc(g, cx0 + 14, cy0 + 24, 6, 0, Math.PI * 2, A, 1.5, 0.8);
-      I.arc(g, cx0 + 64, cy0 + 24, 6, 0, Math.PI * 2, A, 1.5, 0.8);
-      I.text(g, "HYBRID", cx0 + 38, cy0 - 5, { size: 7.5, weight: 700, align: "center", color: B, alpha: 0.7, spacing: 1 });
+      if (D.bike) {
+        g.beginPath();
+        g.moveTo(cx0 + 8, cy0 + 24); g.lineTo(cx0 + 26, cy0 + 10); g.lineTo(cx0 + 44, cy0 + 8); g.lineTo(cx0 + 58, cy0 + 16);
+        g.lineTo(cx0 + 78, cy0 + 6); g.lineTo(cx0 + 84, cy0 + 24);
+        g.moveTo(cx0 + 26, cy0 + 10); g.lineTo(cx0 + 38, cy0 + 24); g.lineTo(cx0 + 62, cy0 + 24); g.lineTo(cx0 + 58, cy0 + 16);
+        g.stroke();
+        I.arc(g, cx0 + 10, cy0 + 24, 7, 0, Math.PI * 2, A, 1.5, 0.8);
+        I.arc(g, cx0 + 82, cy0 + 24, 7, 0, Math.PI * 2, A, 1.5, 0.8);
+        I.text(g, "MT-07", cx0 + 46, cy0 - 5, { size: 7.5, weight: 700, align: "center", color: B, alpha: 0.7, spacing: 1 });
+      } else {
+        g.beginPath();
+        g.moveTo(cx0, cy0 + 18); g.lineTo(cx0 + 12, cy0 + 6); g.lineTo(cx0 + 48, cy0 + 4); g.lineTo(cx0 + 72, cy0 + 14);
+        g.lineTo(cx0 + 82, cy0 + 22); g.lineTo(cx0 - 4, cy0 + 22); g.closePath();
+        g.stroke();
+        I.arc(g, cx0 + 14, cy0 + 24, 6, 0, Math.PI * 2, A, 1.5, 0.8);
+        I.arc(g, cx0 + 64, cy0 + 24, 6, 0, Math.PI * 2, A, 1.5, 0.8);
+        I.text(g, "HYBRID", cx0 + 38, cy0 - 5, { size: 7.5, weight: 700, align: "center", color: B, alpha: 0.7, spacing: 1 });
+      }
       g.restore();
 
       const rnd = I.rand(7); for (let i = 0; i < 36; i++) I.dot(g, rnd() * w, rnd() * vy * 0.9, rnd() * 1.1 + 0.2, "#ffffff", 0.2 + rnd() * 0.5);
