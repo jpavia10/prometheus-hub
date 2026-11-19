@@ -1,9 +1,9 @@
 /* Time: the calendar. Quick add on top, then Day, Week, Month, Agenda, Risk and the Focus clock.
    Every dated row on the deck shows here, whichever capability owns it; rows Time owns open for editing, the others lead home. */
-import { put, h, $, icon, sheet, toast, field, seg, chip, ring, bars, download, pickFile, ask, plural } from "../core/ui.js";
+import { put, h, $, icon, sheet, toast, field, seg, chip, ring, bars, download, pickFile, ask, plural, countUp } from "../core/ui.js";
 import { clock, today, addDays, addMonths, fmtDay, fmtTime, dow, dowName, monName, startOfWeek, startOfMonth, endOfMonth, quickAdd, ruleText, isDay, diffDays, WEEKDAYS } from "../core/dates.js";
-import { rows, days, fixed } from "../core/feeds.js";
-import { rowItem, runway } from "./parts.js";
+import { rows, days, fixed, within, countdowns } from "../core/feeds.js";
+import { rowItem, runway, dayRing, skySheet } from "./parts.js";
 import { KINDS, makeEvent, kindOf, newId, focusStart, focusTick, focusStop, focusPause, focusView, focusStats, method, phases, loops } from "../models/time.js";
 import { parseICS, buildICS } from "../core/ics.js";
 import { FOCUS } from "../data/focus.js";
@@ -26,8 +26,8 @@ export function render(root, route, ctx) {
   if (tab === "day") {
     const d = days(arg, 1)[0]; const mine = [...d.rows].sort((x, y) => (x.time ? 1 : 0) - (y.time ? 1 : 0) || (x.time || "").localeCompare(y.time || ""));
     const nowT = clock.now(); const hm = `${String(nowT.getHours()).padStart(2, "0")}:${String(nowT.getMinutes()).padStart(2, "0")}`; const list = mine.map((r) => rowItem(r, { onopen: open, rel: arg === t }));
-    if (arg === t && mine.length) { const at = mine.findIndex((r) => r.time && r.time > hm); list.splice(at < 0 ? list.length : at, 0, h("div.now-line", { "aria-label": "Now" }, h("i"), h("span.num", "Now · " + fmtTime(hm)))); }
-    put(body, nav(`#/time/day/${addDays(arg, -1)}`, `#/time/day/${addDays(arg, 1)}`, arg === t ? "Today · " + fmtDay(arg) : fmtDay(arg, "long"), todayLink("day")),
+    if (arg === t && mine.length) { const at = mine.findIndex((r) => r.time && r.time > hm); list.splice(at < 0 ? list.length : at, 0, h("div.now-mark", { "aria-label": "Now" }, h("i"), h("span.num", "Now · " + fmtTime(hm)))); }
+    put(body, ...timeInstruments(ctx, t), nav(`#/time/day/${addDays(arg, -1)}`, `#/time/day/${addDays(arg, 1)}`, arg === t ? "Today · " + fmtDay(arg) : fmtDay(arg, "long"), todayLink("day")),
       d.why ? h("div.banner.level-" + d.level, icon("alert", 18), h("span", h("b", d.level >= 3 ? "Collision day" : "Heavy day"), h("small", d.why))) : null,
       h("div.items.day-list.timeline", mine.length ? list : h("div.empty", icon("calendar", 30), h("p", arg === t ? "Nothing dated today." : "Nothing dated this day."), h("button.btn.ghost.small", { type: "button", onclick: () => eventSheet(ctx, null, null, arg) }, "Add something here"))));
   } else if (tab === "week") {
@@ -81,6 +81,32 @@ export function render(root, route, ctx) {
     draw(); timer = setInterval(() => { if (!document.hidden) { const st = store.get("time"); if (st.focus.run) { const evs = focusTick(st); if (evs.length) { store.update("time", () => {}); announce(evs); } else { const v = focusView(st); const c = $(".focus-time", box); if (c && v) { const s2 = Math.ceil(v.leftMs / 1000); c.textContent = `${Math.floor(s2 / 60)}:${String(s2 % 60).padStart(2, "0")}`; const a = $(".focus-ring .ring-arc", box); if (a) { const len = a.getTotalLength ? a.getTotalLength() : 0; if (len) { a.style.transition = "none"; a.style.strokeDasharray = `${len * v.frac} ${len}`; } } } } } } }, 1000);
   }
   return () => { if (timer) clearInterval(timer); };
+}
+
+/* Instruments that used to sit on the arrival view: the day ring, the next day, the runway, countdowns, and focus. */
+function timeInstruments(ctx, t) {
+  const { store } = ctx; const now = clock.now(); const w = ctx.weather(); const soon = within(24, now); const alerts = (w && w.alerts) || [];
+  const quickIn = h("input", { type: "text", class: "quick-horizon-input", placeholder: "Quick schedule: dentist Tue 3pm", "aria-label": "Schedule in the next 24 hours" });
+  const quickForm = h("form.horizon-quick", { onsubmit: (e) => { e.preventDefault(); const raw = quickIn.value.trim(); if (!raw) return; const qd = quickAdd(raw) || { title: raw, date: t, time: null }; const k = kindOf(qd.title);
+    store.update("time", (tm) => tm.events.push(makeEvent({ ...qd, title: k.title }, { kind: k.kind, src: "quick" }))); toast(`Scheduled: ${k.title} (${fmtDay(qd.date)})`); } }, quickIn, h("button.btn.small", { type: "submit" }, "Add"));
+  const first = h("section.tier1.panel.horizon-card", { "aria-label": "The next 24 hours" },
+    h("header.panel-head", h("h2", "Next 24 hours"), chip(soon.filter((r) => !r.done).length ? `${soon.filter((r) => !r.done).length} open` : "Window clear"), h("a.link", { href: `#/time/day/${t}` }, "Today")),
+    ...alerts.slice(0, 2).map((a) => h("button.alert", { type: "button", onclick: () => skySheet(ctx) }, icon("alert", 18), h("span", h("b", a.event), h("small", a.ends ? "until " + new Date(a.ends).toLocaleString("en-US", { weekday: "short", hour: "numeric" }) : "active now")))),
+    soon.length ? h("div.items", soon.slice(0, 5).map((r) => rowItem(r, { rel: true }))) : h("p.quiet", "Nothing dated in the next 24 hours."),
+    quickForm);
+  const week = days(t, 7);
+  const run = h("section.panel.run", { "aria-label": "The next seven days" }, h("header.panel-head", h("h2", "Runway"), h("a.link", { href: "#/time/risk" }, "Risk view")), runway(week, { rowOpts: {} }));
+  const cds = countdowns(3, t);
+  const count = h("section.panel.count", { "aria-label": "Countdowns" }, h("header.panel-head", h("h2", "Countdowns"), h("a.link", { href: "#/time/agenda" }, "Agenda")),
+    cds.length ? h("div.countdowns", cds.map((r) => { const n = diffDays(t, r.date); const num = h("span.num.cd-num"); countUp(num, n);
+      return h("a.countdown", { href: r.go || "#/time" }, ring({ value: 1 - Math.min(1, n / 90), size: 96, stroke: 4, tone: r.tone === "holiday" ? "ice" : r.big ? "violet" : "ember", center: h("div", num, h("small", n === 1 ? "day" : "days")), label: `${n} days to ${r.title}` }), h("b", r.title), h("small", fmtDay(r.date))); }))
+      : h("p.quiet", "No countdown is starred."));
+  const tm = store.get("time"); const fs = focusStats(tm, t); const fv = focusView(tm);
+  const focus = h("a.tile.focus", { href: "#/time/focus", "aria-label": "Focus clock" },
+    h("span.tile-head", h("span", "Focus"), h("small", fs.streak ? plural(fs.streak, "day") + " running" : "")),
+    h("span.tile-main", icon("flame", 30), h("span", h("b.num.big", fv ? Math.ceil(fv.leftMs / 60000) + "′" : String(fs.today)), h("small", fv ? `${fv.phase === "work" ? "working" : "on a break"} · ${fv.method.name}` : "minutes today"))),
+    bars(fs.week.map((x) => x.minutes), { w: 150, h: 26, tone: "violet" }), h("small.quiet", "the last seven days"));
+  return [dayRing(now, soon, w, t), first, run, count, h("section.ambient", { "aria-label": "Focus" }, focus)];
 }
 const fmtMin = (m) => (Math.abs(m - Math.round(m)) < 0.01 ? `${Math.round(m)} min` : `${Math.floor(m)} min ${Math.round((m % 1) * 60)} s`);
 

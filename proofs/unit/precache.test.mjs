@@ -56,7 +56,7 @@ test("validator fails when the generated precache is stale", () => {
 test("the shell waits for the Update ready chip instead of skipping the wait", () => {
   const sw = fs.readFileSync(path.join(ROOT, "sw.js"), "utf8");
   assert.match(sw, /importScripts\("\.\/sw-precache\.js"\)/);
-  assert.match(sw, /var CACHE = "prometheus-hub-deck-d36"/);
+  assert.match(sw, /var CACHE = "prometheus-hub-deck-d37"/);
   assert.match(sw, /SKIP_WAITING/);
   assert.doesNotMatch(sw, /return self\.skipWaiting\(\)/);
   const client = fs.readFileSync(path.join(ROOT, "kit/update.js"), "utf8");
