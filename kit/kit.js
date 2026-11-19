@@ -3,6 +3,14 @@
    Nothing here talks to a server. Data stays in this browser (localStorage) until the owner exports it. */
 (function () {
   "use strict";
+  /* Same shell worker as the hub, so a pillar opened on its own is installable.
+     Script URL is kit/kit.js; the worker is one directory up. localhost only, plus https. */
+  if (typeof navigator !== "undefined" && "serviceWorker" in navigator && document.currentScript) {
+    var host = location.hostname;
+    if (location.protocol === "https:" || host === "localhost" || host === "127.0.0.1") {
+      navigator.serviceWorker.register(new URL("../sw.js", document.currentScript.src)).catch(function () {});
+    }
+  }
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -281,7 +289,7 @@
   var core = el("a", "pk-core"); core.href = "../../"; core.setAttribute("aria-label", "Back to the core"); core.appendChild(el("span", null, "Core"));
   if (steps[0]) dock.appendChild(steps[0]); else dock.appendChild(el("span", "pk-gap"));
   dock.appendChild(core); if (steps[1]) dock.appendChild(steps[1]); else dock.appendChild(el("span", "pk-gap"));
-  var cmdBtn = el("button", "pk-cmd-btn"); cmdBtn.type = "button"; cmdBtn.setAttribute("aria-label", "Open Pillar Command Palette"); cmdBtn.title = "Command Palette (Ctrl+K)";
+  var cmdBtn = el("button", "pk-cmd-btn"); cmdBtn.type = "button"; cmdBtn.setAttribute("aria-label", "Open pillar command palette, \u2318K"); cmdBtn.title = "Command Palette (Ctrl+K)";
   cmdBtn.innerHTML = "<span>&#8984;K</span>";
   dock.appendChild(cmdBtn);
   body.appendChild(dock);
@@ -307,8 +315,10 @@
     if (panels.length < 3) { if (old) old.remove(); made = null; return; }
     var names = panels.map(function (p) { return label(p.querySelector(":scope > h2")); }), sig = names.join("|");
     if (!old || old.dataset.sig !== sig) {
-      if (old) old.remove(); old = el("div", "tabs pk-tabs"); old.setAttribute("role", "tablist"); old.dataset.sig = sig;
-      names.forEach(function (n, i) { var b = el("button", "tab", n); b.type = "button"; b.setAttribute("role", "tab"); b.addEventListener("click", function () { show(i, true); }); old.appendChild(b); });
+      if (old) old.remove(); old = el("div", "tabs pk-tabs"); old.dataset.sig = sig;
+      var list = el("div", "pk-tablist"); list.setAttribute("role", "tablist"); list.dataset.sig = sig;
+      names.forEach(function (n, i) { var b = el("button", "tab", n); b.type = "button"; b.setAttribute("role", "tab"); b.addEventListener("click", function () { show(i, true); }); list.appendChild(b); });
+      old.appendChild(list);
       main.insertBefore(old, grid);
     }
     made = { grid: grid, panels: panels, tabs: old }; grid.classList.add("pk-sections"); show(Math.min(active, panels.length - 1), false);
@@ -329,8 +339,20 @@
       btns[i].textContent = on ? "All Panels: ON" : "All Panels";
     }
   }
+  /* The cockpit control is not a tab. A role=tablist that contains it fails aria-required-children. */
+  function separateTablist(tb) {
+    if (!tb || tb.getAttribute("role") !== "tablist") return tb.querySelector(":scope > .pk-tablist") || tb;
+    var list = el("div", "pk-tablist");
+    list.setAttribute("role", "tablist");
+    while (tb.firstChild) list.appendChild(tb.firstChild);
+    tb.removeAttribute("role");
+    tb.insertBefore(list, tb.firstChild);
+    return list;
+  }
   function ensureCockpitBtn(tb) {
-    if (!tb || tb.querySelectorAll('.tab, [role="tab"]').length < 2) return;
+    if (!tb) return;
+    var list = separateTablist(tb);
+    if (list.querySelectorAll('.tab, [role="tab"]').length < 2) return;
     var btn = tb.querySelector(".pk-cockpit-btn");
     if (!btn) {
       btn = el("button", "pk-cockpit-btn");
@@ -342,8 +364,8 @@
         syncCockpitButtons();
         window.dispatchEvent(new Event("resize"));
       });
-      tb.appendChild(btn);
     }
+    if (btn.parentNode !== tb) tb.appendChild(btn);
     syncCockpitButtons();
   }
 
