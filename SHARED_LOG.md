@@ -1,6 +1,6 @@
-### [2026-11-19] Offline precache merged onto main, shell cache d36
-- `tools/registry/sync.mjs` rewrote `sw-precache.js` (427 urls) from `pillars.json` and each local pillar page, including the files main added through d35 (deadlines, menu, painted worlds, Odyssey map and trip photos, Kern rules, permits, readiness). A stale list fails the pre-merge check. Titan and Midas are not cached. Main's cache is `prometheus-hub-deck-d35`; this shell is `d36`.
-- Install still waits for the Update ready chip. The daily pillar sweep stays. After the merge: unit `65/65`, browser `34/34` including OFFLINE-1 (25/25 with the network cut) and UPDATE-1.
+### [2026-11-19] Offline precache above main's arrival shell, cache d37
+- `tools/registry/sync.mjs` rewrites `sw-precache.js` from `pillars.json` and each local pillar page, including the arrival now-line modules. A stale list fails the pre-merge check. Titan and Midas are not cached. Main's cache is `prometheus-hub-deck-d36`; this shell is `d37`.
+- Install still waits for the Update ready chip. The orbit arrival and the daily pillar sweep stay.
 
 ### [2026-11-18] Sebastian: Forge ledger read-path fix — Drive fetch was CORS-blocked; mirror ships with d22
 
@@ -27,8 +27,9 @@ Correction first: the 8 datasets my earlier sweep reported missing (ARG-GEM-09, 
 - Bus events use a `{type, pillar, at, v}` envelope, with a migration for rows already stored. The 25 local manifests declare records, commands, and events. Bastion and Aether take weather from the place saved on the device, or show "Set a location" and do not fetch. `pillars/bastion/data/readiness.json` replaces the place-named readiness file. Athenaeum personal titles are example titles. Shell cache `prometheus-hub-deck-d21`.
 
 ### [2026-11-14] Offline precache and the Update ready chip
-- `tools/registry/sync.mjs` writes `sw-precache.js` (246 urls) from `pillars.json` and each local pillar's script, style, and data references. `validate.mjs` and `checks.yml` fail if it is stale. Shell cache `prometheus-hub-deck-d21`. Titan and Midas are not in the list.
-- Install no longer calls `skipWaiting()`. The pearl-glass, cyan-edge chip says "Update ready" and reloads on tap. OFFLINE-1 opened all 25 local pillars with the network cut. UPDATE-1 showed the chip after a simulated deploy. Unit proofs `62/62`, browser proofs `28/28`. Not deployed.
+- `tools/registry/sync.mjs` writes `sw-precache.js` from `pillars.json` and each local pillar's script, style, and data references. `validate.mjs` and `checks.yml` fail if it is stale. A new shell waits for the Update ready chip.
+### [2026-11-14] Build d21: the arrival is the core, one now line, and one card
+- Home no longer stacks the KPI strip, next-24 list, payoff ring, runway, countdowns, storm, focus, or homestead around the orrery. Those instruments moved to Time, Money, and System. Load sample moved to System. DECK-1 matches the new arrival. DECK-3 checks that the home has no table and no dollar figure. Shell cache d21.
 
 ### [2026-11-14] Pre-merge checks, money guard, shipped defaults
 - `checks.yml` runs the registry, syntax, JSON, unit proofs, the money guard, and browser proofs against this checkout on pull request and push. The storm-watch card starts empty, the homestead line uses a name stored on the device, and the hub links out to Titan without copying a collection total. Games and Athenaeum ship example notes. Shell cache `prometheus-hub-deck-d20` (main already used `d19` for the cool-core chrome).
@@ -48,6 +49,9 @@ Correction first: the 8 datasets my earlier sweep reported missing (ARG-GEM-09, 
 
 ### [2026-11-14] Privacy: home payoff no longer prints a loan quote
 - The home payoff card now says only whether a plan is locked on this device, with the progress ring and no dollar amounts, and the activate control is gone. Money opens on an empty form beside worked example 1 from `deck/data/payoff-cases.json`. The 30-day bus sales slot stays and shows a count. Service-worker cache is `prometheus-hub-deck-d18`. Older log lines that repeated the quote now say the figures were removed.
+
+### [2026-11-14] Build d21: the arrival is the core, one now line, and one card
+- Home no longer stacks the KPI strip, next-24 list, payoff ring, runway, countdowns, storm, focus, or homestead around the orrery. Those instruments moved to Time, Money, and System. Load sample moved to System. DECK-1 matches the new arrival. DECK-3 checks that the home has no table and no dollar figure. Shell cache d21.
 
 ### [2026-11-13] Build d17: Motion & Mobile Polish, Piano Voicing Studio, Pillar Depth Wave & Cross-Pillar Typed Links
 - **Motion, Warp Hardening & Mobile Clearance (`AGY-009` — `deck/core/fx.js`, `deck/views/orrery.js`, `deck/deck.css`, `kit/prometheus.css`, `pillars/athenaeum/app.css`, `proofs/unit/navigation.test.mjs`):** Hardened `warp()`/`unwarp()` with active rAF/timer tracking, token guards, `isWarping()`, null-safe `#deck`, and `pagehide`/`pageshow`/`visibilitychange` cleanup (`20`-hop stress tests pass); added reduced-motion-guarded `@view-transition { navigation: auto; }` fade keyframes; tuned `390x844` mobile Orrery stage height (`W * 0.78`) and `.rx-controls` spacing clear of the bottom dock; hid `.pk-cockpit-btn` in Athenaeum, prevented `"Chronicle"` tab clipping, and widened `.ath-time` (`right: 82px`) clear of `.ath-spark`.

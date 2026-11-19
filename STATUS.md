@@ -75,10 +75,14 @@ Shell cache **d26** · 2026-11-16 · Claude
 
 The quote above is the last proofs-live run against the deployed site (run 43575963969). It is not a result for the checkout below.
 
-**Offline shell, above main's d35 cache (`prometheus-hub-deck-d36`, `BUILD` still `d20`):**
-- `sw-precache.js` is generated from `pillars.json` and each local pillar's `index.html` script, style, and data references (`node tools/registry/sync.mjs`). `sw.js` imports it with `importScripts`. The list includes the files main added by hand (Kairos fixed dates, deadlines, the menu, Odyssey map data, Kern rules, legacy policies, Hearth permits, Argus corpus, Observatory subjects, Bastion `readiness.json`, and the painted worlds). Titan and Midas are not listed. `node tools/registry/validate.mjs` and the precache step in `checks.yml` fail when the file is stale.
-- Install no longer calls `skipWaiting()`. A waiting worker shows an **Update ready** chip (pearl glass, cyan edge). A tap posts `SKIP_WAITING` and reloads. Main's daily pillar sweep stays.
-- **Verified locally after merging main (cache d35), not on the live site:** registry `REGISTRY_OK` and `25/25 complete`, precache `PRECACHE_OK` (427 urls, 25 local), `node --test proofs/unit/*.test.mjs` (`65/65` pass, `0` failed, `0` skipped), money guard `GUARD_OK`, and `python3 proofs/run.py http://prometheus.test:8377/ --mock-weather` (`34/34` pass, `0` failed). OFFLINE-1 cached `prometheus-hub-deck-d36` (427 urls, Apollo foods present) and opened all 25 local pillars with the network cut and no script errors. UPDATE-1 showed the chip (`border rgb(159, 212, 230)`, pill radius) and a tap left the cache `prometheus-hub-deck-d36b` with the chip gone. Screenshot: `artifacts/screenshots/d36/update-ready-390x844.png`.
+**Offline shell, above main's d36 cache (`prometheus-hub-deck-d37`, `BUILD` still `d20`):**
+- `sw-precache.js` is generated from `pillars.json` and each local pillar page (`node tools/registry/sync.mjs`). `sw.js` imports it. Titan and Midas are not listed. The pre-merge check fails if the file is stale.
+- Install no longer calls `skipWaiting()`. A waiting worker shows an **Update ready** chip (pearl glass, cyan edge). A tap reloads. The orbit arrival and the daily pillar sweep stay.
+- **Verified locally after merging main (cache d36), not on the live site:** registry `REGISTRY_OK` and `25/25 complete`, precache `PRECACHE_OK` (429 urls, 25 local), `node --test proofs/unit/*.test.mjs` (`66/66` pass, `0` failed, `0` skipped), money guard `GUARD_OK`, and `python3 proofs/run.py http://prometheus.test:8377/ --mock-weather` (`35/35` pass, `0` failed). OFFLINE-1 cached `prometheus-hub-deck-d37` (429 urls, Apollo foods present) and opened all 25 local pillars with the network cut and no script errors. UPDATE-1 showed the chip (`border rgb(159, 212, 230)`, pill radius) and a tap left the cache `prometheus-hub-deck-d37b` with the chip gone. Screenshot: `artifacts/screenshots/d37/update-ready-390x844.png`.
+
+Build **d35** · 2026-11-19 · not deployed yet
+
+**Orbit arrival kept, and PILLAR-1 no longer races the tab row.** The orbit home (`?home=orbit`) is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and waits until that section is showing: a coordinate click was landing on a button the kit had just replaced, so one of the two checks runs on `9456a3f` still saw the first section after a fixed 700 ms. Shell cache `prometheus-hub-deck-d35`.
 
 Build **d20** shell, cache **d21** · 2026-11-14 · not deployed yet
 
@@ -168,7 +172,8 @@ their pages and get developed one at a time.
 | Athenaeum | BUILT, NOT REVIEWED | ATH-1..7: the 11 kept ideas as stars in 3D with four constellations found from their own tags and words; an idea opens whole with lineage, provenance and reasons for each connection; capture and append-only refinement leave every other record byte-identical; the time slider shows the sky on a past day; the 40 history entries as cause, event, consequence with sources; export, wipe, import restores to the byte, with a preview first; search, resurfacing, archive with undo and the shelf all still work. |
 | The hub reaches into a pillar | DONE (one pillar) | CORE-5: through Athenaeum's manifest the command key finds an idea by title or text and opens it, "idea: ..." hands the words to the pillar without writing its records, and the ticker shows the pillar's latest event. |
 | Real data on the hub | DONE | CORE-3: a deadline any pillar publishes to the shared bus shows in the hub's feed and as a badge on that pillar's cell. Cells also show how much each pillar holds on this device; Titan's cell and tile read its published ledger. Fixed dates: the 58 researched ones. |
-| Day ring, runway, countdowns, storm watch | DONE | DECK-1. They read the one feed (the bus, the fixed dates, the consoles below). |
+| Arrival | DONE | DECK-1, DECK-3 (d21). The home is the core, one now line, and one card. It fits above the dock at 390×844 and renders no table and no dollar figure. | 
+| Day ring, runway, countdowns, focus, storm, homestead | DONE | They read the same feed, on Time (day ring, runway, countdowns, focus) and System (storm, homestead, counts). The payoff ring is on Money. |
 | Kairos console, Payoff console | DONE | TIME-1..3, MONEY-1..2. New consoles built in d1; reachable from the hub's instruments and search. They do not replace the Kairos and Money pillar pages, which are back at their addresses. |
 | System | DONE | DATA-1. |
 

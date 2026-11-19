@@ -31,13 +31,17 @@ with sync_playwright() as p:
     c2 = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); p2 = c2.new_page(); p2.on("pageerror", lambda e: errs.append("core: " + str(e)))
     if MOCK:
         p2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p2.route("https://api.weather.gov/**", lambda route, request: route.abort()); p2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    p2.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_timeout(900)
-    ci = p2.evaluate("""() => ({ ids: [...document.querySelectorAll('.reactor .hex:not(.core)')].map((x) => x.dataset.pillar),
-      demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth, ring: !!document.querySelector('.dayring') })""")
+    p2.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p2.wait_for_selector(".reactor .hex", timeout=20000); p2.wait_for_selector(".now-line", timeout=20000); p2.wait_for_timeout(900)
+    ci = p2.evaluate("""async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      const view = document.querySelector('#view'); const card = document.querySelector('.context-card'); const dockTop = document.querySelector('.dock').getBoundingClientRect().top;
+      return { ids: [...document.querySelectorAll('.reactor .hex:not(.core)')].map((x) => x.dataset.pillar),
+      demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth,
+      now: !!document.querySelector('.now-line'), cards: document.querySelectorAll('.context-card').length,
+      fits: view.scrollHeight <= view.clientHeight + 2 && !!card && card.getBoundingClientRect().bottom <= dockTop + 2 }; }""")
     missing = [i for i in CORE_IDS if i not in ci["ids"]]; extra = [i for i in ci["ids"] if i not in CORE_IDS]
     proof("CORE-1", f"Every pillar in pillars.json is on the core ({len(CORE_IDS)} live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data",
-          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["ring"],
-          json.dumps({"expected": len(CORE_IDS), "drawn": len(ci["ids"]), "missing": missing, "extra": extra, "demo": ci["demo"], "events": ci["events"], "plan": ci["plan"], "wide": ci["wide"], "ring": ci["ring"]}))
+          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["now"] and ci["cards"] == 1 and ci["fits"],
+          json.dumps({"expected": len(CORE_IDS), "drawn": len(ci["ids"]), "missing": missing, "extra": extra, "demo": ci["demo"], "events": ci["events"], "plan": ci["plan"], "wide": ci["wide"], "now": ci["now"], "cards": ci["cards"], "fits": ci["fits"]}))
     routes = p2.evaluate("[...document.querySelectorAll('.reactor .hex:not(.core) a')].map((a) => a.getAttribute('href'))"); bad = []; local = [r for r in routes if not r.startswith("http")]
     for r in local:
         resp = p2.request.get(URL + r)
@@ -180,7 +184,12 @@ with sync_playwright() as p:
     def shell(): return p3.evaluate("""() => { const panels = [...document.querySelectorAll('main > section.grid > .glass')]; return { crest: !!document.querySelector('.pk-hero .pk-crest svg'), tabs: document.querySelectorAll('main > .pk-tabs .tab').length,
       showing: panels.filter((x) => x.offsetParent !== null).map((x) => x.querySelector('h2').textContent.slice(0, 22)), core: (document.querySelector('.pk-dock .pk-core') || {}).href || '', steps: document.querySelectorAll('.pk-dock a.compass-step').length,
       tall: document.documentElement.scrollHeight, wide: document.documentElement.scrollWidth }; }""")
-    s1 = shell(); p3.click("main > .pk-tabs .tab:nth-child(3)"); p3.wait_for_timeout(700); s2 = shell()
+    s1 = shell()
+    p3.wait_for_function("document.querySelectorAll('main > .pk-tabs .tab').length >= 3")
+    # The tab row is rebuilt when panel titles settle. A coordinate click can land on the button that was just replaced, so the handler never runs and a fixed sleep still sees the first section. Click the live third tab, then wait until that section is the one on screen.
+    p3.evaluate("document.querySelectorAll('main > .pk-tabs .tab')[2].click()")
+    p3.wait_for_function("""(prev) => { const shown = [...document.querySelectorAll('main > section.grid > .glass')].filter((x) => x.offsetParent !== null); const title = shown[0] && shown[0].querySelector('h2') ? shown[0].querySelector('h2').textContent.slice(0, 22) : ''; return shown.length === 1 && title !== prev; }""", arg=s1["showing"][0], timeout=5000)
+    s2 = shell()
     proof("PILLAR-1", "Every pillar's default shell: crest, sections from its own panels, a dock back to the core", s1["crest"] and s1["tabs"] >= 3 and len(s1["showing"]) == 1 and len(s2["showing"]) == 1 and s1["showing"] != s2["showing"] and s1["core"].endswith("/prometheus-hub/") | s1["core"].endswith(":8377/") and s1["steps"] >= 1 and s1["wide"] <= 390 and s1["tall"] < 2600,
           f"Piano: {s1['tabs']} sections, showing {s1['showing']} then {s2['showing']}; page {s1['tall']} px tall at phone size (was 6,672); dock: core + {s1['steps']} neighbours"); c3.close()
 
@@ -326,12 +335,26 @@ with sync_playwright() as p:
           len(hits) >= 1 and hits[0]["title"].startswith("Example: Independent blind audits") and "#idea/" in hits[0]["href"] and len(deep) >= 1 and "Athenaeum · idea" in deep[0]["sub"] and "Athenaeum · idea refined: Proof event" in tick_line and first.startswith("Capture an idea: test the handoff") and landed["title"] == "test the handoff from the hub" and landed["kept"] == a1["n"],
           f"'blind audits' -> {hits[0]['title'][:40] if hits else None} ({hits[0]['href'] if hits else ''}); text match -> {deep[0]['sub'][:70] if deep else None}; ticker has the event: {'Proof event' in tick_line}; '{first[:40]}' opens Athenaeum with the title filled: {landed['title']!r}, ideas still {landed['kept']}"); c6.close()
 
-    pg.goto(f"{URL}?now={NOW}&demo=1#/", wait_until="load"); pg.wait_for_selector(".dayring", timeout=20000); pg.wait_for_timeout(1200)
+    pg.goto(f"{URL}?now={NOW}&demo=1&home=orbit#/", wait_until="load"); pg.wait_for_selector(".now-line", timeout=20000); pg.wait_for_timeout(900)
 
-    # ARRIVAL: the picture is built from the data, not a placeholder
-    info = pg.evaluate("""() => ({ ring: !!document.querySelector('.dayring svg'), rows: document.querySelectorAll('.tier1 .item').length, days: document.querySelectorAll('.runway .day').length,
-      payoff: (document.querySelector('.dial-pct') || {}).textContent, caps: [...document.querySelectorAll('.dock-item')].map((x) => x.dataset.cap), wide: document.documentElement.scrollWidth, build: window.__deck.BUILD })""")
-    proof("DECK-1", "Arrival view: day ring, next 24 hours, 7-day runway, payoff, all from the store", info["ring"] and info["days"] == 7 and info["payoff"] and info["wide"] <= 390, json.dumps(info))
+    # ARRIVAL: the core, one now line, one card. The old instruments still read the store on Time and Money.
+    home = pg.evaluate("""async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      const view = document.querySelector('#view'); const card = document.querySelector('.context-card'); const dockTop = document.querySelector('.dock').getBoundingClientRect().top;
+      const bits = [view.innerText, ...[...view.querySelectorAll('[aria-label],[title]')].map((el) => (el.getAttribute('aria-label') || '') + ' ' + (el.getAttribute('title') || ''))].join('\\n');
+      const m = await import(new URL('deck/core/now.js', document.baseURI).href); const facts = m.nowFacts(window.__deck.clock.now()); const line = document.querySelector('.now-line').textContent;
+      return { core: document.querySelectorAll('.reactor .hex:not(.core)').length, line, cards: document.querySelectorAll('.context-card').length,
+        event: !!(facts.event && line.includes(facts.event.title)), deadline: !!(facts.deadline && line.includes(facts.deadline.title)),
+        nyse: facts.session.label, nyseOnLine: line.includes(facts.session.label),
+        fits: view.scrollTop === 0 && view.scrollHeight <= view.clientHeight + 2 && !!card && card.getBoundingClientRect().bottom <= dockTop + 2,
+        wide: document.documentElement.scrollWidth, tables: view.querySelectorAll('table').length, dollars: bits.includes('$'), build: window.__deck.BUILD }; }""")
+    proof("DECK-3", "The home renders no table and no dollar figure", home["tables"] == 0 and not home["dollars"] and home["cards"] == 1, json.dumps({"tables": home["tables"], "dollars": home["dollars"], "cards": home["cards"]}))
+    pg.goto(f"{URL}?now={NOW}&demo=1#/time", wait_until="load"); pg.wait_for_selector(".dayring svg", timeout=20000); pg.wait_for_selector(".runway .day", timeout=10000); pg.wait_for_timeout(400)
+    moved = pg.evaluate("""() => ({ ring: !!document.querySelector('.dayring svg'), days: document.querySelectorAll('.runway .day').length, focus: !!document.querySelector('a.tile.focus'), countdowns: document.querySelectorAll('.countdown').length })""")
+    pg.goto(f"{URL}?now={NOW}&demo=1#/money", wait_until="load"); pg.wait_for_selector(".dial-pct", timeout=15000); pg.wait_for_timeout(300)
+    payoff = pg.evaluate("() => (document.querySelector('.dial-pct') || {}).textContent || ''")
+    proof("DECK-1", "Arrival view: the core, one now line (next event, next deadline, NYSE open or closed) and one card, fitting above the dock; the day ring, 7-day runway, countdowns and payoff ring still read the store",
+          home["core"] == len(CORE_IDS) and home["event"] and home["deadline"] and home["nyseOnLine"] and home["nyse"] in ("NYSE open", "NYSE closed") and home["cards"] == 1 and home["fits"] and home["wide"] <= 390 and moved["ring"] and moved["days"] == 7 and moved["focus"] and moved["countdowns"] >= 1 and bool(payoff),
+          json.dumps({"line": home["line"], "nyse": home["nyse"], "fits": home["fits"], "wide": home["wide"], "build": home["build"], "moved": moved, "payoff": payoff}, default=str))
 
     # TIME-1: the 40-event research calendar goes in and comes back out the same
     r = pg.evaluate(ICS_JS)
@@ -460,14 +483,14 @@ with sync_playwright() as p:
         up.wait_for_selector(".menu .mn-lvl", timeout=30000)
         up.wait_for_function("() => !!(navigator.serviceWorker && navigator.serviceWorker.controller)", timeout=120000)
         quiet = up.evaluate("() => !document.querySelector('button.update-ready')")
-        nxt = orig_sw.replace('var CACHE = "prometheus-hub-deck-d36";', 'var CACHE = "prometheus-hub-deck-d36b";', 1)
-        if nxt == orig_sw: raise RuntimeError("sw.js has no d36 cache name to bump")
+        nxt = orig_sw.replace('var CACHE = "prometheus-hub-deck-d37";', 'var CACHE = "prometheus-hub-deck-d37b";', 1)
+        if nxt == orig_sw: raise RuntimeError("sw.js has no d37 cache name to bump")
         sw_path.write_text(nxt + "\n/* simulated deploy */\n")
         up.evaluate("async () => { const reg = await navigator.serviceWorker.ready; await reg.update(); }")
         up.wait_for_selector("button.update-ready", timeout=120000)
         chip = up.evaluate("""() => { const b = document.querySelector('button.update-ready'); const s = getComputedStyle(b);
           return { text: (b.textContent || '').trim(), border: s.borderTopColor, bg: s.backgroundImage, radius: s.borderTopLeftRadius, color: s.color }; }""")
-        shot = sw_path.parent / "artifacts" / "screenshots" / "d36" / "update-ready-390x844.png"
+        shot = sw_path.parent / "artifacts" / "screenshots" / "d37" / "update-ready-390x844.png"
         shot.parent.mkdir(parents=True, exist_ok=True)
         up.screenshot(path=str(shot))
         with up.expect_navigation(wait_until="load", timeout=30000):
@@ -476,7 +499,7 @@ with sync_playwright() as p:
         after = up.evaluate("""async () => ({ names: await caches.keys(), chip: !!document.querySelector('button.update-ready') })""")
         pearl = "159, 212, 230" in (chip.get("border") or "") or "215, 246, 255" in (chip.get("border") or "")
         proof("UPDATE-1", "A simulated deploy shows Update ready (pearl glass, cyan edge) and a tap reloads into the new shell",
-              quiet and chip.get("text") == "Update ready" and pearl and "gradient" in (chip.get("bg") or "") and str(chip.get("radius") or "").startswith("999") and (not after.get("chip")) and any("d36b" in n for n in after.get("names") or []),
+              quiet and chip.get("text") == "Update ready" and pearl and "gradient" in (chip.get("bg") or "") and str(chip.get("radius") or "").startswith("999") and (not after.get("chip")) and any("d37b" in n for n in after.get("names") or []),
               f"chip {chip}; after reload caches {after.get('names')} chip {after.get('chip')}; shot {shot.name}")
         recorded = True
     except Exception as e:
