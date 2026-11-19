@@ -526,6 +526,22 @@
   if (document.readyState === "complete") setTimeout(igniteAutoField, 30);
   else window.addEventListener("load", function () { setTimeout(igniteAutoField, 30); });
 
+  /* The pillar's own world (2026-11-19): the painting it has on the hub's menu (art/worlds/, tools/art/worlds.py) stands behind the page,
+     faded into the dark below the top so every panel stays readable; the live field still moves over it. No painting yet: nothing changes. */
+  (function world() {
+    var slug = pillar === "sylade" ? "presence" : pillar;
+    var src = (document.querySelector('script[src$="kit/kit.js"]') || {}).src;
+    if (!slug || !src || (navigator.connection && navigator.connection.saveData)) return;
+    var url = new URL("../art/worlds/world_" + slug + ".webp", src).href, im = new Image();
+    im.decoding = "async";
+    im.onload = function () {
+      var w = el("div", "pk-world"); w.setAttribute("aria-hidden", "true"); w.style.backgroundImage = 'url("' + url + '")';
+      var field = document.getElementById("field"); body.insertBefore(w, field || body.firstChild); body.classList.add("has-world");
+      requestAnimationFrame(function () { requestAnimationFrame(function () { w.classList.add("on"); }); });
+    };
+    im.src = url;
+  })();
+
   /* In-pillar Cmd+K / Ctrl+K Command Palette */
   var PAL_ROUTES = [
     { name: "Hub Core · Orrery", sub: "3D live orbital core & cross-pillar telemetry", href: "../../#/", k: "hub core home orrery" },

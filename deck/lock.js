@@ -20,8 +20,8 @@
 
   var style = document.createElement("style");
   style.textContent = [
-    "#pk-lock{position:fixed;inset:0;z-index:9999;background:#05070e;display:grid;place-items:center;font-family:system-ui,sans-serif;color:#f4f7fb}",
-    "#pk-lock .card{text-align:center;max-width:320px;padding:24px}",
+    "#pk-lock{position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,rgba(5,7,14,.25),rgba(5,7,14,.55) 45%,rgba(5,7,14,.9) 75%),url(art/worlds/world_home.webp) center 28%/cover no-repeat,#05070e;display:grid;place-items:end center;padding-bottom:max(12vh,env(safe-area-inset-bottom));box-sizing:border-box;font-family:system-ui,sans-serif;color:#f4f7fb}",
+    "#pk-lock .card{text-align:center;width:min(320px,calc(100vw - 32px));box-sizing:border-box;padding:24px;border-radius:20px;background:rgba(8,11,22,.55);border:1px solid rgba(190,212,255,.16);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}",
     "#pk-lock .ring{width:54px;height:54px;margin:0 auto 14px;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75),0 0 32px rgba(159,212,230,.55);background:radial-gradient(circle,#f4f7fb 0 18%,#9fd4e6 22%,transparent 28%)}",
     "#pk-lock h1{font-size:19px;margin:0 0 6px;font-weight:600}",
     "#pk-lock p{font-size:13px;opacity:.75;margin:0 0 16px;line-height:1.45}",

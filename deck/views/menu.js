@@ -2,7 +2,8 @@
    same, empty, does not help my day"). One full-screen world behind everything; the pillars are levels you swipe through, one at a
    time, each with its own light and colour, what it is, and the one live thing it knows; Today on top says what is next across
    every pillar. The world is a painted image with live layers when its art exists (art/worlds/index.json lists them; Gemini paints
-   them from docs/art/requests/artreq_20261116-0300_prometheus-worlds.json) and a live painted sky in the pillar's colour until then.
+   them from docs/art/requests/artreq_20261116-0300_prometheus-worlds.json; Claude painted the first set through the Gemini API on 2026-11-19,
+   tools/art/worlds.py) and a live painted sky in the pillar's colour until then. With a painting the crest steps back: the world is the level.
    The orbit and the whole briefing are kept: the orbit is one tap away, the briefing is right below. Nothing here invents a number. */
 import { h, icon } from "../core/ui.js";
 import { PILLARS } from "../pillars.js";
@@ -64,6 +65,7 @@ void main(){
     float fl=.82+.12*sin(T*2.1+tuv.y*9.)+.06*sin(T*5.3+tuv.x*13.);
     col+=li*fl*mix(acc,pearl,.55)*.38+li*li*.18;
     col+=acc*.05*smoothstep(.5,0.,abs(p.y-hz))*fbm(p*3.+T*.05);
+    col*=1.-.48*smoothstep(.68,.3,uv.y);
   } else {
     col=mix(vec3(.010,.013,.030),vec3(.028,.036,.075),smoothstep(-.6,.7,p.y));
     vec2 q=p*1.5+vec2(T*.012,-T*.007)+P*.04;float neb=fbm(q*1.3+fbm(q*2.1+T*.025));
@@ -191,7 +193,7 @@ export function menu(ctx, opts = {}) {
     crest.replaceChildren(emblem(p)); for (const x of [crest, card]) { x.classList.remove("in-l", "in-r"); void x.offsetWidth; x.classList.add(dir < 0 ? "in-l" : "in-r"); }
     strip.querySelectorAll(".mn-lvl").forEach((b, i) => { b.classList.toggle("on", i === at); b.setAttribute("aria-selected", String(i === at)); });
     const on = strip.children[at]; if (on && on.scrollIntoView) on.scrollIntoView({ block: "nearest", inline: "center", behavior: still() ? "auto" : "smooth" });
-    W.show(p, hasArt.has(p.id)); ls(AT, p.id);
+    el.classList.toggle("art", hasArt.has(p.id)); W.show(p, hasArt.has(p.id)); ls(AT, p.id);
   }
   function pick(i, sound) { const d = i > at ? 1 : -1; at = (i + list.length) % list.length; if (sound) tick(); paint(d); }
   function step(d) { pick((at + d + list.length) % list.length, true); }
@@ -214,7 +216,7 @@ export function menu(ctx, opts = {}) {
   const view = document.getElementById("view"); const onScroll = () => { const k = Math.max(0, Math.min(1, view.scrollTop / (innerHeight * 0.7))); for (const c of W.els) c.style.opacity = String(1 - k); document.body.classList.toggle("menu-off", k >= 0.99); W.run(k < 0.99); };
   if (view) view.addEventListener("scroll", onScroll, { passive: true });
 
-  paint(1); arts().then((s) => { hasArt = s; if (s.has(list[at].id)) W.show(list[at], true); });
+  paint(1); arts().then((s) => { hasArt = s; if (s.has(list[at].id)) { el.classList.add("art"); W.show(list[at], true); } });
   el.cleanup = () => { W.kill(); removeEventListener("keydown", onKey); if (view) view.removeEventListener("scroll", onScroll); document.body.classList.remove("menu-on", "menu-off"); };
   return el;
 }
