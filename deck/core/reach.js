@@ -65,6 +65,125 @@ export function commands(q) {
   return out.sort((a, b) => a.rank - b.rank);
 }
 
+/** Verbs a manifest may offer. Anything else in `verbs` is ignored. */
+export const VERB_NAMES = Object.freeze(["open", "add", "log", "find", "start", "remind"]);
+
+function escRe(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+
+function pillarToken(list, rest) {
+  const first = String(rest || "").trim().split(/\s+/)[0].toLowerCase();
+  if (!first) return [];
+  return list.filter((man) => {
+    const id = String(man.id || "").toLowerCase();
+    const parts = String(man.name || "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    return first === id || parts[0] === first;
+  });
+}
+
+function verbPayload(rest, matched) {
+  const raw = String(rest || "").trim();
+  if (!matched) return raw;
+  return raw.replace(/^\S+\s*/, "").trim();
+}
+
+/** What confirming a writing verb would store. Reads nothing and writes nothing. */
+export function previewVerb(man, verb, text, today = "") {
+  const name = man.name || man.id;
+  const title = String(text || "").trim() || verb.label || verb.verb;
+  const date = String(today || "").slice(0, 10);
+  const store = verb.store || "";
+  const writes = !!verb.writes;
+  const lines = ["Nothing is stored yet."];
+  let record = null;
+  if (writes && store === "prometheus.bus.deadlines") {
+    record = { title, date, source: man.id, ref: verb.verb };
+    lines.push(`Confirm adds one reminder for ${name}.`);
+    lines.push("Store: prometheus.bus.deadlines");
+    lines.push(`Title: ${title}`);
+    if (date) lines.push(`Date: ${date}`);
+    lines.push("No other store is changed.");
+  } else if (writes && store) {
+    record = { pillar: man.id, verb: verb.verb, title, at: date };
+    lines.push(`Confirm appends one ${verb.verb} for ${name}.`);
+    lines.push(`Store: ${store}`);
+    lines.push(`Title: ${title}`);
+    lines.push("The pillar's own records stay unchanged.");
+    if (verb.handoff && String(text || "").trim()) lines.push("The words are handed to the pillar only after you confirm.");
+  } else if (writes) {
+    lines.push("Confirm hands the words on. No record is written.");
+  }
+  return {
+    line: writes ? `Preview · nothing stored yet · ${lines[1] || title}` : `${name} · ${verb.verb}`,
+    writes,
+    store,
+    record,
+    lines,
+    verb: verb.verb,
+    pillar: man.id,
+    name,
+    handoff: !!(verb.handoff && String(text || "").trim()),
+    text: String(text || "").trim(),
+  };
+}
+
+/**
+ * Verbs declared on pillar manifests. The query must start with open, add, log, find, start, or remind.
+ * A pillar named by the next word narrows the list. Writing verbs carry a preview and do not store anything here.
+ */
+export function verbsFor(list, q, { today = "" } = {}) {
+  const raw = String(q || "").trim();
+  const m = raw.match(/^(open|add|log|find|start|remind)\b\s*[:,-]?\s*([\s\S]*)$/i);
+  if (!m || !Array.isArray(list)) return [];
+  const name = m[1].toLowerCase();
+  const rest = m[2].trim();
+  const named = pillarToken(list, rest);
+  const pool = named.length ? named : list;
+  const out = [];
+  for (const man of pool) {
+    if (!man || !man.id || !man.route) continue;
+    const text = verbPayload(rest, named.length > 0);
+    for (const verb of man.verbs || []) {
+      if (!verb || verb.verb !== name || !VERB_NAMES.includes(verb.verb)) continue;
+      const preview = previewVerb(man, verb, text, today);
+      const label = verb.label || `${name} ${man.name || man.id}`;
+      out.push({
+        pillar: man.id,
+        id: verb.id || name,
+        verb: name,
+        title: text ? `${label}: ${text}` : label,
+        sub: preview.line,
+        href: man.route + String(verb.open || ""),
+        writes: !!verb.writes,
+        preview,
+        rank: named.length ? 0 : 1,
+      });
+    }
+  }
+  return out;
+}
+
+/** Verbs from the manifests loaded for this page. */
+export function verbs(q, opts) { return verbsFor(loaded, q, opts); }
+
+/** Store the record described by a preview. Refuses unless that preview said it writes, and refuses to replace a non-list. */
+export function commitVerb(preview) {
+  if (!preview || !preview.writes || !preview.store || !preview.record) return { wrote: false, reason: "no preview" };
+  const s = ls();
+  if (!s) return { wrote: false, reason: "no storage" };
+  let cur;
+  try {
+    const raw = s.getItem(preview.store);
+    cur = raw == null || raw === "" ? [] : JSON.parse(raw);
+  } catch (e) {
+    return { wrote: false, reason: "unreadable" };
+  }
+  if (!Array.isArray(cur)) return { wrote: false, reason: "not a list" };
+  const rec = { ...preview.record, id: preview.record.id || ("pal_" + Date.now().toString(36)) };
+  cur.push(rec);
+  s.setItem(preview.store, JSON.stringify(cur));
+  return { wrote: true, store: preview.store, record: rec };
+}
+
 /** Hand words to a pillar: left in this tab's session for the pillar to pick up once. Nothing is written into the pillar's records from here. */
 export function handOff(hand) { try { ss()?.setItem("prometheus.handoff", JSON.stringify(hand)); } catch (e) { /* the pillar opens empty */ } }
 

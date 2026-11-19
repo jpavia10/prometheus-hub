@@ -325,6 +325,93 @@ with sync_playwright() as p:
           len(hits) >= 1 and hits[0]["title"].startswith("Example: Independent blind audits") and "#idea/" in hits[0]["href"] and len(deep) >= 1 and "Athenaeum · idea" in deep[0]["sub"] and "Athenaeum · idea refined: Proof event" in tick_line and first.startswith("Capture an idea: test the handoff") and landed["title"] == "test the handoff from the hub" and landed["kept"] == a1["n"],
           f"'blind audits' -> {hits[0]['title'][:40] if hits else None} ({hits[0]['href'] if hits else ''}); text match -> {deep[0]['sub'][:70] if deep else None}; ticker has the event: {'Proof event' in tick_line}; '{first[:40]}' opens Athenaeum with the title filled: {landed['title']!r}, ideas still {landed['kept']}"); c6.close()
 
+    # KEY-1 / KEY-2: the Search · Capture palette is a combobox. Keyboard only: arrows move aria-activedescendant,
+    # focus stays in the field, Enter accepts, Esc closes back to the trigger. The accessibility tree has to say so.
+    # A manifest verb shows its write preview before anything is stored. ? lists every shortcut, and does not while typing.
+    ck = b.new_context(viewport={"width": 390, "height": 844}); pk = ck.new_page(); bk = []; pk.on("pageerror", lambda e: bk.append("key: " + str(e)[:140]))
+    if MOCK:
+        pk.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pk.route("https://api.weather.gov/**", lambda route, request: route.abort()); pk.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+    def ax_nodes(page):
+        client = page.context.new_cdp_session(page)
+        client.send("Accessibility.enable")
+        nodes = client.send("Accessibility.getFullAXTree").get("nodes") or []
+        client.detach()
+        return nodes
+    def ax_role(node):
+        return ((node.get("role") or {}).get("value") or "").lower()
+    def ax_prop(node, name):
+        for prop in node.get("properties") or []:
+            if prop.get("name") != name: continue
+            val = prop.get("value") or {}
+            if val.get("value") is not None: return val.get("value")
+            rel = val.get("relatedNodes") or []
+            if rel: return rel[0].get("idref")
+        return None
+    k1 = k2 = False
+    try:
+        pk.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); pk.wait_for_selector("#open-search", timeout=20000); pk.wait_for_timeout(500)
+        pk.keyboard.press("/")
+        pk.wait_for_function("() => { const i = document.activeElement; return !!(i && i.classList.contains('search-input') && i.getAttribute('role') === 'combobox' && i.getAttribute('aria-expanded') === 'true' && i.getAttribute('aria-activedescendant')); }", timeout=8000)
+        first_id = pk.evaluate("document.activeElement.getAttribute('aria-activedescendant')")
+        pk.keyboard.press("ArrowDown")
+        moved = pk.evaluate("""() => { const i = document.querySelector('.search-input'); const id = i.getAttribute('aria-activedescendant'); const opt = id && document.getElementById(id); return { id, focus: document.activeElement === i, selected: opt && opt.getAttribute('aria-selected'), role: opt && opt.getAttribute('role'), list: (document.getElementById(i.getAttribute('aria-controls')) || {}).getAttribute && document.getElementById(i.getAttribute('aria-controls')).getAttribute('role') }; }""")
+        nodes = ax_nodes(pk)
+        combos = [n for n in nodes if ax_role(n) == "combobox"]
+        lists = [n for n in nodes if ax_role(n) == "listbox"]
+        options = [n for n in nodes if ax_role(n) == "option"]
+        active_prop = ax_prop(combos[0], "activedescendant") if combos else None
+        pk.keyboard.press("ArrowUp")
+        restored = pk.evaluate("document.querySelector('.search-input').getAttribute('aria-activedescendant')")
+        pk.keyboard.press("Escape")
+        pk.wait_for_function("() => document.activeElement && document.activeElement.id === 'open-search' && !document.querySelector('.sheet-wrap:not(.out)')", timeout=4000)
+        pk.wait_for_function("() => !document.querySelector('.sheet-wrap')", timeout=4000)
+        key_ok = (first_id and moved["id"] and moved["id"] != first_id and moved["focus"] and moved["selected"] == "true" and moved["role"] == "option" and moved["list"] == "listbox"
+                  and restored == first_id and len(combos) == 1 and len(lists) >= 1 and len(options) >= 2 and not bk)
+        # The accessibility tree names the active option. Chrome exposes it as an idref or as the option's name.
+        active_opt = next((n for n in options if ax_prop(n, "selected") is True or ax_prop(n, "selected") == "true"), None)
+        tree_ok = bool(combos) and bool(lists) and len(options) >= 2 and active_prop == moved["id"] and active_opt is not None
+        proof("KEY-1", "Search · Capture is a combobox: arrows move the active option with aria-activedescendant, focus stays in the field, Esc returns to the trigger, and the accessibility tree shows it",
+              key_ok and tree_ok, f"active {first_id} -> {moved['id']} -> {restored}; focus stayed {moved['focus']}; tree combobox {len(combos)} listbox {len(lists)} option {len(options)}; activedescendant {active_prop!r}; selected option {bool(active_opt)}" + (f"; errors {bk[:2]}" if bk else ""))
+        k1 = True
+        pk.keyboard.press("?")
+        pk.wait_for_selector(".shortcut-sheet", timeout=4000)
+        sheet = pk.evaluate("""() => { const rows = [...document.querySelectorAll('.shortcut-row')].map((r) => r.innerText.replace(/\\s+/g, ' ').trim()); const want = (window.__deck.shortcuts || []).map((s) => s.keys + ' ' + s.does); return { rows, want, font: getComputedStyle(document.querySelector('.shortcut-row kbd')).fontFamily, radius: getComputedStyle(document.querySelector('.shortcut-row')).borderRadius }; }""")
+        listed = all(any(s["keys"] in row and s["does"] in row for row in sheet["rows"]) for s in pk.evaluate("window.__deck.shortcuts"))
+        pk.keyboard.press("Escape")
+        pk.wait_for_function("() => !document.querySelector('.shortcut-sheet')", timeout=4000)
+        pk.keyboard.press("/")
+        pk.wait_for_function("() => document.activeElement && document.activeElement.classList.contains('search-input')", timeout=4000)
+        pk.keyboard.press("?")
+        pk.wait_for_timeout(150)
+        typed = pk.evaluate("() => ({ value: document.querySelector('.search-input').value, shortcuts: !!document.querySelector('.shortcut-sheet'), focus: document.activeElement.classList.contains('search-input') })")
+        pk.keyboard.press("Escape")
+        pk.wait_for_function("() => !document.querySelector('.sheet-wrap') && document.activeElement && document.activeElement.id === 'open-search'", timeout=4000)
+        bus_before = pk.evaluate("localStorage.getItem('prometheus.bus.deadlines')")
+        pk.wait_for_function("() => window.__deck.reach.verbs('remind kairos proof reminder').length === 1", timeout=8000)
+        pk.keyboard.press("/")
+        pk.wait_for_function("() => document.activeElement && document.activeElement.classList.contains('search-input')", timeout=4000)
+        pk.keyboard.type("remind kairos proof reminder")
+        pk.wait_for_timeout(250)
+        preview_row = pk.evaluate("""() => { const i = document.querySelector('.search-input'); const id = i.getAttribute('aria-activedescendant'); const opt = id && document.getElementById(id); return { text: opt ? opt.textContent : '', focus: document.activeElement === i, stored: localStorage.getItem('prometheus.bus.deadlines'), region: !!document.querySelector('#verb-preview:not([hidden])') }; }""")
+        pk.keyboard.press("Enter")
+        pk.wait_for_selector("#verb-preview:not([hidden])", timeout=4000)
+        held = pk.evaluate("""() => ({ lines: document.querySelector('#verb-preview').innerText, stored: localStorage.getItem('prometheus.bus.deadlines'), described: document.querySelector('.search-input').getAttribute('aria-describedby'), active: (document.getElementById(document.querySelector('.search-input').getAttribute('aria-activedescendant')) || {}).textContent || '' })""")
+        pk.keyboard.press("Enter")
+        pk.wait_for_timeout(300)
+        wrote = pk.evaluate("""() => { const rows = JSON.parse(localStorage.getItem('prometheus.bus.deadlines') || '[]'); const mine = rows.filter((r) => r && r.title === 'proof reminder'); return { n: mine.length, row: mine[0] || null, captures: localStorage.getItem('prometheus.hub.captures') }; }""")
+        verb_ok = ("Remind me in Kairos" in preview_row["text"] and "nothing stored yet" in preview_row["text"].lower() and preview_row["focus"] and preview_row["stored"] == bus_before and not preview_row["region"]
+                   and "Nothing is stored yet" in held["lines"] and "prometheus.bus.deadlines" in held["lines"] and held["stored"] == bus_before and held["described"] == "verb-preview" and "Write this" in held["active"]
+                   and wrote["n"] == 1 and wrote["row"]["source"] == "kairos" and wrote["row"]["date"] == "2026-11-20" and wrote["captures"] is None)
+        outfit = "Outfit" in sheet["font"] and "monospace" not in sheet["font"].lower()
+        proof("KEY-2", "The ? sheet lists every shortcut, stays closed while typing, and a manifest remind verb previews the deadline before it is stored",
+              listed and len(sheet["rows"]) == len(sheet["want"]) and typed["value"] == "?" and typed["focus"] and not typed["shortcuts"] and verb_ok and outfit and sheet["radius"].startswith("22"),
+              f"shortcuts {len(sheet['rows'])}/{len(sheet['want'])}; font {sheet['font']}; radius {sheet['radius']}; ? while typing {typed}; preview stored-before {preview_row['stored'] == bus_before}; after confirm {wrote['row']}")
+        k2 = True
+    except Exception as e:
+        if not k1: proof("KEY-1", "Search · Capture is a combobox", False, "did not finish: " + str(e)[:220])
+        if not k2: proof("KEY-2", "Shortcut sheet and verb preview", False, "did not finish: " + str(e)[:220])
+    ck.close()
+
     pg.goto(f"{URL}?now={NOW}&demo=1#/", wait_until="load"); pg.wait_for_selector(".dayring", timeout=20000); pg.wait_for_timeout(1200)
 
     # ARRIVAL: the picture is built from the data, not a placeholder
