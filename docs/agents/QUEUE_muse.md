@@ -2,7 +2,7 @@
 
 # Prometheus Hub · homework for Muse
 
-Updated 2026-11-19 04:52 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-19 22:19 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -47,6 +47,57 @@ Updated 2026-11-19 04:52 UTC · 1 open · Rules for every pillar: https://github
 **How many:** 23
 
 **Done when:** A check3 file for each of the 23 redo files, each with a score and ACCEPT/REJECT; then one line per file in forge-completions.json (edit the original), key HUB-MUS-03.
+
+**How Claude checks it:**
+- Claude re-checks 3 still-wrong or differ lines per file before building on an ACCEPT.
+
+**Not done (sent back) if:**
+- a file with fewer checked rows than asked
+- a differ or still-wrong line without where you looked
+- a check of a file you wrote yourself
+- a file saved anywhere but the folder named here, or under another name
+
+## 2. HUB-MUS-04 · Eight pillars: second reader on Gemini 4 Neon's 2026-11-19 run (16 files, 20% of rows)
+
+**Due:** 2026-11-24 · **State:** now
+
+**Why:** Claude built Gemini's Nov 19 run into eight pillars after running the code and recomputing what can be recomputed, but Claude's container cannot open the cited pages. A human-grade second read of the sources is still owed.
+
+**What it unlocks:** Each file you ACCEPT stays as built; each row you mark 'differ' is fixed in the pillar the same day, and Gemini's score is revised.
+
+**Read first:**
+- The 16 files stamped _20261119-* in 'Prometheus Hub/incoming (AI drop files)', 'Hephaestus Hearth/incoming' and 'Kairos Meridian/incoming' (names in collaborators/CONTRIBUTOR_SCORES.md rows #8-#25 of jpavia10/prometheus-hub).
+- Skip the code files (suntimes .js, check-delivery zip, rrule tests): Claude ran them.
+
+**Do this:**
+1. For each data file pick every fifth row (n = 1, 6, 11, ...) and open the URL it cites. Is the value (and the quote, word for word) on that page today? agree, or what the page says instead.
+2. Also check the four things Claude flagged: Polis row 27's code edition, the 1095-B quote's year, the two bare list-price quotes in the GTA VI file, and Hearth design-loads rows 4-5's home-page URLs: is there a deeper page that states the value?
+3. Give each file a score out of 10 with one line why, and ACCEPT or REJECT.
+
+**Make:** `{pillar}_muse_{dataset}-check_{YYYYMMDD-HHMM}.md (one per Gemini file)`
+
+**Save in:** the same incoming folder as Gemini's file
+
+**Shape:** `heading with Gemini's file name and your score and ACCEPT/REJECT; then a markdown table: row | Gemini says | what I found | URL or file:line | fixed / still wrong / agree / differ`
+
+**Every field, exactly:**
+- `fixed / still wrong / agree / differ` (one of the four): anything but agree or fixed needs what you found and where
+- `score` (0-10 and ACCEPT or REJECT): ACCEPT only when no row you checked is still wrong on a fact a pillar would show
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| R4 | 'Form 1040: keep 7 years' | IRS Pub 583 table: 3 years, 7 years only for bad-debt or worthless-securities claims | https://www.irs.gov/publications/p583 | still wrong |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row you marked wrong last time has a fixed / still wrong line.
+- [ ] Every differ or still-wrong line says where you looked.
+- [ ] 23 files, one check file each, or a line in your report naming any Gemini file you could not open.
+
+**How many:** 23
+
+**Done when:** 16 check files, every fifth row opened, each with a score and ACCEPT/REJECT.
 
 **How Claude checks it:**
 - Claude re-checks 3 still-wrong or differ lines per file before building on an ACCEPT.

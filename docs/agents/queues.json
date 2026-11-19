@@ -745,6 +745,58 @@
       "a check of a file you wrote yourself",
       "a file saved anywhere but the folder named here, or under another name"
      ]
+    },
+    {
+     "id": "HUB-MUS-04",
+     "title": "Eight pillars: second reader on Gemini 4 Neon's 2026-11-19 run (16 files, 20% of rows)",
+     "state": "now",
+     "due": "2026-11-24",
+     "why": "Claude built Gemini's Nov 19 run into eight pillars after running the code and recomputing what can be recomputed, but Claude's container cannot open the cited pages. A human-grade second read of the sources is still owed.",
+     "unlocks": "Each file you ACCEPT stays as built; each row you mark 'differ' is fixed in the pillar the same day, and Gemini's score is revised.",
+     "inputs": [
+      "The 16 files stamped _20261119-* in 'Prometheus Hub/incoming (AI drop files)', 'Hephaestus Hearth/incoming' and 'Kairos Meridian/incoming' (names in collaborators/CONTRIBUTOR_SCORES.md rows #8-#25 of jpavia10/prometheus-hub).",
+      "Skip the code files (suntimes .js, check-delivery zip, rrule tests): Claude ran them."
+     ],
+     "steps": [
+      "For each data file pick every fifth row (n = 1, 6, 11, ...) and open the URL it cites. Is the value (and the quote, word for word) on that page today? agree, or what the page says instead.",
+      "Also check the four things Claude flagged: Polis row 27's code edition, the 1095-B quote's year, the two bare list-price quotes in the GTA VI file, and Hearth design-loads rows 4-5's home-page URLs: is there a deeper page that states the value?",
+      "Give each file a score out of 10 with one line why, and ACCEPT or REJECT."
+     ],
+     "deliver": {
+      "file": "{pillar}_muse_{dataset}-check_{YYYYMMDD-HHMM}.md (one per Gemini file)",
+      "folder": "the same incoming folder as Gemini's file",
+      "shape": "heading with Gemini's file name and your score and ACCEPT/REJECT; then a markdown table: row | Gemini says | what I found | URL or file:line | fixed / still wrong / agree / differ"
+     },
+     "fields": [
+      {
+       "name": "fixed / still wrong / agree / differ",
+       "type": "one of the four",
+       "rule": "anything but agree or fixed needs what you found and where"
+      },
+      {
+       "name": "score",
+       "type": "0-10 and ACCEPT or REJECT",
+       "rule": "ACCEPT only when no row you checked is still wrong on a fact a pillar would show"
+      }
+     ],
+     "example": "| R4 | 'Form 1040: keep 7 years' | IRS Pub 583 table: 3 years, 7 years only for bad-debt or worthless-securities claims | https://www.irs.gov/publications/p583 | still wrong |",
+     "self_check": [
+      "Every row you marked wrong last time has a fixed / still wrong line.",
+      "Every differ or still-wrong line says where you looked.",
+      "23 files, one check file each, or a line in your report naming any Gemini file you could not open."
+     ],
+     "count": 23,
+     "done_when": "16 check files, every fifth row opened, each with a score and ACCEPT/REJECT.",
+     "checks": [
+      "Claude re-checks 3 still-wrong or differ lines per file before building on an ACCEPT."
+     ],
+     "rejected_if": [
+      "a file with fewer checked rows than asked",
+      "a differ or still-wrong line without where you looked",
+      "a check of a file you wrote yourself",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "added": "2026-11-19"
     }
    ]
   },

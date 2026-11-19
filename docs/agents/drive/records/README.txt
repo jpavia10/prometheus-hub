@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 1 open in this pillar.
 
 
 - REC-GRK-03 · Records: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,40 +16,38 @@ Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-19 04:52 UTC · 3 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 2 open in this pillar.
 
 
 - REC-GEM-04 · Records: how long to keep each kind of household paper · due 2026-11-20 · DELIVERED 2026-11-18, waiting for its check (do not redo)
     make: records_gemini_retention_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 rows exactly in the shape, every self-check line true.
 - REC-GEM-05 · Records: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
     make: records_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
-- REC-GEM-06 · Records: the tax-year 2026 paperwork checklist: every form a W-2 homeowner may get, when it must arrive, and which 1040 / CA 540 line it feeds · due 2026-11-28
-    make: records_gemini_tax-forms_{YYYYMMDD-HHMM}.json · how many: 21 · done when: 21 rows, every date and line on the cited instructions.
 
 ## Muse
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Records · Paper Killer right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Records · Paper Killer right now.
 
 ## Argon
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Records · Paper Killer right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Records · Paper Killer right now.

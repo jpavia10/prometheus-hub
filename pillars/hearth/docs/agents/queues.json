@@ -618,7 +618,7 @@
     {
      "id": "HEA-GEM-19",
      "title": "Hearth: is re-decking on the existing frame an ordinary repair in Kern County, or does it need a permit?",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-25",
      "why": "Hearth's permit check (2026-11-19) shows a new or rebuilt 23 x 10 ft second-floor deck needs a permit, but Joseph's job is a refurbish: new boards, flashing and joist repair on the existing frame. Whether that is an 'ordinary repair' (no permit) decides whether he must apply before the demo-and-repair stage.",
      "unlocks": "The permit check answers his actual job instead of saying 'ask the county'.",
@@ -653,10 +653,12 @@
       "a quote that is not on the page it cites, or a quote that names the topic but does not state the rule (the Nov 17 habit: one generic FAQ sentence carrying four different rules)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' and name the page you checked)"
-     ]
+     ],
+     "review": "Done 2026-11-19: Hearth 'Re-decking and the permit'. Question (a) honestly 'not stated'. Row 3's quote is 461 characters (keep quotes under 300). Score 9/10 (#11).",
+     "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Hearth will not clear a renovation phase until every material has a price (Phase-Gate rule), and 13 of 13 materials have none; 9 have no quantity. This is the shopping list for the deck job.",
      "unlocks": "Hearth's phase gates P1 and P3 can clear, and the planned-vs-actual cost panel gets real numbers.",
@@ -782,10 +784,12 @@
       "checked": "2026-11-20",
       "qty_needed": 3,
       "qty_math": "19 joists x 21 courses x 2 = 798 x 1.1 = 878 screws / 350 per box = 2.5 -> 3 boxes"
-     }
+     },
+     "review": "Done 2026-11-19: Hearth's 'Shelf prices near the cabin' (deck-research.js). Board count checked (21 x 2 = 42). Minor: screws priced per screw but qty_needed counts boxes. Score 9/10 (#9).",
+     "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "The deck is a second-floor deck at about 4,600 ft in the mountains. Joist size and footing depth depend on the snow load and frost depth the county requires there, and Hearth does not know them.",
      "unlocks": "Hearth's permit check and spec library can say which joist span table row and footing depth apply to this deck, instead of the generic minimums.",
@@ -878,10 +882,12 @@
       "source": "...",
       "url": "https://...",
       "quote": "..."
-     }
+     },
+     "review": "Done 2026-11-19: Hearth 'Design loads at the cabin'. Strong find: Kern's 30 psf snow table vs ASCE 7-22. Rows 4-5 cite a site home page (checker: URL path '/'). Score 9/10 (#12).",
+     "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "The deck job is paint, prime and caulk outdoors at 4,600 ft in late autumn. Each product has a minimum temperature and a recoat/rain-free time; get it wrong and the coat fails. Hearth has no product data.",
      "unlocks": "Hearth can say 'paint day: yes/no' from Aether's forecast against the product's own limits.",
@@ -998,7 +1004,9 @@
      ],
      "id": "HEA-GEM-22",
      "title": "Hearth: when the primer, paint and caulk can go on: temperature, humidity, recoat and cure from the makers' data sheets",
-     "due": "2026-11-27"
+     "due": "2026-11-27",
+     "review": "Done 2026-11-19: Hearth 'When each product can go on', 10 makers' limits from their data sheets. Score 10/10 (#16).",
+     "closed": "2026-11-19"
     }
    ]
   },

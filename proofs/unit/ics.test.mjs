@@ -58,5 +58,6 @@ test("text escapes, folding, alarms and unknown properties survive", () => {
   for (const e of a.events) assert.deepEqual(sameEvent(e, b.events.find((x) => x.uid === e.uid)), []);
   assert.deepEqual(occurrences(a.events[1], "2026-11-01", "2026-11-20").map((o) => [o.date, o.time, o.title]), [["2026-11-02", "09:00", "Standup"], ["2026-11-10", "10:00", "Standup (moved)"], ["2026-11-16", "09:00", "Standup"]]);
   assert.equal(ruleToICS({ freq: "MONTHLY", interval: 2, byday: [{ d: "FR", n: -1 }], count: 5 }), "FREQ=MONTHLY;INTERVAL=2;BYDAY=-1FR;COUNT=5");
-  assert.equal(parseRule("FREQ=YEARLY;BYWEEKNO=20", null).unsupported, true);
+  assert.equal(parseRule("FREQ=DAILY;BYHOUR=9,17", null).unsupported, true);                  // sub-daily parts stay flagged (BYWEEKNO is supported since the RFC file, rrule-rfc.test.mjs)
+  assert.equal(parseRule("FREQ=MONTHLY;BYWEEKNO=20", null).unsupported, true);
 });

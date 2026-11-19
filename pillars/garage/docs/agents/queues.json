@@ -418,7 +418,7 @@
      ]
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Garage logs services but cannot tell Joseph what oil, how much, what pressure or what torque. The manuals have it; nothing in Prometheus does.",
      "unlocks": "Every service Garage logs can show the right fluid, capacity and torque for that vehicle, and the tire-pressure check has the placard numbers.",
@@ -518,10 +518,12 @@
       "page": "6-30 (PDF 78)",
       "url": "https://...",
       "quote": "..."
-     }
+     },
+     "review": "Done 2026-11-19: Garage 'From the owner's manuals' (reference-data.js), 30 rows with printed and PDF page. Score 10/10 (#13).",
+     "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Recalls are in Garage; service bulletins are not. A bulletin is what the dealer fixes when you describe the symptom, so Joseph needs the symptom in plain words before a service visit.",
      "unlocks": "Garage shows 'known issues' per vehicle at each service with the bulletin number to quote to the dealer.",
@@ -539,7 +541,7 @@
       "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
       "shape": "JSON array, one object per bulletin, exactly the fields below"
      },
-     "count": 40,
+     "count": 0,
      "fields": [
       {
        "name": "n",
@@ -614,10 +616,12 @@
      "id": "GAR-GEM-09",
      "title": "Garage: every technical service bulletin NHTSA lists for the 2025 Sorento Hybrid and the 2021 MT-07",
      "due": "2026-11-27",
-     "count_note": "every bulletin NHTSA lists (40 is the expected ceiling, not a target)"
+     "count_note": "every bulletin NHTSA lists (40 is the expected ceiling, not a target)",
+     "review": "Done 2026-11-19: Garage 'Service bulletins', all 28 NHTSA communications plus the TOTAL row (0 for the MT-07). The task's count of 40 was Claude's placeholder ('however many NHTSA lists'); corrected to open. Score 10/10 (#17).",
+     "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Caltrans chain control R2 lets four-wheel/all-wheel-drive vehicles with snow tires on all four wheels skip chains. Whether the Sorento qualifies depends on its drive and its tires' marking (M+S or the 3PMSF mountain-snowflake symbol). Garage does not know either.",
      "unlocks": "Garage's chain-control card can say whether this car needs chains at R1/R2, and the tire record has the right size and ratings.",
@@ -695,10 +699,12 @@
      ],
      "id": "GAR-GEM-10",
      "title": "Garage: tires for the Grapevine: OE tire, size and load rating for both vehicles, and three winter-capable replacements for the Sorento",
-     "due": "2026-11-27"
+     "due": "2026-11-27",
+     "review": "Done 2026-11-19: Garage 'Tires and chain controls'. Score 10/10 (#18).",
+     "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Garage computes real MPG and cost per mile from Joseph's fill-ups but has nothing to compare to: not the EPA rating for his exact trim, not today's California price.",
      "unlocks": "Garage shows 'your MPG vs EPA' and prices a fill-up at this week's California average without typing it.",
@@ -735,7 +741,9 @@
      ],
      "id": "GAR-GEM-11",
      "title": "Garage: the official mileage baseline and the live California gas price, as API calls Garage can make",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "review": "Done 2026-11-19: Garage's 'Mileage baseline and gas price'. Claude re-fetched both EPA ids (exact) and checked CORS: fueleconomy.gov answers browsers (Access-Control-Allow-Origin: *), so the page's 'Check live' works. Score 8/10 (#19).",
+     "closed": "2026-11-19"
     }
    ]
   },

@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 1 open in this pillar.
 
 
 - PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,40 +16,38 @@ Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-19 04:52 UTC · 3 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 2 open in this pillar.
 
 
 - PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
     make: privacy_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 - PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
     make: privacy_gemini_registry_{YYYYMMDD-HHMM}.json · how many: 72 · done when: 72 rows, every 'yes' with its registry entry URL.
-- PRI-GEM-08 · Privacy: Google account settings that leak the most, each with the exact path to turn it off, from Google's own help pages · due 2026-11-27
-    make: privacy_gemini_google-settings_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 settings, each on its Google help page.
 
 ## Muse
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Privacy · CA DROP right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Privacy · CA DROP right now.
 
 ## Argon
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Privacy · CA DROP right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Privacy · CA DROP right now.

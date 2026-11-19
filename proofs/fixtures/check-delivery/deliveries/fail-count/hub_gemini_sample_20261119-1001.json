@@ -1,0 +1,10 @@
+[
+  {
+    "n": 1,
+    "title": "Single Row Only",
+    "score": 8,
+    "published": "2026-03-10",
+    "url": "https://example.org/docs/single-row",
+    "quote": "Valid quote under 300 characters."
+  }
+]

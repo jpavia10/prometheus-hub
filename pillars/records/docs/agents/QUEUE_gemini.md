@@ -2,7 +2,7 @@
 
 # Records · Paper Killer · homework for Gemini
 
-Updated 2026-11-19 04:52 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 22:19 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -140,59 +140,3 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 3. REC-GEM-06 · Records: the tax-year 2026 paperwork checklist: every form a W-2 homeowner may get, when it must arrive, and which 1040 / CA 540 line it feeds
-
-**Due:** 2026-11-28 · **State:** now
-
-**Why:** Records keeps paper and Kairos keeps dates, but nothing says which forms to expect for the 2026 return, by when, and where each number goes. That is the list Joseph needs in January.
-
-**What it unlocks:** Records shows a tax-season checklist that ticks off as each form arrives, and Kairos gets the furnish-by dates.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/records/retention.js
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/kairos/fixed-dates.js
-
-**Do this:**
-1. Forms: W-2, W-2G, 1099-INT, 1099-DIV, 1099-B, 1099-NEC, 1099-MISC, 1099-K, 1099-R, 1099-G (state refund and unemployment), 1099-SA, 1098 (mortgage interest), 1098-E, 1098-T, 1095-A, 1095-B, 1095-C, 5498, 5498-SA, SSA-1099, and the Kern County property tax bill (secured). 21 rows.
-2. For each: who sends it, the date it must be furnished to the recipient for tax year 2026 (the 2027 date, after weekend/holiday rules) from the IRS 2026 General Instructions for Certain Information Returns or the form's own instructions, and the exact line or schedule it feeds on the 2026 Form 1040 and on the 2026 California Form 540 (or 'none'), from the 2026 instructions (or the 2025 instructions if 2026 are not out yet: say which).
-3. Quote the instruction line that gives each furnish-by date.
-
-**Make:** `records_gemini_tax-forms_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of 21 objects, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `form` (text): 
-- `sender` (text): who sends it
-- `furnish_by` (date): YYYY-MM-DD in 2027
-- `feeds_1040` (text): line/schedule
-- `feeds_540` (text): line/schedule or 'none'
-- `instructions_year` (text): 2026 or 2025
-- `url` (URL): IRS / FTB instructions page or PDF
-- `quote` (text): the furnish-by line, word for word
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
-
-**How many:** 21
-
-**Done when:** 21 rows, every date and line on the cited instructions.
-
-**How Claude checks it:**
-- Claude opens 8 rows' instructions and recomputes every weekend/holiday roll.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a number that is not on its source and not shown as arithmetic
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)

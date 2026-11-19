@@ -1,0 +1,16 @@
+[
+  {
+    "n": 1,
+    "vehicle": "2025 Kia Sorento Hybrid",
+    "torque_nm": 350,
+    "verified_date": "2026-11-15",
+    "url": "https://www.kia.com/us/en/sorento-hybrid/specs"
+  },
+  {
+    "n": 2,
+    "vehicle": "2021 Yamaha MT-07",
+    "torque_nm": 67,
+    "verified_date": "2026-11-15",
+    "url": "https://www.yamahamotorsports.com/models/mt-07/specs"
+  }
+]

@@ -2,7 +2,7 @@
 
 # Aether · Atmospheric & Field Lab · homework for Gemini
 
-Updated 2026-11-19 04:52 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 22:19 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -118,108 +118,6 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 
 **How Claude checks it:**
 - Claude downloads the CSV and compares all 12 months.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a number that is not on its source and not shown as arithmetic
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 3. AET-GEM-07 · Aether: sunrise, sunset and twilight worked out on the phone (NOAA method), with 12 tests from the US Naval Observatory
-
-**Due:** 2026-11-27 · **State:** now
-
-**Why:** Aether gets sun times from the USNO API, so offline (or when the API is down) it has none. A mountain field lab needs dawn and dusk without signal.
-
-**What it unlocks:** Aether shows today's light schedule offline for any date and place, checked against USNO.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (feed 6: USNO rstt/oneday)
-- NOAA 'General Solar Position Calculations' (gml.noaa.gov) and the NOAA Solar Calculator page
-- https://aa.usno.navy.mil/data/api (USNO API documentation)
-
-**Do this:**
-1. Write one plain JavaScript file (no imports, no libraries, under 160 lines) that defines window.AETHER_SUN = { times(dateISO, lat, lon, tzOffsetHours) }. It returns { astroDawn, nauticalDawn, civilDawn, sunrise, noon, sunset, civilDusk, nauticalDusk, astroDusk } as local 'HH:MM' strings, null when the event does not happen that day. Use the NOAA equations (cite the document in a comment): solar declination, equation of time, hour angle for zenith 90.833, 96, 102 and 108 degrees.
-2. Make 12 test vectors for Frazier Park (34.8228, -118.9445) from the USNO API itself: https://aa.usno.navy.mil/api/rstt/oneday?date=YYYY-MM-DD&coords=34.8228,-118.9445&tz=-8 (tz -7 on daylight-time dates). Dates: 2026-12-21, 2027-01-15, 2027-02-15, 2027-03-14, 2027-03-20, 2027-04-15, 2027-06-21, 2027-08-15, 2027-09-23, 2027-10-15, 2027-11-07, 2027-12-21. Copy USNO's begin civil twilight, rise, upper transit, set and end civil twilight exactly as its JSON gives them, with the exact API URL per vector.
-3. Your times() must match every USNO value within 2 minutes. Run it yourself on the 12 vectors and include the result table (expected, got, difference in minutes) in the test file's 'run' field.
-
-**Make:** `aether_gemini_suntimes_{YYYYMMDD-HHMM}.js + aether_gemini_suntimes-tests_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `the .js file and a JSON object {vectors: [12 x {date, tz, url, usno: {civilDawn, sunrise, noon, sunset, civilDusk}}], run: [12 x {date, field, expected, got, diff_min}]}`
-
-**Before you save, check every one of these yourself:**
-- [ ] The .js file runs in a browser with nothing else loaded and defines window.AETHER_SUN.
-- [ ] Every USNO value is copied from the API response at the URL given.
-- [ ] Every difference in 'run' is 2 minutes or less.
-
-**How many:** 12
-
-**Done when:** Claude runs times() on all 12 vectors and every value is within 2 minutes of USNO.
-
-**How Claude checks it:**
-- Claude runs the file in Node with the 12 vectors.
-- Claude opens 3 of the USNO URLs and compares.
-
-**Not done (sent back) if:**
-- any value more than 2 minutes from USNO
-- a library, import or network call in the .js file
-- a USNO value that is not what its URL returns
-- files saved anywhere but the folder named here
-
-## 4. AET-GEM-09 · Aether: the 12 public weather and air sensors nearest Frazier Park, each with the exact call that returns its latest reading
-
-**Due:** 2026-11-27 · **State:** now
-
-**Why:** Aether reads a few regional feeds; a reading from a station 40 miles away and 3,000 ft lower is wrong for a mountain town. Aether needs the nearest real stations and how to ask each one.
-
-**What it unlocks:** Aether shows the nearest station's reading, its distance and elevation, and falls back to the next one when a station is offline.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (the feeds table)
-- https://api.weather.gov (NWS API: /points, /stations/{id}/observations/latest)
-
-**Do this:**
-1. Within 30 miles of Frazier Park (34.8228, -118.9445): NWS/FAA observing stations (from api.weather.gov /points/{lat},{lon}/stations), RAWS fire-weather stations (from the WRCC/MesoWest station pages), and AirNow / EPA air monitors. 12 in all, nearest first, at least 6 NWS.
-2. For each: station id, name, network, latitude, longitude, elevation (ft), distance (mi, great-circle from the coordinates above), what it measures, the exact request URL that returns its latest reading (no key, or say which key), and the latest observation time the call returned when you ran it.
-3. Say for each whether a browser on jpavia10.github.io can call it directly (CORS), tested from a browser console.
-
-**Make:** `aether_gemini_stations_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of 12 objects, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): nearest first
-- `id` (text): 
-- `name` (text): 
-- `network` (text): NWS / RAWS / AirNow / other
-- `lat` (number): 
-- `lon` (number): 
-- `elev_ft` (number): 
-- `dist_mi` (number): 1 decimal
-- `measures` (text): 
-- `latest_url` (URL): the request that returns the latest reading
-- `observed` (text): timestamp the call returned
-- `cors` (text): yes / no / not tested
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
-
-**How many:** 12
-
-**Done when:** 12 stations within 30 miles, each latest_url returning a reading.
-
-**How Claude checks it:**
-- Claude calls 6 latest_url requests and recomputes 4 distances.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field

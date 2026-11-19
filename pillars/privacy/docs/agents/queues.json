@@ -411,10 +411,11 @@
      ],
      "id": "PRI-GEM-07",
      "title": "Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them",
-     "due": "2026-11-27"
+     "due": "2026-11-27",
+     "review": "Blocked 2026-11-19: Gemini could not open brokers-data.js on GitHub. Claude put the 72 names in Drive as privacy_INPUT_broker-names_20261119.txt in the Prometheus Hub incoming folder; use that file."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Brokers are half of Joseph's footprint; his own Google account is the other half (location history, web activity, ad profile, public profile). Privacy has nothing on it.",
      "unlocks": "Privacy's footprint checklist gets a Google section Joseph can work through on his phone, one tap per setting.",
@@ -500,7 +501,9 @@
      ],
      "id": "PRI-GEM-08",
      "title": "Privacy: Google account settings that leak the most, each with the exact path to turn it off, from Google's own help pages",
-     "due": "2026-11-27"
+     "due": "2026-11-27",
+     "review": "Done 2026-11-19: Privacy 'Google, setting by setting', 25 rows from support.google.com. Score 10/10 (#20).",
+     "closed": "2026-11-19"
     }
    ]
   },

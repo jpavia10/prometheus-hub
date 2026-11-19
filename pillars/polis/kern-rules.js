@@ -3,7 +3,8 @@
    every first-read defect fixed, incl. the invented abatement rule). Left out at integration: rows 9, 17, 22, 23, 24, 25
    (9: duplicate of row 19 and vaguer (second read: quote punctuation off); 17: label-style quote, not verified; 22: quote does not state the rule; 23: quote does not state the rule; 24: quote does not state the rule; 25: quote does not state the rule). Every quote is the source's own words; the rule is the plain reading.
    Gemini's later 20261118-1940 version rewrites ten rows; it is with Muse's check (HUB-MUS-03) and lands only if it passes.
-   window.POLIS_KERN_RULES. */
+   window.POLIS_KERN_RULES.
+   Rows 26-30 (2026-11-19): POL-GEM-06, Gemini 4 Neon polis_gemini_kern-rules-five_20261119-0914.json (ADUs, Class A re-roofing, electrical/plumbing permits, encroachment notice, grading); row 27 cites the 2022 California Building Code, superseded by the 2025 edition on 2026-01-01 (the Chapter 7A rule it states carries over; flagged in the score). */
 window.POLIS_KERN_RULES = [
  {
   "n": 1,
@@ -157,5 +158,45 @@ window.POLIS_KERN_RULES = [
   "url": "https://codes.iccsafe.org/s/CRC2019P3/chapter-1-scope-and-application/CRC2019P3-Pt01-Ch01-SubCh02-SecR105.2",
   "quote": "Prefabricated swimming pools that are less than 24 inches (610 mm) deep.",
   "note": "The cited CRC text is item 7 (pools under 24 inches deep); the Group R-3 / walls-above-ground conditions come from the CBC version and are not on the cited page (second read, 2026-11-18)."
+ },
+ {
+  "n": 26,
+  "topic": "Accessory Dwelling Units (ADUs) in Unincorporated Kern County",
+  "rule": "Generally, only one detached ADU is allowed per parcel in unincorporated Kern County. Pre-approved ADU plans are available pursuant to California Government Code Section 65852.27, though additional site-specific documents (Site Plan, Will Serve letter, or Septic Plans) must still be reviewed before permit issuance.",
+  "code_section": "California Government Code Section 65852.27; Kern County Public Works Building Inspection (Pre-Approved ADU Program)",
+  "url": "https://www.kernpublicworks.com/services/development/building-inspection/pre-approved-accessory-dwelling-units",
+  "quote": "Generally, only one detached ADU is allowed per parcel. For further information regarding your parcel's zoning and what can be built, please contact Kern County Planning and Natural Resources at 661-862-5263."
+ },
+ {
+  "n": 27,
+  "topic": "Re-Roofing and Class A Roof Requirement in Fire Hazard Severity Zones (VHFHSZ)",
+  "rule": "In Fire Hazard Severity Zones (including Very High Fire Hazard Severity Zones), roof assemblies must meet a Class A fire classification (tested per ASTM E108 or UL 790). When more than 50 percent of the total roof area of an existing structure is replaced within any 1-year period—or for any roof covering applied in alteration, repair, or replacement—the roof covering must be a fire-retardant roof covering meeting a Class A fire classification. Kern County Public Works also requires a building permit for re-roofs.",
+  "code_section": "California Building Code (Title 24, Part 2), Chapter 7A, Section 705A.1",
+  "url": "https://codes.iccsafe.org/content/CABC2022P4/chapter-7a-sfm-materials-and-construction-methods-for-exterior-wildfire-exposure",
+  "quote": "The entire roof covering of every existing structure where more than 50 percent of the total roof area is replaced within any 1-year period; the entire roof covering of every new structure; and any roof covering applied in the alteration, repair, or replacement of the roof of every existing structure shall be a fire-retardant roof covering that meets a Class A fire classification."
+ },
+ {
+  "n": 28,
+  "topic": "Electrical and Plumbing Alterations & Repairs Permits",
+  "rule": "A building permit from Kern County Public Works is required for construction that physically changes or adds structures or for work regulated by local codes or ordinances, including replacement of water heaters or other plumbing fixtures, air conditioning units, new electrical service, and rewiring.",
+  "code_section": "Kern County Public Works Building Inspection Permit Requirements (Kern County Code of Building Regulations, Title 17)",
+  "url": "https://www.kernpublicworks.com/services/development",
+  "quote": "A building permit is required for any construction which physically changes or adds structures to your property or for work regulated by local Codes or Ordinances, such as:\nNew Buildings\nAdditions-Room additions, patio covers, swimming pools, etc.\nAlterations-Re-roofs, garage conversions, exterior stucco, new\nRepairs-Replacement of water heaters or other plumbing fixtures, air conditioning units, new electrical service, and rewiring, etc."
+ },
+ {
+  "n": 29,
+  "topic": "Encroachment Permits for Work in County Road Right-of-Way",
+  "rule": "Kern County requires an encroachment permit prior to performing any work within the County road right-of-way (including fences, curb and gutter, sidewalks, drive approaches, and subsurface utilities), and the permit office must be notified 48 hours prior to starting work (allow 5 to 10 business days for processing).",
+  "code_section": "Kern County Public Works Transportation Division – Road & Encroachment Permits",
+  "url": "https://www.kernpublicworks.com/services/transportation/road-permits",
+  "quote": "Kern County requires a permit for all work performed in the County right of way. The permit office must be notified 48 hours prior to the start of any work."
+ },
+ {
+  "n": 30,
+  "topic": "Grading Permits and Volume Threshold",
+  "rule": "No person may perform grading without first obtaining a grading permit from the building official unless exempted under Section 17.28.040. A fill is exempt if it does not exceed 50 cubic yards on any one site and is either (a) less than 1 foot deep on natural terrain flatter than 5:1 slope or (b) less than 3 feet deep and not intended to support structures; fills above 50 cubic yards require a grading permit, and grading in excess of 2,000 cubic yards is designated engineered grading (Section 17.28.070(C)).",
+  "code_section": "Kern County Ordinance Code Title 17, Chapter 17.28, Sections 17.28.040(B)(9) and 17.28.070(A), (C)",
+  "url": "https://itsapps.kerncounty.com/clerk/minutes/granicus/2410311/2410332/2410334/2410389/2410578/Code%20of%20Building%20Regs-Complete%20PDF2410578.pdf",
+  "quote": "A fill which does not exceed fifty (50) cubic yards on any one site which is: (a) less than one (1) foot in depth and placed on natural terrain with a slope flatter than five (5) units horizontal to one (1) unit vertical, or (b) less than three (3) feet in depth and not intended to support structures;"
  }
 ];

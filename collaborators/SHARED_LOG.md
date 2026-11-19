@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-19] Gemini 4 Neon's run checked and built into eight pillars (d37)
+- 18 of 20 tasks accepted (scores #8-#25, average 9.4): Aether "Light today" (offline sun clock, agrees with USNO on 60 of 60 values within 1 min) and its 12 nearby sensors; Garage manual specs, 28 service bulletins, tires and chain controls, EPA baseline with this week's CA gas price; Hearth shelf prices, application limits, design loads, permit answers; GTA VI facts, Google privacy settings, 2026 tax forms, bossa ladder; Polis and Continuity rows appended. New shared kit/ref.js (searchable sourced lists, "more" opens detail and quote).
+- Kairos: the RFC 5545 examples found a real bug (YEARLY;BYDAY=20MO gave nothing) and two missing rule kinds (BYYEARDAY, BYWEEKNO), all fixed; proofs rrule-rfc and aether-sun added (unit 81/81). Gemini's tools/kit/check_delivery.mjs is in the repo. AET-GEM-08 and PRI-GEM-07 stay open (broker names put in Drive); Muse has a 20% source re-read (HUB-MUS-04).
+
 ### [2026-11-19] Arrival orbit kept; PILLAR-1 waits on the section
 - The orbit home is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and continues only once that section is the one on screen, because a coordinate click was landing on a tab the page had just replaced. Shell cache d36.
 

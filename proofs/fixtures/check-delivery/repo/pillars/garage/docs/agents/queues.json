@@ -1,0 +1,50 @@
+{
+  "about": "Fixture garage pillar queue for check_delivery unit proofs",
+  "updated": "2026-11-19",
+  "pillar": "garage",
+  "agents": [
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "tasks": [
+        {
+          "id": "GAR-TST-01",
+          "title": "Garage vehicle specs",
+          "deliver": {
+            "file": "garage_gemini_specs_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+            "shape": "JSON array"
+          },
+          "count": 2,
+          "fields": [
+            {
+              "name": "n",
+              "type": "integer",
+              "rule": "row"
+            },
+            {
+              "name": "vehicle",
+              "type": "text",
+              "rule": "vehicle name"
+            },
+            {
+              "name": "torque_nm",
+              "type": "number",
+              "rule": "torque value"
+            },
+            {
+              "name": "verified_date",
+              "type": "date",
+              "rule": "verification date"
+            },
+            {
+              "name": "url",
+              "type": "URL",
+              "rule": "spec sheet URL"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

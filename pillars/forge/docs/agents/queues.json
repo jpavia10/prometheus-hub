@@ -167,7 +167,7 @@
      ]
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Most rejected deliveries fail on things a script can see: wrong name, wrong count, a missing field, a home-page URL, a duplicate row. Today Claude finds them by hand after the fact.",
      "unlocks": "Every AI can run one command on its file before saving, and the Forge can mark a delivery 'shape OK' the moment it lands.",
@@ -204,7 +204,9 @@
      ],
      "id": "FOR-GEM-04",
      "title": "Forge: a checker that tells an AI (and Claude) whether a homework file matches its task before it is saved",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "review": "Done 2026-11-19: tools/kit/check_delivery.mjs + 12 tests (pass) in the repo; run on 16 real deliveries the same day it caught 9 real issues (long quotes, a home-page URL, two placeholder counts). Score 10/10 (#25).",
+     "closed": "2026-11-19"
     }
    ]
   },

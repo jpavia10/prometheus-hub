@@ -510,7 +510,7 @@
      ]
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Kairos imports and exports recurring events (RRULE) but has no test that its recurrences land on the right days. RFC 5545 section 3.8.5.3 lists about 40 worked examples with their answers: turned into data, they are the test.",
      "unlocks": "A Kairos proof that runs every RFC example through its recurrence code, so a recurring bill or custody day is never off by one.",
@@ -528,7 +528,7 @@
       "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
       "shape": "JSON array, one object per RFC example, exactly the fields below"
      },
-     "count": 40,
+     "count": 0,
      "fields": [
       {
        "name": "n",
@@ -588,7 +588,9 @@
      "id": "KAI-GEM-12",
      "title": "Kairos: RFC 5545's own recurrence examples as test cases, every occurrence written out",
      "due": "2026-11-28",
-     "count_note": "every example in RFC 5545 section 3.8.5.3 (about 40)"
+     "count_note": "every example in RFC 5545 section 3.8.5.3 (about 40)",
+     "review": "Done 2026-11-19: proofs/unit/rrule-rfc.test.mjs runs all 39 examples. The file exposed a real Kairos bug (YEARLY;BYDAY=20MO gave no dates) and two missing rule kinds (BYYEARDAY, BYWEEKNO), all fixed. Missing: the RFC's second ('or') forms of examples 5, 9 and 36 (Claude added two). Count 40 was 'about 40'; corrected. Score 9/10 (#22).",
+     "closed": "2026-11-19"
     }
    ]
   },

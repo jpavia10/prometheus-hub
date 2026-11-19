@@ -1,0 +1,87 @@
+{
+  "about": "Fixture root queue for check_delivery unit proofs",
+  "updated": "2026-11-19",
+  "pillar": "hub",
+  "agents": [
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "tasks": [
+        {
+          "id": "HUB-TST-01",
+          "title": "Sample structured JSON task",
+          "deliver": {
+            "file": "hub_gemini_sample_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row"
+          },
+          "count": 2,
+          "fields": [
+            {
+              "name": "n",
+              "type": "integer",
+              "rule": "row number"
+            },
+            {
+              "name": "title",
+              "type": "text",
+              "rule": "short title"
+            },
+            {
+              "name": "score",
+              "type": "number",
+              "rule": "decimal score"
+            },
+            {
+              "name": "published",
+              "type": "date YYYY-MM-DD",
+              "rule": "publication date"
+            },
+            {
+              "name": "url",
+              "type": "URL",
+              "rule": "canonical page URL"
+            },
+            {
+              "name": "quote",
+              "type": "text",
+              "rule": "excerpt <= 300 chars"
+            }
+          ]
+        },
+        {
+          "id": "HUB-TST-02",
+          "title": "Open count JSON task",
+          "deliver": {
+            "file": "hub_gemini_open_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+            "shape": "JSON array"
+          },
+          "count": 0,
+          "fields": [
+            {
+              "name": "n",
+              "type": "integer",
+              "rule": "row"
+            },
+            {
+              "name": "item",
+              "type": "text",
+              "rule": "item name"
+            }
+          ]
+        },
+        {
+          "id": "HUB-TST-03",
+          "title": "Markdown notes task",
+          "deliver": {
+            "file": "hub_gemini_notes_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+            "shape": "Markdown document with headings: ## Summary, ## Findings, ## Sources"
+          },
+          "count": 0
+        }
+      ]
+    }
+  ]
+}

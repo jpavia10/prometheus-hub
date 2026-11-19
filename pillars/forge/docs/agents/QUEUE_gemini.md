@@ -2,7 +2,7 @@
 
 # Forge · homework for Gemini
 
-Updated 2026-11-19 04:52 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 22:19 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -70,44 +70,3 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. FOR-GEM-04 · Forge: a checker that tells an AI (and Claude) whether a homework file matches its task before it is saved
-
-**Due:** 2026-11-28 · **State:** now
-
-**Why:** Most rejected deliveries fail on things a script can see: wrong name, wrong count, a missing field, a home-page URL, a duplicate row. Today Claude finds them by hand after the fact.
-
-**What it unlocks:** Every AI can run one command on its file before saving, and the Forge can mark a delivery 'shape OK' the moment it lands.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/queues.json and https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/garage/docs/agents/queues.json (the task shape: deliver.file, count, fields)
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/proofs/unit/ (how the unit proofs are written: node --test)
-
-**Do this:**
-1. Write tools/kit/check_delivery.mjs (Node 20, no dependencies). Usage: node tools/kit/check_delivery.mjs <file> [<task id>]. With no id, find the task whose deliver.file pattern matches the file name ({YYYYMMDD-HHMM} = 8 digits, dash, 4 digits) across docs/agents/queues.json and pillars/*/docs/agents/queues.json.
-2. Checks, each printed as PASS or FAIL with the reason: (1) the file name matches the pattern; (2) a .json file parses; (3) the array length equals count when count > 0; (4) every object has exactly the field names in fields, no more, no fewer; (5) type checks: integer, number, date (YYYY-MM-DD), URL (https, has a path other than '/', not a search page: no 'search', 'q=' or 's=' query); (6) no two rows are equal after lower-casing and trimming every text field except n; (7) any field named quote is 300 characters or fewer; (8) for .md files, every heading the task's shape names is present. Exit code 1 if any check fails.
-3. Write proofs/unit/check-delivery.test.mjs with 12 cases (6 that pass, 6 that each fail one named check) and their fixture files under proofs/fixtures/check-delivery/. Run node --test yourself and paste the output into a comment at the top of the test file.
-
-**Make:** `forge_gemini_check-delivery_{YYYYMMDD-HHMM}.zip (or the three paths as separate files with the same stamp)`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `tools/kit/check_delivery.mjs, proofs/unit/check-delivery.test.mjs, proofs/fixtures/check-delivery/*`
-
-**Before you save, check every one of these yourself:**
-- [ ] node --test proofs/unit/check-delivery.test.mjs passes on a clean checkout of the repo with your files added.
-- [ ] The script has no dependencies and reads only the repo and the given file.
-- [ ] Running it on garage_gemini_specs (any real delivery) gives a sensible result.
-
-**How many:** 12
-
-**Done when:** Claude adds the files to a checkout and node --test passes 12 of 12, and the checker gives the right verdict on 3 real deliveries from Drive.
-
-**How Claude checks it:**
-- Claude runs the tests and the script on 3 real deliveries.
-
-**Not done (sent back) if:**
-- a test that passes because it checks nothing
-- a dependency or network call
-- fewer than 12 cases
-- files saved anywhere but the folder named here

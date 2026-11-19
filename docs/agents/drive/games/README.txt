@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 1 open in this pillar.
 
 
 - GAM-GRK-02 · Ludus Arcade: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,38 +16,36 @@ Updated 2026-11-19 04:52 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-19 04:52 UTC · 2 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 1 open in this pillar.
 
 
 - GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
     make: games_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
-- GAM-GEM-04 · Ludus Arcade: Grand Theft Auto VI at launch, the official facts only (Rockstar and the console stores) · due 2026-11-24
-    make: games_gemini_gta6-facts_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 facts, each quoted from Rockstar or a console store page.
 
 ## Muse
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Ludus Arcade right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Ludus Arcade right now.
 
 ## Argon
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Ludus Arcade right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 04:52 UTC · 0 open in this pillar.
+Updated 2026-11-19 22:19 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Ludus Arcade right now.

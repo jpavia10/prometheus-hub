@@ -1,0 +1,18 @@
+[
+  {
+    "n": 1,
+    "title": "Bad Search URL Row",
+    "score": 8,
+    "published": "2026-03-10",
+    "url": "https://example.org/catalog?q=brake+pads",
+    "quote": "Valid quote one."
+  },
+  {
+    "n": 2,
+    "title": "Bad Date Row",
+    "score": 7.5,
+    "published": "2026-02-30",
+    "url": "https://example.org/docs/row-two",
+    "quote": "Valid quote two."
+  }
+]

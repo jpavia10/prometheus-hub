@@ -1,0 +1,18 @@
+[
+  {
+    "n": 1,
+    "title": "Battery Longevity Research Paper",
+    "score": 9.8,
+    "published": "2026-05-01",
+    "url": "https://example.org/research/battery-longevity-2026",
+    "quote": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  },
+  {
+    "n": 2,
+    "title": "Hybrid Thermal Management Note",
+    "score": 8.2,
+    "published": "2026-06-15",
+    "url": "https://example.org/engineering/thermal-study",
+    "quote": "Short valid excerpt."
+  }
+]

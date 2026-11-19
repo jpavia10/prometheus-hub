@@ -286,7 +286,7 @@
     {
      "id": "POL-GEM-06",
      "title": "Polis: the five Kern rules left out, each with the county's own words",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-26",
      "why": "Five rows of the accepted Polis list were left out on 2026-11-19 because their quote did not state their rule: ADUs, re-roofing, electrical and plumbing permits, encroachment permits, grading permits. They are the rules Joseph is most likely to hit on the house.",
      "unlocks": "Polis's Kern County Rules tab gains the five rules, each one he can act on with the section to read.",
@@ -323,7 +323,9 @@
       "a quote that is not on the page it cites, or a quote that names the topic but does not state the rule (the Nov 17 habit: one generic FAQ sentence carrying four different rules)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' and name the page you checked)"
-     ]
+     ],
+     "review": "Done 2026-11-19: rows 26-30 of Polis's Kern rules. Row 27 cites the 2022 California Building Code; the 2025 edition has been in force since 2026-01-01 (the Chapter 7A rule carries over). Score 9/10 (#14).",
+     "closed": "2026-11-19"
     }
    ]
   },

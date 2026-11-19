@@ -2,7 +2,7 @@
 
 # Privacy · CA DROP · homework for Gemini
 
-Updated 2026-11-19 04:52 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 22:19 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -116,61 +116,6 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 
 **How Claude checks it:**
 - Claude opens 12 registry entries at random.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a number that is not on its source and not shown as arithmetic
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 3. PRI-GEM-08 · Privacy: Google account settings that leak the most, each with the exact path to turn it off, from Google's own help pages
-
-**Due:** 2026-11-27 · **State:** now
-
-**Why:** Brokers are half of Joseph's footprint; his own Google account is the other half (location history, web activity, ad profile, public profile). Privacy has nothing on it.
-
-**What it unlocks:** Privacy's footprint checklist gets a Google section Joseph can work through on his phone, one tap per setting.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/privacy/
-
-**Do this:**
-1. 25 settings across: Web & App Activity, Timeline / Location History, YouTube history, ad personalization (My Ad Center), auto-delete for each, third-party app access, Google Profile visibility (About me), Find My Device, Gmail smart features, Chrome sync, Android location accuracy, Google Photos face groups, Assistant / Gemini activity, shared endorsements, partner sign-ins.
-2. For each: what it collects (Google's words), the exact path on Android (Settings > Google > ...) and on myaccount.google.com, the safest setting, what breaks if turned off (Google's words where given), and the help page URL.
-3. Use only support.google.com and myaccount.google.com/policies.google.com pages.
-
-**Make:** `privacy_gemini_google-settings_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of 25 objects, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `setting` (text): 
-- `collects` (text): Google's words
-- `android_path` (text): 
-- `web_path` (text): 
-- `safest` (text): the value to set
-- `breaks` (text): what stops working, or 'nothing stated'
-- `url` (URL): the Google help page
-- `quote` (text): the help page's line that says what it collects, word for word
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
-
-**How many:** 25
-
-**Done when:** 25 settings, each on its Google help page.
-
-**How Claude checks it:**
-- Claude opens 8 help pages at random.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field

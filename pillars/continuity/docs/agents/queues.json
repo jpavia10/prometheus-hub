@@ -258,7 +258,7 @@
     {
      "id": "CON-GEM-05",
      "title": "Continuity: Capital One and the FDIC grace rule, cited to their own pages",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-26",
      "why": "The Nov 17 redo deleted Capital One and the FDIC six-month rule instead of citing them to the right page, so Continuity's account list lost a bank and the one federal rule that tells the family how long deposits stay insured after a death.",
      "unlocks": "Two more rows in Continuity's Accounts After Death tab, both sourced to the provider or regulator itself.",
@@ -293,7 +293,9 @@
       "a quote that is not on the page it cites, or a quote that names the topic but does not state the rule (the Nov 17 habit: one generic FAQ sentence carrying four different rules)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' and name the page you checked)"
-     ]
+     ],
+     "review": "Done 2026-11-19: rows 26-27 of Continuity's accounts after death (Capital One 360 POD/joint, FDIC six-month grace). Score 10/10 (#15).",
+     "closed": "2026-11-19"
     }
    ]
   },

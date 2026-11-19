@@ -1,0 +1,19 @@
+[
+  {
+    "n": 1,
+    "title": "Row One",
+    "score": 8,
+    "published": "2026-03-10",
+    "url": "https://example.org/docs/row-one",
+    "quote": "Valid quote one."
+  },
+  {
+    "n": 2,
+    "title": "Row Two",
+    "score": 7.5,
+    "published": "2026-03-11",
+    "url": "https://example.org/docs/row-two",
+    "quote": "Valid quote two.",
+    "extra_note": "unexpected field"
+  }
+]

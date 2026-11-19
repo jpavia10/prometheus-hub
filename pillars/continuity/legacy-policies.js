@@ -4,7 +4,8 @@
    At integration: Ally's 'equal-share' removed (not on its page); Amex flagged (page documents no Estate Services process);
    TikTok, Vanguard and Robinhood marked unchecked (the second read's page fetch was rate-limited). Gemini's later 20261118-1940
    version swaps LinkedIn and the Apple Activation Lock row for Instagram and X; it is with Muse's check (HUB-MUS-03).
-   window.CONTINUITY_POLICIES. Policies only: nothing here asks for or stores a password. */
+   window.CONTINUITY_POLICIES. Policies only: nothing here asks for or stores a password.
+   Rows 26-27 (2026-11-19): CON-GEM-05, Gemini 4 Neon continuity_gemini_legacy-two_20261119-0914.json (Capital One 360 Performance Savings POD/joint, FDIC six-month grace rule 12 CFR 330.3(j)). */
 window.CONTINUITY_POLICIES = [
  {
   "n": 1,
@@ -235,5 +236,23 @@ window.CONTINUITY_POLICIES = [
   "after_death": "Once Apple approves a Legacy Contact request or deceased-account deletion request with a death certificate, Activation Lock is automatically removed from the deceased owner's devices.",
   "url": "https://support.apple.com/en-us/102431",
   "quote": "After your Legacy Contact request or account deletion request is completed, Activation Lock is automatically removed."
+ },
+ {
+  "n": 26,
+  "service": "Capital One (360 Performance Savings)",
+  "feature": "Payable on Death (POD) Beneficiaries & Joint Right of Survivorship (360 Performance Savings)",
+  "set_up_now": "Sign in at capitalone.com, select your 360 Performance Savings account, and open Account Services & Settings > Manage Beneficiaries to designate up to 10 individual POD beneficiaries (valid Tax ID, date of birth, and U.S. or eligible territory physical address required), or hold the account jointly with right of survivorship.",
+  "after_death": "Notify Capital One promptly—until Capital One knows of the death and has a reasonable opportunity to act, it may continue accepting deposits and transaction instructions. On a joint account, funds belong only to the surviving owner (except certain retirement benefits like Social Security). Upon the death of all owners on a POD account, Capital One distributes the remaining funds in equal shares to living POD beneficiaries (or to a statutory or court-appointed custodian if a beneficiary is under 18), subject to any amounts owed to Capital One.",
+  "url": "https://www.capitalone.com/bank/disclosures/savings-accounts/online-performance-savings-account/",
+  "quote": "Upon the death of all owners, we will distribute the then remaining funds to such of the beneficiaries as shall be then-living, in equal shares, subject to our right to charge the account for any amount a deceased owner, co-owner, or POD beneficiary owes us; if any beneficiary is under the age of 18 years at the time he would be entitled to receive property under the terms of the previous provision, we will pay such person's share to any person who is the statutory or court-appointed custodian for the benefit of such person."
+ },
+ {
+  "n": 27,
+  "service": "FDIC (Federal Deposit Insurance Corporation)",
+  "feature": "Six-Month Deposit Insurance Grace Period After Death of an Account Owner (12 C.F.R. § 330.3(j))",
+  "set_up_now": "Review account titling, joint ownership, and POD/trust beneficiary designations across all FDIC-insured institutions so surviving family members know which balances could exceed $250,000 per single-ownership category if a co-owner dies.",
+  "after_death": "Survivors have a six-month grace period from the owner's death during which the FDIC insures the deceased owner's accounts as if still alive (unless accounts are restructured/retitled earlier or applying the grace period would reduce coverage). Before the six months expire, restructure or retitle accounts so balances remain within FDIC limits under the actual new ownership category; note that no grace period applies upon the death of a beneficiary.",
+  "url": "https://www.fdic.gov/financial-institution-employees-guide-deposit-insurance/death-account-owner",
+  "quote": "Upon the death of an accountholder, the FDIC will insure the deceased owner's accounts as if he or she were still alive for six months after his or her death. After the lapse of the six-month grace period, the deposit insurance coverage of the account will depend on the ownership category in which the accounts are now held."
  }
 ];

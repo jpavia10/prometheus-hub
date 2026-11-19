@@ -167,7 +167,7 @@
      ]
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "GTA VI launched on 2026-11-19. Joseph wants it in the Games pillar; launch week is full of rumours, so the pillar needs only what Rockstar and the platform stores say.",
      "unlocks": "A 'Now playing' card in Ludus Arcade with the facts that matter (editions, size, online date, known issues) and links.",
@@ -238,7 +238,9 @@
      ],
      "id": "GAM-GEM-04",
      "title": "Ludus Arcade: Grand Theft Auto VI at launch, the official facts only (Rockstar and the console stores)",
-     "due": "2026-11-24"
+     "due": "2026-11-24",
+     "review": "Done 2026-11-19: Games 'Grand Theft Auto VI, from Rockstar' (gta6-facts.js). Unstated items marked so. Minor: two price quotes are a bare list price with no product name. Score 9/10 (#10).",
+     "closed": "2026-11-19"
     }
    ]
   },

@@ -59,7 +59,7 @@ export function validZone(tz) { try { new Intl.DateTimeFormat("en-US", { timeZon
 
 /* ---- RRULE ---- */
 export function parseRule(value, tz) {
-  const r = {}; const known = new Set(["FREQ", "INTERVAL", "COUNT", "UNTIL", "BYDAY", "BYMONTHDAY", "BYMONTH", "BYSETPOS", "WKST"]); let odd = false;
+  const r = {}; const known = new Set(["FREQ", "INTERVAL", "COUNT", "UNTIL", "BYDAY", "BYMONTHDAY", "BYMONTH", "BYSETPOS", "WKST", "BYYEARDAY", "BYWEEKNO"]); let odd = false;
   for (const part of value.split(";")) {
     const k = part.indexOf("="); if (k < 0) continue; const key = part.slice(0, k).toUpperCase(), v = part.slice(k + 1);
     if (!known.has(key)) { odd = true; continue; }
@@ -74,6 +74,7 @@ export function parseRule(value, tz) {
     else r[key.toLowerCase()] = v.split(",").map(Number).filter((n) => !isNaN(n));
   }
   if (!["DAILY", "WEEKLY", "MONTHLY", "YEARLY"].includes(r.freq)) odd = true;
+  if ((r.byyearday || r.byweekno) && r.freq !== "YEARLY") odd = true;            // the engine expands these for yearly rules only
   r.src = value; if (odd) r.unsupported = true;
   return r;
 }
@@ -84,6 +85,8 @@ export function ruleToICS(r) {
   if (r.byday && r.byday.length) p.push("BYDAY=" + r.byday.map((b) => (b.n ? b.n : "") + b.d).join(","));
   if (r.bymonthday && r.bymonthday.length) p.push("BYMONTHDAY=" + r.bymonthday.join(","));
   if (r.bymonth && r.bymonth.length) p.push("BYMONTH=" + r.bymonth.join(","));
+  if (r.byyearday && r.byyearday.length) p.push("BYYEARDAY=" + r.byyearday.join(","));
+  if (r.byweekno && r.byweekno.length) p.push("BYWEEKNO=" + r.byweekno.join(","));
   if (r.bysetpos && r.bysetpos.length) p.push("BYSETPOS=" + r.bysetpos.join(","));
   if (r.wkst) p.push("WKST=" + r.wkst);
   if (r.count) p.push("COUNT=" + r.count);

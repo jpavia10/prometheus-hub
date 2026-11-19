@@ -167,7 +167,7 @@
      ]
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Bossa Piano Studio has no repertoire. A ladder that adds one new skill per tune is what turns practice into progress.",
      "unlocks": "The Piano pillar's repertoire list, in teaching order, with what each tune adds.",
@@ -263,7 +263,9 @@
      ],
      "id": "PIA-GEM-04",
      "title": "Piano: a 24-tune bossa nova ladder for an adult who reads chord symbols, easiest first, each with key, form and the hard spot",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "review": "Done 2026-11-19: Piano 'Bossa nova ladder', 24 tunes. Score 10/10 (#24).",
+     "closed": "2026-11-19"
     }
    ]
   },

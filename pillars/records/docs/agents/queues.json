@@ -295,7 +295,7 @@
      ]
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Records keeps paper and Kairos keeps dates, but nothing says which forms to expect for the 2026 return, by when, and where each number goes. That is the list Joseph needs in January.",
      "unlocks": "Records shows a tax-season checklist that ticks off as each form arrives, and Kairos gets the furnish-by dates.",
@@ -382,7 +382,9 @@
      ],
      "id": "REC-GEM-06",
      "title": "Records: the tax-year 2026 paperwork checklist: every form a W-2 homeowner may get, when it must arrive, and which 1040 / CA 540 line it feeds",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "review": "Done 2026-11-19: Records 'Tax forms on their way (2026 tax year)'. Date rolls re-checked. Row 16 (1095-B) quotes last year's text ('February 2, 2026'). Score 9/10 (#23).",
+     "closed": "2026-11-19"
     }
    ]
   },

@@ -102,6 +102,40 @@ export function ruleDates(start, rule, to) {
       if (rule.bymonth && rule.bymonth.length && !rule.bymonth.includes(m)) continue;
       for (const d of monthCandidates(y, m, rule, start)) { const s = `${y}-${pad(m)}-${pad(d)}`; if (s < start) continue; if (!push(s)) break; }
     }
+  } else if (rule.freq === "YEARLY" && ((rule.byyearday && rule.byyearday.length) || (rule.byweekno && rule.byweekno.length))) {
+    const wkst = WD.indexOf(rule.wkst || "MO");
+    const week1 = (y) => { const j4 = `${y}-01-04`; return addDays(j4, -((dow(j4) - wkst + 7) % 7)); };   // week 1 holds at least 4 days of the year
+    for (let y = sy; out.length < count && guard++ < 400; y += interval) {
+      if (`${y}-01-01` > until) break;
+      let days = [];
+      if (rule.byyearday && rule.byyearday.length) {
+        const len = diffDays(`${y}-01-01`, `${y + 1}-01-01`);
+        for (const n of rule.byyearday) { const i = n > 0 ? n - 1 : len + n; if (i >= 0 && i < len) days.push(addDays(`${y}-01-01`, i)); }
+      } else {
+        const w1 = week1(y), weeks = diffDays(w1, week1(y + 1)) / 7;
+        const wds = rule.byday && rule.byday.length ? rule.byday.map((b) => WD.indexOf(b.d)) : [dow(start)];
+        for (const n of rule.byweekno) { const k = n > 0 ? n : weeks + 1 + n; if (k < 1 || k > weeks) continue;
+          const ws = addDays(w1, 7 * (k - 1)); for (const wd of wds) days.push(addDays(ws, (wd - wkst + 7) % 7)); }
+      }
+      if (rule.byday && rule.byday.length && rule.byyearday && rule.byyearday.length) { const ok = new Set(rule.byday.map((b) => WD.indexOf(b.d))); days = days.filter((d) => ok.has(dow(d))); }
+      if (rule.bymonth && rule.bymonth.length) days = days.filter((d) => rule.bymonth.includes(Number(d.slice(5, 7))));
+      days = [...new Set(days)].sort();
+      if (rule.bysetpos && rule.bysetpos.length) days = rule.bysetpos.map((p) => (p > 0 ? days[p - 1] : days[days.length + p])).filter(Boolean).sort();
+      for (const s of days) { if (s < start) continue; if (!push(s)) break; }
+    }
+  } else if (rule.freq === "YEARLY" && rule.byday && rule.byday.length && !(rule.bymonth && rule.bymonth.length) && !(rule.bymonthday && rule.bymonthday.length)) {
+    for (let y = sy; out.length < count && guard++ < 400; y += interval) {                     // BYDAY across the whole year: "20MO" is the year's 20th Monday (RFC 5545 3.8.5.3)
+      if (`${y}-01-01` > until) break;
+      let days = [];
+      for (const b of rule.byday) {
+        const wd = WD.indexOf(b.d), all = [];
+        for (let d = `${y}-01-01`; d.startsWith(String(y)); d = addDays(d, 1)) if (dow(d) === wd) all.push(d);
+        if (!b.n) days.push(...all); else { const d = b.n > 0 ? all[b.n - 1] : all[all.length + b.n]; if (d) days.push(d); }
+      }
+      days = [...new Set(days)].sort();
+      if (rule.bysetpos && rule.bysetpos.length) days = rule.bysetpos.map((p) => (p > 0 ? days[p - 1] : days[days.length + p])).filter(Boolean).sort();
+      for (const s of days) { if (s < start) continue; if (!push(s)) break; }
+    }
   } else if (rule.freq === "YEARLY") {
     const months = rule.bymonth && rule.bymonth.length ? [...rule.bymonth].sort((a, b) => a - b) : [sm];
     for (let y = sy; out.length < count && guard++ < 400; y += interval) {
@@ -138,6 +172,8 @@ export function ruleText(rule) {
   if (rule.byday && rule.byday.length) s += " on " + rule.byday.map((b) => (b.n ? `the ${ord[b.n] || b.n} ${names[b.d]}` : names[b.d])).join(rule.byday.length > 2 ? ", " : " and ");
   if (rule.bymonthday && rule.bymonthday.length) s += " on day " + rule.bymonthday.map((d) => (d === -1 ? "last" : d)).join(", ");
   if (rule.bymonth && rule.bymonth.length) s += " in " + rule.bymonth.map((m) => monName(m, 1)).join(", ");
+  if (rule.byyearday && rule.byyearday.length) s += " on day " + rule.byyearday.join(", ") + " of the year";
+  if (rule.byweekno && rule.byweekno.length) s += " in week " + rule.byweekno.join(", ");
   if (rule.count) s += `, ${rule.count} times`;
   if (rule.until) s += `, until ${fmtDay(rule.until, "md")}`;
   return s;
