@@ -1,1 +1,1 @@
-deck d22 2026-11-17 Muse second-reads of Gemini's 20261117-1047 batch (8 datasets scored, check files delivered) + 7 Forge queue completions re-rendered; shell cache d29; Forge completions ledger now read from an in-repo mirror (docs/agents/completions.json) — Drive download URLs are CORS-blocked in browsers and failed CI PILLAR-2 on d21; Drive remains the append point for every AI, Sebastian mirrors on each fold
+deck d36 2026-11-19 arrival orbit kept; shell cache d36 above main d35; PILLAR-1 waits on the section change

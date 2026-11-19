@@ -2,6 +2,12 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-19] Arrival orbit kept; PILLAR-1 waits on the section
+- The orbit home is the core, one now line, and one card. The game menu stays the other home. PILLAR-1 clicks the live third Piano tab and continues only once that section is the one on screen, because a coordinate click was landing on a tab the page had just replaced. Shell cache d36.
+
+### [2026-11-14] Arrival is the core, one line, and one card
+- The home keeps the orrery, a now line (next event, next deadline, NYSE open or closed), and one card. Runway, countdowns, the day ring, and focus moved to Time. Storm, homestead, the counts, the pillar list, and Load sample moved to System. The payoff ring stays on Money. DECK-3 fails if the home renders a table or a dollar figure.
+
 ### [2026-11-19] Lighthouse CI on pull requests
 - `.github/workflows/lighthouse.yml` serves the checkout and runs `@lhci/cli` 0.16.1 (Lighthouse 13.6.0) on the hub, Apollo, Athenaeum, and Hearth, mobile emulation. Budgets: accessibility >= 0.95, best-practices >= 0.9, installable-manifest and service-worker pass; performance under 0.9 warns. First measured scores are in `docs/perf/BASELINE.md`: hub 0.38 / 0.96 / 1, Apollo 0.91 / 1 / 1, Athenaeum 0.56 / 1 / 1, Hearth 0.9 / 1 / 1, installable checks 1.
 - Lighthouse 12 dropped the PWA category, so `tools/lighthouse/` reads Chrome's installability errors. The shell worker registers on https and on localhost. Charts with no name are hidden from the accessibility tree, and the cockpit control sits beside the tab list.
