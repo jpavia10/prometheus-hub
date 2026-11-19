@@ -2,78 +2,11 @@
 
 # Continuity · Sovereign Vault · homework for Gemini
 
-Updated 2026-11-19 01:22 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-19 04:28 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. CON-GEM-03 · Continuity: what happens to each account when its owner dies or goes silent
-
-**Due:** 2026-11-21 · **State:** now
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Continuity's binder lists, per service, the setting to turn on now and what a family member does later.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/continuity/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Each service's own help pages only.
-
-**Make:** `continuity_gemini_legacy-policies_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `service` (text): Google, Apple, Microsoft, Facebook, a bank ...
-- `feature` (text): Inactive Account Manager, Legacy Contact ...
-- `set_up_now` (text): the steps, one sentence
-- `after_death` (text): what the family does, one sentence
-- `url` (URL): the exact page that shows this row, opened by you today; never a home page or search page
-- `quote` (text): the sentence on that page that proves the row, copied word for word (under 300 characters)
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{
- "n": 1,
- "service": "Google",
- "feature": "Inactive Account Manager",
- "set_up_now": "...",
- "after_death": "...",
- "url": "https://support.google.com/...",
- "quote": "..."
-}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
-- [ ] Every quote is copied word for word from that page and is on it now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
-- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
-
-**How many:** 25
-
-**Done when:** 25 rows exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. CON-GEM-04 · Continuity: the function spec, written as the build plan
+## 1. CON-GEM-04 · Continuity: the function spec, written as the build plan
 
 **Due:** 2026-11-24 · **State:** now
 
@@ -137,3 +70,46 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+
+## 2. CON-GEM-05 · Continuity: Capital One and the FDIC grace rule, cited to their own pages
+
+**Due:** 2026-11-26 · **State:** now
+
+**Why:** The Nov 17 redo deleted Capital One and the FDIC six-month rule instead of citing them to the right page, so Continuity's account list lost a bank and the one federal rule that tells the family how long deposits stay insured after a death.
+
+**What it unlocks:** Two more rows in Continuity's Accounts After Death tab, both sourced to the provider or regulator itself.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/continuity/ (tab Accounts After Death)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/legacy-policies.js
+
+**Do this:**
+1. Row 1: Capital One. Use Capital One's own deposit-account disclosure or help page that states what happens to an account when the owner dies (POD, survivorship, estate). Not a teen or kids account page unless that is the only page that says it; then say which product it covers in feature.
+2. Row 2: FDIC. Use fdic.gov's own text on the six-month grace period for deposit insurance after a depositor's death. Quote the sentence that states the six months.
+3. Fields exactly as legacy-policies.js: n, service, feature, set_up_now, after_death, url, quote. set_up_now is what Joseph can do today; after_death is what the family does.
+
+**Make:** `continuity_gemini_legacy-two_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 2 objects with exactly the seven fields`
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's or provider's own site (not a blog, forum, wiki or AI summary).
+- [ ] Every quote is copied word for word from that page and is on it now, and it states the rule itself, not just the topic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 2
+
+**Done when:** 2 rows, each quote on the provider's or regulator's own page.
+
+**How Claude checks it:**
+- Claude opens both URLs and finds each quote word for word.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites, or a quote that names the topic but does not state the rule (the Nov 17 habit: one generic FAQ sentence carrying four different rules)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (say 'not found' and name the page you checked)

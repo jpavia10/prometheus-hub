@@ -8,46 +8,48 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 01:22 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 2 open in this pillar.
 
 
-- CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+- CON-GRK-04 · Continuity: second reader on the three account policies nobody could open (TikTok, Vanguard, Robinhood) · due 2026-11-24
+    make: continuity_grok_three-policies-check_{YYYYMMDD-HHMM}.md · how many: 3 · done when: 3 rows read against their live pages.
+- CON-GRK-03 · Continuity: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
     make: continuity_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-19 01:22 UTC · 2 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 2 open in this pillar.
 
 
-- CON-GEM-03 · Continuity: what happens to each account when its owner dies or goes silent · due 2026-11-21
-    make: continuity_gemini_legacy-policies_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows exactly in the shape, every self-check line true.
 - CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-24
     make: continuity_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- CON-GEM-05 · Continuity: Capital One and the FDIC grace rule, cited to their own pages · due 2026-11-26
+    make: continuity_gemini_legacy-two_{YYYYMMDD-HHMM}.json · how many: 2 · done when: 2 rows, each quote on the provider's or regulator's own page.
 
 ## Muse
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Continuity · Sovereign Vault right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Continuity · Sovereign Vault right now.
 
 ## Argon
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Continuity · Sovereign Vault right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Continuity · Sovereign Vault right now.

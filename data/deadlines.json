@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19 01:22 UTC",
+ "updated": "2026-11-19 04:28 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -68,17 +68,6 @@
    "count": 25
   },
   {
-   "due": "2026-11-21",
-   "pillar": "continuity",
-   "pillar_name": "Continuity · Sovereign Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "CON-GEM-03",
-   "title": "Continuity: what happens to each account when its owner dies or goes silent",
-   "state": "now",
-   "count": 25
-  },
-  {
    "due": "2026-11-22",
    "pillar": "bastion",
    "pillar_name": "Bastion · Mountain Prep",
@@ -88,17 +77,6 @@
    "title": "Bastion: a 72-hour kit for four people and pets, with shelf lives",
    "state": "now",
    "count": 40
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-17",
-   "title": "Hephaestus Hearth: when Kern County needs a permit for this deck",
-   "state": "now",
-   "count": 1
   },
   {
    "due": "2026-11-22",
@@ -132,17 +110,6 @@
    "title": "Observatory: primary sources for each subject Observatory watches",
    "state": "now",
    "count": 64
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "polis",
-   "pillar_name": "Polis · Civic & Legal Watch",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "POL-GEM-04",
-   "title": "Polis: the Kern County rules a homeowner runs into",
-   "state": "now",
-   "count": 25
   },
   {
    "due": "2026-11-23",
@@ -231,6 +198,17 @@
    "title": "Continuity: the function spec, written as the build plan",
    "state": "now",
    "count": 1
+  },
+  {
+   "due": "2026-11-24",
+   "pillar": "continuity",
+   "pillar_name": "Continuity · Sovereign Vault",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "CON-GRK-04",
+   "title": "Continuity: second reader on the three account policies nobody could open (TikTok, Vanguard, Robinhood)",
+   "state": "now",
+   "count": 3
   },
   {
    "due": "2026-11-24",
@@ -509,6 +487,17 @@
   },
   {
    "due": "2026-11-25",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-19",
+   "title": "Hearth: is re-decking on the existing frame an ordinary repair in Kern County, or does it need a permit?",
+   "state": "now",
+   "count": 3
+  },
+  {
+   "due": "2026-11-25",
    "pillar": "midas",
    "pillar_name": "Midas Ledger",
    "ai": "muse",
@@ -519,6 +508,28 @@
    "count": 15
   },
   {
+   "due": "2026-11-26",
+   "pillar": "continuity",
+   "pillar_name": "Continuity · Sovereign Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "CON-GEM-05",
+   "title": "Continuity: Capital One and the FDIC grace rule, cited to their own pages",
+   "state": "now",
+   "count": 2
+  },
+  {
+   "due": "2026-11-26",
+   "pillar": "polis",
+   "pillar_name": "Polis · Civic & Legal Watch",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "POL-GEM-06",
+   "title": "Polis: the five Kern rules left out, each with the county's own words",
+   "state": "now",
+   "count": 5
+  },
+  {
    "due": "2026-11-27",
    "pillar": "aether",
    "pillar_name": "Aether · Atmospheric & Field Lab",
@@ -526,7 +537,7 @@
    "ai_name": "Grok",
    "id": "AET-GRK-03",
    "title": "Aether: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -537,7 +548,7 @@
    "ai_name": "Grok",
    "id": "APO-GRK-02",
    "title": "Apollo Temple: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -548,7 +559,7 @@
    "ai_name": "Grok",
    "id": "ARG-GRK-03",
    "title": "Argus Album: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -559,7 +570,7 @@
    "ai_name": "Grok",
    "id": "ATH-GRK-02",
    "title": "Athenaeum: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -570,7 +581,7 @@
    "ai_name": "Grok",
    "id": "BAS-GRK-04",
    "title": "Bastion: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -581,7 +592,7 @@
    "ai_name": "Grok",
    "id": "CON-GRK-03",
    "title": "Continuity: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -592,7 +603,7 @@
    "ai_name": "Grok",
    "id": "FOR-GRK-02",
    "title": "Forge: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -603,7 +614,7 @@
    "ai_name": "Grok",
    "id": "FDY-GRK-03",
    "title": "Foundry: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -614,7 +625,7 @@
    "ai_name": "Grok",
    "id": "GAM-GRK-02",
    "title": "Ludus Arcade: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -625,7 +636,7 @@
    "ai_name": "Grok",
    "id": "GAR-GRK-04",
    "title": "Garage: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -636,7 +647,7 @@
    "ai_name": "Grok",
    "id": "HEA-GRK-04",
    "title": "Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -647,7 +658,7 @@
    "ai_name": "Grok",
    "id": "HER-GRK-03",
    "title": "Hermes Post: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -658,7 +669,7 @@
    "ai_name": "Grok",
    "id": "HUB-GRK-03",
    "title": "Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -669,7 +680,7 @@
    "ai_name": "Grok",
    "id": "ICA-GRK-03",
    "title": "Icarus Stake: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -680,7 +691,7 @@
    "ai_name": "Grok",
    "id": "KAI-GRK-03",
    "title": "Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -691,7 +702,7 @@
    "ai_name": "Grok",
    "id": "KIN-GRK-02",
    "title": "Kin: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -713,7 +724,7 @@
    "ai_name": "Grok",
    "id": "MON-GRK-02",
    "title": "Money: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -724,7 +735,7 @@
    "ai_name": "Grok",
    "id": "MYT-GRK-02",
    "title": "Mythos: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -735,7 +746,7 @@
    "ai_name": "Grok",
    "id": "OBS-GRK-03",
    "title": "Observatory: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -746,7 +757,7 @@
    "ai_name": "Grok",
    "id": "ODY-GRK-02",
    "title": "Odyssey: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -757,7 +768,7 @@
    "ai_name": "Grok",
    "id": "PIA-GRK-02",
    "title": "Bossa Piano Studio: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -768,7 +779,7 @@
    "ai_name": "Grok",
    "id": "POL-GRK-03",
    "title": "Polis: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -779,7 +790,7 @@
    "ai_name": "Grok",
    "id": "PRI-GRK-04",
    "title": "Privacy: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -790,7 +801,7 @@
    "ai_name": "Grok",
    "id": "REC-GRK-03",
    "title": "Records: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   },
   {
@@ -801,7 +812,7 @@
    "ai_name": "Grok",
    "id": "SEL-GRK-03",
    "title": "Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan'",
-   "state": "next",
+   "state": "now",
    "count": 10
   }
  ]

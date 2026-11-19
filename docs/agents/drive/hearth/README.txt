@@ -8,32 +8,32 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 01:22 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 1 open in this pillar.
 
 
-- HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+- HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
     make: hearth_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-19 01:22 UTC · 2 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 2 open in this pillar.
 
 
-- HEA-GEM-17 · Hephaestus Hearth: when Kern County needs a permit for this deck · due 2026-11-22
-    make: hearth_gemini_kern-permits_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 - HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-24
     make: hearth_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- HEA-GEM-19 · Hearth: is re-decking on the existing frame an ordinary repair in Kern County, or does it need a permit? · due 2026-11-25
+    make: hearth_gemini_redeck-permit_{YYYYMMDD-HHMM}.json · how many: 3 · done when: 3 answers, each backed by a quote on the cited code or county page, or 'not stated' with the pages checked.
 
 ## Muse
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Hephaestus Hearth right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 01:22 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 1 open in this pillar.
 
 
 - HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings · due 2026-11-24
@@ -41,14 +41,14 @@ Updated 2026-11-19 01:22 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Hephaestus Hearth right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Hephaestus Hearth right now.

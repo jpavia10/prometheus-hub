@@ -2,14 +2,14 @@
 
 # Homework board: every pillar, every AI
 
-Updated 2026-11-19 01:22 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
+Updated 2026-11-19 04:28 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
 
 | Pillar | State | Grok | Gemini | Muse | ChatGPT | Argon | Hydrogen | Claude |
 |---|---|---|---|---|---|---|---|---|
 | Prometheus Hub | live | 1 | 1 | 1 | — | — | — | — |
 | Kairos Meridian | live | 1 | 1 | — | 1 | — | — | — |
 | Midas Ledger | live | 3 | 3 | 2 | 1 | — | — | — |
-| Titan Reliquary | live | 21 | 10 | 9 | — | — | — | — |
+| Titan Reliquary | live | 23 | 11 | 10 | — | — | — | — |
 | Hephaestus Hearth | live | 1 | 2 | — | 1 | — | — | — |
 | Garage | live | 1 | 1 | — | 1 | — | — | — |
 | Apollo Temple | live | 1 | 1 | — | — | — | — | — |
@@ -33,7 +33,7 @@ Updated 2026-11-19 01:22 UTC. Open tasks (now + next). Titan counts its homework
 | Aether · Atmospheric & Field Lab | live | 1 | 1 | — | — | — | — | — |
 | Polis · Civic & Legal Watch | live | 1 | 2 | — | — | — | — | — |
 | Mythos · Creative & Lore Studio | live | 1 | 1 | — | — | — | — | — |
-| Continuity · Sovereign Vault | live | 1 | 2 | — | — | — | — | — |
+| Continuity · Sovereign Vault | live | 2 | 2 | — | — | — | — | — |
 | Fleet Command | paused | — | — | — | — | — | — | — |
 
 Each AI's full list, every pillar on one page: Drive 'Prometheus Hub/{AI folder}/HOMEWORK — {Name} (every pillar)' (text in docs/agents/drive/HOMEWORK_{ai}.txt).

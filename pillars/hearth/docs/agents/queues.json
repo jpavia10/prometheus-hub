@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-16",
+ "updated": "2026-11-19",
  "pillar": "hearth",
  "agents": [
   {
@@ -478,7 +478,7 @@
     {
      "id": "HEA-GEM-17",
      "title": "Hephaestus Hearth: when Kern County needs a permit for this deck",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-22",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Hearth marks the deck stages that need a permit or an inspection before work starts.",
@@ -522,7 +522,9 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
-     ]
+     ],
+     "review": "Done 2026-11-19 (Claude): the 20261117-1735 redo, accepted by Muse 9/10, is live as Hearth's Kern County permit check under the deck blueprint (permits.js): it tests the four-condition exemption on the 23 x 10 ft deck (3 of 4 fail). Score 9/10 (#4).",
+     "closed": "2026-11-19"
     },
     {
      "id": "HEA-GEM-18",
@@ -612,6 +614,46 @@
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
      ]
+    },
+    {
+     "id": "HEA-GEM-19",
+     "title": "Hearth: is re-decking on the existing frame an ordinary repair in Kern County, or does it need a permit?",
+     "state": "now",
+     "due": "2026-11-25",
+     "why": "Hearth's permit check (2026-11-19) shows a new or rebuilt 23 x 10 ft second-floor deck needs a permit, but Joseph's job is a refurbish: new boards, flashing and joist repair on the existing frame. Whether that is an 'ordinary repair' (no permit) decides whether he must apply before the demo-and-repair stage.",
+     "unlocks": "The permit check answers his actual job instead of saying 'ask the county'.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/ (2nd-Floor Deck Refurbish: Kern County permit check)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/permits.js"
+     ],
+     "steps": [
+      "Find the code text that defines ordinary repairs that need no permit in the California Residential Code (R105.2.2) and any California or Kern County amendment that limits it (e.g. repairs may not cut away a structural member, replace a guard, or change the means of egress).",
+      "Find Kern County Public Works / Building Inspection's own words on deck re-surfacing, re-decking, or replacing deck boards or guards, if any page says it. If none does, say 'not found' and list the pages you checked.",
+      "Answer three questions, each with its quote and URL: (a) Does replacing deck boards on the existing joists need a permit? (b) Does replacing or repairing joists or the ledger need one? (c) Does replacing the guardrail need one?"
+     ],
+     "deliver": {
+      "file": "hearth_gemini_redeck-permit_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array of 3 objects: {q, answer (yes / no / not stated), code_section, url, quote}"
+     },
+     "count": 3,
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's or provider's own site (not a blog, forum, wiki or AI summary).",
+      "Every quote is copied word for word from that page and is on it now, and it states the rule itself, not just the topic.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "3 answers, each backed by a quote on the cited code or county page, or 'not stated' with the pages checked.",
+     "checks": [
+      "Claude opens every URL and finds each quote word for word."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites, or a quote that names the topic but does not state the rule (the Nov 17 habit: one generic FAQ sentence carrying four different rules)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (say 'not found' and name the page you checked)"
+     ]
     }
    ]
   },
@@ -686,11 +728,12 @@
     {
      "id": "HEA-GRK-04",
      "title": "Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "next",
+     "state": "now",
      "due": "2026-11-27",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
      "inputs": [
+      "Gemini's file to check (HEA-GEM-18): hearth_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
       "Gemini's file hearth_gemini_function-spec_*.md in the folder below (HEA-GEM-18)"
      ],
      "steps": [
@@ -727,7 +770,9 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "input_file": "hearth_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
     }
    ]
   },

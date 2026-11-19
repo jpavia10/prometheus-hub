@@ -8,46 +8,46 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 01:22 UTC · 1 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 1 open in this pillar.
 
 
-- POL-GRK-03 · Polis: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27 · waits for its input file
+- POL-GRK-03 · Polis: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
     make: polis_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## Gemini
 
-Updated 2026-11-19 01:22 UTC · 2 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 2 open in this pillar.
 
 
-- POL-GEM-04 · Polis: the Kern County rules a homeowner runs into · due 2026-11-22
-    make: polis_gemini_kern-ordinances_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows exactly in the shape, every self-check line true.
 - POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-24
     make: polis_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- POL-GEM-06 · Polis: the five Kern rules left out, each with the county's own words · due 2026-11-26
+    make: polis_gemini_kern-rules-five_{YYYYMMDD-HHMM}.json · how many: 5 · done when: 5 rows, each quote states its rule on the cited county or code page.
 
 ## Muse
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Polis · Civic & Legal Watch right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Polis · Civic & Legal Watch right now.
 
 ## Argon
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Polis · Civic & Legal Watch right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 01:22 UTC · 0 open in this pillar.
+Updated 2026-11-19 04:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Polis · Civic & Legal Watch right now.

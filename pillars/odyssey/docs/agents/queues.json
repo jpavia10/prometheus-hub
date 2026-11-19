@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-16",
+ "updated": "2026-11-19",
  "pillar": "odyssey",
  "agents": [
   {
@@ -208,11 +208,12 @@
     {
      "id": "ODY-GRK-02",
      "title": "Odyssey: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "next",
+     "state": "now",
      "due": "2026-11-27",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
      "inputs": [
+      "Gemini's file to check (ODY-GEM-04): odyssey_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
       "Gemini's file odyssey_gemini_function-spec_*.md in the folder below (ODY-GEM-04)"
      ],
      "steps": [
@@ -249,7 +250,9 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "input_file": "odyssey_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
     }
    ]
   },
