@@ -386,6 +386,12 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 .pk-crest .pk-ring, .pk-core .pk-ring { position: absolute; inset: 0; clip-path: var(--pk-hex); overflow: hidden; }
 .pk-crest .pk-ring::before, .pk-core .pk-ring::before { content: ""; position: absolute; inset: -42%; will-change: transform;
   background: conic-gradient(var(--accent), var(--accent-2), #fff, var(--accent)); animation: pk-turn 6s linear infinite; }
+/* 2026-11-20: the crest's glow was a drop-shadow on the whole crest, so the turning ring inside made the browser blur it again
+   every frame (Kairos at rest 42 -> 52 fps with it still). The glow now comes from a still hex of its own: same 18 px glow, same
+   silhouette, drawn once. */
+.pk-crest { filter: none; }
+.pk-crest .pk-glow { position: absolute; inset: 0; filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 80%, transparent)); }
+.pk-crest .pk-glow::before { content: ""; position: absolute; inset: 0; clip-path: var(--pk-hex); background: var(--accent); }
 .pk-core { background: none; animation: none; }
 .pk-core .pk-ring::before { background: conic-gradient(var(--cyan), var(--pearl), var(--lavender), var(--cyan)); animation-duration: 5s; }
 .pk-core span { position: relative; z-index: 1; }

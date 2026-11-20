@@ -285,7 +285,7 @@
   var hero = shell.querySelector(".hero");
   if (hero && !hero.querySelector(".pk-crest")) {
     var crest = el("span", "pk-crest"); crest.setAttribute("aria-hidden", "true");
-    crest.innerHTML = '<b class="pk-ring"></b><i><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="' + (ICON[pillar] || "M12 5v14M5 12h14") + '"/></svg></i>';
+    crest.innerHTML = '<b class="pk-glow"></b><b class="pk-ring"></b><i><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="' + (ICON[pillar] || "M12 5v14M5 12h14") + '"/></svg></i>';
     hero.classList.add("pk-hero"); hero.prepend(crest);
     var lede = hero.querySelector(".lede");
     if (lede && lede.textContent.length > 110) { var more = el("button", "pk-more", "More"); more.type = "button"; more.setAttribute("aria-expanded", "false");

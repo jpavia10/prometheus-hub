@@ -133,17 +133,30 @@
   // ---------- viewer ----------
   let canvas = null, capEl = null, ctx = null, model = null, raf = 0;
   let yaw = -0.65, pitch = 0.34, dragging = false, idleFor = 99, lastT = 0, lastX = 0, lastY = 0;
+  /* 2026-11-20: the viewer drew 60 frames a second even in a hidden tab or scrolled away (one of three full-time loops on the
+     Garage). It now runs only while it is on screen, turns at 30 frames a second when nobody is dragging (0.5 degree a step,
+     still smooth) and at full rate under a finger; with reduced motion it does not turn by itself. */
+  let onScreen = true, tick = 0, need = true;
+  const still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  function wake() { need = true; if (!raf && onScreen && !document.hidden) { lastT = 0; raf = requestAnimationFrame(render); } }
 
   function render(now) {
-    raf = requestAnimationFrame(render);
-    if (!ctx || !model) return;
-    const dt = Math.min(0.05, (now - lastT) / 1000 || 0); lastT = now;
-    if (!dragging) { idleFor += dt; if (idleFor > 2.5) yaw += dt * 0.25; }
+    raf = 0;
+    if (!ctx || !model || !onScreen || document.hidden) return;
+    if (dragging || !still) raf = requestAnimationFrame(render); // under a finger, or waiting to turn / turning
+    if (!dragging && (tick++ & 1) && lastT) return;
+    const dt = lastT ? Math.min(0.1, (now - lastT) / 1000) : 0; lastT = now;
+    const turning = !dragging && !still && (idleFor += dt) > 2.5;
+    if (turning) yaw += dt * 0.25;
+    if (!dragging && !turning && !need) return;
+    need = false;
     const W = canvas.width, H = canvas.height;
     if (!W || !H) return;
-    // Backdrop: soft vertical gradient + ground shadow ellipse.
+    // Backdrop: soft vertical gradient + ground shadow ellipse. It used to be laid at 25-55 % over the last frame without
+    // clearing, which settles to these opaque colours but left a ghost of the model behind it while it turned.
+    ctx.clearRect(0, 0, W, H);
     const bg = ctx.createLinearGradient(0, 0, 0, H);
-    bg.addColorStop(0, "rgba(16,22,34,0.25)"); bg.addColorStop(1, "rgba(5,8,14,0.55)");
+    bg.addColorStop(0, "rgb(16,22,34)"); bg.addColorStop(1, "rgb(5,8,14)");
     ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
 
     const cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
@@ -194,24 +207,27 @@
 
   function attach(cv, cap) {
     canvas = cv; capEl = cap || null; ctx = canvas.getContext("2d");
-    fit(); window.addEventListener("resize", fit);
-    canvas.addEventListener("pointerdown", (e) => { dragging = true; idleFor = 0; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId); });
+    fit(); window.addEventListener("resize", () => { fit(); wake(); });
+    canvas.addEventListener("pointerdown", (e) => { dragging = true; idleFor = 0; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId); wake(); });
     canvas.addEventListener("pointermove", (e) => {
       if (!dragging) return;
       yaw += (e.clientX - lastX) * 0.008; pitch += (e.clientY - lastY) * 0.005;
       pitch = Math.max(-0.15, Math.min(1.15, pitch));
-      lastX = e.clientX; lastY = e.clientY;
+      lastX = e.clientX; lastY = e.clientY; wake();
     });
-    const end = () => { dragging = false; idleFor = 0; };
+    const end = () => { dragging = false; idleFor = 0; wake(); };
     canvas.addEventListener("pointerup", end); canvas.addEventListener("pointercancel", end);
+    if ("IntersectionObserver" in window) new IntersectionObserver((es) => { onScreen = es[es.length - 1].isIntersecting; if (onScreen) { fit(); wake(); } }).observe(canvas);
+    document.addEventListener("visibilitychange", wake);
     if (!model) setVehicle("sorento");
-    cancelAnimationFrame(raf); lastT = 0; raf = requestAnimationFrame(render);
+    cancelAnimationFrame(raf); raf = 0; wake();
   }
 
   function setVehicle(key) {
     const build = MODELS[key] || MODELS.sorento;
     model = build();
     if (capEl) capEl.textContent = model.caption;
+    wake();
   }
 
   window.G3D = { attach, setVehicle };

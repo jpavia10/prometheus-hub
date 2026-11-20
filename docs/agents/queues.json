@@ -287,10 +287,11 @@
      "unlocks": "The fixes go into the next motion pass; the home screen and Athenaeum are the two pages Joseph opens most.",
      "inputs": [
       "https://jpavia10.github.io/prometheus-hub/ (home: the menu of worlds) and https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/",
-      "https://github.com/jpavia10/prometheus-hub/tree/main/deck (home: index at the repository root loads deck/app.js, deck/deck.css, deck/views/menu.js, deck/core/atmo.js, deck/core/fx.js and the rest)",
-      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/athenaeum and https://github.com/jpavia10/prometheus-hub/tree/main/kit (the shared kit every pillar loads)"
+      "https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/deck (home: index at the repository root loads deck/app.js, deck/deck.css, deck/views/menu.js, deck/core/atmo.js, deck/core/fx.js and the rest)",
+      "https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/pillars/athenaeum and https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/kit (the shared kit every pillar loads)"
      ],
      "steps": [
+      "Read the code at commit 74e34cf (the links above are pinned to it). Main keeps changing while you work; Claude measures and reproduces on a local copy of 74e34cf, so a finding in that code counts even if main has since changed it.",
       "Read every file each page loads (HTML, CSS, JS, shaders).",
       "List everything that runs at rest, every frame: requestAnimationFrame loops, CSS animations and what each one animates (transform/opacity run on the compositor; anything else repaints), filter and backdrop-filter under or on moving things, canvases (their size against devicePixelRatio and how often they redraw), WebGL (draw calls, overdraw, cost per pixel of each shader).",
       "Then what runs on scroll and on a tap.",
@@ -377,7 +378,7 @@
      ],
      "done_when": "10 or more findings, ranked, each with a toggle and a fix.",
      "checks": [
-      "Claude applies each toggle on a phone-size page with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order."
+      "Claude applies each toggle on a phone-size copy of commit 74e34cf with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order."
      ],
      "rejected_if": [
       "a file:line that does not exist or does not do what the row says",
@@ -397,11 +398,12 @@
      "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Finding bugs in about 3,000 lines of real code without running it, and proving each one. The kit (kit/kit.js, kit/stage.js, kit/prometheus.css) runs on every pillar; the Forge (pillars/forge/app.js and its builder tools/forge/build.py) is where Joseph sees every AI's homework.",
      "unlocks": "Every confirmed defect is fixed on all 27 pillars at once.",
      "inputs": [
-      "https://github.com/jpavia10/prometheus-hub/tree/main/kit",
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/forge/app.js and https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/tools/forge/build.py",
+      "https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/kit",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/pillars/forge/app.js and https://raw.githubusercontent.com/jpavia10/prometheus-hub/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/tools/forge/build.py",
       "https://jpavia10.github.io/prometheus-hub/pillars/forge/ and any other pillar, at phone size"
      ],
      "steps": [
+      "Read the code at commit 74e34cf (the links above are pinned to it). Main keeps changing while you work; Claude measures and reproduces on a local copy of 74e34cf, so a finding in that code counts even if main has since changed it.",
       "Read the files in full. Look for what actually goes wrong: wrong numbers, dates and time zones, state that is lost or doubled, a control that does nothing or the wrong thing, keyboard and screen-reader traps, races between loading and drawing, input build.py mis-reads, listeners added again on every call, errors swallowed.",
       "Prove each one: numbered steps on the live site at phone size, or the exact input to build.py, with what should happen and what happens.",
       "Severity: data (loses or changes a record) | number (shows a wrong value) | control (a control fails) | access | performance | visual.",
@@ -475,7 +477,7 @@
      ],
      "done_when": "6 or more defects, each reproducible.",
      "checks": [
-      "Claude follows every reproduction. Score: confirmed minus wrong; 'data' and 'number' defects count double."
+      "Claude follows every reproduction on a local copy of commit 74e34cf. Score: confirmed minus wrong; 'data' and 'number' defects count double."
      ],
      "rejected_if": [
       "a file:line that does not exist or does not do what the row says",

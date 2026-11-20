@@ -2,7 +2,7 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-20 16:55 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-20 17:23 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -120,16 +120,17 @@ Updated 2026-11-20 16:55 UTC · 5 open · Rules for every pillar: https://github
 
 **Read first:**
 - https://jpavia10.github.io/prometheus-hub/ (home: the menu of worlds) and https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/
-- https://github.com/jpavia10/prometheus-hub/tree/main/deck (home: index at the repository root loads deck/app.js, deck/deck.css, deck/views/menu.js, deck/core/atmo.js, deck/core/fx.js and the rest)
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/athenaeum and https://github.com/jpavia10/prometheus-hub/tree/main/kit (the shared kit every pillar loads)
+- https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/deck (home: index at the repository root loads deck/app.js, deck/deck.css, deck/views/menu.js, deck/core/atmo.js, deck/core/fx.js and the rest)
+- https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/pillars/athenaeum and https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/kit (the shared kit every pillar loads)
 
 **Do this:**
-1. Read every file each page loads (HTML, CSS, JS, shaders).
-2. List everything that runs at rest, every frame: requestAnimationFrame loops, CSS animations and what each one animates (transform/opacity run on the compositor; anything else repaints), filter and backdrop-filter under or on moving things, canvases (their size against devicePixelRatio and how often they redraw), WebGL (draw calls, overdraw, cost per pixel of each shader).
-3. Then what runs on scroll and on a tap.
-4. For each cost: estimate its milliseconds per frame on a mid-range phone and show the reasoning (pixel count x work per pixel, or calls x cost).
-5. For each, give a TOGGLE (one CSS rule or one small JS change that removes only that cost, so Claude can measure it) and a FIX (the change that keeps the look and removes most of the cost).
-6. Rank by estimated cost, largest first.
+1. Read the code at commit 74e34cf (the links above are pinned to it). Main keeps changing while you work; Claude measures and reproduces on a local copy of 74e34cf, so a finding in that code counts even if main has since changed it.
+2. Read every file each page loads (HTML, CSS, JS, shaders).
+3. List everything that runs at rest, every frame: requestAnimationFrame loops, CSS animations and what each one animates (transform/opacity run on the compositor; anything else repaints), filter and backdrop-filter under or on moving things, canvases (their size against devicePixelRatio and how often they redraw), WebGL (draw calls, overdraw, cost per pixel of each shader).
+4. Then what runs on scroll and on a tap.
+5. For each cost: estimate its milliseconds per frame on a mid-range phone and show the reasoning (pixel count x work per pixel, or calls x cost).
+6. For each, give a TOGGLE (one CSS rule or one small JS change that removes only that cost, so Claude can measure it) and a FIX (the change that keeps the look and removes most of the cost).
+7. Rank by estimated cost, largest first.
 
 **Make:** `hub_gemini_perf-audit_{YYYYMMDD-HHMM}.json`
 
@@ -169,7 +170,7 @@ Updated 2026-11-20 16:55 UTC · 5 open · Rules for every pillar: https://github
 **Done when:** 10 or more findings, ranked, each with a toggle and a fix.
 
 **How Claude checks it:**
-- Claude applies each toggle on a phone-size page with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order.
+- Claude applies each toggle on a phone-size copy of commit 74e34cf with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order.
 
 **Not done (sent back) if:**
 - a file:line that does not exist or does not do what the row says
@@ -188,15 +189,16 @@ Updated 2026-11-20 16:55 UTC · 5 open · Rules for every pillar: https://github
 **What it unlocks:** Every confirmed defect is fixed on all 27 pillars at once.
 
 **Read first:**
-- https://github.com/jpavia10/prometheus-hub/tree/main/kit
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/forge/app.js and https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/tools/forge/build.py
+- https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/kit
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/pillars/forge/app.js and https://raw.githubusercontent.com/jpavia10/prometheus-hub/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/tools/forge/build.py
 - https://jpavia10.github.io/prometheus-hub/pillars/forge/ and any other pillar, at phone size
 
 **Do this:**
-1. Read the files in full. Look for what actually goes wrong: wrong numbers, dates and time zones, state that is lost or doubled, a control that does nothing or the wrong thing, keyboard and screen-reader traps, races between loading and drawing, input build.py mis-reads, listeners added again on every call, errors swallowed.
-2. Prove each one: numbered steps on the live site at phone size, or the exact input to build.py, with what should happen and what happens.
-3. Severity: data (loses or changes a record) | number (shows a wrong value) | control (a control fails) | access | performance | visual.
-4. Give the fix as an exact code change.
+1. Read the code at commit 74e34cf (the links above are pinned to it). Main keeps changing while you work; Claude measures and reproduces on a local copy of 74e34cf, so a finding in that code counts even if main has since changed it.
+2. Read the files in full. Look for what actually goes wrong: wrong numbers, dates and time zones, state that is lost or doubled, a control that does nothing or the wrong thing, keyboard and screen-reader traps, races between loading and drawing, input build.py mis-reads, listeners added again on every call, errors swallowed.
+3. Prove each one: numbered steps on the live site at phone size, or the exact input to build.py, with what should happen and what happens.
+4. Severity: data (loses or changes a record) | number (shows a wrong value) | control (a control fails) | access | performance | visual.
+5. Give the fix as an exact code change.
 
 **Make:** `hub_gemini_defects_{YYYYMMDD-HHMM}.json`
 
@@ -228,7 +230,7 @@ Updated 2026-11-20 16:55 UTC · 5 open · Rules for every pillar: https://github
 **Done when:** 6 or more defects, each reproducible.
 
 **How Claude checks it:**
-- Claude follows every reproduction. Score: confirmed minus wrong; 'data' and 'number' defects count double.
+- Claude follows every reproduction on a local copy of commit 74e34cf. Score: confirmed minus wrong; 'data' and 'number' defects count double.
 
 **Not done (sent back) if:**
 - a file:line that does not exist or does not do what the row says

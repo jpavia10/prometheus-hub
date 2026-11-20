@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Motion pass 3: the crest glow and Garage's 3D viewer (d43); trials 3 and 4 pinned
+- The pillar crest's 18 px glow was a drop-shadow on the whole crest, so the turning ring inside made the browser re-blur it every frame. The glow now comes from a still hex of its own (same glow, same silhouette; pixel difference under 1 of 255). At rest, phone size, CPU 4x: Odyssey 39 -> 45 fps, Kairos 40 -> 42 (49 with the stage canvas hidden, was 42).
+- Garage's 3D viewer drew 60 frames a second even in a hidden tab or scrolled away; it now runs only on screen, turns at 30 fps (full rate under a finger), does not turn by itself with reduced motion, and clears each frame (it used to lay its backdrop at 25-55 % over the last frame, which left a ghost of the car while it turned; the settled colours are kept).
+- Gemini's trials 3 and 4 read the code at commit 74e34cf (links pinned), so main can keep improving; Claude measures and reproduces their findings on a local copy of that commit.
+
 ### [2026-11-20] Gemini: five capability trials first (owner)
 - Joseph: "Add more demanding homework first test this new models capabilities." Five trials lead Gemini's homework (due 2026-11-23), each scored against sealed answers or Claude's own measurements: HUB-GEM-11/12 Titan's blind coin-photo test (main 30, locked 15; best so far 85 % / 76 %, Phase 2 bar 95 %), HUB-GEM-13 what keeps the home screen and Athenaeum below 60 fps (every finding with a toggle Claude measures), HUB-GEM-14 real defects in the kit and the Forge with reproductions, MID-GEM-12 30 Midas parser cases with what build.py returns today.
 - Run prompt (docs/agents/prompts/gemini-neon-full-run.md) is now model-neutral, trials first, then Odyssey. proofs-live timeout 12 -> 20 min (the browser install alone took 7 min and the d42 run was cut off mid-proof).

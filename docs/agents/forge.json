@@ -1,6 +1,6 @@
 {
- "built": "2026-11-20T16:55:18Z",
- "checked": "2026-11-20T16:55:18Z",
+ "built": "2026-11-20T17:23:17Z",
+ "checked": "2026-11-20T17:23:17Z",
  "version": 2,
  "today": "2026-11-20",
  "sources": {
@@ -682,6 +682,7 @@
    "detail": {
     "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Reading a large codebase and reasoning about what a browser does every frame. Claude measured both pages at phone size with the CPU slowed 4x: the home screen holds about 33 frames a second at rest even with its WebGL canvases hidden, Athenaeum about 47; both should hold 60. Claude has found part of the cause; you are scored on what you find that its measurements confirm.",
     "steps": [
+     "Read the code at commit 74e34cf (the links above are pinned to it). Main keeps changing while you work; Claude measures and reproduces on a local copy of 74e34cf, so a finding in that code counts even if main has since changed it.",
      "Read every file each page loads (HTML, CSS, JS, shaders).",
      "List everything that runs at rest, every frame: requestAnimationFrame loops, CSS animations and what each one animates (transform/opacity run on the compositor; anything else repaints), filter and backdrop-filter under or on moving things, canvases (their size against devicePixelRatio and how often they redraw), WebGL (draw calls, overdraw, cost per pixel of each shader).",
      "Then what runs on scroll and on a tap.",
@@ -694,7 +695,7 @@
     "shape": "JSON array, 10 to 25 objects, ranked largest cost first",
     "done": "10 or more findings, ranked, each with a toggle and a fix.",
     "checks": [
-     "Claude applies each toggle on a phone-size page with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order."
+     "Claude applies each toggle on a phone-size copy of commit 74e34cf with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
    },
@@ -717,6 +718,7 @@
    "detail": {
     "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Finding bugs in about 3,000 lines of real code without running it, and proving each one. The kit (kit/kit.js, kit/stage.js, kit/prometheus.css) runs on every pillar; the Forge (pillars/forge/app.js and its builder tools/forge/build.py) is where Joseph sees every AI's homework.",
     "steps": [
+     "Read the code at commit 74e34cf (the links above are pinned to it). Main keeps changing while you work; Claude measures and reproduces on a local copy of 74e34cf, so a finding in that code counts even if main has since changed it.",
      "Read the files in full. Look for what actually goes wrong: wrong numbers, dates and time zones, state that is lost or doubled, a control that does nothing or the wrong thing, keyboard and screen-reader traps, races between loading and drawing, input build.py mis-reads, listeners added again on every call, errors swallowed.",
      "Prove each one: numbered steps on the live site at phone size, or the exact input to build.py, with what should happen and what happens.",
      "Severity: data (loses or changes a record) | number (shows a wrong value) | control (a control fails) | access | performance | visual.",
@@ -727,7 +729,7 @@
     "shape": "JSON array, 6 to 20 objects, worst first",
     "done": "6 or more defects, each reproducible.",
     "checks": [
-     "Claude follows every reproduction. Score: confirmed minus wrong; 'data' and 'number' defects count double."
+     "Claude follows every reproduction on a local copy of commit 74e34cf. Score: confirmed minus wrong; 'data' and 'number' defects count double."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
    },
