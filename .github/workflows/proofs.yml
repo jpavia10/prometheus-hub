@@ -30,21 +30,29 @@ jobs:
           sleep 20
           python3 proofs/run.py https://jpavia10.github.io/prometheus-hub/ --out proofs-live.json
       - name: Write the live result into STATUS.md
+        # 2026-11-20: main often moves during the 6-minute run (the Forge bot, other pushes), and a rejected push here used to
+        # fail the run and skip the two gates below, hiding the proofs' own result. The note is now written on top of the
+        # newest main with retries, the run's own commit is restored afterwards, and a note that cannot land is a warning only.
         if: always()
+        continue-on-error: true
         env:
           PROOFS_LIVE_NOTE: "Quoted from ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}."
         run: |
           if [ ! -f proofs-live.json ]; then echo "no proof report to record"; exit 0; fi
-          python3 proofs/write_status.py proofs-live.json STATUS.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add STATUS.md
-          if git diff --cached --quiet; then
-            echo "STATUS.md already quotes this outcome"
-          else
-            git commit -m "status: quote proofs-live run ${{ github.run_id }}"
-            git push origin "HEAD:${{ github.ref_name }}"
-          fi
+          ORIG=$(git rev-parse HEAD); trap 'git checkout -q --force "$ORIG"' EXIT
+          for i in 1 2 3 4 5; do
+            git fetch -q --depth=1 origin "${{ github.ref_name }}" && git checkout -q --force FETCH_HEAD || { sleep 5; continue; }
+            python3 proofs/write_status.py proofs-live.json STATUS.md
+            git add STATUS.md
+            if git diff --cached --quiet; then echo "STATUS.md already quotes this outcome"; exit 0; fi
+            git commit -q -m "status: quote proofs-live run ${{ github.run_id }}"
+            if git push origin "HEAD:${{ github.ref_name }}"; then exit 0; fi
+            sleep $((i * 6))
+          done
+          echo "::warning::STATUS.md could not record this run (main kept moving); the gates below still decide pass or fail"
+          exit 1
       - name: Live build matches the repository
         if: steps.live.outcome == 'success'
         run: |
