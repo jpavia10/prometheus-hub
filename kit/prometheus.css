@@ -365,3 +365,54 @@ body.pk-all-open .pk-ink { opacity: .35 !important; }
 @media (prefers-reduced-motion: reduce) { .pk-ref-row, .pk-ref-quote { animation: none; } }
 .pk-ref-detail { white-space: pre-line; margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.55; animation: pk-ref-open .28s ease both; }
 @media (prefers-reduced-motion: reduce) { .pk-ref-detail { animation: none; } }
+
+/* ================================================================== motion & performance (2026-11-20) ==================================================================
+   Measured at phone size with the CPU slowed 4x: every pillar spent ~43 ms of main-thread time a second on decoration alone (a
+   custom-property spin restyles every frame, filter animations repaint), the page background repainted on every scroll frame
+   (background-attachment: fixed), and section turns and the hero fade animated blur filters. Same look, compositor-only motion:
+   the background is a fixed layer, the rings turn with transform, blur is gone from animations, and frosted glass is kept only
+   where something detailed sits behind it. Then the feel: a springy press on everything you tap, readouts that count to their
+   value, depth on page changes, and the stage easing back as you scroll past it. */
+body { background: #03040b; }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(120% 70% at 50% -10%, color-mix(in srgb, var(--accent) 26%, #05070e), #03040b 62%); }
+@media print { body::before { display: none; } }
+
+@keyframes pk-turn { to { transform: rotate(1turn); } }
+.pk-crest::before { content: none; animation: none; }
+.pk-crest .pk-ring, .pk-core .pk-ring { position: absolute; inset: 0; clip-path: var(--pk-hex); overflow: hidden; }
+.pk-crest .pk-ring::before, .pk-core .pk-ring::before { content: ""; position: absolute; inset: -42%; will-change: transform;
+  background: conic-gradient(var(--accent), var(--accent-2), #fff, var(--accent)); animation: pk-turn 6s linear infinite; }
+.pk-core { background: none; animation: none; }
+.pk-core .pk-ring::before { background: conic-gradient(var(--cyan), var(--pearl), var(--lavender), var(--cyan)); animation-duration: 5s; }
+.pk-core span { position: relative; z-index: 1; }
+@keyframes pk-breathe { 50% { transform: scale(1.06); } }
+@keyframes pk-section { from { opacity: 0; transform: perspective(900px) rotateY(calc(var(--pk-dir, 1) * 14deg)) translateX(calc(var(--pk-dir, 1) * 40px)) scale(.96); } }
+@keyframes pk-away { to { opacity: 0; transform: translateY(-26px) scale(.93); } }
+.pk-in { will-change: transform, opacity; }
+
+body.pk-v2 .glass { -webkit-backdrop-filter: none; backdrop-filter: none; }
+body.pk-v2 .bar { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(4, 6, 14, .95); }
+body.pk-v2 .tabs { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+
+/* the press: quick in, springy out */
+body.pk-v2 :is(.btn, .tab, .chip, .pk-dock a, .pk-cmd-btn, .pk-more, .pk-ref-chip) { transition: transform .42s cubic-bezier(.34, 1.56, .64, 1), color .25s, background-color .25s, box-shadow .25s; }
+body.pk-v2 :is(.btn, .tab, .chip, .pk-dock a, .pk-cmd-btn, .pk-more, .pk-ref-chip):active { transform: scale(.95); transition-duration: .07s; }
+
+/* readouts that count (stage.js sets data-tween while the drawn digits run; the element's own text is final throughout) */
+.pk-read b[data-tween] { position: relative; -webkit-text-fill-color: transparent; }
+.pk-read b[data-tween]::after { content: attr(data-tween); position: absolute; inset: 0; -webkit-text-fill-color: currentColor; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* page changes with depth: the old page sinks, the new one settles in from just in front */
+  @keyframes pk-leave { to { opacity: 0; transform: scale(.965); } }
+  @keyframes pk-arrive { from { opacity: 0; transform: scale(1.035); } }
+  ::view-transition-old(root) { animation: pk-leave .26s cubic-bezier(.4, 0, 1, 1) both; }
+  ::view-transition-new(root) { animation: pk-arrive .42s cubic-bezier(.16, 1, .3, 1) both; }
+  /* the stage eases back as you scroll past it (scroll-linked, runs on the compositor where the browser supports it) */
+  @supports (animation-timeline: scroll()) {
+    @keyframes pk-depth { to { transform: scale(.92); opacity: .45; } }
+    body.pk-v2 .pk-stage canvas { transform-origin: 50% 100%; animation: pk-depth linear both; animation-timeline: scroll(root block); animation-range: 0 380px; }
+  }
+}
+@media (prefers-reduced-motion: reduce) { .pk-ring::before { animation: none !important; } }

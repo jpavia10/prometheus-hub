@@ -133,10 +133,17 @@
     if (glyph) P.forEach((p, i) => { const g = glyph[i % glyph.length]; p.tx = g[0]; p.ty = g[1]; });
     const ptr = { x: -9, y: -9, on: false };
     const css = getComputedStyle(document.body), acc = css.getPropertyValue("--accent").trim(), acc2 = css.getPropertyValue("--accent-2").trim();
-    function size() { dpr = Math.min(2, devicePixelRatio || 1); W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; c.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    /* 2026-11-20: physics every frame (the feel is unchanged), drawing at 1x sharpness on every 2nd frame (every 3rd where a draw
+       runs long), and no drawing while the page scrolls. It was a full-screen 2x canvas with up to 900 points redrawn 60 times a
+       second on 15 pillars, behind everything else the page does. */
+    function size() { dpr = 1; W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; c.setTransform(dpr, 0, 0, dpr, 0, 0); }
     const gx = o.at ? o.at[0] : 0.72, gy = o.at ? o.at[1] : 0.32, gs = o.scale || 0.26;
+    let fn = 0, fcost = 0, fscroll = -1e9;
+    addEventListener("scroll", () => { fscroll = performance.now(); }, { passive: true, capture: true });
     function frame(now) {
-      const t = (now - t0) / 1000; c.clearRect(0, 0, W, H);
+      const t = (now - t0) / 1000, quiet = reduced();
+      const draw = quiet || (++fn % (fcost > 6 ? 3 : 2) === 0 && performance.now() - fscroll > 140), c0 = performance.now();
+      if (draw) c.clearRect(0, 0, W, H);
       const S = Math.min(W, H) * gs, cx = W * (W < 700 ? 0.5 : gx), cy = H * (W < 700 ? 0.22 : gy);
       for (const p of P) {
         let ax = Math.sin(p.y * 6 + t * 0.15) * 0.00004, ay = Math.cos(p.x * 6 + t * 0.12) * 0.00004;
@@ -144,12 +151,14 @@
         if (ptr.on) { const dx = p.x - ptr.x, dy = (p.y - ptr.y) * (H / W), d2 = dx * dx + dy * dy; if (d2 < 0.012) { const f = 0.00045 / (d2 + 0.0008); ax += dx * f; ay += dy * f; } }
         p.vx = (p.vx + ax) * 0.93; p.vy = (p.vy + ay) * 0.93; p.x += p.vx; p.y += p.vy;
         if (!p.g) { if (p.x < -0.02) p.x = 1.02; if (p.x > 1.02) p.x = -0.02; if (p.y < -0.02) p.y = 1.02; if (p.y > 1.02) p.y = -0.02; }
+        if (!draw) continue;
         const tw = 0.6 + 0.4 * Math.sin(t * 1.3 + p.s * 9);
         c.globalAlpha = p.a * tw; c.fillStyle = p.g ? acc : (p.s > 1.4 ? acc2 : "#dfe8f5");
         c.fillRect(p.x * W, p.y * H, p.s, p.s);
       }
       c.globalAlpha = 1;
-      if (!reduced()) raf = requestAnimationFrame(frame);
+      if (draw && !quiet) { const d = performance.now() - c0; fcost = fcost ? fcost * 0.9 + d * 0.1 : d; }
+      if (!quiet) raf = requestAnimationFrame(frame);
     }
     size(); addEventListener("resize", size, { passive: true });
     addEventListener("pointermove", (e) => { ptr.x = e.clientX / W; ptr.y = e.clientY / H; ptr.on = true; }, { passive: true });
@@ -276,7 +285,7 @@
   var hero = shell.querySelector(".hero");
   if (hero && !hero.querySelector(".pk-crest")) {
     var crest = el("span", "pk-crest"); crest.setAttribute("aria-hidden", "true");
-    crest.innerHTML = '<i><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="' + (ICON[pillar] || "M12 5v14M5 12h14") + '"/></svg></i>';
+    crest.innerHTML = '<b class="pk-ring"></b><i><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="' + (ICON[pillar] || "M12 5v14M5 12h14") + '"/></svg></i>';
     hero.classList.add("pk-hero"); hero.prepend(crest);
     var lede = hero.querySelector(".lede");
     if (lede && lede.textContent.length > 110) { var more = el("button", "pk-more", "More"); more.type = "button"; more.setAttribute("aria-expanded", "false");
@@ -286,7 +295,7 @@
   /* the dock: previous pillar, the core, next pillar, plus command launcher */
   var compass = document.querySelector("nav.compass"), steps = compass ? compass.querySelectorAll("a.compass-step") : [];
   var dock = el("nav", "pk-dock"); dock.setAttribute("aria-label", "Pillars");
-  var core = el("a", "pk-core"); core.href = "../../"; core.setAttribute("aria-label", "Back to the core"); core.appendChild(el("span", null, "Core"));
+  var core = el("a", "pk-core"); core.href = "../../"; core.setAttribute("aria-label", "Back to the core"); core.appendChild(el("b", "pk-ring")); core.appendChild(el("span", null, "Core"));
   if (steps[0]) dock.appendChild(steps[0]); else dock.appendChild(el("span", "pk-gap"));
   dock.appendChild(core); if (steps[1]) dock.appendChild(steps[1]); else dock.appendChild(el("span", "pk-gap"));
   var cmdBtn = el("button", "pk-cmd-btn"); cmdBtn.type = "button"; cmdBtn.setAttribute("aria-label", "Open pillar command palette, \u2318K"); cmdBtn.title = "Command Palette (Ctrl+K)";
@@ -326,7 +335,7 @@
   function show(i, byHand) {
     if (!made) return; var prev = active; active = i; try { sessionStorage.setItem(key, String(i)); } catch (e) { /* fine */ }
     var owner = null; Array.prototype.forEach.call(made.grid.children, function (c) { var k = made.panels.indexOf(c); if (k >= 0) owner = k; c.classList.toggle("pk-off", owner !== i); });   // loose blocks follow the panel above them
-    Array.prototype.forEach.call(made.tabs.querySelectorAll(".tab"), function (b, k) { b.setAttribute("aria-selected", String(k === i)); });
+    Array.prototype.forEach.call(made.tabs.querySelectorAll(".tab"), function (b, k) { var v = String(k === i); if (b.getAttribute("aria-selected") !== v) b.setAttribute("aria-selected", v); });   // write only on change: an equal write is still a mutation, and the observer below re-syncs on every mutation (it looped every frame until 2026-11-20)
     ink(made.tabs);
     if (byHand) { made.grid.classList.add("pk-picked"); turnIn(made.panels[i], i - prev); var top = made.tabs.getBoundingClientRect().top; if (top < 40) window.scrollTo({ top: window.scrollY + top - 70, behavior: still ? "auto" : "smooth" }); window.dispatchEvent(new Event("resize")); }
   }
@@ -335,8 +344,9 @@
     var on = body.classList.contains("pk-all-open");
     var btns = document.querySelectorAll(".pk-cockpit-btn");
     for (var i = 0; i < btns.length; i++) {
-      btns[i].setAttribute("aria-pressed", String(on));
-      btns[i].textContent = on ? "All Panels: ON" : "All Panels";
+      var p = String(on), t = on ? "All Panels: ON" : "All Panels";
+      if (btns[i].getAttribute("aria-pressed") !== p) btns[i].setAttribute("aria-pressed", p);
+      if (btns[i].textContent !== t) btns[i].textContent = t;   // same reason as show(): no write, no mutation, no loop
     }
   }
   /* The cockpit control is not a tab. A role=tablist that contains it fails aria-required-children. */
@@ -429,8 +439,13 @@
       });
     }
 
+    /* 2026-11-20: the ambient field is a soft backdrop, so it draws at 1x sharpness and 30 frames a second (drift is time-based,
+       same speed), skips frames while the page scrolls, and steps down to 20 fps on a device where a frame runs long. It was
+       a full-screen 2x canvas repainted every frame on every pillar, competing with the stage and the scroll. */
+    var lastT = 0, fieldCost = 0, fieldN = 0, fieldScroll = -1e9;
+    window.addEventListener("scroll", function () { fieldScroll = performance.now(); }, { passive: true, capture: true });
     function resize() {
-      dpr = Math.min(2, window.devicePixelRatio || 1);
+      dpr = 1;
       W = Math.max(1, window.innerWidth);
       H = Math.max(1, window.innerHeight);
       cv.width = Math.round(W * dpr);
@@ -439,6 +454,11 @@
 
     function paint(ts) {
       raf = 0;
+      if (!still && ts) {
+        var skip = (fieldCost > 6 ? 3 : 2), now = performance.now();
+        if (++fieldN % skip || now - fieldScroll < 140) { if (!document.hidden) raf = requestAnimationFrame(paint); return; }
+      }
+      var c0 = performance.now(), step = lastT && ts ? Math.min(4, (ts - lastT) / 16.67) : 1; lastT = ts || 0;
       var t = (ts || 0) * 0.001;
       ptr.x += (ptr.tx - ptr.x) * 0.06;
       ptr.y += (ptr.ty - ptr.y) * 0.06;
@@ -494,8 +514,8 @@
       for (var i = 0; i < nodes.length; i++) {
         var n = nodes[i];
         if (!still) {
-          n.x = (n.x + n.vx + (mode === "sparks" ? 0 : 0) + 1) % 1;
-          n.y = (n.y + n.vy + (mode === "sparks" ? -0.00022 : 0) + 1) % 1;
+          n.x = (n.x + n.vx * step + 1) % 1;
+          n.y = (n.y + (n.vy + (mode === "sparks" ? -0.00022 : 0)) * step + 1) % 1;
         }
         var nx = n.x * W + (ptr.x - 0.5) * 18 * ((i % 3) + 1) * 0.25;
         var ny = n.y * H + (ptr.y - 0.5) * 18 * ((i % 3) + 1) * 0.25;
@@ -529,6 +549,7 @@
         ctx.fill();
       }
       ctx.globalAlpha = 1;
+      var c = performance.now() - c0; fieldCost = fieldCost ? fieldCost * 0.9 + c * 0.1 : c;
 
       if (!still && !document.hidden) raf = requestAnimationFrame(paint);
     }

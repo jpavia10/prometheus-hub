@@ -13,20 +13,38 @@
   const rgba = (c, a) => { const [r, g, b] = Array.isArray(c) ? c : hex(c); return `rgba(${r},${g},${b},${a == null ? 1 : a})`; };
   const mix = (a, b, t) => { const A = Array.isArray(a) ? a : hex(a), B = Array.isArray(b) ? b : hex(b); return [0, 1, 2].map((i) => Math.round(A[i] + (B[i] - A[i]) * t)); };
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x)), lerp = (a, b, t) => a + (b - a) * t, ease = (t) => 1 - Math.pow(1 - clamp(t, 0, 1), 3);
+  /* 2026-11-20: a device that cannot draw a frame inside its budget switches to "lite" for the rest of the visit: no canvas glow
+     (shadowBlur is the most expensive thing a 2D canvas does). Measured, never guessed: see the governor in loop(). */
+  let lite = /[?&]lite=1\b/.test(location.search);
   const ink = {
     rgba, mix, hex, clamp, lerp, ease,
-    glow(g, color, blur) { g.shadowColor = color; g.shadowBlur = blur; },
+    glow(g, color, blur) { if (lite) return; g.shadowColor = color; g.shadowBlur = blur; },
     noGlow(g) { g.shadowBlur = 0; g.shadowColor = "transparent"; },
     dot(g, x, y, r, color, a = 1) { g.beginPath(); g.arc(x, y, Math.max(0.1, r), 0, Math.PI * 2); g.fillStyle = rgba(color, a); g.fill(); },
     halo(g, x, y, r, color, a = 1) { const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, rgba(color, a)); gr.addColorStop(0.35, rgba(color, a * 0.35)); gr.addColorStop(1, rgba(color, 0)); g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2); },
     line(g, x1, y1, x2, y2, color, w = 1, a = 1) { g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.strokeStyle = rgba(color, a); g.lineWidth = w; g.stroke(); },
     arc(g, x, y, r, a0, a1, color, w = 2, a = 1) { g.beginPath(); g.arc(x, y, r, a0, a1); g.strokeStyle = rgba(color, a); g.lineWidth = w; g.stroke(); },
-    text(g, s, x, y, o = {}) { g.font = `${o.weight || 500} ${o.size || 11}px ${o.font || "Outfit, system-ui, sans-serif"}`; g.textAlign = o.align || "left"; g.textBaseline = o.base || "middle"; g.fillStyle = rgba(o.color || "#ffffff", o.alpha == null ? 1 : o.alpha); if (o.spacing && "letterSpacing" in g) g.letterSpacing = o.spacing + "px"; g.fillText(String(s), x, y); if ("letterSpacing" in g) g.letterSpacing = "0px"; },
+    text(g, s, x, y, o = {}) { g.font = `${o.weight || 500} ${o.size || 11}px ${o.font || "Outfit, system-ui, sans-serif"}`; g.textAlign = o.align || "left"; g.textBaseline = o.base || "middle"; g.fillStyle = rgba(o.color || "#ffffff", o.alpha == null ? 1 : o.alpha); const sp = o.spacing && "letterSpacing" in g; if (sp) g.letterSpacing = o.spacing + "px"; g.fillText(String(s), x, y); if (sp) g.letterSpacing = "0px"; },
     fit(g, s, max, size, weight) { g.font = `${weight || 500} ${size}px Outfit, system-ui, sans-serif`; s = String(s); if (g.measureText(s).width <= max) return s; while (s.length > 2 && g.measureText(s + "…").width > max) s = s.slice(0, -1); return s.trimEnd() + "…"; },
     rand(seed) { let s = seed >>> 0 || 1; return () => { s = (s + 0x6D2B79F5) | 0; let t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; },
     days(a, b) { return Math.round((new Date(String(b).slice(0, 10) + "T12:00:00") - new Date(String(a).slice(0, 10) + "T12:00:00")) / 864e5); },
     today() { const q = new URLSearchParams(location.search).get("today"); return /^\d{4}-\d{2}-\d{2}$/.test(q || "") ? q : PK.day(); },
   };
+
+  /* Readouts count to their value (2026-11-20). The element's text is the final value from the first moment (screen readers,
+     copy, proofs read it); only the drawn digits tween, through data-tween and a ::after in prometheus.css. */
+  const NUM = /^([^\d-]*)(-?[\d,]*\.?\d+)(.*)$/;
+  function tween(el, from, to) {
+    if (STILL) return; const m = NUM.exec(to); if (!m) return;
+    if (!/^[$€£+−-]?\s*$/.test(m[1]) || /[\d:\/]/.test(m[3]) || m[3].length > 6) return;   // amounts, counts, percents; never times, dates or labels
+    const end = parseFloat(m[2].replace(/,/g, "")); if (!isFinite(end)) return;
+    const fm = from != null && NUM.exec(String(from)); const start = fm ? parseFloat(fm[2].replace(/,/g, "")) : 0;
+    if (!isFinite(start) || start === end) return;
+    const dec = (m[2].split(".")[1] || "").length, commas = m[2].includes(","), t0 = performance.now(), dur = 750;
+    const fmt = (v) => { let s = Math.abs(v).toFixed(dec); if (commas) { const [i, f] = s.split("."); s = i.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (f ? "." + f : ""); } return m[1] + (v < 0 ? "-" : "") + s + m[3]; };
+    const step = (now) => { const k = ease((now - t0) / dur); if (k >= 1 || !el.isConnected) { el.removeAttribute("data-tween"); return; } el.setAttribute("data-tween", fmt(start + (end - start) * k)); requestAnimationFrame(step); };
+    el.setAttribute("data-tween", fmt(start)); requestAnimationFrame(step);
+  }
 
   function stage(o) {
     const shell = document.querySelector(".shell"), hero = shell && shell.querySelector(".hero"), main = document.getElementById("app");
@@ -101,10 +119,30 @@
       }
       ink.noGlow(g); g.globalAlpha = 1; g.globalCompositeOperation = "source-over"; dirty = false;
     };
-    const loop = (t) => { raf = requestAnimationFrame(loop); if (!seen || document.hidden) { last = t; return; } S.dt = Math.min(0.05, (t - last) / 1000 || 0.016); last = t; S.t += S.dt; S.tick++; if (!STILL || dirty) frame(); };
+    /* The governor (2026-11-20). Measured at phone size with the CPU slowed 4x, stages held the main thread for most of every
+       second, so scrolling and tab turns stuttered. Now: the cost of each frame is averaged; a stage that runs long draws every
+       2nd or 3rd frame instead of every frame (steady 30 or 20 fps beats a ragged 60); while the page scrolls the scroll gets the
+       frame; after 12 s untouched the picture settles to 30 fps; and a stage that is slow even so loses its glow (lite). */
+    let cost = 0, every = 1, n = 0, lastInput = performance.now(), scrolling = -1e9;
+    addEventListener("scroll", () => { scrolling = performance.now(); }, { passive: true, capture: true });
+    for (const ev of ["pointerdown", "keydown", "wheel", "touchstart"]) addEventListener(ev, () => { lastInput = performance.now(); }, { passive: true, capture: true });
+    const loop = (t) => {
+      raf = requestAnimationFrame(loop);
+      if (!seen || document.hidden) { last = t; return; }
+      if (STILL && !dirty) return;
+      const step = Math.max(every, t - lastInput > 12000 ? 2 : 1, t - scrolling < 140 ? 3 : 1);
+      if (++n % step && !dirty) return;
+      S.dt = Math.min(0.1, (t - last) / 1000 || 0.016); last = t; S.t += S.dt; S.tick++;
+      const t0 = performance.now(); frame(); const c = performance.now() - t0;
+      cost = cost ? cost * 0.9 + c * 0.1 : c;
+      every = cost > 14 ? 3 : cost > 7 ? 2 : 1;
+      if (cost > 10 && !lite) lite = true;
+      S.cost = cost; S.every = every; S.lite = lite;
+    };
     let shown = [];
     const paintReads = () => { let list = []; try { list = (S.data != null && o.readouts && o.readouts(S.data, S)) || []; } catch (e) { console.error("[stage readouts]", e); } const same = list.length === shown.length && list.every((r, i) => shown[i] && shown[i].v === r.v && shown[i].k === r.k);
-      if (same) return; shown = list; reads.replaceChildren(...list.map((r) => PK.h("div.pk-read" + (r.tone ? "." + r.tone : ""), null, PK.h("b", null, String(r.v)), PK.h("span", null, r.k)))); };
+      if (same) return; const before = new Map(shown.map((r) => [r.k, r.v])); shown = list;
+      reads.replaceChildren(...list.map((r) => { const b = PK.h("b", null, String(r.v)); tween(b, before.has(r.k) ? before.get(r.k) : null, String(r.v)); return PK.h("div.pk-read" + (r.tone ? "." + r.tone : ""), null, b, PK.h("span", null, r.k)); })); };
     const refresh = () => { try { S.data = o.data ? o.data(S) : null; } catch (e) { console.error("[stage data]", e); S.data = null; } paintReads(); dirty = true; if (STILL) frame(); };
     const at = (e) => { const r = canvas.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
     canvas.addEventListener("pointermove", (e) => { [S.ptr.x, S.ptr.y] = at(e); S.ptr.on = true; if (STILL) frame(); });

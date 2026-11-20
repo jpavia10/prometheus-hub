@@ -192,6 +192,21 @@ with sync_playwright() as p:
     proof("PILLAR-1", "Every pillar's default shell: crest, sections from its own panels, a dock back to the core", s1["crest"] and s1["tabs"] >= 3 and len(s1["showing"]) == 1 and len(s2["showing"]) == 1 and s1["showing"] != s2["showing"] and s1["core"].endswith("/prometheus-hub/") | s1["core"].endswith(":8377/") and s1["steps"] >= 1 and s1["wide"] <= 390 and s1["tall"] < 2600,
           f"Piano: {s1['tabs']} sections, showing {s1['showing']} then {s2['showing']}; page {s1['tall']} px tall at phone size (was 6,672); dock: core + {s1['steps']} neighbours"); c3.close()
 
+    # PERF-1 (2026-11-20): a pillar at rest does no work it does not need. The kit's tab sync once re-triggered itself through its
+    # own MutationObserver every frame (equal attribute and text writes still count as mutations), and the ambient field drew a
+    # full-screen 2x canvas at 60 fps. At rest: no DOM mutations inside the page for a second, the field at 1x, the stage governed.
+    try:
+        c5 = b.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2); p5 = c5.new_page()
+        p5.goto(f"{URL}pillars/money/", wait_until="load"); p5.wait_for_selector(".pk-dock", timeout=15000); p5.wait_for_timeout(1500)
+        r5 = p5.evaluate("""() => new Promise((res) => { let n = 0; const mo = new MutationObserver((l) => { n += l.length; });
+          mo.observe(document.getElementById('app'), { childList: true, subtree: true, attributes: true, characterData: true });
+          setTimeout(() => { mo.disconnect(); const f = document.getElementById('field');
+            res({ n, fieldW: f ? f.width : -1, vw: innerWidth, stage: (window.__stage || []).length, governed: !!(window.__stage && window.__stage[0] && 'cost' in window.__stage[0].S) }); }, 1000); })""")
+        ok5 = r5["n"] == 0 and r5["fieldW"] in (-1, r5["vw"]) and (r5["stage"] == 0 or r5["governed"])
+        proof("PERF-1", "A pillar at rest does no needless work: no DOM mutations for a second, the ambient field at 1x, the stage under its frame governor", ok5,
+              f"mutations in 1 s at rest: {r5['n']}; field canvas {r5['fieldW']} px wide for a {r5['vw']} px screen; stage governed: {r5['governed']}"); c5.close()
+    except Exception as e: proof("PERF-1", "A pillar at rest does no needless work", False, "did not finish: " + str(e)[:200])
+
     # PILLAR-2: every pillar page in this repository runs clean: opened in a real page, every section tapped, and any script error fails the build
     c4 = b.new_context(viewport={"width": 390, "height": 844}); dirty = []; taps = 0
     if MOCK: c4.route("https://api.weather.gov/**", lambda route, request: route.abort())
