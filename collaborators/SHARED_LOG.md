@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Motion pass 4: the stage governor judges by real frame time; Kairos labels made once (d44)
+- The stage governor switched every stage to "lite" (no canvas glow) on the first frame of every visit, because warm-up frames always run long; and it judged only the time spent in draw(), while canvas glow costs its time in raster after draw() returns. Now: a 2 s warm-up, then lite when the stage's own draw runs long or the real time between frames averages over 25 ms. Measured here (phone size, CPU 4x, software rendering): Money and Hearth keep their glow at 55-60 fps; Forge and Kairos drop it after 3.5 s and hold 33-34.
+- Kairos formatted about 15 dates on every frame; month names, the day and the fitted next-date line are now made once (draw 9.1 -> 4.3 ms a frame; the picture is the same, labels byte for byte).
+
 ### [2026-11-20] Motion pass 3: the crest glow and Garage's 3D viewer (d43); trials 3 and 4 pinned
 - The pillar crest's 18 px glow was a drop-shadow on the whole crest, so the turning ring inside made the browser re-blur it every frame. The glow now comes from a still hex of its own (same glow, same silhouette; pixel difference under 1 of 255). At rest, phone size, CPU 4x: Odyssey 39 -> 45 fps, Kairos 40 -> 42 (49 with the stage canvas hidden, was 42).
 - Garage's 3D viewer drew 60 frames a second even in a hidden tab or scrolled away; it now runs only on screen, turns at 30 fps (full rate under a finger), does not turn by itself with reduced motion, and clears each frame (it used to lay its backdrop at 25-55 % over the last frame, which left a ghost of the car while it turned; the settled colours are kept).

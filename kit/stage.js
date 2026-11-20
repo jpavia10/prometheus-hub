@@ -126,18 +126,27 @@
     let cost = 0, every = 1, n = 0, lastInput = performance.now(), scrolling = -1e9;
     addEventListener("scroll", () => { scrolling = performance.now(); }, { passive: true, capture: true });
     for (const ev of ["pointerdown", "keydown", "wheel", "touchstart"]) addEventListener(ev, () => { lastInput = performance.now(); }, { passive: true, capture: true });
+    let gap = 0, lastRaw = 0;
     const loop = (t) => {
       raf = requestAnimationFrame(loop);
-      if (!seen || document.hidden) { last = t; return; }
+      const dRaw = lastRaw ? t - lastRaw : 0; lastRaw = t;
+      if (!seen || document.hidden) { last = t; gap = 0; return; }
       if (STILL && !dirty) return;
       const step = Math.max(every, t - lastInput > 12000 ? 2 : 1, t - scrolling < 140 || performance.now() < (window.__pkBusy || 0) ? 3 : 1);   // a panel turning in (kit.js turnIn) gets the frames too
       if (++n % step && !dirty) return;
       S.dt = Math.min(0.1, (t - last) / 1000 || 0.016); last = t; S.t += S.dt; S.tick++;
       const t0 = performance.now(); frame(); const c = performance.now() - t0;
-      cost = cost ? cost * 0.9 + c * 0.1 : c;
-      every = cost > 14 ? 3 : cost > 7 ? 2 : 1;
-      if (cost > 10 && !lite) lite = true;
-      S.cost = cost; S.every = every; S.lite = lite;
+      /* 2026-11-20: the first frames (fonts, first layout, warm-up) always run long, and they used to switch every stage to lite
+         for the whole visit on the first frame. The governor now starts judging after a 2 s warm-up, and judges lite by the real
+         time between frames, not only by the time spent in draw(): canvas glow costs its time in raster, after draw() returns, so
+         a phone that keeps 40+ frames a second keeps the glow and one that cannot loses it. */
+      if (S.t > 2) {
+        cost = cost ? cost * 0.9 + c * 0.1 : c;
+        every = cost > 14 ? 3 : cost > 7 ? 2 : 1;
+        if (dRaw && dRaw < 250 && t - scrolling > 400 && performance.now() > (window.__pkBusy || 0)) gap = gap ? gap * 0.95 + dRaw * 0.05 : dRaw;
+        if (!lite && (cost > 10 || (S.t > 3.5 && gap > 25))) lite = true;
+      }
+      S.cost = cost; S.every = every; S.lite = lite; S.gap = gap;
     };
     let shown = [];
     const paintReads = () => { let list = []; try { list = (S.data != null && o.readouts && o.readouts(S.data, S)) || []; } catch (e) { console.error("[stage readouts]", e); } const same = list.length === shown.length && list.every((r, i) => shown[i] && shown[i].v === r.v && shown[i].k === r.k);

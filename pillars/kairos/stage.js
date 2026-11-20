@@ -5,6 +5,10 @@
   const { store } = PK, S = store("kairos"), I = PK.ink, KIND = { "federal holiday": "#ffc552", "tax deadline": "#ff7a8c", "clock change": "#5ee7ff" };
   const label = (d) => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
   let marks = [];
+  /* 2026-11-20: the labels were formatted again on every frame (about 15 toLocaleDateString calls, the slowest thing this stage
+     did: 9 ms a frame at phone speed). Month names, the day and the fitted next-date line are now made once and reused. */
+  const MON = Array.from({ length: 12 }, (_, m) => new Date(2000, m, 1, 12).toLocaleDateString("en-US", { month: "short" }).toUpperCase());
+  const day = { key: "", wk: "", md: "" }, fitted = new Map();
   PK.stage({
     label: "The year ahead from today, with every fixed date, event and deadline",
     data() {
@@ -24,7 +28,7 @@
       const start = new Date(D.today + "T12:00:00");                                   // month boundaries on the ring
       for (let m = 0; m <= 12; m++) { const first = new Date(start.getFullYear(), start.getMonth() + m, 1, 12), d = Math.round((first - start) / 864e5); if (d < 0 || d > 365) continue; const a = ang(d); if (d < 20) continue;
         I.line(g, cx + Math.cos(a) * (R - 7), cy + Math.sin(a) * (R - 7), cx + Math.cos(a) * (R + 7), cy + Math.sin(a) * (R + 7), "#ffffff", 1, 0.35);
-        const mid = ang(d + 15); I.text(g, first.toLocaleDateString("en-US", { month: "short" }).toUpperCase(), cx + Math.cos(mid) * (R - 19), cy + Math.sin(mid) * (R - 19), { size: 9, weight: 600, align: "center", color: "#cfd8ea", alpha: 0.7, spacing: 1.5 }); }
+        const mid = ang(d + 15); I.text(g, MON[first.getMonth()], cx + Math.cos(mid) * (R - 19), cy + Math.sin(mid) * (R - 19), { size: 9, weight: 600, align: "center", color: "#cfd8ea", alpha: 0.7, spacing: 1.5 }); }
       I.glow(g, A, 14); I.arc(g, cx, cy, R, -Math.PI / 2, Math.PI * 1.5, A, 2, 0.55); I.noGlow(g);
       const sweep = ((t * 0.08) % 1) * Math.PI * 2; I.arc(g, cx, cy, R, -Math.PI / 2 + sweep - 0.5, -Math.PI / 2 + sweep, "#ffffff", 3, 0.5);
       marks = [];
@@ -35,10 +39,11 @@
       for (const e of D.todays) if (e.time) { const [hh, mm] = e.time.split(":").map(Number), a = -Math.PI / 2 + (hh + mm / 60) / 24 * Math.PI * 2; I.dot(g, cx + Math.cos(a) * r2, cy + Math.sin(a) * r2, 3.5, B); }
       const now = new Date(), a = -Math.PI / 2 + (now.getHours() + now.getMinutes() / 60) / 24 * Math.PI * 2;
       I.glow(g, A, 10); I.line(g, cx, cy, cx + Math.cos(a) * (r2 - 4), cy + Math.sin(a) * (r2 - 4), A, 2, 0.9); I.noGlow(g); I.dot(g, cx, cy, 3, "#ffffff");
-      const d0 = new Date(D.today + "T12:00:00");
-      I.text(g, d0.toLocaleDateString("en-US", { weekday: "long" }).toUpperCase(), cx, cy - 16, { size: 9.5, weight: 600, align: "center", color: "#cfd8ea", alpha: 0.75, spacing: 2 });
-      I.text(g, d0.toLocaleDateString("en-US", { month: "long", day: "numeric" }), cx, cy + 4, { size: 19, weight: 400, align: "center" });
-      const next = D.marks[0]; if (next) I.text(g, I.fit(g, (next.d === 0 ? "today: " : `in ${next.d} d: `) + next.name, r2 * 1.5, 10.5, 500), cx, cy + 24, { size: 10.5, align: "center", color: next.color, alpha: 0.95 });
+      if (day.key !== D.today) { const d0 = new Date(D.today + "T12:00:00"); day.key = D.today; day.wk = d0.toLocaleDateString("en-US", { weekday: "long" }).toUpperCase(); day.md = d0.toLocaleDateString("en-US", { month: "long", day: "numeric" }); }
+      I.text(g, day.wk, cx, cy - 16, { size: 9.5, weight: 600, align: "center", color: "#cfd8ea", alpha: 0.75, spacing: 2 });
+      I.text(g, day.md, cx, cy + 4, { size: 19, weight: 400, align: "center" });
+      const next = D.marks[0]; if (next) { const raw = (next.d === 0 ? "today: " : `in ${next.d} d: `) + next.name, fk = raw + "|" + Math.round(r2 * 1.5); let line = fitted.get(fk); if (line == null) { if (fitted.size > 64) fitted.clear(); line = I.fit(g, raw, r2 * 1.5, 10.5, 500); fitted.set(fk, line); }
+        I.text(g, line, cx, cy + 24, { size: 10.5, align: "center", color: next.color, alpha: 0.95 }); }
       I.dot(g, cx + Math.cos(-Math.PI / 2) * R, cy - R, 4, "#ffffff"); I.text(g, "TODAY", cx, cy - R - 13, { size: 8.5, weight: 700, align: "center", color: A, spacing: 2 });
       if (S.pick) { const p = S.pick, w = Math.min(S.w - 20, g.measureText(p.m.name).width + 90); I.text(g, "", 0, 0); g.fillStyle = "rgba(5,7,16,.82)"; const bx = I.clamp(p.x - w / 2, 10, S.w - w - 10), by = I.clamp(p.y - 44, 6, S.h - 40); g.beginPath(); g.roundRect(bx, by, w, 32, 10); g.fill();
         I.text(g, I.fit(g, p.m.name, w - 78, 11.5, 500), bx + 10, by + 16, { size: 11.5 }); I.text(g, label(p.m.date), bx + w - 10, by + 16, { size: 10.5, align: "right", color: p.m.color }); }
