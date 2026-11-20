@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-20 16:12 UTC · 3 open in this pillar.
+Updated 2026-11-20 16:55 UTC · 3 open in this pillar.
 
 
 - MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
@@ -20,22 +20,24 @@ Updated 2026-11-20 16:12 UTC · 3 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-20 16:12 UTC · 1 open in this pillar.
+Updated 2026-11-20 16:55 UTC · 2 open in this pillar.
 
 
+- MID-GEM-12 · TRIAL 5: break the Midas terms parser on paper (30 cases, predict what the code returns) · due 2026-11-23
+    make: midas_gemini_parser-trial_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 cases, each with expect, predict and why.
 - MID-GEM-11 · Midas Ledger: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason in your HOMEWORK doc)
     make: midas_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-20 16:12 UTC · 0 open in this pillar.
+Updated 2026-11-20 16:55 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Midas Ledger right now.
 
 ## ChatGPT
 
-Updated 2026-11-20 16:12 UTC · 1 open in this pillar.
+Updated 2026-11-20 16:55 UTC · 1 open in this pillar.
 
 
 - MID-GPT-01 · Audit Midas v2 on the made-up book: 20 findings · due 2026-11-14
@@ -43,14 +45,14 @@ Updated 2026-11-20 16:12 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-20 16:12 UTC · 0 open in this pillar.
+Updated 2026-11-20 16:55 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Midas Ledger right now.
 
 ## Hydrogen
 
-Updated 2026-11-20 16:12 UTC · 0 open in this pillar.
+Updated 2026-11-20 16:55 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Midas Ledger right now.

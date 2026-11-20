@@ -1,6 +1,6 @@
 {
- "built": "2026-11-20T16:12:30Z",
- "checked": "2026-11-20T16:12:30Z",
+ "built": "2026-11-20T16:55:18Z",
+ "checked": "2026-11-20T16:55:18Z",
  "version": 2,
  "today": "2026-11-20",
  "sources": {
@@ -23,26 +23,26 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 118,
+  "todo": 123,
   "late": 3,
-  "due7": 77,
+  "due7": 82,
   "delivered": 5,
   "queued": 12,
   "withdrawn": 110
  },
  "per": {
   "Gemini": {
-   "todo": 49,
+   "todo": 54,
    "late": 0,
-   "due7": 22,
+   "due7": 27,
    "delivered": 5,
    "queued": 2,
    "done7": 23,
    "withdrawn": 68,
-   "items": 220,
+   "items": 311,
    "floor": 30,
    "by": {
-    "hub": 45,
+    "hub": 50,
     "titan": 3,
     "tproj": 1,
     "board": 0
@@ -264,11 +264,11 @@
  },
  "places": {
   "Prometheus Hub": {
-   "todo": 4,
+   "todo": 8,
    "delivered": 0,
    "by": {
     "Grok": 1,
-    "Gemini": 1,
+    "Gemini": 5,
     "Muse": 2
    }
   },
@@ -470,10 +470,10 @@
    }
   },
   "Midas Ledger": {
-   "todo": 4,
+   "todo": 5,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 2,
     "ChatGPT": 1
    }
@@ -594,6 +594,142 @@
      "Claude re-checks 3 of your differ lines."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_grok.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-11",
+   "title": "TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)",
+   "status": "todo",
+   "due": "2026-11-23",
+   "items": 30,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Vision at the level of a coin's mint mark. The same 30 photos and the same prompt every model has taken (results in Titan's collaborators/MODEL_ACCURACY.md); best so far on this pack: core accuracy 85 % (Gemini app, Oct 2026). The bar to do Titan's Phase 2 research is core accuracy 95 %, invented values 1 % or less, false confidence 5 % or less.",
+    "steps": [
+     "Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).",
+     "Open each of the 30 photos at full size. Read the coin itself: legend, date, value, mint mark, design.",
+     "Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.",
+     "Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.",
+     "Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report."
+    ],
+    "make": "bakeoff_{yourmodel}_main_{YYYYMMDD-HHMM}.json",
+    "folder": "Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)",
+    "shape": "one JSON object keyed by the 30 file names without .webp, exactly as PROMPT.md shows",
+    "done": "All 30 answered and saved.",
+    "checks": [
+     "Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-12",
+   "title": "TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins)",
+   "status": "todo",
+   "due": "2026-11-23",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Vision at the level of a coin's mint mark. The same 15 photos and the same prompt every model has taken (results in Titan's collaborators/MODEL_ACCURACY.md); best so far on this pack: core accuracy 76 % (Grok and the Gemini app, Oct 2026). The bar to do Titan's Phase 2 research is core accuracy 95 %, invented values 1 % or less, false confidence 5 % or less.",
+    "steps": [
+     "Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).",
+     "Open each of the 15 photos at full size. Read the coin itself: legend, date, value, mint mark, design.",
+     "Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.",
+     "Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.",
+     "Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report."
+    ],
+    "make": "bakeoff_{yourmodel}_locked_{YYYYMMDD-HHMM}.json",
+    "folder": "Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)",
+    "shape": "one JSON object keyed by the 15 file names without .webp, exactly as PROMPT.md shows",
+    "done": "All 15 answered and saved.",
+    "checks": [
+     "Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-13",
+   "title": "TRIAL 3: what makes the home screen and Athenaeum slow on a phone (find it from the code)",
+   "status": "todo",
+   "due": "2026-11-23",
+   "items": 10,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Reading a large codebase and reasoning about what a browser does every frame. Claude measured both pages at phone size with the CPU slowed 4x: the home screen holds about 33 frames a second at rest even with its WebGL canvases hidden, Athenaeum about 47; both should hold 60. Claude has found part of the cause; you are scored on what you find that its measurements confirm.",
+    "steps": [
+     "Read every file each page loads (HTML, CSS, JS, shaders).",
+     "List everything that runs at rest, every frame: requestAnimationFrame loops, CSS animations and what each one animates (transform/opacity run on the compositor; anything else repaints), filter and backdrop-filter under or on moving things, canvases (their size against devicePixelRatio and how often they redraw), WebGL (draw calls, overdraw, cost per pixel of each shader).",
+     "Then what runs on scroll and on a tap.",
+     "For each cost: estimate its milliseconds per frame on a mid-range phone and show the reasoning (pixel count x work per pixel, or calls x cost).",
+     "For each, give a TOGGLE (one CSS rule or one small JS change that removes only that cost, so Claude can measure it) and a FIX (the change that keeps the look and removes most of the cost).",
+     "Rank by estimated cost, largest first."
+    ],
+    "make": "hub_gemini_perf-audit_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, 10 to 25 objects, ranked largest cost first",
+    "done": "10 or more findings, ranked, each with a toggle and a fix.",
+    "checks": [
+     "Claude applies each toggle on a phone-size page with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-14",
+   "title": "TRIAL 4: real defects in the shared kit and the Forge, each with a reproduction",
+   "status": "todo",
+   "due": "2026-11-23",
+   "items": 6,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Finding bugs in about 3,000 lines of real code without running it, and proving each one. The kit (kit/kit.js, kit/stage.js, kit/prometheus.css) runs on every pillar; the Forge (pillars/forge/app.js and its builder tools/forge/build.py) is where Joseph sees every AI's homework.",
+    "steps": [
+     "Read the files in full. Look for what actually goes wrong: wrong numbers, dates and time zones, state that is lost or doubled, a control that does nothing or the wrong thing, keyboard and screen-reader traps, races between loading and drawing, input build.py mis-reads, listeners added again on every call, errors swallowed.",
+     "Prove each one: numbered steps on the live site at phone size, or the exact input to build.py, with what should happen and what happens.",
+     "Severity: data (loses or changes a record) | number (shows a wrong value) | control (a control fails) | access | performance | visual.",
+     "Give the fix as an exact code change."
+    ],
+    "make": "hub_gemini_defects_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, 6 to 20 objects, worst first",
+    "done": "6 or more defects, each reproducible.",
+    "checks": [
+     "Claude follows every reproduction. Score: confirmed minus wrong; 'data' and 'number' defects count double."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
    },
    "late": false
   },
@@ -9822,6 +9958,40 @@
      "Claude re-checks 3 of your differ lines."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/continuity/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-12",
+   "title": "TRIAL 5: break the Midas terms parser on paper (30 cases, predict what the code returns)",
+   "status": "todo",
+   "due": "2026-11-23",
+   "items": 30,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Executing code in your head, exactly. build.py's parse_terms (line 1767) turns a card's terms bullet into purchase APR, promo APR, promo end and due day; docs/BOOK_SCHEMA.md says what it must accept. The 25 cases in test/parser_cases.json already pass. You write 30 new ones and predict, for each, what the code returns today.",
+    "steps": [
+     "Read parse_terms and every function it calls, and BOOK_SCHEMA.md.",
+     "Write 15 'real' cases: a terms wording a real US card issuer uses in its cardmember agreement or pricing page (cite the page, quote it under 300 characters), written as a book terms bullet. 'expect' is what BOOK_SCHEMA.md says the book means.",
+     "Write 15 'edge' cases aimed at the gaps: separators, case, spacing, dates, 0 vs missing, several rates on one line, words in a different order, deferred interest.",
+     "For every case, 'predict' is what build.py returns today, worked out from the code line by line (not what it should return), and 'why' names the lines.",
+     "Made-up numbers and names only. No real account data."
+    ],
+    "make": "midas_gemini_parser-trial_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD)",
+    "shape": "JSON array of 30 objects in test/parser_cases.json's format plus kind, predict, why, source_url, quote",
+    "done": "30 cases, each with expect, predict and why.",
+    "checks": [
+     "Claude runs all 30 through build.py. Score: predictions that match the code exactly; expectations that match BOOK_SCHEMA.md; real parser gaps found (each is a bonus)."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
    },
    "late": false
   },

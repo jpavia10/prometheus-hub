@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Gemini: five capability trials first (owner)
+- Joseph: "Add more demanding homework first test this new models capabilities." Five trials lead Gemini's homework (due 2026-11-23), each scored against sealed answers or Claude's own measurements: HUB-GEM-11/12 Titan's blind coin-photo test (main 30, locked 15; best so far 85 % / 76 %, Phase 2 bar 95 %), HUB-GEM-13 what keeps the home screen and Athenaeum below 60 fps (every finding with a toggle Claude measures), HUB-GEM-14 real defects in the kit and the Forge with reproductions, MID-GEM-12 30 Midas parser cases with what build.py returns today.
+- Run prompt (docs/agents/prompts/gemini-neon-full-run.md) is now model-neutral, trials first, then Odyssey. proofs-live timeout 12 -> 20 min (the browser install alone took 7 min and the d42 run was cut off mid-proof).
+
 ### [2026-11-20] Motion and performance, pass 2: tab switches (d42)
 - Tab switches, phone size, CPU slowed 4x, frames per second in the 0.9 s after the tap: Forge "Tasks" 12 -> 60, Odyssey "Trip files" 41 -> 50, Money 61/60 (was fine). Cause on the Forge: the card glow under the pointer was a radial gradient sized to the whole card, and the task list is one 9,000 px card, so every frame of the turn re-rastered it (turning gradients off alone gave 61 fps). The glow now paints a 520 px band that follows the pointer; it looks the same.
 - Also: the section turn runs on the Web Animations API (no class toggle and forced reflow), canvases yield for the half second of a turn, the tab underline moves on the next frame instead of mid-click, resize is sent once per frame, Forge task rows build their detail on first open, and long Forge and Odyssey lists skip painting off-screen rows (content-visibility). Forge at rest is still ~30 fps here (its full-screen spark field plus software rendering); judge it on the phone.

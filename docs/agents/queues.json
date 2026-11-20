@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "pillar": "hub",
  "agents": [
   {
@@ -129,6 +129,362 @@
    "id": "gemini",
    "name": "Gemini",
    "tasks": [
+    {
+     "id": "HUB-GEM-11",
+     "title": "TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)",
+     "state": "now",
+     "added": "2026-11-20",
+     "due": "2026-11-23",
+     "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Vision at the level of a coin's mint mark. The same 30 photos and the same prompt every model has taken (results in Titan's collaborators/MODEL_ACCURACY.md); best so far on this pack: core accuracy 85 % (Gemini app, Oct 2026). The bar to do Titan's Phase 2 research is core accuracy 95 %, invented values 1 % or less, false confidence 5 % or less.",
+     "unlocks": "If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.",
+     "inputs": [
+      "https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-main (the 30 photos, BK-xxxx.webp)",
+      "https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/PROMPT.md (the test's own prompt and answer format: follow it exactly)",
+      "each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/BK-xxxx.webp"
+     ],
+     "steps": [
+      "Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).",
+      "Open each of the 30 photos at full size. Read the coin itself: legend, date, value, mint mark, design.",
+      "Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.",
+      "Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.",
+      "Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report."
+     ],
+     "deliver": {
+      "file": "bakeoff_{yourmodel}_main_{YYYYMMDD-HHMM}.json",
+      "folder": "Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)",
+      "shape": "one JSON object keyed by the 30 file names without .webp, exactly as PROMPT.md shows"
+     },
+     "count": 30,
+     "fields": [
+      {
+       "name": "country",
+       "type": "text",
+       "rule": "issuing country in English, or null"
+      },
+      {
+       "name": "year",
+       "type": "text",
+       "rule": "Western year of the date on the shown side, or null"
+      },
+      {
+       "name": "denom",
+       "type": "text",
+       "rule": "value and unit as on the coin, or null"
+      },
+      {
+       "name": "mint",
+       "type": "text",
+       "rule": "mint mark letters; \"\" if the shown side has none; null if you cannot tell"
+      },
+      {
+       "name": "km",
+       "type": "text",
+       "rule": "Krause number without 'KM#', or null"
+      },
+      {
+       "name": "confidence",
+       "type": "text",
+       "rule": "high / med / low for the whole answer"
+      }
+     ],
+     "self_check": [
+      "All 30 keys, each with the six fields.",
+      "Every null is a real 'cannot tell', not a skipped photo.",
+      "Nothing came from the Titan repository's data or an earlier run.",
+      "Valid JSON, named exactly as asked."
+     ],
+     "done_when": "All 30 answered and saved.",
+     "checks": [
+      "Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals."
+     ],
+     "rejected_if": [
+      "an answer that matches the record but not the photo (looked up)",
+      "fewer than the count",
+      "not the shape PROMPT.md asks for"
+     ]
+    },
+    {
+     "id": "HUB-GEM-12",
+     "title": "TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins)",
+     "state": "now",
+     "added": "2026-11-20",
+     "due": "2026-11-23",
+     "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Vision at the level of a coin's mint mark. The same 15 photos and the same prompt every model has taken (results in Titan's collaborators/MODEL_ACCURACY.md); best so far on this pack: core accuracy 76 % (Grok and the Gemini app, Oct 2026). The bar to do Titan's Phase 2 research is core accuracy 95 %, invented values 1 % or less, false confidence 5 % or less.",
+     "unlocks": "If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.",
+     "inputs": [
+      "https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-locked (the 15 photos, BK-xxxx.webp)",
+      "https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/PROMPT.md (the test's own prompt and answer format: follow it exactly)",
+      "each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/BK-xxxx.webp"
+     ],
+     "steps": [
+      "Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).",
+      "Open each of the 15 photos at full size. Read the coin itself: legend, date, value, mint mark, design.",
+      "Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.",
+      "Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.",
+      "Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report."
+     ],
+     "deliver": {
+      "file": "bakeoff_{yourmodel}_locked_{YYYYMMDD-HHMM}.json",
+      "folder": "Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)",
+      "shape": "one JSON object keyed by the 15 file names without .webp, exactly as PROMPT.md shows"
+     },
+     "count": 15,
+     "fields": [
+      {
+       "name": "country",
+       "type": "text",
+       "rule": "issuing country in English, or null"
+      },
+      {
+       "name": "year",
+       "type": "text",
+       "rule": "Western year of the date on the shown side, or null"
+      },
+      {
+       "name": "denom",
+       "type": "text",
+       "rule": "value and unit as on the coin, or null"
+      },
+      {
+       "name": "mint",
+       "type": "text",
+       "rule": "mint mark letters; \"\" if the shown side has none; null if you cannot tell"
+      },
+      {
+       "name": "km",
+       "type": "text",
+       "rule": "Krause number without 'KM#', or null"
+      },
+      {
+       "name": "confidence",
+       "type": "text",
+       "rule": "high / med / low for the whole answer"
+      }
+     ],
+     "self_check": [
+      "All 15 keys, each with the six fields.",
+      "Every null is a real 'cannot tell', not a skipped photo.",
+      "Nothing came from the Titan repository's data or an earlier run.",
+      "Valid JSON, named exactly as asked."
+     ],
+     "done_when": "All 15 answered and saved.",
+     "checks": [
+      "Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals."
+     ],
+     "rejected_if": [
+      "an answer that matches the record but not the photo (looked up)",
+      "fewer than the count",
+      "not the shape PROMPT.md asks for"
+     ]
+    },
+    {
+     "id": "HUB-GEM-13",
+     "title": "TRIAL 3: what makes the home screen and Athenaeum slow on a phone (find it from the code)",
+     "state": "now",
+     "added": "2026-11-20",
+     "due": "2026-11-23",
+     "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Reading a large codebase and reasoning about what a browser does every frame. Claude measured both pages at phone size with the CPU slowed 4x: the home screen holds about 33 frames a second at rest even with its WebGL canvases hidden, Athenaeum about 47; both should hold 60. Claude has found part of the cause; you are scored on what you find that its measurements confirm.",
+     "unlocks": "The fixes go into the next motion pass; the home screen and Athenaeum are the two pages Joseph opens most.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/ (home: the menu of worlds) and https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/",
+      "https://github.com/jpavia10/prometheus-hub/tree/main/deck (home: index at the repository root loads deck/app.js, deck/deck.css, deck/views/menu.js, deck/core/atmo.js, deck/core/fx.js and the rest)",
+      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/athenaeum and https://github.com/jpavia10/prometheus-hub/tree/main/kit (the shared kit every pillar loads)"
+     ],
+     "steps": [
+      "Read every file each page loads (HTML, CSS, JS, shaders).",
+      "List everything that runs at rest, every frame: requestAnimationFrame loops, CSS animations and what each one animates (transform/opacity run on the compositor; anything else repaints), filter and backdrop-filter under or on moving things, canvases (their size against devicePixelRatio and how often they redraw), WebGL (draw calls, overdraw, cost per pixel of each shader).",
+      "Then what runs on scroll and on a tap.",
+      "For each cost: estimate its milliseconds per frame on a mid-range phone and show the reasoning (pixel count x work per pixel, or calls x cost).",
+      "For each, give a TOGGLE (one CSS rule or one small JS change that removes only that cost, so Claude can measure it) and a FIX (the change that keeps the look and removes most of the cost).",
+      "Rank by estimated cost, largest first."
+     ],
+     "deliver": {
+      "file": "hub_gemini_perf-audit_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, 10 to 25 objects, ranked largest cost first"
+     },
+     "count": 10,
+     "count_note": "at least 10, at most 25",
+     "fields": [
+      {
+       "name": "rank",
+       "type": "integer",
+       "rule": "1 = largest cost"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": "home | athenaeum | both"
+      },
+      {
+       "name": "file",
+       "type": "text",
+       "rule": "path in the repository"
+      },
+      {
+       "name": "line",
+       "type": "integer",
+       "rule": "the line that starts the cost"
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "runs_when",
+       "type": "text",
+       "rule": "every frame | scroll | tap | load"
+      },
+      {
+       "name": "mechanism",
+       "type": "text",
+       "rule": "what the browser does (style, layout, paint, raster, composite, GPU) and why"
+      },
+      {
+       "name": "est_ms_per_frame",
+       "type": "number",
+       "rule": "on a mid-range phone"
+      },
+      {
+       "name": "why_estimate",
+       "type": "text",
+       "rule": "the arithmetic"
+      },
+      {
+       "name": "toggle",
+       "type": "text",
+       "rule": "exact CSS or JS that removes only this cost"
+      },
+      {
+       "name": "fix",
+       "type": "text",
+       "rule": "exact change that keeps the look"
+      },
+      {
+       "name": "confidence",
+       "type": "text",
+       "rule": "high / medium / low"
+      }
+     ],
+     "example": "{\"rank\": 4, \"page\": \"home\", \"file\": \"deck/deck.css\", \"line\": 212, \"what\": \"...\", \"runs_when\": \"every frame\", \"toggle\": \".mn-emblem{filter:none!important}\", ...}",
+     "self_check": [
+      "Every file:line is in the code as it is on main on the day you write (Claude opens every one).",
+      "Every claim says how Claude can see it for itself: a reproduction, a toggle or an input.",
+      "Nothing is padded: one real finding beats three guesses. A finding Claude cannot reproduce or measure counts against you.",
+      "The file is valid JSON (or the shape asked) and is named exactly as asked.",
+      "Each toggle removes one cost only, so its measured effect can be told apart."
+     ],
+     "done_when": "10 or more findings, ranked, each with a toggle and a fix.",
+     "checks": [
+      "Claude applies each toggle on a phone-size page with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order."
+     ],
+     "rejected_if": [
+      "a file:line that does not exist or does not do what the row says",
+      "a finding that is the same as another with the words changed",
+      "more wrong findings than right ones",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a toggle that removes several things at once",
+      "no arithmetic behind an estimate"
+     ]
+    },
+    {
+     "id": "HUB-GEM-14",
+     "title": "TRIAL 4: real defects in the shared kit and the Forge, each with a reproduction",
+     "state": "now",
+     "added": "2026-11-20",
+     "due": "2026-11-23",
+     "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Finding bugs in about 3,000 lines of real code without running it, and proving each one. The kit (kit/kit.js, kit/stage.js, kit/prometheus.css) runs on every pillar; the Forge (pillars/forge/app.js and its builder tools/forge/build.py) is where Joseph sees every AI's homework.",
+     "unlocks": "Every confirmed defect is fixed on all 27 pillars at once.",
+     "inputs": [
+      "https://github.com/jpavia10/prometheus-hub/tree/main/kit",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/forge/app.js and https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/tools/forge/build.py",
+      "https://jpavia10.github.io/prometheus-hub/pillars/forge/ and any other pillar, at phone size"
+     ],
+     "steps": [
+      "Read the files in full. Look for what actually goes wrong: wrong numbers, dates and time zones, state that is lost or doubled, a control that does nothing or the wrong thing, keyboard and screen-reader traps, races between loading and drawing, input build.py mis-reads, listeners added again on every call, errors swallowed.",
+      "Prove each one: numbered steps on the live site at phone size, or the exact input to build.py, with what should happen and what happens.",
+      "Severity: data (loses or changes a record) | number (shows a wrong value) | control (a control fails) | access | performance | visual.",
+      "Give the fix as an exact code change."
+     ],
+     "deliver": {
+      "file": "hub_gemini_defects_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, 6 to 20 objects, worst first"
+     },
+     "count": 6,
+     "count_note": "at least 6 real ones, at most 20; precision counts more than number",
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "file",
+       "type": "text",
+       "rule": "path"
+      },
+      {
+       "name": "line",
+       "type": "integer",
+       "rule": "where it goes wrong"
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": "one line"
+      },
+      {
+       "name": "steps",
+       "type": "list",
+       "rule": "numbered, reproducible by Claude in under two minutes"
+      },
+      {
+       "name": "expected",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "actual",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "severity",
+       "type": "text",
+       "rule": "data | number | control | access | performance | visual"
+      },
+      {
+       "name": "fix",
+       "type": "text",
+       "rule": "exact code change"
+      },
+      {
+       "name": "confidence",
+       "type": "text",
+       "rule": "high / medium / low"
+      }
+     ],
+     "self_check": [
+      "Every file:line is in the code as it is on main on the day you write (Claude opens every one).",
+      "Every claim says how Claude can see it for itself: a reproduction, a toggle or an input.",
+      "Nothing is padded: one real finding beats three guesses. A finding Claude cannot reproduce or measure counts against you.",
+      "The file is valid JSON (or the shape asked) and is named exactly as asked.",
+      "You followed your own steps in a browser if you can, and say so in the run report; if you cannot run a browser, say that too."
+     ],
+     "done_when": "6 or more defects, each reproducible.",
+     "checks": [
+      "Claude follows every reproduction. Score: confirmed minus wrong; 'data' and 'number' defects count double."
+     ],
+     "rejected_if": [
+      "a file:line that does not exist or does not do what the row says",
+      "a finding that is the same as another with the words changed",
+      "more wrong findings than right ones",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a style opinion or a wish written as a defect"
+     ]
+    },
     {
      "id": "HUB-GEM-00",
      "title": "FIRST: the home-screen icons for Titan and Prometheus (6 images)",

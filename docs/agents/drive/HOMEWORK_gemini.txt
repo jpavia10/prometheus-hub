@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-20 16:12 UTC. 51 to do across 27 pillars; 5 more delivered and waiting for their check (listed at the end: do not redo them).
+Updated 2026-11-20 16:55 UTC. 56 to do across 27 pillars; 5 more delivered and waiting for their check (listed at the end: do not redo them).
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -16,54 +16,340 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
-1. [Kairos Meridian] KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools) · due 2026-11-26
-2. [Hephaestus Hearth] HEA-GEM-23 · Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word) · due 2026-11-26
-3. [Garage] GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027 · due 2026-11-26
-4. [Records · Paper Killer] REC-GEM-07 · Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028 · due 2026-11-26
-5. [Bossa Piano Studio] PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key) · due 2026-11-26
-6. [Odyssey · Trips & Away Mode] ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026 · due 2026-11-26
-7. [Odyssey · Trips & Away Mode] ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos) · due 2026-11-26
-8. [Odyssey · Trips & Away Mode] ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos · due 2026-11-26
-9. [Odyssey · Trips & Away Mode] ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos · due 2026-11-26
-10. [Odyssey · Trips & Away Mode] ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts · due 2026-11-26
-11. [Odyssey · Trips & Away Mode] ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language) · due 2026-11-26
-12. [Odyssey · Trips & Away Mode] ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app · due 2026-11-26
-13. [Odyssey · Trips & Away Mode] ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked · due 2026-11-26
-14. [Ludus Arcade] GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages · due 2026-11-26
-15. [Aether · Atmospheric & Field Lab] AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file · due 2026-11-26
-16. [Aether · Atmospheric & Field Lab] AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026 · due 2026-11-26
-17. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2026-11-26
-18. [Continuity · Sovereign Vault] CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers · due 2026-11-26
-19. [Privacy · CA DROP] PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
-20. [Prometheus Hub] HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-21. [Kairos Meridian] KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-22. [Midas Ledger] MID-GEM-11 · Midas Ledger: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-23. [Hephaestus Hearth] HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-24. [Garage] GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-25. [Apollo Temple] APO-GEM-10 · Apollo Temple: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-26. [Money · payoff simulator] MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-27. [Selling Pipeline] SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-28. [Records · Paper Killer] REC-GEM-05 · Records: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-29. [Icarus Stake] ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-30. [Hermes Post] HER-GEM-09 · Hermes Post: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-31. [Bossa Piano Studio] PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-32. [Bastion · Mountain Prep] BAS-GEM-06 · Bastion: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-33. [Athenaeum · Idea Vault] ATH-GEM-03 · Athenaeum: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-34. [Odyssey · Trips & Away Mode] ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-35. [Privacy · CA DROP] PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-36. [Argus Album] ARG-GEM-10 · Argus Album: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-37. [Ludus Arcade] GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-38. [Forge] FOR-GEM-03 · Forge: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-39. [Foundry] FDY-GEM-04 · Foundry: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-40. [Observatory] OBS-GEM-04 · Observatory: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-41. [Kin] KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-42. [Aether · Atmospheric & Field Lab] AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-43. [Polis · Civic & Legal Watch] POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-44. [Mythos · Creative & Lore Studio] MYT-GEM-03 · Mythos: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-45. [Continuity · Sovereign Vault] CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+1. [Prometheus Hub] HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins) · due 2026-11-23
+2. [Prometheus Hub] HUB-GEM-12 · TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins) · due 2026-11-23
+3. [Prometheus Hub] HUB-GEM-13 · TRIAL 3: what makes the home screen and Athenaeum slow on a phone (find it from the code) · due 2026-11-23
+4. [Prometheus Hub] HUB-GEM-14 · TRIAL 4: real defects in the shared kit and the Forge, each with a reproduction · due 2026-11-23
+5. [Midas Ledger] MID-GEM-12 · TRIAL 5: break the Midas terms parser on paper (30 cases, predict what the code returns) · due 2026-11-23
+6. [Kairos Meridian] KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools) · due 2026-11-26
+7. [Hephaestus Hearth] HEA-GEM-23 · Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word) · due 2026-11-26
+8. [Garage] GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027 · due 2026-11-26
+9. [Records · Paper Killer] REC-GEM-07 · Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028 · due 2026-11-26
+10. [Bossa Piano Studio] PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key) · due 2026-11-26
+11. [Odyssey · Trips & Away Mode] ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026 · due 2026-11-26
+12. [Odyssey · Trips & Away Mode] ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos) · due 2026-11-26
+13. [Odyssey · Trips & Away Mode] ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos · due 2026-11-26
+14. [Odyssey · Trips & Away Mode] ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos · due 2026-11-26
+15. [Odyssey · Trips & Away Mode] ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts · due 2026-11-26
+16. [Odyssey · Trips & Away Mode] ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language) · due 2026-11-26
+17. [Odyssey · Trips & Away Mode] ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app · due 2026-11-26
+18. [Odyssey · Trips & Away Mode] ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked · due 2026-11-26
+19. [Ludus Arcade] GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages · due 2026-11-26
+20. [Aether · Atmospheric & Field Lab] AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file · due 2026-11-26
+21. [Aether · Atmospheric & Field Lab] AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026 · due 2026-11-26
+22. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2026-11-26
+23. [Continuity · Sovereign Vault] CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers · due 2026-11-26
+24. [Privacy · CA DROP] PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
+25. [Prometheus Hub] HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+26. [Kairos Meridian] KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+27. [Midas Ledger] MID-GEM-11 · Midas Ledger: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+28. [Hephaestus Hearth] HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+29. [Garage] GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+30. [Apollo Temple] APO-GEM-10 · Apollo Temple: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+31. [Money · payoff simulator] MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+32. [Selling Pipeline] SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+33. [Records · Paper Killer] REC-GEM-05 · Records: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+34. [Icarus Stake] ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+35. [Hermes Post] HER-GEM-09 · Hermes Post: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+36. [Bossa Piano Studio] PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+37. [Bastion · Mountain Prep] BAS-GEM-06 · Bastion: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+38. [Athenaeum · Idea Vault] ATH-GEM-03 · Athenaeum: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+39. [Odyssey · Trips & Away Mode] ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+40. [Privacy · CA DROP] PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+41. [Argus Album] ARG-GEM-10 · Argus Album: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+42. [Ludus Arcade] GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+43. [Forge] FOR-GEM-03 · Forge: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+44. [Foundry] FDY-GEM-04 · Foundry: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+45. [Observatory] OBS-GEM-04 · Observatory: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+46. [Kin] KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+47. [Aether · Atmospheric & Field Lab] AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+48. [Polis · Civic & Legal Watch] POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+49. [Mythos · Creative & Lore Studio] MYT-GEM-03 · Mythos: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+50. [Continuity · Sovereign Vault] CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
 
-==================== 1. KAIROS MERIDIAN ====================
-## 1. KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)
+==================== 1. PROMETHEUS HUB ====================
+## 1. HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)
+
+**Due:** 2026-11-23 · **State:** now
+
+**What it unlocks:** If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.
+
+**Read first:**
+- https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-main (the 30 photos, BK-xxxx.webp)
+- https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/PROMPT.md (the test's own prompt and answer format: follow it exactly)
+- each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/BK-xxxx.webp
+
+**Do this:**
+1. Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).
+2. Open each of the 30 photos at full size. Read the coin itself: legend, date, value, mint mark, design.
+3. Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.
+4. Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.
+5. Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report.
+
+**Make:** `bakeoff_{yourmodel}_main_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)
+
+**Shape:** `one JSON object keyed by the 30 file names without .webp, exactly as PROMPT.md shows`
+
+**Every field, exactly:**
+- `country` (text): issuing country in English, or null
+- `year` (text): Western year of the date on the shown side, or null
+- `denom` (text): value and unit as on the coin, or null
+- `mint` (text): mint mark letters; "" if the shown side has none; null if you cannot tell
+- `km` (text): Krause number without 'KM#', or null
+- `confidence` (text): high / med / low for the whole answer
+
+**Before you save, check every one of these yourself:**
+- [ ] All 30 keys, each with the six fields.
+- [ ] Every null is a real 'cannot tell', not a skipped photo.
+- [ ] Nothing came from the Titan repository's data or an earlier run.
+- [ ] Valid JSON, named exactly as asked.
+
+**How many:** 30
+
+**Done when:** All 30 answered and saved.
+
+**How Claude checks it:**
+- Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals.
+
+**Not done (sent back) if:** (and the rules at the top)
+- an answer that matches the record but not the photo (looked up)
+- fewer than the count
+- not the shape PROMPT.md asks for
+
+==================== 2. PROMETHEUS HUB ====================
+## 2. HUB-GEM-12 · TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins)
+
+**Due:** 2026-11-23 · **State:** now
+
+**What it unlocks:** If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.
+
+**Read first:**
+- https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-locked (the 15 photos, BK-xxxx.webp)
+- https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/PROMPT.md (the test's own prompt and answer format: follow it exactly)
+- each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/BK-xxxx.webp
+
+**Do this:**
+1. Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).
+2. Open each of the 15 photos at full size. Read the coin itself: legend, date, value, mint mark, design.
+3. Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.
+4. Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.
+5. Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report.
+
+**Make:** `bakeoff_{yourmodel}_locked_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)
+
+**Shape:** `one JSON object keyed by the 15 file names without .webp, exactly as PROMPT.md shows`
+
+**Every field, exactly:**
+- `country` (text): issuing country in English, or null
+- `year` (text): Western year of the date on the shown side, or null
+- `denom` (text): value and unit as on the coin, or null
+- `mint` (text): mint mark letters; "" if the shown side has none; null if you cannot tell
+- `km` (text): Krause number without 'KM#', or null
+- `confidence` (text): high / med / low for the whole answer
+
+**Before you save, check every one of these yourself:**
+- [ ] All 15 keys, each with the six fields.
+- [ ] Every null is a real 'cannot tell', not a skipped photo.
+- [ ] Nothing came from the Titan repository's data or an earlier run.
+- [ ] Valid JSON, named exactly as asked.
+
+**How many:** 15
+
+**Done when:** All 15 answered and saved.
+
+**How Claude checks it:**
+- Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals.
+
+**Not done (sent back) if:** (and the rules at the top)
+- an answer that matches the record but not the photo (looked up)
+- fewer than the count
+- not the shape PROMPT.md asks for
+
+==================== 3. PROMETHEUS HUB ====================
+## 3. HUB-GEM-13 · TRIAL 3: what makes the home screen and Athenaeum slow on a phone (find it from the code)
+
+**Due:** 2026-11-23 · **State:** now
+
+**What it unlocks:** The fixes go into the next motion pass; the home screen and Athenaeum are the two pages Joseph opens most.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/ (home: the menu of worlds) and https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/
+- https://github.com/jpavia10/prometheus-hub/tree/main/deck (home: index at the repository root loads deck/app.js, deck/deck.css, deck/views/menu.js, deck/core/atmo.js, deck/core/fx.js and the rest)
+- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/athenaeum and https://github.com/jpavia10/prometheus-hub/tree/main/kit (the shared kit every pillar loads)
+
+**Do this:**
+1. Read every file each page loads (HTML, CSS, JS, shaders).
+2. List everything that runs at rest, every frame: requestAnimationFrame loops, CSS animations and what each one animates (transform/opacity run on the compositor; anything else repaints), filter and backdrop-filter under or on moving things, canvases (their size against devicePixelRatio and how often they redraw), WebGL (draw calls, overdraw, cost per pixel of each shader).
+3. Then what runs on scroll and on a tap.
+4. For each cost: estimate its milliseconds per frame on a mid-range phone and show the reasoning (pixel count x work per pixel, or calls x cost).
+5. For each, give a TOGGLE (one CSS rule or one small JS change that removes only that cost, so Claude can measure it) and a FIX (the change that keeps the look and removes most of the cost).
+6. Rank by estimated cost, largest first.
+
+**Make:** `hub_gemini_perf-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, 10 to 25 objects, ranked largest cost first`
+
+**Every field, exactly:**
+- `rank` (integer): 1 = largest cost
+- `page` (text): home | athenaeum | both
+- `file` (text): path in the repository
+- `line` (integer): the line that starts the cost
+- `what` (text): one sentence
+- `runs_when` (text): every frame | scroll | tap | load
+- `mechanism` (text): what the browser does (style, layout, paint, raster, composite, GPU) and why
+- `est_ms_per_frame` (number): on a mid-range phone
+- `why_estimate` (text): the arithmetic
+- `toggle` (text): exact CSS or JS that removes only this cost
+- `fix` (text): exact change that keeps the look
+- `confidence` (text): high / medium / low
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+{"rank": 4, "page": "home", "file": "deck/deck.css", "line": 212, "what": "...", "runs_when": "every frame", "toggle": ".mn-emblem{filter:none!important}", ...}
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every file:line is in the code as it is on main on the day you write (Claude opens every one).
+- [ ] Every claim says how Claude can see it for itself: a reproduction, a toggle or an input.
+- [ ] Nothing is padded: one real finding beats three guesses. A finding Claude cannot reproduce or measure counts against you.
+- [ ] The file is valid JSON (or the shape asked) and is named exactly as asked.
+- [ ] Each toggle removes one cost only, so its measured effect can be told apart.
+
+**How many:** 10
+
+**Done when:** 10 or more findings, ranked, each with a toggle and a fix.
+
+**How Claude checks it:**
+- Claude applies each toggle on a phone-size page with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a file:line that does not exist or does not do what the row says
+- a finding that is the same as another with the words changed
+- more wrong findings than right ones
+- a toggle that removes several things at once
+- no arithmetic behind an estimate
+
+==================== 4. PROMETHEUS HUB ====================
+## 4. HUB-GEM-14 · TRIAL 4: real defects in the shared kit and the Forge, each with a reproduction
+
+**Due:** 2026-11-23 · **State:** now
+
+**What it unlocks:** Every confirmed defect is fixed on all 27 pillars at once.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/tree/main/kit
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/forge/app.js and https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/tools/forge/build.py
+- https://jpavia10.github.io/prometheus-hub/pillars/forge/ and any other pillar, at phone size
+
+**Do this:**
+1. Read the files in full. Look for what actually goes wrong: wrong numbers, dates and time zones, state that is lost or doubled, a control that does nothing or the wrong thing, keyboard and screen-reader traps, races between loading and drawing, input build.py mis-reads, listeners added again on every call, errors swallowed.
+2. Prove each one: numbered steps on the live site at phone size, or the exact input to build.py, with what should happen and what happens.
+3. Severity: data (loses or changes a record) | number (shows a wrong value) | control (a control fails) | access | performance | visual.
+4. Give the fix as an exact code change.
+
+**Make:** `hub_gemini_defects_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, 6 to 20 objects, worst first`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `file` (text): path
+- `line` (integer): where it goes wrong
+- `title` (text): one line
+- `steps` (list): numbered, reproducible by Claude in under two minutes
+- `expected` (text): 
+- `actual` (text): 
+- `severity` (text): data | number | control | access | performance | visual
+- `fix` (text): exact code change
+- `confidence` (text): high / medium / low
+
+**Before you save, check every one of these yourself:**
+- [ ] Every file:line is in the code as it is on main on the day you write (Claude opens every one).
+- [ ] Every claim says how Claude can see it for itself: a reproduction, a toggle or an input.
+- [ ] Nothing is padded: one real finding beats three guesses. A finding Claude cannot reproduce or measure counts against you.
+- [ ] The file is valid JSON (or the shape asked) and is named exactly as asked.
+- [ ] You followed your own steps in a browser if you can, and say so in the run report; if you cannot run a browser, say that too.
+
+**How many:** 6
+
+**Done when:** 6 or more defects, each reproducible.
+
+**How Claude checks it:**
+- Claude follows every reproduction. Score: confirmed minus wrong; 'data' and 'number' defects count double.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a file:line that does not exist or does not do what the row says
+- a finding that is the same as another with the words changed
+- more wrong findings than right ones
+- a style opinion or a wish written as a defect
+
+==================== 5. MIDAS LEDGER ====================
+## 5. MID-GEM-12 · TRIAL 5: break the Midas terms parser on paper (30 cases, predict what the code returns)
+
+**Due:** 2026-11-23 · **State:** now
+
+**What it unlocks:** Every case where build.py disagrees with BOOK_SCHEMA.md is a real parser bug; Claude reports it to Joseph (the parser is changed only with his OK) and the case joins the test suite.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/build.py (parse_terms from line 1767, and the code that calls it)
+- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/docs/BOOK_SCHEMA.md (what the book may say and what it means)
+- https://raw.githubusercontent.com/jpavia10/midas-ledger/main/test/parser_cases.json and https://raw.githubusercontent.com/jpavia10/midas-ledger/main/test/test_parser_cases.py (the case format and how it is run)
+
+**Do this:**
+1. Read parse_terms and every function it calls, and BOOK_SCHEMA.md.
+2. Write 15 'real' cases: a terms wording a real US card issuer uses in its cardmember agreement or pricing page (cite the page, quote it under 300 characters), written as a book terms bullet. 'expect' is what BOOK_SCHEMA.md says the book means.
+3. Write 15 'edge' cases aimed at the gaps: separators, case, spacing, dates, 0 vs missing, several rates on one line, words in a different order, deferred interest.
+4. For every case, 'predict' is what build.py returns today, worked out from the code line by line (not what it should return), and 'why' names the lines.
+5. Made-up numbers and names only. No real account data.
+
+**Make:** `midas_gemini_parser-trial_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD)
+
+**Shape:** `JSON array of 30 objects in test/parser_cases.json's format plus kind, predict, why, source_url, quote`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `kind` (text): real | edge
+- `rule` (text): what the case tests
+- `book` (text): the ledger text, in the book's format (a card section with its terms bullet)
+- `expect` (object): what BOOK_SCHEMA.md says it means, in the field names build.py writes
+- `predict` (object): what build.py returns today, same field names
+- `why` (text): the build.py lines that decide it
+- `source_url` (text): real cases: the issuer's page; edge cases: ""
+- `quote` (text): real cases: under 300 characters; edge cases: ""
+
+**Before you save, check every one of these yourself:**
+- [ ] 15 real and 15 edge.
+- [ ] Every real case cites an issuer's own page with a quote that is on it.
+- [ ] expect follows BOOK_SCHEMA.md; predict follows the code. Where they differ you have found a gap: say so in the run report.
+- [ ] Field names are the ones build.py writes (see the 25 existing cases).
+- [ ] Valid JSON, named exactly as asked.
+
+**How many:** 30
+
+**Done when:** 30 cases, each with expect, predict and why.
+
+**How Claude checks it:**
+- Claude runs all 30 through build.py. Score: predictions that match the code exactly; expectations that match BOOK_SCHEMA.md; real parser gaps found (each is a bonus).
+
+**Not done (sent back) if:** (and the rules at the top)
+- a prediction copied from expect without reading the code
+- real account data
+- a real case whose quote is not on the cited page
+- fewer than 30
+
+==================== 6. KAIROS MERIDIAN ====================
+## 6. KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -108,8 +394,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 2. HEPHAESTUS HEARTH ====================
-## 2. HEA-GEM-23 · Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)
+==================== 7. HEPHAESTUS HEARTH ====================
+## 7. HEA-GEM-23 · Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -156,8 +442,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 3. GARAGE ====================
-## 3. GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027
+==================== 8. GARAGE ====================
+## 8. GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -201,8 +487,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 4. RECORDS · PAPER KILLER ====================
-## 4. REC-GEM-07 · Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028
+==================== 9. RECORDS · PAPER KILLER ====================
+## 9. REC-GEM-07 · Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -246,8 +532,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 5. BOSSA PIANO STUDIO ====================
-## 5. PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key)
+==================== 10. BOSSA PIANO STUDIO ====================
+## 10. PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -291,8 +577,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 6. ODYSSEY · TRIPS & AWAY MODE ====================
-## 6. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
+==================== 11. ODYSSEY · TRIPS & AWAY MODE ====================
+## 11. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -340,8 +626,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 7. ODYSSEY · TRIPS & AWAY MODE ====================
-## 7. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
+==================== 12. ODYSSEY · TRIPS & AWAY MODE ====================
+## 12. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -387,8 +673,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 8. ODYSSEY · TRIPS & AWAY MODE ====================
-## 8. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
+==================== 13. ODYSSEY · TRIPS & AWAY MODE ====================
+## 13. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -436,8 +722,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 9. ODYSSEY · TRIPS & AWAY MODE ====================
-## 9. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
+==================== 14. ODYSSEY · TRIPS & AWAY MODE ====================
+## 14. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -484,8 +770,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 10. ODYSSEY · TRIPS & AWAY MODE ====================
-## 10. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
+==================== 15. ODYSSEY · TRIPS & AWAY MODE ====================
+## 15. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -540,8 +826,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 11. ODYSSEY · TRIPS & AWAY MODE ====================
-## 11. ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language)
+==================== 16. ODYSSEY · TRIPS & AWAY MODE ====================
+## 16. ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -592,8 +878,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 12. ODYSSEY · TRIPS & AWAY MODE ====================
-## 12. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
+==================== 17. ODYSSEY · TRIPS & AWAY MODE ====================
+## 17. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -640,8 +926,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 13. ODYSSEY · TRIPS & AWAY MODE ====================
-## 13. ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked
+==================== 18. ODYSSEY · TRIPS & AWAY MODE ====================
+## 18. ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -692,8 +978,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 14. LUDUS ARCADE ====================
-## 14. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
+==================== 19. LUDUS ARCADE ====================
+## 19. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -737,8 +1023,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 15. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 15. AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file
+==================== 20. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 20. AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -791,8 +1077,8 @@ IN THIS ORDER:
 - a number that is not on its source and not shown as arithmetic
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 16. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 16. AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026
+==================== 21. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 21. AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -839,8 +1125,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 17. POLIS · CIVIC & LEGAL WATCH ====================
-## 17. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+==================== 22. POLIS · CIVIC & LEGAL WATCH ====================
+## 22. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -884,8 +1170,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 18. CONTINUITY · SOVEREIGN VAULT ====================
-## 18. CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers
+==================== 23. CONTINUITY · SOVEREIGN VAULT ====================
+## 23. CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -930,8 +1216,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 19. PRIVACY · CA DROP ====================
-## 19. PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them
+==================== 24. PRIVACY · CA DROP ====================
+## 24. PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them
 
 **Due:** 2026-11-27 · **State:** now
 
@@ -982,8 +1268,8 @@ IN THIS ORDER:
 - a number that is not on its source and not shown as arithmetic
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 20. PROMETHEUS HUB ====================
-## 20. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
+==================== 25. PROMETHEUS HUB ====================
+## 25. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1047,8 +1333,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 21. KAIROS MERIDIAN ====================
-## 21. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
+==================== 26. KAIROS MERIDIAN ====================
+## 26. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1112,8 +1398,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 22. MIDAS LEDGER ====================
-## 22. MID-GEM-11 · Midas Ledger: the function spec, written as the build plan
+==================== 27. MIDAS LEDGER ====================
+## 27. MID-GEM-11 · Midas Ledger: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1177,8 +1463,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 23. HEPHAESTUS HEARTH ====================
-## 23. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
+==================== 28. HEPHAESTUS HEARTH ====================
+## 28. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1242,8 +1528,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 24. GARAGE ====================
-## 24. GAR-GEM-07 · Garage: the function spec, written as the build plan
+==================== 29. GARAGE ====================
+## 29. GAR-GEM-07 · Garage: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1307,8 +1593,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 25. APOLLO TEMPLE ====================
-## 25. APO-GEM-10 · Apollo Temple: the function spec, written as the build plan
+==================== 30. APOLLO TEMPLE ====================
+## 30. APO-GEM-10 · Apollo Temple: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1372,8 +1658,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 26. MONEY · PAYOFF SIMULATOR ====================
-## 26. MON-GEM-04 · Money: the function spec, written as the build plan
+==================== 31. MONEY · PAYOFF SIMULATOR ====================
+## 31. MON-GEM-04 · Money: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1437,8 +1723,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 27. SELLING PIPELINE ====================
-## 27. SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan
+==================== 32. SELLING PIPELINE ====================
+## 32. SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1502,8 +1788,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 28. RECORDS · PAPER KILLER ====================
-## 28. REC-GEM-05 · Records: the function spec, written as the build plan
+==================== 33. RECORDS · PAPER KILLER ====================
+## 33. REC-GEM-05 · Records: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1567,8 +1853,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 29. ICARUS STAKE ====================
-## 29. ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan
+==================== 34. ICARUS STAKE ====================
+## 34. ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1632,8 +1918,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 30. HERMES POST ====================
-## 30. HER-GEM-09 · Hermes Post: the function spec, written as the build plan
+==================== 35. HERMES POST ====================
+## 35. HER-GEM-09 · Hermes Post: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1697,8 +1983,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 31. BOSSA PIANO STUDIO ====================
-## 31. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
+==================== 36. BOSSA PIANO STUDIO ====================
+## 36. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1762,8 +2048,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 32. BASTION · MOUNTAIN PREP ====================
-## 32. BAS-GEM-06 · Bastion: the function spec, written as the build plan
+==================== 37. BASTION · MOUNTAIN PREP ====================
+## 37. BAS-GEM-06 · Bastion: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1827,8 +2113,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 33. ATHENAEUM · IDEA VAULT ====================
-## 33. ATH-GEM-03 · Athenaeum: the function spec, written as the build plan
+==================== 38. ATHENAEUM · IDEA VAULT ====================
+## 38. ATH-GEM-03 · Athenaeum: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1892,8 +2178,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 34. ODYSSEY · TRIPS & AWAY MODE ====================
-## 34. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
+==================== 39. ODYSSEY · TRIPS & AWAY MODE ====================
+## 39. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1957,8 +2243,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 35. PRIVACY · CA DROP ====================
-## 35. PRI-GEM-06 · Privacy: the function spec, written as the build plan
+==================== 40. PRIVACY · CA DROP ====================
+## 40. PRI-GEM-06 · Privacy: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2022,8 +2308,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 36. ARGUS ALBUM ====================
-## 36. ARG-GEM-10 · Argus Album: the function spec, written as the build plan
+==================== 41. ARGUS ALBUM ====================
+## 41. ARG-GEM-10 · Argus Album: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2087,8 +2373,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 37. LUDUS ARCADE ====================
-## 37. GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan
+==================== 42. LUDUS ARCADE ====================
+## 42. GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2152,8 +2438,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 38. FORGE ====================
-## 38. FOR-GEM-03 · Forge: the function spec, written as the build plan
+==================== 43. FORGE ====================
+## 43. FOR-GEM-03 · Forge: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2217,8 +2503,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 39. FOUNDRY ====================
-## 39. FDY-GEM-04 · Foundry: the function spec, written as the build plan
+==================== 44. FOUNDRY ====================
+## 44. FDY-GEM-04 · Foundry: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2282,8 +2568,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 40. OBSERVATORY ====================
-## 40. OBS-GEM-04 · Observatory: the function spec, written as the build plan
+==================== 45. OBSERVATORY ====================
+## 45. OBS-GEM-04 · Observatory: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2347,8 +2633,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 41. KIN ====================
-## 41. KIN-GEM-04 · Kin: the function spec, written as the build plan
+==================== 46. KIN ====================
+## 46. KIN-GEM-04 · Kin: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2412,8 +2698,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 42. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 42. AET-GEM-05 · Aether: the function spec, written as the build plan
+==================== 47. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 47. AET-GEM-05 · Aether: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2477,8 +2763,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 43. POLIS · CIVIC & LEGAL WATCH ====================
-## 43. POL-GEM-05 · Polis: the function spec, written as the build plan
+==================== 48. POLIS · CIVIC & LEGAL WATCH ====================
+## 48. POL-GEM-05 · Polis: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2542,8 +2828,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 44. MYTHOS · CREATIVE & LORE STUDIO ====================
-## 44. MYT-GEM-03 · Mythos: the function spec, written as the build plan
+==================== 49. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 49. MYT-GEM-03 · Mythos: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2607,8 +2893,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 45. CONTINUITY · SOVEREIGN VAULT ====================
-## 45. CON-GEM-04 · Continuity: the function spec, written as the build plan
+==================== 50. CONTINUITY · SOVEREIGN VAULT ====================
+## 50. CON-GEM-04 · Continuity: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 

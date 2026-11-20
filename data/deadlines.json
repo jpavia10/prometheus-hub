@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20 16:12 UTC",
+ "updated": "2026-11-20 16:55 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -93,12 +93,67 @@
    "due": "2026-11-23",
    "pillar": "hub",
    "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-11",
+   "title": "TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)",
+   "state": "now",
+   "count": 30
+  },
+  {
+   "due": "2026-11-23",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-12",
+   "title": "TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins)",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-11-23",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-13",
+   "title": "TRIAL 3: what makes the home screen and Athenaeum slow on a phone (find it from the code)",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-11-23",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-14",
+   "title": "TRIAL 4: real defects in the shared kit and the Forge, each with a reproduction",
+   "state": "now",
+   "count": 6
+  },
+  {
+   "due": "2026-11-23",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
    "ai": "muse",
    "ai_name": "Muse",
    "id": "HUB-MUS-03",
    "title": "Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940)",
    "state": "now",
    "count": 23
+  },
+  {
+   "due": "2026-11-23",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-12",
+   "title": "TRIAL 5: break the Midas terms parser on paper (30 cases, predict what the code returns)",
+   "state": "now",
+   "count": 30
   },
   {
    "due": "2026-11-24",

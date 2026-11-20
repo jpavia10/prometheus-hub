@@ -1,21 +1,31 @@
 <!-- doc-status: current; normative: yes (for the run it describes) -->
-# Gemini 4 Neon: full work run (prompt, run 2, 2026-11-19 evening; updated 2026-11-20)
+# Gemini: full work run (prompt, run 3, 2026-11-20: capability trials first)
 
-Joseph pastes the block below into a new Gemini 4 Neon chat. It points to the live pages, so it stays current; the order puts three
-objectively checkable trial tasks first in run 1; run 2 starts with Odyssey and Joseph's own photos. Run 1 scored 9.4 on average (rows #8-#25). Claude scores the run
-from the files and the run report (collaborators/CONTRIBUTOR_SCORES.md in both repos).
+Joseph pastes the block below into a new Gemini chat on whichever model he is testing (run 1 and 2 were Gemini 4 Neon). It points to
+the live pages, so it stays current. Owner, 2026-11-20: "Add more demanding homework first test this new models capabilities": the run
+starts with five trials that Claude scores against sealed answers or its own measurements (HUB-GEM-11..14, MID-GEM-12), then Odyssey
+and the rest. Run 1 scored 9.4 on average (rows #8-#25). Claude scores the run from the files and the run report
+(collaborators/CONTRIBUTOR_SCORES.md in both repos; the photo trials also go into Titan's collaborators/MODEL_ACCURACY.md).
 
 ```text
-You are Gemini 4 Neon, doing homework for Joseph Pavia's two projects: Prometheus Hub (his personal app, 27 pillars) and Titan Reliquary (his coin collection). Claude is the integrator: it checks every file you deliver against its sources, scores it, and builds what passes into the apps. This run is also a test of what you can do. Work to the highest standard you are capable of: exact, verified, complete, and honest about anything you could not verify.
+You are Gemini, doing homework for Joseph Pavia's projects: Prometheus Hub (his personal app, 27 pillars) and Titan Reliquary (his coin collection). Claude is the integrator: it checks every file you deliver against its sources, scores it, and builds what passes into the apps. This run starts with a test of what you can do: five trials scored against sealed answers or measured results, not opinion. Work to the highest standard you are capable of: exact, verified, complete, and honest about anything you could not verify. First line of your run report: your exact model name and version as this app shows it.
 
 WHERE THE WORK IS (open both now and read them in full; you have the context for it):
 1. Prometheus homework, every pillar, in order: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/drive/HOMEWORK_gemini.txt
-   It lists every task "to do" (about 49). Each has the exact file name, folder, fields, count, sources and how Claude checks it. Tasks under "DELIVERED, WAITING FOR THEIR CHECK" at the end are already done: never redo them.
+   It lists every task "to do" (about 56), the five trials first. Each has the exact file name, folder, fields, count, sources and how Claude checks it. Tasks under "DELIVERED, WAITING FOR THEIR CHECK" at the end are already done: never redo them.
 2. Titan work queue: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md
-   "Finish first" (3 projects), then 6 homework sheets. Titan files are change files in the format that page and https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/AI_START_HERE.md describe.
+   Its own order (projects, then homework sheets). Titan files are change files in the format that page and https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/AI_START_HERE.md describe.
 Rules for every Prometheus pillar: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 ORDER:
+TRIALS FIRST, in this order (each is task 1-5 on the homework page, with every field and check):
+T1. HUB-GEM-11: Titan's blind coin-photo test, main pack (30 photos). Follow the pack's own PROMPT.md word for word. Blind means blind: never open the Titan repository's data, its other photos, or any earlier answer to this test, including your own in past chats or Drive (a looked-up answer is invalid). Answer null when unsure: a confident wrong answer costs more than a blank. Best so far on this pack: 85 % core accuracy. The bar for Titan's Phase 2 research: 95 % core, 1 % or less invented, 5 % or less false confidence.
+T2. HUB-GEM-12: the same test, locked pack (15 hard coins). Best so far: 76 %.
+T3. HUB-GEM-13: from the code alone, what keeps the home screen and Athenaeum below 60 frames a second on a phone (Claude measured about 33 and 47 at rest with the CPU slowed 4x). Each finding with the arithmetic behind its cost, a toggle that removes only that cost, and a fix that keeps the look. Claude measures every toggle.
+T4. HUB-GEM-14: real defects in the shared kit and the Forge, each with steps Claude can follow to see it. Precision counts more than number.
+T5. MID-GEM-12: 30 cases for the Midas terms parser, and for each, what build.py returns today, worked out line by line. Claude runs all 30.
+After the trials, put one line per trial in the run report: what you found hardest and how sure you are.
+
 A. Odyssey first (Joseph's own photos, his priority): ODY-GEM-05 (every trip in Google Photos 2008-2026), ODY-GEM-06 (his USA), ODY-GEM-07 and ODY-GEM-08 (the three known trips day by day), ODY-GEM-11 (the 36 photos already in the app), ODY-GEM-09 (landmarks), ODY-GEM-10 (city cards), ODY-GEM-12 (every good photo of every trip, ranked within the trip: no cap on photos or trips; Joseph, 2026-11-20). Use Google Photos' Info panel and map for dates, zones and places. People are fine in photos and in what you write about them (Joseph, 2026-11-20): name people only as Google Photos' face groups name them, never guess.
 B. The two that were blocked in run 1, now unblocked: PRI-GEM-07 (the 72 broker names are in Drive: privacy_INPUT_broker-names_20261119.txt in the Prometheus Hub incoming folder) and AET-GEM-08 (open NCEI's data service as JSON in the browser; the task says how).
 C. Then every other Prometheus task in the order of the homework page. The 25 function specs you wrote on 2026-11-16 are back on it (SENT BACK, due 2026-11-30): write each again from the live code; the reason is under each task.
@@ -50,10 +60,10 @@ Each task's own "folder" line decides; these links are the same folders.
 AFTER EACH TASK (before starting the next, so nothing is lost if this chat ends):
 1. Check the file against the task's self-check and "rejected if" lines; fix it before saving.
 2. Save the file in its folder.
-3. Prometheus tasks only: open the ONE ledger file https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view and EDIT it: add {"key": "<task id>", "by": "gemini", "what": "<file name> in <folder> (Gemini 4 Neon)", "ts": "<now, UTC, ISO 8601>"} to its "done" list and set "updated". Never upload a second copy of that file.
+3. Prometheus tasks only: open the ONE ledger file https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view and EDIT it: add {"key": "<task id>", "by": "gemini", "what": "<file name> in <folder> (<your model name>)", "ts": "<now, UTC, ISO 8601>"} to its "done" list and set "updated". Never upload a second copy of that file.
 
 RUN REPORT (this is how you exceed expectations: be precise about your own work):
-Keep one file in the Prometheus Hub incoming folder named neon_run-report_{YYYYMMDD-HHMM}.md (stamp of when you started), updated after every task:
+Keep one file in the Prometheus Hub incoming folder named gemini_run-report_{YYYYMMDD-HHMM}.md (stamp of when you started), updated after every task:
 - for each task: id, file name, rows delivered of the count, self-check result, your confidence (high / medium / low) and exactly which rows or values you could not verify and why;
 - for code: the real test output you ran;
 - "Problems I found in Joseph's existing data": any error you noticed in the pillar pages or Titan records while working (with the source that shows it). This is the most valuable extra you can give;
@@ -61,5 +71,5 @@ Keep one file in the Prometheus Hub incoming folder named neon_run-report_{YYYYM
 
 If you cannot do something (a page will not open, you cannot save to Drive, you cannot run code, you run out of room in this chat), say so in the run report and move to the next task. Never invent a result to fill the gap. When Joseph says "continue", read your run report and pick up where you stopped.
 
-Start now with A: ODY-GEM-05.
+Start now with T1: HUB-GEM-11.
 ```

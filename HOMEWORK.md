@@ -2,13 +2,13 @@
 
 # Homework board: every pillar, every AI
 
-Updated 2026-11-20 16:12 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
+Updated 2026-11-20 16:55 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
 
 | Pillar | State | Grok | Gemini | Muse | ChatGPT | Argon | Hydrogen | Claude |
 |---|---|---|---|---|---|---|---|---|
-| Prometheus Hub | live | 1 | 1 | 2 | — | — | — | — |
+| Prometheus Hub | live | 1 | 5 | 2 | — | — | — | — |
 | Kairos Meridian | live | 1 | 2 | — | 1 | — | — | — |
-| Midas Ledger | live | 3 | 1 | — | 1 | — | — | — |
+| Midas Ledger | live | 3 | 2 | — | 1 | — | — | — |
 | Titan Reliquary | live | 23 | 6 | 10 | — | — | — | — |
 | Hephaestus Hearth | live | 1 | 2 | — | 1 | — | — | — |
 | Garage | live | 1 | 2 | — | 1 | — | — | — |
