@@ -1,0 +1,31 @@
+{
+  "about": "One model per vehicle for showroom.js. No free model of the owner's exact vehicles was reachable, so each bay shows a stand-in (owner, 2026-11-20: \"Get a free model of a misc motorcycle and sub if u can't find mine\"). lengthM scales the model to the real vehicle's factory length (the spec plate in app.js); rotY turns its nose to +X; paintMaterials take the owner's colour; recolor tones other parts. Credits: CREDITS.md.",
+  "sorento": {
+    "file": "tucson-2015.glb",
+    "lengthM": 4.815,
+    "rotY": 90,
+    "paint": "#2f4f78",
+    "paintMaterials": [
+      "varnish"
+    ],
+    "finish": "gloss",
+    "paintName": "Mineral Blue (approximated)",
+    "standIn": "shown as a 2015 Hyundai Tucson, Kia's sister SUV",
+    "credit": "model: razor24, CC BY 4.0"
+  },
+  "mt07": {
+    "file": "z1000-2014.glb",
+    "lengthM": 2.085,
+    "rotY": -90,
+    "recolor": {
+      "cobre": "#2b2e33",
+      "cobre_0": "#2b2e33",
+      "negromate": "#16171a",
+      "negrobrillante": "#0f1012"
+    },
+    "finish": "matte",
+    "paintName": "Matte Raven Black",
+    "standIn": "shown as a 2014 Kawasaki Z1000, a naked bike like yours",
+    "credit": "model: e-restrepo1114, CC BY 4.0"
+  }
+}

@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Garage: real 3D models in the showroom (d45)
+- Joseph: "That 3d car and motorcycle is retarded. Get a free model of a misc motorcycle and sub if u can't find mine." The hand-rolled box models (model3d.js) are gone; the three.js showroom from claude/garage-showroom (2026-11-16, waiting since on a Sketchfab key) is merged with two free models from public GitHub repositories that ship the authors' Sketchfab exports with their license intact: the Sorento bay shows a 2015 Hyundai Tucson (razor24, CC BY 4.0) in an approximated Mineral Blue, the MT-07 bay a 2014 Kawasaki Z1000 (e-restrepo1114, CC BY 4.0) toned matte black. No free model of the exact vehicles was reachable from here; the caption says which stand-in is shown. Compressed with glTF-Transform (229 KB and 926 KB), scaled to the real lengths. Credits: pillars/garage/models/CREDITS.md.
+- New proof GARAGE-3D (both models drawn, under 2 MB, credited, caption names the stand-in); the money guard skips kit/vendor/ (unmodified third-party code). The session that waited on the Sketchfab key is superseded.
+
 ### [2026-11-20] Motion pass 4: the stage governor judges by real frame time; Kairos labels made once (d44)
 - The stage governor switched every stage to "lite" (no canvas glow) on the first frame of every visit, because warm-up frames always run long; and it judged only the time spent in draw(), while canvas glow costs its time in raster after draw() returns. Now: a 2 s warm-up, then lite when the stage's own draw runs long or the real time between frames averages over 25 ms. Measured here (phone size, CPU 4x, software rendering): Money and Hearth keep their glow at 55-60 fps; Forge and Kairos drop it after 3.5 s and hold 33-34.
 - Kairos formatted about 15 dates on every frame; month names, the day and the fitted next-date line are now made once (draw 9.1 -> 4.3 ms a frame; the picture is the same, labels byte for byte).

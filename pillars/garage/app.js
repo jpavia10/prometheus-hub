@@ -13,16 +13,17 @@
   /* Two vehicles (Sebastian, 2026-11-14): the Sorento keeps the original flat keys, so every
      existing profile is untouched; the MT-07 lives under mt07.* keys with its own factory seed. */
   const MT07 = window.MT07_SCHEDULE || null;
+  // The showroom (showroom.js) is a module, so it runs after this file: queue calls until it is ready.
+  const g3d = (fn) => (window.G3D ? fn(window.G3D) : window.addEventListener("g3d:ready", () => fn(window.G3D), { once: true }));
   const VEHICLES = [
     { key: "sorento", prefix: "", label: "2025 Sorento Hybrid" },
     { key: "mt07", prefix: "mt07.", label: "2021 Yamaha MT-07" },
   ];
   const veh = () => VEHICLES.find((v) => v.key === S.get("activeVehicle", "sorento")) || VEHICLES[0];
   const K = (base) => veh().prefix + base;
-  /* Spec-plate figures (presentation only): the factory dimensions and power outputs exactly as
-     carried by model3d.js's captions — Sorento 4,815 × 1,900 × 1,695 mm, WB 2,815, 227 hp combined;
-     MT-07 2,085 × 795 × 1,095 mm, WB 1,400, 72.4 hp (54 kW). If a figure is ever corrected there,
-     correct it here too — the plate must never disagree with the model. */
+  /* Spec-plate figures (presentation only): the factory dimensions and power outputs — Sorento 4,815 × 1,900 × 1,695 mm,
+     WB 2,815, 227 hp combined; MT-07 2,085 × 795 × 1,095 mm, WB 1,400, 72.4 hp (54 kW). The showroom models
+     (models/models.json lengthM) are scaled to the same lengths: if a figure is ever corrected here, correct it there too. */
   const PLATES = {
     sorento: { bay: "Bay 01", power: "1.6L turbo hybrid · 227 hp combined", dims: [["Length", "4,815 mm"], ["Width", "1,900 mm"], ["Height", "1,695 mm"], ["Wheelbase", "2,815 mm"]], src: "Kia factory dimensions · severe mountain schedule on file" },
     mt07: { bay: "Bay 02", power: "689cc CP2 twin · 72.4 hp (54 kW)", dims: [["Length", "2,085 mm"], ["Width", "795 mm"], ["Height", "1,095 mm"], ["Wheelbase", "1,400 mm"]], src: "Yamaha factory dimensions · owner's manual BAT-28199-10" },
@@ -238,7 +239,7 @@
     const pb = getPB();
     const g = getGarageMath();
     const vNow = veh();
-    if (window.G3D) window.G3D.setVehicle(vNow.key);
+    g3d((G) => G.setVehicle(vNow.key));
     $("#g-vehicles").innerHTML = VEHICLES.map((v) => `<button class="btn ${v.key === vNow.key ? "" : "quiet"} small" data-veh="${v.key}" type="button">${esc(v.label)}${v.key === vNow.key ? " · active" : ""}</button>`).join("");
     $("#g-vehicles").querySelectorAll("[data-veh]").forEach((b) => (b.onclick = () => { S.set("activeVehicle", b.dataset.veh); paint(); paintPaperworkAndDossier(); }));
     const plate = PLATES[vNow.key] || PLATES.sorento;
@@ -424,6 +425,6 @@
 
   $("#export").onclick = () => download(`garage_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); toast("Imported"); paint(); paintPaperworkAndDossier(); } catch (e) { toast(e.message); } };
-  if (window.G3D) window.G3D.attach($("#g-3d"), $("#g-3d-cap"));
+  g3d((G) => G.attach($("#g-3d"), $("#g-3d-cap")));
   paint();
 })();

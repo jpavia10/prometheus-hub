@@ -236,6 +236,29 @@ with sync_playwright() as p:
         p7.close()
     proof("STAGE-1", "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors", not bare and len(shown) == 19, f"{len(shown)} of 19 drawn: {', '.join(shown)}" + ("; missing: " + " | ".join(bare) if bare else "")); c7.close()
 
+    # GARAGE-3D: the showroom shows a real model for each vehicle (owner, 2026-11-20: "That 3d car and motorcycle is retarded. Get a
+    # free model ... sub if u can't find mine"): both GLBs load, are lit pixels on the canvas, carry their author and license, and the
+    # caption says which stand-in is shown and credits it.
+    gc = b.new_context(viewport={"width": 390, "height": 844}); gp = gc.new_page(); bad_g = []; gp.on("pageerror", lambda e: bad_g.append(str(e)[:100]))
+    gp.goto(f"{URL}pillars/garage/", wait_until="load"); gp.wait_for_timeout(600)
+    gp.evaluate("() => { const t = [...document.querySelectorAll('main > .pk-tabs .tab')].find((x) => /3D/.test(x.textContent)); if (t) t.click(); }"); gp.wait_for_timeout(300)
+    seen_g = []
+    for key in ("sorento", "mt07"):
+        gp.evaluate(f"() => {{ const b = document.querySelector('[data-veh=\"{key}\"]'); if (b) b.click(); document.querySelector('#g-3d').scrollIntoView({{ block: 'center' }}); }}")
+        try: gp.wait_for_function("() => /drag to turn|did not load|not in the bay|needs WebGL/.test(document.querySelector('#g-3d-cap').textContent)", timeout=90000)
+        except Exception: pass
+        gp.wait_for_timeout(800)
+        cap = gp.evaluate("() => document.querySelector('#g-3d-cap').textContent")
+        # WebGL keeps its picture only until the frame is shown, so the canvas is read inside a frame, after the viewer has drawn it.
+        lit = gp.evaluate("""() => new Promise((res) => requestAnimationFrame(() => { const c = document.querySelector('#g-3d'); if (!c || c.hidden) return res(0); const o = document.createElement('canvas'); o.width = 120; o.height = 90; const g = o.getContext('2d'); g.drawImage(c, 0, 0, 120, 90);
+          const d = g.getImageData(0, 0, 120, 90).data; let n = 0; for (let i = 0; i < d.length; i += 4) if (d[i + 3] > 200 && (d[i] + d[i + 1] + d[i + 2]) > 60) n++; res(n); }))""")
+        meta = gp.evaluate("""async (k) => { const m = await (await fetch('models/models.json')).json(), e = m[k], buf = await (await fetch('models/' + e.file)).arrayBuffer(), dv = new DataView(buf);
+          const n = dv.getUint32(12, true), j = JSON.parse(new TextDecoder().decode(new Uint8Array(buf, 20, n))), x = (j.asset || {}).extras || {}; return { kb: Math.round(buf.byteLength / 1024), author: x.author || '', license: x.license || '' }; }""", key)
+        ok = "drag to turn" in cap and "shown as" in cap and "CC BY" in cap and lit > 200 and meta["author"] and "CC-BY" in meta["license"] and meta["kb"] < 2048
+        seen_g.append((key, ok, f"{key}: {lit} lit px, {meta['kb']} KB, {meta['license'][:9]} by {meta['author'][:20]}; caption '{cap[:70]}'"))
+    proof("GARAGE-3D", "The Garage showroom shows a real 3D model for each vehicle, light enough for a phone, credited, and the caption says it is a stand-in",
+          all(o for _, o, _ in seen_g) and not bad_g, " | ".join(d for _, _, d in seen_g) + ("; errors: " + " | ".join(bad_g) if bad_g else "")); gc.close()
+
     # NEW-1: the four pillars added 2026-11-13 do their jobs on real data
     c8 = b.new_context(viewport={"width": 390, "height": 844}); p8 = c8.new_page(); bad8 = []; p8.on("pageerror", lambda e: bad8.append(str(e)[:100]))
     if MOCK:

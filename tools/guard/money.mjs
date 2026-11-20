@@ -62,6 +62,7 @@ export const ALLOW = [
   ["pillars/odyssey/photos.js", "Odyssey trip photos (2026-11-19): the ids are camera timestamps (YYYYMMDDhhmmss), not card numbers"],
   ["pillars/polis/kern-rules.js", "Kern County ordinance reference (POL-GEM-04, 2026-11-19): statutory stop-work fines quoted from the county code, not money of Joseph's"],
   ["pillars/hearth/permits.js", "building-code reference (HEA-GEM-17): CRC R315's $1,000-of-work threshold for CO alarms"],
+  ["kit/vendor/", "third-party libraries, unmodified (three.js 0.170, MIT; added 2026-11-20 for the Garage showroom): a library author's copyright email and minified digits, no personal data"],
   ["pillars/continuity/legacy-policies.js", "provider legacy-policy reference (CON-GEM-03): a help-centre URL's article id matches the card pattern; no account numbers"],
 ];
 
