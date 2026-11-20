@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Money's Flex rules re-sourced; Midas homework back on the pages (d40)
+- Hub Money's Citi Flex rules (flex.js, from MID-GEM-09): 13 rows linked a Citi URL that search cannot find, with quotes that are not Citi's wording. Each row now links the Citi page that states it and says how it was checked; row 6's "6 to 60 months" and row 10's "Interest Saving Balance" corrected; rows 6, 10, 12, 14 tagged "not confirmed by Citi" on the page.
+- d39's render ran without the Midas checkout and dropped Midas's tasks from HOMEWORK pages, the board and deadlines; re-rendered with all three repos. Midas: parser cases are tests now, scores #1-#11, MID-GEM-11 sent back (midas-ledger 1c04d39).
+
 ### [2026-11-20] Gemini's 25 function specs of Nov 16 checked: all sent back; the checker now catches them (d39)
 - Every file parsed and every file:line checked against the code as it stood on Nov 16; 12 code claims opened at random. The 22 pillar specs have the right headings but a third of the counts (2-4 stories, none "As Joseph..."; 2-3 rules for 10; 3 tests for 12, none Given/when/then; no data table) and half the sampled lines point at other code; hub/money/forge used another template with line ranges that never existed (money engine.js:1-342, the file has 58 lines). Scores #26-#50, average 4.3; each task reopened with its own reasons, due Nov 30, shown on Gemini's pages ("SENT BACK") and tagged on the Forge.
 - tools/kit/check_delivery.mjs now reads "headings, in this order: A | B" shapes, checks the order, the counts (stories, items, Given/when/then tests, the data table) and opens every file:line (unit 84/84); all 25 old specs fail it. Privacy: the home street address and the safe's contents came out of Odyssey's away checklist, Bastion and Records (three public files; git history still has them).

@@ -386,7 +386,8 @@
      generated here — this is published-rules reference only. */
   function paintFlex() {
     const box = $("#m-flex-list"); if (!box) return;
-    box.innerHTML = (window.MONEY_FLEX || []).map((r) => `<div class="kv"><span><b>${esc(r.topic)}</b><br><small class="stat-s">${esc(r.rule)}</small>${r.corrected ? `<br><small class="stat-s">Integration note: ${esc(r.corrected)}</small>` : ""}</span><a class="stat-s" href="${esc(r.url)}" target="_blank" rel="noopener">source ↗</a></div>`).join("") || `<p class="empty">Flex rules not loaded.</p>`;
+    /* 2026-11-20: each row says how it was checked; a rule no Citi page confirms is tagged, never shown as Citi's word. */
+    box.innerHTML = (window.MONEY_FLEX || []).map((r) => `<div class="kv"><span><b>${esc(r.topic)}</b>${r.unconfirmed ? ` <span class="pill warn">not confirmed by Citi</span>` : ""}<br><small class="stat-s">${esc(r.rule)}</small>${r.corrected ? `<br><small class="stat-s">Integration note: ${esc(r.corrected)}</small>` : ""}${r.check ? `<br><small class="stat-s">Checked: ${esc(r.check)}</small>` : ""}</span><a class="stat-s" href="${esc(r.url)}" target="_blank" rel="noopener">source ↗</a></div>`).join("") || `<p class="empty">Flex rules not loaded.</p>`;
   }
 
   function paintBills() {

@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-20 08:48 UTC. 50 to do across 26 pillars; 5 more delivered and waiting for their check (listed at the end: do not redo them).
+Updated 2026-11-20 09:12 UTC. 51 to do across 27 pillars; 5 more delivered and waiting for their check (listed at the end: do not redo them).
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -37,29 +37,30 @@ IN THIS ORDER:
 19. [Privacy · CA DROP] PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
 20. [Prometheus Hub] HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
 21. [Kairos Meridian] KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-22. [Hephaestus Hearth] HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-23. [Garage] GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-24. [Apollo Temple] APO-GEM-10 · Apollo Temple: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-25. [Money · payoff simulator] MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-26. [Selling Pipeline] SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-27. [Records · Paper Killer] REC-GEM-05 · Records: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-28. [Icarus Stake] ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-29. [Hermes Post] HER-GEM-09 · Hermes Post: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-30. [Bossa Piano Studio] PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-31. [Bastion · Mountain Prep] BAS-GEM-06 · Bastion: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-32. [Athenaeum · Idea Vault] ATH-GEM-03 · Athenaeum: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-33. [Odyssey · Trips & Away Mode] ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-34. [Privacy · CA DROP] PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-35. [Argus Album] ARG-GEM-10 · Argus Album: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-36. [Ludus Arcade] GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-37. [Forge] FOR-GEM-03 · Forge: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-38. [Foundry] FDY-GEM-04 · Foundry: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-39. [Observatory] OBS-GEM-04 · Observatory: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-40. [Kin] KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-41. [Aether · Atmospheric & Field Lab] AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-42. [Polis · Civic & Legal Watch] POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-43. [Mythos · Creative & Lore Studio] MYT-GEM-03 · Mythos: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-44. [Continuity · Sovereign Vault] CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+22. [Midas Ledger] MID-GEM-11 · Midas Ledger: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+23. [Hephaestus Hearth] HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+24. [Garage] GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+25. [Apollo Temple] APO-GEM-10 · Apollo Temple: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+26. [Money · payoff simulator] MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+27. [Selling Pipeline] SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+28. [Records · Paper Killer] REC-GEM-05 · Records: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+29. [Icarus Stake] ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+30. [Hermes Post] HER-GEM-09 · Hermes Post: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+31. [Bossa Piano Studio] PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+32. [Bastion · Mountain Prep] BAS-GEM-06 · Bastion: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+33. [Athenaeum · Idea Vault] ATH-GEM-03 · Athenaeum: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+34. [Odyssey · Trips & Away Mode] ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+35. [Privacy · CA DROP] PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+36. [Argus Album] ARG-GEM-10 · Argus Album: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+37. [Ludus Arcade] GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+38. [Forge] FOR-GEM-03 · Forge: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+39. [Foundry] FDY-GEM-04 · Foundry: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+40. [Observatory] OBS-GEM-04 · Observatory: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+41. [Kin] KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+42. [Aether · Atmospheric & Field Lab] AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+43. [Polis · Civic & Legal Watch] POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+44. [Mythos · Creative & Lore Studio] MYT-GEM-03 · Mythos: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+45. [Continuity · Sovereign Vault] CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
 
 ==================== 1. KAIROS MERIDIAN ====================
 ## 1. KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)
@@ -1111,8 +1112,73 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 22. HEPHAESTUS HEARTH ====================
-## 22. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
+==================== 22. MIDAS LEDGER ====================
+## 22. MID-GEM-11 · Midas Ledger: the function spec, written as the build plan
+
+**Due:** 2026-11-30 · **State:** now
+
+**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: midas_gemini_function-spec_20261118-1940.md now describes the real code (Muse's first read found an invented app in the 1735 version), but it lost the counts: B has 3 items and none is 'As Joseph, when ..., I want ..., so that ...' (8+); C is a list, not the table; E has 7 rules (10+); F has 4 tests, none Given/when/then (12+). Its build.py lines point at other code (parse_terms is at build.py:1767, not 130-165; net worth at 1671, not 305-330), and C and E state fields build.py does not write (warnings, change, duplicate: 'DUPLICATE', plan.mode, totals). F1 claims 25/25 for the parser cases; 22 hold (test/test_parser_cases.py). Write it again from the live code; run node tools/kit/check_delivery.mjs on it from a checkout of jpavia10/prometheus-hub.
+
+**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Midas Ledger from, step by step.
+
+**Read first:**
+- https://jpavia10.github.io/midas-ledger/ (locked; run it locally with ?hud=1 for the made-up book, README 'Pages')
+- https://github.com/jpavia10/midas-ledger
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
+
+**Do this:**
+1. Open the live page (https://jpavia10.github.io/midas-ledger/ (locked; run it locally with ?hud=1 for the made-up book, README 'Pages')) on a phone-sized browser and use every section.
+2. Read the code (https://github.com/jpavia10/midas-ledger): every file the page loads, and pillar.json.
+3. Write section A from what is there now, with file:line for each item; then B to H.
+4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
+
+**Make:** `midas_gemini_function-spec_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
+
+**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
+
+**Every field, exactly:**
+- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
+- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
+- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
+- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
+- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
+- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
+- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
+- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every item in A has a file:line that exists.
+- [ ] B has 8+ stories and none invents a personal fact.
+- [ ] C names every field with type and example.
+- [ ] F has 12+ tests, each with one Given, one When, one Then.
+- [ ] G steps are in an order that can ship one by one.
+- [ ] All eight headings, in order.
+- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
+
+**How many:** 1
+
+**Done when:** 1 file exactly in the shape, every self-check line true.
+
+**How Claude checks it:**
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
+- a file:line past the end of its file, or pointing at code that does something else
+- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
+
+==================== 23. HEPHAESTUS HEARTH ====================
+## 23. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1176,8 +1242,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 23. GARAGE ====================
-## 23. GAR-GEM-07 · Garage: the function spec, written as the build plan
+==================== 24. GARAGE ====================
+## 24. GAR-GEM-07 · Garage: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1241,8 +1307,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 24. APOLLO TEMPLE ====================
-## 24. APO-GEM-10 · Apollo Temple: the function spec, written as the build plan
+==================== 25. APOLLO TEMPLE ====================
+## 25. APO-GEM-10 · Apollo Temple: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1306,8 +1372,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 25. MONEY · PAYOFF SIMULATOR ====================
-## 25. MON-GEM-04 · Money: the function spec, written as the build plan
+==================== 26. MONEY · PAYOFF SIMULATOR ====================
+## 26. MON-GEM-04 · Money: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1371,8 +1437,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 26. SELLING PIPELINE ====================
-## 26. SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan
+==================== 27. SELLING PIPELINE ====================
+## 27. SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1436,8 +1502,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 27. RECORDS · PAPER KILLER ====================
-## 27. REC-GEM-05 · Records: the function spec, written as the build plan
+==================== 28. RECORDS · PAPER KILLER ====================
+## 28. REC-GEM-05 · Records: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1501,8 +1567,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 28. ICARUS STAKE ====================
-## 28. ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan
+==================== 29. ICARUS STAKE ====================
+## 29. ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1566,8 +1632,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 29. HERMES POST ====================
-## 29. HER-GEM-09 · Hermes Post: the function spec, written as the build plan
+==================== 30. HERMES POST ====================
+## 30. HER-GEM-09 · Hermes Post: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1631,8 +1697,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 30. BOSSA PIANO STUDIO ====================
-## 30. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
+==================== 31. BOSSA PIANO STUDIO ====================
+## 31. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1696,8 +1762,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 31. BASTION · MOUNTAIN PREP ====================
-## 31. BAS-GEM-06 · Bastion: the function spec, written as the build plan
+==================== 32. BASTION · MOUNTAIN PREP ====================
+## 32. BAS-GEM-06 · Bastion: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1761,8 +1827,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 32. ATHENAEUM · IDEA VAULT ====================
-## 32. ATH-GEM-03 · Athenaeum: the function spec, written as the build plan
+==================== 33. ATHENAEUM · IDEA VAULT ====================
+## 33. ATH-GEM-03 · Athenaeum: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1826,8 +1892,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 33. ODYSSEY · TRIPS & AWAY MODE ====================
-## 33. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
+==================== 34. ODYSSEY · TRIPS & AWAY MODE ====================
+## 34. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1891,8 +1957,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 34. PRIVACY · CA DROP ====================
-## 34. PRI-GEM-06 · Privacy: the function spec, written as the build plan
+==================== 35. PRIVACY · CA DROP ====================
+## 35. PRI-GEM-06 · Privacy: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1956,8 +2022,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 35. ARGUS ALBUM ====================
-## 35. ARG-GEM-10 · Argus Album: the function spec, written as the build plan
+==================== 36. ARGUS ALBUM ====================
+## 36. ARG-GEM-10 · Argus Album: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2021,8 +2087,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 36. LUDUS ARCADE ====================
-## 36. GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan
+==================== 37. LUDUS ARCADE ====================
+## 37. GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2086,8 +2152,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 37. FORGE ====================
-## 37. FOR-GEM-03 · Forge: the function spec, written as the build plan
+==================== 38. FORGE ====================
+## 38. FOR-GEM-03 · Forge: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2151,8 +2217,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 38. FOUNDRY ====================
-## 38. FDY-GEM-04 · Foundry: the function spec, written as the build plan
+==================== 39. FOUNDRY ====================
+## 39. FDY-GEM-04 · Foundry: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2216,8 +2282,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 39. OBSERVATORY ====================
-## 39. OBS-GEM-04 · Observatory: the function spec, written as the build plan
+==================== 40. OBSERVATORY ====================
+## 40. OBS-GEM-04 · Observatory: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2281,8 +2347,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 40. KIN ====================
-## 40. KIN-GEM-04 · Kin: the function spec, written as the build plan
+==================== 41. KIN ====================
+## 41. KIN-GEM-04 · Kin: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2346,8 +2412,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 41. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 41. AET-GEM-05 · Aether: the function spec, written as the build plan
+==================== 42. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 42. AET-GEM-05 · Aether: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2411,8 +2477,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 42. POLIS · CIVIC & LEGAL WATCH ====================
-## 42. POL-GEM-05 · Polis: the function spec, written as the build plan
+==================== 43. POLIS · CIVIC & LEGAL WATCH ====================
+## 43. POL-GEM-05 · Polis: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2476,8 +2542,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 43. MYTHOS · CREATIVE & LORE STUDIO ====================
-## 43. MYT-GEM-03 · Mythos: the function spec, written as the build plan
+==================== 44. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 44. MYT-GEM-03 · Mythos: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -2541,8 +2607,8 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file:line past the end of its file, or pointing at code that does something else
 - a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
-==================== 44. CONTINUITY · SOVEREIGN VAULT ====================
-## 44. CON-GEM-04 · Continuity: the function spec, written as the build plan
+==================== 45. CONTINUITY · SOVEREIGN VAULT ====================
+## 45. CON-GEM-04 · Continuity: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 

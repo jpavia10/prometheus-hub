@@ -1,6 +1,39 @@
 {
- "updated": "2026-11-20 08:48 UTC",
+ "updated": "2026-11-20 09:12 UTC",
  "tasks": [
+  {
+   "due": "2026-11-09",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "MID-GRK-01",
+   "title": "Give every debt in the book its APR, minimum, due day, limit and promo end",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-09",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "MID-GRK-02",
+   "title": "A fresh book every Monday by noon PT",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-14",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "chatgpt",
+   "ai_name": "ChatGPT",
+   "id": "MID-GPT-01",
+   "title": "Audit Midas v2 on the made-up book: 20 findings",
+   "state": "now",
+   "count": 20
+  },
   {
    "due": "2026-11-20",
    "pillar": "records",
@@ -520,6 +553,17 @@
   },
   {
    "due": "2026-11-27",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "grok",
+   "ai_name": "Grok",
+   "id": "MID-GRK-04",
+   "title": "Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan'",
+   "state": "next",
+   "count": 10
+  },
+  {
+   "due": "2026-11-27",
    "pillar": "money",
    "pillar_name": "Money · payoff simulator",
    "ai": "grok",
@@ -801,6 +845,17 @@
    "ai_name": "Gemini",
    "id": "KIN-GEM-04",
    "title": "Kin: the function spec, written as the build plan",
+   "state": "now",
+   "count": 1
+  },
+  {
+   "due": "2026-11-30",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-11",
+   "title": "Midas Ledger: the function spec, written as the build plan",
    "state": "now",
    "count": 1
   },
