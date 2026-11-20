@@ -1,6 +1,6 @@
 {
- "built": "2026-11-20T17:23:17Z",
- "checked": "2026-11-20T17:23:17Z",
+ "built": "2026-11-20T19:24:19Z",
+ "checked": "2026-11-20T19:24:19Z",
  "version": 2,
  "today": "2026-11-20",
  "sources": {
@@ -19,47 +19,47 @@
    "synced": "2026-11-19T20:47:40Z"
   },
   "titan_scores": 176,
-  "hub_scores": 50,
+  "hub_scores": 52,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 123,
+  "todo": 120,
   "late": 3,
-  "due7": 82,
+  "due7": 79,
   "delivered": 5,
   "queued": 12,
   "withdrawn": 110
  },
  "per": {
   "Gemini": {
-   "todo": 54,
+   "todo": 51,
    "late": 0,
-   "due7": 27,
+   "due7": 24,
    "delivered": 5,
    "queued": 2,
-   "done7": 23,
+   "done7": 26,
    "withdrawn": 68,
-   "items": 311,
+   "items": 265,
    "floor": 30,
    "by": {
-    "hub": 50,
+    "hub": 47,
     "titan": 3,
     "tproj": 1,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 121,
-    "avg": 6.81,
-    "last10": 4.4,
+    "n": 123,
+    "avg": 6.85,
+    "last10": 5.4,
     "last": {
      "ai": "Gemini",
-     "n": 50,
+     "n": 52,
      "date": "2026-11-20",
-     "what": "selling_gemini_function-spec_20261116-2040.md",
-     "task": "SEL-GEM-05",
+     "what": "hub_gemini_defects_20261120-1018.json (trial 4, 16 defects)",
+     "task": "HUB-GEM-14",
      "where": "Prometheus Hub",
-     "score": 4.0
+     "score": 10.0
     }
    }
   },
@@ -264,11 +264,11 @@
  },
  "places": {
   "Prometheus Hub": {
-   "todo": 8,
+   "todo": 6,
    "delivered": 0,
    "by": {
     "Grok": 1,
-    "Gemini": 5,
+    "Gemini": 3,
     "Muse": 2
    }
   },
@@ -470,10 +470,10 @@
    }
   },
   "Midas Ledger": {
-   "todo": 5,
+   "todo": 4,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
+    "Gemini": 1,
     "Grok": 2,
     "ChatGPT": 1
    }
@@ -608,7 +608,7 @@
    "due": "2026-11-23",
    "items": 30,
    "closed": "",
-   "review": "",
+   "review": "Not started on 2026-11-20: the images on raw.githubusercontent.com would not open in the Gemini app (an honest block, no answer guessed). The photos are now in the Drive folder listed first under 'Read first'.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -642,7 +642,7 @@
    "due": "2026-11-23",
    "items": 15,
    "closed": "",
-   "review": "",
+   "review": "Not started on 2026-11-20: the images on raw.githubusercontent.com would not open in the Gemini app (an honest block, no answer guessed). The photos are now in the Drive folder listed first under 'Read first'.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -672,11 +672,11 @@
    "pid": "hub",
    "id": "HUB-GEM-13",
    "title": "TRIAL 3: what makes the home screen and Athenaeum slow on a phone (find it from the code)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-23",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-20",
+   "review": "Scored 9 (trial 3). 24 findings, every file:line exact on 74e34cf. Measured on a phone-size copy (software WebGL): Athenaeum's nebula pass 5 -> 20 fps with it off, the home sky still drawing under the menu 5 -> 15 fps, the menu-world shader the other large cost; your top three are the measured top three, and the hidden home sky is a find Claude had missed. One measured the wrong way: removing will-change on #ath-layer children dropped Athenaeum to 1 fps. The CSS items (blurs, filters, scanlines) were too small to tell apart in software rendering here; they stay on the list for a phone check. Details: docs/agents/trials/2026-11-20-gemini.md.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -708,11 +708,11 @@
    "pid": "hub",
    "id": "HUB-GEM-14",
    "title": "TRIAL 4: real defects in the shared kit and the Forge, each with a reproduction",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-23",
    "items": 6,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-20",
+   "review": "Scored 10 (trial 4). 16 defects, all 16 real in the code at 74e34cf; 4 reproduced by Claude in a browser (the stray 'null' text under the task list, Workload rows not opening Tasks, Escape not closing the palette after Tab, a hand-out marked back still counted as to do). Lines exact or within one. Being fixed. Details: docs/agents/trials/2026-11-20-gemini.md.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9970,11 +9970,11 @@
    "pid": "midas",
    "id": "MID-GEM-12",
    "title": "TRIAL 5: break the Midas terms parser on paper (30 cases, predict what the code returns)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-23",
    "items": 30,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-20",
+   "review": "Scored 8 (trial 5). Claude ran all 30 through build.py: 24 of 30 predictions exact; the 6 misses share one blind spot (the 'as of' date is read from the whole line, so it survives separators and labels that break the other fields). Real parser gaps found, inside what BOOK_SCHEMA.md promises: 'no deferred interest' sets deferred_interest (case 26), a non-zero promo rate beside a promo end is dropped (case 21), and three minor ones ('due 15th', 'promo' inside the due segment, 'thru' in the first promo pattern). Over-claimed: '27 of 30 real parser gaps' counts issuer wordings the book never promised to read (the book is written in the schema's own form). The issuer quotes could not be opened from Claude's machine. Gaps go to Joseph before the parser changes (protected internal).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -15006,6 +15006,24 @@
    "task": "SEL-GEM-05",
    "where": "Prometheus Hub",
    "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 51,
+   "date": "2026-11-20",
+   "what": "hub_gemini_perf-audit_20261120-1008.json (trial 3, 24 findings)",
+   "task": "HUB-GEM-13",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 52,
+   "date": "2026-11-20",
+   "what": "hub_gemini_defects_20261120-1018.json (trial 4, 16 defects)",
+   "task": "HUB-GEM-14",
+   "where": "Prometheus Hub",
+   "score": 10.0
   }
  ],
  "pending_scores": [

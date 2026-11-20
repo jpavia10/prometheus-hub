@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Gemini's capability trials scored: 9, 10, 8; coin photos put in Drive
+- Trial 3 (perf audit, 9): 24 findings, lines exact; measured, its top three are the real big costs (Athenaeum's nebula pass, the home sky drawing invisibly under the menu, the menu-world shader). Trial 4 (defects, 10): 16 of 16 real, 4 reproduced in a browser. Trial 5 (Midas parser, 8): 24 of 30 predictions exact, two clear and three minor real gaps, over-claimed the rest. Record: docs/agents/trials/2026-11-20-gemini.md.
+- Trials 1 and 2 were blocked because the Gemini app could not open images on raw GitHub; the 45 blind photos and both PROMPT.md files are now in Drive (bakeoff (blind photo test)/pack-20261008-main and -locked), linked first on the tasks.
+
 ### [2026-11-20] Garage: real 3D models in the showroom (d45)
 - Joseph: "That 3d car and motorcycle is retarded. Get a free model of a misc motorcycle and sub if u can't find mine." The hand-rolled box models (model3d.js) are gone; the three.js showroom from claude/garage-showroom (2026-11-16, waiting since on a Sketchfab key) is merged with two free models from public GitHub repositories that ship the authors' Sketchfab exports with their license intact: the Sorento bay shows a 2015 Hyundai Tucson (razor24, CC BY 4.0) in an approximated Mineral Blue, the MT-07 bay a 2014 Kawasaki Z1000 (e-restrepo1114, CC BY 4.0) toned matte black. No free model of the exact vehicles was reachable from here; the caption says which stand-in is shown. Compressed with glTF-Transform (229 KB and 926 KB), scaled to the real lengths. Credits: pillars/garage/models/CREDITS.md.
 - New proof GARAGE-3D (both models drawn, under 2 MB, credited, caption names the stand-in); the money guard skips kit/vendor/ (unmodified third-party code). The session that waited on the Sketchfab key is superseded.

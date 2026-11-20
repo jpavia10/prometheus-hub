@@ -2,7 +2,7 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-20 17:23 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-20 19:24 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -15,6 +15,7 @@ Updated 2026-11-20 17:23 UTC · 5 open · Rules for every pillar: https://github
 **What it unlocks:** If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.
 
 **Read first:**
+- https://drive.google.com/drive/folders/1J8GyMMRBMhpMXCZRaaKZf3xemV24gunZ (the same photos and PROMPT.md in Drive, added 2026-11-20 because raw GitHub images did not open in the Gemini app: open each photo here)
 - https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-main (the 30 photos, BK-xxxx.webp)
 - https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/PROMPT.md (the test's own prompt and answer format: follow it exactly)
 - each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/BK-xxxx.webp
@@ -67,6 +68,7 @@ Updated 2026-11-20 17:23 UTC · 5 open · Rules for every pillar: https://github
 **What it unlocks:** If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.
 
 **Read first:**
+- https://drive.google.com/drive/folders/1E0w_bOzomSEZhwMmFzu10eEW-nPDC8vz (the same photos and PROMPT.md in Drive, added 2026-11-20 because raw GitHub images did not open in the Gemini app: open each photo here)
 - https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-locked (the 15 photos, BK-xxxx.webp)
 - https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/PROMPT.md (the test's own prompt and answer format: follow it exactly)
 - each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/BK-xxxx.webp
@@ -110,136 +112,7 @@ Updated 2026-11-20 17:23 UTC · 5 open · Rules for every pillar: https://github
 - fewer than the count
 - not the shape PROMPT.md asks for
 
-## 3. HUB-GEM-13 · TRIAL 3: what makes the home screen and Athenaeum slow on a phone (find it from the code)
-
-**Due:** 2026-11-23 · **State:** now
-
-**Why:** TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Reading a large codebase and reasoning about what a browser does every frame. Claude measured both pages at phone size with the CPU slowed 4x: the home screen holds about 33 frames a second at rest even with its WebGL canvases hidden, Athenaeum about 47; both should hold 60. Claude has found part of the cause; you are scored on what you find that its measurements confirm.
-
-**What it unlocks:** The fixes go into the next motion pass; the home screen and Athenaeum are the two pages Joseph opens most.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/ (home: the menu of worlds) and https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/
-- https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/deck (home: index at the repository root loads deck/app.js, deck/deck.css, deck/views/menu.js, deck/core/atmo.js, deck/core/fx.js and the rest)
-- https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/pillars/athenaeum and https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/kit (the shared kit every pillar loads)
-
-**Do this:**
-1. Read the code at commit 74e34cf (the links above are pinned to it). Main keeps changing while you work; Claude measures and reproduces on a local copy of 74e34cf, so a finding in that code counts even if main has since changed it.
-2. Read every file each page loads (HTML, CSS, JS, shaders).
-3. List everything that runs at rest, every frame: requestAnimationFrame loops, CSS animations and what each one animates (transform/opacity run on the compositor; anything else repaints), filter and backdrop-filter under or on moving things, canvases (their size against devicePixelRatio and how often they redraw), WebGL (draw calls, overdraw, cost per pixel of each shader).
-4. Then what runs on scroll and on a tap.
-5. For each cost: estimate its milliseconds per frame on a mid-range phone and show the reasoning (pixel count x work per pixel, or calls x cost).
-6. For each, give a TOGGLE (one CSS rule or one small JS change that removes only that cost, so Claude can measure it) and a FIX (the change that keeps the look and removes most of the cost).
-7. Rank by estimated cost, largest first.
-
-**Make:** `hub_gemini_perf-audit_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, 10 to 25 objects, ranked largest cost first`
-
-**Every field, exactly:**
-- `rank` (integer): 1 = largest cost
-- `page` (text): home | athenaeum | both
-- `file` (text): path in the repository
-- `line` (integer): the line that starts the cost
-- `what` (text): one sentence
-- `runs_when` (text): every frame | scroll | tap | load
-- `mechanism` (text): what the browser does (style, layout, paint, raster, composite, GPU) and why
-- `est_ms_per_frame` (number): on a mid-range phone
-- `why_estimate` (text): the arithmetic
-- `toggle` (text): exact CSS or JS that removes only this cost
-- `fix` (text): exact change that keeps the look
-- `confidence` (text): high / medium / low
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{"rank": 4, "page": "home", "file": "deck/deck.css", "line": 212, "what": "...", "runs_when": "every frame", "toggle": ".mn-emblem{filter:none!important}", ...}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every file:line is in the code as it is on main on the day you write (Claude opens every one).
-- [ ] Every claim says how Claude can see it for itself: a reproduction, a toggle or an input.
-- [ ] Nothing is padded: one real finding beats three guesses. A finding Claude cannot reproduce or measure counts against you.
-- [ ] The file is valid JSON (or the shape asked) and is named exactly as asked.
-- [ ] Each toggle removes one cost only, so its measured effect can be told apart.
-
-**How many:** 10
-
-**Done when:** 10 or more findings, ranked, each with a toggle and a fix.
-
-**How Claude checks it:**
-- Claude applies each toggle on a phone-size copy of commit 74e34cf with the CPU slowed 4x and measures frames per second at rest and while scrolling: a finding counts when its toggle moves the number. Score: confirmed findings, minus wrong ones, plus how closely your ranking matches the measured order.
-
-**Not done (sent back) if:**
-- a file:line that does not exist or does not do what the row says
-- a finding that is the same as another with the words changed
-- more wrong findings than right ones
-- a file saved anywhere but the folder named here, or under another name
-- a toggle that removes several things at once
-- no arithmetic behind an estimate
-
-## 4. HUB-GEM-14 · TRIAL 4: real defects in the shared kit and the Forge, each with a reproduction
-
-**Due:** 2026-11-23 · **State:** now
-
-**Why:** TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Finding bugs in about 3,000 lines of real code without running it, and proving each one. The kit (kit/kit.js, kit/stage.js, kit/prometheus.css) runs on every pillar; the Forge (pillars/forge/app.js and its builder tools/forge/build.py) is where Joseph sees every AI's homework.
-
-**What it unlocks:** Every confirmed defect is fixed on all 27 pillars at once.
-
-**Read first:**
-- https://github.com/jpavia10/prometheus-hub/tree/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/kit
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/pillars/forge/app.js and https://raw.githubusercontent.com/jpavia10/prometheus-hub/74e34cf3c30adede4defdb67c00a2a90ea1fa1cb/tools/forge/build.py
-- https://jpavia10.github.io/prometheus-hub/pillars/forge/ and any other pillar, at phone size
-
-**Do this:**
-1. Read the code at commit 74e34cf (the links above are pinned to it). Main keeps changing while you work; Claude measures and reproduces on a local copy of 74e34cf, so a finding in that code counts even if main has since changed it.
-2. Read the files in full. Look for what actually goes wrong: wrong numbers, dates and time zones, state that is lost or doubled, a control that does nothing or the wrong thing, keyboard and screen-reader traps, races between loading and drawing, input build.py mis-reads, listeners added again on every call, errors swallowed.
-3. Prove each one: numbered steps on the live site at phone size, or the exact input to build.py, with what should happen and what happens.
-4. Severity: data (loses or changes a record) | number (shows a wrong value) | control (a control fails) | access | performance | visual.
-5. Give the fix as an exact code change.
-
-**Make:** `hub_gemini_defects_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, 6 to 20 objects, worst first`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `file` (text): path
-- `line` (integer): where it goes wrong
-- `title` (text): one line
-- `steps` (list): numbered, reproducible by Claude in under two minutes
-- `expected` (text): 
-- `actual` (text): 
-- `severity` (text): data | number | control | access | performance | visual
-- `fix` (text): exact code change
-- `confidence` (text): high / medium / low
-
-**Before you save, check every one of these yourself:**
-- [ ] Every file:line is in the code as it is on main on the day you write (Claude opens every one).
-- [ ] Every claim says how Claude can see it for itself: a reproduction, a toggle or an input.
-- [ ] Nothing is padded: one real finding beats three guesses. A finding Claude cannot reproduce or measure counts against you.
-- [ ] The file is valid JSON (or the shape asked) and is named exactly as asked.
-- [ ] You followed your own steps in a browser if you can, and say so in the run report; if you cannot run a browser, say that too.
-
-**How many:** 6
-
-**Done when:** 6 or more defects, each reproducible.
-
-**How Claude checks it:**
-- Claude follows every reproduction on a local copy of commit 74e34cf. Score: confirmed minus wrong; 'data' and 'number' defects count double.
-
-**Not done (sent back) if:**
-- a file:line that does not exist or does not do what the row says
-- a finding that is the same as another with the words changed
-- more wrong findings than right ones
-- a file saved anywhere but the folder named here, or under another name
-- a style opinion or a wish written as a defect
-
-## 5. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
+## 3. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
 
 **Due:** 2026-11-30 · **State:** now
 

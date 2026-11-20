@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20 17:23 UTC",
+ "updated": "2026-11-20 19:24 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -8,7 +8,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/",
    "open": {
     "grok": 1,
-    "gemini": 5,
+    "gemini": 3,
     "muse": 2,
     "chatgpt": 0,
     "argon": 0,
@@ -38,7 +38,7 @@
    "live": "https://jpavia10.github.io/midas-ledger/",
    "open": {
     "grok": 3,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 1,
     "argon": 0,
