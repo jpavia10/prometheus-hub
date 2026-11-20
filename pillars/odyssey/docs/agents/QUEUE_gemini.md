@@ -2,7 +2,7 @@
 
 # Odyssey · Trips & Away Mode · homework for Gemini
 
-Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-20 16:12 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -46,7 +46,6 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
-- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
 
 **Done when:** Every trip 2008-2026 with its places, dates, counts and evidence ids.
 
@@ -99,7 +98,6 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
-- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
 
 **Done when:** Every US place with 3+ photos, every state.
 
@@ -154,7 +152,6 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
-- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
 
 **Done when:** Every day with photos, July-September 2015.
 
@@ -208,7 +205,6 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
-- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
 
 **Done when:** Every day with photos on both trips.
 
@@ -378,7 +374,6 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
-- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
 
 **How many:** 36
 
@@ -395,11 +390,11 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 8. ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked (no people)
+## 8. ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked
 
 **Due:** 2026-11-26 · **State:** now
 
-**Why:** A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in. Owner, 2026-11-20: "Dont limit scope to 10 pics": no cap on photos or trips.
+**Why:** A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in. Owner, 2026-11-20: "Dont limit scope to 10 pics": no cap on photos or trips. Owner, 2026-11-20: people are fine in the photos ("Remove the privacy shit. Im gonna put a password on the whole site").
 
 **What it unlocks:** Every trip in ODY-GEM-05 gets its own photo journey in Odyssey.
 
@@ -407,10 +402,10 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - Your ODY-GEM-05 file
 
 **Do this:**
-1. For every trip in your ODY-GEM-05 file (all of them, oldest first): list every photo that is sharp, well lit and shows the place (landscape, landmark, street, food, view, water, sky), in time order. No cap: a trip with 300 good photos gets 300 rows.
-2. Leave out only near-duplicates (a burst or the same view a few seconds apart: keep the best one) and photos that break the privacy rule.
+1. For every trip in your ODY-GEM-05 file (all of them, oldest first): list every good photo (sharp, well lit, worth seeing again): places, people, food, moments, in time order. No cap: a trip with 300 good photos gets 300 rows.
+2. Leave out only near-duplicates (a burst or the same shot a few seconds apart: keep the best one), blurry or accidental shots, and screenshots.
 3. Rank the photos inside each trip: 1 is the best of that trip, 2 the next, and so on, so the journey can lead with the best and still hold every photo.
-4. Never a photo with a person as its subject, a face, a document, a screen, a licence plate or the inside of a home.
+4. In people, name who is in the photo only as Google Photos' own face groups name them; 'unnamed' for a face Google has not named; '' when nobody is in it. Never guess a name.
 5. If the file grows past about 400 rows, save it in parts with consecutive stamps (odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json each, every part a valid JSON array, n continuing from the last part), and list the parts in your run report.
 
 **Make:** `odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json`
@@ -427,6 +422,7 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - `taken` (text): date and time
 - `place` (text): 
 - `rank` (integer): 1 = the best photo of this trip; no two photos of a trip share a rank
+- `people` (text): names as Google Photos' face groups show them, comma-separated; 'unnamed' for an unnamed face; '' when nobody is in it
 - `why` (text): what the photo shows, 8 words max
 
 **Before you save, check every one of these yourself:**
@@ -436,10 +432,9 @@ Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
-- [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
 - [ ] No cap was applied: every trip has all its good photos, and each trip's ranks run 1, 2, 3 ... without gaps.
 
-**Done when:** Every trip in ODY-GEM-05 has every good, privacy-safe photo, ranked within its trip; nothing left out to meet a count.
+**Done when:** Every trip in ODY-GEM-05 has every good photo, ranked within its trip; nothing left out to meet a count.
 
 **How Claude checks it:**
 - Claude looks at every photo before it goes in.

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20 16:10 UTC",
+ "updated": "2026-11-20 16:12 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -338,7 +338,7 @@
    "ai": "gemini",
    "ai_name": "Gemini",
    "id": "ODY-GEM-12",
-   "title": "Odyssey: every good photo of every trip you found, ranked (no people)",
+   "title": "Odyssey: every good photo of every trip you found, ranked",
    "state": "now",
    "count": 0
   },

@@ -16,7 +16,7 @@ WHERE THE WORK IS (open both now and read them in full; you have the context for
 Rules for every Prometheus pillar: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 ORDER:
-A. Odyssey first (Joseph's own photos, his priority): ODY-GEM-05 (every trip in Google Photos 2008-2026), ODY-GEM-06 (his USA), ODY-GEM-07 and ODY-GEM-08 (the three known trips day by day), ODY-GEM-11 (the 36 photos already in the app), ODY-GEM-09 (landmarks), ODY-GEM-10 (city cards), ODY-GEM-12 (every good photo of every trip, ranked within the trip: no cap on photos or trips; Joseph, 2026-11-20). Use Google Photos' Info panel and map for dates, zones and places. Never name or describe a person; never list a photo of a person, a document, a screen, a plate or the inside of a home.
+A. Odyssey first (Joseph's own photos, his priority): ODY-GEM-05 (every trip in Google Photos 2008-2026), ODY-GEM-06 (his USA), ODY-GEM-07 and ODY-GEM-08 (the three known trips day by day), ODY-GEM-11 (the 36 photos already in the app), ODY-GEM-09 (landmarks), ODY-GEM-10 (city cards), ODY-GEM-12 (every good photo of every trip, ranked within the trip: no cap on photos or trips; Joseph, 2026-11-20). Use Google Photos' Info panel and map for dates, zones and places. People are fine in photos and in what you write about them (Joseph, 2026-11-20): name people only as Google Photos' face groups name them, never guess.
 B. The two that were blocked in run 1, now unblocked: PRI-GEM-07 (the 72 broker names are in Drive: privacy_INPUT_broker-names_20261119.txt in the Prometheus Hub incoming folder) and AET-GEM-08 (open NCEI's data service as JSON in the browser; the task says how).
 C. Then every other Prometheus task in the order of the homework page. The 25 function specs you wrote on 2026-11-16 are back on it (SENT BACK, due 2026-11-30): write each again from the live code; the reason is under each task.
 D. Then Titan: "AI-guessed facts, part 1b" (the 6 lines that bounced), then the homework sheets.
@@ -36,7 +36,7 @@ HARD RULES (a file that breaks one is rejected whole):
 - Every quote is copied word for word from that page and is on it now. If a page does not state something, write "not stated" and name the pages you checked. Never estimate, round or fill a gap from memory.
 - Exact file name (with the real {YYYYMMDD-HHMM} stamp, US Pacific time), exact folder, exact fields and count. Valid JSON. One file per task.
 - Blind reads stay blind. Checks never copy the value you were given: send back what the source says.
-- No API keys, passwords or private account details in any file. Nothing about Joseph beyond what a task names.
+- No API keys, passwords or account numbers in any file, and no home street address (it was erased from the repository's history on 2026-11-20).
 
 FOLDERS (save straight into these Drive folders):
 - Prometheus Hub incoming: https://drive.google.com/drive/folders/1o_hzoxIOGfbbY01CyZVOKlsWEU49UzxQ
