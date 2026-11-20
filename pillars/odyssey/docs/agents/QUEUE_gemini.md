@@ -2,7 +2,7 @@
 
 # Odyssey · Trips & Away Mode · homework for Gemini
 
-Updated 2026-11-20 09:12 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-20 16:10 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -127,7 +127,7 @@ Updated 2026-11-20 09:12 UTC · 9 open · Rules for every pillar: https://github
 - The trip as Odyssey has it: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-eurotrip-2015)
 
 **Do this:**
-1. One row per calendar day with photos, July to September 2015: the city, the 1-3 places photographed (landmark, museum, street, beach), first and last photo time (local time, say the zone), photo count, 2 Drive ids.
+1. One row per calendar day with photos, July to September 2015: the city, every place photographed (landmark, museum, street, beach, viewpoint), first and last photo time (local time, say the zone), photo count, 2 Drive ids.
 2. Where the photos disagree with Odyssey's legs (a different city or date), say so in disagrees.
 
 **Make:** `odyssey_gemini_eurotrip-days_{YYYYMMDD-HHMM}.json`
@@ -140,7 +140,7 @@ Updated 2026-11-20 09:12 UTC · 9 open · Rules for every pillar: https://github
 - `n` (integer): row
 - `date` (date): 
 - `city` (text): 
-- `places` (text): 1-3 names, as on the place's own sign or official site
+- `places` (text): every place photographed that day, as on the place's own sign or official site
 - `first_time` (text): HH:MM zone
 - `last_time` (text): HH:MM zone
 - `photos` (integer): 
@@ -196,7 +196,7 @@ Updated 2026-11-20 09:12 UTC · 9 open · Rules for every pillar: https://github
 - `trip` (text): 'April 2024' or 'September 2024'
 - `date` (date): 
 - `city` (text): 
-- `places` (text): 1-3 names
+- `places` (text): every place photographed that day, as on the place's own sign or official site
 - `photos` (integer): 
 - `evidence` (text): 2 Drive ids
 - `disagrees` (text): '' or what Odyssey has wrong
@@ -395,11 +395,11 @@ Updated 2026-11-20 09:12 UTC · 9 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 8. ODY-GEM-12 · Odyssey: the best 10 photos of every trip you found (no people)
+## 8. ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked (no people)
 
 **Due:** 2026-11-26 · **State:** now
 
-**Why:** A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in.
+**Why:** A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in. Owner, 2026-11-20: "Dont limit scope to 10 pics": no cap on photos or trips.
 
 **What it unlocks:** Every trip in ODY-GEM-05 gets its own photo journey in Odyssey.
 
@@ -407,14 +407,17 @@ Updated 2026-11-20 09:12 UTC · 9 open · Rules for every pillar: https://github
 - Your ODY-GEM-05 file
 
 **Do this:**
-1. For each trip in ODY-GEM-05 (oldest first, up to 25 trips): 8-12 photos that are sharp, well lit and show the place (landscape, landmark, street, food, view), in time order.
-2. Never a photo with a person as its subject, a face, a document, a screen, a licence plate or the inside of a home.
+1. For every trip in your ODY-GEM-05 file (all of them, oldest first): list every photo that is sharp, well lit and shows the place (landscape, landmark, street, food, view, water, sky), in time order. No cap: a trip with 300 good photos gets 300 rows.
+2. Leave out only near-duplicates (a burst or the same view a few seconds apart: keep the best one) and photos that break the privacy rule.
+3. Rank the photos inside each trip: 1 is the best of that trip, 2 the next, and so on, so the journey can lead with the best and still hold every photo.
+4. Never a photo with a person as its subject, a face, a document, a screen, a licence plate or the inside of a home.
+5. If the file grows past about 400 rows, save it in parts with consecutive stamps (odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json each, every part a valid JSON array, n continuing from the last part), and list the parts in your run report.
 
 **Make:** `odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per photo`
+**Shape:** `JSON array, one object per photo (in parts if large: see the last step)`
 
 **Every field, exactly:**
 - `n` (integer): row
@@ -423,6 +426,7 @@ Updated 2026-11-20 09:12 UTC · 9 open · Rules for every pillar: https://github
 - `file` (text): 
 - `taken` (text): date and time
 - `place` (text): 
+- `rank` (integer): 1 = the best photo of this trip; no two photos of a trip share a rank
 - `why` (text): what the photo shows, 8 words max
 
 **Before you save, check every one of these yourself:**
@@ -433,8 +437,9 @@ Updated 2026-11-20 09:12 UTC · 9 open · Rules for every pillar: https://github
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
 - [ ] Privacy (Joseph's rule for the public site): never name, describe or count people; never list a photo whose main subject is a person, a document, a screen, a licence plate or the inside of a home; give Drive file ids and file names only, never copy or upload a photo anywhere.
+- [ ] No cap was applied: every trip has all its good photos, and each trip's ranks run 1, 2, 3 ... without gaps.
 
-**Done when:** 8-12 photos for every trip, all privacy-safe.
+**Done when:** Every trip in ODY-GEM-05 has every good, privacy-safe photo, ranked within its trip; nothing left out to meet a count.
 
 **How Claude checks it:**
 - Claude looks at every photo before it goes in.

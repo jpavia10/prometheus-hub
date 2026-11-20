@@ -1,6 +1,6 @@
 {
- "built": "2026-11-20T09:13:20Z",
- "checked": "2026-11-20T15:12:47Z",
+ "built": "2026-11-20T16:10:07Z",
+ "checked": "2026-11-20T16:10:07Z",
  "version": 2,
  "today": "2026-11-20",
  "sources": {
@@ -6317,7 +6317,7 @@
    "detail": {
     "why": "Odyssey has the Eurotrip's 21 legs from Joseph's planning sheet, but not what he actually did each day. Two dates were already corrected from photos (Montserrat Aug 18, Malta from Aug 19).",
     "steps": [
-     "One row per calendar day with photos, July to September 2015: the city, the 1-3 places photographed (landmark, museum, street, beach), first and last photo time (local time, say the zone), photo count, 2 Drive ids.",
+     "One row per calendar day with photos, July to September 2015: the city, every place photographed (landmark, museum, street, beach, viewpoint), first and last photo time (local time, say the zone), photo count, 2 Drive ids.",
      "Where the photos disagree with Odyssey's legs (a different city or date), say so in disagrees."
     ],
     "make": "odyssey_gemini_eurotrip-days_{YYYYMMDD-HHMM}.json",
@@ -6460,7 +6460,7 @@
    "where": "Odyssey",
    "pid": "odyssey",
    "id": "ODY-GEM-12",
-   "title": "Odyssey: the best 10 photos of every trip you found (no people)",
+   "title": "Odyssey: every good photo of every trip you found, ranked (no people)",
    "status": "todo",
    "due": "2026-11-26",
    "items": 0,
@@ -6469,15 +6469,18 @@
    "reopened": "",
    "delivered": null,
    "detail": {
-    "why": "A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in.",
+    "why": "A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in. Owner, 2026-11-20: \"Dont limit scope to 10 pics\": no cap on photos or trips.",
     "steps": [
-     "For each trip in ODY-GEM-05 (oldest first, up to 25 trips): 8-12 photos that are sharp, well lit and show the place (landscape, landmark, street, food, view), in time order.",
-     "Never a photo with a person as its subject, a face, a document, a screen, a licence plate or the inside of a home."
+     "For every trip in your ODY-GEM-05 file (all of them, oldest first): list every photo that is sharp, well lit and shows the place (landscape, landmark, street, food, view, water, sky), in time order. No cap: a trip with 300 good photos gets 300 rows.",
+     "Leave out only near-duplicates (a burst or the same view a few seconds apart: keep the best one) and photos that break the privacy rule.",
+     "Rank the photos inside each trip: 1 is the best of that trip, 2 the next, and so on, so the journey can lead with the best and still hold every photo.",
+     "Never a photo with a person as its subject, a face, a document, a screen, a licence plate or the inside of a home.",
+     "If the file grows past about 400 rows, save it in parts with consecutive stamps (odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json each, every part a valid JSON array, n continuing from the last part), and list the parts in your run report."
     ],
     "make": "odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json",
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
-    "shape": "JSON array, one object per photo",
-    "done": "8-12 photos for every trip, all privacy-safe.",
+    "shape": "JSON array, one object per photo (in parts if large: see the last step)",
+    "done": "Every trip in ODY-GEM-05 has every good, privacy-safe photo, ranked within its trip; nothing left out to meet a count.",
     "checks": [
      "Claude looks at every photo before it goes in."
     ],

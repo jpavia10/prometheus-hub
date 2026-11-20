@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-20 09:12 UTC · 1 open in this pillar.
+Updated 2026-11-20 16:10 UTC · 1 open in this pillar.
 
 
 - ODY-GRK-02 · Odyssey: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,7 +16,7 @@ Updated 2026-11-20 09:12 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-20 09:12 UTC · 9 open in this pillar.
+Updated 2026-11-20 16:10 UTC · 9 open in this pillar.
 
 
 - ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026 · due 2026-11-26
@@ -33,35 +33,35 @@ Updated 2026-11-20 09:12 UTC · 9 open in this pillar.
     make: odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json · how many: 0 · done when: One card per stop code, every number sourced.
 - ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app · due 2026-11-26
     make: odyssey_gemini_photo-info_{YYYYMMDD-HHMM}.json · how many: 36 · done when: All 36.
-- ODY-GEM-12 · Odyssey: the best 10 photos of every trip you found (no people) · due 2026-11-26
-    make: odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json · how many: 0 · done when: 8-12 photos for every trip, all privacy-safe.
+- ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked (no people) · due 2026-11-26
+    make: odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every trip in ODY-GEM-05 has every good, privacy-safe photo, ranked within its trip; nothing left out to meet a count.
 - ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason in your HOMEWORK doc)
     make: odyssey_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-20 09:12 UTC · 0 open in this pillar.
+Updated 2026-11-20 16:10 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Odyssey · Trips & Away Mode right now.
 
 ## ChatGPT
 
-Updated 2026-11-20 09:12 UTC · 0 open in this pillar.
+Updated 2026-11-20 16:10 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Odyssey · Trips & Away Mode right now.
 
 ## Argon
 
-Updated 2026-11-20 09:12 UTC · 0 open in this pillar.
+Updated 2026-11-20 16:10 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Odyssey · Trips & Away Mode right now.
 
 ## Hydrogen
 
-Updated 2026-11-20 09:12 UTC · 0 open in this pillar.
+Updated 2026-11-20 16:10 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Odyssey · Trips & Away Mode right now.
