@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Fixes from Gemini's trials 3 and 4 (d46)
+- Home: the sky's full-screen shader stops while the menu covers it (it was opacity 0 but drew every frame) and starts the moment it shows; measured at rest, phone size, software rendering, 4 runs: about 7 -> 12 fps. Athenaeum: the nebula is drawn at half size into a texture and stretched (same picture, a quarter of the pixel work): about 4.5 -> 6 fps here; more on a phone GPU, where the stretch is nearly free.
+- Forge: a returned hand-out counts as delivered, scores given on this device show in Scores, a blank score is not a 0, Workload and Pillars rows open the Tasks tab, the place list keeps every place, no stray "null" under the list. Builder: today is Pacific time (not the runner's UTC), a same-day reopen is to do again (a timed reopen compares to the second), workboard rows with two owners count once and "DONE (date)" / cancelled rows are read right, Titan projects carry closed and reopened (3 new tests).
+- Kit: refused storage writes are read back from memory, link lookups ignore case, the command palette closes on Escape from anywhere, keeps Tab inside and gives focus back, tabs follow the WAI-ARIA pattern (arrow keys, Home/End, one tab in the Tab order, tab/panel names), and the stage loop stops off screen instead of idling.
+
 ### [2026-11-20] Gemini's capability trials scored: 9, 10, 8; coin photos put in Drive
 - Trial 3 (perf audit, 9): 24 findings, lines exact; measured, its top three are the real big costs (Athenaeum's nebula pass, the home sky drawing invisibly under the menu, the menu-world shader). Trial 4 (defects, 10): 16 of 16 real, 4 reproduced in a browser. Trial 5 (Midas parser, 8): 24 of 30 predictions exact, two clear and three minor real gaps, over-claimed the rest. Record: docs/agents/trials/2026-11-20-gemini.md.
 - Trials 1 and 2 were blocked because the Gemini app could not open images on raw GitHub; the 45 blind photos and both PROMPT.md files are now in Drive (bakeoff (blind photo test)/pack-20261008-main and -locked), linked first on the tasks.

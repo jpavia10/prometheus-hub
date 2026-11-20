@@ -128,10 +128,13 @@
     for (const ev of ["pointerdown", "keydown", "wheel", "touchstart"]) addEventListener(ev, () => { lastInput = performance.now(); }, { passive: true, capture: true });
     let gap = 0, lastRaw = 0;
     const loop = (t) => {
+      /* 2026-11-20 (Gemini trial 4 #15): off screen, in a background tab or with reduced motion and nothing new, the loop now stops
+         instead of keeping an empty frame callback alive; it wakes when the stage scrolls back, the tab returns or data changes. */
+      raf = 0;
+      if (!seen || document.hidden) { last = t; gap = 0; lastRaw = 0; return; }
+      if (STILL && !dirty) return;
       raf = requestAnimationFrame(loop);
       const dRaw = lastRaw ? t - lastRaw : 0; lastRaw = t;
-      if (!seen || document.hidden) { last = t; gap = 0; return; }
-      if (STILL && !dirty) return;
       const step = Math.max(every, t - lastInput > 12000 ? 2 : 1, t - scrolling < 140 || performance.now() < (window.__pkBusy || 0) ? 3 : 1);   // a panel turning in (kit.js turnIn) gets the frames too
       if (++n % step && !dirty) return;
       S.dt = Math.min(0.1, (t - last) / 1000 || 0.016); last = t; S.t += S.dt; S.tick++;
@@ -159,7 +162,9 @@
     canvas.addEventListener("pointerdown", (e) => { [S.ptr.x, S.ptr.y] = at(e); S.ptr.on = true; S.ptr.down = true; if (!STILL) ripples.push({ x: S.ptr.x, y: S.ptr.y, t: 0 }); if (o.press) o.press(S.ptr.x, S.ptr.y, S); });
     canvas.addEventListener("pointerup", (e) => { S.ptr.down = false; const [x, y] = at(e); if (o.tap) { o.tap(x, y, S); refresh(); } });
     if (o.tap || o.press) { canvas.removeAttribute("aria-hidden"); canvas.setAttribute("role", "img"); canvas.setAttribute("aria-label", o.label || "Signature view"); canvas.style.cursor = "pointer"; }
-    if ("IntersectionObserver" in window) new IntersectionObserver((es) => { seen = es[es.length - 1].isIntersecting; }, { rootMargin: "60px" }).observe(sec);
+    const wake = () => { if (!raf && seen && !document.hidden && (!STILL || dirty)) raf = requestAnimationFrame(loop); };
+    if ("IntersectionObserver" in window) new IntersectionObserver((es) => { seen = es[es.length - 1].isIntersecting; wake(); }, { rootMargin: "60px" }).observe(sec);
+    document.addEventListener("visibilitychange", wake);
     window.addEventListener("resize", () => { size(); if (STILL) frame(); });
     window.addEventListener("pk:store", refresh); window.addEventListener("storage", refresh); window.addEventListener("focus", refresh);
     size(); if (o.init) o.init(S, ink); refresh(); if (STILL) { S.t = 2.4; frame(); } raf = requestAnimationFrame(loop);

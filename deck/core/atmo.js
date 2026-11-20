@@ -118,8 +118,11 @@ export function startSky(canvas) {
     gl.uniform1f(U.uFlash, st.flash); gl.uniform2f(U.uPar, st.par[0], st.par[1]); gl.uniform1f(U.uOct, st.oct);
     gl.drawArrays(gl.TRIANGLES, 0, 3); canvas.dataset.frames = String(++st.frames);
   }
+  /* 2026-11-20 (Gemini trial 3 #2, measured 5 -> 15 fps at phone size): under the home menu the sky is set to opacity 0 but its
+     full-screen shader kept drawing every frame. It now pauses while the menu covers it and starts again the moment it shows. */
+  const covered = () => document.body.classList.contains("menu-on") && !document.body.classList.contains("menu-off");
   function frame(now) {
-    st.raf = 0; if (st.stopped || document.hidden) return;
+    st.raf = 0; if (st.stopped || document.hidden || covered()) return;
     const gap = st.tier === 0 || still.matches ? 20 * 1000 : 16;
     if (now - st.last >= gap - 2) {
       const before = performance.now(); draw(now); gl.finish && st.frames < 40 && gl.finish(); const cost = performance.now() - before;
@@ -131,7 +134,8 @@ export function startSky(canvas) {
     }
     if (st.tier === 0 || still.matches) setTimeout(() => { if (!st.raf && !st.stopped) st.raf = requestAnimationFrame(frame); }, 20 * 1000); else st.raf = requestAnimationFrame(frame);
   }
-  const kick = () => { if (!st.raf && !st.stopped && !document.hidden) st.raf = requestAnimationFrame(frame); };
+  const kick = () => { if (!st.raf && !st.stopped && !document.hidden && !covered()) st.raf = requestAnimationFrame(frame); };
+  new MutationObserver(() => { if (!covered()) { st.last = 0; kick(); } }).observe(document.body, { attributes: true, attributeFilter: ["class"] });
   document.addEventListener("visibilitychange", kick); addEventListener("resize", () => { st.last = 0; kick(); });
   const tilt = (e) => { st.par = [(e.clientX / innerWidth - 0.5) * 2, (e.clientY / innerHeight - 0.5) * 2]; };
   addEventListener("pointermove", tilt, { passive: true });

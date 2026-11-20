@@ -23,12 +23,30 @@ class States(unittest.TestCase):
         self.assertEqual(B.status_of("done", "X-3", None, "", {"X-3": {"ts": "2026-11-19"}})[0], "done")
     def test_reopened_after_delivery_is_todo_again(self):
         self.assertEqual(B.status_of("now", "X-4", None, "2026-11-20", {"X-4": {"ts": "2026-11-19T10:00:00Z"}})[0], "todo")
+    def test_reopened_same_day_is_todo(self):   # Gemini trial 4 #5: a delivery stamped the reopen day kept the task "delivered"
+        self.assertEqual(B.status_of("now", "X-7", None, "2026-11-20", {"X-7": {"ts": "2026-11-20T14:00:00Z"}})[0], "todo")
+    def test_reopened_with_a_time_compares_to_the_second(self):
+        led = {"X-8": {"ts": "2026-11-20T19:00:00Z"}}
+        self.assertEqual(B.status_of("now", "X-8", None, "2026-11-20T18:00:00Z", led)[0], "delivered")
+        self.assertEqual(B.status_of("now", "X-8", None, "2026-11-20T20:00:00Z", led)[0], "todo")
     def test_alias_counts(self):             # Titan projects report their run_id in the ledger
         self.assertEqual(B.status_of("now", "T-gemini-7", "GT-AIFACTS-p1", "", {"GT-AIFACTS-p1": {"ts": "2026-11-19"}})[0], "delivered")
     def test_later_is_not_now(self):
         self.assertEqual(B.status_of("next", "X-5", None, "", {})[0], "queued")
     def test_unknown_state_is_reported(self):
         self.assertEqual(B.status_of("someday", "X-6", None, "", {})[0], "todo"); self.assertTrue(any("X-6" in w for w in B.WARN))
+
+
+class Workboard(unittest.TestCase):          # Gemini trial 4 #6, #7
+    def test_rows(self):
+        md = "\n".join(["| `AGY-90` | P1 | Shared | Argon / Hydrogen | IN PROGRESS | x | y | z |", "| `AGY-91` | P1 | Closed | Argon | DONE (2026-11-18) | x | y | z |",
+                         "| `AGY-92` | P2 | Dropped | Hydrogen | CANCELLED | x | y | z |"])
+        real = B.read; B.read = lambda *a, **k: md
+        try: rows, ok = B.workboard()
+        finally: B.read = real
+        by = {r["id"]: r for r in rows}
+        self.assertEqual(sum(r["id"] == "AGY-90" for r in rows), 1); self.assertEqual(by["AGY-90"]["ai"], "Argon"); self.assertEqual(by["AGY-90"]["co"], ["Hydrogen"])
+        self.assertEqual(by["AGY-91"]["status"], "done"); self.assertEqual(by["AGY-92"]["status"], "withdrawn")
 
 
 class Snapshot(unittest.TestCase):

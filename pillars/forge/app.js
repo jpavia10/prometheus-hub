@@ -41,14 +41,17 @@
     paintAll(); window.dispatchEvent(new CustomEvent("pk:store", { detail: { pillar: "forge", k: "remote" } }));
   }
 
-  /* your own hand-outs (this device) join the list as to-do / done */
-  const mineAll = () => S.list("assignments").map((a) => ({ ai: a.ai, src: "mine", where: a.pillar || "Yours", id: a.id, title: a.title, status: a.state === "reviewed" ? "done" : "todo", state: a.state === "reviewed" ? "done" : "todo",
+  /* your own hand-outs (this device) join the list as to-do / delivered / done (2026-11-20, Gemini trial 4 #1: one marked
+     "It's back" used to stay in "To do now") */
+  const mineState = (a) => (a.state === "reviewed" ? "done" : a.state === "back" ? "delivered" : "todo");
+  const mineAll = () => S.list("assignments").map((a) => ({ ai: a.ai, src: "mine", where: a.pillar || "Yours", id: a.id, title: a.title, status: mineState(a), state: mineState(a),
     due: a.due || "", items: 0, late: a.state === "out" && !!a.due && a.due < today, own: a, detail: { what: [a.deliverable, a.branch && "branch " + a.branch, a.commitSha && "commit " + a.commitSha].filter(Boolean).join(" · ") } }));
   const allTasks = () => [...D.tasks, ...mineAll()];
   const isTodo = (t) => t.status === "todo";
   const per = (who) => {
     const all = allTasks().filter((t) => t.ai === who), open = all.filter(isTodo), base = (snap && snap.per && snap.per[who]) || {};
-    const sc = [...D.scores, ...D.hubScores.filter((x) => x.score != null)].filter((x) => x.ai === who).sort((a, b) => String(a.date).localeCompare(String(b.date)));
+    const mineSc = S.list("assignments").filter((a) => a.ai === who && a.state === "reviewed" && a.score != null).map((a) => ({ ai: a.ai, date: a.reviewed || a.given || today, what: a.title, task: a.id, where: a.pillar || "Yours", score: a.score }));   // trial 4 #2
+    const sc = [...D.scores, ...D.hubScores.filter((x) => x.score != null), ...mineSc].filter((x) => x.ai === who).sort((a, b) => String(a.date).localeCompare(String(b.date)));
     const by = {}; for (const t of open) by[t.src] = (by[t.src] || 0) + 1;
     const r10 = sc.slice(-10);
     return { ai: who, open, mine: open.filter((t) => t.src === "mine"), by, floor: base.floor || 0, probation: !!base.probation, late: open.filter((t) => t.late).length, soon: open.filter((t) => t.due && t.due >= today && days(today, t.due) <= 7).length,
@@ -106,7 +109,7 @@
       const segs = [...Object.keys(SRC).filter((k) => p.by[k]).map((k) => h("i.src-" + k, { style: `width:${(100 * p.by[k]) / max}%`, title: `${SRC[k]}: ${p.by[k]}` })),
         p.delivered ? h("i.src-delivered", { style: `width:${(100 * p.delivered) / max}%`, title: `delivered, not checked: ${p.delivered}` }) : null];
       const note = [p.probation ? "probation" : "", p.late ? `${p.late} late` : "", p.soon ? `${p.soon} this week` : "", p.delivered ? `${p.delivered} delivered` : "", low ? `below ${p.floor}` : ""].filter(Boolean).join(" · ") || "to do";
-      return h("button.lrow" + (F.ai === p.ai ? ".on" : "") + (low ? ".low" : ""), { type: "button", onclick: () => { F.ai = F.ai === p.ai ? "all" : p.ai; paintAll(); document.getElementById("f-filters").scrollIntoView({ behavior: "smooth", block: "start" }); } },
+      return h("button.lrow" + (F.ai === p.ai ? ".on" : "") + (low ? ".low" : ""), { type: "button", onclick: () => { F.ai = F.ai === p.ai ? "all" : p.ai; paintAll(); toTasks(); } },
         h("span.lname", null, h("b", null, p.ai), ROLE_TAG[p.ai] ? h("small", null, ROLE_TAG[p.ai]) : null),
         h("span.lbar", null, ...segs, p.floor ? h("span.lfloor", { style: `left:${(100 * p.floor) / max}%`, title: `floor ${p.floor}` }) : null),
         h("span.lnum", null, h("b", null, String(p.open.length)), h("small", null, note)));
@@ -114,10 +117,17 @@
     const legend = h("div.legend", null, ...Object.keys(SRC).map((k) => h("span", null, h("i.src-" + k), SRC_SHORT[k])), h("span", null, h("i.src-delivered"), "Delivered"), h("span", null, h("i.floor-k"), "floor"));
     $("#f-load").replaceChildren(plate, legend, ...rows);
   }
+  /* A row on Workload or Pillars filters the task list and opens it: the list sits in the Tasks tab, which is hidden while another tab
+     is open, so scrolling to it alone did nothing (trial 4 #11). */
+  function toTasks() {
+    const tab = [...document.querySelectorAll("main > .pk-tabs .tab, .pk-tabs [role=tab]")].find((t) => /^Tasks\b/.test(t.textContent.trim()));
+    if (tab && tab.getAttribute("aria-selected") !== "true") tab.click();
+    requestAnimationFrame(() => { const f = document.getElementById("f-filters"); if (f && f.offsetParent) f.scrollIntoView({ behavior: "smooth", block: "start" }); });
+  }
   const inState = (t, s) => s === "todo" ? isTodo(t) : s === "late" ? isTodo(t) && t.late : s === "week" ? isTodo(t) && t.due && t.due >= today && days(today, t.due) <= 7 : t.status === s;
   function paintFilters() {
     const ais = ["all", ...AIS.filter((a) => allTasks().some((t) => t.ai === a && t.status !== "withdrawn"))];
-    const wh = ["all", ...new Set(allTasks().filter((t) => t.status === "todo" || t.status === "delivered").map((t) => t.where))].sort((a, b) => (a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b)));
+    const wh = ["all", ...new Set([...Object.keys((snap && snap.places) || {}), ...allTasks().map((t) => t.where), ...(F.where !== "all" ? [F.where] : [])])].sort((a, b) => (a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b)));   // trial 4 #12
     const sel = h("select.fsel", { "aria-label": "Place", onchange: (e) => { F.where = e.target.value; paintTasks(); } }, ...wh.map((w) => h("option", { value: w, selected: w === F.where }, w === "all" ? "Every place" : w)));
     const q = h("input.fq", { type: "search", placeholder: "Search tasks", value: F.q, oninput: (e) => { F.q = e.target.value; paintTasks(); } });
     $("#f-filters").replaceChildren(
@@ -151,7 +161,7 @@
           h("span.tside", null, t.reopened ? chip("sent back", "warn") : null, chip(label, t.late ? "bad" : t.status === "delivered" ? "warn" : t.status === "todo" ? "hot" : ""))));
       row.addEventListener("toggle", () => { if (row.open && !row.__built) { row.__built = true; row.appendChild(body()); } });
       return row;
-    }), L.length > shown.length ? h("p.sub", null, `${L.length - shown.length} more: narrow it with the filters.`) : null);
+    }), ...(L.length > shown.length ? [h("p.sub", null, `${L.length - shown.length} more: narrow it with the filters.`)] : []));   // trial 4 #16: a null here printed "null"
   }
   function paintMatrix() {
     const cols = AIS.filter((a) => allTasks().some((t) => t.ai === a && isTodo(t)));
@@ -159,7 +169,7 @@
     const dl = (w) => allTasks().filter((t) => t.status === "delivered" && t.where === w).length;
     const places = snap ? Object.keys(snap.places).sort((a, b) => cell(b) - cell(a) || a.localeCompare(b)) : [];
     const head = h("tr", null, h("th", null, "Place"), ...cols.map((c) => h("th", null, c)), h("th", null, "To do"), h("th", null, "Delivered"));
-    const body = places.map((w) => { const tot = cell(w), d = dl(w); return h("tr" + (tot ? "" : ".zero"), { onclick: () => { F.where = w; F.ai = "all"; F.state = "todo"; paintAll(); document.getElementById("f-filters").scrollIntoView({ behavior: "smooth" }); } },
+    const body = places.map((w) => { const tot = cell(w), d = dl(w); return h("tr" + (tot ? "" : ".zero"), { onclick: () => { F.where = w; F.ai = "all"; F.state = "todo"; paintAll(); toTasks(); } },
       h("td", null, w), ...cols.map((c) => { const n = cell(w, c); return h("td" + (n ? "" : ".nil"), { style: n ? `--k:${Math.min(1, n / 12)}` : "" }, n ? String(n) : "·"); }), h("td", null, h("b", null, String(tot))), h("td" + (d ? ".dl" : ".nil"), null, d ? String(d) : "·")); });
     $("#f-matrix").replaceChildren(h("div.mwrap", null, h("table.matrix", null, h("thead", null, head), h("tbody", null, ...body))));
   }
@@ -177,7 +187,7 @@
   function advance(a) {
     if (a.state === "reviewed") { S.remove("assignments", a.id); if (window.PB) PB.deadlines.unpublish("forge", a.id); paintAll(); return; }
     const next = STEP[a.state]; const patch = { state: next };
-    if (next === "reviewed") { const v = prompt("Score it out of 10 (place, accepted, accurate, complete, on the sheet):"); if (v === null) return; const n = Math.max(0, Math.min(10, Math.round(+v))); if (!Number.isFinite(n)) return; patch.score = n; patch.reviewed = day(); if (window.PB) PB.deadlines.unpublish("forge", a.id); }
+    if (next === "reviewed") { const v = prompt("Score it out of 10 (place, accepted, accurate, complete, on the sheet):"); if (v === null || !String(v).trim()) return; const raw = Number(String(v).trim()); if (!Number.isFinite(raw)) return; const n = Math.max(0, Math.min(10, Math.round(raw)));  /* trial 4 #3: a blank answer used to record 0 */ patch.score = n; patch.reviewed = day(); if (window.PB) PB.deadlines.unpublish("forge", a.id); }
     S.update("assignments", a.id, patch); if (window.PB && PB.events) PB.events.publish({ type: "forge." + next, pillar: "forge", ref: a.id, title: a.title }); paintAll();
   }
   function paintMine() {

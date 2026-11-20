@@ -13,8 +13,10 @@
   "use strict";
   const LS = typeof localStorage !== "undefined" ? localStorage : null;
   const mem = new Map();
-  const get = (k) => { try { return LS ? LS.getItem(k) : (mem.has(k) ? mem.get(k) : null); } catch (_) { return mem.has(k) ? mem.get(k) : null; } };
-  const set = (k, v) => { try { if (LS) LS.setItem(k, v); else mem.set(k, v); } catch (_) { mem.set(k, v); } };
+  /* A write that storage refuses (full, or blocked) lands in memory; reads look there first, so the page keeps what it just wrote
+     instead of reading back the older stored copy (2026-11-20, Gemini trial 4 #9). A later successful write clears it. */
+  const get = (k) => { if (mem.has(k)) return mem.get(k); try { return LS ? LS.getItem(k) : null; } catch (_) { return null; } };
+  const set = (k, v) => { try { if (LS) { LS.setItem(k, v); mem.delete(k); } else mem.set(k, v); } catch (_) { mem.set(k, v); } };
   const read = (k, dflt) => { const v = get(k); if (v == null) return dflt; try { return JSON.parse(v); } catch (_) { return dflt; } };
   const write = (k, v) => set(k, JSON.stringify(v));
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);

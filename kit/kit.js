@@ -340,16 +340,24 @@
     if (!old || old.dataset.sig !== sig) {
       if (old) old.remove(); old = el("div", "tabs pk-tabs"); old.dataset.sig = sig;
       var list = el("div", "pk-tablist"); list.setAttribute("role", "tablist"); list.dataset.sig = sig;
-      names.forEach(function (n, i) { var b = el("button", "tab", n); b.type = "button"; b.setAttribute("role", "tab"); b.addEventListener("click", function () { show(i, true); }); list.appendChild(b); });
+      names.forEach(function (n, i) { var b = el("button", "tab", n); b.type = "button"; b.setAttribute("role", "tab"); b.id = "pk-tab-" + i; b.addEventListener("click", function () { show(i, true); }); list.appendChild(b); });
+      /* The WAI-ARIA tabs pattern (2026-11-20, Gemini trial 4 #14): arrow keys, Home and End move between tabs; only the open tab
+         is in the Tab order; each tab names its panel and each panel its tab. */
+      list.addEventListener("keydown", function (e) {
+        var n = names.length, at = active, to = e.key === "ArrowRight" ? (at + 1) % n : e.key === "ArrowLeft" ? (at - 1 + n) % n : e.key === "Home" ? 0 : e.key === "End" ? n - 1 : -1;
+        if (to < 0) return; e.preventDefault(); show(to, true); var t = list.querySelectorAll(".tab")[to]; if (t) t.focus();
+      });
       old.appendChild(list);
       main.insertBefore(old, grid);
     }
+    var tabEls = old.querySelectorAll(".tab"), setA = function (e, k, v) { if (e.getAttribute(k) !== v) e.setAttribute(k, v); };
+    panels.forEach(function (p, i) { if (!p.id) p.id = "pk-panel-" + i; setA(p, "role", "tabpanel"); if (tabEls[i]) { setA(p, "aria-labelledby", tabEls[i].id); setA(tabEls[i], "aria-controls", p.id); } });
     made = { grid: grid, panels: panels, tabs: old }; grid.classList.add("pk-sections"); show(Math.min(active, panels.length - 1), false);
   }
   function show(i, byHand) {
     if (!made) return; var prev = active; active = i; try { sessionStorage.setItem(key, String(i)); } catch (e) { /* fine */ }
     var owner = null; Array.prototype.forEach.call(made.grid.children, function (c) { var k = made.panels.indexOf(c); if (k >= 0) owner = k; c.classList.toggle("pk-off", owner !== i); });   // loose blocks follow the panel above them
-    Array.prototype.forEach.call(made.tabs.querySelectorAll(".tab"), function (b, k) { var v = String(k === i); if (b.getAttribute("aria-selected") !== v) b.setAttribute("aria-selected", v); });   // write only on change: an equal write is still a mutation, and the observer below re-syncs on every mutation (it looped every frame until 2026-11-20)
+    Array.prototype.forEach.call(made.tabs.querySelectorAll(".tab"), function (b, k) { var v = String(k === i); if (b.getAttribute("aria-selected") !== v) b.setAttribute("aria-selected", v); var ti = k === i ? 0 : -1; if (b.tabIndex !== ti) b.tabIndex = ti; });   // write only on change: an equal write is still a mutation, and the observer below re-syncs on every mutation (it looped every frame until 2026-11-20)
     ink(made.tabs);
     if (byHand) { made.grid.classList.add("pk-picked"); turnIn(made.panels[i], i - prev); var top = made.tabs.getBoundingClientRect().top; if (top < 40) window.scrollTo({ top: window.scrollY + top - 70, behavior: still ? "auto" : "smooth" }); nudge(); }
   }
@@ -670,22 +678,34 @@
       box.appendChild(palInput); box.appendChild(palList); box.appendChild(hint);
       palBack.appendChild(box);
       palBack.addEventListener("click", function (e) { if (e.target === palBack) closePalette(); });
+      /* 2026-11-20 (Gemini trial 4 #13): Escape closes from anywhere inside the dialog (it only worked in the search box), Tab stays
+         inside it (aria-modal promises that), and focus goes back to whatever opened it. */
+      palBack.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { e.preventDefault(); closePalette(); return; }
+        if (e.key !== "Tab") return;
+        var f = Array.prototype.filter.call(palBack.querySelectorAll("input, a[href], button"), function (x) { return x.offsetParent !== null; });
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
       palInput.addEventListener("input", function () { palSel = 0; renderPalette(); });
       palInput.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") { e.preventDefault(); closePalette(); }
-        else if (e.key === "ArrowDown") { e.preventDefault(); palSel = (palSel + 1) % Math.max(1, palItems.length); highlightPal(); }
+        if (e.key === "ArrowDown") { e.preventDefault(); palSel = (palSel + 1) % Math.max(1, palItems.length); highlightPal(); }
         else if (e.key === "ArrowUp") { e.preventDefault(); palSel = (palSel - 1 + Math.max(1, palItems.length)) % Math.max(1, palItems.length); highlightPal(); }
         else if (e.key === "Enter" && palItems[palSel]) { e.preventDefault(); window.location.href = palItems[palSel].href; }
       });
       body.appendChild(palBack);
     }
+    palOpener = document.activeElement;
     palBack.hidden = false;
     palSel = 0;
     palInput.value = "";
     renderPalette();
     setTimeout(function () { palInput.focus(); }, 20);
   }
-  function closePalette() { if (palBack) palBack.hidden = true; }
+  var palOpener = null;
+  function closePalette() { if (!palBack || palBack.hidden) return; palBack.hidden = true; if (palOpener && palOpener.focus && document.contains(palOpener)) palOpener.focus(); palOpener = null; }
   cmdBtn.addEventListener("click", function () { if (palBack && !palBack.hidden) closePalette(); else openPalette(); });
   document.addEventListener("keydown", function (e) {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {

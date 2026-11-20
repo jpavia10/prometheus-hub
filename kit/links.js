@@ -20,18 +20,19 @@
   }
 
   function rawGet(k) {
+    if (mem.has(k)) return mem.get(k);   // a refused write lives here (trial 4 #9)
     const ls = getStorage();
     try {
-      return ls ? ls.getItem(k) : (mem.has(k) ? mem.get(k) : null);
+      return ls ? ls.getItem(k) : null;
     } catch (_) {
-      return mem.has(k) ? mem.get(k) : null;
+      return null;
     }
   }
 
   function rawSet(k, v) {
     const ls = getStorage();
     try {
-      if (ls) ls.setItem(k, v);
+      if (ls) { ls.setItem(k, v); mem.delete(k); }
       else mem.set(k, v);
     } catch (_) {
       mem.set(k, v);
@@ -177,9 +178,9 @@
 
   function link(rec) {
     if (!rec || typeof rec !== "object") throw new Error("link requires an object");
-    const fromPillar = String(rec.fromPillar || "").trim();
+    const fromPillar = String(rec.fromPillar || "").trim().toLowerCase();   // pillar ids are lower case everywhere (trial 4 #10)
     const fromId = String(rec.fromId ?? "").trim();
-    const toPillar = String(rec.toPillar || "").trim();
+    const toPillar = String(rec.toPillar || "").trim().toLowerCase();
     const toId = String(rec.toId ?? "").trim();
     const kind = String(rec.kind || "related").trim();
     const label = rec.label != null ? String(rec.label).trim() : "";
@@ -191,9 +192,9 @@
     const items = readLinks();
     const idx = items.findIndex((r) =>
       r &&
-      r.fromPillar === fromPillar &&
+      String(r.fromPillar || "").toLowerCase() === fromPillar &&
       String(r.fromId) === fromId &&
-      r.toPillar === toPillar &&
+      String(r.toPillar || "").toLowerCase() === toPillar &&
       String(r.toId) === toId &&
       r.kind === kind
     );
@@ -243,17 +244,19 @@
   }
 
   function forRecord(pillar, id) {
-    const p = String(pillar || "").trim();
+    const p = String(pillar || "").trim().toLowerCase();
     const rid = String(id ?? "").trim();
+    const lc = (x) => String(x || "").toLowerCase();
     return readLinks()
-      .filter((r) => r && ((r.fromPillar === p && String(r.fromId) === rid) || (r.toPillar === p && String(r.toId) === rid)))
+      .filter((r) => r && ((lc(r.fromPillar) === p && String(r.fromId) === rid) || (lc(r.toPillar) === p && String(r.toId) === rid)))
       .map((r) => ({ ...r }));
   }
 
   function forPillar(pillar) {
-    const p = String(pillar || "").trim();
+    const p = String(pillar || "").trim().toLowerCase();
+    const lc = (x) => String(x || "").toLowerCase();
     return readLinks()
-      .filter((r) => r && (r.fromPillar === p || r.toPillar === p))
+      .filter((r) => r && (lc(r.fromPillar) === p || lc(r.toPillar) === p))
       .map((r) => ({ ...r }));
   }
 

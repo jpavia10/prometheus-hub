@@ -5,6 +5,9 @@
    project, debug, running, destroy } */
 
 const VS_FULL = `attribute vec2 aP; varying vec2 vUv; void main(){ vUv = aP * .5 + .5; gl_Position = vec4(aP, 0., 1.); }`;
+/* 2026-11-20 (Gemini trial 3 #1, measured 5 -> 20 fps here with the pass off): the nebula is soft, so it is drawn at half size into a
+   texture and stretched to the screen, a quarter of the pixel work for the same picture (its shader only uses the size for the aspect). */
+const FS_BLIT = `precision mediump float; varying vec2 vUv; uniform sampler2D uTex; void main(){ gl_FragColor = texture2D(uTex, vUv); }`;
 const FS_NEB = `
 #ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
@@ -111,6 +114,7 @@ export function createSky(canvas, layer, hooks = {}) {
       P.neb = program(VS_FULL, FS_NEB, ["aP"], ["uRes", "uTime", "uOct", "uCam", "uTintA", "uTintB"]);
       P.pt = program(VS_PT, FS_PT, ["aPos", "aSize", "aCol", "aKind"], ["uVP", "uPx", "uTime", "uMax"]);
       P.ln = program(VS_LN, FS_LN, ["aA", "aB", "aEnd", "aCol", "aInfo"], ["uVP", "uRes", "uWidth", "uNow", "uTime", "uPulse", "uGain"]);
+      P.blit = program(VS_FULL, FS_BLIT, ["aP"], ["uTex"]);
     } catch (e) { console.warn("Athenaeum sky: " + e.message); gl = null; return false; }
     const r = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE); maxPt = Math.min(r ? r[1] : 64, 420);
     B.quad = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, B.quad); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
@@ -122,14 +126,27 @@ export function createSky(canvas, layer, hooks = {}) {
       d[o + 4] = .72 + warm * .28; d[o + 5] = .78 + R() * .16; d[o + 6] = 1 - warm * .3; d[o + 7] = .35 + R() * .5; d[o + 8] = 0; d[o + 9] = R();
     }
     gl.bindBuffer(gl.ARRAY_BUFFER, B.dust); gl.bufferData(gl.ARRAY_BUFFER, d, gl.STATIC_DRAW); dustCount = n;
-    gl.disable(gl.DEPTH_TEST); ok = true; size(); buildLines(); buildArm(); return true;
+    gl.disable(gl.DEPTH_TEST); ok = true; N.tex = N.fb = null; N.w = N.h = 0; size(); buildLines(); buildArm(); return true;   // a restored context needs a new half-size target
   }
   function size() {
     const r = canvas.getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
     dpr = Math.min(window.devicePixelRatio || 1, quality === 2 ? 2 : quality === 1 ? 1.5 : 1);
     const w = Math.round(W * dpr), h = Math.round(H * dpr); if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
     home = (W / H < .75 ? 4.15 : W / H < 1.2 ? 3.6 : 3.0) * (ideas.length > 24 ? .8 : 1);   // a full sky starts closer, so it fills the screen
-    if (gl) gl.viewport(0, 0, w, h);
+    if (gl) { gl.viewport(0, 0, w, h); nebTarget(w, h); }
+  }
+  const N = { tex: null, fb: null, w: 0, h: 0 };
+  function nebTarget(w, h) {
+    const nw = Math.max(1, Math.round(w / 2)), nh = Math.max(1, Math.round(h / 2)); if (N.fb && N.w === nw && N.h === nh) return;
+    try {
+      if (!N.tex) { N.tex = gl.createTexture(); N.fb = gl.createFramebuffer(); }
+      gl.bindTexture(gl.TEXTURE_2D, N.tex); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, nw, nh, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, N.fb); gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, N.tex, 0);
+      const okFb = gl.checkFramebufferStatus(gl.FRAMEBUFFER) === gl.FRAMEBUFFER_COMPLETE; gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      if (okFb) { N.w = nw; N.h = nh; } else { N.fb = null; }   // no half-size target: the nebula draws straight to the screen as before
+    } catch (e) { N.fb = null; }
   }
 
   /* ---- geometry that only changes when the data does ---- */
@@ -210,11 +227,18 @@ export function createSky(canvas, layer, hooks = {}) {
     chron.forEach((e, i) => { const sc = project(e.pos); e._s = sc; const foc = i === chronI ? 1 : 0; put(e.pos, .2 + .22 * foc, foc ? [1, .9, .66] : [1, .74, .36], Math.min(1.5, armGain * (1 + 1.4 * foc)), 1, i * .21); });
     const sprites = o / STRIDE; ringCount = ro / LSTRIDE;
 
+    const half = !!(N.fb && P.blit); if (half) { gl.bindFramebuffer(gl.FRAMEBUFFER, N.fb); gl.viewport(0, 0, N.w, N.h); }
     gl.disable(gl.BLEND); gl.useProgram(P.neb.p); gl.bindBuffer(gl.ARRAY_BUFFER, B.quad); gl.enableVertexAttribArray(P.neb.a.aP); gl.vertexAttribPointer(P.neb.a.aP, 2, gl.FLOAT, false, 0, 0);
     gl.uniform2f(P.neb.u.uRes, canvas.width, canvas.height); gl.uniform1f(P.neb.u.uTime, time); gl.uniform1f(P.neb.u.uOct, oct); gl.uniform2f(P.neb.u.uCam, cam.yaw, cam.pitch);
     const tA = groups[0] ? groups[0].color : [1, .77, .32], tB = groups[1] ? groups[1].color : [.72, .63, 1];
     gl.uniform3f(P.neb.u.uTintA, tA[0] * .5 * dimAll, tA[1] * .42 * dimAll, tA[2] * .6 * dimAll); gl.uniform3f(P.neb.u.uTintB, tB[0] * .5 * dimAll, tB[1] * .5 * dimAll, tB[2] * .8 * dimAll);
     gl.drawArrays(gl.TRIANGLES, 0, 3); gl.disableVertexAttribArray(P.neb.a.aP);
+    if (half) {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null); gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.useProgram(P.blit.p); gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, N.tex); gl.uniform1i(P.blit.u.uTex, 0);
+      gl.bindBuffer(gl.ARRAY_BUFFER, B.quad); gl.enableVertexAttribArray(P.blit.a.aP); gl.vertexAttribPointer(P.blit.a.aP, 2, gl.FLOAT, false, 0, 0);
+      gl.drawArrays(gl.TRIANGLES, 0, 3); gl.disableVertexAttribArray(P.blit.a.aP);
+    }
 
     gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE);
     const pts = (buf, count, dynamic) => { if (!count) return; gl.bindBuffer(gl.ARRAY_BUFFER, buf); if (dynamic) gl.bufferData(gl.ARRAY_BUFFER, sprite.subarray(0, count * STRIDE), gl.DYNAMIC_DRAW);

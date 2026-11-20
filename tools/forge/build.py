@@ -22,6 +22,7 @@ Writes only when something changed, or when the last check is over 3 hours old (
 Prints "changed" or "unchanged" last. Exit 0 always unless the hub's own files cannot be read.
 """
 import datetime as dt
+from zoneinfo import ZoneInfo
 import json
 import os
 import re
@@ -76,7 +77,11 @@ def status_of(state, key, alias, reopened, led):
     if st in GONE: return "withdrawn", None
     if st in CLOSED: return "done", None
     e = led.get(key) or (led.get(alias) if alias else None)
-    if e and not (reopened and str(e.get("ts", ""))[:10] < reopened):
+    # 2026-11-20 (Gemini trial 4 #5): a delivery stamped the same day as a date-only reopen used to keep the task "delivered";
+    # it now counts as before the reopen. A reopen with a time ("2026-11-20T18:00:00Z") is compared to the second.
+    ts = str(e.get("ts", "")) if e else ""
+    before = (ts < reopened) if (reopened and len(reopened) > 10) else (ts[:10] <= reopened if reopened else False)
+    if e and not before:
         return ("delivered" if st in OPEN or st in LATER else "done"), e
     if st in OPEN: return "todo", None
     if st in LATER: return "queued", None
@@ -144,7 +149,8 @@ def titan_projects(titan, led):
             key = f"T-{a['id']}-{t.get('n')}"; alias = (re.search(r"run_id '([A-Za-z0-9._:-]+)'", t.get("what", "")) or [None, None])[1]
             st, e = status_of(t.get("state"), key, alias, t.get("reopened", ""), led)
             out.append({"ai": who, "src": "tproj", "where": "Titan", "pid": "titan", "id": key, "alias": alias or "", "title": t.get("title", ""), "status": st, "due": t.get("due", ""),
-                        "items": 0, "closed": "", "review": t.get("review", ""), "delivered": ({"what": e.get("what", ""), "by": e.get("by", ""), "ts": e.get("ts", "")} if e else None),
+                        "items": 0, "closed": t.get("closed", ""), "reopened": (t.get("reopened", "") if st == "todo" else ""),   # trial 4 #8
+                        "review": t.get("review", ""), "delivered": ({"what": e.get("what", ""), "by": e.get("by", ""), "ts": e.get("ts", "")} if e else None),
                         "detail": {"what": t.get("what", ""), "done": t.get("done_when", ""), "link": f"https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_{a['id']}.md"}})
     return out, True
 
@@ -157,9 +163,14 @@ def workboard():
         m = re.match(r"^\|\s*`(AGY-\d+)`\s*\|", line)
         if not m: continue
         c = [x.strip() for x in line.split("|")]; status = (c[5] if len(c) > 5 else "").upper()
-        st = "done" if status == "DONE" else "queued" if "WAIT" in status else "todo"
-        for who in [x.strip() for x in (c[4] if len(c) > 4 else "").split("/") if x.strip()]:
-            out.append({"ai": ai_name(who) or who, "src": "board", "where": "Workboard", "pid": "board", "id": m.group(1), "title": c[3], "status": st, "due": "", "items": 0,
+        # 2026-11-20 (Gemini trial 4 #6, #7): "DONE (2026-11-18)" is done, withdrawn/cancelled rows leave the workload, and a row with
+        # two owners ("Argon / Hydrogen") counts once, under its first owner the Forge knows, with the others kept as co-owners.
+        st = ("withdrawn" if any(k in status for k in ("WITHDRAWN", "CANCEL", "DROPPED", "PARKED")) else "done" if status.startswith("DONE")
+              else "queued" if "WAIT" in status else "todo")
+        owners = [x.strip() for x in (c[4] if len(c) > 4 else "").split("/") if x.strip()]
+        known = [ai_name(x) for x in owners if ai_name(x)]
+        for who in (known[:1] or owners[:1]):
+            out.append({"ai": who, "co": [x for x in known[1:]], "src": "board", "where": "Workboard", "pid": "board", "id": m.group(1), "title": c[3], "status": st, "due": "", "items": 0,
                         "closed": "", "review": "", "delivered": None, "detail": {"what": ("Done when: " + c[7]) if len(c) > 7 and c[7] else "",
                         "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/antigravity/WORKBOARD.md"}})
     return out, True
@@ -200,7 +211,8 @@ def hub_scores(names_rel):
 def main(argv):
     arg = lambda k, d: argv[argv.index(k) + 1] if k in argv else d
     titan = arg("--titan", RAW_TITAN); midas = arg("--midas", RAW_MIDAS); out_path = os.path.join(ROOT, arg("--out", "docs/agents/forge.json"))
-    today = arg("--today", dt.date.today().isoformat()); now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    # trial 4 #4: GitHub's runners are on UTC, so after 4 pm Pacific "today" was already tomorrow and same-day tasks showed as late.
+    today = arg("--today", dt.datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()); now = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     led, synced = ledger_map()
     tasks, q_ok, q_all, names = hub_tasks(led, None)
     mq = read(midas, "docs/agents/queues.json")
