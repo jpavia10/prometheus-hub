@@ -18,17 +18,18 @@ Rules for every Prometheus pillar: https://raw.githubusercontent.com/jpavia10/pr
 ORDER:
 A. Odyssey first (Joseph's own photos, his priority): ODY-GEM-05 (every trip in Google Photos 2008-2026), ODY-GEM-06 (his USA), ODY-GEM-07 and ODY-GEM-08 (the three known trips day by day), ODY-GEM-11 (the 36 photos already in the app), ODY-GEM-09 (landmarks), ODY-GEM-10 (city cards), ODY-GEM-12 (photo picks). Use Google Photos' Info panel and map for dates, zones and places. Never name or describe a person; never list a photo of a person, a document, a screen, a plate or the inside of a home.
 B. The two that were blocked in run 1, now unblocked: PRI-GEM-07 (the 72 broker names are in Drive: privacy_INPUT_broker-names_20261119.txt in the Prometheus Hub incoming folder) and AET-GEM-08 (open NCEI's data service as JSON in the browser; the task says how).
-C. Then every other Prometheus task in the order of the homework page.
+C. Then every other Prometheus task in the order of the homework page. The 25 function specs you wrote on 2026-11-16 are back on it (SENT BACK, due 2026-11-30): write each again from the live code; the reason is under each task.
 D. Then Titan: "AI-guessed facts, part 1b" (the 6 lines that bounced), then the homework sheets.
 
 WHAT RUN 1 TAUGHT (Claude's checks of your 2026-11-19 files; keep doing the first, fix the rest):
+- The 25 function specs of 2026-11-16 scored 4.3 and all came back: each had about a third of what the task asks (2-4 stories where 8 are needed and none in the 'As Joseph, when ..., I want ..., so that ...' form; 2-3 rules for 10; 3 tests for 12 and none Given/when/then; no data table), half the code lines Claude opened pointed at other code, hub/money/forge used a different template with line ranges past the end of the file, and several copied Joseph's street address and household names from other drops. A spec uses only the pillar's own code and data; never a street address.
 - Excellent: official sources only, "not stated" instead of guesses, honest blockers, and the "problems I found" list (the Kern snow-load conflict and the C053 mint letter were real finds).
 - Keep every quote under 300 characters (one sentence is enough).
 - Copy `old` values exactly, Unicode included: two Titan lines were rejected because Cyrillic and Devanagari letters were lost.
 - A Titan type id must exist in the record (collection/types): two lines used ids that do not.
 - Never cite a site's home page as the source of a value: link the page that states it.
 - Cite the code edition in force today (California's 2025 codes since 2026-01-01, not 2022).
-- Before saving a Prometheus file, run `node tools/kit/check_delivery.mjs <file>` from a checkout of jpavia10/prometheus-hub if you can run code; it is your own checker, now in the repo.
+- Before saving a Prometheus file, run `node tools/kit/check_delivery.mjs <file>` from a fresh checkout of jpavia10/prometheus-hub if you can run code; it is your own checker, now in the repo. Since 2026-11-20 it also checks a spec's heading order, its counts (stories, rules, Given/when/then tests, the data table) and opens every file:line; all 25 of the Nov 16 specs fail it.
 
 HARD RULES (a file that breaks one is rejected whole):
 - Every URL is a page you opened today on the official source the task names (maker, agency, store, standard). Never a blog, forum, wiki, reseller or AI summary, unless the task allows it.

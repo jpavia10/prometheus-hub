@@ -80,6 +80,60 @@
             "shape": "Markdown document with headings: ## Summary, ## Findings, ## Sources"
           },
           "count": 0
+        },
+        {
+          "id": "HUB-TST-04",
+          "title": "Fixture: a function spec",
+          "state": "now",
+          "due": "2026-11-30",
+          "deliver": {
+            "file": "hub_gemini_function-spec_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+            "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not"
+          },
+          "count": 1,
+          "fields": [
+            {
+              "name": "A What it does today",
+              "type": "list",
+              "rule": "each with file:line"
+            },
+            {
+              "name": "B What Joseph needs it to do",
+              "type": "8+ user stories",
+              "rule": "'As Joseph, when ..., I want ..., so that ...'"
+            },
+            {
+              "name": "C Data",
+              "type": "table",
+              "rule": "record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar"
+            },
+            {
+              "name": "D Screens",
+              "type": "per screen",
+              "rule": "purpose"
+            },
+            {
+              "name": "E Rules and edge cases",
+              "type": "10+",
+              "rule": "dates"
+            },
+            {
+              "name": "F Acceptance tests",
+              "type": "12+",
+              "rule": "Given / When / Then, each checkable in a phone browser"
+            },
+            {
+              "name": "G Order of work",
+              "type": "numbered steps",
+              "rule": "small"
+            },
+            {
+              "name": "H Must not",
+              "type": "list",
+              "rule": "charter"
+            }
+          ]
         }
       ]
     }

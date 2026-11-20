@@ -2,76 +2,11 @@
 
 # Odyssey · Trips & Away Mode · homework for Gemini
 
-Updated 2026-11-19 23:35 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-20 08:48 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
-
-**Due:** 2026-11-24 · **State:** delivered 2026-11-16, waiting for its check: do not redo it unless a review reopens it
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Odyssey from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/odyssey
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/odyssey/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/odyssey): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `odyssey_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
+## 1. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -126,7 +61,7 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 3. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
+## 2. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -179,7 +114,7 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 4. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
+## 3. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -234,7 +169,7 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 5. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
+## 4. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -288,7 +223,7 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 6. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
+## 5. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -349,7 +284,7 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 7. ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language)
+## 6. ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -406,7 +341,7 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 8. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
+## 7. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -460,7 +395,7 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 9. ODY-GEM-12 · Odyssey: the best 10 photos of every trip you found (no people)
+## 8. ODY-GEM-12 · Odyssey: the best 10 photos of every trip you found (no people)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -511,3 +446,73 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 9. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
+
+**Due:** 2026-11-30 · **State:** now
+
+**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: odyssey_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:60-65 is the trip form's fields, not publishTrip(). A says trip.js has withWolfgang and withViolet flags; the code had one 'kids' flag. B copies a street address, pet and device names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
+
+**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
+
+**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Odyssey from, step by step.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
+- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/odyssey
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
+
+**Do this:**
+1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/odyssey/) on a phone-sized browser and use every section.
+2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/odyssey): every file the page loads, and pillar.json.
+3. Write section A from what is there now, with file:line for each item; then B to H.
+4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
+
+**Make:** `odyssey_gemini_function-spec_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
+
+**Every field, exactly:**
+- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
+- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
+- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
+- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
+- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
+- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
+- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
+- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every item in A has a file:line that exists.
+- [ ] B has 8+ stories and none invents a personal fact.
+- [ ] C names every field with type and example.
+- [ ] F has 12+ tests, each with one Given, one When, one Then.
+- [ ] G steps are in an order that can ship one by one.
+- [ ] All eight headings, in order.
+- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
+
+**How many:** 1
+
+**Done when:** 1 file exactly in the shape, every self-check line true.
+
+**How Claude checks it:**
+- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (say 'not found' instead)
+- anything about Joseph's own accounts, balances, mail or records beyond what the task names
+- a file:line past the end of its file, or pointing at code that does something else
+- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data

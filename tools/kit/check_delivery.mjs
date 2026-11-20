@@ -227,10 +227,11 @@ export function extractRequiredHeadings(shape) {
     return headings;
   }
 
-  // 2) Look for "headings: ..." or "sections: ..."
-  const listMatch = /\b(?:headings?|sections?)\s*:\s*([^\n.]+)/i.exec(shape);
+  // 2) Look for "headings: ..." or "sections: ..." (also "these headings, in this order: A | B", 2026-11-20:
+  //    the function-spec tasks use that form and the checker used to find no headings in it, so 25 specs passed it)
+  const listMatch = /\b(?:headings?|sections?)\b[^:\n]{0,40}:\s*([^\n.]+)/i.exec(shape);
   if (listMatch) {
-    const parts = listMatch[1].split(/[,;|]/);
+    const parts = listMatch[1].includes('|') ? listMatch[1].split('|') : listMatch[1].split(/[,;]/);
     for (const part of parts) {
       const cleaned = part.replace(/^[`"'\s]+|[`"'\s.]+$/g, '').trim();
       if (cleaned) headings.push(cleaned);
@@ -251,6 +252,79 @@ export function parseMarkdownHeadings(content) {
     found.push(m[1].trim());
   }
   return found;
+}
+
+/**
+ * Markdown sections: heading text -> body lines (until the next heading of any level).
+ */
+export function markdownSections(content) {
+  const out = new Map();
+  let cur = null;
+  for (const line of String(content).split(/\r?\n/)) {
+    const m = /^\s*#{1,6}\s+(.+?)\s*#*\s*$/.exec(line);
+    if (m) { cur = m[1].trim().toLowerCase(); out.set(cur, []); continue; }
+    if (cur !== null) out.get(cur).push(line);
+  }
+  return out;
+}
+
+/**
+ * Top-level list items of a section, each with its continuation lines ("- x", "* x", "1. x", "F7. x").
+ */
+export function listItems(lines) {
+  const items = [];
+  for (const line of lines) {
+    if (/^(?:[-*+]|\d+[.)]|[A-Z]\d+[.):])\s+/.test(line)) items.push(line);
+    else if (items.length && line.trim() && !/^\s*\|/.test(line)) items[items.length - 1] += ' ' + line.trim();
+  }
+  return items;
+}
+
+/** "8+ user stories" -> 8; "12+" -> 12; anything else -> 0. */
+export function minCount(type) {
+  const m = /(\d+)\s*\+/.exec(String(type || ''));
+  return m ? Number(m[1]) : 0;
+}
+
+const STORY = /\bAs Joseph\b[\s\S]*\bI want\b[\s\S]*\bso that\b/i;
+const GWT = /\bGiven\b[\s\S]*\bwhen\b[\s\S]*\bthen\b/i;   // the task's own example writes "Given ..., when ..., then ..."
+
+/**
+ * Count the items of one field's section the way Claude checks them: user stories must read
+ * "As Joseph, when ..., I want ..., so that ..."; acceptance tests must be Given / When / Then.
+ */
+export function countSectionItems(lines, field) {
+  const items = listItems(lines);
+  const t = `${field.type || ''} ${field.rule || ''}`;
+  if (/user stor/i.test(t)) return { n: items.filter((x) => STORY.test(x)).length, what: "'As Joseph ..., I want ..., so that ...' stories" };
+  if (/Given\s*\/\s*When\s*\/\s*Then/i.test(t)) return { n: items.filter((x) => GWT.test(x)).length, what: 'Given/When/Then tests' };
+  return { n: items.length, what: 'items' };
+}
+
+/**
+ * Every "path:line" or "path:a-b" reference must name a file that exists (relative to the repo root,
+ * or to the task's pillar folder for a bare name like app.js:142) and a line inside it.
+ */
+export function checkCodeRefs(content, repoRoot, pillarDir) {
+  const re = /((?:[\w.-]+\/)*[\w.-]+\.(?:js|mjs|css|html|json|py))[`']?\s*:\s*L?(\d+)(?:\s*[-\u2013]\s*L?(\d+))?/g;
+  const bad = [];
+  let n = 0;
+  const lineCount = new Map();
+  let m;
+  while ((m = re.exec(content)) !== null) {
+    const rel = m[1];
+    if (/^https?:/i.test(rel)) continue;
+    n++;
+    const cands = rel.includes('/') ? [path.join(repoRoot, rel), pillarDir && path.join(pillarDir, rel)] : [pillarDir && path.join(pillarDir, rel), path.join(repoRoot, rel)];
+    const hit = cands.find((p) => p && fs.existsSync(p) && fs.statSync(p).isFile());
+    const ref = `${rel}:${m[2]}${m[3] ? '-' + m[3] : ''}`;
+    if (!hit) { bad.push(`${ref} (no such file)`); continue; }
+    if (!lineCount.has(hit)) { const txt = fs.readFileSync(hit, 'utf8'); lineCount.set(hit, txt.split('\n').length - (txt.endsWith('\n') ? 1 : 0)); }
+    const total = lineCount.get(hit);
+    const hi = Number(m[3] || m[2]);
+    if (hi > total || Number(m[2]) < 1) bad.push(`${ref} (the file has ${total} line${total === 1 ? "" : "s"})`);
+  }
+  return { n, bad };
 }
 
 /**
@@ -473,7 +547,43 @@ export function checkDelivery(filePath, { taskId = null, repoRoot = DEFAULT_REPO
           ? `All ${requiredHeadings.length} required heading(s) present: ${requiredHeadings.join(', ')}`
           : `Missing required heading(s): ${missing.join(', ')}`
       );
+      // Check 9 (2026-11-20): "in this order" means in this order
+      if (/in this order/i.test(task?.deliver?.shape || '') && missing.length === 0) {
+        const want = requiredHeadings.map((h) => h.toLowerCase());
+        const got = present.filter((h) => want.includes(h));
+        const inOrder = got.length === want.length && got.every((h, i) => h === want[i]);
+        record('md-heading-order', inOrder, inOrder ? 'Headings are in the order the task gives' : `Headings out of order: ${got.join(' | ')}`);
+      }
     }
+    // Check 10 (2026-11-20): each field whose name is a heading has its count ("8+ user stories", "12+") and its table
+    const fields = Array.isArray(task?.fields) ? task.fields : [];
+    const secs = markdownSections(rawContent);
+    const short = [];
+    let counted = 0;
+    for (const field of fields) {
+      const body = secs.get(String(field.name || '').toLowerCase());
+      if (!body) continue;
+      const need = minCount(field.type);
+      if (need) {
+        counted++;
+        const { n, what } = countSectionItems(body, field);
+        if (n < need) short.push(`${field.name}: ${n} ${what}, needs ${need}+`);
+      }
+      if (/^table$/i.test(String(field.type || '').trim())) {
+        counted++;
+        const cols = String(field.rule || '').split('|').length;
+        const head = body.find((l) => /^\s*\|.*\|\s*$/.test(l));
+        const sep = body.some((l) => /^\s*\|?\s*:?-{3,}/.test(l));
+        const have = head ? head.trim().replace(/^\||\|$/g, '').split('|').length : 0;
+        if (!head || !sep) short.push(`${field.name}: no Markdown table`);
+        else if (cols > 1 && have < cols) short.push(`${field.name}: table has ${have} columns, needs ${cols}`);
+      }
+    }
+    if (counted) record('md-counts', short.length === 0, short.length === 0 ? `Every counted section has its count (${counted} checked)` : short.join('; '));
+    // Check 11 (2026-11-20): every file:line reference exists in the code (run it in a fresh checkout of the repo)
+    const pillarDir = task?._queueFile ? path.resolve(path.dirname(task._queueFile), '..', '..') : null;
+    const refs = checkCodeRefs(rawContent, repoRoot, pillarDir);
+    if (refs.n) record('md-code-refs', refs.bad.length === 0, refs.bad.length === 0 ? `All ${refs.n} file:line references are inside their files` : `${refs.bad.length} of ${refs.n} file:line references are wrong: ${refs.bad.slice(0, 5).join('; ')}`);
   }
 
   const ok = results.every((r) => r.status === 'PASS');

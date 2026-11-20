@@ -109,6 +109,7 @@ def queue_tasks(q, where, pid, src, led, page):
             dl = t.get("deliver") or {}
             out.append({"ai": who, "src": src, "where": where, "pid": pid, "id": t.get("id"), "title": t.get("title", ""), "status": st, "due": t.get("due", ""),
                         "items": t.get("count") or 0, "closed": t.get("closed", ""), "review": t.get("review", ""),
+                        "reopened": (t.get("reopened", "") if st == "todo" else ""),   # 2026-11-20: a sent-back task is marked as such on the Forge
                         "delivered": ({"what": e.get("what", ""), "by": e.get("by", ""), "ts": e.get("ts", "")} if e else None),
                         "detail": {"why": t.get("why", ""), "steps": t.get("steps", []), "make": dl.get("file", ""), "folder": dl.get("folder", ""), "shape": dl.get("shape", ""),
                                    "done": t.get("done_when", ""), "checks": t.get("checks", []), "link": f"{page}QUEUE_{(a.get('id') or '').lower()}.md"}})

@@ -1,12 +1,12 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-19 23:35 UTC. 12 to do across 2 pillars; 2 more delivered and waiting for their check (listed at the end: do not redo them).
+Updated 2026-11-20 08:48 UTC. 12 to do across 2 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).
 
-TITAN RELIQUARY (its own loop, the exception): 6 homework sheets + 4 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 9 homework sheets + 1 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -116,8 +116,3 @@ IN THIS ORDER:
 - a file with fewer checked rows than asked
 - a differ or still-wrong line without where you looked
 - a check of a file you wrote yourself
-
-
-DELIVERED, WAITING FOR THEIR CHECK (do not redo these; if a check needs a redo, the task comes back above with the reason):
-- [Midas Ledger] MID-MUS-03 · Midas Ledger: second reader on Gemini's 'how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages' · delivered 2026-11-17: midas_muse_flex-terms-check_20261117-1040.md in Midas incoming (scored 6/10)
-- [Midas Ledger] MID-MUS-02 · Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser' · delivered 2026-11-18: Recheck of Gemini's 1735 parser-case redo (MID-MUS-02): 7/10 REJECT — 21 of 25 cases now agree with build.py (was 0 of 15), 4 precise failur

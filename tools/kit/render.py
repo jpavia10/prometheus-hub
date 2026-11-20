@@ -86,10 +86,15 @@ COMMON_REJECT = ["fewer rows than the count, or a row missing a field of the sha
                  "a file saved anywhere but the folder named here, or under another name"]
 
 
+def sent_back(t):
+    return bool(t.get("reopened") and t.get("review") and t.get("state") in ("now", "next") and not awaiting(t))
+
+
 def task_md(i, t, p, folder, common=False):
     w = awaiting(t)
     state = (f"delivered {str(w.get('ts', ''))[:10]}, waiting for its check: do not redo it unless a review reopens it" if w else t.get("state")) + (" (starts when the file it checks is in the folder)" if t.get("state") == "next" and not w else "")
     L = [f"## {i}. {t['id']} · {t['title']}", "", f"**Due:** {t.get('due', '-')} · **State:** {state}", ""]
+    if sent_back(t): L += [f"**SENT BACK, DO IT AGAIN:** {t['review']}", ""]   # 2026-11-20: a reopened task says why, on the page the AI reads
     if t.get("why") and not common: L += [f"**Why:** {t['why']}", ""]      # the AI's Drive page leaves the why out (it is on the pillar's queue page)
     if t.get("unlocks"): L += [f"**What it unlocks:** {t['unlocks']}", ""]           # 2026-11-16 (owner): every task says what it is for in the app
     if t.get("inputs"): L += ["**Read first:**"] + [f"- {x}" for x in t["inputs"]] + [""]
@@ -140,7 +145,7 @@ def drive_queue(p, ai, tasks, stamp):
     for t in sorted(tasks, key=lambda t: (t.get("state") != "now", t.get("due", "9"))):
         d = t.get("deliver") or {}
         w = awaiting(t)
-        L += [f"- {t['id']} · {t['title']} · due {t.get('due')}" + (f" · DELIVERED {str(w.get('ts', ''))[:10]}, waiting for its check (do not redo)" if w else " · waits for its input file" if t.get("state") == "next" else ""),
+        L += [f"- {t['id']} · {t['title']} · due {t.get('due')}" + (f" · DELIVERED {str(w.get('ts', ''))[:10]}, waiting for its check (do not redo)" if w else " · waits for its input file" if t.get("state") == "next" else "") + (f" · SENT BACK {t['reopened']}: redo it (reason in your HOMEWORK doc)" if sent_back(t) else ""),
               f"    make: {d.get('file')} · how many: {t.get('count')} · done when: {t.get('done_when')}"]
     return "\n".join(L).rstrip() + "\n"
 
@@ -231,7 +236,7 @@ def main(argv):
         L += ["EVERY TASK BELOW IS SENT BACK IF:"] + [f"- {x}" for x in COMMON_REJECT if x not in ("fewer items than the count", "a source URL that does not open or does not say what the row claims")] + [""]
         L += ["IN THIS ORDER:"]
         for i, (p, t, _) in enumerate(work, 1):
-            L += [f"{i}. [{p['name']}] {t['id']} · {t['title']} · due {t.get('due')}" + (" · waits for its input file" if t.get("state") == "next" else "")]
+            L += [f"{i}. [{p['name']}] {t['id']} · {t['title']} · due {t.get('due')}" + (" · waits for its input file" if t.get("state") == "next" else "") + (f" · SENT BACK {t['reopened']}: redo it (reason under the task)" if sent_back(t) else "")]
         L += [""]
         for i, (p, t, _) in enumerate(work, 1):
             L += [f"==================== {i}. {p['name'].upper()} ===================="] + task_md(i, t, p, "", common=True)

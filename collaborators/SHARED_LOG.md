@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Gemini's 25 function specs of Nov 16 checked: all sent back; the checker now catches them (d39)
+- Every file parsed and every file:line checked against the code as it stood on Nov 16; 12 code claims opened at random. The 22 pillar specs have the right headings but a third of the counts (2-4 stories, none "As Joseph..."; 2-3 rules for 10; 3 tests for 12, none Given/when/then; no data table) and half the sampled lines point at other code; hub/money/forge used another template with line ranges that never existed (money engine.js:1-342, the file has 58 lines). Scores #26-#50, average 4.3; each task reopened with its own reasons, due Nov 30, shown on Gemini's pages ("SENT BACK") and tagged on the Forge.
+- tools/kit/check_delivery.mjs now reads "headings, in this order: A | B" shapes, checks the order, the counts (stories, items, Given/when/then tests, the data table) and opens every file:line (unit 84/84); all 25 old specs fail it. Privacy: the home street address and the safe's contents came out of Odyssey's away checklist, Bastion and Records (three public files; git history still has them).
+
 ### [2026-11-19] The Forge rebuilt: one builder, one snapshot, honest states (d38)
 - Owner: "it seems dated ... never accurate when I check". Causes found: withdrawn tasks counted as open (Gemini showed 87 out, 19 real; Grok 50, 26 real), a delivered task showed as done before anyone checked it, "Gemini (4 Neon)" score rows counted as another AI, and nothing said how old the numbers were.
 - tools/forge/build.py now reads every queue, Titan's loop and projects, the workboard, the ledger and all score sheets and writes docs/agents/forge.json (to do / later / delivered-not-checked / done / withdrawn); ledger.yml runs it every 10 minutes and on every push; the page only draws it, with "as of", a stale warning after 4 h and a list of anything it could not place. Tests: tools/forge/test_build.py (9) and FORGE-2. Kit: tabs no longer slide under the "All panels" button.

@@ -146,7 +146,7 @@
       const label = t.status === "todo" ? (rel(t.due) || "to do") : t.status === "delivered" ? "delivered" : t.status === "queued" ? "later" : t.status;
       return h("details.trow.s-" + t.src + (t.late ? ".late" : "") + (t.status === "todo" || t.status === "delivered" ? "" : ".closed"), null,
         h("summary", null, h("span.tmain", null, h("b", null, t.title), h("span.stat-s", null, `${t.ai} · ${t.where} · ${t.id}`)),
-          h("span.tside", null, chip(label, t.late ? "bad" : t.status === "delivered" ? "warn" : t.status === "todo" ? "hot" : ""))), body);
+          h("span.tside", null, t.reopened ? chip("sent back", "warn") : null, chip(label, t.late ? "bad" : t.status === "delivered" ? "warn" : t.status === "todo" ? "hot" : ""))), body);
     }), L.length > shown.length ? h("p.sub", null, `${L.length - shown.length} more: narrow it with the filters.`) : null);
   }
   function paintMatrix() {

@@ -1,6 +1,6 @@
 {
- "built": "2026-11-20T00:42:10Z",
- "checked": "2026-11-20T07:45:48Z",
+ "built": "2026-11-20T08:47:54Z",
+ "checked": "2026-11-20T08:47:54Z",
  "version": 2,
  "today": "2026-11-20",
  "sources": {
@@ -19,47 +19,47 @@
    "synced": "2026-11-19T20:47:40Z"
   },
   "titan_scores": 176,
-  "hub_scores": 25,
+  "hub_scores": 50,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 92,
+  "todo": 117,
   "late": 3,
   "due7": 77,
-  "delivered": 35,
+  "delivered": 10,
   "queued": 12,
   "withdrawn": 110
  },
  "per": {
   "Gemini": {
-   "todo": 23,
+   "todo": 48,
    "late": 0,
    "due7": 22,
-   "delivered": 33,
+   "delivered": 8,
    "queued": 2,
    "done7": 21,
    "withdrawn": 68,
-   "items": 194,
+   "items": 219,
    "floor": 30,
    "by": {
-    "hub": 19,
+    "hub": 44,
     "titan": 3,
     "tproj": 1,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 96,
-    "avg": 7.47,
-    "last10": 9.6,
+    "n": 121,
+    "avg": 6.81,
+    "last10": 4.4,
     "last": {
      "ai": "Gemini",
-     "n": 25,
-     "date": "2026-11-19",
-     "what": "forge_gemini_check-delivery_20261119-0926.zip",
-     "task": "FOR-GEM-04",
+     "n": 50,
+     "date": "2026-11-20",
+     "what": "selling_gemini_function-spec_20261116-2040.md",
+     "task": "SEL-GEM-05",
      "where": "Prometheus Hub",
-     "score": 10.0
+     "score": 4.0
     }
    }
   },
@@ -264,167 +264,67 @@
  },
  "places": {
   "Prometheus Hub": {
-   "todo": 3,
-   "delivered": 1,
+   "todo": 4,
+   "delivered": 0,
    "by": {
     "Grok": 1,
+    "Gemini": 1,
     "Muse": 2
    }
   },
   "Kairos Meridian": {
-   "todo": 3,
-   "delivered": 1,
+   "todo": 4,
+   "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 1,
     "ChatGPT": 1
    }
   },
   "Hephaestus Hearth": {
-   "todo": 3,
-   "delivered": 1,
+   "todo": 4,
+   "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 1,
     "ChatGPT": 1
    }
   },
   "Garage": {
-   "todo": 3,
-   "delivered": 1,
+   "todo": 4,
+   "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 1,
     "ChatGPT": 1
    }
   },
   "Apollo Temple": {
-   "todo": 1,
-   "delivered": 1,
+   "todo": 2,
+   "delivered": 0,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
   "Money": {
-   "todo": 2,
-   "delivered": 1,
+   "todo": 3,
+   "delivered": 0,
    "by": {
+    "Gemini": 1,
     "Grok": 1,
     "ChatGPT": 1
    }
   },
   "Selling Pipeline": {
-   "todo": 1,
-   "delivered": 1,
+   "todo": 2,
+   "delivered": 0,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
   "Records": {
-   "todo": 2,
-   "delivered": 2,
-   "by": {
-    "Gemini": 1,
-    "Grok": 1
-   }
-  },
-  "Icarus Stake": {
-   "todo": 1,
-   "delivered": 1,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Hermes Post": {
-   "todo": 1,
-   "delivered": 1,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Bossa Piano Studio": {
-   "todo": 2,
-   "delivered": 1,
-   "by": {
-    "Gemini": 1,
-    "Grok": 1
-   }
-  },
-  "Bastion": {
-   "todo": 1,
-   "delivered": 2,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Athenaeum": {
-   "todo": 1,
-   "delivered": 1,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Odyssey": {
-   "todo": 9,
-   "delivered": 1,
-   "by": {
-    "Gemini": 8,
-    "Grok": 1
-   }
-  },
-  "Privacy": {
-   "todo": 2,
-   "delivered": 1,
-   "by": {
-    "Gemini": 1,
-    "Grok": 1
-   }
-  },
-  "Argus Album": {
-   "todo": 1,
-   "delivered": 2,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Ludus Arcade": {
-   "todo": 2,
-   "delivered": 1,
-   "by": {
-    "Gemini": 1,
-    "Grok": 1
-   }
-  },
-  "Forge": {
-   "todo": 1,
-   "delivered": 1,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Foundry": {
-   "todo": 1,
-   "delivered": 2,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Observatory": {
-   "todo": 1,
-   "delivered": 2,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Kin": {
-   "todo": 2,
-   "delivered": 1,
-   "by": {
-    "Grok": 1,
-    "ChatGPT": 1
-   }
-  },
-  "Aether": {
    "todo": 3,
    "delivered": 1,
    "by": {
@@ -432,7 +332,31 @@
     "Grok": 1
    }
   },
-  "Polis": {
+  "Icarus Stake": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1,
+    "Grok": 1
+   }
+  },
+  "Hermes Post": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1,
+    "Grok": 1
+   }
+  },
+  "Bossa Piano Studio": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Gemini": 2,
+    "Grok": 1
+   }
+  },
+  "Bastion": {
    "todo": 2,
    "delivered": 1,
    "by": {
@@ -440,18 +364,108 @@
     "Grok": 1
    }
   },
-  "Mythos": {
-   "todo": 1,
+  "Athenaeum": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1,
+    "Grok": 1
+   }
+  },
+  "Odyssey": {
+   "todo": 10,
+   "delivered": 0,
+   "by": {
+    "Gemini": 9,
+    "Grok": 1
+   }
+  },
+  "Privacy": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Gemini": 2,
+    "Grok": 1
+   }
+  },
+  "Argus Album": {
+   "todo": 2,
    "delivered": 1,
    "by": {
+    "Gemini": 1,
+    "Grok": 1
+   }
+  },
+  "Ludus Arcade": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Gemini": 2,
+    "Grok": 1
+   }
+  },
+  "Forge": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1,
+    "Grok": 1
+   }
+  },
+  "Foundry": {
+   "todo": 2,
+   "delivered": 1,
+   "by": {
+    "Gemini": 1,
+    "Grok": 1
+   }
+  },
+  "Observatory": {
+   "todo": 2,
+   "delivered": 1,
+   "by": {
+    "Gemini": 1,
+    "Grok": 1
+   }
+  },
+  "Kin": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1,
+    "Grok": 1,
+    "ChatGPT": 1
+   }
+  },
+  "Aether": {
+   "todo": 4,
+   "delivered": 0,
+   "by": {
+    "Gemini": 3,
+    "Grok": 1
+   }
+  },
+  "Polis": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Gemini": 2,
+    "Grok": 1
+   }
+  },
+  "Mythos": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
   "Continuity": {
-   "todo": 3,
-   "delivered": 1,
+   "todo": 4,
+   "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 2
    }
   },
@@ -495,6 +509,7 @@
    "items": 6,
    "closed": "",
    "review": "Reviewed by Claude 2026-11-16: Prometheus half shipped. Grok's take4 (pearl flame over a ring, recoloured from Gemini take1's composition) is the live app icon since #24 (2026-11-14), all five sizes plus the 1024 master, with a sha256 manifest. Titan half not made: Titan is paused by the owner.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.",
@@ -528,6 +543,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -559,6 +575,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -591,6 +608,7 @@
    "items": 6,
    "closed": "",
    "review": "Reviewed by Claude 2026-11-16: all six takes delivered 2026-11-05 (titan_icon_take1-3_gemini, prometheus_icon_take1-3_gemini). Gemini's take1 composition (flame over a pearl ring) is the base of the live hub icon since #24, recoloured by Grok's take4. The Titan icon waits while Titan is paused.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph asked for it today (2026-11-05): his Titan icon is flat 'TR' letters, Prometheus Hub's is a thin white square. Both sit on his Android home screen.",
@@ -624,6 +642,7 @@
    "items": 40,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph landed on the experimental futuristic look for Prometheus and every pillar except Titan. Claude needs real references to build from, not adjectives.",
@@ -658,6 +677,7 @@
    "items": 9,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Pointing at a door bends the desk's particle field into that door's shape. Today the shapes are rough. Each door needs a shape that reads at a glance.",
@@ -692,6 +712,7 @@
    "items": 24,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph dislikes computer-generated music. The desk needs a real-recording bed like Titan's: room tones, nature textures and acoustic drones.",
@@ -725,6 +746,7 @@
    "items": 60,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The shared kit (kit/kit.js) draws its glyphs by hand. One icon set (Lucide, ISC licence) for every pillar keeps them the same everywhere.",
@@ -757,6 +779,7 @@
    "items": 20,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every pillar should move the same way. Claude needs numbers, not adjectives.",
@@ -789,6 +812,7 @@
    "items": 30,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The desk and every pillar must stay readable on Joseph's phone in light and dark.",
@@ -820,6 +844,7 @@
    "items": 25,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Prometheus Hub uses.",
@@ -849,6 +874,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Prometheus Hub uses.",
@@ -880,6 +906,7 @@
    "items": 25,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -905,16 +932,13 @@
    "pid": "hub",
    "id": "HUB-GEM-10",
    "title": "Prometheus Hub: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "hub_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T19:30:00Z"
-   },
+   "review": "Sent back 2026-11-20: hub_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 5 of its 25 file:line references run past the end of the file (e.g. deck/app.js:1-385 when the file had 322 lines). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -946,6 +970,7 @@
    "items": 11,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Half the doors still say placeholder things. Each door needs a plain name line, what it is for, and what you can really do there today.",
@@ -978,6 +1003,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -1009,6 +1035,7 @@
    "items": 23,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Gemini resent every hub dataset at 19:40 on Nov 18 after your Nov 17-18 checks. Nothing from that batch is built into a pillar until a second reader has checked it, and nobody has.",
@@ -1040,6 +1067,7 @@
    "items": 23,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Claude built Gemini's Nov 19 run into eight pillars after running the code and recomputing what can be recomputed, but Claude's container cannot open the cited pages. A human-grade second read of the sources is still owed.",
@@ -1071,6 +1099,7 @@
    "items": 25,
    "closed": "",
    "review": "Withdrawn 2026-11-16: the desk it audits was replaced by the game menu; HUB-GEM menu audit covers it.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Claude needs an outside eye on the desk before the next build.",
@@ -1102,6 +1131,7 @@
    "items": 1,
    "closed": "",
    "review": "Superseded 2026-11-16: the desk was replaced by the orrery core; each pillar's door carries live badges from its own data (CORE-3), and every pillar opens on its own live stage (STAGE-1).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph: 'the main hub needs work then each pillar can be developed separately'. Each door shows its state, its last update and its open homework, read from pillars.json and each pillar's queues.",
@@ -1133,6 +1163,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Kairos Meridian is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
@@ -1167,6 +1198,7 @@
    "items": 55,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Kairos shows the day; these dates must be on it without anyone typing them.",
@@ -1199,6 +1231,7 @@
    "items": 20,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Kairos's focus clock offers methods; each needs its real rules (minutes, breaks, cycles), not a blog summary.",
@@ -1229,6 +1262,7 @@
    "items": 40,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Kairos will import calendars; Claude needs a file that breaks weak parsers.",
@@ -1259,6 +1293,7 @@
    "items": 30,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "For version 2 (Google Calendar sync), Claude needs the exact field names and types.",
@@ -1289,6 +1324,7 @@
    "items": 40,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
@@ -1319,6 +1355,7 @@
    "items": 2,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
@@ -1348,6 +1385,7 @@
    "items": 365,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
@@ -1377,6 +1415,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
@@ -1408,6 +1447,7 @@
    "items": 30,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -1434,16 +1474,13 @@
    "pid": "kairos",
    "id": "KAI-GEM-11",
    "title": "Kairos Meridian: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "kairos_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: kairos_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 4 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 4 tests and none is Given/When/Then (12+); G has 4 steps. Its code references are not reliable: app.js:77-108 are date helpers, not parseNL(). Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -1475,6 +1512,7 @@
    "items": 0,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: proofs/unit/rrule-rfc.test.mjs runs all 39 examples. The file exposed a real Kairos bug (YEARLY;BYDAY=20MO gave no dates) and two missing rule kinds (BYYEARDAY, BYWEEKNO), all fixed. Missing: the RFC's second ('or') forms of examples 5, 9 and 36 (Claude added two). Count 40 was 'about 40'; corrected. Score 9/10 (#22).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Kairos imports and exports recurring events (RRULE) but has no test that its recurrences land on the right days. RFC 5545 section 3.8.5.3 lists about 40 worked examples with their answers: turned into data, they are the test.",
@@ -1506,6 +1544,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Kairos has 2026's fixed dates. 2027 starts in six weeks.",
@@ -1536,6 +1575,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every source in a spec gets a second reader before Claude builds on it.",
@@ -1566,6 +1606,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -1597,6 +1638,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -1628,6 +1670,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -1659,6 +1702,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -1691,6 +1735,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
@@ -1720,6 +1765,7 @@
    "items": 8,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The house on the stand is placeholder boxes. The real model will come from Joseph scanning rooms with his phone.",
@@ -1751,6 +1797,7 @@
    "items": 3,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Rooms, assets and projects are empty on purpose. They need one shape before anything is saved. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
@@ -1785,6 +1832,7 @@
    "items": 120,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Hearth lists what is in each room; the categories and the fields worth recording should come from a published home-inventory checklist, not guesses. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
@@ -1817,6 +1865,7 @@
    "items": 12,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The layout must become accurate. Claude needs numbers on how close phone scans, phone AR and laser measures get to a tape measure. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
@@ -1848,6 +1897,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "When a room is scanned or drawn, Hearth must read the file into its 3D view without losing walls, doors and real units. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
@@ -1878,6 +1928,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph's phone is Android (no LiDAR). A Bluetooth laser measure is the realistic path to an accurate plan; Claude needs the real specs. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
@@ -1908,6 +1959,7 @@
    "items": 50,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Hearth should beat the apps people already use for 'what is in my house' and 'what did I do to it'. Hearth's scope (Joseph, 2026-11-05): renovation projects, the assets in every room, and a floor plan that gets accurate over time. Nothing else.",
@@ -1940,6 +1992,7 @@
    "items": 40,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
@@ -1969,6 +2022,7 @@
    "items": 1,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
@@ -1998,6 +2052,7 @@
    "items": 60,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
@@ -2027,6 +2082,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
@@ -2058,6 +2114,7 @@
    "items": 40,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -2089,6 +2146,7 @@
    "items": 1,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19 (Claude): the 20261117-1735 redo, accepted by Muse 9/10, is live as Hearth's Kern County permit check under the deck blueprint (permits.js): it tests the four-condition exemption on the 23 x 10 ft deck (3 of 4 fail). Score 9/10 (#4).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -2115,16 +2173,13 @@
    "pid": "hearth",
    "id": "HEA-GEM-18",
    "title": "Hephaestus Hearth: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "hearth_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: hearth_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -2156,6 +2211,7 @@
    "items": 3,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Hearth 'Re-decking and the permit'. Question (a) honestly 'not stated'. Row 3's quote is 461 characters (keep quotes under 300). Score 9/10 (#11).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Hearth's permit check (2026-11-19) shows a new or rebuilt 23 x 10 ft second-floor deck needs a permit, but Joseph's job is a refurbish: new boards, flashing and joist repair on the existing frame. Whether that is an 'ordinary repair' (no permit) decides whether he must apply before the demo-and-repair stage.",
@@ -2187,6 +2243,7 @@
    "items": 30,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Hearth's 'Shelf prices near the cabin' (deck-research.js). Board count checked (21 x 2 = 42). Minor: screws priced per screw but qty_needed counts boxes. Score 9/10 (#9).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Hearth will not clear a renovation phase until every material has a price (Phase-Gate rule), and 13 of 13 materials have none; 9 have no quantity. This is the shopping list for the deck job.",
@@ -2221,6 +2278,7 @@
    "items": 10,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Hearth 'Design loads at the cabin'. Strong find: Kern's 30 psf snow table vs ASCE 7-22. Rows 4-5 cite a site home page (checker: URL path '/'). Score 9/10 (#12).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The deck is a second-floor deck at about 4,600 ft in the mountains. Joist size and footing depth depend on the snow load and frost depth the county requires there, and Hearth does not know them.",
@@ -2253,6 +2311,7 @@
    "items": 10,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Hearth 'When each product can go on', 10 makers' limits from their data sheets. Score 10/10 (#16).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The deck job is paint, prime and caulk outdoors at 4,600 ft in late autumn. Each product has a minimum temperature and a recoat/rain-free time; get it wrong and the coat fails. Hearth has no product data.",
@@ -2284,6 +2343,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Your HEA-GEM-21 found Kern's 30 psf ground-snow table against ASCE 7-22's much higher value. The joist size depends on which one Kern enforces now.",
@@ -2315,6 +2375,7 @@
    "items": 32,
    "closed": "",
    "review": "Reviewed by Claude 2026-11-16: 33 cells (4+ per app), table shape right; named HEARTH-GROK-... instead of hearth_grok_...; kept in pillars/hearth/research/. Spot-check of the 'differ' lines (Polycam Business promo, Scaniverse GLB on Free, Twindo Scale price) pending: those hosts are blocked from the build session.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Prices and export rules change often; a second reader catches what one missed.",
@@ -2345,6 +2406,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -2376,6 +2438,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -2408,6 +2471,7 @@
    "items": 1,
    "closed": "",
    "review": "Superseded 2026-11-16: Hearth moved into the hub (pillars/hearth/, live on the hub's Pages since 2026-11-14); its old site redirects there, and its projects are saved on the device through the kit store and the hub backup.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The README says Pages was never enabled; the desk links to a page that may not load.",
@@ -2438,6 +2502,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -2469,6 +2534,7 @@
    "items": 15,
    "closed": "",
    "review": "Second read by Sebastian 2026-11-17: scored 6/10 (11 agree / 4 differ; the permit exemption is spliced — real test is CRC R105.2 item 10: 200 sq ft cap + not serving the exit door). hearth_muse_kern-permits-check_20261117-1725.md in Hearth incoming.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -2500,6 +2566,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -2531,6 +2598,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hephaestus Hearth uses.",
@@ -2560,6 +2628,7 @@
    "items": 1,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
@@ -2589,6 +2658,7 @@
    "items": 30,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
@@ -2618,6 +2688,7 @@
    "items": 100,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
@@ -2647,6 +2718,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
@@ -2678,6 +2750,7 @@
    "items": 1,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -2709,6 +2782,7 @@
    "items": 20,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -2734,16 +2808,13 @@
    "pid": "garage",
    "id": "GAR-GEM-07",
    "title": "Garage: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "garage_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: garage_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -2775,6 +2846,7 @@
    "items": 30,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Garage 'From the owner's manuals' (reference-data.js), 30 rows with printed and PDF page. Score 10/10 (#13).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Garage logs services but cannot tell Joseph what oil, how much, what pressure or what torque. The manuals have it; nothing in Prometheus does.",
@@ -2807,6 +2879,7 @@
    "items": 0,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Garage 'Service bulletins', all 28 NHTSA communications plus the TOTAL row (0 for the MT-07). The task's count of 40 was Claude's placeholder ('however many NHTSA lists'); corrected to open. Score 10/10 (#17).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Recalls are in Garage; service bulletins are not. A bulletin is what the dealer fixes when you describe the symptom, so Joseph needs the symptom in plain words before a service visit.",
@@ -2838,6 +2911,7 @@
    "items": 9,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Garage 'Tires and chain controls'. Score 10/10 (#18).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Caltrans chain control R2 lets four-wheel/all-wheel-drive vehicles with snow tires on all four wheels skip chains. Whether the Sorento qualifies depends on its drive and its tires' marking (M+S or the 3PMSF mountain-snowflake symbol). Garage does not know either.",
@@ -2870,6 +2944,7 @@
    "items": 6,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Garage's 'Mileage baseline and gas price'. Claude re-fetched both EPA ids (exact) and checked CORS: fueleconomy.gov answers browsers (Access-Control-Allow-Origin: *), so the page's 'Check live' works. Score 8/10 (#19).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Garage computes real MPG and cost per mile from Joseph's fill-ups but has nothing to compare to: not the EPA rating for his exact trim, not today's California price.",
@@ -2901,6 +2976,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Garage has a paperwork radar but no real numbers: registration fee parts, smog exemptions for a new hybrid and a motorcycle, the hybrid's CA vehicle fees.",
@@ -2930,6 +3006,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -2961,6 +3038,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -2993,6 +3071,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -3024,6 +3103,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -3055,6 +3135,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -3086,6 +3167,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.",
@@ -3115,6 +3197,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Apollo Temple is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
@@ -3149,6 +3232,7 @@
    "items": 300,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Apollo logs calories and protein; a food table from USDA (public domain) lets Joseph pick a food instead of typing numbers.",
@@ -3180,6 +3264,7 @@
    "items": 150,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Apollo can estimate calories from training only with a MET per activity; the 2024 Adult Compendium is the reference.",
@@ -3210,6 +3295,7 @@
    "items": 40,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Apollo's trends need lines to compare against (resting heart rate, blood pressure, sleep, steps, BMI, waist, protein per kg).",
@@ -3240,6 +3326,7 @@
    "items": 30,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph is on Android. Version 2 can read steps, sleep, weight and heart rate from Health Connect instead of typing them.",
@@ -3270,6 +3357,7 @@
    "items": 25,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Apollo's nudges (streaks, goals, reminders) should follow evidence, not vibes.",
@@ -3301,6 +3389,7 @@
    "items": 300,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Apollo Temple uses.",
@@ -3331,6 +3420,7 @@
    "items": 30,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Apollo Temple uses.",
@@ -3360,6 +3450,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Apollo Temple uses.",
@@ -3386,16 +3477,13 @@
    "pid": "apollo",
    "id": "APO-GEM-10",
    "title": "Apollo Temple: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "apollo_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: apollo_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -3427,6 +3515,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every source in a spec gets a second reader before Claude builds on it.",
@@ -3457,6 +3546,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -3488,6 +3578,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -3519,6 +3610,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -3551,6 +3643,7 @@
    "items": 30,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Money uses.",
@@ -3580,6 +3673,7 @@
    "items": 12,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Money uses.",
@@ -3609,6 +3703,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Money uses.",
@@ -3635,16 +3730,13 @@
    "pid": "money",
    "id": "MON-GEM-04",
    "title": "Money: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "money_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T19:30:00Z"
-   },
+   "review": "Sent back 2026-11-20: money_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 24 of its 55 file:line references run past the end of the file (e.g. pillars/money/engine.js:1-342 when the file had 58 lines and never more). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -3676,6 +3768,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -3707,6 +3800,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -3739,6 +3833,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -3770,6 +3865,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Money uses.",
@@ -3799,6 +3895,7 @@
    "items": 6,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Selling Pipeline uses.",
@@ -3828,6 +3925,7 @@
    "items": 180,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Selling Pipeline uses.",
@@ -3857,6 +3955,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Selling Pipeline uses.",
@@ -3888,6 +3987,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -3913,16 +4013,13 @@
    "pid": "selling",
    "id": "SEL-GEM-05",
    "title": "Selling Pipeline: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "selling_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: selling_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -3954,6 +4051,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -3985,6 +4083,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -4017,6 +4116,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -4048,6 +4148,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -4079,6 +4180,7 @@
    "items": 60,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Records uses.",
@@ -4108,6 +4210,7 @@
    "items": 30,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Records uses.",
@@ -4137,6 +4240,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Records uses.",
@@ -4168,6 +4272,7 @@
    "items": 40,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "records_gemini_retention_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
     "by": "gemini",
@@ -4197,16 +4302,13 @@
    "pid": "records",
    "id": "REC-GEM-05",
    "title": "Records: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "records_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: records_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:25-34 and 35-65 are the classify loop, not the templates or the form. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -4238,6 +4340,7 @@
    "items": 21,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Records 'Tax forms on their way (2026 tax year)'. Date rolls re-checked. Row 16 (1095-B) quotes last year's text ('February 2, 2026'). Score 9/10 (#23).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Records keeps paper and Kairos keeps dates, but nothing says which forms to expect for the 2026 return, by when, and where each number goes. That is the list Joseph needs in January.",
@@ -4269,6 +4372,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Records knows which forms arrive. It does not know what Joseph owes and when: estimated tax, the April deadline, CA's own dates, property tax.",
@@ -4298,6 +4402,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -4329,6 +4434,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -4361,6 +4467,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -4392,6 +4499,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -4423,6 +4531,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Icarus Stake is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
@@ -4457,6 +4566,7 @@
    "items": 25,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Icarus shows win rate, expectancy, profit factor and drawdown today; it needs the rest with formulas Claude can test.",
@@ -4488,6 +4598,7 @@
    "items": 30,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Icarus's journal skips days the market is closed.",
@@ -4517,6 +4628,7 @@
    "items": 135,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "A high-risk journal should show how likely a 50 % drawdown is at the risk Joseph takes per trade.",
@@ -4548,6 +4660,7 @@
    "items": 30,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Icarus records whether a trade kept the rules; it should also catch the common mistakes itself.",
@@ -4579,6 +4692,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Icarus may show a live price next to an open trade; it must work from the phone with no server.",
@@ -4609,6 +4723,7 @@
    "items": 12,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Icarus Stake uses.",
@@ -4638,6 +4753,7 @@
    "items": 40,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Icarus Stake uses.",
@@ -4667,6 +4783,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Icarus Stake uses.",
@@ -4693,16 +4810,13 @@
    "pid": "icarus",
    "id": "ICA-GEM-10",
    "title": "Icarus Stake: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "icarus_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: icarus_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -4734,6 +4848,7 @@
    "items": 6,
    "closed": "",
    "review": "Reviewed by Claude 2026-11-16: 9 sources plus 1 missed, table shape right, saved where asked; kept in pillars/icarus/research/. Spot-check of the 'differ' lines (CoinGecko Demo rate, Massive $29 product) pending: those hosts are blocked from the build session.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every source in a spec gets a second reader before Claude builds on it.",
@@ -4764,6 +4879,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -4795,6 +4911,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -4827,6 +4944,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -4858,6 +4976,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Hermes Post is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
@@ -4892,6 +5011,7 @@
    "items": 60,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Hermes sorts bills from the rest; knowing each biller's sending domain (from its own help page) makes the rule exact.",
@@ -4922,6 +5042,7 @@
    "items": 40,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Hermes rules are written as Gmail searches.",
@@ -4951,6 +5072,7 @@
    "items": 30,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Hermes should flag a fake bill before Joseph pays it.",
@@ -4982,6 +5104,7 @@
    "items": 80,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Claude tests Hermes's sorting on mail that is not Joseph's.",
@@ -5013,6 +5136,7 @@
    "items": 40,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
@@ -5043,6 +5167,7 @@
    "items": 60,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
@@ -5072,6 +5197,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
@@ -5098,16 +5224,13 @@
    "pid": "hermes",
    "id": "HER-GEM-09",
    "title": "Hermes Post: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "hermes_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: hermes_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -5139,6 +5262,7 @@
    "items": 6,
    "closed": "",
    "review": "Reviewed by Claude 2026-11-16: 9 sources plus 1 missed, table shape right, saved where asked; kept in pillars/hermes/research/. Spot-check of the 'differ' lines (Gmail messages.get cost, JMAP RFC 8620) pending: those hosts are blocked from the build session.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every source in a spec gets a second reader before Claude builds on it.",
@@ -5169,6 +5293,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -5200,6 +5325,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -5232,6 +5358,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -5263,6 +5390,7 @@
    "items": 40,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Bossa Piano Studio uses.",
@@ -5292,6 +5420,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Bossa Piano Studio uses.",
@@ -5318,16 +5447,13 @@
    "pid": "piano",
    "id": "PIA-GEM-03",
    "title": "Bossa Piano Studio: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "piano_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: piano_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -5359,6 +5485,7 @@
    "items": 24,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Piano 'Bossa nova ladder', 24 tunes. Score 10/10 (#24).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Bossa Piano Studio has no repertoire. A ladder that adds one new skill per tune is what turns practice into progress.",
@@ -5390,6 +5517,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The ladder names 24 tunes; Joseph needs the sheet music. Each is in a published fake book or a licensed single sheet.",
@@ -5419,6 +5547,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -5450,6 +5579,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -5482,6 +5612,7 @@
    "items": 60,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Bastion uses.",
@@ -5511,6 +5642,7 @@
    "items": 1,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Bastion uses.",
@@ -5540,6 +5672,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Bastion uses.",
@@ -5571,6 +5704,7 @@
    "items": 1,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -5601,6 +5735,7 @@
    "items": 40,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "bastion_gemini_kit-items_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
     "by": "gemini",
@@ -5629,16 +5764,13 @@
    "pid": "bastion",
    "id": "BAS-GEM-06",
    "title": "Bastion: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "bastion_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: bastion_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -5670,6 +5802,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -5701,6 +5834,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -5733,6 +5867,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -5764,6 +5899,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -5795,6 +5931,7 @@
    "items": 15,
    "closed": "",
    "review": "Second read by Sebastian 2026-11-17: scored 8/10 (14 agree / 1 differ). bastion_muse_kit-items-check_20261117-1725.md in hub incoming.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -5826,6 +5963,7 @@
    "items": 40,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Athenaeum uses.",
@@ -5855,6 +5993,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Athenaeum uses.",
@@ -5881,16 +6020,13 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-03",
    "title": "Athenaeum: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "athenaeum_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: athenaeum_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -5922,6 +6058,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -5953,6 +6090,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -5985,6 +6123,7 @@
    "items": 50,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Odyssey uses.",
@@ -6014,6 +6153,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Odyssey uses.",
@@ -6043,6 +6183,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Odyssey uses.",
@@ -6069,16 +6210,13 @@
    "pid": "odyssey",
    "id": "ODY-GEM-04",
    "title": "Odyssey: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "odyssey_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: odyssey_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:60-65 is the trip form's fields, not publishTrip(). A says trip.js has withWolfgang and withViolet flags; the code had one 'kids' flag. B copies a street address, pet and device names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -6110,6 +6248,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Odyssey knows three trips (Eurotrip 2015, Philippines April 2024, Manila and El Nido September 2024). Joseph has photos from 2008 to 2026 and wants every trip on the map.",
@@ -6141,6 +6280,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph asked for his USA travels. Odyssey has none. Google Photos knows where most US photos were taken.",
@@ -6171,6 +6311,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Odyssey has the Eurotrip's 21 legs from Joseph's planning sheet, but not what he actually did each day. Two dates were already corrected from photos (Montserrat Aug 18, Malta from Aug 19).",
@@ -6201,6 +6342,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Odyssey has both 2024 trips from the booking emails (hotels and flights) but not the days in between.",
@@ -6231,6 +6373,7 @@
    "items": 60,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Odyssey's journeys show a photo and a city. Joseph wants the monuments and landmarks named and explained.",
@@ -6261,6 +6404,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Each stop on Odyssey's map is a name and a dot. A card with the city's basic facts makes the map worth opening.",
@@ -6290,6 +6434,7 @@
    "items": 36,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The 36 photos in Odyssey were placed by their file names and by eye. Google Photos has their exact time, zone and place.",
@@ -6320,6 +6465,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in.",
@@ -6350,6 +6496,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -6382,6 +6529,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -6413,6 +6561,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -6444,6 +6593,7 @@
    "items": 30,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Privacy uses.",
@@ -6473,6 +6623,7 @@
    "items": 1,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Privacy uses.",
@@ -6502,6 +6653,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Privacy uses.",
@@ -6533,6 +6685,7 @@
    "items": 30,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -6563,6 +6716,7 @@
    "items": 1,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -6587,16 +6741,13 @@
    "pid": "privacy",
    "id": "PRI-GEM-06",
    "title": "Privacy: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "privacy_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: privacy_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -6628,6 +6779,7 @@
    "items": 72,
    "closed": "",
    "review": "Blocked 2026-11-19: Gemini could not open brokers-data.js on GitHub. Claude put the 72 names in Drive as privacy_INPUT_broker-names_20261119.txt in the Prometheus Hub incoming folder; use that file.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "California's DROP sends one deletion request to every broker on the state registry. Privacy lists 72 brokers but does not know which ones DROP covers, so Joseph cannot tell which still need a manual opt-out.",
@@ -6659,6 +6811,7 @@
    "items": 25,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Privacy 'Google, setting by setting', 25 rows from support.google.com. Score 10/10 (#20).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Brokers are half of Joseph's footprint; his own Google account is the other half (location history, web activity, ad profile, public profile). Privacy has nothing on it.",
@@ -6690,6 +6843,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -6721,6 +6875,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -6753,6 +6908,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -6784,6 +6940,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -6815,6 +6972,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -6846,6 +7004,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Argus Album is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
@@ -6880,6 +7039,7 @@
    "items": 40,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Argus strips EXIF and GPS from every photo it keeps; Claude needs the full list to test the strip.",
@@ -6910,6 +7070,7 @@
    "items": 20,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Titan's Phase 2 pro photos (Argus keeps them) need one written standard before Joseph shoots 339 coins.",
@@ -6940,6 +7101,7 @@
    "items": 18,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Argus decides which format to store photos in on the phone.",
@@ -6970,6 +7132,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Argus (and Titan's dupes.py) should find the same coin photographed twice.",
@@ -7000,6 +7163,7 @@
    "items": 30,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Argus Album uses.",
@@ -7029,6 +7193,7 @@
    "items": 6,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Argus Album uses.",
@@ -7058,6 +7223,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Argus Album uses.",
@@ -7089,6 +7255,7 @@
    "items": 25,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "argus_gemini_coin-photo-rules_20261118-1940.json in Argus Album/incoming (AI drop files)",
     "by": "gemini",
@@ -7117,16 +7284,13 @@
    "pid": "argus",
    "id": "ARG-GEM-10",
    "title": "Argus Album: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "argus_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: argus_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -7158,6 +7322,7 @@
    "items": 6,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every source in a spec gets a second reader before Claude builds on it.",
@@ -7188,6 +7353,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -7219,6 +7385,7 @@
    "items": 15,
    "closed": "",
    "review": "Second read by Sebastian 2026-11-17: scored 6/10 (8 agree / 5 differ / 2 rows fetch-blocked 429, flagged in the check file for re-check). argus_muse_coin-photo-rules-check_20261117-1725.md in Argus incoming.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -7250,6 +7417,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -7281,6 +7449,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -7313,6 +7482,7 @@
    "items": 60,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Ludus Arcade uses.",
@@ -7342,6 +7512,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Ludus Arcade uses.",
@@ -7368,16 +7539,13 @@
    "pid": "games",
    "id": "GAM-GEM-03",
    "title": "Ludus Arcade: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "games_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: games_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -7409,6 +7577,7 @@
    "items": 20,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Games 'Grand Theft Auto VI, from Rockstar' (gta6-facts.js). Unstated items marked so. Minor: two price quotes are a bare list price with no product name. Score 9/10 (#10).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "GTA VI launched on 2026-11-19. Joseph wants it in the Games pillar; launch week is full of rumours, so the pillar needs only what Rockstar and the platform stores say.",
@@ -7440,6 +7609,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "GTA VI came out on November 19, 2026. The first patches and known issues land this week.",
@@ -7469,6 +7639,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -7500,6 +7671,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -7532,6 +7704,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Forge uses.",
@@ -7561,6 +7734,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Forge uses.",
@@ -7587,16 +7761,13 @@
    "pid": "forge",
    "id": "FOR-GEM-03",
    "title": "Forge: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "forge_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T19:30:00Z"
-   },
+   "review": "Sent back 2026-11-20: forge_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 16 of its 25 file:line references run past the end of the file (e.g. pillars/forge/app.js:314-468 when the file had 238 lines). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -7628,6 +7799,7 @@
    "items": 12,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: tools/kit/check_delivery.mjs + 12 tests (pass) in the repo; run on 16 real deliveries the same day it caught 9 real issues (long quotes, a home-page URL, two placeholder counts). Score 10/10 (#25).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Most rejected deliveries fail on things a script can see: wrong name, wrong count, a missing field, a home-page URL, a duplicate row. Today Claude finds them by hand after the fact.",
@@ -7659,6 +7831,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -7690,6 +7863,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -7722,6 +7896,7 @@
    "items": 55,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Foundry uses.",
@@ -7751,6 +7926,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Foundry uses.",
@@ -7782,6 +7958,7 @@
    "items": 55,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "foundry_gemini_prior-art_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
     "by": "gemini",
@@ -7810,16 +7987,13 @@
    "pid": "foundry",
    "id": "FDY-GEM-04",
    "title": "Foundry: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "foundry_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: foundry_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -7851,6 +8025,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -7882,6 +8057,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -7914,6 +8090,7 @@
    "items": 15,
    "closed": "",
    "review": "Second read by Sebastian 2026-11-17: scored 4/10 (4 agree / 10 differ / 1 not verified; owner field fabricated in 10 of 14 verifiable rows). foundry_muse_prior-art-check_20261117-1725.md in hub incoming.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -7945,6 +8122,7 @@
    "items": 80,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Observatory uses.",
@@ -7974,6 +8152,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Observatory uses.",
@@ -8005,6 +8184,7 @@
    "items": 64,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "observatory_gemini_sources_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
     "by": "gemini",
@@ -8033,16 +8213,13 @@
    "pid": "observatory",
    "id": "OBS-GEM-04",
    "title": "Observatory: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "observatory_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: observatory_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -8074,6 +8251,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -8105,6 +8283,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -8137,6 +8316,7 @@
    "items": 15,
    "closed": "",
    "review": "Second read by Sebastian 2026-11-17: scored 5/10 (5 agree / 9 differ / 1 unverifiable; 8 of 14 verifiable feed URLs are 404 — generated, not opened). observatory_muse_sources-check_20261117-1725.md in hub incoming.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -8168,6 +8348,7 @@
    "items": 8,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kin uses.",
@@ -8197,6 +8378,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kin uses.",
@@ -8226,6 +8408,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kin uses.",
@@ -8252,16 +8435,13 @@
    "pid": "kin",
    "id": "KIN-GEM-04",
    "title": "Kin: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "kin_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: kin_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -8293,6 +8473,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -8324,6 +8505,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -8356,6 +8538,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -8387,6 +8570,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kin uses.",
@@ -8416,6 +8600,7 @@
    "items": 12,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Aether uses.",
@@ -8445,6 +8630,7 @@
    "items": 25,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Aether uses.",
@@ -8474,6 +8660,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Aether uses.",
@@ -8505,6 +8692,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -8529,16 +8717,13 @@
    "pid": "aether",
    "id": "AET-GEM-05",
    "title": "Aether: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "aether_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: aether_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -8570,6 +8755,7 @@
    "items": 12,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19 (Claude): sun.js is Aether's offline 'Light today' card. USNO, blocked for Gemini, was fetched by Claude: the 12 dates x 5 events agree, 57 exact and 3 by one minute (proofs/unit/aether-sun.test.mjs); also within 0.73 min of the astral library on all 9 events. Score 8/10 (#8): Gemini's module is excellent; the vectors were Claude's.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Aether gets sun times from the USNO API, so offline (or when the API is down) it has none. A mountain field lab needs dawn and dusk without signal.",
@@ -8602,6 +8788,7 @@
    "items": 12,
    "closed": "",
    "review": "Blocked 2026-11-19 (Gemini, honestly; nothing invented): the NCEI CSV downloads instead of rendering in its browser and the NCEI API is denied. Route now: the CSV is a plain file; open https://www.ncei.noaa.gov/access/services/data/v1?dataset=normals-monthly-1991-2020&stations=USW00023187&format=json in the browser (renders as text), or read the station page's 'view' table. Station USW00023187 Sandberg is accepted.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Aether shows live readings with nothing to compare them to. 'Normal for November here' needs the 30-year normals for the nearest NOAA station, and Hearth needs them to plan paint and concrete days (most primers need 50 F and above).",
@@ -8633,6 +8820,7 @@
    "items": 12,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: Aether 'Sensors around Frazier Park'; all 12 distances re-computed from the coordinates and match. Score 10/10 (#21).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Aether reads a few regional feeds; a reading from a station 40 miles away and 3,000 ft lower is wrong for a mountain town. Aether needs the nearest real stations and how to ask each one.",
@@ -8664,6 +8852,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Aether logs outages by hand. SCE publishes a report for every PSPS event with the circuits it cut.",
@@ -8693,6 +8882,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -8724,6 +8914,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -8756,6 +8947,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -8787,6 +8979,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -8818,6 +9011,7 @@
    "items": 30,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Polis uses.",
@@ -8847,6 +9041,7 @@
    "items": 1,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Polis uses.",
@@ -8876,6 +9071,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Polis uses.",
@@ -8907,6 +9103,7 @@
    "items": 25,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19 (Claude): the 20261117-1735 redo, accepted by Muse 8/10, is live as Polis's Kern County Rules tab (kern-rules.js, 19 rows). Left out: rows 22-25 (one generic FAQ fragment carrying rules it does not state), 17 (label quote), 9 (duplicate of 19). Score 8/10 (hub score sheet #2). The 20261118-1940 version is with Muse's check (HUB-MUS-03).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -8931,16 +9128,13 @@
    "pid": "polis",
    "id": "POL-GEM-05",
    "title": "Polis: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "polis_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: polis_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -8972,6 +9166,7 @@
    "items": 5,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: rows 26-30 of Polis's Kern rules. Row 27 cites the 2022 California Building Code; the 2025 edition has been in force since 2026-01-01 (the Chapter 7A rule carries over). Score 9/10 (#14).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Five rows of the accepted Polis list were left out on 2026-11-19 because their quote did not state their rule: ADUs, re-roofing, electrical and plumbing permits, encroachment permits, grading permits. They are the rules Joseph is most likely to hit on the house.",
@@ -9004,6 +9199,7 @@
    "items": 0,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Polis lists Kern rules but not the meetings where they change.",
@@ -9033,6 +9229,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -9064,6 +9261,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -9096,6 +9294,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -9127,6 +9326,7 @@
    "items": 15,
    "closed": "",
    "review": "Second read by Sebastian 2026-11-17: scored 4/10 (4 agree / 11 differ; 10 of 15 'quotes' are labels/paraphrases, row 16 invents an enforcement mechanism its source contradicts). polis_muse_kern-ordinances-check_20261117-1725.md in hub incoming.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -9158,6 +9358,7 @@
    "items": 30,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Mythos uses.",
@@ -9187,6 +9388,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Mythos uses.",
@@ -9213,16 +9415,13 @@
    "pid": "mythos",
    "id": "MYT-GEM-03",
    "title": "Mythos: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "mythos_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: mythos_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:66-78 is the tab strip, not the arc board. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -9254,6 +9453,7 @@
    "items": 15,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -9285,6 +9485,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -9317,6 +9518,7 @@
    "items": 30,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Continuity uses.",
@@ -9346,6 +9548,7 @@
    "items": 20,
    "closed": "",
    "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Continuity uses.",
@@ -9377,6 +9580,7 @@
    "items": 25,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19 (Claude): the 20261117-1735 redo, accepted by Muse 8/10, is live as Continuity's Accounts After Death tab (legacy-policies.js, 25 services). Fixed at integration: Ally 'equal-share', Amex note; TikTok, Vanguard, Robinhood marked unchecked. Score 8/10 (#3).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -9401,16 +9605,13 @@
    "pid": "continuity",
    "id": "CON-GEM-04",
    "title": "Continuity: the function spec, written as the build plan",
-   "status": "delivered",
-   "due": "2026-11-24",
+   "status": "todo",
+   "due": "2026-11-30",
    "items": 1,
    "closed": "",
-   "review": "",
-   "delivered": {
-    "what": "continuity_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-    "by": "gemini",
-    "ts": "2026-11-16T20:40:00Z"
-   },
+   "review": "Sent back 2026-11-20: continuity_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
+   "reopened": "2026-11-20",
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -9442,6 +9643,7 @@
    "items": 2,
    "closed": "2026-11-19",
    "review": "Done 2026-11-19: rows 26-27 of Continuity's accounts after death (Capital One 360 POD/joint, FDIC six-month grace). Score 10/10 (#15).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The Nov 17 redo deleted Capital One and the FDIC six-month rule instead of citing them to the right page, so Continuity's account list lost a bank and the one federal rule that tells the family how long deposits stay insured after a death.",
@@ -9473,6 +9675,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Continuity lists what happens to accounts. The state rules decide whether an estate needs probate at all.",
@@ -9502,6 +9705,7 @@
    "items": 15,
    "closed": "",
    "review": "Replaced 2026-11-16 by the detailed version of the same task.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
@@ -9533,6 +9737,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -9565,6 +9770,7 @@
    "items": 3,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Muse's recheck could not open these three pages (rate limit), so they show 'not second-read' in Continuity. A second reader clears or corrects them.",
@@ -9595,6 +9801,7 @@
    "items": 15,
    "closed": "",
    "review": "Second read by Sebastian 2026-11-17: scored 6/10 (8 agree / 7 differ; Coinbase quote fabricated). continuity_muse_legacy-policies-check_20261117-1725.md in hub incoming.",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -9626,6 +9833,7 @@
    "items": 12,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Midas is getting a payoff planner (avalanche, snowball and Joseph's own order). Claude checks its engine against cases worked by someone else. No real balances: every case is made up.",
@@ -9659,6 +9867,7 @@
    "items": 20,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph: the app must inspire him to get out of debt. Claude designs from evidence, not slogans.",
@@ -9691,6 +9900,7 @@
    "items": 75,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Midas looked 'neon' and uninspiring. Claude wants the specific moves the best apps use.",
@@ -9723,6 +9933,7 @@
    "items": 25,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Midas's payoff engine (src/plan.js) keeps each minimum fixed; real minimums fall as the balance falls. The engine needs each issuer's real formula.",
@@ -9755,6 +9966,7 @@
    "items": 25,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Midas computes balance x APR / 12. Real cards compound daily on an average daily balance; the gap matters on large balances.",
@@ -9785,6 +9997,7 @@
    "items": 20,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Midas shows promo rates but does not model them; a deferred-interest promo charges all the back interest if not paid off in time.",
@@ -9816,6 +10029,7 @@
    "items": 25,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The way out of debt is faster with a lower APR. Many issuers have hardship or APR-reduction programs; Joseph should know what to ask for.",
@@ -9846,6 +10060,7 @@
    "items": 12,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Before Midas switches to daily interest (MID-GEM-05), Claude needs cases worked by hand to test it against.",
@@ -9877,6 +10092,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "midas_gemini_flex-terms_20261118-1940.json in Midas Ledger/incoming (AI drop files)",
     "by": "gemini",
@@ -9910,6 +10126,7 @@
    "items": 25,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "midas_gemini_parser-cases_20261118-1940.json in Midas Ledger/incoming (AI drop files)",
     "by": "gemini",
@@ -9945,6 +10162,7 @@
    "items": 1,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "midas_gemini_function-spec_20261118-1940.md in Midas Ledger/incoming (AI drop files)",
     "by": "gemini",
@@ -9981,6 +10199,7 @@
    "items": 1,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "The new Debt screen plans the way out: it needs, for every card and loan, the numbers the bank shows. Without them it can only show balances.",
@@ -10013,6 +10232,7 @@
    "items": 1,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "A ledger more than a week old makes every number on the screen a guess.",
@@ -10043,6 +10263,7 @@
    "items": 10,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
@@ -10075,6 +10296,7 @@
    "items": 36,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "When a card hits zero or the debt-free date moves closer, Midas says so. The lines must be plain and true, never cheesy.",
@@ -10106,6 +10328,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "Recheck of Gemini's 1735 parser-case redo (MID-MUS-02): 7/10 REJECT — 21 of 25 cases now agree with build.py (was 0 of 15), 4 precise failures + coverage shortfalls remain; midas_muse_parser-cases-recheck_20261118-1615.md in the Midas incoming folder",
     "by": "muse",
@@ -10141,6 +10364,7 @@
    "items": 15,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": {
     "what": "midas_muse_flex-terms-check_20261117-1040.md in Midas incoming (scored 6/10)",
     "by": "muse",
@@ -10176,6 +10400,7 @@
    "items": 20,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "After Claude ships the new design, a second pair of eyes on it.",
@@ -10206,6 +10431,7 @@
    "items": 1,
    "closed": "",
    "review": "",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Joseph: 'that whole app needs a 100000 percent better design. Its embarrassing and not inspiring me to get out of debt.'",
@@ -14399,6 +14625,231 @@
    "task": "FOR-GEM-04",
    "where": "Prometheus Hub",
    "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 26,
+   "date": "2026-11-20",
+   "what": "hub_gemini_function-spec_20261116-1930.md",
+   "task": "HUB-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 3.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 27,
+   "date": "2026-11-20",
+   "what": "money_gemini_function-spec_20261116-1930.md",
+   "task": "MON-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 3.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 28,
+   "date": "2026-11-20",
+   "what": "forge_gemini_function-spec_20261116-1930.md",
+   "task": "FOR-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 3.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 29,
+   "date": "2026-11-20",
+   "what": "aether_gemini_function-spec_20261116-2040.md",
+   "task": "AET-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 30,
+   "date": "2026-11-20",
+   "what": "apollo_gemini_function-spec_20261116-2040.md",
+   "task": "APO-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 31,
+   "date": "2026-11-20",
+   "what": "argus_gemini_function-spec_20261116-2040.md",
+   "task": "ARG-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 32,
+   "date": "2026-11-20",
+   "what": "athenaeum_gemini_function-spec_20261116-2040.md",
+   "task": "ATH-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 33,
+   "date": "2026-11-20",
+   "what": "bastion_gemini_function-spec_20261116-2040.md",
+   "task": "BAS-GEM-06",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 34,
+   "date": "2026-11-20",
+   "what": "continuity_gemini_function-spec_20261116-2040.md",
+   "task": "CON-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 35,
+   "date": "2026-11-20",
+   "what": "foundry_gemini_function-spec_20261116-2040.md",
+   "task": "FDY-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 36,
+   "date": "2026-11-20",
+   "what": "games_gemini_function-spec_20261116-2040.md",
+   "task": "GAM-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 37,
+   "date": "2026-11-20",
+   "what": "garage_gemini_function-spec_20261116-2040.md",
+   "task": "GAR-GEM-07",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 38,
+   "date": "2026-11-20",
+   "what": "hearth_gemini_function-spec_20261116-2040.md",
+   "task": "HEA-GEM-18",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 39,
+   "date": "2026-11-20",
+   "what": "hermes_gemini_function-spec_20261116-2040.md",
+   "task": "HER-GEM-09",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 40,
+   "date": "2026-11-20",
+   "what": "icarus_gemini_function-spec_20261116-2040.md",
+   "task": "ICA-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 41,
+   "date": "2026-11-20",
+   "what": "kairos_gemini_function-spec_20261116-2040.md",
+   "task": "KAI-GEM-11",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 42,
+   "date": "2026-11-20",
+   "what": "kin_gemini_function-spec_20261116-2040.md",
+   "task": "KIN-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 43,
+   "date": "2026-11-20",
+   "what": "mythos_gemini_function-spec_20261116-2040.md",
+   "task": "MYT-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 44,
+   "date": "2026-11-20",
+   "what": "observatory_gemini_function-spec_20261116-2040.md",
+   "task": "OBS-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 45,
+   "date": "2026-11-20",
+   "what": "odyssey_gemini_function-spec_20261116-2040.md",
+   "task": "ODY-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 3.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 46,
+   "date": "2026-11-20",
+   "what": "piano_gemini_function-spec_20261116-2040.md",
+   "task": "PIA-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 47,
+   "date": "2026-11-20",
+   "what": "polis_gemini_function-spec_20261116-2040.md",
+   "task": "POL-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 48,
+   "date": "2026-11-20",
+   "what": "privacy_gemini_function-spec_20261116-2040.md",
+   "task": "PRI-GEM-06",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 49,
+   "date": "2026-11-20",
+   "what": "records_gemini_function-spec_20261116-2040.md",
+   "task": "REC-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 4.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 50,
+   "date": "2026-11-20",
+   "what": "selling_gemini_function-spec_20261116-2040.md",
+   "task": "SEL-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 4.0
   }
  ],
  "pending_scores": [

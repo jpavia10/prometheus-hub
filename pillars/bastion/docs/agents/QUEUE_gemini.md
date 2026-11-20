@@ -2,7 +2,7 @@
 
 # Bastion · Mountain Prep · homework for Gemini
 
-Updated 2026-11-19 23:35 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-20 08:48 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -79,7 +79,9 @@ Updated 2026-11-19 23:35 UTC · 2 open · Rules for every pillar: https://github
 
 ## 2. BAS-GEM-06 · Bastion: the function spec, written as the build plan
 
-**Due:** 2026-11-24 · **State:** delivered 2026-11-16, waiting for its check: do not redo it unless a review reopens it
+**Due:** 2026-11-30 · **State:** now
+
+**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: bastion_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
 
 **Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
 
@@ -125,6 +127,7 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - [ ] F has 12+ tests, each with one Given, one When, one Then.
 - [ ] G steps are in an order that can ship one by one.
 - [ ] All eight headings, in order.
+- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
 
 **How many:** 1
 
@@ -141,3 +144,5 @@ F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the od
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
+- a file:line past the end of its file, or pointing at code that does something else
+- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data

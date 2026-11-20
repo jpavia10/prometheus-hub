@@ -1,7 +1,7 @@
 /**
  * proofs/unit/check-delivery.test.mjs
  *
- * Unit proof suite for tools/kit/check_delivery.mjs (12 cases: 6 pass, 6 fail one named check).
+ * Unit proof suite for tools/kit/check_delivery.mjs (15 cases: 7 pass, 8 fail one named check; function-spec cases added 2026-11-20).
  *
  * Run:
  *   node --test proofs/unit/check-delivery.test.mjs
@@ -214,4 +214,33 @@ test('FAIL 6 [md-headings]: Markdown file is missing a heading named in task sha
     ['md-headings']
   );
   assert.match(failed[0].reason, /Sources/);
+});
+
+// ---------- function specs (2026-11-20: 25 specs passed the old checker while missing two thirds of what they had to hold) ----------
+
+test('PASS 7: a function spec with the eight headings in order, 8 stories, the table, 10 rules, 12 Given/When/Then tests, real line refs', () => {
+  const res = runChecker('hub_gemini_function-spec_20261120-0900.md');
+  assert.equal(res.exitCode, 0, res.stdout + res.stderr);
+  const lines = parseCheckLines(res.stdout);
+  for (const c of ['md-headings', 'md-heading-order', 'md-counts', 'md-code-refs']) {
+    assert.ok(lines.some((l) => l.check === c && l.status === 'PASS'), `${c} should pass: ${res.stdout}`);
+  }
+});
+
+test('FAIL 7 [md-counts]: a spec with 2 stories, no table, 3 rules and 3 tests', () => {
+  const res = runChecker('fail-spec/hub_gemini_function-spec_20261120-0901.md');
+  assert.equal(res.exitCode, 1);
+  const c = parseCheckLines(res.stdout).find((l) => l.check === 'md-counts');
+  assert.ok(c && c.status === 'FAIL', res.stdout);
+  assert.match(c.reason, /B What Joseph needs it to do: 2 .*needs 8\+/);
+  assert.match(c.reason, /C Data: no Markdown table/);
+  assert.match(c.reason, /E Rules and edge cases: 3 items, needs 10\+/);
+  assert.match(c.reason, /F Acceptance tests: 3 Given\/When\/Then tests, needs 12\+/);
+});
+
+test('FAIL 8 [md-code-refs]: a line range past the end of its file', () => {
+  const res = runChecker('fail-spec/hub_gemini_function-spec_20261120-0901.md');
+  const c = parseCheckLines(res.stdout).find((l) => l.check === 'md-code-refs');
+  assert.ok(c && c.status === 'FAIL', res.stdout);
+  assert.match(c.reason, /deck\/app\.js:1-385 \(the file has 20 lines\)/);
 });

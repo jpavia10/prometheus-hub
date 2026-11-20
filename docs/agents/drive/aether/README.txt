@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 1 open in this pillar.
 
 
 - AET-GRK-03 · Aether: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,40 +16,40 @@ Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-19 23:35 UTC · 3 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 3 open in this pillar.
 
 
-- AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
-    make: aether_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 - AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file · due 2026-11-26
     make: aether_gemini_normals_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 months, every value exactly as in the station's CSV.
 - AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026 · due 2026-11-26
     make: aether_gemini_psps-history_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every event with a mountain-community circuit, or 'none found' rows per year with the reports checked.
+- AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason in your HOMEWORK doc)
+    make: aether_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Aether · Atmospheric & Field Lab right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Aether · Atmospheric & Field Lab right now.
 
 ## Argon
 
-Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Aether · Atmospheric & Field Lab right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Aether · Atmospheric & Field Lab right now.

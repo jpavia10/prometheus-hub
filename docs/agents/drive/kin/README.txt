@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 1 open in this pillar.
 
 
 - KIN-GRK-02 · Kin: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,22 +16,22 @@ Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 1 open in this pillar.
 
 
-- KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-24 · DELIVERED 2026-11-16, waiting for its check (do not redo)
+- KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason in your HOMEWORK doc)
     make: kin_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
 
 ## Muse
 
-Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Kin right now.
 
 ## ChatGPT
 
-Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 1 open in this pillar.
 
 
 - KIN-GPT-01 · Kin: phone audit: 15 findings · due 2026-11-24
@@ -39,14 +39,14 @@ Updated 2026-11-19 23:35 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Kin right now.
 
 ## Hydrogen
 
-Updated 2026-11-19 23:35 UTC · 0 open in this pillar.
+Updated 2026-11-20 08:48 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Kin right now.
