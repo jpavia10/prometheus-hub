@@ -43,6 +43,15 @@ jobs:
         run: python3 tools/forge/test_build.py
       - name: Money and contact guard
         run: node tools/guard/money.mjs
+      - name: Erased history stays erased
+        # 2026-11-20 (owner): history was rewritten to remove a street address. A clone made before then still holds
+        # the old commits; merging it would bring them back. Rebase such a branch onto the current main instead.
+        run: |
+          git fetch --quiet --unshallow origin || true
+          if git cat-file -e ace7ed21d7767b3f62d2abd9fc322d3a8e062b45^{commit} 2>/dev/null; then
+            echo "Pre-2026-11-20 history (commit ace7ed2) is back in this branch. Rebase onto the current main; do not merge an old clone."
+            exit 1
+          fi
       - name: Browser
         run: |
           pip install --quiet playwright

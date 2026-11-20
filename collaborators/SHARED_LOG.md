@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] History rewritten to erase a home address (owner approved)
+- A street address and a line about where the collection is kept reached Odyssey, Bastion and Records on 2026-11-17 (an AI drop). Removed from the files in d39; with Joseph's OK, `main` and the five `cursor/*` branches built on it were rewritten from that commit on (git filter-repo, the same wording d39 uses) and force-pushed. Every other branch and every commit before 2026-11-16 14:00 UTC kept its id; main's files are byte-identical.
+- **Any clone made before 2026-11-20 11:40 UTC: do not merge it or push from it. Re-clone, or `git fetch && git reset --hard origin/main`.** CI fails if the old commit (ace7ed2) comes back; the money guard now also fails on the street name anywhere in the repo (stored as a hash only).
+
 ### [2026-11-20] Money's Flex rules re-sourced; Midas homework back on the pages (d40)
 - Hub Money's Citi Flex rules (flex.js, from MID-GEM-09): 13 rows linked a Citi URL that search cannot find, with quotes that are not Citi's wording. Each row now links the Citi page that states it and says how it was checked; row 6's "6 to 60 months" and row 10's "Interest Saving Balance" corrected; rows 6, 10, 12, 14 tagged "not confirmed by Citi" on the page.
 - d39's render ran without the Midas checkout and dropped Midas's tasks from HOMEWORK pages, the board and deadlines; re-rendered with all three repos. Midas: parser cases are tests now, scores #1-#11, MID-GEM-11 sent back (midas-ledger 1c04d39).

@@ -5,8 +5,22 @@
    Reference datasets (issuer tables, worked cases, the Icarus sample, Apollo foods, fee
    schedules, lure corpora, the public presence card) are listed on purpose. A view is not. */
 import { readdirSync, readFileSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+
+/* Private words (2026-11-20, owner): a home street name reached three public pillars through an AI drop and was erased from
+   git history. The guard keeps only the SHA-256 of each lower-case word, so the guard itself publishes nothing, and it scans
+   every text file in the repository (docs and collaborators too), allow-list or not. */
+export const PRIVATE_SHA256 = new Set([
+  "1542bcf466dd3989343d451e220f528e7d74a68c201d913dea38c596a23334bf",
+]);
+const sha = (w) => createHash("sha256").update(w).digest("hex");
+export function privateWords(text) {
+  const hits = new Set();
+  for (const w of String(text).toLowerCase().match(/[a-z]{4,}/g) || []) if (PRIVATE_SHA256.has(sha(w))) hits.add(w.length);
+  return hits.size;
+}
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..", "..");
 const SKIP = new Set([".git", "node_modules", "proofs", "docs", "artifacts", ".github", "tools", "collaborators"]);
@@ -128,9 +142,28 @@ export function scanTree(root = ROOT) {
   return hits;
 }
 
+/* Every text file in the repository, for the private-word list (not the money patterns). */
+export function scanPrivate(root = ROOT) {
+  const hits = [];
+  (function walkAll(dir) {
+    for (const name of readdirSync(dir)) {
+      if (name === ".git" || name === "node_modules") continue;
+      const p = path.join(dir, name);
+      const st = statSync(p);
+      if (st.isDirectory()) walkAll(p);
+      else if (TEXT.has(path.extname(name).toLowerCase()) || /\.(py|yml|yaml|csv|tsv|jsonl)$/i.test(name)) {
+        let text = "";
+        try { text = readFileSync(p, "utf8"); } catch (e) { continue; }
+        text.split(/\n/).forEach((line, i) => { if (privateWords(line)) hits.push({ file: relPosix(p), line: i + 1, kind: "private", text: "(a private word; the guard does not print it)" }); });
+      }
+    }
+  })(root);
+  return hits;
+}
+
 const isCli = process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
 if (isCli) {
-  const hits = scanTree();
+  const hits = [...scanTree(), ...scanPrivate()];
   if (!hits.length) {
     console.log("GUARD_OK");
     process.exit(0);
