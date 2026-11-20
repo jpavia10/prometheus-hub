@@ -1,5 +1,5 @@
 <!-- doc-status: current; normative: yes (for the run it describes) -->
-# Gemini 4 Neon: full work run (prompt, run 2, 2026-11-19 evening)
+# Gemini 4 Neon: full work run (prompt, run 2, 2026-11-19 evening; updated 2026-11-20)
 
 Joseph pastes the block below into a new Gemini 4 Neon chat. It points to the live pages, so it stays current; the order puts three
 objectively checkable trial tasks first in run 1; run 2 starts with Odyssey and Joseph's own photos. Run 1 scored 9.4 on average (rows #8-#25). Claude scores the run
@@ -42,6 +42,7 @@ FOLDERS (save straight into these Drive folders):
 - Prometheus Hub incoming: https://drive.google.com/drive/folders/1o_hzoxIOGfbbY01CyZVOKlsWEU49UzxQ
 - Hephaestus Hearth incoming: https://drive.google.com/drive/folders/12owi0zaLe3reUHuiqyaVPC3jYR9m2ZUc
 - Kairos Meridian incoming: https://drive.google.com/drive/folders/19ZRlXGcHh_qiC69Q5PaMIhUR5FNzKSsI
+- Midas Ledger incoming (MID-GEM-11, the Midas function spec): https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD
 - Titan change files (every Titan answer goes here): https://drive.google.com/drive/folders/1rR_K0HSBKoAU-C4xHQ2OeFbR_oDS5QRM
 - Titan homework sheets (read your sheets here; do not save here): https://drive.google.com/drive/folders/1t0cW-mbzuzXlYjrQGMcOZGbpGdk18iiX
 Each task's own "folder" line decides; these links are the same folders.
