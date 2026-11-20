@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-20] Motion and performance, pass 2: tab switches (d42)
+- Tab switches, phone size, CPU slowed 4x, frames per second in the 0.9 s after the tap: Forge "Tasks" 12 -> 60, Odyssey "Trip files" 41 -> 50, Money 61/60 (was fine). Cause on the Forge: the card glow under the pointer was a radial gradient sized to the whole card, and the task list is one 9,000 px card, so every frame of the turn re-rastered it (turning gradients off alone gave 61 fps). The glow now paints a 520 px band that follows the pointer; it looks the same.
+- Also: the section turn runs on the Web Animations API (no class toggle and forced reflow), canvases yield for the half second of a turn, the tab underline moves on the next frame instead of mid-click, resize is sent once per frame, Forge task rows build their detail on first open, and long Forge and Odyssey lists skip painting off-screen rows (content-visibility). Forge at rest is still ~30 fps here (its full-screen spark field plus software rendering); judge it on the phone.
+
 ### [2026-11-20] Odyssey photo tasks: no cap, people allowed (owner)
 - Joseph: "Dont limit scope to 10 pics" and "Remove the privacy shit. Im gonna put a password on the whole site and all pillars at some point." ODY-GEM-12 is every good photo of every trip, ranked, with a people field named only from Google Photos' face groups; the no-people / no-documents rule is gone from all Odyssey tasks and Gemini's run prompt. Kept: no keys, passwords, account numbers or home street address in any file.
 - Publishing note for whoever builds the journeys: this repository is public, so a site password alone does not hide photo files. Photos with people go up behind the lock (encrypted, the way Midas keeps its book) unless Joseph says to publish them openly.

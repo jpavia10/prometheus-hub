@@ -142,7 +142,7 @@
     addEventListener("scroll", () => { fscroll = performance.now(); }, { passive: true, capture: true });
     function frame(now) {
       const t = (now - t0) / 1000, quiet = reduced();
-      const draw = quiet || (++fn % (fcost > 6 ? 3 : 2) === 0 && performance.now() - fscroll > 140), c0 = performance.now();
+      const draw = quiet || (++fn % (fcost > 6 ? 3 : 2) === 0 && performance.now() - fscroll > 140 && performance.now() > (window.__pkBusy || 0)), c0 = performance.now();
       if (draw) c.clearRect(0, 0, W, H);
       const S = Math.min(W, H) * gs, cx = W * (W < 700 ? 0.5 : gx), cy = H * (W < 700 ? 0.22 : gy);
       for (const p of P) {
@@ -304,14 +304,28 @@
   body.appendChild(dock);
 
   /* the light that slides under the chosen tab */
-  function ink(tabs) {
+  function ink(tabs) { if (!tabs) return; if (tabs.__pkInk) return; tabs.__pkInk = requestAnimationFrame(function () { tabs.__pkInk = 0; inkNow(tabs); }); }   // measured in the frame, not forced mid-script (2026-11-20)
+  function inkNow(tabs) {
     if (!tabs) return; var on = tabs.querySelector('.tab[aria-selected="true"]'), mark = tabs.querySelector(".pk-ink");
     if (!mark) { mark = el("span", "pk-ink"); mark.setAttribute("aria-hidden", "true"); tabs.appendChild(mark); }
     if (!on) { mark.style.opacity = "0"; return; }
     mark.style.opacity = "1"; mark.style.width = on.offsetWidth + "px"; mark.style.transform = "translateX(" + on.offsetLeft + "px)";
     var left = on.offsetLeft - 16, right = on.offsetLeft + on.offsetWidth + 16 - tabs.clientWidth; if (tabs.scrollLeft > left) tabs.scrollLeft = Math.max(0, left); else if (tabs.scrollLeft < right) tabs.scrollLeft = right;
   }
-  function turnIn(panel, dir) { if (!panel || still) return; panel.style.setProperty("--pk-dir", dir < 0 ? "-1" : "1"); panel.classList.remove("pk-in"); void panel.offsetWidth; panel.classList.add("pk-in"); }
+  /* 2026-11-20: the turn runs on the Web Animations API (restarting a CSS animation needed a forced reflow of the whole page),
+     and the page is marked busy for its length so the stage and the field give the frames to it (window.__pkBusy). */
+  function turnIn(panel, dir) {
+    if (!panel || still) return; var d = dir < 0 ? -1 : 1; window.__pkBusy = performance.now() + 520;
+    if (panel.__pkTurn) panel.__pkTurn.cancel();
+    if (!panel.animate) { panel.classList.remove("pk-in"); void panel.offsetWidth; panel.classList.add("pk-in"); return; }
+    panel.style.transformOrigin = "50% 20%";
+    panel.__pkTurn = panel.animate([{ opacity: 0, transform: "perspective(900px) rotateY(" + (d * 14) + "deg) translateX(" + (d * 40) + "px) scale(.96)" }, { opacity: 1, transform: "none" }],
+      { duration: 500, easing: "cubic-bezier(.2, .8, .2, 1)" });
+  }
+
+  /* Panels that were hidden measure their charts on "resize". It is sent once, in the frame after the switch, not mid-script. */
+  var nudging = 0;
+  function nudge() { if (nudging) return; nudging = requestAnimationFrame(function () { nudging = 0; window.dispatchEvent(new Event("resize")); }); }
 
   /* sections for a page that is one long stack */
   var key = "prometheus.section." + location.pathname, made = null, active = 0, lastIdx = {};
@@ -337,7 +351,7 @@
     var owner = null; Array.prototype.forEach.call(made.grid.children, function (c) { var k = made.panels.indexOf(c); if (k >= 0) owner = k; c.classList.toggle("pk-off", owner !== i); });   // loose blocks follow the panel above them
     Array.prototype.forEach.call(made.tabs.querySelectorAll(".tab"), function (b, k) { var v = String(k === i); if (b.getAttribute("aria-selected") !== v) b.setAttribute("aria-selected", v); });   // write only on change: an equal write is still a mutation, and the observer below re-syncs on every mutation (it looped every frame until 2026-11-20)
     ink(made.tabs);
-    if (byHand) { made.grid.classList.add("pk-picked"); turnIn(made.panels[i], i - prev); var top = made.tabs.getBoundingClientRect().top; if (top < 40) window.scrollTo({ top: window.scrollY + top - 70, behavior: still ? "auto" : "smooth" }); window.dispatchEvent(new Event("resize")); }
+    if (byHand) { made.grid.classList.add("pk-picked"); turnIn(made.panels[i], i - prev); var top = made.tabs.getBoundingClientRect().top; if (top < 40) window.scrollTo({ top: window.scrollY + top - 70, behavior: still ? "auto" : "smooth" }); nudge(); }
   }
 
   function syncCockpitButtons() {
@@ -456,7 +470,7 @@
       raf = 0;
       if (!still && ts) {
         var skip = (fieldCost > 6 ? 3 : 2), now = performance.now();
-        if (++fieldN % skip || now - fieldScroll < 140) { if (!document.hidden) raf = requestAnimationFrame(paint); return; }
+        if (++fieldN % skip || now - fieldScroll < 140 || now < (window.__pkBusy || 0)) { if (!document.hidden) raf = requestAnimationFrame(paint); return; }
       }
       var c0 = performance.now(), step = lastT && ts ? Math.min(4, (ts - lastT) / 16.67) : 1; lastT = ts || 0;
       var t = (ts || 0) * 0.001;

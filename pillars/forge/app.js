@@ -135,7 +135,9 @@
     const shown = L.slice(0, 160);
     $("#f-tasks").replaceChildren(head, ...shown.map((t) => {
       const d = t.detail || {}, dv = t.delivered;
-      const body = h("div.tbody", null,
+      /* 2026-11-20: a row's details are built the first time it is opened. 160 closed rows each carried their whole body
+         (steps, links, review), ~3,000 elements laid out on every tab switch for text nobody had opened. */
+      const body = () => h("div.tbody", null,
         d.why ? h("p", null, d.why) : null, d.what ? h("p", null, d.what) : null,
         d.steps && d.steps.length ? h("ol", null, ...d.steps.map((s) => h("li", null, s))) : null,
         d.make ? h("p", null, h("b", null, "Make: "), d.make) : null, d.folder ? h("p", null, h("b", null, "Save in: "), d.folder) : null, d.shape ? h("p.mono", null, d.shape) : null,
@@ -144,9 +146,11 @@
         h("p.links", null, d.link ? h("a", { href: d.link, target: "_blank", rel: "noopener" }, "The AI's page") : null, d.sheet ? h("a", { href: d.sheet, target: "_blank", rel: "noopener" }, "Answer sheet") : null,
           t.own ? h("button.btn.quiet.small", { type: "button", onclick: () => advance(t.own) }, t.own.state === "out" ? "It's back" : t.own.state === "back" ? "Score it" : "Clear") : null));
       const label = t.status === "todo" ? (rel(t.due) || "to do") : t.status === "delivered" ? "delivered" : t.status === "queued" ? "later" : t.status;
-      return h("details.trow.s-" + t.src + (t.late ? ".late" : "") + (t.status === "todo" || t.status === "delivered" ? "" : ".closed"), null,
+      const row = h("details.trow.s-" + t.src + (t.late ? ".late" : "") + (t.status === "todo" || t.status === "delivered" ? "" : ".closed"), null,
         h("summary", null, h("span.tmain", null, h("b", null, t.title), h("span.stat-s", null, `${t.ai} · ${t.where} · ${t.id}`)),
-          h("span.tside", null, t.reopened ? chip("sent back", "warn") : null, chip(label, t.late ? "bad" : t.status === "delivered" ? "warn" : t.status === "todo" ? "hot" : ""))), body);
+          h("span.tside", null, t.reopened ? chip("sent back", "warn") : null, chip(label, t.late ? "bad" : t.status === "delivered" ? "warn" : t.status === "todo" ? "hot" : ""))));
+      row.addEventListener("toggle", () => { if (row.open && !row.__built) { row.__built = true; row.appendChild(body()); } });
+      return row;
     }), L.length > shown.length ? h("p.sub", null, `${L.length - shown.length} more: narrow it with the filters.`) : null);
   }
   function paintMatrix() {

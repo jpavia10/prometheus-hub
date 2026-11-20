@@ -166,3 +166,6 @@
 .jr-lb-x{position:fixed;top:max(12px,env(safe-area-inset-top));right:14px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(3,5,10,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer}
 .jr-lb .jr-nav{position:fixed}
 @media (prefers-reduced-motion:reduce){.jr-img{transition:none}.jr-img.kb{animation:none}.map-here{animation:none;opacity:.8}.jr-th{transition:none}}
+/* 2026-11-20: a trip card below the screen is skipped until scrolled near (each card is a map, a logbook and a photo journey,
+   2,100-3,500 px tall; showing Trip files laid out and painted all of them at once). */
+.trip { content-visibility: auto; contain-intrinsic-size: auto 2400px; }

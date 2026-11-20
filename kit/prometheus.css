@@ -290,7 +290,10 @@ body.pk-v2 .foot { margin-top: 28px; font-size: 12px; align-items: center; }
 .pk-stage-reads { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; padding: 10px 16px 0; }
 [hidden] { display: none !important; }
 body.pk-v2 .glass:hover { border-color: color-mix(in srgb, var(--accent) 44%, rgba(200, 220, 255, .25)); }
-body.pk-v2 .glass { background-image: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--accent) 14%, transparent), transparent 65%); }
+/* The pointer light paints a 520 px band around the pointer, not the whole card: a radial gradient sized to a 9,000 px
+   card (the Forge's task list) cost a software-rastered phone frame per tile and dropped its tab switch to 12 fps. */
+body.pk-v2 .glass { background-image: radial-gradient(260px circle at var(--mx, 50%) 260px, color-mix(in srgb, var(--accent) 14%, transparent), transparent 65%);
+  background-repeat: no-repeat; background-size: 100% 520px; background-position: 0 calc(var(--myp, 0px) - 260px); }
 .pk-read { position: relative; display: grid; gap: 2px; padding: 9px 12px 10px; border-radius: 16px; background: rgba(10, 14, 26, .62); border: 1px solid rgba(200, 220, 255, .12); overflow: hidden; }
 .pk-read::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); box-shadow: 0 0 12px var(--accent); }
 .pk-read b { font: 500 21px/1.1 var(--sans); letter-spacing: -.01em; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -389,7 +392,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-even
 @keyframes pk-breathe { 50% { transform: scale(1.06); } }
 @keyframes pk-section { from { opacity: 0; transform: perspective(900px) rotateY(calc(var(--pk-dir, 1) * 14deg)) translateX(calc(var(--pk-dir, 1) * 40px)) scale(.96); } }
 @keyframes pk-away { to { opacity: 0; transform: translateY(-26px) scale(.93); } }
-.pk-in { will-change: transform, opacity; }
+.pk-in { will-change: transform, opacity; }   /* the fallback path only; turnIn() animates with WAAPI (2026-11-20) */
 
 body.pk-v2 .glass { -webkit-backdrop-filter: none; backdrop-filter: none; }
 body.pk-v2 .bar { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(4, 6, 14, .95); }

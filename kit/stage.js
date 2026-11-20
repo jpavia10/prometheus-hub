@@ -130,7 +130,7 @@
       raf = requestAnimationFrame(loop);
       if (!seen || document.hidden) { last = t; return; }
       if (STILL && !dirty) return;
-      const step = Math.max(every, t - lastInput > 12000 ? 2 : 1, t - scrolling < 140 ? 3 : 1);
+      const step = Math.max(every, t - lastInput > 12000 ? 2 : 1, t - scrolling < 140 || performance.now() < (window.__pkBusy || 0) ? 3 : 1);   // a panel turning in (kit.js turnIn) gets the frames too
       if (++n % step && !dirty) return;
       S.dt = Math.min(0.1, (t - last) / 1000 || 0.016); last = t; S.t += S.dt; S.tick++;
       const t0 = performance.now(); frame(); const c = performance.now() - t0;
@@ -161,6 +161,7 @@
         if (!gEl) return; const rc = gEl.getBoundingClientRect();
         gEl.style.setProperty("--mx", ((e.clientX - rc.left) / Math.max(1, rc.width) * 100).toFixed(1) + "%");
         gEl.style.setProperty("--my", ((e.clientY - rc.top) / Math.max(1, rc.height) * 100).toFixed(1) + "%");
+        gEl.style.setProperty("--myp", Math.round(e.clientY - rc.top) + "px");
       }, { passive: true });
     }
     const api = { S, refresh, frame: () => frame(), section: sec };

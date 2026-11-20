@@ -92,3 +92,6 @@ table.matrix { border-collapse: collapse; width: 100%; font-size: 12.5px; font-v
 .src-delivered { background: repeating-linear-gradient(135deg, #ffd36b 0 4px, color-mix(in srgb, #ffd36b 35%, transparent) 4px 8px); }
 .pill.warn { border-color: color-mix(in srgb, #ffd36b 65%, transparent); color: #ffd36b; }
 .matrix td.dl { color: #ffd36b; font-weight: 600; }
+/* 2026-11-20: offscreen task rows are skipped until scrolled near (the Tasks panel is ~13,000 px tall; showing it laid out and
+   painted every row at once and froze the tab switch). */
+details.trow { content-visibility: auto; contain-intrinsic-size: auto 78px; }
