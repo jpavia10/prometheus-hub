@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 
 - HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,22 +16,24 @@ Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 2 open in this pillar.
 
 
 - HEA-GEM-24 · Hearth: Kern County's published ground snow load for 4,600 ft (2026 design criteria) · due 2026-11-28
     make: hearth_gemini_kern-design-criteria_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every Kern document opened, the snow load found or honestly not.
+- HEA-GEM-25 · Hearth: the deck's full cut list and fastener schedule, worked from the makers' install guides · due 2026-12-03
+    make: hearth_gemini_cut-list_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every piece and fastener for the deck, each with its math and the guide line it uses.
 
 ## Muse
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Hephaestus Hearth right now.
 
 ## ChatGPT
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 
 - HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings · due 2026-11-24
@@ -39,14 +41,14 @@ Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Hephaestus Hearth right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Hephaestus Hearth right now.

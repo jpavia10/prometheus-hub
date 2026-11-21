@@ -977,6 +977,80 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): Passes every check: eight headings in order, 10 stories, the table, 12 rules, 14 Given/When/Then tests; 119 file:line refs, Claude's reference check found 3 off and those were its own false alarms. Score 10/10 (#53).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Trial 4 showed you find real defects with exact steps; nothing has audited the hub's pages for contrast, target size, focus and labels.",
+     "unlocks": "Claude fixes every confirmed finding in one pass.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/ and its pillars: forge, kairos, aether, garage, hearth, privacy, money, odyssey, athenaeum"
+     ],
+     "steps": [
+      "Open each page at 390 x 844 (or the narrowest your browser allows) and audit against WCAG 2.2 AA: text contrast (measure the ratio), target size (24 x 24 minimum), visible focus, keyboard reach, accessible names on buttons and inputs, headings order, motion with reduced-motion set.",
+      "For each finding: page, the exact CSS selector or element, the criterion number, what you measured, and the fix.",
+      "At least 30 findings; no duplicates (one row per selector per criterion)."
+     ],
+     "deliver": {
+      "file": "hub_gemini_a11y-audit_{YYYYMMDD-HHMM}.json",
+      "folder": "Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/",
+      "shape": "JSON array, one object per finding, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "page",
+       "type": "URL",
+       "rule": "the page"
+      },
+      {
+       "name": "selector",
+       "type": "text",
+       "rule": "CSS selector"
+      },
+      {
+       "name": "criterion",
+       "type": "text",
+       "rule": "e.g. 1.4.3"
+      },
+      {
+       "name": "measured",
+       "type": "text",
+       "rule": "e.g. 3.1:1 on #8a93a6 over #0d1220"
+      },
+      {
+       "name": "fix",
+       "type": "text",
+       "rule": "exact change"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "30+ findings, each with selector, criterion and measurement.",
+     "checks": [
+      "Claude reproduces 8 findings in a browser."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HUB-GEM-15",
+     "title": "Hub: accessibility audit of 10 pages at phone width (WCAG 2.2 AA), every finding with its selector",
+     "due": "2026-12-03"
     }
    ]
   },

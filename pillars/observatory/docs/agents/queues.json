@@ -258,6 +258,100 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): All checks pass; 24 refs, none off. Score 10/10 (#72).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Observatory follows subjects with sources but reads nothing on its own; each subject needs a primary feed it can poll.",
+     "unlocks": "Observatory can show what is new on each subject from the primary source, keeping fact apart from opinion.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/observatory/subjects-seed.js (the subjects)"
+     ],
+     "steps": [
+      "For every subject in subjects-seed.js: find 2-3 primary-source feeds (an agency, journal, standards body or company newsroom: RSS, Atom or a documented API).",
+      "For each feed: the feed URL, its format, whether it needs a key, how often it publishes (count the last 10 items' dates), and the latest item's title and date.",
+      "Opinion outlets and aggregators do not count."
+     ],
+     "deliver": {
+      "file": "observatory_gemini_feeds_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "subject",
+       "type": "text",
+       "rule": "as in the seed"
+      },
+      {
+       "name": "publisher",
+       "type": "text",
+       "rule": "who"
+      },
+      {
+       "name": "feed",
+       "type": "URL",
+       "rule": "the feed or API endpoint"
+      },
+      {
+       "name": "format",
+       "type": "text",
+       "rule": "rss / atom / json api"
+      },
+      {
+       "name": "key",
+       "type": "text",
+       "rule": "none / free key / paid"
+      },
+      {
+       "name": "cadence",
+       "type": "text",
+       "rule": "math: items per week from the last 10 dates"
+      },
+      {
+       "name": "latest",
+       "type": "text",
+       "rule": "title and date"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the publisher's page describing the feed"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every subject with at least two primary feeds.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "OBS-GEM-05",
+     "title": "Observatory: the official feeds for every subject it watches (RSS, Atom or API), with cadence",
+     "due": "2026-12-02"
     }
    ]
   },

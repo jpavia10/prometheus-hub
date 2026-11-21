@@ -812,6 +812,96 @@
      "id": "AET-GEM-12",
      "title": "Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans",
      "due": "2026-11-30"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Aether sizes the power station with one peak-sun-hours number per season, an estimate; NREL's PVWatts gives month-by-month output from measured weather for this exact spot.",
+     "unlocks": "Aether's solar budget uses NREL's monthly numbers for the town, at two tilts, instead of a season guess.",
+     "inputs": [
+      "https://pvwatts.nrel.gov/ (the PVWatts calculator)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (SEASONS: the numbers this replaces)"
+     ],
+     "steps": [
+      "Run PVWatts for Frazier Park, CA (34.8228, -118.9445; town centre), system size 0.4 kW DC, standard module, fixed (open rack), azimuth 180, losses 14%, inverter efficiency 96%: once at tilt 30 and once at tilt 45.",
+      "Record for each month and tilt: solar radiation (kWh/m2/day) and AC energy (kWh), exactly as PVWatts prints them, and the weather data source it names (NSRDB station/grid cell).",
+      "Add one 'math' row per tilt: the yearly total and the worst month."
+     ],
+     "deliver": {
+      "file": "aether_gemini_pvwatts_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 26,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "tilt",
+       "type": "integer",
+       "rule": "degrees"
+      },
+      {
+       "name": "month",
+       "type": "text",
+       "rule": "Jan ... Dec, or 'year'"
+      },
+      {
+       "name": "radiation",
+       "type": "number",
+       "rule": "kWh/m2/day"
+      },
+      {
+       "name": "ac_kwh",
+       "type": "number",
+       "rule": "kWh"
+      },
+      {
+       "name": "math",
+       "type": "text",
+       "rule": "for the year rows"
+      },
+      {
+       "name": "weather",
+       "type": "text",
+       "rule": "the data source PVWatts names"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "https://pvwatts.nrel.gov/ results page or its download"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the printed line for that month"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "12 months at each tilt plus the two year rows, as PVWatts prints them.",
+     "checks": [
+      "Claude runs the same PVWatts inputs and compares every number."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-13",
+     "title": "Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)",
+     "due": "2026-11-30"
     }
    ]
   },

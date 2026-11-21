@@ -2,7 +2,7 @@
 
 # Bossa Piano Studio · homework for Gemini
 
-Updated 2026-11-21 10:26 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -51,5 +51,59 @@ Updated 2026-11-21 10:26 UTC · 1 open · Rules for every pillar: https://github
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 2. PIA-GEM-07 · Piano: the reference recording for each of the 24 bossa tunes (first and definitive)
+
+**Due:** 2026-12-02 · **State:** now
+
+**Why:** A practice studio needs the recording to listen to; the ladder has the tunes but not which recording is the reference.
+
+**What it unlocks:** Each tune on the ladder links its first recording and the definitive one, with year and label.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/piano/bossa-ladder.js (the 24 tunes)
+- MusicBrainz, the record labels' own catalogues, the composers' official sites (jobim.org)
+
+**Do this:**
+1. For each of the 24 tunes: the first commercial recording (artist, album, year, label, catalogue number) and the recording most often called definitive by the label or the composer's official site.
+2. Give the MusicBrainz recording or release URL and quote the line that dates it.
+3. 'not stated' where the sources disagree; name both.
+
+**Make:** `piano_gemini_recordings_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `tune` (text): as in the ladder
+- `first` (text): artist, album, year, label, catalogue no.
+- `definitive` (text): artist, album, year, label
+- `why` (text): who calls it definitive
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 24
+
+**Done when:** 24 tunes, each with its first recording dated from MusicBrainz or the label.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)

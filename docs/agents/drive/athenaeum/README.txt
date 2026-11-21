@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 
 - ATH-GRK-02 · Athenaeum: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,35 +16,36 @@ Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 
-No homework for Gemini in Athenaeum · Idea Vault right now.
+- ATH-GEM-04 · Athenaeum: second reader on the 40 history chains (cause, event, consequence) Grok wrote · due 2026-12-04
+    make: athenaeum_gemini_history-check_{YYYYMMDD-HHMM}.json · how many: 40 · done when: All 40 entries checked part by part.
 
 ## Muse
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Athenaeum · Idea Vault right now.
 
 ## ChatGPT
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Athenaeum · Idea Vault right now.
 
 ## Argon
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Athenaeum · Idea Vault right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Athenaeum · Idea Vault right now.

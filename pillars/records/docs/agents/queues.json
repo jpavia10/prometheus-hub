@@ -471,6 +471,95 @@
      ],
      "closed": "2026-11-21",
      "review": "Done 2026-11-21 (Claude): All 22 dates agree with Kairos's independently sourced tax dates, the Apr 10 and Jan 15 rolls included; the two delinquency days were new and are now in Kairos. Score 10/10 (#81)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Records' mission covers TX->CA, but the pillar has no list of what a move from Texas obliges in California (and what to close in Texas).",
+     "unlocks": "Records gets a move checklist with legal deadlines, which the renewal radar and Kairos can count down.",
+     "inputs": [
+      "California DMV, Secretary of State, FTB, Covered California and Texas DPS / Texas DMV official pages"
+     ],
+     "steps": [
+      "List every record a new California resident coming from Texas must create or change, with the legal deadline: driver license (days after residency), vehicle registration and smog for an out-of-state vehicle, motorcycle license class M1, insurance minimums, voter registration, part-year resident income tax (FTB 540NR) for the move year, Texas items to close or surrender.",
+      "Quote the rule for each deadline; give the form number and the office.",
+      "Mark which ones apply to a person who already did the basics (license, plates) and which repeat yearly."
+     ],
+     "deliver": {
+      "file": "records_gemini_tx-to-ca_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "what"
+      },
+      {
+       "name": "state",
+       "type": "text",
+       "rule": "CA / TX"
+      },
+      {
+       "name": "deadline",
+       "type": "text",
+       "rule": "as the rule states it"
+      },
+      {
+       "name": "form",
+       "type": "text",
+       "rule": "form number or 'none'"
+      },
+      {
+       "name": "office",
+       "type": "text",
+       "rule": "agency"
+      },
+      {
+       "name": "repeats",
+       "type": "text",
+       "rule": "once / yearly / every N years"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page or PDF"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "At least 20 records, every deadline quoted from the agency.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "REC-GEM-08",
+     "title": "Records: every record to change after moving from Texas to California, with its deadline",
+     "due": "2026-12-01"
     }
    ]
   },

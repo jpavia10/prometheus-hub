@@ -2,7 +2,7 @@
 
 # Privacy · CA DROP · homework for Gemini
 
-Updated 2026-11-21 10:26 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 15:56 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -106,5 +106,119 @@ Updated 2026-11-21 10:26 UTC · 2 open · Rules for every pillar: https://github
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 3. PRI-GEM-11 · Privacy: harden the Galaxy S24 Ultra, 50 settings from Samsung's own pages
+
+**Due:** 2026-11-30 · **State:** now
+
+**Why:** Privacy's mission names S24 Ultra hardening, but the pillar has no phone settings: only Google's account settings.
+
+**What it unlocks:** Privacy gets a phone panel: every privacy and security setting on the S24 Ultra, where it is, what it does and the safest choice.
+
+**Read first:**
+- Samsung's own support pages for the Galaxy S24 Ultra and One UI (samsung.com/us/support, Samsung Knox pages)
+- Google's Android help where Samsung's menu leads to Google settings
+
+**Do this:**
+1. List 50 settings across: lock screen and biometrics, Secure Folder, Auto Blocker, Maximum restrictions, Knox Vault, app permissions and the permission manager, location (precise vs approximate, Wi-Fi/Bluetooth scanning), the privacy dashboard, Samsung account and Samsung Cloud, Customization Service and marketing, diagnostics, Find My Mobile, USB and developer options, Wi-Fi and Bluetooth, the Samsung keyboard, Bixby, Galaxy AI processing (on-device only), Google account items reached from Settings.
+2. For each: the menu path on One UI as shipped on the S24 Ultra today, what it does in Samsung's (or Google's) words, the default, the safest choice that keeps the phone usable, and what you give up.
+3. Order the rows from biggest privacy gain to smallest.
+
+**Make:** `privacy_gemini_s24-hardening_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `setting` (text): as the phone names it
+- `where` (text): Settings > ... menu path
+- `does` (text): in Samsung's or Google's words
+- `default` (text): on / off / value / not stated
+- `safest` (text): the choice
+- `cost` (text): what you give up
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 50
+
+**Done when:** 50 settings, each with its official page and menu path.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 4. PRI-GEM-12 · Privacy: sign-in security for the 25 services in Continuity's list (2FA, passkeys, recovery)
+
+**Due:** 2026-12-02 · **State:** now
+
+**Why:** Credential rotation is in Privacy's mission; it cannot say for each account which second factors exist, where recovery codes live, or where to see sign-in activity.
+
+**What it unlocks:** Privacy shows, per service, the strongest sign-in it supports and the exact place to rotate the password and check activity.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/legacy-policies.js (window.CONTINUITY_POLICIES: the 25 services)
+
+**Do this:**
+1. For each of the 25 services in CONTINUITY_POLICIES, open its own help pages.
+2. Record: passkeys (yes/no), authenticator app (TOTP), hardware security key, SMS, email codes; whether recovery codes exist and where; the page to change the password; the page that lists recent sign-ins or devices.
+3. Name the strongest method it supports and quote the help page that says so.
+
+**Make:** `privacy_gemini_signin-security_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `service` (text): as in CONTINUITY_POLICIES
+- `passkey` (text): yes / no / not stated
+- `totp` (text): yes / no / not stated
+- `security_key` (text): yes / no / not stated
+- `sms` (text): yes / no / not stated
+- `recovery_codes` (text): yes, where / no
+- `change_password` (URL): the page
+- `activity` (URL): the sign-in or device list page
+- `strongest` (text): the best method it supports
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 25
+
+**Done when:** 25 services, every column from the service's own help.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)

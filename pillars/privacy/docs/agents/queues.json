@@ -674,6 +674,200 @@
      "id": "PRI-GEM-10",
      "title": "Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com)",
      "due": "2026-11-30"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Privacy's mission names S24 Ultra hardening, but the pillar has no phone settings: only Google's account settings.",
+     "unlocks": "Privacy gets a phone panel: every privacy and security setting on the S24 Ultra, where it is, what it does and the safest choice.",
+     "inputs": [
+      "Samsung's own support pages for the Galaxy S24 Ultra and One UI (samsung.com/us/support, Samsung Knox pages)",
+      "Google's Android help where Samsung's menu leads to Google settings"
+     ],
+     "steps": [
+      "List 50 settings across: lock screen and biometrics, Secure Folder, Auto Blocker, Maximum restrictions, Knox Vault, app permissions and the permission manager, location (precise vs approximate, Wi-Fi/Bluetooth scanning), the privacy dashboard, Samsung account and Samsung Cloud, Customization Service and marketing, diagnostics, Find My Mobile, USB and developer options, Wi-Fi and Bluetooth, the Samsung keyboard, Bixby, Galaxy AI processing (on-device only), Google account items reached from Settings.",
+      "For each: the menu path on One UI as shipped on the S24 Ultra today, what it does in Samsung's (or Google's) words, the default, the safest choice that keeps the phone usable, and what you give up.",
+      "Order the rows from biggest privacy gain to smallest."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_s24-hardening_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 50,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "setting",
+       "type": "text",
+       "rule": "as the phone names it"
+      },
+      {
+       "name": "where",
+       "type": "text",
+       "rule": "Settings > ... menu path"
+      },
+      {
+       "name": "does",
+       "type": "text",
+       "rule": "in Samsung's or Google's words"
+      },
+      {
+       "name": "default",
+       "type": "text",
+       "rule": "on / off / value / not stated"
+      },
+      {
+       "name": "safest",
+       "type": "text",
+       "rule": "the choice"
+      },
+      {
+       "name": "cost",
+       "type": "text",
+       "rule": "what you give up"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page or PDF"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "50 settings, each with its official page and menu path.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PRI-GEM-11",
+     "title": "Privacy: harden the Galaxy S24 Ultra, 50 settings from Samsung's own pages",
+     "due": "2026-11-30"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Credential rotation is in Privacy's mission; it cannot say for each account which second factors exist, where recovery codes live, or where to see sign-in activity.",
+     "unlocks": "Privacy shows, per service, the strongest sign-in it supports and the exact place to rotate the password and check activity.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/legacy-policies.js (window.CONTINUITY_POLICIES: the 25 services)"
+     ],
+     "steps": [
+      "For each of the 25 services in CONTINUITY_POLICIES, open its own help pages.",
+      "Record: passkeys (yes/no), authenticator app (TOTP), hardware security key, SMS, email codes; whether recovery codes exist and where; the page to change the password; the page that lists recent sign-ins or devices.",
+      "Name the strongest method it supports and quote the help page that says so."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_signin-security_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 25,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "service",
+       "type": "text",
+       "rule": "as in CONTINUITY_POLICIES"
+      },
+      {
+       "name": "passkey",
+       "type": "text",
+       "rule": "yes / no / not stated"
+      },
+      {
+       "name": "totp",
+       "type": "text",
+       "rule": "yes / no / not stated"
+      },
+      {
+       "name": "security_key",
+       "type": "text",
+       "rule": "yes / no / not stated"
+      },
+      {
+       "name": "sms",
+       "type": "text",
+       "rule": "yes / no / not stated"
+      },
+      {
+       "name": "recovery_codes",
+       "type": "text",
+       "rule": "yes, where / no"
+      },
+      {
+       "name": "change_password",
+       "type": "URL",
+       "rule": "the page"
+      },
+      {
+       "name": "activity",
+       "type": "URL",
+       "rule": "the sign-in or device list page"
+      },
+      {
+       "name": "strongest",
+       "type": "text",
+       "rule": "the best method it supports"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page or PDF"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "25 services, every column from the service's own help.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PRI-GEM-12",
+     "title": "Privacy: sign-in security for the 25 services in Continuity's list (2FA, passkeys, recovery)",
+     "due": "2026-12-02"
     }
    ]
   },

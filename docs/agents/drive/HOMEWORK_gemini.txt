@@ -1,12 +1,12 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-21 10:26 UTC. 30 to do across 16 pillars; 5 more delivered and waiting for their check (listed at the end: do not redo them).
+Updated 2026-11-21 15:56 UTC. 57 to do across 27 pillars; 5 more delivered and waiting for their check (listed at the end: do not redo them).
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).
 
-TITAN RELIQUARY (its own loop, the exception): 1 homework sheets + 3 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 1 homework sheets + 9 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -32,16 +32,37 @@ IN THIS ORDER:
 14. [Kin] KIN-GEM-05 · Kin: Saugus Union School District's 2026-27 calendar (Violet's school days off) · due 2026-11-28
 15. [Aether · Atmospheric & Field Lab] AET-GEM-11 · Aether: the Oct 2026 shut-off reports, read to the end (RIDGE and TENNECO circuits) · due 2026-11-28
 16. [Continuity · Sovereign Vault] CON-GEM-07 · Continuity: recording a transfer-on-death deed in Kern County, step by step · due 2026-11-28
-17. [Money · payoff simulator] MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026) · due 2026-11-30
-18. [Icarus Stake] ICA-GEM-11 · Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports) · due 2026-11-30
-19. [Bastion · Mountain Prep] BAS-GEM-07 · Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists) · due 2026-11-30
-20. [Bastion · Mountain Prep] BAS-GEM-08 · Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code) · due 2026-11-30
-21. [Privacy · CA DROP] PRI-GEM-10 · Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com) · due 2026-11-30
-22. [Ludus Arcade] GAM-GEM-06 · Games: Anno 117 updates and roadmap, from Ubisoft's own pages · due 2026-11-30
-23. [Aether · Atmospheric & Field Lab] AET-GEM-12 · Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans · due 2026-11-30
-24. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-25. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
-26. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
+17. [Garage] GAR-GEM-14 · Garage: every warning and indicator light on both vehicles, from the owner's manuals · due 2026-11-30
+18. [Money · payoff simulator] MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026) · due 2026-11-30
+19. [Icarus Stake] ICA-GEM-11 · Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports) · due 2026-11-30
+20. [Bastion · Mountain Prep] BAS-GEM-07 · Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists) · due 2026-11-30
+21. [Bastion · Mountain Prep] BAS-GEM-08 · Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code) · due 2026-11-30
+22. [Privacy · CA DROP] PRI-GEM-10 · Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com) · due 2026-11-30
+23. [Privacy · CA DROP] PRI-GEM-11 · Privacy: harden the Galaxy S24 Ultra, 50 settings from Samsung's own pages · due 2026-11-30
+24. [Ludus Arcade] GAM-GEM-06 · Games: Anno 117 updates and roadmap, from Ubisoft's own pages · due 2026-11-30
+25. [Aether · Atmospheric & Field Lab] AET-GEM-12 · Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans · due 2026-11-30
+26. [Aether · Atmospheric & Field Lab] AET-GEM-13 · Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts) · due 2026-11-30
+27. [Selling Pipeline] SEL-GEM-06 · Selling: 2026 shipping and seller-fee tables (USPS Ground Advantage and Priority, eBay, Mercari, Facebook) · due 2026-12-01
+28. [Records · Paper Killer] REC-GEM-08 · Records: every record to change after moving from Texas to California, with its deadline · due 2026-12-01
+29. [Icarus Stake] ICA-GEM-12 · Icarus: the 20 trading rules a rule auditor must know, quoted from FINRA, the SEC, the Fed and the IRS · due 2026-12-01
+30. [Hermes Post] HER-GEM-10 · Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated · due 2026-12-01
+31. [Apollo Temple] APO-GEM-11 · Apollo: daily targets for 30 nutrients (RDA, AI and upper limit) for an adult man, from the NIH · due 2026-12-02
+32. [Bossa Piano Studio] PIA-GEM-07 · Piano: the reference recording for each of the 24 bossa tunes (first and definitive) · due 2026-12-02
+33. [Bastion · Mountain Prep] BAS-GEM-09 · Bastion: the official checklists for snowbound, PSPS, evacuation and the go-bag, item by item · due 2026-12-02
+34. [Privacy · CA DROP] PRI-GEM-12 · Privacy: sign-in security for the 25 services in Continuity's list (2FA, passkeys, recovery) · due 2026-12-02
+35. [Forge] FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch · due 2026-12-02
+36. [Observatory] OBS-GEM-05 · Observatory: the official feeds for every subject it watches (RSS, Atom or API), with cadence · due 2026-12-02
+37. [Prometheus Hub] HUB-GEM-15 · Hub: accessibility audit of 10 pages at phone width (WCAG 2.2 AA), every finding with its selector · due 2026-12-03
+38. [Midas Ledger] MID-GEM-13 · Midas: 60 real promo, deferred-interest and minimum-payment wordings from 20 issuers' card agreements (test corpus only) · due 2026-12-03
+39. [Hephaestus Hearth] HEA-GEM-25 · Hearth: the deck's full cut list and fastener schedule, worked from the makers' install guides · due 2026-12-03
+40. [Argus Album] ARG-GEM-11 · Argus: every metadata field a Galaxy S24 Ultra writes into its photos, and whether Argus's scrubber removes it · due 2026-12-03
+41. [Athenaeum · Idea Vault] ATH-GEM-04 · Athenaeum: second reader on the 40 history chains (cause, event, consequence) Grok wrote · due 2026-12-04
+42. [Polis · Civic & Legal Watch] POL-GEM-08 · Polis: every Kern County Board of Supervisors item in 2026 that touches the mountain communities · due 2026-12-04
+43. [Mythos · Creative & Lore Studio] MYT-GEM-04 · Mythos: the public-domain primary texts behind the canon, with exact editions · due 2026-12-04
+44. [Foundry] FDY-GEM-05 · Foundry: a bench-prototype parts list for the first build stage of each of the 11 inventions · due 2026-12-05
+45. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+46. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
+47. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)
@@ -829,8 +850,61 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 17. MONEY · PAYOFF SIMULATOR ====================
-## 17. MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026)
+==================== 17. GARAGE ====================
+## 17. GAR-GEM-14 · Garage: every warning and indicator light on both vehicles, from the owner's manuals
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Garage gets a light finder: tap the symbol's name, read the manual's meaning, the urgency and the action.
+
+**Read first:**
+- The 2025 Kia Sorento Hybrid owner's manual (Kia's own PDF, the same one GAR-GEM-08 used)
+- The 2021 Yamaha MT-07 owner's manual (Yamaha's own PDF)
+
+**Do this:**
+1. List every warning and indicator light in the instrument-cluster chapter of both manuals (expect 50+ for the Sorento Hybrid, 15+ for the MT-07), including the hybrid-system and EV-mode lights.
+2. For each: the name as the manual gives it, its colour, what it means, what the manual tells you to do, and how urgent (stop now / see a dealer soon / information).
+3. Give the manual page for each, printed and PDF.
+
+**Make:** `garage_gemini_lights_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `vehicle` (text): 2025 Sorento Hybrid / 2021 MT-07
+- `light` (text): name as in the manual
+- `colour` (text): red / amber / green / blue / white
+- `means` (text): manual's words
+- `do` (text): manual's action
+- `urgency` (text): stop now / soon / information
+- `page` (text): printed page, PDF page
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every light in both manuals' cluster chapters.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 18. MONEY · PAYOFF SIMULATOR ====================
+## 18. MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026)
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -879,8 +953,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 18. ICARUS STAKE ====================
-## 18. ICA-GEM-11 · Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports)
+==================== 19. ICARUS STAKE ====================
+## 19. ICA-GEM-11 · Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports)
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -926,8 +1000,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 19. BASTION · MOUNTAIN PREP ====================
-## 19. BAS-GEM-07 · Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists)
+==================== 20. BASTION · MOUNTAIN PREP ====================
+## 20. BAS-GEM-07 · Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists)
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -975,8 +1049,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 20. BASTION · MOUNTAIN PREP ====================
-## 20. BAS-GEM-08 · Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code)
+==================== 21. BASTION · MOUNTAIN PREP ====================
+## 21. BAS-GEM-08 · Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code)
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1022,8 +1096,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 21. PRIVACY · CA DROP ====================
-## 21. PRI-GEM-10 · Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com)
+==================== 22. PRIVACY · CA DROP ====================
+## 22. PRI-GEM-10 · Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com)
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1071,8 +1145,62 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 22. LUDUS ARCADE ====================
-## 22. GAM-GEM-06 · Games: Anno 117 updates and roadmap, from Ubisoft's own pages
+==================== 23. PRIVACY · CA DROP ====================
+## 23. PRI-GEM-11 · Privacy: harden the Galaxy S24 Ultra, 50 settings from Samsung's own pages
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Privacy gets a phone panel: every privacy and security setting on the S24 Ultra, where it is, what it does and the safest choice.
+
+**Read first:**
+- Samsung's own support pages for the Galaxy S24 Ultra and One UI (samsung.com/us/support, Samsung Knox pages)
+- Google's Android help where Samsung's menu leads to Google settings
+
+**Do this:**
+1. List 50 settings across: lock screen and biometrics, Secure Folder, Auto Blocker, Maximum restrictions, Knox Vault, app permissions and the permission manager, location (precise vs approximate, Wi-Fi/Bluetooth scanning), the privacy dashboard, Samsung account and Samsung Cloud, Customization Service and marketing, diagnostics, Find My Mobile, USB and developer options, Wi-Fi and Bluetooth, the Samsung keyboard, Bixby, Galaxy AI processing (on-device only), Google account items reached from Settings.
+2. For each: the menu path on One UI as shipped on the S24 Ultra today, what it does in Samsung's (or Google's) words, the default, the safest choice that keeps the phone usable, and what you give up.
+3. Order the rows from biggest privacy gain to smallest.
+
+**Make:** `privacy_gemini_s24-hardening_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `setting` (text): as the phone names it
+- `where` (text): Settings > ... menu path
+- `does` (text): in Samsung's or Google's words
+- `default` (text): on / off / value / not stated
+- `safest` (text): the choice
+- `cost` (text): what you give up
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 50
+
+**Done when:** 50 settings, each with its official page and menu path.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 24. LUDUS ARCADE ====================
+## 24. GAM-GEM-06 · Games: Anno 117 updates and roadmap, from Ubisoft's own pages
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1119,8 +1247,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 23. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 23. AET-GEM-12 · Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans
+==================== 25. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 25. AET-GEM-12 · Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans
 
 **Due:** 2026-11-30 · **State:** now
 
@@ -1166,8 +1294,984 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 24. KAIROS MERIDIAN ====================
-## 24. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 26. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 26. AET-GEM-13 · Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Aether's solar budget uses NREL's monthly numbers for the town, at two tilts, instead of a season guess.
+
+**Read first:**
+- https://pvwatts.nrel.gov/ (the PVWatts calculator)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (SEASONS: the numbers this replaces)
+
+**Do this:**
+1. Run PVWatts for Frazier Park, CA (34.8228, -118.9445; town centre), system size 0.4 kW DC, standard module, fixed (open rack), azimuth 180, losses 14%, inverter efficiency 96%: once at tilt 30 and once at tilt 45.
+2. Record for each month and tilt: solar radiation (kWh/m2/day) and AC energy (kWh), exactly as PVWatts prints them, and the weather data source it names (NSRDB station/grid cell).
+3. Add one 'math' row per tilt: the yearly total and the worst month.
+
+**Make:** `aether_gemini_pvwatts_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `tilt` (integer): degrees
+- `month` (text): Jan ... Dec, or 'year'
+- `radiation` (number): kWh/m2/day
+- `ac_kwh` (number): kWh
+- `math` (text): for the year rows
+- `weather` (text): the data source PVWatts names
+- `url` (URL): https://pvwatts.nrel.gov/ results page or its download
+- `quote` (text): the printed line for that month
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 26
+
+**Done when:** 12 months at each tilt plus the two year rows, as PVWatts prints them.
+
+**How Claude checks it:**
+- Claude runs the same PVWatts inputs and compares every number.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 27. SELLING PIPELINE ====================
+## 27. SEL-GEM-06 · Selling: 2026 shipping and seller-fee tables (USPS Ground Advantage and Priority, eBay, Mercari, Facebook)
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Selling's net calculator uses this year's real postage and fees.
+
+**Read first:**
+- USPS Notice 123 (pe.usps.com) and the USPS retail price pages
+- eBay, Mercari and Facebook Marketplace seller fee pages
+
+**Do this:**
+1. USPS 2026: Ground Advantage and Priority Mail prices, retail and commercial, for 4 oz, 8 oz, 12 oz, 15.99 oz, 1 lb, 2 lb, 3 lb, 5 lb, zones 1-2 to 9, as Notice 123 prints them.
+2. Marketplaces: the final value / selling fee percentages, per-order fees, payment processing, shipping-label discounts, and any category exceptions for collectibles and coins.
+3. Quote the line or table row for each number.
+
+**Make:** `selling_gemini_fees-2026_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `source` (text): USPS / eBay / Mercari / Facebook
+- `service` (text): e.g. Ground Advantage retail
+- `weight` (text): e.g. 12 oz, or 'n/a'
+- `zone` (text): e.g. 5, or 'n/a'
+- `amount` (text): price or percentage as printed
+- `effective` (date): YYYY-MM-DD
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** The full USPS grid asked for and every marketplace fee, each quoted.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 28. RECORDS · PAPER KILLER ====================
+## 28. REC-GEM-08 · Records: every record to change after moving from Texas to California, with its deadline
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Records gets a move checklist with legal deadlines, which the renewal radar and Kairos can count down.
+
+**Read first:**
+- California DMV, Secretary of State, FTB, Covered California and Texas DPS / Texas DMV official pages
+
+**Do this:**
+1. List every record a new California resident coming from Texas must create or change, with the legal deadline: driver license (days after residency), vehicle registration and smog for an out-of-state vehicle, motorcycle license class M1, insurance minimums, voter registration, part-year resident income tax (FTB 540NR) for the move year, Texas items to close or surrender.
+2. Quote the rule for each deadline; give the form number and the office.
+3. Mark which ones apply to a person who already did the basics (license, plates) and which repeat yearly.
+
+**Make:** `records_gemini_tx-to-ca_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `record` (text): what
+- `state` (text): CA / TX
+- `deadline` (text): as the rule states it
+- `form` (text): form number or 'none'
+- `office` (text): agency
+- `repeats` (text): once / yearly / every N years
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** At least 20 records, every deadline quoted from the agency.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 29. ICARUS STAKE ====================
+## 29. ICA-GEM-12 · Icarus: the 20 trading rules a rule auditor must know, quoted from FINRA, the SEC, the Fed and the IRS
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Icarus can flag a trade that would break a real rule and show the rule's own words.
+
+**Read first:**
+- finra.org rulebook (Rule 4210), sec.gov (T+1), federalreserve.gov Regulation T, irs.gov Publication 550
+
+**Do this:**
+1. Quote and explain 20 rules: the PDT definition and its $25,000 minimum equity, the day-trading buying power, margin calls, Reg T initial margin, T+1 settlement, good-faith and free-riding violations in cash accounts, the 90-day restriction, wash sales (30 days either side), options exercise and assignment cut-offs, short-sale locate.
+2. For each: what triggers it, the consequence, and the rule number.
+
+**Make:** `icarus_gemini_trading-rules_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `rule` (text): name
+- `ref` (text): rule number or publication
+- `trigger` (text): what sets it off
+- `consequence` (text): what happens
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 20
+
+**Done when:** 20 rules, each quoted from its regulator.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 30. HERMES POST ====================
+## 30. HER-GEM-10 · Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Hermes's classifier and its lure gallery get 40 dated, official examples, tagged by type.
+
+**Read first:**
+- consumer.ftc.gov alerts, ic3.gov public service announcements, and the official scam-warning pages of the companies imitated (USPS, IRS, Amazon, PayPal, banks, toll agencies)
+
+**Do this:**
+1. Collect 40 scam messages published in 2025-2026 where the official page quotes the text or shows it (SMS, email, phone script).
+2. For each: the channel, who it pretends to be, the exact quoted wording (under 300 characters), the tell the page points out, and the publishing date.
+3. Spread them: at least 8 toll/package texts, 6 bank or payment, 6 government (IRS, SSA, DMV), 6 job or task scams, 6 account-lock or password, 8 other.
+
+**Make:** `hermes_gemini_scam-messages_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `channel` (text): sms / email / phone / social
+- `pretends` (text): who it imitates
+- `type` (text): toll / package / bank / government / job / account / other
+- `tell` (text): what the page says gives it away
+- `published` (date): YYYY-MM-DD
+- `url` (URL): the official warning page
+- `quote` (text): the scam message as quoted, under 300 characters
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 40
+
+**Done when:** 40 messages, each quoted from an official warning.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 31. APOLLO TEMPLE ====================
+## 31. APO-GEM-11 · Apollo: daily targets for 30 nutrients (RDA, AI and upper limit) for an adult man, from the NIH
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Apollo's day view can show each nutrient against its target and warn past an upper limit.
+
+**Read first:**
+- NIH Office of Dietary Supplements fact sheets (ods.od.nih.gov), the National Academies DRI tables
+
+**Do this:**
+1. For 30 nutrients (all vitamins, the main minerals, fibre, potassium, sodium, choline, omega-3): the RDA or AI and the tolerable upper intake for men 31-50 and men 51-70.
+2. Units exactly as NIH prints them; note when the UL covers only supplements.
+3. Quote the table row.
+
+**Make:** `apollo_gemini_nutrient-targets_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `nutrient` (text): name
+- `target_31_50` (text): value + unit, RDA or AI
+- `target_51_70` (text): value + unit
+- `ul` (text): value + unit or 'none set'
+- `ul_note` (text): e.g. supplements only
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 30
+
+**Done when:** 30 nutrients, each from an NIH fact sheet.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 32. BOSSA PIANO STUDIO ====================
+## 32. PIA-GEM-07 · Piano: the reference recording for each of the 24 bossa tunes (first and definitive)
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Each tune on the ladder links its first recording and the definitive one, with year and label.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/piano/bossa-ladder.js (the 24 tunes)
+- MusicBrainz, the record labels' own catalogues, the composers' official sites (jobim.org)
+
+**Do this:**
+1. For each of the 24 tunes: the first commercial recording (artist, album, year, label, catalogue number) and the recording most often called definitive by the label or the composer's official site.
+2. Give the MusicBrainz recording or release URL and quote the line that dates it.
+3. 'not stated' where the sources disagree; name both.
+
+**Make:** `piano_gemini_recordings_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `tune` (text): as in the ladder
+- `first` (text): artist, album, year, label, catalogue no.
+- `definitive` (text): artist, album, year, label
+- `why` (text): who calls it definitive
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 24
+
+**Done when:** 24 tunes, each with its first recording dated from MusicBrainz or the label.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 33. BASTION · MOUNTAIN PREP ====================
+## 33. BAS-GEM-09 · Bastion: the official checklists for snowbound, PSPS, evacuation and the go-bag, item by item
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Bastion marks each of its own items as on the official lists (or not) and adds what the agencies require that it lacks.
+
+**Read first:**
+- ready.gov, Cal OES (caloes.ca.gov / listos), Kern County Emergency Services, SCE's PSPS preparedness pages, Red Cross
+
+**Do this:**
+1. Copy every item from: Ready.gov's basic disaster supplies kit, Ready.gov's winter storm page, SCE's PSPS checklist, Cal OES / Listos evacuation go-bag, Kern County's evacuation checklist, Red Cross pet kit.
+2. One row per item per list, in the list's own words, with the list it comes from.
+3. Mark duplicates across lists in 'also_in'.
+
+**Make:** `bastion_gemini_official-checklists_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `list` (text): which official list
+- `item` (text): in its own words
+- `qty` (text): as stated or 'not stated'
+- `also_in` (text): other lists with the same item
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every item of the six lists, each quoted.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 34. PRIVACY · CA DROP ====================
+## 34. PRI-GEM-12 · Privacy: sign-in security for the 25 services in Continuity's list (2FA, passkeys, recovery)
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Privacy shows, per service, the strongest sign-in it supports and the exact place to rotate the password and check activity.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/legacy-policies.js (window.CONTINUITY_POLICIES: the 25 services)
+
+**Do this:**
+1. For each of the 25 services in CONTINUITY_POLICIES, open its own help pages.
+2. Record: passkeys (yes/no), authenticator app (TOTP), hardware security key, SMS, email codes; whether recovery codes exist and where; the page to change the password; the page that lists recent sign-ins or devices.
+3. Name the strongest method it supports and quote the help page that says so.
+
+**Make:** `privacy_gemini_signin-security_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `service` (text): as in CONTINUITY_POLICIES
+- `passkey` (text): yes / no / not stated
+- `totp` (text): yes / no / not stated
+- `security_key` (text): yes / no / not stated
+- `sms` (text): yes / no / not stated
+- `recovery_codes` (text): yes, where / no
+- `change_password` (URL): the page
+- `activity` (URL): the sign-in or device list page
+- `strongest` (text): the best method it supports
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 25
+
+**Done when:** 25 services, every column from the service's own help.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 35. FORGE ====================
+## 35. FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Claude fixes every builder bug you find, with a regression test.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/forge/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/forge.json (the snapshot)
+- the pillars' docs/agents/queues.json files and Titan's docs/agents/QUEUE_*.md pages
+
+**Do this:**
+1. Pick 30 tasks at random across at least 12 pillars and Titan (show your random method).
+2. For each, compare what the Forge shows (status, due, late flag, owner, item count, score when closed) with the task's own queue entry.
+3. Report every mismatch with both values and the file:line on each side; a match is a row too ('agree').
+
+**Make:** `forge_gemini_audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per task checked, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `task` (text): task id
+- `field` (text): status / due / late / owner / items / score
+- `forge_says` (text): what the Forge shows
+- `queue_says` (text): what the queue says
+- `verdict` (text): agree / mismatch
+- `where` (text): file:line on both sides
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 30
+
+**Done when:** 30 tasks compared field by field.
+
+**How Claude checks it:**
+- Claude re-checks every mismatch.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 36. OBSERVATORY ====================
+## 36. OBS-GEM-05 · Observatory: the official feeds for every subject it watches (RSS, Atom or API), with cadence
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Observatory can show what is new on each subject from the primary source, keeping fact apart from opinion.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/observatory/subjects-seed.js (the subjects)
+
+**Do this:**
+1. For every subject in subjects-seed.js: find 2-3 primary-source feeds (an agency, journal, standards body or company newsroom: RSS, Atom or a documented API).
+2. For each feed: the feed URL, its format, whether it needs a key, how often it publishes (count the last 10 items' dates), and the latest item's title and date.
+3. Opinion outlets and aggregators do not count.
+
+**Make:** `observatory_gemini_feeds_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `subject` (text): as in the seed
+- `publisher` (text): who
+- `feed` (URL): the feed or API endpoint
+- `format` (text): rss / atom / json api
+- `key` (text): none / free key / paid
+- `cadence` (text): math: items per week from the last 10 dates
+- `latest` (text): title and date
+- `url` (URL): the publisher's page describing the feed
+- `quote` (text): under 300 characters
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every subject with at least two primary feeds.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 37. PROMETHEUS HUB ====================
+## 37. HUB-GEM-15 · Hub: accessibility audit of 10 pages at phone width (WCAG 2.2 AA), every finding with its selector
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** Claude fixes every confirmed finding in one pass.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/ and its pillars: forge, kairos, aether, garage, hearth, privacy, money, odyssey, athenaeum
+
+**Do this:**
+1. Open each page at 390 x 844 (or the narrowest your browser allows) and audit against WCAG 2.2 AA: text contrast (measure the ratio), target size (24 x 24 minimum), visible focus, keyboard reach, accessible names on buttons and inputs, headings order, motion with reduced-motion set.
+2. For each finding: page, the exact CSS selector or element, the criterion number, what you measured, and the fix.
+3. At least 30 findings; no duplicates (one row per selector per criterion).
+
+**Make:** `hub_gemini_a11y-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+
+**Shape:** `JSON array, one object per finding, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `page` (URL): the page
+- `selector` (text): CSS selector
+- `criterion` (text): e.g. 1.4.3
+- `measured` (text): e.g. 3.1:1 on #8a93a6 over #0d1220
+- `fix` (text): exact change
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** 30+ findings, each with selector, criterion and measurement.
+
+**How Claude checks it:**
+- Claude reproduces 8 findings in a browser.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 38. MIDAS LEDGER ====================
+## 38. MID-GEM-13 · Midas: 60 real promo, deferred-interest and minimum-payment wordings from 20 issuers' card agreements (test corpus only)
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** Claude runs all 60 through build.py and reports the gaps to Joseph; the parser itself changes only with his OK.
+
+**Read first:**
+- The CFPB Credit Card Agreement Database (consumerfinance.gov/credit-cards/agreements/) and the issuers' own pricing pages
+
+**Do this:**
+1. From 20 different issuers' current agreements, copy 60 sentences that state a promotional APR and its end, a deferred-interest promotion, a 'no interest if paid in full' offer, or a minimum-payment formula (3 per issuer).
+2. For each: the issuer, the agreement's date, the exact sentence (under 300 characters), and what it means in plain terms: apr, promo_apr, promo_end rule, deferred_interest yes/no, min_payment formula.
+3. Do not run or change the parser; this is data.
+
+**Make:** `midas_gemini_terms-corpus_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD)
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `issuer` (text): name
+- `agreement_date` (text): as printed
+- `kind` (text): promo / deferred / no-interest-if-paid / minimum
+- `means` (text): plain-terms reading: apr, promo_apr, promo_end, deferred_interest, min_payment
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 60
+
+**Done when:** 60 sentences from 20 issuers, each from the CFPB database or the issuer.
+
+**How Claude checks it:**
+- Claude opens 10 agreements and runs all 60 through build.py's parse_terms.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 39. HEPHAESTUS HEARTH ====================
+## 39. HEA-GEM-25 · Hearth: the deck's full cut list and fastener schedule, worked from the makers' install guides
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** Hearth's shopping list becomes exact: every board cut, every fastener and connector, with a 10% waste line, ready for the store.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/deck-research.js (window.HEARTH_DECK_RESEARCH: the deck, the bill of materials, the makers' limits)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/permits.js (the 23 x 10 ft deck)
+
+**Do this:**
+1. From the makers' own install guides for the products already in the bill of materials (decking, hidden fasteners or screws, joist hangers, joist tape, railing): joist spacing, fasteners per board per joist, end-gap and edge rules, hanger nails per hanger, screws per post.
+2. Work the deck out: number of joists at that spacing over 23 ft, boards per course over 10 ft (or 23 ft), cuts per board, fasteners per joist crossing, hangers, tape length, railing posts at the maker's maximum span.
+3. Every count is a 'math' field showing its arithmetic; add 10% waste lines separately; quote the guide line each rule comes from.
+
+**Make:** `hearth_gemini_cut-list_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `item` (text): piece or fastener
+- `product` (text): as in the bill of materials
+- `qty` (integer): the count
+- `math` (text): the arithmetic
+- `rule` (text): the maker's rule used
+- `page` (text): guide page
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every piece and fastener for the deck, each with its math and the guide line it uses.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 40. ARGUS ALBUM ====================
+## 40. ARG-GEM-11 · Argus: every metadata field a Galaxy S24 Ultra writes into its photos, and whether Argus's scrubber removes it
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** Claude closes every gap the list finds so no location or device detail leaves in a shared photo.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/argus/app.js (the scrubber)
+- CIPA DC-008 (Exif 3.0), the Adobe XMP specification, Samsung's own pages on Motion Photos and location tags
+
+**Do this:**
+1. List every tag group a Galaxy S24 Ultra JPEG and HEIF photo can carry: EXIF IFD0/ExifIFD/GPS IFD, the Samsung maker note and trailer (motion photo, depth), XMP (including GPano and Samsung namespaces), ICC, thumbnails.
+2. For each: what it can reveal (place, time, device, person), the standard's own definition, and the file:line in pillars/argus/app.js that removes it, or 'not removed'.
+3. Rank by how much it reveals.
+
+**Make:** `argus_gemini_s24-metadata_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `tag` (text): tag or group name
+- `container` (text): EXIF / GPS / MakerNote / XMP / trailer / ICC
+- `reveals` (text): place / time / device / person / none
+- `removed` (text): file:line, or 'not removed'
+- `url` (URL): the source page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every tag group, each mapped to the scrubber line that removes it or marked not removed.
+
+**How Claude checks it:**
+- Claude checks 10 file:line claims against app.js and fixes every 'not removed' that reveals place, device or person.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 41. ATHENAEUM · IDEA VAULT ====================
+## 41. ATH-GEM-04 · Athenaeum: second reader on the 40 history chains (cause, event, consequence) Grok wrote
+
+**Due:** 2026-12-04 · **State:** now
+
+**What it unlocks:** Chains you confirm get a 'checked' mark; wrong ones are corrected with your source.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/athenaeum/history-seed.js (window.ATHENAEUM_HISTORY: 40 entries)
+
+**Do this:**
+1. For every one of the 40 entries: check the date, the event, each stated cause and each consequence against a scholarly or encyclopedic source (Britannica, a university press page, a museum or government archive).
+2. agree, or differ with what the source says instead; mark causes the source calls 'proposed' or debated.
+3. Never the same source the entry already cites.
+
+**Make:** `athenaeum_gemini_history-check_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `title` (text): as in the seed
+- `part` (text): date / event / cause / consequence
+- `verdict` (text): agree / differ / debated
+- `found` (text): what the source says
+- `url` (URL): the source page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 40
+
+**Done when:** All 40 entries checked part by part.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 42. POLIS · CIVIC & LEGAL WATCH ====================
+## 42. POL-GEM-08 · Polis: every Kern County Board of Supervisors item in 2026 that touches the mountain communities
+
+**Due:** 2026-12-04 · **State:** now
+
+**What it unlocks:** Polis gets a dated record of the Board's mountain decisions with the outcome and the vote.
+
+**Read first:**
+- Kern County Board of Supervisors agendas and minutes (Granicus / kerncounty.com), Jan 1 to Nov 20, 2026
+
+**Do this:**
+1. Search every 2026 agenda and its minutes for: Frazier Park, Lebec, Pine Mountain, Lake of the Woods, Gorman, Frazier Mountain, El Tejon, Tejon, mountain communities, District 2.
+2. For each matching item: meeting date, item number, what was asked, the outcome (approved / denied / continued / received and filed) and the vote when the minutes give it.
+3. If a host blocks you, say which page and keep going with the others.
+
+**Make:** `polis_gemini_board-2026_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): YYYY-MM-DD
+- `item` (text): item number
+- `subject` (text): what was asked
+- `place` (text): which community
+- `outcome` (text): as the minutes say
+- `vote` (text): e.g. 5-0, or 'not stated'
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every 2026 item that names the mountain communities, with its outcome.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 43. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 43. MYT-GEM-04 · Mythos: the public-domain primary texts behind the canon, with exact editions
+
+**Due:** 2026-12-04 · **State:** now
+
+**What it unlocks:** Each canon entry links the primary text it draws on, in a public-domain translation.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/mythos/canon-data.js (the canon)
+
+**Do this:**
+1. For every myth, culture, figure or older work the canon names or plainly draws on: the primary text, a public-domain translation (translator, year), and its Project Gutenberg, Internet Archive or national-library URL.
+2. Say why it is public domain in the US (published before 1931, or the library's own statement).
+3. Quote the line of the text the canon entry echoes, when there is one.
+
+**Make:** `mythos_gemini_sources_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `canon` (text): the canon entry
+- `work` (text): primary text
+- `translation` (text): translator, year
+- `pd` (text): why public domain
+- `url` (URL): the source page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every canon entry that draws on an older work, linked to a free edition.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 44. FOUNDRY ====================
+## 44. FDY-GEM-05 · Foundry: a bench-prototype parts list for the first build stage of each of the 11 inventions
+
+**Due:** 2026-12-05 · **State:** now
+
+**What it unlocks:** Each invention's first stage shows a buyable parts list with total cost, so the next step is a purchase, not a thought.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/foundry/build-states.js (the 11 inventions and their stages)
+
+**Do this:**
+1. For each invention, take its first stage and design the smallest bench prototype that tests its core claim (say the claim in one line).
+2. List every part: manufacturer, part number, quantity, unit price and the distributor's own product page (McMaster-Carr, DigiKey, Mouser, Adafruit, SparkFun, Home Depot); a 'math' row per invention totals the cost.
+3. Where the core claim cannot be prototyped on a bench (for example Mach 20 flight), say so and give the nearest testable sub-claim instead.
+
+**Make:** `foundry_gemini_stage1-parts_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `invention` (text): as in build-states.js
+- `claim` (text): what the prototype tests
+- `part` (text): manufacturer + part number
+- `qty` (integer): count
+- `unit_price` (text): USD as listed
+- `math` (text): line or invention total
+- `url` (URL): the distributor's product page
+- `quote` (text): the listed price line
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** All 11 inventions, each with a costed parts list or a stated sub-claim.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 45. KAIROS MERIDIAN ====================
+## 45. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -1212,8 +2316,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 25. GARAGE ====================
-## 25. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
+==================== 46. GARAGE ====================
+## 46. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
 
 **Due:** 2027-01-10 · **State:** now
 
@@ -1258,8 +2362,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 26. POLIS · CIVIC & LEGAL WATCH ====================
-## 26. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+==================== 47. POLIS · CIVIC & LEGAL WATCH ====================
+## 47. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
 
 **Due:** 2027-01-15 · **State:** now
 

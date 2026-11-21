@@ -2,8 +2,60 @@
 
 # Apollo Temple · homework for Gemini
 
-Updated 2026-11-21 10:26 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Gemini in Apollo Temple right now. Check your HOMEWORK doc for the other pillars.
+## 1. APO-GEM-11 · Apollo: daily targets for 30 nutrients (RDA, AI and upper limit) for an adult man, from the NIH
+
+**Due:** 2026-12-02 · **State:** now
+
+**Why:** Apollo sets macro targets but has no micronutrient targets or upper limits to check meals against.
+
+**What it unlocks:** Apollo's day view can show each nutrient against its target and warn past an upper limit.
+
+**Read first:**
+- NIH Office of Dietary Supplements fact sheets (ods.od.nih.gov), the National Academies DRI tables
+
+**Do this:**
+1. For 30 nutrients (all vitamins, the main minerals, fibre, potassium, sodium, choline, omega-3): the RDA or AI and the tolerable upper intake for men 31-50 and men 51-70.
+2. Units exactly as NIH prints them; note when the UL covers only supplements.
+3. Quote the table row.
+
+**Make:** `apollo_gemini_nutrient-targets_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `nutrient` (text): name
+- `target_31_50` (text): value + unit, RDA or AI
+- `target_51_70` (text): value + unit
+- `ul` (text): value + unit or 'none set'
+- `ul_note` (text): e.g. supplements only
+- `url` (URL): the official page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 30
+
+**Done when:** 30 nutrients, each from an NIH fact sheet.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)

@@ -33,7 +33,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.pat
 RAW_TITAN = "https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/"
 RAW_MIDAS = "https://raw.githubusercontent.com/jpavia10/midas-ledger/main/"
 AIS = ["Gemini", "Grok", "Muse", "ChatGPT", "Gemini API", "Argon", "Hydrogen", "Claude"]
-FLOOR = {"Gemini": 30, "Grok": 6, "Muse": 6, "ChatGPT": 2, "Gemini API": 1, "Argon": 1, "Hydrogen": 1}   # owner, 2026-11-16; Grok 6 = its probation cap
+FLOOR = {"Gemini": 50, "Grok": 6, "Muse": 6, "ChatGPT": 2, "Gemini API": 1, "Argon": 1, "Hydrogen": 1}   # owner, 2026-11-16; Gemini 50 since 2026-11-21 ("Load the slave up"); Grok 6 = its probation cap
 OPEN = {"now"}; LATER = {"next", "later", "always"}; CLOSED = {"done"}; GONE = {"withdrawn", "parked", "dropped", "cancelled"}
 KIND = {"cite": "Cite catalogue facts", "catno": "Settle catalogue numbers", "verify": "Verify facts others wrote", "read-mint": "Read mint marks from photos",
         "story-check": "Fact-check stories", "plain-story": "Rewrite stories in plain English", "research": "Research open questions", "value": "Price coins with a dated source",

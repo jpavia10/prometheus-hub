@@ -311,6 +311,96 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): All checks pass. Lost a point: story 1, the error state, rule 4 and step 1 rest on a false defect: calc.js:50 has exported STAGES since Nov 17, so app.js never throws. Score 9/10 (#60).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Selling is shipping-only; its net-payout math depends on postage by weight and zone and each marketplace's current fees, which changed in 2026.",
+     "unlocks": "Selling's net calculator uses this year's real postage and fees.",
+     "inputs": [
+      "USPS Notice 123 (pe.usps.com) and the USPS retail price pages",
+      "eBay, Mercari and Facebook Marketplace seller fee pages"
+     ],
+     "steps": [
+      "USPS 2026: Ground Advantage and Priority Mail prices, retail and commercial, for 4 oz, 8 oz, 12 oz, 15.99 oz, 1 lb, 2 lb, 3 lb, 5 lb, zones 1-2 to 9, as Notice 123 prints them.",
+      "Marketplaces: the final value / selling fee percentages, per-order fees, payment processing, shipping-label discounts, and any category exceptions for collectibles and coins.",
+      "Quote the line or table row for each number."
+     ],
+     "deliver": {
+      "file": "selling_gemini_fees-2026_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "source",
+       "type": "text",
+       "rule": "USPS / eBay / Mercari / Facebook"
+      },
+      {
+       "name": "service",
+       "type": "text",
+       "rule": "e.g. Ground Advantage retail"
+      },
+      {
+       "name": "weight",
+       "type": "text",
+       "rule": "e.g. 12 oz, or 'n/a'"
+      },
+      {
+       "name": "zone",
+       "type": "text",
+       "rule": "e.g. 5, or 'n/a'"
+      },
+      {
+       "name": "amount",
+       "type": "text",
+       "rule": "price or percentage as printed"
+      },
+      {
+       "name": "effective",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page or PDF"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "The full USPS grid asked for and every marketplace fee, each quoted.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "SEL-GEM-06",
+     "title": "Selling: 2026 shipping and seller-fee tables (USPS Ground Advantage and Priority, eBay, Mercari, Facebook)",
+     "due": "2026-12-01"
     }
    ]
   },

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21 10:26 UTC",
+ "updated": "2026-11-21 15:56 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -718,6 +718,17 @@
   },
   {
    "due": "2026-11-30",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AET-GEM-13",
+   "title": "Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)",
+   "state": "now",
+   "count": 26
+  },
+  {
+   "due": "2026-11-30",
    "pillar": "bastion",
    "pillar_name": "Bastion · Mountain Prep",
    "ai": "gemini",
@@ -746,6 +757,17 @@
    "ai_name": "Gemini",
    "id": "GAM-GEM-06",
    "title": "Games: Anno 117 updates and roadmap, from Ubisoft's own pages",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-30",
+   "pillar": "garage",
+   "pillar_name": "Garage",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAR-GEM-14",
+   "title": "Garage: every warning and indicator light on both vehicles, from the owner's manuals",
    "state": "now",
    "count": 0
   },
@@ -781,6 +803,215 @@
    "title": "Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com)",
    "state": "now",
    "count": 25
+  },
+  {
+   "due": "2026-11-30",
+   "pillar": "privacy",
+   "pillar_name": "Privacy · CA DROP",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PRI-GEM-11",
+   "title": "Privacy: harden the Galaxy S24 Ultra, 50 settings from Samsung's own pages",
+   "state": "now",
+   "count": 50
+  },
+  {
+   "due": "2026-12-01",
+   "pillar": "hermes",
+   "pillar_name": "Hermes Post",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HER-GEM-10",
+   "title": "Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-12-01",
+   "pillar": "icarus",
+   "pillar_name": "Icarus Stake",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ICA-GEM-12",
+   "title": "Icarus: the 20 trading rules a rule auditor must know, quoted from FINRA, the SEC, the Fed and the IRS",
+   "state": "now",
+   "count": 20
+  },
+  {
+   "due": "2026-12-01",
+   "pillar": "records",
+   "pillar_name": "Records · Paper Killer",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "REC-GEM-08",
+   "title": "Records: every record to change after moving from Texas to California, with its deadline",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-01",
+   "pillar": "selling",
+   "pillar_name": "Selling Pipeline",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "SEL-GEM-06",
+   "title": "Selling: 2026 shipping and seller-fee tables (USPS Ground Advantage and Priority, eBay, Mercari, Facebook)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-02",
+   "pillar": "apollo",
+   "pillar_name": "Apollo Temple",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "APO-GEM-11",
+   "title": "Apollo: daily targets for 30 nutrients (RDA, AI and upper limit) for an adult man, from the NIH",
+   "state": "now",
+   "count": 30
+  },
+  {
+   "due": "2026-12-02",
+   "pillar": "bastion",
+   "pillar_name": "Bastion · Mountain Prep",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "BAS-GEM-09",
+   "title": "Bastion: the official checklists for snowbound, PSPS, evacuation and the go-bag, item by item",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-02",
+   "pillar": "forge",
+   "pillar_name": "Forge",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "FOR-GEM-05",
+   "title": "Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch",
+   "state": "now",
+   "count": 30
+  },
+  {
+   "due": "2026-12-02",
+   "pillar": "observatory",
+   "pillar_name": "Observatory",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "OBS-GEM-05",
+   "title": "Observatory: the official feeds for every subject it watches (RSS, Atom or API), with cadence",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-02",
+   "pillar": "piano",
+   "pillar_name": "Bossa Piano Studio",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PIA-GEM-07",
+   "title": "Piano: the reference recording for each of the 24 bossa tunes (first and definitive)",
+   "state": "now",
+   "count": 24
+  },
+  {
+   "due": "2026-12-02",
+   "pillar": "privacy",
+   "pillar_name": "Privacy · CA DROP",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PRI-GEM-12",
+   "title": "Privacy: sign-in security for the 25 services in Continuity's list (2FA, passkeys, recovery)",
+   "state": "now",
+   "count": 25
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "argus",
+   "pillar_name": "Argus Album",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ARG-GEM-11",
+   "title": "Argus: every metadata field a Galaxy S24 Ultra writes into its photos, and whether Argus's scrubber removes it",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-25",
+   "title": "Hearth: the deck's full cut list and fastener schedule, worked from the makers' install guides",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-15",
+   "title": "Hub: accessibility audit of 10 pages at phone width (WCAG 2.2 AA), every finding with its selector",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-13",
+   "title": "Midas: 60 real promo, deferred-interest and minimum-payment wordings from 20 issuers' card agreements (test corpus only)",
+   "state": "now",
+   "count": 60
+  },
+  {
+   "due": "2026-12-04",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-04",
+   "title": "Athenaeum: second reader on the 40 history chains (cause, event, consequence) Grok wrote",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-12-04",
+   "pillar": "mythos",
+   "pillar_name": "Mythos · Creative & Lore Studio",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MYT-GEM-04",
+   "title": "Mythos: the public-domain primary texts behind the canon, with exact editions",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-04",
+   "pillar": "polis",
+   "pillar_name": "Polis · Civic & Legal Watch",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "POL-GEM-08",
+   "title": "Polis: every Kern County Board of Supervisors item in 2026 that touches the mountain communities",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-05",
+   "pillar": "foundry",
+   "pillar_name": "Foundry",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "FDY-GEM-05",
+   "title": "Foundry: a bench-prototype parts list for the first build stage of each of the 11 inventions",
+   "state": "now",
+   "count": 0
   },
   {
    "due": "2026-12-31",

@@ -397,6 +397,90 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): All checks pass. Lost a point: story 8, rule 8 and step 1 of the order of work are built on a defect that is not there: lookup.js saves through PK.store, which already sends pk:store (kit/kit.js:53, since Nov 13). Score 9/10 (#59).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Apollo sets macro targets but has no micronutrient targets or upper limits to check meals against.",
+     "unlocks": "Apollo's day view can show each nutrient against its target and warn past an upper limit.",
+     "inputs": [
+      "NIH Office of Dietary Supplements fact sheets (ods.od.nih.gov), the National Academies DRI tables"
+     ],
+     "steps": [
+      "For 30 nutrients (all vitamins, the main minerals, fibre, potassium, sodium, choline, omega-3): the RDA or AI and the tolerable upper intake for men 31-50 and men 51-70.",
+      "Units exactly as NIH prints them; note when the UL covers only supplements.",
+      "Quote the table row."
+     ],
+     "deliver": {
+      "file": "apollo_gemini_nutrient-targets_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 30,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "nutrient",
+       "type": "text",
+       "rule": "name"
+      },
+      {
+       "name": "target_31_50",
+       "type": "text",
+       "rule": "value + unit, RDA or AI"
+      },
+      {
+       "name": "target_51_70",
+       "type": "text",
+       "rule": "value + unit"
+      },
+      {
+       "name": "ul",
+       "type": "text",
+       "rule": "value + unit or 'none set'"
+      },
+      {
+       "name": "ul_note",
+       "type": "text",
+       "rule": "e.g. supplements only"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page or PDF"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "30 nutrients, each from an NIH fact sheet.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "APO-GEM-11",
+     "title": "Apollo: daily targets for 30 nutrients (RDA, AI and upper limit) for an adult man, from the NIH",
+     "due": "2026-12-02"
     }
    ]
   },

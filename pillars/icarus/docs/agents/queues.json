@@ -474,6 +474,84 @@
      "id": "ICA-GEM-11",
      "title": "Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports)",
      "due": "2026-11-30"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Icarus audits trades against rules; it should hold the actual regulatory text for pattern day trading, margin, settlement, free-riding and wash sales.",
+     "unlocks": "Icarus can flag a trade that would break a real rule and show the rule's own words.",
+     "inputs": [
+      "finra.org rulebook (Rule 4210), sec.gov (T+1), federalreserve.gov Regulation T, irs.gov Publication 550"
+     ],
+     "steps": [
+      "Quote and explain 20 rules: the PDT definition and its $25,000 minimum equity, the day-trading buying power, margin calls, Reg T initial margin, T+1 settlement, good-faith and free-riding violations in cash accounts, the 90-day restriction, wash sales (30 days either side), options exercise and assignment cut-offs, short-sale locate.",
+      "For each: what triggers it, the consequence, and the rule number."
+     ],
+     "deliver": {
+      "file": "icarus_gemini_trading-rules_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "name"
+      },
+      {
+       "name": "ref",
+       "type": "text",
+       "rule": "rule number or publication"
+      },
+      {
+       "name": "trigger",
+       "type": "text",
+       "rule": "what sets it off"
+      },
+      {
+       "name": "consequence",
+       "type": "text",
+       "rule": "what happens"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page or PDF"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "20 rules, each quoted from its regulator.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ICA-GEM-12",
+     "title": "Icarus: the 20 trading rules a rule auditor must know, quoted from FINRA, the SEC, the Fed and the IRS",
+     "due": "2026-12-01"
     }
    ]
   },

@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 
 - GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,15 +16,17 @@ Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 2 open in this pillar.
 
 
+- GAR-GEM-14 · Garage: every warning and indicator light on both vehicles, from the owner's manuals · due 2026-11-30
+    make: garage_gemini_lights_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every light in both manuals' cluster chapters.
 - GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
     make: garage_gemini_ca-fees-2027_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every fees.js amount checked against DMV's 2027 page.
 
 ## Muse
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 
 - GAR-MUS-04 · Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles' · due 2026-11-28
@@ -32,7 +34,7 @@ Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 
 - GAR-GPT-01 · Garage: phone audit: 15 findings · due 2026-11-24
@@ -40,14 +42,14 @@ Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Garage right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Garage right now.

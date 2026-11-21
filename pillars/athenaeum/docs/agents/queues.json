@@ -171,6 +171,85 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#66).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Athenaeum's history shelf holds 40 cause-event-consequence chains from Grok's pass; no second reader has checked them.",
+     "unlocks": "Chains you confirm get a 'checked' mark; wrong ones are corrected with your source.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/athenaeum/history-seed.js (window.ATHENAEUM_HISTORY: 40 entries)"
+     ],
+     "steps": [
+      "For every one of the 40 entries: check the date, the event, each stated cause and each consequence against a scholarly or encyclopedic source (Britannica, a university press page, a museum or government archive).",
+      "agree, or differ with what the source says instead; mark causes the source calls 'proposed' or debated.",
+      "Never the same source the entry already cites."
+     ],
+     "deliver": {
+      "file": "athenaeum_gemini_history-check_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 40,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": "as in the seed"
+      },
+      {
+       "name": "part",
+       "type": "text",
+       "rule": "date / event / cause / consequence"
+      },
+      {
+       "name": "verdict",
+       "type": "text",
+       "rule": "agree / differ / debated"
+      },
+      {
+       "name": "found",
+       "type": "text",
+       "rule": "what the source says"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the source page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 40 entries checked part by part.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ATH-GEM-04",
+     "title": "Athenaeum: second reader on the 40 history chains (cause, event, consequence) Grok wrote",
+     "due": "2026-12-04"
     }
    ]
   },

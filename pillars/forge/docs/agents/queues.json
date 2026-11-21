@@ -213,6 +213,87 @@
      "due": "2026-11-28",
      "review": "Done 2026-11-19: tools/kit/check_delivery.mjs + 12 tests (pass) in the repo; run on 16 real deliveries the same day it caught 9 real issues (long quotes, a home-page URL, two placeholder counts). Score 10/10 (#25).",
      "closed": "2026-11-19"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "The Forge says what is out and due; if it miscounts, the owner's view of every AI's load is wrong.",
+     "unlocks": "Claude fixes every builder bug you find, with a regression test.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/forge/",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/forge.json (the snapshot)",
+      "the pillars' docs/agents/queues.json files and Titan's docs/agents/QUEUE_*.md pages"
+     ],
+     "steps": [
+      "Pick 30 tasks at random across at least 12 pillars and Titan (show your random method).",
+      "For each, compare what the Forge shows (status, due, late flag, owner, item count, score when closed) with the task's own queue entry.",
+      "Report every mismatch with both values and the file:line on each side; a match is a row too ('agree')."
+     ],
+     "deliver": {
+      "file": "forge_gemini_audit_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per task checked, exactly the fields below"
+     },
+     "count": 30,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "task",
+       "type": "text",
+       "rule": "task id"
+      },
+      {
+       "name": "field",
+       "type": "text",
+       "rule": "status / due / late / owner / items / score"
+      },
+      {
+       "name": "forge_says",
+       "type": "text",
+       "rule": "what the Forge shows"
+      },
+      {
+       "name": "queue_says",
+       "type": "text",
+       "rule": "what the queue says"
+      },
+      {
+       "name": "verdict",
+       "type": "text",
+       "rule": "agree / mismatch"
+      },
+      {
+       "name": "where",
+       "type": "text",
+       "rule": "file:line on both sides"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "30 tasks compared field by field.",
+     "checks": [
+      "Claude re-checks every mismatch."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "FOR-GEM-05",
+     "title": "Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch",
+     "due": "2026-12-02"
     }
    ]
   },

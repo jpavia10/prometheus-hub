@@ -448,6 +448,86 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): All checks pass; 105 refs. Score 10/10 (#69).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Argus scrubs EXIF before a photo is shared, but nobody has listed what the S24 Ultra actually embeds (GPS, maker notes, motion-photo trailers, XMP) against what the scrubber strips.",
+     "unlocks": "Claude closes every gap the list finds so no location or device detail leaves in a shared photo.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/argus/app.js (the scrubber)",
+      "CIPA DC-008 (Exif 3.0), the Adobe XMP specification, Samsung's own pages on Motion Photos and location tags"
+     ],
+     "steps": [
+      "List every tag group a Galaxy S24 Ultra JPEG and HEIF photo can carry: EXIF IFD0/ExifIFD/GPS IFD, the Samsung maker note and trailer (motion photo, depth), XMP (including GPano and Samsung namespaces), ICC, thumbnails.",
+      "For each: what it can reveal (place, time, device, person), the standard's own definition, and the file:line in pillars/argus/app.js that removes it, or 'not removed'.",
+      "Rank by how much it reveals."
+     ],
+     "deliver": {
+      "file": "argus_gemini_s24-metadata_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "tag",
+       "type": "text",
+       "rule": "tag or group name"
+      },
+      {
+       "name": "container",
+       "type": "text",
+       "rule": "EXIF / GPS / MakerNote / XMP / trailer / ICC"
+      },
+      {
+       "name": "reveals",
+       "type": "text",
+       "rule": "place / time / device / person / none"
+      },
+      {
+       "name": "removed",
+       "type": "text",
+       "rule": "file:line, or 'not removed'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the source page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every tag group, each mapped to the scrubber line that removes it or marked not removed.",
+     "checks": [
+      "Claude checks 10 file:line claims against app.js and fixes every 'not removed' that reveals place, device or person."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ARG-GEM-11",
+     "title": "Argus: every metadata field a Galaxy S24 Ultra writes into its photos, and whether Argus's scrubber removes it",
+     "due": "2026-12-03"
     }
    ]
   },

@@ -1,45 +1,35 @@
 <!-- doc-status: current; normative: yes (for the run it describes) -->
-# Gemini: full work run (prompt, run 3, 2026-11-20: capability trials first)
+# Gemini: full work run (prompt, run 4, 2026-11-21: loaded up)
 
-Joseph pastes the block below into a new Gemini chat on whichever model he is testing (run 1 and 2 were Gemini 4 Neon). It points to
-the live pages, so it stays current. Owner, 2026-11-20: "Add more demanding homework first test this new models capabilities": the run
-starts with five trials that Claude scores against sealed answers or its own measurements (HUB-GEM-11..14, MID-GEM-12), then Odyssey
-and the rest. Run 1 scored 9.4 on average (rows #8-#25). Claude scores the run from the files and the run report
-(collaborators/CONTRIBUTOR_SCORES.md in both repos; the photo trials also go into Titan's collaborators/MODEL_ACCURACY.md).
+Joseph pastes the block below into a new Gemini chat. It points to the live pages, so it stays current. Owner, 2026-11-21: "Increase scope
+and complexity of tasks. Load the slave up": about 55 Prometheus tasks (many 25-80 rows, several worked out with arithmetic) and six large
+Titan project parts (469 facts), on top of the two coin-photo trials still open. Run 3 scored 9.7 on the specs and 9.3 on research
+(rows #53-#89); Claude scores this run the same way (collaborators/CONTRIBUTOR_SCORES.md in each repo; the photo trials also go into
+Titan's collaborators/MODEL_ACCURACY.md).
 
 ```text
-You are Gemini, doing homework for Joseph Pavia's projects: Prometheus Hub (his personal app, 27 pillars) and Titan Reliquary (his coin collection). Claude is the integrator: it checks every file you deliver against its sources, scores it, and builds what passes into the apps. This run starts with a test of what you can do: five trials scored against sealed answers or measured results, not opinion. Work to the highest standard you are capable of: exact, verified, complete, and honest about anything you could not verify. First line of your run report: your exact model name and version as this app shows it.
+You are Gemini, doing homework for Joseph Pavia's projects: Prometheus Hub (his personal app, 27 pillars) and Titan Reliquary (his coin collection). Claude is the integrator: it checks every file you deliver against its sources, scores it, and builds what passes into the apps. This is a long run with a heavy load: work through as much as this chat allows, to the highest standard you are capable of: exact, verified, complete, and honest about anything you could not verify. First line of your run report: your exact model name and version as this app shows it.
 
-WHERE THE WORK IS (open both now and read them in full; you have the context for it):
-1. Prometheus homework, every pillar, in order: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/drive/HOMEWORK_gemini.txt
-   It lists every task "to do" (about 56), the five trials first. Each has the exact file name, folder, fields, count, sources and how Claude checks it. Tasks under "DELIVERED, WAITING FOR THEIR CHECK" at the end are already done: never redo them.
+WHERE THE WORK IS (open both now and read them in full):
+1. Prometheus homework, every pillar: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/drive/HOMEWORK_gemini.txt
+   Every task "to do" (about 55), each with its exact file name, folder, fields, count, sources and how Claude checks it. Tasks under "DELIVERED, WAITING FOR THEIR CHECK" are done: never redo them.
 2. Titan work queue: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md
-   Its own order (projects, then homework sheets). Titan files are change files in the format that page and https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/AI_START_HERE.md describe.
+   Its projects (second sources, round 2, parts 1-4; type gaps, parts 1-2; photo-read facts) and homework sheets. Titan files are change files in the format that page and https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/AI_START_HERE.md describe.
 Rules for every Prometheus pillar: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 ORDER:
-TRIALS FIRST, in this order (each is task 1-5 on the homework page, with every field and check):
-T1. HUB-GEM-11: Titan's blind coin-photo test, main pack (30 photos). Follow the pack's own PROMPT.md word for word. Blind means blind: never open the Titan repository's data, its other photos, or any earlier answer to this test, including your own in past chats or Drive (a looked-up answer is invalid). Answer null when unsure: a confident wrong answer costs more than a blank. Best so far on this pack: 85 % core accuracy. The bar for Titan's Phase 2 research: 95 % core, 1 % or less invented, 5 % or less false confidence.
-T2. HUB-GEM-12: the same test, locked pack (15 hard coins). Best so far: 76 %.
-T3. HUB-GEM-13: from the code alone, what keeps the home screen and Athenaeum below 60 frames a second on a phone (Claude measured about 33 and 47 at rest with the CPU slowed 4x). Each finding with the arithmetic behind its cost, a toggle that removes only that cost, and a fix that keeps the look. Claude measures every toggle.
-T4. HUB-GEM-14: real defects in the shared kit and the Forge, each with steps Claude can follow to see it. Precision counts more than number.
-T5. MID-GEM-12: 30 cases for the Midas terms parser, and for each, what build.py returns today, worked out line by line. Claude runs all 30.
-After the trials, put one line per trial in the run report: what you found hardest and how sure you are.
+1. Trials 1 and 2, now unblocked: HUB-GEM-11 (main pack, 30 coins) and HUB-GEM-12 (locked pack, 15). The photos and both PROMPT.md files are in Drive: https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_ (subfolders pack-20261008-main and pack-20261008-locked). Follow each pack's PROMPT.md word for word. Blind means blind: never open Titan's data, its other photos or any earlier answer to this test. Answer null when unsure. Best so far: 85 % core (main), 76 % (locked).
+2. Odyssey, Joseph's priority: ODY-GEM-05, 06, 07, 08, 11, 09, 12 (his trips, his USA, the trips day by day, the photos in the app, landmarks, every good photo ranked). Use Google Photos' Info panel and map. Name people only as Google Photos' face groups name them.
+3. Every other Prometheus task by due date (earliest first): the homework page lists them in order. The big ones need arithmetic (Hearth's cut list, Aether's PVWatts year, Foundry's costed parts lists): show the arithmetic in the "math" field exactly as the task says.
+4. Titan's projects in the queue's order, then its homework sheets.
 
-A. Odyssey first (Joseph's own photos, his priority): ODY-GEM-05 (every trip in Google Photos 2008-2026), ODY-GEM-06 (his USA), ODY-GEM-07 and ODY-GEM-08 (the three known trips day by day), ODY-GEM-11 (the 36 photos already in the app), ODY-GEM-09 (landmarks), ODY-GEM-10 (city cards), ODY-GEM-12 (every good photo of every trip, ranked within the trip: no cap on photos or trips; Joseph, 2026-11-20). Use Google Photos' Info panel and map for dates, zones and places. People are fine in photos and in what you write about them (Joseph, 2026-11-20): name people only as Google Photos' face groups name them, never guess.
-B. The two that were blocked in run 1, now unblocked: PRI-GEM-07 (the 72 broker names are in Drive: privacy_INPUT_broker-names_20261119.txt in the Prometheus Hub incoming folder) and AET-GEM-08 (open NCEI's data service as JSON in the browser; the task says how).
-C. Then every other Prometheus task in the order of the homework page. The 25 function specs you wrote on 2026-11-16 are back on it (SENT BACK, due 2026-11-30): write each again from the live code; the reason is under each task.
-D. Then Titan: "AI-guessed facts, part 1b" (the 6 lines that bounced), then the homework sheets.
-
-WHAT RUN 1 TAUGHT (Claude's checks of your 2026-11-19 files; keep doing the first, fix the rest):
-- The 25 function specs of 2026-11-16 scored 4.3 and all came back: each had about a third of what the task asks (2-4 stories where 8 are needed and none in the 'As Joseph, when ..., I want ..., so that ...' form; 2-3 rules for 10; 3 tests for 12 and none Given/when/then; no data table), half the code lines Claude opened pointed at other code, hub/money/forge used a different template with line ranges past the end of the file, and several copied Joseph's street address and household names from other drops. A spec uses only the pillar's own code and data; never a street address.
-- Excellent: official sources only, "not stated" instead of guesses, honest blockers, and the "problems I found" list (the Kern snow-load conflict and the C053 mint letter were real finds).
-- Keep every quote under 300 characters (one sentence is enough).
-- Copy `old` values exactly, Unicode included: two Titan lines were rejected because Cyrillic and Devanagari letters were lost.
-- A Titan type id must exist in the record (collection/types): two lines used ids that do not.
-- Never cite a site's home page as the source of a value: link the page that states it.
-- Cite the code edition in force today (California's 2025 codes since 2026-01-01, not 2022).
-- Before saving a Prometheus file, run `node tools/kit/check_delivery.mjs <file>` from a fresh checkout of jpavia10/prometheus-hub if you can run code; it is your own checker, now in the repo. Since 2026-11-20 it also checks a spec's heading order, its counts (stories, rules, Given/when/then tests, the data table) and opens every file:line; all 25 of the Nov 16 specs fail it.
+WHAT RUN 3 TAUGHT (keep the first, fix the rest):
+- Excellent: Aether's 84 monthly normals all equal NOAA's file; the 2027 dates all check out; the Titan fixes were exact; two real bugs found (Continuity's 310k label, Kin's role filter). Honest partials ("not stated", "none found") are right, and they score.
+- Never report a check as passed unless you saw it pass. Five specs wrote their tests inline ("F1. ... F2. ...") and failed the checker of the day while the report said 26/26. One test per line; paste what the checker printed.
+- Before you call code broken, open the line and the function it calls. Selling's STAGES is exported (calc.js:50) and Apollo's saves already send pk:store through PK.store: two specs were built on defects that do not exist.
+- A file:line points at the rule itself, not a nearby range (the Midas autopay rule is build.py:469-472 and BOOK_SCHEMA.md:26).
+- A task that needs dates nobody has published yet: send what is published and say what is not, with the page and the date you looked (Polis 2027 went back for having no dates at all).
+- Keep every quote under 300 characters, copy Titan `old` values exactly (Unicode included), and never cite a home page for a value.
 
 HARD RULES (a file that breaks one is rejected whole):
 - Every URL is a page you opened today on the official source the task names (maker, agency, store, standard). Never a blog, forum, wiki, reseller or AI summary, unless the task allows it.
@@ -58,9 +48,9 @@ FOLDERS (save straight into these Drive folders):
 Each task's own "folder" line decides; these links are the same folders.
 
 AFTER EACH TASK (before starting the next, so nothing is lost if this chat ends):
-1. Check the file against the task's self-check and "rejected if" lines; fix it before saving.
+1. Check the file against the task's self-check and "rejected if" lines; if you can run code, run `node tools/kit/check_delivery.mjs <file>` from a fresh checkout of jpavia10/prometheus-hub and fix every FAIL before saving.
 2. Save the file in its folder.
-3. Prometheus tasks only: open the ONE ledger file https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view and EDIT it: add {"key": "<task id>", "by": "gemini", "what": "<file name> in <folder> (<your model name>)", "ts": "<now, UTC, ISO 8601>"} to its "done" list and set "updated". Never upload a second copy of that file.
+3. Prometheus tasks only: save DONE_<task id>.json next to the file ({"key": "<task id>", "by": "gemini", "what": "<file name> in <folder> (<your model name>)", "ts": "<now, UTC, ISO 8601>"}). If you can edit the ledger https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view instead, add the same object to its "done" list; never upload a second copy of it.
 
 RUN REPORT (this is how you exceed expectations: be precise about your own work):
 Keep one file in the Prometheus Hub incoming folder named gemini_run-report_{YYYYMMDD-HHMM}.md (stamp of when you started), updated after every task:
@@ -71,5 +61,5 @@ Keep one file in the Prometheus Hub incoming folder named gemini_run-report_{YYY
 
 If you cannot do something (a page will not open, you cannot save to Drive, you cannot run code, you run out of room in this chat), say so in the run report and move to the next task. Never invent a result to fill the gap. When Joseph says "continue", read your run report and pick up where you stopped.
 
-Start now with T1: HUB-GEM-11.
+Start now with trial 1: HUB-GEM-11.
 ```

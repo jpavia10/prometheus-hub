@@ -258,6 +258,95 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): All checks pass; 104 refs. Score 10/10 (#71).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Foundry turns inventions into builds one stage at a time, but no stage has real parts, prices or suppliers.",
+     "unlocks": "Each invention's first stage shows a buyable parts list with total cost, so the next step is a purchase, not a thought.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/foundry/build-states.js (the 11 inventions and their stages)"
+     ],
+     "steps": [
+      "For each invention, take its first stage and design the smallest bench prototype that tests its core claim (say the claim in one line).",
+      "List every part: manufacturer, part number, quantity, unit price and the distributor's own product page (McMaster-Carr, DigiKey, Mouser, Adafruit, SparkFun, Home Depot); a 'math' row per invention totals the cost.",
+      "Where the core claim cannot be prototyped on a bench (for example Mach 20 flight), say so and give the nearest testable sub-claim instead."
+     ],
+     "deliver": {
+      "file": "foundry_gemini_stage1-parts_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "invention",
+       "type": "text",
+       "rule": "as in build-states.js"
+      },
+      {
+       "name": "claim",
+       "type": "text",
+       "rule": "what the prototype tests"
+      },
+      {
+       "name": "part",
+       "type": "text",
+       "rule": "manufacturer + part number"
+      },
+      {
+       "name": "qty",
+       "type": "integer",
+       "rule": "count"
+      },
+      {
+       "name": "unit_price",
+       "type": "text",
+       "rule": "USD as listed"
+      },
+      {
+       "name": "math",
+       "type": "text",
+       "rule": "line or invention total"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the distributor's product page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the listed price line"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 11 inventions, each with a costed parts list or a stated sub-claim.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "FDY-GEM-05",
+     "title": "Foundry: a bench-prototype parts list for the first build stage of each of the 11 inventions",
+     "due": "2026-12-05"
     }
    ]
   },

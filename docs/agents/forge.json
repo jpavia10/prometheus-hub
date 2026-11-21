@@ -1,6 +1,6 @@
 {
- "built": "2026-11-21T10:26:16Z",
- "checked": "2026-11-21T10:26:16Z",
+ "built": "2026-11-21T15:56:04Z",
+ "checked": "2026-11-21T15:56:04Z",
  "version": 2,
  "today": "2026-11-21",
  "sources": {
@@ -23,28 +23,28 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 105,
+  "todo": 132,
   "late": 4,
-  "due7": 82,
+  "due7": 85,
   "delivered": 5,
   "queued": 12,
   "withdrawn": 110
  },
  "per": {
   "Gemini": {
-   "todo": 28,
+   "todo": 55,
    "late": 0,
-   "due7": 18,
+   "due7": 21,
    "delivered": 5,
    "queued": 2,
    "done7": 81,
    "withdrawn": 68,
-   "items": 181,
-   "floor": 30,
+   "items": 526,
+   "floor": 50,
    "by": {
-    "hub": 26,
+    "hub": 47,
     "titan": 1,
-    "tproj": 1,
+    "tproj": 7,
     "board": 0
    },
    "probation": false,
@@ -264,11 +264,11 @@
  },
  "places": {
   "Prometheus Hub": {
-   "todo": 5,
+   "todo": 6,
    "delivered": 0,
    "by": {
     "Grok": 1,
-    "Gemini": 2,
+    "Gemini": 3,
     "Muse": 2
    }
   },
@@ -282,28 +282,29 @@
    }
   },
   "Hephaestus Hearth": {
-   "todo": 3,
+   "todo": 4,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 1,
     "ChatGPT": 1
    }
   },
   "Garage": {
-   "todo": 4,
+   "todo": 5,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 1,
     "Muse": 1,
     "ChatGPT": 1
    }
   },
   "Apollo Temple": {
-   "todo": 1,
+   "todo": 2,
    "delivered": 0,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -317,20 +318,6 @@
    }
   },
   "Selling Pipeline": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Records": {
-   "todo": 1,
-   "delivered": 1,
-   "by": {
-    "Grok": 1
-   }
-  },
-  "Icarus Stake": {
    "todo": 2,
    "delivered": 0,
    "by": {
@@ -338,34 +325,52 @@
     "Grok": 1
    }
   },
-  "Hermes Post": {
-   "todo": 1,
-   "delivered": 0,
+  "Records": {
+   "todo": 2,
+   "delivered": 1,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
-  "Bossa Piano Studio": {
+  "Icarus Stake": {
    "todo": 3,
    "delivered": 0,
-   "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 1
-   }
-  },
-  "Bastion": {
-   "todo": 3,
-   "delivered": 1,
    "by": {
     "Gemini": 2,
     "Grok": 1
    }
   },
-  "Athenaeum": {
-   "todo": 1,
+  "Hermes Post": {
+   "todo": 2,
    "delivered": 0,
    "by": {
+    "Gemini": 1,
+    "Grok": 1
+   }
+  },
+  "Bossa Piano Studio": {
+   "todo": 4,
+   "delivered": 0,
+   "by": {
+    "Gemini": 2,
+    "Grok": 1,
+    "Muse": 1
+   }
+  },
+  "Bastion": {
+   "todo": 4,
+   "delivered": 1,
+   "by": {
+    "Gemini": 3,
+    "Grok": 1
+   }
+  },
+  "Athenaeum": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -379,18 +384,19 @@
    }
   },
   "Privacy": {
-   "todo": 4,
+   "todo": 6,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
+    "Gemini": 4,
     "Grok": 1,
     "Muse": 1
    }
   },
   "Argus Album": {
-   "todo": 1,
+   "todo": 2,
    "delivered": 1,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -403,23 +409,26 @@
    }
   },
   "Forge": {
-   "todo": 1,
+   "todo": 2,
    "delivered": 0,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
   "Foundry": {
-   "todo": 1,
+   "todo": 2,
    "delivered": 1,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
   "Observatory": {
-   "todo": 1,
+   "todo": 2,
    "delivered": 1,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -433,26 +442,27 @@
    }
   },
   "Aether": {
-   "todo": 4,
+   "todo": 5,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
+    "Gemini": 3,
     "Grok": 1,
     "Muse": 1
    }
   },
   "Polis": {
-   "todo": 2,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 1
    }
   },
   "Mythos": {
-   "todo": 1,
+   "todo": 2,
    "delivered": 0,
    "by": {
+    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -466,18 +476,19 @@
    }
   },
   "Midas Ledger": {
-   "todo": 3,
+   "todo": 4,
    "delivered": 0,
    "by": {
+    "Gemini": 1,
     "Grok": 2,
     "ChatGPT": 1
    }
   },
   "Titan": {
-   "todo": 33,
+   "todo": 39,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
+    "Gemini": 8,
     "Grok": 17,
     "Muse": 12,
     "Gemini API": 2
@@ -1087,6 +1098,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-15",
+   "title": "Hub: accessibility audit of 10 pages at phone width (WCAG 2.2 AA), every finding with its selector",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Trial 4 showed you find real defects with exact steps; nothing has audited the hub's pages for contrast, target size, focus and labels.",
+    "steps": [
+     "Open each page at 390 x 844 (or the narrowest your browser allows) and audit against WCAG 2.2 AA: text contrast (measure the ratio), target size (24 x 24 minimum), visible focus, keyboard reach, accessible names on buttons and inputs, headings order, motion with reduced-motion set.",
+     "For each finding: page, the exact CSS selector or element, the criterion number, what you measured, and the fix.",
+     "At least 30 findings; no duplicates (one row per selector per criterion)."
+    ],
+    "make": "hub_gemini_a11y-audit_{YYYYMMDD-HHMM}.json",
+    "folder": "Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/",
+    "shape": "JSON array, one object per finding, exactly the fields below",
+    "done": "30+ findings, each with selector, criterion and measurement.",
+    "checks": [
+     "Claude reproduces 8 findings in a browser."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
    },
@@ -2562,6 +2605,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hephaestus Hearth",
+   "pid": "hearth",
+   "id": "HEA-GEM-25",
+   "title": "Hearth: the deck's full cut list and fastener schedule, worked from the makers' install guides",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Hearth has the deck's size, its boards, its prices and the makers' limits, but not how many of each piece to cut and how many fasteners each step takes.",
+    "steps": [
+     "From the makers' own install guides for the products already in the bill of materials (decking, hidden fasteners or screws, joist hangers, joist tape, railing): joist spacing, fasteners per board per joist, end-gap and edge rules, hanger nails per hanger, screws per post.",
+     "Work the deck out: number of joists at that spacing over 23 ft, boards per course over 10 ft (or 23 ft), cuts per board, fasteners per joist crossing, hangers, tape length, railing posts at the maker's maximum span.",
+     "Every count is a 'math' field showing its arithmetic; add 10% waste lines separately; quote the guide line each rule comes from."
+    ],
+    "make": "hearth_gemini_cut-list_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every piece and fastener for the deck, each with its math and the guide line it uses.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Hephaestus Hearth",
@@ -3224,6 +3299,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Garage",
+   "pid": "garage",
+   "id": "GAR-GEM-14",
+   "title": "Garage: every warning and indicator light on both vehicles, from the owner's manuals",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "When a light comes on, Garage should say what it means and what to do, from the manual, without searching.",
+    "steps": [
+     "List every warning and indicator light in the instrument-cluster chapter of both manuals (expect 50+ for the Sorento Hybrid, 15+ for the MT-07), including the hybrid-system and EV-mode lights.",
+     "For each: the name as the manual gives it, its colour, what it means, what the manual tells you to do, and how urgent (stop now / see a dealer soon / information).",
+     "Give the manual page for each, printed and PDF."
+    ],
+    "make": "garage_gemini_lights_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every light in both manuals' cluster chapters.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Garage",
@@ -3759,6 +3866,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Apollo Temple",
+   "pid": "apollo",
+   "id": "APO-GEM-11",
+   "title": "Apollo: daily targets for 30 nutrients (RDA, AI and upper limit) for an adult man, from the NIH",
+   "status": "todo",
+   "due": "2026-12-02",
+   "items": 30,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Apollo sets macro targets but has no micronutrient targets or upper limits to check meals against.",
+    "steps": [
+     "For 30 nutrients (all vitamins, the main minerals, fibre, potassium, sodium, choline, omega-3): the RDA or AI and the tolerable upper intake for men 31-50 and men 51-70.",
+     "Units exactly as NIH prints them; note when the UL covers only supplements.",
+     "Quote the table row."
+    ],
+    "make": "apollo_gemini_nutrient-targets_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "30 nutrients, each from an NIH fact sheet.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/docs/agents/QUEUE_gemini.md"
    },
@@ -4333,6 +4472,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Selling Pipeline",
+   "pid": "selling",
+   "id": "SEL-GEM-06",
+   "title": "Selling: 2026 shipping and seller-fee tables (USPS Ground Advantage and Priority, eBay, Mercari, Facebook)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Selling is shipping-only; its net-payout math depends on postage by weight and zone and each marketplace's current fees, which changed in 2026.",
+    "steps": [
+     "USPS 2026: Ground Advantage and Priority Mail prices, retail and commercial, for 4 oz, 8 oz, 12 oz, 15.99 oz, 1 lb, 2 lb, 3 lb, 5 lb, zones 1-2 to 9, as Notice 123 prints them.",
+     "Marketplaces: the final value / selling fee percentages, per-order fees, payment processing, shipping-label discounts, and any category exceptions for collectibles and coins.",
+     "Quote the line or table row for each number."
+    ],
+    "make": "selling_gemini_fees-2026_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "The full USPS grid asked for and every marketplace fee, each quoted.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/selling/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Selling Pipeline",
@@ -4678,6 +4849,38 @@
     "done": "Every 2027 individual deadline from the three sources.",
     "checks": [
      "Claude checks every roll and opens 5 URLs."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/records/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Records",
+   "pid": "records",
+   "id": "REC-GEM-08",
+   "title": "Records: every record to change after moving from Texas to California, with its deadline",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Records' mission covers TX->CA, but the pillar has no list of what a move from Texas obliges in California (and what to close in Texas).",
+    "steps": [
+     "List every record a new California resident coming from Texas must create or change, with the legal deadline: driver license (days after residency), vehicle registration and smog for an out-of-state vehicle, motorcycle license class M1, insurance minimums, voter registration, part-year resident income tax (FTB 540NR) for the move year, Texas items to close or surrender.",
+     "Quote the rule for each deadline; give the form number and the office.",
+     "Mark which ones apply to a person who already did the basics (license, plates) and which repeat yearly."
+    ],
+    "make": "records_gemini_tx-to-ca_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "At least 20 records, every deadline quoted from the agency.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/records/docs/agents/QUEUE_gemini.md"
    },
@@ -5162,6 +5365,37 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Icarus Stake",
+   "pid": "icarus",
+   "id": "ICA-GEM-12",
+   "title": "Icarus: the 20 trading rules a rule auditor must know, quoted from FINRA, the SEC, the Fed and the IRS",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Icarus audits trades against rules; it should hold the actual regulatory text for pattern day trading, margin, settlement, free-riding and wash sales.",
+    "steps": [
+     "Quote and explain 20 rules: the PDT definition and its $25,000 minimum equity, the day-trading buying power, margin calls, Reg T initial margin, T+1 settlement, good-faith and free-riding violations in cash accounts, the 90-day restriction, wash sales (30 days either side), options exercise and assignment cut-offs, short-sale locate.",
+     "For each: what triggers it, the consequence, and the rule number."
+    ],
+    "make": "icarus_gemini_trading-rules_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "20 rules, each quoted from its regulator.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/icarus/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Icarus Stake",
@@ -5576,6 +5810,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hermes Post",
+   "pid": "hermes",
+   "id": "HER-GEM-10",
+   "title": "Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 40,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Hermes's local phishing classifier learns from lures; it needs current, real wording from official warnings, not invented examples.",
+    "steps": [
+     "Collect 40 scam messages published in 2025-2026 where the official page quotes the text or shows it (SMS, email, phone script).",
+     "For each: the channel, who it pretends to be, the exact quoted wording (under 300 characters), the tell the page points out, and the publishing date.",
+     "Spread them: at least 8 toll/package texts, 6 bank or payment, 6 government (IRS, SSA, DMV), 6 job or task scams, 6 account-lock or password, 8 other."
+    ],
+    "make": "hermes_gemini_scam-messages_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "40 messages, each quoted from an official warning.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hermes/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Hermes Post",
@@ -5887,6 +6153,38 @@
     "done": "One row for every PIANO_SOURCES row that lacked a page or key.",
     "checks": [
      "Claude opens rows at random against their pages."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/piano/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Bossa Piano Studio",
+   "pid": "piano",
+   "id": "PIA-GEM-07",
+   "title": "Piano: the reference recording for each of the 24 bossa tunes (first and definitive)",
+   "status": "todo",
+   "due": "2026-12-02",
+   "items": 24,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "A practice studio needs the recording to listen to; the ladder has the tunes but not which recording is the reference.",
+    "steps": [
+     "For each of the 24 tunes: the first commercial recording (artist, album, year, label, catalogue number) and the recording most often called definitive by the label or the composer's official site.",
+     "Give the MusicBrainz recording or release URL and quote the line that dates it.",
+     "'not stated' where the sources disagree; name both."
+    ],
+    "make": "piano_gemini_recordings_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "24 tunes, each with its first recording dated from MusicBrainz or the label.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/piano/docs/agents/QUEUE_gemini.md"
    },
@@ -6243,6 +6541,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Bastion",
+   "pid": "bastion",
+   "id": "BAS-GEM-09",
+   "title": "Bastion: the official checklists for snowbound, PSPS, evacuation and the go-bag, item by item",
+   "status": "todo",
+   "due": "2026-12-02",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Bastion cross-checks readiness, but its lists are its own; the agencies publish theirs and they should be the yardstick.",
+    "steps": [
+     "Copy every item from: Ready.gov's basic disaster supplies kit, Ready.gov's winter storm page, SCE's PSPS checklist, Cal OES / Listos evacuation go-bag, Kern County's evacuation checklist, Red Cross pet kit.",
+     "One row per item per list, in the list's own words, with the list it comes from.",
+     "Mark duplicates across lists in 'also_in'."
+    ],
+    "make": "bastion_gemini_official-checklists_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every item of the six lists, each quoted.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/bastion/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Bastion",
@@ -6493,6 +6823,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Athenaeum",
+   "pid": "athenaeum",
+   "id": "ATH-GEM-04",
+   "title": "Athenaeum: second reader on the 40 history chains (cause, event, consequence) Grok wrote",
+   "status": "todo",
+   "due": "2026-12-04",
+   "items": 40,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Athenaeum's history shelf holds 40 cause-event-consequence chains from Grok's pass; no second reader has checked them.",
+    "steps": [
+     "For every one of the 40 entries: check the date, the event, each stated cause and each consequence against a scholarly or encyclopedic source (Britannica, a university press page, a museum or government archive).",
+     "agree, or differ with what the source says instead; mark causes the source calls 'proposed' or debated.",
+     "Never the same source the entry already cites."
+    ],
+    "make": "athenaeum_gemini_history-check_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "All 40 entries checked part by part.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/docs/agents/QUEUE_gemini.md"
    },
@@ -7382,6 +7744,70 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Privacy",
+   "pid": "privacy",
+   "id": "PRI-GEM-11",
+   "title": "Privacy: harden the Galaxy S24 Ultra, 50 settings from Samsung's own pages",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 50,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Privacy's mission names S24 Ultra hardening, but the pillar has no phone settings: only Google's account settings.",
+    "steps": [
+     "List 50 settings across: lock screen and biometrics, Secure Folder, Auto Blocker, Maximum restrictions, Knox Vault, app permissions and the permission manager, location (precise vs approximate, Wi-Fi/Bluetooth scanning), the privacy dashboard, Samsung account and Samsung Cloud, Customization Service and marketing, diagnostics, Find My Mobile, USB and developer options, Wi-Fi and Bluetooth, the Samsung keyboard, Bixby, Galaxy AI processing (on-device only), Google account items reached from Settings.",
+     "For each: the menu path on One UI as shipped on the S24 Ultra today, what it does in Samsung's (or Google's) words, the default, the safest choice that keeps the phone usable, and what you give up.",
+     "Order the rows from biggest privacy gain to smallest."
+    ],
+    "make": "privacy_gemini_s24-hardening_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "50 settings, each with its official page and menu path.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Privacy",
+   "pid": "privacy",
+   "id": "PRI-GEM-12",
+   "title": "Privacy: sign-in security for the 25 services in Continuity's list (2FA, passkeys, recovery)",
+   "status": "todo",
+   "due": "2026-12-02",
+   "items": 25,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Credential rotation is in Privacy's mission; it cannot say for each account which second factors exist, where recovery codes live, or where to see sign-in activity.",
+    "steps": [
+     "For each of the 25 services in CONTINUITY_POLICIES, open its own help pages.",
+     "Record: passkeys (yes/no), authenticator app (TOTP), hardware security key, SMS, email codes; whether recovery codes exist and where; the page to change the password; the page that lists recent sign-ins or devices.",
+     "Name the strongest method it supports and quote the help page that says so."
+    ],
+    "make": "privacy_gemini_signin-security_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "25 services, every column from the service's own help.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Privacy",
@@ -7887,6 +8313,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/argus/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Argus Album",
+   "pid": "argus",
+   "id": "ARG-GEM-11",
+   "title": "Argus: every metadata field a Galaxy S24 Ultra writes into its photos, and whether Argus's scrubber removes it",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Argus scrubs EXIF before a photo is shared, but nobody has listed what the S24 Ultra actually embeds (GPS, maker notes, motion-photo trailers, XMP) against what the scrubber strips.",
+    "steps": [
+     "List every tag group a Galaxy S24 Ultra JPEG and HEIF photo can carry: EXIF IFD0/ExifIFD/GPS IFD, the Samsung maker note and trailer (motion photo, depth), XMP (including GPano and Samsung namespaces), ICC, thumbnails.",
+     "For each: what it can reveal (place, time, device, person), the standard's own definition, and the file:line in pillars/argus/app.js that removes it, or 'not removed'.",
+     "Rank by how much it reveals."
+    ],
+    "make": "argus_gemini_s24-metadata_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every tag group, each mapped to the scrubber line that removes it or marked not removed.",
+    "checks": [
+     "Claude checks 10 file:line claims against app.js and fixes every 'not removed' that reveals place, device or person."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/argus/docs/agents/QUEUE_gemini.md"
    },
@@ -8434,6 +8892,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Forge",
+   "pid": "forge",
+   "id": "FOR-GEM-05",
+   "title": "Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch",
+   "status": "todo",
+   "due": "2026-12-02",
+   "items": 30,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The Forge says what is out and due; if it miscounts, the owner's view of every AI's load is wrong.",
+    "steps": [
+     "Pick 30 tasks at random across at least 12 pillars and Titan (show your random method).",
+     "For each, compare what the Forge shows (status, due, late flag, owner, item count, score when closed) with the task's own queue entry.",
+     "Report every mismatch with both values and the file:line on each side; a match is a row too ('agree')."
+    ],
+    "make": "forge_gemini_audit_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per task checked, exactly the fields below",
+    "done": "30 tasks compared field by field.",
+    "checks": [
+     "Claude re-checks every mismatch."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/forge/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Forge",
@@ -8622,6 +9112,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/foundry/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Foundry",
+   "pid": "foundry",
+   "id": "FDY-GEM-05",
+   "title": "Foundry: a bench-prototype parts list for the first build stage of each of the 11 inventions",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Foundry turns inventions into builds one stage at a time, but no stage has real parts, prices or suppliers.",
+    "steps": [
+     "For each invention, take its first stage and design the smallest bench prototype that tests its core claim (say the claim in one line).",
+     "List every part: manufacturer, part number, quantity, unit price and the distributor's own product page (McMaster-Carr, DigiKey, Mouser, Adafruit, SparkFun, Home Depot); a 'math' row per invention totals the cost.",
+     "Where the core claim cannot be prototyped on a bench (for example Mach 20 flight), say so and give the nearest testable sub-claim instead."
+    ],
+    "make": "foundry_gemini_stage1-parts_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "All 11 inventions, each with a costed parts list or a stated sub-claim.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/foundry/docs/agents/QUEUE_gemini.md"
    },
@@ -8848,6 +9370,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/observatory/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Observatory",
+   "pid": "observatory",
+   "id": "OBS-GEM-05",
+   "title": "Observatory: the official feeds for every subject it watches (RSS, Atom or API), with cadence",
+   "status": "todo",
+   "due": "2026-12-02",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Observatory follows subjects with sources but reads nothing on its own; each subject needs a primary feed it can poll.",
+    "steps": [
+     "For every subject in subjects-seed.js: find 2-3 primary-source feeds (an agency, journal, standards body or company newsroom: RSS, Atom or a documented API).",
+     "For each feed: the feed URL, its format, whether it needs a key, how often it publishes (count the last 10 items' dates), and the latest item's title and date.",
+     "Opinion outlets and aggregators do not count."
+    ],
+    "make": "observatory_gemini_feeds_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every subject with at least two primary feeds.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/observatory/docs/agents/QUEUE_gemini.md"
    },
@@ -9581,6 +10135,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Aether",
+   "pid": "aether",
+   "id": "AET-GEM-13",
+   "title": "Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 26,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Aether sizes the power station with one peak-sun-hours number per season, an estimate; NREL's PVWatts gives month-by-month output from measured weather for this exact spot.",
+    "steps": [
+     "Run PVWatts for Frazier Park, CA (34.8228, -118.9445; town centre), system size 0.4 kW DC, standard module, fixed (open rack), azimuth 180, losses 14%, inverter efficiency 96%: once at tilt 30 and once at tilt 45.",
+     "Record for each month and tilt: solar radiation (kWh/m2/day) and AC energy (kWh), exactly as PVWatts prints them, and the weather data source it names (NSRDB station/grid cell).",
+     "Add one 'math' row per tilt: the yearly total and the worst month."
+    ],
+    "make": "aether_gemini_pvwatts_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "12 months at each tilt plus the two year rows, as PVWatts prints them.",
+    "checks": [
+     "Claude runs the same PVWatts inputs and compares every number."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Aether",
@@ -9960,6 +10546,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Polis",
+   "pid": "polis",
+   "id": "POL-GEM-08",
+   "title": "Polis: every Kern County Board of Supervisors item in 2026 that touches the mountain communities",
+   "status": "todo",
+   "due": "2026-12-04",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Polis tracks rules but not what the Board actually decided for Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman this year.",
+    "steps": [
+     "Search every 2026 agenda and its minutes for: Frazier Park, Lebec, Pine Mountain, Lake of the Woods, Gorman, Frazier Mountain, El Tejon, Tejon, mountain communities, District 2.",
+     "For each matching item: meeting date, item number, what was asked, the outcome (approved / denied / continued / received and filed) and the vote when the minutes give it.",
+     "If a host blocks you, say which page and keep going with the others."
+    ],
+    "make": "polis_gemini_board-2026_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every 2026 item that names the mountain communities, with its outcome.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/polis/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Polis",
@@ -10178,6 +10796,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/mythos/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Mythos",
+   "pid": "mythos",
+   "id": "MYT-GEM-04",
+   "title": "Mythos: the public-domain primary texts behind the canon, with exact editions",
+   "status": "todo",
+   "due": "2026-12-04",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Mythos's worldbuilding canon borrows from older myths and literature; the primary texts should be one tap away, in editions that are free to read and quote.",
+    "steps": [
+     "For every myth, culture, figure or older work the canon names or plainly draws on: the primary text, a public-domain translation (translator, year), and its Project Gutenberg, Internet Archive or national-library URL.",
+     "Say why it is public domain in the US (published before 1931, or the library's own statement).",
+     "Quote the line of the text the canon entry echoes, when there is one."
+    ],
+    "make": "mythos_gemini_sources_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every canon entry that draws on an older work, linked to a free edition.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/mythos/docs/agents/QUEUE_gemini.md"
    },
@@ -11010,6 +11660,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-13",
+   "title": "Midas: 60 real promo, deferred-interest and minimum-payment wordings from 20 issuers' card agreements (test corpus only)",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 60,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The terms parser is tested on 55 cases; real agreements word promotions in many more ways. A larger real corpus shows what it misses before any change is made.",
+    "steps": [
+     "From 20 different issuers' current agreements, copy 60 sentences that state a promotional APR and its end, a deferred-interest promotion, a 'no interest if paid in full' offer, or a minimum-payment formula (3 per issuer).",
+     "For each: the issuer, the agreement's date, the exact sentence (under 300 characters), and what it means in plain terms: apr, promo_apr, promo_end rule, deferred_interest yes/no, min_payment formula.",
+     "Do not run or change the parser; this is data."
+    ],
+    "make": "midas_gemini_terms-corpus_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD)",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "60 sentences from 20 issuers, each from the CFPB database or the issuer.",
+    "checks": [
+     "Claude opens 10 agreements and runs all 60 through build.py's parse_terms."
     ],
     "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
    },
@@ -13402,6 +14084,138 @@
    "detail": {
     "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-photo-facts.json, the 92 items with \"for\": \"gemini\". Each fact rests on one photo read or one AI guess today. For each: look at the coin's photo yourself first (blind: no current value is given), then find the catalogue row that names that year and that mint (Numista N# URL with the issue row you read, or KM# with book and page). Mint: the letter or mark you see and the row that lists it for that year. Year: the date you read and the row. Mintage: the number for that year and mint only. Story: check every sentence, agree or say what is wrong. Value: a dated price page and the grade you assumed. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-photo-g1'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C011\",\"field\":\"mint\",\"old\":null,\"new\":\"R\",\"source\":\"photo C011_rev.webp (R below L.50) + Numista N#1234 https://en.numista.com/catalogue/pieces1234.html, issue row 1970 R\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C011_rev.webp\"}],\"run_id\":\"GT-SECOND-photo-g1\"}} Before you save: provenance.inputs are objects ({\"file\": ...}), never bare URLs; one line per item; when the photo does not show the mark or no catalogue row names that year and mint, send the line with new = null and say why in source (never guess).",
     "done": "All 92 items answered (a confirmed value with its row, or null with the reason); Claude spot-checks 10 on Numista's API.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-45",
+   "alias": "GT-SECOND-q1",
+   "title": "Second source, round 2, part 1 of 4: items 1-85 of the 339 facts Grok, Muse and Claude made",
+   "status": "todo",
+   "due": "2026-11-26",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-second-source-2.json, items 1 to 85 (part 1): each fact has one source today, made by another contributor (made_by), and source_on_record shows it. Send a second, independent one: a different catalogue, price guide or page, never the same site again. Values (most of this part): a dated price page (PCGS, NGC, Numista's own value table, a dealer's sold listing) and the grade you assumed from the coin's photo, never below melt. Stories: check every sentence against a source; one line per wrong sentence with the correction, or new = old with source 'agree: <what you checked>' when it all holds. Mints, catalog numbers, denominations: the catalogue row for that year and mint. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-q1'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C150\",\"field\":\"value.usd\",\"old\":null,\"new\":4.5,\"source\":\"PCGS Price Guide https://www.pcgs.com/pcgsprice/... row 1964 25C VF-20, read 2026-11-21; grade from photo C150_obv.webp\",\"verified\":false,\"phase\":2,\"confidence\":\"med\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C150_obv.webp\"}],\"run_id\":\"GT-SECOND-q1\"}} Before you save: provenance.inputs are objects, never bare URLs; the source differs from source_on_record; values name the grade and the date read; one line per item (85 lines).",
+    "done": "All 85 items answered with a source that differs from the one on record; Claude spot-checks 10.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-46",
+   "alias": "GT-SECOND-q2",
+   "title": "Second source, round 2, part 2 of 4: items 86-170 of the 339 facts Grok, Muse and Claude made",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-second-source-2.json, items 86 to 170 (part 2): each fact has one source today, made by another contributor (made_by), and source_on_record shows it. Send a second, independent one: a different catalogue, price guide or page, never the same site again. Values (most of this part): a dated price page (PCGS, NGC, Numista's own value table, a dealer's sold listing) and the grade you assumed from the coin's photo, never below melt. Stories: check every sentence against a source; one line per wrong sentence with the correction, or new = old with source 'agree: <what you checked>' when it all holds. Mints, catalog numbers, denominations: the catalogue row for that year and mint. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-q2'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C150\",\"field\":\"value.usd\",\"old\":null,\"new\":4.5,\"source\":\"PCGS Price Guide https://www.pcgs.com/pcgsprice/... row 1964 25C VF-20, read 2026-11-21; grade from photo C150_obv.webp\",\"verified\":false,\"phase\":2,\"confidence\":\"med\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C150_obv.webp\"}],\"run_id\":\"GT-SECOND-q2\"}} Before you save: provenance.inputs are objects, never bare URLs; the source differs from source_on_record; values name the grade and the date read; one line per item (85 lines).",
+    "done": "All 85 items answered with a source that differs from the one on record; Claude spot-checks 10.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-47",
+   "alias": "GT-SECOND-q3",
+   "title": "Second source, round 2, part 3 of 4: items 171-255 of the 339 facts Grok, Muse and Claude made",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-second-source-2.json, items 171 to 255 (part 3): each fact has one source today, made by another contributor (made_by), and source_on_record shows it. Send a second, independent one: a different catalogue, price guide or page, never the same site again. Values (most of this part): a dated price page (PCGS, NGC, Numista's own value table, a dealer's sold listing) and the grade you assumed from the coin's photo, never below melt. Stories: check every sentence against a source; one line per wrong sentence with the correction, or new = old with source 'agree: <what you checked>' when it all holds. Mints, catalog numbers, denominations: the catalogue row for that year and mint. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-q3'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C150\",\"field\":\"value.usd\",\"old\":null,\"new\":4.5,\"source\":\"PCGS Price Guide https://www.pcgs.com/pcgsprice/... row 1964 25C VF-20, read 2026-11-21; grade from photo C150_obv.webp\",\"verified\":false,\"phase\":2,\"confidence\":\"med\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C150_obv.webp\"}],\"run_id\":\"GT-SECOND-q3\"}} Before you save: provenance.inputs are objects, never bare URLs; the source differs from source_on_record; values name the grade and the date read; one line per item (85 lines).",
+    "done": "All 85 items answered with a source that differs from the one on record; Claude spot-checks 10.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-48",
+   "alias": "GT-SECOND-q4",
+   "title": "Second source, round 2, part 4 of 4: items 256-339 of the 339 facts Grok, Muse and Claude made",
+   "status": "todo",
+   "due": "2026-12-02",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-second-source-2.json, items 256 to 339 (part 4): each fact has one source today, made by another contributor (made_by), and source_on_record shows it. Send a second, independent one: a different catalogue, price guide or page, never the same site again. Values (most of this part): a dated price page (PCGS, NGC, Numista's own value table, a dealer's sold listing) and the grade you assumed from the coin's photo, never below melt. Stories: check every sentence against a source; one line per wrong sentence with the correction, or new = old with source 'agree: <what you checked>' when it all holds. Mints, catalog numbers, denominations: the catalogue row for that year and mint. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-q4'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C150\",\"field\":\"value.usd\",\"old\":null,\"new\":4.5,\"source\":\"PCGS Price Guide https://www.pcgs.com/pcgsprice/... row 1964 25C VF-20, read 2026-11-21; grade from photo C150_obv.webp\",\"verified\":false,\"phase\":2,\"confidence\":\"med\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C150_obv.webp\"}],\"run_id\":\"GT-SECOND-q4\"}} Before you save: provenance.inputs are objects, never bare URLs; the source differs from source_on_record; values name the grade and the date read; one line per item (84 lines).",
+    "done": "All 84 items answered with a source that differs from the one on record; Claude spot-checks 10.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-49",
+   "alias": "GT-FILL-p1",
+   "title": "Type gaps, part 1 of 2: items 1-70 of 130 empty type fields (designers, mintages, weights, sizes, edges)",
+   "status": "todo",
+   "due": "2026-11-27",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-type-gaps.json, items 1 to 70 (part 1). Each is an empty field on a coin type: designers, an issue's mintage, weight, diameter, thickness, edge, die alignment, or period. Find the exact catalogue entry for that type (the coins that use it are listed: check the date and mint you need), and fill the field as 'want' says. Copy 'old' exactly as given ([] or null). Leave the field unsent when the entry does not give it, and say so in your run report with the page you read. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-FILL-p1'. One line per filled item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"type\",\"id\":\"GT.KM.277.6a\",\"op\":\"set\",\"field\":\"design.designers\",\"old\":[],\"new\":[\"Name (obverse)\"],\"source\":\"Numista N#42670 https://en.numista.com/catalogue/pieces42670.html, Obverse: engraver line\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"https://en.numista.com/catalogue/pieces42670.html\"}],\"run_id\":\"GT-FILL-p1\"}} Before you save: entity is 'type' and id is the type id; mintages are for that year and that mint only (integers); weights in grams and sizes in mm as plain numbers; every source names the exact entry and the row or line you read.",
+    "done": "Every item in part 1 filled or reported as not in the catalogue; Claude opens 10 on Numista's API.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-50",
+   "alias": "GT-FILL-p2",
+   "title": "Type gaps, part 2 of 2: items 71-130 of 130 empty type fields (designers, mintages, weights, sizes, edges)",
+   "status": "todo",
+   "due": "2026-11-29",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-type-gaps.json, items 71 to 130 (part 2). Each is an empty field on a coin type: designers, an issue's mintage, weight, diameter, thickness, edge, die alignment, or period. Find the exact catalogue entry for that type (the coins that use it are listed: check the date and mint you need), and fill the field as 'want' says. Copy 'old' exactly as given ([] or null). Leave the field unsent when the entry does not give it, and say so in your run report with the page you read. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-FILL-p2'. One line per filled item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"type\",\"id\":\"GT.KM.277.6a\",\"op\":\"set\",\"field\":\"design.designers\",\"old\":[],\"new\":[\"Name (obverse)\"],\"source\":\"Numista N#42670 https://en.numista.com/catalogue/pieces42670.html, Obverse: engraver line\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"https://en.numista.com/catalogue/pieces42670.html\"}],\"run_id\":\"GT-FILL-p2\"}} Before you save: entity is 'type' and id is the type id; mintages are for that year and that mint only (integers); weights in grams and sizes in mm as plain numbers; every source names the exact entry and the row or line you read.",
+    "done": "Every item in part 2 filled or reported as not in the catalogue; Claude opens 10 on Numista's API.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
    },
    "late": false

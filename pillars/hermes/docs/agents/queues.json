@@ -365,6 +365,90 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#63).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Hermes's local phishing classifier learns from lures; it needs current, real wording from official warnings, not invented examples.",
+     "unlocks": "Hermes's classifier and its lure gallery get 40 dated, official examples, tagged by type.",
+     "inputs": [
+      "consumer.ftc.gov alerts, ic3.gov public service announcements, and the official scam-warning pages of the companies imitated (USPS, IRS, Amazon, PayPal, banks, toll agencies)"
+     ],
+     "steps": [
+      "Collect 40 scam messages published in 2025-2026 where the official page quotes the text or shows it (SMS, email, phone script).",
+      "For each: the channel, who it pretends to be, the exact quoted wording (under 300 characters), the tell the page points out, and the publishing date.",
+      "Spread them: at least 8 toll/package texts, 6 bank or payment, 6 government (IRS, SSA, DMV), 6 job or task scams, 6 account-lock or password, 8 other."
+     ],
+     "deliver": {
+      "file": "hermes_gemini_scam-messages_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 40,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "channel",
+       "type": "text",
+       "rule": "sms / email / phone / social"
+      },
+      {
+       "name": "pretends",
+       "type": "text",
+       "rule": "who it imitates"
+      },
+      {
+       "name": "type",
+       "type": "text",
+       "rule": "toll / package / bank / government / job / account / other"
+      },
+      {
+       "name": "tell",
+       "type": "text",
+       "rule": "what the page says gives it away"
+      },
+      {
+       "name": "published",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official warning page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the scam message as quoted, under 300 characters"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "40 messages, each quoted from an official warning.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HER-GEM-10",
+     "title": "Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated",
+     "due": "2026-12-01"
     }
    ]
   },

@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 
 - BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,7 +16,7 @@ Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 10:26 UTC · 3 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 4 open in this pillar.
 
 
 - BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives · due 2026-11-22 · DELIVERED 2026-11-18, waiting for its check (do not redo)
@@ -25,31 +25,33 @@ Updated 2026-11-21 10:26 UTC · 3 open in this pillar.
     make: bastion_gemini_shelters_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every official place for the five communities, each with its page.
 - BAS-GEM-08 · Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code) · due 2026-11-30
     make: bastion_gemini_weather-radio_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every transmitter and code that reaches the area, from weather.gov.
+- BAS-GEM-09 · Bastion: the official checklists for snowbound, PSPS, evacuation and the go-bag, item by item · due 2026-12-02
+    make: bastion_gemini_official-checklists_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every item of the six lists, each quoted.
 
 ## Muse
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Bastion · Mountain Prep right now.
 
 ## ChatGPT
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Bastion · Mountain Prep right now.
 
 ## Argon
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Bastion · Mountain Prep right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
+Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Bastion · Mountain Prep right now.

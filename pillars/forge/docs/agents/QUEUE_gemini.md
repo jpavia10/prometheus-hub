@@ -2,8 +2,61 @@
 
 # Forge · homework for Gemini
 
-Updated 2026-11-21 10:26 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Gemini in Forge right now. Check your HOMEWORK doc for the other pillars.
+## 1. FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch
+
+**Due:** 2026-12-02 · **State:** now
+
+**Why:** The Forge says what is out and due; if it miscounts, the owner's view of every AI's load is wrong.
+
+**What it unlocks:** Claude fixes every builder bug you find, with a regression test.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/forge/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/forge.json (the snapshot)
+- the pillars' docs/agents/queues.json files and Titan's docs/agents/QUEUE_*.md pages
+
+**Do this:**
+1. Pick 30 tasks at random across at least 12 pillars and Titan (show your random method).
+2. For each, compare what the Forge shows (status, due, late flag, owner, item count, score when closed) with the task's own queue entry.
+3. Report every mismatch with both values and the file:line on each side; a match is a row too ('agree').
+
+**Make:** `forge_gemini_audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per task checked, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `task` (text): task id
+- `field` (text): status / due / late / owner / items / score
+- `forge_says` (text): what the Forge shows
+- `queue_says` (text): what the queue says
+- `verdict` (text): agree / mismatch
+- `where` (text): file:line on both sides
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 30
+
+**Done when:** 30 tasks compared field by field.
+
+**How Claude checks it:**
+- Claude re-checks every mismatch.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)

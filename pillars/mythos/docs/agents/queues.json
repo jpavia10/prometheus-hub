@@ -171,6 +171,85 @@
      "reopened": "2026-11-20",
      "review": "Done 2026-11-21 (Claude): All checks pass; 44 refs. Score 10/10 (#76).",
      "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Mythos's worldbuilding canon borrows from older myths and literature; the primary texts should be one tap away, in editions that are free to read and quote.",
+     "unlocks": "Each canon entry links the primary text it draws on, in a public-domain translation.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/mythos/canon-data.js (the canon)"
+     ],
+     "steps": [
+      "For every myth, culture, figure or older work the canon names or plainly draws on: the primary text, a public-domain translation (translator, year), and its Project Gutenberg, Internet Archive or national-library URL.",
+      "Say why it is public domain in the US (published before 1931, or the library's own statement).",
+      "Quote the line of the text the canon entry echoes, when there is one."
+     ],
+     "deliver": {
+      "file": "mythos_gemini_sources_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "canon",
+       "type": "text",
+       "rule": "the canon entry"
+      },
+      {
+       "name": "work",
+       "type": "text",
+       "rule": "primary text"
+      },
+      {
+       "name": "translation",
+       "type": "text",
+       "rule": "translator, year"
+      },
+      {
+       "name": "pd",
+       "type": "text",
+       "rule": "why public domain"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the source page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every canon entry that draws on an older work, linked to a free edition.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "MYT-GEM-04",
+     "title": "Mythos: the public-domain primary texts behind the canon, with exact editions",
+     "due": "2026-12-04"
     }
    ]
   },
