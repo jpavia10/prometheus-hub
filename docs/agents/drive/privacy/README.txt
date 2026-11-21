@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
+Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 
 - PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,7 +16,7 @@ Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 10:00 UTC · 2 open in this pillar.
+Updated 2026-11-21 10:26 UTC · 2 open in this pillar.
 
 
 - PRI-GEM-09 · Privacy: the opt-out route for each of the 13 brokers DROP does not reach · due 2026-11-28
@@ -26,7 +26,7 @@ Updated 2026-11-21 10:00 UTC · 2 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
+Updated 2026-11-21 10:26 UTC · 1 open in this pillar.
 
 
 - PRI-MUS-04 · Privacy: second reader on Gemini's 'which of the 72 brokers are on California's Data Broker Registry' · due 2026-11-28
@@ -34,21 +34,21 @@ Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Privacy · CA DROP right now.
 
 ## Argon
 
-Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Privacy · CA DROP right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:26 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Privacy · CA DROP right now.

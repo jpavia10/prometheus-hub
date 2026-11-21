@@ -1,6 +1,6 @@
 {
- "built": "2026-11-21T09:59:26Z",
- "checked": "2026-11-21T09:59:26Z",
+ "built": "2026-11-21T10:26:16Z",
+ "checked": "2026-11-21T10:26:16Z",
  "version": 2,
  "today": "2026-11-21",
  "sources": {
@@ -10416,7 +10416,7 @@
    "due": "2026-11-26",
    "items": 10,
    "closed": "2026-11-21",
-   "review": "Done 2026-11-21 (Claude): Built into Continuity's accounts tab, marked not second-read. The $208,850 and $750,000 limits match the April 2025 DE-300 as Claude knows it; the TOD rows quote the statutory form. Score 10/10 (#83).",
+   "review": "Done 2026-11-21 (Claude): Built into Continuity's accounts tab, marked not second-read. The personal-property and primary-residence limits match the April 2025 DE-300 as Claude knows it; the TOD rows quote the statutory form. Score 10/10 (#83).",
    "reopened": "",
    "delivered": null,
    "detail": {
