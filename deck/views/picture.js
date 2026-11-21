@@ -7,7 +7,8 @@ import { eventsSince } from "../core/reach.js";
 import { clock } from "../core/dates.js";
 import { nowFacts } from "../core/now.js";
 import { untilText } from "./parts.js";
-import { reactor, boot } from "./orrery.js";
+import { boot } from "./orrery.js";
+import { solar } from "./solar.js";
 import { menu, unpin } from "./menu.js";
 
 const ago = (iso) => { const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + " min" : m < 1440 ? Math.round(m / 60) + " h" : Math.round(m / 1440) + " d"; };
@@ -57,8 +58,8 @@ export function render(root, route, ctx) {
     put(root, rx, h("div.briefing", { id: "briefing" }, nowLine, card));
     return () => { if (rx && rx.cleanup) rx.cleanup(); };
   }
-  const rx = reactor(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
+  const rx = solar(ctx); boot(new URLSearchParams(location.search).get("boot") === "1");
   const toMenu = h("button.mn-back", { type: "button", onclick: () => { try { localStorage.setItem("prom.deck.home", "menu"); } catch (e) { /* this visit */ } unpin(); if (rx.cleanup) rx.cleanup(); location.hash = "#/"; dispatchEvent(new HashChangeEvent("hashchange")); } }, icon("grid", 15), h("span", "Menu"));
-  put(root, toMenu, rx, nowLine, card);
+  put(root, toMenu, rx, nowLine, card); rx.fit();
   return () => { if (rx.cleanup) rx.cleanup(); };
 }

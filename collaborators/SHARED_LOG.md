@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-21] The Orbit rebuilt as a solar system (d49; owner: the old one was "a 5/100", chose "cinematic solar system")
+- deck/views/solar.js (three.js, loaded only for the Orbit): every pillar a planet wearing its own world painting (art/worlds/planet_{id}.webp, 320 px, tools/art/planets.py) on its domain's tilted ring around a living star (Finance inside, then Civic, Mountain & Home, Mind & Studio). Drag turns it, pinch or scroll zooms, a tap flies the camera to a planet and shows its card (domain, what it is, its real fact, its synapses as chips and as arcs of light); a second tap or Enter dives in.
+- Kept from the old orbit: every pillar a real link with the bus badge, the long-press brief, the star as the command button, the ticker, arrow keys, everything above the dock. Dropped: the hex matrix and synapse web modes, the filter chips and speed buttons (the rings are the domains now). Rest is faster than the old orbit (24-26 vs 19-21 fps in software). Proofs CORE-1..4, MENU-1, SINCE-1, CORE-5 and ARRIVAL moved to the planets; 36/36.
+
 ### [2026-11-21] Home menu: worlds you fly between, paintings that live, a dive on Enter (d48; owner chose "home menu first")
 - Switching pillars no longer cuts to a plain sky and pops the next painting in: the world on screen pushes forward while the next one resolves from its far planes out of a soft drifting edge (1.25 s); paintings are decoded once and the neighbours are fetched ahead, so a flight back is instant.
 - The paintings move in depth at rest: a slow dolly that swells near planes more than far ones, bigger parallax on finger and tilt, short light shafts from each painting's lights map, and dust in two depths (a few large soft motes in front). Enter clears the menu and pushes the camera into the world before the warp. Reduced motion: no flight, no dive.

@@ -17,7 +17,7 @@ const wrap = (a) => { a = (a + Math.PI) % TAU; return (a < 0 ? a + TAU : a) - Ma
 const back = (k) => { const c = 1.9; return 1 + (c + 1) * Math.pow(k - 1, 3) + c * Math.pow(k - 1, 2); };
 const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } };
 const S = { yaw: 0.26, vel: 0.5, pitch: 0, zoom: 1, born: false };                                    // survives a redraw of the view
-const SYNAPSES = [
+export const SYNAPSES = [
   ["selling", "money", "105,240,195"],
   ["money", "midas", "87,239,192"],
   ["midas", "titan", "201,184,234"],
@@ -62,7 +62,7 @@ export const DOMAIN_BY_ID = {
 
 export const domainOf = (id) => DOMAIN_BY_ID[id] || "mind";
 
-function peersFor(id) {
+export function peersFor(id) {
   const seen = new Set();
   for (const [a, b] of SYNAPSES) {
     if (a === id) seen.add(b);
@@ -75,20 +75,20 @@ function peersFor(id) {
 const CELLS = (() => { const out = []; for (let q = -3; q <= 3; q++) for (let r = -3; r <= 3; r++) { const d = Math.max(Math.abs(q), Math.abs(r), Math.abs(q + r)); if (d <= 3 && d > 0) out.push({ d, x: Math.sqrt(3) * (q + r / 2), y: 1.5 * r }); }
   const ang = (c) => (Math.atan2(c.y, c.x) + Math.PI * 2.5) % TAU; return [...out.filter((c) => c.d === 1).sort((a, b) => ang(a) - ang(b)), ...out.filter((c) => c.d === 2).sort((a, b) => ang(a) - ang(b)), ...out.filter((c) => c.d === 3).sort((a, b) => ang(a) - ang(b))]; })();   // a third ring only when there are more than 18 pillars
 
-function badgeFor(p, stats, t, tn) {
+export function badgeFor(p, stats, t, tn) {
   if (p.id === "titan" && tn && tn.flips) return String(tn.flips);
   const st = stats[p.id]; if (!st) return null;
   if (st.next) { const n = diffDays(t, st.next.date); return n === 0 ? "today" : n + "d"; }
   return st.records ? String(st.records) : null;
 }
-function factsFor(p, stats, tn) {
+export function factsFor(p, stats, tn) {
   const st = stats[p.id] || {}; const out = [];
   if (p.id === "titan" && tn) out.push(`${tn.flips} specimens · ${tn.countries} countries`);
   if (st.next) out.push(`Next: ${st.next.title}, ${fmtDay(st.next.date)}`);
   if (st.records) out.push(`${plural(st.records, "entry", "entries")} on this device`);
   return out;
 }
-function brief(p, stats, tn, enter) {
+export function brief(p, stats, tn, enter) {
   const lines = factsFor(p, stats, tn); if (!lines.length) lines.push(p.ext ? "Lives on its own site; its data stays there." : "Nothing entered on this device yet.");
   sheet({ title: p.name, body: (close) => h("div.stack.brief", { style: { "--c": `hsl(${p.hue} 100% 68%)` } }, h("p.lead", p.what), h("div.items", lines.map((l) => h("div.item", h("span.pip"), h("span.item-main", h("b", l))))),
     h("div.row.end", h("button.btn.ghost", { type: "button", onclick: close }, "Stay"), h("button.btn.enter", { type: "button", autofocus: true, onclick: () => { close(); setTimeout(enter, 200); } }, icon("right", 18), "Enter"))) });
@@ -120,6 +120,20 @@ function fire(canvas) {
   gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW); const loc = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
   const ur = gl.getUniformLocation(pr, "r"), ut = gl.getUniformLocation(pr, "t"), ue = gl.getUniformLocation(pr, "e"); gl.viewport(0, 0, canvas.width, canvas.height); gl.uniform2f(ur, canvas.width, canvas.height);
   return (t, e) => { gl.uniform1f(ut, t); gl.uniform1f(ue, e); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); };
+}
+
+/** The ticker: one line of what is true right now (the orbit's, shared with the solar system since 2026-11-21). */
+export function ticker(ctx, t, stats) {
+  const facts = []; const soon = feedRows(t, addDays(t, 30)).filter((r) => !r.done); const fixedNext = soon.find((r) => r.fixed), mine = soon.filter((r) => !r.fixed);
+  facts.push(`${PILLARS.length} pillars online`);
+  for (const e of recentEvents(2)) facts.push(e.say.length > 70 ? e.say.slice(0, 69) + "…" : e.say);                 // what last happened inside the pillars (the shared event log)
+  if (mine[0]) facts.push(`next: ${mine[0].title} · ${diffDays(t, mine[0].date) === 0 ? "today" : "in " + plural(diffDays(t, mine[0].date), "day")}`);
+  if (fixedNext) facts.push(`${fixedNext.title} in ${plural(diffDays(t, fixedNext.date), "day")}`);
+  const held = Object.values(stats).reduce((n, x) => n + x.records, 0); if (held) facts.push(`${plural(held, "entry", "entries")} across the pillars on this device`);
+  const w = ctx.weather(); if (w && w.now) facts.push(`${Math.round(w.now.temp)}° outside${(w.alerts || []).length ? " · " + w.alerts[0].event : ""}`);
+  const line = () => facts.map((f) => h("span", f)); const tickerEl = h("div.ticker", { "aria-label": facts.join(". ") }, h("div.ticker-run", { "aria-hidden": "true" }, line(), line()));
+  titan().then((d) => { if (d && tickerEl.isConnected) { facts.push(`Titan · ${d.flips} specimens`); tickerEl.firstChild.replaceChildren(...line(), ...line()); } });
+  return tickerEl;
 }
 
 export function reactor(ctx) {
@@ -326,16 +340,7 @@ export function reactor(ctx) {
   };
   document.addEventListener("keydown", onKey);
 
-  /* the ticker: one line of what is true right now */
-  const facts = []; const soon = feedRows(t, addDays(t, 30)).filter((r) => !r.done); const fixedNext = soon.find((r) => r.fixed), mine = soon.filter((r) => !r.fixed);
-  facts.push(`${PILLARS.length} pillars online`);
-  for (const e of recentEvents(2)) facts.push(e.say.length > 70 ? e.say.slice(0, 69) + "…" : e.say);                 // what last happened inside the pillars (the shared event log)
-  if (mine[0]) facts.push(`next: ${mine[0].title} · ${diffDays(t, mine[0].date) === 0 ? "today" : "in " + plural(diffDays(t, mine[0].date), "day")}`);
-  if (fixedNext) facts.push(`${fixedNext.title} in ${plural(diffDays(t, fixedNext.date), "day")}`);
-  const held = Object.values(stats).reduce((n, x) => n + x.records, 0); if (held) facts.push(`${plural(held, "entry", "entries")} across the pillars on this device`);
-  const w = ctx.weather(); if (w && w.now) facts.push(`${Math.round(w.now.temp)}° outside${(w.alerts || []).length ? " · " + w.alerts[0].event : ""}`);
-  const line = () => facts.map((f) => h("span", f)); const tickerEl = h("div.ticker", { "aria-label": facts.join(". ") }, h("div.ticker-run", { "aria-hidden": "true" }, line(), line()));
-  titan().then((d) => { if (d && tickerEl.isConnected) { facts.push(`Titan · ${d.flips} specimens`); tickerEl.firstChild.replaceChildren(...line(), ...line()); } });
+  const tickerEl = ticker(ctx, t, stats);
 
   const el = h("section.reactor.live", { "aria-label": "The pillars", dataset: { mode } }, stage, h("div.rx-hud", read, domBar, h("div.rx-controls", modeSeg, zoomCtl)), tickerEl);
   el.cleanup = () => { dead = true; cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("visibilitychange", onVis); document.removeEventListener("keydown", onKey); removeEventListener("pointermove", onMove); removeEventListener("pointerup", onUp); removeEventListener("pointercancel", onUp); removeEventListener("deviceorientation", onTilt); };
