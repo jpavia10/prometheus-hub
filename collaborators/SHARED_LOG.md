@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-21] Home menu: worlds you fly between, paintings that live, a dive on Enter (d48; owner chose "home menu first")
+- Switching pillars no longer cuts to a plain sky and pops the next painting in: the world on screen pushes forward while the next one resolves from its far planes out of a soft drifting edge (1.25 s); paintings are decoded once and the neighbours are fetched ahead, so a flight back is instant.
+- The paintings move in depth at rest: a slow dolly that swells near planes more than far ones, bigger parallax on finger and tilt, short light shafts from each painting's lights map, and dust in two depths (a few large soft motes in front). Enter clears the menu and pushes the camera into the world before the warp. Reduced motion: no flight, no dive.
+- Cost: the flight shader runs only during a flight (a separate program), so rest is within about 10% of d47 in software rendering (26-28 vs 28-31 fps); a governor drops the light shafts on a phone that cannot hold ~35 fps. 36/36 proofs.
+
 ### [2026-11-21] Gemini loaded up (owner: "Increase scope and complexity of tasks. Load the slave up")
 - 21 new Gemini tasks, most 25-80 rows and several worked out with arithmetic: S24 Ultra hardening (50 settings), sign-in security for 25 services, TX->CA move records, the deck's cut list and fastener schedule, every warning light on both vehicles, NREL PVWatts for a 400 W array, the Board of Supervisors' 2026 mountain items, 40 official scam messages, 20 trading rules, the six official readiness checklists, 2026 postage and seller fees, reference recordings, NIH nutrient targets, a WCAG 2.2 audit of 10 pages, Athenaeum's 40 history chains (second reader), Foundry's costed stage-1 parts lists, Observatory's feeds, Mythos's primary texts, the S24 Ultra metadata vs Argus's scrubber, a 30-task Forge audit; Midas: 60 real card-agreement wordings (data only, the parser is untouched).
 - Titan: second sources round 2 (339 facts others made, 4 parts) and type gaps (130 empty fields, 2 parts). Gemini's floor is 50: it stands at 55 open plus 2 queued (526 items), every pillar has Gemini work. Prompt for the next paste: docs/agents/prompts/gemini-neon-full-run.md (run 4).

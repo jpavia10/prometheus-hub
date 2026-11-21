@@ -813,6 +813,10 @@ body.menu-on:not(.menu-off) #sky { opacity: 0 !important; }
 @keyframes mnin-l { from { opacity: 0; transform: translateX(-26px) scale(.98); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
 @media (max-height: 700px) { .menu { gap: 6px; } .mn-emblem { width: min(36vw, 140px); } .mn-what { -webkit-line-clamp: 2; } }
 @media (min-width: 900px) { .menu { grid-template-rows: auto minmax(220px, 1fr) auto auto auto; } .mn-emblem { width: 230px; } }
+/* Enter: the menu clears while the world pushes in (menu.js dive, 2026-11-21) */
+.menu > * { transition: opacity .32s var(--ease), transform .55s var(--ease); }
+.menu.diving > *, .menu.diving .in-r, .menu.diving .in-l { animation: none; opacity: 0; transform: scale(1.05); pointer-events: none; }
+.menu.diving > .mn-stage { transform: scale(1.25); }
 @media (prefers-reduced-motion: reduce) { .mn-emblem, .mn-ring, .mn-enter::after, .mn-dot.hard, .in-r, .in-l { animation: none !important; } }
 .view-fallback{max-width:520px;margin:12vh auto;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--glass-2);text-align:left}
 .view-fallback h2{margin:0 0 8px}
