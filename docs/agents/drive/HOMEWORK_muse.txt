@@ -1,12 +1,12 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-20 19:24 UTC. 12 to do across 2 pillars.
+Updated 2026-11-21 10:00 UTC. 21 to do across 8 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).
 
-TITAN RELIQUARY (its own loop, the exception): 9 homework sheets + 1 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 11 homework sheets + 2 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -18,6 +18,12 @@ EVERY TASK BELOW IS SENT BACK IF:
 IN THIS ORDER:
 1. [Prometheus Hub] HUB-MUS-03 · Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940) · due 2026-11-23
 2. [Prometheus Hub] HUB-MUS-04 · Eight pillars: second reader on Gemini 4 Neon's 2026-11-19 run (16 files, 20% of rows) · due 2026-11-24
+3. [Garage] GAR-MUS-04 · Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles' · due 2026-11-28
+4. [Bossa Piano Studio] PIA-MUS-01 · Piano: second reader on Gemini's 'where each of the 24 bossa tunes is legally printed' · due 2026-11-28
+5. [Odyssey · Trips & Away Mode] ODY-MUS-03 · Odyssey: second reader on Gemini's 'a city card for each of the 27 trip stops' · due 2026-11-28
+6. [Privacy · CA DROP] PRI-MUS-04 · Privacy: second reader on Gemini's 'which of the 72 brokers are on California's Data Broker Registry' · due 2026-11-28
+7. [Aether · Atmospheric & Field Lab] AET-MUS-03 · Aether: second reader on Gemini's 'SCE power shut-offs that reached the mountain, 2019-2026' · due 2026-11-28
+8. [Continuity · Sovereign Vault] CON-MUS-02 · Continuity: second reader on Gemini's 'California small-estate and transfer-on-death rules' · due 2026-11-28
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-MUS-03 · Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940)
@@ -116,3 +122,243 @@ IN THIS ORDER:
 - a file with fewer checked rows than asked
 - a differ or still-wrong line without where you looked
 - a check of a file you wrote yourself
+
+==================== 3. GARAGE ====================
+## 3. GAR-MUS-04 · Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles'
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.
+
+**Read first:**
+- Gemini's file garage_gemini_ca-fees_20261120-2026.json in the folder below (GAR-GEM-12)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer).
+2. For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `garage_muse_ca-fees-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked row checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+
+==================== 4. BOSSA PIANO STUDIO ====================
+## 4. PIA-MUS-01 · Piano: second reader on Gemini's 'where each of the 24 bossa tunes is legally printed'
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.
+
+**Read first:**
+- Gemini's file piano_gemini_bossa-sources_20261120-2025.json in the folder below (PIA-GEM-05)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer).
+2. For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `piano_muse_bossa-sources-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked row checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+
+==================== 5. ODYSSEY · TRIPS & AWAY MODE ====================
+## 5. ODY-MUS-03 · Odyssey: second reader on Gemini's 'a city card for each of the 27 trip stops'
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.
+
+**Read first:**
+- Gemini's file odyssey_gemini_city-cards_20261120-1120.json in the folder below (ODY-GEM-10)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer).
+2. For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `odyssey_muse_city-cards-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked row checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+
+==================== 6. PRIVACY · CA DROP ====================
+## 6. PRI-MUS-04 · Privacy: second reader on Gemini's 'which of the 72 brokers are on California's Data Broker Registry'
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.
+
+**Read first:**
+- Gemini's file privacy_gemini_registry_20261120-1125.json in the folder below (PRI-GEM-07)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer).
+2. For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `privacy_muse_registry-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked row checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+
+==================== 7. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 7. AET-MUS-03 · Aether: second reader on Gemini's 'SCE power shut-offs that reached the mountain, 2019-2026'
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.
+
+**Read first:**
+- Gemini's file aether_gemini_psps-history_20261120-2033.json in the folder below (AET-GEM-10)
+
+**Do this:**
+1. Open Gemini's file. Pick 13 rows at random (every row if fewer).
+2. For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `aether_muse_psps-history-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 13
+
+**Done when:** Every picked row checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+
+==================== 8. CONTINUITY · SOVEREIGN VAULT ====================
+## 8. CON-MUS-02 · Continuity: second reader on Gemini's 'California small-estate and transfer-on-death rules'
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.
+
+**Read first:**
+- Gemini's file continuity_gemini_ca-small-estate_20261120-2027.json in the folder below (CON-GEM-06)
+
+**Do this:**
+1. Open Gemini's file. Pick 10 rows at random (every row if fewer).
+2. For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `continuity_muse_ca-small-estate-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked row checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)

@@ -2,126 +2,54 @@
 
 # Bossa Piano Studio · homework for Gemini
 
-Updated 2026-11-20 19:24 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 10:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key)
+## 1. PIA-GEM-06 · Piano: the key and page for every bossa source that said 'not stated'
 
-**Due:** 2026-11-26 · **State:** now
+**Due:** 2026-11-28 · **State:** now
 
-**Why:** The ladder names 24 tunes; Joseph needs the sheet music. Each is in a published fake book or a licensed single sheet.
+**Why:** Most of the 47 rows in Gemini's sources file have no key and no page, so Joseph cannot tell which edition fits his ladder.
 
-**What it unlocks:** Each tune in the ladder links to the exact book and page, or the licensed sheet.
+**What it unlocks:** Each tune's 'Where to buy' row shows the key and the page, and the ladder can prefer the edition in the key it teaches.
 
 **Read first:**
-- Your piano_gemini_bossa-ladder_20261119-0922.json
-- halleonard.com song lists for The Real Book (vols 1-3), The Brazilian Real Book (Sher Music), The Jobim Songbook; musicnotes.com
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/piano/sources.js (window.PIANO_SOURCES)
 
 **Do this:**
-1. For each of the 24: the book (publisher, title, edition), page, key printed there; or the licensed single sheet's URL and its key. Two sources when the tune is in more than one book.
+1. For every row whose page or key is 'not stated', open the publisher's product page and its preview, table of contents or index.
+2. Musicnotes and Sheet Music Direct list the original key on the product page; Hal Leonard books list songs with pages in the table of contents.
+3. If neither is shown, keep 'not stated' and name what you opened.
 
-**Make:** `piano_gemini_bossa-sources_{YYYYMMDD-HHMM}.json`
+**Make:** `piano_gemini_bossa-keys_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one or two rows per tune`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `tune` (text): as in the ladder
-- `source` (text): book title, publisher, edition / or the sheet
-- `page` (text): or 'single sheet'
-- `key` (text): as printed
-- `url` (URL): the publisher's song list or the sheet
+- `n` (integer): the row number in PIANO_SOURCES
+- `tune` (text): as in PIANO_SOURCES
+- `page` (text): page number or 'not stated'
+- `key` (text): e.g. 'F major' or 'not stated'
+- `url` (URL): the page that shows it
+- `quote` (text): under 300 characters, word for word
 
 **Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
 - [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
 
-**Done when:** Every tune with at least one legal source.
+**Done when:** One row for every PIANO_SOURCES row that lacked a page or key.
 
 **How Claude checks it:**
-- Claude opens 8 rows.
-
-**Not done (sent back) if:**
-- fewer rows than the count (where a count is set), or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-## 2. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: piano_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Bossa Piano Studio from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/piano/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/piano
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/piano/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/piano): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `piano_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+- Claude opens rows at random against their pages.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
+- a guess written as a fact (write 'not stated' and name the page you checked)

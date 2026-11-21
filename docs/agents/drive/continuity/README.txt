@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-20 19:24 UTC · 2 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 2 open in this pillar.
 
 
 - CON-GRK-04 · Continuity: second reader on the three account policies nobody could open (TikTok, Vanguard, Robinhood) · due 2026-11-24
@@ -18,38 +18,37 @@ Updated 2026-11-20 19:24 UTC · 2 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-20 19:24 UTC · 2 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
-- CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers · due 2026-11-26
-    make: continuity_gemini_ca-small-estate_{YYYYMMDD-HHMM}.json · how many: 10 · done when: 10 rows with current numbers.
-- CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason in your HOMEWORK doc)
-    make: continuity_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- CON-GEM-07 · Continuity: recording a transfer-on-death deed in Kern County, step by step · due 2026-11-28
+    make: continuity_gemini_kern-tod-recording_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every step from signing to a recorded deed, each with its official page.
 
 ## Muse
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Continuity · Sovereign Vault right now.
+- CON-MUS-02 · Continuity: second reader on Gemini's 'California small-estate and transfer-on-death rules' · due 2026-11-28
+    make: continuity_muse_ca-small-estate-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked row checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Continuity · Sovereign Vault right now.
 
 ## Argon
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Continuity · Sovereign Vault right now.
 
 ## Hydrogen
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Continuity · Sovereign Vault right now.

@@ -1,0 +1,12 @@
+{
+ "station": {
+  "id": "X1",
+  "name": "Test"
+ },
+ "months": [
+  {
+   "month": 1,
+   "t": 1
+  }
+ ]
+}

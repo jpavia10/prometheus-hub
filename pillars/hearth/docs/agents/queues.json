@@ -529,7 +529,7 @@
     {
      "id": "HEA-GEM-18",
      "title": "Hephaestus Hearth: the function spec, written as the build plan",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-30",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Hephaestus Hearth from, step by step.",
@@ -618,7 +618,8 @@
       "a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data"
      ],
      "reopened": "2026-11-20",
-     "review": "Sent back 2026-11-20: hearth_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code."
+     "review": "Done 2026-11-21 (Claude): All checks pass; 81 refs. Score 10/10 (#57).",
+     "closed": "2026-11-21"
     },
     {
      "id": "HEA-GEM-19",
@@ -1016,7 +1017,7 @@
     {
      "id": "HEA-GEM-23",
      "title": "Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "Your HEA-GEM-21 found Kern's 30 psf ground-snow table against ASCE 7-22's much higher value. The joist size depends on which one Kern enforces now.",
@@ -1092,7 +1093,86 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-21",
+     "review": "Done 2026-11-21 (Claude): Built as Hearth's \"Which snow load governs\". An honest partial: Ordinance G-9359 found and dated, the table itself not online; the number is still for Kern Building Inspection to give. Score 9/10 (#86)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "The Ordinance G-9359 text is not online, but Kern Building Inspection publishes design-criteria handouts and plan-check sheets that state the ground snow load by elevation.",
+     "unlocks": "Hearth can size the deck joists from the number Kern itself publishes.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/snow-rule.js (what is known so far)"
+     ],
+     "steps": [
+      "Search Kern County Public Works / Building Inspection's own pages for 2026 design criteria, plan-check checklists, snow-load maps or handouts (PDFs).",
+      "Record the ground snow load (psf) for 4,000-5,000 ft and 5,000+ ft, the roof or deck snow load if separate, the wind speed and the frost depth, with the document's date.",
+      "If none is online, list every document you opened and what it says instead; never use another county's numbers."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_kern-design-criteria_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "document",
+       "type": "text",
+       "rule": "title and date"
+      },
+      {
+       "name": "criterion",
+       "type": "text",
+       "rule": "ground snow load / wind / frost ..."
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "number with unit, or 'not stated'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the Kern page or PDF"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": "PDF page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every Kern document opened, the snow load found or honestly not.",
+     "checks": [
+      "Claude opens rows at random against their pages."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-24",
+     "title": "Hearth: Kern County's published ground snow load for 4,600 ft (2026 design criteria)",
+     "due": "2026-11-28"
     }
    ]
   },

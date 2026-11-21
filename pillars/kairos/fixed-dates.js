@@ -817,3 +817,172 @@ KAIROS_FIXED.push(
  "as_of": "2026-11-16"
 }
 );
+
+/* KAI-GEM-13 (Claude, 2026-11-21): the 2027 dates the calendars above did not have yet, from Gemini's
+   kairos_gemini_2027-dates_20261120-2026.json (72 rows: OPM, California DGS/OAH tentative 2027, Kern County Superior Court 2027,
+   El Tejon USD 2026-27). The 11 federal rows were already here and agree; state, court and school rows that fall on a federal holiday
+   are left out (same day off); spring break is one row; the 20 Wednesday professional-development minimum days (every Wednesday
+   Aug 19 to May 26, El Tejon USD) are not added one by one so they do not crowd the countdown. Checked: weekdays and the
+   fourth-Friday rule for Native American Day; El Tejon's 2027-28 calendar and CalHR's final 2027 list were not out yet. */
+KAIROS_FIXED.push(
+{
+ "date": "2027-02-08",
+ "name": "No school in El Tejon USD: Lincoln's Birthday (observed)",
+ "kind": "school",
+ "url": "https://wsos-cdn.s3.us-west-2.amazonaws.com/uploads/sites/59/2026-2027-Calendar.pdf",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "El Tejon USD"
+ ],
+ "quote": "February 8* - Lincoln's Birthday Holiday (Observed), District Closed",
+ "as_of": "2026-11-20"
+},
+{
+ "date": "2027-02-12",
+ "name": "Lincoln's Birthday: Kern County Superior Court closed",
+ "kind": "court holiday",
+ "url": "https://www.kern.courts.ca.gov/general-information/court-holidays",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "Kern County"
+ ],
+ "quote": "February 12, 2027 (Friday)",
+ "as_of": "2026-11-20"
+},
+{
+ "date": "2027-03-19",
+ "name": "El Tejon USD minimum day (district wide)",
+ "kind": "school",
+ "url": "https://wsos-cdn.s3.us-west-2.amazonaws.com/uploads/sites/59/2026-2027-Calendar.pdf",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "El Tejon USD"
+ ],
+ "quote": "March 19 - Minimum Day, District Wide",
+ "as_of": "2026-11-20"
+},
+{
+ "date": "2027-03-22",
+ "name": "El Tejon USD spring break, Mar 22-26 (no school)",
+ "kind": "school",
+ "url": "https://wsos-cdn.s3.us-west-2.amazonaws.com/uploads/sites/59/2026-2027-Calendar.pdf",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "El Tejon USD",
+  "El Tejon USD"
+ ],
+ "quote": "March 22-26 - Spring Break | March 22-26 - Spring Break",
+ "as_of": "2026-11-20",
+ "also": [
+  "https://wsos-cdn.s3.us-west-2.amazonaws.com/uploads/sites/59/2026-2027-Calendar.pdf"
+ ]
+},
+{
+ "date": "2027-03-29",
+ "name": "No school in El Tejon USD: observed holiday",
+ "kind": "school",
+ "url": "https://wsos-cdn.s3.us-west-2.amazonaws.com/uploads/sites/59/2026-2027-Calendar.pdf",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "El Tejon USD"
+ ],
+ "quote": "March 29* - Observed Holiday, District Closed",
+ "as_of": "2026-11-20"
+},
+{
+ "date": "2027-03-31",
+ "name": "César Chávez Day: California state holiday, Kern courts closed",
+ "kind": "state holiday",
+ "url": "https://www.dgs.ca.gov/OAH/Case-Types/General-Jurisdiction/GJ-Calendar",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "California",
+  "Kern County"
+ ],
+ "quote": "MARCH 31- CESAR CHAVEZ DAY | March 31, 2027 (Wednesday)",
+ "as_of": "2026-11-20",
+ "also": [
+  "https://www.kern.courts.ca.gov/general-information/court-holidays"
+ ],
+ "note": "California's 2027 calendar was still tentative on 2026-11-20"
+},
+{
+ "date": "2027-06-03",
+ "name": "Last day of school in El Tejon USD (minimum day), FMHS graduation",
+ "kind": "school",
+ "url": "https://wsos-cdn.s3.us-west-2.amazonaws.com/uploads/sites/59/2026-2027-Calendar.pdf",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "El Tejon USD"
+ ],
+ "quote": "June 3 - Last Day of School, (Minimum Day)",
+ "as_of": "2026-11-20"
+},
+{
+ "date": "2027-06-04",
+ "name": "No school in El Tejon USD: all-staff workday",
+ "kind": "school",
+ "url": "https://wsos-cdn.s3.us-west-2.amazonaws.com/uploads/sites/59/2026-2027-Calendar.pdf",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "El Tejon USD"
+ ],
+ "quote": "June 4 - All Staff Workday",
+ "as_of": "2026-11-20"
+},
+{
+ "date": "2027-09-24",
+ "name": "Native American Day: Kern County Superior Court closed",
+ "kind": "court holiday",
+ "url": "https://www.kern.courts.ca.gov/general-information/court-holidays",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "Kern County"
+ ],
+ "quote": "September 24, 2027 (Friday)",
+ "as_of": "2026-11-20"
+},
+{
+ "date": "2027-11-26",
+ "name": "Day after Thanksgiving: California state holiday, Kern courts closed",
+ "kind": "state holiday",
+ "url": "https://www.dgs.ca.gov/OAH/Case-Types/General-Jurisdiction/GJ-Calendar",
+ "gem": "KAI-GEM-13",
+ "calendars": [
+  "California",
+  "Kern County"
+ ],
+ "quote": "NOVEMBER 26- DAY AFTER THANKSGIVING | November 26, 2027 (Friday)",
+ "as_of": "2026-11-20",
+ "also": [
+  "https://www.kern.courts.ca.gov/general-information/court-holidays"
+ ],
+ "note": "California's 2027 calendar was still tentative on 2026-11-20"
+}
+);
+
+/* REC-GEM-07 (Claude, 2026-11-21): Gemini's records_gemini_2027-deadlines_20261120-2026.json (22 IRS, FTB and Kern TTC dates,
+   Jan 2027 to Jan 2028) agrees with every tax date above; it adds the two property-tax delinquency days, here. Apr 10, 2027 is a
+   Saturday, so the second installment rolls to Monday Apr 12; Dec 10, 2027 is a Friday. */
+KAIROS_FIXED.push(
+{
+ "date": "2027-04-12",
+ "name": "Last day to pay Kern secured property tax, 2nd installment (delinquent after 5 pm)",
+ "kind": "Kern County Treasurer-Tax Collector",
+ "url": "https://www.kcttc.co.kern.ca.us/index.cfm?fuseaction=kcttcinternet.showImportantDates",
+ "gem": "REC-GEM-07",
+ "rolled_from": "2027-04-10 (Saturday; rolled to next business day Monday, Apr 12, 2027)",
+ "quote": "April 10 Second installment payment deadline. A 10% penalty plus $10.00 cost is added as of 5:00 p.m. (* If a delinquent date falls on a weekend or holiday, the delinquent date is the next business day.)",
+ "as_of": "2026-11-20"
+},
+{
+ "date": "2027-12-10",
+ "name": "Last day to pay Kern secured property tax, 1st installment (delinquent after 5 pm)",
+ "kind": "Kern County Treasurer-Tax Collector",
+ "url": "https://www.kcttc.co.kern.ca.us/index.cfm?fuseaction=kcttcinternet.showImportantDates",
+ "gem": "REC-GEM-07",
+ "rolled_from": null,
+ "quote": "December 10 First installment payment deadline. A 10% penalty is added as of 5:00 p.m. (* If a delinquent date falls on a weekend or holiday, the delinquent date is the next business day.)",
+ "as_of": "2026-11-20"
+}
+);

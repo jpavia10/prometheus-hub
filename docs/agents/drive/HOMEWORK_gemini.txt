@@ -1,12 +1,12 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-20 19:24 UTC. 53 to do across 27 pillars; 5 more delivered and waiting for their check (listed at the end: do not redo them).
+Updated 2026-11-21 10:00 UTC. 30 to do across 16 pillars; 5 more delivered and waiting for their check (listed at the end: do not redo them).
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).
 
-TITAN RELIQUARY (its own loop, the exception): 3 homework sheets + 3 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 1 homework sheets + 3 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -18,51 +18,30 @@ EVERY TASK BELOW IS SENT BACK IF:
 IN THIS ORDER:
 1. [Prometheus Hub] HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins) · due 2026-11-23
 2. [Prometheus Hub] HUB-GEM-12 · TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins) · due 2026-11-23
-3. [Kairos Meridian] KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools) · due 2026-11-26
-4. [Hephaestus Hearth] HEA-GEM-23 · Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word) · due 2026-11-26
-5. [Garage] GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027 · due 2026-11-26
-6. [Records · Paper Killer] REC-GEM-07 · Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028 · due 2026-11-26
-7. [Bossa Piano Studio] PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key) · due 2026-11-26
-8. [Odyssey · Trips & Away Mode] ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026 · due 2026-11-26
-9. [Odyssey · Trips & Away Mode] ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos) · due 2026-11-26
-10. [Odyssey · Trips & Away Mode] ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos · due 2026-11-26
-11. [Odyssey · Trips & Away Mode] ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos · due 2026-11-26
-12. [Odyssey · Trips & Away Mode] ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts · due 2026-11-26
-13. [Odyssey · Trips & Away Mode] ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language) · due 2026-11-26
-14. [Odyssey · Trips & Away Mode] ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app · due 2026-11-26
-15. [Odyssey · Trips & Away Mode] ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked · due 2026-11-26
-16. [Ludus Arcade] GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages · due 2026-11-26
-17. [Aether · Atmospheric & Field Lab] AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file · due 2026-11-26
-18. [Aether · Atmospheric & Field Lab] AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026 · due 2026-11-26
-19. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2026-11-26
-20. [Continuity · Sovereign Vault] CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers · due 2026-11-26
-21. [Privacy · CA DROP] PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
-22. [Prometheus Hub] HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-23. [Kairos Meridian] KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-24. [Midas Ledger] MID-GEM-11 · Midas Ledger: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-25. [Hephaestus Hearth] HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-26. [Garage] GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-27. [Apollo Temple] APO-GEM-10 · Apollo Temple: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-28. [Money · payoff simulator] MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-29. [Selling Pipeline] SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-30. [Records · Paper Killer] REC-GEM-05 · Records: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-31. [Icarus Stake] ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-32. [Hermes Post] HER-GEM-09 · Hermes Post: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-33. [Bossa Piano Studio] PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-34. [Bastion · Mountain Prep] BAS-GEM-06 · Bastion: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-35. [Athenaeum · Idea Vault] ATH-GEM-03 · Athenaeum: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-36. [Odyssey · Trips & Away Mode] ODY-GEM-04 · Odyssey: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-37. [Privacy · CA DROP] PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-38. [Argus Album] ARG-GEM-10 · Argus Album: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-39. [Ludus Arcade] GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-40. [Forge] FOR-GEM-03 · Forge: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-41. [Foundry] FDY-GEM-04 · Foundry: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-42. [Observatory] OBS-GEM-04 · Observatory: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-43. [Kin] KIN-GEM-04 · Kin: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-44. [Aether · Atmospheric & Field Lab] AET-GEM-05 · Aether: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-45. [Polis · Civic & Legal Watch] POL-GEM-05 · Polis: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-46. [Mythos · Creative & Lore Studio] MYT-GEM-03 · Mythos: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
-47. [Continuity · Sovereign Vault] CON-GEM-04 · Continuity: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason under the task)
+3. [Odyssey · Trips & Away Mode] ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026 · due 2026-11-26
+4. [Odyssey · Trips & Away Mode] ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos) · due 2026-11-26
+5. [Odyssey · Trips & Away Mode] ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos · due 2026-11-26
+6. [Odyssey · Trips & Away Mode] ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos · due 2026-11-26
+7. [Odyssey · Trips & Away Mode] ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts · due 2026-11-26
+8. [Odyssey · Trips & Away Mode] ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app · due 2026-11-26
+9. [Odyssey · Trips & Away Mode] ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked · due 2026-11-26
+10. [Ludus Arcade] GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages · due 2026-11-27
+11. [Hephaestus Hearth] HEA-GEM-24 · Hearth: Kern County's published ground snow load for 4,600 ft (2026 design criteria) · due 2026-11-28
+12. [Bossa Piano Studio] PIA-GEM-06 · Piano: the key and page for every bossa source that said 'not stated' · due 2026-11-28
+13. [Privacy · CA DROP] PRI-GEM-09 · Privacy: the opt-out route for each of the 13 brokers DROP does not reach · due 2026-11-28
+14. [Kin] KIN-GEM-05 · Kin: Saugus Union School District's 2026-27 calendar (Violet's school days off) · due 2026-11-28
+15. [Aether · Atmospheric & Field Lab] AET-GEM-11 · Aether: the Oct 2026 shut-off reports, read to the end (RIDGE and TENNECO circuits) · due 2026-11-28
+16. [Continuity · Sovereign Vault] CON-GEM-07 · Continuity: recording a transfer-on-death deed in Kern County, step by step · due 2026-11-28
+17. [Money · payoff simulator] MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026) · due 2026-11-30
+18. [Icarus Stake] ICA-GEM-11 · Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports) · due 2026-11-30
+19. [Bastion · Mountain Prep] BAS-GEM-07 · Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists) · due 2026-11-30
+20. [Bastion · Mountain Prep] BAS-GEM-08 · Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code) · due 2026-11-30
+21. [Privacy · CA DROP] PRI-GEM-10 · Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com) · due 2026-11-30
+22. [Ludus Arcade] GAM-GEM-06 · Games: Anno 117 updates and roadmap, from Ubisoft's own pages · due 2026-11-30
+23. [Aether · Atmospheric & Field Lab] AET-GEM-12 · Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans · due 2026-11-30
+24. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+25. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
+26. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)
@@ -168,237 +147,8 @@ IN THIS ORDER:
 - fewer than the count
 - not the shape PROMPT.md asks for
 
-==================== 3. KAIROS MERIDIAN ====================
-## 3. KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Every 2027 holiday, school break and county closure is in Kairos before January.
-
-**Read first:**
-- opm.gov federal holidays 2027; calhr.ca.gov state holidays; kerncounty.com holiday schedule; El Tejon Unified School District 2026-27 and 2027-28 calendars (etusd.org)
-
-**Do this:**
-1. Every 2027 date from those four sources: name, date, which calendar, whether offices close, and the source URL and quote.
-2. School: first and last day, breaks, minimum days, no-school days.
-
-**Make:** `kairos_gemini_2027-dates_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per date`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `date` (date): 
-- `name` (text): 
-- `calendar` (text): federal / California / Kern County / El Tejon USD
-- `closed` (text): yes / no / not stated
-- `url` (URL): 
-- `quote` (text): 
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every 2027 date from the four sources.
-
-**How Claude checks it:**
-- Claude opens 10 rows at random.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 4. HEPHAESTUS HEARTH ====================
-## 4. HEA-GEM-23 · Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Hearth sizes the deck joists to the load Kern actually enforces.
-
-**Read first:**
-- Kern County Code of Building Regulations as adopted for the 2025 California codes (the Board of Supervisors' ordinance adopting the 2025 cycle, Chapter 17.06)
-- kernpublicworks.com Building Inspection pages and bulletins
-
-**Do this:**
-1. Find the ordinance that adopted the 2025 California Building and Residential Codes in Kern County: its number, date, and the section on snow loads.
-2. Quote the snow-load section word for word; say whether it keeps the elevation table (and the value at 4,000-5,000 ft) or defers to ASCE 7-22.
-3. If Building Inspection publishes a snow-load bulletin or design-criteria sheet, quote it too.
-
-**Make:** `hearth_gemini_snow-load-rule_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `JSON array of rows`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `document` (text): ordinance or bulletin, number and date
-- `section` (text): 
-- `says` (text): plain reading
-- `value_psf` (text): number or 'not stated'
-- `url` (URL): 
-- `quote` (text): 
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** The adopting ordinance found and its snow section quoted, or 'not found' with every place searched.
-
-**How Claude checks it:**
-- Claude opens every URL.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 5. GARAGE ====================
-## 5. GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** The registration renewal shows its expected parts and whether a smog check is due.
-
-**Read first:**
-- dmv.ca.gov registration fees and smog pages; bar.ca.gov Smog Check rules; leginfo (Vehicle Code / Revenue and Taxation Code sections)
-
-**Do this:**
-1. Rows for each vehicle: smog check due or exempt (and until which model-year age), the registration fee parts that apply (registration fee, CHP fee, vehicle license fee rate, transportation improvement fee bands, county fees for Kern, the road improvement fee for zero-emission vehicles: does it apply to a hybrid?), motorcycle safety fee, and each one's amount or rate with its source.
-
-**Make:** `garage_gemini_ca-fees_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of rows`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `vehicle` (text): '2025 Kia Sorento Hybrid' or '2021 Yamaha MT-07' or 'both'
-- `item` (text): 
-- `amount` (text): dollars, rate or 'exempt until ...'
-- `rule` (text): plain reading
-- `url` (URL): 
-- `quote` (text): 
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every fee part and smog rule for both vehicles.
-
-**How Claude checks it:**
-- Claude opens 5 URLs.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 6. RECORDS · PAPER KILLER ====================
-## 6. REC-GEM-07 · Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Every payment or filing date of 2027 shows up in the core's deadlines with its source.
-
-**Read first:**
-- irs.gov Publication 509 (2027 Tax Calendars), ftb.ca.gov due dates, Kern County Treasurer-Tax Collector (kcttc.co.kern.ca.us) installment dates
-
-**Do this:**
-1. Every 2027 individual deadline: federal return, extension, four estimated payments (federal and California, CA's 30/40/0/30 split), property tax installments and delinquency dates, IRA/HSA contribution deadline. Weekend and holiday rolls applied and shown.
-
-**Make:** `records_gemini_2027-deadlines_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of rows`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `date` (date): after the roll
-- `what` (text): 
-- `who` (text): IRS / FTB / Kern County
-- `rolled_from` (text): '' or the original date and why
-- `url` (URL): 
-- `quote` (text): 
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every 2027 individual deadline from the three sources.
-
-**How Claude checks it:**
-- Claude checks every roll and opens 5 URLs.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 7. BOSSA PIANO STUDIO ====================
-## 7. PIA-GEM-05 · Piano: where each of the 24 bossa tunes is legally printed (book, page, key)
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Each tune in the ladder links to the exact book and page, or the licensed sheet.
-
-**Read first:**
-- Your piano_gemini_bossa-ladder_20261119-0922.json
-- halleonard.com song lists for The Real Book (vols 1-3), The Brazilian Real Book (Sher Music), The Jobim Songbook; musicnotes.com
-
-**Do this:**
-1. For each of the 24: the book (publisher, title, edition), page, key printed there; or the licensed single sheet's URL and its key. Two sources when the tune is in more than one book.
-
-**Make:** `piano_gemini_bossa-sources_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one or two rows per tune`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `tune` (text): as in the ladder
-- `source` (text): book title, publisher, edition / or the sheet
-- `page` (text): or 'single sheet'
-- `key` (text): as printed
-- `url` (URL): the publisher's song list or the sheet
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every tune with at least one legal source.
-
-**How Claude checks it:**
-- Claude opens 8 rows.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 8. ODYSSEY · TRIPS & AWAY MODE ====================
-## 8. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
+==================== 3. ODYSSEY · TRIPS & AWAY MODE ====================
+## 3. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -446,8 +196,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 9. ODYSSEY · TRIPS & AWAY MODE ====================
-## 9. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
+==================== 4. ODYSSEY · TRIPS & AWAY MODE ====================
+## 4. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -493,8 +243,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 10. ODYSSEY · TRIPS & AWAY MODE ====================
-## 10. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
+==================== 5. ODYSSEY · TRIPS & AWAY MODE ====================
+## 5. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -542,8 +292,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 11. ODYSSEY · TRIPS & AWAY MODE ====================
-## 11. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
+==================== 6. ODYSSEY · TRIPS & AWAY MODE ====================
+## 6. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -590,8 +340,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 12. ODYSSEY · TRIPS & AWAY MODE ====================
-## 12. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
+==================== 7. ODYSSEY · TRIPS & AWAY MODE ====================
+## 7. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -646,60 +396,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 13. ODYSSEY · TRIPS & AWAY MODE ====================
-## 13. ODY-GEM-10 · Odyssey: a city card for every stop (population, elevation, time zone, money, language)
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Tap a dot: the city's card. Totals per trip (people, countries, time zones crossed).
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (every stop code in seedTrips: about 30)
-
-**Do this:**
-1. For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words.
-
-**Make:** `odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per stop code`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `code` (text): stop code as in odyssey-data.js
-- `city` (text): 
-- `country` (text): 
-- `population` (integer): 
-- `pop_year` (integer): 
-- `pop_url` (URL): statistics office or Wikidata
-- `elevation_m` (number): 
-- `tz` (text): IANA
-- `currency` (text): now (and in 2015 if different)
-- `language` (text): 
-- `known_for` (text): 
-- `quote` (text): 
-- `url` (URL): 
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** One card per stop code, every number sourced.
-
-**How Claude checks it:**
-- Claude opens 10 rows at random.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 14. ODYSSEY · TRIPS & AWAY MODE ====================
-## 14. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
+==================== 8. ODYSSEY · TRIPS & AWAY MODE ====================
+## 8. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -746,8 +444,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 15. ODYSSEY · TRIPS & AWAY MODE ====================
-## 15. ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked
+==================== 9. ODYSSEY · TRIPS & AWAY MODE ====================
+## 9. ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked
 
 **Due:** 2026-11-26 · **State:** now
 
@@ -798,10 +496,10 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 16. LUDUS ARCADE ====================
-## 16. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
+==================== 10. LUDUS ARCADE ====================
+## 10. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
 
-**Due:** 2026-11-26 · **State:** now
+**Due:** 2026-11-27 · **State:** now
 
 **What it unlocks:** Games shows the current patch, known issues and fixes without Joseph searching.
 
@@ -843,112 +541,727 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 17. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 17. AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file
+==================== 11. HEPHAESTUS HEARTH ====================
+## 11. HEA-GEM-24 · Hearth: Kern County's published ground snow load for 4,600 ft (2026 design criteria)
 
-**Due:** 2026-11-26 · **State:** now
+**Due:** 2026-11-28 · **State:** now
 
-**What it unlocks:** Aether can say 'colder than normal' with the real normal, and Hearth can mark the months that suit outdoor painting and pouring.
+**What it unlocks:** Hearth can size the deck joists from the number Kern itself publishes.
 
 **Read first:**
-- https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals
-- https://www.ncei.noaa.gov/data/normals-monthly/1991-2020/access/ (one CSV per station)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hearth/snow-rule.js (what is known so far)
 
 **Do this:**
-1. Find the NCEI 1991-2020 monthly normals station nearest to Frazier Park (34.8228, -118.9445) that has temperature AND precipitation normals; give its station id, name, latitude, longitude, elevation (ft) and distance from Frazier Park (mi). If the nearest has no snowfall normals, also name the nearest that has.
-2. From that station's CSV in the access folder, copy for each month: MLY-TMAX-NORMAL, MLY-TMIN-NORMAL, MLY-TAVG-NORMAL, MLY-PRCP-NORMAL, MLY-SNOW-NORMAL (or null), MLY-TMIN-AVGNDS-LSTH032 (days with min at or below 32 F), MLY-TMAX-AVGNDS-GRTH090 (days with max at or above 90 F) where present. Use the CSV's own column names in a 'columns' list.
-3. Add one derived field per month, paint_ok_days: the CSV's count of days with max at or above 50 F if the file has it (MLY-TMAX-AVGNDS-GRTH050), else null. Never estimate.
+1. Search Kern County Public Works / Building Inspection's own pages for 2026 design criteria, plan-check checklists, snow-load maps or handouts (PDFs).
+2. Record the ground snow load (psf) for 4,000-5,000 ft and 5,000+ ft, the roof or deck snow load if separate, the wind speed and the frost depth, with the document's date.
+3. If none is online, list every document you opened and what it says instead; never use another county's numbers.
 
-**Make:** `aether_gemini_normals_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_kern-design-criteria_{YYYYMMDD-HHMM}.json`
 
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
-**Shape:** `{station: {id, name, lat, lon, elev_ft, dist_mi, csv_url}, columns: [...], months: [12 objects]}`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `month` (integer): 1-12
-- `tmax_f` (number): MLY-TMAX-NORMAL
-- `tmin_f` (number): MLY-TMIN-NORMAL
-- `tavg_f` (number): MLY-TAVG-NORMAL
-- `prcp_in` (number): MLY-PRCP-NORMAL
-- `snow_in` (number or null): MLY-SNOW-NORMAL
-- `days_min_le_32` (number or null): 
-- `days_max_ge_90` (number or null): 
-- `paint_ok_days` (number or null): MLY-TMAX-AVGNDS-GRTH050
+- `n` (integer): row
+- `document` (text): title and date
+- `criterion` (text): ground snow load / wind / frost ...
+- `value` (text): number with unit, or 'not stated'
+- `url` (URL): the Kern page or PDF
+- `page` (text): PDF page
+- `quote` (text): under 300 characters, word for word
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
 - [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
 - [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
+- [ ] The file is valid JSON and is named exactly as asked.
 
-**How many:** 12
-
-**Done when:** 12 months, every value exactly as in the station's CSV.
+**Done when:** Every Kern document opened, the snow load found or honestly not.
 
 **How Claude checks it:**
-- Claude downloads the CSV and compares all 12 months.
+- Claude opens rows at random against their pages.
 
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
-- a number that is not on its source and not shown as arithmetic
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 18. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 18. AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026
+==================== 12. BOSSA PIANO STUDIO ====================
+## 12. PIA-GEM-06 · Piano: the key and page for every bossa source that said 'not stated'
 
-**Due:** 2026-11-26 · **State:** now
+**Due:** 2026-11-28 · **State:** now
 
-**What it unlocks:** Aether's PSPS log starts with the real history: how often, how long, which months.
+**What it unlocks:** Each tune's 'Where to buy' row shows the key and the page, and the ladder can prefer the edition in the key it teaches.
 
 **Read first:**
-- SCE's PSPS event reports (sce.com, 'Post Event Reports' to the CPUC) and the CPUC's PSPS page (cpuc.ca.gov)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/piano/sources.js (window.PIANO_SOURCES)
 
 **Do this:**
-1. For each PSPS event 2019-2026 whose report lists a circuit serving Frazier Park, Lake of the Woods, Pinon Pines or Pine Mountain Club: event dates, circuit names, customers de-energized on those circuits, outage start and restore times, and the report's URL and page.
+1. For every row whose page or key is 'not stated', open the publisher's product page and its preview, table of contents or index.
+2. Musicnotes and Sheet Music Direct list the original key on the product page; Hal Leonard books list songs with pages in the table of contents.
+3. If neither is shown, keep 'not stated' and name what you opened.
 
-**Make:** `aether_gemini_psps-history_{YYYYMMDD-HHMM}.json`
+**Make:** `piano_gemini_bossa-keys_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per event and circuit`
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): the row number in PIANO_SOURCES
+- `tune` (text): as in PIANO_SOURCES
+- `page` (text): page number or 'not stated'
+- `key` (text): e.g. 'F major' or 'not stated'
+- `url` (URL): the page that shows it
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** One row for every PIANO_SOURCES row that lacked a page or key.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 13. PRIVACY · CA DROP ====================
+## 13. PRI-GEM-09 · Privacy: the opt-out route for each of the 13 brokers DROP does not reach
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** Privacy shows a step-by-step opt-out for every broker DROP misses, so nothing is left half done.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/privacy/registry.js (window.PRIVACY_REGISTRY: the 13 with registered 'no')
+
+**Do this:**
+1. For each of the 13, find the broker's own opt-out or removal page (not a third-party guide).
+2. Write what it asks for (email, phone, ID, a listing URL), how many steps, whether it confirms by email, and how long it says removal takes.
+3. Quote the page's own words for the removal promise; 'not stated' where it gives none.
+
+**Make:** `privacy_gemini_optouts_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
 - `n` (integer): row
-- `event` (text): SCE's event name or dates
-- `circuit` (text): 
-- `community` (text): 
-- `customers` (integer): 
-- `off` (text): YYYY-MM-DD HH:MM
-- `on` (text): YYYY-MM-DD HH:MM
-- `url` (URL): the report
-- `page` (text): 
-- `quote` (text): the table row
+- `broker` (text): exactly as in PRIVACY_REGISTRY
+- `optout_url` (URL): the broker's own opt-out page
+- `needs` (text): what it asks for
+- `steps` (integer): how many steps
+- `confirms` (text): yes / no / not stated
+- `takes` (text): how long it says, or 'not stated'
+- `quote` (text): under 300 characters, word for word
 
 **Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
 - [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
 
-**Done when:** Every event with a mountain-community circuit, or 'none found' rows per year with the reports checked.
+**How many:** 13
+
+**Done when:** 13 rows, every one with the broker's own opt-out page.
 
 **How Claude checks it:**
-- Claude opens 5 reports.
+- Claude opens rows at random against their pages.
 
 **Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 19. POLIS · CIVIC & LEGAL WATCH ====================
-## 19. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+==================== 14. KIN ====================
+## 14. KIN-GEM-05 · Kin: Saugus Union School District's 2026-27 calendar (Violet's school days off)
 
-**Due:** 2026-11-26 · **State:** now
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** Kin and Kairos show the no-school days, minimum days and breaks for Violet's school.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/kin/people-seed.js (Violet's school)
+
+**Do this:**
+1. From Saugus Union School District's own 2026-27 calendar (the district site or its PDF): every day with no school, every minimum day, the breaks, the first and last day.
+2. If Highlands Elementary publishes its own minimum days, add them and say so in calendar.
+3. One row per date; a break is one row with its first date and its end in name.
+
+**Make:** `kin_gemini_saugus-calendar_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): YYYY-MM-DD
+- `name` (text): what the day is
+- `closed` (text): yes (no school) / no (minimum day)
+- `calendar` (text): district / Highlands Elementary
+- `url` (URL): the calendar page or PDF
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every 2026-27 no-school and minimum day, from the district's own calendar.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 15. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 15. AET-GEM-11 · Aether: the Oct 2026 shut-off reports, read to the end (RIDGE and TENNECO circuits)
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** Aether's shut-off record knows whether the circuits that serve Frazier Park were cut in fall 2026.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/climate-data.js (window.AETHER_PSPS, row 13)
+- https://www.cpuc.ca.gov/consumer-support/psps/utility-company-psps-reports-post-event-and-post-season
+
+**Do this:**
+1. Open every SCE post-event report filed for events from Sept 1 to Nov 20, 2026 on the CPUC page.
+2. Read each to the end, attachments included, and list every row for the RIDGE, TENNECO, FROZEN, GRAPEVINE PEAK and TEJON circuits: in scope only, or de-energized (off and on times, customers).
+3. Write 'none found' rows for reports that list none of them, naming the report.
+
+**Make:** `aether_gemini_psps-fall2026_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `event` (text): the event as the report names it
+- `circuit` (text): circuit name
+- `status` (text): de-energized / in scope only / none found
+- `off` (text): YYYY-MM-DD HH:MM or 'none'
+- `on` (text): YYYY-MM-DD HH:MM or 'none'
+- `customers` (integer): 0 when none
+- `url` (URL): the report PDF
+- `page` (text): PDF page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every fall 2026 SCE report checked to the end.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 16. CONTINUITY · SOVEREIGN VAULT ====================
+## 16. CON-GEM-07 · Continuity: recording a transfer-on-death deed in Kern County, step by step
+
+**Due:** 2026-11-28 · **State:** now
+
+**What it unlocks:** Continuity's binder gets a Kern recording checklist next to the small-estate rules.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/small-estate.js (the TOD rows)
+- Kern County Recorder's own site
+
+**Do this:**
+1. From the Kern County Recorder's own pages: the recording fee for a TOD deed (first page, each added page, SB2 fee if any), what must be on the first page, whether a Preliminary Change of Ownership Report is needed, how to record by mail and in person (office address), and how long it takes.
+2. From the Probate Code (leginfo or the courts): the 60-day recording rule and the two witnesses rule since 2022.
+3. Quote each rule word for word.
+
+**Make:** `continuity_gemini_kern-tod-recording_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `step` (text): the step or rule
+- `detail` (text): fee, form, address or time
+- `source` (text): office or code section
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every step from signing to a recorded deed, each with its official page.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 17. MONEY · PAYOFF SIMULATOR ====================
+## 17. MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026)
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Money's issuer rows show current published ranges with the date read.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/money/issuers.js (the issuers to cover)
+
+**Do this:**
+1. For each issuer in issuers.js, open its own current cardmember agreement or pricing page for its main consumer card.
+2. Record the purchase APR range, penalty APR, late fee (first and repeat), and the minimum payment formula, each quoted word for word with the date read.
+3. 'not stated' where the page does not give it; never a review site.
+
+**Make:** `money_gemini_issuer-pricing_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `issuer` (text): as in issuers.js
+- `card` (text): product name
+- `apr` (text): range as stated
+- `penalty_apr` (text): as stated
+- `late_fee` (text): as stated
+- `min_payment` (text): formula as stated
+- `read` (date): YYYY-MM-DD
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every issuer in issuers.js, from its own agreement.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 18. ICARUS STAKE ====================
+## 18. ICA-GEM-11 · Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports)
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Icarus marks FOMC, CPI and jobs-report days on the journal calendar.
+
+**Read first:**
+- federalreserve.gov FOMC calendar, bls.gov release schedule
+
+**Do this:**
+1. From federalreserve.gov: every 2027 FOMC meeting (both days) and which have a Summary of Economic Projections.
+2. From bls.gov's 2027 release calendar: every CPI and Employment Situation release date and time.
+3. Only the Fed's and BLS's own pages.
+
+**Make:** `icarus_gemini_2027-macro-dates_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): YYYY-MM-DD
+- `event` (text): FOMC / CPI / Employment Situation
+- `time` (text): ET, as stated, or 'not stated'
+- `detail` (text): e.g. SEP meeting, data month
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every 2027 FOMC, CPI and jobs-report date from the source.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 19. BASTION · MOUNTAIN PREP ====================
+## 19. BAS-GEM-07 · Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists)
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Bastion lists the official places to go, with who runs them and when they open.
+
+**Read first:**
+- Kern County Emergency Services, Kern County Public Health and Red Cross Central California pages
+
+**Do this:**
+1. From Kern County's own pages (and the Red Cross shelter pages they link): every designated or regularly used evacuation shelter, warming center and cooling center serving Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman.
+2. For each: name, town, who runs it, when it opens (the trigger), pets allowed or not, and the page.
+3. Give the facility's public name and town only.
+
+**Make:** `bastion_gemini_shelters_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `name` (text): facility
+- `town` (text): community
+- `kind` (text): shelter / warming / cooling
+- `runs` (text): agency
+- `opens` (text): trigger as stated
+- `pets` (text): yes / no / not stated
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every official place for the five communities, each with its page.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 20. BASTION · MOUNTAIN PREP ====================
+## 20. BAS-GEM-08 · Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code)
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Bastion's kit list gets the exact frequency and SAME code for the house.
+
+**Read first:**
+- https://www.weather.gov/nwr/ (station lists and county coverage)
+
+**Do this:**
+1. From the National Weather Service's own NOAA Weather Radio pages: the transmitter(s) that cover Frazier Park and the Tejon Pass area, their call signs, frequencies, power and the SAME codes for Kern County (and Ventura/Los Angeles counties if the area straddles them).
+2. Say which transmitter the NWS coverage map shows as reaching Frazier Park, quoting the page.
+
+**Make:** `bastion_gemini_weather-radio_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `call_sign` (text): e.g. WXL...
+- `frequency` (text): MHz
+- `site` (text): transmitter location
+- `same_code` (text): 6-digit code and county
+- `covers` (text): what the page says it covers
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every transmitter and code that reaches the area, from weather.gov.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 21. PRIVACY · CA DROP ====================
+## 21. PRI-GEM-10 · Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com)
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Privacy gets a Microsoft panel like the Google one: what each setting collects and the safest choice.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/privacy/google-settings.js (the shape to match)
+
+**Do this:**
+1. From Microsoft's own pages (privacy.microsoft.com, support.microsoft.com, account.microsoft.com): 25 settings across Windows 11 privacy, diagnostics, advertising ID, activity history, location, Bing/Copilot history and the Microsoft account privacy dashboard.
+2. For each: where it is (menu path), what it collects in Microsoft's words, the default, and the safest choice that keeps the PC working.
+
+**Make:** `privacy_gemini_microsoft-settings_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `setting` (text): name as Microsoft shows it
+- `where` (text): menu path
+- `collects` (text): in Microsoft's words
+- `default` (text): on / off / not stated
+- `safest` (text): the choice and why
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 25
+
+**Done when:** 25 settings, each with Microsoft's own page.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 22. LUDUS ARCADE ====================
+## 22. GAM-GEM-06 · Games: Anno 117 updates and roadmap, from Ubisoft's own pages
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Games shows each Anno 117 update with its date and the cross-play notes, and the published roadmap.
+
+**Read first:**
+- Ubisoft's Anno 117 news pages and patch notes (ubisoft.com, the official Anno site)
+
+**Do this:**
+1. List every Anno 117 title update and hotfix published so far: date, version, platforms, and every line that mentions cross-play, PS5 or saves.
+2. Add the official roadmap items with their stated season or date; 'not stated' when none.
+3. Only Ubisoft's own pages (news, patch notes, support), never press or forums.
+
+**Make:** `games_gemini_anno117-updates_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): YYYY-MM-DD
+- `version` (text): as Ubisoft names it
+- `kind` (text): update / hotfix / roadmap
+- `platforms` (text): PC / PS5 / Xbox / all
+- `notes` (text): cross-play, PS5 and save lines
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every update so far and the roadmap, each from Ubisoft.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 23. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 23. AET-GEM-12 · Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Aether can say how many closures a winter brings and how long they last, from Caltrans's own record.
+
+**Read first:**
+- Caltrans District 6 and 7 news releases and QuickMap alerts archive
+
+**Do this:**
+1. From Caltrans's own news releases (dot.ca.gov District 6 and 7) and CHP's official posts quoted there: every full closure of I-5 over the Grapevine (Tejon Pass) for snow or ice since Jan 2019.
+2. For each: closed time, reopened time, the reason as stated, and the release URL.
+3. Winters with none: one row saying none found and which pages you read.
+
+**Make:** `aether_gemini_grapevine-closures_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `closed` (text): YYYY-MM-DD HH:MM
+- `reopened` (text): YYYY-MM-DD HH:MM or 'not stated'
+- `reason` (text): as Caltrans states it
+- `hours` (text): math: reopened minus closed, or 'not stated'
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every closure since 2019 with Caltrans's own release.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 24. KAIROS MERIDIAN ====================
+## 24. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+
+**Due:** 2026-12-31 · **State:** now
+
+**What it unlocks:** The 'tentative' notes come off Kairos's California rows.
+
+**Read first:**
+- https://www.calhr.ca.gov/state-hr-professionals/Pages/observed-holidays.aspx
+
+**Do this:**
+1. When CalHR posts its 2027 observed holidays, list every one with its date.
+2. Mark any that differ from Kairos's tentative rows (Mar 31, Nov 26 and the federal-date ones).
+3. If it is not posted yet by the due date, send one row saying so with the page and the date you looked.
+
+**Make:** `kairos_gemini_calhr-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `date` (date): YYYY-MM-DD
+- `name` (text): as CalHR names it
+- `differs` (text): no / what Kairos has instead
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** CalHR's 2027 list, or a dated 'not posted yet'.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 25. GARAGE ====================
+## 25. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
+
+**Due:** 2027-01-10 · **State:** now
+
+**What it unlocks:** Garage's yearly cost uses 2027's real amounts.
+
+**Read first:**
+- https://www.dmv.ca.gov/portal/vehicle-registration/registration-fees/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/garage/fees.js
+
+**Do this:**
+1. After Jan 1, 2027, open DMV's fee page and its fee calculator notes; record every amount in fees.js that changed and its new value.
+2. Quote the line for each; keep unchanged ones as 'same' with the line.
+
+**Make:** `garage_gemini_ca-fees-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `item` (text): as in fees.js
+- `was` (text): 2026 amount
+- `now` (text): 2027 amount or 'same'
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every fees.js amount checked against DMV's 2027 page.
+
+**How Claude checks it:**
+- Claude opens rows at random against their pages.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 26. POLIS · CIVIC & LEGAL WATCH ====================
+## 26. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+
+**Due:** 2027-01-15 · **State:** now
 
 **What it unlocks:** Polis shows the next meeting that could touch Joseph's mountain: MAC, Board of Supervisors, Planning Commission.
 
@@ -989,1794 +1302,6 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 20. CONTINUITY · SOVEREIGN VAULT ====================
-## 20. CON-GEM-06 · Continuity: California's small-estate and transfer-on-death rules in 2026 numbers
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Continuity can say 'this estate skips probate' or not, with the 2026 thresholds.
-
-**Read first:**
-- leginfo.legislature.ca.gov (Probate Code 13100, 13050, 13151, 5600-5698, 890) and courts.ca.gov small-estate forms (DE-305, DE-310)
-
-**Do this:**
-1. 10 rows: the small-estate limit now in force (and since when), what counts toward it, the 40-day wait, the affidavit form, the real-property limit, transfer-on-death deed requirements, when a TOD deed must be recorded, the witnesses rule, who can revoke it, and the court form numbers. Each with the code section and its words.
-
-**Make:** `continuity_gemini_ca-small-estate_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of 10 rows`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `rule` (text): plain reading
-- `value` (text): amount, days or form number
-- `code_section` (text): 
-- `url` (URL): 
-- `quote` (text): 
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**How many:** 10
-
-**Done when:** 10 rows with current numbers.
-
-**How Claude checks it:**
-- Claude opens 5 sections.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 21. PRIVACY · CA DROP ====================
-## 21. PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them
-
-**Due:** 2026-11-27 · **State:** now
-
-**What it unlocks:** Privacy splits the list into 'DROP covers this' and 'opt out by hand', which halves the manual work.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/privacy/brokers-data.js (window.BROKER_OPTOUTS: the 72 names)
-- https://cppa.ca.gov/data_broker_registry/ (the registry)
-
-**Do this:**
-1. For every one of the 72 names in BROKER_OPTOUTS, search the California Data Broker Registry (CPPA) and record whether the brand or its parent company is registered, the registered legal name, the registration year(s) shown (2025, 2026), and the registry entry URL.
-2. Brands often register under a parent (e.g. one company for several people-search sites): give the parent's registered name and say which brand it covers in note.
-3. If a name is not on the registry, write registered 'no' and in note what you searched for (exact search strings).
-
-**Make:** `privacy_gemini_registry_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of 72 objects, one per BROKER_OPTOUTS name, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `broker` (text): exactly as the key in BROKER_OPTOUTS
-- `registered` (text): yes / no
-- `registrant` (text): registered legal name, or ''
-- `years` (text): e.g. '2025, 2026'
-- `url` (URL): the registry entry, or the registry search page only when registered is no
-- `note` (text): parent/brand link or the search strings tried
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
-
-**How many:** 72
-
-**Done when:** 72 rows, every 'yes' with its registry entry URL.
-
-**How Claude checks it:**
-- Claude opens 12 registry entries at random.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a number that is not on its source and not shown as arithmetic
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-==================== 22. PROMETHEUS HUB ====================
-## 22. HUB-GEM-10 · Prometheus Hub: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: hub_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 5 of its 25 file:line references run past the end of the file (e.g. deck/app.js:1-385 when the file had 322 lines). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Prometheus Hub from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/./
-- https://github.com/jpavia10/prometheus-hub/tree/main/deck
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/./) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/deck): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `hub_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 23. KAIROS MERIDIAN ====================
-## 23. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: kairos_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 4 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 4 tests and none is Given/When/Then (12+); G has 4 steps. Its code references are not reliable: app.js:77-108 are date helpers, not parseNL(). Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Kairos Meridian from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/kairos/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `kairos_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 24. MIDAS LEDGER ====================
-## 24. MID-GEM-11 · Midas Ledger: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: midas_gemini_function-spec_20261118-1940.md now describes the real code (Muse's first read found an invented app in the 1735 version), but it lost the counts: B has 3 items and none is 'As Joseph, when ..., I want ..., so that ...' (8+); C is a list, not the table; E has 7 rules (10+); F has 4 tests, none Given/when/then (12+). Its build.py lines point at other code (parse_terms is at build.py:1767, not 130-165; net worth at 1671, not 305-330), and C and E state fields build.py does not write (warnings, change, duplicate: 'DUPLICATE', plan.mode, totals). F1 claims 25/25 for the parser cases; 22 hold (test/test_parser_cases.py). Write it again from the live code; run node tools/kit/check_delivery.mjs on it from a checkout of jpavia10/prometheus-hub.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Midas Ledger from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/midas-ledger/ (locked; run it locally with ?hud=1 for the made-up book, README 'Pages')
-- https://github.com/jpavia10/midas-ledger
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/midas-ledger/ (locked; run it locally with ?hud=1 for the made-up book, README 'Pages')) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/midas-ledger): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `midas_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 25. HEPHAESTUS HEARTH ====================
-## 25. HEA-GEM-18 · Hephaestus Hearth: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: hearth_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Hephaestus Hearth from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hearth/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/hearth/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hearth/): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `hearth_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 26. GARAGE ====================
-## 26. GAR-GEM-07 · Garage: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: garage_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Garage from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/garage/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/garage/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `garage_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 27. APOLLO TEMPLE ====================
-## 27. APO-GEM-10 · Apollo Temple: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: apollo_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Apollo Temple from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/apollo/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/apollo
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/apollo/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/apollo): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `apollo_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 28. MONEY · PAYOFF SIMULATOR ====================
-## 28. MON-GEM-04 · Money: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: money_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 24 of its 55 file:line references run past the end of the file (e.g. pillars/money/engine.js:1-342 when the file had 58 lines and never more). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Money from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/money/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/money
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/money/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/money): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `money_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 29. SELLING PIPELINE ====================
-## 29. SEL-GEM-05 · Selling Pipeline: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: selling_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Selling Pipeline from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/selling/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/selling
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/selling/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/selling): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `selling_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 30. RECORDS · PAPER KILLER ====================
-## 30. REC-GEM-05 · Records: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: records_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:25-34 and 35-65 are the classify loop, not the templates or the form. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Records from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/records/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/records
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/records/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/records): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `records_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 31. ICARUS STAKE ====================
-## 31. ICA-GEM-10 · Icarus Stake: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: icarus_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Icarus Stake from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/icarus/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/icarus
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/icarus/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/icarus): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `icarus_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 32. HERMES POST ====================
-## 32. HER-GEM-09 · Hermes Post: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: hermes_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Hermes Post from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/hermes/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hermes
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/hermes/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hermes): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `hermes_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 33. BOSSA PIANO STUDIO ====================
-## 33. PIA-GEM-03 · Bossa Piano Studio: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: piano_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Bossa Piano Studio from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/piano/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/piano
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/piano/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/piano): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `piano_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 34. BASTION · MOUNTAIN PREP ====================
-## 34. BAS-GEM-06 · Bastion: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: bastion_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Bastion from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/bastion
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/bastion/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/bastion): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `bastion_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 35. ATHENAEUM · IDEA VAULT ====================
-## 35. ATH-GEM-03 · Athenaeum: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: athenaeum_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Athenaeum from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/athenaeum
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/athenaeum): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `athenaeum_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 36. ODYSSEY · TRIPS & AWAY MODE ====================
-## 36. ODY-GEM-04 · Odyssey: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: odyssey_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:60-65 is the trip form's fields, not publishTrip(). A says trip.js has withWolfgang and withViolet flags; the code had one 'kids' flag. B copies a street address, pet and device names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Odyssey from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/odyssey
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/odyssey/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/odyssey): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `odyssey_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 37. PRIVACY · CA DROP ====================
-## 37. PRI-GEM-06 · Privacy: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: privacy_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Privacy from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/privacy/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/privacy
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/privacy/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/privacy): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `privacy_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 38. ARGUS ALBUM ====================
-## 38. ARG-GEM-10 · Argus Album: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: argus_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Argus Album from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/argus/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/argus
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/argus/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/argus): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `argus_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 39. LUDUS ARCADE ====================
-## 39. GAM-GEM-03 · Ludus Arcade: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: games_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Ludus Arcade from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/games/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/games
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/games/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/games): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `games_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 40. FORGE ====================
-## 40. FOR-GEM-03 · Forge: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: forge_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 16 of its 25 file:line references run past the end of the file (e.g. pillars/forge/app.js:314-468 when the file had 238 lines). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Forge from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/forge/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/forge
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/forge/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/forge): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `forge_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 41. FOUNDRY ====================
-## 41. FDY-GEM-04 · Foundry: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: foundry_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Foundry from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/foundry/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/foundry
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/foundry/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/foundry): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `foundry_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 42. OBSERVATORY ====================
-## 42. OBS-GEM-04 · Observatory: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: observatory_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Observatory from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/observatory/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/observatory
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/observatory/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/observatory): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `observatory_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 43. KIN ====================
-## 43. KIN-GEM-04 · Kin: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: kin_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Kin from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/kin/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kin
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/kin/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kin): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `kin_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 44. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 44. AET-GEM-05 · Aether: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: aether_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Aether from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/aether/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/aether
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/aether/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/aether): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `aether_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 45. POLIS · CIVIC & LEGAL WATCH ====================
-## 45. POL-GEM-05 · Polis: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: polis_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Polis from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/polis/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/polis
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/polis/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/polis): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `polis_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 46. MYTHOS · CREATIVE & LORE STUDIO ====================
-## 46. MYT-GEM-03 · Mythos: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: mythos_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:66-78 is the tab strip, not the arc board. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Mythos from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/mythos/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/mythos
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/mythos/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/mythos): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `mythos_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
-
-==================== 47. CONTINUITY · SOVEREIGN VAULT ====================
-## 47. CON-GEM-04 · Continuity: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: continuity_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Continuity from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/continuity/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/continuity
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/continuity/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/continuity): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `continuity_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count, or a row missing a field
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
 
 
 DELIVERED, WAITING FOR THEIR CHECK (do not redo these; if a check needs a redo, the task comes back above with the reason):

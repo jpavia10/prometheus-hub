@@ -169,7 +169,7 @@
     {
      "id": "CON-GEM-04",
      "title": "Continuity: the function spec, written as the build plan",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-30",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Continuity from, step by step.",
@@ -258,7 +258,8 @@
       "a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data"
      ],
      "reopened": "2026-11-20",
-     "review": "Sent back 2026-11-20: continuity_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code."
+     "review": "Done 2026-11-21 (Claude): All checks pass, and a real find: the readiness card said PBKDF2 310k while the vault uses 250,000. Fixed in d47. Score 10/10 (#77).",
+     "closed": "2026-11-21"
     },
     {
      "id": "CON-GEM-05",
@@ -305,7 +306,7 @@
     {
      "id": "CON-GEM-06",
      "title": "Continuity: California's small-estate and transfer-on-death rules in 2026 numbers",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "Continuity lists what happens to accounts. The state rules decide whether an estate needs probate at all.",
@@ -373,7 +374,82 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-21",
+     "review": "Done 2026-11-21 (Claude): Built into Continuity's accounts tab, marked not second-read. The $208,850 and $750,000 limits match the April 2025 DE-300 as Claude knows it; the TOD rows quote the statutory form. Score 10/10 (#83)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "The TOD deed only works if it is signed, notarized and recorded within 60 days; Continuity knows the law but not Kern's counter: fees, form, where and how.",
+     "unlocks": "Continuity's binder gets a Kern recording checklist next to the small-estate rules.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/small-estate.js (the TOD rows)",
+      "Kern County Recorder's own site"
+     ],
+     "steps": [
+      "From the Kern County Recorder's own pages: the recording fee for a TOD deed (first page, each added page, SB2 fee if any), what must be on the first page, whether a Preliminary Change of Ownership Report is needed, how to record by mail and in person (office address), and how long it takes.",
+      "From the Probate Code (leginfo or the courts): the 60-day recording rule and the two witnesses rule since 2022.",
+      "Quote each rule word for word."
+     ],
+     "deliver": {
+      "file": "continuity_gemini_kern-tod-recording_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "step",
+       "type": "text",
+       "rule": "the step or rule"
+      },
+      {
+       "name": "detail",
+       "type": "text",
+       "rule": "fee, form, address or time"
+      },
+      {
+       "name": "source",
+       "type": "text",
+       "rule": "office or code section"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every step from signing to a recorded deed, each with its official page.",
+     "checks": [
+      "Claude opens rows at random against their pages."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "CON-GEM-07",
+     "title": "Continuity: recording a transfer-on-death deed in Kern County, step by step",
+     "due": "2026-11-28"
     }
    ]
   },
@@ -543,6 +619,50 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "review": "Second read by Sebastian 2026-11-17: scored 6/10 (8 agree / 7 differ; Coinbase quote fabricated). continuity_muse_legacy-policies-check_20261117-1725.md in hub incoming."
+    },
+    {
+     "id": "CON-MUS-02",
+     "title": "Continuity: second reader on Gemini's 'California small-estate and transfer-on-death rules'",
+     "state": "now",
+     "added": "2026-11-21",
+     "due": "2026-11-28",
+     "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+     "unlocks": "The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.",
+     "inputs": [
+      "Gemini's file continuity_gemini_ca-small-estate_20261120-2027.json in the folder below (CON-GEM-06)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 10 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "continuity_muse_ca-small-estate-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked row checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
     }
    ]
   },

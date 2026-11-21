@@ -2,126 +2,54 @@
 
 # Garage · homework for Gemini
 
-Updated 2026-11-20 19:24 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 10:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027
+## 1. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
 
-**Due:** 2026-11-26 · **State:** now
+**Due:** 2027-01-10 · **State:** now
 
-**Why:** Garage has a paperwork radar but no real numbers: registration fee parts, smog exemptions for a new hybrid and a motorcycle, the hybrid's CA vehicle fees.
+**Why:** Garage's fee rows are 2026 amounts; DMV adjusts registration, CHP and the transportation improvement fee each January.
 
-**What it unlocks:** The registration renewal shows its expected parts and whether a smog check is due.
+**What it unlocks:** Garage's yearly cost uses 2027's real amounts.
 
 **Read first:**
-- dmv.ca.gov registration fees and smog pages; bar.ca.gov Smog Check rules; leginfo (Vehicle Code / Revenue and Taxation Code sections)
+- https://www.dmv.ca.gov/portal/vehicle-registration/registration-fees/
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/garage/fees.js
 
 **Do this:**
-1. Rows for each vehicle: smog check due or exempt (and until which model-year age), the registration fee parts that apply (registration fee, CHP fee, vehicle license fee rate, transportation improvement fee bands, county fees for Kern, the road improvement fee for zero-emission vehicles: does it apply to a hybrid?), motorcycle safety fee, and each one's amount or rate with its source.
+1. After Jan 1, 2027, open DMV's fee page and its fee calculator notes; record every amount in fees.js that changed and its new value.
+2. Quote the line for each; keep unchanged ones as 'same' with the line.
 
-**Make:** `garage_gemini_ca-fees_{YYYYMMDD-HHMM}.json`
+**Make:** `garage_gemini_ca-fees-2027_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array of rows`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
 - `n` (integer): row
-- `vehicle` (text): '2025 Kia Sorento Hybrid' or '2021 Yamaha MT-07' or 'both'
-- `item` (text): 
-- `amount` (text): dollars, rate or 'exempt until ...'
-- `rule` (text): plain reading
-- `url` (URL): 
-- `quote` (text): 
+- `item` (text): as in fees.js
+- `was` (text): 2026 amount
+- `now` (text): 2027 amount or 'same'
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
 
 **Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
 - [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
 
-**Done when:** Every fee part and smog rule for both vehicles.
+**Done when:** Every fees.js amount checked against DMV's 2027 page.
 
 **How Claude checks it:**
-- Claude opens 5 URLs.
-
-**Not done (sent back) if:**
-- fewer rows than the count (where a count is set), or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-## 2. GAR-GEM-07 · Garage: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: garage_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Garage from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/garage/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/garage/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/garage): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `garage_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+- Claude opens rows at random against their pages.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
+- a guess written as a fact (write 'not stated' and name the page you checked)

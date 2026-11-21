@@ -134,6 +134,17 @@
               "rule": "charter"
             }
           ]
+        },
+        {
+          "id": "HUB-TST-05",
+          "title": "Object-shaped delivery (one station, twelve months)",
+          "deliver": {
+            "file": "hub_gemini_normals_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+            "shape": "{station: {id, name}, columns: [...], months: [3 objects]}"
+          },
+          "count": 0,
+          "fields": []
         }
       ]
     }

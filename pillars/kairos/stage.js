@@ -2,7 +2,7 @@
    dates (holidays, tax deadlines, clock changes), your own events and every pillar's deadline on it; inside, today's 24 hours with
    the hand on now. Tap a mark to read it. */
 (function () {
-  const { store } = PK, S = store("kairos"), I = PK.ink, KIND = { "federal holiday": "#ffc552", "tax deadline": "#ff7a8c", "clock change": "#5ee7ff" };
+  const { store } = PK, S = store("kairos"), I = PK.ink, KIND = { "federal holiday": "#ffc552", "tax deadline": "#ff7a8c", "clock change": "#5ee7ff", "state holiday": "#ffd98a", "court holiday": "#e0b06a", "school": "#8fe3b0" };
   const label = (d) => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
   let marks = [];
   /* 2026-11-20: the labels were formatted again on every frame (about 15 toLocaleDateString calls, the slowest thing this stage

@@ -1,7 +1,7 @@
 /**
  * proofs/unit/check-delivery.test.mjs
  *
- * Unit proof suite for tools/kit/check_delivery.mjs (15 cases: 7 pass, 8 fail one named check; function-spec cases added 2026-11-20).
+ * Unit proof suite for tools/kit/check_delivery.mjs (17 cases: 8 pass, 9 fail; function-spec cases added 2026-11-20, object shapes 2026-11-21).
  *
  * Run:
  *   node --test proofs/unit/check-delivery.test.mjs
@@ -243,4 +243,22 @@ test('FAIL 8 [md-code-refs]: a line range past the end of its file', () => {
   const c = parseCheckLines(res.stdout).find((l) => l.check === 'md-code-refs');
   assert.ok(c && c.status === 'FAIL', res.stdout);
   assert.match(c.reason, /deck\/app\.js:1-385 \(the file has 20 lines\)/);
+});
+
+// ---------- object-shaped deliveries (2026-11-21: AET-GEM-08 asks for one station object, not an array) ----------
+
+test('PASS 8: an object-shaped delivery has every key its shape names and the row count it gives', () => {
+  const res = runChecker('hub_gemini_normals_20261121-0900.json');
+  assert.equal(res.exitCode, 0, res.stdout + res.stderr);
+  const lines = parseCheckLines(res.stdout);
+  assert.ok(lines.every((l) => l.status === 'PASS'));
+  assert.ok(lines.some((l) => l.check === 'object-keys'));
+  assert.ok(lines.some((l) => l.check === 'row-count' && l.reason.includes('months has 3 rows')));
+});
+
+test('FAIL 9 [object-keys, row-count]: an object missing a named key and short of rows', () => {
+  const res = runChecker('fail-object/hub_gemini_normals_20261121-0905.json');
+  assert.equal(res.exitCode, 1);
+  const failed = parseCheckLines(res.stdout).filter((l) => l.status === 'FAIL');
+  assert.deepEqual(failed.map((l) => l.check), ['object-keys', 'row-count']);
 });

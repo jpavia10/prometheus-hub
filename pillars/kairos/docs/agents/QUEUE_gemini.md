@@ -2,127 +2,54 @@
 
 # Kairos Meridian · homework for Gemini
 
-Updated 2026-11-20 19:24 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 10:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. KAI-GEM-13 · Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)
+## 1. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
-**Due:** 2026-11-26 · **State:** now
+**Due:** 2026-12-31 · **State:** now
 
-**Why:** Kairos has 2026's fixed dates. 2027 starts in six weeks.
+**Why:** Kairos carries California's 2027 holidays from a tentative calendar; CalHR publishes the final list near the end of the year.
 
-**What it unlocks:** Every 2027 holiday, school break and county closure is in Kairos before January.
+**What it unlocks:** The 'tentative' notes come off Kairos's California rows.
 
 **Read first:**
-- opm.gov federal holidays 2027; calhr.ca.gov state holidays; kerncounty.com holiday schedule; El Tejon Unified School District 2026-27 and 2027-28 calendars (etusd.org)
+- https://www.calhr.ca.gov/state-hr-professionals/Pages/observed-holidays.aspx
 
 **Do this:**
-1. Every 2027 date from those four sources: name, date, which calendar, whether offices close, and the source URL and quote.
-2. School: first and last day, breaks, minimum days, no-school days.
+1. When CalHR posts its 2027 observed holidays, list every one with its date.
+2. Mark any that differ from Kairos's tentative rows (Mar 31, Nov 26 and the federal-date ones).
+3. If it is not posted yet by the due date, send one row saying so with the page and the date you looked.
 
-**Make:** `kairos_gemini_2027-dates_{YYYYMMDD-HHMM}.json`
+**Make:** `kairos_gemini_calhr-2027_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per date`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
 - `n` (integer): row
-- `date` (date): 
-- `name` (text): 
-- `calendar` (text): federal / California / Kern County / El Tejon USD
-- `closed` (text): yes / no / not stated
-- `url` (URL): 
-- `quote` (text): 
+- `date` (date): YYYY-MM-DD
+- `name` (text): as CalHR names it
+- `differs` (text): no / what Kairos has instead
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
 
 **Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
 - [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
 
-**Done when:** Every 2027 date from the four sources.
+**Done when:** CalHR's 2027 list, or a dated 'not posted yet'.
 
 **How Claude checks it:**
-- Claude opens 10 rows at random.
-
-**Not done (sent back) if:**
-- fewer rows than the count (where a count is set), or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-## 2. KAI-GEM-11 · Kairos Meridian: the function spec, written as the build plan
-
-**Due:** 2026-11-30 · **State:** now
-
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: kairos_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 4 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 4 tests and none is Given/When/Then (12+); G has 4 steps. Its code references are not reliable: app.js:77-108 are date helpers, not parseNL(). Write it again from the live code.
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Kairos Meridian from, step by step.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
-
-**Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/kairos/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/kairos): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
-
-**Make:** `kairos_gemini_function-spec_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
-
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
-
-**Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
-
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+- Claude opens rows at random against their pages.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
+- a guess written as a fact (write 'not stated' and name the page you checked)

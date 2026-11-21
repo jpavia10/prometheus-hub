@@ -203,6 +203,21 @@ export function checkFieldType(val, rawType) {
   return { ok: true };
 }
 
+/** Top-level key names of an object shape string such as "{station: {id, name}, columns: [...], months: [12 objects]}". */
+export function objectShapeKeys(shape) {
+  const keys = [];
+  let depth = 0, tok = '';
+  for (const ch of String(shape || '')) {
+    if (ch === '{' || ch === '[') { depth++; tok = ''; continue; }
+    if (ch === '}' || ch === ']') { depth--; tok = ''; continue; }
+    if (depth !== 1) continue;
+    if (ch === ',') { tok = ''; continue; }
+    if (ch === ':') { const k = tok.trim(); if (/^\w+$/.test(k)) keys.push(k); tok = ''; continue; }
+    tok += ch;
+  }
+  return keys;
+}
+
 /**
  * Extract required Markdown headings named in a task's deliver.shape string.
  * Supports:
@@ -273,9 +288,14 @@ export function markdownSections(content) {
  */
 export function listItems(lines) {
   const items = [];
-  for (const line of lines) {
-    if (/^(?:[-*+]|\d+[.)]|[A-Z]\d+[.):])\s+/.test(line)) items.push(line);
-    else if (items.length && line.trim() && !/^\s*\|/.test(line)) items[items.length - 1] += ' ' + line.trim();
+  for (const raw of lines) {
+    /* 2026-11-20: a section written as one paragraph ("F1. Given ... F2. Given ...") counts each lettered item, as a list would.
+       Only letter+number markers split ("F7. "), never plain numbers, so prices and versions inside a line stay whole. */
+    const parts = /\b[A-Z]\d+[.):]\s/.test(raw.replace(/^\s*[A-Z]\d+[.):]\s/, '')) ? raw.split(/\s+(?=[A-Z]\d+[.):]\s)/) : [raw];
+    for (const line of parts) {
+      if (/^(?:[-*+]|\d+[.)]|[A-Z]\d+[.):])\s+/.test(line)) items.push(line);
+      else if (items.length && line.trim() && !/^\s*\|/.test(line)) items[items.length - 1] += ' ' + line.trim();
+    }
   }
   return items;
 }
@@ -400,6 +420,20 @@ export function checkDelivery(filePath, { taskId = null, repoRoot = DEFAULT_REPO
     }
 
     if (!Array.isArray(data)) {
+      // Check 3b (2026-11-21): a task whose shape is one object ("{station: {...}, months: [12 objects]}")
+      // gets that object: every top-level key the shape names is there, and each "key: [N objects]" has N rows.
+      const shape = String(task?.deliver?.shape || '').trim();
+      if (data && typeof data === 'object' && shape.startsWith('{')) {
+        const keys = objectShapeKeys(shape);
+        const missing = keys.filter((k) => !Object.prototype.hasOwnProperty.call(data, k));
+        record('object-keys', missing.length === 0, missing.length === 0 ? `Object has every key the shape names (${keys.join(', ')})` : `Missing keys: ${missing.join(', ')}`);
+        for (const m of shape.matchAll(/(\w+)\s*:\s*\[\s*(\d+)\s+objects?\s*\]/g)) {
+          const arr = data[m[1]], want = Number(m[2]);
+          const okLen = Array.isArray(arr) && arr.length === want;
+          record('row-count', okLen, okLen ? `${m[1]} has ${want} rows (matches the shape)` : `${m[1]} has ${Array.isArray(arr) ? arr.length : 'no'} rows, expected ${want}`);
+        }
+        return { ok: results.every((r) => r.status === 'PASS'), task, results };
+      }
       record('row-count', false, `Expected JSON array, got ${typeof data}`);
       return { ok: false, task, results };
     }

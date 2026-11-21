@@ -1,8 +1,8 @@
 {
- "built": "2026-11-21T03:33:25Z",
- "checked": "2026-11-21T03:33:25Z",
+ "built": "2026-11-21T09:59:26Z",
+ "checked": "2026-11-21T09:59:26Z",
  "version": 2,
- "today": "2026-11-20",
+ "today": "2026-11-21",
  "sources": {
   "queues": {
    "read": 26,
@@ -18,54 +18,54 @@
    "entries": 146,
    "synced": "2026-11-19T20:47:40Z"
   },
-  "titan_scores": 176,
-  "hub_scores": 52,
+  "titan_scores": 177,
+  "hub_scores": 89,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 119,
-  "late": 3,
-  "due7": 78,
+  "todo": 105,
+  "late": 4,
+  "due7": 82,
   "delivered": 5,
   "queued": 12,
   "withdrawn": 110
  },
  "per": {
   "Gemini": {
-   "todo": 51,
+   "todo": 28,
    "late": 0,
-   "due7": 24,
+   "due7": 18,
    "delivered": 5,
    "queued": 2,
-   "done7": 44,
+   "done7": 81,
    "withdrawn": 68,
-   "items": 265,
+   "items": 181,
    "floor": 30,
    "by": {
-    "hub": 47,
-    "titan": 3,
+    "hub": 26,
+    "titan": 1,
     "tproj": 1,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 123,
-    "avg": 6.85,
-    "last10": 5.4,
+    "n": 161,
+    "avg": 7.5,
+    "last10": 9.2,
     "last": {
      "ai": "Gemini",
-     "n": 52,
-     "date": "2026-11-20",
-     "what": "hub_gemini_defects_20261120-1018.json (trial 4, 16 defects)",
-     "task": "HUB-GEM-14",
+     "n": 89,
+     "date": "2026-11-21",
+     "what": "polis_gemini_2027-meetings_20261120-2033.json",
+     "task": "POL-GEM-07",
      "where": "Prometheus Hub",
-     "score": 10.0
+     "score": 6.0
     }
    }
   },
   "Grok": {
    "todo": 45,
-   "late": 2,
+   "late": 3,
    "due7": 39,
    "delivered": 0,
    "queued": 7,
@@ -96,19 +96,19 @@
    }
   },
   "Muse": {
-   "todo": 11,
+   "todo": 20,
    "late": 0,
-   "due7": 9,
+   "due7": 19,
    "delivered": 0,
    "queued": 1,
    "done7": 8,
    "withdrawn": 16,
-   "items": 133,
+   "items": 219,
    "floor": 6,
    "by": {
-    "hub": 2,
-    "titan": 9,
-    "tproj": 0,
+    "hub": 8,
+    "titan": 11,
+    "tproj": 1,
     "board": 0
    },
    "probation": false,
@@ -264,28 +264,28 @@
  },
  "places": {
   "Prometheus Hub": {
-   "todo": 6,
+   "todo": 5,
    "delivered": 0,
    "by": {
     "Grok": 1,
-    "Gemini": 3,
+    "Gemini": 2,
     "Muse": 2
    }
   },
   "Kairos Meridian": {
-   "todo": 4,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
+    "Gemini": 1,
     "Grok": 1,
     "ChatGPT": 1
    }
   },
   "Hephaestus Hearth": {
-   "todo": 4,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
+    "Gemini": 1,
     "Grok": 1,
     "ChatGPT": 1
    }
@@ -294,16 +294,16 @@
    "todo": 4,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
+    "Gemini": 1,
     "Grok": 1,
+    "Muse": 1,
     "ChatGPT": 1
    }
   },
   "Apollo Temple": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -317,18 +317,16 @@
    }
   },
   "Selling Pipeline": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
     "Grok": 1
    }
   },
   "Records": {
-   "todo": 3,
+   "todo": 1,
    "delivered": 1,
    "by": {
-    "Gemini": 2,
     "Grok": 1
    }
   },
@@ -341,10 +339,9 @@
    }
   },
   "Hermes Post": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -352,47 +349,48 @@
    "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
-    "Grok": 1
+    "Gemini": 1,
+    "Grok": 1,
+    "Muse": 1
    }
   },
   "Bastion": {
-   "todo": 2,
+   "todo": 3,
    "delivered": 1,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 1
    }
   },
   "Athenaeum": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
     "Grok": 1
    }
   },
   "Odyssey": {
-   "todo": 10,
+   "todo": 9,
    "delivered": 0,
    "by": {
-    "Gemini": 9,
-    "Grok": 1
+    "Gemini": 7,
+    "Grok": 1,
+    "Muse": 1
    }
   },
   "Privacy": {
-   "todo": 3,
+   "todo": 4,
    "delivered": 0,
    "by": {
     "Gemini": 2,
-    "Grok": 1
+    "Grok": 1,
+    "Muse": 1
    }
   },
   "Argus Album": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 1,
    "by": {
-    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -405,26 +403,23 @@
    }
   },
   "Forge": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
     "Grok": 1
    }
   },
   "Foundry": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 1,
    "by": {
-    "Gemini": 1,
     "Grok": 1
    }
   },
   "Observatory": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 1,
    "by": {
-    "Gemini": 1,
     "Grok": 1
    }
   },
@@ -441,19 +436,12 @@
    "todo": 4,
    "delivered": 0,
    "by": {
-    "Gemini": 3,
-    "Grok": 1
+    "Gemini": 2,
+    "Grok": 1,
+    "Muse": 1
    }
   },
   "Polis": {
-   "todo": 3,
-   "delivered": 0,
-   "by": {
-    "Gemini": 2,
-    "Grok": 1
-   }
-  },
-  "Mythos": {
    "todo": 2,
    "delivered": 0,
    "by": {
@@ -461,30 +449,37 @@
     "Grok": 1
    }
   },
-  "Continuity": {
-   "todo": 4,
+  "Mythos": {
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
-    "Grok": 2
+    "Grok": 1
    }
   },
-  "Midas Ledger": {
+  "Continuity": {
    "todo": 4,
    "delivered": 0,
    "by": {
     "Gemini": 1,
     "Grok": 2,
+    "Muse": 1
+   }
+  },
+  "Midas Ledger": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Grok": 2,
     "ChatGPT": 1
    }
   },
   "Titan": {
-   "todo": 32,
+   "todo": 33,
    "delivered": 0,
    "by": {
-    "Gemini": 4,
+    "Gemini": 2,
     "Grok": 17,
-    "Muse": 9,
+    "Muse": 12,
     "Gemini API": 2
    }
   },
@@ -1071,12 +1066,12 @@
    "pid": "hub",
    "id": "HUB-GEM-10",
    "title": "Prometheus Hub: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: hub_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 5 of its 25 file:line references run past the end of the file (e.g. deck/app.js:1-385 when the file had 322 lines). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Passes every check: eight headings in order, 10 stories, the table, 12 rules, 14 Given/When/Then tests; 119 file:line refs, Claude's reference check found 3 off and those were its own false alarms. Score 10/10 (#53).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -1613,12 +1608,12 @@
    "pid": "kairos",
    "id": "KAI-GEM-11",
    "title": "Kairos Meridian: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: kairos_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 4 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 4 tests and none is Given/When/Then (12+); G has 4 steps. Its code references are not reliable: app.js:77-108 are date helpers, not parseNL(). Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 80 refs. Score 10/10 (#56).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -1678,11 +1673,11 @@
    "pid": "kairos",
    "id": "KAI-GEM-13",
    "title": "Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built into Kairos: its 11 federal dates equal the ones already there; 10 new state, court and school dates added (weekdays and the fourth-Friday rule checked). Honest about the calendars not out yet. Score 10/10 (#80).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1697,6 +1692,38 @@
     "done": "Every 2027 date from the four sources.",
     "checks": [
      "Claude opens 10 rows at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kairos/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kairos Meridian",
+   "pid": "kairos",
+   "id": "KAI-GEM-14",
+   "title": "Kairos: California's final 2027 state holidays (CalHR), when published",
+   "status": "todo",
+   "due": "2026-12-31",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Kairos carries California's 2027 holidays from a tentative calendar; CalHR publishes the final list near the end of the year.",
+    "steps": [
+     "When CalHR posts its 2027 observed holidays, list every one with its date.",
+     "Mark any that differ from Kairos's tentative rows (Mar 31, Nov 26 and the federal-date ones).",
+     "If it is not posted yet by the due date, send one row saying so with the page and the date you looked."
+    ],
+    "make": "kairos_gemini_calhr-2027_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "CalHR's 2027 list, or a dated 'not posted yet'.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kairos/docs/agents/QUEUE_gemini.md"
    },
@@ -2312,12 +2339,12 @@
    "pid": "hearth",
    "id": "HEA-GEM-18",
    "title": "Hephaestus Hearth: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: hearth_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 81 refs. Score 10/10 (#57).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -2477,11 +2504,11 @@
    "pid": "hearth",
    "id": "HEA-GEM-23",
    "title": "Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built as Hearth's \"Which snow load governs\". An honest partial: Ordinance G-9359 found and dated, the table itself not online; the number is still for Kern Building Inspection to give. Score 9/10 (#86).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -2497,6 +2524,38 @@
     "done": "The adopting ordinance found and its snow section quoted, or 'not found' with every place searched.",
     "checks": [
      "Claude opens every URL."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hephaestus Hearth",
+   "pid": "hearth",
+   "id": "HEA-GEM-24",
+   "title": "Hearth: Kern County's published ground snow load for 4,600 ft (2026 design criteria)",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The Ordinance G-9359 text is not online, but Kern Building Inspection publishes design-criteria handouts and plan-check sheets that state the ground snow load by elevation.",
+    "steps": [
+     "Search Kern County Public Works / Building Inspection's own pages for 2026 design criteria, plan-check checklists, snow-load maps or handouts (PDFs).",
+     "Record the ground snow load (psf) for 4,000-5,000 ft and 5,000+ ft, the roof or deck snow load if separate, the wind speed and the frost depth, with the document's date.",
+     "If none is online, list every document you opened and what it says instead; never use another county's numbers."
+    ],
+    "make": "hearth_gemini_kern-design-criteria_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every Kern document opened, the snow load found or honestly not.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
    },
@@ -2947,12 +3006,12 @@
    "pid": "garage",
    "id": "GAR-GEM-07",
    "title": "Garage: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: garage_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 50 refs. Score 10/10 (#58).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -3110,11 +3169,11 @@
    "pid": "garage",
    "id": "GAR-GEM-12",
    "title": "Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built as Garage's \"What California charges each year\", marked not second-read (dmv.ca.gov unreachable from the sandbox; Muse checks it). Score 10/10 (#82).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3128,6 +3187,37 @@
     "done": "Every fee part and smog rule for both vehicles.",
     "checks": [
      "Claude opens 5 URLs."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Garage",
+   "pid": "garage",
+   "id": "GAR-GEM-13",
+   "title": "Garage: DMV's 2027 fee amounts after the January 1 adjustment",
+   "status": "todo",
+   "due": "2027-01-10",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Garage's fee rows are 2026 amounts; DMV adjusts registration, CHP and the transportation improvement fee each January.",
+    "steps": [
+     "After Jan 1, 2027, open DMV's fee page and its fee calculator notes; record every amount in fees.js that changed and its new value.",
+     "Quote the line for each; keep unchanged ones as 'same' with the line."
+    ],
+    "make": "garage_gemini_ca-fees-2027_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every fees.js amount checked against DMV's 2027 page.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
    },
@@ -3287,6 +3377,38 @@
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
     "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
     "done": "Every picked item checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Garage",
+   "pid": "garage",
+   "id": "GAR-MUS-04",
+   "title": "Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles'",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+    "steps": [
+     "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+     "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+    ],
+    "make": "garage_muse_ca-fees-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing",
+    "done": "Every picked row checked with where you looked.",
     "checks": [
      "Claude re-checks 3 of your differ lines."
     ],
@@ -3616,12 +3738,12 @@
    "pid": "apollo",
    "id": "APO-GEM-10",
    "title": "Apollo Temple: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: apollo_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass. Lost a point: story 8, rule 8 and step 1 of the order of work are built on a defect that is not there: lookup.js saves through PK.store, which already sends pk:store (kit/kit.js:53, since Nov 13). Score 9/10 (#59).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -3869,12 +3991,12 @@
    "pid": "money",
    "id": "MON-GEM-04",
    "title": "Money: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: money_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 24 of its 55 file:line references run past the end of the file (e.g. pillars/money/engine.js:1-342 when the file had 58 lines and never more). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 77 refs, the 6 flagged are right on reading. Score 10/10 (#55).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -3890,6 +4012,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/money/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Money",
+   "pid": "money",
+   "id": "MON-GEM-05",
+   "title": "Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026)",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Money's issuer reference was written in early November; card pricing moves with the prime rate, so the numbers drift.",
+    "steps": [
+     "For each issuer in issuers.js, open its own current cardmember agreement or pricing page for its main consumer card.",
+     "Record the purchase APR range, penalty APR, late fee (first and repeat), and the minimum payment formula, each quoted word for word with the date read.",
+     "'not stated' where the page does not give it; never a review site."
+    ],
+    "make": "money_gemini_issuer-pricing_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every issuer in issuers.js, from its own agreement.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/money/docs/agents/QUEUE_gemini.md"
    },
@@ -4152,12 +4306,12 @@
    "pid": "selling",
    "id": "SEL-GEM-05",
    "title": "Selling Pipeline: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: selling_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass. Lost a point: story 1, the error state, rule 4 and step 1 rest on a false defect: calc.js:50 has exported STAGES since Nov 17, so app.js never throws. Score 9/10 (#60).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -4441,12 +4595,12 @@
    "pid": "records",
    "id": "REC-GEM-05",
    "title": "Records: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: records_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:25-34 and 35-65 are the classify loop, not the templates or the form. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 50 refs. Score 10/10 (#61).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -4506,11 +4660,11 @@
    "pid": "records",
    "id": "REC-GEM-07",
    "title": "Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All 22 dates agree with Kairos's independently sourced tax dates, the Apr 10 and Jan 15 rolls included; the two delinquency days were new and are now in Kairos. Score 10/10 (#81).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4949,12 +5103,12 @@
    "pid": "icarus",
    "id": "ICA-GEM-10",
    "title": "Icarus Stake: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: icarus_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Passes now. Lost a point: its tests were written inline (F1. ... F2. ...) and the checker of Nov 20 counted them as one; the run report said all 26 passed. Claude taught the checker inline items, but say what the checker printed. Score 9/10 (#62).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -4970,6 +5124,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/icarus/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Icarus Stake",
+   "pid": "icarus",
+   "id": "ICA-GEM-11",
+   "title": "Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports)",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Icarus knows market holidays but not the scheduled days that move prices, so the journal cannot flag a trade taken into a Fed day or a CPI print.",
+    "steps": [
+     "From federalreserve.gov: every 2027 FOMC meeting (both days) and which have a Summary of Economic Projections.",
+     "From bls.gov's 2027 release calendar: every CPI and Employment Situation release date and time.",
+     "Only the Fed's and BLS's own pages."
+    ],
+    "make": "icarus_gemini_2027-macro-dates_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every 2027 FOMC, CPI and jobs-report date from the source.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/icarus/docs/agents/QUEUE_gemini.md"
    },
@@ -5363,12 +5549,12 @@
    "pid": "hermes",
    "id": "HER-GEM-09",
    "title": "Hermes Post: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: hermes_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#63).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -5586,12 +5772,12 @@
    "pid": "piano",
    "id": "PIA-GEM-03",
    "title": "Bossa Piano Studio: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: piano_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#64).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -5651,11 +5837,11 @@
    "pid": "piano",
    "id": "PIA-GEM-05",
    "title": "Piano: where each of the 24 bossa tunes is legally printed (book, page, key)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built as Piano's \"Where to buy the music\". Lost a point: page and key are \"not stated\" on most rows; the book indexes and Musicnotes product pages usually give the key. Score 9/10 (#85).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -5669,6 +5855,38 @@
     "done": "Every tune with at least one legal source.",
     "checks": [
      "Claude opens 8 rows."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/piano/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Bossa Piano Studio",
+   "pid": "piano",
+   "id": "PIA-GEM-06",
+   "title": "Piano: the key and page for every bossa source that said 'not stated'",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Most of the 47 rows in Gemini's sources file have no key and no page, so Joseph cannot tell which edition fits his ladder.",
+    "steps": [
+     "For every row whose page or key is 'not stated', open the publisher's product page and its preview, table of contents or index.",
+     "Musicnotes and Sheet Music Direct list the original key on the product page; Hal Leonard books list songs with pages in the table of contents.",
+     "If neither is shown, keep 'not stated' and name what you opened."
+    ],
+    "make": "piano_gemini_bossa-keys_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "One row for every PIANO_SOURCES row that lacked a page or key.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/piano/docs/agents/QUEUE_gemini.md"
    },
@@ -5736,6 +5954,38 @@
      "Claude re-checks 3 of your differ lines."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/piano/docs/agents/QUEUE_grok.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Bossa Piano Studio",
+   "pid": "piano",
+   "id": "PIA-MUS-01",
+   "title": "Piano: second reader on Gemini's 'where each of the 24 bossa tunes is legally printed'",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+    "steps": [
+     "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+     "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+    ],
+    "make": "piano_muse_bossa-sources-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing",
+    "done": "Every picked row checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/piano/docs/agents/QUEUE_muse.md"
    },
    "late": false
   },
@@ -5903,12 +6153,12 @@
    "pid": "bastion",
    "id": "BAS-GEM-06",
    "title": "Bastion: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: bastion_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#65).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -5924,6 +6174,69 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/bastion/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Bastion",
+   "pid": "bastion",
+   "id": "BAS-GEM-07",
+   "title": "Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists)",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "When the power is out for days or a fire is near, Bastion should name the nearest official shelter or warming center, not a guess.",
+    "steps": [
+     "From Kern County's own pages (and the Red Cross shelter pages they link): every designated or regularly used evacuation shelter, warming center and cooling center serving Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman.",
+     "For each: name, town, who runs it, when it opens (the trigger), pets allowed or not, and the page.",
+     "Give the facility's public name and town only."
+    ],
+    "make": "bastion_gemini_shelters_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every official place for the five communities, each with its page.",
+    "checks": [
+     "Claude opens rows at random against their pages."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/bastion/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Bastion",
+   "pid": "bastion",
+   "id": "BAS-GEM-08",
+   "title": "Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code)",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "A weather radio is the one alert that works with no power and no signal; Bastion should say which station and code to program.",
+    "steps": [
+     "From the National Weather Service's own NOAA Weather Radio pages: the transmitter(s) that cover Frazier Park and the Tejon Pass area, their call signs, frequencies, power and the SAME codes for Kern County (and Ventura/Los Angeles counties if the area straddles them).",
+     "Say which transmitter the NWS coverage map shows as reaching Frazier Park, quoting the page."
+    ],
+    "make": "bastion_gemini_weather-radio_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every transmitter and code that reaches the area, from weather.gov.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/bastion/docs/agents/QUEUE_gemini.md"
    },
@@ -6159,12 +6472,12 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-03",
    "title": "Athenaeum: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: athenaeum_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#66).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -6349,12 +6662,12 @@
    "pid": "odyssey",
    "id": "ODY-GEM-04",
    "title": "Odyssey: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: odyssey_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:60-65 is the trip form's fields, not publishTrip(). A says trip.js has withWolfgang and withViolet flags; the code had one 'kids' flag. B copies a street address, pet and device names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 104 refs, the 11 flagged are right on reading (routes and gazetteer CSS, the delete handler). Score 10/10 (#67).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -6538,11 +6851,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-10",
    "title": "Odyssey: a city card for every stop (population, elevation, time zone, money, language)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built as Odyssey's \"The places, in brief\", 27 stops, marked not second-read. Score 10/10 (#87).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6724,6 +7037,38 @@
    "late": false
   },
   {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-MUS-03",
+   "title": "Odyssey: second reader on Gemini's 'a city card for each of the 27 trip stops'",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+    "steps": [
+     "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+     "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+    ],
+    "make": "odyssey_muse_city-cards-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing",
+    "done": "Every picked row checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Gemini",
    "src": "hub",
    "where": "Privacy",
@@ -6883,12 +7228,12 @@
    "pid": "privacy",
    "id": "PRI-GEM-06",
    "title": "Privacy: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: privacy_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 93 refs. Score 10/10 (#68).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -6916,11 +7261,11 @@
    "pid": "privacy",
    "id": "PRI-GEM-07",
    "title": "Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-27",
    "items": 72,
-   "closed": "",
-   "review": "Blocked 2026-11-19: Gemini could not open brokers-data.js on GitHub. Claude put the 72 names in Drive as privacy_INPUT_broker-names_20261119.txt in the Prometheus Hub incoming folder; use that file.",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built as Privacy's registry panel (59 on it, 13 not), marked not second-read (cppa.ca.gov unreachable from the sandbox). Score 10/10 (#84).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6968,6 +7313,69 @@
     "done": "25 settings, each on its Google help page.",
     "checks": [
      "Claude opens 8 help pages at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Privacy",
+   "pid": "privacy",
+   "id": "PRI-GEM-09",
+   "title": "Privacy: the opt-out route for each of the 13 brokers DROP does not reach",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 13,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "DROP covers 59 of the 72 brokers; the other 13 (Veripages, SearchQuarry, Archives.com, PropertyRecs, LocateFamily, Sync.me, PimEyes, FaceCheck.ID, OptOutPrescreen, NAI opt-out, Cocofinder, Neighbor.report, FOREWARN) each need their own request.",
+    "steps": [
+     "For each of the 13, find the broker's own opt-out or removal page (not a third-party guide).",
+     "Write what it asks for (email, phone, ID, a listing URL), how many steps, whether it confirms by email, and how long it says removal takes.",
+     "Quote the page's own words for the removal promise; 'not stated' where it gives none."
+    ],
+    "make": "privacy_gemini_optouts_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "13 rows, every one with the broker's own opt-out page.",
+    "checks": [
+     "Claude opens rows at random against their pages."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Privacy",
+   "pid": "privacy",
+   "id": "PRI-GEM-10",
+   "title": "Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com)",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 25,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph plays and works on a Windows PC; Privacy covers Google setting by setting but not Microsoft.",
+    "steps": [
+     "From Microsoft's own pages (privacy.microsoft.com, support.microsoft.com, account.microsoft.com): 25 settings across Windows 11 privacy, diagnostics, advertising ID, activity history, location, Bing/Copilot history and the Microsoft account privacy dashboard.",
+     "For each: where it is (menu path), what it collects in Microsoft's words, the default, and the safest choice that keeps the PC working."
+    ],
+    "make": "privacy_gemini_microsoft-settings_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "25 settings, each with Microsoft's own page.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
    },
@@ -7127,6 +7535,38 @@
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
     "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
     "done": "Every picked item checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Privacy",
+   "pid": "privacy",
+   "id": "PRI-MUS-04",
+   "title": "Privacy: second reader on Gemini's 'which of the 72 brokers are on California's Data Broker Registry'",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+    "steps": [
+     "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+     "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+    ],
+    "make": "privacy_muse_registry-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing",
+    "done": "Every picked row checked with where you looked.",
     "checks": [
      "Claude re-checks 3 of your differ lines."
     ],
@@ -7426,12 +7866,12 @@
    "pid": "argus",
    "id": "ARG-GEM-10",
    "title": "Argus Album: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: argus_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 105 refs. Score 10/10 (#69).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -7681,12 +8121,12 @@
    "pid": "games",
    "id": "GAM-GEM-03",
    "title": "Ludus Arcade: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: games_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 85 refs. Score 10/10 (#70).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -7747,10 +8187,10 @@
    "id": "GAM-GEM-05",
    "title": "Games: GTA VI's first week, from Rockstar's own pages",
    "status": "todo",
-   "due": "2026-11-26",
+   "due": "2026-11-27",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "Re-dated 2026-11-21 (Claude, score 8/10, #88): your empty list was honest (no patch or known-issues post on Nov 20, a day after launch). Run it again on Nov 27, when the first week is over.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7764,6 +8204,38 @@
     "done": "Every post from launch to the run date.",
     "checks": [
      "Claude opens every URL."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/games/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Ludus Arcade",
+   "pid": "games",
+   "id": "GAM-GEM-06",
+   "title": "Games: Anno 117 updates and roadmap, from Ubisoft's own pages",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph and his dad play Anno 117 cross-play (PC and PS5); the Games pillar knows nothing about its patches or what is coming.",
+    "steps": [
+     "List every Anno 117 title update and hotfix published so far: date, version, platforms, and every line that mentions cross-play, PS5 or saves.",
+     "Add the official roadmap items with their stated season or date; 'not stated' when none.",
+     "Only Ubisoft's own pages (news, patch notes, support), never press or forums."
+    ],
+    "make": "games_gemini_anno117-updates_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every update so far and the roadmap, each from Ubisoft.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/games/docs/agents/QUEUE_gemini.md"
    },
@@ -7903,12 +8375,12 @@
    "pid": "forge",
    "id": "FOR-GEM-03",
    "title": "Forge: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: forge_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 16 of its 25 file:line references run past the end of the file (e.g. pillars/forge/app.js:314-468 when the file had 238 lines). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 97 refs, 3 flagged and all right on reading. Score 10/10 (#54).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -8129,12 +8601,12 @@
    "pid": "foundry",
    "id": "FDY-GEM-04",
    "title": "Foundry: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: foundry_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 104 refs. Score 10/10 (#71).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -8355,12 +8827,12 @@
    "pid": "observatory",
    "id": "OBS-GEM-04",
    "title": "Observatory: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: observatory_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 24 refs, none off. Score 10/10 (#72).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -8577,12 +9049,12 @@
    "pid": "kin",
    "id": "KIN-GEM-04",
    "title": "Kin: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: kin_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass, and a real find: the dated-item list skipped household members (Violet). Fixed in d47. Score 10/10 (#73).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -8598,6 +9070,38 @@
     "done": "1 file exactly in the shape, every self-check line true.",
     "checks": [
      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-05",
+   "title": "Kin: Saugus Union School District's 2026-27 calendar (Violet's school days off)",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Kin knows Violet is at Highlands Elementary in Saugus Union SD but not the days school is out, so the fortnight view cannot warn about them.",
+    "steps": [
+     "From Saugus Union School District's own 2026-27 calendar (the district site or its PDF): every day with no school, every minimum day, the breaks, the first and last day.",
+     "If Highlands Elementary publishes its own minimum days, add them and say so in calendar.",
+     "One row per date; a break is one row with its first date and its end in name."
+    ],
+    "make": "kin_gemini_saugus-calendar_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every 2026-27 no-school and minimum day, from the district's own calendar.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
    },
@@ -8859,12 +9363,12 @@
    "pid": "aether",
    "id": "AET-GEM-05",
    "title": "Aether: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: aether_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 42 refs. Score 10/10 (#74).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -8925,11 +9429,11 @@
    "pid": "aether",
    "id": "AET-GEM-08",
    "title": "Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 12,
-   "closed": "",
-   "review": "Blocked 2026-11-19 (Gemini, honestly; nothing invented): the NCEI CSV downloads instead of rendering in its browser and the NCEI API is denied. Route now: the CSV is a plain file; open https://www.ncei.noaa.gov/access/services/data/v1?dataset=normals-monthly-1991-2020&stations=USW00023187&format=json in the browser (renders as text), or read the station page's 'view' table. Station USW00023187 Sandberg is accepted.",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built as Aether's \"The mountain's year\" table. Claude compared all 84 monthly numbers and Lebec's snow row with NOAA's own CSV: every one equal. Right call on the station (nearest with temperature and rain) and honest about Sandberg having no snow normals. Score 10/10 (#78).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8989,11 +9493,11 @@
    "pid": "aether",
    "id": "AET-GEM-10",
    "title": "Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built as Aether's shut-off record, marked not second-read (the CPUC site is not reachable from Claude's sandbox; Muse checks it). Good: years with no shut-off listed, not skipped. Score 10/10 (#79).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9007,6 +9511,70 @@
     "done": "Every event with a mountain-community circuit, or 'none found' rows per year with the reports checked.",
     "checks": [
      "Claude opens 5 reports."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Aether",
+   "pid": "aether",
+   "id": "AET-GEM-11",
+   "title": "Aether: the Oct 2026 shut-off reports, read to the end (RIDGE and TENNECO circuits)",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Gemini's PSPS history stopped at the page limit of the Sept 25, 2026 report (Attachment C, where RIDGE is listed) and found no 2026 shut-off yet.",
+    "steps": [
+     "Open every SCE post-event report filed for events from Sept 1 to Nov 20, 2026 on the CPUC page.",
+     "Read each to the end, attachments included, and list every row for the RIDGE, TENNECO, FROZEN, GRAPEVINE PEAK and TEJON circuits: in scope only, or de-energized (off and on times, customers).",
+     "Write 'none found' rows for reports that list none of them, naming the report."
+    ],
+    "make": "aether_gemini_psps-fall2026_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every fall 2026 SCE report checked to the end.",
+    "checks": [
+     "Claude opens rows at random against their pages."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Aether",
+   "pid": "aether",
+   "id": "AET-GEM-12",
+   "title": "Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Aether's pass panel shows today's status but has no history of how often and how long the Grapevine closes.",
+    "steps": [
+     "From Caltrans's own news releases (dot.ca.gov District 6 and 7) and CHP's official posts quoted there: every full closure of I-5 over the Grapevine (Tejon Pass) for snow or ice since Jan 2019.",
+     "For each: closed time, reopened time, the reason as stated, and the release URL.",
+     "Winters with none: one row saying none found and which pages you read."
+    ],
+    "make": "aether_gemini_grapevine-closures_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every closure since 2019 with Caltrans's own release.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_gemini.md"
    },
@@ -9134,6 +9702,38 @@
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
     "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
     "done": "Every picked item checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Aether",
+   "pid": "aether",
+   "id": "AET-MUS-03",
+   "title": "Aether: second reader on Gemini's 'SCE power shut-offs that reached the mountain, 2019-2026'",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 13,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+    "steps": [
+     "Open Gemini's file. Pick 13 rows at random (every row if fewer).",
+     "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+    ],
+    "make": "aether_muse_psps-history-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing",
+    "done": "Every picked row checked with where you looked.",
     "checks": [
      "Claude re-checks 3 of your differ lines."
     ],
@@ -9270,12 +9870,12 @@
    "pid": "polis",
    "id": "POL-GEM-05",
    "title": "Polis: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: polis_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 37 refs, none off. Score 10/10 (#75).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -9337,10 +9937,10 @@
    "id": "POL-GEM-07",
    "title": "Polis: who decides things for Frazier Park and when they meet in 2027",
    "status": "todo",
-   "due": "2026-11-26",
+   "due": "2027-01-15",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "Sent back 2026-11-21 (Claude, score 6/10, #89): every date was 'not stated'. The Board of Supervisors' 2027 schedule PDF exists (its host blocked your fetch: try the Granicus agenda list or another route, or say exactly what blocked you); the Planning Commission and MCMAC have not published 2027 yet, so resend once they do, by Jan 15, 2027.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9557,12 +10157,12 @@
    "pid": "mythos",
    "id": "MYT-GEM-03",
    "title": "Mythos: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: mythos_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Its code references are not reliable: app.js:66-78 is the tab strip, not the arc board. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass; 44 refs. Score 10/10 (#76).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -9747,12 +10347,12 @@
    "pid": "continuity",
    "id": "CON-GEM-04",
    "title": "Continuity: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: continuity_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies a street address and household names from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): All checks pass, and a real find: the readiness card said PBKDF2 310k while the vault uses 250,000. Fixed in d47. Score 10/10 (#77).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -9812,11 +10412,11 @@
    "pid": "continuity",
    "id": "CON-GEM-06",
    "title": "Continuity: California's small-estate and transfer-on-death rules in 2026 numbers",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): Built into Continuity's accounts tab, marked not second-read. The $208,850 and $750,000 limits match the April 2025 DE-300 as Claude knows it; the TOD rows quote the statutory form. Score 10/10 (#83).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9830,6 +10430,38 @@
     "done": "10 rows with current numbers.",
     "checks": [
      "Claude opens 5 sections."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/continuity/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Continuity",
+   "pid": "continuity",
+   "id": "CON-GEM-07",
+   "title": "Continuity: recording a transfer-on-death deed in Kern County, step by step",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The TOD deed only works if it is signed, notarized and recorded within 60 days; Continuity knows the law but not Kern's counter: fees, form, where and how.",
+    "steps": [
+     "From the Kern County Recorder's own pages: the recording fee for a TOD deed (first page, each added page, SB2 fee if any), what must be on the first page, whether a Preliminary Change of Ownership Report is needed, how to record by mail and in person (office address), and how long it takes.",
+     "From the Probate Code (leginfo or the courts): the 60-day recording rule and the two witnesses rule since 2022.",
+     "Quote each rule word for word."
+    ],
+    "make": "continuity_gemini_kern-tod-recording_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every step from signing to a recorded deed, each with its official page.",
+    "checks": [
+     "Claude opens rows at random against their pages."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/continuity/docs/agents/QUEUE_gemini.md"
    },
@@ -9956,6 +10588,38 @@
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
     "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
     "done": "Every picked item checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/continuity/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Continuity",
+   "pid": "continuity",
+   "id": "CON-MUS-02",
+   "title": "Continuity: second reader on Gemini's 'California small-estate and transfer-on-death rules'",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 10,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+    "steps": [
+     "Open Gemini's file. Pick 10 rows at random (every row if fewer).",
+     "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+    ],
+    "make": "continuity_muse_ca-small-estate-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing",
+    "done": "Every picked row checked with where you looked.",
     "checks": [
      "Claude re-checks 3 of your differ lines."
     ],
@@ -10325,12 +10989,12 @@
    "pid": "midas",
    "id": "MID-GEM-11",
    "title": "Midas Ledger: the function spec, written as the build plan",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 1,
-   "closed": "",
-   "review": "Sent back 2026-11-20: midas_gemini_function-spec_20261118-1940.md now describes the real code (Muse's first read found an invented app in the 1735 version), but it lost the counts: B has 3 items and none is 'As Joseph, when ..., I want ..., so that ...' (8+); C is a list, not the table; E has 7 rules (10+); F has 4 tests, none Given/when/then (12+). Its build.py lines point at other code (parse_terms is at build.py:1767, not 130-165; net worth at 1671, not 305-330), and C and E state fields build.py does not write (warnings, change, duplicate: 'DUPLICATE', plan.mode, totals). F1 claims 25/25 for the parser cases; 22 hold (test/test_parser_cases.py). Write it again from the live code; run node tools/kit/check_delivery.mjs on it from a checkout of jpavia10/prometheus-hub.",
-   "reopened": "2026-11-20",
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): the redo passes every check; a few refs point near the rule rather than at it (build.py:469-472 and BOOK_SCHEMA.md:26 for the autopay rule). Score 9/10 (#13).",
+   "reopened": "",
    "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
@@ -10626,50 +11290,6 @@
     "make": "changes_gemini_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
     "folder": "Titan Reliquary/collection-incoming (AI change files)/",
     "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-gemini-fill-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Gemini",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-gemini-plain-story-20261118-1",
-   "title": "Rewrite stories in plain English · 1 item",
-   "status": "todo",
-   "due": "2026-11-25",
-   "items": 1,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_gemini_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-gemini-plain-story-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Gemini",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-gemini-verify-20261119-2",
-   "title": "Verify facts others wrote · 1 item",
-   "status": "todo",
-   "due": "2026-11-26",
-   "items": 1,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_gemini_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-gemini-verify-20261119-2.jsonl",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
    },
    "late": false
@@ -11137,6 +11757,50 @@
    "late": false
   },
   {
+   "ai": "Muse",
+   "src": "titan",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "HW-muse-story-check-20261121-1",
+   "title": "Fact-check stories · 1 item",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 1,
+   "closed": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "why": "Generated by Titan's research loop from a gap in the collection data.",
+    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
+    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
+    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-story-check-20261121-1.jsonl",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "titan",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "HW-muse-verify-20261121-2",
+   "title": "Verify facts others wrote · 2 items",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 2,
+   "closed": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "why": "Generated by Titan's research loop from a gap in the collection data.",
+    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
+    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
+    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261121-2.jsonl",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Gemini API",
    "src": "titan",
    "where": "Titan",
@@ -11486,7 +12150,7 @@
     "done": "All 25 answered or skipped with the reason; Claude closes each disagreement.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_grok.md"
    },
-   "late": false
+   "late": true
   },
   {
    "ai": "Grok",
@@ -11770,6 +12434,28 @@
    "detail": {
     "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-ledger-facts.json, items 181 to 360, and only the ones with has_photo true: read country, year, denomination and mint from the coin's photo without looking at Gemini's file first (AI_START_HERE 2b). Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-LEDGER-BLIND-2'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-17T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C023\",\"field\":\"issue.year\",\"old\":null,\"new\":1987,\"source\":\"photo C023_obv.webp: date 1987 below the bust, read at full zoom\",\"verified\":false,\"phase\":1,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase1-photo\",\"inputs\":[{\"file\":\"C023_obv.webp\"}],\"run_id\":\"GT-LEDGER-BLIND-2\"}} Before you save: every line has run_id GT-LEDGER-BLIND-2; the source names the photo file and where on the coin you read it; you did not look up the ledger's value first; unreadable items carry source 'FILL | unreadable: <why>'; the file is valid JSON Lines (one object per line).",
     "done": "Every photo item in 181-360 read or marked unreadable; Claude compares your read with Gemini's and the ledger.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-muse-14",
+   "alias": "GT-SECOND-photo-m1",
+   "title": "Photo-read facts: confirm 67 mint marks, dates and mintages Gemini read (a second contributor)",
+   "status": "todo",
+   "due": "2026-11-30",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-photo-facts.json, the 67 items with \"for\": \"muse\". Each fact rests on one photo read or one AI guess today. For each: look at the coin's photo yourself first (blind: no current value is given), then find the catalogue row that names that year and that mint (Numista N# URL with the issue row you read, or KM# with book and page). Mint: the letter or mark you see and the row that lists it for that year. Year: the date you read and the row. Mintage: the number for that year and mint only. Story: check every sentence, agree or say what is wrong. Value: a dated price page and the grade you assumed. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-photo-m1'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C011\",\"field\":\"mint\",\"old\":null,\"new\":\"R\",\"source\":\"photo C011_rev.webp (R below L.50) + Numista N#1234 https://en.numista.com/catalogue/pieces1234.html, issue row 1970 R\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C011_rev.webp\"}],\"run_id\":\"GT-SECOND-photo-m1\"}} Before you save: provenance.inputs are objects ({\"file\": ...}), never bare URLs; one line per item; when the photo does not show the mark or no catalogue row names that year and mint, send the line with new = null and say why in source (never guess).",
+    "done": "All 67 items answered (a confirmed value with its row, or null with the reason); Claude spot-checks 10.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
    },
    "late": false
@@ -12684,16 +13370,38 @@
    "id": "T-gemini-43",
    "alias": "GT-AIFACTS-p1b",
    "title": "AI-guessed facts, part 1b: the 6 lines that bounced (re-read the record, then resend)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
+   "closed": "done 2026-11-21: changes_gemini_20261120-2101.jsonl, the 4 real lines merged as sent (BR.KM.648.1 and TW.KM.551 found, СССР and रुपया kept), nothing sent for JP.Y.73a and MX.KM.604; all 4 word for word on Numista (score #77, 10/10).",
    "reopened": "",
    "review": "",
    "delivered": null,
    "detail": {
     "what": "Six lines of changes_gemini_20261119-1018.jsonl were rejected (the other 29 merged): SU.Y.126a and IN.KM.92.2 (your `old` value lost its Cyrillic СССР and the Hindi रुपया: copy `old` from the record exactly, Unicode intact), BR.KM.648 and TW.Y.551 (no such type id: find the coin's real type id in collection/types by country, year and denomination), JP.Y.73a and MX.KM.604 (part 2 already set them: send nothing unless part 1's text differs). Same form and rules as part 1 (run_id 'GT-AIFACTS-p1b'), one file changes_gemini_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/'.",
     "done": "The 4 real lines merged (2 bad ids fixed, 2 old values exact); nothing sent for the 2 already set.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-44",
+   "alias": "GT-SECOND-photo-g1",
+   "title": "Photo-read facts: confirm 92 mint marks, dates and mintages with the catalogue row (made by Muse, Claude, Grok)",
+   "status": "todo",
+   "due": "2026-11-28",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-photo-facts.json, the 92 items with \"for\": \"gemini\". Each fact rests on one photo read or one AI guess today. For each: look at the coin's photo yourself first (blind: no current value is given), then find the catalogue row that names that year and that mint (Numista N# URL with the issue row you read, or KM# with book and page). Mint: the letter or mark you see and the row that lists it for that year. Year: the date you read and the row. Mintage: the number for that year and mint only. Story: check every sentence, agree or say what is wrong. Value: a dated price page and the grade you assumed. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-photo-g1'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C011\",\"field\":\"mint\",\"old\":null,\"new\":\"R\",\"source\":\"photo C011_rev.webp (R below L.50) + Numista N#1234 https://en.numista.com/catalogue/pieces1234.html, issue row 1970 R\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C011_rev.webp\"}],\"run_id\":\"GT-SECOND-photo-g1\"}} Before you save: provenance.inputs are objects ({\"file\": ...}), never bare URLs; one line per item; when the photo does not show the mark or no catalogue row names that year and mint, send the line with new = null and say why in source (never guess).",
+    "done": "All 92 items answered (a confirmed value with its row, or null with the reason); Claude spot-checks 10 on Numista's API.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
    },
    "late": false
@@ -14541,6 +15249,14 @@
    "where": "Titan"
   },
   {
+   "ai": "Gemini",
+   "n": 77,
+   "date": "2026-11-21",
+   "what": "Overnight run 3, Titan part (changes_gemini_20261120-2101.jsonl AI-guessed facts part 1b, -2102 fill, -2103 plain story, -2104 verify; Gemini 4 Neon)",
+   "score": 10.0,
+   "where": "Titan"
+  },
+  {
    "ai": "Gemini API",
    "n": 1,
    "date": "2026-11-01",
@@ -15049,6 +15765,339 @@
    "task": "HUB-GEM-14",
    "where": "Prometheus Hub",
    "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 53,
+   "date": "2026-11-21",
+   "what": "hub_gemini_function-spec_20261120-2135.md",
+   "task": "HUB-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 54,
+   "date": "2026-11-21",
+   "what": "forge_gemini_function-spec_20261120-2135.md",
+   "task": "FOR-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 55,
+   "date": "2026-11-21",
+   "what": "money_gemini_function-spec_20261120-2135.md",
+   "task": "MON-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 56,
+   "date": "2026-11-21",
+   "what": "kairos_gemini_function-spec_20261120-2135.md",
+   "task": "KAI-GEM-11",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 57,
+   "date": "2026-11-21",
+   "what": "hearth_gemini_function-spec_20261120-2310.md",
+   "task": "HEA-GEM-18",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 58,
+   "date": "2026-11-21",
+   "what": "garage_gemini_function-spec_20261120-2310.md",
+   "task": "GAR-GEM-07",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 59,
+   "date": "2026-11-21",
+   "what": "apollo_gemini_function-spec_20261120-2310.md",
+   "task": "APO-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 60,
+   "date": "2026-11-21",
+   "what": "selling_gemini_function-spec_20261120-2310.md",
+   "task": "SEL-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 61,
+   "date": "2026-11-21",
+   "what": "records_gemini_function-spec_20261120-2310.md",
+   "task": "REC-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 62,
+   "date": "2026-11-21",
+   "what": "icarus_gemini_function-spec_20261120-2056.md",
+   "task": "ICA-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 63,
+   "date": "2026-11-21",
+   "what": "hermes_gemini_function-spec_20261120-2056.md",
+   "task": "HER-GEM-09",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 64,
+   "date": "2026-11-21",
+   "what": "piano_gemini_function-spec_20261120-2056.md",
+   "task": "PIA-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 65,
+   "date": "2026-11-21",
+   "what": "bastion_gemini_function-spec_20261120-2056.md",
+   "task": "BAS-GEM-06",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 66,
+   "date": "2026-11-21",
+   "what": "athenaeum_gemini_function-spec_20261120-2056.md",
+   "task": "ATH-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 67,
+   "date": "2026-11-21",
+   "what": "odyssey_gemini_function-spec_20261120-2105.md",
+   "task": "ODY-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 68,
+   "date": "2026-11-21",
+   "what": "privacy_gemini_function-spec_20261120-2105.md",
+   "task": "PRI-GEM-06",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 69,
+   "date": "2026-11-21",
+   "what": "argus_gemini_function-spec_20261120-2105.md",
+   "task": "ARG-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 70,
+   "date": "2026-11-21",
+   "what": "games_gemini_function-spec_20261120-2105.md",
+   "task": "GAM-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 71,
+   "date": "2026-11-21",
+   "what": "foundry_gemini_function-spec_20261120-2105.md",
+   "task": "FDY-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 72,
+   "date": "2026-11-21",
+   "what": "observatory_gemini_function-spec_20261120-2235.md",
+   "task": "OBS-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 73,
+   "date": "2026-11-21",
+   "what": "kin_gemini_function-spec_20261120-2235.md",
+   "task": "KIN-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 74,
+   "date": "2026-11-21",
+   "what": "aether_gemini_function-spec_20261120-2235.md",
+   "task": "AET-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 75,
+   "date": "2026-11-21",
+   "what": "polis_gemini_function-spec_20261120-2235.md",
+   "task": "POL-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 76,
+   "date": "2026-11-21",
+   "what": "mythos_gemini_function-spec_20261120-2235.md",
+   "task": "MYT-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 77,
+   "date": "2026-11-21",
+   "what": "continuity_gemini_function-spec_20261120-2235.md",
+   "task": "CON-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 78,
+   "date": "2026-11-21",
+   "what": "aether_gemini_normals_20261120-1115.json",
+   "task": "AET-GEM-08",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 79,
+   "date": "2026-11-21",
+   "what": "aether_gemini_psps-history_20261120-2033.json",
+   "task": "AET-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 80,
+   "date": "2026-11-21",
+   "what": "kairos_gemini_2027-dates_20261120-2026.json",
+   "task": "KAI-GEM-13",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 81,
+   "date": "2026-11-21",
+   "what": "records_gemini_2027-deadlines_20261120-2026.json",
+   "task": "REC-GEM-07",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 82,
+   "date": "2026-11-21",
+   "what": "garage_gemini_ca-fees_20261120-2026.json",
+   "task": "GAR-GEM-12",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 83,
+   "date": "2026-11-21",
+   "what": "continuity_gemini_ca-small-estate_20261120-2027.json",
+   "task": "CON-GEM-06",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 84,
+   "date": "2026-11-21",
+   "what": "privacy_gemini_registry_20261120-1125.json",
+   "task": "PRI-GEM-07",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 85,
+   "date": "2026-11-21",
+   "what": "piano_gemini_bossa-sources_20261120-2025.json",
+   "task": "PIA-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 86,
+   "date": "2026-11-21",
+   "what": "hearth_gemini_snow-load-rule_20261120-2025.json",
+   "task": "HEA-GEM-23",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 87,
+   "date": "2026-11-21",
+   "what": "odyssey_gemini_city-cards_20261120-1120.json",
+   "task": "ODY-GEM-10",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 88,
+   "date": "2026-11-21",
+   "what": "games_gemini_gta6-week1_20261120-2027.json",
+   "task": "GAM-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 89,
+   "date": "2026-11-21",
+   "what": "polis_gemini_2027-meetings_20261120-2033.json",
+   "task": "POL-GEM-07",
+   "where": "Prometheus Hub",
+   "score": 6.0
   }
  ],
  "pending_scores": [

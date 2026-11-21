@@ -83,7 +83,7 @@
           h("span.day-mo", null, dt.toLocaleDateString("en-US", { month: "short" }))),
         h("div.day-what", null, ...(evs.length ? evs.map((e) => h("span.day-ev", null, h("i", { class: "dot k-" + e.kind, "aria-hidden": "true" }), e.text)) : [h("span.day-none", null, "Nothing dated")])),
         who ? h("span.pill" + (who === "you" ? ".hot" : ""), null, who === "you" ? "with you" : "with the other parent") : null); }).filter(Boolean));
-    $("#k-item").who.replaceChildren(h("option", { value: "" }, "everyone"), ...D.people.filter((p) => p.role === "kid").map((p) => h("option", { value: p.id }, p.name)));
+    $("#k-item").who.replaceChildren(h("option", { value: "" }, "everyone"), ...D.people.filter((p) => p.role === "kid" || p.role === "household member").map((p) => h("option", { value: p.id }, p.name)));
     const f = $("#k-sch"); if (D.sch) { f.pattern.value = D.sch.pattern || ""; f.start.value = D.sch.start || ""; }
     const groups = CIRCLES.map((c) => ({ c, ps: D.people.filter((p) => circleOf(p.role) === c) })).filter((g) => g.ps.length);
     $("#k-people").replaceChildren(...(groups.length ? groups.flatMap((g) => [

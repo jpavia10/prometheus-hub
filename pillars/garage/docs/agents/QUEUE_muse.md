@@ -2,8 +2,48 @@
 
 # Garage · homework for Muse
 
-Updated 2026-11-20 19:24 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-21 10:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Muse in Garage right now. Check your HOMEWORK doc for the other pillars.
+## 1. GAR-MUS-04 · Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles'
+
+**Due:** 2026-11-28 · **State:** now
+
+**Why:** It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.
+
+**What it unlocks:** The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.
+
+**Read first:**
+- Gemini's file garage_gemini_ca-fees_20261120-2026.json in the folder below (GAR-GEM-12)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer).
+2. For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `garage_muse_ca-fees-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked row checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a file saved anywhere but the folder named here, or under another name

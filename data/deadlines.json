@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20 19:24 UTC",
+ "updated": "2026-11-21 10:00 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -201,83 +201,6 @@
   },
   {
    "due": "2026-11-26",
-   "pillar": "aether",
-   "pillar_name": "Aether · Atmospheric & Field Lab",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "AET-GEM-08",
-   "title": "Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file",
-   "state": "now",
-   "count": 12
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "aether",
-   "pillar_name": "Aether · Atmospheric & Field Lab",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "AET-GEM-10",
-   "title": "Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "continuity",
-   "pillar_name": "Continuity · Sovereign Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "CON-GEM-06",
-   "title": "Continuity: California's small-estate and transfer-on-death rules in 2026 numbers",
-   "state": "now",
-   "count": 10
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "games",
-   "pillar_name": "Ludus Arcade",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAM-GEM-05",
-   "title": "Games: GTA VI's first week, from Rockstar's own pages",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAR-GEM-12",
-   "title": "Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-23",
-   "title": "Hearth: which snow load governs the deck (Kern's 2025 code adoption, word for word)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-13",
-   "title": "Kairos: the 2027 calendar Joseph lives by (federal, California, Kern, El Tejon schools)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
    "pillar": "odyssey",
    "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
@@ -337,17 +260,6 @@
    "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ODY-GEM-10",
-   "title": "Odyssey: a city card for every stop (population, elevation, time zone, money, language)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "odyssey",
-   "pillar_name": "Odyssey · Trips & Away Mode",
-   "ai": "gemini",
-   "ai_name": "Gemini",
    "id": "ODY-GEM-11",
    "title": "Odyssey: what Google Photos knows about the 36 photos already in the app",
    "state": "now",
@@ -361,39 +273,6 @@
    "ai_name": "Gemini",
    "id": "ODY-GEM-12",
    "title": "Odyssey: every good photo of every trip you found, ranked",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "piano",
-   "pillar_name": "Bossa Piano Studio",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "PIA-GEM-05",
-   "title": "Piano: where each of the 24 bossa tunes is legally printed (book, page, key)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "polis",
-   "pillar_name": "Polis · Civic & Legal Watch",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "POL-GEM-07",
-   "title": "Polis: who decides things for Frazier Park and when they meet in 2027",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-11-26",
-   "pillar": "records",
-   "pillar_name": "Records · Paper Killer",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "REC-GEM-07",
-   "title": "Records: California and IRS dates Joseph pays or files by, Jan 2027 - Jan 2028",
    "state": "now",
    "count": 0
   },
@@ -484,6 +363,17 @@
    "title": "Foundry: second reader on Gemini's 'the function spec, written as the build plan'",
    "state": "now",
    "count": 10
+  },
+  {
+   "due": "2026-11-27",
+   "pillar": "games",
+   "pillar_name": "Ludus Arcade",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAM-GEM-05",
+   "title": "Games: GTA VI's first week, from Rockstar's own pages",
+   "state": "now",
+   "count": 0
   },
   {
    "due": "2026-11-27",
@@ -654,17 +544,6 @@
    "due": "2026-11-27",
    "pillar": "privacy",
    "pillar_name": "Privacy · CA DROP",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "PRI-GEM-07",
-   "title": "Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them",
-   "state": "now",
-   "count": 72
-  },
-  {
-   "due": "2026-11-27",
-   "pillar": "privacy",
-   "pillar_name": "Privacy · CA DROP",
    "ai": "grok",
    "ai_name": "Grok",
    "id": "PRI-GRK-04",
@@ -695,48 +574,147 @@
    "count": 10
   },
   {
+   "due": "2026-11-28",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AET-GEM-11",
+   "title": "Aether: the Oct 2026 shut-off reports, read to the end (RIDGE and TENNECO circuits)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "AET-MUS-03",
+   "title": "Aether: second reader on Gemini's 'SCE power shut-offs that reached the mountain, 2019-2026'",
+   "state": "now",
+   "count": 13
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "continuity",
+   "pillar_name": "Continuity · Sovereign Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "CON-GEM-07",
+   "title": "Continuity: recording a transfer-on-death deed in Kern County, step by step",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "continuity",
+   "pillar_name": "Continuity · Sovereign Vault",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "CON-MUS-02",
+   "title": "Continuity: second reader on Gemini's 'California small-estate and transfer-on-death rules'",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "garage",
+   "pillar_name": "Garage",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "GAR-MUS-04",
+   "title": "Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles'",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-24",
+   "title": "Hearth: Kern County's published ground snow load for 4,600 ft (2026 design criteria)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-05",
+   "title": "Kin: Saugus Union School District's 2026-27 calendar (Violet's school days off)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "ODY-MUS-03",
+   "title": "Odyssey: second reader on Gemini's 'a city card for each of the 27 trip stops'",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "piano",
+   "pillar_name": "Bossa Piano Studio",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PIA-GEM-06",
+   "title": "Piano: the key and page for every bossa source that said 'not stated'",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "piano",
+   "pillar_name": "Bossa Piano Studio",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "PIA-MUS-01",
+   "title": "Piano: second reader on Gemini's 'where each of the 24 bossa tunes is legally printed'",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "privacy",
+   "pillar_name": "Privacy · CA DROP",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PRI-GEM-09",
+   "title": "Privacy: the opt-out route for each of the 13 brokers DROP does not reach",
+   "state": "now",
+   "count": 13
+  },
+  {
+   "due": "2026-11-28",
+   "pillar": "privacy",
+   "pillar_name": "Privacy · CA DROP",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "PRI-MUS-04",
+   "title": "Privacy: second reader on Gemini's 'which of the 72 brokers are on California's Data Broker Registry'",
+   "state": "now",
+   "count": 15
+  },
+  {
    "due": "2026-11-30",
    "pillar": "aether",
    "pillar_name": "Aether · Atmospheric & Field Lab",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "AET-GEM-05",
-   "title": "Aether: the function spec, written as the build plan",
+   "id": "AET-GEM-12",
+   "title": "Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans",
    "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-10",
-   "title": "Apollo Temple: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-10",
-   "title": "Argus Album: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ATH-GEM-03",
-   "title": "Athenaeum: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
+   "count": 0
   },
   {
    "due": "2026-11-30",
@@ -744,43 +722,21 @@
    "pillar_name": "Bastion · Mountain Prep",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "BAS-GEM-06",
-   "title": "Bastion: the function spec, written as the build plan",
+   "id": "BAS-GEM-07",
+   "title": "Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists)",
    "state": "now",
-   "count": 1
+   "count": 0
   },
   {
    "due": "2026-11-30",
-   "pillar": "continuity",
-   "pillar_name": "Continuity · Sovereign Vault",
+   "pillar": "bastion",
+   "pillar_name": "Bastion · Mountain Prep",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "CON-GEM-04",
-   "title": "Continuity: the function spec, written as the build plan",
+   "id": "BAS-GEM-08",
+   "title": "Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code)",
    "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "forge",
-   "pillar_name": "Forge",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "FOR-GEM-03",
-   "title": "Forge: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "foundry",
-   "pillar_name": "Foundry",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "FDY-GEM-04",
-   "title": "Foundry: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
+   "count": 0
   },
   {
    "due": "2026-11-30",
@@ -788,54 +744,10 @@
    "pillar_name": "Ludus Arcade",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "GAM-GEM-03",
-   "title": "Ludus Arcade: the function spec, written as the build plan",
+   "id": "GAM-GEM-06",
+   "title": "Games: Anno 117 updates and roadmap, from Ubisoft's own pages",
    "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAR-GEM-07",
-   "title": "Garage: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-18",
-   "title": "Hephaestus Hearth: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HER-GEM-09",
-   "title": "Hermes Post: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-10",
-   "title": "Prometheus Hub: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
+   "count": 0
   },
   {
    "due": "2026-11-30",
@@ -843,43 +755,10 @@
    "pillar_name": "Icarus Stake",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ICA-GEM-10",
-   "title": "Icarus Stake: the function spec, written as the build plan",
+   "id": "ICA-GEM-11",
+   "title": "Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports)",
    "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-11",
-   "title": "Kairos Meridian: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-04",
-   "title": "Kin: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "midas",
-   "pillar_name": "Midas Ledger",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MID-GEM-11",
-   "title": "Midas Ledger: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
+   "count": 0
   },
   {
    "due": "2026-11-30",
@@ -887,65 +766,10 @@
    "pillar_name": "Money · payoff simulator",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "MON-GEM-04",
-   "title": "Money: the function spec, written as the build plan",
+   "id": "MON-GEM-05",
+   "title": "Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026)",
    "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "mythos",
-   "pillar_name": "Mythos · Creative & Lore Studio",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MYT-GEM-03",
-   "title": "Mythos: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "observatory",
-   "pillar_name": "Observatory",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "OBS-GEM-04",
-   "title": "Observatory: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "odyssey",
-   "pillar_name": "Odyssey · Trips & Away Mode",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ODY-GEM-04",
-   "title": "Odyssey: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "piano",
-   "pillar_name": "Bossa Piano Studio",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "PIA-GEM-03",
-   "title": "Bossa Piano Studio: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "polis",
-   "pillar_name": "Polis · Civic & Legal Watch",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "POL-GEM-05",
-   "title": "Polis: the function spec, written as the build plan",
-   "state": "now",
-   "count": 1
+   "count": 0
   },
   {
    "due": "2026-11-30",
@@ -953,32 +777,43 @@
    "pillar_name": "Privacy · CA DROP",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "PRI-GEM-06",
-   "title": "Privacy: the function spec, written as the build plan",
+   "id": "PRI-GEM-10",
+   "title": "Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com)",
    "state": "now",
-   "count": 1
+   "count": 25
   },
   {
-   "due": "2026-11-30",
-   "pillar": "records",
-   "pillar_name": "Records · Paper Killer",
+   "due": "2026-12-31",
+   "pillar": "kairos",
+   "pillar_name": "Kairos Meridian",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "REC-GEM-05",
-   "title": "Records: the function spec, written as the build plan",
+   "id": "KAI-GEM-14",
+   "title": "Kairos: California's final 2027 state holidays (CalHR), when published",
    "state": "now",
-   "count": 1
+   "count": 0
   },
   {
-   "due": "2026-11-30",
-   "pillar": "selling",
-   "pillar_name": "Selling Pipeline",
+   "due": "2027-01-10",
+   "pillar": "garage",
+   "pillar_name": "Garage",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "SEL-GEM-05",
-   "title": "Selling Pipeline: the function spec, written as the build plan",
+   "id": "GAR-GEM-13",
+   "title": "Garage: DMV's 2027 fee amounts after the January 1 adjustment",
    "state": "now",
-   "count": 1
+   "count": 0
+  },
+  {
+   "due": "2027-01-15",
+   "pillar": "polis",
+   "pillar_name": "Polis · Civic & Legal Watch",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "POL-GEM-07",
+   "title": "Polis: who decides things for Frazier Park and when they meet in 2027",
+   "state": "now",
+   "count": 0
   }
  ]
 }

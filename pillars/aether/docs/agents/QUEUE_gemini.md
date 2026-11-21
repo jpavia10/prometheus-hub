@@ -2,185 +2,108 @@
 
 # Aether · Atmospheric & Field Lab · homework for Gemini
 
-Updated 2026-11-20 19:24 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 10:00 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. AET-GEM-08 · Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file
+## 1. AET-GEM-11 · Aether: the Oct 2026 shut-off reports, read to the end (RIDGE and TENNECO circuits)
 
-**Due:** 2026-11-26 · **State:** now
+**Due:** 2026-11-28 · **State:** now
 
-**Why:** Aether shows live readings with nothing to compare them to. 'Normal for November here' needs the 30-year normals for the nearest NOAA station, and Hearth needs them to plan paint and concrete days (most primers need 50 F and above).
+**Why:** Gemini's PSPS history stopped at the page limit of the Sept 25, 2026 report (Attachment C, where RIDGE is listed) and found no 2026 shut-off yet.
 
-**What it unlocks:** Aether can say 'colder than normal' with the real normal, and Hearth can mark the months that suit outdoor painting and pouring.
+**What it unlocks:** Aether's shut-off record knows whether the circuits that serve Frazier Park were cut in fall 2026.
 
 **Read first:**
-- https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals
-- https://www.ncei.noaa.gov/data/normals-monthly/1991-2020/access/ (one CSV per station)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/climate-data.js (window.AETHER_PSPS, row 13)
+- https://www.cpuc.ca.gov/consumer-support/psps/utility-company-psps-reports-post-event-and-post-season
 
 **Do this:**
-1. Find the NCEI 1991-2020 monthly normals station nearest to Frazier Park (34.8228, -118.9445) that has temperature AND precipitation normals; give its station id, name, latitude, longitude, elevation (ft) and distance from Frazier Park (mi). If the nearest has no snowfall normals, also name the nearest that has.
-2. From that station's CSV in the access folder, copy for each month: MLY-TMAX-NORMAL, MLY-TMIN-NORMAL, MLY-TAVG-NORMAL, MLY-PRCP-NORMAL, MLY-SNOW-NORMAL (or null), MLY-TMIN-AVGNDS-LSTH032 (days with min at or below 32 F), MLY-TMAX-AVGNDS-GRTH090 (days with max at or above 90 F) where present. Use the CSV's own column names in a 'columns' list.
-3. Add one derived field per month, paint_ok_days: the CSV's count of days with max at or above 50 F if the file has it (MLY-TMAX-AVGNDS-GRTH050), else null. Never estimate.
+1. Open every SCE post-event report filed for events from Sept 1 to Nov 20, 2026 on the CPUC page.
+2. Read each to the end, attachments included, and list every row for the RIDGE, TENNECO, FROZEN, GRAPEVINE PEAK and TEJON circuits: in scope only, or de-energized (off and on times, customers).
+3. Write 'none found' rows for reports that list none of them, naming the report.
 
-**Make:** `aether_gemini_normals_{YYYYMMDD-HHMM}.json`
+**Make:** `aether_gemini_psps-fall2026_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `{station: {id, name, lat, lon, elev_ft, dist_mi, csv_url}, columns: [...], months: [12 objects]}`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `month` (integer): 1-12
-- `tmax_f` (number): MLY-TMAX-NORMAL
-- `tmin_f` (number): MLY-TMIN-NORMAL
-- `tavg_f` (number): MLY-TAVG-NORMAL
-- `prcp_in` (number): MLY-PRCP-NORMAL
-- `snow_in` (number or null): MLY-SNOW-NORMAL
-- `days_min_le_32` (number or null): 
-- `days_max_ge_90` (number or null): 
-- `paint_ok_days` (number or null): MLY-TMAX-AVGNDS-GRTH050
+- `n` (integer): row
+- `event` (text): the event as the report names it
+- `circuit` (text): circuit name
+- `status` (text): de-energized / in scope only / none found
+- `off` (text): YYYY-MM-DD HH:MM or 'none'
+- `on` (text): YYYY-MM-DD HH:MM or 'none'
+- `customers` (integer): 0 when none
+- `url` (URL): the report PDF
+- `page` (text): PDF page
+- `quote` (text): under 300 characters, word for word
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
 - [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; no number is estimated unless the field says 'math' and shows the arithmetic.
 - [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the code/markdown asked for) and is named exactly as asked.
+- [ ] The file is valid JSON and is named exactly as asked.
 
-**How many:** 12
-
-**Done when:** 12 months, every value exactly as in the station's CSV.
+**Done when:** Every fall 2026 SCE report checked to the end.
 
 **How Claude checks it:**
-- Claude downloads the CSV and compares all 12 months.
+- Claude opens rows at random against their pages.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
-- a number that is not on its source and not shown as arithmetic
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 2. AET-GEM-10 · Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026
-
-**Due:** 2026-11-26 · **State:** now
-
-**Why:** Aether logs outages by hand. SCE publishes a report for every PSPS event with the circuits it cut.
-
-**What it unlocks:** Aether's PSPS log starts with the real history: how often, how long, which months.
-
-**Read first:**
-- SCE's PSPS event reports (sce.com, 'Post Event Reports' to the CPUC) and the CPUC's PSPS page (cpuc.ca.gov)
-
-**Do this:**
-1. For each PSPS event 2019-2026 whose report lists a circuit serving Frazier Park, Lake of the Woods, Pinon Pines or Pine Mountain Club: event dates, circuit names, customers de-energized on those circuits, outage start and restore times, and the report's URL and page.
-
-**Make:** `aether_gemini_psps-history_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per event and circuit`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `event` (text): SCE's event name or dates
-- `circuit` (text): 
-- `community` (text): 
-- `customers` (integer): 
-- `off` (text): YYYY-MM-DD HH:MM
-- `on` (text): YYYY-MM-DD HH:MM
-- `url` (URL): the report
-- `page` (text): 
-- `quote` (text): the table row
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every event with a mountain-community circuit, or 'none found' rows per year with the reports checked.
-
-**How Claude checks it:**
-- Claude opens 5 reports.
-
-**Not done (sent back) if:**
-- fewer rows than the count (where a count is set), or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-## 3. AET-GEM-05 · Aether: the function spec, written as the build plan
+## 2. AET-GEM-12 · Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans
 
 **Due:** 2026-11-30 · **State:** now
 
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: aether_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code.
+**Why:** Aether's pass panel shows today's status but has no history of how often and how long the Grapevine closes.
 
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Aether from, step by step.
+**What it unlocks:** Aether can say how many closures a winter brings and how long they last, from Caltrans's own record.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/aether/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/aether
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
+- Caltrans District 6 and 7 news releases and QuickMap alerts archive
 
 **Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/aether/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/aether): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
+1. From Caltrans's own news releases (dot.ca.gov District 6 and 7) and CHP's official posts quoted there: every full closure of I-5 over the Grapevine (Tejon Pass) for snow or ice since Jan 2019.
+2. For each: closed time, reopened time, the reason as stated, and the release URL.
+3. Winters with none: one row saying none found and which pages you read.
 
-**Make:** `aether_gemini_function-spec_{YYYYMMDD-HHMM}.md`
+**Make:** `aether_gemini_grapevine-closures_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
+- `n` (integer): row
+- `closed` (text): YYYY-MM-DD HH:MM
+- `reopened` (text): YYYY-MM-DD HH:MM or 'not stated'
+- `reason` (text): as Caltrans states it
+- `hours` (text): math: reopened minus closed, or 'not stated'
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
 
 **Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
 
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
+**Done when:** Every closure since 2019 with Caltrans's own release.
 
 **How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+- Claude opens rows at random against their pages.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
+- a guess written as a fact (write 'not stated' and name the page you checked)

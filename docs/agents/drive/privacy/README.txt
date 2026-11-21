@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
 - PRI-GRK-04 · Privacy: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,38 +16,39 @@ Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-20 19:24 UTC · 2 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 2 open in this pillar.
 
 
-- PRI-GEM-07 · Privacy: which of the 72 brokers are on California's Data Broker Registry, so DROP reaches them · due 2026-11-27
-    make: privacy_gemini_registry_{YYYYMMDD-HHMM}.json · how many: 72 · done when: 72 rows, every 'yes' with its registry entry URL.
-- PRI-GEM-06 · Privacy: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason in your HOMEWORK doc)
-    make: privacy_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- PRI-GEM-09 · Privacy: the opt-out route for each of the 13 brokers DROP does not reach · due 2026-11-28
+    make: privacy_gemini_optouts_{YYYYMMDD-HHMM}.json · how many: 13 · done when: 13 rows, every one with the broker's own opt-out page.
+- PRI-GEM-10 · Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com) · due 2026-11-30
+    make: privacy_gemini_microsoft-settings_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 settings, each with Microsoft's own page.
 
 ## Muse
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Privacy · CA DROP right now.
+- PRI-MUS-04 · Privacy: second reader on Gemini's 'which of the 72 brokers are on California's Data Broker Registry' · due 2026-11-28
+    make: privacy_muse_registry-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked row checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Privacy · CA DROP right now.
 
 ## Argon
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Privacy · CA DROP right now.
 
 ## Hydrogen
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Privacy · CA DROP right now.

@@ -2,76 +2,58 @@
 
 # Money · payoff simulator · homework for Gemini
 
-Updated 2026-11-20 19:24 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-21 10:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. MON-GEM-04 · Money: the function spec, written as the build plan
+## 1. MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026)
 
 **Due:** 2026-11-30 · **State:** now
 
-**SENT BACK, DO IT AGAIN:** Sent back 2026-11-20: money_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 24 of its 55 file:line references run past the end of the file (e.g. pillars/money/engine.js:1-342 when the file had 58 lines and never more). Write it again from the live code with the eight headings, the counts below, and line numbers you opened.
+**Why:** Money's issuer reference was written in early November; card pricing moves with the prime rate, so the numbers drift.
 
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Money from, step by step.
+**What it unlocks:** Money's issuer rows show current published ranges with the date read.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/money/
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars/money
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/money/issuers.js (the issuers to cover)
 
 **Do this:**
-1. Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/money/) on a phone-sized browser and use every section.
-2. Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/money): every file the page loads, and pillar.json.
-3. Write section A from what is there now, with file:line for each item; then B to H.
-4. Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'.
+1. For each issuer in issuers.js, open its own current cardmember agreement or pricing page for its main consumer card.
+2. Record the purchase APR range, penalty APR, late fee (first and repeat), and the minimum payment formula, each quoted word for word with the date read.
+3. 'not stated' where the page does not give it; never a review site.
 
-**Make:** `money_gemini_function-spec_{YYYYMMDD-HHMM}.md`
+**Make:** `money_gemini_issuer-pricing_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `A What it does today` (list): every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)
-- `B What Joseph needs it to do` (8+ user stories): 'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life
-- `C Data` (table): record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar
-- `D Screens` (per screen): purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state
-- `E Rules and edge cases` (10+): dates and time zones, missing data, offline, two devices, a value of 0 vs unknown
-- `F Acceptance tests` (12+): Given / When / Then, each checkable in a phone browser in under two minutes
-- `G Order of work` (numbered steps): each step small enough for one build, with what Joseph can use after it
-- `H Must not` (list): the charter's protections that apply, no server or account, no made-up numbers
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.
-```
+- `n` (integer): row
+- `issuer` (text): as in issuers.js
+- `card` (text): product name
+- `apr` (text): range as stated
+- `penalty_apr` (text): as stated
+- `late_fee` (text): as stated
+- `min_payment` (text): formula as stated
+- `read` (date): YYYY-MM-DD
+- `url` (URL): the official page
+- `quote` (text): under 300 characters, word for word
 
 **Before you save, check every one of these yourself:**
-- [ ] Every item in A has a file:line that exists.
-- [ ] B has 8+ stories and none invents a personal fact.
-- [ ] C names every field with type and example.
-- [ ] F has 12+ tests, each with one Given, one When, one Then.
-- [ ] G steps are in an order that can ship one by one.
-- [ ] All eight headings, in order.
-- [ ] Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random).
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON and is named exactly as asked.
 
-**How many:** 1
-
-**Done when:** 1 file exactly in the shape, every self-check line true.
+**Done when:** Every issuer in issuers.js, from its own agreement.
 
 **How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
+- Claude opens rows at random against their pages.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
 - a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-- a file:line past the end of its file, or pointing at code that does something else
-- a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data
+- a guess written as a fact (write 'not stated' and name the page you checked)

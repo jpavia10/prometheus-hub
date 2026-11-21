@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
 - GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,24 +16,23 @@ Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-20 19:24 UTC · 2 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
-- GAR-GEM-12 · Garage: California rules and fees for the Sorento Hybrid and the MT-07 in 2027 · due 2026-11-26
-    make: garage_gemini_ca-fees_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every fee part and smog rule for both vehicles.
-- GAR-GEM-07 · Garage: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason in your HOMEWORK doc)
-    make: garage_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
+    make: garage_gemini_ca-fees-2027_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every fees.js amount checked against DMV's 2027 page.
 
 ## Muse
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Garage right now.
+- GAR-MUS-04 · Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles' · due 2026-11-28
+    make: garage_muse_ca-fees-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked row checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
 - GAR-GPT-01 · Garage: phone audit: 15 findings · due 2026-11-24
@@ -41,14 +40,14 @@ Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Garage right now.
 
 ## Hydrogen
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Garage right now.

@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
 - MON-GRK-02 · Money: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,22 +16,22 @@ Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
-- MON-GEM-04 · Money: the function spec, written as the build plan · due 2026-11-30 · SENT BACK 2026-11-20: redo it (reason in your HOMEWORK doc)
-    make: money_gemini_function-spec_{YYYYMMDD-HHMM}.md · how many: 1 · done when: 1 file exactly in the shape, every self-check line true.
+- MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026) · due 2026-11-30
+    make: money_gemini_issuer-pricing_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every issuer in issuers.js, from its own agreement.
 
 ## Muse
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Money · payoff simulator right now.
 
 ## ChatGPT
 
-Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 1 open in this pillar.
 
 
 - MON-GPT-01 · Money: phone audit: 15 findings · due 2026-11-24
@@ -39,14 +39,14 @@ Updated 2026-11-20 19:24 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Money · payoff simulator right now.
 
 ## Hydrogen
 
-Updated 2026-11-20 19:24 UTC · 0 open in this pillar.
+Updated 2026-11-21 10:00 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Money · payoff simulator right now.

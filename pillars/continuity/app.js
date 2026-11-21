@@ -306,7 +306,7 @@
     const rdBox = document.getElementById("co-readiness");
     if (rdBox) {
       rdBox.innerHTML = `<div class="kv"><span>Binder readiness</span><b>${ready} / ${D.sections.length} (${Math.round(ready / tot * 100)}%)</b></div>`
-        + `<div class="kv"><span>Cipher &amp; KDF</span><b>AES-256-GCM / PBKDF2 310k</b></div>`
+        + `<div class="kv"><span>Cipher &amp; KDF</span><b>AES-256-GCM / PBKDF2 ${Math.round(((S.get("vault", null) || {}).iter || KDF_ITERATIONS) / 1000)}k</b></div>`
         + `<div class="kv"><span>Open items on the docket</span><b>${D.sections.length - ready} of ${D.sections.length} chapters</b></div>`;
     }
   }

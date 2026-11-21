@@ -213,7 +213,7 @@
     {
      "id": "AET-GEM-05",
      "title": "Aether: the function spec, written as the build plan",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-30",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Aether from, step by step.",
@@ -302,7 +302,8 @@
       "a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data"
      ],
      "reopened": "2026-11-20",
-     "review": "Sent back 2026-11-20: aether_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 2 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 2 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. It copies household names (pets, devices) from other drops: B, C and D use only what is in the pillar's own code and data, and a street address never goes in a file. Write it again from the live code."
+     "review": "Done 2026-11-21 (Claude): All checks pass; 42 refs. Score 10/10 (#74).",
+     "closed": "2026-11-21"
     },
     {
      "state": "done",
@@ -349,7 +350,7 @@
      "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "why": "Aether shows live readings with nothing to compare them to. 'Normal for November here' needs the 30-year normals for the nearest NOAA station, and Hearth needs them to plan paint and concrete days (most primers need 50 F and above).",
      "unlocks": "Aether can say 'colder than normal' with the real normal, and Hearth can mark the months that suit outdoor painting and pouring.",
@@ -437,7 +438,8 @@
      "id": "AET-GEM-08",
      "title": "Aether: Frazier Park's climate normals 1991-2020, month by month, from NOAA's own normals file",
      "due": "2026-11-26",
-     "review": "Blocked 2026-11-19 (Gemini, honestly; nothing invented): the NCEI CSV downloads instead of rendering in its browser and the NCEI API is denied. Route now: the CSV is a plain file; open https://www.ncei.noaa.gov/access/services/data/v1?dataset=normals-monthly-1991-2020&stations=USW00023187&format=json in the browser (renders as text), or read the station page's 'view' table. Station USW00023187 Sandberg is accepted."
+     "review": "Done 2026-11-21 (Claude): Built as Aether's \"The mountain's year\" table. Claude compared all 84 monthly numbers and Lebec's snow row with NOAA's own CSV: every one equal. Right call on the station (nearest with temperature and rain) and honest about Sandberg having no snow normals. Score 10/10 (#78).",
+     "closed": "2026-11-21"
     },
     {
      "state": "done",
@@ -549,7 +551,7 @@
     {
      "id": "AET-GEM-10",
      "title": "Aether: every SCE power shut-off (PSPS) that reached Frazier Park, 2019-2026",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "Aether logs outages by hand. SCE publishes a report for every PSPS event with the circuits it cut.",
@@ -637,7 +639,179 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-21",
+     "review": "Done 2026-11-21 (Claude): Built as Aether's shut-off record, marked not second-read (the CPUC site is not reachable from Claude's sandbox; Muse checks it). Good: years with no shut-off listed, not skipped. Score 10/10 (#79)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Gemini's PSPS history stopped at the page limit of the Sept 25, 2026 report (Attachment C, where RIDGE is listed) and found no 2026 shut-off yet.",
+     "unlocks": "Aether's shut-off record knows whether the circuits that serve Frazier Park were cut in fall 2026.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/climate-data.js (window.AETHER_PSPS, row 13)",
+      "https://www.cpuc.ca.gov/consumer-support/psps/utility-company-psps-reports-post-event-and-post-season"
+     ],
+     "steps": [
+      "Open every SCE post-event report filed for events from Sept 1 to Nov 20, 2026 on the CPUC page.",
+      "Read each to the end, attachments included, and list every row for the RIDGE, TENNECO, FROZEN, GRAPEVINE PEAK and TEJON circuits: in scope only, or de-energized (off and on times, customers).",
+      "Write 'none found' rows for reports that list none of them, naming the report."
+     ],
+     "deliver": {
+      "file": "aether_gemini_psps-fall2026_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "event",
+       "type": "text",
+       "rule": "the event as the report names it"
+      },
+      {
+       "name": "circuit",
+       "type": "text",
+       "rule": "circuit name"
+      },
+      {
+       "name": "status",
+       "type": "text",
+       "rule": "de-energized / in scope only / none found"
+      },
+      {
+       "name": "off",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM or 'none'"
+      },
+      {
+       "name": "on",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM or 'none'"
+      },
+      {
+       "name": "customers",
+       "type": "integer",
+       "rule": "0 when none"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the report PDF"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": "PDF page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every fall 2026 SCE report checked to the end.",
+     "checks": [
+      "Claude opens rows at random against their pages."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-11",
+     "title": "Aether: the Oct 2026 shut-off reports, read to the end (RIDGE and TENNECO circuits)",
+     "due": "2026-11-28"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Aether's pass panel shows today's status but has no history of how often and how long the Grapevine closes.",
+     "unlocks": "Aether can say how many closures a winter brings and how long they last, from Caltrans's own record.",
+     "inputs": [
+      "Caltrans District 6 and 7 news releases and QuickMap alerts archive"
+     ],
+     "steps": [
+      "From Caltrans's own news releases (dot.ca.gov District 6 and 7) and CHP's official posts quoted there: every full closure of I-5 over the Grapevine (Tejon Pass) for snow or ice since Jan 2019.",
+      "For each: closed time, reopened time, the reason as stated, and the release URL.",
+      "Winters with none: one row saying none found and which pages you read."
+     ],
+     "deliver": {
+      "file": "aether_gemini_grapevine-closures_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "closed",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM"
+      },
+      {
+       "name": "reopened",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM or 'not stated'"
+      },
+      {
+       "name": "reason",
+       "type": "text",
+       "rule": "as Caltrans states it"
+      },
+      {
+       "name": "hours",
+       "type": "text",
+       "rule": "math: reopened minus closed, or 'not stated'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every closure since 2019 with Caltrans's own release.",
+     "checks": [
+      "Claude opens rows at random against their pages."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-12",
+     "title": "Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans",
+     "due": "2026-11-30"
     }
    ]
   },
@@ -808,6 +982,50 @@
       "a row copied from another row with the names changed",
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "AET-MUS-03",
+     "title": "Aether: second reader on Gemini's 'SCE power shut-offs that reached the mountain, 2019-2026'",
+     "state": "now",
+     "added": "2026-11-21",
+     "due": "2026-11-28",
+     "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+     "unlocks": "The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.",
+     "inputs": [
+      "Gemini's file aether_gemini_psps-history_20261120-2033.json in the folder below (AET-GEM-10)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 13 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "aether_muse_psps-history-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 13,
+     "done_when": "Every picked row checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
      ]
     }

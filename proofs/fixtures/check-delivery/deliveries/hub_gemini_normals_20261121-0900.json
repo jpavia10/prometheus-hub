@@ -1,0 +1,24 @@
+{
+ "station": {
+  "id": "X1",
+  "name": "Test"
+ },
+ "columns": [
+  "month",
+  "t"
+ ],
+ "months": [
+  {
+   "month": 1,
+   "t": 1
+  },
+  {
+   "month": 2,
+   "t": 2
+  },
+  {
+   "month": 3,
+   "t": 3
+  }
+ ]
+}

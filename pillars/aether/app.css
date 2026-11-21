@@ -102,3 +102,13 @@ body.pk-v2 .ae-out { position: relative; padding-left: 15px; }
 .ae-check { margin-top: 12px; }
 @keyframes ae-now { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
 @media (prefers-reduced-motion: reduce) { .ae-now { animation: none; } }
+
+/* Climate normals (climate.js, 2026-11-21) */
+.ae-normals-now { margin: 4px 0 12px; font-size: 15px; line-height: 1.5; }
+.ae-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ae-table { width: 100%; min-width: 460px; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 14px; }
+.ae-table th, .ae-table td { padding: 7px 8px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.ae-table th:first-child { text-align: left; }
+.ae-table thead th { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.ae-table tfoot th, .ae-table tfoot td { border-bottom: 0; font-weight: 600; }
+.ae-table tr.ae-mnow th, .ae-table tr.ae-mnow td { color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, transparent); }

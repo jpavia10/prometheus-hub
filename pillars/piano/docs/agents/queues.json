@@ -80,7 +80,7 @@
     {
      "id": "PIA-GEM-03",
      "title": "Bossa Piano Studio: the function spec, written as the build plan",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-30",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Bossa Piano Studio from, step by step.",
@@ -169,7 +169,8 @@
       "a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data"
      ],
      "reopened": "2026-11-20",
-     "review": "Sent back 2026-11-20: piano_gemini_function-spec_20261116-2040.md has the right headings but not the counts: B has 3 items and none is written 'As Joseph, when ..., I want ..., so that ...' (8+ needed); C is a list of keys, not the table (record | field | type | unit | required | example | storage key | read by); E has 3 rules (10+); F has 3 tests and none is Given/When/Then (12+); G has 3 steps. Write it again from the live code."
+     "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#64).",
+     "closed": "2026-11-21"
     },
     {
      "state": "done",
@@ -275,7 +276,7 @@
     {
      "id": "PIA-GEM-05",
      "title": "Piano: where each of the 24 bossa tunes is legally printed (book, page, key)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "The ladder names 24 tunes; Joseph needs the sheet music. Each is in a published fake book or a licensed single sheet.",
@@ -344,7 +345,81 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-21",
+     "review": "Done 2026-11-21 (Claude): Built as Piano's \"Where to buy the music\". Lost a point: page and key are \"not stated\" on most rows; the book indexes and Musicnotes product pages usually give the key. Score 9/10 (#85)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Most of the 47 rows in Gemini's sources file have no key and no page, so Joseph cannot tell which edition fits his ladder.",
+     "unlocks": "Each tune's 'Where to buy' row shows the key and the page, and the ladder can prefer the edition in the key it teaches.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/piano/sources.js (window.PIANO_SOURCES)"
+     ],
+     "steps": [
+      "For every row whose page or key is 'not stated', open the publisher's product page and its preview, table of contents or index.",
+      "Musicnotes and Sheet Music Direct list the original key on the product page; Hal Leonard books list songs with pages in the table of contents.",
+      "If neither is shown, keep 'not stated' and name what you opened."
+     ],
+     "deliver": {
+      "file": "piano_gemini_bossa-keys_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "the row number in PIANO_SOURCES"
+      },
+      {
+       "name": "tune",
+       "type": "text",
+       "rule": "as in PIANO_SOURCES"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": "page number or 'not stated'"
+      },
+      {
+       "name": "key",
+       "type": "text",
+       "rule": "e.g. 'F major' or 'not stated'"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the page that shows it"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "One row for every PIANO_SOURCES row that lacked a page or key.",
+     "checks": [
+      "Claude opens rows at random against their pages."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PIA-GEM-06",
+     "title": "Piano: the key and page for every bossa source that said 'not stated'",
+     "due": "2026-11-28"
     }
    ]
   },
@@ -439,7 +514,52 @@
   {
    "id": "muse",
    "name": "Muse",
-   "tasks": []
+   "tasks": [
+    {
+     "id": "PIA-MUS-01",
+     "title": "Piano: second reader on Gemini's 'where each of the 24 bossa tunes is legally printed'",
+     "state": "now",
+     "added": "2026-11-21",
+     "due": "2026-11-28",
+     "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
+     "unlocks": "The 'not second-read' mark comes off the rows you confirm; rows you find wrong are fixed or removed.",
+     "inputs": [
+      "Gemini's file piano_gemini_bossa-sources_20261120-2025.json in the folder below (PIA-GEM-05)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+      "For each, open its URL and compare every field and the quote with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "piano_muse_bossa-sources-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked row checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
   },
   {
    "id": "chatgpt",

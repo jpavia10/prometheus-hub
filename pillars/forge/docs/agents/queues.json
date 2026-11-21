@@ -80,7 +80,7 @@
     {
      "id": "FOR-GEM-03",
      "title": "Forge: the function spec, written as the build plan",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-30",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Forge from, step by step.",
@@ -169,7 +169,8 @@
       "a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data"
      ],
      "reopened": "2026-11-20",
-     "review": "Sent back 2026-11-20: forge_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 16 of its 25 file:line references run past the end of the file (e.g. pillars/forge/app.js:314-468 when the file had 238 lines). Write it again from the live code with the eight headings, the counts below, and line numbers you opened."
+     "review": "Done 2026-11-21 (Claude): All checks pass; 97 refs, 3 flagged and all right on reading. Score 10/10 (#54).",
+     "closed": "2026-11-21"
     },
     {
      "state": "done",

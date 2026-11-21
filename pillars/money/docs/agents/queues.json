@@ -114,7 +114,7 @@
     {
      "id": "MON-GEM-04",
      "title": "Money: the function spec, written as the build plan",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-30",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Money from, step by step.",
@@ -203,7 +203,100 @@
       "a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data"
      ],
      "reopened": "2026-11-20",
-     "review": "Sent back 2026-11-20: money_gemini_function-spec_20261116-1930.md answers a different template (B-G are 'Who uses it and when, Data shapes, Core flows, Known gaps and bugs, Improvements worth making, Charter compliance', not the eight headings asked), and 24 of its 55 file:line references run past the end of the file (e.g. pillars/money/engine.js:1-342 when the file had 58 lines and never more). Write it again from the live code with the eight headings, the counts below, and line numbers you opened."
+     "review": "Done 2026-11-21 (Claude): All checks pass; 77 refs, the 6 flagged are right on reading. Score 10/10 (#55).",
+     "closed": "2026-11-21"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-21",
+     "why": "Money's issuer reference was written in early November; card pricing moves with the prime rate, so the numbers drift.",
+     "unlocks": "Money's issuer rows show current published ranges with the date read.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/money/issuers.js (the issuers to cover)"
+     ],
+     "steps": [
+      "For each issuer in issuers.js, open its own current cardmember agreement or pricing page for its main consumer card.",
+      "Record the purchase APR range, penalty APR, late fee (first and repeat), and the minimum payment formula, each quoted word for word with the date read.",
+      "'not stated' where the page does not give it; never a review site."
+     ],
+     "deliver": {
+      "file": "money_gemini_issuer-pricing_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "issuer",
+       "type": "text",
+       "rule": "as in issuers.js"
+      },
+      {
+       "name": "card",
+       "type": "text",
+       "rule": "product name"
+      },
+      {
+       "name": "apr",
+       "type": "text",
+       "rule": "range as stated"
+      },
+      {
+       "name": "penalty_apr",
+       "type": "text",
+       "rule": "as stated"
+      },
+      {
+       "name": "late_fee",
+       "type": "text",
+       "rule": "as stated"
+      },
+      {
+       "name": "min_payment",
+       "type": "text",
+       "rule": "formula as stated"
+      },
+      {
+       "name": "read",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "the official page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every issuer in issuers.js, from its own agreement.",
+     "checks": [
+      "Claude opens rows at random against their pages."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "MON-GEM-05",
+     "title": "Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026)",
+     "due": "2026-11-30"
     }
    ]
   },

@@ -57,6 +57,8 @@ export const ALLOW = [
   ["pillars/sylade/", "public presence address, not a private inbox"],
   ["pillars/hermes/research/", "public vendor quotas and prices (second-reader checks)"],
   ["pillars/hearth/research/", "public scan-app prices (second-reader checks)"],
+  ["pillars/garage/fees.js", "California DMV/BAR published fee schedule (GAR-GEM-12, 2026-11-21): registration, smog and VLF amounts for both vehicles — public fees, not account data"],
+  ["pillars/continuity/small-estate.js", "California Probate Code statutory limits (CON-GEM-06, 2026-11-21): small-estate and primary-residence thresholds — public law, not account data"],
   ["pillars/games/gta6-facts.js", "GTA VI facts (2026-11-19): public store list prices quoted from the PlayStation and Xbox stores, not personal money"],
   ["pillars/records/tax-forms-2026.js", "Tax-form reference (2026-11-19): IRS and FTB thresholds quoted from the form instructions, not personal money"],
   ["pillars/odyssey/photos.js", "Odyssey trip photos (2026-11-19): the ids are camera timestamps (YYYYMMDDhhmmss), not card numbers"],
