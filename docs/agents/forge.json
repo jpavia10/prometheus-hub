@@ -1,6 +1,6 @@
 {
- "built": "2026-11-22T03:21:59Z",
- "checked": "2026-11-22T03:21:59Z",
+ "built": "2026-11-22T03:29:49Z",
+ "checked": "2026-11-22T03:29:49Z",
  "version": 2,
  "today": "2026-11-21",
  "sources": {
@@ -23,7 +23,7 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 150,
+  "todo": 148,
   "late": 4,
   "due7": 72,
   "delivered": 5,
@@ -32,7 +32,7 @@
  },
  "per": {
   "Gemini": {
-   "todo": 52,
+   "todo": 50,
    "late": 0,
    "due7": 12,
    "delivered": 5,
@@ -44,7 +44,7 @@
    "by": {
     "hub": 45,
     "titan": 2,
-    "tproj": 5,
+    "tproj": 3,
     "board": 0
    },
    "probation": false,
@@ -497,10 +497,10 @@
    }
   },
   "Titan": {
-   "todo": 39,
+   "todo": 37,
    "delivered": 0,
    "by": {
-    "Gemini": 7,
+    "Gemini": 5,
     "Grok": 14,
     "Muse": 16,
     "Gemini API": 2
@@ -15900,50 +15900,6 @@
    "detail": {
     "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-second-source-3.json, items 56 to 109 (part 2). Round 2 did not show you the text; this sheet does ('record'). Check every sentence of 'record' against a source other than 'source_on_record'. When all of it holds: one line with \"new\" exactly equal to 'record' and source 'agree: <the page and what you checked on it>'. When a sentence is wrong: one line with \"new\" = the whole record text with only that sentence corrected, and a source for the correction. Use \"entity\", \"id\" and \"field\" exactly as the item gives them (stories are on the specimen; designs and periods are on the type). Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/', provenance on every line with run_id 'GT-SECOND-r2'. One line per item, in this form: {\"ts\":\"2026-11-22T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C001\",\"op\":\"set\",\"field\":\"story\",\"new\":\"<the record text, or the corrected text>\",\"source\":\"agree: Numista N#185 https://en.numista.com/catalogue/pieces185.html, obverse and reverse lines, engravers; read 2026-11-22\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"https://en.numista.com/catalogue/pieces185.html\"}],\"run_id\":\"GT-SECOND-r2\"}}. Do not send \"old\". Never write your own summary as an 'agree': agree means the record's own words hold.",
     "done": "Items 56-109 each answered: the record's text unchanged with an 'agree' source, or corrected sentence by sentence with a source; Claude spot-checks 10.",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Gemini",
-   "src": "tproj",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "T-gemini-53",
-   "alias": "GT-FILL-q1",
-   "title": "Type gaps, round 2, part 1 of 2: items 1-60 of the 120 type fields Numista does not give",
-   "status": "todo",
-   "due": "2026-12-03",
-   "items": 0,
-   "closed": "",
-   "reopened": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-type-gaps-2.json, items 1 to 60 (part 1). In round 1 you read Numista for each and it did not give the field ('numista_read' says what you found). Now look in another catalogue: uCoin, Foronum, Colnect, the issuing mint's or central bank's own page, or a national catalogue. Fill the field as 'want' says, copying 'old' exactly as given ([] or null). When no catalogue gives it, send NOTHING for that item (no null line) and list it in your run report with the pages you read. Mintages: that year and that mint only, an integer. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/', provenance on every line with run_id 'GT-FILL-q1'. One line per filled item, in this form: {\"ts\":\"2026-11-22T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"type\",\"id\":\"<the item's type>\",\"op\":\"set\",\"field\":\"<the item's field>\",\"old\":<the item's old>,\"new\":<the value>,\"source\":\"<catalogue, entry and the line you read>\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"<the page URL>\"}],\"run_id\":\"GT-FILL-q1\"}}. A field whose record holds a range (weight_min_g and weight_max_g) is not filled with a single number.",
-    "done": "Items 1-60 answered: a filled line with its catalogue, or listed in the run report as not given anywhere; Claude opens 10.",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Gemini",
-   "src": "tproj",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "T-gemini-54",
-   "alias": "GT-FILL-q2",
-   "title": "Type gaps, round 2, part 2 of 2: items 61-120 of the 120 type fields Numista does not give",
-   "status": "todo",
-   "due": "2026-12-03",
-   "items": 0,
-   "closed": "",
-   "reopened": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-type-gaps-2.json, items 61 to 120 (part 2). In round 1 you read Numista for each and it did not give the field ('numista_read' says what you found). Now look in another catalogue: uCoin, Foronum, Colnect, the issuing mint's or central bank's own page, or a national catalogue. Fill the field as 'want' says, copying 'old' exactly as given ([] or null). When no catalogue gives it, send NOTHING for that item (no null line) and list it in your run report with the pages you read. Mintages: that year and that mint only, an integer. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/', provenance on every line with run_id 'GT-FILL-q2'. One line per filled item, in this form: {\"ts\":\"2026-11-22T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"type\",\"id\":\"<the item's type>\",\"op\":\"set\",\"field\":\"<the item's field>\",\"old\":<the item's old>,\"new\":<the value>,\"source\":\"<catalogue, entry and the line you read>\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"<the page URL>\"}],\"run_id\":\"GT-FILL-q2\"}}. A field whose record holds a range (weight_min_g and weight_max_g) is not filled with a single number.",
-    "done": "Items 61-120 answered: a filled line with its catalogue, or listed in the run report as not given anywhere; Claude opens 10.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
    },
    "late": false
