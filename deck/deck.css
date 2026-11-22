@@ -822,45 +822,56 @@ body.menu-on:not(.menu-off) #sky { opacity: 0 !important; }
 .view-fallback{max-width:520px;margin:12vh auto;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--glass-2);text-align:left}
 .view-fallback h2{margin:0 0 8px}
 
-/* ---------- the Orbit as a solar system (deck/views/solar.js, 2026-11-21) ---------- */
-.solar { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-top: -6px; }
-.sol-stage { position: relative; height: clamp(300px, calc(100dvh - 330px), 900px); overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
+/* ---------- the Orbit as one painted realm (deck/views/realm.js, 2026-11-22) ---------- */
+.realm { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-top: -6px; }
+.rl-stage { position: relative; height: clamp(300px, calc(100dvh - 330px), 900px); overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none;
   background: radial-gradient(120% 80% at 50% 38%, #0a0f24 0%, #04060f 60%, #020309 100%); }
-.sol-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.sol-labels { position: absolute; inset: 0; pointer-events: none; }
-.sol-pl { position: absolute; left: 0; top: 0; display: inline-flex; align-items: center; gap: 5px; padding: 5px 6px; pointer-events: none; opacity: 0;
+.rl-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.rl-labels { position: absolute; inset: 0; pointer-events: none; }
+.rl-pl { position: absolute; left: 0; top: 0; display: inline-flex; flex-direction: column; align-items: center; gap: 3px; padding: 4px 6px; pointer-events: none; opacity: 0;
   font-size: 10px; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; white-space: nowrap; color: rgba(232, 240, 255, .82);
   text-shadow: 0 1px 2px rgba(0, 0, 0, .95), 0 0 12px rgba(0, 0, 0, .9); transition: opacity .35s var(--ease), color .3s; will-change: transform; }
-.sol-pl.on { opacity: 1; pointer-events: auto; }
-.sol-pl.sel { color: hsl(var(--h) 95% 80%); font-size: 11px; letter-spacing: .2em; }
-.sol-pl:focus-visible { opacity: 1; outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 6px; }
-.sol-badge { font-style: normal; font-size: 9px; letter-spacing: .06em; padding: 2px 5px; border-radius: 999px; color: #06101c; background: hsl(var(--h) 95% 72%); text-shadow: none; }
-.sol-core { position: absolute; left: 0; top: 0; display: grid; justify-items: center; gap: 1px; padding: 18px 16px; border-radius: 50%; color: #f4f8ff; background: none; border: 0;
+.rl-pl.on { opacity: 1; pointer-events: auto; }
+.rl-pl.sel { color: hsl(var(--h) 95% 80%); font-size: 11px; letter-spacing: .2em; }
+.rl-pl:focus-visible { opacity: 1; outline: 2px solid var(--cyan); outline-offset: 2px; border-radius: 6px; }
+.rl-badge { font-style: normal; font-size: 9px; letter-spacing: .06em; padding: 2px 5px; border-radius: 999px; color: #06101c; background: hsl(var(--h) 95% 72%); text-shadow: none; }
+.rl-core { position: absolute; left: 0; top: 0; display: grid; justify-items: center; gap: 1px; padding: 18px 16px; border-radius: 50%; color: #f4f8ff; background: none; border: 0;
   text-shadow: 0 0 14px rgba(0, 10, 30, .9), 0 1px 2px rgba(0, 0, 0, .8); transition: opacity .4s var(--ease); will-change: transform; }
-.sol-core b { font-size: 17px; font-weight: 300; letter-spacing: .12em; } .sol-core span { font-size: 8.5px; letter-spacing: .3em; text-transform: uppercase; opacity: .8; }
-.sol-core.far { opacity: 0; pointer-events: none; }
-.solar .ticker { position: absolute; top: 8px; left: 0; right: 0; border: 0; margin: 0; padding: 0; pointer-events: none; color: rgba(214, 226, 250, .7); }
-.sol-card { --h: 210; position: absolute; left: 12px; right: 12px; bottom: 10px; display: grid; gap: 3px; padding: 10px 12px 10px 14px; border-radius: 20px;
+.rl-core b { font-size: 17px; font-weight: 300; letter-spacing: .12em; } .rl-core span { font-size: 8.5px; letter-spacing: .3em; text-transform: uppercase; opacity: .8; }
+.rl-core.far { opacity: 0; pointer-events: none; }
+.rl-core b { display: none; } .rl-core span { margin-top: 38px; font-size: 8px; letter-spacing: .34em; opacity: .62; }
+.realm .ticker { position: absolute; top: 8px; left: 0; right: 0; border: 0; margin: 0; padding: 0; pointer-events: none; color: rgba(214, 226, 250, .7); }
+.rl-card { --h: 210; position: absolute; left: 12px; right: 12px; bottom: 10px; display: grid; gap: 3px; padding: 10px 12px 10px 14px; border-radius: 20px;
   background: linear-gradient(180deg, rgba(14, 19, 38, .62), rgba(6, 9, 20, .78)); border: 1px solid rgba(190, 212, 255, .14);
   box-shadow: 0 18px 50px -20px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .06); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: border-color .4s, box-shadow .4s; }
-.sol-card.on { border-color: hsl(var(--h) 90% 66% / .45); box-shadow: 0 18px 50px -20px rgba(0, 0, 0, .9), 0 0 34px -12px hsl(var(--h) 95% 60% / .55), inset 0 1px 0 rgba(255, 255, 255, .06); }
-.sol-card-top { display: flex; align-items: center; gap: 8px; }
-.sol-kick { margin: 0; font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; color: hsl(var(--h) 90% 74%); }
-.sol-title { flex: 1; min-width: 0; margin: 0; font-size: 20px; font-weight: 550; letter-spacing: .02em; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sol-sub { margin: 0; font-size: 12.5px; line-height: 1.35; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sol-card-foot { display: flex; align-items: center; gap: 8px; min-width: 0; }
-.sol-fact { flex: 1; min-width: 0; margin: 0; font-size: 11.5px; color: hsl(var(--h) 80% 82%); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.sol-syn { display: flex; gap: 5px; flex: none; } .sol-syn:empty { display: none; }
-.sol-chip { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; padding: 4px 7px; border-radius: 999px; color: hsl(var(--h) 90% 80%); background: hsl(var(--h) 80% 50% / .12); border: 1px solid hsl(var(--h) 90% 66% / .3); }
-.sol-nav { display: flex; align-items: center; gap: 6px; flex: none; }
-.sol-arrow { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; color: var(--ink-2); background: rgba(10, 14, 28, .5); border: 1px solid rgba(190, 212, 255, .16); }
-.sol-arrow:hover, .sol-arrow:focus-visible { color: var(--ink); border-color: var(--cyan); }
-.sol-enter { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 34px; padding: 0 14px 0 16px; border-radius: 999px; font-size: 11px; font-weight: 650; letter-spacing: .24em; text-transform: uppercase;
+.rl-card.on { border-color: hsl(var(--h) 90% 66% / .45); box-shadow: 0 18px 50px -20px rgba(0, 0, 0, .9), 0 0 34px -12px hsl(var(--h) 95% 60% / .55), inset 0 1px 0 rgba(255, 255, 255, .06); }
+.rl-card-top { display: flex; align-items: center; gap: 8px; }
+.rl-kick { margin: 0; font-size: 9.5px; letter-spacing: .26em; text-transform: uppercase; color: hsl(var(--h) 90% 74%); }
+.rl-title { flex: 1; min-width: 0; margin: 0; font-size: 20px; font-weight: 550; letter-spacing: .02em; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rl-sub { margin: 0; font-size: 12.5px; line-height: 1.35; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rl-card-foot { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.rl-fact { flex: 1; min-width: 0; margin: 0; font-size: 11.5px; color: hsl(var(--h) 80% 82%); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rl-syn { display: flex; gap: 5px; flex: none; } .rl-syn:empty { display: none; }
+.rl-chip { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; padding: 4px 7px; border-radius: 999px; color: hsl(var(--h) 90% 80%); background: hsl(var(--h) 80% 50% / .12); border: 1px solid hsl(var(--h) 90% 66% / .3); }
+.rl-nav { display: flex; align-items: center; gap: 6px; flex: none; }
+.rl-arrow { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; color: var(--ink-2); background: rgba(10, 14, 28, .5); border: 1px solid rgba(190, 212, 255, .16); }
+.rl-arrow:hover, .rl-arrow:focus-visible { color: var(--ink); border-color: var(--cyan); }
+.rl-enter { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 34px; padding: 0 14px 0 16px; border-radius: 999px; font-size: 11px; font-weight: 650; letter-spacing: .24em; text-transform: uppercase;
   color: #050a16; background: linear-gradient(180deg, hsl(var(--h) 95% 84%), hsl(var(--h) 90% 68%)); border: 0; box-shadow: 0 8px 26px -10px hsl(var(--h) 95% 60% / .8); }
-.solar.diving .sol-card, .solar.diving .sol-labels, .solar.diving .sol-core, .solar.diving .ticker { opacity: 0; transition: opacity .3s var(--ease); pointer-events: none; }
+.realm.diving .rl-card, .realm.diving .rl-labels, .realm.diving .rl-core, .realm.diving .ticker { opacity: 0; transition: opacity .3s var(--ease); pointer-events: none; }
 /* no WebGL: the planets become a plain list, every pillar still one tap away */
-.sol-flat .sol-gl, .sol-flat .sol-core { display: none; }
-.sol-flat .sol-labels { position: absolute; inset: 34px 12px 190px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; align-content: start; overflow: auto; pointer-events: auto; }
-.sol-flat .sol-pl { position: static; transform: none !important; opacity: 1; pointer-events: auto; justify-content: center; padding: 9px 4px; border-radius: 12px; background: hsl(var(--h) 60% 40% / .14); border: 1px solid hsl(var(--h) 90% 66% / .2); }
-@media (min-width: 900px) { .sol-card { left: auto; right: 24px; width: 380px; bottom: 20px; } .sol-title { font-size: 24px; } }
-@media (prefers-reduced-motion: reduce) { .sol-pl, .sol-core, .sol-card { transition: none; } }
+.rl-flat .rl-gl, .rl-flat .rl-core { display: none; }
+.rl-flat .rl-labels { position: absolute; inset: 34px 12px 190px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; align-content: start; overflow: auto; pointer-events: auto; }
+.rl-flat .rl-pl { position: static; transform: none !important; opacity: 1; pointer-events: auto; justify-content: center; padding: 9px 4px; border-radius: 12px; background: hsl(var(--h) 60% 40% / .14); border: 1px solid hsl(var(--h) 90% 66% / .2); }
+@media (min-width: 900px) { .rl-card { left: auto; right: 24px; width: 380px; bottom: 20px; } .rl-title { font-size: 24px; } }
+@media (prefers-reduced-motion: reduce) { .rl-pl, .rl-core, .rl-card { transition: none; } }
+.rl-dot { width: 8px; height: 8px; border-radius: 50%; background: hsl(var(--h) 95% 80%); box-shadow: 0 0 0 2px rgba(4, 6, 14, .55), 0 0 12px 3px hsl(var(--h) 95% 62% / .75); }
+.rl-dot { position: relative; }
+.rl-dot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, hsl(var(--h) 95% 66% / .34), hsl(var(--h) 95% 60% / .1) 55%, transparent); mix-blend-mode: screen; animation: rl-breathe 3.4s ease-in-out infinite; }
+@keyframes rl-breathe { 0%, 100% { opacity: .65; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.08); } }
+.rl-pl:not(.on) .rl-dot::before { animation: none; }
+@media (prefers-reduced-motion: reduce) { .rl-dot::before { animation: none; } }
+.rl-pl.sel .rl-dot { width: 10px; height: 10px; margin: -1px 0; background: #fff; }
+.rl-gl { touch-action: none; }
+.rl-flat .rl-stage { background: #05070f url("../art/realm/realm_4k.webp") center / cover no-repeat; }

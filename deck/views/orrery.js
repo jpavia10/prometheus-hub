@@ -122,7 +122,7 @@ function fire(canvas) {
   return (t, e) => { gl.uniform1f(ut, t); gl.uniform1f(ue, e); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); };
 }
 
-/** The ticker: one line of what is true right now (the orbit's, shared with the solar system since 2026-11-21). */
+/** The ticker: one line of what is true right now (the orbit's, shared with the realm view since 2026-11-22). */
 export function ticker(ctx, t, stats) {
   const facts = []; const soon = feedRows(t, addDays(t, 30)).filter((r) => !r.done); const fixedNext = soon.find((r) => r.fixed), mine = soon.filter((r) => !r.fixed);
   facts.push(`${PILLARS.length} pillars online`);

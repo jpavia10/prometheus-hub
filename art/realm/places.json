@@ -1,0 +1,117 @@
+{
+ "about": "Where each pillar stands in the realm painting (art/realm/realm_6k.webp), as fractions of its width and height; placed by Claude by eye on 2026-11-22. 'core' is the pearl spire (the command button).",
+ "core": [
+  0.5,
+  0.4381
+ ],
+ "places": {
+  "icarus": [
+   0.0938,
+   0.1622
+  ],
+  "midas": [
+   0.1844,
+   0.531
+  ],
+  "titan": [
+   0.2812,
+   0.5162
+  ],
+  "money": [
+   0.3375,
+   0.767
+  ],
+  "selling": [
+   0.1875,
+   0.767
+  ],
+  "athenaeum": [
+   0.3969,
+   0.2655
+  ],
+  "observatory": [
+   0.4469,
+   0.0959
+  ],
+  "kairos": [
+   0.5344,
+   0.1991
+  ],
+  "forge": [
+   0.4938,
+   0.3274
+  ],
+  "foundry": [
+   0.4406,
+   0.3909
+  ],
+  "games": [
+   0.55,
+   0.3864
+  ],
+  "mythos": [
+   0.5906,
+   0.2655
+  ],
+  "piano": [
+   0.62,
+   0.3614
+  ],
+  "apollo": [
+   0.5844,
+   0.885
+  ],
+  "hermes": [
+   0.575,
+   0.5383
+  ],
+  "polis": [
+   0.6469,
+   0.5487
+  ],
+  "privacy": [
+   0.7094,
+   0.4867
+  ],
+  "continuity": [
+   0.7375,
+   0.6195
+  ],
+  "presence": [
+   0.7031,
+   0.7198
+  ],
+  "hearth": [
+   0.8125,
+   0.4351
+  ],
+  "bastion": [
+   0.8844,
+   0.4204
+  ],
+  "kin": [
+   0.9313,
+   0.5236
+  ],
+  "records": [
+   0.9469,
+   0.3614
+  ],
+  "aether": [
+   0.9,
+   0.1622
+  ],
+  "garage": [
+   0.85,
+   0.649
+  ],
+  "argus": [
+   0.95,
+   0.6637
+  ],
+  "odyssey": [
+   0.825,
+   0.8481
+  ]
+ }
+}
