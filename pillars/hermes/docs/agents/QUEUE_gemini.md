@@ -2,41 +2,40 @@
 
 # Hermes Post · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HER-GEM-10 · Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated
+## 1. HER-GEM-11 · Hermes: the publication date of the 21 lures still 'not stated'
 
-**Due:** 2026-12-01 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
-**Why:** Hermes's local phishing classifier learns from lures; it needs current, real wording from official warnings, not invented examples.
+**Why:** Hermes dates every lure; 21 of run 4's have no date.
 
-**What it unlocks:** Hermes's classifier and its lure gallery get 40 dated, official examples, tagged by type.
+**What it unlocks:** The lure gallery is ordered by date.
 
 **Read first:**
-- consumer.ftc.gov alerts, ic3.gov public service announcements, and the official scam-warning pages of the companies imitated (USPS, IRS, Amazon, PayPal, banks, toll agencies)
+- Gemini's file hermes_gemini_scam-messages_20261121-1210.json (the 21 rows with published 'not stated')
+- Each page's own date line, its 'last updated' line, or the Internet Archive's first capture (web.archive.org) as a last resort
 
 **Do this:**
-1. Collect 40 scam messages published in 2025-2026 where the official page quotes the text or shows it (SMS, email, phone script).
-2. For each: the channel, who it pretends to be, the exact quoted wording (under 300 characters), the tell the page points out, and the publishing date.
-3. Spread them: at least 8 toll/package texts, 6 bank or payment, 6 government (IRS, SSA, DMV), 6 job or task scams, 6 account-lock or password, 8 other.
+1. For each of the 21, look for the page's own date.
+2. If the page has none, give the Internet Archive's first capture date and say so.
+3. Never guess a year.
 
-**Make:** `hermes_gemini_scam-messages_{YYYYMMDD-HHMM}.json`
+**Make:** `hermes_gemini_scam-dates_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `channel` (text): sms / email / phone / social
-- `pretends` (text): who it imitates
-- `type` (text): toll / package / bank / government / job / account / other
-- `tell` (text): what the page says gives it away
+- `n` (number): 1, 2, 3 ...
+- `lure_n` (number): the n in Gemini's file
 - `published` (date): YYYY-MM-DD
-- `url` (URL): the official warning page
-- `quote` (text): the scam message as quoted, under 300 characters
+- `how` (text): page date, page updated, or first archive capture
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -45,9 +44,59 @@ Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 40
+**How many:** 21
 
-**Done when:** 40 messages, each quoted from an official warning.
+**Done when:** All 21 rows dated, each saying how.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 2. HER-GEM-12 · Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** After 'this is a scam' comes 'where do I report it'.
+
+**What it unlocks:** Each lure type in Hermes shows its official reporting channel.
+
+**Read first:**
+- reportfraud.ftc.gov, ic3.gov, the carriers' 7726 pages, uspis.gov, the CA Attorney General's complaint page, each big bank's report-phishing page
+
+**Do this:**
+1. For each lure type in Hermes (toll, package, bank, government, job, account, other), give every official channel that takes reports.
+2. Say what to send (the text, a screenshot, the headers) as the page says.
+
+**Make:** `hermes_gemini_report-channels_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `type` (text): one of Hermes's lure types
+- `channel` (text): who takes the report
+- `how` (text): forward to 7726, web form, email, phone
+- `send` (text): what the page says to include
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every lure type has at least one official channel.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

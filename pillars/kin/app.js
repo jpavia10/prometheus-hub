@@ -12,6 +12,14 @@
   const addDays = (d, n) => { const x = new Date(d + "T12:00:00"); x.setDate(x.getDate() + n); return day(x); };
   const diff = (a, b) => Math.round((new Date(b + "T12:00:00") - new Date(a + "T12:00:00")) / 864e5);
   function whoHas(date, sch) { if (!sch || !PATTERNS[sch.pattern] || !sch.start) return null; const c = PATTERNS[sch.pattern].cycle, k = ((diff(sch.start, date) % c.length) + c.length) % c.length; return c[k] ? "you" : "other"; }
+  /* KIN-GEM-05 (2026-11-22): the school calendar you chose (public district calendar, kin/school-calendars.js). */
+  function schoolDay(cal, d) {
+    if (!cal) return null; const wd = new Date(d + "T12:00:00").getDay(); if (wd === 0 || wd === 6) return null;
+    const c = cal.days.find((x) => x.closed && x.from <= d && d <= x.to); if (c) return { closed: true, name: c.name, from: c.from, to: c.to };
+    const m = cal.days.find((x) => !x.closed && x.from <= d && d <= x.to); if (m) return { closed: false, name: m.name };
+    if (cal.weekly_minimum === "Wednesday" && wd === 3 && cal.first <= d && d <= cal.last) return { closed: false, name: "every Wednesday" };
+    return null;
+  }
   const other = (key, pid) => { try { return JSON.parse(localStorage.getItem(`prometheus.${pid}.${key}`) || "[]"); } catch (e) { return []; } };
   if (!S.get("peopleSeedV1") && window.KIN_PEOPLE) {
     if (!S.list("people").length) {
@@ -21,7 +29,7 @@
     }
     S.set("peopleSeedV1", 1);
   }
-  window.KIN = { PATTERNS, whoHas, data: () => { const today = new URLSearchParams(location.search).get("today") || day(); return { today, sch: S.get("schedule", null), people: S.list("people"), items: S.list("items"), school: other("docs", "records").filter((d) => d.category === "school"), trips: other("trips", "odyssey").filter((t) => t.kids) }; } };
+  window.KIN = { PATTERNS, whoHas, data: () => { const today = new URLSearchParams(location.search).get("today") || day(); return { schoolCal: (window.SCHOOL_CALENDARS || {})[S.get("schoolCal", "")] || null, today, sch: S.get("schedule", null), people: S.list("people"), items: S.list("items"), school: other("docs", "records").filter((d) => d.category === "school"), trips: other("trips", "odyssey").filter((t) => t.kids) }; } };
   app.innerHTML = `
     <section class="grid">
       <div class="glass lit span-12"><h2>Next connection</h2><div id="k-next"></div></div>
@@ -32,7 +40,9 @@
           <label class="f">Date<input name="date" type="date" required></label><label class="f">Time<input name="time" type="time"></label><button class="btn" type="submit">Add</button></form></div>
       <div class="glass span-12"><h2>The schedule</h2><p class="sub">The repeating pattern for who has the kids. The first day of the pattern is a day they are with you.</p>
         <form class="form" id="k-sch"><label class="f">Pattern<select name="pattern"><option value="">none set</option>${Object.entries(PATTERNS).map(([k, p]) => `<option value="${k}">${p.label}</option>`).join("")}</select></label>
-          <label class="f">Starting<input name="start" type="date"></label><button class="btn quiet" type="submit">Save the pattern</button></form></div>
+          <label class="f">Starting<input name="start" type="date"></label><button class="btn quiet" type="submit">Save the pattern</button></form>
+        <label class="f k-cal">School calendar<select id="k-cal"><option value="">none</option>${Object.entries(window.SCHOOL_CALENDARS || {}).map(([k, c]) => `<option value="${k}">${c.name}</option>`).join("")}</select></label>
+        <p class="sub">The public district calendar: no-school days and minimum days show in the fortnight and the next connection. Your choice stays in this browser.</p></div>
       <div class="glass span-12"><h2>The family</h2><div id="k-people"></div>
         <form class="form" id="k-person"><label class="f">Name<input name="name" required maxlength="40"></label><label class="f">Who<select name="role"><option value="kid">kid</option><option value="co-parent">co-parent</option><option value="family">family</option></select></label>
           <label class="f">Birthday<input name="born" type="date"></label><button class="btn quiet" type="submit">Add</button></form></div>
@@ -54,6 +64,7 @@
     const ahead = [];
     for (const i of D.items) if (i.date >= D.today) ahead.push({ date: i.date, time: i.time || "", title: i.title, meta: [i.kind, i.who ? name(i.who) : ""].filter(Boolean).join(" · ") });
     for (const s of D.school) if (s.due && s.due >= D.today) ahead.push({ date: s.due, time: "", title: s.title, meta: "school · from Records" });
+    if (D.schoolCal) for (const x of D.schoolCal.days) if (x.closed && x.to >= D.today) ahead.push({ date: x.from < D.today ? D.today : x.from, time: "", title: "No school: " + x.name, meta: (x.from === x.to ? "" : "through " + new Date(x.to + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" }) + " · ") + D.schoolCal.name });
     for (const t of D.trips) if ((t.end || t.start) >= D.today) ahead.push({ date: t.start < D.today ? D.today : t.start, time: "", title: t.name || t.dest, meta: "trip · from Odyssey" });
     for (const p of D.people) { const b = nextBirthday(p.born, D.today); if (b) ahead.push({ date: b.date, time: "", title: `${p.name} turns ${b.age}`, meta: "birthday" }); }
     ahead.sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : (a.time || "") < (b.time || "") ? -1 : 1));
@@ -73,9 +84,10 @@
     ] : [h("p.empty", null, "Nothing dated ahead. When something is on the calendar — a conference, a trip, a birthday — it leads the register here.")]));
     $("#k-days").replaceChildren(...Array.from({ length: 14 }, (_, n) => { const d = addDays(D.today, n), who = whoHas(d, D.sch), its = D.items.filter((i) => i.date === d), sch = D.school.filter((s) => s.due === d), tr = D.trips.filter((t) => t.start <= d && (t.end || t.start) >= d);
       const bds = D.people.map((p) => ({ p, b: nextBirthday(p.born, D.today) })).filter((x) => x.b && x.b.date === d);
-      if (!who && !its.length && !sch.length && !tr.length && !bds.length && n > 0) return null;
+      const sd = schoolDay(D.schoolCal, d);
+      if (!who && !its.length && !sch.length && !tr.length && !bds.length && !sd && n > 0) return null;
       const dt = new Date(d + "T12:00:00");
-      const evs = [...its.map((i) => ({ kind: i.kind, text: `${i.time ? i.time + " " : ""}${i.title}${i.who ? " (" + name(i.who) + ")" : ""}` })), ...sch.map((s) => ({ kind: "school", text: "School: " + s.title })), ...tr.map((t) => ({ kind: "trip", text: "Trip: " + (t.name || t.dest) })), ...bds.map((x) => ({ kind: "birthday", text: `${x.p.name} turns ${x.b.age}` }))];
+      const evs = [...its.map((i) => ({ kind: i.kind, text: `${i.time ? i.time + " " : ""}${i.title}${i.who ? " (" + name(i.who) + ")" : ""}` })), ...sch.map((s) => ({ kind: "school", text: "School: " + s.title })), ...tr.map((t) => ({ kind: "trip", text: "Trip: " + (t.name || t.dest) })), ...bds.map((x) => ({ kind: "birthday", text: `${x.p.name} turns ${x.b.age}` })), ...(sd ? [{ kind: "school", text: (sd.closed ? "No school: " : "Minimum day: ") + sd.name.replace(/ ?\(Minimum Days?\)$/, "") }] : [])];
       return h("div.day-row" + (n === 0 ? ".today" : ""), null,
         h("div.day-when", null,
           h("span.day-wd", null, n === 0 ? "Today" : n === 1 ? "Tomorrow" : dt.toLocaleDateString("en-US", { weekday: "short" })),
@@ -84,6 +96,7 @@
         h("div.day-what", null, ...(evs.length ? evs.map((e) => h("span.day-ev", null, h("i", { class: "dot k-" + e.kind, "aria-hidden": "true" }), e.text)) : [h("span.day-none", null, "Nothing dated")])),
         who ? h("span.pill" + (who === "you" ? ".hot" : ""), null, who === "you" ? "with you" : "with the other parent") : null); }).filter(Boolean));
     $("#k-item").who.replaceChildren(h("option", { value: "" }, "everyone"), ...D.people.filter((p) => p.role === "kid" || p.role === "household member").map((p) => h("option", { value: p.id }, p.name)));
+    $("#k-cal").value = S.get("schoolCal", "") || "";
     const f = $("#k-sch"); if (D.sch) { f.pattern.value = D.sch.pattern || ""; f.start.value = D.sch.start || ""; }
     const groups = CIRCLES.map((c) => ({ c, ps: D.people.filter((p) => circleOf(p.role) === c) })).filter((g) => g.ps.length);
     $("#k-people").replaceChildren(...(groups.length ? groups.flatMap((g) => [
@@ -117,6 +130,7 @@
       }
     }
   } catch (e) { /* sessionStorage optional */ }
+  $("#k-cal").addEventListener("change", (e) => { S.set("schoolCal", e.target.value || null); toast(e.target.value ? "School calendar on" : "School calendar off"); paint(); });
   $("#k-sch").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.set("schedule", f.pattern.value ? { pattern: f.pattern.value, start: f.start.value || day() } : null); toast("Pattern saved"); paint(); });
   $("#k-person").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; S.add("people", { name: f.name.value.trim(), role: f.role.value, born: f.born.value }); f.reset(); paint(); });
   $("#export").onclick = () => download(`kin_${day()}.json`, S.dump());

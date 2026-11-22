@@ -379,7 +379,7 @@
      "review": "Done 2026-11-21 (Claude): Built into Continuity's accounts tab, marked not second-read. The personal-property and primary-residence limits match the April 2025 DE-300 as Claude knows it; the TOD rows quote the statutory form. Score 10/10 (#83)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "The TOD deed only works if it is signed, notarized and recorded within 60 days; Continuity knows the law but not Kern's counter: fees, form, where and how.",
      "unlocks": "Continuity's binder gets a Kern recording checklist next to the small-estate rules.",
@@ -449,7 +449,91 @@
      ],
      "id": "CON-GEM-07",
      "title": "Continuity: recording a transfer-on-death deed in Kern County, step by step",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Kern recording fees, formatting, BOE and court rules, each cited; the two leginfo rows say the page was blocked. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#95)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "The binder has the rules; it should name the forms.",
+     "unlocks": "Continuity's binder lists each form with its fee and where it is filed.",
+     "inputs": [
+      "California Courts forms (courts.ca.gov/forms), Kern County Superior Court probate pages (kern.courts.ca.gov)"
+     ],
+     "steps": [
+      "For each path (small estate affidavit, petition to determine succession, spousal property petition): every form, its number and name, the filing fee and where it is filed in Kern."
+     ],
+     "deliver": {
+      "file": "continuity_gemini_kern-probate-forms_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "path",
+       "type": "text",
+       "rule": "which procedure"
+      },
+      {
+       "name": "form",
+       "type": "text",
+       "rule": "number, e.g. DE-305"
+      },
+      {
+       "name": "name",
+       "type": "text",
+       "rule": "its title"
+      },
+      {
+       "name": "fee",
+       "type": "text",
+       "rule": "$ or 'none'"
+      },
+      {
+       "name": "filed",
+       "type": "text",
+       "rule": "where"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All three paths with their forms.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "CON-GEM-08",
+     "title": "Continuity: Kern County Superior Court's probate forms for a small estate and a spousal property petition",
+     "due": "2026-12-05"
     }
    ]
   },
@@ -661,6 +745,53 @@
       "fewer rows than the count, or a row missing a field",
       "a URL that does not open, is a home page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "CON-MUS-03",
+     "title": "Continuity: second reader on Gemini's the Kern County recording checklist",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-11-30",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file continuity_gemini_kern-tod-recording_20261121-*.json (CON-GEM-07: the Kern County recording checklist)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Check every fee against the Kern Recorder's own fee schedule.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "continuity_muse_kern-recording-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
      ]
     }

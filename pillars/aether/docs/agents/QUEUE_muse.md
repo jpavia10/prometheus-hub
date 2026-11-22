@@ -2,7 +2,7 @@
 
 # Aether · Atmospheric & Field Lab · homework for Muse
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -46,4 +46,54 @@ Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
+- a file saved anywhere but the folder named here, or under another name
+
+## 2. AET-MUS-04 · Aether: second reader on Gemini's SCE's fall 2026 shut-offs for the circuits that serve Frazier Park
+
+**Due:** 2026-11-29 · **State:** now
+
+**Why:** Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file aether_gemini_psps-fall2026_20261121-*.json (AET-GEM-11: SCE's fall 2026 shut-offs for the circuits that serve Frazier Park)
+
+**Do this:**
+1. Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Open both CPUC post-event reports and search each for RIDGE, TEJON, FROZEN and GRAPEVINE PEAK.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `aether_muse_psps-fall2026-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name

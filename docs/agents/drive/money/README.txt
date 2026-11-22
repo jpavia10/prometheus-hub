@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - MON-GRK-02 · Money: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,22 +16,23 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
-- MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026) · due 2026-11-30
-    make: money_gemini_issuer-pricing_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every issuer in issuers.js, from its own agreement.
+- MON-GEM-06 · Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements · due 2026-12-04
+    make: money_gemini_issuer-pricing-2_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every 'not stated' cell answered from an agreement, or still 'not stated' with the documents checked.
 
 ## Muse
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Money · payoff simulator right now.
+- MON-MUS-02 · Money: second reader on Gemini's the 25 issuers' published APR, late fee, minimum payment and penalty APR · due 2026-11-30
+    make: money_muse_issuer-pricing-check_{YYYYMMDD-HHMM}.md · how many: 12 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - MON-GPT-01 · Money: phone audit: 15 findings · due 2026-11-24
@@ -39,14 +40,14 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Money · payoff simulator right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Money · payoff simulator right now.

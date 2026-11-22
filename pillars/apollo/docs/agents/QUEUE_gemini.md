@@ -2,41 +2,40 @@
 
 # Apollo Temple · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. APO-GEM-11 · Apollo: daily targets for 30 nutrients (RDA, AI and upper limit) for an adult man, from the NIH
+## 1. APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving
 
-**Due:** 2026-12-02 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** Apollo sets macro targets but has no micronutrient targets or upper limits to check meals against.
+**Why:** A target without food is a number on a screen.
 
-**What it unlocks:** Apollo's day view can show each nutrient against its target and warn past an upper limit.
+**What it unlocks:** Apollo's day view suggests a food for the nutrient that is short.
 
 **Read first:**
-- NIH Office of Dietary Supplements fact sheets (ods.od.nih.gov), the National Academies DRI tables
+- NIH ODS health-professional fact sheets (their 'Selected food sources' tables)
+- USDA FoodData Central when a fact sheet has no table
 
 **Do this:**
-1. For 30 nutrients (all vitamins, the main minerals, fibre, potassium, sodium, choline, omega-3): the RDA or AI and the tolerable upper intake for men 31-50 and men 51-70.
-2. Units exactly as NIH prints them; note when the UL covers only supplements.
-3. Quote the table row.
+1. For each of the 30 nutrients in run 4's file, copy the top five foods from the fact sheet's table, with the serving and the amount.
+2. Keep the table's order.
 
-**Make:** `apollo_gemini_nutrient-targets_{YYYYMMDD-HHMM}.json`
+**Make:** `apollo_gemini_food-sources_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `nutrient` (text): name
-- `target_31_50` (text): value + unit, RDA or AI
-- `target_51_70` (text): value + unit
-- `ul` (text): value + unit or 'none set'
-- `ul_note` (text): e.g. supplements only
-- `url` (URL): the official page or PDF
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `nutrient` (text): as in APO-GEM-11
+- `food` (text): as the table words it
+- `serving` (text): as the table words it
+- `amount` (text): with its unit
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -45,9 +44,9 @@ Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 30
+**How many:** 150
 
-**Done when:** 30 nutrients, each from an NIH fact sheet.
+**Done when:** Five foods for each of the 30 nutrients.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

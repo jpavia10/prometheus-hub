@@ -244,7 +244,7 @@ export function menu(ctx, opts = {}) {
   const orbitBtn = h("button.mn-mode", { type: "button", onclick: () => { tick(); ls("prom.deck.home", "orbit"); unpin(); opts.rerender && opts.rerender(); } }, icon("picture", 15), h("span", "Orbit"));
   const more = h("button.mn-more", { type: "button", onclick: () => { const v = document.getElementById("view"); const b = document.getElementById("briefing"); if (v && b) v.scrollTo({ top: b.offsetTop - 70, behavior: still() ? "auto" : "smooth" }); } }, h("span", "Briefing"), icon("down", 14));
   const stage = h("div.mn-stage", prev, crest, next);
-  const el = h("section.menu", { "aria-label": "Prometheus: the pillars" }, today_, stage, card, h("div.mn-foot", orbitBtn, h("span.mn-count"), more), strip);
+  const el = h("section.menu", { "aria-label": "Prometheus: the pillars" }, h("h1.pk-sr", "Prometheus Hub"), today_, stage, card, h("div.mn-foot", orbitBtn, h("span.mn-count"), more), strip);
 
   function paint(dir) {
     const p = list[at]; const dom = domainOf(p.id); const dm = PILLAR_DOMAINS.find((d) => d.id === dom);

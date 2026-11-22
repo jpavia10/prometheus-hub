@@ -2,88 +2,39 @@
 
 # Icarus Stake · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ICA-GEM-11 · Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports)
+## 1. ICA-GEM-13 · Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding
 
-**Due:** 2026-11-30 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** Icarus knows market holidays but not the scheduled days that move prices, so the journal cannot flag a trade taken into a Fed day or a CPI print.
+**Why:** Run 4 gave the Fed, CPI and jobs days; GDP and PCE days move markets too.
 
-**What it unlocks:** Icarus marks FOMC, CPI and jobs-report days on the journal calendar.
+**What it unlocks:** Icarus marks them on the journal calendar.
 
 **Read first:**
-- federalreserve.gov FOMC calendar, bls.gov release schedule
+- BEA release schedule (bea.gov/news/schedule)
+- Treasury quarterly refunding schedule (home.treasury.gov)
 
 **Do this:**
-1. From federalreserve.gov: every 2027 FOMC meeting (both days) and which have a Summary of Economic Projections.
-2. From bls.gov's 2027 release calendar: every CPI and Employment Situation release date and time.
-3. Only the Fed's and BLS's own pages.
+1. Every 2027 GDP (advance, second, third) and Personal Income and Outlays date with its time.
+2. Every 2027 quarterly refunding announcement date.
 
-**Make:** `icarus_gemini_2027-macro-dates_{YYYYMMDD-HHMM}.json`
+**Make:** `icarus_gemini_2027-bea-treasury_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `date` (date): YYYY-MM-DD
-- `event` (text): FOMC / CPI / Employment Situation
-- `time` (text): ET, as stated, or 'not stated'
-- `detail` (text): e.g. SEP meeting, data month
-- `url` (URL): the official page
-- `quote` (text): under 300 characters, word for word
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every 2027 FOMC, CPI and jobs-report date from the source.
-
-**How Claude checks it:**
-- Claude opens rows at random against their pages.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. ICA-GEM-12 · Icarus: the 20 trading rules a rule auditor must know, quoted from FINRA, the SEC, the Fed and the IRS
-
-**Due:** 2026-12-01 · **State:** now
-
-**Why:** Icarus audits trades against rules; it should hold the actual regulatory text for pattern day trading, margin, settlement, free-riding and wash sales.
-
-**What it unlocks:** Icarus can flag a trade that would break a real rule and show the rule's own words.
-
-**Read first:**
-- finra.org rulebook (Rule 4210), sec.gov (T+1), federalreserve.gov Regulation T, irs.gov Publication 550
-
-**Do this:**
-1. Quote and explain 20 rules: the PDT definition and its $25,000 minimum equity, the day-trading buying power, margin calls, Reg T initial margin, T+1 settlement, good-faith and free-riding violations in cash accounts, the 90-day restriction, wash sales (30 days either side), options exercise and assignment cut-offs, short-sale locate.
-2. For each: what triggers it, the consequence, and the rule number.
-
-**Make:** `icarus_gemini_trading-rules_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `rule` (text): name
-- `ref` (text): rule number or publication
-- `trigger` (text): what sets it off
-- `consequence` (text): what happens
-- `url` (URL): the official page or PDF
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `date` (date): YYYY-MM-DD, one day per row
+- `event` (text): as the schedule names it
+- `time` (text): HH:MM ET or 'not stated'
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -92,9 +43,7 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 20
-
-**Done when:** 20 rules, each quoted from its regulator.
+**Done when:** Every 2027 date the schedules show.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

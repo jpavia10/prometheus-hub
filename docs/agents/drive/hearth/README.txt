@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,24 +16,27 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 3 open in this pillar.
 
 
-- HEA-GEM-24 · Hearth: Kern County's published ground snow load for 4,600 ft (2026 design criteria) · due 2026-11-28
-    make: hearth_gemini_kern-design-criteria_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every Kern document opened, the snow load found or honestly not.
-- HEA-GEM-25 · Hearth: the deck's full cut list and fastener schedule, worked from the makers' install guides · due 2026-12-03
-    make: hearth_gemini_cut-list_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every piece and fastener for the deck, each with its math and the guide line it uses.
+- HEA-GEM-26 · Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22) · due 2026-12-04
+    make: hearth_gemini_asce-snow_{YYYYMMDD-HHMM}.json · how many: 2 · done when: Both standards answered, or the account wall stated.
+- HEA-GEM-27 · Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners) · due 2026-12-05
+    make: hearth_gemini_connector-loads_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every connector in the cut list has a row.
+- HEA-GEM-28 · Hearth: Kern County's building permit fees for the 23 x 10 ft deck · due 2026-12-06
+    make: hearth_gemini_deck-permit-fees_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every fee that applies, with the deck's total.
 
 ## Muse
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Hephaestus Hearth right now.
+- HEA-MUS-04 · Hearth: second reader on Gemini's Kern's deck design criteria and the deck cut list and fasteners · due 2026-11-29
+    make: hearth_muse_kern-snow-and-cut-list-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings · due 2026-11-24
@@ -41,14 +44,14 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Argon
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Hephaestus Hearth right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Hephaestus Hearth right now.

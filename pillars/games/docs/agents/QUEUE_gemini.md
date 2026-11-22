@@ -2,7 +2,7 @@
 
 # Ludus Arcade · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -56,52 +56,51 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-## 2. GAM-GEM-06 · Games: Anno 117 updates and roadmap, from Ubisoft's own pages
+## 2. GAM-GEM-07 · Games: Anno 117's DLC and season pass, with contents and release dates
 
-**Due:** 2026-11-30 · **State:** now
+**Due:** 2026-12-06 · **State:** now
 
-**Why:** Joseph and his dad play Anno 117 cross-play (PC and PS5); the Games pillar knows nothing about its patches or what is coming.
+**Why:** The updates list covers patches; the paid content is the other half of the roadmap.
 
-**What it unlocks:** Games shows each Anno 117 update with its date and the cross-play notes, and the published roadmap.
+**What it unlocks:** Games shows what is out and what is coming.
 
 **Read first:**
-- Ubisoft's Anno 117 news pages and patch notes (ubisoft.com, the official Anno site)
+- anno-union.com, ubisoft.com store pages for Anno 117: Pax Romana
 
 **Do this:**
-1. List every Anno 117 title update and hotfix published so far: date, version, platforms, and every line that mentions cross-play, PS5 or saves.
-2. Add the official roadmap items with their stated season or date; 'not stated' when none.
-3. Only Ubisoft's own pages (news, patch notes, support), never press or forums.
+1. Every DLC and pass item: name, what it adds, release date (or announced window), platforms.
 
-**Make:** `games_gemini_anno117-updates_{YYYYMMDD-HHMM}.json`
+**Make:** `games_gemini_anno117-dlc_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `date` (date): YYYY-MM-DD
-- `version` (text): as Ubisoft names it
-- `kind` (text): update / hotfix / roadmap
-- `platforms` (text): PC / PS5 / Xbox / all
-- `notes` (text): cross-play, PS5 and save lines
-- `url` (URL): the official page
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `name` (text): as Ubisoft names it
+- `adds` (text): what it adds
+- `release` (text): YYYY-MM-DD or the announced window
+- `platforms` (text): as listed
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
 - [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
 - [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every update so far and the roadmap, each from Ubisoft.
+**Done when:** Every announced DLC listed.
 
 **How Claude checks it:**
-- Claude opens rows at random against their pages.
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)

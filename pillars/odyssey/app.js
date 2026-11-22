@@ -316,7 +316,7 @@
       m.querySelectorAll(".map-dot").forEach((d) => {
         const i = photos.findIndex((p) => pts[legOf(p)].code === d.dataset.code);
         if (i < 0) return;
-        d.classList.add("has-ph"); d.setAttribute("tabindex", "0"); d.setAttribute("role", "button");
+        d.classList.add("has-ph"); d.setAttribute("tabindex", "0"); d.setAttribute("role", "button"); d.setAttribute("aria-label", "Show the photos from " + (pts[legOf(photos[i])].name || d.dataset.code));
         const jump = () => { stop(); go(i); root.scrollIntoView({ block: "nearest", behavior: calm() ? "auto" : "smooth" }); };
         d.addEventListener("click", jump); d.addEventListener("keydown", (e) => { if (e.key === "Enter") jump(); });
       });

@@ -2,8 +2,57 @@
 
 # Bastion · Mountain Prep · homework for Muse
 
-Updated 2026-11-21 15:56 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Muse in Bastion · Mountain Prep right now. Check your HOMEWORK doc for the other pillars.
+## 1. BAS-MUS-04 · Bastion: second reader on Gemini's the official shelters and cooling or warming centres and the NOAA Weather Radio transmitters and the six official emergency checklists
+
+**Due:** 2026-12-01 · **State:** now
+
+**Why:** Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file bastion_gemini_shelters_20261121-*.json (BAS-GEM-07: the official shelters and cooling or warming centres)
+- Gemini's file bastion_gemini_weather-radio_20261121-*.json (BAS-GEM-08: the NOAA Weather Radio transmitters)
+- Gemini's file bastion_gemini_official-checklists_20261121-*.json (BAS-GEM-09: the six official emergency checklists)
+
+**Do this:**
+1. Open Gemini's files. Pick 18 rows at random across the files (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `bastion_muse_shelters-radio-lists-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 18
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a row copied from another row with the names changed
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens 10 rows at random)
+- a file saved anywhere but the folder named here, or under another name

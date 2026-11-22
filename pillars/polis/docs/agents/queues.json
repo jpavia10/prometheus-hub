@@ -413,7 +413,7 @@
      "review": "Sent back 2026-11-21 (Claude, score 6/10, #89): every date was 'not stated'. The Board of Supervisors' 2027 schedule PDF exists (its host blocked your fetch: try the Granicus agenda list or another route, or say exactly what blocked you); the Planning Commission and MCMAC have not published 2027 yet, so resend once they do, by Jan 15, 2027."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Polis tracks rules but not what the Board actually decided for Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman this year.",
      "unlocks": "Polis gets a dated record of the Board's mountain decisions with the outcome and the vote.",
@@ -499,7 +499,172 @@
      ],
      "id": "POL-GEM-08",
      "title": "Polis: every Kern County Board of Supervisors item in 2026 that touches the mountain communities",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 13 Board actions touching the mountain communities, Jan 6 to Nov 17, each on kerncounty.com. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#119)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Planning decisions shape the towns before the Board ever votes.",
+     "unlocks": "Polis's record covers the Planning Commission too.",
+     "inputs": [
+      "Kern County Planning Commission agendas and actions (kernplanning.com or kerncounty.com)"
+     ],
+     "steps": [
+      "Go through every 2026 Planning Commission meeting.",
+      "One row per item in Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods, Pinon Pines or the Tejon Ranch area, with the outcome and the vote."
+     ],
+     "deliver": {
+      "file": "polis_gemini_planning-2026_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": "the agenda number"
+      },
+      {
+       "name": "subject",
+       "type": "text",
+       "rule": "what it is about"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": "the community"
+      },
+      {
+       "name": "outcome",
+       "type": "text",
+       "rule": "approved, denied, continued..."
+      },
+      {
+       "name": "vote",
+       "type": "text",
+       "rule": "the tally or 'not stated'"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every 2026 meeting checked.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "POL-GEM-09",
+     "title": "Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities",
+     "due": "2026-12-06"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Polis should say when there is a vote and the last day to register for it.",
+     "unlocks": "Polis and Kairos count down to each 2027 election and its deadlines.",
+     "inputs": [
+      "Kern County Elections (kernvote.com)",
+      "California Secretary of State (sos.ca.gov/elections/upcoming-elections)"
+     ],
+     "steps": [
+      "Every 2027 election a Kern voter could see on the ballot (statewide special, county, school or water district, special elections).",
+      "For each: election day, last day to register (15 days before), when ballots are mailed, and the last day to vote by mail.",
+      "If no 2027 election is scheduled yet, one row saying so with the pages read."
+     ],
+     "deliver": {
+      "file": "polis_gemini_2027-elections_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": "election day, registration deadline, ballots mailed..."
+      },
+      {
+       "name": "election",
+       "type": "text",
+       "rule": "its name"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every 2027 date both offices publish, or a row saying none yet.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "POL-GEM-10",
+     "title": "Polis: every 2027 election date and deadline for Kern County voters",
+     "due": "2026-12-06"
     }
    ]
   },
@@ -673,6 +838,52 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "review": "Second read by Sebastian 2026-11-17: scored 4/10 (4 agree / 11 differ; 10 of 15 'quotes' are labels/paraphrases, row 16 invents an enforcement mechanism its source contradicts). polis_muse_kern-ordinances-check_20261117-1725.md in hub incoming."
+    },
+    {
+     "id": "POL-MUS-03",
+     "title": "Polis: second reader on Gemini's the Board of Supervisors' 2026 mountain decisions",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-12-02",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file polis_gemini_board-2026_20261121-*.json (POL-GEM-08: the Board of Supervisors' 2026 mountain decisions)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "polis_muse_board-2026-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
     }
    ]
   },

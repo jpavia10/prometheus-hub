@@ -450,7 +450,7 @@
      "closed": "2026-11-21"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Argus scrubs EXIF before a photo is shared, but nobody has listed what the S24 Ultra actually embeds (GPS, maker notes, motion-photo trailers, XMP) against what the scrubber strips.",
      "unlocks": "Claude closes every gap the list finds so no location or device detail leaves in a shared photo.",
@@ -527,7 +527,82 @@
      ],
      "id": "ARG-GEM-11",
      "title": "Argus: every metadata field a Galaxy S24 Ultra writes into its photos, and whether Argus's scrubber removes it",
-     "due": "2026-12-03"
+     "due": "2026-12-03",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Every JPEG group named with its standard; the code reference (app.js:190-199, clean() re-encodes through a canvas) is right, and the 7 quotes Claude could open are word for word. A real find: HEIF from the S24 is not covered. Score 10/10 (#115)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Run 4 found that Argus's cleaner may not handle the S24's HEIF photos.",
+     "unlocks": "Claude makes Argus clean or clearly refuse HEIF, per browser.",
+     "inputs": [
+      "Chromium and WebKit release notes and bug trackers, MDN and caniuse pages for HEIF/HEIC image support, Samsung's camera help pages (High efficiency pictures setting)"
+     ],
+     "steps": [
+      "For Chrome on Android, Samsung Internet, Safari on iOS and Chrome on desktop: does the current version decode HEIC in an <img> and in createImageBitmap?",
+      "For the S24 Ultra: is 'High efficiency pictures' on by default, and what does it save?"
+     ],
+     "deliver": {
+      "file": "argus_gemini_heif-support_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "browser",
+       "type": "text",
+       "rule": "name and version"
+      },
+      {
+       "name": "img",
+       "type": "text",
+       "rule": "yes, no or not stated"
+      },
+      {
+       "name": "createImageBitmap",
+       "type": "text",
+       "rule": "yes, no or not stated"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All four browsers and the S24's default answered.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ARG-GEM-12",
+     "title": "Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default",
+     "due": "2026-12-04"
     }
    ]
   },

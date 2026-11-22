@@ -128,7 +128,7 @@
       <div class="glass lit span-6">
         <h2>24-Hour Solar Yield vs Load &amp; Battery SoC</h2>
         <p class="sub">Hourly PV bell curve against active critical loads (00:00–24:00 PST).</p>
-        <canvas id="ae-curve" style="width:100%;height:240px;display:block;margin-top:8px"></canvas>
+        <canvas id="ae-curve" role="img" aria-label="The day's curve: temperature and conditions through the hours" style="width:100%;height:240px;display:block;margin-top:8px"></canvas>
       </div>
       <div class="glass span-12">
         <h2>Appliance Load Schedule</h2>

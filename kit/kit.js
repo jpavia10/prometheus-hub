@@ -672,7 +672,7 @@
       palBack = el("div", "pk-palette-back");
       palBack.setAttribute("role", "dialog"); palBack.setAttribute("aria-modal", "true"); palBack.setAttribute("aria-label", "Pillar Command Palette");
       var box = el("div", "pk-palette");
-      palInput = document.createElement("input"); palInput.type = "search"; palInput.className = "pk-pal-in"; palInput.placeholder = "Jump to any pillar or Hub console...";
+      palInput = document.createElement("input"); palInput.type = "search"; palInput.className = "pk-pal-in"; palInput.placeholder = "Jump to any pillar or Hub console..."; palInput.setAttribute("aria-label", "Jump to any pillar or Hub console");
       palList = el("div", "pk-pal-list");
       var hint = el("div", "pk-pal-hint", "Arrows select · Enter jump · Esc close");
       box.appendChild(palInput); box.appendChild(palList); box.appendChild(hint);

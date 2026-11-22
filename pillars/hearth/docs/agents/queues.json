@@ -1098,7 +1098,7 @@
      "review": "Done 2026-11-21 (Claude): Built as Hearth's \"Which snow load governs\". An honest partial: Ordinance G-9359 found and dated, the table itself not online; the number is still for Kern Building Inspection to give. Score 9/10 (#86)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "The Ordinance G-9359 text is not online, but Kern Building Inspection publishes design-criteria handouts and plan-check sheets that state the ground snow load by elevation.",
      "unlocks": "Hearth can size the deck joists from the number Kern itself publishes.",
@@ -1172,10 +1172,12 @@
      ],
      "id": "HEA-GEM-24",
      "title": "Hearth: Kern County's published ground snow load for 4,600 ft (2026 design criteria)",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): An honest partial: the 2026 Kern numbers are 'not stated' on the public pages (Ordinance G-9359), the 2019 baseline table given with its PDF. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 9/10 (#90)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Hearth has the deck's size, its boards, its prices and the makers' limits, but not how many of each piece to cut and how many fasteners each step takes.",
      "unlocks": "Hearth's shopping list becomes exact: every board cut, every fastener and connector, with a 10% waste line, ready for the store.",
@@ -1262,7 +1264,251 @@
      ],
      "id": "HEA-GEM-25",
      "title": "Hearth: the deck's full cut list and fastener schedule, worked from the makers' install guides",
-     "due": "2026-12-03"
+     "due": "2026-12-03",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Cut list and fasteners for the 23 x 10 ft deck; Claude redid the math (joists 23 x 12 / 16 + 1 = 19, +10 % = 21) and it holds. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#114)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Kern's own table is not online (run 3 and 4); ASCE's tool gives the national number Kern's ordinance starts from.",
+     "unlocks": "Hearth shows the design snow load with its source while Kern's number is pending.",
+     "inputs": [
+      "ASCE Hazard Tool (ascehazardtool.org), location 34.8228, -118.9445 (town centre, not a house)"
+     ],
+     "steps": [
+      "Run the tool for 34.8228, -118.9445 with ASCE 7-16, Risk Category II, then with ASCE 7-22.",
+      "Copy the ground snow load and the elevation it used.",
+      "If the tool needs an account, say so and stop."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_asce-snow_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 2,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "standard",
+       "type": "text",
+       "rule": "ASCE 7-16 or ASCE 7-22"
+      },
+      {
+       "name": "ground_snow_psf",
+       "type": "number",
+       "rule": "psf"
+      },
+      {
+       "name": "elevation_ft",
+       "type": "number",
+       "rule": "as the tool reports"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "any note the tool prints (e.g. site-specific case study)"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Both standards answered, or the account wall stated.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-26",
+     "title": "Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22)",
+     "due": "2026-12-04"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "The cut list names the connectors; the plan should show they carry the load.",
+     "unlocks": "Hearth's deck plan shows each connector's rated load beside the load it carries.",
+     "inputs": [
+      "Gemini's file hearth_gemini_cut-list_20261121-1300.json (the connectors it names)",
+      "Simpson Strong-Tie product pages and catalogue tables (strongtie.com)"
+     ],
+     "steps": [
+      "For each connector in the cut list, open its Simpson page.",
+      "Copy the allowable download and uplift for the lumber in the cut list (DF-L or Hem-Fir) and the fasteners it needs."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_connector-loads_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "model",
+       "type": "text",
+       "rule": "Simpson model"
+      },
+      {
+       "name": "lumber",
+       "type": "text",
+       "rule": "DF/SP or SPF/HF as the table says"
+      },
+      {
+       "name": "download_lb",
+       "type": "number",
+       "rule": "lb"
+      },
+      {
+       "name": "uplift_lb",
+       "type": "number",
+       "rule": "lb or 0 when not rated"
+      },
+      {
+       "name": "fasteners",
+       "type": "text",
+       "rule": "as the table says"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every connector in the cut list has a row.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-27",
+     "title": "Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners)",
+     "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "The permit check says whether a permit is needed; the plan should also say what it costs.",
+     "unlocks": "Hearth's deck plan shows the permit cost line.",
+     "inputs": [
+      "Kern County Public Works, Building Inspection fee schedule (kernpublicworks.com)"
+     ],
+     "steps": [
+      "Find the current fee schedule.",
+      "Copy every fee that would apply to a 230 sq ft attached deck: plan check, permit by valuation or by area, inspection, any state surcharges (SMIP, CBSC).",
+      "Show the math for the deck: 230 sq ft, and a valuation if the schedule uses one (say which valuation table)."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_deck-permit-fees_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "fee",
+       "type": "text",
+       "rule": "as the schedule names it"
+      },
+      {
+       "name": "rate",
+       "type": "text",
+       "rule": "as printed"
+      },
+      {
+       "name": "amount",
+       "type": "text",
+       "rule": "$ for this deck, with the math, or 'not stated'"
+      },
+      {
+       "name": "math",
+       "type": "text",
+       "rule": "the arithmetic"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every fee that applies, with the deck's total.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-28",
+     "title": "Hearth: Kern County's building permit fees for the 23 x 10 ft deck",
+     "due": "2026-12-06"
     }
    ]
   },
@@ -1526,6 +1772,54 @@
       }
      ],
      "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "HEA-MUS-04",
+     "title": "Hearth: second reader on Gemini's Kern's deck design criteria and the deck cut list and fasteners",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-11-29",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file hearth_gemini_kern-design-criteria_20261121-*.json (HEA-GEM-24: Kern's deck design criteria)",
+      "Gemini's file hearth_gemini_cut-list_20261121-*.json (HEA-GEM-25: the deck cut list and fasteners)"
+     ],
+     "steps": [
+      "Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "For the cut list, redo every 'math' field and check each fastener spacing against the page it cites.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "hearth_muse_kern-snow-and-cut-list-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
      "self_check": [
       "Every differ line says where you looked.",
       "You did not change Gemini's file."

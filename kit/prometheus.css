@@ -119,7 +119,7 @@ label.f { display: grid; gap: 5px; font-size: 12px; letter-spacing: 0.12em; text
 input, select, textarea { width: 100%; background: rgba(4, 6, 12, 0.6); border: 1px solid var(--line-strong); border-radius: var(--radius-s); padding: 11px 13px;
   font-size: 16px; text-transform: none; letter-spacing: 0; color: var(--ink); }
 textarea { min-height: 84px; resize: vertical; }
-input::placeholder, textarea::placeholder { color: rgba(183, 196, 214, 0.55); }
+input::placeholder, textarea::placeholder { color: rgba(183, 196, 214, 0.74); }   /* 1.4.3 (#24) */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--cyan); color: var(--ink-strong);
   background: linear-gradient(180deg, rgba(244, 247, 251, .94), rgba(214, 228, 242, .72));
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--cyan) 55%, transparent), inset 0 1px 0 rgba(255, 255, 255, .8);
@@ -195,6 +195,9 @@ body::after { content: ""; position: fixed; left: 0; right: 0; top: 0; height: 1
 .tab[aria-selected="true"] { box-shadow: 0 0 18px -4px var(--accent), inset 0 0 0 1px color-mix(in srgb, var(--accent) 70%, transparent); }
 .btn:not(.quiet) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--cyan) 55%, transparent), 0 10px 26px -14px color-mix(in srgb, var(--cyan) 70%, transparent), inset 0 1px 0 rgba(255, 255, 255, .75); }
 input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent); outline: none; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }   /* WCAG 2.4.7 / 1.4.11 (Gemini audit HUB-GEM-15 #9, #26) */
+html { scroll-padding-bottom: 120px; }   /* 2.4.11: a focused control never hides under the dock (#11, #20) */
+.pk-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .chip.on { box-shadow: 0 0 14px -3px var(--accent); }
 @media (prefers-reduced-motion: reduce) { body::after, .shell > *, .hero h1, .bar .mark { animation: none !important; } ::view-transition-old(root), ::view-transition-new(root) { animation: none; } }
 

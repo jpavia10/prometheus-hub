@@ -188,7 +188,11 @@
   }
 
   async function clean(file) {
-    const bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
+    /* ARG-GEM-11 (2026-11-22): a HEIC/HEIF photo this browser cannot decode is refused with the way out, never half cleaned. */
+    const heif = /image\/hei[cf]/i.test(file.type || "") || /\.(heic|heif)$/i.test(file.name || "");
+    let bmp;
+    try { bmp = await createImageBitmap(file, { imageOrientation: "from-image" }); }
+    catch (e) { throw new Error(heif ? `${file.name}: this browser cannot read HEIC photos, so Argus cannot clean it. Send it as JPEG, or turn off "High efficiency pictures" in the camera settings.` : `${file.name}: this image could not be read (${e.message}).`); }
     const k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height)), cv = document.createElement("canvas");
     cv.width = Math.round(bmp.width * k); cv.height = Math.round(bmp.height * k);
     cv.getContext("2d").drawImage(bmp, 0, 0, cv.width, cv.height);

@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - MYT-GRK-02 · Mythos: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,36 +16,35 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
-- MYT-GEM-04 · Mythos: the public-domain primary texts behind the canon, with exact editions · due 2026-12-04
-    make: mythos_gemini_sources_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every canon entry that draws on an older work, linked to a free edition.
+No homework for Gemini in Mythos · Creative & Lore Studio right now.
 
 ## Muse
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Mythos · Creative & Lore Studio right now.
 
 ## ChatGPT
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Mythos · Creative & Lore Studio right now.
 
 ## Argon
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Mythos · Creative & Lore Studio right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Mythos · Creative & Lore Studio right now.

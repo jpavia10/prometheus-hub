@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - APO-GRK-02 · Apollo Temple: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,36 +16,37 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
-- APO-GEM-11 · Apollo: daily targets for 30 nutrients (RDA, AI and upper limit) for an adult man, from the NIH · due 2026-12-02
-    make: apollo_gemini_nutrient-targets_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 nutrients, each from an NIH fact sheet.
+- APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving · due 2026-12-05
+    make: apollo_gemini_food-sources_{YYYYMMDD-HHMM}.json · how many: 150 · done when: Five foods for each of the 30 nutrients.
 
 ## Muse
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Apollo Temple right now.
+- APO-MUS-03 · Apollo: second reader on Gemini's the 30 NIH targets and upper limits for men 31-50 and 51-70 · due 2026-12-01
+    make: apollo_muse_nutrient-targets-check_{YYYYMMDD-HHMM}.md · how many: 12 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Apollo Temple right now.
 
 ## Argon
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Apollo Temple right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Apollo Temple right now.

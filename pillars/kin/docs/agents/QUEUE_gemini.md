@@ -2,55 +2,8 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. KIN-GEM-05 · Kin: Saugus Union School District's 2026-27 calendar (Violet's school days off)
-
-**Due:** 2026-11-28 · **State:** now
-
-**Why:** Kin knows Violet is at Highlands Elementary in Saugus Union SD but not the days school is out, so the fortnight view cannot warn about them.
-
-**What it unlocks:** Kin and Kairos show the no-school days, minimum days and breaks for Violet's school.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/kin/people-seed.js (Violet's school)
-
-**Do this:**
-1. From Saugus Union School District's own 2026-27 calendar (the district site or its PDF): every day with no school, every minimum day, the breaks, the first and last day.
-2. If Highlands Elementary publishes its own minimum days, add them and say so in calendar.
-3. One row per date; a break is one row with its first date and its end in name.
-
-**Make:** `kin_gemini_saugus-calendar_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `date` (date): YYYY-MM-DD
-- `name` (text): what the day is
-- `closed` (text): yes (no school) / no (minimum day)
-- `calendar` (text): district / Highlands Elementary
-- `url` (URL): the calendar page or PDF
-- `quote` (text): under 300 characters, word for word
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every 2026-27 no-school and minimum day, from the district's own calendar.
-
-**How Claude checks it:**
-- Claude opens rows at random against their pages.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+No homework for Gemini in Kin right now. Check your HOMEWORK doc for the other pillars.

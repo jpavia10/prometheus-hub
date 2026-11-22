@@ -399,7 +399,7 @@
      "closed": "2026-11-21"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Icarus knows market holidays but not the scheduled days that move prices, so the journal cannot flag a trade taken into a Fed day or a CPI print.",
      "unlocks": "Icarus marks FOMC, CPI and jobs-report days on the journal calendar.",
@@ -473,10 +473,12 @@
      ],
      "id": "ICA-GEM-11",
      "title": "Icarus: the 2027 dates that move markets (FOMC meetings, CPI and jobs reports)",
-     "due": "2026-11-30"
+     "due": "2026-11-30",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): The FOMC dates are the revised schedule of 2026-11-12 (8 meetings, no December, October 26-27 strategy-only), confirmed by Claude's search; CPI and jobs dates not second-read. Lost a point: the 8 two-day meetings are written as ranges in 'date' (the field takes the decision day). Score 9/10 (#97)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Icarus audits trades against rules; it should hold the actual regulatory text for pattern day trading, margin, settlement, free-riding and wash sales.",
      "unlocks": "Icarus can flag a trade that would break a real rule and show the rule's own words.",
@@ -551,7 +553,83 @@
      ],
      "id": "ICA-GEM-12",
      "title": "Icarus: the 20 trading rules a rule auditor must know, quoted from FINRA, the SEC, the Fed and the IRS",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 20 rules from FINRA, SEC, eCFR (Reg T), IRS and OCC; the 2 quotes Claude could open are word for word. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#103)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Run 4 gave the Fed, CPI and jobs days; GDP and PCE days move markets too.",
+     "unlocks": "Icarus marks them on the journal calendar.",
+     "inputs": [
+      "BEA release schedule (bea.gov/news/schedule)",
+      "Treasury quarterly refunding schedule (home.treasury.gov)"
+     ],
+     "steps": [
+      "Every 2027 GDP (advance, second, third) and Personal Income and Outlays date with its time.",
+      "Every 2027 quarterly refunding announcement date."
+     ],
+     "deliver": {
+      "file": "icarus_gemini_2027-bea-treasury_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD, one day per row"
+      },
+      {
+       "name": "event",
+       "type": "text",
+       "rule": "as the schedule names it"
+      },
+      {
+       "name": "time",
+       "type": "text",
+       "rule": "HH:MM ET or 'not stated'"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every 2027 date the schedules show.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ICA-GEM-13",
+     "title": "Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding",
+     "due": "2026-12-05"
     }
    ]
   },
@@ -710,6 +788,53 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "ICA-MUS-02",
+     "title": "Icarus: second reader on Gemini's the 2027 CPI and jobs-report dates (the FOMC dates are already confirmed) and the 20 trading rules",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-11-30",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file icarus_gemini_2027-macro-dates_20261121-*.json (ICA-GEM-11: the 2027 CPI and jobs-report dates (the FOMC dates are already confirmed))",
+      "Gemini's file icarus_gemini_trading-rules_20261121-*.json (ICA-GEM-12: the 20 trading rules)"
+     ],
+     "steps": [
+      "Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "icarus_muse_macro-and-rules-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
     }
    ]
   },

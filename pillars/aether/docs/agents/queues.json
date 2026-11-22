@@ -644,7 +644,7 @@
      "review": "Done 2026-11-21 (Claude): Built as Aether's shut-off record, marked not second-read (the CPUC site is not reachable from Claude's sandbox; Muse checks it). Good: years with no shut-off listed, not skipped. Score 10/10 (#79)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Gemini's PSPS history stopped at the page limit of the Sept 25, 2026 report (Attachment C, where RIDGE is listed) and found no 2026 shut-off yet.",
      "unlocks": "Aether's shut-off record knows whether the circuits that serve Frazier Park were cut in fall 2026.",
@@ -734,10 +734,12 @@
      ],
      "id": "AET-GEM-11",
      "title": "Aether: the Oct 2026 shut-off reports, read to the end (RIDGE and TENNECO circuits)",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Both CPUC post-event reports read; the circuits not found are said so. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#94)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Aether's pass panel shows today's status but has no history of how often and how long the Grapevine closes.",
      "unlocks": "Aether can say how many closures a winter brings and how long they last, from Caltrans's own record.",
@@ -811,7 +813,9 @@
      ],
      "id": "AET-GEM-12",
      "title": "Aether: every I-5 Grapevine closure for snow or ice, 2019-2026, from Caltrans",
-     "due": "2026-11-30"
+     "due": "2026-11-30",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Only 2 rows (the 2019 holidays, from one 2020 release). 'No 2020-2026 dot.ca.gov releases found' is unlikely for a pass that closes most winters; the task asked for every closure the record has. Re-issued with Caltrans District 6/7 and CHP as sources. Score 7/10 (#102)."
     },
     {
      "state": "now",
@@ -820,7 +824,8 @@
      "unlocks": "Aether's solar budget uses NREL's monthly numbers for the town, at two tilts, instead of a season guess.",
      "inputs": [
       "https://pvwatts.nrel.gov/ (the PVWatts calculator)",
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (SEASONS: the numbers this replaces)"
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (SEASONS: the numbers this replaces)",
+      "If pvwatts.nrel.gov and developer.nrel.gov stay unreachable: PVGIS (EU Joint Research Centre), which covers California from NREL's own NSRDB data: https://re.jrc.ec.europa.eu/pvg_tools/en/ (PV performance, database PVGIS-NSRDB) or its API https://re.jrc.ec.europa.eu/api/v5_3/PVcalc?lat=34.8228&lon=-118.9445&peakpower=0.4&loss=14&angle=30&aspect=0&raddatabase=PVGIS-NSRDB&outputformat=json (aspect 0 = south in PVGIS). Say which tool you used in every row."
      ],
      "steps": [
       "Run PVWatts for Frazier Park, CA (34.8228, -118.9445; town centre), system size 0.4 kW DC, standard module, fixed (open rack), azimuth 180, losses 14%, inverter efficiency 96%: once at tilt 30 and once at tilt 45.",
@@ -901,7 +906,188 @@
      ],
      "id": "AET-GEM-13",
      "title": "Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)",
-     "due": "2026-11-30"
+     "due": "2026-12-04",
+     "note": "Run 4 (2026-11-21) found NREL unreachable and honestly sent nothing. Retry, with PVGIS as the fallback. Claude, 2026-11-22."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Run 4 found only the 2019 holidays; the pass closes most winters, and Aether's 'chance the Grapevine shuts' needs the real record.",
+     "unlocks": "Aether can say how many closures a winter brings and how long they last.",
+     "inputs": [
+      "Caltrans District 6 and District 7 news releases and social posts (dot.ca.gov/caltrans-near-me/district-6, district-7)",
+      "CHP Fort Tejon area news releases (chp.ca.gov)",
+      "Caltrans QuickMap history is not public: say so if you cannot reach a closure's times"
+     ],
+     "steps": [
+      "Search each district's releases and CHP Fort Tejon's for 'Grapevine', 'Tejon Pass', 'I-5 closed', winter by winter from 2020-21 to 2025-26.",
+      "One row per closure: when it closed, when it reopened, the hours, the reason (snow, ice, crash, fire).",
+      "If a winter had none in the record, one row saying so with the pages you searched."
+     ],
+     "deliver": {
+      "file": "aether_gemini_grapevine-closures-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "closed",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM (24 h, Pacific) or YYYY-MM-DD when the time is not given"
+      },
+      {
+       "name": "reopened",
+       "type": "text",
+       "rule": "the same form, or 'not stated'"
+      },
+      {
+       "name": "hours",
+       "type": "number or 'not stated'",
+       "rule": "reopened minus closed, rounded to 0.5"
+      },
+      {
+       "name": "reason",
+       "type": "text",
+       "rule": "as the source says"
+      },
+      {
+       "name": "source",
+       "type": "text",
+       "rule": "Caltrans D6, Caltrans D7 or CHP"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every winter from 2020-21 to 2025-26 has its closures or a row saying none were found, with the pages searched.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-14",
+     "title": "Aether: every I-5 Grapevine (Tejon Pass) closure, winters 2020-21 to 2025-26",
+     "due": "2026-12-04"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Run 4 found RIDGE and TEJON were de-energised in October 2026; the household needs to know how often that happens.",
+     "unlocks": "Aether's shut-off record counts the circuits' events per year.",
+     "inputs": [
+      "CPUC PSPS post-event reports for SCE, 2021-2026 (cpuc.ca.gov, Safety and Enforcement Division, PSPS post-event reports)"
+     ],
+     "steps": [
+      "Open every SCE post-event report from 2021 to 2026.",
+      "Search each for RIDGE and TEJON.",
+      "One row per circuit per event: in scope only, or de-energised, with the customer count and the times."
+     ],
+     "deliver": {
+      "file": "aether_gemini_psps-history-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "event",
+       "type": "text",
+       "rule": "the report's own title"
+      },
+      {
+       "name": "circuit",
+       "type": "text",
+       "rule": "RIDGE or TEJON"
+      },
+      {
+       "name": "status",
+       "type": "text",
+       "rule": "de-energized, in scope only, or none found"
+      },
+      {
+       "name": "off",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM or 'not stated'"
+      },
+      {
+       "name": "on",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM or 'not stated'"
+      },
+      {
+       "name": "customers",
+       "type": "number",
+       "rule": "0 when none"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "page",
+       "type": "number",
+       "rule": "the PDF page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every SCE report from 2021 to 2026 searched; every RIDGE or TEJON mention is a row.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-15",
+     "title": "Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026",
+     "due": "2026-12-05"
     }
    ]
   },
@@ -1116,6 +1302,53 @@
       "fewer rows than the count, or a row missing a field",
       "a URL that does not open, is a home page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "AET-MUS-04",
+     "title": "Aether: second reader on Gemini's SCE's fall 2026 shut-offs for the circuits that serve Frazier Park",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-11-29",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file aether_gemini_psps-fall2026_20261121-*.json (AET-GEM-11: SCE's fall 2026 shut-offs for the circuits that serve Frazier Park)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Open both CPUC post-event reports and search each for RIDGE, TEJON, FROZEN and GRAPEVINE PEAK.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "aether_muse_psps-fall2026-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
      ]
     }

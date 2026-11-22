@@ -2,58 +2,58 @@
 
 # Money · payoff simulator · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. MON-GEM-05 · Money: published APRs, penalty APRs and late fees of the issuers Money already lists (Nov 2026)
+## 1. MON-GEM-06 · Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements
 
-**Due:** 2026-11-30 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
-**Why:** Money's issuer reference was written in early November; card pricing moves with the prime rate, so the numbers drift.
+**Why:** Run 4 left the minimum payment unstated for 11 issuers and the penalty rate for 15.
 
-**What it unlocks:** Money's issuer rows show current published ranges with the date read.
+**What it unlocks:** Money's issuer rows are complete.
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/money/issuers.js (the issuers to cover)
+- Gemini's file money_gemini_issuer-pricing_20261121-1136.json
+- CFPB credit card agreement database (consumerfinance.gov/credit-cards/agreements) and each issuer's own agreement PDF
 
 **Do this:**
-1. For each issuer in issuers.js, open its own current cardmember agreement or pricing page for its main consumer card.
-2. Record the purchase APR range, penalty APR, late fee (first and repeat), and the minimum payment formula, each quoted word for word with the date read.
-3. 'not stated' where the page does not give it; never a review site.
+1. For each issuer with a 'not stated' minimum payment or penalty APR, open its current card agreement.
+2. Copy the minimum payment formula and the penalty APR (or 'none') word for word.
+3. Give the agreement's own date.
 
-**Make:** `money_gemini_issuer-pricing_{YYYYMMDD-HHMM}.json`
+**Make:** `money_gemini_issuer-pricing-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `issuer` (text): as in issuers.js
-- `card` (text): product name
-- `apr` (text): range as stated
-- `penalty_apr` (text): as stated
-- `late_fee` (text): as stated
-- `min_payment` (text): formula as stated
-- `read` (date): YYYY-MM-DD
-- `url` (URL): the official page
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `issuer` (text): as in Gemini's file
+- `field` (text): min_payment or penalty_apr
+- `value` (text): the formula or rate, as the agreement words it
+- `agreement_date` (date): YYYY-MM-DD
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
 - [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
 - [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every issuer in issuers.js, from its own agreement.
+**Done when:** Every 'not stated' cell answered from an agreement, or still 'not stated' with the documents checked.
 
 **How Claude checks it:**
-- Claude opens rows at random against their pages.
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)

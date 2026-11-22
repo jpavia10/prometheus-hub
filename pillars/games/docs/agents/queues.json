@@ -328,7 +328,7 @@
      "review": "Re-dated 2026-11-21 (Claude, score 8/10, #88): your empty list was honest (no patch or known-issues post on Nov 20, a day after launch). Run it again on Nov 27, when the first week is over."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Joseph and his dad play Anno 117 cross-play (PC and PS5); the Games pillar knows nothing about its patches or what is coming.",
      "unlocks": "Games shows each Anno 117 update with its date and the cross-play notes, and the published roadmap.",
@@ -407,7 +407,86 @@
      ],
      "id": "GAM-GEM-06",
      "title": "Games: Anno 117 updates and roadmap, from Ubisoft's own pages",
-     "due": "2026-11-30"
+     "due": "2026-11-30",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Updates, hotfixes and roadmap up to Hotfix 3.0.1.1 of 2026-11-20 from anno-union.com. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#101)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "The updates list covers patches; the paid content is the other half of the roadmap.",
+     "unlocks": "Games shows what is out and what is coming.",
+     "inputs": [
+      "anno-union.com, ubisoft.com store pages for Anno 117: Pax Romana"
+     ],
+     "steps": [
+      "Every DLC and pass item: name, what it adds, release date (or announced window), platforms."
+     ],
+     "deliver": {
+      "file": "games_gemini_anno117-dlc_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "name",
+       "type": "text",
+       "rule": "as Ubisoft names it"
+      },
+      {
+       "name": "adds",
+       "type": "text",
+       "rule": "what it adds"
+      },
+      {
+       "name": "release",
+       "type": "text",
+       "rule": "YYYY-MM-DD or the announced window"
+      },
+      {
+       "name": "platforms",
+       "type": "text",
+       "rule": "as listed"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every announced DLC listed.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "GAM-GEM-07",
+     "title": "Games: Anno 117's DLC and season pass, with contents and release dates",
+     "due": "2026-12-06"
     }
    ]
   },
@@ -502,7 +581,54 @@
   {
    "id": "muse",
    "name": "Muse",
-   "tasks": []
+   "tasks": [
+    {
+     "id": "GAM-MUS-01",
+     "title": "Games: second reader on Gemini's Anno 117's updates, hotfixes and roadmap",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-12-01",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file games_gemini_anno117-updates_20261121-*.json (GAM-GEM-06: Anno 117's updates, hotfixes and roadmap)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "games_muse_anno117-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    }
+   ]
   },
   {
    "id": "chatgpt",

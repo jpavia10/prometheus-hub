@@ -2,7 +2,7 @@
 
 # Argus Album · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -73,37 +73,34 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 2. ARG-GEM-11 · Argus: every metadata field a Galaxy S24 Ultra writes into its photos, and whether Argus's scrubber removes it
+## 2. ARG-GEM-12 · Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default
 
-**Due:** 2026-12-03 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
-**Why:** Argus scrubs EXIF before a photo is shared, but nobody has listed what the S24 Ultra actually embeds (GPS, maker notes, motion-photo trailers, XMP) against what the scrubber strips.
+**Why:** Run 4 found that Argus's cleaner may not handle the S24's HEIF photos.
 
-**What it unlocks:** Claude closes every gap the list finds so no location or device detail leaves in a shared photo.
+**What it unlocks:** Claude makes Argus clean or clearly refuse HEIF, per browser.
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/argus/app.js (the scrubber)
-- CIPA DC-008 (Exif 3.0), the Adobe XMP specification, Samsung's own pages on Motion Photos and location tags
+- Chromium and WebKit release notes and bug trackers, MDN and caniuse pages for HEIF/HEIC image support, Samsung's camera help pages (High efficiency pictures setting)
 
 **Do this:**
-1. List every tag group a Galaxy S24 Ultra JPEG and HEIF photo can carry: EXIF IFD0/ExifIFD/GPS IFD, the Samsung maker note and trailer (motion photo, depth), XMP (including GPano and Samsung namespaces), ICC, thumbnails.
-2. For each: what it can reveal (place, time, device, person), the standard's own definition, and the file:line in pillars/argus/app.js that removes it, or 'not removed'.
-3. Rank by how much it reveals.
+1. For Chrome on Android, Samsung Internet, Safari on iOS and Chrome on desktop: does the current version decode HEIC in an <img> and in createImageBitmap?
+2. For the S24 Ultra: is 'High efficiency pictures' on by default, and what does it save?
 
-**Make:** `argus_gemini_s24-metadata_{YYYYMMDD-HHMM}.json`
+**Make:** `argus_gemini_heif-support_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `tag` (text): tag or group name
-- `container` (text): EXIF / GPS / MakerNote / XMP / trailer / ICC
-- `reveals` (text): place / time / device / person / none
-- `removed` (text): file:line, or 'not removed'
-- `url` (URL): the source page
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `browser` (text): name and version
+- `img` (text): yes, no or not stated
+- `createImageBitmap` (text): yes, no or not stated
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -112,10 +109,10 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every tag group, each mapped to the scrubber line that removes it or marked not removed.
+**Done when:** All four browsers and the S24's default answered.
 
 **How Claude checks it:**
-- Claude checks 10 file:line claims against app.js and fixes every 'not removed' that reveals place, device or person.
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field

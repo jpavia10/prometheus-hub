@@ -56,12 +56,12 @@
         </form>
       </div>
       <div class="glass lit span-6"><h2>Quoted vs Implied Reality</h2><div id="m-cons-out"></div></div>
-      <div class="glass span-12"><h2>Principal Amortization (Quoted vs Accelerated)</h2><canvas id="m-cons-cv" style="width:100%;height:190px;display:block"></canvas></div>
+      <div class="glass span-12"><h2>Principal Amortization (Quoted vs Accelerated)</h2><canvas id="m-cons-cv" role="img" aria-label="Principal paid down over time: the quoted plan against the accelerated one" style="width:100%;height:190px;display:block"></canvas></div>
     </section>
 
     <section id="p-strat" role="tabpanel" class="grid">
       <div class="glass span-6"><h2>3-Way Comparison (Avalanche vs Snowball vs Min)</h2>
-        <canvas id="m-cmp-cv" style="width:100%;height:220px;display:block;margin-bottom:10px"></canvas>
+        <canvas id="m-cmp-cv" role="img" aria-label="Avalanche, snowball and minimum payments compared: balance over time" style="width:100%;height:220px;display:block;margin-bottom:10px"></canvas>
         <div id="m-strat-kpis"></div>
       </div>
       <div class="glass span-6"><h2>Strategy &amp; Windfall Allocator</h2>

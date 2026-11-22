@@ -367,7 +367,7 @@
      "closed": "2026-11-21"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Hermes's local phishing classifier learns from lures; it needs current, real wording from official warnings, not invented examples.",
      "unlocks": "Hermes's classifier and its lure gallery get 40 dated, official examples, tagged by type.",
@@ -448,7 +448,162 @@
      ],
      "id": "HER-GEM-10",
      "title": "Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 40 verbatim lures from official warning pages, tagged by type. Lost a point: 21 'published' cells say 'not stated' (the field takes a date). not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 9/10 (#106)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Hermes dates every lure; 21 of run 4's have no date.",
+     "unlocks": "The lure gallery is ordered by date.",
+     "inputs": [
+      "Gemini's file hermes_gemini_scam-messages_20261121-1210.json (the 21 rows with published 'not stated')",
+      "Each page's own date line, its 'last updated' line, or the Internet Archive's first capture (web.archive.org) as a last resort"
+     ],
+     "steps": [
+      "For each of the 21, look for the page's own date.",
+      "If the page has none, give the Internet Archive's first capture date and say so.",
+      "Never guess a year."
+     ],
+     "deliver": {
+      "file": "hermes_gemini_scam-dates_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 21,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "lure_n",
+       "type": "number",
+       "rule": "the n in Gemini's file"
+      },
+      {
+       "name": "published",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "how",
+       "type": "text",
+       "rule": "page date, page updated, or first archive capture"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 21 rows dated, each saying how.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HER-GEM-11",
+     "title": "Hermes: the publication date of the 21 lures still 'not stated'",
+     "due": "2026-12-04"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "After 'this is a scam' comes 'where do I report it'.",
+     "unlocks": "Each lure type in Hermes shows its official reporting channel.",
+     "inputs": [
+      "reportfraud.ftc.gov, ic3.gov, the carriers' 7726 pages, uspis.gov, the CA Attorney General's complaint page, each big bank's report-phishing page"
+     ],
+     "steps": [
+      "For each lure type in Hermes (toll, package, bank, government, job, account, other), give every official channel that takes reports.",
+      "Say what to send (the text, a screenshot, the headers) as the page says."
+     ],
+     "deliver": {
+      "file": "hermes_gemini_report-channels_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "type",
+       "type": "text",
+       "rule": "one of Hermes's lure types"
+      },
+      {
+       "name": "channel",
+       "type": "text",
+       "rule": "who takes the report"
+      },
+      {
+       "name": "how",
+       "type": "text",
+       "rule": "forward to 7726, web form, email, phone"
+      },
+      {
+       "name": "send",
+       "type": "text",
+       "rule": "what the page says to include"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every lure type has at least one official channel.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HER-GEM-12",
+     "title": "Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)",
+     "due": "2026-12-05"
     }
    ]
   },
@@ -607,6 +762,53 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "id": "HER-MUS-02",
+     "title": "Hermes: second reader on Gemini's the 40 dated official scam messages",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-12-01",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file hermes_gemini_scam-messages_20261121-*.json (HER-GEM-10: the 40 dated official scam messages)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Check that each quote is the lure's own words as the page prints them, not the agency's description of it.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "hermes_muse_scam-messages-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 12,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
     }
    ]
   },

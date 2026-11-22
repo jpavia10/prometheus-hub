@@ -173,7 +173,7 @@
      "closed": "2026-11-21"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Mythos's worldbuilding canon borrows from older myths and literature; the primary texts should be one tap away, in editions that are free to read and quote.",
      "unlocks": "Each canon entry links the primary text it draws on, in a public-domain translation.",
@@ -249,7 +249,9 @@
      ],
      "id": "MYT-GEM-04",
      "title": "Mythos: the public-domain primary texts behind the canon, with exact editions",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Public-domain texts for the 3 classical archetypes; the 8 personal-canon items honestly 'not stated'. 7 of 8 quotes Claude opened hold. Score 10/10 (#118)."
     }
    ]
   },

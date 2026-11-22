@@ -129,7 +129,7 @@
     const ais = ["all", ...AIS.filter((a) => allTasks().some((t) => t.ai === a && t.status !== "withdrawn"))];
     const wh = ["all", ...new Set([...Object.keys((snap && snap.places) || {}), ...allTasks().map((t) => t.where), ...(F.where !== "all" ? [F.where] : [])])].sort((a, b) => (a === "all" ? -1 : b === "all" ? 1 : a.localeCompare(b)));   // trial 4 #12
     const sel = h("select.fsel", { "aria-label": "Place", onchange: (e) => { F.where = e.target.value; paintTasks(); } }, ...wh.map((w) => h("option", { value: w, selected: w === F.where }, w === "all" ? "Every place" : w)));
-    const q = h("input.fq", { type: "search", placeholder: "Search tasks", value: F.q, oninput: (e) => { F.q = e.target.value; paintTasks(); } });
+    const q = h("input.fq", { type: "search", placeholder: "Search tasks", "aria-label": "Search tasks", value: F.q, oninput: (e) => { F.q = e.target.value; paintTasks(); } });
     $("#f-filters").replaceChildren(
       seg("AI", ais.map((a) => [a, a === "all" ? "All" : a]), F.ai, (v) => (F.ai = v)),
       seg("Source", [["all", "All"], ...Object.keys(SRC).map((k) => [k, SRC_SHORT[k]])], F.src, (v) => (F.src = v)),
@@ -169,7 +169,8 @@
     const dl = (w) => allTasks().filter((t) => t.status === "delivered" && t.where === w).length;
     const places = snap ? Object.keys(snap.places).sort((a, b) => cell(b) - cell(a) || a.localeCompare(b)) : [];
     const head = h("tr", null, h("th", null, "Place"), ...cols.map((c) => h("th", null, c)), h("th", null, "To do"), h("th", null, "Delivered"));
-    const body = places.map((w) => { const tot = cell(w), d = dl(w); return h("tr" + (tot ? "" : ".zero"), { onclick: () => { F.where = w; F.ai = "all"; F.state = "todo"; paintAll(); toTasks(); } },
+    const body = places.map((w) => { const tot = cell(w), d = dl(w); const pick = () => { F.where = w; F.ai = "all"; F.state = "todo"; paintAll(); toTasks(); };
+      return h("tr" + (tot ? "" : ".zero"), { tabindex: "0", role: "button", "aria-label": "Show the tasks for " + w, onclick: pick, onkeydown: (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } } },
       h("td", null, w), ...cols.map((c) => { const n = cell(w, c); return h("td" + (n ? "" : ".nil"), { style: n ? `--k:${Math.min(1, n / 12)}` : "" }, n ? String(n) : "·"); }), h("td", null, h("b", null, String(tot))), h("td" + (d ? ".dl" : ".nil"), null, d ? String(d) : "·")); });
     $("#f-matrix").replaceChildren(h("div.mwrap", null, h("table.matrix", null, h("thead", null, head), h("tbody", null, ...body))));
   }

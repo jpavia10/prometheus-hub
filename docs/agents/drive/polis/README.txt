@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - POL-GRK-03 · Polis: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,38 +16,41 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 3 open in this pillar.
 
 
-- POL-GEM-08 · Polis: every Kern County Board of Supervisors item in 2026 that touches the mountain communities · due 2026-12-04
-    make: polis_gemini_board-2026_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every 2026 item that names the mountain communities, with its outcome.
+- POL-GEM-09 · Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities · due 2026-12-06
+    make: polis_gemini_planning-2026_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every 2026 meeting checked.
+- POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
+    make: polis_gemini_2027-elections_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every 2027 date both offices publish, or a row saying none yet.
 - POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
     make: polis_gemini_2027-meetings_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every published 2027 date for the three bodies, plus the district row.
 
 ## Muse
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Polis · Civic & Legal Watch right now.
+- POL-MUS-03 · Polis: second reader on Gemini's the Board of Supervisors' 2026 mountain decisions · due 2026-12-02
+    make: polis_muse_board-2026-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Polis · Civic & Legal Watch right now.
 
 ## Argon
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Polis · Civic & Legal Watch right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Polis · Civic & Legal Watch right now.

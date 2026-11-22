@@ -2,40 +2,39 @@
 
 # Athenaeum · Idea Vault · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ATH-GEM-04 · Athenaeum: second reader on the 40 history chains (cause, event, consequence) Grok wrote
+## 1. ATH-GEM-05 · Athenaeum: a third source for the 14 history entries that differ or are debated
 
-**Due:** 2026-12-04 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** Athenaeum's history shelf holds 40 cause-event-consequence chains from Grok's pass; no second reader has checked them.
+**Why:** Run 4 found 9 entries that differ from Britannica and 5 debated; a third source settles which wording the entry keeps.
 
-**What it unlocks:** Chains you confirm get a 'checked' mark; wrong ones are corrected with your source.
+**What it unlocks:** Each of the 14 gets corrected or marked debated with both sources.
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/athenaeum/history-seed.js (window.ATHENAEUM_HISTORY: 40 entries)
+- Gemini's file athenaeum_gemini_history-check_20261121-1300.json (rows with verdict differ or debated)
+- A scholarly reference that is not Britannica or World History Encyclopedia: Oxford Reference, Encyclopedia.com (Gale), a university press page, a national library
 
 **Do this:**
-1. For every one of the 40 entries: check the date, the event, each stated cause and each consequence against a scholarly or encyclopedic source (Britannica, a university press page, a museum or government archive).
-2. agree, or differ with what the source says instead; mark causes the source calls 'proposed' or debated.
-3. Never the same source the entry already cites.
+1. For each of the 14, open one source that is neither of run 4's.
+2. Say which of the two readings it supports, in its own words.
 
-**Make:** `athenaeum_gemini_history-check_{YYYYMMDD-HHMM}.json`
+**Make:** `athenaeum_gemini_history-third_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
+- `n` (number): 1, 2, 3 ...
 - `title` (text): as in the seed
-- `part` (text): date / event / cause / consequence
-- `verdict` (text): agree / differ / debated
-- `found` (text): what the source says
-- `url` (URL): the source page
-- `quote` (text): under 300 characters, word for word
+- `supports` (text): seed, Britannica, both or neither
+- `says` (text): what this source says, short
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -44,9 +43,9 @@ Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 40
+**How many:** 14
 
-**Done when:** All 40 entries checked part by part.
+**Done when:** All 14 have a third source.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

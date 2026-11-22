@@ -2,7 +2,7 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -112,35 +112,33 @@ Updated 2026-11-21 15:56 UTC · 3 open · Rules for every pillar: https://github
 - fewer than the count
 - not the shape PROMPT.md asks for
 
-## 3. HUB-GEM-15 · Hub: accessibility audit of 10 pages at phone width (WCAG 2.2 AA), every finding with its selector
+## 3. HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes
 
-**Due:** 2026-12-03 · **State:** now
+**Due:** 2026-12-01 · **State:** now
 
-**Why:** Trial 4 showed you find real defects with exact steps; nothing has audited the hub's pages for contrast, target size, focus and labels.
+**Why:** Claude fixed the confirmed findings in d51; a second look says which are really gone.
 
-**What it unlocks:** Claude fixes every confirmed finding in one pass.
+**What it unlocks:** Findings still open get a second pass.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/ and its pillars: forge, kairos, aether, garage, hearth, privacy, money, odyssey, athenaeum
+- Gemini's file hub_gemini_a11y-audit_20261121-1335.json
+- The same 10 live pages, after the build that says d51 (or later) in the hub's About line
 
 **Do this:**
-1. Open each page at 390 x 844 (or the narrowest your browser allows) and audit against WCAG 2.2 AA: text contrast (measure the ratio), target size (24 x 24 minimum), visible focus, keyboard reach, accessible names on buttons and inputs, headings order, motion with reduced-motion set.
-2. For each finding: page, the exact CSS selector or element, the criterion number, what you measured, and the fix.
-3. At least 30 findings; no duplicates (one row per selector per criterion).
+1. For each of the 40 findings, measure again on the live page.
+2. Say fixed, still there (with the new measurement) or changed.
 
-**Make:** `hub_gemini_a11y-audit_{YYYYMMDD-HHMM}.json`
+**Make:** `hub_gemini_a11y-recheck_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
 
-**Shape:** `JSON array, one object per finding, exactly the fields below`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `page` (URL): the page
-- `selector` (text): CSS selector
-- `criterion` (text): e.g. 1.4.3
-- `measured` (text): e.g. 3.1:1 on #8a93a6 over #0d1220
-- `fix` (text): exact change
+- `n` (number): 1, 2, 3 ...
+- `finding_n` (number): n in the first audit
+- `status` (text): fixed, still there, or changed
+- `measured` (text): what you measured now
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -149,10 +147,64 @@ Updated 2026-11-21 15:56 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** 30+ findings, each with selector, criterion and measurement.
+**How many:** 40
+
+**Done when:** All 40 re-measured.
 
 **How Claude checks it:**
-- Claude reproduces 8 findings in a browser.
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 4. HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet
+
+**Due:** 2026-12-06 · **State:** now
+
+**Why:** Run 4 audited 10 pages; the other 17 pillars have the same kit and their own CSS.
+
+**What it unlocks:** Claude fixes every confirmed finding in one pass.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/<name>/ for apollo, hermes, argus, icarus, kin, bastion, polis, records, continuity, selling, games, piano, mythos, observatory, foundry, records, and the hub's Search page
+- Their code on github.com/jpavia10/prometheus-hub (pillars/<name>/app.js, app.css)
+
+**Do this:**
+1. At 390 x 844, find the 4 worst WCAG 2.2 AA failures on each of the 17 pages.
+2. For each: the selector, the criterion, what you measured (contrast ratio with both colours, size in px, the missing name), and the smallest fix.
+
+**Make:** `hub_gemini_a11y-audit-2_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `page` (url): the live page
+- `selector` (text): CSS selector
+- `criterion` (text): e.g. 1.4.3 Contrast (Minimum)
+- `measured` (text): the numbers you measured
+- `fix` (text): the smallest change that passes
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 68
+
+**Done when:** 4 findings for each of the 17 pages, each with a measurement.
+
+**How Claude checks it:**
+- Claude checks 12 findings in the code and on the page.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field

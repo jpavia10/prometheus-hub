@@ -513,7 +513,7 @@
      "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "DROP covers 59 of the 72 brokers; the other 13 (Veripages, SearchQuarry, Archives.com, PropertyRecs, LocateFamily, Sync.me, PimEyes, FaceCheck.ID, OptOutPrescreen, NAI opt-out, Cocofinder, Neighbor.report, FOREWARN) each need their own request.",
      "unlocks": "Privacy shows a step-by-step opt-out for every broker DROP misses, so nothing is left half done.",
@@ -592,10 +592,12 @@
      ],
      "id": "PRI-GEM-09",
      "title": "Privacy: the opt-out route for each of the 13 brokers DROP does not reach",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 13 brokers, 10 on their own opt-out pages, 2 honestly blocked. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#92)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Joseph plays and works on a Windows PC; Privacy covers Google setting by setting but not Microsoft.",
      "unlocks": "Privacy gets a Microsoft panel like the Google one: what each setting collects and the safest choice.",
@@ -673,10 +675,12 @@
      ],
      "id": "PRI-GEM-10",
      "title": "Privacy: Microsoft account, setting by setting (Windows 11 and account.microsoft.com)",
-     "due": "2026-11-30"
+     "due": "2026-11-30",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 25 Windows and account settings from Microsoft's support pages; defaults 'not stated' where the page omits them. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#100)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Privacy's mission names S24 Ultra hardening, but the pillar has no phone settings: only Google's account settings.",
      "unlocks": "Privacy gets a phone panel: every privacy and security setting on the S24 Ultra, where it is, what it does and the safest choice.",
@@ -763,10 +767,12 @@
      ],
      "id": "PRI-GEM-11",
      "title": "Privacy: harden the Galaxy S24 Ultra, 50 settings from Samsung's own pages",
-     "due": "2026-11-30"
+     "due": "2026-11-30",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 50 S24 Ultra settings; 17 of the 19 quotes Claude could open are word for word (2 are Google's steps, reworded). not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#104)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Credential rotation is in Privacy's mission; it cannot say for each account which second factors exist, where recovery codes live, or where to see sign-in activity.",
      "unlocks": "Privacy shows, per service, the strongest sign-in it supports and the exact place to rotate the password and check activity.",
@@ -867,7 +873,97 @@
      ],
      "id": "PRI-GEM-12",
      "title": "Privacy: sign-in security for the 25 services in Continuity's list (2FA, passkeys, recovery)",
-     "due": "2026-12-02"
+     "due": "2026-12-02",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 25 services' sign-in options. Lost a point: 'change_password' and 'activity' hold directions in prose where the fields take the page URL (50 cells). Score 9/10 (#111)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "The phone panel covers the OS; the browsers carry most of the tracking.",
+     "unlocks": "Privacy's phone panel gets a browser section.",
+     "inputs": [
+      "Chrome Help (support.google.com/chrome), Samsung Internet help pages"
+     ],
+     "steps": [
+      "30 settings across both browsers: where it is, what it does, its default and the safest choice.",
+      "Copy each from the help page."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_mobile-browsers_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 30,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "browser",
+       "type": "text",
+       "rule": "Chrome or Samsung Internet"
+      },
+      {
+       "name": "setting",
+       "type": "text",
+       "rule": "as the menu names it"
+      },
+      {
+       "name": "where",
+       "type": "text",
+       "rule": "the menu path"
+      },
+      {
+       "name": "does",
+       "type": "text",
+       "rule": "what it does"
+      },
+      {
+       "name": "default",
+       "type": "text",
+       "rule": "or 'not stated'"
+      },
+      {
+       "name": "safest",
+       "type": "text",
+       "rule": "the safest choice"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "30 settings, each with its help page.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PRI-GEM-13",
+     "title": "Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice",
+     "due": "2026-12-05"
     }
    ]
   },
@@ -1127,6 +1223,101 @@
       "fewer rows than the count, or a row missing a field",
       "a URL that does not open, is a home page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "PRI-MUS-05",
+     "title": "Privacy: second reader on Gemini's the opt-out steps for the 13 brokers DROP misses and the Windows and Microsoft account settings",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-11-29",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file privacy_gemini_optouts_20261121-*.json (PRI-GEM-09: the opt-out steps for the 13 brokers DROP misses)",
+      "Gemini's file privacy_gemini_microsoft-settings_20261121-*.json (PRI-GEM-10: the Windows and Microsoft account settings)"
+     ],
+     "steps": [
+      "Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "privacy_muse_optouts-and-microsoft-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "PRI-MUS-06",
+     "title": "Privacy: second reader on Gemini's the Galaxy S24 Ultra hardening settings and each service's strongest sign-in",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-12-01",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file privacy_gemini_s24-hardening_20261121-*.json (PRI-GEM-11: the Galaxy S24 Ultra hardening settings)",
+      "Gemini's file privacy_gemini_signin-security_20261121-*.json (PRI-GEM-12: each service's strongest sign-in)"
+     ],
+     "steps": [
+      "Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Check each setting's path on the phone's own menus where you can, not only the help page.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "privacy_muse_s24-and-signin-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
      ]
     }

@@ -2,89 +2,40 @@
 
 # Bossa Piano Studio · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. PIA-GEM-06 · Piano: the key and page for every bossa source that said 'not stated'
+## 1. PIA-GEM-08 · Piano: the published key for the 24 Bossa Nova tunes still 'not stated'
 
-**Due:** 2026-11-28 · **State:** now
+**Due:** 2026-12-03 · **State:** now
 
-**Why:** Most of the 47 rows in Gemini's sources file have no key and no page, so Joseph cannot tell which edition fits his ladder.
+**Why:** Run 4 found the page for most tunes but the key for only 4.
 
-**What it unlocks:** Each tune's 'Where to buy' row shows the key and the page, and the ladder can prefer the edition in the key it teaches.
+**What it unlocks:** The ladder can prefer the edition in the key it teaches.
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/piano/sources.js (window.PIANO_SOURCES)
+- Gemini's file piano_gemini_bossa-keys_20261121-1117.json (the 24 rows with key 'not stated')
+- Musicnotes and Sheet Music Direct product pages (both print 'Original Published Key' or 'Key')
 
 **Do this:**
-1. For every row whose page or key is 'not stated', open the publisher's product page and its preview, table of contents or index.
-2. Musicnotes and Sheet Music Direct list the original key on the product page; Hal Leonard books list songs with pages in the table of contents.
-3. If neither is shown, keep 'not stated' and name what you opened.
+1. For each of the 24 tunes, find the same arrangement (book or single) on Musicnotes or Sheet Music Direct.
+2. Read its key from the product page.
+3. Say which edition it is (book title or single), so the key belongs to the right page.
 
-**Make:** `piano_gemini_bossa-keys_{YYYYMMDD-HHMM}.json`
+**Make:** `piano_gemini_bossa-keys-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): the row number in PIANO_SOURCES
-- `tune` (text): as in PIANO_SOURCES
-- `page` (text): page number or 'not stated'
-- `key` (text): e.g. 'F major' or 'not stated'
-- `url` (URL): the page that shows it
-- `quote` (text): under 300 characters, word for word
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** One row for every PIANO_SOURCES row that lacked a page or key.
-
-**How Claude checks it:**
-- Claude opens rows at random against their pages.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. PIA-GEM-07 · Piano: the reference recording for each of the 24 bossa tunes (first and definitive)
-
-**Due:** 2026-12-02 · **State:** now
-
-**Why:** A practice studio needs the recording to listen to; the ladder has the tunes but not which recording is the reference.
-
-**What it unlocks:** Each tune on the ladder links its first recording and the definitive one, with year and label.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/piano/bossa-ladder.js (the 24 tunes)
-- MusicBrainz, the record labels' own catalogues, the composers' official sites (jobim.org)
-
-**Do this:**
-1. For each of the 24 tunes: the first commercial recording (artist, album, year, label, catalogue number) and the recording most often called definitive by the label or the composer's official site.
-2. Give the MusicBrainz recording or release URL and quote the line that dates it.
-3. 'not stated' where the sources disagree; name both.
-
-**Make:** `piano_gemini_recordings_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
+- `n` (number): 1, 2, 3 ...
 - `tune` (text): as in the ladder
-- `first` (text): artist, album, year, label, catalogue no.
-- `definitive` (text): artist, album, year, label
-- `why` (text): who calls it definitive
-- `url` (URL): the official page or PDF
-- `quote` (text): under 300 characters, word for word
+- `edition` (text): book or single, with its title
+- `key` (text): e.g. 'D minor', or 'not stated'
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -95,7 +46,7 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 
 **How many:** 24
 
-**Done when:** 24 tunes, each with its first recording dated from MusicBrainz or the label.
+**Done when:** All 24 tunes answered: a key with its page, or 'not stated' with the pages checked.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

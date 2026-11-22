@@ -663,6 +663,7 @@
           h("button.btn.quiet.small", {
             type: "button",
             onclick: () => { if (confirm("Remove " + r.name + "?")) { S.remove("rooms", r.id); paint(); } },
+            "aria-label": "Remove " + r.name,
           }, "×")
         )
       );

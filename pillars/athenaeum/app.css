@@ -115,7 +115,7 @@ span.ath-chip { cursor: default; }
 .ath-row { display: flex; align-items: center; gap: 10px; padding: 4px 12px 4px 4px; border: 1px solid var(--hair); border-radius: 18px; background: rgba(10, 12, 24, .7); transition: border-color .2s, background .2s; }
 .ath-row:hover { border-color: color-mix(in srgb, var(--c) 55%, transparent); background: rgba(14, 16, 32, .78); }
 .ath-rowmain { flex: 1; min-width: 0; display: flex; gap: 12px; align-items: flex-start; padding: 10px 6px 10px 10px; border: 0; background: none; color: inherit; text-align: left; font-family: var(--sans); cursor: pointer; }
-.ath-rowmain[disabled] { opacity: .6; cursor: default; }
+.ath-rowmain[disabled] { opacity: .78; cursor: default; }
 /* the accession stamp: the star, over the day and month the idea was kept */
 .ath-rowmain > span.ath-kept { flex: none; width: 48px; display: grid; justify-items: center; gap: 3px; padding: 3px 10px 3px 0; border-right: 1px solid var(--hair); }
 .ath-kept i { width: 9px; height: 9px; margin-bottom: 2px; border-radius: 50%; background: var(--c); box-shadow: 0 0 12px var(--c); }
@@ -200,7 +200,8 @@ body.ath .empty { color: var(--dim); text-align: center; padding: 22px 10px; }
 body.ath-open .pk-dock, body.ath-open .ath-time, body.ath-open .ath-spark, body.ath-open .ath-rail, body.ath-open .ath-hud, body.ath-finding .pk-dock { opacity: 0; pointer-events: none; }
 body.ath-open .pk-dock { translate: 0 130%; } body.ath .pk-dock { transition: opacity .3s, translate .3s; }
 body.ath :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-body.ath .ath-codex h2:focus, body.ath .ath-codex h2:focus-visible { outline: none; }
+body.ath .ath-codex h2:focus { outline: none; }
+body.ath .ath-codex h2:focus-visible { outline: 2px solid rgba(201, 184, 234, .9); outline-offset: 4px; border-radius: 6px; }   /* 2.4.7 (#38) */
 body.ath .toast { z-index: 70; bottom: calc(24px + var(--safe-b)); max-width: calc(100vw - 32px); }
 
 @media (min-width: 900px) {

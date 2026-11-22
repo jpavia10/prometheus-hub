@@ -3,7 +3,7 @@
    great-circle arcs — an echo of the stage's orbit, flattened for the page. */
 .kv{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:4px 0;font-size:14.5px;border-bottom:1px solid var(--line)}
 .check{display:flex;gap:8px;align-items:center;padding:4px 0;font-size:15px;text-align:left}
-.check input[type="checkbox"]{width:16px;height:16px;flex:none;margin:0;accent-color:var(--accent)}
+.check input[type="checkbox"]{width:24px;height:24px;flex:none;margin:0;accent-color:var(--accent)}
 .pill{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);color:var(--accent)}
 .pill.soon{border-color:color-mix(in srgb,var(--accent-2) 55%,transparent);color:var(--accent-2)}
 

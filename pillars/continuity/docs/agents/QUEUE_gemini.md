@@ -2,55 +2,56 @@
 
 # Continuity · Sovereign Vault · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. CON-GEM-07 · Continuity: recording a transfer-on-death deed in Kern County, step by step
+## 1. CON-GEM-08 · Continuity: Kern County Superior Court's probate forms for a small estate and a spousal property petition
 
-**Due:** 2026-11-28 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** The TOD deed only works if it is signed, notarized and recorded within 60 days; Continuity knows the law but not Kern's counter: fees, form, where and how.
+**Why:** The binder has the rules; it should name the forms.
 
-**What it unlocks:** Continuity's binder gets a Kern recording checklist next to the small-estate rules.
+**What it unlocks:** Continuity's binder lists each form with its fee and where it is filed.
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/small-estate.js (the TOD rows)
-- Kern County Recorder's own site
+- California Courts forms (courts.ca.gov/forms), Kern County Superior Court probate pages (kern.courts.ca.gov)
 
 **Do this:**
-1. From the Kern County Recorder's own pages: the recording fee for a TOD deed (first page, each added page, SB2 fee if any), what must be on the first page, whether a Preliminary Change of Ownership Report is needed, how to record by mail and in person (office address), and how long it takes.
-2. From the Probate Code (leginfo or the courts): the 60-day recording rule and the two witnesses rule since 2022.
-3. Quote each rule word for word.
+1. For each path (small estate affidavit, petition to determine succession, spousal property petition): every form, its number and name, the filing fee and where it is filed in Kern.
 
-**Make:** `continuity_gemini_kern-tod-recording_{YYYYMMDD-HHMM}.json`
+**Make:** `continuity_gemini_kern-probate-forms_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `step` (text): the step or rule
-- `detail` (text): fee, form, address or time
-- `source` (text): office or code section
-- `url` (URL): the official page
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `path` (text): which procedure
+- `form` (text): number, e.g. DE-305
+- `name` (text): its title
+- `fee` (text): $ or 'none'
+- `filed` (text): where
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
 - [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
 - [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every step from signing to a recorded deed, each with its official page.
+**Done when:** All three paths with their forms.
 
 **How Claude checks it:**
-- Claude opens rows at random against their pages.
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)

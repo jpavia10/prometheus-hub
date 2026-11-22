@@ -313,7 +313,7 @@
      "closed": "2026-11-21"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Selling is shipping-only; its net-payout math depends on postage by weight and zone and each marketplace's current fees, which changed in 2026.",
      "unlocks": "Selling's net calculator uses this year's real postage and fees.",
@@ -400,7 +400,181 @@
      ],
      "id": "SEL-GEM-06",
      "title": "Selling: 2026 shipping and seller-fee tables (USPS Ground Advantage and Priority, eBay, Mercari, Facebook)",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 262 rows. The USPS table is the temporary holiday price (2026-10-04 to 2027-01-17, confirmed by Claude's search), and no row says it ends: after Jan 17 every postage row is wrong. 21 'effective' cells say 'not stated' where the field takes a date. Score 8/10 (#105)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Run 4's USPS table is the temporary holiday price of 2026-10-04 to 2027-01-17; on Jan 18 it is wrong.",
+     "unlocks": "Selling's net calculator keeps real postage after the holidays.",
+     "inputs": [
+      "USPS Notice 123 (pe.usps.com/text/dmm300/notice123.htm) as it reads on or after 2027-01-18",
+      "The Federal Register notice of the holiday price (2026-10-04 to 2027-01-17)"
+     ],
+     "steps": [
+      "On or after 2027-01-18 open Notice 123.",
+      "Copy Ground Advantage Retail and Priority Mail Retail for the same weights and zones as run 4.",
+      "Give each row's effective date and, if the notice names one, its end date."
+     ],
+     "deliver": {
+      "file": "selling_gemini_usps-2027_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "service",
+       "type": "text",
+       "rule": "as Notice 123 names it"
+      },
+      {
+       "name": "weight",
+       "type": "text",
+       "rule": "as the row prints it"
+      },
+      {
+       "name": "zone",
+       "type": "text",
+       "rule": "1 to 9, as the column header"
+      },
+      {
+       "name": "amount",
+       "type": "text",
+       "rule": "$0.00"
+      },
+      {
+       "name": "effective",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "ends",
+       "type": "date or 'none stated'",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "The same weights and zones as run 4, from the January 2027 notice.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "SEL-GEM-07",
+     "title": "Selling: USPS retail prices after the holiday price ends (from 2027-01-18)",
+     "due": "2027-01-20"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "Run 4's eBay rows are general; coins and bullion have their own rates and caps.",
+     "unlocks": "Selling's calculator uses the right rate for a coin.",
+     "inputs": [
+      "eBay's selling fees page (ebay.com/help/selling/fees-credits-invoices/selling-fees) and its category table"
+     ],
+     "steps": [
+      "For Coins & Paper Money, and for bullion: the final value fee rate, the threshold above which it changes, the per-order fee, and any cap."
+     ],
+     "deliver": {
+      "file": "selling_gemini_ebay-coins_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "category",
+       "type": "text",
+       "rule": "as eBay names it"
+      },
+      {
+       "name": "rate",
+       "type": "text",
+       "rule": "% as printed"
+      },
+      {
+       "name": "threshold",
+       "type": "text",
+       "rule": "$ or 'none'"
+      },
+      {
+       "name": "per_order",
+       "type": "text",
+       "rule": "$ as printed"
+      },
+      {
+       "name": "effective",
+       "type": "date",
+       "rule": "YYYY-MM-DD or the page's date"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Coins, paper money and bullion all covered.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "SEL-GEM-08",
+     "title": "Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception",
+     "due": "2026-12-05"
     }
    ]
   },
@@ -557,6 +731,53 @@
       }
      ],
      "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "SEL-MUS-03",
+     "title": "Selling: second reader on Gemini's this year's postage and marketplace fees",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-12-02",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file selling_gemini_fees-2026_20261121-*.json (SEL-GEM-06: this year's postage and marketplace fees)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 15 rows at random (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Confirm on USPS's own pages when the holiday prices of 2026-10-04 end (2027-01-17 by the Federal Register notice), and say for each picked USPS row whether it is a holiday price.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "selling_muse_fees-2026-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
      "self_check": [
       "Every differ line says where you looked.",
       "You did not change Gemini's file."

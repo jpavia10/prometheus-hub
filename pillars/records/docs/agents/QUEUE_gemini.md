@@ -2,7 +2,7 @@
 
 # Records · Paper Killer · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -76,38 +76,33 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 2. REC-GEM-08 · Records: every record to change after moving from Texas to California, with its deadline
+## 2. REC-GEM-09 · Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates)
 
-**Due:** 2026-12-01 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** Records' mission covers TX->CA, but the pillar has no list of what a move from Texas obliges in California (and what to close in Texas).
+**Why:** The renewal radar counts down dates; it should know the rules behind them.
 
-**What it unlocks:** Records gets a move checklist with legal deadlines, which the renewal radar and Kairos can count down.
+**What it unlocks:** Records explains each renewal and when it can be done online.
 
 **Read first:**
-- California DMV, Secretary of State, FTB, Covered California and Texas DPS / Texas DMV official pages
+- dmv.ca.gov pages for driver's licence renewal, vehicle registration renewal and REAL ID
 
 **Do this:**
-1. List every record a new California resident coming from Texas must create or change, with the legal deadline: driver license (days after residency), vehicle registration and smog for an out-of-state vehicle, motorcycle license class M1, insurance minimums, voter registration, part-year resident income tax (FTB 540NR) for the move year, Texas items to close or surrender.
-2. Quote the rule for each deadline; give the form number and the office.
-3. Mark which ones apply to a person who already did the basics (license, plates) and which repeat yearly.
+1. For each: how often, how early you can renew, when it must be in person, the fee where the page gives it, what to bring.
 
-**Make:** `records_gemini_tx-to-ca_{YYYYMMDD-HHMM}.json`
+**Make:** `records_gemini_dmv-rules_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `record` (text): what
-- `state` (text): CA / TX
-- `deadline` (text): as the rule states it
-- `form` (text): form number or 'none'
-- `office` (text): agency
-- `repeats` (text): once / yearly / every N years
-- `url` (URL): the official page or PDF
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `record` (text): licence, registration or REAL ID
+- `rule` (text): the rule
+- `value` (text): the number or condition
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -116,7 +111,7 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** At least 20 records, every deadline quoted from the agency.
+**Done when:** All three covered from dmv.ca.gov.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

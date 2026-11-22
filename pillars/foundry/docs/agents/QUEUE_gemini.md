@@ -2,7 +2,7 @@
 
 # Foundry · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -73,38 +73,37 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 2. FDY-GEM-05 · Foundry: a bench-prototype parts list for the first build stage of each of the 11 inventions
+## 2. FDY-GEM-06 · Foundry: the power budget for each stage-1 build, from the parts' datasheets
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-06 · **State:** now
 
-**Why:** Foundry turns inventions into builds one stage at a time, but no stage has real parts, prices or suppliers.
+**Why:** A parts list is only buildable when the power adds up.
 
-**What it unlocks:** Each invention's first stage shows a buyable parts list with total cost, so the next step is a purchase, not a thought.
+**What it unlocks:** Each invention's stage 1 shows the supply it needs.
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/foundry/build-states.js (the 11 inventions and their stages)
+- Gemini's file foundry_gemini_stage1-parts_20261121-1300.json
+- Each part's datasheet on Pololu or Adafruit
 
 **Do this:**
-1. For each invention, take its first stage and design the smallest bench prototype that tests its core claim (say the claim in one line).
-2. List every part: manufacturer, part number, quantity, unit price and the distributor's own product page (McMaster-Carr, DigiKey, Mouser, Adafruit, SparkFun, Home Depot); a 'math' row per invention totals the cost.
-3. Where the core claim cannot be prototyped on a bench (for example Mach 20 flight), say so and give the nearest testable sub-claim instead.
+1. For each part that draws power: voltage and the peak current from its datasheet.
+2. Per invention: add the peak currents (show the math) and name a supply in the list that covers it with 25 % margin, or say none does.
 
-**Make:** `foundry_gemini_stage1-parts_{YYYYMMDD-HHMM}.json`
+**Make:** `foundry_gemini_power-budget_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `invention` (text): as in build-states.js
-- `claim` (text): what the prototype tests
-- `part` (text): manufacturer + part number
-- `qty` (integer): count
-- `unit_price` (text): USD as listed
-- `math` (text): line or invention total
-- `url` (URL): the distributor's product page
-- `quote` (text): the listed price line
+- `n` (number): 1, 2, 3 ...
+- `invention` (text): as in the parts file
+- `part` (text): as in the parts file
+- `volts` (number): V
+- `peak_amps` (number): A
+- `math` (text): the sum, for the total rows
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -113,7 +112,7 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** All 11 inventions, each with a costed parts list or a stated sub-claim.
+**Done when:** Every powered part has a row; every invention has a total row.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

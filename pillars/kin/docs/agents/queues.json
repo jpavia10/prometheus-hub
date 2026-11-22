@@ -207,7 +207,7 @@
      "closed": "2026-11-21"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Kin knows Violet is at Highlands Elementary in Saugus Union SD but not the days school is out, so the fortnight view cannot warn about them.",
      "unlocks": "Kin and Kairos show the no-school days, minimum days and breaks for Violet's school.",
@@ -281,7 +281,9 @@
      ],
      "id": "KIN-GEM-05",
      "title": "Kin: Saugus Union School District's 2026-27 calendar (Violet's school days off)",
-     "due": "2026-11-28"
+     "due": "2026-11-28",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Claude opened the district calendar PDF: all 59 dates hold. Lost a point: 12 'date' cells hold ranges or prose ('2026-08-04 to 2026-08-05', 'TBD by school'); the field takes one date per row. Score 9/10 (#93)."
     }
    ]
   },

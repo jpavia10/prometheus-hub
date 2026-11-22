@@ -2,22 +2,23 @@
 
 # Forge · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
 ## 1. FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch
 
-**Due:** 2026-12-02 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
 **Why:** The Forge says what is out and due; if it miscounts, the owner's view of every AI's load is wrong.
 
 **What it unlocks:** Claude fixes every builder bug you find, with a regression test.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/forge/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/forge.json (the snapshot)
-- the pillars' docs/agents/queues.json files and Titan's docs/agents/QUEUE_*.md pages
+- https://jpavia10.github.io/prometheus-hub/pillars/forge/ (what the Forge shows)
+- https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/forge.json (the snapshot; github.com pages, not raw.githubusercontent.com, which your browser blocks)
+- https://github.com/jpavia10/prometheus-hub/tree/main/pillars (open <pillar>/docs/agents/queues.json from there; the hub's own is docs/agents/queues.json)
+- https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/agents (Titan's QUEUE_gemini.md, QUEUE_muse.md, QUEUE_grok.md; there is no QUEUE_claude.md)
 
 **Do this:**
 1. Pick 30 tasks at random across at least 12 pillars and Titan (show your random method).

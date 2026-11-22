@@ -1,12 +1,12 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-21 15:56 UTC. 21 to do across 8 pillars.
+Updated 2026-11-22 03:21 UTC. 45 to do across 22 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).
 
-TITAN RELIQUARY (its own loop, the exception): 11 homework sheets + 2 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 15 homework sheets + 2 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Muse' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_muse.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -24,6 +24,26 @@ IN THIS ORDER:
 6. [Privacy · CA DROP] PRI-MUS-04 · Privacy: second reader on Gemini's 'which of the 72 brokers are on California's Data Broker Registry' · due 2026-11-28
 7. [Aether · Atmospheric & Field Lab] AET-MUS-03 · Aether: second reader on Gemini's 'SCE power shut-offs that reached the mountain, 2019-2026' · due 2026-11-28
 8. [Continuity · Sovereign Vault] CON-MUS-02 · Continuity: second reader on Gemini's 'California small-estate and transfer-on-death rules' · due 2026-11-28
+9. [Hephaestus Hearth] HEA-MUS-04 · Hearth: second reader on Gemini's Kern's deck design criteria and the deck cut list and fasteners · due 2026-11-29
+10. [Privacy · CA DROP] PRI-MUS-05 · Privacy: second reader on Gemini's the opt-out steps for the 13 brokers DROP misses and the Windows and Microsoft account settings · due 2026-11-29
+11. [Aether · Atmospheric & Field Lab] AET-MUS-04 · Aether: second reader on Gemini's SCE's fall 2026 shut-offs for the circuits that serve Frazier Park · due 2026-11-29
+12. [Money · payoff simulator] MON-MUS-02 · Money: second reader on Gemini's the 25 issuers' published APR, late fee, minimum payment and penalty APR · due 2026-11-30
+13. [Icarus Stake] ICA-MUS-02 · Icarus: second reader on Gemini's the 2027 CPI and jobs-report dates (the FOMC dates are already confirmed) and the 20 trading rules · due 2026-11-30
+14. [Bossa Piano Studio] PIA-MUS-02 · Piano: second reader on Gemini's the page and key of each tune and the first and definitive recordings · due 2026-11-30
+15. [Continuity · Sovereign Vault] CON-MUS-03 · Continuity: second reader on Gemini's the Kern County recording checklist · due 2026-11-30
+16. [Apollo Temple] APO-MUS-03 · Apollo: second reader on Gemini's the 30 NIH targets and upper limits for men 31-50 and 51-70 · due 2026-12-01
+17. [Records · Paper Killer] REC-MUS-03 · Records: second reader on Gemini's the Texas-to-California move deadlines and forms · due 2026-12-01
+18. [Hermes Post] HER-MUS-02 · Hermes: second reader on Gemini's the 40 dated official scam messages · due 2026-12-01
+19. [Bastion · Mountain Prep] BAS-MUS-04 · Bastion: second reader on Gemini's the official shelters and cooling or warming centres and the NOAA Weather Radio transmitters and the six official emergency checklists · due 2026-12-01
+20. [Privacy · CA DROP] PRI-MUS-06 · Privacy: second reader on Gemini's the Galaxy S24 Ultra hardening settings and each service's strongest sign-in · due 2026-12-01
+21. [Ludus Arcade] GAM-MUS-01 · Games: second reader on Gemini's Anno 117's updates, hotfixes and roadmap · due 2026-12-01
+22. [Garage] GAR-MUS-05 · Garage: second reader on Gemini's the 62 dashboard lights from the two owner's manuals · due 2026-12-02
+23. [Selling Pipeline] SEL-MUS-03 · Selling: second reader on Gemini's this year's postage and marketplace fees · due 2026-12-02
+24. [Athenaeum · Idea Vault] ATH-MUS-01 · Athenaeum: second reader on Gemini's Gemini's second reading of the 40 history entries · due 2026-12-02
+25. [Polis · Civic & Legal Watch] POL-MUS-03 · Polis: second reader on Gemini's the Board of Supervisors' 2026 mountain decisions · due 2026-12-02
+26. [Midas Ledger] MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
+27. [Foundry] FDY-MUS-02 · Foundry: second reader on Gemini's the stage-1 parts lists · due 2026-12-03
+28. [Observatory] OBS-MUS-02 · Observatory: second reader on Gemini's the 22 primary feeds · due 2026-12-03
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-MUS-03 · Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940)
@@ -362,3 +382,894 @@ IN THIS ORDER:
 - fewer rows than the count, or a row missing a field
 - a URL that does not open, is a home page or a search page, or does not say what the row claims
 - a quote that is not on the page it cites (Claude opens rows at random)
+
+==================== 9. HEPHAESTUS HEARTH ====================
+## 9. HEA-MUS-04 · Hearth: second reader on Gemini's Kern's deck design criteria and the deck cut list and fasteners
+
+**Due:** 2026-11-29 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file hearth_gemini_kern-design-criteria_20261121-*.json (HEA-GEM-24: Kern's deck design criteria)
+- Gemini's file hearth_gemini_cut-list_20261121-*.json (HEA-GEM-25: the deck cut list and fasteners)
+
+**Do this:**
+1. Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. For the cut list, redo every 'math' field and check each fastener spacing against the page it cites.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `hearth_muse_kern-snow-and-cut-list-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 10. PRIVACY · CA DROP ====================
+## 10. PRI-MUS-05 · Privacy: second reader on Gemini's the opt-out steps for the 13 brokers DROP misses and the Windows and Microsoft account settings
+
+**Due:** 2026-11-29 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file privacy_gemini_optouts_20261121-*.json (PRI-GEM-09: the opt-out steps for the 13 brokers DROP misses)
+- Gemini's file privacy_gemini_microsoft-settings_20261121-*.json (PRI-GEM-10: the Windows and Microsoft account settings)
+
+**Do this:**
+1. Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `privacy_muse_optouts-and-microsoft-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 11. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 11. AET-MUS-04 · Aether: second reader on Gemini's SCE's fall 2026 shut-offs for the circuits that serve Frazier Park
+
+**Due:** 2026-11-29 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file aether_gemini_psps-fall2026_20261121-*.json (AET-GEM-11: SCE's fall 2026 shut-offs for the circuits that serve Frazier Park)
+
+**Do this:**
+1. Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Open both CPUC post-event reports and search each for RIDGE, TEJON, FROZEN and GRAPEVINE PEAK.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `aether_muse_psps-fall2026-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 12. MONEY · PAYOFF SIMULATOR ====================
+## 12. MON-MUS-02 · Money: second reader on Gemini's the 25 issuers' published APR, late fee, minimum payment and penalty APR
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file money_gemini_issuer-pricing_20261121-*.json (MON-GEM-05: the 25 issuers' published APR, late fee, minimum payment and penalty APR)
+
+**Do this:**
+1. Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Where Gemini wrote 'not stated', look in the card agreement (CFPB's credit card agreement database) and give the value if it is there.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `money_muse_issuer-pricing-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 12
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 13. ICARUS STAKE ====================
+## 13. ICA-MUS-02 · Icarus: second reader on Gemini's the 2027 CPI and jobs-report dates (the FOMC dates are already confirmed) and the 20 trading rules
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file icarus_gemini_2027-macro-dates_20261121-*.json (ICA-GEM-11: the 2027 CPI and jobs-report dates (the FOMC dates are already confirmed))
+- Gemini's file icarus_gemini_trading-rules_20261121-*.json (ICA-GEM-12: the 20 trading rules)
+
+**Do this:**
+1. Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `icarus_muse_macro-and-rules-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 14. BOSSA PIANO STUDIO ====================
+## 14. PIA-MUS-02 · Piano: second reader on Gemini's the page and key of each tune and the first and definitive recordings
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file piano_gemini_bossa-keys_20261121-*.json (PIA-GEM-06: the page and key of each tune)
+- Gemini's file piano_gemini_recordings_20261121-*.json (PIA-GEM-07: the first and definitive recordings)
+
+**Do this:**
+1. Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `piano_muse_keys-and-recordings-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 15. CONTINUITY · SOVEREIGN VAULT ====================
+## 15. CON-MUS-03 · Continuity: second reader on Gemini's the Kern County recording checklist
+
+**Due:** 2026-11-30 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file continuity_gemini_kern-tod-recording_20261121-*.json (CON-GEM-07: the Kern County recording checklist)
+
+**Do this:**
+1. Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Check every fee against the Kern Recorder's own fee schedule.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `continuity_muse_kern-recording-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 16. APOLLO TEMPLE ====================
+## 16. APO-MUS-03 · Apollo: second reader on Gemini's the 30 NIH targets and upper limits for men 31-50 and 51-70
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file apollo_gemini_nutrient-targets_20261121-*.json (APO-GEM-11: the 30 NIH targets and upper limits for men 31-50 and 51-70)
+
+**Do this:**
+1. Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `apollo_muse_nutrient-targets-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 12
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 17. RECORDS · PAPER KILLER ====================
+## 17. REC-MUS-03 · Records: second reader on Gemini's the Texas-to-California move deadlines and forms
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file records_gemini_tx-to-ca_20261121-*.json (REC-GEM-08: the Texas-to-California move deadlines and forms)
+
+**Do this:**
+1. Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `records_muse_tx-to-ca-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 18. HERMES POST ====================
+## 18. HER-MUS-02 · Hermes: second reader on Gemini's the 40 dated official scam messages
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file hermes_gemini_scam-messages_20261121-*.json (HER-GEM-10: the 40 dated official scam messages)
+
+**Do this:**
+1. Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Check that each quote is the lure's own words as the page prints them, not the agency's description of it.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `hermes_muse_scam-messages-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 12
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 19. BASTION · MOUNTAIN PREP ====================
+## 19. BAS-MUS-04 · Bastion: second reader on Gemini's the official shelters and cooling or warming centres and the NOAA Weather Radio transmitters and the six official emergency checklists
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file bastion_gemini_shelters_20261121-*.json (BAS-GEM-07: the official shelters and cooling or warming centres)
+- Gemini's file bastion_gemini_weather-radio_20261121-*.json (BAS-GEM-08: the NOAA Weather Radio transmitters)
+- Gemini's file bastion_gemini_official-checklists_20261121-*.json (BAS-GEM-09: the six official emergency checklists)
+
+**Do this:**
+1. Open Gemini's files. Pick 18 rows at random across the files (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `bastion_muse_shelters-radio-lists-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 18
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 20. PRIVACY · CA DROP ====================
+## 20. PRI-MUS-06 · Privacy: second reader on Gemini's the Galaxy S24 Ultra hardening settings and each service's strongest sign-in
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file privacy_gemini_s24-hardening_20261121-*.json (PRI-GEM-11: the Galaxy S24 Ultra hardening settings)
+- Gemini's file privacy_gemini_signin-security_20261121-*.json (PRI-GEM-12: each service's strongest sign-in)
+
+**Do this:**
+1. Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Check each setting's path on the phone's own menus where you can, not only the help page.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `privacy_muse_s24-and-signin-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 21. LUDUS ARCADE ====================
+## 21. GAM-MUS-01 · Games: second reader on Gemini's Anno 117's updates, hotfixes and roadmap
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file games_gemini_anno117-updates_20261121-*.json (GAM-GEM-06: Anno 117's updates, hotfixes and roadmap)
+
+**Do this:**
+1. Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `games_muse_anno117-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 22. GARAGE ====================
+## 22. GAR-MUS-05 · Garage: second reader on Gemini's the 62 dashboard lights from the two owner's manuals
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file garage_gemini_lights_20261121-*.json (GAR-GEM-14: the 62 dashboard lights from the two owner's manuals)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `garage_muse_lights-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 23. SELLING PIPELINE ====================
+## 23. SEL-MUS-03 · Selling: second reader on Gemini's this year's postage and marketplace fees
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file selling_gemini_fees-2026_20261121-*.json (SEL-GEM-06: this year's postage and marketplace fees)
+
+**Do this:**
+1. Open Gemini's file. Pick 15 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Confirm on USPS's own pages when the holiday prices of 2026-10-04 end (2027-01-17 by the Federal Register notice), and say for each picked USPS row whether it is a holiday price.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `selling_muse_fees-2026-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 24. ATHENAEUM · IDEA VAULT ====================
+## 24. ATH-MUS-01 · Athenaeum: second reader on Gemini's Gemini's second reading of the 40 history entries
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file athenaeum_gemini_history-check_20261121-*.json (ATH-GEM-04: Gemini's second reading of the 40 history entries)
+
+**Do this:**
+1. Open Gemini's file. Pick 14 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Every one of the 14 rows marked differ or debated, plus any you pick: does the page say what Gemini says it says?
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `athenaeum_muse_history-check-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 14
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 25. POLIS · CIVIC & LEGAL WATCH ====================
+## 25. POL-MUS-03 · Polis: second reader on Gemini's the Board of Supervisors' 2026 mountain decisions
+
+**Due:** 2026-12-02 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file polis_gemini_board-2026_20261121-*.json (POL-GEM-08: the Board of Supervisors' 2026 mountain decisions)
+
+**Do this:**
+1. Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `polis_muse_board-2026-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 10
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 26. MIDAS LEDGER ====================
+## 26. MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** Claude adds the checked clauses to the parser's test material (the parser itself stays as it is).
+
+**Read first:**
+- Gemini's file midas_gemini_terms-corpus_20261121-*.json (MID-GEM-13)
+
+**Do this:**
+1. Pick 15 clauses at random (say how), covering every 'kind'.
+2. Open each URL and check the quote is the agreement's own words, and that 'kind' and 'means' say what the clause says.
+3. List any clause whose agreement date is not on the document.
+
+**Make:** `midas_muse_terms-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD)
+
+**Shape:** `markdown table: n | Gemini says | what I found | URL | agree/differ`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 15
+
+**Done when:** Every picked clause checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 27. FOUNDRY ====================
+## 27. FDY-MUS-02 · Foundry: second reader on Gemini's the stage-1 parts lists
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file foundry_gemini_stage1-parts_20261121-*.json (FDY-GEM-05: the stage-1 parts lists)
+
+**Do this:**
+1. Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Pick only Adafruit rows (Claude already checked the Pololu ones) and check price and part number on the product page.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `foundry_muse_stage1-parts-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 12
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 28. OBSERVATORY ====================
+## 28. OBS-MUS-02 · Observatory: second reader on Gemini's the 22 primary feeds
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file observatory_gemini_feeds_20261121-*.json (OBS-GEM-05: the 22 primary feeds)
+
+**Do this:**
+1. Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.
+2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
+3. Open each picked feed URL and say whether it is a live feed (RSS, Atom or JSON) and when its newest item is dated.
+4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `observatory_muse_feeds-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**One finished row, as an example (use your own data, never copy this):**
+
+```
+| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
+```
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 12
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field

@@ -473,7 +473,7 @@
      "review": "Done 2026-11-21 (Claude): All 22 dates agree with Kairos's independently sourced tax dates, the Apr 10 and Jan 15 rolls included; the two delinquency days were new and are now in Kairos. Score 10/10 (#81)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Records' mission covers TX->CA, but the pillar has no list of what a move from Texas obliges in California (and what to close in Texas).",
      "unlocks": "Records gets a move checklist with legal deadlines, which the renewal radar and Kairos can count down.",
@@ -559,7 +559,81 @@
      ],
      "id": "REC-GEM-08",
      "title": "Records: every record to change after moving from Texas to California, with its deadline",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): 27 deadlines and forms for the move, each on its .gov page. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#107)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-22",
+     "why": "The renewal radar counts down dates; it should know the rules behind them.",
+     "unlocks": "Records explains each renewal and when it can be done online.",
+     "inputs": [
+      "dmv.ca.gov pages for driver's licence renewal, vehicle registration renewal and REAL ID"
+     ],
+     "steps": [
+      "For each: how often, how early you can renew, when it must be in person, the fee where the page gives it, what to bring."
+     ],
+     "deliver": {
+      "file": "records_gemini_dmv-rules_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "licence, registration or REAL ID"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "the rule"
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "the number or condition"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All three covered from dmv.ca.gov.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "REC-GEM-09",
+     "title": "Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates)",
+     "due": "2026-12-05"
     }
    ]
   },
@@ -721,6 +795,52 @@
       "You did not change Gemini's file."
      ],
      "count": 15,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
+    },
+    {
+     "id": "REC-MUS-03",
+     "title": "Records: second reader on Gemini's the Texas-to-California move deadlines and forms",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-12-01",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file records_gemini_tx-to-ca_20261121-*.json (REC-GEM-08: the Texas-to-California move deadlines and forms)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 10 rows at random (every row if fewer), and say how you picked them.",
+      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "records_muse_tx-to-ca-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 10,
      "done_when": "Every picked item checked with where you looked.",
      "checks": [
       "Claude re-checks 3 of your differ lines."

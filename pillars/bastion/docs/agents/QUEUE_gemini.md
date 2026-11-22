@@ -2,7 +2,7 @@
 
 # Bastion · Mountain Prep · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -77,136 +77,35 @@ Updated 2026-11-21 15:56 UTC · 4 open · Rules for every pillar: https://github
 - a guess written as a fact (say 'not found' instead)
 - anything about Joseph's own accounts, balances, mail or records beyond what the task names
 
-## 2. BAS-GEM-07 · Bastion: shelters, warming and cooling centers for the mountain communities (Kern County's own lists)
+## 2. BAS-GEM-10 · Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman
 
-**Due:** 2026-11-30 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
-**Why:** When the power is out for days or a fire is near, Bastion should name the nearest official shelter or warming center, not a guess.
+**Why:** An evacuation order names a zone, not a town.
 
-**What it unlocks:** Bastion lists the official places to go, with who runs them and when they open.
+**What it unlocks:** Bastion shows the zone IDs to watch for.
 
 **Read first:**
-- Kern County Emergency Services, Kern County Public Health and Red Cross Central California pages
+- Genasys Protect (protect.genasys.com) zone lookup, Kern County OES and LA County OEM pages
 
 **Do this:**
-1. From Kern County's own pages (and the Red Cross shelter pages they link): every designated or regularly used evacuation shelter, warming center and cooling center serving Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman.
-2. For each: name, town, who runs it, when it opens (the trigger), pets allowed or not, and the page.
-3. Give the facility's public name and town only.
+1. For each town centre (not a house), find the zone ID(s) that cover it and who issues orders there.
+2. Say how to get alerts for that zone.
 
-**Make:** `bastion_gemini_shelters_{YYYYMMDD-HHMM}.json`
+**Make:** `bastion_gemini_evac-zones_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `name` (text): facility
-- `town` (text): community
-- `kind` (text): shelter / warming / cooling
-- `runs` (text): agency
-- `opens` (text): trigger as stated
-- `pets` (text): yes / no / not stated
-- `url` (URL): the official page
-- `quote` (text): under 300 characters, word for word
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every official place for the five communities, each with its page.
-
-**How Claude checks it:**
-- Claude opens rows at random against their pages.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 3. BAS-GEM-08 · Bastion: the NOAA Weather Radio station for Frazier Park (frequency and SAME code)
-
-**Due:** 2026-11-30 · **State:** now
-
-**Why:** A weather radio is the one alert that works with no power and no signal; Bastion should say which station and code to program.
-
-**What it unlocks:** Bastion's kit list gets the exact frequency and SAME code for the house.
-
-**Read first:**
-- https://www.weather.gov/nwr/ (station lists and county coverage)
-
-**Do this:**
-1. From the National Weather Service's own NOAA Weather Radio pages: the transmitter(s) that cover Frazier Park and the Tejon Pass area, their call signs, frequencies, power and the SAME codes for Kern County (and Ventura/Los Angeles counties if the area straddles them).
-2. Say which transmitter the NWS coverage map shows as reaching Frazier Park, quoting the page.
-
-**Make:** `bastion_gemini_weather-radio_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `call_sign` (text): e.g. WXL...
-- `frequency` (text): MHz
-- `site` (text): transmitter location
-- `same_code` (text): 6-digit code and county
-- `covers` (text): what the page says it covers
-- `url` (URL): the official page
-- `quote` (text): under 300 characters, word for word
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every transmitter and code that reaches the area, from weather.gov.
-
-**How Claude checks it:**
-- Claude opens rows at random against their pages.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 4. BAS-GEM-09 · Bastion: the official checklists for snowbound, PSPS, evacuation and the go-bag, item by item
-
-**Due:** 2026-12-02 · **State:** now
-
-**Why:** Bastion cross-checks readiness, but its lists are its own; the agencies publish theirs and they should be the yardstick.
-
-**What it unlocks:** Bastion marks each of its own items as on the official lists (or not) and adds what the agencies require that it lacks.
-
-**Read first:**
-- ready.gov, Cal OES (caloes.ca.gov / listos), Kern County Emergency Services, SCE's PSPS preparedness pages, Red Cross
-
-**Do this:**
-1. Copy every item from: Ready.gov's basic disaster supplies kit, Ready.gov's winter storm page, SCE's PSPS checklist, Cal OES / Listos evacuation go-bag, Kern County's evacuation checklist, Red Cross pet kit.
-2. One row per item per list, in the list's own words, with the list it comes from.
-3. Mark duplicates across lists in 'also_in'.
-
-**Make:** `bastion_gemini_official-checklists_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `list` (text): which official list
-- `item` (text): in its own words
-- `qty` (text): as stated or 'not stated'
-- `also_in` (text): other lists with the same item
-- `url` (URL): the official page or PDF
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `town` (text): as listed
+- `zones` (text): zone IDs, comma-separated
+- `issuer` (text): who orders evacuations
+- `alerts` (text): how to subscribe
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -215,7 +114,109 @@ Updated 2026-11-21 15:56 UTC · 4 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every item of the six lists, each quoted.
+**How many:** 5
+
+**Done when:** All 5 towns answered.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 3. BAS-GEM-11 · Bastion: every official alert channel for the area, how to sign up and what each sends
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** Knowing early is most of being ready.
+
+**What it unlocks:** Bastion's checklist gets a sign-up row per channel.
+
+**Read first:**
+- ReadyKern / Alert Kern, Alert LA County, Wireless Emergency Alerts (FCC), SCE outage and PSPS alerts, Caltrans QuickMap, NWS Hanford and Los Angeles, Genasys
+
+**Do this:**
+1. For each channel: who runs it, what it sends (evacuation, weather, power, roads), and the exact sign-up path.
+
+**Make:** `bastion_gemini_alert-channels_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `channel` (text): name
+- `runs` (text): agency or company
+- `sends` (text): what alerts
+- `signup` (text): the steps
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every channel listed with its sign-up.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 4. BAS-GEM-12 · Bastion: Kern County's defensible-space rules (Zone 0, 1 and 2) and the inspection
+
+**Due:** 2026-12-06 · **State:** now
+
+**Why:** Frazier Park is in a very high fire hazard zone; the rules are the checklist.
+
+**What it unlocks:** Bastion's fire checklist lists each zone's rules and when Kern Fire inspects.
+
+**Read first:**
+- CAL FIRE defensible space (readyforwildfire.org, fire.ca.gov)
+- Kern County Fire Department defensible space and weed abatement pages (kerncountyfire.org)
+- PRC 4291 (leginfo; say if blocked)
+
+**Do this:**
+1. Each rule for Zone 0 (0-5 ft), Zone 1 (5-30 ft) and Zone 2 (30-100 ft), word for word.
+2. Kern Fire's inspection season, the deadline, and the fine or abatement if not met.
+
+**Make:** `bastion_gemini_defensible-space_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `zone` (text): 0, 1, 2 or inspection
+- `rule` (text): the rule
+- `source` (text): CAL FIRE, Kern Fire or PRC 4291
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every zone's rules and Kern's inspection terms.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

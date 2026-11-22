@@ -2,44 +2,40 @@
 
 # Garage · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. GAR-GEM-14 · Garage: every warning and indicator light on both vehicles, from the owner's manuals
+## 1. GAR-GEM-15 · Garage: fluid capacities and specs for both vehicles, from the owner's manuals
 
-**Due:** 2026-11-30 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** When a light comes on, Garage should say what it means and what to do, from the manual, without searching.
+**Why:** The service log should say what goes in and how much.
 
-**What it unlocks:** Garage gets a light finder: tap the symbol's name, read the manual's meaning, the urgency and the action.
+**What it unlocks:** Garage's service cards show the right oil, coolant and pressures.
 
 **Read first:**
-- The 2025 Kia Sorento Hybrid owner's manual (Kia's own PDF, the same one GAR-GEM-08 used)
-- The 2021 Yamaha MT-07 owner's manual (Yamaha's own PDF)
+- Kia's 2025 Sorento Hybrid owner's manual (owners.kia.com or kiatechinfo.com), Yamaha's 2021 MT-07 owner's manual (yamaha-motor.com)
 
 **Do this:**
-1. List every warning and indicator light in the instrument-cluster chapter of both manuals (expect 50+ for the Sorento Hybrid, 15+ for the MT-07), including the hybrid-system and EV-mode lights.
-2. For each: the name as the manual gives it, its colour, what it means, what the manual tells you to do, and how urgent (stop now / see a dealer soon / information).
-3. Give the manual page for each, printed and PDF.
+1. For each vehicle: engine oil (spec and capacity with filter), coolant (type and capacity), brake fluid, transmission or final drive, tyre sizes and cold pressures, spark plugs.
+2. Copy each from the manual's specifications page.
 
-**Make:** `garage_gemini_lights_{YYYYMMDD-HHMM}.json`
+**Make:** `garage_gemini_fluids_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `vehicle` (text): 2025 Sorento Hybrid / 2021 MT-07
-- `light` (text): name as in the manual
-- `colour` (text): red / amber / green / blue / white
-- `means` (text): manual's words
-- `do` (text): manual's action
-- `urgency` (text): stop now / soon / information
-- `page` (text): printed page, PDF page
-- `url` (URL): the official page or PDF
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `vehicle` (text): 2025 Sorento Hybrid or 2021 MT-07
+- `item` (text): what it is
+- `spec` (text): grade or type
+- `amount` (text): with its unit, or 'not stated'
+- `page` (text): the manual's page
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -48,7 +44,7 @@ Updated 2026-11-21 15:56 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every light in both manuals' cluster chapters.
+**Done when:** Both vehicles' specifications pages covered.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

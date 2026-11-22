@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21 15:56 UTC",
+ "updated": "2026-11-22 03:21 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -8,7 +8,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/",
    "open": {
     "grok": 1,
-    "gemini": 3,
+    "gemini": 4,
     "muse": 2,
     "chatgpt": 0,
     "argon": 0,
@@ -39,7 +39,7 @@
    "open": {
     "grok": 3,
     "gemini": 1,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 1,
     "argon": 0,
     "hydrogen": 0,
@@ -52,9 +52,9 @@
    "state": "live",
    "live": "https://jpavia10.github.io/titan-reliquary-preview/",
    "open": {
-    "grok": 23,
-    "gemini": 10,
-    "muse": 13,
+    "grok": 20,
+    "gemini": 7,
+    "muse": 17,
     "chatgpt": 0,
     "argon": null,
     "hydrogen": null
@@ -67,8 +67,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
    "open": {
     "grok": 1,
-    "gemini": 2,
-    "muse": 0,
+    "gemini": 3,
+    "muse": 1,
     "chatgpt": 1,
     "argon": 0,
     "hydrogen": 0,
@@ -83,7 +83,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 1,
+    "muse": 2,
     "chatgpt": 1,
     "argon": 0,
     "hydrogen": 0,
@@ -98,7 +98,7 @@
    "open": {
     "grok": 1,
     "gemini": 1,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -113,7 +113,7 @@
    "open": {
     "grok": 1,
     "gemini": 1,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 1,
     "argon": 0,
     "hydrogen": 0,
@@ -127,8 +127,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/selling/",
    "open": {
     "grok": 1,
-    "gemini": 1,
-    "muse": 0,
+    "gemini": 2,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -143,7 +143,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -157,8 +157,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/icarus/",
    "open": {
     "grok": 1,
-    "gemini": 2,
-    "muse": 0,
+    "gemini": 1,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -172,8 +172,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
    "open": {
     "grok": 1,
-    "gemini": 1,
-    "muse": 0,
+    "gemini": 2,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -187,8 +187,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/piano/",
    "open": {
     "grok": 1,
-    "gemini": 2,
-    "muse": 1,
+    "gemini": 1,
+    "muse": 2,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -203,7 +203,7 @@
    "open": {
     "grok": 1,
     "gemini": 4,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -218,7 +218,7 @@
    "open": {
     "grok": 1,
     "gemini": 1,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -247,8 +247,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/privacy/",
    "open": {
     "grok": 1,
-    "gemini": 4,
-    "muse": 1,
+    "gemini": 1,
+    "muse": 3,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -278,7 +278,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -308,7 +308,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -323,7 +323,7 @@
    "open": {
     "grok": 1,
     "gemini": 2,
-    "muse": 0,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -337,7 +337,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kin/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 0,
     "muse": 0,
     "chatgpt": 1,
     "argon": 0,
@@ -360,7 +360,7 @@
    "open": {
     "grok": 1,
     "gemini": 3,
-    "muse": 1,
+    "muse": 2,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -374,8 +374,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/polis/",
    "open": {
     "grok": 1,
-    "gemini": 2,
-    "muse": 0,
+    "gemini": 3,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,
@@ -389,7 +389,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/mythos/",
    "open": {
     "grok": 1,
-    "gemini": 1,
+    "gemini": 0,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -405,7 +405,7 @@
    "open": {
     "grok": 2,
     "gemini": 1,
-    "muse": 1,
+    "muse": 2,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,

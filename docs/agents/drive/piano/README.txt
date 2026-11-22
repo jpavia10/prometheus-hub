@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - PIA-GRK-02 · Bossa Piano Studio: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,39 +16,39 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 15:56 UTC · 2 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
-- PIA-GEM-06 · Piano: the key and page for every bossa source that said 'not stated' · due 2026-11-28
-    make: piano_gemini_bossa-keys_{YYYYMMDD-HHMM}.json · how many: 0 · done when: One row for every PIANO_SOURCES row that lacked a page or key.
-- PIA-GEM-07 · Piano: the reference recording for each of the 24 bossa tunes (first and definitive) · due 2026-12-02
-    make: piano_gemini_recordings_{YYYYMMDD-HHMM}.json · how many: 24 · done when: 24 tunes, each with its first recording dated from MusicBrainz or the label.
+- PIA-GEM-08 · Piano: the published key for the 24 Bossa Nova tunes still 'not stated' · due 2026-12-03
+    make: piano_gemini_bossa-keys-2_{YYYYMMDD-HHMM}.json · how many: 24 · done when: All 24 tunes answered: a key with its page, or 'not stated' with the pages checked.
 
 ## Muse
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 2 open in this pillar.
 
 
 - PIA-MUS-01 · Piano: second reader on Gemini's 'where each of the 24 bossa tunes is legally printed' · due 2026-11-28
     make: piano_muse_bossa-sources-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked row checked with where you looked.
+- PIA-MUS-02 · Piano: second reader on Gemini's the page and key of each tune and the first and definitive recordings · due 2026-11-30
+    make: piano_muse_keys-and-recordings-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Bossa Piano Studio right now.
 
 ## Argon
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Bossa Piano Studio right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Bossa Piano Studio right now.

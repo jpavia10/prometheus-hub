@@ -220,9 +220,10 @@
      "why": "The Forge says what is out and due; if it miscounts, the owner's view of every AI's load is wrong.",
      "unlocks": "Claude fixes every builder bug you find, with a regression test.",
      "inputs": [
-      "https://jpavia10.github.io/prometheus-hub/pillars/forge/",
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/forge.json (the snapshot)",
-      "the pillars' docs/agents/queues.json files and Titan's docs/agents/QUEUE_*.md pages"
+      "https://jpavia10.github.io/prometheus-hub/pillars/forge/ (what the Forge shows)",
+      "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/forge.json (the snapshot; github.com pages, not raw.githubusercontent.com, which your browser blocks)",
+      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars (open <pillar>/docs/agents/queues.json from there; the hub's own is docs/agents/queues.json)",
+      "https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/agents (Titan's QUEUE_gemini.md, QUEUE_muse.md, QUEUE_grok.md; there is no QUEUE_claude.md)"
      ],
      "steps": [
       "Pick 30 tasks at random across at least 12 pillars and Titan (show your random method).",
@@ -293,7 +294,8 @@
      ],
      "id": "FOR-GEM-05",
      "title": "Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch",
-     "due": "2026-12-02"
+     "due": "2026-12-04",
+     "note": "Run 4 (2026-11-21) could not open raw.githubusercontent.com: use the github.com pages above. Claude, 2026-11-22."
     }
    ]
   },

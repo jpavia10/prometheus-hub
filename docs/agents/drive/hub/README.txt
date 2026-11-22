@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 
 - HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,19 +16,21 @@ Updated 2026-11-21 15:56 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-21 15:56 UTC · 3 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 4 open in this pillar.
 
 
 - HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins) · due 2026-11-23
     make: bakeoff_{yourmodel}_main_{YYYYMMDD-HHMM}.json · how many: 30 · done when: All 30 answered and saved.
 - HUB-GEM-12 · TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins) · due 2026-11-23
     make: bakeoff_{yourmodel}_locked_{YYYYMMDD-HHMM}.json · how many: 15 · done when: All 15 answered and saved.
-- HUB-GEM-15 · Hub: accessibility audit of 10 pages at phone width (WCAG 2.2 AA), every finding with its selector · due 2026-12-03
-    make: hub_gemini_a11y-audit_{YYYYMMDD-HHMM}.json · how many: 0 · done when: 30+ findings, each with selector, criterion and measurement.
+- HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes · due 2026-12-01
+    make: hub_gemini_a11y-recheck_{YYYYMMDD-HHMM}.json · how many: 40 · done when: All 40 re-measured.
+- HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet · due 2026-12-06
+    make: hub_gemini_a11y-audit-2_{YYYYMMDD-HHMM}.json · how many: 68 · done when: 4 findings for each of the 17 pages, each with a measurement.
 
 ## Muse
 
-Updated 2026-11-21 15:56 UTC · 2 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 2 open in this pillar.
 
 
 - HUB-MUS-03 · Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940) · due 2026-11-23
@@ -38,21 +40,21 @@ Updated 2026-11-21 15:56 UTC · 2 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Prometheus Hub right now.
 
 ## Argon
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Prometheus Hub right now.
 
 ## Hydrogen
 
-Updated 2026-11-21 15:56 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Prometheus Hub right now.

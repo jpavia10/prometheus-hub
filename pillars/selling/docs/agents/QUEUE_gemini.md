@@ -2,43 +2,39 @@
 
 # Selling Pipeline · homework for Gemini
 
-Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. SEL-GEM-06 · Selling: 2026 shipping and seller-fee tables (USPS Ground Advantage and Priority, eBay, Mercari, Facebook)
+## 1. SEL-GEM-08 · Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception
 
-**Due:** 2026-12-01 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** Selling is shipping-only; its net-payout math depends on postage by weight and zone and each marketplace's current fees, which changed in 2026.
+**Why:** Run 4's eBay rows are general; coins and bullion have their own rates and caps.
 
-**What it unlocks:** Selling's net calculator uses this year's real postage and fees.
+**What it unlocks:** Selling's calculator uses the right rate for a coin.
 
 **Read first:**
-- USPS Notice 123 (pe.usps.com) and the USPS retail price pages
-- eBay, Mercari and Facebook Marketplace seller fee pages
+- eBay's selling fees page (ebay.com/help/selling/fees-credits-invoices/selling-fees) and its category table
 
 **Do this:**
-1. USPS 2026: Ground Advantage and Priority Mail prices, retail and commercial, for 4 oz, 8 oz, 12 oz, 15.99 oz, 1 lb, 2 lb, 3 lb, 5 lb, zones 1-2 to 9, as Notice 123 prints them.
-2. Marketplaces: the final value / selling fee percentages, per-order fees, payment processing, shipping-label discounts, and any category exceptions for collectibles and coins.
-3. Quote the line or table row for each number.
+1. For Coins & Paper Money, and for bullion: the final value fee rate, the threshold above which it changes, the per-order fee, and any cap.
 
-**Make:** `selling_gemini_fees-2026_{YYYYMMDD-HHMM}.json`
+**Make:** `selling_gemini_ebay-coins_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `source` (text): USPS / eBay / Mercari / Facebook
-- `service` (text): e.g. Ground Advantage retail
-- `weight` (text): e.g. 12 oz, or 'n/a'
-- `zone` (text): e.g. 5, or 'n/a'
-- `amount` (text): price or percentage as printed
-- `effective` (date): YYYY-MM-DD
-- `url` (URL): the official page or PDF
-- `quote` (text): under 300 characters, word for word
+- `n` (number): 1, 2, 3 ...
+- `category` (text): as eBay names it
+- `rate` (text): % as printed
+- `threshold` (text): $ or 'none'
+- `per_order` (text): $ as printed
+- `effective` (date): YYYY-MM-DD or the page's date
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -47,7 +43,61 @@ Updated 2026-11-21 15:56 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** The full USPS grid asked for and every marketplace fee, each quoted.
+**Done when:** Coins, paper money and bullion all covered.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 2. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+
+**Due:** 2027-01-20 · **State:** now
+
+**Why:** Run 4's USPS table is the temporary holiday price of 2026-10-04 to 2027-01-17; on Jan 18 it is wrong.
+
+**What it unlocks:** Selling's net calculator keeps real postage after the holidays.
+
+**Read first:**
+- USPS Notice 123 (pe.usps.com/text/dmm300/notice123.htm) as it reads on or after 2027-01-18
+- The Federal Register notice of the holiday price (2026-10-04 to 2027-01-17)
+
+**Do this:**
+1. On or after 2027-01-18 open Notice 123.
+2. Copy Ground Advantage Retail and Priority Mail Retail for the same weights and zones as run 4.
+3. Give each row's effective date and, if the notice names one, its end date.
+
+**Make:** `selling_gemini_usps-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `service` (text): as Notice 123 names it
+- `weight` (text): as the row prints it
+- `zone` (text): 1 to 9, as the column header
+- `amount` (text): $0.00
+- `effective` (date): YYYY-MM-DD
+- `ends` (date or 'none stated'): YYYY-MM-DD
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** The same weights and zones as run 4, from the January 2027 notice.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.
