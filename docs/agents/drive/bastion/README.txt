@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
 
 
 - BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,11 +16,9 @@ Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-22 03:21 UTC · 4 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 3 open in this pillar.
 
 
-- BAS-GEM-05 · Bastion: a 72-hour kit for four people and pets, with shelf lives · due 2026-11-22 · DELIVERED 2026-11-18, waiting for its check (do not redo)
-    make: bastion_gemini_kit-items_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 rows exactly in the shape, every self-check line true.
 - BAS-GEM-10 · Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman · due 2026-12-04
     make: bastion_gemini_evac-zones_{YYYYMMDD-HHMM}.json · how many: 5 · done when: All 5 towns answered.
 - BAS-GEM-11 · Bastion: every official alert channel for the area, how to sign up and what each sends · due 2026-12-05
@@ -30,29 +28,29 @@ Updated 2026-11-22 03:21 UTC · 4 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
 
 
 - BAS-MUS-04 · Bastion: second reader on Gemini's the official shelters and cooling or warming centres and the NOAA Weather Radio transmitters and the six official emergency checklists · due 2026-12-01
-    make: bastion_muse_shelters-radio-lists-check_{YYYYMMDD-HHMM}.md · how many: 18 · done when: Every picked item checked with where you looked.
+    make: bastion_muse_shelters-radio-lists-check_{YYYYMMDD-HHMM}.md · how many: 23 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Bastion · Mountain Prep right now.
 
 ## Argon
 
-Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Bastion · Mountain Prep right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Bastion · Mountain Prep right now.

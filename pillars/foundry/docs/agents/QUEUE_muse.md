@@ -2,7 +2,7 @@
 
 # Foundry · homework for Muse
 
-Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-22 03:36 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -16,6 +16,7 @@ Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github
 
 **Read first:**
 - Gemini's file foundry_gemini_stage1-parts_20261121-*.json (FDY-GEM-05: the stage-1 parts lists)
+- Gemini's file foundry_gemini_prior-art_20261118-1940.json (FDY-GEM-03, delivered 2026-11-18): pick 5 more rows from it
 
 **Do this:**
 1. Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.
@@ -42,7 +43,7 @@ Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github
 - [ ] Every differ line says where you looked.
 - [ ] You did not change Gemini's file.
 
-**How many:** 12
+**How many:** 17
 
 **Done when:** Every picked item checked with where you looked.
 

@@ -80,7 +80,7 @@
     {
      "id": "FDY-GEM-03",
      "title": "Foundry: prior art for each of the 11 inventions",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-23",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Foundry shows, on each build, what already exists, so Joseph builds what is new.",
@@ -162,7 +162,9 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
-     ]
+     ],
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Prior art for all 11 inventions; passes every check. not second-read yet (its pages are blocked from Claude's container); Muse checks it with this pillar's second-reader task. Score 10/10 (#122)."
     },
     {
      "id": "FDY-GEM-04",
@@ -583,7 +585,8 @@
      "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
      "unlocks": "Claude builds from the file only after this check.",
      "inputs": [
-      "Gemini's file foundry_gemini_stage1-parts_20261121-*.json (FDY-GEM-05: the stage-1 parts lists)"
+      "Gemini's file foundry_gemini_stage1-parts_20261121-*.json (FDY-GEM-05: the stage-1 parts lists)",
+      "Gemini's file foundry_gemini_prior-art_20261118-1940.json (FDY-GEM-03, delivered 2026-11-18): pick 5 more rows from it"
      ],
      "steps": [
       "Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.",
@@ -608,7 +611,7 @@
       "Every differ line says where you looked.",
       "You did not change Gemini's file."
      ],
-     "count": 12,
+     "count": 17,
      "done_when": "Every picked item checked with where you looked.",
      "checks": [
       "Claude re-checks 3 of your differ lines."

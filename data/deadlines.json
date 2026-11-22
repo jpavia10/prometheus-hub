@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22 03:21 UTC",
+ "updated": "2026-11-22 03:36 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -33,61 +33,6 @@
    "title": "Audit Midas v2 on the made-up book: 20 findings",
    "state": "now",
    "count": 20
-  },
-  {
-   "due": "2026-11-20",
-   "pillar": "records",
-   "pillar_name": "Records · Paper Killer",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "REC-GEM-04",
-   "title": "Records: how long to keep each kind of household paper",
-   "state": "now",
-   "count": 40
-  },
-  {
-   "due": "2026-11-21",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-09",
-   "title": "Argus Album: the rules for Titan's Phase 2 pro coin photos",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "bastion",
-   "pillar_name": "Bastion · Mountain Prep",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "BAS-GEM-05",
-   "title": "Bastion: a 72-hour kit for four people and pets, with shelf lives",
-   "state": "now",
-   "count": 40
-  },
-  {
-   "due": "2026-11-22",
-   "pillar": "observatory",
-   "pillar_name": "Observatory",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "OBS-GEM-03",
-   "title": "Observatory: primary sources for each subject Observatory watches",
-   "state": "now",
-   "count": 64
-  },
-  {
-   "due": "2026-11-23",
-   "pillar": "foundry",
-   "pillar_name": "Foundry",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "FDY-GEM-03",
-   "title": "Foundry: prior art for each of the 11 inventions",
-   "state": "now",
-   "count": 55
   },
   {
    "due": "2026-11-23",
@@ -736,7 +681,7 @@
    "id": "BAS-MUS-04",
    "title": "Bastion: second reader on Gemini's the official shelters and cooling or warming centres and the NOAA Weather Radio transmitters and the six official emergency checklists",
    "state": "now",
-   "count": 18
+   "count": 23
   },
   {
    "due": "2026-12-01",
@@ -839,6 +784,17 @@
   },
   {
    "due": "2026-12-03",
+   "pillar": "argus",
+   "pillar_name": "Argus Album",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "ARG-MUS-04",
+   "title": "Argus: second reader on Gemini's Phase 2 coin photo rules and its phone-metadata list",
+   "state": "now",
+   "count": 12
+  },
+  {
+   "due": "2026-12-03",
    "pillar": "foundry",
    "pillar_name": "Foundry",
    "ai": "muse",
@@ -846,7 +802,7 @@
    "id": "FDY-MUS-02",
    "title": "Foundry: second reader on Gemini's the stage-1 parts lists",
    "state": "now",
-   "count": 12
+   "count": 17
   },
   {
    "due": "2026-12-03",
@@ -868,7 +824,7 @@
    "id": "OBS-MUS-02",
    "title": "Observatory: second reader on Gemini's the 22 primary feeds",
    "state": "now",
-   "count": 12
+   "count": 17
   },
   {
    "due": "2026-12-03",

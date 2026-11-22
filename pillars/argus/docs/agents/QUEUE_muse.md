@@ -2,8 +2,48 @@
 
 # Argus Album · homework for Muse
 
-Updated 2026-11-22 03:21 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-22 03:36 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Muse in Argus Album right now. Check your HOMEWORK doc for the other pillars.
+## 1. ARG-MUS-04 · Argus: second reader on Gemini's Phase 2 coin photo rules and its phone-metadata list
+
+**Due:** 2026-12-03 · **State:** now
+
+**Why:** Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.
+
+**What it unlocks:** Claude builds from the files only after this check.
+
+**Read first:**
+- Gemini's file argus_gemini_coin-photo-rules_20261118-1940.json (ARG-GEM-09)
+- Gemini's file argus_gemini_s24-metadata_20261121-1300.json (ARG-GEM-11)
+
+**Do this:**
+1. Pick 12 rows at random across the two files (say how).
+2. Open each URL and compare every field with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in its exact shape.
+
+**Make:** `argus_muse_photo-rules-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 12
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a front page or a search page, or does not say what the row claims
+- a file saved anywhere but the folder named here, or under another name

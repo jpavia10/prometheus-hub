@@ -270,7 +270,7 @@
     {
      "id": "ARG-GEM-09",
      "title": "Argus Album: the rules for Titan's Phase 2 pro coin photos",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-21",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Argus checks every Phase 2 scan against these rules before it reaches Titan.",
@@ -352,7 +352,9 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
-     ]
+     ],
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): The Phase 2 pro coin photo rules; passes every check. not second-read yet (its pages are blocked from Claude's container); Muse checks it with this pillar's second-reader task. Score 10/10 (#125)."
     },
     {
      "id": "ARG-GEM-10",
@@ -718,6 +720,50 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "review": "Second read by Sebastian 2026-11-17: scored 6/10 (8 agree / 5 differ / 2 rows fetch-blocked 429, flagged in the check file for re-check). argus_muse_coin-photo-rules-check_20261117-1725.md in Argus incoming."
+    },
+    {
+     "id": "ARG-MUS-04",
+     "title": "Argus: second reader on Gemini's Phase 2 coin photo rules and its phone-metadata list",
+     "state": "now",
+     "added": "2026-11-22",
+     "due": "2026-12-03",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+     "unlocks": "Claude builds from the files only after this check.",
+     "inputs": [
+      "Gemini's file argus_gemini_coin-photo-rules_20261118-1940.json (ARG-GEM-09)",
+      "Gemini's file argus_gemini_s24-metadata_20261121-1300.json (ARG-GEM-11)"
+     ],
+     "steps": [
+      "Pick 12 rows at random across the two files (say how).",
+      "Open each URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in its exact shape."
+     ],
+     "deliver": {
+      "file": "argus_muse_photo-rules-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "self_check": [
+      "Every differ line says where you looked.",
+      "You did not change Gemini's file."
+     ],
+     "count": 12,
+     "done_when": "Every picked item checked with where you looked.",
+     "checks": [
+      "Claude re-checks 3 of your differ lines."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a file saved anywhere but the folder named here, or under another name"
+     ]
     }
    ]
   },

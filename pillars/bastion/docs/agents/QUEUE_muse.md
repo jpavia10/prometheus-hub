@@ -2,7 +2,7 @@
 
 # Bastion · Mountain Prep · homework for Muse
 
-Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-22 03:36 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -18,6 +18,7 @@ Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github
 - Gemini's file bastion_gemini_shelters_20261121-*.json (BAS-GEM-07: the official shelters and cooling or warming centres)
 - Gemini's file bastion_gemini_weather-radio_20261121-*.json (BAS-GEM-08: the NOAA Weather Radio transmitters)
 - Gemini's file bastion_gemini_official-checklists_20261121-*.json (BAS-GEM-09: the six official emergency checklists)
+- Gemini's file bastion_gemini_kit-items_20261118-1940.json (BAS-GEM-05, delivered 2026-11-18): pick 5 more rows from it
 
 **Do this:**
 1. Open Gemini's files. Pick 18 rows at random across the files (every row if fewer), and say how you picked them.
@@ -43,7 +44,7 @@ Updated 2026-11-22 03:21 UTC · 1 open · Rules for every pillar: https://github
 - [ ] Every differ line says where you looked.
 - [ ] You did not change Gemini's file.
 
-**How many:** 18
+**How many:** 23
 
 **Done when:** Every picked item checked with where you looked.
 

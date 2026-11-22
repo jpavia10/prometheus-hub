@@ -2,78 +2,11 @@
 
 # Foundry · homework for Gemini
 
-Updated 2026-11-22 03:21 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-22 03:36 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. FDY-GEM-03 · Foundry: prior art for each of the 11 inventions
-
-**Due:** 2026-11-23 · **State:** delivered 2026-11-18, waiting for its check: do not redo it unless a review reopens it
-
-**Why:** Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.
-
-**What it unlocks:** Foundry shows, on each build, what already exists, so Joseph builds what is new.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/foundry/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Read the 11 inventions in pillars/foundry (repo); five per invention, closest first.
-
-**Make:** `foundry_gemini_prior-art_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below and nothing else`
-
-**Every field, exactly:**
-- `invention` (text): the invention's title as in pillars/foundry
-- `n` (1-5): rank within the invention
-- `what` (text): patent or product name
-- `owner` (text): company or inventor
-- `year` (integer): filed or launched
-- `link` (URL): Google Patents page or the product's own page
-- `how_close` (text): one sentence: what it shares and what it does not
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-{
- "invention": "...",
- "n": 1,
- "what": "US 10,000,000 B2 ...",
- "owner": "...",
- "year": 2019,
- "link": "https://patents.google.com/...",
- "how_close": "..."
-}
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's or agency's own site (not a blog, forum, wiki or AI summary).
-- [ ] Every quote is copied word for word from that page and is on it now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Numbers have their unit in the field name or the unit field, never inside the text.
-- [ ] The file is valid JSON (or the exact markdown headings asked for) and is named exactly as asked.
-
-**How many:** 55
-
-**Done when:** 55 rows exactly in the shape, every self-check line true.
-
-**How Claude checks it:**
-- Claude opens 10 rows (or 10 claims) at random and compares them with their source.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (say 'not found' instead)
-- anything about Joseph's own accounts, balances, mail or records beyond what the task names
-
-## 2. FDY-GEM-06 · Foundry: the power budget for each stage-1 build, from the parts' datasheets
+## 1. FDY-GEM-06 · Foundry: the power budget for each stage-1 build, from the parts' datasheets
 
 **Due:** 2026-12-06 · **State:** now
 

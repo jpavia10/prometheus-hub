@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
 
 
 - ARG-GRK-03 · Argus Album: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
@@ -16,38 +16,37 @@ Updated 2026-11-22 03:21 UTC · 1 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-22 03:21 UTC · 2 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
 
 
-- ARG-GEM-09 · Argus Album: the rules for Titan's Phase 2 pro coin photos · due 2026-11-21 · DELIVERED 2026-11-18, waiting for its check (do not redo)
-    make: argus_gemini_coin-photo-rules_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 25 rows exactly in the shape, every self-check line true.
 - ARG-GEM-12 · Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default · due 2026-12-04
     make: argus_gemini_heif-support_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All four browsers and the S24's default answered.
 
 ## Muse
 
-Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
 
 
-No homework for Muse in Argus Album right now.
+- ARG-MUS-04 · Argus: second reader on Gemini's Phase 2 coin photo rules and its phone-metadata list · due 2026-12-03
+    make: argus_muse_photo-rules-check_{YYYYMMDD-HHMM}.md · how many: 12 · done when: Every picked item checked with where you looked.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Argus Album right now.
 
 ## Argon
 
-Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Argus Album right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:21 UTC · 0 open in this pillar.
+Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Argus Album right now.

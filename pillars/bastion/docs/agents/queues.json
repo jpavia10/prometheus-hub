@@ -161,7 +161,7 @@
     {
      "id": "BAS-GEM-05",
      "title": "Bastion: a 72-hour kit for four people and pets, with shelf lives",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-22",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Bastion's checklist uses real quantities and expiry checks instead of a generic list.",
@@ -255,7 +255,9 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
-     ]
+     ],
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): The 72-hour kit for four people and pets with shelf lives; passes every check. not second-read yet (its pages are blocked from Claude's container); Muse checks it with this pillar's second-reader task. Score 10/10 (#124)."
     },
     {
      "id": "BAS-GEM-06",
@@ -1064,7 +1066,8 @@
      "inputs": [
       "Gemini's file bastion_gemini_shelters_20261121-*.json (BAS-GEM-07: the official shelters and cooling or warming centres)",
       "Gemini's file bastion_gemini_weather-radio_20261121-*.json (BAS-GEM-08: the NOAA Weather Radio transmitters)",
-      "Gemini's file bastion_gemini_official-checklists_20261121-*.json (BAS-GEM-09: the six official emergency checklists)"
+      "Gemini's file bastion_gemini_official-checklists_20261121-*.json (BAS-GEM-09: the six official emergency checklists)",
+      "Gemini's file bastion_gemini_kit-items_20261118-1940.json (BAS-GEM-05, delivered 2026-11-18): pick 5 more rows from it"
      ],
      "steps": [
       "Open Gemini's files. Pick 18 rows at random across the files (every row if fewer), and say how you picked them.",
@@ -1088,7 +1091,7 @@
       "Every differ line says where you looked.",
       "You did not change Gemini's file."
      ],
-     "count": 18,
+     "count": 23,
      "done_when": "Every picked item checked with where you looked.",
      "checks": [
       "Claude re-checks 3 of your differ lines."

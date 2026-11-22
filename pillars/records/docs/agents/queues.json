@@ -114,7 +114,7 @@
     {
      "id": "REC-GEM-04",
      "title": "Records: how long to keep each kind of household paper",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-20",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Records sets a keep-until date on every document and says when it can be shredded.",
@@ -203,7 +203,9 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
-     ]
+     ],
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Claude opened 39 of the 40 cited pages: all 39 quotes are on them word for word. Lost a point: row 16's quote is 339 characters (max 300). Score 9/10 (#121)."
     },
     {
      "id": "REC-GEM-05",

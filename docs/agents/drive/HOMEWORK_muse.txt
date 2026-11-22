@@ -1,6 +1,6 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-22 03:21 UTC. 45 to do across 22 pillars.
+Updated 2026-11-22 03:36 UTC. 46 to do across 23 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -42,8 +42,9 @@ IN THIS ORDER:
 24. [Athenaeum · Idea Vault] ATH-MUS-01 · Athenaeum: second reader on Gemini's Gemini's second reading of the 40 history entries · due 2026-12-02
 25. [Polis · Civic & Legal Watch] POL-MUS-03 · Polis: second reader on Gemini's the Board of Supervisors' 2026 mountain decisions · due 2026-12-02
 26. [Midas Ledger] MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
-27. [Foundry] FDY-MUS-02 · Foundry: second reader on Gemini's the stage-1 parts lists · due 2026-12-03
-28. [Observatory] OBS-MUS-02 · Observatory: second reader on Gemini's the 22 primary feeds · due 2026-12-03
+27. [Argus Album] ARG-MUS-04 · Argus: second reader on Gemini's Phase 2 coin photo rules and its phone-metadata list · due 2026-12-03
+28. [Foundry] FDY-MUS-02 · Foundry: second reader on Gemini's the stage-1 parts lists · due 2026-12-03
+29. [Observatory] OBS-MUS-02 · Observatory: second reader on Gemini's the 22 primary feeds · due 2026-12-03
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-MUS-03 · Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940)
@@ -843,6 +844,7 @@ IN THIS ORDER:
 - Gemini's file bastion_gemini_shelters_20261121-*.json (BAS-GEM-07: the official shelters and cooling or warming centres)
 - Gemini's file bastion_gemini_weather-radio_20261121-*.json (BAS-GEM-08: the NOAA Weather Radio transmitters)
 - Gemini's file bastion_gemini_official-checklists_20261121-*.json (BAS-GEM-09: the six official emergency checklists)
+- Gemini's file bastion_gemini_kit-items_20261118-1940.json (BAS-GEM-05, delivered 2026-11-18): pick 5 more rows from it
 
 **Do this:**
 1. Open Gemini's files. Pick 18 rows at random across the files (every row if fewer), and say how you picked them.
@@ -868,7 +870,7 @@ IN THIS ORDER:
 - [ ] Every differ line says where you looked.
 - [ ] You did not change Gemini's file.
 
-**How many:** 18
+**How many:** 23
 
 **Done when:** Every picked item checked with where you looked.
 
@@ -1184,8 +1186,47 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 27. FOUNDRY ====================
-## 27. FDY-MUS-02 · Foundry: second reader on Gemini's the stage-1 parts lists
+==================== 27. ARGUS ALBUM ====================
+## 27. ARG-MUS-04 · Argus: second reader on Gemini's Phase 2 coin photo rules and its phone-metadata list
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** Claude builds from the files only after this check.
+
+**Read first:**
+- Gemini's file argus_gemini_coin-photo-rules_20261118-1940.json (ARG-GEM-09)
+- Gemini's file argus_gemini_s24-metadata_20261121-1300.json (ARG-GEM-11)
+
+**Do this:**
+1. Pick 12 rows at random across the two files (say how).
+2. Open each URL and compare every field with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in its exact shape.
+
+**Make:** `argus_muse_photo-rules-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+
+**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Before you save, check every one of these yourself:**
+- [ ] Every differ line says where you looked.
+- [ ] You did not change Gemini's file.
+
+**How many:** 12
+
+**Done when:** Every picked item checked with where you looked.
+
+**How Claude checks it:**
+- Claude re-checks 3 of your differ lines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+
+==================== 28. FOUNDRY ====================
+## 28. FDY-MUS-02 · Foundry: second reader on Gemini's the stage-1 parts lists
 
 **Due:** 2026-12-03 · **State:** now
 
@@ -1193,6 +1234,7 @@ IN THIS ORDER:
 
 **Read first:**
 - Gemini's file foundry_gemini_stage1-parts_20261121-*.json (FDY-GEM-05: the stage-1 parts lists)
+- Gemini's file foundry_gemini_prior-art_20261118-1940.json (FDY-GEM-03, delivered 2026-11-18): pick 5 more rows from it
 
 **Do this:**
 1. Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.
@@ -1219,7 +1261,7 @@ IN THIS ORDER:
 - [ ] Every differ line says where you looked.
 - [ ] You did not change Gemini's file.
 
-**How many:** 12
+**How many:** 17
 
 **Done when:** Every picked item checked with where you looked.
 
@@ -1229,8 +1271,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 28. OBSERVATORY ====================
-## 28. OBS-MUS-02 · Observatory: second reader on Gemini's the 22 primary feeds
+==================== 29. OBSERVATORY ====================
+## 29. OBS-MUS-02 · Observatory: second reader on Gemini's the 22 primary feeds
 
 **Due:** 2026-12-03 · **State:** now
 
@@ -1238,6 +1280,7 @@ IN THIS ORDER:
 
 **Read first:**
 - Gemini's file observatory_gemini_feeds_20261121-*.json (OBS-GEM-05: the 22 primary feeds)
+- Gemini's file observatory_gemini_sources_20261118-1940.json (OBS-GEM-03, delivered 2026-11-18): pick 5 more rows from it
 
 **Do this:**
 1. Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.
@@ -1264,7 +1307,7 @@ IN THIS ORDER:
 - [ ] Every differ line says where you looked.
 - [ ] You did not change Gemini's file.
 
-**How many:** 12
+**How many:** 17
 
 **Done when:** Every picked item checked with where you looked.
 

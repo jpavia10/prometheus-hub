@@ -1,6 +1,6 @@
 {
- "built": "2026-11-22T03:29:49Z",
- "checked": "2026-11-22T03:29:49Z",
+ "built": "2026-11-22T03:36:27Z",
+ "checked": "2026-11-22T03:36:27Z",
  "version": 2,
  "today": "2026-11-21",
  "sources": {
@@ -19,45 +19,45 @@
    "synced": "2026-11-19T20:47:40Z"
   },
   "titan_scores": 178,
-  "hub_scores": 120,
+  "hub_scores": 125,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 148,
+  "todo": 151,
   "late": 4,
   "due7": 72,
-  "delivered": 5,
+  "delivered": 0,
   "queued": 12,
   "withdrawn": 110
  },
  "per": {
   "Gemini": {
-   "todo": 50,
+   "todo": 52,
    "late": 0,
    "due7": 12,
-   "delivered": 5,
+   "delivered": 0,
    "queued": 2,
-   "done7": 119,
+   "done7": 124,
    "withdrawn": 68,
    "items": 594,
    "floor": 50,
    "by": {
     "hub": 45,
     "titan": 2,
-    "tproj": 3,
+    "tproj": 5,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 193,
-    "avg": 7.84,
+    "n": 198,
+    "avg": 7.88,
     "last10": 9.8,
     "last": {
      "ai": "Gemini",
-     "n": 120,
+     "n": 125,
      "date": "2026-11-22",
-     "what": "hub_gemini_a11y-audit_20261121-1335.json",
-     "task": "HUB-GEM-15",
+     "what": "argus_gemini_coin-photo-rules_20261118-1940.json",
+     "task": "ARG-GEM-09",
      "where": "Prometheus Hub",
      "score": 10.0
     }
@@ -96,17 +96,17 @@
    }
   },
   "Muse": {
-   "todo": 44,
+   "todo": 45,
    "late": 0,
    "due7": 19,
    "delivered": 0,
    "queued": 1,
    "done7": 8,
    "withdrawn": 16,
-   "items": 594,
+   "items": 621,
    "floor": 6,
    "by": {
-    "hub": 28,
+    "hub": 29,
     "titan": 15,
     "tproj": 1,
     "board": 0
@@ -331,7 +331,7 @@
   },
   "Records": {
    "todo": 3,
-   "delivered": 1,
+   "delivered": 0,
    "by": {
     "Gemini": 1,
     "Grok": 1,
@@ -367,7 +367,7 @@
   },
   "Bastion": {
    "todo": 5,
-   "delivered": 1,
+   "delivered": 0,
    "by": {
     "Gemini": 3,
     "Grok": 1,
@@ -402,10 +402,11 @@
    }
   },
   "Argus Album": {
-   "todo": 2,
-   "delivered": 1,
+   "todo": 3,
+   "delivered": 0,
    "by": {
     "Gemini": 1,
+    "Muse": 1,
     "Grok": 1
    }
   },
@@ -428,7 +429,7 @@
   },
   "Foundry": {
    "todo": 3,
-   "delivered": 1,
+   "delivered": 0,
    "by": {
     "Gemini": 1,
     "Grok": 1,
@@ -437,7 +438,7 @@
   },
   "Observatory": {
    "todo": 3,
-   "delivered": 1,
+   "delivered": 0,
    "by": {
     "Gemini": 1,
     "Grok": 1,
@@ -497,10 +498,10 @@
    }
   },
   "Titan": {
-   "todo": 37,
+   "todo": 39,
    "delivered": 0,
    "by": {
-    "Gemini": 5,
+    "Gemini": 7,
     "Grok": 14,
     "Muse": 16,
     "Gemini API": 2
@@ -5219,17 +5220,13 @@
    "pid": "records",
    "id": "REC-GEM-04",
    "title": "Records: how long to keep each kind of household paper",
-   "status": "delivered",
+   "status": "done",
    "due": "2026-11-20",
    "items": 40,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-22",
+   "review": "Done 2026-11-22 (Claude): Claude opened 39 of the 40 cited pages: all 39 quotes are on them word for word. Lost a point: row 16's quote is 339 characters (max 300). Score 9/10 (#121).",
    "reopened": "",
-   "delivered": {
-    "what": "records_gemini_retention_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
-    "by": "gemini",
-    "ts": "2026-11-18T19:40:00Z"
-   },
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -7190,17 +7187,13 @@
    "pid": "bastion",
    "id": "BAS-GEM-05",
    "title": "Bastion: a 72-hour kit for four people and pets, with shelf lives",
-   "status": "delivered",
+   "status": "done",
    "due": "2026-11-22",
    "items": 40,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-22",
+   "review": "Done 2026-11-22 (Claude): The 72-hour kit for four people and pets with shelf lives; passes every check. not second-read yet (its pages are blocked from Claude's container); Muse checks it with this pillar's second-reader task. Score 10/10 (#124).",
    "reopened": "",
-   "delivered": {
-    "what": "bastion_gemini_kit-items_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
-    "by": "gemini",
-    "ts": "2026-11-18T19:40:00Z"
-   },
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -7607,7 +7600,7 @@
    "title": "Bastion: second reader on Gemini's the official shelters and cooling or warming centres and the NOAA Weather Radio transmitters and the six official emergency checklists",
    "status": "todo",
    "due": "2026-12-01",
-   "items": 18,
+   "items": 23,
    "closed": "",
    "review": "",
    "reopened": "",
@@ -9315,17 +9308,13 @@
    "pid": "argus",
    "id": "ARG-GEM-09",
    "title": "Argus Album: the rules for Titan's Phase 2 pro coin photos",
-   "status": "delivered",
+   "status": "done",
    "due": "2026-11-21",
    "items": 25,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-22",
+   "review": "Done 2026-11-22 (Claude): The Phase 2 pro coin photo rules; passes every check. not second-read yet (its pages are blocked from Claude's container); Muse checks it with this pillar's second-reader task. Score 10/10 (#125).",
    "reopened": "",
-   "delivered": {
-    "what": "argus_gemini_coin-photo-rules_20261118-1940.json in Argus Album/incoming (AI drop files)",
-    "by": "gemini",
-    "ts": "2026-11-18T19:40:00Z"
-   },
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -9523,6 +9512,38 @@
      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
     ],
     "make": "argus_muse_coin-photo-rules-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+    "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
+    "done": "Every picked item checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/argus/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Argus Album",
+   "pid": "argus",
+   "id": "ARG-MUS-04",
+   "title": "Argus: second reader on Gemini's Phase 2 coin photo rules and its phone-metadata list",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+    "steps": [
+     "Pick 12 rows at random across the two files (say how).",
+     "Open each URL and compare every field with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in its exact shape."
+    ],
+    "make": "argus_muse_photo-rules-check_{YYYYMMDD-HHMM}.md",
     "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
     "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
     "done": "Every picked item checked with where you looked.",
@@ -10207,17 +10228,13 @@
    "pid": "foundry",
    "id": "FDY-GEM-03",
    "title": "Foundry: prior art for each of the 11 inventions",
-   "status": "delivered",
+   "status": "done",
    "due": "2026-11-23",
    "items": 55,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-22",
+   "review": "Done 2026-11-22 (Claude): Prior art for all 11 inventions; passes every check. not second-read yet (its pages are blocked from Claude's container); Muse checks it with this pillar's second-reader task. Score 10/10 (#122).",
    "reopened": "",
-   "delivered": {
-    "what": "foundry_gemini_prior-art_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
-    "by": "gemini",
-    "ts": "2026-11-18T19:40:00Z"
-   },
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -10436,7 +10453,7 @@
    "title": "Foundry: second reader on Gemini's the stage-1 parts lists",
    "status": "todo",
    "due": "2026-12-03",
-   "items": 12,
+   "items": 17,
    "closed": "",
    "review": "",
    "reopened": "",
@@ -10529,17 +10546,13 @@
    "pid": "observatory",
    "id": "OBS-GEM-03",
    "title": "Observatory: primary sources for each subject Observatory watches",
-   "status": "delivered",
+   "status": "done",
    "due": "2026-11-22",
    "items": 64,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-22",
+   "review": "Done 2026-11-22 (Claude): Primary sources for each subject. Lost a point: 'feed_url' is null on 58 rows where the field takes a URL (write the source's page and say it has no feed). not second-read yet (its pages are blocked from Claude's container); Muse checks it with this pillar's second-reader task. Score 9/10 (#123).",
    "reopened": "",
-   "delivered": {
-    "what": "observatory_gemini_sources_20261118-1940.json in Prometheus Hub/incoming (AI drop files)",
-    "by": "gemini",
-    "ts": "2026-11-18T19:40:00Z"
-   },
+   "delivered": null,
    "detail": {
     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
     "steps": [
@@ -10758,7 +10771,7 @@
    "title": "Observatory: second reader on Gemini's the 22 primary feeds",
    "status": "todo",
    "due": "2026-12-03",
-   "items": 12,
+   "items": 17,
    "closed": "",
    "review": "",
    "reopened": "",
@@ -15905,6 +15918,50 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-53",
+   "alias": "GT-FILL-q1",
+   "title": "Type gaps, round 2, part 1 of 2: items 1-60 of the 120 type fields Numista does not give",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-type-gaps-2.json, items 1 to 60 (part 1). In round 1 you read Numista for each and it did not give the field ('numista_read' says what you found). Now look in another catalogue: uCoin, Foronum, Colnect, the issuing mint's or central bank's own page, or a national catalogue. Fill the field as 'want' says, copying 'old' exactly as given ([] or null). When no catalogue gives it, send NOTHING for that item (no null line) and list it in your run report with the pages you read. Mintages: that year and that mint only, an integer. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/', provenance on every line with run_id 'GT-FILL-q1'. One line per filled item, in this form: {\"ts\":\"2026-11-22T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"type\",\"id\":\"<the item's type>\",\"op\":\"set\",\"field\":\"<the item's field>\",\"old\":<the item's old>,\"new\":<the value>,\"source\":\"<catalogue, entry and the line you read>\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"<the page URL>\"}],\"run_id\":\"GT-FILL-q1\"}}. A field whose record holds a range (weight_min_g and weight_max_g) is not filled with a single number.",
+    "done": "Items 1-60 answered: a filled line with its catalogue, or listed in the run report as not given anywhere; Claude opens 10.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-gemini-54",
+   "alias": "GT-FILL-q2",
+   "title": "Type gaps, round 2, part 2 of 2: items 61-120 of the 120 type fields Numista does not give",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-type-gaps-2.json, items 61 to 120 (part 2). In round 1 you read Numista for each and it did not give the field ('numista_read' says what you found). Now look in another catalogue: uCoin, Foronum, Colnect, the issuing mint's or central bank's own page, or a national catalogue. Fill the field as 'want' says, copying 'old' exactly as given ([] or null). When no catalogue gives it, send NOTHING for that item (no null line) and list it in your run report with the pages you read. Mintages: that year and that mint only, an integer. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/', provenance on every line with run_id 'GT-FILL-q2'. One line per filled item, in this form: {\"ts\":\"2026-11-22T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"type\",\"id\":\"<the item's type>\",\"op\":\"set\",\"field\":\"<the item's field>\",\"old\":<the item's old>,\"new\":<the value>,\"source\":\"<catalogue, entry and the line you read>\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"<the page URL>\"}],\"run_id\":\"GT-FILL-q2\"}}. A field whose record holds a range (weight_min_g and weight_max_g) is not filled with a single number.",
+    "done": "Items 61-120 answered: a filled line with its catalogue, or listed in the run report as not given anywhere; Claude opens 10.",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Gemini API",
    "src": "tproj",
    "where": "Titan",
@@ -18881,6 +18938,51 @@
    "date": "2026-11-22",
    "what": "hub_gemini_a11y-audit_20261121-1335.json",
    "task": "HUB-GEM-15",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 121,
+   "date": "2026-11-22",
+   "what": "records_gemini_retention_20261118-1940.json",
+   "task": "REC-GEM-04",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 122,
+   "date": "2026-11-22",
+   "what": "foundry_gemini_prior-art_20261118-1940.json",
+   "task": "FDY-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 123,
+   "date": "2026-11-22",
+   "what": "observatory_gemini_sources_20261118-1940.json",
+   "task": "OBS-GEM-03",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 124,
+   "date": "2026-11-22",
+   "what": "bastion_gemini_kit-items_20261118-1940.json",
+   "task": "BAS-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 125,
+   "date": "2026-11-22",
+   "what": "argus_gemini_coin-photo-rules_20261118-1940.json",
+   "task": "ARG-GEM-09",
    "where": "Prometheus Hub",
    "score": 10.0
   }

@@ -80,7 +80,7 @@
     {
      "id": "OBS-GEM-03",
      "title": "Observatory: primary sources for each subject Observatory watches",
-     "state": "now",
+     "state": "done",
      "due": "2026-11-22",
      "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
      "unlocks": "Observatory's Scan reads these feeds instead of a general news search.",
@@ -162,7 +162,9 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (say 'not found' instead)",
       "anything about Joseph's own accounts, balances, mail or records beyond what the task names"
-     ]
+     ],
+     "closed": "2026-11-22",
+     "review": "Done 2026-11-22 (Claude): Primary sources for each subject. Lost a point: 'feed_url' is null on 58 rows where the field takes a URL (write the source's page and say it has no feed). not second-read yet (its pages are blocked from Claude's container); Muse checks it with this pillar's second-reader task. Score 9/10 (#123)."
     },
     {
      "id": "OBS-GEM-04",
@@ -583,7 +585,8 @@
      "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
      "unlocks": "Claude builds from the file only after this check.",
      "inputs": [
-      "Gemini's file observatory_gemini_feeds_20261121-*.json (OBS-GEM-05: the 22 primary feeds)"
+      "Gemini's file observatory_gemini_feeds_20261121-*.json (OBS-GEM-05: the 22 primary feeds)",
+      "Gemini's file observatory_gemini_sources_20261118-1940.json (OBS-GEM-03, delivered 2026-11-18): pick 5 more rows from it"
      ],
      "steps": [
       "Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.",
@@ -608,7 +611,7 @@
       "Every differ line says where you looked.",
       "You did not change Gemini's file."
      ],
-     "count": 12,
+     "count": 17,
      "done_when": "Every picked item checked with where you looked.",
      "checks": [
       "Claude re-checks 3 of your differ lines."
