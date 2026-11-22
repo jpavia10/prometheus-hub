@@ -1,8 +1,8 @@
 {
- "built": "2026-11-22T03:36:27Z",
- "checked": "2026-11-22T03:36:27Z",
+ "built": "2026-11-22T11:16:26Z",
+ "checked": "2026-11-22T11:16:26Z",
  "version": 2,
- "today": "2026-11-21",
+ "today": "2026-11-22",
  "sources": {
   "queues": {
    "read": 26,
@@ -25,7 +25,7 @@
  "totals": {
   "todo": 151,
   "late": 4,
-  "due7": 72,
+  "due7": 83,
   "delivered": 0,
   "queued": 12,
   "withdrawn": 110
@@ -34,7 +34,7 @@
   "Gemini": {
    "todo": 52,
    "late": 0,
-   "due7": 12,
+   "due7": 15,
    "delivered": 0,
    "queued": 2,
    "done7": 124,
@@ -98,7 +98,7 @@
   "Muse": {
    "todo": 45,
    "late": 0,
-   "due7": 19,
+   "due7": 26,
    "delivered": 0,
    "queued": 1,
    "done7": 8,
@@ -161,7 +161,7 @@
   "Gemini API": {
    "todo": 2,
    "late": 0,
-   "due7": 0,
+   "due7": 1,
    "delivered": 0,
    "queued": 1,
    "done7": 0,
