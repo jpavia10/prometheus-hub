@@ -108,7 +108,7 @@
       gl.uniform1f(U.FY, FOCUS[o.id] || (acc && acc.fy != null ? acc.fy : 0.46)); gl.uniform1f(U.BAND, 0.19);
 
       var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var st = { px: 0, py: 0, tx: 0, ty: 0, z: o.dive ? 1.6 : 1.06, fl: o.dive ? 1 : 0, q: 1, slow: 0 }, z0 = st.z, fl0 = st.fl, tArr = performance.now();
+      var st = { px: 0, py: 0, tx: 0, ty: 0, z: o.dive ? 1.6 : 1.06, fl: o.dive ? 1 : 0, q: 1, slow: 0 }, z0 = st.z, fl0 = st.fl, tArr = 0;
       if (still) { st.z = 1; st.fl = 0; z0 = 1; fl0 = 0; }
       var scale = 0.8;
       function size() { var d = Math.min(1, devicePixelRatio || 1) * scale; cv.width = Math.round(innerWidth * d); cv.height = Math.round(innerHeight * d); gl.viewport(0, 0, cv.width, cv.height); }
@@ -125,12 +125,14 @@
         raf = 0; if (document.hidden) return;
         var dt = Math.min(0.1, (now - last) / 1000); last = now;
         /* the arrival settles over ~1.1 s; then the painting only breathes */
-        var age = (now - tArr) / 1000;   /* by the clock, not by frames: a slow phone settles in the same time */
+        /* by the clock, not by frames: a slow phone settles in the same time. The clock starts once the first frame is on screen
+           (2026-11-23): the first draw uploads three large textures and can take seconds on a slow device, which used to use up the arrival unseen */
+        var age = tArr ? (now - tArr) / 1000 : 0;
         st.z = 1 + (z0 - 1) * Math.exp(-age * 2.6); if (st.z - 1 < 0.0005) st.z = 1; st.fl = Math.max(0, fl0 * (1 - age * 1.1));
         st.px += (st.tx - st.px) * Math.min(1, dt * 3); st.py += (st.ty - st.py) * Math.min(1, dt * 3);
         var settling = Math.abs(st.z - 1) > 0.002 || st.fl > 0;
         if (now - lastDraw >= (settling ? 0 : 1000 / 30 - 2)) {
-          var c0 = performance.now(); draw(now); lastDraw = now; var cost = performance.now() - c0;
+          var c0 = performance.now(); draw(now); lastDraw = now; var cost = performance.now() - c0; if (!tArr) { tArr = performance.now(); st.zFirst = st.z; cost = 0; }   /* zFirst: the zoom of the first frame on screen (WORLD-1 reads it) */
           /* governor: a phone that cannot keep up drops the light shafts, then draws smaller */
           if (cost > 22 || dt > 0.06) st.slow += dt; else st.slow = Math.max(0, st.slow - dt * 0.5);
           if (st.slow > 1.5 && st.q) { st.q = 0; st.slow = 0; } else if (st.slow > 1.5 && scale > 0.55) { scale = 0.55; size(); st.slow = 0; }

@@ -187,14 +187,17 @@ with sync_playwright() as p:
             seen[pid] = po.evaluate("""() => ({ living: !!document.querySelector('canvas.pk-living'), still: !!document.querySelector('div.pk-world'),
               acc: getComputedStyle(document.body).getPropertyValue('--world-accent').trim(), wide: document.documentElement.scrollWidth })""")
         po.evaluate("sessionStorage.setItem('pk:dive', JSON.stringify({ id: 'garage', t: Date.now() }))")
-        po.goto(f"{URL}pillars/garage/", wait_until="load"); po.wait_for_selector("canvas.pk-living.arrive", state="attached", timeout=15000); po.wait_for_timeout(250)
-        z0 = po.evaluate("window.PKWorld.state.z"); t_set = po.evaluate("performance.now()")
+        po.goto(f"{URL}pillars/garage/", wait_until="load"); po.wait_for_selector("canvas.pk-living.arrive", state="attached", timeout=15000)
+        # 2026-11-23: the zoom of the first frame actually drawn (world.js zFirst), not a reading some time later: on a software renderer
+        # each frame blocks the page, so "250 ms after the canvas appears" could land after the whole settle (proofs-live run 45214067939)
+        po.wait_for_function("window.PKWorld.state && window.PKWorld.state.zFirst != null", timeout=15000)
+        z0 = po.evaluate("window.PKWorld.state.zFirst"); t_set = po.evaluate("performance.now()")
         po.wait_for_function("Math.abs(window.PKWorld.state.z - 1) < 0.01", timeout=8000)   # a slow runner draws few frames; wait for the settle
         z1 = po.evaluate("window.PKWorld.state.z"); settle = (po.evaluate("performance.now()") - t_set) / 1000
         ok = (all(seen[k]["living"] and seen[k]["acc"].startswith("hsl(") and seen[k]["wide"] <= 390 for k in ("kairos", "garage", "odyssey", "apollo", "sylade"))
               and not seen["athenaeum"]["living"] and seen["athenaeum"]["wide"] <= 390 and z0 > 1.05 and abs(z1 - 1) < 0.01 and not bo)
         proof("WORLD-1", "Every painted pillar opens on its own living painting (accent from the painting, no sideways scroll); Athenaeum keeps its own sky; from the menu's dive the painting arrives pushed in and settles",
-              ok, f"{ {k: (v['living'], v['acc'], v['wide']) for k, v in seen.items()} }; dive arrival zoom {z0:.2f} -> {z1:.3f} within {settle:.1f} s" + (f"; errors {bo[:2]}" if bo else ""))
+              ok, f"{ {k: (v['living'], v['acc'], v['wide']) for k, v in seen.items()} }; dive arrival: first frame on screen at zoom {z0:.2f}, settled to {z1:.3f} within {settle:.1f} s" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("WORLD-1", "The living painted header", False, "did not finish: " + str(e)[:200])
     co.close()
 
