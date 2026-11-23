@@ -64,7 +64,7 @@ body[data-pillar="hearth"] { --accent: #f2b879; --accent-2: #9fd4e6; }
    checkboxes to full width, which floats the glyph mid-row; set the box beside
    the entry instead, with the meta line ruled beneath the title. ---- */
 #app .kv label, .phase-card .row-actions label { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 4px 8px; }
-#app .kv label input[type="checkbox"], .phase-card .row-actions label input[type="checkbox"] { width: auto; flex: none; margin-top: 3px; }
+#app .kv label input[type="checkbox"], .phase-card .row-actions label input[type="checkbox"] { width: 24px; height: 24px; flex: none; margin-top: 0; }
 #app .kv label .stat-s { flex: 1 1 100%; padding-left: 25px; }
 
 /* ---- The deck ledger: numbered stages, done rows ruled off in green ---- */

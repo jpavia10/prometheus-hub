@@ -48,7 +48,7 @@
 .journey{margin:8px 0 0}
 .arc{width:100%;height:auto;display:block}
 .arc-line{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-dasharray:5 4}
-.arc-ghost{fill:none;stroke:color-mix(in srgb,var(--accent-2) 30%,transparent);stroke-width:1}
+.arc-ghost{fill:none;stroke:color-mix(in srgb,var(--accent-2) 48%,transparent);stroke-width:1}
 .arc-node{fill:var(--bg);stroke:var(--accent);stroke-width:1.6}
 .arc-code{fill:var(--ink);font-size:11px;font-weight:600;letter-spacing:.12em;font-family:var(--sans)}
 .arc-name{fill:var(--muted);font-size:9.5px;letter-spacing:.2em;font-family:var(--sans)}
@@ -56,7 +56,7 @@
 .tl-head{display:flex;justify-content:space-between;gap:8px;font-size:11px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;flex-wrap:wrap}
 .tl-mid{color:var(--accent)}
 .tl-track{display:flex;gap:2px;margin-top:7px}
-.tl-tick{flex:1;height:9px;border-radius:2px;background:color-mix(in srgb,var(--accent) 22%,transparent)}
+.tl-tick{flex:1;height:9px;border-radius:2px;background:color-mix(in srgb,var(--accent) 48%,transparent)}
 .tl-tick.end{background:var(--accent)}
 .legs{margin-top:10px;display:grid;gap:5px}
 .leg{display:flex;gap:12px;font-size:13.5px;align-items:baseline}
@@ -155,7 +155,7 @@
 .jr-th.on{opacity:1;box-shadow:0 0 0 2px var(--accent);transform:translateY(-2px)}
 .jr-th:hover{opacity:.9}
 .map-seg{transition:stroke-opacity .5s ease}
-.map-seg.todo{stroke-opacity:.18}
+.map-seg.todo{stroke-opacity:.5}
 .map-dot.has-ph{cursor:pointer}
 .map-dot.here{fill:var(--accent)}
 .map-here{fill:none;stroke:var(--accent);stroke-width:1.5;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;animation:jr-ping 1.8s ease-out infinite;pointer-events:none}

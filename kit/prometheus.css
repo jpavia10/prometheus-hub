@@ -211,6 +211,8 @@ body::after { content: ""; position: fixed; left: 0; right: 0; top: 0; height: 1
 .btn:not(.quiet) { box-shadow: 0 0 0 1px color-mix(in srgb, var(--cyan) 55%, transparent), 0 10px 26px -14px color-mix(in srgb, var(--cyan) 70%, transparent), inset 0 1px 0 rgba(255, 255, 255, .75); }
 input:focus, select:focus, textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 24%, transparent); outline: none; }
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }   /* WCAG 2.4.7 / 1.4.11 (Gemini audit HUB-GEM-15 #9, #26) */
+a:focus-visible, button:focus-visible, summary:focus-visible, [role="tab"]:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }   /* 2.4.7 on links, buttons and tabs too (Gemini fix queue #3) */
+input[type="checkbox"], input[type="radio"] { width: 24px; height: 24px; min-width: 24px; flex: none; accent-color: var(--accent); }   /* 2.5.8: 24 px targets in every pillar (fix queue #1) */
 html { scroll-padding-bottom: 120px; }   /* 2.4.11: a focused control never hides under the dock (#11, #20) */
 .pk-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .chip.on { box-shadow: 0 0 14px -3px var(--accent); }

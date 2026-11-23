@@ -50,7 +50,7 @@
 .wc-more { display: block; font-size: 10px; color: var(--muted); margin-top: 4px; }
 .wc-none { color: var(--faint); font-size: 12px; margin: 2px 0 0; }
 @media (max-width: 900px) { .wstrip { grid-template-columns: repeat(5, minmax(0, 1fr)); } .wcell { min-height: 94px; } }
-@media (max-width: 420px) { .wstrip { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .wstrip { grid-template-columns: repeat(2, minmax(0, 1fr)); } .wc-i { font-size: 12px; -webkit-line-clamp: 3; } }   /* 1.4.10 / 1.4.4 (fix queue #13) */
 
 /* ——— Every Deadline: the ruled distance rail ——— */
 .trail { position: relative; margin-top: 6px; }

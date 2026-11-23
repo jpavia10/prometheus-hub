@@ -56,7 +56,7 @@
 
       <div class="glass span-6"><h2>FB Marketplace "Shipping-Only" Copy Generator</h2>
         <p class="sub">Click "FB Copy" on any item below or preview here to copy clean buyer-ready text.</p>
-        <textarea id="s-copy-box" rows="6" readonly style="width:100%;margin-bottom:8px"></textarea>
+        <textarea id="s-copy-box" rows="6" readonly aria-label="Listing text for Facebook Marketplace" style="width:100%;margin-bottom:8px"></textarea>
         <div class="row-actions"><button class="btn small" id="s-copy-btn" type="button">Copy Listing Text</button></div>
       </div>
 
@@ -169,10 +169,10 @@
       supEl.append(h("div.kv", null,
         h("span", null, h("b", { className: low ? "down" : "" }, sp.name), low ? " [LOW STOCK]" : ""),
         h("span.row-actions", null,
-          h("button.btn.quiet.small", { type: "button", onclick: () => { S.update("supplies", sp.id, { qty: Math.max(0, (+sp.qty || 0) - 1) }); paint(); } }, "-1"),
+          h("button.btn.quiet.small", { type: "button", "aria-label": `One less ${sp.name}`, onclick: () => { S.update("supplies", sp.id, { qty: Math.max(0, (+sp.qty || 0) - 1) }); paint(); } }, "-1"),
           h("b", null, String(sp.qty)),
-          h("button.btn.quiet.small", { type: "button", onclick: () => { S.update("supplies", sp.id, { qty: (+sp.qty || 0) + 1 }); paint(); } }, "+1"),
-          h("button.btn.quiet.small", { type: "button", onclick: () => { S.remove("supplies", sp.id); paint(); } }, "×")
+          h("button.btn.quiet.small", { type: "button", "aria-label": `One more ${sp.name}`, onclick: () => { S.update("supplies", sp.id, { qty: (+sp.qty || 0) + 1 }); paint(); } }, "+1"),
+          h("button.btn.quiet.small", { type: "button", "aria-label": `Remove ${sp.name}`, onclick: () => { S.remove("supplies", sp.id); paint(); } }, h("span", { "aria-hidden": "true" }, "×"))
         )
       ));
     });

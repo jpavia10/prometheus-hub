@@ -120,8 +120,8 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) { ap
 /* ------------------------------------------------------------------ search and quick add (one input reaches anything) ------------------------------------------------------------------ */
 function openSearch() {
   if (sheetOpen()) return;
-  const input = h("input.search-input", { type: "search", placeholder: "A pillar, an idea, a date, or: dentist Tue 3pm", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event" });
-  const list = h("div.results", { role: "listbox", "aria-label": "Results" }); let items = []; let sel = 0;
+  const input = h("input.search-input", { type: "search", placeholder: "A pillar, an idea, a date, or: dentist Tue 3pm", autocomplete: "off", autocapitalize: "off", spellcheck: "false", enterkeyhint: "go", autofocus: true, "aria-label": "Search the deck or add an event", role: "combobox", "aria-autocomplete": "list", "aria-controls": "search-results", "aria-expanded": "true" });
+  const list = h("div.results", { id: "search-results", role: "listbox", "aria-label": "Results" }); let items = []; let sel = 0;
   const sh = sheet({ title: "Search · Add", tone: "search", body: h("div.stack", input, list) });
   const pick = (it) => {
     if (!it) return;

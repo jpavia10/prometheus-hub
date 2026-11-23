@@ -80,7 +80,7 @@
   function card(p) {
     const parts = p.parts || [], tot = cost(p), have = parts.filter((x) => x.have).length;
     const step = (d) => h("button.btn.quiet.small", { type: "button", disabled: d < 0 ? p.stage <= 0 : p.stage >= STAGES.length - 1, onclick: () => { const s = p.stage + d; S.update("projects", p.id, { stage: s, log: log(p, (d > 0 ? "Moved to " : "Back to ") + STAGES[s]) }); if (window.PB && PB.events) PB.events.publish({ type: "build.stage", pillar: "foundry", ref: p.id, title: `${p.title}: ${STAGES[s]}` }); paint(); } }, d < 0 ? "◀" : "▶");
-    const pname = h("input", { placeholder: "Part or material", maxlength: "80" }), pcost = h("input", { type: "number", min: "0", step: "0.01", placeholder: "Cost $" }), next = h("input", { value: p.next || "", maxlength: "160", placeholder: "The one next step" });
+    const pname = h("input", { placeholder: "Part or material", maxlength: "80", "aria-label": "Part or material" }), pcost = h("input", { type: "number", min: "0", step: "0.01", placeholder: "Cost $", "aria-label": "Part cost in dollars" }), next = h("input", { value: p.next || "", maxlength: "160", placeholder: "The one next step" });
     return h("div", { "data-project-id": p.id, style: "padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)" },
       h("div.kv", null, h("span", null, h("b", null, p.title), h("br"), h("span.stat-s", null, `${STAGES[p.stage]} · started ${p.started}${p.ideaId ? " · from Athenaeum" : ""}`)), h("span", null, step(-1), " ", step(1))),
       renderLinkBadges(p),

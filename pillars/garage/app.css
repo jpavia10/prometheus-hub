@@ -99,3 +99,6 @@
 .g-live .stat-s { flex: 1 1 220px; }
 .g-live .btn { flex: 0 0 auto; }
 .g-base .stat-strip > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* 1.4.10 at phone width (Gemini fix queue #12): long plate values wrap inside their cell instead of pushing the strip wider */
+@media (max-width: 520px) { .stat-strip > * { min-width: 0; } .plate-v { white-space: normal; overflow-wrap: anywhere; } }

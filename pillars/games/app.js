@@ -126,8 +126,8 @@
   };
   paintNext();
   app.append(nextList);
-  const tIn = h("input", { type: "text", placeholder: "Add a game to your queue…", maxlength: "120" });
-  const nIn = h("input", { type: "text", placeholder: "Note (optional)", maxlength: "200" });
+  const tIn = h("input", { type: "text", placeholder: "Add a game to your queue…", maxlength: "120", "aria-label": "Add a game to your queue" });
+  const nIn = h("input", { type: "text", placeholder: "Note (optional)", maxlength: "200", "aria-label": "Note (optional)" });
   app.append(h("form.g-add", { onsubmit: (e) => { e.preventDefault(); const t = tIn.value.trim(); if (!t) return; const l = S.get("backlog") || []; l.push({ id: Date.now().toString(36), title: t, note: nIn.value.trim() }); S.set("backlog", l); tIn.value = ""; nIn.value = ""; paintNext(); toast("Added to your queue."); } }, tIn, nIn, h("button.btn.small", { type: "submit" }, "Add")));
 
   /* ---- provenance ---- */

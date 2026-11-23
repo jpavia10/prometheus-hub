@@ -97,7 +97,7 @@ body.pk-v2 .ae-out { position: relative; padding-left: 15px; }
 .ae-events { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 .ae-ev { display: grid; gap: 2px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 12px; background: rgba(3, 5, 10, .35); transition: border-color .3s, opacity .3s; }
 .ae-ev b { font: 500 17px/1.2 var(--ae-mono); color: var(--ink); }
-.ae-ev.past { opacity: .74; }
+.ae-ev.past { opacity: .84; }   /* 1.4.3: past events stay above 4.5:1 (fix queue #9) */
 .ae-ev.next { border-color: color-mix(in srgb, var(--accent) 70%, transparent); box-shadow: 0 0 22px -8px var(--accent); }
 .ae-check { margin-top: 12px; }
 @keyframes ae-now { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }

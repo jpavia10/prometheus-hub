@@ -57,7 +57,7 @@
       <div class="glass span-6"><h2>Import Health Connect / Apple Health JSON</h2>
         <p class="sub">Paste or load JSON array/object of dated vitals ({date, steps, sleep, weight, calories, protein}). Merged safely on this device.</p>
         <form class="form" id="a-hc-form">
-          <label class="f wide"><textarea id="a-hc-json" rows="4" placeholder='[{"date":"2026-11-12","steps":9400,"sleep":7.8,"weight":181.5}]'></textarea></label>
+          <label class="f wide"><textarea id="a-hc-json" rows="4" aria-label="Health Connect JSON" placeholder='[{"date":"2026-11-12","steps":9400,"sleep":7.8,"weight":181.5}]'></textarea></label>
           <div class="wide row-actions"><button class="btn small" type="submit">Merge JSON</button><button class="btn quiet small" id="a-hc-file" type="button">Load JSON file</button></div>
         </form>
       </div>

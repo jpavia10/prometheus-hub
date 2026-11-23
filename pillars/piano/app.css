@@ -454,8 +454,11 @@ body[data-pillar="piano"] {
   body.pk-v2 .glass { padding: 14px; }
   #p-standards { max-height: 480px; }
   .p-seq-grid {
-    grid-template-columns: 36px repeat(16, minmax(0, 1fr));
+    grid-template-columns: 36px repeat(16, minmax(24px, 1fr));   /* 2.5.8 / 1.4.10: 24 px steps; the grid scrolls sideways inside itself (fix queue #28) */
     gap: 2px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 4px;
   }
   .p-seq-lbl { font-size: 9px; letter-spacing: .04em; }
   .p-prog-ribbon { grid-template-columns: repeat(2, minmax(0, 1fr)); }

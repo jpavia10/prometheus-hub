@@ -3,6 +3,7 @@
 .row-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .sub { font-size: 13px; color: var(--muted); }
 .pill { display: inline-block; padding: 1px 8px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); vertical-align: 2px; }
+button.pill, a.pill, .pill[role="button"] { min-height: 24px; min-width: 24px; display: inline-flex; align-items: center; padding: 3px 10px; cursor: pointer; font: inherit; font-size: 11px; }   /* 2.5.8 (fix queue #11) */
 .pill.hot { border-color: var(--accent); color: #fff; background: color-mix(in srgb, var(--accent) 22%, transparent); box-shadow: 0 0 12px -4px var(--accent); }
 
 /* The wall plate: the floor's totals, computed at render from the ledger and the queues. */
@@ -56,7 +57,7 @@ body[data-pillar="forge"] .arow { position: relative; padding-left: 14px; }
 .lnum { display: grid; justify-items: end; } .lnum b { font-size: 22px; font-variant-numeric: tabular-nums; line-height: 1; } .lnum small { font-size: 10.5px; color: var(--muted); white-space: nowrap; }
 .lrow.low .lnum b, .lrow.low .lnum small { color: var(--bad); }
 .seg { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
-.segb { padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: rgba(255,255,255,.03); color: var(--muted); font: inherit; font-size: 12px; cursor: pointer; }
+.segb { min-height: 32px; min-width: 32px; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line-strong); background: rgba(255,255,255,.03); color: var(--muted); font: inherit; font-size: 12px; cursor: pointer; }
 .segb.on { color: #fff; border-color: var(--accent); background: color-mix(in srgb, var(--accent) 22%, transparent); }
 .frow2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 8px; margin: 2px 0 10px; }
 .fsel, .fq { width: 100%; min-height: 38px; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--line-strong); background: rgba(255,255,255,.04); color: var(--ink); font: inherit; font-size: 13px; }

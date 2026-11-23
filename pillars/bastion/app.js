@@ -51,7 +51,7 @@
       </div>
       <div class="glass span-6"><h2>Paste-import a list</h2>
         <p class="stat-s">One item per line ("2x Name", "Name x2", "Name — 3"). Imported items land in bag at 0 oz until weighed.</p>
-        <textarea class="ta" id="b-paste" placeholder="2x Water filter&#10;Headlamp&#10;MRE — 4"></textarea>
+        <textarea class="ta" id="b-paste" aria-label="Paste an inventory list, one item per line" placeholder="2x Water filter&#10;Headlamp&#10;MRE — 4"></textarea>
         <div class="row-actions" style="margin-top:8px"><button class="btn" id="b-import-list" type="button">Import lines</button></div>
       </div>
       <div class="glass span-12"><h2>Readiness Checklists (Auto-Cross-Checked with Gear)</h2><div id="b-scen"></div></div>

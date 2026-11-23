@@ -81,3 +81,11 @@
   .dir-dom { grid-column: 1 / -1; }
   .desk-plate .dp-r { margin-left: 0; }
 }
+
+/* 1.4.10 at phone width (Gemini fix queue #24, #25): the directory stacks to one column and the due rows drop their fixed widths */
+@media (max-width: 520px) {
+  .dir-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .dir-row > :nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+  .dir-n { white-space: normal; overflow-wrap: anywhere; }
+  .damt, .dwhen { min-width: 0; }
+}
