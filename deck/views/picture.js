@@ -4,12 +4,12 @@
    The game menu (owner, 2026-11-16) is the other home; ?home=orbit|menu pins one for the proofs. */
 import { put, h, icon, plural } from "../core/ui.js";
 import { eventsSince } from "../core/reach.js";
-import { clock } from "../core/dates.js";
+import { clock, today } from "../core/dates.js";
 import { nowFacts } from "../core/now.js";
 import { untilText } from "./parts.js";
 import { boot } from "./orrery.js";
 import { realm } from "./realm.js";
-import { menu, unpin } from "./menu.js";
+import { menu, unpin, todayRowsFor } from "./menu.js";
 
 const ago = (iso) => { const m = Math.round((Date.now() - new Date(iso)) / 6e4); return m < 60 ? m + " min" : m < 1440 ? Math.round(m / 60) + " h" : Math.round(m / 1440) + " d"; };
 function homeMode() {
@@ -23,8 +23,8 @@ export function render(root, route, ctx) {
   const facts = nowFacts(now);
   const eventText = facts.event ? `${facts.event.title}, ${untilText(facts.event, now)}` : "none";
   const deadlineText = facts.deadline ? `${facts.deadline.title}, ${untilText(facts.deadline, now)}` : "none";
-  const nowLine = h("p.now-line", { "aria-label": `Now. Next event ${eventText}. Next deadline ${deadlineText}. ${facts.session.label}.` },
-    h("span.now-fact", h("b", "Next event"), " · " + eventText),
+  const nowLine = h("p.now-line" + (facts.event ? "" : ".one"), { "aria-label": `Now. Next event ${eventText}. Next deadline ${deadlineText}. ${facts.session.label}.` },
+    facts.event ? h("span.now-fact", h("b", "Next event"), " · " + eventText) : null,       /* 2026-11-23: no "Next event · none" line taking a row */
     h("span.now-fact", h("b", "Next deadline"), " · " + deadlineText),
     h("span.now-fact.now-session", facts.session.label));
 
@@ -48,9 +48,12 @@ export function render(root, route, ctx) {
       h("header.panel-head", h("h2", alerts[0].event), h("a.link", { href: "#/system" }, "Storm watch")),
       h("p.quiet", alerts[0].headline || "A weather alert is active."));
   } else {
-    card = h("section.panel.context-card", { "aria-label": "On this device" },
-      h("header.panel-head", h("h2", "On this device"), h("a.link", { href: "#/time" }, "Time")),
-      h("p.quiet", "The core is home. Runway, countdowns and focus are in Time. Storm, homestead and the counts are in System."));
+    /* 2026-11-23 (owner: the homes are "cool but need refinement"): the quiet card was a sentence about where things live; it is now
+       what is next across every pillar, the same rows as the menu's Today */
+    const { rows } = todayRowsFor(now, today(), 3, [facts.event && facts.event.title, facts.deadline && facts.deadline.title]);
+    card = h("section.panel.context-card.next-card", { "aria-label": "After that, across every pillar" },
+      h("header.panel-head", h("h2", "After that"), h("a.link", { href: "#/time/agenda" }, "Agenda")),
+      rows.length ? h("div.mn-trows", ...rows) : h("p.quiet", "Nothing dated yet. Add one with +."));
   }
 
   if (homeMode() !== "orbit") {

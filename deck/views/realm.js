@@ -32,7 +32,7 @@ void main(){
     float dep = texture2D(DEP, uv).r;
     vec2 u = uv + PAR * (dep - .42) * vec2(.014, .02);
     col = texture2D(IMG, u).rgb;
-    col = mix(vec3(.012, .016, .04), col, smoothstep(1.06, .995, uv.y) * smoothstep(-.06, .005, uv.y));
+    col = mix(vec3(.012, .016, .04), col, smoothstep(1.06, .995, uv.y) * smoothstep(-.06, .005, uv.y) * smoothstep(1.03, .998, uv.x) * smoothstep(-.03, .002, uv.x));
     float li = texture2D(LIT, u).r;
     float fl = .84 + .1 * sin(T * 2.3 + u.x * 47.) + .06 * sin(T * 5.7 + u.y * 63.);
     col += li * fl * vec3(1., .93, .82) * .28 + li * li * .1;
@@ -83,8 +83,13 @@ export function realm(ctx) {
   function paintCard() {
     const pl = places[sel];
     if (!pl) {
-      kick.textContent = `Prometheus · ${n} places`; title.textContent = "The realm"; sub.textContent = "Drag to look around, pinch to come closer, tap a place to go there.";
-      fact.textContent = "The pearl spire is the command: search or add."; syn.replaceChildren(); enterB.querySelector("span").textContent = "Go"; card.style.removeProperty("--h"); card.classList.remove("on"); return;
+      /* 2026-11-23: at rest the card says which places have something coming, soonest first (tap one to fly there), not how to use a map */
+      const due = places.map((q, i) => ({ q, i, nx: stats[q.p.id] && stats[q.p.id].next })).filter((x) => x.nx).sort((a, b) => a.nx.date.localeCompare(b.nx.date)).slice(0, 4);
+      kick.textContent = `Prometheus · ${n} places`; title.textContent = "The realm";
+      sub.textContent = due.length ? `Next: ${due[0].nx.title}` : "Drag to look around, pinch to come closer, tap a place to go there.";
+      fact.textContent = due.length ? "" : "The pearl spire is the command: search or add.";
+      syn.replaceChildren(...due.map((x) => h("button.rl-chip", { type: "button", style: { "--h": x.q.p.hue }, onclick: () => choose(x.i) }, (x.q.p.short || x.q.p.name.split(" · ")[0]) + " · " + (badgeFor(x.q.p, stats, t0d, tn) || ""))));
+      enterB.querySelector("span").textContent = "Go"; card.style.removeProperty("--h"); card.classList.remove("on"); return;
     }
     const f = factsFor(pl.p, stats, tn);
     kick.textContent = LABEL[pl.dom] || "Prometheus"; title.textContent = pl.p.name.split(" · ")[0]; sub.textContent = pl.p.what;
@@ -93,20 +98,21 @@ export function realm(ctx) {
     enterB.querySelector("span").textContent = pl.p.ext ? "Open" : "Enter"; card.style.setProperty("--h", pl.p.hue); card.classList.add("on");
   }
   function badges() { places.forEach((pl) => { const v = badgeFor(pl.p, stats, t0d, tn); pl.badge.hidden = !v; pl.badge.textContent = v || ""; }); }
-  badges(); titan().then((d) => { tn = d; badges(); if (sel >= 0) paintCard(); }); paintCard();
+  badges(); titan().then((d) => { tn = d; badges(); paintCard(); }); paintCard();
 
   /* the view: centre (cx, cy) in the painting, zoom over "the painting's height fills the stage" */
   const V = { cx: 0.5, cy: 0.5, z: 1, tcx: 0.5, tcy: 0.5, tz: 1, vx: 0, vy: 0, dive: 0 };
   let IRW = 6144, IRH = 2606, coreXY = [0.5, 0.44], idleAt = performance.now(), going = false;
   const base = () => stage.clientHeight / IRH;                               // css px per painting px at zoom 1
   const halfW = (z) => stage.clientWidth / 2 / (IRW * base() * z), halfH = (z) => stage.clientHeight / 2 / (IRH * base() * z);
-  const clampV = () => { const hw = halfW(V.tz), hh = halfH(V.tz), under = sel >= 0 ? lift() / (IRH * base() * V.tz) : 0;   // a chosen place may pull the view a little past the bottom so it clears the card
+  const zMin = () => Math.max(1, stage.clientWidth / Math.max(1, IRW * base()));   // 2026-11-23: a wide screen never sees past the painting's sides (they smeared)
+  const clampV = () => { V.tz = Math.max(zMin(), V.tz); const hw = halfW(V.tz), hh = halfH(V.tz), under = sel >= 0 ? lift() / (IRH * base() * V.tz) : 0;   // a chosen place may pull the view a little past the bottom so it clears the card
     V.tcx = Math.min(1 - hw, Math.max(hw, V.tcx)); V.tcy = Math.min(1 - hh + under, Math.max(hh, V.tcy)); };
   const lift = () => (card.offsetHeight + 12) / 2;                           // keep a chosen place above the card
   function focusOn(i, z) { const pl = places[i]; V.tz = z; V.tcx = pl.x; V.tcy = pl.y + lift() / (IRH * base() * z); clampV(); }
   function nearestToCentre() { let b = 0, bd = Infinity; places.forEach((pl, i) => { const d = Math.hypot(pl.x - V.cx, (pl.y - V.cy) * IRH / IRW); if (d < bd) { bd = d; b = i; } }); return b; }
   function choose(i) { if (i === sel) { enter(i); return; } sel = i; tick(); focusOn(i, stage.clientWidth / Math.max(1, stage.clientHeight) < 0.8 ? 2.1 : 1.6); idleAt = performance.now(); paintCard(); wake(); }
-  function overview() { sel = -1; V.tz = 1; clampV(); paintCard(); wake(); }
+  function overview() { sel = -1; V.tz = zMin(); clampV(); paintCard(); wake(); }
   function step(d) { choose(((sel < 0 ? (d > 0 ? -1 : 0) : sel) + d + n) % n); }
   function enter(i) {
     if (going) return; const pl = places[i]; going = true; blip(); sel = i; paintCard(); el.classList.add("diving");
@@ -143,7 +149,7 @@ export function realm(ctx) {
       if (pj) { places.forEach((pl) => { const xy = pj.places[pl.p.id]; if (xy) { pl.x = xy[0]; pl.y = xy[1]; } }); if (pj.core) coreXY = pj.core; }
       if (gl && im) { IRW = im.naturalWidth; IRH = im.naturalHeight; upload(0, im, true); if (dp) upload(1, dp, true); if (lt) upload(2, lt, true); has = 1; }
       else if (gl) el.classList.add("rl-flat");
-      V.cx = V.tcx = coreXY[0]; V.cy = V.tcy = 0.5; clampV(); V.cx = V.tcx; size(); wake();
+      V.cx = V.tcx = coreXY[0]; V.cy = V.tcy = 0.5; clampV(); V.cx = V.tcx; V.cy = V.tcy; V.z = V.tz; size(); wake();
     });
 
   const dprMax = Math.min(2, devicePixelRatio || 1); let dpr = dprMax;
@@ -176,7 +182,7 @@ export function realm(ctx) {
     core.style.transform = `translate3d(${((coreXY[0] - V.cx) * sc + w / 2).toFixed(1)}px, ${((coreXY[1] - V.cy) * scy + hh / 2).toFixed(1)}px, 0) translate(-50%, -50%)`;
     core.classList.toggle("far", V.z > 1.6);
     const cardTop = hh - card.offsetHeight - 14, order = places.map((pl, i) => i).sort((a, b) => Math.abs(places[a].sx - w / 2) - Math.abs(places[b].sx - w / 2)), placed = [];
-    for (const i of order) { const pl = places[i]; let show = pl.sx > 14 && pl.sx < w - 14 && pl.sy > 26 && pl.sy < cardTop;
+    for (const i of order) { const pl = places[i]; if (!pl.lw) pl.lw = pl.label.offsetWidth || 80; let show = pl.sx > 14 && pl.sx < w - 14 && pl.sy > 34 && pl.sy < cardTop && !(pl.sx - pl.lw / 2 < 120 && pl.sy < 96);   /* never under the Menu button */
       if (show && i !== sel) for (const q2 of placed) if (Math.abs(q2[0] - pl.sx) < 64 && Math.abs(q2[1] - pl.sy) < 20) { show = false; break; }
       if (show) placed.push([pl.sx, pl.sy]);
       pl.label.style.transform = `translate3d(${pl.sx.toFixed(1)}px, ${pl.sy.toFixed(1)}px, 0) translate(-50%, -8px)`;
@@ -189,7 +195,7 @@ export function realm(ctx) {
 
   /* touch: one finger pans (with a throw), two pinch around their middle, a wheel zooms at the pointer; a tap picks the place under it */
   const ptrs = new Map(); let downX = 0, downY = 0, moved = false, span = 0, lastMove = 0;
-  const zoomAt = (px, py, f) => { const w = stage.clientWidth, hh = stage.clientHeight, z0 = V.tz, z1 = Math.max(1, Math.min(4.5, z0 * f));
+  const zoomAt = (px, py, f) => { const w = stage.clientWidth, hh = stage.clientHeight, z0 = V.tz, z1 = Math.max(zMin(), Math.min(4.5, z0 * f));
     const ix = V.tcx + (px - w / 2) / (IRW * base() * z0), iy = V.tcy + (py - hh / 2) / (IRH * base() * z0);
     V.tz = z1; V.tcx = ix - (px - w / 2) / (IRW * base() * z1); V.tcy = iy - (py - hh / 2) / (IRH * base() * z1); clampV(); wake(); };
   const rel = (e) => { const r = stage.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };

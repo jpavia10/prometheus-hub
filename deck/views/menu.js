@@ -215,21 +215,26 @@ function emblem(p) {
   el.querySelector(".mn-hex").innerHTML = svg; return el;
 }
 
+/** Today: the next 24 h first, then the next real deadlines across every pillar (county, state and federal dates, bills, what the pillars
+    publish) with the days left; holidays only fill (2026-11-19: it used to show holidays and nothing else). Shared with the realm's card. */
+export function todayRowsFor(now, t, max = 3, skip = []) {
+  const skipT = new Set(skip.filter(Boolean));                                      /* titles already said elsewhere on the screen */
+  const soon = within(24, now).filter((r) => !r.done && !skipT.has(r.title)).slice(0, max); const seenK = new Set(soon.map((r) => r.key));
+  const left = (d) => { const n = Math.round((new Date(d + "T12:00:00") - new Date(t + "T12:00:00")) / 864e5); return n <= 0 ? "today" : n === 1 ? "tomorrow" : `${n} d`; };
+  const short = (d) => `${monName(Number(d.slice(5, 7)), 1)} ${Number(d.slice(8))}`;
+  const cd = countdowns(max + 3 + skipT.size, t).filter((r) => !seenK.has(r.key) && !skipT.has(r.title)).slice(0, Math.max(0, max - soon.length));
+  const rows = [...soon.map((r) => h("a.mn-trow", { href: r.go || `#/time/day/${r.date}` }, h("i.mn-dot" + ((r.weight || 0) >= 2 ? ".hard" : "")), h("b", r.title), h("small", untilText(r, now)))),
+    ...cd.map((r) => { const l = left(r.date), hot = r.tone !== "holiday" && /^(today|tomorrow|[1-7] d)$/.test(l);
+      return h("a.mn-trow", { href: r.go || "#/time/agenda", title: [r.title, r.agency].filter(Boolean).join(" · ") }, h("i.mn-dot" + (r.tone === "holiday" ? ".calm" : hot ? ".hard" : "")), h("b", r.title), h("small", `${short(r.date)} · ${l}`)); })];
+  return { rows, soon };
+}
+
 export function menu(ctx, opts = {}) {
   const t = today(), now = clock.now(); const st = pillarStats(t); const list = PILLARS.filter((p) => !p.paused);
   let at = Math.max(0, list.findIndex((p) => p.id === ls(AT))); let hasArt = new Set();
   const W = world(); const sky = document.getElementById("sky"); (sky && sky.parentNode ? sky.after(...W.els) : document.body.prepend(...W.els)); document.body.classList.add("menu-on");
 
-  /* Today: the next things across every pillar (the calendar, the bus, the bills), then the next big date */
-  /* Today: the next 24 h first, then the next real deadlines across every pillar (county, state and federal dates, bills, what the pillars
-     publish) with the days left; holidays only fill (2026-11-19: it used to show holidays and nothing else). */
-  const soon = within(24, now).filter((r) => !r.done).slice(0, 3); const seenK = new Set(soon.map((r) => r.key));
-  const left = (d) => { const n = Math.round((new Date(d + "T12:00:00") - new Date(t + "T12:00:00")) / 864e5); return n <= 0 ? "today" : n === 1 ? "tomorrow" : `${n} d`; };
-  const short = (d) => `${monName(Number(d.slice(5, 7)), 1)} ${Number(d.slice(8))}`;
-  const cd = countdowns(6, t).filter((r) => !seenK.has(r.key)).slice(0, Math.max(0, 3 - soon.length));
-  const todayRows = [...soon.map((r) => h("a.mn-trow", { href: r.go || `#/time/day/${r.date}` }, h("i.mn-dot" + ((r.weight || 0) >= 2 ? ".hard" : "")), h("b", r.title), h("small", untilText(r, now)))),
-    ...cd.map((r) => { const l = left(r.date), hot = r.tone !== "holiday" && /^(today|tomorrow|[1-7] d)$/.test(l);
-      return h("a.mn-trow", { href: r.go || "#/time/agenda", title: [r.title, r.agency].filter(Boolean).join(" · ") }, h("i.mn-dot" + (r.tone === "holiday" ? ".calm" : hot ? ".hard" : "")), h("b", r.title), h("small", `${short(r.date)} · ${l}`)); })];
+  const { rows: todayRows, soon } = todayRowsFor(now, t);
   const today_ = h("a.mn-today", { href: "#/time", "aria-label": "Today across every pillar" },
     h("span.mn-tk", h("span", "Today"), h("small", `${dowName(t, 1)} · ${monName(Number(t.slice(5, 7)), 1)} ${Number(t.slice(8))}`), h("small.mn-clear", soon.length ? `${within(24, now).filter((r) => !r.done).length} in the next 24 h` : "clear for 24 h")),
     todayRows.length ? h("span.mn-trows", ...todayRows) : h("span.mn-trows", h("span.mn-trow", h("i.mn-dot.calm"), h("b", "Nothing dated yet"), h("small", "add one with +"))));
@@ -241,7 +246,7 @@ export function menu(ctx, opts = {}) {
   const next = h("button.mn-arrow.next", { type: "button", "aria-label": "Next pillar", onclick: () => step(1) }, icon("right", 22));
   const card = h("div.mn-card", { "aria-live": "polite" }, kick, title, sub, what, live, h("div.mn-cta", enter));
   const strip = h("div.mn-strip", { role: "tablist", "aria-label": "Pillars" }, ...list.map((p, i) => h("button.mn-lvl", { type: "button", role: "tab", style: { "--h": p.hue }, dataset: { pillar: p.id }, "aria-label": p.name, onclick: () => { if (i === at) go(); else pick(i, true); } }, h("span.mn-lvl-ico", icon(p.icon, 18)), h("small", p.short))));
-  const orbitBtn = h("button.mn-mode", { type: "button", onclick: () => { tick(); ls("prom.deck.home", "orbit"); unpin(); opts.rerender && opts.rerender(); } }, icon("picture", 15), h("span", "Orbit"));
+  const orbitBtn = h("button.mn-mode", { type: "button", onclick: () => { tick(); ls("prom.deck.home", "orbit"); unpin(); opts.rerender && opts.rerender(); } }, icon("picture", 15), h("span", "Realm"));
   const more = h("button.mn-more", { type: "button", onclick: () => { const v = document.getElementById("view"); const b = document.getElementById("briefing"); if (v && b) v.scrollTo({ top: b.offsetTop - 70, behavior: still() ? "auto" : "smooth" }); } }, h("span", "Briefing"), icon("down", 14));
   const stage = h("div.mn-stage", prev, crest, next);
   const el = h("section.menu", { "aria-label": "Prometheus: the pillars" }, h("h1.pk-sr", "Prometheus Hub"), today_, stage, card, h("div.mn-foot", orbitBtn, h("span.mn-count"), more), strip);
@@ -250,7 +255,7 @@ export function menu(ctx, opts = {}) {
     const p = list[at]; const dom = domainOf(p.id); const dm = PILLAR_DOMAINS.find((d) => d.id === dom);
     el.style.setProperty("--h", p.hue); document.documentElement.style.setProperty("--menu-h", p.hue);
     const parts = p.name.split(" · ");
-    kick.textContent = `${dm ? dm.label : "Prometheus"}`; title.textContent = parts[0]; sub.textContent = TAG[p.id] || parts[1] || "";
+    kick.textContent = `${dm ? dm.label : "Prometheus"}`; title.textContent = parts[0]; title.style.setProperty("--len", Math.max(8, parts[0].length)); sub.textContent = TAG[p.id] || parts[1] || "";
     what.textContent = p.what; const setLive = (m) => { const L = liveLine(p, st, t, m); live.replaceChildren(h("i.mn-dot" + (L.hot ? ".hard" : "")), h("b", L.k), h("span", L.v)); };
     setLive(null); manifest(p).then((m) => { if (list[at] !== p || !m) return; if (m.mission) what.textContent = m.mission; setLive(m); });
     enter.querySelector("span").textContent = p.ext ? "Open" : "Enter";
