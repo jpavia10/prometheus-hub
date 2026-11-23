@@ -266,7 +266,9 @@ export function menu(ctx, opts = {}) {
   function go(e) {
     const p = list[at]; blip(); const r = (e && e.currentTarget ? e.currentTarget : enter).getBoundingClientRect();
     el.classList.add("diving");
-    W.dive(() => warp(r.left + r.width / 2, r.top + r.height / 2, hsl(p.hue, 100, 66), () => { location.href = p.route; }));
+    W.dive(() => warp(r.left + r.width / 2, r.top + r.height / 2, hsl(p.hue, 100, 66), () => {
+      try { sessionStorage.setItem("pk:dive", JSON.stringify({ id: p.id, t: Date.now() })); } catch (e) { /* private mode */ }   /* the pillar's living painting starts pushed in (kit/world.js) */
+      location.href = p.route; }));
   }
 
   /* swipe the world, arrows on a keyboard */

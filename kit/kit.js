@@ -598,6 +598,26 @@
     var src = (document.querySelector('script[src$="kit/kit.js"]') || {}).src;
     if (!slug || !src || (navigator.connection && navigator.connection.saveData)) return;
     var url = new URL("../art/worlds/world_" + slug + ".webp", src).href, im = new Image();
+    /* 2026-11-23 (owner chose "living painted header"): these pillars run their painting live (kit/world.js); arriving from the
+       menu's dive (sessionStorage pk:dive) it starts pushed in and settles back. The rest keep the still backdrop below. */
+    var LIVING = { kairos: 1, garage: 1, odyssey: 1 };
+    if (LIVING[slug] && !document.documentElement.classList.contains("is-embed")) {
+      var dive = false;
+      try { var dv = JSON.parse(sessionStorage.getItem("pk:dive") || "null"); sessionStorage.removeItem("pk:dive"); dive = !!(dv && dv.id === slug && Date.now() - dv.t < 6000); } catch (e) { /* none */ }
+      var s = document.createElement("script"); s.src = new URL("world.js", src).href;
+      s.onload = function () {
+        window.PKWorld.start({ id: slug, url: url, dive: dive, done: function (cv) {
+          var field = document.getElementById("field"); body.insertBefore(cv, field || body.firstChild); body.classList.add("has-world");
+          if (dive) cv.classList.add("arrive");
+          requestAnimationFrame(function () { requestAnimationFrame(function () { cv.classList.add("on"); }); });
+        } }).then(function (ok) { if (!ok) still(); });
+      };
+      s.onerror = still;
+      document.head.appendChild(s);
+      return;
+    }
+    still();
+    function still() {
     im.decoding = "async";
     im.onload = function () {
       var w = el("div", "pk-world"); w.setAttribute("aria-hidden", "true"); w.style.backgroundImage = 'url("' + url + '")';
@@ -605,6 +625,7 @@
       requestAnimationFrame(function () { requestAnimationFrame(function () { w.classList.add("on"); }); });
     };
     im.src = url;
+    }
   })();
 
   /* In-pillar Cmd+K / Ctrl+K Command Palette */
