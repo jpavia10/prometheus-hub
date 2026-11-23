@@ -387,7 +387,7 @@
       const countries = [...new Set(legs.map((l) => l.country).filter(Boolean))];
       const cover = ph.length ? `<img loading="lazy" decoding="async" src="photos/t/${ph[0].id}.webp" alt="">` : `<span class="ix-glyph" aria-hidden="true">${esc((t.dest || t.name || "?").slice(0, 1))}</span>`;
       return `<button class="ix-row${isPast(t) ? "" : " ahead"}" type="button" data-open="${esc(t.id)}">${cover}<span class="ix-b"><b>${esc(t.name)}</b>
-        <span class="ix-m">${span(t)} · ${n + 1} ${n ? "days" : "day"}${legs.length ? ` · ${legs.length} ${legs.length === 1 ? "stop" : "stops"}` : ""}${ph.length ? ` · ${ph.length} ${ph.length === 1 ? "photo" : "photos"}` : ""}</span>
+        <span class="ix-m">${span(t)} · ${n + 1}\u00a0${n ? "days" : "day"}${legs.length ? ` · ${legs.length}\u00a0${legs.length === 1 ? "stop" : "stops"}` : ""}${ph.length ? ` · ${ph.length}\u00a0${ph.length === 1 ? "photo" : "photos"}` : ""}</span>
         <span class="ix-c">${esc(countries.join(" · ") || t.dest || "")}</span></span><span class="ix-go" aria-hidden="true">›</span></button>`;
     }).join("");
     const years = [...new Set(trips.map((t) => t.start.slice(0, 4)))].sort();
