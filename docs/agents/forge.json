@@ -1,8 +1,8 @@
 {
- "built": "2026-11-23T04:04:37Z",
- "checked": "2026-11-23T04:04:37Z",
+ "built": "2026-11-23T14:29:53Z",
+ "checked": "2026-11-23T14:29:53Z",
  "version": 2,
- "today": "2026-11-22",
+ "today": "2026-11-23",
  "sources": {
   "queues": {
    "read": 26,
@@ -25,7 +25,7 @@
  "totals": {
   "todo": 150,
   "late": 4,
-  "due7": 80,
+  "due7": 87,
   "delivered": 0,
   "queued": 12,
   "withdrawn": 110
@@ -98,7 +98,7 @@
   "Muse": {
    "todo": 47,
    "late": 0,
-   "due7": 26,
+   "due7": 33,
    "delivered": 0,
    "queued": 1,
    "done7": 8,
