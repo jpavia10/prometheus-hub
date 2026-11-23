@@ -2,88 +2,37 @@
 
 # Forge · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. FOR-GEM-06 · Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge
+## 1. FOR-GEM-07 · Forge: the DONE markers from Nov 23 to Dec 7 against the Forge
 
-**Due:** 2026-12-01 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** On Nov 23 Claude found nine of your Nov 21 files (the Odyssey photo work and both coin-photo tests) that the Forge still showed as 'to do' two days later: the Forge reads GitHub, not Drive, and your DONE_ markers sit in Drive.
+**Why:** FOR-GEM-06 showed 50 deliveries the Forge never saw; Claude now searches Drive at every intake, and this checks it worked.
 
-**What it unlocks:** Nothing you deliver waits unseen again: Claude checks your list at every catch-up.
+**What it unlocks:** Proof the Forge and Drive agree.
 
 **Read first:**
-- Drive: search for files named DONE_*.json modified after 2026-11-16 (every folder)
-- The Forge: https://jpavia10.github.io/prometheus-hub/pillars/forge/ (each task's state)
+- Every DONE_*.json in the hub's and Titan's Drive incoming folders created 2026-11-23 to 2026-12-07
+- The live Forge https://jpavia10.github.io/prometheus-hub/pillars/forge/
 
 **Do this:**
-1. List every DONE_ marker: its name, its folder, its date, and the file it points to.
-2. For each, the task's state on the Forge today (to do, delivered, done, withdrawn).
-3. Flag every one where Drive says done but the Forge says to do.
+1. For each marker: the task, the date, and what the Forge shows for it.
 
-**Make:** `forge_gemini_done-markers_{YYYYMMDD-HHMM}.json`
+**Make:** `forge_gemini_done-markers-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per marker`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (integer): row
-- `marker` (text): file name
-- `folder` (text): Drive folder
-- `date` (date): modified
-- `task` (text): task id
-- `file` (text): the delivery it points to
-- `forge_state` (text): as the Forge shows it today
-- `mismatch` (text): 'yes' or 'no'
-
-**Before you save, check every one of these yourself:**
-- [ ] Every DONE_ marker since Nov 16, none left out.
-- [ ] The file is valid JSON and named exactly as asked.
-
-**Done when:** Every marker listed.
-
-**How Claude checks it:**
-- Claude searches Drive for the same markers and compares the counts.
-
-**Not done (sent back) if:**
-- a marker left out
-
-## 2. FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch
-
-**Due:** 2026-12-04 · **State:** now
-
-**Why:** The Forge says what is out and due; if it miscounts, the owner's view of every AI's load is wrong.
-
-**What it unlocks:** Claude fixes every builder bug you find, with a regression test.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/forge/ (what the Forge shows)
-- https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/forge.json (the snapshot; github.com pages, not raw.githubusercontent.com, which your browser blocks)
-- https://github.com/jpavia10/prometheus-hub/tree/main/pillars (open <pillar>/docs/agents/queues.json from there; the hub's own is docs/agents/queues.json)
-- https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/agents (Titan's QUEUE_gemini.md, QUEUE_muse.md, QUEUE_grok.md; there is no QUEUE_claude.md)
-
-**Do this:**
-1. Pick 30 tasks at random across at least 12 pillars and Titan (show your random method).
-2. For each, compare what the Forge shows (status, due, late flag, owner, item count, score when closed) with the task's own queue entry.
-3. Report every mismatch with both values and the file:line on each side; a match is a row too ('agree').
-
-**Make:** `forge_gemini_audit_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per task checked, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `task` (text): task id
-- `field` (text): status / due / late / owner / items / score
-- `forge_says` (text): what the Forge shows
-- `queue_says` (text): what the queue says
-- `verdict` (text): agree / mismatch
-- `where` (text): file:line on both sides
+- `n` (number): 1, 2, 3 ...
+- `task` (text): 
+- `marker_date` (date): YYYY-MM-DD
+- `forge_status` (text): as the Forge shows it
+- `agree` (text): yes or no
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -92,12 +41,10 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 30
-
-**Done when:** 30 tasks compared field by field.
+**Done when:** Every marker in the window.
 
 **How Claude checks it:**
-- Claude re-checks every mismatch.
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field

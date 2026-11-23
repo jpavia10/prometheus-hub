@@ -2,26 +2,25 @@
 
 # Garage · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. GAR-GEM-15 · Garage: fluid capacities and specs for both vehicles, from the owner's manuals
+## 1. GAR-GEM-16 · Garage: the six fluid and part specs still 'not stated'
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
-**Why:** The service log should say what goes in and how much.
+**Why:** Run 6 left the Sorento's spark plugs and octane and the MT-07's brake fluid, transmission/clutch oil and fork oil unstated.
 
-**What it unlocks:** Garage's service cards show the right oil, coolant and pressures.
+**What it unlocks:** Garage's fluids table is complete.
 
 **Read first:**
-- Kia's 2025 Sorento Hybrid owner's manual (owners.kia.com or kiatechinfo.com), Yamaha's 2021 MT-07 owner's manual (yamaha-motor.com)
+- The 2025 Sorento Hybrid owner's manual (kiatechinfo.com, chapter 'Specifications'), the 2021 MT-07 owner's manual (library.ymcapps.net), and Yamaha's MT-07 service manual pages if public
 
 **Do this:**
-1. For each vehicle: engine oil (spec and capacity with filter), coolant (type and capacity), brake fluid, transmission or final drive, tyre sizes and cold pressures, spark plugs.
-2. Copy each from the manual's specifications page.
+1. For each of the six: the spec as the manual prints it, the page, the words.
 
-**Make:** `garage_gemini_fluids_{YYYYMMDD-HHMM}.json`
+**Make:** `garage_gemini_fluids-gaps_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -29,11 +28,10 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `vehicle` (text): 2025 Sorento Hybrid or 2021 MT-07
-- `item` (text): what it is
-- `spec` (text): grade or type
-- `amount` (text): with its unit, or 'not stated'
-- `page` (text): the manual's page
+- `vehicle` (text): 
+- `item` (text): as in run 6
+- `spec` (text): as printed
+- `page` (text): 
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -44,7 +42,9 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Both vehicles' specifications pages covered.
+**How many:** 6
+
+**Done when:** All six answered, or 'not stated' with every manual page checked.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

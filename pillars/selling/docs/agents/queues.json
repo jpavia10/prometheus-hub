@@ -495,7 +495,7 @@
      "due": "2027-01-20"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Run 4's eBay rows are general; coins and bullion have their own rates and caps.",
      "unlocks": "Selling's calculator uses the right rate for a coin.",
@@ -574,7 +574,9 @@
      ],
      "id": "SEL-GEM-08",
      "title": "Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#141)"
     }
    ]
   },

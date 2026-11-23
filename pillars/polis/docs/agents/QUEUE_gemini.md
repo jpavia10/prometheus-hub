@@ -2,63 +2,11 @@
 
 # Polis · Civic & Legal Watch · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. POL-GEM-09 · Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities
-
-**Due:** 2026-12-06 · **State:** now
-
-**Why:** Planning decisions shape the towns before the Board ever votes.
-
-**What it unlocks:** Polis's record covers the Planning Commission too.
-
-**Read first:**
-- Kern County Planning Commission agendas and actions (kernplanning.com or kerncounty.com)
-
-**Do this:**
-1. Go through every 2026 Planning Commission meeting.
-2. One row per item in Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods, Pinon Pines or the Tejon Ranch area, with the outcome and the vote.
-
-**Make:** `polis_gemini_planning-2026_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `date` (date): YYYY-MM-DD
-- `item` (text): the agenda number
-- `subject` (text): what it is about
-- `place` (text): the community
-- `outcome` (text): approved, denied, continued...
-- `vote` (text): the tally or 'not stated'
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** Every 2026 meeting checked.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
+## 1. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -109,7 +57,7 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 3. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+## 2. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
 
 **Due:** 2027-01-15 · **State:** now
 

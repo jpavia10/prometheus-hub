@@ -2,25 +2,25 @@
 
 # Records · Paper Killer · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. REC-GEM-09 · Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates)
+## 1. REC-GEM-10 · Records: renewing a US passport in 2026 (online and DS-82), fees and processing times
 
 **Due:** 2026-12-05 · **State:** now
 
-**Why:** The renewal radar counts down dates; it should know the rules behind them.
+**Why:** Odyssey's next Philippines trip needs a passport valid six months past arrival; Records keeps the renewal rules.
 
-**What it unlocks:** Records explains each renewal and when it can be done online.
+**What it unlocks:** Records shows when to renew and what it costs.
 
 **Read first:**
-- dmv.ca.gov pages for driver's licence renewal, vehicle registration renewal and REAL ID
+- travel.state.gov (renew online, DS-82, fees, processing times)
 
 **Do this:**
-1. For each: how often, how early you can renew, when it must be in person, the fee where the page gives it, what to bring.
+1. Who can renew online and by mail, the fees (book, card, expedite, 1-2 day delivery), the current processing times, what to send.
 
-**Make:** `records_gemini_dmv-rules_{YYYYMMDD-HHMM}.json`
+**Make:** `records_gemini_passport_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -28,9 +28,8 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `record` (text): licence, registration or REAL ID
-- `rule` (text): the rule
-- `value` (text): the number or condition
+- `rule` (text): 
+- `value` (text): 
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -41,7 +40,56 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** All three covered from dmv.ca.gov.
+**Done when:** Every rule on travel.state.gov's renewal pages.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 2. REC-GEM-11 · Records: Kern County property tax, the bills and deadlines a homeowner gets in a year
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** The Today panel already shows Kern's tax deadlines; Records should explain each bill (secured, supplemental, the homeowners' exemption).
+
+**What it unlocks:** Each Kern tax deadline links to what it is.
+
+**Read first:**
+- Kern County Treasurer-Tax Collector (kcttc.co.kern.ca.us), Kern County Assessor (assessor.kerncounty.com): homeowners' exemption, supplemental assessments, assessment appeals
+
+**Do this:**
+1. Each bill and deadline a homeowner meets: what it is, when it is due or delinquent, the penalty, and the exemptions with their filing deadlines.
+
+**Make:** `records_gemini_kern-property-tax_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `item` (text): 
+- `date` (text): MM-DD or the rule
+- `penalty` (text): or 'none'
+- `what` (text): one sentence
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every secured, supplemental and exemption deadline in Kern's pages.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

@@ -251,7 +251,7 @@
     {
      "id": "GAM-GEM-05",
      "title": "Games: GTA VI's first week, from Rockstar's own pages",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-27",
      "why": "GTA VI came out on November 19, 2026. The first patches and known issues land this week.",
@@ -325,7 +325,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
      ],
-     "review": "Re-dated 2026-11-21 (Claude, score 8/10, #88): your empty list was honest (no patch or known-issues post on Nov 20, a day after launch). Run it again on Nov 27, when the first week is over."
+     "review": "Scored 10/10 (#166)",
+     "closed": "2026-11-23"
     },
     {
      "state": "done",
@@ -412,7 +413,7 @@
      "review": "Done 2026-11-22 (Claude): Updates, hotfixes and roadmap up to Hotfix 3.0.1.1 of 2026-11-20 from anno-union.com. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#101)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "The updates list covers patches; the paid content is the other half of the roadmap.",
      "unlocks": "Games shows what is out and what is coming.",
@@ -486,7 +487,86 @@
      ],
      "id": "GAM-GEM-07",
      "title": "Games: Anno 117's DLC and season pass, with contents and release dates",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#167)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Week 1 is in; Games keeps the record going.",
+     "unlocks": "Games shows each title update and the fixes it brought.",
+     "inputs": [
+      "support.rockstargames.com (GTA VI known issues and title update notes), rockstargames.com newswire"
+     ],
+     "steps": [
+      "Every title update and known-issue post from 2026-11-20 to 2026-12-15: date, version, platform, what it fixes."
+     ],
+     "deliver": {
+      "file": "games_gemini_gta6-updates_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "title update or known issue"
+      },
+      {
+       "name": "version",
+       "type": "text",
+       "rule": "or 'not stated'"
+      },
+      {
+       "name": "platform",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every post in the window.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "GAM-GEM-08",
+     "title": "Games: GTA VI's updates and fixes through December 15",
+     "due": "2026-12-16"
     }
    ]
   },

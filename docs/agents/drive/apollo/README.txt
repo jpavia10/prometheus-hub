@@ -8,43 +8,45 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Apollo Temple right now.
 
 ## Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 2 open in this pillar.
 
 
-- APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving · due 2026-12-05
-    make: apollo_gemini_food-sources_{YYYYMMDD-HHMM}.json · how many: 150 · done when: Five foods for each of the 30 nutrients.
+- APO-GEM-13 · Apollo: the FoodData Central id for 120 foods that have none (the first 120 in foods.js without 'fdc') · due 2026-12-07
+    make: apollo_gemini_fdc-ids_{YYYYMMDD-HHMM}.json · how many: 120 · done when: 120 foods, each matched or marked 'no close match'.
+- APO-GEM-14 · Apollo: the key numbers of the current Dietary Guidelines for Americans and the Physical Activity Guidelines · due 2026-12-07
+    make: apollo_gemini_guidelines_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every adult number in both documents.
 
 ## Muse
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Apollo Temple right now.
 
 ## ChatGPT
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Apollo Temple right now.
 
 ## Argon
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Apollo Temple right now.
 
 ## Hydrogen
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Apollo Temple right now.

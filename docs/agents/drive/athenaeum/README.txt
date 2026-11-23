@@ -8,43 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Athenaeum · Idea Vault right now.
 
 ## Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 1 open in this pillar.
 
 
-- ATH-GEM-05 · Athenaeum: a third source for the 14 history entries that differ or are debated · due 2026-12-05
-    make: athenaeum_gemini_history-third_{YYYYMMDD-HHMM}.json · how many: 14 · done when: All 14 have a third source.
+- ATH-GEM-06 · Athenaeum: the date and place of each of the 40 history entries, so the shelf can show them on a timeline and a map · due 2026-12-08
+    make: athenaeum_gemini_history-dates_{YYYYMMDD-HHMM}.json · how many: 40 · done when: All 40 entries.
 
 ## Muse
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Athenaeum · Idea Vault right now.
 
 ## ChatGPT
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Athenaeum · Idea Vault right now.
 
 ## Argon
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Athenaeum · Idea Vault right now.
 
 ## Hydrogen
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Athenaeum · Idea Vault right now.

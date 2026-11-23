@@ -254,7 +254,7 @@
      "review": "Done 2026-11-22 (Claude): 40 history entries second-read on Britannica, World History Encyclopedia and Federal Reserve History, no Wikipedia: 26 agree, 9 differ, 5 debated, each with what differs. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#116)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Run 4 found 9 entries that differ from Britannica and 5 debated; a third source settles which wording the entry keeps.",
      "unlocks": "Each of the 14 gets corrected or marked debated with both sources.",
@@ -325,7 +325,103 @@
      ],
      "id": "ATH-GEM-05",
      "title": "Athenaeum: a third source for the 14 history entries that differ or are debated",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#161)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "The 40 cause-event-consequence entries have a region but no date or coordinates, so Athenaeum cannot place them in time or on the globe.",
+     "unlocks": "A timeline and a map of the history shelf.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/athenaeum/history-seed.js (window.ATHENAEUM_HISTORY: 40 entries, in file order)",
+      "britannica.com, or a university or museum page (never Wikipedia alone; a Wikipedia page may lead you to the source)"
+     ],
+     "steps": [
+      "For each entry, in file order: the year it happened (negative for BCE) or its start and end years, and one place that stands for it (the city or site) with coordinates.",
+      "Where historians give different dates, give the range and say so in 'note'."
+     ],
+     "deliver": {
+      "file": "athenaeum_gemini_history-dates_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 40,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": "as in history-seed.js"
+      },
+      {
+       "name": "start",
+       "type": "number",
+       "rule": "year, negative for BCE"
+      },
+      {
+       "name": "end",
+       "type": "number",
+       "rule": "year, or the same as start"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": "city or site"
+      },
+      {
+       "name": "lat",
+       "type": "number",
+       "rule": "2 decimals"
+      },
+      {
+       "name": "lon",
+       "type": "number",
+       "rule": "2 decimals"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "a dating debate, or empty"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 40 entries.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ATH-GEM-06",
+     "title": "Athenaeum: the date and place of each of the 40 history entries, so the shelf can show them on a timeline and a map",
+     "due": "2026-12-08"
     }
    ]
   },

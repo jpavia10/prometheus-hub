@@ -2,75 +2,25 @@
 
 # Ludus Arcade · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
+## 1. GAM-GEM-08 · Games: GTA VI's updates and fixes through December 15
 
-**Due:** 2026-11-27 · **State:** now
+**Due:** 2026-12-16 · **State:** now
 
-**Why:** GTA VI came out on November 19, 2026. The first patches and known issues land this week.
+**Why:** Week 1 is in; Games keeps the record going.
 
-**What it unlocks:** Games shows the current patch, known issues and fixes without Joseph searching.
-
-**Read first:**
-- rockstargames.com/newswire, support.rockstargames.com (Grand Theft Auto VI: known issues, patch notes, title update pages)
-
-**Do this:**
-1. Every title update and known-issue post for GTA VI from Nov 19 to the day you run this: date, version or title update number, platform, what it fixes (Rockstar's words), and its URL.
-
-**Make:** `games_gemini_gta6-week1_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of rows`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `date` (date): 
-- `kind` (text): title update / known issue / hotfix
-- `version` (text): or 'not stated'
-- `platform` (text): 
-- `what` (text): Rockstar's words
-- `url` (URL): 
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every post from launch to the run date.
-
-**How Claude checks it:**
-- Claude opens every URL.
-
-**Not done (sent back) if:**
-- fewer rows than the count (where a count is set), or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-## 2. GAM-GEM-07 · Games: Anno 117's DLC and season pass, with contents and release dates
-
-**Due:** 2026-12-06 · **State:** now
-
-**Why:** The updates list covers patches; the paid content is the other half of the roadmap.
-
-**What it unlocks:** Games shows what is out and what is coming.
+**What it unlocks:** Games shows each title update and the fixes it brought.
 
 **Read first:**
-- anno-union.com, ubisoft.com store pages for Anno 117: Pax Romana
+- support.rockstargames.com (GTA VI known issues and title update notes), rockstargames.com newswire
 
 **Do this:**
-1. Every DLC and pass item: name, what it adds, release date (or announced window), platforms.
+1. Every title update and known-issue post from 2026-11-20 to 2026-12-15: date, version, platform, what it fixes.
 
-**Make:** `games_gemini_anno117-dlc_{YYYYMMDD-HHMM}.json`
+**Make:** `games_gemini_gta6-updates_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -78,12 +28,12 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `name` (text): as Ubisoft names it
-- `adds` (text): what it adds
-- `release` (text): YYYY-MM-DD or the announced window
-- `platforms` (text): as listed
+- `date` (date): YYYY-MM-DD
+- `kind` (text): title update or known issue
+- `version` (text): or 'not stated'
+- `platform` (text): 
+- `what` (text): 
 - `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -92,7 +42,7 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every announced DLC listed.
+**Done when:** Every post in the window.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

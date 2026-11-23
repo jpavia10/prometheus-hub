@@ -2,26 +2,26 @@
 
 # Argus Album · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ARG-GEM-12 · Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default
+## 1. ARG-GEM-13 · Argus: what Google Takeout gives for Google Photos (the JSON beside each photo), and how to export only some albums
 
-**Due:** 2026-12-04 · **State:** now
+**Due:** 2026-12-06 · **State:** now
 
-**Why:** Run 4 found that Argus's cleaner may not handle the S24's HEIF photos.
+**Why:** Odyssey's past trips come from photo dates and locations; Takeout's sidecar files keep the time and place even when an edit strips the EXIF.
 
-**What it unlocks:** Claude makes Argus clean or clearly refuse HEIF, per browser.
+**What it unlocks:** Argus and Odyssey can read a Takeout export directly.
 
 **Read first:**
-- Chromium and WebKit release notes and bug trackers, MDN and caniuse pages for HEIF/HEIC image support, Samsung's camera help pages (High efficiency pictures setting)
+- support.google.com/accounts (Takeout: Google Photos), support.google.com/photos (download, location, edits), Google's Data Portability API docs (developers.google.com/data-portability) for the Photos schema
 
 **Do this:**
-1. For Chrome on Android, Samsung Internet, Safari on iOS and Chrome on desktop: does the current version decode HEIC in an <img> and in createImageBitmap?
-2. For the S24 Ultra: is 'High efficiency pictures' on by default, and what does it save?
+1. How to export all photos or chosen albums, the archive size limits and formats, and every field the photo's JSON sidecar holds (taken time, geoData, geoDataExif, people, description), as the documentation names them.
+2. Say when a field is only described in Google's API docs and not in the help pages.
 
-**Make:** `argus_gemini_heif-support_{YYYYMMDD-HHMM}.json`
+**Make:** `argus_gemini_takeout_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
 
@@ -29,9 +29,9 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `browser` (text): name and version
-- `img` (text): yes, no or not stated
-- `createImageBitmap` (text): yes, no or not stated
+- `item` (text): a step or a field name
+- `what` (text): 
+- `documented_in` (text): help page or API docs
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -42,7 +42,7 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** All four browsers and the S24's default answered.
+**Done when:** The export steps and every documented field.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

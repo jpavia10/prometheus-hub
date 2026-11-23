@@ -566,7 +566,7 @@
      "review": "Done 2026-11-22 (Claude): 27 deadlines and forms for the move, each on its .gov page. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#107)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "The renewal radar counts down dates; it should know the rules behind them.",
      "unlocks": "Records explains each renewal and when it can be done online.",
@@ -635,6 +635,152 @@
      ],
      "id": "REC-GEM-09",
      "title": "Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates)",
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#142)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Odyssey's next Philippines trip needs a passport valid six months past arrival; Records keeps the renewal rules.",
+     "unlocks": "Records shows when to renew and what it costs.",
+     "inputs": [
+      "travel.state.gov (renew online, DS-82, fees, processing times)"
+     ],
+     "steps": [
+      "Who can renew online and by mail, the fees (book, card, expedite, 1-2 day delivery), the current processing times, what to send."
+     ],
+     "deliver": {
+      "file": "records_gemini_passport_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every rule on travel.state.gov's renewal pages.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "REC-GEM-10",
+     "title": "Records: renewing a US passport in 2026 (online and DS-82), fees and processing times",
+     "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "The Today panel already shows Kern's tax deadlines; Records should explain each bill (secured, supplemental, the homeowners' exemption).",
+     "unlocks": "Each Kern tax deadline links to what it is.",
+     "inputs": [
+      "Kern County Treasurer-Tax Collector (kcttc.co.kern.ca.us), Kern County Assessor (assessor.kerncounty.com): homeowners' exemption, supplemental assessments, assessment appeals"
+     ],
+     "steps": [
+      "Each bill and deadline a homeowner meets: what it is, when it is due or delinquent, the penalty, and the exemptions with their filing deadlines."
+     ],
+     "deliver": {
+      "file": "records_gemini_kern-property-tax_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "date",
+       "type": "text",
+       "rule": "MM-DD or the rule"
+      },
+      {
+       "name": "penalty",
+       "type": "text",
+       "rule": "or 'none'"
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every secured, supplemental and exemption deadline in Kern's pages.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "REC-GEM-11",
+     "title": "Records: Kern County property tax, the bills and deadlines a homeowner gets in a year",
      "due": "2026-12-05"
     }
    ]

@@ -878,7 +878,7 @@
      "review": "Done 2026-11-22 (Claude): 25 services' sign-in options. Lost a point: 'change_password' and 'activity' hold directions in prose where the fields take the page URL (50 cells). Score 9/10 (#111)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "The phone panel covers the OS; the browsers carry most of the tracking.",
      "unlocks": "Privacy's phone panel gets a browser section.",
@@ -963,7 +963,91 @@
      ],
      "id": "PRI-GEM-13",
      "title": "Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#162)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Privacy already walks Google, Microsoft and the phone; Amazon is the next account that holds the most about a household.",
+     "unlocks": "Privacy gets an Amazon page like the Google one.",
+     "inputs": [
+      "amazon.com/privacy and its help pages (Advertising Preferences, Your Browsing History, Alexa Privacy Settings), ring.com/privacy and Ring's Control Center help, Amazon Sidewalk help"
+     ],
+     "steps": [
+      "Each setting: where it is (menu path), what it does, the safest choice, and what you lose by choosing it."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_amazon_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "area",
+       "type": "text",
+       "rule": "ads, Alexa, Ring, Sidewalk, history, sharing"
+      },
+      {
+       "name": "setting",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "path",
+       "type": "text",
+       "rule": "menu path"
+      },
+      {
+       "name": "safest",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "cost",
+       "type": "text",
+       "rule": "what is lost"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every privacy setting Amazon, Alexa and Ring document.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "PRI-GEM-14",
+     "title": "Privacy: an Amazon account, setting by setting (ads, Alexa recordings, Ring, browsing history, sharing)",
+     "due": "2026-12-07"
     }
    ]
   },

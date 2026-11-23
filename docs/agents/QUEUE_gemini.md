@@ -2,27 +2,27 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes
+## 1. HUB-GEM-19 · Hub: re-measure the 32 high-priority accessibility items after Claude's fixes
 
-**Due:** 2026-12-01 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
-**Why:** Claude fixed the confirmed findings in d51; a second look says which are really gone.
+**Why:** Your fix queue ranked 32 items high; Claude is fixing them in the shared kit and deck styles. Each needs re-measuring on the live site.
 
-**What it unlocks:** Findings still open get a second pass.
+**What it unlocks:** The fix queue closes item by item.
 
 **Read first:**
-- Gemini's file hub_gemini_a11y-audit_20261121-1335.json
-- The same 10 live pages, after the build that says d51 (or later) in the hub's About line
+- Your file hub_gemini_supp-a11y-fix-queue_20261123-1348.json (the 32 rows with priority high)
+- The live site https://jpavia10.github.io/prometheus-hub/ on build d64 or later (the build is in the hub's top bar)
 
 **Do this:**
-1. For each of the 40 findings, measure again on the live page.
-2. Say fixed, still there (with the new measurement) or changed.
+1. For each of the 32, measure again on the live page: contrast ratio, target size, focus, label, as the item says.
+2. Say fixed, still there, or changed, with what you measured and the build you measured on.
 
-**Make:** `hub_gemini_a11y-recheck_{YYYYMMDD-HHMM}.json`
+**Make:** `hub_gemini_a11y-recheck-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
 
@@ -30,9 +30,10 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `finding_n` (number): n in the first audit
-- `status` (text): fixed, still there, or changed
-- `measured` (text): what you measured now
+- `item_n` (number): its n in your fix queue
+- `status` (text): fixed, still there or changed
+- `measured` (text): what you measured
+- `build` (text): e.g. d64
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -41,9 +42,9 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 40
+**How many:** 32
 
-**Done when:** All 40 re-measured.
+**Done when:** All 32 measured on d64 or later.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.
@@ -56,71 +57,24 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 2. HUB-GEM-18 · Hub: where the subject sits in each of the 24 pillar paintings (for the living headers)
+## 2. HUB-GEM-20 · Hub: does every place in the realm painting sit under its own label?
 
 **Due:** 2026-12-05 · **State:** now
 
-**Why:** Every pillar page now opens on its painting, alive, with the painting's subject placed in the header band. Six paintings have a measured subject height; the other eighteen fall back to a guess, so some headers show sky or floor instead of the subject.
+**Why:** The realm (the Orbit) puts 27 labels on one painting from art/realm/places.json; a label off its building sends a tap to the wrong place.
 
-**What it unlocks:** Claude sets each painting's focus (kit/world.js FOCUS) and the header frames the right thing on the phone.
-
-**Read first:**
-- The paintings: https://jpavia10.github.io/prometheus-hub/art/worlds/world_{pillar}.webp for each of: kairos, garage, odyssey, hearth, apollo, money, selling, records, icarus, hermes, piano, bastion, privacy, argus, games, forge, foundry, observatory, kin, presence, aether, polis, mythos, continuity
-- Each pillar page to see it live: https://jpavia10.github.io/prometheus-hub/pillars/{pillar}/ (a phone-width window)
-
-**Do this:**
-1. For each painting, name its main subject in a few words (the thing the painting is about: the clock tower, the garage door, the hearth fire ...).
-2. Measure where that subject's centre sits from the top: 0 = top edge, 1 = bottom edge, two decimals (pixel row of the centre divided by the image height; give both numbers).
-3. Say whether the live header on a phone shows that subject now: yes, or what it shows instead.
-
-**Make:** `hub_gemini_painting-focus_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of 24 objects, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `pillar` (text): slug as listed
-- `subject` (text): a few words
-- `row_px` (integer): pixel row of its centre
-- `height_px` (integer): image height
-- `focus` (number): row_px / height_px, two decimals (math)
-- `header_now` (text): 'yes' or what the phone header shows instead
-
-**Before you save, check every one of these yourself:**
-- [ ] focus equals row_px / height_px to two decimals.
-- [ ] All 24 slugs, each once.
-- [ ] The file is valid JSON and named exactly as asked.
-
-**How many:** 24
-
-**Done when:** 24 rows.
-
-**How Claude checks it:**
-- Claude opens 6 paintings and checks the subject and the row.
-
-**Not done (sent back) if:**
-- a focus that does not equal its own row_px / height_px
-- a slug missing or twice
-
-## 3. HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet
-
-**Due:** 2026-12-06 · **State:** now
-
-**Why:** Run 4 audited 10 pages; the other 17 pillars have the same kit and their own CSS.
-
-**What it unlocks:** Claude fixes every confirmed finding in one pass.
+**What it unlocks:** Claude moves every label that misses.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/<name>/ for apollo, hermes, argus, icarus, kin, bastion, polis, records, continuity, selling, games, piano, mythos, observatory, foundry, records, and the hub's Search page
-- Their code on github.com/jpavia10/prometheus-hub (pillars/<name>/app.js, app.css)
+- https://jpavia10.github.io/prometheus-hub/?home=orbit (the realm)
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/art/realm/places.json (each pillar's x, y as fractions of the painting)
+- The menu's list of what each place is (bank, museum, clock tower, forge, ...): the 'subject' lines in your hub_gemini_painting-focus file
 
 **Do this:**
-1. At 390 x 844, find the 4 worst WCAG 2.2 AA failures on each of the 17 pages.
-2. For each: the selector, the criterion, what you measured (contrast ratio with both colours, size in px, the missing name), and the smallest fix.
+1. For each of the 27, look at the painting where its label sits: is that pillar's building or object there?
+2. If not, give the x and y (fractions, 3 decimals) where it actually is, and what is under the label now.
 
-**Make:** `hub_gemini_a11y-audit-2_{YYYYMMDD-HHMM}.json`
+**Make:** `hub_gemini_realm-labels_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
 
@@ -128,11 +82,11 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `page` (url): the live page
-- `selector` (text): CSS selector
-- `criterion` (text): e.g. 1.4.3 Contrast (Minimum)
-- `measured` (text): the numbers you measured
-- `fix` (text): the smallest change that passes
+- `pillar` (text): id
+- `ok` (text): yes or no
+- `x` (number): fraction 0-1, when no
+- `y` (number): fraction 0-1, when no
+- `under_label` (text): what the label sits on now
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -141,12 +95,64 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 68
+**How many:** 27
 
-**Done when:** 4 findings for each of the 17 pages, each with a measurement.
+**Done when:** All 27 checked.
 
 **How Claude checks it:**
-- Claude checks 12 findings in the code and on the page.
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 3. HUB-GEM-21 · Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)
+
+**Due:** 2026-12-06 · **State:** now
+
+**Why:** Your painting-focus file found 11 pillar headers whose crop misses the subject; Claude is moving each crop (kit/world.js FOCUS).
+
+**What it unlocks:** Every pillar opens on its own subject.
+
+**Read first:**
+- Your file hub_gemini_painting-focus_20261123 (the 11 rows with 'no': hearth, money, hermes, piano, bastion, privacy, games, forge, foundry, observatory, mythos)
+- Each pillar page on the live site at phone width, build d64 or later (the build is in the top bar)
+
+**Do this:**
+1. For each of the 11, look at the header at 390 px wide: is the subject in the frame now?
+2. If not, say what is in the frame and where the subject is (higher or lower).
+
+**Make:** `hub_gemini_painting-focus-2_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `pillar` (text): 
+- `ok` (text): yes or no
+- `seen` (text): what is in the frame
+- `move` (text): up, down or none
+- `build` (text): e.g. d64
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 11
+
+**Done when:** All 11 checked on d64 or later.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
 
 **Not done (sent back) if:**
 - fewer rows than the count, or a row missing a field

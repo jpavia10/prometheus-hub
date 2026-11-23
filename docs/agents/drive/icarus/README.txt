@@ -8,43 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Icarus Stake right now.
 
 ## Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 1 open in this pillar.
 
 
-- ICA-GEM-13 · Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding · due 2026-12-05
-    make: icarus_gemini_2027-bea-treasury_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every 2027 date the schedules show.
+- ICA-GEM-14 · Icarus: BLS's 2027 release dates for CPI, the jobs report and PPI · due 2026-12-06
+    make: icarus_gemini_2027-bls_{YYYYMMDD-HHMM}.json · how many: 36 · done when: All 36 (12 x 3), or what BLS has published so far with the page.
 
 ## Muse
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Icarus Stake right now.
 
 ## ChatGPT
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Icarus Stake right now.
 
 ## Argon
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Icarus Stake right now.
 
 ## Hydrogen
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Icarus Stake right now.

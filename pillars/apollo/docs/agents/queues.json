@@ -485,7 +485,7 @@
      "review": "Done 2026-11-22 (Claude): 30 NIH ODS targets and upper limits for both age bands; the two Claude knows by heart (vitamin A 900 mcg / UL 3,000; manganese 2.3 mg / UL 11) agree. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#112)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "A target without food is a number on a screen.",
      "unlocks": "Apollo's day view suggests a food for the nutrient that is short.",
@@ -561,7 +561,162 @@
      ],
      "id": "APO-GEM-12",
      "title": "Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#160)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "648 of Apollo's 900 foods have no FoodData Central id, so Apollo cannot open their full nutrient panel or check its numbers.",
+     "unlocks": "Apollo links each food to USDA's own record and re-checks its macros.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/apollo/foods.js (window.APOLLO_FOODS: 'n' is the name, 'fdc' the id where known)",
+      "fdc.nal.usda.gov (search; prefer SR Legacy or Foundation records)"
+     ],
+     "steps": [
+      "Take the first 120 rows without 'fdc', in file order.",
+      "For each, the closest FDC record: its id, its exact description, its data type, and its kcal per 100 g.",
+      "Say 'no close match' where none fits rather than forcing one."
+     ],
+     "deliver": {
+      "file": "apollo_gemini_fdc-ids_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 120,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "food",
+       "type": "text",
+       "rule": "as in foods.js"
+      },
+      {
+       "name": "fdc",
+       "type": "number",
+       "rule": "FDC id"
+      },
+      {
+       "name": "description",
+       "type": "text",
+       "rule": "USDA's own wording"
+      },
+      {
+       "name": "data_type",
+       "type": "text",
+       "rule": "SR Legacy, Foundation, Survey (FNDDS) or Branded"
+      },
+      {
+       "name": "kcal_100g",
+       "type": "number",
+       "rule": "from the record"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "120 foods, each matched or marked 'no close match'.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "APO-GEM-13",
+     "title": "Apollo: the FoodData Central id for 120 foods that have none (the first 120 in foods.js without 'fdc')",
+     "due": "2026-12-07"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Apollo's daily targets come from the NIH; the national guidelines set the weekly ones (activity minutes, limits on added sugar, sodium, saturated fat).",
+     "unlocks": "Apollo's week view shows the guideline targets with their source.",
+     "inputs": [
+      "dietaryguidelines.gov (the current edition: name it and its years), health.gov/our-work/physical-activity (Physical Activity Guidelines for Americans, the current edition)"
+     ],
+     "steps": [
+      "Every number for an adult: activity minutes (moderate, vigorous), strength days, limits (added sugar, saturated fat, sodium, alcohol), and the protein, fruit, vegetable and grain amounts at 2,400 kcal.",
+      "Name the edition of each document."
+     ],
+     "deliver": {
+      "file": "apollo_gemini_guidelines_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "guideline",
+       "type": "text",
+       "rule": "DGA or PAG, with edition"
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "number with unit"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every adult number in both documents.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "APO-GEM-14",
+     "title": "Apollo: the key numbers of the current Dietary Guidelines for Americans and the Physical Activity Guidelines",
+     "due": "2026-12-07"
     }
    ]
   },

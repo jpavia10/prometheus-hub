@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 17:22 UTC",
+ "updated": "2026-11-23 22:49 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -24,39 +24,6 @@
    "count": 1
   },
   {
-   "due": "2026-11-27",
-   "pillar": "games",
-   "pillar_name": "Ludus Arcade",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAM-GEM-05",
-   "title": "Games: GTA VI's first week, from Rockstar's own pages",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "forge",
-   "pillar_name": "Forge",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "FOR-GEM-06",
-   "title": "Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-17",
-   "title": "Hub: re-check run 4's 40 accessibility findings after the d51 fixes",
-   "state": "now",
-   "count": 40
-  },
-  {
    "due": "2026-12-03",
    "pillar": "midas",
    "pillar_name": "Midas Ledger",
@@ -69,91 +36,36 @@
   },
   {
    "due": "2026-12-03",
-   "pillar": "piano",
-   "pillar_name": "Bossa Piano Studio",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "PIA-GEM-08",
-   "title": "Piano: the published key for the 24 Bossa Nova tunes still 'not stated'",
-   "state": "now",
-   "count": 24
-  },
-  {
-   "due": "2026-12-04",
-   "pillar": "aether",
-   "pillar_name": "Aether · Atmospheric & Field Lab",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "AET-GEM-13",
-   "title": "Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)",
-   "state": "now",
-   "count": 26
-  },
-  {
-   "due": "2026-12-04",
-   "pillar": "aether",
-   "pillar_name": "Aether · Atmospheric & Field Lab",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "AET-GEM-14",
-   "title": "Aether: every I-5 Grapevine (Tejon Pass) closure, winters 2020-21 to 2025-26",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-04",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-12",
-   "title": "Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-04",
-   "pillar": "bastion",
-   "pillar_name": "Bastion · Mountain Prep",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "BAS-GEM-10",
-   "title": "Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman",
+   "id": "ODY-GEM-23",
+   "title": "Odyssey: the park card gaps (Sequoia and Kings Canyon areas, Kings Canyon's heights, Grand Canyon's low point)",
    "state": "now",
    "count": 5
   },
   {
    "due": "2026-12-04",
-   "pillar": "forge",
-   "pillar_name": "Forge",
+   "pillar": "garage",
+   "pillar_name": "Garage",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "FOR-GEM-05",
-   "title": "Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch",
+   "id": "GAR-GEM-16",
+   "title": "Garage: the six fluid and part specs still 'not stated'",
    "state": "now",
-   "count": 30
+   "count": 6
   },
   {
    "due": "2026-12-04",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HEA-GEM-26",
-   "title": "Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22)",
+   "id": "HUB-GEM-19",
+   "title": "Hub: re-measure the 32 high-priority accessibility items after Claude's fixes",
    "state": "now",
-   "count": 2
-  },
-  {
-   "due": "2026-12-04",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HER-GEM-11",
-   "title": "Hermes: the publication date of the 21 lures still 'not stated'",
-   "state": "now",
-   "count": 21
+   "count": 32
   },
   {
    "due": "2026-12-04",
@@ -161,10 +73,10 @@
    "pillar_name": "Money · payoff simulator",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "MON-GEM-06",
-   "title": "Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements",
+   "id": "MON-GEM-07",
+   "title": "Money: the 7 issuer-pricing cells still 'not stated', from the CFPB agreement database",
    "state": "now",
-   "count": 0
+   "count": 7
   },
   {
    "due": "2026-12-05",
@@ -172,32 +84,10 @@
    "pillar_name": "Aether · Atmospheric & Field Lab",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "AET-GEM-15",
-   "title": "Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026",
+   "id": "AET-GEM-16",
+   "title": "Aether: Grapevine closures in the last three winters (2023-24, 2024-25, 2025-26)",
    "state": "now",
    "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-12",
-   "title": "Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving",
-   "state": "now",
-   "count": 150
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ATH-GEM-05",
-   "title": "Athenaeum: a third source for the 14 history entries that differ or are debated",
-   "state": "now",
-   "count": 14
   },
   {
    "due": "2026-12-05",
@@ -205,32 +95,10 @@
    "pillar_name": "Bastion · Mountain Prep",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "BAS-GEM-11",
-   "title": "Bastion: every official alert channel for the area, how to sign up and what each sends",
+   "id": "BAS-GEM-13",
+   "title": "Bastion: the Genasys zone names for the mountain communities (Frazier Park, Lake of the Woods, Pinon Pines, Pine Mountain Club)",
    "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "continuity",
-   "pillar_name": "Continuity · Sovereign Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "CON-GEM-08",
-   "title": "Continuity: Kern County Superior Court's probate forms for a small estate and a spousal property petition",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAR-GEM-15",
-   "title": "Garage: fluid capacities and specs for both vehicles, from the owner's manuals",
-   "state": "now",
-   "count": 0
+   "count": 4
   },
   {
    "due": "2026-12-05",
@@ -238,19 +106,8 @@
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HEA-GEM-27",
-   "title": "Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HER-GEM-12",
-   "title": "Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)",
+   "id": "HEA-GEM-29",
+   "title": "Hearth: Kern County's building permit fee for the 23 x 10 ft deck, from an open page",
    "state": "now",
    "count": 0
   },
@@ -260,21 +117,21 @@
    "pillar_name": "Prometheus Hub",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HUB-GEM-18",
-   "title": "Hub: where the subject sits in each of the 24 pillar paintings (for the living headers)",
+   "id": "HUB-GEM-20",
+   "title": "Hub: does every place in the realm painting sit under its own label?",
    "state": "now",
-   "count": 24
+   "count": 27
   },
   {
    "due": "2026-12-05",
-   "pillar": "icarus",
-   "pillar_name": "Icarus Stake",
+   "pillar": "observatory",
+   "pillar_name": "Observatory",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ICA-GEM-13",
-   "title": "Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding",
+   "id": "OBS-GEM-07",
+   "title": "Observatory: the rate limits and terms of use for the 21 feeds",
    "state": "now",
-   "count": 0
+   "count": 21
   },
   {
    "due": "2026-12-05",
@@ -282,21 +139,21 @@
    "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ODY-GEM-14",
-   "title": "Odyssey: a card for each of the 21 new stops (the ten trips found in Joseph's photos)",
+   "id": "ODY-GEM-18",
+   "title": "Odyssey: a card for the 11 stops still without one (the ten photo trips)",
    "state": "now",
-   "count": 21
+   "count": 11
   },
   {
    "due": "2026-12-05",
-   "pillar": "privacy",
-   "pillar_name": "Privacy · CA DROP",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "PRI-GEM-13",
-   "title": "Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice",
+   "id": "ODY-GEM-19",
+   "title": "Odyssey: the stops of the six trips your run 6 found, in order, with where they are",
    "state": "now",
-   "count": 30
+   "count": 0
   },
   {
    "due": "2026-12-05",
@@ -304,19 +161,30 @@
    "pillar_name": "Records · Paper Killer",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "REC-GEM-09",
-   "title": "Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates)",
+   "id": "REC-GEM-10",
+   "title": "Records: renewing a US passport in 2026 (online and DS-82), fees and processing times",
    "state": "now",
    "count": 0
   },
   {
    "due": "2026-12-05",
-   "pillar": "selling",
-   "pillar_name": "Selling Pipeline",
+   "pillar": "records",
+   "pillar_name": "Records · Paper Killer",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "SEL-GEM-08",
-   "title": "Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception",
+   "id": "REC-GEM-11",
+   "title": "Records: Kern County property tax, the bills and deadlines a homeowner gets in a year",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-06",
+   "pillar": "argus",
+   "pillar_name": "Argus Album",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ARG-GEM-13",
+   "title": "Argus: what Google Takeout gives for Google Photos (the JSON beside each photo), and how to export only some albums",
    "state": "now",
    "count": 0
   },
@@ -326,43 +194,32 @@
    "pillar_name": "Bastion · Mountain Prep",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "BAS-GEM-12",
-   "title": "Bastion: Kern County's defensible-space rules (Zone 0, 1 and 2) and the inspection",
+   "id": "BAS-GEM-14",
+   "title": "Bastion: how much fuel a household may store (gasoline, propane, generators) under Kern's fire code",
    "state": "now",
    "count": 0
   },
   {
    "due": "2026-12-06",
-   "pillar": "foundry",
-   "pillar_name": "Foundry",
+   "pillar": "continuity",
+   "pillar_name": "Continuity · Sovereign Vault",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "FDY-GEM-06",
-   "title": "Foundry: the power budget for each stage-1 build, from the parts' datasheets",
+   "id": "CON-GEM-09",
+   "title": "Continuity: California's advance health care directive and the Secretary of State's registry, step by step",
    "state": "now",
    "count": 0
   },
   {
    "due": "2026-12-06",
-   "pillar": "games",
-   "pillar_name": "Ludus Arcade",
+   "pillar": "hermes",
+   "pillar_name": "Hermes Post",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "GAM-GEM-07",
-   "title": "Games: Anno 117's DLC and season pass, with contents and release dates",
+   "id": "HER-GEM-13",
+   "title": "Hermes: the official fraud and customer-service phone numbers for billers 1-50",
    "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-06",
-   "pillar": "hearth",
-   "pillar_name": "Hephaestus Hearth",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HEA-GEM-28",
-   "title": "Hearth: Kern County's building permit fees for the 23 x 10 ft deck",
-   "state": "now",
-   "count": 0
+   "count": 50
   },
   {
    "due": "2026-12-06",
@@ -370,10 +227,43 @@
    "pillar_name": "Prometheus Hub",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HUB-GEM-16",
-   "title": "Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet",
+   "id": "HUB-GEM-21",
+   "title": "Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)",
    "state": "now",
-   "count": 68
+   "count": 11
+  },
+  {
+   "due": "2026-12-06",
+   "pillar": "icarus",
+   "pillar_name": "Icarus Stake",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ICA-GEM-14",
+   "title": "Icarus: BLS's 2027 release dates for CPI, the jobs report and PPI",
+   "state": "now",
+   "count": 36
+  },
+  {
+   "due": "2026-12-06",
+   "pillar": "kairos",
+   "pillar_name": "Kairos Meridian",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KAI-GEM-15",
+   "title": "Kairos: Kern County offices' 2027 holiday closures",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-06",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-06",
+   "title": "Kin: a US passport for a child under 16 in 2026-27 (DS-11, both parents, DS-3053), fees and times",
+   "state": "now",
+   "count": 0
   },
   {
    "due": "2026-12-06",
@@ -381,30 +271,41 @@
    "pillar_name": "Midas Ledger",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "MID-GEM-14",
-   "title": "Midas: 40 statement-line phrasings of promo and deferred-interest balances, from issuers' public sample statements",
+   "id": "MID-GEM-15",
+   "title": "Midas: 30 minimum-payment and payment-due lines from issuers' sample statements",
    "state": "now",
-   "count": 40
+   "count": 30
   },
   {
    "due": "2026-12-06",
-   "pillar": "observatory",
-   "pillar_name": "Observatory",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "OBS-GEM-06",
-   "title": "Observatory: official data endpoints (no key) for each of the 8 subjects",
+   "id": "ODY-GEM-20",
+   "title": "Odyssey: the six new trips day by day",
    "state": "now",
    "count": 0
   },
   {
    "due": "2026-12-06",
-   "pillar": "polis",
-   "pillar_name": "Polis · Civic & Legal Watch",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "POL-GEM-09",
-   "title": "Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities",
+   "id": "ODY-GEM-21",
+   "title": "Odyssey: the best photos of the six new trips (scenery and landmarks only)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-06",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-24",
+   "title": "Odyssey: going back to the Philippines in 2026-27: entry rules for a US citizen, from the official pages",
    "state": "now",
    "count": 0
   },
@@ -421,6 +322,72 @@
   },
   {
    "due": "2026-12-07",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AET-GEM-17",
+   "title": "Aether: Frazier Park's snowfall record, winter by winter (2015-16 to 2025-26)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "apollo",
+   "pillar_name": "Apollo Temple",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "APO-GEM-13",
+   "title": "Apollo: the FoodData Central id for 120 foods that have none (the first 120 in foods.js without 'fdc')",
+   "state": "now",
+   "count": 120
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "apollo",
+   "pillar_name": "Apollo Temple",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "APO-GEM-14",
+   "title": "Apollo: the key numbers of the current Dietary Guidelines for Americans and the Physical Activity Guidelines",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "continuity",
+   "pillar_name": "Continuity · Sovereign Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "CON-GEM-10",
+   "title": "Continuity: who gets each kind of account when someone dies (beneficiary rules for 401(k), IRA, life insurance, POD and TOD) in 2026",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-30",
+   "title": "Hearth: deck stains and sealers for 4,600 ft (UV, snow, freeze-thaw): makers' data sheets",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "hermes",
+   "pillar_name": "Hermes Post",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HER-GEM-14",
+   "title": "Hermes: the official fraud and customer-service phone numbers for billers 51-97",
+   "state": "now",
+   "count": 47
+  },
+  {
+   "due": "2026-12-07",
    "pillar": "hub",
    "pillar_name": "Prometheus Hub",
    "ai": "muse",
@@ -432,12 +399,12 @@
   },
   {
    "due": "2026-12-07",
-   "pillar": "odyssey",
-   "pillar_name": "Odyssey · Trips & Away Mode",
+   "pillar": "mythos",
+   "pillar_name": "Mythos · Creative & Lore Studio",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ODY-GEM-13",
-   "title": "Odyssey: the trips your search missed, folder by folder (2008-2026)",
+   "id": "MYT-GEM-05",
+   "title": "Mythos: registering Joseph's own stories and game scripts with the US Copyright Office (eCO): form, fee, deposit, time",
    "state": "now",
    "count": 0
   },
@@ -447,32 +414,98 @@
    "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ODY-GEM-15",
-   "title": "Odyssey: the landmarks Joseph photographed on the ten trips found in his photos, with official facts",
+   "id": "ODY-GEM-22",
+   "title": "Odyssey: the landmarks in the six new trips' photos, with official facts",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-25",
+   "title": "Odyssey: Siargao and Boracay, the two places weighed in July 2024, from the official tourism pages",
+   "state": "now",
+   "count": 2
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "privacy",
+   "pillar_name": "Privacy · CA DROP",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PRI-GEM-14",
+   "title": "Privacy: an Amazon account, setting by setting (ads, Alexa recordings, Ring, browsing history, sharing)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-06",
+   "title": "Athenaeum: the date and place of each of the 40 history entries, so the shelf can show them on a timeline and a map",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "forge",
+   "pillar_name": "Forge",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "FOR-GEM-07",
+   "title": "Forge: the DONE markers from Nov 23 to Dec 7 against the Forge",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "foundry",
+   "pillar_name": "Foundry",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "FDY-GEM-07",
+   "title": "Foundry: the certifications each of the 11 stage-1 builds would need before it could be sold",
+   "state": "now",
+   "count": 11
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-26",
+   "title": "Odyssey: 20 weekend trips from Frazier Park, with real drive times and what each needs booked",
    "state": "now",
    "count": 20
   },
   {
-   "due": "2026-12-07",
+   "due": "2026-12-08",
    "pillar": "odyssey",
    "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ODY-GEM-16",
-   "title": "Odyssey: the ten photo trips day by day",
+   "id": "ODY-GEM-27",
+   "title": "Odyssey: national park passes and reservations for 2027 (the parks Joseph has been to and the ones nearby)",
    "state": "now",
    "count": 0
   },
   {
-   "due": "2026-12-07",
-   "pillar": "odyssey",
-   "pillar_name": "Odyssey · Trips & Away Mode",
+   "due": "2026-12-16",
+   "pillar": "games",
+   "pillar_name": "Ludus Arcade",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ODY-GEM-17",
-   "title": "Odyssey: a card for each national park Joseph has been to (NPS facts)",
+   "id": "GAM-GEM-08",
+   "title": "Games: GTA VI's updates and fixes through December 15",
    "state": "now",
-   "count": 5
+   "count": 0
   },
   {
    "due": "2026-12-31",

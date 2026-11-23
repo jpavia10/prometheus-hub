@@ -2,77 +2,25 @@
 
 # Bastion · Mountain Prep · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. BAS-GEM-10 · Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman
-
-**Due:** 2026-12-04 · **State:** now
-
-**Why:** An evacuation order names a zone, not a town.
-
-**What it unlocks:** Bastion shows the zone IDs to watch for.
-
-**Read first:**
-- Genasys Protect (protect.genasys.com) zone lookup, Kern County OES and LA County OEM pages
-
-**Do this:**
-1. For each town centre (not a house), find the zone ID(s) that cover it and who issues orders there.
-2. Say how to get alerts for that zone.
-
-**Make:** `bastion_gemini_evac-zones_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `town` (text): as listed
-- `zones` (text): zone IDs, comma-separated
-- `issuer` (text): who orders evacuations
-- `alerts` (text): how to subscribe
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 5
-
-**Done when:** All 5 towns answered.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. BAS-GEM-11 · Bastion: every official alert channel for the area, how to sign up and what each sends
+## 1. BAS-GEM-13 · Bastion: the Genasys zone names for the mountain communities (Frazier Park, Lake of the Woods, Pinon Pines, Pine Mountain Club)
 
 **Due:** 2026-12-05 · **State:** now
 
-**Why:** Knowing early is most of being ready.
+**Why:** Run 6 confirmed Lebec's KRN-535 but Genasys's map would not load for the others.
 
-**What it unlocks:** Bastion's checklist gets a sign-up row per channel.
+**What it unlocks:** Bastion shows the zone to watch for each community.
 
 **Read first:**
-- ReadyKern / Alert Kern, Alert LA County, Wireless Emergency Alerts (FCC), SCE outage and PSPS alerts, Caltrans QuickMap, NWS Hanford and Los Angeles, Genasys
+- Kern County Fire and OES evacuation orders and warnings that name zones (kerncountyfire.org news, CAL FIRE incident pages, ReadyKern posts), protect.genasys.com community pages
 
 **Do this:**
-1. For each channel: who runs it, what it sends (evacuation, weather, power, roads), and the exact sign-up path.
+1. For each community, find an official order, warning or page that names its zone id(s). Never search a home address: use the community name or a public landmark.
 
-**Make:** `bastion_gemini_alert-channels_{YYYYMMDD-HHMM}.json`
+**Make:** `bastion_gemini_evac-zones-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -80,10 +28,9 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `channel` (text): name
-- `runs` (text): agency or company
-- `sends` (text): what alerts
-- `signup` (text): the steps
+- `town` (text): 
+- `zones` (text): the zone ids
+- `issuer` (text): 
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -94,7 +41,9 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every channel listed with its sign-up.
+**How many:** 4
+
+**Done when:** All four communities, each with its zones or the pages checked.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.
@@ -107,24 +56,21 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 3. BAS-GEM-12 · Bastion: Kern County's defensible-space rules (Zone 0, 1 and 2) and the inspection
+## 2. BAS-GEM-14 · Bastion: how much fuel a household may store (gasoline, propane, generators) under Kern's fire code
 
 **Due:** 2026-12-06 · **State:** now
 
-**Why:** Frazier Park is in a very high fire hazard zone; the rules are the checklist.
+**Why:** Bastion's kit lists fuel for the generator; storing it has limits in the fire code.
 
-**What it unlocks:** Bastion's fire checklist lists each zone's rules and when Kern Fire inspects.
+**What it unlocks:** Bastion's kit says how much fuel can be kept and how.
 
 **Read first:**
-- CAL FIRE defensible space (readyforwildfire.org, fire.ca.gov)
-- Kern County Fire Department defensible space and weed abatement pages (kerncountyfire.org)
-- PRC 4291 (leginfo; say if blocked)
+- California Fire Code as adopted by Kern County (Kern County Fire Department pages, codes.iccsafe.org CFC chapters 57 and 61), CAL FIRE and Cal OES guidance
 
 **Do this:**
-1. Each rule for Zone 0 (0-5 ft), Zone 1 (5-30 ft) and Zone 2 (30-100 ft), word for word.
-2. Kern Fire's inspection season, the deadline, and the fine or abatement if not met.
+1. Gasoline in a residence or garage (gallons, containers), propane cylinders indoors and out, generator placement rules.
 
-**Make:** `bastion_gemini_defensible-space_{YYYYMMDD-HHMM}.json`
+**Make:** `bastion_gemini_fuel-storage_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -132,9 +78,10 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `zone` (text): 0, 1, 2 or inspection
-- `rule` (text): the rule
-- `source` (text): CAL FIRE, Kern Fire or PRC 4291
+- `fuel` (text): 
+- `rule` (text): 
+- `limit` (text): the number with its unit
+- `code` (text): section
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -145,7 +92,7 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every zone's rules and Kern's inspection terms.
+**Done when:** Gasoline, propane and generators covered.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

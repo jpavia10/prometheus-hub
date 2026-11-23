@@ -504,7 +504,7 @@
      "review": "Done 2026-11-22 (Claude): 13 Board actions touching the mountain communities, Jan 6 to Nov 17, each on kerncounty.com. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#119)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Planning decisions shape the towns before the Board ever votes.",
      "unlocks": "Polis's record covers the Planning Commission too.",
@@ -589,7 +589,9 @@
      ],
      "id": "POL-GEM-09",
      "title": "Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "closed": "2026-11-23",
+     "review": "Scored 8/10 (#165)"
     },
     {
      "state": "now",

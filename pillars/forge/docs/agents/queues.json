@@ -215,7 +215,7 @@
      "closed": "2026-11-19"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "The Forge says what is out and due; if it miscounts, the owner's view of every AI's load is wrong.",
      "unlocks": "Claude fixes every builder bug you find, with a regression test.",
@@ -295,12 +295,14 @@
      "id": "FOR-GEM-05",
      "title": "Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch",
      "due": "2026-12-04",
-     "note": "Run 4 (2026-11-21) could not open raw.githubusercontent.com: use the github.com pages above. Claude, 2026-11-22."
+     "note": "Run 4 (2026-11-21) could not open raw.githubusercontent.com: use the github.com pages above. Claude, 2026-11-22.",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#168)"
     },
     {
      "id": "FOR-GEM-06",
      "title": "Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "due": "2026-12-01",
      "why": "On Nov 23 Claude found nine of your Nov 21 files (the Odyssey photo work and both coin-photo tests) that the Forge still showed as 'to do' two days later: the Forge reads GitHub, not Drive, and your DONE_ markers sit in Drive.",
@@ -372,7 +374,77 @@
      ],
      "rejected_if": [
       "a marker left out"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#138)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "FOR-GEM-06 showed 50 deliveries the Forge never saw; Claude now searches Drive at every intake, and this checks it worked.",
+     "unlocks": "Proof the Forge and Drive agree.",
+     "inputs": [
+      "Every DONE_*.json in the hub's and Titan's Drive incoming folders created 2026-11-23 to 2026-12-07",
+      "The live Forge https://jpavia10.github.io/prometheus-hub/pillars/forge/"
+     ],
+     "steps": [
+      "For each marker: the task, the date, and what the Forge shows for it."
+     ],
+     "deliver": {
+      "file": "forge_gemini_done-markers-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "task",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "marker_date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "forge_status",
+       "type": "text",
+       "rule": "as the Forge shows it"
+      },
+      {
+       "name": "agree",
+       "type": "text",
+       "rule": "yes or no"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every marker in the window.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "FOR-GEM-07",
+     "title": "Forge: the DONE markers from Nov 23 to Dec 7 against the Forge",
+     "due": "2026-12-08"
     }
    ]
   },

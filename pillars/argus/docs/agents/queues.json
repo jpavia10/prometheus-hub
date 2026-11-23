@@ -534,7 +534,7 @@
      "review": "Done 2026-11-22 (Claude): Every JPEG group named with its standard; the code reference (app.js:190-199, clean() re-encodes through a canvas) is right, and the 7 quotes Claude could open are word for word. A real find: HEIF from the S24 is not covered. Score 10/10 (#115)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Run 4 found that Argus's cleaner may not handle the S24's HEIF photos.",
      "unlocks": "Claude makes Argus clean or clearly refuse HEIF, per browser.",
@@ -604,7 +604,82 @@
      ],
      "id": "ARG-GEM-12",
      "title": "Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#149)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Odyssey's past trips come from photo dates and locations; Takeout's sidecar files keep the time and place even when an edit strips the EXIF.",
+     "unlocks": "Argus and Odyssey can read a Takeout export directly.",
+     "inputs": [
+      "support.google.com/accounts (Takeout: Google Photos), support.google.com/photos (download, location, edits), Google's Data Portability API docs (developers.google.com/data-portability) for the Photos schema"
+     ],
+     "steps": [
+      "How to export all photos or chosen albums, the archive size limits and formats, and every field the photo's JSON sidecar holds (taken time, geoData, geoDataExif, people, description), as the documentation names them.",
+      "Say when a field is only described in Google's API docs and not in the help pages."
+     ],
+     "deliver": {
+      "file": "argus_gemini_takeout_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": "a step or a field name"
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "documented_in",
+       "type": "text",
+       "rule": "help page or API docs"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "The export steps and every documented field.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ARG-GEM-13",
+     "title": "Argus: what Google Takeout gives for Google Photos (the JSON beside each photo), and how to export only some albums",
+     "due": "2026-12-06"
     }
    ]
   },

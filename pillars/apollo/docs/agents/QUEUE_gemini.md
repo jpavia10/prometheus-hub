@@ -2,27 +2,28 @@
 
 # Apollo Temple · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving
+## 1. APO-GEM-13 · Apollo: the FoodData Central id for 120 foods that have none (the first 120 in foods.js without 'fdc')
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-07 · **State:** now
 
-**Why:** A target without food is a number on a screen.
+**Why:** 648 of Apollo's 900 foods have no FoodData Central id, so Apollo cannot open their full nutrient panel or check its numbers.
 
-**What it unlocks:** Apollo's day view suggests a food for the nutrient that is short.
+**What it unlocks:** Apollo links each food to USDA's own record and re-checks its macros.
 
 **Read first:**
-- NIH ODS health-professional fact sheets (their 'Selected food sources' tables)
-- USDA FoodData Central when a fact sheet has no table
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/apollo/foods.js (window.APOLLO_FOODS: 'n' is the name, 'fdc' the id where known)
+- fdc.nal.usda.gov (search; prefer SR Legacy or Foundation records)
 
 **Do this:**
-1. For each of the 30 nutrients in run 4's file, copy the top five foods from the fact sheet's table, with the serving and the amount.
-2. Keep the table's order.
+1. Take the first 120 rows without 'fdc', in file order.
+2. For each, the closest FDC record: its id, its exact description, its data type, and its kcal per 100 g.
+3. Say 'no close match' where none fits rather than forcing one.
 
-**Make:** `apollo_gemini_food-sources_{YYYYMMDD-HHMM}.json`
+**Make:** `apollo_gemini_fdc-ids_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
 
@@ -30,10 +31,61 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `nutrient` (text): as in APO-GEM-11
-- `food` (text): as the table words it
-- `serving` (text): as the table words it
-- `amount` (text): with its unit
+- `food` (text): as in foods.js
+- `fdc` (number): FDC id
+- `description` (text): USDA's own wording
+- `data_type` (text): SR Legacy, Foundation, Survey (FNDDS) or Branded
+- `kcal_100g` (number): from the record
+- `url` (url): the page you opened, on the official site
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 120
+
+**Done when:** 120 foods, each matched or marked 'no close match'.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+## 2. APO-GEM-14 · Apollo: the key numbers of the current Dietary Guidelines for Americans and the Physical Activity Guidelines
+
+**Due:** 2026-12-07 · **State:** now
+
+**Why:** Apollo's daily targets come from the NIH; the national guidelines set the weekly ones (activity minutes, limits on added sugar, sodium, saturated fat).
+
+**What it unlocks:** Apollo's week view shows the guideline targets with their source.
+
+**Read first:**
+- dietaryguidelines.gov (the current edition: name it and its years), health.gov/our-work/physical-activity (Physical Activity Guidelines for Americans, the current edition)
+
+**Do this:**
+1. Every number for an adult: activity minutes (moderate, vigorous), strength days, limits (added sugar, saturated fat, sodium, alcohol), and the protein, fruit, vegetable and grain amounts at 2,400 kcal.
+2. Name the edition of each document.
+
+**Make:** `apollo_gemini_guidelines_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `guideline` (text): DGA or PAG, with edition
+- `item` (text): 
+- `value` (text): number with unit
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -44,9 +96,7 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 150
-
-**Done when:** Five foods for each of the 30 nutrients.
+**Done when:** Every adult number in both documents.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

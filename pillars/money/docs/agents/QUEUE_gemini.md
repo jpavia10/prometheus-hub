@@ -2,28 +2,26 @@
 
 # Money · payoff simulator · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. MON-GEM-06 · Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements
+## 1. MON-GEM-07 · Money: the 7 issuer-pricing cells still 'not stated', from the CFPB agreement database
 
 **Due:** 2026-12-04 · **State:** now
 
-**Why:** Run 4 left the minimum payment unstated for 11 issuers and the penalty rate for 15.
+**Why:** Run 6 filled most of the gaps; 7 cells are left where the issuer's own page is silent.
 
-**What it unlocks:** Money's issuer rows are complete.
+**What it unlocks:** Money's issuer table has no blanks.
 
 **Read first:**
-- Gemini's file money_gemini_issuer-pricing_20261121-1136.json
-- CFPB credit card agreement database (consumerfinance.gov/credit-cards/agreements) and each issuer's own agreement PDF
+- Your file money_gemini_issuer-pricing-2_20261123-1112.json (the rows that say 'not stated')
+- consumerfinance.gov/credit-cards/agreements: each issuer's latest submitted agreement
 
 **Do this:**
-1. For each issuer with a 'not stated' minimum payment or penalty APR, open its current card agreement.
-2. Copy the minimum payment formula and the penalty APR (or 'none') word for word.
-3. Give the agreement's own date.
+1. For each 'not stated' cell, open the issuer's latest agreement in the CFPB database and copy the term.
 
-**Make:** `money_gemini_issuer-pricing-2_{YYYYMMDD-HHMM}.json`
+**Make:** `money_gemini_issuer-pricing-3_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -31,9 +29,9 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `issuer` (text): as in Gemini's file
+- `issuer` (text): 
 - `field` (text): min_payment or penalty_apr
-- `value` (text): the formula or rate, as the agreement words it
+- `value` (text): as the agreement words it
 - `agreement_date` (date): YYYY-MM-DD
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
@@ -45,7 +43,9 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every 'not stated' cell answered from an agreement, or still 'not stated' with the documents checked.
+**How many:** 7
+
+**Done when:** All 7 cells answered from an agreement.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

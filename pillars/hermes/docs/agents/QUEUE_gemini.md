@@ -2,28 +2,26 @@
 
 # Hermes Post · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HER-GEM-11 · Hermes: the publication date of the 21 lures still 'not stated'
+## 1. HER-GEM-13 · Hermes: the official fraud and customer-service phone numbers for billers 1-50
 
-**Due:** 2026-12-04 · **State:** now
+**Due:** 2026-12-06 · **State:** now
 
-**Why:** Hermes dates every lure; 21 of run 4's have no date.
+**Why:** Hermes already knows each biller's real email domains; a scam text or call is checked the same way against the number the company itself publishes.
 
-**What it unlocks:** The lure gallery is ordered by date.
+**What it unlocks:** Hermes can say 'this number is (or is not) the one Chase prints' for any message or call.
 
 **Read first:**
-- Gemini's file hermes_gemini_scam-messages_20261121-1210.json (the 21 rows with published 'not stated')
-- Each page's own date line, its 'last updated' line, or the Internet Archive's first capture (web.archive.org) as a last resort
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (window.BILLERS: 97 billers, entries 1-50 in file order)
 
 **Do this:**
-1. For each of the 21, look for the page's own date.
-2. If the page has none, give the Internet Archive's first capture date and say so.
-3. Never guess a year.
+1. For each biller: the customer-service number and the fraud or 'report suspicious activity' number, from the company's own contact or security page (never a directory site).
+2. Note if the company says it never calls or texts to ask for a code or password, and quote it.
 
-**Make:** `hermes_gemini_scam-dates_{YYYYMMDD-HHMM}.json`
+**Make:** `hermes_gemini_biller-phones-1_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
 
@@ -31,9 +29,10 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `lure_n` (number): the n in Gemini's file
-- `published` (date): YYYY-MM-DD
-- `how` (text): page date, page updated, or first archive capture
+- `biller` (text): as in billers.js
+- `service_phone` (text): as printed
+- `fraud_phone` (text): as printed, or 'not stated'
+- `never_asks` (text): the company's own words, or 'not stated'
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -44,9 +43,9 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 21
+**How many:** 50
 
-**Done when:** All 21 rows dated, each saying how.
+**Done when:** Billers 1-50.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.
@@ -59,22 +58,21 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 2. HER-GEM-12 · Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)
+## 2. HER-GEM-14 · Hermes: the official fraud and customer-service phone numbers for billers 51-97
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-07 · **State:** now
 
-**Why:** After 'this is a scam' comes 'where do I report it'.
+**Why:** The second half of the biller phone list.
 
-**What it unlocks:** Each lure type in Hermes shows its official reporting channel.
+**What it unlocks:** Every biller in Hermes has its real numbers.
 
 **Read first:**
-- reportfraud.ftc.gov, ic3.gov, the carriers' 7726 pages, uspis.gov, the CA Attorney General's complaint page, each big bank's report-phishing page
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (entries 51-97 in file order)
 
 **Do this:**
-1. For each lure type in Hermes (toll, package, bank, government, job, account, other), give every official channel that takes reports.
-2. Say what to send (the text, a screenshot, the headers) as the page says.
+1. As in part 1.
 
-**Make:** `hermes_gemini_report-channels_{YYYYMMDD-HHMM}.json`
+**Make:** `hermes_gemini_biller-phones-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
 
@@ -82,10 +80,10 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `type` (text): one of Hermes's lure types
-- `channel` (text): who takes the report
-- `how` (text): forward to 7726, web form, email, phone
-- `send` (text): what the page says to include
+- `biller` (text): 
+- `service_phone` (text): 
+- `fraud_phone` (text): or 'not stated'
+- `never_asks` (text): or 'not stated'
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -96,7 +94,9 @@ Updated 2026-11-23 17:22 UTC · 2 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every lure type has at least one official channel.
+**How many:** 47
+
+**Done when:** Billers 51-97.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

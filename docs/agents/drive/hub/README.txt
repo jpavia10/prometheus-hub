@@ -8,26 +8,26 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Prometheus Hub right now.
 
 ## Gemini
 
-Updated 2026-11-23 17:22 UTC · 3 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 3 open in this pillar.
 
 
-- HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes · due 2026-12-01
-    make: hub_gemini_a11y-recheck_{YYYYMMDD-HHMM}.json · how many: 40 · done when: All 40 re-measured.
-- HUB-GEM-18 · Hub: where the subject sits in each of the 24 pillar paintings (for the living headers) · due 2026-12-05
-    make: hub_gemini_painting-focus_{YYYYMMDD-HHMM}.json · how many: 24 · done when: 24 rows.
-- HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet · due 2026-12-06
-    make: hub_gemini_a11y-audit-2_{YYYYMMDD-HHMM}.json · how many: 68 · done when: 4 findings for each of the 17 pages, each with a measurement.
+- HUB-GEM-19 · Hub: re-measure the 32 high-priority accessibility items after Claude's fixes · due 2026-12-04
+    make: hub_gemini_a11y-recheck-2_{YYYYMMDD-HHMM}.json · how many: 32 · done when: All 32 measured on d64 or later.
+- HUB-GEM-20 · Hub: does every place in the realm painting sit under its own label? · due 2026-12-05
+    make: hub_gemini_realm-labels_{YYYYMMDD-HHMM}.json · how many: 27 · done when: All 27 checked.
+- HUB-GEM-21 · Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix) · due 2026-12-06
+    make: hub_gemini_painting-focus-2_{YYYYMMDD-HHMM}.json · how many: 11 · done when: All 11 checked on d64 or later.
 
 ## Muse
 
-Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 1 open in this pillar.
 
 
 - HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · due 2026-12-07
@@ -35,21 +35,21 @@ Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Prometheus Hub right now.
 
 ## Argon
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Prometheus Hub right now.
 
 ## Hydrogen
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Prometheus Hub right now.

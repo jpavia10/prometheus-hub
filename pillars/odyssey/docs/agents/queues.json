@@ -969,7 +969,7 @@
     {
      "id": "ODY-GEM-13",
      "title": "Odyssey: the trips your search missed, folder by folder (2008-2026)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "due": "2026-12-07",
      "why": "Your Nov 21 file found ten trips, but Drive search stopped at 5 files a call, so whole years (2008-2014, 2016-2017, 2020, 2024-2026) came back nearly empty. The file names carry the date, so the folders themselves show every trip.",
@@ -1056,12 +1056,14 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#170)"
     },
     {
      "id": "ODY-GEM-14",
      "title": "Odyssey: a card for each of the 21 new stops (the ten trips found in Joseph's photos)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "due": "2026-12-05",
      "why": "Your city cards (ODY-GEM-10) cover the Europe and Philippines stops. The ten trips now on record (checked photo by photo on Nov 23) add 21 stops with no card; Detroit already has one.",
@@ -1172,12 +1174,14 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#136)"
     },
     {
      "id": "ODY-GEM-15",
      "title": "Odyssey: the landmarks Joseph photographed on the ten trips found in his photos, with official facts",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "due": "2026-12-07",
      "why": "Your 65 landmarks cover Europe and the Philippines. The ten trips now on record (Atlanta Oct 2015; Big Sur and San Francisco Jun 2018; Sequoia and Kings Canyon Aug 2018; Las Vegas and Hoover Dam Jun 2019; Mazatlán and Puerto Vallarta Aug 2019; San Francisco and Fort Bragg Mar 2021; San Diego Apr 2022; Detroit Jun 2022; Mammoth Lakes Sep 2022; Detroit May 2023) have none, so their map dots open on nothing.",
@@ -1283,12 +1287,14 @@
       "a URL that does not open, is a home page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens rows at random)",
       "a file saved anywhere but the folder named here"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#159)"
     },
     {
      "id": "ODY-GEM-16",
      "title": "Odyssey: the ten photo trips day by day",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "due": "2026-12-07",
      "why": "Your day-by-day files for the Eurotrip and the Philippines were the best work of the run (they caught a wrong date and four missing day trips). The ten new trips, named as in odyssey-data.js since Nov 23 (Georgia — a long weekend, Oct 23-25 2015; Big Sur & San Francisco, Jun 20-21 2018; Sequoia & Kings Canyon, Aug 14-15 2018; Grand Canyon, Las Vegas & Hoover Dam, Jun 8-10 2019; Mexican Riviera cruise, Aug 24-29 2019; San Francisco & the Mendocino coast, Mar 6-7 2021; San Diego, Apr 10-11 2022; Michigan — June 2022, Jun 1-5 2022; Mammoth Lakes, Sep 16-18 2022; Michigan — May 2023, May 11-15 2023) have one line per stop and no day log.",
@@ -1369,12 +1375,14 @@
      "rejected_if": [
       "fewer rows than the count, or a row missing a field",
       "a file saved anywhere but the folder named here"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#139)"
     },
     {
      "id": "ODY-GEM-17",
      "title": "Odyssey: a card for each national park Joseph has been to (NPS facts)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "due": "2026-12-07",
      "why": "His photos put him in Sequoia, Kings Canyon, Joshua Tree and Death Valley (and Hoover Dam sits in Lake Mead National Recreation Area). Odyssey's atlas can show the parks he has been to.",
@@ -1461,7 +1469,949 @@
       "a URL that does not open, is a home page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens rows at random)",
       "a file saved anywhere but the folder named here"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Scored 8/10 (#171)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Your run 6 cards covered the 13 stops the task listed when you started; Claude had already moved the trips to their checked stops, and 11 of those have no card.",
+     "unlocks": "Every stop on the map opens its card.",
+     "inputs": [
+      "The stop codes as in pillars/odyssey/odyssey-data.js: NGA North Georgia mountains (34.868, -84.520: name the nearest town), MHL Marin Headlands, KAW Lake Kaweah, GRG Grant Grove (Kings Canyon), CDG Cedar Grove (Kings Canyon), GCN Grand Canyon South Rim, PGA Page AZ, LGB Long Beach, PTA Point Arena, GAS Gaslamp Quarter (San Diego), BAL Balboa Park (San Diego)",
+      "Your own file odyssey_gemini_city-cards_20261123-0922.json for the shape and the sourcing"
+     ],
+     "steps": [
+      "The card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'.",
+      "For that town: population (latest census or official estimate, its year and page), elevation in metres, IANA time zone, currency, language.",
+      "known_for and its quote are about the stop itself (the park, the quarter, the headlands) from its own official page. Never write population 0: a park has no population, so give the town's."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 11,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "code",
+       "type": "text",
+       "rule": "the stop code above"
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": "town, or 'Town (nearest town to Stop)'"
+      },
+      {
+       "name": "country",
+       "type": "text",
+       "rule": "United States"
+      },
+      {
+       "name": "population",
+       "type": "number",
+       "rule": "the town's"
+      },
+      {
+       "name": "pop_year",
+       "type": "number",
+       "rule": "YYYY"
+      },
+      {
+       "name": "pop_url",
+       "type": "url",
+       "rule": "census or official estimate page"
+      },
+      {
+       "name": "elevation_m",
+       "type": "number",
+       "rule": "metres"
+      },
+      {
+       "name": "tz",
+       "type": "text",
+       "rule": "IANA, e.g. America/Los_Angeles"
+      },
+      {
+       "name": "currency",
+       "type": "text",
+       "rule": "e.g. US dollar (USD)"
+      },
+      {
+       "name": "language",
+       "type": "text",
+       "rule": "English"
+      },
+      {
+       "name": "known_for",
+       "type": "text",
+       "rule": "one sentence about the stop"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 11 codes answered.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-18",
+     "title": "Odyssey: a card for the 11 stops still without one (the ten photo trips)",
+     "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Run 6 found six trips the first search missed; to put them on the map and the globe each needs its stops in order with coordinates.",
+     "unlocks": "The six trips become trips on record: on the globe, the atlas and the trip files.",
+     "inputs": [
+      "The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04",
+      "The Drive folders 'Photos from YYYY' and the photos' EXIF GPS or what Google Photos shows",
+      "Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people."
+     ],
+     "steps": [
+      "For each trip, list the places in the order you were there, one row per stop (a stop is a place you spent time or slept, not every photo).",
+      "For each stop: the first and last day, the nights there, how you got there from the stop before (car, flight, train), and coordinates to 3 decimals of a public place (a park, a landmark, a town centre).",
+      "Say where the coordinates come from: EXIF GPS of a photo (give its file id) or the landmark the photo shows."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_new-trip-stops_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "trip",
+       "type": "text",
+       "rule": "e.g. 'Zion Jul 2020'"
+      },
+      {
+       "name": "order",
+       "type": "number",
+       "rule": "1, 2, 3 within the trip"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": "the stop's name"
+      },
+      {
+       "name": "country",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "lat",
+       "type": "number",
+       "rule": "3 decimals, a public place"
+      },
+      {
+       "name": "lon",
+       "type": "number",
+       "rule": "3 decimals"
+      },
+      {
+       "name": "first_day",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "last_day",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "nights",
+       "type": "number",
+       "rule": "nights at this stop"
+      },
+      {
+       "name": "by",
+       "type": "text",
+       "rule": "car, flight, train, ferry, or 'start'"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "photo file id and EXIF or landmark"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "'town centre' when the real place is a home, else empty"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All six trips have every stop, in order, with coordinates of a public place.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-19",
+     "title": "Odyssey: the stops of the six trips your run 6 found, in order, with where they are",
+     "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Your day-by-day files became the day logs in every trip file; the six new trips need the same.",
+     "unlocks": "Each new trip's file gets its day-by-day log.",
+     "inputs": [
+      "The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04",
+      "Your ODY-GEM-16 file odyssey_gemini_photo-trip-days_20261123-0941.json for the shape",
+      "Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people."
+     ],
+     "steps": [
+      "For every day of each trip with photos: the town, the places in order, the first and last photo time in local time, how many photos, 2 Drive file ids as evidence."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_new-trip-days_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "trip",
+       "type": "text",
+       "rule": "as in the list above"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "places",
+       "type": "text",
+       "rule": "in order"
+      },
+      {
+       "name": "first_time",
+       "type": "text",
+       "rule": "HH:MM and zone"
+      },
+      {
+       "name": "last_time",
+       "type": "text",
+       "rule": "HH:MM and zone"
+      },
+      {
+       "name": "photos",
+       "type": "number",
+       "rule": "count"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "2 Drive file ids"
+      },
+      {
+       "name": "disagrees",
+       "type": "text",
+       "rule": "or empty"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every day with photos on all six trips.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-20",
+     "title": "Odyssey: the six new trips day by day",
+     "due": "2026-12-06"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Every trip file opens on its photos; Claude checks each pick by eye and crops it, so it needs the strongest few per day.",
+     "unlocks": "The six trips open on their own photo journeys.",
+     "inputs": [
+      "The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04",
+      "Your picks file odyssey_gemini_photo-picks_20261121-0818.json for the shape",
+      "Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people. Pick photos with no faces; a person far away and small is fine. No photos inside a home."
+     ],
+     "steps": [
+      "For each trip, rank the 3 to 8 best photos: landmarks, views, the road, the food, the signs that say where you are.",
+      "For each: its Drive file id, date and local time from the file name, the place, and a one-line caption that says what is in it."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_new-trip-picks_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "trip",
+       "type": "text",
+       "rule": "as above"
+      },
+      {
+       "name": "rank",
+       "type": "number",
+       "rule": "1 = best, per trip"
+      },
+      {
+       "name": "file_id",
+       "type": "text",
+       "rule": "Drive file id"
+      },
+      {
+       "name": "taken",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM local"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "caption",
+       "type": "text",
+       "rule": "what is in the photo, one line"
+      },
+      {
+       "name": "people",
+       "type": "text",
+       "rule": "none, or 'far and small'"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Three to eight picks for each of the six trips.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-21",
+     "title": "Odyssey: the best photos of the six new trips (scenery and landmarks only)",
+     "due": "2026-12-06"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "The atlas and the trip files show each landmark with a fact from its own official page; the six new trips have none yet.",
+     "unlocks": "Landmarks for Zion, Miami Beach, Los Angeles, Toledo and the rest.",
+     "inputs": [
+      "The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04",
+      "Your ODY-GEM-15 file odyssey_gemini_landmarks-usa_20261123-1108.json for the shape (one of its URLs was a site's home page: give the page that holds the fact)"
+     ],
+     "steps": [
+      "From the photos of those six trips, list every landmark that appears in one.",
+      "For each: coordinates, Wikidata id, the year it was built or established, the official page and one fact quoted word for word.",
+      "Name the photo it appears in."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_landmarks-new_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "name",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "local_name",
+       "type": "text",
+       "rule": "or empty"
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "country",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "lat",
+       "type": "number",
+       "rule": ""
+      },
+      {
+       "name": "lon",
+       "type": "number",
+       "rule": ""
+      },
+      {
+       "name": "wikidata",
+       "type": "text",
+       "rule": "Q-id"
+      },
+      {
+       "name": "year",
+       "type": "text",
+       "rule": "built or established"
+      },
+      {
+       "name": "unesco",
+       "type": "text",
+       "rule": "or empty"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "fact",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      },
+      {
+       "name": "photo",
+       "type": "text",
+       "rule": "Drive file id"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every landmark visible in the six trips' photos.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-22",
+     "title": "Odyssey: the landmarks in the six new trips' photos, with official facts",
+     "due": "2026-12-07"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Run 6's park cards left 5 numbers 'not stated'; nps.gov gives them on each park's 'Park Statistics' or 'Basic Information' page.",
+     "unlocks": "All six park cards complete.",
+     "inputs": [
+      "nps.gov/seki (Sequoia and Kings Canyon share one site: 'Park Statistics'), nps.gov/grca ('Park Statistics')"
+     ],
+     "steps": [
+      "Sequoia's area in acres; Kings Canyon's area in acres; Kings Canyon's highest and lowest points in feet; Grand Canyon's lowest point in feet.",
+      "One row per number, with the page and its words."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_parks-gaps_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 5,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "park",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "field",
+       "type": "text",
+       "rule": "area_acres, high_ft or low_ft"
+      },
+      {
+       "name": "value",
+       "type": "number",
+       "rule": "acres or feet"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 5 numbers, each from nps.gov.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-23",
+     "title": "Odyssey: the park card gaps (Sequoia and Kings Canyon areas, Kings Canyon's heights, Grand Canyon's low point)",
+     "due": "2026-12-03"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "In Feb 2026 Joseph said he needs to visit again this year; the trip file should hold what the border needs before a date is set.",
+     "unlocks": "A Philippines trip filed in Odyssey shows its entry checklist.",
+     "inputs": [
+      "etravel.gov.ph (the eTravel form), immigration.gov.ph (visa-free stay for US citizens), travel.state.gov (Philippines country page), the Philippine Embassy in Washington"
+     ],
+     "steps": [
+      "Every rule a US citizen meets: days allowed visa-free, passport validity required, onward ticket, eTravel (when, how long before), customs declaration, extensions.",
+      "One row per rule, with its page."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_ph-entry_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "the number or condition"
+      },
+      {
+       "name": "when",
+       "type": "text",
+       "rule": "before departure, at arrival, ..."
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every entry rule on the four official sources.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-24",
+     "title": "Odyssey: going back to the Philippines in 2026-27: entry rules for a US citizen, from the official pages",
+     "due": "2026-12-06"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Joseph weighed Siargao and Boracay against El Nido in Jul 2024; a next trip can start from what each takes.",
+     "unlocks": "Odyssey can plan a second island beside Manila.",
+     "inputs": [
+      "philippines.travel (Department of Tourism), the province pages (Surigao del Norte for Siargao, Aklan for Boracay), the airports' pages (Sayak IAO, Caticlan MPH / Kalibo KLO)"
+     ],
+     "steps": [
+      "For each: how to get there from Manila (airport, flight time as the airline or airport states, the boat or road after), the environmental or terminal fees, the best months as the tourism page says, and what it is known for."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_ph-options_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 2,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": "Siargao or Boracay"
+      },
+      {
+       "name": "airport",
+       "type": "text",
+       "rule": "code and name"
+      },
+      {
+       "name": "from_manila",
+       "type": "text",
+       "rule": "as the page states"
+      },
+      {
+       "name": "fees",
+       "type": "text",
+       "rule": "each fee with its amount, or 'not stated'"
+      },
+      {
+       "name": "best_months",
+       "type": "text",
+       "rule": "as the page says"
+      },
+      {
+       "name": "known_for",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Both places answered from official pages.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-25",
+     "title": "Odyssey: Siargao and Boracay, the two places weighed in July 2024, from the official tourism pages",
+     "due": "2026-12-07"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Odyssey plans the next trip as well as the past ones; the family lives at the top of the Grapevine, and most weekends start there.",
+     "unlocks": "A 'weekend from home' list on Odyssey's plan view, each a tap from a new trip file.",
+     "inputs": [
+      "Start point: Frazier Park town centre (34.823, -118.945). Never use a street address.",
+      "Official pages only: nps.gov, fs.usda.gov, parks.ca.gov, the city's or county's visitor bureau, recreation.gov for permits"
+     ],
+     "steps": [
+      "Pick 20 places within 4 hours' drive: parks, beaches, towns, museums, snow and lakes, spread across seasons.",
+      "For each: the drive in hours and miles (from the park's or town's own 'directions' page, or state it as Google Maps' figure with the date), the best months as the official page says, what must be booked ahead (timed entry, campsite, permit) and its booking window, and the entry fee."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_weekends_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "park, beach, town, museum, snow, lake"
+      },
+      {
+       "name": "lat",
+       "type": "number",
+       "rule": "3 decimals, a public place"
+      },
+      {
+       "name": "lon",
+       "type": "number",
+       "rule": ""
+      },
+      {
+       "name": "drive_h",
+       "type": "number",
+       "rule": "hours"
+      },
+      {
+       "name": "drive_mi",
+       "type": "number",
+       "rule": "miles"
+      },
+      {
+       "name": "drive_source",
+       "type": "text",
+       "rule": "the page or 'Google Maps, YYYY-MM-DD'"
+      },
+      {
+       "name": "best_months",
+       "type": "text",
+       "rule": "as the page says"
+      },
+      {
+       "name": "book_ahead",
+       "type": "text",
+       "rule": "what and how far ahead, or 'nothing'"
+      },
+      {
+       "name": "fee",
+       "type": "text",
+       "rule": "per car or person, or 'free'"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "20 places, each from its own official page.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-26",
+     "title": "Odyssey: 20 weekend trips from Frazier Park, with real drive times and what each needs booked",
+     "due": "2026-12-08"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Five of the trips on record went to national parks; 2027 trips should know which need a timed-entry reservation and whether the annual pass pays for itself.",
+     "unlocks": "Odyssey shows the pass and booking rules on any trip to a park.",
+     "inputs": [
+      "nps.gov 'America the Beautiful' pass page and store.usgs.gov, recreation.gov, each park's 'Reservations' or 'Fees & Passes' page: Sequoia & Kings Canyon, Yosemite, Zion, Grand Canyon, Joshua Tree, Death Valley, Channel Islands, Pinnacles"
+     ],
+     "steps": [
+      "The annual pass price and what it covers in 2027 (and any change for non-residents).",
+      "For each park: the entrance fee per car, any 2027 timed-entry or vehicle reservation (dates, window, fee), and the page."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_park-passes-2027_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "park",
+       "type": "text",
+       "rule": "or 'America the Beautiful pass'"
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": "fee, reservation, pass"
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "amount or rule"
+      },
+      {
+       "name": "dates",
+       "type": "text",
+       "rule": "when it applies, or 'all year'"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "The pass and all eight parks.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-27",
+     "title": "Odyssey: national park passes and reservations for 2027 (the parks Joseph has been to and the ones nearby)",
+     "due": "2026-12-08"
     }
    ]
   },

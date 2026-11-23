@@ -1001,7 +1001,7 @@
      "review": "Done 2026-11-22 (Claude): 62 lights from the owner's manuals (45 Sorento Hybrid, 17 MT-07) with meaning, action and urgency. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#108)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "The service log should say what goes in and how much.",
      "unlocks": "Garage's service cards show the right oil, coolant and pressures.",
@@ -1081,7 +1081,86 @@
      ],
      "id": "GAR-GEM-15",
      "title": "Garage: fluid capacities and specs for both vehicles, from the owner's manuals",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#150)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Run 6 left the Sorento's spark plugs and octane and the MT-07's brake fluid, transmission/clutch oil and fork oil unstated.",
+     "unlocks": "Garage's fluids table is complete.",
+     "inputs": [
+      "The 2025 Sorento Hybrid owner's manual (kiatechinfo.com, chapter 'Specifications'), the 2021 MT-07 owner's manual (library.ymcapps.net), and Yamaha's MT-07 service manual pages if public"
+     ],
+     "steps": [
+      "For each of the six: the spec as the manual prints it, the page, the words."
+     ],
+     "deliver": {
+      "file": "garage_gemini_fluids-gaps_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 6,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "vehicle",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": "as in run 6"
+      },
+      {
+       "name": "spec",
+       "type": "text",
+       "rule": "as printed"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All six answered, or 'not stated' with every manual page checked.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "GAR-GEM-16",
+     "title": "Garage: the six fluid and part specs still 'not stated'",
+     "due": "2026-12-04"
     }
    ]
   },

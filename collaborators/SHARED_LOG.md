@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-23] Gemini run 6 intake (Claude): 38 files scored, 37 tasks closed, homework refilled to the floor
+- Scored hub rows #135-#172, average 9.46 (Titan row 79: 9; Midas row 15: 10). Real finds: six missed trips, the Forge's 50 unseen deliveries (FOR-GEM-06), 11 paintings whose header crop misses its subject, C344's date. Faults told in FEEDBACK for Gemini: 0 and text in number fields, a task's field names not used (POL-GEM-09), read date as effective date.
+- Refill (rule 10b): 40 new Gemini tasks across 24 pillars and Midas, plus Titan project 55 (the 11 unpriced album holes); Titan's loop has nothing left Gemini may take (every remaining item was tried by two AIs). Gemini 50 of floor 50, Muse 7 of 3, Gemini API 2 of 1. Queue pages and the Forge rebuilt.
+
 ### [2026-11-23] Both homes, refinement pass 1 (d59; owner: "I actually like the new homepage. Its cool but needs refinement. Ill rate it a 10/100"; both the menu and the realm)
 - Menu: the level card's one grid column sized itself to the live line's unwrapped width (458 px on a 390 px phone), so the name, the line under it and the live line ran off the right edge; now one column the card's width, names sized to their length, a soft dark pool under the words instead of heavy text shadows, no side arrows on touch screens (swipe and the strip), the briefing starts below the dock instead of peeking out behind it, the mode button says Realm.
 - Realm: the Menu button sat on the ticker line and under labels; moved, and labels never sit under it. On a wide screen the painting was narrower than the window and its sides smeared; it now always covers the width. The resting card names the places with something coming (soonest first, tap to fly there) instead of how to use a map; the quiet card under it ("On this device: the core is home...") is now what comes after the now line across every pillar; "Next event · none" no longer takes a row, and the now line is one row. 38/38 proofs.

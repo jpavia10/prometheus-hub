@@ -2,27 +2,25 @@
 
 # Icarus Stake · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ICA-GEM-13 · Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding
+## 1. ICA-GEM-14 · Icarus: BLS's 2027 release dates for CPI, the jobs report and PPI
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-06 · **State:** now
 
-**Why:** Run 4 gave the Fed, CPI and jobs days; GDP and PCE days move markets too.
+**Why:** Run 6 gave BEA and Treasury for 2027; the three BLS releases that move markets most are the rest of the calendar.
 
-**What it unlocks:** Icarus marks them on the journal calendar.
+**What it unlocks:** Icarus's 2027 calendar is complete.
 
 **Read first:**
-- BEA release schedule (bea.gov/news/schedule)
-- Treasury quarterly refunding schedule (home.treasury.gov)
+- bls.gov/schedule (2027 release calendar for CPI, Employment Situation, PPI)
 
 **Do this:**
-1. Every 2027 GDP (advance, second, third) and Personal Income and Outlays date with its time.
-2. Every 2027 quarterly refunding announcement date.
+1. Every 2027 date and time for the three releases, with the reference month.
 
-**Make:** `icarus_gemini_2027-bea-treasury_{YYYYMMDD-HHMM}.json`
+**Make:** `icarus_gemini_2027-bls_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
 
@@ -30,9 +28,9 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `date` (date): YYYY-MM-DD, one day per row
-- `event` (text): as the schedule names it
-- `time` (text): HH:MM ET or 'not stated'
+- `date` (date): YYYY-MM-DD
+- `event` (text): CPI, Employment Situation or PPI, with its month
+- `time` (text): 08:30 ET
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -43,7 +41,9 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every 2027 date the schedules show.
+**How many:** 36
+
+**Done when:** All 36 (12 x 3), or what BLS has published so far with the page.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

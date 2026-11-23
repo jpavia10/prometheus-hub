@@ -506,7 +506,7 @@
      "review": "Done 2026-11-22 (Claude): 24 first and definitive recordings from jobim.org, Blue Note, MusicBrainz and Discogs; labels 'not stated' where the page omits them. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#110)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Run 4 found the page for most tunes but the key for only 4.",
      "unlocks": "The ladder can prefer the edition in the key it teaches.",
@@ -578,7 +578,9 @@
      ],
      "id": "PIA-GEM-08",
      "title": "Piano: the published key for the 24 Bossa Nova tunes still 'not stated'",
-     "due": "2026-12-03"
+     "due": "2026-12-03",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#135)"
     }
    ]
   },

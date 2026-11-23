@@ -353,7 +353,7 @@
      "review": "Done 2026-11-22 (Claude): 45 rows; Claude redid all the math (the 11 invention totals and the grand total) and opened the 11 Pololu quotes: all hold. Adafruit rows not second-read. Score 10/10 (#117)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "A parts list is only buildable when the power adds up.",
      "unlocks": "Each invention's stage 1 shows the supply it needs.",
@@ -434,7 +434,87 @@
      ],
      "id": "FDY-GEM-06",
      "title": "Foundry: the power budget for each stage-1 build, from the parts' datasheets",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#163)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Your parts lists and power budgets made each invention buildable on a bench; selling one is a different bar.",
+     "unlocks": "Each invention's build page shows the step after the prototype.",
+     "inputs": [
+      "Your files foundry_gemini_bench-parts and foundry_gemini_power-budget (the 11 builds)",
+      "ecfr.gov (FCC 47 CFR Part 15), fcc.gov equipment authorization, cpsc.gov, ul.com standards catalogue, California Prop 65 (oehha.ca.gov), FDA device classification where it applies"
+     ],
+     "steps": [
+      "For each build: the rules that apply (radio, unintentional radiator, battery, children's product, food contact, medical), the test or filing, and whether it can be self-declared (SDoC) or needs a lab."
+     ],
+     "deliver": {
+      "file": "foundry_gemini_certification_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 11,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "invention",
+       "type": "text",
+       "rule": "as in your files"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "e.g. FCC Part 15 Subpart B"
+      },
+      {
+       "name": "why",
+       "type": "text",
+       "rule": "what in the build triggers it"
+      },
+      {
+       "name": "route",
+       "type": "text",
+       "rule": "SDoC, certification, listing"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 11 builds.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "FDY-GEM-07",
+     "title": "Foundry: the certifications each of the 11 stage-1 builds would need before it could be sold",
+     "due": "2026-12-08"
     }
    ]
   },

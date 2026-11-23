@@ -818,7 +818,7 @@
      "review": "Done 2026-11-22 (Claude): Only 2 rows (the 2019 holidays, from one 2020 release). 'No 2020-2026 dot.ca.gov releases found' is unlikely for a pass that closes most winters; the task asked for every closure the record has. Re-issued with Caltrans District 6/7 and CHP as sources. Score 7/10 (#102)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Aether sizes the power station with one peak-sun-hours number per season, an estimate; NREL's PVWatts gives month-by-month output from measured weather for this exact spot.",
      "unlocks": "Aether's solar budget uses NREL's monthly numbers for the town, at two tilts, instead of a season guess.",
@@ -907,10 +907,12 @@
      "id": "AET-GEM-13",
      "title": "Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)",
      "due": "2026-12-04",
-     "note": "Run 4 (2026-11-21) found NREL unreachable and honestly sent nothing. Retry, with PVGIS as the fallback. Claude, 2026-11-22."
+     "note": "Run 4 (2026-11-21) found NREL unreachable and honestly sent nothing. Retry, with PVGIS as the fallback. Claude, 2026-11-22.",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#154)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Run 4 found only the 2019 holidays; the pass closes most winters, and Aether's 'chance the Grapevine shuts' needs the real record.",
      "unlocks": "Aether can say how many closures a winter brings and how long they last.",
@@ -993,10 +995,12 @@
      ],
      "id": "AET-GEM-14",
      "title": "Aether: every I-5 Grapevine (Tejon Pass) closure, winters 2020-21 to 2025-26",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#155)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Run 4 found RIDGE and TEJON were de-energised in October 2026; the household needs to know how often that happens.",
      "unlocks": "Aether's shut-off record counts the circuits' events per year.",
@@ -1087,7 +1091,180 @@
      ],
      "id": "AET-GEM-15",
      "title": "Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026",
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#156)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Run 6 found 2020-2023 in NWS Hanford's summaries; the last three winters are 'not stated'.",
+     "unlocks": "Aether's closure record reaches this winter.",
+     "inputs": [
+      "NWS Hanford monthly climate summaries (weather.gov/hnx) and NWS Los Angeles (weather.gov/lox) event summaries",
+      "Caltrans District 7 and District 6 news releases (dot.ca.gov), CHP Fort Tejon news"
+     ],
+     "steps": [
+      "Winter by winter, one row per closure: closed, reopened, hours, reason, the page.",
+      "A winter with none found gets one row saying so and naming the pages read."
+     ],
+     "deliver": {
+      "file": "aether_gemini_grapevine-closures-3_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "closed",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM or YYYY-MM-DD"
+      },
+      {
+       "name": "reopened",
+       "type": "text",
+       "rule": "the same form or 'not stated'"
+      },
+      {
+       "name": "hours",
+       "type": "number or 'not stated'",
+       "rule": ""
+      },
+      {
+       "name": "reason",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "source",
+       "type": "text",
+       "rule": "NWS, Caltrans or CHP"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All three winters covered.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-16",
+     "title": "Aether: Grapevine closures in the last three winters (2023-24, 2024-25, 2025-26)",
      "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "The deck, the drive and the pass all turn on how much snow falls; NOAA's cooperative stations near Frazier Park keep daily snowfall.",
+     "unlocks": "Aether shows a real snowfall season beside the forecast.",
+     "inputs": [
+      "NOAA NCEI Climate Data Online daily summaries (ncei.noaa.gov) for the nearest stations with snowfall (e.g. Lebec, Frazier Park, Tejon Rancho, Pine Mountain Club): name the station and its id"
+     ],
+     "steps": [
+      "For each winter: total snowfall, the biggest day and its date, the number of days with 1 inch or more."
+     ],
+     "deliver": {
+      "file": "aether_gemini_snow-record_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "winter",
+       "type": "text",
+       "rule": "2015-16 ..."
+      },
+      {
+       "name": "station",
+       "type": "text",
+       "rule": "name and id"
+      },
+      {
+       "name": "total_in",
+       "type": "number or 'not stated'",
+       "rule": "inches"
+      },
+      {
+       "name": "max_day_in",
+       "type": "number or 'not stated'",
+       "rule": ""
+      },
+      {
+       "name": "max_day",
+       "type": "date or 'not stated'",
+       "rule": ""
+      },
+      {
+       "name": "days_1in",
+       "type": "number or 'not stated'",
+       "rule": ""
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every winter, from the nearest station that reports snowfall.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "AET-GEM-17",
+     "title": "Aether: Frazier Park's snowfall record, winter by winter (2015-16 to 2025-26)",
+     "due": "2026-12-07"
     }
    ]
   },

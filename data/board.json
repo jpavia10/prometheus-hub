@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 17:22 UTC",
+ "updated": "2026-11-23 22:49 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -23,7 +23,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kairos/",
    "open": {
     "grok": 0,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -53,7 +53,7 @@
    "live": "https://jpavia10.github.io/titan-reliquary-preview/",
    "open": {
     "grok": 0,
-    "gemini": 9,
+    "gemini": 5,
     "muse": 6,
     "chatgpt": 0,
     "argon": null,
@@ -67,7 +67,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
    "open": {
     "grok": 0,
-    "gemini": 3,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -97,7 +97,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/apollo/",
    "open": {
     "grok": 0,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -127,7 +127,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/selling/",
    "open": {
     "grok": 0,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -142,7 +142,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/records/",
    "open": {
     "grok": 0,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -187,7 +187,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/piano/",
    "open": {
     "grok": 0,
-    "gemini": 1,
+    "gemini": 0,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -202,7 +202,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/bastion/",
    "open": {
     "grok": 0,
-    "gemini": 3,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -232,7 +232,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/odyssey/",
    "open": {
     "grok": 0,
-    "gemini": 5,
+    "gemini": 10,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -277,7 +277,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/games/",
    "open": {
     "grok": 0,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -292,7 +292,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/forge/",
    "open": {
     "grok": 0,
-    "gemini": 2,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -337,7 +337,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kin/",
    "open": {
     "grok": 0,
-    "gemini": 0,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -359,7 +359,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/aether/",
    "open": {
     "grok": 0,
-    "gemini": 3,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -374,7 +374,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/polis/",
    "open": {
     "grok": 0,
-    "gemini": 3,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -389,7 +389,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/mythos/",
    "open": {
     "grok": 0,
-    "gemini": 0,
+    "gemini": 1,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -404,7 +404,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/continuity/",
    "open": {
     "grok": 0,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,

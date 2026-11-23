@@ -2,80 +2,26 @@
 
 # Hephaestus Hearth · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HEA-GEM-26 · Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22)
-
-**Due:** 2026-12-04 · **State:** now
-
-**Why:** Kern's own table is not online (run 3 and 4); ASCE's tool gives the national number Kern's ordinance starts from.
-
-**What it unlocks:** Hearth shows the design snow load with its source while Kern's number is pending.
-
-**Read first:**
-- ASCE Hazard Tool (ascehazardtool.org), location 34.8228, -118.9445 (town centre, not a house)
-
-**Do this:**
-1. Run the tool for 34.8228, -118.9445 with ASCE 7-16, Risk Category II, then with ASCE 7-22.
-2. Copy the ground snow load and the elevation it used.
-3. If the tool needs an account, say so and stop.
-
-**Make:** `hearth_gemini_asce-snow_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `standard` (text): ASCE 7-16 or ASCE 7-22
-- `ground_snow_psf` (number): psf
-- `elevation_ft` (number): as the tool reports
-- `note` (text): any note the tool prints (e.g. site-specific case study)
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 2
-
-**Done when:** Both standards answered, or the account wall stated.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. HEA-GEM-27 · Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners)
+## 1. HEA-GEM-29 · Hearth: Kern County's building permit fee for the 23 x 10 ft deck, from an open page
 
 **Due:** 2026-12-05 · **State:** now
 
-**Why:** The cut list names the connectors; the plan should show they carry the load.
+**Why:** Run 6 found the state surcharges but Kern's fee PDF was blocked; the permit fee itself is still 'not stated'.
 
-**What it unlocks:** Hearth's deck plan shows each connector's rated load beside the load it carries.
+**What it unlocks:** Hearth's deck plan shows the permit cost.
 
 **Read first:**
-- Gemini's file hearth_gemini_cut-list_20261121-1300.json (the connectors it names)
-- Simpson Strong-Tie product pages and catalogue tables (strongtie.com)
+- Kern County Public Works, Building and Safety: fee schedule, valuation table and plan-check fee pages (kernpublicworks.com), Kern's current fee resolution (Board of Supervisors agenda attachments)
 
 **Do this:**
-1. For each connector in the cut list, open its Simpson page.
-2. Copy the allowable download and uplift for the lumber in the cut list (DF-L or Hem-Fir) and the fasteners it needs.
+1. Find the fee for a residential deck: by valuation (and the valuation per square foot Kern uses) or a flat fee; the plan-check fee; any technology or records fee.
+2. Work out the total for 230 sq ft in 'math'.
 
-**Make:** `hearth_gemini_connector-loads_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_deck-permit-fee-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
@@ -83,11 +29,10 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `model` (text): Simpson model
-- `lumber` (text): DF/SP or SPF/HF as the table says
-- `download_lb` (number): lb
-- `uplift_lb` (number): lb or 0 when not rated
-- `fasteners` (text): as the table says
+- `fee` (text): 
+- `rate` (text): as printed
+- `amount` (text): $ or 'not stated'
+- `math` (text): the arithmetic for 230 sq ft
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -98,7 +43,7 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every connector in the cut list has a row.
+**Done when:** Every fee for the deck, or the page that says it cannot be estimated online.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.
@@ -111,23 +56,21 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 3. HEA-GEM-28 · Hearth: Kern County's building permit fees for the 23 x 10 ft deck
+## 2. HEA-GEM-30 · Hearth: deck stains and sealers for 4,600 ft (UV, snow, freeze-thaw): makers' data sheets
 
-**Due:** 2026-12-06 · **State:** now
+**Due:** 2026-12-07 · **State:** now
 
-**Why:** The permit check says whether a permit is needed; the plan should also say what it costs.
+**Why:** The new deck's finish decides how long it lasts in mountain sun and snow.
 
-**What it unlocks:** Hearth's deck plan shows the permit cost line.
+**What it unlocks:** Hearth's deck plan names a finish with its recoat interval and the temperatures it can be applied in.
 
 **Read first:**
-- Kern County Public Works, Building Inspection fee schedule (kernpublicworks.com)
+- Makers' technical data sheets (Behr, Sherwin-Williams SuperDeck, Cabot, Olympic, Ready Seal, Penofin)
 
 **Do this:**
-1. Find the current fee schedule.
-2. Copy every fee that would apply to a 230 sq ft attached deck: plan check, permit by valuation or by area, inspection, any state surcharges (SMIP, CBSC).
-3. Show the math for the deck: 230 sq ft, and a valuation if the schedule uses one (say which valuation table).
+1. For 8 to 12 products: type (oil, water, solid, semi-transparent), application temperature range, dry time before rain, recoat interval, coverage per gallon.
 
-**Make:** `hearth_gemini_deck-permit-fees_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_deck-finish_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
 
@@ -135,10 +78,12 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `fee` (text): as the schedule names it
-- `rate` (text): as printed
-- `amount` (text): $ for this deck, with the math, or 'not stated'
-- `math` (text): the arithmetic
+- `product` (text): 
+- `type` (text): 
+- `apply_temp` (text): as printed
+- `rain_free` (text): hours
+- `recoat` (text): as printed
+- `coverage` (text): sq ft per gallon
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -149,7 +94,7 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every fee that applies, with the deck's total.
+**Done when:** 8 to 12 products from their own data sheets.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

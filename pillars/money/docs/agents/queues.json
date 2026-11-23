@@ -301,7 +301,7 @@
      "review": "Done 2026-11-22 (Claude): All 25 issuers on their own pricing pages, read 2026-11-21. Gaps: the minimum payment on 11 issuers and the penalty rate on 15 'not stated' (the card agreements usually give them). not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 9/10 (#96)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Run 4 left the minimum payment unstated for 11 issuers and the penalty rate for 15.",
      "unlocks": "Money's issuer rows are complete.",
@@ -378,6 +378,86 @@
      ],
      "id": "MON-GEM-06",
      "title": "Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements",
+     "due": "2026-12-04",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#157)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Run 6 filled most of the gaps; 7 cells are left where the issuer's own page is silent.",
+     "unlocks": "Money's issuer table has no blanks.",
+     "inputs": [
+      "Your file money_gemini_issuer-pricing-2_20261123-1112.json (the rows that say 'not stated')",
+      "consumerfinance.gov/credit-cards/agreements: each issuer's latest submitted agreement"
+     ],
+     "steps": [
+      "For each 'not stated' cell, open the issuer's latest agreement in the CFPB database and copy the term."
+     ],
+     "deliver": {
+      "file": "money_gemini_issuer-pricing-3_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 7,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "issuer",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "field",
+       "type": "text",
+       "rule": "min_payment or penalty_apr"
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "as the agreement words it"
+      },
+      {
+       "name": "agreement_date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 7 cells answered from an agreement.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "MON-GEM-07",
+     "title": "Money: the 7 issuer-pricing cells still 'not stated', from the CFPB agreement database",
      "due": "2026-12-04"
     }
    ]

@@ -8,43 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Privacy · CA DROP right now.
 
 ## Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 1 open in this pillar.
 
 
-- PRI-GEM-13 · Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice · due 2026-12-05
-    make: privacy_gemini_mobile-browsers_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 settings, each with its help page.
+- PRI-GEM-14 · Privacy: an Amazon account, setting by setting (ads, Alexa recordings, Ring, browsing history, sharing) · due 2026-12-07
+    make: privacy_gemini_amazon_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every privacy setting Amazon, Alexa and Ring document.
 
 ## Muse
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Privacy · CA DROP right now.
 
 ## ChatGPT
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Privacy · CA DROP right now.
 
 ## Argon
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Privacy · CA DROP right now.
 
 ## Hydrogen
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Privacy · CA DROP right now.

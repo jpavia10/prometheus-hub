@@ -2,27 +2,26 @@
 
 # Foundry · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. FDY-GEM-06 · Foundry: the power budget for each stage-1 build, from the parts' datasheets
+## 1. FDY-GEM-07 · Foundry: the certifications each of the 11 stage-1 builds would need before it could be sold
 
-**Due:** 2026-12-06 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** A parts list is only buildable when the power adds up.
+**Why:** Your parts lists and power budgets made each invention buildable on a bench; selling one is a different bar.
 
-**What it unlocks:** Each invention's stage 1 shows the supply it needs.
+**What it unlocks:** Each invention's build page shows the step after the prototype.
 
 **Read first:**
-- Gemini's file foundry_gemini_stage1-parts_20261121-1300.json
-- Each part's datasheet on Pololu or Adafruit
+- Your files foundry_gemini_bench-parts and foundry_gemini_power-budget (the 11 builds)
+- ecfr.gov (FCC 47 CFR Part 15), fcc.gov equipment authorization, cpsc.gov, ul.com standards catalogue, California Prop 65 (oehha.ca.gov), FDA device classification where it applies
 
 **Do this:**
-1. For each part that draws power: voltage and the peak current from its datasheet.
-2. Per invention: add the peak currents (show the math) and name a supply in the list that covers it with 25 % margin, or say none does.
+1. For each build: the rules that apply (radio, unintentional radiator, battery, children's product, food contact, medical), the test or filing, and whether it can be self-declared (SDoC) or needs a lab.
 
-**Make:** `foundry_gemini_power-budget_{YYYYMMDD-HHMM}.json`
+**Make:** `foundry_gemini_certification_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -30,11 +29,10 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `invention` (text): as in the parts file
-- `part` (text): as in the parts file
-- `volts` (number): V
-- `peak_amps` (number): A
-- `math` (text): the sum, for the total rows
+- `invention` (text): as in your files
+- `rule` (text): e.g. FCC Part 15 Subpart B
+- `why` (text): what in the build triggers it
+- `route` (text): SDoC, certification, listing
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -45,7 +43,9 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every powered part has a row; every invention has a total row.
+**How many:** 11
+
+**Done when:** All 11 builds.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

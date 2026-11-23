@@ -1269,7 +1269,7 @@
      "review": "Done 2026-11-22 (Claude): Cut list and fasteners for the 23 x 10 ft deck; Claude redid the math (joists 23 x 12 / 16 + 1 = 19, +10 % = 21) and it holds. not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#114)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Kern's own table is not online (run 3 and 4); ASCE's tool gives the national number Kern's ordinance starts from.",
      "unlocks": "Hearth shows the design snow load with its source while Kern's number is pending.",
@@ -1345,10 +1345,12 @@
      ],
      "id": "HEA-GEM-26",
      "title": "Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22)",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#151)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "The cut list names the connectors; the plan should show they carry the load.",
      "unlocks": "Hearth's deck plan shows each connector's rated load beside the load it carries.",
@@ -1429,10 +1431,12 @@
      ],
      "id": "HEA-GEM-27",
      "title": "Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#152)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "The permit check says whether a permit is needed; the plan should also say what it costs.",
      "unlocks": "Hearth's deck plan shows the permit cost line.",
@@ -1508,7 +1512,174 @@
      ],
      "id": "HEA-GEM-28",
      "title": "Hearth: Kern County's building permit fees for the 23 x 10 ft deck",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "closed": "2026-11-23",
+     "review": "Scored 9/10 (#153)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Run 6 found the state surcharges but Kern's fee PDF was blocked; the permit fee itself is still 'not stated'.",
+     "unlocks": "Hearth's deck plan shows the permit cost.",
+     "inputs": [
+      "Kern County Public Works, Building and Safety: fee schedule, valuation table and plan-check fee pages (kernpublicworks.com), Kern's current fee resolution (Board of Supervisors agenda attachments)"
+     ],
+     "steps": [
+      "Find the fee for a residential deck: by valuation (and the valuation per square foot Kern uses) or a flat fee; the plan-check fee; any technology or records fee.",
+      "Work out the total for 230 sq ft in 'math'."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_deck-permit-fee-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "fee",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "rate",
+       "type": "text",
+       "rule": "as printed"
+      },
+      {
+       "name": "amount",
+       "type": "text",
+       "rule": "$ or 'not stated'"
+      },
+      {
+       "name": "math",
+       "type": "text",
+       "rule": "the arithmetic for 230 sq ft"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Every fee for the deck, or the page that says it cannot be estimated online.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-29",
+     "title": "Hearth: Kern County's building permit fee for the 23 x 10 ft deck, from an open page",
+     "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "The new deck's finish decides how long it lasts in mountain sun and snow.",
+     "unlocks": "Hearth's deck plan names a finish with its recoat interval and the temperatures it can be applied in.",
+     "inputs": [
+      "Makers' technical data sheets (Behr, Sherwin-Williams SuperDeck, Cabot, Olympic, Ready Seal, Penofin)"
+     ],
+     "steps": [
+      "For 8 to 12 products: type (oil, water, solid, semi-transparent), application temperature range, dry time before rain, recoat interval, coverage per gallon."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_deck-finish_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "product",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "type",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "apply_temp",
+       "type": "text",
+       "rule": "as printed"
+      },
+      {
+       "name": "rain_free",
+       "type": "text",
+       "rule": "hours"
+      },
+      {
+       "name": "recoat",
+       "type": "text",
+       "rule": "as printed"
+      },
+      {
+       "name": "coverage",
+       "type": "text",
+       "rule": "sq ft per gallon"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "8 to 12 products from their own data sheets.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HEA-GEM-30",
+     "title": "Hearth: deck stains and sealers for 4,600 ft (UV, snow, freeze-thaw): makers' data sheets",
+     "due": "2026-12-07"
     }
    ]
   },

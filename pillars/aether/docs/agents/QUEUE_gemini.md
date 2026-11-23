@@ -2,86 +2,27 @@
 
 # Aether · Atmospheric & Field Lab · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. AET-GEM-13 · Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)
+## 1. AET-GEM-16 · Aether: Grapevine closures in the last three winters (2023-24, 2024-25, 2025-26)
 
-**Due:** 2026-12-04 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** Aether sizes the power station with one peak-sun-hours number per season, an estimate; NREL's PVWatts gives month-by-month output from measured weather for this exact spot.
+**Why:** Run 6 found 2020-2023 in NWS Hanford's summaries; the last three winters are 'not stated'.
 
-**What it unlocks:** Aether's solar budget uses NREL's monthly numbers for the town, at two tilts, instead of a season guess.
-
-**Read first:**
-- https://pvwatts.nrel.gov/ (the PVWatts calculator)
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/aether/app.js (SEASONS: the numbers this replaces)
-- If pvwatts.nrel.gov and developer.nrel.gov stay unreachable: PVGIS (EU Joint Research Centre), which covers California from NREL's own NSRDB data: https://re.jrc.ec.europa.eu/pvg_tools/en/ (PV performance, database PVGIS-NSRDB) or its API https://re.jrc.ec.europa.eu/api/v5_3/PVcalc?lat=34.8228&lon=-118.9445&peakpower=0.4&loss=14&angle=30&aspect=0&raddatabase=PVGIS-NSRDB&outputformat=json (aspect 0 = south in PVGIS). Say which tool you used in every row.
-
-**Do this:**
-1. Run PVWatts for Frazier Park, CA (34.8228, -118.9445; town centre), system size 0.4 kW DC, standard module, fixed (open rack), azimuth 180, losses 14%, inverter efficiency 96%: once at tilt 30 and once at tilt 45.
-2. Record for each month and tilt: solar radiation (kWh/m2/day) and AC energy (kWh), exactly as PVWatts prints them, and the weather data source it names (NSRDB station/grid cell).
-3. Add one 'math' row per tilt: the yearly total and the worst month.
-
-**Make:** `aether_gemini_pvwatts_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `tilt` (integer): degrees
-- `month` (text): Jan ... Dec, or 'year'
-- `radiation` (number): kWh/m2/day
-- `ac_kwh` (number): kWh
-- `math` (text): for the year rows
-- `weather` (text): the data source PVWatts names
-- `url` (URL): https://pvwatts.nrel.gov/ results page or its download
-- `quote` (text): the printed line for that month
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 26
-
-**Done when:** 12 months at each tilt plus the two year rows, as PVWatts prints them.
-
-**How Claude checks it:**
-- Claude runs the same PVWatts inputs and compares every number.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. AET-GEM-14 · Aether: every I-5 Grapevine (Tejon Pass) closure, winters 2020-21 to 2025-26
-
-**Due:** 2026-12-04 · **State:** now
-
-**Why:** Run 4 found only the 2019 holidays; the pass closes most winters, and Aether's 'chance the Grapevine shuts' needs the real record.
-
-**What it unlocks:** Aether can say how many closures a winter brings and how long they last.
+**What it unlocks:** Aether's closure record reaches this winter.
 
 **Read first:**
-- Caltrans District 6 and District 7 news releases and social posts (dot.ca.gov/caltrans-near-me/district-6, district-7)
-- CHP Fort Tejon area news releases (chp.ca.gov)
-- Caltrans QuickMap history is not public: say so if you cannot reach a closure's times
+- NWS Hanford monthly climate summaries (weather.gov/hnx) and NWS Los Angeles (weather.gov/lox) event summaries
+- Caltrans District 7 and District 6 news releases (dot.ca.gov), CHP Fort Tejon news
 
 **Do this:**
-1. Search each district's releases and CHP Fort Tejon's for 'Grapevine', 'Tejon Pass', 'I-5 closed', winter by winter from 2020-21 to 2025-26.
-2. One row per closure: when it closed, when it reopened, the hours, the reason (snow, ice, crash, fire).
-3. If a winter had none in the record, one row saying so with the pages you searched.
+1. Winter by winter, one row per closure: closed, reopened, hours, reason, the page.
+2. A winter with none found gets one row saying so and naming the pages read.
 
-**Make:** `aether_gemini_grapevine-closures-2_{YYYYMMDD-HHMM}.json`
+**Make:** `aether_gemini_grapevine-closures-3_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -89,11 +30,11 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `closed` (text): YYYY-MM-DD HH:MM (24 h, Pacific) or YYYY-MM-DD when the time is not given
-- `reopened` (text): the same form, or 'not stated'
-- `hours` (number or 'not stated'): reopened minus closed, rounded to 0.5
-- `reason` (text): as the source says
-- `source` (text): Caltrans D6, Caltrans D7 or CHP
+- `closed` (text): YYYY-MM-DD HH:MM or YYYY-MM-DD
+- `reopened` (text): the same form or 'not stated'
+- `hours` (number or 'not stated'): 
+- `reason` (text): 
+- `source` (text): NWS, Caltrans or CHP
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -104,7 +45,7 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every winter from 2020-21 to 2025-26 has its closures or a row saying none were found, with the pages searched.
+**Done when:** All three winters covered.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.
@@ -117,23 +58,21 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 3. AET-GEM-15 · Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026
+## 2. AET-GEM-17 · Aether: Frazier Park's snowfall record, winter by winter (2015-16 to 2025-26)
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-07 · **State:** now
 
-**Why:** Run 4 found RIDGE and TEJON were de-energised in October 2026; the household needs to know how often that happens.
+**Why:** The deck, the drive and the pass all turn on how much snow falls; NOAA's cooperative stations near Frazier Park keep daily snowfall.
 
-**What it unlocks:** Aether's shut-off record counts the circuits' events per year.
+**What it unlocks:** Aether shows a real snowfall season beside the forecast.
 
 **Read first:**
-- CPUC PSPS post-event reports for SCE, 2021-2026 (cpuc.ca.gov, Safety and Enforcement Division, PSPS post-event reports)
+- NOAA NCEI Climate Data Online daily summaries (ncei.noaa.gov) for the nearest stations with snowfall (e.g. Lebec, Frazier Park, Tejon Rancho, Pine Mountain Club): name the station and its id
 
 **Do this:**
-1. Open every SCE post-event report from 2021 to 2026.
-2. Search each for RIDGE and TEJON.
-3. One row per circuit per event: in scope only, or de-energised, with the customer count and the times.
+1. For each winter: total snowfall, the biggest day and its date, the number of days with 1 inch or more.
 
-**Make:** `aether_gemini_psps-history-2_{YYYYMMDD-HHMM}.json`
+**Make:** `aether_gemini_snow-record_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -141,14 +80,13 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `event` (text): the report's own title
-- `circuit` (text): RIDGE or TEJON
-- `status` (text): de-energized, in scope only, or none found
-- `off` (text): YYYY-MM-DD HH:MM or 'not stated'
-- `on` (text): YYYY-MM-DD HH:MM or 'not stated'
-- `customers` (number): 0 when none
+- `winter` (text): 2015-16 ...
+- `station` (text): name and id
+- `total_in` (number or 'not stated'): inches
+- `max_day_in` (number or 'not stated'): 
+- `max_day` (date or 'not stated'): 
+- `days_1in` (number or 'not stated'): 
 - `url` (url): the page you opened, on the official site
-- `page` (number): the PDF page
 - `quote` (text): copied word for word from that page, 300 characters at most
 
 **Before you save, check every one of these yourself:**
@@ -158,7 +96,7 @@ Updated 2026-11-23 17:22 UTC · 3 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** Every SCE report from 2021 to 2026 searched; every RIDGE or TEJON mention is a row.
+**Done when:** Every winter, from the nearest station that reports snowfall.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

@@ -453,7 +453,7 @@
      "review": "Done 2026-11-22 (Claude): 40 verbatim lures from official warning pages, tagged by type. Lost a point: 21 'published' cells say 'not stated' (the field takes a date). not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 9/10 (#106)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Hermes dates every lure; 21 of run 4's have no date.",
      "unlocks": "The lure gallery is ordered by date.",
@@ -525,10 +525,12 @@
      ],
      "id": "HER-GEM-11",
      "title": "Hermes: the publication date of the 21 lures still 'not stated'",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#147)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "After 'this is a scam' comes 'where do I report it'.",
      "unlocks": "Each lure type in Hermes shows its official reporting channel.",
@@ -603,7 +605,164 @@
      ],
      "id": "HER-GEM-12",
      "title": "Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#148)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Hermes already knows each biller's real email domains; a scam text or call is checked the same way against the number the company itself publishes.",
+     "unlocks": "Hermes can say 'this number is (or is not) the one Chase prints' for any message or call.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (window.BILLERS: 97 billers, entries 1-50 in file order)"
+     ],
+     "steps": [
+      "For each biller: the customer-service number and the fraud or 'report suspicious activity' number, from the company's own contact or security page (never a directory site).",
+      "Note if the company says it never calls or texts to ask for a code or password, and quote it."
+     ],
+     "deliver": {
+      "file": "hermes_gemini_biller-phones-1_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 50,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "biller",
+       "type": "text",
+       "rule": "as in billers.js"
+      },
+      {
+       "name": "service_phone",
+       "type": "text",
+       "rule": "as printed"
+      },
+      {
+       "name": "fraud_phone",
+       "type": "text",
+       "rule": "as printed, or 'not stated'"
+      },
+      {
+       "name": "never_asks",
+       "type": "text",
+       "rule": "the company's own words, or 'not stated'"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Billers 1-50.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HER-GEM-13",
+     "title": "Hermes: the official fraud and customer-service phone numbers for billers 1-50",
+     "due": "2026-12-06"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "The second half of the biller phone list.",
+     "unlocks": "Every biller in Hermes has its real numbers.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (entries 51-97 in file order)"
+     ],
+     "steps": [
+      "As in part 1."
+     ],
+     "deliver": {
+      "file": "hermes_gemini_biller-phones-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 47,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "biller",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "service_phone",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "fraud_phone",
+       "type": "text",
+       "rule": "or 'not stated'"
+      },
+      {
+       "name": "never_asks",
+       "type": "text",
+       "rule": "or 'not stated'"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "Billers 51-97.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HER-GEM-14",
+     "title": "Hermes: the official fraud and customer-service phone numbers for billers 51-97",
+     "due": "2026-12-07"
     }
    ]
   },

@@ -8,7 +8,7 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-23 17:22 UTC · 2 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 2 open in this pillar.
 
 
 - MID-GRK-01 · Give every debt in the book its APR, minimum, due day, limit and promo end · due 2026-11-09
@@ -18,15 +18,15 @@ Updated 2026-11-23 17:22 UTC · 2 open in this pillar.
 
 ## Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 1 open in this pillar.
 
 
-- MID-GEM-14 · Midas: 40 statement-line phrasings of promo and deferred-interest balances, from issuers' public sample statements · due 2026-12-06
-    make: midas_gemini_statement-lines_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 lines from at least 5 issuers.
+- MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements · due 2026-12-06
+    make: midas_gemini_payment-lines_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 lines from at least 6 issuers.
 
 ## Muse
 
-Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 1 open in this pillar.
 
 
 - MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
@@ -34,21 +34,21 @@ Updated 2026-11-23 17:22 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Midas Ledger right now.
 
 ## Argon
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Midas Ledger right now.
 
 ## Hydrogen
 
-Updated 2026-11-23 17:22 UTC · 0 open in this pillar.
+Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Midas Ledger right now.

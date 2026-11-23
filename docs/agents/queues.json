@@ -1059,7 +1059,7 @@
      "review": "Done 2026-11-22 (Claude): 40 WCAG 2.2 AA findings on 10 live pages, each with selector, measurement and fix; Claude checked them in the code (the 22 px chips, the menu without an h1, the unlabelled search, the × buttons) and fixed the confirmed ones in d51. Score 10/10 (#120)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Run 4 audited 10 pages; the other 17 pillars have the same kit and their own CSS.",
      "unlocks": "Claude fixes every confirmed finding in one pass.",
@@ -1130,10 +1130,12 @@
      ],
      "id": "HUB-GEM-16",
      "title": "Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#169)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-22",
      "why": "Claude fixed the confirmed findings in d51; a second look says which are really gone.",
      "unlocks": "Findings still open get a second pass.",
@@ -1194,12 +1196,14 @@
      ],
      "id": "HUB-GEM-17",
      "title": "Hub: re-check run 4's 40 accessibility findings after the d51 fixes",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#140)"
     },
     {
      "id": "HUB-GEM-18",
      "title": "Hub: where the subject sits in each of the 24 pillar paintings (for the living headers)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "due": "2026-12-05",
      "why": "Every pillar page now opens on its painting, alive, with the painting's subject placed in the header band. Six paintings have a measured subject height; the other eighteen fall back to a guess, so some headers show sky or floor instead of the subject.",
@@ -1268,7 +1272,227 @@
      "rejected_if": [
       "a focus that does not equal its own row_px / height_px",
       "a slug missing or twice"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Scored 10/10 (#137)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Your fix queue ranked 32 items high; Claude is fixing them in the shared kit and deck styles. Each needs re-measuring on the live site.",
+     "unlocks": "The fix queue closes item by item.",
+     "inputs": [
+      "Your file hub_gemini_supp-a11y-fix-queue_20261123-1348.json (the 32 rows with priority high)",
+      "The live site https://jpavia10.github.io/prometheus-hub/ on build d64 or later (the build is in the hub's top bar)"
+     ],
+     "steps": [
+      "For each of the 32, measure again on the live page: contrast ratio, target size, focus, label, as the item says.",
+      "Say fixed, still there, or changed, with what you measured and the build you measured on."
+     ],
+     "deliver": {
+      "file": "hub_gemini_a11y-recheck-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 32,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "item_n",
+       "type": "number",
+       "rule": "its n in your fix queue"
+      },
+      {
+       "name": "status",
+       "type": "text",
+       "rule": "fixed, still there or changed"
+      },
+      {
+       "name": "measured",
+       "type": "text",
+       "rule": "what you measured"
+      },
+      {
+       "name": "build",
+       "type": "text",
+       "rule": "e.g. d64"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 32 measured on d64 or later.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HUB-GEM-19",
+     "title": "Hub: re-measure the 32 high-priority accessibility items after Claude's fixes",
+     "due": "2026-12-04"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "The realm (the Orbit) puts 27 labels on one painting from art/realm/places.json; a label off its building sends a tap to the wrong place.",
+     "unlocks": "Claude moves every label that misses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/?home=orbit (the realm)",
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/art/realm/places.json (each pillar's x, y as fractions of the painting)",
+      "The menu's list of what each place is (bank, museum, clock tower, forge, ...): the 'subject' lines in your hub_gemini_painting-focus file"
+     ],
+     "steps": [
+      "For each of the 27, look at the painting where its label sits: is that pillar's building or object there?",
+      "If not, give the x and y (fractions, 3 decimals) where it actually is, and what is under the label now."
+     ],
+     "deliver": {
+      "file": "hub_gemini_realm-labels_{YYYYMMDD-HHMM}.json",
+      "folder": "Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 27,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "pillar",
+       "type": "text",
+       "rule": "id"
+      },
+      {
+       "name": "ok",
+       "type": "text",
+       "rule": "yes or no"
+      },
+      {
+       "name": "x",
+       "type": "number",
+       "rule": "fraction 0-1, when no"
+      },
+      {
+       "name": "y",
+       "type": "number",
+       "rule": "fraction 0-1, when no"
+      },
+      {
+       "name": "under_label",
+       "type": "text",
+       "rule": "what the label sits on now"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 27 checked.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HUB-GEM-20",
+     "title": "Hub: does every place in the realm painting sit under its own label?",
+     "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-23",
+     "why": "Your painting-focus file found 11 pillar headers whose crop misses the subject; Claude is moving each crop (kit/world.js FOCUS).",
+     "unlocks": "Every pillar opens on its own subject.",
+     "inputs": [
+      "Your file hub_gemini_painting-focus_20261123 (the 11 rows with 'no': hearth, money, hermes, piano, bastion, privacy, games, forge, foundry, observatory, mythos)",
+      "Each pillar page on the live site at phone width, build d64 or later (the build is in the top bar)"
+     ],
+     "steps": [
+      "For each of the 11, look at the header at 390 px wide: is the subject in the frame now?",
+      "If not, say what is in the frame and where the subject is (higher or lower)."
+     ],
+     "deliver": {
+      "file": "hub_gemini_painting-focus-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 11,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "pillar",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "ok",
+       "type": "text",
+       "rule": "yes or no"
+      },
+      {
+       "name": "seen",
+       "type": "text",
+       "rule": "what is in the frame"
+      },
+      {
+       "name": "move",
+       "type": "text",
+       "rule": "up, down or none"
+      },
+      {
+       "name": "build",
+       "type": "text",
+       "rule": "e.g. d64"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 11 checked on d64 or later.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "HUB-GEM-21",
+     "title": "Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)",
+     "due": "2026-12-06"
     }
    ]
   },

@@ -2,26 +2,25 @@
 
 # Privacy · CA DROP · homework for Gemini
 
-Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 22:49 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. PRI-GEM-13 · Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice
+## 1. PRI-GEM-14 · Privacy: an Amazon account, setting by setting (ads, Alexa recordings, Ring, browsing history, sharing)
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-07 · **State:** now
 
-**Why:** The phone panel covers the OS; the browsers carry most of the tracking.
+**Why:** Privacy already walks Google, Microsoft and the phone; Amazon is the next account that holds the most about a household.
 
-**What it unlocks:** Privacy's phone panel gets a browser section.
+**What it unlocks:** Privacy gets an Amazon page like the Google one.
 
 **Read first:**
-- Chrome Help (support.google.com/chrome), Samsung Internet help pages
+- amazon.com/privacy and its help pages (Advertising Preferences, Your Browsing History, Alexa Privacy Settings), ring.com/privacy and Ring's Control Center help, Amazon Sidewalk help
 
 **Do this:**
-1. 30 settings across both browsers: where it is, what it does, its default and the safest choice.
-2. Copy each from the help page.
+1. Each setting: where it is (menu path), what it does, the safest choice, and what you lose by choosing it.
 
-**Make:** `privacy_gemini_mobile-browsers_{YYYYMMDD-HHMM}.json`
+**Make:** `privacy_gemini_amazon_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -29,12 +28,11 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `browser` (text): Chrome or Samsung Internet
-- `setting` (text): as the menu names it
-- `where` (text): the menu path
-- `does` (text): what it does
-- `default` (text): or 'not stated'
-- `safest` (text): the safest choice
+- `area` (text): ads, Alexa, Ring, Sidewalk, history, sharing
+- `setting` (text): 
+- `path` (text): menu path
+- `safest` (text): 
+- `cost` (text): what is lost
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -45,9 +43,7 @@ Updated 2026-11-23 17:22 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 30
-
-**Done when:** 30 settings, each with its help page.
+**Done when:** Every privacy setting Amazon, Alexa and Ring document.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.
