@@ -139,10 +139,11 @@ with sync_playwright() as p:
         m2 = po2.evaluate("() => JSON.parse(localStorage.getItem('prometheus.odyssey.trips')).map((x) => x.id).sort()")
         po2.goto(f"{URL}?now={NOW}&home=orbit&nosweep=1#/", wait_until="load"); po2.wait_for_function("window.__deck && window.__deck.reach", timeout=20000); po2.wait_for_timeout(1500)
         hit = po2.evaluate("window.__deck.reach.searchRecords('Tagaytay')"); co2.close()
-        ok = (o1["trips"] == 3 and o1["stops"] == 20 and o1["named"] >= 17 and o1["land"] > 5000 and o1["legs"] == 21 and o1["nights"] == 56 and o1["total"] == ["$5,583.00", "$6,699.60"]
-              and "ferry row, $62.00" in o1["check"] and o1["pastCtl"] == 0 and o1["past"] == 3 and o1["countries"] == "11"
-              and m1["ids"] == ["mine1", "seed-eurotrip-2015", "seed-philippines-2024", "seed-philippines-2024-04"] and m1["notes"] and m1["mark"] and m1["ctl"] == 1
-              and m2 == ["mine1", "seed-philippines-2024", "seed-philippines-2024-04"] and len(hit) >= 1 and hit[0]["title"].startswith("Manila, Tagaytay") and not bo)
+        PH = ["photos-atlanta-2015", "photos-bigsur-2018", "photos-mexico-2019", "photos-michigan-2022", "photos-michigan-2023", "photos-mammoth-2022", "photos-norcal-2021", "photos-sandiego-2022", "photos-sequoia-2018", "photos-vegas-2019"]  # 2026-11-23: ten trips found in his photos
+        ok = (o1["trips"] == 13 and o1["stops"] == 20 and o1["named"] >= 17 and o1["land"] > 5000 and o1["legs"] == 21 and o1["nights"] == 56 and o1["total"] == ["$5,583.00", "$6,699.60"]
+              and "ferry row, $62.00" in o1["check"] and o1["pastCtl"] == 0 and o1["past"] == 13 and o1["countries"] == "13"
+              and m1["ids"] == sorted(["mine1", "seed-eurotrip-2015", "seed-philippines-2024", "seed-philippines-2024-04"] + PH) and m1["notes"] and m1["mark"] and m1["ctl"] == 1
+              and m2 == sorted(["mine1", "seed-philippines-2024", "seed-philippines-2024-04"] + PH) and len(hit) >= 1 and hit[0]["title"].startswith("Manila, Tagaytay") and not bo)
         proof("ODY-1", "His own trips on record: the 2015 Eurotrip and both 2024 Philippines trips filed once each, drawn on a map from real coordinates, every leg in the logbook, the plan's budget added up from the sheet's rows with the row its total leaves out named, past trips as records; an older phone gets the new trips and the corrected notes, keeps its own trips and marks, and a deleted trip stays deleted",
               ok, f"fresh device: {o1['trips']} trips, map {o1['stops']} stops ({o1['named']} named, land path {o1['land']:,} chars), logbook {o1['legs']} legs / {o1['nights']} nights, budget {o1['total']}, check: {o1['check'][6:70]!r}…, past-trip controls {o1['pastCtl']}, countries {o1['countries']}; "
                  f"older phone: {m1['ids']}, shipped note refreshed to the bookings: {m1['notes']}, his own mark kept: {m1['mark']}; after deleting the Eurotrip and reloading: {m2}; hub search 'Tagaytay' -> {hit[0]['title'] if hit else None}" + (f"; errors {bo[:2]}" if bo else ""))
@@ -169,7 +170,7 @@ with sync_playwright() as p:
         po.click(P2 + '.jr-play'); po.wait_for_timeout(4700)
         played = po.evaluate("(P) => document.querySelector(P + '.jr-count').textContent", P2)
         wide = po.evaluate("document.documentElement.scrollWidth")
-        ok = (j1["n"] == {"seed-eurotrip-2015": 16, "seed-philippines-2024-04": 15, "seed-philippines-2024": 5} and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
+        ok = ({k: v for k, v in j1["n"].items() if v} == {"seed-eurotrip-2015": 16, "seed-philippines-2024-04": 15, "seed-philippines-2024": 5} and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
               and j2["todo"] == 15 and j3.startswith("PRAGUE") and lb and gone and played.startswith("2 /") and wide <= 390 and not bo)
         proof("ODY-2", "His trip photos as a journey: each past trip opens on its own photos, every photo is served, the map follows the photo (route drawn to that stop, the stop ringed), a stop on the map opens its photos, full screen steps and closes from the keyboard, Play walks the trip",
               ok, f"photos per trip {j1['n']}, {j1['files']} photos and their thumbnails served, {j1['bad']} missing; photo 7 -> {j2['place']}, ringed {j2['here']}, {j2['todo']} legs still ahead; tapping Prague on the map -> {j3}; full screen next -> {lb!r}, Escape closes: {gone}; Play after 4.7 s -> {played}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))

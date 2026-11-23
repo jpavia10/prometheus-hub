@@ -2,117 +2,11 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-22 03:36 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 16:11 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)
-
-**Due:** 2026-11-23 · **State:** now
-
-**Why:** TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Vision at the level of a coin's mint mark. The same 30 photos and the same prompt every model has taken (results in Titan's collaborators/MODEL_ACCURACY.md); best so far on this pack: core accuracy 85 % (Gemini app, Oct 2026). The bar to do Titan's Phase 2 research is core accuracy 95 %, invented values 1 % or less, false confidence 5 % or less.
-
-**What it unlocks:** If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.
-
-**Read first:**
-- https://drive.google.com/drive/folders/1J8GyMMRBMhpMXCZRaaKZf3xemV24gunZ (the same photos and PROMPT.md in Drive, added 2026-11-20 because raw GitHub images did not open in the Gemini app: open each photo here)
-- https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-main (the 30 photos, BK-xxxx.webp)
-- https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/PROMPT.md (the test's own prompt and answer format: follow it exactly)
-- each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/BK-xxxx.webp
-
-**Do this:**
-1. Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).
-2. Open each of the 30 photos at full size. Read the coin itself: legend, date, value, mint mark, design.
-3. Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.
-4. Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.
-5. Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report.
-
-**Make:** `bakeoff_{yourmodel}_main_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)
-
-**Shape:** `one JSON object keyed by the 30 file names without .webp, exactly as PROMPT.md shows`
-
-**Every field, exactly:**
-- `country` (text): issuing country in English, or null
-- `year` (text): Western year of the date on the shown side, or null
-- `denom` (text): value and unit as on the coin, or null
-- `mint` (text): mint mark letters; "" if the shown side has none; null if you cannot tell
-- `km` (text): Krause number without 'KM#', or null
-- `confidence` (text): high / med / low for the whole answer
-
-**Before you save, check every one of these yourself:**
-- [ ] All 30 keys, each with the six fields.
-- [ ] Every null is a real 'cannot tell', not a skipped photo.
-- [ ] Nothing came from the Titan repository's data or an earlier run.
-- [ ] Valid JSON, named exactly as asked.
-
-**How many:** 30
-
-**Done when:** All 30 answered and saved.
-
-**How Claude checks it:**
-- Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals.
-
-**Not done (sent back) if:**
-- an answer that matches the record but not the photo (looked up)
-- fewer than the count
-- not the shape PROMPT.md asks for
-
-## 2. HUB-GEM-12 · TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins)
-
-**Due:** 2026-11-23 · **State:** now
-
-**Why:** TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Vision at the level of a coin's mint mark. The same 15 photos and the same prompt every model has taken (results in Titan's collaborators/MODEL_ACCURACY.md); best so far on this pack: core accuracy 76 % (Grok and the Gemini app, Oct 2026). The bar to do Titan's Phase 2 research is core accuracy 95 %, invented values 1 % or less, false confidence 5 % or less.
-
-**What it unlocks:** If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.
-
-**Read first:**
-- https://drive.google.com/drive/folders/1E0w_bOzomSEZhwMmFzu10eEW-nPDC8vz (the same photos and PROMPT.md in Drive, added 2026-11-20 because raw GitHub images did not open in the Gemini app: open each photo here)
-- https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-locked (the 15 photos, BK-xxxx.webp)
-- https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/PROMPT.md (the test's own prompt and answer format: follow it exactly)
-- each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/BK-xxxx.webp
-
-**Do this:**
-1. Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).
-2. Open each of the 15 photos at full size. Read the coin itself: legend, date, value, mint mark, design.
-3. Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.
-4. Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.
-5. Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report.
-
-**Make:** `bakeoff_{yourmodel}_locked_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)
-
-**Shape:** `one JSON object keyed by the 15 file names without .webp, exactly as PROMPT.md shows`
-
-**Every field, exactly:**
-- `country` (text): issuing country in English, or null
-- `year` (text): Western year of the date on the shown side, or null
-- `denom` (text): value and unit as on the coin, or null
-- `mint` (text): mint mark letters; "" if the shown side has none; null if you cannot tell
-- `km` (text): Krause number without 'KM#', or null
-- `confidence` (text): high / med / low for the whole answer
-
-**Before you save, check every one of these yourself:**
-- [ ] All 15 keys, each with the six fields.
-- [ ] Every null is a real 'cannot tell', not a skipped photo.
-- [ ] Nothing came from the Titan repository's data or an earlier run.
-- [ ] Valid JSON, named exactly as asked.
-
-**How many:** 15
-
-**Done when:** All 15 answered and saved.
-
-**How Claude checks it:**
-- Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals.
-
-**Not done (sent back) if:**
-- an answer that matches the record but not the photo (looked up)
-- fewer than the count
-- not the shape PROMPT.md asks for
-
-## 3. HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes
+## 1. HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes
 
 **Due:** 2026-12-01 · **State:** now
 
@@ -162,7 +56,55 @@ Updated 2026-11-22 03:36 UTC · 4 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 4. HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet
+## 2. HUB-GEM-18 · Hub: where the subject sits in each of the 24 pillar paintings (for the living headers)
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** Every pillar page now opens on its painting, alive, with the painting's subject placed in the header band. Six paintings have a measured subject height; the other eighteen fall back to a guess, so some headers show sky or floor instead of the subject.
+
+**What it unlocks:** Claude sets each painting's focus (kit/world.js FOCUS) and the header frames the right thing on the phone.
+
+**Read first:**
+- The paintings: https://jpavia10.github.io/prometheus-hub/art/worlds/world_{pillar}.webp for each of: kairos, garage, odyssey, hearth, apollo, money, selling, records, icarus, hermes, piano, bastion, privacy, argus, games, forge, foundry, observatory, kin, presence, aether, polis, mythos, continuity
+- Each pillar page to see it live: https://jpavia10.github.io/prometheus-hub/pillars/{pillar}/ (a phone-width window)
+
+**Do this:**
+1. For each painting, name its main subject in a few words (the thing the painting is about: the clock tower, the garage door, the hearth fire ...).
+2. Measure where that subject's centre sits from the top: 0 = top edge, 1 = bottom edge, two decimals (pixel row of the centre divided by the image height; give both numbers).
+3. Say whether the live header on a phone shows that subject now: yes, or what it shows instead.
+
+**Make:** `hub_gemini_painting-focus_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 24 objects, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `pillar` (text): slug as listed
+- `subject` (text): a few words
+- `row_px` (integer): pixel row of its centre
+- `height_px` (integer): image height
+- `focus` (number): row_px / height_px, two decimals (math)
+- `header_now` (text): 'yes' or what the phone header shows instead
+
+**Before you save, check every one of these yourself:**
+- [ ] focus equals row_px / height_px to two decimals.
+- [ ] All 24 slugs, each once.
+- [ ] The file is valid JSON and named exactly as asked.
+
+**How many:** 24
+
+**Done when:** 24 rows.
+
+**How Claude checks it:**
+- Claude opens 6 paintings and checks the subject and the row.
+
+**Not done (sent back) if:**
+- a focus that does not equal its own row_px / height_px
+- a slug missing or twice
+
+## 3. HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet
 
 **Due:** 2026-12-06 · **State:** now
 

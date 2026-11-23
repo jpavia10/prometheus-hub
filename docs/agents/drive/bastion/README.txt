@@ -8,15 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- BAS-GRK-04 · Bastion: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
-    make: bastion_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+No homework for Grok in Bastion · Mountain Prep right now.
 
 ## Gemini
 
-Updated 2026-11-22 03:36 UTC · 3 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 3 open in this pillar.
 
 
 - BAS-GEM-10 · Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman · due 2026-12-04
@@ -28,29 +27,28 @@ Updated 2026-11-22 03:36 UTC · 3 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- BAS-MUS-04 · Bastion: second reader on Gemini's the official shelters and cooling or warming centres and the NOAA Weather Radio transmitters and the six official emergency checklists · due 2026-12-01
-    make: bastion_muse_shelters-radio-lists-check_{YYYYMMDD-HHMM}.md · how many: 23 · done when: Every picked item checked with where you looked.
+No homework for Muse in Bastion · Mountain Prep right now.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Bastion · Mountain Prep right now.
 
 ## Argon
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Bastion · Mountain Prep right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Bastion · Mountain Prep right now.

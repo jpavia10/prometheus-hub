@@ -208,7 +208,7 @@
     {
      "id": "ODY-GEM-05",
      "title": "Odyssey: every trip in Joseph's Google Photos, 2008-2026",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "Odyssey knows three trips (Eurotrip 2015, Philippines April 2024, Manila and El Nido September 2024). Joseph has photos from 2008 to 2026 and wants every trip on the map.",
@@ -289,12 +289,14 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): Ten trips 2015-2023 that no plan recorded, each with GPS or a boarding pass behind it; 4 of 4 sampled dates match the files. Lost 2: sent an object around the array (the shape says a JSON array), and coverage stops where its Drive search capped at 5 files a call (it said so plainly, which is right). Wired: all ten are now trips on record in Odyssey. Score 8/10 (#126)."
     },
     {
      "id": "ODY-GEM-06",
      "title": "Odyssey: Joseph's USA, state by state and city by city (from his photos)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "Joseph asked for his USA travels. Odyssey has none. Google Photos knows where most US photos were taken.",
@@ -373,12 +375,14 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 18 US places in 4 states with first/last dates and evidence; home-area towns left out as asked. Lost 2: object instead of array, and the 5-file search cap means counts are floors. Kept for the US atlas; the trips it backs are wired. Score 8/10 (#127)."
     },
     {
      "id": "ODY-GEM-07",
      "title": "Odyssey: the 2015 Eurotrip day by day, from the photos",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "Odyssey has the Eurotrip's 21 legs from Joseph's planning sheet, but not what he actually did each day. Two dates were already corrected from photos (Montserrat Aug 18, Malta from Aug 19).",
@@ -463,12 +467,14 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 78 days, each with first and last photo times in local time. Its disagreements were right: Rome starts Aug 24, not 23 (checked: still in Malta at 22:07 on the 23rd, the Colosseum at 10:01 on the 24th), and the day trips to Versailles, Gozo and Brighton (checked by eye) were missing. All five fixes are in Odyssey. Score 10/10 (#128)."
     },
     {
      "id": "ODY-GEM-08",
      "title": "Odyssey: the two 2024 Philippines trips day by day, from the photos",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "Odyssey has both 2024 trips from the booking emails (hotels and flights) but not the days in between.",
@@ -548,12 +554,14 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 24 days over both 2024 trips, with eleven precise corrections: the Tagaytay and Coron photo dates, Ocam-Ocam Beach, Manila Ocean Park, Nacpan Beach, and Tour A without the Small Lagoon. Dates checked against the files. All wired. Score 10/10 (#129)."
     },
     {
      "id": "ODY-GEM-09",
      "title": "Odyssey: the landmarks Joseph photographed, with official facts",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "Odyssey's journeys show a photo and a city. Joseph wants the monuments and landmarks named and explained.",
@@ -663,7 +671,9 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 65 landmarks (60+ asked) with coordinates, Wikidata ids, official pages and quoted facts. The checker failed it for sending more than 60: that was the checker's fault and is fixed. Lost 1: quotes not yet second-read (the pages are blocked from Claude's container); Muse checks a sample. Score 9/10 (#130)."
     },
     {
      "id": "ODY-GEM-10",
@@ -783,7 +793,7 @@
     {
      "id": "ODY-GEM-11",
      "title": "Odyssey: what Google Photos knows about the 36 photos already in the app",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "The 36 photos in Odyssey were placed by their file names and by eye. Google Photos has their exact time, zone and place.",
@@ -857,12 +867,14 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): All 36 photos in the app read back from their files; 35 agree, and the one it flagged was right (the zebra is at the Manila Zoo; the caption now says so). Score 10/10 (#131)."
     },
     {
      "id": "ODY-GEM-12",
      "title": "Odyssey: every good photo of every trip you found, ranked",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2026-11-26",
      "why": "A trip needs pictures to become a journey. Claude builds each journey from photos you pick and checks every one before it goes in. Owner, 2026-11-20: \"Dont limit scope to 10 pics\": no cap on photos or trips. Owner, 2026-11-20: people are fine in the photos (\"Remove the privacy shit. Im gonna put a password on the whole site\").",
@@ -950,6 +962,503 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ],
+     "closed": "2026-11-23",
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 152 ranked picks across the ten new trips, ranks unbroken per trip, nobody named (people marked 'unnamed'). The photo pipeline will take the scenery-only picks for the new trips' journeys. Score 10/10 (#132)."
+    },
+    {
+     "id": "ODY-GEM-13",
+     "title": "Odyssey: the trips your search missed, folder by folder (2008-2026)",
+     "state": "now",
+     "added": "2026-11-23",
+     "due": "2026-12-07",
+     "why": "Your Nov 21 file found ten trips, but Drive search stopped at 5 files a call, so whole years (2008-2014, 2016-2017, 2020, 2024-2026) came back nearly empty. The file names carry the date, so the folders themselves show every trip.",
+     "unlocks": "Each new trip joins the 13 already on Odyssey's map and timeline.",
+     "inputs": [
+      "Drive folders 'Photos from YYYY' (2008-2026). Open each folder and read the file names: they start with the date and time (20190827_082319.jpg = Aug 27, 2019, 08:23:19).",
+      "The 13 trips already on record (do not list them again): https://jpavia10.github.io/prometheus-hub/pillars/odyssey/ (Trip files). Your Nov 21 file covers 2015-10, 2018-06, 2018-08, 2019-06, 2019-08, 2021-03, 2022-04, 2022-06, 2022-09, 2023-05."
+     ],
+     "steps": [
+      "For each year, list the file names in order and mark every run of 2 or more days with photos.",
+      "For each run, open 1-2 photos per day and read the location (EXIF GPS or what Google Photos shows). Keep the run only if it is more than 60 miles from where Joseph lived then (Michigan until 2016, the Los Angeles area 2016-2024, Frazier Park after).",
+      "Write each trip as one row: first and last day, places in order, photo count from the file list, 2 file ids per place as evidence, sure or from pictures only.",
+      "If a year has no trip, add a row for it with places 'none' so Claude knows you looked."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_more-trips_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array (not an object around it), one object per trip or per empty year, oldest first, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "year",
+       "type": "integer",
+       "rule": "YYYY"
+      },
+      {
+       "name": "start",
+       "type": "date",
+       "rule": "first photo, or empty for a 'none' year"
+      },
+      {
+       "name": "end",
+       "type": "date",
+       "rule": "last photo"
+      },
+      {
+       "name": "places",
+       "type": "text",
+       "rule": "in order 'City, Region, Country; ...' or 'none'"
+      },
+      {
+       "name": "photos",
+       "type": "integer",
+       "rule": "count from the folder's file list"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "2 Drive file ids per place, 'file id = place'"
+      },
+      {
+       "name": "certainty",
+       "type": "text",
+       "rule": "'sure' or 'from pictures only: <what you recognised>'"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "anything odd"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every year 2008-2026 has either its trips or a 'none' row, counted from the folder's own file list.",
+     "checks": [
+      "Claude opens 10 evidence ids at random and checks the place and date."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-14",
+     "title": "Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos)",
+     "state": "now",
+     "added": "2026-11-23",
+     "due": "2026-12-05",
+     "why": "Your city cards (ODY-GEM-10) cover the Europe and Philippines stops. The ten trips now on record add 13 places with no card.",
+     "unlocks": "Tap a dot: the city's card. Totals per trip (people, countries, time zones crossed).",
+     "inputs": [
+      "The stop codes and names: ATL Atlanta GA, BSR Big Sur CA, SF San Francisco CA, SEQ Sequoia National Park CA, KCN Kings Canyon (Grant Grove) CA, LAS Las Vegas NV, HVR Hoover Dam NV/AZ, MZT Mazatlán Sinaloa, PVR Puerto Vallarta Jalisco, FBG Fort Bragg CA, SAN San Diego CA, DTW Detroit MI, MMH Mammoth Lakes CA",
+      "Your own ODY-GEM-10 file for the shape of a card (same fields, same sourcing rules); national parks: the NPS page for the park."
+     ],
+     "steps": [
+      "For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per stop code"
+     },
+     "count": 13,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "code",
+       "type": "text",
+       "rule": "stop code as in odyssey-data.js"
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "country",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "population",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "pop_year",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "pop_url",
+       "type": "URL",
+       "rule": "statistics office or Wikidata"
+      },
+      {
+       "name": "elevation_m",
+       "type": "number",
+       "rule": ""
+      },
+      {
+       "name": "tz",
+       "type": "text",
+       "rule": "IANA"
+      },
+      {
+       "name": "currency",
+       "type": "text",
+       "rule": "now (and in 2015 if different)"
+      },
+      {
+       "name": "language",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "known_for",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": ""
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.",
+      "No row is a copy of another with the names changed.",
+      "Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "13 cards, one per code above, every number sourced.",
+     "checks": [
+      "Claude opens 10 rows at random."
+     ],
+     "rejected_if": [
+      "fewer rows than the count (where a count is set), or a row missing a field",
+      "a row copied from another row with the names changed",
+      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' or 'not found' instead)"
+     ]
+    },
+    {
+     "id": "ODY-GEM-15",
+     "title": "Odyssey: the landmarks Joseph photographed on the ten trips found in his photos, with official facts",
+     "state": "now",
+     "added": "2026-11-23",
+     "due": "2026-12-07",
+     "why": "Your 65 landmarks cover Europe and the Philippines. The ten trips now on record (Atlanta Oct 2015; Big Sur and San Francisco Jun 2018; Sequoia and Kings Canyon Aug 2018; Las Vegas and Hoover Dam Jun 2019; Mazatlán and Puerto Vallarta Aug 2019; San Francisco and Fort Bragg Mar 2021; San Diego Apr 2022; Detroit Jun 2022; Mammoth Lakes Sep 2022; Detroit May 2023) have none, so their map dots open on nothing.",
+     "unlocks": "Each landmark becomes a tappable point on its trip's map with its fact, like the Europe ones.",
+     "inputs": [
+      "Your own files odyssey_gemini_trips-from-photos_20261121-0758.json and odyssey_gemini_photo-picks_20261121-0818.json (the photos and places)",
+      "Your ODY-GEM-09 file odyssey_gemini_landmarks_20261121-0147.json for the shape and the sourcing standard"
+     ],
+     "steps": [
+      "From the photos of those ten trips, list every landmark that appears in one (a named place: a monument, a park feature, a bridge, a building, a beach).",
+      "For each: coordinates, Wikidata id, the year it was built or established, the official page (NPS, the city, the state, the site itself) and one fact quoted word for word from that page.",
+      "Name the photo (Drive file id) it appears in."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_landmarks-usa_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 20+ objects, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "name",
+       "type": "text",
+       "rule": "as the official page names it"
+      },
+      {
+       "name": "local_name",
+       "type": "text",
+       "rule": "same, or the Spanish name in Mexico"
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "country",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "lat",
+       "type": "number",
+       "rule": "decimal degrees"
+      },
+      {
+       "name": "lon",
+       "type": "number",
+       "rule": "decimal degrees"
+      },
+      {
+       "name": "wikidata",
+       "type": "text",
+       "rule": "Q-id"
+      },
+      {
+       "name": "year",
+       "type": "text",
+       "rule": "built or established"
+      },
+      {
+       "name": "unesco",
+       "type": "text",
+       "rule": "site number or empty"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "official page"
+      },
+      {
+       "name": "fact",
+       "type": "text",
+       "rule": "one sentence in your words"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "word for word from url, 300 characters at most"
+      },
+      {
+       "name": "photo",
+       "type": "text",
+       "rule": "Drive file id it appears in"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the official site (agency, park service, maker), or for photo tasks the Drive file you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "The file is valid JSON (a JSON array, not an object around it) and is named exactly as asked."
+     ],
+     "done_when": "20+ landmarks from the ten trips, each with its photo and a quoted official fact.",
+     "checks": [
+      "Claude opens 6 rows at random against their pages and 4 photos."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here"
+     ]
+    },
+    {
+     "id": "ODY-GEM-16",
+     "title": "Odyssey: the ten photo trips day by day",
+     "state": "now",
+     "added": "2026-11-23",
+     "due": "2026-12-07",
+     "why": "Your day-by-day files for the Eurotrip and the Philippines were the best work of the run (they caught a wrong date and four missing day trips). The ten new trips (Atlanta Oct 2015; Big Sur and San Francisco Jun 2018; Sequoia and Kings Canyon Aug 2018; Las Vegas and Hoover Dam Jun 2019; Mazatlán and Puerto Vallarta Aug 2019; San Francisco and Fort Bragg Mar 2021; San Diego Apr 2022; Detroit Jun 2022; Mammoth Lakes Sep 2022; Detroit May 2023) have one line each.",
+     "unlocks": "Each new trip gets a day-by-day log and its photo journey.",
+     "inputs": [
+      "The Drive folders 'Photos from YYYY' for each trip's dates (file names start with the date and time)",
+      "Your ODY-GEM-07 file for the shape"
+     ],
+     "steps": [
+      "For every day of each trip with photos: the town, the places in order, first and last photo time in local time, how many photos, 2 Drive file ids as evidence.",
+      "Where your trips file and the photos disagree (a day earlier or later, a place missing), say so in 'disagrees'."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_photo-trip-days_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per day, in order"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "trip",
+       "type": "text",
+       "rule": "as in the list above, e.g. 'Sequoia and Kings Canyon Aug 2018'"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "places",
+       "type": "text",
+       "rule": "in order"
+      },
+      {
+       "name": "first_time",
+       "type": "text",
+       "rule": "HH:MM and zone"
+      },
+      {
+       "name": "last_time",
+       "type": "text",
+       "rule": "HH:MM and zone"
+      },
+      {
+       "name": "photos",
+       "type": "integer",
+       "rule": "count"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "2 Drive file ids"
+      },
+      {
+       "name": "disagrees",
+       "type": "text",
+       "rule": "or empty"
+      }
+     ],
+     "self_check": [
+      "The file is valid JSON (a JSON array, not an object around it) and is named exactly as asked."
+     ],
+     "done_when": "Every day with photos on all ten trips.",
+     "checks": [
+      "Claude opens 6 evidence photos and compares the times with the file names."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a file saved anywhere but the folder named here"
+     ]
+    },
+    {
+     "id": "ODY-GEM-17",
+     "title": "Odyssey: a card for each national park Joseph has been to (NPS facts)",
+     "state": "now",
+     "added": "2026-11-23",
+     "due": "2026-12-07",
+     "why": "His photos put him in Sequoia, Kings Canyon, Joshua Tree and Death Valley (and Hoover Dam sits in Lake Mead National Recreation Area). Odyssey's atlas can show the parks he has been to.",
+     "inputs": [
+      "nps.gov park pages and the NPS visitor-use statistics (irma.nps.gov/Stats)"
+     ],
+     "steps": [
+      "For each of the five: when it was established, its area, the latest official yearly visits (year and number), the highest and lowest points, and one fact quoted from nps.gov."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_parks_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 5 objects"
+     },
+     "count": 5,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "park",
+       "type": "text",
+       "rule": "official name"
+      },
+      {
+       "name": "code",
+       "type": "text",
+       "rule": "NPS four-letter code"
+      },
+      {
+       "name": "established",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "area_acres",
+       "type": "number",
+       "rule": "official"
+      },
+      {
+       "name": "visits",
+       "type": "integer",
+       "rule": "latest official year"
+      },
+      {
+       "name": "visits_year",
+       "type": "integer",
+       "rule": ""
+      },
+      {
+       "name": "high_ft",
+       "type": "number",
+       "rule": "highest point"
+      },
+      {
+       "name": "low_ft",
+       "type": "number",
+       "rule": "lowest point"
+      },
+      {
+       "name": "url",
+       "type": "URL",
+       "rule": "nps.gov page"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "word for word, 300 characters at most"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the official site (agency, park service, maker), or for photo tasks the Drive file you looked at.",
+      "Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.",
+      "The file is valid JSON (a JSON array, not an object around it) and is named exactly as asked."
+     ],
+     "done_when": "All five, every number from nps.gov.",
+     "checks": [
+      "Claude opens every row's page."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "a file saved anywhere but the folder named here"
      ]
     }
    ]
@@ -961,7 +1470,7 @@
     {
      "id": "ODY-GRK-02",
      "title": "Odyssey: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-27",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -1005,7 +1514,9 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "input_file": "odyssey_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)",
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar."
     }
    ]
   },
@@ -1081,7 +1592,7 @@
     {
      "id": "ODY-MUS-03",
      "title": "Odyssey: second reader on Gemini's 'a city card for each of the 27 trip stops'",
-     "state": "now",
+     "state": "withdrawn",
      "added": "2026-11-21",
      "due": "2026-11-28",
      "why": "It is live in the pillar marked 'not second-read': Claude could not open these official sites from its sandbox, so a second reader decides whether the mark comes off.",
@@ -1120,7 +1631,9 @@
       "a URL that does not open, is a home page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check."
     }
    ]
   },

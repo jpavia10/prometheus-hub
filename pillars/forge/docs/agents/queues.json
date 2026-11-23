@@ -296,6 +296,83 @@
      "title": "Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch",
      "due": "2026-12-04",
      "note": "Run 4 (2026-11-21) could not open raw.githubusercontent.com: use the github.com pages above. Claude, 2026-11-22."
+    },
+    {
+     "id": "FOR-GEM-06",
+     "title": "Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge",
+     "state": "now",
+     "added": "2026-11-23",
+     "due": "2026-12-01",
+     "why": "On Nov 23 Claude found nine of your Nov 21 files (the Odyssey photo work and both coin-photo tests) that the Forge still showed as 'to do' two days later: the Forge reads GitHub, not Drive, and your DONE_ markers sit in Drive.",
+     "unlocks": "Nothing you deliver waits unseen again: Claude checks your list at every catch-up.",
+     "inputs": [
+      "Drive: search for files named DONE_*.json modified after 2026-11-16 (every folder)",
+      "The Forge: https://jpavia10.github.io/prometheus-hub/pillars/forge/ (each task's state)"
+     ],
+     "steps": [
+      "List every DONE_ marker: its name, its folder, its date, and the file it points to.",
+      "For each, the task's state on the Forge today (to do, delivered, done, withdrawn).",
+      "Flag every one where Drive says done but the Forge says to do."
+     ],
+     "deliver": {
+      "file": "forge_gemini_done-markers_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per marker"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "marker",
+       "type": "text",
+       "rule": "file name"
+      },
+      {
+       "name": "folder",
+       "type": "text",
+       "rule": "Drive folder"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "modified"
+      },
+      {
+       "name": "task",
+       "type": "text",
+       "rule": "task id"
+      },
+      {
+       "name": "file",
+       "type": "text",
+       "rule": "the delivery it points to"
+      },
+      {
+       "name": "forge_state",
+       "type": "text",
+       "rule": "as the Forge shows it today"
+      },
+      {
+       "name": "mismatch",
+       "type": "text",
+       "rule": "'yes' or 'no'"
+      }
+     ],
+     "self_check": [
+      "Every DONE_ marker since Nov 16, none left out.",
+      "The file is valid JSON and named exactly as asked."
+     ],
+     "done_when": "Every marker listed.",
+     "checks": [
+      "Claude searches Drive for the same markers and compares the counts."
+     ],
+     "rejected_if": [
+      "a marker left out"
+     ]
     }
    ]
   },
@@ -339,7 +416,7 @@
     {
      "id": "FOR-GRK-02",
      "title": "Forge: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-27",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -383,7 +460,9 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "input_file": "forge_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)",
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar."
     }
    ]
   },

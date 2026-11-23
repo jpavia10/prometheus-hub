@@ -262,3 +262,18 @@ test('FAIL 9 [object-keys, row-count]: an object missing a named key and short o
   const failed = parseCheckLines(res.stdout).filter((l) => l.status === 'FAIL');
   assert.deepEqual(failed.map((l) => l.check), ['object-keys', 'row-count']);
 });
+
+// 2026-11-23: a shape that says "N+ objects" makes the count a floor (ODY-GEM-09 asked for 60+ landmarks, sent 65, and was failed).
+test('PASS: a count written as a floor ("2+ objects") takes more rows', () => {
+  const res = runChecker('hub_gemini_floor_20261123-0900.json');
+  assert.equal(res.exitCode, 0, res.stdout + res.stderr);
+  const lines = parseCheckLines(res.stdout);
+  assert.ok(lines.some((l) => l.check === 'row-count' && l.status === 'PASS' && l.reason.includes('at least')));
+});
+
+test('FAIL [row-count]: a count written as a floor still fails below it', () => {
+  const res = runChecker('fail-floor/hub_gemini_floor_20261123-0901.json');
+  assert.equal(res.exitCode, 1);
+  const failed = parseCheckLines(res.stdout).filter((l) => l.status === 'FAIL');
+  assert.deepEqual(failed.map((l) => l.check), ['row-count']);
+});

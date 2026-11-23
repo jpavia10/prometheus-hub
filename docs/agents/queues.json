@@ -77,7 +77,7 @@
     {
      "id": "HUB-GRK-03",
      "title": "Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-27",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -121,7 +121,9 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "input_file": "hub_gemini_function-spec_20261116-1930.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)",
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar."
     }
    ]
   },
@@ -132,7 +134,7 @@
     {
      "id": "HUB-GEM-11",
      "title": "TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-20",
      "due": "2026-11-23",
      "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Vision at the level of a coin's mint mark. The same 30 photos and the same prompt every model has taken (results in Titan's collaborators/MODEL_ACCURACY.md); best so far on this pack: core accuracy 85 % (Gemini app, Oct 2026). The bar to do Titan's Phase 2 research is core accuracy 95 %, invented values 1 % or less, false confidence 5 % or less.",
@@ -203,12 +205,13 @@
       "fewer than the count",
       "not the shape PROMPT.md asks for"
      ],
-     "review": "Not started on 2026-11-20: the images on raw.githubusercontent.com would not open in the Gemini app (an honest block, no answer guessed). The photos are now in the Drive folder listed first under 'Read first'."
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): Titan's blind coin-photo test, main pack: 83% field accuracy against the locked key, recorded in Titan's MODEL_ACCURACY. Score 9/10 (#133).",
+     "closed": "2026-11-23"
     },
     {
      "id": "HUB-GEM-12",
      "title": "TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins)",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-20",
      "due": "2026-11-23",
      "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Vision at the level of a coin's mint mark. The same 15 photos and the same prompt every model has taken (results in Titan's collaborators/MODEL_ACCURACY.md); best so far on this pack: core accuracy 76 % (Grok and the Gemini app, Oct 2026). The bar to do Titan's Phase 2 research is core accuracy 95 %, invented values 1 % or less, false confidence 5 % or less.",
@@ -279,7 +282,8 @@
       "fewer than the count",
       "not the shape PROMPT.md asks for"
      ],
-     "review": "Not started on 2026-11-20: the images on raw.githubusercontent.com would not open in the Gemini app (an honest block, no answer guessed). The photos are now in the Drive folder listed first under 'Read first'."
+     "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): Titan's blind coin-photo test, locked pack (the harder 15): 78% field accuracy, recorded in Titan's MODEL_ACCURACY. Score 9/10 (#134).",
+     "closed": "2026-11-23"
     },
     {
      "id": "HUB-GEM-13",
@@ -1191,6 +1195,80 @@
      "id": "HUB-GEM-17",
      "title": "Hub: re-check run 4's 40 accessibility findings after the d51 fixes",
      "due": "2026-12-01"
+    },
+    {
+     "id": "HUB-GEM-18",
+     "title": "Hub: where the subject sits in each of the 24 pillar paintings (for the living headers)",
+     "state": "now",
+     "added": "2026-11-23",
+     "due": "2026-12-05",
+     "why": "Every pillar page now opens on its painting, alive, with the painting's subject placed in the header band. Six paintings have a measured subject height; the other eighteen fall back to a guess, so some headers show sky or floor instead of the subject.",
+     "unlocks": "Claude sets each painting's focus (kit/world.js FOCUS) and the header frames the right thing on the phone.",
+     "inputs": [
+      "The paintings: https://jpavia10.github.io/prometheus-hub/art/worlds/world_{pillar}.webp for each of: kairos, garage, odyssey, hearth, apollo, money, selling, records, icarus, hermes, piano, bastion, privacy, argus, games, forge, foundry, observatory, kin, presence, aether, polis, mythos, continuity",
+      "Each pillar page to see it live: https://jpavia10.github.io/prometheus-hub/pillars/{pillar}/ (a phone-width window)"
+     ],
+     "steps": [
+      "For each painting, name its main subject in a few words (the thing the painting is about: the clock tower, the garage door, the hearth fire ...).",
+      "Measure where that subject's centre sits from the top: 0 = top edge, 1 = bottom edge, two decimals (pixel row of the centre divided by the image height; give both numbers).",
+      "Say whether the live header on a phone shows that subject now: yes, or what it shows instead."
+     ],
+     "deliver": {
+      "file": "hub_gemini_painting-focus_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array of 24 objects, exactly the fields below"
+     },
+     "count": 24,
+     "fields": [
+      {
+       "name": "n",
+       "type": "integer",
+       "rule": "row"
+      },
+      {
+       "name": "pillar",
+       "type": "text",
+       "rule": "slug as listed"
+      },
+      {
+       "name": "subject",
+       "type": "text",
+       "rule": "a few words"
+      },
+      {
+       "name": "row_px",
+       "type": "integer",
+       "rule": "pixel row of its centre"
+      },
+      {
+       "name": "height_px",
+       "type": "integer",
+       "rule": "image height"
+      },
+      {
+       "name": "focus",
+       "type": "number",
+       "rule": "row_px / height_px, two decimals (math)"
+      },
+      {
+       "name": "header_now",
+       "type": "text",
+       "rule": "'yes' or what the phone header shows instead"
+      }
+     ],
+     "self_check": [
+      "focus equals row_px / height_px to two decimals.",
+      "All 24 slugs, each once.",
+      "The file is valid JSON and named exactly as asked."
+     ],
+     "done_when": "24 rows.",
+     "checks": [
+      "Claude opens 6 paintings and checks the subject and the row."
+     ],
+     "rejected_if": [
+      "a focus that does not equal its own row_px / height_px",
+      "a slug missing or twice"
+     ]
     }
    ]
   },
@@ -1284,7 +1362,7 @@
     {
      "id": "HUB-MUS-03",
      "title": "Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940)",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-23",
      "why": "Gemini resent every hub dataset at 19:40 on Nov 18 after your Nov 17-18 checks. Nothing from that batch is built into a pillar until a second reader has checked it, and nobody has.",
      "unlocks": "Claude (or Sebastian) wires each file that passes into its pillar and closes its Gemini task; a file that fails goes back to Gemini with your lines.",
@@ -1330,12 +1408,14 @@
       "a differ or still-wrong line without where you looked",
       "a check of a file you wrote yourself",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check."
     },
     {
      "id": "HUB-MUS-04",
      "title": "Eight pillars: second reader on Gemini 4 Neon's 2026-11-19 run (16 files, 20% of rows)",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-24",
      "why": "Claude built Gemini's Nov 19 run into eight pillars after running the code and recomputing what can be recomputed, but Claude's container cannot open the cited pages. A human-grade second read of the sources is still owed.",
      "unlocks": "Each file you ACCEPT stays as built; each row you mark 'differ' is fixed in the pillar the same day, and Gemini's score is revised.",
@@ -1382,7 +1462,66 @@
       "a check of a file you wrote yourself",
       "a file saved anywhere but the folder named here, or under another name"
      ],
-     "added": "2026-11-19"
+     "added": "2026-11-19",
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check."
+    },
+    {
+     "id": "HUB-MUS-05",
+     "title": "One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies",
+     "state": "now",
+     "added": "2026-11-23",
+     "due": "2026-12-07",
+     "why": "Joseph keeps Muse to a modest load from now on (2026-11-23). Instead of 28 separate checks, one sitting covers the files where a wrong number could cost money or safety. Until a second reader agrees, Claude keeps these rows marked 'not second-read' in the pillars.",
+     "unlocks": "Claude marks each file second-read (or fixes the rows you find wrong) and builds the rest into its pillar.",
+     "inputs": [
+      "Each file is in 'Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/' (some in the pillar's own incoming folder): search Drive for the file name.",
+      "The rows to check (chosen by Claude at random, so nobody picks the easy ones):",
+      "money_gemini_issuer-pricing_20261121-1136.json: rows n = 10, 11, 13",
+      "aether_gemini_psps-fall2026_20261121-1123.json: rows n = 9, 11, 15",
+      "bastion_gemini_shelters_20261121-1131.json: rows n = 3, 5, 8",
+      "bastion_gemini_weather-radio_20261121-1129.json: rows n = 5, 6, 9",
+      "bastion_gemini_kit-items_20261118-1940.json: rows n = 12, 13, 21",
+      "continuity_gemini_kern-tod-recording_20261121-1130.json: rows n = 1, 2, 11",
+      "records_gemini_tx-to-ca_20261121-1210.json: rows n = 12, 16, 19",
+      "apollo_gemini_nutrient-targets_20261121-1223.json: rows n = 2, 12, 13",
+      "hearth_gemini_kern-design-criteria_20261121-1117.json: rows n = 4, 7, 10",
+      "privacy_gemini_s24-hardening_20261121-1205.json: rows n = 4, 18, 48",
+      "privacy_gemini_optouts_20261121-1116.json: rows n = 3, 6, 11",
+      "garage_gemini_lights_20261121-1215.json: rows n = 43, 47, 60",
+      "Continuity's three account policies nobody could open last time (TikTok, Vanguard, Robinhood): https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/legacy-policies.js rows n 19, 22, 23."
+     ],
+     "steps": [
+      "For each listed row open the URL it cites. Is the value, and the quote word for word, on that page today? Write agree, or what the page says instead.",
+      "For the three Continuity rows also check set_up_now and after_death against the page.",
+      "Give each file one line: ACCEPT (Claude may build on it) or REJECT, with why."
+     ],
+     "deliver": {
+      "file": "hub_muse_second-read_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "one markdown file: a section per Gemini file (its name, ACCEPT/REJECT), then a table: row | Gemini says | what I found | URL | agree/differ"
+     },
+     "count": 39,
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "text",
+       "rule": "per row"
+      }
+     ],
+     "self_check": [
+      "Every row you mark agree, you opened its page today and saw the value there.",
+      "Every 'differ' quotes the page's own words.",
+      "39 rows: 36 from the twelve files and the 3 Continuity policies."
+     ],
+     "done_when": "All 39 rows read and every file has ACCEPT or REJECT.",
+     "checks": [
+      "Claude opens 5 of your rows at random."
+     ],
+     "rejected_if": [
+      "a row marked agree whose page does not say it",
+      "a file without a verdict"
+     ]
     }
    ]
   },

@@ -8,15 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- APO-GRK-02 · Apollo Temple: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
-    make: apollo_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+No homework for Grok in Apollo Temple right now.
 
 ## Gemini
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 1 open in this pillar.
 
 
 - APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving · due 2026-12-05
@@ -24,29 +23,28 @@ Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- APO-MUS-03 · Apollo: second reader on Gemini's the 30 NIH targets and upper limits for men 31-50 and 51-70 · due 2026-12-01
-    make: apollo_muse_nutrient-targets-check_{YYYYMMDD-HHMM}.md · how many: 12 · done when: Every picked item checked with where you looked.
+No homework for Muse in Apollo Temple right now.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Apollo Temple right now.
 
 ## Argon
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Apollo Temple right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Apollo Temple right now.

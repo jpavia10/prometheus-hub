@@ -8,44 +8,45 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- FOR-GRK-02 · Forge: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
-    make: forge_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+No homework for Grok in Forge right now.
 
 ## Gemini
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 2 open in this pillar.
 
 
+- FOR-GEM-06 · Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge · due 2026-12-01
+    make: forge_gemini_done-markers_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every marker listed.
 - FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch · due 2026-12-04
     make: forge_gemini_audit_{YYYYMMDD-HHMM}.json · how many: 30 · done when: 30 tasks compared field by field.
 
 ## Muse
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Forge right now.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Forge right now.
 
 ## Argon
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Forge right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Forge right now.

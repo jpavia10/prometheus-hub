@@ -356,7 +356,7 @@
     for (let i = 0; i < ticks; i++) cells += `<span class="tl-tick${i === 0 || i === ticks - 1 ? " end" : ""}"></span>`;
     const legs = legsOf(t);
     const legRows = legs ? legsHTML(legs) : "";
-    return `<div class="tl"><div class="tl-head"><span>${dlabel(t.start)} ${dparse(t.start).getFullYear()}</span><span class="tl-mid">${days} DAYS · ${n} NIGHTS</span><span>${dlabel(t.end)} ${dparse(t.end).getFullYear()}</span></div><div class="tl-track">${cells}</div>${legRows}</div>`;
+    return `<div class="tl"><div class="tl-head"><span>${dlabel(t.start)} ${dparse(t.start).getFullYear()}</span><span class="tl-mid">${days} ${days === 1 ? "DAY" : "DAYS"} · ${n} ${n === 1 ? "NIGHT" : "NIGHTS"}</span><span>${dlabel(t.end)} ${dparse(t.end).getFullYear()}</span></div><div class="tl-track">${cells}</div>${legRows}</div>`;
   }
 
   function paint() {
@@ -384,7 +384,7 @@
       const packs = t.packState || {};
       const isAway = !!(awayMeta && awayMeta.tripId === t.id);
       const past = isPast(t), seed = seedOf(t), from = fromOf(t);
-      const roadNote = t.car
+      const roadNote = t.car && !past   // a trip on record needs no packing count
         ? `Bastion car kit: ${health.carItems} item(s) packed · Vehicle services due <=500 mi: ${health.sDue}`
         : "";
       const card = h("div.trip" + (past ? ".past" : ""), { "data-trip": t.id },

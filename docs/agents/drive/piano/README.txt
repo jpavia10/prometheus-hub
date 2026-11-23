@@ -8,15 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- PIA-GRK-02 · Bossa Piano Studio: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
-    make: piano_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+No homework for Grok in Bossa Piano Studio right now.
 
 ## Gemini
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 1 open in this pillar.
 
 
 - PIA-GEM-08 · Piano: the published key for the 24 Bossa Nova tunes still 'not stated' · due 2026-12-03
@@ -24,31 +23,28 @@ Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-22 03:36 UTC · 2 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- PIA-MUS-01 · Piano: second reader on Gemini's 'where each of the 24 bossa tunes is legally printed' · due 2026-11-28
-    make: piano_muse_bossa-sources-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked row checked with where you looked.
-- PIA-MUS-02 · Piano: second reader on Gemini's the page and key of each tune and the first and definitive recordings · due 2026-11-30
-    make: piano_muse_keys-and-recordings-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+No homework for Muse in Bossa Piano Studio right now.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Bossa Piano Studio right now.
 
 ## Argon
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Bossa Piano Studio right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Bossa Piano Studio right now.

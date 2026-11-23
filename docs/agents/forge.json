@@ -1,6 +1,6 @@
 {
- "built": "2026-11-23T14:29:53Z",
- "checked": "2026-11-23T14:29:53Z",
+ "built": "2026-11-23T16:11:04Z",
+ "checked": "2026-11-23T16:11:04Z",
  "version": 2,
  "today": "2026-11-23",
  "sources": {
@@ -19,64 +19,64 @@
    "synced": "2026-11-19T20:47:40Z"
   },
   "titan_scores": 178,
-  "hub_scores": 125,
+  "hub_scores": 134,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 150,
-  "late": 4,
-  "due7": 87,
+  "todo": 65,
+  "late": 2,
+  "due7": 11,
   "delivered": 0,
-  "queued": 12,
-  "withdrawn": 110
+  "queued": 5,
+  "withdrawn": 182
  },
  "per": {
   "Gemini": {
-   "todo": 52,
+   "todo": 50,
    "late": 0,
-   "due7": 15,
+   "due7": 6,
    "delivered": 0,
    "queued": 2,
-   "done7": 124,
+   "done7": 133,
    "withdrawn": 68,
-   "items": 594,
+   "items": 515,
    "floor": 50,
    "by": {
-    "hub": 45,
+    "hub": 43,
     "titan": 2,
     "tproj": 5,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 198,
-    "avg": 7.88,
-    "last10": 9.8,
+    "n": 207,
+    "avg": 7.94,
+    "last10": 9.3,
     "last": {
      "ai": "Gemini",
-     "n": 125,
-     "date": "2026-11-22",
-     "what": "argus_gemini_coin-photo-rules_20261118-1940.json",
-     "task": "ARG-GEM-09",
+     "n": 134,
+     "date": "2026-11-23",
+     "what": "bakeoff_gemini_locked_20261121-0137.json",
+     "task": "HUB-GEM-12",
      "where": "Prometheus Hub",
-     "score": 10.0
+     "score": 9.0
     }
    }
   },
   "Grok": {
-   "todo": 39,
-   "late": 3,
-   "due7": 33,
+   "todo": 2,
+   "late": 2,
+   "due7": 0,
    "delivered": 0,
-   "queued": 7,
+   "queued": 0,
    "done7": 1,
-   "withdrawn": 25,
-   "items": 301,
-   "floor": 6,
+   "withdrawn": 63,
+   "items": 2,
+   "floor": 0,
    "by": {
-    "hub": 28,
-    "titan": 6,
-    "tproj": 5,
+    "hub": 2,
+    "titan": 0,
+    "tproj": 0,
     "board": 0
    },
    "probation": true,
@@ -96,19 +96,19 @@
    }
   },
   "Muse": {
-   "todo": 47,
+   "todo": 7,
    "late": 0,
-   "due7": 33,
+   "due7": 4,
    "delivered": 0,
    "queued": 1,
    "done7": 8,
-   "withdrawn": 16,
-   "items": 627,
-   "floor": 6,
+   "withdrawn": 44,
+   "items": 106,
+   "floor": 3,
    "by": {
-    "hub": 29,
-    "titan": 17,
-    "tproj": 1,
+    "hub": 2,
+    "titan": 3,
+    "tproj": 2,
     "board": 0
    },
    "probation": false,
@@ -128,17 +128,17 @@
    }
   },
   "ChatGPT": {
-   "todo": 6,
-   "late": 1,
-   "due7": 5,
+   "todo": 0,
+   "late": 0,
+   "due7": 0,
    "delivered": 0,
    "queued": 0,
    "done7": 0,
-   "withdrawn": 1,
-   "items": 95,
-   "floor": 2,
+   "withdrawn": 7,
+   "items": 0,
+   "floor": 0,
    "by": {
-    "hub": 6,
+    "hub": 0,
     "titan": 0,
     "tproj": 0,
     "board": 0
@@ -264,246 +264,182 @@
  },
  "places": {
   "Prometheus Hub": {
-   "todo": 7,
+   "todo": 4,
    "delivered": 0,
    "by": {
-    "Grok": 1,
-    "Gemini": 4,
-    "Muse": 2
+    "Gemini": 3,
+    "Muse": 1
    }
   },
   "Kairos Meridian": {
-   "todo": 3,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "ChatGPT": 1
+    "Gemini": 1
    }
   },
   "Hephaestus Hearth": {
-   "todo": 6,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 3,
-    "Grok": 1,
-    "Muse": 1,
-    "ChatGPT": 1
+    "Gemini": 3
    }
   },
   "Garage": {
-   "todo": 6,
+   "todo": 2,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
-    "Grok": 1,
-    "Muse": 2,
-    "ChatGPT": 1
+    "Gemini": 2
    }
   },
   "Apollo Temple": {
-   "todo": 3,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Muse": 1,
-    "Grok": 1
+    "Gemini": 1
    }
   },
   "Money": {
-   "todo": 4,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 1,
-    "ChatGPT": 1
+    "Gemini": 1
    }
   },
   "Selling Pipeline": {
-   "todo": 4,
+   "todo": 2,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
-    "Grok": 1,
-    "Muse": 1
+    "Gemini": 2
    }
   },
   "Records": {
-   "todo": 3,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 1
+    "Gemini": 1
    }
   },
   "Icarus Stake": {
-   "todo": 3,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 1
+    "Gemini": 1
    }
   },
   "Hermes Post": {
-   "todo": 4,
+   "todo": 2,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
-    "Grok": 1,
-    "Muse": 1
+    "Gemini": 2
    }
   },
   "Bossa Piano Studio": {
-   "todo": 4,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 2
+    "Gemini": 1
    }
   },
   "Bastion": {
-   "todo": 5,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 3,
-    "Grok": 1,
-    "Muse": 1
+    "Gemini": 3
    }
   },
   "Athenaeum": {
-   "todo": 3,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 1
+    "Gemini": 1
    }
   },
   "Odyssey": {
-   "todo": 9,
-   "delivered": 0,
-   "by": {
-    "Gemini": 7,
-    "Grok": 1,
-    "Muse": 1
-   }
-  },
-  "Privacy": {
    "todo": 5,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 3
+    "Gemini": 5
+   }
+  },
+  "Privacy": {
+   "todo": 1,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1
    }
   },
   "Argus Album": {
-   "todo": 3,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Muse": 1,
-    "Grok": 1
+    "Gemini": 1
    }
   },
   "Ludus Arcade": {
-   "todo": 4,
+   "todo": 2,
    "delivered": 0,
    "by": {
-    "Gemini": 2,
-    "Grok": 1,
-    "Muse": 1
+    "Gemini": 2
    }
   },
   "Forge": {
    "todo": 2,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 1
+    "Gemini": 2
    }
   },
   "Foundry": {
-   "todo": 3,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 1
-   }
-  },
-  "Observatory": {
-   "todo": 3,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1,
-    "Grok": 1,
-    "Muse": 1
-   }
-  },
-  "Kin": {
-   "todo": 2,
-   "delivered": 0,
-   "by": {
-    "Grok": 1,
-    "ChatGPT": 1
-   }
-  },
-  "Aether": {
-   "todo": 6,
-   "delivered": 0,
-   "by": {
-    "Gemini": 3,
-    "Grok": 1,
-    "Muse": 2
-   }
-  },
-  "Polis": {
-   "todo": 5,
-   "delivered": 0,
-   "by": {
-    "Gemini": 3,
-    "Grok": 1,
-    "Muse": 1
-   }
-  },
-  "Mythos": {
    "todo": 1,
    "delivered": 0,
    "by": {
-    "Grok": 1
+    "Gemini": 1
+   }
+  },
+  "Observatory": {
+   "todo": 1,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1
+   }
+  },
+  "Aether": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Gemini": 3
+   }
+  },
+  "Polis": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Gemini": 3
    }
   },
   "Continuity": {
-   "todo": 5,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
-    "Grok": 2,
-    "Muse": 2
+    "Gemini": 1
    }
   },
   "Midas Ledger": {
-   "todo": 5,
+   "todo": 4,
    "delivered": 0,
    "by": {
     "Gemini": 1,
     "Grok": 2,
-    "Muse": 1,
-    "ChatGPT": 1
+    "Muse": 1
    }
   },
   "Titan": {
-   "todo": 38,
+   "todo": 14,
    "delivered": 0,
    "by": {
     "Gemini": 7,
-    "Grok": 11,
-    "Muse": 18,
+    "Muse": 5,
     "Gemini API": 2
    }
   },
@@ -514,6 +450,16 @@
     "Hydrogen": 3,
     "Argon": 1
    }
+  },
+  "Kin": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Mythos": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
   }
  },
  "tasks": [
@@ -590,11 +536,11 @@
    "pid": "hub",
    "id": "HUB-GRK-03",
    "title": "Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -623,11 +569,11 @@
    "pid": "hub",
    "id": "HUB-GEM-11",
    "title": "TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-23",
    "items": 30,
-   "closed": "",
-   "review": "Not started on 2026-11-20: the images on raw.githubusercontent.com would not open in the Gemini app (an honest block, no answer guessed). The photos are now in the Drive folder listed first under 'Read first'.",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): Titan's blind coin-photo test, main pack: 83% field accuracy against the locked key, recorded in Titan's MODEL_ACCURACY. Score 9/10 (#133).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -657,11 +603,11 @@
    "pid": "hub",
    "id": "HUB-GEM-12",
    "title": "TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-23",
    "items": 15,
-   "closed": "",
-   "review": "Not started on 2026-11-20: the images on raw.githubusercontent.com would not open in the Gemini app (an honest block, no answer guessed). The photos are now in the Drive folder listed first under 'Read first'.",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): Titan's blind coin-photo test, locked pack (the harder 15): 78% field accuracy, recorded in Titan's MODEL_ACCURACY. Score 9/10 (#134).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1211,6 +1157,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-18",
+   "title": "Hub: where the subject sits in each of the 24 pillar paintings (for the living headers)",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 24,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Every pillar page now opens on its painting, alive, with the painting's subject placed in the header band. Six paintings have a measured subject height; the other eighteen fall back to a guess, so some headers show sky or floor instead of the subject.",
+    "steps": [
+     "For each painting, name its main subject in a few words (the thing the painting is about: the clock tower, the garage door, the hearth fire ...).",
+     "Measure where that subject's centre sits from the top: 0 = top edge, 1 = bottom edge, two decimals (pixel row of the centre divided by the image height; give both numbers).",
+     "Say whether the live header on a phone shows that subject now: yes, or what it shows instead."
+    ],
+    "make": "hub_gemini_painting-focus_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array of 24 objects, exactly the fields below",
+    "done": "24 rows.",
+    "checks": [
+     "Claude opens 6 paintings and checks the subject and the row."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Muse",
    "src": "hub",
    "where": "Prometheus Hub",
@@ -1282,11 +1260,11 @@
    "pid": "hub",
    "id": "HUB-MUS-03",
    "title": "Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940)",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-23",
    "items": 23,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1314,11 +1292,11 @@
    "pid": "hub",
    "id": "HUB-MUS-04",
    "title": "Eight pillars: second reader on Gemini 4 Neon's 2026-11-19 run (16 files, 20% of rows)",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-24",
    "items": 23,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1334,6 +1312,38 @@
     "done": "16 check files, every fifth row opened, each with a score and ACCEPT/REJECT.",
     "checks": [
      "Claude re-checks 3 still-wrong or differ lines per file before building on an ACCEPT."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-MUS-05",
+   "title": "One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies",
+   "status": "todo",
+   "due": "2026-12-07",
+   "items": 39,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph keeps Muse to a modest load from now on (2026-11-23). Instead of 28 separate checks, one sitting covers the files where a wrong number could cost money or safety. Until a second reader agrees, Claude keeps these rows marked 'not second-read' in the pillars.",
+    "steps": [
+     "For each listed row open the URL it cites. Is the value, and the quote word for word, on that page today? Write agree, or what the page says instead.",
+     "For the three Continuity rows also check set_up_now and after_death against the page.",
+     "Give each file one line: ACCEPT (Claude may build on it) or REJECT, with why."
+    ],
+    "make": "hub_muse_second-read_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "one markdown file: a section per Gemini file (its name, ACCEPT/REJECT), then a table: row | Gemini says | what I found | URL | agree/differ",
+    "done": "All 39 rows read and every file has ACCEPT or REJECT.",
+    "checks": [
+     "Claude opens 5 of your rows at random."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_muse.md"
    },
@@ -1981,11 +1991,11 @@
    "pid": "kairos",
    "id": "KAI-GRK-03",
    "title": "Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -2014,11 +2024,11 @@
    "pid": "kairos",
    "id": "KAI-GPT-01",
    "title": "Kairos Meridian: phone audit: 15 findings",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-24",
    "items": 15,
    "closed": "",
-   "review": "",
+   "review": "Parked 2026-11-23 (Claude): Joseph relies on Gemini from now on; HUB-GEM-16 covers the audit by reading each pillar's code.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -2876,11 +2886,11 @@
    "pid": "hearth",
    "id": "HEA-GRK-04",
    "title": "Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3036,11 +3046,11 @@
    "pid": "hearth",
    "id": "HEA-MUS-04",
    "title": "Hearth: second reader on Gemini's Kern's deck design criteria and the deck cut list and fasteners",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-29",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3069,11 +3079,11 @@
    "pid": "hearth",
    "id": "HEA-GPT-01",
    "title": "Hephaestus Hearth: phone audit: 15 findings",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-24",
    "items": 15,
    "closed": "",
-   "review": "",
+   "review": "Parked 2026-11-23 (Claude): Joseph relies on Gemini from now on; HUB-GEM-16 covers the audit by reading each pillar's code.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3603,11 +3613,11 @@
    "pid": "garage",
    "id": "GAR-GRK-04",
    "title": "Garage: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3732,11 +3742,11 @@
    "pid": "garage",
    "id": "GAR-MUS-04",
    "title": "Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-28",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3764,11 +3774,11 @@
    "pid": "garage",
    "id": "GAR-MUS-05",
    "title": "Garage: second reader on Gemini's the 62 dashboard lights from the two owner's manuals",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-02",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3796,11 +3806,11 @@
    "pid": "garage",
    "id": "GAR-GPT-01",
    "title": "Garage: phone audit: 15 findings",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-24",
    "items": 15,
    "closed": "",
-   "review": "",
+   "review": "Parked 2026-11-23 (Claude): Joseph relies on Gemini from now on; HUB-GEM-16 covers the audit by reading each pillar's code.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4270,11 +4280,11 @@
    "pid": "apollo",
    "id": "APO-MUS-03",
    "title": "Apollo: second reader on Gemini's the 30 NIH targets and upper limits for men 31-50 and 51-70",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-01",
    "items": 12,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4334,11 +4344,11 @@
    "pid": "apollo",
    "id": "APO-GRK-02",
    "title": "Apollo Temple: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4588,11 +4598,11 @@
    "pid": "money",
    "id": "MON-GRK-02",
    "title": "Money: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4653,11 +4663,11 @@
    "pid": "money",
    "id": "MON-MUS-02",
    "title": "Money: second reader on Gemini's the 25 issuers' published APR, late fee, minimum payment and penalty APR",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-30",
    "items": 12,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4686,11 +4696,11 @@
    "pid": "money",
    "id": "MON-GPT-01",
    "title": "Money: phone audit: 15 findings",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-24",
    "items": 15,
    "closed": "",
-   "review": "",
+   "review": "Parked 2026-11-23 (Claude): Joseph relies on Gemini from now on; HUB-GEM-16 covers the audit by reading each pillar's code.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4998,11 +5008,11 @@
    "pid": "selling",
    "id": "SEL-GRK-03",
    "title": "Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -5095,11 +5105,11 @@
    "pid": "selling",
    "id": "SEL-MUS-03",
    "title": "Selling: second reader on Gemini's this year's postage and marketplace fees",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-02",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -5440,11 +5450,11 @@
    "pid": "records",
    "id": "REC-GRK-03",
    "title": "Records: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -5537,11 +5547,11 @@
    "pid": "records",
    "id": "REC-MUS-03",
    "title": "Records: second reader on Gemini's the Texas-to-California move deadlines and forms",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-01",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6043,11 +6053,11 @@
    "pid": "icarus",
    "id": "ICA-GRK-03",
    "title": "Icarus Stake: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6108,11 +6118,11 @@
    "pid": "icarus",
    "id": "ICA-MUS-02",
    "title": "Icarus: second reader on Gemini's the 2027 CPI and jobs-report dates (the FOMC dates are already confirmed) and the 20 trading rules",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-30",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6584,11 +6594,11 @@
    "pid": "hermes",
    "id": "HER-GRK-03",
    "title": "Hermes Post: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6649,11 +6659,11 @@
    "pid": "hermes",
    "id": "HER-MUS-02",
    "title": "Hermes: second reader on Gemini's the 40 dated official scam messages",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-01",
    "items": 12,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6967,11 +6977,11 @@
    "pid": "piano",
    "id": "PIA-GRK-02",
    "title": "Bossa Piano Studio: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7000,11 +7010,11 @@
    "pid": "piano",
    "id": "PIA-MUS-01",
    "title": "Piano: second reader on Gemini's 'where each of the 24 bossa tunes is legally printed'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-28",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7032,11 +7042,11 @@
    "pid": "piano",
    "id": "PIA-MUS-02",
    "title": "Piano: second reader on Gemini's the page and key of each tune and the first and definitive recordings",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-30",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7469,11 +7479,11 @@
    "pid": "bastion",
    "id": "BAS-GRK-04",
    "title": "Bastion: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7598,11 +7608,11 @@
    "pid": "bastion",
    "id": "BAS-MUS-04",
    "title": "Bastion: second reader on Gemini's the official shelters and cooling or warming centres and the NOAA Weather Radio transmitters and the six official emergency checklists",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-01",
    "items": 23,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7820,11 +7830,11 @@
    "pid": "athenaeum",
    "id": "ATH-GRK-02",
    "title": "Athenaeum: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7853,11 +7863,11 @@
    "pid": "athenaeum",
    "id": "ATH-MUS-01",
    "title": "Athenaeum: second reader on Gemini's Gemini's second reading of the 40 history entries",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-02",
    "items": 14,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8011,11 +8021,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-05",
    "title": "Odyssey: every trip in Joseph's Google Photos, 2008-2026",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): Ten trips 2015-2023 that no plan recorded, each with GPS or a boarding pass behind it; 4 of 4 sampled dates match the files. Lost 2: sent an object around the array (the shape says a JSON array), and coverage stops where its Drive search capped at 5 files a call (it said so plainly, which is right). Wired: all ten are now trips on record in Odyssey. Score 8/10 (#126).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8043,11 +8053,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-06",
    "title": "Odyssey: Joseph's USA, state by state and city by city (from his photos)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 18 US places in 4 states with first/last dates and evidence; home-area towns left out as asked. Lost 2: object instead of array, and the 5-file search cap means counts are floors. Kept for the US atlas; the trips it backs are wired. Score 8/10 (#127).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8074,11 +8084,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-07",
    "title": "Odyssey: the 2015 Eurotrip day by day, from the photos",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 78 days, each with first and last photo times in local time. Its disagreements were right: Rome starts Aug 24, not 23 (checked: still in Malta at 22:07 on the 23rd, the Colosseum at 10:01 on the 24th), and the day trips to Versailles, Gozo and Brighton (checked by eye) were missing. All five fixes are in Odyssey. Score 10/10 (#128).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8105,11 +8115,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-08",
    "title": "Odyssey: the two 2024 Philippines trips day by day, from the photos",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 24 days over both 2024 trips, with eleven precise corrections: the Tagaytay and Coron photo dates, Ocam-Ocam Beach, Manila Ocean Park, Nacpan Beach, and Tour A without the Small Lagoon. Dates checked against the files. All wired. Score 10/10 (#129).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8136,11 +8146,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-09",
    "title": "Odyssey: the landmarks Joseph photographed, with official facts",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 60,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 65 landmarks (60+ asked) with coordinates, Wikidata ids, official pages and quoted facts. The checker failed it for sending more than 60: that was the checker's fault and is fixed. Lost 1: quotes not yet second-read (the pages are blocked from Claude's container); Muse checks a sample. Score 9/10 (#130).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8197,11 +8207,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-11",
    "title": "Odyssey: what Google Photos knows about the 36 photos already in the app",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 36,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): All 36 photos in the app read back from their files; 35 agree, and the one it flagged was right (the zebra is at the Manila Zoo; the caption now says so). Score 10/10 (#131).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8228,11 +8238,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-12",
    "title": "Odyssey: every good photo of every trip you found, ranked",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-26",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Done 2026-11-23 (Claude; delivered Nov 21, missed by the Forge until the catch-up): 152 ranked picks across the ten new trips, ranks unbroken per trip, nobody named (people marked 'unnamed'). The photo pipeline will take the scenery-only picks for the new trips' journeys. Score 10/10 (#132).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8256,17 +8266,173 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-13",
+   "title": "Odyssey: the trips your search missed, folder by folder (2008-2026)",
+   "status": "todo",
+   "due": "2026-12-07",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your Nov 21 file found ten trips, but Drive search stopped at 5 files a call, so whole years (2008-2014, 2016-2017, 2020, 2024-2026) came back nearly empty. The file names carry the date, so the folders themselves show every trip.",
+    "steps": [
+     "For each year, list the file names in order and mark every run of 2 or more days with photos.",
+     "For each run, open 1-2 photos per day and read the location (EXIF GPS or what Google Photos shows). Keep the run only if it is more than 60 miles from where Joseph lived then (Michigan until 2016, the Los Angeles area 2016-2024, Frazier Park after).",
+     "Write each trip as one row: first and last day, places in order, photo count from the file list, 2 file ids per place as evidence, sure or from pictures only.",
+     "If a year has no trip, add a row for it with places 'none' so Claude knows you looked."
+    ],
+    "make": "odyssey_gemini_more-trips_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array (not an object around it), one object per trip or per empty year, oldest first, exactly the fields below",
+    "done": "Every year 2008-2026 has either its trips or a 'none' row, counted from the folder's own file list.",
+    "checks": [
+     "Claude opens 10 evidence ids at random and checks the place and date."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-14",
+   "title": "Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos)",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 13,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your city cards (ODY-GEM-10) cover the Europe and Philippines stops. The ten trips now on record add 13 places with no card.",
+    "steps": [
+     "For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words."
+    ],
+    "make": "odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per stop code",
+    "done": "13 cards, one per code above, every number sourced.",
+    "checks": [
+     "Claude opens 10 rows at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-15",
+   "title": "Odyssey: the landmarks Joseph photographed on the ten trips found in his photos, with official facts",
+   "status": "todo",
+   "due": "2026-12-07",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your 65 landmarks cover Europe and the Philippines. The ten trips now on record (Atlanta Oct 2015; Big Sur and San Francisco Jun 2018; Sequoia and Kings Canyon Aug 2018; Las Vegas and Hoover Dam Jun 2019; Mazatlán and Puerto Vallarta Aug 2019; San Francisco and Fort Bragg Mar 2021; San Diego Apr 2022; Detroit Jun 2022; Mammoth Lakes Sep 2022; Detroit May 2023) have none, so their map dots open on nothing.",
+    "steps": [
+     "From the photos of those ten trips, list every landmark that appears in one (a named place: a monument, a park feature, a bridge, a building, a beach).",
+     "For each: coordinates, Wikidata id, the year it was built or established, the official page (NPS, the city, the state, the site itself) and one fact quoted word for word from that page.",
+     "Name the photo (Drive file id) it appears in."
+    ],
+    "make": "odyssey_gemini_landmarks-usa_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array of 20+ objects, exactly the fields below",
+    "done": "20+ landmarks from the ten trips, each with its photo and a quoted official fact.",
+    "checks": [
+     "Claude opens 6 rows at random against their pages and 4 photos."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-16",
+   "title": "Odyssey: the ten photo trips day by day",
+   "status": "todo",
+   "due": "2026-12-07",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your day-by-day files for the Eurotrip and the Philippines were the best work of the run (they caught a wrong date and four missing day trips). The ten new trips (Atlanta Oct 2015; Big Sur and San Francisco Jun 2018; Sequoia and Kings Canyon Aug 2018; Las Vegas and Hoover Dam Jun 2019; Mazatlán and Puerto Vallarta Aug 2019; San Francisco and Fort Bragg Mar 2021; San Diego Apr 2022; Detroit Jun 2022; Mammoth Lakes Sep 2022; Detroit May 2023) have one line each.",
+    "steps": [
+     "For every day of each trip with photos: the town, the places in order, first and last photo time in local time, how many photos, 2 Drive file ids as evidence.",
+     "Where your trips file and the photos disagree (a day earlier or later, a place missing), say so in 'disagrees'."
+    ],
+    "make": "odyssey_gemini_photo-trip-days_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per day, in order",
+    "done": "Every day with photos on all ten trips.",
+    "checks": [
+     "Claude opens 6 evidence photos and compares the times with the file names."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-17",
+   "title": "Odyssey: a card for each national park Joseph has been to (NPS facts)",
+   "status": "todo",
+   "due": "2026-12-07",
+   "items": 5,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "His photos put him in Sequoia, Kings Canyon, Joshua Tree and Death Valley (and Hoover Dam sits in Lake Mead National Recreation Area). Odyssey's atlas can show the parks he has been to.",
+    "steps": [
+     "For each of the five: when it was established, its area, the latest official yearly visits (year and number), the highest and lowest points, and one fact quoted from nps.gov."
+    ],
+    "make": "odyssey_gemini_parks_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array of 5 objects",
+    "done": "All five, every number from nps.gov.",
+    "checks": [
+     "Claude opens every row's page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Odyssey",
    "pid": "odyssey",
    "id": "ODY-GRK-02",
    "title": "Odyssey: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8359,11 +8525,11 @@
    "pid": "odyssey",
    "id": "ODY-MUS-03",
    "title": "Odyssey: second reader on Gemini's 'a city card for each of the 27 trip stops'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-28",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8831,11 +8997,11 @@
    "pid": "privacy",
    "id": "PRI-GRK-04",
    "title": "Privacy: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8960,11 +9126,11 @@
    "pid": "privacy",
    "id": "PRI-MUS-04",
    "title": "Privacy: second reader on Gemini's 'which of the 72 brokers are on California's Data Broker Registry'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-28",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8992,11 +9158,11 @@
    "pid": "privacy",
    "id": "PRI-MUS-05",
    "title": "Privacy: second reader on Gemini's the opt-out steps for the 13 brokers DROP misses and the Windows and Microsoft account settings",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-29",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9024,11 +9190,11 @@
    "pid": "privacy",
    "id": "PRI-MUS-06",
    "title": "Privacy: second reader on Gemini's the Galaxy S24 Ultra hardening settings and each service's strongest sign-in",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-01",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9529,11 +9695,11 @@
    "pid": "argus",
    "id": "ARG-MUS-04",
    "title": "Argus: second reader on Gemini's Phase 2 coin photo rules and its phone-metadata list",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-03",
    "items": 12,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9593,11 +9759,11 @@
    "pid": "argus",
    "id": "ARG-GRK-03",
    "title": "Argus Album: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9877,11 +10043,11 @@
    "pid": "games",
    "id": "GAM-GRK-02",
    "title": "Ludus Arcade: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9910,11 +10076,11 @@
    "pid": "games",
    "id": "GAM-MUS-01",
    "title": "Games: second reader on Gemini's Anno 117's updates, hotfixes and roadmap",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-01",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10095,6 +10261,38 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Forge",
+   "pid": "forge",
+   "id": "FOR-GEM-06",
+   "title": "Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "On Nov 23 Claude found nine of your Nov 21 files (the Odyssey photo work and both coin-photo tests) that the Forge still showed as 'to do' two days later: the Forge reads GitHub, not Drive, and your DONE_ markers sit in Drive.",
+    "steps": [
+     "List every DONE_ marker: its name, its folder, its date, and the file it points to.",
+     "For each, the task's state on the Forge today (to do, delivered, done, withdrawn).",
+     "Flag every one where Drive says done but the Forge says to do."
+    ],
+    "make": "forge_gemini_done-markers_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per marker",
+    "done": "Every marker listed.",
+    "checks": [
+     "Claude searches Drive for the same markers and compares the counts."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/forge/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Forge",
@@ -10133,11 +10331,11 @@
    "pid": "forge",
    "id": "FOR-GRK-02",
    "title": "Forge: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10386,11 +10584,11 @@
    "pid": "foundry",
    "id": "FDY-GRK-03",
    "title": "Foundry: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10451,11 +10649,11 @@
    "pid": "foundry",
    "id": "FDY-MUS-02",
    "title": "Foundry: second reader on Gemini's the stage-1 parts lists",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-03",
    "items": 17,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10704,11 +10902,11 @@
    "pid": "observatory",
    "id": "OBS-GRK-03",
    "title": "Observatory: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10769,11 +10967,11 @@
    "pid": "observatory",
    "id": "OBS-MUS-02",
    "title": "Observatory: second reader on Gemini's the 22 primary feeds",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-03",
    "items": 17,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10991,11 +11189,11 @@
    "pid": "kin",
    "id": "KIN-GRK-02",
    "title": "Kin: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -11056,11 +11254,11 @@
    "pid": "kin",
    "id": "KIN-GPT-01",
    "title": "Kin: phone audit: 15 findings",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-24",
    "items": 15,
    "closed": "",
-   "review": "",
+   "review": "Parked 2026-11-23 (Claude): Joseph relies on Gemini from now on; HUB-GEM-16 covers the audit by reading each pillar's code.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -11560,11 +11758,11 @@
    "pid": "aether",
    "id": "AET-GRK-03",
    "title": "Aether: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -11657,11 +11855,11 @@
    "pid": "aether",
    "id": "AET-MUS-03",
    "title": "Aether: second reader on Gemini's 'SCE power shut-offs that reached the mountain, 2019-2026'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-28",
    "items": 13,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -11689,11 +11887,11 @@
    "pid": "aether",
    "id": "AET-MUS-04",
    "title": "Aether: second reader on Gemini's SCE's fall 2026 shut-offs for the circuits that serve Frazier Park",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-29",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12067,11 +12265,11 @@
    "pid": "polis",
    "id": "POL-GRK-03",
    "title": "Polis: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12164,11 +12362,11 @@
    "pid": "polis",
    "id": "POL-MUS-03",
    "title": "Polis: second reader on Gemini's the Board of Supervisors' 2026 mountain decisions",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-02",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12355,11 +12553,11 @@
    "pid": "mythos",
    "id": "MYT-GRK-02",
    "title": "Mythos: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12669,11 +12867,11 @@
    "pid": "continuity",
    "id": "CON-GRK-03",
    "title": "Continuity: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12702,11 +12900,11 @@
    "pid": "continuity",
    "id": "CON-GRK-04",
    "title": "Continuity: second reader on the three account policies nobody could open (TikTok, Vanguard, Robinhood)",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-24",
    "items": 3,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Moved 2026-11-23 to Muse's one-pass check (HUB-MUS-05): Grok is being phased out.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12765,11 +12963,11 @@
    "pid": "continuity",
    "id": "CON-MUS-02",
    "title": "Continuity: second reader on Gemini's 'California small-estate and transfer-on-death rules'",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-28",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12797,11 +12995,11 @@
    "pid": "continuity",
    "id": "CON-MUS-03",
    "title": "Continuity: second reader on Gemini's the Kern County recording checklist",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-30",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13345,11 +13543,11 @@
    "pid": "midas",
    "id": "MID-GRK-04",
    "title": "Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan'",
-   "status": "queued",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month). Claude reads the spec against the code when it builds.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13506,11 +13704,11 @@
    "pid": "midas",
    "id": "MID-GPT-01",
    "title": "Audit Midas v2 on the made-up book: 20 findings",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-14",
    "items": 20,
    "closed": "",
-   "review": "",
+   "review": "Parked 2026-11-23 (Claude): Joseph relies on Gemini from now on.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13528,7 +13726,7 @@
     ],
     "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_chatgpt.md"
    },
-   "late": true
+   "late": false
   },
   {
    "ai": "Claude",
@@ -13608,204 +13806,6 @@
    "late": false
   },
   {
-   "ai": "Grok",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-grok-value-20261115-1",
-   "title": "Price coins with a dated source · 1 item",
-   "status": "todo",
-   "due": "2026-11-25",
-   "items": 1,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_grok_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-grok-value-20261115-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_grok.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Grok",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-grok-research-20261118-1",
-   "title": "Research open questions · 1 item",
-   "status": "todo",
-   "due": "2026-11-28",
-   "items": 1,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_grok_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-grok-research-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_grok.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Grok",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-grok-arbitrate-20261118-1",
-   "title": "Third reader on disagreements · 15 items",
-   "status": "todo",
-   "due": "2026-11-25",
-   "items": 15,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_grok_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-grok-arbitrate-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_grok.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Grok",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-grok-arbitrate-20261118-2",
-   "title": "Third reader on disagreements · 2 items",
-   "status": "todo",
-   "due": "2026-11-25",
-   "items": 2,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_grok_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-grok-arbitrate-20261118-2.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_grok.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Grok",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-grok-verify-20261118-1",
-   "title": "Verify facts others wrote · 25 items",
-   "status": "todo",
-   "due": "2026-11-25",
-   "items": 25,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_grok_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-grok-verify-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_grok.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Grok",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-grok-arbitrate-20261119-1",
-   "title": "Third reader on disagreements · 2 items",
-   "status": "todo",
-   "due": "2026-11-26",
-   "items": 2,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_grok_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-grok-arbitrate-20261119-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_grok.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-fill-20261118-1",
-   "title": "Fill Phase 2 facts · 9 items",
-   "status": "todo",
-   "due": "2026-11-28",
-   "items": 9,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-fill-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-cite-20261118-1",
-   "title": "Cite catalogue facts · 9 items",
-   "status": "todo",
-   "due": "2026-11-25",
-   "items": 9,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-cite-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-arbitrate-20261118-1",
-   "title": "Third reader on disagreements · 3 items",
-   "status": "todo",
-   "due": "2026-11-25",
-   "items": 3,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-arbitrate-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
    "ai": "Muse",
    "src": "titan",
    "where": "Titan",
@@ -13823,204 +13823,6 @@
     "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
     "folder": "Titan Reliquary/collection-incoming (AI change files)/",
     "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261118-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-verify-20261119-1",
-   "title": "Verify facts others wrote · 17 items",
-   "status": "todo",
-   "due": "2026-11-26",
-   "items": 17,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261119-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-arbitrate-20261119-1",
-   "title": "Third reader on disagreements · 8 items",
-   "status": "todo",
-   "due": "2026-11-26",
-   "items": 8,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-arbitrate-20261119-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-verify-20261119-2",
-   "title": "Verify facts others wrote · 9 items",
-   "status": "todo",
-   "due": "2026-11-26",
-   "items": 9,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261119-2.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-verify-20261119-3",
-   "title": "Verify facts others wrote · 8 items",
-   "status": "todo",
-   "due": "2026-11-26",
-   "items": 8,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261119-3.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-verify-20261121-1",
-   "title": "Verify facts others wrote · 1 item",
-   "status": "todo",
-   "due": "2026-11-28",
-   "items": 1,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261121-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-story-check-20261121-1",
-   "title": "Fact-check stories · 1 item",
-   "status": "todo",
-   "due": "2026-11-28",
-   "items": 1,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-story-check-20261121-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-verify-20261121-2",
-   "title": "Verify facts others wrote · 2 items",
-   "status": "todo",
-   "due": "2026-11-28",
-   "items": 2,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261121-2.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-verify-20261122-1",
-   "title": "Verify facts others wrote · 80 items",
-   "status": "todo",
-   "due": "2026-11-29",
-   "items": 80,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261122-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-verify-20261122-2",
-   "title": "Verify facts others wrote · 4 items",
-   "status": "todo",
-   "due": "2026-11-29",
-   "items": 4,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-verify-20261122-2.jsonl",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
    },
    "late": false
@@ -14065,50 +13867,6 @@
     "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
     "folder": "Titan Reliquary/collection-incoming (AI change files)/",
     "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-arbitrate-20261122-2.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-cite-20261123-1",
-   "title": "Cite catalogue facts · 1 item",
-   "status": "todo",
-   "due": "2026-11-30",
-   "items": 1,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-cite-20261123-1.jsonl",
-    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
-   },
-   "late": false
-  },
-  {
-   "ai": "Muse",
-   "src": "titan",
-   "where": "Titan",
-   "pid": "titan",
-   "id": "HW-muse-story-check-20261123-1",
-   "title": "Fact-check stories · 5 items",
-   "status": "todo",
-   "due": "2026-11-30",
-   "items": 5,
-   "closed": "",
-   "review": "",
-   "delivered": null,
-   "detail": {
-    "why": "Generated by Titan's research loop from a gap in the collection data.",
-    "make": "changes_muse_{YYYYMMDD-HHMM}.jsonl (the answer sheet, filled)",
-    "folder": "Titan Reliquary/collection-incoming (AI change files)/",
-    "sheet": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/homework/sheets/HW-muse-story-check-20261123-1.jsonl",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
    },
    "late": false
@@ -14165,12 +13923,12 @@
    "id": "T-grok-14",
    "alias": "",
    "title": "FIRST: one studio-quality instrumental recording each for Obsidian Sun, The Alchemist, Clay Diorama and Sahel Futurism",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): the Titan app is paused, and Grok is being phased out (Joseph cancels it in about a month). If Joseph restarts the app this goes to Gemini.",
    "delivered": null,
    "detail": {
     "what": "Your sound-hunt music picks did well (row 42: four are in the app now, and every problem in the rest was one you had flagged yourself). Four themes still need a recording of their own that sounds like a good record, not a field recording: OBSIDIAN SUN (Mesoamerican: marimba, pre-Columbian flutes or percussion, a modern concert or studio recording; the composition must be out of copyright: traditional, or a composer who died before 1955), THE ALCHEMIST (Renaissance or early Baroque, instrumental only: lute, viol consort, recorder consort, harpsichord; Dowland's or Holborne's dances, Byrd, Gibbons; no singing), CLAY DIORAMA (playful and small: Tchaikovsky's Nutcracker Sugar Plum Fairy or Dance of the Reed Flutes, a celesta or music-box-like real instrument, a real orchestra or ensemble), SAHEL FUTURISM (a studio or concert kora, traditional piece, no market or street noise under it). For each: up to 3 candidates, best first, on Wikimedia Commons or archive.org only, licence CC0, Public Domain (mark) or CC BY / BY-SA (never NC or ND), the performer named on the page, recorded after 1950, no vocals, 2 to 8 minutes. Quote the licence and the page's description; say if you could not hear it.",
@@ -14231,12 +13989,12 @@
    "id": "T-grok-10",
    "alias": "",
    "title": "Sound hunt: music and room sounds for your 17 themes (24 pieces of music, 85 field recordings)",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): the Titan app is paused, and Grok is being phased out (Joseph cancels it in about a month). If Joseph restarts the app this goes to Gemini.",
    "delivered": null,
    "detail": {
     "what": "Every theme is getting its own room (a second space to be in the theme away from the collection) with its own soundscape, and more of its own recorded music. Your 17 themes are under agents.grok in https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/sound_hunt_20261029.json: for each, its mood, the music it already plays (music_have: never send those), how many more pieces it needs (music_needed) and the five sounds its room needs (field_needed: bed-1, bed-2 = long steady sounds; detail-1..3 = short events). Rules and the exact file shape: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/SOUND_HUNT.md (real recordings only: a microphone in a real place, or named people playing real instruments; a licence stated on the file's own page, quoted word for word: public domain, CC0, CC BY or CC BY-SA; Wikimedia Commons first, then NASA, NOAA, the US National Park Service sound gallery, the US military bands, Musopen, archive.org; never MIDI, synthesizer, virtual instrument, AI audio, Pixabay, Freesound, YouTube or BBC Sound Effects). Save sound_grok_{YYYYMMDD-HHMM}.json in Drive 'Titan Reliquary/sound-incoming (AI music + field recording finds)/'; save again every 10 finds under the same name; list every slot you could not fill in not_found with what you searched.",
@@ -14253,12 +14011,12 @@
    "id": "T-grok-11",
    "alias": "",
    "title": "Replace the 45 ambience sounds of unknown licence with recordings whose licence is on their own page",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): the Titan app is paused, and Grok is being phased out (Joseph cancels it in about a month). If Joseph restarts the app this goes to Gemini.",
    "delivered": null,
    "detail": {
     "what": "Every ambience sound the app plays today is an excerpt from the Moodist pack, whose licence is 'CC0 or Pixabay' with no per-file record (https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/audio/ambience/CREDITS.md). moodist_replace in https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/sound_hunt_20261029.json lists all 45 (id, bed or one-shots, the Moodist file it came from). For each, find a recording of the same kind (rain on a window for rainWindow, a ticking clock for clock, ...) under the rules of SOUND_HUNT.md, at least 60 s for a bed. Put them in the same sound_grok_{YYYYMMDD-HHMM}.json under 'replace' (one or two finds per id, best first), saved in Drive 'Titan Reliquary/sound-incoming (AI music + field recording finds)/'.",
@@ -14319,12 +14077,12 @@
    "id": "T-grok-6",
    "alias": "",
    "title": "UI rethink, step 2: The Field's three filters, on the real data",
-   "status": "queued",
+   "status": "withdrawn",
    "due": "",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): the Titan app is paused, and Grok is being phased out (Joseph cancels it in about a month). If Joseph restarts the app this goes to Gemini.",
    "delivered": null,
    "detail": {
     "what": "Your Field prototype is live at https://jpavia10.github.io/titan-reliquary-preview/prototypes/v2/grok/ (scored 9; it ran first time on the current data). Build the three filters your proposal promises, in the same single file: (1) album: choosing an album family (../../../data/wants.json) shows its holes as empty rings in the rows; tapping a ring shows the want-list entry with its price and source; (2) metal: silver and gold light up, the rest dims; (3) to photograph: the coins without a phone photo rise. Then measure ?fps for open, back and drag the same way as before. Same hard rules (live data only, 16 px, 44 px, Motion Full/Calm/Off, pause when hidden). Send design_grok_{YYYYMMDD-HHMM}_field-v2.html plus a short .md of what changed to Drive 'design-incoming (AI UI proposals)'. (Later: the owner asked to wait on the redesign while you upgrade the themes, 2026-10-20.)",
@@ -14385,12 +14143,12 @@
    "id": "T-grok-3",
    "alias": "",
    "title": "Splash film: Coinverse 16:9 again, plain coins (only when Joseph says the credits allow)",
-   "status": "queued",
+   "status": "withdrawn",
    "due": "",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): the Titan app is paused, and Grok is being phased out (Joseph cancels it in about a month). If Joseph restarts the app this goes to Gemini.",
    "delivered": null,
    "detail": {
     "what": "Nine of your v5 clips are live (fractal, cathedral, coin rain, two forge takes and the hoard for phones; hoard, cathedral and forge for desktop). splash5_coinverse_16x9 was left out: its coins carry the Bitcoin symbol, and the brief says no text or brands. One clip, the same Coinverse beats, plain coins with no symbols, ending with THE LANDING; save it before starting anything else (ART_START_HERE).",
@@ -14407,12 +14165,12 @@
    "id": "T-grok-4",
    "alias": "",
    "title": "Music: a recording for each of the 3 held pieces",
-   "status": "queued",
+   "status": "withdrawn",
    "due": "",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): the Titan app is paused, and Grok is being phased out (Joseph cancels it in about a month). If Joseph restarts the app this goes to Gemini.",
    "delivered": null,
    "detail": {
     "what": "Held in docs/music/wanted.json: Elgar Nimrod, Debussy Rêverie (only a saxophone arrangement found so far), Satie Gymnopédie 3 on piano (the search keeps finding No. 1). Handel's Largo is done: Lea Desandre with Les Arts Florissants (CC BY 3.0) is live since 2026-10-09. For each held piece, find one Wikimedia Commons file that is a real performance of exactly that piece (not a synth or MIDI render), public domain or CC BY / CC BY-SA, with the performer named; give the exact Commons file title, the license and the performer, the same way as your 2026-10-08 music check. Save it as music_grok_{YYYYMMDD-HHMM}.json in Drive 'music-requests'.",
@@ -14429,12 +14187,12 @@
    "id": "T-grok-5",
    "alias": "",
    "title": "Read new coin photos (with Muse, blind)",
-   "status": "queued",
+   "status": "withdrawn",
    "due": "",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out; Muse and Gemini read new coin photos blind.",
    "delivered": null,
    "detail": {
     "what": "Whenever NOID photos appear in STAGING: Phase 1 change file per AI_START_HERE, without looking at Muse's read first (AI_START_HERE 2b).",
@@ -14451,19 +14209,19 @@
    "id": "T-grok-16",
    "alias": "GT-REVIEW",
    "title": "Third reader: settle the 25 facts under question",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-20",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out. Claude settles these as the default third reader (RESEARCH_LOOP.md).",
    "delivered": null,
    "detail": {
     "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-review-facts.json (14 years, 4 mints, 4 catalog numbers, 2 designs, 1 mintage). For each, read the coin's photo or the catalogue and send the value with its source. Skip any where you are one of the two sides (the file says who). Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-REVIEW'.",
     "done": "All 25 answered or skipped with the reason; Claude closes each disagreement.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_grok.md"
    },
-   "late": true
+   "late": false
   },
   {
    "ai": "Grok",
@@ -14473,12 +14231,12 @@
    "id": "T-grok-17",
    "alias": "GT-SPOT-AIFACTS",
    "title": "Spot-check Gemini's AI-facts replacements (both parts)",
-   "status": "queued",
+   "status": "withdrawn",
    "due": "2026-11-25",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Moved 2026-11-23 to Muse (task 15): Grok is being phased out.",
    "delivered": null,
    "detail": {
     "what": "When Gemini's GT-AIFACTS files are in the drop folder, open 20 of its lines at random, open the source it names, and say agree or what the page actually says. Never send new facts here: only agree/differ lines. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SPOT-AIFACTS'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-17T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"type\",\"id\":\"MX.KM.433\",\"field\":\"design.text\",\"old\":null,\"new\":\"<the catalogue wording>\",\"source\":\"Numista N#1234 https://en.numista.com/catalogue/pieces1234.html, Obverse/Reverse description\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"https://en.numista.com/catalogue/pieces1234.html\"}],\"run_id\":\"GT-AIFACTS-p1\"}} Before you save: every source names the exact catalogue entry (Numista N# with URL, or KM# with book and page) and the row you read; design text is the catalogue's wording, not yours; mintages are for that year and mint only.",
@@ -14495,12 +14253,12 @@
    "id": "T-grok-18",
    "alias": "GT-SPOT-SECOND",
    "title": "Spot-check Gemini's second sources, parts 1-3",
-   "status": "queued",
+   "status": "withdrawn",
    "due": "2026-11-27",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Moved 2026-11-23 to Muse (task 15): Grok is being phased out.",
    "delivered": null,
    "detail": {
     "what": "When Gemini's GT-SECOND-p1..p3 files are in, open 30 lines at random (10 per part), open each source, and say agree or what the page says. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SPOT-SECOND'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-17T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C150\",\"field\":\"value.usd\",\"old\":null,\"new\":4.5,\"source\":\"PCGS Price Guide https://www.pcgs.com/pcgsprice/... row 1964 25C VF-20, read 2026-11-17; grade from photo C150_obv.webp\",\"verified\":false,\"phase\":2,\"confidence\":\"med\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C150_obv.webp\"}],\"run_id\":\"GT-SECOND-p1\"}} Before you save: the source differs from the one already on record (the item lists it as 'source' when known); values carry the grade you assumed and the date you read the price; stories: one line per wrong sentence with the correction, or new = old with 'agree' when it all holds.",
@@ -14517,12 +14275,12 @@
    "id": "T-grok-19",
    "alias": "GT-REVIEW-D0164",
    "title": "Third reader: settle the disagreements D0164-D0199 (privy marks and design texts)",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-11-24",
    "items": 0,
-   "closed": "",
+   "closed": "2026-11-23",
    "reopened": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out. Claude settles D0164-D0199 as the default third reader.",
    "delivered": null,
    "detail": {
     "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/collection/disagreements.jsonl and take the rows D0164 to D0199 (filed at the 2026-11-18 intake: mostly mint/privy marks Gemini and Muse each read blind on coins whose record has none, e.g. C004 caduceus and grapes, C007 owl, C032 BP; and design texts). You are the third reader: neither earlier reader was you. For each row, look at the coin's photo (Drive 'Titan Reliquary/photos/', by coin id) or the catalogue entry named in the row, and say which value is right. Save as changes_grok_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), one line per row: the field and the value you find, \"source\" naming the photo or the catalogue row, provenance.run_id 'GT-REVIEW-D0164'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-19T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C004\",\"field\":\"issue.mint_marks\",\"new\":[\"caduceus\",\"bunch of grapes\"],\"source\":\"photo C004_obv.webp: caduceus left of the date, grapes right, read at full zoom\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"run_id\":\"GT-REVIEW-D0164\"}}. When done, edit forge-completions.json in place (key T-grok-19).",
@@ -14692,7 +14450,7 @@
    "pid": "titan",
    "id": "T-muse-6",
    "alias": "",
-   "title": "Read new coin photos (with Grok, blind)",
+   "title": "Read new coin photos (with Gemini, blind)",
    "status": "queued",
    "due": "",
    "items": 0,
@@ -14701,7 +14459,7 @@
    "review": "",
    "delivered": null,
    "detail": {
-    "what": "Whenever NOID photos appear in STAGING: Phase 1 change file per AI_START_HERE, without looking at Grok's read first (AI_START_HERE 2b).",
+    "what": "Whenever NOID photos appear in STAGING: Phase 1 change file per AI_START_HERE, without looking at Gemini's read first (AI_START_HERE 2b).",
     "done": "Ongoing.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
    },
@@ -14767,8 +14525,30 @@
    "review": "",
    "delivered": null,
    "detail": {
-    "what": "Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-photo-facts.json, the 67 items with \"for\": \"muse\". Each fact rests on one photo read or one AI guess today. For each: look at the coin's photo yourself first (blind: no current value is given), then find the catalogue row that names that year and that mint (Numista N# URL with the issue row you read, or KM# with book and page). Mint: the letter or mark you see and the row that lists it for that year. Year: the date you read and the row. Mintage: the number for that year and mint only. Story: check every sentence, agree or say what is wrong. Value: a dated price page and the grade you assumed. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-photo-m1'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C011\",\"field\":\"mint\",\"old\":null,\"new\":\"R\",\"source\":\"photo C011_rev.webp (R below L.50) + Numista N#1234 https://en.numista.com/catalogue/pieces1234.html, issue row 1970 R\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C011_rev.webp\"}],\"run_id\":\"GT-SECOND-photo-m1\"}} Before you save: provenance.inputs are objects ({\"file\": ...}), never bare URLs; one line per item; when the photo does not show the mark or no catalogue row names that year and mint, send the line with new = null and say why in source (never guess).",
-    "done": "All 67 items answered (a confirmed value with its row, or null with the reason); Claude spot-checks 10.",
+    "what": "MODEST LOAD (2026-11-23): do the first 25 items in file order only; leave the rest. Open https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/projects/titan-photo-facts.json, the 67 items with \"for\": \"muse\". Each fact rests on one photo read or one AI guess today. For each: look at the coin's photo yourself first (blind: no current value is given), then find the catalogue row that names that year and that mint (Numista N# URL with the issue row you read, or KM# with book and page). Mint: the letter or mark you see and the row that lists it for that year. Year: the date you read and the row. Mintage: the number for that year and mint only. Story: check every sentence, agree or say what is wrong. Value: a dated price page and the grade you assumed. Save as changes_{you}_{YYYYMMDD-HHMM}.jsonl in Drive 'Titan Reliquary/collection-incoming (AI change files)/' (AI_START_HERE), provenance on every line with run_id 'GT-SECOND-photo-m1'. Exactly one line per item, in this form (an example, use your own data): {\"ts\":\"2026-11-21T10:00:00Z\",\"by\":\"model:<your exact model>\",\"entity\":\"specimen\",\"id\":\"C011\",\"field\":\"mint\",\"old\":null,\"new\":\"R\",\"source\":\"photo C011_rev.webp (R below L.50) + Numista N#1234 https://en.numista.com/catalogue/pieces1234.html, issue row 1970 R\",\"verified\":false,\"phase\":2,\"confidence\":\"high\",\"provenance\":{\"model\":\"<your exact model>\",\"prompt_version\":\"AI_START_HERE@2026-11-16\",\"workflow\":\"phase2-research\",\"inputs\":[{\"file\":\"C011_rev.webp\"}],\"run_id\":\"GT-SECOND-photo-m1\"}} Before you save: provenance.inputs are objects ({\"file\": ...}), never bare URLs; one line per item; when the photo does not show the mark or no catalogue row names that year and mint, send the line with new = null and say why in source (never guess).",
+    "done": "The first 25 items answered (the other 42 stay for later).",
+    "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "tproj",
+   "where": "Titan",
+   "pid": "titan",
+   "id": "T-muse-15",
+   "alias": "GT-SPOT-GEMINI",
+   "title": "Spot-check 20 of Gemini's lines: 10 AI-fact replacements and 10 second sources",
+   "status": "todo",
+   "due": "2026-12-07",
+   "items": 0,
+   "closed": "",
+   "reopened": "",
+   "review": "",
+   "delivered": null,
+   "detail": {
+    "what": "Grok's two spot-checks, folded into one small one (Grok is being phased out). Open Gemini's change files in Drive 'Titan Reliquary/collection-incoming (AI change files)/' whose lines carry run_id GT-AIFACTS (pick 10 lines at random) and GT-SECOND (pick 10 at random). For each, open the source the line names and say agree, or what the page actually says. Never send new facts here: only agree/differ lines. Save as changes_muse_{YYYYMMDD-HHMM}.jsonl in the same folder, provenance on every line with run_id 'GT-SPOT-GEMINI'; same line form as your other change files (AI_START_HERE): entity, id and field of Gemini's line, new = the value the page shows, source = the page and the row you read.",
+    "done": "20 lines, each agree or differ with the page's own value.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_muse.md"
    },
    "late": false
@@ -15176,7 +14956,7 @@
    "pid": "titan",
    "id": "T-gemini-1",
    "alias": "",
-   "title": "Read new coin photos as the third blind reader",
+   "title": "Read new coin photos as a blind reader (with Muse)",
    "status": "queued",
    "due": "",
    "items": 0,
@@ -15185,7 +14965,7 @@
    "review": "",
    "delivered": null,
    "detail": {
-    "what": "Whenever NOID photos appear in Drive STAGING, write a Phase 1 change file for them per AI_START_HERE (section 2b), without looking at Grok's or Muse's reads first.",
+    "what": "Whenever NOID photos appear in Drive STAGING, write a Phase 1 change file for them per AI_START_HERE (section 2b), without looking at Muse's read first.",
     "done": "Ongoing.",
     "link": "https://github.com/jpavia10/titan-reliquary-preview/blob/main/docs/agents/QUEUE_gemini.md"
    },
@@ -18963,6 +18743,87 @@
    "task": "ARG-GEM-09",
    "where": "Prometheus Hub",
    "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 126,
+   "date": "2026-11-23",
+   "what": "odyssey_gemini_trips-from-photos_20261121-0758.json",
+   "task": "ODY-GEM-05",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 127,
+   "date": "2026-11-23",
+   "what": "odyssey_gemini_usa-from-photos_20261121-0758.json",
+   "task": "ODY-GEM-06",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 128,
+   "date": "2026-11-23",
+   "what": "odyssey_gemini_eurotrip-days_20261121-0809.json",
+   "task": "ODY-GEM-07",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 129,
+   "date": "2026-11-23",
+   "what": "odyssey_gemini_philippines-days_20261121-0819.json",
+   "task": "ODY-GEM-08",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 130,
+   "date": "2026-11-23",
+   "what": "odyssey_gemini_landmarks_20261121-0147.json",
+   "task": "ODY-GEM-09",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 131,
+   "date": "2026-11-23",
+   "what": "odyssey_gemini_photo-info_20261121-0759.json",
+   "task": "ODY-GEM-11",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 132,
+   "date": "2026-11-23",
+   "what": "odyssey_gemini_photo-picks_20261121-0818.json",
+   "task": "ODY-GEM-12",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 133,
+   "date": "2026-11-23",
+   "what": "bakeoff_gemini_main_20261121-0137.json",
+   "task": "HUB-GEM-11",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 134,
+   "date": "2026-11-23",
+   "what": "bakeoff_gemini_locked_20261121-0137.json",
+   "task": "HUB-GEM-12",
+   "where": "Prometheus Hub",
+   "score": 9.0
   }
  ],
  "pending_scores": [

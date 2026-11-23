@@ -8,43 +8,42 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- MYT-GRK-02 · Mythos: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
-    make: mythos_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+No homework for Grok in Mythos · Creative & Lore Studio right now.
 
 ## Gemini
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Gemini in Mythos · Creative & Lore Studio right now.
 
 ## Muse
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Mythos · Creative & Lore Studio right now.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Mythos · Creative & Lore Studio right now.
 
 ## Argon
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Mythos · Creative & Lore Studio right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Mythos · Creative & Lore Studio right now.

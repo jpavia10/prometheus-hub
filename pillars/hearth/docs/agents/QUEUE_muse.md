@@ -2,57 +2,8 @@
 
 # Hephaestus Hearth · homework for Muse
 
-Updated 2026-11-22 03:36 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-23 16:11 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HEA-MUS-04 · Hearth: second reader on Gemini's Kern's deck design criteria and the deck cut list and fasteners
-
-**Due:** 2026-11-29 · **State:** now
-
-**Why:** Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.
-
-**What it unlocks:** Claude builds from the file only after this check.
-
-**Read first:**
-- Gemini's file hearth_gemini_kern-design-criteria_20261121-*.json (HEA-GEM-24: Kern's deck design criteria)
-- Gemini's file hearth_gemini_cut-list_20261121-*.json (HEA-GEM-25: the deck cut list and fasteners)
-
-**Do this:**
-1. Open Gemini's files. Pick 15 rows at random across the files (every row if fewer), and say how you picked them.
-2. For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).
-3. For the cut list, redo every 'math' field and check each fastener spacing against the page it cites.
-4. Add up to 5 rows Gemini missed, in Gemini's exact shape.
-
-**Make:** `hearth_muse_kern-snow-and-cut-list-check_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing`
-
-**Every field, exactly:**
-- `agree/differ` (agree or differ): differ needs what you found and where
-
-**One finished row, as an example (use your own data, never copy this):**
-
-```
-| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |
-```
-
-**Before you save, check every one of these yourself:**
-- [ ] Every differ line says where you looked.
-- [ ] You did not change Gemini's file.
-
-**How many:** 15
-
-**Done when:** Every picked item checked with where you looked.
-
-**How Claude checks it:**
-- Claude re-checks 3 of your differ lines.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
+No homework for Muse in Hephaestus Hearth right now. Check your HOMEWORK doc for the other pillars.

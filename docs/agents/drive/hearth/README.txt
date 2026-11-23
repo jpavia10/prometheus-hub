@@ -8,15 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- HEA-GRK-04 · Hephaestus Hearth: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
-    make: hearth_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+No homework for Grok in Hephaestus Hearth right now.
 
 ## Gemini
 
-Updated 2026-11-22 03:36 UTC · 3 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 3 open in this pillar.
 
 
 - HEA-GEM-26 · Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22) · due 2026-12-04
@@ -28,30 +27,28 @@ Updated 2026-11-22 03:36 UTC · 3 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- HEA-MUS-04 · Hearth: second reader on Gemini's Kern's deck design criteria and the deck cut list and fasteners · due 2026-11-29
-    make: hearth_muse_kern-snow-and-cut-list-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+No homework for Muse in Hephaestus Hearth right now.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- HEA-GPT-01 · Hephaestus Hearth: phone audit: 15 findings · due 2026-11-24
-    make: hearth_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json · how many: 15 · done when: 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
+No homework for ChatGPT in Hephaestus Hearth right now.
 
 ## Argon
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Hephaestus Hearth right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Hephaestus Hearth right now.

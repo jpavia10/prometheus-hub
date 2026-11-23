@@ -16,6 +16,7 @@ import json, math, sys, os
 REGIONS = [  # [west, south, east, north] in degrees, with room around the trips' stops; tol = simplification in degrees
     {"id": "europe", "bbox": [-16, 29, 36, 62], "tol": 0.035, "min_area": 0.004},
     {"id": "philippines", "bbox": [113, 3, 131, 22], "tol": 0.015, "min_area": 0.002},
+    {"id": "west", "bbox": [-128, 17, -103, 44], "tol": 0.03, "min_area": 0.004},  # 2026-11-23: California, Nevada and the Mexican Riviera trips from his photos
 ]
 
 def decode(topo):

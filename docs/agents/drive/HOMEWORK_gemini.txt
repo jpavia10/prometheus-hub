@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-22 03:36 UTC. 54 to do across 25 pillars.
+Updated 2026-11-23 16:11 UTC. 52 to do across 25 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -16,507 +16,52 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
-1. [Prometheus Hub] HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins) · due 2026-11-23
-2. [Prometheus Hub] HUB-GEM-12 · TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins) · due 2026-11-23
-3. [Odyssey · Trips & Away Mode] ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026 · due 2026-11-26
-4. [Odyssey · Trips & Away Mode] ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos) · due 2026-11-26
-5. [Odyssey · Trips & Away Mode] ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos · due 2026-11-26
-6. [Odyssey · Trips & Away Mode] ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos · due 2026-11-26
-7. [Odyssey · Trips & Away Mode] ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts · due 2026-11-26
-8. [Odyssey · Trips & Away Mode] ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app · due 2026-11-26
-9. [Odyssey · Trips & Away Mode] ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked · due 2026-11-26
-10. [Ludus Arcade] GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages · due 2026-11-27
-11. [Prometheus Hub] HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes · due 2026-12-01
-12. [Bossa Piano Studio] PIA-GEM-08 · Piano: the published key for the 24 Bossa Nova tunes still 'not stated' · due 2026-12-03
-13. [Hephaestus Hearth] HEA-GEM-26 · Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22) · due 2026-12-04
-14. [Money · payoff simulator] MON-GEM-06 · Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements · due 2026-12-04
-15. [Hermes Post] HER-GEM-11 · Hermes: the publication date of the 21 lures still 'not stated' · due 2026-12-04
-16. [Bastion · Mountain Prep] BAS-GEM-10 · Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman · due 2026-12-04
-17. [Argus Album] ARG-GEM-12 · Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default · due 2026-12-04
-18. [Forge] FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch · due 2026-12-04
-19. [Aether · Atmospheric & Field Lab] AET-GEM-13 · Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts) · due 2026-12-04
-20. [Aether · Atmospheric & Field Lab] AET-GEM-14 · Aether: every I-5 Grapevine (Tejon Pass) closure, winters 2020-21 to 2025-26 · due 2026-12-04
-21. [Hephaestus Hearth] HEA-GEM-27 · Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners) · due 2026-12-05
-22. [Garage] GAR-GEM-15 · Garage: fluid capacities and specs for both vehicles, from the owner's manuals · due 2026-12-05
-23. [Apollo Temple] APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving · due 2026-12-05
-24. [Selling Pipeline] SEL-GEM-08 · Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception · due 2026-12-05
-25. [Records · Paper Killer] REC-GEM-09 · Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates) · due 2026-12-05
-26. [Icarus Stake] ICA-GEM-13 · Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding · due 2026-12-05
-27. [Hermes Post] HER-GEM-12 · Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state) · due 2026-12-05
-28. [Bastion · Mountain Prep] BAS-GEM-11 · Bastion: every official alert channel for the area, how to sign up and what each sends · due 2026-12-05
-29. [Athenaeum · Idea Vault] ATH-GEM-05 · Athenaeum: a third source for the 14 history entries that differ or are debated · due 2026-12-05
-30. [Privacy · CA DROP] PRI-GEM-13 · Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice · due 2026-12-05
-31. [Aether · Atmospheric & Field Lab] AET-GEM-15 · Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026 · due 2026-12-05
-32. [Continuity · Sovereign Vault] CON-GEM-08 · Continuity: Kern County Superior Court's probate forms for a small estate and a spousal property petition · due 2026-12-05
-33. [Prometheus Hub] HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet · due 2026-12-06
-34. [Midas Ledger] MID-GEM-14 · Midas: 40 statement-line phrasings of promo and deferred-interest balances, from issuers' public sample statements · due 2026-12-06
-35. [Hephaestus Hearth] HEA-GEM-28 · Hearth: Kern County's building permit fees for the 23 x 10 ft deck · due 2026-12-06
-36. [Bastion · Mountain Prep] BAS-GEM-12 · Bastion: Kern County's defensible-space rules (Zone 0, 1 and 2) and the inspection · due 2026-12-06
-37. [Ludus Arcade] GAM-GEM-07 · Games: Anno 117's DLC and season pass, with contents and release dates · due 2026-12-06
-38. [Foundry] FDY-GEM-06 · Foundry: the power budget for each stage-1 build, from the parts' datasheets · due 2026-12-06
-39. [Observatory] OBS-GEM-06 · Observatory: official data endpoints (no key) for each of the 8 subjects · due 2026-12-06
-40. [Polis · Civic & Legal Watch] POL-GEM-09 · Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities · due 2026-12-06
-41. [Polis · Civic & Legal Watch] POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
-42. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-43. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
-44. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
-45. [Selling Pipeline] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
-
-==================== 1. PROMETHEUS HUB ====================
-## 1. HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins)
-
-**Due:** 2026-11-23 · **State:** now
-
-**What it unlocks:** If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.
-
-**Read first:**
-- https://drive.google.com/drive/folders/1J8GyMMRBMhpMXCZRaaKZf3xemV24gunZ (the same photos and PROMPT.md in Drive, added 2026-11-20 because raw GitHub images did not open in the Gemini app: open each photo here)
-- https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-main (the 30 photos, BK-xxxx.webp)
-- https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/PROMPT.md (the test's own prompt and answer format: follow it exactly)
-- each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-main/BK-xxxx.webp
-
-**Do this:**
-1. Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).
-2. Open each of the 30 photos at full size. Read the coin itself: legend, date, value, mint mark, design.
-3. Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.
-4. Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.
-5. Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report.
-
-**Make:** `bakeoff_{yourmodel}_main_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)
-
-**Shape:** `one JSON object keyed by the 30 file names without .webp, exactly as PROMPT.md shows`
-
-**Every field, exactly:**
-- `country` (text): issuing country in English, or null
-- `year` (text): Western year of the date on the shown side, or null
-- `denom` (text): value and unit as on the coin, or null
-- `mint` (text): mint mark letters; "" if the shown side has none; null if you cannot tell
-- `km` (text): Krause number without 'KM#', or null
-- `confidence` (text): high / med / low for the whole answer
-
-**Before you save, check every one of these yourself:**
-- [ ] All 30 keys, each with the six fields.
-- [ ] Every null is a real 'cannot tell', not a skipped photo.
-- [ ] Nothing came from the Titan repository's data or an earlier run.
-- [ ] Valid JSON, named exactly as asked.
-
-**How many:** 30
-
-**Done when:** All 30 answered and saved.
-
-**How Claude checks it:**
-- Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals.
-
-**Not done (sent back) if:** (and the rules at the top)
-- an answer that matches the record but not the photo (looked up)
-- fewer than the count
-- not the shape PROMPT.md asks for
-
-==================== 2. PROMETHEUS HUB ====================
-## 2. HUB-GEM-12 · TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins)
-
-**Due:** 2026-11-23 · **State:** now
-
-**What it unlocks:** If this model clears the bar, it does Titan's Phase 2 coin research (variety and catalogue numbers) instead of only checking facts.
-
-**Read first:**
-- https://drive.google.com/drive/folders/1E0w_bOzomSEZhwMmFzu10eEW-nPDC8vz (the same photos and PROMPT.md in Drive, added 2026-11-20 because raw GitHub images did not open in the Gemini app: open each photo here)
-- https://github.com/jpavia10/titan-reliquary-preview/tree/main/docs/bakeoff/pack-20261008-locked (the 15 photos, BK-xxxx.webp)
-- https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/PROMPT.md (the test's own prompt and answer format: follow it exactly)
-- each photo opens at https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/bakeoff/pack-20261008-locked/BK-xxxx.webp
-
-**Do this:**
-1. Read PROMPT.md and follow it word for word: it is the same prompt every model got (version BAKEOFF@2026-10-08).
-2. Open each of the 15 photos at full size. Read the coin itself: legend, date, value, mint mark, design.
-3. Blind means blind: do not open the Titan repository's data, its other photos, or any earlier answer to this test (yours included, in this chat's history or Drive). A looked-up answer scores as invalid. Numista, NGC and PCGS are allowed for the KM number only.
-4. Where you are not sure of a field, answer null. A confident wrong answer costs more than a blank.
-5. Save the JSON object PROMPT.md asks for; put your exact model name and version (as the app shows it) in the run report.
-
-**Make:** `bakeoff_{yourmodel}_locked_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Titan Reliquary/bakeoff (blind photo test)/ (https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_)
-
-**Shape:** `one JSON object keyed by the 15 file names without .webp, exactly as PROMPT.md shows`
-
-**Every field, exactly:**
-- `country` (text): issuing country in English, or null
-- `year` (text): Western year of the date on the shown side, or null
-- `denom` (text): value and unit as on the coin, or null
-- `mint` (text): mint mark letters; "" if the shown side has none; null if you cannot tell
-- `km` (text): Krause number without 'KM#', or null
-- `confidence` (text): high / med / low for the whole answer
-
-**Before you save, check every one of these yourself:**
-- [ ] All 15 keys, each with the six fields.
-- [ ] Every null is a real 'cannot tell', not a skipped photo.
-- [ ] Nothing came from the Titan repository's data or an earlier run.
-- [ ] Valid JSON, named exactly as asked.
-
-**How many:** 15
-
-**Done when:** All 15 answered and saved.
-
-**How Claude checks it:**
-- Claude scores it with tools/bakeoff/score.py against the sealed key (its sha256 is in tools/bakeoff/commitments.jsonl) and tells you only the totals.
-
-**Not done (sent back) if:** (and the rules at the top)
-- an answer that matches the record but not the photo (looked up)
-- fewer than the count
-- not the shape PROMPT.md asks for
-
-==================== 3. ODYSSEY · TRIPS & AWAY MODE ====================
-## 3. ODY-GEM-05 · Odyssey: every trip in Joseph's Google Photos, 2008-2026
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Odyssey adds each trip to the map and timeline, with its own photo journey once Claude picks the photos.
-
-**Read first:**
-- Drive folders named 'Photos from YYYY' (Google Takeout copies; years 2008-2026), e.g. Photos from 2015 = https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf, Photos from 2024 = https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2, and the same photos in Google Photos (its Info panel shows the date, time zone, camera and the place Google estimates).
-- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/ (the three trips already there: do not list them again except to correct them)
-
-**Do this:**
-1. Go year by year through Google Photos (the map view and each photo's Info panel). A trip is 2 or more days with photos taken more than 60 miles from home (Frazier Park, CA; before 2020 also the Los Angeles area and Michigan, where Joseph lived).
-2. For each trip: first and last photo date, the places in order (city, region, country) as Google Photos names them, how many photos, the Google Photos place shown for the first photo of each place, and 2 Drive file ids per place as evidence.
-3. Mark each trip 'sure' (Google shows a location on the photos) or 'from pictures only' (no location; you recognised the place: say what you recognised).
-
-**Make:** `odyssey_gemini_trips-from-photos_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per trip, oldest first, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `start` (date): first photo
-- `end` (date): last photo
-- `places` (text): in order: 'City, Region, Country; ...'
-- `photos` (integer): count
-- `evidence` (text): 2 Drive file ids per place, 'file id = place'
-- `certainty` (text): 'sure' or 'from pictures only: <what you recognised>'
-- `note` (text): anything odd (e.g. a gap of days with no photos)
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every trip 2008-2026 with its places, dates, counts and evidence ids.
-
-**How Claude checks it:**
-- Claude opens 10 evidence ids at random and checks the place and date.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 4. ODYSSEY · TRIPS & AWAY MODE ====================
-## 4. ODY-GEM-06 · Odyssey: Joseph's USA, state by state and city by city (from his photos)
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** A USA map in Odyssey: states visited, cities, first and last visit, how often.
-
-**Read first:**
-- Drive folders named 'Photos from YYYY' (Google Takeout copies; years 2008-2026), e.g. Photos from 2015 = https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf, Photos from 2024 = https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2, and the same photos in Google Photos (its Info panel shows the date, time zone, camera and the place Google estimates).
-
-**Do this:**
-1. List every US state with photos, and in each state every city or national park with 3+ photos, with first and last date and photo count.
-2. Leave out home (Frazier Park, Lebec, Gorman and the Tejon Pass towns) but count Los Angeles, Bakersfield and everywhere else.
-
-**Make:** `odyssey_gemini_usa-from-photos_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per city or park, grouped by state`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `state` (text): two-letter code
-- `place` (text): city or park as Google Photos names it
-- `first` (date): 
-- `last` (date): 
-- `photos` (integer): 
-- `visits` (integer): separate trips (a gap of 7+ days starts a new visit)
-- `evidence` (text): 2 Drive file ids
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every US place with 3+ photos, every state.
-
-**How Claude checks it:**
-- Claude opens 10 evidence ids at random.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 5. ODYSSEY · TRIPS & AWAY MODE ====================
-## 5. ODY-GEM-07 · Odyssey: the 2015 Eurotrip day by day, from the photos
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Each day of the journey shows where he was and what he saw; the map shows the real route.
-
-**Read first:**
-- Photos from 2015: https://drive.google.com/drive/folders/1NicGCum5-p4i4Wu9yDI1zw7lkTK2ElIf and https://drive.google.com/drive/folders/1ayg3f3PtX7FX3Fwys5U-avKvUzMW6uTo
-- The trip as Odyssey has it: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-eurotrip-2015)
-
-**Do this:**
-1. One row per calendar day with photos, July to September 2015: the city, every place photographed (landmark, museum, street, beach, viewpoint), first and last photo time (local time, say the zone), photo count, 2 Drive ids.
-2. Where the photos disagree with Odyssey's legs (a different city or date), say so in disagrees.
-
-**Make:** `odyssey_gemini_eurotrip-days_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per day, in order`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `date` (date): 
-- `city` (text): 
-- `places` (text): every place photographed that day, as on the place's own sign or official site
-- `first_time` (text): HH:MM zone
-- `last_time` (text): HH:MM zone
-- `photos` (integer): 
-- `evidence` (text): 2 Drive ids
-- `disagrees` (text): '' or what Odyssey has wrong
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every day with photos, July-September 2015.
-
-**How Claude checks it:**
-- Claude opens 10 days at random and checks the photos.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 6. ODYSSEY · TRIPS & AWAY MODE ====================
-## 6. ODY-GEM-08 · Odyssey: the two 2024 Philippines trips day by day, from the photos
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Each day shows where he was and what he saw (Tagaytay, Coron, El Nido, Manila, BGC).
-
-**Read first:**
-- Photos from 2024: https://drive.google.com/drive/folders/1T9KkKCphJOsZiOLG0gQTC3EoAOstlzo2 and https://drive.google.com/drive/folders/1XEREfvi7JLrf5aWoY3MqhR59-IWGI4OH
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/odyssey-data.js (seed-philippines-2024-04 and seed-philippines-2024)
-
-**Do this:**
-1. Same as ODY-GEM-07 for April 6-21 and September 2024: one row per day with photos.
-2. Island hops and boat tours: name the island, beach or lagoon as the tour operator or tourism office names it.
-
-**Make:** `odyssey_gemini_philippines-days_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per day, in order`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `trip` (text): 'April 2024' or 'September 2024'
-- `date` (date): 
-- `city` (text): 
-- `places` (text): every place photographed that day, as on the place's own sign or official site
-- `photos` (integer): 
-- `evidence` (text): 2 Drive ids
-- `disagrees` (text): '' or what Odyssey has wrong
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every day with photos on both trips.
-
-**How Claude checks it:**
-- Claude opens 10 days at random.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 7. ODYSSEY · TRIPS & AWAY MODE ====================
-## 7. ODY-GEM-09 · Odyssey: the landmarks Joseph photographed, with official facts
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Every photo of a landmark gets its name, a pin on the map and two true lines about it.
-
-**Read first:**
-- Your ODY-GEM-07 and ODY-GEM-08 files (the places column)
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/odyssey/photos.js (the 36 photos already in Odyssey: their place and caption)
-
-**Do this:**
-1. 60 or more landmarks across the three trips (every landmark in the 36 photos first).
-2. For each: official name and local name, city, country, latitude and longitude (from Wikidata's coordinate location, with the Q-number), year completed or founded, height or length if it is famous for it, UNESCO World Heritage id if listed, the official site, and one fact with its quote from the official site or UNESCO's page.
-
-**Make:** `odyssey_gemini_landmarks_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of 60+ objects, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `name` (text): English
-- `local_name` (text): 
-- `city` (text): 
-- `country` (text): 
-- `lat` (number): Wikidata P625
-- `lon` (number): Wikidata P625
-- `wikidata` (text): Q-number
-- `year` (text): completed or founded
-- `unesco` (text): id or 'no'
-- `url` (URL): official site or UNESCO page
-- `fact` (text): one sentence
-- `quote` (text): the source's words for the fact
-- `photo` (text): Drive id of one of Joseph's photos of it, or ''
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**How many:** 60
-
-**Done when:** 60+ landmarks, each with coordinates, an official URL and a quoted fact.
-
-**How Claude checks it:**
-- Claude opens 10 rows at random (Wikidata coordinates and the quote).
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 8. ODYSSEY · TRIPS & AWAY MODE ====================
-## 8. ODY-GEM-11 · Odyssey: what Google Photos knows about the 36 photos already in the app
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Each photo's caption and map pin come from its own record; any wrong caption is fixed.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/tools/odyssey/photos.manifest.json (the 36 photos: Drive id, file name, the place Odyssey gives)
-
-**Do this:**
-1. For each of the 36: open it in Google Photos and copy the Info panel: date and time with zone, the place Google shows (and 'none' if it shows none), camera make and model.
-2. Say 'agrees' or what Odyssey has wrong.
-
-**Make:** `odyssey_gemini_photo-info_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of 36 objects`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `drive_id` (text): 
-- `file` (text): 
-- `taken` (text): YYYY-MM-DD HH:MM and zone as Google shows it
-- `place` (text): as Google shows it, or 'none'
-- `camera` (text): 
-- `odyssey` (text): 'agrees' or what is wrong
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**How many:** 36
-
-**Done when:** All 36.
-
-**How Claude checks it:**
-- Claude opens 10 at random.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 9. ODYSSEY · TRIPS & AWAY MODE ====================
-## 9. ODY-GEM-12 · Odyssey: every good photo of every trip you found, ranked
-
-**Due:** 2026-11-26 · **State:** now
-
-**What it unlocks:** Every trip in ODY-GEM-05 gets its own photo journey in Odyssey.
-
-**Read first:**
-- Your ODY-GEM-05 file
-
-**Do this:**
-1. For every trip in your ODY-GEM-05 file (all of them, oldest first): list every good photo (sharp, well lit, worth seeing again): places, people, food, moments, in time order. No cap: a trip with 300 good photos gets 300 rows.
-2. Leave out only near-duplicates (a burst or the same shot a few seconds apart: keep the best one), blurry or accidental shots, and screenshots.
-3. Rank the photos inside each trip: 1 is the best of that trip, 2 the next, and so on, so the journey can lead with the best and still hold every photo.
-4. In people, name who is in the photo only as Google Photos' own face groups name them; 'unnamed' for a face Google has not named; '' when nobody is in it. Never guess a name.
-5. If the file grows past about 400 rows, save it in parts with consecutive stamps (odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json each, every part a valid JSON array, n continuing from the last part), and list the parts in your run report.
-
-**Make:** `odyssey_gemini_photo-picks_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per photo (in parts if large: see the last step)`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `trip` (integer): n of the trip in your ODY-GEM-05 file
-- `drive_id` (text): 
-- `file` (text): 
-- `taken` (text): date and time
-- `place` (text): 
-- `rank` (integer): 1 = the best photo of this trip; no two photos of a trip share a rank
-- `people` (text): names as Google Photos' face groups show them, comma-separated; 'unnamed' for an unnamed face; '' when nobody is in it
-- `why` (text): what the photo shows, 8 words max
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-- [ ] No cap was applied: every trip has all its good photos, and each trip's ranks run 1, 2, 3 ... without gaps.
-
-**Done when:** Every trip in ODY-GEM-05 has every good photo, ranked within its trip; nothing left out to meet a count.
-
-**How Claude checks it:**
-- Claude looks at every photo before it goes in.
-
-**Not done (sent back) if:** (and the rules at the top)
-- fewer rows than the count (where a count is set), or a row missing a field
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-==================== 10. LUDUS ARCADE ====================
-## 10. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
+1. [Ludus Arcade] GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages · due 2026-11-27
+2. [Prometheus Hub] HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes · due 2026-12-01
+3. [Forge] FOR-GEM-06 · Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge · due 2026-12-01
+4. [Bossa Piano Studio] PIA-GEM-08 · Piano: the published key for the 24 Bossa Nova tunes still 'not stated' · due 2026-12-03
+5. [Hephaestus Hearth] HEA-GEM-26 · Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22) · due 2026-12-04
+6. [Money · payoff simulator] MON-GEM-06 · Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements · due 2026-12-04
+7. [Hermes Post] HER-GEM-11 · Hermes: the publication date of the 21 lures still 'not stated' · due 2026-12-04
+8. [Bastion · Mountain Prep] BAS-GEM-10 · Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman · due 2026-12-04
+9. [Argus Album] ARG-GEM-12 · Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default · due 2026-12-04
+10. [Forge] FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch · due 2026-12-04
+11. [Aether · Atmospheric & Field Lab] AET-GEM-13 · Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts) · due 2026-12-04
+12. [Aether · Atmospheric & Field Lab] AET-GEM-14 · Aether: every I-5 Grapevine (Tejon Pass) closure, winters 2020-21 to 2025-26 · due 2026-12-04
+13. [Prometheus Hub] HUB-GEM-18 · Hub: where the subject sits in each of the 24 pillar paintings (for the living headers) · due 2026-12-05
+14. [Hephaestus Hearth] HEA-GEM-27 · Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners) · due 2026-12-05
+15. [Garage] GAR-GEM-15 · Garage: fluid capacities and specs for both vehicles, from the owner's manuals · due 2026-12-05
+16. [Apollo Temple] APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving · due 2026-12-05
+17. [Selling Pipeline] SEL-GEM-08 · Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception · due 2026-12-05
+18. [Records · Paper Killer] REC-GEM-09 · Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates) · due 2026-12-05
+19. [Icarus Stake] ICA-GEM-13 · Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding · due 2026-12-05
+20. [Hermes Post] HER-GEM-12 · Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state) · due 2026-12-05
+21. [Bastion · Mountain Prep] BAS-GEM-11 · Bastion: every official alert channel for the area, how to sign up and what each sends · due 2026-12-05
+22. [Athenaeum · Idea Vault] ATH-GEM-05 · Athenaeum: a third source for the 14 history entries that differ or are debated · due 2026-12-05
+23. [Odyssey · Trips & Away Mode] ODY-GEM-14 · Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos) · due 2026-12-05
+24. [Privacy · CA DROP] PRI-GEM-13 · Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice · due 2026-12-05
+25. [Aether · Atmospheric & Field Lab] AET-GEM-15 · Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026 · due 2026-12-05
+26. [Continuity · Sovereign Vault] CON-GEM-08 · Continuity: Kern County Superior Court's probate forms for a small estate and a spousal property petition · due 2026-12-05
+27. [Prometheus Hub] HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet · due 2026-12-06
+28. [Midas Ledger] MID-GEM-14 · Midas: 40 statement-line phrasings of promo and deferred-interest balances, from issuers' public sample statements · due 2026-12-06
+29. [Hephaestus Hearth] HEA-GEM-28 · Hearth: Kern County's building permit fees for the 23 x 10 ft deck · due 2026-12-06
+30. [Bastion · Mountain Prep] BAS-GEM-12 · Bastion: Kern County's defensible-space rules (Zone 0, 1 and 2) and the inspection · due 2026-12-06
+31. [Ludus Arcade] GAM-GEM-07 · Games: Anno 117's DLC and season pass, with contents and release dates · due 2026-12-06
+32. [Foundry] FDY-GEM-06 · Foundry: the power budget for each stage-1 build, from the parts' datasheets · due 2026-12-06
+33. [Observatory] OBS-GEM-06 · Observatory: official data endpoints (no key) for each of the 8 subjects · due 2026-12-06
+34. [Polis · Civic & Legal Watch] POL-GEM-09 · Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities · due 2026-12-06
+35. [Polis · Civic & Legal Watch] POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
+36. [Odyssey · Trips & Away Mode] ODY-GEM-13 · Odyssey: the trips your search missed, folder by folder (2008-2026) · due 2026-12-07
+37. [Odyssey · Trips & Away Mode] ODY-GEM-15 · Odyssey: the landmarks Joseph photographed on the ten trips found in his photos, with official facts · due 2026-12-07
+38. [Odyssey · Trips & Away Mode] ODY-GEM-16 · Odyssey: the ten photo trips day by day · due 2026-12-07
+39. [Odyssey · Trips & Away Mode] ODY-GEM-17 · Odyssey: a card for each national park Joseph has been to (NPS facts) · due 2026-12-07
+40. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+41. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
+42. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
+43. [Selling Pipeline] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
+
+==================== 1. LUDUS ARCADE ====================
+## 1. GAM-GEM-05 · Games: GTA VI's first week, from Rockstar's own pages
 
 **Due:** 2026-11-27 · **State:** now
 
@@ -560,8 +105,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 11. PROMETHEUS HUB ====================
-## 11. HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes
+==================== 2. PROMETHEUS HUB ====================
+## 2. HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes
 
 **Due:** 2026-12-01 · **State:** now
 
@@ -608,8 +153,52 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 12. BOSSA PIANO STUDIO ====================
-## 12. PIA-GEM-08 · Piano: the published key for the 24 Bossa Nova tunes still 'not stated'
+==================== 3. FORGE ====================
+## 3. FOR-GEM-06 · Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Nothing you deliver waits unseen again: Claude checks your list at every catch-up.
+
+**Read first:**
+- Drive: search for files named DONE_*.json modified after 2026-11-16 (every folder)
+- The Forge: https://jpavia10.github.io/prometheus-hub/pillars/forge/ (each task's state)
+
+**Do this:**
+1. List every DONE_ marker: its name, its folder, its date, and the file it points to.
+2. For each, the task's state on the Forge today (to do, delivered, done, withdrawn).
+3. Flag every one where Drive says done but the Forge says to do.
+
+**Make:** `forge_gemini_done-markers_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per marker`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `marker` (text): file name
+- `folder` (text): Drive folder
+- `date` (date): modified
+- `task` (text): task id
+- `file` (text): the delivery it points to
+- `forge_state` (text): as the Forge shows it today
+- `mismatch` (text): 'yes' or 'no'
+
+**Before you save, check every one of these yourself:**
+- [ ] Every DONE_ marker since Nov 16, none left out.
+- [ ] The file is valid JSON and named exactly as asked.
+
+**Done when:** Every marker listed.
+
+**How Claude checks it:**
+- Claude searches Drive for the same markers and compares the counts.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a marker left out
+
+==================== 4. BOSSA PIANO STUDIO ====================
+## 4. PIA-GEM-08 · Piano: the published key for the 24 Bossa Nova tunes still 'not stated'
 
 **Due:** 2026-12-03 · **State:** now
 
@@ -659,8 +248,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 13. HEPHAESTUS HEARTH ====================
-## 13. HEA-GEM-26 · Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22)
+==================== 5. HEPHAESTUS HEARTH ====================
+## 5. HEA-GEM-26 · Hearth: the ground snow load at the town centre from ASCE's Hazard Tool (ASCE 7-16 and 7-22)
 
 **Due:** 2026-12-04 · **State:** now
 
@@ -710,8 +299,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 14. MONEY · PAYOFF SIMULATOR ====================
-## 14. MON-GEM-06 · Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements
+==================== 6. MONEY · PAYOFF SIMULATOR ====================
+## 6. MON-GEM-06 · Money: the minimum payment and penalty APR for the issuers still 'not stated', from the card agreements
 
 **Due:** 2026-12-04 · **State:** now
 
@@ -760,8 +349,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 15. HERMES POST ====================
-## 15. HER-GEM-11 · Hermes: the publication date of the 21 lures still 'not stated'
+==================== 7. HERMES POST ====================
+## 7. HER-GEM-11 · Hermes: the publication date of the 21 lures still 'not stated'
 
 **Due:** 2026-12-04 · **State:** now
 
@@ -811,8 +400,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 16. BASTION · MOUNTAIN PREP ====================
-## 16. BAS-GEM-10 · Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman
+==================== 8. BASTION · MOUNTAIN PREP ====================
+## 8. BAS-GEM-10 · Bastion: the evacuation zones that cover Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods and Gorman
 
 **Due:** 2026-12-04 · **State:** now
 
@@ -861,8 +450,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 17. ARGUS ALBUM ====================
-## 17. ARG-GEM-12 · Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default
+==================== 9. ARGUS ALBUM ====================
+## 9. ARG-GEM-12 · Argus: which phone browsers can decode HEIC/HEIF in createImageBitmap, and what the S24 Ultra saves by default
 
 **Due:** 2026-12-04 · **State:** now
 
@@ -908,8 +497,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 18. FORGE ====================
-## 18. FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch
+==================== 10. FORGE ====================
+## 10. FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch
 
 **Due:** 2026-12-04 · **State:** now
 
@@ -962,8 +551,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 19. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 19. AET-GEM-13 · Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)
+==================== 11. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 11. AET-GEM-13 · Aether: what a 400 W solar array really makes at Frazier Park each month (NREL PVWatts)
 
 **Due:** 2026-12-04 · **State:** now
 
@@ -1017,8 +606,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 20. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 20. AET-GEM-14 · Aether: every I-5 Grapevine (Tejon Pass) closure, winters 2020-21 to 2025-26
+==================== 12. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 12. AET-GEM-14 · Aether: every I-5 Grapevine (Tejon Pass) closure, winters 2020-21 to 2025-26
 
 **Due:** 2026-12-04 · **State:** now
 
@@ -1069,8 +658,55 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 21. HEPHAESTUS HEARTH ====================
-## 21. HEA-GEM-27 · Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners)
+==================== 13. PROMETHEUS HUB ====================
+## 13. HUB-GEM-18 · Hub: where the subject sits in each of the 24 pillar paintings (for the living headers)
+
+**Due:** 2026-12-05 · **State:** now
+
+**What it unlocks:** Claude sets each painting's focus (kit/world.js FOCUS) and the header frames the right thing on the phone.
+
+**Read first:**
+- The paintings: https://jpavia10.github.io/prometheus-hub/art/worlds/world_{pillar}.webp for each of: kairos, garage, odyssey, hearth, apollo, money, selling, records, icarus, hermes, piano, bastion, privacy, argus, games, forge, foundry, observatory, kin, presence, aether, polis, mythos, continuity
+- Each pillar page to see it live: https://jpavia10.github.io/prometheus-hub/pillars/{pillar}/ (a phone-width window)
+
+**Do this:**
+1. For each painting, name its main subject in a few words (the thing the painting is about: the clock tower, the garage door, the hearth fire ...).
+2. Measure where that subject's centre sits from the top: 0 = top edge, 1 = bottom edge, two decimals (pixel row of the centre divided by the image height; give both numbers).
+3. Say whether the live header on a phone shows that subject now: yes, or what it shows instead.
+
+**Make:** `hub_gemini_painting-focus_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 24 objects, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `pillar` (text): slug as listed
+- `subject` (text): a few words
+- `row_px` (integer): pixel row of its centre
+- `height_px` (integer): image height
+- `focus` (number): row_px / height_px, two decimals (math)
+- `header_now` (text): 'yes' or what the phone header shows instead
+
+**Before you save, check every one of these yourself:**
+- [ ] focus equals row_px / height_px to two decimals.
+- [ ] All 24 slugs, each once.
+- [ ] The file is valid JSON and named exactly as asked.
+
+**How many:** 24
+
+**Done when:** 24 rows.
+
+**How Claude checks it:**
+- Claude opens 6 paintings and checks the subject and the row.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a focus that does not equal its own row_px / height_px
+- a slug missing or twice
+
+==================== 14. HEPHAESTUS HEARTH ====================
+## 14. HEA-GEM-27 · Hearth: the connectors' allowable loads for the deck (joist hangers, post bases, ledger fasteners)
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1119,8 +755,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 22. GARAGE ====================
-## 22. GAR-GEM-15 · Garage: fluid capacities and specs for both vehicles, from the owner's manuals
+==================== 15. GARAGE ====================
+## 15. GAR-GEM-15 · Garage: fluid capacities and specs for both vehicles, from the owner's manuals
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1168,8 +804,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 23. APOLLO TEMPLE ====================
-## 23. APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving
+==================== 16. APOLLO TEMPLE ====================
+## 16. APO-GEM-12 · Apollo: the five richest common foods for each of the 30 nutrients, with the amount per serving
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1219,8 +855,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 24. SELLING PIPELINE ====================
-## 24. SEL-GEM-08 · Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception
+==================== 17. SELLING PIPELINE ====================
+## 17. SEL-GEM-08 · Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1267,8 +903,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 25. RECORDS · PAPER KILLER ====================
-## 25. REC-GEM-09 · Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates)
+==================== 18. RECORDS · PAPER KILLER ====================
+## 18. REC-GEM-09 · Records: California DMV renewal rules for a licence, a registration and REAL ID (the rules, not anyone's dates)
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1313,8 +949,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 26. ICARUS STAKE ====================
-## 26. ICA-GEM-13 · Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding
+==================== 19. ICARUS STAKE ====================
+## 19. ICA-GEM-13 · Icarus: the 2027 BEA release dates (GDP, personal income and PCE) and Treasury's quarterly refunding
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1361,8 +997,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 27. HERMES POST ====================
-## 27. HER-GEM-12 · Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)
+==================== 20. HERMES POST ====================
+## 20. HER-GEM-12 · Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1409,8 +1045,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 28. BASTION · MOUNTAIN PREP ====================
-## 28. BAS-GEM-11 · Bastion: every official alert channel for the area, how to sign up and what each sends
+==================== 21. BASTION · MOUNTAIN PREP ====================
+## 21. BAS-GEM-11 · Bastion: every official alert channel for the area, how to sign up and what each sends
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1456,8 +1092,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 29. ATHENAEUM · IDEA VAULT ====================
-## 29. ATH-GEM-05 · Athenaeum: a third source for the 14 history entries that differ or are debated
+==================== 22. ATHENAEUM · IDEA VAULT ====================
+## 22. ATH-GEM-05 · Athenaeum: a third source for the 14 history entries that differ or are debated
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1506,8 +1142,63 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 30. PRIVACY · CA DROP ====================
-## 30. PRI-GEM-13 · Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice
+==================== 23. ODYSSEY · TRIPS & AWAY MODE ====================
+## 23. ODY-GEM-14 · Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos)
+
+**Due:** 2026-12-05 · **State:** now
+
+**What it unlocks:** Tap a dot: the city's card. Totals per trip (people, countries, time zones crossed).
+
+**Read first:**
+- The stop codes and names: ATL Atlanta GA, BSR Big Sur CA, SF San Francisco CA, SEQ Sequoia National Park CA, KCN Kings Canyon (Grant Grove) CA, LAS Las Vegas NV, HVR Hoover Dam NV/AZ, MZT Mazatlán Sinaloa, PVR Puerto Vallarta Jalisco, FBG Fort Bragg CA, SAN San Diego CA, DTW Detroit MI, MMH Mammoth Lakes CA
+- Your own ODY-GEM-10 file for the shape of a card (same fields, same sourcing rules); national parks: the NPS page for the park.
+
+**Do this:**
+1. For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words.
+
+**Make:** `odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per stop code`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `code` (text): stop code as in odyssey-data.js
+- `city` (text): 
+- `country` (text): 
+- `population` (integer): 
+- `pop_year` (integer): 
+- `pop_url` (URL): statistics office or Wikidata
+- `elevation_m` (number): 
+- `tz` (text): IANA
+- `currency` (text): now (and in 2015 if different)
+- `language` (text): 
+- `known_for` (text): 
+- `quote` (text): 
+- `url` (URL): 
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 13
+
+**Done when:** 13 cards, one per code above, every number sourced.
+
+**How Claude checks it:**
+- Claude opens 10 rows at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 24. PRIVACY · CA DROP ====================
+## 24. PRI-GEM-13 · Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1558,8 +1249,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 31. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 31. AET-GEM-15 · Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026
+==================== 25. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 25. AET-GEM-15 · Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1610,8 +1301,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 32. CONTINUITY · SOVEREIGN VAULT ====================
-## 32. CON-GEM-08 · Continuity: Kern County Superior Court's probate forms for a small estate and a spousal property petition
+==================== 26. CONTINUITY · SOVEREIGN VAULT ====================
+## 26. CON-GEM-08 · Continuity: Kern County Superior Court's probate forms for a small estate and a spousal property petition
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -1658,8 +1349,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 33. PROMETHEUS HUB ====================
-## 33. HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet
+==================== 27. PROMETHEUS HUB ====================
+## 27. HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -1708,8 +1399,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 34. MIDAS LEDGER ====================
-## 34. MID-GEM-14 · Midas: 40 statement-line phrasings of promo and deferred-interest balances, from issuers' public sample statements
+==================== 28. MIDAS LEDGER ====================
+## 28. MID-GEM-14 · Midas: 40 statement-line phrasings of promo and deferred-interest balances, from issuers' public sample statements
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -1758,8 +1449,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 35. HEPHAESTUS HEARTH ====================
-## 35. HEA-GEM-28 · Hearth: Kern County's building permit fees for the 23 x 10 ft deck
+==================== 29. HEPHAESTUS HEARTH ====================
+## 29. HEA-GEM-28 · Hearth: Kern County's building permit fees for the 23 x 10 ft deck
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -1807,8 +1498,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 36. BASTION · MOUNTAIN PREP ====================
-## 36. BAS-GEM-12 · Bastion: Kern County's defensible-space rules (Zone 0, 1 and 2) and the inspection
+==================== 30. BASTION · MOUNTAIN PREP ====================
+## 30. BAS-GEM-12 · Bastion: Kern County's defensible-space rules (Zone 0, 1 and 2) and the inspection
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -1856,8 +1547,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 37. LUDUS ARCADE ====================
-## 37. GAM-GEM-07 · Games: Anno 117's DLC and season pass, with contents and release dates
+==================== 31. LUDUS ARCADE ====================
+## 31. GAM-GEM-07 · Games: Anno 117's DLC and season pass, with contents and release dates
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -1903,8 +1594,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 38. FOUNDRY ====================
-## 38. FDY-GEM-06 · Foundry: the power budget for each stage-1 build, from the parts' datasheets
+==================== 32. FOUNDRY ====================
+## 32. FDY-GEM-06 · Foundry: the power budget for each stage-1 build, from the parts' datasheets
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -1953,8 +1644,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 39. OBSERVATORY ====================
-## 39. OBS-GEM-06 · Observatory: official data endpoints (no key) for each of the 8 subjects
+==================== 33. OBSERVATORY ====================
+## 33. OBS-GEM-06 · Observatory: official data endpoints (no key) for each of the 8 subjects
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -2002,8 +1693,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 40. POLIS · CIVIC & LEGAL WATCH ====================
-## 40. POL-GEM-09 · Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities
+==================== 34. POLIS · CIVIC & LEGAL WATCH ====================
+## 34. POL-GEM-09 · Polis: Kern County Planning Commission decisions in 2026 touching the mountain communities
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -2052,8 +1743,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 41. POLIS · CIVIC & LEGAL WATCH ====================
-## 41. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
+==================== 35. POLIS · CIVIC & LEGAL WATCH ====================
+## 35. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -2101,8 +1792,208 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 42. KAIROS MERIDIAN ====================
-## 42. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 36. ODYSSEY · TRIPS & AWAY MODE ====================
+## 36. ODY-GEM-13 · Odyssey: the trips your search missed, folder by folder (2008-2026)
+
+**Due:** 2026-12-07 · **State:** now
+
+**What it unlocks:** Each new trip joins the 13 already on Odyssey's map and timeline.
+
+**Read first:**
+- Drive folders 'Photos from YYYY' (2008-2026). Open each folder and read the file names: they start with the date and time (20190827_082319.jpg = Aug 27, 2019, 08:23:19).
+- The 13 trips already on record (do not list them again): https://jpavia10.github.io/prometheus-hub/pillars/odyssey/ (Trip files). Your Nov 21 file covers 2015-10, 2018-06, 2018-08, 2019-06, 2019-08, 2021-03, 2022-04, 2022-06, 2022-09, 2023-05.
+
+**Do this:**
+1. For each year, list the file names in order and mark every run of 2 or more days with photos.
+2. For each run, open 1-2 photos per day and read the location (EXIF GPS or what Google Photos shows). Keep the run only if it is more than 60 miles from where Joseph lived then (Michigan until 2016, the Los Angeles area 2016-2024, Frazier Park after).
+3. Write each trip as one row: first and last day, places in order, photo count from the file list, 2 file ids per place as evidence, sure or from pictures only.
+4. If a year has no trip, add a row for it with places 'none' so Claude knows you looked.
+
+**Make:** `odyssey_gemini_more-trips_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array (not an object around it), one object per trip or per empty year, oldest first, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `year` (integer): YYYY
+- `start` (date): first photo, or empty for a 'none' year
+- `end` (date): last photo
+- `places` (text): in order 'City, Region, Country; ...' or 'none'
+- `photos` (integer): count from the folder's file list
+- `evidence` (text): 2 Drive file ids per place, 'file id = place'
+- `certainty` (text): 'sure' or 'from pictures only: <what you recognised>'
+- `note` (text): anything odd
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
+- [ ] No row is a copy of another with the names changed.
+- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**Done when:** Every year 2008-2026 has either its trips or a 'none' row, counted from the folder's own file list.
+
+**How Claude checks it:**
+- Claude opens 10 evidence ids at random and checks the place and date.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count (where a count is set), or a row missing a field
+- a guess written as a fact (write 'not stated' or 'not found' instead)
+
+==================== 37. ODYSSEY · TRIPS & AWAY MODE ====================
+## 37. ODY-GEM-15 · Odyssey: the landmarks Joseph photographed on the ten trips found in his photos, with official facts
+
+**Due:** 2026-12-07 · **State:** now
+
+**What it unlocks:** Each landmark becomes a tappable point on its trip's map with its fact, like the Europe ones.
+
+**Read first:**
+- Your own files odyssey_gemini_trips-from-photos_20261121-0758.json and odyssey_gemini_photo-picks_20261121-0818.json (the photos and places)
+- Your ODY-GEM-09 file odyssey_gemini_landmarks_20261121-0147.json for the shape and the sourcing standard
+
+**Do this:**
+1. From the photos of those ten trips, list every landmark that appears in one (a named place: a monument, a park feature, a bridge, a building, a beach).
+2. For each: coordinates, Wikidata id, the year it was built or established, the official page (NPS, the city, the state, the site itself) and one fact quoted word for word from that page.
+3. Name the photo (Drive file id) it appears in.
+
+**Make:** `odyssey_gemini_landmarks-usa_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 20+ objects, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `name` (text): as the official page names it
+- `local_name` (text): same, or the Spanish name in Mexico
+- `city` (text): 
+- `country` (text): 
+- `lat` (number): decimal degrees
+- `lon` (number): decimal degrees
+- `wikidata` (text): Q-id
+- `year` (text): built or established
+- `unesco` (text): site number or empty
+- `url` (URL): official page
+- `fact` (text): one sentence in your words
+- `quote` (text): word for word from url, 300 characters at most
+- `photo` (text): Drive file id it appears in
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the official site (agency, park service, maker), or for photo tasks the Drive file you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] The file is valid JSON (a JSON array, not an object around it) and is named exactly as asked.
+
+**How many:** 20
+
+**Done when:** 20+ landmarks from the ten trips, each with its photo and a quoted official fact.
+
+**How Claude checks it:**
+- Claude opens 6 rows at random against their pages and 4 photos.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a file saved anywhere but the folder named here
+
+==================== 38. ODYSSEY · TRIPS & AWAY MODE ====================
+## 38. ODY-GEM-16 · Odyssey: the ten photo trips day by day
+
+**Due:** 2026-12-07 · **State:** now
+
+**What it unlocks:** Each new trip gets a day-by-day log and its photo journey.
+
+**Read first:**
+- The Drive folders 'Photos from YYYY' for each trip's dates (file names start with the date and time)
+- Your ODY-GEM-07 file for the shape
+
+**Do this:**
+1. For every day of each trip with photos: the town, the places in order, first and last photo time in local time, how many photos, 2 Drive file ids as evidence.
+2. Where your trips file and the photos disagree (a day earlier or later, a place missing), say so in 'disagrees'.
+
+**Make:** `odyssey_gemini_photo-trip-days_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per day, in order`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `trip` (text): as in the list above, e.g. 'Sequoia and Kings Canyon Aug 2018'
+- `date` (date): YYYY-MM-DD
+- `city` (text): 
+- `places` (text): in order
+- `first_time` (text): HH:MM and zone
+- `last_time` (text): HH:MM and zone
+- `photos` (integer): count
+- `evidence` (text): 2 Drive file ids
+- `disagrees` (text): or empty
+
+**Before you save, check every one of these yourself:**
+- [ ] The file is valid JSON (a JSON array, not an object around it) and is named exactly as asked.
+
+**Done when:** Every day with photos on all ten trips.
+
+**How Claude checks it:**
+- Claude opens 6 evidence photos and compares the times with the file names.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a file saved anywhere but the folder named here
+
+==================== 39. ODYSSEY · TRIPS & AWAY MODE ====================
+## 39. ODY-GEM-17 · Odyssey: a card for each national park Joseph has been to (NPS facts)
+
+**Due:** 2026-12-07 · **State:** now
+
+**Read first:**
+- nps.gov park pages and the NPS visitor-use statistics (irma.nps.gov/Stats)
+
+**Do this:**
+1. For each of the five: when it was established, its area, the latest official yearly visits (year and number), the highest and lowest points, and one fact quoted from nps.gov.
+
+**Make:** `odyssey_gemini_parks_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array of 5 objects`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `park` (text): official name
+- `code` (text): NPS four-letter code
+- `established` (date): YYYY-MM-DD
+- `area_acres` (number): official
+- `visits` (integer): latest official year
+- `visits_year` (integer): 
+- `high_ft` (number): highest point
+- `low_ft` (number): lowest point
+- `url` (URL): nps.gov page
+- `quote` (text): word for word, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the official site (agency, park service, maker), or for photo tasks the Drive file you looked at.
+- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
+- [ ] The file is valid JSON (a JSON array, not an object around it) and is named exactly as asked.
+
+**How many:** 5
+
+**Done when:** All five, every number from nps.gov.
+
+**How Claude checks it:**
+- Claude opens every row's page.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- a file saved anywhere but the folder named here
+
+==================== 40. KAIROS MERIDIAN ====================
+## 40. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -2147,8 +2038,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 43. GARAGE ====================
-## 43. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
+==================== 41. GARAGE ====================
+## 41. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
 
 **Due:** 2027-01-10 · **State:** now
 
@@ -2193,8 +2084,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 44. POLIS · CIVIC & LEGAL WATCH ====================
-## 44. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+==================== 42. POLIS · CIVIC & LEGAL WATCH ====================
+## 42. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
 
 **Due:** 2027-01-15 · **State:** now
 
@@ -2238,8 +2129,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 45. SELLING PIPELINE ====================
-## 45. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+==================== 43. SELLING PIPELINE ====================
+## 43. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 

@@ -8,15 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- GAR-GRK-04 · Garage: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
-    make: garage_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+No homework for Grok in Garage right now.
 
 ## Gemini
 
-Updated 2026-11-22 03:36 UTC · 2 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 2 open in this pillar.
 
 
 - GAR-GEM-15 · Garage: fluid capacities and specs for both vehicles, from the owner's manuals · due 2026-12-05
@@ -26,32 +25,28 @@ Updated 2026-11-22 03:36 UTC · 2 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-22 03:36 UTC · 2 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- GAR-MUS-04 · Garage: second reader on Gemini's 'California registration, smog and VLF fees for the two vehicles' · due 2026-11-28
-    make: garage_muse_ca-fees-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked row checked with where you looked.
-- GAR-MUS-05 · Garage: second reader on Gemini's the 62 dashboard lights from the two owner's manuals · due 2026-12-02
-    make: garage_muse_lights-check_{YYYYMMDD-HHMM}.md · how many: 15 · done when: Every picked item checked with where you looked.
+No homework for Muse in Garage right now.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- GAR-GPT-01 · Garage: phone audit: 15 findings · due 2026-11-24
-    make: garage_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json · how many: 15 · done when: 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
+No homework for ChatGPT in Garage right now.
 
 ## Argon
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Garage right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Garage right now.

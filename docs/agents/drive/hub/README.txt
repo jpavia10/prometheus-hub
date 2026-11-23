@@ -8,53 +8,48 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-22 03:36 UTC · 1 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
-- HUB-GRK-03 · Prometheus Hub: second reader on Gemini's 'the function spec, written as the build plan' · due 2026-11-27
-    make: hub_grok_function-spec-check_{YYYYMMDD-HHMM}.md · how many: 10 · done when: Every picked item checked with where you looked.
+No homework for Grok in Prometheus Hub right now.
 
 ## Gemini
 
-Updated 2026-11-22 03:36 UTC · 4 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 3 open in this pillar.
 
 
-- HUB-GEM-11 · TRIAL 1: Titan's blind coin-photo test, main pack (30 coins) · due 2026-11-23
-    make: bakeoff_{yourmodel}_main_{YYYYMMDD-HHMM}.json · how many: 30 · done when: All 30 answered and saved.
-- HUB-GEM-12 · TRIAL 2: Titan's blind coin-photo test, locked pack (15 coins) · due 2026-11-23
-    make: bakeoff_{yourmodel}_locked_{YYYYMMDD-HHMM}.json · how many: 15 · done when: All 15 answered and saved.
 - HUB-GEM-17 · Hub: re-check run 4's 40 accessibility findings after the d51 fixes · due 2026-12-01
     make: hub_gemini_a11y-recheck_{YYYYMMDD-HHMM}.json · how many: 40 · done when: All 40 re-measured.
+- HUB-GEM-18 · Hub: where the subject sits in each of the 24 pillar paintings (for the living headers) · due 2026-12-05
+    make: hub_gemini_painting-focus_{YYYYMMDD-HHMM}.json · how many: 24 · done when: 24 rows.
 - HUB-GEM-16 · Hub: WCAG 2.2 AA audit of the 17 pillars not audited yet · due 2026-12-06
     make: hub_gemini_a11y-audit-2_{YYYYMMDD-HHMM}.json · how many: 68 · done when: 4 findings for each of the 17 pages, each with a measurement.
 
 ## Muse
 
-Updated 2026-11-22 03:36 UTC · 2 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 1 open in this pillar.
 
 
-- HUB-MUS-03 · Every pillar: second reader on Gemini's 2026-11-18 redo batch (23 files stamped _20261118-1940) · due 2026-11-23
-    make: {pillar}_muse_{dataset}-check3_{YYYYMMDD-HHMM}.md (one file per Gemini file, e.g. garage_muse_recalls-check3_20261120-0900.md) · how many: 23 · done when: A check3 file for each of the 23 redo files, each with a score and ACCEPT/REJECT; then one line per file in forge-completions.json (edit the original), key HUB-MUS-03.
-- HUB-MUS-04 · Eight pillars: second reader on Gemini 4 Neon's 2026-11-19 run (16 files, 20% of rows) · due 2026-11-24
-    make: {pillar}_muse_{dataset}-check_{YYYYMMDD-HHMM}.md (one per Gemini file) · how many: 23 · done when: 16 check files, every fifth row opened, each with a score and ACCEPT/REJECT.
+- HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · due 2026-12-07
+    make: hub_muse_second-read_{YYYYMMDD-HHMM}.md · how many: 39 · done when: All 39 rows read and every file has ACCEPT or REJECT.
 
 ## ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Prometheus Hub right now.
 
 ## Argon
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Prometheus Hub right now.
 
 ## Hydrogen
 
-Updated 2026-11-22 03:36 UTC · 0 open in this pillar.
+Updated 2026-11-23 16:11 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Prometheus Hub right now.

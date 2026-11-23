@@ -704,7 +704,7 @@
     {
      "id": "ICA-GRK-03",
      "title": "Icarus Stake: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-27",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -748,7 +748,9 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "input_file": "icarus_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)",
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar."
     }
    ]
   },
@@ -792,7 +794,7 @@
     {
      "id": "ICA-MUS-02",
      "title": "Icarus: second reader on Gemini's the 2027 CPI and jobs-report dates (the FOMC dates are already confirmed) and the 20 trading rules",
-     "state": "now",
+     "state": "withdrawn",
      "added": "2026-11-22",
      "due": "2026-11-30",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
@@ -834,7 +836,9 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check."
     }
    ]
   },

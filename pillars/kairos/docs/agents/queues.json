@@ -907,7 +907,7 @@
     {
      "id": "KAI-GRK-03",
      "title": "Kairos Meridian: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "now",
+     "state": "withdrawn",
      "due": "2026-11-27",
      "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
      "unlocks": "Claude builds from the file only after this check.",
@@ -951,7 +951,9 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "input_file": "kairos_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)"
+     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)",
+     "closed": "2026-11-23",
+     "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar."
     }
    ]
   },
@@ -962,7 +964,7 @@
     {
      "id": "KAI-GPT-01",
      "title": "Kairos Meridian: phone audit: 15 findings",
-     "state": "now",
+     "state": "parked",
      "due": "2026-11-24",
      "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Kairos Meridian uses.",
      "inputs": [
@@ -990,7 +992,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real private person's name, address or phone number",
       "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ]
+     ],
+     "review": "Parked 2026-11-23 (Claude): Joseph relies on Gemini from now on; HUB-GEM-16 covers the audit by reading each pillar's code."
     }
    ]
   }

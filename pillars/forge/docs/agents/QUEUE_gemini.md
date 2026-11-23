@@ -2,11 +2,56 @@
 
 # Forge · homework for Gemini
 
-Updated 2026-11-22 03:36 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 16:11 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch
+## 1. FOR-GEM-06 · Forge: every DONE_ marker you left in Drive since Nov 16, against the task's state on the Forge
+
+**Due:** 2026-12-01 · **State:** now
+
+**Why:** On Nov 23 Claude found nine of your Nov 21 files (the Odyssey photo work and both coin-photo tests) that the Forge still showed as 'to do' two days later: the Forge reads GitHub, not Drive, and your DONE_ markers sit in Drive.
+
+**What it unlocks:** Nothing you deliver waits unseen again: Claude checks your list at every catch-up.
+
+**Read first:**
+- Drive: search for files named DONE_*.json modified after 2026-11-16 (every folder)
+- The Forge: https://jpavia10.github.io/prometheus-hub/pillars/forge/ (each task's state)
+
+**Do this:**
+1. List every DONE_ marker: its name, its folder, its date, and the file it points to.
+2. For each, the task's state on the Forge today (to do, delivered, done, withdrawn).
+3. Flag every one where Drive says done but the Forge says to do.
+
+**Make:** `forge_gemini_done-markers_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per marker`
+
+**Every field, exactly:**
+- `n` (integer): row
+- `marker` (text): file name
+- `folder` (text): Drive folder
+- `date` (date): modified
+- `task` (text): task id
+- `file` (text): the delivery it points to
+- `forge_state` (text): as the Forge shows it today
+- `mismatch` (text): 'yes' or 'no'
+
+**Before you save, check every one of these yourself:**
+- [ ] Every DONE_ marker since Nov 16, none left out.
+- [ ] The file is valid JSON and named exactly as asked.
+
+**Done when:** Every marker listed.
+
+**How Claude checks it:**
+- Claude searches Drive for the same markers and compares the counts.
+
+**Not done (sent back) if:**
+- a marker left out
+
+## 2. FOR-GEM-05 · Forge: audit 30 tasks against their queues (state, due, owner, score) and report every mismatch
 
 **Due:** 2026-12-04 · **State:** now
 

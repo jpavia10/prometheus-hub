@@ -441,13 +441,15 @@ export function checkDelivery(filePath, { taskId = null, repoRoot = DEFAULT_REPO
     // Check 3: array length equals count when count > 0
     const expectedCount = typeof task.count === 'number' ? task.count : 0;
     if (expectedCount > 0) {
-      const okCount = data.length === expectedCount;
+      // 2026-11-23: a shape that says "60+ objects" makes the count a floor (ODY-GEM-09 sent 65 landmarks and was failed for it)
+      const atLeast = new RegExp(`\\b${expectedCount}\\+`).test(String(task?.deliver?.shape || ''));
+      const okCount = atLeast ? data.length >= expectedCount : data.length === expectedCount;
       record(
         'row-count',
         okCount,
         okCount
-          ? `Array length is ${data.length} (matches count ${expectedCount})`
-          : `Array length is ${data.length}, expected ${expectedCount}`
+          ? `Array length is ${data.length} (${atLeast ? 'at least' : 'matches'} count ${expectedCount})`
+          : `Array length is ${data.length}, expected ${atLeast ? 'at least ' : ''}${expectedCount}`
       );
     } else {
       record('row-count', true, `No positive count requirement (array has ${data.length} rows)`);

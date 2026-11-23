@@ -2,41 +2,8 @@
 
 # Garage · homework for ChatGPT
 
-Updated 2026-11-22 03:36 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/ChatGPT/HOMEWORK — ChatGPT (every pillar)'.
+Updated 2026-11-23 16:11 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/ChatGPT/HOMEWORK — ChatGPT (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. GAR-GPT-01 · Garage: phone audit: 15 findings
-
-**Due:** 2026-11-24 · **State:** now
-
-**Why:** Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Garage uses.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/garage/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
-
-**Do this:**
-1. Open the pillar on a phone; use every section; only what you saw.
-
-**Make:** `garage_chatgpt_phone-audit_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of objects, one per row: {"n","where","what is wrong","why it matters","fix in one sentence"}`
-
-**How many:** 15
-
-**Done when:** 15 rows (or the whole document) in the shape, every source opening and saying what the row says.
-
-**How Claude checks it:**
-- Claude opens 10 rows at random.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field of the shape
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a real private person's name, address or phone number
-- anything about Joseph's own accounts, balances, mail, messages or records (public facts only)
+No homework for ChatGPT in Garage right now. Check your HOMEWORK doc for the other pillars.

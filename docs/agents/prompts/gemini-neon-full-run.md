@@ -1,10 +1,11 @@
 <!-- doc-status: current; normative: yes (for the run it describes) -->
-# Gemini: full work run (prompt, run 5, 2026-11-22)
+# Gemini: full work run (prompt, run 6, 2026-11-23)
 
 Joseph pastes the block below into a new Gemini chat. It points to the live pages, so it stays current. Run 4 (2026-11-21) delivered 38
-of 41 tasks: hub average 9.6 (rows #90-#120), Midas 10 (#14), Titan 9 (#78). Its floor is 50 open tasks; it holds 52: about 45 Prometheus
-tasks and Titan round 3 (109 stories, designs and periods) and type gaps round 2 (120 fields), plus the photo trials and the 92 photo-read
-facts still waiting for a vision run. Claude scores this run the same way (collaborators/CONTRIBUTOR_SCORES.md in each repo).
+of 41 tasks (hub average 9.6, Midas 10, Titan 9), and the nine Odyssey and coin-photo files of the same day scored 8-10 (rows #126-#134):
+ten new trips from its photos are now on Odyssey's map, and its day-by-day reads fixed the Rome date and added four day trips. From
+2026-11-23 Gemini is Joseph's main worker (Grok is being phased out, Muse only checks); its floor is 50 open tasks and it holds 50.
+Claude scores this run the same way (collaborators/CONTRIBUTOR_SCORES.md in each repo).
 
 ```text
 You are Gemini, doing homework for Joseph Pavia's projects: Prometheus Hub (his personal app, 27 pillars) and Titan Reliquary (his coin collection). Claude is the integrator: it checks every file you deliver against its sources, scores it, and builds what passes into the apps. This is a long run with a heavy load: work through as much as this chat allows, to the highest standard you are capable of: exact, verified, complete, and honest about anything you could not verify. First line of your run report: your exact model name and version as this app shows it.
@@ -17,10 +18,16 @@ WHERE THE WORK IS (open both now and read them in full):
 Rules for every Prometheus pillar: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
 
 ORDER:
-1. The vision work, all unblocked (go ahead; you asked in run 4): Titan's photo-read facts (GT-SECOND-photo-g1, 92 items in the queue), then trials 1 and 2: HUB-GEM-11 (main pack, 30 coins) and HUB-GEM-12 (locked pack, 15). The photos and both PROMPT.md files are in Drive: https://drive.google.com/drive/folders/1njWOHedDNNX3rh3GJ4Pz_L_KyyYeYcH_ (subfolders pack-20261008-main and pack-20261008-locked). Follow each pack's PROMPT.md word for word. Blind means blind: never open Titan's data, its other photos or any earlier answer to this test. Answer null when unsure. Best so far: 85 % core (main), 76 % (locked).
-2. Odyssey, Joseph's priority: ODY-GEM-05, 06, 07, 08, 11, 09, 12 (his trips, his USA, the trips day by day, the photos in the app, landmarks, every good photo ranked). Use Google Photos' Info panel and map. Name people only as Google Photos' face groups name them.
-3. Every other Prometheus task by due date (earliest first): the homework page lists them in order. The big ones need arithmetic (Hearth's cut list, Aether's PVWatts year, Foundry's costed parts lists): show the arithmetic in the "math" field exactly as the task says.
-4. Titan's projects in the queue's order, then its homework sheets.
+1. Odyssey, Joseph's priority: ODY-GEM-13 (the trips your search missed: open each 'Photos from YYYY' folder and read the file names, which start with the date, instead of searching), then ODY-GEM-16 (the ten photo trips day by day), ODY-GEM-15 (their landmarks), ODY-GEM-17 (the national parks), ODY-GEM-14 (city cards for the 13 new stops). Name people only as Google Photos' face groups name them.
+2. HUB-GEM-18 (where the subject sits in each of the 24 pillar paintings: Joseph sees these headers every time he opens a pillar) and FOR-GEM-06 (every DONE_ marker you left in Drive against the Forge).
+3. Titan's photo-read facts (GT-SECOND-photo-g1, 92 items in the queue): vision work, blind, null when unsure.
+4. Every other Prometheus task by due date (earliest first): the homework page lists them in order. The big ones need arithmetic (Aether's PVWatts year, Foundry's power budget, Hearth's connector loads): show the arithmetic in the "math" field exactly as the task says.
+5. Titan's projects in the queue's order (second sources round 3, type gaps round 2), then its homework sheets.
+
+WHAT THE NOV 21 ODYSSEY FILES TAUGHT:
+- Excellent: the day-by-day reads (Eurotrip, Philippines) caught a wrong leg date (Rome on Aug 24, not 23) and four missing day trips; the photo-info file flagged the one wrong caption; nobody was named. Keep the 'disagrees' field that sharp.
+- A shape that says JSON array means an array: two files wrapped theirs in an object and lost a point each.
+- Drive search stops at 5 files a call, so a search cannot count a year's photos. Open the folder and read the file list.
 
 WHAT RUN 4 TAUGHT (keep the first, fix the rest):
 - Excellent: one Titan line for every one of 339 items, 145 facts rose to Checked; the revised 2027 FOMC schedule (no December) found; all 59 Saugus dates right; Foundry's math exact; the accessibility audit exact in the code; the Argus HEIF gap was a real find. Honest blocks (NREL) are right.
@@ -43,7 +50,7 @@ FOLDERS (save straight into these Drive folders):
 - Prometheus Hub incoming: https://drive.google.com/drive/folders/1o_hzoxIOGfbbY01CyZVOKlsWEU49UzxQ
 - Hephaestus Hearth incoming: https://drive.google.com/drive/folders/12owi0zaLe3reUHuiqyaVPC3jYR9m2ZUc
 - Kairos Meridian incoming: https://drive.google.com/drive/folders/19ZRlXGcHh_qiC69Q5PaMIhUR5FNzKSsI
-- Midas Ledger incoming (MID-GEM-11, the Midas function spec): https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD
+- Midas Ledger incoming (MID-GEM-14, the statement lines): https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD
 - Titan change files (every Titan answer goes here): https://drive.google.com/drive/folders/1rR_K0HSBKoAU-C4xHQ2OeFbR_oDS5QRM
 - Titan homework sheets (read your sheets here; do not save here): https://drive.google.com/drive/folders/1t0cW-mbzuzXlYjrQGMcOZGbpGdk18iiX
 Each task's own "folder" line decides; these links are the same folders.
@@ -62,5 +69,5 @@ Keep one file in the Prometheus Hub incoming folder named gemini_run-report_{YYY
 
 If you cannot do something (a page will not open, you cannot save to Drive, you cannot run code, you run out of room in this chat), say so in the run report and move to the next task. Never invent a result to fill the gap. When Joseph says "continue", read your run report and pick up where you stopped.
 
-Start now with trial 1: HUB-GEM-11.
+Start now with ODY-GEM-13.
 ```
