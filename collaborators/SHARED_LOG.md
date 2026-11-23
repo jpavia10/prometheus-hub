@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-23] Living painted header on every painted pillar (d53; owner: "Continue")
+- All 24 pillars with a menu painting now open on it live (kit.js `LIVING`); Athenaeum keeps its own full-page sky. Framing checked header by header at phone size; set by eye where the lights' centre misses the subject (`FOCUS`: Kairos .42, Garage .47, Odyssey .46, Selling .56, Kin .56, Continuity .60). Piano, Money and Forge hold 60 fps page frames with no long tasks; WORLD-1 now covers the rollout and Athenaeum; 37/37 proofs.
+
 ### [2026-11-23] Living painted header, first three pillars (d52; owner chose "living painted header")
 - `kit/world.js`: a pillar opens on its own menu painting, alive: depth parallax by scroll (near planes faster), finger or phone tilt, a slow dolly, lights that glow and flicker from the lights map, light shafts, mist on the far planes; the subject is placed in an open band at the top (focus set by eye per painting, the lights' centre as the fallback) and the title sits on its lower edge over a dark band (readable over any painting). From the menu's dive (sessionStorage `pk:dive`) the painting arrives pushed in and settles by the clock. The header accent is the painting's dominant lit hue (Kairos violet 248, Garage 203, Odyssey 203).
 - On for Kairos, Garage and Odyssey (`LIVING` in kit.js, `FOCUS` in world.js); every other pillar keeps the still backdrop until the owner has seen these. 30 fps cap, stops when scrolled past, pauses when hidden, one still frame under reduced motion; governor drops shafts, then resolution. 60 fps page frames and no long tasks in headless Chromium. New proof WORLD-1 (37/37).

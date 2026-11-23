@@ -174,14 +174,14 @@ with sync_playwright() as p:
         proof("ODY-2", "His trip photos as a journey: each past trip opens on its own photos, every photo is served, the map follows the photo (route drawn to that stop, the stop ringed), a stop on the map opens its photos, full screen steps and closes from the keyboard, Play walks the trip",
               ok, f"photos per trip {j1['n']}, {j1['files']} photos and their thumbnails served, {j1['bad']} missing; photo 7 -> {j2['place']}, ringed {j2['here']}, {j2['todo']} legs still ahead; tapping Prague on the map -> {j3}; full screen next -> {lb!r}, Escape closes: {gone}; Play after 4.7 s -> {played}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("ODY-2", "His trip photos as a journey", False, "did not finish: " + str(e)[:200])
-    # WORLD-1 (2026-11-23, owner chose "living painted header"): Kairos, Garage and Odyssey open on their own painting, alive (kit/world.js):
-    # the canvas is drawn, the header takes its accent from the painting, the page never scrolls sideways; a pillar not yet switched on
-    # keeps the still backdrop; arriving from the menu's dive the painting starts pushed in and settles back.
+    # WORLD-1 (2026-11-23, owner chose "living painted header"; all painted pillars since the rollout): a pillar opens on its own painting, alive (kit/world.js):
+    # the canvas is drawn, the header takes its accent from the painting, the page never scrolls sideways; Athenaeum keeps its own sky
+    # (no painting behind it); arriving from the menu's dive the painting starts pushed in and settles back.
     try:
         seen = {}
-        for pid in ("kairos", "garage", "odyssey", "apollo"):
+        for pid in ("kairos", "garage", "odyssey", "apollo", "sylade", "athenaeum"):
             po.goto(f"{URL}pillars/{pid}/", wait_until="load"); po.wait_for_timeout(300)
-            if pid != "apollo": po.wait_for_selector("canvas.pk-living.on", state="attached", timeout=15000)
+            if pid != "athenaeum": po.wait_for_selector("canvas.pk-living.on", state="attached", timeout=15000)
             else: po.wait_for_timeout(1500)
             seen[pid] = po.evaluate("""() => ({ living: !!document.querySelector('canvas.pk-living'), still: !!document.querySelector('div.pk-world'),
               acc: getComputedStyle(document.body).getPropertyValue('--world-accent').trim(), wide: document.documentElement.scrollWidth })""")
@@ -190,9 +190,9 @@ with sync_playwright() as p:
         z0 = po.evaluate("window.PKWorld.state.z"); t_set = po.evaluate("performance.now()")
         po.wait_for_function("Math.abs(window.PKWorld.state.z - 1) < 0.01", timeout=8000)   # a slow runner draws few frames; wait for the settle
         z1 = po.evaluate("window.PKWorld.state.z"); settle = (po.evaluate("performance.now()") - t_set) / 1000
-        ok = (all(seen[k]["living"] and seen[k]["acc"].startswith("hsl(") and seen[k]["wide"] <= 390 for k in ("kairos", "garage", "odyssey"))
-              and not seen["apollo"]["living"] and seen["apollo"]["wide"] <= 390 and z0 > 1.05 and abs(z1 - 1) < 0.01 and not bo)
-        proof("WORLD-1", "Kairos, Garage and Odyssey open on their own living painting (accent from the painting, no sideways scroll); the others keep the still backdrop; from the menu's dive the painting arrives pushed in and settles",
+        ok = (all(seen[k]["living"] and seen[k]["acc"].startswith("hsl(") and seen[k]["wide"] <= 390 for k in ("kairos", "garage", "odyssey", "apollo", "sylade"))
+              and not seen["athenaeum"]["living"] and seen["athenaeum"]["wide"] <= 390 and z0 > 1.05 and abs(z1 - 1) < 0.01 and not bo)
+        proof("WORLD-1", "Every painted pillar opens on its own living painting (accent from the painting, no sideways scroll); Athenaeum keeps its own sky; from the menu's dive the painting arrives pushed in and settles",
               ok, f"{ {k: (v['living'], v['acc'], v['wide']) for k, v in seen.items()} }; dive arrival zoom {z0:.2f} -> {z1:.3f} within {settle:.1f} s" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("WORLD-1", "The living painted header", False, "did not finish: " + str(e)[:200])
     co.close()

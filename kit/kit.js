@@ -600,7 +600,9 @@
     var url = new URL("../art/worlds/world_" + slug + ".webp", src).href, im = new Image();
     /* 2026-11-23 (owner chose "living painted header"): these pillars run their painting live (kit/world.js); arriving from the
        menu's dive (sessionStorage pk:dive) it starts pushed in and settles back. The rest keep the still backdrop below. */
-    var LIVING = { kairos: 1, garage: 1, odyssey: 1 };
+    var LIVING = { kairos: 1, garage: 1, odyssey: 1, hearth: 1, apollo: 1, money: 1, selling: 1, records: 1, icarus: 1, hermes: 1, piano: 1,
+      bastion: 1, privacy: 1, argus: 1, games: 1, forge: 1, foundry: 1, observatory: 1, kin: 1, presence: 1, aether: 1, polis: 1, mythos: 1, continuity: 1 };
+    /* not Athenaeum: it draws its own sky over the whole page */
     if (LIVING[slug] && !document.documentElement.classList.contains("is-embed")) {
       var dive = false;
       try { var dv = JSON.parse(sessionStorage.getItem("pk:dive") || "null"); sessionStorage.removeItem("pk:dive"); dive = !!(dv && dv.id === slug && Date.now() - dv.t < 6000); } catch (e) { /* none */ }
