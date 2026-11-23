@@ -224,7 +224,7 @@
 .at-regs::-webkit-scrollbar{display:none}
 .at-reg{flex:0 0 auto;font:inherit;font-size:13.5px;color:var(--muted);background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:6px 12px;cursor:pointer;transition:color .2s,background .2s,border-color .2s}
 .at-reg i{font-style:normal;font-variant-numeric:tabular-nums;opacity:.7;margin-left:3px}
-.at-reg.on{color:var(--ink-strong,#fff);background:color-mix(in srgb,var(--accent) 30%,transparent);border-color:var(--accent)}
+.at-reg.on{color:var(--ink);background:color-mix(in srgb,var(--accent) 30%,transparent);border-color:var(--accent)}
 .at-wrap{max-width:760px}
 .at-map{touch-action:manipulation}
 .at-route{fill:none;stroke:color-mix(in srgb,var(--accent-2) 55%,transparent);stroke-width:1.1;stroke-linecap:round}
