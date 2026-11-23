@@ -187,11 +187,13 @@ with sync_playwright() as p:
               acc: getComputedStyle(document.body).getPropertyValue('--world-accent').trim(), wide: document.documentElement.scrollWidth })""")
         po.evaluate("sessionStorage.setItem('pk:dive', JSON.stringify({ id: 'garage', t: Date.now() }))")
         po.goto(f"{URL}pillars/garage/", wait_until="load"); po.wait_for_selector("canvas.pk-living.arrive", state="attached", timeout=15000); po.wait_for_timeout(250)
-        z0 = po.evaluate("window.PKWorld.state.z"); po.wait_for_timeout(2200); z1 = po.evaluate("window.PKWorld.state.z")
+        z0 = po.evaluate("window.PKWorld.state.z"); t_set = po.evaluate("performance.now()")
+        po.wait_for_function("Math.abs(window.PKWorld.state.z - 1) < 0.01", timeout=8000)   # a slow runner draws few frames; wait for the settle
+        z1 = po.evaluate("window.PKWorld.state.z"); settle = (po.evaluate("performance.now()") - t_set) / 1000
         ok = (all(seen[k]["living"] and seen[k]["acc"].startswith("hsl(") and seen[k]["wide"] <= 390 for k in ("kairos", "garage", "odyssey"))
               and not seen["apollo"]["living"] and seen["apollo"]["wide"] <= 390 and z0 > 1.05 and abs(z1 - 1) < 0.01 and not bo)
         proof("WORLD-1", "Kairos, Garage and Odyssey open on their own living painting (accent from the painting, no sideways scroll); the others keep the still backdrop; from the menu's dive the painting arrives pushed in and settles",
-              ok, f"{ {k: (v['living'], v['acc'], v['wide']) for k, v in seen.items()} }; dive arrival zoom {z0:.2f} -> {z1:.3f}" + (f"; errors {bo[:2]}" if bo else ""))
+              ok, f"{ {k: (v['living'], v['acc'], v['wide']) for k, v in seen.items()} }; dive arrival zoom {z0:.2f} -> {z1:.3f} within {settle:.1f} s" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("WORLD-1", "The living painted header", False, "did not finish: " + str(e)[:200])
     co.close()
 
