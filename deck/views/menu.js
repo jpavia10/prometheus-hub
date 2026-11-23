@@ -32,7 +32,9 @@ function manifest(p) {
 const TAG = { kairos: "Time", midas: "Money", titan: "The collection", hearth: "The house", garage: "The car", apollo: "Body", money: "Payoff", selling: "Sales", records: "Paper", icarus: "Trading journal",
   hermes: "Mail", piano: "Bossa nova", bastion: "Mountain prep", athenaeum: "Idea vault", odyssey: "Trips", privacy: "Footprint", argus: "Pictures", games: "Games", forge: "AI work",
   foundry: "Inventions", observatory: "Signals", kin: "Family", presence: "Presence", aether: "Sky & pass", polis: "Civic watch", mythos: "Stories", continuity: "Vault" };
-let artList = null;
+let artList = null, stripMap = null;
+/* the strip's painted cards: one sprite of every world (tools/art/strip.py); ids missing from it keep their icon */
+function strip_() { return stripMap || (stripMap = fetch("art/worlds/strip.json").then((r) => (r.ok ? r.json() : null)).catch(() => null)); }
 function arts() { return artList || (artList = fetch("art/worlds/index.json").then((r) => (r.ok ? r.json() : { worlds: [] })).then((j) => new Set(j.worlds || [])).catch(() => new Set())); }
 
 /** The one live line a level shows: its next dated thing on the shared bus, or how much it keeps on this device. Never a made-up figure. */
@@ -290,6 +292,9 @@ export function menu(ctx, opts = {}) {
   const view = document.getElementById("view"); const onScroll = () => { const k = Math.max(0, Math.min(1, view.scrollTop / (innerHeight * 0.7))); for (const c of W.els) c.style.opacity = String(1 - k); document.body.classList.toggle("menu-off", k >= 0.99); W.run(k < 0.99); };
   if (view) view.addEventListener("scroll", onScroll, { passive: true });
 
+  strip_().then((m) => { if (!m || !m.ids) return; strip.style.setProperty("--n", m.ids.length);
+    strip.querySelectorAll(".mn-lvl").forEach((b) => { const k = m.ids.indexOf(b.dataset.pillar); if (k < 0) return; b.classList.add("painted"); b.prepend(h("span.mn-lvl-art", { "aria-hidden": "true", style: { "--sx": k } })); });
+    const on = strip.children[at]; if (on && on.scrollIntoView) on.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" }); });
   paint(1); arts().then((s) => { hasArt = s; if (s.has(list[at].id)) { el.classList.add("art"); W.show(list[at], true); }
     W.preload([list[(at + 1) % list.length], list[(at - 1 + list.length) % list.length]].filter((x) => s.has(x.id)).map((x) => x.id)); });
   /* back from a pillar through the browser's page cache: the world comes back out of the dive */
