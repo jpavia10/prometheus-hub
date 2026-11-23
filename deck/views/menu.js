@@ -228,7 +228,7 @@ export function todayRowsFor(now, t, max = 3, skip = []) {
   const rows = [...soon.map((r) => h("a.mn-trow", { href: r.go || `#/time/day/${r.date}` }, h("i.mn-dot" + ((r.weight || 0) >= 2 ? ".hard" : "")), h("b", r.title), h("small", untilText(r, now)))),
     ...cd.map((r) => { const l = left(r.date), hot = r.tone !== "holiday" && /^(today|tomorrow|[1-7] d)$/.test(l);
       return h("a.mn-trow", { href: r.go || "#/time/agenda", title: [r.title, r.agency].filter(Boolean).join(" · ") }, h("i.mn-dot" + (r.tone === "holiday" ? ".calm" : hot ? ".hard" : "")), h("b", r.title), h("small", `${short(r.date)} · ${l}`)); })];
-  return { rows, soon };
+  return { rows, soon, titles: [...soon, ...cd].map((r) => r.title) };
 }
 
 export function menu(ctx, opts = {}) {
@@ -238,7 +238,7 @@ export function menu(ctx, opts = {}) {
 
   const { rows: todayRows, soon } = todayRowsFor(now, t);
   const today_ = h("a.mn-today", { href: "#/time", "aria-label": "Today across every pillar" },
-    h("span.mn-tk", h("span", "Today"), h("small", `${dowName(t, 1)} · ${monName(Number(t.slice(5, 7)), 1)} ${Number(t.slice(8))}`), h("small.mn-clear", soon.length ? `${within(24, now).filter((r) => !r.done).length} in the next 24 h` : "clear for 24 h")),
+    h("span.mn-tk", h("span", "Today"), h("small", `${dowName(t, 1)} · ${monName(Number(t.slice(5, 7)), 1)} ${Number(t.slice(8))}`), h("small.mn-clear", soon.length ? `${within(24, now).filter((r) => !r.done).length} in the next 24 h` : "nothing due in 24 h")),
     todayRows.length ? h("span.mn-trows", ...todayRows) : h("span.mn-trows", h("span.mn-trow", h("i.mn-dot.calm"), h("b", "Nothing dated yet"), h("small", "add one with +"))));
 
   /* the level card */

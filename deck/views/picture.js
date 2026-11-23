@@ -50,7 +50,9 @@ export function render(root, route, ctx) {
   } else {
     /* 2026-11-23 (owner: the homes are "cool but need refinement"): the quiet card was a sentence about where things live; it is now
        what is next across every pillar, the same rows as the menu's Today */
-    const { rows } = todayRowsFor(now, today(), 3, [facts.event && facts.event.title, facts.deadline && facts.deadline.title]);
+    /* skip what the screen already says: the now line, and on the menu its Today panel too */
+    const said = [facts.event && facts.event.title, facts.deadline && facts.deadline.title, ...(homeMode() === "orbit" ? [] : todayRowsFor(now, today(), 3).titles)];
+    const { rows } = todayRowsFor(now, today(), 3, said);
     card = h("section.panel.context-card.next-card", { "aria-label": "After that, across every pillar" },
       h("header.panel-head", h("h2", "After that"), h("a.link", { href: "#/time/agenda" }, "Agenda")),
       rows.length ? h("div.mn-trows", ...rows) : h("p.quiet", "Nothing dated yet. Add one with +."));
