@@ -141,7 +141,9 @@ window.ODYSSEY_DATA = {
     /* Found in his photos (2026-11-23): ten trips no plan or booking recorded. Gemini read the photo data (ODY-GEM-05, Nov 21); Claude
        went through the photos one by one (rev 2): GPS from the original files placed Rocky Creek, the General Sherman Tree, Zumwalt Meadow,
        Point Arena and the High Roller; the "Las Vegas" trip began a day earlier at the Grand Canyon; the Mexico trip was a cruise out of
-       Long Beach; the lagoon Gemini put at Fort Bragg is the Navarro River (its sign says so). No nights: the photos do not say where he slept. */
+       Long Beach; the lagoon Gemini put at Fort Bragg is the Navarro River (its sign says so). No nights: the photos do not say where he slept.
+       Rev 3 (Nov 23, Gemini's day logs, ODY-GEM-16): Sequoia ran to a last morning at Grant Grove on Aug 16, San Diego began with an evening in
+       the Gaslamp on Apr 9, and the cruise called at Cabo San Lucas on Aug 26 and had its last sea day on Aug 30. */
     { id: "photos-atlanta-2015", rev: 2,
       name: "Georgia — a long weekend",
       dest: "North Georgia and Atlanta",
@@ -169,13 +171,13 @@ window.ODYSSEY_DATA = {
         { at: "2018-06-21", code: "MHL", name: "Marin Headlands", country: "United States", lat: 37.82152, lon: -122.52955, by: "car", note: "the Golden Gate from the headlands" },
       ],
     },
-    { id: "photos-sequoia-2018", rev: 2,
+    { id: "photos-sequoia-2018", rev: 3,
       name: "Sequoia & Kings Canyon",
       dest: "Sequoia and Kings Canyon National Parks, California",
       from: { code: "LA", name: "Los Angeles area" },
-      start: "2018-08-14", end: "2018-08-15",
+      start: "2018-08-14", end: "2018-08-16",
       cold: false, rain: false, beach: false, work: false, car: true, kids: false,
-      notes: "Two days in the big trees: past Lake Kaweah and up to the General Sherman Tree on Aug 14, then Grant Grove and down into Kings Canyon on Aug 15 for Roaring River Falls and the boardwalk through Zumwalt Meadow.",
+      notes: "Two days in the big trees: past Lake Kaweah and up to the General Sherman Tree on Aug 14, then Grant Grove and down into Kings Canyon on Aug 15 for Roaring River Falls and the boardwalk through Zumwalt Meadow; then a last morning at the Grant Grove camp on Aug 16.",
       source: "Your photos in Drive: dates from the files, places from their GPS or from what is in the picture (Gemini read them on Nov 21; Claude checked them photo by photo on Nov 23)",
       legs: [
         { at: "2018-08-14", code: "KAW", name: "Lake Kaweah", country: "United States", lat: 36.4006, lon: -118.98922, by: "car", note: "on the drive up" },
@@ -200,16 +202,17 @@ window.ODYSSEY_DATA = {
         { at: "2019-06-10", code: "HVR", name: "Hoover Dam", country: "United States", lat: 36.01525, lon: -114.73435, by: "car" },
       ],
     },
-    { id: "photos-mexico-2019", rev: 2,
+    { id: "photos-mexico-2019", rev: 3,
       name: "Mexican Riviera cruise",
       dest: "Mazatlán and Puerto Vallarta, Mexico",
       from: { code: "LGB", name: "Long Beach" },
-      start: "2019-08-24", end: "2019-08-29",
+      start: "2019-08-24", end: "2019-08-30",
       cold: false, rain: false, beach: true, work: false, car: false, kids: false,
-      notes: "A cruise out of Long Beach: sailing day on Aug 24 with the Queen Mary alongside, Mazatlán's harbour and cathedral on Aug 27, and Puerto Vallarta's south shore at Boca de Tomatlán on Aug 28. Your Google Maps timeline also shows San José del Cabo; your photos run to Aug 29.",
+      notes: "A cruise out of Long Beach: sailing day on Aug 24 with the Queen Mary alongside, the marina at Cabo San Lucas on Aug 26, Mazatlán's harbour and cathedral on Aug 27, Puerto Vallarta's south shore at Boca de Tomatlán on Aug 28, then two days at sea to Aug 30. Your Google Maps timeline also shows San José del Cabo.",
       source: "Your photos in Drive: dates from the files, places from their GPS or from what is in the picture (Gemini read them on Nov 21; Claude checked them photo by photo on Nov 23)",
       legs: [
         { at: "2019-08-24", code: "LGB", name: "Long Beach", country: "United States", lat: 33.7529, lon: -118.1897, note: "sailing day" },
+        { at: "2019-08-26", code: "CSL", name: "Cabo San Lucas", country: "Mexico", lat: 22.8806, lon: -109.9078, by: "cruise", note: "the marina, first port of call" },
         { at: "2019-08-27", code: "MZT", name: "Mazatlán", country: "Mexico", lat: 23.18362, lon: -106.42424, by: "cruise", note: "the harbour under the lighthouse hill, then the cathedral" },
         { at: "2019-08-28", code: "PVR", name: "Puerto Vallarta", country: "Mexico", lat: 20.47448, lon: -105.29985, by: "cruise", note: "Boca de Tomatlán, on the south shore" },
       ],
@@ -229,13 +232,13 @@ window.ODYSSEY_DATA = {
         { at: "2021-03-07", code: "PTA", name: "Point Arena", country: "United States", lat: 38.9509, lon: -123.7375, by: "car", note: "a sea arch, around noon" },
       ],
     },
-    { id: "photos-sandiego-2022", rev: 2,
+    { id: "photos-sandiego-2022", rev: 3,
       name: "San Diego",
       dest: "San Diego, California",
       from: { code: "LA", name: "Los Angeles area" },
-      start: "2022-04-10", end: "2022-04-11",
+      start: "2022-04-09", end: "2022-04-11",
       cold: false, rain: false, beach: false, work: false, car: true, kids: false,
-      notes: "Downtown from above the Gaslamp in the morning, then Balboa Park: the Cabrillo Bridge, the Desert Garden and the Japanese Friendship Garden (Apr 10). Photos through Apr 11.",
+      notes: "An evening in the Gaslamp Quarter on Apr 9, downtown from above it the next morning, then Balboa Park: the Cabrillo Bridge, the Desert Garden and the Japanese Friendship Garden (Apr 10). Photos through Apr 11.",
       source: "Your photos in Drive: dates from the files, places from their GPS or from what is in the picture (Gemini read them on Nov 21; Claude checked them photo by photo on Nov 23)",
       legs: [
         { at: "2022-04-10", code: "GAS", name: "Gaslamp Quarter", country: "United States", lat: 32.70884, lon: -117.15968, by: "car", note: "downtown from above, morning" },

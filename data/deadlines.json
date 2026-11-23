@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 22:49 UTC",
+ "updated": "2026-11-23 23:05 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -140,9 +140,9 @@
    "ai": "gemini",
    "ai_name": "Gemini",
    "id": "ODY-GEM-18",
-   "title": "Odyssey: a card for the 11 stops still without one (the ten photo trips)",
+   "title": "Odyssey: a card for the 10 stops still without one (the photo trips)",
    "state": "now",
-   "count": 11
+   "count": 10
   },
   {
    "due": "2026-12-05",

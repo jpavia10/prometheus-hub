@@ -8,20 +8,20 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
+Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Odyssey · Trips & Away Mode right now.
 
 ## Gemini
 
-Updated 2026-11-23 22:49 UTC · 10 open in this pillar.
+Updated 2026-11-23 23:05 UTC · 10 open in this pillar.
 
 
 - ODY-GEM-23 · Odyssey: the park card gaps (Sequoia and Kings Canyon areas, Kings Canyon's heights, Grand Canyon's low point) · due 2026-12-03
     make: odyssey_gemini_parks-gaps_{YYYYMMDD-HHMM}.json · how many: 5 · done when: All 5 numbers, each from nps.gov.
-- ODY-GEM-18 · Odyssey: a card for the 11 stops still without one (the ten photo trips) · due 2026-12-05
-    make: odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json · how many: 11 · done when: All 11 codes answered.
+- ODY-GEM-18 · Odyssey: a card for the 10 stops still without one (the photo trips) · due 2026-12-05
+    make: odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json · how many: 10 · done when: All 10 codes answered.
 - ODY-GEM-19 · Odyssey: the stops of the six trips your run 6 found, in order, with where they are · due 2026-12-05
     make: odyssey_gemini_new-trip-stops_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All six trips have every stop, in order, with coordinates of a public place.
 - ODY-GEM-20 · Odyssey: the six new trips day by day · due 2026-12-06
@@ -41,28 +41,28 @@ Updated 2026-11-23 22:49 UTC · 10 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
+Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Odyssey · Trips & Away Mode right now.
 
 ## ChatGPT
 
-Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
+Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Odyssey · Trips & Away Mode right now.
 
 ## Argon
 
-Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
+Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Odyssey · Trips & Away Mode right now.
 
 ## Hydrogen
 
-Updated 2026-11-23 22:49 UTC · 0 open in this pillar.
+Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Odyssey · Trips & Away Mode right now.

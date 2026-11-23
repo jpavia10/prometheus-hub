@@ -1,12 +1,12 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-23 22:49 UTC. 51 to do across 26 pillars.
+Updated 2026-11-23 23:05 UTC. 52 to do across 26 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).
 
-TITAN RELIQUARY (its own loop, the exception): 3 homework sheets + 2 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
+TITAN RELIQUARY (its own loop, the exception): 3 homework sheets + 3 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Gemini' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_gemini.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
@@ -25,7 +25,7 @@ IN THIS ORDER:
 7. [Records · Paper Killer] REC-GEM-10 · Records: renewing a US passport in 2026 (online and DS-82), fees and processing times · due 2026-12-05
 8. [Records · Paper Killer] REC-GEM-11 · Records: Kern County property tax, the bills and deadlines a homeowner gets in a year · due 2026-12-05
 9. [Bastion · Mountain Prep] BAS-GEM-13 · Bastion: the Genasys zone names for the mountain communities (Frazier Park, Lake of the Woods, Pinon Pines, Pine Mountain Club) · due 2026-12-05
-10. [Odyssey · Trips & Away Mode] ODY-GEM-18 · Odyssey: a card for the 11 stops still without one (the ten photo trips) · due 2026-12-05
+10. [Odyssey · Trips & Away Mode] ODY-GEM-18 · Odyssey: a card for the 10 stops still without one (the photo trips) · due 2026-12-05
 11. [Odyssey · Trips & Away Mode] ODY-GEM-19 · Odyssey: the stops of the six trips your run 6 found, in order, with where they are · due 2026-12-05
 12. [Observatory] OBS-GEM-07 · Observatory: the rate limits and terms of use for the 21 feeds · due 2026-12-05
 13. [Aether · Atmospheric & Field Lab] AET-GEM-16 · Aether: Grapevine closures in the last three winters (2023-24, 2024-25, 2025-26) · due 2026-12-05
@@ -500,14 +500,14 @@ IN THIS ORDER:
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
 ==================== 10. ODYSSEY · TRIPS & AWAY MODE ====================
-## 10. ODY-GEM-18 · Odyssey: a card for the 11 stops still without one (the ten photo trips)
+## 10. ODY-GEM-18 · Odyssey: a card for the 10 stops still without one (the photo trips)
 
 **Due:** 2026-12-05 · **State:** now
 
 **What it unlocks:** Every stop on the map opens its card.
 
 **Read first:**
-- The stop codes as in pillars/odyssey/odyssey-data.js: NGA North Georgia mountains (34.868, -84.520: name the nearest town), MHL Marin Headlands, KAW Lake Kaweah, GRG Grant Grove (Kings Canyon), CDG Cedar Grove (Kings Canyon), GCN Grand Canyon South Rim, PGA Page AZ, LGB Long Beach, PTA Point Arena, GAS Gaslamp Quarter (San Diego), BAL Balboa Park (San Diego)
+- The stop codes as in pillars/odyssey/odyssey-data.js: NGA North Georgia mountains (34.868, -84.520: name the nearest town), MHL Marin Headlands (nearest town: Sausalito), KAW Lake Kaweah (Three Rivers), CDG Cedar Grove, Kings Canyon (nearest town), GCN Grand Canyon South Rim (Grand Canyon Village / Tusayan), PGA Page AZ, LGB Long Beach, CSL Cabo San Lucas (Mexico: peso, Spanish, America/Mazatlan), NAV Navarro River mouth (nearest town), PTA Point Arena
 - Your own file odyssey_gemini_city-cards_20261123-0922.json for the shape and the sourcing
 
 **Do this:**
@@ -544,9 +544,9 @@ IN THIS ORDER:
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 11
+**How many:** 10
 
-**Done when:** All 11 codes answered.
+**Done when:** All 10 codes answered.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

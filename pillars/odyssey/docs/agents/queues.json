@@ -1476,10 +1476,10 @@
     {
      "state": "now",
      "added": "2026-11-23",
-     "why": "Your run 6 cards covered the 13 stops the task listed when you started; Claude had already moved the trips to their checked stops, and 11 of those have no card.",
+     "why": "Your run 6 cards are in Odyssey (12 of them; a park or a dam shows no population). These 10 stops still have no card; GAS and BAL are covered by your San Diego card, Grant Grove by Kings Canyon.",
      "unlocks": "Every stop on the map opens its card.",
      "inputs": [
-      "The stop codes as in pillars/odyssey/odyssey-data.js: NGA North Georgia mountains (34.868, -84.520: name the nearest town), MHL Marin Headlands, KAW Lake Kaweah, GRG Grant Grove (Kings Canyon), CDG Cedar Grove (Kings Canyon), GCN Grand Canyon South Rim, PGA Page AZ, LGB Long Beach, PTA Point Arena, GAS Gaslamp Quarter (San Diego), BAL Balboa Park (San Diego)",
+      "The stop codes as in pillars/odyssey/odyssey-data.js: NGA North Georgia mountains (34.868, -84.520: name the nearest town), MHL Marin Headlands (nearest town: Sausalito), KAW Lake Kaweah (Three Rivers), CDG Cedar Grove, Kings Canyon (nearest town), GCN Grand Canyon South Rim (Grand Canyon Village / Tusayan), PGA Page AZ, LGB Long Beach, CSL Cabo San Lucas (Mexico: peso, Spanish, America/Mazatlan), NAV Navarro River mouth (nearest town), PTA Point Arena",
       "Your own file odyssey_gemini_city-cards_20261123-0922.json for the shape and the sourcing"
      ],
      "steps": [
@@ -1492,7 +1492,7 @@
       "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
       "shape": "JSON array, one object per row, exactly the fields below"
      },
-     "count": 11,
+     "count": 10,
      "fields": [
       {
        "name": "n",
@@ -1572,7 +1572,7 @@
       "No row is a copy of another with the names changed.",
       "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
      ],
-     "done_when": "All 11 codes answered.",
+     "done_when": "All 10 codes answered.",
      "checks": [
       "Claude opens 12 rows at random against their pages and redoes every 'math' field."
      ],
@@ -1585,7 +1585,7 @@
       "a guess written as a fact (write 'not stated' and name the page you checked)"
      ],
      "id": "ODY-GEM-18",
-     "title": "Odyssey: a card for the 11 stops still without one (the ten photo trips)",
+     "title": "Odyssey: a card for the 10 stops still without one (the photo trips)",
      "due": "2026-12-05"
     },
     {

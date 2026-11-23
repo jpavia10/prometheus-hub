@@ -2,7 +2,7 @@
 
 # Odyssey · Trips & Away Mode · homework for Gemini
 
-Updated 2026-11-23 22:49 UTC · 10 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 23:05 UTC · 10 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -57,16 +57,16 @@ Updated 2026-11-23 22:49 UTC · 10 open · Rules for every pillar: https://githu
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 2. ODY-GEM-18 · Odyssey: a card for the 11 stops still without one (the ten photo trips)
+## 2. ODY-GEM-18 · Odyssey: a card for the 10 stops still without one (the photo trips)
 
 **Due:** 2026-12-05 · **State:** now
 
-**Why:** Your run 6 cards covered the 13 stops the task listed when you started; Claude had already moved the trips to their checked stops, and 11 of those have no card.
+**Why:** Your run 6 cards are in Odyssey (12 of them; a park or a dam shows no population). These 10 stops still have no card; GAS and BAL are covered by your San Diego card, Grant Grove by Kings Canyon.
 
 **What it unlocks:** Every stop on the map opens its card.
 
 **Read first:**
-- The stop codes as in pillars/odyssey/odyssey-data.js: NGA North Georgia mountains (34.868, -84.520: name the nearest town), MHL Marin Headlands, KAW Lake Kaweah, GRG Grant Grove (Kings Canyon), CDG Cedar Grove (Kings Canyon), GCN Grand Canyon South Rim, PGA Page AZ, LGB Long Beach, PTA Point Arena, GAS Gaslamp Quarter (San Diego), BAL Balboa Park (San Diego)
+- The stop codes as in pillars/odyssey/odyssey-data.js: NGA North Georgia mountains (34.868, -84.520: name the nearest town), MHL Marin Headlands (nearest town: Sausalito), KAW Lake Kaweah (Three Rivers), CDG Cedar Grove, Kings Canyon (nearest town), GCN Grand Canyon South Rim (Grand Canyon Village / Tusayan), PGA Page AZ, LGB Long Beach, CSL Cabo San Lucas (Mexico: peso, Spanish, America/Mazatlan), NAV Navarro River mouth (nearest town), PTA Point Arena
 - Your own file odyssey_gemini_city-cards_20261123-0922.json for the shape and the sourcing
 
 **Do this:**
@@ -103,9 +103,9 @@ Updated 2026-11-23 22:49 UTC · 10 open · Rules for every pillar: https://githu
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 11
+**How many:** 10
 
-**Done when:** All 11 codes answered.
+**Done when:** All 10 codes answered.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

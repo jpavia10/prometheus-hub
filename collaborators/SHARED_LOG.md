@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-23] d65: Odyssey gets Gemini's run 6 (Claude)
+- The ten photo trips now have their day-by-day logs (34 days, ODY-GEM-16) and 24 more landmarks with official facts (ODY-GEM-15): `tools/odyssey/extras.py` takes any number of day and landmark files and places each day by the trip's own dates; private notes (a family visit, a boarding pass, time-zone remarks) are taken out. 89 landmarks, all on a trip.
+- Rev 3 of three photo trips from Gemini's day logs: Sequoia to Aug 16 (a last morning at Grant Grove), San Diego from Apr 9 (an evening in the Gaslamp), and the cruise's Cabo San Lucas port call (Aug 26, a new stop) and last sea day (Aug 30). 46 places on the atlas and the globe (ODY-3 updated).
+- 12 more place cards (ODY-GEM-14; a park or a dam shows no population instead of 0): 39 cards. ODY-GEM-18 now asks for exactly the 10 stops still without one. 38/38 proofs.
+
 ### [2026-11-23] d64: every pillar header frames its subject; Gemini's 32 high-priority accessibility items (Claude)
 - The 11 painted headers Gemini measured as missing their subject now crop on it (kit/world.js FOCUS, checked by eye at 390 px: Hearth's deck, Money's ribbon, Hermes' mailboxes, the piano, Bastion's lantern, Privacy's dials, the arcade, the anvils, the drafting table, the telescope, Mythos' map desk); the menu strip uses the same crops.
 - Accessibility (hub_gemini_supp-a11y-fix-queue, the 32 'high'): 24 px checkboxes everywhere, focus rings on links, buttons and tabs, the deck's scroll container keeps a focused control clear of the dock, a darker dock over bright skies, readable placeholders, the search box is a combobox; per pillar: Aether past events, Athenaeum's 24 px time slider, Forge's filter buttons, Garage and Kairos and Hermes reflow, Odyssey's faint map lines and ticks, Privacy's table, the piano sequencer's 24 px steps (it scrolls inside itself), labels in Apollo, Bastion, Foundry, Games and Selling, a skip link on Sylade. Not changed, with reason: Records already reflows under 720 px (#29), the Observatory chart's 'white field' is its star dots on a dark chart (#26, #27), Hermes' jump badge is not a control (#23), and the pk-v2 tab strip scrolls by design (#2). No page is wider than 390 px; 38/38 proofs.

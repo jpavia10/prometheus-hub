@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 22:49 UTC",
+ "updated": "2026-11-23 23:05 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -53,7 +53,7 @@
    "live": "https://jpavia10.github.io/titan-reliquary-preview/",
    "open": {
     "grok": 0,
-    "gemini": 5,
+    "gemini": 6,
     "muse": 6,
     "chatgpt": 0,
     "argon": null,

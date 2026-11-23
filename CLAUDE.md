@@ -88,6 +88,7 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   consoles. The Kairos and Money pillar pages are back at their addresses. Which one each pillar becomes is the owner's decision.
 - **Proofs:** `python3 proofs/run.py <url> [--mock-weather]` (CORE-1..4 plus the d1 proofs), `node --test proofs/unit/*.test.mjs`,
   and `.github/workflows/proofs.yml` runs them against the live site after each deployment. `STATUS.md` is the honest list.
-- **Privacy:** public repository. No personal details in code; the owner's presets load from his private Drive file.
+- **Privacy while building (owner, 2026-11-23: "Privacy on oddessy isnt important. Its limiting scope and reducing experience for me. Remember even if its public ill eventually add privacy layers. As of now during developing the apps I dont care"):** do not cut content for privacy in Odyssey or while developing the apps: his photos with people in them, family places, real home towns and trip details all ship; he adds privacy layers later. Still never: API keys, passwords, tokens, account numbers or booking/confirmation codes (those are security, not privacy). The owner's presets still load from his private Drive file.
+- **Devices (owner, 2026-11-23: "S24 ultra is smallest phone. Dont worry too much for old devices as this is private project"):** design and test for the Galaxy S24 Ultra (384 x 832 CSS px) and up; no work for smaller or older phones, older browsers or old saved data beyond not breaking.
 - **Deploy:** push `main`, then update `DEPLOY_STAMP.txt` through the GitHub connector and confirm the Pages build and the proofs-live run.
 - **Titan is paused by the owner** (same day: "leave it for now"). Do not continue Titan's new front until he says.

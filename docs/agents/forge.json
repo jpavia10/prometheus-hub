@@ -1,6 +1,6 @@
 {
- "built": "2026-11-23T22:48:55Z",
- "checked": "2026-11-23T22:48:55Z",
+ "built": "2026-11-23T23:05:39Z",
+ "checked": "2026-11-23T23:05:39Z",
  "version": 2,
  "today": "2026-11-23",
  "sources": {
@@ -39,7 +39,7 @@
    "queued": 2,
    "done7": 176,
    "withdrawn": 68,
-   "items": 485,
+   "items": 484,
    "floor": 50,
    "by": {
     "hub": 46,
@@ -8979,16 +8979,16 @@
    "where": "Odyssey",
    "pid": "odyssey",
    "id": "ODY-GEM-18",
-   "title": "Odyssey: a card for the 11 stops still without one (the ten photo trips)",
+   "title": "Odyssey: a card for the 10 stops still without one (the photo trips)",
    "status": "todo",
    "due": "2026-12-05",
-   "items": 11,
+   "items": 10,
    "closed": "",
    "review": "",
    "reopened": "",
    "delivered": null,
    "detail": {
-    "why": "Your run 6 cards covered the 13 stops the task listed when you started; Claude had already moved the trips to their checked stops, and 11 of those have no card.",
+    "why": "Your run 6 cards are in Odyssey (12 of them; a park or a dam shows no population). These 10 stops still have no card; GAS and BAL are covered by your San Diego card, Grant Grove by Kings Canyon.",
     "steps": [
      "The card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'.",
      "For that town: population (latest census or official estimate, its year and page), elevation in metres, IANA time zone, currency, language.",
@@ -8997,7 +8997,7 @@
     "make": "odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json",
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below",
-    "done": "All 11 codes answered.",
+    "done": "All 10 codes answered.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
