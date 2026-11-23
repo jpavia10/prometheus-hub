@@ -8,6 +8,7 @@ Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entr
 - d60: the menu's level strip shows each world's painting as a small card (one 48 KB sprite of all 28, `tools/art/strip.py`, cached offline), the chosen one lit in its colour; 38/38 proofs.
 - d61: the realm's place card had the same column bug (a long name like Hephaestus Hearth pushed the next arrow and the related-place chips off the card); a long name now takes two lines. 38/38 proofs.
 - d62: the briefing under the menu repeated its Today panel; it now lists what comes after it. "clear for 24 h" reads "nothing due in 24 h". 38/38 proofs.
+- d63: on a short phone (iPhone SE, 667 px) the menu's 560 px floor put the Realm row and the whole strip under the dock; short screens now get a compact menu (no floor, mission line out, two Today rows, smaller title and button) and two rows in the realm's lower card. 38/38 proofs.
 
 ### [2026-11-23] Odyssey before Joseph judges it (d56; owner: "Put 1000 percent effort into oddessy before I judge it")
 - The stage is now your travel world: a globe with real coastlines (Natural Earth 110m, `globe.js` from `tools/odyssey/globe.py`) that turns from trip to trip in order, each trip as great-circle arcs from where you left to every stop, a spark along the trip in view, every place a light, home marked; tap for the next trip, and a trip list on wide screens. Readouts: next trip (or "No trip planned"), 13 trips on record, 13 countries.
