@@ -94,7 +94,7 @@
       <div class="glass lit span-12"><h2>Home base — the anchor</h2><div id="o-home"></div></div>
       <div class="glass span-12"><h2>Trip files — the board</h2><div id="o-list"></div></div>
       <div class="glass span-12"><h2>Regular routes — distances from home</h2><div id="o-routes"></div></div>
-      <div class="glass span-12"><h2>Atlas — places on record</h2><div id="o-places"></div></div>
+      <div class="glass span-12"><h2>Atlas — every place you have been</h2><div id="o-atlas"></div><h3 class="at-h3">Notes on the places</h3><div id="o-places"></div></div>
       <div class="glass span-12"><h2>File a new trip</h2>
         <form class="form" id="o-form">
           <label class="f wide">Trip name<input name="name" required maxlength="100" placeholder="Bakersfield run, coast weekend…"></label>
@@ -129,7 +129,7 @@
 
   /* A trip with legs on record (odyssey-data.js) draws them: on a map when its stops have coordinates and a base map covers them,
      else on the arc; every other trip flies the generic home -> destination arc. */
-  const MODE = { flight: "Flight", train: "Train", bus: "Bus", ferry: "Ferry" };
+  const MODE = { flight: "Flight", train: "Train", bus: "Bus", ferry: "Ferry", car: "Drive", cruise: "Cruise" };
   const money = (v) => "$" + Number(v).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const r2 = (v) => Math.round(v * 100) / 100;
   const miles = (a, b) => {                                    // great-circle distance between two stops, statute miles
@@ -203,15 +203,18 @@
         break;
       }
     }
+    /* landmarks from the trip's photos (odyssey-extra.js): small diamonds under the stops, each with its name */
+    const lms = (window.ODYSSEY_LANDMARKS || []).filter((m) => m.trips.includes(t.id) && X(m.lon) > x0 && X(m.lon) < x1 && Y(m.lat) > y0 && Y(m.lat) < y1);
+    const lmk = lms.map((m) => { const cx = X(m.lon), cy = Y(m.lat), r = rad * 0.85; return `<path class="map-lm" vector-effect="non-scaling-stroke" d="M${f1(cx)} ${f1(cy - r)}L${f1(cx + r)} ${f1(cy)}L${f1(cx)} ${f1(cy + r)}L${f1(cx - r)} ${f1(cy)}Z"><title>${esc(m.name)}</title></path>`; }).join("");
     const dots = uniq.map((p, i) => `<circle class="map-dot${i === 0 ? " start" : ""}${p.approx ? " approx" : ""}" data-code="${esc(p.code)}" vector-effect="non-scaling-stroke" cx="${f1(X(p.lon))}" cy="${f1(Y(p.lat))}" r="${f1(rad)}"><title>${esc(p.name)}${p.country ? ", " + esc(p.country) : ""}${p.approx ? " (approximate)" : ""}</title></circle>`).join("");
     let dist = 0; for (let i = 1; i < pts.length; i++) dist += miles(pts[i - 1], pts[i]);
     const used = [...new Set(pts.slice(1).map((p) => p.by).filter(Boolean))];
     const key = used.map((m) => `<span class="mk"><svg viewBox="0 0 26 8" aria-hidden="true"><path class="map-seg ${m}" d="M1 4H25"/></svg>${MODE[m]} ${pts.slice(1).filter((p) => p.by === m).length}</span>`).join("");
     const svg = `<svg class="tmap" viewBox="${f1(x0)} ${f1(y0)} ${f1(W)} ${f1(H)}" role="img" data-stops="${uniq.length}" data-named="${named}" aria-label="Map of the route: ${esc(uniq.map((p) => p.name).join(", "))}">
       <rect class="map-sea" x="${f1(x0)}" y="${f1(y0)}" width="${f1(W)}" height="${f1(H)}"/>
-      ${base ? `<path class="map-land" vector-effect="non-scaling-stroke" transform="scale(${k.toFixed(5)} 1)" d="${base.d}"/>` : ""}
-      <path class="map-grat" vector-effect="non-scaling-stroke" d="${g}"/>${segs}<circle class="map-here" r="${f1(rad * 2.4)}" cx="${f1(x0 - 999)}" cy="${f1(y0 - 999)}"/>${dots}${labels}</svg>`;
-    return `<figure class="tmap-wrap">${svg}<figcaption class="map-key">${key}<span class="mk">${Math.round(dist).toLocaleString("en-US")} mi stop to stop, straight-line</span>${base ? "" : '<span class="mk">no outline map for this region yet</span>'}</figcaption></figure>`;
+      ${base ? `<path class="map-land" vector-effect="non-scaling-stroke" transform="scale(${k.toFixed(5)} 1)" d="${base.d}"/>` : ""}${base && base.b ? `<path class="map-border" vector-effect="non-scaling-stroke" transform="scale(${k.toFixed(5)} 1)" d="${base.b}"/>` : ""}
+      <path class="map-grat" vector-effect="non-scaling-stroke" d="${g}"/>${segs}${lmk}<circle class="map-here" r="${f1(rad * 2.4)}" cx="${f1(x0 - 999)}" cy="${f1(y0 - 999)}"/>${dots}${labels}</svg>`;
+    return `<figure class="tmap-wrap">${svg}<figcaption class="map-key">${key}<span class="mk">${Math.round(dist).toLocaleString("en-US")} mi stop to stop, straight-line</span>${lms.length ? `<span class="mk"><svg viewBox="0 0 10 10" aria-hidden="true"><path class="map-lm" d="M5 1L9 5L5 9L1 5Z"/></svg>Landmark ${lms.length}</span>` : ""}${base ? "" : '<span class="mk">no outline map for this region yet</span>'}</figcaption></figure>`;
   }
 
   /* The logbook: every leg as its source records it (date, how, times, fare, where he stayed), and anything the source contradicts. */
@@ -255,7 +258,7 @@
   function journey(t, card) {
     const photos = PH[t.id]; if (!photos || !photos.length) return null;
     const pts = (legsOf(t) || []).filter((l) => !l.home && Number.isFinite(l.lat));
-    const legOf = (p) => { let k = 0; pts.forEach((l, i) => { if (l.at <= p.at) k = i; }); return k; };
+    const legOf = (p) => { let k = 0; pts.forEach((l, i) => { if (l.at <= p.at && (!p.leg || l.code === p.leg)) k = i; }); return k; };
     const dayOf = (p) => Math.round((dparse(p.at) - dparse(t.start)) / 864e5) + 1, days = nights(t) + 1;
     const root = h("div.jr", { "data-n": photos.length });
     root.innerHTML = `<div class="jr-stage" tabindex="0" role="button" aria-label="Open this photo full screen">
@@ -359,11 +362,56 @@
     return `<div class="tl"><div class="tl-head"><span>${dlabel(t.start)} ${dparse(t.start).getFullYear()}</span><span class="tl-mid">${days} ${days === 1 ? "DAY" : "DAYS"} · ${n} ${n === 1 ? "NIGHT" : "NIGHTS"}</span><span>${dlabel(t.end)} ${dparse(t.end).getFullYear()}</span></div><div class="tl-track">${cells}</div>${legRows}</div>`;
   }
 
+  /* Day by day from the photos and the landmarks in them (odyssey-extra.js, from Gemini's Nov 21 read; 2026-11-23). */
+  const DAYS = window.ODYSSEY_DAYS || {}, LMS = window.ODYSSEY_LANDMARKS || [];
+  function daysHTML(t) {
+    const rows = DAYS[t.id]; if (!rows || !rows.length) return "";
+    return `<details class="days"><summary>Day by day, from your photos <span class="stat-s">${rows.length} days</span></summary><div class="day-list">${rows.map((r) =>
+      `<div class="day"><span class="day-d">${dlabel(r.d)}</span><span class="day-b"><b>${esc(r.c)}</b><span class="day-p">${esc(r.p)}</span>${r.n ? `<span class="day-n">${r.n} photo${r.n === 1 ? "" : "s"}${r.t0 ? ` · ${esc(r.t0)} – ${esc(r.t1 || "")}` : ""}</span>` : ""}</span></div>`).join("")}</div></details>`;
+  }
+  function landmarksHTML(t) {
+    const ms = LMS.filter((m) => m.trips.includes(t.id)); if (!ms.length) return "";
+    return `<details class="lms"><summary>Landmarks in your photos <span class="stat-s">${ms.length}</span></summary><div class="lm-list">${ms.map((m) =>
+      `<div class="lm"><div class="lm-h"><b>${esc(m.name)}</b><span class="stat-s">${esc(m.city)}${m.year ? " · " + esc(/^\d/.test(m.year) ? "since " + m.year : m.year) : ""}${m.unesco ? " · UNESCO" : ""}</span></div><p>${esc(m.fact)}</p><a class="stat-s" href="${esc(m.url)}" target="_blank" rel="noopener">official page ↗</a></div>`).join("")}</div>
+      <p class="stat-s lm-src">Facts from each place's official page, gathered by Gemini from your photos (Nov 21); not second-read yet.</p></details>`;
+  }
+
+  /* The index (2026-11-23): every trip at a glance, newest first after anything ahead, each row opening its file below. A trip
+     file opens one at a time (its photos load when it opens); a trip ahead or in progress starts open. */
+  const open = new Set();
+  const span = (t) => { const a = dparse(t.start), b = dparse(t.end), sm = a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
+    return `${MON[a.getMonth()][0] + MON[a.getMonth()].slice(1).toLowerCase()} ${a.getDate()}${sm ? "" : " – " + MON[b.getMonth()][0] + MON[b.getMonth()].slice(1).toLowerCase() + " " + b.getDate()}${sm && b.getDate() !== a.getDate() ? "–" + b.getDate() : ""}, ${b.getFullYear()}`; };
+  function indexHTML(trips) {
+    const rows = trips.map((t) => {
+      const ph = PH[t.id] || [], legs = (legsOf(t) || []).filter((l) => !l.home), n = nights(t);
+      const countries = [...new Set(legs.map((l) => l.country).filter(Boolean))];
+      const cover = ph.length ? `<img loading="lazy" decoding="async" src="photos/t/${ph[0].id}.webp" alt="">` : `<span class="ix-glyph" aria-hidden="true">${esc((t.dest || t.name || "?").slice(0, 1))}</span>`;
+      return `<button class="ix-row${isPast(t) ? "" : " ahead"}" type="button" data-open="${esc(t.id)}">${cover}<span class="ix-b"><b>${esc(t.name)}</b>
+        <span class="ix-m">${span(t)} · ${n + 1} ${n ? "days" : "day"}${legs.length ? ` · ${legs.length} ${legs.length === 1 ? "stop" : "stops"}` : ""}${ph.length ? ` · ${ph.length} ${ph.length === 1 ? "photo" : "photos"}` : ""}</span>
+        <span class="ix-c">${esc(countries.join(" · ") || t.dest || "")}</span></span><span class="ix-go" aria-hidden="true">›</span></button>`;
+    }).join("");
+    const years = [...new Set(trips.map((t) => t.start.slice(0, 4)))].sort();
+    return `<div class="ix"><div class="ix-years" aria-hidden="true">${years.map((y) => `<span>${y}<i>${trips.filter((t) => t.start.startsWith(y)).length}</i></span>`).join("")}</div>${rows}</div>`;
+  }
+  function toggle(id, force) {
+    const card = document.querySelector(`.trip[data-trip="${CSS.escape(id)}"]`); if (!card) return;
+    const on = force != null ? force : !card.classList.contains("open");
+    card.classList.toggle("open", on); card.querySelector(".trip-toggle").setAttribute("aria-expanded", on);
+    card.querySelector(".trip-toggle").textContent = on ? "Close trip file" : "Open trip file";
+    if (on) { open.add(id); if (card._jr && !card._jr.started) { card._jr.started = true; card._jr.start(); card._jr.bindMap(); } } else open.delete(id);
+  }
+
   function paint() {
     timers.forEach((x) => clearInterval(x)); timers.clear();
-    const trips = S.list("trips").sort((a, b) => a.start.localeCompare(b.start));
+    const all = S.list("trips");
+    const trips = [...all.filter((t) => !isPast(t)).sort((a, b) => a.start.localeCompare(b.start)), ...all.filter(isPast).sort((a, b) => b.start.localeCompare(a.start))];
     const el = $("#o-list");
-    el.innerHTML = trips.length ? "" : `<p class="empty">No trips yet.</p>`;
+    el.innerHTML = trips.length ? indexHTML(trips) : `<p class="empty">No trips yet.</p>`;
+    el.querySelectorAll(".ix-row").forEach((b) => b.addEventListener("click", () => {
+      toggle(b.dataset.open, true);
+      const c = document.querySelector(`.trip[data-trip="${CSS.escape(b.dataset.open)}"]`);
+      if (c) c.scrollIntoView({ block: "start", behavior: calm() ? "auto" : "smooth" });
+    }));
     const health = readPillarHealth();
     const awayMeta = window.PB && PB.meta.get("away");
 
@@ -397,22 +445,25 @@
           isAway ? h("span.pill.soon", null, "Away mode on · Home screen prioritized") : past ? h("span.pill.rec", null, "On record · " + t.start.slice(0, 4)) : null
         ),
         h("h3", null, t.name),
-        h("div.stat-s", null, `${t.dest ? esc(t.dest) + " · " : ""}${t.start} → ${t.end}${roadNote ? " · " + roadNote : ""}`)
+        h("div.stat-s", null, `${t.dest ? esc(t.dest) + " · " : ""}${span(t)}${roadNote ? " · " + roadNote : ""}`),
+        h("button.btn.quiet.small.trip-toggle", { type: "button", "aria-expanded": "false", onclick: () => toggle(t.id) }, "Open trip file")
       );
-      const jr = journey(t, card); if (jr) card.append(jr);
-      const arc = h("div.journey", null); arc.innerHTML = mapSVG(t) || arcSVG(t); card.append(arc);
-      if (jr) { jr.start(); jr.bindMap(); }
-      if (t.notes && past) card.append(h("p.trip-notes", null, t.notes));          // a trip on record: what it was, then its log
-      const tl = h("div", null); tl.innerHTML = timelineHTML(t); card.append(tl);
-      if (t.notes && !past) card.append(h("p.trip-notes", null, t.notes));
-      if (seed && seed.budget) { const b = h("div", null); b.innerHTML = budgetHTML(seed.budget, legsOf(t)); card.append(b); }
+      const body = h("div.trip-body", null);
+      const jr = journey(t, card); if (jr) body.append(jr);
+      const arc = h("div.journey", null); arc.innerHTML = mapSVG(t) || arcSVG(t); body.append(arc);
+      card._jr = jr;
+      if (t.notes && past) body.append(h("p.trip-notes", null, t.notes));          // a trip on record: what it was, then its log
+      const tl = h("div", null); tl.innerHTML = timelineHTML(t) + daysHTML(t) + landmarksHTML(t); body.append(tl);
+      card.append(body);
+      if (t.notes && !past) body.append(h("p.trip-notes", null, t.notes));
+      if (seed && seed.budget) { const b = h("div", null); b.innerHTML = budgetHTML(seed.budget, legsOf(t)); body.append(b); }
       if (seed && seed.plans) {
         const d = h("details.plans", null, h("summary", null, `Planning notes from the sheet (${seed.plans.length})`));
         for (const p of seed.plans) d.append(h("p", null, h("b", null, p.at), " · ", p.text));
-        card.append(d);
+        body.append(d);
       }
-      if (seed && seed.source) card.append(h("p.stat-s.trip-src", null, "Source: " + seed.source));
-      if (!past) card.append(h("div.checks", null,
+      if (seed && seed.source) body.append(h("p.stat-s.trip-src", null, "Source: " + seed.source));
+      if (!past) body.append(h("div.checks", null,
         h("div.check-col", null,
           h("h4", null, "Packing — generated from this trip"),
           ...TRIP.packingList(t).map((p) => h("label.check", null,
@@ -434,7 +485,7 @@
           })
         )
       ));
-      card.append(h("div.row-actions", { style: "margin-top:8px" },
+      body.append(h("div.row-actions", { style: "margin-top:8px" },
         isAway
           ? h("button.btn.quiet.small", { type: "button", onclick: () => { setAway(null); paint(); } }, "End away mode")
           : past ? null : h("button.btn.small", { type: "button", onclick: () => { setAway(t); toast("Away mode ON — Hub Picture panel switched"); paint(); } }, "Set away mode"),
@@ -450,7 +501,9 @@
         }, "Delete trip")
       ));
       el.append(card);
+      if (open.has(t.id) || (!past && !open.size)) toggle(t.id, true);
     }
+    if (typeof paintAtlas === "function" && atlasReady) paintAtlas();
   }
 
   /* Shipped dataset panels (odyssey-data.js): read-only — his record, rendered as an
@@ -490,7 +543,7 @@
         ),
         h("div.route-meta", null,
           h("span", null, r.label),
-          h("span.pill", null, r.inferred ? "Destination inferred" : "His route")
+          h("span.pill", null, r.inferred ? "Destination inferred" : "Your route")
         ),
         h("div.bar", null, h("span.bar-fill", { style: `width:${Math.max(6, Math.round((r.miles / maxMi) * 100))}%` }))
       ));
@@ -519,6 +572,107 @@
     pl.append(gaz);
   }
 
+  /* The atlas (2026-11-23): every stop of every trip, one detailed map per region (the outlines in basemap.js), the routes faint and
+     the trip you pick lit, the landmarks from your photos as diamonds. Tap a place for its visits and a way into each trip file.
+     Distances are straight-line between stops; nothing here is stored. */
+  const REG = [["europe", "Europe"], ["philippines", "Philippines"], ["west", "US West & Mexico"], ["east", "US East"]];
+  const at = { reg: null, trip: null, pl: null };
+  var atlasReady = false;                                     // paint() may run before this point is reached; the atlas waits
+  function atlasData() {
+    const trips = S.list("trips").filter((t) => t.start).sort((a, b) => a.start.localeCompare(b.start)), places = [], base = window.ODYSSEY_BASEMAP || [];
+    let dist = 0;
+    for (const t of trips) {
+      const L = (legsOf(t) || []).filter((l) => !l.home && Number.isFinite(l.lat) && Number.isFinite(l.lon));
+      for (let i = 1; i < L.length; i++) dist += miles(L[i - 1], L[i]);
+      for (const l of L) {
+        let q = places.find((x) => Math.abs(x.lat - l.lat) < 0.2 && Math.abs(x.lon - l.lon) < 0.2);
+        if (!q) places.push(q = { id: "p" + places.length, name: l.name, country: l.country || "", lat: l.lat, lon: l.lon, approx: !!l.approx, visits: [] });
+        const v = q.visits.find((x) => x.t.id === t.id);
+        if (v) { v.nights += l.nights || 0; v.last = l.at; } else q.visits.push({ t, at: l.at, last: l.at, nights: l.nights || 0 });
+      }
+    }
+    for (const q of places) { const r = base.find((b) => q.lon >= b.bbox[0] && q.lon <= b.bbox[2] && q.lat >= b.bbox[1] && q.lat <= b.bbox[3]); q.reg = r ? r.id : null; q.stay = q.visits.reduce((a, v) => a + v.nights, 0); }
+    const far = OD ? places.reduce((m, q) => { const d = miles(OD.home, q); return d > m.d ? { q, d } : m; }, { q: null, d: 0 }) : { q: null, d: 0 };
+    return { trips, places, dist, far, countries: new Set(places.map((q) => q.country).filter(Boolean)).size };
+  }
+  function atlasMap(A, reg) {
+    const base = (window.ODYSSEY_BASEMAP || []).find((b) => b.id === reg), pl = A.places.filter((q) => q.reg === reg);
+    if (!base || !pl.length) return "";
+    const lats = pl.map((q) => q.lat), lons = pl.map((q) => q.lon), k = Math.cos(((Math.min(...lats) + Math.max(...lats)) / 2) * Math.PI / 180);
+    const X = (lon) => lon * 100 * k, Y = (lat) => -lat * 100, f1 = (v) => v.toFixed(1);
+    let x0 = X(Math.min(...lons)), x1 = X(Math.max(...lons)), y0 = Y(Math.max(...lats)), y1 = Y(Math.min(...lats));
+    const pad = Math.max(x1 - x0, y1 - y0) * 0.12 + 60; x0 -= pad; x1 += pad; y0 -= pad; y1 += pad;
+    let W = x1 - x0, H = y1 - y0;
+    if (H / W > 1.05) { const a = (H / 1.05 - W) / 2; x0 -= a; x1 += a; } else if (H / W < 0.66) { const a = (W * 0.66 - H) / 2; y0 -= a; y1 += a; }
+    x0 = Math.max(x0, X(base.bbox[0])); x1 = Math.min(x1, X(base.bbox[2])); y0 = Math.max(y0, Y(base.bbox[3])); y1 = Math.min(y1, Y(base.bbox[1]));
+    W = x1 - x0; H = y1 - y0;
+    const fs = W / 30, rad = fs * 0.28, sel = at.trip, inTrip = (q) => !sel || q.visits.some((v) => v.t.id === sel);
+    let routes = "";
+    for (const t of A.trips) {
+      const L = (legsOf(t) || []).filter((l) => !l.home && Number.isFinite(l.lat) && pl.some((q) => Math.abs(q.lat - l.lat) < 0.2 && Math.abs(q.lon - l.lon) < 0.2));
+      let d = "";
+      for (let i = 1; i < L.length; i++) {
+        const a = L[i - 1], b = L[i], ax = X(a.lon), ay = Y(a.lat), bx = X(b.lon), by = Y(b.lat), bow = b.by === "flight" ? 0.18 : 0.08;
+        if (Math.hypot(bx - ax, by - ay) < 1) continue;
+        d += `M${f1(ax)} ${f1(ay)}Q${f1((ax + bx) / 2 + (by - ay) * bow)} ${f1((ay + by) / 2 - (bx - ax) * bow)} ${f1(bx)} ${f1(by)}`;
+      }
+      if (d) routes += `<path class="at-route${sel === t.id ? " on" : sel ? " off" : ""}" vector-effect="non-scaling-stroke" d="${d}"/>`;
+    }
+    const lms = (window.ODYSSEY_LANDMARKS || []).filter((m) => X(m.lon) > x0 && X(m.lon) < x1 && Y(m.lat) > y0 && Y(m.lat) < y1 && (!sel || m.trips.includes(sel)));
+    const lmk = lms.map((m) => { const cx = X(m.lon), cy = Y(m.lat), r = rad * 0.8; return `<path class="map-lm" vector-effect="non-scaling-stroke" d="M${f1(cx)} ${f1(cy - r)}L${f1(cx + r)} ${f1(cy)}L${f1(cx)} ${f1(cy + r)}L${f1(cx - r)} ${f1(cy)}Z"><title>${esc(m.name)}</title></path>`; }).join("");
+    const size = (q) => rad * (1 + Math.min(1, q.stay / 8) * 0.7);
+    const boxes = pl.map((q) => { const r = size(q) * 1.3; return { x: X(q.lon) - r, y: Y(q.lat) - r, w: r * 2, h: r * 2 }; });
+    const hit = (b) => b.x < x0 + 4 || b.y < y0 + 4 || b.x + b.w > x1 - 4 || b.y + b.h > y1 - 4 || boxes.some((o) => b.x < o.x + o.w && o.x < b.x + b.w && b.y < o.y + o.h && o.y < b.y + b.h);
+    let labels = "";
+    for (const q of [...pl].sort((a, b) => (b.id === at.pl) - (a.id === at.pl) || inTrip(b) - inTrip(a) || b.visits.length - a.visits.length || b.stay - a.stay)) {
+      const px = X(q.lon), py = Y(q.lat), tw = q.name.length * fs * 0.55, gap = size(q) + fs * 0.3;
+      for (const [dx, dy, an] of [[gap, fs * 0.36, "start"], [-gap, fs * 0.36, "end"], [0, -gap, "middle"], [0, gap + fs * 0.75, "middle"]]) {
+        const lx = px + dx, ly = py + dy, bx = an === "start" ? lx : an === "end" ? lx - tw : lx - tw / 2, box = { x: bx - fs * 0.1, y: ly - fs * 0.82, w: tw + fs * 0.2, h: fs * 1.02 };
+        if (hit(box)) continue;
+        boxes.push(box); labels += `<text class="map-lab${inTrip(q) ? "" : " off"}" x="${f1(lx)}" y="${f1(ly)}" text-anchor="${an}" font-size="${f1(fs)}" stroke-width="${f1(fs * 0.24)}">${esc(q.name)}</text>`; break;
+      }
+    }
+    const dots = pl.map((q) => `<circle class="at-dot${inTrip(q) ? (sel ? " on" : "") : " off"}${q.id === at.pl ? " sel" : ""}${q.approx ? " approx" : ""}" data-pl="${q.id}" vector-effect="non-scaling-stroke" cx="${f1(X(q.lon))}" cy="${f1(Y(q.lat))}" r="${f1(size(q))}"><title>${esc(q.name)}${q.country ? ", " + esc(q.country) : ""}</title></circle>`).join("");
+    const hitArea = pl.map((q) => `<circle class="at-hit" data-pl="${q.id}" cx="${f1(X(q.lon))}" cy="${f1(Y(q.lat))}" r="${f1(Math.max(rad * 3, W / 26))}"/>`).join("");
+    return `<svg class="tmap at-map" viewBox="${f1(x0)} ${f1(y0)} ${f1(W)} ${f1(H)}" role="img" data-region="${reg}" data-places="${pl.length}" aria-label="Map of ${esc(REG.find((r) => r[0] === reg)[1])}: ${esc(pl.map((q) => q.name).join(", "))}">
+      <rect class="map-sea" x="${f1(x0)}" y="${f1(y0)}" width="${f1(W)}" height="${f1(H)}"/>
+      <path class="map-land" vector-effect="non-scaling-stroke" transform="scale(${k.toFixed(5)} 1)" d="${base.d}"/>${base.b ? `<path class="map-border" vector-effect="non-scaling-stroke" transform="scale(${k.toFixed(5)} 1)" d="${base.b}"/>` : ""}
+      ${routes}${lmk}${dots}${labels}${hitArea}</svg>`;
+  }
+  const md = (ds) => { const d = dparse(ds); return d.toLocaleDateString("en-US", { month: "short", day: "numeric" }); };
+  function paintAtlas() {
+    const box = $("#o-atlas"); if (!box) return;
+    const A = atlasData(), counts = Object.fromEntries(REG.map(([id]) => [id, A.places.filter((q) => q.reg === id).length]));
+    if (!A.places.length) { box.innerHTML = `<p class="empty">File a trip with stops and its places land here.</p>`; return; }
+    if (!at.reg || !counts[at.reg]) at.reg = REG.map((r) => r[0]).sort((a, b) => counts[b] - counts[a])[0];
+    const here = A.places.filter((q) => q.reg === at.reg), trips = A.trips.filter((t) => here.some((q) => q.visits.some((v) => v.t.id === t.id)));
+    if (at.trip && !trips.some((t) => t.id === at.trip)) at.trip = null;
+    const pick = A.places.find((q) => q.id === at.pl && q.reg === at.reg) || null;
+    const nm = (t) => esc(t.name || t.dest || "Trip");
+    box.innerHTML = `
+      <div class="at-stats">
+        <div><b>${A.places.length}</b><span>places</span></div><div><b>${A.countries}</b><span>countries</span></div>
+        <div><b>${A.trips.length}</b><span>trips</span></div><div><b>${(window.ODYSSEY_LANDMARKS || []).length}</b><span>landmarks</span></div>
+        <div><b>${Math.round(A.dist).toLocaleString("en-US")}</b><span>miles between stops</span></div>
+        ${A.far.q ? `<div><b>${Math.round(A.far.d).toLocaleString("en-US")}</b><span>miles from home: ${esc(A.far.q.name)}, the farthest</span></div>` : ""}
+      </div>
+      <div class="at-regs" role="tablist" aria-label="Region">${REG.filter(([id]) => counts[id]).map(([id, name]) => `<button type="button" class="at-reg${id === at.reg ? " on" : ""}" role="tab" aria-selected="${id === at.reg}" data-reg="${id}">${esc(name)} <i>${counts[id]}</i></button>`).join("")}</div>
+      <figure class="tmap-wrap at-wrap">${atlasMap(A, at.reg)}
+        <figcaption class="map-key"><span class="mk"><svg viewBox="0 0 10 10" aria-hidden="true"><circle class="at-dot" cx="5" cy="5" r="3.4"/></svg>A place (bigger: more nights)</span><span class="mk"><svg viewBox="0 0 10 10" aria-hidden="true"><path class="map-lm" d="M5 1L9 5L5 9L1 5Z"/></svg>Landmark in your photos</span><span class="mk">straight-line routes between stops</span></figcaption></figure>
+      <div class="at-trips" aria-label="Light one trip">${trips.length > 1 ? `<button type="button" class="chip${at.trip ? "" : " on"}" aria-pressed="${!at.trip}" data-trip="">All trips</button>` : ""}${trips.map((t) => `<button type="button" class="chip${at.trip === t.id ? " on" : ""}" aria-pressed="${at.trip === t.id}" data-trip="${esc(t.id)}">${t.start.slice(0, 4)} · ${nm(t)}</button>`).join("")}</div>
+      <div class="at-pick" aria-live="polite">${pick ? `<b>${esc(pick.name)}</b>${pick.country ? `<span class="stat-s"> · ${esc(pick.country)}${pick.approx ? " · approximate spot" : ""}</span>` : ""}
+        ${pick.visits.map((v) => `<div class="at-visit"><span>${nm(v.t)} · ${md(v.at)}${v.last !== v.at ? "–" + md(v.last) : ""}, ${v.at.slice(0, 4)}${v.nights ? ` · ${v.nights} night${v.nights === 1 ? "" : "s"}` : ""}</span><button type="button" class="pk-ref-btn" data-open="${esc(v.t.id)}">Open trip file</button></div>`).join("")}`
+        : `<span class="stat-s">Tap a place on the map for when you were there.</span>`}</div>`;
+  }
+  $("#o-atlas") && $("#o-atlas").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-reg],[data-trip],[data-pl],[data-open]"); if (!b) return;
+    if (b.dataset.reg) { at.reg = b.dataset.reg; at.trip = null; at.pl = null; }
+    else if (b.dataset.trip != null && b.matches("[data-trip]")) { at.trip = b.dataset.trip || null; at.pl = null; }
+    else if (b.dataset.pl) at.pl = at.pl === b.dataset.pl ? null : b.dataset.pl;
+    else if (b.dataset.open) { const id = b.dataset.open; toggle(id, true); const c = document.querySelector(`.trip[data-trip="${CSS.escape(id)}"]`); if (c) c.scrollIntoView({ block: "start", behavior: calm() ? "auto" : "smooth" }); return; }
+    paintAtlas();
+  });
+
   /* The home loop's own waypoint chain lives in its note, after the colon — lift it out
      as a dot-line under the bar. Any other route simply has no chain. */
   function waypointChain(r) {
@@ -536,5 +690,6 @@
   $("#export").onclick = () => download(`odyssey_${day()}.json`, S.dump());
   $("#import").onclick = async () => { const f = await pickFile(); if (!f) return; try { S.load(JSON.parse(await f.text())); for (const t of S.list("trips")) publishTrip(t); toast("Imported"); paint(); } catch (e) { toast(e.message); } };
   paintDataset();
+  atlasReady = true;
   paint();
 })();

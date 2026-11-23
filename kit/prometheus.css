@@ -364,9 +364,10 @@ body.pk-all-open .pk-ink { opacity: .35 !important; }
 .pk-ref-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 6px 0 4px; }
 .pk-ref-q { flex: 1 1 220px; min-width: 0; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line-strong); background: color-mix(in srgb, var(--ink) 4%, transparent); color: var(--ink); font: inherit; font-size: 15px; }
 .pk-ref-q:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.pk-ref-chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; max-width: 100%; padding-bottom: 2px; }
+.pk-ref-chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; flex: 1 1 100%; min-width: 0; max-width: 100%; padding-bottom: 2px; }
 .pk-ref-chips::-webkit-scrollbar { display: none; }
-.pk-ref-chips .chip { cursor: pointer; background: transparent; font: inherit; font-size: 13px; }
+.pk-ref-chips .chip { flex: 0 0 auto; cursor: pointer; background: transparent; font: inherit; font-size: 13px; }  /* never shrink: with overflow hidden (pk-v2) a chip squeezed to a dot */
+.pk-ref-chips .chip.on { background: color-mix(in srgb, var(--accent) 28%, transparent); border-color: var(--accent); color: var(--ink); }  /* the chosen chip stays readable (its text was dark on the cleared background) */
 .pk-ref-count { margin: 6px 0 2px; }
 .pk-ref-list { display: grid; gap: 0; }
 .pk-ref-row { padding: 12px 2px; border-bottom: 1px solid var(--line); animation: pk-ref-in .42s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 28ms); }

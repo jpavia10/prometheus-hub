@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 16:12 UTC",
+ "updated": "2026-11-23 17:22 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -283,9 +283,9 @@
    "ai": "gemini",
    "ai_name": "Gemini",
    "id": "ODY-GEM-14",
-   "title": "Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos)",
+   "title": "Odyssey: a card for each of the 21 new stops (the ten trips found in Joseph's photos)",
    "state": "now",
-   "count": 13
+   "count": 21
   },
   {
    "due": "2026-12-05",

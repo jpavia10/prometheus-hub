@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-23 16:12 UTC. 52 to do across 25 pillars.
+Updated 2026-11-23 17:22 UTC. 52 to do across 25 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -38,7 +38,7 @@ IN THIS ORDER:
 20. [Hermes Post] HER-GEM-12 · Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state) · due 2026-12-05
 21. [Bastion · Mountain Prep] BAS-GEM-11 · Bastion: every official alert channel for the area, how to sign up and what each sends · due 2026-12-05
 22. [Athenaeum · Idea Vault] ATH-GEM-05 · Athenaeum: a third source for the 14 history entries that differ or are debated · due 2026-12-05
-23. [Odyssey · Trips & Away Mode] ODY-GEM-14 · Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos) · due 2026-12-05
+23. [Odyssey · Trips & Away Mode] ODY-GEM-14 · Odyssey: a card for each of the 21 new stops (the ten trips found in Joseph's photos) · due 2026-12-05
 24. [Privacy · CA DROP] PRI-GEM-13 · Privacy: Chrome on Android and Samsung Internet privacy settings, where each is and the safest choice · due 2026-12-05
 25. [Aether · Atmospheric & Field Lab] AET-GEM-15 · Aether: the RIDGE and TEJON circuits' shut-off history, 2021 to 2026 · due 2026-12-05
 26. [Continuity · Sovereign Vault] CON-GEM-08 · Continuity: Kern County Superior Court's probate forms for a small estate and a spousal property petition · due 2026-12-05
@@ -1143,18 +1143,20 @@ IN THIS ORDER:
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
 ==================== 23. ODYSSEY · TRIPS & AWAY MODE ====================
-## 23. ODY-GEM-14 · Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos)
+## 23. ODY-GEM-14 · Odyssey: a card for each of the 21 new stops (the ten trips found in Joseph's photos)
 
 **Due:** 2026-12-05 · **State:** now
 
 **What it unlocks:** Tap a dot: the city's card. Totals per trip (people, countries, time zones crossed).
 
 **Read first:**
-- The stop codes and names: ATL Atlanta GA, BSR Big Sur CA, SF San Francisco CA, SEQ Sequoia National Park CA, KCN Kings Canyon (Grant Grove) CA, LAS Las Vegas NV, HVR Hoover Dam NV/AZ, MZT Mazatlán Sinaloa, PVR Puerto Vallarta Jalisco, FBG Fort Bragg CA, SAN San Diego CA, DTW Detroit MI, MMH Mammoth Lakes CA
-- Your own ODY-GEM-10 file for the shape of a card (same fields, same sourcing rules); national parks: the NPS page for the park.
+- The stop codes and names exactly as in pillars/odyssey/odyssey-data.js (Nov 23): NGA North Georgia mountains (34.868, -84.520), ATL Atlanta GA, BSR Big Sur CA, SF San Francisco CA, MHL Marin Headlands CA, KAW Lake Kaweah CA, SEQ Giant Forest, Sequoia National Park CA, GRG Grant Grove, Kings Canyon CA, CDG Cedar Grove, Kings Canyon CA, GCN Grand Canyon South Rim AZ, PGA Page AZ, LAS Las Vegas NV, HVR Hoover Dam NV/AZ, LGB Long Beach CA, MZT Mazatlán, Sinaloa, PVR Puerto Vallarta, Jalisco, FBG Fort Bragg CA, PTA Point Arena CA, GAS Gaslamp Quarter, San Diego CA, BAL Balboa Park, San Diego CA, MMH Mammoth Lakes CA
+- No card for UT (a road stop at the Utah line), NAV (the Navarro River mouth) or DTW (it has one).
+- Your own ODY-GEM-10 file for the shape of a card (same fields, same sourcing rules); national parks and recreation areas: the NPS page for the park.
 
 **Do this:**
-1. For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words.
+1. For every stop: the card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'; known_for and its quote are about the stop itself (the park, the dam, the quarter) from its own official page.
+2. For that town: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015-2023 trips) and now, official language(s).
 
 **Make:** `odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json`
 
@@ -1186,7 +1188,7 @@ IN THIS ORDER:
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
 
-**How many:** 13
+**How many:** 21
 
 **Done when:** 13 cards, one per code above, every number sourced.
 
@@ -1922,7 +1924,7 @@ IN THIS ORDER:
 
 **Every field, exactly:**
 - `n` (integer): row
-- `trip` (text): as in the list above, e.g. 'Sequoia and Kings Canyon Aug 2018'
+- `trip` (text): the trip's name as in the list above, e.g. 'Sequoia & Kings Canyon'
 - `date` (date): YYYY-MM-DD
 - `city` (text): 
 - `places` (text): in order

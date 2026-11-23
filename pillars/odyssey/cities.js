@@ -442,7 +442,7 @@
     const grid = document.querySelector("#app section.grid"); if (!grid || !PK.ref) return;
     PK.ref(PK.refPanel(grid, { title: "The places, in brief", sub: "Every stop on the trips: how many live there, how high it sits, the clock, the money, the language, and what it is known for." }), {
       rows: R, group: (r) => r.country, title: (r) => `${r.city} · ${r.code}`, value: (r) => r.known_for,
-      meta: (r) => [r.population ? `${Number(r.population).toLocaleString()} people (${r.pop_year})` : "", r.elevation_m != null ? `${r.elevation_m} m` : "", r.tz, r.currency, r.language, "not second-read"].filter(Boolean),
+      meta: (r) => [r.population ? `${Number(r.population).toLocaleString()} people (${r.pop_year})` : "", r.elevation_m != null ? `${r.elevation_m} m` : "", r.tz, r.currency, r.language].filter(Boolean),
       url: (r) => r.url || r.pop_url, quote: (r) => r.quote,
       note: "Gemini ODY-GEM-10 (2026-11-20). Not second-read yet.",
     });

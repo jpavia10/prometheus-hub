@@ -2,24 +2,26 @@
 
 # Odyssey · Trips & Away Mode · homework for Gemini
 
-Updated 2026-11-23 16:12 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-23 17:22 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ODY-GEM-14 · Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos)
+## 1. ODY-GEM-14 · Odyssey: a card for each of the 21 new stops (the ten trips found in Joseph's photos)
 
 **Due:** 2026-12-05 · **State:** now
 
-**Why:** Your city cards (ODY-GEM-10) cover the Europe and Philippines stops. The ten trips now on record add 13 places with no card.
+**Why:** Your city cards (ODY-GEM-10) cover the Europe and Philippines stops. The ten trips now on record (checked photo by photo on Nov 23) add 21 stops with no card; Detroit already has one.
 
 **What it unlocks:** Tap a dot: the city's card. Totals per trip (people, countries, time zones crossed).
 
 **Read first:**
-- The stop codes and names: ATL Atlanta GA, BSR Big Sur CA, SF San Francisco CA, SEQ Sequoia National Park CA, KCN Kings Canyon (Grant Grove) CA, LAS Las Vegas NV, HVR Hoover Dam NV/AZ, MZT Mazatlán Sinaloa, PVR Puerto Vallarta Jalisco, FBG Fort Bragg CA, SAN San Diego CA, DTW Detroit MI, MMH Mammoth Lakes CA
-- Your own ODY-GEM-10 file for the shape of a card (same fields, same sourcing rules); national parks: the NPS page for the park.
+- The stop codes and names exactly as in pillars/odyssey/odyssey-data.js (Nov 23): NGA North Georgia mountains (34.868, -84.520), ATL Atlanta GA, BSR Big Sur CA, SF San Francisco CA, MHL Marin Headlands CA, KAW Lake Kaweah CA, SEQ Giant Forest, Sequoia National Park CA, GRG Grant Grove, Kings Canyon CA, CDG Cedar Grove, Kings Canyon CA, GCN Grand Canyon South Rim AZ, PGA Page AZ, LAS Las Vegas NV, HVR Hoover Dam NV/AZ, LGB Long Beach CA, MZT Mazatlán, Sinaloa, PVR Puerto Vallarta, Jalisco, FBG Fort Bragg CA, PTA Point Arena CA, GAS Gaslamp Quarter, San Diego CA, BAL Balboa Park, San Diego CA, MMH Mammoth Lakes CA
+- No card for UT (a road stop at the Utah line), NAV (the Navarro River mouth) or DTW (it has one).
+- Your own ODY-GEM-10 file for the shape of a card (same fields, same sourcing rules); national parks and recreation areas: the NPS page for the park.
 
 **Do this:**
-1. For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words.
+1. For every stop: the card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'; known_for and its quote are about the stop itself (the park, the dam, the quarter) from its own official page.
+2. For that town: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015-2023 trips) and now, official language(s).
 
 **Make:** `odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json`
 
@@ -51,7 +53,7 @@ Updated 2026-11-23 16:12 UTC · 5 open · Rules for every pillar: https://github
 - [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
 - [ ] The file is valid JSON and is named exactly as asked.
 
-**How many:** 13
+**How many:** 21
 
 **Done when:** 13 cards, one per code above, every number sourced.
 
@@ -183,7 +185,7 @@ Updated 2026-11-23 16:12 UTC · 5 open · Rules for every pillar: https://github
 
 **Due:** 2026-12-07 · **State:** now
 
-**Why:** Your day-by-day files for the Eurotrip and the Philippines were the best work of the run (they caught a wrong date and four missing day trips). The ten new trips (Atlanta Oct 2015; Big Sur and San Francisco Jun 2018; Sequoia and Kings Canyon Aug 2018; Las Vegas and Hoover Dam Jun 2019; Mazatlán and Puerto Vallarta Aug 2019; San Francisco and Fort Bragg Mar 2021; San Diego Apr 2022; Detroit Jun 2022; Mammoth Lakes Sep 2022; Detroit May 2023) have one line each.
+**Why:** Your day-by-day files for the Eurotrip and the Philippines were the best work of the run (they caught a wrong date and four missing day trips). The ten new trips, named as in odyssey-data.js since Nov 23 (Georgia — a long weekend, Oct 23-25 2015; Big Sur & San Francisco, Jun 20-21 2018; Sequoia & Kings Canyon, Aug 14-15 2018; Grand Canyon, Las Vegas & Hoover Dam, Jun 8-10 2019; Mexican Riviera cruise, Aug 24-29 2019; San Francisco & the Mendocino coast, Mar 6-7 2021; San Diego, Apr 10-11 2022; Michigan — June 2022, Jun 1-5 2022; Mammoth Lakes, Sep 16-18 2022; Michigan — May 2023, May 11-15 2023) have one line per stop and no day log.
 
 **What it unlocks:** Each new trip gets a day-by-day log and its photo journey.
 
@@ -203,7 +205,7 @@ Updated 2026-11-23 16:12 UTC · 5 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (integer): row
-- `trip` (text): as in the list above, e.g. 'Sequoia and Kings Canyon Aug 2018'
+- `trip` (text): the trip's name as in the list above, e.g. 'Sequoia & Kings Canyon'
 - `date` (date): YYYY-MM-DD
 - `city` (text): 
 - `places` (text): in order

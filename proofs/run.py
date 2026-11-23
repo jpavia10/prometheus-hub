@@ -133,7 +133,7 @@ with sync_playwright() as p:
           localStorage.setItem('prometheus.odyssey.trips', JSON.stringify([{ id: 'seed-philippines-2024', name: 'Manila & El Nido — Philippines', dest: 'Manila and El Nido, Philippines', start: '2024-08-30', end: '2024-09-09', notes: 'the old shipped note', packState: { 'his mark': true } },
             { id: 'mine1', name: 'Coast weekend', dest: 'Monterey', start: '2027-03-05', end: '2027-03-07' }])); }""")
         po2.reload(wait_until="load"); po2.wait_for_selector(".trip", state="attached", timeout=15000)
-        m1 = po2.evaluate("() => { const t = JSON.parse(localStorage.getItem('prometheus.odyssey.trips')), s = t.find((x) => x.id === 'seed-philippines-2024'); return { ids: t.map((x) => x.id).sort(), notes: /BGC residences Sep 6/.test(s.notes) && s.rev === 2, mark: !!(s.packState || {})['his mark'], ctl: document.querySelectorAll('.trip[data-trip=mine1] .checks').length }; }")
+        m1 = po2.evaluate("() => { const t = JSON.parse(localStorage.getItem('prometheus.odyssey.trips')), s = t.find((x) => x.id === 'seed-philippines-2024'); return { ids: t.map((x) => x.id).sort(), notes: /BGC residences Sep 6/.test(s.notes) && s.rev === window.ODYSSEY_DATA.seedTrips.find((x) => x.id === s.id).rev, mark: !!(s.packState || {})['his mark'], ctl: document.querySelectorAll('.trip[data-trip=mine1] .checks').length }; }")
         po2.evaluate("""() => [...document.querySelectorAll('.trip[data-trip="seed-eurotrip-2015"] button')].find((x) => x.textContent === 'Delete trip').click()""")
         po2.reload(wait_until="load"); po2.wait_for_selector(".trip", state="attached", timeout=15000)
         m2 = po2.evaluate("() => JSON.parse(localStorage.getItem('prometheus.odyssey.trips')).map((x) => x.id).sort()")
@@ -158,6 +158,8 @@ with sync_playwright() as p:
           const n = Object.fromEntries([...document.querySelectorAll('.trip')].map((t) => [t.dataset.trip, t.querySelectorAll('.jr-th').length]));
           return { n, files: ids.length, bad }; }""")
         po.evaluate("document.querySelector('.pk-tabs .tab:nth-child(2)') && document.querySelector('.pk-tabs .tab:nth-child(2)').click()"); po.wait_for_timeout(300)
+        shut = po.evaluate("document.querySelectorAll('.trip.open').length")      # 2026-11-23: with no trip ahead every trip file starts closed
+        po.click('.ix-row[data-open="seed-eurotrip-2015"]'); po.wait_for_timeout(500)   # the index opens a trip file
         E = '.trip[data-trip="seed-eurotrip-2015"] '
         po.click(E + '.jr-th[data-i="6"]'); po.wait_for_timeout(600)
         j2 = po.evaluate("""(E) => { const c = document.querySelector(E.trim()); return { place: c.querySelector('.jr-place').textContent, here: [...c.querySelectorAll('.map-dot.here')].map((d) => d.dataset.code), todo: c.querySelectorAll('.map-seg.todo').length }; }""", E)
@@ -167,14 +169,47 @@ with sync_playwright() as p:
         lb = po.evaluate("document.querySelector('.jr-lb b').textContent"); po.keyboard.press('Escape'); po.wait_for_timeout(200)
         gone = po.evaluate("!document.querySelector('.jr-lb')")
         P2 = '.trip[data-trip="seed-philippines-2024-04"] '
+        po.click(P2 + '.trip-toggle'); po.wait_for_timeout(300)
         po.click(P2 + '.jr-play'); po.wait_for_timeout(4700)
         played = po.evaluate("(P) => document.querySelector(P + '.jr-count').textContent", P2)
         wide = po.evaluate("document.documentElement.scrollWidth")
-        ok = ({k: v for k, v in j1["n"].items() if v} == {"seed-eurotrip-2015": 16, "seed-philippines-2024-04": 15, "seed-philippines-2024": 5} and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
+        # 2026-11-23: 71 photos on 13 trips (the Eurotrip 18, April 2024 15, September 2024 5, and the ten trips found in his photos)
+        PHN = {"seed-eurotrip-2015": 18, "seed-philippines-2024-04": 15, "seed-philippines-2024": 5, "photos-atlanta-2015": 4, "photos-bigsur-2018": 4, "photos-sequoia-2018": 4,
+               "photos-vegas-2019": 5, "photos-mexico-2019": 3, "photos-norcal-2021": 4, "photos-sandiego-2022": 4, "photos-michigan-2022": 2, "photos-mammoth-2022": 2, "photos-michigan-2023": 1}
+        ok = ({k: v for k, v in j1["n"].items() if v} == PHN and j1["files"] == 71 and shut == 0 and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
               and j2["todo"] == 15 and j3.startswith("PRAGUE") and lb and gone and played.startswith("2 /") and wide <= 390 and not bo)
         proof("ODY-2", "His trip photos as a journey: each past trip opens on its own photos, every photo is served, the map follows the photo (route drawn to that stop, the stop ringed), a stop on the map opens its photos, full screen steps and closes from the keyboard, Play walks the trip",
-              ok, f"photos per trip {j1['n']}, {j1['files']} photos and their thumbnails served, {j1['bad']} missing; photo 7 -> {j2['place']}, ringed {j2['here']}, {j2['todo']} legs still ahead; tapping Prague on the map -> {j3}; full screen next -> {lb!r}, Escape closes: {gone}; Play after 4.7 s -> {played}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
+              ok, f"photos per trip {j1['n']}, {j1['files']} photos and their thumbnails served, {j1['bad']} missing; trip files open at first: {shut}; photo 7 -> {j2['place']}, ringed {j2['here']}, {j2['todo']} legs still ahead; tapping Prague on the map -> {j3}; full screen next -> {lb!r}, Escape closes: {gone}; Play after 4.7 s -> {played}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("ODY-2", "His trip photos as a journey", False, "did not finish: " + str(e)[:200])
+    # ODY-3 (2026-11-23): every place he has been. The atlas shows each region's places on its own outline map (Europe 20, Philippines 4,
+    # US West & Mexico 18, US East 3; 45 places, 13 countries); a place opens its visits with a way into the trip file; lighting one trip
+    # dims the others. The globe at the top holds all 13 trips and turns to the next one on a tap.
+    try:
+        po.goto(f"{URL}pillars/odyssey/", wait_until="load"); po.wait_for_selector("#o-atlas .at-map", state="attached", timeout=15000)
+        po.evaluate("[...document.querySelectorAll('.pk-tabs .tab')].find((t) => /Atlas/.test(t.textContent)).click()"); po.wait_for_timeout(300)
+        a1 = po.evaluate("""() => ({ regs: Object.fromEntries([...document.querySelectorAll('.at-reg')].map((b) => [b.dataset.reg, +b.querySelector('i').textContent])),
+          stats: [...document.querySelectorAll('.at-stats b')].slice(0, 2).map((b) => b.textContent), shown: document.querySelector('.at-map').dataset.region, dots: document.querySelectorAll('.at-map .at-dot').length })""")
+        po.click('.at-reg[data-reg="philippines"]'); po.wait_for_timeout(200)
+        po.evaluate("[...document.querySelectorAll('.at-map .at-hit')].find((c) => /Manila/.test(document.querySelector('.at-dot[data-pl=' + c.dataset.pl + ']').textContent)).dispatchEvent(new MouseEvent('click', { bubbles: true }))"); po.wait_for_timeout(200)
+        a2 = po.evaluate("() => ({ name: document.querySelector('.at-pick > b').textContent, visits: document.querySelectorAll('.at-pick .at-visit').length })")
+        po.click('.at-trips .chip[data-trip="seed-philippines-2024-04"]'); po.wait_for_timeout(200)
+        a3 = po.evaluate("() => ({ on: document.querySelectorAll('.at-map .at-dot.on').length, off: document.querySelectorAll('.at-map .at-dot.off').length })")
+        po.click('.at-reg[data-reg="europe"]'); po.wait_for_timeout(200); po.evaluate("document.querySelector('.at-map .at-hit').dispatchEvent(new MouseEvent('click', { bubbles: true }))"); po.wait_for_timeout(200)
+        po.click('.at-pick [data-open]'); po.wait_for_timeout(500)
+        a4 = po.evaluate("[...document.querySelectorAll('.trip.open')].map((t) => t.dataset.trip)")
+        g1 = po.evaluate("() => { const s = (window.__stage || [])[0]; return s && s.S.data ? { trips: s.S.data.trips.length, places: s.S.data.places.length, label: s.section.getAttribute('aria-label') } : null; }")
+        po.evaluate("window.scrollTo(0, 0)"); po.wait_for_timeout(200)
+        box = po.evaluate("(() => { const r = document.querySelector('.pk-stage canvas').getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; })()")
+        before = po.evaluate("document.querySelector('.pk-stage canvas').toDataURL().length"); po.mouse.click(box[0], box[1]); po.wait_for_timeout(2400)
+        after = po.evaluate("document.querySelector('.pk-stage canvas').toDataURL().length")
+        wide = po.evaluate("document.documentElement.scrollWidth")
+        ok = (a1["regs"] == {"europe": 20, "philippines": 4, "west": 18, "east": 3} and a1["stats"] == ["45", "13"] and a1["shown"] == "europe" and a1["dots"] == 20
+              and a2["name"].startswith("Manila") and a2["visits"] == 2 and a3["on"] >= 2 and a3["off"] >= 1 and a4 == ["seed-eurotrip-2015"]
+              and g1 and g1["trips"] == 13 and g1["places"] == 45 and before != after and wide <= 390 and not bo)
+        proof("ODY-3", "Every place he has been: the atlas draws each region's places on its outline map, a place opens its visits and its trip file, one trip can be lit; the globe holds every trip and turns on a tap",
+              ok, f"regions {a1['regs']}, {a1['stats'][0]} places in {a1['stats'][1]} countries, opens on {a1['shown']} with {a1['dots']} places; Manila -> {a2['name']!r} with {a2['visits']} visits; "
+                 f"April 2024 lit: {a3['on']} places lit, {a3['off']} dimmed; a Europe place -> trip file {a4}; globe {g1}; a tap redraws it: {before != after}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
+    except Exception as e: proof("ODY-3", "Every place he has been", False, "did not finish: " + str(e)[:200])
     # WORLD-1 (2026-11-23, owner chose "living painted header"; all painted pillars since the rollout): a pillar opens on its own painting, alive (kit/world.js):
     # the canvas is drawn, the header takes its accent from the painting, the page never scrolls sideways; Athenaeum keeps its own sky
     # (no painting behind it); arriving from the menu's dive the painting starts pushed in and settles back.

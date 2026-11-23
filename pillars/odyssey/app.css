@@ -98,6 +98,7 @@
 .tmap{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .map-sea{fill:color-mix(in srgb,var(--accent) 5%,var(--bg))}
 .map-land{fill:color-mix(in srgb,var(--ink) 10%,var(--bg));stroke:color-mix(in srgb,var(--ink) 30%,transparent);stroke-width:.7;stroke-linejoin:round}
+.map-border{fill:none;stroke:color-mix(in srgb,var(--ink) 26%,transparent);stroke-width:.6;stroke-dasharray:3 2;stroke-linejoin:round}
 .map-grat{fill:none;stroke:color-mix(in srgb,var(--muted) 18%,transparent);stroke-width:.6}
 .map-seg{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round}
 .map-seg.flight{stroke:var(--accent-2);stroke-width:1.7;stroke-dasharray:6 5}
@@ -166,6 +167,80 @@
 .jr-lb-x{position:fixed;top:max(12px,env(safe-area-inset-top));right:14px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(3,5,10,.5);color:#fff;font-size:26px;line-height:1;cursor:pointer}
 .jr-lb .jr-nav{position:fixed}
 @media (prefers-reduced-motion:reduce){.jr-img{transition:none}.jr-img.kb{animation:none}.map-here{animation:none;opacity:.8}.jr-th{transition:none}}
-/* 2026-11-20: a trip card below the screen is skipped until scrolled near (each card is a map, a logbook and a photo journey,
-   2,100-3,500 px tall; showing Trip files laid out and painted all of them at once). */
-.trip { content-visibility: auto; contain-intrinsic-size: auto 2400px; }
+/* 2026-11-23: a trip file is closed until opened (its photos load then); the index above lists every trip at a glance. A closed
+   card is a short header, so the old content-visibility estimate (2,400 px each) is only needed for an open one. */
+.trip { contain-intrinsic-size: auto 240px; }
+.trip.open { content-visibility: auto; contain-intrinsic-size: auto 2400px; }
+.trip-body{display:none}
+.trip.open .trip-body{display:block;animation:ix-in .35s ease}
+@keyframes ix-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.trip-toggle{margin-top:10px}
+.trip.open .trip-toggle{border-color:color-mix(in srgb,var(--accent) 50%,transparent);color:var(--accent)}
+.trip{scroll-margin-top:72px}
+
+/* ---- the index: every trip at a glance (2026-11-23) ---- */
+.ix{display:flex;flex-direction:column;gap:6px;margin:4px 0 22px}
+.ix-years{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.ix-years span{font-size:11.5px;letter-spacing:.14em;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:3px 10px;font-variant-numeric:tabular-nums}
+.ix-years i{font-style:normal;color:var(--accent);margin-left:6px}
+.ix-row{display:grid;grid-template-columns:64px minmax(0,1fr) 16px;align-items:center;gap:12px;width:100%;padding:8px;border:1px solid var(--line);border-radius:14px;background:color-mix(in srgb,var(--panel, #0b0f1a) 70%,transparent);color:inherit;text-align:left;cursor:pointer;font:inherit;transition:border-color .2s,transform .2s,background .2s;min-height:64px}
+.ix-row:hover,.ix-row:focus-visible{border-color:color-mix(in srgb,var(--accent) 55%,transparent);transform:translateY(-1px)}
+.ix-row:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ix-row.ahead{border-color:color-mix(in srgb,#ffc552 55%,transparent)}
+.ix-row img,.ix-glyph{width:64px;height:48px;border-radius:9px;object-fit:cover;display:block;background:#0a0e18}
+.ix-glyph{display:grid;place-items:center;font-size:20px;color:var(--accent);border:1px solid var(--line)}
+.ix-b{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ix-b b{font-size:15px;font-weight:560;line-height:1.25;overflow-wrap:anywhere}
+.ix-m{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ix-c{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--accent) 75%,var(--muted));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ix-go{color:var(--muted);font-size:20px}
+
+/* ---- day by day and landmarks (2026-11-23) ---- */
+.days,.lms{margin-top:14px;max-width:72ch}
+.days summary,.lms summary{cursor:pointer;padding:6px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.days summary .stat-s,.lms summary .stat-s{letter-spacing:.06em;text-transform:none;margin-left:6px}
+.day{display:grid;grid-template-columns:58px minmax(0,1fr);gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}
+.day-d{font-size:12px;letter-spacing:.12em;color:var(--accent);padding-top:2px}
+.day-b{display:flex;flex-direction:column;gap:2px;min-width:0}
+.day-p{font-size:13px;color:var(--muted);line-height:1.45;overflow-wrap:anywhere}
+.day-n{font-size:11.5px;color:color-mix(in srgb,var(--muted) 80%,transparent);font-variant-numeric:tabular-nums}
+.lm-list{display:grid;gap:8px}
+.lm{border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.lm-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.lm p{margin:5px 0;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.lm-src{margin-top:8px}
+.map-lm{fill:color-mix(in srgb,#ffc552 85%,transparent);stroke:var(--bg);stroke-width:1}
+.mk svg .map-lm{stroke-width:.5}
+.map-seg.car{stroke-opacity:.85}
+.map-seg.cruise{stroke:var(--accent-2);stroke-width:2;stroke-dasharray:2 4 9 4}
+
+/* The atlas (2026-11-23): every place, one map per region */
+.at-h3{margin:22px 0 4px;font-size:15px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.at-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:8px;margin:4px 0 12px}
+.at-stats div{border:1px solid var(--line);border-radius:12px;padding:8px 10px;background:color-mix(in srgb,var(--accent) 4%,transparent)}
+.at-stats b{display:block;font-size:20px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.15}
+.at-stats span{display:block;font-size:12px;color:var(--muted);line-height:1.3;margin-top:2px}
+.at-regs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0 4px}
+.at-regs::-webkit-scrollbar{display:none}
+.at-reg{flex:0 0 auto;font:inherit;font-size:13.5px;color:var(--muted);background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:6px 12px;cursor:pointer;transition:color .2s,background .2s,border-color .2s}
+.at-reg i{font-style:normal;font-variant-numeric:tabular-nums;opacity:.7;margin-left:3px}
+.at-reg.on{color:var(--ink-strong,#fff);background:color-mix(in srgb,var(--accent) 30%,transparent);border-color:var(--accent)}
+.at-wrap{max-width:760px}
+.at-map{touch-action:manipulation}
+.at-route{fill:none;stroke:color-mix(in srgb,var(--accent-2) 55%,transparent);stroke-width:1.1;stroke-linecap:round}
+.at-route.on{stroke:#ffc552;stroke-width:2.2}
+.at-route.off{stroke:color-mix(in srgb,var(--muted) 18%,transparent)}
+.at-dot{fill:color-mix(in srgb,var(--accent) 70%,var(--bg));stroke:var(--bg);stroke-width:1.2;transition:fill .2s}
+.at-dot.on{fill:#ffc552}
+.at-dot.off{fill:color-mix(in srgb,var(--muted) 35%,var(--bg))}
+.at-dot.approx{stroke:var(--accent);stroke-dasharray:2 2}
+.at-dot.sel{stroke:#fff;stroke-width:2.4}
+.map-lab.off{opacity:.45}
+.at-hit{fill:transparent;cursor:pointer}
+.at-trips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+.at-trips .chip{cursor:pointer;background:transparent;font:inherit;font-size:13px;flex:0 0 auto}
+.at-trips .chip.on{background:color-mix(in srgb,#ffc552 28%,transparent);border-color:#ffc552;color:var(--ink)}
+.at-pick{margin:8px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:12px;min-height:44px;background:color-mix(in srgb,var(--ink) 3%,transparent)}
+.at-pick > b{font-weight:600;color:var(--ink)}
+.at-visit{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px;font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.at-pick{animation:ix-in .3s ease}}

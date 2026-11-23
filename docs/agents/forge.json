@@ -1,6 +1,6 @@
 {
- "built": "2026-11-23T16:11:04Z",
- "checked": "2026-11-23T16:11:04Z",
+ "built": "2026-11-23T17:22:55Z",
+ "checked": "2026-11-23T17:22:55Z",
  "version": 2,
  "today": "2026-11-23",
  "sources": {
@@ -39,7 +39,7 @@
    "queued": 2,
    "done7": 133,
    "withdrawn": 68,
-   "items": 515,
+   "items": 523,
    "floor": 50,
    "by": {
     "hub": 43,
@@ -8304,18 +8304,19 @@
    "where": "Odyssey",
    "pid": "odyssey",
    "id": "ODY-GEM-14",
-   "title": "Odyssey: a city card for each of the 13 new stops (the trips found in Joseph's photos)",
+   "title": "Odyssey: a card for each of the 21 new stops (the ten trips found in Joseph's photos)",
    "status": "todo",
    "due": "2026-12-05",
-   "items": 13,
+   "items": 21,
    "closed": "",
    "review": "",
    "reopened": "",
    "delivered": null,
    "detail": {
-    "why": "Your city cards (ODY-GEM-10) cover the Europe and Philippines stops. The ten trips now on record add 13 places with no card.",
+    "why": "Your city cards (ODY-GEM-10) cover the Europe and Philippines stops. The ten trips now on record (checked photo by photo on Nov 23) add 21 stops with no card; Detroit already has one.",
     "steps": [
-     "For every stop: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015 trips) and now, official language(s), and one sentence on what the city is known for with its source's words."
+     "For every stop: the card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'; known_for and its quote are about the stop itself (the park, the dam, the quarter) from its own official page.",
+     "For that town: the official population (latest census or official estimate, its year and the statistics office's page), elevation in metres (official or Wikidata P2044), IANA time zone, currency then (2015-2023 trips) and now, official language(s)."
     ],
     "make": "odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json",
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
@@ -8375,7 +8376,7 @@
    "reopened": "",
    "delivered": null,
    "detail": {
-    "why": "Your day-by-day files for the Eurotrip and the Philippines were the best work of the run (they caught a wrong date and four missing day trips). The ten new trips (Atlanta Oct 2015; Big Sur and San Francisco Jun 2018; Sequoia and Kings Canyon Aug 2018; Las Vegas and Hoover Dam Jun 2019; Mazatlán and Puerto Vallarta Aug 2019; San Francisco and Fort Bragg Mar 2021; San Diego Apr 2022; Detroit Jun 2022; Mammoth Lakes Sep 2022; Detroit May 2023) have one line each.",
+    "why": "Your day-by-day files for the Eurotrip and the Philippines were the best work of the run (they caught a wrong date and four missing day trips). The ten new trips, named as in odyssey-data.js since Nov 23 (Georgia — a long weekend, Oct 23-25 2015; Big Sur & San Francisco, Jun 20-21 2018; Sequoia & Kings Canyon, Aug 14-15 2018; Grand Canyon, Las Vegas & Hoover Dam, Jun 8-10 2019; Mexican Riviera cruise, Aug 24-29 2019; San Francisco & the Mendocino coast, Mar 6-7 2021; San Diego, Apr 10-11 2022; Michigan — June 2022, Jun 1-5 2022; Mammoth Lakes, Sep 16-18 2022; Michigan — May 2023, May 11-15 2023) have one line per stop and no day log.",
     "steps": [
      "For every day of each trip with photos: the town, the places in order, first and last photo time in local time, how many photos, 2 Drive file ids as evidence.",
      "Where your trips file and the photos disagree (a day earlier or later, a place missing), say so in 'disagrees'."
