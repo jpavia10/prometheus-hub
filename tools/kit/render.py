@@ -116,6 +116,9 @@ def task_md(i, t, p, folder, common=False):
 
 # Owner, 2026-11-18: finished work shows on the Forge by itself, from one Drive file every AI edits in place (docs/agents/COMPLETIONS.md).
 PROBATION_ONE = {"grok"}   # owner 2026-11-19: one task per session, only when Joseph asks (Titan roles.json pace "one")
+LEAVING = {"grok": "PHASING OUT (Joseph, 2026-11-23: 'Im planning to cancel grok in 1 month its gonna phase out'): there is no new work for you in any pillar. "
+                   "Start nothing that is not listed below. Your one remaining job is the Midas book (MID-GRK-01, MID-GRK-02) until Joseph names who takes it over. "
+                   "Thank you for the work you did here."}   # an AI on its way out is told so before anything else
 LEDGER_RULE = ("WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json "
                "(Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "
                "\"done\" list, {\"key\": \"<task id>\", \"by\": \"<your name>\", \"what\": \"<file name> in <folder>\", \"ts\": \"<now, UTC, ISO 8601>\"}, set \"updated\", save. "
@@ -125,7 +128,7 @@ LEDGER_RULE = ("WHEN A TASK IS DONE (this is what makes the Forge show it as don
 def queue_page(p, ai, tasks, stamp):
     folder = DRIVE_ROOT.format(name=p["name"]) + "incoming (AI drop files)/"
     start = GH.format(repo="jpavia10/prometheus-hub", path="AI_START_HERE.md")
-    L = [GEN, "", f"# {p['name']} · homework for {ai['name']}", "",
+    L = [GEN, "", f"# {p['name']} · homework for {ai['name']}", ""] + ([f"**{LEAVING[ai['id']]}**", ""] if ai.get("id") in LEAVING else []) + [
          f"Updated {stamp} · {len(tasks)} open · Rules for every pillar: {start}. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/{ai['drive_folder']}/HOMEWORK — {ai['name']} (every pillar)'.", "", "**" + LEDGER_RULE + "**", ""]
     if not tasks:
         L += [f"No homework for {ai['name']} in {p['name']} right now. Check your HOMEWORK doc for the other pillars.", ""]
@@ -223,7 +226,8 @@ def main(argv):
         n = len(work) + sum(c[0] + c[1] for _, _, c in titan)
         L = [f"HOMEWORK — {a['name']} (every pillar)", "", f"Updated {stamp or '{stamp}'}. {n} to do across {len({x[0]['id'] for x in items if not (x[1] and awaiting(x[1]))})} pillars"
              + (f"; {len(waits)} more delivered and waiting for their check (listed at the end: do not redo them)." if waits else "."), "",
-             (("PROBATION (Joseph, 2026-11-19: 'grok is on probation because it used 84.6 of my quota without being prompted and likely no results'): "
+             (LEAVING[a.get("id")] + " Rules for every pillar:" if a.get("id") in LEAVING else
+              ("PROBATION (Joseph, 2026-11-19: 'grok is on probation because it used 84.6 of my quota without being prompted and likely no results'): "
                "do ONE task per session and only when Joseph asks; save its one file, say what you saved, then STOP. Never start work on your own or keep going. Rules for every pillar:")
               if a.get("id") in PROBATION_ONE else
               "When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. "
