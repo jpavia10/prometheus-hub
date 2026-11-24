@@ -480,7 +480,7 @@ function setYear(y, follow = true) {
 }
 function caption(y) {
   const hits = L.events.filter((e) => e.date && e.date.sort && +e.date.sort.slice(0, 4) === y && e.who.some((w) => T.byId[w]));
-  const ctx = (L.context || []).filter((c) => +c.date.slice(0, 4) === y);
+  const ctx = (L.context || []).filter((c) => +c.date.slice(0, 4) === y).sort((a, b) => (b.w || 0) - (a.w || 0));   /* the family's own regions first (kit/history.js) */
   const born = T.nodes.filter((n) => n.by === y && n.bq !== "estimate" && known(n.p) && !hits.some((e) => e.type === "birth" && e.who.includes(n.id)));
   const rows = hits.slice(0, 3).map((e) => `<li><b>${esc(e.who.map((w) => (T.byId[w] ? firstName(T.byId[w].p) : "")).filter(Boolean).join(" & "))}</b> ${esc(lc(TYPE[e.type] || e.type))}${e.place && PLC[e.place] ? `, ${esc(PLC[e.place].name)}` : ""} <time>${esc(e.date.text)}</time></li>`)
     .concat(born.slice(0, 2).map((n) => `<li><b>${esc(firstName(n.p))}</b> born <time>${n.by}</time></li>`))

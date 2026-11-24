@@ -417,21 +417,8 @@ window.KIN_LINEAGE = {
     { id: "Q18", p: 3, person: "P-joseph", q: "Read the Co. A rosters and his service record substitutes for the service number, the dates in France and his duty at Chaumont.", sources: "NARA RG 64 rosters; RG 120 (AEF) records of the 29th Engineers; NPRC", task: "KIN-GEM-11" },
   ],
 
-  /* the world around the family: well-established history that explains a record (shown in "The family through time", never as a
-     fact about a person) */
-  context: [
-    { date: "1904-05-07", text: "The Russian Empire lifts its ban on printing Lithuanian in the Latin alphabet, in force since 1864: Joseph was born under it, and parish registers of his time are kept in Russian." },
-    { date: "1914-07-28", text: "The First World War begins. Germany occupies Lithuania from 1915 to 1918." },
-    { date: "1917-04-06", text: "The United States declares war on Germany." },
-    { date: "1917-06-05", text: "The first national draft registration day: every man in the United States aged 21 to 30, citizen or not, had to register. Joseph's draft card is from this day." },
-    { date: "1918-02-16", text: "Lithuania declares its independence." },
-    { date: "1918-11-11", text: "The Armistice ends the fighting in France, where Joseph's regiment printed the Army's maps." },
-    { date: "1918-10-01", text: "The influenza pandemic peaks in the autumn of 1918." },
-    { date: "1924-05-26", text: "The Immigration Act of 1924 sets quotas that all but close the door to new arrivals from Lithuania." },
-    { date: "1929-10-29", text: "The stock market crashes and the Great Depression follows: American car production falls by about three quarters between 1929 and 1932." },
-    { date: "1940-06-15", text: "The Soviet Union occupies Lithuania." },
-    { date: "1941-12-08", text: "The United States enters the Second World War." },
-  ],
+  /* the world around the family: since 2026-11-24 it is not kept here; Kin reads the one world-history dataset (Athenaeum's,
+     pillars/athenaeum/data/world-history.json via kit/history.js), the entries that touch the family's places (lineage.js) */
 
   /* what is known about people the tree does not have a card for yet: the tree draws everyone's unknown mother and father
      (pillars/kin/lineage/lineage.js, addGhosts) and shows these facts on them; each line is from a source, never a guess */

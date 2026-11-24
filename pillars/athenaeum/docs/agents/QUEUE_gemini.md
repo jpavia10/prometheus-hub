@@ -2,11 +2,415 @@
 
 # Athenaeum · Idea Vault · homework for Gemini
 
-Updated 2026-11-24 17:12 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 21:34 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ATH-GEM-07 · Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words
+## 1. ATH-GEM-08 · History: source the 10 Kin entries that have none (1904-1941)
+
+**Due:** 2026-11-30 · **State:** now
+
+**Why:** Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Ten of the entries came from Kin's seed without sources.
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. The ten entries whose check reads 'unsourced' (ids kin-1904-05-07 to kin-1941-12-08): for each, an authoritative source with a quote that shows the date and the claim; correct the date or the text if the source differs, and say so in text.
+
+**Make:** `athenaeum_gemini_history-kin-sources_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**How many:** 10
+
+**Done when:** 10 entries, every one with a source whose quote shows the date and the claim.
+
+**How Claude checks it:**
+- Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).
+- Claude opens the sources of a fifth of the rows at random and finds each quote on its page.
+- Muse reads another fifth independently (ATH-MUS).
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+## 2. ATH-GEM-09 · History: Lithuania and the Russian Empire, 1795-1991 (40 entries)
+
+**Due:** 2026-12-03 · **State:** now
+
+**Why:** Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Joseph Termena came from Samogitia.
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. The partitions (1795) to independence regained (1990-91): the uprisings of 1831 and 1863, the end of serfdom (1861), the press ban (1864-1904) and the book smugglers, the emigration waves (1867-1914), the Great Seimas of Vilnius (1905), the First World War occupation, 1918 and the wars of independence, Vilnius and Klaipėda, the 1926 coup, 1940, the 1941 deportations, the Holocaust in Lithuania, the partisans (1944-53), Sąjūdis (1988), 11 March 1990.
+2. At least 8 entries for Samogitia or Telšiai itself (Joseph Termena was born near Telšiai in 1893).
+
+**Make:** `athenaeum_gemini_history-lithuania_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**How many:** 40
+
+**Done when:** 40 entries, every one with a source whose quote shows the date and the claim.
+
+**How Claude checks it:**
+- Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).
+- Claude opens the sources of a fifth of the rows at random and finds each quote on its page.
+- Muse reads another fifth independently (ATH-MUS).
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+## 3. ATH-GEM-10 · History: Malta, 1798-1979 (30 entries)
+
+**Due:** 2026-12-03 · **State:** now
+
+**Why:** Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Joseph Pavia (born 1897) and Lucretia Calleja (born 1910) came from Malta to Detroit.
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. The French (1798) and British (1800, 1814) takeovers, the cholera years, the Suez Canal and the dockyard (1869), the emigration of 1910-1930 (to the United States, and Detroit above all), the Sette Giugno (1919), self-government (1921), the 1924 U.S. quota for Malta, the Second World War siege (1940-42) and the George Cross, independence (1964), the republic (1974), the last British forces (1979).
+2. Where a source gives numbers of Maltese emigrants to Detroit, include them.
+
+**Make:** `athenaeum_gemini_history-malta_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**How many:** 30
+
+**Done when:** 30 entries, every one with a source whose quote shows the date and the claim.
+
+**How Claude checks it:**
+- Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).
+- Claude opens the sources of a fifth of the rows at random and finds each quote on its page.
+- Muse reads another fifth independently (ATH-MUS).
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+## 4. ATH-GEM-11 · History: Detroit and Michigan, 1890-2010 (40 entries)
+
+**Due:** 2026-12-04 · **State:** now
+
+**Why:** Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Three family lines worked in Detroit's plants (a furnace attendant killed at Ford in 1935; a grinder on cylinder blocks in 1950).
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. Highland Park and the moving assembly line (1913), the five-dollar day (1914), the Rouge plant (1917-28), the 1918 influenza in Detroit, Prohibition on the Detroit River, the Ford Hunger March (1932), the Flint sit-down strike and the UAW (1936-37), the Battle of the Overpass (1937), the Arsenal of Democracy and Willow Run, the 1943 riot, the freeways, the 1967 rebellion, the 1973 and 1979 oil shocks, the Chrysler loan (1979), the 2008-09 auto rescue and Detroit's bankruptcy (2013 is allowed).
+2. Include the Maltese and Lithuanian communities of Detroit where a source documents them.
+
+**Make:** `athenaeum_gemini_history-detroit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**How many:** 40
+
+**Done when:** 40 entries, every one with a source whose quote shows the date and the claim.
+
+**How Claude checks it:**
+- Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).
+- Claude opens the sources of a fifth of the rows at random and finds each quote on its page.
+- Muse reads another fifth independently (ATH-MUS).
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+## 5. ATH-GEM-12 · History: Tennessee, North Carolina and the Cherokee frontier, 1730-1900 (40 entries)
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. The Kirkland, Bivens, Giles, Culberson and Moss lines lived in Monroe, McMinn and Polk counties; Thomas Davis was a Regulator.
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. The Regulator movement and Alamance (1768-71), the Watauga settlements, Kings Mountain (1780), the State of Franklin, Tennessee statehood (1796), the Hiwassee Purchase (1819, Monroe and McMinn counties), the Cherokee Nation's courts and removal (1838; Fort Cass at Charleston, Tennessee), Polk County and the Ducktown copper basin, East Tennessee Unionism in the Civil War, the 3rd Tennessee Cavalry (Union), the Sultana (1865), Reconstruction in East Tennessee.
+2. Monroe, McMinn and Polk counties first, then the state.
+
+**Make:** `athenaeum_gemini_history-tennessee_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**How many:** 40
+
+**Done when:** 40 entries, every one with a source whose quote shows the date and the claim.
+
+**How Claude checks it:**
+- Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).
+- Claude opens the sources of a fifth of the rows at random and finds each quote on its page.
+- Muse reads another fifth independently (ATH-MUS).
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+## 6. ATH-GEM-13 · History: colonial Virginia and the Pennsylvania Quakers, 1607-1790 (40 entries)
+
+**Due:** 2026-12-06 · **State:** now
+
+**Why:** Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. The Martin, Keeling, Thorowgood, Rogers, Estes, Pulliam, Stone and Davis lines reach colonial Virginia and Pennsylvania.
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. Jamestown (1607), the first assembly (1619), the 1622 attack, the Hopewell and other arrivals (1620s-30s), Lower Norfolk County (1637), the headright system, Bacon's Rebellion (1676), tobacco and indentured servants, Lunenburg County (1746), the Quaker migration from Chester County, Pennsylvania to Cane Creek, North Carolina (1750s), the French and Indian War, the Revolution in Virginia.
+
+**Make:** `athenaeum_gemini_history-colonial_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**How many:** 40
+
+**Done when:** 40 entries, every one with a source whose quote shows the date and the claim.
+
+**How Claude checks it:**
+- Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).
+- Claude opens the sources of a fifth of the rows at random and finds each quote on its page.
+- Muse reads another fifth independently (ATH-MUS).
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+## 7. ATH-GEM-14 · History: the world spine, 1600-2026 (60 entries)
+
+**Due:** 2026-12-07 · **State:** now
+
+**Why:** Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Athenaeum's own timeline needs a world spine to hang the family's history on.
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. The turning points that shaped ordinary lives everywhere: wars, pandemics, migrations, revolutions in work and technology, from the Thirty Years' War to today; no more than 6 per decade, evenly across the four centuries, never only Europe and the United States.
+
+**Make:** `athenaeum_gemini_history-world_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**How many:** 60
+
+**Done when:** 60 entries, every one with a source whose quote shows the date and the claim.
+
+**How Claude checks it:**
+- Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).
+- Claude opens the sources of a fifth of the rows at random and finds each quote on its page.
+- Muse reads another fifth independently (ATH-MUS).
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+## 8. ATH-GEM-15 · History: England and Canada, home children and emigration, 1820-1930 (15 entries)
+
+**Due:** 2026-12-07 · **State:** now
+
+**Why:** Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Arthur Seconder came to Canada as a Barnardo child in 1892.
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. The Poor Law, the ragged schools, Barnardo's and the home children sent to Canada (1870-1930, about 100,000 children), the Carthaginian and the Allan Line, Ontario's districts that took them (Algoma), the 1925 end of the scheme.
+
+**Make:** `athenaeum_gemini_history-england-canada_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**How many:** 15
+
+**Done when:** 15 entries, every one with a source whose quote shows the date and the claim.
+
+**How Claude checks it:**
+- Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).
+- Claude opens the sources of a fifth of the rows at random and finds each quote on its page.
+- Muse reads another fifth independently (ATH-MUS).
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+## 9. ATH-GEM-07 · Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words
 
 **Due:** 2026-12-08 · **State:** now
 

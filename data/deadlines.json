@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 17:12 UTC",
+ "updated": "2026-11-24 21:34 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -22,6 +22,17 @@
    "title": "A fresh book every Monday by noon PT",
    "state": "now",
    "count": 1
+  },
+  {
+   "due": "2026-11-30",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-08",
+   "title": "History: source the 10 Kin entries that have none (1904-1941)",
+   "state": "now",
+   "count": 10
   },
   {
    "due": "2026-12-01",
@@ -146,6 +157,28 @@
   },
   {
    "due": "2026-12-03",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-09",
+   "title": "History: Lithuania and the Russian Empire, 1795-1991 (40 entries)",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-10",
+   "title": "History: Malta, 1798-1979 (30 entries)",
+   "state": "now",
+   "count": 30
+  },
+  {
+   "due": "2026-12-03",
    "pillar": "kin",
    "pillar_name": "Kin",
    "ai": "gemini",
@@ -187,6 +220,28 @@
    "title": "Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached",
    "state": "now",
    "count": 120
+  },
+  {
+   "due": "2026-12-04",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-11",
+   "title": "History: Detroit and Michigan, 1890-2010 (40 entries)",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-12-05",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-12",
+   "title": "History: Tennessee, North Carolina and the Cherokee frontier, 1730-1900 (40 entries)",
+   "state": "now",
+   "count": 40
   },
   {
    "due": "2026-12-05",
@@ -289,6 +344,17 @@
   },
   {
    "due": "2026-12-06",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-13",
+   "title": "History: colonial Virginia and the Pennsylvania Quakers, 1607-1790 (40 entries)",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-12-06",
    "pillar": "kin",
    "pillar_name": "Kin",
    "ai": "muse",
@@ -319,6 +385,28 @@
    "title": "Polis: every 2027 election date and deadline for Kern County voters",
    "state": "now",
    "count": 0
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-14",
+   "title": "History: the world spine, 1600-2026 (60 entries)",
+   "state": "now",
+   "count": 60
+  },
+  {
+   "due": "2026-12-07",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-15",
+   "title": "History: England and Canada, home children and emigration, 1820-1930 (15 entries)",
+   "state": "now",
+   "count": 15
   },
   {
    "due": "2026-12-07",
@@ -648,6 +736,17 @@
    "id": "SEL-GEM-09",
    "title": "Selling: eBay's coin and bullion item specifics and photo rules, category by category",
    "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-10",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "ATH-MUS-02",
+   "title": "History: second read of a fifth of each history batch (ATH-GEM-08 to 15)",
+   "state": "next",
    "count": 0
   },
   {

@@ -43,6 +43,8 @@ jobs:
         run: python3 tools/forge/test_build.py
       - name: Kin lineage intake rules
         run: python3 tools/kin/test_lineage_intake.py
+      - name: World history (one dataset, every entry valid, derived files current)
+        run: python3 tools/history/build.py --check
       - name: Money and contact guard
         run: node tools/guard/money.mjs
       - name: Erased history stays erased

@@ -65,6 +65,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .pk-world { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: #05070e center 30% / cover no-repeat; opacity: 0; transition: opacity 1.4s ease;
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, .9) 28%, rgba(0, 0, 0, .4) 62%, transparent 92%); mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, .9) 28%, rgba(0, 0, 0, .4) 62%, transparent 92%); }
 .pk-world.on { opacity: .72; }
+/* the held painting on a dive arrival (kit.js world(), 2026-11-24): there at once, pushed in, settling as the living painting does */
+.pk-world.pk-held { opacity: .92; transform: scale(1.6); transform-origin: 50% 30%; transition: transform 1.3s cubic-bezier(.15, .7, .3, 1), opacity .4s ease; will-change: transform; }
+.pk-world.pk-held.on { opacity: .92; transform: scale(1); }
+.pk-world.pk-held.gone { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .pk-world.pk-held { transform: none; transition: opacity .4s ease; } }
 /* the living painting (kit/world.js, 2026-11-23): stronger at the top, the same fade below; from the menu's dive it is there at once */
 canvas.pk-living { width: 100%; height: 100%; display: block; -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, rgba(0, 0, 0, .78) 48%, rgba(0, 0, 0, .3) 74%, transparent 96%); mask-image: linear-gradient(to bottom, #000 0%, #000 22%, rgba(0, 0, 0, .78) 48%, rgba(0, 0, 0, .3) 74%, transparent 96%); }
 canvas.pk-living.on { opacity: .92; }

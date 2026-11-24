@@ -1,6 +1,6 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
    Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline. */
-var CACHE = "prometheus-hub-deck-d76";
+var CACHE = "prometheus-hub-deck-d77";
 var PILLAR_IDS = [
   "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
   "piano", "bastion", "athenaeum", "odyssey", "privacy", "argus", "games", "forge", "foundry",
@@ -27,7 +27,7 @@ var SHELL = [
   "./pillars/athenaeum/vault.js", "./pillars/athenaeum/ideas-seed.js", "./pillars/athenaeum/history-seed.js",
   "./pillars/odyssey/odyssey-data.js", "./pillars/odyssey/basemap.js", "./pillars/odyssey/photos.js", "./pillars/odyssey/odyssey-extra.js", "./pillars/odyssey/globe.js", "./pillars/polis/kern-rules.js", "./pillars/continuity/legacy-policies.js", "./pillars/hearth/permits.js", "./pillars/argus/corpus-data.js", "./pillars/observatory/subjects-seed.js",
   "./pillars/athenaeum/js/app.js", "./pillars/athenaeum/js/sky.js", "./pillars/athenaeum/js/model.js", "./pillars/athenaeum/data/cause-event-consequence.json",
-  "./pillars/kin/lineage/data.js", "./pillars/kin/lineage/lineage.js", "./pillars/kin/lineage/lineage.css", "./kit/vendor/three/build/three.module.min.js",
+  "./pillars/kin/lineage/data.js", "./pillars/kin/lineage/lineage.js", "./kit/history.js", "./pillars/athenaeum/data/world-history.js", "./pillars/kin/lineage/lineage.css", "./kit/vendor/three/build/three.module.min.js",
   "./pillars/kin/tree/", "./pillars/kin/tree/index.html", "./pillars/kin/tree/tree.css", "./pillars/kin/tree/main.js", "./pillars/kin/tree/core.js", "./pillars/kin/tree/gfx.js", "./pillars/kin/tree/globe.js", "./pillars/kin/tree/poster.webp",
   "./pillars/kin/tree/fonts/cormorant-garamond-latin-500-normal.woff2", "./pillars/kin/tree/fonts/cormorant-garamond-latin-600-normal.woff2", "./pillars/kin/tree/fonts/cormorant-garamond-latin-500-italic.woff2"
 ]);

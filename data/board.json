@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 17:12 UTC",
+ "updated": "2026-11-24 21:34 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -217,8 +217,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/",
    "open": {
     "grok": 0,
-    "gemini": 1,
-    "muse": 0,
+    "gemini": 9,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,

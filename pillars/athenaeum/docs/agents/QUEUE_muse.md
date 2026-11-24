@@ -2,8 +2,52 @@
 
 # Athenaeum · Idea Vault · homework for Muse
 
-Updated 2026-11-24 17:12 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-24 21:34 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Muse in Athenaeum · Idea Vault right now. Check your HOMEWORK doc for the other pillars.
+## 1. ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15)
+
+**Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
+
+**Why:** Every history batch Gemini delivers gets an independent reader before it reaches Kin and Athenaeum.
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. For each batch as it lands: pick every fifth row, open each source yourself, and say whether the quote is on the page, whether the date and claim match, and whether a better source exists.
+
+**Make:** `athenaeum_muse_history-second-read_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**Done when:** Every batch read.
+
+**How Claude checks it:**
+- Claude compares your reading with his own on the same rows.
+
+**Not done (sent back) if:**
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count

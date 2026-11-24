@@ -2,7 +2,7 @@
 
 # Homework board: every pillar, every AI
 
-Updated 2026-11-24 17:12 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
+Updated 2026-11-24 21:34 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
 
 | Pillar | State | Grok | Gemini | Muse | ChatGPT | Argon | Hydrogen | Claude |
 |---|---|---|---|---|---|---|---|---|
@@ -20,7 +20,7 @@ Updated 2026-11-24 17:12 UTC. Open tasks (now + next). Titan counts its homework
 | Hermes Post | live | — | 1 | — | — | — | — | — |
 | Bossa Piano Studio | live | — | — | — | — | — | — | — |
 | Bastion · Mountain Prep | live | — | 1 | — | — | — | — | — |
-| Athenaeum · Idea Vault | live | — | 1 | — | — | — | — | — |
+| Athenaeum · Idea Vault | live | — | 9 | 1 | — | — | — | — |
 | Odyssey · Trips & Away Mode | live | — | 1 | — | — | — | — | — |
 | Privacy · CA DROP | live | — | 1 | — | — | — | — | — |
 | Argus Album | live | — | 1 | — | — | — | — | — |

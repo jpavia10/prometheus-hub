@@ -7,6 +7,22 @@
   "use strict";
   const L = window.KIN_LINEAGE, PK = window.PK;
   if (!L || !PK) return;
+  /* the world around the family (owner, 2026-11-24: "no reason to generate it when it can be higher quality and denser"): Kin keeps no
+     history of its own; it takes the entries of the one world-history dataset (Athenaeum's, kit/history.js) that touch the family's own
+     places (Lithuania, Malta, Michigan, Tennessee, Virginia ...) from 1600 on, closest first: 2 a family region, 1 the United States, 0 the world */
+  if (window.PKHistory) {
+    /* a region counts only in the years the family was there: from the dated events at its places, a generation before to a decade after
+       (Joseph Termena's 1918 service in France brings in the First World War there, not the French Revolution) */
+    const H = window.PKHistory, PLN = {}; for (const p of L.places) PLN[p.id] = [p.name, p.hist, p.now].join(" ");
+    const when = {}, mark = (r, y) => { const w = when[r] || (when[r] = [y, y]); w[0] = Math.min(w[0], y); w[1] = Math.max(w[1], y); };
+    for (const e of L.events) { const y = +String((e.date && e.date.sort) || "").slice(0, 4); if (y && e.place && PLN[e.place]) for (const r of H.regionsOf([PLN[e.place]])) mark(r, y); }
+    for (const p of L.people) { const ys = (String(p.summary || "").match(/\b(1[5-9]\d\d|20[0-2]\d)\b/g) || []).map(Number); if (ys.length) for (const r of H.regionsOf([p.summary])) { mark(r, Math.min(...ys)); mark(r, Math.max(...ys)); } }
+    const regs = H.regionsOf(Object.values(PLN).concat(L.people.map((p) => p.summary || ""))), own = (r) => regs.includes(r) && r !== "united-states" && r !== "american-colonies";
+    const near = (x) => x.w < 2 || (x.e.regions || []).some((r) => { if (!own(r)) return false; const w = when[r], y = H.year(x.e.date); return !w || (y >= w[0] - 40 && y <= w[1] + 50); });
+    L.context = H.forRegions(regs, 1600, 2100).filter(near).map((x) => ({ date: String(x.e.date), text: x.text, title: x.e.title, w: x.w, id: x.e.id,
+      url: ((x.e.sources || []).find((s) => s.url) || {}).url || "", unsourced: !/^(sourced|checked)/.test(x.e.check || "") }));
+    L.contextRegions = regs; L.contextWhen = when;
+  } else L.context = [];
   const { h, toast, store } = PK;
   const S = store("kin");
   const DOCS = "lineage/docs/";
@@ -494,7 +510,7 @@
     let dec = null, html = "";
     for (const x of ev) {
       const d = x.sort.slice(0, 3) + "0s"; if (d !== dec) { dec = d; html += `<li class="tl-dec">${d}</li>`; }
-      if (x.k === "c") { html += `<li class="tl-ctx"><time>${esc(x.sort.slice(0, 4))}</time><span>${esc(x.c.text)}</span></li>`; continue; }
+      if (x.k === "c") { html += `<li class="tl-ctx"><time>${esc(x.sort.slice(0, 4))}</time><span>${esc(x.c.text)}${/^https:\/\//.test(x.c.url || "") ? ` <a class="tl-src" href="${esc(x.c.url)}" target="_blank" rel="noopener">source</a>` : x.c.unsourced ? ` <small class="tl-src">(source still to find)</small>` : ""}</span></li>`; continue; }
       const e = x.e, who = e.who.map((q) => M.P[q] ? firstName(M.P[q]) : q).join(" & "), pl = e.place && M.PL[e.place] ? M.PL[e.place].name : "";
       html += `<li class="tl-ev c-${e.confidence}"><time>${esc(e.date.text)}</time><button type="button" class="ln-link" data-go="${e.who[0]}">${esc(who)}</button> <b>${esc(TYPE[e.type] || e.type)}</b>${pl ? ` · ${esc(pl)}` : ""}</li>`;
     }

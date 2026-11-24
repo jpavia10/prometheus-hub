@@ -453,7 +453,7 @@ div.focus { display: grid; justify-items: center; gap: 18px; }
 ::view-transition-old(root) { animation: deck-leave .3s cubic-bezier(.7, 0, .9, .4) both; }
 ::view-transition-new(root) { animation: deck-arrive .6s var(--ease) both; }
 html.vt-inpage::view-transition-old(root), html.vt-inpage::view-transition-new(root) { animation: none; }
-@keyframes deck-leave { to { transform: scale(2.2); filter: blur(12px) brightness(2); opacity: 0; } }
+@keyframes deck-leave { to { transform: scale(1.12); opacity: 0; } }   /* 2026-11-24: it brightened to a white haze; it now sinks into the dark the pillar opens on */
 @keyframes deck-arrive { from { transform: scale(.5); filter: blur(16px) brightness(2.4); opacity: 0; } }
 
 #deck::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 150px; z-index: 25; pointer-events: none; background: linear-gradient(180deg, transparent, rgba(110, 225, 255, .075), transparent); animation: scan 7.5s linear infinite; }
@@ -989,3 +989,6 @@ body.town-home .rail .sky-chip { display: none; }   /* the town's own weather ch
 .realm.opening .rl-core { opacity: 0; transition: opacity .6s ease; }
 .rl-pl .rl-name { transform: translateX(var(--nx, 0px)); }
 .briefing { grid-template-columns: minmax(0, 1fr); } .briefing > * { min-width: 0; max-width: 100%; }
+
+/* the dive takes the hub's chrome with it (2026-11-24): only the town and the place you chose are left as it sinks into the pillar */
+body.town-diving .rail, body.town-diving .dock, body.town-diving .wx-box, body.town-diving .rl-levels, body.town-diving .rl-edge { opacity: 0; transition: opacity .22s var(--ease); pointer-events: none; }

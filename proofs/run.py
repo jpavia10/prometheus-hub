@@ -55,6 +55,35 @@ with sync_playwright() as p:
     try: p2.wait_for_url("**/pillars/apollo/**", timeout=30000); took = _t.time() - t0; p2.wait_for_selector(".shell", timeout=15000); landed = f"{p2.title()} ({took:.1f} s on this machine)"
     except Exception as e: landed = "did not land: " + str(e)[:80]
     proof("CORE-4", "Tapping a place flies to it, tapping it again warps into that pillar", "Apollo" in landed, landed); c2.close()
+    # TRANS-1 (owner, 2026-11-24: "The transition from hub to pillar is atrocious": 4.5 s of white haze, a white flash, black, an empty page).
+    # The first tap fetches the pillar and its painting; the second dives (an iris in the place's colour) and hands over within a moment;
+    # every pillar page is dark before its stylesheet; the pillar opens on the held painting, pushed in, then its living one.
+    ct = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); pt = ct.new_page(); bt = []
+    pt.on("pageerror", lambda e: bt.append(str(e)[:120]))
+    if MOCK: pt.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pt.route("https://api.weather.gov/**", lambda route, request: route.abort()); pt.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+    pt.add_init_script("if (location.pathname.includes('/pillars/')) { window.__dive0 = sessionStorage.getItem('pk:dive'); document.addEventListener('DOMContentLoaded', () => { window.__held0 = !!document.querySelector('.pk-world.pk-held'); }); }")   # the flag as the page starts, before the kit uses it
+    try:
+        pt.goto(f"{URL}?now={NOW}&home=orbit&nosweep=1#/", wait_until="load"); pt.wait_for_selector(".realm .rl-pl[data-pillar=apollo]", timeout=20000); pt.wait_for_timeout(2500)
+        pt.evaluate("document.querySelector('.rl-pl[data-pillar=apollo]').click()"); pt.wait_for_timeout(700)
+        pre = pt.evaluate("[...document.querySelectorAll('link[rel=prefetch]')].map((l) => l.getAttribute('href'))")
+        import time as _tt; t0 = _tt.time(); pt.evaluate("sessionStorage.setItem('__tap', String(Date.now())); document.querySelector('.rl-pl[data-pillar=apollo]').click()")
+        pt.wait_for_url("**/pillars/apollo/**", timeout=20000); commit = _tt.time() - t0; pt.wait_for_load_state("load")
+        # the hand-over is timed inside the page (tap to the moment the town sends you on), not by the test machine's clock around a page load:
+        # a software renderer under load can stall the load itself for seconds (2026-11-24: 1.5 s alone, 3.2 s beside a proof run)
+        arr = pt.evaluate("(() => { const d = JSON.parse(window.__dive0 || 'null'); return { held: !!window.__held0, flag: !!d && sessionStorage.getItem('pk:dive') === null, handoff: d ? (d.t - +sessionStorage.getItem('__tap')) / 1000 : 99 }; })()")
+        handoff = arr["handoff"]
+        pt.wait_for_selector("canvas.pk-living.arrive", state="attached", timeout=15000)
+        dark = []
+        pages = [p["route"] for p in _registry["pillars"] if p.get("state") == "live" and p.get("route", "").startswith("pillars/")]
+        for r in pages:
+            txt = pt.request.get(URL + r).text(); head = txt.split("<link", 1)[0]
+            if "html,body{background:#05070e}" not in head: dark.append(r)
+        skipped = [e for e in bt if "ViewTransition opt-in disabled" in e or "Transition was aborted" in e]; bt = [e for e in bt if e not in skipped]   # the browser dropping its own page-to-page fade, as in DECK-2; the swap is dark to dark either way
+        ok = ("pillars/apollo/" in pre and any("world_apollo.webp" in x for x in pre) and handoff < 1.0 and arr["held"] and arr["flag"] and not dark and not bt)
+        proof("TRANS-1", "From the town into a pillar: the first tap fetches the page and its painting, the second hands over within a moment, every pillar page is dark before its stylesheet, and the pillar opens on its painting already pushed in",
+              ok, json.dumps({"prefetched": [x for x in pre if "apollo" in x], "handoff_s": round(handoff, 2), "url_changed_s": round(commit, 2), "held_at_first_paint": arr["held"], "dive_flag_used": arr["flag"], "pages_checked": len(pages), "not_dark_first": dark, "browser_skipped_fade": len(skipped)}) + ("; errors: " + " | ".join(bt) if bt else ""))
+    except Exception as e: proof("TRANS-1", "From the town into a pillar", False, "did not finish: " + str(e)[:200])
+    ct.close()
     # TOWN-1 (owner, 2026-11-24: "real time weather and a day night cycle on the town ... synced with real time data for weather and time"):
     # the town's sky follows the hour against the place's own sunrise and sunset, and the weather reading; the chip says the same reading
     _wx = {"lat": 42.79, "lon": -83.63, "now": {"temp": 28.4, "feels": 20.1, "code": 73, "wind": 12, "gust": 22, "cloud": 100, "rain": 0, "snow": 0.1, "isDay": False, "humidity": 88},
@@ -319,6 +348,23 @@ with sync_playwright() as p:
                  f"tap -> {k2['who']!r}; Joseph: {k3['ev']} events, {k3['docs']} records, {k3['maps']} maps, {k3['cons']} conflicts; record viewer {k4}; GEDCOM {k5}; fan {fan}; page {wide}px" + (f"; errors {bk[:2]}" if bk else ""))
         ck.close()
     except Exception as e: proof("KIN-2", "The family tree", False, "did not finish: " + str(e)[:200])
+    # HIST-1 (owner, 2026-11-24: "Athenaeum can has supplemental world history on it already so we can refine and expand that then use it as a
+    # dataset for other pillars use ... no reason to generate it"): one world-history dataset; Kin keeps none of its own and shows the entries that
+    # touch the family's places in the family's years; Athenaeum's chronicle is generated from the same file
+    try:
+        ch = b.new_context(viewport={"width": 384, "height": 832}); ph = ch.new_page(); bh = []; ph.on("pageerror", lambda e: bh.append(str(e)[:120]))
+        ph.goto(f"{URL}pillars/kin/", wait_until="load"); ph.wait_for_function("window.KIN_LINEAGE && window.KIN_LINEAGE.context && window.PK_HISTORY", timeout=15000)
+        ph.evaluate("(() => { const d = document.querySelector('#ln-time'); if (d) { d.open = true; d.dispatchEvent(new Event('toggle')); } })()"); ph.wait_for_timeout(400)
+        hs = ph.evaluate("""() => { const L = window.KIN_LINEAGE, H = window.PK_HISTORY.entries, ids = new Set(H.map((e) => e.id));
+          return { shared: H.length, kin: L.context.length, allShared: L.context.every((c) => ids.has(c.id)), from: Math.min(...L.context.map((c) => +c.date.slice(0, 4))),
+            family: L.context.filter((c) => c.w === 2).length, regions: (L.contextRegions || []).length, rows: document.querySelectorAll('#ln-time .tl-ctx').length }; }""")
+        cec = ph.request.get(URL + "pillars/athenaeum/data/cause-event-consequence.json").json(); wh = ph.request.get(URL + "pillars/athenaeum/data/world-history.json").json()
+        chain_ids = {e["id"] for e in wh["entries"] if e.get("chain")}; hs["chronicle"] = len(cec["entries"]); hs["chronicleFromShared"] = all(e["id"] in chain_ids for e in cec["entries"])
+        ok = (hs["shared"] >= 50 and hs["kin"] >= 10 and hs["allShared"] and hs["from"] >= 1600 and hs["family"] >= 5 and hs["regions"] >= 5 and (hs["rows"] == 0 or hs["rows"] == hs["kin"])
+              and hs["chronicle"] >= 40 and hs["chronicleFromShared"] and not bh)
+        proof("HIST-1", "One world-history dataset: Kin keeps none of its own and shows the shared entries for the family's places and years; Athenaeum's chronicle is generated from the same file", ok, json.dumps(hs) + (f"; errors {bh[:2]}" if bh else ""))
+        ch.close()
+    except Exception as e: proof("HIST-1", "One world-history dataset", False, "did not finish: " + str(e)[:200])
     # KIN-3D (2026-11-24, owner: "redesign the entire project from the ground up ... a worldclass aaa flagship interactive design with 3d graphics and
     # motion. Clickable with media and data integrated"): the family tree in three dimensions (pillars/kin/tree/). WebGL draws everyone; a real tap on a
     # person opens their dossier with their records fanned beside them; a record opens full size; time travel names the family alive that year; the
@@ -379,17 +425,21 @@ with sync_playwright() as p:
             seen[pid] = po.evaluate("""() => ({ living: !!document.querySelector('canvas.pk-living'), still: !!document.querySelector('div.pk-world'),
               acc: getComputedStyle(document.body).getPropertyValue('--world-accent').trim(), wide: document.documentElement.scrollWidth })""")
         po.evaluate("sessionStorage.setItem('pk:dive', JSON.stringify({ id: 'garage', t: Date.now() }))")
-        po.goto(f"{URL}pillars/garage/", wait_until="load"); po.wait_for_selector("canvas.pk-living.arrive", state="attached", timeout=15000)
+        po.goto(f"{URL}pillars/garage/", wait_until="load"); held = po.evaluate("!!document.querySelector('.pk-world.pk-held')")
+        po.wait_for_selector("canvas.pk-living.arrive", state="attached", timeout=15000)
         # 2026-11-23: the zoom of the first frame actually drawn (world.js zFirst), not a reading some time later: on a software renderer
         # each frame blocks the page, so "250 ms after the canvas appears" could land after the whole settle (proofs-live run 45214067939)
         po.wait_for_function("window.PKWorld.state && window.PKWorld.state.zFirst != null", timeout=15000)
         z0 = po.evaluate("window.PKWorld.state.zFirst"); t_set = po.evaluate("performance.now()")
         po.wait_for_function("Math.abs(window.PKWorld.state.z - 1) < 0.01", timeout=8000)   # a slow runner draws few frames; wait for the settle
         z1 = po.evaluate("window.PKWorld.state.z"); settle = (po.evaluate("performance.now()") - t_set) / 1000
+        # 2026-11-24: on a dive the held painting carries the arrival from the first paint; the living one takes over on the same clock,
+        # so its first frame sits where the clock says (pushed in on a fast device, nearly settled on a slow test machine), never jumping back in
+        fa = po.evaluate("window.PKWorld.state.firstAge || 0"); zc = 1 + 0.6 * __import__('math').exp(-2.6 * fa); gone = po.evaluate("!document.querySelector('.pk-world.pk-held')")
         ok = (all(seen[k]["living"] and seen[k]["acc"].startswith("hsl(") and seen[k]["wide"] <= 384 for k in ("kairos", "garage", "odyssey", "apollo", "sylade"))
-              and not seen["athenaeum"]["living"] and seen["athenaeum"]["wide"] <= 384 and z0 > 1.05 and abs(z1 - 1) < 0.01 and not bo)
+              and not seen["athenaeum"]["living"] and seen["athenaeum"]["wide"] <= 384 and held and abs(z0 - zc) < 0.06 and abs(z1 - 1) < 0.01 and not bo)
         proof("WORLD-1", "Every painted pillar opens on its own living painting (accent from the painting, no sideways scroll); Athenaeum keeps its own sky; from the menu's dive the painting arrives pushed in and settles",
-              ok, f"{ {k: (v['living'], v['acc'], v['wide']) for k, v in seen.items()} }; dive arrival: first frame on screen at zoom {z0:.2f}, settled to {z1:.3f} within {settle:.1f} s" + (f"; errors {bo[:2]}" if bo else ""))
+              ok, f"{ {k: (v['living'], v['acc'], v['wide']) for k, v in seen.items()} }; dive arrival: held painting at first paint {held}, living painting's first frame at zoom {z0:.2f} after {fa:.2f} s (the clock says {zc:.2f}), settled to {z1:.3f} within {settle:.1f} s, held painting handed over {gone}" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("WORLD-1", "The living painted header", False, "did not finish: " + str(e)[:200])
     co.close()
 

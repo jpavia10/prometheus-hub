@@ -9,7 +9,7 @@ import { h, icon } from "../core/ui.js";
 import { PILLARS } from "../pillars.js";
 import { pillarStats, titan } from "../core/legacy.js";
 import { clock, today, fmtTime } from "../core/dates.js";
-import { warp, tick, blip, buzz } from "../core/fx.js";
+import { tick, blip, buzz } from "../core/fx.js";
 import { PILLAR_DOMAINS, domainOf, peersFor, badgeFor, factsFor, brief } from "./orrery.js";
 import * as wx from "../core/weather.js";
 
@@ -74,7 +74,11 @@ void main(){
       vec2 ci = floor(sp), f = fract(sp) - .5; vec2 o = vec2(h1(ci + s), h1(ci + s + 9.)) - .5; float d = length(f - o * .6);
       col += vec3(.95, .97, 1.) * smoothstep(.06 + s * .02, 0., d) * step(.55 - SKY.z * .35, h1(ci + 31. + s)) * SKY.z * (.55 + s * .2); } }
   vec2 p = fc / R - .5; col *= 1. - .55 * dot(p * vec2(.8, 1.1), p * vec2(.8, 1.1));
-  col = mix(col, vec3(1.), DIVE * DIVE * .55);
+  /* the dive (owner, 2026-11-24: "the transition from hub to pillar is atrocious"; it washed out to white): an iris closes on the chosen
+     place in its own colour and ends on a dark tint of it, which is where the pillar page begins */
+  if (DIVE > 0.) { vec2 dd = (uv - SP.xy) * IR * VIEW.z / R.y; float rad = mix(1.5, 0., DIVE * DIVE), iris = smoothstep(rad + .3, rad, length(dd));
+    vec3 tint = (SEL > -.5 ? SC * .09 : vec3(0.)) + vec3(.012, .016, .04);
+    col = mix(tint, col * (1. + .35 * DIVE) + (SEL > -.5 ? SC : vec3(0.)) * .12 * DIVE, iris); col = mix(col, tint, smoothstep(.72, 1., DIVE)); }
   col += (h1(fc + fract(T) * 91.) - .5) * .015;
   gl_FragColor = vec4(col, 1.);
 }`;
@@ -145,15 +149,23 @@ export function realm(ctx) {
   const DOCK = 104, TOP = 66;                                                  // the deck's header and dock float over the full-screen town
   function focusOn(i, z) { const pl = places[i]; V.tz = z; V.tcx = pl.x; V.tcy = pl.y + lift() / (IRH * base() * z); clampV(); }
   function nearestToCentre() { let b = 0, bd = Infinity; places.forEach((pl, i) => { const d = Math.hypot(pl.x - V.cx, (pl.y - V.cy) * IRH / IRW); if (d < bd) { bd = d; b = i; } }); return b; }
-  function choose(i) { if (i === sel) { enter(i); return; } sel = i; tick(); focusOn(i, stage.clientWidth / Math.max(1, stage.clientHeight) < 0.8 ? 2.1 : 1.6); idleAt = performance.now(); paintCard(); wake(); }
+  /* the first tap readies the second (2026-11-24): the pillar page and its painting's three layers are fetched while you look at the card */
+  const fetched = new Set();
+  function prefetch(p) {
+    if (!p || !p.route || fetched.has(p.id) || /^[a-z]+:/i.test(p.route) || (navigator.connection && navigator.connection.saveData)) return; fetched.add(p.id);
+    const add = (href, as) => { const l = document.createElement("link"); l.rel = "prefetch"; l.href = href; if (as) l.as = as; document.head.appendChild(l); };
+    const w = "art/worlds/world_" + (p.id === "sylade" ? "presence" : p.id); add(p.route, "document"); add(w + ".webp", "image"); add(w + "_depth.webp", "image"); add(w + "_lights.webp", "image");
+  }
+  function choose(i) { if (i === sel) { enter(i); return; } sel = i; tick(); prefetch(places[i].p); focusOn(i, stage.clientWidth / Math.max(1, stage.clientHeight) < 0.8 ? 2.1 : 1.6); idleAt = performance.now(); paintCard(); wake(); }
   function overview() { sel = -1; V.tz = zMin(); clampV(); paintCard(); wake(); }
   function step(d) { choose(((sel < 0 ? (d > 0 ? -1 : 0) : sel) + d + n) % n); }
   function panBy(d) { const hw = halfW(V.tz); V.tcx += d * hw * 1.6; clampV(); idleAt = performance.now(); tick(); wake(); }
   function enter(i) {
-    if (going) return; const pl = places[i]; going = true; blip(); sel = i; paintCard(); el.classList.add("diving");
-    const go = () => warp(pl.sx > 0 ? pl.sx : innerWidth / 2, pl.sy > 0 ? pl.sy : innerHeight / 2, `hsl(${pl.p.hue} 100% 66%)`, () => { location.href = pl.p.route; });
+    if (going) return; const pl = places[i]; going = true; blip(); buzz(22); sel = i; paintCard(); el.classList.add("diving"); document.body.classList.add("town-diving"); prefetch(pl.p);
+    /* the pillar's living painting starts pushed in and settles (kit/world.js), so the dive carries on through the page change */
+    const go = () => { try { sessionStorage.setItem("pk:dive", JSON.stringify({ id: pl.p.id === "sylade" ? "presence" : pl.p.id, t: Date.now() })); } catch (e) { /* private mode */ } location.href = pl.p.route; };
     if (calm || !gl) { go(); return; }
-    focusOn(i, Math.min(6, V.z * 3.2)); V.dive = 0.0001; wake(); setTimeout(go, 460);
+    focusOn(i, Math.min(6, V.z * 3.2)); V.dive = 0.0001; wake(); setTimeout(go, 380);
   }
 
   /* WebGL: the painting and its two maps; WebGL2 when there is one, for mipmapped panning without shimmer */
@@ -301,11 +313,11 @@ export function realm(ctx) {
   /* the whole home fits above the dock: the stage takes what the now line and the card leave */
   function fit() { size(); }   /* 2026-11-24 (owner: "the main hub home be like a full screen town"): the town fills the screen; the header and the dock float over it */
   const onResize = () => { stage.style.height = ""; requestAnimationFrame(() => { fit(); size(); wake(); }); }; addEventListener("resize", onResize);
-  const onShow = (e) => { if (e.persisted) { going = false; el.classList.remove("diving"); V.dive = 0; if (sel >= 0) focusOn(sel, 2.1); wake(); } }; addEventListener("pageshow", onShow);
+  const onShow = (e) => { if (e.persisted) { going = false; el.classList.remove("diving"); document.body.classList.remove("town-diving"); V.dive = 0; if (sel >= 0) focusOn(sel, 2.1); wake(); } }; addEventListener("pageshow", onShow);
   el.fit = () => requestAnimationFrame(() => { fit(); requestAnimationFrame(() => { fit(); size(); wake(); }); });
   el.ready = ready;
   el.sky = () => ({ ...SK, target: { ...SKT } });
-  el.cleanup = () => { dead = true; clearInterval(skyTimer); cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt);
+  el.cleanup = () => { dead = true; document.body.classList.remove("town-diving"); clearInterval(skyTimer); cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt);
     try { if (gl && !gl.isContextLost()) { const lc = gl.getExtension("WEBGL_lose_context"); if (lc) lc.loseContext(); } } catch (e) { /* already gone */ } };   // hand the GPU context back: a phone holds only a few
   size();
   return el;

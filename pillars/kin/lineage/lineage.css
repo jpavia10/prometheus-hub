@@ -228,3 +228,8 @@
 .ln-door b { font: 600 28px/1.1 Georgia, "Iowan Old Style", serif; color: #f6ecd7; }
 .ln-door-p { font-size: 13.5px; color: #c9d3e4; max-width: 60ch; }
 .ln-door .btn { justify-self: start; margin-top: 6px; }
+/* world history rows (2026-11-24, from the shared dataset): the year above, the text across the full width, the source under it */
+.tl li.tl-ctx { display: block; grid-template-columns: none; font-style: normal; line-height: 1.5; }
+.tl li.tl-ctx time { display: block; font: 600 11px var(--sans); letter-spacing: .14em; color: #9fd4e6; margin-bottom: 2px; }
+.tl li.tl-ctx span { display: block; }
+.tl li.tl-ctx .tl-src { display: inline-block; margin-left: 6px; font-size: 11.5px; color: #9fd4e6; opacity: .85; font-style: normal; }

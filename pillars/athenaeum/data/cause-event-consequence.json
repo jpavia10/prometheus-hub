@@ -1,54 +1,11 @@
 {
  "pack": "ATHENAEUM-GROK-cause-event-consequence",
  "asOf": "2026-11-10",
- "count": 40,
  "notes": [
   "Each entry: cause → event → consequence, analytical; the one-line source is the Wikipedia article opened 2026-11-10 (API extract).",
   "evidence_quotes are exact substrings of the opened article text (machine-checked: 0 misses), so every causal claim is traceable.",
   "Wikipedia is a tertiary source; for citation in writing, follow its references.",
   "2026-11-24: each entry's place, coordinates and exact span from Gemini ATH-GEM-06 (athenaeum_gemini_history-dates_20261124-0023.json); the written date stays the one the chronicle orders by (Sakoku's span is its forced end, 1853-54)."
- ],
- "civilizations": [
-  "Abbasid Caliphate / Mongol Empire",
-  "Ancien Régime France",
-  "Anglo-Saxon Northumbria / Scandinavia",
-  "Austria-Hungary / Balkans",
-  "British India",
-  "British North America",
-  "Byzantine & Sasanian worlds",
-  "Byzantine Syria / Rashidun Caliphate",
-  "Byzantium / Ottoman Empire",
-  "Byzantium / Seljuk Empire",
-  "Classical Greece (Athens)",
-  "Dutch East Indies → global",
-  "East / West Germany",
-  "Eastern Han China",
-  "Eastern Mediterranean / Near East",
-  "Egypt / UK / France / Israel",
-  "England / Dutch Republic",
-  "Europe & Middle East",
-  "Europe / Africa",
-  "Germany / Allied Powers",
-  "Habsburg Spain / Tudor England",
-  "Holy Roman Empire / Europe",
-  "Holy Roman Empire → Europe",
-  "Ireland / British Isles",
-  "Japan",
-  "Maya southern lowlands",
-  "Mesopotamia (Assyria / Babylon / Media)",
-  "Mexica (Aztec) / Spain",
-  "Ming China / Indian Ocean",
-  "OAPEC / Western economies",
-  "Plantagenet England",
-  "Qing China",
-  "Qing China / British Empire",
-  "Roman Empire",
-  "Saint-Domingue (French Caribbean)",
-  "Tang China",
-  "Tokugawa Japan",
-  "US / USSR / Cuba",
-  "United States → world",
-  "Warring States China"
  ],
  "entries": [
   {
@@ -99,7 +56,6 @@
    "span": {
     "start": -612,
     "end": -612,
-    "note": "",
     "url": "https://www.britannica.com/event/Battle-of-Nineveh"
    }
   },
@@ -125,7 +81,6 @@
    "span": {
     "start": -430,
     "end": -426,
-    "note": "",
     "url": "https://www.britannica.com/topic/10-Major-Epidemics"
    }
   },
@@ -177,7 +132,6 @@
    "span": {
     "start": 235,
     "end": 284,
-    "note": "",
     "url": "https://www.britannica.com/place/Timeline-of-the-Roman-Empire"
    }
   },
@@ -255,7 +209,6 @@
    "span": {
     "start": 636,
     "end": 636,
-    "note": "",
     "url": "https://www.britannica.com/topic/Battle-of-Yarmouk-636"
    }
   },
@@ -281,7 +234,6 @@
    "span": {
     "start": 755,
     "end": 763,
-    "note": "",
     "url": "https://www.britannica.com/summary/An-Lushan"
    }
   },
@@ -333,7 +285,6 @@
    "span": {
     "start": 793,
     "end": 793,
-    "note": "",
     "url": "https://www.britannica.com/event/Lindisfarne-Raid"
    }
   },
@@ -359,7 +310,6 @@
    "span": {
     "start": 1071,
     "end": 1071,
-    "note": "",
     "url": "https://www.britannica.com/event/Battle-of-Manzikert"
    }
   },
@@ -385,7 +335,6 @@
    "span": {
     "start": 1215,
     "end": 1215,
-    "note": "",
     "url": "https://www.britannica.com/topic/Magna-Carta"
    }
   },
@@ -411,7 +360,6 @@
    "span": {
     "start": 1258,
     "end": 1258,
-    "note": "",
     "url": "https://www.britannica.com/biography/Hulegu"
    }
   },
@@ -437,7 +385,6 @@
    "span": {
     "start": 1347,
     "end": 1351,
-    "note": "",
     "url": "https://www.britannica.com/event/Black-Death"
    }
   },
@@ -463,7 +410,6 @@
    "span": {
     "start": 1453,
     "end": 1453,
-    "note": "",
     "url": "https://www.britannica.com/event/Fall-of-Constantinople-1453"
    }
   },
@@ -515,7 +461,6 @@
    "span": {
     "start": 1521,
     "end": 1521,
-    "note": "",
     "url": "https://www.britannica.com/event/Battle-of-Tenochtitlan"
    }
   },
@@ -567,7 +512,6 @@
    "span": {
     "start": 1588,
     "end": 1588,
-    "note": "",
     "url": "https://www.britannica.com/topic/Armada-Spanish-naval-fleet"
    }
   },
@@ -619,7 +563,6 @@
    "span": {
     "start": 1688,
     "end": 1689,
-    "note": "",
     "url": "https://www.britannica.com/event/Glorious-Revolution"
    }
   },
@@ -671,7 +614,6 @@
    "span": {
     "start": 1868,
     "end": 1868,
-    "note": "",
     "url": "https://www.britannica.com/event/Meiji-Restoration"
    }
   },
@@ -749,7 +691,6 @@
    "span": {
     "start": 1791,
     "end": 1804,
-    "note": "",
     "url": "https://www.britannica.com/topic/Haitian-Revolution"
    }
   },
@@ -827,7 +768,6 @@
    "span": {
     "start": 1839,
     "end": 1842,
-    "note": "",
     "url": "https://www.britannica.com/event/First-Opium-War"
    }
   },
@@ -879,7 +819,6 @@
    "span": {
     "start": 1884,
     "end": 1885,
-    "note": "",
     "url": "https://www.britannica.com/event/Berlin-West-Africa-Conference"
    }
   },
@@ -905,7 +844,6 @@
    "span": {
     "start": 1914,
     "end": 1914,
-    "note": "",
     "url": "https://www.britannica.com/biography/Gavrilo-Princip"
    }
   },
@@ -957,7 +895,6 @@
    "span": {
     "start": 1929,
     "end": 1929,
-    "note": "",
     "url": "https://www.britannica.com/event/stock-market-crash-of-1929"
    }
   },
@@ -983,7 +920,6 @@
    "span": {
     "start": 1947,
     "end": 1947,
-    "note": "",
     "url": "https://www.britannica.com/event/Partition-of-India"
    }
   },
@@ -1035,7 +971,6 @@
    "span": {
     "start": 1962,
     "end": 1962,
-    "note": "",
     "url": "https://www.britannica.com/event/Cuban-missile-crisis"
    }
   },
@@ -1087,7 +1022,6 @@
    "span": {
     "start": 1989,
     "end": 1989,
-    "note": "",
     "url": "https://www.britannica.com/topic/Berlin-Wall"
    }
   }

@@ -606,15 +606,24 @@
     if (LIVING[slug] && !document.documentElement.classList.contains("is-embed")) {
       var dive = false;
       try { var dv = JSON.parse(sessionStorage.getItem("pk:dive") || "null"); sessionStorage.removeItem("pk:dive"); dive = !!(dv && dv.id === slug && Date.now() - dv.t < 6000); } catch (e) { /* none */ }
+      /* arriving from a dive (2026-11-24, owner: "the transition from hub to pillar is atrocious"): the painting the hub prefetched is
+         on screen at once, pushed in and settling, while the living one uploads; that one then takes over on the same clock */
+      var since = 0, held = null;
+      if (dive) {
+        since = performance.now(); held = el("div", "pk-world pk-held"); held.setAttribute("aria-hidden", "true"); held.style.backgroundImage = 'url("' + url + '")';
+        var f0 = document.getElementById("field"); body.insertBefore(held, f0 || body.firstChild); body.classList.add("has-world");
+        requestAnimationFrame(function () { requestAnimationFrame(function () { held.classList.add("on"); }); });
+      }
+      var keepHeld = function () { if (held) held.classList.add("on"); else still(); };
       var s = document.createElement("script"); s.src = new URL("world.js", src).href;
       s.onload = function () {
-        window.PKWorld.start({ id: slug, url: url, dive: dive, done: function (cv) {
+        window.PKWorld.start({ id: slug, url: url, dive: dive, since: since, done: function (cv) {
           var field = document.getElementById("field"); body.insertBefore(cv, field || body.firstChild); body.classList.add("has-world");
           if (dive) cv.classList.add("arrive");
-          requestAnimationFrame(function () { requestAnimationFrame(function () { cv.classList.add("on"); }); });
-        } }).then(function (ok) { if (!ok) still(); });
+          requestAnimationFrame(function () { requestAnimationFrame(function () { cv.classList.add("on"); if (held) { held.classList.add("gone"); setTimeout(function () { held.remove(); held = null; }, 450); } }); });
+        } }).then(function (ok) { if (!ok) keepHeld(); });
       };
-      s.onerror = still;
+      s.onerror = keepHeld;
       document.head.appendChild(s);
       return;
     }

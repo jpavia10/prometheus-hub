@@ -1,0 +1,2148 @@
+{
+ "schema": "prometheus.history/1",
+ "about": "The one world-history dataset in Prometheus (owner, 2026-11-24: Athenaeum's world history, refined and expanded, used by every pillar; denser for recent centuries). Every entry: a date and its precision, a title and one-paragraph text, the regions and themes it touches, a place, its sources with the page's own words, who found it and whether it is checked. Edit this file, then run tools/history/build.py: it checks every entry and writes world-history.js (any page) and cause-event-consequence.json (Athenaeum's chronicle).",
+ "asOf": "2026-11-24",
+ "chronicle_pack": {
+  "pack": "ATHENAEUM-GROK-cause-event-consequence",
+  "asOf": "2026-11-10",
+  "notes": [
+   "Each entry: cause → event → consequence, analytical; the one-line source is the Wikipedia article opened 2026-11-10 (API extract).",
+   "evidence_quotes are exact substrings of the opened article text (machine-checked: 0 misses), so every causal claim is traceable.",
+   "Wikipedia is a tertiary source; for citation in writing, follow its references.",
+   "2026-11-24: each entry's place, coordinates and exact span from Gemini ATH-GEM-06 (athenaeum_gemini_history-dates_20261124-0023.json); the written date stays the one the chronicle orders by (Sakoku's span is its forced end, 1853-54)."
+  ]
+ },
+ "entries": [
+  {
+   "id": "ath001",
+   "date": "-1200",
+   "end": "-1150",
+   "precision": "year",
+   "written": "c. 1200–1150 BCE",
+   "title": "Late Bronze Age collapse",
+   "text": "Late Bronze Age collapse of palace-centred states.",
+   "regions": [
+    "mediterranean",
+    "world"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Mycenae, Greece",
+    "lat": 37.73,
+    "lon": 22.76
+   },
+   "chain": {
+    "cause": "Interlinked palace economies of the Aegean, Anatolia and Levant came under combined stresses (proposed: climate change, volcanic activity, drought, violent destruction of cities).",
+    "event": "Late Bronze Age collapse of palace-centred states.",
+    "consequence": "Mycenaean palace economy fragmented into isolated villages (Greek Dark Ages); the Hittite Empire fell; Egypt and Assyria survived weakened; Phoenicians gained autonomy."
+   },
+   "civilization": "Eastern Mediterranean / Near East",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Late Bronze Age collapse\"",
+     "url": "https://en.wikipedia.org/wiki/Late_Bronze_Age_collapse",
+     "quote": "broke apart into the small isolated village cultures of the Greek Dark Ages"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/Sea-People",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Dating of the Late Bronze Age collapse varies across regions, generally c. 1200–1150 BCE (with earlier 13th-century destructions).",
+   "quotes": [
+    "broke apart into the small isolated village cultures of the Greek Dark Ages",
+    "The Hittite Empire spanning Anatolia and the Levant collapsed",
+    "enjoyed increased autonomy and power"
+   ],
+   "order": 0
+  },
+  {
+   "id": "ath002",
+   "date": "-612",
+   "end": null,
+   "precision": "year",
+   "written": "612 BCE",
+   "title": "Fall of Nineveh",
+   "text": "Siege and fall of Nineveh.",
+   "regions": [
+    "mesopotamia"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Nineveh, Iraq",
+    "lat": 36.36,
+    "lon": 43.15
+   },
+   "chain": {
+    "cause": "After the Assyrian defeat at Assur, a Median–Babylonian coalition combined against an overextended Neo-Assyrian Empire.",
+    "event": "Siege and fall of Nineveh.",
+    "consequence": "The Neo-Assyrian Empire was destroyed as the dominant Near Eastern state within three years; Babylon became Mesopotamia's imperial centre (Neo-Babylonian Empire)."
+   },
+   "civilization": "Mesopotamia (Assyria / Babylon / Media)",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Fall of Nineveh\"",
+     "url": "https://en.wikipedia.org/wiki/Fall_of_Nineveh",
+     "quote": "combined forces of Medes and the Babylonians besieged Nineveh"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Battle-of-Nineveh",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "combined forces of Medes and the Babylonians besieged Nineveh",
+    "led to the destruction of the Neo-Assyrian Empire",
+    "Babylon became the imperial center of Mesopotamia"
+   ],
+   "order": 1
+  },
+  {
+   "id": "ath003",
+   "date": "-430",
+   "end": "-426",
+   "precision": "year",
+   "written": "430–426 BCE",
+   "title": "Plague of Athens",
+   "text": "Epidemic killing an estimated 75,000–100,000 (about 25% of the population).",
+   "regions": [
+    "greece"
+   ],
+   "themes": [
+    "disease"
+   ],
+   "place": {
+    "place": "Athens, Greece",
+    "lat": 37.98,
+    "lon": 23.73
+   },
+   "chain": {
+    "cause": "Wartime crowding in Athens, supplied through its single port Piraeus, during the second year of the Peloponnesian War.",
+    "event": "Epidemic killing an estimated 75,000–100,000 (about 25% of the population).",
+    "consequence": "Civil disorder and erosion of traditional religious practice; wealth redistributed; Athens weakened politically."
+   },
+   "civilization": "Classical Greece (Athens)",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Plague of Athens\"",
+     "url": "https://en.wikipedia.org/wiki/Plague_of_Athens",
+     "quote": "entered Athens through Piraeus, the city's port and sole source of food and supplies"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/10-Major-Epidemics",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "entered Athens through Piraeus, the city's port and sole source of food and supplies",
+    "Short-term, there was civil disorder",
+    "weakened Athens politically"
+   ],
+   "order": 2
+  },
+  {
+   "id": "ath004",
+   "date": "-230",
+   "end": "-221",
+   "precision": "year",
+   "written": "230–221 BCE",
+   "title": "Qin's wars of unification",
+   "text": "Qin conquered the six rival states one by one (completed 221 BCE).",
+   "regions": [
+    "china"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Xianyang, China",
+    "lat": 34.33,
+    "lon": 108.71
+   },
+   "chain": {
+    "cause": "Shang Yang's administrative reforms made Qin the most powerful of the Seven Warring States amid a ceremonial, declining Zhou.",
+    "event": "Qin conquered the six rival states one by one (completed 221 BCE).",
+    "consequence": "A centralised government replaced the Zhou fengjian system; Ying Zheng proclaimed himself First Emperor of a unified China."
+   },
+   "civilization": "Warring States China",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Qin's wars of unification\"",
+     "url": "https://en.wikipedia.org/wiki/Qin%27s_wars_of_unification",
+     "quote": "following Shang Yang's administrative reforms"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Warring-States",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Final wars of Qin unification ran 230–221 BCE; unification completed in 221 BCE.",
+   "quotes": [
+    "following Shang Yang's administrative reforms",
+    "a more centralised form of government replacing the fengjian system",
+    "declared himself the First Emperor"
+   ],
+   "order": 3
+  },
+  {
+   "id": "ath006",
+   "date": "184",
+   "end": "204",
+   "precision": "year",
+   "written": "184–205 CE",
+   "title": "Yellow Turban Rebellion",
+   "text": "Mass peasant revolt (main rising suppressed 185; resistance until 205).",
+   "regions": [
+    "china"
+   ],
+   "themes": [
+    "war",
+    "technology"
+   ],
+   "place": {
+    "place": "Luoyang, China",
+    "lat": 34.62,
+    "lon": 112.45
+   },
+   "chain": {
+    "cause": "A central government weakened by court eunuchs abusing power over the emperor.",
+    "event": "Mass peasant revolt (main rising suppressed 185; resistance until 205).",
+    "consequence": "Regional military governors who suppressed it gained autonomy, leading to warlordism and the Three Kingdoms period."
+   },
+   "civilization": "Eastern Han China",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Yellow Turban Rebellion\"",
+     "url": "https://en.wikipedia.org/wiki/Yellow_Turban_Rebellion",
+     "quote": "central government was weakened by court eunuchs"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/Yellow-Turbans",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Main uprising suppressed in 184–185 CE; scattered resistance continued until c. 204–205 CE.",
+   "quotes": [
+    "central government was weakened by court eunuchs",
+    "rising political influence of autonomous regional military-governors",
+    "the resultant Three Kingdoms period"
+   ],
+   "order": 5
+  },
+  {
+   "id": "ath005",
+   "date": "235",
+   "end": "284",
+   "precision": "year",
+   "written": "235–284 CE",
+   "title": "Crisis of the Third Century",
+   "text": "Military anarchy; the Roman state split into three competing polities.",
+   "regions": [
+    "rome",
+    "europe"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Rome, Italy",
+    "lat": 41.9,
+    "lon": 12.5
+   },
+   "chain": {
+    "cause": "Assassination of Severus Alexander by his own troops opened decades of usurpation, invasion, civil war and plague.",
+    "event": "Military anarchy; the Roman state split into three competing polities.",
+    "consequence": "Currency debasement and trade breakdown; growing reliance on foederati; the transition from classical to late antiquity (ended with Diocletian)."
+   },
+   "civilization": "Roman Empire",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Crisis of the Third Century\"",
+     "url": "https://en.wikipedia.org/wiki/Crisis_of_the_Third_Century",
+     "quote": "assassination of Emperor Severus Alexander by his own troops"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/place/Timeline-of-the-Roman-Empire",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "assassination of Emperor Severus Alexander by his own troops",
+    "split into three distinct and competing polities",
+    "debasement of currency and a breakdown in both trade networks"
+   ],
+   "order": 4
+  },
+  {
+   "id": "ath007",
+   "date": "541",
+   "end": "542",
+   "precision": "year",
+   "written": "541–549 CE",
+   "title": "Plague of Justinian",
+   "text": "First episode of the first plague pandemic; about a fifth of Constantinople died at its height (per Procopius).",
+   "regions": [
+    "byzantium",
+    "world"
+   ],
+   "themes": [
+    "disease"
+   ],
+   "place": {
+    "place": "Constantinople (Istanbul), Turkey",
+    "lat": 41.01,
+    "lon": 28.98
+   },
+   "chain": {
+    "cause": "Plague reached Roman Egypt in 541 and spread along Mediterranean routes into the imperial capital.",
+    "event": "First episode of the first plague pandemic; about a fifth of Constantinople died at its height (per Procopius).",
+    "consequence": "Debated: some scholars argue profound economic, social and political effects; others argue the impact was overstated by primary sources."
+   },
+   "civilization": "Byzantine & Sasanian worlds",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Plague of Justinian\"",
+     "url": "https://en.wikipedia.org/wiki/Plague_of_Justinian",
+     "quote": "The contagion arrived in Roman Egypt in 541"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/plague-of-Justinian",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "First wave reached Egypt in 541 CE and Constantinople in spring 542 CE; later recurrences continued to c. 750 CE.",
+   "quotes": [
+    "The contagion arrived in Roman Egypt in 541",
+    "killed about a fifth of the population in the imperial capital",
+    "was overstated by primary sources"
+   ],
+   "order": 6
+  },
+  {
+   "id": "ath008",
+   "date": "636",
+   "end": null,
+   "precision": "year",
+   "written": "636 CE",
+   "title": "Battle of the Yarmuk",
+   "text": "Six-day battle near the Yarmouk River; decisive Arab victory.",
+   "regions": [
+    "middle-east"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Yarmouk River (Syria-Jordan border)",
+    "lat": 32.81,
+    "lon": 35.95
+   },
+   "chain": {
+    "cause": "Emperor Heraclius sent a massive expedition to check the Arab advance and recover lost territory.",
+    "event": "Six-day battle near the Yarmouk River; decisive Arab victory.",
+    "consequence": "Byzantine rule in Syria effectively ended; a crucial point in the Muslim conquest of Syria."
+   },
+   "civilization": "Byzantine Syria / Rashidun Caliphate",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Battle of the Yarmuk\"",
+     "url": "https://en.wikipedia.org/wiki/Battle_of_the_Yarmuk",
+     "quote": "Emperor Heraclius had sent a massive expedition to the Levant"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/Battle-of-Yarmouk-636",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "Emperor Heraclius had sent a massive expedition to the Levant",
+    "effectively ended Byzantine rule in Syria",
+    "crucial point in the Muslim conquest of Syria"
+   ],
+   "order": 7
+  },
+  {
+   "id": "ath009",
+   "date": "755",
+   "end": "763",
+   "precision": "year",
+   "written": "755–763 CE",
+   "title": "An Lushan rebellion",
+   "text": "Rebellion that captured Chang'an and founded the rival Yan dynasty.",
+   "regions": [
+    "china"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Chang'an (Xi'an), China",
+    "lat": 34.26,
+    "lon": 108.94
+   },
+   "chain": {
+    "cause": "A frontier jiedushi (military governor) commanding a large army turned it against the court.",
+    "event": "Rebellion that captured Chang'an and founded the rival Yan dynasty.",
+    "consequence": "A direct cause of Tang decline and of rampant regional secessionism lasting into the Five Dynasties and Ten Kingdoms."
+   },
+   "civilization": "Tang China",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"An Lushan rebellion\"",
+     "url": "https://en.wikipedia.org/wiki/An_Lushan_rebellion",
+     "quote": "the jiedushi of the Taiyuan Commandery"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/summary/An-Lushan",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "the jiedushi of the Taiyuan Commandery",
+    "succeeded in capturing the imperial capital Chang'an",
+    "It was a direct cause of the dynasty's decline"
+   ],
+   "order": 8
+  },
+  {
+   "id": "ath011",
+   "date": "793",
+   "end": null,
+   "precision": "year",
+   "written": "793 CE",
+   "title": "Viking raid on Lindisfarne",
+   "text": "Viking raid on the Lindisfarne monastery.",
+   "regions": [
+    "england"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Lindisfarne, England",
+    "lat": 55.67,
+    "lon": -1.8
+   },
+   "chain": {
+    "cause": "Wealthy, coastal, lightly defended monasteries were exposed to sea-borne raiders.",
+    "event": "Viking raid on the Lindisfarne monastery.",
+    "consequence": "Caused consternation across the Christian west and is often taken as the start of the Viking Age; monks repeatedly evacuated the island."
+   },
+   "civilization": "Anglo-Saxon Northumbria / Scandinavia",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Lindisfarne\"",
+     "url": "https://en.wikipedia.org/wiki/Lindisfarne",
+     "quote": "a Viking raid on Lindisfarne caused consternation throughout the Christian west"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Lindisfarne-Raid",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "a Viking raid on Lindisfarne caused consternation throughout the Christian west",
+    "often taken as the beginning of the Viking Age",
+    "increasing frequency of Viking raids"
+   ],
+   "order": 10
+  },
+  {
+   "id": "ath010",
+   "date": "800",
+   "end": "900",
+   "precision": "year",
+   "written": "8th–9th centuries CE",
+   "title": "Classic Maya collapse",
+   "text": "Decline and abandonment of southern lowland cities (Palenque, Copán, Tikal, Calakmul).",
+   "regions": [
+    "mesoamerica"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Tikal, Guatemala",
+    "lat": 17.22,
+    "lon": -89.62
+   },
+   "chain": {
+    "cause": "Multiple stresses debated; drought has gained momentum this century as the leading explanation.",
+    "event": "Decline and abandonment of southern lowland cities (Palenque, Copán, Tikal, Calakmul).",
+    "consequence": "Cessation of monumental inscriptions and large-scale building; now often framed as transformation rather than total collapse, as some cities survived."
+   },
+   "civilization": "Maya southern lowlands",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Classic Maya collapse\"",
+     "url": "https://en.wikipedia.org/wiki/Classic_Maya_collapse",
+     "quote": "drought has gained momentum in the first quarter of the 21st century as the leading explanation"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/Maya-people",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Classic Maya lowland collapse unfolded gradually across the 9th century, culminating around 900 CE.",
+   "quotes": [
+    "drought has gained momentum in the first quarter of the 21st century as the leading explanation",
+    "went into decline during the 8th and 9th centuries and were abandoned",
+    "cessation of monumental inscriptions"
+   ],
+   "order": 9
+  },
+  {
+   "id": "ath012",
+   "date": "1071",
+   "end": null,
+   "precision": "year",
+   "written": "1071 CE",
+   "title": "Battle of Manzikert",
+   "text": "Decisive Byzantine defeat and capture of Emperor Romanos IV Diogenes.",
+   "regions": [
+    "anatolia"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Manzikert (Malazgirt), Turkey",
+    "lat": 39.15,
+    "lon": 42.54
+   },
+   "chain": {
+    "cause": "Byzantine field army weakened by mercenaries and levies who fled early, facing Seljuk expansion.",
+    "event": "Decisive Byzantine defeat and capture of Emperor Romanos IV Diogenes.",
+    "consequence": "Civil conflict and economic crisis in Byzantium; Turkish migration into Anatolia and its gradual Turkification."
+   },
+   "civilization": "Byzantium / Seljuk Empire",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Battle of Manzikert\"",
+     "url": "https://en.wikipedia.org/wiki/Battle_of_Manzikert",
+     "quote": "capture of the emperor Romanos IV Diogenes"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Battle-of-Manzikert",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "capture of the emperor Romanos IV Diogenes",
+    "resulting in civil conflicts and an economic crisis",
+    "gradual Turkification of Anatolia"
+   ],
+   "order": 11
+  },
+  {
+   "id": "ath013",
+   "date": "1215",
+   "end": null,
+   "precision": "year",
+   "written": "1215 CE",
+   "title": "Magna Carta",
+   "text": "Sealing of Magna Carta at Runnymede.",
+   "regions": [
+    "england"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Runnymede, England",
+    "lat": 51.44,
+    "lon": -0.56
+   },
+   "chain": {
+    "cause": "Rebel barons demanded an unpopular King John confirm the Charter of Liberties.",
+    "event": "Sealing of Magna Carta at Runnymede.",
+    "consequence": "Annulled by the Pope, triggering the First Barons' War; repeatedly reissued (1216, 1217, 1225) in exchange for political support and taxes."
+   },
+   "civilization": "Plantagenet England",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Magna Carta\"",
+     "url": "https://en.wikipedia.org/wiki/Magna_Carta",
+     "quote": "rebel barons who demanded that the King confirm the Charter of Liberties"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/Magna-Carta",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "rebel barons who demanded that the King confirm the Charter of Liberties",
+    "annulled by Pope Innocent III, leading to the First Barons' War",
+    "in exchange for a grant of new taxes"
+   ],
+   "order": 12
+  },
+  {
+   "id": "ath014",
+   "date": "1258",
+   "end": null,
+   "precision": "year",
+   "written": "1258 CE",
+   "title": "Mongol siege of Baghdad",
+   "text": "Hulegu's army besieged and sacked Baghdad; the caliph was killed.",
+   "regions": [
+    "middle-east"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Baghdad, Iraq",
+    "lat": 33.31,
+    "lon": 44.37
+   },
+   "chain": {
+    "cause": "Caliph al-Musta'sim failed to send reinforcements the Mongols expected and negotiated arrogantly.",
+    "event": "Hulegu's army besieged and sacked Baghdad; the caliph was killed.",
+    "consequence": "Traditionally marks the end of the Islamic Golden Age (actual ramifications uncertain)."
+   },
+   "civilization": "Abbasid Caliphate / Mongol Empire",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Siege of Baghdad\"",
+     "url": "https://en.wikipedia.org/wiki/Siege_of_Baghdad",
+     "quote": "the Caliph's failure to do so, combined with his arrogance in negotiations"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/biography/Hulegu",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "the Caliph's failure to do so, combined with his arrogance in negotiations",
+    "Baghdad fell and was sacked by the Mongol army",
+    "marking the end of the Islamic Golden Age"
+   ],
+   "order": 13
+  },
+  {
+   "id": "ath015",
+   "date": "1347",
+   "end": "1351",
+   "precision": "year",
+   "written": "1346–1353 CE",
+   "title": "Black Death",
+   "text": "Pandemic killing roughly 30–60% of Europe's population.",
+   "regions": [
+    "europe",
+    "world"
+   ],
+   "themes": [
+    "disease"
+   ],
+   "place": {
+    "place": "Messina, Italy",
+    "lat": 38.19,
+    "lon": 15.55
+   },
+   "chain": {
+    "cause": "Yersinia pestis spread mainly by flea bites, following the Great Famine of 1315–1317.",
+    "event": "Pandemic killing roughly 30–60% of Europe's population.",
+    "consequence": "Labour shortage drove wages up and rents down in places; European population did not recover until the 16th century."
+   },
+   "civilization": "Europe & Middle East",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Black Death\"",
+     "url": "https://en.wikipedia.org/wiki/Black_Death",
+     "quote": "caused by the bacterium Yersinia pestis"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Black-Death",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "caused by the bacterium Yersinia pestis",
+    "wages soared in response to a subsequent labour shortage",
+    "did not regain its 14th century level until the 16th century"
+   ],
+   "order": 14
+  },
+  {
+   "id": "ath019",
+   "date": "1433",
+   "end": null,
+   "precision": "year",
+   "written": "1433–1435 CE",
+   "title": "End of the Ming treasure voyages",
+   "text": "Officials permanently dismantled the treasure-fleet programme.",
+   "regions": [
+    "china"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Nanjing, China",
+    "lat": 32.06,
+    "lon": 118.8
+   },
+   "chain": {
+    "cause": "After the Xuande Emperor died, civil officials gained power over a child emperor and opposed the voyages.",
+    "event": "Officials permanently dismantled the treasure-fleet programme.",
+    "consequence": "Further voyages cancelled, naval offices dissolved and seagoing vessels demolished or modified."
+   },
+   "civilization": "Ming China / Indian Ocean",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Ming treasure voyages\"",
+     "url": "https://en.wikipedia.org/wiki/Ming_treasure_voyages",
+     "quote": "the civil officials started to gain power"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/biography/Zheng-He",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Seventh and final treasure-fleet voyage ended in 1433; voyages were halted thereafter (earlier suspension 1424–1431).",
+   "quotes": [
+    "the civil officials started to gain power",
+    "permanently dismantle the voyages",
+    "seagoing vessels were demolished"
+   ],
+   "order": 18
+  },
+  {
+   "id": "ath017",
+   "date": "1450",
+   "end": "1455",
+   "precision": "year",
+   "written": "c. 1440 CE",
+   "title": "Gutenberg printing press",
+   "text": "Invention and spread of movable-type printing.",
+   "regions": [
+    "europe",
+    "world"
+   ],
+   "themes": [
+    "technology"
+   ],
+   "place": {
+    "place": "Mainz, Germany",
+    "lat": 50.0,
+    "lon": 8.27
+   },
+   "chain": {
+    "cause": "Mechanised press replaced hand-rubbing to transfer ink.",
+    "event": "Invention and spread of movable-type printing.",
+    "consequence": "Mass communication; contributed to the Reformation and Scientific Revolution; cheaper books, higher literacy, vernacular standardisation."
+   },
+   "civilization": "Holy Roman Empire → Europe",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Printing press\"",
+     "url": "https://en.wikipedia.org/wiki/Printing_press",
+     "quote": "invented by the German goldsmith Johannes Gutenberg around 1440"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/summary/Johannes-Gutenberg",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Gutenberg began experimenting by 1438, obtained backing in 1450, and completed the 42-line Bible no later than 1455.",
+   "quotes": [
+    "invented by the German goldsmith Johannes Gutenberg around 1440",
+    "contributing to the Reformation and the Scientific Revolution",
+    "national languages were standardized"
+   ],
+   "order": 16
+  },
+  {
+   "id": "ath016",
+   "date": "1453",
+   "end": null,
+   "precision": "year",
+   "written": "1453 CE",
+   "title": "Fall of Constantinople",
+   "text": "Mehmed II captured the city after a 53-day siege.",
+   "regions": [
+    "europe",
+    "anatolia"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Constantinople (Istanbul), Turkey",
+    "lat": 41.01,
+    "lon": 28.98
+   },
+   "chain": {
+    "cause": "Ottoman forces that greatly outnumbered the defenders overcame walls that had held for 800 years.",
+    "event": "Mehmed II captured the city after a 53-day siege.",
+    "consequence": "End of the Roman (Byzantine) state; Constantinople became the Ottoman capital; widely used to mark the end of the Middle Ages."
+   },
+   "civilization": "Byzantium / Ottoman Empire",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Fall of Constantinople\"",
+     "url": "https://en.wikipedia.org/wiki/Fall_of_Constantinople",
+     "quote": "significantly outnumbered Constantinople's defenders"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Fall-of-Constantinople-1453",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "significantly outnumbered Constantinople's defenders",
+    "made Constantinople the new Ottoman capital",
+    "marks the end of the medieval period"
+   ],
+   "order": 15
+  },
+  {
+   "id": "ath018",
+   "date": "1521",
+   "end": null,
+   "precision": "year",
+   "written": "1521 CE",
+   "title": "Fall of Tenochtitlan",
+   "text": "Siege and fall of Tenochtitlan.",
+   "regions": [
+    "mesoamerica"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Tenochtitlan (Mexico City), Mexico",
+    "lat": 19.43,
+    "lon": -99.13
+   },
+   "chain": {
+    "cause": "Smallpox (to which Spaniards had acquired immunity) devastated the population and leadership; Cortés allied with thousands of Tlaxcaltec warriors.",
+    "event": "Siege and fall of Tenochtitlan.",
+    "consequence": "Fall of the Aztec civilization; a critical stage in Spanish colonisation of the Americas."
+   },
+   "civilization": "Mexica (Aztec) / Spain",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Fall of Tenochtitlan\"",
+     "url": "https://en.wikipedia.org/wiki/Fall_of_Tenochtitlan",
+     "quote": "devastated due to a smallpox epidemic, which killed much of its leadership"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Battle-of-Tenochtitlan",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "devastated due to a smallpox epidemic, which killed much of its leadership",
+    "especially Tlaxcaltec warriors",
+    "critical stage in the Spanish colonization of the Americas"
+   ],
+   "order": 17
+  },
+  {
+   "id": "ath020",
+   "date": "1588",
+   "end": null,
+   "precision": "year",
+   "written": "1588 CE",
+   "title": "Spanish Armada",
+   "text": "Armada sailed to escort an invasion force and was defeated.",
+   "regions": [
+    "england",
+    "europe"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Gravelines (English Channel), France",
+    "lat": 50.99,
+    "lon": 2.13
+   },
+   "chain": {
+    "cause": "Philip II sought to reinstate Catholicism in England and end English support for the Dutch and privateering.",
+    "event": "Armada sailed to escort an invasion force and was defeated.",
+    "consequence": "Faster English ships harried it; the fleet returned via Scotland and Ireland, with up to 24 ships wrecked."
+   },
+   "civilization": "Habsburg Spain / Tudor England",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Spanish Armada\"",
+     "url": "https://en.wikipedia.org/wiki/Spanish_Armada",
+     "quote": "Its purpose was to reinstate Catholicism in England"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/Armada-Spanish-naval-fleet",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "Its purpose was to reinstate Catholicism in England",
+    "Faster and more manoeuvrable than the larger Spanish galleons",
+    "Up to 24 ships were wrecked"
+   ],
+   "order": 19
+  },
+  {
+   "id": "ath021",
+   "date": "1648",
+   "end": null,
+   "precision": "year",
+   "written": "1648 CE",
+   "title": "Peace of Westphalia",
+   "text": "Treaties of Münster and Osnabrück.",
+   "regions": [
+    "europe",
+    "world"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Münster, Germany",
+    "lat": 51.96,
+    "lon": 7.63
+   },
+   "chain": {
+    "cause": "Exhaustion after the Thirty Years' War, which killed 4.5–8 million.",
+    "event": "Treaties of Münster and Osnabrück.",
+    "consequence": "Ended the war; later cited as the origin of 'Westphalian sovereignty' (a framing some historians call a 19th–20th-century projection)."
+   },
+   "civilization": "Holy Roman Empire / Europe",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Peace of Westphalia\"",
+     "url": "https://en.wikipedia.org/wiki/Peace_of_Westphalia",
+     "quote": "killed between 4.5 and 8 million people"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Peace-of-Westphalia",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Negotiated from 1644 in Münster and Osnabrück; treaties signed in January and October 1648.",
+   "quotes": [
+    "killed between 4.5 and 8 million people",
+    "Westphalian sovereignty",
+    "such views emerged during the nineteenth and twentieth centuries"
+   ],
+   "order": 20
+  },
+  {
+   "id": "ath022",
+   "date": "1688",
+   "end": "1689",
+   "precision": "year",
+   "written": "1688–1689 CE",
+   "title": "Glorious Revolution",
+   "text": "Invitation to William of Orange; James II deposed.",
+   "regions": [
+    "england"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "London, England",
+    "lat": 51.51,
+    "lon": -0.13
+   },
+   "chain": {
+    "cause": "James II's policies eroded his support; the birth of a Catholic heir raised the prospect of a Catholic dynasty.",
+    "event": "Invitation to William of Orange; James II deposed.",
+    "consequence": "William III and Mary II ruled jointly; the Declaration of Right was incorporated into the Bill of Rights (1689)."
+   },
+   "civilization": "England / Dutch Republic",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Glorious Revolution\"",
+     "url": "https://en.wikipedia.org/wiki/Glorious_Revolution",
+     "quote": "his policies quickly eroded support"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Glorious-Revolution",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "his policies quickly eroded support",
+    "The prospect of a Catholic dynasty",
+    "incorporated into the Bill of Rights"
+   ],
+   "order": 21
+  },
+  {
+   "id": "ath025",
+   "date": "1765",
+   "end": null,
+   "precision": "year",
+   "written": "1765–1766 CE",
+   "title": "Stamp Act",
+   "text": "Parliament imposed a direct stamp tax on colonial printed materials.",
+   "regions": [
+    "united-states",
+    "england"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "London, England",
+    "lat": 51.5,
+    "lon": -0.12
+   },
+   "chain": {
+    "cause": "Britain sought revenue to pay troops stationed in America after the French and Indian War.",
+    "event": "Parliament imposed a direct stamp tax on colonial printed materials.",
+    "consequence": "'No taxation without representation' protests and the Stamp Act Congress; repeal in 1766 alongside the Declaratory Act asserting Parliament's power."
+   },
+   "civilization": "British North America",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Stamp Act 1765\"",
+     "url": "https://en.wikipedia.org/wiki/Stamp_Act_1765",
+     "quote": "pay for British military troops stationed in the American colonies after the French and Indian War"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Stamp-Act-Great-Britain-1765",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Enacted by Parliament in March 1765; repealed in 1766.",
+   "quotes": [
+    "pay for British military troops stationed in the American colonies after the French and Indian War",
+    "No taxation without representation",
+    "The act was repealed on 18 March 1766"
+   ],
+   "order": 24
+  },
+  {
+   "id": "ath026",
+   "date": "1787",
+   "end": "1789",
+   "precision": "year",
+   "written": "1787–1789 CE",
+   "title": "French Crown debt crisis",
+   "text": "Failed fiscal reform leading to the Estates-General.",
+   "regions": [
+    "france",
+    "europe"
+   ],
+   "themes": [
+    "economy"
+   ],
+   "place": {
+    "place": "Versailles, France",
+    "lat": 48.8,
+    "lon": 2.12
+   },
+   "chain": {
+    "cause": "Debt from the Seven Years' War and intervention in the American War of Independence, plus an inadequate tax system; parlements obstructed reform.",
+    "event": "Failed fiscal reform leading to the Estates-General.",
+    "consequence": "The Estates-General let social tensions become political action, contributing to the Revolution (historians weigh causes differently)."
+   },
+   "civilization": "Ancien Régime France",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Causes of the French Revolution\"",
+     "url": "https://en.wikipedia.org/wiki/Causes_of_the_French_Revolution",
+     "quote": "intervention in the American War of Independence and the Seven Years' War"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/French-Revolution/Aristocratic-revolt-1787-89",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Assembly of Notables met in February 1787; Estates-General convened on May 5, 1789.",
+   "quotes": [
+    "intervention in the American War of Independence and the Seven Years' War",
+    "obstructing Louis XVI's attempts to resolve the debt crisis",
+    "as the Estates-General allowed them to manifest into tangible political action"
+   ],
+   "order": 25
+  },
+  {
+   "id": "ath027",
+   "date": "1791",
+   "end": "1804",
+   "precision": "year",
+   "written": "1791–1804 CE",
+   "title": "Haitian Revolution",
+   "text": "Slave revolt of 21 August 1791 growing into a war of independence.",
+   "regions": [
+    "caribbean"
+   ],
+   "themes": [
+    "war",
+    "politics"
+   ],
+   "place": {
+    "place": "Cap-Français (Cap-Haïtien), Haiti",
+    "lat": 19.76,
+    "lon": -72.2
+   },
+   "chain": {
+    "cause": "A brutal slave economy; clashes after free people of colour pressed for citizenship (May 1791).",
+    "event": "Slave revolt of 21 August 1791 growing into a war of independence.",
+    "consequence": "Independence on 1 January 1804; France's 1825 recognition required an indemnity that bankrupted the treasury and caused long-term instability."
+   },
+   "civilization": "Saint-Domingue (French Caribbean)",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Haitian Revolution\"",
+     "url": "https://en.wikipedia.org/wiki/Haitian_Revolution",
+     "quote": "led to the slave revolt on 21 August 1791"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/Haitian-Revolution",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "led to the slave revolt on 21 August 1791",
+    "independence on 1 January 1804",
+    "The indemnity bankrupted the Haitian treasury"
+   ],
+   "order": 26
+  },
+  {
+   "id": "ath028",
+   "date": "1815",
+   "end": "1816",
+   "precision": "year",
+   "written": "1815 CE",
+   "title": "Tambora eruption",
+   "text": "Year Without a Summer (1816).",
+   "regions": [
+    "world"
+   ],
+   "themes": [
+    "climate"
+   ],
+   "place": {
+    "place": "Mount Tambora, Sumbawa, Indonesia",
+    "lat": -8.25,
+    "lon": 118.0
+   },
+   "chain": {
+    "cause": "Ash from the eruption column spread worldwide and lowered global temperatures.",
+    "event": "Year Without a Summer (1816).",
+    "consequence": "Extreme weather and harvest failures in many regions; tens of thousands of deaths from post-eruption famine and disease locally."
+   },
+   "civilization": "Dutch East Indies → global",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"1815 eruption of Mount Tambora\"",
+     "url": "https://en.wikipedia.org/wiki/1815_eruption_of_Mount_Tambora",
+     "quote": "lowered global temperatures"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/place/Mount-Tambora",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Mount Tambora erupted in April 1815, producing the global Year Without a Summer in 1816.",
+   "quotes": [
+    "lowered global temperatures",
+    "Year Without a Summer in 1816",
+    "harvest failures in many areas around the world"
+   ],
+   "order": 27
+  },
+  {
+   "id": "ath030",
+   "date": "1839",
+   "end": "1842",
+   "precision": "year",
+   "written": "1839–1842 CE",
+   "title": "First Opium War",
+   "text": "War ending with the Treaty of Nanking (1842).",
+   "regions": [
+    "china"
+   ],
+   "themes": [
+    "war",
+    "politics"
+   ],
+   "place": {
+    "place": "Nanjing, China",
+    "lat": 32.06,
+    "lon": 118.8
+   },
+   "chain": {
+    "cause": "Qing enforcement of the opium ban by seizing British merchants' opium stocks at Canton.",
+    "event": "War ending with the Treaty of Nanking (1842).",
+    "consequence": "Indemnity, extraterritoriality, five treaty ports opened, Hong Kong Island ceded."
+   },
+   "civilization": "Qing China / British Empire",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"First Opium War\"",
+     "url": "https://en.wikipedia.org/wiki/First_Opium_War",
+     "quote": "Chinese enforcement of their ban on the opium trade"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/First-Opium-War",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "Chinese enforcement of their ban on the opium trade",
+    "Treaty of Nanking on 29 August 1842",
+    "opened five treaty ports to British merchants"
+   ],
+   "order": 29
+  },
+  {
+   "id": "ath029",
+   "date": "1845",
+   "end": "1849",
+   "precision": "year",
+   "written": "1845–1852 CE",
+   "title": "Great Famine (Ireland)",
+   "text": "Mass starvation and disease.",
+   "regions": [
+    "ireland",
+    "world"
+   ],
+   "themes": [
+    "disease"
+   ],
+   "place": {
+    "place": "Dublin, Ireland",
+    "lat": 53.35,
+    "lon": -6.26
+   },
+   "chain": {
+    "cause": "Potato blight infected crops across Europe, in an Irish society heavily dependent on the potato.",
+    "event": "Mass starvation and disease.",
+    "consequence": "775,000–1.5 million excess deaths and emigration of 1 million or more; lasting impact on Irish society."
+   },
+   "civilization": "Ireland / British Isles",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Great Famine (Ireland)\"",
+     "url": "https://en.wikipedia.org/wiki/Great_Famine_(Ireland)",
+     "quote": "The proximate cause of the famine was the infection of potato crops by blight"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Great-Famine-Irish-history",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Britannica dates the Great Famine to 1845–1849; some historians extend the period through 1852.",
+   "quotes": [
+    "The proximate cause of the famine was the infection of potato crops by blight",
+    "excess death impact of 775,000 to 1.5 million",
+    "mass emigration of 1 million or more"
+   ],
+   "order": 28
+  },
+  {
+   "id": "ath031",
+   "date": "1850",
+   "end": "1864",
+   "precision": "year",
+   "written": "1850–1864 CE",
+   "title": "Taiping Rebellion",
+   "text": "Civil war between the Qing and the Taiping Heavenly Kingdom; deadliest civil war in history.",
+   "regions": [
+    "china"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Nanjing, China",
+    "lat": 32.06,
+    "lon": 118.8
+   },
+   "chain": {
+    "cause": "Hong Xiuquan's visions and movement sought religious conversion and the overthrow of the Qing.",
+    "event": "Civil war between the Qing and the Taiping Heavenly Kingdom; deadliest civil war in history.",
+    "consequence": "Death toll estimated 20–30 million or more; Qing won at great cost to its economy and political stability."
+   },
+   "civilization": "Qing China",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Taiping Rebellion\"",
+     "url": "https://en.wikipedia.org/wiki/Taiping_Rebellion",
+     "quote": "political overthrow of the Qing dynasty"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Taiping-Rebellion",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Britannica dates the Taiping Rebellion to 1850–1864; some historians date the formal outbreak to January 1851.",
+   "quotes": [
+    "political overthrow of the Qing dynasty",
+    "It was the deadliest civil war in history",
+    "great cost to the Qing dynasty's economy and political stability"
+   ],
+   "order": 30
+  },
+  {
+   "id": "ath023",
+   "date": "1853",
+   "end": "1854",
+   "precision": "year",
+   "written": "1633–1639; ended after 1853",
+   "title": "Sakoku and its forced end",
+   "text": "Perry Expedition forced Japan open (Convention of Kanagawa, 1854).",
+   "regions": [
+    "japan"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Kanagawa (Yokohama), Japan",
+    "lat": 35.47,
+    "lon": 139.63
+   },
+   "chain": {
+    "cause": "Shogunate edicts (1633–39) under Tokugawa Iemitsu sharply restricted foreign trade and travel, leaving Dutch Dejima and Chinese trade at Nagasaki.",
+    "event": "Perry Expedition forced Japan open (Convention of Kanagawa, 1854).",
+    "consequence": "Ports of Shimoda and Hakodate opened to American ships and a US consulate established, ending the isolation policy."
+   },
+   "civilization": "Tokugawa Japan",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Sakoku\"",
+     "url": "https://en.wikipedia.org/wiki/Sakoku + Wikipedia, \"Perry Expedition\" — https://en.wikipedia.org/wiki/Perry_Expedition",
+     "quote": "edicts and policies from 1633 to 1639"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Treaty-of-Kanagawa",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Perry arrived in Tokyo Bay in July 1853 and concluded the Treaty of Kanagawa on March 31, 1854.",
+   "quotes": [
+    "edicts and policies from 1633 to 1639",
+    "the Perry Expedition commanded by Matthew C. Perry forced the opening of Japan",
+    "opened the ports of Shimoda and Hakodate to American ships"
+   ],
+   "order": 22
+  },
+  {
+   "id": "ath024",
+   "date": "1868",
+   "end": null,
+   "precision": "year",
+   "written": "1868 CE",
+   "title": "Meiji Restoration",
+   "text": "Restoration of executive power to the Emperor under Meiji.",
+   "regions": [
+    "japan"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Kyoto, Japan",
+    "lat": 35.01,
+    "lon": 135.77
+   },
+   "chain": {
+    "cause": "Tokugawa economic and political difficulties, compounded by foreign encroachment (Perry Expedition) and unequal treaties that questioned the shogun's ability to defend sovereignty.",
+    "event": "Restoration of executive power to the Emperor under Meiji.",
+    "consequence": "Rapid industrialisation and adoption of Western ideas, production methods and technology."
+   },
+   "civilization": "Japan",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Meiji Restoration\"",
+     "url": "https://en.wikipedia.org/wiki/Meiji_Restoration",
+     "quote": "economic and political difficulties faced by the Tokugawa shogunate"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Meiji-Restoration",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "economic and political difficulties faced by the Tokugawa shogunate",
+    "Under subsequent unequal treaties, Japan was forced to open to the West",
+    "rapidly industrialised and adopted Western ideas"
+   ],
+   "order": 23
+  },
+  {
+   "id": "ath032",
+   "date": "1884",
+   "end": "1885",
+   "precision": "year",
+   "written": "1884–1885 CE",
+   "title": "Berlin Conference",
+   "text": "General Act of Berlin regulating European colonisation and trade in Africa.",
+   "regions": [
+    "africa",
+    "europe"
+   ],
+   "themes": [
+    "economy",
+    "politics"
+   ],
+   "place": {
+    "place": "Berlin, Germany",
+    "lat": 52.52,
+    "lon": 13.4
+   },
+   "chain": {
+    "cause": "Competing colonial claims; Leopold II requested and Bismarck organised a conference of fourteen countries.",
+    "event": "General Act of Berlin regulating European colonisation and trade in Africa.",
+    "consequence": "Legal framework ('effective occupation') increased European claims, formalising the Scramble for Africa."
+   },
+   "civilization": "Europe / Africa",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Berlin Conference\"",
+     "url": "https://en.wikipedia.org/wiki/Berlin_Conference",
+     "quote": "at the request of Leopold II of Belgium"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Berlin-West-Africa-Conference",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "at the request of Leopold II of Belgium",
+    "European claims on African territory increased with international legal recognition",
+    "formalizing the ongoing Scramble for Africa"
+   ],
+   "order": 31
+  },
+  {
+   "id": "kin-1904-05-07",
+   "date": "1904-05-07",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The Lithuanian press ban ends",
+   "text": "The Russian Empire lifts its ban on printing Lithuanian in the Latin alphabet, in force since 1864: Joseph was born under it, and parish registers of his time are kept in Russian.",
+   "regions": [
+    "lithuania",
+    "russian-empire"
+   ],
+   "themes": [
+    "technology"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "ath033",
+   "date": "1914",
+   "end": null,
+   "precision": "year",
+   "written": "1914 CE",
+   "title": "Assassination of Franz Ferdinand",
+   "text": "Gavrilo Princip assassinated the heir presumptive in Sarajevo.",
+   "regions": [
+    "europe",
+    "world"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Sarajevo, Bosnia and Herzegovina",
+    "lat": 43.86,
+    "lon": 18.41
+   },
+   "chain": {
+    "cause": "Young Bosnia sought to free Bosnia and Herzegovina (annexed 1908) from Austro-Hungarian rule.",
+    "event": "Gavrilo Princip assassinated the heir presumptive in Sarajevo.",
+    "consequence": "July Crisis, Austria-Hungary's war on Serbia and the start of World War I."
+   },
+   "civilization": "Austria-Hungary / Balkans",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Assassination of Archduke Franz Ferdinand\"",
+     "url": "https://en.wikipedia.org/wiki/Assassination_of_Archduke_Franz_Ferdinand",
+     "quote": "formally annexed by Austria-Hungary in 1908"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/biography/Gavrilo-Princip",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "formally annexed by Austria-Hungary in 1908",
+    "free Bosnia and Herzegovina of Austro-Hungarian rule",
+    "The assassination precipitated the July Crisis"
+   ],
+   "order": 32
+  },
+  {
+   "id": "kin-1914-07-28",
+   "date": "1914-07-28",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The First World War begins",
+   "text": "The First World War begins. Germany occupies Lithuania from 1915 to 1918.",
+   "regions": [
+    "world",
+    "europe",
+    "lithuania"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "kin-1917-04-06",
+   "date": "1917-04-06",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The United States enters the First World War",
+   "text": "The United States declares war on Germany.",
+   "regions": [
+    "united-states"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "kin-1917-06-05",
+   "date": "1917-06-05",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The first U.S. draft registration day",
+   "text": "The first national draft registration day: every man in the United States aged 21 to 30, citizen or not, had to register. Joseph's draft card is from this day.",
+   "regions": [
+    "united-states"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "kin-1918-02-16",
+   "date": "1918-02-16",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "Lithuania declares independence",
+   "text": "Lithuania declares its independence.",
+   "regions": [
+    "lithuania"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "kin-1918-10-01",
+   "date": "1918-10-01",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The influenza pandemic peaks",
+   "text": "The influenza pandemic peaks in the autumn of 1918.",
+   "regions": [
+    "world",
+    "united-states"
+   ],
+   "themes": [
+    "disease"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "kin-1918-11-11",
+   "date": "1918-11-11",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The Armistice",
+   "text": "The Armistice ends the fighting in France, where Joseph's regiment printed the Army's maps.",
+   "regions": [
+    "world",
+    "europe",
+    "france"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "ath034",
+   "date": "1919",
+   "end": null,
+   "precision": "year",
+   "written": "1919 CE",
+   "title": "Treaty of Versailles",
+   "text": "Treaty imposing disarmament, territorial concessions and reparations.",
+   "regions": [
+    "europe",
+    "world"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Versailles, France",
+    "lat": 48.8,
+    "lon": 2.12
+   },
+   "chain": {
+    "cause": "Allied victory; Germany excluded from negotiations at the Paris Peace Conference.",
+    "event": "Treaty imposing disarmament, territorial concessions and reparations.",
+    "consequence": "Bitter resentment powered the rise of the Nazi Party and eventually the Second World War; reparations later restructured (Dawes, Young Plans)."
+   },
+   "civilization": "Germany / Allied Powers",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Treaty of Versailles\"",
+     "url": "https://en.wikipedia.org/wiki/Treaty_of_Versailles",
+     "quote": "Germany was not allowed to participate in the negotiations"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Treaty-of-Versailles-1919",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Signed June 28, 1919; went into effect January 10, 1920.",
+   "quotes": [
+    "Germany was not allowed to participate in the negotiations",
+    "Bitter resentment of the treaty powered the rise of the Nazi Party",
+    "payments reduced in the Dawes Plan and the Young Plan"
+   ],
+   "order": 33
+  },
+  {
+   "id": "kin-1924-05-26",
+   "date": "1924-05-26",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The Immigration Act of 1924",
+   "text": "The Immigration Act of 1924 sets quotas that all but close the door to new arrivals from Lithuania.",
+   "regions": [
+    "united-states",
+    "lithuania"
+   ],
+   "themes": [
+    "politics",
+    "migration"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "ath035",
+   "date": "1929-10-29",
+   "end": null,
+   "precision": "day",
+   "written": "1929 CE",
+   "title": "Wall Street crash of 1929",
+   "text": "Black Thursday and Black Tuesday crash on the NYSE.",
+   "regions": [
+    "michigan",
+    "united-states",
+    "world"
+   ],
+   "themes": [
+    "economy",
+    "politics"
+   ],
+   "place": {
+    "place": "New York City, United States",
+    "lat": 40.71,
+    "lon": -74.01
+   },
+   "chain": {
+    "cause": "1920s profits poured into stock speculation; margin calls forced selling.",
+    "event": "Black Thursday and Black Tuesday crash on the NYSE.",
+    "consequence": "Rapid loss of confidence in US banks, cascading into the worldwide Great Depression."
+   },
+   "civilization": "United States → world",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Wall Street crash of 1929\"",
+     "url": "https://en.wikipedia.org/wiki/Wall_Street_crash_of_1929",
+     "quote": "much of the profit had been invested in speculation"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/stock-market-crash-of-1929",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "local": [
+    {
+     "regions": [
+      "michigan"
+     ],
+     "text": "The stock market crashes and the Great Depression follows: American car production falls by about three quarters between 1929 and 1932."
+    }
+   ],
+   "note": "",
+   "quotes": [
+    "much of the profit had been invested in speculation",
+    "more investors facing margin calls",
+    "cascade into the worldwide Great Depression"
+   ],
+   "order": 34
+  },
+  {
+   "id": "kin-1940-06-15",
+   "date": "1940-06-15",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The Soviet Union occupies Lithuania",
+   "text": "The Soviet Union occupies Lithuania.",
+   "regions": [
+    "lithuania"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "kin-1941-12-08",
+   "date": "1941-12-08",
+   "end": null,
+   "precision": "day",
+   "written": null,
+   "title": "The United States enters the Second World War",
+   "text": "The United States enters the Second World War.",
+   "regions": [
+    "united-states",
+    "world"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": null,
+   "chain": null,
+   "civilization": null,
+   "sources": [],
+   "by": "Claude (the Kin seed, 22 Nov)",
+   "check": "unsourced: needs a source (ATH-GEM-08)"
+  },
+  {
+   "id": "ath036",
+   "date": "1947",
+   "end": null,
+   "precision": "year",
+   "written": "1947 CE",
+   "title": "Partition of India",
+   "text": "Creation of the dominions of India and Pakistan.",
+   "regions": [
+    "south-asia"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "New Delhi, India",
+    "lat": 28.61,
+    "lon": 77.21
+   },
+   "chain": {
+    "cause": "End of the British Raj with provinces divided by Muslim / non-Muslim district majorities (Indian Independence Act 1947).",
+    "event": "Creation of the dominions of India and Pakistan.",
+    "consequence": "Displacement of 12–20 million people along religious lines and overwhelming refugee crises."
+   },
+   "civilization": "British India",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Partition of India\"",
+     "url": "https://en.wikipedia.org/wiki/Partition_of_India",
+     "quote": "based on district-wide non-Muslim"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Partition-of-India",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "based on district-wide non-Muslim",
+    "resulted in the end of the British Raj",
+    "displaced between 12 and 20 million people along religious lines"
+   ],
+   "order": 35
+  },
+  {
+   "id": "ath037",
+   "date": "1956",
+   "end": null,
+   "precision": "year",
+   "written": "1956 CE",
+   "title": "Suez Crisis",
+   "text": "British–French–Israeli invasion of Egypt.",
+   "regions": [
+    "middle-east"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Port Said, Egypt",
+    "lat": 31.26,
+    "lon": 32.3
+   },
+   "chain": {
+    "cause": "Nasser nationalised the Suez Canal; an Egyptian blockade restricted Israeli passage.",
+    "event": "British–French–Israeli invasion of Egypt.",
+    "consequence": "US, Soviet and UN pressure forced withdrawal, showing the UK and France could no longer act without US consent."
+   },
+   "civilization": "Egypt / UK / France / Israel",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Suez Crisis\"",
+     "url": "https://en.wikipedia.org/wiki/Suez_Crisis",
+     "quote": "which Nasser had nationalised earlier that year"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Suez-Crisis",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Crisis began July 1956 and invasion occurred October–November 1956; Israeli troops withdrew in March 1957.",
+   "quotes": [
+    "which Nasser had nationalised earlier that year",
+    "prompting their withdrawal from Egypt",
+    "could no longer implement independent foreign policies without U.S. consent"
+   ],
+   "order": 36
+  },
+  {
+   "id": "ath038",
+   "date": "1962",
+   "end": null,
+   "precision": "year",
+   "written": "1962 CE",
+   "title": "Cuban Missile Crisis",
+   "text": "13-day confrontation, the closest the Cold War came to full nuclear war.",
+   "regions": [
+    "united-states",
+    "world"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Havana, Cuba",
+    "lat": 23.11,
+    "lon": -82.37
+   },
+   "chain": {
+    "cause": "US nuclear missiles in the UK, Italy and Turkey were matched by Soviet missile deployments in Cuba.",
+    "event": "13-day confrontation, the closest the Cold War came to full nuclear war.",
+    "consequence": "Creation of the Moscow–Washington hotline and later agreements that reduced tensions."
+   },
+   "civilization": "US / USSR / Cuba",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Cuban Missile Crisis\"",
+     "url": "https://en.wikipedia.org/wiki/Cuban_Missile_Crisis",
+     "quote": "were matched by Soviet deployments of nuclear missiles in Cuba"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Cuban-missile-crisis",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "were matched by Soviet deployments of nuclear missiles in Cuba",
+    "closest the Cold War came to escalating into full-scale nuclear war",
+    "resulted in the Moscow–Washington hotline"
+   ],
+   "order": 37
+  },
+  {
+   "id": "ath039",
+   "date": "1973",
+   "end": "1974",
+   "precision": "year",
+   "written": "1973–1974 CE",
+   "title": "1973 oil embargo",
+   "text": "Oil embargo and price shock (about $3 to nearly $12/barrel).",
+   "regions": [
+    "world",
+    "united-states"
+   ],
+   "themes": [
+    "economy"
+   ],
+   "place": {
+    "place": "Riyadh, Saudi Arabia",
+    "lat": 24.71,
+    "lon": 46.68
+   },
+   "chain": {
+    "cause": "OAPEC embargoed countries that supported Israel in the Yom Kippur War.",
+    "event": "Oil embargo and price shock (about $3 to nearly $12/barrel).",
+    "consequence": "US policy response: 55 mph limit, CAFE fuel-economy standards, Strategic Petroleum Reserve, Department of Energy."
+   },
+   "civilization": "OAPEC / Western economies",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"1973 oil crisis\"",
+     "url": "https://en.wikipedia.org/wiki/1973_oil_crisis",
+     "quote": "implementing a total oil embargo against countries that had supported Israel"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/event/Arab-oil-embargo",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "Embargo began in October 1973 and was lifted in March 1974.",
+   "quotes": [
+    "implementing a total oil embargo against countries that had supported Israel",
+    "from US$3/barrel to nearly US$12/barrel",
+    "Corporate Average Fuel Economy (CAFE) standards"
+   ],
+   "order": 38
+  },
+  {
+   "id": "ath040",
+   "date": "1989",
+   "end": null,
+   "precision": "year",
+   "written": "1989 CE",
+   "title": "Fall of the Berlin Wall",
+   "text": "Crowds crossed the Berlin border on 9 November 1989.",
+   "regions": [
+    "europe",
+    "world"
+   ],
+   "themes": [
+    "politics"
+   ],
+   "place": {
+    "place": "Berlin, Germany",
+    "lat": 52.52,
+    "lon": 13.4
+   },
+   "chain": {
+    "cause": "Revolutions of 1989 (Hungary opened its border) and a Politburo press conference prematurely announcing unrestricted travel.",
+    "event": "Crowds crossed the Berlin border on 9 November 1989.",
+    "consequence": "Free elections favoured reunification; Germany reunified on 3 October 1990."
+   },
+   "civilization": "East / West Germany",
+   "sources": [
+    {
+     "cite": "Wikipedia, \"Fall of the Berlin Wall\"",
+     "url": "https://en.wikipedia.org/wiki/Fall_of_the_Berlin_Wall",
+     "quote": "prematurely announced that East Germans could travel without restrictions"
+    },
+    {
+     "cite": "the dating (Gemini ATH-GEM-06)",
+     "url": "https://www.britannica.com/topic/Berlin-Wall",
+     "quote": null
+    }
+   ],
+   "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
+   "check": "sourced",
+   "note": "",
+   "quotes": [
+    "prematurely announced that East Germans could travel without restrictions",
+    "Hungary removed the fence in May",
+    "unification took place on 3 October 1990"
+   ],
+   "order": 39
+  }
+ ]
+}

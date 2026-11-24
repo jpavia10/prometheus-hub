@@ -1,6 +1,6 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-24 17:12 UTC. 17 to do across 4 pillars.
+Updated 2026-11-24 21:34 UTC. 18 to do across 5 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -22,7 +22,8 @@ IN THIS ORDER:
 4. [Prometheus Hub] HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · due 2026-12-07
 5. [Kin] KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · due 2026-12-08
 6. [Kin] KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
-7. [Kin] KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · due 2026-12-10 · waits for its input file
+7. [Athenaeum · Idea Vault] ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15) · due 2026-12-10 · waits for its input file
+8. [Kin] KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · due 2026-12-10 · waits for its input file
 
 ==================== 1. KIN ====================
 ## 1. KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17)
@@ -341,8 +342,53 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 7. KIN ====================
-## 7. KIN-MUS-03 · Kin: second reader on the 1950 census households (blind)
+==================== 7. ATHENAEUM · IDEA VAULT ====================
+## 7. ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15)
+
+**Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
+
+**What it unlocks:** The history behind every record in the tree, and Athenaeum's own timeline.
+
+**Read first:**
+- https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/data/world-history.json (the format; do not repeat an entry that is there)
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (the family's people and places)
+
+**Do this:**
+1. For each batch as it lands: pick every fifth row, open each source yourself, and say whether the quote is on the page, whether the date and claim match, and whether a better source exists.
+
+**Make:** `athenaeum_muse_history-second-read_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per entry, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-<region>-<YYYY>-<word>, e.g. his-malta-1919-settegiugno; unique
+- `date` (text): YYYY-MM-DD when the day is known, else YYYY
+- `end` (text): the last year for a span (YYYY), else null
+- `precision` (text): day, month, year, decade or century: how exactly the date is known
+- `title` (text): the event in under 8 words
+- `text` (text): what happened and why it mattered to ordinary people there, in your own words, 25-70 words, plain and neutral
+- `regions` (list): from: world, europe, united-states, american-colonies, lithuania, russian-empire, poland, malta, italy, michigan, detroit, new-york, massachusetts, tennessee, north-carolina, south-carolina, virginia, pennsylvania, georgia, ohio, california, england, scotland, ireland, canada, ontario, france, germany, cherokee-nation, philippines (and the older ones in the file)
+- `themes` (list): from: war, disease, economy, politics, climate, technology, migration, law, labor, religion, society, industry, culture
+- `place` (object): { name, lat, lon } of where it happened, or null for a country-wide change
+- `sources` (list): 1-3 of { cite, url, quote }: an authoritative page (national archive, government, museum, university, Britannica or a scholarly encyclopedia; Wikipedia only to find a source, never as one), the quote word for word from that page, under 300 characters, showing the date and the claim
+- `checked` (date): the day you read the sources, YYYY-MM-DD
+
+**Done when:** Every batch read.
+
+**How Claude checks it:**
+- Claude compares your reading with his own on the same rows.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a quote that is not on the page
+- a date the source does not give
+- Wikipedia, a blog, a forum or an AI summary as the source
+- an entry already in the dataset
+- rows missing to reach the count
+
+==================== 8. KIN ====================
+## 8. KIN-MUS-03 · Kin: second reader on the 1950 census households (blind)
 
 **Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
 
