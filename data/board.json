@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 02:14 UTC",
+ "updated": "2026-11-24 03:00 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -38,7 +38,7 @@
    "live": "https://jpavia10.github.io/midas-ledger/",
    "open": {
     "grok": 2,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 1,
     "chatgpt": 0,
     "argon": 0,
@@ -67,7 +67,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
    "open": {
     "grok": 0,
-    "gemini": 2,
+    "gemini": 3,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -337,8 +337,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kin/",
    "open": {
     "grok": 0,
-    "gemini": 1,
-    "muse": 0,
+    "gemini": 8,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,

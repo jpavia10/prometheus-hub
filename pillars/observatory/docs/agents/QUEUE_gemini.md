@@ -2,15 +2,15 @@
 
 # Observatory · homework for Gemini
 
-Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 03:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. OBS-GEM-07 · Observatory: the rate limits and terms of use for the 21 feeds
+## 1. OBS-GEM-07 · Observatory: the licence and attribution each of the 22 feeds asks for
 
 **Due:** 2026-12-05 · **State:** now
 
-**Why:** Run 6 found 21 no-key feeds; before the page polls them it needs each one's limits and terms.
+**Why:** Your telemetry packet answered the rate limits, User-Agent rules and CORS for the 22 feeds (and filled the CORS gap). The one thing still missing before the page can show their data is what each licence lets it do and the credit line it asks for.
 
 **What it unlocks:** Observatory polls each feed no faster than it allows, and credits it as asked.
 
@@ -18,7 +18,7 @@ Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github
 - Your file observatory_gemini_data-apis_20261123-1115.json (the 21 feeds and their docs pages)
 
 **Do this:**
-1. For each feed: the documented rate limit (requests per second or day), any required User-Agent or contact header, and the attribution or licence it asks for, from its docs.
+1. For each of the 22 feeds in observatory_gemini_supp-api-telemetry-architecture_20261123-1626.json: the licence by name (CC BY 4.0, CC0, public domain, custom terms), whether a personal site may show and cache the data, and the exact attribution text the provider asks for, quoted from its terms page.
 
 **Make:** `observatory_gemini_feed-terms_{YYYYMMDD-HHMM}.json`
 
@@ -28,13 +28,13 @@ Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `subject` (text): 
-- `endpoint` (url): as in run 6
-- `rate_limit` (text): as documented, or 'not stated'
-- `header` (text): required header, or 'none stated'
-- `licence` (text): as documented
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `subject` (text): the Observatory subject
+- `endpoint` (text): the feed, as in your packet
+- `licence` (text): its name
+- `may_cache` (text): yes, no or not stated, with the clause
+- `attribution` (text): the credit line it asks for, word for word
+- `url` (url): the terms or licence page you opened
+- `quote` (text): copied word for word, 300 characters at most
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -43,9 +43,9 @@ Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 21
+**How many:** 22
 
-**Done when:** All 21 feeds.
+**Done when:** All 22 feeds with a licence and an attribution line (or 'not stated' with the terms page you read).
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

@@ -2,15 +2,15 @@
 
 # Icarus Stake · homework for Gemini
 
-Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 03:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ICA-GEM-14 · Icarus: BLS's 2027 release dates for CPI, the jobs report and PPI
+## 1. ICA-GEM-14 · Icarus: BLS's 2027 PPI release dates, and which 2027 FOMC meetings carry projections
 
 **Due:** 2026-12-06 · **State:** now
 
-**Why:** Run 6 gave BEA and Treasury for 2027; the three BLS releases that move markets most are the rest of the calendar.
+**Why:** Your supplemental 2027 calendar already has CPI, the jobs report and the FOMC dates (right to the Fed's 12 Nov revision). What is left: the PPI dates and the projections flag you marked 'not stated'.
 
 **What it unlocks:** Icarus's 2027 calendar is complete.
 
@@ -18,7 +18,8 @@ Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github
 - bls.gov/schedule (2027 release calendar for CPI, Employment Situation, PPI)
 
 **Do this:**
-1. Every 2027 date and time for the three releases, with the reference month.
+1. Every 2027 PPI release with its reference month and time, from BLS's own schedule.
+2. For each 2027 FOMC meeting: whether the Fed's calendar marks it with a Summary of Economic Projections (quote the calendar's footnote).
 
 **Make:** `icarus_gemini_2027-bls_{YYYYMMDD-HHMM}.json`
 
@@ -29,8 +30,8 @@ Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
 - `date` (date): YYYY-MM-DD
-- `event` (text): CPI, Employment Situation or PPI, with its month
-- `time` (text): 08:30 ET
+- `event` (text): PPI with its month, or FOMC with its dates
+- `time_or_flag` (text): 08:30 ET for PPI; 'projections' or 'no projections' for FOMC
 - `url` (url): the page you opened, on the official site
 - `quote` (text): copied word for word from that page, 300 characters at most
 
@@ -41,9 +42,9 @@ Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**How many:** 36
+**How many:** 20
 
-**Done when:** All 36 (12 x 3), or what BLS has published so far with the page.
+**Done when:** All 12 PPI releases (or what BLS has posted, with the page) and the projections flag on all 8 policy meetings.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.

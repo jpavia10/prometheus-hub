@@ -352,6 +352,942 @@
      "id": "KIN-GEM-06",
      "title": "Kin: a US passport for a child under 16 in 2026-27 (DS-11, both parents, DS-3053), fees and times",
      "due": "2026-12-06"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "His petition swears Hamburg about 13 Aug 1912 and New York 23 Aug 1912 on a ship whose name reads like 'Columbia'; the only manifest found so far (President Lincoln, 30 Sep 1912) is five weeks off and probably another man; the great-uncle suggests the Kaiserin Auguste Victoria. The arrival manifest is the record most likely to name his parents' village, a relative at home and who he was joining in America.",
+     "unlocks": "The crossing on the tree and the map gets its ship; C9 closes; the manifest's 'nearest relative' opens the generation above him (Q11).",
+     "inputs": [
+      "The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).",
+      "What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.",
+      "Steve Morse's One-Step forms (stevemorse.org/ellis/ and the ship lists by date) over the Statue of Liberty-Ellis Island Foundation database; heritage.statueofliberty.org",
+      "FamilySearch 'New York Passenger Arrival Lists (Ellis Island), 1892-1924' (images: say 'needs sign-in' with the film and image number if you cannot open them)",
+      "Hamburg Passenger Lists 1850-1934 (Staatsarchiv Hamburg 373-7 I, VIII A 1; indexed on Ancestry), for the matching departure"
+     ],
+     "steps": [
+      "Rows of kind 'search' for every ship that reached New York from Hamburg (direct, or by Southampton or Cherbourg) from 20 to 26 Aug 1912: ship, line, Hamburg departure, arrival date, and whether it carried steerage.",
+      "Search every spelling with the Ellis Island database's sounds-like option and on Morse's form: Termenas, Terminas, Termenus, Termens, Termen, Termanas, Tirmenas, Tarmenas; given names Juozas, Juozapas, Josef, Joseph, Józef, Osip, Iosif; age 17 to 21; arrivals 1911-1913. One row per search with its result count, also when empty.",
+      "Read every candidate's whole manifest line on both sheets (the list carries on to a second page: height, complexion, hair, eyes, marks, birthplace, nearest relative at home, who he joins and where, who paid, money, earlier visits). Transcribe every column word for word.",
+      "For a candidate that matches, find the same voyage's Hamburg departure list and transcribe his line.",
+      "Settle or narrow C9 in the summary row: which ship, why, and what still disagrees (the petition's 'Columbia', the 13 Aug departure, the 23 Aug arrival)."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-arrival-1912_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "self_check": [
+      "Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).",
+      "Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.",
+      "Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.",
+      "No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.",
+      "Each row's three classifications (source, information, evidence) are filled and right for that row's fact.",
+      "The file is valid JSON and named exactly as asked; the last row is the summary."
+     ],
+     "done_when": "Every ship from Hamburg arriving 20-26 Aug 1912 listed, every spelling searched (rows even when empty), and either his two-sheet manifest line transcribed with its reference or a closed negative search that says exactly where his record is not.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+      "Claude repeats three 'not found' searches and three classification calls at random."
+     ],
+     "rejected_if": [
+      "a record presented as his or hers without the identifiers compared",
+      "a transcription that paraphrases, shortens or 'cleans' the record",
+      "a fact whose reference is too vague to find the same image again",
+      "searches that found nothing left out",
+      "an index or abstract labelled 'original'",
+      "a guess written as a fact (write 'not stated' or 'illegible')",
+      "a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)"
+     ],
+     "id": "KIN-GEM-07",
+     "title": "Kin lineage: Joseph's 1912 crossing, Hamburg to New York, every ship and every spelling (Q1, C9)",
+     "due": "2026-12-08"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The petition was read only for its headline facts. Its back page (the witnesses' affidavits, the oath, the court's order) and the declaration of intention he filed at Detroit in 1916 are where a soldier's naturalization records his town of birth, his ship and his physical description in his own words.",
+     "unlocks": "Every 1919 fact on the tree gets its full record; the declaration may name his town and ship independently of the petition (C9, Q11).",
+     "inputs": [
+      "The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).",
+      "What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.",
+      "NARA catalog: M1368 'Petitions and Records of Naturalizations of the U.S. District and Circuit Courts of the District of Massachusetts, 1906-1929', roll 315, images 0913-0914 (NAID 59700981, 59700983): catalog.archives.gov",
+      "The seed's own images naturalization-petition-1919, naturalization-oath-1919, naturalization-cert-1919, naturalization-index",
+      "For the 1916 declaration: Wayne County Circuit Court naturalization records (Archives of Michigan; Detroit Public Library Burton Historical Collection); FamilySearch 'Michigan, Naturalization Records'; NARA Chicago (U.S. District Court, Detroit) if the petition names that court instead",
+      "USCIS Genealogy Program (uscis.gov/records/genealogy): index search and record request for certificate 1229058"
+     ],
+     "steps": [
+      "Transcribe the petition, both sides, every printed and handwritten word: the petitioner's statements, the two witnesses (names, addresses, occupations, how long they knew him), the affidavits, the oath of allegiance, the order of the court and every stamp and file note.",
+      "Read from the petition exactly which court, volume and number his 1916 declaration was filed in; then find that declaration (search rows for every place it could be, also when empty) and transcribe it whole.",
+      "Look for a certificate of arrival filed with the petition (1906 law; soldiers naturalized under the Act of 9 May 1918 were often excused): say which applies, quoting the petition.",
+      "USCIS: find whether a C-file exists for certificate 1229058 (index search) and write, as a 'lead' row, the exact request the owner files (form or online request, fee, every identifier filled in, how long it takes). Do not file it.",
+      "Summary row: every fact the file adds or contradicts, against the seed's events and conflicts."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-naturalization_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "self_check": [
+      "Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).",
+      "Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.",
+      "Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.",
+      "No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.",
+      "Each row's three classifications (source, information, evidence) are filled and right for that row's fact.",
+      "The file is valid JSON and named exactly as asked; the last row is the summary."
+     ],
+     "done_when": "The petition and its back page transcribed whole; the declaration found and transcribed, or every place searched listed with its result; the USCIS request ready for the owner.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+      "Claude repeats three 'not found' searches and three classification calls at random."
+     ],
+     "rejected_if": [
+      "a record presented as his or hers without the identifiers compared",
+      "a transcription that paraphrases, shortens or 'cleans' the record",
+      "a fact whose reference is too vague to find the same image again",
+      "searches that found nothing left out",
+      "an index or abstract labelled 'original'",
+      "a guess written as a fact (write 'not stated' or 'illegible')",
+      "a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)"
+     ],
+     "id": "KIN-GEM-08",
+     "title": "Kin lineage: the whole naturalization file, Boston 1919 and Detroit 1916, transcribed (Q2, Q3)",
+     "due": "2026-12-08"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "No census has been found for Joseph or Della. The 1930 census at 12134 Sobieski Avenue (or wherever they were) and Della with the children in 1940 and 1950 name the owner's great-grandmother and her brothers and sisters: the generation the tree is missing.",
+     "unlocks": "The tree's 'your great-grandmother' placeholder gets a name, a birth year and her siblings; the line from Joseph to the owner closes.",
+     "inputs": [
+      "The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).",
+      "What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.",
+      "Steve Morse's unified enumeration district finder (stevemorse.org/census/unified.html) for Detroit addresses in 1920, 1930 and 1940",
+      "The census images on the Internet Archive (archive.org: 1920 T625, 1930 T626, 1940 T627 rolls for Wayne County, Michigan) and NARA's 1940census.archives.gov and 1950census.archives.gov (the 1950 site has a name search)",
+      "Indexes to try first: FamilySearch and the 1950 name search (needs-sign-in rows where they block you)",
+      "The 1935 death certificate's address and the 1926-35 Sobieski address in the seed"
+     ],
+     "steps": [
+      "1930 first: find the enumeration district for 12134 Sobieski Avenue, Detroit; page through that district's images until the house number; transcribe the whole household, every column (name, relation, home owned or rented, value, radio, sex, race, age, marital status, age at first marriage, school, read and write, birthplace of person, father and mother, mother tongue, immigration year, naturalized, English, occupation, industry, class of worker, at work, veteran and which war). Rows for every page range read.",
+      "1920: Joseph alone (they married in 1922) in Detroit, Cambridge or Brooklyn; Della with her parents Michael and Eva wherever they are (C3 depends on it).",
+      "1940 and 1950: Della (widowed 1935) with the children; transcribe each household whole, including the 1940 supplementary lines if a family member falls on them.",
+      "For each household: the identity argument (Joseph's age, birthplace, immigration year, naturalized, WWI veteran; Della's age and parents' birthplaces).",
+      "Summary row: the children's names and birth years in every census they appear in, and which one is the owner's great-grandmother if the seed or the owner's family names allow it (say how sure)."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-censuses_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "self_check": [
+      "Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).",
+      "Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.",
+      "Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.",
+      "No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.",
+      "Each row's three classifications (source, information, evidence) are filled and right for that row's fact.",
+      "The file is valid JSON and named exactly as asked; the last row is the summary."
+     ],
+     "done_when": "1930 household found and transcribed or the whole district read with page ranges listed; 1920, 1940 and 1950 each searched with results; every household found transcribed whole.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+      "Claude repeats three 'not found' searches and three classification calls at random."
+     ],
+     "rejected_if": [
+      "a record presented as his or hers without the identifiers compared",
+      "a transcription that paraphrases, shortens or 'cleans' the record",
+      "a fact whose reference is too vague to find the same image again",
+      "searches that found nothing left out",
+      "an index or abstract labelled 'original'",
+      "a guess written as a fact (write 'not stated' or 'illegible')",
+      "a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)"
+     ],
+     "id": "KIN-GEM-09",
+     "title": "Kin lineage: the family in the 1920, 1930, 1940 and 1950 censuses, read page by page (Q4)",
+     "due": "2026-12-10"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Everything about Della comes from one index line and one mention. The 1922 certificate (no. 4615, Kings) and the marriage license affidavit carry both parties' birthplaces, residences and parents in their own words, and settle Malkitus versus Matukaitis.",
+     "unlocks": "Della becomes a researched person on the tree with her parents; C3 closes.",
+     "inputs": [
+      "The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).",
+      "What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.",
+      "NYC Municipal Archives Historical Vital Records (a860-historicalvitalrecords.nyc.gov): marriage certificates by borough, year and number, free",
+      "The NYC City Clerk marriage license records 1908-1949 (the license affidavit; index at nycmarriageindex.com from Reclaim the Records)",
+      "US censuses 1910-1950 for Michael and Eva Malkitus / Matukaitis and their children; SSDI and the Michigan death index for Della (needs-sign-in rows where blocked)"
+     ],
+     "steps": [
+      "Open certificate 4615 of 1922, Kings, and transcribe every field (both parties: residence, age, colour, single or widowed, occupation, birthplace, father's name, mother's maiden name, number of marriage; the officiant, the church or place, the witnesses, the date filed).",
+      "Find and transcribe the license affidavit for the same couple (it often adds the parents' birthplaces and the bride's own signature).",
+      "Search for Della's family in 1910 and 1920 under Malkitus, Matukaitis, Malkites, Matukaites, Malkaitis and Matukas (rows for every search); transcribe any household that matches her age (born about 1901) and parents' names.",
+      "Della's later life: a remarriage after 1935, her death and burial (the Mt. Olivet lot is a lead for the owner).",
+      "Summary row: C3 argued from the evidence, with the conclusion and how sure."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-della_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "self_check": [
+      "Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).",
+      "Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.",
+      "Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.",
+      "No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.",
+      "Each row's three classifications (source, information, evidence) are filled and right for that row's fact.",
+      "The file is valid JSON and named exactly as asked; the last row is the summary."
+     ],
+     "done_when": "Certificate 4615 transcribed whole (or the exact reason it could not be opened); the license searched; Della's family searched under every spelling with results; C3 argued.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+      "Claude repeats three 'not found' searches and three classification calls at random."
+     ],
+     "rejected_if": [
+      "a record presented as his or hers without the identifiers compared",
+      "a transcription that paraphrases, shortens or 'cleans' the record",
+      "a fact whose reference is too vague to find the same image again",
+      "searches that found nothing left out",
+      "an index or abstract labelled 'original'",
+      "a guess written as a fact (write 'not stated' or 'illegible')",
+      "a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)"
+     ],
+     "id": "KIN-GEM-10",
+     "title": "Kin lineage: Della's side: the 1922 Brooklyn certificate and license, her parents, Malkitus or Matukaitis (Q5, Q14, C3)",
+     "due": "2026-12-08"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "His service number is open (C6) and the Army's own record of his service burned in the 1973 NPRC fire. A widow's claim on file XC 756 521 lists the marriage and every child with birth dates; Company A's rosters and the regiment's history fill the two years in France.",
+     "unlocks": "The service on the tree gets its number and its places; the VA file can name every child with dates.",
+     "inputs": [
+      "The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).",
+      "What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.",
+      "The seed's sources S-va (the master index card, file XC 756 521), S-muster (Co. A rosters), S-unit, S-enlist, S-discharge",
+      "VA Records Management Center and NARA (which holds XC files of veterans who died in 1935; the VA/NARA transfer of older claim files), FOIA and genealogy request routes",
+      "NARA RG 64 'World War I Rosters of Enlisted Men' and RG 120 (AEF) for the 29th Engineers; NPRC burned-records substitutes (final pay vouchers, RG 92)",
+      "The regiment's own history (the 29th Engineers, a topographical regiment: maps and printing at Langres and the GHQ plant at Chaumont) on HathiTrust or the Internet Archive"
+     ],
+     "steps": [
+      "Find out who holds file XC 756 521 today and write the exact request (form or letter, address or portal, fee, what to name, how long) as a 'lead' row with the official page quoted. Do not send it.",
+      "Read every roster image in the seed's S-muster at full size and transcribe Joseph's line on each (name, rank, service number, date and place of enlistment, remarks); C6 argued in its own row.",
+      "Find the regiment's published history; transcribe the passages about Company A from November 1917 to July 1919 (with page numbers), especially Langres (Dec 1917) and Chaumont (Apr 1919).",
+      "Victory Medal and France clasp: find the published authority for the clasp and whether a roll or card names him.",
+      "Summary row: his service, month by month, with the source for each step."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-army_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "self_check": [
+      "Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).",
+      "Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.",
+      "Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.",
+      "No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.",
+      "Each row's three classifications (source, information, evidence) are filled and right for that row's fact.",
+      "The file is valid JSON and named exactly as asked; the last row is the summary."
+     ],
+     "done_when": "The VA request ready for the owner; every roster line transcribed; C6 argued; Company A's passages found and transcribed or every catalogue searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+      "Claude repeats three 'not found' searches and three classification calls at random."
+     ],
+     "rejected_if": [
+      "a record presented as his or hers without the identifiers compared",
+      "a transcription that paraphrases, shortens or 'cleans' the record",
+      "a fact whose reference is too vague to find the same image again",
+      "searches that found nothing left out",
+      "an index or abstract labelled 'original'",
+      "a guess written as a fact (write 'not stated' or 'illegible')",
+      "a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)"
+     ],
+     "id": "KIN-GEM-11",
+     "title": "Kin lineage: his Army service: the VA claim file, the service number and Company A's war (Q10, Q18, C6)",
+     "due": "2026-12-10"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "His birth is sworn, not recorded: no baptism has been found. The Telšiai Roman Catholic parish metrical books for 1893 are digitized by the Lithuanian State Historical Archives. A baptism names his parents (with his mother's maiden name), the village and the godparents: the next generation of the tree.",
+     "unlocks": "Joseph's parents get names from a primary record; the tree goes back a generation in Lithuania.",
+     "inputs": [
+      "The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).",
+      "What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.",
+      "epaveldas.lt (the digitized metrical books) and LVIA's catalogue (Fond 669 and the Telšiai deanery books: find the right fond, inventory and file for 1893 births)",
+      "The calendar: in 1893 the Russian Empire's Julian date ran 12 days behind; his 16 May 1893 is 4 May (Julian), and he may have given either",
+      "The Lithuanian surname forms: Termenas (man), Termenienė (married woman), Termenaitė (unmarried woman); the Russian register writes them in Cyrillic (Терменас and variants) and given names in Latin or Russian forms (Іосифъ / Иосифъ for Juozapas)",
+      "Lietuvių pavardžių žodynas (the Lithuanian surname dictionary) for the surname's spread"
+     ],
+     "steps": [
+      "Find the exact archival reference (fond, inventory, file) of the 1893 Telšiai parish births and open it.",
+      "Read every entry from April to June 1893 (both calendars cover the date) and list each one as a row: number, date of birth and of baptism, child's name, parents and village, in Cyrillic as written plus a translation.",
+      "A Termenas child (any spelling): transcribe the whole entry, with the godparents and the priest, and argue identity (date in both calendars, name, later facts).",
+      "If none: search 1892-1895 (his other sworn years) and the neighbouring parishes the register itself names; rows for each.",
+      "Summary row: his parents if found, with the reference; what the surname dictionary says about Termenas around Telšiai."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-telsiai-1893_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "self_check": [
+      "Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).",
+      "Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.",
+      "Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.",
+      "No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.",
+      "Each row's three classifications (source, information, evidence) are filled and right for that row's fact.",
+      "The file is valid JSON and named exactly as asked; the last row is the summary."
+     ],
+     "done_when": "The 1893 register found and April-June read entry by entry (rows), with the result for Termenas; or the exact archival reference and why it could not be read.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+      "Claude repeats three 'not found' searches and three classification calls at random."
+     ],
+     "rejected_if": [
+      "a record presented as his or hers without the identifiers compared",
+      "a transcription that paraphrases, shortens or 'cleans' the record",
+      "a fact whose reference is too vague to find the same image again",
+      "searches that found nothing left out",
+      "an index or abstract labelled 'original'",
+      "a guess written as a fact (write 'not stated' or 'illegible')",
+      "a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)"
+     ],
+     "id": "KIN-GEM-12",
+     "title": "Kin lineage: Telšiai 1893: the Catholic parish birth register, read in the original Russian (Q11)",
+     "due": "2026-12-15"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "City directories give his address and job year by year (Cardoni, Sobieski, the Ford job) and who lived at 180 Howard Street, Cambridge, in 1919. The furnace accident at Ford in June 1935 may be in the Detroit papers and the Lithuanian-American press, with the family named.",
+     "unlocks": "The timeline between 1919 and 1935 fills in year by year; an obituary can name Della, the children and his family in Lithuania.",
+     "inputs": [
+      "The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).",
+      "What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.",
+      "Detroit city directories (R. L. Polk) 1916-1935 on the Internet Archive, HathiTrust and the Detroit Public Library's digital collections; Cambridge directories 1917-1921 (Internet Archive, Cambridge Public Library)",
+      "Lithuanian-American papers: Draugas (draugas.org archive), Dirva, Tėvynė, Keleivis, Naujienos on epaveldas.lt; Chronicling America (loc.gov) for what it covers",
+      "Detroit Free Press and Detroit News for June 1935 (needs-sign-in or paid rows with the exact issue and page if you cannot open them)",
+      "The Benson Ford Research Center (The Henry Ford): whether Ford employee or accident records of 1935 survive and how to ask"
+     ],
+     "steps": [
+      "Every directory year you can open from 1916 to 1935: search Termenas, Termens, Terminas, Termen; a row per year (found or not), with the whole entry transcribed (name, wife's name in brackets, occupation, employer, address, h or r).",
+      "Cambridge 1918-1920: his entry if any, and every resident listed at 180 Howard Street.",
+      "June 10-20, 1935: every paper you can open; transcribe any accident report, death notice or obituary whole, with issue, page and column.",
+      "Ford: a 'lead' row with the Benson Ford Research Center's own answer (quote its page) on employment and accident records and the owner's request route.",
+      "Summary row: his addresses and jobs by year; what the papers say."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-print_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "self_check": [
+      "Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).",
+      "Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.",
+      "Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.",
+      "No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.",
+      "Each row's three classifications (source, information, evidence) are filled and right for that row's fact.",
+      "The file is valid JSON and named exactly as asked; the last row is the summary."
+     ],
+     "done_when": "Every Detroit directory year 1916-1935 that is online searched (a row each); Cambridge 1918-1920 read; June 1935 searched in every paper you can open; the Ford route written.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+      "Claude repeats three 'not found' searches and three classification calls at random."
+     ],
+     "rejected_if": [
+      "a record presented as his or hers without the identifiers compared",
+      "a transcription that paraphrases, shortens or 'cleans' the record",
+      "a fact whose reference is too vague to find the same image again",
+      "searches that found nothing left out",
+      "an index or abstract labelled 'original'",
+      "a guess written as a fact (write 'not stated' or 'illegible')",
+      "a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)"
+     ],
+     "id": "KIN-GEM-13",
+     "title": "Kin lineage: Detroit and Cambridge in print: city directories 1916-1935 and the June 1935 newspapers (Q7, Q15)",
+     "due": "2026-12-10"
     }
    ]
   },
@@ -481,6 +1417,133 @@
       "a file saved anywhere but the folder named here, or under another name"
      ],
      "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "A transcription read by one reader is a single witness. A second reader, working blind, is how genealogy catches misreadings (the eyes, the height, the service number in C4-C6 came from exactly that).",
+     "unlocks": "Every field of the 1917-1919 records on the tree is read twice; disagreements become conflicts the tree shows.",
+     "inputs": [
+      "The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (open it only after your own transcriptions are done).",
+      "The images draft-1917, enlistment-1919, discharge-1919, naturalization-cert-1919, naturalization-petition-1919, naturalization-oath-1919 at full size (do not read the seed's 'read' text first: that is the point)"
+     ],
+     "steps": [
+      "Transcribe each document whole, every printed and handwritten word, as written.",
+      "Then, and only then, compare with the seed's 'read' text and list every difference as a row with which reading you think is right and why."
+     ],
+     "deliver": {
+      "file": "kin_muse_lineage-blind-1919_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "self_check": [
+      "Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).",
+      "Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.",
+      "Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.",
+      "No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.",
+      "Each row's three classifications (source, information, evidence) are filled and right for that row's fact.",
+      "The file is valid JSON and named exactly as asked; the last row is the summary."
+     ],
+     "done_when": "All six documents transcribed whole and compared, every difference listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+      "Claude repeats three 'not found' searches and three classification calls at random."
+     ],
+     "rejected_if": [
+      "a record presented as his or hers without the identifiers compared",
+      "a transcription that paraphrases, shortens or 'cleans' the record",
+      "a fact whose reference is too vague to find the same image again",
+      "searches that found nothing left out",
+      "an index or abstract labelled 'original'",
+      "a guess written as a fact (write 'not stated' or 'illegible')",
+      "a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)"
+     ],
+     "id": "KIN-MUS-02",
+     "title": "Kin lineage: a blind second transcription of the six 1917-1919 documents",
+     "due": "2026-12-08"
     }
    ]
   },

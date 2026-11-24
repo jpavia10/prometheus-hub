@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T02:14:21Z",
- "checked": "2026-11-24T02:14:21Z",
+ "built": "2026-11-24T03:00:51Z",
+ "checked": "2026-11-24T03:00:51Z",
  "version": 2,
  "today": "2026-11-23",
  "sources": {
@@ -19,11 +19,11 @@
    "synced": "2026-11-19T20:47:40Z"
   },
   "titan_scores": 179,
-  "hub_scores": 172,
+  "hub_scores": 190,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 65,
+  "todo": 75,
   "late": 2,
   "due7": 8,
   "delivered": 0,
@@ -32,31 +32,31 @@
  },
  "per": {
   "Gemini": {
-   "todo": 50,
+   "todo": 59,
    "late": 0,
    "due7": 3,
    "delivered": 0,
    "queued": 2,
    "done7": 176,
    "withdrawn": 68,
-   "items": 484,
+   "items": 469,
    "floor": 50,
    "by": {
-    "hub": 46,
+    "hub": 55,
     "titan": 3,
     "tproj": 1,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 246,
-    "avg": 8.18,
-    "last10": 9.1,
+    "n": 264,
+    "avg": 8.26,
+    "last10": 9.2,
     "last": {
      "ai": "Gemini",
-     "n": 172,
-     "date": "2026-11-23",
-     "what": "bonus pack, not asked: hub_gemini_supp-a11y-fix-queue, forge_gemini_supp-drift-patch, titan_gemini_supp-discrepancy-audit, hearth_gemini_supp-crc-deck-snow-corr",
+     "n": 190,
+     "date": "2026-11-24",
+     "what": "supplemental, offered to the owner: titan_gemini_supp-metallurgy-authentication-physics_20261123-1538.json",
      "task": "none",
      "where": "Prometheus Hub",
      "score": 9.0
@@ -96,7 +96,7 @@
    }
   },
   "Muse": {
-   "todo": 7,
+   "todo": 8,
    "late": 0,
    "due7": 4,
    "delivered": 0,
@@ -106,7 +106,7 @@
    "items": 106,
    "floor": 3,
    "by": {
-    "hub": 2,
+    "hub": 3,
     "titan": 3,
     "tproj": 2,
     "board": 0
@@ -279,10 +279,10 @@
    }
   },
   "Hephaestus Hearth": {
-   "todo": 2,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 2
+    "Gemini": 3
    }
   },
   "Garage": {
@@ -398,10 +398,11 @@
    }
   },
   "Kin": {
-   "todo": 1,
+   "todo": 9,
    "delivered": 0,
    "by": {
-    "Gemini": 1
+    "Gemini": 8,
+    "Muse": 1
    }
   },
   "Aether": {
@@ -433,10 +434,10 @@
    }
   },
   "Midas Ledger": {
-   "todo": 4,
+   "todo": 5,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Grok": 2,
     "Muse": 1
    }
@@ -2995,6 +2996,40 @@
     "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below",
     "done": "8 to 12 products from their own data sheets.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hephaestus Hearth",
+   "pid": "hearth",
+   "id": "HEA-GEM-31",
+   "title": "Hearth: the deck's members checked from AWC's own NDS documents, every factor and every step shown",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your structural packet worked the deck through the NDS adjustment factors at 100 psf snow, but its table values came from copies (a lumber dealer, a Purdue course PDF, preservedwood.org). A beam check is only as good as the table value under it.",
+    "steps": [
+     "For each member (joist, beam, ledger fasteners, post): the species and grade, the reference design value (Fb, Fv, Fc, E) quoted from AWC's own table with the table and page.",
+     "Every adjustment factor (CD, CM, Ct, CL, CF, Cfu, Ci, Cr) with its value, the table it comes from and why it applies.",
+     "The load combination used (D + S, D + L) and the demand: bending, shear, deflection and bearing, each worked with the arithmetic shown in the 'math' field.",
+     "The R507 prescriptive table answer for the same span next to the engineered one; say which governs.",
+     "A row per member that passes or fails, by how much."
+    ],
+    "make": "hearth_gemini_deck-members_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every member of the deck checked for bending, shear, deflection and bearing from AWC's own values, with the R507 answer beside it.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
@@ -6358,23 +6393,24 @@
    "where": "Icarus Stake",
    "pid": "icarus",
    "id": "ICA-GEM-14",
-   "title": "Icarus: BLS's 2027 release dates for CPI, the jobs report and PPI",
+   "title": "Icarus: BLS's 2027 PPI release dates, and which 2027 FOMC meetings carry projections",
    "status": "todo",
    "due": "2026-12-06",
-   "items": 36,
+   "items": 20,
    "closed": "",
    "review": "",
    "reopened": "",
    "delivered": null,
    "detail": {
-    "why": "Run 6 gave BEA and Treasury for 2027; the three BLS releases that move markets most are the rest of the calendar.",
+    "why": "Your supplemental 2027 calendar already has CPI, the jobs report and the FOMC dates (right to the Fed's 12 Nov revision). What is left: the PPI dates and the projections flag you marked 'not stated'.",
     "steps": [
-     "Every 2027 date and time for the three releases, with the reference month."
+     "Every 2027 PPI release with its reference month and time, from BLS's own schedule.",
+     "For each 2027 FOMC meeting: whether the Fed's calendar marks it with a Summary of Economic Projections (quote the calendar's footnote)."
     ],
     "make": "icarus_gemini_2027-bls_{YYYYMMDD-HHMM}.json",
     "folder": "Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below",
-    "done": "All 36 (12 x 3), or what BLS has published so far with the page.",
+    "done": "All 12 PPI releases (or what BLS has posted, with the page) and the projections flag on all 8 policy meetings.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
@@ -11883,23 +11919,23 @@
    "where": "Observatory",
    "pid": "observatory",
    "id": "OBS-GEM-07",
-   "title": "Observatory: the rate limits and terms of use for the 21 feeds",
+   "title": "Observatory: the licence and attribution each of the 22 feeds asks for",
    "status": "todo",
    "due": "2026-12-05",
-   "items": 21,
+   "items": 22,
    "closed": "",
    "review": "",
    "reopened": "",
    "delivered": null,
    "detail": {
-    "why": "Run 6 found 21 no-key feeds; before the page polls them it needs each one's limits and terms.",
+    "why": "Your telemetry packet answered the rate limits, User-Agent rules and CORS for the 22 feeds (and filled the CORS gap). The one thing still missing before the page can show their data is what each licence lets it do and the credit line it asks for.",
     "steps": [
-     "For each feed: the documented rate limit (requests per second or day), any required User-Agent or contact header, and the attribution or licence it asks for, from its docs."
+     "For each of the 22 feeds in observatory_gemini_supp-api-telemetry-architecture_20261123-1626.json: the licence by name (CC BY 4.0, CC0, public domain, custom terms), whether a personal site may show and cache the data, and the exact attribution text the provider asks for, quoted from its terms page."
     ],
     "make": "observatory_gemini_feed-terms_{YYYYMMDD-HHMM}.json",
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below",
-    "done": "All 21 feeds.",
+    "done": "All 22 feeds with a licence and an attribution line (or 'not stated' with the terms page you read).",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
@@ -12226,6 +12262,251 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-07",
+   "title": "Kin lineage: Joseph's 1912 crossing, Hamburg to New York, every ship and every spelling (Q1, C9)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "His petition swears Hamburg about 13 Aug 1912 and New York 23 Aug 1912 on a ship whose name reads like 'Columbia'; the only manifest found so far (President Lincoln, 30 Sep 1912) is five weeks off and probably another man; the great-uncle suggests the Kaiserin Auguste Victoria. The arrival manifest is the record most likely to name his parents' village, a relative at home and who he was joining in America.",
+    "steps": [
+     "Rows of kind 'search' for every ship that reached New York from Hamburg (direct, or by Southampton or Cherbourg) from 20 to 26 Aug 1912: ship, line, Hamburg departure, arrival date, and whether it carried steerage.",
+     "Search every spelling with the Ellis Island database's sounds-like option and on Morse's form: Termenas, Terminas, Termenus, Termens, Termen, Termanas, Tirmenas, Tarmenas; given names Juozas, Juozapas, Josef, Joseph, Józef, Osip, Iosif; age 17 to 21; arrivals 1911-1913. One row per search with its result count, also when empty.",
+     "Read every candidate's whole manifest line on both sheets (the list carries on to a second page: height, complexion, hair, eyes, marks, birthplace, nearest relative at home, who he joins and where, who paid, money, earlier visits). Transcribe every column word for word.",
+     "For a candidate that matches, find the same voyage's Hamburg departure list and transcribe his line.",
+     "Settle or narrow C9 in the summary row: which ship, why, and what still disagrees (the petition's 'Columbia', the 13 Aug departure, the 23 Aug arrival)."
+    ],
+    "make": "kin_gemini_lineage-arrival-1912_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every ship from Hamburg arriving 20-26 Aug 1912 listed, every spelling searched (rows even when empty), and either his two-sheet manifest line transcribed with its reference or a closed negative search that says exactly where his record is not.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-08",
+   "title": "Kin lineage: the whole naturalization file, Boston 1919 and Detroit 1916, transcribed (Q2, Q3)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The petition was read only for its headline facts. Its back page (the witnesses' affidavits, the oath, the court's order) and the declaration of intention he filed at Detroit in 1916 are where a soldier's naturalization records his town of birth, his ship and his physical description in his own words.",
+    "steps": [
+     "Transcribe the petition, both sides, every printed and handwritten word: the petitioner's statements, the two witnesses (names, addresses, occupations, how long they knew him), the affidavits, the oath of allegiance, the order of the court and every stamp and file note.",
+     "Read from the petition exactly which court, volume and number his 1916 declaration was filed in; then find that declaration (search rows for every place it could be, also when empty) and transcribe it whole.",
+     "Look for a certificate of arrival filed with the petition (1906 law; soldiers naturalized under the Act of 9 May 1918 were often excused): say which applies, quoting the petition.",
+     "USCIS: find whether a C-file exists for certificate 1229058 (index search) and write, as a 'lead' row, the exact request the owner files (form or online request, fee, every identifier filled in, how long it takes). Do not file it.",
+     "Summary row: every fact the file adds or contradicts, against the seed's events and conflicts."
+    ],
+    "make": "kin_gemini_lineage-naturalization_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "The petition and its back page transcribed whole; the declaration found and transcribed, or every place searched listed with its result; the USCIS request ready for the owner.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-09",
+   "title": "Kin lineage: the family in the 1920, 1930, 1940 and 1950 censuses, read page by page (Q4)",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "No census has been found for Joseph or Della. The 1930 census at 12134 Sobieski Avenue (or wherever they were) and Della with the children in 1940 and 1950 name the owner's great-grandmother and her brothers and sisters: the generation the tree is missing.",
+    "steps": [
+     "1930 first: find the enumeration district for 12134 Sobieski Avenue, Detroit; page through that district's images until the house number; transcribe the whole household, every column (name, relation, home owned or rented, value, radio, sex, race, age, marital status, age at first marriage, school, read and write, birthplace of person, father and mother, mother tongue, immigration year, naturalized, English, occupation, industry, class of worker, at work, veteran and which war). Rows for every page range read.",
+     "1920: Joseph alone (they married in 1922) in Detroit, Cambridge or Brooklyn; Della with her parents Michael and Eva wherever they are (C3 depends on it).",
+     "1940 and 1950: Della (widowed 1935) with the children; transcribe each household whole, including the 1940 supplementary lines if a family member falls on them.",
+     "For each household: the identity argument (Joseph's age, birthplace, immigration year, naturalized, WWI veteran; Della's age and parents' birthplaces).",
+     "Summary row: the children's names and birth years in every census they appear in, and which one is the owner's great-grandmother if the seed or the owner's family names allow it (say how sure)."
+    ],
+    "make": "kin_gemini_lineage-censuses_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "1930 household found and transcribed or the whole district read with page ranges listed; 1920, 1940 and 1950 each searched with results; every household found transcribed whole.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-10",
+   "title": "Kin lineage: Della's side: the 1922 Brooklyn certificate and license, her parents, Malkitus or Matukaitis (Q5, Q14, C3)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Everything about Della comes from one index line and one mention. The 1922 certificate (no. 4615, Kings) and the marriage license affidavit carry both parties' birthplaces, residences and parents in their own words, and settle Malkitus versus Matukaitis.",
+    "steps": [
+     "Open certificate 4615 of 1922, Kings, and transcribe every field (both parties: residence, age, colour, single or widowed, occupation, birthplace, father's name, mother's maiden name, number of marriage; the officiant, the church or place, the witnesses, the date filed).",
+     "Find and transcribe the license affidavit for the same couple (it often adds the parents' birthplaces and the bride's own signature).",
+     "Search for Della's family in 1910 and 1920 under Malkitus, Matukaitis, Malkites, Matukaites, Malkaitis and Matukas (rows for every search); transcribe any household that matches her age (born about 1901) and parents' names.",
+     "Della's later life: a remarriage after 1935, her death and burial (the Mt. Olivet lot is a lead for the owner).",
+     "Summary row: C3 argued from the evidence, with the conclusion and how sure."
+    ],
+    "make": "kin_gemini_lineage-della_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Certificate 4615 transcribed whole (or the exact reason it could not be opened); the license searched; Della's family searched under every spelling with results; C3 argued.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-11",
+   "title": "Kin lineage: his Army service: the VA claim file, the service number and Company A's war (Q10, Q18, C6)",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "His service number is open (C6) and the Army's own record of his service burned in the 1973 NPRC fire. A widow's claim on file XC 756 521 lists the marriage and every child with birth dates; Company A's rosters and the regiment's history fill the two years in France.",
+    "steps": [
+     "Find out who holds file XC 756 521 today and write the exact request (form or letter, address or portal, fee, what to name, how long) as a 'lead' row with the official page quoted. Do not send it.",
+     "Read every roster image in the seed's S-muster at full size and transcribe Joseph's line on each (name, rank, service number, date and place of enlistment, remarks); C6 argued in its own row.",
+     "Find the regiment's published history; transcribe the passages about Company A from November 1917 to July 1919 (with page numbers), especially Langres (Dec 1917) and Chaumont (Apr 1919).",
+     "Victory Medal and France clasp: find the published authority for the clasp and whether a roll or card names him.",
+     "Summary row: his service, month by month, with the source for each step."
+    ],
+    "make": "kin_gemini_lineage-army_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "The VA request ready for the owner; every roster line transcribed; C6 argued; Company A's passages found and transcribed or every catalogue searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-12",
+   "title": "Kin lineage: Telšiai 1893: the Catholic parish birth register, read in the original Russian (Q11)",
+   "status": "todo",
+   "due": "2026-12-15",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "His birth is sworn, not recorded: no baptism has been found. The Telšiai Roman Catholic parish metrical books for 1893 are digitized by the Lithuanian State Historical Archives. A baptism names his parents (with his mother's maiden name), the village and the godparents: the next generation of the tree.",
+    "steps": [
+     "Find the exact archival reference (fond, inventory, file) of the 1893 Telšiai parish births and open it.",
+     "Read every entry from April to June 1893 (both calendars cover the date) and list each one as a row: number, date of birth and of baptism, child's name, parents and village, in Cyrillic as written plus a translation.",
+     "A Termenas child (any spelling): transcribe the whole entry, with the godparents and the priest, and argue identity (date in both calendars, name, later facts).",
+     "If none: search 1892-1895 (his other sworn years) and the neighbouring parishes the register itself names; rows for each.",
+     "Summary row: his parents if found, with the reference; what the surname dictionary says about Termenas around Telšiai."
+    ],
+    "make": "kin_gemini_lineage-telsiai-1893_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "The 1893 register found and April-June read entry by entry (rows), with the result for Termenas; or the exact archival reference and why it could not be read.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-13",
+   "title": "Kin lineage: Detroit and Cambridge in print: city directories 1916-1935 and the June 1935 newspapers (Q7, Q15)",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "City directories give his address and job year by year (Cardoni, Sobieski, the Ford job) and who lived at 180 Howard Street, Cambridge, in 1919. The furnace accident at Ford in June 1935 may be in the Detroit papers and the Lithuanian-American press, with the family named.",
+    "steps": [
+     "Every directory year you can open from 1916 to 1935: search Termenas, Termens, Terminas, Termen; a row per year (found or not), with the whole entry transcribed (name, wife's name in brackets, occupation, employer, address, h or r).",
+     "Cambridge 1918-1920: his entry if any, and every resident listed at 180 Howard Street.",
+     "June 10-20, 1935: every paper you can open; transcribe any accident report, death notice or obituary whole, with issue, page and column.",
+     "Ford: a 'lead' row with the Benson Ford Research Center's own answer (quote its page) on employment and accident records and the owner's request route.",
+     "Summary row: his addresses and jobs by year; what the papers say."
+    ],
+    "make": "kin_gemini_lineage-print_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every Detroit directory year 1916-1935 that is online searched (a row each); Cambridge 1918-1920 read; June 1935 searched in every paper you can open; the Ford route written.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Kin",
@@ -12317,6 +12598,38 @@
     "done": "15 rows checked with the page each opened.",
     "checks": [
      "Claude spot-checks 3 'differ' lines."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-MUS-02",
+   "title": "Kin lineage: a blind second transcription of the six 1917-1919 documents",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "A transcription read by one reader is a single witness. A second reader, working blind, is how genealogy catches misreadings (the eyes, the height, the service number in C4-C6 came from exactly that).",
+    "steps": [
+     "Transcribe each document whole, every printed and handwritten word, as written.",
+     "Then, and only then, compare with the seed's 'read' text and list every difference as a row with which reading you think is right and why."
+    ],
+    "make": "kin_muse_lineage-blind-1919_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "All six documents transcribed whole and compared, every difference listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_muse.md"
    },
@@ -14722,6 +15035,38 @@
     "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD)",
     "shape": "JSON array, one object per row, exactly the fields below",
     "done": "30 lines from at least 6 issuers.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-16",
+   "title": "Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits",
+   "status": "todo",
+   "due": "2026-12-28",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your tax-limits packet got every 2026 headline figure right, including California's $5,900. The book needs the whole tables to compute a year: every bracket, the capital-gains thresholds, AMT, the credits that phase out, and California's schedules for 2027 once FTB posts them.",
+    "steps": [
+     "Federal 2026 and 2027: every bracket edge for Single, Married filing jointly and Head of household; 0/15/20 % capital-gains thresholds; the 3.8 % NIIT thresholds (statutory, not indexed: say so); AMT exemption and phase-out; Child Tax Credit and its phase-out; the earned income credit table for 0-3 children.",
+     "California 2026 and 2027: every bracket edge for Single and Joint, the personal and dependent exemption credits and their phase-out, the mental health services tax threshold.",
+     "Each row from the revenue procedure or FTB page with section or table number; a 2027 California row is 'not stated' until FTB posts it, with the date you checked."
+    ],
+    "make": "midas_gemini_rate-tables-2026-2027_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD)",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every federal table for both years and California's 2026 tables; California 2027 filled once FTB posts it (check again after Dec 20).",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
@@ -20472,6 +20817,168 @@
    "n": 172,
    "date": "2026-11-23",
    "what": "bonus pack, not asked: hub_gemini_supp-a11y-fix-queue, forge_gemini_supp-drift-patch, titan_gemini_supp-discrepancy-audit, hearth_gemini_supp-crc-deck-snow-corr",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 173,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: midas_gemini_supp-2026-2027-tax-limits_20261123-1507.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 174,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: icarus_gemini_supp-2027-fomc-bls-holidays_20261123-1505.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 175,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: icarus_gemini_supp-macro-tax-alpha-model_20261123-1537.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 176,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: apollo_gemini_supp-nutrient-bioavailability-matrix_20261123-1537.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 177,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: bastion_gemini_supp-frazier-park-winter-ops_20261123-1505.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 178,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: aether_gemini_supp-psps-microgrid-reliability_20261123-1537.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 179,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: garage_gemini_supp-mountain-drivetrain-physics_20261123-1625.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 180,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: foundry_gemini_supp-thermal-battery-physics_20261123-1625.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 181,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: hearth_gemini_supp-structural-mechanics-model_20261123-1537.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 182,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: argus_gemini_supp-optical-archival-physics_20261123-1626.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 183,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: piano_gemini_supp-bossa-harmony-analytics_20261123-1626.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 184,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: privacy_gemini_supp-crypto-hardening-matrix_20261123-1626.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 185,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: observatory_gemini_supp-api-telemetry-architecture_20261123-1626.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 186,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: selling_gemini_supp-margin-dimweight-model_20261123-1626.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 187,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: odyssey_gemini_supp-missed-trips-enrichment_20261123-1505.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 188,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: hub_gemini_supp-homepage-{color-type-tokens,painting-framing,perf-cwv-audit,pwa-architecture,search-engine-spec}_20261123-16",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 189,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: hub_gemini_supp-run6-{master-index,schema-qa}_20261123-1xxx.json",
+   "task": "none",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 190,
+   "date": "2026-11-24",
+   "what": "supplemental, offered to the owner: titan_gemini_supp-metallurgy-authentication-physics_20261123-1538.json",
    "task": "none",
    "where": "Prometheus Hub",
    "score": 9.0

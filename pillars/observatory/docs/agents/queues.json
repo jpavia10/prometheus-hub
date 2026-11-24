@@ -441,20 +441,20 @@
     {
      "state": "now",
      "added": "2026-11-23",
-     "why": "Run 6 found 21 no-key feeds; before the page polls them it needs each one's limits and terms.",
+     "why": "Your telemetry packet answered the rate limits, User-Agent rules and CORS for the 22 feeds (and filled the CORS gap). The one thing still missing before the page can show their data is what each licence lets it do and the credit line it asks for.",
      "unlocks": "Observatory polls each feed no faster than it allows, and credits it as asked.",
      "inputs": [
       "Your file observatory_gemini_data-apis_20261123-1115.json (the 21 feeds and their docs pages)"
      ],
      "steps": [
-      "For each feed: the documented rate limit (requests per second or day), any required User-Agent or contact header, and the attribution or licence it asks for, from its docs."
+      "For each of the 22 feeds in observatory_gemini_supp-api-telemetry-architecture_20261123-1626.json: the licence by name (CC BY 4.0, CC0, public domain, custom terms), whether a personal site may show and cache the data, and the exact attribution text the provider asks for, quoted from its terms page."
      ],
      "deliver": {
       "file": "observatory_gemini_feed-terms_{YYYYMMDD-HHMM}.json",
       "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
       "shape": "JSON array, one object per row, exactly the fields below"
      },
-     "count": 21,
+     "count": 22,
      "fields": [
       {
        "name": "n",
@@ -464,37 +464,37 @@
       {
        "name": "subject",
        "type": "text",
-       "rule": ""
+       "rule": "the Observatory subject"
       },
       {
        "name": "endpoint",
-       "type": "url",
-       "rule": "as in run 6"
-      },
-      {
-       "name": "rate_limit",
        "type": "text",
-       "rule": "as documented, or 'not stated'"
-      },
-      {
-       "name": "header",
-       "type": "text",
-       "rule": "required header, or 'none stated'"
+       "rule": "the feed, as in your packet"
       },
       {
        "name": "licence",
        "type": "text",
-       "rule": "as documented"
+       "rule": "its name"
+      },
+      {
+       "name": "may_cache",
+       "type": "text",
+       "rule": "yes, no or not stated, with the clause"
+      },
+      {
+       "name": "attribution",
+       "type": "text",
+       "rule": "the credit line it asks for, word for word"
       },
       {
        "name": "url",
        "type": "url",
-       "rule": "the page you opened, on the official site"
+       "rule": "the terms or licence page you opened"
       },
       {
        "name": "quote",
        "type": "text",
-       "rule": "copied word for word from that page, 300 characters at most"
+       "rule": "copied word for word, 300 characters at most"
       }
      ],
      "self_check": [
@@ -504,7 +504,7 @@
       "No row is a copy of another with the names changed.",
       "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
      ],
-     "done_when": "All 21 feeds.",
+     "done_when": "All 22 feeds with a licence and an attribution line (or 'not stated' with the terms page you read).",
      "checks": [
       "Claude opens 12 rows at random against their pages and redoes every 'math' field."
      ],
@@ -517,7 +517,7 @@
       "a guess written as a fact (write 'not stated' and name the page you checked)"
      ],
      "id": "OBS-GEM-07",
-     "title": "Observatory: the rate limits and terms of use for the 21 feeds",
+     "title": "Observatory: the licence and attribution each of the 22 feeds asks for",
      "due": "2026-12-05"
     }
    ]

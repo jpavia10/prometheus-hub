@@ -214,6 +214,37 @@ with sync_playwright() as p:
               ok, f"regions {a1['regs']}, {a1['stats'][0]} places in {a1['stats'][1]} countries, opens on {a1['shown']} with {a1['dots']} places; Manila -> {a2['name']!r} with {a2['visits']} visits; "
                  f"April 2024 lit: {a3['on']} places lit, {a3['off']} dimmed; a Europe place -> trip file {a4}; globe {g1}; a tap redraws it: {before != after}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("ODY-3", "Every place he has been", False, "did not finish: " + str(e)[:200])
+
+    # KIN-2: the family tree is a research instrument: every assertion classified and sourced, a tap opens a person's dossier, the records open, GEDCOM 7 exports
+    try:
+        ck = b.new_context(viewport={"width": 384, "height": 832}); pk = ck.new_page(); bk = []; pk.on("pageerror", lambda e: bk.append(str(e)[:100]))
+        pk.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); pk.wait_for_selector("#ln-tree .ln-node", timeout=15000); pk.wait_for_timeout(700)
+        k1 = pk.evaluate("""() => { const L = window.KIN_LINEAGE, ids = new Set(L.sources.map((s) => s.id)), as = L.events.flatMap((e) => e.assert);
+          return { people: L.people.length, events: L.events.length, sources: L.sources.length, conflicts: L.conflicts.length, questions: L.questions.length,
+            nodes: document.querySelectorAll('#ln-tree .ln-node').length, lit: document.querySelectorAll('#ln-tree .ln-node.lit').length,
+            orphan: as.filter((a) => !ids.has(a.src)).length, unclassed: as.filter((a) => !['primary','secondary','undetermined'].includes(a.info) || !['direct','indirect','negative'].includes(a.ev)).length,
+            badkind: L.sources.filter((s) => !['original','derivative','authored'].includes(s.kind) || !s.cite).length, noarg: L.conflicts.filter((c) => !c.argument && c.status !== 'open').length,
+            noconc: L.events.filter((e) => !e.conclusion || !['proven','probable','possible'].includes(e.confidence)).length,
+            first: document.querySelector('#app section.grid > .glass h2').textContent }; }""")
+        pk.locator('#ln-tree .ln-node[data-id="P-della"]').click(); pk.wait_for_timeout(300)
+        k2 = pk.evaluate("() => ({ who: document.querySelector('#ln-dossier h3').textContent, sel: (document.querySelector('#ln-tree .ln-node.sel') || {}).dataset?.id })")
+        pk.evaluate("KIN_LINEAGE_UI.pick('P-joseph')"); pk.wait_for_timeout(300)
+        k3 = pk.evaluate("() => ({ who: document.querySelector('#ln-dossier h3').textContent, ev: document.querySelectorAll('#ln-dossier .ln-ev').length, docs: document.querySelectorAll('#ln-dossier .ln-doc').length, maps: document.querySelectorAll('#ln-dossier .jr svg').length, cons: document.querySelectorAll('#ln-dossier .ln-con').length })")
+        pk.locator('#ln-dossier .ln-doc').first.click(); pk.wait_for_timeout(400)
+        k4 = pk.evaluate("() => { const v = document.querySelector('.ln-view'), im = v && v.querySelector('img'); return v ? { img: !!(im && im.complete && im.naturalWidth > 600), cap: (v.querySelector('.ln-vcap') || {}).textContent.length } : null; }")
+        pk.keyboard.press("Escape"); pk.wait_for_timeout(200)
+        k5 = pk.evaluate("() => { const g = KIN_LINEAGE_UI.gedcom(), L = g.split(/\\r?\\n/); return { head: L[0], vers: L.includes('2 VERS 7.0'), indi: L.filter((l) => / INDI$/.test(l)).length, fam: L.filter((l) => / FAM$/.test(l)).length, sour: L.filter((l) => / SOUR$/.test(l)).length, end: L.filter(Boolean).pop(), open: !!document.querySelector('.ln-view') }; }")
+        wide = pk.evaluate("document.documentElement.scrollWidth")
+        ok = (k1["people"] >= 10 and k1["events"] >= 19 and k1["sources"] >= 16 and k1["conflicts"] >= 9 and k1["nodes"] == k1["people"] and k1["lit"] >= 5
+              and not k1["orphan"] and not k1["unclassed"] and not k1["badkind"] and not k1["noarg"] and not k1["noconc"] and k1["first"] == "The family tree"
+              and k2["who"].startswith("Della") and k2["sel"] == "P-della" and k3["who"].startswith("Joseph") and k3["ev"] == k1["events"] and k3["docs"] >= 20 and k3["maps"] == 2 and k3["cons"] >= 6
+              and k4 and k4["img"] and k4["cap"] > 40 and k5["head"] == "0 HEAD" and k5["vers"] and k5["indi"] == k1["people"] and k5["fam"] >= 6 and k5["sour"] == k1["sources"] and k5["end"] == "0 TRLR" and not k5["open"]
+              and wide <= 384 and not bk)
+        proof("KIN-2", "The family tree is a research instrument: every assertion has a source and its three classifications, every event a conclusion and a confidence, a tap opens the person's dossier, a record opens full size, and the tree exports as GEDCOM 7",
+              ok, f"{k1['people']} people ({k1['nodes']} on the tree, {k1['lit']} on your line), {k1['events']} events, {k1['sources']} sources, {k1['conflicts']} conflicts, {k1['questions']} questions; unsourced {k1['orphan']}, unclassified {k1['unclassed']}, sources without kind or citation {k1['badkind']}, settled conflicts without argument {k1['noarg']}, events without conclusion {k1['noconc']}; first tab {k1['first']!r}; "
+                 f"tap -> {k2['who']!r}; Joseph: {k3['ev']} events, {k3['docs']} records, {k3['maps']} maps, {k3['cons']} conflicts; record viewer {k4}; GEDCOM {k5}; page {wide}px" + (f"; errors {bk[:2]}" if bk else ""))
+        ck.close()
+    except Exception as e: proof("KIN-2", "The family tree", False, "did not finish: " + str(e)[:200])
     # WORLD-1 (2026-11-23, owner chose "living painted header"; all painted pillars since the rollout): a pillar opens on its own painting, alive (kit/world.js):
     # the canvas is drawn, the header takes its accent from the painting, the page never scrolls sideways; Athenaeum keeps its own sky
     # (no painting behind it); arriving from the menu's dive the painting starts pushed in and settles back.

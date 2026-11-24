@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 02:14 UTC",
+ "updated": "2026-11-24 03:00 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -129,9 +129,9 @@
    "ai": "gemini",
    "ai_name": "Gemini",
    "id": "OBS-GEM-07",
-   "title": "Observatory: the rate limits and terms of use for the 21 feeds",
+   "title": "Observatory: the licence and attribution each of the 22 feeds asks for",
    "state": "now",
-   "count": 21
+   "count": 22
   },
   {
    "due": "2026-12-05",
@@ -239,9 +239,9 @@
    "ai": "gemini",
    "ai_name": "Gemini",
    "id": "ICA-GEM-14",
-   "title": "Icarus: BLS's 2027 release dates for CPI, the jobs report and PPI",
+   "title": "Icarus: BLS's 2027 PPI release dates, and which 2027 FOMC meetings carry projections",
    "state": "now",
-   "count": 36
+   "count": 20
   },
   {
    "due": "2026-12-06",
@@ -476,6 +476,61 @@
   },
   {
    "due": "2026-12-08",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-31",
+   "title": "Hearth: the deck's members checked from AWC's own NDS documents, every factor and every step shown",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-07",
+   "title": "Kin lineage: Joseph's 1912 crossing, Hamburg to New York, every ship and every spelling (Q1, C9)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-08",
+   "title": "Kin lineage: the whole naturalization file, Boston 1919 and Detroit 1916, transcribed (Q2, Q3)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-10",
+   "title": "Kin lineage: Della's side: the 1922 Brooklyn certificate and license, her parents, Malkitus or Matukaitis (Q5, Q14, C3)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "KIN-MUS-02",
+   "title": "Kin lineage: a blind second transcription of the six 1917-1919 documents",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-08",
    "pillar": "odyssey",
    "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
@@ -497,6 +552,50 @@
    "count": 0
   },
   {
+   "due": "2026-12-10",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-09",
+   "title": "Kin lineage: the family in the 1920, 1930, 1940 and 1950 censuses, read page by page (Q4)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-10",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-11",
+   "title": "Kin lineage: his Army service: the VA claim file, the service number and Company A's war (Q10, Q18, C6)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-10",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-13",
+   "title": "Kin lineage: Detroit and Cambridge in print: city directories 1916-1935 and the June 1935 newspapers (Q7, Q15)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-15",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-12",
+   "title": "Kin lineage: Telšiai 1893: the Catholic parish birth register, read in the original Russian (Q11)",
+   "state": "now",
+   "count": 0
+  },
+  {
    "due": "2026-12-16",
    "pillar": "games",
    "pillar_name": "Ludus Arcade",
@@ -504,6 +603,17 @@
    "ai_name": "Gemini",
    "id": "GAM-GEM-08",
    "title": "Games: GTA VI's updates and fixes through December 15",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-28",
+   "pillar": "midas",
+   "pillar_name": "Midas Ledger",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MID-GEM-16",
+   "title": "Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits",
    "state": "now",
    "count": 0
   },

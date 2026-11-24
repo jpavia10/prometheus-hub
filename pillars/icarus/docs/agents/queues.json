@@ -636,20 +636,21 @@
     {
      "state": "now",
      "added": "2026-11-23",
-     "why": "Run 6 gave BEA and Treasury for 2027; the three BLS releases that move markets most are the rest of the calendar.",
+     "why": "Your supplemental 2027 calendar already has CPI, the jobs report and the FOMC dates (right to the Fed's 12 Nov revision). What is left: the PPI dates and the projections flag you marked 'not stated'.",
      "unlocks": "Icarus's 2027 calendar is complete.",
      "inputs": [
       "bls.gov/schedule (2027 release calendar for CPI, Employment Situation, PPI)"
      ],
      "steps": [
-      "Every 2027 date and time for the three releases, with the reference month."
+      "Every 2027 PPI release with its reference month and time, from BLS's own schedule.",
+      "For each 2027 FOMC meeting: whether the Fed's calendar marks it with a Summary of Economic Projections (quote the calendar's footnote)."
      ],
      "deliver": {
       "file": "icarus_gemini_2027-bls_{YYYYMMDD-HHMM}.json",
       "folder": "Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/",
       "shape": "JSON array, one object per row, exactly the fields below"
      },
-     "count": 36,
+     "count": 20,
      "fields": [
       {
        "name": "n",
@@ -664,12 +665,12 @@
       {
        "name": "event",
        "type": "text",
-       "rule": "CPI, Employment Situation or PPI, with its month"
+       "rule": "PPI with its month, or FOMC with its dates"
       },
       {
-       "name": "time",
+       "name": "time_or_flag",
        "type": "text",
-       "rule": "08:30 ET"
+       "rule": "08:30 ET for PPI; 'projections' or 'no projections' for FOMC"
       },
       {
        "name": "url",
@@ -689,7 +690,7 @@
       "No row is a copy of another with the names changed.",
       "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
      ],
-     "done_when": "All 36 (12 x 3), or what BLS has published so far with the page.",
+     "done_when": "All 12 PPI releases (or what BLS has posted, with the page) and the projections flag on all 8 policy meetings.",
      "checks": [
       "Claude opens 12 rows at random against their pages and redoes every 'math' field."
      ],
@@ -702,7 +703,7 @@
       "a guess written as a fact (write 'not stated' and name the page you checked)"
      ],
      "id": "ICA-GEM-14",
-     "title": "Icarus: BLS's 2027 release dates for CPI, the jobs report and PPI",
+     "title": "Icarus: BLS's 2027 PPI release dates, and which 2027 FOMC meetings carry projections",
      "due": "2026-12-06"
     }
    ]

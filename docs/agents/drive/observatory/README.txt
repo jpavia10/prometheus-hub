@@ -8,43 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Observatory right now.
 
 ## Gemini
 
-Updated 2026-11-24 02:14 UTC · 1 open in this pillar.
+Updated 2026-11-24 03:00 UTC · 1 open in this pillar.
 
 
-- OBS-GEM-07 · Observatory: the rate limits and terms of use for the 21 feeds · due 2026-12-05
-    make: observatory_gemini_feed-terms_{YYYYMMDD-HHMM}.json · how many: 21 · done when: All 21 feeds.
+- OBS-GEM-07 · Observatory: the licence and attribution each of the 22 feeds asks for · due 2026-12-05
+    make: observatory_gemini_feed-terms_{YYYYMMDD-HHMM}.json · how many: 22 · done when: All 22 feeds with a licence and an attribution line (or 'not stated' with the terms page you read).
 
 ## Muse
 
-Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Observatory right now.
 
 ## ChatGPT
 
-Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Observatory right now.
 
 ## Argon
 
-Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Observatory right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Observatory right now.

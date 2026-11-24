@@ -2,8 +2,69 @@
 
 # Kin · homework for Muse
 
-Updated 2026-11-24 02:14 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-24 03:00 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Muse in Kin right now. Check your HOMEWORK doc for the other pillars.
+## 1. KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** A transcription read by one reader is a single witness. A second reader, working blind, is how genealogy catches misreadings (the eyes, the height, the service number in C4-C6 came from exactly that).
+
+**What it unlocks:** Every field of the 1917-1919 records on the tree is read twice; disagreements become conflicts the tree shows.
+
+**Read first:**
+- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (open it only after your own transcriptions are done).
+- The images draft-1917, enlistment-1919, discharge-1919, naturalization-cert-1919, naturalization-petition-1919, naturalization-oath-1919 at full size (do not read the seed's 'read' text first: that is the point)
+
+**Do this:**
+1. Transcribe each document whole, every printed and handwritten word, as written.
+2. Then, and only then, compare with the seed's 'read' text and list every difference as a row with which reading you think is right and why.
+
+**Make:** `kin_muse_lineage-blind-1919_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Before you save, check every one of these yourself:**
+- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
+- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
+- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
+- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
+- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
+- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
+
+**Done when:** All six documents transcribed whole and compared, every difference listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
+- Claude repeats three 'not found' searches and three classification calls at random.
+
+**Not done (sent back) if:**
+- a record presented as his or hers without the identifiers compared
+- a transcription that paraphrases, shortens or 'cleans' the record
+- a fact whose reference is too vague to find the same image again
+- searches that found nothing left out
+- an index or abstract labelled 'original'
+- a guess written as a fact (write 'not stated' or 'illegible')
+- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
