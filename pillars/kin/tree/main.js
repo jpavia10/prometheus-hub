@@ -51,7 +51,7 @@ function makeWorld() {
     const c = T.byId[lk.child], q = T.byId[lk.parent];
     const yy = clamp(c.y, q.y, yOf(q.dy)), A = new THREE.Vector3(c.x, c.y, c.z), B = new THREE.Vector3(q.x, yy, q.z);
     const mix = col(q).map((v, i) => v * 0.65 + col(c)[i] * 0.35);
-    lines.push({ pts: bridge(A, B, 0.35 + A.distanceTo(B) * 0.08), col: mix, a: q.ghost ? 0.45 : 1, kind: lk.unsure || q.ghost ? 2 : 1, w: 3.1, g: c.gen != null ? c.gen : 1, life: [c.by, c.by], child: c.id, parent: q.id, unsure: lk.unsure });
+    lines.push({ pts: bridge(A, B, 0.35 + A.distanceTo(B) * 0.08), col: mix, a: q.ghost ? 0.45 : lk.cert != null ? 0.3 + 0.7 * (lk.cert / 100) : 0.8, kind: lk.unsure || q.ghost ? 2 : 1, w: 3.1, g: c.gen != null ? c.gen : 1, life: [c.by, c.by], child: c.id, parent: q.id, unsure: lk.unsure });
   }
   for (const id of T.stubs) {
     const n = T.byId[id], k = (n.r + RS * 0.85) / Math.max(n.r, 0.01);
@@ -363,7 +363,7 @@ function dossier(id) {
     <header class="tv-dh">
       <div class="tv-face s-${n.status}${n.ghost ? " ghost" : ""}">${face ? `<img src="${DOCS + face}.webp" alt="">` : `<span>${esc(n.id === L.root ? "You" : initials(p))}</span>`}</div>
       <div><p class="tv-rel">${esc(T.rel(id))}</p><h2>${esc(n.id === L.root ? nm(p) || "You" : known(p) ? nm(p) : p.placeholder)}</h2>
-      ${relNote}<p class="tv-life">${esc(lifeLine(n))}</p><span class="tv-st s-${n.status}">${esc(st.t)}</span></div>
+      ${relNote}<p class="tv-life">${esc(lifeLine(n))}</p>${n.cert ? `<p class="tv-cert" title="${esc(n.cert.basis)}"><i style="--p:${n.cert.pct}%"></i>${n.cert.pct}% sure of ${n.id === L.root ? "this" : "the link to " + (n.p.sex === "F" ? "her" : "his") + " parents"}${n.cert.gemini ? ` <small>(Gemini: ${n.cert.gemini}%)</small>` : ""}</p>` : ""}<span class="tv-st s-${n.status}">${esc(st.t)}</span></div>
       <button type="button" class="tv-x" data-close aria-label="Close">×</button>
     </header>
     ${p.summary ? `<p class="tv-sum">${esc(p.summary)}</p>` : ""}${p.note ? `<p class="tv-note">${esc(p.note)}</p>` : ""}
@@ -616,6 +616,7 @@ function research() {
     <div class="tv-kpis"><div><b>${people.length}</b><span>people named</span></div><div><b>${cnt("proven")}</b><span>proven</span></div><div><b>${cnt("probable")}</b><span>probable</span></div><div><b>${L.sources.length}</b><span>sources</span></div><div><b>${open.length}</b><span>open conflicts</span></div></div>
     <section class="tv-sec"><h3>How far back the names go</h3><div class="tv-comp">${comp.map((r) => `<div><span>${["", "Parents", "Grandparents", "Great-grandparents", "2× great", "3× great", "4× great", "5× great"][r.g]}</span><i><em style="width:${((r.have / r.all) * 100).toFixed(1)}%"></em></i><b>${r.have} of ${r.all}</b></div>`).join("")}</div></section>
     ${own.length ? `<section class="tv-sec"><h3>Only you can answer</h3><ul class="tv-qs">${own.map((q) => `<li class="own">${q.person && T.byId[q.person] ? famChip(q.person) : ""}${esc(q.q)}</li>`).join("")}</ul></section>` : ""}
+    <section class="tv-sec"><h3>How sure each link is</h3><p class="tv-note">For each person, how sure the link to their parents is. 90 and over: primary records agree; 70 to 89: indexes and consensus; 40 to 69: a working hypothesis; under 40: disputed. Where Gemini scored a link higher, its figure is shown too.</p><div class="tv-certs">${T.nodes.filter((n) => n.cert && n.id !== L.root).sort((a, b) => (a.gen ?? 99) - (b.gen ?? 99) || b.cert.pct - a.cert.pct).map((n) => `<button type="button" data-go="${n.id}" class="tv-certrow"><b>${esc(nm(n.p))}</b><i><em style="width:${n.cert.pct}%" class="${n.cert.pct >= 90 ? "hi" : n.cert.pct >= 70 ? "mid" : n.cert.pct >= 40 ? "lo" : "no"}"></em></i><span>${n.cert.pct}%${n.cert.gemini ? ` <small>G ${n.cert.gemini}</small>` : ""}</span><small class="why">${esc(n.cert.basis)}</small></button>`).join("")}</div></section>
     <section class="tv-sec"><h3>Where the evidence disagrees</h3>${L.conflicts.map((c) => `<details class="tv-con s-${c.status}"><summary><b>${esc(c.id)} · ${esc(c.q)}</b><span>${esc(c.status)}: ${esc(c.conclusion)}</span></summary><p>${esc(c.argument)}</p>${c.person && T.byId[c.person] ? famChip(c.person) : ""}</details>`).join("")}</section>
     <section class="tv-sec"><h3>Research questions</h3><ul class="tv-qs">${L.questions.filter((q) => q.task !== "owner").map((q) => `<li>${q.person && T.byId[q.person] ? famChip(q.person) : ""}${esc(q.q)}</li>`).join("")}</ul></section>
     <section class="tv-sec"><h3>Research log</h3><ol class="tv-log">${(L.log || []).map((x) => `<li><time>${esc(x.date)}</time> <b>${esc(x.by)}</b> · ${esc(x.where)}: ${esc(x.terms)} <em class="r-${esc(String(x.result).replace(/\s/g, "-"))}">${esc(x.result)}</em>${x.note ? `<p>${esc(x.note)}</p>` : ""}</li>`).join("")}</ol></section>

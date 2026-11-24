@@ -2,7 +2,7 @@
 
 # Kin · homework for Muse
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -68,3 +68,58 @@ Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github
 - an index or abstract labelled 'original'
 - a guess written as a fact (write 'not stated' or 'illegible')
 - a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
+
+## 2. KIN-MUS-03 · Kin: second reader on the 1950 census households (blind)
+
+**Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
+
+**Why:** A second, independent reading of the four 1950 households that KIN-GEM-28 transcribes: differences become conflicts (the method's section 6).
+
+**What it unlocks:** The 1950 lines become proven or corrected.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The images Gemini saved (1950 census: Pavia ED 85-1999 sheet 9; Sanders ED 82-264 and 84-92; the Rimsha household once found).
+
+**Do this:**
+1. Transcribe each household from the image without reading Gemini's transcription first.
+2. One row per person per household, every column.
+
+**Make:** `kin_muse_lineage-1950-blind_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Every household line transcribed blind.
+
+**How Claude checks it:**
+- Claude compares the two transcriptions line by line.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out

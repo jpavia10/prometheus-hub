@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "odyssey",
  "agents": [
   {
@@ -1474,7 +1474,7 @@
      "review": "Scored 8/10 (#171)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Your run 6 cards are in Odyssey (12 of them; a park or a dam shows no population). These 10 stops still have no card; GAS and BAL are covered by your San Diego card, Grant Grove by Kings Canyon.",
      "unlocks": "Every stop on the map opens its card.",
@@ -1586,10 +1586,11 @@
      ],
      "id": "ODY-GEM-18",
      "title": "Odyssey: a card for the 10 stops still without one (the photo trips)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Run 6 found six trips the first search missed; to put them on the map and the globe each needs its stops in order with coordinates.",
      "unlocks": "The six trips become trips on record: on the globe, the atlas and the trip files.",
@@ -1697,10 +1698,11 @@
      ],
      "id": "ODY-GEM-19",
      "title": "Odyssey: the stops of the six trips your run 6 found, in order, with where they are",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Your day-by-day files became the day logs in every trip file; the six new trips need the same.",
      "unlocks": "Each new trip's file gets its day-by-day log.",
@@ -1791,10 +1793,11 @@
      ],
      "id": "ODY-GEM-20",
      "title": "Odyssey: the six new trips day by day",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Every trip file opens on its photos; Claude checks each pick by eye and crops it, so it needs the strongest few per day.",
      "unlocks": "The six trips open on their own photo journeys.",
@@ -1876,10 +1879,11 @@
      ],
      "id": "ODY-GEM-21",
      "title": "Odyssey: the best photos of the six new trips",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "The atlas and the trip files show each landmark with a fact from its own official page; the six new trips have none yet.",
      "unlocks": "Landmarks for Zion, Miami Beach, Los Angeles, Toledo and the rest.",
@@ -1991,10 +1995,11 @@
      ],
      "id": "ODY-GEM-22",
      "title": "Odyssey: the landmarks in the six new trips' photos, with official facts",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Run 6's park cards left 5 numbers 'not stated'; nps.gov gives them on each park's 'Park Statistics' or 'Basic Information' page.",
      "unlocks": "All six park cards complete.",
@@ -2064,10 +2069,11 @@
      ],
      "id": "ODY-GEM-23",
      "title": "Odyssey: the park card gaps (Sequoia and Kings Canyon areas, Kings Canyon's heights, Grand Canyon's low point)",
-     "due": "2026-12-03"
+     "due": "2026-12-03",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "In Feb 2026 Joseph said he needs to visit again this year; the trip file should hold what the border needs before a date is set.",
      "unlocks": "A Philippines trip filed in Odyssey shows its entry checklist.",
@@ -2137,10 +2143,11 @@
      ],
      "id": "ODY-GEM-24",
      "title": "Odyssey: going back to the Philippines in 2026-27: entry rules for a US citizen, from the official pages",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Joseph weighed Siargao and Boracay against El Nido in Jul 2024; a next trip can start from what each takes.",
      "unlocks": "Odyssey can plan a second island beside Manila.",
@@ -2224,10 +2231,11 @@
      ],
      "id": "ODY-GEM-25",
      "title": "Odyssey: Siargao and Boracay, the two places weighed in July 2024, from the official tourism pages",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Odyssey plans the next trip as well as the past ones; the family lives at the top of the Grapevine, and most weekends start there.",
      "unlocks": "A 'weekend from home' list on Odyssey's plan view, each a tap from a new trip file.",
@@ -2333,10 +2341,11 @@
      ],
      "id": "ODY-GEM-26",
      "title": "Odyssey: 20 weekend trips from Frazier Park, with real drive times and what each needs booked",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Five of the trips on record went to national parks; 2027 trips should know which need a timed-entry reservation and whether the annual pass pays for itself.",
      "unlocks": "Odyssey shows the pass and booking rules on any trip to a park.",
@@ -2411,6 +2420,70 @@
      ],
      "id": "ODY-GEM-27",
      "title": "Odyssey: national park passes and reservations for 2027 (the parks Joseph has been to and the ones nearby)",
+     "due": "2026-12-08",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Each trip opens on its own photos; these seven are empty.",
+     "unlocks": "Every trip has its photos.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/odyssey/",
+      "His Drive photo archive (Takeout and phone uploads)"
+     ],
+     "steps": [
+      "For each trip: the photos taken there (by the EXIF date and place), Drive file ids, 20 at most per trip, the best first."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_trip-photos_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "trip",
+       "type": "text",
+       "rule": "trip id"
+      },
+      {
+       "name": "drive_id",
+       "type": "text",
+       "rule": "file id"
+      },
+      {
+       "name": "taken",
+       "type": "text",
+       "rule": "EXIF date and place"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Each of the seven trips searched.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "ODY-GEM-28",
+     "title": "Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive",
      "due": "2026-12-08"
     }
    ]

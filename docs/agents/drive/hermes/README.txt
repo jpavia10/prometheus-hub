@@ -8,45 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Hermes Post right now.
 
 ## Gemini
 
-Updated 2026-11-24 03:14 UTC · 2 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 1 open in this pillar.
 
 
-- HER-GEM-13 · Hermes: the official fraud and customer-service phone numbers for billers 1-50 · due 2026-12-06
-    make: hermes_gemini_biller-phones-1_{YYYYMMDD-HHMM}.json · how many: 50 · done when: Billers 1-50.
-- HER-GEM-14 · Hermes: the official fraud and customer-service phone numbers for billers 51-97 · due 2026-12-07
-    make: hermes_gemini_biller-phones-2_{YYYYMMDD-HHMM}.json · how many: 47 · done when: Billers 51-97.
+- HER-GEM-15 · Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14 · due 2026-12-08
+    make: hermes_gemini_senders_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every biller.
 
 ## Muse
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Hermes Post right now.
 
 ## ChatGPT
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Hermes Post right now.
 
 ## Argon
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Hermes Post right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Hermes Post right now.

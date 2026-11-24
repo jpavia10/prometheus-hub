@@ -2,26 +2,25 @@
 
 # Forge · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. FOR-GEM-07 · Forge: the DONE markers from Nov 23 to Dec 7 against the Forge
+## 1. FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge
 
 **Due:** 2026-12-08 · **State:** now
 
-**Why:** FOR-GEM-06 showed 50 deliveries the Forge never saw; Claude now searches Drive at every intake, and this checks it worked.
+**Why:** The same check as FOR-GEM-07, for the next fortnight.
 
-**What it unlocks:** Proof the Forge and Drive agree.
+**What it unlocks:** The Forge never shows done work as open.
 
 **Read first:**
-- Every DONE_*.json in the hub's and Titan's Drive incoming folders created 2026-11-23 to 2026-12-07
-- The live Forge https://jpavia10.github.io/prometheus-hub/pillars/forge/
+- https://jpavia10.github.io/prometheus-hub/pillars/forge/
 
 **Do this:**
-1. For each marker: the task, the date, and what the Forge shows for it.
+1. Every DONE_ marker you leave from Nov 24 to Dec 7: does the Forge show the task as delivered or done?
 
-**Make:** `forge_gemini_done-markers-2_{YYYYMMDD-HHMM}.json`
+**Make:** `forge_gemini_done-markers-3_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -29,27 +28,19 @@ Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `task` (text): 
-- `marker_date` (date): YYYY-MM-DD
-- `forge_status` (text): as the Forge shows it
-- `agree` (text): yes or no
+- `task` (text): id
+- `marker_drive_id` (text): the marker's id
+- `forge_says` (text): what the Forge shows
+- `agree` (boolean): 
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** Every marker in the window.
+**Done when:** Every marker checked.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

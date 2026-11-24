@@ -8,43 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Ludus Arcade right now.
 
 ## Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 1 open in this pillar.
 
 
-- GAM-GEM-08 · Games: GTA VI's updates and fixes through December 15 · due 2026-12-16
-    make: games_gemini_gta6-updates_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every post in the window.
+- GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
+    make: games_gemini_gta6-updates-2_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every update listed.
 
 ## Muse
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Ludus Arcade right now.
 
 ## ChatGPT
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Ludus Arcade right now.
 
 ## Argon
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Ludus Arcade right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Ludus Arcade right now.

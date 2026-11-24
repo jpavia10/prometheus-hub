@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-20",
+ "updated": "2026-11-24",
  "pillar": "hub",
  "agents": [
   {
@@ -1277,7 +1277,7 @@
      "review": "Scored 10/10 (#137)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Your fix queue ranked 32 items high; Claude is fixing them in the shared kit and deck styles. Each needs re-measuring on the live site.",
      "unlocks": "The fix queue closes item by item.",
@@ -1343,10 +1343,11 @@
      ],
      "id": "HUB-GEM-19",
      "title": "Hub: re-measure the 32 high-priority accessibility items after Claude's fixes",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "The realm (the Orbit) puts 27 labels on one painting from art/realm/places.json; a label off its building sends a tap to the wrong place.",
      "unlocks": "Claude moves every label that misses.",
@@ -1418,10 +1419,11 @@
      ],
      "id": "HUB-GEM-20",
      "title": "Hub: does every place in the realm painting sit under its own label?",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Your painting-focus file found 11 pillar headers whose crop misses the subject; Claude is moving each crop (kit/world.js FOCUS).",
      "unlocks": "Every pillar opens on its own subject.",
@@ -1492,7 +1494,182 @@
      ],
      "id": "HUB-GEM-21",
      "title": "Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Owner, 2026-11-24: the home is a full-screen town with real-time weather and a day-night cycle. The town is drawn live in light and colour; painted versions of the same view at dawn, midday, golden hour, dusk and night, and in rain, fog and snow, make it photographic.",
+     "unlocks": "The home shows the painted town for the real hour and the real weather.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/",
+      "https://jpavia10.github.io/prometheus-hub/art/worlds/world_home.webp (the town as it is now: keep its composition exactly)"
+     ],
+     "steps": [
+      "Nano Banana Pro image edits of the home painting, same framing and layout, every building where it is: dawn, midday, golden hour, dusk, night (lit windows, stars), plus rain, fog, snow and storm versions of midday and night.",
+      "2560 px wide, webp, no text; one row per image."
+     ],
+     "deliver": {
+      "file": "hub_gemini_town-hours_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1 ..."
+      },
+      {
+       "name": "variant",
+       "type": "text",
+       "rule": "dawn, midday, golden, dusk, night, rain-day, rain-night, fog-day, fog-night, snow-day, snow-night, storm-night"
+      },
+      {
+       "name": "drive_id",
+       "type": "text",
+       "rule": "the image's file id"
+      },
+      {
+       "name": "prompt",
+       "type": "text",
+       "rule": "the exact prompt used"
+      }
+     ],
+     "done_when": "12 variants, each aligned with the original (Claude overlays them).",
+     "checks": [
+      "Claude overlays each variant on the original: buildings must line up."
+     ],
+     "rejected_if": [
+      "an image whose layout does not match the original",
+      "text or watermarks in the image"
+     ],
+     "id": "HUB-GEM-22",
+     "title": "Hub: paint the town for every hour and every weather (the home is now the town)",
+     "due": "2026-12-01"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The town takes live weather from Open-Meteo (WMO weather codes). Each code needs a look and a sentence.",
+     "unlocks": "Every weather reads right in the town and the widget.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/",
+      "https://open-meteo.com/en/docs (WMO weather interpretation codes)"
+     ],
+     "steps": [
+      "For each WMO code Open-Meteo returns: the plain words, the sky (cloud cover, light), what falls (rain, drizzle, snow, hail) and how hard, visibility, and what changes by night."
+     ],
+     "deliver": {
+      "file": "hub_gemini_weather-scenes_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 28,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1 ..."
+      },
+      {
+       "name": "code",
+       "type": "number",
+       "rule": "WMO code"
+      },
+      {
+       "name": "words",
+       "type": "text",
+       "rule": "plain words"
+      },
+      {
+       "name": "sky",
+       "type": "text",
+       "rule": "cloud and light"
+      },
+      {
+       "name": "falls",
+       "type": "text",
+       "rule": "what and how hard"
+      },
+      {
+       "name": "night",
+       "type": "text",
+       "rule": "what differs at night"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "Open-Meteo or WMO page"
+      }
+     ],
+     "done_when": "Every code Open-Meteo uses.",
+     "checks": [
+      "Claude checks the codes against Open-Meteo's table."
+     ],
+     "rejected_if": [
+      "a code missing"
+     ],
+     "id": "HUB-GEM-23",
+     "title": "Hub: weather to scene: what the town shows for each weather code, by day and by night",
+     "due": "2026-12-01"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The home was rebuilt on 2026-11-24 (full-screen town, live day and night, weather, System tab). A real audit finds what the proofs miss.",
+     "unlocks": "The home has no cut-off label, no unreadable text, no dead tap.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/"
+     ],
+     "steps": [
+      "At both sizes: every label (cut off? overlapping?), every tap target (works? at least 44 px?), contrast of every text over the town at night and by day, the weather widget's values against Open-Meteo for the same place and hour, and the System tab's contents."
+     ],
+     "deliver": {
+      "file": "hub_gemini_home-audit_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1 ..."
+      },
+      {
+       "name": "size",
+       "type": "text",
+       "rule": "384x832 or 1280x800"
+      },
+      {
+       "name": "where",
+       "type": "text",
+       "rule": "the element"
+      },
+      {
+       "name": "problem",
+       "type": "text",
+       "rule": "what is wrong, measured"
+      },
+      {
+       "name": "severity",
+       "type": "text",
+       "rule": "P0, P1 or P2"
+      }
+     ],
+     "done_when": "Both sizes audited, every finding measured.",
+     "checks": [
+      "Claude reproduces five findings."
+     ],
+     "rejected_if": [
+      "a finding without a measurement"
+     ],
+     "id": "HUB-GEM-24",
+     "title": "Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800",
+     "due": "2026-12-01"
     }
    ]
   },

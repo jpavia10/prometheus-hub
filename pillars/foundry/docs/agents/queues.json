@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "foundry",
  "agents": [
   {
@@ -439,7 +439,7 @@
      "review": "Scored 9/10 (#163)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Your parts lists and power budgets made each invention buildable on a bench; selling one is a different bar.",
      "unlocks": "Each invention's build page shows the step after the prototype.",
@@ -514,6 +514,84 @@
      ],
      "id": "FDY-GEM-07",
      "title": "Foundry: the certifications each of the 11 stage-1 builds would need before it could be sold",
+     "due": "2026-12-08",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Owner, 2026-11-24: 'I also want the foundry revamped'. The new Foundry shows each build as a project you can follow.",
+     "unlocks": "Foundry's builds read as real projects with real costs.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/foundry/"
+     ],
+     "steps": [
+      "For each build: a one-line pitch, three milestones with what proves each, the stage-1 parts with prices and supplier links (FDY-GEM-05's list), the total, and a 2-sentence brief for a hero image."
+     ],
+     "deliver": {
+      "file": "foundry_gemini_showcase_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 11,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "build",
+       "type": "text",
+       "rule": "as in Foundry"
+      },
+      {
+       "name": "pitch",
+       "type": "text",
+       "rule": "one line"
+      },
+      {
+       "name": "milestones",
+       "type": "text",
+       "rule": "1 ...; 2 ...; 3 ..."
+      },
+      {
+       "name": "parts",
+       "type": "text",
+       "rule": "part (price, link); ..."
+      },
+      {
+       "name": "total",
+       "type": "number",
+       "rule": "US dollars"
+      },
+      {
+       "name": "image_brief",
+       "type": "text",
+       "rule": "two sentences"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "11 builds.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "FDY-GEM-08",
+     "title": "Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief",
      "due": "2026-12-08"
     }
    ]

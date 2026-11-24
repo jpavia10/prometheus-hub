@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T08:48:49Z",
- "checked": "2026-11-24T08:48:49Z",
+ "built": "2026-11-24T09:29:17Z",
+ "checked": "2026-11-24T09:29:17Z",
  "version": 2,
  "today": "2026-11-24",
  "sources": {
@@ -23,26 +23,26 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 76,
+  "todo": 72,
   "late": 2,
-  "due7": 8,
+  "due7": 16,
   "delivered": 0,
-  "queued": 5,
+  "queued": 6,
   "withdrawn": 182
  },
  "per": {
   "Gemini": {
-   "todo": 60,
+   "todo": 56,
    "late": 0,
-   "due7": 3,
+   "due7": 11,
    "delivered": 0,
    "queued": 2,
    "done7": 176,
    "withdrawn": 68,
-   "items": 469,
+   "items": 573,
    "floor": 50,
    "by": {
-    "hub": 56,
+    "hub": 52,
     "titan": 3,
     "tproj": 1,
     "board": 0
@@ -100,7 +100,7 @@
    "late": 0,
    "due7": 4,
    "delivered": 0,
-   "queued": 1,
+   "queued": 2,
    "done7": 8,
    "withdrawn": 44,
    "items": 106,
@@ -279,10 +279,10 @@
    }
   },
   "Hephaestus Hearth": {
-   "todo": 3,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 3
+    "Gemini": 1
    }
   },
   "Garage": {
@@ -293,10 +293,10 @@
    }
   },
   "Apollo Temple": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 2
+    "Gemini": 1
    }
   },
   "Money": {
@@ -307,17 +307,17 @@
    }
   },
   "Selling Pipeline": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
-  "Records": {
    "todo": 2,
    "delivered": 0,
    "by": {
     "Gemini": 2
+   }
+  },
+  "Records": {
+   "todo": 1,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1
    }
   },
   "Icarus Stake": {
@@ -328,17 +328,17 @@
    }
   },
   "Hermes Post": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 2
+    "Gemini": 1
    }
   },
   "Bastion": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 2
+    "Gemini": 1
    }
   },
   "Athenaeum": {
@@ -349,10 +349,10 @@
    }
   },
   "Odyssey": {
-   "todo": 10,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 10
+    "Gemini": 1
    }
   },
   "Privacy": {
@@ -398,25 +398,25 @@
    }
   },
   "Kin": {
-   "todo": 10,
+   "todo": 21,
    "delivered": 0,
    "by": {
-    "Gemini": 9,
+    "Gemini": 20,
     "Muse": 1
    }
   },
   "Aether": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 2
+    "Gemini": 1
    }
   },
   "Polis": {
-   "todo": 2,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 2
+    "Gemini": 3
    }
   },
   "Mythos": {
@@ -427,10 +427,10 @@
    }
   },
   "Continuity": {
-   "todo": 2,
+   "todo": 1,
    "delivered": 0,
    "by": {
-    "Gemini": 2
+    "Gemini": 1
    }
   },
   "Midas Ledger": {
@@ -1198,11 +1198,11 @@
    "pid": "hub",
    "id": "HUB-GEM-19",
    "title": "Hub: re-measure the 32 high-priority accessibility items after Claude's fixes",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-04",
    "items": 32,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1229,11 +1229,11 @@
    "pid": "hub",
    "id": "HUB-GEM-20",
    "title": "Hub: does every place in the realm painting sit under its own label?",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 27,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1260,11 +1260,11 @@
    "pid": "hub",
    "id": "HUB-GEM-21",
    "title": "Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 11,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1279,6 +1279,97 @@
     "done": "All 11 checked on d64 or later.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-22",
+   "title": "Hub: paint the town for every hour and every weather (the home is now the town)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: the home is a full-screen town with real-time weather and a day-night cycle. The town is drawn live in light and colour; painted versions of the same view at dawn, midday, golden hour, dusk and night, and in rain, fog and snow, make it photographic.",
+    "steps": [
+     "Nano Banana Pro image edits of the home painting, same framing and layout, every building where it is: dawn, midday, golden hour, dusk, night (lit windows, stars), plus rain, fog, snow and storm versions of midday and night.",
+     "2560 px wide, webp, no text; one row per image."
+    ],
+    "make": "hub_gemini_town-hours_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "12 variants, each aligned with the original (Claude overlays them).",
+    "checks": [
+     "Claude overlays each variant on the original: buildings must line up."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-23",
+   "title": "Hub: weather to scene: what the town shows for each weather code, by day and by night",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 28,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The town takes live weather from Open-Meteo (WMO weather codes). Each code needs a look and a sentence.",
+    "steps": [
+     "For each WMO code Open-Meteo returns: the plain words, the sky (cloud cover, light), what falls (rain, drizzle, snow, hail) and how hard, visibility, and what changes by night."
+    ],
+    "make": "hub_gemini_weather-scenes_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every code Open-Meteo uses.",
+    "checks": [
+     "Claude checks the codes against Open-Meteo's table."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-24",
+   "title": "Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The home was rebuilt on 2026-11-24 (full-screen town, live day and night, weather, System tab). A real audit finds what the proofs miss.",
+    "steps": [
+     "At both sizes: every label (cut off? overlapping?), every tap target (works? at least 44 px?), contrast of every text over the town at night and by day, the weather widget's values against Open-Meteo for the same place and hour, and the System tab's contents."
+    ],
+    "make": "hub_gemini_home-audit_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Both sizes audited, every finding measured.",
+    "checks": [
+     "Claude reproduces five findings."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
    },
@@ -1960,11 +2051,11 @@
    "pid": "kairos",
    "id": "KAI-GEM-15",
    "title": "Kairos: Kern County offices' 2027 holiday closures",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1978,6 +2069,36 @@
     "done": "Every 2027 closure, or the page that says it is not published yet.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kairos/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kairos Meridian",
+   "pid": "kairos",
+   "id": "KAI-GEM-16",
+   "title": "Kairos: El Tejon Unified's 2027-28 calendar (when published) and Kern County's 2027 board meeting dates",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The 2027 holidays are in; the school year and the county board shape his weeks.",
+    "steps": [
+     "The district calendar (first and last day, breaks, minimum days) and the Board of Supervisors 2027 meeting dates, from their own pages; if not published, say so with the page and date read."
+    ],
+    "make": "kairos_gemini_2027-school-board_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every published date.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kairos/docs/agents/QUEUE_gemini.md"
    },
@@ -2949,11 +3070,11 @@
    "pid": "hearth",
    "id": "HEA-GEM-29",
    "title": "Hearth: Kern County's building permit fee for the 23 x 10 ft deck, from an open page",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -2980,11 +3101,11 @@
    "pid": "hearth",
    "id": "HEA-GEM-30",
    "title": "Hearth: deck stains and sealers for 4,600 ft (UV, snow, freeze-thaw): makers' data sheets",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3010,11 +3131,11 @@
    "pid": "hearth",
    "id": "HEA-GEM-31",
    "title": "Hearth: the deck's members checked from AWC's own NDS documents, every factor and every step shown",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3032,6 +3153,36 @@
     "done": "Every member of the deck checked for bending, shear, deflection and bearing from AWC's own values, with the R507 answer beside it.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hephaestus Hearth",
+   "pid": "hearth",
+   "id": "HEA-GEM-32",
+   "title": "Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Fee, finish and members are in; the inspections are the path to a legal deck.",
+    "steps": [
+     "Each inspection Kern County requires for a residential deck, what is checked at each, how to request it, and the common failures, from the county's own pages and the CRC."
+    ],
+    "make": "hearth_gemini_deck-inspections_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every inspection listed.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
    },
@@ -3802,11 +3953,11 @@
    "pid": "garage",
    "id": "GAR-GEM-16",
    "title": "Garage: the six fluid and part specs still 'not stated'",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-04",
    "items": 6,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3820,6 +3971,36 @@
     "done": "All six answered, or 'not stated' with every manual page checked.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Garage",
+   "pid": "garage",
+   "id": "GAR-GEM-17",
+   "title": "Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Lights, fluids and specs are in; the schedule is the thing Garage reminds about.",
+    "steps": [
+     "Every scheduled item for both vehicles (severe service: mountains, cold, towing): miles and months, from the owner's manual pages."
+    ],
+    "make": "garage_gemini_schedule_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every item from both manuals.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
    },
@@ -4468,11 +4649,11 @@
    "pid": "apollo",
    "id": "APO-GEM-13",
    "title": "Apollo: the FoodData Central id for 120 foods that have none (the first 120 in foods.js without 'fdc')",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 120,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4500,11 +4681,11 @@
    "pid": "apollo",
    "id": "APO-GEM-14",
    "title": "Apollo: the key numbers of the current Dietary Guidelines for Americans and the Physical Activity Guidelines",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4519,6 +4700,36 @@
     "done": "Every adult number in both documents.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Apollo Temple",
+   "pid": "apollo",
+   "id": "APO-GEM-15",
+   "title": "Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 120,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The ids are in; the values are not. Each value from FDC's own API or page.",
+    "steps": [
+     "For each of the 120 foods: the 30 nutrients Apollo tracks, per 100 g, from the FDC record of the id you gave."
+    ],
+    "make": "apollo_gemini_nutrients-120_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "120 foods, 30 values each.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/docs/agents/QUEUE_gemini.md"
    },
@@ -4880,11 +5091,11 @@
    "pid": "money",
    "id": "MON-GEM-07",
    "title": "Money: the 7 issuer-pricing cells still 'not stated', from the CFPB agreement database",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-04",
    "items": 7,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4898,6 +5109,36 @@
     "done": "All 7 cells answered from an agreement.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/money/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Money",
+   "pid": "money",
+   "id": "MON-GEM-08",
+   "title": "Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Pricing is complete; the programs that lower it are the next lever.",
+    "steps": [
+     "For each issuer: the hardship program, who qualifies, what it changes (APR, fees, payment), how to ask."
+    ],
+    "make": "money_gemini_hardship_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every issuer.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/money/docs/agents/QUEUE_gemini.md"
    },
@@ -5308,6 +5549,36 @@
     "done": "Coins, paper money and bullion all covered.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/selling/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Selling Pipeline",
+   "pid": "selling",
+   "id": "SEL-GEM-09",
+   "title": "Selling: eBay's coin and bullion item specifics and photo rules, category by category",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Fees are in; a listing that misses a required specific is hidden.",
+    "steps": [
+     "For each coin, bullion and paper money category: the required and recommended item specifics and the photo rules, from eBay's own pages."
+    ],
+    "make": "selling_gemini_specifics_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every category.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/selling/docs/agents/QUEUE_gemini.md"
    },
@@ -5762,11 +6033,11 @@
    "pid": "records",
    "id": "REC-GEM-10",
    "title": "Records: renewing a US passport in 2026 (online and DS-82), fees and processing times",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -5792,11 +6063,11 @@
    "pid": "records",
    "id": "REC-GEM-11",
    "title": "Records: Kern County property tax, the bills and deadlines a homeowner gets in a year",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -5810,6 +6081,36 @@
     "done": "Every secured, supplemental and exemption deadline in Kern's pages.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/records/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Records",
+   "pid": "records",
+   "id": "REC-GEM-12",
+   "title": "Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Kin's open links are closed by certificates (Barbara's birth, Della's second marriage, Laurie's birth); Records holds how to get them.",
+    "steps": [
+     "For each state and record type: who may order (a descendant? a genealogist?), the fee, the form or portal, the wait, and the years available."
+    ],
+    "make": "records_gemini_vital-records_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "All four states, three record types each.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/records/docs/agents/QUEUE_gemini.md"
    },
@@ -6394,11 +6695,11 @@
    "pid": "icarus",
    "id": "ICA-GEM-14",
    "title": "Icarus: BLS's 2027 PPI release dates, and which 2027 FOMC meetings carry projections",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 20,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6413,6 +6714,36 @@
     "done": "All 12 PPI releases (or what BLS has posted, with the page) and the projections flag on all 8 policy meetings.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/icarus/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Icarus Stake",
+   "pid": "icarus",
+   "id": "ICA-GEM-15",
+   "title": "Icarus: the 2027 Treasury auction schedule (2-, 10- and 30-year) and the 2027 CPI and jobs report dates",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "BEA and PPI dates are in; these complete the 2027 calendar.",
+    "steps": [
+     "Every date and time from Treasury and BLS's own schedules."
+    ],
+    "make": "icarus_gemini_2027-auctions-cpi_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every 2027 date.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/icarus/docs/agents/QUEUE_gemini.md"
    },
@@ -6966,11 +7297,11 @@
    "pid": "hermes",
    "id": "HER-GEM-13",
    "title": "Hermes: the official fraud and customer-service phone numbers for billers 1-50",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 50,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6997,11 +7328,11 @@
    "pid": "hermes",
    "id": "HER-GEM-14",
    "title": "Hermes: the official fraud and customer-service phone numbers for billers 51-97",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 47,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7015,6 +7346,36 @@
     "done": "Billers 51-97.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hermes/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hermes Post",
+   "pid": "hermes",
+   "id": "HER-GEM-15",
+   "title": "Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The phone numbers are in; a lure is easiest to spot by the sender.",
+    "steps": [
+     "For each biller: the email domains and SMS short codes it sends from, from its own security page."
+    ],
+    "make": "hermes_gemini_senders_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every biller.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hermes/docs/agents/QUEUE_gemini.md"
    },
@@ -7943,11 +8304,11 @@
    "pid": "bastion",
    "id": "BAS-GEM-13",
    "title": "Bastion: the Genasys zone names for the mountain communities (Frazier Park, Lake of the Woods, Pinon Pines, Pine Mountain Club)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 4,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7973,11 +8334,11 @@
    "pid": "bastion",
    "id": "BAS-GEM-14",
    "title": "Bastion: how much fuel a household may store (gasoline, propane, generators) under Kern's fire code",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7991,6 +8352,36 @@
     "done": "Gasoline, propane and generators covered.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/bastion/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Bastion",
+   "pid": "bastion",
+   "id": "BAS-GEM-15",
+   "title": "Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The evacuation zones are in (BAS-GEM-13); the roads out are not.",
+    "steps": [
+     "Each road out (I-5 north and south, Frazier Mountain Park Rd, Lockwood Valley Rd, Cerro Noroeste, Mil Potrero...): where it goes, what closes it, closures since 2021 with dates, and the alternate."
+    ],
+    "make": "bastion_gemini_routes_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every road out listed.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/bastion/docs/agents/QUEUE_gemini.md"
    },
@@ -8354,11 +8745,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-06",
    "title": "Athenaeum: the date and place of each of the 40 history entries, so the shelf can show them on a timeline and a map",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 40,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8373,6 +8764,36 @@
     "done": "All 40 entries.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Athenaeum",
+   "pid": "athenaeum",
+   "id": "ATH-GEM-07",
+   "title": "Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The family tree now reaches 1638 (Lower Norfolk, Virginia) and crosses the Regulators, the Revolution, Cherokee removal, Civil War Tennessee, the Lithuanian press ban, Ellis Island, the AEF in France, Detroit's auto plants and the Depression. Kin's timeline will draw on Athenaeum's chronicle.",
+    "steps": [
+     "20 chains, one per era the tree crosses; each with cause, event and consequence, a quote from a primary or scholarly source for each, the date and place, and which family members lived through it (data.js ids)."
+    ],
+    "make": "athenaeum_gemini_family-eras_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "20 chains.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/docs/agents/QUEUE_gemini.md"
    },
@@ -9016,11 +9437,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-18",
    "title": "Odyssey: a card for the 10 stops still without one (the photo trips)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 10,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9048,11 +9469,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-19",
    "title": "Odyssey: the stops of the six trips your run 6 found, in order, with where they are",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9080,11 +9501,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-20",
    "title": "Odyssey: the six new trips day by day",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9110,11 +9531,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-21",
    "title": "Odyssey: the best photos of the six new trips",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9141,11 +9562,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-22",
    "title": "Odyssey: the landmarks in the six new trips' photos, with official facts",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9173,11 +9594,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-23",
    "title": "Odyssey: the park card gaps (Sequoia and Kings Canyon areas, Kings Canyon's heights, Grand Canyon's low point)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-03",
    "items": 5,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9204,11 +9625,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-24",
    "title": "Odyssey: going back to the Philippines in 2026-27: entry rules for a US citizen, from the official pages",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9235,11 +9656,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-25",
    "title": "Odyssey: Siargao and Boracay, the two places weighed in July 2024, from the official tourism pages",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 2,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9265,11 +9686,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-26",
    "title": "Odyssey: 20 weekend trips from Frazier Park, with real drive times and what each needs booked",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 20,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9296,11 +9717,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-27",
    "title": "Odyssey: national park passes and reservations for 2027 (the parks Joseph has been to and the ones nearby)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9315,6 +9736,36 @@
     "done": "The pass and all eight parks.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-28",
+   "title": "Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Each trip opens on its own photos; these seven are empty.",
+    "steps": [
+     "For each trip: the photos taken there (by the EXIF date and place), Drive file ids, 20 at most per trip, the best first."
+    ],
+    "make": "odyssey_gemini_trip-photos_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Each of the seven trips searched.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
    },
@@ -9864,11 +10315,11 @@
    "pid": "privacy",
    "id": "PRI-GEM-14",
    "title": "Privacy: an Amazon account, setting by setting (ads, Alexa recordings, Ring, browsing history, sharing)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9882,6 +10333,36 @@
     "done": "Every privacy setting Amazon, Alexa and Ring document.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Privacy",
+   "pid": "privacy",
+   "id": "PRI-GEM-15",
+   "title": "Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Amazon is done; Google holds the most.",
+    "steps": [
+     "Every privacy setting in myaccount.google.com: where it is, what it does, the private choice."
+    ],
+    "make": "privacy_gemini_google_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every setting.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
    },
@@ -10529,11 +11010,11 @@
    "pid": "argus",
    "id": "ARG-GEM-13",
    "title": "Argus: what Google Takeout gives for Google Photos (the JSON beside each photo), and how to export only some albums",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10548,6 +11029,36 @@
     "done": "The export steps and every documented field.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/argus/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Argus Album",
+   "pid": "argus",
+   "id": "ARG-GEM-14",
+   "title": "Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 25,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "ARG-GEM-13 described the format; the importer needs the edge cases.",
+    "steps": [
+     "25 cases, one row each: the sidecar's file name pattern, its JSON fields, the image it belongs to, and the rule that pairs them."
+    ],
+    "make": "argus_gemini_takeout-cases_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "25 cases.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/argus/docs/agents/QUEUE_gemini.md"
    },
@@ -10971,11 +11482,11 @@
    "pid": "games",
    "id": "GAM-GEM-08",
    "title": "Games: GTA VI's updates and fixes through December 15",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-16",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10989,6 +11500,36 @@
     "done": "Every post in the window.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/games/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Ludus Arcade",
+   "pid": "games",
+   "id": "GAM-GEM-09",
+   "title": "Games: GTA VI updates and fixes from Dec 16 to Jan 15",
+   "status": "todo",
+   "due": "2026-12-22",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The same tracking as GAM-GEM-08, for the next month.",
+    "steps": [
+     "Every update, patch note and dated announcement from Rockstar's own pages."
+    ],
+    "make": "games_gemini_gta6-updates-2_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every update listed.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/games/docs/agents/QUEUE_gemini.md"
    },
@@ -11289,11 +11830,11 @@
    "pid": "forge",
    "id": "FOR-GEM-07",
    "title": "Forge: the DONE markers from Nov 23 to Dec 7 against the Forge",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -11307,6 +11848,36 @@
     "done": "Every marker in the window.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/forge/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Forge",
+   "pid": "forge",
+   "id": "FOR-GEM-08",
+   "title": "Forge: the DONE markers from Nov 24 to Dec 7 against the Forge",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The same check as FOR-GEM-07, for the next fortnight.",
+    "steps": [
+     "Every DONE_ marker you leave from Nov 24 to Dec 7: does the Forge show the task as delivered or done?"
+    ],
+    "make": "forge_gemini_done-markers-3_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every marker checked.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/forge/docs/agents/QUEUE_gemini.md"
    },
@@ -11572,11 +12143,11 @@
    "pid": "foundry",
    "id": "FDY-GEM-07",
    "title": "Foundry: the certifications each of the 11 stage-1 builds would need before it could be sold",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 11,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -11590,6 +12161,36 @@
     "done": "All 11 builds.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/foundry/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Foundry",
+   "pid": "foundry",
+   "id": "FDY-GEM-08",
+   "title": "Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 11,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'I also want the foundry revamped'. The new Foundry shows each build as a project you can follow.",
+    "steps": [
+     "For each build: a one-line pitch, three milestones with what proves each, the stage-1 parts with prices and supplier links (FDY-GEM-05's list), the total, and a 2-sentence brief for a hero image."
+    ],
+    "make": "foundry_gemini_showcase_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "11 builds.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/foundry/docs/agents/QUEUE_gemini.md"
    },
@@ -11920,11 +12521,11 @@
    "pid": "observatory",
    "id": "OBS-GEM-07",
    "title": "Observatory: the licence and attribution each of the 22 feeds asks for",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 22,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -11938,6 +12539,36 @@
     "done": "All 22 feeds with a licence and an attribution line (or 'not stated' with the terms page you read).",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/observatory/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Observatory",
+   "pid": "observatory",
+   "id": "OBS-GEM-08",
+   "title": "Observatory: each of the 22 feeds' update cadence and its last-updated field",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 22,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Licences are in; freshness is what the page should show.",
+    "steps": [
+     "For each feed: how often it updates and the field that carries its last update."
+    ],
+    "make": "observatory_gemini_freshness_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "22 feeds.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/observatory/docs/agents/QUEUE_gemini.md"
    },
@@ -12237,11 +12868,11 @@
    "pid": "kin",
    "id": "KIN-GEM-06",
    "title": "Kin: a US passport for a child under 16 in 2026-27 (DS-11, both parents, DS-3053), fees and times",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12268,11 +12899,11 @@
    "pid": "kin",
    "id": "KIN-GEM-07",
    "title": "Kin lineage: Joseph's 1912 crossing, Hamburg to New York, every ship and every spelling (Q1, C9)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12303,11 +12934,11 @@
    "pid": "kin",
    "id": "KIN-GEM-08",
    "title": "Kin lineage: the whole naturalization file, Boston 1919 and Detroit 1916, transcribed (Q2, Q3)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12338,11 +12969,11 @@
    "pid": "kin",
    "id": "KIN-GEM-09",
    "title": "Kin lineage: Joseph and Della's children in the 1920-1950 censuses, read page by page; is Barbara Feole his daughter or granddaughter? (Q4, C10)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-10",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12373,11 +13004,11 @@
    "pid": "kin",
    "id": "KIN-GEM-10",
    "title": "Kin lineage: Della's side: the 1922 Brooklyn certificate and license, her parents, Malkitus or Matukaitis (Q5, Q14, C3)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12408,11 +13039,11 @@
    "pid": "kin",
    "id": "KIN-GEM-11",
    "title": "Kin lineage: his Army service: the VA claim file, the service number and Company A's war (Q10, Q18, C6)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-10",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12443,11 +13074,11 @@
    "pid": "kin",
    "id": "KIN-GEM-12",
    "title": "Kin lineage: Telšiai 1893: the Catholic parish birth register, read in the original Russian (Q11)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-15",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12478,11 +13109,11 @@
    "pid": "kin",
    "id": "KIN-GEM-13",
    "title": "Kin lineage: Detroit and Cambridge in print: city directories 1916-1935 and the June 1935 newspapers (Q7, Q15)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-10",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12513,11 +13144,11 @@
    "pid": "kin",
    "id": "KIN-GEM-14",
    "title": "Kin lineage: Barbara Feole, the owner's great-grandmother: her birth, her parents, her marriage (Q20, C10)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12535,6 +13166,698 @@
     "checks": [
      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
      "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-15",
+   "title": "Kin, Ancestry hints: every hint on the Pavia line, read and decided (pavia)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).",
+    "steps": [
+     "Open every person on this line in the Ancestry tree and open every hint (records, photos, member trees), including the ones below the first page.",
+     "One row per hint: its collection, title and record URL, the whole index entry word for word, and your decision: accept (three identifiers agree), reject (say which identifier fails) or hold (not enough).",
+     "Accepted record hints: attach them in the Ancestry tree and write the change in the 'change' field (before -> after). Never accept a 'potential parent' or a member tree's parents without a record.",
+     "Member photos: open each, save the image to Drive Photos & Scans/by-person/<id>/ and say who uploaded it and what its caption says.",
+     "After each person: the certainty of their link to their parents on the task's scale, with the records behind it.",
+     "Last row: kind summary: hints read, accepted, rejected, held; the five facts that changed most."
+    ],
+    "make": "kin_gemini_hints-pavia_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every hint on every person of the line read and decided, with the tree edits listed.",
+    "checks": [
+     "Claude opens ten accepted hints at random and compares the record with the row, field by field.",
+     "Claude opens five rejected hints and checks the failing identifier."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-16",
+   "title": "Kin, Ancestry hints: every hint on the Kirkland line, read and decided (kirkland)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).",
+    "steps": [
+     "Open every person on this line in the Ancestry tree and open every hint (records, photos, member trees), including the ones below the first page.",
+     "One row per hint: its collection, title and record URL, the whole index entry word for word, and your decision: accept (three identifiers agree), reject (say which identifier fails) or hold (not enough).",
+     "Accepted record hints: attach them in the Ancestry tree and write the change in the 'change' field (before -> after). Never accept a 'potential parent' or a member tree's parents without a record.",
+     "Member photos: open each, save the image to Drive Photos & Scans/by-person/<id>/ and say who uploaded it and what its caption says.",
+     "After each person: the certainty of their link to their parents on the task's scale, with the records behind it.",
+     "Last row: kind summary: hints read, accepted, rejected, held; the five facts that changed most."
+    ],
+    "make": "kin_gemini_hints-kirkland_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every hint on every person of the line read and decided, with the tree edits listed.",
+    "checks": [
+     "Claude opens ten accepted hints at random and compares the record with the row, field by field.",
+     "Claude opens five rejected hints and checks the failing identifier."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-17",
+   "title": "Kin, Ancestry hints: every hint on the Sanders line, read and decided (sanders)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.",
+    "steps": [
+     "Open every person on this line in the Ancestry tree and open every hint (records, photos, member trees), including the ones below the first page.",
+     "One row per hint: its collection, title and record URL, the whole index entry word for word, and your decision: accept (three identifiers agree), reject (say which identifier fails) or hold (not enough).",
+     "Accepted record hints: attach them in the Ancestry tree and write the change in the 'change' field (before -> after). Never accept a 'potential parent' or a member tree's parents without a record.",
+     "Member photos: open each, save the image to Drive Photos & Scans/by-person/<id>/ and say who uploaded it and what its caption says.",
+     "After each person: the certainty of their link to their parents on the task's scale, with the records behind it.",
+     "Last row: kind summary: hints read, accepted, rejected, held; the five facts that changed most."
+    ],
+    "make": "kin_gemini_hints-sanders_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every hint on every person of the line read and decided, with the tree edits listed.",
+    "checks": [
+     "Claude opens ten accepted hints at random and compares the record with the row, field by field.",
+     "Claude opens five rejected hints and checks the failing identifier."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-18",
+   "title": "Kin, Ancestry hints: every hint on the Seconder-Termenas line, read and decided (seconder-termenas)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).",
+    "steps": [
+     "Open every person on this line in the Ancestry tree and open every hint (records, photos, member trees), including the ones below the first page.",
+     "One row per hint: its collection, title and record URL, the whole index entry word for word, and your decision: accept (three identifiers agree), reject (say which identifier fails) or hold (not enough).",
+     "Accepted record hints: attach them in the Ancestry tree and write the change in the 'change' field (before -> after). Never accept a 'potential parent' or a member tree's parents without a record.",
+     "Member photos: open each, save the image to Drive Photos & Scans/by-person/<id>/ and say who uploaded it and what its caption says.",
+     "After each person: the certainty of their link to their parents on the task's scale, with the records behind it.",
+     "Last row: kind summary: hints read, accepted, rejected, held; the five facts that changed most."
+    ],
+    "make": "kin_gemini_hints-termenas_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every hint on every person of the line read and decided, with the tree edits listed.",
+    "checks": [
+     "Claude opens ten accepted hints at random and compares the record with the row, field by field.",
+     "Claude opens five rejected hints and checks the failing identifier."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-19",
+   "title": "Kin, certainty-scored pedigree: the Pavia line as far back as the records go",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).",
+    "steps": [
+     "For every person on the line, from the youngest up: their parents, with the certainty of the link on the scale and the records behind it by name (census year and county, will, marriage, death certificate, obituary).",
+     "Keep going up each branch until no record supports a further link; then one more row: the best candidate parents and why they are under 40%.",
+     "List every link you meet online that is wrong (kind disproved): who claims it, where, and the record that disproves it.",
+     "Never give 90 or more to a link that rests on compiled trees or indexes alone; a primary record must name the parent.",
+     "Last row: kind summary: the deepest generation reached on each branch, how many links at each band, and the records that would raise the weakest five."
+    ],
+    "make": "kin_gemini_pedigree-pavia_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.",
+    "checks": [
+     "Claude checks the records of fifteen links at random against their percentage.",
+     "Claude rejects the file if any 90+ link rests on trees or indexes alone."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-20",
+   "title": "Kin, certainty-scored pedigree: the Kirkland line as far back as the records go",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).",
+    "steps": [
+     "For every person on the line, from the youngest up: their parents, with the certainty of the link on the scale and the records behind it by name (census year and county, will, marriage, death certificate, obituary).",
+     "Keep going up each branch until no record supports a further link; then one more row: the best candidate parents and why they are under 40%.",
+     "List every link you meet online that is wrong (kind disproved): who claims it, where, and the record that disproves it.",
+     "Never give 90 or more to a link that rests on compiled trees or indexes alone; a primary record must name the parent.",
+     "Last row: kind summary: the deepest generation reached on each branch, how many links at each band, and the records that would raise the weakest five."
+    ],
+    "make": "kin_gemini_pedigree-kirkland_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.",
+    "checks": [
+     "Claude checks the records of fifteen links at random against their percentage.",
+     "Claude rejects the file if any 90+ link rests on trees or indexes alone."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-21",
+   "title": "Kin, certainty-scored pedigree: the Sanders line as far back as the records go",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.",
+    "steps": [
+     "For every person on the line, from the youngest up: their parents, with the certainty of the link on the scale and the records behind it by name (census year and county, will, marriage, death certificate, obituary).",
+     "Keep going up each branch until no record supports a further link; then one more row: the best candidate parents and why they are under 40%.",
+     "List every link you meet online that is wrong (kind disproved): who claims it, where, and the record that disproves it.",
+     "Never give 90 or more to a link that rests on compiled trees or indexes alone; a primary record must name the parent.",
+     "Last row: kind summary: the deepest generation reached on each branch, how many links at each band, and the records that would raise the weakest five."
+    ],
+    "make": "kin_gemini_pedigree-sanders_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.",
+    "checks": [
+     "Claude checks the records of fifteen links at random against their percentage.",
+     "Claude rejects the file if any 90+ link rests on trees or indexes alone."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-22",
+   "title": "Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).",
+    "steps": [
+     "For every person on the line, from the youngest up: their parents, with the certainty of the link on the scale and the records behind it by name (census year and county, will, marriage, death certificate, obituary).",
+     "Keep going up each branch until no record supports a further link; then one more row: the best candidate parents and why they are under 40%.",
+     "List every link you meet online that is wrong (kind disproved): who claims it, where, and the record that disproves it.",
+     "Never give 90 or more to a link that rests on compiled trees or indexes alone; a primary record must name the parent.",
+     "Last row: kind summary: the deepest generation reached on each branch, how many links at each band, and the records that would raise the weakest five."
+    ],
+    "make": "kin_gemini_pedigree-termenas_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.",
+    "checks": [
+     "Claude checks the records of fifteen links at random against their percentage.",
+     "Claude rejects the file if any 90+ link rests on trees or indexes alone."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-23",
+   "title": "Kin, the family album: 75 photographs and documents of the Pavia line, each one identified",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 75,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).",
+    "steps": [
+     "Portraits, group photographs, headstones, record images (census pages, certificates, wills, draft cards, obituaries), the churches, houses, towns and maps of where they lived.",
+     "Save every image at full resolution under the file pattern; one row each.",
+     "For every portrait: who uploaded or labelled it, when, and why it is that person (dates, place, relatives in the same photo). A portrait that cannot be tied to the person is still saved but marked type 'portrait' with why_this_person 'not established'.",
+     "No duplicates of images already in the archive (check the wave-3 manifests).",
+     "Last row: kind summary is not used here: the last row is the 75th image; put a summary line in the Drive folder's README instead."
+    ],
+    "make": "kin_gemini_album-pavia_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per image, exactly the fields below",
+    "done": "75 images saved and identified, none a duplicate, every portrait argued.",
+    "checks": [
+     "Claude opens fifteen images and checks the caption and the identity argument.",
+     "Claude rejects the file if a portrait is tied to a person by its file name alone."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-24",
+   "title": "Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 75,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).",
+    "steps": [
+     "Portraits, group photographs, headstones, record images (census pages, certificates, wills, draft cards, obituaries), the churches, houses, towns and maps of where they lived.",
+     "Save every image at full resolution under the file pattern; one row each.",
+     "For every portrait: who uploaded or labelled it, when, and why it is that person (dates, place, relatives in the same photo). A portrait that cannot be tied to the person is still saved but marked type 'portrait' with why_this_person 'not established'.",
+     "No duplicates of images already in the archive (check the wave-3 manifests).",
+     "Last row: kind summary is not used here: the last row is the 75th image; put a summary line in the Drive folder's README instead."
+    ],
+    "make": "kin_gemini_album-kirkland_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per image, exactly the fields below",
+    "done": "75 images saved and identified, none a duplicate, every portrait argued.",
+    "checks": [
+     "Claude opens fifteen images and checks the caption and the identity argument.",
+     "Claude rejects the file if a portrait is tied to a person by its file name alone."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-25",
+   "title": "Kin, the family album: 75 photographs and documents of the Sanders line, each one identified",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 75,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.",
+    "steps": [
+     "Portraits, group photographs, headstones, record images (census pages, certificates, wills, draft cards, obituaries), the churches, houses, towns and maps of where they lived.",
+     "Save every image at full resolution under the file pattern; one row each.",
+     "For every portrait: who uploaded or labelled it, when, and why it is that person (dates, place, relatives in the same photo). A portrait that cannot be tied to the person is still saved but marked type 'portrait' with why_this_person 'not established'.",
+     "No duplicates of images already in the archive (check the wave-3 manifests).",
+     "Last row: kind summary is not used here: the last row is the 75th image; put a summary line in the Drive folder's README instead."
+    ],
+    "make": "kin_gemini_album-sanders_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per image, exactly the fields below",
+    "done": "75 images saved and identified, none a duplicate, every portrait argued.",
+    "checks": [
+     "Claude opens fifteen images and checks the caption and the identity argument.",
+     "Claude rejects the file if a portrait is tied to a person by its file name alone."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-26",
+   "title": "Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 75,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).",
+    "steps": [
+     "Portraits, group photographs, headstones, record images (census pages, certificates, wills, draft cards, obituaries), the churches, houses, towns and maps of where they lived.",
+     "Save every image at full resolution under the file pattern; one row each.",
+     "For every portrait: who uploaded or labelled it, when, and why it is that person (dates, place, relatives in the same photo). A portrait that cannot be tied to the person is still saved but marked type 'portrait' with why_this_person 'not established'.",
+     "No duplicates of images already in the archive (check the wave-3 manifests).",
+     "Last row: kind summary is not used here: the last row is the 75th image; put a summary line in the Drive folder's README instead."
+    ],
+    "make": "kin_gemini_album-termenas_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per image, exactly the fields below",
+    "done": "75 images saved and identified, none a duplicate, every portrait argued.",
+    "checks": [
+     "Claude opens fifteen images and checks the caption and the identity argument.",
+     "Claude rejects the file if a portrait is tied to a person by its file name alone."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-27",
+   "title": "Kin: the Ancestry tree's change log: every edit you make, with its source",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner: 'Updating my profile and adding and editing details.' Every edit to his tree must be traceable.",
+    "steps": [
+     "Every edit you make in the Ancestry tree during the trial (people added, names, dates, places, relationships, attached records, photos): one row each with before -> after and the record attached.",
+     "Add a person only with a record that names them; add a relationship only with a record that states it.",
+     "Last row: kind summary: edits by type and the people touched."
+    ],
+    "make": "kin_gemini_ancestry-changelog_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every edit made during the trial is listed, each with its source.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-28",
+   "title": "Kin: the 1950 census households of Barbara and Della Rimsha, Joseph and Grace Pavia, and the Sanders families, transcribed whole (Q19, Q26)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The 1950 census index put Barbara (16) with her mother Della E. Rimsha in Detroit; the image itself names every household member, their ages, birthplaces and the street. The Pavia and Sanders households of 1950 are already in the archive as images.",
+    "steps": [
+     "Find each household's image (NARA 1950 census: enumeration district, sheet, line) and transcribe every line of the household, every column, word for word.",
+     "Barbara and Della Rimsha: who else lives there (Mr. Rimsha? Betty?), the street, Della's age and birthplace.",
+     "Joseph and Grace Pavia (ED 85-1999 sheet 9): every member; Grace's age and birthplace; Joseph's birthplace (Malta? Italy?).",
+     "Charles D. and Elizabeth Sanders (Wayne, ED 82-264) and Charles L. and Elizabeth M. Sanders (Dearborn, ED 84-92): which, if either, is the Sanders line (Charles Sanders and Betty Flemming); the identity argument either way."
+    ],
+    "make": "kin_gemini_lineage-1950_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "All four households transcribed whole from the images, with ED, sheet and line, and the identity argued.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-29",
+   "title": "Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26)",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Francis's parents are Joseph and Grace by the 1940 census and his siblings' obituaries; one tree says Lucrezia Calleja. The Social Security applications of their children name the mother in full.",
+    "steps": [
+     "Caroline Rita Pavia (b. 27 Jun 1927) and Charles P. Pavia (d. 16 Apr 2009): Social Security Applications and Claims Index and NUMIDENT, both parents' names as written.",
+     "Joseph and Grace's marriage (Wayne County, about 1925-1927), the 1930 and 1940 censuses (image, every column), Joseph's arrival and naturalization (if foreign-born), his 1942 'old man's' draft card (born 1899).",
+     "Lucrezia Calleja: is she Grace? Every record under that name in Detroit 1920-1960.",
+     "Compare with the Maltese Pavia family of Erminia Diedo (a different Joseph Pavia) so the two are never mixed."
+    ],
+    "make": "kin_gemini_lineage-pavia_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-30",
+   "title": "Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27)",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Della E. Rimsha in 1950: she remarried after Joseph died in 1935. Her later records name her parents, her birth date and place, and close her life.",
+    "steps": [
+     "Wayne County marriages 1935-1950: Della Termens / Termenas / Matukaitis / Malkitus to a Rimsha; transcribe it whole.",
+     "Her death (Michigan death index, SSDI, obituary), burial, and her husband's identity.",
+     "Her parents Michael Malkitus and Eva (Vaschaushos): Brooklyn 1910-1925, their arrival, their parish."
+    ],
+    "make": "kin_gemini_lineage-della-2_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Della's second marriage, death and parents found with records, or every place searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-31",
+   "title": "Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your run-7 find (FamilySearch JJRH-VNB) goes to Cambridge to a brother Jsidor, with a father Kazmierz in Kowno; Joseph later lived in Cambridge. His petition swore 23 Aug 1912. The identity has to be argued in full before the tree can say which ship.",
+    "steps": [
+     "Both manifest pages of the 30 Sep 1912 entry transcribed whole, every column, with the line numbers.",
+     "Jsidor (Izidorius?) Terminas in Cambridge: directories, the 1920 census, his own naturalization.",
+     "Every Hamburg arrival at New York from 15 Aug to 30 Aug 1912 searched for every spelling (one row each, found or not).",
+     "The argument: which identifiers agree and disagree, and what the petition's 23 Aug can be explained by."
+    ],
+    "make": "kin_gemini_lineage-crossing_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Both pages transcribed, the brother found or searched, the August arrivals searched, C9 argued.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-32",
+   "title": "Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Gemini rated H9 97% from the rarity of the surname; Claude 60% because no record ties this Robert to Laurie. Her birth record and her parents' marriage decide it.",
+    "steps": [
+     "Laurie G. Seconder's birth (Michigan birth index, about 1950-1958) and any record that names her father.",
+     "Barbara Termens / Rimsha's marriage to a Seconder (Wayne and Oakland marriages 1950-1960) and the divorce.",
+     "Robert H. Seconder's own records (SSDI, obituary, Crescent Hills Cemetery) and Wilbur Seconder's 2012 obituary transcribed whole.",
+     "The argument for or against H9."
+    ],
+    "make": "kin_gemini_lineage-seconder_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "H9 argued from records: Laurie's birth, her parents' marriage, Robert's records.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-33",
+   "title": "Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Toni's father Charles A. Sanders (b. about 1953) is known from the family; his parents are named only on a family tree photograph. Nothing yet ties them to a record.",
+    "steps": [
+     "Michigan marriages 1945-1955: Charles Sanders and Betty Flemming / Fleming.",
+     "Their 1950 census household(s); Charles A.'s birth index (about 1953).",
+     "Their parents, as far as the records go. No living person's address."
+    ],
+    "make": "kin_gemini_lineage-sanders_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "The marriage and 1950 household found with records, or every search listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-34",
+   "title": "Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The Kirkland, Bivens, Culberson, Tippens and Bryant links rest on compiled trees and blogs. Their own records exist: censuses, marriages, wills, the Eastern Cherokee applications.",
+    "steps": [
+     "The 1880 and 1900 census lines of Anderson and Jesse Columbus Kirkland; Jesse Alden and Polly's 1850 marriage; James Altonia and Susanna in 1840 and 1850.",
+     "Eastern Cherokee Applications #586 and #8597: the pages that name Susanna Boston, transcribed.",
+     "Peter Culberson's 1870 and 1880 households; William Henry Tippens and Eliza Owens's 1867 marriage; John Bryant's 1800 Grayson County will and Nicholas Bryant's 1766 Carteret County will."
+    ],
+    "make": "kin_gemini_lineage-records-south_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Each named record found and transcribed, or searched and listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
    },
@@ -12664,6 +13987,37 @@
     "checks": [
      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
      "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-MUS-03",
+   "title": "Kin: second reader on the 1950 census households (blind)",
+   "status": "queued",
+   "due": "2026-12-10",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "A second, independent reading of the four 1950 households that KIN-GEM-28 transcribes: differences become conflicts (the method's section 6).",
+    "steps": [
+     "Transcribe each household from the image without reading Gemini's transcription first.",
+     "One row per person per household, every column."
+    ],
+    "make": "kin_muse_lineage-1950-blind_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every household line transcribed blind.",
+    "checks": [
+     "Claude compares the two transcriptions line by line."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_muse.md"
    },
@@ -13148,11 +14502,11 @@
    "pid": "aether",
    "id": "AET-GEM-16",
    "title": "Aether: Grapevine closures in the last three winters (2023-24, 2024-25, 2025-26)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13179,11 +14533,11 @@
    "pid": "aether",
    "id": "AET-GEM-17",
    "title": "Aether: Frazier Park's snowfall record, winter by winter (2015-16 to 2025-26)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13197,6 +14551,37 @@
     "done": "Every winter, from the nearest station that reports snowfall.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Aether",
+   "pid": "aether",
+   "id": "AET-GEM-18",
+   "title": "Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The hub's home now shows live weather and will show live alerts; each alert type needs its severity, colour and plain words.",
+    "steps": [
+     "Every NWS alert event type (list from api.weather.gov/alerts/types).",
+     "For each: severity class, the NWS colour, one sentence of what to do in the mountains, and whether it has reached Kern County zones CAZ594/CAZ595/CAZ596 since 2021."
+    ],
+    "make": "aether_gemini_alert-types_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every alert type listed.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_gemini.md"
    },
@@ -13710,6 +15095,36 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Polis",
+   "pid": "polis",
+   "id": "POL-GEM-11",
+   "title": "Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities",
+   "status": "todo",
+   "due": "2027-01-20",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The same watch as POL-GEM-08, for the next two months.",
+    "steps": [
+     "Each agenda item that names Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods or the I-5 corridor: date, item, decision."
+    ],
+    "make": "polis_gemini_board-2_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every item.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/polis/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Polis",
@@ -14004,11 +15419,11 @@
    "pid": "mythos",
    "id": "MYT-GEM-05",
    "title": "Mythos: registering Joseph's own stories and game scripts with the US Copyright Office (eCO): form, fee, deposit, time",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14022,6 +15437,36 @@
     "done": "Every case above, from copyright.gov.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/mythos/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Mythos",
+   "pid": "mythos",
+   "id": "MYT-GEM-06",
+   "title": "Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "MYT-GEM-05 found the route; this is the filing.",
+    "steps": [
+     "For a screenplay, a game script and a video game: the form, the deposit format, group options, the fee, from copyright.gov."
+    ],
+    "make": "mythos_gemini_copyright-2_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "All three.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/mythos/docs/agents/QUEUE_gemini.md"
    },
@@ -14348,11 +15793,11 @@
    "pid": "continuity",
    "id": "CON-GEM-09",
    "title": "Continuity: California's advance health care directive and the Secretary of State's registry, step by step",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14378,11 +15823,11 @@
    "pid": "continuity",
    "id": "CON-GEM-10",
    "title": "Continuity: who gets each kind of account when someone dies (beneficiary rules for 401(k), IRA, life insurance, POD and TOD) in 2026",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14396,6 +15841,36 @@
     "done": "All seven account types.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/continuity/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Continuity",
+   "pid": "continuity",
+   "id": "CON-GEM-11",
+   "title": "Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Beneficiaries and the directive are in; the small-estate path is the most likely one.",
+    "steps": [
+     "The current limit, the waiting period, the form, who signs, what to attach, and what Chase, Wells Fargo, Bank of America and the DMV ask for, each from their own page."
+    ],
+    "make": "continuity_gemini_small-estate_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every step sourced.",
+    "checks": [
+     "Claude opens every source URL in ten rows at random and checks the value against the page."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/continuity/docs/agents/QUEUE_gemini.md"
    },

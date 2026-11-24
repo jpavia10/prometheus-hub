@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "apollo",
  "agents": [
   {
@@ -566,7 +566,7 @@
      "review": "Scored 10/10 (#160)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "648 of Apollo's 900 foods have no FoodData Central id, so Apollo cannot open their full nutrient panel or check its numbers.",
      "unlocks": "Apollo links each food to USDA's own record and re-checks its macros.",
@@ -643,10 +643,11 @@
      ],
      "id": "APO-GEM-13",
      "title": "Apollo: the FoodData Central id for 120 foods that have none (the first 120 in foods.js without 'fdc')",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Apollo's daily targets come from the NIH; the national guidelines set the weekly ones (activity minutes, limits on added sugar, sodium, saturated fat).",
      "unlocks": "Apollo's week view shows the guideline targets with their source.",
@@ -716,7 +717,71 @@
      ],
      "id": "APO-GEM-14",
      "title": "Apollo: the key numbers of the current Dietary Guidelines for Americans and the Physical Activity Guidelines",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The ids are in; the values are not. Each value from FDC's own API or page.",
+     "unlocks": "Apollo can rank and total every food it knows.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/apollo/",
+      "https://fdc.nal.usda.gov/"
+     ],
+     "steps": [
+      "For each of the 120 foods: the 30 nutrients Apollo tracks, per 100 g, from the FDC record of the id you gave."
+     ],
+     "deliver": {
+      "file": "apollo_gemini_nutrients-120_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 120,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "food",
+       "type": "text",
+       "rule": "as in APO-GEM-13"
+      },
+      {
+       "name": "fdc_id",
+       "type": "number",
+       "rule": "the id"
+      },
+      {
+       "name": "values",
+       "type": "text",
+       "rule": "nutrient=value unit; nutrient=value unit ... for all 30"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "120 foods, 30 values each.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "APO-GEM-15",
+     "title": "Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13",
+     "due": "2026-12-08"
     }
    ]
   },

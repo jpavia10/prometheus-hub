@@ -2,26 +2,25 @@
 
 # Foundry · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. FDY-GEM-07 · Foundry: the certifications each of the 11 stage-1 builds would need before it could be sold
+## 1. FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief
 
 **Due:** 2026-12-08 · **State:** now
 
-**Why:** Your parts lists and power budgets made each invention buildable on a bench; selling one is a different bar.
+**Why:** Owner, 2026-11-24: 'I also want the foundry revamped'. The new Foundry shows each build as a project you can follow.
 
-**What it unlocks:** Each invention's build page shows the step after the prototype.
+**What it unlocks:** Foundry's builds read as real projects with real costs.
 
 **Read first:**
-- Your files foundry_gemini_bench-parts and foundry_gemini_power-budget (the 11 builds)
-- ecfr.gov (FCC 47 CFR Part 15), fcc.gov equipment authorization, cpsc.gov, ul.com standards catalogue, California Prop 65 (oehha.ca.gov), FDA device classification where it applies
+- https://jpavia10.github.io/prometheus-hub/pillars/foundry/
 
 **Do this:**
-1. For each build: the rules that apply (radio, unintentional radiator, battery, children's product, food contact, medical), the test or filing, and whether it can be self-declared (SDoC) or needs a lab.
+1. For each build: a one-line pitch, three milestones with what proves each, the stage-1 parts with prices and supplier links (FDY-GEM-05's list), the total, and a 2-sentence brief for a hero image.
 
-**Make:** `foundry_gemini_certification_{YYYYMMDD-HHMM}.json`
+**Make:** `foundry_gemini_showcase_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -29,31 +28,23 @@ Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `invention` (text): as in your files
-- `rule` (text): e.g. FCC Part 15 Subpart B
-- `why` (text): what in the build triggers it
-- `route` (text): SDoC, certification, listing
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+- `build` (text): as in Foundry
+- `pitch` (text): one line
+- `milestones` (text): 1 ...; 2 ...; 3 ...
+- `parts` (text): part (price, link); ...
+- `total` (number): US dollars
+- `image_brief` (text): two sentences
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
 **How many:** 11
 
-**Done when:** All 11 builds.
+**Done when:** 11 builds.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

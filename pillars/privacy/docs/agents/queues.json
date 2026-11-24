@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "privacy",
  "agents": [
   {
@@ -968,7 +968,7 @@
      "review": "Scored 9/10 (#162)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Privacy already walks Google, Microsoft and the phone; Amazon is the next account that holds the most about a household.",
      "unlocks": "Privacy gets an Amazon page like the Google one.",
@@ -1047,7 +1047,70 @@
      ],
      "id": "PRI-GEM-14",
      "title": "Privacy: an Amazon account, setting by setting (ads, Alexa recordings, Ring, browsing history, sharing)",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Amazon is done; Google holds the most.",
+     "unlocks": "Privacy gives a full Google checklist.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/privacy/"
+     ],
+     "steps": [
+      "Every privacy setting in myaccount.google.com: where it is, what it does, the private choice."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_google_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "setting",
+       "type": "text",
+       "rule": "name"
+      },
+      {
+       "name": "where",
+       "type": "text",
+       "rule": "the path"
+      },
+      {
+       "name": "private",
+       "type": "text",
+       "rule": "the choice"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every setting.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "PRI-GEM-15",
+     "title": "Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)",
+     "due": "2026-12-08"
     }
    ]
   },

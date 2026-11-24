@@ -2,26 +2,25 @@
 
 # Money · payoff simulator · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. MON-GEM-07 · Money: the 7 issuer-pricing cells still 'not stated', from the CFPB agreement database
+## 1. MON-GEM-08 · Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages
 
-**Due:** 2026-12-04 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Run 6 filled most of the gaps; 7 cells are left where the issuer's own page is silent.
+**Why:** Pricing is complete; the programs that lower it are the next lever.
 
-**What it unlocks:** Money's issuer table has no blanks.
+**What it unlocks:** Money can say which call to make.
 
 **Read first:**
-- Your file money_gemini_issuer-pricing-2_20261123-1112.json (the rows that say 'not stated')
-- consumerfinance.gov/credit-cards/agreements: each issuer's latest submitted agreement
+- https://jpavia10.github.io/prometheus-hub/pillars/money/
 
 **Do this:**
-1. For each 'not stated' cell, open the issuer's latest agreement in the CFPB database and copy the term.
+1. For each issuer: the hardship program, who qualifies, what it changes (APR, fees, payment), how to ask.
 
-**Make:** `money_gemini_issuer-pricing-3_{YYYYMMDD-HHMM}.json`
+**Make:** `money_gemini_hardship_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -29,31 +28,19 @@ Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `issuer` (text): 
-- `field` (text): min_payment or penalty_apr
-- `value` (text): as the agreement words it
-- `agreement_date` (date): YYYY-MM-DD
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `issuer` (text): name
+- `program` (text): name
+- `changes` (text): what
+- `ask` (text): how
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 7
-
-**Done when:** All 7 cells answered from an agreement.
+**Done when:** Every issuer.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

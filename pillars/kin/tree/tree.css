@@ -127,6 +127,17 @@ body[data-mode="records"] .tv-cap, body[data-mode="research"] .tv-cap { display:
 .tv-dh h2 { margin: 2px 0 2px; font: 600 27px/1.05 var(--serif); color: var(--ivory); }
 .tv-life { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
 .tv-relnote { margin: 0 0 4px; font-size: 11.5px; color: var(--rose); }
+.tv-cert { display: flex; align-items: center; gap: 7px; margin: 0 0 7px; font-size: 12px; color: var(--ivory); }
+.tv-cert i { position: relative; width: 54px; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.tv-cert i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--p); background: linear-gradient(90deg, var(--lav), var(--cyan), var(--gold)); }
+.tv-cert small, .tv-certrow small { color: var(--faint); font-size: 10.5px; }
+.tv-certs { display: grid; gap: 2px; }
+.tv-certrow { display: grid; grid-template-columns: minmax(0, 1fr) 90px 62px; grid-template-rows: auto auto; column-gap: 10px; align-items: center; padding: 6px 4px; border: 0; border-bottom: 1px solid var(--line); background: none; text-align: left; cursor: pointer; color: inherit; }
+.tv-certrow b { font: 600 15px/1.2 var(--serif); color: var(--ivory); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tv-certrow i { height: 5px; border-radius: 3px; background: rgba(255, 255, 255, .08); overflow: hidden; }
+.tv-certrow em { display: block; height: 100%; } .tv-certrow em.hi { background: var(--gold); } .tv-certrow em.mid { background: var(--cyan); } .tv-certrow em.lo { background: var(--lav); } .tv-certrow em.no { background: var(--rose); }
+.tv-certrow span { font-size: 12.5px; color: var(--ivory); text-align: right; }
+.tv-certrow .why { grid-column: 1 / -1; }
 .tv-st { display: inline-block; padding: 3px 9px; border-radius: 999px; font: 500 10.5px/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 50%, transparent); background: color-mix(in srgb, var(--c) 10%, transparent); }
 .tv-sum { margin: 16px 0 0; font: 500 18px/1.42 var(--serif); color: #e9e2d0; }
 .tv-note { color: var(--muted); font-size: 13px; }

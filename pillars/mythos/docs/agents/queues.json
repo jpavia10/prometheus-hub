@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "mythos",
  "agents": [
   {
@@ -254,7 +254,7 @@
      "review": "Done 2026-11-22 (Claude): Public-domain texts for the 3 classical archetypes; the 8 personal-canon items honestly 'not stated'. 7 of 8 quotes Claude opened hold. Score 10/10 (#118)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Mythos holds Joseph's own creative work; registering it is what lets him enforce it.",
      "unlocks": "Mythos shows how to register a finished piece and what it costs.",
@@ -333,7 +333,75 @@
      ],
      "id": "MYT-GEM-05",
      "title": "Mythos: registering Joseph's own stories and game scripts with the US Copyright Office (eCO): form, fee, deposit, time",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "MYT-GEM-05 found the route; this is the filing.",
+     "unlocks": "Joseph can file his own registrations.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/mythos/"
+     ],
+     "steps": [
+      "For a screenplay, a game script and a video game: the form, the deposit format, group options, the fee, from copyright.gov."
+     ],
+     "deliver": {
+      "file": "mythos_gemini_copyright-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "work",
+       "type": "text",
+       "rule": "which"
+      },
+      {
+       "name": "form",
+       "type": "text",
+       "rule": "which"
+      },
+      {
+       "name": "deposit",
+       "type": "text",
+       "rule": "format"
+      },
+      {
+       "name": "fee",
+       "type": "number",
+       "rule": "US dollars"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "All three.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "MYT-GEM-06",
+     "title": "Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)",
+     "due": "2026-12-08"
     }
    ]
   },

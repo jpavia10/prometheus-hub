@@ -2,165 +2,44 @@
 
 # Hephaestus Hearth · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HEA-GEM-29 · Hearth: Kern County's building permit fee for the 23 x 10 ft deck, from an open page
-
-**Due:** 2026-12-05 · **State:** now
-
-**Why:** Run 6 found the state surcharges but Kern's fee PDF was blocked; the permit fee itself is still 'not stated'.
-
-**What it unlocks:** Hearth's deck plan shows the permit cost.
-
-**Read first:**
-- Kern County Public Works, Building and Safety: fee schedule, valuation table and plan-check fee pages (kernpublicworks.com), Kern's current fee resolution (Board of Supervisors agenda attachments)
-
-**Do this:**
-1. Find the fee for a residential deck: by valuation (and the valuation per square foot Kern uses) or a flat fee; the plan-check fee; any technology or records fee.
-2. Work out the total for 230 sq ft in 'math'.
-
-**Make:** `hearth_gemini_deck-permit-fee-2_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `fee` (text): 
-- `rate` (text): as printed
-- `amount` (text): $ or 'not stated'
-- `math` (text): the arithmetic for 230 sq ft
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** Every fee for the deck, or the page that says it cannot be estimated online.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. HEA-GEM-30 · Hearth: deck stains and sealers for 4,600 ft (UV, snow, freeze-thaw): makers' data sheets
-
-**Due:** 2026-12-07 · **State:** now
-
-**Why:** The new deck's finish decides how long it lasts in mountain sun and snow.
-
-**What it unlocks:** Hearth's deck plan names a finish with its recoat interval and the temperatures it can be applied in.
-
-**Read first:**
-- Makers' technical data sheets (Behr, Sherwin-Williams SuperDeck, Cabot, Olympic, Ready Seal, Penofin)
-
-**Do this:**
-1. For 8 to 12 products: type (oil, water, solid, semi-transparent), application temperature range, dry time before rain, recoat interval, coverage per gallon.
-
-**Make:** `hearth_gemini_deck-finish_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `product` (text): 
-- `type` (text): 
-- `apply_temp` (text): as printed
-- `rain_free` (text): hours
-- `recoat` (text): as printed
-- `coverage` (text): sq ft per gallon
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** 8 to 12 products from their own data sheets.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 3. HEA-GEM-31 · Hearth: the deck's members checked from AWC's own NDS documents, every factor and every step shown
+## 1. HEA-GEM-32 · Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them
 
 **Due:** 2026-12-08 · **State:** now
 
-**Why:** Your structural packet worked the deck through the NDS adjustment factors at 100 psf snow, but its table values came from copies (a lumber dealer, a Purdue course PDF, preservedwood.org). A beam check is only as good as the table value under it.
+**Why:** Fee, finish and members are in; the inspections are the path to a legal deck.
 
-**What it unlocks:** Hearth's deck card shows a member-by-member check (joists, beam, ledger, posts) the owner can hand to a plan checker.
+**What it unlocks:** Hearth turns the deck into a checklist that passes.
 
 **Read first:**
-- awc.org: the NDS 2018 (or 2024) and its Supplement (Tables 4A, 4B adjustment factors), the free 'NDS 2018 view-only' pages and AWC's Span Calculator
-- Your supp packet hearth_gemini_supp-structural-mechanics-model_20261123-1537.json (the members and loads)
-- ASCE 7-22 snow at the site from your HEA-GEM-26 (100 psf ground; the flat-roof and drift rules apply to a deck only as the code says)
-- 2022 California Residential Code R507 (deck tables) from iccsafe.org / the state's own copy
+- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
 
 **Do this:**
-1. For each member (joist, beam, ledger fasteners, post): the species and grade, the reference design value (Fb, Fv, Fc, E) quoted from AWC's own table with the table and page.
-2. Every adjustment factor (CD, CM, Ct, CL, CF, Cfu, Ci, Cr) with its value, the table it comes from and why it applies.
-3. The load combination used (D + S, D + L) and the demand: bending, shear, deflection and bearing, each worked with the arithmetic shown in the 'math' field.
-4. The R507 prescriptive table answer for the same span next to the engineered one; say which governs.
-5. A row per member that passes or fails, by how much.
+1. Each inspection Kern County requires for a residential deck, what is checked at each, how to request it, and the common failures, from the county's own pages and the CRC.
 
-**Make:** `hearth_gemini_deck-members_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_deck-inspections_{YYYYMMDD-HHMM}.json`
 
-**Save in:** Prometheus Hub/Pillars/Hephaestus Hearth/incoming (AI drop files)/
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `member` (text): joist, beam, ledger, post, ...
-- `quantity` (text): the design value, factor or check
-- `value` (number): the number
-- `unit` (text): psi, lb, in, ratio
-- `math` (text): the arithmetic, with each input named
-- `url` (url): the AWC, ICC or ASCE page you opened
-- `quote` (text): copied word for word, 300 characters at most
-- `result` (text): pass, fail, or input
+- `inspection` (text): which
+- `checks` (text): what the inspector looks at
+- `book` (text): how to request it
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** Every member of the deck checked for bending, shear, deflection and bearing from AWC's own values, with the R507 answer beside it.
+**Done when:** Every inspection listed.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

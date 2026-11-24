@@ -2,55 +2,48 @@
 
 # Argus Album · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ARG-GEM-13 · Argus: what Google Takeout gives for Google Photos (the JSON beside each photo), and how to export only some albums
+## 1. ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image
 
-**Due:** 2026-12-06 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Odyssey's past trips come from photo dates and locations; Takeout's sidecar files keep the time and place even when an edit strips the EXIF.
+**Why:** ARG-GEM-13 described the format; the importer needs the edge cases.
 
-**What it unlocks:** Argus and Odyssey can read a Takeout export directly.
+**What it unlocks:** Argus imports a Takeout without losing dates, places or edits.
 
 **Read first:**
-- support.google.com/accounts (Takeout: Google Photos), support.google.com/photos (download, location, edits), Google's Data Portability API docs (developers.google.com/data-portability) for the Photos schema
+- https://jpavia10.github.io/prometheus-hub/pillars/argus/
+- https://support.google.com/accounts/answer/3024190
 
 **Do this:**
-1. How to export all photos or chosen albums, the archive size limits and formats, and every field the photo's JSON sidecar holds (taken time, geoData, geoDataExif, people, description), as the documentation names them.
-2. Say when a field is only described in Google's API docs and not in the help pages.
+1. 25 cases, one row each: the sidecar's file name pattern, its JSON fields, the image it belongs to, and the rule that pairs them.
 
-**Make:** `argus_gemini_takeout_{YYYYMMDD-HHMM}.json`
+**Make:** `argus_gemini_takeout-cases_{YYYYMMDD-HHMM}.json`
 
-**Save in:** Prometheus Hub/Pillars/Argus Album/incoming (AI drop files)/
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `item` (text): a step or a field name
-- `what` (text): 
-- `documented_in` (text): help page or API docs
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `case` (text): what kind of photo
+- `sidecar_pattern` (text): file name pattern
+- `fields` (text): the JSON keys present
+- `pair_rule` (text): how to match it to its image
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+**How many:** 25
 
-**Done when:** The export steps and every documented field.
+**Done when:** 25 cases.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

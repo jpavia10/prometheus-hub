@@ -1,6 +1,8 @@
 <!-- doc-status: current; normative: yes -->
 # Prometheus: start here (any AI, every pillar)
 
+**New AI? Read `CONTRIBUTING.md` first** (one page: what Prometheus is, your homework, how to deliver, the standard, privacy, how you are checked). Your feedback: `collaborators/FEEDBACK_{ai}.md`.
+
 Joseph's projects are **pillars** that open from one desk, Prometheus Hub. Each pillar is its own app with its own GitHub repo and its own Drive folder, and every pillar works the same way, so you always know where to look. **Titan Reliquary is the one exception:** it keeps its own rules (`AI_START_HERE.md` in `jpavia10/titan-reliquary-preview`), its own research loop and its own Drive folder `Titan Reliquary/`.
 
 ## 1. "Do you have homework?"

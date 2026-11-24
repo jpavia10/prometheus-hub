@@ -2,81 +2,249 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 20 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. KIN-GEM-06 · Kin: a US passport for a child under 16 in 2026-27 (DS-11, both parents, DS-3053), fees and times
+## 1. KIN-GEM-15 · Kin, Ancestry hints: every hint on the Pavia line, read and decided (pavia)
 
-**Due:** 2026-12-06 · **State:** now
+**Due:** 2026-12-01 · **State:** now
 
-**Why:** A family trip abroad (the Philippines is on the list) needs the children's passports first; a child's passport has rules an adult's does not.
+**Why:** Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).
 
-**What it unlocks:** Kin shows each child's passport steps and when to start.
+**What it unlocks:** Each person's facts move from 'compiled tree' to 'record'; the certainty of each link rises or falls with a reason; Joseph's own Ancestry tree carries the sources.
 
 **Read first:**
-- travel.state.gov: 'Children under 16', DS-11, DS-3053 (statement of consent), fees, processing times, where to apply (acceptance facilities)
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people: P-francis, P-josephp, P-grace, P-caroline, P-charlesp.
 
 **Do this:**
-1. Every rule: who must appear, what consent form if one parent cannot, the documents (birth certificate, parents' IDs, photo), the fees (book, card, execution, expedite), processing times, how long the passport is valid.
-2. General rules from the official pages; Kin applies them to each child.
+1. Open every person on this line in the Ancestry tree and open every hint (records, photos, member trees), including the ones below the first page.
+2. One row per hint: its collection, title and record URL, the whole index entry word for word, and your decision: accept (three identifiers agree), reject (say which identifier fails) or hold (not enough).
+3. Accepted record hints: attach them in the Ancestry tree and write the change in the 'change' field (before -> after). Never accept a 'potential parent' or a member tree's parents without a record.
+4. Member photos: open each, save the image to Drive Photos & Scans/by-person/<id>/ and say who uploaded it and what its caption says.
+5. After each person: the certainty of their link to their parents on the task's scale, with the records behind it.
+6. Last row: kind summary: hints read, accepted, rejected, held; the five facts that changed most.
 
-**Make:** `kin_gemini_child-passport_{YYYYMMDD-HHMM}.json`
+**Make:** `kin_gemini_hints-pavia_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per row, exactly the fields below`
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `rule` (text): 
-- `value` (text): 
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `kind` (text): hint (one Ancestry hint), edit (a change you made to the tree), or summary (the last row)
+- `person_id` (text): the person's id in data.js (P-...), or NEW-<name> for someone not in the tree yet
+- `collection` (text): the Ancestry collection or member tree, exactly as Ancestry names it
+- `hint` (text): the hint's title as shown
+- `url` (url): the record or media page (not the hints list)
+- `transcription` (text): the whole index entry or record, word for word
+- `decision` (text): accept, reject or hold
+- `identity` (text): at least three identifiers compared with what data.js proves (dates, places, spouse, parents, children); for reject, the one that fails
+- `change` (text): what you changed in the Ancestry tree because of it, before -> after, or 'none'
+- `certainty` (0-100): how sure the person's link to their parents is after this hint (the scale in the task)
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** Every rule on the State Department's child-passport pages.
+**Done when:** Every hint on every person of the line read and decided, with the tree edits listed.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens ten accepted hints at random and compares the record with the row, field by field.
+- Claude opens five rejected hints and checks the failing identifier.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
 
-## 2. KIN-GEM-07 · Kin lineage: Joseph's 1912 crossing, Hamburg to New York, every ship and every spelling (Q1, C9)
+## 2. KIN-GEM-16 · Kin, Ancestry hints: every hint on the Kirkland line, read and decided (kirkland)
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-01 · **State:** now
 
-**Why:** His petition swears Hamburg about 13 Aug 1912 and New York 23 Aug 1912 on a ship whose name reads like 'Columbia'; the only manifest found so far (President Lincoln, 30 Sep 1912) is five weeks off and probably another man; the great-uncle suggests the Kaiserin Auguste Victoria. The arrival manifest is the record most likely to name his parents' village, a relative at home and who he was joining in America.
+**Why:** Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).
 
-**What it unlocks:** The crossing on the tree and the map gets its ship; C9 closes; the manifest's 'nearest relative' opens the generation above him (Q11).
+**What it unlocks:** Each person's facts move from 'compiled tree' to 'record'; the certainty of each link rises or falls with a reason; Joseph's own Ancestry tree carries the sources.
 
 **Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
-- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.
-- Steve Morse's One-Step forms (stevemorse.org/ellis/ and the ship lists by date) over the Statue of Liberty-Ellis Island Foundation database; heritage.statueofliberty.org
-- FamilySearch 'New York Passenger Arrival Lists (Ellis Island), 1892-1924' (images: say 'needs sign-in' with the film and image number if you cannot open them)
-- Hamburg Passenger Lists 1850-1934 (Staatsarchiv Hamburg 373-7 I, VIII A 1; indexed on Ancestry), for the matching departure
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people: P-glenda, P-buster, P-joy, P-jessec, P-juliaw, P-chester, P-ada and every id above them.
 
 **Do this:**
-1. Rows of kind 'search' for every ship that reached New York from Hamburg (direct, or by Southampton or Cherbourg) from 20 to 26 Aug 1912: ship, line, Hamburg departure, arrival date, and whether it carried steerage.
-2. Search every spelling with the Ellis Island database's sounds-like option and on Morse's form: Termenas, Terminas, Termenus, Termens, Termen, Termanas, Tirmenas, Tarmenas; given names Juozas, Juozapas, Josef, Joseph, Józef, Osip, Iosif; age 17 to 21; arrivals 1911-1913. One row per search with its result count, also when empty.
-3. Read every candidate's whole manifest line on both sheets (the list carries on to a second page: height, complexion, hair, eyes, marks, birthplace, nearest relative at home, who he joins and where, who paid, money, earlier visits). Transcribe every column word for word.
-4. For a candidate that matches, find the same voyage's Hamburg departure list and transcribe his line.
-5. Settle or narrow C9 in the summary row: which ship, why, and what still disagrees (the petition's 'Columbia', the 13 Aug departure, the 23 Aug arrival).
+1. Open every person on this line in the Ancestry tree and open every hint (records, photos, member trees), including the ones below the first page.
+2. One row per hint: its collection, title and record URL, the whole index entry word for word, and your decision: accept (three identifiers agree), reject (say which identifier fails) or hold (not enough).
+3. Accepted record hints: attach them in the Ancestry tree and write the change in the 'change' field (before -> after). Never accept a 'potential parent' or a member tree's parents without a record.
+4. Member photos: open each, save the image to Drive Photos & Scans/by-person/<id>/ and say who uploaded it and what its caption says.
+5. After each person: the certainty of their link to their parents on the task's scale, with the records behind it.
+6. Last row: kind summary: hints read, accepted, rejected, held; the five facts that changed most.
 
-**Make:** `kin_gemini_lineage-arrival-1912_{YYYYMMDD-HHMM}.json`
+**Make:** `kin_gemini_hints-kirkland_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): hint (one Ancestry hint), edit (a change you made to the tree), or summary (the last row)
+- `person_id` (text): the person's id in data.js (P-...), or NEW-<name> for someone not in the tree yet
+- `collection` (text): the Ancestry collection or member tree, exactly as Ancestry names it
+- `hint` (text): the hint's title as shown
+- `url` (url): the record or media page (not the hints list)
+- `transcription` (text): the whole index entry or record, word for word
+- `decision` (text): accept, reject or hold
+- `identity` (text): at least three identifiers compared with what data.js proves (dates, places, spouse, parents, children); for reject, the one that fails
+- `change` (text): what you changed in the Ancestry tree because of it, before -> after, or 'none'
+- `certainty` (0-100): how sure the person's link to their parents is after this hint (the scale in the task)
+
+**Done when:** Every hint on every person of the line read and decided, with the tree edits listed.
+
+**How Claude checks it:**
+- Claude opens ten accepted hints at random and compares the record with the row, field by field.
+- Claude opens five rejected hints and checks the failing identifier.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 3. KIN-GEM-17 · Kin, Ancestry hints: every hint on the Sanders line, read and decided (sanders)
+
+**Due:** 2026-12-01 · **State:** now
+
+**Why:** Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.
+
+**What it unlocks:** Each person's facts move from 'compiled tree' to 'record'; the certainty of each link rises or falls with a reason; Joseph's own Ancestry tree carries the sources.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people: P-charles, P-charles-sr, P-bettyf.
+
+**Do this:**
+1. Open every person on this line in the Ancestry tree and open every hint (records, photos, member trees), including the ones below the first page.
+2. One row per hint: its collection, title and record URL, the whole index entry word for word, and your decision: accept (three identifiers agree), reject (say which identifier fails) or hold (not enough).
+3. Accepted record hints: attach them in the Ancestry tree and write the change in the 'change' field (before -> after). Never accept a 'potential parent' or a member tree's parents without a record.
+4. Member photos: open each, save the image to Drive Photos & Scans/by-person/<id>/ and say who uploaded it and what its caption says.
+5. After each person: the certainty of their link to their parents on the task's scale, with the records behind it.
+6. Last row: kind summary: hints read, accepted, rejected, held; the five facts that changed most.
+
+**Make:** `kin_gemini_hints-sanders_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): hint (one Ancestry hint), edit (a change you made to the tree), or summary (the last row)
+- `person_id` (text): the person's id in data.js (P-...), or NEW-<name> for someone not in the tree yet
+- `collection` (text): the Ancestry collection or member tree, exactly as Ancestry names it
+- `hint` (text): the hint's title as shown
+- `url` (url): the record or media page (not the hints list)
+- `transcription` (text): the whole index entry or record, word for word
+- `decision` (text): accept, reject or hold
+- `identity` (text): at least three identifiers compared with what data.js proves (dates, places, spouse, parents, children); for reject, the one that fails
+- `change` (text): what you changed in the Ancestry tree because of it, before -> after, or 'none'
+- `certainty` (0-100): how sure the person's link to their parents is after this hint (the scale in the task)
+
+**Done when:** Every hint on every person of the line read and decided, with the tree edits listed.
+
+**How Claude checks it:**
+- Claude opens ten accepted hints at random and compares the record with the row, field by field.
+- Claude opens five rejected hints and checks the failing identifier.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 4. KIN-GEM-18 · Kin, Ancestry hints: every hint on the Seconder-Termenas line, read and decided (seconder-termenas)
+
+**Due:** 2026-12-01 · **State:** now
+
+**Why:** Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).
+
+**What it unlocks:** Each person's facts move from 'compiled tree' to 'record'; the certainty of each link rises or falls with a reason; Joseph's own Ancestry tree carries the sources.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people: P-gp, P-bob, P-ggm, P-joseph, P-della, P-rozys, P-kostantina, P-michael-m, P-eva-v, P-betty.
+
+**Do this:**
+1. Open every person on this line in the Ancestry tree and open every hint (records, photos, member trees), including the ones below the first page.
+2. One row per hint: its collection, title and record URL, the whole index entry word for word, and your decision: accept (three identifiers agree), reject (say which identifier fails) or hold (not enough).
+3. Accepted record hints: attach them in the Ancestry tree and write the change in the 'change' field (before -> after). Never accept a 'potential parent' or a member tree's parents without a record.
+4. Member photos: open each, save the image to Drive Photos & Scans/by-person/<id>/ and say who uploaded it and what its caption says.
+5. After each person: the certainty of their link to their parents on the task's scale, with the records behind it.
+6. Last row: kind summary: hints read, accepted, rejected, held; the five facts that changed most.
+
+**Make:** `kin_gemini_hints-termenas_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): hint (one Ancestry hint), edit (a change you made to the tree), or summary (the last row)
+- `person_id` (text): the person's id in data.js (P-...), or NEW-<name> for someone not in the tree yet
+- `collection` (text): the Ancestry collection or member tree, exactly as Ancestry names it
+- `hint` (text): the hint's title as shown
+- `url` (url): the record or media page (not the hints list)
+- `transcription` (text): the whole index entry or record, word for word
+- `decision` (text): accept, reject or hold
+- `identity` (text): at least three identifiers compared with what data.js proves (dates, places, spouse, parents, children); for reject, the one that fails
+- `change` (text): what you changed in the Ancestry tree because of it, before -> after, or 'none'
+- `certainty` (0-100): how sure the person's link to their parents is after this hint (the scale in the task)
+
+**Done when:** Every hint on every person of the line read and decided, with the tree edits listed.
+
+**How Claude checks it:**
+- Claude opens ten accepted hints at random and compares the record with the row, field by field.
+- Claude opens five rejected hints and checks the failing identifier.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 5. KIN-GEM-28 · Kin: the 1950 census households of Barbara and Della Rimsha, Joseph and Grace Pavia, and the Sanders families, transcribed whole (Q19, Q26)
+
+**Due:** 2026-12-01 · **State:** now
+
+**Why:** The 1950 census index put Barbara (16) with her mother Della E. Rimsha in Detroit; the image itself names every household member, their ages, birthplaces and the street. The Pavia and Sanders households of 1950 are already in the archive as images.
+
+**What it unlocks:** The tree's links move from compiled trees to records; the certainties follow.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+
+**Do this:**
+1. Find each household's image (NARA 1950 census: enumeration district, sheet, line) and transcribe every line of the household, every column, word for word.
+2. Barbara and Della Rimsha: who else lives there (Mr. Rimsha? Betty?), the street, Della's age and birthplace.
+3. Joseph and Grace Pavia (ED 85-1999 sheet 9): every member; Grace's age and birthplace; Joseph's birthplace (Malta? Italy?).
+4. Charles D. and Elizabeth Sanders (Wayne, ED 82-264) and Charles L. and Elizabeth M. Sanders (Dearborn, ED 84-92): which, if either, is the Sanders line (Charles Sanders and Betty Flemming); the identity argument either way.
+
+**Make:** `kin_gemini_lineage-1950_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -100,53 +268,256 @@ Updated 2026-11-24 03:14 UTC · 9 open · Rules for every pillar: https://github
 - `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
 - `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
 
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** Every ship from Hamburg arriving 20-26 Aug 1912 listed, every spelling searched (rows even when empty), and either his two-sheet manifest line transcribed with its reference or a closed negative search that says exactly where his record is not.
+**Done when:** All four households transcribed whole from the images, with ED, sheet and line, and the identity argued.
 
 **How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
 
 **Not done (sent back) if:**
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-## 3. KIN-GEM-08 · Kin lineage: the whole naturalization file, Boston 1919 and Detroit 1916, transcribed (Q2, Q3)
+## 6. KIN-GEM-19 · Kin, certainty-scored pedigree: the Pavia line as far back as the records go
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** The petition was read only for its headline facts. Its back page (the witnesses' affidavits, the oath, the court's order) and the declaration of intention he filed at Detroit in 1916 are where a soldier's naturalization records his town of birth, his ship and his physical description in his own words.
+**Why:** Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).
 
-**What it unlocks:** Every 1919 fact on the tree gets its full record; the declaration may name his town and ship independently of the petition (C9, Q11).
+**What it unlocks:** The tree gains every generation the records support, each link with an honest percentage; the false links online are named so nobody adds them.
 
 **Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
-- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.
-- NARA catalog: M1368 'Petitions and Records of Naturalizations of the U.S. District and Circuit Courts of the District of Massachusetts, 1906-1929', roll 315, images 0913-0914 (NAID 59700981, 59700983): catalog.archives.gov
-- The seed's own images naturalization-petition-1919, naturalization-oath-1919, naturalization-cert-1919, naturalization-index
-- For the 1916 declaration: Wayne County Circuit Court naturalization records (Archives of Michigan; Detroit Public Library Burton Historical Collection); FamilySearch 'Michigan, Naturalization Records'; NARA Chicago (U.S. District Court, Detroit) if the petition names that court instead
-- USCIS Genealogy Program (uscis.gov/records/genealogy): index search and record request for certificate 1229058
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people to start from: P-francis, P-josephp, P-grace, P-caroline, P-charlesp. The certainty each link has now: L.certainty in the seed (Claude's figure; your earlier figure as 'gemini' where Claude set it lower).
 
 **Do this:**
-1. Transcribe the petition, both sides, every printed and handwritten word: the petitioner's statements, the two witnesses (names, addresses, occupations, how long they knew him), the affidavits, the oath of allegiance, the order of the court and every stamp and file note.
-2. Read from the petition exactly which court, volume and number his 1916 declaration was filed in; then find that declaration (search rows for every place it could be, also when empty) and transcribe it whole.
-3. Look for a certificate of arrival filed with the petition (1906 law; soldiers naturalized under the Act of 9 May 1918 were often excused): say which applies, quoting the petition.
-4. USCIS: find whether a C-file exists for certificate 1229058 (index search) and write, as a 'lead' row, the exact request the owner files (form or online request, fee, every identifier filled in, how long it takes). Do not file it.
-5. Summary row: every fact the file adds or contradicts, against the seed's events and conflicts.
+1. For every person on the line, from the youngest up: their parents, with the certainty of the link on the scale and the records behind it by name (census year and county, will, marriage, death certificate, obituary).
+2. Keep going up each branch until no record supports a further link; then one more row: the best candidate parents and why they are under 40%.
+3. List every link you meet online that is wrong (kind disproved): who claims it, where, and the record that disproves it.
+4. Never give 90 or more to a link that rests on compiled trees or indexes alone; a primary record must name the parent.
+5. Last row: kind summary: the deepest generation reached on each branch, how many links at each band, and the records that would raise the weakest five.
 
-**Make:** `kin_gemini_lineage-naturalization_{YYYYMMDD-HHMM}.json`
+**Make:** `kin_gemini_pedigree-pavia_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): link (one parent-to-child link), disproved (a link seen online that is wrong), or summary
+- `child` (text): data.js id (P-...) or NEW-<given>-<surname>-<birth year>
+- `child_name` (text): full name, birth-death years
+- `parent` (text): id or NEW-...
+- `parent_name` (text): full name, birth-death years
+- `role` (text): father or mother
+- `certainty` (0-100): the scale: 90-100 a primary record names the parent; 70-89 indexes and consensus agree; 40-69 working hypothesis; under 40 disputed or disproved
+- `basis` (text): the records behind the figure, by name and date (not 'FamilySearch')
+- `urls` (text): every record page used, separated by ' | '
+- `against` (text): anything that argues against the link, or 'nothing found'
+
+**Done when:** Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.
+
+**How Claude checks it:**
+- Claude checks the records of fifteen links at random against their percentage.
+- Claude rejects the file if any 90+ link rests on trees or indexes alone.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 7. KIN-GEM-20 · Kin, certainty-scored pedigree: the Kirkland line as far back as the records go
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).
+
+**What it unlocks:** The tree gains every generation the records support, each link with an honest percentage; the false links online are named so nobody adds them.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people to start from: P-glenda, P-buster, P-joy, P-jessec, P-juliaw, P-chester, P-ada and every id above them. The certainty each link has now: L.certainty in the seed (Claude's figure; your earlier figure as 'gemini' where Claude set it lower).
+
+**Do this:**
+1. For every person on the line, from the youngest up: their parents, with the certainty of the link on the scale and the records behind it by name (census year and county, will, marriage, death certificate, obituary).
+2. Keep going up each branch until no record supports a further link; then one more row: the best candidate parents and why they are under 40%.
+3. List every link you meet online that is wrong (kind disproved): who claims it, where, and the record that disproves it.
+4. Never give 90 or more to a link that rests on compiled trees or indexes alone; a primary record must name the parent.
+5. Last row: kind summary: the deepest generation reached on each branch, how many links at each band, and the records that would raise the weakest five.
+
+**Make:** `kin_gemini_pedigree-kirkland_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): link (one parent-to-child link), disproved (a link seen online that is wrong), or summary
+- `child` (text): data.js id (P-...) or NEW-<given>-<surname>-<birth year>
+- `child_name` (text): full name, birth-death years
+- `parent` (text): id or NEW-...
+- `parent_name` (text): full name, birth-death years
+- `role` (text): father or mother
+- `certainty` (0-100): the scale: 90-100 a primary record names the parent; 70-89 indexes and consensus agree; 40-69 working hypothesis; under 40 disputed or disproved
+- `basis` (text): the records behind the figure, by name and date (not 'FamilySearch')
+- `urls` (text): every record page used, separated by ' | '
+- `against` (text): anything that argues against the link, or 'nothing found'
+
+**Done when:** Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.
+
+**How Claude checks it:**
+- Claude checks the records of fifteen links at random against their percentage.
+- Claude rejects the file if any 90+ link rests on trees or indexes alone.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 8. KIN-GEM-21 · Kin, certainty-scored pedigree: the Sanders line as far back as the records go
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.
+
+**What it unlocks:** The tree gains every generation the records support, each link with an honest percentage; the false links online are named so nobody adds them.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people to start from: P-charles, P-charles-sr, P-bettyf. The certainty each link has now: L.certainty in the seed (Claude's figure; your earlier figure as 'gemini' where Claude set it lower).
+
+**Do this:**
+1. For every person on the line, from the youngest up: their parents, with the certainty of the link on the scale and the records behind it by name (census year and county, will, marriage, death certificate, obituary).
+2. Keep going up each branch until no record supports a further link; then one more row: the best candidate parents and why they are under 40%.
+3. List every link you meet online that is wrong (kind disproved): who claims it, where, and the record that disproves it.
+4. Never give 90 or more to a link that rests on compiled trees or indexes alone; a primary record must name the parent.
+5. Last row: kind summary: the deepest generation reached on each branch, how many links at each band, and the records that would raise the weakest five.
+
+**Make:** `kin_gemini_pedigree-sanders_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): link (one parent-to-child link), disproved (a link seen online that is wrong), or summary
+- `child` (text): data.js id (P-...) or NEW-<given>-<surname>-<birth year>
+- `child_name` (text): full name, birth-death years
+- `parent` (text): id or NEW-...
+- `parent_name` (text): full name, birth-death years
+- `role` (text): father or mother
+- `certainty` (0-100): the scale: 90-100 a primary record names the parent; 70-89 indexes and consensus agree; 40-69 working hypothesis; under 40 disputed or disproved
+- `basis` (text): the records behind the figure, by name and date (not 'FamilySearch')
+- `urls` (text): every record page used, separated by ' | '
+- `against` (text): anything that argues against the link, or 'nothing found'
+
+**Done when:** Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.
+
+**How Claude checks it:**
+- Claude checks the records of fifteen links at random against their percentage.
+- Claude rejects the file if any 90+ link rests on trees or indexes alone.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 9. KIN-GEM-22 · Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).
+
+**What it unlocks:** The tree gains every generation the records support, each link with an honest percentage; the false links online are named so nobody adds them.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people to start from: P-gp, P-bob, P-ggm, P-joseph, P-della, P-rozys, P-kostantina, P-michael-m, P-eva-v, P-betty. The certainty each link has now: L.certainty in the seed (Claude's figure; your earlier figure as 'gemini' where Claude set it lower).
+
+**Do this:**
+1. For every person on the line, from the youngest up: their parents, with the certainty of the link on the scale and the records behind it by name (census year and county, will, marriage, death certificate, obituary).
+2. Keep going up each branch until no record supports a further link; then one more row: the best candidate parents and why they are under 40%.
+3. List every link you meet online that is wrong (kind disproved): who claims it, where, and the record that disproves it.
+4. Never give 90 or more to a link that rests on compiled trees or indexes alone; a primary record must name the parent.
+5. Last row: kind summary: the deepest generation reached on each branch, how many links at each band, and the records that would raise the weakest five.
+
+**Make:** `kin_gemini_pedigree-termenas_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): link (one parent-to-child link), disproved (a link seen online that is wrong), or summary
+- `child` (text): data.js id (P-...) or NEW-<given>-<surname>-<birth year>
+- `child_name` (text): full name, birth-death years
+- `parent` (text): id or NEW-...
+- `parent_name` (text): full name, birth-death years
+- `role` (text): father or mother
+- `certainty` (0-100): the scale: 90-100 a primary record names the parent; 70-89 indexes and consensus agree; 40-69 working hypothesis; under 40 disputed or disproved
+- `basis` (text): the records behind the figure, by name and date (not 'FamilySearch')
+- `urls` (text): every record page used, separated by ' | '
+- `against` (text): anything that argues against the link, or 'nothing found'
+
+**Done when:** Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.
+
+**How Claude checks it:**
+- Claude checks the records of fifteen links at random against their percentage.
+- Claude rejects the file if any 90+ link rests on trees or indexes alone.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 10. KIN-GEM-29 · Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26)
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** Francis's parents are Joseph and Grace by the 1940 census and his siblings' obituaries; one tree says Lucrezia Calleja. The Social Security applications of their children name the mother in full.
+
+**What it unlocks:** The tree's links move from compiled trees to records; the certainties follow.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+
+**Do this:**
+1. Caroline Rita Pavia (b. 27 Jun 1927) and Charles P. Pavia (d. 16 Apr 2009): Social Security Applications and Claims Index and NUMIDENT, both parents' names as written.
+2. Joseph and Grace's marriage (Wayne County, about 1925-1927), the 1930 and 1940 censuses (image, every column), Joseph's arrival and naturalization (if foreign-born), his 1942 'old man's' draft card (born 1899).
+3. Lucrezia Calleja: is she Grace? Every record under that name in Detroit 1920-1960.
+4. Compare with the Maltese Pavia family of Erminia Diedo (a different Joseph Pavia) so the two are never mixed.
+
+**Make:** `kin_gemini_lineage-pavia_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -170,52 +541,39 @@ Updated 2026-11-24 03:14 UTC · 9 open · Rules for every pillar: https://github
 - `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
 - `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
 
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** The petition and its back page transcribed whole; the declaration found and transcribed, or every place searched listed with its result; the USCIS request ready for the owner.
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
 
 **How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
 
 **Not done (sent back) if:**
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-## 4. KIN-GEM-10 · Kin lineage: Della's side: the 1922 Brooklyn certificate and license, her parents, Malkitus or Matukaitis (Q5, Q14, C3)
+## 11. KIN-GEM-30 · Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27)
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-05 · **State:** now
 
-**Why:** Everything about Della comes from one index line and one mention. The 1922 certificate (no. 4615, Kings) and the marriage license affidavit carry both parties' birthplaces, residences and parents in their own words, and settle Malkitus versus Matukaitis.
+**Why:** Della E. Rimsha in 1950: she remarried after Joseph died in 1935. Her later records name her parents, her birth date and place, and close her life.
 
-**What it unlocks:** Della becomes a researched person on the tree with her parents; C3 closes.
+**What it unlocks:** The tree's links move from compiled trees to records; the certainties follow.
 
 **Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
-- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.
-- NYC Municipal Archives Historical Vital Records (a860-historicalvitalrecords.nyc.gov): marriage certificates by borough, year and number, free
-- The NYC City Clerk marriage license records 1908-1949 (the license affidavit; index at nycmarriageindex.com from Reclaim the Records)
-- US censuses 1910-1950 for Michael and Eva Malkitus / Matukaitis and their children; SSDI and the Michigan death index for Della (needs-sign-in rows where blocked)
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
 
 **Do this:**
-1. Open certificate 4615 of 1922, Kings, and transcribe every field (both parties: residence, age, colour, single or widowed, occupation, birthplace, father's name, mother's maiden name, number of marriage; the officiant, the church or place, the witnesses, the date filed).
-2. Find and transcribe the license affidavit for the same couple (it often adds the parents' birthplaces and the bride's own signature).
-3. Search for Della's family in 1910 and 1920 under Malkitus, Matukaitis, Malkites, Matukaites, Malkaitis and Matukas (rows for every search); transcribe any household that matches her age (born about 1901) and parents' names.
-4. Della's later life: a remarriage after 1935, her death and burial (the Mt. Olivet lot is a lead for the owner).
-5. Summary row: C3 argued from the evidence, with the conclusion and how sure.
+1. Wayne County marriages 1935-1950: Della Termens / Termenas / Matukaitis / Malkitus to a Rimsha; transcribe it whole.
+2. Her death (Michigan death index, SSDI, obituary), burial, and her husband's identity.
+3. Her parents Michael Malkitus and Eva (Vaschaushos): Brooklyn 1910-1925, their arrival, their parish.
 
-**Make:** `kin_gemini_lineage-della_{YYYYMMDD-HHMM}.json`
+**Make:** `kin_gemini_lineage-della-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -239,52 +597,311 @@ Updated 2026-11-24 03:14 UTC · 9 open · Rules for every pillar: https://github
 - `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
 - `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
 
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** Certificate 4615 transcribed whole (or the exact reason it could not be opened); the license searched; Della's family searched under every spelling with results; C3 argued.
+**Done when:** Della's second marriage, death and parents found with records, or every place searched listed.
 
 **How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
 
 **Not done (sent back) if:**
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-## 5. KIN-GEM-14 · Kin lineage: Barbara Feole, the owner's great-grandmother: her birth, her parents, her marriage (Q20, C10)
+## 12. KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
-**Why:** The owner's maternal line is Toni Hinkle (born Sanders), her mother Laurie Jordan, and Laurie's mother Barbara Feole. The family links Barbara to Joseph Termenas but not by how many generations. Barbara's own records (birth, marriage, Laurie's birth, her death if she has died) name her parents and settle C10 from her side, while KIN-GEM-09 works down from Joseph.
+**Why:** Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).
 
-**What it unlocks:** The tree's dashed link from Joseph Termenas to Barbara Feole becomes proven or is corrected; Barbara gets her birth name, dates and parents.
+**What it unlocks:** Faces on the tree's medallions (only where verified), records beside each person, the places they lived on the globe.
 
 **Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
-- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas. The owner's line (his own account, 24 Nov 2026): mother Toni Hinkle (born Sanders); her mother Laurie Jordan; her mother Barbara Feole; the family says Joseph Termenas is Barbara's father or grandfather and does not know which. Laurie and Toni are living: research Barbara and her parents, not them.
-- NARA's 1950 census site (1950census.archives.gov, name search) for a Barbara born before 1950 in Michigan or New York with a Termens / Termenas parent or grandparent
-- Michigan marriage and death indexes, New York State and NYC indexes; FamilySearch and the SSDI (needs-sign-in rows where blocked)
-- Obituaries (legacy.com and newspapers) for Barbara Feole and for any Feole husband: an obituary names parents, siblings and children, which ties Barbara to Laurie and to Joseph's line
-- Find a Grave as a lead only
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people: P-francis, P-josephp, P-grace, P-caroline, P-charlesp. Where to save: Drive Kin/lineage records/Ancestry.com, Pavia Family Tree/Photos & Scans/by-person/<id>/ (make the folders).
 
 **Do this:**
-1. Search every spelling: Barbara Feole, Feoli, Feola; Barbara Termens, Termenas, Termen; with birth years 1920-1950. One row per search, also when empty.
-2. For every candidate: the whole record transcribed (birth, marriage, census line, obituary) and the identity argument against what is known: her daughter Laurie (later Jordan, mother of Toni born Sanders), the Feole marriage, and Joseph and Della's dates (married 25 Apr 1922, he died 11 Jun 1935).
-3. Her parents as the records name them: if a parent is Joseph Termenas or Della, say so with the record; if a parent is a Termens child, name that child and that child's own birth record.
-4. Summary row: Barbara's birth name, date and place, her parents, her marriage, and C10 argued from her side (daughter or granddaughter, and how sure).
+1. Portraits, group photographs, headstones, record images (census pages, certificates, wills, draft cards, obituaries), the churches, houses, towns and maps of where they lived.
+2. Save every image at full resolution under the file pattern; one row each.
+3. For every portrait: who uploaded or labelled it, when, and why it is that person (dates, place, relatives in the same photo). A portrait that cannot be tied to the person is still saved but marked type 'portrait' with why_this_person 'not established'.
+4. No duplicates of images already in the archive (check the wave-3 manifests).
+5. Last row: kind summary is not used here: the last row is the 75th image; put a summary line in the Drive folder's README instead.
 
-**Make:** `kin_gemini_lineage-barbara_{YYYYMMDD-HHMM}.json`
+**Make:** `kin_gemini_album-pavia_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per image, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `person_ids` (text): every data.js id the image is about, separated by ' | ' (place-only images: the place id or name)
+- `type` (text): portrait, group photo, headstone, document, record image, place, map or object
+- `shows` (text): what is in the image, as a caption a stranger could check
+- `why_this_person` (text): the identity argument: who made or labelled the image, when, and the identifiers that tie it to the person; 'none: a place image' for places
+- `date` (text): the date of the image or document, YYYY or YYYY-MM-DD, or null
+- `source_url` (url): the page the image came from
+- `rights` (text): public domain, licence (CC BY ...), member upload (Ancestry/Find a Grave), or 'family'
+- `drive_id` (text): the Drive file id of the saved image
+- `file` (text): the saved file name: {YYYY}_{Surname-Given}_{Type}_{Source}.{ext}
+
+**How many:** 75
+
+**Done when:** 75 images saved and identified, none a duplicate, every portrait argued.
+
+**How Claude checks it:**
+- Claude opens fifteen images and checks the caption and the identity argument.
+- Claude rejects the file if a portrait is tied to a person by its file name alone.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 13. KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).
+
+**What it unlocks:** Faces on the tree's medallions (only where verified), records beside each person, the places they lived on the globe.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people: P-glenda, P-buster, P-joy, P-jessec, P-juliaw, P-chester, P-ada and every id above them. Where to save: Drive Kin/lineage records/Ancestry.com, Pavia Family Tree/Photos & Scans/by-person/<id>/ (make the folders).
+
+**Do this:**
+1. Portraits, group photographs, headstones, record images (census pages, certificates, wills, draft cards, obituaries), the churches, houses, towns and maps of where they lived.
+2. Save every image at full resolution under the file pattern; one row each.
+3. For every portrait: who uploaded or labelled it, when, and why it is that person (dates, place, relatives in the same photo). A portrait that cannot be tied to the person is still saved but marked type 'portrait' with why_this_person 'not established'.
+4. No duplicates of images already in the archive (check the wave-3 manifests).
+5. Last row: kind summary is not used here: the last row is the 75th image; put a summary line in the Drive folder's README instead.
+
+**Make:** `kin_gemini_album-kirkland_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per image, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `person_ids` (text): every data.js id the image is about, separated by ' | ' (place-only images: the place id or name)
+- `type` (text): portrait, group photo, headstone, document, record image, place, map or object
+- `shows` (text): what is in the image, as a caption a stranger could check
+- `why_this_person` (text): the identity argument: who made or labelled the image, when, and the identifiers that tie it to the person; 'none: a place image' for places
+- `date` (text): the date of the image or document, YYYY or YYYY-MM-DD, or null
+- `source_url` (url): the page the image came from
+- `rights` (text): public domain, licence (CC BY ...), member upload (Ancestry/Find a Grave), or 'family'
+- `drive_id` (text): the Drive file id of the saved image
+- `file` (text): the saved file name: {YYYY}_{Surname-Given}_{Type}_{Source}.{ext}
+
+**How many:** 75
+
+**Done when:** 75 images saved and identified, none a duplicate, every portrait argued.
+
+**How Claude checks it:**
+- Claude opens fifteen images and checks the caption and the identity argument.
+- Claude rejects the file if a portrait is tied to a person by its file name alone.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 14. KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.
+
+**What it unlocks:** Faces on the tree's medallions (only where verified), records beside each person, the places they lived on the globe.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people: P-charles, P-charles-sr, P-bettyf. Where to save: Drive Kin/lineage records/Ancestry.com, Pavia Family Tree/Photos & Scans/by-person/<id>/ (make the folders).
+
+**Do this:**
+1. Portraits, group photographs, headstones, record images (census pages, certificates, wills, draft cards, obituaries), the churches, houses, towns and maps of where they lived.
+2. Save every image at full resolution under the file pattern; one row each.
+3. For every portrait: who uploaded or labelled it, when, and why it is that person (dates, place, relatives in the same photo). A portrait that cannot be tied to the person is still saved but marked type 'portrait' with why_this_person 'not established'.
+4. No duplicates of images already in the archive (check the wave-3 manifests).
+5. Last row: kind summary is not used here: the last row is the 75th image; put a summary line in the Drive folder's README instead.
+
+**Make:** `kin_gemini_album-sanders_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per image, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `person_ids` (text): every data.js id the image is about, separated by ' | ' (place-only images: the place id or name)
+- `type` (text): portrait, group photo, headstone, document, record image, place, map or object
+- `shows` (text): what is in the image, as a caption a stranger could check
+- `why_this_person` (text): the identity argument: who made or labelled the image, when, and the identifiers that tie it to the person; 'none: a place image' for places
+- `date` (text): the date of the image or document, YYYY or YYYY-MM-DD, or null
+- `source_url` (url): the page the image came from
+- `rights` (text): public domain, licence (CC BY ...), member upload (Ancestry/Find a Grave), or 'family'
+- `drive_id` (text): the Drive file id of the saved image
+- `file` (text): the saved file name: {YYYY}_{Surname-Given}_{Type}_{Source}.{ext}
+
+**How many:** 75
+
+**Done when:** 75 images saved and identified, none a duplicate, every portrait argued.
+
+**How Claude checks it:**
+- Claude opens fifteen images and checks the caption and the identity argument.
+- Claude rejects the file if a portrait is tied to a person by its file name alone.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 15. KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).
+
+**What it unlocks:** Faces on the tree's medallions (only where verified), records beside each person, the places they lived on the globe.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+- The people: P-gp, P-bob, P-ggm, P-joseph, P-della, P-rozys, P-kostantina, P-michael-m, P-eva-v, P-betty. Where to save: Drive Kin/lineage records/Ancestry.com, Pavia Family Tree/Photos & Scans/by-person/<id>/ (make the folders).
+
+**Do this:**
+1. Portraits, group photographs, headstones, record images (census pages, certificates, wills, draft cards, obituaries), the churches, houses, towns and maps of where they lived.
+2. Save every image at full resolution under the file pattern; one row each.
+3. For every portrait: who uploaded or labelled it, when, and why it is that person (dates, place, relatives in the same photo). A portrait that cannot be tied to the person is still saved but marked type 'portrait' with why_this_person 'not established'.
+4. No duplicates of images already in the archive (check the wave-3 manifests).
+5. Last row: kind summary is not used here: the last row is the 75th image; put a summary line in the Drive folder's README instead.
+
+**Make:** `kin_gemini_album-termenas_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per image, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `person_ids` (text): every data.js id the image is about, separated by ' | ' (place-only images: the place id or name)
+- `type` (text): portrait, group photo, headstone, document, record image, place, map or object
+- `shows` (text): what is in the image, as a caption a stranger could check
+- `why_this_person` (text): the identity argument: who made or labelled the image, when, and the identifiers that tie it to the person; 'none: a place image' for places
+- `date` (text): the date of the image or document, YYYY or YYYY-MM-DD, or null
+- `source_url` (url): the page the image came from
+- `rights` (text): public domain, licence (CC BY ...), member upload (Ancestry/Find a Grave), or 'family'
+- `drive_id` (text): the Drive file id of the saved image
+- `file` (text): the saved file name: {YYYY}_{Surname-Given}_{Type}_{Source}.{ext}
+
+**How many:** 75
+
+**Done when:** 75 images saved and identified, none a duplicate, every portrait argued.
+
+**How Claude checks it:**
+- Claude opens fifteen images and checks the caption and the identity argument.
+- Claude rejects the file if a portrait is tied to a person by its file name alone.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 16. KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Owner: 'Updating my profile and adding and editing details.' Every edit to his tree must be traceable.
+
+**What it unlocks:** The tree's links move from compiled trees to records; the certainties follow.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+
+**Do this:**
+1. Every edit you make in the Ancestry tree during the trial (people added, names, dates, places, relationships, attached records, photos): one row each with before -> after and the record attached.
+2. Add a person only with a record that names them; add a relationship only with a record that states it.
+3. Last row: kind summary: edits by type and the people touched.
+
+**Make:** `kin_gemini_ancestry-changelog_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): hint (one Ancestry hint), edit (a change you made to the tree), or summary (the last row)
+- `person_id` (text): the person's id in data.js (P-...), or NEW-<name> for someone not in the tree yet
+- `collection` (text): the Ancestry collection or member tree, exactly as Ancestry names it
+- `hint` (text): the hint's title as shown
+- `url` (url): the record or media page (not the hints list)
+- `transcription` (text): the whole index entry or record, word for word
+- `decision` (text): accept, reject or hold
+- `identity` (text): at least three identifiers compared with what data.js proves (dates, places, spouse, parents, children); for reject, the one that fails
+- `change` (text): what you changed in the Ancestry tree because of it, before -> after, or 'none'
+- `certainty` (0-100): how sure the person's link to their parents is after this hint (the scale in the task)
+
+**Done when:** Every edit made during the trial is listed, each with its source.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 17. KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Your run-7 find (FamilySearch JJRH-VNB) goes to Cambridge to a brother Jsidor, with a father Kazmierz in Kowno; Joseph later lived in Cambridge. His petition swore 23 Aug 1912. The identity has to be argued in full before the tree can say which ship.
+
+**What it unlocks:** The tree's links move from compiled trees to records; the certainties follow.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+
+**Do this:**
+1. Both manifest pages of the 30 Sep 1912 entry transcribed whole, every column, with the line numbers.
+2. Jsidor (Izidorius?) Terminas in Cambridge: directories, the 1920 census, his own naturalization.
+3. Every Hamburg arrival at New York from 15 Aug to 30 Aug 1912 searched for every spelling (one row each, found or not).
+4. The argument: which identifiers agree and disagree, and what the petition's 23 Aug can be explained by.
+
+**Make:** `kin_gemini_lineage-crossing_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -308,53 +925,152 @@ Updated 2026-11-24 03:14 UTC · 9 open · Rules for every pillar: https://github
 - `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
 - `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
 
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** Every spelling searched with results; Barbara's birth, marriage and parents found and transcribed, or every place searched listed; C10 argued.
+**Done when:** Both pages transcribed, the brother found or searched, the August arrivals searched, C9 argued.
 
 **How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
 
 **Not done (sent back) if:**
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-## 6. KIN-GEM-09 · Kin lineage: Joseph and Della's children in the 1920-1950 censuses, read page by page; is Barbara Feole his daughter or granddaughter? (Q4, C10)
+## 18. KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Gemini rated H9 97% from the rarity of the surname; Claude 60% because no record ties this Robert to Laurie. Her birth record and her parents' marriage decide it.
+
+**What it unlocks:** The tree's links move from compiled trees to records; the certainties follow.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+
+**Do this:**
+1. Laurie G. Seconder's birth (Michigan birth index, about 1950-1958) and any record that names her father.
+2. Barbara Termens / Rimsha's marriage to a Seconder (Wayne and Oakland marriages 1950-1960) and the divorce.
+3. Robert H. Seconder's own records (SSDI, obituary, Crescent Hills Cemetery) and Wilbur Seconder's 2012 obituary transcribed whole.
+4. The argument for or against H9.
+
+**Make:** `kin_gemini_lineage-seconder_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** H9 argued from records: Laurie's birth, her parents' marriage, Robert's records.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 19. KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Toni's father Charles A. Sanders (b. about 1953) is known from the family; his parents are named only on a family tree photograph. Nothing yet ties them to a record.
+
+**What it unlocks:** The tree's links move from compiled trees to records; the certainties follow.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
+
+**Do this:**
+1. Michigan marriages 1945-1955: Charles Sanders and Betty Flemming / Fleming.
+2. Their 1950 census household(s); Charles A.'s birth index (about 1953).
+3. Their parents, as far as the records go. No living person's address.
+
+**Make:** `kin_gemini_lineage-sanders_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** The marriage and 1950 household found with records, or every search listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:**
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+## 20. KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)
 
 **Due:** 2026-12-10 · **State:** now
 
-**Why:** No census has been found for Joseph or Della. The owner's great-grandmother is Barbara (later Barbara Feole), and the family does not know whether Joseph Termenas is her father or her grandfather (conflict C10). The 1930, 1940 and 1950 censuses settle it: either Barbara is in Joseph and Della's household, or one of their children is her parent.
+**Why:** The Kirkland, Bivens, Culberson, Tippens and Bryant links rest on compiled trees and blogs. Their own records exist: censuses, marriages, wills, the Eastern Cherokee applications.
 
-**What it unlocks:** C10 closes: the tree's dashed link between Joseph Termenas and Barbara Feole becomes a proven one (daughter, or granddaughter through a named child).
+**What it unlocks:** The tree's links move from compiled trees to records; the certainties follow.
 
 **Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
-- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.
-- Steve Morse's unified enumeration district finder (stevemorse.org/census/unified.html) for Detroit addresses in 1920, 1930 and 1940
-- The census images on the Internet Archive (archive.org: 1920 T625, 1930 T626, 1940 T627 rolls for Wayne County, Michigan) and NARA's 1940census.archives.gov and 1950census.archives.gov (the 1950 site has a name search)
-- Indexes to try first: FamilySearch and the 1950 name search (needs-sign-in rows where they block you)
-- The 1935 death certificate's address and the 1926-35 Sobieski address in the seed
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
 
 **Do this:**
-1. 1930 first: find the enumeration district for 12134 Sobieski Avenue, Detroit; page through that district's images until the house number; transcribe the whole household, every column (name, relation, home owned or rented, value, radio, sex, race, age, marital status, age at first marriage, school, read and write, birthplace of person, father and mother, mother tongue, immigration year, naturalized, English, occupation, industry, class of worker, at work, veteran and which war). Rows for every page range read.
-2. 1920: Joseph alone (they married in 1922) in Detroit, Cambridge or Brooklyn; Della with her parents Michael and Eva wherever they are (C3 depends on it).
-3. 1940 and 1950: Della (widowed 1935) with the children; transcribe each household whole, including the 1940 supplementary lines if a family member falls on them.
-4. For each household: the identity argument (Joseph's age, birthplace, immigration year, naturalized, WWI veteran; Della's age and parents' birthplaces).
-5. Summary row: every child of Joseph and Della with birth years from every census; whether any is a Barbara born 1922-1935 (then she is his daughter) or which child had a daughter Barbara born after about 1937 (then she is his granddaughter); how sure.
+1. The 1880 and 1900 census lines of Anderson and Jesse Columbus Kirkland; Jesse Alden and Polly's 1850 marriage; James Altonia and Susanna in 1840 and 1850.
+2. Eastern Cherokee Applications #586 and #8597: the pages that name Susanna Boston, transcribed.
+3. Peter Culberson's 1870 and 1880 households; William Henry Tippens and Eliza Owens's 1867 marriage; John Bryant's 1800 Grayson County will and Nicholas Bryant's 1766 Carteret County will.
 
-**Make:** `kin_gemini_lineage-censuses_{YYYYMMDD-HHMM}.json`
+**Make:** `kin_gemini_lineage-records-south_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -378,235 +1094,17 @@ Updated 2026-11-24 03:14 UTC · 9 open · Rules for every pillar: https://github
 - `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
 - `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
 
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** 1930 household found and transcribed or the whole district read with page ranges listed; 1920, 1940 and 1950 each searched with results; every household found transcribed whole.
+**Done when:** Each named record found and transcribed, or searched and listed.
 
 **How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
 
 **Not done (sent back) if:**
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
-
-## 7. KIN-GEM-11 · Kin lineage: his Army service: the VA claim file, the service number and Company A's war (Q10, Q18, C6)
-
-**Due:** 2026-12-10 · **State:** now
-
-**Why:** His service number is open (C6) and the Army's own record of his service burned in the 1973 NPRC fire. A widow's claim on file XC 756 521 lists the marriage and every child with birth dates; Company A's rosters and the regiment's history fill the two years in France.
-
-**What it unlocks:** The service on the tree gets its number and its places; the VA file can name every child with dates.
-
-**Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
-- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.
-- The seed's sources S-va (the master index card, file XC 756 521), S-muster (Co. A rosters), S-unit, S-enlist, S-discharge
-- VA Records Management Center and NARA (which holds XC files of veterans who died in 1935; the VA/NARA transfer of older claim files), FOIA and genealogy request routes
-- NARA RG 64 'World War I Rosters of Enlisted Men' and RG 120 (AEF) for the 29th Engineers; NPRC burned-records substitutes (final pay vouchers, RG 92)
-- The regiment's own history (the 29th Engineers, a topographical regiment: maps and printing at Langres and the GHQ plant at Chaumont) on HathiTrust or the Internet Archive
-
-**Do this:**
-1. Find out who holds file XC 756 521 today and write the exact request (form or letter, address or portal, fee, what to name, how long) as a 'lead' row with the official page quoted. Do not send it.
-2. Read every roster image in the seed's S-muster at full size and transcribe Joseph's line on each (name, rank, service number, date and place of enlistment, remarks); C6 argued in its own row.
-3. Find the regiment's published history; transcribe the passages about Company A from November 1917 to July 1919 (with page numbers), especially Langres (Dec 1917) and Chaumont (Apr 1919).
-4. Victory Medal and France clasp: find the published authority for the clasp and whether a roll or card names him.
-5. Summary row: his service, month by month, with the source for each step.
-
-**Make:** `kin_gemini_lineage-army_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
-- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
-- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
-- `result` (text): found, not found, candidate, needs sign-in, or paid
-- `record` (text): the record's title as the repository names it
-- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
-- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
-- `url` (url): the page you opened (the image page itself where there is one)
-- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
-- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
-- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
-- `evidence` (text): direct, indirect or negative, for the question
-- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
-- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
-- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
-
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** The VA request ready for the owner; every roster line transcribed; C6 argued; Company A's passages found and transcribed or every catalogue searched listed.
-
-**How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
-
-**Not done (sent back) if:**
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
-- searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
-
-## 8. KIN-GEM-13 · Kin lineage: Detroit and Cambridge in print: city directories 1916-1935 and the June 1935 newspapers (Q7, Q15)
-
-**Due:** 2026-12-10 · **State:** now
-
-**Why:** City directories give his address and job year by year (Cardoni, Sobieski, the Ford job) and who lived at 180 Howard Street, Cambridge, in 1919. The furnace accident at Ford in June 1935 may be in the Detroit papers and the Lithuanian-American press, with the family named.
-
-**What it unlocks:** The timeline between 1919 and 1935 fills in year by year; an obituary can name Della, the children and his family in Lithuania.
-
-**Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
-- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.
-- Detroit city directories (R. L. Polk) 1916-1935 on the Internet Archive, HathiTrust and the Detroit Public Library's digital collections; Cambridge directories 1917-1921 (Internet Archive, Cambridge Public Library)
-- Lithuanian-American papers: Draugas (draugas.org archive), Dirva, Tėvynė, Keleivis, Naujienos on epaveldas.lt; Chronicling America (loc.gov) for what it covers
-- Detroit Free Press and Detroit News for June 1935 (needs-sign-in or paid rows with the exact issue and page if you cannot open them)
-- The Benson Ford Research Center (The Henry Ford): whether Ford employee or accident records of 1935 survive and how to ask
-
-**Do this:**
-1. Every directory year you can open from 1916 to 1935: search Termenas, Termens, Terminas, Termen; a row per year (found or not), with the whole entry transcribed (name, wife's name in brackets, occupation, employer, address, h or r).
-2. Cambridge 1918-1920: his entry if any, and every resident listed at 180 Howard Street.
-3. June 10-20, 1935: every paper you can open; transcribe any accident report, death notice or obituary whole, with issue, page and column.
-4. Ford: a 'lead' row with the Benson Ford Research Center's own answer (quote its page) on employment and accident records and the owner's request route.
-5. Summary row: his addresses and jobs by year; what the papers say.
-
-**Make:** `kin_gemini_lineage-print_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
-- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
-- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
-- `result` (text): found, not found, candidate, needs sign-in, or paid
-- `record` (text): the record's title as the repository names it
-- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
-- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
-- `url` (url): the page you opened (the image page itself where there is one)
-- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
-- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
-- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
-- `evidence` (text): direct, indirect or negative, for the question
-- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
-- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
-- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
-
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** Every Detroit directory year 1916-1935 that is online searched (a row each); Cambridge 1918-1920 read; June 1935 searched in every paper you can open; the Ford route written.
-
-**How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
-
-**Not done (sent back) if:**
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
-- searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
-
-## 9. KIN-GEM-12 · Kin lineage: Telšiai 1893: the Catholic parish birth register, read in the original Russian (Q11)
-
-**Due:** 2026-12-15 · **State:** now
-
-**Why:** His birth is sworn, not recorded: no baptism has been found. The Telšiai Roman Catholic parish metrical books for 1893 are digitized by the Lithuanian State Historical Archives. A baptism names his parents (with his mother's maiden name), the village and the godparents: the next generation of the tree.
-
-**What it unlocks:** Joseph's parents get names from a primary record; the tree goes back a generation in Lithuania.
-
-**Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
-- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas.
-- epaveldas.lt (the digitized metrical books) and LVIA's catalogue (Fond 669 and the Telšiai deanery books: find the right fond, inventory and file for 1893 births)
-- The calendar: in 1893 the Russian Empire's Julian date ran 12 days behind; his 16 May 1893 is 4 May (Julian), and he may have given either
-- The Lithuanian surname forms: Termenas (man), Termenienė (married woman), Termenaitė (unmarried woman); the Russian register writes them in Cyrillic (Терменас and variants) and given names in Latin or Russian forms (Іосифъ / Иосифъ for Juozapas)
-- Lietuvių pavardžių žodynas (the Lithuanian surname dictionary) for the surname's spread
-
-**Do this:**
-1. Find the exact archival reference (fond, inventory, file) of the 1893 Telšiai parish births and open it.
-2. Read every entry from April to June 1893 (both calendars cover the date) and list each one as a row: number, date of birth and of baptism, child's name, parents and village, in Cyrillic as written plus a translation.
-3. A Termenas child (any spelling): transcribe the whole entry, with the godparents and the priest, and argue identity (date in both calendars, name, later facts).
-4. If none: search 1892-1895 (his other sworn years) and the neighbouring parishes the register itself names; rows for each.
-5. Summary row: his parents if found, with the reference; what the surname dictionary says about Termenas around Telšiai.
-
-**Make:** `kin_gemini_lineage-telsiai-1893_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
-- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
-- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
-- `result` (text): found, not found, candidate, needs sign-in, or paid
-- `record` (text): the record's title as the repository names it
-- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
-- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
-- `url` (url): the page you opened (the image page itself where there is one)
-- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
-- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
-- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
-- `evidence` (text): direct, indirect or negative, for the question
-- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
-- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
-- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
-
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** The 1893 register found and April-June read entry by entry (rows), with the result for Termenas; or the exact archival reference and why it could not be read.
-
-**How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
-
-**Not done (sent back) if:**
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
-- searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)

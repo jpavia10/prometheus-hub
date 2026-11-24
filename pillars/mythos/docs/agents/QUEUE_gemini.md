@@ -2,25 +2,25 @@
 
 # Mythos · Creative & Lore Studio · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. MYT-GEM-05 · Mythos: registering Joseph's own stories and game scripts with the US Copyright Office (eCO): form, fee, deposit, time
+## 1. MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)
 
-**Due:** 2026-12-07 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Mythos holds Joseph's own creative work; registering it is what lets him enforce it.
+**Why:** MYT-GEM-05 found the route; this is the filing.
 
-**What it unlocks:** Mythos shows how to register a finished piece and what it costs.
+**What it unlocks:** Joseph can file his own registrations.
 
 **Read first:**
-- copyright.gov: registration portal (eCO), fees (Circular 4), literary works, the group registration of unpublished works (GRUW), works made with AI help (the 2023 guidance and Part 2 report), processing times
+- https://jpavia10.github.io/prometheus-hub/pillars/mythos/
 
 **Do this:**
-1. Which application fits a single story, a script, a game's text, a group of unpublished works; the fee for each; what deposit; how AI-assisted parts are disclosed; how long it takes.
+1. For a screenplay, a game script and a video game: the form, the deposit format, group options, the fee, from copyright.gov.
 
-**Make:** `mythos_gemini_copyright_{YYYYMMDD-HHMM}.json`
+**Make:** `mythos_gemini_copyright-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -28,30 +28,19 @@ Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `case` (text): 
-- `application` (text): 
-- `fee` (text): $
-- `deposit` (text): 
-- `rule` (text): 
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `work` (text): which
+- `form` (text): which
+- `deposit` (text): format
+- `fee` (number): US dollars
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** Every case above, from copyright.gov.
+**Done when:** All three.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

@@ -2,7 +2,7 @@
 
 # Polis · Civic & Legal Watch · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -106,3 +106,41 @@ Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github
 - a quote that is not on the page it cites (Claude opens 10 rows at random)
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' or 'not found' instead)
+
+## 3. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+
+**Due:** 2027-01-20 · **State:** now
+
+**Why:** The same watch as POL-GEM-08, for the next two months.
+
+**What it unlocks:** Polis stays current.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/polis/
+
+**Do this:**
+1. Each agenda item that names Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods or the I-5 corridor: date, item, decision.
+
+**Make:** `polis_gemini_board-2_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `date` (date): YYYY-MM-DD
+- `item` (text): the item
+- `decision` (text): what was decided
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Done when:** Every item.
+
+**How Claude checks it:**
+- Claude opens every source URL in ten rows at random and checks the value against the page.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

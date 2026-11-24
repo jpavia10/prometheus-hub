@@ -10,7 +10,8 @@ import { PILLARS } from "../pillars.js";
 import { pillarStats, titan } from "../core/legacy.js";
 import { clock, today, fmtTime } from "../core/dates.js";
 import { warp, tick, blip, buzz } from "../core/fx.js";
-import { PILLAR_DOMAINS, domainOf, peersFor, badgeFor, factsFor, brief, ticker } from "./orrery.js";
+import { PILLAR_DOMAINS, domainOf, peersFor, badgeFor, factsFor, brief } from "./orrery.js";
+import * as wx from "../core/weather.js";
 
 const still = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 const ART = (f) => new URL(`../../art/realm/${f}`, import.meta.url).href;
@@ -22,6 +23,7 @@ const VS = "attribute vec2 a; void main(){ gl_Position = vec4(a, 0., 1.); }";
 const FS = `precision highp float;
 uniform vec2 R; uniform float T; uniform sampler2D IMG; uniform sampler2D DEP; uniform sampler2D LIT; uniform vec2 IR; uniform vec3 VIEW;
 uniform vec2 PAR; uniform float Q; uniform vec2 SP; uniform vec3 SC; uniform float SEL; uniform float DIVE; uniform float HAS;
+uniform float PH; uniform vec4 SKY; uniform float FOG; uniform float WND; uniform float FLASH;
 float h1(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float n2(vec2 p){ vec2 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f); return mix(mix(h1(i), h1(i + vec2(1, 0)), f.x), mix(h1(i + vec2(0, 1)), h1(i + vec2(1, 1)), f.x), f.y); }
 void main(){
@@ -33,9 +35,31 @@ void main(){
     vec2 u = uv + PAR * (dep - .42) * vec2(.014, .02);
     col = texture2D(IMG, u).rgb;
     col = mix(vec3(.012, .016, .04), col, smoothstep(1.06, .995, uv.y) * smoothstep(-.06, .005, uv.y) * smoothstep(1.03, .998, uv.x) * smoothstep(-.03, .002, uv.x));
+    /* the real hour (owner, 2026-11-24: "real time weather and a day night cycle on the town ... synced with real time data"):
+       PH is the day phase from today's sunrise and sunset (0 midnight, .25 sunrise, .5 noon, .75 sunset) */
+    float el = sin((PH - .25) * 6.2831853), day = smoothstep(-.12, .3, el), tw = exp(-pow(el / .2, 2.)), night = 1. - day;
+    float skyM = smoothstep(.42, .12, uv.y) * smoothstep(.55, .2, dep);
+    float lum = dot(col, vec3(.299, .587, .114));
+    vec3 dayC = mix(col, vec3(lum), -.12) * vec3(1.1, 1.06, 1.0) + vec3(.035, .04, .05);
+    dayC = mix(dayC, dayC * vec3(.78, .9, 1.12) + vec3(.06, .1, .16), skyM * .55);
+    vec3 nightC = col * vec3(.34, .4, .62);
+    col = mix(nightC, dayC, day);
+    col += vec3(1., .46, .22) * tw * (.2 * skyM + .06);
+    /* stars where the sky is clear and dark */
+    vec2 sg = floor(uv * IR / 3.);
+    float star = step(.9965, h1(sg)) * (.55 + .45 * sin(T * 1.7 + h1(sg + 3.) * 40.));
+    col += vec3(.9, .94, 1.) * star * night * skyM * (1. - SKY.x) * .9;
     float li = texture2D(LIT, u).r;
     float fl = .84 + .1 * sin(T * 2.3 + u.x * 47.) + .06 * sin(T * 5.7 + u.y * 63.);
-    col += li * fl * vec3(1., .93, .82) * .28 + li * li * .1;
+    float lamp = mix(1.9, .35, day) + tw * .5;
+    col += (li * fl * vec3(1., .9, .74) * .28 + li * li * .12) * lamp;
+    /* weather: SKY = (cloud, rain, snow, storm), FOG, WND */
+    float cs = n2(vec2(u.x * 3.2 - T * (.004 + WND * .02), u.y * 7.));
+    col = mix(col, vec3(dot(col, vec3(.299, .587, .114))) * .92, SKY.x * .42);
+    col *= 1. - SKY.x * (.16 + .2 * cs) - SKY.y * .12 - SKY.w * .1;
+    vec3 fogC = mix(vec3(.16, .18, .24), vec3(.72, .76, .82), day);
+    col = mix(col, fogC, FOG * (.35 + .5 * (1. - dep)));
+    col += vec3(.85, .9, 1.) * FLASH * (.45 + .3 * skyM);
     if (Q > .5) { vec2 st = vec2(0., -.006); float ray = texture2D(LIT, u + st).r * .6 + texture2D(LIT, u + st * 2.).r * .4 + texture2D(LIT, u + st * 3.).r * .25; col += vec3(.82, .88, 1.) * ray * .05; }
     /* mist drifting along the valley floor, thicker far away */
     float mist = n2(vec2(u.x * 9. + T * .03, u.y * 22.)) * n2(vec2(u.x * 23. - T * .05, u.y * 40.));
@@ -43,6 +67,12 @@ void main(){
     /* the chosen place burns (the others glow by their labels' halos, which cost the GPU nothing per pixel) */
     if (SEL > -.5) { vec2 d = (u - SP.xy) * IR * VIEW.z / R.y; float r2 = dot(d, d); col += SC * (exp(-r2 * 900.) * .34 + exp(-r2 * 90.) * .09) * (.85 + .15 * sin(T * 2.)); }
   }
+  if (SKY.y > .01) { for (int k = 0; k < 2; k++) { float s = float(k); vec2 rp = fc / vec2(3. + s * 2., 46. + s * 30.); rp.x += rp.y * (.18 + WND * .9) * (1. + s);
+      rp.y += T * (16. + s * 9.); vec2 ci = floor(rp); float r = step(.965 - SKY.y * .03, h1(ci + s * 17.)) * smoothstep(0., .6, fract(rp.y)) * (1. - fract(rp.y));
+      col += vec3(.62, .68, .8) * r * SKY.y * (.16 + s * .1); } }
+  if (SKY.z > .01) { for (int k = 0; k < 3; k++) { float s = float(k), sz = 22. + s * 16.; vec2 sp = fc / sz; sp.y -= T * (.55 + s * .35); sp.x += sin(T * .6 + sp.y * .7 + s) * .35 + T * WND * (.4 + s * .3);
+      vec2 ci = floor(sp), f = fract(sp) - .5; vec2 o = vec2(h1(ci + s), h1(ci + s + 9.)) - .5; float d = length(f - o * .6);
+      col += vec3(.95, .97, 1.) * smoothstep(.06 + s * .02, 0., d) * step(.55 - SKY.z * .35, h1(ci + 31. + s)) * SKY.z * (.55 + s * .2); } }
   vec2 p = fc / R - .5; col *= 1. - .55 * dot(p * vec2(.8, 1.1), p * vec2(.8, 1.1));
   col = mix(col, vec3(1.), DIVE * DIVE * .55);
   col += (h1(fc + fract(T) * 91.) - .5) * .015;
@@ -71,13 +101,16 @@ export function realm(ctx) {
       h("i.rl-dot"), h("span.rl-name", pl.p.short || pl.p.name.split(" · ")[0]), badge);
     pl.badge = badge; pl.label = a; return a; });
   const labelBox = h("nav.rl-labels", { "aria-label": "Pillars" }, ...labels);
-  const tickerEl = ticker(ctx, t0d, stats);
+  /* places off the screen: a marker on each side says how many and the nearest, a tap brings them in (owner: "odyssey is cut off") */
+  const edgeL = h("button.rl-edge.l", { type: "button", hidden: true, onclick: () => panBy(-1) }), edgeR = h("button.rl-edge.r", { type: "button", hidden: true, onclick: () => panBy(1) });
+  /* the opening: the town rises out of the dark with the hour and the weather (once a session) */
+  const intro = h("div.rl-intro", { "aria-hidden": "true" });
   const kick = h("p.rl-kick"), title = h("h2.rl-title"), sub = h("p.rl-sub"), fact = h("p.rl-fact"), syn = h("div.rl-syn");
   const prevB = h("button.rl-arrow", { type: "button", "aria-label": "Previous pillar", onclick: () => step(-1) }, icon("left", 18));
   const nextB = h("button.rl-arrow", { type: "button", "aria-label": "Next pillar", onclick: () => step(1) }, icon("right", 18));
   const enterB = h("button.rl-enter", { type: "button", onclick: () => (sel >= 0 ? enter(sel) : choose(nearestToCentre())) }, h("span", "Enter"), icon("right", 16));
   const card = h("div.rl-card", { "aria-live": "polite" }, kick, h("div.rl-card-top", title, h("div.rl-nav", prevB, enterB, nextB)), sub, h("div.rl-card-foot", fact, syn));
-  const stage = h("div.rl-stage", cv, labelBox, core, tickerEl, card);
+  const stage = h("div.rl-stage", cv, labelBox, core, edgeL, edgeR, card, intro);
   const el = h("section.realm", { "aria-label": "The pillars as places in one realm" }, stage);
 
   function paintCard() {
@@ -89,13 +122,13 @@ export function realm(ctx) {
       sub.textContent = due.length ? `Next: ${due[0].nx.title}` : "Drag to look around, pinch to come closer, tap a place to go there.";
       fact.textContent = due.length ? "" : "The pearl spire is the command: search or add.";
       syn.replaceChildren(...due.map((x) => h("button.rl-chip", { type: "button", style: { "--h": x.q.p.hue }, onclick: () => choose(x.i) }, (x.q.p.short || x.q.p.name.split(" · ")[0]) + " · " + (badgeFor(x.q.p, stats, t0d, tn) || ""))));
-      enterB.querySelector("span").textContent = "Go"; card.style.removeProperty("--h"); card.classList.remove("on"); return;
+      enterB.querySelector("span").textContent = "Go"; card.style.removeProperty("--h"); card.classList.remove("on"); card.classList.add("rest"); return;
     }
     const f = factsFor(pl.p, stats, tn);
     kick.textContent = LABEL[pl.dom] || "Prometheus"; title.textContent = pl.p.name.split(" · ")[0]; sub.textContent = pl.p.what;
     fact.textContent = f[0] || (pl.p.ext ? "Lives on its own site; its data stays there." : "Nothing entered on this device yet.");
     syn.replaceChildren(...peersFor(pl.p.id).slice(0, 3).map((q) => h("button.rl-chip", { type: "button", style: { "--h": q.hue }, onclick: () => choose(list.indexOf(q)) }, q.short || q.name.split(" · ")[0])));
-    enterB.querySelector("span").textContent = pl.p.ext ? "Open" : "Enter"; card.style.setProperty("--h", pl.p.hue); card.classList.add("on");
+    enterB.querySelector("span").textContent = pl.p.ext ? "Open" : "Enter"; card.style.setProperty("--h", pl.p.hue); card.classList.add("on"); card.classList.remove("rest");
   }
   function badges() { places.forEach((pl) => { const v = badgeFor(pl.p, stats, t0d, tn); pl.badge.hidden = !v; pl.badge.textContent = v || ""; }); }
   badges(); titan().then((d) => { tn = d; badges(); paintCard(); }); paintCard();
@@ -108,12 +141,14 @@ export function realm(ctx) {
   const zMin = () => Math.max(1, stage.clientWidth / Math.max(1, IRW * base()));   // 2026-11-23: a wide screen never sees past the painting's sides (they smeared)
   const clampV = () => { V.tz = Math.max(zMin(), V.tz); const hw = halfW(V.tz), hh = halfH(V.tz), under = sel >= 0 ? lift() / (IRH * base() * V.tz) : 0;   // a chosen place may pull the view a little past the bottom so it clears the card
     V.tcx = Math.min(1 - hw, Math.max(hw, V.tcx)); V.tcy = Math.min(1 - hh + under, Math.max(hh, V.tcy)); };
-  const lift = () => (card.offsetHeight + 12) / 2;                           // keep a chosen place above the card
+  const lift = () => (sel >= 0 ? card.offsetHeight + 12 + DOCK : DOCK - 40) / 2;   // keep a chosen place above the card and the dock
+  const DOCK = 104, TOP = 66;                                                  // the deck's header and dock float over the full-screen town
   function focusOn(i, z) { const pl = places[i]; V.tz = z; V.tcx = pl.x; V.tcy = pl.y + lift() / (IRH * base() * z); clampV(); }
   function nearestToCentre() { let b = 0, bd = Infinity; places.forEach((pl, i) => { const d = Math.hypot(pl.x - V.cx, (pl.y - V.cy) * IRH / IRW); if (d < bd) { bd = d; b = i; } }); return b; }
   function choose(i) { if (i === sel) { enter(i); return; } sel = i; tick(); focusOn(i, stage.clientWidth / Math.max(1, stage.clientHeight) < 0.8 ? 2.1 : 1.6); idleAt = performance.now(); paintCard(); wake(); }
   function overview() { sel = -1; V.tz = zMin(); clampV(); paintCard(); wake(); }
   function step(d) { choose(((sel < 0 ? (d > 0 ? -1 : 0) : sel) + d + n) % n); }
+  function panBy(d) { const hw = halfW(V.tz); V.tcx += d * hw * 1.6; clampV(); idleAt = performance.now(); tick(); wake(); }
   function enter(i) {
     if (going) return; const pl = places[i]; going = true; blip(); sel = i; paintCard(); el.classList.add("diving");
     const go = () => warp(pl.sx > 0 ? pl.sx : innerWidth / 2, pl.sy > 0 ? pl.sy : innerHeight / 2, `hsl(${pl.p.hue} 100% 66%)`, () => { location.href = pl.p.route; });
@@ -133,7 +168,7 @@ export function realm(ctx) {
     if (prog) {
       gl.useProgram(prog); const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
       gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-      for (const nme of ["R", "T", "IMG", "DEP", "LIT", "IR", "VIEW", "PAR", "Q", "SP", "SC", "SEL", "DIVE", "HAS"]) U[nme] = gl.getUniformLocation(prog, nme);
+      for (const nme of ["R", "T", "IMG", "DEP", "LIT", "IR", "VIEW", "PAR", "Q", "SP", "SC", "SEL", "DIVE", "HAS", "PH", "SKY", "FOG", "WND", "FLASH"]) U[nme] = gl.getUniformLocation(prog, nme);
       for (let i = 0; i < 3; i++) { const t = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + i); gl.bindTexture(gl.TEXTURE_2D, t); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([3, 4, 10, 255]));
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); tex.push(t); }
       gl.uniform1i(U.IMG, 0); gl.uniform1i(U.DEP, 1); gl.uniform1i(U.LIT, 2);
@@ -149,9 +184,31 @@ export function realm(ctx) {
       if (pj) { places.forEach((pl) => { const xy = pj.places[pl.p.id]; if (xy) { pl.x = xy[0]; pl.y = xy[1]; } }); if (pj.core) coreXY = pj.core; }
       if (gl && im) { IRW = im.naturalWidth; IRH = im.naturalHeight; upload(0, im, true); if (dp) upload(1, dp, true); if (lt) upload(2, lt, true); has = 1; }
       else if (gl) el.classList.add("rl-flat");
-      V.cx = V.tcx = coreXY[0]; V.cy = V.tcy = 0.5; clampV(); V.cx = V.tcx; V.cy = V.tcy; V.z = V.tz; size(); wake();
+      V.cx = V.tcx = coreXY[0]; V.cy = V.tcy = 0.5; clampV(); V.cx = V.tcx; V.cy = V.tcy; V.z = V.tz; size();
+      let first = false; try { first = !sessionStorage.getItem("prom.deck.opened"); sessionStorage.setItem("prom.deck.opened", "1"); } catch (e) { /* every time */ }
+      if (first && !calm && !qs.get("now")) {
+        const w = ctx.weather(), d = w && w.now ? wx.describe(w.now.code, w.now.isDay) : null, hr = clock.now().getHours(), name = (ctx.store.get("profile").name || "").split(" ")[0];
+        const greet = hr < 5 ? "Good night" : hr < 12 ? "Good morning" : hr < 17 ? "Good afternoon" : hr < 22 ? "Good evening" : "Good night";
+        intro.replaceChildren(h("p.rl-intro-k", "Prometheus"), h("h1.rl-intro-t", greet + (name ? ", " + name : "")), h("p.rl-intro-s", d ? `${Math.round(w.now.temp)}° · ${d.text}${w.days && w.days[0] ? ` · sunset ${fmtTime(w.days[0].sunset.slice(11, 16))}` : ""}` : `${n} places`));
+        /* after the boot card (orrery.js boot, first visit of a session) the town rises: the card names the deck, the town greets */
+        const go = () => { V.z = V.tz * 1.5; V.cy = Math.max(0, V.tcy - 0.12); V.cx = V.tcx - 0.03; el.classList.remove("opening"); void el.offsetWidth; el.classList.add("opening");
+          setTimeout(() => el.classList.add("opened"), 2200); setTimeout(() => el.classList.remove("opening", "opened"), 3400); wake(); };
+        el.classList.add("opening"); if (document.body.classList.contains("booting")) setTimeout(go, 1500); else go();
+      }
+      wake();
     });
 
+  /* the live sky: the hour from today's sunrise and sunset, the weather from the deck's reading (Open-Meteo, NWS); ?sky=night|dawn|day|golden|dusk
+     and ?wx=clear|cloud|rain|snow|fog|storm pin them for the proofs and for a look at any weather */
+  const qs = new URLSearchParams(location.search), SKYQ = { night: 0.02, dawn: 0.255, day: 0.5, golden: 0.7, dusk: 0.76 }[qs.get("sky")], WXQ = qs.get("wx");
+  const WXP = { clear: { cloud: 0, rain: 0, snow: 0, storm: 0, fog: 0 }, cloud: { cloud: 0.85, rain: 0, snow: 0, storm: 0, fog: 0 }, rain: { cloud: 0.9, rain: 0.8, snow: 0, storm: 0, fog: 0.1 },
+    snow: { cloud: 0.8, rain: 0, snow: 0.85, storm: 0, fog: 0.15 }, fog: { cloud: 0.6, rain: 0, snow: 0, storm: 0, fog: 0.85 }, storm: { cloud: 1, rain: 1, snow: 0, storm: 1, fog: 0.1, wind: 0.7 } };
+  const SK = { ph: 0.5, cloud: 0.1, rain: 0, snow: 0, storm: 0, fog: 0, wind: 0.1, flash: 0 }, SKT = { ...SK };
+  function readSky() {
+    const w = ctx.weather(), k = wx.skyOf(w), code = w && w.now ? w.now.code : null;
+    Object.assign(SKT, { ph: SKYQ != null ? SKYQ : wx.phaseOf(w), cloud: k.cloud, rain: k.rain, snow: k.snow, storm: k.storm, fog: code === 45 || code === 48 ? 0.8 : 0, wind: k.wind }, WXQ ? WXP[WXQ] || {} : {});
+  }
+  readSky(); Object.assign(SK, SKT); const skyTimer = setInterval(() => { readSky(); wake(); }, 2e4);
   const dprMax = Math.min(2, devicePixelRatio || 1); let dpr = dprMax;
   function size() { const w = stage.clientWidth, hh = stage.clientHeight; if (!w || !hh) return; cv.width = Math.round(w * dpr); cv.height = Math.round(hh * dpr); if (gl) gl.viewport(0, 0, cv.width, cv.height); clampV(); }
   const PCA = new Float32Array(MAXP * 3);
@@ -176,20 +233,32 @@ export function realm(ctx) {
     if (gl && prog) {
       gl.uniform2f(U.R, cv.width, cv.height); gl.uniform1f(U.T, calm ? 0 : t); gl.uniform2f(U.IR, IRW, IRH); gl.uniform3f(U.VIEW, V.cx, V.cy, base() * V.z * dpr);
       gl.uniform2f(U.PAR, calm ? 0 : par[0], calm ? 0 : par[1]); gl.uniform1f(U.Q, q); if (sel >= 0) { gl.uniform2f(U.SP, places[sel].x, places[sel].y); gl.uniform3fv(U.SC, PCA.subarray(sel * 3, sel * 3 + 3)); }
+      const kk = Math.min(1, dt * 0.6); for (const key of ["cloud", "rain", "snow", "storm", "fog", "wind"]) SK[key] += (SKT[key] - SK[key]) * kk;
+      SK.ph = SKT.ph; if (!calm && SK.storm > 0.4 && Math.random() < dt * 0.22) SK.flash = 1; SK.flash *= Math.pow(0.0005, dt);
+      gl.uniform1f(U.PH, SK.ph); gl.uniform4f(U.SKY, SK.cloud, calm ? 0 : SK.rain, calm ? 0 : SK.snow, SK.storm); gl.uniform1f(U.FOG, SK.fog); gl.uniform1f(U.WND, SK.wind); gl.uniform1f(U.FLASH, calm ? 0 : SK.flash);
       gl.uniform1f(U.SEL, sel); gl.uniform1f(U.DIVE, V.dive); gl.uniform1f(U.HAS, has); gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     /* the spire's button and the labels follow the view; nearer to the centre wins when two would overlap */
     core.style.transform = `translate3d(${((coreXY[0] - V.cx) * sc + w / 2).toFixed(1)}px, ${((coreXY[1] - V.cy) * scy + hh / 2).toFixed(1)}px, 0) translate(-50%, -50%)`;
     core.classList.toggle("far", V.z > 1.6);
-    const cardTop = hh - card.offsetHeight - 14, order = places.map((pl, i) => i).sort((a, b) => Math.abs(places[a].sx - w / 2) - Math.abs(places[b].sx - w / 2)), placed = [];
-    for (const i of order) { const pl = places[i]; if (!pl.lw) pl.lw = pl.label.offsetWidth || 80; let show = pl.sx > 14 && pl.sx < w - 14 && pl.sy > 34 && pl.sy < cardTop && !(pl.sx - pl.lw / 2 < 120 && pl.sy < 96);   /* never under the Menu button */
+    const cardTop = sel >= 0 ? hh - card.offsetHeight - DOCK - 8 : hh - DOCK, order = places.map((pl, i) => i).sort((a, b) => Math.abs(places[a].sx - w / 2) - Math.abs(places[b].sx - w / 2)), placed = [];
+    let offL = [], offR = [];
+    for (const i of order) { const pl = places[i]; if (!pl.lw) pl.lw = pl.label.offsetWidth || 80; let show = pl.sx > 14 && pl.sx < w - 14 && pl.sy > TOP + 6 && pl.sy < cardTop && !(pl.sx - pl.lw / 2 < 190 && pl.sy < TOP + 64) && !(pl.sx + pl.lw / 2 > w - 120 && pl.sy < TOP + 64);   /* never under the weather or the Levels button */
+      if (pl.sx < 14) offL.push(pl); else if (pl.sx > w - 14) offR.push(pl);
       if (show && i !== sel) for (const q2 of placed) if (Math.abs(q2[0] - pl.sx) < 64 && Math.abs(q2[1] - pl.sy) < 20) { show = false; break; }
       if (show) placed.push([pl.sx, pl.sy]);
       pl.label.style.transform = `translate3d(${pl.sx.toFixed(1)}px, ${pl.sy.toFixed(1)}px, 0) translate(-50%, -8px)`;
+      /* a name near a side of the screen slides inward so it is never cut (owner: "oddessy is cut off"); its dot stays on the building */
+      const nx = Math.round(Math.max(0, 8 - (pl.sx - pl.lw / 2)) + Math.min(0, w - 8 - (pl.sx + pl.lw / 2)));
+      if (pl.nx !== nx) { pl.nx = nx; pl.label.style.setProperty("--nx", nx + "px"); }
       if (pl.on !== show) { pl.on = show; pl.label.classList.toggle("on", show); }
       pl.label.classList.toggle("sel", i === sel); }
+    const edge = (b, list, side) => { const show = list.length > 0 && sel < 0; if (b.hidden === show) b.hidden = !show; if (!show) return; list.sort((a, c) => (side < 0 ? c.sx - a.sx : a.sx - c.sx));
+      const t = side < 0 ? `‹ ${list[0].p.short || list[0].p.name.split(" · ")[0]}${list.length > 1 ? " +" + (list.length - 1) : ""}` : `${list[0].p.short || list[0].p.name.split(" · ")[0]}${list.length > 1 ? " +" + (list.length - 1) : ""} ›`;
+      if (b.textContent !== t) { b.textContent = t; b.setAttribute("aria-label", `${list.length} more ${list.length === 1 ? "place" : "places"} to the ${side < 0 ? "left" : "right"}`); } };
+    edge(edgeL, offL, -1); edge(edgeR, offR, 1);
     const moving = Math.abs(V.tz - V.z) > 1e-4 || Math.abs(V.tcx - V.cx) > 1e-5 || Math.abs(V.tcy - V.cy) > 1e-5 || V.dive > 0;
-    if (seen && !document.hidden && (!calm || moving)) raf = requestAnimationFrame(frame);
+    if (seen && !document.hidden && (!calm || moving || Math.abs(SKT.cloud - SK.cloud) > 0.01)) raf = requestAnimationFrame(frame);
   }
   const wake = () => { if (!raf && !dead) { last = 0; raf = requestAnimationFrame(frame); } };
 
@@ -230,13 +299,13 @@ export function realm(ctx) {
   const io = "IntersectionObserver" in window ? new IntersectionObserver((es) => { seen = es[0].isIntersecting; if (seen) wake(); }) : null; if (io) io.observe(stage);
   const onVis = () => { if (!document.hidden) wake(); }; document.addEventListener("visibilitychange", onVis);
   /* the whole home fits above the dock: the stage takes what the now line and the card leave */
-  function fit() { const view = document.getElementById("view"); if (!view || !stage.isConnected) return; const cur = stage.offsetHeight, spare = view.clientHeight - view.scrollHeight;
-    const hgt = Math.max(300, Math.min(900, Math.floor(cur + spare - 2))); if (Math.abs(hgt - cur) > 1) { stage.style.height = hgt + "px"; size(); } }
+  function fit() { size(); }   /* 2026-11-24 (owner: "the main hub home be like a full screen town"): the town fills the screen; the header and the dock float over it */
   const onResize = () => { stage.style.height = ""; requestAnimationFrame(() => { fit(); size(); wake(); }); }; addEventListener("resize", onResize);
   const onShow = (e) => { if (e.persisted) { going = false; el.classList.remove("diving"); V.dive = 0; if (sel >= 0) focusOn(sel, 2.1); wake(); } }; addEventListener("pageshow", onShow);
   el.fit = () => requestAnimationFrame(() => { fit(); requestAnimationFrame(() => { fit(); size(); wake(); }); });
   el.ready = ready;
-  el.cleanup = () => { dead = true; cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt); };
+  el.sky = () => ({ ...SK, target: { ...SKT } });
+  el.cleanup = () => { dead = true; clearInterval(skyTimer); cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt); };
   size();
   return el;
 }

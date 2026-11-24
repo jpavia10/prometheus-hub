@@ -2,25 +2,25 @@
 
 # Garage · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. GAR-GEM-16 · Garage: the six fluid and part specs still 'not stated'
+## 1. GAR-GEM-17 · Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals
 
-**Due:** 2026-12-04 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Run 6 left the Sorento's spark plugs and octane and the MT-07's brake fluid, transmission/clutch oil and fork oil unstated.
+**Why:** Lights, fluids and specs are in; the schedule is the thing Garage reminds about.
 
-**What it unlocks:** Garage's fluids table is complete.
+**What it unlocks:** Garage's reminders follow the manufacturer, not guesses.
 
 **Read first:**
-- The 2025 Sorento Hybrid owner's manual (kiatechinfo.com, chapter 'Specifications'), the 2021 MT-07 owner's manual (library.ymcapps.net), and Yamaha's MT-07 service manual pages if public
+- https://jpavia10.github.io/prometheus-hub/pillars/garage/
 
 **Do this:**
-1. For each of the six: the spec as the manual prints it, the page, the words.
+1. Every scheduled item for both vehicles (severe service: mountains, cold, towing): miles and months, from the owner's manual pages.
 
-**Make:** `garage_gemini_fluids-gaps_{YYYYMMDD-HHMM}.json`
+**Make:** `garage_gemini_schedule_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -28,34 +28,22 @@ Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `vehicle` (text): 
-- `item` (text): as in run 6
-- `spec` (text): as printed
-- `page` (text): 
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `vehicle` (text): which
+- `item` (text): the service
+- `miles` (number): interval
+- `months` (number): interval
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 6
-
-**Done when:** All six answered, or 'not stated' with every manual page checked.
+**Done when:** Every item from both manuals.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists
 
 ## 2. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
 

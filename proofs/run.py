@@ -31,16 +31,16 @@ with sync_playwright() as p:
     c2 = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); p2 = c2.new_page(); p2.on("pageerror", lambda e: errs.append("core: " + str(e)))
     if MOCK:
         p2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p2.route("https://api.weather.gov/**", lambda route, request: route.abort()); p2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    p2.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p2.wait_for_selector(".realm .rl-pl", timeout=20000); p2.wait_for_selector(".now-line", timeout=20000); p2.wait_for_timeout(900)
+    p2.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p2.wait_for_selector(".realm .rl-pl", timeout=20000); p2.wait_for_selector(".wx-chip", timeout=20000); p2.wait_for_timeout(900)
     ci = p2.evaluate("""async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready;
       const view = document.querySelector('#view'); const card = document.querySelector('.context-card'); const dockTop = document.querySelector('.dock').getBoundingClientRect().top;
       return { ids: [...document.querySelectorAll('.realm .rl-pl')].map((x) => x.dataset.pillar),
       demo: !!window.__deck.store.get('profile').demo, events: window.__deck.store.get('time').events.length, plan: !!window.__deck.store.get('money').plan, wide: document.documentElement.scrollWidth,
-      now: !!document.querySelector('.now-line'), cards: document.querySelectorAll('.context-card').length,
-      fits: view.scrollHeight <= view.clientHeight + 2 && !!card && card.getBoundingClientRect().bottom <= dockTop + 2 }; }""")
+      now: !!document.querySelector('.wx-chip'), cards: document.querySelectorAll('.context-card').length,
+      fits: view.scrollHeight <= view.clientHeight + 2 && (() => { const r = document.querySelector('.realm .rl-stage').getBoundingClientRect(); return r.top <= 1 && r.bottom >= innerHeight - 1 && r.width >= innerWidth - 1; })() }; }""")
     missing = [i for i in CORE_IDS if i not in ci["ids"]]; extra = [i for i in ci["ids"] if i not in CORE_IDS]
-    proof("CORE-1", f"Every pillar in pillars.json is a place in the realm ({len(CORE_IDS)} live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data",
-          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 384 and ci["now"] and ci["cards"] == 1 and ci["fits"],
+    proof("CORE-1", f"Every pillar in pillars.json is a place in the town ({len(CORE_IDS)} live destinations; the desk and paused fleet are not drawn); the town fills the screen with the weather chip on it and nothing else; a clean device shows no sample data",
+          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 384 and ci["now"] and ci["cards"] == 0 and ci["fits"],
           json.dumps({"expected": len(CORE_IDS), "drawn": len(ci["ids"]), "missing": missing, "extra": extra, "demo": ci["demo"], "events": ci["events"], "plan": ci["plan"], "wide": ci["wide"], "now": ci["now"], "cards": ci["cards"], "fits": ci["fits"]}))
     routes = p2.evaluate("[...document.querySelectorAll('.realm .rl-pl')].map((a) => a.getAttribute('href'))"); bad = []; local = [r for r in routes if not r.startswith("http")]
     for r in local:
@@ -55,6 +55,24 @@ with sync_playwright() as p:
     try: p2.wait_for_url("**/pillars/apollo/**", timeout=30000); took = _t.time() - t0; p2.wait_for_selector(".shell", timeout=15000); landed = f"{p2.title()} ({took:.1f} s on this machine)"
     except Exception as e: landed = "did not land: " + str(e)[:80]
     proof("CORE-4", "Tapping a place flies to it, tapping it again warps into that pillar", "Apollo" in landed, landed); c2.close()
+    # TOWN-1 (owner, 2026-11-24: "real time weather and a day night cycle on the town ... synced with real time data for weather and time"):
+    # the town's sky follows the hour against the place's own sunrise and sunset, and the weather reading; the chip says the same reading
+    _wx = {"lat": 42.79, "lon": -83.63, "now": {"temp": 28.4, "feels": 20.1, "code": 73, "wind": 12, "gust": 22, "cloud": 100, "rain": 0, "snow": 0.1, "isDay": False, "humidity": 88},
+           "hours": [{"t": f"2026-11-24T{h:02d}:00", "temp": 28, "pop": 80, "rain": 0, "snow": 0.1, "gust": 20, "code": 73} for h in range(21, 24)],
+           "days": [{"date": "2026-11-24", "hi": 33, "lo": 24, "rain": 0, "snow": 1.2, "gust": 25, "code": 73, "sunrise": "2026-11-24T07:28", "sunset": "2026-11-24T17:04"}], "alerts": [], "alertsFailed": False, "tz": "America/Detroit"}
+    _seed = ("(() => { const w = " + json.dumps(_wx) + "; w.at = Date.now(); localStorage.setItem('prom.deck.wx', JSON.stringify(w));"
+             " localStorage.setItem('prom.deck.profile', JSON.stringify({ schema: 1, saved: new Date().toISOString(), data: { place: { label: 'Proof town', lat: 42.79, lon: -83.63 } } })); })()")
+    ctw = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Detroit", locale="en-US"); ctw.add_init_script(_seed); ptw = ctw.new_page(); badw = []
+    ptw.on("pageerror", lambda e: badw.append(str(e)[:120])); ptw.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); ptw.route("https://api.weather.gov/**", lambda route, request: route.abort()); ptw.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+    town = {}
+    for key, q in (("night", "now=2026-11-24T21:30"), ("noon", "now=2026-11-24T12:15"), ("pinned", "now=2026-11-24T12:15&sky=dusk&wx=rain")):
+        ptw.goto(f"{URL}?{q}&home=orbit&nosweep=1#/", wait_until="load"); ptw.wait_for_selector(".realm .rl-pl", timeout=20000); ptw.wait_for_selector(".wx-chip", timeout=20000); ptw.wait_for_timeout(500)
+        town[key] = ptw.evaluate("() => { const s = document.querySelector('.realm').sky().target; const c = document.querySelector('.wx-chip'); return { ph: +s.ph.toFixed(3), snow: +s.snow.toFixed(2), rain: +s.rain.toFixed(2), cloud: +s.cloud.toFixed(2), chip: c ? c.textContent.replace(/\\s+/g, ' ').trim() : '' }; }")
+    nt, nn, pn = town["night"], town["noon"], town["pinned"]
+    proof("TOWN-1", "The town lives on the real hour and the real weather: night after the place's sunset, day at noon, snow when the reading says snow, and the weather chip on the town reads the same; ?sky and ?wx pin a look",
+          (nt["ph"] >= 0.75 or nt["ph"] < 0.25) and 0.4 < nn["ph"] < 0.6 and nt["snow"] > 0.3 and nn["snow"] > 0.3 and "28°" in nt["chip"] and "snow" in nt["chip"].lower() and abs(pn["ph"] - 0.76) < 0.01 and pn["rain"] > 0.5 and not badw,
+          json.dumps(town) + ("; errors: " + " | ".join(badw) if badw else "")); ctw.close()
+
     # MENU-1: the home is a game menu (owner, 2026-11-16): every pillar a level, its own light, a live line, Today on top, the orbit and the briefing kept
     cm = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); pm = cm.new_page(); bm = []; pm.on("pageerror", lambda e: bm.append(str(e)[:120]))
     if MOCK: pm.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pm.route("https://api.weather.gov/**", lambda route, request: route.abort())
@@ -476,17 +494,27 @@ with sync_playwright() as p:
     proof("NEW-1", "The new pillars work on real data: Forge reads Titan's scored submissions and the live AI queues, Foundry starts a build from an Athenaeum invention without touching Athenaeum, Kin's custody pattern lands on the right days",
           fg["scores"] >= 100 and fg["by"].get("Grok", 0) >= 20 and fg["tasks"] >= 20 and fd["board"] == fd0 - 1 and fd["bench"] == 1 and fd["stage"] == "Research" and fd["linked"] and fd["same"] and kn == ["you", "you", "other", "you", "you", "other", "you", "other"] and not bad8,
           f"Forge: {fg['scores']} scores {fg['by']}, {fg['tasks']} queue tasks ({fg['open']} open); Foundry: board {fd0} to {fd['board']}, bench {fd['bench']} at {fd['stage']}, Athenaeum unchanged {fd['same']}; Kin 2-2-3: {kn}" + (f"; errors {bad8}" if bad8 else "")); c8.close()
+    # FOUNDRY-2 (owner, 2026-11-24: "I want the foundry revamped"): the drafting table draws each invention as its own sketch, the chips and the
+    # sheet follow the drawing on the table, a tap on the right of the table turns the sheet, and nothing is written
+    cf = b.new_context(viewport={"width": 384, "height": 832}); pf = cf.new_page(); badf = []; pf.on("pageerror", lambda e: badf.append(str(e)[:100]))
+    pf.goto(f"{URL}pillars/foundry/?still=1", wait_until="load"); pf.wait_for_function("window.FOUNDRY && window.FOUNDRY_DWG && document.querySelector('#y-table .table-sheet')", timeout=20000)
+    fy = pf.evaluate("""() => { const before = JSON.stringify(localStorage); const T = FOUNDRY.table(), kinds = T.map((x) => FOUNDRY_DWG.kind(x.t)); FOUNDRY.focus(3, true);
+      const on = (document.querySelector('#y-table .dwg-chip.on') || {}).textContent, title = (document.querySelector('#y-table .sheet-title') || {}).textContent;
+      const cv = document.querySelector('.pk-stage canvas'), r = cv.getBoundingClientRect(); cv.dispatchEvent(new PointerEvent('pointerup', { clientX: r.right - 20, clientY: r.top + r.height / 2, bubbles: true }));
+      return { n: T.length, distinct: new Set(kinds).size, generic: kinds.filter((k) => k === 'gear').length, on, title, want: T[3] && T[3].t, after: FOUNDRY.focus(), wrote: JSON.stringify(localStorage) !== before }; }""")
+    proof("FOUNDRY-2", "The Foundry is a drafting table: every invention on the board is drawn as its own concept sketch, the chips and the sheet follow the drawing on the table, a tap on the right turns the sheet, and looking writes nothing",
+          fy["n"] >= 11 and fy["distinct"] == fy["n"] and fy["generic"] == 0 and fy["on"] == "04" and fy["title"] == fy["want"] and fy["after"] == 4 and not fy["wrote"] and not badf, json.dumps(fy) + (f"; errors {badf}" if badf else "")); cf.close()
 
     # SINCE-1 and BACKUP-1: the hub says what changed in the pillars since the last visit; one file backs up and restores everything
     c9 = b.new_context(viewport={"width": 384, "height": 832}, accept_downloads=True); p9 = c9.new_page(); bad9 = []; p9.on("pageerror", lambda e: bad9.append(str(e)[:100]))
     if MOCK:
         p9.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p9.route("https://api.weather.gov/**", lambda route, request: route.abort()); p9.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    p9.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p9.wait_for_selector(".realm .rl-pl", timeout=20000); p9.wait_for_timeout(400)
+    p9.goto(f"{URL}?now={NOW}#/system", wait_until="load"); p9.wait_for_selector(".briefing", timeout=20000); p9.wait_for_timeout(400)
     first_visit = p9.evaluate("!!document.querySelector('.since')")
     p9.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); p9.wait_for_timeout(300); p9.evaluate("PB.events.publish({ type: 'idea.captured', pillar: 'athenaeum', ref: 'x', title: 'Proof: a new idea' })")
-    p9.evaluate("sessionStorage.clear()"); p9.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p9.wait_for_selector(".realm .rl-pl", timeout=20000); p9.wait_for_timeout(400)
+    p9.evaluate("sessionStorage.clear()"); p9.goto(f"{URL}?now={NOW}#/system", wait_until="load"); p9.wait_for_selector(".briefing", timeout=20000); p9.wait_for_timeout(400)
     rows = p9.evaluate("[...document.querySelectorAll('.since .since-row')].map((a) => a.textContent + ' -> ' + a.getAttribute('href'))"); head = p9.evaluate("(document.querySelector('.since h2') || {}).textContent || ''")
-    proof("SINCE-1", "The hub says what changed in the pillars since your last visit, each line opening its pillar", not first_visit and head == "Since you were here" and len(rows) == 1 and "Proof: a new idea" in rows[0] and "pillars/athenaeum/" in rows[0], f"first visit shows nothing: {not first_visit}; next visit: {head!r} {rows}")
+    proof("SINCE-1", "The briefing (System) says what changed in the pillars since your last visit, each line opening its pillar", not first_visit and head == "Since you were here" and len(rows) == 1 and "Proof: a new idea" in rows[0] and "pillars/athenaeum/" in rows[0], f"first visit shows nothing: {not first_visit}; next visit: {head!r} {rows}")
     p9.evaluate("localStorage.setItem('prometheus.kin.people', JSON.stringify([{ id: 'p1', name: 'Proof kid', role: 'kid' }])); localStorage.setItem('hearth.deck.stages.v1', JSON.stringify({ 'paint-left': { done: true } }))")
     bk = p9.evaluate("async () => { const m = await import(new URL('deck/core/reach.js', document.baseURI).href); const before = {}; for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); before[k] = localStorage.getItem(k); } const file = m.backupAll(); const keys = Object.keys(file.keys);" +
       " for (const k of keys) localStorage.removeItem(k); localStorage.setItem('unrelated.key', 'stays'); const pv = m.previewRestore(JSON.parse(JSON.stringify(file))); m.restoreAll(file); let same = true; for (const k of keys) if (localStorage.getItem(k) !== before[k]) same = false;" +
@@ -554,7 +582,7 @@ with sync_playwright() as p:
     if MOCK:
         p6.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p6.route("https://api.weather.gov/**", lambda route, request: route.abort()); p6.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
     p6.goto(A, wait_until="load"); p6.wait_for_function("window.__ath && window.__ath.ready", timeout=30000); p6.evaluate("PB.events.publish({ type: 'idea.refined', pillar: 'athenaeum', ref: 'x', title: 'Proof event' })")
-    p6.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p6.wait_for_selector(".realm .rl-pl", timeout=20000); p6.wait_for_timeout(700)
+    p6.goto(f"{URL}?now={NOW}#/system", wait_until="load"); p6.wait_for_selector(".briefing .ticker", timeout=20000); p6.wait_for_timeout(700)
     tick_line = p6.evaluate("document.querySelector('.ticker').getAttribute('aria-label')"); hits = p6.evaluate("window.__deck.reach.searchRecords('blind audits')"); deep = p6.evaluate("window.__deck.reach.searchRecords('anti-corrosion')")
     p6.click("#open-search"); p6.wait_for_selector(".search-input"); p6.fill(".search-input", "idea: test the handoff from the hub"); p6.wait_for_timeout(250); first = p6.evaluate("document.querySelector('.results .result b').textContent")
     p6.evaluate("document.querySelector('.results .result').click()")
@@ -564,26 +592,29 @@ with sync_playwright() as p:
           len(hits) >= 1 and hits[0]["title"].startswith("Example: Independent blind audits") and "#idea/" in hits[0]["href"] and len(deep) >= 1 and "Athenaeum · idea" in deep[0]["sub"] and "Athenaeum · idea refined: Proof event" in tick_line and first.startswith("Capture an idea: test the handoff") and landed["title"] == "test the handoff from the hub" and landed["kept"] == a1["n"],
           f"'blind audits' -> {hits[0]['title'][:40] if hits else None} ({hits[0]['href'] if hits else ''}); text match -> {deep[0]['sub'][:70] if deep else None}; ticker has the event: {'Proof event' in tick_line}; '{first[:40]}' opens Athenaeum with the title filled: {landed['title']!r}, ideas still {landed['kept']}"); c6.close()
 
-    pg.goto(f"{URL}?now={NOW}&demo=1&home=orbit#/", wait_until="load"); pg.wait_for_selector(".now-line", timeout=20000); pg.wait_for_timeout(900)
+    pg.goto(f"{URL}?now={NOW}&demo=1&home=orbit#/", wait_until="load"); pg.wait_for_selector(".realm .rl-pl", timeout=20000); pg.wait_for_timeout(900)
 
-    # ARRIVAL: the core, one now line, one card. The old instruments still read the store on Time and Money.
+    # ARRIVAL (2026-11-24): the home is the town, full screen; the now line and the cards are the briefing at the head of System.
+    # The old instruments still read the store on Time and Money.
     home = pg.evaluate("""async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready;
-      const view = document.querySelector('#view'); const card = document.querySelector('.context-card'); const dockTop = document.querySelector('.dock').getBoundingClientRect().top;
+      const view = document.querySelector('#view');
       const bits = [view.innerText, ...[...view.querySelectorAll('[aria-label],[title]')].map((el) => (el.getAttribute('aria-label') || '') + ' ' + (el.getAttribute('title') || ''))].join('\\n');
-      const m = await import(new URL('deck/core/now.js', document.baseURI).href); const facts = m.nowFacts(window.__deck.clock.now()); const line = document.querySelector('.now-line').textContent;
-      return { core: document.querySelectorAll('.realm .rl-pl').length, line, cards: document.querySelectorAll('.context-card').length,
-        event: !!(facts.event && line.includes(facts.event.title)), deadline: !!(facts.deadline && line.includes(facts.deadline.title)),
-        nyse: facts.session.label, nyseOnLine: line.includes(facts.session.label),
-        fits: view.scrollTop === 0 && view.scrollHeight <= view.clientHeight + 2 && !!card && card.getBoundingClientRect().bottom <= dockTop + 2,
-        wide: document.documentElement.scrollWidth, tables: view.querySelectorAll('table').length, dollars: bits.includes('$'), build: window.__deck.BUILD }; }""")
-    proof("DECK-3", "The home renders no table and no dollar figure", home["tables"] == 0 and not home["dollars"] and home["cards"] == 1, json.dumps({"tables": home["tables"], "dollars": home["dollars"], "cards": home["cards"]}))
+      return { core: document.querySelectorAll('.realm .rl-pl').length, cards: document.querySelectorAll('.context-card').length, wx: !!document.querySelector('.wx-chip'), levels: !!document.querySelector('.rl-levels'),
+        fits: view.scrollTop === 0 && view.scrollHeight <= view.clientHeight + 2, wide: document.documentElement.scrollWidth, tables: view.querySelectorAll('table').length, dollars: bits.includes('$'), build: window.__deck.BUILD }; }""")
+    proof("DECK-3", "The home renders no table and no dollar figure", home["tables"] == 0 and not home["dollars"] and home["cards"] == 0, json.dumps({"tables": home["tables"], "dollars": home["dollars"], "cards": home["cards"]}))
+    pg.goto(f"{URL}?now={NOW}&demo=1#/system", wait_until="load"); pg.wait_for_selector(".briefing .now-line", timeout=20000); pg.wait_for_timeout(600)
+    brief = pg.evaluate("""async () => { const m = await import(new URL('deck/core/now.js', document.baseURI).href); const facts = m.nowFacts(window.__deck.clock.now());
+      const b = document.querySelector('.briefing'), line = b.querySelector('.now-line').textContent, r = b.getBoundingClientRect();
+      return { line, first: document.querySelector('#view .view-inner > .hero + .briefing') === b, next: !!b.querySelector('.next-card'), event: !!(facts.event && line.includes(facts.event.title)),
+        deadline: !!(facts.deadline && line.includes(facts.deadline.title)), nyse: facts.session.label, nyseOnLine: line.includes(facts.session.label), inside: r.right <= innerWidth + 1 && document.documentElement.scrollWidth <= innerWidth }; }""")
     pg.goto(f"{URL}?now={NOW}&demo=1#/time", wait_until="load"); pg.wait_for_selector(".dayring svg", timeout=20000); pg.wait_for_selector(".runway .day", timeout=10000); pg.wait_for_timeout(400)
     moved = pg.evaluate("""() => ({ ring: !!document.querySelector('.dayring svg'), days: document.querySelectorAll('.runway .day').length, focus: !!document.querySelector('a.tile.focus'), countdowns: document.querySelectorAll('.countdown').length })""")
     pg.goto(f"{URL}?now={NOW}&demo=1#/money", wait_until="load"); pg.wait_for_selector(".dial-pct", timeout=15000); pg.wait_for_timeout(300)
     payoff = pg.evaluate("() => (document.querySelector('.dial-pct') || {}).textContent || ''")
-    proof("DECK-1", "Arrival view: the core, one now line (next event, next deadline, NYSE open or closed) and one card, fitting above the dock; the day ring, 7-day runway, countdowns and payoff ring still read the store",
-          home["core"] == len(CORE_IDS) and home["event"] and home["deadline"] and home["nyseOnLine"] and home["nyse"] in ("NYSE open", "NYSE closed") and home["cards"] == 1 and home["fits"] and home["wide"] <= 384 and moved["ring"] and moved["days"] == 7 and moved["focus"] and moved["countdowns"] >= 1 and bool(payoff),
-          json.dumps({"line": home["line"], "nyse": home["nyse"], "fits": home["fits"], "wide": home["wide"], "build": home["build"], "moved": moved, "payoff": payoff}, default=str))
+    proof("DECK-1", "Arrival: the home is the town (every place, the weather chip, Levels, nothing scrolls); System opens on the briefing: one now line (next event, next deadline, NYSE open or closed) and what comes after, inside the screen; the day ring, 7-day runway, countdowns and payoff ring still read the store",
+          home["core"] == len(CORE_IDS) and home["wx"] and home["levels"] and home["fits"] and home["wide"] <= 384 and brief["first"] and brief["next"] and brief["event"] and brief["deadline"] and brief["nyseOnLine"] and brief["nyse"] in ("NYSE open", "NYSE closed") and brief["inside"]
+          and moved["ring"] and moved["days"] == 7 and moved["focus"] and moved["countdowns"] >= 1 and bool(payoff),
+          json.dumps({"line": brief["line"], "nyse": brief["nyse"], "home": home, "brief": {k: v for k, v in brief.items() if k != "line"}, "moved": moved, "payoff": payoff}, default=str))
 
     # TIME-1: the 40-event research calendar goes in and comes back out the same
     r = pg.evaluate(ICS_JS)

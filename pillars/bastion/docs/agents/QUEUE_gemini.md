@@ -2,25 +2,25 @@
 
 # Bastion · Mountain Prep · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. BAS-GEM-13 · Bastion: the Genasys zone names for the mountain communities (Frazier Park, Lake of the Woods, Pinon Pines, Pine Mountain Club)
+## 1. BAS-GEM-15 · Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Run 6 confirmed Lebec's KRN-535 but Genasys's map would not load for the others.
+**Why:** The evacuation zones are in (BAS-GEM-13); the roads out are not.
 
-**What it unlocks:** Bastion shows the zone to watch for each community.
+**What it unlocks:** Bastion shows the routes and which one to take.
 
 **Read first:**
-- Kern County Fire and OES evacuation orders and warnings that name zones (kerncountyfire.org news, CAL FIRE incident pages, ReadyKern posts), protect.genasys.com community pages
+- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
 
 **Do this:**
-1. For each community, find an official order, warning or page that names its zone id(s). Never search a home address: use the community name or a public landmark.
+1. Each road out (I-5 north and south, Frazier Mountain Park Rd, Lockwood Valley Rd, Cerro Noroeste, Mil Potrero...): where it goes, what closes it, closures since 2021 with dates, and the alternate.
 
-**Make:** `bastion_gemini_evac-zones-2_{YYYYMMDD-HHMM}.json`
+**Make:** `bastion_gemini_routes_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -28,79 +28,20 @@ Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `town` (text): 
-- `zones` (text): the zone ids
-- `issuer` (text): 
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `road` (text): name
+- `from_to` (text): from and to
+- `closes_for` (text): what closes it
+- `closures` (text): dates since 2021
+- `alternate` (text): the other way
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 4
-
-**Done when:** All four communities, each with its zones or the pages checked.
+**Done when:** Every road out listed.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. BAS-GEM-14 · Bastion: how much fuel a household may store (gasoline, propane, generators) under Kern's fire code
-
-**Due:** 2026-12-06 · **State:** now
-
-**Why:** Bastion's kit lists fuel for the generator; storing it has limits in the fire code.
-
-**What it unlocks:** Bastion's kit says how much fuel can be kept and how.
-
-**Read first:**
-- California Fire Code as adopted by Kern County (Kern County Fire Department pages, codes.iccsafe.org CFC chapters 57 and 61), CAL FIRE and Cal OES guidance
-
-**Do this:**
-1. Gasoline in a residence or garage (gallons, containers), propane cylinders indoors and out, generator placement rules.
-
-**Make:** `bastion_gemini_fuel-storage_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `fuel` (text): 
-- `rule` (text): 
-- `limit` (text): the number with its unit
-- `code` (text): section
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** Gasoline, propane and generators covered.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

@@ -8,45 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Bastion · Mountain Prep right now.
 
 ## Gemini
 
-Updated 2026-11-24 03:14 UTC · 2 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 1 open in this pillar.
 
 
-- BAS-GEM-13 · Bastion: the Genasys zone names for the mountain communities (Frazier Park, Lake of the Woods, Pinon Pines, Pine Mountain Club) · due 2026-12-05
-    make: bastion_gemini_evac-zones-2_{YYYYMMDD-HHMM}.json · how many: 4 · done when: All four communities, each with its zones or the pages checked.
-- BAS-GEM-14 · Bastion: how much fuel a household may store (gasoline, propane, generators) under Kern's fire code · due 2026-12-06
-    make: bastion_gemini_fuel-storage_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Gasoline, propane and generators covered.
+- BAS-GEM-15 · Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history · due 2026-12-08
+    make: bastion_gemini_routes_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every road out listed.
 
 ## Muse
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Bastion · Mountain Prep right now.
 
 ## ChatGPT
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Bastion · Mountain Prep right now.
 
 ## Argon
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Bastion · Mountain Prep right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Bastion · Mountain Prep right now.

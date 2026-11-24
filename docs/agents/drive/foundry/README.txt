@@ -8,43 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Foundry right now.
 
 ## Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 1 open in this pillar.
 
 
-- FDY-GEM-07 · Foundry: the certifications each of the 11 stage-1 builds would need before it could be sold · due 2026-12-08
-    make: foundry_gemini_certification_{YYYYMMDD-HHMM}.json · how many: 11 · done when: All 11 builds.
+- FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief · due 2026-12-08
+    make: foundry_gemini_showcase_{YYYYMMDD-HHMM}.json · how many: 11 · done when: 11 builds.
 
 ## Muse
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Foundry right now.
 
 ## ChatGPT
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Foundry right now.
 
 ## Argon
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Foundry right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Foundry right now.

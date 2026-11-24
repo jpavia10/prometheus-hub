@@ -2,27 +2,27 @@
 
 # Athenaeum · Idea Vault · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ATH-GEM-06 · Athenaeum: the date and place of each of the 40 history entries, so the shelf can show them on a timeline and a map
+## 1. ATH-GEM-07 · Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words
 
 **Due:** 2026-12-08 · **State:** now
 
-**Why:** The 40 cause-event-consequence entries have a region but no date or coordinates, so Athenaeum cannot place them in time or on the globe.
+**Why:** The family tree now reaches 1638 (Lower Norfolk, Virginia) and crosses the Regulators, the Revolution, Cherokee removal, Civil War Tennessee, the Lithuanian press ban, Ellis Island, the AEF in France, Detroit's auto plants and the Depression. Kin's timeline will draw on Athenaeum's chronicle.
 
-**What it unlocks:** A timeline and a map of the history shelf.
+**What it unlocks:** The family's lives sit in their history, in both pillars.
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/athenaeum/history-seed.js (window.ATHENAEUM_HISTORY: 40 entries, in file order)
-- britannica.com, or a university or museum page (never Wikipedia alone; a Wikipedia page may lead you to the source)
+- https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/
+- The 40 existing chains (same shape)
 
 **Do this:**
-1. For each entry, in file order: the year it happened (negative for BCE) or its start and end years, and one place that stands for it (the city or site) with coordinates.
-2. Where historians give different dates, give the range and say so in 'note'.
+1. 20 chains, one per era the tree crosses; each with cause, event and consequence, a quote from a primary or scholarly source for each, the date and place, and which family members lived through it (data.js ids).
 
-**Make:** `athenaeum_gemini_history-dates_{YYYYMMDD-HHMM}.json`
+**Make:** `athenaeum_gemini_family-eras_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -30,34 +30,24 @@ Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `title` (text): as in history-seed.js
-- `start` (number): year, negative for BCE
-- `end` (number): year, or the same as start
-- `place` (text): city or site
-- `lat` (number): 2 decimals
-- `lon` (number): 2 decimals
-- `note` (text): a dating debate, or empty
-- `url` (url): the page you opened
-- `quote` (text): copied word for word, 300 characters at most
+- `title` (text): the event
+- `date` (text): YYYY or YYYY-MM-DD
+- `place` (text): where
+- `cause` (text): with a quote
+- `event` (text): with a quote
+- `consequence` (text): with a quote
+- `family` (text): data.js ids who lived through it
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+**How many:** 20
 
-**How many:** 40
-
-**Done when:** All 40 entries.
+**Done when:** 20 chains.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

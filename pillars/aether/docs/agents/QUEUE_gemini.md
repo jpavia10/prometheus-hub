@@ -2,27 +2,27 @@
 
 # Aether · Atmospheric & Field Lab · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. AET-GEM-16 · Aether: Grapevine closures in the last three winters (2023-24, 2024-25, 2025-26)
+## 1. AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Run 6 found 2020-2023 in NWS Hanford's summaries; the last three winters are 'not stated'.
+**Why:** The hub's home now shows live weather and will show live alerts; each alert type needs its severity, colour and plain words.
 
-**What it unlocks:** Aether's closure record reaches this winter.
+**What it unlocks:** Alerts on the home and in Aether read like advice, not codes.
 
 **Read first:**
-- NWS Hanford monthly climate summaries (weather.gov/hnx) and NWS Los Angeles (weather.gov/lox) event summaries
-- Caltrans District 7 and District 6 news releases (dot.ca.gov), CHP Fort Tejon news
+- https://jpavia10.github.io/prometheus-hub/pillars/aether/
+- api.weather.gov/alerts/types and the NWS directives (10-1703)
 
 **Do this:**
-1. Winter by winter, one row per closure: closed, reopened, hours, reason, the page.
-2. A winter with none found gets one row saying so and naming the pages read.
+1. Every NWS alert event type (list from api.weather.gov/alerts/types).
+2. For each: severity class, the NWS colour, one sentence of what to do in the mountains, and whether it has reached Kern County zones CAZ594/CAZ595/CAZ596 since 2021.
 
-**Make:** `aether_gemini_grapevine-closures-3_{YYYYMMDD-HHMM}.json`
+**Make:** `aether_gemini_alert-types_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -30,81 +30,20 @@ Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `closed` (text): YYYY-MM-DD HH:MM or YYYY-MM-DD
-- `reopened` (text): the same form or 'not stated'
-- `hours` (number or 'not stated'): 
-- `reason` (text): 
-- `source` (text): NWS, Caltrans or CHP
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `event` (text): the event name exactly
+- `severity` (text): Extreme, Severe, Moderate or Minor
+- `color` (text): #RRGGBB from the NWS
+- `do` (text): one sentence
+- `kern` (boolean): issued for a Kern zone since 2021
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** All three winters covered.
+**Done when:** Every alert type listed.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. AET-GEM-17 · Aether: Frazier Park's snowfall record, winter by winter (2015-16 to 2025-26)
-
-**Due:** 2026-12-07 · **State:** now
-
-**Why:** The deck, the drive and the pass all turn on how much snow falls; NOAA's cooperative stations near Frazier Park keep daily snowfall.
-
-**What it unlocks:** Aether shows a real snowfall season beside the forecast.
-
-**Read first:**
-- NOAA NCEI Climate Data Online daily summaries (ncei.noaa.gov) for the nearest stations with snowfall (e.g. Lebec, Frazier Park, Tejon Rancho, Pine Mountain Club): name the station and its id
-
-**Do this:**
-1. For each winter: total snowfall, the biggest day and its date, the number of days with 1 inch or more.
-
-**Make:** `aether_gemini_snow-record_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `winter` (text): 2015-16 ...
-- `station` (text): name and id
-- `total_in` (number or 'not stated'): inches
-- `max_day_in` (number or 'not stated'): 
-- `max_day` (date or 'not stated'): 
-- `days_1in` (number or 'not stated'): 
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**Done when:** Every winter, from the nearest station that reports snowfall.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

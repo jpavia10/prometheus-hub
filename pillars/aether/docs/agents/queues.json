@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "aether",
  "agents": [
   {
@@ -1096,7 +1096,7 @@
      "review": "Scored 9/10 (#156)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Run 6 found 2020-2023 in NWS Hanford's summaries; the last three winters are 'not stated'.",
      "unlocks": "Aether's closure record reaches this winter.",
@@ -1177,10 +1177,11 @@
      ],
      "id": "AET-GEM-16",
      "title": "Aether: Grapevine closures in the last three winters (2023-24, 2024-25, 2025-26)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "The deck, the drive and the pass all turn on how much snow falls; NOAA's cooperative stations near Frazier Park keep daily snowfall.",
      "unlocks": "Aether shows a real snowfall season beside the forecast.",
@@ -1264,7 +1265,82 @@
      ],
      "id": "AET-GEM-17",
      "title": "Aether: Frazier Park's snowfall record, winter by winter (2015-16 to 2025-26)",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The hub's home now shows live weather and will show live alerts; each alert type needs its severity, colour and plain words.",
+     "unlocks": "Alerts on the home and in Aether read like advice, not codes.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/aether/",
+      "api.weather.gov/alerts/types and the NWS directives (10-1703)"
+     ],
+     "steps": [
+      "Every NWS alert event type (list from api.weather.gov/alerts/types).",
+      "For each: severity class, the NWS colour, one sentence of what to do in the mountains, and whether it has reached Kern County zones CAZ594/CAZ595/CAZ596 since 2021."
+     ],
+     "deliver": {
+      "file": "aether_gemini_alert-types_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "event",
+       "type": "text",
+       "rule": "the event name exactly"
+      },
+      {
+       "name": "severity",
+       "type": "text",
+       "rule": "Extreme, Severe, Moderate or Minor"
+      },
+      {
+       "name": "color",
+       "type": "text",
+       "rule": "#RRGGBB from the NWS"
+      },
+      {
+       "name": "do",
+       "type": "text",
+       "rule": "one sentence"
+      },
+      {
+       "name": "kern",
+       "type": "boolean",
+       "rule": "issued for a Kern zone since 2021"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every alert type listed.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "AET-GEM-18",
+     "title": "Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do",
+     "due": "2026-12-08"
     }
    ]
   },

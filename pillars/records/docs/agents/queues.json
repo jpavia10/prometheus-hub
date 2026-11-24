@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "records",
  "agents": [
   {
@@ -640,7 +640,7 @@
      "review": "Scored 10/10 (#142)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Odyssey's next Philippines trip needs a passport valid six months past arrival; Records keeps the renewal rules.",
      "unlocks": "Records shows when to renew and what it costs.",
@@ -704,10 +704,11 @@
      ],
      "id": "REC-GEM-10",
      "title": "Records: renewing a US passport in 2026 (online and DS-82), fees and processing times",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "The Today panel already shows Kern's tax deadlines; Records should explain each bill (secured, supplemental, the homeowners' exemption).",
      "unlocks": "Each Kern tax deadline links to what it is.",
@@ -781,7 +782,81 @@
      ],
      "id": "REC-GEM-11",
      "title": "Records: Kern County property tax, the bills and deadlines a homeowner gets in a year",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Kin's open links are closed by certificates (Barbara's birth, Della's second marriage, Laurie's birth); Records holds how to get them.",
+     "unlocks": "Joseph can order the certificates that prove the tree.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/records/",
+      "https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/"
+     ],
+     "steps": [
+      "For each state and record type: who may order (a descendant? a genealogist?), the fee, the form or portal, the wait, and the years available."
+     ],
+     "deliver": {
+      "file": "records_gemini_vital-records_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "state",
+       "type": "text",
+       "rule": "which"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "birth, marriage or death"
+      },
+      {
+       "name": "who",
+       "type": "text",
+       "rule": "who may order"
+      },
+      {
+       "name": "fee",
+       "type": "number",
+       "rule": "US dollars"
+      },
+      {
+       "name": "how",
+       "type": "text",
+       "rule": "form or portal"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "All four states, three record types each.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "REC-GEM-12",
+     "title": "Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait)",
+     "due": "2026-12-08"
     }
    ]
   },

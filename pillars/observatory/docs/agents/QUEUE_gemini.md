@@ -2,25 +2,25 @@
 
 # Observatory · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. OBS-GEM-07 · Observatory: the licence and attribution each of the 22 feeds asks for
+## 1. OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field
 
-**Due:** 2026-12-05 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Your telemetry packet answered the rate limits, User-Agent rules and CORS for the 22 feeds (and filled the CORS gap). The one thing still missing before the page can show their data is what each licence lets it do and the credit line it asks for.
+**Why:** Licences are in; freshness is what the page should show.
 
-**What it unlocks:** Observatory polls each feed no faster than it allows, and credits it as asked.
+**What it unlocks:** Observatory says how fresh each feed is.
 
 **Read first:**
-- Your file observatory_gemini_data-apis_20261123-1115.json (the 21 feeds and their docs pages)
+- https://jpavia10.github.io/prometheus-hub/pillars/observatory/
 
 **Do this:**
-1. For each of the 22 feeds in observatory_gemini_supp-api-telemetry-architecture_20261123-1626.json: the licence by name (CC BY 4.0, CC0, public domain, custom terms), whether a personal site may show and cache the data, and the exact attribution text the provider asks for, quoted from its terms page.
+1. For each feed: how often it updates and the field that carries its last update.
 
-**Make:** `observatory_gemini_feed-terms_{YYYYMMDD-HHMM}.json`
+**Make:** `observatory_gemini_freshness_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -28,32 +28,20 @@ Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `subject` (text): the Observatory subject
-- `endpoint` (text): the feed, as in your packet
-- `licence` (text): its name
-- `may_cache` (text): yes, no or not stated, with the clause
-- `attribution` (text): the credit line it asks for, word for word
-- `url` (url): the terms or licence page you opened
-- `quote` (text): copied word for word, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+- `feed` (text): as listed
+- `cadence` (text): how often
+- `updated_field` (text): the field
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
 **How many:** 22
 
-**Done when:** All 22 feeds with a licence and an attribution line (or 'not stated' with the terms page you read).
+**Done when:** 22 feeds.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

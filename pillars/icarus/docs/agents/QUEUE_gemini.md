@@ -2,57 +2,44 @@
 
 # Icarus Stake · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ICA-GEM-14 · Icarus: BLS's 2027 PPI release dates, and which 2027 FOMC meetings carry projections
+## 1. ICA-GEM-15 · Icarus: the 2027 Treasury auction schedule (2-, 10- and 30-year) and the 2027 CPI and jobs report dates
 
-**Due:** 2026-12-06 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Your supplemental 2027 calendar already has CPI, the jobs report and the FOMC dates (right to the Fed's 12 Nov revision). What is left: the PPI dates and the projections flag you marked 'not stated'.
+**Why:** BEA and PPI dates are in; these complete the 2027 calendar.
 
-**What it unlocks:** Icarus's 2027 calendar is complete.
+**What it unlocks:** Icarus knows every 2027 release that moves the market.
 
 **Read first:**
-- bls.gov/schedule (2027 release calendar for CPI, Employment Situation, PPI)
+- https://jpavia10.github.io/prometheus-hub/pillars/icarus/
 
 **Do this:**
-1. Every 2027 PPI release with its reference month and time, from BLS's own schedule.
-2. For each 2027 FOMC meeting: whether the Fed's calendar marks it with a Summary of Economic Projections (quote the calendar's footnote).
+1. Every date and time from Treasury and BLS's own schedules.
 
-**Make:** `icarus_gemini_2027-bls_{YYYYMMDD-HHMM}.json`
+**Make:** `icarus_gemini_2027-auctions-cpi_{YYYYMMDD-HHMM}.json`
 
-**Save in:** Prometheus Hub/Pillars/Icarus Stake/incoming (AI drop files)/
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
+- `release` (text): which
 - `date` (date): YYYY-MM-DD
-- `event` (text): PPI with its month, or FOMC with its dates
-- `time_or_flag` (text): 08:30 ET for PPI; 'projections' or 'no projections' for FOMC
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `time_et` (text): HH:MM ET
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 20
-
-**Done when:** All 12 PPI releases (or what BLS has posted, with the page) and the projections flag on all 8 policy meetings.
+**Done when:** Every 2027 date.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

@@ -9,6 +9,7 @@ import { focusStats } from "../models/time.js";
 import { locationSheet, skySheet } from "./parts.js";
 import * as wx from "../core/weather.js";
 import { PILLAR_DOMAINS, domainOf } from "./orrery.js";
+import { briefing } from "./picture.js";
 
 export function render(root, route, ctx) {
   const { store } = ctx; const p = store.get("profile"); const t = today(); const sky = ctx.sky();
@@ -18,7 +19,9 @@ export function render(root, route, ctx) {
   const hasRollback = (() => { try { return !!sessionStorage.getItem("prometheus.backup.rollback"); } catch (e) { return false; } })();
 
   put(root, 
-    h("section.hero.small", h("p.kicker", "System"), h("h1.headline", "Your data stays on this device")),
+    h("section.hero.small", h("p.kicker", "System"), h("h1.headline", "Briefing")),
+    briefing(ctx),   /* 2026-11-24: the briefing moved here from the home, which is now the town */
+    h("p.kicker.sys-k", "Your data stays on this device"),
     countsPanel(store, t),
     stormTile(ctx, store.get("profile"), t),
     homesteadTile(t),

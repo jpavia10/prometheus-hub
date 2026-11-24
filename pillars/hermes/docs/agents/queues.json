@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "hermes",
  "agents": [
   {
@@ -610,7 +610,7 @@
      "review": "Scored 10/10 (#148)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Hermes already knows each biller's real email domains; a scam text or call is checked the same way against the number the company itself publishes.",
      "unlocks": "Hermes can say 'this number is (or is not) the one Chase prints' for any message or call.",
@@ -685,10 +685,11 @@
      ],
      "id": "HER-GEM-13",
      "title": "Hermes: the official fraud and customer-service phone numbers for billers 1-50",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "The second half of the biller phone list.",
      "unlocks": "Every biller in Hermes has its real numbers.",
@@ -762,7 +763,70 @@
      ],
      "id": "HER-GEM-14",
      "title": "Hermes: the official fraud and customer-service phone numbers for billers 51-97",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The phone numbers are in; a lure is easiest to spot by the sender.",
+     "unlocks": "Hermes flags messages from anywhere else.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hermes/"
+     ],
+     "steps": [
+      "For each biller: the email domains and SMS short codes it sends from, from its own security page."
+     ],
+     "deliver": {
+      "file": "hermes_gemini_senders_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "biller",
+       "type": "text",
+       "rule": "name"
+      },
+      {
+       "name": "domains",
+       "type": "text",
+       "rule": "list"
+      },
+      {
+       "name": "short_codes",
+       "type": "text",
+       "rule": "list"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every biller.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "HER-GEM-15",
+     "title": "Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14",
+     "due": "2026-12-08"
     }
    ]
   },

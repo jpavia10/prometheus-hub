@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "games",
  "agents": [
   {
@@ -492,7 +492,7 @@
      "review": "Scored 10/10 (#167)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Week 1 is in; Games keeps the record going.",
      "unlocks": "Games shows each title update and the fixes it brought.",
@@ -566,7 +566,65 @@
      ],
      "id": "GAM-GEM-08",
      "title": "Games: GTA VI's updates and fixes through December 15",
-     "due": "2026-12-16"
+     "due": "2026-12-16",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The same tracking as GAM-GEM-08, for the next month.",
+     "unlocks": "Games stays current.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/games/"
+     ],
+     "steps": [
+      "Every update, patch note and dated announcement from Rockstar's own pages."
+     ],
+     "deliver": {
+      "file": "games_gemini_gta6-updates-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": "the update"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every update listed.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "GAM-GEM-09",
+     "title": "Games: GTA VI updates and fixes from Dec 16 to Jan 15",
+     "due": "2026-12-22"
     }
    ]
   },

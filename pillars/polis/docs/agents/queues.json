@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "polis",
  "agents": [
   {
@@ -667,6 +667,68 @@
      "id": "POL-GEM-10",
      "title": "Polis: every 2027 election date and deadline for Kern County voters",
      "due": "2026-12-06"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The same watch as POL-GEM-08, for the next two months.",
+     "unlocks": "Polis stays current.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/polis/"
+     ],
+     "steps": [
+      "Each agenda item that names Frazier Park, Lebec, Pine Mountain Club, Lake of the Woods or the I-5 corridor: date, item, decision."
+     ],
+     "deliver": {
+      "file": "polis_gemini_board-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": "the item"
+      },
+      {
+       "name": "decision",
+       "type": "text",
+       "rule": "what was decided"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every item.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "POL-GEM-11",
+     "title": "Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities",
+     "due": "2027-01-20"
     }
    ]
   },

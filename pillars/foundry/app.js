@@ -13,12 +13,17 @@
   const cost = (p) => (p.parts || []).reduce((s, x) => s + (+x.cost || 0), 0);
   const BUILD_STATES = (typeof window !== "undefined" && window.FOUNDRY_BUILD_STATES) || (typeof globalThis !== "undefined" && globalThis.FOUNDRY_BUILD_STATES) || [];
   const stateFor = (i) => BUILD_STATES.find((r) => (i.id && r.id === i.id) || r.title === i.title || (r.altTitle && r.altTitle === i.title)) || null;
-  window.FOUNDRY = { STAGES, data: () => { const P = projects(), started = new Set(P.map((p) => p.ideaId).filter(Boolean)); return { STAGES, projects: P, board: ideas().filter((i) => !started.has(i.id)).map((i) => { const st = stateFor(i); return { ...i, buildState: st ? st.state : "concept", buildEvidence: st ? st.evidence : "" }; }), ideas: ideas(), cost: P.reduce((s, p) => s + cost(p), 0) }; } };
+  /* the drafting table (2026-11-24 revamp): builds first, then the drawing board in its own order; one of them is on the table */
+  let focusIx = 0, focusAt = Date.now();
+  const table = () => { const D = window.FOUNDRY.data(); return [...D.projects.slice().sort((a, b) => b.stage - a.stage).map((p) => ({ t: p.title, s: p.stage, next: p.next, project: p })), ...D.board.map((i) => ({ t: i.title, s: 0, idea: i }))]; };
+  const focus = (i, user) => { if (i == null) return focusIx; const n = table().length || 1; focusIx = ((i % n) + n) % n; focusAt = Date.now(); if (user) paintTable(); if (typeof Event === "function" && typeof dispatchEvent === "function") dispatchEvent(new Event("pk:store")); return focusIx; };
+  window.FOUNDRY = { STAGES, table, focus, since: () => focusAt, data: () => { const P = projects(), started = new Set(P.map((p) => p.ideaId).filter(Boolean)); return { STAGES, projects: P, board: ideas().filter((i) => !started.has(i.id)).map((i) => { const st = stateFor(i); return { ...i, buildState: st ? st.state : "concept", buildEvidence: st ? st.evidence : "" }; }), ideas: ideas(), cost: P.reduce((s, p) => s + cost(p), 0) }; } };
   app.innerHTML = `
+    <section class="table-wrap"><div class="glass table-panel"><div id="y-table"></div></div></section>
     <section class="grid">
       <div class="glass span-12"><h2>The honest count</h2><div id="y-plate"></div></div>
       <div class="glass span-12"><h2>On the bench</h2><div id="y-bench"></div></div>
-      <div class="glass span-12"><h2>Drawing board</h2><p class="sub">Every idea you tagged as an invention in Athenaeum, pinned to the wall as a drawing sheet. Starting a build keeps the idea as it is and links back to it.</p><div id="y-board"></div></div>
+      <div class="glass span-12"><h2>The wall</h2><p class="sub">Every idea you tagged as an invention in Athenaeum, as a drawing on the wall. Put one on the table to see it drawn; starting a build keeps the idea as it is and links back to it.</p><div id="y-board"></div></div>
       <div class="glass span-12"><h2>Start from scratch</h2>
         <form class="form" id="y-form"><label class="f wide">What it is<input name="title" required maxlength="120"></label>
           <label class="f wide">The first next step<input name="next" maxlength="160" placeholder="The one thing that moves it forward"></label><button class="btn" type="submit">Start the build</button></form></div>
@@ -106,21 +111,35 @@
   ];
   const themeFor = (i) => { const tags = (i.tags || []).join(" "); const t = THEMES.find((x) => x.re.test(tags)); return t ? t.name : "On the board"; };
   const startBuild = (i) => { const p = S.add("projects", { title: i.title, ideaId: i.id, stage: 1, next: "", parts: [], started: day(), log: [{ date: day(), text: "Started from the idea kept " + (i.created || "") }] }); linkFromAthenaeum(i.id, p && p.id, i.title); if (window.PB && PB.events) PB.events.publish({ type: "build.started", pillar: "foundry", ref: p.id, title: p.title }); toast("On the bench"); paint(); };
-  /* One invention as a blueprint sheet: drawing number, state stamp, the idea in his words, and the cited build check. */
-  function sheet(i, n) {
-    const tags = (i.tags || []).filter((t) => !/invent/i.test(t));
-    return h("article.sheet", null,
-      h("div.sheet-top", null,
-        h("span.sheet-dwg", null, "DWG-" + String(n).padStart(2, "0")),
-        h("span.sheet-stamp", null, String(i.buildState || "concept").toUpperCase())),
-      h("h3.sheet-title", null, i.title),
-      i.body ? h("div.spec", null, h("span.spec-k", null, "The idea — in his words"), h("p.spec-v", null, i.body)) : null,
-      i.buildEvidence ? h("div.spec", null, h("span.spec-k", null, "Build check — prior art & the record"), h("p.spec-v dim", null, i.buildEvidence)) : null,
-      h("div.sheet-meta", null,
-        h("span.sheet-kept", null, `Kept ${i.created || "—"}${i.strength ? " · strength " + i.strength : ""}`),
-        tags.length ? h("span.sheet-tags", null, ...tags.map((t) => h("span.chip", null, t))) : null),
-      h("div.sheet-foot", null,
-        h("button.btn.quiet.small", { type: "button", onclick: () => startBuild(i) }, "Start the build")));
+  /* one drawing in the wall's index: number, title, state, its themes; a tap puts it on the table */
+  function wallRow(i, n) {
+    const tags = (i.tags || []).filter((t) => !/invent/i.test(t)).slice(0, 3), at = () => { const ix = table().findIndex((x) => x.idea && x.idea.id === i.id); focus(ix < 0 ? 0 : ix, true); const st = document.querySelector(".pk-stage"); if (st) st.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); };
+    return h("article.wall-row", { "data-idea": i.id },
+      h("button.btn.quiet.small", { type: "button", onclick: () => startBuild(i) }, "Start the build"),   // first in the markup (the board's first button starts a build), shown last
+      h("button.wall-pick", { type: "button", onclick: at, "aria-label": `Put ${i.title} on the drafting table` },
+        h("span.sheet-dwg", null, "DWG-" + String(n).padStart(2, "0")), h("b.wall-title", null, i.title),
+        h("span.wall-meta", null, String(i.buildState || "concept").toUpperCase() + (tags.length ? " · " + tags.join(" · ") : ""))));
+  }
+  /* the panel under the table: every drawing as a chip, and the one on the table in full */
+  function paintTable() {
+    const box = $("#y-table"); if (!box) return; const T = table(), ix = Math.min(focusIx, Math.max(0, T.length - 1)), it = T[ix];
+    if (!it) { box.replaceChildren(h("h2", null, "On the drafting table"), h("p.empty", null, "No ideas tagged invention in Athenaeum yet.")); return; }
+    const kind = window.FOUNDRY_DWG ? FOUNDRY_DWG.forTitle(it.t) : null, n = ix + 1;
+    const chips = h("div.dwg-strip", { role: "tablist", "aria-label": "Drawings" }, ...T.map((x, j) => h("button.dwg-chip" + (j === ix ? ".on" : "") + (x.project ? ".built" : ""), { type: "button", role: "tab", "aria-selected": String(j === ix), title: x.t, onclick: () => focus(j, true) }, String(j + 1).padStart(2, "0"))));
+    const nav = h("div.table-nav", null, h("button.btn.quiet.small", { type: "button", "aria-label": "Previous drawing", onclick: () => focus(ix - 1, true) }, "‹"), h("span.table-of", null, `${n} of ${T.length}`), h("button.btn.quiet.small", { type: "button", "aria-label": "Next drawing", onclick: () => focus(ix + 1, true) }, "›"));
+    const i = it.idea, p = it.project;
+    box.replaceChildren(
+      h("header.table-head", null, h("h2", null, "On the drafting table"), nav), chips,
+      h("article.table-sheet", null,
+        h("div.sheet-top", null, h("span.sheet-dwg", null, "DWG-" + String(n).padStart(2, "0")), h("span.sheet-stamp", null, p ? STAGES[p.stage].toUpperCase() : String((i && i.buildState) || "concept").toUpperCase())),
+        h("h3.sheet-title", null, it.t),
+        kind && kind.note ? h("p.table-note", null, kind.note, h("span.dim", null, " The drawing is Claude's concept sketch from your words, not a design.")) : null,
+        i && i.body ? h("div.spec", null, h("span.spec-k", null, "The idea, in your words"), h("p.spec-v", null, i.body)) : null,
+        i && i.buildEvidence ? h("div.spec", null, h("span.spec-k", null, "Build check: the record"), h("p.spec-v dim", null, i.buildEvidence)) : null,
+        p ? h("div.spec", null, h("span.spec-k", null, "On the bench"), h("p.spec-v", null, `${STAGES[p.stage]} · started ${p.started}${p.next ? " · next: " + p.next : ""}`)) : null,
+        h("div.sheet-foot", null, i ? h("button.btn.small", { type: "button", onclick: () => startBuild(i) }, "Start the build") : h("a.btn.quiet.small", { href: "#y-bench" }, "To the bench"),
+          i && i.id ? h("a.btn.quiet.small", { href: `../athenaeum/#idea/${encodeURIComponent(i.id)}` }, "The idea in Athenaeum") : null)));
+    const on = chips.querySelector(".on"); if (on) requestAnimationFrame(() => { chips.scrollLeft = Math.max(0, on.offsetLeft - chips.clientWidth / 2 + on.offsetWidth / 2); });   // the chip on the table is in view
   }
   function paint() {
     const D = window.FOUNDRY.data();
@@ -136,16 +155,17 @@
         h("span.ruler-tick on", null, h("b", null, String(D.board.length)), "Concept"),
         ...STAGES.map((s, ix) => h("span.ruler-tick" + (stageCount(ix) ? " on" : ""), null, h("b", null, String(stageCount(ix))), s))),
       h("p.plate-note", null, "The count is the design: every sheet on the wall below carries its build state and the check that set it, cited on the sheet. Nothing here is called built until it is — a sheet leaves the wall only when a build actually starts."));
+    paintTable();
     $("#y-bench").replaceChildren(...(D.projects.length ? D.projects.sort((a, b) => b.stage - a.stage).map(card) : [h("div.bench-clear", null, h("span.bench-stamp", null, "Bench clear"), h("p", null, "Nothing is being built right now — the bench is empty on purpose, not by accident. When a sheet leaves the wall, its build lands here with parts, cost and the one next step."))]));
     if (!D.board.length) {
       $("#y-board").replaceChildren(h("p.empty", null, D.ideas.length ? "Every invention is on the bench." : "No ideas tagged invention in Athenaeum yet."));
     } else {
       const groups = new Map();
-      D.board.forEach((i, ix) => { const t = themeFor(i); if (!groups.has(t)) groups.set(t, []); groups.get(t).push({ i, n: ix + 1 }); });
+      D.board.forEach((i, ix) => { const t = themeFor(i); if (!groups.has(t)) groups.set(t, []); groups.get(t).push({ i, n: D.projects.length + ix + 1 }); });
       const nodes = [];
       for (const [name, items] of groups) {
         nodes.push(h("div.wall-group", null, h("span.wall-group-name", null, name), h("span.wall-group-n", null, items.length + (items.length === 1 ? " sheet" : " sheets"))));
-        nodes.push(h("div.sheets", null, ...items.map(({ i, n }) => sheet(i, n))));
+        nodes.push(h("div.wall-list", null, ...items.map(({ i, n }) => wallRow(i, n))));
       }
       $("#y-board").replaceChildren(...nodes);
     }

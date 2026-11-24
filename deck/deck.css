@@ -908,3 +908,84 @@ body.menu-on:not(.menu-off) #sky { opacity: 0 !important; }
 /* accessibility (Gemini audit HUB-GEM-15, d51): a hidden page heading, and focus never under the dock */
 .pk-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 html { scroll-padding-bottom: 120px; }
+
+/* ---------------------------------------------------------------------------------------------------------------------------------
+   2026-11-24 the home is the town (owner: "Just have the main hub home be like a full screen town thing ... remove the inside the
+   pillars and other shit and shift to system tab"; "make the area for the town bigger"): the realm fills the screen, the rail and
+   the dock float over it, the weather chip sits under the rail, the card shows only for a chosen place, places off the screen
+   are marked at the edges, and the first visit of a session opens on the town rising out of the dark. */
+.view-inner[data-cap="picture"] > .realm { position: fixed; inset: 0; z-index: 0; width: auto; margin: 0; }
+.view-inner[data-cap="picture"] > .realm .rl-stage { height: 100%; height: 100dvh; }
+body.town-home #view { overflow: hidden; -webkit-mask-image: none; mask-image: none; }
+body.town-home .rail { background: linear-gradient(180deg, rgba(3, 5, 12, .62), rgba(3, 5, 12, 0)); border-bottom-color: transparent; }
+.rl-card.rest { display: none; }
+.view-inner[data-cap="picture"] .rl-card { bottom: calc(var(--dock-h, 86px) + 18px + env(safe-area-inset-bottom, 0px)); }
+.view-inner[data-cap="picture"] > .rl-levels { position: fixed; top: calc(var(--rail-h, 56px) + 10px); right: 12px; left: auto; z-index: 5; margin: 0;
+  background: rgba(8, 12, 24, .55); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.rl-edge { position: absolute; top: auto; bottom: calc(var(--dock-h, 86px) + 16px); z-index: 3; max-width: 46%; padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(220, 232, 255, .22);
+  background: rgba(8, 12, 24, .58); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: #eef3ff; font: 500 12px/1 var(--sans);
+  letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; box-shadow: 0 8px 24px rgba(0, 0, 0, .45); }
+.rl-edge.l { left: 8px; } .rl-edge.r { right: 8px; }
+.rl-edge:hover { border-color: var(--cyan); }
+.realm.diving .rl-edge, .realm.opening .rl-edge { opacity: 0; pointer-events: none; }
+.realm:has(.rl-card:not(.rest)) .rl-edge { opacity: 0; pointer-events: none; }   /* a chosen place's card takes the bottom */
+.rl-edge { transition: opacity .3s ease; font-size: 11.5px; padding: 8px 11px; }
+
+/* the opening */
+.rl-intro { position: absolute; inset: 0; z-index: 6; display: none; place-content: center; text-align: center; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 46%, rgba(3, 5, 12, .25), rgba(3, 5, 12, .9) 75%); }
+.realm.opening .rl-intro { display: grid; animation: rl-in 2.2s cubic-bezier(.22, .8, .2, 1) both; }
+.realm.opened .rl-intro { opacity: 0; transition: opacity 1.1s ease; }
+.rl-intro-k { margin: 0; font: 500 11px/1 var(--sans); letter-spacing: .6em; text-transform: uppercase; color: rgba(214, 228, 255, .78); }
+.rl-intro-t { margin: 10px 0 6px; font: 300 34px/1.1 var(--sans); letter-spacing: .02em; color: #fff; text-shadow: 0 4px 30px rgba(0, 0, 0, .7); }
+.rl-intro-s { margin: 0; font: 400 14px/1.3 var(--sans); color: rgba(226, 236, 255, .86); letter-spacing: .06em; }
+@keyframes rl-in { from { background-color: #03050c; } 40% { background-color: rgba(3, 5, 12, .4); } to { background-color: transparent; } }
+.realm.opening .rl-labels { opacity: 0; } .realm .rl-labels { transition: opacity 1.2s ease .2s; }
+.realm.opening .rl-intro-t { animation: rl-word 1.6s cubic-bezier(.22, .8, .2, 1) .15s both; }
+@keyframes rl-word { from { opacity: 0; letter-spacing: .3em; filter: blur(8px); } to { opacity: 1; letter-spacing: .02em; filter: none; } }
+
+/* the weather chip and its panel */
+.view-inner[data-cap="picture"] > .wx-box { position: fixed; top: calc(var(--rail-h, 56px) + 10px); left: 12px; z-index: 6; }
+.wx-chip { display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 13px 0 10px; border-radius: 999px; border: 1px solid rgba(220, 232, 255, .24);
+  background: rgba(8, 12, 24, .58); -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4); color: #f2f6ff; cursor: pointer;
+  font: 400 12.5px/1 var(--sans); box-shadow: 0 10px 30px rgba(0, 0, 0, .45); }
+.wx-chip b { font: 300 19px/1 var(--sans); letter-spacing: -.01em; } .wx-chip small { color: rgba(214, 226, 250, .7); font-size: 11px; }
+.wx-chip svg { color: #ffd98a; } .wx-chip.wx-empty svg { color: var(--cyan); }
+.wx-chip.alert { border-color: rgba(255, 170, 120, .6); } .wx-dot { width: 8px; height: 8px; border-radius: 50%; background: #ff9f6e; box-shadow: 0 0 10px #ff9f6e; }
+.wx-panel { position: absolute; top: 46px; left: 0; width: min(360px, calc(100vw - 24px)); max-height: calc(100dvh - var(--rail-h, 56px) - var(--dock-h, 86px) - 80px); overflow: auto;
+  padding: 14px 14px 12px; border-radius: 22px; border: 1px solid rgba(220, 232, 255, .2); background: linear-gradient(180deg, rgba(14, 20, 38, .9), rgba(6, 9, 18, .94));
+  -webkit-backdrop-filter: blur(22px); backdrop-filter: blur(22px); box-shadow: 0 24px 60px rgba(0, 0, 0, .6); color: #e8eefb; animation: wx-pop .28s cubic-bezier(.22, .8, .2, 1); }
+@keyframes wx-pop { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
+.wx-ph { display: flex; justify-content: space-between; gap: 10px; }
+.wx-k { margin: 0; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--cyan); }
+.wx-big { margin: 2px 0; display: flex; align-items: baseline; gap: 8px; } .wx-big b { font: 200 44px/1 var(--sans); } .wx-big span { font-size: 15px; }
+.wx-sub { margin: 0; font-size: 12px; color: rgba(214, 226, 250, .75); }
+.wx-x { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(220, 232, 255, .2); background: none; color: #fff; font-size: 18px; cursor: pointer; }
+.wx-alert { margin: 10px 0 0; padding: 8px 10px; border-radius: 12px; background: rgba(255, 140, 90, .14); border: 1px solid rgba(255, 160, 110, .35); font-size: 12.5px; }
+.wx-hours { display: grid; grid-auto-flow: column; grid-auto-columns: 44px; gap: 4px; overflow-x: auto; margin: 12px -2px 4px; padding: 2px; scrollbar-width: none; }
+.wx-h { display: grid; justify-items: center; gap: 4px; padding: 7px 0; border-radius: 12px; background: rgba(255, 255, 255, .04); font-size: 11px; }
+.wx-h b { font-weight: 500; font-size: 13px; } .wx-h small { color: rgba(214, 226, 250, .62); font-size: 10px; } .wx-pop { color: var(--cyan) !important; }
+.wx-days { display: grid; gap: 2px; margin-top: 8px; }
+.wx-d { display: grid; grid-template-columns: 52px 20px 1fr auto; align-items: center; gap: 8px; padding: 6px 2px; border-top: 1px solid rgba(220, 232, 255, .08); font-size: 12.5px; }
+.wx-d small { color: rgba(214, 226, 250, .66); } .wx-d b { font-weight: 500; }
+.wx-sun { margin: 10px 0 0; display: grid; gap: 2px; font-size: 12px; color: rgba(214, 226, 250, .78); } .wx-sun span { color: #ffd98a; }
+.wx-foot { margin: 10px 0 0; display: flex; justify-content: space-between; gap: 8px; font-size: 12px; } .wx-foot a { color: var(--cyan); } .wx-foot small { color: rgba(214, 226, 250, .5); }
+.sys-k { margin: 22px 0 4px; }
+.briefing .ticker { position: static; margin: 0 0 10px; }
+@media (prefers-reduced-motion: reduce) { .realm.opening .rl-intro { display: none; } .wx-panel { animation: none; } }
+
+/* the briefing on System wears the now line and the cards the home used to */
+.briefing { display: grid; gap: 10px; }
+.briefing .now-line { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin: 0; padding: 8px 14px; border-radius: var(--r); background: var(--glass); border: 1px solid var(--line); color: var(--pearl); font-family: var(--f); font-size: 13px; line-height: 1.35; text-align: center; }
+.briefing .now-line b { font-weight: 500; color: var(--cyan); letter-spacing: .04em; }
+.briefing .now-line .now-fact { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.briefing .now-line .now-session { color: var(--lavender); }
+.briefing .now-line.one { flex-wrap: nowrap; justify-content: space-between; text-align: left; }
+.briefing .now-line.one .now-fact { flex: 0 1 auto; min-width: 0; } .briefing .now-line.one .now-session { flex: none; color: var(--ink-2); }
+.briefing .context-card { padding: 10px 14px 12px; margin: 0; } .briefing .context-card .panel-head { margin-bottom: 4px; min-height: 0; }
+.briefing .since .since-row { padding: 6px 8px; }
+
+body.town-home .rail .sky-chip { display: none; }   /* the town's own weather chip says it, bigger */
+.realm.opening .rl-core { opacity: 0; transition: opacity .6s ease; }
+.rl-pl .rl-name { transform: translateX(var(--nx, 0px)); }
+.briefing { grid-template-columns: minmax(0, 1fr); } .briefing > * { min-width: 0; max-width: 100%; }

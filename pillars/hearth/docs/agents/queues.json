@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "hearth",
  "agents": [
   {
@@ -1517,7 +1517,7 @@
      "review": "Scored 9/10 (#153)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Run 6 found the state surcharges but Kern's fee PDF was blocked; the permit fee itself is still 'not stated'.",
      "unlocks": "Hearth's deck plan shows the permit cost.",
@@ -1592,10 +1592,11 @@
      ],
      "id": "HEA-GEM-29",
      "title": "Hearth: Kern County's building permit fee for the 23 x 10 ft deck, from an open page",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "The new deck's finish decides how long it lasts in mountain sun and snow.",
      "unlocks": "Hearth's deck plan names a finish with its recoat interval and the temperatures it can be applied in.",
@@ -1679,10 +1680,11 @@
      ],
      "id": "HEA-GEM-30",
      "title": "Hearth: deck stains and sealers for 4,600 ft (UV, snow, freeze-thaw): makers' data sheets",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Your structural packet worked the deck through the NDS adjustment factors at 100 psf snow, but its table values came from copies (a lumber dealer, a Purdue course PDF, preservedwood.org). A beam check is only as good as the table value under it.",
      "unlocks": "Hearth's deck card shows a member-by-member check (joists, beam, ledger, posts) the owner can hand to a plan checker.",
@@ -1773,6 +1775,69 @@
      ],
      "id": "HEA-GEM-31",
      "title": "Hearth: the deck's members checked from AWC's own NDS documents, every factor and every step shown",
+     "due": "2026-12-08",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Fee, finish and members are in; the inspections are the path to a legal deck.",
+     "unlocks": "Hearth turns the deck into a checklist that passes.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/"
+     ],
+     "steps": [
+      "Each inspection Kern County requires for a residential deck, what is checked at each, how to request it, and the common failures, from the county's own pages and the CRC."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_deck-inspections_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "inspection",
+       "type": "text",
+       "rule": "which"
+      },
+      {
+       "name": "checks",
+       "type": "text",
+       "rule": "what the inspector looks at"
+      },
+      {
+       "name": "book",
+       "type": "text",
+       "rule": "how to request it"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every inspection listed.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "HEA-GEM-32",
+     "title": "Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them",
      "due": "2026-12-08"
     }
    ]

@@ -2,109 +2,44 @@
 
 # Hermes Post · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HER-GEM-13 · Hermes: the official fraud and customer-service phone numbers for billers 1-50
+## 1. HER-GEM-15 · Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14
 
-**Due:** 2026-12-06 · **State:** now
+**Due:** 2026-12-08 · **State:** now
 
-**Why:** Hermes already knows each biller's real email domains; a scam text or call is checked the same way against the number the company itself publishes.
+**Why:** The phone numbers are in; a lure is easiest to spot by the sender.
 
-**What it unlocks:** Hermes can say 'this number is (or is not) the one Chase prints' for any message or call.
+**What it unlocks:** Hermes flags messages from anywhere else.
 
 **Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (window.BILLERS: 97 billers, entries 1-50 in file order)
+- https://jpavia10.github.io/prometheus-hub/pillars/hermes/
 
 **Do this:**
-1. For each biller: the customer-service number and the fraud or 'report suspicious activity' number, from the company's own contact or security page (never a directory site).
-2. Note if the company says it never calls or texts to ask for a code or password, and quote it.
+1. For each biller: the email domains and SMS short codes it sends from, from its own security page.
 
-**Make:** `hermes_gemini_biller-phones-1_{YYYYMMDD-HHMM}.json`
+**Make:** `hermes_gemini_senders_{YYYYMMDD-HHMM}.json`
 
-**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `biller` (text): as in billers.js
-- `service_phone` (text): as printed
-- `fraud_phone` (text): as printed, or 'not stated'
-- `never_asks` (text): the company's own words, or 'not stated'
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
+- `biller` (text): name
+- `domains` (text): list
+- `short_codes` (text): list
+- `source_url` (url): the official page that shows the value
+- `checked` (date): the day you read it, YYYY-MM-DD
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 50
-
-**Done when:** Billers 1-50.
+**Done when:** Every biller.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude opens every source URL in ten rows at random and checks the value against the page.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. HER-GEM-14 · Hermes: the official fraud and customer-service phone numbers for billers 51-97
-
-**Due:** 2026-12-07 · **State:** now
-
-**Why:** The second half of the biller phone list.
-
-**What it unlocks:** Every biller in Hermes has its real numbers.
-
-**Read first:**
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (entries 51-97 in file order)
-
-**Do this:**
-1. As in part 1.
-
-**Make:** `hermes_gemini_biller-phones-2_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `biller` (text): 
-- `service_phone` (text): 
-- `fraud_phone` (text): or 'not stated'
-- `never_asks` (text): or 'not stated'
-- `url` (url): the page you opened, on the official site
-- `quote` (text): copied word for word from that page, 300 characters at most
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 47
-
-**Done when:** Billers 51-97.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a value without a source URL that shows it
+- rows missing to reach the count
+- a source that is a blog, forum or AI summary where an official page exists

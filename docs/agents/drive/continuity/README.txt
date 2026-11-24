@@ -8,45 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Continuity · Sovereign Vault right now.
 
 ## Gemini
 
-Updated 2026-11-24 03:14 UTC · 2 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 1 open in this pillar.
 
 
-- CON-GEM-09 · Continuity: California's advance health care directive and the Secretary of State's registry, step by step · due 2026-12-06
-    make: continuity_gemini_ahcd_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Form, witnesses, registry, revocation and POLST covered.
-- CON-GEM-10 · Continuity: who gets each kind of account when someone dies (beneficiary rules for 401(k), IRA, life insurance, POD and TOD) in 2026 · due 2026-12-07
-    make: continuity_gemini_beneficiaries_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All seven account types.
+- CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for · due 2026-12-08
+    make: continuity_gemini_small-estate_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every step sourced.
 
 ## Muse
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Continuity · Sovereign Vault right now.
 
 ## ChatGPT
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Continuity · Sovereign Vault right now.
 
 ## Argon
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Continuity · Sovereign Vault right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Continuity · Sovereign Vault right now.

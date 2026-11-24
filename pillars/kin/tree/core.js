@@ -152,8 +152,10 @@ export function build() {
   }
 
   /* links: a child's birth reaches both parents' lifelines at that year */
+  const CERT = Object.fromEntries((L.certainty || []).map((c) => [c.child, c]));
+  for (const n of nodes) n.cert = CERT[n.id] || null;
   const links = [];
-  for (const n of nodes) for (const q of parents(n.id)) if (byId[q]) links.push({ child: n.id, parent: q, unsure: unsure(n.id), ghost: byId[q].ghost });
+  for (const n of nodes) for (const q of parents(n.id)) if (byId[q]) links.push({ child: n.id, parent: q, unsure: unsure(n.id) || (CERT[n.id] && CERT[n.id].pct < 50), ghost: byId[q].ghost, cert: CERT[n.id] ? CERT[n.id].pct : null });
   const stubs = (M.stubs || []).filter((id) => byId[id]);
   const rMax = Math.max(...nodes.map((n) => n.r)) + 4, yMin = Math.min(...nodes.map((n) => n.y));
 

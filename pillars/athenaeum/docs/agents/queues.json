@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "athenaeum",
  "agents": [
   {
@@ -330,7 +330,7 @@
      "review": "Scored 10/10 (#161)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "The 40 cause-event-consequence entries have a region but no date or coordinates, so Athenaeum cannot place them in time or on the globe.",
      "unlocks": "A timeline and a map of the history shelf.",
@@ -421,6 +421,91 @@
      ],
      "id": "ATH-GEM-06",
      "title": "Athenaeum: the date and place of each of the 40 history entries, so the shelf can show them on a timeline and a map",
+     "due": "2026-12-08",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The family tree now reaches 1638 (Lower Norfolk, Virginia) and crosses the Regulators, the Revolution, Cherokee removal, Civil War Tennessee, the Lithuanian press ban, Ellis Island, the AEF in France, Detroit's auto plants and the Depression. Kin's timeline will draw on Athenaeum's chronicle.",
+     "unlocks": "The family's lives sit in their history, in both pillars.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/athenaeum/",
+      "https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/",
+      "The 40 existing chains (same shape)"
+     ],
+     "steps": [
+      "20 chains, one per era the tree crosses; each with cause, event and consequence, a quote from a primary or scholarly source for each, the date and place, and which family members lived through it (data.js ids)."
+     ],
+     "deliver": {
+      "file": "athenaeum_gemini_family-eras_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": "the event"
+      },
+      {
+       "name": "date",
+       "type": "text",
+       "rule": "YYYY or YYYY-MM-DD"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": "where"
+      },
+      {
+       "name": "cause",
+       "type": "text",
+       "rule": "with a quote"
+      },
+      {
+       "name": "event",
+       "type": "text",
+       "rule": "with a quote"
+      },
+      {
+       "name": "consequence",
+       "type": "text",
+       "rule": "with a quote"
+      },
+      {
+       "name": "family",
+       "type": "text",
+       "rule": "data.js ids who lived through it"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "20 chains.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "ATH-GEM-07",
+     "title": "Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words",
      "due": "2026-12-08"
     }
    ]

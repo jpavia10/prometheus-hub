@@ -497,3 +497,163 @@ window.KIN_LINEAGE = {
     { id: "M-glenda", person: "P-glenda", face: "face-glenda", img: "glenda-2022", src: "S-glenda-photo", caption: "Glenda, about 2022: the photograph chosen for her obituary." }
   ];
 })(window.KIN_LINEAGE);
+
+/* Gemini's Ancestry run, waves 2 to 4 (24 Nov 2026): the hint sweep on your Ancestry tree, the certainty-scored pedigree, the
+   Culberson / Tippens / Bryant / Martin lines and the Pavia family of 1940. Read by Claude from Gemini's documents (Drive:
+   Kin/lineage records/Ancestry.com, Pavia Family Tree). Indexed records (census, SSDI, VA gravesites) are derivative: probable
+   until their images are read. Certainty: L.certainty gives, for each person, how sure the link to their parents is (0-100);
+   "gemini" is the figure Gemini gave where Claude set a lower one, with the reason. Addresses and people-search sites that
+   Gemini cited are not copied here. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), F = (id) => L.families.find((f) => f.id === id), C = (id) => L.conflicts.find((c) => c.id === id);
+  L.sources.push(
+    { id: "S-anc-hints", short: "Ancestry hints on your tree (24 Nov 2026)", kind: "derivative", year: 2026,
+      cite: "Ancestry.com, hints on the \"Pavia Family Tree\" (tree 192482486): 1950 U.S. Federal Census index, U.S. Social Security Death Index 1935-2014, U.S. Veterans' Gravesites ca. 1775-2019, U.S. Find a Grave Index, Michigan Death Index 1971-1996, U.S. Social Security Applications and Claims Index, U.S. City Directories, and member photos; read by Gemini on 24 November 2026 (\"Pavia Family Tree: Profile Updates & Hint Sweep\", Drive).",
+      read: "Barbara J. Rimsha, born about 1933, Michigan, in Detroit in 1950 with her mother Della E. Rimsha; Barbara J. Feole, born 24 Mar 1933, died 22 Jan 2009 (SSDI). Francis Joseph Pavia, born 7 Feb 1939, died 30 Mar 2018, buried Great Lakes National Cemetery, Holly, Michigan (veterans' gravesites; Find a Grave). Joy Chloey Kirkland's obituary clipping (shared by a member). A 1950 photograph captioned \"Sons of Jesse Columbus Kirkland\": Robert Adgar, Buster Madison, Jesse Reed and Luther Alden Kirkland." },
+    { id: "S-joy-obit", short: "Joy Kirkland's obituary (1990)", kind: "derivative", year: 1990,
+      cite: "Death notice, \"KIRKLAND, JOY CHLOEY\", Detroit newspaper, March 1990, from a Newspapers.com clipping shared on Ancestry by a member (7 Sep 2020); transcribed by Gemini on 24 November 2026. The clipping image is not yet read by Claude.",
+      read: "\"KIRKLAND JOY CHLOEY March 26, 1990. Beloved wife of Buster, dearest mother of James, Glenda Pavia, and Stephen. Dear grandmother of eight grandchildren and one great grandchild. Loving daughter of Ada Moss. Dear sister of Frittie Kirkland, and Haroldene Wiggins. Funeral from the Girrbach-Krasun Funeral Home (Southgate Chapel) ... Interment Michigan Memorial Park Cemetery.\"" },
+    { id: "S-pavia-obits", short: "Charles P. Pavia (2009) and Caroline Dembeck (2014) obituaries", kind: "original", year: 2009,
+      cite: "Obituaries of Charles P. Pavia (died 16 Apr 2009, Allen Park; The Detroit News via Legacy.com) and Caroline Rita Dembeck (born 27 Jun 1927, died 31 Dec 2014; Wujek-Calcaterra & Sons; The Macomb Daily), with the 1940 U.S. census screenshot saved in your Drive in 2023; read by Gemini on 24 November 2026 (Wave-3 dossier). Not yet read by Claude.",
+      read: "Charles is survived by his sister Caroline (Donald) Dembeck and his brother Frank (Linda) Pavia; Caroline by Frank (Linda) Pavia and the late Charles (Christine). With the 1940 census (Joseph Pavia about 41 and Grace about 29 with their children), Francis Joseph \"Frank\" Pavia is their son." },
+    { id: "S-culberson", short: "Culberson, Tippens and Bryant lines (compiled)", kind: "authored",
+      cite: "Interwoven Family blog (William L. Culberson; Mary Tennessee, William Henry and Eliza Tippens), WikiTree Culberson-413, Bryant-5485, Bryant-6193, Martin-28926, Turner-2959, Davies-2384, the Tennessee State Library's TeVA HAMI059 (Peter Culberson), read by Gemini on 24 November 2026 (Wave-3 dossier and certainty-scored pedigree).",
+      read: "Compiled lines, each to be checked against the records they cite: the 1870 and 1880 McMinn County censuses, the Cochran Cemetery stones, John Bryant's 1800 Grayson County will, Nicholas Bryant's 1766 Carteret County will naming his grandchild Rebecca." },
+    { id: "S-certainty", short: "Gemini's certainty-scored pedigree", kind: "authored", year: 2026,
+      cite: "\"Kin: Certainty-Scored Pedigree & Wave-2 Breakthroughs\" (23-24 Nov 2026) and \"Kin: Wave-3 Aggressive Lineage & 397-File Media Harvest\" (24 Nov 2026), Gemini, Drive.",
+      read: "A percentage for every parent-to-child link: 90-100 verified primary proof, 70-89 strong consensus, 40-69 working hypothesis, under 40 disputed or disproved. It names the links that are false online: the \"Sir John Llewellyn\" Welsh line (under 10%), Rev. William Pullein of Ripley (under 35%), Randall Holt Jr. to Elizabeth Allin (under 35%), John Matson of New Sweden (under 20%), Thomas Tabb Giles as James Madison Giles's father (disproved) and \"Cheesesquire\" Kirkland as Nathan's father (under 35%). None of those is in this tree." }
+  );
+  L.places.push(
+    { id: "PL-holly", name: "Holly, Michigan", hist: "Holly, Oakland County, Michigan", now: "Holly, Michigan", lat: 42.7914, lon: -83.6277 },
+    { id: "PL-glnc", name: "Great Lakes National Cemetery, Holly", hist: "Great Lakes National Cemetery, Holly, Oakland County, Michigan", now: "Holly, Michigan", lat: 42.818, lon: -83.598 },
+    { id: "PL-hartshorne", name: "Hartshorne, Oklahoma", hist: "Hartshorne, Pittsburg County, Oklahoma", now: "Hartshorne, Oklahoma", lat: 34.8448, lon: -95.5583 }
+  );
+
+  /* Barbara: the 1950 census and the SSDI settle C10 as far as the indexes go */
+  const ggm = P("P-ggm");
+  ggm.status = "probable";
+  ggm.names.push({ given: "Barbara J.", surname: "Rimsha", type: "record", src: ["S-anc-hints"], note: "1950 census, with her mother Della E. Rimsha" },
+                 { given: "Barbara Josephine", surname: "Termens", type: "birth", src: ["S-anc-hints"], note: "an Ancestry member's tree; her birth surname if she was Joseph's daughter" });
+  ggm.summary = "Your mother's mother's mother. Born 24 March 1933 in Michigan; in 1950 she was Barbara J. Rimsha, living in Detroit with her mother Della E. Rimsha (Della remarried after Joseph died in 1935). Married Bob Seconder (Laurie's father), later Mel Feole; died 22 January 2009 in Holly, Michigan.";
+  const ft = F("F-termenas"); if (ft && ft.uncertain) delete ft.uncertain["P-ggm"];
+  const c10 = C("C10");
+  c10.status = "resolved"; c10.conclusion = "daughter (probable)";
+  c10.argument += " Settled as far as the indexes go (24 Nov 2026): Barbara was born on 24 March 1933 (SSDI), inside Joseph and Della's marriage (1922-1935), and in 1950 she lived in Detroit with her mother Della E. Rimsha (1950 census index); an Ancestry member's tree names her Barbara Josephine Termens, daughter of Joseph Termens and Adelle E. Matukaitis. A granddaughter could not have been born in 1933. The census image and her birth record will make it proven.";
+  const della = P("P-della");
+  della.names.push({ given: "Della E.", surname: "Rimsha", type: "married", src: ["S-anc-hints"], note: "1950 census: remarried after 1935" });
+  L.events.push(
+    { id: "E-birth-ggm", type: "birth", who: ["P-ggm"], date: { text: "24 Mar 1933", sort: "1933-03-24" }, place: "PL-detroit", conclusion: "Born 24 March 1933 in Michigan (Detroit by the 1950 census).", confidence: "probable",
+      assert: [{ src: "S-anc-hints", value: "Barbara J. Feole, born 24 Mar 1933 (SSDI); Barbara J Rimsha, born abt 1933 Michigan (1950 census)", info: "secondary", ev: "direct" }] },
+    { id: "E-res-ggm50", type: "residence", who: ["P-ggm", "P-della"], date: { text: "1950", sort: "1950-04-01" }, place: "PL-detroit", conclusion: "Barbara (16) and her mother Della, now Rimsha, in Detroit.", confidence: "probable",
+      assert: [{ src: "S-anc-hints", value: "Barbara J Rimsha, b. abt 1933 MI, Detroit; Mother: Della E Rimsha", info: "undetermined", ev: "direct", note: "the index; the image is still to be read" }] },
+    { id: "E-death-ggm", type: "death", who: ["P-ggm"], date: { text: "22 Jan 2009", sort: "2009-01-22" }, place: "PL-holly", conclusion: "Died 22 January 2009, Holly, Michigan.", confidence: "probable",
+      assert: [{ src: "S-anc-hints", value: "Barbara J. Feole, d. 22 Jan 2009 (SSDI); Holly, Oakland, MI (member tree)", info: "secondary", ev: "direct" }] }
+  );
+
+  /* your father's father, and his family in 1940 */
+  const fr = P("P-francis");
+  fr.status = "probable"; delete fr.living;
+  fr.summary = "Your father's father, Francis Joseph \"Frank\" Pavia: born 7 February 1939 in Detroit to Joseph and Grace Pavia, a veteran, of Harsens Island and Algonac; married Glenda Mardelle Kirkland, later Linda S. Pavia; died 30 March 2018 and buried at Great Lakes National Cemetery, Holly.";
+  L.events.push(
+    { id: "E-birth-francis", type: "birth", who: ["P-francis"], date: { text: "7 Feb 1939", sort: "1939-02-07" }, place: "PL-detroit", conclusion: "Born 7 February 1939 in Detroit.", confidence: "probable",
+      assert: [{ src: "S-anc-hints", value: "b. 07 Feb 1939 Detroit, Wayne, MI (member tree); b. 2/7/1939 (veterans' gravesites)", info: "secondary", ev: "direct" }] },
+    { id: "E-death-francis", type: "death", who: ["P-francis"], date: { text: "30 Mar 2018", sort: "2018-03-30" }, conclusion: "Died 30 March 2018.", confidence: "probable",
+      assert: [{ src: "S-anc-hints", value: "d. 30 Mar 2018 (Find a Grave index; veterans' gravesites)", info: "secondary", ev: "direct" }] },
+    { id: "E-burial-francis", type: "burial", who: ["P-francis"], date: { text: "2018", sort: "2018-04-01" }, place: "PL-glnc", conclusion: "Buried at Great Lakes National Cemetery, Holly, as a veteran.", confidence: "probable",
+      assert: [{ src: "S-anc-hints", value: "Francis Joseph Joseph Pavia ... Burial Great Lakes National Cemetery, Holly, MI", info: "primary", ev: "direct", note: "the VA's own index of its cemeteries" }] }
+  );
+  L.people.push(
+    { id: "P-josephp", sex: "M", status: "probable", names: [{ given: "Joseph", surname: "Pavia", type: "birth", src: ["S-pavia-obits"] }], summary: "Your father's father's father: born about 1899; in Detroit in 1940 with Grace and their children Caroline, Charles and Francis. His birthplace and parents are the next question (a Maltese Pavia family lived in Detroit too; Erminia Diedo Pavia's household is a different one)." },
+    { id: "P-grace", sex: "F", status: "probable", names: [{ given: "Grace", surname: "", type: "as-given", src: ["S-pavia-obits"], note: "her maiden name is not known; one Ancestry tree gives Lucrezia Calleja (C13)" }], summary: "Joseph's wife, born about 1911; mother of Caroline, Charles and Francis." },
+    { id: "P-caroline", sex: "F", status: "probable", names: [{ given: "Caroline Rita", surname: "Pavia", type: "birth", src: ["S-pavia-obits"] }, { given: "Caroline Rita", surname: "Dembeck", type: "married", src: ["S-pavia-obits"] }], summary: "Francis's sister: born 27 June 1927, married Donald T. Dembeck (1928-2018), died 31 December 2014; buried Resurrection Cemetery, Clinton Township." },
+    { id: "P-charlesp", sex: "M", status: "probable", names: [{ given: "Charles P.", surname: "Pavia", type: "birth", src: ["S-pavia-obits"] }], summary: "Francis's brother: born about 1929, married Christine Pianowski, died 16 April 2009 in Allen Park; buried Our Lady of Hope Cemetery, Brownstown Township." }
+  );
+  L.families.push({ id: "F-pavia-sr", partners: ["P-josephp", "P-grace"], children: ["P-caroline", "P-charlesp", "P-francis"] });
+  L.conflicts.push({ id: "C13", person: "P-grace", q: "Who was Grace Pavia, Francis's mother?", status: "open", conclusion: "unresolved",
+    argument: "The 1940 census and her children's obituaries give Grace (born about 1911). One Ancestry tree (\"Burd Family Tree\") gives Francis's parents as Joseph Paul Pavia and Lucrezia Calleja, and Ancestry's suggestion of Giuseppe Antonio Pavia and Erminia Margaret Diedo belongs to another Detroit Pavia family (Erminia, of Malta, 1918-2018, was the mother of a different Frank). Grace may be an English form of a Maltese or Italian name; Caroline's or Charles's Social Security application (NUMIDENT) names their mother in full and settles it." });
+
+  /* Jesse Columbus's other sons (a 1950 photograph) and Joy's sisters (her obituary) */
+  L.people.push(
+    { id: "P-robertk", sex: "M", status: "possible", names: [{ given: "Robert Adgar", surname: "Kirkland", type: "birth", src: ["S-anc-hints"], note: "Bob" }], summary: "Buster's brother, in the 1950 photograph of Jesse Columbus Kirkland's sons." },
+    { id: "P-reedk", sex: "M", status: "possible", names: [{ given: "Jesse Reed", surname: "Kirkland", type: "birth", src: ["S-anc-hints"] }], summary: "Buster's brother, in the 1950 photograph of Jesse Columbus Kirkland's sons." },
+    { id: "P-lutherk", sex: "M", status: "possible", names: [{ given: "Luther Alden", surname: "Kirkland", type: "birth", src: ["S-anc-hints"] }], summary: "Buster's brother, in the 1950 photograph of Jesse Columbus Kirkland's sons." },
+    { id: "P-frittie", sex: "F", status: "probable", names: [{ given: "Frittie", surname: "Kirkland", type: "married", src: ["S-joy-obit"] }], summary: "Joy's sister (her obituary, 1990)." },
+    { id: "P-haroldene", sex: "F", status: "probable", names: [{ given: "Haroldene", surname: "Wiggins", type: "married", src: ["S-joy-obit"] }], summary: "Joy's sister (her obituary, 1990)." }
+  );
+  F("F-jessec").children.push("P-robertk", "P-reedk", "P-lutherk");
+  F("F-moss").children.push("P-frittie", "P-haroldene");
+  P("P-joy").names.forEach((n) => { if (n.type === "birth") n.src = (n.src || []).concat("S-joy-obit"); });
+
+  /* Ada Nellie Culberson's parents and grandparents; Rebecca Bryant's line to 1638; Josiah Turner's and Thomas Davis's parents */
+  const add = (id, sex, given, surname, summary, status = "possible") => L.people.push({ id, sex, status, names: [{ given, surname, type: "birth", src: ["S-culberson"] }], summary });
+  add("P-billc", "M", "William L.", "Culberson", "\"Bill\", 1867 to 1965; Ada's father. Buried Cochran Cemetery.");
+  add("P-marytt", "F", "Mary Tennessee", "Tippens", "1873 to 1955; Ada's mother. Buried Cochran Cemetery.");
+  add("P-peterc", "M", "Peter", "Culberson", "1833 to 1914. A Union private in Company F, 3rd Tennessee Cavalry, prisoner at Cahaba; McMinn County, Tennessee in 1870 and 1880.");
+  add("P-selena", "F", "Selena Elizabeth", "Lowe", "1833 to 1886.");
+  add("P-whtippens", "M", "William Henry", "Tippens", "1830 to 1910; married Eliza Owens 19 Sep 1867, McMinn County, Tennessee.");
+  add("P-eliza", "F", "Eliza", "Owens", "1834 to 1915.");
+  add("P-johnb", "M", "John", "Bryant", "1742 to 1800; his 1800 Grayson County, Virginia will names Rebecca.");
+  add("P-lydia", "F", "Lydia", "Allen", "Born 1740.");
+  add("P-nbryant", "M", "Nicholas Francis", "Bryant", "1718 to 1766; his 1766 Carteret County, North Carolina will names his grandchild Rebecca Bryant.");
+  add("P-eleanor", "F", "Eleanor", "Martin", "1721 to 1768.");
+  add("P-johnm", "M", "John", "Martin", "About 1680 to 1741.");
+  add("P-maryborn", "F", "Mary", "Born", "1678 to 1741.");
+  add("P-joelm", "M", "Joel", "Martin", "About 1638 to 1716, Lower Norfolk County, Virginia: the oldest person in the tree.");
+  add("P-eward", "F", "Elizabeth", "Ward", "Joel Martin's wife.");
+  add("P-josepht", "M", "Joseph", "Turner", "Died 1820.");
+  add("P-maryrogers", "F", "Mary", "Rogers", "Joseph Turner's wife.");
+  add("P-charlesdav", "M", "Charles", "Davies", "About 1706 to 1801, Chester County, Pennsylvania; Pvt. Thomas Davis's father.");
+  L.families.push(
+    { id: "F-culberson", partners: ["P-billc", "P-marytt"], children: ["P-ada"] },
+    { id: "F-pculberson", partners: ["P-peterc", "P-selena"], children: ["P-billc"] },
+    { id: "F-tippens", partners: ["P-whtippens", "P-eliza"], children: ["P-marytt"] },
+    { id: "F-jbryant", partners: ["P-johnb", "P-lydia"], children: ["P-rbryant"] },
+    { id: "F-nbryant", partners: ["P-nbryant", "P-eleanor"], children: ["P-johnb"] },
+    { id: "F-martin", partners: ["P-johnm", "P-maryborn"], children: ["P-eleanor"] },
+    { id: "F-joel", partners: ["P-joelm", "P-eward"], children: ["P-johnm"] },
+    { id: "F-jturner", partners: ["P-josepht", "P-maryrogers"], children: ["P-josiah"] },
+    { id: "F-davies", partners: ["P-charlesdav"], children: ["P-tdavis"] }
+  );
+
+  /* how sure each link to the parents is (0-100) */
+  L.certainty = [
+    ["P-self", 100, "you"], ["P-father", 97, "Glenda's obituary names her son Joseph"], ["P-mother", 98, "your own knowledge"],
+    ["P-glenda", 98, "Joy's obituary names Glenda Pavia; Glenda's names her parents"], ["P-jennifer", 97, "Glenda's obituary"],
+    ["P-francis", 90, "1940 census and his siblings' obituaries"], ["P-caroline", 90, "obituaries"], ["P-charlesp", 90, "obituaries"],
+    ["P-buster", 95, "his Social Security application names his father"], ["P-jamesk", 95, "Glenda's and Joy's obituaries"], ["P-stevenk", 95, "obituaries"],
+    ["P-joy", 98, "her Social Security application and her obituary"], ["P-frittie", 85, "Joy's obituary"], ["P-haroldene", 85, "Joy's obituary"],
+    ["P-robertk", 75, "a captioned 1950 family photograph"], ["P-reedk", 75, "the same photograph"], ["P-lutherk", 75, "the same photograph"],
+    ["P-jessec", 88, "compiled trees and the scrapbook", 95], ["P-anderson", 85, "compiled trees; his dates disagree (C11)", 92], ["P-jessea", 85, "compiled trees", 92],
+    ["P-jamesak", 75, "compiled trees; the Cherokee applications prove Susanna's surname, not this link", 90], ["P-nathan", 55, "WikiTree warns his parents are unproven; his own link to James Altonia is compiled", 80],
+    ["P-polly", 85, "compiled trees and the 1850 marriage", 95], ["P-jamesb", 80, "compiled trees", 90], ["P-benjamin", 78, "compiled trees and Nathaniel's will", 87],
+    ["P-parthenia", 70, "geography and naming patterns", 78], ["P-josiah", 60, "naming patterns", 70], ["P-susannap", 80, "compiled trees and the DAR record", 90],
+    ["P-eastone", 88, "her father's will (abstract) names her and her husband", 92], ["P-emaline", 80, "compiled trees", 90], ["P-hettie", 75, "compiled trees", 85],
+    ["P-wesley", 75, "compiled trees", 85], ["P-tdavisjr", 80, "Quaker minutes and the DAR record", 92], ["P-tdavis", 72, "a compiled Chester County line", 90],
+    ["P-ada", 85, "a family blog and the Cochran Cemetery stones", 95], ["P-billc", 85, "the 1870 and 1880 censuses", 95], ["P-marytt", 82, "their 1867 marriage and the stones", 92],
+    ["P-rbryant", 82, "John Bryant's 1800 will", 95], ["P-johnb", 82, "his father's 1766 will names his child Rebecca", 95], ["P-eleanor", 65, "a compiled colonial pedigree", 80],
+    ["P-johnm", 55, "a compiled colonial pedigree", 80], ["P-ggm", 90, "born 1933 and with her mother Della in 1950 (indexes)"], ["P-betty", 60, "Katherine Springer's obituary calls her Barbara's sister"],
+    ["P-gp", 92, "the family and your baby book"], ["P-charles", 60, "a family tree photograph only"], ["P-della", 70, "the 1922 marriage index names her parents"],
+    ["P-joseph", 50, "the great-uncle's file; the 1912 manifest candidate gives the father as Kazmierz (C9)"]
+  ].map(([child, pct, basis, gemini]) => Object.assign({ child, pct, basis }, gemini ? { gemini } : {}));
+
+  L.hypotheses.push(
+    { id: "H9", text: "Bob Seconder, Laurie's father, is Robert H. Seconder (1931-2003, buried Crescent Hills Cemetery, Waterford), son of Wilbur Guy Seconder (1906-1988), grandson of Arthur George Seconder (born about 1884, England; a Dr. Barnardo's Home Child to Canada) and Bertha Loleta Lawson (1889-1985), whose line runs to Richard Mullinex and Lydia Ann Nelson of Esquesing Township, Halton County, Ontario. Gemini rates it 97%; Claude about 60%: the surname is rare (14 in the SSDI) and the places fit, but no record yet ties this Robert to Laurie.", test: "Q19, Q25; Laurie's birth record names her father" },
+    { id: "H10", text: "Katherine M. Springer (1907-1997, born in Hartshorne, Oklahoma, a Lithuanian mining town) was born a Matukaitis, Della's sister: Hartshorne's Holy Rosary cemetery has Matewas Matukastes (1867-1907), Joe Matukas (1881-1918) and others. Gemini 60%.", test: "Katherine's marriage record; the 1910 census of Hartshorne" }
+  );
+  L.log.push(
+    { id: "L8", date: "2026-11-24", by: "Gemini", q: "Q19", where: "Ancestry.com hints on your tree", terms: "hints for Barbara, Francis, Joy, Chester and Ada (39 hints read)", result: "found", note: "Barbara in the 1950 census with her mother Della E. Rimsha; her SSDI dates; Francis's VA burial; Joy's obituary. Applied above; images still to be read." },
+    { id: "L9", date: "2026-11-24", by: "Gemini", q: "Q12", where: "LVIA fond 1480, inventory 1, file 56 (Telšiai Roman Catholic births, 1893), images 00022-00041", terms: "Termenas / Терменас, entries 40-117, March-July 1893", result: "not found", note: "Negative evidence for the 16 May 1893 birth in Telšiai parish itself; the parish of birth may be another (Kuršėnai has Termenas in the 1920s)." },
+    { id: "L10", date: "2026-11-24", by: "Gemini", q: "Q15", where: "Cambridge city directories 1918-1920", terms: "Howard Street, Termenas", result: "not found", note: "Gemini reports that 180 Howard Street did not exist in those years (C8); to be checked against the directory pages." },
+    { id: "L11", date: "2026-11-24", by: "Gemini", q: "Q1", where: "FamilySearch (record JJRH-VNB), SS President Lincoln, arriving 30 Sep 1912", terms: "Josef Terminas", result: "candidate", note: "Bound for Cambridge to his brother Jsidor; father Kazmierz Terminas in Kowno. Cambridge fits Joseph's later address, so C9 is reopened for a full identity argument; the arrival date he swore to (23 Aug) is five weeks earlier." }
+  );
+})(window.KIN_LINEAGE);
+
+/* the questions the 24 Nov homework works on (KIN-GEM-15 to 34) */
+window.KIN_LINEAGE.questions.push(
+  { id: "Q26", p: 2, person: "P-grace", q: "Who was Grace Pavia (born about 1911), Francis's mother, and where did Joseph Pavia (born about 1899) come from? Their children's Social Security applications name her in full.", sources: "SSACI and NUMIDENT for Caroline (b. 1927) and Charles (d. 2009); 1930 and 1940 censuses; Wayne County marriages 1925-1927", task: "KIN-GEM-29" },
+  { id: "Q27", p: 2, person: "P-della", q: "Della after 1935: whom she married (a Rimsha), when she died, and where she is buried.", sources: "Wayne County marriages 1935-1950; Michigan death index; SSDI", task: "KIN-GEM-30" },
+  { id: "Q28", p: 2, person: "P-gp", q: "Laurie's birth record and who it names as her father (tests H9).", sources: "Michigan birth index about 1950-1958; Wayne and Oakland marriages 1950-1960", task: "KIN-GEM-32" },
+  { id: "Q30", p: 3, person: "P-charles-sr", q: "Charles Sanders and Betty Flemming: their marriage, their 1950 household and their parents.", sources: "Michigan marriages 1945-1955; 1950 census", task: "KIN-GEM-33" },
+  { id: "Q31", p: 3, person: "P-jessec", q: "The Kirkland line's own records: the 1880 and 1900 censuses, the 1850 marriage, and the Eastern Cherokee applications that name Susanna Boston.", sources: "U.S. censuses; Tennessee marriages; Eastern Cherokee Applications (NARA M1104)", task: "KIN-GEM-34" },
+  { id: "Q32", p: 3, person: "P-ada", q: "The Culberson, Tippens and Bryant lines' own records: the 1870 and 1880 McMinn censuses, the 1867 marriage, the 1800 and 1766 wills.", sources: "U.S. censuses; Tennessee marriages; Grayson County, Virginia and Carteret County, North Carolina will books", task: "KIN-GEM-34" }
+);

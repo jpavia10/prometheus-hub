@@ -16,7 +16,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d36";
+export const BUILD = "d74";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -105,13 +105,13 @@ function drawDock() {
   $("#dock").replaceChildren(h("div.dock-bar", items));
 }
 window.addEventListener("pk:lock", () => { if (state.route && state.route.cap === "system") render(true); });   // the passcode panel follows the lock
-setInterval(() => { if ($("#rail")) drawRail(); const r = state.route; if (r && r.cap === "picture" && !sheetOpen() && !document.hidden) { const m = clock.now().getMinutes(); if (m !== state.minute) { state.minute = m; render(true); } } }, 15000);
+setInterval(() => { if ($("#rail")) drawRail(); const r = state.route; if (r && r.cap === "picture" && !document.body.classList.contains("town-home") && !sheetOpen() && !document.hidden) {   /* the town keeps its own clock (realm.js) */ const m = clock.now().getMinutes(); if (m !== state.minute) { state.minute = m; render(true); } } }, 15000);
 
 /* ------------------------------------------------------------------ sky + weather ------------------------------------------------------------------ */
 function applySky() { if (!state.sky) return; state.sky.set({ phase: wx.phaseOf(state.weather), ...wx.skyOf(state.weather) }); document.documentElement.dataset.day = (() => { const ph = wx.phaseOf(state.weather); return ph > 0.27 && ph < 0.73 ? "day" : ph >= 0.23 && ph <= 0.27 ? "dawn" : ph >= 0.73 && ph <= 0.79 ? "dusk" : "night"; })(); }
 async function reloadWeather(force) {
   const place = store.get("profile").place; state.weather = wx.cached(place); applySky();
-  const fresh = await wx.load(place, { force }); if (fresh) { state.weather = fresh; applySky(); drawRail(); if (state.route && (state.route.cap === "picture" || state.route.cap === "system") && !sheetOpen()) render(true); }
+  const fresh = await wx.load(place, { force }); if (fresh) { state.weather = fresh; applySky(); drawRail(); dispatchEvent(new Event("deck:weather")); if (state.route && (state.route.cap === "picture" && !document.body.classList.contains("town-home") || state.route.cap === "system") && !sheetOpen()) render(true); }
   return state.weather;
 }
 setInterval(() => { applySky(); if (!document.hidden) reloadWeather(false); }, 10 * 60000);

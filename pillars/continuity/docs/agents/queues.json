@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "continuity",
  "agents": [
   {
@@ -538,7 +538,7 @@
      "review": "Scored 10/10 (#143)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "The vault holds the paperwork that matters if something happens; the health care directive is the one California has a statutory form and a state registry for.",
      "unlocks": "Continuity's binder gets a directive checklist with where it is registered.",
@@ -607,10 +607,11 @@
      ],
      "id": "CON-GEM-09",
      "title": "Continuity: California's advance health care directive and the Secretary of State's registry, step by step",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Beneficiary designations override a will; each account type has its own rule (spousal consent for a 401(k), the 10-year rule for inherited IRAs).",
      "unlocks": "Continuity's binder checks each account has a beneficiary and says what the rule is.",
@@ -679,7 +680,70 @@
      ],
      "id": "CON-GEM-10",
      "title": "Continuity: who gets each kind of account when someone dies (beneficiary rules for 401(k), IRA, life insurance, POD and TOD) in 2026",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Beneficiaries and the directive are in; the small-estate path is the most likely one.",
+     "unlocks": "Continuity walks a survivor through it.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/continuity/"
+     ],
+     "steps": [
+      "The current limit, the waiting period, the form, who signs, what to attach, and what Chase, Wells Fargo, Bank of America and the DMV ask for, each from their own page."
+     ],
+     "deliver": {
+      "file": "continuity_gemini_small-estate_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "step",
+       "type": "text",
+       "rule": "the step"
+      },
+      {
+       "name": "detail",
+       "type": "text",
+       "rule": "what exactly"
+      },
+      {
+       "name": "who",
+       "type": "text",
+       "rule": "who does it"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every step sourced.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "CON-GEM-11",
+     "title": "Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for",
+     "due": "2026-12-08"
     }
    ]
   },

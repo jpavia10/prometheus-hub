@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "selling",
  "agents": [
   {
@@ -577,6 +577,73 @@
      "due": "2026-12-05",
      "closed": "2026-11-23",
      "review": "Scored 9/10 (#141)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Fees are in; a listing that misses a required specific is hidden.",
+     "unlocks": "Selling fills every required field.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/selling/"
+     ],
+     "steps": [
+      "For each coin, bullion and paper money category: the required and recommended item specifics and the photo rules, from eBay's own pages."
+     ],
+     "deliver": {
+      "file": "selling_gemini_specifics_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "category",
+       "type": "text",
+       "rule": "name and number"
+      },
+      {
+       "name": "required",
+       "type": "text",
+       "rule": "list"
+      },
+      {
+       "name": "recommended",
+       "type": "text",
+       "rule": "list"
+      },
+      {
+       "name": "photos",
+       "type": "text",
+       "rule": "rules"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every category.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "SEL-GEM-09",
+     "title": "Selling: eBay's coin and bullion item specifics and photo rules, category by category",
+     "due": "2026-12-08"
     }
    ]
   },

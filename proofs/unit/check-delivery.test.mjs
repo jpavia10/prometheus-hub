@@ -277,3 +277,10 @@ test('FAIL [row-count]: a count written as a floor still fails below it', () => 
   const failed = parseCheckLines(res.stdout).filter((l) => l.status === 'FAIL');
   assert.deepEqual(failed.map((l) => l.check), ['row-count']);
 });
+
+test('an explicit null passes a number, date, text or boolean field and never a URL (Gemini, run 7)', async () => {
+  const { checkFieldType } = await import('../../tools/kit/check_delivery.mjs');
+  for (const t of ['number', 'integer', 'date', 'text', 'boolean', '0-100']) assert.equal(checkFieldType(null, t).ok, true, t);
+  assert.equal(checkFieldType(null, 'url').ok, false);
+  assert.equal(checkFieldType('soon', 'date').ok, false);
+});

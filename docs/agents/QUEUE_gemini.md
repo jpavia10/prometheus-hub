@@ -2,162 +2,120 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-24 03:14 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 09:28 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HUB-GEM-19 · Hub: re-measure the 32 high-priority accessibility items after Claude's fixes
+## 1. HUB-GEM-22 · Hub: paint the town for every hour and every weather (the home is now the town)
 
-**Due:** 2026-12-04 · **State:** now
+**Due:** 2026-12-01 · **State:** now
 
-**Why:** Your fix queue ranked 32 items high; Claude is fixing them in the shared kit and deck styles. Each needs re-measuring on the live site.
+**Why:** Owner, 2026-11-24: the home is a full-screen town with real-time weather and a day-night cycle. The town is drawn live in light and colour; painted versions of the same view at dawn, midday, golden hour, dusk and night, and in rain, fog and snow, make it photographic.
 
-**What it unlocks:** The fix queue closes item by item.
-
-**Read first:**
-- Your file hub_gemini_supp-a11y-fix-queue_20261123-1348.json (the 32 rows with priority high)
-- The live site https://jpavia10.github.io/prometheus-hub/ on build d64 or later (the build is in the hub's top bar)
-
-**Do this:**
-1. For each of the 32, measure again on the live page: contrast ratio, target size, focus, label, as the item says.
-2. Say fixed, still there, or changed, with what you measured and the build you measured on.
-
-**Make:** `hub_gemini_a11y-recheck-2_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `item_n` (number): its n in your fix queue
-- `status` (text): fixed, still there or changed
-- `measured` (text): what you measured
-- `build` (text): e.g. d64
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
-
-**How many:** 32
-
-**Done when:** All 32 measured on d64 or later.
-
-**How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
-
-## 2. HUB-GEM-20 · Hub: does every place in the realm painting sit under its own label?
-
-**Due:** 2026-12-05 · **State:** now
-
-**Why:** The realm (the Orbit) puts 27 labels on one painting from art/realm/places.json; a label off its building sends a tap to the wrong place.
-
-**What it unlocks:** Claude moves every label that misses.
+**What it unlocks:** The home shows the painted town for the real hour and the real weather.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/?home=orbit (the realm)
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/art/realm/places.json (each pillar's x, y as fractions of the painting)
-- The menu's list of what each place is (bank, museum, clock tower, forge, ...): the 'subject' lines in your hub_gemini_painting-focus file
+- https://jpavia10.github.io/prometheus-hub/
+- https://jpavia10.github.io/prometheus-hub/art/worlds/world_home.webp (the town as it is now: keep its composition exactly)
 
 **Do this:**
-1. For each of the 27, look at the painting where its label sits: is that pillar's building or object there?
-2. If not, give the x and y (fractions, 3 decimals) where it actually is, and what is under the label now.
+1. Nano Banana Pro image edits of the home painting, same framing and layout, every building where it is: dawn, midday, golden hour, dusk, night (lit windows, stars), plus rain, fog, snow and storm versions of midday and night.
+2. 2560 px wide, webp, no text; one row per image.
 
-**Make:** `hub_gemini_realm-labels_{YYYYMMDD-HHMM}.json`
+**Make:** `hub_gemini_town-hours_{YYYYMMDD-HHMM}.json`
 
-**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per row, exactly the fields below`
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `pillar` (text): id
-- `ok` (text): yes or no
-- `x` (number): fraction 0-1, when no
-- `y` (number): fraction 0-1, when no
-- `under_label` (text): what the label sits on now
+- `n` (number): 1 ...
+- `variant` (text): dawn, midday, golden, dusk, night, rain-day, rain-night, fog-day, fog-night, snow-day, snow-night, storm-night
+- `drive_id` (text): the image's file id
+- `prompt` (text): the exact prompt used
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+**How many:** 12
 
-**How many:** 27
-
-**Done when:** All 27 checked.
+**Done when:** 12 variants, each aligned with the original (Claude overlays them).
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude overlays each variant on the original: buildings must line up.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- an image whose layout does not match the original
+- text or watermarks in the image
 
-## 3. HUB-GEM-21 · Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)
+## 2. HUB-GEM-23 · Hub: weather to scene: what the town shows for each weather code, by day and by night
 
-**Due:** 2026-12-06 · **State:** now
+**Due:** 2026-12-01 · **State:** now
 
-**Why:** Your painting-focus file found 11 pillar headers whose crop misses the subject; Claude is moving each crop (kit/world.js FOCUS).
+**Why:** The town takes live weather from Open-Meteo (WMO weather codes). Each code needs a look and a sentence.
 
-**What it unlocks:** Every pillar opens on its own subject.
+**What it unlocks:** Every weather reads right in the town and the widget.
 
 **Read first:**
-- Your file hub_gemini_painting-focus_20261123 (the 11 rows with 'no': hearth, money, hermes, piano, bastion, privacy, games, forge, foundry, observatory, mythos)
-- Each pillar page on the live site at phone width, build d64 or later (the build is in the top bar)
+- https://jpavia10.github.io/prometheus-hub/
+- https://open-meteo.com/en/docs (WMO weather interpretation codes)
 
 **Do this:**
-1. For each of the 11, look at the header at 390 px wide: is the subject in the frame now?
-2. If not, say what is in the frame and where the subject is (higher or lower).
+1. For each WMO code Open-Meteo returns: the plain words, the sky (cloud cover, light), what falls (rain, drizzle, snow, hail) and how hard, visibility, and what changes by night.
 
-**Make:** `hub_gemini_painting-focus-2_{YYYYMMDD-HHMM}.json`
+**Make:** `hub_gemini_weather-scenes_{YYYYMMDD-HHMM}.json`
 
-**Save in:** Titan Reliquary/art-incoming (AI images + video)/artreq_20261105-0300_app-icons-titan-prometheus/
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per row, exactly the fields below`
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `pillar` (text): 
-- `ok` (text): yes or no
-- `seen` (text): what is in the frame
-- `move` (text): up, down or none
-- `build` (text): e.g. d64
+- `n` (number): 1 ...
+- `code` (number): WMO code
+- `words` (text): plain words
+- `sky` (text): cloud and light
+- `falls` (text): what and how hard
+- `night` (text): what differs at night
+- `source_url` (url): Open-Meteo or WMO page
 
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+**How many:** 28
 
-**How many:** 11
-
-**Done when:** All 11 checked on d64 or later.
+**Done when:** Every code Open-Meteo uses.
 
 **How Claude checks it:**
-- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+- Claude checks the codes against Open-Meteo's table.
 
 **Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- arithmetic that does not add up when Claude redoes it
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a code missing
+
+## 3. HUB-GEM-24 · Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800
+
+**Due:** 2026-12-01 · **State:** now
+
+**Why:** The home was rebuilt on 2026-11-24 (full-screen town, live day and night, weather, System tab). A real audit finds what the proofs miss.
+
+**What it unlocks:** The home has no cut-off label, no unreadable text, no dead tap.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/
+
+**Do this:**
+1. At both sizes: every label (cut off? overlapping?), every tap target (works? at least 44 px?), contrast of every text over the town at night and by day, the weather widget's values against Open-Meteo for the same place and hour, and the System tab's contents.
+
+**Make:** `hub_gemini_home-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1 ...
+- `size` (text): 384x832 or 1280x800
+- `where` (text): the element
+- `problem` (text): what is wrong, measured
+- `severity` (text): P0, P1 or P2
+
+**Done when:** Both sizes audited, every finding measured.
+
+**How Claude checks it:**
+- Claude reproduces five findings.
+
+**Not done (sent back) if:**
+- a finding without a measurement

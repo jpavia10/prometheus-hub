@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "garage",
  "agents": [
   {
@@ -1086,7 +1086,7 @@
      "review": "Scored 9/10 (#150)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Run 6 left the Sorento's spark plugs and octane and the MT-07's brake fluid, transmission/clutch oil and fork oil unstated.",
      "unlocks": "Garage's fluids table is complete.",
@@ -1160,7 +1160,75 @@
      ],
      "id": "GAR-GEM-16",
      "title": "Garage: the six fluid and part specs still 'not stated'",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Lights, fluids and specs are in; the schedule is the thing Garage reminds about.",
+     "unlocks": "Garage's reminders follow the manufacturer, not guesses.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/garage/"
+     ],
+     "steps": [
+      "Every scheduled item for both vehicles (severe service: mountains, cold, towing): miles and months, from the owner's manual pages."
+     ],
+     "deliver": {
+      "file": "garage_gemini_schedule_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "vehicle",
+       "type": "text",
+       "rule": "which"
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": "the service"
+      },
+      {
+       "name": "miles",
+       "type": "number",
+       "rule": "interval"
+      },
+      {
+       "name": "months",
+       "type": "number",
+       "rule": "interval"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Every item from both manuals.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "GAR-GEM-17",
+     "title": "Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals",
+     "due": "2026-12-08"
     }
    ]
   },

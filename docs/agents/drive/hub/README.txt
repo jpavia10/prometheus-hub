@@ -8,26 +8,26 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Prometheus Hub right now.
 
 ## Gemini
 
-Updated 2026-11-24 03:14 UTC · 3 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 3 open in this pillar.
 
 
-- HUB-GEM-19 · Hub: re-measure the 32 high-priority accessibility items after Claude's fixes · due 2026-12-04
-    make: hub_gemini_a11y-recheck-2_{YYYYMMDD-HHMM}.json · how many: 32 · done when: All 32 measured on d64 or later.
-- HUB-GEM-20 · Hub: does every place in the realm painting sit under its own label? · due 2026-12-05
-    make: hub_gemini_realm-labels_{YYYYMMDD-HHMM}.json · how many: 27 · done when: All 27 checked.
-- HUB-GEM-21 · Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix) · due 2026-12-06
-    make: hub_gemini_painting-focus-2_{YYYYMMDD-HHMM}.json · how many: 11 · done when: All 11 checked on d64 or later.
+- HUB-GEM-22 · Hub: paint the town for every hour and every weather (the home is now the town) · due 2026-12-01
+    make: hub_gemini_town-hours_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 variants, each aligned with the original (Claude overlays them).
+- HUB-GEM-23 · Hub: weather to scene: what the town shows for each weather code, by day and by night · due 2026-12-01
+    make: hub_gemini_weather-scenes_{YYYYMMDD-HHMM}.json · how many: 28 · done when: Every code Open-Meteo uses.
+- HUB-GEM-24 · Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800 · due 2026-12-01
+    make: hub_gemini_home-audit_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Both sizes audited, every finding measured.
 
 ## Muse
 
-Updated 2026-11-24 03:14 UTC · 1 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 1 open in this pillar.
 
 
 - HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · due 2026-12-07
@@ -35,21 +35,21 @@ Updated 2026-11-24 03:14 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Prometheus Hub right now.
 
 ## Argon
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Prometheus Hub right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
+Updated 2026-11-24 09:28 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Prometheus Hub right now.

@@ -160,6 +160,9 @@ export function validateUrl(val) {
 export function checkFieldType(val, rawType) {
   const typeStr = String(rawType || '').trim().toLowerCase();
   if (!typeStr) return { ok: true };
+  /* an explicit null is how a delivery says "not stated" for a number, date, text or boolean (FEEDBACK for Gemini asks for it);
+     typeof null is 'object', so it used to fail every scalar check. A URL is never null. (Gemini found it, run 7, 2026-11-24.) */
+  if (val === null && !(typeStr === 'url' || typeStr.startsWith('url '))) return { ok: true };
 
   if (typeStr === 'integer' || typeStr === 'int') {
     if (typeof val === 'number' && Number.isInteger(val)) return { ok: true };

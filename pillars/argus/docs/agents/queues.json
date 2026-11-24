@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-24",
  "pillar": "argus",
  "agents": [
   {
@@ -609,7 +609,7 @@
      "review": "Scored 9/10 (#149)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "why": "Odyssey's past trips come from photo dates and locations; Takeout's sidecar files keep the time and place even when an edit strips the EXIF.",
      "unlocks": "Argus and Odyssey can read a Takeout export directly.",
@@ -679,7 +679,76 @@
      ],
      "id": "ARG-GEM-13",
      "title": "Argus: what Google Takeout gives for Google Photos (the JSON beside each photo), and how to export only some albums",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "ARG-GEM-13 described the format; the importer needs the edge cases.",
+     "unlocks": "Argus imports a Takeout without losing dates, places or edits.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/argus/",
+      "https://support.google.com/accounts/answer/3024190"
+     ],
+     "steps": [
+      "25 cases, one row each: the sidecar's file name pattern, its JSON fields, the image it belongs to, and the rule that pairs them."
+     ],
+     "deliver": {
+      "file": "argus_gemini_takeout-cases_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 25,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "case",
+       "type": "text",
+       "rule": "what kind of photo"
+      },
+      {
+       "name": "sidecar_pattern",
+       "type": "text",
+       "rule": "file name pattern"
+      },
+      {
+       "name": "fields",
+       "type": "text",
+       "rule": "the JSON keys present"
+      },
+      {
+       "name": "pair_rule",
+       "type": "text",
+       "rule": "how to match it to its image"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "25 cases.",
+     "checks": [
+      "Claude opens every source URL in ten rows at random and checks the value against the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum or AI summary where an official page exists"
+     ],
+     "id": "ARG-GEM-14",
+     "title": "Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image",
+     "due": "2026-12-08"
     }
    ]
   },
