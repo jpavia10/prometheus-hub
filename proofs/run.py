@@ -240,16 +240,22 @@ with sync_playwright() as p:
     # KIN-2: the family tree is a research instrument: every assertion classified and sourced, a tap opens a person's dossier, the records open, GEDCOM 7 exports
     try:
         ck = b.new_context(viewport={"width": 384, "height": 832}); pk = ck.new_page(); bk = []; pk.on("pageerror", lambda e: bk.append(str(e)[:100]))
-        pk.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); pk.wait_for_selector("#ln-tree .ln-node", timeout=15000); pk.wait_for_timeout(700)
+        pk.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); pk.wait_for_selector("#ln-tree .ln-node", state="attached", timeout=15000); pk.wait_for_timeout(700)
+        fan_first = pk.evaluate("(document.querySelector('#ln-tree .ln-view-sw .on') || {}).dataset?.v")   # a tree this big opens on the fan
+        pk.evaluate("document.querySelector('#ln-tree .ln-view-sw [data-v=tree]').click()"); pk.wait_for_timeout(500)
         k1 = pk.evaluate("""() => { const L = window.KIN_LINEAGE, ids = new Set(L.sources.map((s) => s.id)), as = L.events.flatMap((e) => e.assert);
           return { people: L.people.length, events: L.events.length, sources: L.sources.length, conflicts: L.conflicts.length, questions: L.questions.length,
-            nodes: document.querySelectorAll('#ln-tree .ln-node').length, modelPeople: KIN_LINEAGE_UI.model().people.length, ghosts: document.querySelectorAll('#ln-tree .ln-node.ghost').length, stubs: document.querySelectorAll('#ln-tree .ln-stub').length, pills: document.querySelectorAll('#ln-tree .ln-fampill').length, unsure: document.querySelectorAll('#ln-tree .ln-stem.unsure').length, lit: document.querySelectorAll('#ln-tree .ln-node.lit').length,
+            nodes: document.querySelectorAll('#ln-tree .ln-node').length, modelPeople: KIN_LINEAGE_UI.model().people.length, ghosts: KIN_LINEAGE_UI.model().people.filter((p) => p.ghost).length, stubs: document.querySelectorAll('#ln-tree .ln-stub').length, ups: document.querySelectorAll('#ln-tree .ln-up').length, pills: document.querySelectorAll('#ln-tree .ln-fampill').length, unsure: document.querySelectorAll('#ln-tree .ln-stem.unsure').length, lit: document.querySelectorAll('#ln-tree .ln-node.lit').length,
             orphan: as.filter((a) => !ids.has(a.src)).length, unclassed: as.filter((a) => !['primary','secondary','undetermined'].includes(a.info) || !['direct','indirect','negative'].includes(a.ev)).length,
             badkind: L.sources.filter((s) => !['original','derivative','authored'].includes(s.kind) || !s.cite).length, noarg: L.conflicts.filter((c) => !c.argument && c.status !== 'open').length,
             noconc: L.events.filter((e) => !e.conclusion || !['proven','probable','possible'].includes(e.confidence)).length,
             first: document.querySelector('#app section.grid > .glass h2').textContent, logged: (L.log || []).length, logShown: document.querySelectorAll('#ln-planx .ln-log li').length }; }""")
-        pk.evaluate("document.querySelector('#ln-tree .ln-tools [data-z=fit]').click()"); pk.wait_for_timeout(500)   # the first view starts near you; Della is in the whole tree
-        pk.locator('#ln-tree .ln-node[data-id="P-della"]').click(); pk.wait_for_timeout(300)
+        pk.evaluate("(() => { const u = document.querySelector('#ln-tree .ln-up[data-up=\"P-glenda\"]'); u.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true })); u.dispatchEvent(new PointerEvent('pointerup', { bubbles: true })); })()"); pk.wait_for_timeout(400)
+        climb = {"buster": pk.evaluate("!!document.querySelector('#ln-tree .ln-node[data-id=\"P-buster\"]')")}
+        pk.evaluate("document.querySelector('#ln-tree .ln-tools [data-z=me]').click()"); pk.wait_for_timeout(400)
+        climb["back"] = pk.evaluate("!!document.querySelector('#ln-tree .ln-node[data-id=\"P-self\"]') && !document.querySelector('#ln-tree .ln-node[data-id=\"P-buster\"]')")
+        pk.evaluate("document.querySelector('#ln-tree .ln-tools [data-z=fit]').click()"); pk.wait_for_timeout(400)
+        pk.locator('#ln-tree .ln-node[data-id="P-mother"]').click(); pk.wait_for_timeout(300)
         k2 = pk.evaluate("() => ({ who: document.querySelector('#ln-dossier h3').textContent, sel: (document.querySelector('#ln-tree .ln-node.sel') || {}).dataset?.id })")
         pk.evaluate("KIN_LINEAGE_UI.pick('P-joseph')"); pk.wait_for_timeout(300)
         k3 = pk.evaluate("() => ({ who: document.querySelector('#ln-dossier h3').textContent, ev: document.querySelectorAll('#ln-dossier .ln-ev').length, docs: document.querySelectorAll('#ln-dossier .ln-doc').length, maps: document.querySelectorAll('#ln-dossier .jr svg').length, cons: document.querySelectorAll('#ln-dossier .ln-con').length })")
@@ -265,14 +271,14 @@ with sync_playwright() as p:
         pk.keyboard.press("Escape"); pk.wait_for_timeout(200)
         k5 = pk.evaluate("() => { const g = KIN_LINEAGE_UI.gedcom(), L = g.split(/\\r?\\n/); return { head: L[0], vers: L.includes('2 VERS 7.0'), challenged: L.filter((l) => l === '2 STAT CHALLENGED').length, indi: L.filter((l) => / INDI$/.test(l)).length, fam: L.filter((l) => / FAM$/.test(l)).length, sour: L.filter((l) => / SOUR$/.test(l)).length, end: L.filter(Boolean).pop(), open: !!document.querySelector('.ln-view') }; }")
         wide = pk.evaluate("document.documentElement.scrollWidth")
-        ok = (k1["people"] >= 10 and k1["events"] >= 19 and k1["sources"] >= 16 and k1["conflicts"] >= 9 and k1["nodes"] == k1["modelPeople"] and k1["ghosts"] >= 3 and k1["stubs"] >= 4 and k1["pills"] >= 6 and k1["lit"] >= 5
+        ok = (k1["people"] >= 10 and k1["events"] >= 19 and k1["sources"] >= 16 and k1["conflicts"] >= 9 and 7 <= k1["nodes"] < k1["modelPeople"] and k1["ghosts"] >= 3 and k1["ups"] >= 3 and k1["pills"] >= 3 and fan_first == "fan" and climb["buster"] and climb["back"] and k1["lit"] >= 5
               and not k1["orphan"] and not k1["unclassed"] and not k1["badkind"] and not k1["noarg"] and not k1["noconc"] and k1["first"] == "The family tree" and k1["unsure"] == 1 and k1["logged"] >= 2 and k1["logShown"] == k1["logged"]
-              and k2["who"].startswith("Della") and k2["sel"] == "P-della" and k3["who"].startswith("Joseph") and k3["ev"] == k1["events"] and k3["docs"] >= 20 and k3["maps"] == 2 and k3["cons"] >= 6
+              and k2["who"].startswith("Toni") and k2["sel"] == "P-mother" and k3["who"].startswith("Joseph") and k3["ev"] == k1["events"] and k3["docs"] >= 20 and k3["maps"] == 2 and k3["cons"] >= 6
               and k4 and k4["img"] and k4["cap"] > 40 and k5["head"] == "0 HEAD" and k5["vers"] and k5["challenged"] == 1 and k5["indi"] == k1["people"] and k5["fam"] >= 6 and k5["sour"] == k1["sources"] and k5["end"] == "0 TRLR" and not k5["open"]
-              and fan["segs"] == 62 and fan["known"] >= 9 and fan["shown"] and f"{fan['known']} of 62" in fan["sum"] and fan["peek"].startswith("Your")
+              and fan["segs"] == 254 and fan["known"] >= 30 and fan["shown"] and f"{fan['known']} of 254" in fan["sum"] and fan["peek"].startswith("Your")
               and wide <= 384 and not bk)
         proof("KIN-2", "The family tree is a research instrument: every assertion has a source and its three classifications, every event a conclusion and a confidence, a tap opens the person's dossier, a record opens full size, and the tree exports as GEDCOM 7",
-              ok, f"{k1['people']} people ({k1['nodes']} on the tree with {k1['ghosts']} unknown parents, {k1['stubs']} '+ mother and father' stubs, {k1['pills']} families with their children, {k1['lit']} on your line, {k1['unsure']} link not yet settled), {k1['events']} events, {k1['sources']} sources, {k1['conflicts']} conflicts, {k1['questions']} questions, {k1['logShown']} of {k1['logged']} searches in the log; unsourced {k1['orphan']}, unclassified {k1['unclassed']}, sources without kind or citation {k1['badkind']}, settled conflicts without argument {k1['noarg']}, events without conclusion {k1['noconc']}; first tab {k1['first']!r}; "
+              ok, f"{k1['people']} people ({k1['nodes']} on the tree with {k1['ghosts']} unknown parents, {k1['stubs']} '+ mother and father' stubs, {k1['ups']} '↑ older', opens on {fan_first}, climb {climb}, {k1['pills']} families with their children, {k1['lit']} on your line, {k1['unsure']} link not yet settled), {k1['events']} events, {k1['sources']} sources, {k1['conflicts']} conflicts, {k1['questions']} questions, {k1['logShown']} of {k1['logged']} searches in the log; unsourced {k1['orphan']}, unclassified {k1['unclassed']}, sources without kind or citation {k1['badkind']}, settled conflicts without argument {k1['noarg']}, events without conclusion {k1['noconc']}; first tab {k1['first']!r}; "
                  f"tap -> {k2['who']!r}; Joseph: {k3['ev']} events, {k3['docs']} records, {k3['maps']} maps, {k3['cons']} conflicts; record viewer {k4}; GEDCOM {k5}; fan {fan}; page {wide}px" + (f"; errors {bk[:2]}" if bk else ""))
         ck.close()
     except Exception as e: proof("KIN-2", "The family tree", False, "did not finish: " + str(e)[:200])

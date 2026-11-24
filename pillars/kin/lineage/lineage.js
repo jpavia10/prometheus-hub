@@ -57,16 +57,21 @@
     function width(pid, seen) {
       if (aw[pid] != null) return aw[pid];
       if (seen.has(pid)) return W; seen.add(pid);
-      const f = parentsOf(M, pid); let w = W;
+      const f = pOf(pid); let w = W;
       if (f && f.partners.length) w = Math.max(W, f.partners.reduce((s, q) => s + width(q, seen), 0) + GX * (f.partners.length - 1));
       return (aw[pid] = w);
     }
+    const vroot = ui.vroot && M.P[ui.vroot] ? ui.vroot : L.root;
+    /* the window: the root's ancestors up to depth() generations; anyone older waits behind an "↑ older" pill */
+    const D = depth(), win = { [vroot]: 0 }; { let cur = [vroot]; while (cur.length) { const nx = []; for (const pid of cur) { if (win[pid] >= D) continue; const f = parentsOf(M, pid); if (f) for (const q of f.partners) if (win[q] == null) { win[q] = win[pid] + 1; nx.push(q); } } cur = nx; } }
+    const anc = new Set(); { let cur = [vroot]; while (cur.length) { const nx = []; for (const pid of cur) { const f = parentsOf(M, pid); if (f) for (const q of f.partners) if (!anc.has(q)) { anc.add(q); nx.push(q); } } cur = nx; } }
+    const pOf = (pid) => (win[pid] != null && win[pid] < D ? parentsOf(M, pid) : null);
     function place(pid, x0, gen) {
       const w = width(pid, new Set()); pos[pid] = { x: x0 + w / 2, gen };
-      const f = parentsOf(M, pid);
+      const f = pOf(pid);
       if (f) { let x = x0 + (w - (f.partners.reduce((s, q) => s + width(q, new Set()), 0) + GX * (f.partners.length - 1))) / 2; for (const q of f.partners) { if (!pos[q]) place(q, x, gen + 1); x += width(q, new Set()) + GX; } }
     }
-    place(L.root, 0, 0);
+    place(vroot, 0, 0);
     /* an unknown parent has no ancestry of its own: it stands beside its partner, as a couple does, not at the far end of the family's span */
     for (const p of M.people) {
       if (!p.ghost || !pos[p.id] || parentsOf(M, p.id)) continue;
@@ -75,7 +80,7 @@
       if (!Object.entries(pos).some(([k, q]) => k !== p.id && q.gen === gen && Math.abs(q.x - nx) < W + GX - 1)) pos[p.id].x = nx;
     }
     /* everyone not yet placed (a sibling, a spouse, a child someone added) goes beside the nearest placed relative */
-    let guard = 0, left = M.people.filter((p) => !pos[p.id]);
+    let guard = 0; const placeable = (p) => !pos[p.id] && !anc.has(p.id) && p.id !== vroot; let left = M.people.filter(placeable);
     while (left.length && guard++ < 20) {
       for (const p of left) {
         const f = parentsOf(M, p.id);
@@ -86,19 +91,23 @@
         if (gen == null) continue;
         const row = Object.values(pos).filter((q) => q.gen === gen).map((q) => q.x);
         const near = anchor ? pos[anchor].x : pos[kid].x;
-        let x = near + W + GX; while (row.some((r) => Math.abs(r - x) < W + GX - 1)) x += W + GX;
+        /* a sibling or spouse goes on the side away from the anchor's partner, never between a couple */
+        const aid = anchor || kid, mate = aid && familiesOf(M, aid).flatMap((g) => g.partners).find((q) => q !== aid && q !== p.id && pos[q]);
+        const dir = mate && pos[mate].x > near ? -1 : 1; let x = near + dir * (W + GX); while (row.some((r) => Math.abs(r - x) < W + GX - 1)) x += dir * (W + GX);
         pos[p.id] = { x, gen };
       }
-      left = M.people.filter((p) => !pos[p.id]);
+      left = M.people.filter(placeable);
     }
     const gens = Object.values(pos).map((q) => q.gen), top = Math.max(...gens);
     for (const k in pos) pos[k].y = (top - pos[k].gen) * (H + GY) + H / 2;
     const xs = Object.values(pos).map((q) => q.x);
-    return { pos, minX: Math.min(...xs) - W / 2, maxX: Math.max(...xs) + W / 2, height: (top + 1) * (H + GY) - GY };
+    const older = Object.keys(pos).filter((pid) => win[pid] === D && parentsOf(M, pid) && parentsOf(M, pid).partners.some((q) => M.P[q]));
+    return { pos, minX: Math.min(...xs) - W / 2, maxX: Math.max(...xs) + W / 2, height: (top + 1) * (H + GY) - GY, vroot, older };
   }
 
   /* ------------------------------------------------------------------ the tree */
-  const ui = { sel: "P-joseph", view: { s: 1, x: 0, y: 0 }, M: null, lay: null, expand: new Set() };
+  const ui = { sel: "P-joseph", view: { s: 1, x: 0, y: 0 }, M: null, lay: null, expand: new Set(), vroot: null };
+  const depth = () => (window.innerWidth < 600 ? 2 : 3); /* the tree shows the person it is rooted on and two generations above on a phone (three on a wide screen); "↑ older" climbs, "You" comes back */
   function drawTree(root) {
     const M = ui.M = model(), lay = ui.lay = layout(M), lit = ui.lit = line(M);
     const NS = "http://www.w3.org/2000/svg";
@@ -130,6 +139,10 @@
     pills.forEach((fn) => fn());
     for (const p of M.people) {
       const q = lay.pos[p.id]; if (!q) continue;
+      if (lay.older && lay.older.includes(p.id)) { /* known parents above the window: a tap climbs to them */
+        const ub = add("g", { class: "ln-stub ln-up", transform: `translate(${q.x} ${q.y - H / 2 - 17})`, tabindex: "0", role: "button", "data-up": p.id, "aria-label": `Show ${nm(p)}'s parents and older` });
+        add("path", { d: `M0 9V18`, class: "ln-stubline" }, ub); add("rect", { x: -50, y: -9, width: 100, height: 18, rx: 9 }, ub); const ut = add("text", { y: 4 }, ub); ut.textContent = "↑ older";
+      }
       if (M.stubs && M.stubs.includes(p.id)) { /* everyone has a mother and a father: a stub above the card shows them on a tap */
         const sb = add("g", { class: "ln-stub", transform: `translate(${q.x} ${q.y - H / 2 - 17})`, tabindex: "0", role: "button", "data-x": p.id, "aria-label": `Show ${nm(p)}'s parents` });
         add("path", { d: `M0 9V18`, class: "ln-stubline" }, sb); add("rect", { x: -62, y: -9, width: 124, height: 18, rx: 9 }, sb); const st = add("text", { y: 4 }, sb); st.textContent = "+ mother and father";
@@ -144,12 +157,14 @@
     /* the generations, named down the left edge */
     const GEN = ["You", "Parents", "Grandparents", "Great-grandparents"], topGen = Math.max(...Object.values(lay.pos).map((q) => q.gen));
     const stubGen = new Set((M.stubs || []).map((id) => lay.pos[id] && lay.pos[id].gen));
-    for (let gi = 0; gi <= topGen; gi++) { const gy = (topGen - gi) * (H + GY) - (stubGen.has(gi) ? 34 : 12), tx = add("text", { x: lay.minX, y: gy, class: "ln-genl" }); tx.textContent = (GEN[gi] || `${gi - 2}× great-grandparents`).toUpperCase(); }
+    const g0 = gensFrom(M)[lay.vroot] || 0, upGen = new Set((lay.older || []).map((id) => lay.pos[id].gen));
+    for (let gi = 0; gi <= topGen; gi++) { const ag = g0 + gi, gy = (topGen - gi) * (H + GY) - (stubGen.has(gi) || upGen.has(gi) ? 34 : 12), tx = add("text", { x: lay.minX, y: gy, class: "ln-genl" }); tx.textContent = (GEN[ag] || `${ag - 2}× great-grandparents`).toUpperCase(); }
     const vb = { x: lay.minX - 30, y: -50, w: lay.maxX - lay.minX + 60, h: lay.height + 80 };
     svg.dataset.vb = JSON.stringify(vb);
     apply(root);
     const fan = root.querySelector("svg.ln-fan"); if (fan) { fan.setAttribute("viewBox", "-180 -180 360 360"); fan.innerHTML = fanSvg(M); }
     const cp = root.querySelector("#ln-complete"); if (cp) { const open = cp.open; cp.innerHTML = completeHtml(M); cp.open = open; }
+    const tm = root.querySelector("#ln-time"); if (tm && !tm.innerHTML) tm.innerHTML = timeHtml(M);
   }
   const trunc = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
   function apply(root) {
@@ -168,21 +183,15 @@
   /* the first view: the whole tree when it is still readable, else your lit line (you up to the furthest researched ancestor and the
      partner beside them), never smaller than a scale where names can be read */
   function first(root) {
+    /* the whole window when it reads at a glance; otherwise the person the tree is rooted on at the bottom, their parents just above */
     const svg = root.querySelector("svg.ln-svg"), r = svg.getBoundingClientRect(), vb = JSON.parse(svg.dataset.vb || "{}");
-    if (Math.min(r.width / vb.w, r.height / vb.h) >= 0.62) return fit(root);
-    const lit = [...(ui.lit || [])].filter((i) => ui.lay.pos[i]); if (!lit.length) return focus(root, ui.sel, 0.66);
-    /* your line and the unknown parents beside it (your father, Toni's father ...) */
-    const ids = lit.concat(ui.M.people.filter((p) => p.ghost && ui.lay.pos[p.id] && familiesOf(ui.M, p.id).some((f) => f.partners.some((q) => lit.includes(q)))).map((p) => p.id));
-    const xs = ids.map((i) => ui.lay.pos[i].x), ys = ids.map((i) => ui.lay.pos[i].y), lg = root.querySelector(".ln-legend"), top = 64, bot = (lg ? lg.offsetHeight : 20) + 20, ah = r.height - top - bot;
-    const box = (up) => { const bx = Math.min(...xs) - W / 2 - 16, by = Math.min(...ys) - H / 2 - 16 - up; return { bx, by, bw: Math.max(...xs) - Math.min(...xs) + W + 32, bh: Math.max(...ys) - by + H / 2 + 16 }; };
-    const scale = (b) => Math.min(r.width / b.bw, ah / b.bh, 1.1);
-    let b = box(lit.some((i) => parentsOf(ui.M, i) && !ids.includes(parentsOf(ui.M, i).partners[0])) ? H + GY : 0);
-    if (scale(b) < 0.55) b = box(0); /* the generation above your line only when it still fits readably */
-    /* still too wide (every line now has its unknown parents beside it): start from you and the generations nearest you, oldest dropped first */
-    while (scale(b) < 0.55 && ids.length > 3) { const topY = Math.min(...ids.map((i) => ui.lay.pos[i].y)); const keep = ids.filter((i) => ui.lay.pos[i].y > topY); if (keep.length < 3) break; ids.splice(0, ids.length, ...keep); xs.splice(0, xs.length, ...ids.map((i) => ui.lay.pos[i].x)); ys.splice(0, ys.length, ...ids.map((i) => ui.lay.pos[i].y)); b = box(0); }
-    const sc = Math.max(0.5, scale(b)), fits = b.bh * sc <= ah + 1;
-    /* when even your line does not fit, keep you in view (the bottom of the line) and let the oldest generation run off the top */
-    ui.view = { s: sc, x: r.width / 2 - (b.bx + b.bw / 2) * sc, y: fits ? top + (ah - b.bh * sc) / 2 - b.by * sc : top + ah - (b.by + b.bh) * sc }; animate(root);
+    const lg = root.querySelector(".ln-legend"), top = 64, bot = (lg ? lg.offsetHeight : 20) + 20, ah = Math.max(160, r.height - top - bot);
+    if (Math.min(r.width / vb.w, ah / vb.h) >= 0.6) return fit(root);
+    const P = ui.lay.pos, v = ui.lay.vroot, f = parentsOf(ui.M, v), ps = f ? f.partners.filter((q) => P[q]) : [];
+    if (!P[v]) return fit(root);
+    const xs = [P[v].x, ...ps.map((q) => P[q].x)], x0 = Math.min(...xs) - W / 2 - 12, x1 = Math.max(...xs) + W / 2 + 12;
+    const sc = Math.max(0.5, Math.min(0.72, r.width / (x1 - x0)));
+    ui.view = { s: sc, x: r.width / 2 - ((x0 + x1) / 2) * sc, y: top + ah - (P[v].y + H / 2 + 14) * sc }; animate(root);
   }
   function animate(root) { const g = root.querySelector("g.ln-world"); g.classList.add("glide"); apply(root); clearTimeout(ui.t); ui.t = setTimeout(() => g.classList.remove("glide"), 420); }
   function zoomAt(root, k, cx, cy) {
@@ -191,7 +200,7 @@
   function wire(root, onPick) {
     const svg = root.querySelector("svg.ln-svg"), pts = new Map(); let drag = null, moved = 0, pinch = null;
     let hit = null; /* the card under the finger at pointerdown: once the svg captures the pointer, pointerup's target is the svg itself */
-    svg.addEventListener("pointerdown", (e) => { hit = (e.target.closest && e.target.closest(".ln-node, .ln-fampill, .ln-stub")) || null; svg.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); moved = 0;
+    svg.addEventListener("pointerdown", (e) => { hit = (e.target.closest && e.target.closest(".ln-node, .ln-fampill, .ln-stub, .ln-up")) || null; svg.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); moved = 0;
       if (pts.size === 1) drag = { x: e.clientX, y: e.clientY, vx: ui.view.x, vy: ui.view.y };
       if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), s: ui.view.s }; drag = null; } });
     svg.addEventListener("pointermove", (e) => { if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, [e.clientX, e.clientY]);
@@ -426,7 +435,7 @@
   /* ------------------------------------------------------------------ the fan: every ancestor's place, five generations above you
      Ahnentafel numbering: you are 1, your father 2 and mother 3, and anyone's father and mother are 2n and 2n + 1. A place with no one in it
      is drawn empty, so the chart shows at a glance how much of your ancestry is known, and on which side. */
-  const FAN_G = 5;
+  const FAN_G = 7; /* seven generations: 254 places; names are written for the inner four, a tap reads the rest */
   function ahnen(M) {
     const at = { 1: L.root };
     for (let n = 1; n < 2 ** FAN_G; n++) {
@@ -472,9 +481,24 @@
   }
   function completeHtml(M) {
     const c = completeness(M);
-    return `<summary>How much of your ancestry is known: <b>${c.k} of ${c.t}</b> in five generations (${c.pct}%)</summary>
+    return `<summary>How much of your ancestry is known: <b>${c.k} of ${c.t}</b> in seven generations (${c.pct}%)</summary>
       <ul>${c.rows.map((r) => `<li><span>${esc(r.name)}</span><i style="--p:${(100 * r.n) / r.of}%"></i><b>${r.n} of ${r.of}</b></li>`).join("")}</ul>
       <p class="sub">A place counts as known when a person is in it (from the records or from you), not when it is only inferred. Joseph and Della sit in their places on the assumption that Barbara is their daughter (C10); if she is their granddaughter, they move up a generation.</p>`;
+  }
+
+  /* the family through time: every dated event, in order, with the world around it */
+  function timeHtml(M) {
+    const ev = L.events.map((e) => ({ k: "e", sort: e.date.sort, e })).concat((L.context || []).map((c) => ({ k: "c", sort: c.date, c })));
+    ev.sort((a, b) => a.sort.localeCompare(b.sort) || (a.k === "c" ? -1 : 1));
+    let dec = null, html = "";
+    for (const x of ev) {
+      const d = x.sort.slice(0, 3) + "0s"; if (d !== dec) { dec = d; html += `<li class="tl-dec">${d}</li>`; }
+      if (x.k === "c") { html += `<li class="tl-ctx"><time>${esc(x.sort.slice(0, 4))}</time><span>${esc(x.c.text)}</span></li>`; continue; }
+      const e = x.e, who = e.who.map((q) => M.P[q] ? firstName(M.P[q]) : q).join(" & "), pl = e.place && M.PL[e.place] ? M.PL[e.place].name : "";
+      html += `<li class="tl-ev c-${e.confidence}"><time>${esc(e.date.text)}</time><button type="button" class="ln-link" data-go="${e.who[0]}">${esc(who)}</button> <b>${esc(TYPE[e.type] || e.type)}</b>${pl ? ` · ${esc(pl)}` : ""}</li>`;
+    }
+    const span = ev.length ? `${ev[0].sort.slice(0, 4)} to ${ev[ev.length - 1].sort.slice(0, 4)}` : "";
+    return `<summary>The family through time: <b>${L.events.length} events</b>, ${span}, with the world around them</summary><ol class="tl">${html}</ol>`;
   }
 
   /* the legend names only the kinds of card the tree shows, plus the unsettled link when there is one */
@@ -489,12 +513,13 @@
     const panel = (id, title, sub, inner) => { const d = h("div", { class: "glass span-12 ln-panel", id }); d.innerHTML = `<h2>${title}</h2>${sub ? `<p class="sub">${sub}</p>` : ""}${inner}`; return d; };
     const tree = panel("ln-tree", "The family tree", "Your line, generation by generation, from the records. Drag to move, pinch or scroll to zoom, tap a person for everything known about them and how it is known.",
       `<div class="ln-stage"><svg class="ln-svg" role="group" aria-label="Family tree"><g class="ln-world"></g></svg>
-        <svg class="ln-fan" role="group" aria-label="Fan chart: every ancestor's place for five generations" hidden></svg>
+        <svg class="ln-fan" role="group" aria-label="Fan chart: every ancestor's place for seven generations" hidden></svg>
         <div class="ln-view-sw" role="group" aria-label="View"><button type="button" class="segb on" data-v="tree" aria-pressed="true">Tree</button><button type="button" class="segb" data-v="fan" aria-pressed="false">Fan</button></div>
         <div class="ln-tools"><button type="button" class="btn quiet small" data-z="in" aria-label="Zoom in">+</button><button type="button" class="btn quiet small" data-z="out" aria-label="Zoom out">−</button><button type="button" class="btn quiet small" data-z="fit">Whole tree</button><button type="button" class="btn quiet small" data-z="me">You</button></div>
         <p class="ln-legend"></p>
         <div class="ln-peek" hidden><div><p class="ln-kick"></p><b></b><span></span></div><button type="button" class="btn small" data-peek="open">Full story</button><button type="button" class="btn quiet small ln-px" data-peek="close" aria-label="Close">×</button></div></div>
       <details class="ln-complete" id="ln-complete"></details>
+      <details class="ln-complete ln-time" id="ln-time"></details>
       <div class="ln-dossier" id="ln-dossier" aria-live="polite"></div>
       <div class="ln-foot"><button type="button" class="btn quiet small" id="ln-ged">Export GEDCOM 7</button><button type="button" class="btn quiet small" id="ln-share">Send my additions</button><button type="button" class="btn quiet small" id="ln-load">Add someone's additions</button><span>${L.people.length} people · ${L.events.length} events · ${L.sources.length} sources · ${L.conflicts.length} conflicts weighed</span></div>`);
     const src = panel("ln-sources", "Sources of the family history", "Every record behind the tree, with its full citation, where it is kept, a transcription and the image.", `<div id="ln-srcs"></div>`);
@@ -509,6 +534,7 @@
       peek(CONF[p.status] || p.status, gh ? p.placeholder : nm(p), gh ? (p.infer[0] || "Not yet known") : [life(M, p), (p.summary || p.note || "").split(/(?<=\.)\s/)[0]].filter(Boolean).join(" · ")); };
     pk.addEventListener("click", (e) => { const b = e.target.closest("[data-peek]"); if (!b) return; if (b.dataset.peek === "close") pk.hidden = true; else { pk.hidden = true; dos.scrollIntoView({ behavior: "smooth", block: "start" }); } });
     const onTree = (el) => {
+      if (el.dataset.up) { ui.vroot = el.dataset.up; drawTree(root); legend(tree); pk.hidden = true; first(root); toast(`${nm(ui.M.P[el.dataset.up])} and the generations above. "You" comes back.`); return; }
       if (el.dataset.x) { ui.expand.add(el.dataset.x); drawTree(root); legend(tree); toast(`${nm(ui.M.P[el.dataset.x])}'s mother and father, not yet known: tap one to name them.`); return; }
       if (el.dataset.fam) { const f = ui.M.F[el.dataset.fam]; famDossier(dos, el.dataset.fam); const k = f.children.filter((c) => ui.M.P[c]).length;
         peek("A family", f.partners.map((q) => { const P = ui.M.P[q]; return P ? (P.ghost && P.status === "inferred" ? P.placeholder : firstName(P)) : q; }).join(" & "), `${k} ${k === 1 ? "child" : "children"} known; how many more is not known yet`); return; }
@@ -530,9 +556,9 @@
       for (const x of tree.querySelectorAll(".ln-view-sw [data-v]")) { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", String(x === b)); }
       root.querySelector("svg.ln-svg").toggleAttribute("hidden", fanOn); fanEl.toggleAttribute("hidden", !fanOn); /* an svg has no .hidden property: the attribute is what hides it */ tree.querySelector(".ln-tools").hidden = fanOn; tree.classList.toggle("fan-on", fanOn); pk.hidden = true;
       try { localStorage.setItem("kin.lineage.view", b.dataset.v); } catch (_) {} if (!fanOn) first(root); });
-    try { if (localStorage.getItem("kin.lineage.view") === "fan") tree.querySelector('.ln-view-sw [data-v="fan"]').click(); } catch (_) {}
+    try { const v = localStorage.getItem("kin.lineage.view"); if (v === "fan" || (!v && L.people.length > 30)) tree.querySelector('.ln-view-sw [data-v="fan"]').click(); } catch (_) {}   /* a big tree opens on the fan: every ancestor at once */
     tree.querySelector(".ln-tools").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const svg = root.querySelector("svg.ln-svg").getBoundingClientRect();
-      if (b.dataset.z === "in") { zoomAt(root, 1.25, svg.width / 2, svg.height / 2); } if (b.dataset.z === "out") zoomAt(root, 0.8, svg.width / 2, svg.height / 2); if (b.dataset.z === "fit") fit(root); if (b.dataset.z === "me") pick(L.root, true); });
+      if (b.dataset.z === "in") { zoomAt(root, 1.25, svg.width / 2, svg.height / 2); } if (b.dataset.z === "out") zoomAt(root, 0.8, svg.width / 2, svg.height / 2); if (b.dataset.z === "fit") fit(root); if (b.dataset.z === "me") { ui.vroot = null; pick(L.root, false); first(root); } });
     document.querySelector("#app").addEventListener("click", (e) => {
       const go = e.target.closest("[data-go]"); if (go) { pick(go.dataset.go, true); root.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
       const im = e.target.closest(".ln-doc"); if (im) { viewer(im.dataset.img, im.dataset.src); return; }
