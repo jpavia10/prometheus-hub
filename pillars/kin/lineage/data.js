@@ -657,3 +657,127 @@ window.KIN_LINEAGE.questions.push(
   { id: "Q31", p: 3, person: "P-jessec", q: "The Kirkland line's own records: the 1880 and 1900 censuses, the 1850 marriage, and the Eastern Cherokee applications that name Susanna Boston.", sources: "U.S. censuses; Tennessee marriages; Eastern Cherokee Applications (NARA M1104)", task: "KIN-GEM-34" },
   { id: "Q32", p: 3, person: "P-ada", q: "The Culberson, Tippens and Bryant lines' own records: the 1870 and 1880 McMinn censuses, the 1867 marriage, the 1800 and 1766 wills.", sources: "U.S. censuses; Tennessee marriages; Grayson County, Virginia and Carteret County, North Carolina will books", task: "KIN-GEM-34" }
 );
+
+/* 2026-11-24, later: Gemini's "Deep Expansion" and "Wave-4 Deep Lineage" reports. The Pavias came from Malta: the 1950 census page
+   (read by Claude from the National Archives image Gemini saved) has Joseph and Grace both born in Malta, with Caroline, Charles and
+   Francis; the 1926 marriage record and the 1942 draft card (read by Gemini) name her Lucretia Calleja and "Lagrigia". C13 settled as
+   probable. Wave 4's colonial parents go in as possible with Claude's lower figures beside Gemini's; the Seconder findings stay in H9
+   (Bob's own link is untested). Left out on purpose: a living relative's present address, the people-search pages and the account email. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), C = (id) => L.conflicts.find((c) => c.id === id), H = (id) => L.hypotheses.find((h) => h.id === id);
+  L.sources.push(
+    { id: "S-census-1950-pavia", short: "1950 census, Detroit: Joseph and Grace Pavia", kind: "original", year: 1950, img: ["census-1950-pavia-detail", "census-1950-pavia"], url: "https://1950census.archives.gov/",
+      cite: "1950 U.S. Census of Population and Housing, Detroit, Wayne County, Michigan, enumeration district 85-1999, sheet 8, lines 15-19, enumerated 6 April 1950 (enumerator Mildred Matel); National Archives. Image saved to Drive by Gemini on 24 November 2026; read by Claude the same day.",
+      read: "2353 Inglis: Joseph Pavia, head, 52, married, born Malta, naturalized, grinder on cylinder blocks in an auto factory; Grace M., wife, 40, married, born Malta, naturalized, keeping house; Caroline R., daughter, 22, born Michigan, general office clerk; Charles P., son, 20, born Michigan, assembling auto heaters at a car factory; Francis J., son, 11, born Michigan. Joseph is on a sample line: his father and his mother were both born in Malta." },
+    { id: "S-mi-marr-1926", short: "Marriage of Joseph Pavia and Lucretia Calleja, Detroit, 1926", kind: "original", year: 1926, url: "https://www.ancestry.com/imageviewer/collections/9093/images/41326_341668-01540?pId=1216301",
+      cite: "Michigan, Marriage Records, 1867-1952 (Ancestry collection 9093), Wayne County file 317538, state file 82 12266. Read from the image by Gemini on 24 November 2026 (\"Pavia Family Tree: Deep Expansion\", Drive); the image is not yet read by Claude.",
+      read: "Licence 25 August 1926; married 4 September 1926 in Detroit by Rev. Michael L. Borg, pastor; witnesses John Agius and Joseph D'Agostino. Groom Joseph Pavia, 29, auto worker, born in Malta, son of Paul Pavia and Caroline; bride Lucretia Calleja, 18, born in Malta, daughter of Costantino Calleja and Carmela Cassar." },
+    { id: "S-draft-1942-jp", short: "Joseph Pavia's WWII draft card (1942)", kind: "original", year: 1942, url: "https://www.ancestry.com/imageviewer/collections/1002/images/004673194_02421?pId=11594207",
+      cite: "U.S., World War II Draft Registration Cards, 1942 (Ancestry collection 1002): Joseph Pavia, serial U 4993, Local Board 44, Detroit, registered 27 April 1942. Read by Gemini on 24 November 2026.",
+      read: "2353 Inglis, Detroit; employer Ford Motor Co., Rouge plant, Dearborn; 5 ft 2 in, 130 lb, brown eyes, black hair; the person who will always know his address: his wife, Lagrigia Pavia." },
+    { id: "S-nat-idx-grace", short: "Grace Pavia's naturalization index card (1943)", kind: "derivative", year: 1943,
+      cite: "U.S., Naturalization Records Indexes (Ancestry collection 1192): petition 188070, U.S. District Court, Detroit, 16 March 1943. Read by Gemini on 24 November 2026.",
+      read: "Petition 188070, 16 March 1943, Detroit; born 8 March 1910." },
+    { id: "S-colonial-w4", short: "Colonial Virginia and North Carolina lines (compiled, wave 4)", kind: "authored", year: 2026,
+      cite: "WikiTree Martin-5258, Martin-13057, Keeling-63, Thorowgood-23, Rogers-38228, Rogers-639, Estes-46, Allen-60264, Bryant-6193, Stone-673; the Jamestowne Society (no. A9555); OurFamTree; Cavaliers and Pioneers and the Colonial Records of North Carolina (pages saved to Drive); read by Gemini on 24 November 2026 (\"Kin: Wave-4 Deep Lineage & 898-File Cumulative Archive Report\").",
+      read: "Compiled lines: each link is to be checked against the will, deed or court entry it cites. Gemini's percentages are kept beside Claude's." },
+    { id: "S-barnardo-1892", short: "Arthur Seconder's 1892 crossing (Library and Archives Canada)", kind: "derivative", year: 1892, url: "https://recherche-collection-search.bac-lac.gc.ca/eng/Home/Record?app=homchirec&IdNumber=1191949",
+      cite: "Library and Archives Canada, Home Children 1869-1932 database, no. 1191949 (RG76-C-1-b, reel C-4515). Read by Gemini on 24 November 2026.",
+      read: "Arthur Seconder, 12, in Dr. Barnardo's party (H92BA, 303 children under Mr. Owen) on the S.S. Carthaginian, Liverpool 17 March 1892 to Halifax 27 March 1892; the index notes the surname was hard to read." }
+  );
+  L.places.push({ id: "PL-malta", name: "Malta", hist: "Malta (a British colony until 1964)", now: "Malta", lat: 35.9375, lon: 14.3754 });
+
+  /* Joseph and Grace */
+  const jp = P("P-josephp");
+  jp.names = [{ given: "Joseph Paul", surname: "Pavia", type: "birth", src: ["S-census-1950-pavia", "S-mi-marr-1926"] }];
+  jp.summary = "Your father's father's father: born in Malta in 1897; in Detroit by 1926, when he married Lucretia (Grace) Calleja, also of Malta; a Ford Rouge worker in 1942 and a grinder on cylinder blocks in 1950, naturalized; died 28 June 1975 in Detroit.";
+  const gr = P("P-grace");
+  gr.names = [{ given: "Lucretia", surname: "Calleja", type: "birth", src: ["S-mi-marr-1926"], note: "Lucrezia in Maltese and Italian; \"Lagrigia\" on her husband's 1942 draft card" },
+              { given: "Grace M.", surname: "Pavia", type: "married", src: ["S-census-1950-pavia", "S-pavia-obits"] }];
+  gr.summary = "Your father's father's mother: born in Malta about 1908-1910 (her naturalization card says 8 March 1910); married Joseph Pavia in Detroit on 4 September 1926 as Lucretia Calleja, aged 18; known as Grace; naturalized in 1943; died 21 April 1982 in Detroit.";
+  L.people.push(
+    { id: "P-paulp", sex: "M", status: "possible", names: [{ given: "Paul", surname: "Pavia", type: "birth", src: ["S-mi-marr-1926"] }], summary: "Joseph's father, of Malta, named on his son's 1926 marriage record; born about 1870 (an estimate: his son was born in 1897)." },
+    { id: "P-carolinep", sex: "F", status: "possible", names: [{ given: "Caroline", surname: "", type: "as-given", src: ["S-mi-marr-1926"], note: "her own surname is not given" }], summary: "Joseph's mother, of Malta, named on his 1926 marriage record; born about 1872 (an estimate)." },
+    { id: "P-costantino", sex: "M", status: "possible", names: [{ given: "Costantino", surname: "Calleja", type: "birth", src: ["S-mi-marr-1926"] }], summary: "1871 to 1952, Malta: Lucretia's father, named on her 1926 marriage record (his dates from other members' trees)." },
+    { id: "P-carmela", sex: "F", status: "possible", names: [{ given: "Carmela", surname: "Cassar", type: "birth", src: ["S-mi-marr-1926"] }], summary: "1872 to 1933, Malta: Lucretia's mother, named on her 1926 marriage record (her dates from other members' trees)." },
+    /* colonial Virginia: the parents wave 4 found above Joel Martin and Mary Rogers */
+    { id: "P-johnm-sr", sex: "M", status: "possible", names: [{ given: "John", surname: "Martin", type: "birth", src: ["S-colonial-w4"] }], summary: "About 1615 to 1666, Lower Norfolk County, Virginia: a burgess in 1651-52, arrived on the Margaret in 1633-34 (compiled; the Jamestowne Society's lineage)." },
+    { id: "P-akeeling", sex: "F", status: "possible", names: [{ given: "Anne", surname: "Keeling", type: "birth", src: ["S-colonial-w4"] }], summary: "John Martin's wife, born about 1640 (an estimate), daughter of Thomas Keeling and Anne Thorowgood (compiled)." },
+    { id: "P-tkeeling", sex: "M", status: "possible", names: [{ given: "Thomas", surname: "Keeling", type: "birth", src: ["S-colonial-w4"] }], summary: "About 1613 to 1664: came on the Hopewell in 1628; burgess for Elizabeth City in 1632-33 (compiled). The noble English line some trees give him is not supported (Gemini 30%)." },
+    { id: "P-athorowgood", sex: "F", status: "possible", names: [{ given: "Anne", surname: "Thorowgood", type: "birth", src: ["S-colonial-w4"] }], summary: "About 1620 to about 1689: came on the John and Dorothy in 1634; living in 1688 (compiled)." },
+    { id: "P-abrogers", sex: "M", status: "possible", names: [{ given: "Abraham", surname: "Rogers", type: "birth", src: ["S-colonial-w4"] }], summary: "1714 to 1762, Spotsylvania County, Virginia: Mary Rogers's father in one compiled tree (Gemini 65%)." },
+    { id: "P-bestes", sex: "F", status: "possible", names: [{ given: "Barbara", surname: "Estes", type: "birth", src: ["S-colonial-w4"] }], summary: "About 1720 to 1773: Abraham Rogers's wife (compiled)." },
+    { id: "P-progers", sex: "M", status: "possible", names: [{ given: "Peter", surname: "Rogers", type: "birth", src: ["S-colonial-w4"] }], summary: "About 1677 to about 1733 (dead by 1734), Virginia: Abraham Rogers's father (compiled)." },
+    { id: "P-testes", sex: "M", status: "possible", names: [{ given: "Thomas", surname: "Estes", type: "birth", src: ["S-colonial-w4"] }], summary: "1688 to 1745, Virginia: Barbara Estes's father (compiled)." },
+    { id: "P-annrogers", sex: "F", status: "possible", names: [{ given: "Ann", surname: "Rogers", type: "birth", src: ["S-colonial-w4"] }], summary: "Thomas Estes's wife, born about 1690 (an estimate)." },
+    { id: "P-aestes", sex: "M", status: "possible", names: [{ given: "Abraham", surname: "Estes", type: "birth", src: ["S-colonial-w4"] }], summary: "1647 to 1720: from Kent, England, to Virginia about 1674 (compiled): the immigrant of the Estes line." }
+  );
+  const jm = P("P-joelm");
+  jm.summary = "About 1662 (a 1672 orphans' court entry; older trees say 1638) to 1716, Bath, North Carolina; son of John Martin and Anne Keeling of Lower Norfolk County, Virginia (compiled).";
+  const ew = P("P-eward");
+  ew.names.push({ given: "Elizabeth", surname: "Alderson", type: "alternate", src: ["S-colonial-w4"], note: "Gemini, wave 4: daughter of Simon Alderson; Ward is the older trees' name (C14)" });
+  L.families.push(
+    { id: "F-pavia-malta", partners: ["P-paulp", "P-carolinep"], children: ["P-josephp"] },
+    { id: "F-calleja", partners: ["P-costantino", "P-carmela"], children: ["P-grace"] },
+    { id: "F-martin-va", partners: ["P-johnm-sr", "P-akeeling"], children: ["P-joelm"] },
+    { id: "F-keeling", partners: ["P-tkeeling", "P-athorowgood"], children: ["P-akeeling"] },
+    { id: "F-rogers", partners: ["P-abrogers", "P-bestes"], children: ["P-maryrogers"] },
+    { id: "F-rogers-sr", partners: ["P-progers"], children: ["P-abrogers"] },
+    { id: "F-estes", partners: ["P-testes", "P-annrogers"], children: ["P-bestes"] },
+    { id: "F-estes-sr", partners: ["P-aestes"], children: ["P-testes"] }
+  );
+  L.events.push(
+    { id: "E-marr-pavia-1926", type: "marriage", who: ["P-josephp", "P-grace"], date: { text: "4 Sep 1926", sort: "1926-09-04" }, place: "PL-detroit", conclusion: "Joseph Pavia, 29, and Lucretia Calleja, 18, both of Malta, married in Detroit on 4 September 1926.", confidence: "probable",
+      assert: [{ src: "S-mi-marr-1926", value: "4 Sep 1926, Detroit; Joseph Pavia 29 and Lucretia Calleja 18, both born in Malta", info: "primary", ev: "direct", note: "read by Gemini; the image is not yet read by Claude" }] },
+    { id: "E-birth-josephp", type: "birth", who: ["P-josephp"], date: { text: "1897", sort: "1897-01-01" }, place: "PL-malta", conclusion: "Born in Malta in 1897 (12 February or 2 December in the records Gemini read).", confidence: "probable",
+      assert: [{ src: "S-census-1950-pavia", value: "52 in April 1950, born Malta", info: "undetermined", ev: "indirect" }, { src: "S-mi-marr-1926", value: "29 in August 1926, born Malta", info: "primary", ev: "indirect" }] },
+    { id: "E-birth-grace", type: "birth", who: ["P-grace"], date: { text: "about 1909", sort: "1909-01-01" }, place: "PL-malta", conclusion: "Born in Malta about 1908-1910: 18 at her 1926 marriage, 40 in April 1950, and 8 March 1910 on her naturalization card.", confidence: "probable",
+      assert: [{ src: "S-census-1950-pavia", value: "40, born Malta", info: "undetermined", ev: "indirect" }, { src: "S-nat-idx-grace", value: "born 8 Mar 1910", info: "secondary", ev: "direct" }, { src: "S-mi-marr-1926", value: "18 in 1926", info: "primary", ev: "indirect" }] },
+    { id: "E-nat-grace", type: "naturalization", who: ["P-grace"], date: { text: "16 Mar 1943", sort: "1943-03-16" }, place: "PL-detroit", conclusion: "Petitioned for naturalization in Detroit on 16 March 1943 (petition 188070).", confidence: "probable",
+      assert: [{ src: "S-nat-idx-grace", value: "petition 188070, 16 Mar 1943", info: "secondary", ev: "direct" }] },
+    { id: "E-census-1950-pavia", type: "residence", who: ["P-josephp", "P-grace", "P-caroline", "P-charlesp", "P-francis"], date: { text: "6 Apr 1950", sort: "1950-04-06" }, place: "PL-detroit", conclusion: "One household on Inglis Street, Detroit: Joseph and Grace, both born in Malta and naturalized, with Caroline, Charles and Francis.", confidence: "proven",
+      assert: [{ src: "S-census-1950-pavia", value: "the household, read from the image", info: "undetermined", ev: "direct" }] },
+    { id: "E-death-josephp", type: "death", who: ["P-josephp"], date: { text: "28 Jun 1975", sort: "1975-06-28" }, place: "PL-detroit", conclusion: "Died in Detroit on 28 June 1975.", confidence: "probable",
+      assert: [{ src: "S-anc-hints", value: "28 Jun 1975, Detroit (SSDI and the Michigan death index, as read by Gemini)", info: "secondary", ev: "direct" }] },
+    { id: "E-death-grace", type: "death", who: ["P-grace"], date: { text: "21 Apr 1982", sort: "1982-04-21" }, place: "PL-detroit", conclusion: "Died in Detroit on 21 April 1982.", confidence: "probable",
+      assert: [{ src: "S-anc-hints", value: "21 Apr 1982, Detroit (SSDI, as read by Gemini)", info: "secondary", ev: "direct" }] }
+  );
+  const set = (child, pct, basis, gemini) => { const c = L.certainty.find((x) => x.child === child); const v = Object.assign({ child, pct, basis }, gemini ? { gemini } : {}); if (c) Object.assign(c, v); else L.certainty.push(v); };
+  set("P-francis", 93, "the 1940 and 1950 censuses list him as Joseph and Grace's son (the 1950 page read by Claude); his siblings' obituaries");
+  set("P-josephp", 75, "his 1926 marriage record names his parents (read by Gemini); the 1950 census gives both as born in Malta");
+  set("P-grace", 70, "her 1926 marriage record names her parents (read by Gemini); their dates come from other members' trees");
+  set("P-joelm", 55, "a 1672 orphans' court entry and compiled trees (WikiTree, the Jamestowne Society)", 88);
+  set("P-akeeling", 55, "compiled trees and the Jamestowne Society's lineage", 88);
+  set("P-maryrogers", 40, "one compiled tree", 65);
+  set("P-abrogers", 50, "compiled trees", 85);
+  set("P-bestes", 50, "compiled trees", 85);
+  set("P-testes", 55, "compiled trees", 85);
+
+  const c13 = C("C13");
+  c13.status = "resolved"; c13.conclusion = "Lucretia (Lucrezia) Calleja of Malta (probable)";
+  c13.argument += " Settled on 24 November 2026 as far as these records go. The 1950 census page (read by Claude) has Joseph Pavia, 52, and his wife Grace M., 40, both born in Malta and naturalized, with Caroline, Charles and Francis at one address. A Joseph Pavia, 29, born in Malta, married Lucretia Calleja, 18, born in Malta, in Detroit on 4 September 1926; his 1942 draft card at the same address names his wife \"Lagrigia\", a spelling of Lucrezia; and Caroline was born ten months after that wedding. The ages agree within the usual two years. The other Maltese couple in Detroit, Joseph A. and Erminia Pavia, is a different household in the same census (Gemini's side-by-side image). Still to read: the marriage image itself, and Grace's 1943 petition, which should give both names.";
+  L.conflicts.push({ id: "C14", person: "P-eward", q: "Was Joel Martin's wife Elizabeth Ward or Elizabeth Alderson?", status: "open", conclusion: "unresolved",
+    argument: "The older compiled trees give Elizabeth Ward. Gemini's wave 4 gives Elizabeth Alderson, daughter of Simon Alderson, from a compiled site (OurFamTree), and rates Ward at 15%. Neither side has shown the record: a Lower Norfolk or Bath County deed, will or court entry that names her with Joel would settle it." });
+  const h9 = H("H9");
+  h9.text += " Wave 4 (24 Nov): Arthur's own crossing is now a record: Library and Archives Canada's Home Children index has Arthur Seconder, 12, in Dr. Barnardo's party on the S.S. Carthaginian from Liverpool on 17 March 1892 to Halifax on 27 March (so born about 1880, not 1884); he married Bertha Loleta Lawson on 7 June 1905 in Hilton Township, Algoma. Bertha's father John \"Jack\" Nicholas Lawson (1865-1928) was the son of John William Lawson and Elizabeth Nicholson (married 1846, Kilbirnie, Ayrshire), and Lydia Ann Nelson's parents were Joseph William Nelson and Lydia Ensley (compiled). None of this touches the open link, Bob to Robert H.: still about 60%.";
+  L.questions.push(
+    { id: "Q33", p: 2, person: "P-josephp", q: "Where in Malta did Joseph Pavia and Lucretia Calleja come from, and when did they arrive? Their naturalization petitions (Grace's is no. 188070, Detroit, 1943) give the village, the ship and the date.", sources: "U.S. District Court, Eastern District of Michigan, naturalization petitions (NARA Chicago); passenger lists about 1915-1926", task: "KIN-GEM-29" },
+    { id: "Q34", p: 3, person: "P-bob", q: "Arthur Seconder's Barnardo's case file: his English birth surname and his parents.", sources: "Barnardo's \"Making Connections\" (UK), citing the S.S. Carthaginian, March 1892, party H92BA", task: "KIN-GEM-32" }
+  );
+  L.log.push(
+    { id: "L12", date: "2026-11-24", by: "Gemini", q: "Q26", where: "1950 U.S. census, Michigan (National Archives), every Pavia schedule (244)", terms: "Pavia", result: "found", note: "Joseph and Grace Pavia, both born in Malta, with their three children (read by Claude from the image). The other Maltese household, Joseph A. and Erminia Pavia, ruled out side by side." },
+    { id: "L13", date: "2026-11-24", by: "Gemini", q: "Q32", where: "a 1783 will (WikiTree Allen-60264)", terms: "Lydia Allen's parents", result: "disproved", note: "The claim that Lydia Allen was the daughter of Isaac Allen and Margaret Whiteside: the will names a \"Lydia Hollingsworth\". Gemini 5%." },
+    { id: "L14", date: "2026-11-24", by: "Gemini", q: "Q32", where: "WikiTree Bryant-6193", terms: "Nicholas Bryant's mother", result: "disproved", note: "Martha Hatchett Strode as his mother is not supported. Gemini 10%." },
+    { id: "L15", date: "2026-11-24", by: "Gemini", q: "Q32", where: "WikiTree Stone-673", terms: "Richard Stone Sr.'s parents", result: "disproved", note: "William Stone III and Elizabeth Dennett as his parents are not supported. Gemini 10%." },
+    { id: "L16", date: "2026-11-24", by: "Gemini", q: "Q32", where: "compiled Keeling and Thorowgood pedigrees", terms: "Thomas Keeling's English ancestry; Rev. William Thorowgood", result: "disproved", note: "The 1400s noble line given for Thomas Keeling (30%) and Rev. William Thorowgood as Anne's father (35%) are not supported by records." }
+  );
+})(window.KIN_LINEAGE);
+
+/* 2026-11-24: line 5a of the 1935 death certificate re-read by Claude at full size (Gemini, KIN-GEM-10, read it the same way):
+   "Della Matukaitis", not Delia; the third letter is struck over by the printed "divorced", the fourth is a tall l. */
+(function (L) {
+  const d = L.people.find((p) => p.id === "P-della"), n = d && d.names.find((x) => x.surname === "Matukaitis");
+  if (n) { n.given = "Della"; n.note = "her maiden name as given on her husband's death certificate, 1935, where she was the informant (line 5a reads \"Della Matukaitis\"; read again at full size on 24 Nov 2026)"; }
+  const c3 = L.conflicts.find((c) => c.id === "C3");
+  if (c3) c3.argument = c3.argument.replace("calls her Delia Matukaitis", "calls her Della Matukaitis (line 5a, re-read at full size on 24 November 2026; first transcribed here as Delia)");
+})(window.KIN_LINEAGE);
