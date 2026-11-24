@@ -1,6 +1,6 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
    Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline. */
-var CACHE = "prometheus-hub-deck-d75";
+var CACHE = "prometheus-hub-deck-d76";
 var PILLAR_IDS = [
   "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
   "piano", "bastion", "athenaeum", "odyssey", "privacy", "argus", "games", "forge", "foundry",
@@ -16,7 +16,7 @@ var SHELL = [
   "./deck/views/picture.js", "./deck/views/wxchip.js", "./deck/views/menu.js", "./art/worlds/index.json", "./art/worlds/world_home.webp", "./art/worlds/strip.webp", "./art/worlds/strip.json", "./deck/views/parts.js", "./deck/views/orrery.js", "./deck/views/time.js", "./deck/views/money.js", "./deck/views/system.js",
   "./deck/data/focus.js", "./deck/data/demo.js", "./deck/data/money-words.js", "./deck/data/fixed-dates.json", "./deck/data/issuers.json", "./deck/data/offers.json", "./deck/data/payoff-cases.json",
   "./deck/fonts/outfit-latin-wght-normal.woff2",
-  "./kit/prometheus.css", "./kit/kit.js", "./kit/world.js", "./kit/bus.js", "./kit/links.js", "./kit/stage.js",
+  "./kit/prometheus.css", "./kit/kit.js", "./kit/world.js", "./kit/bus.js", "./kit/links.js", "./kit/stage.js", "./kit/refs.js",
   "./kit/fonts/outfit-latin-300-normal.woff2", "./kit/fonts/outfit-latin-400-normal.woff2", "./kit/fonts/outfit-latin-500-normal.woff2",
   "./icons/favicon-32.png", "./icons/apple-touch-icon.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png"
 ].concat(PILLAR_IDS.reduce(function (acc, id) {

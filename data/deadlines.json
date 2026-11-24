@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 09:28 UTC",
+ "updated": "2026-11-24 17:12 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -112,6 +112,61 @@
    "count": 0
   },
   {
+   "due": "2026-12-01",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-35",
+   "title": "Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-01",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "KIN-MUS-04",
+   "title": "Kin: re-read your audit against the tree itself (C15, C16, C17)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-01",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "KIN-MUS-05",
+   "title": "Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-36",
+   "title": "Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-37",
+   "title": "Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17)",
+   "state": "now",
+   "count": 0
+  },
+  {
    "due": "2026-12-03",
    "pillar": "midas",
    "pillar_name": "Midas Ledger",
@@ -121,6 +176,17 @@
    "title": "Midas: second reader on Gemini's 60 verbatim card-agreement clauses",
    "state": "now",
    "count": 15
+  },
+  {
+   "due": "2026-12-04",
+   "pillar": "apollo",
+   "pillar_name": "Apollo Temple",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "APO-GEM-16",
+   "title": "Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached",
+   "state": "now",
+   "count": 120
   },
   {
    "due": "2026-12-05",
@@ -186,6 +252,50 @@
    "id": "KIN-GEM-30",
    "title": "Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27)",
    "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-05",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-38",
+   "title": "Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-05",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-39",
+   "title": "Kin: Wesley Davis and Henrietta, in records (Monroe County, TN)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-05",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-40",
+   "title": "Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-06",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "KIN-MUS-06",
+   "title": "Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)",
+   "state": "next",
    "count": 0
   },
   {

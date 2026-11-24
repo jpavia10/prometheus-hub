@@ -3529,6 +3529,726 @@
      "id": "KIN-GEM-34",
      "title": "Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)",
      "due": "2026-12-10"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Joseph Termena's parents (Rozys Termens and Kostantina Giadraet) and Della's (Michael Malkitus and Eva Vaschaushos) come from one index entry, FamilySearch record 1:1:Q2C2-FQ1P, that only you have read. The 1935 death certificate says Unknown for both of his. Muse found neither name anywhere else and calls them leads (conflict C15).",
+     "unlocks": "C15 settles: the names become possible-with-a-citation or are dropped; the certainty of Joseph's and Della's parent links follows.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "Open https://www.familysearch.org/ark:/61903/1:1:Q2C2-FQ1P signed in. Transcribe every field the page shows, label by label, exactly as written (groom, bride, ages, birthplaces, each parent's name, date, place, certificate number, film or image reference). Save a screenshot of the record page to the Kin folder and name it in the row.",
+      "Say plainly whether the parents' names are shown on the index page itself or only on an attached image or tree.",
+      "If the certificate image (Kings, 1922, no. 4615) is linked, read it and transcribe it whole; if not, give the NYC Municipal Archives reference that would order it."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-brooklyn-1922_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-GEM-35",
+     "title": "Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35)",
+     "due": "2026-12-01"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The tree makes Benjamin Bivens (about 1777) a son of Nathaniel (1726). Muse reports that Nathaniel's will, signed 9 May 1816 and transcribed on WikiTree Bivens-138, names ten children and no Benjamin. Claude cannot open WikiTree from its session.",
+     "unlocks": "C16 settles; the Benjamin link (now 45%) rises or is cut, and the line above Benjamin is re-aimed.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "WikiTree Bivens-138: copy the will transcription in full, word for word, with the profile's own citation for it (Anson County will book, volume and page).",
+      "List every child the will names, in its order, with any married names.",
+      "Benjamin Bivens (about 1777 to about 1860, Monroe County, TN; War of 1812, North Carolina militia): every record that names his father or places him beside a Bivens household before 1800 (1790 and 1800 censuses of Anson and Union counties, deeds, estate papers)."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-bivens-will_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-GEM-36",
+     "title": "Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16)",
+     "due": "2026-12-03"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The tree says James Pulliam married Elizabeth Allen Stone, Richard Stone's daughter, on the strength of a will abstract. Muse read DAR's records live: A092129 gives James born about 1736 and his wife Elizabeth Allen (no Stone); A110255 for Richard Stone carries a DAR warning, names his wife Mary Smith and lists no daughter Elizabeth. Claude cannot open DAR's site.",
+     "unlocks": "C17 settles; Elizabeth's link (now 65%) and Susannah Pulliam's (60%) rise or fall.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "DAR ancestor records A092129 and A110255: every field as DAR shows it (birth, death, service, residence, every spouse, every child listed, every notice such as 'problems have been discovered' or 'data in the correction file'), word for word. A screenshot of each to the Kin folder.",
+      "Richard Stone's will, made 7 September 1795, Lunenburg County, Virginia: find the will book entry itself (book and page) and transcribe it; say whether it names a daughter Elizabeth and her husband.",
+      "James Pulliam's own will or estate papers (Person County, NC, about 1799): the wife and children named."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-dar-stone-pulliam_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-GEM-37",
+     "title": "Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17)",
+     "due": "2026-12-03"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Your wave-4 file gives two birth dates for Joseph Pavia: 12 February 1897 (his 1942 draft card) and 2 December 1897 (the Michigan death index). The tree now prefers the draft card; the original images decide.",
+     "unlocks": "Joseph Pavia's birth date is settled, and the Malta search can start from it.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "His 1942 World War II draft registration card ('old man's draft'), front and back: every field, word for word, with the image reference.",
+      "The Michigan death index entry (1975) and the Social Security Death Index and NUMIDENT entries: every field.",
+      "Grace's 1943 naturalization index card (petition 188070): every field, especially the arrival date, ship and her birthplace in Malta."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-pavia-birth_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-GEM-38",
+     "title": "Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897)",
+     "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Henrietta 'Hettie' Davis (born about 1829) is Wesley Davis's daughter only in compiled trees; Muse found no record for the link. Her 1847 marriage to James Madison Giles is the load-bearing join.",
+     "unlocks": "Henrietta's link (now 60%) moves to records or is marked unproven.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "The 1850 census of Monroe County, TN: Wesley Davis's household and James M. Giles's, every person and age.",
+      "The Giles-Davis marriage (about 1847): the record itself, bondsman or witnesses.",
+      "Wesley Davis's estate (about 1855): heirs named."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-davis-giles_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-GEM-39",
+     "title": "Kin: Wesley Davis and Henrietta, in records (Monroe County, TN)",
+     "due": "2026-12-05"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "His sworn 1919 petition gives Hamburg about 13 August and New York 23 August 1912, the ship read as 'Columbia'. The great-uncle's second candidate is Kaiserin Auguste Victoria (Hamburg 14 Aug, New York 24 Aug). Nobody has searched the manifests of those two days.",
+     "unlocks": "C9 settles; the manifest names his last residence and nearest relative in Lithuania, which aims the Telšiai parish search.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "The Ellis Island Foundation passenger search (interactive, signed in): every ship arriving at New York 23 and 24 August 1912 from Hamburg; search each for Termena, Termenas, Termens, Termins, Terminas, Termena, Juozas, Josef, Józef, aged 17-20.",
+      "For any candidate: the manifest page image, both sides, every column transcribed (including last residence, nearest relative, destination and who paid).",
+      "Say which ships you searched and how; a negative counts when it names the ships and terms."
+     ],
+     "deliver": {
+      "file": "kin_gemini_lineage-arrival-aug-1912_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-GEM-40",
+     "title": "Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9)",
+     "due": "2026-12-05"
     }
    ]
   },
@@ -3904,6 +4624,364 @@
      "id": "KIN-MUS-03",
      "title": "Kin: second reader on the 1950 census households (blind)",
      "due": "2026-12-10"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Your audit (score 9) read Gemini's Drive files but not the tree, so it missed that the 1922 marriage is in the New York City index (Brooklyn, certificate 4615; FamilySearch 1:1:Q2C2-FQ1P is a record ark) and that his own 1919 petition gives the 1912 arrival. Your findings are now conflicts C15-C17 in the tree.",
+     "unlocks": "Your second read counts in full; the three conflicts get a reasoned second opinion each.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "Read the tree's data.js (sources, events, conflicts C9, C15, C16, C17 and the certainty basis of each link).",
+      "For each of C15, C16 and C17: one row giving your reading against the tree's own sources, what you would conclude and at what certainty, and the one record that would settle it.",
+      "Correct any line of your audit that the tree's sources already answer, and say so."
+     ],
+     "deliver": {
+      "file": "kin_muse_lineage-recheck-c15-c17_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-MUS-04",
+     "title": "Kin: re-read your audit against the tree itself (C15, C16, C17)",
+     "due": "2026-12-01"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "The NYC Municipal Archives has put its historical marriage certificates online free; certificate 4615 of 1922 (Kings) names both of Joseph Termena's parents and both of Della's in their own hand, which settles C15 without the index.",
+     "unlocks": "C15 settles on a primary record.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "Find certificate 4615, Kings County, 1922 (Joseph M. Termens and Della Malkitus, 25 April 1922) on the NYC Municipal Archives' Historical Vital Records site; give the record's exact address.",
+      "Transcribe the certificate whole, every field, the parents' names letter by letter; save the image to the Kin folder.",
+      "If it is not online, give the exact ordering route (form, fee) and say so."
+     ],
+     "deliver": {
+      "file": "kin_muse_lineage-brooklyn-certificate_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-MUS-05",
+     "title": "Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615)",
+     "due": "2026-12-01"
+    },
+    {
+     "state": "next",
+     "added": "2026-11-24",
+     "why": "An independent reading of the same records, so C16 and C17 rest on two readers, not one.",
+     "unlocks": "C16 and C17 can be closed.",
+     "inputs": [
+      "The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.",
+      "Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com)."
+     ],
+     "steps": [
+      "When KIN-GEM-36 and 37 land, read the same WikiTree and DAR pages yourself and compare field by field; every difference is a row."
+     ],
+     "deliver": {
+      "file": "kin_muse_lineage-second-read-bivens-dar_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'"
+     },
+     "count": 0,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)"
+      },
+      {
+       "name": "question",
+       "type": "text",
+       "rule": "the seed's question id (Q1, Q2 ...) this row answers"
+      },
+      {
+       "name": "search",
+       "type": "text",
+       "rule": "for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it"
+      },
+      {
+       "name": "result",
+       "type": "text",
+       "rule": "found, not found, candidate, needs sign-in, or paid"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "the record's title as the repository names it"
+      },
+      {
+       "name": "repository",
+       "type": "text",
+       "rule": "who holds the original (NARA, LVIA, NYC Municipal Archives, ...)"
+      },
+      {
+       "name": "reference",
+       "type": "text",
+       "rule": "enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened (the image page itself where there is one)"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized"
+      },
+      {
+       "name": "source_class",
+       "type": "text",
+       "rule": "original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)"
+      },
+      {
+       "name": "info_class",
+       "type": "text",
+       "rule": "primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers"
+      },
+      {
+       "name": "evidence",
+       "type": "text",
+       "rule": "direct, indirect or negative, for the question"
+      },
+      {
+       "name": "identity",
+       "type": "text",
+       "rule": "for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason"
+      },
+      {
+       "name": "citation",
+       "type": "text",
+       "rule": "a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date"
+      },
+      {
+       "name": "conflicts",
+       "type": "text",
+       "rule": "the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'"
+      }
+     ],
+     "done_when": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+     "checks": [
+      "Claude opens every 'found' row's reference and reads the image against the transcription.",
+      "Claude repeats three searches at random."
+     ],
+     "rejected_if": [
+      "a record presented as the person's without at least three identifiers compared",
+      "a transcription shortened, paraphrased or 'cleaned'",
+      "a hint accepted or a tree edit made without the identity argument",
+      "a percentage without the records that justify it",
+      "a portrait used as someone's likeness without saying who labelled it and why it is them",
+      "addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out",
+      "searches that found nothing left out"
+     ],
+     "id": "KIN-MUS-06",
+     "title": "Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)",
+     "due": "2026-12-06"
     }
    ]
   },

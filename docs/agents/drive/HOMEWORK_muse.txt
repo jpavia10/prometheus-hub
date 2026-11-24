@@ -1,6 +1,6 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-24 09:28 UTC. 14 to do across 4 pillars.
+Updated 2026-11-24 17:12 UTC. 17 to do across 4 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -16,13 +16,126 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
-1. [Midas Ledger] MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
-2. [Prometheus Hub] HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · due 2026-12-07
-3. [Kin] KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · due 2026-12-08
-4. [Kin] KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · due 2026-12-10 · waits for its input file
+1. [Kin] KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
+2. [Kin] KIN-MUS-05 · Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615) · due 2026-12-01
+3. [Midas Ledger] MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
+4. [Prometheus Hub] HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · due 2026-12-07
+5. [Kin] KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · due 2026-12-08
+6. [Kin] KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
+7. [Kin] KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · due 2026-12-10 · waits for its input file
 
-==================== 1. MIDAS LEDGER ====================
-## 1. MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses
+==================== 1. KIN ====================
+## 1. KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17)
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** Your second read counts in full; the three conflicts get a reasoned second opinion each.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. Read the tree's data.js (sources, events, conflicts C9, C15, C16, C17 and the certainty basis of each link).
+2. For each of C15, C16 and C17: one row giving your reading against the tree's own sources, what you would conclude and at what certainty, and the one record that would settle it.
+3. Correct any line of your audit that the tree's sources already answer, and say so.
+
+**Make:** `kin_muse_lineage-recheck-c15-c17_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 2. KIN ====================
+## 2. KIN-MUS-05 · Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615)
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** C15 settles on a primary record.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. Find certificate 4615, Kings County, 1922 (Joseph M. Termens and Della Malkitus, 25 April 1922) on the NYC Municipal Archives' Historical Vital Records site; give the record's exact address.
+2. Transcribe the certificate whole, every field, the parents' names letter by letter; save the image to the Kin folder.
+3. If it is not online, give the exact ordering route (form, fee) and say so.
+
+**Make:** `kin_muse_lineage-brooklyn-certificate_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 3. MIDAS LEDGER ====================
+## 3. MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses
 
 **Due:** 2026-12-03 · **State:** now
 
@@ -59,8 +172,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 2. PROMETHEUS HUB ====================
-## 2. HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies
+==================== 4. PROMETHEUS HUB ====================
+## 4. HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies
 
 **Due:** 2026-12-07 · **State:** now
 
@@ -113,8 +226,8 @@ IN THIS ORDER:
 - a row marked agree whose page does not say it
 - a file without a verdict
 
-==================== 3. KIN ====================
-## 3. KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents
+==================== 5. KIN ====================
+## 5. KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -175,8 +288,61 @@ IN THIS ORDER:
 - a guess written as a fact (write 'not stated' or 'illegible')
 - a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-==================== 4. KIN ====================
-## 4. KIN-MUS-03 · Kin: second reader on the 1950 census households (blind)
+==================== 6. KIN ====================
+## 6. KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)
+
+**Due:** 2026-12-06 · **State:** next (starts when the file it checks is in the folder)
+
+**What it unlocks:** C16 and C17 can be closed.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. When KIN-GEM-36 and 37 land, read the same WikiTree and DAR pages yourself and compare field by field; every difference is a row.
+
+**Make:** `kin_muse_lineage-second-read-bivens-dar_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 7. KIN ====================
+## 7. KIN-MUS-03 · Kin: second reader on the 1950 census households (blind)
 
 **Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
 

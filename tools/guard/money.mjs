@@ -67,6 +67,14 @@ export const ALLOW = [
   ["pillars/hearth/permits.js", "building-code reference (HEA-GEM-17): CRC R315's $1,000-of-work threshold for CO alarms"],
   ["kit/vendor/", "third-party libraries, unmodified (three.js 0.170, MIT; added 2026-11-20 for the Garage showroom): a library author's copyright email and minified digits, no personal data"],
   ["pillars/continuity/legacy-policies.js", "provider legacy-policy reference (CON-GEM-03): a help-centre URL's article id matches the card pattern; no account numbers"],
+  ["pillars/continuity/research-r7.js", "public reference (run 7): the AHCD and beneficiary rules, statutory fees quoted from their sources"],
+  ["pillars/hearth/research-r7.js", "public reference (run 7): Kern's deck permit fee schedule worked for the deck"],
+  ["pillars/kin/research-r7.js", "public reference (run 7): the State Department's child passport fees"],
+  ["pillars/money/research-r7.js", "public reference (run 7): issuers' published card pricing"],
+  ["pillars/mythos/research-r7.js", "public reference (run 7): the Copyright Office's registration fees"],
+  ["pillars/odyssey/research-r7.js", "public reference (run 7): park pass, entry and trip fees from official pages"],
+  ["pillars/records/research-r7.js", "public reference (run 7): Kern property tax penalties and passport fees"],
+  ["pillars/hermes/billers.js", "billers' public sender domains, service and fraud numbers and report addresses, from their own sites"],
 ];
 
 const ALLOW_EMAIL = new Set([

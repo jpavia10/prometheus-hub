@@ -782,6 +782,87 @@
      "id": "APO-GEM-15",
      "title": "Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13",
      "due": "2026-12-08"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Your 120 FoodData Central ids (APO-GEM-13) are right as ids, but Apollo attaches an id to a food only where its shipped nutrients were reconciled with the same SR Legacy entry (the 10 Nov audit did this for the first 300). For 4 of yours the calories differ by more than 15% from the shipped food, so the id is probably another preparation. The candidates are in pillars/apollo/data/fdc-candidates.json.",
+     "unlocks": "The ids attach to the foods with matching values, and Apollo can show each food's full nutrient panel.",
+     "inputs": [
+      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/apollo/foods.js (window.APOLLO_FOODS: 'n' is the name, 'fdc' the id where known)",
+      "fdc.nal.usda.gov (search; prefer SR Legacy or Foundation records)"
+     ],
+     "steps": [
+      "For each row of https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/data/fdc-candidates.json: the SR Legacy entry's kcal, protein, fat, carbohydrate and fiber per 100 g, read from the FDC page itself.",
+      "For the 4 rows marked 'kcal differs': find the SR Legacy entry whose description matches the food's name exactly; give its id and values, or say none matches.",
+      "Never change the food's name; a row whose description does not match exactly is marked so."
+     ],
+     "deliver": {
+      "file": "apollo_gemini_fdc-values_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 120,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "food",
+       "type": "text",
+       "rule": "as in foods.js"
+      },
+      {
+       "name": "fdc",
+       "type": "number",
+       "rule": "FDC id"
+      },
+      {
+       "name": "description",
+       "type": "text",
+       "rule": "USDA's own wording"
+      },
+      {
+       "name": "data_type",
+       "type": "text",
+       "rule": "SR Legacy, Foundation, Survey (FNDDS) or Branded"
+      },
+      {
+       "name": "kcal_100g",
+       "type": "number",
+       "rule": "from the record"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "120 foods, each matched or marked 'no close match'.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "APO-GEM-16",
+     "title": "Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached",
+     "due": "2026-12-04",
+     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     }
    ]
   },

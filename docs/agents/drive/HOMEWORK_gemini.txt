@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-24 09:28 UTC. 63 to do across 26 pillars.
+Updated 2026-11-24 17:12 UTC. 70 to do across 26 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -24,50 +24,57 @@ IN THIS ORDER:
 6. [Kin] KIN-GEM-17 · Kin, Ancestry hints: every hint on the Sanders line, read and decided (sanders) · due 2026-12-01
 7. [Kin] KIN-GEM-18 · Kin, Ancestry hints: every hint on the Seconder-Termenas line, read and decided (seconder-termenas) · due 2026-12-01
 8. [Kin] KIN-GEM-28 · Kin: the 1950 census households of Barbara and Della Rimsha, Joseph and Grace Pavia, and the Sanders families, transcribed whole (Q19, Q26) · due 2026-12-01
-9. [Kin] KIN-GEM-19 · Kin, certainty-scored pedigree: the Pavia line as far back as the records go · due 2026-12-05
-10. [Kin] KIN-GEM-20 · Kin, certainty-scored pedigree: the Kirkland line as far back as the records go · due 2026-12-05
-11. [Kin] KIN-GEM-21 · Kin, certainty-scored pedigree: the Sanders line as far back as the records go · due 2026-12-05
-12. [Kin] KIN-GEM-22 · Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go · due 2026-12-05
-13. [Kin] KIN-GEM-29 · Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26) · due 2026-12-05
-14. [Kin] KIN-GEM-30 · Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27) · due 2026-12-05
-15. [Midas Ledger] MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements · due 2026-12-06
-16. [Polis · Civic & Legal Watch] POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
-17. [Kairos Meridian] KAI-GEM-16 · Kairos: El Tejon Unified's 2027-28 calendar (when published) and Kern County's 2027 board meeting dates · due 2026-12-08
-18. [Hephaestus Hearth] HEA-GEM-32 · Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them · due 2026-12-08
-19. [Garage] GAR-GEM-17 · Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals · due 2026-12-08
-20. [Apollo Temple] APO-GEM-15 · Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13 · due 2026-12-08
-21. [Money · payoff simulator] MON-GEM-08 · Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages · due 2026-12-08
-22. [Selling Pipeline] SEL-GEM-09 · Selling: eBay's coin and bullion item specifics and photo rules, category by category · due 2026-12-08
-23. [Records · Paper Killer] REC-GEM-12 · Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait) · due 2026-12-08
-24. [Icarus Stake] ICA-GEM-15 · Icarus: the 2027 Treasury auction schedule (2-, 10- and 30-year) and the 2027 CPI and jobs report dates · due 2026-12-08
-25. [Hermes Post] HER-GEM-15 · Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14 · due 2026-12-08
-26. [Bastion · Mountain Prep] BAS-GEM-15 · Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history · due 2026-12-08
-27. [Athenaeum · Idea Vault] ATH-GEM-07 · Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words · due 2026-12-08
-28. [Odyssey · Trips & Away Mode] ODY-GEM-28 · Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive · due 2026-12-08
-29. [Privacy · CA DROP] PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access) · due 2026-12-08
-30. [Argus Album] ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image · due 2026-12-08
-31. [Forge] FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge · due 2026-12-08
-32. [Foundry] FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief · due 2026-12-08
-33. [Observatory] OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field · due 2026-12-08
-34. [Kin] KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified · due 2026-12-08
-35. [Kin] KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified · due 2026-12-08
-36. [Kin] KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified · due 2026-12-08
-37. [Kin] KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified · due 2026-12-08
-38. [Kin] KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source · due 2026-12-08
-39. [Kin] KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1) · due 2026-12-08
-40. [Kin] KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25) · due 2026-12-08
-41. [Kin] KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30) · due 2026-12-08
-42. [Aether · Atmospheric & Field Lab] AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do · due 2026-12-08
-43. [Mythos · Creative & Lore Studio] MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05) · due 2026-12-08
-44. [Continuity · Sovereign Vault] CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for · due 2026-12-08
-45. [Kin] KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32) · due 2026-12-10
-46. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
-47. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
-48. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-49. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
-50. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
-51. [Selling Pipeline] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
-52. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
+9. [Kin] KIN-GEM-35 · Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35) · due 2026-12-01
+10. [Kin] KIN-GEM-36 · Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16) · due 2026-12-03
+11. [Kin] KIN-GEM-37 · Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17) · due 2026-12-03
+12. [Apollo Temple] APO-GEM-16 · Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached · due 2026-12-04
+13. [Kin] KIN-GEM-19 · Kin, certainty-scored pedigree: the Pavia line as far back as the records go · due 2026-12-05
+14. [Kin] KIN-GEM-20 · Kin, certainty-scored pedigree: the Kirkland line as far back as the records go · due 2026-12-05
+15. [Kin] KIN-GEM-21 · Kin, certainty-scored pedigree: the Sanders line as far back as the records go · due 2026-12-05
+16. [Kin] KIN-GEM-22 · Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go · due 2026-12-05
+17. [Kin] KIN-GEM-29 · Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26) · due 2026-12-05
+18. [Kin] KIN-GEM-30 · Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27) · due 2026-12-05
+19. [Kin] KIN-GEM-38 · Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897) · due 2026-12-05
+20. [Kin] KIN-GEM-39 · Kin: Wesley Davis and Henrietta, in records (Monroe County, TN) · due 2026-12-05
+21. [Kin] KIN-GEM-40 · Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9) · due 2026-12-05
+22. [Midas Ledger] MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements · due 2026-12-06
+23. [Polis · Civic & Legal Watch] POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
+24. [Kairos Meridian] KAI-GEM-16 · Kairos: El Tejon Unified's 2027-28 calendar (when published) and Kern County's 2027 board meeting dates · due 2026-12-08
+25. [Hephaestus Hearth] HEA-GEM-32 · Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them · due 2026-12-08
+26. [Garage] GAR-GEM-17 · Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals · due 2026-12-08
+27. [Apollo Temple] APO-GEM-15 · Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13 · due 2026-12-08
+28. [Money · payoff simulator] MON-GEM-08 · Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages · due 2026-12-08
+29. [Selling Pipeline] SEL-GEM-09 · Selling: eBay's coin and bullion item specifics and photo rules, category by category · due 2026-12-08
+30. [Records · Paper Killer] REC-GEM-12 · Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait) · due 2026-12-08
+31. [Icarus Stake] ICA-GEM-15 · Icarus: the 2027 Treasury auction schedule (2-, 10- and 30-year) and the 2027 CPI and jobs report dates · due 2026-12-08
+32. [Hermes Post] HER-GEM-15 · Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14 · due 2026-12-08
+33. [Bastion · Mountain Prep] BAS-GEM-15 · Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history · due 2026-12-08
+34. [Athenaeum · Idea Vault] ATH-GEM-07 · Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words · due 2026-12-08
+35. [Odyssey · Trips & Away Mode] ODY-GEM-28 · Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive · due 2026-12-08
+36. [Privacy · CA DROP] PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access) · due 2026-12-08
+37. [Argus Album] ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image · due 2026-12-08
+38. [Forge] FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge · due 2026-12-08
+39. [Foundry] FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief · due 2026-12-08
+40. [Observatory] OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field · due 2026-12-08
+41. [Kin] KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified · due 2026-12-08
+42. [Kin] KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified · due 2026-12-08
+43. [Kin] KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified · due 2026-12-08
+44. [Kin] KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified · due 2026-12-08
+45. [Kin] KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source · due 2026-12-08
+46. [Kin] KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1) · due 2026-12-08
+47. [Kin] KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25) · due 2026-12-08
+48. [Kin] KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30) · due 2026-12-08
+49. [Aether · Atmospheric & Field Lab] AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do · due 2026-12-08
+50. [Mythos · Creative & Lore Studio] MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05) · due 2026-12-08
+51. [Continuity · Sovereign Vault] CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for · due 2026-12-08
+52. [Kin] KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32) · due 2026-12-10
+53. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
+54. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
+55. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+56. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
+57. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
+58. [Selling Pipeline] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
+59. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GEM-22 · Hub: paint the town for every hour and every weather (the home is now the town)
@@ -453,7 +460,224 @@ IN THIS ORDER:
 - searches that found nothing left out
 
 ==================== 9. KIN ====================
-## 9. KIN-GEM-19 · Kin, certainty-scored pedigree: the Pavia line as far back as the records go
+## 9. KIN-GEM-35 · Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35)
+
+**Due:** 2026-12-01 · **State:** now
+
+**What it unlocks:** C15 settles: the names become possible-with-a-citation or are dropped; the certainty of Joseph's and Della's parent links follows.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. Open https://www.familysearch.org/ark:/61903/1:1:Q2C2-FQ1P signed in. Transcribe every field the page shows, label by label, exactly as written (groom, bride, ages, birthplaces, each parent's name, date, place, certificate number, film or image reference). Save a screenshot of the record page to the Kin folder and name it in the row.
+2. Say plainly whether the parents' names are shown on the index page itself or only on an attached image or tree.
+3. If the certificate image (Kings, 1922, no. 4615) is linked, read it and transcribe it whole; if not, give the NYC Municipal Archives reference that would order it.
+
+**Make:** `kin_gemini_lineage-brooklyn-1922_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 10. KIN ====================
+## 10. KIN-GEM-36 · Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16)
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** C16 settles; the Benjamin link (now 45%) rises or is cut, and the line above Benjamin is re-aimed.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. WikiTree Bivens-138: copy the will transcription in full, word for word, with the profile's own citation for it (Anson County will book, volume and page).
+2. List every child the will names, in its order, with any married names.
+3. Benjamin Bivens (about 1777 to about 1860, Monroe County, TN; War of 1812, North Carolina militia): every record that names his father or places him beside a Bivens household before 1800 (1790 and 1800 censuses of Anson and Union counties, deeds, estate papers).
+
+**Make:** `kin_gemini_lineage-bivens-will_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 11. KIN ====================
+## 11. KIN-GEM-37 · Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17)
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** C17 settles; Elizabeth's link (now 65%) and Susannah Pulliam's (60%) rise or fall.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. DAR ancestor records A092129 and A110255: every field as DAR shows it (birth, death, service, residence, every spouse, every child listed, every notice such as 'problems have been discovered' or 'data in the correction file'), word for word. A screenshot of each to the Kin folder.
+2. Richard Stone's will, made 7 September 1795, Lunenburg County, Virginia: find the will book entry itself (book and page) and transcribe it; say whether it names a daughter Elizabeth and her husband.
+3. James Pulliam's own will or estate papers (Person County, NC, about 1799): the wife and children named.
+
+**Make:** `kin_gemini_lineage-dar-stone-pulliam_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 12. APOLLO TEMPLE ====================
+## 12. APO-GEM-16 · Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached
+
+**Due:** 2026-12-04 · **State:** now
+
+**What it unlocks:** The ids attach to the foods with matching values, and Apollo can show each food's full nutrient panel.
+
+**Read first:**
+- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/apollo/foods.js (window.APOLLO_FOODS: 'n' is the name, 'fdc' the id where known)
+- fdc.nal.usda.gov (search; prefer SR Legacy or Foundation records)
+
+**Do this:**
+1. For each row of https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/data/fdc-candidates.json: the SR Legacy entry's kcal, protein, fat, carbohydrate and fiber per 100 g, read from the FDC page itself.
+2. For the 4 rows marked 'kcal differs': find the SR Legacy entry whose description matches the food's name exactly; give its id and values, or say none matches.
+3. Never change the food's name; a row whose description does not match exactly is marked so.
+
+**Make:** `apollo_gemini_fdc-values_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `food` (text): as in foods.js
+- `fdc` (number): FDC id
+- `description` (text): USDA's own wording
+- `data_type` (text): SR Legacy, Foundation, Survey (FNDDS) or Branded
+- `kcal_100g` (number): from the record
+- `url` (url): the page you opened, on the official site
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 120
+
+**Done when:** 120 foods, each matched or marked 'no close match'.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 13. KIN ====================
+## 13. KIN-GEM-19 · Kin, certainty-scored pedigree: the Pavia line as far back as the records go
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -505,8 +729,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 10. KIN ====================
-## 10. KIN-GEM-20 · Kin, certainty-scored pedigree: the Kirkland line as far back as the records go
+==================== 14. KIN ====================
+## 14. KIN-GEM-20 · Kin, certainty-scored pedigree: the Kirkland line as far back as the records go
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -558,8 +782,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 11. KIN ====================
-## 11. KIN-GEM-21 · Kin, certainty-scored pedigree: the Sanders line as far back as the records go
+==================== 15. KIN ====================
+## 15. KIN-GEM-21 · Kin, certainty-scored pedigree: the Sanders line as far back as the records go
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -611,8 +835,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 12. KIN ====================
-## 12. KIN-GEM-22 · Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go
+==================== 16. KIN ====================
+## 16. KIN-GEM-22 · Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -664,8 +888,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 13. KIN ====================
-## 13. KIN-GEM-29 · Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26)
+==================== 17. KIN ====================
+## 17. KIN-GEM-29 · Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26)
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -720,8 +944,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 14. KIN ====================
-## 14. KIN-GEM-30 · Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27)
+==================== 18. KIN ====================
+## 18. KIN-GEM-30 · Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27)
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -775,8 +999,173 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 15. MIDAS LEDGER ====================
-## 15. MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements
+==================== 19. KIN ====================
+## 19. KIN-GEM-38 · Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897)
+
+**Due:** 2026-12-05 · **State:** now
+
+**What it unlocks:** Joseph Pavia's birth date is settled, and the Malta search can start from it.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. His 1942 World War II draft registration card ('old man's draft'), front and back: every field, word for word, with the image reference.
+2. The Michigan death index entry (1975) and the Social Security Death Index and NUMIDENT entries: every field.
+3. Grace's 1943 naturalization index card (petition 188070): every field, especially the arrival date, ship and her birthplace in Malta.
+
+**Make:** `kin_gemini_lineage-pavia-birth_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 20. KIN ====================
+## 20. KIN-GEM-39 · Kin: Wesley Davis and Henrietta, in records (Monroe County, TN)
+
+**Due:** 2026-12-05 · **State:** now
+
+**What it unlocks:** Henrietta's link (now 60%) moves to records or is marked unproven.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. The 1850 census of Monroe County, TN: Wesley Davis's household and James M. Giles's, every person and age.
+2. The Giles-Davis marriage (about 1847): the record itself, bondsman or witnesses.
+3. Wesley Davis's estate (about 1855): heirs named.
+
+**Make:** `kin_gemini_lineage-davis-giles_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 21. KIN ====================
+## 21. KIN-GEM-40 · Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9)
+
+**Due:** 2026-12-05 · **State:** now
+
+**What it unlocks:** C9 settles; the manifest names his last residence and nearest relative in Lithuania, which aims the Telšiai parish search.
+
+**Read first:**
+- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
+- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in; FamilySearch (free account, signed in); WikiTree; the DAR Genealogical Research System (services.dar.org); the Statue of Liberty-Ellis Island Foundation passenger search; the NYC Municipal Archives' Historical Vital Records site (a.nycma.lib / nycma.lunaimaging.com).
+
+**Do this:**
+1. The Ellis Island Foundation passenger search (interactive, signed in): every ship arriving at New York 23 and 24 August 1912 from Hamburg; search each for Termena, Termenas, Termens, Termins, Terminas, Termena, Juozas, Josef, Józef, aged 17-20.
+2. For any candidate: the manifest page image, both sides, every column transcribed (including last residence, nearest relative, destination and who paid).
+3. Say which ships you searched and how; a negative counts when it names the ships and terms.
+
+**Make:** `kin_gemini_lineage-arrival-aug-1912_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Done when:** Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription.
+- Claude repeats three searches at random.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a record presented as the person's without at least three identifiers compared
+- a transcription shortened, paraphrased or 'cleaned'
+- a hint accepted or a tree edit made without the identity argument
+- a percentage without the records that justify it
+- a portrait used as someone's likeness without saying who labelled it and why it is them
+- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
+- searches that found nothing left out
+
+==================== 22. MIDAS LEDGER ====================
+## 22. MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -825,8 +1214,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 16. POLIS · CIVIC & LEGAL WATCH ====================
-## 16. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
+==================== 23. POLIS · CIVIC & LEGAL WATCH ====================
+## 23. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -874,8 +1263,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 17. KAIROS MERIDIAN ====================
-## 17. KAI-GEM-16 · Kairos: El Tejon Unified's 2027-28 calendar (when published) and Kern County's 2027 board meeting dates
+==================== 24. KAIROS MERIDIAN ====================
+## 24. KAI-GEM-16 · Kairos: El Tejon Unified's 2027-28 calendar (when published) and Kern County's 2027 board meeting dates
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -910,8 +1299,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 18. HEPHAESTUS HEARTH ====================
-## 18. HEA-GEM-32 · Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them
+==================== 25. HEPHAESTUS HEARTH ====================
+## 25. HEA-GEM-32 · Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -947,8 +1336,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 19. GARAGE ====================
-## 19. GAR-GEM-17 · Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals
+==================== 26. GARAGE ====================
+## 26. GAR-GEM-17 · Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -985,8 +1374,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 20. APOLLO TEMPLE ====================
-## 20. APO-GEM-15 · Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13
+==================== 27. APOLLO TEMPLE ====================
+## 27. APO-GEM-15 · Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1025,8 +1414,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 21. MONEY · PAYOFF SIMULATOR ====================
-## 21. MON-GEM-08 · Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages
+==================== 28. MONEY · PAYOFF SIMULATOR ====================
+## 28. MON-GEM-08 · Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1063,8 +1452,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 22. SELLING PIPELINE ====================
-## 22. SEL-GEM-09 · Selling: eBay's coin and bullion item specifics and photo rules, category by category
+==================== 29. SELLING PIPELINE ====================
+## 29. SEL-GEM-09 · Selling: eBay's coin and bullion item specifics and photo rules, category by category
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1101,8 +1490,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 23. RECORDS · PAPER KILLER ====================
-## 23. REC-GEM-12 · Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait)
+==================== 30. RECORDS · PAPER KILLER ====================
+## 30. REC-GEM-12 · Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1141,8 +1530,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 24. ICARUS STAKE ====================
-## 24. ICA-GEM-15 · Icarus: the 2027 Treasury auction schedule (2-, 10- and 30-year) and the 2027 CPI and jobs report dates
+==================== 31. ICARUS STAKE ====================
+## 31. ICA-GEM-15 · Icarus: the 2027 Treasury auction schedule (2-, 10- and 30-year) and the 2027 CPI and jobs report dates
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1178,8 +1567,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 25. HERMES POST ====================
-## 25. HER-GEM-15 · Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14
+==================== 32. HERMES POST ====================
+## 32. HER-GEM-15 · Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1215,8 +1604,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 26. BASTION · MOUNTAIN PREP ====================
-## 26. BAS-GEM-15 · Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history
+==================== 33. BASTION · MOUNTAIN PREP ====================
+## 33. BAS-GEM-15 · Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1254,8 +1643,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 27. ATHENAEUM · IDEA VAULT ====================
-## 27. ATH-GEM-07 · Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words
+==================== 34. ATHENAEUM · IDEA VAULT ====================
+## 34. ATH-GEM-07 · Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1299,8 +1688,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 28. ODYSSEY · TRIPS & AWAY MODE ====================
-## 28. ODY-GEM-28 · Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive
+==================== 35. ODYSSEY · TRIPS & AWAY MODE ====================
+## 35. ODY-GEM-28 · Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1337,8 +1726,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 29. PRIVACY · CA DROP ====================
-## 29. PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)
+==================== 36. PRIVACY · CA DROP ====================
+## 36. PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1374,8 +1763,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 30. ARGUS ALBUM ====================
-## 30. ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image
+==================== 37. ARGUS ALBUM ====================
+## 37. ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1415,8 +1804,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 31. FORGE ====================
-## 31. FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge
+==================== 38. FORGE ====================
+## 38. FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1453,8 +1842,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 32. FOUNDRY ====================
-## 32. FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief
+==================== 39. FOUNDRY ====================
+## 39. FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1495,8 +1884,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 33. OBSERVATORY ====================
-## 33. OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field
+==================== 40. OBSERVATORY ====================
+## 40. OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1534,8 +1923,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 34. KIN ====================
-## 34. KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified
+==================== 41. KIN ====================
+## 41. KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1588,8 +1977,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 35. KIN ====================
-## 35. KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified
+==================== 42. KIN ====================
+## 42. KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1642,8 +2031,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 36. KIN ====================
-## 36. KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified
+==================== 43. KIN ====================
+## 43. KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1696,8 +2085,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 37. KIN ====================
-## 37. KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified
+==================== 44. KIN ====================
+## 44. KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1750,8 +2139,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 38. KIN ====================
-## 38. KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source
+==================== 45. KIN ====================
+## 45. KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1800,8 +2189,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 39. KIN ====================
-## 39. KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)
+==================== 46. KIN ====================
+## 46. KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1856,8 +2245,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 40. KIN ====================
-## 40. KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)
+==================== 47. KIN ====================
+## 47. KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1912,8 +2301,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 41. KIN ====================
-## 41. KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)
+==================== 48. KIN ====================
+## 48. KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -1967,8 +2356,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 42. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 42. AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do
+==================== 49. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 49. AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2008,8 +2397,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 43. MYTHOS · CREATIVE & LORE STUDIO ====================
-## 43. MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)
+==================== 50. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 50. MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2046,8 +2435,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 44. CONTINUITY · SOVEREIGN VAULT ====================
-## 44. CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for
+==================== 51. CONTINUITY · SOVEREIGN VAULT ====================
+## 51. CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2083,8 +2472,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 45. KIN ====================
-## 45. KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)
+==================== 52. KIN ====================
+## 52. KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -2138,8 +2527,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 46. LUDUS ARCADE ====================
-## 46. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
+==================== 53. LUDUS ARCADE ====================
+## 53. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
 
 **Due:** 2026-12-22 · **State:** now
 
@@ -2174,8 +2563,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 47. MIDAS LEDGER ====================
-## 47. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
+==================== 54. MIDAS LEDGER ====================
+## 54. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
 
 **Due:** 2026-12-28 · **State:** now
 
@@ -2229,8 +2618,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 48. KAIROS MERIDIAN ====================
-## 48. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 55. KAIROS MERIDIAN ====================
+## 55. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -2275,8 +2664,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 49. GARAGE ====================
-## 49. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
+==================== 56. GARAGE ====================
+## 56. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
 
 **Due:** 2027-01-10 · **State:** now
 
@@ -2321,8 +2710,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 50. POLIS · CIVIC & LEGAL WATCH ====================
-## 50. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+==================== 57. POLIS · CIVIC & LEGAL WATCH ====================
+## 57. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
 
 **Due:** 2027-01-15 · **State:** now
 
@@ -2366,8 +2755,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 51. SELLING PIPELINE ====================
-## 51. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+==================== 58. SELLING PIPELINE ====================
+## 58. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 
@@ -2418,8 +2807,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 52. POLIS · CIVIC & LEGAL WATCH ====================
-## 52. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+==================== 59. POLIS · CIVIC & LEGAL WATCH ====================
+## 59. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
 
 **Due:** 2027-01-20 · **State:** now
 

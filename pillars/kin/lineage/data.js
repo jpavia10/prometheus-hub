@@ -781,3 +781,48 @@ window.KIN_LINEAGE.questions.push(
   const c3 = L.conflicts.find((c) => c.id === "C3");
   if (c3) c3.argument = c3.argument.replace("calls her Delia Matukaitis", "calls her Della Matukaitis (line 5a, re-read at full size on 24 November 2026; first transcribed here as Delia)");
 })(window.KIN_LINEAGE);
+
+/* 2026-11-24, evening: Muse's Kin audit and second reads (Drive, "Kin — Sebastian ..." files) and Gemini's wave-4 breakthroughs file.
+   Claude is the third reader. Muse checked Gemini's Drive harvest against the record images and the live DAR database; it did not
+   read this tree, so two of its Termena findings miss what is already here: the 1922 marriage is in the New York City index (Brooklyn,
+   certificate 4615), not Wayne County, and Gemini's FamilySearch pointer 1:1:Q2C2-FQ1P is a historical-record ark, not a tree person.
+   WikiTree and the DAR database cannot be reached from Claude's session, so its southern-line findings are recorded as open conflicts,
+   with the links lowered while they stand; Muse's own figure is shown beside each. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), C = (id) => L.certainty.find((c) => c.child === id);
+  const set = (id, pct, basis, muse) => { let c = C(id); if (!c) { c = { child: id }; L.certainty.push(c); } c.pct = pct; c.basis = basis; if (muse) c.muse = muse; };
+  L.sources.push(
+    { id: "S-muse-audit", short: "Muse's Kin audit and second reads, 24 Nov 2026", kind: "derivative", year: 2026, img: [],
+      cite: "Muse (Sebastian), \"Kin — Sebastian Audit & Extension Report\", \"Second-Read, Pavia & Termena\", \"Second-Read, Southern Lines & DAR\", \"Extension Research\" and three record-pull files, Prometheus Hub Kin folder, Google Drive, 24 November 2026.",
+      read: "Read by Claude. Its DAR readings (A030698, A092129, A110255, A213360) and its reading of Nathaniel Bivens's 1816 will on WikiTree Bivens-138 could not be checked from Claude's session (both sites unreachable)." }
+  );
+  /* Termena: the parents' names come from one index entry nobody here has seen; the death certificate's "Unknown" came from his widow */
+  set("P-joseph", 40, "the 1922 Brooklyn marriage index (FamilySearch record 1:1:Q2C2-FQ1P, read by Gemini; not yet seen by Claude) names Rozys Termens and Kostantina Giadraet; the 1935 death certificate gives both as Unknown (informant: his widow); the 1912 manifest candidate gives a father Kazmierz (C9)", 0);
+  set("P-della", 55, "the same 1922 index, read by Gemini, names Michael Malkitus and Eva Vaschaushos; her own 1935 statement gives her maiden name as Matukaitis (C3)");
+  set("P-ggm", 85, "her obituary names her parents Joseph and Della Termans; in 1950 she lives with her mother Della Rimsha (census index); her 1933 birth record is not yet seen", 80);
+  for (const id of ["P-rozys", "P-kostantina"]) { const p = P(id); if (p) p.summary += " Muse's second read (24 Nov 2026) holds these names as leads only until the index entry itself is read (C15)."; }
+  L.conflicts.push({ id: "C15", person: "P-joseph", q: "Who were Joseph Termena's parents?", status: "open", conclusion: "unresolved: the names Rozys Termens and Kostantina Giadraet are kept as possible, not proven",
+    argument: "Three readings disagree. The 1922 New York City marriage index entry (FamilySearch record 1:1:Q2C2-FQ1P, as read by Gemini) names Rozys Termens and Kostantina Giadraet. The 1935 death certificate gives both parents as Unknown, but its informant was his widow, who may never have known her in-laws' names, so it does not contradict the index. The 1912 manifest candidate (C9) gives a father Kazmierz, but that candidate is probably another man. Muse (24 Nov) found neither name anywhere on the indexed web and would hold them as leads; Claude keeps them as possible, at 40%, until someone reads the index entry itself (a free FamilySearch account is enough: Q35) or the Brooklyn certificate no. 4615, which names both parents." });
+  /* southern lines: Muse's findings, held open */
+  set("P-benjamin", 45, "compiled trees; Muse reports that Nathaniel's 1816 will, as transcribed on WikiTree, names ten children and no Benjamin, and Benjamin was born when Nathaniel was about 51 (C16)", 30);
+  L.conflicts.push({ id: "C16", person: "P-benjamin", q: "Was Benjamin Bivens (about 1777) a son of Nathaniel Bivens?", status: "open", conclusion: "unresolved",
+    argument: "The compiled trees make him Nathaniel's son, and this tree cited Nathaniel's will for the link. Muse's second read (24 Nov) reports that the will, signed 9 May 1816 and transcribed on WikiTree Bivens-138, names ten children and no Benjamin, that Gemini's own FamilySearch source is titled for a Nathaniel born 1745, and that a father born 1726 would have been about 51. Claude could not open WikiTree to check the will. Until the will is read here, the link stands at 45%. Benjamin's real father may be found in Anson and Union County deeds and estate papers." });
+  set("P-susannap", 60, "compiled trees; Muse reports she is not among the children DAR has verified for James Pulliam (A092129), which lists only children used in applications", 50);
+  set("P-eastone", 65, "her father's will (abstract, 1795) names her as James Pulliam's wife; DAR names James's wife Elizabeth Allen and lists no daughter Elizabeth for Richard Stone, whose record DAR flags (C17)", 40);
+  L.conflicts.push({ id: "C17", person: "P-eastone", q: "Was James Pulliam's wife Elizabeth Allen Stone, daughter of Richard Stone?", status: "open", conclusion: "unresolved: probably yes on the will abstract, with the DAR records against the surname",
+    argument: "For: the abstract of Richard Stone's will, made 7 September 1795, names his wife Mary and his daughter Elizabeth, James Pulliam's wife. Against, from Muse's reading of the DAR database (24 Nov): DAR's record for James Pulliam (A092129) gives his birth as about 1736, not 1726, and his wife as Elizabeth Allen, with no Stone; DAR's record for Richard Stone (A110255) carries DAR's own warning that problems were found with a previously verified paper, names his wife Mary Smith, and lists no daughter Elizabeth. DAR lists only the children its members descend through, so a missing daughter is weak evidence; the will abstract is the stronger source if it is real. Next: the Lunenburg County will book entry itself, and James Pulliam's own will or estate papers in Person County, NC. Claude could not open the DAR pages to check Muse's reading." });
+  const jp = P("P-jpulliam"); if (jp) jp.summary += " DAR gives his birth as about 1736 (Muse's reading, C17).";
+  set("P-hettie", 60, "compiled trees only; Muse finds no record of the link from Wesley Davis to Henrietta", 50);
+  set("P-tdavisjr", 85, "Quaker minutes, and a DAR application (no. 301134) that descends from Thomas Davis through Thomas Jr. and Rebecca Bryant (Muse's live reading, 24 Nov); DAR has a correction-file notice on the record");
+  set("P-jessea", 70, "compiled trees; Muse finds James Altonia Kirkland Sr. as his father only on profiles, with no record cited", 60);
+  /* Pavia: the two birth dates Gemini gave, ranked */
+  const jpv = P("P-josephp"); if (jpv) jpv.summary = jpv.summary.replace("born in Malta in 1897;", "born in Malta on 12 February 1897 by his own 1942 draft card (the Michigan death index, a later and secondary source, says 2 December 1897);");
+  L.questions.push(
+    { id: "Q35", p: 1, person: "P-joseph", q: "Could you look up one record on FamilySearch (a free account)? Search for record 1:1:Q2C2-FQ1P, Joseph M Termens and Della Malkitus, Brooklyn, 25 April 1922. A photo of the screen settles the names of both his parents and hers (C15).", sources: "New York, New York City Marriage Records, 1829-1938 (FamilySearch)", task: "" },
+    { id: "Q36", p: 3, person: "P-francis", q: "Francis and Glenda's marriage record (about 1965-1973, Michigan) is not online anywhere. The Wayne County Clerk will search for a small fee, charged whether or not it is found, and a certified copy costs a little more. Worth it?", sources: "Wayne County Clerk, Detroit; or MDHHS Vital Records, Lansing (form DCH-0569-MX)", task: "" }
+  );
+  L.log.push(
+    { id: "L17", date: "2026-11-24", by: "Muse", q: "Q5", where: "Michigan marriage indexes and FamilySearch Wayne County holdings (1922); Ellis Island and other web-visible indexes (1912)", terms: "Termena, Termenas, Termens, Termins; Joseph, Juozas, Józef", result: "not found", note: "Searched Michigan, but the marriage was in Brooklyn (the NYC index, Kings County, certificate 4615). The 1912 search did not reach the Ellis Island database itself (form-driven). A collateral find: Leon Anton Termenas, born 25 June 1888 at Tryškiai, Telšiai district, son of Peter Termenas and Gendruta Monsus, immigrated 1906 (Massachusetts naturalization, 1926): a probable cousin, no weight for Joseph's parents." },
+    { id: "L18", date: "2026-11-24", by: "Muse", q: "", where: "the DAR ancestor database (A030698, A092129, A110255, A213360), WikiTree, and all 950 files of Gemini's Kin harvest on Drive", terms: "the four DAR patriots; Gemini's Waves 1-4", result: "found", note: "All four DAR numbers are real and attach to the named men; the descents below Bivens, Pulliam and Stone are weaker than the compiled trees say (C16, C17). The harvest holds 923 photos and scans (about 895 unique; 28 duplicate copies); several files named as primary records are index pages of books." }
+  );
+})(window.KIN_LINEAGE);

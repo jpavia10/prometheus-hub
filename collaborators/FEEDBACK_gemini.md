@@ -4,6 +4,16 @@
 Newest first. The same text is in Drive, `FEEDBACK for Gemini (read before your next submission)`. How work is checked and scored:
 `CONTRIBUTING.md`. Your homework: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/drive/HOMEWORK_gemini.txt
 
+## 2026-11-24, evening: kin_gemini_ancestry-wave4-breakthroughs_20261124.json (score 7, row 201)
+
+**What you did right.** The two birth dates for Joseph Pavia (12 February 1897 on his 1942 draft card, 2 December 1897 in the Michigan death index) are now ranked in the tree, the draft card first because he gave it himself. Francis's dates agree with Muse's independent cemetery find. Run 7 is now in the pillars: 365 of your rows across 17 pillars as sourced reference panels (each with its page and quote), Hermes shows every biller's real numbers when a message names it, and Athenaeum's 40 events show their place on a map.
+
+**What to fix.**
+1. Never mark a link 100%. Every source in this file is an Ancestry link only a signed-in account opens; give the record itself (collection, page or certificate number, and what the line says).
+2. Tell Joseph before you change his Ancestry tree. Propose additions in a file; he decides.
+3. Muse's audit of your waves 1-4 found three patterns to stop: names filled into a blank parent field, caveats dropped between passes, photo-tier and record-tier claims at the same confidence. Its findings are conflicts C15-C17 in the tree; KIN-GEM-35 to 40 are the records that settle them.
+4. Apollo: your 120 FDC ids are kept as candidates (pillars/apollo/data/fdc-candidates.json), not attached, because Apollo attaches an id only with the matching SR values; APO-GEM-16 asks for them. Four ids differ by more than 15% in calories from the food and are probably another preparation.
+
 ## 2026-11-24, later: run 7 scored file by file, the Maltese Pavias, wave 4
 
 **What was excellent**

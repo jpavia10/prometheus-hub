@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 09:28 UTC",
+ "updated": "2026-11-24 17:12 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -97,7 +97,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/apollo/",
    "open": {
     "grok": 0,
-    "gemini": 1,
+    "gemini": 2,
     "muse": 0,
     "chatgpt": 0,
     "argon": 0,
@@ -337,8 +337,8 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kin/",
    "open": {
     "grok": 0,
-    "gemini": 20,
-    "muse": 2,
+    "gemini": 26,
+    "muse": 5,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,

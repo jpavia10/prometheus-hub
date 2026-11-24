@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T16:11:08Z",
- "checked": "2026-11-24T16:11:08Z",
+ "built": "2026-11-24T17:12:29Z",
+ "checked": "2026-11-24T17:12:29Z",
  "version": 2,
  "today": "2026-11-24",
  "sources": {
@@ -19,44 +19,44 @@
    "synced": "2026-11-24T16:11:08Z"
   },
   "titan_scores": 179,
-  "hub_scores": 213,
+  "hub_scores": 216,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 72,
+  "todo": 81,
   "late": 2,
-  "due7": 16,
+  "due7": 19,
   "delivered": 0,
-  "queued": 6,
+  "queued": 7,
   "withdrawn": 182
  },
  "per": {
   "Gemini": {
-   "todo": 56,
+   "todo": 63,
    "late": 0,
-   "due7": 11,
+   "due7": 12,
    "delivered": 0,
    "queued": 2,
    "done7": 176,
    "withdrawn": 68,
-   "items": 573,
+   "items": 693,
    "floor": 50,
    "by": {
-    "hub": 52,
+    "hub": 59,
     "titan": 3,
     "tproj": 1,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 283,
+    "n": 284,
     "avg": 8.21,
-    "last10": 8.6,
+    "last10": 8.3,
     "last": {
      "ai": "Gemini",
-     "n": 198,
+     "n": 201,
      "date": "2026-11-24",
-     "what": "Kin, later the same day: Pavia Family Tree — Deep Expansion, Primary Records & Full-Res Media Index, Kin — Wave-4 Deep Lineage & 898-File Cumulative Archive Rep",
+     "what": "kin_gemini_ancestry-wave4-breakthroughs_20261124.json",
      "task": "none (owner)",
      "where": "Prometheus Hub",
      "score": 7.0
@@ -96,34 +96,34 @@
    }
   },
   "Muse": {
-   "todo": 8,
+   "todo": 10,
    "late": 0,
-   "due7": 4,
+   "due7": 6,
    "delivered": 0,
-   "queued": 2,
+   "queued": 3,
    "done7": 8,
    "withdrawn": 44,
    "items": 106,
    "floor": 3,
    "by": {
-    "hub": 3,
+    "hub": 5,
     "titan": 3,
     "tproj": 2,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 60,
-    "avg": 8.55,
+    "n": 62,
+    "avg": 8.53,
     "last10": 9.2,
     "last": {
      "ai": "Muse",
-     "n": 11,
-     "date": "2026-11-20",
-     "what": "midas_muse_function-spec-check_20261118-1615.md",
-     "task": "MID-GEM-11",
-     "where": "Midas Ledger",
-     "score": 10.0
+     "n": 200,
+     "date": "2026-11-24",
+     "what": "Kin record pulls: Kin — Sebastian Record Pulls for Claude Review, Pull 1 — Pavia–Kirkland Marriage, Pull 2 — Termena 1922 Marriage, Pull 3 — Termena Passenger M",
+     "task": "none (owner)",
+     "where": "Prometheus Hub",
+     "score": 7.0
     }
    }
   },
@@ -293,10 +293,10 @@
    }
   },
   "Apollo Temple": {
-   "todo": 1,
+   "todo": 2,
    "delivered": 0,
    "by": {
-    "Gemini": 1
+    "Gemini": 2
    }
   },
   "Money": {
@@ -398,11 +398,11 @@
    }
   },
   "Kin": {
-   "todo": 21,
+   "todo": 29,
    "delivered": 0,
    "by": {
-    "Gemini": 20,
-    "Muse": 1
+    "Gemini": 26,
+    "Muse": 3
    }
   },
   "Aether": {
@@ -4730,6 +4730,38 @@
     "done": "120 foods, 30 values each.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Apollo Temple",
+   "pid": "apollo",
+   "id": "APO-GEM-16",
+   "title": "Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached",
+   "status": "todo",
+   "due": "2026-12-04",
+   "items": 120,
+   "closed": "",
+   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your 120 FoodData Central ids (APO-GEM-13) are right as ids, but Apollo attaches an id to a food only where its shipped nutrients were reconciled with the same SR Legacy entry (the 10 Nov audit did this for the first 300). For 4 of yours the calories differ by more than 15% from the shipped food, so the id is probably another preparation. The candidates are in pillars/apollo/data/fdc-candidates.json.",
+    "steps": [
+     "For each row of https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/data/fdc-candidates.json: the SR Legacy entry's kcal, protein, fat, carbohydrate and fiber per 100 g, read from the FDC page itself.",
+     "For the 4 rows marked 'kcal differs': find the SR Legacy entry whose description matches the food's name exactly; give its id and values, or say none matches.",
+     "Never change the food's name; a row whose description does not match exactly is marked so."
+    ],
+    "make": "apollo_gemini_fdc-values_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Apollo Temple/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "120 foods, each matched or marked 'no close match'.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/apollo/docs/agents/QUEUE_gemini.md"
    },
@@ -13864,6 +13896,204 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-35",
+   "title": "Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph Termena's parents (Rozys Termens and Kostantina Giadraet) and Della's (Michael Malkitus and Eva Vaschaushos) come from one index entry, FamilySearch record 1:1:Q2C2-FQ1P, that only you have read. The 1935 death certificate says Unknown for both of his. Muse found neither name anywhere else and calls them leads (conflict C15).",
+    "steps": [
+     "Open https://www.familysearch.org/ark:/61903/1:1:Q2C2-FQ1P signed in. Transcribe every field the page shows, label by label, exactly as written (groom, bride, ages, birthplaces, each parent's name, date, place, certificate number, film or image reference). Save a screenshot of the record page to the Kin folder and name it in the row.",
+     "Say plainly whether the parents' names are shown on the index page itself or only on an attached image or tree.",
+     "If the certificate image (Kings, 1922, no. 4615) is linked, read it and transcribe it whole; if not, give the NYC Municipal Archives reference that would order it."
+    ],
+    "make": "kin_gemini_lineage-brooklyn-1922_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-36",
+   "title": "Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16)",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The tree makes Benjamin Bivens (about 1777) a son of Nathaniel (1726). Muse reports that Nathaniel's will, signed 9 May 1816 and transcribed on WikiTree Bivens-138, names ten children and no Benjamin. Claude cannot open WikiTree from its session.",
+    "steps": [
+     "WikiTree Bivens-138: copy the will transcription in full, word for word, with the profile's own citation for it (Anson County will book, volume and page).",
+     "List every child the will names, in its order, with any married names.",
+     "Benjamin Bivens (about 1777 to about 1860, Monroe County, TN; War of 1812, North Carolina militia): every record that names his father or places him beside a Bivens household before 1800 (1790 and 1800 censuses of Anson and Union counties, deeds, estate papers)."
+    ],
+    "make": "kin_gemini_lineage-bivens-will_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-37",
+   "title": "Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17)",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The tree says James Pulliam married Elizabeth Allen Stone, Richard Stone's daughter, on the strength of a will abstract. Muse read DAR's records live: A092129 gives James born about 1736 and his wife Elizabeth Allen (no Stone); A110255 for Richard Stone carries a DAR warning, names his wife Mary Smith and lists no daughter Elizabeth. Claude cannot open DAR's site.",
+    "steps": [
+     "DAR ancestor records A092129 and A110255: every field as DAR shows it (birth, death, service, residence, every spouse, every child listed, every notice such as 'problems have been discovered' or 'data in the correction file'), word for word. A screenshot of each to the Kin folder.",
+     "Richard Stone's will, made 7 September 1795, Lunenburg County, Virginia: find the will book entry itself (book and page) and transcribe it; say whether it names a daughter Elizabeth and her husband.",
+     "James Pulliam's own will or estate papers (Person County, NC, about 1799): the wife and children named."
+    ],
+    "make": "kin_gemini_lineage-dar-stone-pulliam_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-38",
+   "title": "Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897)",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your wave-4 file gives two birth dates for Joseph Pavia: 12 February 1897 (his 1942 draft card) and 2 December 1897 (the Michigan death index). The tree now prefers the draft card; the original images decide.",
+    "steps": [
+     "His 1942 World War II draft registration card ('old man's draft'), front and back: every field, word for word, with the image reference.",
+     "The Michigan death index entry (1975) and the Social Security Death Index and NUMIDENT entries: every field.",
+     "Grace's 1943 naturalization index card (petition 188070): every field, especially the arrival date, ship and her birthplace in Malta."
+    ],
+    "make": "kin_gemini_lineage-pavia-birth_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-39",
+   "title": "Kin: Wesley Davis and Henrietta, in records (Monroe County, TN)",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Henrietta 'Hettie' Davis (born about 1829) is Wesley Davis's daughter only in compiled trees; Muse found no record for the link. Her 1847 marriage to James Madison Giles is the load-bearing join.",
+    "steps": [
+     "The 1850 census of Monroe County, TN: Wesley Davis's household and James M. Giles's, every person and age.",
+     "The Giles-Davis marriage (about 1847): the record itself, bondsman or witnesses.",
+     "Wesley Davis's estate (about 1855): heirs named."
+    ],
+    "make": "kin_gemini_lineage-davis-giles_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-40",
+   "title": "Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9)",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "His sworn 1919 petition gives Hamburg about 13 August and New York 23 August 1912, the ship read as 'Columbia'. The great-uncle's second candidate is Kaiserin Auguste Victoria (Hamburg 14 Aug, New York 24 Aug). Nobody has searched the manifests of those two days.",
+    "steps": [
+     "The Ellis Island Foundation passenger search (interactive, signed in): every ship arriving at New York 23 and 24 August 1912 from Hamburg; search each for Termena, Termenas, Termens, Termins, Terminas, Termena, Juozas, Josef, Józef, aged 17-20.",
+     "For any candidate: the manifest page image, both sides, every column transcribed (including last residence, nearest relative, destination and who paid).",
+     "Say which ships you searched and how; a negative counts when it names the ships and terms."
+    ],
+    "make": "kin_gemini_lineage-arrival-aug-1912_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Kin",
@@ -14018,6 +14248,103 @@
     "done": "Every household line transcribed blind.",
     "checks": [
      "Claude compares the two transcriptions line by line."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-MUS-04",
+   "title": "Kin: re-read your audit against the tree itself (C15, C16, C17)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your audit (score 9) read Gemini's Drive files but not the tree, so it missed that the 1922 marriage is in the New York City index (Brooklyn, certificate 4615; FamilySearch 1:1:Q2C2-FQ1P is a record ark) and that his own 1919 petition gives the 1912 arrival. Your findings are now conflicts C15-C17 in the tree.",
+    "steps": [
+     "Read the tree's data.js (sources, events, conflicts C9, C15, C16, C17 and the certainty basis of each link).",
+     "For each of C15, C16 and C17: one row giving your reading against the tree's own sources, what you would conclude and at what certainty, and the one record that would settle it.",
+     "Correct any line of your audit that the tree's sources already answer, and say so."
+    ],
+    "make": "kin_muse_lineage-recheck-c15-c17_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-MUS-05",
+   "title": "Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615)",
+   "status": "todo",
+   "due": "2026-12-01",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The NYC Municipal Archives has put its historical marriage certificates online free; certificate 4615 of 1922 (Kings) names both of Joseph Termena's parents and both of Della's in their own hand, which settles C15 without the index.",
+    "steps": [
+     "Find certificate 4615, Kings County, 1922 (Joseph M. Termens and Della Malkitus, 25 April 1922) on the NYC Municipal Archives' Historical Vital Records site; give the record's exact address.",
+     "Transcribe the certificate whole, every field, the parents' names letter by letter; save the image to the Kin folder.",
+     "If it is not online, give the exact ordering route (form, fee) and say so."
+    ],
+    "make": "kin_muse_lineage-brooklyn-certificate_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-MUS-06",
+   "title": "Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)",
+   "status": "queued",
+   "due": "2026-12-06",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "An independent reading of the same records, so C16 and C17 rest on two readers, not one.",
+    "steps": [
+     "When KIN-GEM-36 and 37 land, read the same WikiTree and DAR pages yourself and compare field by field; every difference is a row."
+    ],
+    "make": "kin_muse_lineage-second-read-bivens-dar_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription.",
+     "Claude repeats three searches at random."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_muse.md"
    },
@@ -22560,6 +22887,33 @@
    "n": 198,
    "date": "2026-11-24",
    "what": "Kin, later the same day: Pavia Family Tree — Deep Expansion, Primary Records & Full-Res Media Index, Kin — Wave-4 Deep Lineage & 898-File Cumulative Archive Rep",
+   "task": "none (owner)",
+   "where": "Prometheus Hub",
+   "score": 7.0
+  },
+  {
+   "ai": "Muse",
+   "n": 199,
+   "date": "2026-11-24",
+   "what": "Kin audit and second reads: Kin — Sebastian Audit & Extension Report, Second-Read, Pavia & Termena, Second-Read, Southern Lines & DAR, Extension Research (Drive",
+   "task": "none (owner: \"participate ... beyond 10 generations\")",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Muse",
+   "n": 200,
+   "date": "2026-11-24",
+   "what": "Kin record pulls: Kin — Sebastian Record Pulls for Claude Review, Pull 1 — Pavia–Kirkland Marriage, Pull 2 — Termena 1922 Marriage, Pull 3 — Termena Passenger M",
+   "task": "none (owner)",
+   "where": "Prometheus Hub",
+   "score": 7.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 201,
+   "date": "2026-11-24",
+   "what": "kin_gemini_ancestry-wave4-breakthroughs_20261124.json",
    "task": "none (owner)",
    "where": "Prometheus Hub",
    "score": 7.0

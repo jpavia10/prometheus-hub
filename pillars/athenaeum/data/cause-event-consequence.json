@@ -5,7 +5,8 @@
  "notes": [
   "Each entry: cause → event → consequence, analytical; the one-line source is the Wikipedia article opened 2026-11-10 (API extract).",
   "evidence_quotes are exact substrings of the opened article text (machine-checked: 0 misses), so every causal claim is traceable.",
-  "Wikipedia is a tertiary source; for citation in writing, follow its references."
+  "Wikipedia is a tertiary source; for citation in writing, follow its references.",
+  "2026-11-24: each entry's place, coordinates and exact span from Gemini ATH-GEM-06 (athenaeum_gemini_history-dates_20261124-0023.json); the written date stays the one the chronicle orders by (Sakoku's span is its forced end, 1853-54)."
  ],
  "civilizations": [
   "Abbasid Caliphate / Mongol Empire",
@@ -63,7 +64,18 @@
     "broke apart into the small isolated village cultures of the Greek Dark Ages",
     "The Hittite Empire spanning Anatolia and the Levant collapsed",
     "enjoyed increased autonomy and power"
-   ]
+   ],
+   "where": {
+    "place": "Mycenae, Greece",
+    "lat": 37.73,
+    "lon": 22.76
+   },
+   "span": {
+    "start": -1200,
+    "end": -1150,
+    "note": "Dating of the Late Bronze Age collapse varies across regions, generally c. 1200–1150 BCE (with earlier 13th-century destructions).",
+    "url": "https://www.britannica.com/topic/Sea-People"
+   }
   },
   {
    "id": "ath002",
@@ -78,7 +90,18 @@
     "combined forces of Medes and the Babylonians besieged Nineveh",
     "led to the destruction of the Neo-Assyrian Empire",
     "Babylon became the imperial center of Mesopotamia"
-   ]
+   ],
+   "where": {
+    "place": "Nineveh, Iraq",
+    "lat": 36.36,
+    "lon": 43.15
+   },
+   "span": {
+    "start": -612,
+    "end": -612,
+    "note": "",
+    "url": "https://www.britannica.com/event/Battle-of-Nineveh"
+   }
   },
   {
    "id": "ath003",
@@ -93,7 +116,18 @@
     "entered Athens through Piraeus, the city's port and sole source of food and supplies",
     "Short-term, there was civil disorder",
     "weakened Athens politically"
-   ]
+   ],
+   "where": {
+    "place": "Athens, Greece",
+    "lat": 37.98,
+    "lon": 23.73
+   },
+   "span": {
+    "start": -430,
+    "end": -426,
+    "note": "",
+    "url": "https://www.britannica.com/topic/10-Major-Epidemics"
+   }
   },
   {
    "id": "ath004",
@@ -108,7 +142,18 @@
     "following Shang Yang's administrative reforms",
     "a more centralised form of government replacing the fengjian system",
     "declared himself the First Emperor"
-   ]
+   ],
+   "where": {
+    "place": "Xianyang, China",
+    "lat": 34.33,
+    "lon": 108.71
+   },
+   "span": {
+    "start": -230,
+    "end": -221,
+    "note": "Final wars of Qin unification ran 230–221 BCE; unification completed in 221 BCE.",
+    "url": "https://www.britannica.com/event/Warring-States"
+   }
   },
   {
    "id": "ath005",
@@ -123,7 +168,18 @@
     "assassination of Emperor Severus Alexander by his own troops",
     "split into three distinct and competing polities",
     "debasement of currency and a breakdown in both trade networks"
-   ]
+   ],
+   "where": {
+    "place": "Rome, Italy",
+    "lat": 41.9,
+    "lon": 12.5
+   },
+   "span": {
+    "start": 235,
+    "end": 284,
+    "note": "",
+    "url": "https://www.britannica.com/place/Timeline-of-the-Roman-Empire"
+   }
   },
   {
    "id": "ath006",
@@ -138,7 +194,18 @@
     "central government was weakened by court eunuchs",
     "rising political influence of autonomous regional military-governors",
     "the resultant Three Kingdoms period"
-   ]
+   ],
+   "where": {
+    "place": "Luoyang, China",
+    "lat": 34.62,
+    "lon": 112.45
+   },
+   "span": {
+    "start": 184,
+    "end": 204,
+    "note": "Main uprising suppressed in 184–185 CE; scattered resistance continued until c. 204–205 CE.",
+    "url": "https://www.britannica.com/topic/Yellow-Turbans"
+   }
   },
   {
    "id": "ath007",
@@ -153,7 +220,18 @@
     "The contagion arrived in Roman Egypt in 541",
     "killed about a fifth of the population in the imperial capital",
     "was overstated by primary sources"
-   ]
+   ],
+   "where": {
+    "place": "Constantinople (Istanbul), Turkey",
+    "lat": 41.01,
+    "lon": 28.98
+   },
+   "span": {
+    "start": 541,
+    "end": 542,
+    "note": "First wave reached Egypt in 541 CE and Constantinople in spring 542 CE; later recurrences continued to c. 750 CE.",
+    "url": "https://www.britannica.com/event/plague-of-Justinian"
+   }
   },
   {
    "id": "ath008",
@@ -168,7 +246,18 @@
     "Emperor Heraclius had sent a massive expedition to the Levant",
     "effectively ended Byzantine rule in Syria",
     "crucial point in the Muslim conquest of Syria"
-   ]
+   ],
+   "where": {
+    "place": "Yarmouk River (Syria-Jordan border)",
+    "lat": 32.81,
+    "lon": 35.95
+   },
+   "span": {
+    "start": 636,
+    "end": 636,
+    "note": "",
+    "url": "https://www.britannica.com/topic/Battle-of-Yarmouk-636"
+   }
   },
   {
    "id": "ath009",
@@ -183,7 +272,18 @@
     "the jiedushi of the Taiyuan Commandery",
     "succeeded in capturing the imperial capital Chang'an",
     "It was a direct cause of the dynasty's decline"
-   ]
+   ],
+   "where": {
+    "place": "Chang'an (Xi'an), China",
+    "lat": 34.26,
+    "lon": 108.94
+   },
+   "span": {
+    "start": 755,
+    "end": 763,
+    "note": "",
+    "url": "https://www.britannica.com/summary/An-Lushan"
+   }
   },
   {
    "id": "ath010",
@@ -198,7 +298,18 @@
     "drought has gained momentum in the first quarter of the 21st century as the leading explanation",
     "went into decline during the 8th and 9th centuries and were abandoned",
     "cessation of monumental inscriptions"
-   ]
+   ],
+   "where": {
+    "place": "Tikal, Guatemala",
+    "lat": 17.22,
+    "lon": -89.62
+   },
+   "span": {
+    "start": 800,
+    "end": 900,
+    "note": "Classic Maya lowland collapse unfolded gradually across the 9th century, culminating around 900 CE.",
+    "url": "https://www.britannica.com/topic/Maya-people"
+   }
   },
   {
    "id": "ath011",
@@ -213,7 +324,18 @@
     "a Viking raid on Lindisfarne caused consternation throughout the Christian west",
     "often taken as the beginning of the Viking Age",
     "increasing frequency of Viking raids"
-   ]
+   ],
+   "where": {
+    "place": "Lindisfarne, England",
+    "lat": 55.67,
+    "lon": -1.8
+   },
+   "span": {
+    "start": 793,
+    "end": 793,
+    "note": "",
+    "url": "https://www.britannica.com/event/Lindisfarne-Raid"
+   }
   },
   {
    "id": "ath012",
@@ -228,7 +350,18 @@
     "capture of the emperor Romanos IV Diogenes",
     "resulting in civil conflicts and an economic crisis",
     "gradual Turkification of Anatolia"
-   ]
+   ],
+   "where": {
+    "place": "Manzikert (Malazgirt), Turkey",
+    "lat": 39.15,
+    "lon": 42.54
+   },
+   "span": {
+    "start": 1071,
+    "end": 1071,
+    "note": "",
+    "url": "https://www.britannica.com/event/Battle-of-Manzikert"
+   }
   },
   {
    "id": "ath013",
@@ -243,7 +376,18 @@
     "rebel barons who demanded that the King confirm the Charter of Liberties",
     "annulled by Pope Innocent III, leading to the First Barons' War",
     "in exchange for a grant of new taxes"
-   ]
+   ],
+   "where": {
+    "place": "Runnymede, England",
+    "lat": 51.44,
+    "lon": -0.56
+   },
+   "span": {
+    "start": 1215,
+    "end": 1215,
+    "note": "",
+    "url": "https://www.britannica.com/topic/Magna-Carta"
+   }
   },
   {
    "id": "ath014",
@@ -258,7 +402,18 @@
     "the Caliph's failure to do so, combined with his arrogance in negotiations",
     "Baghdad fell and was sacked by the Mongol army",
     "marking the end of the Islamic Golden Age"
-   ]
+   ],
+   "where": {
+    "place": "Baghdad, Iraq",
+    "lat": 33.31,
+    "lon": 44.37
+   },
+   "span": {
+    "start": 1258,
+    "end": 1258,
+    "note": "",
+    "url": "https://www.britannica.com/biography/Hulegu"
+   }
   },
   {
    "id": "ath015",
@@ -273,7 +428,18 @@
     "caused by the bacterium Yersinia pestis",
     "wages soared in response to a subsequent labour shortage",
     "did not regain its 14th century level until the 16th century"
-   ]
+   ],
+   "where": {
+    "place": "Messina, Italy",
+    "lat": 38.19,
+    "lon": 15.55
+   },
+   "span": {
+    "start": 1347,
+    "end": 1351,
+    "note": "",
+    "url": "https://www.britannica.com/event/Black-Death"
+   }
   },
   {
    "id": "ath016",
@@ -288,7 +454,18 @@
     "significantly outnumbered Constantinople's defenders",
     "made Constantinople the new Ottoman capital",
     "marks the end of the medieval period"
-   ]
+   ],
+   "where": {
+    "place": "Constantinople (Istanbul), Turkey",
+    "lat": 41.01,
+    "lon": 28.98
+   },
+   "span": {
+    "start": 1453,
+    "end": 1453,
+    "note": "",
+    "url": "https://www.britannica.com/event/Fall-of-Constantinople-1453"
+   }
   },
   {
    "id": "ath017",
@@ -303,7 +480,18 @@
     "invented by the German goldsmith Johannes Gutenberg around 1440",
     "contributing to the Reformation and the Scientific Revolution",
     "national languages were standardized"
-   ]
+   ],
+   "where": {
+    "place": "Mainz, Germany",
+    "lat": 50.0,
+    "lon": 8.27
+   },
+   "span": {
+    "start": 1450,
+    "end": 1455,
+    "note": "Gutenberg began experimenting by 1438, obtained backing in 1450, and completed the 42-line Bible no later than 1455.",
+    "url": "https://www.britannica.com/summary/Johannes-Gutenberg"
+   }
   },
   {
    "id": "ath018",
@@ -318,7 +506,18 @@
     "devastated due to a smallpox epidemic, which killed much of its leadership",
     "especially Tlaxcaltec warriors",
     "critical stage in the Spanish colonization of the Americas"
-   ]
+   ],
+   "where": {
+    "place": "Tenochtitlan (Mexico City), Mexico",
+    "lat": 19.43,
+    "lon": -99.13
+   },
+   "span": {
+    "start": 1521,
+    "end": 1521,
+    "note": "",
+    "url": "https://www.britannica.com/event/Battle-of-Tenochtitlan"
+   }
   },
   {
    "id": "ath019",
@@ -333,7 +532,18 @@
     "the civil officials started to gain power",
     "permanently dismantle the voyages",
     "seagoing vessels were demolished"
-   ]
+   ],
+   "where": {
+    "place": "Nanjing, China",
+    "lat": 32.06,
+    "lon": 118.8
+   },
+   "span": {
+    "start": 1433,
+    "end": 1433,
+    "note": "Seventh and final treasure-fleet voyage ended in 1433; voyages were halted thereafter (earlier suspension 1424–1431).",
+    "url": "https://www.britannica.com/biography/Zheng-He"
+   }
   },
   {
    "id": "ath020",
@@ -348,7 +558,18 @@
     "Its purpose was to reinstate Catholicism in England",
     "Faster and more manoeuvrable than the larger Spanish galleons",
     "Up to 24 ships were wrecked"
-   ]
+   ],
+   "where": {
+    "place": "Gravelines (English Channel), France",
+    "lat": 50.99,
+    "lon": 2.13
+   },
+   "span": {
+    "start": 1588,
+    "end": 1588,
+    "note": "",
+    "url": "https://www.britannica.com/topic/Armada-Spanish-naval-fleet"
+   }
   },
   {
    "id": "ath021",
@@ -363,7 +584,18 @@
     "killed between 4.5 and 8 million people",
     "Westphalian sovereignty",
     "such views emerged during the nineteenth and twentieth centuries"
-   ]
+   ],
+   "where": {
+    "place": "Münster, Germany",
+    "lat": 51.96,
+    "lon": 7.63
+   },
+   "span": {
+    "start": 1648,
+    "end": 1648,
+    "note": "Negotiated from 1644 in Münster and Osnabrück; treaties signed in January and October 1648.",
+    "url": "https://www.britannica.com/event/Peace-of-Westphalia"
+   }
   },
   {
    "id": "ath022",
@@ -378,7 +610,18 @@
     "his policies quickly eroded support",
     "The prospect of a Catholic dynasty",
     "incorporated into the Bill of Rights"
-   ]
+   ],
+   "where": {
+    "place": "London, England",
+    "lat": 51.51,
+    "lon": -0.13
+   },
+   "span": {
+    "start": 1688,
+    "end": 1689,
+    "note": "",
+    "url": "https://www.britannica.com/event/Glorious-Revolution"
+   }
   },
   {
    "id": "ath023",
@@ -393,7 +636,18 @@
     "edicts and policies from 1633 to 1639",
     "the Perry Expedition commanded by Matthew C. Perry forced the opening of Japan",
     "opened the ports of Shimoda and Hakodate to American ships"
-   ]
+   ],
+   "where": {
+    "place": "Kanagawa (Yokohama), Japan",
+    "lat": 35.47,
+    "lon": 139.63
+   },
+   "span": {
+    "start": 1853,
+    "end": 1854,
+    "note": "Perry arrived in Tokyo Bay in July 1853 and concluded the Treaty of Kanagawa on March 31, 1854.",
+    "url": "https://www.britannica.com/event/Treaty-of-Kanagawa"
+   }
   },
   {
    "id": "ath024",
@@ -408,7 +662,18 @@
     "economic and political difficulties faced by the Tokugawa shogunate",
     "Under subsequent unequal treaties, Japan was forced to open to the West",
     "rapidly industrialised and adopted Western ideas"
-   ]
+   ],
+   "where": {
+    "place": "Kyoto, Japan",
+    "lat": 35.01,
+    "lon": 135.77
+   },
+   "span": {
+    "start": 1868,
+    "end": 1868,
+    "note": "",
+    "url": "https://www.britannica.com/event/Meiji-Restoration"
+   }
   },
   {
    "id": "ath025",
@@ -423,7 +688,18 @@
     "pay for British military troops stationed in the American colonies after the French and Indian War",
     "No taxation without representation",
     "The act was repealed on 18 March 1766"
-   ]
+   ],
+   "where": {
+    "place": "London, England",
+    "lat": 51.5,
+    "lon": -0.12
+   },
+   "span": {
+    "start": 1765,
+    "end": 1765,
+    "note": "Enacted by Parliament in March 1765; repealed in 1766.",
+    "url": "https://www.britannica.com/event/Stamp-Act-Great-Britain-1765"
+   }
   },
   {
    "id": "ath026",
@@ -438,7 +714,18 @@
     "intervention in the American War of Independence and the Seven Years' War",
     "obstructing Louis XVI's attempts to resolve the debt crisis",
     "as the Estates-General allowed them to manifest into tangible political action"
-   ]
+   ],
+   "where": {
+    "place": "Versailles, France",
+    "lat": 48.8,
+    "lon": 2.12
+   },
+   "span": {
+    "start": 1787,
+    "end": 1789,
+    "note": "Assembly of Notables met in February 1787; Estates-General convened on May 5, 1789.",
+    "url": "https://www.britannica.com/event/French-Revolution/Aristocratic-revolt-1787-89"
+   }
   },
   {
    "id": "ath027",
@@ -453,7 +740,18 @@
     "led to the slave revolt on 21 August 1791",
     "independence on 1 January 1804",
     "The indemnity bankrupted the Haitian treasury"
-   ]
+   ],
+   "where": {
+    "place": "Cap-Français (Cap-Haïtien), Haiti",
+    "lat": 19.76,
+    "lon": -72.2
+   },
+   "span": {
+    "start": 1791,
+    "end": 1804,
+    "note": "",
+    "url": "https://www.britannica.com/topic/Haitian-Revolution"
+   }
   },
   {
    "id": "ath028",
@@ -468,7 +766,18 @@
     "lowered global temperatures",
     "Year Without a Summer in 1816",
     "harvest failures in many areas around the world"
-   ]
+   ],
+   "where": {
+    "place": "Mount Tambora, Sumbawa, Indonesia",
+    "lat": -8.25,
+    "lon": 118.0
+   },
+   "span": {
+    "start": 1815,
+    "end": 1816,
+    "note": "Mount Tambora erupted in April 1815, producing the global Year Without a Summer in 1816.",
+    "url": "https://www.britannica.com/place/Mount-Tambora"
+   }
   },
   {
    "id": "ath029",
@@ -483,7 +792,18 @@
     "The proximate cause of the famine was the infection of potato crops by blight",
     "excess death impact of 775,000 to 1.5 million",
     "mass emigration of 1 million or more"
-   ]
+   ],
+   "where": {
+    "place": "Dublin, Ireland",
+    "lat": 53.35,
+    "lon": -6.26
+   },
+   "span": {
+    "start": 1845,
+    "end": 1849,
+    "note": "Britannica dates the Great Famine to 1845–1849; some historians extend the period through 1852.",
+    "url": "https://www.britannica.com/event/Great-Famine-Irish-history"
+   }
   },
   {
    "id": "ath030",
@@ -498,7 +818,18 @@
     "Chinese enforcement of their ban on the opium trade",
     "Treaty of Nanking on 29 August 1842",
     "opened five treaty ports to British merchants"
-   ]
+   ],
+   "where": {
+    "place": "Nanjing, China",
+    "lat": 32.06,
+    "lon": 118.8
+   },
+   "span": {
+    "start": 1839,
+    "end": 1842,
+    "note": "",
+    "url": "https://www.britannica.com/event/First-Opium-War"
+   }
   },
   {
    "id": "ath031",
@@ -513,7 +844,18 @@
     "political overthrow of the Qing dynasty",
     "It was the deadliest civil war in history",
     "great cost to the Qing dynasty's economy and political stability"
-   ]
+   ],
+   "where": {
+    "place": "Nanjing, China",
+    "lat": 32.06,
+    "lon": 118.8
+   },
+   "span": {
+    "start": 1850,
+    "end": 1864,
+    "note": "Britannica dates the Taiping Rebellion to 1850–1864; some historians date the formal outbreak to January 1851.",
+    "url": "https://www.britannica.com/event/Taiping-Rebellion"
+   }
   },
   {
    "id": "ath032",
@@ -528,7 +870,18 @@
     "at the request of Leopold II of Belgium",
     "European claims on African territory increased with international legal recognition",
     "formalizing the ongoing Scramble for Africa"
-   ]
+   ],
+   "where": {
+    "place": "Berlin, Germany",
+    "lat": 52.52,
+    "lon": 13.4
+   },
+   "span": {
+    "start": 1884,
+    "end": 1885,
+    "note": "",
+    "url": "https://www.britannica.com/event/Berlin-West-Africa-Conference"
+   }
   },
   {
    "id": "ath033",
@@ -543,7 +896,18 @@
     "formally annexed by Austria-Hungary in 1908",
     "free Bosnia and Herzegovina of Austro-Hungarian rule",
     "The assassination precipitated the July Crisis"
-   ]
+   ],
+   "where": {
+    "place": "Sarajevo, Bosnia and Herzegovina",
+    "lat": 43.86,
+    "lon": 18.41
+   },
+   "span": {
+    "start": 1914,
+    "end": 1914,
+    "note": "",
+    "url": "https://www.britannica.com/biography/Gavrilo-Princip"
+   }
   },
   {
    "id": "ath034",
@@ -558,7 +922,18 @@
     "Germany was not allowed to participate in the negotiations",
     "Bitter resentment of the treaty powered the rise of the Nazi Party",
     "payments reduced in the Dawes Plan and the Young Plan"
-   ]
+   ],
+   "where": {
+    "place": "Versailles, France",
+    "lat": 48.8,
+    "lon": 2.12
+   },
+   "span": {
+    "start": 1919,
+    "end": 1919,
+    "note": "Signed June 28, 1919; went into effect January 10, 1920.",
+    "url": "https://www.britannica.com/event/Treaty-of-Versailles-1919"
+   }
   },
   {
    "id": "ath035",
@@ -573,7 +948,18 @@
     "much of the profit had been invested in speculation",
     "more investors facing margin calls",
     "cascade into the worldwide Great Depression"
-   ]
+   ],
+   "where": {
+    "place": "New York City, United States",
+    "lat": 40.71,
+    "lon": -74.01
+   },
+   "span": {
+    "start": 1929,
+    "end": 1929,
+    "note": "",
+    "url": "https://www.britannica.com/event/stock-market-crash-of-1929"
+   }
   },
   {
    "id": "ath036",
@@ -588,7 +974,18 @@
     "based on district-wide non-Muslim",
     "resulted in the end of the British Raj",
     "displaced between 12 and 20 million people along religious lines"
-   ]
+   ],
+   "where": {
+    "place": "New Delhi, India",
+    "lat": 28.61,
+    "lon": 77.21
+   },
+   "span": {
+    "start": 1947,
+    "end": 1947,
+    "note": "",
+    "url": "https://www.britannica.com/event/Partition-of-India"
+   }
   },
   {
    "id": "ath037",
@@ -603,7 +1000,18 @@
     "which Nasser had nationalised earlier that year",
     "prompting their withdrawal from Egypt",
     "could no longer implement independent foreign policies without U.S. consent"
-   ]
+   ],
+   "where": {
+    "place": "Port Said, Egypt",
+    "lat": 31.26,
+    "lon": 32.3
+   },
+   "span": {
+    "start": 1956,
+    "end": 1956,
+    "note": "Crisis began July 1956 and invasion occurred October–November 1956; Israeli troops withdrew in March 1957.",
+    "url": "https://www.britannica.com/event/Suez-Crisis"
+   }
   },
   {
    "id": "ath038",
@@ -618,7 +1026,18 @@
     "were matched by Soviet deployments of nuclear missiles in Cuba",
     "closest the Cold War came to escalating into full-scale nuclear war",
     "resulted in the Moscow–Washington hotline"
-   ]
+   ],
+   "where": {
+    "place": "Havana, Cuba",
+    "lat": 23.11,
+    "lon": -82.37
+   },
+   "span": {
+    "start": 1962,
+    "end": 1962,
+    "note": "",
+    "url": "https://www.britannica.com/event/Cuban-missile-crisis"
+   }
   },
   {
    "id": "ath039",
@@ -633,7 +1052,18 @@
     "implementing a total oil embargo against countries that had supported Israel",
     "from US$3/barrel to nearly US$12/barrel",
     "Corporate Average Fuel Economy (CAFE) standards"
-   ]
+   ],
+   "where": {
+    "place": "Riyadh, Saudi Arabia",
+    "lat": 24.71,
+    "lon": 46.68
+   },
+   "span": {
+    "start": 1973,
+    "end": 1974,
+    "note": "Embargo began in October 1973 and was lifted in March 1974.",
+    "url": "https://www.britannica.com/event/Arab-oil-embargo"
+   }
   },
   {
    "id": "ath040",
@@ -648,7 +1078,18 @@
     "prematurely announced that East Germans could travel without restrictions",
     "Hungary removed the fence in May",
     "unification took place on 3 October 1990"
-   ]
+   ],
+   "where": {
+    "place": "Berlin, Germany",
+    "lat": 52.52,
+    "lon": 13.4
+   },
+   "span": {
+    "start": 1989,
+    "end": 1989,
+    "note": "",
+    "url": "https://www.britannica.com/topic/Berlin-Wall"
+   }
   }
  ]
 }

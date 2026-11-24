@@ -1,0 +1,1206 @@
+{
+ "about": "FoodData Central id candidates for Apollo foods that have none (Gemini APO-GEM-13, apollo_gemini_fdc-ids_20261124-0023.json, checked by Claude 2026-11-24). Not attached to foods.js: the shipped foods carry an id only where the 10 Nov audit reconciled their nutrients with SR Legacy (proofs/unit/apollo-foods.test.mjs). APO-GEM-16 asks for the SR values that would let these be attached the same way.",
+ "asOf": "2026-11-24",
+ "rows": [
+  {
+   "food": "Chicken, broilers or fryers, breast, meat only, raw",
+   "fdc": 171077,
+   "fdc_description": "Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 120,
+   "shipped_kcal": 120,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/171077/nutrients"
+  },
+  {
+   "food": "Chicken, broilers or fryers, thigh, meat only, raw",
+   "fdc": 173627,
+   "fdc_description": "Chicken, broilers or fryers, dark meat, thigh, meat only, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 121,
+   "shipped_kcal": 121,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173627/nutrients"
+  },
+  {
+   "food": "Chicken, broilers or fryers, drumstick, meat only, cooked, roasted",
+   "fdc": 172376,
+   "fdc_description": "Chicken, broilers or fryers, dark meat, drumstick, meat only, cooked, roasted",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 155,
+   "shipped_kcal": 155,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/172376/nutrients"
+  },
+  {
+   "food": "Turkey, all classes, breast, meat only, cooked, roasted",
+   "fdc": 174516,
+   "fdc_description": "Turkey, retail parts, breast, meat only, cooked, roasted",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 136,
+   "shipped_kcal": 135,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/174516/nutrients"
+  },
+  {
+   "food": "Turkey, all classes, dark meat, meat only, cooked, roasted",
+   "fdc": 171091,
+   "fdc_description": "Turkey, whole, dark meat, cooked, roasted",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 173,
+   "shipped_kcal": 173,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/171091/nutrients"
+  },
+  {
+   "food": "Beef, loin, top sirloin, separable lean only, trimmed to 0\" fat, select, cooked, broiled",
+   "fdc": 168636,
+   "fdc_description": "Beef, top sirloin, steak, separable lean only, trimmed to 0\" fat, select, cooked, broiled",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 177,
+   "shipped_kcal": 183,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168636/nutrients"
+  },
+  {
+   "food": "Beef, ribeye, steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, choice, cooked, grilled",
+   "fdc": 173390,
+   "fdc_description": "Beef, rib eye steak, boneless, lip-on, separable lean and fat, trimmed to 1/8\" fat, choice, cooked, grilled",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 303,
+   "shipped_kcal": 291,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173390/nutrients"
+  },
+  {
+   "food": "Beef, chuck, arm pot roast, separable lean only, trimmed to 0\" fat, all grades, cooked, braised",
+   "fdc": 174050,
+   "fdc_description": "Beef, chuck, arm pot roast, separable lean only, trimmed to 1/8\" fat, all grades, cooked, braised",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 214,
+   "shipped_kcal": 215,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/174050/nutrients"
+  },
+  {
+   "food": "Beef, round, eye of round, roast, separable lean only, trimmed to 0\" fat, select, cooked, roasted",
+   "fdc": 170635,
+   "fdc_description": "Beef, round, eye of round roast, boneless, separable lean only, trimmed to 0\" fat, select, cooked, roasted",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 157,
+   "shipped_kcal": 163,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170635/nutrients"
+  },
+  {
+   "food": "Pork, cured, bacon, cooked, pan-fried",
+   "fdc": 168322,
+   "fdc_description": "Pork, cured, bacon, pre-sliced, cooked, pan-fried",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 468,
+   "shipped_kcal": 533,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168322/nutrients"
+  },
+  {
+   "food": "Sausage, Italian, pork, cooked",
+   "fdc": 174586,
+   "fdc_description": "Sausage, Italian, pork, mild, cooked, pan-fried",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 324,
+   "shipped_kcal": 346,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/174586/nutrients"
+  },
+  {
+   "food": "Sausage, pork, chorizo, link or ground, cooked, pan-fried",
+   "fdc": 746781,
+   "fdc_description": "Sausage, pork, chorizo, link or ground, cooked, pan-fried",
+   "data_type": "Foundation",
+   "fdc_kcal_100g": 346,
+   "shipped_kcal": 455,
+   "status": "kcal differs by more than 15%: probably another preparation",
+   "url": "https://fdc.nal.usda.gov/food-details/746781/nutrients"
+  },
+  {
+   "food": "Lamb, domestic, leg, whole (shank and sirloin), separable lean only, trimmed to 1/4\" fat, choice, cooked, roasted",
+   "fdc": 174314,
+   "fdc_description": "Lamb, leg, whole (shank and sirloin), separable lean only, trimmed to 1/4\" fat, choice, cooked, roasted",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 191,
+   "shipped_kcal": 191,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/174314/nutrients"
+  },
+  {
+   "food": "Lamb, domestic, loin, separable lean only, trimmed to 1/4\" fat, choice, cooked, broiled",
+   "fdc": 172492,
+   "fdc_description": "Lamb, loin, separable lean only, trimmed to 1/4\" fat, choice, cooked, broiled",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 216,
+   "shipped_kcal": 216,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/172492/nutrients"
+  },
+  {
+   "food": "Game meat, bison, ground, grass-fed, cooked",
+   "fdc": 173847,
+   "fdc_description": "Bison, ground, grass-fed, cooked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 179,
+   "shipped_kcal": 179,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173847/nutrients"
+  },
+  {
+   "food": "Game meat, deer (venison), loin, separable lean only, 1\" steak, cooked, broiled",
+   "fdc": 172604,
+   "fdc_description": "Game meat, deer, loin, separable lean only, 1\" steak, cooked, broiled",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 150,
+   "shipped_kcal": 150,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/172604/nutrients"
+  },
+  {
+   "food": "Fish, tuna, light, canned in water, drained solids",
+   "fdc": 334194,
+   "fdc_description": "Fish, tuna, light, canned in water, drained solids",
+   "data_type": "Foundation",
+   "fdc_kcal_100g": 90,
+   "shipped_kcal": 86,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/334194/nutrients"
+  },
+  {
+   "food": "Fish, pollock, Alaska, cooked, dry heat",
+   "fdc": 173681,
+   "fdc_description": "Fish, pollock, Alaska, cooked, dry heat (may contain additives to retain moisture)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 111,
+   "shipped_kcal": 111,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173681/nutrients"
+  },
+  {
+   "food": "Crustaceans, shrimp, mixed species, cooked, moist heat",
+   "fdc": 175180,
+   "fdc_description": "Crustaceans, shrimp, cooked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 99,
+   "shipped_kcal": 99,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/175180/nutrients"
+  },
+  {
+   "food": "Mollusks, scallop, mixed species, cooked, steamed",
+   "fdc": 167742,
+   "fdc_description": "Mollusks, scallop, (bay and sea), cooked, steamed",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 111,
+   "shipped_kcal": 111,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/167742/nutrients"
+  },
+  {
+   "food": "Yogurt, Greek, plain, nonfat",
+   "fdc": 330137,
+   "fdc_description": "Yogurt, Greek, plain, nonfat",
+   "data_type": "Foundation",
+   "fdc_kcal_100g": 61,
+   "shipped_kcal": 59,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/330137/nutrients"
+  },
+  {
+   "food": "Cheese, cheddar",
+   "fdc": 328637,
+   "fdc_description": "Cheese, cheddar",
+   "data_type": "Foundation",
+   "fdc_kcal_100g": 408,
+   "shipped_kcal": 403,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/328637/nutrients"
+  },
+  {
+   "food": "Rice, white, long-grain, regular, cooked, enriched",
+   "fdc": 168878,
+   "fdc_description": "Rice, white, long-grain, regular, enriched, cooked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 130,
+   "shipped_kcal": 130,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168878/nutrients"
+  },
+  {
+   "food": "Rice, brown, long-grain, cooked",
+   "fdc": 169704,
+   "fdc_description": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 123,
+   "shipped_kcal": 123,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169704/nutrients"
+  },
+  {
+   "food": "Rice, brown, long-grain, raw",
+   "fdc": 169703,
+   "fdc_description": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 367,
+   "shipped_kcal": 367,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169703/nutrients"
+  },
+  {
+   "food": "Wheat flour, whole-grain",
+   "fdc": 168893,
+   "fdc_description": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 340,
+   "shipped_kcal": 340,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168893/nutrients"
+  },
+  {
+   "food": "Pasta, whole-wheat, cooked",
+   "fdc": 168910,
+   "fdc_description": "Pasta, whole-wheat, cooked (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 149,
+   "shipped_kcal": 124,
+   "status": "kcal differs by more than 15%: probably another preparation",
+   "url": "https://fdc.nal.usda.gov/food-details/168910/nutrients"
+  },
+  {
+   "food": "Noodles, egg, cooked, enriched",
+   "fdc": 169732,
+   "fdc_description": "Noodles, egg, enriched, cooked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 138,
+   "shipped_kcal": 138,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169732/nutrients"
+  },
+  {
+   "food": "Bread, white, commercially prepared",
+   "fdc": 174924,
+   "fdc_description": "Bread, white, commercially prepared (includes soft bread crumbs)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 266,
+   "shipped_kcal": 266,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/174924/nutrients"
+  },
+  {
+   "food": "English muffins, plain, enriched, with ca prop (includes sourdough)",
+   "fdc": 174994,
+   "fdc_description": "Muffins, English, plain, enriched, with ca prop (includes sourdough)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 227,
+   "shipped_kcal": 227,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/174994/nutrients"
+  },
+  {
+   "food": "Cereals ready-to-eat, cheerios",
+   "fdc": 173884,
+   "fdc_description": "Cereals ready-to-eat, GENERAL MILLS, CHEERIOS",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 372,
+   "shipped_kcal": 376,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173884/nutrients"
+  },
+  {
+   "food": "Apples, raw, with skin",
+   "fdc": 171688,
+   "fdc_description": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 52,
+   "shipped_kcal": 52,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/171688/nutrients"
+  },
+  {
+   "food": "Oranges, raw, navels",
+   "fdc": 746771,
+   "fdc_description": "Oranges, raw, navels",
+   "data_type": "Foundation",
+   "fdc_kcal_100g": 47,
+   "shipped_kcal": 49,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/746771/nutrients"
+  },
+  {
+   "food": "Raisins, dark, seedless",
+   "fdc": 2758980,
+   "fdc_description": "Raisins, dark, seedless",
+   "data_type": "Foundation",
+   "fdc_kcal_100g": null,
+   "shipped_kcal": 299,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/2758980/nutrients"
+  },
+  {
+   "food": "Lentils, mature seeds, raw",
+   "fdc": 172420,
+   "fdc_description": "Lentils, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 352,
+   "shipped_kcal": 352,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/172420/nutrients"
+  },
+  {
+   "food": "Orange juice, raw",
+   "fdc": 169098,
+   "fdc_description": "Orange juice, raw (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 45,
+   "shipped_kcal": 45,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169098/nutrients"
+  },
+  {
+   "food": "Fast foods, cheeseburger; single, regular patty; with condiments",
+   "fdc": 170691,
+   "fdc_description": "Fast foods, cheeseburger; single, regular patty, with condiments",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 270,
+   "shipped_kcal": 263,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170691/nutrients"
+  },
+  {
+   "food": "Fast foods, cheeseburger; double, regular patty; plain",
+   "fdc": 2706905,
+   "fdc_description": "Double cheeseburger, on white bun, 2 small patties",
+   "data_type": "Survey (FNDDS)",
+   "fdc_kcal_100g": 296,
+   "shipped_kcal": 310,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/2706905/nutrients"
+  },
+  {
+   "food": "Fast foods, cheeseburger; single, large patty; with condiments and vegetables",
+   "fdc": 172081,
+   "fdc_description": "Fast foods, cheeseburger; single, large patty; with condiments, vegetables and mayonnaise",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 268,
+   "shipped_kcal": 254,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/172081/nutrients"
+  },
+  {
+   "food": "Fast foods, hamburger; double, regular patty; with condiments",
+   "fdc": 2706936,
+   "fdc_description": "Double hamburger, on white bun, 2 small patties",
+   "data_type": "Survey (FNDDS)",
+   "fdc_kcal_100g": 289,
+   "shipped_kcal": 265,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/2706936/nutrients"
+  },
+  {
+   "food": "Fast foods, hamburger; single, large patty; with condiments and vegetables",
+   "fdc": 173317,
+   "fdc_description": "Fast foods, hamburger; single, large patty; with condiments, vegetables and mayonnaise",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 226,
+   "shipped_kcal": 232,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173317/nutrients"
+  },
+  {
+   "food": "Fast foods, chicken fillet sandwich, plain",
+   "fdc": 170295,
+   "fdc_description": "Fast foods, chicken fillet sandwich, plain with pickles",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 250,
+   "shipped_kcal": 241,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170295/nutrients"
+  },
+  {
+   "food": "Fast foods, grilled chicken filets sandwich, with lettuce, tomato and spread",
+   "fdc": 170368,
+   "fdc_description": "Fast Foods, grilled chicken filet sandwich, with lettuce, tomato and spread",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 182,
+   "shipped_kcal": 183,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170368/nutrients"
+  },
+  {
+   "food": "Fast foods, pizza, cheese, regular crust",
+   "fdc": 173292,
+   "fdc_description": "Fast Food, Pizza Chain, 14\" pizza, cheese topping, regular crust",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 266,
+   "shipped_kcal": 266,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173292/nutrients"
+  },
+  {
+   "food": "Fast foods, pizza, pepperoni, regular crust",
+   "fdc": 173295,
+   "fdc_description": "Fast Food, Pizza Chain, 14\" pizza, pepperoni topping, regular crust",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 282,
+   "shipped_kcal": 298,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173295/nutrients"
+  },
+  {
+   "food": "Fast foods, burrito, with chicken",
+   "fdc": 170334,
+   "fdc_description": "TACO BELL, BURRITO SUPREME with chicken",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 179,
+   "shipped_kcal": 180,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170334/nutrients"
+  },
+  {
+   "food": "Fast foods, hotdog, plain",
+   "fdc": 2707056,
+   "fdc_description": "Hot dog sandwich, NFS, on white bun",
+   "data_type": "Survey (FNDDS)",
+   "fdc_kcal_100g": 296,
+   "shipped_kcal": 247,
+   "status": "kcal differs by more than 15%: probably another preparation",
+   "url": "https://fdc.nal.usda.gov/food-details/2707056/nutrients"
+  },
+  {
+   "food": "Fast foods, chili con carne",
+   "fdc": 2706374,
+   "fdc_description": "Chili with meat, from restaurant",
+   "data_type": "Survey (FNDDS)",
+   "fdc_kcal_100g": 160,
+   "shipped_kcal": 101,
+   "status": "kcal differs by more than 15%: probably another preparation",
+   "url": "https://fdc.nal.usda.gov/food-details/2706374/nutrients"
+  },
+  {
+   "food": "Broccoli, frozen, chopped, cooked, boiled, drained, without salt",
+   "fdc": 169969,
+   "fdc_description": "Broccoli, frozen, chopped, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 28,
+   "shipped_kcal": 28,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169969/nutrients"
+  },
+  {
+   "food": "Kale, cooked, boiled, drained, without salt",
+   "fdc": 169238,
+   "fdc_description": "Kale, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 36,
+   "shipped_kcal": 36,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169238/nutrients"
+  },
+  {
+   "food": "Cabbage, cooked, boiled, drained, without salt",
+   "fdc": 169976,
+   "fdc_description": "Cabbage, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 23,
+   "shipped_kcal": 23,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169976/nutrients"
+  },
+  {
+   "food": "Cabbage, red, raw",
+   "fdc": 169977,
+   "fdc_description": "Cabbage, red, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 31,
+   "shipped_kcal": 31,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169977/nutrients"
+  },
+  {
+   "food": "Cabbage, savoy, raw",
+   "fdc": 170388,
+   "fdc_description": "Cabbage, savoy, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 27,
+   "shipped_kcal": 27,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170388/nutrients"
+  },
+  {
+   "food": "Cabbage, chinese (pak-choi), raw",
+   "fdc": 170390,
+   "fdc_description": "Cabbage, chinese (pak-choi), raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 13,
+   "shipped_kcal": 13,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170390/nutrients"
+  },
+  {
+   "food": "Cabbage, chinese (pak-choi), cooked, boiled, drained, without salt",
+   "fdc": 170391,
+   "fdc_description": "Cabbage, chinese (pak-choi), cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 12,
+   "shipped_kcal": 12,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170391/nutrients"
+  },
+  {
+   "food": "Cabbage, napa, cooked",
+   "fdc": 168572,
+   "fdc_description": "Cabbage, napa, cooked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 12,
+   "shipped_kcal": 12,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168572/nutrients"
+  },
+  {
+   "food": "Cauliflower, cooked, boiled, drained, without salt",
+   "fdc": 170397,
+   "fdc_description": "Cauliflower, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 23,
+   "shipped_kcal": 23,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170397/nutrients"
+  },
+  {
+   "food": "Carrots, cooked, boiled, drained, without salt",
+   "fdc": 170394,
+   "fdc_description": "Carrots, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 35,
+   "shipped_kcal": 35,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170394/nutrients"
+  },
+  {
+   "food": "Carrots, baby, raw",
+   "fdc": 168568,
+   "fdc_description": "Carrots, baby, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 35,
+   "shipped_kcal": 35,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168568/nutrients"
+  },
+  {
+   "food": "Brussels sprouts, raw",
+   "fdc": 170383,
+   "fdc_description": "Brussels sprouts, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 43,
+   "shipped_kcal": 43,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170383/nutrients"
+  },
+  {
+   "food": "Asparagus, raw",
+   "fdc": 168389,
+   "fdc_description": "Asparagus, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 20,
+   "shipped_kcal": 20,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168389/nutrients"
+  },
+  {
+   "food": "Peas, green, raw",
+   "fdc": 170419,
+   "fdc_description": "Peas, green, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 81,
+   "shipped_kcal": 81,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170419/nutrients"
+  },
+  {
+   "food": "Peas, edible-podded, raw",
+   "fdc": 170010,
+   "fdc_description": "Peas, edible-podded, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 42,
+   "shipped_kcal": 42,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170010/nutrients"
+  },
+  {
+   "food": "Corn, sweet, white, raw",
+   "fdc": 168538,
+   "fdc_description": "Corn, sweet, white, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 86,
+   "shipped_kcal": 86,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168538/nutrients"
+  },
+  {
+   "food": "Celery, cooked, boiled, drained, without salt",
+   "fdc": 169989,
+   "fdc_description": "Celery, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 18,
+   "shipped_kcal": 18,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169989/nutrients"
+  },
+  {
+   "food": "Onions, cooked, boiled, drained, without salt",
+   "fdc": 170001,
+   "fdc_description": "Onions, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 44,
+   "shipped_kcal": 44,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170001/nutrients"
+  },
+  {
+   "food": "Onions, spring or scallions (includes tops and bulb), raw",
+   "fdc": 170005,
+   "fdc_description": "Onions, spring or scallions (includes tops and bulb), raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 32,
+   "shipped_kcal": 32,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170005/nutrients"
+  },
+  {
+   "food": "Onions, sweet, raw",
+   "fdc": 170008,
+   "fdc_description": "Onions, sweet, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 32,
+   "shipped_kcal": 32,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170008/nutrients"
+  },
+  {
+   "food": "Shallots, raw",
+   "fdc": 170499,
+   "fdc_description": "Shallots, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 72,
+   "shipped_kcal": 72,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170499/nutrients"
+  },
+  {
+   "food": "Leeks, (bulb and lower leaf-portion), raw",
+   "fdc": 169246,
+   "fdc_description": "Leeks, (bulb and lower leaf-portion), raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 61,
+   "shipped_kcal": 61,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169246/nutrients"
+  },
+  {
+   "food": "Chives, raw",
+   "fdc": 169994,
+   "fdc_description": "Chives, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 30,
+   "shipped_kcal": 30,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169994/nutrients"
+  },
+  {
+   "food": "Mushrooms, white, cooked, boiled, drained, without salt",
+   "fdc": 169252,
+   "fdc_description": "Mushrooms, white, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 28,
+   "shipped_kcal": 28,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169252/nutrients"
+  },
+  {
+   "food": "Mushrooms, brown, italian, or crimini, raw",
+   "fdc": 168434,
+   "fdc_description": "Mushrooms, brown, italian, or crimini, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 22,
+   "shipped_kcal": 22,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168434/nutrients"
+  },
+  {
+   "food": "Mushrooms, portabella, exposed to ultraviolet light, grilled",
+   "fdc": 169377,
+   "fdc_description": "Mushrooms, portabella, exposed to ultraviolet light, grilled",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 29,
+   "shipped_kcal": 29,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169377/nutrients"
+  },
+  {
+   "food": "Mushrooms, shiitake, cooked, without salt",
+   "fdc": 168437,
+   "fdc_description": "Mushrooms, shiitake, cooked, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 56,
+   "shipped_kcal": 56,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168437/nutrients"
+  },
+  {
+   "food": "Mushrooms, shiitake, dried",
+   "fdc": 168436,
+   "fdc_description": "Mushrooms, shiitake, dried",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 296,
+   "shipped_kcal": 296,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168436/nutrients"
+  },
+  {
+   "food": "Mushrooms, oyster, raw",
+   "fdc": 168580,
+   "fdc_description": "Mushrooms, oyster, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 33,
+   "shipped_kcal": 33,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168580/nutrients"
+  },
+  {
+   "food": "Mushrooms, enoki, raw",
+   "fdc": 169382,
+   "fdc_description": "Mushrooms, enoki, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 37,
+   "shipped_kcal": 37,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169382/nutrients"
+  },
+  {
+   "food": "Mushrooms, maitake, raw",
+   "fdc": 169403,
+   "fdc_description": "Mushrooms, maitake, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 31,
+   "shipped_kcal": 31,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169403/nutrients"
+  },
+  {
+   "food": "Beet greens, raw",
+   "fdc": 170375,
+   "fdc_description": "Beet greens, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 22,
+   "shipped_kcal": 22,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170375/nutrients"
+  },
+  {
+   "food": "Radishes, white icicle, raw",
+   "fdc": 170081,
+   "fdc_description": "Radishes, white icicle, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 14,
+   "shipped_kcal": 14,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170081/nutrients"
+  },
+  {
+   "food": "Turnips, raw",
+   "fdc": 170465,
+   "fdc_description": "Turnips, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 28,
+   "shipped_kcal": 28,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170465/nutrients"
+  },
+  {
+   "food": "Turnips, cooked, boiled, drained, without salt",
+   "fdc": 170058,
+   "fdc_description": "Turnips, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 22,
+   "shipped_kcal": 22,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170058/nutrients"
+  },
+  {
+   "food": "Turnip greens, raw",
+   "fdc": 170061,
+   "fdc_description": "Turnip greens, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 32,
+   "shipped_kcal": 32,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170061/nutrients"
+  },
+  {
+   "food": "Parsnips, raw",
+   "fdc": 170417,
+   "fdc_description": "Parsnips, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 75,
+   "shipped_kcal": 75,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170417/nutrients"
+  },
+  {
+   "food": "Parsnips, cooked, boiled, drained, without salt",
+   "fdc": 170009,
+   "fdc_description": "Parsnips, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 71,
+   "shipped_kcal": 71,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170009/nutrients"
+  },
+  {
+   "food": "Rutabagas, raw",
+   "fdc": 168454,
+   "fdc_description": "Rutabagas, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 37,
+   "shipped_kcal": 37,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168454/nutrients"
+  },
+  {
+   "food": "Kohlrabi, raw",
+   "fdc": 168424,
+   "fdc_description": "Kohlrabi, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 27,
+   "shipped_kcal": 27,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168424/nutrients"
+  },
+  {
+   "food": "Celeriac, raw",
+   "fdc": 170400,
+   "fdc_description": "Celeriac, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 42,
+   "shipped_kcal": 42,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170400/nutrients"
+  },
+  {
+   "food": "Fennel, bulb, raw",
+   "fdc": 169385,
+   "fdc_description": "Fennel, bulb, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 31,
+   "shipped_kcal": 31,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169385/nutrients"
+  },
+  {
+   "food": "Squash, summer, zucchini, includes skin, cooked, boiled, drained, without salt",
+   "fdc": 169292,
+   "fdc_description": "Squash, summer, zucchini, includes skin, cooked, boiled, drained, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 15,
+   "shipped_kcal": 15,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169292/nutrients"
+  },
+  {
+   "food": "Squash, summer, crookneck and straightneck, raw",
+   "fdc": 168464,
+   "fdc_description": "Squash, summer, crookneck and straightneck, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 19,
+   "shipped_kcal": 19,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168464/nutrients"
+  },
+  {
+   "food": "Squash, summer, all varieties, raw",
+   "fdc": 170487,
+   "fdc_description": "Squash, summer, all varieties, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 16,
+   "shipped_kcal": 16,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170487/nutrients"
+  },
+  {
+   "food": "Squash, winter, acorn, cooked, baked, without salt",
+   "fdc": 169293,
+   "fdc_description": "Squash, winter, acorn, cooked, baked, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 56,
+   "shipped_kcal": 56,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169293/nutrients"
+  },
+  {
+   "food": "Squash, winter, spaghetti, cooked, boiled, drained, or baked, without salt",
+   "fdc": 169299,
+   "fdc_description": "Squash, winter, spaghetti, cooked, boiled, drained, or baked, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 27,
+   "shipped_kcal": 27,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169299/nutrients"
+  },
+  {
+   "food": "Squash, winter, all varieties, raw",
+   "fdc": 170489,
+   "fdc_description": "Squash, winter, all varieties, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 34,
+   "shipped_kcal": 34,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170489/nutrients"
+  },
+  {
+   "food": "Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",
+   "fdc": 168482,
+   "fdc_description": "Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 86,
+   "shipped_kcal": 86,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168482/nutrients"
+  },
+  {
+   "food": "Sweet potato, cooked, boiled, without skin",
+   "fdc": 168484,
+   "fdc_description": "Sweet potato, cooked, boiled, without skin",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 76,
+   "shipped_kcal": 76,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168484/nutrients"
+  },
+  {
+   "food": "Potatoes, flesh and skin, raw",
+   "fdc": 170026,
+   "fdc_description": "Potatoes, flesh and skin, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 77,
+   "shipped_kcal": 77,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170026/nutrients"
+  },
+  {
+   "food": "Potatoes, red, flesh and skin, baked",
+   "fdc": 170435,
+   "fdc_description": "Potatoes, red, flesh and skin, baked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 87,
+   "shipped_kcal": 87,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170435/nutrients"
+  },
+  {
+   "food": "Potatoes, white, flesh and skin, baked",
+   "fdc": 170434,
+   "fdc_description": "Potatoes, white, flesh and skin, baked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 92,
+   "shipped_kcal": 92,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170434/nutrients"
+  },
+  {
+   "food": "Potatoes, mashed, home-prepared, whole milk and butter added",
+   "fdc": 168555,
+   "fdc_description": "Potatoes, mashed, home-prepared, whole milk and butter added",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 113,
+   "shipped_kcal": 113,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168555/nutrients"
+  },
+  {
+   "food": "Yam, cooked, boiled, drained, or baked, without salt",
+   "fdc": 170072,
+   "fdc_description": "Yam, cooked, boiled, drained, or baked, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 116,
+   "shipped_kcal": 116,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170072/nutrients"
+  },
+  {
+   "food": "Taro, cooked, without salt",
+   "fdc": 168486,
+   "fdc_description": "Taro, cooked, without salt",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 142,
+   "shipped_kcal": 142,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168486/nutrients"
+  },
+  {
+   "food": "Cassava, raw",
+   "fdc": 169985,
+   "fdc_description": "Cassava, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 160,
+   "shipped_kcal": 160,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/169985/nutrients"
+  },
+  {
+   "food": "Yambean (jicama), raw",
+   "fdc": 170073,
+   "fdc_description": "Yambean (jicama), raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 38,
+   "shipped_kcal": 38,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170073/nutrients"
+  },
+  {
+   "food": "Tomatoes, red, ripe, cooked",
+   "fdc": 170050,
+   "fdc_description": "Tomatoes, red, ripe, cooked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 18,
+   "shipped_kcal": 18,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170050/nutrients"
+  },
+  {
+   "food": "Tomatoes, sun-dried",
+   "fdc": 168567,
+   "fdc_description": "Tomatoes, sun-dried",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 258,
+   "shipped_kcal": 258,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168567/nutrients"
+  },
+  {
+   "food": "Tomatoes, red, ripe, canned, packed in tomato juice",
+   "fdc": 170051,
+   "fdc_description": "Tomatoes, red, ripe, canned, packed in tomato juice",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 16,
+   "shipped_kcal": 16,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170051/nutrients"
+  },
+  {
+   "food": "Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program)",
+   "fdc": 170459,
+   "fdc_description": "Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 82,
+   "shipped_kcal": 82,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170459/nutrients"
+  },
+  {
+   "food": "Tomato products, canned, sauce",
+   "fdc": 170054,
+   "fdc_description": "Tomato products, canned, sauce",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 24,
+   "shipped_kcal": 24,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170054/nutrients"
+  },
+  {
+   "food": "Tomato products, canned, puree, without salt added",
+   "fdc": 170460,
+   "fdc_description": "Tomato products, canned, puree, without salt added",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 38,
+   "shipped_kcal": 38,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/170460/nutrients"
+  },
+  {
+   "food": "Tomatillos, raw",
+   "fdc": 168566,
+   "fdc_description": "Tomatillos, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 32,
+   "shipped_kcal": 32,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168566/nutrients"
+  },
+  {
+   "food": "Applesauce, canned, unsweetened, without added ascorbic acid (Includes foods for USDA's Food Distribution Program)",
+   "fdc": 171695,
+   "fdc_description": "Applesauce, canned, unsweetened, without added ascorbic acid (Includes foods for USDA's Food Distribution Program)",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 42,
+   "shipped_kcal": 42,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/171695/nutrients"
+  },
+  {
+   "food": "Apples, dried, sulfured, uncooked",
+   "fdc": 171691,
+   "fdc_description": "Apples, dried, sulfured, uncooked",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 243,
+   "shipped_kcal": 243,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/171691/nutrients"
+  },
+  {
+   "food": "Bananas, dehydrated, or banana powder",
+   "fdc": 173945,
+   "fdc_description": "Bananas, dehydrated, or banana powder",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 346,
+   "shipped_kcal": 346,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/173945/nutrients"
+  },
+  {
+   "food": "Clementines, raw",
+   "fdc": 168195,
+   "fdc_description": "Clementines, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 47,
+   "shipped_kcal": 47,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168195/nutrients"
+  },
+  {
+   "food": "Grapefruit, raw, white, all areas",
+   "fdc": 174676,
+   "fdc_description": "Grapefruit, raw, white, all areas",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 33,
+   "shipped_kcal": 33,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/174676/nutrients"
+  },
+  {
+   "food": "Lemon juice, raw",
+   "fdc": 167747,
+   "fdc_description": "Lemon juice, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 22,
+   "shipped_kcal": 22,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/167747/nutrients"
+  },
+  {
+   "food": "Lime juice, raw",
+   "fdc": 168156,
+   "fdc_description": "Lime juice, raw",
+   "data_type": "SR Legacy",
+   "fdc_kcal_100g": 25,
+   "shipped_kcal": 25,
+   "status": "candidate: nutrients not yet reconciled",
+   "url": "https://fdc.nal.usda.gov/food-details/168156/nutrients"
+  }
+ ]
+}

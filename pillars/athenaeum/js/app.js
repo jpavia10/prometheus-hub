@@ -173,12 +173,19 @@ function showIdea(k, keep) {
 
 /* ---- the chronicle ---- */
 const yearShort = (y) => (y == null ? "" : y < 0 ? `${-y} BCE` : y < 1000 ? `${y} CE` : String(y));
+const yearText = (y) => (y < 0 ? `${-y} BCE` : `${y}`);
 function eventCard(k) {
   const e = chron[k], src = String(e.source || ""), cut = src.indexOf(" — http"), url = cut >= 0 ? src.slice(cut + 3) : "", flow = (label, text, main) => h("div.ath-step" + (main ? ".main" : ""), null, h("b", null, label), h("p", null, text));
   return h("article.ath-codex.ev", null,
     h("p.ath-eyebrow", null, h("span.ath-chip", null, e.civilization || "History"), h("span", null, e.date || "")),
     h("h2", { tabindex: "-1" }, e.name),
     h("div.ath-flow", null, flow("Cause", e.cause), flow("Event", e.event, true), flow("Consequence", e.consequence)),
+    /* where and when (2026-11-24, Gemini ATH-GEM-06): the place, a map, the exact span and where the dating comes from */
+    e.where ? h("section.ath-where", null, h("h3", null, "Where and when"),
+      h("p", null, `${e.where.place}${e.span && e.span.start != null ? " · " + yearText(e.span.start) + (e.span.end != null && e.span.end !== e.span.start ? " to " + yearText(e.span.end) : "") : ""} `,
+        Number.isFinite(+e.where.lat) && Number.isFinite(+e.where.lon) ? h("a", { href: `https://www.openstreetmap.org/?mlat=${+e.where.lat}&mlon=${+e.where.lon}#map=6/${+e.where.lat}/${+e.where.lon}`, target: "_blank", rel: "noopener" }, "Map ↗") : null),
+      e.span && e.span.note ? h("p.ath-note", null, e.span.note) : null,
+      e.span && /^https:\/\//.test(e.span.url || "") ? h("p", null, h("a", { href: e.span.url, target: "_blank", rel: "noopener" }, "Where the dating comes from ↗")) : null) : null,
     (e.evidence_quotes || []).length ? h("section", null, h("h3", null, "In the source's own words"), ...e.evidence_quotes.map((q) => h("blockquote", null, q))) : null,
     h("section.ath-prov", null, h("h3", null, "Where this comes from"), src ? h("p", null, cut >= 0 ? src.slice(0, cut) + " " : src, url ? h("a", { href: url, target: "_blank", rel: "noopener" }, "Open the article ↗") : null) : null,
       pack ? h("p", null, `Research pack ${pack.pack}, ${fmt(pack.asOf)}: compiled by an AI contributor, not written by you. ${(pack.notes || [])[2] || ""}`) : null),

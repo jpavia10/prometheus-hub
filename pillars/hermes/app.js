@@ -134,6 +134,9 @@
         score -= 10;
         signals.push(`Sender domain matches known biller: ${matchedBiller.b}`);
       }
+      /* the biller's own numbers (2026-11-24, HER-GEM-13/14): call back on these, never on a number in the message */
+      if (matchedBiller.ph) signals.push(`${matchedBiller.b}'s own number, from its site: ${matchedBiller.ph}${matchedBiller.fp && matchedBiller.fp !== matchedBiller.ph ? "; fraud line " + matchedBiller.fp : ""}. Call that, not a number in the message.`);
+      if (matchedBiller.na) signals.push(`What ${matchedBiller.b} says it never asks for: ${matchedBiller.na}`);
     } else if (/verify|secure|update|support|login|billing|alert|unlock/.test(host)) {
       score += 35;
       signals.push(`Suspicious keyword in unverified sender domain "${host}"`);
