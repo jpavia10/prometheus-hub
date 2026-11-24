@@ -97,7 +97,9 @@ is the standard check (KIN-MUS-02); differences between readers become conflicts
 | Thing | Where |
 |---|---|
 | The data (people, families, places, sources, events, conflicts, hypotheses, questions, the per-person GPS state) | `pillars/kin/lineage/data.js` (`window.KIN_LINEAGE`, schema `kin-lineage/1`) |
-| The tree, dossier, journey map, document viewer, sources, research plan, GEDCOM export | `pillars/kin/lineage/lineage.js`, `lineage.css` |
+| The family tree in three dimensions (the main way in since 2026-11-24): roots in time, dossier, records, globe, research | `pillars/kin/tree/` (design: `LINEAGE_3D.md`) |
+| The plain tree, fan, dossier, journey map, document viewer, sources, research plan, GEDCOM export | `pillars/kin/lineage/lineage.js`, `lineage.css` |
+| Photographs of people (a verified face for the medallion) | `media` in `data.js`; never a picture attached online without checking it is that person (C12) |
 | The record images (webp, rotated upright; thumbnails in `t/`) | `pillars/kin/lineage/docs/` |
 | Research homework | `pillars/kin/docs/agents/queues.json` (KIN-GEM-07 to 13, KIN-MUS-02) |
 | The originals the owner sent (2026-11-24) | Drive `Prometheus Hub/Pillars/Kin/lineage records/`: the enlistment, discharge and naturalization PDFs and six photos (draft card, enlistment, discharge, naturalization certificate, VA index card, death certificate). The great-uncle's 26-page PDF and the two aerial photos are over the Drive connector's size limit and are not there yet; their pages and the aerials are in `docs/` above as images. |

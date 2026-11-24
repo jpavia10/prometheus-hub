@@ -12,7 +12,7 @@
   const DOCS = "lineage/docs/";
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const by = (arr) => Object.fromEntries(arr.map((x) => [x.id, x]));
-  const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried" };
+  const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried", will: "Made a will" };
   const CONF = { proven: "Proven", probable: "Probable", possible: "Possible", family: "From the family", inferred: "Not yet known", placeholder: "To name", named: "Named by you", self: "You" };
   const KIND = { original: "Original", derivative: "Derivative", authored: "Authored" };
   const INFO = { primary: "Primary", secondary: "Secondary", undetermined: "Undetermined" };
@@ -200,7 +200,7 @@
   function wire(root, onPick) {
     const svg = root.querySelector("svg.ln-svg"), pts = new Map(); let drag = null, moved = 0, pinch = null;
     let hit = null; /* the card under the finger at pointerdown: once the svg captures the pointer, pointerup's target is the svg itself */
-    svg.addEventListener("pointerdown", (e) => { hit = (e.target.closest && e.target.closest(".ln-node, .ln-fampill, .ln-stub, .ln-up")) || null; svg.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); moved = 0;
+    svg.addEventListener("pointerdown", (e) => { hit = (e.target.closest && e.target.closest(".ln-node, .ln-fampill, .ln-stub, .ln-up")) || null; try { svg.setPointerCapture(e.pointerId); } catch (_) { /* a synthetic pointer */ } pts.set(e.pointerId, [e.clientX, e.clientY]); moved = 0;
       if (pts.size === 1) drag = { x: e.clientX, y: e.clientY, vx: ui.view.x, vy: ui.view.y };
       if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), s: ui.view.s }; drag = null; } });
     svg.addEventListener("pointermove", (e) => { if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, [e.clientX, e.clientY]);
@@ -356,7 +356,7 @@
     const im = box.querySelector("img"), st = { s: 1, x: 0, y: 0 }, pts = new Map(); let d0 = null, p0 = null;
     const ap = () => { im.style.transform = `translate(${st.x}px, ${st.y}px) scale(${st.s})`; };
     box.querySelector(".ln-vstage").addEventListener("wheel", (e) => { e.preventDefault(); st.s = Math.max(1, Math.min(6, st.s * Math.exp(-e.deltaY * 0.002))); ap(); }, { passive: false });
-    im.addEventListener("pointerdown", (e) => { im.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); if (pts.size === 1) p0 = { x: e.clientX - st.x, y: e.clientY - st.y }; if (pts.size === 2) { const [a, b] = [...pts.values()]; d0 = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), s: st.s }; } });
+    im.addEventListener("pointerdown", (e) => { try { im.setPointerCapture(e.pointerId); } catch (_) { /* a synthetic pointer */ } pts.set(e.pointerId, [e.clientX, e.clientY]); if (pts.size === 1) p0 = { x: e.clientX - st.x, y: e.clientY - st.y }; if (pts.size === 2) { const [a, b] = [...pts.values()]; d0 = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), s: st.s }; } });
     im.addEventListener("pointermove", (e) => { if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, [e.clientX, e.clientY]);
       if (d0 && pts.size === 2) { const [a, b] = [...pts.values()]; st.s = Math.max(1, Math.min(6, d0.s * Math.hypot(a[0] - b[0], a[1] - b[1]) / d0.d)); ap(); return; }
       if (p0 && st.s > 1) { st.x = e.clientX - p0.x; st.y = e.clientY - p0.y; ap(); } });
@@ -461,10 +461,11 @@
         const cls = "fan-seg" + (p ? ` st-${p.status}` : " empty") + (p && p.ghost && p.status === "inferred" ? " ghost" : "") + (unsure ? " unsure" : "") + (p && p.id === ui.sel ? " sel" : "");
         const label = `${relName(n)}: ${p ? (knownP(p) ? nm(p) : "not yet known") : "not known"}`;
         out += `<path class="${cls}" d="M${pt(ro, a0)}A${ro} ${ro} 0 ${lg} 1 ${pt(ro, a1)}L${pt(ri, a1)}A${ri} ${ri} 0 ${lg} 0 ${pt(ri, a0)}Z" ${p ? `data-id="${p.id}"` : `data-slot="${n}"`} tabindex="0" role="button" aria-label="${esc(label)}"><title>${esc(label)}</title></path>`;
-        if (g <= 4 && p) { /* names along the arc, for the generations with room for them */
-          const am = (a0 + a1) / 2, rm = (ri + ro) / 2, deg = (am * 180) / Math.PI % 360, rot = deg > 0 && deg < 180 ? deg - 90 : deg + 90;
-          const t = knownP(p) ? firstName(p) : "?", max = [0, 14, 12, 10, 7][g], txt = t.length > max ? t.slice(0, max - 1) + "…" : t;
-          out += `<text class="fan-t g${g}${knownP(p) ? "" : " unk"}" transform="translate(${pt(rm, am)}) rotate(${rot.toFixed(1)})" dy="4">${esc(txt)}</text>`;
+        if (g <= 4 && p) { /* names curved along the arc (owner, 2026-11-24: "Curve the text on the fan"), upright on both halves */
+          const am = (a0 + a1) / 2, rm = (ri + ro) / 2, fs = [0, 12.5, 11, 9.5, 7.5][g], top = Math.sin(am) < -1e-6;
+          const rr = top ? rm - fs * 0.34 : rm + fs * 0.34, pad = 0.015, s0 = top ? a0 + pad : a1 - pad, s1 = top ? a1 - pad : a0 + pad;
+          const t = knownP(p) ? firstName(p) : "?", max = [0, 18, 14, 12, 9][g], txt = t.length > max ? t.slice(0, max - 1) + "…" : t;
+          out += `<path id="fp${n}" d="M${pt(rr, s0)}A${rr} ${rr} 0 ${lg} ${top ? 1 : 0} ${pt(rr, s1)}" fill="none" stroke="none"/><text class="fan-t g${g}${knownP(p) ? "" : " unk"}"><textPath href="#fp${n}" startOffset="50%">${esc(txt)}</textPath></text>`;
         }
       }
     }
@@ -525,6 +526,10 @@
     const src = panel("ln-sources", "Sources of the family history", "Every record behind the tree, with its full citation, where it is kept, a transcription and the image.", `<div id="ln-srcs"></div>`);
     const plan = panel("ln-plan", "Family research plan", "", `<div id="ln-planx"></div>`);
     grid.insertBefore(plan, grid.firstChild); grid.insertBefore(src, plan); grid.insertBefore(tree, src);
+    /* the door to the family tree in three dimensions (tree/), the main way in since 2026-11-24 */
+    const door = h("a", { class: "ln-door", href: "tree/" });
+    door.innerHTML = `<img src="tree/poster.webp" alt="" loading="lazy" decoding="async"><span class="ln-door-in"><span class="kicker">In three dimensions</span><b>Walk through the family tree</b><span class="ln-door-p">${L.people.length} people across ${Math.max(...Object.values(gensFrom(model())))} generations, set in time: every life from birth to death, every record beside the person it proves, the journeys on a globe, and what is still open.</span><span class="btn">Enter the tree</span></span>`;
+    tree.insertBefore(door, tree.querySelector(".ln-stage"));
     const root = tree, dos = tree.querySelector("#ln-dossier");
     const pick = (pid, center) => { ui.sel = pid; drawTree(root); dossier(dos, pid); if (center) focus(root, pid); };
     /* a tap on the tree opens a small card over it (the tree stays where it is); "Full story" goes to the dossier below */

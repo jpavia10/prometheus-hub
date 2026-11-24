@@ -56,7 +56,7 @@ jobs:
           fi
       - name: Browser
         run: |
-          pip install --quiet playwright
+          pip install --quiet playwright pillow
           python -m playwright install --with-deps chromium
       - name: Proofs against this checkout
         run: |

@@ -63,7 +63,7 @@ window.KIN_LINEAGE = {
     {"id": "P-peggy", "sex": "F", "status": "possible", "names": [{"given": "Margaret", "surname": "Tyler", "type": "birth", "src": ["S-fs-tree"], "note": "Peggy"}]},
     {"id": "P-jpulliam", "sex": "M", "status": "possible", "names": [{"given": "James", "surname": "Pulliam", "type": "birth", "src": ["S-fs-tree", "S-dar"], "note": "Lt."}], "summary": "1726 to 1799; Lunenburg County, Virginia militia, later Person County, NC. A DAR Revolutionary War Patriot (A092129)."},
     {"id": "P-eastone", "sex": "F", "status": "possible", "names": [{"given": "Elizabeth Allen", "surname": "Stone", "type": "birth", "src": ["S-fs-tree"]}], "summary": "1740 to 1818."},
-    {"id": "P-rstone", "sex": "M", "status": "possible", "names": [{"given": "Richard", "surname": "Stone", "type": "birth", "src": ["S-fs-tree", "S-dar"], "note": "Sr."}], "summary": "About 1722 to 1797, Lunenburg County, Virginia; his 1797 will survives. A DAR Revolutionary War Patriot (A110255)."},
+    {"id": "P-rstone", "sex": "M", "status": "possible", "names": [{"given": "Richard", "surname": "Stone", "type": "birth", "src": ["S-fs-tree", "S-dar"], "note": "Sr."}], "summary": "About 1722 to 1797, Lunenburg County, Virginia. His will, made 7 September 1795, survives in an abstract that names his wife Mary and his daughter Elizabeth, James Pulliam's wife. A DAR Revolutionary War Patriot (A110255)."},
     {"id": "P-yancy", "sex": "F", "status": "possible", "names": [{"given": "Mary", "surname": "Yancy", "type": "birth", "src": ["S-fs-tree"]}]},
     {"id": "P-wesley", "sex": "M", "status": "possible", "names": [{"given": "Wesley", "surname": "Davis", "type": "birth", "src": ["S-fs-tree"]}], "summary": "1803 (NC) to 1855 (Monroe County, TN); Hettie's father in the compiled trees."},
     {"id": "P-tdavisjr", "sex": "M", "status": "possible", "names": [{"given": "Thomas", "surname": "Davis", "type": "birth", "src": ["S-fs-tree"], "note": "Jr."}], "summary": "1760 to 1826, of the Cane Creek Quaker meeting, North Carolina."},
@@ -457,3 +457,43 @@ window.KIN_LINEAGE = {
     "P-della": { search: "barely begun: one index entry and one mention", cite: "done", analysis: "begun", conflicts: "C3 open", written: "not yet" },
   },
 };
+
+/* Photographs and scans from Gemini's Ancestry run (Drive: Kin/lineage records/Ancestry.com, Pavia Family Tree/Photos & Scans,
+   24 Nov 2026), each read by Claude against what it claims to be. Two of the three "portraits" were not (C12); none of them is
+   used as anyone's likeness. media: the pictures the 3D tree shows on a person (a face for the medallion, the full image). */
+(function (L) {
+  L.sources.push(
+    { id: "S-glenda-photo", short: "Glenda's obituary photograph (2022)", kind: "original", year: 2022, img: ["glenda-2022"],
+      cite: "Photograph of Glenda Mardelle Pavia published with her obituary, Merkle Funeral Service, Monroe, Michigan, September 2022; copy in Drive (Photos & Scans), saved by Gemini on 24 November 2026.",
+      read: "Glenda seated outdoors at a café table in sunglasses and a red patterned dress, in summer, shortly before 2022: the photograph her family chose for the obituary." },
+    { id: "S-stone-jamesak", short: "James Kirkland's grave marker, Butler Cemetery", kind: "original", year: 1869, img: ["stone-james-kirkland-1869"],
+      cite: "Photograph of the grave marker of James Kirkland, Butler Cemetery, Polk County, Tennessee, by B&E Roberts (watermark); copy in Drive (Photos & Scans, IMG_7202), saved by Gemini on 24 November 2026.",
+      read: "JAMES / KIRKLAND / 1781 1869, cut in a polished granite tablet. The marker is modern (machine-cut letters in polished granite, not a nineteenth-century stone): descendants set it long after 1869, so its dates are what they believed, secondary information, not a record made at the time." },
+    { id: "S-butler-stones", short: "Two more Kirkland markers at Butler Cemetery", kind: "original", img: ["stone-butler-wb-hazel", "stone-butler-rk"],
+      cite: "Photographs of two Kirkland grave markers, Butler Cemetery, Polk County, Tennessee, by B&E Roberts (watermark); copies in Drive (Photos & Scans, IMG_7200 and IMG_7201), saved by Gemini on 24 November 2026.",
+      read: "(1) KIRKLAND / HAZEL 1905–1907 | W. B. 1884–1919. (2) R. K. KIRKLAND / WAS BORN NOV / 3. 185[4?] / DIED SEP 1 1899 (the last digit of the birth year is worn). Neither is in the tree yet: kin buried near James, a lead to his other descendants, not evidence for this line." },
+    { id: "S-stone-will", short: "Richard and Mary Stone's wills (abstracts)", kind: "derivative", year: 1795, img: ["will-richard-stone-1795"],
+      cite: "\"Will of Richard Stone, 7 September 1795 (Abstract)\" and \"Will of Mary Stone, 29 December 1805 (Abstract)\", typed abstracts (the Drive note reads \"Monks bk pg 28\"), Lunenburg County, Virginia; image linked from WikiTree profile Stone-673, saved by Gemini on 24 November 2026. The original Lunenburg County will books are not yet seen.",
+      read: "Richard's will (abstract): to his son Richard; to his \"well beloved wife\" Mary Stone; \"To his son-in-law James Pulliam and wife, Elizabeth, I loan three Negroes for their use during their natural lives\"; to the sons-in-law John Lester (wife Susannah), Peter and Letty Winn, Phillip Snead (wife Ann), Minor Wilkes and William Cockerham; to his granddaughter Ann Stone Townsend, the children of his daughter Mary Estes and the Townsend grandchildren. Witnesses Littleberry Winn, James McLaughlin, Sara Winn. Mary's will (abstract): the children of her daughter Phoebe Wilkes, deceased; the rest divided between her son Richard Stone, Elizabeth Pulliam, Susanna Lester, Letty Winn and Ann Snead. The wills name people the Stones enslaved: Jubiter, Patty, Jack, James Sr. and James Jr., Pat and Jenny, and twenty-three more (five men, four women, nine boys and five girls) the abstract does not name. Their names are kept here as the record gives them, so that their own descendants can find them." },
+    { id: "S-fs-portraits", short: "Portraits attached on FamilySearch (not used)", kind: "authored", img: ["portrait-fs-l7p9-f2v"],
+      cite: "Images attached to FamilySearch Family Tree profiles L7P9-F2V (James Altonia Kirkland), L8PV-BS5 (Nathaniel Robert Bivens) and LZ18-FC1 (Christopher Columbus Kirkland), saved to Drive by Gemini on 24 November 2026.",
+      read: "L7P9-F2V: a colourised head-and-shoulders portrait of a man of about 45 to 55 with a heavy moustache. L8PV-BS5: the DAR logo, not a portrait. LZ18-FC1: an elderly woman, filed under a man's name. None is used as anyone's likeness (C12)." }
+  );
+  L.places.push(
+    { id: "PL-lunenburg", name: "Lunenburg County, Virginia", hist: "Lunenburg County, Virginia", now: "Lunenburg County, Virginia", lat: 36.946, lon: -78.241 },
+    { id: "PL-butler", name: "Butler Cemetery, Polk County", hist: "Butler Cemetery, Polk County, Tennessee", now: "Polk County, Tennessee", lat: 35.12, lon: -84.52, approx: "the county" }
+  );
+  L.events.push(
+    { id: "E-will-rstone", type: "will", who: ["P-rstone", "P-yancy", "P-eastone", "P-jpulliam"], date: { text: "7 Sep 1795", sort: "1795-09-07" }, place: "PL-lunenburg",
+      conclusion: "Richard Stone made his will on 7 September 1795 in Lunenburg County, Virginia, naming his wife Mary and \"his son-in-law James Pulliam and wife, Elizabeth\"; Mary's will (1805) names Elizabeth Pulliam among her children. If the abstract is faithful, Elizabeth Pulliam was the Stones' daughter.",
+      confidence: "probable", assert: [{ src: "S-stone-will", value: "To his son-in-law James Pulliam and wife, Elizabeth; ... son Richard Stone, Elizabeth Pulliam, Susanna Lester, Letty Winn and Ann Snead", info: "primary", ev: "direct", note: "an abstract: the will book is the original to see" }] },
+    { id: "E-burial-jamesak", type: "burial", who: ["P-jamesak"], date: { text: "1869", sort: "1869-01-01" }, place: "PL-butler",
+      conclusion: "Buried at Butler Cemetery, Polk County, Tennessee, under a modern marker that reads 1781–1869.", confidence: "possible",
+      assert: [{ src: "S-stone-jamesak", value: "JAMES KIRKLAND 1781 1869", info: "secondary", ev: "direct", note: "a modern replacement stone" }, { src: "S-fs-tree", value: "1781 (North Carolina) to 1869 (Polk County, TN); buried Butler Cemetery", info: "undetermined", ev: "direct" }] }
+  );
+  L.conflicts.push({ id: "C12", person: "P-jamesak", q: "Is the portrait attached to James Altonia Kirkland on FamilySearch (L7P9-F2V) a picture of him?", status: "resolved", conclusion: "No: it is not used as his likeness.",
+    argument: "The sitter is a man of about 45 to 55, in the head-and-shoulders style of a cabinet card (1870s to 1900s), colourised later. James was born in 1781: the first photographs made in America date from 1839, when he was 58, and he died in 1869 at 88. A photograph of him would show an old man. The portrait is more likely one of his sons or grandsons and was attached to the wrong profile, a common error in collaborative trees; it stays in the records as what it is (S-fs-portraits)." });
+  L.media = [
+    { id: "M-glenda", person: "P-glenda", face: "face-glenda", img: "glenda-2022", src: "S-glenda-photo", caption: "Glenda, about 2022: the photograph chosen for her obituary." }
+  ];
+})(window.KIN_LINEAGE);

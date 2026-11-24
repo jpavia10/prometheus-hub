@@ -19,7 +19,7 @@ jobs:
           python-version: "3.12"
       - name: Browser
         run: |
-          pip install --quiet playwright
+          pip install --quiet playwright pillow
           python -m playwright install --with-deps chromium
       - name: Unit proofs
         run: node --test proofs/unit/*.test.mjs

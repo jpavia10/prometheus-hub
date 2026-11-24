@@ -245,7 +245,7 @@ with sync_playwright() as p:
         pk.evaluate("document.querySelector('#ln-tree .ln-view-sw [data-v=tree]').click()"); pk.wait_for_timeout(500)
         k1 = pk.evaluate("""() => { const L = window.KIN_LINEAGE, ids = new Set(L.sources.map((s) => s.id)), as = L.events.flatMap((e) => e.assert);
           return { people: L.people.length, events: L.events.length, sources: L.sources.length, conflicts: L.conflicts.length, questions: L.questions.length,
-            nodes: document.querySelectorAll('#ln-tree .ln-node').length, modelPeople: KIN_LINEAGE_UI.model().people.length, ghosts: KIN_LINEAGE_UI.model().people.filter((p) => p.ghost).length, stubs: document.querySelectorAll('#ln-tree .ln-stub').length, ups: document.querySelectorAll('#ln-tree .ln-up').length, pills: document.querySelectorAll('#ln-tree .ln-fampill').length, unsure: document.querySelectorAll('#ln-tree .ln-stem.unsure').length, lit: document.querySelectorAll('#ln-tree .ln-node.lit').length,
+            nodes: document.querySelectorAll('#ln-tree .ln-node').length, modelPeople: KIN_LINEAGE_UI.model().people.length, ghosts: KIN_LINEAGE_UI.model().people.filter((p) => p.ghost).length, stubs: document.querySelectorAll('#ln-tree .ln-stub').length, ups: document.querySelectorAll('#ln-tree .ln-up').length, pills: document.querySelectorAll('#ln-tree .ln-fampill').length, unsure: document.querySelectorAll('#ln-tree .ln-stem.unsure').length, unc: L.families.reduce((a, f) => a + Object.keys(f.uncertain || {}).length, 0), jev: L.events.filter((e) => e.who.includes('P-joseph')).length, lit: document.querySelectorAll('#ln-tree .ln-node.lit').length,
             orphan: as.filter((a) => !ids.has(a.src)).length, unclassed: as.filter((a) => !['primary','secondary','undetermined'].includes(a.info) || !['direct','indirect','negative'].includes(a.ev)).length,
             badkind: L.sources.filter((s) => !['original','derivative','authored'].includes(s.kind) || !s.cite).length, noarg: L.conflicts.filter((c) => !c.argument && c.status !== 'open').length,
             noconc: L.events.filter((e) => !e.conclusion || !['proven','probable','possible'].includes(e.confidence)).length,
@@ -254,6 +254,9 @@ with sync_playwright() as p:
         climb = {"buster": pk.evaluate("!!document.querySelector('#ln-tree .ln-node[data-id=\"P-buster\"]')")}
         pk.evaluate("document.querySelector('#ln-tree .ln-tools [data-z=me]').click()"); pk.wait_for_timeout(400)
         climb["back"] = pk.evaluate("!!document.querySelector('#ln-tree .ln-node[data-id=\"P-self\"]') && !document.querySelector('#ln-tree .ln-node[data-id=\"P-buster\"]')")
+        pk.evaluate("(() => { const u = document.querySelector('#ln-tree .ln-up[data-up=\"P-gp\"]'); if (!u) return; u.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true })); u.dispatchEvent(new PointerEvent('pointerup', { bubbles: true })); })()"); pk.wait_for_timeout(400)
+        climb["unsure"] = pk.evaluate("document.querySelectorAll('#ln-tree .ln-stem.unsure').length")   # Barbara's link to Joseph Termenas, seen from Laurie
+        pk.evaluate("document.querySelector('#ln-tree .ln-tools [data-z=me]').click()"); pk.wait_for_timeout(300)
         pk.evaluate("document.querySelector('#ln-tree .ln-tools [data-z=fit]').click()"); pk.wait_for_timeout(400)
         pk.locator('#ln-tree .ln-node[data-id="P-mother"]').click(); pk.wait_for_timeout(300)
         k2 = pk.evaluate("() => ({ who: document.querySelector('#ln-dossier h3').textContent, sel: (document.querySelector('#ln-tree .ln-node.sel') || {}).dataset?.id })")
@@ -272,9 +275,9 @@ with sync_playwright() as p:
         k5 = pk.evaluate("() => { const g = KIN_LINEAGE_UI.gedcom(), L = g.split(/\\r?\\n/); return { head: L[0], vers: L.includes('2 VERS 7.0'), challenged: L.filter((l) => l === '2 STAT CHALLENGED').length, indi: L.filter((l) => / INDI$/.test(l)).length, fam: L.filter((l) => / FAM$/.test(l)).length, sour: L.filter((l) => / SOUR$/.test(l)).length, end: L.filter(Boolean).pop(), open: !!document.querySelector('.ln-view') }; }")
         wide = pk.evaluate("document.documentElement.scrollWidth")
         ok = (k1["people"] >= 10 and k1["events"] >= 19 and k1["sources"] >= 16 and k1["conflicts"] >= 9 and 7 <= k1["nodes"] < k1["modelPeople"] and k1["ghosts"] >= 3 and k1["ups"] >= 3 and k1["pills"] >= 3 and fan_first == "fan" and climb["buster"] and climb["back"] and k1["lit"] >= 5
-              and not k1["orphan"] and not k1["unclassed"] and not k1["badkind"] and not k1["noarg"] and not k1["noconc"] and k1["first"] == "The family tree" and k1["unsure"] == 1 and k1["logged"] >= 2 and k1["logShown"] == k1["logged"]
-              and k2["who"].startswith("Toni") and k2["sel"] == "P-mother" and k3["who"].startswith("Joseph") and k3["ev"] == k1["events"] and k3["docs"] >= 20 and k3["maps"] == 2 and k3["cons"] >= 6
-              and k4 and k4["img"] and k4["cap"] > 40 and k5["head"] == "0 HEAD" and k5["vers"] and k5["challenged"] == 1 and k5["indi"] == k1["people"] and k5["fam"] >= 6 and k5["sour"] == k1["sources"] and k5["end"] == "0 TRLR" and not k5["open"]
+              and not k1["orphan"] and not k1["unclassed"] and not k1["badkind"] and not k1["noarg"] and not k1["noconc"] and k1["first"] == "The family tree" and climb["unsure"] >= 1 and k1["logged"] >= 2 and k1["logShown"] == k1["logged"]
+              and k2["who"].startswith("Toni") and k2["sel"] == "P-mother" and k3["who"].startswith("Joseph") and k3["ev"] == k1["jev"] and k3["docs"] >= 20 and k3["maps"] == 2 and k3["cons"] >= 6
+              and k4 and k4["img"] and k4["cap"] > 40 and k5["head"] == "0 HEAD" and k5["vers"] and k5["challenged"] == k1["unc"] and k5["indi"] == k1["people"] and k5["fam"] >= 6 and k5["sour"] == k1["sources"] and k5["end"] == "0 TRLR" and not k5["open"]
               and fan["segs"] == 254 and fan["known"] >= 30 and fan["shown"] and f"{fan['known']} of 254" in fan["sum"] and fan["peek"].startswith("Your")
               and wide <= 384 and not bk)
         proof("KIN-2", "The family tree is a research instrument: every assertion has a source and its three classifications, every event a conclusion and a confidence, a tap opens the person's dossier, a record opens full size, and the tree exports as GEDCOM 7",
@@ -282,6 +285,54 @@ with sync_playwright() as p:
                  f"tap -> {k2['who']!r}; Joseph: {k3['ev']} events, {k3['docs']} records, {k3['maps']} maps, {k3['cons']} conflicts; record viewer {k4}; GEDCOM {k5}; fan {fan}; page {wide}px" + (f"; errors {bk[:2]}" if bk else ""))
         ck.close()
     except Exception as e: proof("KIN-2", "The family tree", False, "did not finish: " + str(e)[:200])
+    # KIN-3D (2026-11-24, owner: "redesign the entire project from the ground up ... a worldclass aaa flagship interactive design with 3d graphics and
+    # motion. Clickable with media and data integrated"): the family tree in three dimensions (pillars/kin/tree/). WebGL draws everyone; a real tap on a
+    # person opens their dossier with their records fanned beside them; a record opens full size; time travel names the family alive that year; the
+    # globe shows the journeys and a tap on a place lists what happened there; the records gallery and the research view open; the Kin page has the door
+    # and the fan's names curve along their rings (owner: "Curve the text on the fan").
+    try:
+        from PIL import Image
+        import io
+        c3 = b.new_context(viewport={"width": 384, "height": 832}); p3 = c3.new_page(); e3 = []; p3.on("pageerror", lambda e: e3.append(str(e)[:120]))
+        p3.goto(f"{URL}pillars/kin/tree/", wait_until="load"); p3.wait_for_function("window.KIN3D && window.KIN3D.ready", timeout=20000)
+        p3.evaluate("KIN3D.skip()"); p3.wait_for_timeout(3000)
+        s0 = p3.evaluate("KIN3D.state()")
+        im = Image.open(io.BytesIO(p3.screenshot(clip={"x": 0, "y": 110, "width": 384, "height": 520}))).convert("L")
+        lit = sum(1 for v in im.getdata() if v > 70)
+        who = p3.evaluate("(() => { for (const id of ['P-mother', 'P-father', 'P-self']) { const s = KIN3D.screen(id); if (s && s.on && s.x > 20 && s.x < 364 && s.y > 120 && s.y < 640) return [id, s.x, s.y]; } return null; })()")
+        if who: p3.mouse.click(who[1], who[2]); p3.wait_for_timeout(900)
+        tap = p3.evaluate("() => ({ sel: KIN3D.state().sel, h: (document.querySelector('#tv-dossier:not([hidden]) h2') || {}).textContent || '' })")
+        p3.evaluate("KIN3D.select('P-joseph')"); p3.wait_for_timeout(2200)
+        jo = p3.evaluate("() => ({ h: document.querySelector('#tv-dossier h2').textContent, cards: KIN3D.state().cards, docs: document.querySelectorAll('#tv-dossier .tv-doc').length, ev: document.querySelectorAll('#tv-dossier .tv-life-ev li').length, cons: document.querySelectorAll('#tv-dossier .tv-con').length, chips: document.querySelectorAll('#tv-dossier .tv-chip').length, lbl: KIN3D.screen('P-joseph').label })")
+        p3.evaluate("document.querySelector('#tv-dossier .tv-doc').click()"); p3.wait_for_timeout(900)
+        vw = p3.evaluate("() => { const im = document.querySelector('#tv-viewer:not([hidden]) .tv-vimg img'); return { open: KIN3D.state().viewer, img: !!(im && im.complete && im.naturalWidth > 500), cap: (document.querySelector('.tv-vcap') || {}).textContent.length }; }")
+        p3.keyboard.press("Escape"); p3.wait_for_timeout(400); vw["closed"] = not p3.evaluate("KIN3D.state().viewer")
+        p3.evaluate("KIN3D.deselect(); KIN3D.year(1917)"); p3.wait_for_timeout(1200)
+        tm = p3.evaluate("() => ({ cap: document.querySelector('.tv-cap:not([hidden])') ? document.querySelector('.tv-cap').textContent : '', year: KIN3D.state().year, named: KIN3D.state().labels })")
+        p3.evaluate("KIN3D.year(null); KIN3D.mode('places')"); p3.wait_for_timeout(2600)
+        gl = p3.evaluate("() => ({ s: KIN3D.state(), labels: document.querySelectorAll('.tv-glbl.on').length })")
+        pin = p3.evaluate("(() => { for (const id of ['PL-detroit', 'PL-monroe', 'PL-delano', 'PL-nyc']) { const q = KIN3D.place(id); if (q && q.on && q.x > 10 && q.x < 374 && q.y > 100 && q.y < 640) return [id, q.x, q.y]; } return null; })()")
+        if pin: p3.mouse.click(pin[1], pin[2]); p3.wait_for_timeout(500)
+        gl["card"] = p3.evaluate("document.querySelectorAll('.tv-placecard:not([hidden]) li').length")
+        p3.evaluate("KIN3D.mode('records')"); p3.wait_for_timeout(700)
+        rec = p3.evaluate("() => ({ n: document.querySelectorAll('#tv-records .tv-rec').length, imgs: window.KIN_LINEAGE.sources.reduce((a, s) => a + (s.img || []).length, 0) })")
+        p3.evaluate("KIN3D.mode('research')"); p3.wait_for_timeout(500)
+        rs = p3.evaluate("() => ({ kpis: document.querySelectorAll('.tv-kpis div').length, cons: document.querySelectorAll('#tv-research .tv-con').length, all: window.KIN_LINEAGE.conflicts.length, own: document.querySelectorAll('#tv-research .tv-qs li.own').length, ged: !!document.querySelector('#tv-ged') })")
+        p3.evaluate("KIN3D.mode('roots')"); p3.wait_for_timeout(300)
+        frames = p3.evaluate("KIN3D.state().frames"); wide3 = p3.evaluate("document.documentElement.scrollWidth")
+        p3.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); p3.wait_for_selector(".ln-door", timeout=15000); p3.wait_for_timeout(500)
+        p3.evaluate("document.querySelector('#ln-tree .ln-view-sw [data-v=fan]').click()"); p3.wait_for_timeout(300)
+        kd = p3.evaluate("() => { const d = document.querySelector('.ln-door'), im = d && d.querySelector('img'); return { href: d && d.getAttribute('href'), img: !!(im && im.complete && im.naturalWidth > 600), curved: document.querySelectorAll('.ln-fan text textPath').length, straight: document.querySelectorAll('.ln-fan text[transform]').length }; }")
+        ok3 = (s0["gl"] and s0["nodes"] >= 55 and s0["links"] >= 50 and lit > 400 and who and tap["sel"] == who[0] and len(tap["h"]) > 2
+               and jo["h"].startswith("Joseph Michael") and jo["cards"] >= 4 and jo["docs"] >= 20 and jo["ev"] >= 15 and jo["cons"] >= 6 and jo["chips"] >= 30 and jo["lbl"]
+               and vw["open"] and vw["img"] and vw["cap"] > 40 and vw["closed"] and tm["year"] == 1917 and "Joseph" in tm["cap"] and "1917" in tm["cap"] and tm["named"] >= 2
+               and gl["s"]["mode"] == "places" and gl["s"]["pins"] >= 15 and gl["s"]["glines"] >= 10 and gl["labels"] >= 3 and pin and gl["card"] >= 1
+               and rec["n"] == rec["imgs"] and rec["n"] >= 30 and rs["kpis"] == 5 and rs["cons"] == rs["all"] and rs["own"] >= 3 and rs["ged"]
+               and frames > 100 and wide3 <= 384 and kd["href"] == "tree/" and kd["img"] and kd["curved"] >= 20 and kd["straight"] == 0 and not e3)
+        proof("KIN-3D", "The family tree in three dimensions: WebGL draws everyone, a tap opens a person with their records beside them, a record opens full size, time travel names the living, the globe shows the journeys, the records and research views open; the Kin page has the door and the fan's names curve",
+              ok3, f"{s0['nodes']} people and {s0['links']} bridges drawn ({lit} lit pixels); tap {who} -> {tap}; Joseph {jo}; viewer {vw}; 1917 {tm['named']} named, caption {tm['cap'][:80]!r}; globe {gl['s']['pins']} places, {gl['s']['glines']} journeys, {gl['labels']} labels, tap {pin and pin[0]} -> {gl['card']} events; records {rec}; research {rs}; {frames} frames; page {wide3}px; Kin page {kd}" + (f"; errors {e3[:2]}" if e3 else ""))
+        c3.close()
+    except Exception as e: proof("KIN-3D", "The family tree in three dimensions", False, "did not finish: " + str(e)[:200])
     # WORLD-1 (2026-11-23, owner chose "living painted header"; all painted pillars since the rollout): a pillar opens on its own painting, alive (kit/world.js):
     # the canvas is drawn, the header takes its accent from the painting, the page never scrolls sideways; Athenaeum keeps its own sky
     # (no painting behind it); arriving from the menu's dive the painting starts pushed in and settles back.
