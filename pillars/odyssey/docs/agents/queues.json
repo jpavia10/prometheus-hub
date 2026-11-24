@@ -1596,11 +1596,11 @@
      "inputs": [
       "The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04",
       "The Drive folders 'Photos from YYYY' and the photos' EXIF GPS or what Google Photos shows",
-      "Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people."
+      "No privacy limit (owner, 2026-11-23: privacy in Odyssey is not important while the apps are built): give the real places, family homes and towns, and the people in the photos. Never a booking or confirmation code, a password or a card number."
      ],
      "steps": [
       "For each trip, list the places in the order you were there, one row per stop (a stop is a place you spent time or slept, not every photo).",
-      "For each stop: the first and last day, the nights there, how you got there from the stop before (car, flight, train), and coordinates to 3 decimals of a public place (a park, a landmark, a town centre).",
+      "For each stop: the first and last day, the nights there, how you got there from the stop before (car, flight, train), and coordinates to 3 decimals of the real place (a home, a hotel, a park).",
       "Say where the coordinates come from: EXIF GPS of a photo (give its file id) or the landmark the photo shows."
      ],
      "deliver": {
@@ -1638,7 +1638,7 @@
       {
        "name": "lat",
        "type": "number",
-       "rule": "3 decimals, a public place"
+       "rule": "3 decimals"
       },
       {
        "name": "lon",
@@ -1673,7 +1673,7 @@
       {
        "name": "note",
        "type": "text",
-       "rule": "'town centre' when the real place is a home, else empty"
+       "rule": "anything worth knowing about the stop, or empty"
       }
      ],
      "self_check": [
@@ -1683,7 +1683,7 @@
       "No row is a copy of another with the names changed.",
       "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
      ],
-     "done_when": "All six trips have every stop, in order, with coordinates of a public place.",
+     "done_when": "All six trips have every stop, in order, with its coordinates.",
      "checks": [
       "Claude opens 12 rows at random against their pages and redoes every 'math' field."
      ],
@@ -1707,7 +1707,7 @@
      "inputs": [
       "The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04",
       "Your ODY-GEM-16 file odyssey_gemini_photo-trip-days_20261123-0941.json for the shape",
-      "Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people."
+      "No privacy limit (owner, 2026-11-23: privacy in Odyssey is not important while the apps are built): give the real places, family homes and towns, and the people in the photos. Never a booking or confirmation code, a password or a card number."
      ],
      "steps": [
       "For every day of each trip with photos: the town, the places in order, the first and last photo time in local time, how many photos, 2 Drive file ids as evidence."
@@ -1801,10 +1801,10 @@
      "inputs": [
       "The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04",
       "Your picks file odyssey_gemini_photo-picks_20261121-0818.json for the shape",
-      "Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people. Pick photos with no faces; a person far away and small is fine. No photos inside a home."
+      "No privacy limit (owner, 2026-11-23: privacy in Odyssey is not important while the apps are built): give the real places, family homes and towns, and the people in the photos. Never a booking or confirmation code, a password or a card number."
      ],
      "steps": [
-      "For each trip, rank the 3 to 8 best photos: landmarks, views, the road, the food, the signs that say where you are.",
+      "For each trip, rank the 3 to 8 best photos: the people on the trip, landmarks, views, the road, the food, the signs that say where you are.",
       "For each: its Drive file id, date and local time from the file name, the place, and a one-line caption that says what is in it."
      ],
      "deliver": {
@@ -1852,7 +1852,7 @@
       {
        "name": "people",
        "type": "text",
-       "rule": "none, or 'far and small'"
+       "rule": "who is in it, if you can tell (e.g. 'Joseph', 'Joseph and his partner'), or 'none'"
       }
      ],
      "self_check": [
@@ -1875,7 +1875,7 @@
       "a guess written as a fact (write 'not stated' and name the page you checked)"
      ],
      "id": "ODY-GEM-21",
-     "title": "Odyssey: the best photos of the six new trips (scenery and landmarks only)",
+     "title": "Odyssey: the best photos of the six new trips",
      "due": "2026-12-06"
     },
     {
@@ -2232,7 +2232,7 @@
      "why": "Odyssey plans the next trip as well as the past ones; the family lives at the top of the Grapevine, and most weekends start there.",
      "unlocks": "A 'weekend from home' list on Odyssey's plan view, each a tap from a new trip file.",
      "inputs": [
-      "Start point: Frazier Park town centre (34.823, -118.945). Never use a street address.",
+      "Start point: home in Frazier Park (34.823, -118.945 is the town centre; use it for the drive times).",
       "Official pages only: nps.gov, fs.usda.gov, parks.ca.gov, the city's or county's visitor bureau, recreation.gov for permits"
      ],
      "steps": [
@@ -2264,7 +2264,7 @@
       {
        "name": "lat",
        "type": "number",
-       "rule": "3 decimals, a public place"
+       "rule": "3 decimals"
       },
       {
        "name": "lon",

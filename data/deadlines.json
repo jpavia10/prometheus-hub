@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 23:05 UTC",
+ "updated": "2026-11-24 02:14 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -294,7 +294,7 @@
    "ai": "gemini",
    "ai_name": "Gemini",
    "id": "ODY-GEM-21",
-   "title": "Odyssey: the best photos of the six new trips (scenery and landmarks only)",
+   "title": "Odyssey: the best photos of the six new trips",
    "state": "now",
    "count": 0
   },

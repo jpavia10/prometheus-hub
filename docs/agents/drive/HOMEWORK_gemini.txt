@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-23 23:05 UTC. 52 to do across 26 pillars.
+Updated 2026-11-24 02:14 UTC. 52 to do across 26 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -36,7 +36,7 @@ IN THIS ORDER:
 18. [Hermes Post] HER-GEM-13 · Hermes: the official fraud and customer-service phone numbers for billers 1-50 · due 2026-12-06
 19. [Bastion · Mountain Prep] BAS-GEM-14 · Bastion: how much fuel a household may store (gasoline, propane, generators) under Kern's fire code · due 2026-12-06
 20. [Odyssey · Trips & Away Mode] ODY-GEM-20 · Odyssey: the six new trips day by day · due 2026-12-06
-21. [Odyssey · Trips & Away Mode] ODY-GEM-21 · Odyssey: the best photos of the six new trips (scenery and landmarks only) · due 2026-12-06
+21. [Odyssey · Trips & Away Mode] ODY-GEM-21 · Odyssey: the best photos of the six new trips · due 2026-12-06
 22. [Odyssey · Trips & Away Mode] ODY-GEM-24 · Odyssey: going back to the Philippines in 2026-27: entry rules for a US citizen, from the official pages · due 2026-12-06
 23. [Argus Album] ARG-GEM-13 · Argus: what Google Takeout gives for Google Photos (the JSON beside each photo), and how to export only some albums · due 2026-12-06
 24. [Kin] KIN-GEM-06 · Kin: a US passport for a child under 16 in 2026-27 (DS-11, both parents, DS-3053), fees and times · due 2026-12-06
@@ -568,11 +568,11 @@ IN THIS ORDER:
 **Read first:**
 - The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04
 - The Drive folders 'Photos from YYYY' and the photos' EXIF GPS or what Google Photos shows
-- Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people.
+- No privacy limit (owner, 2026-11-23: privacy in Odyssey is not important while the apps are built): give the real places, family homes and towns, and the people in the photos. Never a booking or confirmation code, a password or a card number.
 
 **Do this:**
 1. For each trip, list the places in the order you were there, one row per stop (a stop is a place you spent time or slept, not every photo).
-2. For each stop: the first and last day, the nights there, how you got there from the stop before (car, flight, train), and coordinates to 3 decimals of a public place (a park, a landmark, a town centre).
+2. For each stop: the first and last day, the nights there, how you got there from the stop before (car, flight, train), and coordinates to 3 decimals of the real place (a home, a hotel, a park).
 3. Say where the coordinates come from: EXIF GPS of a photo (give its file id) or the landmark the photo shows.
 
 **Make:** `odyssey_gemini_new-trip-stops_{YYYYMMDD-HHMM}.json`
@@ -587,14 +587,14 @@ IN THIS ORDER:
 - `order` (number): 1, 2, 3 within the trip
 - `place` (text): the stop's name
 - `country` (text): 
-- `lat` (number): 3 decimals, a public place
+- `lat` (number): 3 decimals
 - `lon` (number): 3 decimals
 - `first_day` (date): YYYY-MM-DD
 - `last_day` (date): YYYY-MM-DD
 - `nights` (number): nights at this stop
 - `by` (text): car, flight, train, ferry, or 'start'
 - `evidence` (text): photo file id and EXIF or landmark
-- `note` (text): 'town centre' when the real place is a home, else empty
+- `note` (text): anything worth knowing about the stop, or empty
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -603,7 +603,7 @@ IN THIS ORDER:
 - [ ] No row is a copy of another with the names changed.
 - [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
 
-**Done when:** All six trips have every stop, in order, with coordinates of a public place.
+**Done when:** All six trips have every stop, in order, with its coordinates.
 
 **How Claude checks it:**
 - Claude opens 12 rows at random against their pages and redoes every 'math' field.
@@ -1015,7 +1015,7 @@ IN THIS ORDER:
 **Read first:**
 - The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04
 - Your ODY-GEM-16 file odyssey_gemini_photo-trip-days_20261123-0941.json for the shape
-- Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people.
+- No privacy limit (owner, 2026-11-23: privacy in Odyssey is not important while the apps are built): give the real places, family homes and towns, and the people in the photos. Never a booking or confirmation code, a password or a card number.
 
 **Do this:**
 1. For every day of each trip with photos: the town, the places in order, the first and last photo time in local time, how many photos, 2 Drive file ids as evidence.
@@ -1058,7 +1058,7 @@ IN THIS ORDER:
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
 ==================== 21. ODYSSEY · TRIPS & AWAY MODE ====================
-## 21. ODY-GEM-21 · Odyssey: the best photos of the six new trips (scenery and landmarks only)
+## 21. ODY-GEM-21 · Odyssey: the best photos of the six new trips
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -1067,10 +1067,10 @@ IN THIS ORDER:
 **Read first:**
 - The six trips your run 6 found (odyssey_gemini_more-trips_20261123-1316.json): Los Angeles 2015-03-02..07, Monroe MI 2018-03-24..28, Detroit 2020-01-30..02-03, Zion and Hurricane UT 2020-07-10..13, Detroit-Monroe-Toledo 2022-09-12..15, Miami Beach 2023-09-02..04
 - Your picks file odyssey_gemini_photo-picks_20261121-0818.json for the shape
-- Privacy: the hub is a public website. Never give a house's coordinates or street: where a stop is a family home or a rental, give the town centre (e.g. Monroe, MI 41.916, -83.398) and write 'town centre' in the note. No booking codes, no names of people. Pick photos with no faces; a person far away and small is fine. No photos inside a home.
+- No privacy limit (owner, 2026-11-23: privacy in Odyssey is not important while the apps are built): give the real places, family homes and towns, and the people in the photos. Never a booking or confirmation code, a password or a card number.
 
 **Do this:**
-1. For each trip, rank the 3 to 8 best photos: landmarks, views, the road, the food, the signs that say where you are.
+1. For each trip, rank the 3 to 8 best photos: the people on the trip, landmarks, views, the road, the food, the signs that say where you are.
 2. For each: its Drive file id, date and local time from the file name, the place, and a one-line caption that says what is in it.
 
 **Make:** `odyssey_gemini_new-trip-picks_{YYYYMMDD-HHMM}.json`
@@ -1087,7 +1087,7 @@ IN THIS ORDER:
 - `taken` (text): YYYY-MM-DD HH:MM local
 - `place` (text): 
 - `caption` (text): what is in the photo, one line
-- `people` (text): none, or 'far and small'
+- `people` (text): who is in it, if you can tell (e.g. 'Joseph', 'Joseph and his partner'), or 'none'
 
 **Before you save, check every one of these yourself:**
 - [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
@@ -1214,7 +1214,7 @@ IN THIS ORDER:
 
 **Do this:**
 1. Every rule: who must appear, what consent form if one parent cannot, the documents (birth certificate, parents' IDs, photo), the fees (book, card, execution, expedite), processing times, how long the passport is valid.
-2. No names or details of the children: general rules only.
+2. General rules from the official pages; Kin applies them to each child.
 
 **Make:** `kin_gemini_child-passport_{YYYYMMDD-HHMM}.json`
 
@@ -1901,7 +1901,7 @@ IN THIS ORDER:
 **What it unlocks:** A 'weekend from home' list on Odyssey's plan view, each a tap from a new trip file.
 
 **Read first:**
-- Start point: Frazier Park town centre (34.823, -118.945). Never use a street address.
+- Start point: home in Frazier Park (34.823, -118.945 is the town centre; use it for the drive times).
 - Official pages only: nps.gov, fs.usda.gov, parks.ca.gov, the city's or county's visitor bureau, recreation.gov for permits
 
 **Do this:**
@@ -1918,7 +1918,7 @@ IN THIS ORDER:
 - `n` (number): 1, 2, 3 ...
 - `place` (text): 
 - `kind` (text): park, beach, town, museum, snow, lake
-- `lat` (number): 3 decimals, a public place
+- `lat` (number): 3 decimals
 - `lon` (number): 
 - `drive_h` (number): hours
 - `drive_mi` (number): miles

@@ -52,6 +52,7 @@ export const ALLOW = [
   ["pillars/hermes/operators.js", "mail-search examples"],
   ["pillars/hermes/docs/", "queue examples"],
   ["pillars/athenaeum/history-seed.js", "world-history shelf, including historical prices"],
+  ["pillars/odyssey/cities.js", "place cards quoting official tourism pages (a city's history can name a price, e.g. Las Vegas's $70-million canopy)"],
   ["pillars/athenaeum/data/", "chronicle reference"],
   ["pillars/bastion/data/", "public-agency contacts in the readiness reference"],
   ["pillars/sylade/", "public presence address, not a private inbox"],

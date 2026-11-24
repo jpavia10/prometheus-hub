@@ -14,7 +14,8 @@ Output: pillars/odyssey/odyssey-extra.js
   window.ODYSSEY_LANDMARKS = [{name, local, city, country, lat, lon, year, unesco, url, fact, trips: [trip ids]}]
 A landmark belongs to every trip with a stop within 130 km of it (Manila's sights show on both Philippine trips).
 
-Privacy (public repository): GPS readings and home towns are taken out of the day notes; Drive file ids are not shipped.
+Notes are shipped as Gemini wrote them (owner, 2026-11-23: privacy is not a limit in Odyssey while building), tidied for reading:
+GPS readings in brackets and time-zone remarks are dropped as clutter; Drive file ids are not shipped (nothing reads them).
 
   python3 tools/odyssey/extras.py EUROTRIP_DAYS PHILIPPINES_DAYS LANDMARKS [PHOTO_TRIP_DAYS LANDMARKS_USA ...]
 """
@@ -25,11 +26,7 @@ OUT = os.path.join(HERE, "..", "..", "pillars", "odyssey", "odyssey-extra.js")
 
 
 def clean(t):
-    t = re.sub(r"\s*\((?:EXIF )?GPS[^)]*\)", "", t)                        # no coordinates
-    t = re.sub(r"Home in [^;]*", "Home in Michigan", t)                     # no home town
-    t = re.sub(r"(Grand Blanc|Flint)(, MI)?\s*/\s*", "", t)
-    t = re.sub(r"Cemetery lawn,?\s*", "", t)                                # a family visit, not a sight
-    t = re.sub(r"\s*boarding pass", "", t)
+    t = re.sub(r"\s*\((?:EXIF )?GPS[^)]*\)", "", t)                        # coordinates in brackets read as clutter
     t = re.sub(r"\s*\((?:EDT|EST|PDT|PST) timestamp\)", "", t)
     t = re.sub(r"\s{2,}", " ", t).strip(" ;")
     return t[:1].upper() + t[1:]

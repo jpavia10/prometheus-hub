@@ -295,7 +295,7 @@
      ],
      "steps": [
       "Every rule: who must appear, what consent form if one parent cannot, the documents (birth certificate, parents' IDs, photo), the fees (book, card, execution, expedite), processing times, how long the passport is valid.",
-      "No names or details of the children: general rules only."
+      "General rules from the official pages; Kin applies them to each child."
      ],
      "deliver": {
       "file": "kin_gemini_child-passport_{YYYYMMDD-HHMM}.json",

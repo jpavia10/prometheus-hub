@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
+Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Odyssey · Trips & Away Mode right now.
 
 ## Gemini
 
-Updated 2026-11-23 23:05 UTC · 10 open in this pillar.
+Updated 2026-11-24 02:14 UTC · 10 open in this pillar.
 
 
 - ODY-GEM-23 · Odyssey: the park card gaps (Sequoia and Kings Canyon areas, Kings Canyon's heights, Grand Canyon's low point) · due 2026-12-03
@@ -23,10 +23,10 @@ Updated 2026-11-23 23:05 UTC · 10 open in this pillar.
 - ODY-GEM-18 · Odyssey: a card for the 10 stops still without one (the photo trips) · due 2026-12-05
     make: odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json · how many: 10 · done when: All 10 codes answered.
 - ODY-GEM-19 · Odyssey: the stops of the six trips your run 6 found, in order, with where they are · due 2026-12-05
-    make: odyssey_gemini_new-trip-stops_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All six trips have every stop, in order, with coordinates of a public place.
+    make: odyssey_gemini_new-trip-stops_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All six trips have every stop, in order, with its coordinates.
 - ODY-GEM-20 · Odyssey: the six new trips day by day · due 2026-12-06
     make: odyssey_gemini_new-trip-days_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every day with photos on all six trips.
-- ODY-GEM-21 · Odyssey: the best photos of the six new trips (scenery and landmarks only) · due 2026-12-06
+- ODY-GEM-21 · Odyssey: the best photos of the six new trips · due 2026-12-06
     make: odyssey_gemini_new-trip-picks_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Three to eight picks for each of the six trips.
 - ODY-GEM-24 · Odyssey: going back to the Philippines in 2026-27: entry rules for a US citizen, from the official pages · due 2026-12-06
     make: odyssey_gemini_ph-entry_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every entry rule on the four official sources.
@@ -41,28 +41,28 @@ Updated 2026-11-23 23:05 UTC · 10 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
+Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Odyssey · Trips & Away Mode right now.
 
 ## ChatGPT
 
-Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
+Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Odyssey · Trips & Away Mode right now.
 
 ## Argon
 
-Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
+Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Odyssey · Trips & Away Mode right now.
 
 ## Hydrogen
 
-Updated 2026-11-23 23:05 UTC · 0 open in this pillar.
+Updated 2026-11-24 02:14 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Odyssey · Trips & Away Mode right now.

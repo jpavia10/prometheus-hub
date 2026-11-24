@@ -1,4 +1,5 @@
-"""Proofs for the deck, run in a real browser at phone size against a URL (local server or the live site).
+"""Proofs for the deck, run in a real browser at phone size against a URL (local server or the live site). Phone size is the
+   Galaxy S24 Ultra, 384 x 832 CSS px (owner, 2026-11-23: "S24 ultra is smallest phone").
    python3 proofs/run.py http://127.0.0.1:8377/ [--mock-weather] [--out proofs/results.json]
    Each proof is a thing the page itself does; nothing here re-implements the app. Exit code 1 if any proof fails."""
 import sys, json, datetime, pathlib
@@ -21,13 +22,13 @@ ICS_JS = """async () => { const m = await import(new URL('deck/core/ics.js', doc
 
 with sync_playwright() as p:
     b = p.chromium.launch(args=["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist"])
-    ctx = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US")
+    ctx = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US")
     pg = ctx.new_page(); errs = []
     pg.on("pageerror", lambda e: errs.append(str(e))); pg.on("console", lambda m: errs.append(m.text) if m.type == "error" and "ERR_" not in m.text else None)
     if MOCK:
         pg.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pg.route("https://api.weather.gov/**", lambda route, request: route.abort()); pg.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())   # a local server has no Titan next door
     # CORE: the hub as it opens on a clean device: every pillar, no sample data
-    c2 = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); p2 = c2.new_page(); p2.on("pageerror", lambda e: errs.append("core: " + str(e)))
+    c2 = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); p2 = c2.new_page(); p2.on("pageerror", lambda e: errs.append("core: " + str(e)))
     if MOCK:
         p2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p2.route("https://api.weather.gov/**", lambda route, request: route.abort()); p2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
     p2.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p2.wait_for_selector(".realm .rl-pl", timeout=20000); p2.wait_for_selector(".now-line", timeout=20000); p2.wait_for_timeout(900)
@@ -39,7 +40,7 @@ with sync_playwright() as p:
       fits: view.scrollHeight <= view.clientHeight + 2 && !!card && card.getBoundingClientRect().bottom <= dockTop + 2 }; }""")
     missing = [i for i in CORE_IDS if i not in ci["ids"]]; extra = [i for i in ci["ids"] if i not in CORE_IDS]
     proof("CORE-1", f"Every pillar in pillars.json is a place in the realm ({len(CORE_IDS)} live destinations; the desk and paused fleet are not drawn); a clean device shows no sample data",
-          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 390 and ci["now"] and ci["cards"] == 1 and ci["fits"],
+          not missing and not extra and len(ci["ids"]) == len(CORE_IDS) and not ci["demo"] and ci["events"] == 0 and not ci["plan"] and ci["wide"] <= 384 and ci["now"] and ci["cards"] == 1 and ci["fits"],
           json.dumps({"expected": len(CORE_IDS), "drawn": len(ci["ids"]), "missing": missing, "extra": extra, "demo": ci["demo"], "events": ci["events"], "plan": ci["plan"], "wide": ci["wide"], "now": ci["now"], "cards": ci["cards"], "fits": ci["fits"]}))
     routes = p2.evaluate("[...document.querySelectorAll('.realm .rl-pl')].map((a) => a.getAttribute('href'))"); bad = []; local = [r for r in routes if not r.startswith("http")]
     for r in local:
@@ -55,7 +56,7 @@ with sync_playwright() as p:
     except Exception as e: landed = "did not land: " + str(e)[:80]
     proof("CORE-4", "Tapping a place flies to it, tapping it again warps into that pillar", "Apollo" in landed, landed); c2.close()
     # MENU-1: the home is a game menu (owner, 2026-11-16): every pillar a level, its own light, a live line, Today on top, the orbit and the briefing kept
-    cm = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pm = cm.new_page(); bm = []; pm.on("pageerror", lambda e: bm.append(str(e)[:120]))
+    cm = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); pm = cm.new_page(); bm = []; pm.on("pageerror", lambda e: bm.append(str(e)[:120]))
     if MOCK: pm.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pm.route("https://api.weather.gov/**", lambda route, request: route.abort())
     try:
         pm.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pm.wait_for_selector(".menu .mn-lvl", timeout=20000); pm.wait_for_timeout(900)
@@ -69,7 +70,7 @@ with sync_playwright() as p:
         pm.evaluate("document.querySelectorAll('.mn-lvl')[3].click()"); pm.wait_for_timeout(400); lvl = pm.evaluate("document.querySelector('.mn-lvl.on').dataset.pillar")
         pm.click(".mn-enter"); pm.wait_for_url("**/pillars/**", timeout=30000); landed = pm.url.split("/pillars/")[1].split("/")[0]
         mskip = [e for e in bm if "ViewTransition opt-in disabled" in e or "Transition was aborted" in e]; bm = [e for e in bm if e not in mskip]   # the browser dropping its own morph, as in DECK-2
-        ok = (m0["levels"] == 27 and m0["today"] >= 1 and m0["gl"] and m0["briefing"] and m0["enter"] and m0["wide"] <= 390 and m1["title"] != m0["title"] and m1["hue"] != m0["hue"]
+        ok = (m0["levels"] == 27 and m0["today"] >= 1 and m0["gl"] and m0["briefing"] and m0["enter"] and m0["wide"] <= 384 and m1["title"] != m0["title"] and m1["hue"] != m0["hue"]
               and orbit and back == m1["title"] and landed == lvl and not bm)
         proof("MENU-1", "The home is a game menu: 27 levels with their own light and a live line, Today on top, swipe or arrow keys move, Enter warps in, the orbit and the briefing are one tap away",
               ok, f"{m0['levels']} levels; '{m0['title']}' -> '{m1['title']}' (hue {m0['hue']} -> {m1['hue']}); live: {m0['live'][:60]}; today rows {m0['today']}; WebGL {m0['gl']}; orbit and back {orbit}/{bool(back)}; entered {landed} from level {lvl}" + (f"; errors {bm[:2]}" if bm else "") + (f"; the browser skipped {len(mskip)} morph(s)" if mskip else ""))
@@ -77,7 +78,7 @@ with sync_playwright() as p:
     cm.close()
     # MENU-2: every level stands in its own painted world (2026-11-19): every world in art/worlds/index.json has its three files, the menu shows
     # the painting behind the level and steps the crest back, and the title screen (lock and loading) uses the home painting
-    cw = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pw = cw.new_page(); bw = []; pw.on("pageerror", lambda e: bw.append(str(e)[:120]))
+    cw = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); pw = cw.new_page(); bw = []; pw.on("pageerror", lambda e: bw.append(str(e)[:120]))
     if MOCK: pw.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pw.route("https://api.weather.gov/**", lambda route, request: route.abort())
     try:
         pw.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pw.wait_for_selector(".menu .mn-lvl", timeout=20000); pw.wait_for_timeout(1200)
@@ -96,7 +97,7 @@ with sync_playwright() as p:
     # TODAY-1 (2026-11-19, the hub's weakest link): on a fresh device the home's Today leads with the real deadlines it knows without any pillar
     # being opened (Kern County, California and federal dates from Kairos), holidays only fill; the daily background run of the publishing
     # pillars fills the shared deadlines without a visit
-    ct = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); pt = ct.new_page(); bt = []; pt.on("pageerror", lambda e: bt.append(str(e)[:120]))
+    ct = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); pt = ct.new_page(); bt = []; pt.on("pageerror", lambda e: bt.append(str(e)[:120]))
     if MOCK: pt.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pt.route("https://api.weather.gov/**", lambda route, request: route.abort())
     try:
         pt.goto(f"{URL}?now={NOW}&home=menu#/", wait_until="load"); pt.wait_for_selector(".mn-today .mn-trow", timeout=20000); pt.wait_for_timeout(900)
@@ -116,7 +117,7 @@ with sync_playwright() as p:
     # Eurotrip draws 20 stops on the Natural Earth map, its logbook holds all 21 legs (56 nights), the budget adds up from the sheet's rows
     # and names the row the sheet's own total leaves out; past trips carry no packing or away controls. A phone that had the first seed
     # gets the two new trips once, keeps its own trip, and a deleted seed stays deleted. The hub's search finds a trip by a city on it.
-    co = b.new_context(viewport={"width": 390, "height": 844}, timezone_id="America/Los_Angeles", locale="en-US"); po = co.new_page(); bo = []
+    co = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); po = co.new_page(); bo = []
     po.on("pageerror", lambda e: bo.append(str(e)[:120]))
     if MOCK: po.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); po.route("https://api.weather.gov/**", lambda route, request: route.abort()); po.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
     try:
@@ -127,7 +128,7 @@ with sync_playwright() as p:
             total: [...e.querySelectorAll('.budget .kv.sum b')].map((x) => x.textContent), check: (e.querySelector('.budget-check') || {}).textContent || '',
             pastCtl: document.querySelectorAll('.trip.past .checks, .trip.past .row-actions .btn:not(.quiet)').length, past: document.querySelectorAll('.trip.past').length,
             countries: [...document.querySelectorAll('.board-cell')].find((c) => /Countries/.test(c.textContent)).querySelector('.board-v').textContent }; }""")
-        co2 = b.new_context(viewport={"width": 390, "height": 844}); po2 = co2.new_page(); po2.on("pageerror", lambda e: bo.append(str(e)[:120]))
+        co2 = b.new_context(viewport={"width": 384, "height": 832}); po2 = co2.new_page(); po2.on("pageerror", lambda e: bo.append(str(e)[:120]))
         po2.goto(f"{URL}pillars/odyssey/", wait_until="commit")
         po2.evaluate("""() => { localStorage.clear(); localStorage.setItem('prometheus.odyssey.tripsSeedV1', '1');
           localStorage.setItem('prometheus.odyssey.trips', JSON.stringify([{ id: 'seed-philippines-2024', name: 'Manila & El Nido — Philippines', dest: 'Manila and El Nido, Philippines', start: '2024-08-30', end: '2024-09-09', notes: 'the old shipped note', packState: { 'his mark': true } },
@@ -139,9 +140,10 @@ with sync_playwright() as p:
         m2 = po2.evaluate("() => JSON.parse(localStorage.getItem('prometheus.odyssey.trips')).map((x) => x.id).sort()")
         po2.goto(f"{URL}?now={NOW}&home=orbit&nosweep=1#/", wait_until="load"); po2.wait_for_function("window.__deck && window.__deck.reach", timeout=20000); po2.wait_for_timeout(1500)
         hit = po2.evaluate("window.__deck.reach.searchRecords('Tagaytay')"); co2.close()
-        PH = ["photos-atlanta-2015", "photos-bigsur-2018", "photos-mexico-2019", "photos-michigan-2022", "photos-michigan-2023", "photos-mammoth-2022", "photos-norcal-2021", "photos-sandiego-2022", "photos-sequoia-2018", "photos-vegas-2019"]  # 2026-11-23: ten trips found in his photos
-        ok = (o1["trips"] == 13 and o1["stops"] == 20 and o1["named"] >= 17 and o1["land"] > 5000 and o1["legs"] == 21 and o1["nights"] == 56 and o1["total"] == ["$5,583.00", "$6,699.60"]
-              and "ferry row, $62.00" in o1["check"] and o1["pastCtl"] == 0 and o1["past"] == 13 and o1["countries"] == "13"
+        PH = ["photos-atlanta-2015", "photos-bigsur-2018", "photos-mexico-2019", "photos-michigan-2022", "photos-michigan-2023", "photos-mammoth-2022", "photos-norcal-2021", "photos-sandiego-2022", "photos-sequoia-2018", "photos-vegas-2019",
+              "photos-la-2015", "photos-monroe-2018", "photos-detroit-2020", "photos-zion-2020", "photos-michigan-2022-09", "photos-miami-2023"]  # 2026-11-23: sixteen trips found in his photos (ten, then six more in d66)
+        ok = (o1["trips"] == 19 and o1["stops"] == 20 and o1["named"] >= 17 and o1["land"] > 5000 and o1["legs"] == 21 and o1["nights"] == 56 and o1["total"] == ["$5,583.00", "$6,699.60"]
+              and "ferry row, $62.00" in o1["check"] and o1["pastCtl"] == 0 and o1["past"] == 19 and o1["countries"] == "13"
               and m1["ids"] == sorted(["mine1", "seed-eurotrip-2015", "seed-philippines-2024", "seed-philippines-2024-04"] + PH) and m1["notes"] and m1["mark"] and m1["ctl"] == 1
               and m2 == sorted(["mine1", "seed-philippines-2024", "seed-philippines-2024-04"] + PH) and len(hit) >= 1 and hit[0]["title"].startswith("Manila, Tagaytay") and not bo)
         proof("ODY-1", "His own trips on record: the 2015 Eurotrip and both 2024 Philippines trips filed once each, drawn on a map from real coordinates, every leg in the logbook, the plan's budget added up from the sheet's rows with the row its total leaves out named, past trips as records; an older phone gets the new trips and the corrected notes, keeps its own trips and marks, and a deleted trip stays deleted",
@@ -173,16 +175,18 @@ with sync_playwright() as p:
         po.click(P2 + '.jr-play'); po.wait_for_timeout(4700)
         played = po.evaluate("(P) => document.querySelector(P + '.jr-count').textContent", P2)
         wide = po.evaluate("document.documentElement.scrollWidth")
-        # 2026-11-23: 71 photos on 13 trips (the Eurotrip 18, April 2024 15, September 2024 5, and the ten trips found in his photos)
-        PHN = {"seed-eurotrip-2015": 18, "seed-philippines-2024-04": 15, "seed-philippines-2024": 5, "photos-atlanta-2015": 4, "photos-bigsur-2018": 4, "photos-sequoia-2018": 4,
+        # 2026-11-23: 71 photos on 13 trips (the Eurotrip 18, April 2024 15, September 2024 5, and the ten trips found in his photos);
+        # d66: 84, with his photos of people (owner: privacy in Odyssey is not a limit while building; 2026-11-24: no one else in the April
+        # 2024 trip's photos): Eurotrip 20, April 17, September 14
+        PHN = {"seed-eurotrip-2015": 20, "seed-philippines-2024-04": 17, "seed-philippines-2024": 14, "photos-atlanta-2015": 4, "photos-bigsur-2018": 4, "photos-sequoia-2018": 4,
                "photos-vegas-2019": 5, "photos-mexico-2019": 3, "photos-norcal-2021": 4, "photos-sandiego-2022": 4, "photos-michigan-2022": 2, "photos-mammoth-2022": 2, "photos-michigan-2023": 1}
-        ok = ({k: v for k, v in j1["n"].items() if v} == PHN and j1["files"] == 71 and shut == 0 and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
-              and j2["todo"] == 15 and j3.startswith("PRAGUE") and lb and gone and played.startswith("2 /") and wide <= 390 and not bo)
+        ok = ({k: v for k, v in j1["n"].items() if v} == PHN and j1["files"] == 84 and shut == 0 and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
+              and j2["todo"] == 15 and j3.startswith("PRAGUE") and lb and gone and played.startswith("2 /") and wide <= 384 and not bo)
         proof("ODY-2", "His trip photos as a journey: each past trip opens on its own photos, every photo is served, the map follows the photo (route drawn to that stop, the stop ringed), a stop on the map opens its photos, full screen steps and closes from the keyboard, Play walks the trip",
               ok, f"photos per trip {j1['n']}, {j1['files']} photos and their thumbnails served, {j1['bad']} missing; trip files open at first: {shut}; photo 7 -> {j2['place']}, ringed {j2['here']}, {j2['todo']} legs still ahead; tapping Prague on the map -> {j3}; full screen next -> {lb!r}, Escape closes: {gone}; Play after 4.7 s -> {played}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("ODY-2", "His trip photos as a journey", False, "did not finish: " + str(e)[:200])
     # ODY-3 (2026-11-23): every place he has been. The atlas shows each region's places on its own outline map (Europe 20, Philippines 4,
-    # US West & Mexico 19 since d65 added Cabo San Lucas, US East 3; 46 places, 13 countries); a place opens its visits with a way into the trip file; lighting one trip
+    # US West & Mexico 23 and US East 6 since d66 added six trips (d65: Cabo San Lucas); 54 places, 13 countries; it opens on the biggest region); a place opens its visits with a way into the trip file; lighting one trip
     # dims the others. The globe at the top holds all 13 trips and turns to the next one on a tap.
     try:
         po.goto(f"{URL}pillars/odyssey/", wait_until="load"); po.wait_for_selector("#o-atlas .at-map", state="attached", timeout=15000)
@@ -203,9 +207,9 @@ with sync_playwright() as p:
         before = po.evaluate("document.querySelector('.pk-stage canvas').toDataURL().length"); po.mouse.click(box[0], box[1]); po.wait_for_timeout(2400)
         after = po.evaluate("document.querySelector('.pk-stage canvas').toDataURL().length")
         wide = po.evaluate("document.documentElement.scrollWidth")
-        ok = (a1["regs"] == {"europe": 20, "philippines": 4, "west": 19, "east": 3} and a1["stats"] == ["46", "13"] and a1["shown"] == "europe" and a1["dots"] == 20
+        ok = (a1["regs"] == {"europe": 20, "philippines": 4, "west": 23, "east": 6} and a1["stats"] == ["54", "13"] and a1["shown"] == "west" and a1["dots"] == 23
               and a2["name"].startswith("Manila") and a2["visits"] == 2 and a3["on"] >= 2 and a3["off"] >= 1 and a4 == ["seed-eurotrip-2015"]
-              and g1 and g1["trips"] == 13 and g1["places"] == 46 and before != after and wide <= 390 and not bo)
+              and g1 and g1["trips"] == 19 and g1["places"] == 54 and before != after and wide <= 384 and not bo)
         proof("ODY-3", "Every place he has been: the atlas draws each region's places on its outline map, a place opens its visits and its trip file, one trip can be lit; the globe holds every trip and turns on a tap",
               ok, f"regions {a1['regs']}, {a1['stats'][0]} places in {a1['stats'][1]} countries, opens on {a1['shown']} with {a1['dots']} places; Manila -> {a2['name']!r} with {a2['visits']} visits; "
                  f"April 2024 lit: {a3['on']} places lit, {a3['off']} dimmed; a Europe place -> trip file {a4}; globe {g1}; a tap redraws it: {before != after}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
@@ -229,8 +233,8 @@ with sync_playwright() as p:
         z0 = po.evaluate("window.PKWorld.state.zFirst"); t_set = po.evaluate("performance.now()")
         po.wait_for_function("Math.abs(window.PKWorld.state.z - 1) < 0.01", timeout=8000)   # a slow runner draws few frames; wait for the settle
         z1 = po.evaluate("window.PKWorld.state.z"); settle = (po.evaluate("performance.now()") - t_set) / 1000
-        ok = (all(seen[k]["living"] and seen[k]["acc"].startswith("hsl(") and seen[k]["wide"] <= 390 for k in ("kairos", "garage", "odyssey", "apollo", "sylade"))
-              and not seen["athenaeum"]["living"] and seen["athenaeum"]["wide"] <= 390 and z0 > 1.05 and abs(z1 - 1) < 0.01 and not bo)
+        ok = (all(seen[k]["living"] and seen[k]["acc"].startswith("hsl(") and seen[k]["wide"] <= 384 for k in ("kairos", "garage", "odyssey", "apollo", "sylade"))
+              and not seen["athenaeum"]["living"] and seen["athenaeum"]["wide"] <= 384 and z0 > 1.05 and abs(z1 - 1) < 0.01 and not bo)
         proof("WORLD-1", "Every painted pillar opens on its own living painting (accent from the painting, no sideways scroll); Athenaeum keeps its own sky; from the menu's dive the painting arrives pushed in and settles",
               ok, f"{ {k: (v['living'], v['acc'], v['wide']) for k, v in seen.items()} }; dive arrival: first frame on screen at zoom {z0:.2f}, settled to {z1:.3f} within {settle:.1f} s" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("WORLD-1", "The living painted header", False, "did not finish: " + str(e)[:200])
@@ -238,7 +242,7 @@ with sync_playwright() as p:
 
 
     # PILLAR: the shared pillar shell (crest, automatic sections, dock), checked on the long Piano page
-    c3 = b.new_context(viewport={"width": 390, "height": 844}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))
+    c3 = b.new_context(viewport={"width": 384, "height": 832}); p3 = c3.new_page(); p3.on("pageerror", lambda e: errs.append("pillar: " + str(e)))
     p3.goto(f"{URL}pillars/piano/", wait_until="load"); p3.wait_for_selector(".pk-dock", timeout=15000); p3.wait_for_timeout(900)
     def shell(): return p3.evaluate("""() => { const panels = [...document.querySelectorAll('main > section.grid > .glass')]; return { crest: !!document.querySelector('.pk-hero .pk-crest svg'), tabs: document.querySelectorAll('main > .pk-tabs .tab').length,
       showing: panels.filter((x) => x.offsetParent !== null).map((x) => x.querySelector('h2').textContent.slice(0, 22)), core: (document.querySelector('.pk-dock .pk-core') || {}).href || '', steps: document.querySelectorAll('.pk-dock a.compass-step').length,
@@ -249,14 +253,14 @@ with sync_playwright() as p:
     p3.evaluate("document.querySelectorAll('main > .pk-tabs .tab')[2].click()")
     p3.wait_for_function("""(prev) => { const shown = [...document.querySelectorAll('main > section.grid > .glass')].filter((x) => x.offsetParent !== null); const title = shown[0] && shown[0].querySelector('h2') ? shown[0].querySelector('h2').textContent.slice(0, 22) : ''; return shown.length === 1 && title !== prev; }""", arg=s1["showing"][0], timeout=5000)
     s2 = shell()
-    proof("PILLAR-1", "Every pillar's default shell: crest, sections from its own panels, a dock back to the core", s1["crest"] and s1["tabs"] >= 3 and len(s1["showing"]) == 1 and len(s2["showing"]) == 1 and s1["showing"] != s2["showing"] and s1["core"].endswith("/prometheus-hub/") | s1["core"].endswith(":8377/") and s1["steps"] >= 1 and s1["wide"] <= 390 and s1["tall"] < 2600,
+    proof("PILLAR-1", "Every pillar's default shell: crest, sections from its own panels, a dock back to the core", s1["crest"] and s1["tabs"] >= 3 and len(s1["showing"]) == 1 and len(s2["showing"]) == 1 and s1["showing"] != s2["showing"] and s1["core"].endswith("/prometheus-hub/") | s1["core"].endswith(":8377/") and s1["steps"] >= 1 and s1["wide"] <= 384 and s1["tall"] < 2600,
           f"Piano: {s1['tabs']} sections, showing {s1['showing']} then {s2['showing']}; page {s1['tall']} px tall at phone size (was 6,672); dock: core + {s1['steps']} neighbours"); c3.close()
 
     # PERF-1 (2026-11-20): a pillar at rest does no work it does not need. The kit's tab sync once re-triggered itself through its
     # own MutationObserver every frame (equal attribute and text writes still count as mutations), and the ambient field drew a
     # full-screen 2x canvas at 60 fps. At rest: no DOM mutations inside the page for a second, the field at 1x, the stage governed.
     try:
-        c5 = b.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2); p5 = c5.new_page()
+        c5 = b.new_context(viewport={"width": 384, "height": 832}, device_scale_factor=2); p5 = c5.new_page()
         p5.goto(f"{URL}pillars/money/", wait_until="load"); p5.wait_for_selector(".pk-dock", timeout=15000); p5.wait_for_timeout(1500)
         r5 = p5.evaluate("""() => new Promise((res) => { let n = 0; const mo = new MutationObserver((l) => { n += l.length; });
           mo.observe(document.getElementById('app'), { childList: true, subtree: true, attributes: true, characterData: true });
@@ -268,7 +272,7 @@ with sync_playwright() as p:
     except Exception as e: proof("PERF-1", "A pillar at rest does no needless work", False, "did not finish: " + str(e)[:200])
 
     # PILLAR-2: every pillar page in this repository runs clean: opened in a real page, every section tapped, and any script error fails the build
-    c4 = b.new_context(viewport={"width": 390, "height": 844}); dirty = []; taps = 0
+    c4 = b.new_context(viewport={"width": 384, "height": 832}); dirty = []; taps = 0
     if MOCK: c4.route("https://api.weather.gov/**", lambda route, request: route.abort())
     for r in local:
         p4 = c4.new_page(); mine = []; name = r.strip("/").split("/")[-1].replace(".html", "")
@@ -284,7 +288,7 @@ with sync_playwright() as p:
     proof("PILLAR-2", "Every pillar page runs without a script error, in every section", not dirty and len(local) >= 14, f"{len(local)} pages opened, {taps} sections tapped" + ("; errors: " + " | ".join(dirty) if dirty else ", no errors")); c4.close()
 
     # STAGE-1: every kit pillar opens on its own signature picture (drawn from its data), with readouts, and no script errors
-    c7 = b.new_context(viewport={"width": 390, "height": 844}); bare = []; shown = []
+    c7 = b.new_context(viewport={"width": 384, "height": 832}); bare = []; shown = []
     for pid in "kairos garage piano money apollo hermes argus selling icarus odyssey bastion privacy records forge foundry observatory kin hearth sylade".split():
         p7 = c7.new_page(); mine = []; p7.on("pageerror", lambda e, mine=mine: mine.append(str(e)[:100]))
         if MOCK: p7.route("https://jpavia10.github.io/**", lambda route, request: route.abort()); p7.route("https://api.weather.gov/**", lambda route, request: route.abort())
@@ -299,7 +303,7 @@ with sync_playwright() as p:
     # GARAGE-3D: the showroom shows a real model for each vehicle (owner, 2026-11-20: "That 3d car and motorcycle is retarded. Get a
     # free model ... sub if u can't find mine"): both GLBs load, are lit pixels on the canvas, carry their author and license, and the
     # caption says which stand-in is shown and credits it.
-    gc = b.new_context(viewport={"width": 390, "height": 844}); gp = gc.new_page(); bad_g = []; gp.on("pageerror", lambda e: bad_g.append(str(e)[:100]))
+    gc = b.new_context(viewport={"width": 384, "height": 832}); gp = gc.new_page(); bad_g = []; gp.on("pageerror", lambda e: bad_g.append(str(e)[:100]))
     gp.goto(f"{URL}pillars/garage/", wait_until="load"); gp.wait_for_timeout(600)
     gp.evaluate("() => { const t = [...document.querySelectorAll('main > .pk-tabs .tab')].find((x) => /3D/.test(x.textContent)); if (t) t.click(); }"); gp.wait_for_timeout(300)
     seen_g = []
@@ -320,7 +324,7 @@ with sync_playwright() as p:
           all(o for _, o, _ in seen_g) and not bad_g, " | ".join(d for _, _, d in seen_g) + ("; errors: " + " | ".join(bad_g) if bad_g else "")); gc.close()
 
     # NEW-1: the four pillars added 2026-11-13 do their jobs on real data
-    c8 = b.new_context(viewport={"width": 390, "height": 844}); p8 = c8.new_page(); bad8 = []; p8.on("pageerror", lambda e: bad8.append(str(e)[:100]))
+    c8 = b.new_context(viewport={"width": 384, "height": 832}); p8 = c8.new_page(); bad8 = []; p8.on("pageerror", lambda e: bad8.append(str(e)[:100]))
     if MOCK:
         import pathlib as _pl
         _ledger = _pl.Path(__file__).resolve().parents[2] / "titan-reliquary-preview" / "collaborators" / "CONTRIBUTOR_SCORES.md"
@@ -355,7 +359,7 @@ with sync_playwright() as p:
           f"Forge: {fg['scores']} scores {fg['by']}, {fg['tasks']} queue tasks ({fg['open']} open); Foundry: board {fd0} to {fd['board']}, bench {fd['bench']} at {fd['stage']}, Athenaeum unchanged {fd['same']}; Kin 2-2-3: {kn}" + (f"; errors {bad8}" if bad8 else "")); c8.close()
 
     # SINCE-1 and BACKUP-1: the hub says what changed in the pillars since the last visit; one file backs up and restores everything
-    c9 = b.new_context(viewport={"width": 390, "height": 844}, accept_downloads=True); p9 = c9.new_page(); bad9 = []; p9.on("pageerror", lambda e: bad9.append(str(e)[:100]))
+    c9 = b.new_context(viewport={"width": 384, "height": 832}, accept_downloads=True); p9 = c9.new_page(); bad9 = []; p9.on("pageerror", lambda e: bad9.append(str(e)[:100]))
     if MOCK:
         p9.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p9.route("https://api.weather.gov/**", lambda route, request: route.abort()); p9.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
     p9.goto(f"{URL}?now={NOW}&home=orbit#/", wait_until="load"); p9.wait_for_selector(".realm .rl-pl", timeout=20000); p9.wait_for_timeout(400)
@@ -377,12 +381,12 @@ with sync_playwright() as p:
           f"{bk['count']} stores backed up ({', '.join(bk['keys'])}); planted stores missing: {bk['absent'] or 'none'}; covered stores left out: {bk['missed'] or 'none'}; preview adds {bk['add']}; restored identical: {bk['same']}; unrelated key kept: {bk['kept']}; wrong file refused: {bk['bad']!r}"); c9.close()
 
     # ATHENAEUM: the first pillar rebuilt to the charter's standard. A clean device, a fixed day, motion held still so positions can be read.
-    c5 = b.new_context(viewport={"width": 390, "height": 844}, accept_downloads=True); p5 = c5.new_page(); p5.on("pageerror", lambda e: errs.append("athenaeum: " + str(e)[:160])); p5.on("console", lambda m: errs.append("athenaeum: " + m.text[:160]) if m.type == "error" and "ERR_" not in m.text and "Failed to load resource" not in m.text else None)
+    c5 = b.new_context(viewport={"width": 384, "height": 832}, accept_downloads=True); p5 = c5.new_page(); p5.on("pageerror", lambda e: errs.append("athenaeum: " + str(e)[:160])); p5.on("console", lambda m: errs.append("athenaeum: " + m.text[:160]) if m.type == "error" and "ERR_" not in m.text and "Failed to load resource" not in m.text else None)
     A = f"{URL}pillars/athenaeum/?still=1&today=2026-11-13"
     p5.goto(A, wait_until="load"); p5.wait_for_function("window.__ath && window.__ath.ready && window.__ath.chron.length > 0", timeout=30000); p5.wait_for_timeout(500)
-    a1 = p5.evaluate("""() => { const d = window.__ath.sky.debug(); return { n: window.__ath.live.length, gl: d.ok && d.viewport[2] === d.canvas[0] && d.viewport[3] === d.canvas[1], stars: d.ideas.filter((n) => n && n.on && n.x > 0 && n.x < 390 && n.y > 60 && n.y < 800).length, lines: d.lines, arm: d.arm, groups: window.__ath.groups.list.map((g) => g.name + " " + g.members.length),
+    a1 = p5.evaluate("""() => { const d = window.__ath.sky.debug(); return { n: window.__ath.live.length, gl: d.ok && d.viewport[2] === d.canvas[0] && d.viewport[3] === d.canvas[1], stars: d.ideas.filter((n) => n && n.on && n.x > 0 && n.x < 384 && n.y > 60 && n.y < 790).length, lines: d.lines, arm: d.arm, groups: window.__ath.groups.list.map((g) => g.name + " " + g.members.length),
       labels: [...document.querySelectorAll('.ath-label')].filter((b) => +getComputedStyle(b).opacity > .5).length, count: document.getElementById('ath-count').textContent, wide: document.documentElement.scrollWidth, tall: document.documentElement.scrollHeight, dock: !!document.querySelector('.pk-dock .pk-core') }; }""")
-    proof("ATH-1", "Athenaeum opens as a sky: every kept idea is a star in 3D, tied by what they share, in named constellations", a1["gl"] and a1["n"] >= 11 and a1["stars"] >= a1["n"] * .9 and a1["lines"] >= a1["n"] and a1["arm"] == 39 and 2 <= len(a1["groups"]) <= a1["n"] / 3 + 1 and a1["labels"] >= 6 and a1["wide"] <= 390 and a1["tall"] <= 844 and a1["dock"],
+    proof("ATH-1", "Athenaeum opens as a sky: every kept idea is a star in 3D, tied by what they share, in named constellations", a1["gl"] and a1["n"] >= 11 and a1["stars"] >= a1["n"] * .9 and a1["lines"] >= a1["n"] and a1["arm"] == 39 and 2 <= len(a1["groups"]) <= a1["n"] / 3 + 1 and a1["labels"] >= 6 and a1["wide"] <= 384 and a1["tall"] <= 844 and a1["dock"],
           f"WebGL {a1['gl']}; {a1['stars']} of {a1['n']} stars on screen, {a1['lines']} ties drawn, {a1['labels']} labels readable; constellations: {', '.join(a1['groups'])}; {a1['count']}; page {a1['wide']}x{a1['tall']}")
     spot = p5.evaluate("""() => { const s = window.__ath.sky.debug().ideas; let best = 0, gap = -1; s.forEach((n, k) => { if (!n || !n.on || n.y < 200 || n.y > 640 || n.x < 30 || n.x > 360) return; const d = Math.min(...s.filter((m, j) => m && j !== k).map((m) => Math.hypot(m.x - n.x, m.y - n.y))); if (d > gap) { gap = d; best = k; } }); return { ...s[best], k: best, gap }; }"""); p5.mouse.click(spot["x"], spot["y"]);   # a star clear of its neighbours, so the tap is not ambiguous p5.wait_for_selector(".ath-sheet:not([hidden]) h2", timeout=8000); p5.wait_for_timeout(600)
     a2 = p5.evaluate("""(k) => { const i = window.__ath.live[k]; return { hash: location.hash, title: document.querySelector('.ath-sheet h2').textContent, same: document.querySelector('.ath-sheet h2').textContent === i.title, body: document.querySelector('.ath-text').textContent === i.body,
@@ -427,7 +431,7 @@ with sync_playwright() as p:
           f"search 'first reader' (words only in a refinement) finds {found}; actions {seen}; archive {arch} then undo {undone}; shelved {shelved}"); c5.close()
 
     # CORE-5: the hub reaches into a pillar through its manifest: finds a record, hands words over, shows what last happened
-    c6 = b.new_context(viewport={"width": 390, "height": 844}); p6 = c6.new_page(); p6.on("pageerror", lambda e: errs.append("reach: " + str(e)[:160]))
+    c6 = b.new_context(viewport={"width": 384, "height": 832}); p6 = c6.new_page(); p6.on("pageerror", lambda e: errs.append("reach: " + str(e)[:160]))
     if MOCK:
         p6.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p6.route("https://api.weather.gov/**", lambda route, request: route.abort()); p6.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
     p6.goto(A, wait_until="load"); p6.wait_for_function("window.__ath && window.__ath.ready", timeout=30000); p6.evaluate("PB.events.publish({ type: 'idea.refined', pillar: 'athenaeum', ref: 'x', title: 'Proof event' })")
@@ -459,7 +463,7 @@ with sync_playwright() as p:
     pg.goto(f"{URL}?now={NOW}&demo=1#/money", wait_until="load"); pg.wait_for_selector(".dial-pct", timeout=15000); pg.wait_for_timeout(300)
     payoff = pg.evaluate("() => (document.querySelector('.dial-pct') || {}).textContent || ''")
     proof("DECK-1", "Arrival view: the core, one now line (next event, next deadline, NYSE open or closed) and one card, fitting above the dock; the day ring, 7-day runway, countdowns and payoff ring still read the store",
-          home["core"] == len(CORE_IDS) and home["event"] and home["deadline"] and home["nyseOnLine"] and home["nyse"] in ("NYSE open", "NYSE closed") and home["cards"] == 1 and home["fits"] and home["wide"] <= 390 and moved["ring"] and moved["days"] == 7 and moved["focus"] and moved["countdowns"] >= 1 and bool(payoff),
+          home["core"] == len(CORE_IDS) and home["event"] and home["deadline"] and home["nyseOnLine"] and home["nyse"] in ("NYSE open", "NYSE closed") and home["cards"] == 1 and home["fits"] and home["wide"] <= 384 and moved["ring"] and moved["days"] == 7 and moved["focus"] and moved["countdowns"] >= 1 and bool(payoff),
           json.dumps({"line": home["line"], "nyse": home["nyse"], "fits": home["fits"], "wide": home["wide"], "build": home["build"], "moved": moved, "payoff": payoff}, default=str))
 
     # TIME-1: the 40-event research calendar goes in and comes back out the same

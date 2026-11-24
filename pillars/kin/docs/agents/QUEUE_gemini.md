@@ -2,7 +2,7 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-23 23:05 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 02:14 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -19,7 +19,7 @@ Updated 2026-11-23 23:05 UTC · 1 open · Rules for every pillar: https://github
 
 **Do this:**
 1. Every rule: who must appear, what consent form if one parent cannot, the documents (birth certificate, parents' IDs, photo), the fees (book, card, execution, expedite), processing times, how long the passport is valid.
-2. No names or details of the children: general rules only.
+2. General rules from the official pages; Kin applies them to each child.
 
 **Make:** `kin_gemini_child-passport_{YYYYMMDD-HHMM}.json`
 
