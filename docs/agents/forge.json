@@ -1,8 +1,8 @@
 {
- "built": "2026-11-24T03:46:03Z",
- "checked": "2026-11-24T03:46:03Z",
+ "built": "2026-11-24T08:48:49Z",
+ "checked": "2026-11-24T08:48:49Z",
  "version": 2,
- "today": "2026-11-23",
+ "today": "2026-11-24",
  "sources": {
   "queues": {
    "read": 26,
@@ -19,7 +19,7 @@
    "synced": "2026-11-19T20:47:40Z"
   },
   "titan_scores": 179,
-  "hub_scores": 205,
+  "hub_scores": 206,
   "pending_scores": 3
  },
  "totals": {
@@ -49,17 +49,17 @@
    },
    "probation": false,
    "scores": {
-    "n": 275,
+    "n": 276,
     "avg": 8.21,
-    "last10": 9.2,
+    "last10": 9.1,
     "last": {
      "ai": "Gemini",
-     "n": 190,
+     "n": 191,
      "date": "2026-11-24",
-     "what": "supplemental, offered to the owner: titan_gemini_supp-metallurgy-authentication-physics_20261123-1538.json",
-     "task": "none",
+     "what": "Kin, from your Ancestry trial (owner-directed): kin_gemini_ancestry-pavia-tree_20261123 and -expanded_20261123-2155, kin_gemini_lineage-10gen-expanded_20261123-",
+     "task": "none (owner)",
      "where": "Prometheus Hub",
-     "score": 9.0
+     "score": 8.0
     }
    }
   },
@@ -21016,6 +21016,15 @@
    "task": "none",
    "where": "Prometheus Hub",
    "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 191,
+   "date": "2026-11-24",
+   "what": "Kin, from your Ancestry trial (owner-directed): kin_gemini_ancestry-pavia-tree_20261123 and -expanded_20261123-2155, kin_gemini_lineage-10gen-expanded_20261123-",
+   "task": "none (owner)",
+   "where": "Prometheus Hub",
+   "score": 8.0
   },
   {
    "ai": "Gemini",
