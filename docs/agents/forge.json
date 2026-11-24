@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T09:29:17Z",
- "checked": "2026-11-24T09:29:17Z",
+ "built": "2026-11-24T15:38:01Z",
+ "checked": "2026-11-24T15:38:01Z",
  "version": 2,
  "today": "2026-11-24",
  "sources": {
@@ -19,7 +19,7 @@
    "synced": "2026-11-19T20:47:40Z"
   },
   "titan_scores": 179,
-  "hub_scores": 206,
+  "hub_scores": 208,
   "pending_scores": 3
  },
  "totals": {
@@ -49,17 +49,17 @@
    },
    "probation": false,
    "scores": {
-    "n": 276,
+    "n": 278,
     "avg": 8.21,
-    "last10": 9.1,
+    "last10": 9.2,
     "last": {
      "ai": "Gemini",
-     "n": 191,
+     "n": 193,
      "date": "2026-11-24",
-     "what": "Kin, from your Ancestry trial (owner-directed): kin_gemini_ancestry-pavia-tree_20261123 and -expanded_20261123-2155, kin_gemini_lineage-10gen-expanded_20261123-",
-     "task": "none (owner)",
+     "what": "Run 7 checker audit: hub_gemini_supp-run7-checker-audit_20261124-0016, -part2_20261124-0056, hub_gemini_supp-checker-patch-and-kin-gps-dossier_20261124-0056 (th",
+     "task": "Claude (reproduced)",
      "where": "Prometheus Hub",
-     "score": 8.0
+     "score": 10.0
     }
    }
   },
@@ -22500,6 +22500,24 @@
    "task": "none (owner)",
    "where": "Prometheus Hub",
    "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 192,
+   "date": "2026-11-24",
+   "what": "Kin, Ancestry waves 2-4: Kin — Certainty-Scored Pedigree & Wave-2 Breakthroughs, Kin — Wave-3 Aggressive Lineage & 397-File Media Harvest, Pavia Family Tree — P",
+   "task": "none (owner)",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 193,
+   "date": "2026-11-24",
+   "what": "Run 7 checker audit: hub_gemini_supp-run7-checker-audit_20261124-0016, -part2_20261124-0056, hub_gemini_supp-checker-patch-and-kin-gps-dossier_20261124-0056 (th",
+   "task": "Claude (reproduced)",
+   "where": "Prometheus Hub",
+   "score": 10.0
   },
   {
    "ai": "Gemini",
