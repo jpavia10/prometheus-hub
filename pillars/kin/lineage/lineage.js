@@ -148,6 +148,8 @@
     const vb = { x: lay.minX - 30, y: -50, w: lay.maxX - lay.minX + 60, h: lay.height + 80 };
     svg.dataset.vb = JSON.stringify(vb);
     apply(root);
+    const fan = root.querySelector("svg.ln-fan"); if (fan) { fan.setAttribute("viewBox", "-180 -180 360 360"); fan.innerHTML = fanSvg(M); }
+    const cp = root.querySelector("#ln-complete"); if (cp) { const open = cp.open; cp.innerHTML = completeHtml(M); cp.open = open; }
   }
   const trunc = (s, n) => (s.length > n ? s.slice(0, n - 1) + "…" : s);
   function apply(root) {
@@ -421,6 +423,60 @@
     return out.map((l) => l.replace(/\n/g, " ")).join("\n") + "\n";
   }
 
+  /* ------------------------------------------------------------------ the fan: every ancestor's place, five generations above you
+     Ahnentafel numbering: you are 1, your father 2 and mother 3, and anyone's father and mother are 2n and 2n + 1. A place with no one in it
+     is drawn empty, so the chart shows at a glance how much of your ancestry is known, and on which side. */
+  const FAN_G = 5;
+  function ahnen(M) {
+    const at = { 1: L.root };
+    for (let n = 1; n < 2 ** FAN_G; n++) {
+      const pid = at[n]; if (!pid) continue; const f = parentsOf(M, pid); if (!f) continue;
+      const ps = f.partners.map((q) => M.P[q]).filter(Boolean), fa = ps.find((q) => q.sex === "M"), mo = ps.find((q) => q.sex === "F"), rest = ps.filter((q) => q !== fa && q !== mo);
+      const F = fa || rest.shift(), Mo = mo || rest.shift(); if (F) at[2 * n] = F.id; if (Mo) at[2 * n + 1] = Mo.id;
+    }
+    return at;
+  }
+  function relName(n) {
+    if (n === 1) return "You"; const b = n.toString(2).slice(1), g = b.length, who = b[g - 1] === "0" ? "father" : "mother", side = b[0] === "0" ? "father's" : "mother's";
+    if (g === 1) return "Your " + who; if (g === 2) return `Your ${side} ${who}`; return `Your ${g > 3 ? g - 2 + "× " : ""}great-grand${who} (${side} side)`;
+  }
+  const knownP = (p) => p && !(p.ghost && p.status === "inferred");
+  function fanSvg(M) {
+    const at = ahnen(M), r0 = 30, rw = (172 - r0) / FAN_G, NS = "http://www.w3.org/2000/svg", pt = (r, a) => `${(r * Math.cos(a)).toFixed(2)} ${(r * Math.sin(a)).toFixed(2)}`;
+    let out = `<defs><radialGradient id="fan-glow"><stop offset="0" stop-color="rgba(231,194,122,.22)"/><stop offset="1" stop-color="rgba(231,194,122,0)"/></radialGradient></defs><circle r="180" fill="url(#fan-glow)"/>`;
+    for (let g = 1; g <= FAN_G; g++) {
+      const cnt = 2 ** g, d = (2 * Math.PI) / cnt, ri = r0 + (g - 1) * rw + 1.2, ro = r0 + g * rw - 1.2;
+      for (let i = 0; i < cnt; i++) {
+        const n = cnt + i, pid = at[n], p = pid && M.P[pid], a0 = Math.PI / 2 + i * d + 0.012, a1 = a0 + d - 0.024, lg = d > Math.PI ? 1 : 0;
+        const kid = at[n >> 1], kf = kid && parentsOf(M, kid), unsure = !!(kf && kf.uncertain && kf.uncertain[kid]);
+        const cls = "fan-seg" + (p ? ` st-${p.status}` : " empty") + (p && p.ghost && p.status === "inferred" ? " ghost" : "") + (unsure ? " unsure" : "") + (p && p.id === ui.sel ? " sel" : "");
+        const label = `${relName(n)}: ${p ? (knownP(p) ? nm(p) : "not yet known") : "not known"}`;
+        out += `<path class="${cls}" d="M${pt(ro, a0)}A${ro} ${ro} 0 ${lg} 1 ${pt(ro, a1)}L${pt(ri, a1)}A${ri} ${ri} 0 ${lg} 0 ${pt(ri, a0)}Z" ${p ? `data-id="${p.id}"` : `data-slot="${n}"`} tabindex="0" role="button" aria-label="${esc(label)}"><title>${esc(label)}</title></path>`;
+        if (g <= 4 && p) { /* names along the arc, for the generations with room for them */
+          const am = (a0 + a1) / 2, rm = (ri + ro) / 2, deg = (am * 180) / Math.PI % 360, rot = deg > 0 && deg < 180 ? deg - 90 : deg + 90;
+          const t = knownP(p) ? firstName(p) : "?", max = [0, 14, 12, 10, 7][g], txt = t.length > max ? t.slice(0, max - 1) + "…" : t;
+          out += `<text class="fan-t g${g}${knownP(p) ? "" : " unk"}" transform="translate(${pt(rm, am)}) rotate(${rot.toFixed(1)})" dy="4">${esc(txt)}</text>`;
+        }
+      }
+    }
+    const me = M.P[L.root];
+    out += `<circle class="fan-me${ui.sel === L.root ? " sel" : ""}" r="${r0 - 1}" data-id="${L.root}" tabindex="0" role="button" aria-label="You"/><text class="fan-t me" dy="-2">${esc(firstName(me))}</text><text class="fan-t me2" dy="12">you</text>`;
+    return out;
+  }
+  /* how much of your ancestry is known, generation by generation (pedigree completeness) */
+  function completeness(M) {
+    const at = ahnen(M), GEN = ["You", "Parents", "Grandparents", "Great-grandparents"];
+    const rows = []; let k = 0, t = 0;
+    for (let g = 1; g <= FAN_G; g++) { let n = 0; for (let i = 2 ** g; i < 2 ** (g + 1); i++) if (knownP(M.P[at[i]])) n++; rows.push({ g, name: GEN[g] || `${g - 2}× great-grandparents`, n, of: 2 ** g }); k += n; t += 2 ** g; }
+    return { rows, k, t, pct: Math.round((100 * k) / t) };
+  }
+  function completeHtml(M) {
+    const c = completeness(M);
+    return `<summary>How much of your ancestry is known: <b>${c.k} of ${c.t}</b> in five generations (${c.pct}%)</summary>
+      <ul>${c.rows.map((r) => `<li><span>${esc(r.name)}</span><i style="--p:${(100 * r.n) / r.of}%"></i><b>${r.n} of ${r.of}</b></li>`).join("")}</ul>
+      <p class="sub">A place counts as known when a person is in it (from the records or from you), not when it is only inferred. Joseph and Della sit in their places on the assumption that Barbara is their daughter (C10); if she is their granddaughter, they move up a generation.</p>`;
+  }
+
   /* the legend names only the kinds of card the tree shows, plus the unsettled link when there is one */
   function legend(tree) {
     const M = ui.M, has = new Set(M.people.map((p) => p.status)), order = ["proven", "probable", "possible", "family", "named", "inferred", "placeholder"];
@@ -433,9 +489,12 @@
     const panel = (id, title, sub, inner) => { const d = h("div", { class: "glass span-12 ln-panel", id }); d.innerHTML = `<h2>${title}</h2>${sub ? `<p class="sub">${sub}</p>` : ""}${inner}`; return d; };
     const tree = panel("ln-tree", "The family tree", "Your line, generation by generation, from the records. Drag to move, pinch or scroll to zoom, tap a person for everything known about them and how it is known.",
       `<div class="ln-stage"><svg class="ln-svg" role="group" aria-label="Family tree"><g class="ln-world"></g></svg>
+        <svg class="ln-fan" role="group" aria-label="Fan chart: every ancestor's place for five generations" hidden></svg>
+        <div class="ln-view-sw" role="group" aria-label="View"><button type="button" class="segb on" data-v="tree" aria-pressed="true">Tree</button><button type="button" class="segb" data-v="fan" aria-pressed="false">Fan</button></div>
         <div class="ln-tools"><button type="button" class="btn quiet small" data-z="in" aria-label="Zoom in">+</button><button type="button" class="btn quiet small" data-z="out" aria-label="Zoom out">−</button><button type="button" class="btn quiet small" data-z="fit">Whole tree</button><button type="button" class="btn quiet small" data-z="me">You</button></div>
         <p class="ln-legend"></p>
         <div class="ln-peek" hidden><div><p class="ln-kick"></p><b></b><span></span></div><button type="button" class="btn small" data-peek="open">Full story</button><button type="button" class="btn quiet small ln-px" data-peek="close" aria-label="Close">×</button></div></div>
+      <details class="ln-complete" id="ln-complete"></details>
       <div class="ln-dossier" id="ln-dossier" aria-live="polite"></div>
       <div class="ln-foot"><button type="button" class="btn quiet small" id="ln-ged">Export GEDCOM 7</button><button type="button" class="btn quiet small" id="ln-share">Send my additions</button><button type="button" class="btn quiet small" id="ln-load">Add someone's additions</button><span>${L.people.length} people · ${L.events.length} events · ${L.sources.length} sources · ${L.conflicts.length} conflicts weighed</span></div>`);
     const src = panel("ln-sources", "Sources of the family history", "Every record behind the tree, with its full citation, where it is kept, a transcription and the image.", `<div id="ln-srcs"></div>`);
@@ -458,6 +517,20 @@
     drawTree(root); dossier(dos, ui.sel); legend(tree); src.querySelector("#ln-srcs").innerHTML = sourcesHtml(); plan.querySelector("#ln-planx").innerHTML = planHtml();
     requestAnimationFrame(() => first(root));
     wire(root, onTree);
+    /* the fan: a tap on a place opens that person, or says whose parent is missing */
+    const fanEl = tree.querySelector("svg.ln-fan");
+    const fanTap = (e) => { const el = e.target.closest && e.target.closest("[data-id], [data-slot]"); if (!el) return;
+      if (el.dataset.id) { onTree(el); return; }
+      const n = +el.dataset.slot, kid = ahnen(ui.M)[n >> 1], K = kid && ui.M.P[kid];
+      if (K) { pick(kid, false); const kl = knownP(K) ? nm(K) : K.placeholder.replace(/^Your/, "your");
+        peek("Not known", relName(n), `Nobody is in this place yet: ${kl}'s ${n % 2 ? "mother" : "father"}. ${knownP(K) ? `Add them as a parent on ${firstName(K)}'s page below.` : `Name ${kl} first, then add their parents.`}`); } };
+    fanEl.addEventListener("click", fanTap);
+    fanEl.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fanTap(e); } });
+    tree.querySelector(".ln-view-sw").addEventListener("click", (e) => { const b = e.target.closest("[data-v]"); if (!b) return; const fanOn = b.dataset.v === "fan";
+      for (const x of tree.querySelectorAll(".ln-view-sw [data-v]")) { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", String(x === b)); }
+      root.querySelector("svg.ln-svg").toggleAttribute("hidden", fanOn); fanEl.toggleAttribute("hidden", !fanOn); /* an svg has no .hidden property: the attribute is what hides it */ tree.querySelector(".ln-tools").hidden = fanOn; tree.classList.toggle("fan-on", fanOn); pk.hidden = true;
+      try { localStorage.setItem("kin.lineage.view", b.dataset.v); } catch (_) {} if (!fanOn) first(root); });
+    try { if (localStorage.getItem("kin.lineage.view") === "fan") tree.querySelector('.ln-view-sw [data-v="fan"]').click(); } catch (_) {}
     tree.querySelector(".ln-tools").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const svg = root.querySelector("svg.ln-svg").getBoundingClientRect();
       if (b.dataset.z === "in") { zoomAt(root, 1.25, svg.width / 2, svg.height / 2); } if (b.dataset.z === "out") zoomAt(root, 0.8, svg.width / 2, svg.height / 2); if (b.dataset.z === "fit") fit(root); if (b.dataset.z === "me") pick(L.root, true); });
     document.querySelector("#app").addEventListener("click", (e) => {

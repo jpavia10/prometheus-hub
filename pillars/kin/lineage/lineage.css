@@ -174,3 +174,35 @@
 .ln-infer li { margin: 4px 0; }
 .ln-foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .ln-stem, .ln-wed, .ln-genl, .ln-unsure { pointer-events: none; }
+
+/* the fan chart: every ancestor's place, five generations above you */
+.ln-view-sw { position: absolute; z-index: 2; top: 10px; left: 10px; display: flex; padding: 3px; gap: 2px; border-radius: 999px; background: rgba(8, 10, 20, .82); border: 1px solid var(--line-strong); }
+.ln-view-sw .segb { min-height: 36px; min-width: 52px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font: 600 13px var(--sans); cursor: pointer; }
+.ln-view-sw .segb.on { background: rgba(231, 194, 122, .18); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(231, 194, 122, .45); }
+.ln-view-sw .segb:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.ln-fan { display: block; width: 100%; height: min(62vh, 560px); padding: 58px 6px 78px; box-sizing: border-box; }
+.ln-fan[hidden], .ln-svg[hidden], .ln-tools[hidden] { display: none; }
+@media (max-width: 520px) { .ln-fan { height: 58vh; } }
+.fan-seg { fill: rgba(255, 255, 255, .03); stroke: rgba(255, 255, 255, .1); stroke-width: 1; cursor: pointer; transition: fill .2s ease; }
+.fan-seg.empty { fill: rgba(255, 255, 255, .02); stroke: rgba(255, 255, 255, .08); stroke-dasharray: 2 3; }
+.fan-seg.st-proven { fill: rgba(127, 209, 168, .55); } .fan-seg.st-probable { fill: rgba(231, 194, 122, .5); } .fan-seg.st-possible { fill: rgba(199, 160, 255, .42); }
+.fan-seg.st-family, .fan-seg.st-named, .fan-seg.st-self { fill: rgba(159, 212, 230, .42); }
+.fan-seg.ghost { fill: rgba(159, 212, 230, .07); stroke: rgba(159, 212, 230, .55); stroke-dasharray: 3 3; }
+.fan-seg.unsure { stroke: var(--gold); stroke-width: 1.6; stroke-dasharray: 4 3; }
+.fan-seg.sel { stroke: #fff; stroke-width: 2; stroke-dasharray: none; }
+.fan-seg:hover { fill-opacity: .85; } .fan-seg:focus-visible { outline: none; stroke: var(--gold); stroke-width: 2.2; }
+.fan-t { fill: #f6f1e6; font: 600 11px var(--sans); text-anchor: middle; pointer-events: none; }
+.fan-t.g1 { font-size: 12.5px; } .fan-t.g2 { font-size: 11px; } .fan-t.g3 { font-size: 9.5px; } .fan-t.g4 { font-size: 7.5px; }
+.fan-t.unk { fill: rgba(159, 212, 230, .85); font-style: italic; }
+.fan-me { fill: rgba(159, 212, 230, .22); stroke: #9fd4e6; stroke-width: 1.5; cursor: pointer; } .fan-me.sel { stroke: #fff; stroke-width: 2; }
+.fan-t.me { font-size: 11.5px; } .fan-t.me2 { font-size: 8.5px; fill: var(--muted); letter-spacing: .14em; text-transform: uppercase; }
+.fan-on .ln-legend .st-unsure::after { content: ""; }
+/* how much is known, generation by generation */
+.ln-complete { margin: 12px 0 4px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255, 255, 255, .02); }
+.ln-complete summary { cursor: pointer; font-size: 14px; line-height: 1.45; color: var(--muted); padding: 6px 0; } .ln-complete summary b { color: var(--ink); margin: 0 4px; }
+.ln-complete ul { list-style: none; margin: 8px 0; padding: 0; display: grid; gap: 7px; }
+.ln-complete li { display: grid; grid-template-columns: minmax(0, 11em) 1fr auto; gap: 10px; align-items: center; font-size: 13px; color: var(--ink); }
+.ln-complete li i { height: 8px; border-radius: 99px; background: rgba(255, 255, 255, .07); position: relative; overflow: hidden; }
+.ln-complete li i::before { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--p); background: linear-gradient(90deg, #9fd4e6, var(--gold)); border-radius: 99px; }
+.ln-complete li b { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+@media (max-width: 520px) { .ln-tools .btn[data-z="in"], .ln-tools .btn[data-z="out"] { display: none; } } /* pinch zooms on a phone; the view switch needs the room */

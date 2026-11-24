@@ -253,6 +253,13 @@ with sync_playwright() as p:
         k2 = pk.evaluate("() => ({ who: document.querySelector('#ln-dossier h3').textContent, sel: (document.querySelector('#ln-tree .ln-node.sel') || {}).dataset?.id })")
         pk.evaluate("KIN_LINEAGE_UI.pick('P-joseph')"); pk.wait_for_timeout(300)
         k3 = pk.evaluate("() => ({ who: document.querySelector('#ln-dossier h3').textContent, ev: document.querySelectorAll('#ln-dossier .ln-ev').length, docs: document.querySelectorAll('#ln-dossier .ln-doc').length, maps: document.querySelectorAll('#ln-dossier .jr svg').length, cons: document.querySelectorAll('#ln-dossier .ln-con').length })")
+        pk.evaluate("document.querySelector('#ln-tree .ln-view-sw [data-v=fan]').click()"); pk.wait_for_timeout(300)
+        fan = pk.evaluate("""() => ({ segs: document.querySelectorAll('.ln-fan .fan-seg').length, known: [...document.querySelectorAll('.ln-fan .fan-seg')].filter((x) => !x.classList.contains('empty') && !x.classList.contains('ghost')).length,
+          shown: !!document.querySelector('.ln-fan:not([hidden])') && !!document.querySelector('.ln-svg[hidden]'), sum: (document.querySelector('#ln-complete summary') || {}).textContent || '' })""")
+        pk.evaluate("document.querySelector('.ln-fan .fan-seg.empty').dispatchEvent(new MouseEvent('click', { bubbles: true }))"); pk.wait_for_timeout(200)
+        fan["peek"] = pk.evaluate("(document.querySelector('.ln-peek:not([hidden]) b') || {}).textContent || ''")
+        pk.evaluate("document.querySelector('#ln-tree .ln-view-sw [data-v=tree]').click()"); pk.wait_for_timeout(300)
+        pk.evaluate("KIN_LINEAGE_UI.pick('P-joseph')"); pk.wait_for_timeout(300)   # the empty place opened another person's page
         pk.locator('#ln-dossier .ln-doc').first.click(); pk.wait_for_timeout(400)
         k4 = pk.evaluate("() => { const v = document.querySelector('.ln-view'), im = v && v.querySelector('img'); return v ? { img: !!(im && im.complete && im.naturalWidth > 600), cap: (v.querySelector('.ln-vcap') || {}).textContent.length } : null; }")
         pk.keyboard.press("Escape"); pk.wait_for_timeout(200)
@@ -262,10 +269,11 @@ with sync_playwright() as p:
               and not k1["orphan"] and not k1["unclassed"] and not k1["badkind"] and not k1["noarg"] and not k1["noconc"] and k1["first"] == "The family tree" and k1["unsure"] == 1 and k1["logged"] >= 2 and k1["logShown"] == k1["logged"]
               and k2["who"].startswith("Della") and k2["sel"] == "P-della" and k3["who"].startswith("Joseph") and k3["ev"] == k1["events"] and k3["docs"] >= 20 and k3["maps"] == 2 and k3["cons"] >= 6
               and k4 and k4["img"] and k4["cap"] > 40 and k5["head"] == "0 HEAD" and k5["vers"] and k5["challenged"] == 1 and k5["indi"] == k1["people"] and k5["fam"] >= 6 and k5["sour"] == k1["sources"] and k5["end"] == "0 TRLR" and not k5["open"]
+              and fan["segs"] == 62 and fan["known"] >= 9 and fan["shown"] and f"{fan['known']} of 62" in fan["sum"] and fan["peek"].startswith("Your")
               and wide <= 384 and not bk)
         proof("KIN-2", "The family tree is a research instrument: every assertion has a source and its three classifications, every event a conclusion and a confidence, a tap opens the person's dossier, a record opens full size, and the tree exports as GEDCOM 7",
               ok, f"{k1['people']} people ({k1['nodes']} on the tree with {k1['ghosts']} unknown parents, {k1['stubs']} '+ mother and father' stubs, {k1['pills']} families with their children, {k1['lit']} on your line, {k1['unsure']} link not yet settled), {k1['events']} events, {k1['sources']} sources, {k1['conflicts']} conflicts, {k1['questions']} questions, {k1['logShown']} of {k1['logged']} searches in the log; unsourced {k1['orphan']}, unclassified {k1['unclassed']}, sources without kind or citation {k1['badkind']}, settled conflicts without argument {k1['noarg']}, events without conclusion {k1['noconc']}; first tab {k1['first']!r}; "
-                 f"tap -> {k2['who']!r}; Joseph: {k3['ev']} events, {k3['docs']} records, {k3['maps']} maps, {k3['cons']} conflicts; record viewer {k4}; GEDCOM {k5}; page {wide}px" + (f"; errors {bk[:2]}" if bk else ""))
+                 f"tap -> {k2['who']!r}; Joseph: {k3['ev']} events, {k3['docs']} records, {k3['maps']} maps, {k3['cons']} conflicts; record viewer {k4}; GEDCOM {k5}; fan {fan}; page {wide}px" + (f"; errors {bk[:2]}" if bk else ""))
         ck.close()
     except Exception as e: proof("KIN-2", "The family tree", False, "did not finish: " + str(e)[:200])
     # WORLD-1 (2026-11-23, owner chose "living painted header"; all painted pillars since the rollout): a pillar opens on its own painting, alive (kit/world.js):
