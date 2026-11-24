@@ -16,17 +16,25 @@
 .ln-node:hover .ln-card { stroke: rgba(231, 194, 122, .8); }
 .ln-tab { fill: var(--todo); }
 .st-proven .ln-tab { fill: var(--ok); } .st-probable .ln-tab { fill: var(--maybe); } .st-possible .ln-tab { fill: var(--weak); }
-.st-self .ln-tab, .st-named .ln-tab { fill: #9fd4e6; }
+.st-self .ln-tab, .st-named .ln-tab, .st-family .ln-tab { fill: #9fd4e6; }
+.ln-stem.unsure { stroke-dasharray: 6 6; }
+.ln-unsure rect { fill: #0b0f1c; stroke: var(--gold); stroke-dasharray: 4 3; }
+.ln-unsure text { fill: var(--gold); font: 600 12px var(--sans); text-anchor: middle; }
 .st-placeholder .ln-card { stroke-dasharray: 5 4; fill: rgba(12, 15, 26, .7); }
 .ln-name { fill: var(--ink); font: 600 14.5px var(--sans); letter-spacing: .01em; }
 .ln-life { fill: var(--parch); font: 400 13px var(--sans); opacity: .92; }
 .st-placeholder .ln-name { fill: rgba(232, 239, 252, .8); font-weight: 500; }
 .st-placeholder .ln-life { fill: var(--gold); font-style: italic; }
 .ln-badge { fill: rgba(205, 214, 235, .72); font: 600 9.5px var(--sans); letter-spacing: .16em; }
-.ln-tools { position: absolute; top: 10px; right: 10px; display: flex; gap: 6px; }
+/* soft bands under the buttons and the legend, so cards that run under them fade out instead of colliding */
+.ln-stage::before, .ln-stage::after { content: ""; position: absolute; left: 0; right: 0; z-index: 1; pointer-events: none; }
+.ln-stage::before { top: 0; height: 66px; background: linear-gradient(180deg, rgba(6, 8, 16, .94) 50%, rgba(6, 8, 16, 0)); }
+.ln-stage::after { bottom: 0; height: 74px; background: linear-gradient(0deg, rgba(6, 8, 16, .94) 55%, rgba(6, 8, 16, 0)); }
+.ln-tools { position: absolute; z-index: 2; top: 10px; right: 10px; display: flex; gap: 6px; }
 .ln-tools .btn { min-width: 40px; min-height: 40px; background: rgba(8, 10, 20, .78); }
-.ln-legend { position: absolute; left: 12px; bottom: 8px; display: flex; flex-wrap: wrap; gap: 10px; margin: 0; font-size: 11.5px; color: var(--muted); pointer-events: none; }
+.ln-legend { position: absolute; z-index: 2; left: 12px; bottom: 8px; display: flex; flex-wrap: wrap; gap: 10px; margin: 0; font-size: 11.5px; color: var(--muted); pointer-events: none; }
 .ln-legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; background: var(--todo); vertical-align: 0; }
+.ln-legend .st-family::before, .ln-legend .st-named::before { background: #9fd4e6; } .ln-legend .st-unsure::before { background: transparent; border: 1.5px dashed var(--gold); }
 .ln-legend .st-proven::before { background: var(--ok); } .ln-legend .st-probable::before { background: var(--maybe); } .ln-legend .st-possible::before { background: var(--weak); }
 .ln-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 14px; color: var(--muted); font-size: 13px; }
 

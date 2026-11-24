@@ -4,11 +4,12 @@
    from one source, classified three ways (the source: original / derivative / authored; the information: primary / secondary /
    undetermined; the evidence: direct / indirect / negative); a conclusion is written only after the assertions are correlated, and
    every conflict keeps its proof argument. Nothing here is invented: where a record is unread, the field says so.
-   Seed (2026-11-24): the research his great-uncle compiled on Joseph Michael Termenas (1893-1935), the father of Joseph's maternal
-   great-grandmother, with every document image in it, read again here line by line; plus the naturalization petition, which the
-   great-uncle linked but had not transcribed: it gives the arrival (Hamburg, 13 Aug 1912; New York, 23 Aug 1912) and the declaration
-   of intention (Detroit, 21 Oct 1916). The three generations between Joseph and his great-grandmother are placeholders until he names
-   them (tap a card to name it). */
+   Seed (2026-11-24): the research his great-uncle compiled on Joseph Michael Termenas (1893-1935), with every document image in it,
+   read again here line by line; plus the naturalization petition, which the great-uncle linked but had not transcribed: it gives the
+   arrival (Hamburg, 13 Aug 1912; New York, 23 Aug 1912) and the declaration of intention (Detroit, 21 Oct 1916). The research is the
+   great-uncle's, not Joseph's (owner, 2026-11-24). Joseph's maternal line as he gave it the same day: his mother Toni Hinkle (born
+   Sanders), her mother Laurie Jordan, her mother Barbara Feole. Whether Joseph Termenas is Barbara's father or her grandfather is
+   not known (conflict C10): that link is drawn as unproven until a record settles it. */
 window.KIN_LINEAGE = {
   schema: "kin-lineage/1",
   updated: "2026-11-24",
@@ -32,13 +33,16 @@ window.KIN_LINEAGE = {
   people: [
     { id: "P-self", sex: "M", names: [{ given: "Joseph", surname: "Pavia", type: "birth" }], living: true, status: "self",
       note: "You. The line runs from you through your mother to Joseph Termenas." },
-    { id: "P-mother", sex: "F", names: [{ given: "", surname: "", type: "birth" }], placeholder: "Your mother", living: true, status: "placeholder",
-      note: "Name her here (tap the card). The line to the Termenas family is on her side." },
-    { id: "P-gp", sex: "U", names: [{ given: "", surname: "", type: "birth" }], placeholder: "Your mother's parent on this line", status: "placeholder",
-      note: "Your grandmother or grandfather: the child of the great-grandmother below. Name and set as mother or father." },
-    { id: "P-ggm", sex: "F", names: [{ given: "", surname: "Termenas", type: "birth", note: "as a daughter in Lithuanian usage: Termenaitė" }], placeholder: "Your great-grandmother (Joseph Termenas's daughter)", status: "placeholder",
-      born_est: { text: "between 1922 and 1935", basis: "her parents married 25 Apr 1922 and her father died 11 Jun 1935 (indirect; a child born before the marriage or after his death would not fit)" },
-      note: "Named by you as your maternal great-grandmother, daughter of Joseph Termenas. The 1930 and 1940 censuses of Detroit should name her: research question Q4." },
+    { id: "P-mother", sex: "F", living: true, status: "family",
+      names: [{ given: "Toni", surname: "Sanders", type: "birth", src: ["S-owner"] }, { given: "Toni", surname: "Hinkle", type: "married", src: ["S-owner"] }],
+      summary: "Your mother, Toni Hinkle, born Toni Sanders. The line to the Termenas family runs through her mother's side." },
+    { id: "P-gp", sex: "F", status: "family",
+      names: [{ given: "Laurie", surname: "Jordan", type: "as-given", note: "the surname you gave; whether Jordan is her birth name or a married name is not recorded yet (her daughter was born a Sanders)", src: ["S-owner"] }],
+      summary: "Your mother's mother, Laurie Jordan.", note: "Her surname at birth, her birth date and place, and her marriage to a Sanders are the first records to gather for her (Q20)." },
+    { id: "P-ggm", sex: "F", status: "family",
+      names: [{ given: "Barbara", surname: "Feole", type: "as-given", note: "the surname you gave; probably a married name (Feole is an Italian surname). Her surname at birth is the key: Termens or Termenas if Joseph Termenas is her father, or her own father's surname if he is her grandfather", src: ["S-owner"] }],
+      summary: "Laurie's mother, Barbara Feole: your great-grandmother. The family says she descends from Joseph Termenas, but not whether as his daughter or his granddaughter (C10).",
+      note: "The dates will tell: any child of Joseph and Della was born between their marriage (25 Apr 1922) and his death (11 Jun 1935). Born in those years and in their household in 1930 or 1940, Barbara is his daughter; born after about 1937, she is a granddaughter (Q19, Q4)." },
     { id: "P-joseph", sex: "M", status: "proven",
       names: [
         { given: "Joseph Michael", surname: "Termenas", type: "preferred", note: "the spelling he signed in 1917 and 1919 (enlistment record, naturalization petition)" },
@@ -69,7 +73,8 @@ window.KIN_LINEAGE = {
 
   /* parents -> children, with the couple's own events */
   families: [
-    { id: "F-termenas", partners: ["P-joseph", "P-della"], children: ["P-ggm"], events: ["E-marr"] },
+    { id: "F-termenas", partners: ["P-joseph", "P-della"], children: ["P-ggm"], events: ["E-marr"],
+      uncertain: { "P-ggm": "daughter or granddaughter? (C10)" } },
     { id: "F-ggm", partners: ["P-ggm"], children: ["P-gp"] },
     { id: "F-gp", partners: ["P-gp"], children: ["P-mother"] },
     { id: "F-mother", partners: ["P-mother"], children: ["P-self"] },
@@ -151,6 +156,9 @@ window.KIN_LINEAGE = {
     { id: "S-aerial", short: "Aerial photographs of Mt. Olivet, 1949 and 1967", kind: "original", img: ["aerial-mt-olivet-1949", "aerial-mt-olivet-1967"],
       cite: "Detroit Edison (DTE) aerial survey photographs, frames dated 28 April 1949 and 16 May 1967, showing Mt. Olivet Cemetery and Detroit City Airport, Detroit, Michigan; supplied by the family.",
       read: "The cemetery's triangle between the railway and Van Dyke, with Detroit City Airport to the south-east." },
+    { id: "S-owner", short: "Your account of your mother's line (2026)", kind: "original", year: 2026,
+      cite: "Joseph Pavia, statement of his maternal line to Claude, 24 November 2026: mother Toni Hinkle (born Sanders); her mother Laurie Jordan; her mother Barbara Feole; and the family's understanding that Joseph Termenas is Barbara's father or her grandfather.",
+      read: "Primary for his mother and grandmother (people he knows); family tradition for the link to Joseph Termenas, which he says he has not researched himself and is not sure of." },
     { id: "S-greatuncle", short: "Great-uncle's research file (2026)", kind: "authored", year: 2026,
       cite: "Joseph's great-uncle, \"Joseph Termens,\" research notes with document images, 26 pp. (PDF, 2026), shared with Joseph 24 November 2026.",
       read: "Compiles the draft card, enlistment record and discharge, the Veterans Bureau card with its claim numbers explained, the unit history of Co. A, 29th Engineers, the muster rolls and the Chaumont detached-service entry, the naturalization index, petition and certificate, the 1922 marriage index with both sets of parents, the death certificate, the Mt. Olivet burial and headstone, two candidate ships for 1912, and the VA medallion for an unmarked or older veteran's grave." },
@@ -264,6 +272,8 @@ window.KIN_LINEAGE = {
       argument: "A soldier awaiting discharge lived at Camp Devens; the petition gives both Camp Devens and 180 Howard Street, Cambridge, which reads as his civilian address. Who lived at 180 Howard Street in 1919-1920 (city directory, 1920 census) may show a relative or the household he lived with before he went to Detroit (Q4, Q15)." },
     { id: "C9", person: "P-joseph", q: "Which ship brought him in 1912?", status: "open", conclusion: "Hamburg ~13 Aug → New York 23 Aug 1912 (his sworn account); vessel unconfirmed",
       argument: "His sworn petition gives Hamburg on or about 13 August and New York on 23 August 1912; the vessel's name reads \"Columbia\". The great-uncle's candidate, SS President Lincoln (New York 30 Sep 1912, Josef Terminas, 19), is five weeks later and probably another man of a similar name; his second candidate, Kaiserin Auguste Victoria (Hamburg 14 Aug, New York 24 Aug 1912), is a day from the sworn date. Next: search the New York arrival lists for 23 and 24 August 1912 for Termenas and its variants, and the Hamburg emigration lists (Staatsarchiv Hamburg) for mid-August 1912, which give the home town (Q1)." },
+    { id: "C10", person: "P-ggm", q: "Is Joseph Termenas Barbara's father or her grandfather?", status: "open", conclusion: "unresolved",
+      argument: "The family links Barbara Feole to Joseph Termenas but not by how many generations, and the great-uncle's file is about Joseph alone: it names no child of his. The dates are the test. Joseph and Della married on 25 April 1922 and he died on 11 June 1935, so their children were born between 1922 and 1935, and a grandchild could hardly be born before about 1937. If Barbara was born in 1922-1935 and is in their household in 1930 or with Della in 1940, she is his daughter and was born a Termens; if she was born later, the 1940 and 1950 censuses will show which of their children is her parent. Her own birth or marriage record, or one question to Laurie, settles it (Q19, Q20, Q4)." },
   ],
 
   /* hypotheses to test, never shown as facts */
@@ -272,15 +282,20 @@ window.KIN_LINEAGE = {
     { id: "H2", text: "\"Rozys\" is an indexer's reading of the father's Lithuanian given name (for example Juozas or Rapolas).", test: "Q5, Q11" },
     { id: "H3", text: "His mother was Konstancija Giedraitė (\"Kostantina Giadraet\" in the index).", test: "Q5, Q11" },
     { id: "H4", text: "Della Malkitus and Delia Matukaitis are one woman and Matukaitis is the true spelling.", test: "Q5, Q14" },
+    { id: "H6", text: "Barbara Feole is Joseph and Della's daughter, born a Termens between 1922 and 1935.", test: "Q19, Q4" },
+    { id: "H7", text: "Barbara Feole is Joseph and Della's granddaughter, the child of one of their children, born after about 1937.", test: "Q19, Q4, Q20" },
     { id: "H5", text: "The 1945 affidavit corrected the death certificate for a widow's or child's claim (Social Security or the VA XC claim).", test: "Q10, Q17" },
   ],
 
   /* ------------------------------------------------------------------ the research plan: each question is a Gemini or owner task */
   questions: [
+    { id: "Q19", p: 1, person: "P-ggm", q: "Ask Laurie (or Barbara, if you can): Barbara's birth date and place, her surname at birth, her parents' names, and whom she married. One answer from the family settles C10 faster than any archive; then the records confirm it.", sources: "the family; then Barbara's birth and marriage records", task: "owner" },
+    { id: "Q20", p: 1, person: "P-ggm", q: "Find Barbara Feole's own records: her birth (surname at birth, parents), her marriage to a Feole, Laurie's birth record naming her as mother, and, if she has died, her death record or obituary.", sources: "1950 census name search (NARA); Michigan and New York birth, marriage and death indexes; obituaries; SSDI", task: "KIN-GEM-14" },
+    { id: "Q21", p: 3, person: "P-self", q: "Who is the great-uncle who compiled the file: whose brother is he, and what does he know first-hand about Barbara and her parents?", sources: "the family", task: "owner" },
     { id: "Q1", p: 1, person: "P-joseph", q: "Find his 1912 arrival: New York arrivals 22–25 Aug 1912 from Hamburg (Termenas, Terminas, Termen-, Juozapas/Josef), and the Hamburg emigration list for mid-August 1912; read the whole manifest line (last residence, nearest relative at home, who he was joining and where, height, birthplace).", sources: "Statue of Liberty–Ellis Island Foundation; FamilySearch \"New York Passenger Arrival Lists (Ellis Island)\"; Staatsarchiv Hamburg Hamburger Passagierlisten (via Ancestry)", task: "KIN-GEM-07" },
     { id: "Q2", p: 1, person: "P-joseph", q: "Transcribe the whole petition and its back page (oath, order of the court) word for word, and the certificate of arrival if one is filed with it.", sources: "NARA M1368 roll 315, images 0913–0914 (NAID 59700981, 59700983)", task: "KIN-GEM-08" },
     { id: "Q3", p: 2, person: "P-joseph", q: "Find his declaration of intention, Detroit, 21 Oct 1916 (Wayne County Circuit Court or the U.S. court at Detroit): it often gives the town of birth, the ship and his physical description in his own words.", sources: "Wayne County Clerk naturalization records; Archives of Michigan; FamilySearch \"Michigan, Naturalization Records\"", task: "KIN-GEM-08" },
-    { id: "Q4", p: 1, person: "P-joseph", q: "Find the family in the 1930 U.S. census (Detroit; Sobieski Avenue area) and Della with the children in 1940; also Joseph in 1920 (Detroit, Cambridge or Brooklyn). This names the great-grandmother and her brothers and sisters.", sources: "1920, 1930, 1940 U.S. censuses (NARA; FamilySearch, Ancestry); 1940 enumeration district maps", task: "KIN-GEM-09" },
+    { id: "Q4", p: 1, person: "P-joseph", q: "Find the family in the 1930 U.S. census (Detroit; Sobieski Avenue area) and Della with the children in 1940; also Joseph in 1920 (Detroit, Cambridge or Brooklyn). This shows whether Barbara (later Feole) is their daughter, or which of their children is her parent (C10).", sources: "1920, 1930, 1940 U.S. censuses (NARA; FamilySearch, Ancestry); 1940 enumeration district maps", task: "KIN-GEM-09" },
     { id: "Q5", p: 1, person: "P-della", q: "See the Brooklyn marriage certificate no. 4615 of 1922: both parties' birthplaces, residences, parents (as written), the officiant and witnesses.", sources: "NYC Municipal Archives (Kings County marriage certificates 1922); FamilySearch image if filmed", task: "KIN-GEM-10" },
     { id: "Q10", p: 2, person: "P-joseph", q: "Request the VA claim file XC 756 521: a widow's or children's claim lists the marriage and every child with birth dates.", sources: "VA Records Management Center / NARA (find which holds XC files for a 1935 death)", task: "KIN-GEM-11" },
     { id: "Q11", p: 2, person: "P-joseph", q: "Search the Telšiai parish birth (baptism) registers for May 1893 (Julian calendar) for a Termenas child; record the parents' names, the village and the godparents.", sources: "Lithuanian State Historical Archives (LVIA), Telšiai parish metrical books; epaveldas.lt digitized registers; Lithuanian surname dictionary", task: "KIN-GEM-12" },
@@ -295,6 +310,7 @@ window.KIN_LINEAGE = {
   /* the five GPS elements, per person: what is done, what is not */
   gps: {
     "P-joseph": { search: "partial: no census, arrival manifest, declaration, newspaper or church record yet", cite: "done for every assertion", analysis: "done", conflicts: "C1, C2, C4, C5, C7, C8 resolved or explained; C3, C6, C9 open", written: "the summary and the proof arguments above" },
+    "P-ggm": { search: "not begun: your account only", cite: "your account (S-owner)", analysis: "not yet", conflicts: "C10 open", written: "not yet" },
     "P-della": { search: "barely begun: one index entry and one mention", cite: "done", analysis: "begun", conflicts: "C3 open", written: "not yet" },
   },
 };

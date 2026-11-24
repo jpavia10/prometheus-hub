@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Kin right now.
 
 ## Gemini
 
-Updated 2026-11-24 03:00 UTC · 8 open in this pillar.
+Updated 2026-11-24 03:14 UTC · 9 open in this pillar.
 
 
 - KIN-GEM-06 · Kin: a US passport for a child under 16 in 2026-27 (DS-11, both parents, DS-3053), fees and times · due 2026-12-06
@@ -26,7 +26,9 @@ Updated 2026-11-24 03:00 UTC · 8 open in this pillar.
     make: kin_gemini_lineage-naturalization_{YYYYMMDD-HHMM}.json · how many: 0 · done when: The petition and its back page transcribed whole; the declaration found and transcribed, or every place searched listed with its result; the USCIS request ready for the owner.
 - KIN-GEM-10 · Kin lineage: Della's side: the 1922 Brooklyn certificate and license, her parents, Malkitus or Matukaitis (Q5, Q14, C3) · due 2026-12-08
     make: kin_gemini_lineage-della_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Certificate 4615 transcribed whole (or the exact reason it could not be opened); the license searched; Della's family searched under every spelling with results; C3 argued.
-- KIN-GEM-09 · Kin lineage: the family in the 1920, 1930, 1940 and 1950 censuses, read page by page (Q4) · due 2026-12-10
+- KIN-GEM-14 · Kin lineage: Barbara Feole, the owner's great-grandmother: her birth, her parents, her marriage (Q20, C10) · due 2026-12-08
+    make: kin_gemini_lineage-barbara_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every spelling searched with results; Barbara's birth, marriage and parents found and transcribed, or every place searched listed; C10 argued.
+- KIN-GEM-09 · Kin lineage: Joseph and Della's children in the 1920-1950 censuses, read page by page; is Barbara Feole his daughter or granddaughter? (Q4, C10) · due 2026-12-10
     make: kin_gemini_lineage-censuses_{YYYYMMDD-HHMM}.json · how many: 0 · done when: 1930 household found and transcribed or the whole district read with page ranges listed; 1920, 1940 and 1950 each searched with results; every household found transcribed whole.
 - KIN-GEM-11 · Kin lineage: his Army service: the VA claim file, the service number and Company A's war (Q10, Q18, C6) · due 2026-12-10
     make: kin_gemini_lineage-army_{YYYYMMDD-HHMM}.json · how many: 0 · done when: The VA request ready for the owner; every roster line transcribed; C6 argued; Company A's passages found and transcribed or every catalogue searched listed.
@@ -37,7 +39,7 @@ Updated 2026-11-24 03:00 UTC · 8 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-24 03:00 UTC · 1 open in this pillar.
+Updated 2026-11-24 03:14 UTC · 1 open in this pillar.
 
 
 - KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · due 2026-12-08
@@ -45,21 +47,21 @@ Updated 2026-11-24 03:00 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Kin right now.
 
 ## Argon
 
-Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Kin right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 03:00 UTC · 0 open in this pillar.
+Updated 2026-11-24 03:14 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Kin right now.

@@ -2,7 +2,7 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-24 03:00 UTC · 8 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 03:14 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -262,13 +262,82 @@ Updated 2026-11-24 03:00 UTC · 8 open · Rules for every pillar: https://github
 - a guess written as a fact (write 'not stated' or 'illegible')
 - a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-## 5. KIN-GEM-09 · Kin lineage: the family in the 1920, 1930, 1940 and 1950 censuses, read page by page (Q4)
+## 5. KIN-GEM-14 · Kin lineage: Barbara Feole, the owner's great-grandmother: her birth, her parents, her marriage (Q20, C10)
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** The owner's maternal line is Toni Hinkle (born Sanders), her mother Laurie Jordan, and Laurie's mother Barbara Feole. The family links Barbara to Joseph Termenas but not by how many generations. Barbara's own records (birth, marriage, Laurie's birth, her death if she has died) name her parents and settle C10 from her side, while KIN-GEM-09 works down from Joseph.
+
+**What it unlocks:** The tree's dashed link from Joseph Termenas to Barbara Feole becomes proven or is corrected; Barbara gets her birth name, dates and parents.
+
+**Read first:**
+- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
+- What is proven about Joseph (compare every candidate against it): born 16 May 1893 (his own sworn statements; 1894 and 1895 elsewhere), Telšiai, Kovno Governorate; left Hamburg about 13 Aug 1912, arrived New York 23 Aug 1912 (his petition); declared intention at Detroit 21 Oct 1916; draft card Detroit 5 Jun 1917 (Cardoni Ave, motion-picture operator); enlisted Columbus Barracks 20 Sep 1917, Co. A 29th Engineers, France Nov 1917-Jul 1919; naturalized Boston 14 Jul 1919 (certificate 1229058), discharged Camp Devens 15 Jul 1919; married Della Malkitus, Brooklyn, 25 Apr 1922 (certificate 4615); 12134 Sobieski Ave, Detroit after 1926; furnace attendant at Ford; died Henry Ford Hospital 11 Jun 1935; buried Mt. Olivet, Detroit, 14 Jun 1935. Spellings seen: Termenas, Termens, Terminas, Termen; Joseph, Josef, Juozas. The owner's line (his own account, 24 Nov 2026): mother Toni Hinkle (born Sanders); her mother Laurie Jordan; her mother Barbara Feole; the family says Joseph Termenas is Barbara's father or grandfather and does not know which. Laurie and Toni are living: research Barbara and her parents, not them.
+- NARA's 1950 census site (1950census.archives.gov, name search) for a Barbara born before 1950 in Michigan or New York with a Termens / Termenas parent or grandparent
+- Michigan marriage and death indexes, New York State and NYC indexes; FamilySearch and the SSDI (needs-sign-in rows where blocked)
+- Obituaries (legacy.com and newspapers) for Barbara Feole and for any Feole husband: an obituary names parents, siblings and children, which ties Barbara to Laurie and to Joseph's line
+- Find a Grave as a lead only
+
+**Do this:**
+1. Search every spelling: Barbara Feole, Feoli, Feola; Barbara Termens, Termenas, Termen; with birth years 1920-1950. One row per search, also when empty.
+2. For every candidate: the whole record transcribed (birth, marriage, census line, obituary) and the identity argument against what is known: her daughter Laurie (later Jordan, mother of Toni born Sanders), the Feole marriage, and Joseph and Della's dates (married 25 Apr 1922, he died 11 Jun 1935).
+3. Her parents as the records name them: if a parent is Joseph Termenas or Della, say so with the record; if a parent is a Termens child, name that child and that child's own birth record.
+4. Summary row: Barbara's birth name, date and place, her parents, her marriage, and C10 argued from her side (daughter or granddaughter, and how sure).
+
+**Make:** `kin_gemini_lineage-barbara_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
+- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
+- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
+- `result` (text): found, not found, candidate, needs sign-in, or paid
+- `record` (text): the record's title as the repository names it
+- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
+- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
+- `url` (url): the page you opened (the image page itself where there is one)
+- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
+- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
+- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
+- `evidence` (text): direct, indirect or negative, for the question
+- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
+- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
+- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+
+**Before you save, check every one of these yourself:**
+- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
+- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
+- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
+- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
+- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
+- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
+
+**Done when:** Every spelling searched with results; Barbara's birth, marriage and parents found and transcribed, or every place searched listed; C10 argued.
+
+**How Claude checks it:**
+- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
+- Claude repeats three 'not found' searches and three classification calls at random.
+
+**Not done (sent back) if:**
+- a record presented as his or hers without the identifiers compared
+- a transcription that paraphrases, shortens or 'cleans' the record
+- a fact whose reference is too vague to find the same image again
+- searches that found nothing left out
+- an index or abstract labelled 'original'
+- a guess written as a fact (write 'not stated' or 'illegible')
+- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
+
+## 6. KIN-GEM-09 · Kin lineage: Joseph and Della's children in the 1920-1950 censuses, read page by page; is Barbara Feole his daughter or granddaughter? (Q4, C10)
 
 **Due:** 2026-12-10 · **State:** now
 
-**Why:** No census has been found for Joseph or Della. The 1930 census at 12134 Sobieski Avenue (or wherever they were) and Della with the children in 1940 and 1950 name the owner's great-grandmother and her brothers and sisters: the generation the tree is missing.
+**Why:** No census has been found for Joseph or Della. The owner's great-grandmother is Barbara (later Barbara Feole), and the family does not know whether Joseph Termenas is her father or her grandfather (conflict C10). The 1930, 1940 and 1950 censuses settle it: either Barbara is in Joseph and Della's household, or one of their children is her parent.
 
-**What it unlocks:** The tree's 'your great-grandmother' placeholder gets a name, a birth year and her siblings; the line from Joseph to the owner closes.
+**What it unlocks:** C10 closes: the tree's dashed link between Joseph Termenas and Barbara Feole becomes a proven one (daughter, or granddaughter through a named child).
 
 **Read first:**
 - The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (read it first; the method is pillars/kin/docs/LINEAGE_METHOD.md in the same repo). The record images: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/docs/{name}.webp (names are in each source's img list).
@@ -283,7 +352,7 @@ Updated 2026-11-24 03:00 UTC · 8 open · Rules for every pillar: https://github
 2. 1920: Joseph alone (they married in 1922) in Detroit, Cambridge or Brooklyn; Della with her parents Michael and Eva wherever they are (C3 depends on it).
 3. 1940 and 1950: Della (widowed 1935) with the children; transcribe each household whole, including the 1940 supplementary lines if a family member falls on them.
 4. For each household: the identity argument (Joseph's age, birthplace, immigration year, naturalized, WWI veteran; Della's age and parents' birthplaces).
-5. Summary row: the children's names and birth years in every census they appear in, and which one is the owner's great-grandmother if the seed or the owner's family names allow it (say how sure).
+5. Summary row: every child of Joseph and Della with birth years from every census; whether any is a Barbara born 1922-1935 (then she is his daughter) or which child had a daughter Barbara born after about 1937 (then she is his granddaughter); how sure.
 
 **Make:** `kin_gemini_lineage-censuses_{YYYYMMDD-HHMM}.json`
 
@@ -332,7 +401,7 @@ Updated 2026-11-24 03:00 UTC · 8 open · Rules for every pillar: https://github
 - a guess written as a fact (write 'not stated' or 'illegible')
 - a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-## 6. KIN-GEM-11 · Kin lineage: his Army service: the VA claim file, the service number and Company A's war (Q10, Q18, C6)
+## 7. KIN-GEM-11 · Kin lineage: his Army service: the VA claim file, the service number and Company A's war (Q10, Q18, C6)
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -402,7 +471,7 @@ Updated 2026-11-24 03:00 UTC · 8 open · Rules for every pillar: https://github
 - a guess written as a fact (write 'not stated' or 'illegible')
 - a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-## 7. KIN-GEM-13 · Kin lineage: Detroit and Cambridge in print: city directories 1916-1935 and the June 1935 newspapers (Q7, Q15)
+## 8. KIN-GEM-13 · Kin lineage: Detroit and Cambridge in print: city directories 1916-1935 and the June 1935 newspapers (Q7, Q15)
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -472,7 +541,7 @@ Updated 2026-11-24 03:00 UTC · 8 open · Rules for every pillar: https://github
 - a guess written as a fact (write 'not stated' or 'illegible')
 - a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
 
-## 8. KIN-GEM-12 · Kin lineage: Telšiai 1893: the Catholic parish birth register, read in the original Russian (Q11)
+## 9. KIN-GEM-12 · Kin lineage: Telšiai 1893: the Catholic parish birth register, read in the original Russian (Q11)
 
 **Due:** 2026-12-15 · **State:** now
 

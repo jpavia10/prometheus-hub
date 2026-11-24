@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 03:00 UTC",
+ "updated": "2026-11-24 03:14 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -522,6 +522,17 @@
    "due": "2026-12-08",
    "pillar": "kin",
    "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-14",
+   "title": "Kin lineage: Barbara Feole, the owner's great-grandmother: her birth, her parents, her marriage (Q20, C10)",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "kin",
+   "pillar_name": "Kin",
    "ai": "muse",
    "ai_name": "Muse",
    "id": "KIN-MUS-02",
@@ -558,7 +569,7 @@
    "ai": "gemini",
    "ai_name": "Gemini",
    "id": "KIN-GEM-09",
-   "title": "Kin lineage: the family in the 1920, 1930, 1940 and 1950 censuses, read page by page (Q4)",
+   "title": "Kin lineage: Joseph and Della's children in the 1920-1950 censuses, read page by page; is Barbara Feole his daughter or granddaughter? (Q4, C10)",
    "state": "now",
    "count": 0
   },

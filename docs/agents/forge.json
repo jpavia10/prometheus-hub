@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T03:00:51Z",
- "checked": "2026-11-24T03:00:51Z",
+ "built": "2026-11-24T03:14:42Z",
+ "checked": "2026-11-24T03:14:42Z",
  "version": 2,
  "today": "2026-11-23",
  "sources": {
@@ -23,7 +23,7 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 75,
+  "todo": 76,
   "late": 2,
   "due7": 8,
   "delivered": 0,
@@ -32,7 +32,7 @@
  },
  "per": {
   "Gemini": {
-   "todo": 59,
+   "todo": 60,
    "late": 0,
    "due7": 3,
    "delivered": 0,
@@ -42,7 +42,7 @@
    "items": 469,
    "floor": 50,
    "by": {
-    "hub": 55,
+    "hub": 56,
     "titan": 3,
     "tproj": 1,
     "board": 0
@@ -398,10 +398,10 @@
    }
   },
   "Kin": {
-   "todo": 9,
+   "todo": 10,
    "delivered": 0,
    "by": {
-    "Gemini": 8,
+    "Gemini": 9,
     "Muse": 1
    }
   },
@@ -12337,7 +12337,7 @@
    "where": "Kin",
    "pid": "kin",
    "id": "KIN-GEM-09",
-   "title": "Kin lineage: the family in the 1920, 1930, 1940 and 1950 censuses, read page by page (Q4)",
+   "title": "Kin lineage: Joseph and Della's children in the 1920-1950 censuses, read page by page; is Barbara Feole his daughter or granddaughter? (Q4, C10)",
    "status": "todo",
    "due": "2026-12-10",
    "items": 0,
@@ -12346,13 +12346,13 @@
    "reopened": "",
    "delivered": null,
    "detail": {
-    "why": "No census has been found for Joseph or Della. The 1930 census at 12134 Sobieski Avenue (or wherever they were) and Della with the children in 1940 and 1950 name the owner's great-grandmother and her brothers and sisters: the generation the tree is missing.",
+    "why": "No census has been found for Joseph or Della. The owner's great-grandmother is Barbara (later Barbara Feole), and the family does not know whether Joseph Termenas is her father or her grandfather (conflict C10). The 1930, 1940 and 1950 censuses settle it: either Barbara is in Joseph and Della's household, or one of their children is her parent.",
     "steps": [
      "1930 first: find the enumeration district for 12134 Sobieski Avenue, Detroit; page through that district's images until the house number; transcribe the whole household, every column (name, relation, home owned or rented, value, radio, sex, race, age, marital status, age at first marriage, school, read and write, birthplace of person, father and mother, mother tongue, immigration year, naturalized, English, occupation, industry, class of worker, at work, veteran and which war). Rows for every page range read.",
      "1920: Joseph alone (they married in 1922) in Detroit, Cambridge or Brooklyn; Della with her parents Michael and Eva wherever they are (C3 depends on it).",
      "1940 and 1950: Della (widowed 1935) with the children; transcribe each household whole, including the 1940 supplementary lines if a family member falls on them.",
      "For each household: the identity argument (Joseph's age, birthplace, immigration year, naturalized, WWI veteran; Della's age and parents' birthplaces).",
-     "Summary row: the children's names and birth years in every census they appear in, and which one is the owner's great-grandmother if the seed or the owner's family names allow it (say how sure)."
+     "Summary row: every child of Joseph and Della with birth years from every census; whether any is a Barbara born 1922-1935 (then she is his daughter) or which child had a daughter Barbara born after about 1937 (then she is his granddaughter); how sure."
     ],
     "make": "kin_gemini_lineage-censuses_{YYYYMMDD-HHMM}.json",
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
@@ -12498,6 +12498,40 @@
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
     "done": "Every Detroit directory year 1916-1935 that is online searched (a row each); Cambridge 1918-1920 read; June 1935 searched in every paper you can open; the Ford route written.",
+    "checks": [
+     "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
+     "Claude repeats three 'not found' searches and three classification calls at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-14",
+   "title": "Kin lineage: Barbara Feole, the owner's great-grandmother: her birth, her parents, her marriage (Q20, C10)",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The owner's maternal line is Toni Hinkle (born Sanders), her mother Laurie Jordan, and Laurie's mother Barbara Feole. The family links Barbara to Joseph Termenas but not by how many generations. Barbara's own records (birth, marriage, Laurie's birth, her death if she has died) name her parents and settle C10 from her side, while KIN-GEM-09 works down from Joseph.",
+    "steps": [
+     "Search every spelling: Barbara Feole, Feoli, Feola; Barbara Termens, Termenas, Termen; with birth years 1920-1950. One row per search, also when empty.",
+     "For every candidate: the whole record transcribed (birth, marriage, census line, obituary) and the identity argument against what is known: her daughter Laurie (later Jordan, mother of Toni born Sanders), the Feole marriage, and Joseph and Della's dates (married 25 Apr 1922, he died 11 Jun 1935).",
+     "Her parents as the records name them: if a parent is Joseph Termenas or Della, say so with the record; if a parent is a Termens child, name that child and that child's own birth record.",
+     "Summary row: Barbara's birth name, date and place, her parents, her marriage, and C10 argued from her side (daughter or granddaughter, and how sure)."
+    ],
+    "make": "kin_gemini_lineage-barbara_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below; the last row is kind 'summary'",
+    "done": "Every spelling searched with results; Barbara's birth, marriage and parents found and transcribed, or every place searched listed; C10 argued.",
     "checks": [
      "Claude opens every 'found' row's reference and reads the image against the transcription, field by field.",
      "Claude repeats three 'not found' searches and three classification calls at random."

@@ -13,7 +13,7 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const by = (arr) => Object.fromEntries(arr.map((x) => [x.id, x]));
   const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried" };
-  const CONF = { proven: "Proven", probable: "Probable", possible: "Possible", placeholder: "To name", named: "Named by you", self: "You" };
+  const CONF = { proven: "Proven", probable: "Probable", possible: "Possible", family: "From the family", placeholder: "To name", named: "Named by you", self: "You" };
   const KIND = { original: "Original", derivative: "Derivative", authored: "Authored" };
   const INFO = { primary: "Primary", secondary: "Secondary", undetermined: "Undetermined" };
   const EV = { direct: "Direct", indirect: "Indirect", negative: "Negative" };
@@ -28,7 +28,7 @@
       if (n) { o.names = [{ given: n.given || "", surname: n.surname || "", type: "birth", local: true }].concat(o.names.filter((x) => x.given || x.surname)); if (n.sex) o.sex = n.sex; if (n.born) o.born_local = n.born; if (n.note) o.note_local = n.note; if (o.status === "placeholder" && (n.given || n.surname)) o.status = "named"; }
       return o;
     }).concat(loc.people.map((p) => Object.assign({ local: true, status: "named" }, p)));
-    const families = L.families.map((f) => ({ id: f.id, partners: f.partners.slice(), children: f.children.slice(), events: (f.events || []).slice() })).concat(loc.families.map((f) => Object.assign({ local: true, events: [] }, f)));
+    const families = L.families.map((f) => ({ id: f.id, partners: f.partners.slice(), children: f.children.slice(), events: (f.events || []).slice(), uncertain: f.uncertain || {} })).concat(loc.families.map((f) => Object.assign({ local: true, events: [] }, f)));
     return { people, P: by(people), families, F: by(families), E: by(L.events), PL: by(L.places), SRC: by(L.sources), C: by(L.conflicts) };
   }
   const nm = (p) => { const n = (p.names || []).find((x) => x.given || x.surname); return n ? `${n.given || ""} ${n.surname || ""}`.trim() : (p.placeholder || "Unnamed"); };
@@ -106,8 +106,12 @@
       const onLine = f.children.some((c) => lit.has(c)) && f.partners.some((q) => lit.has(q));
       if (ps.length > 1) add("path", { d: `M${ps[0].x + W / 2} ${ps[0].y}H${ps[ps.length - 1].x - W / 2}`, class: "ln-wed" + (onLine ? " lit" : "") });
       for (const c of cs) {
-        const lt = onLine && lit.has(f.children[cs.indexOf(c)]);
-        add("path", { d: `M${midX} ${ps.length > 1 ? ps[0].y : y0}V${(y0 + c.y - H / 2) / 2}H${c.x}V${c.y - H / 2}`, class: "ln-stem" + (lt ? " lit" : "") });
+        const cid = f.children[cs.indexOf(c)], lt = onLine && lit.has(cid), un = f.uncertain && f.uncertain[cid], my = (y0 + c.y - H / 2) / 2;
+        add("path", { d: `M${midX} ${ps.length > 1 ? ps[0].y : y0}V${my}H${c.x}V${c.y - H / 2}`, class: "ln-stem" + (lt ? " lit" : "") + (un ? " unsure" : "") });
+        if (un) { /* a link the records have not settled: drawn dashed, with the question on it */
+          const q = add("g", { class: "ln-unsure", transform: `translate(${c.x} ${((ps.length > 1 ? ps[0].y : y0) + my) / 2 + 10})` });
+          add("rect", { x: -108, y: -12, width: 216, height: 24, rx: 12 }, q); const t = add("text", { y: 5 }, q); t.textContent = un;
+        }
       }
     }
     for (const p of M.people) {
@@ -134,7 +138,8 @@
   }
   function fit(root) {
     const svg = root.querySelector("svg.ln-svg"), r = svg.getBoundingClientRect(), vb = JSON.parse(svg.dataset.vb || "{}");
-    const sc = Math.min(r.width / vb.w, r.height / vb.h, 1.2); ui.view = { s: sc, x: (r.width - vb.w * sc) / 2 - vb.x * sc, y: (r.height - vb.h * sc) / 2 - vb.y * sc }; animate(root);
+    const lg = root.querySelector(".ln-legend"), top = 64, bot = (lg ? lg.offsetHeight : 20) + 16, ah = Math.max(120, r.height - top - bot); /* clear of the buttons above and the legend below */
+    const sc = Math.min(r.width / vb.w, ah / vb.h, 1.2); ui.view = { s: sc, x: (r.width - vb.w * sc) / 2 - vb.x * sc, y: top + (ah - vb.h * sc) / 2 - vb.y * sc }; animate(root);
   }
   /* the first view: the whole tree when it is still readable, else your lit line (you up to the furthest researched ancestor and the
      partner beside them), never smaller than a scale where names can be read */
@@ -142,10 +147,14 @@
     const svg = root.querySelector("svg.ln-svg"), r = svg.getBoundingClientRect(), vb = JSON.parse(svg.dataset.vb || "{}");
     if (Math.min(r.width / vb.w, r.height / vb.h) >= 0.62) return fit(root);
     const ids = [...(ui.lit || [])].filter((i) => ui.lay.pos[i]); if (!ids.length) return focus(root, ui.sel, 0.66);
-    const xs = ids.map((i) => ui.lay.pos[i].x), ys = ids.map((i) => ui.lay.pos[i].y), up = ids.some((i) => parentsOf(ui.M, i) && !ids.includes(parentsOf(ui.M, i).partners[0])) ? H + GY : 0;
-    const bx = Math.min(...xs) - W / 2 - 16, bw = Math.max(...xs) - Math.min(...xs) + W + 32, by = Math.min(...ys) - H / 2 - 16 - up, bh = Math.max(...ys) - Math.min(...ys) + H + 32 + up;
-    const top = 64, bot = 40, sc = Math.max(0.5, Math.min(r.width / bw, (r.height - top - bot) / bh, 1.1));
-    ui.view = { s: sc, x: r.width / 2 - (bx + bw / 2) * sc, y: top - by * sc }; animate(root);
+    const xs = ids.map((i) => ui.lay.pos[i].x), ys = ids.map((i) => ui.lay.pos[i].y), lg = root.querySelector(".ln-legend"), top = 64, bot = (lg ? lg.offsetHeight : 20) + 20, ah = r.height - top - bot;
+    const box = (up) => { const bx = Math.min(...xs) - W / 2 - 16, by = Math.min(...ys) - H / 2 - 16 - up; return { bx, by, bw: Math.max(...xs) - Math.min(...xs) + W + 32, bh: Math.max(...ys) - by + H / 2 + 16 }; };
+    const scale = (b) => Math.min(r.width / b.bw, ah / b.bh, 1.1);
+    let b = box(ids.some((i) => parentsOf(ui.M, i) && !ids.includes(parentsOf(ui.M, i).partners[0])) ? H + GY : 0);
+    if (scale(b) < 0.55) b = box(0); /* the generation above your line only when it still fits readably */
+    const sc = Math.max(0.5, scale(b)), fits = b.bh * sc <= ah + 1;
+    /* when even your line does not fit, keep you in view (the bottom of the line) and let the oldest generation run off the top */
+    ui.view = { s: sc, x: r.width / 2 - (b.bx + b.bw / 2) * sc, y: fits ? top + (ah - b.bh * sc) / 2 - b.by * sc : top + ah - (b.by + b.bh) * sc }; animate(root);
   }
   function animate(root) { const g = root.querySelector("g.ln-world"); g.classList.add("glide"); apply(root); clearTimeout(ui.t); ui.t = setTimeout(() => g.classList.remove("glide"), 420); }
   function zoomAt(root, k, cx, cy) {
@@ -261,9 +270,9 @@
   }
   function conflictHtml(c) { return `<details class="ln-con s-${c.status}"><summary><b>${c.id}</b> ${esc(c.q)}<span>${esc(c.status)}: ${esc(c.conclusion)}</span></summary><p>${esc(c.argument)}</p></details>`; }
   function namer(p) {
-    if (p.status !== "placeholder" && !(local().names[p.id])) return "";
+    if (p.status !== "placeholder" && p.status !== "family" && !(local().names[p.id])) return "";
     const n = local().names[p.id] || {};
-    return `<form class="form ln-namer" data-pid="${p.id}"><p class="ln-kick">Name this person</p>
+    return `<form class="form ln-namer" data-pid="${p.id}"><p class="ln-kick">${p.status === "family" ? "Add what you know" : "Name this person"}</p>
       <label class="f">Given names<input name="given" maxlength="80" value="${esc(n.given || "")}" autocomplete="off"></label>
       <label class="f">Surname at birth<input name="surname" maxlength="80" value="${esc(n.surname || "")}" autocomplete="off"></label>
       <label class="f">Born (year)<input name="born" maxlength="12" inputmode="numeric" value="${esc(n.born || "")}"></label>
@@ -339,7 +348,7 @@
     const xid = (id) => "@" + id.replace(/[^A-Za-z0-9]/g, "") + "@";
     for (const p of M.people) {
       out.push(`0 ${xid(p.id)} INDI`);
-      for (const n of (p.names || []).filter((x) => x.given || x.surname)) { out.push(`1 NAME ${n.given || ""} /${n.surname || ""}/`.replace(/\s+\//, " /")); if (n.type && n.type !== "birth" && n.type !== "preferred") out.push(`2 TYPE OTHER`, `3 PHRASE ${n.type}`); }
+      for (const n of (p.names || []).filter((x) => x.given || x.surname)) { out.push(`1 NAME ${n.given || ""} /${n.surname || ""}/`.replace(/\s+\//, " /")); const nt = { married: "MARRIED", anglicized: "IMMIGRANT", variant: "AKA" }[n.type]; if (nt) out.push(`2 TYPE ${nt}`); else if (n.type && n.type !== "birth" && n.type !== "preferred") out.push(`2 TYPE OTHER`, `3 PHRASE ${n.type}`); }
       if (!(p.names || []).some((x) => x.given || x.surname)) out.push(`1 NAME ${p.placeholder || "Unknown"} //`);
       out.push(`1 SEX ${p.sex === "M" || p.sex === "F" ? p.sex : "U"}`);
       for (const e of L.events.filter((x) => x.who.includes(p.id) && x.type !== "marriage")) {
@@ -351,7 +360,7 @@
       }
       if (p.summary) out.push(`1 NOTE ${p.summary}`);
       for (const f of M.families.filter((x) => x.partners.includes(p.id))) out.push(`1 FAMS ${xid(f.id)}`);
-      const pf = parentsOf(M, p.id); if (pf) out.push(`1 FAMC ${xid(pf.id)}`);
+      const pf = parentsOf(M, p.id); if (pf) { out.push(`1 FAMC ${xid(pf.id)}`); if (pf.uncertain && pf.uncertain[p.id]) out.push("2 STAT CHALLENGED", `3 PHRASE ${pf.uncertain[p.id]}`); }
     }
     for (const f of M.families) {
       out.push(`0 ${xid(f.id)} FAM`);
@@ -364,6 +373,12 @@
     return out.map((l) => l.replace(/\n/g, " ")).join("\n") + "\n";
   }
 
+  /* the legend names only the kinds of card the tree shows, plus the unsettled link when there is one */
+  function legend(tree) {
+    const M = ui.M, has = new Set(M.people.map((p) => p.status)), order = ["proven", "probable", "possible", "family", "named", "placeholder"];
+    const un = M.families.some((f) => f.uncertain && Object.keys(f.uncertain).length);
+    tree.querySelector(".ln-legend").innerHTML = order.filter((k) => has.has(k)).map((k) => `<span class="st-${k}">${CONF[k]}</span>`).join("") + (un ? `<span class="st-unsure">Not yet settled</span>` : "");
+  }
   /* ------------------------------------------------------------------ mount */
   function start() {
     const grid = document.querySelector("#app section.grid"); if (!grid) return;
@@ -371,7 +386,7 @@
     const tree = panel("ln-tree", "The family tree", "Your line, generation by generation, from the records. Drag to move, pinch or scroll to zoom, tap a person for everything known about them and how it is known.",
       `<div class="ln-stage"><svg class="ln-svg" role="group" aria-label="Family tree"><g class="ln-world"></g></svg>
         <div class="ln-tools"><button type="button" class="btn quiet small" data-z="in" aria-label="Zoom in">+</button><button type="button" class="btn quiet small" data-z="out" aria-label="Zoom out">−</button><button type="button" class="btn quiet small" data-z="fit">Whole tree</button><button type="button" class="btn quiet small" data-z="me">You</button></div>
-        <p class="ln-legend"><span class="st-proven">Proven</span><span class="st-probable">Probable</span><span class="st-possible">Possible</span><span class="st-placeholder">To name</span></p></div>
+        <p class="ln-legend"></p></div>
       <div class="ln-dossier" id="ln-dossier" aria-live="polite"></div>
       <div class="ln-foot"><button type="button" class="btn quiet small" id="ln-ged">Export GEDCOM 7</button><span>${L.people.length} people · ${L.events.length} events · ${L.sources.length} sources · ${L.conflicts.length} conflicts weighed</span></div>`);
     const src = panel("ln-sources", "Sources of the family history", "Every record behind the tree, with its full citation, where it is kept, a transcription and the image.", `<div id="ln-srcs"></div>`);
@@ -379,7 +394,7 @@
     grid.insertBefore(plan, grid.firstChild); grid.insertBefore(src, plan); grid.insertBefore(tree, src);
     const root = tree, dos = tree.querySelector("#ln-dossier");
     const pick = (pid, center) => { ui.sel = pid; drawTree(root); dossier(dos, pid); if (center) focus(root, pid); };
-    drawTree(root); dossier(dos, ui.sel); src.querySelector("#ln-srcs").innerHTML = sourcesHtml(); plan.querySelector("#ln-planx").innerHTML = planHtml();
+    drawTree(root); dossier(dos, ui.sel); legend(tree); src.querySelector("#ln-srcs").innerHTML = sourcesHtml(); plan.querySelector("#ln-planx").innerHTML = planHtml();
     requestAnimationFrame(() => first(root));
     wire(root, (pid) => pick(pid, false));
     tree.querySelector(".ln-tools").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const svg = root.querySelector("svg.ln-svg").getBoundingClientRect();
