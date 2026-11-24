@@ -1,7 +1,10 @@
 /* Odyssey: a card for every stop on the trips (Claude, 2026-11-21), from Gemini's odyssey_gemini_city-cards_20261120-1120.json
    (ODY-GEM-10): 27 stops, population with its year and source (Wikidata, Data Commons), elevation, time zone, currency, language and what
    each place is known for, quoted from its official tourism or UNESCO page. Not second-read yet.   2026-11-23: 12 more from ODY-GEM-14 (the photo trips: Atlanta, Big Sur, San Francisco, Sequoia, Kings Canyon, Las Vegas, Hoover Dam,
-   Mazatlán, Puerto Vallarta, Fort Bragg, San Diego, Mammoth Lakes); a park or a dam has no population, so none is shown. */
+   Mazatlán, Puerto Vallarta, Fort Bragg, San Diego, Mammoth Lakes); a park or a dam has no population, so none is shown.
+   2026-11-24: 10 more from ODY-GEM-18 (run 7, scored #196): the stops on those trips that had no card yet (North Georgia, the Marin
+   Headlands, Lake Kaweah, Cedar Grove, the Grand Canyon, Page, Long Beach, Cabo San Lucas, the Navarro River, Point Arena); a park
+   or a lake is shown with its nearest town's numbers. */
 (function () {
   const PK = window.PK; if (!PK) return;
   const R = window.ODYSSEY_CITIES = [
@@ -628,6 +631,166 @@
   "known_for": "An Eastern Sierra mountain resort town surrounded by Inyo National Forest, famous for skiing and more than 300 miles of alpine trails near Devils Postpile.",
   "quote": "The Mammoth Lakes Trail System offers boundless recreation opportunities on more than 300 miles of trails. From granite crags to trout-stocked lakes, pine forests to alpine meadows, there's something for all seasons, interests and abilities, motorized and non-motorized alike.",
   "url": "https://www.townofmammothlakes.ca.gov/806/Official-Town-Partners"
+ },
+ {
+  "n": 40,
+  "code": "NGA",
+  "city": "Blue Ridge, for the North Georgia mountains",
+  "country": "United States",
+  "population": 1253,
+  "pop_year": 2020,
+  "pop_url": "https://www.wikidata.org/wiki/Q2035614",
+  "elevation_m": 537,
+  "tz": "America/New_York",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Gateway town to the Blue Ridge Mountains and the 37,000-acre Cohutta Wilderness in Chattahoochee-Oconee National Forest.",
+  "quote": "The 37,000 acre Cohutta Wilderness contains 90 miles of hiking and backpacking trails, two of which follow the Jacks and Conasauga Rivers.",
+  "url": "https://www.fs.usda.gov/r08/chattahoochee-oconee/recreation/cohutta-wilderness-trailheads"
+ },
+ {
+  "n": 41,
+  "code": "MHL",
+  "city": "Sausalito, for the Marin Headlands",
+  "country": "United States",
+  "population": 7019,
+  "pop_year": 2025,
+  "pop_url": "https://www.census.gov/quickfacts/sausalitocitycalifornia",
+  "elevation_m": 3,
+  "tz": "America/Los_Angeles",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Coastal headlands immediately north of the Golden Gate Bridge featuring oceanic rock cliffs, coastal prairie, and historic military fortifications.",
+  "quote": "The Marin Headlands is known for its unique geology, its fog-swept coastal prairie ecosystem, and its many chapters of history.",
+  "url": "https://www.nps.gov/goga/marin-headlands.htm"
+ },
+ {
+  "n": 42,
+  "code": "KAW",
+  "city": "Three Rivers, for Lake Kaweah",
+  "country": "United States",
+  "population": 2282,
+  "pop_year": 2024,
+  "pop_url": "https://censusreporter.org/profiles/16000US0678638-three-rivers-ca/",
+  "elevation_m": 257,
+  "tz": "America/Los_Angeles",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Foothill reservoir formed by Terminus Dam on the Kaweah River just west of Sequoia National Park.",
+  "quote": "Lake Kaweah was formed by the construction of Terminus Dam on the Kaweah River in 1962 by the U.S. Army Corps of Engineers to provide flood risk management and water conservation.",
+  "url": "https://www.spk.usace.army.mil/Missions/Recreation/Lake-Kaweah/"
+ },
+ {
+  "n": 43,
+  "code": "CDG",
+  "city": "Yokuts Valley, for Cedar Grove, Kings Canyon",
+  "country": "United States",
+  "population": 3162,
+  "pop_year": 2020,
+  "pop_url": "https://www.wikidata.org/wiki/Q2141628",
+  "elevation_m": 497,
+  "tz": "America/Los_Angeles",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Glaciated canyon valley along the South Fork Kings River with towering granite cliffs, waterfalls, and backcountry trailheads in Kings Canyon National Park.",
+  "quote": "Similar in formation to the iconic valley in Yosemite National Park, this glaciated valley features towering cliffs, tumbling waterfalls, and the powerful Kings River, whose constant rush still travels through the canyon it formed millennia ago.",
+  "url": "https://www.nps.gov/seki/planyourvisit/cedar-grove.htm"
+ },
+ {
+  "n": 44,
+  "code": "GCN",
+  "city": "Tusayan, for the Grand Canyon's South Rim",
+  "country": "United States",
+  "population": 603,
+  "pop_year": 2020,
+  "pop_url": "https://www.wikidata.org/wiki/Q1018999",
+  "elevation_m": 2015,
+  "tz": "America/Phoenix",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Gateway town immediately south of Grand Canyon National Park's South Rim, averaging 7,000 feet above sea level above the mile-deep Colorado River gorge.",
+  "quote": "The Grand Canyon of the Colorado River is a mile-deep canyon (1.6 km) that bisects the park.",
+  "url": "https://www.nps.gov/grca/planyourvisit/basicinfo.htm"
+ },
+ {
+  "n": 45,
+  "code": "PGA",
+  "city": "Page",
+  "country": "United States",
+  "population": 7147,
+  "pop_year": 2025,
+  "pop_url": "https://www.census.gov/quickfacts/pagecityarizona",
+  "elevation_m": 1255,
+  "tz": "America/Phoenix",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Northern Arizona ecotourism hub and gateway to the Grand Circle of National Parks near Lake Powell and Glen Canyon.",
+  "quote": "The City of Page is a welcoming ecotourism community and a gateway to the Grand Circle of National Parks.",
+  "url": "https://cityofpage.org/pera-building-reopening/"
+ },
+ {
+  "n": 46,
+  "code": "LGB",
+  "city": "Long Beach",
+  "country": "United States",
+  "population": 450469,
+  "pop_year": 2025,
+  "pop_url": "https://www.census.gov/quickfacts/longbeachcitycalifornia",
+  "elevation_m": 4,
+  "tz": "America/Los_Angeles",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Southern California coastal city with over six miles of beaches, the Queen Mary, the Aquarium of the Pacific, and Long Beach Airport.",
+  "quote": "With a bustling downtown and over six miles of scenic beaches, Long Beach is a renowned tourist and business destination and home to the iconic Queen Mary, nationally recognized Aquarium of the Pacific and Long Beach Airport",
+  "url": "https://www.longbeach.gov/press-releases/city-unveils-downtown-shoreline-draft-vision-concept/"
+ },
+ {
+  "n": 47,
+  "code": "CSL",
+  "city": "Cabo San Lucas",
+  "country": "Mexico",
+  "population": 202694,
+  "pop_year": 2020,
+  "pop_url": "https://www.wikidata.org/wiki/Q1020776",
+  "elevation_m": null,
+  "tz": "America/Mazatlan",
+  "currency": "Mexican Peso (MXN)",
+  "language": "Spanish",
+  "known_for": "Baja California Sur resort city at the tip of the peninsula known for its protected coastal rock formations and marine natural area.",
+  "quote": "The rock formations in Cabo San Lucas are a clear example of the erosion force that the sea has on the coastal rocks.",
+  "url": "https://descubreanp.conanp.gob.mx/swb/conanp/ANP?suri=19"
+ },
+ {
+  "n": 48,
+  "code": "NAV",
+  "city": "Albion, for the Navarro River mouth",
+  "country": "United States",
+  "population": 153,
+  "pop_year": 2020,
+  "pop_url": "https://www.wikidata.org/wiki/Q2831919",
+  "elevation_m": 53,
+  "tz": "America/Los_Angeles",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Mendocino Coast redwood corridor along the Navarro River meeting the Pacific Ocean at Navarro Beach and historic Captain Fletcher's Inn.",
+  "quote": "Navarro Beach offers coastal access and the Navarro Visitor Center inside the historic Captain Fletcher's Inn.",
+  "url": "https://www.parks.ca.gov/AccessibleFeatures/Details/435"
+ },
+ {
+  "n": 49,
+  "code": "PTA",
+  "city": "Point Arena",
+  "country": "United States",
+  "population": 789,
+  "pop_year": 2024,
+  "pop_url": "https://censusreporter.org/profiles/16000US0657876-point-arena-ca/",
+  "elevation_m": 17,
+  "tz": "America/Los_Angeles",
+  "currency": "United States Dollar (USD)",
+  "language": "English",
+  "known_for": "Mendocino Coast city bordering the BLM Point Arena-Stornetta Unit of the California Coastal National Monument.",
+  "quote": "Point Arena -Stornetta Unit is administered by BLM's Ukiah Field Office and is part of the California Coastal National Monument which provides unique coastal habitat for marine-dependent wildlife and vegetation",
+  "url": "https://www.blm.gov/visit/point-arena-stornetta-unit"
  }
 ];
 
@@ -637,7 +800,7 @@
       rows: R, group: (r) => r.country, title: (r) => `${r.city} · ${r.code}`, value: (r) => r.known_for,
       meta: (r) => [r.population ? `${Number(r.population).toLocaleString()} people (${r.pop_year})` : "", r.elevation_m != null ? `${r.elevation_m} m` : "", r.tz, r.currency, r.language].filter(Boolean),
       url: (r) => r.url || r.pop_url, quote: (r) => r.quote,
-      note: "Gemini ODY-GEM-10 (2026-11-20) and ODY-GEM-14 (2026-11-23, the photo trips). Not second-read yet.",
+      note: "Gemini ODY-GEM-10 (2026-11-20), ODY-GEM-14 (2026-11-23, the photo trips) and ODY-GEM-18 (2026-11-24). Not second-read yet.",
     });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();

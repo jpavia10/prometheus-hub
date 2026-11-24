@@ -17,7 +17,7 @@ REGIONS = [  # [west, south, east, north] in degrees, with room around the trips
     {"id": "europe", "bbox": [-16, 29, 36, 62], "tol": 0.035, "min_area": 0.004},
     {"id": "philippines", "bbox": [113, 3, 131, 22], "tol": 0.015, "min_area": 0.002},
     {"id": "west", "bbox": [-128, 17, -103, 44], "tol": 0.03, "min_area": 0.004, "states": True},  # 2026-11-23: California, Nevada and the Mexican Riviera trips from his photos
-    {"id": "east", "bbox": [-92, 28, -74, 47], "tol": 0.03, "min_area": 0.004, "states": True},   # 2026-11-23: Georgia and Michigan
+    {"id": "east", "bbox": [-92, 24, -74, 47], "tol": 0.03, "min_area": 0.004, "states": True},   # 2026-11-23: Georgia and Michigan; 2026-11-24: down to 24 N for Miami Beach (it fell off the map)
 ]
 
 def decode(topo):

@@ -240,16 +240,19 @@ with sync_playwright() as p:
         wide = po.evaluate("document.documentElement.scrollWidth")
         # 2026-11-23: 71 photos on 13 trips (the Eurotrip 18, April 2024 15, September 2024 5, and the ten trips found in his photos);
         # d66: 84, with his photos of people (owner: privacy in Odyssey is not a limit while building; 2026-11-24: no one else in the April
-        # 2024 trip's photos): Eurotrip 20, April 17, September 14
+        # 2024 trip's photos): Eurotrip 20, April 17, September 14. d78: 110, the six newer trips' run-7 picks checked by eye (26 kept of 31)
         PHN = {"seed-eurotrip-2015": 20, "seed-philippines-2024-04": 17, "seed-philippines-2024": 14, "photos-atlanta-2015": 4, "photos-bigsur-2018": 4, "photos-sequoia-2018": 4,
-               "photos-vegas-2019": 5, "photos-mexico-2019": 3, "photos-norcal-2021": 4, "photos-sandiego-2022": 4, "photos-michigan-2022": 2, "photos-mammoth-2022": 2, "photos-michigan-2023": 1}
-        ok = ({k: v for k, v in j1["n"].items() if v} == PHN and j1["files"] == 84 and shut == 0 and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
+               "photos-vegas-2019": 5, "photos-mexico-2019": 3, "photos-norcal-2021": 4, "photos-sandiego-2022": 4, "photos-michigan-2022": 2, "photos-mammoth-2022": 2, "photos-michigan-2023": 1,
+               "photos-la-2015": 6, "photos-monroe-2018": 4, "photos-detroit-2020": 3, "photos-zion-2020": 5, "photos-michigan-2022-09": 4, "photos-miami-2023": 4}
+        ok = ({k: v for k, v in j1["n"].items() if v} == PHN and j1["files"] == 110 and shut == 0 and j1["bad"] == 0 and j2["place"].startswith("ROME") and j2["here"] == ["ROM"]
               and j2["todo"] == 15 and j3.startswith("PRAGUE") and lb and gone and played.startswith("2 /") and wide <= 384 and not bo)
         proof("ODY-2", "His trip photos as a journey: each past trip opens on its own photos, every photo is served, the map follows the photo (route drawn to that stop, the stop ringed), a stop on the map opens its photos, full screen steps and closes from the keyboard, Play walks the trip",
               ok, f"photos per trip {j1['n']}, {j1['files']} photos and their thumbnails served, {j1['bad']} missing; trip files open at first: {shut}; photo 7 -> {j2['place']}, ringed {j2['here']}, {j2['todo']} legs still ahead; tapping Prague on the map -> {j3}; full screen next -> {lb!r}, Escape closes: {gone}; Play after 4.7 s -> {played}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("ODY-2", "His trip photos as a journey", False, "did not finish: " + str(e)[:200])
     # ODY-3 (2026-11-23): every place he has been. The atlas shows each region's places on its own outline map (Europe 20, Philippines 4,
-    # US West & Mexico 23 and US East 6 since d66 added six trips (d65: Cabo San Lucas); 54 places, 13 countries; it opens on the biggest region); a place opens its visits with a way into the trip file; lighting one trip
+    # US West & Mexico 23 and US East 6 since d66 added six trips (d65: Cabo San Lucas); 54 places, 13 countries. d78: the LA 2015 stops
+    # day by day (Malibu, Long Beach) make the West 24, and the East map reaches Miami Beach (it fell south of the old map): 7; 55 places;
+    # it opens on the biggest region); a place opens its visits with a way into the trip file; lighting one trip
     # dims the others. The globe at the top holds all 13 trips and turns to the next one on a tap.
     try:
         po.goto(f"{URL}pillars/odyssey/", wait_until="load"); po.wait_for_selector("#o-atlas .at-map", state="attached", timeout=15000)
@@ -270,9 +273,9 @@ with sync_playwright() as p:
         before = po.evaluate("document.querySelector('.pk-stage canvas').toDataURL().length"); po.mouse.click(box[0], box[1]); po.wait_for_timeout(2400)
         after = po.evaluate("document.querySelector('.pk-stage canvas').toDataURL().length")
         wide = po.evaluate("document.documentElement.scrollWidth")
-        ok = (a1["regs"] == {"europe": 20, "philippines": 4, "west": 23, "east": 6} and a1["stats"] == ["54", "13"] and a1["shown"] == "west" and a1["dots"] == 23
+        ok = (a1["regs"] == {"europe": 20, "philippines": 4, "west": 24, "east": 7} and a1["stats"] == ["55", "13"] and a1["shown"] == "west" and a1["dots"] == 24
               and a2["name"].startswith("Manila") and a2["visits"] == 2 and a3["on"] >= 2 and a3["off"] >= 1 and a4 == ["seed-eurotrip-2015"]
-              and g1 and g1["trips"] == 19 and g1["places"] == 54 and before != after and wide <= 384 and not bo)
+              and g1 and g1["trips"] == 19 and g1["places"] == 55 and before != after and wide <= 384 and not bo)
         proof("ODY-3", "Every place he has been: the atlas draws each region's places on its outline map, a place opens its visits and its trip file, one trip can be lit; the globe holds every trip and turns on a tap",
               ok, f"regions {a1['regs']}, {a1['stats'][0]} places in {a1['stats'][1]} countries, opens on {a1['shown']} with {a1['dots']} places; Manila -> {a2['name']!r} with {a2['visits']} visits; "
                  f"April 2024 lit: {a3['on']} places lit, {a3['off']} dimmed; a Europe place -> trip file {a4}; globe {g1}; a tap redraws it: {before != after}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))

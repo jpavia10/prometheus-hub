@@ -8,43 +8,45 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 21:34 UTC · 0 open in this pillar.
+Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Odyssey · Trips & Away Mode right now.
 
 ## Gemini
 
-Updated 2026-11-24 21:34 UTC · 1 open in this pillar.
+Updated 2026-11-24 23:06 UTC · 2 open in this pillar.
 
 
-- ODY-GEM-28 · Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive · due 2026-12-08
-    make: odyssey_gemini_trip-photos_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Each of the seven trips searched.
+- ODY-GEM-29 · Odyssey: more of the best photos for the five trips that open on three or fewer · due 2026-12-08
+    make: odyssey_gemini_more-picks_{YYYYMMDD-HHMM}.json · how many: 25 · done when: 4 to 6 new picks for each of the five trips, none already published.
+- ODY-GEM-30 · Odyssey: a city card for each of the 13 new stops on the six newer trips · due 2026-12-08
+    make: odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json · how many: 13 · done when: All 10 codes answered.
 
 ## Muse
 
-Updated 2026-11-24 21:34 UTC · 0 open in this pillar.
+Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Odyssey · Trips & Away Mode right now.
 
 ## ChatGPT
 
-Updated 2026-11-24 21:34 UTC · 0 open in this pillar.
+Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Odyssey · Trips & Away Mode right now.
 
 ## Argon
 
-Updated 2026-11-24 21:34 UTC · 0 open in this pillar.
+Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Odyssey · Trips & Away Mode right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 21:34 UTC · 0 open in this pillar.
+Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Odyssey · Trips & Away Mode right now.

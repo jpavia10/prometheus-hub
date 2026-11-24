@@ -2424,7 +2424,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "withdrawn",
      "added": "2026-11-24",
      "why": "Each trip opens on its own photos; these seven are empty.",
      "unlocks": "Every trip has its photos.",
@@ -2484,6 +2484,201 @@
      ],
      "id": "ODY-GEM-28",
      "title": "Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive",
+     "due": "2026-12-08",
+     "review": "Withdrawn 2026-11-24: every trip has its photos now (Claude checked your run-7 picks by eye and put 26 into the six newer trips). Replaced by ODY-GEM-29 (more picks for the five thinnest trips) and ODY-GEM-30 (cards for the new stops)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Every trip has photos now, but five open on one to three: Michigan May 2023 (1), Michigan June 2022 (2), Mammoth Lakes Sep 2022 (2), the Mexico cruise Aug 2019 (3) and Metro Detroit Jan 2020 (3). A trip file reads as a journey from about six.",
+     "unlocks": "Each of the five trips opens on a full photo journey, a few per day.",
+     "inputs": [
+      "The five trips and their dates in pillars/odyssey/odyssey-data.js: photos-michigan-2023 2023-05-11..15, photos-michigan-2022 2022-06-01..05, photos-mammoth-2022 2022-09-16..18, photos-mexico-2019 2019-08-24..30, photos-detroit-2020 2020-01-30..02-03",
+      "The photos already in each trip (pillars/odyssey/photos.js, the 'src' names in tools/odyssey/photos.manifest.json): do not pick these again",
+      "Your run-7 picks file odyssey_gemini_new-trip-picks_20261124-0024.json for the shape",
+      "No privacy limit on the owner's own people (owner, 2026-11-23). Never a booking or confirmation code, a password or a card number."
+     ],
+     "steps": [
+      "For each trip, rank 4 to 6 new photos, sharp and well framed, spread over the trip's days: places, views, landmarks, the people on the trip, the food, the signs that say where you are.",
+      "Skip blurred frames and near-duplicates of a photo already picked (Claude dropped three blurred ones from run 7: a night runway, a landing, plain cottonwoods).",
+      "Say where the photo was taken from its GPS or what is in it. Check the place against the picture: in run 7 the Mar 6 2015 harbour was Long Beach's Rainbow Harbor, not Marina del Rey (the Grand Romance riverboat is in the frame), and the Sep 15 2022 yard's GPS is in Lambertville, Michigan, not Toledo or Sylvania."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_more-picks_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 25,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "trip",
+       "type": "text",
+       "rule": "as above"
+      },
+      {
+       "name": "rank",
+       "type": "number",
+       "rule": "1 = best, per trip"
+      },
+      {
+       "name": "file_id",
+       "type": "text",
+       "rule": "Drive file id"
+      },
+      {
+       "name": "taken",
+       "type": "text",
+       "rule": "YYYY-MM-DD HH:MM local"
+      },
+      {
+       "name": "place",
+       "type": "text",
+       "rule": ""
+      },
+      {
+       "name": "caption",
+       "type": "text",
+       "rule": "what is in the photo, one line"
+      },
+      {
+       "name": "people",
+       "type": "text",
+       "rule": "who is in it, if you can tell (e.g. 'Joseph', 'Joseph and his partner'), or 'none'"
+      }
+     ],
+     "done_when": "4 to 6 new picks for each of the five trips, none already published.",
+     "checks": [
+      "Claude opens every pick at full size, checks the date, the place and the caption against the picture, and crops it."
+     ],
+     "rejected_if": [
+      "fewer than 4 picks for a trip that has more usable photos",
+      "a photo already in photos.js",
+      "a blurred frame",
+      "a place that the photo or its GPS contradicts",
+      "a file saved anywhere but the folder named here, or under another name"
+     ],
+     "id": "ODY-GEM-29",
+     "title": "Odyssey: more of the best photos for the five trips that open on three or fewer",
+     "due": "2026-12-08"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-24",
+     "why": "Your run-7 cards are in (49 now). The six newer trips' stops have none yet; Long Beach already has yours.",
+     "unlocks": "Every stop on those six trips opens its card.",
+     "inputs": [
+      "The stop codes as in pillars/odyssey/odyssey-data.js: EXP Exposition Park, Los Angeles (the city of Los Angeles); MAL Malibu coast (Malibu); SMO Santa Monica; MON Monroe, Michigan; LIV Livonia, Michigan; DBN Dearborn, Michigan; BKR Baker, California; LVK La Verkin, Utah; ZIO Zion Canyon (nearest town: Springdale); HUR Sand Hollow (Hurricane, Utah); LAM Lambertville, Michigan; MIA Miami Beach, Florida; BIS Biscayne Bay (Miami)",
+      "Your own file odyssey_gemini_city-cards_20261124-0050.json for the shape and the sourcing"
+     ],
+     "steps": [
+      "The card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'.",
+      "For that town: population (latest census or official estimate, its year and page), elevation in metres, IANA time zone, currency, language.",
+      "known_for and its quote are about the stop itself (the park, the quarter, the headlands) from its own official page. Never write population 0: a park has no population, so give the town's."
+     ],
+     "deliver": {
+      "file": "odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 13,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "code",
+       "type": "text",
+       "rule": "the stop code above"
+      },
+      {
+       "name": "city",
+       "type": "text",
+       "rule": "town, or 'Town (nearest town to Stop)'"
+      },
+      {
+       "name": "country",
+       "type": "text",
+       "rule": "United States"
+      },
+      {
+       "name": "population",
+       "type": "number",
+       "rule": "the town's"
+      },
+      {
+       "name": "pop_year",
+       "type": "number",
+       "rule": "YYYY"
+      },
+      {
+       "name": "pop_url",
+       "type": "url",
+       "rule": "census or official estimate page"
+      },
+      {
+       "name": "elevation_m",
+       "type": "number",
+       "rule": "metres"
+      },
+      {
+       "name": "tz",
+       "type": "text",
+       "rule": "IANA, e.g. America/Los_Angeles"
+      },
+      {
+       "name": "currency",
+       "type": "text",
+       "rule": "e.g. US dollar (USD)"
+      },
+      {
+       "name": "language",
+       "type": "text",
+       "rule": "English"
+      },
+      {
+       "name": "known_for",
+       "type": "text",
+       "rule": "one sentence about the stop"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "copied word for word from that page, 300 characters at most"
+      },
+      {
+       "name": "url",
+       "type": "url",
+       "rule": "the page you opened, on the official site"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+      "Every quote is copied word for word from that page or PDF page and is there now.",
+      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+      "No row is a copy of another with the names changed.",
+      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+     ],
+     "done_when": "All 10 codes answered.",
+     "checks": [
+      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+     ],
+     "rejected_if": [
+      "fewer rows than the count, or a row missing a field",
+      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+      "a quote that is not on the page it cites (Claude opens rows at random)",
+      "arithmetic that does not add up when Claude redoes it",
+      "a file saved anywhere but the folder named here, or under another name",
+      "a guess written as a fact (write 'not stated' and name the page you checked)"
+     ],
+     "id": "ODY-GEM-30",
+     "title": "Odyssey: a city card for each of the 13 new stops on the six newer trips",
      "due": "2026-12-08"
     }
    ]

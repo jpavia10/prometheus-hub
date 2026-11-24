@@ -2,26 +2,30 @@
 
 # Odyssey · Trips & Away Mode · homework for Gemini
 
-Updated 2026-11-24 21:34 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-24 23:06 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. ODY-GEM-28 · Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive
+## 1. ODY-GEM-29 · Odyssey: more of the best photos for the five trips that open on three or fewer
 
 **Due:** 2026-12-08 · **State:** now
 
-**Why:** Each trip opens on its own photos; these seven are empty.
+**Why:** Every trip has photos now, but five open on one to three: Michigan May 2023 (1), Michigan June 2022 (2), Mammoth Lakes Sep 2022 (2), the Mexico cruise Aug 2019 (3) and Metro Detroit Jan 2020 (3). A trip file reads as a journey from about six.
 
-**What it unlocks:** Every trip has its photos.
+**What it unlocks:** Each of the five trips opens on a full photo journey, a few per day.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
-- His Drive photo archive (Takeout and phone uploads)
+- The five trips and their dates in pillars/odyssey/odyssey-data.js: photos-michigan-2023 2023-05-11..15, photos-michigan-2022 2022-06-01..05, photos-mammoth-2022 2022-09-16..18, photos-mexico-2019 2019-08-24..30, photos-detroit-2020 2020-01-30..02-03
+- The photos already in each trip (pillars/odyssey/photos.js, the 'src' names in tools/odyssey/photos.manifest.json): do not pick these again
+- Your run-7 picks file odyssey_gemini_new-trip-picks_20261124-0024.json for the shape
+- No privacy limit on the owner's own people (owner, 2026-11-23). Never a booking or confirmation code, a password or a card number.
 
 **Do this:**
-1. For each trip: the photos taken there (by the EXIF date and place), Drive file ids, 20 at most per trip, the best first.
+1. For each trip, rank 4 to 6 new photos, sharp and well framed, spread over the trip's days: places, views, landmarks, the people on the trip, the food, the signs that say where you are.
+2. Skip blurred frames and near-duplicates of a photo already picked (Claude dropped three blurred ones from run 7: a night runway, a landing, plain cottonwoods).
+3. Say where the photo was taken from its GPS or what is in it. Check the place against the picture: in run 7 the Mar 6 2015 harbour was Long Beach's Rainbow Harbor, not Marina del Rey (the Grand Romance riverboat is in the frame), and the Sep 15 2022 yard's GPS is in Lambertville, Michigan, not Toledo or Sylvania.
 
-**Make:** `odyssey_gemini_trip-photos_{YYYYMMDD-HHMM}.json`
+**Make:** `odyssey_gemini_more-picks_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -29,18 +33,85 @@ Updated 2026-11-24 21:34 UTC · 1 open · Rules for every pillar: https://github
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `trip` (text): trip id
-- `drive_id` (text): file id
-- `taken` (text): EXIF date and place
-- `source_url` (url): the official page that shows the value
-- `checked` (date): the day you read it, YYYY-MM-DD
+- `trip` (text): as above
+- `rank` (number): 1 = best, per trip
+- `file_id` (text): Drive file id
+- `taken` (text): YYYY-MM-DD HH:MM local
+- `place` (text): 
+- `caption` (text): what is in the photo, one line
+- `people` (text): who is in it, if you can tell (e.g. 'Joseph', 'Joseph and his partner'), or 'none'
 
-**Done when:** Each of the seven trips searched.
+**How many:** 25
+
+**Done when:** 4 to 6 new picks for each of the five trips, none already published.
 
 **How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
+- Claude opens every pick at full size, checks the date, the place and the caption against the picture, and crops it.
 
 **Not done (sent back) if:**
-- a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+- fewer than 4 picks for a trip that has more usable photos
+- a photo already in photos.js
+- a blurred frame
+- a place that the photo or its GPS contradicts
+- a file saved anywhere but the folder named here, or under another name
+
+## 2. ODY-GEM-30 · Odyssey: a city card for each of the 13 new stops on the six newer trips
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Your run-7 cards are in (49 now). The six newer trips' stops have none yet; Long Beach already has yours.
+
+**What it unlocks:** Every stop on those six trips opens its card.
+
+**Read first:**
+- The stop codes as in pillars/odyssey/odyssey-data.js: EXP Exposition Park, Los Angeles (the city of Los Angeles); MAL Malibu coast (Malibu); SMO Santa Monica; MON Monroe, Michigan; LIV Livonia, Michigan; DBN Dearborn, Michigan; BKR Baker, California; LVK La Verkin, Utah; ZIO Zion Canyon (nearest town: Springdale); HUR Sand Hollow (Hurricane, Utah); LAM Lambertville, Michigan; MIA Miami Beach, Florida; BIS Biscayne Bay (Miami)
+- Your own file odyssey_gemini_city-cards_20261124-0050.json for the shape and the sourcing
+
+**Do this:**
+1. The card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'.
+2. For that town: population (latest census or official estimate, its year and page), elevation in metres, IANA time zone, currency, language.
+3. known_for and its quote are about the stop itself (the park, the quarter, the headlands) from its own official page. Never write population 0: a park has no population, so give the town's.
+
+**Make:** `odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `code` (text): the stop code above
+- `city` (text): town, or 'Town (nearest town to Stop)'
+- `country` (text): United States
+- `population` (number): the town's
+- `pop_year` (number): YYYY
+- `pop_url` (url): census or official estimate page
+- `elevation_m` (number): metres
+- `tz` (text): IANA, e.g. America/Los_Angeles
+- `currency` (text): e.g. US dollar (USD)
+- `language` (text): English
+- `known_for` (text): one sentence about the stop
+- `quote` (text): copied word for word from that page, 300 characters at most
+- `url` (url): the page you opened, on the official site
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 13
+
+**Done when:** All 10 codes answered.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:**
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a file saved anywhere but the folder named here, or under another name
+- a guess written as a fact (write 'not stated' and name the page you checked)

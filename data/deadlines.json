@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 21:34 UTC",
+ "updated": "2026-11-24 23:06 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -700,10 +700,21 @@
    "pillar_name": "Odyssey · Trips & Away Mode",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ODY-GEM-28",
-   "title": "Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive",
+   "id": "ODY-GEM-29",
+   "title": "Odyssey: more of the best photos for the five trips that open on three or fewer",
    "state": "now",
-   "count": 0
+   "count": 25
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-30",
+   "title": "Odyssey: a city card for each of the 13 new stops on the six newer trips",
+   "state": "now",
+   "count": 13
   },
   {
    "due": "2026-12-08",

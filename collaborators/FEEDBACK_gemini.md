@@ -4,6 +4,18 @@
 Newest first. The same text is in Drive, `FEEDBACK for Gemini (read before your next submission)`. How work is checked and scored:
 `CONTRIBUTING.md`. Your homework: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/drive/HOMEWORK_gemini.txt
 
+## 2026-11-24, night: Odyssey run 7 wired (the six newer trips: stops, days, picks, landmarks, city cards; row 196)
+
+**What you did right.** The six trips now open on their own photos: 26 of your 31 picks are in Odyssey, each opened at full size and cropped where a stranger or a mirror crept into the frame. Your day logs are in for all six (27 days), and the times, flights and evidence ids made every pick easy to check. Your stops file found what the first pass missed (Malibu on Mar 4, Santa Monica on Mar 5, the Narrows and Canyon Overlook as separate days, Biscayne Bay). Your 10 city cards are in (49 cards now), each with its population source.
+
+**What to fix.**
+1. Check the place against the picture, not only the label on the folder or a guess from the trip. The Mar 6 2015 harbour is Rainbow Harbor in Long Beach (the Grand Romance riverboat and the Landmark Square tower are in the frame, and your own day log says they came by Metro Rail, which reaches Long Beach, not Marina del Rey). The Sep 15 2022 yard's GPS (41.773, -83.613) is 4.5 km north of the Ohio line, in Lambertville, Michigan, not Toledo or Sylvania.
+2. Name animals and things only as far as the picture shows: the Lummus Park lizard is a spiny-tailed iguana (banded, spiny tail, grey), not a green iguana.
+3. Skip blurred frames (the night runway at DTW, the Feb 3 2020 runway) and frames filled by strangers; Claude dropped them.
+4. Landmarks are places the trip went: Marina del Rey was not visited, and an airport or a state beach strip is not a landmark of a trip. Lake Mead was already listed. Give a page about the landmark itself, not a jobs page (Zion's link was "work with us") or an unrelated press release (the Natural History Museum's).
+
+Your new Odyssey tasks: ODY-GEM-29 (more picks for the five trips that open on three or fewer photos) and ODY-GEM-30 (cards for the 13 new stops). ODY-GEM-28 is withdrawn: every trip has its photos now.
+
 ## 2026-11-24, evening: kin_gemini_ancestry-wave4-breakthroughs_20261124.json (score 7, row 201)
 
 **What you did right.** The two birth dates for Joseph Pavia (12 February 1897 on his 1942 draft card, 2 December 1897 in the Michigan death index) are now ranked in the tree, the draft card first because he gave it himself. Francis's dates agree with Muse's independent cemetery find. Run 7 is now in the pillars: 365 of your rows across 17 pillars as sourced reference panels (each with its page and quote), Hermes shows every biller's real numbers when a message names it, and Athenaeum's 40 events show their place on a map.

@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-24 21:34 UTC. 78 to do across 26 pillars.
+Updated 2026-11-24 23:06 UTC. 79 to do across 26 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -58,31 +58,32 @@ IN THIS ORDER:
 40. [Hermes Post] HER-GEM-15 · Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14 · due 2026-12-08
 41. [Bastion · Mountain Prep] BAS-GEM-15 · Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history · due 2026-12-08
 42. [Athenaeum · Idea Vault] ATH-GEM-07 · Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words · due 2026-12-08
-43. [Odyssey · Trips & Away Mode] ODY-GEM-28 · Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive · due 2026-12-08
-44. [Privacy · CA DROP] PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access) · due 2026-12-08
-45. [Argus Album] ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image · due 2026-12-08
-46. [Forge] FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge · due 2026-12-08
-47. [Foundry] FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief · due 2026-12-08
-48. [Observatory] OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field · due 2026-12-08
-49. [Kin] KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified · due 2026-12-08
-50. [Kin] KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified · due 2026-12-08
-51. [Kin] KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified · due 2026-12-08
-52. [Kin] KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified · due 2026-12-08
-53. [Kin] KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source · due 2026-12-08
-54. [Kin] KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1) · due 2026-12-08
-55. [Kin] KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25) · due 2026-12-08
-56. [Kin] KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30) · due 2026-12-08
-57. [Aether · Atmospheric & Field Lab] AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do · due 2026-12-08
-58. [Mythos · Creative & Lore Studio] MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05) · due 2026-12-08
-59. [Continuity · Sovereign Vault] CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for · due 2026-12-08
-60. [Kin] KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32) · due 2026-12-10
-61. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
-62. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
-63. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-64. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
-65. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
-66. [Selling Pipeline] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
-67. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
+43. [Odyssey · Trips & Away Mode] ODY-GEM-29 · Odyssey: more of the best photos for the five trips that open on three or fewer · due 2026-12-08
+44. [Odyssey · Trips & Away Mode] ODY-GEM-30 · Odyssey: a city card for each of the 13 new stops on the six newer trips · due 2026-12-08
+45. [Privacy · CA DROP] PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access) · due 2026-12-08
+46. [Argus Album] ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image · due 2026-12-08
+47. [Forge] FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge · due 2026-12-08
+48. [Foundry] FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief · due 2026-12-08
+49. [Observatory] OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field · due 2026-12-08
+50. [Kin] KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified · due 2026-12-08
+51. [Kin] KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified · due 2026-12-08
+52. [Kin] KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified · due 2026-12-08
+53. [Kin] KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified · due 2026-12-08
+54. [Kin] KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source · due 2026-12-08
+55. [Kin] KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1) · due 2026-12-08
+56. [Kin] KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25) · due 2026-12-08
+57. [Kin] KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30) · due 2026-12-08
+58. [Aether · Atmospheric & Field Lab] AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do · due 2026-12-08
+59. [Mythos · Creative & Lore Studio] MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05) · due 2026-12-08
+60. [Continuity · Sovereign Vault] CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for · due 2026-12-08
+61. [Kin] KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32) · due 2026-12-10
+62. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
+63. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
+64. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+65. [Garage] GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment · due 2027-01-10
+66. [Polis · Civic & Legal Watch] POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027 · due 2027-01-15
+67. [Selling Pipeline] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
+68. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
 
 ==================== 1. ATHENAEUM · IDEA VAULT ====================
 ## 1. ATH-GEM-08 · History: source the 10 Kin entries that have none (1904-1941)
@@ -2093,20 +2094,24 @@ IN THIS ORDER:
 - a source that is a blog, forum or AI summary where an official page exists
 
 ==================== 43. ODYSSEY · TRIPS & AWAY MODE ====================
-## 43. ODY-GEM-28 · Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive
+## 43. ODY-GEM-29 · Odyssey: more of the best photos for the five trips that open on three or fewer
 
 **Due:** 2026-12-08 · **State:** now
 
-**What it unlocks:** Every trip has its photos.
+**What it unlocks:** Each of the five trips opens on a full photo journey, a few per day.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/odyssey/
-- His Drive photo archive (Takeout and phone uploads)
+- The five trips and their dates in pillars/odyssey/odyssey-data.js: photos-michigan-2023 2023-05-11..15, photos-michigan-2022 2022-06-01..05, photos-mammoth-2022 2022-09-16..18, photos-mexico-2019 2019-08-24..30, photos-detroit-2020 2020-01-30..02-03
+- The photos already in each trip (pillars/odyssey/photos.js, the 'src' names in tools/odyssey/photos.manifest.json): do not pick these again
+- Your run-7 picks file odyssey_gemini_new-trip-picks_20261124-0024.json for the shape
+- No privacy limit on the owner's own people (owner, 2026-11-23). Never a booking or confirmation code, a password or a card number.
 
 **Do this:**
-1. For each trip: the photos taken there (by the EXIF date and place), Drive file ids, 20 at most per trip, the best first.
+1. For each trip, rank 4 to 6 new photos, sharp and well framed, spread over the trip's days: places, views, landmarks, the people on the trip, the food, the signs that say where you are.
+2. Skip blurred frames and near-duplicates of a photo already picked (Claude dropped three blurred ones from run 7: a night runway, a landing, plain cottonwoods).
+3. Say where the photo was taken from its GPS or what is in it. Check the place against the picture: in run 7 the Mar 6 2015 harbour was Long Beach's Rainbow Harbor, not Marina del Rey (the Grand Romance riverboat is in the frame), and the Sep 15 2022 yard's GPS is in Lambertville, Michigan, not Toledo or Sylvania.
 
-**Make:** `odyssey_gemini_trip-photos_{YYYYMMDD-HHMM}.json`
+**Make:** `odyssey_gemini_more-picks_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
@@ -2114,24 +2119,88 @@ IN THIS ORDER:
 
 **Every field, exactly:**
 - `n` (number): 1, 2, 3 ...
-- `trip` (text): trip id
-- `drive_id` (text): file id
-- `taken` (text): EXIF date and place
-- `source_url` (url): the official page that shows the value
-- `checked` (date): the day you read it, YYYY-MM-DD
+- `trip` (text): as above
+- `rank` (number): 1 = best, per trip
+- `file_id` (text): Drive file id
+- `taken` (text): YYYY-MM-DD HH:MM local
+- `place` (text): 
+- `caption` (text): what is in the photo, one line
+- `people` (text): who is in it, if you can tell (e.g. 'Joseph', 'Joseph and his partner'), or 'none'
 
-**Done when:** Each of the seven trips searched.
+**How many:** 25
+
+**Done when:** 4 to 6 new picks for each of the five trips, none already published.
 
 **How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
+- Claude opens every pick at full size, checks the date, the place and the caption against the picture, and crops it.
 
 **Not done (sent back) if:** (and the rules at the top)
-- a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+- fewer than 4 picks for a trip that has more usable photos
+- a photo already in photos.js
+- a blurred frame
+- a place that the photo or its GPS contradicts
 
-==================== 44. PRIVACY · CA DROP ====================
-## 44. PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)
+==================== 44. ODYSSEY · TRIPS & AWAY MODE ====================
+## 44. ODY-GEM-30 · Odyssey: a city card for each of the 13 new stops on the six newer trips
+
+**Due:** 2026-12-08 · **State:** now
+
+**What it unlocks:** Every stop on those six trips opens its card.
+
+**Read first:**
+- The stop codes as in pillars/odyssey/odyssey-data.js: EXP Exposition Park, Los Angeles (the city of Los Angeles); MAL Malibu coast (Malibu); SMO Santa Monica; MON Monroe, Michigan; LIV Livonia, Michigan; DBN Dearborn, Michigan; BKR Baker, California; LVK La Verkin, Utah; ZIO Zion Canyon (nearest town: Springdale); HUR Sand Hollow (Hurricane, Utah); LAM Lambertville, Michigan; MIA Miami Beach, Florida; BIS Biscayne Bay (Miami)
+- Your own file odyssey_gemini_city-cards_20261124-0050.json for the shape and the sourcing
+
+**Do this:**
+1. The card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'.
+2. For that town: population (latest census or official estimate, its year and page), elevation in metres, IANA time zone, currency, language.
+3. known_for and its quote are about the stop itself (the park, the quarter, the headlands) from its own official page. Never write population 0: a park has no population, so give the town's.
+
+**Make:** `odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `code` (text): the stop code above
+- `city` (text): town, or 'Town (nearest town to Stop)'
+- `country` (text): United States
+- `population` (number): the town's
+- `pop_year` (number): YYYY
+- `pop_url` (url): census or official estimate page
+- `elevation_m` (number): metres
+- `tz` (text): IANA, e.g. America/Los_Angeles
+- `currency` (text): e.g. US dollar (USD)
+- `language` (text): English
+- `known_for` (text): one sentence about the stop
+- `quote` (text): copied word for word from that page, 300 characters at most
+- `url` (url): the page you opened, on the official site
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**How many:** 13
+
+**Done when:** All 10 codes answered.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 45. PRIVACY · CA DROP ====================
+## 45. PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2167,8 +2236,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 45. ARGUS ALBUM ====================
-## 45. ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image
+==================== 46. ARGUS ALBUM ====================
+## 46. ARG-GEM-14 · Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2208,8 +2277,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 46. FORGE ====================
-## 46. FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge
+==================== 47. FORGE ====================
+## 47. FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2246,8 +2315,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 47. FOUNDRY ====================
-## 47. FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief
+==================== 48. FOUNDRY ====================
+## 48. FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2288,8 +2357,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 48. OBSERVATORY ====================
-## 48. OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field
+==================== 49. OBSERVATORY ====================
+## 49. OBS-GEM-08 · Observatory: each of the 22 feeds' update cadence and its last-updated field
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2327,8 +2396,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 49. KIN ====================
-## 49. KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified
+==================== 50. KIN ====================
+## 50. KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2381,8 +2450,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 50. KIN ====================
-## 50. KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified
+==================== 51. KIN ====================
+## 51. KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2435,8 +2504,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 51. KIN ====================
-## 51. KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified
+==================== 52. KIN ====================
+## 52. KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2489,8 +2558,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 52. KIN ====================
-## 52. KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified
+==================== 53. KIN ====================
+## 53. KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2543,8 +2612,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 53. KIN ====================
-## 53. KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source
+==================== 54. KIN ====================
+## 54. KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2593,8 +2662,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 54. KIN ====================
-## 54. KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)
+==================== 55. KIN ====================
+## 55. KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2649,8 +2718,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 55. KIN ====================
-## 55. KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)
+==================== 56. KIN ====================
+## 56. KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2705,8 +2774,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 56. KIN ====================
-## 56. KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)
+==================== 57. KIN ====================
+## 57. KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2760,8 +2829,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 57. AETHER · ATMOSPHERIC & FIELD LAB ====================
-## 57. AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do
+==================== 58. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 58. AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2801,8 +2870,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 58. MYTHOS · CREATIVE & LORE STUDIO ====================
-## 58. MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)
+==================== 59. MYTHOS · CREATIVE & LORE STUDIO ====================
+## 59. MYT-GEM-06 · Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2839,8 +2908,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 59. CONTINUITY · SOVEREIGN VAULT ====================
-## 59. CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for
+==================== 60. CONTINUITY · SOVEREIGN VAULT ====================
+## 60. CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -2876,8 +2945,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 60. KIN ====================
-## 60. KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)
+==================== 61. KIN ====================
+## 61. KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -2931,8 +3000,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 61. LUDUS ARCADE ====================
-## 61. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
+==================== 62. LUDUS ARCADE ====================
+## 62. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
 
 **Due:** 2026-12-22 · **State:** now
 
@@ -2967,8 +3036,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 62. MIDAS LEDGER ====================
-## 62. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
+==================== 63. MIDAS LEDGER ====================
+## 63. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
 
 **Due:** 2026-12-28 · **State:** now
 
@@ -3022,8 +3091,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 63. KAIROS MERIDIAN ====================
-## 63. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 64. KAIROS MERIDIAN ====================
+## 64. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -3068,8 +3137,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 64. GARAGE ====================
-## 64. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
+==================== 65. GARAGE ====================
+## 65. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
 
 **Due:** 2027-01-10 · **State:** now
 
@@ -3114,8 +3183,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 65. POLIS · CIVIC & LEGAL WATCH ====================
-## 65. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
+==================== 66. POLIS · CIVIC & LEGAL WATCH ====================
+## 66. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
 
 **Due:** 2027-01-15 · **State:** now
 
@@ -3159,8 +3228,8 @@ IN THIS ORDER:
 - fewer rows than the count (where a count is set), or a row missing a field
 - a guess written as a fact (write 'not stated' or 'not found' instead)
 
-==================== 66. SELLING PIPELINE ====================
-## 66. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+==================== 67. SELLING PIPELINE ====================
+## 67. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 
@@ -3211,8 +3280,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 67. POLIS · CIVIC & LEGAL WATCH ====================
-## 67. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+==================== 68. POLIS · CIVIC & LEGAL WATCH ====================
+## 68. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
 
 **Due:** 2027-01-20 · **State:** now
 
