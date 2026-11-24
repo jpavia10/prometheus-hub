@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T15:38:01Z",
- "checked": "2026-11-24T15:38:01Z",
+ "built": "2026-11-24T16:11:08Z",
+ "checked": "2026-11-24T16:11:08Z",
  "version": 2,
  "today": "2026-11-24",
  "sources": {
@@ -15,11 +15,11 @@
   "titan_projects": true,
   "workboard": true,
   "ledger": {
-   "entries": 146,
-   "synced": "2026-11-19T20:47:40Z"
+   "entries": 157,
+   "synced": "2026-11-24T16:11:08Z"
   },
   "titan_scores": 179,
-  "hub_scores": 208,
+  "hub_scores": 213,
   "pending_scores": 3
  },
  "totals": {
@@ -49,17 +49,17 @@
    },
    "probation": false,
    "scores": {
-    "n": 278,
+    "n": 283,
     "avg": 8.21,
-    "last10": 9.2,
+    "last10": 8.6,
     "last": {
      "ai": "Gemini",
-     "n": 193,
+     "n": 198,
      "date": "2026-11-24",
-     "what": "Run 7 checker audit: hub_gemini_supp-run7-checker-audit_20261124-0016, -part2_20261124-0056, hub_gemini_supp-checker-patch-and-kin-gps-dossier_20261124-0056 (th",
-     "task": "Claude (reproduced)",
+     "what": "Kin, later the same day: Pavia Family Tree — Deep Expansion, Primary Records & Full-Res Media Index, Kin — Wave-4 Deep Lineage & 898-File Cumulative Archive Rep",
+     "task": "none (owner)",
      "where": "Prometheus Hub",
-     "score": 10.0
+     "score": 7.0
     }
    }
   },
@@ -22518,6 +22518,51 @@
    "task": "Claude (reproduced)",
    "where": "Prometheus Hub",
    "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 194,
+   "date": "2026-11-24",
+   "what": "Run 7 Kin: kin_gemini_lineage-{arrival-1912,naturalization,censuses,della,army,telsiai-1893,print,barbara}_20261124-* (KIN-GEM-07 to 14)",
+   "task": "KIN-GEM-07 to 14",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 195,
+   "date": "2026-11-24",
+   "what": "Run 7 hub audits: hub_gemini_{a11y-recheck-2,realm-labels,painting-focus-2}_20261124-0045, forge_gemini_done-markers-2_20261124-0045",
+   "task": "HUB-GEM-19 to 21, FOR-GEM-07",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 196,
+   "date": "2026-11-24",
+   "what": "Run 7 Odyssey: odyssey_gemini_{city-cards,new-trip-stops,new-trip-days,new-trip-picks,landmarks-new,parks-gaps,ph-entry,ph-options,weekends,park-passes-2027}_*",
+   "task": "ODY-GEM-18 to 27",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 197,
+   "date": "2026-11-24",
+   "what": "Run 7 other pillars (27 files): Hearth deck permit, finish and members; Money issuer pricing; Icarus 2027 BLS; Observatory feed terms; Kairos 2027 Kern holidays",
+   "task": "HEA-GEM-29 to 31, MON-GEM-07, ICA-GEM-14, OBS-GEM-07, KAI-GEM-15, BAS-GEM-13/14, AET-GEM-16/17, REC-GEM-10/11, KIN-GEM-06, CON-GEM-09/10, PRI-GEM-14, GAR-GEM-16, GAM-GEM-08, HER-GEM-13/14, MYT-GEM-05, ARG-GEM-13, FDY-GEM-07, APO-GEM-13/14, ATH-GEM-06",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 198,
+   "date": "2026-11-24",
+   "what": "Kin, later the same day: Pavia Family Tree — Deep Expansion, Primary Records & Full-Res Media Index, Kin — Wave-4 Deep Lineage & 898-File Cumulative Archive Rep",
+   "task": "none (owner)",
+   "where": "Prometheus Hub",
+   "score": 7.0
   },
   {
    "ai": "Gemini",

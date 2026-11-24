@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-19T17:50:00Z",
+ "updated": "2026-11-24T16:05:00Z",
  "about": "Forge completions ledger. When ANY fleet AI finishes a task, it appends one entry here: {key, by, what, ts}. key = the task id exactly as Forge shows it (hub/Midas task id like KAI-GEM-10 or MID-MUS-03; Titan homework id like HW-muse-verify-20261113-1; Titan project key T-<ai>-<n> like T-muse-12). Forge (Prometheus Hub, pillars/forge) reads this file live and shows a listed task as 'delivered' even before the integrator flips the queue in its repo. An entry means DELIVERED (the file is in the named Drive folder), not accepted: the integrator's check still decides acceptance, and the queue flip in the repo remains the permanent record. If you cannot edit this file, save DONE_<key>.json with the same fields into the same Drive folder as your deliverable and say so in your report; Sebastian folds those in.",
  "done": [
   {
@@ -1124,7 +1124,73 @@
    "by": "gemini",
    "what": "garage_gemini_tsbs_20261119-0950.json in Prometheus Hub incoming (Gemini 4 Neon)",
    "ts": "2026-11-19T17:50:00Z"
+  },
+  {
+   "key": "KIN-GEM-05",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-06",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-07",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-08",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-09",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-10",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-11",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-12",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-13",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-GEM-14",
+   "by": "gemini",
+   "what": "Kin genealogy harvest deliverable (Ancestry waves / lineage records) in hub incoming",
+   "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "KIN-MUS-01",
+   "by": "muse",
+   "what": "Kin audit & extension report delivered to Drive Kin folder (Sebastian Audit & Extension Report 2026-11-24): archive audit, per-line second-reads with scores, extension plan",
+   "ts": "2026-11-24T16:05:00Z"
   }
  ],
- "synced": "2026-11-19T20:47:40Z"
+ "synced": "2026-11-24T16:11:08Z"
 }
