@@ -215,17 +215,40 @@ with sync_playwright() as p:
                  f"April 2024 lit: {a3['on']} places lit, {a3['off']} dimmed; a Europe place -> trip file {a4}; globe {g1}; a tap redraws it: {before != after}; page {wide}px wide" + (f"; errors {bo[:2]}" if bo else ""))
     except Exception as e: proof("ODY-3", "Every place he has been", False, "did not finish: " + str(e)[:200])
 
+    # FORGE-3: the crucibles show load against the floor and open each AI's card; tasks group by urgency; scores show their trend
+    try:
+        cf = b.new_context(viewport={"width": 384, "height": 832}); pf = cf.new_page(); bf = []; pf.on("pageerror", lambda e: bf.append(str(e)[:100]))
+        pf.goto(f"{URL}pillars/forge/?still=1", wait_until="load"); pf.wait_for_timeout(1500)
+        cvb = pf.evaluate("(() => { const c = document.querySelector('.pk-stage canvas'); c.scrollIntoView({ block: 'center' }); const r = c.getBoundingClientRect(); return [r.left, r.top, r.width, r.height]; })()")
+        pf.mouse.click(cvb[0] + cvb[2] / 14, cvb[1] + cvb[3] * 0.6); pf.wait_for_timeout(400)
+        f3 = pf.evaluate("""() => { const s = document.querySelector('.f-sheet'), d = FORGE.data(), g = d.per.find((p) => p.ai === (s && s.getAttribute('aria-label')));
+          const tiles = [...document.querySelectorAll('.pk-stage')].map((x) => x.innerText).join(' ');
+          return { ai: s && s.getAttribute('aria-label'), todo: s ? +s.querySelector('.f-sn b').textContent : -1, want: g ? g.open.length : -2, next: s ? s.querySelectorAll('.f-snext li').length : 0,
+            scored: d.scores.length + d.hubScores.filter((x) => x.score != null).length, tile: (tiles.match(/(\d+)\s*SUBMISSIONS SCORED/i) || [])[1] }; }""")
+        pf.keyboard.press("Escape"); pf.wait_for_timeout(200)
+        pf.evaluate("[...document.querySelectorAll('[role=tab]')].find((t) => /Tasks/.test(t.textContent)).click()"); pf.wait_for_timeout(300)
+        groups = pf.evaluate("[...document.querySelectorAll('#f-tasks .tgroup')].map((x) => x.firstChild.textContent)")
+        pf.evaluate("[...document.querySelectorAll('[role=tab]')].find((t) => /Scores/.test(t.textContent)).click()"); pf.wait_for_timeout(500)
+        drawn = pf.evaluate("[...document.querySelectorAll('#f-scores canvas.f-trend')].filter((c) => c.width > 0 && c.getContext('2d').getImageData(0, 0, c.width, c.height).data.some((v, i) => i % 4 === 3 && v > 0)).length")
+        closed = pf.evaluate("!document.querySelector('.f-sheet')")
+        ok = (f3["ai"] == "Gemini" and f3["todo"] == f3["want"] and f3["next"] >= 1 and str(f3["scored"]) == f3["tile"] and groups[:1] in (["Late"], ["Due this week"]) and drawn >= 2 and closed and not bf)
+        proof("FORGE-3", "The crucibles open each AI's card (its to-do equals the snapshot's), the scored tile counts every sheet, tasks are grouped by urgency and every AI's score trend is drawn",
+              ok, f"tap the first crucible -> {f3['ai']}: {f3['todo']} to do (snapshot {f3['want']}), {f3['next']} next; scored tile {f3['tile']} of {f3['scored']}; groups {groups}; {drawn} trends drawn; closes on Escape: {closed}" + (f"; errors {bf[:2]}" if bf else ""))
+        cf.close()
+    except Exception as e: proof("FORGE-3", "The Forge's crucibles, groups and trends", False, "did not finish: " + str(e)[:200])
+
     # KIN-2: the family tree is a research instrument: every assertion classified and sourced, a tap opens a person's dossier, the records open, GEDCOM 7 exports
     try:
         ck = b.new_context(viewport={"width": 384, "height": 832}); pk = ck.new_page(); bk = []; pk.on("pageerror", lambda e: bk.append(str(e)[:100]))
         pk.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); pk.wait_for_selector("#ln-tree .ln-node", timeout=15000); pk.wait_for_timeout(700)
         k1 = pk.evaluate("""() => { const L = window.KIN_LINEAGE, ids = new Set(L.sources.map((s) => s.id)), as = L.events.flatMap((e) => e.assert);
           return { people: L.people.length, events: L.events.length, sources: L.sources.length, conflicts: L.conflicts.length, questions: L.questions.length,
-            nodes: document.querySelectorAll('#ln-tree .ln-node').length, unsure: document.querySelectorAll('#ln-tree .ln-stem.unsure').length, lit: document.querySelectorAll('#ln-tree .ln-node.lit').length,
+            nodes: document.querySelectorAll('#ln-tree .ln-node').length, modelPeople: KIN_LINEAGE_UI.model().people.length, ghosts: document.querySelectorAll('#ln-tree .ln-node.ghost').length, stubs: document.querySelectorAll('#ln-tree .ln-stub').length, pills: document.querySelectorAll('#ln-tree .ln-fampill').length, unsure: document.querySelectorAll('#ln-tree .ln-stem.unsure').length, lit: document.querySelectorAll('#ln-tree .ln-node.lit').length,
             orphan: as.filter((a) => !ids.has(a.src)).length, unclassed: as.filter((a) => !['primary','secondary','undetermined'].includes(a.info) || !['direct','indirect','negative'].includes(a.ev)).length,
             badkind: L.sources.filter((s) => !['original','derivative','authored'].includes(s.kind) || !s.cite).length, noarg: L.conflicts.filter((c) => !c.argument && c.status !== 'open').length,
             noconc: L.events.filter((e) => !e.conclusion || !['proven','probable','possible'].includes(e.confidence)).length,
             first: document.querySelector('#app section.grid > .glass h2').textContent, logged: (L.log || []).length, logShown: document.querySelectorAll('#ln-planx .ln-log li').length }; }""")
+        pk.evaluate("document.querySelector('#ln-tree .ln-tools [data-z=fit]').click()"); pk.wait_for_timeout(500)   # the first view starts near you; Della is in the whole tree
         pk.locator('#ln-tree .ln-node[data-id="P-della"]').click(); pk.wait_for_timeout(300)
         k2 = pk.evaluate("() => ({ who: document.querySelector('#ln-dossier h3').textContent, sel: (document.querySelector('#ln-tree .ln-node.sel') || {}).dataset?.id })")
         pk.evaluate("KIN_LINEAGE_UI.pick('P-joseph')"); pk.wait_for_timeout(300)
@@ -235,13 +258,13 @@ with sync_playwright() as p:
         pk.keyboard.press("Escape"); pk.wait_for_timeout(200)
         k5 = pk.evaluate("() => { const g = KIN_LINEAGE_UI.gedcom(), L = g.split(/\\r?\\n/); return { head: L[0], vers: L.includes('2 VERS 7.0'), challenged: L.filter((l) => l === '2 STAT CHALLENGED').length, indi: L.filter((l) => / INDI$/.test(l)).length, fam: L.filter((l) => / FAM$/.test(l)).length, sour: L.filter((l) => / SOUR$/.test(l)).length, end: L.filter(Boolean).pop(), open: !!document.querySelector('.ln-view') }; }")
         wide = pk.evaluate("document.documentElement.scrollWidth")
-        ok = (k1["people"] >= 10 and k1["events"] >= 19 and k1["sources"] >= 16 and k1["conflicts"] >= 9 and k1["nodes"] == k1["people"] and k1["lit"] >= 5
+        ok = (k1["people"] >= 10 and k1["events"] >= 19 and k1["sources"] >= 16 and k1["conflicts"] >= 9 and k1["nodes"] == k1["modelPeople"] and k1["ghosts"] >= 3 and k1["stubs"] >= 4 and k1["pills"] >= 6 and k1["lit"] >= 5
               and not k1["orphan"] and not k1["unclassed"] and not k1["badkind"] and not k1["noarg"] and not k1["noconc"] and k1["first"] == "The family tree" and k1["unsure"] == 1 and k1["logged"] >= 2 and k1["logShown"] == k1["logged"]
               and k2["who"].startswith("Della") and k2["sel"] == "P-della" and k3["who"].startswith("Joseph") and k3["ev"] == k1["events"] and k3["docs"] >= 20 and k3["maps"] == 2 and k3["cons"] >= 6
               and k4 and k4["img"] and k4["cap"] > 40 and k5["head"] == "0 HEAD" and k5["vers"] and k5["challenged"] == 1 and k5["indi"] == k1["people"] and k5["fam"] >= 6 and k5["sour"] == k1["sources"] and k5["end"] == "0 TRLR" and not k5["open"]
               and wide <= 384 and not bk)
         proof("KIN-2", "The family tree is a research instrument: every assertion has a source and its three classifications, every event a conclusion and a confidence, a tap opens the person's dossier, a record opens full size, and the tree exports as GEDCOM 7",
-              ok, f"{k1['people']} people ({k1['nodes']} on the tree, {k1['lit']} on your line, {k1['unsure']} link not yet settled), {k1['events']} events, {k1['sources']} sources, {k1['conflicts']} conflicts, {k1['questions']} questions, {k1['logShown']} of {k1['logged']} searches in the log; unsourced {k1['orphan']}, unclassified {k1['unclassed']}, sources without kind or citation {k1['badkind']}, settled conflicts without argument {k1['noarg']}, events without conclusion {k1['noconc']}; first tab {k1['first']!r}; "
+              ok, f"{k1['people']} people ({k1['nodes']} on the tree with {k1['ghosts']} unknown parents, {k1['stubs']} '+ mother and father' stubs, {k1['pills']} families with their children, {k1['lit']} on your line, {k1['unsure']} link not yet settled), {k1['events']} events, {k1['sources']} sources, {k1['conflicts']} conflicts, {k1['questions']} questions, {k1['logShown']} of {k1['logged']} searches in the log; unsourced {k1['orphan']}, unclassified {k1['unclassed']}, sources without kind or citation {k1['badkind']}, settled conflicts without argument {k1['noarg']}, events without conclusion {k1['noconc']}; first tab {k1['first']!r}; "
                  f"tap -> {k2['who']!r}; Joseph: {k3['ev']} events, {k3['docs']} records, {k3['maps']} maps, {k3['cons']} conflicts; record viewer {k4}; GEDCOM {k5}; page {wide}px" + (f"; errors {bk[:2]}" if bk else ""))
         ck.close()
     except Exception as e: proof("KIN-2", "The family tree", False, "did not finish: " + str(e)[:200])

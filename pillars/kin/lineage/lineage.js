@@ -13,7 +13,7 @@
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const by = (arr) => Object.fromEntries(arr.map((x) => [x.id, x]));
   const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried" };
-  const CONF = { proven: "Proven", probable: "Probable", possible: "Possible", family: "From the family", placeholder: "To name", named: "Named by you", self: "You" };
+  const CONF = { proven: "Proven", probable: "Probable", possible: "Possible", family: "From the family", inferred: "Not yet known", placeholder: "To name", named: "Named by you", self: "You" };
   const KIND = { original: "Original", derivative: "Derivative", authored: "Authored" };
   const INFO = { primary: "Primary", secondary: "Secondary", undetermined: "Undetermined" };
   const EV = { direct: "Direct", indirect: "Indirect", negative: "Negative" };
@@ -46,7 +46,7 @@
   /* the line from you to the furthest researched ancestor, for the lit path */
   function line(M) {
     const set = new Set([L.root]); let cur = [L.root];
-    while (cur.length) { const nx = []; for (const pid of cur) { const f = parentsOf(M, pid); if (f) for (const q of f.partners) if (!set.has(q) && M.P[q] && M.P[q].status !== "possible") { set.add(q); nx.push(q); } } cur = nx; }
+    while (cur.length) { const nx = []; for (const pid of cur) { const f = parentsOf(M, pid); if (f) for (const q of f.partners) if (!set.has(q) && M.P[q] && M.P[q].status !== "possible" && !M.P[q].ghost) { set.add(q); nx.push(q); } } cur = nx; }
     return set;
   }
 
@@ -67,6 +67,13 @@
       if (f) { let x = x0 + (w - (f.partners.reduce((s, q) => s + width(q, new Set()), 0) + GX * (f.partners.length - 1))) / 2; for (const q of f.partners) { if (!pos[q]) place(q, x, gen + 1); x += width(q, new Set()) + GX; } }
     }
     place(L.root, 0, 0);
+    /* an unknown parent has no ancestry of its own: it stands beside its partner, as a couple does, not at the far end of the family's span */
+    for (const p of M.people) {
+      if (!p.ghost || !pos[p.id] || parentsOf(M, p.id)) continue;
+      const f = familiesOf(M, p.id)[0], sp = f && f.partners.find((q) => q !== p.id && pos[q]); if (!sp) continue;
+      const side = f.partners.indexOf(p.id) < f.partners.indexOf(sp) ? -1 : 1, nx = pos[sp].x + side * (W + GX), gen = pos[p.id].gen;
+      if (!Object.entries(pos).some(([k, q]) => k !== p.id && q.gen === gen && Math.abs(q.x - nx) < W + GX - 1)) pos[p.id].x = nx;
+    }
     /* everyone not yet placed (a sibling, a spouse, a child someone added) goes beside the nearest placed relative */
     let guard = 0, left = M.people.filter((p) => !pos[p.id]);
     while (left.length && guard++ < 20) {
@@ -91,7 +98,7 @@
   }
 
   /* ------------------------------------------------------------------ the tree */
-  const ui = { sel: "P-joseph", view: { s: 1, x: 0, y: 0 }, M: null, lay: null };
+  const ui = { sel: "P-joseph", view: { s: 1, x: 0, y: 0 }, M: null, lay: null, expand: new Set() };
   function drawTree(root) {
     const M = ui.M = model(), lay = ui.lay = layout(M), lit = ui.lit = line(M);
     const NS = "http://www.w3.org/2000/svg";
@@ -99,31 +106,46 @@
     g.innerHTML = "";
     const add = (tag, at, parent) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); (parent || g).appendChild(e); return e; };
     /* family connectors: partners joined by a bar, a stem down to the children */
+    const pills = [];
     for (const f of M.families) {
       const ps = f.partners.map((q) => lay.pos[q]).filter(Boolean), cs = f.children.map((c) => lay.pos[c]).filter(Boolean);
       if (!ps.length) continue;
       const midX = ps.reduce((s, q) => s + q.x, 0) / ps.length, y0 = ps[0].y + H / 2;
       const onLine = f.children.some((c) => lit.has(c)) && f.partners.some((q) => lit.has(q));
       if (ps.length > 1) add("path", { d: `M${ps[0].x + W / 2} ${ps[0].y}H${ps[ps.length - 1].x - W / 2}`, class: "ln-wed" + (onLine ? " lit" : "") });
+      if (cs.length && ps.length) pills.push(() => { /* how many children are known, and that more may not be: tap for the family (drawn over the lines) */
+        const k = f.children.filter((c) => M.P[c]).length, t = `${k} ${k === 1 ? "child" : "children"} known · more?`, fw = 18 + t.length * 6.4;
+        const fp = add("g", { class: "ln-fampill", transform: `translate(${midX} ${y0 + 11})`, tabindex: "0", role: "button", "data-fam": f.id, "aria-label": `Family: ${t}` });
+        add("rect", { x: -fw / 2, y: -10, width: fw, height: 20, rx: 10 }, fp); const ft = add("text", { y: 4 }, fp); ft.textContent = t;
+      });
       for (const c of cs) {
         const cid = f.children[cs.indexOf(c)], lt = onLine && lit.has(cid), un = f.uncertain && f.uncertain[cid], my = (y0 + c.y - H / 2) / 2;
         add("path", { d: `M${midX} ${ps.length > 1 ? ps[0].y : y0}V${my}H${c.x}V${c.y - H / 2}`, class: "ln-stem" + (lt ? " lit" : "") + (un ? " unsure" : "") });
         if (un) { /* a link the records have not settled: drawn dashed, with the question on it */
-          const q = add("g", { class: "ln-unsure", transform: `translate(${c.x} ${((ps.length > 1 ? ps[0].y : y0) + my) / 2 + 10})` });
+          const q = add("g", { class: "ln-unsure", transform: `translate(${c.x} ${my + (c.y - H / 2 - my) / 2})` });
           add("rect", { x: -108, y: -12, width: 216, height: 24, rx: 12 }, q); const t = add("text", { y: 5 }, q); t.textContent = un;
         }
       }
     }
+    pills.forEach((fn) => fn());
     for (const p of M.people) {
       const q = lay.pos[p.id]; if (!q) continue;
-      const k = add("g", { class: `ln-node st-${p.status}` + (lit.has(p.id) ? " lit" : "") + (ui.sel === p.id ? " sel" : ""), transform: `translate(${q.x - W / 2} ${q.y - H / 2})`, tabindex: "0", role: "button", "data-id": p.id, "aria-label": `${nm(p)} ${life(M, p)}` });
+      if (M.stubs && M.stubs.includes(p.id)) { /* everyone has a mother and a father: a stub above the card shows them on a tap */
+        const sb = add("g", { class: "ln-stub", transform: `translate(${q.x} ${q.y - H / 2 - 17})`, tabindex: "0", role: "button", "data-x": p.id, "aria-label": `Show ${nm(p)}'s parents` });
+        add("path", { d: `M0 9V18`, class: "ln-stubline" }, sb); add("rect", { x: -62, y: -9, width: 124, height: 18, rx: 9 }, sb); const st = add("text", { y: 4 }, sb); st.textContent = "+ mother and father";
+      }
+      const k = add("g", { class: `ln-node st-${p.status}` + (p.ghost ? " ghost" : "") + (lit.has(p.id) ? " lit" : "") + (ui.sel === p.id ? " sel" : ""), transform: `translate(${q.x - W / 2} ${q.y - H / 2})`, tabindex: "0", role: "button", "data-id": p.id, "aria-label": `${nm(p)} ${life(M, p)}` });
       add("rect", { width: W, height: H, rx: 14, class: "ln-card" }, k);
       add("rect", { width: 5, height: H - 24, x: 0, y: 12, rx: 2.5, class: "ln-tab" }, k);
-      const t1 = add("text", { x: 16, y: 27, class: "ln-name" }, k); t1.textContent = trunc(p.status === "placeholder" ? p.placeholder : nm(p), 21);
-      const t2 = add("text", { x: 16, y: 47, class: "ln-life" }, k); t2.textContent = p.status === "placeholder" ? "tap to name" : life(M, p) || " ";
+      const t1 = add("text", { x: 16, y: 27, class: "ln-name" }, k); t1.textContent = trunc(p.status === "placeholder" || (p.ghost && p.status === "inferred") ? p.placeholder : nm(p), 21);
+      const t2 = add("text", { x: 16, y: 47, class: "ln-life" }, k); t2.textContent = p.status === "placeholder" || (p.ghost && p.status === "inferred") ? (p.hint || "tap to name") : life(M, p) || " ";
       const t3 = add("text", { x: 16, y: 64, class: "ln-badge" }, k); t3.textContent = (CONF[p.status] || p.status).toUpperCase();
     }
-    const vb = { x: lay.minX - 30, y: -30, w: lay.maxX - lay.minX + 60, h: lay.height + 60 };
+    /* the generations, named down the left edge */
+    const GEN = ["You", "Parents", "Grandparents", "Great-grandparents"], topGen = Math.max(...Object.values(lay.pos).map((q) => q.gen));
+    const stubGen = new Set((M.stubs || []).map((id) => lay.pos[id] && lay.pos[id].gen));
+    for (let gi = 0; gi <= topGen; gi++) { const gy = (topGen - gi) * (H + GY) - (stubGen.has(gi) ? 34 : 12), tx = add("text", { x: lay.minX, y: gy, class: "ln-genl" }); tx.textContent = (GEN[gi] || `${gi - 2}× great-grandparents`).toUpperCase(); }
+    const vb = { x: lay.minX - 30, y: -50, w: lay.maxX - lay.minX + 60, h: lay.height + 80 };
     svg.dataset.vb = JSON.stringify(vb);
     apply(root);
   }
@@ -146,12 +168,16 @@
   function first(root) {
     const svg = root.querySelector("svg.ln-svg"), r = svg.getBoundingClientRect(), vb = JSON.parse(svg.dataset.vb || "{}");
     if (Math.min(r.width / vb.w, r.height / vb.h) >= 0.62) return fit(root);
-    const ids = [...(ui.lit || [])].filter((i) => ui.lay.pos[i]); if (!ids.length) return focus(root, ui.sel, 0.66);
+    const lit = [...(ui.lit || [])].filter((i) => ui.lay.pos[i]); if (!lit.length) return focus(root, ui.sel, 0.66);
+    /* your line and the unknown parents beside it (your father, Toni's father ...) */
+    const ids = lit.concat(ui.M.people.filter((p) => p.ghost && ui.lay.pos[p.id] && familiesOf(ui.M, p.id).some((f) => f.partners.some((q) => lit.includes(q)))).map((p) => p.id));
     const xs = ids.map((i) => ui.lay.pos[i].x), ys = ids.map((i) => ui.lay.pos[i].y), lg = root.querySelector(".ln-legend"), top = 64, bot = (lg ? lg.offsetHeight : 20) + 20, ah = r.height - top - bot;
     const box = (up) => { const bx = Math.min(...xs) - W / 2 - 16, by = Math.min(...ys) - H / 2 - 16 - up; return { bx, by, bw: Math.max(...xs) - Math.min(...xs) + W + 32, bh: Math.max(...ys) - by + H / 2 + 16 }; };
     const scale = (b) => Math.min(r.width / b.bw, ah / b.bh, 1.1);
-    let b = box(ids.some((i) => parentsOf(ui.M, i) && !ids.includes(parentsOf(ui.M, i).partners[0])) ? H + GY : 0);
+    let b = box(lit.some((i) => parentsOf(ui.M, i) && !ids.includes(parentsOf(ui.M, i).partners[0])) ? H + GY : 0);
     if (scale(b) < 0.55) b = box(0); /* the generation above your line only when it still fits readably */
+    /* still too wide (every line now has its unknown parents beside it): start from you and the generations nearest you, oldest dropped first */
+    while (scale(b) < 0.55 && ids.length > 3) { const topY = Math.min(...ids.map((i) => ui.lay.pos[i].y)); const keep = ids.filter((i) => ui.lay.pos[i].y > topY); if (keep.length < 3) break; ids.splice(0, ids.length, ...keep); xs.splice(0, xs.length, ...ids.map((i) => ui.lay.pos[i].x)); ys.splice(0, ys.length, ...ids.map((i) => ui.lay.pos[i].y)); b = box(0); }
     const sc = Math.max(0.5, scale(b)), fits = b.bh * sc <= ah + 1;
     /* when even your line does not fit, keep you in view (the bottom of the line) and let the oldest generation run off the top */
     ui.view = { s: sc, x: r.width / 2 - (b.bx + b.bw / 2) * sc, y: fits ? top + (ah - b.bh * sc) / 2 - b.by * sc : top + ah - (b.by + b.bh) * sc }; animate(root);
@@ -163,18 +189,18 @@
   function wire(root, onPick) {
     const svg = root.querySelector("svg.ln-svg"), pts = new Map(); let drag = null, moved = 0, pinch = null;
     let hit = null; /* the card under the finger at pointerdown: once the svg captures the pointer, pointerup's target is the svg itself */
-    svg.addEventListener("pointerdown", (e) => { hit = (e.target.closest && e.target.closest(".ln-node")) || null; svg.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); moved = 0;
+    svg.addEventListener("pointerdown", (e) => { hit = (e.target.closest && e.target.closest(".ln-node, .ln-fampill, .ln-stub")) || null; svg.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); moved = 0;
       if (pts.size === 1) drag = { x: e.clientX, y: e.clientY, vx: ui.view.x, vy: ui.view.y };
       if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), s: ui.view.s }; drag = null; } });
     svg.addEventListener("pointermove", (e) => { if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, [e.clientX, e.clientY]);
       if (pinch && pts.size === 2) { const [a, b] = [...pts.values()], r = svg.getBoundingClientRect(), d = Math.hypot(a[0] - b[0], a[1] - b[1]); zoomAt(root, (pinch.s * d / pinch.d) / ui.view.s, (a[0] + b[0]) / 2 - r.left, (a[1] + b[1]) / 2 - r.top); moved = 99; return; }
       if (drag) { const dx = e.clientX - drag.x, dy = e.clientY - drag.y; moved = Math.max(moved, Math.abs(dx) + Math.abs(dy)); ui.view.x = drag.vx + dx; ui.view.y = drag.vy + dy; apply(root); } });
     const up = (e) => { pts.delete(e.pointerId); if (pts.size < 2) pinch = null; if (!pts.size) {
-        if (moved < 6 && hit) onPick(hit.dataset.id); hit = null;
+        if (moved < 6 && hit) onPick(hit); hit = null;
         drag = null; } };
     svg.addEventListener("pointerup", up); svg.addEventListener("pointercancel", up);
     svg.addEventListener("wheel", (e) => { e.preventDefault(); const r = svg.getBoundingClientRect(); zoomAt(root, Math.exp(-e.deltaY * 0.0015), e.clientX - r.left, e.clientY - r.top); }, { passive: false });
-    svg.addEventListener("keydown", (e) => { const n = e.target.closest && e.target.closest(".ln-node"); if (n && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); onPick(n.dataset.id); } });
+    svg.addEventListener("keydown", (e) => { const n = e.target.closest && e.target.closest(".ln-node, .ln-fampill, .ln-stub"); if (n && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); onPick(n); } });
   }
 
   /* ------------------------------------------------------------------ the journey map (Odyssey's coastlines, equirectangular) */
@@ -255,6 +281,7 @@
         ${names ? `<div class="ln-names">${names}</div>` : ""}</header>
       ${p.summary ? `<p class="ln-sum">${esc(p.summary)}</p>` : ""}${p.note ? `<p class="ln-note">${esc(p.note)}</p>` : ""}${p.note_local ? `<p class="ln-note">${esc(p.note_local)}</p>` : ""}
       ${p.born_est ? `<p class="ln-note">Basis for the estimate: ${esc(p.born_est.basis)}.</p>` : ""}
+      ${p.infer && p.infer.length ? `<h4>What can be inferred</h4><ul class="ln-infer">${p.infer.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       ${rel(fam.parents, "Parents")}${rel(fam.spouses, "Spouse")}${rel(fam.kids, "Children")}
       ${namer(p)}
       ${ev.length ? `<h4>Life in the records</h4><ol class="ln-tl">${ev.map((e) => `
@@ -268,11 +295,28 @@
       ${qs.length ? `<h4>Open questions</h4><ul class="ln-qs">${qs.map((q) => `<li><b>${q.id}</b><span class="ln-pri p${q.p}">P${q.p}</span> ${esc(q.q)}<small>${esc(q.sources)} · ${esc(q.task === "owner" ? "for you" : q.task)}${(() => { const n = (L.log || []).filter((x) => x.q === q.id); return n.length ? ` · ${n.length} search${n.length > 1 ? "es" : ""} logged (${n.filter((x) => x.result === "found").length} found)` : ""; })()}</small></li>`).join("")}</ul>` : ""}
       ${addForm(p)}`;
   }
+  /* a family: who is in it, what is known about its children and what is not */
+  function famDossier(el, fid) {
+    const M = ui.M, f = M.F[fid]; if (!f) return;
+    const who = (q) => M.P[q] ? (M.P[q].ghost && M.P[q].status === "inferred" ? M.P[q].placeholder : nm(M.P[q])) : q;
+    const kids = f.children.filter((c) => M.P[c]), m = (f.events || []).map((e) => M.E[e]).find((e) => e && e.type === "marriage");
+    const ends = f.partners.map((q) => L.events.find((e) => e.who.includes(q) && e.type === "death")).filter(Boolean).map((e) => +e.date.sort.slice(0, 4));
+    const span = m && ends.length ? [+m.date.sort.slice(0, 4), Math.min(...ends)] : null, isYours = f.children.includes(L.root);
+    const unknown = isYours ? "Your brothers and sisters, if you have any, are not on the tree yet. Each one you add is a new branch for your own children to follow."
+      : span ? `Married ${span[1] - span[0]} years (${span[0]} to ${span[1]}). How many children they had is not known yet: families then often had two to four. Every census taken while they were together lists the household (Q4).`
+      : "How many children they had is not known. Add any you know of; the census that lists their household will name the rest.";
+    el.innerHTML = `<header class="ln-dhead"><p class="ln-kick">A family</p><h3>${f.partners.map((q) => esc(who(q))).join(" &amp; ")}</h3>
+        ${m ? `<p class="ln-dlife">Married ${esc(m.date.text)}${m.place && M.PL[m.place] ? `, ${esc(M.PL[m.place].name)}` : ""}</p>` : ""}</header>
+      <p class="ln-rel"><span>Partners</span>${f.partners.map((q) => `<button type="button" class="ln-link" data-go="${q}">${esc(who(q))}</button>`).join("")}</p>
+      <h4>Children</h4><p class="ln-rel"><span>${kids.length} known</span>${kids.map((c) => `<button type="button" class="ln-link" data-go="${c}">${esc(who(c))}${f.uncertain && f.uncertain[c] ? " (?)" : ""}</button>`).join("")}</p>
+      <p class="ln-note">${esc(unknown)}</p>
+      ${addForm(M.P[f.partners.find((q) => M.P[q] && !M.P[q].ghost) || f.partners[0]] || M.P[kids[0]], "child")}`;
+  }
   function conflictHtml(c) { return `<details class="ln-con s-${c.status}"><summary><b>${c.id}</b> ${esc(c.q)}<span>${esc(c.status)}: ${esc(c.conclusion)}</span></summary><p>${esc(c.argument)}</p></details>`; }
   function namer(p) {
-    if (p.status !== "placeholder" && p.status !== "family" && !(local().names[p.id])) return "";
+    if (!["placeholder", "family", "inferred"].includes(p.status) && !(local().names[p.id])) return "";
     const n = local().names[p.id] || {};
-    return `<form class="form ln-namer" data-pid="${p.id}"><p class="ln-kick">${p.status === "family" ? "Add what you know" : "Name this person"}</p>
+    return `<form class="form ln-namer" data-pid="${p.id}"><p class="ln-kick">${p.status === "family" ? "Add what you know" : p.ghost ? `Do you know ${esc(p.placeholder.replace(/^Your/, "your"))}? Name them` : "Name this person"}</p>
       <label class="f">Given names<input name="given" maxlength="80" value="${esc(n.given || "")}" autocomplete="off"></label>
       <label class="f">Surname at birth<input name="surname" maxlength="80" value="${esc(n.surname || "")}" autocomplete="off"></label>
       <label class="f">Born (year)<input name="born" maxlength="12" inputmode="numeric" value="${esc(n.born || "")}"></label>
@@ -280,9 +324,10 @@
       <label class="f wide">What you know<input name="note" maxlength="300" value="${esc(n.note || "")}" placeholder="Where they lived, a story, where the papers are"></label>
       <button class="btn" type="submit">Save</button></form>`;
   }
-  function addForm(p) {
+  function addForm(p, rel) {
+    const o = (v, t) => `<option value="${v}"${rel === v ? " selected" : ""}>${t}</option>`;
     return `<form class="form ln-add" data-pid="${p.id}"><p class="ln-kick">Add a relative of ${esc(firstName(p))}</p>
-      <label class="f">Relation<select name="rel"><option value="child">child</option><option value="parent">parent</option><option value="spouse">spouse</option><option value="sibling">brother or sister</option></select></label>
+      <label class="f">Relation<select name="rel">${o("child", "child")}${o("parent", "parent")}${o("spouse", "spouse")}${o("sibling", "brother or sister")}</select></label>
       <label class="f">Given names<input name="given" required maxlength="80" autocomplete="off"></label><label class="f">Surname<input name="surname" maxlength="80" autocomplete="off"></label>
       <label class="f">Born (year)<input name="born" maxlength="12" inputmode="numeric"></label>
       <label class="f">Sex<select name="sex"><option value="">—</option><option value="F">Female</option><option value="M">Male</option></select></label>
@@ -348,7 +393,8 @@
     const M = model(), out = ["0 HEAD", "1 GEDC", "2 VERS 7.0", "1 SOUR PROMETHEUS-KIN", "2 NAME Kin · Lineage", `1 DATE ${gedDate({ sort: new Date().toISOString().slice(0, 10), text: "" })}`, "1 LANG en"];
     const tag = { birth: "BIRT", emigration: "EMIG", immigration: "IMMI", declaration: "EVEN", draft: "EVEN", enlistment: "EVEN", service: "EVEN", naturalization: "NATU", discharge: "EVEN", residence: "RESI", occupation: "OCCU", death: "DEAT", burial: "BURI" };
     const xid = (id) => "@" + id.replace(/[^A-Za-z0-9]/g, "") + "@";
-    for (const p of M.people) {
+    const out1 = (p) => !(p.ghost && p.status === "inferred"), keep = new Set(M.people.filter(out1).map((p) => p.id));
+    for (const p of M.people.filter(out1)) {
       out.push(`0 ${xid(p.id)} INDI`);
       for (const n of (p.names || []).filter((x) => x.given || x.surname)) { out.push(`1 NAME ${n.given || ""} /${n.surname || ""}/`.replace(/\s+\//, " /")); const nt = { married: "MARRIED", anglicized: "IMMIGRANT", variant: "AKA" }[n.type]; if (nt) out.push(`2 TYPE ${nt}`); else if (n.type && n.type !== "birth" && n.type !== "preferred") out.push(`2 TYPE OTHER`, `3 PHRASE ${n.type}`); }
       if (!(p.names || []).some((x) => x.given || x.surname)) out.push(`1 NAME ${p.placeholder || "Unknown"} //`);
@@ -361,12 +407,12 @@
         for (const a of e.assert) { out.push(`2 SOUR ${xid(a.src)}`, `3 PAGE ${a.value}`); }
       }
       if (p.summary) out.push(`1 NOTE ${p.summary}`);
-      for (const f of M.families.filter((x) => x.partners.includes(p.id))) out.push(`1 FAMS ${xid(f.id)}`);
-      const pf = parentsOf(M, p.id); if (pf) { out.push(`1 FAMC ${xid(pf.id)}`); if (pf.uncertain && pf.uncertain[p.id]) out.push("2 STAT CHALLENGED", `3 PHRASE ${pf.uncertain[p.id]}`); }
+      for (const f of M.families.filter((x) => x.partners.includes(p.id) && x.partners.concat(x.children).filter((q) => keep.has(q)).length > 1)) out.push(`1 FAMS ${xid(f.id)}`);
+      const pf = parentsOf(M, p.id); if (pf && pf.partners.some((q) => keep.has(q))) { out.push(`1 FAMC ${xid(pf.id)}`); if (pf.uncertain && pf.uncertain[p.id]) out.push("2 STAT CHALLENGED", `3 PHRASE ${pf.uncertain[p.id]}`); }
     }
-    for (const f of M.families) {
+    for (const f of M.families.filter((x) => x.partners.concat(x.children).filter((q) => keep.has(q)).length > 1)) {
       out.push(`0 ${xid(f.id)} FAM`);
-      f.partners.forEach((q) => { const s = (M.P[q] || {}).sex; out.push(`1 ${s === "F" ? "WIFE" : "HUSB"} ${xid(q)}`); });
+      f.partners.filter((q) => keep.has(q)).forEach((q) => { const s = (M.P[q] || {}).sex; out.push(`1 ${s === "F" ? "WIFE" : "HUSB"} ${xid(q)}`); });
       for (const c of f.children) out.push(`1 CHIL ${xid(c)}`);
       for (const eid of f.events || []) { const e = M.E[eid]; if (!e) continue; out.push("1 MARR", `2 DATE ${gedDate(e.date)}`); if (e.place && M.PL[e.place]) out.push(`2 PLAC ${M.PL[e.place].hist}`); for (const a of e.assert) out.push(`2 SOUR ${xid(a.src)}`, `3 PAGE ${a.value}`); }
     }
@@ -377,7 +423,7 @@
 
   /* the legend names only the kinds of card the tree shows, plus the unsettled link when there is one */
   function legend(tree) {
-    const M = ui.M, has = new Set(M.people.map((p) => p.status)), order = ["proven", "probable", "possible", "family", "named", "placeholder"];
+    const M = ui.M, has = new Set(M.people.map((p) => p.status)), order = ["proven", "probable", "possible", "family", "named", "inferred", "placeholder"];
     const un = M.families.some((f) => f.uncertain && Object.keys(f.uncertain).length);
     tree.querySelector(".ln-legend").innerHTML = order.filter((k) => has.has(k)).map((k) => `<span class="st-${k}">${CONF[k]}</span>`).join("") + (un ? `<span class="st-unsure">Not yet settled</span>` : "");
   }
@@ -388,17 +434,30 @@
     const tree = panel("ln-tree", "The family tree", "Your line, generation by generation, from the records. Drag to move, pinch or scroll to zoom, tap a person for everything known about them and how it is known.",
       `<div class="ln-stage"><svg class="ln-svg" role="group" aria-label="Family tree"><g class="ln-world"></g></svg>
         <div class="ln-tools"><button type="button" class="btn quiet small" data-z="in" aria-label="Zoom in">+</button><button type="button" class="btn quiet small" data-z="out" aria-label="Zoom out">−</button><button type="button" class="btn quiet small" data-z="fit">Whole tree</button><button type="button" class="btn quiet small" data-z="me">You</button></div>
-        <p class="ln-legend"></p></div>
+        <p class="ln-legend"></p>
+        <div class="ln-peek" hidden><div><p class="ln-kick"></p><b></b><span></span></div><button type="button" class="btn small" data-peek="open">Full story</button><button type="button" class="btn quiet small ln-px" data-peek="close" aria-label="Close">×</button></div></div>
       <div class="ln-dossier" id="ln-dossier" aria-live="polite"></div>
-      <div class="ln-foot"><button type="button" class="btn quiet small" id="ln-ged">Export GEDCOM 7</button><span>${L.people.length} people · ${L.events.length} events · ${L.sources.length} sources · ${L.conflicts.length} conflicts weighed</span></div>`);
+      <div class="ln-foot"><button type="button" class="btn quiet small" id="ln-ged">Export GEDCOM 7</button><button type="button" class="btn quiet small" id="ln-share">Send my additions</button><button type="button" class="btn quiet small" id="ln-load">Add someone's additions</button><span>${L.people.length} people · ${L.events.length} events · ${L.sources.length} sources · ${L.conflicts.length} conflicts weighed</span></div>`);
     const src = panel("ln-sources", "Sources of the family history", "Every record behind the tree, with its full citation, where it is kept, a transcription and the image.", `<div id="ln-srcs"></div>`);
     const plan = panel("ln-plan", "Family research plan", "", `<div id="ln-planx"></div>`);
     grid.insertBefore(plan, grid.firstChild); grid.insertBefore(src, plan); grid.insertBefore(tree, src);
     const root = tree, dos = tree.querySelector("#ln-dossier");
     const pick = (pid, center) => { ui.sel = pid; drawTree(root); dossier(dos, pid); if (center) focus(root, pid); };
+    /* a tap on the tree opens a small card over it (the tree stays where it is); "Full story" goes to the dossier below */
+    const pk = tree.querySelector(".ln-peek");
+    const peek = (kick, name, line) => { pk.querySelector(".ln-kick").textContent = kick; pk.querySelector("b").textContent = name; pk.querySelector("span").textContent = line; pk.hidden = false; };
+    const peekPerson = (pid) => { const M = ui.M, p = M.P[pid]; if (!p) return; const gh = p.ghost && p.status === "inferred";
+      peek(CONF[p.status] || p.status, gh ? p.placeholder : nm(p), gh ? (p.infer[0] || "Not yet known") : [life(M, p), (p.summary || p.note || "").split(/(?<=\.)\s/)[0]].filter(Boolean).join(" · ")); };
+    pk.addEventListener("click", (e) => { const b = e.target.closest("[data-peek]"); if (!b) return; if (b.dataset.peek === "close") pk.hidden = true; else { pk.hidden = true; dos.scrollIntoView({ behavior: "smooth", block: "start" }); } });
+    const onTree = (el) => {
+      if (el.dataset.x) { ui.expand.add(el.dataset.x); drawTree(root); legend(tree); toast(`${nm(ui.M.P[el.dataset.x])}'s mother and father, not yet known: tap one to name them.`); return; }
+      if (el.dataset.fam) { const f = ui.M.F[el.dataset.fam]; famDossier(dos, el.dataset.fam); const k = f.children.filter((c) => ui.M.P[c]).length;
+        peek("A family", f.partners.map((q) => { const P = ui.M.P[q]; return P ? (P.ghost && P.status === "inferred" ? P.placeholder : firstName(P)) : q; }).join(" & "), `${k} ${k === 1 ? "child" : "children"} known; how many more is not known yet`); return; }
+      pick(el.dataset.id, false); peekPerson(el.dataset.id);
+    };
     drawTree(root); dossier(dos, ui.sel); legend(tree); src.querySelector("#ln-srcs").innerHTML = sourcesHtml(); plan.querySelector("#ln-planx").innerHTML = planHtml();
     requestAnimationFrame(() => first(root));
-    wire(root, (pid) => pick(pid, false));
+    wire(root, onTree);
     tree.querySelector(".ln-tools").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const svg = root.querySelector("svg.ln-svg").getBoundingClientRect();
       if (b.dataset.z === "in") { zoomAt(root, 1.25, svg.width / 2, svg.height / 2); } if (b.dataset.z === "out") zoomAt(root, 0.8, svg.width / 2, svg.height / 2); if (b.dataset.z === "fit") fit(root); if (b.dataset.z === "me") pick(L.root, true); });
     document.querySelector("#app").addEventListener("click", (e) => {
@@ -418,12 +477,59 @@
       if (fd.rel === "sibling") { const f0 = parentsOf(M, pid); if (f0) loc.links.push({ fam: f0.id, child: id }); else loc.families.push({ id: "LF-" + id, partners: [], children: [pid, id] }); }
       saveLocal(loc); toast(`${fd.given} added on this device.`); pick(id, true);
     });
+    /* your additions travel as a file: send it to family, and add theirs to yours (names, people and links merge; nothing is lost) */
+    tree.querySelector("#ln-share").addEventListener("click", () => { const x = local(); PK.download(`family-tree-additions-${new Date().toISOString().slice(0, 10)}.json`, { kind: "kin-lineage-additions", version: 1, made: new Date().toISOString(), ...x }); });
+    tree.querySelector("#ln-load").addEventListener("click", async () => {
+      try { const f = await PK.pickFile(); if (!f) return; const x = JSON.parse(await f.text()); if (x.kind !== "kin-lineage-additions") throw new Error("not a family-tree additions file");
+        const loc = local(), ids = (a) => new Set(a.map((y) => y.id)); let n = 0;
+        for (const [k, v] of Object.entries(x.names || {})) if (!loc.names[k]) { loc.names[k] = v; n++; }
+        for (const key of ["people", "families"]) { const have = ids(loc[key]); for (const y of x[key] || []) if (!have.has(y.id)) { loc[key].push(y); n++; } }
+        const lk = new Set(loc.links.map((y) => JSON.stringify(y))); for (const y of x.links || []) if (!lk.has(JSON.stringify(y))) { loc.links.push(y); n++; }
+        saveLocal(loc); drawTree(root); legend(tree); dossier(dos, ui.sel); toast(n ? `${n} additions merged into your tree.` : "Nothing new in that file.");
+      } catch (err) { toast("That file could not be added: " + err.message); } });
     tree.querySelector("#ln-ged").addEventListener("click", () => { const a = h("a", { href: URL.createObjectURL(new Blob([gedcom()], { type: "text/plain" })), download: "family-tree.ged" }); document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); });
     let lastW = window.innerWidth; window.addEventListener("resize", () => { if (Math.abs(window.innerWidth - lastW) < 40) return; lastW = window.innerWidth; first(root); }); /* a phone's address bar hiding is not a resize worth jumping for */
   }
   /* links added on this device into seed families (a child or a parent of a researched person) */
   const _model = model;
-  model = function () { const M = _model(), loc = local(); for (const k of loc.links || []) { const f = M.F[k.fam]; if (!f) continue; if (k.child && !f.children.includes(k.child)) f.children.push(k.child); if (k.partner && !f.partners.includes(k.partner)) f.partners.push(k.partner); } return M; };
+  model = function () { const M = _model(), loc = local(); for (const k of loc.links || []) { const f = M.F[k.fam]; if (!f) continue; if (k.child && !f.children.includes(k.child)) f.children.push(k.child); if (k.partner && !f.partners.includes(k.partner)) f.partners.push(k.partner); } addGhosts(M); return M; };
+
+  /* ------------------------------------------------------------------ everyone has a mother and a father
+     Every person with an unknown parent gets one, inferred (owner, 2026-11-24: "do your own inferred placeholder. Everyone has a mom and
+     dad"): a dashed card for the near generations, a "+ mother and father" stub above the oldest ones (a tap shows them). An inferred
+     parent carries only what follows from the records or from what you said (a surname from the child's birth name, a birth window
+     from the child's birth year); name one and it becomes yours, saved on this device and in the GEDCOM export. */
+  const OPEN_GEN = 4;
+  function gensFrom(M) { const g = { [L.root]: 0 }; let cur = [L.root]; while (cur.length) { const nx = []; for (const pid of cur) { const f = parentsOf(M, pid); if (f) for (const q of f.partners) if (g[q] == null) { g[q] = g[pid] + 1; nx.push(q); } } cur = nx; } return g; }
+  const birthYear = (M, p) => { const b = L.events.find((e) => e.who.includes(p.id) && e.type === "birth"); const y = b ? +b.date.sort.slice(0, 4) : +(String(p.born_local || "").match(/\d{4}/) || [0])[0]; return y || null; };
+  function addGhosts(M) {
+    const loc = local(), gen = gensFrom(M); M.stubs = [];
+    for (const p of M.people.filter((x) => !x.ghost && gen[x.id] != null)) {
+      const f = parentsOf(M, p.id); if (f && f.uncertain && f.uncertain[p.id]) continue; /* Barbara: who her parents are is the open question (C10) */
+      const have = f ? f.partners.map((q) => M.P[q]).filter(Boolean) : [];
+      const needF = !have.some((q) => q.sex === "M") && !(have.length === 2), needM = !have.some((q) => q.sex === "F") && !(have.length === 2);
+      if (!needF && !needM) continue;
+      if (gen[p.id] >= OPEN_GEN && !ui.expand.has(p.id)) { M.stubs.push(p.id); continue; }
+      let fam = f; if (!fam) { fam = { id: "GF-" + p.id, partners: [], children: [p.id], events: [], ghost: true, uncertain: {} }; M.families.push(fam); M.F[fam.id] = fam; }
+      for (const role of [needF && "father", needM && "mother"].filter(Boolean)) {
+        const id = `G-${p.id}-${role}`, n = loc.names[id] || {}, named = !!(n.given || n.surname), kn = (L.known || {})[id] || {};
+        const g = { id, ghost: true, of: p.id, role, sex: role === "father" ? "M" : "F", status: named ? "named" : "inferred", placeholder: `${p.id === L.root ? "Your" : firstName(p) + "'s"} ${role}`,
+          names: named ? [{ given: n.given || "", surname: n.surname || "", type: "birth", local: true }] : [], hint: kn.hint, infer: (kn.facts || []).concat(inferFor(M, p, role)) };
+        if (n.born) g.born_local = n.born; if (n.note) g.note_local = n.note;
+        M.people.push(g); M.P[id] = g; if (role === "father") fam.partners.unshift(id); else fam.partners.push(id);
+      }
+    }
+  }
+  function inferFor(M, p, role) {
+    const out = [], who = p.id === L.root ? "you" : firstName(p), bn = (p.names || []).find((n) => n.type === "birth" || n.type === "as-given" || n.type === "preferred");
+    if (role === "father" && bn && bn.surname && !(L.known || {})[`G-${p.id}-father`]) out.push(bn.type === "as-given" ? `If ${bn.surname} is ${who}'s surname at birth, he was a ${bn.surname}.` : `${who === "you" ? "You were" : who + " was"} born a ${bn.surname}, so he was most likely a ${bn.surname}.`);
+    if (role === "mother") out.push(`Her surname at birth is not known; ${who === "you" ? "your" : who + "'s"} birth certificate gives it.`);
+    const y = birthYear(M, p);
+    if (y) out.push(`Born about ${y - 45} to ${y - 16} (a parent is usually 16 to 45 at a child's birth; ${who} was born in ${y}). An estimate, not a record.`);
+    else { const kid = familiesOf(M, p.id).flatMap((f) => f.children).map((c) => M.P[c]).find((c) => c && birthYear(M, c)); if (kid) { const c = birthYear(M, kid); out.push(`Born about ${c - 90} to ${c - 32}: two generations before ${firstName(kid)} (born ${c}). An estimate, not a record.`); } }
+    out.push(`${who === "you" ? "Your" : who + "'s"} birth or marriage record names both parents.`);
+    return out;
+  }
   window.KIN_LINEAGE_UI = { model: () => model(), layout: () => layout(model()), gedcom, pick: (pid) => { const d = document.querySelector("#ln-dossier"); if (d) { ui.sel = pid; drawTree(document.querySelector("#ln-tree")); dossier(d, pid); } } };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();

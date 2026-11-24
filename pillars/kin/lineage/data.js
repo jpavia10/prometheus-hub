@@ -307,11 +307,22 @@ window.KIN_LINEAGE = {
     { id: "Q18", p: 3, person: "P-joseph", q: "Read the Co. A rosters and his service record substitutes for the service number, the dates in France and his duty at Chaumont.", sources: "NARA RG 64 rosters; RG 120 (AEF) records of the 29th Engineers; NPRC", task: "KIN-GEM-11" },
   ],
 
+  /* what is known about people the tree does not have a card for yet: the tree draws everyone's unknown mother and father
+     (pillars/kin/lineage/lineage.js, addGhosts) and shows these facts on them; each line is from a source, never a guess */
+  known: {
+    "G-P-self-father": { hint: "your dad · about 53", facts: ["Your dad. You said on 20 Oct 2026 that he is 53, so he was born about 1972 or 1973 (your words to Claude, in Titan's notes).", "You were born a Pavia, so he is most likely a Pavia: the start of your father's line."] },
+  },
+
   /* the research log: every search run, found or not (a search that finds nothing is negative evidence, and it stops the next
      person repeating it). Outside AIs' search rows arrive through tools/kin/lineage_intake.py. */
   log: [
     { id: "L1", date: "2026-11-24", by: "Claude", q: "Q20", where: "the open web (obituary sites, Legacy.com, funeral homes, newspapers)", terms: "\"Barbara Feole\" obituary", result: "not found", note: "No notice for a Barbara Feole. The nearest was an unrelated Feole family notice (Pauline Breault Feole, 2018). Not searched: obituaries behind a paywall, or under her birth surname." },
     { id: "L2", date: "2026-11-24", by: "Claude", q: "Q7", where: "the open web (Legacy.com, Detroit funeral homes, newspaper page indexes)", terms: "\"Termens\" Detroit obituary, with Della, Joseph or Barbara", result: "not found", note: "Nothing under Termens. Detroit Free Press pages on newspapers.com are behind a paywall and were not read; spellings Termen, Termins, Termenas not yet tried (KIN-GEM-13)." },
+    { id: "L3", date: "2026-11-24", by: "Claude", q: "Q20", where: "the open web (Legacy.com, Michigan funeral homes, GenLookups Michigan obituary archive)", terms: "Feole obituaries in Michigan naming a Barbara or a Laurie", result: "not found", note: "No notice names Barbara or Laurie. One Michigan Feole was found: Muriel W. Feole, 92, of Gaylord, died 22 Sep 2025; her survivors were not visible, so nothing links her to Barbara (a lead only, see L7)." },
+    { id: "L4", date: "2026-11-24", by: "Claude", q: "Q4", where: "the open web (genealogy guides, Bentley Library, FamilySearch Wayne County wiki)", terms: "Termens or Termenas, Detroit, with Della or Joseph, 1935", result: "not found", note: "Nothing on the family. The routes it names: Detroit's own death index (1920 on, microfiche; deaths in the city are not in the Wayne County index) and the 1935 Detroit city directory (KIN-GEM-13)." },
+    { id: "L5", date: "2026-11-24", by: "Claude", q: "Q19", where: "the open web (Legacy.com, Dignity Memorial, funeral homes)", terms: "an obituary naming Toni Hinkle or Toni Sanders as a daughter, in Michigan", result: "not found", note: "No parent's notice names her. Living people's records are best asked of the family (Q19)." },
+    { id: "L6", date: "2026-11-24", by: "Claude", q: "Q9", where: "Find a Grave (via web search)", terms: "Termens memorials in Michigan", result: "not found", note: "No memorial under Termens; Joseph's grave at Mt. Olivet is known only from the family's photographs (S-headstone). A memorial for him would help the next researcher." },
+    { id: "L7", date: "2026-11-24", by: "Claude", q: "Q20", where: "the open web", terms: "the full obituary of Muriel W. Feole, Gaylord, 2025, and its survivors", result: "not found", note: "Only the death notice line was found. Whether she is related to Barbara's husband is unknown." },
   ],
 
   /* the five GPS elements, per person: what is done, what is not */

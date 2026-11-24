@@ -56,7 +56,7 @@
     const r10 = sc.slice(-10);
     return { ai: who, open, mine: open.filter((t) => t.src === "mine"), by, floor: base.floor || 0, probation: !!base.probation, late: open.filter((t) => t.late).length, soon: open.filter((t) => t.due && t.due >= today && days(today, t.due) <= 7).length,
       delivered: all.filter((t) => t.status === "delivered").length, items: open.reduce((s, t) => s + (t.items || 0), 0), done: all.filter((t) => t.status === "done").length,
-      sc, n: sc.length, avg: sc.length ? sc.reduce((s, x) => s + x.score, 0) / sc.length : null, recent: r10.length ? r10.reduce((s, x) => s + x.score, 0) / r10.length : null, last: sc[sc.length - 1] };
+      done7: base.done7 || 0, sc, n: sc.length, avg: sc.length ? sc.reduce((s, x) => s + x.score, 0) / sc.length : null, recent: r10.length ? r10.reduce((s, x) => s + x.score, 0) / r10.length : null, last: sc[sc.length - 1] };
   };
   window.FORGE = { load, STATES, data: () => ({ ...D, snapshot: snap, snapState, per: AIS.map(per), assignments: S.list("assignments") }) };
 
@@ -108,7 +108,7 @@
       const low = p.open.length < p.floor;
       const segs = [...Object.keys(SRC).filter((k) => p.by[k]).map((k) => h("i.src-" + k, { style: `width:${(100 * p.by[k]) / max}%`, title: `${SRC[k]}: ${p.by[k]}` })),
         p.delivered ? h("i.src-delivered", { style: `width:${(100 * p.delivered) / max}%`, title: `delivered, not checked: ${p.delivered}` }) : null];
-      const note = [p.probation ? "probation" : "", p.late ? `${p.late} late` : "", p.soon ? `${p.soon} this week` : "", p.delivered ? `${p.delivered} delivered` : "", low ? `below ${p.floor}` : ""].filter(Boolean).join(" · ") || "to do";
+      const note = [p.probation ? "probation" : "", p.late ? `${p.late} late` : "", p.soon ? `${p.soon} due this week` : "", p.delivered ? `${p.delivered} delivered` : "", p.done7 ? `${p.done7} done in 7 days` : "", low ? `below ${p.floor}` : ""].filter(Boolean).join(" · ") || "to do";
       return h("button.lrow" + (F.ai === p.ai ? ".on" : "") + (low ? ".low" : ""), { type: "button", onclick: () => { F.ai = F.ai === p.ai ? "all" : p.ai; paintAll(); toTasks(); } },
         h("span.lname", null, h("b", null, p.ai), ROLE_TAG[p.ai] ? h("small", null, ROLE_TAG[p.ai]) : null),
         h("span.lbar", null, ...segs, p.floor ? h("span.lfloor", { style: `left:${(100 * p.floor) / max}%`, title: `floor ${p.floor}` }) : null),
@@ -143,7 +143,14 @@
     L.sort((a, b) => (a.due ? 0 : 1) - (b.due ? 0 : 1) || String(a.due).localeCompare(String(b.due)) || a.ai.localeCompare(b.ai));
     const head = h("p.sub", null, `${L.length} ${L.length === 1 ? "task" : "tasks"} · ${STATES[F.state].toLowerCase()}${F.ai !== "all" ? " · " + F.ai : ""}${F.where !== "all" ? " · " + F.where : ""}`);
     const shown = L.slice(0, 160);
-    $("#f-tasks").replaceChildren(head, ...shown.map((t) => {
+    /* to-do work is grouped by urgency, each group with its count (2026-11-24 upgrade: a flat list of 76 read as one long wall) */
+    const grp = (t) => !t.due ? "No date" : t.late ? "Late" : days(today, t.due) <= 7 ? "Due this week" : "Later";
+    const counts = {}; for (const t of shown) counts[grp(t)] = (counts[grp(t)] || 0) + 1;
+    const ORDER = ["Late", "Due this week", "Later", "No date"]; if (F.state === "todo" || F.state === "week" || F.state === "late") shown.sort((a, b) => ORDER.indexOf(grp(a)) - ORDER.indexOf(grp(b)));
+    let lastG = null;
+    $("#f-tasks").replaceChildren(head, ...shown.flatMap((t) => { const g = grp(t), hd = (F.state === "todo" || F.state === "week" || F.state === "late") && g !== lastG ? h("h3.tgroup" + (g === "Late" ? ".bad" : ""), null, g, h("span", null, String(counts[g]))) : null; lastG = g; return [hd, taskRow(t)].filter(Boolean); }), ...(L.length > shown.length ? [h("p.sub", null, `${L.length - shown.length} more: narrow it with the filters.`)] : []));
+  }
+  function taskRow(t) {
       const d = t.detail || {}, dv = t.delivered;
       /* 2026-11-20: a row's details are built the first time it is opened. 160 closed rows each carried their whole body
          (steps, links, review), ~3,000 elements laid out on every tab switch for text nobody had opened. */
@@ -161,8 +168,7 @@
           h("span.tside", null, t.reopened ? chip("sent back", "warn") : null, chip(label, t.late ? "bad" : t.status === "delivered" ? "warn" : t.status === "todo" ? "hot" : ""))));
       row.addEventListener("toggle", () => { if (row.open && !row.__built) { row.__built = true; row.appendChild(body()); } });
       return row;
-    }), ...(L.length > shown.length ? [h("p.sub", null, `${L.length - shown.length} more: narrow it with the filters.`)] : []));   // trial 4 #16: a null here printed "null"
-  }
+  }   // trial 4 #16: a null "more" line printed "null"; the list above keeps that guard
   function paintMatrix() {
     const cols = AIS.filter((a) => allTasks().some((t) => t.ai === a && isTodo(t)));
     const cell = (w, a) => allTasks().filter((t) => isTodo(t) && t.where === w && (!a || t.ai === a)).length;
@@ -180,10 +186,38 @@
     const rows = AIS.map(per).filter((p) => p.n).map((p) => h("div.srow", { style: "margin:10px 0" },
       h("div.kv", null, h("span", null, h("b", null, p.ai), ` · ${p.n} scored${p.probation ? " · on probation" : ""}`), h("b", null, `${p.avg.toFixed(1)} · ${p.recent.toFixed(1)}`)),
       h("div.bar-mini", null, h("i", { style: `width:${p.avg * 10}%` }), h("span.tick", { style: `left:${p.recent * 10}%` })),
+      p.n >= 4 ? h("canvas.f-trend", { "data-ai": p.ai, height: "44", "aria-label": `${p.ai}'s scores over time, a rolling average of five` }) : null,
       h("span.stat-s", null, `Last: ${p.last.score}/10 · ${p.last.date} · ${p.last.where} · ${String(p.last.what).slice(0, 90)}`)));
     $("#f-scores").replaceChildren(...(rows.length ? [h("div.board-head", null, h("span", null, "AI · submissions"), h("span", null, "All-time · last 10"))] : [h("p.sub", null, "No scores read yet.")]), ...rows,
       ...(pend.length ? [h("div.board-head", { style: "margin-top:14px" }, h("span", null, "Waiting on a score"), h("span", null, String(pend.length))), ...pend.map((s) => h("div.kv", null, h("span", null, h("b", null, s.ai), ` · ${s.where} · ${s.task}`), h("span.stat-s", null, s.note || "")))] : []));
+    requestAnimationFrame(() => { for (const cv of document.querySelectorAll("#f-scores canvas.f-trend")) trend(cv, per(cv.dataset.ai)); });
   }
+  /* an AI's scores over time: each point the average of its last five, so one bad file does not read as a collapse */
+  function trend(cv, p) { if (!cv.clientWidth) { const ro = new ResizeObserver(() => { if (cv.clientWidth) { ro.disconnect(); trend(cv, p); } }); ro.observe(cv); return; } /* a hidden tab has no width yet: draw when it shows */ const roll = p.sc.map((x, i) => { const w = p.sc.slice(Math.max(0, i - 4), i + 1); return { x: i, y: w.reduce((s, q) => s + q.score, 0) / w.length }; }); PK.spark(cv, roll, { min: 0, max: 10, zero: 8 }); }
+
+  /* tap a crucible (or an AI's row): that AI on one card, what it has, what it has done, how good it is and what is next */
+  function openAI(ai) {
+    const p = per(ai); if (!p) return; document.querySelector(".f-sheet")?.remove();
+    const next = p.open.slice().sort((a, b) => (a.due ? 0 : 1) - (b.due ? 0 : 1) || String(a.due).localeCompare(String(b.due))).slice(0, 6);
+    const where = {}; for (const t of p.open) where[t.where] = (where[t.where] || 0) + 1;
+    const top = Object.entries(where).sort((a, b) => b[1] - a[1]).slice(0, 6);
+    const num = (v, k, cls) => h("div.f-sn" + (cls ? "." + cls : ""), null, h("b", null, String(v)), h("span", null, k));
+    const close = () => { sh.remove(); document.removeEventListener("keydown", key); };
+    const key = (e) => { if (e.key === "Escape") close(); };
+    const sh = h("div.f-sheet", { role: "dialog", "aria-modal": "true", "aria-label": ai, onclick: (e) => { if (e.target === sh) close(); } },
+      h("div.f-sh-card", null,
+        h("header", null, h("div", null, h("b", null, ai), h("small", null, [ROLE_TAG[ai], p.probation ? "on probation" : "", p.floor ? `floor ${p.floor}` : ""].filter(Boolean).join(" · ") || "homework")),
+          h("button.btn.quiet.small.f-sx", { type: "button", "aria-label": "Close", onclick: close }, "×")),
+        h("div.f-snums", null, num(p.open.length, "to do", p.open.length < p.floor ? "low" : ""), num(p.late, "late", p.late ? "bad" : ""), num(p.soon, "due this week"), num(p.delivered, "delivered, not checked", p.delivered ? "warn" : ""), num(p.done7, "done in 7 days", "ok")),
+        p.n ? h("div.f-sscore", null, h("p", null, h("b", null, p.avg.toFixed(1)), " all-time · ", h("b", null, p.recent.toFixed(1)), ` over the last 10 · ${p.n} scored`), p.n >= 4 ? h("canvas.f-trend", { height: "52" }) : null) : h("p.sub", null, "No scores yet."),
+        next.length ? h("div", null, h("h4", null, "Next due"), h("ul.f-snext", null, ...next.map((t) => h("li" + (t.late ? ".late" : ""), null, h("span", null, t.title), h("small", null, `${t.where} · ${rel(t.due) || "no date"}`))))) : h("p.sub", null, "Nothing to do."),
+        top.length ? h("p.f-swhere", null, h("b", null, "Where: "), top.map(([w, n]) => `${w} ${n}`).join(" · ")) : null,
+        h("button.btn", { type: "button", onclick: () => { close(); F.ai = ai; F.state = "todo"; paintAll(); toTasks(); } }, `All of ${ai}'s tasks`)));
+    document.body.appendChild(sh); document.addEventListener("keydown", key); sh.querySelector(".f-sx").focus();
+    const cv = sh.querySelector("canvas.f-trend"); if (cv) requestAnimationFrame(() => trend(cv, p));
+  }
+  window.FORGE.openAI = openAI;
+
   const STEP = { out: "back", back: "reviewed" };
   function advance(a) {
     if (a.state === "reviewed") { S.remove("assignments", a.id); if (window.PB) PB.deadlines.unpublish("forge", a.id); paintAll(); return; }

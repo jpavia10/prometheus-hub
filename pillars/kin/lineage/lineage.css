@@ -143,3 +143,34 @@
 .ln-log li > span { color: var(--muted); font-size: 12px; }
 .ln-log em { color: var(--muted); }
 .ln-log small { display: block; margin-top: 4px; color: var(--muted); font-size: 12.5px; }
+
+/* everyone has a mother and a father: inferred parents, the stubs above the oldest generation, and each family's children */
+.ln-node.ghost .ln-card { stroke-dasharray: 4 5; fill: rgba(10, 13, 24, .55); stroke: rgba(159, 212, 230, .45); }
+.ln-node.ghost.st-inferred .ln-tab { fill: rgba(159, 212, 230, .35); }
+.ln-node.ghost.st-inferred .ln-name { fill: rgba(232, 239, 252, .72); font-weight: 500; font-style: italic; }
+.ln-node.ghost.st-inferred .ln-life { fill: #9fd4e6; }
+.ln-node.ghost.st-inferred .ln-badge { fill: rgba(159, 212, 230, .7); }
+.ln-legend .st-inferred::before { background: transparent; border: 1.5px dashed #9fd4e6; }
+.ln-stub, .ln-fampill { cursor: pointer; }
+.ln-stub rect { fill: rgba(10, 13, 24, .85); stroke: rgba(159, 212, 230, .55); stroke-dasharray: 3 3; }
+.ln-stub text { fill: #9fd4e6; font: 600 11px var(--sans); text-anchor: middle; }
+.ln-stubline { stroke: rgba(159, 212, 230, .5); stroke-dasharray: 2 3; fill: none; }
+.ln-fampill rect { fill: rgba(8, 10, 20, .92); stroke: rgba(231, 194, 122, .5); }
+.ln-fampill text { fill: rgba(240, 226, 196, .92); font: 600 10.5px var(--sans); text-anchor: middle; }
+.ln-stub:focus-visible rect, .ln-fampill:focus-visible rect { stroke: var(--gold); stroke-width: 2; stroke-dasharray: none; }
+.ln-genl { fill: rgba(232, 239, 252, .38); font: 700 11px var(--sans); letter-spacing: .2em; }
+/* the card a tap opens over the tree */
+.ln-peek { position: absolute; z-index: 3; left: 10px; right: 10px; bottom: 54px; display: flex; gap: 8px; align-items: center; padding: 12px 12px 12px 14px; border-radius: 16px;
+  background: rgba(10, 12, 22, .96); border: 1px solid var(--line-strong); box-shadow: 0 14px 40px rgba(0, 0, 0, .55); animation: ln-up .22s ease both; }
+.ln-peek[hidden] { display: none; }
+.ln-peek > div { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.ln-peek .ln-kick { margin: 0; }
+.ln-peek b { font-size: 15.5px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ln-peek span { font-size: 12.5px; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.ln-peek .ln-px { min-width: 40px; }
+@keyframes ln-up { from { transform: translateY(10px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ln-peek { animation: none; } }
+.ln-infer { margin: 6px 0 12px; padding-left: 18px; color: var(--ink); font-size: 13.5px; line-height: 1.5; }
+.ln-infer li { margin: 4px 0; }
+.ln-foot { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ln-stem, .ln-wed, .ln-genl, .ln-unsure { pointer-events: none; }

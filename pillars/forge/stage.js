@@ -5,7 +5,9 @@
 (function () {
   const I = PK.ink;
   PK.stage({
-    label: "Each AI as a crucible filled to its open homework, with its floor marked",
+    label: "Each AI as a crucible filled to its open homework, with its floor marked. Tap one for that AI.",
+    /* tap a crucible: that AI's card (what it has, what it did this week, its scores over time, what is next) */
+    tap(x, y, S) { const L = S.data && S.data.show; if (!L || !L.length) return; const i = Math.max(0, Math.min(L.length - 1, Math.floor(x / (S.w / L.length)))); if (window.FORGE && FORGE.openAI) FORGE.openAI(L[i].ai); },
     data() { const D = window.FORGE ? FORGE.data() : null; if (!D) return null; const show = D.per.filter((p) => p.n || p.open.length || p.mine.length); return { D, show, open: D.tasks.filter((t) => t.status === "todo").length + D.assignments.filter((a) => a.state !== "reviewed").length }; },
     readouts(X) { const all = [...X.D.scores, ...X.D.hubScores.filter((x) => x.score != null)], avg = all.length ? all.reduce((s, x) => s + x.score, 0) / all.length : null, best = X.show.filter((p) => p.recent != null).sort((a, b) => b.recent - a.recent)[0];
       return [{ v: X.open, k: "To do now" }, { v: all.length ? all.length : "—", k: all.length ? "Submissions scored" : "Scores loading" }, { v: best ? best.ai : "—", k: best ? `Best, last 10 · ${best.recent.toFixed(1)}` : "Best recent" }]; },
