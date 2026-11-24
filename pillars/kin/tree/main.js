@@ -13,6 +13,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const lc = (t) => t.charAt(0).toLowerCase() + t.slice(1); /* "Left Europe" -> "left Europe" */
 const phone = () => innerWidth < 760;
 const LOW = (navigator.hardwareConcurrency || 8) <= 4 || /Android [4-8]\b/.test(navigator.userAgent);
 const S = PK.store("kin");
@@ -469,7 +470,7 @@ function setYear(y, follow = true) {
   U.uYear.value = y; U.uTimeOn.value = 1;
   thumb.style.left = `${((y - Y0) / (NOW - Y0)) * 100}%`; yout.textContent = y; track.setAttribute("aria-valuenow", y);
   document.body.classList.add("timing");
-  if (follow && state.mode === "roots") { const first = !state.timeCam; state.timeCam = true; fly = null; want.ty = clamp(yOf(y) + 1, T.yMin - 6, 4); if (first && !state.sel) { want.tx = 0; want.tz = 0; want.d = overview().d * 0.62; want.ph = 1.2; } }
+  if (follow && state.mode === "roots") { const first = !state.timeCam; state.timeCam = true; fly = null; want.ty = clamp(yOf(y) - 3, T.yMin - 6, 4); if (first && !state.sel) { want.tx = 0; want.tz = 0; want.d = overview().d * 0.55; want.ph = innerWidth < innerHeight ? 0.82 : 1.0; } }
   if (state.mode === "places" && state.globe) state.globe.U.uYear.value = y, state.globe.U.uTimeOn.value = 1;
   for (const n of T.nodes) { const on = n.by <= y && y <= n.dy; n.alive = on; if (!state.sel) n.spr.material.color.setScalar(on ? 1 : 0.38); }
   caption(y);
@@ -478,7 +479,7 @@ function caption(y) {
   const hits = L.events.filter((e) => e.date && e.date.sort && +e.date.sort.slice(0, 4) === y && e.who.some((w) => T.byId[w]));
   const ctx = (L.context || []).filter((c) => +c.date.slice(0, 4) === y);
   const born = T.nodes.filter((n) => n.by === y && n.bq !== "estimate" && known(n.p) && !hits.some((e) => e.type === "birth" && e.who.includes(n.id)));
-  const rows = hits.slice(0, 3).map((e) => `<li><b>${esc(e.who.map((w) => (T.byId[w] ? firstName(T.byId[w].p) : "")).filter(Boolean).join(" & "))}</b> ${esc((TYPE[e.type] || e.type).toLowerCase())}${e.place && PLC[e.place] ? `, ${esc(PLC[e.place].name)}` : ""} <time>${esc(e.date.text)}</time></li>`)
+  const rows = hits.slice(0, 3).map((e) => `<li><b>${esc(e.who.map((w) => (T.byId[w] ? firstName(T.byId[w].p) : "")).filter(Boolean).join(" & "))}</b> ${esc(lc(TYPE[e.type] || e.type))}${e.place && PLC[e.place] ? `, ${esc(PLC[e.place].name)}` : ""} <time>${esc(e.date.text)}</time></li>`)
     .concat(born.slice(0, 2).map((n) => `<li><b>${esc(firstName(n.p))}</b> born <time>${n.by}</time></li>`))
     .concat(ctx.slice(0, 1).map((c) => `<li class="ctx">${esc(c.text)}</li>`));
   const alive = T.nodes.filter((n) => n.alive && known(n.p) && n.id !== L.root).length;

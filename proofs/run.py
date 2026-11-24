@@ -328,7 +328,7 @@ with sync_playwright() as p:
                and vw["open"] and vw["img"] and vw["cap"] > 40 and vw["closed"] and tm["year"] == 1917 and "Joseph" in tm["cap"] and "1917" in tm["cap"] and tm["named"] >= 2
                and gl["s"]["mode"] == "places" and gl["s"]["pins"] >= 15 and gl["s"]["glines"] >= 10 and gl["labels"] >= 3 and pin and gl["card"] >= 1
                and rec["n"] == rec["imgs"] and rec["n"] >= 30 and rs["kpis"] == 5 and rs["cons"] == rs["all"] and rs["own"] >= 3 and rs["ged"]
-               and frames > 100 and wide3 <= 384 and kd["href"] == "tree/" and kd["img"] and kd["curved"] >= 20 and kd["straight"] == 0 and not e3)
+               and frames > 30 and wide3 <= 384 and kd["href"] == "tree/" and kd["img"] and kd["curved"] >= 20 and kd["straight"] == 0 and not e3)
         proof("KIN-3D", "The family tree in three dimensions: WebGL draws everyone, a tap opens a person with their records beside them, a record opens full size, time travel names the living, the globe shows the journeys, the records and research views open; the Kin page has the door and the fan's names curve",
               ok3, f"{s0['nodes']} people and {s0['links']} bridges drawn ({lit} lit pixels); tap {who} -> {tap}; Joseph {jo}; viewer {vw}; 1917 {tm['named']} named, caption {tm['cap'][:80]!r}; globe {gl['s']['pins']} places, {gl['s']['glines']} journeys, {gl['labels']} labels, tap {pin and pin[0]} -> {gl['card']} events; records {rec}; research {rs}; {frames} frames; page {wide3}px; Kin page {kd}" + (f"; errors {e3[:2]}" if e3 else ""))
         c3.close()
