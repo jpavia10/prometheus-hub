@@ -191,10 +191,10 @@ def titan_scores(titan):
     return out
 
 
-def hub_scores(names_rel):
+def hub_scores(names_rel, base=None):
     out, pending = [], []
     for name, rel in names_rel:
-        md = read(ROOT, rel, text=True)
+        md = read(base or ROOT, rel, text=True)
         if md is None: continue
         for line in md.split("\n"):
             if not re.match(r"^\|\s*\d+\s*\|", line): continue
@@ -234,6 +234,10 @@ def main(argv):
     rels = [((p.get("name") or p["id"]).split(" · ")[0], "collaborators/CONTRIBUTOR_SCORES.md" if p["id"] == "hub" else p["home"].rstrip("/") + "/collaborators/CONTRIBUTOR_SCORES.md")
             for p in lst if p.get("id") == "hub" or (p.get("home") and p.get("state") != "paused" and p.get("id") != "presence")]
     hs, pending = hub_scores(rels)
+    # Midas Ledger keeps its own score sheet in its own repo (same table): its rows count with the hub's (2026-11-24: they were missed)
+    ms, mpend = hub_scores([("Midas Ledger", "collaborators/CONTRIBUTOR_SCORES.md")], midas)
+    if ms or mpend: hs += ms; pending += mpend
+    else: WARN.append("Midas Ledger: score sheet unreadable")
     roles = read(titan, "docs/agents/roles.json") or {}
     prob = {ai_name(k): bool(v.get("probation")) for k, v in (roles.get("agents") or {}).items() if ai_name(k)}
     week = (dt.date.fromisoformat(today) + dt.timedelta(days=7)).isoformat(); ago7 = (dt.date.fromisoformat(today) - dt.timedelta(days=7)).isoformat()

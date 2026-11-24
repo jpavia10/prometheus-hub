@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-24] d69: the Forge shows load, not scores; every score counted; Kin keeps a research log (owner, on the Forge: "Is this accurate?")
+- The crucibles were filled to each AI's average score, so Grok (2 tasks) looked as full as Gemini (60) on the page meant to show load. They now fill to open homework on one scale, with each floor marked (Gemini 60 over its 50); scores stay in the tiles and the Scores tab. "Submissions scored" counted Titan only (179): it now adds the hub (190) and Midas (15, which the Forge never read): 384. Grok's 2 late Midas tasks are real: the book is his until the owner names who takes it over.
+- Kin: a research log (`log` in data.js, in the research plan), every search found or not; the first two (Claude: no obituary for Barbara Feole, nothing under Termens in Detroit). `tools/kin/lineage_intake.py` checks a lineage delivery against its task and drafts log entries and candidate records; its rules run in CI (`tools/kin/test_lineage_intake.py`).
+
 ### [2026-11-24] d68: the owner's maternal line by name; Joseph Termenas's place in it is an open question (owner: "I didnt do this research personally. Im not sure if he was my great grandmas father or her grandfather. My mom is toni hinkle maiden name Sanders. Her mom is laurie Jordan her mom is Barbara feole")
 - The three placeholders are now Toni Hinkle (born Sanders), Laurie Jordan and Barbara Feole, from his account (source S-owner; status "From the family"). The link from Joseph and Della to Barbara is drawn dashed with "daughter or granddaughter? (C10)"; GEDCOM exports it as FAMC STAT CHALLENGED. C10 carries the test (their children were born 1922-1935; a grandchild hardly before about 1937), with H6/H7, Q19 (ask Laurie), Q20 (Barbara's records, KIN-GEM-14) and Q21 (who the great-uncle is). KIN-GEM-09 now aims at C10.
 - The tree's first view keeps your line from Joseph down to you clear of the buttons and the legend (bands fade cards under them); the legend lists only what the tree shows. KIN-2 also checks the unsettled link and its GEDCOM status.

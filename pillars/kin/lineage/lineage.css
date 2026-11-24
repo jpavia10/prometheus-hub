@@ -135,3 +135,11 @@
 .ln-gpsl { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.55; color: var(--ink); }
 .ln-namer, .ln-add { margin-top: 16px; padding: 12px; border-radius: 16px; border: 1px dashed rgba(231, 194, 122, .4); }
 @media (max-width: 520px) { .ln-gps dl { grid-template-columns: 1fr; } .ln-svg { height: 58vh; } }
+
+/* the research log */
+.ln-log { list-style: none; margin: 8px 0 14px; padding: 0; display: grid; gap: 8px; }
+.ln-log li { padding: 10px 12px; border: 1px solid var(--line); border-left: 3px solid var(--line-strong); border-radius: 12px; font-size: 13.5px; line-height: 1.45; color: var(--ink); background: rgba(255, 255, 255, .02); }
+.ln-log li.r-found { border-left-color: var(--ok); } .ln-log li.r-candidate { border-left-color: var(--maybe); } .ln-log li.r-not-found { border-left-color: var(--weak); }
+.ln-log li > span { color: var(--muted); font-size: 12px; }
+.ln-log em { color: var(--muted); }
+.ln-log small { display: block; margin-top: 4px; color: var(--muted); font-size: 12.5px; }

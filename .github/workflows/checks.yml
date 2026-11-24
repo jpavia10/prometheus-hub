@@ -41,6 +41,8 @@ jobs:
         run: node --test proofs/unit/*.test.mjs
       - name: Forge builder rules
         run: python3 tools/forge/test_build.py
+      - name: Kin lineage intake rules
+        run: python3 tools/kin/test_lineage_intake.py
       - name: Money and contact guard
         run: node tools/guard/money.mjs
       - name: Erased history stays erased

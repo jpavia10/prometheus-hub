@@ -265,7 +265,7 @@
       ${ev.length ? journey(M, p) : ""}
       ${imgs.length ? `<h4>Documents</h4><div class="ln-docs">${imgs.map((d) => `<button type="button" class="ln-doc" data-img="${d.i}" data-src="${d.s}" aria-label="${esc((M.SRC[d.s] || {}).short || d.i)}"><img loading="lazy" src="${DOCS}t/${d.i}.webp" alt=""><span>${esc((M.SRC[d.s] || {}).short || "")}</span></button>`).join("")}</div>` : ""}
       ${cons.length ? `<h4>Conflicts and proofs</h4>${cons.map(conflictHtml).join("")}` : ""}
-      ${qs.length ? `<h4>Open questions</h4><ul class="ln-qs">${qs.map((q) => `<li><b>${q.id}</b><span class="ln-pri p${q.p}">P${q.p}</span> ${esc(q.q)}<small>${esc(q.sources)} · ${esc(q.task === "owner" ? "for you" : q.task)}</small></li>`).join("")}</ul>` : ""}
+      ${qs.length ? `<h4>Open questions</h4><ul class="ln-qs">${qs.map((q) => `<li><b>${q.id}</b><span class="ln-pri p${q.p}">P${q.p}</span> ${esc(q.q)}<small>${esc(q.sources)} · ${esc(q.task === "owner" ? "for you" : q.task)}${(() => { const n = (L.log || []).filter((x) => x.q === q.id); return n.length ? ` · ${n.length} search${n.length > 1 ? "es" : ""} logged (${n.filter((x) => x.result === "found").length} found)` : ""; })()}</small></li>`).join("")}</ul>` : ""}
       ${addForm(p)}`;
   }
   function conflictHtml(c) { return `<details class="ln-con s-${c.status}"><summary><b>${c.id}</b> ${esc(c.q)}<span>${esc(c.status)}: ${esc(c.conclusion)}</span></summary><p>${esc(c.argument)}</p></details>`; }
@@ -328,6 +328,8 @@
     const gps = Object.entries(L.gps).map(([pid, g]) => `<div class="ln-gps"><b>${esc(nm(ui.M.P[pid]))}</b><dl>${[["Reasonably exhaustive search", g.search], ["Citations", g.cite], ["Analysis and correlation", g.analysis], ["Conflicts", g.conflicts], ["Written conclusion", g.written]].map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl></div>`).join("");
     return `<p class="sub">What to find next, in order. Each question names the records that answer it and who is on it (Gemini's homework in Kin, or you).</p>
       <ul class="ln-qs">${qs.map((q) => `<li><b>${q.id}</b><span class="ln-pri p${q.p}">P${q.p}</span> ${esc(q.q)}<small>${esc(q.sources)} · ${esc(q.task === "owner" ? "for you" : q.task)}</small></li>`).join("")}</ul>
+      <h4>Research log</h4><p class="sub">Every search, found or not, so none is repeated and the search can be shown to be reasonably exhaustive.</p>
+      <ul class="ln-log">${(L.log || []).slice().reverse().map((x) => `<li class="r-${esc(x.result.replace(/\s+/g, "-"))}"><b>${esc(x.id)}</b> <span>${esc(x.date)} · ${esc(x.by)} · ${esc(x.q)}</span> ${esc(x.terms)} <em>in ${esc(x.where)}</em>: <strong>${esc(x.result)}</strong>${x.note ? `<small>${esc(x.note)}</small>` : ""}</li>`).join("")}</ul>
       <h4>Hypotheses, not facts</h4><ul class="ln-hyp">${L.hypotheses.map((x) => `<li><b>${x.id}</b> ${esc(x.text)} <small>test: ${esc(x.test)}</small></li>`).join("")}</ul>
       <h4>Every conflict</h4>${L.conflicts.map(conflictHtml).join("")}
       <h4>The proof standard, person by person</h4>${gps}

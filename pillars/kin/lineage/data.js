@@ -307,6 +307,13 @@ window.KIN_LINEAGE = {
     { id: "Q18", p: 3, person: "P-joseph", q: "Read the Co. A rosters and his service record substitutes for the service number, the dates in France and his duty at Chaumont.", sources: "NARA RG 64 rosters; RG 120 (AEF) records of the 29th Engineers; NPRC", task: "KIN-GEM-11" },
   ],
 
+  /* the research log: every search run, found or not (a search that finds nothing is negative evidence, and it stops the next
+     person repeating it). Outside AIs' search rows arrive through tools/kin/lineage_intake.py. */
+  log: [
+    { id: "L1", date: "2026-11-24", by: "Claude", q: "Q20", where: "the open web (obituary sites, Legacy.com, funeral homes, newspapers)", terms: "\"Barbara Feole\" obituary", result: "not found", note: "No notice for a Barbara Feole. The nearest was an unrelated Feole family notice (Pauline Breault Feole, 2018). Not searched: obituaries behind a paywall, or under her birth surname." },
+    { id: "L2", date: "2026-11-24", by: "Claude", q: "Q7", where: "the open web (Legacy.com, Detroit funeral homes, newspaper page indexes)", terms: "\"Termens\" Detroit obituary, with Della, Joseph or Barbara", result: "not found", note: "Nothing under Termens. Detroit Free Press pages on newspapers.com are behind a paywall and were not read; spellings Termen, Termins, Termenas not yet tried (KIN-GEM-13)." },
+  ],
+
   /* the five GPS elements, per person: what is done, what is not */
   gps: {
     "P-joseph": { search: "partial: no census, arrival manifest, declaration, newspaper or church record yet", cite: "done for every assertion", analysis: "done", conflicts: "C1, C2, C4, C5, C7, C8 resolved or explained; C3, C6, C9 open", written: "the summary and the proof arguments above" },

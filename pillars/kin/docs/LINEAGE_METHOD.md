@@ -80,8 +80,13 @@ is the standard check (KIN-MUS-02); differences between readers become conflicts
 - **Outside AIs** do research as homework (`pillars/kin/docs/agents/queues.json`, rendered to `QUEUE_{ai}.md`) and deliver
   JSON files to the Drive drop folder. Each row is one search, record, lead or summary with the fields the task names.
   They never edit the repository.
-- **Claude** reads every delivered record against its image, writes the assertions, conflicts and conclusions into
-  `pillars/kin/lineage/data.js`, scores the file (`collaborators/CONTRIBUTOR_SCORES.md`) and sets new homework.
+- **Claude** runs each delivery through `tools/kin/lineage_intake.py FILE --out DIR` (it checks the file against its task's fields
+  and the method's words, rejects a record without its reference, citation, transcription or identity argument, and drafts the
+  search rows as research-log entries and the record rows as candidates), reads every candidate record against its image, writes
+  the assertions, conflicts and conclusions into `pillars/kin/lineage/data.js`, adds the searches to its `log`, scores the file
+  (`collaborators/CONTRIBUTOR_SCORES.md`) and sets new homework.
+- **The research log** (`log` in `data.js`, shown in the research plan) keeps every search, found or not, with who ran it, where,
+  the exact terms and the result: the record that the search was reasonably exhaustive.
 - **The owner and family** add people and names on the device (the namer and add-relative forms; stored locally, included in
   the GEDCOM export) and answer the questions only they can (the `owner` questions in the research plan). A family story is
   recorded as an authored source with its teller and date, and stays a lead until a record supports it.

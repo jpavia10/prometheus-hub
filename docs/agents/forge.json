@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T03:14:42Z",
- "checked": "2026-11-24T03:14:42Z",
+ "built": "2026-11-24T03:46:03Z",
+ "checked": "2026-11-24T03:46:03Z",
  "version": 2,
  "today": "2026-11-23",
  "sources": {
@@ -19,7 +19,7 @@
    "synced": "2026-11-19T20:47:40Z"
   },
   "titan_scores": 179,
-  "hub_scores": 190,
+  "hub_scores": 205,
   "pending_scores": 3
  },
  "totals": {
@@ -49,8 +49,8 @@
    },
    "probation": false,
    "scores": {
-    "n": 264,
-    "avg": 8.26,
+    "n": 275,
+    "avg": 8.21,
     "last10": 9.2,
     "last": {
      "ai": "Gemini",
@@ -113,17 +113,17 @@
    },
    "probation": false,
    "scores": {
-    "n": 56,
-    "avg": 8.46,
-    "last10": 8.8,
+    "n": 60,
+    "avg": 8.55,
+    "last10": 9.2,
     "last": {
      "ai": "Muse",
-     "n": 7,
-     "date": "2026-11-19",
-     "what": "continuity_muse_legacy-policies-recheck_20261118-1615.md",
-     "task": "CON-MUS-01",
-     "where": "Prometheus Hub",
-     "score": 9.0
+     "n": 11,
+     "date": "2026-11-20",
+     "what": "midas_muse_function-spec-check_20261118-1615.md",
+     "task": "MID-GEM-11",
+     "where": "Midas Ledger",
+     "score": 10.0
     }
    }
   },
@@ -21016,6 +21016,141 @@
    "task": "none",
    "where": "Prometheus Hub",
    "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 1,
+   "date": "2026-11-20",
+   "what": "midas_gemini_flex-terms_20261116-2040.json",
+   "task": "MID-GEM-09",
+   "where": "Midas Ledger",
+   "score": 6.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 2,
+   "date": "2026-11-20",
+   "what": "midas_gemini_flex-terms_20261118-1940.json",
+   "task": "MID-GEM-09",
+   "where": "Midas Ledger",
+   "score": 6.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 3,
+   "date": "2026-11-20",
+   "what": "midas_gemini_parser-cases_20261117-1047.json",
+   "task": "MID-GEM-10",
+   "where": "Midas Ledger",
+   "score": 3.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 4,
+   "date": "2026-11-20",
+   "what": "midas_gemini_parser-cases_20261117-1735.json",
+   "task": "MID-GEM-10",
+   "where": "Midas Ledger",
+   "score": 7.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 5,
+   "date": "2026-11-20",
+   "what": "midas_gemini_parser-cases_20261118-1940.json",
+   "task": "MID-GEM-10",
+   "where": "Midas Ledger",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 6,
+   "date": "2026-11-20",
+   "what": "midas_gemini_function-spec_20261117-1735.md",
+   "task": "MID-GEM-11",
+   "where": "Midas Ledger",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 7,
+   "date": "2026-11-20",
+   "what": "midas_gemini_function-spec_20261118-1940.md",
+   "task": "MID-GEM-11",
+   "where": "Midas Ledger",
+   "score": 5.0
+  },
+  {
+   "ai": "Muse",
+   "n": 8,
+   "date": "2026-11-20",
+   "what": "midas_muse_flex-terms-check_20261117-1040.md",
+   "task": "MID-MUS-03",
+   "where": "Midas Ledger",
+   "score": 9.0
+  },
+  {
+   "ai": "Muse",
+   "n": 9,
+   "date": "2026-11-20",
+   "what": "midas_muse_parser-cases-check_20261117-1725.md",
+   "task": "MID-MUS-02",
+   "where": "Midas Ledger",
+   "score": 10.0
+  },
+  {
+   "ai": "Muse",
+   "n": 10,
+   "date": "2026-11-20",
+   "what": "midas_muse_parser-cases-recheck_20261118-1615.md",
+   "task": "MID-MUS-02",
+   "where": "Midas Ledger",
+   "score": 10.0
+  },
+  {
+   "ai": "Muse",
+   "n": 11,
+   "date": "2026-11-20",
+   "what": "midas_muse_function-spec-check_20261118-1615.md",
+   "task": "MID-GEM-11",
+   "where": "Midas Ledger",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 12,
+   "date": "2026-11-20",
+   "what": "midas_gemini_parser-trial_20261120-0940.json (trial 5, 30 cases)",
+   "task": "MID-GEM-12",
+   "where": "Midas Ledger",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 13,
+   "date": "2026-11-21",
+   "what": "midas_gemini_function-spec_20261120-2135.md (redo)",
+   "task": "MID-GEM-11",
+   "where": "Midas Ledger",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 14,
+   "date": "2026-11-22",
+   "what": "midas_gemini_terms-corpus_20261121-1305.json",
+   "task": "MID-GEM-13",
+   "where": "Midas Ledger",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 15,
+   "date": "2026-11-23",
+   "what": "midas_gemini_statement-lines_20261123-1107.json",
+   "task": "MID-GEM-14",
+   "where": "Midas Ledger",
+   "score": 10.0
   }
  ],
  "pending_scores": [
