@@ -356,11 +356,14 @@ function dossier(id) {
   const gps = (L.gps || {})[id];
   const par = T.parents(id), sp = T.spouses(id), ch = T.children(id), sib = T.siblings(id);
   const unsure = T.unsure(id) ? `<p class="tv-unsure">Not settled: ${esc(Object.values((T.M.families.find((f) => f.children.includes(id)) || {}).uncertain || {})[0] || "")}</p>` : "";
+  /* a line to you that runs through a link not yet settled says so where the relationship is named */
+  const via = [...pathTo(T, id)].filter((x) => x !== id && T.unsure(x) && T.parents(x).some((q) => pathTo(T, id).has(q)));
+  const relNote = via.length ? `<p class="tv-relnote">Through ${esc(via.map((x) => firstName(T.byId[x].p)).join(" and "))}, a link not yet settled: ${esc(Object.values((T.M.families.find((f) => f.children.includes(via[0])) || {}).uncertain || {})[0] || "not yet settled")}</p>` : "";
   sin.innerHTML = `
     <header class="tv-dh">
       <div class="tv-face s-${n.status}${n.ghost ? " ghost" : ""}">${face ? `<img src="${DOCS + face}.webp" alt="">` : `<span>${esc(n.id === L.root ? "You" : initials(p))}</span>`}</div>
       <div><p class="tv-rel">${esc(T.rel(id))}</p><h2>${esc(n.id === L.root ? nm(p) || "You" : known(p) ? nm(p) : p.placeholder)}</h2>
-      <p class="tv-life">${esc(lifeLine(n))}</p><span class="tv-st s-${n.status}">${esc(st.t)}</span></div>
+      ${relNote}<p class="tv-life">${esc(lifeLine(n))}</p><span class="tv-st s-${n.status}">${esc(st.t)}</span></div>
       <button type="button" class="tv-x" data-close aria-label="Close">×</button>
     </header>
     ${p.summary ? `<p class="tv-sum">${esc(p.summary)}</p>` : ""}${p.note ? `<p class="tv-note">${esc(p.note)}</p>` : ""}
