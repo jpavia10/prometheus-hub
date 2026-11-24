@@ -71,5 +71,7 @@ export function render(root, route, ctx) {
   let chip = wxChip(ctx); const onWx = () => { const open = chip.classList.contains("open"); const n = wxChip(ctx); chip.replaceWith(n); chip = n; if (open) { const c = n.querySelector(".wx-chip"); if (c && n.querySelector(".wx-panel")) c.click(); } };
   put(root, rx, chip, toMenu); rx.fit(); addEventListener("deck:weather", onWx);
   document.body.classList.add("town-home");
-  return () => { removeEventListener("deck:weather", onWx); document.body.classList.remove("town-home"); if (rx.cleanup) rx.cleanup(); };
+  const done = () => { removeEventListener("deck:weather", onWx); document.body.classList.remove("town-home"); if (rx.cleanup) rx.cleanup(); };
+  done.refresh = onWx;                                                            // a same-place refresh redraws the chip, never the town (app.js render)
+  return done;
 }

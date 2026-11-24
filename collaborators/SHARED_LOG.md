@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-24] d75: the home no longer flashes black (owner: "The hub doesn't work. It flashes black screen and says command repeatedly")
+- Cause: about 14 s after the home opens, the deadline sweep runs each pillar in a hidden frame, and every storage write from those frames fired a "storage" event that the deck answered with render(true). Before d74 the home was cheap to redraw; since d74 it is the town, so each event tore it down and built its WebGL world again (155 rebuilds in one sweep, "Too many active WebGL contexts", the "Command" core coming back each time). The proofs missed it because they pin the clock, which skips the sweep.
+- Fix: a same-place refresh of the town on screen redraws only the weather chip (the town keeps its own clock and sky); storage events are batched (one refresh per burst, 400 ms) and a pillar's remembered tab (prometheus.tab.*) is ignored; the town hands its GPU context back when it closes. New proof TOWN-2 runs the real sweep on the home and fails if the town is rebuilt even once (it fails on d74 with 155, passes on d75 with 1). 20 trips between the town and System: no context warnings.
+
 ### [2026-11-24] The owner's briefing page (owner: "bring back the summaries ... a task list that I can check and tell you what to do next"; "include the entire prometheus-hub project and the titan project and all other tasks you could possible assist me with ... how to spend my tokens and guide you while updating me")
 - A private claude.ai page (link in CLAUDE.md): today's report, how to steer Claude and spend tokens (Quick / Round / Project), a card per project (the hub with all 27 pillars, Kin, Titan paused, Midas, the AI team), what else Claude can do with his Gmail, Calendar, Drive, Docs and Sheets, and a shared list of 26 tasks (his ticks, Next picks and notes are read back each round). d74.1 confirmed live: checks, Pages and proofs-live green.
 

@@ -72,6 +72,22 @@ with sync_playwright() as p:
     proof("TOWN-1", "The town lives on the real hour and the real weather: night after the place's sunset, day at noon, snow when the reading says snow, and the weather chip on the town reads the same; ?sky and ?wx pin a look",
           (nt["ph"] >= 0.75 or nt["ph"] < 0.25) and 0.4 < nn["ph"] < 0.6 and nt["snow"] > 0.3 and nn["snow"] > 0.3 and "28°" in nt["chip"] and "snow" in nt["chip"].lower() and abs(pn["ph"] - 0.76) < 0.01 and pn["rain"] > 0.5 and not badw,
           json.dumps(town) + ("; errors: " + " | ".join(badw) if badw else "")); ctw.close()
+    # TOWN-2 (owner, 2026-11-24: "The hub doesn't work. It flashes black screen and says command repeatedly"): the deadline sweep runs each
+    # pillar in a hidden frame, and every frame writes to storage; the town on screen rides that out without being torn down and rebuilt
+    cs2 = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US")
+    cs2.add_init_script("""(() => { window.__townGL = 0; window.__storageEvents = 0; const og = HTMLCanvasElement.prototype.getContext;
+      HTMLCanvasElement.prototype.getContext = function (k, o) { if (/webgl/.test(k) && this.classList.contains('rl-gl') && !this.__counted) { this.__counted = 1; window.__townGL++; } return og.call(this, k, o); };
+      addEventListener('storage', () => { window.__storageEvents++; }); })()""")
+    ps2 = cs2.new_page(); bs2 = []; ps2.on("pageerror", lambda e: bs2.append(str(e)[:120]))
+    if MOCK: ps2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); ps2.route("https://api.weather.gov/**", lambda route, request: route.abort()); ps2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+    ps2.goto(f"{URL}?sweep=now&home=orbit#/", wait_until="load"); ps2.wait_for_selector(".realm .rl-core", timeout=20000); ps2.evaluate("window.__core0 = document.querySelector('.rl-core')")
+    try: ps2.wait_for_function("!!(window.__deck && window.__deck.state.sweep)", timeout=120000)
+    except Exception: pass
+    ps2.wait_for_timeout(1500)
+    s2 = ps2.evaluate("() => { const c = document.querySelector('.rl-core'); return { townGL: window.__townGL, storageEvents: window.__storageEvents, sameTown: !!c && c === window.__core0 && c.isConnected, sweep: window.__deck.state.sweep || null, chip: !!document.querySelector('.wx-chip') }; }")
+    proof("TOWN-2", "The town stays up while the deadline sweep runs every pillar in a hidden frame: their storage writes never tear it down (one WebGL world, the same town node, the chip still there)",
+          s2["townGL"] == 1 and s2["sameTown"] and s2["chip"] and s2["sweep"] and s2["sweep"].get("ran", 0) > 0 and s2["storageEvents"] >= 1 and not bs2,
+          json.dumps(s2) + ("; errors: " + " | ".join(bs2) if bs2 else "")); cs2.close()
 
     # MENU-1: the home is a game menu (owner, 2026-11-16): every pillar a level, its own light, a live line, Today on top, the orbit and the briefing kept
     cm = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); pm = cm.new_page(); bm = []; pm.on("pageerror", lambda e: bm.append(str(e)[:120]))

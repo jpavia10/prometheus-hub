@@ -16,7 +16,7 @@ import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 
-export const BUILD = "d74";
+export const BUILD = "d75";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -32,11 +32,17 @@ export const ctx = {
 function parse(hash) { const p = (hash || "").replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent); return { cap: p[0] || "picture", tab: p[1] || "", arg: p[2] || "", key: p.join("/") }; }
 export function go(hash) { if (location.hash === hash) render(true); else location.hash = hash; }
 addEventListener("hashchange", () => render(false));
-addEventListener("pageshow", (e) => { if (e.persisted) render(true); });               // back from a pillar out of the browser's cache: rebuild the live view
+addEventListener("pageshow", (e) => { if (e.persisted) render(true, true); });               // back from a pillar out of the browser's cache: rebuild the live view
 
-async function render(same) {
+async function render(same, rebuild) {
   const r = parse(location.hash); const known = r.cap === "picture" || r.cap === "system" || cap(r.cap);
   if (!known) { location.replace("#/"); return; }
+  /* d75 (owner, 2026-11-24: "The hub doesn't work. It flashes black screen and says command repeatedly"): the town on screen keeps its
+     own clock and sky (realm.js), so a refresh of the same place (a storage event from a hidden pillar frame during the deadline sweep,
+     a store change, the sweep's end) must not tear it down and build its WebGL world again. Only the weather chip is redrawn. */
+  if (same && !rebuild && state.route && state.route.key === r.key && r.cap === "picture" && document.body.classList.contains("town-home") && state.cleanup) {
+    state.dirty = false; if (typeof state.cleanup.refresh === "function") { try { state.cleanup.refresh(); } catch (e) { console.warn("[deck] town refresh", e); } } drawDock(); drawRail(); return;
+  }
   const load = r.cap === "picture" ? import("./views/picture.js") : r.cap === "system" ? import("./views/system.js") : cap(r.cap).view();
   const mod = await load; const prev = state.route; const swap = () => {
     if (state.cleanup) { try { state.cleanup(); } catch (e) { console.error(e); } state.cleanup = null; }
@@ -306,7 +312,9 @@ async function boot() {
   keepData().then((k) => { state.kept = k; });
   if (params.get("demo") === "1" && store.pristine()) store.importFile(demoDeck(today(), state.fixed));
   syncBridges(store);
-  addEventListener("storage", () => { syncBridges(store); render(true); });
+  /* a hidden pillar frame (the deadline sweep) writes in bursts: one refresh per burst, and a page remembering its open tab is not news */
+  let storageT = 0;
+  addEventListener("storage", (e) => { if (e.key && e.key.startsWith("prometheus.tab.")) return; clearTimeout(storageT); storageT = setTimeout(() => { syncBridges(store); render(true); }, 400); });
   addEventListener("focus", () => { syncBridges(store); });
   document.addEventListener("pointermove", (e) => {
     const t = e.target && e.target.closest ? e.target.closest(".panel, .tile, .rx-read") : null;

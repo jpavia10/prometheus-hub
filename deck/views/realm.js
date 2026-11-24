@@ -305,7 +305,8 @@ export function realm(ctx) {
   el.fit = () => requestAnimationFrame(() => { fit(); requestAnimationFrame(() => { fit(); size(); wake(); }); });
   el.ready = ready;
   el.sky = () => ({ ...SK, target: { ...SKT } });
-  el.cleanup = () => { dead = true; clearInterval(skyTimer); cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt); };
+  el.cleanup = () => { dead = true; clearInterval(skyTimer); cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt);
+    try { if (gl && !gl.isContextLost()) { const lc = gl.getExtension("WEBGL_lose_context"); if (lc) lc.loseContext(); } } catch (e) { /* already gone */ } };   // hand the GPU context back: a phone holds only a few
   size();
   return el;
 }
