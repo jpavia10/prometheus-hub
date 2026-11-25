@@ -8,43 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Hephaestus Hearth right now.
 
 ## Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 3 open in this pillar.
 
 
-- HEA-GEM-32 · Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them · due 2026-12-08
-    make: hearth_gemini_deck-inspections_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every inspection listed.
+- HEA-GEM-33 · Hearth: the six deck inspections again, each with the code's own words (guard height is 36 in) · due 2026-12-04
+    make: hearth_gemini_deck-inspections-2_{YYYYMMDD-HHMM}.json · how many: 6 · done when: Six rows, every number quoted from its section.
+- HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies · due 2026-12-08
+    make: hearth_gemini_life-expectancy_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 rows.
+- HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law · due 2026-12-08
+    make: hearth_gemini_alarms_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 rows.
 
 ## Muse
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Hephaestus Hearth right now.
 
 ## ChatGPT
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Hephaestus Hearth right now.
 
 ## Argon
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Hephaestus Hearth right now.
 
 ## Hydrogen
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Hephaestus Hearth right now.

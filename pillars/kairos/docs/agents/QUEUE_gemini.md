@@ -2,48 +2,11 @@
 
 # Kairos Meridian · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. KAI-GEM-16 · Kairos: El Tejon Unified's 2027-28 calendar (when published) and Kern County's 2027 board meeting dates
-
-**Due:** 2026-12-08 · **State:** now
-
-**Why:** The 2027 holidays are in; the school year and the county board shape his weeks.
-
-**What it unlocks:** Kairos shows them on their days.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/kairos/
-
-**Do this:**
-1. The district calendar (first and last day, breaks, minimum days) and the Board of Supervisors 2027 meeting dates, from their own pages; if not published, say so with the page and date read.
-
-**Make:** `kairos_gemini_2027-school-board_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `what` (text): which
-- `date` (date): YYYY-MM-DD
-- `source_url` (url): the official page that shows the value
-- `checked` (date): the day you read it, YYYY-MM-DD
-
-**Done when:** Every published date.
-
-**How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
-
-**Not done (sent back) if:**
-- a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
-
-## 2. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+## 1. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 

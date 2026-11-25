@@ -2,120 +2,60 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HUB-GEM-22 · Hub: paint the town for every hour and every weather (the home is now the town)
+## 1. HUB-GEM-25 · Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24)
 
-**Due:** 2026-12-01 · **State:** now
+**Due:** 2026-12-06 · **State:** now
 
-**Why:** Owner, 2026-11-24: the home is a full-screen town with real-time weather and a day-night cycle. The town is drawn live in light and colour; painted versions of the same view at dawn, midday, golden hour, dusk and night, and in rain, fog and snow, make it photographic.
+**Why:** HUB-GEM-24 found real problems on the town and every one was fixed (d86). The four newest pillars have not been measured that way.
 
-**What it unlocks:** The home shows the painted town for the real hour and the real weather.
+**What it unlocks:** A fix list for the four newest pillars, measured not guessed.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/
-- https://jpavia10.github.io/prometheus-hub/art/worlds/world_home.webp (the town as it is now: keep its composition exactly)
+- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
+- /pillars/midas/
+- /pillars/atlas/
+- /pillars/aegis/
 
 **Do this:**
-1. Nano Banana Pro image edits of the home painting, same framing and layout, every building where it is: dawn, midday, golden hour, dusk, night (lit windows, stars), plus rain, fog, snow and storm versions of midday and night.
-2. 2560 px wide, webp, no text; one row per image.
+1. Open each at 384x832 and 412x915 in Chromium with WebGL.
+2. Measure: text contrast below 4.5:1, anything wider than the screen, tap targets under 44 px, overlapping text, console errors.
+3. One row per problem with the selector, the measured value and a screenshot file name; say 'none found' per pillar where none.
 
-**Make:** `hub_gemini_town-hours_{YYYYMMDD-HHMM}.json`
+**Make:** `hub_gemini_new-pillars-audit_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (number): 1 ...
-- `variant` (text): dawn, midday, golden, dusk, night, rain-day, rain-night, fog-day, fog-night, snow-day, snow-night, storm-night
-- `drive_id` (text): the image's file id
-- `prompt` (text): the exact prompt used
-
-**How many:** 12
-
-**Done when:** 12 variants, each aligned with the original (Claude overlays them).
-
-**How Claude checks it:**
-- Claude overlays each variant on the original: buildings must line up.
-
-**Not done (sent back) if:**
-- an image whose layout does not match the original
-- text or watermarks in the image
-
-## 2. HUB-GEM-23 · Hub: weather to scene: what the town shows for each weather code, by day and by night
-
-**Due:** 2026-12-01 · **State:** now
-
-**Why:** The town takes live weather from Open-Meteo (WMO weather codes). Each code needs a look and a sentence.
-
-**What it unlocks:** Every weather reads right in the town and the widget.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/
-- https://open-meteo.com/en/docs (WMO weather interpretation codes)
-
-**Do this:**
-1. For each WMO code Open-Meteo returns: the plain words, the sky (cloud cover, light), what falls (rain, drizzle, snow, hail) and how hard, visibility, and what changes by night.
-
-**Make:** `hub_gemini_weather-scenes_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
-
-**Every field, exactly:**
-- `n` (number): 1 ...
-- `code` (number): WMO code
-- `words` (text): plain words
-- `sky` (text): cloud and light
-- `falls` (text): what and how hard
-- `night` (text): what differs at night
-- `source_url` (url): Open-Meteo or WMO page
-
-**How many:** 28
-
-**Done when:** Every code Open-Meteo uses.
-
-**How Claude checks it:**
-- Claude checks the codes against Open-Meteo's table.
-
-**Not done (sent back) if:**
-- a code missing
-
-## 3. HUB-GEM-24 · Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800
-
-**Due:** 2026-12-01 · **State:** now
-
-**Why:** The home was rebuilt on 2026-11-24 (full-screen town, live day and night, weather, System tab). A real audit finds what the proofs miss.
-
-**What it unlocks:** The home has no cut-off label, no unreadable text, no dead tap.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/
-
-**Do this:**
-1. At both sizes: every label (cut off? overlapping?), every tap target (works? at least 44 px?), contrast of every text over the town at night and by day, the weather widget's values against Open-Meteo for the same place and hour, and the System tab's contents.
-
-**Make:** `hub_gemini_home-audit_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
-
-**Every field, exactly:**
-- `n` (number): 1 ...
-- `size` (text): 384x832 or 1280x800
-- `where` (text): the element
+- `n` (number): row
+- `pillar` (text): hearth, midas, atlas or aegis
+- `size` (text): 384x832 or 412x915
+- `where` (text): the selector
 - `problem` (text): what is wrong, measured
-- `severity` (text): P0, P1 or P2
+- `severity` (text): P0-P3
+- `screenshot` (text): file name in the same folder
 
-**Done when:** Both sizes audited, every finding measured.
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 20
+
+**Done when:** Every pillar measured at both sizes.
 
 **How Claude checks it:**
-- Claude reproduces five findings.
+- Claude reproduces every P0 and P1.
 
 **Not done (sent back) if:**
-- a finding without a measurement
+- a value without a source URL that shows it
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a problem not reproduced by its measurement

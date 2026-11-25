@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "apollo",
  "agents": [
   {
@@ -721,7 +721,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "The ids are in; the values are not. Each value from FDC's own API or page.",
      "unlocks": "Apollo can rank and total every food it knows.",
@@ -781,10 +781,12 @@
      ],
      "id": "APO-GEM-15",
      "title": "Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Your 120 FoodData Central ids (APO-GEM-13) are right as ids, but Apollo attaches an id to a food only where its shipped nutrients were reconciled with the same SR Legacy entry (the 10 Nov audit did this for the first 300). For 4 of yours the calories differ by more than 15% from the shipped food, so the id is probably another preparation. The candidates are in pillars/apollo/data/fdc-candidates.json.",
      "unlocks": "The ids attach to the foods with matching values, and Apollo can show each food's full nutrient panel.",
@@ -862,7 +864,8 @@
      "id": "APO-GEM-16",
      "title": "Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached",
      "due": "2026-12-04",
-     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
+     "closed": "2026-11-25"
     }
    ]
   },

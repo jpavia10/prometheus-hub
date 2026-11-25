@@ -2,48 +2,8 @@
 
 # Aether · Atmospheric & Field Lab · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. AET-GEM-18 · Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do
-
-**Due:** 2026-12-08 · **State:** now
-
-**Why:** The hub's home now shows live weather and will show live alerts; each alert type needs its severity, colour and plain words.
-
-**What it unlocks:** Alerts on the home and in Aether read like advice, not codes.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/aether/
-- api.weather.gov/alerts/types and the NWS directives (10-1703)
-
-**Do this:**
-1. Every NWS alert event type (list from api.weather.gov/alerts/types).
-2. For each: severity class, the NWS colour, one sentence of what to do in the mountains, and whether it has reached Kern County zones CAZ594/CAZ595/CAZ596 since 2021.
-
-**Make:** `aether_gemini_alert-types_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `event` (text): the event name exactly
-- `severity` (text): Extreme, Severe, Moderate or Minor
-- `color` (text): #RRGGBB from the NWS
-- `do` (text): one sentence
-- `kern` (boolean): issued for a Kern zone since 2021
-- `source_url` (url): the official page that shows the value
-- `checked` (date): the day you read it, YYYY-MM-DD
-
-**Done when:** Every alert type listed.
-
-**How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
-
-**Not done (sent back) if:**
-- a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+No homework for Gemini in Aether · Atmospheric & Field Lab right now. Check your HOMEWORK doc for the other pillars.

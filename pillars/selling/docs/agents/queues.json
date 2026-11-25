@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "selling",
  "agents": [
   {
@@ -579,7 +579,7 @@
      "review": "Scored 9/10 (#141)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Fees are in; a listing that misses a required specific is hidden.",
      "unlocks": "Selling fills every required field.",
@@ -643,7 +643,9 @@
      ],
      "id": "SEL-GEM-09",
      "title": "Selling: eBay's coin and bullion item specifics and photo rules, category by category",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
     }
    ]
   },

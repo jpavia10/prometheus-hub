@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "continuity",
  "agents": [
   {
@@ -684,7 +684,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Beneficiaries and the directive are in; the small-estate path is the most likely one.",
      "unlocks": "Continuity walks a survivor through it.",
@@ -743,7 +743,86 @@
      ],
      "id": "CON-GEM-11",
      "title": "Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "CON-GEM-12",
+     "title": "Continuity: Vanguard and Robinhood after a death, quoted from their own pages",
+     "due": "2026-12-04",
+     "why": "HUB-MUS-05: rows 22 and 23 quoted sentences their pages do not carry (Robinhood's page says the opposite about sending estate documents). Claude rewrote both rows to what the pages say in d86; they need a primary quote each.",
+     "unlocks": "Continuity's Accounts After Death tab shows a checked quote for every provider.",
+     "inputs": [
+      "pillars/continuity/legacy-policies.js rows 22 and 23 (live)",
+      "https://investor.vanguard.com",
+      "https://robinhood.com/us/en/support/"
+     ],
+     "steps": [
+      "For each provider, find the page that explains what happens to an account when the owner dies (beneficiaries, transfer on death, estate team).",
+      "Quote the sentence that says it, word for word, and give the steps the page lists."
+     ],
+     "deliver": {
+      "file": "continuity_gemini_vanguard-robinhood_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 2,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "22 or 23"
+      },
+      {
+       "name": "provider",
+       "type": "text",
+       "rule": "Vanguard or Robinhood"
+      },
+      {
+       "name": "feature",
+       "type": "text",
+       "rule": "what the page offers"
+      },
+      {
+       "name": "steps",
+       "type": "text",
+       "rule": "what a survivor does, as the page lists it"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Two rows, each quote on its page.",
+     "checks": [
+      "Muse re-reads both."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

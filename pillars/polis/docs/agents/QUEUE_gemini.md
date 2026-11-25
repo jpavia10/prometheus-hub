@@ -2,7 +2,7 @@
 
 # Polis · Civic & Legal Watch · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -57,57 +57,7 @@ Updated 2026-11-25 15:39 UTC · 3 open · Rules for every pillar: https://github
 - a file saved anywhere but the folder named here, or under another name
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-## 2. POL-GEM-07 · Polis: who decides things for Frazier Park and when they meet in 2027
-
-**Due:** 2027-01-15 · **State:** now
-
-**Why:** Polis lists Kern rules but not the meetings where they change.
-
-**What it unlocks:** Polis shows the next meeting that could touch Joseph's mountain: MAC, Board of Supervisors, Planning Commission.
-
-**Read first:**
-- kerncounty.com Board of Supervisors 2027 meeting calendar; Kern County Planning Commission; the Frazier Park Municipal Advisory Council (Mountain Communities MAC) pages; Supervisor District 4 (or the district that covers Frazier Park: say which)
-
-**Do this:**
-1. Every 2027 meeting date published so far for the Board of Supervisors, the Planning Commission and the mountain MAC: date, time, place, how to watch or comment, and the source URL. Name the supervisor and district for ZIP 93225 with the county's own district map page.
-
-**Make:** `polis_gemini_2027-meetings_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array of rows`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `body` (text): 
-- `date` (date): 
-- `time` (text): 
-- `place` (text): 
-- `how` (text): watch / comment
-- `url` (URL): 
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki mirror, reseller, or AI summary), or for photo tasks the Google Photos item you looked at.
-- [ ] Every quote is copied word for word from that page and is there now; keep each quote under 300 characters.
-- [ ] Every number has its unit in its own field; nothing is estimated unless the field says 'math' and shows the arithmetic.
-- [ ] No row is a copy of another with the names changed.
-- [ ] Run `node tools/kit/check_delivery.mjs <your file>` from a checkout of jpavia10/prometheus-hub if you can; every line must say PASS.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every published 2027 date for the three bodies, plus the district row.
-
-**How Claude checks it:**
-- Claude opens 5 URLs.
-
-**Not done (sent back) if:**
-- fewer rows than the count (where a count is set), or a row missing a field
-- a row copied from another row with the names changed
-- a URL that does not open, is a front page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens 10 rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' or 'not found' instead)
-
-## 3. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+## 2. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
 
 **Due:** 2027-01-20 · **State:** now
 

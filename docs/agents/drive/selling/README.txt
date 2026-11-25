@@ -8,45 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Selling Pipeline right now.
 
 ## Gemini
 
-Updated 2026-11-25 15:39 UTC · 2 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 1 open in this pillar.
 
 
-- SEL-GEM-09 · Selling: eBay's coin and bullion item specifics and photo rules, category by category · due 2026-12-08
-    make: selling_gemini_specifics_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every category.
 - SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
     make: selling_gemini_usps-2027_{YYYYMMDD-HHMM}.json · how many: 0 · done when: The same weights and zones as run 4, from the January 2027 notice.
 
 ## Muse
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Selling Pipeline right now.
 
 ## ChatGPT
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Selling Pipeline right now.
 
 ## Argon
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Selling Pipeline right now.
 
 ## Hydrogen
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Selling Pipeline right now.

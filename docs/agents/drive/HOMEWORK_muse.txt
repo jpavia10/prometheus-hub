@@ -1,6 +1,6 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-25 15:39 UTC. 17 to do across 6 pillars; 3 more delivered and waiting for their check (listed at the end: do not redo them).
+Updated 2026-11-25 17:13 UTC. 18 to do across 7 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -19,10 +19,11 @@ IN THIS ORDER:
 1. [Kin] KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
 2. [Kin] KIN-MUS-05 · Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615) · due 2026-12-01
 3. [Midas Ledger] MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
-4. [Kin] KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
-5. [Athenaeum · Idea Vault] ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15) · due 2026-12-10 · waits for its input file
-6. [Atlas · Work & Pay] ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules · due 2026-12-12 · waits for its input file
-7. [Aegis · Insurance & Cover] AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts · due 2026-12-12 · waits for its input file
+4. [Prometheus Hub] HUB-MUS-06 · One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files · due 2026-12-10
+5. [Kin] KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
+6. [Athenaeum · Idea Vault] ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15) · due 2026-12-10 · waits for its input file
+7. [Atlas · Work & Pay] ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules · due 2026-12-12 · waits for its input file
+8. [Aegis · Insurance & Cover] AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts · due 2026-12-12 · waits for its input file
 
 ==================== 1. KIN ====================
 ## 1. KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17)
@@ -172,8 +173,53 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 4. KIN ====================
-## 4. KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)
+==================== 4. PROMETHEUS HUB ====================
+## 4. HUB-MUS-06 · One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files
+
+**Due:** 2026-12-10 · **State:** now
+
+**What it unlocks:** Every run-8 file is accepted or sent back before it is built into a pillar.
+
+**Read first:**
+- Gemini's run-8 files in the hub incoming folder: aether alert-types, apollo nutrients-120 and fdc-values, argus takeout-cases, bastion routes, continuity small-estate, foundry showcase, garage schedule and ca-fees-2027, hermes senders, icarus 2027-auctions-cpi, kairos 2027-school-board, money hardship, mythos copyright-2, observatory freshness, odyssey city-cards, polis 2027-meetings, privacy google, records vital-records, selling specifics, hearth deck-inspections
+
+**Do this:**
+1. For each file, pick 2 rows at random (say how), open the URL and check every value in the row against the page.
+2. Agree or differ per row, with what you found; a file is REJECT if any row differs, with the fix list.
+
+**Make:** `hub_muse_second-read-run8_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `file` (text): the Gemini file
+- `row` (number): n
+- `verdict` (text): agree or differ
+- `found` (text): what the page says
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 44
+
+**Done when:** 44 rows read, a verdict per file.
+
+**How Claude checks it:**
+- Claude spot-checks 4 of your rows.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 5. KIN ====================
+## 5. KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)
 
 **Due:** 2026-12-06 · **State:** next (starts when the file it checks is in the folder)
 
@@ -225,8 +271,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 5. ATHENAEUM · IDEA VAULT ====================
-## 5. ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15)
+==================== 6. ATHENAEUM · IDEA VAULT ====================
+## 6. ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15)
 
 **Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
 
@@ -270,8 +316,8 @@ IN THIS ORDER:
 - an entry already in the dataset
 - rows missing to reach the count
 
-==================== 6. ATLAS · WORK & PAY ====================
-## 6. ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules
+==================== 7. ATLAS · WORK & PAY ====================
+## 7. ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules
 
 **Due:** 2026-12-12 · **State:** next (starts when the file it checks is in the folder)
 
@@ -302,8 +348,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a verdict without the page it came from
 
-==================== 7. AEGIS · INSURANCE & COVER ====================
-## 7. AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts
+==================== 8. AEGIS · INSURANCE & COVER ====================
+## 8. AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts
 
 **Due:** 2026-12-12 · **State:** next (starts when the file it checks is in the folder)
 
@@ -333,9 +379,3 @@ IN THIS ORDER:
 
 **Not done (sent back) if:** (and the rules at the top)
 - a verdict without the page it came from
-
-
-DELIVERED, WAITING FOR THEIR CHECK (do not redo these; if a check needs a redo, the task comes back above with the reason):
-- [Prometheus Hub] HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · delivered 2026-11-25: hub_muse_second-read_20261125-0525.md in hub incoming (Drive 12tGrTyMYuFAJ-lqNktUjriZPyKjPFyWU); 39 rows, 30 agree / 9 differ, 7 ACCEPT / 6 
-- [Kin] KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · delivered 2026-11-25: kin_muse_lineage-blind-1919_20261125-0524.json in hub incoming (Drive 1dbsMlMQ-l_3RHkQzgf7QC-Tdm3uT1qst); six 1917-1919 documents transcribe
-- [Kin] KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · delivered 2026-11-25: kin_muse_lineage-1950-blind_20261125-0530.json in hub incoming (Drive 1jG4Alcvy3L97adbNb1fCSCqObkVZlqM9); four 1950 households transcribed b

@@ -2,46 +2,57 @@
 
 # Bastion · Mountain Prep · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. BAS-GEM-15 · Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history
+## 1. BAS-GEM-16 · Bastion: fix the shelters quote (row 3) and the Avalon transmitter's coverage (row 9)
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-03 · **State:** now
 
-**Why:** The evacuation zones are in (BAS-GEM-13); the roads out are not.
+**Why:** HUB-MUS-05: shelters row 3's quote is a run of menu labels, only the first on the page; weather-radio row 9 says Avalon (WNG584) covers Los Angeles County ALL, the NWS listing says EXTREME WEST.
 
-**What it unlocks:** Bastion shows the routes and which one to take.
+**What it unlocks:** Bastion's shelter and weather-radio panels go live with every row checked.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/bastion/
+- bastion_gemini_shelters_20261121-1131.json
+- bastion_gemini_weather-radio_20261121-1129.json
+- https://www.weather.gov/nwr/counties
 
 **Do this:**
-1. Each road out (I-5 north and south, Frazier Mountain Park Rd, Lockwood Valley Rd, Cerro Noroeste, Mil Potrero...): where it goes, what closes it, closures since 2021 with dates, and the alternate.
+1. Shelters row 3: quote one real sentence from the Kern page, or keep the negative finding and quote the page's own words that show no warming center is listed.
+2. Weather radio row 9: set covers to what the NWS county listing says for WNG584 and quote that line.
 
-**Make:** `bastion_gemini_routes_{YYYYMMDD-HHMM}.json`
+**Make:** `bastion_gemini_shelters-radio-fix_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `road` (text): name
-- `from_to` (text): from and to
-- `closes_for` (text): what closes it
-- `closures` (text): dates since 2021
-- `alternate` (text): the other way
-- `source_url` (url): the official page that shows the value
+- `n` (number): 3 (shelters) or 9 (radio)
+- `file` (text): shelters or weather-radio
+- `field` (text): the field you changed
+- `value` (text): the corrected value
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
 - `checked` (date): the day you read it, YYYY-MM-DD
 
-**Done when:** Every road out listed.
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 2
+
+**Done when:** Both rows corrected with quotes on the page.
 
 **How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
+- Muse re-reads both.
 
 **Not done (sent back) if:**
 - a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

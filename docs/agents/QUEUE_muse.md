@@ -2,61 +2,52 @@
 
 # Prometheus Hub · homework for Muse
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies
+## 1. HUB-MUS-06 · One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files
 
-**Due:** 2026-12-07 · **State:** delivered 2026-11-25, waiting for its check: do not redo it unless a review reopens it
+**Due:** 2026-12-10 · **State:** now
 
-**Why:** Joseph keeps Muse to a modest load from now on (2026-11-23). Instead of 28 separate checks, one sitting covers the files where a wrong number could cost money or safety. Until a second reader agrees, Claude keeps these rows marked 'not second-read' in the pillars.
+**Why:** Run 8 delivered 22 pillar datasets whose sources Claude's container cannot open. Your HUB-MUS-05 pass (39 rows, 9 real differences) is the model.
 
-**What it unlocks:** Claude marks each file second-read (or fixes the rows you find wrong) and builds the rest into its pillar.
+**What it unlocks:** Every run-8 file is accepted or sent back before it is built into a pillar.
 
 **Read first:**
-- Each file is in 'Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/' (some in the pillar's own incoming folder): search Drive for the file name.
-- The rows to check (chosen by Claude at random, so nobody picks the easy ones):
-- money_gemini_issuer-pricing_20261121-1136.json: rows n = 10, 11, 13
-- aether_gemini_psps-fall2026_20261121-1123.json: rows n = 9, 11, 15
-- bastion_gemini_shelters_20261121-1131.json: rows n = 3, 5, 8
-- bastion_gemini_weather-radio_20261121-1129.json: rows n = 5, 6, 9
-- bastion_gemini_kit-items_20261118-1940.json: rows n = 12, 13, 21
-- continuity_gemini_kern-tod-recording_20261121-1130.json: rows n = 1, 2, 11
-- records_gemini_tx-to-ca_20261121-1210.json: rows n = 12, 16, 19
-- apollo_gemini_nutrient-targets_20261121-1223.json: rows n = 2, 12, 13
-- hearth_gemini_kern-design-criteria_20261121-1117.json: rows n = 4, 7, 10
-- privacy_gemini_s24-hardening_20261121-1205.json: rows n = 4, 18, 48
-- privacy_gemini_optouts_20261121-1116.json: rows n = 3, 6, 11
-- garage_gemini_lights_20261121-1215.json: rows n = 43, 47, 60
-- Continuity's three account policies nobody could open last time (TikTok, Vanguard, Robinhood): https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/legacy-policies.js rows n 19, 22, 23.
+- Gemini's run-8 files in the hub incoming folder: aether alert-types, apollo nutrients-120 and fdc-values, argus takeout-cases, bastion routes, continuity small-estate, foundry showcase, garage schedule and ca-fees-2027, hermes senders, icarus 2027-auctions-cpi, kairos 2027-school-board, money hardship, mythos copyright-2, observatory freshness, odyssey city-cards, polis 2027-meetings, privacy google, records vital-records, selling specifics, hearth deck-inspections
 
 **Do this:**
-1. For each listed row open the URL it cites. Is the value, and the quote word for word, on that page today? Write agree, or what the page says instead.
-2. For the three Continuity rows also check set_up_now and after_death against the page.
-3. Give each file one line: ACCEPT (Claude may build on it) or REJECT, with why.
+1. For each file, pick 2 rows at random (say how), open the URL and check every value in the row against the page.
+2. Agree or differ per row, with what you found; a file is REJECT if any row differs, with the fix list.
 
-**Make:** `hub_muse_second-read_{YYYYMMDD-HHMM}.md`
+**Make:** `hub_muse_second-read-run8_{YYYYMMDD-HHMM}.md`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `one markdown file: a section per Gemini file (its name, ACCEPT/REJECT), then a table: row | Gemini says | what I found | URL | agree/differ`
+**Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `agree/differ` (text): per row
+- `file` (text): the Gemini file
+- `row` (number): n
+- `verdict` (text): agree or differ
+- `found` (text): what the page says
 
 **Before you save, check every one of these yourself:**
-- [ ] Every row you mark agree, you opened its page today and saw the value there.
-- [ ] Every 'differ' quotes the page's own words.
-- [ ] 39 rows: 36 from the twelve files and the 3 Continuity policies.
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
 
-**How many:** 39
+**How many:** 44
 
-**Done when:** All 39 rows read and every file has ACCEPT or REJECT.
+**Done when:** 44 rows read, a verdict per file.
 
 **How Claude checks it:**
-- Claude opens 5 of your rows at random.
+- Claude spot-checks 4 of your rows.
 
 **Not done (sent back) if:**
-- a row marked agree whose page does not say it
-- a file without a verdict
+- a value without a source URL that shows it
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

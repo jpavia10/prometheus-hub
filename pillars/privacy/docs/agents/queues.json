@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "privacy",
  "agents": [
   {
@@ -1051,7 +1051,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Amazon is done; Google holds the most.",
      "unlocks": "Privacy gives a full Google checklist.",
@@ -1110,7 +1110,79 @@
      ],
      "id": "PRI-GEM-15",
      "title": "Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "PRI-GEM-16",
+     "title": "Privacy: Galaxy S24 'Maximum restrictions' row 4, only what Samsung says it does",
+     "due": "2026-12-03",
+     "why": "HUB-MUS-05: row 4 lists blocking 2G and Wi-Fi auto-reconnect under Auto Blocker's Maximum restrictions; the Knox page it cites does not.",
+     "unlocks": "The S24 hardening list can be built into Privacy.",
+     "inputs": [
+      "privacy_gemini_s24-hardening_20261121-1205.json"
+     ],
+     "steps": [
+      "Read Samsung's own page for Auto Blocker Maximum restrictions.",
+      "List exactly what it says the setting does and costs; drop anything it does not say, or cite the Samsung page that does."
+     ],
+     "deliver": {
+      "file": "privacy_gemini_s24-row4-fix_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "4"
+      },
+      {
+       "name": "does",
+       "type": "text list",
+       "rule": "only what the page lists"
+      },
+      {
+       "name": "cost",
+       "type": "text list",
+       "rule": "only what the page lists"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Row 4 matches its page.",
+     "checks": [
+      "Muse re-reads it."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

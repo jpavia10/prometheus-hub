@@ -8,43 +8,42 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Records · Paper Killer right now.
 
 ## Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
-- REC-GEM-12 · Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait) · due 2026-12-08
-    make: records_gemini_vital-records_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All four states, three record types each.
+No homework for Gemini in Records · Paper Killer right now.
 
 ## Muse
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Records · Paper Killer right now.
 
 ## ChatGPT
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Records · Paper Killer right now.
 
 ## Argon
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Records · Paper Killer right now.
 
 ## Hydrogen
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Records · Paper Killer right now.

@@ -8,102 +8,54 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Kin right now.
 
 ## Gemini
 
-Updated 2026-11-25 15:39 UTC · 26 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 4 open in this pillar.
 
 
-- KIN-GEM-15 · Kin, Ancestry hints: every hint on the Pavia line, read and decided (pavia) · due 2026-12-01
-    make: kin_gemini_hints-pavia_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every hint on every person of the line read and decided, with the tree edits listed.
-- KIN-GEM-16 · Kin, Ancestry hints: every hint on the Kirkland line, read and decided (kirkland) · due 2026-12-01
-    make: kin_gemini_hints-kirkland_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every hint on every person of the line read and decided, with the tree edits listed.
-- KIN-GEM-17 · Kin, Ancestry hints: every hint on the Sanders line, read and decided (sanders) · due 2026-12-01
-    make: kin_gemini_hints-sanders_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every hint on every person of the line read and decided, with the tree edits listed.
-- KIN-GEM-18 · Kin, Ancestry hints: every hint on the Seconder-Termenas line, read and decided (seconder-termenas) · due 2026-12-01
-    make: kin_gemini_hints-termenas_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every hint on every person of the line read and decided, with the tree edits listed.
-- KIN-GEM-28 · Kin: the 1950 census households of Barbara and Della Rimsha, Joseph and Grace Pavia, and the Sanders families, transcribed whole (Q19, Q26) · due 2026-12-01
-    make: kin_gemini_lineage-1950_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All four households transcribed whole from the images, with ED, sheet and line, and the identity argued.
-- KIN-GEM-35 · Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35) · due 2026-12-01
-    make: kin_gemini_lineage-brooklyn-1922_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-GEM-36 · Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16) · due 2026-12-03
-    make: kin_gemini_lineage-bivens-will_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-GEM-37 · Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17) · due 2026-12-03
-    make: kin_gemini_lineage-dar-stone-pulliam_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-GEM-19 · Kin, certainty-scored pedigree: the Pavia line as far back as the records go · due 2026-12-05
-    make: kin_gemini_pedigree-pavia_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.
-- KIN-GEM-20 · Kin, certainty-scored pedigree: the Kirkland line as far back as the records go · due 2026-12-05
-    make: kin_gemini_pedigree-kirkland_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.
-- KIN-GEM-21 · Kin, certainty-scored pedigree: the Sanders line as far back as the records go · due 2026-12-05
-    make: kin_gemini_pedigree-sanders_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.
-- KIN-GEM-22 · Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go · due 2026-12-05
-    make: kin_gemini_pedigree-termenas_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every branch of the line followed to its last supported generation, every link scored with its records, the false online links listed.
-- KIN-GEM-29 · Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26) · due 2026-12-05
-    make: kin_gemini_lineage-pavia_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-GEM-30 · Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27) · due 2026-12-05
-    make: kin_gemini_lineage-della-2_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Della's second marriage, death and parents found with records, or every place searched listed.
-- KIN-GEM-38 · Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897) · due 2026-12-05
-    make: kin_gemini_lineage-pavia-birth_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-GEM-39 · Kin: Wesley Davis and Henrietta, in records (Monroe County, TN) · due 2026-12-05
-    make: kin_gemini_lineage-davis-giles_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-GEM-40 · Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9) · due 2026-12-05
-    make: kin_gemini_lineage-arrival-aug-1912_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-GEM-23 · Kin, the family album: 75 photographs and documents of the Pavia line, each one identified · due 2026-12-08
-    make: kin_gemini_album-pavia_{YYYYMMDD-HHMM}.json · how many: 75 · done when: 75 images saved and identified, none a duplicate, every portrait argued.
-- KIN-GEM-24 · Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified · due 2026-12-08
-    make: kin_gemini_album-kirkland_{YYYYMMDD-HHMM}.json · how many: 75 · done when: 75 images saved and identified, none a duplicate, every portrait argued.
-- KIN-GEM-25 · Kin, the family album: 75 photographs and documents of the Sanders line, each one identified · due 2026-12-08
-    make: kin_gemini_album-sanders_{YYYYMMDD-HHMM}.json · how many: 75 · done when: 75 images saved and identified, none a duplicate, every portrait argued.
-- KIN-GEM-26 · Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified · due 2026-12-08
-    make: kin_gemini_album-termenas_{YYYYMMDD-HHMM}.json · how many: 75 · done when: 75 images saved and identified, none a duplicate, every portrait argued.
-- KIN-GEM-27 · Kin: the Ancestry tree's change log: every edit you make, with its source · due 2026-12-08
-    make: kin_gemini_ancestry-changelog_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every edit made during the trial is listed, each with its source.
-- KIN-GEM-31 · Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1) · due 2026-12-08
-    make: kin_gemini_lineage-crossing_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Both pages transcribed, the brother found or searched, the August arrivals searched, C9 argued.
-- KIN-GEM-32 · Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25) · due 2026-12-08
-    make: kin_gemini_lineage-seconder_{YYYYMMDD-HHMM}.json · how many: 0 · done when: H9 argued from records: Laurie's birth, her parents' marriage, Robert's records.
-- KIN-GEM-33 · Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30) · due 2026-12-08
-    make: kin_gemini_lineage-sanders_{YYYYMMDD-HHMM}.json · how many: 0 · done when: The marriage and 1950 household found with records, or every search listed.
-- KIN-GEM-34 · Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32) · due 2026-12-10
-    make: kin_gemini_lineage-records-south_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Each named record found and transcribed, or searched and listed.
+- KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line · due 2026-12-08
+    make: kin_gemini_album-family_{YYYYMMDD-HHMM}.json · how many: 40 · done when: Every row an image of the family or its own records, each argued.
+- KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records · due 2026-12-10
+    make: kin_gemini_sanders-candidates_{YYYYMMDD-HHMM}.json · how many: 12 · done when: Every search logged, each couple with a verdict.
+- KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books · due 2026-12-12
+    make: kin_gemini_malta-parish_{YYYYMMDD-HHMM}.json · how many: 10 · done when: Both baptisms found or every search logged.
+- KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900 · due 2026-12-12
+    make: kin_gemini_trys-births_{YYYYMMDD-HHMM}.json · how many: 16 · done when: Every year 1885-1900 read and logged.
 
 ## Muse
 
-Updated 2026-11-25 15:39 UTC · 5 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 3 open in this pillar.
 
 
 - KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
     make: kin_muse_lineage-recheck-c15-c17_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
 - KIN-MUS-05 · Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615) · due 2026-12-01
     make: kin_muse_lineage-brooklyn-certificate_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · due 2026-12-08 · DELIVERED 2026-11-25, waiting for its check (do not redo)
-    make: kin_muse_lineage-blind-1919_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All six documents transcribed whole and compared, every difference listed.
 - KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
     make: kin_muse_lineage-second-read-bivens-dar_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · due 2026-12-10 · DELIVERED 2026-11-25, waiting for its check (do not redo)
-    make: kin_muse_lineage-1950-blind_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every household line transcribed blind.
 
 ## ChatGPT
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Kin right now.
 
 ## Argon
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Kin right now.
 
 ## Hydrogen
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Kin right now.

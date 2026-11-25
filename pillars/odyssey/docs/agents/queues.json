@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "odyssey",
  "agents": [
   {
@@ -2488,7 +2488,7 @@
      "review": "Withdrawn 2026-11-24: every trip has its photos now (Claude checked your run-7 picks by eye and put 26 into the six newer trips). Replaced by ODY-GEM-29 (more picks for the five thinnest trips) and ODY-GEM-30 (cards for the new stops)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Every trip has photos now, but five open on one to three: Michigan May 2023 (1), Michigan June 2022 (2), Mammoth Lakes Sep 2022 (2), the Mexico cruise Aug 2019 (3) and Metro Detroit Jan 2020 (3). A trip file reads as a journey from about six.",
      "unlocks": "Each of the five trips opens on a full photo journey, a few per day.",
@@ -2564,10 +2564,12 @@
      ],
      "id": "ODY-GEM-29",
      "title": "Odyssey: more of the best photos for the five trips that open on three or fewer",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Your run-7 cards are in (49 now). The six newer trips' stops have none yet; Long Beach already has yours.",
      "unlocks": "Every stop on those six trips opens its card.",
@@ -2679,7 +2681,9 @@
      ],
      "id": "ODY-GEM-30",
      "title": "Odyssey: a city card for each of the 13 new stops on the six newer trips",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
     }
    ]
   },

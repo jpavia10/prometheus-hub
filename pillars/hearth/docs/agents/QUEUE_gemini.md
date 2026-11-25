@@ -2,44 +2,159 @@
 
 # Hephaestus Hearth · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. HEA-GEM-32 · Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them
+## 1. HEA-GEM-33 · Hearth: the six deck inspections again, each with the code's own words (guard height is 36 in)
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
-**Why:** Fee, finish and members are in; the inspections are the path to a legal deck.
+**Why:** Run 8 (HEA-GEM-32): row 5 says guards must be 42 in 'per CRC R312.1.2'; the residential code asks for 36 in (42 in is the commercial code). None of the six rows quotes its source.
 
-**What it unlocks:** Hearth turns the deck into a checklist that passes.
+**What it unlocks:** Hearth's deck renovation shows the inspection checklist the county will use.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/hearth/
+- hearth_gemini_deck-inspections_20261125-0432.json
+- https://codes.iccsafe.org/content/CARC2025P1
 
 **Do this:**
-1. Each inspection Kern County requires for a residential deck, what is checked at each, how to request it, and the common failures, from the county's own pages and the CRC.
+1. Keep the six inspections in order.
+2. For each check that names a number (footing depth, guard height, opening size, ledger fasteners), quote the CRC section that sets it.
+3. Correct the guard height.
 
-**Make:** `hearth_gemini_deck-inspections_{YYYYMMDD-HHMM}.json`
+**Make:** `hearth_gemini_deck-inspections-2_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `inspection` (text): which
-- `checks` (text): what the inspector looks at
-- `book` (text): how to request it
-- `source_url` (url): the official page that shows the value
+- `n` (number): 1-6
+- `inspection` (text): its name
+- `checks` (text): what the inspector checks
+- `code` (text): the CRC sections
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
 - `checked` (date): the day you read it, YYYY-MM-DD
 
-**Done when:** Every inspection listed.
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 6
+
+**Done when:** Six rows, every number quoted from its section.
 
 **How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
+- Claude checks the guard height and two more numbers against the CRC text.
 
 **Not done (sent back) if:**
 - a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 2. HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Hearth now tracks every room's appliances and furniture with their value; it should also say when each is near the end of its life.
+
+**What it unlocks:** Each asset in Hearth shows its expected life and the years left.
+
+**Read first:**
+- NAHB/Bank of America 'Study of Life Expectancy of Home Components'
+- InterNACHI's life expectancy chart
+- manufacturers' own pages where they state a life
+
+**Do this:**
+1. 40 component categories that appear in a home (refrigerator, range, dishwasher, washer, dryer, water heater tank and tankless, furnace, heat pump, roof by material, deck by material, windows, garage door opener and so on).
+2. The expected life in years as the source states it (a range is fine).
+
+**Make:** `hearth_gemini_life-expectancy_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `component` (text): as named
+- `years` (text): life as stated, e.g. 10-13
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 40
+
+**Done when:** 40 rows.
+
+**How Claude checks it:**
+- Claude checks 8 against the study.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 3. HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Hearth's rooms each need their safety checks; California law says where smoke and CO alarms go (bedrooms, hallways, each level) and what kind.
+
+**What it unlocks:** Each room in Hearth shows the alarms it should have.
+
+**Read first:**
+- California Health and Safety Code 13113.7 and 17926
+- California Residential Code R314, R315
+- CAL FIRE / State Fire Marshal pages
+
+**Do this:**
+1. One row per rule: where an alarm is required, what type (10-year sealed battery, hardwired, interconnected), and when it applies (sale, remodel, permit).
+2. Quote the section.
+
+**Make:** `hearth_gemini_alarms_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `where` (text): the room or place
+- `requirement` (text): what is required
+- `when` (text): when it applies
+- `section` (text): the code section
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 12
+
+**Done when:** 12 rows.
+
+**How Claude checks it:**
+- Claude checks every section number.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

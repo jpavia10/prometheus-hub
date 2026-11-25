@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "kin",
  "agents": [
   {
@@ -1432,7 +1432,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).",
      "unlocks": "Each person's facts move from 'compiled tree' to 'record'; the certainty of each link rises or falls with a reason; Joseph's own Ancestry tree carries the sources.",
@@ -1528,10 +1528,12 @@
      ],
      "id": "KIN-GEM-15",
      "title": "Kin, Ancestry hints: every hint on the Pavia line, read and decided (pavia)",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).",
      "unlocks": "Each person's facts move from 'compiled tree' to 'record'; the certainty of each link rises or falls with a reason; Joseph's own Ancestry tree carries the sources.",
@@ -1627,10 +1629,12 @@
      ],
      "id": "KIN-GEM-16",
      "title": "Kin, Ancestry hints: every hint on the Kirkland line, read and decided (kirkland)",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.",
      "unlocks": "Each person's facts move from 'compiled tree' to 'record'; the certainty of each link rises or falls with a reason; Joseph's own Ancestry tree carries the sources.",
@@ -1726,10 +1730,12 @@
      ],
      "id": "KIN-GEM-17",
      "title": "Kin, Ancestry hints: every hint on the Sanders line, read and decided (sanders)",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: use the Ancestry trial as much as possible, using the hints. This task works every hint on your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).",
      "unlocks": "Each person's facts move from 'compiled tree' to 'record'; the certainty of each link rises or falls with a reason; Joseph's own Ancestry tree carries the sources.",
@@ -1825,10 +1831,12 @@
      ],
      "id": "KIN-GEM-18",
      "title": "Kin, Ancestry hints: every hint on the Seconder-Termenas line, read and decided (seconder-termenas)",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).",
      "unlocks": "The tree gains every generation the records support, each link with an honest percentage; the false links online are named so nobody adds them.",
@@ -1923,10 +1931,12 @@
      ],
      "id": "KIN-GEM-19",
      "title": "Kin, certainty-scored pedigree: the Pavia line as far back as the records go",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).",
      "unlocks": "The tree gains every generation the records support, each link with an honest percentage; the false links online are named so nobody adds them.",
@@ -2021,10 +2031,12 @@
      ],
      "id": "KIN-GEM-20",
      "title": "Kin, certainty-scored pedigree: the Kirkland line as far back as the records go",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.",
      "unlocks": "The tree gains every generation the records support, each link with an honest percentage; the false links online are named so nobody adds them.",
@@ -2119,10 +2131,12 @@
      ],
      "id": "KIN-GEM-21",
      "title": "Kin, certainty-scored pedigree: the Sanders line as far back as the records go",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: 'attempt to track my lineage as far back as possible with percentages for certainty'. This is your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).",
      "unlocks": "The tree gains every generation the records support, each link with an honest percentage; the false links online are named so nobody adds them.",
@@ -2217,10 +2231,12 @@
      ],
      "id": "KIN-GEM-22",
      "title": "Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your father's father's line: Francis Joseph Pavia (1939-2018), his parents Joseph Pavia (b. about 1899) and Grace (b. about 1911), his siblings Caroline Dembeck and Charles P. Pavia, and everyone above them (C13: who Grace was).",
      "unlocks": "Faces on the tree's medallions (only where verified), records beside each person, the places they lived on the globe.",
@@ -2310,10 +2326,12 @@
      ],
      "id": "KIN-GEM-23",
      "title": "Kin, the family album: 75 photographs and documents of the Pavia line, each one identified",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 75 rows, but 68 (Pavia), 71 (Sanders) and 70 (Termenas) are maps and town pictures from Wikimedia Commons; the family's own images are asked for again in KIN-GEM-41. Score in #205."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your father's mother's line: Glenda Kirkland, Buster Kirkland and Joy Moss, and every line above them (Kirkland, Moss, Culberson, Tippens, Williams, Giles, Davis, Bryant, Martin, Bivens, Turner, Pulliam, Stone).",
      "unlocks": "Faces on the tree's medallions (only where verified), records beside each person, the places they lived on the globe.",
@@ -2403,10 +2421,12 @@
      ],
      "id": "KIN-GEM-24",
      "title": "Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 75 real family images (portraits, group photos, headstones, documents), 8 place images. Score in #205."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your mother's father's line: Charles A. Sanders (b. about 1953), his parents Charles Sanders and Betty Flemming (or Fleming), and above.",
      "unlocks": "Faces on the tree's medallions (only where verified), records beside each person, the places they lived on the globe.",
@@ -2496,10 +2516,12 @@
      ],
      "id": "KIN-GEM-25",
      "title": "Kin, the family album: 75 photographs and documents of the Sanders line, each one identified",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 75 rows, but 68 (Pavia), 71 (Sanders) and 70 (Termenas) are maps and town pictures from Wikimedia Commons; the family's own images are asked for again in KIN-GEM-41. Score in #205."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: 'I asked it for hundreds of photos and historical documents'. 75 per line, 300 in all, for your mother's mother's line: Laurie Seconder, Bob Seconder, Barbara (Termens) Feole, Joseph Termenas and Della Matukaitis, Della's parents, and above (H9, H10, C9).",
      "unlocks": "Faces on the tree's medallions (only where verified), records beside each person, the places they lived on the globe.",
@@ -2589,10 +2611,12 @@
      ],
      "id": "KIN-GEM-26",
      "title": "Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 75 rows, but 68 (Pavia), 71 (Sanders) and 70 (Termenas) are maps and town pictures from Wikimedia Commons; the family's own images are asked for again in KIN-GEM-41. Score in #205."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner: 'Updating my profile and adding and editing details.' Every edit to his tree must be traceable.",
      "unlocks": "The tree's links move from compiled trees to records; the certainties follow.",
@@ -2684,10 +2708,12 @@
      ],
      "id": "KIN-GEM-27",
      "title": "Kin: the Ancestry tree's change log: every edit you make, with its source",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "The 1950 census index put Barbara (16) with her mother Della E. Rimsha in Detroit; the image itself names every household member, their ages, birthplaces and the street. The Pavia and Sanders households of 1950 are already in the archive as images.",
      "unlocks": "The tree's links move from compiled trees to records; the certainties follow.",
@@ -2805,10 +2831,12 @@
      ],
      "id": "KIN-GEM-28",
      "title": "Kin: the 1950 census households of Barbara and Della Rimsha, Joseph and Grace Pavia, and the Sanders families, transcribed whole (Q19, Q26)",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): the 1950 sheet (ED 85-1439, sheet 75, lines 9-10) read by Claude at full size, and by Muse blind (KIN-MUS-03): Barbara J. Termens, 17, daughter in Della E. Rimsha's household. C10 proven in d86. Score 10/10 (#203)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Francis's parents are Joseph and Grace by the 1940 census and his siblings' obituaries; one tree says Lucrezia Calleja. The Social Security applications of their children name the mother in full.",
      "unlocks": "The tree's links move from compiled trees to records; the certainties follow.",
@@ -2926,10 +2954,12 @@
      ],
      "id": "KIN-GEM-29",
      "title": "Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Della E. Rimsha in 1950: she remarried after Joseph died in 1935. Her later records name her parents, her birth date and place, and close her life.",
      "unlocks": "The tree's links move from compiled trees to records; the certainties follow.",
@@ -3046,10 +3076,12 @@
      ],
      "id": "KIN-GEM-30",
      "title": "Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Your run-7 find (FamilySearch JJRH-VNB) goes to Cambridge to a brother Jsidor, with a father Kazmierz in Kowno; Joseph later lived in Cambridge. His petition swore 23 Aug 1912. The identity has to be argued in full before the tree can say which ship.",
      "unlocks": "The tree's links move from compiled trees to records; the certainties follow.",
@@ -3167,10 +3199,12 @@
      ],
      "id": "KIN-GEM-31",
      "title": "Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Gemini rated H9 97% from the rarity of the surname; Claude 60% because no record ties this Robert to Laurie. Her birth record and her parents' marriage decide it.",
      "unlocks": "The tree's links move from compiled trees to records; the certainties follow.",
@@ -3288,10 +3322,12 @@
      ],
      "id": "KIN-GEM-32",
      "title": "Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Toni's father Charles A. Sanders (b. about 1953) is known from the family; his parents are named only on a family tree photograph. Nothing yet ties them to a record.",
      "unlocks": "The tree's links move from compiled trees to records; the certainties follow.",
@@ -3408,10 +3444,12 @@
      ],
      "id": "KIN-GEM-33",
      "title": "Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "The Kirkland, Bivens, Culberson, Tippens and Bryant links rest on compiled trees and blogs. Their own records exist: censuses, marriages, wills, the Eastern Cherokee applications.",
      "unlocks": "The tree's links move from compiled trees to records; the certainties follow.",
@@ -3528,10 +3566,12 @@
      ],
      "id": "KIN-GEM-34",
      "title": "Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)",
-     "due": "2026-12-10"
+     "due": "2026-12-10",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Joseph Termena's parents (Rozys Termens and Kostantina Giadraet) and Della's (Michael Malkitus and Eva Vaschaushos) come from one index entry, FamilySearch record 1:1:Q2C2-FQ1P, that only you have read. The 1935 death certificate says Unknown for both of his. Muse found neither name anywhere else and calls them leads (conflict C15).",
      "unlocks": "C15 settles: the names become possible-with-a-citation or are dropped; the certainty of Joseph's and Della's parent links follows.",
@@ -3648,10 +3688,12 @@
      ],
      "id": "KIN-GEM-35",
      "title": "Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35)",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "The tree makes Benjamin Bivens (about 1777) a son of Nathaniel (1726). Muse reports that Nathaniel's will, signed 9 May 1816 and transcribed on WikiTree Bivens-138, names ten children and no Benjamin. Claude cannot open WikiTree from its session.",
      "unlocks": "C16 settles; the Benjamin link (now 45%) rises or is cut, and the line above Benjamin is re-aimed.",
@@ -3768,10 +3810,12 @@
      ],
      "id": "KIN-GEM-36",
      "title": "Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16)",
-     "due": "2026-12-03"
+     "due": "2026-12-03",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "The tree says James Pulliam married Elizabeth Allen Stone, Richard Stone's daughter, on the strength of a will abstract. Muse read DAR's records live: A092129 gives James born about 1736 and his wife Elizabeth Allen (no Stone); A110255 for Richard Stone carries a DAR warning, names his wife Mary Smith and lists no daughter Elizabeth. Claude cannot open DAR's site.",
      "unlocks": "C17 settles; Elizabeth's link (now 65%) and Susannah Pulliam's (60%) rise or fall.",
@@ -3888,10 +3932,12 @@
      ],
      "id": "KIN-GEM-37",
      "title": "Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17)",
-     "due": "2026-12-03"
+     "due": "2026-12-03",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Your wave-4 file gives two birth dates for Joseph Pavia: 12 February 1897 (his 1942 draft card) and 2 December 1897 (the Michigan death index). The tree now prefers the draft card; the original images decide.",
      "unlocks": "Joseph Pavia's birth date is settled, and the Malta search can start from it.",
@@ -4008,10 +4054,12 @@
      ],
      "id": "KIN-GEM-38",
      "title": "Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Henrietta 'Hettie' Davis (born about 1829) is Wesley Davis's daughter only in compiled trees; Muse found no record for the link. Her 1847 marriage to James Madison Giles is the load-bearing join.",
      "unlocks": "Henrietta's link (now 60%) moves to records or is marked unproven.",
@@ -4128,10 +4176,12 @@
      ],
      "id": "KIN-GEM-39",
      "title": "Kin: Wesley Davis and Henrietta, in records (Monroe County, TN)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "His sworn 1919 petition gives Hamburg about 13 August and New York 23 August 1912, the ship read as 'Columbia'. The great-uncle's second candidate is Kaiserin Auguste Victoria (Hamburg 14 Aug, New York 24 Aug). Nobody has searched the manifests of those two days.",
      "unlocks": "C9 settles; the manifest names his last residence and nearest relative in Lithuania, which aims the Telšiai parish search.",
@@ -4248,7 +4298,334 @@
      ],
      "id": "KIN-GEM-40",
      "title": "Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "KIN-GEM-41",
+     "title": "Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line",
+     "due": "2026-12-08",
+     "why": "Run 8: the Pavia, Sanders and Termenas albums reached 75 rows with 68, 71 and 70 maps and town pictures from Wikimedia Commons. Kirkland's album shows what is wanted: portraits, group photos, headstones, documents.",
+     "unlocks": "Kin's person pages show real pictures of the people, not of their towns.",
+     "inputs": [
+      "kin_gemini_album-kirkland_20261124-2100.json (the model)",
+      "Drive: Kin tree / Photos & Scans",
+      "Ancestry tree 192482486 (member photos), Find a Grave, Legacy.com, NARA, FamilySearch"
+     ],
+     "steps": [
+      "Only images of the people or of their own records, houses, graves and churches; no generic maps or skylines.",
+      "As many as truly exist, up to 40 per line; fewer is fine and better than filler.",
+      "For every portrait: who uploaded or labelled it, when, and why it is that person."
+     ],
+     "deliver": {
+      "file": "kin_gemini_album-family_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 40,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "line",
+       "type": "text",
+       "rule": "pavia, sanders or termenas"
+      },
+      {
+       "name": "person_ids",
+       "type": "text",
+       "rule": "P- ids"
+      },
+      {
+       "name": "type",
+       "type": "text",
+       "rule": "portrait / group photo / headstone / record image / document / house / church"
+      },
+      {
+       "name": "shows",
+       "type": "text",
+       "rule": "what it shows"
+      },
+      {
+       "name": "why_this_person",
+       "type": "text",
+       "rule": "the identity argument"
+      },
+      {
+       "name": "date",
+       "type": "text",
+       "rule": "when"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "where it is"
+      },
+      {
+       "name": "drive_file",
+       "type": "text",
+       "rule": "the saved copy in Drive"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every row an image of the family or its own records, each argued.",
+     "checks": [
+      "Claude opens 10 at random."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "a map, skyline or generic town picture"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "KIN-GEM-42",
+     "title": "Kin: the Sanders candidates (A and B in 1950), settled with records",
+     "due": "2026-12-10",
+     "why": "Run 8: the Sanders album and hints leave two 1950 couples, Charles D. and Elizabeth M. (Wayne, ED 82-264) and Charles L. and Elizabeth M. (Dearborn, ED 84-92), at 20% and 25%. Muse's blind read (KIN-MUS-03) transcribed both households.",
+     "unlocks": "The Sanders line gets its grandparents or an honest 'not this couple'.",
+     "inputs": [
+      "kin_gemini_hints-sanders_20261124-2125.json",
+      "kin_muse_lineage-1950-blind_20261125-0530.json",
+      "https://1950census.archives.gov",
+      "Michigan marriage and birth indexes (Michiganology, FamilySearch)"
+     ],
+     "steps": [
+      "For each candidate couple, find their marriage, the births of their children, and their deaths or obituaries.",
+      "Compare at least three identifiers with what the family knows of Charles A. Sanders (b. about 1953, Michigan).",
+      "End with a verdict per couple: proven, likely, unlikely or ruled out, with the records behind it."
+     ],
+     "deliver": {
+      "file": "kin_gemini_sanders-candidates_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "candidate",
+       "type": "text",
+       "rule": "A or B"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "what it is"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the entry word for word"
+      },
+      {
+       "name": "identifiers",
+       "type": "text",
+       "rule": "names, dates, places compared"
+      },
+      {
+       "name": "verdict",
+       "type": "text",
+       "rule": "for the summary rows"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the record"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every search logged, each couple with a verdict.",
+     "checks": [
+      "Claude reads the census pages; Muse re-reads the verdicts."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "addresses of living people, phone numbers or people-search sites"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "KIN-GEM-43",
+     "title": "Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books",
+     "due": "2026-12-12",
+     "why": "The Pavias came from Malta (1950 census: Joseph 52 and Grace M. 40, both born in Malta). Joseph Pavia's birth is 12 Feb or 2 Dec 1897 (draft card vs death index); Lucrezia Calleja married him in 1926.",
+     "unlocks": "The Pavia line crosses the sea: parents and parishes in Malta.",
+     "inputs": [
+      "pillars/kin/lineage/data.js (P- ids for Joseph Pavia and Lucrezia Calleja)",
+      "FamilySearch: Malta, Catholic Church records",
+      "the Public Registry Malta and the parish archives' own pages"
+     ],
+     "steps": [
+      "Search the Malta Catholic parish registers for Joseph Pavia's baptism (1897) and Lucrezia Calleja's, and for their parents' marriages.",
+      "Transcribe every entry found word for word (Latin or Maltese as written, then English).",
+      "Log every search that found nothing."
+     ],
+     "deliver": {
+      "file": "kin_gemini_malta-parish_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find or search"
+      },
+      {
+       "name": "person_id",
+       "type": "text",
+       "rule": "P- id or new"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "baptism / marriage / death"
+      },
+      {
+       "name": "parish",
+       "type": "text",
+       "rule": "parish and town"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "word for word, then translated"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the image or index page"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Both baptisms found or every search logged.",
+     "checks": [
+      "Claude reads any image that opens; Muse second-reads."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "KIN-GEM-44",
+     "title": "Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900",
+     "due": "2026-12-12",
+     "why": "The Telšiai 1893 scan found no Joseph Termenas (run 7); Muse found Leon Anton Termenas, b. 1888 in Tryškiai, a probable cousin. The next parish to read is Tryškiai.",
+     "unlocks": "Joseph Michael Termenas (b. 16 May 1893) gets his baptism and parents, or a parish ruled out.",
+     "inputs": [
+      "https://www.epaveldas.lt",
+      "LVIA metrical books index",
+      "pillars/kin/lineage/data.js (conflicts C9, C15)"
+     ],
+     "steps": [
+      "Read the Tryškiai Roman Catholic births for 1885-1900 page by page for Termenas / Terminas / Tirmonas spellings.",
+      "Transcribe every Termenas entry found (Russian or Polish as written, then English).",
+      "Log every year and page range read."
+     ],
+     "deliver": {
+      "file": "kin_gemini_trys-births_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 16,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find or search"
+      },
+      {
+       "name": "year",
+       "type": "number",
+       "rule": "the register year"
+      },
+      {
+       "name": "pages",
+       "type": "text",
+       "rule": "pages read"
+      },
+      {
+       "name": "entry",
+       "type": "text",
+       "rule": "entry number"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "as written, then English"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the image"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every year 1885-1900 read and logged.",
+     "checks": [
+      "Claude reads every find at full size."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },
@@ -4380,7 +4757,7 @@
      "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "A transcription read by one reader is a single witness. A second reader, working blind, is how genealogy catches misreadings (the eyes, the height, the service number in C4-C6 came from exactly that).",
      "unlocks": "Every field of the 1917-1919 records on the tree is read twice; disagreements become conflicts the tree shows.",
@@ -4504,10 +4881,12 @@
      ],
      "id": "KIN-MUS-02",
      "title": "Kin lineage: a blind second transcription of the six 1917-1919 documents",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): blind reads of the 1917-19 papers and the four 1950 households; both agree with Gemini on every name, age and relation, every difference argued. Score 10/10 (#209)."
     },
     {
-     "state": "next",
+     "state": "done",
      "added": "2026-11-24",
      "why": "A second, independent reading of the four 1950 households that KIN-GEM-28 transcribes: differences become conflicts (the method's section 6).",
      "unlocks": "The 1950 lines become proven or corrected.",
@@ -4623,7 +5002,9 @@
      ],
      "id": "KIN-MUS-03",
      "title": "Kin: second reader on the 1950 census households (blind)",
-     "due": "2026-12-10"
+     "due": "2026-12-10",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): blind reads of the 1917-19 papers and the four 1950 households; both agree with Gemini on every name, age and relation, every difference argued. Score 10/10 (#209)."
     },
     {
      "state": "now",

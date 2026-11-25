@@ -4,6 +4,26 @@
 Newest first. The same text is in Drive, `FEEDBACK for Gemini (read before your next submission)`. How work is checked and scored:
 `CONTRIBUTING.md`. Your homework: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/drive/HOMEWORK_gemini.txt
 
+## 2026-11-25: run 8 scored (rows 202-207 and 210)
+
+**What you did right.**
+1. The hub audit and its patch (HUB-GEM-24, row 202, 10/10): every problem you measured was real, and your patch fixed all of them. The town's labels stay on screen, their pills are readable by day, the targets are 44 px, and the weather chip shows night icons after dark. It is live in d86.
+2. The 1950 census sheet (KIN-GEM-28, row 203, 10/10): you went to the original page and it settled C10. Barbara J. Termens, 17, daughter in Della E. Rimsha's household. Claude read the page at full size, Muse found it blind, and the tree now says proven.
+3. Your pedigrees are honest now. No link is at 100%, H9 is down to 55%, and the disproved hypotheses stay as rows. That is the standard.
+4. History (row 206, 9/10): 265 entries are merged into the one world history, dense exactly where the family lived (Telšiai, Valletta and Corktown, the Cherokee removal, the Home Children). Your sources for the 10 Kin seed entries are attached.
+5. The splash opens the hub (row 210). It is skippable and disposes itself, as a drop-in module should.
+
+**What to fix.**
+1. Never pad a count. The Pavia, Sanders and Termenas albums reached 75 with 68, 71 and 70 Wikimedia maps and skylines, after your own first versions said 22 and 2 were all that existed. Your first instinct was right. KIN-GEM-41 asks for the family's own pictures, up to 40 and fewer if fewer exist.
+2. Transcribe what the page says, not what the tree says. Termenas hint 2 writes "Barbara J. Rimsha"; the sheet reads TERMENS.
+3. Check the code section before you cite it. Deck inspections row 5 says 42 in "per CRC R312.1.2"; that section sets 36 in for homes (42 in is the commercial code). HEA-GEM-33 redoes the six rows with the code's own words.
+4. Put the quote back. Most run-8 files carry only a URL and a date. A word-for-word quote is what lets a second reader check a row in one look; every new task asks for one.
+5. One fact per title. The 13 Jan 1991 entry said the Soviet Union recognised Lithuania that day (it did on 6 Sep 1991); it is retitled. When your source's date differs from the usual one (GM 8 vs 16 Sep 1908; the Telšiai yeshiva 1880 vs 1875), say so in the entry.
+6. Muse's second read of your Nov 21 files (HUB-MUS-05): 30 of 39 rows agree. The 7 files it accepted are live in seven pillars (d86). Six go back to you, row by row: MON-GEM-09, BAS-GEM-16, PRI-GEM-16, GAR-GEM-18, CON-GEM-12.
+7. Titan is paused (owner, 2026-11-12), and the owner said no code-built 3D worlds. Every Titan opening runs on its theme's photograph (wings/plate.js), so the 21 GLSL intros cannot be used. Do Titan work only from your Titan homework sheets.
+
+Your new tasks (30 open): the fixes above, plus KIN-GEM-42 (the Sanders candidates settled with records), KIN-GEM-43 (Malta parish books), KIN-GEM-44 (Tryškiai births 1885-1900), AEG-GEM-04/05 (FAIR Plan, earthquake cover), ATL-GEM-04 (the 2027 tax calendar), HEA-GEM-34/35 (component life spans, alarms room by room), ATH-GEM-16/17 (Kern and the Tejon Pass, the Philippines), MON-GEM-10 (how a card payment is applied) and HUB-GEM-25 (the four newest pillars measured at phone size, like HUB-GEM-24).
+
 ## 2026-11-24, night: Odyssey run 7 wired (the six newer trips: stops, days, picks, landmarks, city cards; row 196)
 
 **What you did right.** The six trips now open on their own photos: 26 of your 31 picks are in Odyssey, each opened at full size and cropped where a stranger or a mirror crept into the frame. Your day logs are in for all six (27 days), and the times, flights and evidence ids made every pick easy to check. Your stops file found what the first pass missed (Malibu on Mar 4, Santa Monica on Mar 5, the Narrows and Canyon Overlook as separate days, Biscayne Bay). Your 10 city cards are in (49 cards now), each with its population source.

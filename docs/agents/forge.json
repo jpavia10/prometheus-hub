@@ -1,6 +1,6 @@
 {
- "built": "2026-11-25T15:39:30Z",
- "checked": "2026-11-25T15:39:30Z",
+ "built": "2026-11-25T17:13:54Z",
+ "checked": "2026-11-25T17:13:54Z",
  "version": 2,
  "today": "2026-11-25",
  "sources": {
@@ -19,47 +19,47 @@
    "synced": "2026-11-25T05:37:41Z"
   },
   "titan_scores": 179,
-  "hub_scores": 216,
+  "hub_scores": 225,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 94,
+  "todo": 53,
   "late": 2,
-  "due7": 20,
-  "delivered": 3,
+  "due7": 10,
+  "delivered": 0,
   "queued": 9,
   "withdrawn": 183
  },
  "per": {
   "Gemini": {
-   "todo": 78,
+   "todo": 36,
    "late": 0,
-   "due7": 13,
+   "due7": 3,
    "delivered": 0,
    "queued": 2,
-   "done7": 176,
+   "done7": 237,
    "withdrawn": 69,
-   "items": 1145,
+   "items": 470,
    "floor": 50,
    "by": {
-    "hub": 74,
+    "hub": 32,
     "titan": 3,
     "tproj": 1,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 284,
-    "avg": 8.21,
-    "last10": 8.3,
+    "n": 291,
+    "avg": 8.22,
+    "last10": 8.5,
     "last": {
      "ai": "Gemini",
-     "n": 201,
-     "date": "2026-11-24",
-     "what": "kin_gemini_ancestry-wave4-breakthroughs_20261124.json",
-     "task": "none (owner)",
+     "n": 210,
+     "date": "2026-11-25",
+     "what": "supplemental: hub_gemini_aaa-splash-intro-module_20261124-2030.js, the preview HTML, spec and three stills",
+     "task": "none (owner: \"Gemini made a new intro splash i dont see that yet\")",
      "where": "Prometheus Hub",
-     "score": 7.0
+     "score": 9.0
     }
    }
   },
@@ -96,34 +96,34 @@
    }
   },
   "Muse": {
-   "todo": 8,
+   "todo": 9,
    "late": 0,
    "due7": 6,
-   "delivered": 3,
+   "delivered": 0,
    "queued": 5,
-   "done7": 8,
+   "done7": 11,
    "withdrawn": 44,
-   "items": 67,
+   "items": 111,
    "floor": 3,
    "by": {
-    "hub": 3,
+    "hub": 4,
     "titan": 3,
     "tproj": 2,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 62,
-    "avg": 8.53,
-    "last10": 9.2,
+    "n": 64,
+    "avg": 8.58,
+    "last10": 9.3,
     "last": {
      "ai": "Muse",
-     "n": 200,
-     "date": "2026-11-24",
-     "what": "Kin record pulls: Kin — Sebastian Record Pulls for Claude Review, Pull 1 — Pavia–Kirkland Marriage, Pull 2 — Termena 1922 Marriage, Pull 3 — Termena Passenger M",
-     "task": "none (owner)",
+     "n": 209,
+     "date": "2026-11-25",
+     "what": "kin_muse_lineage-blind-1919_20261125-0524.json, kin_muse_lineage-1950-blind_20261125-0530.json",
+     "task": "KIN-MUS-02, KIN-MUS-03",
      "where": "Prometheus Hub",
-     "score": 7.0
+     "score": 10.0
     }
    }
   },
@@ -264,69 +264,42 @@
  },
  "places": {
   "Prometheus Hub": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1,
+    "Muse": 1
+   }
+  },
+  "Kairos Meridian": {
+   "todo": 1,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1
+   }
+  },
+  "Hephaestus Hearth": {
    "todo": 3,
-   "delivered": 1,
+   "delivered": 0,
    "by": {
     "Gemini": 3
    }
   },
-  "Kairos Meridian": {
-   "todo": 2,
-   "delivered": 0,
-   "by": {
-    "Gemini": 2
-   }
-  },
-  "Hephaestus Hearth": {
+  "Garage": {
    "todo": 1,
    "delivered": 0,
    "by": {
     "Gemini": 1
-   }
-  },
-  "Garage": {
-   "todo": 2,
-   "delivered": 0,
-   "by": {
-    "Gemini": 2
-   }
-  },
-  "Apollo Temple": {
-   "todo": 2,
-   "delivered": 0,
-   "by": {
-    "Gemini": 2
    }
   },
   "Money": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
-  "Selling Pipeline": {
    "todo": 2,
    "delivered": 0,
    "by": {
     "Gemini": 2
    }
   },
-  "Records": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
-  "Icarus Stake": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
-  "Hermes Post": {
+  "Selling Pipeline": {
    "todo": 1,
    "delivered": 0,
    "by": {
@@ -341,13 +314,6 @@
    }
   },
   "Athenaeum": {
-   "todo": 9,
-   "delivered": 0,
-   "by": {
-    "Gemini": 9
-   }
-  },
-  "Odyssey": {
    "todo": 2,
    "delivered": 0,
    "by": {
@@ -361,13 +327,6 @@
     "Gemini": 1
    }
   },
-  "Argus Album": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
   "Ludus Arcade": {
    "todo": 1,
    "delivered": 0,
@@ -375,54 +334,19 @@
     "Gemini": 1
    }
   },
-  "Forge": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
-  "Foundry": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
-  "Observatory": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
   "Kin": {
-   "todo": 28,
-   "delivered": 2,
+   "todo": 6,
+   "delivered": 0,
    "by": {
-    "Gemini": 26,
+    "Gemini": 4,
     "Muse": 2
    }
   },
-  "Aether": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
   "Polis": {
-   "todo": 3,
+   "todo": 2,
    "delivered": 0,
    "by": {
-    "Gemini": 3
-   }
-  },
-  "Mythos": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
+    "Gemini": 2
    }
   },
   "Continuity": {
@@ -433,17 +357,17 @@
    }
   },
   "Atlas": {
-   "todo": 3,
+   "todo": 4,
    "delivered": 0,
    "by": {
-    "Gemini": 3
+    "Gemini": 4
    }
   },
   "Aegis": {
-   "todo": 3,
+   "todo": 5,
    "delivered": 0,
    "by": {
-    "Gemini": 3
+    "Gemini": 5
    }
   },
   "Midas Ledger": {
@@ -472,7 +396,62 @@
     "Argon": 1
    }
   },
+  "Apollo Temple": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Records": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Icarus Stake": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Hermes Post": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
   "Bossa Piano Studio": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Odyssey": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Argus Album": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Forge": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Foundry": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Observatory": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Aether": {
+   "todo": 0,
+   "delivered": 0,
+   "by": {}
+  },
+  "Mythos": {
    "todo": 0,
    "delivered": 0,
    "by": {}
@@ -1304,11 +1283,11 @@
    "pid": "hub",
    "id": "HUB-GEM-22",
    "title": "Hub: paint the town for every hour and every weather (the home is now the town)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 12,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 12 hour plates delivered as 2560x1086 WebP in Drive; they are reviewed when the town's painting is next changed. Score in #202.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1335,11 +1314,11 @@
    "pid": "hub",
    "id": "HUB-GEM-23",
    "title": "Hub: weather to scene: what the town shows for each weather code, by day and by night",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 28,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): the audit's findings were real (spire contrast, daytime labels, edge clipping, sub-44 px targets, wxchip night icons) and Gemini's patch fixed them in d86; the weather scenes cover all 28 WMO codes Open-Meteo returns. Score 10/10 (#202).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1365,11 +1344,11 @@
    "pid": "hub",
    "id": "HUB-GEM-24",
    "title": "Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): the audit's findings were real (spire contrast, daytime labels, edge clipping, sub-44 px targets, wxchip night icons) and Gemini's patch fixed them in d86; the weather scenes cover all 28 WMO codes Open-Meteo returns. Score 10/10 (#202).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1383,6 +1362,38 @@
     "done": "Both sizes audited, every finding measured.",
     "checks": [
      "Claude reproduces five findings."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-25",
+   "title": "Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24)",
+   "status": "todo",
+   "due": "2026-12-06",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "HUB-GEM-24 found real problems on the town and every one was fixed (d86). The four newest pillars have not been measured that way.",
+    "steps": [
+     "Open each at 384x832 and 412x915 in Chromium with WebGL.",
+     "Measure: text contrast below 4.5:1, anything wider than the screen, tap targets under 44 px, overlapping text, console errors.",
+     "One row per problem with the selector, the measured value and a screenshot file name; say 'none found' per pillar where none."
+    ],
+    "make": "hub_gemini_new-pillars-audit_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every pillar measured at both sizes.",
+    "checks": [
+     "Claude reproduces every P0 and P1."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
    },
@@ -1524,17 +1535,13 @@
    "pid": "hub",
    "id": "HUB-MUS-05",
    "title": "One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies",
-   "status": "delivered",
+   "status": "done",
    "due": "2026-12-07",
    "items": 39,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 39 rows opened, 30 agree and 9 differ, every differ with its fix; the 7 accepted files are live in d86 and the 6 rejected go back to Gemini. Score 10/10 (#208).",
    "reopened": "",
-   "delivered": {
-    "what": "hub_muse_second-read_20261125-0525.md in hub incoming (Drive 12tGrTyMYuFAJ-lqNktUjriZPyKjPFyWU); 39 rows, 30 agree / 9 differ, 7 ACCEPT / 6 REJECT",
-    "by": "muse",
-    "ts": "2026-11-25T05:31:31Z"
-   },
+   "delivered": null,
    "detail": {
     "why": "Joseph keeps Muse to a modest load from now on (2026-11-23). Instead of 28 separate checks, one sitting covers the files where a wrong number could cost money or safety. Until a second reader agrees, Claude keeps these rows marked 'not second-read' in the pillars.",
     "steps": [
@@ -1548,6 +1555,37 @@
     "done": "All 39 rows read and every file has ACCEPT or REJECT.",
     "checks": [
      "Claude opens 5 of your rows at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-MUS-06",
+   "title": "One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 44,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Run 8 delivered 22 pillar datasets whose sources Claude's container cannot open. Your HUB-MUS-05 pass (39 rows, 9 real differences) is the model.",
+    "steps": [
+     "For each file, pick 2 rows at random (say how), open the URL and check every value in the row against the page.",
+     "Agree or differ per row, with what you found; a file is REJECT if any row differs, with the fix list."
+    ],
+    "make": "hub_muse_second-read-run8_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "44 rows read, a verdict per file.",
+    "checks": [
+     "Claude spot-checks 4 of your rows."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_muse.md"
    },
@@ -2098,11 +2136,11 @@
    "pid": "kairos",
    "id": "KAI-GEM-16",
    "title": "Kairos: El Tejon Unified's 2027-28 calendar (when published) and Kern County's 2027 board meeting dates",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3182,11 +3220,11 @@
    "pid": "hearth",
    "id": "HEA-GEM-32",
    "title": "Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): six inspections in order, but row 5 says guards must be 42 in 'per CRC R312.1.2'; that section asks for 36 in (42 in is the commercial code). Fix in HEA-GEM-33. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -3200,6 +3238,100 @@
     "done": "Every inspection listed.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hephaestus Hearth",
+   "pid": "hearth",
+   "id": "HEA-GEM-33",
+   "title": "Hearth: the six deck inspections again, each with the code's own words (guard height is 36 in)",
+   "status": "todo",
+   "due": "2026-12-04",
+   "items": 6,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Run 8 (HEA-GEM-32): row 5 says guards must be 42 in 'per CRC R312.1.2'; the residential code asks for 36 in (42 in is the commercial code). None of the six rows quotes its source.",
+    "steps": [
+     "Keep the six inspections in order.",
+     "For each check that names a number (footing depth, guard height, opening size, ledger fasteners), quote the CRC section that sets it.",
+     "Correct the guard height."
+    ],
+    "make": "hearth_gemini_deck-inspections-2_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Six rows, every number quoted from its section.",
+    "checks": [
+     "Claude checks the guard height and two more numbers against the CRC text."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hephaestus Hearth",
+   "pid": "hearth",
+   "id": "HEA-GEM-34",
+   "title": "Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 40,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Hearth now tracks every room's appliances and furniture with their value; it should also say when each is near the end of its life.",
+    "steps": [
+     "40 component categories that appear in a home (refrigerator, range, dishwasher, washer, dryer, water heater tank and tankless, furnace, heat pump, roof by material, deck by material, windows, garage door opener and so on).",
+     "The expected life in years as the source states it (a range is fine)."
+    ],
+    "make": "hearth_gemini_life-expectancy_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "40 rows.",
+    "checks": [
+     "Claude checks 8 against the study."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hephaestus Hearth",
+   "pid": "hearth",
+   "id": "HEA-GEM-35",
+   "title": "Hearth: smoke and carbon monoxide alarms room by room under California law",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Hearth's rooms each need their safety checks; California law says where smoke and CO alarms go (bedrooms, hallways, each level) and what kind.",
+    "steps": [
+     "One row per rule: where an alarm is required, what type (10-year sealed battery, hardwired, interconnected), and when it applies (sale, remodel, permit).",
+     "Quote the section."
+    ],
+    "make": "hearth_gemini_alarms_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "12 rows.",
+    "checks": [
+     "Claude checks every section number."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
    },
@@ -3876,11 +4008,11 @@
    "pid": "garage",
    "id": "GAR-GEM-13",
    "title": "Garage: DMV's 2027 fee amounts after the January 1 adjustment",
-   "status": "todo",
+   "status": "done",
    "due": "2027-01-10",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4000,11 +4132,11 @@
    "pid": "garage",
    "id": "GAR-GEM-17",
    "title": "Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4018,6 +4150,37 @@
     "done": "Every item from both manuals.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Garage",
+   "pid": "garage",
+   "id": "GAR-GEM-18",
+   "title": "Garage: the Sorento's Intelligent Speed Limit Assist light (row 43) from a stable manual link",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 1,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "HUB-MUS-05: row 43 cites a Kia portal pop-up with no document id; the citation can never open.",
+    "steps": [
+     "Find the 2025 Sorento Hybrid owner's manual as a stable PDF or page on kia.com or owners.kia.com.",
+     "Quote the ISLA indicator line and give its page number."
+    ],
+    "make": "garage_gemini_lights-row43-fix_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Row 43 opens and matches.",
+    "checks": [
+     "Muse re-reads it."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
    },
@@ -4729,11 +4892,11 @@
    "pid": "apollo",
    "id": "APO-GEM-15",
    "title": "Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 120,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -4759,11 +4922,11 @@
    "pid": "apollo",
    "id": "APO-GEM-16",
    "title": "Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-04",
    "items": 120,
-   "closed": "",
-   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -5170,11 +5333,11 @@
    "pid": "money",
    "id": "MON-GEM-08",
    "title": "Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -5188,6 +5351,69 @@
     "done": "Every issuer.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/money/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Money",
+   "pid": "money",
+   "id": "MON-GEM-09",
+   "title": "Money: fix the two issuer-pricing rows Muse could not match (Discover it APR, the FNBO card)",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 2,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Muse's second read (HUB-MUS-05, 25 Nov): row 11's APR is not on the Discover page it cites; row 13 prices FNBO GreenSelect under the Greenlight Family Cash name.",
+    "steps": [
+     "Row 11: find the Discover page or cardmember agreement that prints the purchase APR range and quote it.",
+     "Row 13: either retitle the row FNBO GreenSelect (its numbers are right for that card) or find the Greenlight Family Cash card's own published terms.",
+     "Send only the two corrected rows, numbered 11 and 13."
+    ],
+    "make": "money_gemini_issuer-pricing-fix_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Both rows source-matched.",
+    "checks": [
+     "Claude and Muse open both URLs and find the quotes."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/money/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Money",
+   "pid": "money",
+   "id": "MON-GEM-10",
+   "title": "Money: how a card payment is applied (CARD Act, Regulation Z 1026.53)",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Midas's payoff plan assumes the amount above the minimum goes to the highest-APR balance first; that is the CARD Act rule, and its exceptions (deferred interest in the last two cycles) change the plan.",
+    "steps": [
+     "Every rule in 1026.53 and its official commentary that decides where a payment goes: the minimum, the excess, deferred-interest balances, the last two billing cycles, consumer requests.",
+     "One row per rule with a worked example in the commentary's own words where it gives one."
+    ],
+    "make": "money_gemini_payment-allocation_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "12 rows.",
+    "checks": [
+     "Claude turns each into a test of the payoff engine."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/money/docs/agents/QUEUE_gemini.md"
    },
@@ -5610,11 +5836,11 @@
    "pid": "selling",
    "id": "SEL-GEM-09",
    "title": "Selling: eBay's coin and bullion item specifics and photo rules, category by category",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6142,11 +6368,11 @@
    "pid": "records",
    "id": "REC-GEM-12",
    "title": "Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -6775,11 +7001,11 @@
    "pid": "icarus",
    "id": "ICA-GEM-15",
    "title": "Icarus: the 2027 Treasury auction schedule (2-, 10- and 30-year) and the 2027 CPI and jobs report dates",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -7407,11 +7633,11 @@
    "pid": "hermes",
    "id": "HER-GEM-15",
    "title": "Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8413,11 +8639,11 @@
    "pid": "bastion",
    "id": "BAS-GEM-15",
    "title": "Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8431,6 +8657,37 @@
     "done": "Every road out listed.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/bastion/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Bastion",
+   "pid": "bastion",
+   "id": "BAS-GEM-16",
+   "title": "Bastion: fix the shelters quote (row 3) and the Avalon transmitter's coverage (row 9)",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 2,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "HUB-MUS-05: shelters row 3's quote is a run of menu labels, only the first on the page; weather-radio row 9 says Avalon (WNG584) covers Los Angeles County ALL, the NWS listing says EXTREME WEST.",
+    "steps": [
+     "Shelters row 3: quote one real sentence from the Kern page, or keep the negative finding and quote the page's own words that show no warming center is listed.",
+     "Weather radio row 9: set covers to what the NWS county listing says for WNG584 and quote that line."
+    ],
+    "make": "bastion_gemini_shelters-radio-fix_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Both rows corrected with quotes on the page.",
+    "checks": [
+     "Muse re-reads both."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/bastion/docs/agents/QUEUE_gemini.md"
    },
@@ -8825,11 +9082,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-07",
    "title": "Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 20,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 20 family-era chains; they join Kin's person pages with the lineage wiring. Score in #206.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8855,11 +9112,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-08",
    "title": "History: source the 10 Kin entries that have none (1904-1941)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-11-30",
    "items": 10,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8887,11 +9144,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-09",
    "title": "History: Lithuania and the Russian Empire, 1795-1991 (40 entries)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-03",
    "items": 40,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8920,11 +9177,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-10",
    "title": "History: Malta, 1798-1979 (30 entries)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-03",
    "items": 30,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8953,11 +9210,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-11",
    "title": "History: Detroit and Michigan, 1890-2010 (40 entries)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-04",
    "items": 40,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8986,11 +9243,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-12",
    "title": "History: Tennessee, North Carolina and the Cherokee frontier, 1730-1900 (40 entries)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 40,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9019,11 +9276,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-13",
    "title": "History: colonial Virginia and the Pennsylvania Quakers, 1607-1790 (40 entries)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-06",
    "items": 40,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9051,11 +9308,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-14",
    "title": "History: the world spine, 1600-2026 (60 entries)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 60,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9083,11 +9340,11 @@
    "pid": "athenaeum",
    "id": "ATH-GEM-15",
    "title": "History: England and Canada, home children and emigration, 1820-1930 (15 entries)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-07",
    "items": 15,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -9103,6 +9360,68 @@
      "Claude runs tools/history/build.py on the merged file (every region, theme, date and https source must pass).",
      "Claude opens the sources of a fifth of the rows at random and finds each quote on its page.",
      "Muse reads another fifth independently (ATH-MUS)."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Athenaeum",
+   "pid": "athenaeum",
+   "id": "ATH-GEM-16",
+   "title": "History: Kern County and the Tejon Pass, 1850-2025 (40 entries)",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 40,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph lives in Frazier Park; the world history has Detroit, Malta and Lithuania but nothing about his own mountain.",
+    "steps": [
+     "40 dated events: Fort Tejon, the 1857 earthquake, the Ridge Route, Frazier Park's founding, I-5, fires and storms.",
+     "Same entry shape as your history files (id, date, end, precision, title, text, regions, themes, place, sources with quotes)."
+    ],
+    "make": "athenaeum_gemini_history-kern_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "40 entries.",
+    "checks": [
+     "Claude reads every title and date; Muse second-reads 8."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Athenaeum",
+   "pid": "athenaeum",
+   "id": "ATH-GEM-17",
+   "title": "History: the Philippines, 1898-2024 (30 entries)",
+   "status": "todo",
+   "due": "2026-12-12",
+   "items": 30,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph has travelled to the Philippines twice (Odyssey); the world history has no Philippine entries yet.",
+    "steps": [
+     "30 dated events from the Spanish-American War to 2024.",
+     "Same entry shape as your history files; region 'philippines'."
+    ],
+    "make": "athenaeum_gemini_history-philippines_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "30 entries.",
+    "checks": [
+     "Claude reads every title and date."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/docs/agents/QUEUE_gemini.md"
    },
@@ -10117,11 +10436,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-29",
    "title": "Odyssey: more of the best photos for the five trips that open on three or fewer",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 25,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10149,11 +10468,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-30",
    "title": "Odyssey: a city card for each of the 13 new stops on the six newer trips",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 13,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10748,11 +11067,11 @@
    "pid": "privacy",
    "id": "PRI-GEM-15",
    "title": "Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10766,6 +11085,37 @@
     "done": "Every setting.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Privacy",
+   "pid": "privacy",
+   "id": "PRI-GEM-16",
+   "title": "Privacy: Galaxy S24 'Maximum restrictions' row 4, only what Samsung says it does",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 1,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "HUB-MUS-05: row 4 lists blocking 2G and Wi-Fi auto-reconnect under Auto Blocker's Maximum restrictions; the Knox page it cites does not.",
+    "steps": [
+     "Read Samsung's own page for Auto Blocker Maximum restrictions.",
+     "List exactly what it says the setting does and costs; drop anything it does not say, or cite the Samsung page that does."
+    ],
+    "make": "privacy_gemini_s24-row4-fix_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Row 4 matches its page.",
+    "checks": [
+     "Muse re-reads it."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/privacy/docs/agents/QUEUE_gemini.md"
    },
@@ -11444,11 +11794,11 @@
    "pid": "argus",
    "id": "ARG-GEM-14",
    "title": "Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 25,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12263,11 +12613,11 @@
    "pid": "forge",
    "id": "FOR-GEM-08",
    "title": "Forge: the DONE markers from Nov 24 to Dec 7 against the Forge",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12576,11 +12926,11 @@
    "pid": "foundry",
    "id": "FDY-GEM-08",
    "title": "Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 11,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -12954,11 +13304,11 @@
    "pid": "observatory",
    "id": "OBS-GEM-08",
    "title": "Observatory: each of the 22 feeds' update cadence and its last-updated field",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 22,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13581,11 +13931,11 @@
    "pid": "kin",
    "id": "KIN-GEM-15",
    "title": "Kin, Ancestry hints: every hint on the Pavia line, read and decided (pavia)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13617,11 +13967,11 @@
    "pid": "kin",
    "id": "KIN-GEM-16",
    "title": "Kin, Ancestry hints: every hint on the Kirkland line, read and decided (kirkland)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13653,11 +14003,11 @@
    "pid": "kin",
    "id": "KIN-GEM-17",
    "title": "Kin, Ancestry hints: every hint on the Sanders line, read and decided (sanders)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13689,11 +14039,11 @@
    "pid": "kin",
    "id": "KIN-GEM-18",
    "title": "Kin, Ancestry hints: every hint on the Seconder-Termenas line, read and decided (seconder-termenas)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13725,11 +14075,11 @@
    "pid": "kin",
    "id": "KIN-GEM-19",
    "title": "Kin, certainty-scored pedigree: the Pavia line as far back as the records go",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13760,11 +14110,11 @@
    "pid": "kin",
    "id": "KIN-GEM-20",
    "title": "Kin, certainty-scored pedigree: the Kirkland line as far back as the records go",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13795,11 +14145,11 @@
    "pid": "kin",
    "id": "KIN-GEM-21",
    "title": "Kin, certainty-scored pedigree: the Sanders line as far back as the records go",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13830,11 +14180,11 @@
    "pid": "kin",
    "id": "KIN-GEM-22",
    "title": "Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13865,11 +14215,11 @@
    "pid": "kin",
    "id": "KIN-GEM-23",
    "title": "Kin, the family album: 75 photographs and documents of the Pavia line, each one identified",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 75,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 75 rows, but 68 (Pavia), 71 (Sanders) and 70 (Termenas) are maps and town pictures from Wikimedia Commons; the family's own images are asked for again in KIN-GEM-41. Score in #205.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13900,11 +14250,11 @@
    "pid": "kin",
    "id": "KIN-GEM-24",
    "title": "Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 75,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 75 real family images (portraits, group photos, headstones, documents), 8 place images. Score in #205.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13935,11 +14285,11 @@
    "pid": "kin",
    "id": "KIN-GEM-25",
    "title": "Kin, the family album: 75 photographs and documents of the Sanders line, each one identified",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 75,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 75 rows, but 68 (Pavia), 71 (Sanders) and 70 (Termenas) are maps and town pictures from Wikimedia Commons; the family's own images are asked for again in KIN-GEM-41. Score in #205.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -13970,11 +14320,11 @@
    "pid": "kin",
    "id": "KIN-GEM-26",
    "title": "Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 75,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): 75 rows, but 68 (Pavia), 71 (Sanders) and 70 (Termenas) are maps and town pictures from Wikimedia Commons; the family's own images are asked for again in KIN-GEM-41. Score in #205.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14005,11 +14355,11 @@
    "pid": "kin",
    "id": "KIN-GEM-27",
    "title": "Kin: the Ancestry tree's change log: every edit you make, with its source",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): hints decided with identity arguments, certainties calibrated (no link at 100%, disproved hypotheses kept), no edits to Joseph's Ancestry tree. Fix in the next pass: termenas hint 2 writes 'Barbara J. Rimsha' where the 1950 sheet reads TERMENS. Score 8/10 (#204).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14038,11 +14388,11 @@
    "pid": "kin",
    "id": "KIN-GEM-28",
    "title": "Kin: the 1950 census households of Barbara and Della Rimsha, Joseph and Grace Pavia, and the Sanders families, transcribed whole (Q19, Q26)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): the 1950 sheet (ED 85-1439, sheet 75, lines 9-10) read by Claude at full size, and by Muse blind (KIN-MUS-03): Barbara J. Termens, 17, daughter in Della E. Rimsha's household. C10 proven in d86. Score 10/10 (#203).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14072,11 +14422,11 @@
    "pid": "kin",
    "id": "KIN-GEM-29",
    "title": "Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14106,11 +14456,11 @@
    "pid": "kin",
    "id": "KIN-GEM-30",
    "title": "Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14139,11 +14489,11 @@
    "pid": "kin",
    "id": "KIN-GEM-31",
    "title": "Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14173,11 +14523,11 @@
    "pid": "kin",
    "id": "KIN-GEM-32",
    "title": "Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14207,11 +14557,11 @@
    "pid": "kin",
    "id": "KIN-GEM-33",
    "title": "Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14240,11 +14590,11 @@
    "pid": "kin",
    "id": "KIN-GEM-34",
    "title": "Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-10",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14273,11 +14623,11 @@
    "pid": "kin",
    "id": "KIN-GEM-35",
    "title": "Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-01",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14306,11 +14656,11 @@
    "pid": "kin",
    "id": "KIN-GEM-36",
    "title": "Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-03",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14339,11 +14689,11 @@
    "pid": "kin",
    "id": "KIN-GEM-37",
    "title": "Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-03",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14372,11 +14722,11 @@
    "pid": "kin",
    "id": "KIN-GEM-38",
    "title": "Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14405,11 +14755,11 @@
    "pid": "kin",
    "id": "KIN-GEM-39",
    "title": "Kin: Wesley Davis and Henrietta, in records (Monroe County, TN)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14438,11 +14788,11 @@
    "pid": "kin",
    "id": "KIN-GEM-40",
    "title": "Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-05",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count and passing the checker. Records whose image opens are settled by Claude's read plus Muse's blind read (KIN-MUS-04 to 06) before the tree changes. Score in #203.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -14459,6 +14809,134 @@
     "checks": [
      "Claude opens every 'found' row's reference and reads the image against the transcription.",
      "Claude repeats three searches at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-41",
+   "title": "Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 40,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Run 8: the Pavia, Sanders and Termenas albums reached 75 rows with 68, 71 and 70 maps and town pictures from Wikimedia Commons. Kirkland's album shows what is wanted: portraits, group photos, headstones, documents.",
+    "steps": [
+     "Only images of the people or of their own records, houses, graves and churches; no generic maps or skylines.",
+     "As many as truly exist, up to 40 per line; fewer is fine and better than filler.",
+     "For every portrait: who uploaded or labelled it, when, and why it is that person."
+    ],
+    "make": "kin_gemini_album-family_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every row an image of the family or its own records, each argued.",
+    "checks": [
+     "Claude opens 10 at random."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-42",
+   "title": "Kin: the Sanders candidates (A and B in 1950), settled with records",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Run 8: the Sanders album and hints leave two 1950 couples, Charles D. and Elizabeth M. (Wayne, ED 82-264) and Charles L. and Elizabeth M. (Dearborn, ED 84-92), at 20% and 25%. Muse's blind read (KIN-MUS-03) transcribed both households.",
+    "steps": [
+     "For each candidate couple, find their marriage, the births of their children, and their deaths or obituaries.",
+     "Compare at least three identifiers with what the family knows of Charles A. Sanders (b. about 1953, Michigan).",
+     "End with a verdict per couple: proven, likely, unlikely or ruled out, with the records behind it."
+    ],
+    "make": "kin_gemini_sanders-candidates_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every search logged, each couple with a verdict.",
+    "checks": [
+     "Claude reads the census pages; Muse re-reads the verdicts."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-43",
+   "title": "Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books",
+   "status": "todo",
+   "due": "2026-12-12",
+   "items": 10,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The Pavias came from Malta (1950 census: Joseph 52 and Grace M. 40, both born in Malta). Joseph Pavia's birth is 12 Feb or 2 Dec 1897 (draft card vs death index); Lucrezia Calleja married him in 1926.",
+    "steps": [
+     "Search the Malta Catholic parish registers for Joseph Pavia's baptism (1897) and Lucrezia Calleja's, and for their parents' marriages.",
+     "Transcribe every entry found word for word (Latin or Maltese as written, then English).",
+     "Log every search that found nothing."
+    ],
+    "make": "kin_gemini_malta-parish_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Both baptisms found or every search logged.",
+    "checks": [
+     "Claude reads any image that opens; Muse second-reads."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-44",
+   "title": "Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900",
+   "status": "todo",
+   "due": "2026-12-12",
+   "items": 16,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The Telšiai 1893 scan found no Joseph Termenas (run 7); Muse found Leon Anton Termenas, b. 1888 in Tryškiai, a probable cousin. The next parish to read is Tryškiai.",
+    "steps": [
+     "Read the Tryškiai Roman Catholic births for 1885-1900 page by page for Termenas / Terminas / Tirmonas spellings.",
+     "Transcribe every Termenas entry found (Russian or Polish as written, then English).",
+     "Log every year and page range read."
+    ],
+    "make": "kin_gemini_trys-births_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every year 1885-1900 read and logged.",
+    "checks": [
+     "Claude reads every find at full size."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
    },
@@ -14568,17 +15046,13 @@
    "pid": "kin",
    "id": "KIN-MUS-02",
    "title": "Kin lineage: a blind second transcription of the six 1917-1919 documents",
-   "status": "delivered",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): blind reads of the 1917-19 papers and the four 1950 households; both agree with Gemini on every name, age and relation, every difference argued. Score 10/10 (#209).",
    "reopened": "",
-   "delivered": {
-    "what": "kin_muse_lineage-blind-1919_20261125-0524.json in hub incoming (Drive 1dbsMlMQ-l_3RHkQzgf7QC-Tdm3uT1qst); six 1917-1919 documents transcribed blind",
-    "by": "muse",
-    "ts": "2026-11-25T05:31:31Z"
-   },
+   "delivered": null,
    "detail": {
     "why": "A transcription read by one reader is a single witness. A second reader, working blind, is how genealogy catches misreadings (the eyes, the height, the service number in C4-C6 came from exactly that).",
     "steps": [
@@ -14604,17 +15078,13 @@
    "pid": "kin",
    "id": "KIN-MUS-03",
    "title": "Kin: second reader on the 1950 census households (blind)",
-   "status": "delivered",
+   "status": "done",
    "due": "2026-12-10",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): blind reads of the 1917-19 papers and the four 1950 households; both agree with Gemini on every name, age and relation, every difference argued. Score 10/10 (#209).",
    "reopened": "",
-   "delivered": {
-    "what": "kin_muse_lineage-1950-blind_20261125-0530.json in hub incoming (Drive 1jG4Alcvy3L97adbNb1fCSCqObkVZlqM9); four 1950 households transcribed blind, Rimsha found at NARA",
-    "by": "muse",
-    "ts": "2026-11-25T05:31:31Z"
-   },
+   "delivered": null,
    "detail": {
     "why": "A second, independent reading of the four 1950 households that KIN-GEM-28 transcribes: differences become conflicts (the method's section 6).",
     "steps": [
@@ -15269,11 +15739,11 @@
    "pid": "aether",
    "id": "AET-GEM-18",
    "title": "Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -15682,11 +16152,11 @@
    "pid": "polis",
    "id": "POL-GEM-07",
    "title": "Polis: who decides things for Frazier Park and when they meet in 2027",
-   "status": "todo",
+   "status": "done",
    "due": "2027-01-15",
    "items": 0,
-   "closed": "",
-   "review": "Sent back 2026-11-21 (Claude, score 6/10, #89): every date was 'not stated'. The Board of Supervisors' 2027 schedule PDF exists (its host blocked your fetch: try the Granicus agenda list or another route, or say exactly what blocked you); the Planning Commission and MCMAC have not published 2027 yet, so resend once they do, by Jan 15, 2027.",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -16155,11 +16625,11 @@
    "pid": "mythos",
    "id": "MYT-GEM-06",
    "title": "Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -16559,11 +17029,11 @@
    "pid": "continuity",
    "id": "CON-GEM-11",
    "title": "Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for",
-   "status": "todo",
+   "status": "done",
    "due": "2026-12-08",
    "items": 0,
-   "closed": "",
-   "review": "",
+   "closed": "2026-11-25",
+   "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -16577,6 +17047,37 @@
     "done": "Every step sourced.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/continuity/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Continuity",
+   "pid": "continuity",
+   "id": "CON-GEM-12",
+   "title": "Continuity: Vanguard and Robinhood after a death, quoted from their own pages",
+   "status": "todo",
+   "due": "2026-12-04",
+   "items": 2,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "HUB-MUS-05: rows 22 and 23 quoted sentences their pages do not carry (Robinhood's page says the opposite about sending estate documents). Claude rewrote both rows to what the pages say in d86; they need a primary quote each.",
+    "steps": [
+     "For each provider, find the page that explains what happens to an account when the owner dies (beneficiaries, transfer on death, estate team).",
+     "Quote the sentence that says it, word for word, and give the steps the page lists."
+    ],
+    "make": "continuity_gemini_vanguard-robinhood_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Two rows, each quote on its page.",
+    "checks": [
+     "Muse re-reads both."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/continuity/docs/agents/QUEUE_gemini.md"
    },
@@ -16869,6 +17370,37 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Atlas",
+   "pid": "atlas",
+   "id": "ATL-GEM-04",
+   "title": "Atlas: an employee's 2027 tax calendar (federal and California)",
+   "status": "todo",
+   "due": "2026-12-12",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Atlas tracks paydays and pay stubs; the dates that matter around them (W-2 deadline, estimated tax dates, new withholding tables) belong on the same calendar.",
+    "steps": [
+     "Every 2027 date an employee in California may need: W-2 by, estimated tax payments (federal and FTB), filing deadline, extension deadline, IRA contribution deadline, new withholding tables in force.",
+     "Where a 2027 date is not published, give the rule and say so."
+    ],
+    "make": "atlas_gemini_tax-calendar-2027_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "15 rows.",
+    "checks": [
+     "Claude checks the dates against the IRS and FTB calendars."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/atlas/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Muse",
    "src": "hub",
    "where": "Atlas",
@@ -16985,6 +17517,68 @@
     "done": "At least 12 rows, both laws.",
     "checks": [
      "Claude opens every source URL and finds each quote."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aegis/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Aegis",
+   "pid": "aegis",
+   "id": "AEG-GEM-04",
+   "title": "Aegis: the California FAIR Plan, what it covers and what it leaves out",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Frazier Park is a high fire-risk area; many homes there end up on the FAIR Plan. Aegis checks Hearth's contents against the policy limit and needs the FAIR Plan's own limits and gaps.",
+    "steps": [
+     "From the FAIR Plan's and the Department of Insurance's own pages: the dwelling and contents limits, the perils covered, what is excluded (liability, water, theft and others), and how a difference-in-conditions policy fills the gap.",
+     "One row per fact."
+    ],
+    "make": "aegis_gemini_fair-plan_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "20 rows, each quoted.",
+    "checks": [
+     "Muse second-reads 4 rows."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aegis/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Aegis",
+   "pid": "aegis",
+   "id": "AEG-GEM-05",
+   "title": "Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The house sits between the San Andreas and Garlock faults; ordinary homeowners policies exclude earthquake. Aegis should show what a CEA policy would add.",
+    "steps": [
+     "From the CEA's own pages: the coverages (dwelling, contents, loss of use), the deductible choices, what is not covered, and how the premium is set.",
+     "One row per fact."
+    ],
+    "make": "aegis_gemini_earthquake_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "15 rows, each quoted.",
+    "checks": [
+     "Muse second-reads 3 rows."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aegis/docs/agents/QUEUE_gemini.md"
    },
@@ -23543,6 +24137,87 @@
    "task": "none (owner)",
    "where": "Prometheus Hub",
    "score": 7.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 202,
+   "date": "2026-11-25",
+   "what": "Run 8 hub: hub_gemini_home-audit_20261124-2031, hub_gemini_weather-scenes_20261124-2025, hub_gemini_town-hours_20261124-2030 (12 plates), supplemental hub_gemin",
+   "task": "HUB-GEM-22 to 24",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 203,
+   "date": "2026-11-25",
+   "what": "Run 8 Kin records: kin_gemini_lineage-1950_20261125-0455 (C10), -brooklyn-1922, -bivens-will, -dar-stone-pulliam, -pavia, -della-2, -crossing, -seconder, -sande",
+   "task": "KIN-GEM-28 to 40",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 204,
+   "date": "2026-11-25",
+   "what": "Run 8 Kin hints and pedigrees: kin_gemini_hints-{pavia,kirkland,sanders,termenas}_20261124-2125, kin_gemini_pedigree-{pavia,kirkland,sanders,termenas}_20261124-",
+   "task": "KIN-GEM-15 to 22, 27",
+   "where": "Prometheus Hub",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 205,
+   "date": "2026-11-25",
+   "what": "Run 8 Kin albums: kin_gemini_album-{pavia,sanders}_20261124-2125, kin_gemini_album-{kirkland,termenas}_20261124-2100",
+   "task": "KIN-GEM-23 to 26",
+   "where": "Prometheus Hub",
+   "score": 7.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 206,
+   "date": "2026-11-25",
+   "what": "Run 8 history: athenaeum_gemini_history-{lithuania,malta,detroit,tennessee,colonial,world,england-canada,kin-sources}_20261125-*, athenaeum_gemini_family-eras_2",
+   "task": "ATH-GEM-07 to 15",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 207,
+   "date": "2026-11-25",
+   "what": "Run 8 pillar data (23 files): Apollo nutrients-120 and FDC values, Argus Takeout cases, Kairos 2027 school board, Hearth deck inspections, Garage schedule and 2",
+   "task": "APO-GEM-15/16, ARG-GEM-14, KAI-GEM-16, HEA-GEM-32, GAR-GEM-13/17, MON-GEM-08, SEL-GEM-09, REC-GEM-12, ICA-GEM-15, HER-GEM-15, BAS-GEM-15, AET-GEM-18, PRI-GEM-15, CON-GEM-11, MYT-GEM-06, OBS-GEM-08, FDY-GEM-08, ODY-GEM-29/30, POL-GEM-07, FOR-GEM-08",
+   "where": "Prometheus Hub",
+   "score": 9.0
+  },
+  {
+   "ai": "Muse",
+   "n": 208,
+   "date": "2026-11-25",
+   "what": "hub_muse_second-read_20261125-0525.md",
+   "task": "HUB-MUS-05",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Muse",
+   "n": 209,
+   "date": "2026-11-25",
+   "what": "kin_muse_lineage-blind-1919_20261125-0524.json, kin_muse_lineage-1950-blind_20261125-0530.json",
+   "task": "KIN-MUS-02, KIN-MUS-03",
+   "where": "Prometheus Hub",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 210,
+   "date": "2026-11-25",
+   "what": "supplemental: hub_gemini_aaa-splash-intro-module_20261124-2030.js, the preview HTML, spec and three stills",
+   "task": "none (owner: \"Gemini made a new intro splash i dont see that yet\")",
+   "where": "Prometheus Hub",
+   "score": 9.0
   },
   {
    "ai": "Gemini",

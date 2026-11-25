@@ -8,48 +8,44 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Prometheus Hub right now.
 
 ## Gemini
 
-Updated 2026-11-25 15:39 UTC · 3 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 1 open in this pillar.
 
 
-- HUB-GEM-22 · Hub: paint the town for every hour and every weather (the home is now the town) · due 2026-12-01
-    make: hub_gemini_town-hours_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 variants, each aligned with the original (Claude overlays them).
-- HUB-GEM-23 · Hub: weather to scene: what the town shows for each weather code, by day and by night · due 2026-12-01
-    make: hub_gemini_weather-scenes_{YYYYMMDD-HHMM}.json · how many: 28 · done when: Every code Open-Meteo uses.
-- HUB-GEM-24 · Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800 · due 2026-12-01
-    make: hub_gemini_home-audit_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Both sizes audited, every finding measured.
+- HUB-GEM-25 · Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24) · due 2026-12-06
+    make: hub_gemini_new-pillars-audit_{YYYYMMDD-HHMM}.json · how many: 20 · done when: Every pillar measured at both sizes.
 
 ## Muse
 
-Updated 2026-11-25 15:39 UTC · 1 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 1 open in this pillar.
 
 
-- HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · due 2026-12-07 · DELIVERED 2026-11-25, waiting for its check (do not redo)
-    make: hub_muse_second-read_{YYYYMMDD-HHMM}.md · how many: 39 · done when: All 39 rows read and every file has ACCEPT or REJECT.
+- HUB-MUS-06 · One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files · due 2026-12-10
+    make: hub_muse_second-read-run8_{YYYYMMDD-HHMM}.md · how many: 44 · done when: 44 rows read, a verdict per file.
 
 ## ChatGPT
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Prometheus Hub right now.
 
 ## Argon
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Prometheus Hub right now.
 
 ## Hydrogen
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Prometheus Hub right now.

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25 15:39 UTC",
+ "updated": "2026-11-25 17:13 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -22,116 +22,6 @@
    "title": "A fresh book every Monday by noon PT",
    "state": "now",
    "count": 1
-  },
-  {
-   "due": "2026-11-30",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ATH-GEM-08",
-   "title": "History: source the 10 Kin entries that have none (1904-1941)",
-   "state": "now",
-   "count": 10
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-22",
-   "title": "Hub: paint the town for every hour and every weather (the home is now the town)",
-   "state": "now",
-   "count": 12
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-23",
-   "title": "Hub: weather to scene: what the town shows for each weather code, by day and by night",
-   "state": "now",
-   "count": 28
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "HUB-GEM-24",
-   "title": "Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-15",
-   "title": "Kin, Ancestry hints: every hint on the Pavia line, read and decided (pavia)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-16",
-   "title": "Kin, Ancestry hints: every hint on the Kirkland line, read and decided (kirkland)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-17",
-   "title": "Kin, Ancestry hints: every hint on the Sanders line, read and decided (sanders)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-18",
-   "title": "Kin, Ancestry hints: every hint on the Seconder-Termenas line, read and decided (seconder-termenas)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-28",
-   "title": "Kin: the 1950 census households of Barbara and Della Rimsha, Joseph and Grace Pavia, and the Sanders families, transcribed whole (Q19, Q26)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-01",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-35",
-   "title": "Kin: the 1922 Brooklyn marriage index entry, every field as shown (C15, Q35)",
-   "state": "now",
-   "count": 0
   },
   {
    "due": "2026-12-01",
@@ -157,47 +47,25 @@
   },
   {
    "due": "2026-12-03",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
+   "pillar": "bastion",
+   "pillar_name": "Bastion · Mountain Prep",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ATH-GEM-09",
-   "title": "History: Lithuania and the Russian Empire, 1795-1991 (40 entries)",
+   "id": "BAS-GEM-16",
+   "title": "Bastion: fix the shelters quote (row 3) and the Avalon transmitter's coverage (row 9)",
    "state": "now",
-   "count": 40
+   "count": 2
   },
   {
    "due": "2026-12-03",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
+   "pillar": "garage",
+   "pillar_name": "Garage",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ATH-GEM-10",
-   "title": "History: Malta, 1798-1979 (30 entries)",
+   "id": "GAR-GEM-18",
+   "title": "Garage: the Sorento's Intelligent Speed Limit Assist light (row 43) from a stable manual link",
    "state": "now",
-   "count": 30
-  },
-  {
-   "due": "2026-12-03",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-36",
-   "title": "Kin: Nathaniel Bivens's 1816 will, word for word, and Benjamin's father (C16)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-03",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-37",
-   "title": "Kin: the DAR records for James Pulliam and Richard Stone, and Stone's will (C17)",
-   "state": "now",
-   "count": 0
+   "count": 1
   },
   {
    "due": "2026-12-03",
@@ -211,37 +79,48 @@
    "count": 15
   },
   {
-   "due": "2026-12-04",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
+   "due": "2026-12-03",
+   "pillar": "money",
+   "pillar_name": "Money · payoff simulator",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "APO-GEM-16",
-   "title": "Apollo: the SR Legacy values for your 120 FDC ids, so they can be attached",
+   "id": "MON-GEM-09",
+   "title": "Money: fix the two issuer-pricing rows Muse could not match (Discover it APR, the FNBO card)",
    "state": "now",
-   "count": 120
+   "count": 2
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "privacy",
+   "pillar_name": "Privacy · CA DROP",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PRI-GEM-16",
+   "title": "Privacy: Galaxy S24 'Maximum restrictions' row 4, only what Samsung says it does",
+   "state": "now",
+   "count": 1
   },
   {
    "due": "2026-12-04",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
+   "pillar": "continuity",
+   "pillar_name": "Continuity · Sovereign Vault",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ATH-GEM-11",
-   "title": "History: Detroit and Michigan, 1890-2010 (40 entries)",
+   "id": "CON-GEM-12",
+   "title": "Continuity: Vanguard and Robinhood after a death, quoted from their own pages",
    "state": "now",
-   "count": 40
+   "count": 2
   },
   {
-   "due": "2026-12-05",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
+   "due": "2026-12-04",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ATH-GEM-12",
-   "title": "History: Tennessee, North Carolina and the Cherokee frontier, 1730-1900 (40 entries)",
+   "id": "HEA-GEM-33",
+   "title": "Hearth: the six deck inspections again, each with the code's own words (guard height is 36 in)",
    "state": "now",
-   "count": 40
+   "count": 6
   },
   {
    "due": "2026-12-05",
@@ -253,105 +132,6 @@
    "title": "Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic",
    "state": "now",
    "count": 55
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-19",
-   "title": "Kin, certainty-scored pedigree: the Pavia line as far back as the records go",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-20",
-   "title": "Kin, certainty-scored pedigree: the Kirkland line as far back as the records go",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-21",
-   "title": "Kin, certainty-scored pedigree: the Sanders line as far back as the records go",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-22",
-   "title": "Kin, certainty-scored pedigree: the Seconder-Termenas line as far back as the records go",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-29",
-   "title": "Kin: who Grace Pavia was, and where Joseph Pavia (b. about 1899) came from (C13, Q26)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-30",
-   "title": "Kin: Della after 1935: her marriage to Mr. Rimsha, her later life, her death, and her parents Michael Malkitus and Eva (Q14, Q27)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-38",
-   "title": "Kin: Joseph Pavia's birth date, from the records that give it (12 Feb or 2 Dec 1897)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-39",
-   "title": "Kin: Wesley Davis and Henrietta, in records (Monroe County, TN)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-05",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-40",
-   "title": "Kin: New York arrivals of 23-24 August 1912 from Hamburg, for Joseph Termena (C9)",
-   "state": "now",
-   "count": 0
   },
   {
    "due": "2026-12-06",
@@ -366,14 +146,14 @@
   },
   {
    "due": "2026-12-06",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "ATH-GEM-13",
-   "title": "History: colonial Virginia and the Pennsylvania Quakers, 1607-1790 (40 entries)",
+   "id": "HUB-GEM-25",
+   "title": "Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24)",
    "state": "now",
-   "count": 40
+   "count": 20
   },
   {
    "due": "2026-12-06",
@@ -410,28 +190,6 @@
   },
   {
    "due": "2026-12-07",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ATH-GEM-14",
-   "title": "History: the world spine, 1600-2026 (60 entries)",
-   "state": "now",
-   "count": 60
-  },
-  {
-   "due": "2026-12-07",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ATH-GEM-15",
-   "title": "History: England and Canada, home children and emigration, 1820-1930 (15 entries)",
-   "state": "now",
-   "count": 15
-  },
-  {
-   "due": "2026-12-07",
    "pillar": "atlas",
    "pillar_name": "Atlas · Work & Pay",
    "ai": "gemini",
@@ -440,17 +198,6 @@
    "title": "Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages",
    "state": "now",
    "count": 24
-  },
-  {
-   "due": "2026-12-07",
-   "pillar": "hub",
-   "pillar_name": "Prometheus Hub",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "HUB-MUS-05",
-   "title": "One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies",
-   "state": "now",
-   "count": 39
   },
   {
    "due": "2026-12-08",
@@ -465,102 +212,14 @@
   },
   {
    "due": "2026-12-08",
-   "pillar": "aether",
-   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "pillar": "aegis",
+   "pillar_name": "Aegis · Insurance & Cover",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "AET-GEM-18",
-   "title": "Aether: every NWS alert type that can reach Frazier Park and Bakersfield, with what to do",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "apollo",
-   "pillar_name": "Apollo Temple",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "APO-GEM-15",
-   "title": "Apollo: 30 nutrients per 100 g for the 120 foods given FoodData Central ids in APO-GEM-13",
-   "state": "now",
-   "count": 120
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "argus",
-   "pillar_name": "Argus Album",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ARG-GEM-14",
-   "title": "Argus: 25 real Google Takeout photo sidecars (edited, motion, panorama, burst, shared, partner sharing) and how each pairs with its image",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "athenaeum",
-   "pillar_name": "Athenaeum · Idea Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ATH-GEM-07",
-   "title": "Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words",
+   "id": "AEG-GEM-04",
+   "title": "Aegis: the California FAIR Plan, what it covers and what it leaves out",
    "state": "now",
    "count": 20
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "bastion",
-   "pillar_name": "Bastion · Mountain Prep",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "BAS-GEM-15",
-   "title": "Bastion: every way out of Frazier Park, Pine Mountain Club and Lake of the Woods, with its closure history",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "continuity",
-   "pillar_name": "Continuity · Sovereign Vault",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "CON-GEM-11",
-   "title": "Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "forge",
-   "pillar_name": "Forge",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "FOR-GEM-08",
-   "title": "Forge: the DONE markers from Nov 24 to Dec 7 against the Forge",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "foundry",
-   "pillar_name": "Foundry",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "FDY-GEM-08",
-   "title": "Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief",
-   "state": "now",
-   "count": 11
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAR-GEM-17",
-   "title": "Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals",
-   "state": "now",
-   "count": 0
   },
   {
    "due": "2026-12-08",
@@ -568,43 +227,21 @@
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HEA-GEM-32",
-   "title": "Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them",
+   "id": "HEA-GEM-34",
+   "title": "Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies",
    "state": "now",
-   "count": 0
+   "count": 40
   },
   {
    "due": "2026-12-08",
-   "pillar": "hermes",
-   "pillar_name": "Hermes Post",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "HER-GEM-15",
-   "title": "Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14",
+   "id": "HEA-GEM-35",
+   "title": "Hearth: smoke and carbon monoxide alarms room by room under California law",
    "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "icarus",
-   "pillar_name": "Icarus Stake",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ICA-GEM-15",
-   "title": "Icarus: the 2027 Treasury auction schedule (2-, 10- and 30-year) and the 2027 CPI and jobs report dates",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kairos",
-   "pillar_name": "Kairos Meridian",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KAI-GEM-16",
-   "title": "Kairos: El Tejon Unified's 2027-28 calendar (when published) and Kern County's 2027 board meeting dates",
-   "state": "now",
-   "count": 0
+   "count": 12
   },
   {
    "due": "2026-12-08",
@@ -612,186 +249,10 @@
    "pillar_name": "Kin",
    "ai": "gemini",
    "ai_name": "Gemini",
-   "id": "KIN-GEM-23",
-   "title": "Kin, the family album: 75 photographs and documents of the Pavia line, each one identified",
+   "id": "KIN-GEM-41",
+   "title": "Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line",
    "state": "now",
-   "count": 75
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-24",
-   "title": "Kin, the family album: 75 photographs and documents of the Kirkland line, each one identified",
-   "state": "now",
-   "count": 75
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-25",
-   "title": "Kin, the family album: 75 photographs and documents of the Sanders line, each one identified",
-   "state": "now",
-   "count": 75
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-26",
-   "title": "Kin, the family album: 75 photographs and documents of the Seconder-Termenas line, each one identified",
-   "state": "now",
-   "count": 75
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-27",
-   "title": "Kin: the Ancestry tree's change log: every edit you make, with its source",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-31",
-   "title": "Kin: the 1912 crossing, decided: Josef Terminas of the President Lincoln (30 Sep 1912) against Joseph's sworn 23 Aug 1912 (C9, Q1)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-32",
-   "title": "Kin: Laurie's father: test H9 (Bob Seconder = Robert H. Seconder, 1931-2003) with records only (Q19, Q25)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-33",
-   "title": "Kin: the Sanders line: Charles Sanders and Betty Flemming, their marriage, their parents (Q30)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "KIN-MUS-02",
-   "title": "Kin lineage: a blind second transcription of the six 1917-1919 documents",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "money",
-   "pillar_name": "Money · payoff simulator",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MON-GEM-08",
-   "title": "Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "mythos",
-   "pillar_name": "Mythos · Creative & Lore Studio",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "MYT-GEM-06",
-   "title": "Mythos: registering scripts and games: deposit formats, group registration and fees (the practical half of MYT-GEM-05)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "observatory",
-   "pillar_name": "Observatory",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "OBS-GEM-08",
-   "title": "Observatory: each of the 22 feeds' update cadence and its last-updated field",
-   "state": "now",
-   "count": 22
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "odyssey",
-   "pillar_name": "Odyssey · Trips & Away Mode",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ODY-GEM-29",
-   "title": "Odyssey: more of the best photos for the five trips that open on three or fewer",
-   "state": "now",
-   "count": 25
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "odyssey",
-   "pillar_name": "Odyssey · Trips & Away Mode",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "ODY-GEM-30",
-   "title": "Odyssey: a city card for each of the 13 new stops on the six newer trips",
-   "state": "now",
-   "count": 13
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "privacy",
-   "pillar_name": "Privacy · CA DROP",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "PRI-GEM-15",
-   "title": "Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "records",
-   "pillar_name": "Records · Paper Killer",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "REC-GEM-12",
-   "title": "Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait)",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2026-12-08",
-   "pillar": "selling",
-   "pillar_name": "Selling Pipeline",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "SEL-GEM-09",
-   "title": "Selling: eBay's coin and bullion item specifics and photo rules, category by category",
-   "state": "now",
-   "count": 0
+   "count": 40
   },
   {
    "due": "2026-12-09",
@@ -817,6 +278,28 @@
   },
   {
    "due": "2026-12-10",
+   "pillar": "aegis",
+   "pillar_name": "Aegis · Insurance & Cover",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AEG-GEM-05",
+   "title": "Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-12-10",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-16",
+   "title": "History: Kern County and the Tejon Pass, 1850-2025 (40 entries)",
+   "state": "now",
+   "count": 40
+  },
+  {
+   "due": "2026-12-10",
    "pillar": "athenaeum",
    "pillar_name": "Athenaeum · Idea Vault",
    "ai": "muse",
@@ -828,25 +311,36 @@
   },
   {
    "due": "2026-12-10",
-   "pillar": "kin",
-   "pillar_name": "Kin",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "KIN-GEM-34",
-   "title": "Kin: the records behind the Kirkland and Culberson lines, so the percentages can rise or fall (Q31, Q32)",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "HUB-MUS-06",
+   "title": "One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files",
    "state": "now",
-   "count": 0
+   "count": 44
   },
   {
    "due": "2026-12-10",
    "pillar": "kin",
    "pillar_name": "Kin",
-   "ai": "muse",
-   "ai_name": "Muse",
-   "id": "KIN-MUS-03",
-   "title": "Kin: second reader on the 1950 census households (blind)",
-   "state": "next",
-   "count": 0
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-42",
+   "title": "Kin: the Sanders candidates (A and B in 1950), settled with records",
+   "state": "now",
+   "count": 12
+  },
+  {
+   "due": "2026-12-10",
+   "pillar": "money",
+   "pillar_name": "Money · payoff simulator",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MON-GEM-10",
+   "title": "Money: how a card payment is applied (CARD Act, Regulation Z 1026.53)",
+   "state": "now",
+   "count": 12
   },
   {
    "due": "2026-12-12",
@@ -861,6 +355,28 @@
   },
   {
    "due": "2026-12-12",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-17",
+   "title": "History: the Philippines, 1898-2024 (30 entries)",
+   "state": "now",
+   "count": 30
+  },
+  {
+   "due": "2026-12-12",
+   "pillar": "atlas",
+   "pillar_name": "Atlas · Work & Pay",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATL-GEM-04",
+   "title": "Atlas: an employee's 2027 tax calendar (federal and California)",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-12-12",
    "pillar": "atlas",
    "pillar_name": "Atlas · Work & Pay",
    "ai": "muse",
@@ -869,6 +385,28 @@
    "title": "Atlas: second reader on Gemini's California pay rules",
    "state": "next",
    "count": null
+  },
+  {
+   "due": "2026-12-12",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-43",
+   "title": "Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-12-12",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-44",
+   "title": "Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900",
+   "state": "now",
+   "count": 16
   },
   {
    "due": "2026-12-22",
@@ -900,28 +438,6 @@
    "ai_name": "Gemini",
    "id": "KAI-GEM-14",
    "title": "Kairos: California's final 2027 state holidays (CalHR), when published",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2027-01-10",
-   "pillar": "garage",
-   "pillar_name": "Garage",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "GAR-GEM-13",
-   "title": "Garage: DMV's 2027 fee amounts after the January 1 adjustment",
-   "state": "now",
-   "count": 0
-  },
-  {
-   "due": "2027-01-15",
-   "pillar": "polis",
-   "pillar_name": "Polis · Civic & Legal Watch",
-   "ai": "gemini",
-   "ai_name": "Gemini",
-   "id": "POL-GEM-07",
-   "title": "Polis: who decides things for Frazier Park and when they meet in 2027",
    "state": "now",
    "count": 0
   },

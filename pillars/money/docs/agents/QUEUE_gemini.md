@@ -2,45 +2,106 @@
 
 # Money · payoff simulator · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. MON-GEM-08 · Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages
+## 1. MON-GEM-09 · Money: fix the two issuer-pricing rows Muse could not match (Discover it APR, the FNBO card)
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-03 · **State:** now
 
-**Why:** Pricing is complete; the programs that lower it are the next lever.
+**Why:** Muse's second read (HUB-MUS-05, 25 Nov): row 11's APR is not on the Discover page it cites; row 13 prices FNBO GreenSelect under the Greenlight Family Cash name.
 
-**What it unlocks:** Money can say which call to make.
+**What it unlocks:** The issuer table in Midas can show every row as checked.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/money/
+- money_gemini_issuer-pricing_20261121-1136.json (your file)
+- docs/agents/QUEUE_muse.md HUB-MUS-05 result in jpavia10/prometheus-hub (hub incoming: hub_muse_second-read_20261125-0525.md)
 
 **Do this:**
-1. For each issuer: the hardship program, who qualifies, what it changes (APR, fees, payment), how to ask.
+1. Row 11: find the Discover page or cardmember agreement that prints the purchase APR range and quote it.
+2. Row 13: either retitle the row FNBO GreenSelect (its numbers are right for that card) or find the Greenlight Family Cash card's own published terms.
+3. Send only the two corrected rows, numbered 11 and 13.
 
-**Make:** `money_gemini_hardship_{YYYYMMDD-HHMM}.json`
+**Make:** `money_gemini_issuer-pricing-fix_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `issuer` (text): name
-- `program` (text): name
-- `changes` (text): what
-- `ask` (text): how
-- `source_url` (url): the official page that shows the value
+- `n` (number): 11 or 13
+- `issuer` (text): the issuer
+- `card` (text): the card's exact name on the page
+- `apr` (text): as printed
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
 - `checked` (date): the day you read it, YYYY-MM-DD
 
-**Done when:** Every issuer.
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 2
+
+**Done when:** Both rows source-matched.
 
 **How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
+- Claude and Muse open both URLs and find the quotes.
 
 **Not done (sent back) if:**
 - a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 2. MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53)
+
+**Due:** 2026-12-10 · **State:** now
+
+**Why:** Midas's payoff plan assumes the amount above the minimum goes to the highest-APR balance first; that is the CARD Act rule, and its exceptions (deferred interest in the last two cycles) change the plan.
+
+**What it unlocks:** Midas's payoff engine gets a unit test per rule.
+
+**Read first:**
+- https://www.consumerfinance.gov/rules-policy/regulations/1026/53/
+- 12 CFR 1026.53 on ecfr.gov
+
+**Do this:**
+1. Every rule in 1026.53 and its official commentary that decides where a payment goes: the minimum, the excess, deferred-interest balances, the last two billing cycles, consumer requests.
+2. One row per rule with a worked example in the commentary's own words where it gives one.
+
+**Make:** `money_gemini_payment-allocation_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `rule` (text): what the rule says
+- `section` (text): 1026.53(x) or comment
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 12
+
+**Done when:** 12 rows.
+
+**How Claude checks it:**
+- Claude turns each into a test of the payoff engine.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "hearth",
  "agents": [
   {
@@ -1779,7 +1779,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Fee, finish and members are in; the inspections are the path to a legal deck.",
      "unlocks": "Hearth turns the deck into a checklist that passes.",
@@ -1838,7 +1838,240 @@
      ],
      "id": "HEA-GEM-32",
      "title": "Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): six inspections in order, but row 5 says guards must be 42 in 'per CRC R312.1.2'; that section asks for 36 in (42 in is the commercial code). Fix in HEA-GEM-33. Score in #207."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "HEA-GEM-33",
+     "title": "Hearth: the six deck inspections again, each with the code's own words (guard height is 36 in)",
+     "due": "2026-12-04",
+     "why": "Run 8 (HEA-GEM-32): row 5 says guards must be 42 in 'per CRC R312.1.2'; the residential code asks for 36 in (42 in is the commercial code). None of the six rows quotes its source.",
+     "unlocks": "Hearth's deck renovation shows the inspection checklist the county will use.",
+     "inputs": [
+      "hearth_gemini_deck-inspections_20261125-0432.json",
+      "https://codes.iccsafe.org/content/CARC2025P1"
+     ],
+     "steps": [
+      "Keep the six inspections in order.",
+      "For each check that names a number (footing depth, guard height, opening size, ledger fasteners), quote the CRC section that sets it.",
+      "Correct the guard height."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_deck-inspections-2_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 6,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1-6"
+      },
+      {
+       "name": "inspection",
+       "type": "text",
+       "rule": "its name"
+      },
+      {
+       "name": "checks",
+       "type": "text",
+       "rule": "what the inspector checks"
+      },
+      {
+       "name": "code",
+       "type": "text",
+       "rule": "the CRC sections"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Six rows, every number quoted from its section.",
+     "checks": [
+      "Claude checks the guard height and two more numbers against the CRC text."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "HEA-GEM-34",
+     "title": "Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies",
+     "due": "2026-12-08",
+     "why": "Hearth now tracks every room's appliances and furniture with their value; it should also say when each is near the end of its life.",
+     "unlocks": "Each asset in Hearth shows its expected life and the years left.",
+     "inputs": [
+      "NAHB/Bank of America 'Study of Life Expectancy of Home Components'",
+      "InterNACHI's life expectancy chart",
+      "manufacturers' own pages where they state a life"
+     ],
+     "steps": [
+      "40 component categories that appear in a home (refrigerator, range, dishwasher, washer, dryer, water heater tank and tankless, furnace, heat pump, roof by material, deck by material, windows, garage door opener and so on).",
+      "The expected life in years as the source states it (a range is fine)."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_life-expectancy_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 40,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "component",
+       "type": "text",
+       "rule": "as named"
+      },
+      {
+       "name": "years",
+       "type": "text",
+       "rule": "life as stated, e.g. 10-13"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "40 rows.",
+     "checks": [
+      "Claude checks 8 against the study."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "HEA-GEM-35",
+     "title": "Hearth: smoke and carbon monoxide alarms room by room under California law",
+     "due": "2026-12-08",
+     "why": "Hearth's rooms each need their safety checks; California law says where smoke and CO alarms go (bedrooms, hallways, each level) and what kind.",
+     "unlocks": "Each room in Hearth shows the alarms it should have.",
+     "inputs": [
+      "California Health and Safety Code 13113.7 and 17926",
+      "California Residential Code R314, R315",
+      "CAL FIRE / State Fire Marshal pages"
+     ],
+     "steps": [
+      "One row per rule: where an alarm is required, what type (10-year sealed battery, hardwired, interconnected), and when it applies (sale, remodel, permit).",
+      "Quote the section."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_alarms_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "where",
+       "type": "text",
+       "rule": "the room or place"
+      },
+      {
+       "name": "requirement",
+       "type": "text",
+       "rule": "what is required"
+      },
+      {
+       "name": "when",
+       "type": "text",
+       "rule": "when it applies"
+      },
+      {
+       "name": "section",
+       "type": "text",
+       "rule": "the code section"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "12 rows.",
+     "checks": [
+      "Claude checks every section number."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

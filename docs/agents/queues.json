@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "hub",
  "agents": [
   {
@@ -1498,7 +1498,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Owner, 2026-11-24: the home is a full-screen town with real-time weather and a day-night cycle. The town is drawn live in light and colour; painted versions of the same view at dawn, midday, golden hour, dusk and night, and in rain, fog and snow, make it photographic.",
      "unlocks": "The home shows the painted town for the real hour and the real weather.",
@@ -1548,10 +1548,12 @@
      ],
      "id": "HUB-GEM-22",
      "title": "Hub: paint the town for every hour and every weather (the home is now the town)",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 12 hour plates delivered as 2560x1086 WebP in Drive; they are reviewed when the town's painting is next changed. Score in #202."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "The town takes live weather from Open-Meteo (WMO weather codes). Each code needs a look and a sentence.",
      "unlocks": "Every weather reads right in the town and the widget.",
@@ -1614,10 +1616,12 @@
      ],
      "id": "HUB-GEM-23",
      "title": "Hub: weather to scene: what the town shows for each weather code, by day and by night",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): the audit's findings were real (spire contrast, daytime labels, edge clipping, sub-44 px targets, wxchip night icons) and Gemini's patch fixed them in d86; the weather scenes cover all 28 WMO codes Open-Meteo returns. Score 10/10 (#202)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "The home was rebuilt on 2026-11-24 (full-screen town, live day and night, weather, System tab). A real audit finds what the proofs miss.",
      "unlocks": "The home has no cut-off label, no unreadable text, no dead tap.",
@@ -1669,7 +1673,89 @@
      ],
      "id": "HUB-GEM-24",
      "title": "Hub: live audit of the new home (town, weather, System tab) at 384 x 832 and 1280 x 800",
-     "due": "2026-12-01"
+     "due": "2026-12-01",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): the audit's findings were real (spire contrast, daytime labels, edge clipping, sub-44 px targets, wxchip night icons) and Gemini's patch fixed them in d86; the weather scenes cover all 28 WMO codes Open-Meteo returns. Score 10/10 (#202)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "HUB-GEM-25",
+     "title": "Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24)",
+     "due": "2026-12-06",
+     "why": "HUB-GEM-24 found real problems on the town and every one was fixed (d86). The four newest pillars have not been measured that way.",
+     "unlocks": "A fix list for the four newest pillars, measured not guessed.",
+     "inputs": [
+      "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",
+      "/pillars/midas/",
+      "/pillars/atlas/",
+      "/pillars/aegis/"
+     ],
+     "steps": [
+      "Open each at 384x832 and 412x915 in Chromium with WebGL.",
+      "Measure: text contrast below 4.5:1, anything wider than the screen, tap targets under 44 px, overlapping text, console errors.",
+      "One row per problem with the selector, the measured value and a screenshot file name; say 'none found' per pillar where none."
+     ],
+     "deliver": {
+      "file": "hub_gemini_new-pillars-audit_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "pillar",
+       "type": "text",
+       "rule": "hearth, midas, atlas or aegis"
+      },
+      {
+       "name": "size",
+       "type": "text",
+       "rule": "384x832 or 412x915"
+      },
+      {
+       "name": "where",
+       "type": "text",
+       "rule": "the selector"
+      },
+      {
+       "name": "problem",
+       "type": "text",
+       "rule": "what is wrong, measured"
+      },
+      {
+       "name": "severity",
+       "type": "text",
+       "rule": "P0-P3"
+      },
+      {
+       "name": "screenshot",
+       "type": "text",
+       "rule": "file name in the same folder"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every pillar measured at both sizes.",
+     "checks": [
+      "Claude reproduces every P0 and P1."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "a problem not reproduced by its measurement"
+     ]
     }
    ]
   },
@@ -1870,7 +1956,7 @@
     {
      "id": "HUB-MUS-05",
      "title": "One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-23",
      "due": "2026-12-07",
      "why": "Joseph keeps Muse to a modest load from now on (2026-11-23). Instead of 28 separate checks, one sitting covers the files where a wrong number could cost money or safety. Until a second reader agrees, Claude keeps these rows marked 'not second-read' in the pillars.",
@@ -1922,6 +2008,68 @@
      "rejected_if": [
       "a row marked agree whose page does not say it",
       "a file without a verdict"
+     ],
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 39 rows opened, 30 agree and 9 differ, every differ with its fix; the 7 accepted files are live in d86 and the 6 rejected go back to Gemini. Score 10/10 (#208)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "HUB-MUS-06",
+     "title": "One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files",
+     "due": "2026-12-10",
+     "why": "Run 8 delivered 22 pillar datasets whose sources Claude's container cannot open. Your HUB-MUS-05 pass (39 rows, 9 real differences) is the model.",
+     "unlocks": "Every run-8 file is accepted or sent back before it is built into a pillar.",
+     "inputs": [
+      "Gemini's run-8 files in the hub incoming folder: aether alert-types, apollo nutrients-120 and fdc-values, argus takeout-cases, bastion routes, continuity small-estate, foundry showcase, garage schedule and ca-fees-2027, hermes senders, icarus 2027-auctions-cpi, kairos 2027-school-board, money hardship, mythos copyright-2, observatory freshness, odyssey city-cards, polis 2027-meetings, privacy google, records vital-records, selling specifics, hearth deck-inspections"
+     ],
+     "steps": [
+      "For each file, pick 2 rows at random (say how), open the URL and check every value in the row against the page.",
+      "Agree or differ per row, with what you found; a file is REJECT if any row differs, with the fix list."
+     ],
+     "deliver": {
+      "file": "hub_muse_second-read-run8_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 44,
+     "fields": [
+      {
+       "name": "file",
+       "type": "text",
+       "rule": "the Gemini file"
+      },
+      {
+       "name": "row",
+       "type": "number",
+       "rule": "n"
+      },
+      {
+       "name": "verdict",
+       "type": "text",
+       "rule": "agree or differ"
+      },
+      {
+       "name": "found",
+       "type": "text",
+       "rule": "what the page says"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "44 rows read, a verdict per file.",
+     "checks": [
+      "Claude spot-checks 4 of your rows."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
      ]
     }
    ]

@@ -2,49 +2,8 @@
 
 # Foundry · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. FDY-GEM-08 · Foundry: each of the 11 stage-1 builds as a showcase: one line, three milestones, the parts cost with links, and an image brief
-
-**Due:** 2026-12-08 · **State:** now
-
-**Why:** Owner, 2026-11-24: 'I also want the foundry revamped'. The new Foundry shows each build as a project you can follow.
-
-**What it unlocks:** Foundry's builds read as real projects with real costs.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/foundry/
-
-**Do this:**
-1. For each build: a one-line pitch, three milestones with what proves each, the stage-1 parts with prices and supplier links (FDY-GEM-05's list), the total, and a 2-sentence brief for a hero image.
-
-**Make:** `foundry_gemini_showcase_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `build` (text): as in Foundry
-- `pitch` (text): one line
-- `milestones` (text): 1 ...; 2 ...; 3 ...
-- `parts` (text): part (price, link); ...
-- `total` (number): US dollars
-- `image_brief` (text): two sentences
-- `source_url` (url): the official page that shows the value
-- `checked` (date): the day you read it, YYYY-MM-DD
-
-**How many:** 11
-
-**Done when:** 11 builds.
-
-**How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
-
-**Not done (sent back) if:**
-- a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+No homework for Gemini in Foundry right now. Check your HOMEWORK doc for the other pillars.

@@ -2,44 +2,54 @@
 
 # Privacy · CA DROP · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. PRI-GEM-15 · Privacy: a Google account, setting by setting (activity, ads, location history, Photos face groups, third-party access)
+## 1. PRI-GEM-16 · Privacy: Galaxy S24 'Maximum restrictions' row 4, only what Samsung says it does
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-03 · **State:** now
 
-**Why:** Amazon is done; Google holds the most.
+**Why:** HUB-MUS-05: row 4 lists blocking 2G and Wi-Fi auto-reconnect under Auto Blocker's Maximum restrictions; the Knox page it cites does not.
 
-**What it unlocks:** Privacy gives a full Google checklist.
+**What it unlocks:** The S24 hardening list can be built into Privacy.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/privacy/
+- privacy_gemini_s24-hardening_20261121-1205.json
 
 **Do this:**
-1. Every privacy setting in myaccount.google.com: where it is, what it does, the private choice.
+1. Read Samsung's own page for Auto Blocker Maximum restrictions.
+2. List exactly what it says the setting does and costs; drop anything it does not say, or cite the Samsung page that does.
 
-**Make:** `privacy_gemini_google_{YYYYMMDD-HHMM}.json`
+**Make:** `privacy_gemini_s24-row4-fix_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `setting` (text): name
-- `where` (text): the path
-- `private` (text): the choice
-- `source_url` (url): the official page that shows the value
+- `n` (number): 4
+- `does` (text list): only what the page lists
+- `cost` (text list): only what the page lists
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
 - `checked` (date): the day you read it, YYYY-MM-DD
 
-**Done when:** Every setting.
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 1
+
+**Done when:** Row 4 matches its page.
 
 **How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
+- Muse re-reads it.
 
 **Not done (sent back) if:**
 - a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

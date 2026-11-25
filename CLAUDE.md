@@ -72,6 +72,19 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d87 (2026-11-25): run 8 scored and filed.** 61 Gemini tasks closed with a review each (rows 202-207, 210), Muse's
+  HUB-MUS-05 and KIN-MUS-02/03 scored 10 (rows 208-209). World history: 265 of Gemini's entries merged (315 now, `tools/history/build.py`;
+  marked "sourced by Gemini, second read pending (ATH-MUS-02)"), and the 10 Kin seed entries got their sources (ATH-GEM-08). One title
+  corrected (13 Jan 1991), two dates noted. Not wired yet: the 23 run-8 pillar files (their sources are refused by this container;
+  Muse's HUB-MUS-06 reads 2 rows each first), the Kin albums (mostly Wikimedia filler; KIN-GEM-41 asks again), the hints and pedigrees
+  (join the tree with the lineage work). Refill: 20 new tasks (Gemini 30 open, Muse 7). Titan: the run-8 sheets merged (4ba37021).
+  Kin, from Muse's blind 1917-19 read (KIN-MUS-02), re-read by Claude on the scans: C6 resolved, service number 180338 (the discharge
+  and the VA card agree; 1803038 was a misreading); C5 re-argued, the draft card says 5-10 in figures, not "medium". Still to check
+  from that read: Howard St 140 vs 180 (C8), the declaration date (21 or 22 Oct 1916), petition no. 4372.
+  Odyssey ODY-GEM-29 (25 more picks), 13 seen by eye so far: keep 1 (heron), 2 (kayakers), 4 and 5 (Glenda Pavia's and Buster and
+  Joy Kirkland's plaques, Flat Rock), 6 (cinder cone from the air), 11-13 (Mammoth with the baby and the dogs); drop 3 (a stranger's
+  house), 7, 9 (notebook page), 10 (hand sanitizer); 8 is a handwritten Kirkland family tree (to Kin's album, not Odyssey). 14-25 not
+  seen yet; 24 (a girls' basketball team, minors who are strangers) and 25 (a dashboard) drop by caption. Wire with the city cards.
 - **d86 (2026-11-25): run 8, first part.** Gemini's d79 fix patch (HUB-GEM-24 audit): town labels pinned inside the screen with
   the dot shifted by `--dx`, readable label pills, 44 px targets on the chips and edge buttons, and the weather chip's hourly icons
   use each hour's own `is_day` (night icons after dark). Continuity: Muse's HUB-MUS-05 second read applied (TikTok agrees; Vanguard

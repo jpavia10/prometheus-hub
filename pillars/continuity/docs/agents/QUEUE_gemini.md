@@ -2,44 +2,57 @@
 
 # Continuity · Sovereign Vault · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. CON-GEM-11 · Continuity: California's small-estate affidavit (Probate Code 13100) step by step, with the 2026 limit and what each bank asks for
+## 1. CON-GEM-12 · Continuity: Vanguard and Robinhood after a death, quoted from their own pages
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-04 · **State:** now
 
-**Why:** Beneficiaries and the directive are in; the small-estate path is the most likely one.
+**Why:** HUB-MUS-05: rows 22 and 23 quoted sentences their pages do not carry (Robinhood's page says the opposite about sending estate documents). Claude rewrote both rows to what the pages say in d86; they need a primary quote each.
 
-**What it unlocks:** Continuity walks a survivor through it.
+**What it unlocks:** Continuity's Accounts After Death tab shows a checked quote for every provider.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/continuity/
+- pillars/continuity/legacy-policies.js rows 22 and 23 (live)
+- https://investor.vanguard.com
+- https://robinhood.com/us/en/support/
 
 **Do this:**
-1. The current limit, the waiting period, the form, who signs, what to attach, and what Chase, Wells Fargo, Bank of America and the DMV ask for, each from their own page.
+1. For each provider, find the page that explains what happens to an account when the owner dies (beneficiaries, transfer on death, estate team).
+2. Quote the sentence that says it, word for word, and give the steps the page lists.
 
-**Make:** `continuity_gemini_small-estate_{YYYYMMDD-HHMM}.json`
+**Make:** `continuity_gemini_vanguard-robinhood_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `step` (text): the step
-- `detail` (text): what exactly
-- `who` (text): who does it
-- `source_url` (url): the official page that shows the value
+- `n` (number): 22 or 23
+- `provider` (text): Vanguard or Robinhood
+- `feature` (text): what the page offers
+- `steps` (text): what a survivor does, as the page lists it
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
 - `checked` (date): the day you read it, YYYY-MM-DD
 
-**Done when:** Every step sourced.
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 2
+
+**Done when:** Two rows, each quote on its page.
 
 **How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
+- Muse re-reads both.
 
 **Not done (sent back) if:**
 - a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

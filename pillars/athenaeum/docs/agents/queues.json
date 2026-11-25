@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "athenaeum",
  "agents": [
   {
@@ -425,7 +425,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "The family tree now reaches 1638 (Lower Norfolk, Virginia) and crosses the Regulators, the Revolution, Cherokee removal, Civil War Tennessee, the Lithuanian press ban, Ellis Island, the AEF in France, Detroit's auto plants and the Depression. Kin's timeline will draw on Athenaeum's chronicle.",
      "unlocks": "The family's lives sit in their history, in both pillars.",
@@ -506,10 +506,12 @@
      ],
      "id": "ATH-GEM-07",
      "title": "Athenaeum: 20 history chains for the family's own eras (1638-1950), cause, event and consequence, with the sources' own words",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 20 family-era chains; they join Kin's person pages with the lineage wiring. Score in #206."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Ten of the entries came from Kin's seed without sources.",
      "unlocks": "The history behind every record in the tree, and Athenaeum's own timeline.",
@@ -598,10 +600,12 @@
      ],
      "id": "ATH-GEM-08",
      "title": "History: source the 10 Kin entries that have none (1904-1941)",
-     "due": "2026-11-30"
+     "due": "2026-11-30",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Joseph Termena came from Samogitia.",
      "unlocks": "The history behind every record in the tree, and Athenaeum's own timeline.",
@@ -691,10 +695,12 @@
      ],
      "id": "ATH-GEM-09",
      "title": "History: Lithuania and the Russian Empire, 1795-1991 (40 entries)",
-     "due": "2026-12-03"
+     "due": "2026-12-03",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Joseph Pavia (born 1897) and Lucretia Calleja (born 1910) came from Malta to Detroit.",
      "unlocks": "The history behind every record in the tree, and Athenaeum's own timeline.",
@@ -784,10 +790,12 @@
      ],
      "id": "ATH-GEM-10",
      "title": "History: Malta, 1798-1979 (30 entries)",
-     "due": "2026-12-03"
+     "due": "2026-12-03",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Three family lines worked in Detroit's plants (a furnace attendant killed at Ford in 1935; a grinder on cylinder blocks in 1950).",
      "unlocks": "The history behind every record in the tree, and Athenaeum's own timeline.",
@@ -877,10 +885,12 @@
      ],
      "id": "ATH-GEM-11",
      "title": "History: Detroit and Michigan, 1890-2010 (40 entries)",
-     "due": "2026-12-04"
+     "due": "2026-12-04",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. The Kirkland, Bivens, Giles, Culberson and Moss lines lived in Monroe, McMinn and Polk counties; Thomas Davis was a Regulator.",
      "unlocks": "The history behind every record in the tree, and Athenaeum's own timeline.",
@@ -970,10 +980,12 @@
      ],
      "id": "ATH-GEM-12",
      "title": "History: Tennessee, North Carolina and the Cherokee frontier, 1730-1900 (40 entries)",
-     "due": "2026-12-05"
+     "due": "2026-12-05",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. The Martin, Keeling, Thorowgood, Rogers, Estes, Pulliam, Stone and Davis lines reach colonial Virginia and Pennsylvania.",
      "unlocks": "The history behind every record in the tree, and Athenaeum's own timeline.",
@@ -1062,10 +1074,12 @@
      ],
      "id": "ATH-GEM-13",
      "title": "History: colonial Virginia and the Pennsylvania Quakers, 1607-1790 (40 entries)",
-     "due": "2026-12-06"
+     "due": "2026-12-06",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Athenaeum's own timeline needs a world spine to hang the family's history on.",
      "unlocks": "The history behind every record in the tree, and Athenaeum's own timeline.",
@@ -1154,10 +1168,12 @@
      ],
      "id": "ATH-GEM-14",
      "title": "History: the world spine, 1600-2026 (60 entries)",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Athenaeum's world history is now the one dataset every pillar reads (pillars/athenaeum/data/world-history.json; Kin's family tree shows the entries for the family's own places and years). It has 50 entries, 18 of them in the 1900s and 2 in the 1600s, and none yet for Malta, Tennessee, North Carolina or Virginia. Joseph wants it denser and better for recent centuries. Arthur Seconder came to Canada as a Barnardo child in 1892.",
      "unlocks": "The history behind every record in the tree, and Athenaeum's own timeline.",
@@ -1246,7 +1262,183 @@
      ],
      "id": "ATH-GEM-15",
      "title": "History: England and Canada, home children and emigration, 1820-1930 (15 entries)",
-     "due": "2026-12-07"
+     "due": "2026-12-07",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): 265 entries merged into world-history.json (315 now) and sources attached to the 10 Kin seed entries; titles and dates read by Claude. One title corrected (13 Jan 1991 crackdown vs the September recognition); GM's date and the Telsiai yeshiva's year carry a note. Second read pending (ATH-MUS-02). Score 9/10 (#206)."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "ATH-GEM-16",
+     "title": "History: Kern County and the Tejon Pass, 1850-2025 (40 entries)",
+     "due": "2026-12-10",
+     "why": "Joseph lives in Frazier Park; the world history has Detroit, Malta and Lithuania but nothing about his own mountain.",
+     "unlocks": "Kin, Hearth and Aether can show local history beside their own records.",
+     "inputs": [
+      "Kern County's and the Kern County Museum's pages",
+      "Tejon Ranch, Fort Tejon State Historic Park (parks.ca.gov)",
+      "Caltrans history of the Ridge Route and Grapevine"
+     ],
+     "steps": [
+      "40 dated events: Fort Tejon, the 1857 earthquake, the Ridge Route, Frazier Park's founding, I-5, fires and storms.",
+      "Same entry shape as your history files (id, date, end, precision, title, text, regions, themes, place, sources with quotes)."
+     ],
+     "deliver": {
+      "file": "athenaeum_gemini_history-kern_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 40,
+     "fields": [
+      {
+       "name": "id",
+       "type": "text",
+       "rule": "his-kern-YYYY-word"
+      },
+      {
+       "name": "date",
+       "type": "text",
+       "rule": "YYYY or YYYY-MM-DD"
+      },
+      {
+       "name": "end",
+       "type": "text or none",
+       "rule": "end year"
+      },
+      {
+       "name": "precision",
+       "type": "text",
+       "rule": "day/month/year/decade"
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": "short"
+      },
+      {
+       "name": "text",
+       "type": "text",
+       "rule": "one paragraph"
+      },
+      {
+       "name": "regions",
+       "type": "list",
+       "rule": "california and others from the list"
+      },
+      {
+       "name": "themes",
+       "type": "list",
+       "rule": "from the list"
+      },
+      {
+       "name": "place",
+       "type": "object",
+       "rule": "name, lat, lon"
+      },
+      {
+       "name": "sources",
+       "type": "list",
+       "rule": "cite, url, quote"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "40 entries.",
+     "checks": [
+      "Claude reads every title and date; Muse second-reads 8."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "ATH-GEM-17",
+     "title": "History: the Philippines, 1898-2024 (30 entries)",
+     "due": "2026-12-12",
+     "why": "Joseph has travelled to the Philippines twice (Odyssey); the world history has no Philippine entries yet.",
+     "unlocks": "Odyssey's trip pages and Athenaeum show the country's history.",
+     "inputs": [
+      "Official Gazette of the Philippines, National Historical Commission",
+      "Library of Congress country studies",
+      "Britannica"
+     ],
+     "steps": [
+      "30 dated events from the Spanish-American War to 2024.",
+      "Same entry shape as your history files; region 'philippines'."
+     ],
+     "deliver": {
+      "file": "athenaeum_gemini_history-philippines_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 30,
+     "fields": [
+      {
+       "name": "id",
+       "type": "text",
+       "rule": "his-ph-YYYY-word"
+      },
+      {
+       "name": "date",
+       "type": "text",
+       "rule": "YYYY or YYYY-MM-DD"
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": "short"
+      },
+      {
+       "name": "text",
+       "type": "text",
+       "rule": "one paragraph"
+      },
+      {
+       "name": "regions",
+       "type": "list",
+       "rule": "philippines and others"
+      },
+      {
+       "name": "themes",
+       "type": "list",
+       "rule": "from the list"
+      },
+      {
+       "name": "place",
+       "type": "object",
+       "rule": "name, lat, lon"
+      },
+      {
+       "name": "sources",
+       "type": "list",
+       "rule": "cite, url, quote"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "30 entries.",
+     "checks": [
+      "Claude reads every title and date."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

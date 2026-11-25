@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "garage",
  "agents": [
   {
@@ -832,7 +832,7 @@
      "review": "Done 2026-11-21 (Claude): Built as Garage's \"What California charges each year\", marked not second-read (dmv.ca.gov unreachable from the sandbox; Muse checks it). Score 10/10 (#82)."
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-21",
      "why": "Garage's fee rows are 2026 amounts; DMV adjusts registration, CHP and the transportation improvement fee each January.",
      "unlocks": "Garage's yearly cost uses 2027's real amounts.",
@@ -901,7 +901,9 @@
      ],
      "id": "GAR-GEM-13",
      "title": "Garage: DMV's 2027 fee amounts after the January 1 adjustment",
-     "due": "2027-01-10"
+     "due": "2027-01-10",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
     },
     {
      "state": "done",
@@ -1164,7 +1166,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Lights, fluids and specs are in; the schedule is the thing Garage reminds about.",
      "unlocks": "Garage's reminders follow the manufacturer, not guesses.",
@@ -1228,7 +1230,84 @@
      ],
      "id": "GAR-GEM-17",
      "title": "Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "GAR-GEM-18",
+     "title": "Garage: the Sorento's Intelligent Speed Limit Assist light (row 43) from a stable manual link",
+     "due": "2026-12-03",
+     "why": "HUB-MUS-05: row 43 cites a Kia portal pop-up with no document id; the citation can never open.",
+     "unlocks": "Every warning light on both vehicles is sourced.",
+     "inputs": [
+      "garage_gemini_lights_20261121-1215.json"
+     ],
+     "steps": [
+      "Find the 2025 Sorento Hybrid owner's manual as a stable PDF or page on kia.com or owners.kia.com.",
+      "Quote the ISLA indicator line and give its page number."
+     ],
+     "deliver": {
+      "file": "garage_gemini_lights-row43-fix_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 1,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "43"
+      },
+      {
+       "name": "light",
+       "type": "text",
+       "rule": "the indicator"
+      },
+      {
+       "name": "meaning",
+       "type": "text",
+       "rule": "as the manual says"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": "manual page"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Row 43 opens and matches.",
+     "checks": [
+      "Muse re-reads it."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

@@ -2,93 +2,55 @@
 
 # Garage · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. GAR-GEM-17 · Garage: the severe-service maintenance schedule for both vehicles, item by item, from the owner's manuals
+## 1. GAR-GEM-18 · Garage: the Sorento's Intelligent Speed Limit Assist light (row 43) from a stable manual link
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-03 · **State:** now
 
-**Why:** Lights, fluids and specs are in; the schedule is the thing Garage reminds about.
+**Why:** HUB-MUS-05: row 43 cites a Kia portal pop-up with no document id; the citation can never open.
 
-**What it unlocks:** Garage's reminders follow the manufacturer, not guesses.
+**What it unlocks:** Every warning light on both vehicles is sourced.
 
 **Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/garage/
+- garage_gemini_lights_20261121-1215.json
 
 **Do this:**
-1. Every scheduled item for both vehicles (severe service: mountains, cold, towing): miles and months, from the owner's manual pages.
+1. Find the 2025 Sorento Hybrid owner's manual as a stable PDF or page on kia.com or owners.kia.com.
+2. Quote the ISLA indicator line and give its page number.
 
-**Make:** `garage_gemini_schedule_{YYYYMMDD-HHMM}.json`
+**Make:** `garage_gemini_lights-row43-fix_{YYYYMMDD-HHMM}.json`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
 **Shape:** `JSON array, one object per row, exactly the fields below`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `vehicle` (text): which
-- `item` (text): the service
-- `miles` (number): interval
-- `months` (number): interval
-- `source_url` (url): the official page that shows the value
+- `n` (number): 43
+- `light` (text): the indicator
+- `meaning` (text): as the manual says
+- `page` (text): manual page
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
 - `checked` (date): the day you read it, YYYY-MM-DD
 
-**Done when:** Every item from both manuals.
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 1
+
+**Done when:** Row 43 opens and matches.
 
 **How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
+- Muse re-reads it.
 
 **Not done (sent back) if:**
 - a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
-
-## 2. GAR-GEM-13 · Garage: DMV's 2027 fee amounts after the January 1 adjustment
-
-**Due:** 2027-01-10 · **State:** now
-
-**Why:** Garage's fee rows are 2026 amounts; DMV adjusts registration, CHP and the transportation improvement fee each January.
-
-**What it unlocks:** Garage's yearly cost uses 2027's real amounts.
-
-**Read first:**
-- https://www.dmv.ca.gov/portal/vehicle-registration/registration-fees/
-- https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/garage/fees.js
-
-**Do this:**
-1. After Jan 1, 2027, open DMV's fee page and its fee calculator notes; record every amount in fees.js that changed and its new value.
-2. Quote the line for each; keep unchanged ones as 'same' with the line.
-
-**Make:** `garage_gemini_ca-fees-2027_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (integer): row
-- `item` (text): as in fees.js
-- `was` (text): 2026 amount
-- `now` (text): 2027 amount or 'same'
-- `url` (URL): the official page
-- `quote` (text): under 300 characters, word for word
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
-- [ ] Every quote is copied word for word from that page or PDF page and is there now.
-- [ ] No row is a copy of another with the names changed.
-- [ ] The file is valid JSON and is named exactly as asked.
-
-**Done when:** Every fees.js amount checked against DMV's 2027 page.
-
-**How Claude checks it:**
-- Claude opens rows at random against their pages.
-
-**Not done (sent back) if:**
-- fewer rows than the count, or a row missing a field
-- a URL that does not open, is a home page or a search page, or does not say what the row claims
-- a quote that is not on the page it cites (Claude opens rows at random)
-- a file saved anywhere but the folder named here, or under another name
-- a guess written as a fact (write 'not stated' and name the page you checked)
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

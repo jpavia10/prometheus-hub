@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "money",
  "agents": [
   {
@@ -462,7 +462,7 @@
      "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
     },
     {
-     "state": "now",
+     "state": "done",
      "added": "2026-11-24",
      "why": "Pricing is complete; the programs that lower it are the next lever.",
      "unlocks": "Money can say which call to make.",
@@ -526,7 +526,157 @@
      ],
      "id": "MON-GEM-08",
      "title": "Money: hardship and APR-reduction programs of the issuers in Money's list, from their own pages",
-     "due": "2026-12-08"
+     "due": "2026-12-08",
+     "closed": "2026-11-25",
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "MON-GEM-09",
+     "title": "Money: fix the two issuer-pricing rows Muse could not match (Discover it APR, the FNBO card)",
+     "due": "2026-12-03",
+     "why": "Muse's second read (HUB-MUS-05, 25 Nov): row 11's APR is not on the Discover page it cites; row 13 prices FNBO GreenSelect under the Greenlight Family Cash name.",
+     "unlocks": "The issuer table in Midas can show every row as checked.",
+     "inputs": [
+      "money_gemini_issuer-pricing_20261121-1136.json (your file)",
+      "docs/agents/QUEUE_muse.md HUB-MUS-05 result in jpavia10/prometheus-hub (hub incoming: hub_muse_second-read_20261125-0525.md)"
+     ],
+     "steps": [
+      "Row 11: find the Discover page or cardmember agreement that prints the purchase APR range and quote it.",
+      "Row 13: either retitle the row FNBO GreenSelect (its numbers are right for that card) or find the Greenlight Family Cash card's own published terms.",
+      "Send only the two corrected rows, numbered 11 and 13."
+     ],
+     "deliver": {
+      "file": "money_gemini_issuer-pricing-fix_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 2,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "11 or 13"
+      },
+      {
+       "name": "issuer",
+       "type": "text",
+       "rule": "the issuer"
+      },
+      {
+       "name": "card",
+       "type": "text",
+       "rule": "the card's exact name on the page"
+      },
+      {
+       "name": "apr",
+       "type": "text",
+       "rule": "as printed"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Both rows source-matched.",
+     "checks": [
+      "Claude and Muse open both URLs and find the quotes."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "MON-GEM-10",
+     "title": "Money: how a card payment is applied (CARD Act, Regulation Z 1026.53)",
+     "due": "2026-12-10",
+     "why": "Midas's payoff plan assumes the amount above the minimum goes to the highest-APR balance first; that is the CARD Act rule, and its exceptions (deferred interest in the last two cycles) change the plan.",
+     "unlocks": "Midas's payoff engine gets a unit test per rule.",
+     "inputs": [
+      "https://www.consumerfinance.gov/rules-policy/regulations/1026/53/",
+      "12 CFR 1026.53 on ecfr.gov"
+     ],
+     "steps": [
+      "Every rule in 1026.53 and its official commentary that decides where a payment goes: the minimum, the excess, deferred-interest balances, the last two billing cycles, consumer requests.",
+      "One row per rule with a worked example in the commentary's own words where it gives one."
+     ],
+     "deliver": {
+      "file": "money_gemini_payment-allocation_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "what the rule says"
+      },
+      {
+       "name": "section",
+       "type": "text",
+       "rule": "1026.53(x) or comment"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "12 rows.",
+     "checks": [
+      "Claude turns each into a test of the payoff engine."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

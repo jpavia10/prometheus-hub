@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-25] d82-d87: Hearth by room, Midas v4, Atlas and Aegis, Gemini's splash, run 8 filed
+- New pillars Atlas (work and pay) and Aegis (insurance) share summaries with Hearth and Midas (d84). Gemini's splash opens the hub (d85). Its town and weather-chip fixes are live in d86.
+- Run 8: 61 Gemini tasks closed with reviews (rows 202-207, 210), Muse's second reads scored 10 (208-209). 7 Muse-accepted files are in seven pillars. 265 history entries are merged into Athenaeum (315 in all). Kin: C10 proven, C6 resolved (180338), C5 re-argued. 20 new tasks: Gemini 30 open, Muse 7. Run-8 pillar files wait for HUB-MUS-06.
+
 ### [2026-11-25] d81: Midas in the dock, and the sound rebuilt (owner: "Replace money at the bottom with midas ..."; "The sound design is terrible also. It should be 1000 percent better")
 - Dock and rail: Money is now Midas (`../midas-ledger/`). The Payoff Console's goal went into Midas (`jpavia10/midas-ledger` 1976944: What if under the plan, recurring charges and the subscription audit in Flow, due-in-two-weeks on Home, the library in Debt; bills stay in `prom.deck.money` so Time keeps them; all 12 worked cases now match Midas's engine to the cent). That commit is local: this session may not push to midas-ledger, so `#/money` keeps the old console until it is live.
 - Interface sounds rebuilt in `deck/core/voice.js` (glass tap, a bell phrase that climbs a pentatonic, an opening swell, a stereo whoosh into pillars, a recorded hall, panned by the finger); town sound rebuilt: water, falls, dock, frogs and chimes placed in the painting and following the camera, gusting wind, crows, woodpecker, a far dog, the clock tower (synthesized bell) 8 to 21, fireworks on the Fourth and New Year's Eve, a recorded forest or snowfield outdoors (`tools/audio/town.py`, `audio/town/`, `audio/ir/`). Proofs SOUND-1 and TOWN-4; DECK-2 no longer fails on another site's 429. Also fixed: d80 had made the town flat on screens under 1.5x (91b9f29, live 48/48).

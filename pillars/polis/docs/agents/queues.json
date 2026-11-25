@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pillar": "polis",
  "agents": [
   {
@@ -336,7 +336,7 @@
     {
      "id": "POL-GEM-07",
      "title": "Polis: who decides things for Frazier Park and when they meet in 2027",
-     "state": "now",
+     "state": "done",
      "added": "2026-11-19",
      "due": "2027-01-15",
      "why": "Polis lists Kern rules but not the meetings where they change.",
@@ -410,7 +410,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a guess written as a fact (write 'not stated' or 'not found' instead)"
      ],
-     "review": "Sent back 2026-11-21 (Claude, score 6/10, #89): every date was 'not stated'. The Board of Supervisors' 2027 schedule PDF exists (its host blocked your fetch: try the Granicus agenda list or another route, or say exactly what blocked you); the Planning Commission and MCMAC have not published 2027 yet, so resend once they do, by Jan 15, 2027."
+     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207.",
+     "closed": "2026-11-25"
     },
     {
      "state": "done",

@@ -2,47 +2,8 @@
 
 # Records · Paper Killer · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. REC-GEM-12 · Records: ordering vital records for Kin: birth, marriage and death certificates in California, Michigan, Tennessee and New York City (who may order, fees, forms, wait)
-
-**Due:** 2026-12-08 · **State:** now
-
-**Why:** Kin's open links are closed by certificates (Barbara's birth, Della's second marriage, Laurie's birth); Records holds how to get them.
-
-**What it unlocks:** Joseph can order the certificates that prove the tree.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/records/
-- https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/
-
-**Do this:**
-1. For each state and record type: who may order (a descendant? a genealogist?), the fee, the form or portal, the wait, and the years available.
-
-**Make:** `records_gemini_vital-records_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `state` (text): which
-- `record` (text): birth, marriage or death
-- `who` (text): who may order
-- `fee` (number): US dollars
-- `how` (text): form or portal
-- `source_url` (url): the official page that shows the value
-- `checked` (date): the day you read it, YYYY-MM-DD
-
-**Done when:** All four states, three record types each.
-
-**How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
-
-**Not done (sent back) if:**
-- a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+No homework for Gemini in Records · Paper Killer right now. Check your HOMEWORK doc for the other pillars.

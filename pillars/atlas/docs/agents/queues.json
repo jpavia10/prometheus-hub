@@ -223,6 +223,83 @@
       "a value for a year that has not been published yet presented as if it had (write \"not published as of {date}\" instead)",
       "a quote that is not on the page word for word"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "ATL-GEM-04",
+     "title": "Atlas: an employee's 2027 tax calendar (federal and California)",
+     "due": "2026-12-12",
+     "why": "Atlas tracks paydays and pay stubs; the dates that matter around them (W-2 deadline, estimated tax dates, new withholding tables) belong on the same calendar.",
+     "unlocks": "Atlas publishes these dates to the hub's deadline bus.",
+     "inputs": [
+      "https://www.irs.gov",
+      "https://www.ftb.ca.gov",
+      "https://edd.ca.gov"
+     ],
+     "steps": [
+      "Every 2027 date an employee in California may need: W-2 by, estimated tax payments (federal and FTB), filing deadline, extension deadline, IRA contribution deadline, new withholding tables in force.",
+      "Where a 2027 date is not published, give the rule and say so."
+     ],
+     "deliver": {
+      "file": "atlas_gemini_tax-calendar-2027_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 15,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "what",
+       "type": "text",
+       "rule": "the deadline"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      },
+      {
+       "name": "who",
+       "type": "text",
+       "rule": "IRS, FTB or EDD"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is copied word for word from that page and is there now.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "15 rows.",
+     "checks": [
+      "Claude checks the dates against the IRS and FTB calendars."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote that is not word for word on the page as served today",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

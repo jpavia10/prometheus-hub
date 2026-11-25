@@ -2,7 +2,7 @@
 
 # Atlas · Work & Pay · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -140,3 +140,54 @@ Updated 2026-11-25 15:39 UTC · 3 open · Rules for every pillar: https://github
 - a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 - a quote that is not on the page word for word
+
+## 4. ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California)
+
+**Due:** 2026-12-12 · **State:** now
+
+**Why:** Atlas tracks paydays and pay stubs; the dates that matter around them (W-2 deadline, estimated tax dates, new withholding tables) belong on the same calendar.
+
+**What it unlocks:** Atlas publishes these dates to the hub's deadline bus.
+
+**Read first:**
+- https://www.irs.gov
+- https://www.ftb.ca.gov
+- https://edd.ca.gov
+
+**Do this:**
+1. Every 2027 date an employee in California may need: W-2 by, estimated tax payments (federal and FTB), filing deadline, extension deadline, IRA contribution deadline, new withholding tables in force.
+2. Where a 2027 date is not published, give the rule and say so.
+
+**Make:** `atlas_gemini_tax-calendar-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `what` (text): the deadline
+- `date` (date): YYYY-MM-DD
+- `who` (text): IRS, FTB or EDD
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is copied word for word from that page and is there now.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 15
+
+**Done when:** 15 rows.
+
+**How Claude checks it:**
+- Claude checks the dates against the IRS and FTB calendars.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote that is not word for word on the page as served today
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

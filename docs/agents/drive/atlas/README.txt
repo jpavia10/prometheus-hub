@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Atlas · Work & Pay right now.
 
 ## Gemini
 
-Updated 2026-11-25 15:39 UTC · 3 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 4 open in this pillar.
 
 
 - ATL-GEM-01 · Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic · due 2026-12-05
@@ -24,10 +24,12 @@ Updated 2026-11-25 15:39 UTC · 3 open in this pillar.
     make: atlas_gemini_payroll-numbers_{YYYYMMDD-HHMM}.json · how many: 24 · done when: Both years, every item above.
 - ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each · due 2026-12-09
     make: atlas_gemini_ca-pay-rules_{YYYYMMDD-HHMM}.json · how many: 20 · done when: At least 20 rows covering all five topics, every pay-stub item one row.
+- ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California) · due 2026-12-12
+    make: atlas_gemini_tax-calendar-2027_{YYYYMMDD-HHMM}.json · how many: 15 · done when: 15 rows.
 
 ## Muse
 
-Updated 2026-11-25 15:39 UTC · 1 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 1 open in this pillar.
 
 
 - ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules · due 2026-12-12 · waits for its input file
@@ -35,21 +37,21 @@ Updated 2026-11-25 15:39 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Atlas · Work & Pay right now.
 
 ## Argon
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Atlas · Work & Pay right now.
 
 ## Hydrogen
 
-Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:13 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Atlas · Work & Pay right now.

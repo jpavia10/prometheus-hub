@@ -2,45 +2,8 @@
 
 # Forge · homework for Gemini
 
-Updated 2026-11-25 15:39 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-25 17:13 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. FOR-GEM-08 · Forge: the DONE markers from Nov 24 to Dec 7 against the Forge
-
-**Due:** 2026-12-08 · **State:** now
-
-**Why:** The same check as FOR-GEM-07, for the next fortnight.
-
-**What it unlocks:** The Forge never shows done work as open.
-
-**Read first:**
-- https://jpavia10.github.io/prometheus-hub/pillars/forge/
-
-**Do this:**
-1. Every DONE_ marker you leave from Nov 24 to Dec 7: does the Forge show the task as delivered or done?
-
-**Make:** `forge_gemini_done-markers-3_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `task` (text): id
-- `marker_drive_id` (text): the marker's id
-- `forge_says` (text): what the Forge shows
-- `agree` (boolean): 
-- `source_url` (url): the official page that shows the value
-- `checked` (date): the day you read it, YYYY-MM-DD
-
-**Done when:** Every marker checked.
-
-**How Claude checks it:**
-- Claude opens every source URL in ten rows at random and checks the value against the page.
-
-**Not done (sent back) if:**
-- a value without a source URL that shows it
-- rows missing to reach the count
-- a source that is a blog, forum or AI summary where an official page exists
+No homework for Gemini in Forge right now. Check your HOMEWORK doc for the other pillars.
