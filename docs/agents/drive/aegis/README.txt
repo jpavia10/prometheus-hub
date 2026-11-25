@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-25 17:23 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:24 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Aegis · Insurance & Cover right now.
 
 ## Gemini
 
-Updated 2026-11-25 17:23 UTC · 5 open in this pillar.
+Updated 2026-11-25 17:24 UTC · 5 open in this pillar.
 
 
 - AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines) · due 2026-12-06
@@ -31,7 +31,7 @@ Updated 2026-11-25 17:23 UTC · 5 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-25 17:23 UTC · 1 open in this pillar.
+Updated 2026-11-25 17:24 UTC · 1 open in this pillar.
 
 
 - AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts · due 2026-12-12 · waits for its input file
@@ -39,21 +39,21 @@ Updated 2026-11-25 17:23 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-25 17:23 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:24 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Aegis · Insurance & Cover right now.
 
 ## Argon
 
-Updated 2026-11-25 17:23 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:24 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Aegis · Insurance & Cover right now.
 
 ## Hydrogen
 
-Updated 2026-11-25 17:23 UTC · 0 open in this pillar.
+Updated 2026-11-25 17:24 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Aegis · Insurance & Cover right now.
