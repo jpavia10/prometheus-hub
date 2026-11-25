@@ -7,6 +7,12 @@ import * as wx from "../core/weather.js";
 import { locationSheet } from "./parts.js";
 
 const t12 = (iso) => fmtTime((iso || "").slice(11, 16)).replace(":00", "");
+const hourIsDay = (x, days) => {
+  if (typeof x.isDay === "boolean") return x.isDay;
+  const iso = x.t || "", day = (days || []).find((d) => d.date === iso.slice(0, 10)) || (days || [])[0];
+  if (day && day.sunrise && day.sunset) { const t = iso.slice(11, 16), r = day.sunrise.slice(11, 16), s = day.sunset.slice(11, 16); if (t && r && s) return t >= r && t < s; }
+  const hr = Number(iso.slice(11, 13)); return Number.isFinite(hr) ? hr >= 6 && hr < 18 : true;
+};
 export function wxChip(ctx) {
   const w = ctx.weather(), place = ctx.store.get("profile").place;
   if (!w || !w.now) {
@@ -19,7 +25,7 @@ export function wxChip(ctx) {
       h("p.wx-sub", `Feels ${Math.round(n.feels)}° · wind ${Math.round(n.wind)} mph${n.gust ? `, gusts ${Math.round(n.gust)}` : ""} · ${n.humidity != null ? n.humidity + "% humidity" : ""}`)),
       h("button.wx-x", { type: "button", "aria-label": "Close", onclick: (e) => { e.stopPropagation(); toggle(false); } }, "×")),
     al ? h("p.wx-alert", h("b", al.event), " ", al.headline ? al.headline.replace(al.event, "").replace(/^\s*(issued|by)\b.*?(until|for)\b/i, "until").replace(/\s+by\s+NWS\b.*$/i, "").slice(0, 120) : "") : null,
-    h("div.wx-hours", ...(w.hours || []).slice(0, 12).map((x) => { const dd = wx.describe(x.code, true); return h("div.wx-h", h("small", t12(x.t)), icon(dd.icon, 16), h("b", `${Math.round(x.temp)}°`), h("small.wx-pop", x.pop != null && x.pop >= 10 ? `${x.pop}%` : "")); })),
+    h("div.wx-hours", ...(w.hours || []).slice(0, 12).map((x) => { const dd = wx.describe(x.code, hourIsDay(x, w.days)); return h("div.wx-h", h("small", t12(x.t)), icon(dd.icon, 16), h("b", `${Math.round(x.temp)}°`), h("small.wx-pop", x.pop != null && x.pop >= 10 ? `${x.pop}%` : "")); })),
     h("div.wx-days", ...(w.days || []).slice(0, 3).map((x, i) => { const dd = wx.describe(x.code, true); return h("div.wx-d", h("span", i === 0 ? "Today" : new Date(x.date + "T12:00").toLocaleDateString(undefined, { weekday: "short" })), icon(dd.icon, 16), h("small", dd.text), h("b", `${Math.round(x.hi)}° / ${Math.round(x.lo)}°`)); })),
     h("p.wx-sun", today.sunrise ? `Sunrise ${t12(today.sunrise)} · sunset ${t12(today.sunset)}` : "", al ? null : h("span", wx.headline(w))),
     h("p.wx-foot", h("a", { href: "pillars/aether/" }, "Air, fire and the pass in Aether ›"), h("small", w.stale ? "last known reading" : `read ${Math.max(0, Math.round((Date.now() - w.at) / 60000))} min ago`)));

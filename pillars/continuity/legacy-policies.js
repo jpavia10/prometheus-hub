@@ -2,7 +2,7 @@
    continuity_gemini_legacy-policies_20261117-1735.json (25 services), accepted by Muse's recheck 8/10
    (continuity_muse_legacy-policies-recheck_20261118-1615.md: all seven named defects fixed, Coinbase quote now verbatim).
    At integration: Ally's 'equal-share' removed (not on its page); Amex flagged (page documents no Estate Services process);
-   TikTok, Vanguard and Robinhood marked unchecked (the second read's page fetch was rate-limited). Gemini's later 20261118-1940
+   TikTok, Vanguard and Robinhood marked unchecked (the second read's page fetch was rate-limited); Muse's HUB-MUS-05 (2026-11-25) cleared TikTok and corrected Vanguard and Robinhood to their pages. Gemini's later 20261118-1940
    version swaps LinkedIn and the Apple Activation Lock row for Instagram and X; it is with Muse's check (HUB-MUS-03).
    window.CONTINUITY_POLICIES. Policies only: nothing here asks for or stores a password.
    Rows 26-27 (2026-11-19): CON-GEM-05, Gemini 4 Neon continuity_gemini_legacy-two_20261119-0914.json (Capital One 360 Performance Savings POD/joint, FDIC six-month grace rule 12 CFR 330.3(j)). */
@@ -178,7 +178,7 @@ window.CONTINUITY_POLICIES = [
   "after_death": "A family member or legal guardian requests memorialization or deletion with proof of death and relationship; a memorialized account stays visible but allows no logins, new posts, or direct messages.",
   "url": "https://support.tiktok.com/fr/account-and-privacy/account-information/managing-tiktok-accounts-after-death",
   "quote": "If a TikTok account owner has passed away, our policy allows us to update the account status to either memorialize or delete it.",
-  "unchecked": true
+  "corrected": "Second read (Muse, 2026-11-25): every field agrees with TikTok's article."
  },
  {
   "n": 20,
@@ -201,22 +201,22 @@ window.CONTINUITY_POLICIES = [
  {
   "n": 22,
   "service": "Vanguard",
-  "feature": "Transfer on Death (TOD) & Inherited IRA 10-Year Rule",
-  "set_up_now": "Set TOD beneficiaries for taxable accounts and primary/contingent beneficiaries for IRAs (which supersede a will).",
-  "after_death": "TOD assets transfer outside probate; most non-spouse IRA beneficiaries must liquidate the inherited IRA within 10 years under the SECURE Act.",
+  "feature": "Primary and contingent beneficiaries",
+  "set_up_now": "Name a primary and a contingent beneficiary on each account.",
+  "after_death": "The cited page does not describe the process after a death: call Vanguard and ask.",
   "url": "https://investor.vanguard.com/investor-resources-education/beneficiaries",
-  "quote": "The beneficiary designations that you make on a retirement account like an IRA generally supersede any other instructions you leave, including your will.",
-  "unchecked": true
+  "quote": null,
+  "corrected": "Second read (Muse, 2026-11-25): the quoted sentence and the TOD and 10-year-rule claims are not on the cited page, which covers primary and contingent beneficiaries only. Rewritten to what the page says; re-sourcing is with Gemini."
  },
  {
   "n": 23,
   "service": "Robinhood",
-  "feature": "TOD Beneficiary & Estates Team Freeze",
-  "set_up_now": "Designate a TOD beneficiary on individual brokerage and IRA accounts; revocable trust accounts must move out if grantor dies.",
-  "after_death": "Robinhood freezes the account on notice of death; submit death certificate, ID, and probate/trust docs via the Robinhood Estates form.",
+  "feature": "The Estates form",
+  "set_up_now": "Keep the account listed in the vault; the cited page covers what survivors do, not set-up.",
+  "after_death": "Send the Estates form with the death certificate and a government-issued ID; Robinhood asks for any other document after its first review.",
   "url": "https://robinhood.com/us/en/support/articles/losing-loved-one/",
-  "quote": "Accounts with beneficiary designations or trust ownership transfer outside of probate. Accounts titled solely in the deceased's name require the estate's legal representative to work with Robinhood's Estates Team",
-  "unchecked": true
+  "quote": "Don't send copies of wills, trusts, or other estate planning documents. If a specific document is required, we'll request it after our initial review.",
+  "corrected": "Second read (Muse, 2026-11-25): the old quote and the freeze and TOD claims are not on the page; the page says the opposite about estate documents. Rewritten to what it says."
  },
  {
   "n": 24,

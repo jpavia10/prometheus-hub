@@ -145,7 +145,7 @@ export function realm(ctx) {
     syn.replaceChildren(...peersFor(pl.p.id).slice(0, 3).map((q) => h("button.rl-chip", { type: "button", style: { "--h": q.hue }, onclick: () => choose(list.indexOf(q)) }, q.short || q.name.split(" · ")[0])));
     enterB.querySelector("span").textContent = pl.p.ext ? "Open" : "Enter"; card.style.setProperty("--h", pl.p.hue); card.classList.add("on"); card.classList.remove("rest");
   }
-  function badges() { places.forEach((pl) => { const v = badgeFor(pl.p, stats, t0d, tn); pl.badge.hidden = !v; pl.badge.textContent = v || ""; }); }
+  function badges() { places.forEach((pl) => { const v = badgeFor(pl.p, stats, t0d, tn); pl.badge.hidden = !v; pl.badge.textContent = v || ""; pl.lw = 0; }); }
   badges(); titan().then((d) => { tn = d; badges(); paintCard(); }); paintCard();
 
   /* the view: centre (cx, cy) in the painting, zoom over "the painting's height fills the stage" */
@@ -251,7 +251,7 @@ export function realm(ctx) {
   readSky(); Object.assign(SK, SKT); const skyTimer = setInterval(() => { readSky(); readSeason(); wake(); }, 2e4);
   ready.then(() => { if (!dead) readSeason(); });
   const dprMax = Math.min(2, devicePixelRatio || 1); let dpr = dprMax;
-  function size() { const w = stage.clientWidth, hh = stage.clientHeight; if (!w || !hh) return; cv.width = Math.round(w * dpr); cv.height = Math.round(hh * dpr); if (gl) gl.viewport(0, 0, cv.width, cv.height); clampV(); }
+  function size() { const w = stage.clientWidth, hh = stage.clientHeight; if (!w || !hh) return; cv.width = Math.round(w * dpr); cv.height = Math.round(hh * dpr); if (gl) gl.viewport(0, 0, cv.width, cv.height); places.forEach((pl) => { pl.lw = 0; }); clampV(); }
   const PCA = new Float32Array(MAXP * 3);
   places.forEach((pl, i) => { const c = hueRgb(pl.p.hue); PCA.set(c, i * 3); });
   let raf = 0, dead = false, seen = true, last = 0, slow = 0, par = [0, 0], ptx = 0, pty = 0, drift = 1;
@@ -288,12 +288,13 @@ export function realm(ctx) {
     let offL = [], offR = [];
     for (const i of order) { const pl = places[i]; if (!pl.lw) pl.lw = pl.label.offsetWidth || 80; let show = pl.sx > 14 && pl.sx < w - 14 && pl.sy > TOP + 6 && pl.sy < cardTop && !(pl.sx - pl.lw / 2 < 190 && pl.sy < TOP + 64) && !(pl.sx + pl.lw / 2 > w - 150 && pl.sy < TOP + 64);   /* never under the weather or the Levels button */
       if (pl.sx < 14) offL.push(pl); else if (pl.sx > w - 14) offR.push(pl);
-      if (show && i !== sel) for (const q2 of placed) if (Math.abs(q2[0] - pl.sx) < 64 && Math.abs(q2[1] - pl.sy) < 20) { show = false; break; }
-      if (show) placed.push([pl.sx, pl.sy]);
-      pl.label.style.transform = `translate3d(${pl.sx.toFixed(1)}px, ${pl.sy.toFixed(1)}px, 0) translate(-50%, -8px)`;
-      /* a name near a side of the screen slides inward so it is never cut (owner: "oddessy is cut off"); its dot stays on the building */
-      const nx = Math.round(Math.max(0, 8 - (pl.sx - pl.lw / 2)) + Math.min(0, w - 8 - (pl.sx + pl.lw / 2)));
-      if (pl.nx !== nx) { pl.nx = nx; pl.label.style.setProperty("--nx", nx + "px"); }
+      const lx = Math.min(w - 8 - pl.lw / 2, Math.max(8 + pl.lw / 2, pl.sx));
+      if (show && i !== sel) for (const q2 of placed) if (Math.abs(q2[0] - lx) < 64 && Math.abs(q2[1] - pl.sy) < 20) { show = false; break; }
+      if (show) placed.push([lx, pl.sy]);
+      pl.label.style.transform = `translate3d(${lx.toFixed(1)}px, ${pl.sy.toFixed(1)}px, 0) translate(-50%, -8px)`;
+      /* clamp the whole label inside [8, w - 8] so it never clips (MYTHOS/ODYSSEY); shift the dot back onto the building */
+      const dx = Math.round(pl.sx - lx);
+      if (pl.dx !== dx) { pl.dx = dx; pl.label.style.setProperty("--dx", dx + "px"); }
       if (pl.on !== show) { pl.on = show; pl.label.classList.toggle("on", show); }
       pl.label.classList.toggle("sel", i === sel); }
     const edge = (b, list, side) => { const show = list.length > 0 && sel < 0; if (b.hidden === show) b.hidden = !show; if (!show) return; list.sort((a, c) => (side < 0 ? c.sx - a.sx : a.sx - c.sx));
@@ -352,6 +353,8 @@ export function realm(ctx) {
   el.view = () => ({ cx: V.cx, cy: V.cy, hw: halfW(V.z), hh: halfH(V.z), dive: V.dive });   // where the camera is over the painting: the town's sound places itself by it
   el.cleanup = () => { dead = true; document.body.classList.remove("town-diving"); clearInterval(skyTimer); cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt);
     try { if (gl && !gl.isContextLost()) { const lc = gl.getExtension("WEBGL_lose_context"); if (lc) lc.loseContext(); } } catch (e) { /* already gone */ } };   // hand the GPU context back: a phone holds only a few
+  /* the labels' widths are measured once; when the web font lands they change, so measure again (Gemini, run 8) */
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!dead) { places.forEach((pl) => { pl.lw = 0; }); wake(); } });
   size();
   return el;
 }

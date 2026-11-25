@@ -25,7 +25,7 @@ export async function load(place, { force = false } = {}) {
   if (old && !force && now - old.at < 20 * 60000) return old;
   const q = `latitude=${place.lat}&longitude=${place.lon}`;
   const url = `https://api.open-meteo.com/v1/forecast?${q}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,cloud_cover,precipitation,snowfall,snow_depth,is_day,relative_humidity_2m` +
-    `&hourly=temperature_2m,precipitation_probability,precipitation,snowfall,wind_gusts_10m,weather_code&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum,wind_gusts_10m_max,weather_code` +
+    `&hourly=temperature_2m,precipitation_probability,precipitation,snowfall,wind_gusts_10m,weather_code,is_day&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum,wind_gusts_10m_max,weather_code` +
     `&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto&forecast_days=3`;
   try {
     const [fx, al] = await Promise.all([
@@ -34,7 +34,7 @@ export async function load(place, { force = false } = {}) {
     ]);
     const c = fx.current || {}; const hNow = (fx.hourly && fx.hourly.time ? fx.hourly.time.findIndex((t) => t >= (c.time || "").slice(0, 13)) : 0) || 0;
     const hours = []; for (let i = Math.max(0, hNow); i < Math.min((fx.hourly.time || []).length, hNow + 24); i++)
-      hours.push({ t: fx.hourly.time[i], temp: fx.hourly.temperature_2m[i], pop: fx.hourly.precipitation_probability ? fx.hourly.precipitation_probability[i] : null, rain: fx.hourly.precipitation[i], snow: fx.hourly.snowfall[i], gust: fx.hourly.wind_gusts_10m[i], code: fx.hourly.weather_code[i] });
+      hours.push({ t: fx.hourly.time[i], temp: fx.hourly.temperature_2m[i], pop: fx.hourly.precipitation_probability ? fx.hourly.precipitation_probability[i] : null, rain: fx.hourly.precipitation[i], snow: fx.hourly.snowfall[i], gust: fx.hourly.wind_gusts_10m[i], code: fx.hourly.weather_code[i], isDay: fx.hourly.is_day ? fx.hourly.is_day[i] !== 0 : null });
     const days = (fx.daily.time || []).map((t, i) => ({ date: t, hi: fx.daily.temperature_2m_max[i], lo: fx.daily.temperature_2m_min[i], rain: fx.daily.precipitation_sum[i], snow: fx.daily.snowfall_sum[i], gust: fx.daily.wind_gusts_10m_max[i], code: fx.daily.weather_code[i], sunrise: fx.daily.sunrise[i], sunset: fx.daily.sunset[i] }));
     const alerts = (al.features || []).map((f) => f.properties || {}).map((p) => ({ event: p.event, severity: p.severity, headline: p.headline, onset: p.onset, ends: p.ends || p.expires, instruction: p.instruction || "", area: p.areaDesc || "" }))
       .sort((a, b) => rank(b) - rank(a));

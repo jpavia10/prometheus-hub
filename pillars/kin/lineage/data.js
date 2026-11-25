@@ -537,6 +537,26 @@ window.KIN_LINEAGE = {
       assert: [{ src: "S-anc-hints", value: "Barbara J. Feole, d. 22 Jan 2009 (SSDI); Holly, Oakland, MI (member tree)", info: "secondary", ev: "direct" }] }
   );
 
+  /* 25 Nov 2026: the 1950 census sheet itself, read at full size (Gemini found it, KIN-GEM-28; Claude read the image). The index had
+     her as "Barbara J Rimsha"; the sheet names her TERMENS, so her birth surname is on an original record and C10 rests on it. */
+  L.sources.push(
+    { id: "S-census-1950-termens", short: "1950 census, Detroit: Della Rimsha and Barbara Termens", kind: "original", year: 1950, img: ["census-1950-termens-detail", "census-1950-termens"], url: "https://1950census.archives.gov/",
+      cite: "1950 U.S. Census of Population and Housing, Detroit, Wayne County, Michigan, enumeration district 85-1439, sheet 75, lines 9-10, enumerated 10 April 1950; NARA image 43290879-Michigan-123566-0029.",
+      read: "Line 9: Rimsha, Della E., head, white, female, 45, married, born Oklahoma. Line 10: Termens, Barbara J., daughter, white, female, 17, never married, born Michigan. Read from the image at full size on 25 Nov 2026." }
+  );
+  {
+    const g = P("P-ggm"), n = g.names.find((x) => x.surname === "Rimsha");
+    if (n) { n.surname = "Termens"; n.type = "record"; n.src = ["S-census-1950-termens"]; n.note = "1950 census sheet: Termens, daughter of Della E. Rimsha (the index read Rimsha)"; }
+    g.status = "proven";
+    g.summary = g.summary.replace("in 1950 she was Barbara J. Rimsha, living in Detroit with her mother Della E. Rimsha", "in 1950 she was Barbara J. Termens, 17, living in Detroit with her mother Della E. Rimsha");
+    const r50 = L.events.find((e) => e.id === "E-res-ggm50");
+    if (r50) { r50.conclusion = "Barbara (17) and her mother Della, now Rimsha, in Detroit; Barbara still a Termens."; r50.confidence = "proven";
+      r50.assert.unshift({ src: "S-census-1950-termens", value: "Termens, Barbara J., daughter, 17, born Michigan; Rimsha, Della E., head, 45, married, born Oklahoma", info: "primary", ev: "direct" }); }
+    const c = C("C10");
+    c.conclusion = "daughter";
+    c.argument += " Proven from the original (25 Nov 2026): the 1950 sheet itself (ED 85-1439, sheet 75, lines 9-10) names her Termens, Barbara J., daughter of the head, Della E. Rimsha, age 17. A granddaughter of Joseph would not carry his surname as Della's daughter at 17 in 1950, and her 1933 birth falls inside Joseph and Della's marriage.";
+  }
+
   /* your father's father, and his family in 1940 */
   const fr = P("P-francis");
   fr.status = "probable"; delete fr.living;

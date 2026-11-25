@@ -406,6 +406,9 @@ with sync_playwright() as p:
         pf.evaluate("[...document.querySelectorAll('[role=tab]')].find((t) => /Tasks/.test(t.textContent)).click()"); pf.wait_for_timeout(300)
         groups = pf.evaluate("[...document.querySelectorAll('#f-tasks .tgroup')].map((x) => x.firstChild.textContent)")
         pf.evaluate("[...document.querySelectorAll('[role=tab]')].find((t) => /Scores/.test(t.textContent)).click()"); pf.wait_for_timeout(500)
+        trends_js = "[...document.querySelectorAll('#f-scores canvas.f-trend')].filter((c) => c.width > 0 && c.getContext('2d').getImageData(0, 0, c.width, c.height).data.some((v, i) => i % 4 === 3 && v > 0)).length"
+        try: pf.wait_for_function(trends_js + " >= 2", timeout=6000)  # the trends draw on the next frame once the tab has width; a slow runner needs longer than 0.5 s
+        except Exception: pass
         drawn = pf.evaluate("[...document.querySelectorAll('#f-scores canvas.f-trend')].filter((c) => c.width > 0 && c.getContext('2d').getImageData(0, 0, c.width, c.height).data.some((v, i) => i % 4 === 3 && v > 0)).length")
         closed = pf.evaluate("!document.querySelector('.f-sheet')")
         ok = (f3["ai"] == "Gemini" and f3["todo"] == f3["want"] and f3["next"] >= 1 and str(f3["scored"]) == f3["tile"] and groups[:1] in (["Late"], ["Due this week"]) and drawn >= 2 and closed and not bf)

@@ -225,7 +225,8 @@
       h("span", null, h("b", null, r.service), " ", h("span.pill", null, r.feature), r.unchecked ? h("span.pill.warn", null, " not second-read") : null, h("br"),
         h("span", null, h("b", null, "Now: "), r.set_up_now), h("br"),
         h("span.stat-s", null, h("b", null, "After: "), r.after_death),
-        h("q.stat-s", { style: "display:block;margin:4px 0;font-style:italic" }, r.quote),
+        r.quote ? h("q.stat-s", { style: "display:block;margin:4px 0;font-style:italic" }, r.quote) : null,
+        r.corrected ? h("span.stat-s", { style: "display:block;margin:2px 0;opacity:.75" }, r.corrected) : null,
         r.note ? h("span.stat-s", { style: "display:block" }, "Note: " + r.note) : null,
         h("a.stat-s", { href: r.url, target: "_blank", rel: "noopener" }, "provider's page ↗")),
       h("button.btn.small" + (done[r.n] ? "" : ".quiet"), { type: "button", "aria-pressed": String(!!done[r.n]), onclick: () => {

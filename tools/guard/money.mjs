@@ -74,6 +74,8 @@ export const ALLOW = [
   ["pillars/mythos/research-r7.js", "public reference (run 7): the Copyright Office's registration fees"],
   ["pillars/odyssey/research-r7.js", "public reference (run 7): park pass, entry and trip fees from official pages"],
   ["pillars/records/research-r7.js", "public reference (run 7): Kern property tax penalties and passport fees"],
+  ["pillars/bastion/research-r7.js", "public reference (Muse-checked 25 Nov): Ready.gov and Red Cross kit items, a retail price quoted in one"],
+  ["pillars/privacy/research-r7.js", "public reference (Muse-checked 25 Nov): people-search sites' own published opt-out addresses, no personal data"],
   ["pillars/hermes/billers.js", "billers' public sender domains, service and fraud numbers and report addresses, from their own sites"],
 ];
 

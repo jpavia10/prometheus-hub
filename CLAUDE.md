@@ -72,6 +72,15 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d86 (2026-11-25): run 8, first part.** Gemini's d79 fix patch (HUB-GEM-24 audit): town labels pinned inside the screen with
+  the dot shifted by `--dx`, readable label pills, 44 px targets on the chips and edge buttons, and the weather chip's hourly icons
+  use each hour's own `is_day` (night icons after dark). Continuity: Muse's HUB-MUS-05 second read applied (TikTok agrees; Vanguard
+  and Robinhood rows rewritten to what their pages say, with a `corrected` line). Kin: C10 proven from the 1950 census sheet itself
+  (ED 85-1439, sheet 75, lines 9-10: Barbara J. Termens, 17, daughter in Della E. Rimsha's household), the sheet image in
+  `pillars/kin/lineage/docs/`. The 7 files Muse accepted (PSPS circuits, kit for four, TOD recording, Texas to California,
+  nutrient targets, Kern design criteria, broker opt-outs) are sourced panels in each pillar's `research-r7.js`. Kit: a reference
+  panel never widens the page (Hearth was 414 px at 384). FORGE-3 waits for the score trends to draw (it read them at 0.5 s; the
+  live runner needed longer).
 - **d85 (2026-11-25): Gemini's intro splash opens the hub** (owner: "Gemini made a new intro splash i dont see that yet"). `deck/splash.js`
   is Gemini's supplemental module (WebGL2 shader with a 2D fallback: a spark over the ridges, rings and pillar nodes, PROMETHEUS; tap, Escape,
   Space or Enter skips; disposes everything after). `boot()` in `deck/views/orrery.js` mounts it once a session in place of the old text

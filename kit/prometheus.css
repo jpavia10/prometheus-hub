@@ -459,7 +459,9 @@ body.pk-v2 :is(.btn, .tab, .chip, .pk-dock a, .pk-cmd-btn, .pk-more, .pk-ref-chi
 @media (prefers-reduced-motion: reduce) { .pk-ring::before { animation: none !important; } }
 
 /* sourced reference panels (kit/refs.js, 2026-11-24) */
-.pk-refs-after { display: grid; gap: 14px; margin-top: 14px; }
+.pk-refs-after { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 14px; }
+.pk-refs, .pk-refs-list, .pk-ref { min-width: 0; }  /* a long formula or address in a row wraps instead of widening the page */
+.pk-ref > summary, .pk-ref-body { overflow-wrap: anywhere; }
 .pk-refs .pk-refs-list { display: grid; gap: 6px; margin-top: 10px; }
 .pk-ref { border: 1px solid rgba(255,255,255,.08); border-radius: 12px; background: rgba(255,255,255,.025); }
 .pk-ref > summary { cursor: pointer; list-style: none; padding: 10px 12px; display: grid; gap: 2px; }
