@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T23:20:37Z",
- "checked": "2026-11-25T04:30:41Z",
+ "built": "2026-11-25T05:37:41Z",
+ "checked": "2026-11-25T05:37:41Z",
  "version": 2,
  "today": "2026-11-24",
  "sources": {
@@ -15,19 +15,19 @@
   "titan_projects": true,
   "workboard": true,
   "ledger": {
-   "entries": 157,
-   "synced": "2026-11-24T16:11:08Z"
+   "entries": 163,
+   "synced": "2026-11-25T05:37:41Z"
   },
   "titan_scores": 179,
   "hub_scores": 216,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 90,
+  "todo": 88,
   "late": 2,
   "due7": 20,
-  "delivered": 0,
-  "queued": 8,
+  "delivered": 3,
+  "queued": 7,
   "withdrawn": 183
  },
  "per": {
@@ -96,17 +96,17 @@
    }
   },
   "Muse": {
-   "todo": 10,
+   "todo": 8,
    "late": 0,
    "due7": 6,
-   "delivered": 0,
-   "queued": 4,
+   "delivered": 3,
+   "queued": 3,
    "done7": 8,
    "withdrawn": 44,
-   "items": 106,
+   "items": 67,
    "floor": 3,
    "by": {
-    "hub": 5,
+    "hub": 3,
     "titan": 3,
     "tproj": 2,
     "board": 0
@@ -264,11 +264,10 @@
  },
  "places": {
   "Prometheus Hub": {
-   "todo": 4,
-   "delivered": 0,
+   "todo": 3,
+   "delivered": 1,
    "by": {
-    "Gemini": 3,
-    "Muse": 1
+    "Gemini": 3
    }
   },
   "Kairos Meridian": {
@@ -398,11 +397,11 @@
    }
   },
   "Kin": {
-   "todo": 29,
-   "delivered": 0,
+   "todo": 28,
+   "delivered": 2,
    "by": {
     "Gemini": 26,
-    "Muse": 3
+    "Muse": 2
    }
   },
   "Aether": {
@@ -1511,13 +1510,17 @@
    "pid": "hub",
    "id": "HUB-MUS-05",
    "title": "One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies",
-   "status": "todo",
+   "status": "delivered",
    "due": "2026-12-07",
    "items": 39,
    "closed": "",
    "review": "",
    "reopened": "",
-   "delivered": null,
+   "delivered": {
+    "what": "hub_muse_second-read_20261125-0525.md in hub incoming (Drive 12tGrTyMYuFAJ-lqNktUjriZPyKjPFyWU); 39 rows, 30 agree / 9 differ, 7 ACCEPT / 6 REJECT",
+    "by": "muse",
+    "ts": "2026-11-25T05:31:31Z"
+   },
    "detail": {
     "why": "Joseph keeps Muse to a modest load from now on (2026-11-23). Instead of 28 separate checks, one sitting covers the files where a wrong number could cost money or safety. Until a second reader agrees, Claude keeps these rows marked 'not second-read' in the pillars.",
     "steps": [
@@ -14551,13 +14554,17 @@
    "pid": "kin",
    "id": "KIN-MUS-02",
    "title": "Kin lineage: a blind second transcription of the six 1917-1919 documents",
-   "status": "todo",
+   "status": "delivered",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
    "review": "",
    "reopened": "",
-   "delivered": null,
+   "delivered": {
+    "what": "kin_muse_lineage-blind-1919_20261125-0524.json in hub incoming (Drive 1dbsMlMQ-l_3RHkQzgf7QC-Tdm3uT1qst); six 1917-1919 documents transcribed blind",
+    "by": "muse",
+    "ts": "2026-11-25T05:31:31Z"
+   },
    "detail": {
     "why": "A transcription read by one reader is a single witness. A second reader, working blind, is how genealogy catches misreadings (the eyes, the height, the service number in C4-C6 came from exactly that).",
     "steps": [
@@ -14583,13 +14590,17 @@
    "pid": "kin",
    "id": "KIN-MUS-03",
    "title": "Kin: second reader on the 1950 census households (blind)",
-   "status": "queued",
+   "status": "delivered",
    "due": "2026-12-10",
    "items": 0,
    "closed": "",
    "review": "",
    "reopened": "",
-   "delivered": null,
+   "delivered": {
+    "what": "kin_muse_lineage-1950-blind_20261125-0530.json in hub incoming (Drive 1jG4Alcvy3L97adbNb1fCSCqObkVZlqM9); four 1950 households transcribed blind, Rimsha found at NARA",
+    "by": "muse",
+    "ts": "2026-11-25T05:31:31Z"
+   },
    "detail": {
     "why": "A second, independent reading of the four 1950 households that KIN-GEM-28 transcribes: differences become conflicts (the method's section 6).",
     "steps": [
