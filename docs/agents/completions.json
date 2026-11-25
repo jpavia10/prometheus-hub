@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-24T16:05:00Z",
+ "updated": "2026-11-25T05:31:31Z",
  "about": "Forge completions ledger. When ANY fleet AI finishes a task, it appends one entry here: {key, by, what, ts}. key = the task id exactly as Forge shows it (hub/Midas task id like KAI-GEM-10 or MID-MUS-03; Titan homework id like HW-muse-verify-20261113-1; Titan project key T-<ai>-<n> like T-muse-12). Forge (Prometheus Hub, pillars/forge) reads this file live and shows a listed task as 'delivered' even before the integrator flips the queue in its repo. An entry means DELIVERED (the file is in the named Drive folder), not accepted: the integrator's check still decides acceptance, and the queue flip in the repo remains the permanent record. If you cannot edit this file, save DONE_<key>.json with the same fields into the same Drive folder as your deliverable and say so in your report; Sebastian folds those in.",
  "done": [
   {
@@ -1190,7 +1190,43 @@
    "by": "muse",
    "what": "Kin audit & extension report delivered to Drive Kin folder (Sebastian Audit & Extension Report 2026-11-24): archive audit, per-line second-reads with scores, extension plan",
    "ts": "2026-11-24T16:05:00Z"
+  },
+  {
+   "key": "HUB-MUS-05",
+   "by": "muse",
+   "what": "hub_muse_second-read_20261125-0525.md in hub incoming (Drive 12tGrTyMYuFAJ-lqNktUjriZPyKjPFyWU); 39 rows, 30 agree / 9 differ, 7 ACCEPT / 6 REJECT",
+   "ts": "2026-11-25T05:31:31Z"
+  },
+  {
+   "key": "HW-muse-arbitrate-20261122-1",
+   "by": "muse",
+   "what": "HW-muse-arbitrate-20261122-1.jsonl in Titan collection-incoming (Drive 17SNDQphnsndZQQzfTMAFGn1b_WLauBB4); gate APPLIED 15 events",
+   "ts": "2026-11-25T05:31:31Z"
+  },
+  {
+   "key": "HW-muse-arbitrate-20261122-2",
+   "by": "muse",
+   "what": "HW-muse-arbitrate-20261122-2.jsonl in Titan collection-incoming (Drive 1YReIxuITExN1vqdyRRhzJVNMVMljd31Y); gate APPLIED 13 events; D0228 had no sheet line (generator gap, flagged)",
+   "ts": "2026-11-25T05:31:31Z"
+  },
+  {
+   "key": "HW-muse-verify-20261118-1",
+   "by": "muse",
+   "what": "HW-muse-verify-20261118-1.jsonl in Titan collection-incoming (Drive 1oO2FB4SdLh1GZeeSCyiwexCzIiBmt1vu); gate APPLIED 21 re-cited, 2 honest nulls",
+   "ts": "2026-11-25T05:31:31Z"
+  },
+  {
+   "key": "KIN-MUS-02",
+   "by": "muse",
+   "what": "kin_muse_lineage-blind-1919_20261125-0524.json in hub incoming (Drive 1dbsMlMQ-l_3RHkQzgf7QC-Tdm3uT1qst); six 1917-1919 documents transcribed blind",
+   "ts": "2026-11-25T05:31:31Z"
+  },
+  {
+   "key": "KIN-MUS-03",
+   "by": "muse",
+   "what": "kin_muse_lineage-1950-blind_20261125-0530.json in hub incoming (Drive 1jG4Alcvy3L97adbNb1fCSCqObkVZlqM9); four 1950 households transcribed blind, Rimsha found at NARA",
+   "ts": "2026-11-25T05:31:31Z"
   }
  ],
- "synced": "2026-11-24T16:11:08Z"
+ "synced": "2026-11-25T05:37:41Z"
 }
