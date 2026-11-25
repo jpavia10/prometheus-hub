@@ -214,7 +214,7 @@ export function realm(ctx) {
       if (gl && im && big) { const up = () => { if (dead) return; if (ptrs.size || V.dive || performance.now() - idleAt < 2500 || el.classList.contains("opening")) { setTimeout(up, 1500); return; }
         img(ART("realm_6k.webp")).then((im6) => { if (dead || !im6 || !gl || gl.isContextLost()) return; upload(0, im6, true); IRW = im6.naturalWidth; IRH = im6.naturalHeight; el.dataset.res = "6k"; wake(); }); };
         setTimeout(up, 4000); }
-      else if (gl) el.classList.add("rl-flat");
+      if (gl && !im) el.classList.add("rl-flat");   /* flat only when the painting never came (d80 tied this to the 6k test by mistake) */
       V.cx = V.tcx = coreXY[0]; V.cy = V.tcy = 0.5; clampV(); V.cx = V.tcx; V.cy = V.tcy; V.z = V.tz; size();
       let first = false; try { first = !sessionStorage.getItem("prom.deck.opened"); sessionStorage.setItem("prom.deck.opened", "1"); } catch (e) { /* every time */ }
       if (first && !calm && !qs.get("now")) {
