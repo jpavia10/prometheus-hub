@@ -103,20 +103,22 @@ with sync_playwright() as p:
           json.dumps(town) + ("; errors: " + " | ".join(badw) if badw else "")); ctw.close()
     # TOWN-2 (owner, 2026-11-24: "The hub doesn't work. It flashes black screen and says command repeatedly"): the deadline sweep runs each
     # pillar in a hidden frame, and every frame writes to storage; the town on screen rides that out without being torn down and rebuilt
-    cs2 = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US")
-    cs2.add_init_script("""(() => { window.__townGL = 0; window.__storageEvents = 0; const og = HTMLCanvasElement.prototype.getContext;
-      HTMLCanvasElement.prototype.getContext = function (k, o) { if (/webgl/.test(k) && this.classList.contains('rl-gl') && !this.__counted) { this.__counted = 1; window.__townGL++; } return og.call(this, k, o); };
-      addEventListener('storage', () => { window.__storageEvents++; }); })()""")
-    ps2 = cs2.new_page(); bs2 = []; ps2.on("pageerror", lambda e: bs2.append(str(e)[:120]))
-    if MOCK: ps2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); ps2.route("https://api.weather.gov/**", lambda route, request: route.abort()); ps2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
-    ps2.goto(f"{URL}?sweep=now&home=orbit#/", wait_until="load"); ps2.wait_for_selector(".realm .rl-core", timeout=20000); ps2.evaluate("window.__core0 = document.querySelector('.rl-core')")
-    try: ps2.wait_for_function("!!(window.__deck && window.__deck.state.sweep)", timeout=120000)
-    except Exception: pass
-    ps2.wait_for_timeout(1500)
-    s2 = ps2.evaluate("() => { const c = document.querySelector('.rl-core'); return { townGL: window.__townGL, storageEvents: window.__storageEvents, sameTown: !!c && c === window.__core0 && c.isConnected, sweep: window.__deck.state.sweep || null, chip: !!document.querySelector('.wx-chip') }; }")
-    proof("TOWN-2", "The town stays up while the deadline sweep runs every pillar in a hidden frame: their storage writes never tear it down (one WebGL world, the same town node, the chip still there)",
-          s2["townGL"] == 1 and s2["sameTown"] and s2["chip"] and s2["sweep"] and s2["sweep"].get("ran", 0) > 0 and s2["storageEvents"] >= 1 and not bs2,
-          json.dumps(s2) + ("; errors: " + " | ".join(bs2) if bs2 else "")); cs2.close()
+    try:
+        cs2 = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US")
+        cs2.add_init_script("""(() => { window.__townGL = 0; window.__storageEvents = 0; const og = HTMLCanvasElement.prototype.getContext;
+          HTMLCanvasElement.prototype.getContext = function (k, o) { if (/webgl/.test(k) && this.classList.contains('rl-gl') && !this.__counted) { this.__counted = 1; window.__townGL++; } return og.call(this, k, o); };
+          addEventListener('storage', () => { window.__storageEvents++; }); })()""")
+        ps2 = cs2.new_page(); bs2 = []; ps2.on("pageerror", lambda e: bs2.append(str(e)[:120]))
+        if MOCK: ps2.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); ps2.route("https://api.weather.gov/**", lambda route, request: route.abort()); ps2.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+        ps2.goto(f"{URL}?sweep=now&home=orbit#/", wait_until="load"); ps2.wait_for_selector(".realm .rl-core", timeout=20000); ps2.evaluate("window.__core0 = document.querySelector('.rl-core')")
+        try: ps2.wait_for_function("!!(window.__deck && window.__deck.state.sweep)", timeout=120000)
+        except Exception: pass
+        ps2.wait_for_timeout(1500)
+        s2 = ps2.evaluate("() => { const c = document.querySelector('.rl-core'); return { townGL: window.__townGL, storageEvents: window.__storageEvents, sameTown: !!c && c === window.__core0 && c.isConnected, sweep: window.__deck.state.sweep || null, chip: !!document.querySelector('.wx-chip') }; }")
+        proof("TOWN-2", "The town stays up while the deadline sweep runs every pillar in a hidden frame: their storage writes never tear it down (one WebGL world, the same town node, the chip still there)",
+              s2["townGL"] == 1 and s2["sameTown"] and s2["chip"] and s2["sweep"] and s2["sweep"].get("ran", 0) > 0 and s2["storageEvents"] >= 1 and not bs2,
+              json.dumps(s2) + ("; errors: " + " | ".join(bs2) if bs2 else "")); cs2.close()
+    except Exception as e: proof("TOWN-2", "The town stays up while the deadline sweep runs every pillar in a hidden frame", False, "did not finish: " + str(e)[:200])
 
     # TOWN-3 (owner's briefing c4, 2026-11-25: "Rain and wind you can hear, snow on the roofs in winter, lit windows at night"): the town's
     # sound is real recordings that follow its sky, silent and unfetched until the speaker is turned on, remembered, and started by the next

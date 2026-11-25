@@ -200,7 +200,10 @@ export function realm(ctx) {
   if (!gl) el.classList.add("rl-flat");
   const upload = (i, im, mip) => { gl.activeTexture(gl.TEXTURE0 + i); gl.bindTexture(gl.TEXTURE_2D, tex[i]); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, im);
     if (mip && gl2) { gl.generateMipmap(gl.TEXTURE_2D); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR); } };
-  const img = (url) => new Promise((res) => { const im = new Image(); im.decoding = "async"; im.onload = () => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(() => res(im)); im.onerror = () => res(null); im.src = url; });
+  const img1 = (url) => new Promise((res) => { const im = new Image(); im.decoding = "async"; im.onload = () => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(() => res(im)); im.onerror = () => res(null); im.src = url; });
+  /* a painting that fails to arrive is asked for once more before the town falls back to its flat look (2026-11-25: one dropped request
+     on the live site left the whole town flat) */
+  const img = (url) => img1(url).then((im) => im || new Promise((r) => setTimeout(r, 600)).then(() => img1(url + (url.includes("?") ? "&" : "?") + "retry=1")));
   const big = gl && gl.getParameter(gl.MAX_TEXTURE_SIZE) >= 8192 && (devicePixelRatio || 1) >= 1.5;
   const ready = Promise.all([fetch(ART("places.json")).then((r) => (r.ok ? r.json() : null)).catch(() => null), gl ? img(ART("realm_4k.webp")) : null, gl ? img(ART("realm_depth.webp")) : null, gl ? img(ART("realm_lights.webp")) : null])
     .then(([pj, im, dp, lt]) => {

@@ -55,8 +55,11 @@ self.addEventListener("fetch", function (event) {
   if (MEDIA_RE.test(url.pathname) && !request.headers.has("range")) {
     event.respondWith(caches.open(MEDIA).then(function (media) {
       return media.match(request).then(function (hit) {
-        var net = fetch(request).then(function (response) { if (response && response.ok && response.type === "basic") media.put(request, response.clone()); return response; })
-          .catch(function () { return hit || caches.match(request).then(function (old) { return old || Response.error(); }); });
+        /* one more try after a short wait before giving up: on a phone's flaky signal (and on the live proofs) a single dropped request
+           should not leave a painting or a photo missing */
+        var get = function () { return fetch(request).then(function (response) { if (response && response.ok && response.type === "basic") media.put(request, response.clone()); return response; }); };
+        var net = get().then(function (response) { return response.ok || hit ? response : new Promise(function (r) { setTimeout(r, 400); }).then(get); })
+          .catch(function () { return hit || new Promise(function (r) { setTimeout(r, 400); }).then(get).catch(function () { return caches.match(request).then(function (old) { return old || Response.error(); }); }); });
         if (hit) { event.waitUntil(net.catch(function () {})); return hit; }
         return net;
       });
