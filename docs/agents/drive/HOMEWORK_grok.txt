@@ -1,12 +1,10 @@
 HOMEWORK — Grok (every pillar)
 
-Updated 2026-11-25 17:13 UTC. 25 to do across 2 pillars.
+Updated 2026-11-25 17:23 UTC. 2 to do across 1 pillars.
 
 PHASING OUT (Joseph, 2026-11-23: 'Im planning to cancel grok in 1 month its gonna phase out'): there is no new work for you in any pillar. Start nothing that is not listed below. Your one remaining job is the Midas book (MID-GRK-01, MID-GRK-02) until Joseph names who takes it over. Thank you for the work you did here. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
 WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).
-
-TITAN RELIQUARY (its own loop, the exception): 12 homework sheets + 11 projects. Open the Drive doc 'Titan Reliquary/WORK QUEUE for Grok' (newest: https://raw.githubusercontent.com/jpavia10/titan-reliquary-preview/main/docs/agents/QUEUE_grok.md) and follow its own order. Do Titan's sheets that are due first, then the list below by due date.
 
 EVERY TASK BELOW IS SENT BACK IF:
 - fewer rows than the count, or a row missing a field of the shape
