@@ -1,6 +1,6 @@
 {
- "built": "2026-11-24T21:44:47Z",
- "checked": "2026-11-24T21:44:47Z",
+ "built": "2026-11-24T23:20:37Z",
+ "checked": "2026-11-24T23:20:37Z",
  "version": 2,
  "today": "2026-11-24",
  "sources": {
@@ -23,26 +23,26 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 89,
+  "todo": 90,
   "late": 2,
   "due7": 20,
   "delivered": 0,
   "queued": 8,
-  "withdrawn": 182
+  "withdrawn": 183
  },
  "per": {
   "Gemini": {
-   "todo": 71,
+   "todo": 72,
    "late": 0,
    "due7": 13,
    "delivered": 0,
    "queued": 2,
    "done7": 176,
-   "withdrawn": 68,
-   "items": 968,
+   "withdrawn": 69,
+   "items": 1006,
    "floor": 50,
    "by": {
-    "hub": 67,
+    "hub": 68,
     "titan": 3,
     "tproj": 1,
     "board": 0
@@ -349,10 +349,10 @@
    }
   },
   "Odyssey": {
-   "todo": 1,
+   "todo": 2,
    "delivered": 0,
    "by": {
-    "Gemini": 1
+    "Gemini": 2
    }
   },
   "Privacy": {
@@ -10070,11 +10070,11 @@
    "pid": "odyssey",
    "id": "ODY-GEM-28",
    "title": "Odyssey: find the photos of the seven trips with none (Miami 2023, Michigan Sep 2022, Zion 2020, Detroit 2020, Monroe 2018, LA 2015 ...) in his Drive",
-   "status": "todo",
+   "status": "withdrawn",
    "due": "2026-12-08",
    "items": 0,
    "closed": "",
-   "review": "",
+   "review": "Withdrawn 2026-11-24: every trip has its photos now (Claude checked your run-7 picks by eye and put 26 into the six newer trips). Replaced by ODY-GEM-29 (more picks for the five thinnest trips) and ODY-GEM-30 (cards for the new stops).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10088,6 +10088,70 @@
     "done": "Each of the seven trips searched.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-29",
+   "title": "Odyssey: more of the best photos for the five trips that open on three or fewer",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 25,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Every trip has photos now, but five open on one to three: Michigan May 2023 (1), Michigan June 2022 (2), Mammoth Lakes Sep 2022 (2), the Mexico cruise Aug 2019 (3) and Metro Detroit Jan 2020 (3). A trip file reads as a journey from about six.",
+    "steps": [
+     "For each trip, rank 4 to 6 new photos, sharp and well framed, spread over the trip's days: places, views, landmarks, the people on the trip, the food, the signs that say where you are.",
+     "Skip blurred frames and near-duplicates of a photo already picked (Claude dropped three blurred ones from run 7: a night runway, a landing, plain cottonwoods).",
+     "Say where the photo was taken from its GPS or what is in it. Check the place against the picture: in run 7 the Mar 6 2015 harbour was Long Beach's Rainbow Harbor, not Marina del Rey (the Grand Romance riverboat is in the frame), and the Sep 15 2022 yard's GPS is in Lambertville, Michigan, not Toledo or Sylvania."
+    ],
+    "make": "odyssey_gemini_more-picks_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "4 to 6 new picks for each of the five trips, none already published.",
+    "checks": [
+     "Claude opens every pick at full size, checks the date, the place and the caption against the picture, and crops it."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-30",
+   "title": "Odyssey: a city card for each of the 13 new stops on the six newer trips",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 13,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your run-7 cards are in (49 now). The six newer trips' stops have none yet; Long Beach already has yours.",
+    "steps": [
+     "The card is for the town the stop is in; for a park, a dam or a spot outside a town, the nearest town, named in 'city' as 'Three Rivers (nearest town to Lake Kaweah)'.",
+     "For that town: population (latest census or official estimate, its year and page), elevation in metres, IANA time zone, currency, language.",
+     "known_for and its quote are about the stop itself (the park, the quarter, the headlands) from its own official page. Never write population 0: a park has no population, so give the town's."
+    ],
+    "make": "odyssey_gemini_city-cards_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "All 10 codes answered.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
    },
