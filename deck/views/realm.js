@@ -224,7 +224,8 @@ export function realm(ctx) {
         /* after the boot card (orrery.js boot, first visit of a session) the town rises: the card names the deck, the town greets */
         const go = () => { V.z = V.tz * 1.5; V.cy = Math.max(0, V.tcy - 0.12); V.cx = V.tcx - 0.03; el.classList.remove("opening"); void el.offsetWidth; el.classList.add("opening");
           setTimeout(() => el.classList.add("opened"), 2200); setTimeout(() => el.classList.remove("opening", "opened"), 3400); wake(); };
-        el.classList.add("opening"); if (document.body.classList.contains("booting")) setTimeout(go, 1500); else go();
+        el.classList.add("opening");
+        if (document.body.classList.contains("booting")) { let fired = false; const once = () => { if (fired) return; fired = true; go(); }; addEventListener("prom:booted", once, { once: true }); setTimeout(once, 9500); } else go();
       }
       wake();
     });

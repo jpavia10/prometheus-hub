@@ -230,6 +230,26 @@ with sync_playwright() as p:
               ok, f"{m0['levels']} levels; '{m0['title']}' -> '{m1['title']}' (hue {m0['hue']} -> {m1['hue']}); live: {m0['live'][:60]}; today rows {m0['today']}; WebGL {m0['gl']}; orbit and back {orbit}/{bool(back)}; entered {landed} from level {lvl}" + (f"; errors {bm[:2]}" if bm else "") + (f"; the browser skipped {len(mskip)} morph(s)" if mskip else ""))
     except Exception as e: proof("MENU-1", "The home is a game menu", False, "did not finish: " + str(e)[:200])
     cm.close()
+    # INTRO-1 (d85, owner: "Gemini made a new intro splash i dont see that yet"): Gemini's splash (deck/splash.js) opens the hub once a
+    # session over the town, draws on the GPU (or its 2D fallback), skips on a key, leaves nothing behind (no canvas, no animation frame)
+    # and hands over to the town ("prom:booted"); System's "Play the intro" brings it back.
+    try:
+        ci = b.new_context(viewport={"width": 412, "height": 915}); pi = ci.new_page(); ei = []; pi.on("pageerror", lambda e: ei.append(str(e)[:120]))
+        if MOCK: pi.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pi.route("https://api.weather.gov/**", lambda route, request: route.abort())
+        pi.add_init_script("addEventListener('prom:booted', () => { window.__booted = (window.__booted || 0) + 1; });")
+        pi.goto(f"{URL}?now={NOW}&home=orbit&nosweep=1&boot=1#/", wait_until="load"); pi.wait_for_selector(".pm-splash", timeout=15000)
+        i0 = pi.evaluate("() => ({ booting: document.body.classList.contains('booting'), title: document.querySelector('.pm-splash-title').textContent, sub: document.querySelector('.pm-splash-sub').textContent, canvas: !!document.querySelector('.pm-splash canvas') })")
+        pi.keyboard.press("Escape"); pi.wait_for_selector(".pm-splash", state="detached", timeout=8000); pi.wait_for_timeout(300)
+        i1 = pi.evaluate("() => ({ booting: document.body.classList.contains('booting'), booted: window.__booted || 0, canvases: document.querySelectorAll('.pm-splash-canvas').length, seen: sessionStorage.getItem('prometheus.splash.seen.v1') })")
+        pi.goto(f"{URL}?now={NOW}&home=orbit&nosweep=1#/system", wait_until="load"); pi.wait_for_selector("#play-intro", timeout=15000); pi.click("#play-intro")
+        pi.wait_for_selector(".pm-splash", timeout=8000); again = pi.evaluate("location.hash"); pi.keyboard.press("Escape"); pi.wait_for_selector(".pm-splash", state="detached", timeout=8000)
+        ci.close()
+        okI = (i0["booting"] and i0["title"] == "PROMETHEUS" and i0["canvas"] and "°" not in i0["sub"] and "pillars" in i0["sub"].lower()
+               and not i1["booting"] and i1["booted"] == 1 and i1["canvases"] == 0 and i1["seen"] == "1" and again == "#/" and not ei)
+        proof("INTRO-1", "Gemini's intro opens the hub once a session, skips on a key, leaves nothing running and hands over to the town; System plays it again",
+              okI, json.dumps({"during": i0, "after": i1, "replay": again}) + (f"; errors {ei[:2]}" if ei else ""))
+    except Exception as e: proof("INTRO-1", "Gemini's intro", False, "did not finish: " + str(e)[:200])
+
     # MENU-2: every level stands in its own painted world (2026-11-19): every world in art/worlds/index.json has its three files, the menu shows
     # the painting behind the level and steps the crest back, and the title screen (lock and loading) uses the home painting
     cw = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); pw = cw.new_page(); bw = []; pw.on("pageerror", lambda e: bw.append(str(e)[:120]))
@@ -477,6 +497,9 @@ with sync_playwright() as p:
         if who: p3.mouse.click(who[1], who[2]); p3.wait_for_timeout(900)
         tap = p3.evaluate("() => ({ sel: KIN3D.state().sel, h: (document.querySelector('#tv-dossier:not([hidden]) h2') || {}).textContent || '' })")
         p3.evaluate("KIN3D.select('P-joseph')"); p3.wait_for_timeout(2200)
+        # the camera flies to him; on a slow runner it can still be moving at 2.2 s, so wait for his label (it settles on) instead of a fixed sleep
+        try: p3.wait_for_function("(() => { const s = KIN3D.screen('P-joseph'); return !!(s && s.label); })()", timeout=8000)
+        except Exception: pass
         jo = p3.evaluate("() => ({ h: document.querySelector('#tv-dossier h2').textContent, cards: KIN3D.state().cards, docs: document.querySelectorAll('#tv-dossier .tv-doc').length, ev: document.querySelectorAll('#tv-dossier .tv-life-ev li').length, cons: document.querySelectorAll('#tv-dossier .tv-con').length, chips: document.querySelectorAll('#tv-dossier .tv-chip').length, lbl: KIN3D.screen('P-joseph').label })")
         p3.evaluate("document.querySelector('#tv-dossier .tv-doc').click()"); p3.wait_for_timeout(900)
         vw = p3.evaluate("() => { const im = document.querySelector('#tv-viewer:not([hidden]) .tv-vimg img'); return { open: KIN3D.state().viewer, img: !!(im && im.complete && im.naturalWidth > 500), cap: (document.querySelector('.tv-vcap') || {}).textContent.length }; }")

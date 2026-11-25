@@ -72,6 +72,11 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d85 (2026-11-25): Gemini's intro splash opens the hub** (owner: "Gemini made a new intro splash i dont see that yet"). `deck/splash.js`
+  is Gemini's supplemental module (WebGL2 shader with a 2D fallback: a spark over the ridges, rings and pillar nodes, PROMETHEUS; tap, Escape,
+  Space or Enter skips; disposes everything after). `boot()` in `deck/views/orrery.js` mounts it once a session in place of the old text
+  card; the town's opening (realm.js) waits for the `prom:booted` event. Its subtitle line printed Frazier Park's coordinates labelled
+  "Mt. Pinos"; it is an option now ("29 pillars · one fire"). System has "Play the intro" (sessionStorage `prom.deck.replay`). Proof INTRO-1.
 - **d84 (2026-11-25): two new pillars, Atlas and Aegis** (owner: "Are there any additional pillars you recommend to add? If yes just do it").
   Nothing knew when the pay lands or what protects the house. **Atlas · Work & Pay** (`pillars/atlas/`, place: the mill hall by Titan):
   pay schedule with paydays moved off weekends and Federal Reserve holidays (`pay.js`, `window.ATLAS_PAY`), stubs with withholding and a

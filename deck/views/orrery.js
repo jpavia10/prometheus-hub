@@ -359,13 +359,17 @@ export function titanTile(d) {
     h("span.coins", (d.newest || []).map((c) => h("img", { src: c.img, alt: "", loading: "lazy", decoding: "async", width: 96, height: 96 }))), h("small.quiet", "newest arrivals"));
 }
 
-/** The boot: once a session. A line ignites, the systems count in, the core lights. Tap to skip. */
+/** The boot: once a session (d85, owner: "Gemini made a new intro splash i dont see that yet"). Gemini's splash (deck/splash.js): a spark
+    ignites over the ridges, the rings and the pillar nodes open, PROMETHEUS settles; tap, Escape, Space or Enter skips it. While it plays
+    the body carries "booting"; when it is gone "prom:booted" fires and the town's own opening (realm.js) rises. Skipped when the clock is
+    pinned (the proofs) or motion is reduced, unless ?boot=1 forces it. */
 export function boot(force) {
-  let seen = false; try { seen = !!sessionStorage.getItem("prom.deck.boot"); sessionStorage.setItem("prom.deck.boot", "1"); } catch (e) { /* play it */ }
-  if ((seen && !force) || still() || (clock.pinned && clock.pinned() && !force)) return;
-  const rows = [["CORE", "IGNITION"], ["PILLARS", PILLARS.length + " / " + PILLARS.length], ["SKY", "LIVE"], ["DATA", "ON DEVICE"]];
-  const el = h("div.boot", { onclick: () => end() }, h("div.boot-line"), h("div.boot-box", h("b", "PROMETHEUS"), ...rows.map(([k, v], i) => h("p", { style: { "--i": i } }, h("span", k), h("i"), h("em", v)))));
-  document.body.append(el); document.body.classList.add("booting"); bootSound(); let over = false;
-  function end() { if (over) return; over = true; el.classList.add("out"); document.body.classList.remove("booting"); setTimeout(() => el.remove(), 520); }
-  setTimeout(end, 1900);
+  let seen = false; try { seen = !!sessionStorage.getItem("prom.deck.boot"); sessionStorage.setItem("prom.deck.boot", "1");
+    if (sessionStorage.getItem("prom.deck.replay")) { sessionStorage.removeItem("prom.deck.replay"); force = true; } } catch (e) { /* play it */ }
+  if ((seen && !force) || (still() && !force) || (clock.pinned && clock.pinned() && !force)) return;
+  document.body.classList.add("booting"); bootSound(); let over = false;
+  const end = () => { if (over) return; over = true; document.body.classList.remove("booting"); dispatchEvent(new Event("prom:booted")); };
+  import("../splash.js").then((m) => m.mountPrometheusSplash({ subtitle: PILLARS.length + " pillars · one fire", onComplete: end }))
+    .catch((e) => { console.warn("[splash]", e); end(); });
+  setTimeout(end, 9000);                       // whatever happens, the town is never held back longer than this
 }

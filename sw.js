@@ -3,7 +3,7 @@
    Pictures, fonts, sounds and models (2026-11-25, c9, the phone pass): from their own cache at once, refreshed behind for next time.
    That cache outlives builds (its name does not start "prometheus-hub-"), so a new build no longer re-downloads every painting, and on a
    phone a page no longer waits on the network for its font and its painting (the late font was reflowing the text). */
-var CACHE = "prometheus-hub-deck-d84";
+var CACHE = "prometheus-hub-deck-d85";
 var MEDIA = "prometheus-media-v1", MEDIA_RE = /\.(webp|png|jpe?g|gif|svg|woff2?|webm|m4a|mp3|glb)$/i;
 var PILLAR_IDS = [
   "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
@@ -17,7 +17,7 @@ var SHELL = [
   "./deck/core/legacy.js", "./deck/core/fx.js", "./deck/core/reach.js",
   "./deck/core/store.js", "./deck/core/dates.js", "./deck/core/ui.js", "./deck/core/feeds.js", "./deck/core/atmo.js", "./deck/core/weather.js", "./deck/core/ics.js", "./deck/core/now.js", "./deck/core/session.js",
   "./deck/models/time.js", "./deck/models/money.js", "./deck/models/profile.js",
-  "./deck/views/picture.js", "./deck/views/realm.js", "./deck/views/townsound.js", "./deck/core/season.js", "./deck/views/wxchip.js", "./deck/views/menu.js", "./art/worlds/index.json", "./art/worlds/world_home.webp", "./art/worlds/strip.webp", "./art/worlds/strip.json", "./deck/views/parts.js", "./deck/views/orrery.js", "./deck/views/time.js", "./deck/views/money.js", "./deck/views/system.js",
+  "./deck/views/picture.js", "./deck/views/realm.js", "./deck/views/townsound.js", "./deck/core/season.js", "./deck/views/wxchip.js", "./deck/views/menu.js", "./art/worlds/index.json", "./art/worlds/world_home.webp", "./art/worlds/strip.webp", "./art/worlds/strip.json", "./deck/views/parts.js", "./deck/views/orrery.js", "./deck/splash.js", "./deck/views/time.js", "./deck/views/money.js", "./deck/views/system.js",
   "./deck/data/focus.js", "./deck/data/demo.js", "./deck/data/money-words.js", "./deck/data/fixed-dates.json", "./deck/data/issuers.json", "./deck/data/offers.json", "./deck/data/payoff-cases.json",
   "./deck/fonts/outfit-latin-wght-normal.woff2",
   "./kit/prometheus.css", "./kit/kit.js", "./kit/world.js", "./kit/bus.js", "./kit/links.js", "./kit/stage.js", "./kit/refs.js",
