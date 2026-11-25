@@ -920,8 +920,13 @@ body.town-home #view { overflow: hidden; -webkit-mask-image: none; mask-image: n
 body.town-home .rail { background: linear-gradient(180deg, rgba(3, 5, 12, .62), rgba(3, 5, 12, 0)); border-bottom-color: transparent; }
 .rl-card.rest { display: none; }
 .view-inner[data-cap="picture"] .rl-card { bottom: calc(var(--dock-h, 86px) + 18px + env(safe-area-inset-bottom, 0px)); }
-.view-inner[data-cap="picture"] > .rl-levels { position: fixed; top: calc(var(--rail-h, 56px) + 10px); right: 12px; left: auto; z-index: 5; margin: 0;
-  background: rgba(8, 12, 24, .55); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.view-inner[data-cap="picture"] > .rl-tools { position: fixed; top: calc(var(--rail-h, 56px) + 10px); right: 12px; left: auto; z-index: 5; display: flex; gap: 8px; align-items: center; }
+.rl-tools > .rl-levels { margin: 0; background: rgba(8, 12, 24, .55); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+/* the town's sound (2026-11-25): a round speaker beside Levels; lit while the sound is on */
+.rl-sound { display: inline-grid; place-items: center; width: 30px; height: 30px; padding: 0; border-radius: 999px; color: var(--ink-2); cursor: pointer;
+  background: rgba(8, 12, 24, .55); border: 1px solid rgba(190, 212, 255, .14); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.rl-sound:hover { color: var(--ink); border-color: var(--cyan); }
+.rl-sound[aria-pressed="true"] { color: #eaf6ff; border-color: rgba(120, 220, 255, .55); box-shadow: 0 0 0 3px rgba(95, 212, 255, .12), 0 0 16px rgba(95, 212, 255, .25); }
 .rl-edge { position: absolute; top: auto; bottom: calc(var(--dock-h, 86px) + 16px); z-index: 3; max-width: 46%; padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(220, 232, 255, .22);
   background: rgba(8, 12, 24, .58); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: #eef3ff; font: 500 12px/1 var(--sans);
   letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; box-shadow: 0 8px 24px rgba(0, 0, 0, .45); }
@@ -991,4 +996,4 @@ body.town-home .rail .sky-chip { display: none; }   /* the town's own weather ch
 .briefing { grid-template-columns: minmax(0, 1fr); } .briefing > * { min-width: 0; max-width: 100%; }
 
 /* the dive takes the hub's chrome with it (2026-11-24): only the town and the place you chose are left as it sinks into the pillar */
-body.town-diving .rail, body.town-diving .dock, body.town-diving .wx-box, body.town-diving .rl-levels, body.town-diving .rl-edge { opacity: 0; transition: opacity .22s var(--ease); pointer-events: none; }
+body.town-diving .rail, body.town-diving .dock, body.town-diving .wx-box, body.town-diving .rl-tools, body.town-diving .rl-edge { opacity: 0; transition: opacity .22s var(--ease); pointer-events: none; }

@@ -118,6 +118,38 @@ with sync_playwright() as p:
           s2["townGL"] == 1 and s2["sameTown"] and s2["chip"] and s2["sweep"] and s2["sweep"].get("ran", 0) > 0 and s2["storageEvents"] >= 1 and not bs2,
           json.dumps(s2) + ("; errors: " + " | ".join(bs2) if bs2 else "")); cs2.close()
 
+    # TOWN-3 (owner's briefing c4, 2026-11-25: "Rain and wind you can hear, snow on the roofs in winter, lit windows at night"): the town's
+    # sound is real recordings that follow its sky, silent and unfetched until the speaker is turned on, remembered, and started by the next
+    # touch on a later visit; the season is the same painting repainted (autumn, winter) chosen by the calendar; windows thin out late at night
+    try:
+        c3 = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); p3 = c3.new_page(); b3 = []; aud = []
+        p3.on("pageerror", lambda e: b3.append(str(e)[:120])); p3.on("request", lambda r: aud.append(r.url.split("/")[-1]) if "/audio/town/" in r.url else None)
+        if MOCK: p3.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p3.route("https://api.weather.gov/**", lambda route, request: route.abort()); p3.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+        p3.goto(f"{URL}?now=2026-11-25T18:00&sky=night&wx=storm&home=orbit&nosweep=1#/", wait_until="load"); p3.wait_for_selector(".realm .rl-core", timeout=20000); p3.wait_for_selector(".rl-sound", timeout=20000); p3.wait_for_timeout(2500)
+        q0 = p3.evaluate("() => { const r = document.querySelector('.realm'); return { s: r.sound.state(), season: r.season(), pressed: document.querySelector('.rl-sound').getAttribute('aria-pressed') }; }"); fetched0 = list(aud)
+        p3.click(".rl-sound")
+        try: p3.wait_for_function("(() => { const s = document.querySelector('.realm').sound.state(); return s.running && s.playing.includes('rainHeavy') && s.playing.includes('windHowl'); })()", timeout=15000)
+        except Exception: pass
+        q1 = p3.evaluate("() => { const r = document.querySelector('.realm'); return { s: r.sound.state(), mix: r.sound.mix(), key: localStorage.getItem('prom.deck.townSound') }; }")
+        files = p3.evaluate("""async () => { const ext = document.querySelector('.realm').sound.state().ext, bad = [];
+          for (const f of ['rainLight', 'rainHeavy', 'wind', 'windHowl', 'birds', 'crickets', 'owl', 'thunder']) { const r = await fetch('audio/town/' + f + '.' + ext); if (!r.ok || (await r.arrayBuffer()).byteLength < 20000) bad.push(f); } return { ext, bad }; }""")
+        p3.goto(f"{URL}?now=2026-12-25T03:00&sky=day&wx=clear&home=orbit&nosweep=1#/", wait_until="load"); p3.wait_for_selector(".realm .rl-core", timeout=20000); p3.wait_for_selector(".rl-sound", timeout=20000); p3.wait_for_timeout(3500)
+        q2 = p3.evaluate("() => { const r = document.querySelector('.realm'); return { s: r.sound.state(), season: r.season(), pressed: document.querySelector('.rl-sound').getAttribute('aria-pressed') }; }")
+        p3.mouse.click(190, 600)
+        try: p3.wait_for_function("(() => { const s = document.querySelector('.realm').sound.state(); return s.running && s.playing.includes('birds'); })()", timeout=15000)
+        except Exception: pass
+        q3 = p3.evaluate("() => document.querySelector('.realm').sound.state()")
+        p3.goto(f"{URL}?now=2027-07-04T20:00&home=orbit&nosweep=1#/", wait_until="load"); p3.wait_for_selector(".realm .rl-core", timeout=20000); p3.wait_for_selector(".rl-sound", timeout=20000); p3.wait_for_timeout(1500)
+        q4 = p3.evaluate("() => document.querySelector('.realm').season()"); c3.close()
+        ok = (not q0["s"]["on"] and not q0["s"]["running"] and not fetched0 and q0["pressed"] == "false" and q0["season"]["kind"] == "autumn" and q0["season"]["shown"] == "autumn"
+              and q1["s"]["running"] and {"rainHeavy", "windHowl", "wind"} <= set(q1["s"]["playing"]) and q1["mix"]["birds"] == 0 and q1["key"] == "1" and not files["bad"]
+              and q2["s"]["on"] and q2["pressed"] == "true" and q2["season"]["kind"] == "winter" and q2["season"]["shown"] == "winter" and q2["season"]["late"] == 1
+              and q3["running"] and "birds" in q3["playing"] and "rainHeavy" not in q3["playing"] and q4["kind"] is None and q4["name"] == "Summer" and q4["late"] == 0 and not b3)
+        proof("TOWN-3", "The town you can hear and its seasons: real recordings that follow the sky (a night storm: heavy rain, wind, its howl; a clear day: birds), silent and unfetched until the speaker is on, remembered on the next visit (a touch starts it where the browser asks for one); autumn on Nov 25, winter on Dec 25, the painting as made in July; windows thin late at night",
+              ok, f"before: {q0['s']}, fetched {fetched0}, season {q0['season']}; after the speaker: {q1['s']}, key {q1['key']}; files ({files['ext']}) missing {files['bad']}; "
+                 f"Dec 25 03:00 reload: {q2['s']} pressed {q2['pressed']}, season {q2['season']}; after a tap: {q3}; Jul 4: {q4}" + (f"; errors {b3[:2]}" if b3 else ""))
+    except Exception as e: proof("TOWN-3", "The town you can hear and its seasons", False, "did not finish: " + str(e)[:200])
+
     # MENU-1: the home is a game menu (owner, 2026-11-16): every pillar a level, its own light, a live line, Today on top, the orbit and the briefing kept
     cm = b.new_context(viewport={"width": 384, "height": 832}, timezone_id="America/Los_Angeles", locale="en-US"); pm = cm.new_page(); bm = []; pm.on("pageerror", lambda e: bm.append(str(e)[:120]))
     if MOCK: pm.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pm.route("https://api.weather.gov/**", lambda route, request: route.abort())

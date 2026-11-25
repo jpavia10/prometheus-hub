@@ -24,7 +24,7 @@ export async function load(place, { force = false } = {}) {
   const old = cached(place); const now = Date.now();
   if (old && !force && now - old.at < 20 * 60000) return old;
   const q = `latitude=${place.lat}&longitude=${place.lon}`;
-  const url = `https://api.open-meteo.com/v1/forecast?${q}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,cloud_cover,precipitation,snowfall,is_day,relative_humidity_2m` +
+  const url = `https://api.open-meteo.com/v1/forecast?${q}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,cloud_cover,precipitation,snowfall,snow_depth,is_day,relative_humidity_2m` +
     `&hourly=temperature_2m,precipitation_probability,precipitation,snowfall,wind_gusts_10m,weather_code&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum,wind_gusts_10m_max,weather_code` +
     `&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=auto&forecast_days=3`;
   try {
@@ -38,11 +38,13 @@ export async function load(place, { force = false } = {}) {
     const days = (fx.daily.time || []).map((t, i) => ({ date: t, hi: fx.daily.temperature_2m_max[i], lo: fx.daily.temperature_2m_min[i], rain: fx.daily.precipitation_sum[i], snow: fx.daily.snowfall_sum[i], gust: fx.daily.wind_gusts_10m_max[i], code: fx.daily.weather_code[i], sunrise: fx.daily.sunrise[i], sunset: fx.daily.sunset[i] }));
     const alerts = (al.features || []).map((f) => f.properties || {}).map((p) => ({ event: p.event, severity: p.severity, headline: p.headline, onset: p.onset, ends: p.ends || p.expires, instruction: p.instruction || "", area: p.areaDesc || "" }))
       .sort((a, b) => rank(b) - rank(a));
-    const out = { at: now, lat: place.lat, lon: place.lon, now: { temp: c.temperature_2m, feels: c.apparent_temperature, code: c.weather_code, wind: c.wind_speed_10m, gust: c.wind_gusts_10m, cloud: c.cloud_cover, rain: c.precipitation, snow: c.snowfall, isDay: c.is_day !== 0, humidity: c.relative_humidity_2m },
+    const out = { at: now, lat: place.lat, lon: place.lon, now: { temp: c.temperature_2m, feels: c.apparent_temperature, code: c.weather_code, wind: c.wind_speed_10m, gust: c.wind_gusts_10m, cloud: c.cloud_cover, rain: c.precipitation, snow: c.snowfall, isDay: c.is_day !== 0, humidity: c.relative_humidity_2m, snowDepth: depthCm(c.snow_depth, (fx.current_units || {}).snow_depth) },
       hours, days, alerts, alertsFailed: !!al.failed, tz: fx.timezone };
     write(out); return out;
   } catch (e) { return old ? { ...old, stale: true } : null; }
 }
+/* snow on the ground (2026-11-25, the town's winter): Open-Meteo gives metres, or feet with imperial units; the town wants cm */
+const depthCm = (v, unit) => (typeof v === "number" && v > 0 ? Math.round(v * (/ft|feet/.test(unit || "") ? 30.48 : /inch|in$/.test(unit || "") ? 2.54 : 100) * 10) / 10 : 0);
 const rank = (a) => ({ Extreme: 4, Severe: 3, Moderate: 2, Minor: 1 }[a.severity] || 0) + (/warning/i.test(a.event || "") ? 0.5 : 0);
 
 /** What the sky should show for a reading: { cloud, rain, snow, wind, storm } each 0..1. */

@@ -12,6 +12,7 @@ import { clock, today, fmtTime } from "../core/dates.js";
 import { tick, blip, buzz } from "../core/fx.js";
 import { PILLAR_DOMAINS, domainOf, peersFor, badgeFor, factsFor, brief } from "./orrery.js";
 import * as wx from "../core/weather.js";
+import { seasonOf, lateOf } from "../core/season.js";
 
 const still = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 const ART = (f) => new URL(`../../art/realm/${f}`, import.meta.url).href;
@@ -24,6 +25,7 @@ const FS = `precision highp float;
 uniform vec2 R; uniform float T; uniform sampler2D IMG; uniform sampler2D DEP; uniform sampler2D LIT; uniform vec2 IR; uniform vec3 VIEW;
 uniform vec2 PAR; uniform float Q; uniform vec2 SP; uniform vec3 SC; uniform float SEL; uniform float DIVE; uniform float HAS;
 uniform float PH; uniform vec4 SKY; uniform float FOG; uniform float WND; uniform float FLASH;
+uniform sampler2D SEA; uniform vec2 SEAS; uniform float LATE;
 float h1(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
 float n2(vec2 p){ vec2 i = floor(p), f = fract(p); f = f * f * (3. - 2. * f); return mix(mix(h1(i), h1(i + vec2(1, 0)), f.x), mix(h1(i + vec2(0, 1)), h1(i + vec2(1, 1)), f.x), f.y); }
 void main(){
@@ -34,6 +36,12 @@ void main(){
     float dep = texture2D(DEP, uv).r;
     vec2 u = uv + PAR * (dep - .42) * vec2(.014, .02);
     col = texture2D(IMG, u).rgb;
+    /* the season (2026-11-25): the same painting repainted for autumn or winter, blended in by the calendar and the real snow; snow comes
+       in where the winter painting is brighter than the original first, so a light snowfall whitens the roofs and peaks before the rest */
+    if (SEAS.x > .001) { vec3 sc = texture2D(SEA, u).rgb;
+      float sn = clamp((dot(sc, vec3(.299, .587, .114)) - dot(col, vec3(.299, .587, .114))) * 4., 0., 1.);
+      col = mix(col, sc, SEAS.y > .5 ? clamp(SEAS.x * 1.6 - (1. - sn) * .6, 0., 1.) : SEAS.x); }
+    vec3 raw = col;
     col = mix(vec3(.012, .016, .04), col, smoothstep(1.06, .995, uv.y) * smoothstep(-.06, .005, uv.y) * smoothstep(1.03, .998, uv.x) * smoothstep(-.03, .002, uv.x));
     /* the real hour (owner, 2026-11-24: "real time weather and a day night cycle on the town ... synced with real time data"):
        PH is the day phase from today's sunrise and sunset (0 midnight, .25 sunrise, .5 noon, .75 sunset) */
@@ -49,7 +57,10 @@ void main(){
     vec2 sg = floor(uv * IR / 3.);
     float star = step(.9965, h1(sg)) * (.55 + .45 * sin(T * 1.7 + h1(sg + 3.) * 40.));
     col += vec3(.9, .94, 1.) * star * night * skyM * (1. - SKY.x) * .9;
-    float li = texture2D(LIT, u).r;
+    /* late at night (LATE) the warm window light goes out one lit shape at a time (the lights map's G is each shape's own number); the
+       town's cool, magical glows (the spire, the falls, the neon) stay on */
+    vec2 lg = texture2D(LIT, u).rg; float li = lg.x;
+    li *= 1. - step(.02, lg.y) * step(lg.y, LATE * .7) * clamp((raw.r - raw.b) * 3.5 - .1, 0., 1.);
     float fl = .84 + .1 * sin(T * 2.3 + u.x * 47.) + .06 * sin(T * 5.7 + u.y * 63.);
     float lamp = mix(1.9, .35, day) + tw * .5;
     col += (li * fl * vec3(1., .9, .74) * .28 + li * li * .12) * lamp;
@@ -180,10 +191,10 @@ export function realm(ctx) {
     if (prog) {
       gl.useProgram(prog); const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
       gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
-      for (const nme of ["R", "T", "IMG", "DEP", "LIT", "IR", "VIEW", "PAR", "Q", "SP", "SC", "SEL", "DIVE", "HAS", "PH", "SKY", "FOG", "WND", "FLASH"]) U[nme] = gl.getUniformLocation(prog, nme);
-      for (let i = 0; i < 3; i++) { const t = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + i); gl.bindTexture(gl.TEXTURE_2D, t); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([3, 4, 10, 255]));
+      for (const nme of ["R", "T", "IMG", "DEP", "LIT", "IR", "VIEW", "PAR", "Q", "SP", "SC", "SEL", "DIVE", "HAS", "PH", "SKY", "FOG", "WND", "FLASH", "SEA", "SEAS", "LATE"]) U[nme] = gl.getUniformLocation(prog, nme);
+      for (let i = 0; i < 4; i++) { const t = gl.createTexture(); gl.activeTexture(gl.TEXTURE0 + i); gl.bindTexture(gl.TEXTURE_2D, t); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([3, 4, 10, 255]));
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); tex.push(t); }
-      gl.uniform1i(U.IMG, 0); gl.uniform1i(U.DEP, 1); gl.uniform1i(U.LIT, 2);
+      gl.uniform1i(U.IMG, 0); gl.uniform1i(U.DEP, 1); gl.uniform1i(U.LIT, 2); gl.uniform1i(U.SEA, 3);
     } else gl = null;
   }
   if (!gl) el.classList.add("rl-flat");
@@ -220,7 +231,16 @@ export function realm(ctx) {
     const w = ctx.weather(), k = wx.skyOf(w), code = w && w.now ? w.now.code : null;
     Object.assign(SKT, { ph: SKYQ != null ? SKYQ : wx.phaseOf(w), cloud: k.cloud, rain: k.rain, snow: k.snow, storm: k.storm, fog: code === 45 || code === 48 ? 0.8 : 0, wind: k.wind }, WXQ ? WXP[WXQ] || {} : {});
   }
-  readSky(); Object.assign(SK, SKT); const skyTimer = setInterval(() => { readSky(); wake(); }, 2e4);
+  /* the season painting is fetched only when its season comes (one of the two, after the town itself has loaded) */
+  const SEAQ = qs.get("season"); let season = { kind: null, amt: 0, name: "" }, seaKind = null, seaAmt = 0, seaLoading = false, late = 0;
+  function readSeason() {
+    const w = ctx.weather(), lat = w && typeof w.lat === "number" ? w.lat : 35, now = clock.now();
+    season = seasonOf(now, lat, w && w.now, SKT.snow, SEAQ); late = qs.get("late") != null ? Number(qs.get("late")) || 0 : lateOf(now);
+    if (gl && season.kind && season.kind !== seaKind && !seaLoading) { const want = season.kind; seaLoading = true;
+      img(ART(`realm_${want}.webp`)).then((im) => { seaLoading = false; if (dead || !im) return; upload(3, im, true); seaKind = want; seaAmt = calm || SEAQ ? (season.kind === want ? season.amt : 0) : seaAmt; wake(); }); }
+  }
+  readSky(); Object.assign(SK, SKT); const skyTimer = setInterval(() => { readSky(); readSeason(); wake(); }, 2e4);
+  ready.then(() => { if (!dead) readSeason(); });
   const dprMax = Math.min(2, devicePixelRatio || 1); let dpr = dprMax;
   function size() { const w = stage.clientWidth, hh = stage.clientHeight; if (!w || !hh) return; cv.width = Math.round(w * dpr); cv.height = Math.round(hh * dpr); if (gl) gl.viewport(0, 0, cv.width, cv.height); clampV(); }
   const PCA = new Float32Array(MAXP * 3);
@@ -246,7 +266,9 @@ export function realm(ctx) {
       gl.uniform2f(U.R, cv.width, cv.height); gl.uniform1f(U.T, calm ? 0 : t); gl.uniform2f(U.IR, IRW, IRH); gl.uniform3f(U.VIEW, V.cx, V.cy, base() * V.z * dpr);
       gl.uniform2f(U.PAR, calm ? 0 : par[0], calm ? 0 : par[1]); gl.uniform1f(U.Q, q); if (sel >= 0) { gl.uniform2f(U.SP, places[sel].x, places[sel].y); gl.uniform3fv(U.SC, PCA.subarray(sel * 3, sel * 3 + 3)); }
       const kk = Math.min(1, dt * 0.6); for (const key of ["cloud", "rain", "snow", "storm", "fog", "wind"]) SK[key] += (SKT[key] - SK[key]) * kk;
-      SK.ph = SKT.ph; if (!calm && SK.storm > 0.4 && Math.random() < dt * 0.22) SK.flash = 1; SK.flash *= Math.pow(0.0005, dt);
+      SK.ph = SKT.ph; if (!calm && SK.storm > 0.4 && Math.random() < dt * 0.22) { SK.flash = 1; if (el.onflash) try { el.onflash(); } catch (e) { /* the sound is optional */ } } SK.flash *= Math.pow(0.0005, dt);
+      const seaT = seaKind && seaKind === season.kind ? season.amt : 0; seaAmt += (seaT - seaAmt) * (calm ? 1 : Math.min(1, dt * 0.5));
+      gl.uniform2f(U.SEAS, seaAmt, seaKind === "winter" ? 1 : 0); gl.uniform1f(U.LATE, late);
       gl.uniform1f(U.PH, SK.ph); gl.uniform4f(U.SKY, SK.cloud, calm ? 0 : SK.rain, calm ? 0 : SK.snow, SK.storm); gl.uniform1f(U.FOG, SK.fog); gl.uniform1f(U.WND, SK.wind); gl.uniform1f(U.FLASH, calm ? 0 : SK.flash);
       gl.uniform1f(U.SEL, sel); gl.uniform1f(U.DIVE, V.dive); gl.uniform1f(U.HAS, has); gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
@@ -255,7 +277,7 @@ export function realm(ctx) {
     core.classList.toggle("far", V.z > 1.6);
     const cardTop = sel >= 0 ? hh - card.offsetHeight - DOCK - 8 : hh - DOCK, order = places.map((pl, i) => i).sort((a, b) => Math.abs(places[a].sx - w / 2) - Math.abs(places[b].sx - w / 2)), placed = [];
     let offL = [], offR = [];
-    for (const i of order) { const pl = places[i]; if (!pl.lw) pl.lw = pl.label.offsetWidth || 80; let show = pl.sx > 14 && pl.sx < w - 14 && pl.sy > TOP + 6 && pl.sy < cardTop && !(pl.sx - pl.lw / 2 < 190 && pl.sy < TOP + 64) && !(pl.sx + pl.lw / 2 > w - 120 && pl.sy < TOP + 64);   /* never under the weather or the Levels button */
+    for (const i of order) { const pl = places[i]; if (!pl.lw) pl.lw = pl.label.offsetWidth || 80; let show = pl.sx > 14 && pl.sx < w - 14 && pl.sy > TOP + 6 && pl.sy < cardTop && !(pl.sx - pl.lw / 2 < 190 && pl.sy < TOP + 64) && !(pl.sx + pl.lw / 2 > w - 150 && pl.sy < TOP + 64);   /* never under the weather or the Levels button */
       if (pl.sx < 14) offL.push(pl); else if (pl.sx > w - 14) offR.push(pl);
       if (show && i !== sel) for (const q2 of placed) if (Math.abs(q2[0] - pl.sx) < 64 && Math.abs(q2[1] - pl.sy) < 20) { show = false; break; }
       if (show) placed.push([pl.sx, pl.sy]);
@@ -270,7 +292,7 @@ export function realm(ctx) {
       if (b.textContent !== t) { b.textContent = t; b.setAttribute("aria-label", `${list.length} more ${list.length === 1 ? "place" : "places"} to the ${side < 0 ? "left" : "right"}`); } };
     edge(edgeL, offL, -1); edge(edgeR, offR, 1);
     const moving = Math.abs(V.tz - V.z) > 1e-4 || Math.abs(V.tcx - V.cx) > 1e-5 || Math.abs(V.tcy - V.cy) > 1e-5 || V.dive > 0;
-    if (seen && !document.hidden && (!calm || moving || Math.abs(SKT.cloud - SK.cloud) > 0.01)) raf = requestAnimationFrame(frame);
+    if (seen && !document.hidden && (!calm || moving || Math.abs(SKT.cloud - SK.cloud) > 0.01 || Math.abs((seaKind === season.kind ? season.amt : 0) - seaAmt) > 0.01)) raf = requestAnimationFrame(frame);
   }
   const wake = () => { if (!raf && !dead) { last = 0; raf = requestAnimationFrame(frame); } };
 
@@ -317,6 +339,7 @@ export function realm(ctx) {
   el.fit = () => requestAnimationFrame(() => { fit(); requestAnimationFrame(() => { fit(); size(); wake(); }); });
   el.ready = ready;
   el.sky = () => ({ ...SK, target: { ...SKT } });
+  el.season = () => ({ ...season, shown: seaKind, amt: seaAmt, late });
   el.cleanup = () => { dead = true; document.body.classList.remove("town-diving"); clearInterval(skyTimer); cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt);
     try { if (gl && !gl.isContextLost()) { const lc = gl.getExtension("WEBGL_lose_context"); if (lc) lc.loseContext(); } } catch (e) { /* already gone */ } };   // hand the GPU context back: a phone holds only a few
   size();

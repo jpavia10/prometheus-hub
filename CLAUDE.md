@@ -54,6 +54,10 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   (day ring, runway, countdowns, tiles). Owner, 2026-11-12: "I want advanced motion and gui not a 1990s basic shit": design the hub
   around motion first; never ship a static grid of boxes as the main screen.
   Effects: `deck/core/fx.js` (warp, synthesized sound behind one switch, haptics). Look: `deck/deck.css` (tokens at the top, "d2: the core" at the end).
+  The home is the town (`deck/views/realm.js`, one painting, live hour and weather). Its sound (d79, `deck/views/townsound.js`): real
+  recordings in `audio/town/` (from Titan's set, CC0 or Pixabay licence, `audio/town/CREDITS.md`) that follow its sky, off until he taps
+  the speaker. Its seasons (`deck/core/season.js`): `art/realm/realm_autumn.webp` and `realm_winter.webp` are the same painting
+  repainted and aligned (`tools/art/realm.py edit`, then `season`), chosen by the calendar and the real snow depth; `?season=` pins one.
 - **Real data in:** `deck/core/legacy.js` reads the pillars' own storage (`prometheus.<pillar>.*`), the shared deadline bus
   (`prometheus.bus.deadlines`, `kit/bus.js`) and Titan's published ledger; `deck/core/feeds.js` merges them with the fixed dates.
 - **The default pillar shell (d5):** the block "pillar shell v2" at the end of `kit/kit.js` (crest, automatic sections for pages that are one
