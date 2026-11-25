@@ -801,11 +801,10 @@ with sync_playwright() as p:
         deadline: !!(facts.deadline && line.includes(facts.deadline.title)), nyse: facts.session.label, nyseOnLine: line.includes(facts.session.label), inside: r.right <= innerWidth + 1 && document.documentElement.scrollWidth <= innerWidth }; }""")
     pg.goto(f"{URL}?now={NOW}&demo=1#/time", wait_until="load"); pg.wait_for_selector(".dayring svg", timeout=20000); pg.wait_for_selector(".runway .day", timeout=10000); pg.wait_for_timeout(400)
     moved = pg.evaluate("""() => ({ ring: !!document.querySelector('.dayring svg'), days: document.querySelectorAll('.runway .day').length, focus: !!document.querySelector('a.tile.focus'), countdowns: document.querySelectorAll('.countdown').length })""")
-    pg.goto(f"{URL}?now={NOW}&demo=1#/money", wait_until="load"); pg.wait_for_selector(".dial-pct", timeout=15000); pg.wait_for_timeout(300)
-    payoff = pg.evaluate("() => (document.querySelector('.dial-pct') || {}).textContent || ''")
+    payoff = "moved to Midas (2026-11-25; MONEY-1 checks the routes)"
     proof("DECK-1", "Arrival: the home is the town (every place, the weather chip, Levels, nothing scrolls); System opens on the briefing: one now line (next event, next deadline, NYSE open or closed) and what comes after, inside the screen; the day ring, 7-day runway, countdowns and payoff ring still read the store",
           home["core"] == len(CORE_IDS) and home["wx"] and home["levels"] and home["fits"] and home["wide"] <= 384 and brief["first"] and brief["next"] and brief["event"] and brief["deadline"] and brief["nyseOnLine"] and brief["nyse"] in ("NYSE open", "NYSE closed") and brief["inside"]
-          and moved["ring"] and moved["days"] == 7 and moved["focus"] and moved["countdowns"] >= 1 and bool(payoff),
+          and moved["ring"] and moved["days"] == 7 and moved["focus"] and moved["countdowns"] >= 1,
           json.dumps({"line": brief["line"], "nyse": brief["nyse"], "home": home, "brief": {k: v for k, v in brief.items() if k != "line"}, "moved": moved, "payoff": payoff}, default=str))
 
     # TIME-1: the 40-event research calendar goes in and comes back out the same
@@ -826,22 +825,30 @@ with sync_playwright() as p:
     got = pg.evaluate("() => window.__deck.store.get('time').events.filter((e) => /smog check/i.test(e.title) && e.date === '2026-12-05').length")
     proof("TIME-3", "Quick add in plain words: “smog check dec 5”", got >= 1, f"preview “{label.strip()}”, stored on 2026-12-05: {got}")
 
-    # MONEY-1: the simulator reproduces the worked cases to the cent, in the page
-    pg.goto(f"{URL}?now={NOW}&demo=1#/money/library"); pg.wait_for_selector(".subtabs .seg"); pg.click(".subtabs .seg button:has-text('Worked cases')"); pg.wait_for_selector(".lib select")
-    n = pg.evaluate("() => document.querySelector('.lib select').options.length"); okc = 0; figs = 0; lines = []
-    for i in range(n):
-        pg.select_option(".lib select", str(i)); pg.wait_for_timeout(60)
-        t = pg.evaluate("() => ({ ok: !!document.querySelector('.lib .banner.ok'), text: (document.querySelector('.lib .banner') || {}).textContent })")
-        okc += 1 if t["ok"] else 0
-        import re
-        m = re.search(r"([\d,]+) figures", t["text"] or ""); figs += int(m.group(1).replace(",", "")) if m else 0
-        if not t["ok"]: lines.append(f"case {i + 1}: {t['text']}")
-    proof("MONEY-1", "Payoff simulator matches the 12 worked cases to the cent (2 required)", okc >= 2 and okc == n, f"{okc} of {n} cases match; {figs:,} figures compared" + ("; " + "; ".join(lines) if lines else ""))
+    # MONEY-1 (owner, 2026-11-25: "Replace money at the bottom with midas and just incorporate whatever the goal of that was into Midas"):
+    # every old Money route forwards to the matching Midas room, and the hub's payoff engine (still Time's loan feed) reproduces the 12
+    # worked cases to the cent (Midas's own engine is proved in its repository, test/console.test.mjs)
+    cm1 = b.new_context(viewport={"width": 384, "height": 832}); pm1 = cm1.new_page()
+    pm1.route("**/midas-ledger/**", lambda route, request: route.fulfill(status=200, content_type="text/html", body="<!doctype html><title>Midas</title><p>Midas stub</p>"))
+    if MOCK: pm1.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pm1.route("https://api.weather.gov/**", lambda route, request: route.abort())
+    went = {}
+    for tab, want in (("", "today"), ("/whatif", "whatif"), ("/bills", "bills"), ("/library", "library"), ("/plan", "plan")):
+        try: pm1.goto(f"{URL}?now={NOW}&demo=1#/money{tab}", wait_until="load"); pm1.wait_for_url("**/midas-ledger/**", timeout=15000); went[tab or "/"] = pm1.url.split("#")[-1]
+        except Exception as e: went[tab or "/"] = "stayed: " + str(e)[:60]
+    pm1.goto(f"{URL}?now={NOW}&demo=1#/system", wait_until="load")
+    eng = pm1.evaluate("""async () => { const m = await import(new URL('deck/models/money.js', document.baseURI).href); const cs = await (await fetch('deck/data/payoff-cases.json')).json(); let ok = 0;
+      for (const c of cs) { const r = m.simulate({ debts: c.debts.map((d) => ({ ...d, id: d.name })), budget: c.budget, strategy: c.method }); if (r.months.length === c.months.length && r.totalInterestC === m.toCents(c.total_interest)) ok++; }
+      return { ok, n: cs.length }; }""")
+    cm1.close()
+    proof("MONEY-1", "Money lives in Midas: every old Money route forwards to its Midas room; the hub's payoff engine still matches the 12 worked cases",
+          went == {"/": "today", "/whatif": "whatif", "/bills": "bills", "/library": "library", "/plan": "plan"} and eng["ok"] == eng["n"] == 12, f"routes {went}; engine {eng['ok']} of {eng['n']} cases")
 
     # MONEY-2: bills publish their next due dates to the one feed (the picture and Time read it)
     r2 = pg.evaluate("""async () => { const f = await import(new URL('deck/core/feeds.js', document.baseURI).href); const d = await import(new URL('deck/core/dates.js', document.baseURI).href);
-      const rows = f.rows(d.today(), d.addDays(d.today(), 45), { withFixed: false }); return { bills: rows.filter((r) => r.cap === 'money').length, time: rows.filter((r) => r.cap === 'time').length }; }""")
-    proof("MONEY-2", "Bills and the loan payment show as dated rows next to events (one feed)", r2["bills"] > 0 and r2["time"] > 0, json.dumps(r2))
+      const day = d.addDays(d.today(), 6); localStorage.setItem('prometheus.midas.summary', JSON.stringify({ v: 1, dues: [{ date: day, name: 'Proof card', amount: 35, kind: 'card' }] }));
+      const rows = f.rows(d.today(), d.addDays(d.today(), 45), { withFixed: false }); localStorage.removeItem('prometheus.midas.summary');
+      return { bills: rows.filter((r) => r.cap === 'money' && !r.midas).length, midas: rows.filter((r) => r.midas && r.date === day).length, time: rows.filter((r) => r.cap === 'time').length }; }""")
+    proof("MONEY-2", "Bills, the loan payment and Midas's own card payments show as dated rows next to events (one feed)", r2["bills"] > 0 and r2["midas"] == 1 and r2["time"] > 0, json.dumps(r2))
 
     # DATA-1: the deck file goes out and comes back in
     r3 = pg.evaluate("""() => { const s = window.__deck.store; const file = JSON.parse(JSON.stringify(s.exportDeck())); const before = JSON.stringify(s.get('time')) + JSON.stringify(s.get('money'));

@@ -162,6 +162,12 @@ export function feed(st, from, to) {
       out.push({ key: "money:plan:" + date, date, time: null, title: (st.plan.debts.length === 1 ? st.plan.debts[0].name : "Debt plan") + " payment", cap: "money", tone: "bill", amount: amt / 100, weight: 3, go: "#/money" });
     }
   }
+  /* Midas's own payments (its shared summary on this device, 2026-11-25): each card's, loan's and the mortgage's due date and amount */
+  try {
+    const sum = typeof localStorage !== "undefined" ? JSON.parse(localStorage.getItem("prometheus.midas.summary") || "null") : null;
+    for (const d of (sum && Array.isArray(sum.dues) ? sum.dues : [])) if (d && d.date >= from && d.date <= to)
+      out.push({ key: `midas:${d.kind}:${d.name}:${d.date}`, date: d.date, time: null, title: `${d.name} ${d.kind === "card" ? "minimum" : "payment"}`, cap: "money", tone: "bill", midas: true, amount: Number(d.amount) || 0, weight: 3, go: "#/money" });
+  } catch (e) { /* no summary on this device */ }
   for (const b of st.bills || []) for (const date of billDates(b, from, to))
     out.push({ key: `money:bill:${b.id}:${date}`, date, time: null, title: b.name, cap: "money", tone: b.kind === "sub" ? "sub" : "bill", amount: Number(b.amount) || 0, weight: b.kind === "sub" ? 1 : 3, auto: !!b.autopay, go: "#/money/bills" });
   return out;

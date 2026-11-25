@@ -17,7 +17,7 @@ import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 const MIDAS = "../midas-ledger/";   /* Midas Ledger: the money pillar, same origin (jpavia10.github.io), its book encrypted */
 
-export const BUILD = "d81";
+export const BUILD = "d82";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -268,7 +268,7 @@ function openSearch() {
     if (!q) items.push({ title: "New event", sub: "The full form: repeats, place, notes, countdown", icon: "calendar", tone: "nav", keep: true, run: async () => { sh.close(); const m = await import("./views/time.js"); setTimeout(() => m.eventSheet(ctx, null, null, today()), 240); } });
     for (const p of PILLARS) if (q && (p.name + " " + p.what).toLowerCase().includes(q.toLowerCase())) items.push({ title: p.name, sub: p.what, icon: p.icon, tone: "nav", leave: p.route });
     const nav = [["The core", "#/", "picture"], ...CAPS.map((c) => [c.name, "#/" + c.id, c.icon]), ["Time · week", "#/time/week", "calendar"], ["Time · month", "#/time/month", "grid"], ["Time · agenda", "#/time/agenda", "list"], ["Time · risk", "#/time/risk", "risk"], ["Time · focus clock", "#/time/focus", "flame"],
-      ["Money · what-if", "#/money/whatif", "money"], ["Money · bills and subscriptions", "#/money/bills", "money"], ["Money · library", "#/money/library", "money"], ["System · your data, export, import", "#/system", "system"]];
+      ["Midas · what if", "#/money/whatif", "scale"], ["Midas · bills and subscriptions", "#/money/bills", "scale"], ["Midas · the library", "#/money/library", "scale"], ["System · your data, export, import", "#/system", "system"]];
     for (const [name, href, ic] of nav) if (!q || name.toLowerCase().includes(q.toLowerCase())) items.push({ title: name, sub: "Go", go: href, icon: ic, tone: "nav" });
     if (!items.length) items.push({ title: "Nothing matches", sub: "Try a name, a date, an issuer, or type an event with a day: “smog check dec 5”.", keep: true, icon: "search", tone: "none" });
     sel = Math.min(sel, items.length - 1);
