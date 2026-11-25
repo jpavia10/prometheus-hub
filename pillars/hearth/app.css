@@ -149,3 +149,56 @@ tr.st-purchased .h-status { color: var(--good); border-color: rgba(125, 255, 192
   #h-deck .kv > b { font-size: 20px; }
   .phase-card .pill { transform: rotate(-1.2deg); }
 }
+
+/* ---- Hearth v2 (2026-11-25): the house room by room ---- */
+.h-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 8px 0 10px; }
+.h-stat { display: grid; gap: 2px; padding: 10px; border-radius: var(--radius-s); border: 1px solid var(--line); background: color-mix(in srgb, var(--pearl) 4%, transparent); min-width: 0; }
+.h-stat small { color: var(--faint); font-size: 11.5px; }
+.h-stat b { font-size: 18px; font-weight: 400; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.h-stat.good b { color: var(--good, #9fe6c2); }
+@media (max-width: 520px) { .h-stats { grid-template-columns: 1fr 1fr; } }
+.h-floors { display: grid; gap: 12px; }
+.h-floor { padding: 14px; }
+.h-floor-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.h-floor-head h2 { margin: 0; font-size: 18px; }
+.h-room-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.h-room-card { display: grid; gap: 4px; text-align: left; padding: 10px 12px; border-radius: var(--radius-s); border: 1px solid var(--line-strong); background: color-mix(in srgb, var(--pearl) 4%, transparent); color: var(--ink); font: inherit; cursor: pointer; min-width: 0; }
+.h-room-card:hover, .h-room-card:focus-visible, .h-room-card.on { border-color: var(--accent); }
+.h-room-card.outdoor { border-style: dashed; background: color-mix(in srgb, #c98a4a 8%, transparent); }
+.h-room-card b { font-weight: 500; font-size: 15px; }
+.h-room-meta, .h-room-pct { color: var(--muted); font-size: 12.5px; }
+.h-room-pct { color: var(--faint); }
+.h-room-card .bar-mini { display: block; }
+.h-room { display: grid; gap: 8px; }
+.h-room-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.h-room-head h2 { margin: 2px 0; }
+.h-room h3 { margin: 10px 0 2px; font-size: 15px; font-weight: 500; }
+.h-proj { margin: 6px 0; }
+.h-room-tag { color: var(--accent); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.h-pct { font-variant-numeric: tabular-nums; }
+.h-tasks { display: grid; gap: 4px; margin: 6px 0; }
+.h-task { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.h-task input { width: 18px; height: 18px; flex: none; }
+.h-task-add { display: flex; gap: 6px; margin-top: 4px; }
+.h-task-add input { flex: 1; min-width: 0; }
+.h-asset { align-items: center; gap: 10px; }
+.h-asset-side { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px; }
+.h-asset-side small { color: var(--faint); font-size: 12px; }
+.h-inv-group h3 { margin: 12px 0 4px; font-size: 15px; font-weight: 500; }
+.h-inv-group h3 small { color: var(--faint); font-weight: 400; font-size: 12.5px; }
+.h-supp { border-left: 3px solid color-mix(in srgb, #c98a4a 55%, transparent); }
+.h-supp .kicker { color: #e6b98a; }
+.h-supp-h { margin: 6px 0 10px; font-size: 18px; }
+.h-supp-grid { gap: 12px; }
+.h-log summary { cursor: pointer; color: var(--muted); margin-top: 12px; }
+.h-room-head h2 { font-size: clamp(24px, 7vw, 30px); text-transform: none; letter-spacing: -0.01em; font-weight: 400; margin: 2px 0 4px; }
+.h-floor-head h2 { font-size: 15px; letter-spacing: .14em; }
+.h-room .h-none { color: var(--muted); margin: 2px 0 6px; font-size: 14px; }
+.h-jobbook { border: 1px solid color-mix(in srgb, #c98a4a 45%, transparent); border-radius: var(--radius); padding: 0; background: color-mix(in srgb, #c98a4a 5%, transparent); }
+.h-jobbook > summary { cursor: pointer; list-style: none; display: grid; gap: 2px; padding: 16px 18px; }
+.h-jobbook > summary::-webkit-details-marker { display: none; }
+.h-jobbook > summary b { font-size: 18px; font-weight: 500; }
+.h-jobbook > summary small { color: var(--muted); font-size: 13px; }
+.h-jobbook > summary::after { content: "Open ▾"; color: #e6b98a; font-size: 13px; margin-top: 4px; }
+.h-jobbook[open] > summary::after { content: "Close ▴"; }
+.h-jobbook-grid { padding: 0 12px 14px; }

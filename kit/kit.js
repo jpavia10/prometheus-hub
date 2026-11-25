@@ -659,7 +659,7 @@
     { name: "Foundry", sub: "Software builds, shipped tools & repos", href: "../foundry/", k: "code dev software builds" },
     { name: "Observatory", sub: "Deep reading, study & research", href: "../observatory/", k: "reading books articles study" },
     { name: "Kin", sub: "Family & household moments", href: "../kin/", k: "family sebastian care moments" },
-    { name: "Hephaestus Hearth", sub: "11-room build phases, materials & budget", href: "../hearth/", k: "house renovation materials budget" },
+    { name: "Hephaestus Hearth", sub: "The house room by room: renovations, appliances & furniture", href: "../hearth/", k: "house rooms renovation appliances furniture deck budget" },
     { name: "Aether · Field Lab", sub: "Atmospheric telemetry, solar & air quality", href: "../aether/", k: "weather power solar grid field" },
     { name: "Polis · Civic Watch", sub: "CA state & local legal/civic watchlist", href: "../polis/", k: "policy law ca legislature bills" },
     { name: "Mythos · Lore Studio", sub: "Worldbuilding, entity graph & chapters", href: "../mythos/", k: "story lore graph characters" },

@@ -45,7 +45,7 @@
   /* where each painting's subject sits (0 = top, 1 = bottom), set by eye; a painting not listed uses where its lights gather */
   var FOCUS = { kairos: 0.42, garage: 0.47, odyssey: 0.46, selling: 0.56, kin: 0.56, continuity: 0.6,
     /* 2026-11-23: the 11 Gemini measured as missing their subject (hub_gemini_painting-focus), each checked by eye */
-    hearth: 0.55, money: 0.5, hermes: 0.46, piano: 0.42, bastion: 0.42, privacy: 0.38, games: 0.38, forge: 0.43, foundry: 0.42,
+    hearth: 0.4, money: 0.5, hermes: 0.46, piano: 0.42, bastion: 0.42, privacy: 0.38, games: 0.38, forge: 0.43, foundry: 0.42,
     observatory: 0.42, mythos: 0.39 };
 
   function img(url) {

@@ -173,7 +173,7 @@
   {
    "id": "hearth",
    "name": "Hephaestus Hearth",
-   "what": "The house: renovations, what is in each room, and the plan.",
+   "what": "The house room by room: renovation progress and what each room holds.",
    "repo": "jpavia10/hephaestus-hearth",
    "home": "pillars/hearth/",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/hearth/",

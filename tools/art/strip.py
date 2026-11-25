@@ -11,7 +11,7 @@ from PIL import Image, ImageFilter
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.join(HERE, "..", ".."); W = os.path.join(ROOT, "art", "worlds")
 CW, CH = 96, 128                                       # card size in the sheet: 48 x 64 css px at 2x
-FOCUS = {"kairos": 0.42, "garage": 0.47, "odyssey": 0.46, "selling": 0.56, "kin": 0.56, "continuity": 0.6, "hearth": 0.55, "money": 0.5,
+FOCUS = {"kairos": 0.42, "garage": 0.47, "odyssey": 0.46, "selling": 0.56, "kin": 0.56, "continuity": 0.6, "hearth": 0.4, "money": 0.5,
          "hermes": 0.46, "piano": 0.42, "bastion": 0.42, "privacy": 0.38, "games": 0.38, "forge": 0.43, "foundry": 0.42, "observatory": 0.42, "mythos": 0.39}   # as in kit/world.js
 
 

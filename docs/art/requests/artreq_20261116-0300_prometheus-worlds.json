@@ -48,7 +48,7 @@
    "world": "Hephaestus Hearth (the house and its renovation)",
    "accent": "ember orange",
    "files": "world_hearth{,_depth,_lights}.png",
-   "prompt": "A mountain house at blue hour seen from below its second-floor wooden deck, which is being rebuilt: fresh cedar boards laid in staggered courses, a work light glowing on a sawhorse, warm light in the windows, pines and a mountain range beyond."
+   "prompt": "A whole three-storey mountain home at blue hour, seen from the snowy yard a little below it: a ground level with a garage door and a mudroom door, a first floor with a large wooden deck and warm lit windows (an office, a studio, a guest room), a second floor with a second large deck, a big lit living-room and kitchen window and bedroom windows, a small balcony off one bedroom, and under the steep roof a dim attic gable window. Every lived-in room glows a different warm tone, the decks are fresh cedar, pines and a mountain range beyond. It reads as a cared-for family house, not a construction site."
   },
   {
    "id": "garage",

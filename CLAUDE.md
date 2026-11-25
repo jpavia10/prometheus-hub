@@ -72,6 +72,15 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d83 (2026-11-25): Hearth is home management, room by room** (owner: "start from scratch and redesign it so its a home management with
+  renovation details like the deck to supplement"). His house: Top (unfinished attic); second floor (large deck, living room, kitchen, Violet's
+  room, master bedroom, Violet's bathroom, master bathroom, master bedroom deck); first floor (large deck, foyer and hallway, laundry, office,
+  studio, guest bedroom, guest bathroom); ground level (garage, crawlspace, mudroom). `FLOORS` and `HOUSE` in `pillars/hearth/app.js`;
+  `seeded.v3` migrates old rooms and keeps sizes, notes and rooms he added. Tabs: House (the section drawing `stage.js`, floors of room cards,
+  a room view with its projects, steps and items), Renovations (projects by room with steps; the deck refurbish counts its 8 stages; the
+  deck job book is one disclosure `#h-jobbook`), Inventory (appliances and furniture with paid, worth now, warranty), Upkeep. Hearth
+  publishes `prometheus.hearth.summary` (totals only: renovation %, contents worth, items, open steps, per floor) for other pillars.
+  The painting is the whole house now (`art/worlds/world_hearth.webp`, Nano Banana Pro, prompt in the worlds request).
 - **d11 (2026-11-13): Hearth lives here now** (`pillars/hearth/`; owner: "Hearth doesnt need an independent repo"). Scope stays the owner's three
   things: renovation projects, assets per room, a plan that gets accurate as it is measured; no price research, code lookups or upkeep
   calendars unless he asks. The deck's stage store keeps its old key `hearth.deck.stages.v1`. The old repo `jpavia10/hephaestus-hearth`

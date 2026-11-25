@@ -1,5 +1,14 @@
-/* Hephaestus Hearth: 5-phase Renovation Tracker + 8-stage Deck Rev 7 + 11 Rooms + 13 BOM SKUs + 5 Field Requests + Planned vs Actual Costs + the mountain community Maintenance + 124 Checkpoints.
-   Preserves window.HEARTH = { DECK, data } for stage.js and cross-pillar hooks. */
+/* Hephaestus Hearth v2 (owner, 2026-11-25: "I want the hearth pillar to track each room. The renovations completion and value of assets
+   in each room also. Appliances and furniture for example. It currently shows the deck stuff first but id like you to start from scratch
+   and redesign it so its a home management with renovation details like the deck to supplement").
+   The house, floor by floor, as the owner described it: Ground (garage, crawlspace, mudroom), First (large deck, foyer and hallway, laundry,
+   office, studio, guest bedroom, guest bathroom), Second (large deck, living room, kitchen, Violet's room, master bedroom, Violet's bathroom,
+   master bathroom, master bedroom's small deck), Top (the unfinished attic). Tabs: House (the cross-section, every room's renovation
+   progress and contents value, the room you tap), Renovations (every project by room with its tasks; the deck job book under it as the
+   supplement: stages, materials, field requests, specs, permit and research), Inventory (appliances, furniture and everything else, by room,
+   with what each cost and is worth, warranties), Upkeep (seasonal maintenance and the cited code checklists).
+   Shares on this device: "prometheus.hearth.summary" (contents value, items, renovation progress) for Midas's net worth and Aegis's coverage.
+   Keeps window.HEARTH = { DECK, data, ... } for stage.js and the cross-pillar links (kit/links.js). */
 (function () {
   "use strict";
   const { $, h, day, toast, store, download, pickFile, tabs, field, G } = PK;
@@ -98,6 +107,64 @@
     if (!S.get("phases")) S.set("phases", SEED_PHASES);
     if (!S.get("maint")) S.set("maint", SEASONAL_MAINT);
     S.set("seeded.v2", true);
+  }
+
+  /* ---- the house (v2) ---- */
+  const FLOORS = [
+    { n: 3, id: "top", name: "Top", sub: "unfinished attic" },
+    { n: 2, id: "second", name: "Second floor", sub: "living, kitchen, bedrooms" },
+    { n: 1, id: "first", name: "First floor", sub: "entry, office, studio, guest" },
+    { n: 0, id: "ground", name: "Ground level", sub: "garage, crawlspace, mudroom" },
+  ];
+  const HOUSE = [
+    ["attic", "Attic", 3, "storage", "Unfinished"],
+    ["deck2", "Large deck", 2, "outdoor", "23 × 10 ft, off the living room"], ["living", "Living room", 2, "living areas"], ["kitchen", "Kitchen", 2, "kitchen"],
+    ["violet-room", "Violet's room", 2, "bedrooms"], ["master-bed", "Master bedroom", 2, "bedrooms"], ["violet-bath", "Violet's bathroom", 2, "bathrooms"],
+    ["master-bath", "Master bathroom", 2, "bathrooms"], ["master-deck", "Master bedroom deck", 2, "outdoor", "small"],
+    ["deck1", "Large deck", 1, "outdoor"], ["foyer", "Foyer and hallway", 1, "living areas"], ["laundry", "Laundry room", 1, "laundry"], ["office", "Office", 1, "living areas"],
+    ["studio", "Studio", 1, "living areas"], ["guest-bed", "Guest bedroom", 1, "bedrooms"], ["guest-bath", "Guest bathroom", 1, "bathrooms"],
+    ["garage", "Garage", 0, "garage"], ["crawlspace", "Crawlspace", 0, "house systems"], ["mudroom", "Mudroom", 0, "living areas"],
+  ].map(([id, name, floor, type, note]) => ({ id, name, floor, type, notes: note || "", w: null, l: null }));
+  const OLD_ID = { deck2f: "deck2", deck1f: "deck1", "violets-bath": "violet-bath" };
+  if (!S.get("seeded.v3")) {
+    const map = (id) => OLD_ID[id] || id;
+    const old = S.list("rooms"), byId = new Map(old.map((r) => [map(r.id), r]));
+    const rooms = HOUSE.map((r) => { const o = byId.get(r.id) || {}; return { ...r, w: o.w ?? r.w, l: o.l ?? r.l, notes: [r.notes, o.notes && o.notes !== r.notes ? o.notes : ""].filter(Boolean).join(" · ") }; });
+    for (const o of old) if (!HOUSE.some((r) => r.id === map(o.id)) && !["living"].includes(o.id)) rooms.push({ ...o, id: map(o.id), floor: o.floor ?? 1 });   // rooms he added himself stay
+    S.set("rooms", rooms);
+    const phases = S.get("phases", SEED_PHASES).map((p) => ({ ...p, room: p.id === 5 ? "master-deck" : map(p.room) }));
+    S.set("phases", phases);
+    for (const k of ["requests", "assets", "projects"]) S.set(k, S.list(k).map((x) => ({ ...x, room: map(x.room) })));
+    S.set("seeded.v3", true);
+    try { localStorage.removeItem("prometheus.tab." + location.pathname); } catch (_) { /* the House tab opens first */ }
+  }
+  const roomList = () => S.list("rooms");
+  const floorOf = (r) => FLOORS.find((f) => f.n === +r.floor) || FLOORS[2];
+  const assetValue = (a) => (Number.isFinite(+a.value) && a.value !== "" && a.value != null ? +a.value : Number.isFinite(+a.paid) && a.paid !== "" && a.paid != null ? +a.paid : 0);
+  /** A project's progress, 0..100: the deck's stages for the deck refurbish, its own tasks otherwise, else its status. */
+  function progressOf(p) {
+    if (+p.id === 1) { const st = deckState(); const done = DECK.stages.filter((x) => (st[x.id] || {}).done).length; return Math.round((done / DECK.stages.length) * 100); }
+    const t = p.tasks || []; if (t.length) return Math.round((t.filter((x) => x.done).length / t.length) * 100);
+    return p.status === "completed" ? 100 : p.status === "in-progress" ? 40 : 0;
+  }
+  /** Everything Hearth knows about one room. */
+  function roomFacts(id) {
+    const projects = S.get("phases", SEED_PHASES).filter((p) => p.room === id);
+    const assets = S.list("assets").filter((a) => a.room === id);
+    const pct = projects.length ? Math.round(projects.reduce((s, p) => s + progressOf(p), 0) / projects.length) : null;
+    return { projects, assets, pct, value: assets.reduce((s, a) => s + assetValue(a), 0), open: projects.reduce((s, p) => s + (+p.id === 1 ? DECK.stages.filter((x) => !(deckState()[x.id] || {}).done).length : (p.tasks || []).filter((x) => !x.done).length), 0) };
+  }
+  function houseFacts() {
+    const rooms = roomList(), phases = S.get("phases", SEED_PHASES), assets = S.list("assets");
+    const pct = phases.length ? Math.round(phases.reduce((s, p) => s + progressOf(p), 0) / phases.length) : 0;
+    const value = assets.reduce((s, a) => s + assetValue(a), 0);
+    const open = rooms.reduce((s, r) => s + roomFacts(r.id).open, 0);
+    const soon = assets.filter((a) => a.warranty).map((a) => ({ name: a.name, until: a.warranty })).filter((w) => w.until >= day()).sort((a, b) => a.until.localeCompare(b.until)).slice(0, 3);
+    return { rooms: rooms.length, roomsWithItems: new Set(assets.map((a) => a.room)).size, items: assets.length, value, pct, open, projects: phases.length, soon };
+  }
+  function publishSummary() {
+    const f = houseFacts();
+    try { localStorage.setItem("prometheus.hearth.summary", JSON.stringify({ v: 1, at: new Date().toISOString(), contentsValue: Math.round(f.value * 100) / 100, items: f.items, rooms: f.roomsWithItems, roomsTotal: f.rooms, renoPct: f.pct, openTasks: f.open, warranties: f.soon })); } catch (_) { /* storage optional */ }
   }
 
   const deckState = () => { try { return JSON.parse(localStorage.getItem(DECK.key) || "{}"); } catch (_) { return {}; } };
@@ -225,8 +292,18 @@
   }
 
   let inspectedRoomId = null;
+  const SHORT = { "Violet's room": "Violet", "Master bedroom": "Master", "Violet's bathroom": "V. bath", "Master bathroom": "M. bath", "Master bedroom deck": "M. deck",
+    "Foyer and hallway": "Foyer", "Guest bedroom": "Guest", "Guest bathroom": "G. bath", "Laundry room": "Laundry", "Living room": "Living", "Large deck": "Deck" };
   window.HEARTH = {
     DECK,
+    /** The house for the drawing (stage.js): floors top first, each room's progress and contents, the next step. */
+    house: () => {
+      const facts = houseFacts(), st = deckState(), phases = S.get("phases", SEED_PHASES);
+      const deckNext = DECK.stages.find((x) => !(st[x.id] || {}).done);
+      let next = deckNext ? "deck: " + deckNext.name : "";
+      if (!next) for (const p of phases) { const t = (p.tasks || []).find((x) => !x.done); if (t) { const rm = roomList().find((r) => r.id === p.room); next = `${rm ? rm.name : "house"}: ${t.title}`; break; } }
+      return { facts, next, floors: FLOORS.map((F) => ({ ...F, rooms: roomList().filter((r) => +r.floor === F.n).map((r) => { const R = roomFacts(r.id); return { id: r.id, name: r.name, short: SHORT[r.name] || r.name, type: r.type, pct: R.pct, items: R.assets.length, value: R.value }; }) })) };
+    },
     inspectRoom: (id) => { inspectedRoomId = id; paintInspector(); },
     data: () => ({
       deck: deckState(),
@@ -249,131 +326,215 @@
   }
 
   app.innerHTML = `
-    <div id="h-inspector" class="note" style="margin-bottom:10px"></div>
     <div class="tabs" role="tablist">
-      <button class="tab" role="tab" id="t-phases" aria-controls="p-phases">Phases & Deck</button>
-      <button class="tab" role="tab" id="t-reqs" aria-controls="p-reqs">Field Requests</button>
-      <button class="tab" role="tab" id="t-mats" aria-controls="p-mats">Materials & Costs</button>
-      <button class="tab" role="tab" id="t-rooms" aria-controls="p-rooms">Rooms & Maint</button>
-      <button class="tab" role="tab" id="t-checks" aria-controls="p-checks">Room Checklists</button>
+      <button class="tab" role="tab" id="t-house" aria-controls="p-house">House</button>
+      <button class="tab" role="tab" id="t-phases" aria-controls="p-phases">Renovations</button>
+      <button class="tab" role="tab" id="t-inv" aria-controls="p-inv">Inventory</button>
+      <button class="tab" role="tab" id="t-upkeep" aria-controls="p-upkeep">Upkeep</button>
     </div>
 
-    <section id="p-phases" role="tabpanel" class="grid">
-      <div class="glass lit span-12">
-        <h2>Phase-Gate Readiness (P1–P5)</h2>
-        <p class="sub">Rule: a phase is clear to start only after open field measurements verify, before-photos exist in Argus, and BOM SKUs have prices.</p>
-        <div id="h-plate" class="h-plate"></div>
-        <div id="h-phases-list"></div>
-      </div>
+    <section id="p-house" role="tabpanel" class="grid">
+      <div class="glass lit span-12 h-totals" id="h-totals"></div>
+      <div class="span-12" id="h-room-view" hidden></div>
+      <div class="span-12 h-floors" id="h-floors"></div>
       <div class="glass span-12">
-        <h2>2nd-Floor Deck Refurbish · Blueprint Rev 7</h2>
-        <div id="h-deck"></div>
-        <div id="h-specs"></div>
-        <div id="h-permit"></div>
-      </div>
-      <div class="glass span-12">
-        <h2>General Renovation Log</h2>
-        <div id="h-projects"></div>
-        <form class="form" id="h-proj">
-          <label class="f wide">Project<input name="title" required maxlength="120" placeholder="Bathroom vanity swap, soffit patch…"></label>
-          <label class="f">Room<select name="room"></select></label>
-          <label class="f">Started<input name="start" type="date"></label>
-          <label class="f">Done<input name="done" type="date"></label>
-          <label class="f">Actual Cost $<input name="cost" type="number" min="0" step="1"></label>
-          <button class="btn" type="submit">Record project</button>
-        </form>
-      </div>
-    </section>
-
-    <section id="p-reqs" role="tabpanel" class="grid">
-      <div class="glass span-12">
-        <h2>Field Verification Requests</h2>
-        <p class="sub">Measure in field and resolve to unlock Phase Gates and enrich the architectural blueprint.</p>
-        <div id="h-reqs-list"></div>
-        <form class="form" id="h-req-form" style="margin-top:12px">
-          <label class="f wide">New Field Request<input name="title" required maxlength="160" placeholder="Check ledger flashing depth under slider door"></label>
-          <label class="f">Phase<select name="phase"><option value="1">Phase 1</option><option value="2">Phase 2</option><option value="3">Phase 3</option><option value="4">Phase 4</option><option value="5">Phase 5</option></select></label>
-          <label class="f">Room<select name="room"></select></label>
-          <button class="btn quiet" type="submit">Log Request</button>
-        </form>
-      </div>
-    </section>
-
-    <section id="p-mats" role="tabpanel" class="grid">
-      <div class="glass span-4"><div class="stat-k">Planned BOM Estimate</div><div class="stat-v big" id="h-cost-plan">—</div><div class="stat-s" id="h-cost-plan-s"></div></div>
-      <div class="glass span-4"><div class="stat-k">Actual Spent</div><div class="stat-v big" id="h-cost-act">—</div><div class="stat-s" id="h-cost-act-s">Projects + receipts</div></div>
-      <div class="glass span-4"><div class="stat-k">SKUs Priced</div><div class="stat-v big" id="h-cost-sku">0 / 13</div><div class="stat-s">No invented guesses</div></div>
-      <div class="glass span-12">
-        <div class="row-actions" style="justify-content:space-between">
-          <h2>Materials Bill of Materials (BOM)</h2>
-          <button class="btn quiet small" id="h-basis-btn" type="button">Sync Capital Basis → Records</button>
-          <form class="row-actions">
-            <label class="f">Phase <select id="h-mat-phase"><option value="all">All</option><option value="1">P1</option><option value="2">P2</option><option value="3">P3</option><option value="4">P4</option></select></label>
-            <label class="f">Category <select id="h-mat-cat"><option value="all">All</option><option>lumber</option><option>flashing</option><option>sealant</option><option>concrete</option><option>fasteners</option><option>finish</option></select></label>
-          </form>
-        </div>
-        <div class="scroll-x"><table class="t"><thead><tr><th>Phase</th><th>SKU</th><th>Cat</th><th class="n">Qty</th><th class="n">Unit $</th><th class="n">Line $</th><th>Status</th><th></th></tr></thead><tbody id="h-mats-body"></tbody></table></div>
-      </div>
-    </section>
-
-    <section id="p-rooms" role="tabpanel" class="grid">
-      <div class="glass span-7">
-        <h2>Rooms & Blueprint Dimensions (11 Seeded)</h2>
+        <h2>Room sizes</h2>
+        <p class="sub">Measure a room once and the drawing above uses it. Add a space the list is missing.</p>
         <div id="h-rooms"></div>
         <form class="form" id="h-room" style="margin-top:10px">
           <label class="f">Room<input name="name" required maxlength="40" placeholder="Workshop"></label>
           <label class="f">Type<select name="type">${ROOM_TYPES.map((t) => `<option>${t}</option>`).join("")}</select></label>
-          <label class="f">Floor<input name="floor" type="number" min="0" max="5" value="1"></label>
+          <label class="f">Floor<select name="floor">${FLOORS.map((f) => `<option value="${f.n}">${f.name}</option>`).join("")}</select></label>
           <label class="f">Width ft<input name="w" type="number" min="0" step="0.1"></label>
           <label class="f">Length ft<input name="l" type="number" min="0" step="0.1"></label>
           <button class="btn quiet" type="submit">Add room</button>
         </form>
       </div>
-      <div class="glass span-5">
-        <h2>Seasonal maintenance</h2>
-        <p class="sub">Mountain deadlines published to Chronos & Hub Orrery.</p>
-        <div id="h-maint"></div>
+    </section>
+
+    <section id="p-phases" role="tabpanel" class="grid">
+      <div class="glass lit span-12">
+        <h2>Renovations, room by room</h2>
+        <p class="sub">Each project belongs to a room. Its progress comes from its own tasks; the deck refurbish counts the deck's stages.</p>
+        <div id="h-plate" class="h-plate"></div>
+        <div id="h-phases-list"></div>
+        <form class="form" id="h-proj" style="margin-top:12px">
+          <label class="f wide">New project<input name="title" required maxlength="120" placeholder="Kitchen backsplash, guest bath vanity, attic insulation…"></label>
+          <label class="f">Room<select name="room"></select></label>
+          <label class="f">Budget $<input name="budget" type="number" min="0" step="1"></label>
+          <label class="f">Target date<input name="due" type="date"></label>
+          <button class="btn" type="submit">Add project</button>
+        </form>
+        <details class="h-log"><summary>Done-work log</summary><div id="h-projects"></div></details>
+      </div>
+      <details class="span-12 h-jobbook" id="h-jobbook">
+        <summary><span class="kicker">Supplement</span><b>The deck job book</b><small>stages, materials and prices, field requests, specs, the permit, design loads and snow</small></summary>
+        <div class="grid h-jobbook-grid">
+      <div class="glass span-12 h-supp">
+        <p class="kicker">Supplement · the deck job book</p>
+        <h2>Second-floor deck refurbish · Blueprint Rev 7</h2>
+        <div id="h-deck"></div>
+        <div id="h-specs"></div>
+        <div id="h-permit"></div>
+      </div>
+      <div class="glass span-12 h-supp">
+        <h2>Field requests</h2>
+        <p class="sub">Measurements to take on site before a phase starts.</p>
+        <div id="h-reqs-list"></div>
+        <form class="form" id="h-req-form" style="margin-top:12px">
+          <label class="f wide">New field request<input name="title" required maxlength="160" placeholder="Check ledger flashing depth under slider door"></label>
+          <label class="f">Phase<select name="phase"><option value="1">Phase 1</option><option value="2">Phase 2</option><option value="3">Phase 3</option><option value="4">Phase 4</option><option value="5">Phase 5</option></select></label>
+          <label class="f">Room<select name="room"></select></label>
+          <button class="btn quiet" type="submit">Log request</button>
+        </form>
+      </div>
+      <div id="p-mats" class="span-12 grid h-supp-grid">
+        <div class="glass span-4"><div class="stat-k">Planned materials</div><div class="stat-v big" id="h-cost-plan">—</div><div class="stat-s" id="h-cost-plan-s"></div></div>
+        <div class="glass span-4"><div class="stat-k">Actual spent</div><div class="stat-v big" id="h-cost-act">—</div><div class="stat-s" id="h-cost-act-s">Projects + receipts</div></div>
+        <div class="glass span-4"><div class="stat-k">Items priced</div><div class="stat-v big" id="h-cost-sku">0 / 13</div><div class="stat-s">No invented guesses</div></div>
+        <div class="glass span-12">
+          <div class="row-actions" style="justify-content:space-between">
+            <h2>Deck materials</h2>
+            <button class="btn quiet small" id="h-basis-btn" type="button">Sync capital basis → Records</button>
+            <form class="row-actions">
+              <label class="f">Phase <select id="h-mat-phase"><option value="all">All</option><option value="1">P1</option><option value="2">P2</option><option value="3">P3</option><option value="4">P4</option></select></label>
+              <label class="f">Category <select id="h-mat-cat"><option value="all">All</option><option>lumber</option><option>flashing</option><option>sealant</option><option>concrete</option><option>fasteners</option><option>finish</option></select></label>
+            </form>
+          </div>
+          <div class="scroll-x"><table class="t"><thead><tr><th>Phase</th><th>Item</th><th>Cat</th><th class="n">Qty</th><th class="n">Unit $</th><th class="n">Line $</th><th>Status</th><th></th></tr></thead><tbody id="h-mats-body"></tbody></table></div>
+        </div>
+      </div>
+      <div id="p-checks" class="span-12 h-supp"><h2 class="h-supp-h">Deck research: loads, permit, snow</h2></div>
+        </div>
+      </details>
+    </section>
+
+    <section id="p-inv" role="tabpanel" class="grid">
+      <div class="glass lit span-12" id="h-inv-top"></div>
+      <div class="glass span-12">
+        <div class="row-actions" style="justify-content:space-between"><h2>Everything in the house</h2>
+          <form class="row-actions"><label class="f">Room <select id="h-inv-room"><option value="all">All rooms</option></select></label>
+            <label class="f">Kind <select id="h-inv-kind"><option value="all">All</option><option>appliance</option><option>furniture</option><option>electronics</option><option>fixture</option><option>tools</option><option>decor</option><option>outdoor</option><option>other</option></select></label></form></div>
+        <div id="h-assets"></div>
       </div>
       <div class="glass span-12">
-        <h2>Room Assets & Warranties</h2>
-        <div id="h-assets"></div>
-        <form class="form" id="h-asset" style="margin-top:10px">
-          <label class="f wide">Item<input name="name" required maxlength="80" placeholder="Heat Pump / Tankless Water Heater"></label>
-          <label class="f">Category<select name="category">${CATS.map((c) => `<option>${c.category}</option>`).join("")}<option>other</option></select></label>
+        <h2>Add an item</h2>
+        <form class="form" id="h-asset">
+          <label class="f wide">Item<input name="name" required maxlength="80" placeholder="Refrigerator, sectional sofa, washer…"></label>
+          <label class="f">Kind<select name="kind"><option>appliance</option><option>furniture</option><option>electronics</option><option>fixture</option><option>tools</option><option>decor</option><option>outdoor</option><option>other</option></select></label>
           <label class="f">Room<select name="room"></select></label>
-          <label class="f">Model<input name="model" maxlength="60"></label>
+          <label class="f">Category<select name="category">${CATS.map((c) => `<option>${c.category}</option>`).join("")}<option>other</option></select></label>
+          <label class="f">Brand / model<input name="model" maxlength="60"></label>
           <label class="f">Serial<input name="serial" maxlength="60"></label>
+          <label class="f">Bought<input name="purchased" type="date"></label>
+          <label class="f">Paid $<input name="paid" type="number" min="0" step="1"></label>
+          <label class="f">Worth now $<input name="value" type="number" min="0" step="1" placeholder="what it would cost to replace"></label>
           <label class="f">Warranty until<input name="warranty" type="date"></label>
           <label class="f wide">Receipt location<input name="receipt" maxlength="120" placeholder="Drive folder, drawer"></label>
-          <button class="btn quiet" type="submit">Add item</button>
+          <button class="btn" type="submit">Add item</button>
         </form>
       </div>
     </section>
 
-    <section id="p-checks" role="tabpanel" class="grid">
+    <section id="p-upkeep" role="tabpanel" class="grid">
       <div class="glass span-12">
-        <h2>Code & Trade Checklists (${CHECKS.length} Cited Checkpoints)</h2>
+        <h2>Seasonal maintenance</h2>
+        <p class="sub">Mountain-home deadlines; each one shows in the hub's Time.</p>
+        <div id="h-maint"></div>
+      </div>
+      <div class="glass span-12">
+        <h2>Code and trade checklists (${CHECKS.length} cited checkpoints)</h2>
         <form class="form"><label class="f">Room type<select id="h-ctype">${[...new Set(CHECKS.map((c) => c.room))].map((r) => `<option>${r}</option>`).join("")}</select></label></form>
         <div id="h-checks"></div>
       </div>
     </section>
   `;
 
-  function paintInspector() {
-    const el = $("#h-inspector");
-    if (!inspectedRoomId) { el.innerHTML = "Tip: Click any measured room or the 2nd-floor deck in the stage canvas above to inspect its phase & field requests."; return; }
-    const rm = S.list("rooms").find((r) => r.id === inspectedRoomId);
-    if (!rm) { el.innerHTML = ""; return; }
-    const reqs = S.list("requests").filter((r) => r.room === rm.id);
-    const open = reqs.filter((r) => r.status !== "resolved").length;
-    el.innerHTML = `<b>Selected room: ${esc(rm.name)}</b> · ${rm.w && rm.l ? `${rm.w} × ${rm.l} ft` : "unmeasured"} · ${rm.phase ? `Phase ${rm.phase}` : "unscheduled"} · ${open} open field request(s) ${rm.notes ? `— ${esc(rm.notes)}` : ""}`;
-    /* HEA-GEM-16 temp check (2026-11-17): shared weather cache (prometheus.shared.wx,
-       written by Aether/Bastion fetches). Below 50°F, composite decking work follows
-       the manufacturers' cold-weather fastener guidance. */
-    try {
-      const wx = JSON.parse(localStorage.getItem("prometheus.shared.wx") || "null");
-      if (wx && typeof wx.tempF === "number") el.innerHTML += `<br>Field temp (shared wx): <b>${wx.tempF}°F</b>${wx.tempF < 50 ? " — below 50°F: cold-weather install rules apply (pre-drill composite fasteners, expect brittle boards)." : " — standard install temperatures."}`;
-    } catch (_) {}
+  const stat = (k, v, tone) => h("div.h-stat" + (tone ? "." + tone : ""), null, h("small", null, k), h("b", null, v));
+  /* one project card (Renovations and the room view): room, title, progress, tasks, status, the Records link */
+  function projectCard(p, full) {
+    const D = window.HEARTH.data(), rm = D.rooms.find((r) => r.id === p.room), pct = progressOf(p), phaseItemId = "phase-" + p.id;
+    const gate = typeof p.id === "number" ? phaseGateStatus(p.id) : null, isDeck = +p.id === 1;
+    const tasks = p.tasks || [];
+    const save = (patch) => { S.set("phases", S.get("phases", SEED_PHASES).map((x) => (x.id === p.id ? { ...x, ...patch } : x))); paint(); };
+    return h("div.phase-card.h-proj", { "data-phase-id": p.id },
+      h("div.kv", { style: "border-bottom:none;padding:0 0 4px" },
+        h("span", null, h("span.h-room-tag", null, rm ? `${rm.name} · ${floorOf(rm).name}` : "Whole house"), h("br"), h("b", null, p.title.replace(/^Phase \d+ · /, ""))),
+        h("b.h-pct", null, pct + "%")),
+      h("div.bar-mini", null, h("i", { style: `width:${pct}%` })),
+      p.summary ? h("p.stat-s", { style: "margin:6px 0 8px" }, p.summary) : null,
+      isDeck ? h("p.stat-s", null, `Progress counts the deck's ${DECK.stages.length} stages (the job book below).`) : null,
+      !isDeck ? h("div.h-tasks", null,
+        ...tasks.map((t) => h("label.h-task", null, h("input", { type: "checkbox", ...(t.done ? { checked: "" } : {}), onchange: (e) => save({ tasks: tasks.map((x) => (x.id === t.id ? { ...x, done: e.target.checked } : x)) }) }), " ", t.title)),
+        full ? h("form.h-task-add", { onsubmit: (e) => { e.preventDefault(); const v = e.target.t.value.trim(); if (!v) return; save({ tasks: [...tasks, { id: "t" + Date.now().toString(36), title: v, done: false }], status: p.status === "not-started" ? "in-progress" : p.status }); } },
+          h("input", { name: "t", maxlength: 120, placeholder: "Add a step (buy tile, demo, paint…)" }), h("button.btn.quiet.small", { type: "submit" }, "Add")) : null) : null,
+      full ? h("div.row-actions", null,
+        h("select", { "aria-label": `Status for ${p.title}`, onchange: (e) => save({ status: e.target.value }) },
+          ...["not-started", "in-progress", "completed"].map((st) => h("option", { value: st, ...(p.status === st ? { selected: "" } : {}) }, st.replace("-", " ")))),
+        gate ? h("span.pill." + (gate.ready ? "gate-ok" : "gate-hold"), null, gate.ready ? "Ready to start" : "Before starting: " + gate.missing.join(" · ")) : null,
+        p.budget ? h("span.pill", null, `budget ${usd(p.budget)}`) : null, p.due ? h("span.pill", null, `target ${p.due}`) : null,
+        h("button.btn.quiet.small", { type: "button", "data-action": "link-records", "data-item-id": phaseItemId,
+          onclick: () => ensureRecordAndLink({ itemId: phaseItemId, itemTitle: p.title, docTitle: `Warranty / Permit · ${p.title}`, category: "home", where: `Hearth · ${rm ? rm.name : "house"}`, notes: p.summary || "" }) }, "Link warranty / permit in Records")) : null,
+      full ? renderRecordBadges(phaseItemId, String(p.id)) : null);
+  }
+  function assetRow(x) {
+    const D = window.HEARTH.data(), rm = D.rooms.find((r) => r.id === x.room), left = x.warranty ? Math.round((new Date(x.warranty + "T12:00:00") - new Date(day() + "T12:00:00")) / 864e5) : null;
+    const v = assetValue(x);
+    return h("div.kv.h-asset", { "data-asset": x.id },
+      h("span", null, h("b", null, x.name), h("div.stat-s", null, [x.kind || x.category, rm ? rm.name : "", x.model, x.serial ? "SN " + x.serial : "", x.purchased ? "bought " + x.purchased : "", x.receipt].filter(Boolean).join(" · "))),
+      h("span.h-asset-side", null, h("b", null, v ? usd(v) : "—"), x.paid && x.value && +x.paid !== +x.value ? h("small", null, `paid ${usd(x.paid)}`) : null,
+        left == null ? null : h("span.pill" + (left < 60 ? ".hot" : ""), null, left < 0 ? "warranty over" : `warranty ${left} d`),
+        h("button.btn.quiet.small", { type: "button", "aria-label": "Edit the value of " + x.name, onclick: () => { const nv = prompt(`What is ${x.name} worth now ($)?`, x.value ?? x.paid ?? ""); if (nv === null) return; S.update("assets", x.id, { value: nv === "" ? null : +nv }); paint(); } }, "Value"),
+        h("button.btn.quiet.small", { type: "button", "aria-label": "Remove " + x.name, onclick: () => { if (confirm("Remove " + x.name + "?")) { S.remove("assets", x.id); paint(); } } }, "×")));
+  }
+  function paintInspector() {   // the room you tapped: in the drawing, or a room card
+    const el = $("#h-room-view"); if (!el) return;
+    const rm = inspectedRoomId && roomList().find((r) => r.id === inspectedRoomId);
+    if (!rm) { el.hidden = true; el.replaceChildren(); return; }
+    const F = roomFacts(rm.id), fl = floorOf(rm); el.hidden = false;
+    el.replaceChildren(h("article.glass.lit.h-room", null,
+      h("div.h-room-head", null,
+        h("div", null, h("p.kicker", null, fl.name), h("h2", null, rm.name), h("p.sub", null, [rm.w && rm.l ? `${rm.w} × ${rm.l} ft (${Math.round(rm.w * rm.l)} ft²)` : "not measured yet", rm.notes].filter(Boolean).join(" · "))),
+        h("button.btn.quiet.small", { type: "button", onclick: () => { inspectedRoomId = null; paintInspector(); } }, "Close")),
+      h("div.h-stats", null, stat("Renovation", F.pct == null ? "none planned" : F.pct + "%", F.pct === 100 ? "good" : ""), stat("Open steps", String(F.open)), stat("Items", String(F.assets.length)), stat("Contents worth", usd(F.value))),
+      h("h3", null, "Projects"), F.projects.length ? h("div", null, ...F.projects.map((p) => projectCard(p, false))) : h("p.h-none", null, "No project in this room yet."),
+      h("button.btn.quiet.small", { type: "button", onclick: () => { $("#t-phases").click(); const f = $("#h-proj"); f.room.value = rm.id; f.title.focus(); } }, "+ Add a project here"),
+      h("h3", null, "What is in it"), F.assets.length ? h("div", null, ...F.assets.map(assetRow)) : h("p.h-none", null, "Nothing recorded yet: appliances, furniture, electronics, fixtures."),
+      h("button.btn.quiet.small", { type: "button", onclick: () => { $("#t-inv").click(); const f = $("#h-asset"); f.room.value = rm.id; f.name.focus(); } }, "+ Add an item here")));
+    try { el.scrollIntoView({ block: "start", behavior: "smooth" }); } catch (_) { /* old browser */ }
+  }
+  /* the House tab: totals and every floor's rooms */
+  function paintHouse() {
+    const f = houseFacts(), box = $("#h-totals"), fl = $("#h-floors"); if (!box || !fl) return;
+    box.replaceChildren(h("p.kicker", null, "The house"), h("div.h-stats", null,
+      stat("Renovation done", f.pct + "%", f.pct === 100 ? "good" : ""), stat("Open steps", String(f.open)), stat("Items recorded", String(f.items)), stat("Contents worth", usd(f.value))),
+      h("p.sub", null, f.soon.length ? "Next warranty to end: " + f.soon.map((w) => `${w.name} (${w.until})`).join(", ") + "." : "Tap a room in the drawing or below to see its projects and what is in it."));
+    fl.replaceChildren(...FLOORS.map((F) => {
+      const rooms = roomList().filter((r) => +r.floor === F.n);
+      return h("section.glass.h-floor", { "data-floor": F.id }, h("div.h-floor-head", null, h("h2", null, F.name), h("span.stat-s", null, F.sub)),
+        h("div.h-room-grid", null, ...rooms.map((r) => {
+          const R = roomFacts(r.id);
+          return h("button.h-room-card" + (r.type === "outdoor" ? ".outdoor" : "") + (inspectedRoomId === r.id ? ".on" : ""), { type: "button", "data-room": r.id, onclick: () => window.HEARTH.inspectRoom(r.id) },
+            h("b", null, r.name), h("span.h-room-meta", null, `${R.assets.length} item${R.assets.length === 1 ? "" : "s"}${R.value ? " · " + usd(R.value) : ""}`),
+            h("span.bar-mini", null, h("i", { style: `width:${R.pct || 0}%` })), h("span.h-room-pct", null, R.pct == null ? "no work planned" : `${R.pct}% renovated · ${R.projects.length} project${R.projects.length === 1 ? "" : "s"}`));
+        })));
+    }));
+  }
+  function paintInventory() {
+    const top = $("#h-inv-top"), list = $("#h-assets"); if (!top || !list) return;
+    const all = S.list("assets"), rooms = roomList(), selR = $("#h-inv-room"), selK = $("#h-inv-kind");
+    const nOpt = selR.querySelectorAll ? selR.querySelectorAll("option").length : 0;
+    if (nOpt !== rooms.length + 1) { const keep = selR.value; selR.replaceChildren(h("option", { value: "all" }, "All rooms"), ...rooms.map((r) => h("option", { value: r.id }, `${r.name} (${floorOf(r).name})`))); selR.value = keep || "all"; }
+    const rv = selR.value || "all", kv = selK.value || "all";
+    const vis = all.filter((a) => (rv === "all" || a.room === rv) && (kv === "all" || (a.kind || "other") === kv));
+    const total = all.reduce((s, a) => s + assetValue(a), 0), paidT = all.reduce((s, a) => s + (+a.paid || 0), 0);
+    const byKind = {}; for (const a of all) byKind[a.kind || "other"] = (byKind[a.kind || "other"] || 0) + assetValue(a);
+    top.replaceChildren(h("p.kicker", null, "Inventory"), h("div.h-stats", null, stat("Items", String(all.length)), stat("Worth now", usd(total)), stat("Paid", usd(paidT)), stat("Rooms with items", String(new Set(all.map((a) => a.room)).size) + " of " + rooms.length)),
+      Object.keys(byKind).length ? h("p.sub", null, Object.entries(byKind).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${usd(v)}`).join(" · ")) : h("p.sub", null, "Record what is in each room: it totals for insurance (Aegis) and shows beside net worth in Midas."));
+    const groups = rooms.map((r) => ({ r, items: vis.filter((a) => a.room === r.id) })).filter((g) => g.items.length);
+    const loose = vis.filter((a) => !rooms.some((r) => r.id === a.room));
+    list.replaceChildren(...(vis.length ? [...groups.map((g) => h("div.h-inv-group", null, h("h3", null, `${g.r.name} `, h("small", null, `${floorOf(g.r).name} · ${usd(g.items.reduce((s, a) => s + assetValue(a), 0))}`)), ...g.items.map(assetRow))),
+      ...(loose.length ? [h("div.h-inv-group", null, h("h3", null, "No room"), ...loose.map(assetRow))] : [])] : [h("p.empty", null, "No items recorded yet.")]));
   }
 
   function paint() {
@@ -385,54 +546,12 @@
     const gatesClear = D.phases.filter((p) => phaseGateStatus(p.id).ready).length;
     const deckDoneN = DECK.stages.filter((s) => (D.deck[s.id] || {}).done).length;
     const openReqN = D.requests.filter((r) => r.status !== "resolved").length;
-    $("#h-plate").textContent = `THE JOB BOOK · ${D.phases.length} PHASES · ${gatesClear} GATE${gatesClear === 1 ? "" : "S"} CLEAR · DECK ${deckDoneN} / ${DECK.stages.length} STAGES · ${openReqN} FIELD REQUEST${openReqN === 1 ? "" : "S"} OPEN`;
+    $("#h-plate").textContent = `${D.phases.length} PROJECT${D.phases.length === 1 ? "" : "S"} IN ${new Set(D.phases.map((p) => p.room)).size} ROOMS · ${D.phases.filter((p) => progressOf(p) === 100).length} DONE · DECK ${deckDoneN} / ${DECK.stages.length} STAGES · ${openReqN} FIELD REQUEST${openReqN === 1 ? "" : "S"} OPEN`;
 
-    // 1. Phases + Phase-Gate badges
+    // 1. Projects, room by room (the deck refurbish is project 1)
+    paintHouse(); paintInventory(); publishSummary();
     const phBox = $("#h-phases-list");
-    phBox.replaceChildren(...D.phases.map((p) => {
-      const gate = phaseGateStatus(p.id);
-      const rm = roomName(p.room);
-      const photoKey = "photosConfirmed." + p.id;
-      const phaseItemId = "phase-" + p.id;
-      return h("div.phase-card", { "data-phase-id": p.id },
-        h("div.kv", { style: "border-bottom:none;padding:0 0 4px" },
-          h("span", null, h("b", null, p.title), " ", h("span.meta", null, `(${rm})`)),
-          h("span.pill." + (gate.ready ? "gate-ok" : "gate-hold"), null, gate.ready ? "Gate Clear" : "Hold: " + gate.missing.join(" · "))
-        ),
-        h("p.stat-s", { style: "margin:4px 0 8px" }, p.summary),
-        h("div.row-actions", null,
-          h("select", {
-            "aria-label": `Status for ${p.title}`,
-            onchange: (e) => {
-              const all = S.get("phases", SEED_PHASES).map((x) => x.id === p.id ? { ...x, status: e.target.value } : x);
-              S.set("phases", all); paint();
-            },
-          }, ...["not-started", "in-progress", "completed"].map((st) => h("option", { value: st, ...(p.status === st ? { selected: "" } : {}) }, st))),
-          h("label.sub", null,
-            h("input", {
-              type: "checkbox",
-              ...(S.get(photoKey) || argusPhotoCountForHearth() > 0 ? { checked: "" } : {}),
-              onchange: (e) => { S.set(photoKey, !!e.target.checked); paint(); },
-            }),
-            ` Before-photos verified (${argusPhotoCountForHearth()} in Argus)`
-          ),
-          h("button.btn.quiet.small", {
-            type: "button",
-            "data-action": "link-records",
-            "data-item-id": phaseItemId,
-            onclick: () => ensureRecordAndLink({
-              itemId: phaseItemId,
-              itemTitle: p.title,
-              docTitle: `Warranty / Permit · ${p.title}`,
-              category: "home",
-              where: `Hearth Phase ${p.id} (${rm})`,
-              notes: p.summary,
-            }),
-          }, "Link Warranty / Permit in Records")
-        ),
-        renderRecordBadges(phaseItemId, String(p.id))
-      );
-    }));
+    phBox.replaceChildren(...D.phases.slice().sort((a, b) => (floorOf(D.rooms.find((r) => r.id === b.room) || {}).n - floorOf(D.rooms.find((r) => r.id === a.room) || {}).n) || 0).map((p) => projectCard(p, true)));
 
     // 2. Deck Blueprint Rev 7 Checklist
     const doneDeck = DECK.stages.filter((s) => (D.deck[s.id] || {}).done).length;
@@ -521,10 +640,8 @@
         p.done ? null : h("button.btn.quiet.small", { type: "button", onclick: () => { S.update("projects", p.id, { done: day() }); paint(); } }, "Done today")
       )
     ));
-    const roomOpts = () => [h("option", { value: "" }, "Whole house"), ...D.rooms.map((r) => h("option", { value: r.id }, r.name))];
-    $("#h-proj").room.replaceChildren(...roomOpts());
-    $("#h-asset").room.replaceChildren(...roomOpts());
-    $("#h-req-form").room.replaceChildren(...roomOpts());
+    const roomOpts = () => [h("option", { value: "" }, "Whole house"), ...FLOORS.flatMap((F) => D.rooms.filter((r) => +r.floor === F.n).map((r) => h("option", { value: r.id }, `${r.name} (${F.name})`)))];
+    for (const sel of [$("#h-proj").room, $("#h-asset").room, $("#h-req-form").room]) { const keep = sel.value; sel.replaceChildren(...roomOpts()); if (keep) sel.value = keep; }   // a room picked from the room view survives the repaint
 
     // 4. Field Requests
     $("#h-reqs-list").replaceChildren(...(D.requests.length ? D.requests.map((req) =>
@@ -648,8 +765,8 @@
         h("span", null,
           r.phase ? h("span.badge-phase", null, `P${r.phase}`) : null, " ",
           h("b", null, r.name), " ",
-          h("span.h-tag", null, r.status),
-          h("div.stat-s", null, `${r.type} · fl ${r.floor}${r.w && r.l ? ` · ${r.w} × ${r.l} ft (${Math.round(r.w * r.l)} ft²)` : " · unmeasured"} · ${a} items · ${p} proj`)
+          r.notes ? h("span.h-tag", null, r.notes) : null,
+          h("div.stat-s", null, `${r.type} · ${floorOf(r).name}${r.w && r.l ? ` · ${r.w} × ${r.l} ft (${Math.round(r.w * r.l)} ft²)` : " · unmeasured"} · ${a} item${a === 1 ? "" : "s"} · ${p} project${p === 1 ? "" : "s"}`)
         ),
         h("span.row-actions", null,
           h("button.btn.quiet.small", {
@@ -692,16 +809,6 @@
       )
     ));
 
-    // 8. Assets
-    const today = day();
-    $("#h-assets").replaceChildren(...(D.assets.length ? D.assets.map((x) => {
-      const left = x.warranty ? Math.round((new Date(x.warranty + "T12:00:00") - new Date(today + "T12:00:00")) / 864e5) : null;
-      return h("div.kv", null,
-        h("span", null, h("b", null, x.name), h("div.stat-s", null, `${x.category} · ${roomName(x.room)}${x.model ? " · " + x.model : ""}${x.serial ? " · SN " + x.serial : ""}${x.receipt ? " · " + x.receipt : ""}`)),
-        left == null ? null : h("span.pill" + (left < 60 ? ".hot" : ""), null, left < 0 ? "warranty over" : `${left} d left`)
-      );
-    }) : [h("p.empty", null, "No home appliances or gear recorded yet.")]));
-
     // 9. Room Checklists
     const ctype = $("#h-ctype").value;
     const list = CHECKS.filter((c) => c.room === ctype).sort((a, b) => a.order - b.order);
@@ -720,13 +827,17 @@
   }
 
   $("#h-ctype").addEventListener("change", paint);
+  $("#h-inv-room").addEventListener("change", paint);
+  $("#h-inv-kind").addEventListener("change", paint);
   $("#h-mat-phase").addEventListener("change", paint);
   $("#h-mat-cat").addEventListener("change", paint);
 
   $("#h-proj").addEventListener("submit", (e) => {
-    e.preventDefault(); const f = e.target;
-    S.add("projects", { title: f.title.value.trim(), room: f.room.value, start: f.start.value, done: f.done.value, cost: +f.cost.value || 0 });
-    f.reset(); toast("Project recorded"); paint();
+    e.preventDefault(); const f = e.target, all = S.get("phases", SEED_PHASES);
+    all.push({ id: "p" + Date.now().toString(36), title: f.title.value.trim(), room: f.room.value, status: "not-started", summary: "", tasks: [], budget: +f.budget.value || null, due: f.due.value || "" });
+    S.set("phases", all);
+    if (window.PB && f.due.value) PB.deadlines.publish({ title: "Hearth: " + f.title.value.trim(), date: f.due.value, source: "hearth", kind: "project", ref: all[all.length - 1].id });
+    f.reset(); toast("Project added: add its steps on the card"); paint();
   });
   $("#h-req-form").addEventListener("submit", (e) => {
     e.preventDefault(); const f = e.target;
@@ -735,12 +846,13 @@
   });
   $("#h-room").addEventListener("submit", (e) => {
     e.preventDefault(); const f = e.target;
-    S.add("rooms", { name: f.name.value.trim(), type: f.type.value, floor: +f.floor.value || 1, w: +f.w.value || null, l: +f.l.value || null, phase: null, status: "unscheduled" });
+    S.add("rooms", { name: f.name.value.trim(), type: f.type.value, floor: f.floor.value === "" ? 1 : +f.floor.value, w: +f.w.value || null, l: +f.l.value || null, notes: "" });
     f.reset(); toast("Room added"); paint();
   });
   $("#h-asset").addEventListener("submit", (e) => {
     e.preventDefault(); const f = e.target;
-    const a = S.add("assets", { name: f.name.value.trim(), category: f.category.value, room: f.room.value, model: f.model.value.trim(), serial: f.serial.value.trim(), warranty: f.warranty.value, receipt: f.receipt.value.trim() });
+    const num = (v) => (v === "" ? null : +v);
+    const a = S.add("assets", { name: f.name.value.trim(), kind: f.kind.value, category: f.category.value, room: f.room.value, model: f.model.value.trim(), serial: f.serial.value.trim(), purchased: f.purchased.value, paid: num(f.paid.value), value: num(f.value.value), warranty: f.warranty.value, receipt: f.receipt.value.trim() });
     if (window.PB && a.warranty) PB.deadlines.publish({ title: "Warranty ends: " + a.name, date: a.warranty, source: "hearth", kind: "warranty", ref: a.id });
     f.reset(); toast("Asset added"); paint();
   });
