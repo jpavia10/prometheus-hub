@@ -128,7 +128,7 @@ with sync_playwright() as p:
         p3.goto(f"{URL}?now=2026-11-25T18:00&sky=night&wx=storm&home=orbit&nosweep=1#/", wait_until="load"); p3.wait_for_selector(".realm .rl-core", timeout=20000); p3.wait_for_selector(".rl-sound", timeout=20000); p3.wait_for_timeout(2500)
         q0 = p3.evaluate("() => { const r = document.querySelector('.realm'); return { s: r.sound.state(), season: r.season(), pressed: document.querySelector('.rl-sound').getAttribute('aria-pressed') }; }"); fetched0 = list(aud)
         p3.click(".rl-sound")
-        try: p3.wait_for_function("(() => { const s = document.querySelector('.realm').sound.state(); return s.running && s.playing.includes('rainHeavy') && s.playing.includes('windHowl'); })()", timeout=15000)
+        try: p3.wait_for_function("(() => { const s = document.querySelector('.realm').sound.state(); return s.running && ['rainHeavy', 'windHowl', 'wind'].every((n) => s.playing.includes(n)); })()", timeout=20000)
         except Exception: pass
         q1 = p3.evaluate("() => { const r = document.querySelector('.realm'); return { s: r.sound.state(), mix: r.sound.mix(), key: localStorage.getItem('prom.deck.townSound') }; }")
         files = p3.evaluate("""async () => { const ext = document.querySelector('.realm').sound.state().ext, bad = [];
