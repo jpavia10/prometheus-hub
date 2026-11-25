@@ -525,13 +525,20 @@ with sync_playwright() as p:
         for pid in ("odyssey", "kin", "apollo", "garage"):
             got = []; h = lambda r, got=got: got.append(r.url) if r.url.endswith(".woff2") else None; pp.on("response", h)
             pp.goto(f"{URL}pillars/{pid}/", wait_until="load"); pp.wait_for_timeout(3500); shifts[pid] = round(pp.evaluate("window.__cls"), 3); fonts[pid] = len(got); pp.remove_listener("response", h)
-        sw = []; hs = lambda r: sw.append(r.from_service_worker) if r.url.endswith(".webp") or r.url.endswith(".woff2") else None
-        pp.wait_for_function("navigator.serviceWorker && navigator.serviceWorker.controller", timeout=20000); pp.reload(wait_until="load"); pp.wait_for_timeout(1500)
-        pp.on("response", hs); pp.reload(wait_until="load"); pp.wait_for_timeout(2000); pp.remove_listener("response", hs)
-        media = pp.evaluate("caches.keys().then((k) => k.filter((x) => x === 'prometheus-media-v1').length)"); cp.close()
-        okp = f1 == f0 and all(v < 0.02 for v in shifts.values()) and all(v <= 1 for v in fonts.values()) and sw and all(sw) and media == 1 and not bp
+        # the shell worker registers only on https and localhost (kit.js, app.js); the CI run uses plain-http prometheus.test on purpose,
+        # so there the cache is checked by the live run (proofs.yml) instead
+        sw = []; media = None; swhost = URL.startswith("https:") or "//localhost" in URL or "//127.0.0.1" in URL
+        if swhost:
+            hs = lambda r: sw.append(r.from_service_worker) if r.url.endswith(".webp") or r.url.endswith(".woff2") else None
+            pp.evaluate("navigator.serviceWorker.ready.then(() => 1)"); pp.reload(wait_until="load")
+            pp.wait_for_function("!!(navigator.serviceWorker && navigator.serviceWorker.controller)", timeout=60000); pp.reload(wait_until="load"); pp.wait_for_timeout(1500)
+            pp.on("response", hs); pp.reload(wait_until="load"); pp.wait_for_timeout(2000); pp.remove_listener("response", hs)
+            media = pp.evaluate("caches.keys().then((k) => k.filter((x) => x === 'prometheus-media-v1').length)")
+        cp.close()
+        okp = f1 == f0 and all(v < 0.02 for v in shifts.values()) and all(v <= 1 for v in fonts.values()) and (not swhost or (sw and all(sw) and media == 1)) and not bp
+        swtxt = f"{sum(sw)} of {len(sw)}" if swhost else "not on this host (no shell worker on plain http; the live run checks it)"
         proof("PERF-2", "Phones: the hidden sky rests under the town, pillar pages do not jump as they load, one font file, and a second visit takes its painting and font from the device",
-              okp, f"sky frames under the town in 2 s: {f1 - f0}; town painting {res}; layout shift {shifts}; font files {fonts}; repeat visit from the service worker {sum(sw)} of {len(sw)}; media cache {bool(media)}" + (f"; errors {bp[:2]}" if bp else ""))
+              okp, f"sky frames under the town in 2 s: {f1 - f0}; town painting {res}; layout shift {shifts}; font files {fonts}; repeat visit from the service worker {swtxt}; media cache {bool(media)}" + (f"; errors {bp[:2]}" if bp else ""))
     except Exception as e: proof("PERF-2", "Phones: rest, no jumps, one font, cached media", False, "did not finish: " + str(e)[:200])
 
     # PILLAR-2: every pillar page in this repository runs clean: opened in a real page, every section tapped, and any script error fails the build
