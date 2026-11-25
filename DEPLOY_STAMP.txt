@@ -1,1 +1,1 @@
-deck d36 2026-11-19 arrival orbit kept; shell cache d36 above main d35; PILLAR-1 waits on the section change
+deck d84 2026-11-25 Atlas and Aegis; re-deploy after the Pages API returned 500 on 4f9572a
