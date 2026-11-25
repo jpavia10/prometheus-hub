@@ -604,6 +604,7 @@
       bastion: 1, privacy: 1, argus: 1, games: 1, forge: 1, foundry: 1, observatory: 1, kin: 1, presence: 1, aether: 1, polis: 1, mythos: 1, continuity: 1 };
     /* not Athenaeum: it draws its own sky over the whole page */
     if (LIVING[slug] && !document.documentElement.classList.contains("is-embed")) {
+      body.classList.add("will-live");                  /* the band's room from the first paint (prometheus.css), not when the painting lands */
       var dive = false;
       try { var dv = JSON.parse(sessionStorage.getItem("pk:dive") || "null"); sessionStorage.removeItem("pk:dive"); dive = !!(dv && dv.id === slug && Date.now() - dv.t < 6000); } catch (e) { /* none */ }
       /* arriving from a dive (2026-11-24, owner: "the transition from hub to pillar is atrocious"): the painting the hub prefetched is

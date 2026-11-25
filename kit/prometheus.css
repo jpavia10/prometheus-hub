@@ -1,8 +1,8 @@
 /* Prometheus kit: the look every pillar shares except Titan (owner, 2026-11-05: "maintain a common theme with titan as an exception").
    Cool midnight, pearl type, glass, light. One accent per pillar (body[data-pillar]). Copy this folder into a pillar's own repo when it moves. */
-@font-face { font-family: "Outfit"; font-weight: 300; font-display: swap; src: url("fonts/outfit-latin-300-normal.woff2") format("woff2"); }
-@font-face { font-family: "Outfit"; font-weight: 400; font-display: swap; src: url("fonts/outfit-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Outfit"; font-weight: 500; font-display: swap; src: url("fonts/outfit-latin-500-normal.woff2") format("woff2"); }
+/* Outfit comes from one variable file (the @font-face below, "d2" block, weights 100-900). 2026-11-25 (c9): the three static weights that
+   used to be declared here were downloaded too, on every pillar page, and each one's arrival reflowed the text; the pages also preload
+   the variable file now. The static files stay in kit/fonts/ for anything that names them directly. */
 
 :root {
   --bg: #05070e; --bg-2: #0a0f1c;
@@ -75,7 +75,13 @@ canvas.pk-living { width: 100%; height: 100%; display: block; -webkit-mask-image
 canvas.pk-living.on { opacity: .92; }
 canvas.pk-living.arrive { transition: none; opacity: .92; }
 /* the header band: the painting gets the top of the screen, the title sits on its lower edge like a film title */
-body.has-living .hero, body.pk-v2.has-living .pk-hero { padding-top: max(150px, 24vh); }
+body.has-living .hero, body.pk-v2.has-living .pk-hero, body.will-live .hero, body.pk-v2.will-live .pk-hero { padding-top: max(150px, 24vh); }
+/* 2026-11-25 (c9, the phone pass; Lighthouse: Odyssey CLS 0.30, Kin 0.11, Apollo 0.11): the page used to paint once from its plain HTML,
+   then jump when the kit dressed it (the crest) and again when its living painting arrived (the band above the title). Now the shell
+   shows only once the kit has dressed it (it does so in one go, before any paint), and a pillar with a living painting holds the
+   band's room from the start (will-live, kit.js). If the kit never runs, the page shows after 2.5 s all the same. */
+html:not(.is-embed) body[data-pillar]:not(.pk-v2) > .shell { visibility: hidden; animation: pk-undressed 0s linear 2.5s forwards; }
+@keyframes pk-undressed { to { visibility: visible; } }
 /* a soft band of dark behind the title, full width, so the words read over any painting (AA contrast) */
 body.has-living .hero, body.pk-v2.has-living .pk-hero { position: relative; isolation: isolate; }
 body.has-living { overflow-x: clip; }   /* the band is exactly the screen wide; never a sideways scroll */

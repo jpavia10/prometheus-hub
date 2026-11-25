@@ -1,6 +1,10 @@
 /* Prometheus deck: offline shell. Same-origin only; the weather is never cached here (the deck keeps its own last reading).
-   Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline. */
-var CACHE = "prometheus-hub-deck-d79";
+   Pages and code: network first, cache as the fallback, so a new build shows up on the next load and the deck still opens offline.
+   Pictures, fonts, sounds and models (2026-11-25, c9, the phone pass): from their own cache at once, refreshed behind for next time.
+   That cache outlives builds (its name does not start "prometheus-hub-"), so a new build no longer re-downloads every painting, and on a
+   phone a page no longer waits on the network for its font and its painting (the late font was reflowing the text). */
+var CACHE = "prometheus-hub-deck-d80";
+var MEDIA = "prometheus-media-v1", MEDIA_RE = /\.(webp|png|jpe?g|gif|svg|woff2?|webm|m4a|mp3|glb)$/i;
 var PILLAR_IDS = [
   "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
   "piano", "bastion", "athenaeum", "odyssey", "privacy", "argus", "games", "forge", "foundry",
@@ -48,6 +52,17 @@ self.addEventListener("fetch", function (event) {
   var request = event.request; if (request.method !== "GET") return;
   var url = new URL(request.url); if (url.origin !== self.location.origin) return;
   if (url.pathname.indexOf(new URL(self.registration.scope).pathname) !== 0) return;
+  if (MEDIA_RE.test(url.pathname) && !request.headers.has("range")) {
+    event.respondWith(caches.open(MEDIA).then(function (media) {
+      return media.match(request).then(function (hit) {
+        var net = fetch(request).then(function (response) { if (response && response.ok && response.type === "basic") media.put(request, response.clone()); return response; })
+          .catch(function () { return hit || caches.match(request).then(function (old) { return old || Response.error(); }); });
+        if (hit) { event.waitUntil(net.catch(function () {})); return hit; }
+        return net;
+      });
+    }));
+    return;
+  }
   event.respondWith(fetch(request).then(function (response) {
     if (response && response.ok && response.type === "basic") { var copy = response.clone(); caches.open(CACHE).then(function (cache) { cache.put(request, copy); }); }
     return response;

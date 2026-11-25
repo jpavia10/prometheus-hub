@@ -120,7 +120,9 @@ export function startSky(canvas) {
   }
   /* 2026-11-20 (Gemini trial 3 #2, measured 5 -> 15 fps at phone size): under the home menu the sky is set to opacity 0 but its
      full-screen shader kept drawing every frame. It now pauses while the menu covers it and starts again the moment it shows. */
-  const covered = () => document.body.classList.contains("menu-on") && !document.body.classList.contains("menu-off");
+  /* 2026-11-25 (c9, the phone pass): the full-screen town (realm.js) covers the sky completely, so it pauses there too; it was drawing a
+     second full-screen shader every frame behind the home */
+  const covered = () => (document.body.classList.contains("menu-on") && !document.body.classList.contains("menu-off")) || document.body.classList.contains("town-home");
   function frame(now) {
     st.raf = 0; if (st.stopped || document.hidden || covered()) return;
     const gap = st.tier === 0 || still.matches ? 20 * 1000 : 16;

@@ -509,6 +509,31 @@ with sync_playwright() as p:
               f"mutations in 1 s at rest: {r5['n']}; field canvas {r5['fieldW']} px wide for a {r5['vw']} px screen; stage governed: {r5['governed']}"); c5.close()
     except Exception as e: proof("PERF-1", "A pillar at rest does no needless work", False, "did not finish: " + str(e)[:200])
 
+    # PERF-2 (owner's briefing c9, 2026-11-25: "smoother motion and faster loading on phones"): measured with Lighthouse at phone size first.
+    # The hub's own sky kept drawing a full-screen shader every frame behind the full-screen town; pillar pages painted from their plain HTML
+    # and then jumped twice (the kit's crest, then the living painting's band: Odyssey CLS 0.30); every page fetched three font files;
+    # and every visit waited on the network for its painting and font. Each is checked here.
+    try:
+        cp = b.new_context(viewport={"width": 412, "height": 915}, timezone_id="America/Los_Angeles", locale="en-US", is_mobile=True, has_touch=True)
+        cp.add_init_script("""window.__cls = 0; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cls += e.value; }).observe({ type: 'layout-shift', buffered: true });""")
+        pp = cp.new_page(); bp = []; fonts = {}; pp.on("pageerror", lambda e: bp.append(str(e)[:120]))
+        if MOCK: pp.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); pp.route("https://api.weather.gov/**", lambda route, request: route.abort()); pp.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
+        pp.goto(f"{URL}?home=orbit&nosweep=1#/", wait_until="load"); pp.wait_for_selector(".realm .rl-core", timeout=20000); pp.wait_for_timeout(1500)
+        f0 = pp.evaluate("+((document.getElementById('sky') || {}).dataset || {}).frames || 0"); pp.wait_for_timeout(2000)
+        f1 = pp.evaluate("+((document.getElementById('sky') || {}).dataset || {}).frames || 0"); res = pp.evaluate("document.querySelector('.realm').dataset.res || '4k'")
+        shifts = {}
+        for pid in ("odyssey", "kin", "apollo", "garage"):
+            got = []; h = lambda r, got=got: got.append(r.url) if r.url.endswith(".woff2") else None; pp.on("response", h)
+            pp.goto(f"{URL}pillars/{pid}/", wait_until="load"); pp.wait_for_timeout(3500); shifts[pid] = round(pp.evaluate("window.__cls"), 3); fonts[pid] = len(got); pp.remove_listener("response", h)
+        sw = []; hs = lambda r: sw.append(r.from_service_worker) if r.url.endswith(".webp") or r.url.endswith(".woff2") else None
+        pp.wait_for_function("navigator.serviceWorker && navigator.serviceWorker.controller", timeout=20000); pp.reload(wait_until="load"); pp.wait_for_timeout(1500)
+        pp.on("response", hs); pp.reload(wait_until="load"); pp.wait_for_timeout(2000); pp.remove_listener("response", hs)
+        media = pp.evaluate("caches.keys().then((k) => k.filter((x) => x === 'prometheus-media-v1').length)"); cp.close()
+        okp = f1 == f0 and all(v < 0.02 for v in shifts.values()) and all(v <= 1 for v in fonts.values()) and sw and all(sw) and media == 1 and not bp
+        proof("PERF-2", "Phones: the hidden sky rests under the town, pillar pages do not jump as they load, one font file, and a second visit takes its painting and font from the device",
+              okp, f"sky frames under the town in 2 s: {f1 - f0}; town painting {res}; layout shift {shifts}; font files {fonts}; repeat visit from the service worker {sum(sw)} of {len(sw)}; media cache {bool(media)}" + (f"; errors {bp[:2]}" if bp else ""))
+    except Exception as e: proof("PERF-2", "Phones: rest, no jumps, one font, cached media", False, "did not finish: " + str(e)[:200])
+
     # PILLAR-2: every pillar page in this repository runs clean: opened in a real page, every section tapped, and any script error fails the build
     c4 = b.new_context(viewport={"width": 384, "height": 832}); dirty = []; taps = 0
     if MOCK: c4.route("https://api.weather.gov/**", lambda route, request: route.abort())

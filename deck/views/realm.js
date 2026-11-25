@@ -202,10 +202,15 @@ export function realm(ctx) {
     if (mip && gl2) { gl.generateMipmap(gl.TEXTURE_2D); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR); } };
   const img = (url) => new Promise((res) => { const im = new Image(); im.decoding = "async"; im.onload = () => (im.decode ? im.decode().catch(() => {}) : Promise.resolve()).then(() => res(im)); im.onerror = () => res(null); im.src = url; });
   const big = gl && gl.getParameter(gl.MAX_TEXTURE_SIZE) >= 8192 && (devicePixelRatio || 1) >= 1.5;
-  const ready = Promise.all([fetch(ART("places.json")).then((r) => (r.ok ? r.json() : null)).catch(() => null), gl ? img(ART(big ? "realm_6k.webp" : "realm_4k.webp")) : null, gl ? img(ART("realm_depth.webp")) : null, gl ? img(ART("realm_lights.webp")) : null])
+  const ready = Promise.all([fetch(ART("places.json")).then((r) => (r.ok ? r.json() : null)).catch(() => null), gl ? img(ART("realm_4k.webp")) : null, gl ? img(ART("realm_depth.webp")) : null, gl ? img(ART("realm_lights.webp")) : null])
     .then(([pj, im, dp, lt]) => {
       if (pj) { places.forEach((pl) => { const xy = pj.places[pl.p.id]; if (xy) { pl.x = xy[0]; pl.y = xy[1]; } }); if (pj.core) coreXY = pj.core; }
       if (gl && im) { IRW = im.naturalWidth; IRH = im.naturalHeight; upload(0, im, true); if (dp) upload(1, dp, true); if (lt) upload(2, lt, true); has = 1; }
+      /* 2026-11-25 (c9, the phone pass): the town opens on the 4k painting (328 KB) and a sharp screen gets the 6k one (537 KB) once the
+         opening is over and nobody is touching it, so the first sight no longer waits on the bigger file (the upload can hitch a frame) */
+      if (gl && im && big) { const up = () => { if (dead) return; if (ptrs.size || V.dive || performance.now() - idleAt < 2500 || el.classList.contains("opening")) { setTimeout(up, 1500); return; }
+        img(ART("realm_6k.webp")).then((im6) => { if (dead || !im6 || !gl || gl.isContextLost()) return; upload(0, im6, true); IRW = im6.naturalWidth; IRH = im6.naturalHeight; el.dataset.res = "6k"; wake(); }); };
+        setTimeout(up, 4000); }
       else if (gl) el.classList.add("rl-flat");
       V.cx = V.tcx = coreXY[0]; V.cy = V.tcy = 0.5; clampV(); V.cx = V.tcx; V.cy = V.tcy; V.z = V.tz; size();
       let first = false; try { first = !sessionStorage.getItem("prom.deck.opened"); sessionStorage.setItem("prom.deck.opened", "1"); } catch (e) { /* every time */ }
