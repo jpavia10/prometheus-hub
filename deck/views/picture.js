@@ -71,9 +71,9 @@ export function render(root, route, ctx) {
   /* a new weather reading swaps the chip in place; the town reads the sky itself (realm.js), so nothing is redrawn */
   let chip = wxChip(ctx); const onWx = () => { const open = chip.classList.contains("open"); const n = wxChip(ctx); chip.replaceWith(n); chip = n; if (open) { const c = n.querySelector(".wx-chip"); if (c && n.querySelector(".wx-panel")) c.click(); } };
   /* the town's sound (2026-11-25): real recordings that follow its sky; off until he turns it on (townsound.js) */
-  const snd = townSound(() => rx.sky(), () => { const w = ctx.weather(); return { temp: w && w.now ? w.now.temp : null, season: rx.season ? rx.season().name : "" }; });
+  const snd = townSound(() => rx.sky(), () => { const w = ctx.weather(); return { temp: w && w.now ? w.now.temp : null, season: rx.season ? rx.season().name : "", view: rx.view ? rx.view() : null }; });
   rx.onflash = () => snd.flash();
-  const sndB = h("button.rl-sound", { type: "button", "aria-pressed": String(snd.on()), "aria-label": "The town's sound", title: "The town's sound: rain, wind, birds, night" }, icon(snd.on() ? "speaker" : "mute", 15));
+  const sndB = h("button.rl-sound", { type: "button", "aria-pressed": String(snd.on()), "aria-label": "The town's sound", title: "The town's sound: the water where it is, the weather, the life of the hour, the clock tower" }, icon(snd.on() ? "speaker" : "mute", 15));
   sndB.onclick = () => { const on = snd.toggle(); sndB.setAttribute("aria-pressed", String(on)); sndB.replaceChildren(icon(on ? "speaker" : "mute", 15)); };
   rx.sound = snd;
   put(root, rx, chip, h("div.rl-tools", sndB, toMenu)); rx.fit(); addEventListener("deck:weather", onWx);

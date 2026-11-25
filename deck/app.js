@@ -15,8 +15,9 @@ import * as wx from "./core/weather.js";
 import { makeEvent, kindOf } from "./models/time.js";
 import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
+const MIDAS = "../midas-ledger/";   /* Midas Ledger: the money pillar, same origin (jpavia10.github.io), its book encrypted */
 
-export const BUILD = "d80";
+export const BUILD = "d81";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -87,7 +88,7 @@ function drawRail() {
     h("nav.rail-nav", { "aria-label": "Command stations" },
       navLink("Core", "#/", here === "picture"),
       navLink("Time", "#/time", here === "time"),
-      navLink("Money", "#/money", here === "money"),
+      navLink("Midas", MIDAS, false),
       navLink("Athenaeum", "./pillars/athenaeum/", false),
       navLink("Hearth", "./pillars/hearth/", false),
       navLink("System", "#/system", here === "system")),
@@ -105,7 +106,7 @@ function drawDock() {
     item("picture", "Core", "picture", "#/"),
     item("time", "Time", "time", "#/time"),
     orb,
-    item("money", "Money", "money", "#/money"),
+    item("midas", "Midas", "scale", MIDAS),   /* owner, 2026-11-25: "Replace money at the bottom with midas" (the Payoff Console's rooms moved into Midas) */
     item("system", "System", "system", "#/system"),
   ];
   $("#dock").replaceChildren(h("div.dock-bar", items));

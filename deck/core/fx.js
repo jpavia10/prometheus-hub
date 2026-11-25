@@ -1,19 +1,27 @@
-/* The deck's feel: synthesized interface sounds (off until the owner turns them on: nothing ever plays by itself), a short buzz on
-   Android, and the warp that carries you from the core into a pillar. No recordings, no files. */
-const KEY = "prom.deck.sound"; let ac = null;
+/* The deck's feel: its interface sounds (off until the owner turns them on: nothing ever plays by itself), a short buzz on Android, and
+   the warp that carries you from the core into a pillar. The sounds themselves are designed in voice.js (rebuilt 2026-11-25: the owner
+   called the old beeps terrible); this file keeps the switch, the one audio context and where the finger was. */
+import { SOUNDS, chain, loadHall, voice } from "./voice.js";
+const KEY = "prom.deck.sound"; let ac = null, ch = null, lastX = 0.5, lastTick = 0, step = 0, lastBlip = 0;
 export const soundOn = () => { try { return localStorage.getItem(KEY) === "1"; } catch (e) { return false; } };
-export function setSound(on) { try { localStorage.setItem(KEY, on ? "1" : "0"); } catch (e) { /* this visit only */ } if (on) { ctx(); tone(660, 0.08, "sine", 0.05); tone(990, 0.12, "sine", 0.04, 0.07); } }
-function ctx() { if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { ac = null; } } if (ac && ac.state === "suspended") ac.resume(); return ac; }
-function tone(freq, dur, type = "sine", vol = 0.04, delay = 0, slide = 0) {
-  if (!soundOn()) return; const a = ctx(); if (!a) return; const t = a.currentTime + delay; const o = a.createOscillator(), g = a.createGain();
-  o.type = type; o.frequency.setValueAtTime(freq, t); if (slide) o.frequency.exponentialRampToValueAtTime(Math.max(30, freq * slide), t + dur);
-  g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + 0.02);
+export function setSound(on) { try { localStorage.setItem(KEY, on ? "1" : "0"); } catch (e) { /* this visit only */ } if (on) play("chime", 0); }
+function ctx() {
+  if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: "interactive" }); } catch (e) { ac = null; return null; }
+    ch = chain(ac, ac.destination); loadHall(ac, ch.conv); }
+  if (ac.state === "suspended") ac.resume().catch(() => {});
+  return ac;
+}
+/* sounds sit left or right by where the finger touched */
+if (typeof addEventListener === "function") addEventListener("pointerdown", (e) => { if (typeof innerWidth === "number" && innerWidth > 0) lastX = e.clientX / innerWidth; }, { capture: true, passive: true });
+function play(name, pan = (lastX - 0.5) * 1.1, o) {
+  if (!soundOn()) return; const a = ctx(); if (!a) return;
+  try { SOUNDS[name](a, voice(a, ch, pan), a.currentTime + 0.005, o); } catch (e) { /* a browser without a node type: stay silent */ }
 }
 export const buzz = (ms = 12) => { try { if (navigator.vibrate && navigator.userActivation && navigator.userActivation.hasBeenActive) navigator.vibrate(ms); } catch (e) { /* no motor */ } };   // only after a touch: browsers refuse it before one
-export const tick = () => { tone(1320, 0.05, "triangle", 0.03); buzz(8); };
-export const blip = () => { tone(880, 0.07, "sine", 0.04); tone(1320, 0.09, "sine", 0.03, 0.05); };
-export const bootSound = () => { tone(110, 0.9, "sawtooth", 0.03, 0, 4); tone(220, 0.7, "sine", 0.04, 0.25, 3); tone(1760, 0.25, "sine", 0.03, 0.95); };
-export const warpSound = () => { tone(180, 0.7, "sawtooth", 0.035, 0, 9); tone(90, 0.75, "sine", 0.05, 0, 0.5); };
+export const tick = () => { const now = performance.now(); if (now - lastTick > 40) { lastTick = now; play("tick"); } buzz(8); };   // no machine-gun taps
+export const blip = () => { const now = performance.now(); if (now - lastBlip > 2600) step = 0; lastBlip = now; play("blip", undefined, { step: step++ }); };
+export const bootSound = () => play("boot", 0);
+export const warpSound = () => play("warp", 0);
 
 const still = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 let activeRaf = null;

@@ -53,10 +53,14 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   ticker, briefs; every position is computed per frame in script, light is drawn on a canvas) on top of `deck/views/picture.js`
   (day ring, runway, countdowns, tiles). Owner, 2026-11-12: "I want advanced motion and gui not a 1990s basic shit": design the hub
   around motion first; never ship a static grid of boxes as the main screen.
-  Effects: `deck/core/fx.js` (warp, synthesized sound behind one switch, haptics). Look: `deck/deck.css` (tokens at the top, "d2: the core" at the end).
-  The home is the town (`deck/views/realm.js`, one painting, live hour and weather). Its sound (d79, `deck/views/townsound.js`): real
-  recordings in `audio/town/` (from Titan's set, CC0 or Pixabay licence, `audio/town/CREDITS.md`) that follow its sky, off until he taps
-  the speaker. Its seasons (`deck/core/season.js`): `art/realm/realm_autumn.webp` and `realm_winter.webp` are the same painting
+  Effects: `deck/core/fx.js` (warp, the sound switch, haptics); the interface sounds themselves are designed in `deck/core/voice.js` (d81,
+  owner: the old beeps were "terrible": glass taps, a bell phrase, a whoosh, in a recorded hall `audio/ir/`, proof SOUND-1). Look: `deck/deck.css` (tokens at the top, "d2: the core" at the end).
+  The home is the town (`deck/views/realm.js`, one painting, live hour and weather). Its sound (d79, rebuilt d81, `deck/views/townsound.js`):
+  real recordings in `audio/town/` (CC0 or Pixabay licence, `audio/town/CREDITS.md`, second set by `tools/audio/town.py`) that follow its
+  sky, the hour and the season; the water, falls, dock, frogs and chimes are placed in the painting and follow the camera (`PLACES`,
+  `placeFor`), the clock tower strikes 8 to 21 (synthesized bell), fireworks on July 4th and New Year's Eve; off until he taps the speaker.
+  The dock's fourth place is Midas (owner, 2026-11-25: "Replace money at the bottom with midas"); the Payoff Console's rooms live in Midas
+  (`jpavia10/midas-ledger`: What if, recurring charges, the library), its bills still in this device's `prom.deck.money` for Time. Its seasons (`deck/core/season.js`): `art/realm/realm_autumn.webp` and `realm_winter.webp` are the same painting
   repainted and aligned (`tools/art/realm.py edit`, then `season`), chosen by the calendar and the real snow depth; `?season=` pins one.
 - **Real data in:** `deck/core/legacy.js` reads the pillars' own storage (`prometheus.<pillar>.*`), the shared deadline bus
   (`prometheus.bus.deadlines`, `kit/bus.js`) and Titan's published ledger; `deck/core/feeds.js` merges them with the fixed dates.

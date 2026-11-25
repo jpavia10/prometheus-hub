@@ -348,6 +348,7 @@ export function realm(ctx) {
   el.ready = ready;
   el.sky = () => ({ ...SK, target: { ...SKT } });
   el.season = () => ({ ...season, shown: seaKind, amt: seaAmt, late });
+  el.view = () => ({ cx: V.cx, cy: V.cy, hw: halfW(V.z), hh: halfH(V.z), dive: V.dive });   // where the camera is over the painting: the town's sound places itself by it
   el.cleanup = () => { dead = true; document.body.classList.remove("town-diving"); clearInterval(skyTimer); cancelAnimationFrame(raf); if (io) io.disconnect(); document.removeEventListener("keydown", onKey); document.removeEventListener("visibilitychange", onVis); removeEventListener("resize", onResize); removeEventListener("pageshow", onShow); removeEventListener("deviceorientation", onTilt);
     try { if (gl && !gl.isContextLost()) { const lc = gl.getExtension("WEBGL_lose_context"); if (lc) lc.loseContext(); } } catch (e) { /* already gone */ } };   // hand the GPU context back: a phone holds only a few
   size();
