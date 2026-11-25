@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 23:06 UTC",
+ "updated": "2026-11-25 15:39 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -406,6 +406,36 @@
     "grok": 0,
     "gemini": 1,
     "muse": 0,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "atlas",
+   "name": "Atlas · Work & Pay",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/atlas/",
+   "open": {
+    "grok": 0,
+    "gemini": 3,
+    "muse": 1,
+    "chatgpt": 0,
+    "argon": 0,
+    "hydrogen": 0,
+    "claude": 0
+   }
+  },
+  {
+   "id": "aegis",
+   "name": "Aegis · Insurance & Cover",
+   "state": "live",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/aegis/",
+   "open": {
+    "grok": 0,
+    "gemini": 3,
+    "muse": 1,
     "chatgpt": 0,
     "argon": 0,
     "hydrogen": 0,

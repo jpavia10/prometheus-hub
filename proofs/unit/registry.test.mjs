@@ -30,18 +30,18 @@ function makeSandboxCopy() {
   return dir;
 }
 
-test("canonical registry passes validation across all 27 destinations and 25 manifests", () => {
+test("canonical registry passes validation across all 29 destinations and 27 manifests", () => {
   const res = validateRegistry({ rootDir: ROOT });
   assert.equal(res.ok, true, res.errors.join("\n"));
   assert.equal(res.errors.length, 0);
   assert.deepEqual(res.stats, {
-    totalRegistryEntries: 29,
-    activeDestinations: 27,
-    localPillars: 25,
+    totalRegistryEntries: 31,
+    activeDestinations: 29,
+    localPillars: 27,
     externalPillars: 2,
-    manifests: 25,
-    completeManifests: 25,
-    capabilities: 26,
+    manifests: 27,
+    completeManifests: 27,
+    capabilities: 28,
   });
 });
 
@@ -96,7 +96,7 @@ test("registry validator requires records, commands, and events on every local m
     assert.ok(res.errors.some((e) => e.includes("records must be an array")));
     assert.ok(res.errors.some((e) => e.includes("events must be an array")));
     assert.ok(res.errors.some((e) => e.includes("commands must declare")));
-    assert.ok(res.stats.completeManifests < 25);
+    assert.ok(res.stats.completeManifests < 27);
   } finally {
     fs.rmSync(tmp, { recursive: true, force: true });
   }

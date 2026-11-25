@@ -38,6 +38,9 @@ export const SYNAPSES = [
   ["foundry", "athenaeum", "201,184,234"],
   ["forge", "foundry", "159,212,230"],
   ["continuity", "privacy", "200,230,210"],
+  ["atlas", "midas", "255,200,120"],
+  ["aegis", "hearth", "120,230,210"],
+  ["aegis", "midas", "160,220,200"],
   ["continuity", "bastion", "201,184,234"],
   ["mythos", "piano", "235,150,255"],
   ["mythos", "presence", "220,150,255"],
@@ -57,7 +60,7 @@ export const DOMAIN_BY_ID = {
   money: "finance", midas: "finance", titan: "finance", selling: "finance", icarus: "finance",
   hearth: "homestead", garage: "homestead", bastion: "homestead", aether: "homestead", odyssey: "homestead", records: "homestead", argus: "homestead", kin: "homestead",
   kairos: "mind", apollo: "mind", athenaeum: "mind", piano: "mind", mythos: "mind", foundry: "mind", forge: "mind", observatory: "mind", games: "mind", presence: "mind",
-  polis: "civic", privacy: "civic", continuity: "civic", hermes: "civic",
+  polis: "civic", privacy: "civic", continuity: "civic", hermes: "civic", atlas: "finance", aegis: "homestead",
 };
 
 export const domainOf = (id) => DOMAIN_BY_ID[id] || "mind";

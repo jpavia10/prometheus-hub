@@ -1,0 +1,24 @@
+/* Atlas · Work & Pay (2026-11-25). The kit carries the shell; this gives the next-pay card and the stub rows their form. Tokens only. */
+.sub { font-size: 13px; color: var(--muted); }
+.a-next { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.a-when { flex: none; display: grid; justify-items: center; gap: 1px; min-width: 118px; padding: 14px 16px 12px; border-radius: 18px; text-align: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--line)); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.a-wd, .a-my { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.a-num { font-size: 44px; line-height: 1.05; font-weight: 300; color: #fff; font-variant-numeric: tabular-nums; }
+.a-what { display: grid; gap: 4px; min-width: 0; }
+.a-rel { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.a-amt { font-size: 30px; font-weight: 400; color: #fff; font-variant-numeric: tabular-nums; }
+.a-sub { font-size: 13px; color: var(--muted); }
+.a-list { margin-top: 14px; display: grid; gap: 2px; }
+.a-row { display: grid; grid-template-columns: 104px 1fr auto; gap: 10px; align-items: baseline; padding: 7px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.a-row b { font-weight: 500; font-variant-numeric: tabular-nums; }
+.a-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 4px 0 12px; }
+@media (min-width: 720px) { .a-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.a-stat { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.03); min-width: 0; }
+.a-k { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.a-v { font-size: 18px; font-weight: 500; color: #fff; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.a-flag { border-left: 2px solid #ffd27a; padding-left: 10px; }
+.a-warn { color: #ffd27a; }
+.a-past { opacity: .55; }
+#a-pay [hidden] { display: none; }
+.form input[type="date"] { min-width: 0; max-width: 100%; }

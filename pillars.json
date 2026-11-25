@@ -1,5 +1,5 @@
 {
- "about": "Canonical Prometheus Hub registry (schema v4, validated by tools/registry/validate.mjs): hub desk + 25 active local pillars + 2 external protected pillars (titan, midas) + paused fleet.",
+ "about": "Canonical Prometheus Hub registry (schema v4, validated by tools/registry/validate.mjs): hub desk + 27 active local pillars + 2 external protected pillars (titan, midas) + paused fleet.",
  "updated": "2026-11-13",
  "ais": [
   {
@@ -607,7 +607,7 @@
    "id": "games",
    "name": "Ludus Arcade",
    "shortName": "Games",
-   "what": "Games: the library in your own words, and the next session.",
+   "what": "Games: an example library, your notes, and the next session.",
    "repo": "",
    "home": "pillars/games",
    "route": "pillars/games/",
@@ -888,6 +888,68 @@
    "dependencies": [
     "privacy",
     "bastion"
+   ],
+   "private": true
+  },
+  {
+   "id": "atlas",
+   "name": "Atlas · Work & Pay",
+   "shortName": "Atlas",
+   "what": "Work and pay: every payday, the stubs, time off banked and the dates work sets.",
+   "repo": "",
+   "home": "pillars/atlas",
+   "route": "pillars/atlas/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/atlas/",
+   "category": "finance",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "atlas",
+   "manifestPath": "pillars/atlas/pillar.json",
+   "visualIdentity": {
+    "hue": 38,
+    "icon": "globe",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/atlas/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "private_local",
+   "dependencies": [
+    "midas",
+    "kairos"
+   ],
+   "private": true
+  },
+  {
+   "id": "aegis",
+   "name": "Aegis · Insurance & Cover",
+   "shortName": "Aegis",
+   "what": "Insurance: every policy, what it costs and when it renews, claims, warranties, and whether the cover is enough.",
+   "repo": "",
+   "home": "pillars/aegis",
+   "route": "pillars/aegis/",
+   "live": "https://jpavia10.github.io/prometheus-hub/pillars/aegis/",
+   "category": "homestead",
+   "state": "live",
+   "look": "prometheus",
+   "hostingType": "local",
+   "dataOwner": "aegis",
+   "manifestPath": "pillars/aegis/pillar.json",
+   "visualIdentity": {
+    "hue": 172,
+    "icon": "aegis",
+    "look": "prometheus"
+   },
+   "signatureComponent": "pillars/aegis/stage.js",
+   "searchEnabled": true,
+   "eventPublishingEnabled": true,
+   "protectionLevel": "private_local",
+   "dependencies": [
+    "hearth",
+    "midas",
+    "records",
+    "garage"
    ],
    "private": true
   },
@@ -1177,6 +1239,28 @@
    "private": true,
    "dataOwner": "continuity",
    "added": "2026-11-13"
+  },
+  {
+   "id": "atlas",
+   "name": "Atlas · Work & Pay",
+   "kind": "capability",
+   "what": "Paydays moved off weekends and bank holidays, pay stubs with withholding, time off banked and projected, work dates; the next payday for Midas.",
+   "route": "pillars/atlas/",
+   "state": "live",
+   "private": true,
+   "dataOwner": "atlas",
+   "added": "2026-11-25"
+  },
+  {
+   "id": "aegis",
+   "name": "Aegis · Insurance & Cover",
+   "kind": "capability",
+   "what": "Every policy with premium, deductible, limits and renewal; claims; warranties from Hearth and Records; the cover checked against Hearth's contents and Midas's cash floor.",
+   "route": "pillars/aegis/",
+   "state": "live",
+   "private": true,
+   "dataOwner": "aegis",
+   "added": "2026-11-25"
   }
  ],
  "external": [

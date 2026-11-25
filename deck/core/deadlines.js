@@ -36,7 +36,7 @@ export async function referenceDeadlines() {
 
 /* the pillars whose app publishes to the deadlines bus (kit/bus.js PB.deadlines.publish) */
 export const PUBLISHERS = ["kairos", "hearth", "garage", "money", "records", "selling", "hermes", "bastion", "aether", "privacy", "polis",
-  "continuity", "kin", "odyssey", "games"];                        // forge left out: it reads every queue (about 1 MB) and publishes only the owner's register
+  "continuity", "kin", "odyssey", "games", "atlas", "aegis"];                        // forge left out: it reads every queue (about 1 MB) and publishes only the owner's register
 const SWEEP_AT = "prom.deck.sweep.at";
 const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { /* private mode */ } return null; };
 const busCount = () => { try { return (JSON.parse(localStorage.getItem("prometheus.bus.deadlines") || "[]") || []).length; } catch (e) { return 0; } };

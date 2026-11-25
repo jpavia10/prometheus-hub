@@ -29,5 +29,7 @@ export const PILLARS = [
   P("polis", "Polis · Civic & Legal Watch", "Polis", "CA & Kern policy tracking, ballot measures, HOA/permit rules & consumer protections.", "pillars/polis/", 228, "civic"),
   P("mythos", "Mythos · Creative & Lore Studio", "Mythos", "Worldbuilding, fiction drafts, guitar & lyric notebooks, moodboards and essays.", "pillars/mythos/", 304, "feather"),
   P("continuity", "Continuity · Sovereign Vault", "Continuity", "Zero-knowledge encrypted emergency instructions, digital inheritance & survival runbook.", "pillars/continuity/", 84, "vault"),
+  P("atlas", "Atlas · Work & Pay", "Atlas", "Work and pay: every payday, the stubs, time off banked and the dates work sets.", "pillars/atlas/", 38, "globe"),
+  P("aegis", "Aegis · Insurance & Cover", "Aegis", "Insurance: every policy, what it costs and when it renews, claims, warranties, and whether the cover is enough.", "pillars/aegis/", 172, "aegis"),
 ];
 export const pillar = (id) => PILLARS.find((p) => p.id === id);

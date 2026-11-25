@@ -2,7 +2,7 @@
 
 # Homework board: every pillar, every AI
 
-Updated 2026-11-24 23:06 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
+Updated 2026-11-25 15:39 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
 
 | Pillar | State | Grok | Gemini | Muse | ChatGPT | Argon | Hydrogen | Claude |
 |---|---|---|---|---|---|---|---|---|
@@ -34,6 +34,8 @@ Updated 2026-11-24 23:06 UTC. Open tasks (now + next). Titan counts its homework
 | Polis · Civic & Legal Watch | live | — | 3 | — | — | — | — | — |
 | Mythos · Creative & Lore Studio | live | — | 1 | — | — | — | — | — |
 | Continuity · Sovereign Vault | live | — | 1 | — | — | — | — | — |
+| Atlas · Work & Pay | live | — | 3 | 1 | — | — | — | — |
+| Aegis · Insurance & Cover | live | — | 3 | 1 | — | — | — | — |
 | Fleet Command | paused | — | — | — | — | — | — | — |
 
 Each AI's full list, every pillar on one page: Drive 'Prometheus Hub/{AI folder}/HOMEWORK — {Name} (every pillar)' (text in docs/agents/drive/HOMEWORK_{ai}.txt).

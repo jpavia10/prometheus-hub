@@ -224,9 +224,9 @@ with sync_playwright() as p:
         pm.evaluate("document.querySelectorAll('.mn-lvl')[3].click()"); pm.wait_for_timeout(400); lvl = pm.evaluate("document.querySelector('.mn-lvl.on').dataset.pillar")
         pm.click(".mn-enter"); pm.wait_for_url("**/pillars/**", timeout=30000); landed = pm.url.split("/pillars/")[1].split("/")[0]
         mskip = [e for e in bm if "ViewTransition opt-in disabled" in e or "Transition was aborted" in e]; bm = [e for e in bm if e not in mskip]   # the browser dropping its own morph, as in DECK-2
-        ok = (m0["levels"] == 27 and m0["today"] >= 1 and m0["gl"] and m0["briefing"] and m0["enter"] and m0["wide"] <= 384 and m1["title"] != m0["title"] and m1["hue"] != m0["hue"]
+        ok = (m0["levels"] == 29 and m0["today"] >= 1 and m0["gl"] and m0["briefing"] and m0["enter"] and m0["wide"] <= 384 and m1["title"] != m0["title"] and m1["hue"] != m0["hue"]
               and orbit and back == m1["title"] and landed == lvl and not bm)
-        proof("MENU-1", "The home is a game menu: 27 levels with their own light and a live line, Today on top, swipe or arrow keys move, Enter warps in, the orbit and the briefing are one tap away",
+        proof("MENU-1", "The home is a game menu: 29 levels with their own light and a live line, Today on top, swipe or arrow keys move, Enter warps in, the orbit and the briefing are one tap away",
               ok, f"{m0['levels']} levels; '{m0['title']}' -> '{m1['title']}' (hue {m0['hue']} -> {m1['hue']}); live: {m0['live'][:60]}; today rows {m0['today']}; WebGL {m0['gl']}; orbit and back {orbit}/{bool(back)}; entered {landed} from level {lvl}" + (f"; errors {bm[:2]}" if bm else "") + (f"; the browser skipped {len(mskip)} morph(s)" if mskip else ""))
     except Exception as e: proof("MENU-1", "The home is a game menu", False, "did not finish: " + str(e)[:200])
     cm.close()
@@ -618,7 +618,7 @@ with sync_playwright() as p:
 
     # STAGE-1: every kit pillar opens on its own signature picture (drawn from its data), with readouts, and no script errors
     c7 = b.new_context(viewport={"width": 384, "height": 832}); bare = []; shown = []
-    for pid in "kairos garage piano money apollo hermes argus selling icarus odyssey bastion privacy records forge foundry observatory kin hearth sylade".split():
+    for pid in "kairos garage piano money apollo hermes argus selling icarus odyssey bastion privacy records forge foundry observatory kin hearth sylade atlas aegis".split():
         p7 = c7.new_page(); mine = []; p7.on("pageerror", lambda e, mine=mine: mine.append(str(e)[:100]))
         if MOCK: p7.route("https://jpavia10.github.io/**", lambda route, request: route.abort()); p7.route("https://api.weather.gov/**", lambda route, request: route.abort())
         p7.goto(f"{URL}pillars/{pid}/?still=1&today=2026-11-13", wait_until="load"); p7.wait_for_timeout(500)
@@ -627,7 +627,36 @@ with sync_playwright() as p:
         if not st or st["lit"] < 40 or st["reads"] < 3 or not st["after"] or mine: bare.append(f"{pid}: {st} {mine[:1]}")
         else: shown.append(pid)
         p7.close()
-    proof("STAGE-1", "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors", not bare and len(shown) == 19, f"{len(shown)} of 19 drawn: {', '.join(shown)}" + ("; missing: " + " | ".join(bare) if bare else "")); c7.close()
+    proof("STAGE-1", "Every pillar opens on its own signature picture drawn from its data, with live readouts, and no script errors", not bare and len(shown) == 21, f"{len(shown)} of 21 drawn: {', '.join(shown)}" + ("; missing: " + " | ".join(bare) if bare else "")); c7.close()
+
+    # ATLAS-1 / AEGIS-1 (2026-11-25, owner: "Are there any additional pillars you recommend to add? If yes just do it"): the two new pillars
+    # share what the others need. Atlas: a two-week payday that falls on New Year's Day 2027 is paid Dec 31, and that next pay is what it
+    # publishes for Midas (prometheus.atlas.summary) and the calendar. Aegis: Hearth's contents ($3,600) against a $3,000 personal-property
+    # limit is a $600 gap it says out loud; the renewal rolls a term forward; the largest deductible is checked against Midas's floor.
+    try:
+        c8 = b.new_context(viewport={"width": 384, "height": 832}); p8 = c8.new_page(); e8 = []; p8.on("pageerror", lambda e: e8.append(str(e)[:120]))
+        p8.goto(f"{URL}pillars/atlas/?today=2026-12-28&still=1", wait_until="load")
+        p8.evaluate("""() => { localStorage.setItem('prometheus.atlas.pay', JSON.stringify({ every: 'biweekly', anchor: '2026-12-04', net: 2104.5, move: 'before' }));
+          localStorage.setItem('prometheus.atlas.pto', JSON.stringify({ hours: 40, asof: '2026-12-18', accrue: 4, cap: 120 })); }""")
+        p8.reload(wait_until="load"); p8.wait_for_timeout(600)
+        a1 = p8.evaluate("""() => { const s = JSON.parse(localStorage.getItem('prometheus.atlas.summary') || 'null'), d = JSON.parse(localStorage.getItem('prometheus.bus.deadlines') || '[]').find((x) => x.source === 'atlas' && x.ref === 'next-pay');
+          return { next: s && s.nextPay, perMonth: s && s.perMonth, pto: s && s.ptoHours, cal: d ? d.date : null, card: (document.querySelector('#a-next .a-sub') || {}).textContent || '', reads: document.querySelectorAll('.pk-stage .pk-read').length }; }""")
+        okA = a1["next"] == {"date": "2026-12-31", "net": 2104.5} and a1["cal"] == "2026-12-31" and abs((a1["perMonth"] or 0) - 4559.75) < 0.01 and a1["pto"] == 40 and "New Year" in a1["card"] and a1["reads"] >= 3 and not e8
+        proof("ATLAS-1", "Atlas pays a holiday payday the business day before and shares the next pay with Midas and the calendar", okA, json.dumps(a1) + (f"; errors {e8[:2]}" if e8 else ""))
+        p8.goto(f"{URL}pillars/aegis/?today=2026-12-28&still=1", wait_until="load")
+        p8.evaluate("""() => { localStorage.setItem('prometheus.aegis.policies', JSON.stringify([
+            { id: 'h1', kind: 'home', carrier: 'Proof Mutual', premium: 1440, every: 'year', deductible: 2500, renews: '2026-03-15', term: 12, contents: 3000, dwelling: 300000 },
+            { id: 'a1', kind: 'auto', carrier: 'Proof Auto', premium: 98.5, every: 'month', deductible: 500, renews: '2026-11-02', term: 6 }]));
+          localStorage.setItem('prometheus.hearth.summary', JSON.stringify({ v: 1, contentsValue: 3600, items: 3, rooms: 3 }));
+          localStorage.setItem('prometheus.midas.summary', JSON.stringify({ v: 1, floor: 2000 })); }""")
+        p8.reload(wait_until="load"); p8.wait_for_timeout(600)
+        g1 = p8.evaluate("""() => { const s = JSON.parse(localStorage.getItem('prometheus.aegis.summary') || 'null'), d = JSON.parse(localStorage.getItem('prometheus.bus.deadlines') || '[]').filter((x) => x.source === 'aegis').map((x) => x.date).sort();
+          return { sum: s && { monthly: s.monthly, renewal: s.renewal, cover: s.contentsCoverage, gap: s.gap, ded: s.maxDeductible }, cal: d, bad: [...document.querySelectorAll('#g-cover .g-bad')].map((x) => x.textContent.slice(0, 60)), reads: document.querySelectorAll('.pk-stage .pk-read').length }; }""")
+        okG = (g1["sum"] == {"monthly": 218.5, "renewal": "2027-03-15", "cover": 3000, "gap": 600, "ded": 2500} and g1["cal"] == ["2027-03-15", "2027-05-02"] and len(g1["bad"]) == 2
+               and "$600" in g1["bad"][0] and g1["reads"] >= 3 and not e8)
+        proof("AEGIS-1", "Aegis checks the cover against Hearth's contents and Midas's floor, rolls renewals forward and shares the totals", okG, json.dumps(g1) + (f"; errors {e8[:2]}" if e8 else ""))
+        c8.close()
+    except Exception as e: proof("ATLAS-1", "Atlas and Aegis share what the other pillars need", False, "did not finish: " + str(e)[:200])
 
     # GARAGE-3D: the showroom shows a real model for each vehicle (owner, 2026-11-20: "That 3d car and motorcycle is retarded. Get a
     # free model ... sub if u can't find mine"): both GLBs load, are lit pixels on the canvas, carry their author and license, and the

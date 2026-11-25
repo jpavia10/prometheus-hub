@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
+Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Kin right now.
 
 ## Gemini
 
-Updated 2026-11-24 23:06 UTC · 26 open in this pillar.
+Updated 2026-11-25 15:39 UTC · 26 open in this pillar.
 
 
 - KIN-GEM-15 · Kin, Ancestry hints: every hint on the Pavia line, read and decided (pavia) · due 2026-12-01
@@ -73,37 +73,37 @@ Updated 2026-11-24 23:06 UTC · 26 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-24 23:06 UTC · 5 open in this pillar.
+Updated 2026-11-25 15:39 UTC · 5 open in this pillar.
 
 
 - KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
     make: kin_muse_lineage-recheck-c15-c17_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
 - KIN-MUS-05 · Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615) · due 2026-12-01
     make: kin_muse_lineage-brooklyn-certificate_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · due 2026-12-08
+- KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · due 2026-12-08 · DELIVERED 2026-11-25, waiting for its check (do not redo)
     make: kin_muse_lineage-blind-1919_{YYYYMMDD-HHMM}.json · how many: 0 · done when: All six documents transcribed whole and compared, every difference listed.
 - KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
     make: kin_muse_lineage-second-read-bivens-dar_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Grace's full name and parents, and Joseph's birthplace and parents, found with records, or every source searched listed.
-- KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · due 2026-12-10 · waits for its input file
+- KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · due 2026-12-10 · DELIVERED 2026-11-25, waiting for its check (do not redo)
     make: kin_muse_lineage-1950-blind_{YYYYMMDD-HHMM}.json · how many: 0 · done when: Every household line transcribed blind.
 
 ## ChatGPT
 
-Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
+Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Kin right now.
 
 ## Argon
 
-Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
+Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Kin right now.
 
 ## Hydrogen
 
-Updated 2026-11-24 23:06 UTC · 0 open in this pillar.
+Updated 2026-11-25 15:39 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Kin right now.

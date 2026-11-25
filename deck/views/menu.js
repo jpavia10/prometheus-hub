@@ -31,7 +31,7 @@ function manifest(p) {
 /* the short line under each title */
 const TAG = { kairos: "Time", midas: "Money", titan: "The collection", hearth: "The house", garage: "The car", apollo: "Body", money: "Payoff", selling: "Sales", records: "Paper", icarus: "Trading journal",
   hermes: "Mail", piano: "Bossa nova", bastion: "Mountain prep", athenaeum: "Idea vault", odyssey: "Trips", privacy: "Footprint", argus: "Pictures", games: "Games", forge: "AI work",
-  foundry: "Inventions", observatory: "Signals", kin: "Family", presence: "Presence", aether: "Sky & pass", polis: "Civic watch", mythos: "Stories", continuity: "Vault" };
+  foundry: "Inventions", observatory: "Signals", kin: "Family", presence: "Presence", aether: "Sky & pass", polis: "Civic watch", mythos: "Stories", continuity: "Vault", atlas: "Work & pay", aegis: "Insurance" };
 let artList = null, stripMap = null;
 /* the strip's painted cards: one sprite of every world (tools/art/strip.py); ids missing from it keep their icon */
 function strip_() { return stripMap || (stripMap = fetch("art/worlds/strip.json").then((r) => (r.ok ? r.json() : null)).catch(() => null)); }

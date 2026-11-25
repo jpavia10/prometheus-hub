@@ -9,6 +9,7 @@ const DOMAIN = {
   hearth: "homestead", garage: "homestead", bastion: "homestead", aether: "homestead", odyssey: "homestead", records: "homestead", argus: "homestead", kin: "homestead",
   kairos: "mind", apollo: "mind", athenaeum: "mind", piano: "mind", mythos: "mind", foundry: "mind", forge: "mind", observatory: "mind", games: "mind", presence: "mind",
   polis: "civic", privacy: "civic", continuity: "civic", hermes: "civic",
+  atlas: "finance", aegis: "homestead",
 };
 
 const PROTECT = {
@@ -20,12 +21,16 @@ const PROTECT = {
   hermes: "private_local",
   privacy: "private_local",
   kin: "private_local",
+  atlas: "private_local",
+  aegis: "private_local",
   money: "sample_local",
   fleet: "paused",
 };
 
 const DEPS = {
+  aegis: ["hearth", "midas", "records", "garage"],
   aether: ["bastion", "hearth"],
+  atlas: ["midas", "kairos"],
   argus: ["hearth", "titan"],
   bastion: ["aether", "odyssey", "continuity"],
   continuity: ["privacy", "bastion"],
@@ -173,7 +178,7 @@ if (!reg.capabilities.some((c) => c.id === "games")) {
 
 reg.schemaVersion = 4;
 reg.updated = "2026-11-13";
-reg.about = "Canonical Prometheus Hub registry (schema v4, validated by tools/registry/validate.mjs): hub desk + 25 active local pillars + 2 external protected pillars (titan, midas) + paused fleet.";
+reg.about = "Canonical Prometheus Hub registry (schema v4, validated by tools/registry/validate.mjs): hub desk + 27 active local pillars + 2 external protected pillars (titan, midas) + paused fleet.";
 reg.pillars = newPillars;
 fs.writeFileSync(regPath, JSON.stringify(reg, null, 1) + "\n", "utf8");
 console.log("SYNCED pillars.json entries=" + newPillars.length);

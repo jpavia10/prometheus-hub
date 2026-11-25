@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24 23:06 UTC",
+ "updated": "2026-11-25 15:39 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -245,6 +245,17 @@
   },
   {
    "due": "2026-12-05",
+   "pillar": "atlas",
+   "pillar_name": "Atlas · Work & Pay",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATL-GEM-01",
+   "title": "Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic",
+   "state": "now",
+   "count": 55
+  },
+  {
+   "due": "2026-12-05",
    "pillar": "kin",
    "pillar_name": "Kin",
    "ai": "gemini",
@@ -344,6 +355,17 @@
   },
   {
    "due": "2026-12-06",
+   "pillar": "aegis",
+   "pillar_name": "Aegis · Insurance & Cover",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AEG-GEM-01",
+   "title": "Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines)",
+   "state": "now",
+   "count": 18
+  },
+  {
+   "due": "2026-12-06",
    "pillar": "athenaeum",
    "pillar_name": "Athenaeum · Idea Vault",
    "ai": "gemini",
@@ -410,6 +432,17 @@
   },
   {
    "due": "2026-12-07",
+   "pillar": "atlas",
+   "pillar_name": "Atlas · Work & Pay",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATL-GEM-02",
+   "title": "Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages",
+   "state": "now",
+   "count": 24
+  },
+  {
+   "due": "2026-12-07",
    "pillar": "hub",
    "pillar_name": "Prometheus Hub",
    "ai": "muse",
@@ -418,6 +451,17 @@
    "title": "One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies",
    "state": "now",
    "count": 39
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "aegis",
+   "pillar_name": "Aegis · Insurance & Cover",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AEG-GEM-02",
+   "title": "Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount)",
+   "state": "now",
+   "count": 10
   },
   {
    "due": "2026-12-08",
@@ -750,6 +794,28 @@
    "count": 0
   },
   {
+   "due": "2026-12-09",
+   "pillar": "atlas",
+   "pillar_name": "Atlas · Work & Pay",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATL-GEM-03",
+   "title": "Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each",
+   "state": "now",
+   "count": 20
+  },
+  {
+   "due": "2026-12-10",
+   "pillar": "aegis",
+   "pillar_name": "Aegis · Insurance & Cover",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AEG-GEM-03",
+   "title": "Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each",
+   "state": "now",
+   "count": 12
+  },
+  {
    "due": "2026-12-10",
    "pillar": "athenaeum",
    "pillar_name": "Athenaeum · Idea Vault",
@@ -781,6 +847,28 @@
    "title": "Kin: second reader on the 1950 census households (blind)",
    "state": "next",
    "count": 0
+  },
+  {
+   "due": "2026-12-12",
+   "pillar": "aegis",
+   "pillar_name": "Aegis · Insurance & Cover",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "AEG-MUS-01",
+   "title": "Aegis: second reader on Gemini's California homeowners insurance facts",
+   "state": "next",
+   "count": null
+  },
+  {
+   "due": "2026-12-12",
+   "pillar": "atlas",
+   "pillar_name": "Atlas · Work & Pay",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "ATL-MUS-01",
+   "title": "Atlas: second reader on Gemini's California pay rules",
+   "state": "next",
+   "count": null
   },
   {
    "due": "2026-12-22",

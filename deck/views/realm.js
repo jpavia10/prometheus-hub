@@ -17,7 +17,7 @@ import { seasonOf, lateOf } from "../core/season.js";
 const still = () => typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 const ART = (f) => new URL(`../../art/realm/${f}`, import.meta.url).href;
 const LABEL = Object.fromEntries(PILLAR_DOMAINS.filter((d) => d.quad).map((d) => [d.id, d.label]));
-const MAXP = 28;
+const MAXP = 40;                      // room for every place in the town (29 since d84)
 function hueRgb(hue, s = 0.9, l = 0.62) { const k = (n) => (n + hue / 30) % 12, a = s * Math.min(l, 1 - l); const f = (n) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1))); return [f(0), f(8), f(4)]; }
 
 const VS = "attribute vec2 a; void main(){ gl_Position = vec4(a, 0., 1.); }";

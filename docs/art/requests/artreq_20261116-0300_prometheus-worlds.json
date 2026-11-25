@@ -212,6 +212,20 @@
    "accent": "olive gold",
    "files": "world_continuity{,_depth,_lights}.png",
    "prompt": "A secure vault chamber: one dark steel case on a plinth with a soft gold seal light, thin gold beams forming a lattice around it, a heavy round vault door behind, dust floating in a single beam of light."
+  },
+  {
+   "id": "atlas",
+   "world": "Atlas · Work & Pay (the work that carries the household)",
+   "accent": "warm brass gold",
+   "files": "world_atlas{,_depth,_lights}.png",
+   "prompt": "A great timber-and-stone mill hall at blue hour beside a waterfall that turns a heavy iron wheel, warm lamplight and forge glow in its tall windows, a large brass armillary globe resting on a broad stone plinth in the misted yard as if borne on shoulders, a wet stone path with lanterns leading to the door, pines and a mountain range beyond. It reads as honest, well-run work that carries a household."
+  },
+  {
+   "id": "aegis",
+   "world": "Aegis · Insurance & Cover (what protects the household)",
+   "accent": "verdigris teal",
+   "files": "world_aegis{,_depth,_lights}.png",
+   "prompt": "An old stone arch bridge over a calm misted river at blue hour, a tall round bronze shield with a verdigris patina mounted on the bridge's central pier like a guardian crest, lanterns along the parapet glowing and reflected in the still water, a small safe-looking town with warm windows on the far bank, pines and a mountain range beyond. It reads as steady protection, calm rather than menacing."
   }
  ],
  "result": "2026-11-19, Claude: nobody had claimed a world in three days, so all 28 were painted through the Gemini API with Nano Banana Pro (gemini-3-pro-image, 2K, 9:16) on the owner's paid key (rule 13 of the Titan CLAUDE.md: the paid key is for the best models), one call each, every picture looked at before use (the garage painted three times, see its note). Depth and light are estimated from each painting by tools/art/worlds.py prep instead of two more AI edits per world. Files: art/worlds/world_{id}{,_depth,_lights}.webp; the menu shows them behind each level and every pillar page behind its header (kit/kit.js). An AI that wants to improve one: make a sharper or truer world_{id}.png from the same prompt and drop it in the output folder with a note; it replaces the current one only if it is better."

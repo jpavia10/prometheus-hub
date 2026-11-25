@@ -1,0 +1,27 @@
+/* Aegis · Insurance & Cover (2026-11-25). The kit carries the shell; this gives the cover tiles and the policy cards their form. Tokens only. */
+.sub { font-size: 13px; color: var(--muted); }
+.g-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 4px 0 12px; }
+@media (min-width: 720px) { .g-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.g-stat { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.03); min-width: 0; }
+.g-stat.warn { border-color: rgba(255, 197, 82, .55); }
+.g-k { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.g-v { font-size: 20px; font-weight: 500; color: #fff; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.g-ok, .g-bad { font-size: 14px; line-height: 1.5; padding: 10px 12px; border-radius: 12px; margin: 8px 0 0; }
+.g-ok { border: 1px solid rgba(125, 255, 192, .35); background: rgba(125, 255, 192, .06); }
+.g-bad { border: 1px solid rgba(255, 122, 140, .5); background: rgba(255, 122, 140, .08); }
+.g-pol { padding: 12px 0; border-top: 1px solid var(--line); display: grid; gap: 3px; }
+.g-pol p { margin: 0; }
+.g-pol .row-actions { margin-top: 6px; }
+.g-pol:first-child { border-top: 0; }
+.g-pol-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.g-pol-head b { font-size: 16px; font-weight: 600; }
+.g-pill { font-size: 12px; padding: 3px 9px; border: 1px solid color-mix(in srgb, var(--accent) 50%, var(--line)); border-radius: 999px; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.g-warnt { color: #ffc552; }
+.g-past { opacity: .55; }
+.check { display: flex; align-items: center; gap: 8px; }
+.check input { width: auto; }
+#g-pol [hidden] { display: none; }
+#g-claims select { min-width: 92px; }
+.form input[type="date"] { min-width: 0; max-width: 100%; }
+.check { flex-direction: row; align-items: center; gap: 10px; font-size: 14px; color: var(--text, #e8edf7); }
+.check input[type="checkbox"] { appearance: auto; -webkit-appearance: checkbox; width: 20px; height: 20px; min-height: 0; padding: 0; flex: none; accent-color: var(--accent); }

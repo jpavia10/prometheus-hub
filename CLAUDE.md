@@ -72,6 +72,16 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d84 (2026-11-25): two new pillars, Atlas and Aegis** (owner: "Are there any additional pillars you recommend to add? If yes just do it").
+  Nothing knew when the pay lands or what protects the house. **Atlas · Work & Pay** (`pillars/atlas/`, place: the mill hall by Titan):
+  pay schedule with paydays moved off weekends and Federal Reserve holidays (`pay.js`, `window.ATLAS_PAY`), stubs with withholding and a
+  check against the usual take-home, time off projected per payday, work dates on the calendar; publishes `prometheus.atlas.summary`
+  (`nextPay {date, net}`, which Midas's safe-to-spend uses as its window). **Aegis · Insurance & Cover** (`pillars/aegis/`, place: the stone
+  bridge): policies (premium, billing, deductible, limits, renewal, term), claims, warranties read from Hearth and Records; checks Hearth's
+  contents against the personal-property limit and the largest deductible against Midas's floor; publishes `prometheus.aegis.summary`
+  (`contentsCoverage`, `renewal`, which Midas's Worth tab shows). Both private_local, no seed data. Proofs ATLAS-1 and AEGIS-1, unit
+  `proofs/unit/atlas-aegis.test.mjs`; MENU-1 counts 29 levels, STAGE-1 21 pictures; the town's `MAXP` is 40. Homework ATL-GEM-01..03,
+  AEG-GEM-01..03 (with Muse second reads).
 - **d83 (2026-11-25): Hearth is home management, room by room** (owner: "start from scratch and redesign it so its a home management with
   renovation details like the deck to supplement"). His house: Top (unfinished attic); second floor (large deck, living room, kitchen, Violet's
   room, master bedroom, Violet's bathroom, master bathroom, master bedroom deck); first floor (large deck, foyer and hallway, laundry, office,

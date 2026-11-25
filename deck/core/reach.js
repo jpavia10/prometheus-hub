@@ -11,7 +11,7 @@ export const MANIFESTS = [
   "pillars/games/pillar.json", "pillars/forge/pillar.json", "pillars/foundry/pillar.json",
   "pillars/observatory/pillar.json", "pillars/kin/pillar.json", "pillars/sylade/pillar.json",
   "pillars/aether/pillar.json", "pillars/polis/pillar.json", "pillars/mythos/pillar.json",
-  "pillars/continuity/pillar.json",
+  "pillars/continuity/pillar.json", "pillars/atlas/pillar.json", "pillars/aegis/pillar.json",
 ];
 let loaded = [];
 export function loadManifests() {

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="dark">
+  <style>html,body{background:#05070e}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Atlas · Work & Pay</title>
+  <meta name="description" content="Atlas, a pillar of Prometheus Hub: paydays, pay stubs, time off and work dates. It tells Midas when the next pay lands.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#05070e">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="icon" href="../../icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../../icons/apple-touch-icon.png">
+  <link rel="preload" href="../../deck/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../kit/prometheus.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body data-pillar="atlas">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="bar">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="name">Atlas · Work & Pay</span>
+      <span class="spacer"></span>
+      <a class="back" href="../../">Prometheus</a>
+    </header>
+    <section class="hero">
+      <p class="kicker">Atlas · the work that carries the rest</p>
+      <h1>When the pay lands, <em>and what it is.</em></h1>
+      <p class="lede">Your pay schedule, every stub, the hours of time off you have banked and the dates work sets. Midas reads the next payday from here, so its safe-to-spend counts only what is due before the money arrives.</p>
+    </section>
+    <main id="app"></main>
+    <footer class="foot">
+      <span>Your pay stays in this browser. Only the next payday and totals are shared with the other pillars on this device.</span>
+      <button class="btn quiet small" id="export" type="button">Export</button>
+      <button class="btn quiet small" id="import" type="button">Import</button>
+      <a href="https://github.com/jpavia10/prometheus-hub/tree/main/pillars/atlas">Code</a>
+    </footer>
+  </div>
+  <script src="../../kit/kit.js"></script>
+  <script src="../../kit/bus.js"></script>
+  <script src="pay.js"></script>
+  <script src="app.js"></script>
+  <script src="../../kit/stage.js"></script>
+  <script src="stage.js"></script>
+</body>
+</html>

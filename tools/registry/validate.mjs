@@ -90,8 +90,8 @@ export function validateRegistry({ rootDir = DEFAULT_ROOT } = {}) {
   const localActive = active.filter((p) => p.hostingType === "local");
   const extActive = active.filter((p) => p.hostingType === "external");
 
-  if (active.length !== 27) errors.push(`Expected 27 active Hub destinations in pillars.json, found ${active.length}`);
-  if (localActive.length !== 25) errors.push(`Expected 25 active local pillars in pillars.json, found ${localActive.length}`);
+  if (active.length !== 29) errors.push(`Expected 29 active Hub destinations in pillars.json, found ${active.length}`);
+  if (localActive.length !== 27) errors.push(`Expected 27 active local pillars in pillars.json, found ${localActive.length}`);
   if (extActive.length !== 2) errors.push(`Expected 2 active external pillars in pillars.json, found ${extActive.length}`);
 
   for (const extId of ["titan", "midas"]) {
@@ -101,7 +101,7 @@ export function validateRegistry({ rootDir = DEFAULT_ROOT } = {}) {
 
   const deckPillars = parseDeckPillars(readText("deck/pillars.js"));
   const deckById = new Map(deckPillars.map((d) => [d.id, d]));
-  if (deckPillars.length !== 27) errors.push(`deck/pillars.js: expected 27 PILLARS, found ${deckPillars.length}`);
+  if (deckPillars.length !== 29) errors.push(`deck/pillars.js: expected 29 PILLARS, found ${deckPillars.length}`);
   if (deckById.has("fleet")) errors.push("deck/pillars.js: paused pillar 'fleet' must NOT appear in PILLARS");
 
   for (const d of deckPillars) {

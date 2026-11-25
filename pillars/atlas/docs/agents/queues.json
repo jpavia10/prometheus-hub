@@ -1,0 +1,282 @@
+{
+ "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
+ "updated": "2026-11-25",
+ "pillar": "atlas",
+ "agents": [
+  {
+   "id": "gemini",
+   "name": "Gemini",
+   "tasks": [
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "ATL-GEM-01",
+     "title": "Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic",
+     "due": "2026-12-05",
+     "why": "Atlas moves a payday that falls on a bank holiday to the business day before (pillars/atlas/pay.js). Its holiday list is computed; it needs an outside list to be checked against.",
+     "unlocks": "A unit test that compares Atlas's holidays with the Federal Reserve's own list for five years.",
+     "inputs": [
+      "https://www.frbservices.org/about/holiday-schedules",
+      "pillars/atlas/pay.js in jpavia10/prometheus-hub (the rules it uses, top of the file)"
+     ],
+     "steps": [
+      "For each year 2026, 2027, 2028, 2029 and 2030, list the 11 holidays on the Federal Reserve's schedule.",
+      "Give the calendar date and the date the Federal Reserve is closed (a Sunday holiday is observed on the Monday; a Saturday one is not moved).",
+      "Where the schedule for a year is not published yet, take the rule from the page that states it and say so in the note."
+     ],
+     "deliver": {
+      "file": "atlas_gemini_bank-holidays_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 55,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "year",
+       "type": "number",
+       "rule": "2026 to 2030"
+      },
+      {
+       "name": "holiday",
+       "type": "text",
+       "rule": "its name on the schedule"
+      },
+      {
+       "name": "date",
+       "type": "date",
+       "rule": "the calendar date, YYYY-MM-DD"
+      },
+      {
+       "name": "closed",
+       "type": "date or none",
+       "rule": "the day the Federal Reserve is closed for it, or none for a Saturday"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "empty, or why"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value (a .gov, the statute, or the agency's own page)"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "55 rows, 11 a year for five years.",
+     "checks": [
+      "Claude runs every row through ATLAS_PAY.holidays() and every difference is either a fix to pay.js or a rejected row."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists",
+      "a value for a year that has not been published yet presented as if it had (write \"not published as of {date}\" instead)"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "ATL-GEM-02",
+     "title": "Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages",
+     "due": "2026-12-07",
+     "why": "Atlas checks each pay stub's withholding. The rates and caps change every year: Social Security's wage base, Medicare's extra 0.9 % threshold, California SDI's rate and wage base, the 401(k), HSA and FSA limits.",
+     "unlocks": "Atlas can say when a stub's Social Security stops (the wage base is reached) and what the year's plan limits are.",
+     "inputs": [
+      "https://www.ssa.gov/oact/cola/cbb.html",
+      "https://www.irs.gov (the 401(k), HSA, FSA and Medicare pages)",
+      "https://edd.ca.gov (the SDI rate and taxable wage limit page)"
+     ],
+     "steps": [
+      "For each year 2026 and 2027 give: Social Security tax rate and wage base; Medicare rate; Additional Medicare tax rate and its thresholds (single, joint); California SDI rate and taxable wage limit; 401(k) elective deferral limit and the age-50 catch-up; the age 60 to 63 catch-up; HSA self-only and family limits; health FSA limit.",
+      "One row per number. A 2027 number not yet published: say so in the note, value empty."
+     ],
+     "deliver": {
+      "file": "atlas_gemini_payroll-numbers_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 24,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "year",
+       "type": "number",
+       "rule": "2026 or 2027"
+      },
+      {
+       "name": "item",
+       "type": "text",
+       "rule": "what it is, as named above"
+      },
+      {
+       "name": "value",
+       "type": "number or empty",
+       "rule": "a rate as a decimal (0.062), dollars as a number"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "empty, or not published / the condition"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value (a .gov, the statute, or the agency's own page)"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "Both years, every item above.",
+     "checks": [
+      "Claude opens every source URL and checks the value."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists",
+      "a value for a year that has not been published yet presented as if it had (write \"not published as of {date}\" instead)"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "ATL-GEM-03",
+     "title": "Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each",
+     "due": "2026-12-09",
+     "why": "Atlas tells Joseph when a stub or a time-off balance looks wrong. In California a vacation cap is allowed but forfeiting earned vacation is not, a stub must show set items, and paydays have legal deadlines.",
+     "unlocks": "Atlas's stub check can list what a California stub must show, and its time-off panel can say what happens to vacation at a cap and when leaving a job.",
+     "inputs": [
+      "https://leginfo.legislature.ca.gov (Labor Code sections 201, 202, 203, 204, 226, 227.3, 246)",
+      "https://www.dir.ca.gov/dlse/ (the DLSE's own FAQ pages on vacation, paydays and pay stubs)"
+     ],
+     "steps": [
+      "One row per rule: the paydays a month and how soon after the pay period wages are due (204); final pay when fired and when quitting (201, 202) and the waiting-time penalty (203); each item a pay stub must show (226), one row per item; vacation: no forfeiture, caps allowed, paid out at the end (227.3 and the DLSE vacation FAQ); paid sick leave: how much and how it accrues (246, as amended)."
+     ],
+     "deliver": {
+      "file": "atlas_gemini_ca-pay-rules_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "1, 2, 3 ..."
+      },
+      {
+       "name": "topic",
+       "type": "text",
+       "rule": "paydays, final pay, pay stub, vacation or sick leave"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "the rule in one plain sentence"
+      },
+      {
+       "name": "section",
+       "type": "text",
+       "rule": "Labor Code section"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "the words of the statute or the DLSE page that say it, copied exactly"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the official page that shows the value (a .gov, the statute, or the agency's own page)"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "done_when": "At least 20 rows covering all five topics, every pay-stub item one row.",
+     "checks": [
+      "Claude opens ten source URLs at random and finds each quote on the page."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "rows missing to reach the count",
+      "a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists",
+      "a value for a year that has not been published yet presented as if it had (write \"not published as of {date}\" instead)",
+      "a quote that is not on the page word for word"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "grok",
+   "name": "Grok",
+   "tasks": []
+  },
+  {
+   "id": "muse",
+   "name": "Muse",
+   "tasks": [
+    {
+     "state": "next",
+     "added": "2026-11-25",
+     "id": "ATL-MUS-01",
+     "title": "Atlas: second reader on Gemini's California pay rules",
+     "due": "2026-12-12",
+     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+     "unlocks": "Claude builds from the file only after this check.",
+     "inputs": [
+      "Gemini's file atlas_gemini_ca-pay-rules_*.json in the folder below (ATL-GEM-03)"
+     ],
+     "steps": [
+      "Open Gemini's file. Pick 12 rows at random (every row if fewer).",
+      "For each, open its source URL and compare every field with the page: agree, or what the page says instead.",
+      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+     ],
+     "deliver": {
+      "file": "atlas_muse_ca-pay-rules-check_{YYYYMMDD-HHMM}.md",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing"
+     },
+     "fields": [
+      {
+       "name": "agree/differ",
+       "type": "agree or differ",
+       "rule": "differ needs what you found and where"
+      }
+     ],
+     "done_when": "12 rows read against their pages.",
+     "checks": [
+      "Claude re-reads three of your 'differ' rows against the page."
+     ],
+     "rejected_if": [
+      "a verdict without the page it came from"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chatgpt",
+   "name": "ChatGPT",
+   "tasks": []
+  }
+ ]
+}

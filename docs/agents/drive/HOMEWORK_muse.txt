@@ -1,6 +1,6 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-24 23:06 UTC. 18 to do across 5 pillars.
+Updated 2026-11-25 15:39 UTC. 17 to do across 6 pillars; 3 more delivered and waiting for their check (listed at the end: do not redo them).
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -19,11 +19,10 @@ IN THIS ORDER:
 1. [Kin] KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
 2. [Kin] KIN-MUS-05 · Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615) · due 2026-12-01
 3. [Midas Ledger] MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
-4. [Prometheus Hub] HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · due 2026-12-07
-5. [Kin] KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · due 2026-12-08
-6. [Kin] KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
-7. [Athenaeum · Idea Vault] ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15) · due 2026-12-10 · waits for its input file
-8. [Kin] KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · due 2026-12-10 · waits for its input file
+4. [Kin] KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
+5. [Athenaeum · Idea Vault] ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15) · due 2026-12-10 · waits for its input file
+6. [Atlas · Work & Pay] ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules · due 2026-12-12 · waits for its input file
+7. [Aegis · Insurance & Cover] AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts · due 2026-12-12 · waits for its input file
 
 ==================== 1. KIN ====================
 ## 1. KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17)
@@ -173,124 +172,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 4. PROMETHEUS HUB ====================
-## 4. HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies
-
-**Due:** 2026-12-07 · **State:** now
-
-**What it unlocks:** Claude marks each file second-read (or fixes the rows you find wrong) and builds the rest into its pillar.
-
-**Read first:**
-- Each file is in 'Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/' (some in the pillar's own incoming folder): search Drive for the file name.
-- The rows to check (chosen by Claude at random, so nobody picks the easy ones):
-- money_gemini_issuer-pricing_20261121-1136.json: rows n = 10, 11, 13
-- aether_gemini_psps-fall2026_20261121-1123.json: rows n = 9, 11, 15
-- bastion_gemini_shelters_20261121-1131.json: rows n = 3, 5, 8
-- bastion_gemini_weather-radio_20261121-1129.json: rows n = 5, 6, 9
-- bastion_gemini_kit-items_20261118-1940.json: rows n = 12, 13, 21
-- continuity_gemini_kern-tod-recording_20261121-1130.json: rows n = 1, 2, 11
-- records_gemini_tx-to-ca_20261121-1210.json: rows n = 12, 16, 19
-- apollo_gemini_nutrient-targets_20261121-1223.json: rows n = 2, 12, 13
-- hearth_gemini_kern-design-criteria_20261121-1117.json: rows n = 4, 7, 10
-- privacy_gemini_s24-hardening_20261121-1205.json: rows n = 4, 18, 48
-- privacy_gemini_optouts_20261121-1116.json: rows n = 3, 6, 11
-- garage_gemini_lights_20261121-1215.json: rows n = 43, 47, 60
-- Continuity's three account policies nobody could open last time (TikTok, Vanguard, Robinhood): https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/continuity/legacy-policies.js rows n 19, 22, 23.
-
-**Do this:**
-1. For each listed row open the URL it cites. Is the value, and the quote word for word, on that page today? Write agree, or what the page says instead.
-2. For the three Continuity rows also check set_up_now and after_death against the page.
-3. Give each file one line: ACCEPT (Claude may build on it) or REJECT, with why.
-
-**Make:** `hub_muse_second-read_{YYYYMMDD-HHMM}.md`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `one markdown file: a section per Gemini file (its name, ACCEPT/REJECT), then a table: row | Gemini says | what I found | URL | agree/differ`
-
-**Every field, exactly:**
-- `agree/differ` (text): per row
-
-**Before you save, check every one of these yourself:**
-- [ ] Every row you mark agree, you opened its page today and saw the value there.
-- [ ] Every 'differ' quotes the page's own words.
-- [ ] 39 rows: 36 from the twelve files and the 3 Continuity policies.
-
-**How many:** 39
-
-**Done when:** All 39 rows read and every file has ACCEPT or REJECT.
-
-**How Claude checks it:**
-- Claude opens 5 of your rows at random.
-
-**Not done (sent back) if:** (and the rules at the top)
-- a row marked agree whose page does not say it
-- a file without a verdict
-
-==================== 5. KIN ====================
-## 5. KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents
-
-**Due:** 2026-12-08 · **State:** now
-
-**What it unlocks:** Every field of the 1917-1919 records on the tree is read twice; disagreements become conflicts the tree shows.
-
-**Read first:**
-- The seed with every proven fact, source and open conflict: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (open it only after your own transcriptions are done).
-- The images draft-1917, enlistment-1919, discharge-1919, naturalization-cert-1919, naturalization-petition-1919, naturalization-oath-1919 at full size (do not read the seed's 'read' text first: that is the point)
-
-**Do this:**
-1. Transcribe each document whole, every printed and handwritten word, as written.
-2. Then, and only then, compare with the seed's 'read' text and list every difference as a row with which reading you think is right and why.
-
-**Make:** `kin_muse_lineage-blind-1919_{YYYYMMDD-HHMM}.json`
-
-**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
-
-**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
-
-**Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
-- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
-- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
-- `result` (text): found, not found, candidate, needs sign-in, or paid
-- `record` (text): the record's title as the repository names it
-- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
-- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
-- `url` (url): the page you opened (the image page itself where there is one)
-- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
-- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
-- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
-- `evidence` (text): direct, indirect or negative, for the question
-- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
-- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
-- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
-
-**Before you save, check every one of these yourself:**
-- [ ] Every search row is a search you ran yourself today, written so anyone can repeat it; searches that found nothing are rows too (that is the negative evidence a reasonably exhaustive search needs).
-- [ ] Every transcription is the whole entry word for word as written; nothing filled in from what you expect; [illegible] where you cannot read it.
-- [ ] Online family trees, message boards, Find a Grave and AI summaries are leads only (kind 'lead', source_class 'authored'), never the source of a fact.
-- [ ] No record is attached to Joseph or Della without the identity field argued; a near match that fails is written down as 'no match' with the reason.
-- [ ] Each row's three classifications (source, information, evidence) are filled and right for that row's fact.
-- [ ] The file is valid JSON and named exactly as asked; the last row is the summary.
-
-**Done when:** All six documents transcribed whole and compared, every difference listed.
-
-**How Claude checks it:**
-- Claude opens every 'found' row's reference and reads the image against the transcription, field by field.
-- Claude repeats three 'not found' searches and three classification calls at random.
-
-**Not done (sent back) if:** (and the rules at the top)
-- a record presented as his or hers without the identifiers compared
-- a transcription that paraphrases, shortens or 'cleans' the record
-- a fact whose reference is too vague to find the same image again
-- searches that found nothing left out
-- an index or abstract labelled 'original'
-- a guess written as a fact (write 'not stated' or 'illegible')
-- a page that needs a sign-in you do not have, worked around by quoting a third-party copy as if it were the record (write 'needs sign-in' with the exact reference for the owner)
-
-==================== 6. KIN ====================
-## 6. KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)
+==================== 4. KIN ====================
+## 4. KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)
 
 **Due:** 2026-12-06 · **State:** next (starts when the file it checks is in the folder)
 
@@ -342,8 +225,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 7. ATHENAEUM · IDEA VAULT ====================
-## 7. ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15)
+==================== 5. ATHENAEUM · IDEA VAULT ====================
+## 5. ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15)
 
 **Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
 
@@ -387,56 +270,72 @@ IN THIS ORDER:
 - an entry already in the dataset
 - rows missing to reach the count
 
-==================== 8. KIN ====================
-## 8. KIN-MUS-03 · Kin: second reader on the 1950 census households (blind)
+==================== 6. ATLAS · WORK & PAY ====================
+## 6. ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules
 
-**Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
+**Due:** 2026-12-12 · **State:** next (starts when the file it checks is in the folder)
 
-**What it unlocks:** The 1950 lines become proven or corrected.
+**What it unlocks:** Claude builds from the file only after this check.
 
 **Read first:**
-- The seed, read first: https://jpavia10.github.io/prometheus-hub/pillars/kin/lineage/data.js (every person, source, conflict, the certainty of each link in L.certainty, the research log). The method: https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/LINEAGE_METHOD.md. The tree to see it: https://jpavia10.github.io/prometheus-hub/pillars/kin/tree/.
-- Your Ancestry.com trial on Joseph's 'Pavia Family Tree' (tree 192482486), signed in as before; FamilySearch (free account); the NARA 1950 census site (1950census.archives.gov); Find a Grave; Michiganology; WikiTree; Newspapers.com clippings that members have shared.
-- The images Gemini saved (1950 census: Pavia ED 85-1999 sheet 9; Sanders ED 82-264 and 84-92; the Rimsha household once found).
+- Gemini's file atlas_gemini_ca-pay-rules_*.json in the folder below (ATL-GEM-03)
 
 **Do this:**
-1. Transcribe each household from the image without reading Gemini's transcription first.
-2. One row per person per household, every column.
+1. Open Gemini's file. Pick 12 rows at random (every row if fewer).
+2. For each, open its source URL and compare every field with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
 
-**Make:** `kin_muse_lineage-1950-blind_{YYYYMMDD-HHMM}.json`
+**Make:** `atlas_muse_ca-pay-rules-check_{YYYYMMDD-HHMM}.md`
 
 **Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
 
-**Shape:** `JSON array, one object per row, exactly the fields below; the last row is kind 'summary'`
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
 
 **Every field, exactly:**
-- `n` (number): 1, 2, 3 ...
-- `kind` (text): search (one search you ran, found or not), record (a record you read), lead (something to request or visit), or summary (the last row: what is settled, what is not, the next searches)
-- `question` (text): the seed's question id (Q1, Q2 ...) this row answers
-- `search` (text): for a search: the database or index, the exact terms and filters, and how many results, so anyone can repeat it
-- `result` (text): found, not found, candidate, needs sign-in, or paid
-- `record` (text): the record's title as the repository names it
-- `repository` (text): who holds the original (NARA, LVIA, NYC Municipal Archives, ...)
-- `reference` (text): enough to find the same image again: collection, film or roll, volume, page, line, certificate or image number
-- `url` (url): the page you opened (the image page itself where there is one)
-- `transcription` (text): the whole entry, word for word, with the original spelling, abbreviations and [sic]; [illegible] where you cannot read; a translation after it if it is not in English. Never shortened, never modernized
-- `source_class` (text): original, derivative (an index, an abstract, a transcript) or authored (a compiled tree, a history)
-- `info_class` (text): primary (the informant saw it), secondary (heard it) or undetermined, for the fact this row answers
-- `evidence` (text): direct, indirect or negative, for the question
-- `identity` (text): for a record: why it is (or is not) our Joseph or Della, comparing at least three identifiers with the proven facts; 'no match' with the reason
-- `citation` (text): a full first-reference note in Evidence Explained style: record, repository, reference, image, accessed date
-- `conflicts` (text): the seed's conflict ids (C1-C9) this row supports or contradicts, and how; 'none'
+- `agree/differ` (agree or differ): differ needs what you found and where
 
-**Done when:** Every household line transcribed blind.
+**Done when:** 12 rows read against their pages.
 
 **How Claude checks it:**
-- Claude compares the two transcriptions line by line.
+- Claude re-reads three of your 'differ' rows against the page.
 
 **Not done (sent back) if:** (and the rules at the top)
-- a record presented as the person's without at least three identifiers compared
-- a transcription shortened, paraphrased or 'cleaned'
-- a hint accepted or a tree edit made without the identity argument
-- a percentage without the records that justify it
-- a portrait used as someone's likeness without saying who labelled it and why it is them
-- addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
-- searches that found nothing left out
+- a verdict without the page it came from
+
+==================== 7. AEGIS · INSURANCE & COVER ====================
+## 7. AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts
+
+**Due:** 2026-12-12 · **State:** next (starts when the file it checks is in the folder)
+
+**What it unlocks:** Claude builds from the file only after this check.
+
+**Read first:**
+- Gemini's file aegis_gemini_ca-homeowners_*.json in the folder below (AEG-GEM-01)
+
+**Do this:**
+1. Open Gemini's file. Pick 12 rows at random (every row if fewer).
+2. For each, open its source URL and compare every field with the page: agree, or what the page says instead.
+3. Add up to 5 rows Gemini missed, in Gemini's exact shape.
+
+**Make:** `aegis_muse_ca-homeowners-check_{YYYYMMDD-HHMM}.md`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `markdown table: row | Gemini says | what I found | URL | agree/differ, then the list of what is missing`
+
+**Every field, exactly:**
+- `agree/differ` (agree or differ): differ needs what you found and where
+
+**Done when:** 12 rows read against their pages.
+
+**How Claude checks it:**
+- Claude re-reads three of your 'differ' rows against the page.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a verdict without the page it came from
+
+
+DELIVERED, WAITING FOR THEIR CHECK (do not redo these; if a check needs a redo, the task comes back above with the reason):
+- [Prometheus Hub] HUB-MUS-05 · One pass: second-read 3 rows in each of the 12 Gemini files that matter most (money, safety, law, health), plus 3 account policies · delivered 2026-11-25: hub_muse_second-read_20261125-0525.md in hub incoming (Drive 12tGrTyMYuFAJ-lqNktUjriZPyKjPFyWU); 39 rows, 30 agree / 9 differ, 7 ACCEPT / 6 
+- [Kin] KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents · delivered 2026-11-25: kin_muse_lineage-blind-1919_20261125-0524.json in hub incoming (Drive 1dbsMlMQ-l_3RHkQzgf7QC-Tdm3uT1qst); six 1917-1919 documents transcribe
+- [Kin] KIN-MUS-03 · Kin: second reader on the 1950 census households (blind) · delivered 2026-11-25: kin_muse_lineage-1950-blind_20261125-0530.json in hub incoming (Drive 1jG4Alcvy3L97adbNb1fCSCqObkVZlqM9); four 1950 households transcribed b

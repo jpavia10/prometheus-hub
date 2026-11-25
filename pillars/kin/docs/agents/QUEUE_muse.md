@@ -2,7 +2,7 @@
 
 # Kin · homework for Muse
 
-Updated 2026-11-24 23:06 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
+Updated 2026-11-25 15:39 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Sebastian/HOMEWORK — Muse (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -120,7 +120,7 @@ Updated 2026-11-24 23:06 UTC · 5 open · Rules for every pillar: https://github
 
 ## 3. KIN-MUS-02 · Kin lineage: a blind second transcription of the six 1917-1919 documents
 
-**Due:** 2026-12-08 · **State:** now
+**Due:** 2026-12-08 · **State:** delivered 2026-11-25, waiting for its check: do not redo it unless a review reopens it
 
 **Why:** A transcription read by one reader is a single witness. A second reader, working blind, is how genealogy catches misreadings (the eyes, the height, the service number in C4-C6 came from exactly that).
 
@@ -237,7 +237,7 @@ Updated 2026-11-24 23:06 UTC · 5 open · Rules for every pillar: https://github
 
 ## 5. KIN-MUS-03 · Kin: second reader on the 1950 census households (blind)
 
-**Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
+**Due:** 2026-12-10 · **State:** delivered 2026-11-25, waiting for its check: do not redo it unless a review reopens it
 
 **Why:** A second, independent reading of the four 1950 households that KIN-GEM-28 transcribes: differences become conflicts (the method's section 6).
 
