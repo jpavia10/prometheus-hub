@@ -569,6 +569,66 @@
     const un = M.families.some((f) => f.uncertain && Object.keys(f.uncertain).length);
     tree.querySelector(".ln-legend").innerHTML = order.filter((k) => has.has(k)).map((k) => `<span class="st-${k}">${CONF[k]}</span>`).join("") + (un ? `<span class="st-unsure">Not yet settled</span>` : "");
   }
+  /* ------------------------------------------------------------------ how are we related? (Thanksgiving 2026: owner, "impress me and them")
+     Any two people: what each is to the other, the common ancestor, and the line between them, every step a link into the tree; a step
+     through a link not yet settled (drawn dashed in the tree) is marked so. Worked out by kinship.js from the families alone. */
+  function relate(a, b) {
+    const M = ui.M, K0 = window.KinKinship; if (!K0) return "";
+    const people = M.people.filter((p) => !p.ghost), fams = M.families.filter((f) => !f.ghost);
+    const A = M.P[a], B = M.P[b]; if (!A || !B) return "";
+    if (a === b) return `<p class="ln-rsay">That is the same person.</p>`;
+    const KA = K0.make(fams, people, a), KB = K0.make(fams, people, b);
+    const fn = (p) => firstName(p).split(" ")[0];   /* "Violet", not "Violet Joy" */
+    const say = (K, x, me) => { const t = K.rel(x); return t ? t.replace(/\b[Yy]our\b/g, `${fn(me)}'s`) : ""; };
+    const ab = say(KA, b, A), ba = say(KB, a, B);
+    if (!ab) return `<p class="ln-rsay">${esc(nm(B))} and ${esc(nm(A))} are not linked in the tree yet.</p><p class="sub">Tell Joseph how they are related and it goes in.</p>`;
+    const go = (id) => `<button type="button" class="ln-link" data-go="${id}">${esc(nm(M.P[id]))}</button>`;
+    const up = (K, from, to) => { const prev = { [from]: null }; let cur = [from];
+      while (cur.length) { const nx = []; for (const x of cur) { if (x === to) { const out = []; let y = to; while (y != null) { out.unshift(y); y = prev[y]; } return out; } for (const q of K.parents(x)) if (!(q in prev)) { prev[q] = x; nx.push(q); } } cur = nx; }
+      return null; };
+    const unsure = (child, parent) => fams.some((f) => f.children.includes(child) && f.partners.includes(parent) && f.uncertain && f.uncertain[child]);
+    const steps = (chain) => chain.map((id, i) => (i ? `<span class="ln-rarr${unsure(chain[i - 1], id) ? " unsure" : ""}" title="${unsure(chain[i - 1], id) ? "a link not yet settled" : "parent"}">→</span>` : "") + go(id)).join("");
+    let path = "", note = "";
+    const bl = KA.blood(b);
+    if (bl) {
+      const ca = up(KA, a, bl.via), cb = up(KA, b, bl.via);
+      if (ca && cb) {
+        const shaky = [...ca.slice(1).map((id, i) => unsure(ca[i], id)), ...cb.slice(1).map((id, i) => unsure(cb[i], id))].some(Boolean);
+        path = bl.g && bl.d ? `<div class="ln-rpath">${steps(ca)}</div><div class="ln-rpath">${steps(cb)}</div>` : `<div class="ln-rpath">${steps(bl.g ? ca : cb)}</div>`;
+        note = bl.g && bl.d ? `Both come down from ${go(bl.via)}: ${bl.g} generation${bl.g > 1 ? "s" : ""} up from ${esc(fn(A))}, ${bl.d} from ${esc(fn(B))}.` : `${bl.g || bl.d} generation${(bl.g || bl.d) > 1 ? "s" : ""} apart, in a straight line.`;
+        if (shaky) note += ` <span class="ln-rshaky">The line passes through a link not yet settled (dashed), so this is how it looks so far.</span>`;
+      }
+    } else {
+      /* by marriage: the line to the relative they married */
+      const sp = fams.filter((f) => f.partners.includes(b)).flatMap((f) => f.partners.filter((q) => q !== b && (q === a || KA.blood(q))).map((q) => ({ q, ended: f.ended, un: f.unmarried })))[0];
+      if (sp) {
+        const x = sp.q === a ? null : KA.blood(sp.q), ca = x ? up(KA, a, x.via) : null, cb = x ? up(KA, sp.q, x.via) : null;
+        const tie = `<div class="ln-rpath">${go(sp.q)}<span class="ln-rarr">${sp.ended ? "was married to" : sp.un ? "is with" : "married"}</span>${go(b)}</div>`;
+        path = (ca && cb ? (x.g && x.d ? `<div class="ln-rpath">${steps(ca)}</div><div class="ln-rpath">${steps(cb)}</div>` : `<div class="ln-rpath">${steps(x.g ? ca : cb)}</div>`) : "") + tie;
+        note = "Family by marriage."; }
+    }
+    return `<p class="ln-rsay">${esc(nm(B))} is <b>${esc(ab)}</b>.</p>${ba ? `<p class="ln-rsay2">And ${esc(nm(A))} is ${esc(ba)}.</p>` : ""}${path}${note ? `<p class="sub ln-rnote">${note}</p>` : ""}`;
+  }
+  function relatePanel(el) {
+    const M = ui.M, ppl = M.people.filter((p) => !p.ghost && (p.names || []).some((n) => n.given || n.surname)).sort((x, y) => nm(x).localeCompare(nm(y)));
+    const opts = (sel) => ppl.map((p) => `<option value="${p.id}"${p.id === sel ? " selected" : ""}>${esc(nm(p))}${p.id === L.root ? " (you)" : ""}</option>`).join("");
+    let a = L.root, b = "P-tania"; try { const s = JSON.parse(localStorage.getItem("kin.relate") || "null"); if (s && M.P[s[0]] && M.P[s[1]]) { a = s[0]; b = s[1]; } } catch (_) {}
+    if (!M.P[b]) b = ppl.find((p) => p.id !== a).id;
+    el.innerHTML = `<div class="ln-relf"><label class="ln-rl">One person<select id="ln-ra">${opts(a)}</select></label><button type="button" class="btn quiet small ln-rswap" id="ln-rswap" aria-label="Swap the two people">⇄</button><label class="ln-rl">and another<select id="ln-rb">${opts(b)}</select></label></div><div class="ln-rout" id="ln-rout" aria-live="polite"></div>`;
+    const ra = el.querySelector("#ln-ra"), rb = el.querySelector("#ln-rb"), out = el.querySelector("#ln-rout");
+    const run = () => { out.innerHTML = relate(ra.value, rb.value); try { localStorage.setItem("kin.relate", JSON.stringify([ra.value, rb.value])); } catch (_) {} };
+    ra.addEventListener("change", run); rb.addEventListener("change", run);
+    el.querySelector("#ln-rswap").addEventListener("click", () => { const x = ra.value; ra.value = rb.value; rb.value = x; run(); });
+    run();
+  }
+  /* the questions only the family can answer, grouped by whom to ask (data: L.askTable); ticks stay on this device */
+  function askPanel(el) {
+    const T = L.askTable || []; if (!T.length) { el.hidden = true; return; }
+    let done = {}; try { done = JSON.parse(localStorage.getItem("kin.asked") || "{}") || {}; } catch (_) {}
+    const key = (g, i) => `${g.who}|${i}`;
+    el.querySelector(".ln-ask").innerHTML = T.map((g) => `<section class="ln-askg"><h4>${esc(g.who)}</h4><p class="sub">${esc(g.why || "")}</p><ul>${g.ask.map((x, i) => `<li><label><input type="checkbox" data-k="${esc(key(g, i))}"${done[key(g, i)] ? " checked" : ""}><span>${esc(x.q)}</span></label></li>`).join("")}</ul></section>`).join("");
+    el.addEventListener("change", (e) => { const c = e.target.closest("input[data-k]"); if (!c) return; if (c.checked) done[c.dataset.k] = 1; else delete done[c.dataset.k]; try { localStorage.setItem("kin.asked", JSON.stringify(done)); } catch (_) {} });
+  }
   /* ------------------------------------------------------------------ mount */
   function start() {
     const grid = document.querySelector("#app section.grid"); if (!grid) return;
@@ -586,7 +646,13 @@
       <div class="ln-foot"><button type="button" class="btn quiet small" id="ln-ged">Export GEDCOM 7</button><button type="button" class="btn quiet small" id="ln-share">Send my additions</button><button type="button" class="btn quiet small" id="ln-load">Add someone's additions</button><span>${L.people.length} people · ${L.events.length} events · ${L.sources.length} sources · ${L.conflicts.length} conflicts weighed</span></div>`);
     const src = panel("ln-sources", "Sources of the family history", "Every record behind the tree, with its full citation, where it is kept, a transcription and the image.", `<div id="ln-srcs"></div>`);
     const plan = panel("ln-plan", "Family research plan", "", `<div id="ln-planx"></div>`);
-    grid.insertBefore(plan, grid.firstChild); grid.insertBefore(src, plan); grid.insertBefore(tree, src);
+    const askp = panel("ln-askp", "Ask at the table", "What only the family can answer, by who to ask. Tick them off as you go (the ticks stay on this phone); tell Joseph what they say and it goes into the tree.", `<div class="ln-ask"></div>`);
+    grid.insertBefore(plan, grid.firstChild); grid.insertBefore(src, plan); grid.insertBefore(askp, src); grid.insertBefore(tree, askp);
+    /* how are we related? sits right under the tree, in the same section, so nobody has to find a tab for it */
+    const relp = h("section", { class: "ln-relate", id: "ln-relate", "aria-label": "How are we related?" });
+    relp.innerHTML = `<h4>How are we related?</h4><p class="sub">Pick any two people. The tree works out what each is to the other and shows the line between them; tap a name to find them in the tree.</p><div id="ln-relx"></div><p class="ln-askgo"><button type="button" class="btn small" id="ln-askgo">Questions to ask at the table</button></p>`;
+    tree.insertBefore(relp, tree.querySelector("#ln-complete"));
+    relp.querySelector("#ln-askgo").addEventListener("click", () => { const tb = document.querySelector('.pk-tabs [aria-controls="ln-askp"]'); if (tb) tb.click(); else askp.scrollIntoView({ behavior: "smooth", block: "start" }); });
     /* the door to the family tree in three dimensions (tree/), the main way in since 2026-11-24 */
     const door = h("a", { class: "ln-door", href: "tree/" });
     door.innerHTML = `<img src="tree/poster.webp" alt="" loading="lazy" decoding="async"><span class="ln-door-in"><span class="kicker">In three dimensions</span><b>Walk through the family tree</b><span class="ln-door-p">${L.people.length} people across ${Math.max(...Object.values(gensFrom(model())))} generations, set in time: every life from birth to death, every record beside the person it proves, the journeys on a globe, and what is still open.</span><span class="btn">Enter the tree</span></span>`;
@@ -613,7 +679,7 @@
         peek("A family", f.partners.map((q) => { const P = ui.M.P[q]; return P ? (P.ghost && P.status === "inferred" ? P.placeholder : firstName(P)) : q; }).join(" & "), `${k} ${k === 1 ? "child" : "children"} known; how many more is not known yet`); return; }
       pick(el.dataset.id, false); peekPerson(el.dataset.id);
     };
-    drawTree(root); dossier(dos, ui.sel); legend(tree); src.querySelector("#ln-srcs").innerHTML = sourcesHtml(); plan.querySelector("#ln-planx").innerHTML = planHtml();
+    drawTree(root); dossier(dos, ui.sel); legend(tree); relatePanel(relp.querySelector("#ln-relx")); askPanel(askp); src.querySelector("#ln-srcs").innerHTML = sourcesHtml(); plan.querySelector("#ln-planx").innerHTML = planHtml();
     requestAnimationFrame(() => first(root));
     wire(root, onTree);
     /* the fan: a tap on a place opens that person, or says whose parent is missing */
@@ -629,7 +695,7 @@
       for (const x of tree.querySelectorAll(".ln-view-sw [data-v]")) { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", String(x === b)); }
       root.querySelector("svg.ln-svg").toggleAttribute("hidden", fanOn); fanEl.toggleAttribute("hidden", !fanOn); /* an svg has no .hidden property: the attribute is what hides it */ tree.querySelector(".ln-tools").hidden = fanOn; tree.classList.toggle("fan-on", fanOn); pk.hidden = true;
       try { localStorage.setItem("kin.lineage.view", b.dataset.v); } catch (_) {} if (!fanOn) first(root); });
-    try { const v = localStorage.getItem("kin.lineage.view"); if (v === "fan" || (!v && L.people.length > 30)) tree.querySelector('.ln-view-sw [data-v="fan"]').click(); } catch (_) {}   /* a big tree opens on the fan: every ancestor at once */
+    try { const v = localStorage.getItem("kin.lineage.view"); if (v === "fan") tree.querySelector('.ln-view-sw [data-v="fan"]').click(); } catch (_) {}   /* the tree opens on the family; the fan (direct ancestors only) is one tap away. Until 26 Nov 2026 a big tree opened on the fan, which hid everyone but the ancestors (owner: "heavily biased to Joseph Termens") */
     tree.querySelector(".ln-tools").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const svg = root.querySelector("svg.ln-svg").getBoundingClientRect();
       if (b.dataset.z === "in") { zoomAt(root, 1.25, svg.width / 2, svg.height / 2); } if (b.dataset.z === "out") zoomAt(root, 0.8, svg.width / 2, svg.height / 2); if (b.dataset.z === "fit") fit(root); if (b.dataset.z === "me") { ui.vroot = null; pick(L.root, false); first(root); } });
     document.querySelector("#app").addEventListener("click", (e) => {

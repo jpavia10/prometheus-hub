@@ -1324,3 +1324,42 @@ window.KIN_LINEAGE.questions.push(
   if (q38) q38.q = "Joann (Joanne), Tania and Michelle's mother: how is she on your grandmother Laurie's side? Bob Seconder's daughter from another marriage (Laurie's half-sister), or a Holgate (a daughter of Betty (Termens) Holgate, Barbara's sister, so Dave Holgate's sister)? Her surname would settle it. And who are Dave Holgate and Rachel Denys Holgate to you?";
   L.log.push({ id: "L31", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message; the open web", terms: "Joann/Joanne Holgate, Joann/Joanne Seconder, Michigan", result: "found", note: "Tania and Michelle's mother is Joann (Joanne); you do not think she is Barbara's daughter. Moved from Bob and Barbara's family to Bob Seconder alone, as a question (his daughter, or a Holgate). No Michigan Joann Holgate or Joann Seconder found on the open web." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, Thanksgiving (owner, driving to the family): "She's still alive ... Is aunt Betty on here ... impress me and them."
+   Joann is living. Aunt Betty is Betty (Termens) Holgate, Nana Feole's older sister: already in the tree under Joseph and Della; her
+   husband Thomas Holgate (named in Katherine Springer's 1997 obituary) is added beside her. L.askTable: the open questions only the
+   family can answer, grouped by whom to ask, for the table today (shown in Kin as "Ask at the table"). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  L.sources.push({ id: "S-owner-1126j", short: "Your account: Joann is living (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.", read: "Joann, Tania and Michelle's mother, is living." });
+  const jo = P("P-tania-mom"); if (jo) { jo.living = true; if (!jo.names[0].src.includes("S-owner-1126j")) jo.names[0].src.push("S-owner-1126j"); jo.summary = jo.summary.replace("Joann (Joanne), Tania and Michelle's mother (your account).", "Joann (Joanne), Tania and Michelle's mother, living (your account)."); }
+  L.people.push({ id: "P-thomash", sex: "M", status: "probable", living: true,
+    names: [{ given: "Thomas", surname: "Holgate", type: "birth", src: ["S-springer-obit"] }],
+    summary: "Aunt Betty's husband: \"Betty (Thomas) Holgate of Novi\" in Katherine M. Springer's 1997 obituary. Their children are not yet in the tree; Dave Holgate, at the 2006 family Christmas, may be one (Q38)." });
+  L.families.push({ id: "F-holgate", partners: ["P-betty", "P-thomash"], children: [] });
+  const bt = P("P-betty");
+  if (bt) bt.summary = "Aunt Betty: Betty (Termens) Holgate, Nana Feole's (Barbara's) older sister, a daughter of Joseph and Della Termens, so your great-grandmother's sister. Married Thomas Holgate; of Novi in 1997 (Katherine M. Springer's obituary names both sisters as her nieces). A Dave Holgate and a Rachel Denys Holgate were at the family's 2006 Christmas, and Rachel shares Joseph Termenas's photographs on Ancestry: very likely Betty's family (Q38).";
+  L.askTable = [
+    { who: "Grandma Laurie", why: "She knows the Seconder side first-hand.", ask: [
+      { q: "Joann (Tania and Michelle's mom): how is she related to you? Your half-sister through your dad Bob Seconder, or your cousin (Aunt Betty Holgate's daughter)? What was her last name growing up?", ref: "Q38" },
+      { q: "Your dad Bob Seconder: his full name (Robert H.?), and did he have other children?", ref: "H9" },
+      { q: "Tim's and Michael's dads: their names, and the last names Tim and Michael use.", ref: "Q39" },
+      { q: "Your mom, Nana Feole: born Barbara Termens in Detroit on 24 March 1933? Any photos of her with Joseph and Della?", ref: "Q19" } ] },
+    { who: "Joe Seconder", why: "He put together the Termenas file that started this tree.", ask: [
+      { q: "Aunt Betty Holgate's children: is Dave Holgate her son? Is Joann her daughter? Who is Rachel Denys Holgate?", ref: "Q38" },
+      { q: "Your dad Bob: was he Robert H. Seconder (1931 to 2003), son of Wilbur Seconder?", ref: "H9" },
+      { q: "Anything of Joseph and Della's beyond the file: photos, letters, where Della is buried.", ref: "Q9" },
+      { q: "Who is who in your 2006 Christmas photo, left to right?", ref: "S-fb-xmas2006" } ] },
+    { who: "Mom", why: "Both of her parents' families.", ask: [
+      { q: "Grandpa Charles's brothers and sisters: their names, and where they live or lived.", ref: "Q39" },
+      { q: "Grandpa's parents, Charles Sanders and Betty Flemming: when and where they died (their obituaries will list the whole family).", ref: "Q30" },
+      { q: "Joann's last name, and how she is related to Grandma Laurie.", ref: "Q38" } ] },
+    { who: "Tania", why: "Her own mother's side.", ask: [
+      { q: "Your mom Joann's maiden name, and who her parents were.", ref: "Q38" } ] },
+    { who: "Dad", why: "The Pavia and Kirkland side.", ask: [
+      { q: "Where in Malta did great-grandpa Joseph Pavia and Grace (Lucretia Calleja) come from, and do you have any of their papers or photos?", ref: "Q33" },
+      { q: "When and where did Grandpa Frank and Grandma Glenda marry? Their marriage record is the one Pavia record not online.", ref: "Q36" } ] }
+  ];
+  L.log.push({ id: "L32", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message", terms: "Joann; Aunt Betty", result: "found", note: "Joann is living. Aunt Betty is Betty (Termens) Holgate, already in the tree; her husband Thomas Holgate added from Katherine Springer's 1997 obituary. The questions for the family are gathered in Kin under \"Ask at the table\"." });
+})(window.KIN_LINEAGE);

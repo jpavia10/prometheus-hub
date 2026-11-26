@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d109 for Thanksgiving: how are we related?, ask at the table, the tree opens on the family
+- Owner, driving to the family: "impress me and them". (1) The plain tree now opens on the tree, not the fan: a big tree used to open on the fan (direct ancestors only) on any device without a saved choice, which is what every relative's phone would have shown. (2) "How are we related?" under the tree: any two people, both directions, the common ancestor, the line between them as links into the tree, steps through unsettled (dashed) links flagged; in-laws shown through the relative they married (kinship.js, any root). (3) "Ask at the table": L.askTable, the open questions only the family can answer, grouped by Grandma Laurie, Joe Seconder, Mom, Tania, Dad; ticks stay on the device.
+- Data: Joann living; Aunt Betty is Betty (Termens) Holgate (already in, under Joseph and Della); her husband Thomas Holgate added from the 1997 Springer obituary (F-holgate). Checked at 412 px and 1600 px: no overlaps, no horizontal scroll, no page errors on Kin or the 3D tree.
+
 ### [2026-11-26] Claude: Kin d108, Joann (Tania and Michelle's mother)
 - Owner: Tania and Michelle's mother is Joann (Joanne); he does not think she is Nana Feole's (Barbara's) child, which agrees with Barbara's 2009 obituary (three children). The placeholder is now Joann, moved from F-ggm to F-bob-joann (Bob Seconder alone), dashed "Bob Seconder's daughter, or a Holgate? (Q38)". Open-web search for a Michigan Joann Holgate or Seconder found nothing (L31). KIN-GEM-52 updated to look for her in Bob Seconder's and the Holgates' obituaries.
 
