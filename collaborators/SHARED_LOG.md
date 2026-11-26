@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] d95: Kin C17 sharpened; 15 of 289 staged pages read
+- Spotsylvania had a namesake James Pulliam (wife Elizabeth) dead by May 1764 (Crozier vol. 1 p. 61, new source S-spots-1764); Richard Stone's son-in-law James Pulliam and wife Elizabeth were alive in 1795, so the Spotsylvania man is ruled out. C17 stays open on DAR's "Elizabeth Allen" (DAR blocks automated visits; Claude does not get around bot checks).
+- Gemini's staging is loose: the four "Richard Stone" road-order pages only match place names (Blew Stone, Cheary Stone); the McAllister militia pages name other Pulliams; the Cavaliers page is a 1653 namesake. Ledger: 4 sources, 11 set aside.
+
 ### [2026-11-26] d94: Kin all-in begins; C16 settled from the will itself
 - Joseph opened 23 record sites for this session (WikiTree API, NARA, LoC, Internet Archive, Michiganology, epaveldas, the NYC marriage indexes and more; Find a Grave, DAR, HathiTrust and the Brooklyn Daily Eagle still challenge bots). Claude read Nathaniel Bivens's 1816 will (WikiTree Bivens-138 transcription of Anson Will Book 2, pp. 8-9): ten children, no Benjamin. C16 resolved (probably not his son; link 15%). New sources S-will-nbivens, S-census-1790-nc.
 - The 289 staged record pages get a ledger (pillars/kin/docs/staged-records.json) and tools/kin/records/apply.py, which marks each reviewed page in the album catalog: 5 done.

@@ -65,6 +65,120 @@
    "src": "S-census-1790-nc",
    "note": "Biven, John 36; Biven, Corbin, Leonard and Randal 176; no Nathaniel Biven indexed on the Anson pages.",
    "read": "2026-11-26"
+  },
+  {
+   "name": "Stone_Richard_Lunenburg_RoadOrders_p0009.pdf",
+   "id": "1m9u2Y5Z2RPw4IW7Tq98rfkDUK_UcjnbR",
+   "book": "Lunenburg County Road Orders, 1746-1764 (VDOT)",
+   "page": "5",
+   "what": "Road orders, 5 May 1746",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "No Richard Stone: staged for the place name 'Blew Stone' (Bluestone Creek).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Stone_Richard_Lunenburg_RoadOrders_p0019.pdf",
+   "id": "1vFmYe4UUrfKj3giF0EtMsMZkCD6N71V7",
+   "book": "Lunenburg County Road Orders, 1746-1764 (VDOT)",
+   "page": "15",
+   "what": "Road orders, Nov-Dec 1747",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "No Richard Stone: only the place name 'Blew Stone'.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Stone_Richard_Lunenburg_RoadOrders_p0031.pdf",
+   "id": "13NTYabNombnUBvkbIUqndUHJdZhQM_GM",
+   "book": "Lunenburg County Road Orders, 1746-1764 (VDOT)",
+   "page": "26",
+   "what": "Road orders, Oct-Nov 1749",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "No Richard Stone: only the place name 'little Cheary Stone'.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Stone_Richard_Lunenburg_RoadOrders_p0037.pdf",
+   "id": "1ynGwkB-GD69skTXvy7m3_sBx6e46nPbi",
+   "book": "Lunenburg County Road Orders, 1746-1764 (VDOT)",
+   "page": "32",
+   "what": "Road orders, April 1751",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "No Richard Stone: only 'Blue stone Creek'.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Pulliam_VA_Militia_McAllister_p0230.pdf",
+   "id": "1x4rLjnAh6jFogNEXrci7-v7sMOA3-FSq",
+   "book": "J. T. McAllister, Virginia Militia in the Revolution (1913)",
+   "page": "230",
+   "what": "1781 officer appointments; Prince Edward militia roll",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Names a Geo. Pulliam, lieutenant, 1781; not James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Pulliam_VA_Militia_McAllister_p0256.pdf",
+   "id": "1-3CD1ZhhVH3vRe_B70J1Z1foDG64mDsv",
+   "book": "J. T. McAllister, Virginia Militia in the Revolution (1913)",
+   "page": "256",
+   "what": "Pensioners, P",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Thomas Pulliam (Culpeper) and Mosby Pulleam (Henrico); not James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Pulliam_VA_Militia_McAllister_p0333.pdf",
+   "id": "1K7GBAAOhOSU9XcvwdJP88GBAsDfipLWd",
+   "book": "J. T. McAllister, Virginia Militia in the Revolution (1913)",
+   "page": "329 (index)",
+   "what": "Index, Pulliam to Roberts",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Indexes only Pulliam, George, 275; no James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Stone_Richard_CavaliersPioneers_p0320.pdf",
+   "id": "1ZOb0Y_xjYAjr1z4uD7dGfs_fbYPpfd_L",
+   "book": "Nugent, Cavaliers and Pioneers, vol. 1",
+   "page": "254",
+   "what": "Land patents, Lancaster County, 1653",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A Richard Stone transported in 1653 (a headright): a different man, generations before this tree's Richard Stone (about 1722-1797).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0075_JamesPulliam_Pulliam.pdf",
+   "id": "13k_7huaU0sSrBeIsqFgNnh_LEo_18WhX",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "61",
+   "what": "Will Book D administration bonds, 1762-1764",
+   "people": [
+    "P-jpulliam",
+    "P-eastone"
+   ],
+   "verdict": "source",
+   "note": "Elizabeth Pulliam, administratrix of James Pulliam deceased, 7 May 1764: a namesake who was dead by 1764, not Richard Stone's son-in-law (alive 1795).",
+   "read": "2026-11-26",
+   "src": "S-spots-1764"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0241_JamesPulliam_Pulliam.pdf",
+   "id": "1Ca962OGFKsYQI_613RaBYQCLbdzTGexj",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "227",
+   "what": "Deed Book F, 1762-1763",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A James Pulliam witnesses a Spotsylvania deed in 1763: the namesake who died by 1764.",
+   "read": "2026-11-26"
   }
  ]
 }

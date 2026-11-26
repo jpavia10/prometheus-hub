@@ -856,7 +856,14 @@ window.KIN_LINEAGE.questions.push(
     c16.argument += " Claude read the will itself on 26 Nov 2026 (WikiTree's transcription, through its API): it names Abel, William, Sarah, John, Unity, Moses, Elijah, Lyda, Stephen and Nathaniel, and no Benjamin. A son alive in 1816 is rarely left out of a will that names all the others, so the compiled link is not supported. The 1790 census for Anson County indexes a John Biven, not Nathaniel. Benjamin's real father should be looked for among the other Bivens households of Anson and Rowan (Corbin, Leonard, Randal and John Biven in 1790) and in Anson and Union County deeds.";
   }
   const ben = P("P-benjamin"); if (ben) ben.summary += " Not named in Nathaniel Bivens's 1816 will, so his parents are not known (C16).";
+  L.sources.push(
+    { id: "S-spots-1764", short: "Spotsylvania County administration bond, 7 May 1764 (Crozier's abstract)", kind: "derivative", year: 1764,
+      cite: "William Armstrong Crozier, ed., Virginia County Records, vol. 1: Spotsylvania County, 1721-1800 (New York, 1905), p. 61, Will Book D administration bonds; page staged by Gemini in the Kin Drive folder.",
+      read: "Read by Claude on 26 Nov 2026: \"£1000 Elizabeth Pulliam, admx. of James Pulliam, decd., with James Rawlings and John Holloday, sec. May 7, 1764.\" A namesake: this James Pulliam was dead by 1764, while Richard Stone's son-in-law James Pulliam and his wife Elizabeth were both alive in 1795 (C17)." }
+  );
+  const c17 = L.conflicts.find((c) => c.id === "C17");
+  if (c17) c17.argument += " Claude, 26 Nov 2026: Spotsylvania County had another James Pulliam with a wife Elizabeth; he was dead by May 1764, when she gave bond as his administratrix (Crozier, vol. 1, p. 61). Richard Stone's 1795 will loans slaves to his son-in-law James Pulliam and his wife Elizabeth for their natural lives, so both were alive in 1795: that rules the Spotsylvania man out and fits this tree's James (died 1799). Compiled trees that mix the two Jameses could explain DAR's different birth year and wife's surname; DAR's file itself still needs a look by someone who can open its site.";
   L.log.push(
-    { id: "L19", date: "2026-11-26", by: "Claude", q: "", where: "WikiTree (API, profile Bivens-138); the 1790 census pages staged in the Kin Drive folder", terms: "Nathaniel Bivens will 1816; Biven/Bivens/Bevin in the 1790 NC index", result: "The will names ten children and no Benjamin (C16 resolved: probably not his son). 1790: John Biven in Anson, Corbin, Leonard and Randal Biven in Rowan." }
+    { id: "L19", date: "2026-11-26", by: "Claude", q: "", where: "WikiTree (API, profile Bivens-138); the 1790 census pages staged in the Kin Drive folder", terms: "Nathaniel Bivens will 1816; Biven/Bivens/Bevin in the 1790 NC index", result: "The will names ten children and no Benjamin (C16 resolved: probably not his son). 1790: John Biven in Anson, Corbin, Leonard and Randal Biven in Rowan. Spotsylvania had a namesake James Pulliam, dead by 1764 with a widow Elizabeth; Richard Stone's son-in-law was alive in 1795 (C17)." }
   );
 })(window.KIN_LINEAGE);
