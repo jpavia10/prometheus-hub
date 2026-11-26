@@ -1282,3 +1282,19 @@ window.KIN_LINEAGE.questions.push(
   if (q38) q38.q = "Tania and Michelle's mother: her first name, and how she belongs to your grandmother Laurie's side: Laurie's sister or half-sister, or a Holgate (Laurie's cousin, a daughter of Betty (Termens) Holgate, Barbara's sister)? Dave Holgate and Rachel Denys Holgate were at the 2006 family Christmas: who are they to you?";
   L.log.push({ id: "L29", date: "2026-11-26", by: "Claude", q: "Q38", where: "Joe Seconder's 2006 Christmas photograph on Facebook (your screenshots)", terms: "caption and tags", result: "found", note: "Kathleen's surname is Seconder. Your mother's name as used then: Toni Sanders-Hinkle. Dave Holgate and Rachel Denys Holgate were at the family Christmas in 2006: the Holgate side is close family. The photo is in your Drive, not the public repository." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, night (owner): "Stacy is Ilene's daughter and Jen is mom's sis." Stacy Kay (her name as tagged in Joe's 2006 Christmas
+   photograph) is Ilene Kennedy's daughter, your mother's cousin; "Jen Jen" in the same tags is your mother's sister Jennifer. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  L.sources.push({ id: "S-owner-1126h", short: "Your account: Stacy is Ilene's daughter; \"Jen Jen\" is your mother's sister (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.", read: "Stacy (tagged \"Stacy Kay\" in the 2006 Christmas photograph) is Ilene's daughter; \"Jen Jen\" is your mother's sister Jennifer." });
+  const OW = "S-owner-1126h", FB = "S-fb-xmas2006";
+  L.people.push({ id: "P-stacy", sex: "F", status: "family", living: true,
+    names: [{ given: "Stacy", surname: "", type: "as-given", src: [OW] }, { given: "Stacy", surname: "Kay", type: "as-used", src: [FB], note: "her name as tagged in the 2006 Christmas photograph; Kay may be a middle name or a married surname" }],
+    summary: "Ilene Kennedy's daughter, your mother's cousin (your account). Tagged \"Stacy Kay\" in Joe Seconder's photograph of the 2006 family Christmas." });
+  L.families.push({ id: "F-ilene", partners: ["P-ilene"], children: ["P-stacy"] });
+  const js = P("P-jennifers"); if (js && !js.names.some((n) => n.given === "Jen Jen")) js.names.push({ given: "Jen Jen", surname: "", type: "as-used", src: [OW, FB], note: "her name on Facebook, tagged in the 2006 Christmas photograph" });
+  const il = P("P-ilene"); if (il) il.summary = il.summary.replace(" her own children, Barbara's other grandchildren, are not named yet.", " her daughter is Stacy (your account); any other children are not named yet.");
+  L.log.push({ id: "L30", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message; the 2006 Christmas photograph's tags", terms: "Stacy Kay, Jen Jen", result: "found", note: "Stacy is Ilene's daughter; \"Jen Jen\" is your mother's sister Jennifer. Both were tagged at the 2006 family Christmas." });
+})(window.KIN_LINEAGE);

@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d107, Stacy (Ilene's daughter), "Jen Jen"; siblings placed before cousins
+- Owner: Stacy (tagged "Stacy Kay" in the 2006 Christmas photograph) is Ilene's daughter; "Jen Jen" is his mother's sister Jennifer. Added P-stacy under F-ilene; "Jen Jen" as Jennifer's as-used name.
+- lineage.js: people are placed in rank order, re-ranked after each placement: spouses of placed people, then brothers and sisters of placed people (half ones for a child with one known parent), then children and parents; one helper (placedSibs) serves both the order and the placement. The parents' row now reads Jennifer, Jim, Mark, Tim, Michael, Tania, Michelle, Stacy at phone and desktop width; no overlaps, no page errors.
+
 ### [2026-11-26] Claude: Kin d106, the 2006 family Christmas photograph as a source
 - Owner sent screenshots of Joe Seconder's Facebook photo (posted 20 May 2012): "2006 Family Christmas - at Jeffrey Hinkle & Toni Sanders-Hinkle house", 9 tagged (Joseph Pavia, Jeffrey Hinkle, Toni Sanders-Hinkle, Joe Seconder, Kathleen Seconder, Jen Jen, Dave Holgate, Stacy Kay, Rachel Denys Holgate). Source S-fb-xmas2006 (caption and tags only; no one named from a face). Kathleen's surname Seconder; Toni's name as used; Holgates noted on Betty and in Q38 (Tania's mother may be a Holgate, Laurie's cousin, rather than Laurie's sister).
 - The photo is saved in the owner's Drive Kin media folder (2006_Family_Christmas_...jpg), not in the public repo or album, until he says.

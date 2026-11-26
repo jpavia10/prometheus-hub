@@ -102,18 +102,32 @@
     while (left.length && guard++ < 20) {
       /* re-ranked after every placement: a husband or wife whose partner was placed a moment ago goes next, before the partner's
          brothers and sisters take the places beside them (owner, 2026-11-26: Kathleen beside Joe, Jim and Mark beside Jennifer) */
+      /* and a brother or sister of someone already placed goes before a cousin, so a family's children stay side by side (owner,
+         2026-11-26: Stacy had landed between Tania and her sister Michelle) */
+      /* placed brothers and sisters: full ones, or half ones (same mother or same father) for a child with one known parent */
+      const placedSibs = (p, f) => {
+        const full = f ? f.children.filter((c) => c !== p.id && pos[c]) : [], couple = f && f.partners.filter((q) => pos[q]).length > 1;
+        return full.length || couple || !f ? full : M.families.filter((g) => g.partners.some((q) => f.partners.includes(q))).flatMap((g) => g.children).filter((c) => c !== p.id && pos[c]);
+      };
+      const rank = (p) => {
+        if (!wed(p)) return 0;
+        const f = parentsOf(M, p.id);
+        if (placedSibs(p, f).length) return 1;
+        if ((f && f.partners.some((q) => pos[q])) || familiesOf(M, p.id).some((g) => g.children.some((c) => pos[c]))) return 2;
+        return 3;
+      };
       const todo = left.slice();
       while (todo.length) {
-        let bi = 0; for (let i = 1; i < todo.length && wed(todo[bi]); i++) if (!wed(todo[i])) bi = i;
+        let bi = 0, br = rank(todo[0]); for (let i = 1; i < todo.length && br; i++) { const r = rank(todo[i]); if (r < br) { bi = i; br = r; } }
+        if (br === 3) break;
         const p = todo.splice(bi, 1)[0];
         if (pos[p.id]) continue;
         const f = parentsOf(M, p.id);
         /* a brother or sister to stand beside, one who is not on your own line first, the latest of them, so a family's children stay
            together; half brothers and sisters too (same mother or same father) for a child with one known parent (owner, 2026-11-26:
            your mother's brothers Tim and Michael have other fathers, not named) */
-        const full = f ? f.children.filter((c) => c !== p.id && pos[c]) : [], couple = f && f.partners.filter((q) => pos[q]).length > 1;
         /* half brothers and sisters only for a child with one known parent: a couple's children stand under the couple */
-        const sibs = full.length || couple || !f ? full : M.families.filter((g) => g.partners.some((q) => f.partners.includes(q))).flatMap((g) => g.children).filter((c) => c !== p.id && pos[c]);
+        const sibs = placedSibs(p, f);
         const sib = sibs.filter((c) => !anc.has(c)).pop() || sibs[0];
         const sp = familiesOf(M, p.id).map((g) => g.partners.find((q) => q !== p.id && pos[q])).find(Boolean);
         const kid = familiesOf(M, p.id).map((g) => g.children.find((c) => pos[c])).find(Boolean);
