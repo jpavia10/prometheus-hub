@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d100, your mother's brothers and sister; tidier tree rows
+- Owner: his mother has 2 brothers and a sister. Jennifer is also Charles A. Sanders's daughter; Tim and Michael have two other fathers (not named); his sisters are Hinkles. Added Jennifer Sanders (F-gp) and Tim and Michael (each in his own family with Laurie). Q38 and Q39 narrowed: Barbara's 8 grandchildren are Laurie's four plus four among Ilene's and Joe's.
+- Plain tree: partners are placed before siblings; a new card takes the nearest free spot on either side, never inside a couple; the child-count pills of one person's two families stack instead of overlapping.
+
 ### [2026-11-26] Claude: Kin d99, the whole family, not just Joseph Termenas (owner request)
 - Owner: the tree tab was "heavily biased to Joseph Termens", and relationships were missing. The plain tree now opens on him, and both views now place anyone's children (they placed only ancestors, siblings and spouses). New lineage/kinship.js names everyone from the families: "Your sister (your mother's daughter)", "Your mother's ex-husband", "Your first cousin, once removed (your mother's side)".
 - Added the people he named (Jeffrey Hinkle; sisters Jessica and Samantha; Irene; daughter Violet; Q22 answered). From obituaries Gemini quoted: Barbara's other children Ilene Kennedy and Joe Seconder, Tim, Tyler and Madeline Burd, and James Kirkland's four children. Tania is placed with Ilene but unconfirmed (Q38); Charles A. Sanders's siblings are Q39. Living people get names only.

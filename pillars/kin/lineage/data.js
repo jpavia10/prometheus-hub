@@ -1103,3 +1103,31 @@ window.KIN_LINEAGE.questions.push(
 })(window.KIN_LINEAGE);
 /* your own card: the four lines, not one (owner, 2026-11-26) */
 (function (L) { const me = L.people.find((p) => p.id === "P-self"); if (me) me.note = "Your four grandparents' lines: Pavia (Malta, then Detroit), Kirkland (Tennessee back to colonial North Carolina and Virginia), Sanders (Michigan), and Seconder and Termenas (England, Ontario and Lithuania)."; })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, later (owner): "My mom has 2 brothers and a sister. Jennifer is Charles daughter also but Tim and Michael have 2 other
+   dad's. My sisters are hinkle." Laurie's children: Toni and Jennifer by Charles A. Sanders; Tim and Michael each by another father
+   (not named yet). Not to be confused with Jennifer Burd (your father's sister) or Tim Burd (her husband). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  L.sources.push({ id: "S-owner-1126b", short: "Your account of your mother's brothers and sister (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.",
+    read: "Your mother has two brothers and a sister. Jennifer is also Charles A. Sanders's daughter; Tim and Michael have two other fathers. Your sisters' surname is Hinkle." });
+  const OW = ["S-owner-1126b"];
+  L.people.push(
+    { id: "P-jennifers", sex: "F", status: "family", living: true, names: [{ given: "Jennifer", surname: "Sanders", type: "birth", src: OW, note: "her birth surname taken from her father's" }], summary: "Your mother's sister: Charles A. Sanders and Laurie's daughter (your account). Not Jennifer Burd, your father's sister." },
+    { id: "P-timm", sex: "M", status: "family", living: true, names: [{ given: "Tim", surname: "", type: "birth", src: OW }], summary: "Your mother's brother: Laurie's son by a father other than Charles A. Sanders, not yet named (your account). Not Tim Burd." },
+    { id: "P-michael", sex: "M", status: "family", living: true, names: [{ given: "Michael", surname: "", type: "birth", src: OW }], summary: "Your mother's brother: Laurie's son by another father again, not yet named (your account)." }
+  );
+  const fg = L.families.find((f) => f.id === "F-gp"); if (fg && !fg.children.includes("P-jennifers")) fg.children.push("P-jennifers");
+  L.families.push(
+    { id: "F-gp-tim", partners: ["P-gp"], children: ["P-timm"] },
+    { id: "F-gp-michael", partners: ["P-gp"], children: ["P-michael"] }
+  );
+  for (const id of ["P-jessica", "P-samantha"]) { const p = P(id); if (p) { delete p.note; p.names[0].src = p.names[0].src.concat(OW); } }
+  const gp = P("P-gp"); if (gp) gp.summary += " Her children: your mother Toni and Jennifer (with Charles A. Sanders), and Tim and Michael (each with another father).";
+  const q39 = L.questions.find((q) => q.id === "Q39");
+  if (q39) q39.q = "Your grandfather Charles A. Sanders's brothers and sisters; and the fathers of your uncles Tim and Michael, with their surnames. Your mother's brothers and sister are in the tree now (Jennifer, Tim, Michael).";
+  const q38 = L.questions.find((q) => q.id === "Q38");
+  if (q38) q38.q = "Tania, your mother's cousin: is she Ilene Kennedy's daughter or Joe Seconder's? (Barbara's 8 grandchildren: Laurie's four, your mother, Jennifer, Tim and Michael, and four more among Ilene's and Joe's children.) And David Holgate: is he Tania's father, or Betty Holgate's son on Barbara's sister's side?";
+  L.log.push({ id: "L23", date: "2026-11-26", by: "Claude", q: "Q39", where: "your message", terms: "your mother's brothers and sister", result: "found", note: "Added Jennifer (Charles A. Sanders and Laurie's daughter), Tim and Michael (Laurie's sons by two other fathers, not yet named). Your sisters' surname confirmed as Hinkle." });
+})(window.KIN_LINEAGE);

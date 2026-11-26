@@ -97,8 +97,12 @@
     }
     /* everyone not yet placed (a sibling, a spouse, a child someone added) goes beside the nearest placed relative */
     let guard = 0; const placeable = (p) => !pos[p.id] && !anc.has(p.id) && p.id !== vroot; let left = M.people.filter(placeable);
+    /* partners first, so a wife or husband stands next to the one they married before brothers and sisters take the places beside */
+    const wed = (p) => (familiesOf(M, p.id).some((g) => g.partners.some((q) => q !== p.id && pos[q])) ? 0 : 1);
     while (left.length && guard++ < 20) {
+      left.sort((a, b) => wed(a) - wed(b));
       for (const p of left) {
+        if (pos[p.id]) continue;
         const f = parentsOf(M, p.id);
         const sib = f && f.children.find((c) => pos[c]);
         const sp = familiesOf(M, p.id).map((g) => g.partners.find((q) => q !== p.id && pos[q])).find(Boolean);
@@ -115,7 +119,9 @@
         /* never inside a couple: the span between two partners in the same row counts as taken */
         const spans = M.families.map((g) => g.partners.filter((q) => pos[q] && pos[q].gen === gen).map((q) => pos[q].x)).filter((xs) => xs.length > 1).map((xs) => [Math.min(...xs), Math.max(...xs)]);
         const busy = (x) => row.some((r) => Math.abs(r - x) < W + GX - 1) || spans.some(([lo, hi]) => x > lo - 1 && x < hi + 1);
-        const dir = mate && pos[mate].x > near ? -1 : 1; let x = pmid != null && !anchor ? near : near + dir * (W + GX); while (busy(x)) x += dir * (W + GX);
+        /* the nearest free place on either side, the preferred side (away from the anchor's partner) winning a tie */
+        const dir = mate && pos[mate].x > near ? -1 : 1, x0 = pmid != null && !anchor ? near : near + dir * (W + GX);
+        let x = x0; if (busy(x)) { let a = x0, c = x0 - 2 * dir * (W + GX); for (let i = 0; i < 400; i++) { if (!busy(a)) { x = a; break; } if (!busy(c)) { x = c; break; } a += dir * (W + GX); c -= dir * (W + GX); } }
         pos[p.id] = { x, gen };
       }
       left = M.people.filter(placeable);
@@ -137,7 +143,7 @@
     g.innerHTML = "";
     const add = (tag, at, parent) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); (parent || g).appendChild(e); return e; };
     /* family connectors: partners joined by a bar, a stem down to the children */
-    const pills = [];
+    const pills = [], pillBox = [];
     for (const f of M.families) {
       const ps = f.partners.map((q) => lay.pos[q]).filter(Boolean), cs = f.children.map((c) => lay.pos[c]).filter(Boolean);
       if (!ps.length) continue;
@@ -146,7 +152,9 @@
       if (ps.length > 1) add("path", { d: `M${ps[0].x + W / 2} ${ps[0].y}H${ps[ps.length - 1].x - W / 2}`, class: "ln-wed" + (onLine ? " lit" : "") });
       if (cs.length && ps.length) pills.push(() => { /* how many children are known, and that more may not be: tap for the family (drawn over the lines) */
         const k = f.children.filter((c) => M.P[c]).length, t = `${k} ${k === 1 ? "child" : "children"} known · more?`, fw = 18 + t.length * 6.4;
-        const fp = add("g", { class: "ln-fampill", transform: `translate(${midX} ${y0 + 11})`, tabindex: "0", role: "button", "data-fam": f.id, "aria-label": `Family: ${t}` });
+        /* two families of one person (a first and a second marriage) put their pills side by side: the later one steps down */
+        let py = y0 + 11; while (pillBox.some((q) => Math.abs(q.y - py) < 21 && Math.abs(q.x - midX) < (q.w + fw) / 2 + 4)) py += 22; pillBox.push({ x: midX, y: py, w: fw });
+        const fp = add("g", { class: "ln-fampill", transform: `translate(${midX} ${py})`, tabindex: "0", role: "button", "data-fam": f.id, "aria-label": `Family: ${t}` });
         add("rect", { x: -fw / 2, y: -10, width: fw, height: 20, rx: 10 }, fp); const ft = add("text", { y: 4 }, fp); ft.textContent = t;
       });
       for (const c of cs) {
