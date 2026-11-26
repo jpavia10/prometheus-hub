@@ -133,6 +133,9 @@ with sync_playwright() as p:
         p3.on("pageerror", lambda e: b3.append(str(e)[:120])); p3.on("request", lambda r: aud.append(r.url.split("/")[-1]) if "/audio/town/" in r.url else None)
         if MOCK: p3.route("https://api.open-meteo.com/**", lambda route, request: route.abort()); p3.route("https://api.weather.gov/**", lambda route, request: route.abort()); p3.route("**/titan-reliquary-preview/**", lambda route, request: route.abort())
         p3.goto(f"{URL}?now=2026-11-25T18:00&sky=night&wx=storm&home=orbit&nosweep=1#/", wait_until="load"); p3.wait_for_selector(".realm .rl-core", timeout=20000); p3.wait_for_selector(".rl-sound", timeout=20000); p3.wait_for_timeout(2500)
+        # the season painting is fetched in the background; on the live site it can take longer than 2.5 s (run 45765196486: shown None)
+        try: p3.wait_for_function("(() => { const r = document.querySelector('.realm'); return !!(r.season && r.season().shown); })()", timeout=15000)
+        except Exception: pass
         q0 = p3.evaluate("() => { const r = document.querySelector('.realm'); return { s: r.sound.state(), season: r.season(), pressed: document.querySelector('.rl-sound').getAttribute('aria-pressed') }; }"); fetched0 = list(aud)
         p3.click(".rl-sound")
         try: p3.wait_for_function("(() => { const s = document.querySelector('.realm').sound.state(); return s.running && ['rainHeavy', 'windHowl', 'wind'].every((n) => s.playing.includes(n)); })()", timeout=20000)
