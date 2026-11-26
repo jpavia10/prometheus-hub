@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d98, Pasquotank Quaker Martins (C18 "probably not"), Peter Culberson's regiment, 66 more pages
+- Grimes 1910 shows Martins among the Albemarle Quakers from 1706: a John Martin witness in 1706, a grown Nathaniel Martin by 1719. That is before Joel Martin's 1715 will gave his son John land in Bath County, so the Pasquotank John (Eleanor Bryant's father) is probably not Joel's son. C18 is now "probably not" and P-johnm is down to 15.
+- The Tennessee Adjutant General's 1866 report (whole book from the Internet Archive) lists Peter Culberson as a private in Company F, 3rd Tennessee Cavalry. It has no James M. Giles; Gemini's "Giles" page was a first-name match. The Davis (28) and Anson (10) pages are background or namesakes. McAllister has no Thomas Davis in Montgomery County. Ledger: 163 reviewed (29 sources), 126 left.
+
 ### [2026-11-26] Claude: Kin d97, Joel Martin's will and the Martin line (C14 narrowed, new C18)
 - Read 44 more staged pages (the Joel Martin, Elizabeth Ward, John Martin and Carteret Bryant groups) and the whole Grimes 1910 abstract from the Internet Archive. Joel Martin's will (Bath, 1715/16, Grimes p. 239) names no wife. Simon Alderson's 1740 will still calls his daughter Elizabeth Alderson, so C14 is now "not Alderson; Ward unproven". The one lead is Edward Ward's 1668 Lower Norfolk will (daughter Elizabeth).
 - John Martin of Pasquotank's 1741 will names his daughter Elener Bryant (Eleanor 65 -> 80). His link to Joel is doubtful: Joel's son John got land in Bath County, and the Pasquotank John was a Quaker with no Joel or William among his sons. New C18 and Q37; P-johnm 55 -> 20. Ledger: 97 reviewed (25 sources), 192 left.

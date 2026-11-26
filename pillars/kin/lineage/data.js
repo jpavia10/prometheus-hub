@@ -932,3 +932,34 @@ window.KIN_LINEAGE.questions.push(
     { id: "L20", date: "2026-11-26", by: "Claude", q: "", where: "Grimes, Abstract of North Carolina Wills (1910), whole book (Internet Archive full text); Hathaway's Register vols. 1-2, the Lower Norfolk Antiquary vols. 2-3 and McIntosh's Norfolk wills (pages staged by Gemini); WikiTree API", terms: "Joel Martin; John Martin; Alderson; Elizabeth Ward; Bryant", result: "Joel Martin's will (1715/16) names no wife. Simon Alderson's daughter Elizabeth was unmarried in 1740, so Alderson is ruled out (C14). John Martin of Pasquotank's 1741 will names his daughter Elener Bryant, but his link to Joel is doubtful (new C18). Lower Norfolk: a John Martin was churchwarden and justice, 1645-1662; Edward Ward's 1668 will has a daughter Elizabeth (a lead)." }
   );
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, third batch (Claude): the Pasquotank Quaker Martins (C18) and Peter Culberson's regiment. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  const C = (id) => L.certainty.find((c) => c.child === id);
+  const set = (id, pct, basis) => { let c = C(id); if (!c) { c = { child: id }; L.certainty.push(c); } c.pct = pct; c.basis = basis; };
+  const addSrc = (id, s) => { const p = P(id); if (p && p.names[0] && !p.names[0].src.includes(s)) p.names[0].src.push(s); };
+  L.sources.push(
+    { id: "S-albemarle-martins", short: "The Martins among the Albemarle (Pasquotank) Quakers, 1706-1746 (Grimes's abstracts)", kind: "derivative", year: 1706,
+      url: "https://archive.org/details/abstractofnorthc00nort",
+      cite: "J. Bryan Grimes, Abstract of North Carolina Wills (Raleigh, 1910): p. 401 (Henry White, Albemarle County, 19 Sept 1706), p. 135 (Joseph Glaster, Pasquotank, 1718/19), p. 275 (Joseph Overman, Pasquotank, 1739), p. 239 (Nathaniel Martin, Pasquotank, 1743), p. 15 (David Bailey, Pasquotank, 1745/6), p. 67 (Robert Cartwright, Pasquotank, 1746) and pp. 421-422 (Augustine Wright, Pasquotank, 1741/2); read from the Internet Archive's full text, p. 275 also from the page Gemini staged.",
+      read: "Read by Claude on 26 Nov 2026. A John Martin witnesses Henry White's will in 1706 beside the Quakers Zachariah Nixon, John and Jeremiah Symons and John Raper. A Nathaniel Martin is a grown \"friend\" in Joseph Glaster's Pasquotank will of January 1718/19 and \"Friend and Executor\" of Joseph Overman's in 1739, which a John Martin witnessed; John Martin witnesses again in Pasquotank in 1741/2; Nathaniel Martin's own will (1743) names his wife Sarah, son Joshua and daughters Sarah and Miriam. David Bailey of Pasquotank (1745/6) leaves his son Simon a plantation at Core Sound and names a daughter Elizabeth Bryant: the Pasquotank Quakers and the Core Sound Bryants married into each other." },
+    { id: "S-tnag-1866", short: "Report of the Adjutant General of the State of Tennessee (1866): 3rd Tennessee Cavalry (Union)", kind: "derivative", year: 1866,
+      url: "https://archive.org/details/06380153.3344.emory.edu",
+      cite: "Report of the Adjutant General of the State of Tennessee, of the Military Forces of the State, from 1861 to 1866 (Nashville, 1866), pp. 355-371 (Third Regiment Cavalry); pages staged by Gemini, the whole report read from the Internet Archive's full text.",
+      read: "Read by Claude on 26 Nov 2026: \"Culberson, Peter\" is listed among the privates of Company F (the scan reads P), p. 371. The page's columns are scrambled in the scan's text, so his own enlistment date and remark cannot be read from it; the company's remarks are mostly \"Pris of war since Sept 24 64\" (the fall of Sulphur Branch Trestle, Alabama), deaths at Cahaba, and men lost on the Sultana on 27 April 1865. Company C has an Andrew and an \"Ehslia\" Culberson. The report has no James M. Giles and no Tippens. The page image would give Peter's line." }
+  );
+  addSrc("P-peterc", "S-tnag-1866");
+  addSrc("P-joelm", "S-grimes-joel-1715");
+  addSrc("P-johnm", "S-grimes-jmartin-1741");
+  addSrc("P-eleanor", "S-grimes-jmartin-1741");
+  set("P-johnm", 15, "a Martin family was already settled among the Pasquotank Quakers by 1706 (a John Martin witness in 1706, a grown Nathaniel Martin by 1719), years before Joel Martin's 1715 will gave his son John land in Bath County; only compiled trees join this John to Joel (C18)");
+  const c18 = L.conflicts.find((c) => c.id === "C18");
+  if (c18) {
+    c18.conclusion = "probably not";
+    c18.argument += " Claude, later on 26 Nov 2026: a John Martin witnessed Henry White's will among the Albemarle Quakers (Nixon, Symons, Raper) on 19 September 1706, and a Nathaniel Martin was a grown man named as a friend in a Pasquotank will of January 1718/19 and as an executor in 1739, when a John Martin witnessed. Both are years before Joel Martin's will of October 1715 left his son John land on Matchapungo Creek in Bath County. A Martin family was settled among the Pasquotank Quakers by 1706, and the John who died there in 1741/2 fits that family much better than Joel's. David Bailey's Pasquotank will (1745/6), which leaves Core Sound land and names a daughter Elizabeth Bryant, shows the Pasquotank Quakers marrying into the Core Sound Bryants, the way Eleanor married Nicholas.";
+  }
+  L.log.push(
+    { id: "L21", date: "2026-11-26", by: "Claude", q: "", where: "Grimes 1910 (whole book); Hathaway's Register vols. 1-2 and Grimes's Wills and Inventories (1912), whole books; the Tennessee Adjutant General's report (1866), Berry's Sultana (1892), Hawes's Cahaba (1888), Humes (1888), Temple (1899) and McAllister's Virginia Militia (1913), all on the Internet Archive; 66 staged pages", terms: "Martin (Pasquotank); Culberson; Giles; Tippens; Thomas Davis; Bivens", result: "Martins among the Pasquotank Quakers from 1706 (C18 now \"probably not\"). Peter Culberson is a private in Company F, 3rd Tennessee Cavalry (Union) in the 1866 report; no James M. Giles or Tippens there. No Thomas Davis in Montgomery County, Virginia, in McAllister (his militia service rests on DAR). The Anson and Davis pages Gemini staged are background or namesakes." }
+  );
+})(window.KIN_LINEAGE);
