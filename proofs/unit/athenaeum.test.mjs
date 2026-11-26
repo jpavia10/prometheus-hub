@@ -53,11 +53,11 @@ test("provenance: an imported idea says so, a typed one is the owner's, and so a
   assert.deepEqual(mentions(IDEAS[0], [{ id: "titan", name: "Titan Reliquary" }, { id: "kairos", name: "Kairos Meridian" }, { id: "athenaeum", name: "Athenaeum" }]).map((p) => p.id), ["titan"]);
 });
 
-test("the chronicle: 40 entries, every date read, oldest first along one arm", () => {
+test("the chronicle: every chained history entry (40 at first, more as the shared history grows), every date read, oldest first along one arm", () => {
   assert.deepEqual(["c. 1200–1150 BCE", "612 BCE", "8th–9th centuries CE", "1633–1639; ended after 1853", "235–284 CE", "1989 CE"].map(parseYear), [-1200, -612, 750, 1633, 235, 1989]);
-  const A = arm(PACK.entries); assert.equal(A.length, 40); assert.ok(A.every((e) => Number.isFinite(e.year) && e.pos.every(Number.isFinite)));
-  assert.ok(A.every((e, i) => !i || e.year >= A[i - 1].year)); assert.equal(A[0].year, -1200); assert.equal(A[39].year, 1989);
-  assert.ok(Math.hypot(A[0].pos[0], A[0].pos[2]) > Math.hypot(A[39].pos[0], A[39].pos[2]), "the arm winds inward toward the present");
+  const A = arm(PACK.entries), L = A.length - 1; assert.equal(A.length, PACK.entries.length); assert.ok(A.length >= 40); assert.ok(A.every((e) => Number.isFinite(e.year) && e.pos.every(Number.isFinite)));
+  assert.ok(A.every((e, i) => !i || e.year >= A[i - 1].year)); assert.equal(A[0].year, -1200); assert.equal(A[L].year, 1989);
+  assert.ok(Math.hypot(A[0].pos[0], A[0].pos[2]) > Math.hypot(A[L].pos[0], A[L].pos[2]), "the arm winds inward toward the present");
   for (const e of PACK.entries) for (const k of ["id", "name", "date", "cause", "event", "consequence", "source"]) assert.ok(e[k], e.id + " " + k);
 });
 

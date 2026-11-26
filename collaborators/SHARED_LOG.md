@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] d89: the backlog wired
+- 29 scored Gemini datasets (runs 4 and 6) are now sourced panels in 18 pillars; Kin shows the run-8 hints and pedigrees; the world history took the third sources and the 20 family-era chains. Of 541 tasks, 193 are in use and 4 accepted ones are still unshown (the town hour plates, three Odyssey photo files).
+
 ### [2026-11-25] d88: the family album for Thanksgiving, Agora, the work ledger
 - Kin: `pillars/kin/album/`, 145 family pictures from the Kin Drive folder, each checked by eye, in 10 chapters with a full-screen show; the people link into the tree, with faces on the medallions for six of them. Callie and Charlie Culberson join the tree from their stones. All 918 Drive files are listed with links; 11 are set aside with the reason (Gemini's logo-and-flower mislabels among them).
 - Selling is renamed Agora. `tools/forge/usage.py` sorts all 540 queued tasks by what became of them (used 137, accepted but unused 94, waiting for a second read 40).

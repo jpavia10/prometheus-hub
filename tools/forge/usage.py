@@ -15,7 +15,7 @@ Writes docs/agents/usage.json (one row per task) and prints the totals.  python3
 import json, glob, os, re, sys, collections
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-SHIP = ["pillars", "deck", "kit", "art", "data"]
+SHIP = ["pillars", "deck", "kit", "art", "data", "proofs"]
 OUT = os.path.join(ROOT, "docs", "agents", "usage.json")
 
 def shipped_text():
@@ -24,14 +24,14 @@ def shipped_text():
         for dp, dn, fn in os.walk(os.path.join(ROOT, root)):
             if "/docs" in dp or "/collaborators" in dp: continue
             for f in fn:
-                if f.endswith((".js", ".json", ".html", ".css")) and f != "queues.json":
+                if f.endswith((".js", ".mjs", ".py", ".json", ".html", ".css", ".ics")) and f != "queues.json":
                     try: parts.append(open(os.path.join(dp, f), errors="ignore").read())
                     except OSError: pass
     return "\n".join(parts)
 
-DESIGN = re.compile(r"(?i)function spec|build plan|data shape|motion spec|particle|icon|audit|a11y|accessib|recheck|painting focus|realm labels|done markers|checker|features the best|apps taken apart|teardown|mood|palette")
-CHECK = re.compile(r"(?i)second read|second reader|second-read|blind (second )?(read|transcription)|re-read your audit|third reader|arbitrat")
-WAIT = re.compile(r"(?i)not second-read|second read pending|waits? for (its|a|the) (second read|check)|HUB-MUS-0\d|before (it is|any is) (built|wired|shown)|when it is wired|joins? the tree")
+DESIGN = re.compile(r"(?i)function spec|spec sheet|design input|^TRIAL [34]|DONE_ marker|build plan|data shape|motion spec|particle|icon|audit|a11y|accessib|recheck|painting focus|realm labels|done markers|checker|features the best|apps taken apart|teardown|mood|palette")
+CHECK = re.compile(r"(?i)blind coin-photo test|second read|second reader|second-read|blind (second )?(read|transcription)|re-read your audit|third reader|arbitrat")
+WAIT = re.compile(r"(?i)not second-read|second read pending|waits? for (its|a|the) (second read|check)|HUB-MUS-0\d|before (it is|any is) (built|wired|shown)|when it is wired|joins? the tree|before the tree changes")
 
 def classify(t, ai, used):
     st = t.get("state")
@@ -39,9 +39,10 @@ def classify(t, ai, used):
     if st in ("now", "next"): return "open"
     if used: return "used"
     title, rev = t.get("title", ""), t.get("review") or ""
+    if re.match(r"(?i)superseded", rev) or "Not wired:" in rev: return "dropped"
     if ai != "gemini" and CHECK.search(title + " " + t.get("id", "")) or re.search(r"-MUS-|-GRK-", t.get("id", "")) and CHECK.search(title): return "check"
     if CHECK.search(title): return "check"
-    if DESIGN.search(title): return "design"
+    if DESIGN.search(title) or re.search(r"(?i)design input", rev): return "design"
     if WAIT.search(rev): return "waiting"
     return "unused"
 

@@ -1,4 +1,4 @@
-/* Icarus rule checks (ICA-GEM research, 2026-11-09, 30 rules): each rule is data — name, what it
+/* Icarus rule checks (ICA-GEM-05 research, 2026-11-09, 30 rules): each rule is data — name, what it
    catches, and its formula in the small safe grammar eval.js interprets (no eval()). The four
    bankroll constants (100/200/600/2500) assumed a $10,000 bankroll in the research; analytics.js
    scales them to yours. window.RULE_CHECKS. */

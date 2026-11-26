@@ -134,7 +134,8 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a range from a news article or a fitness blog"
-     ]
+     ],
+     "review": "Used (Claude, 26 Nov 2026): the 40 reference ranges behind Apollo's biomarkers (seat build, 9-10 Nov)."
     },
     {
      "id": "APO-GEM-05",
@@ -164,7 +165,8 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a class or permission name that is not on its reference page"
-     ]
+     ],
+     "review": "Used (Claude, 26 Nov 2026): the record types behind Apollo's Health Connect import."
     },
     {
      "id": "APO-GEM-06",
@@ -196,7 +198,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a DOI that resolves to another paper",
       "a single study instead of a meta-analysis or systematic review"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "APO-GEM-07",

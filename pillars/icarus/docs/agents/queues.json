@@ -134,7 +134,8 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a formula with no source"
-     ]
+     ],
+     "review": "Used (Claude, 26 Nov 2026): the risk-of-ruin tab in Icarus."
     },
     {
      "id": "ICA-GEM-05",
@@ -197,7 +198,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a limit from a comparison blog",
       "any step that connects or trades a real account"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "ICA-GEM-07",

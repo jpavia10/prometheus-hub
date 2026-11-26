@@ -1,5 +1,5 @@
 /* Icarus Stake (unified ledger, 30 live rule checks, risk-of-ruin contour, NYSE calendar).
-   A trading journal ONLY: never places trades, never connects to a broker, never gives financial advice. */
+   A trading journal ONLY: never places trades, never connects to a broker, never gives financial advice.  (ICA-GEM-04) */
 (function () {
   "use strict";
   const { $, h, money, num, day, toast, store, download, pickFile, tabs, spark, field, G } = PK;

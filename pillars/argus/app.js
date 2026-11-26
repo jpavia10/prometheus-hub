@@ -1,5 +1,5 @@
 /* Argus Album v2: every picture the pillars use + client-side forensics, 64-bit dHash duplicate clustering,
-   20-rule numismatic optical grader, obverse/reverse pairing & Hearth before/after split slider. */
+   20-rule numismatic optical grader, obverse/reverse pairing & Hearth before/after split slider.  (ARG-GEM-03)  (ARG-GEM-05) */
 (function () {
   "use strict";
   const { $, h, day, toast, tabs, field, G, download, pickFile, store } = PK;

@@ -1,4 +1,4 @@
-/* Apollo Temple v3: 1-tap quick-fill presets, 7-axis Biometric Radar canvas, Weekly Clinical Review + Health Connect JSON import, USDA foods & 40 biomarkers. */
+/* Apollo Temple v3: 1-tap quick-fill presets, 7-axis Biometric Radar canvas, Weekly Clinical Review + Health Connect JSON import, USDA foods & 40 biomarkers.  (APO-GEM-04)  (APO-GEM-05) */
 (function () {
   "use strict";
   const { $, h, num, day, toast, store, download, pickFile, tabs, spark, field, G } = PK;

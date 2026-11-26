@@ -568,7 +568,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "two rows on the same site",
       "a technique that is only an adjective"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HUB-GEM-02",
@@ -638,7 +639,8 @@
       "a recording shorter than 60 s",
       "a licence other than CC0, CC BY or public domain",
       "a synthesized or AI-made sound"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HUB-GEM-04",
@@ -736,7 +738,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a criterion that is not in WCAG 2.2",
       "a check with no number or no element named"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HUB-GEM-07",
@@ -1618,7 +1621,7 @@
      "title": "Hub: weather to scene: what the town shows for each weather code, by day and by night",
      "due": "2026-12-01",
      "closed": "2026-11-25",
-     "review": "Done 2026-11-25 (Claude): the audit's findings were real (spire contrast, daytime labels, edge clipping, sub-44 px targets, wxchip night icons) and Gemini's patch fixed them in d86; the weather scenes cover all 28 WMO codes Open-Meteo returns. Score 10/10 (#202)."
+     "review": "Done 2026-11-25 (Claude): the audit's findings were real (spire contrast, daytime labels, edge clipping, sub-44 px targets, wxchip night icons) and Gemini's patch fixed them in d86; the weather scenes cover all 28 WMO codes Open-Meteo returns. Score 10/10 (#202). Its findings shaped the d86 town fixes (design input)."
     },
     {
      "state": "done",
@@ -1799,7 +1802,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a feature that does not exist",
       "a purpose line over 12 words"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HUB-MUS-02",

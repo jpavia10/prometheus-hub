@@ -1,6 +1,7 @@
 /* Kin · the family album (Claude, 2026-11-25; owner: "go to the kin and level that up significantly. Comprehensively catalog and integrate
    all media so its ready to show off for Thanksgiving tomorrow"). Generated from the Kin media folder in Drive: every picture opened and
-   checked by eye, captions from the family's own file names and from what is printed on the prints, never guessed. Loads after data.js:
+   checked by eye, captions from the family's own file names and from what is printed on the prints, never guessed. Gemini's Kirkland
+   album (KIN-GEM-24) named the sources these pictures came from. Loads after data.js:
    adds the photograph sources, Ada's sister Callie and brother Charlie (both on their own stones), and one media record per picture. */
 (function (L) {
   if (!L) return;

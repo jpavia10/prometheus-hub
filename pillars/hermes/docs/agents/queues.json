@@ -132,7 +132,8 @@
       "a URL that does not open, is a front page or a search page, or does not say what the row claims",
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HER-GEM-05",
@@ -164,7 +165,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a real address or a real person's name",
       "anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HER-GEM-06",

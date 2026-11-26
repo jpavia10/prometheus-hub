@@ -72,6 +72,15 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d89 (2026-11-26): the backlog wired.** The ledger (`tools/forge/usage.py`) said 94 delivered tasks were shown nowhere. Now 4 are:
+  29 scored datasets from runs 4 and 6 are sourced reference panels in 18 pillars (`pillars/*/research-r6.js`, `kit/refs.js`; generator in
+  the scratchpad, `backlog/wire.py`); Kin shows Gemini's 80 decided Ancestry hints and 119 scored parent links (`pillars/kin/research-r8.js`,
+  the Barbara Rimsha/TERMENS error corrected); the world history took ATH-GEM-05's third sources (14 entries) and ATH-GEM-07's 20
+  family-era chains (14 attached, 6 new entries: 321 entries, Athenaeum's chronicle 59, so ATH-5 and the unit test now follow the file's
+  size); seat-era files that were built in name their task (ARG-GEM-02 tags.js, ICA-GEM-05 rules.js, HER-GEM-02 billers.js, Apollo,
+  Icarus and Argus headers). 15 desk-era tasks have no file anywhere (searched Drive): reviewed as design input, not data. The ledger
+  now counts proofs and tests as use, "Superseded" and "Not wired:" reviews as dropped, "design input" as design. Left: HUB-GEM-22
+  (the 12 town hour plates in Drive), ODY-GEM-06, 11, 12. KIN-GEM-31 to 40 wait for Muse's blind read before the tree changes.
 - **d88 (2026-11-25): the family album, Agora, and the work ledger.** Owner: "go to the kin and level that up significantly.
   Comprehensively catalog and integrate all media so its ready to show off for Thanksgiving tomorrow". `pillars/kin/album/` (index,
   `album.css`, `app.js`): 145 pictures from the Kin media folder in 10 chapters, a viewer whose people link to `../tree/#P-id`, the

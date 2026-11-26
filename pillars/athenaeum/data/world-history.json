@@ -49,11 +49,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/topic/Sea-People",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with both sources",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7123324/",
+     "quote": "The catastrophe lasted from c.1200–c.1150 bce and was characterized by its short time frame of about 50 years"
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "Dating of the Late Bronze Age collapse varies across regions, generally c. 1200–1150 BCE (with earlier 13th-century destructions).",
+   "note": "Dating of the Late Bronze Age collapse varies across regions, generally c. 1200–1150 BCE (with earlier 13th-century destructions). Third source (ATH-GEM-05): Dates the collapse to c. 1200-1150 BCE (matching seed) and concludes the causes were multifactorial and debated, including drought, earthquakes, invasions, and epidemics.",
    "quotes": [
     "broke apart into the small isolated village cultures of the Greek Dark Ages",
     "The Hittite Empire spanning Anatolia and the Levant collapsed",
@@ -143,11 +148,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/topic/10-Major-Epidemics",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with the first source",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7118959/",
+     "quote": "According to Thucydides, approximately one quarter of the Athenian army perished as a result of the plague."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "",
+   "note": "Third source (ATH-GEM-05): Reports that according to Thucydides, roughly one quarter (25%) of the Athenian army and civilian population perished during the four-year epidemic.",
    "quotes": [
     "entered Athens through Piraeus, the city's port and sole source of food and supplies",
     "Short-term, there was civil disorder",
@@ -238,11 +248,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/topic/Yellow-Turbans",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with the first source",
+     "url": "https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/zhang-jue",
+     "quote": "as late as 205 the Yellow Turbans still posed a military problem for the government."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "Main uprising suppressed in 184–185 CE; scattered resistance continued until c. 204–205 CE.",
+   "note": "Main uprising suppressed in 184–185 CE; scattered resistance continued until c. 204–205 CE. Third source (ATH-GEM-05): Confirms Zhang Jue initiated the rebellion in 184 CE and that Yellow Turban forces still posed a military problem for the Han government as late as 205 CE.",
    "quotes": [
     "central government was weakened by court eunuchs",
     "rising political influence of autonomous regional military-governors",
@@ -334,11 +349,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/event/plague-of-Justinian",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with neither source",
+     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6926030/",
+     "quote": "We therefore conclude that earlier analyses of the mortality and social effects of the plague are exaggerated"
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "First wave reached Egypt in 541 CE and Constantinople in spring 542 CE; later recurrences continued to c. 750 CE.",
+   "note": "First wave reached Egypt in 541 CE and Constantinople in spring 542 CE; later recurrences continued to c. 750 CE. Third source (ATH-GEM-05): Challenges high mortality estimates (25-50%) as exaggerated, finding that papyri, coins, inscriptions, and pollen show no empire-wide demographic collapse.",
    "quotes": [
     "The contagion arrived in Roman Egypt in 541",
     "killed about a fifth of the population in the imperial capital",
@@ -522,11 +542,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/topic/Maya-people",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with both sources",
+     "url": "https://www.smithsonianmag.com/science-nature/severe-cyclones-may-have-played-role-maya-collapse-180975717/",
+     "quote": "Why the once great Maya civilization withered away is still a matter of debate among historians, archaeologists, and geoscientists."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "Classic Maya lowland collapse unfolded gradually across the 9th century, culminating around 900 CE.",
+   "note": "Classic Maya lowland collapse unfolded gradually across the 9th century, culminating around 900 CE. Third source (ATH-GEM-05): Notes severe droughts around 800-1100 CE remain the leading theory as cities waned from the late 800s into the 900s, while causes remain debated (including severe cyclones).",
    "quotes": [
     "drought has gained momentum in the first quarter of the 21st century as the leading explanation",
     "went into decline during the 8th and 9th centuries and were abandoned",
@@ -711,11 +736,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/event/Black-Death",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with neither source",
+     "url": "https://www.encyclopedia.com/science/encyclopedias-almanacs-transcripts-and-maps/black-death",
+     "quote": "The pandemic of bubonic plague that swept across Europe between 1347 and 1353 is known today as the Black Death"
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "",
+   "note": "Third source (ATH-GEM-05): Dates the European Black Death pandemic to 1347-1353 (combining Britannica's 1347 arrival in Europe with the seed's 1353 end in Moscow) and estimates nearly half of Europeans died.",
    "quotes": [
     "caused by the bacterium Yersinia pestis",
     "wages soared in response to a subsequent labour shortage",
@@ -758,11 +788,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/biography/Zheng-He",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with the first source",
+     "url": "https://afe.easia.columbia.edu/special/china_1000ce_mingvoyages.htm",
+     "quote": "When another seafaring voyage was suggested to the court in 1477, the vice president of the Ministry of War confiscated all of Zheng He's records"
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "Seventh and final treasure-fleet voyage ended in 1433; voyages were halted thereafter (earlier suspension 1424–1431).",
+   "note": "Seventh and final treasure-fleet voyage ended in 1433; voyages were halted thereafter (earlier suspension 1424–1431). Third source (ATH-GEM-05): Attributes the end of the voyages to conservative Confucian court officials opposing eunuch-backed expeditions, with the Ministry of War confiscating records in 1477 and ships destroyed in 1525.",
    "quotes": [
     "the civil officials started to gain power",
     "permanently dismantle the voyages",
@@ -806,11 +841,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/summary/Johannes-Gutenberg",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with Britannica",
+     "url": "https://www.encyclopedia.com/literature-and-arts/journalism-and-publishing/libraries-books-and-printing/printing",
+     "quote": "By 1400 AD, Korea had the most advanced printing technology, and even commoners there were able to own copies of official publications."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "Gutenberg began experimenting by 1438, obtained backing in 1450, and completed the 42-line Bible no later than 1455.",
+   "note": "Gutenberg began experimenting by 1438, obtained backing in 1450, and completed the 42-line Bible no later than 1455. Third source (ATH-GEM-05): Notes movable type was invented earlier in China and metal type-mold printing was advanced in Korea by 1400 AD, making Gutenberg the first European to use movable type.",
    "quotes": [
     "invented by the German goldsmith Johannes Gutenberg around 1440",
     "contributing to the Reformation and the Scientific Revolution",
@@ -854,11 +894,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/event/Fall-of-Constantinople-1453",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with the first source",
+     "url": "https://scholarworks.uni.edu/facpub/6723/",
+     "quote": "preparing to breach its walls after a 53-day siege."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "",
+   "note": "Third source (ATH-GEM-05): States Ottoman forces under Sultan Mehmed II breached Constantinople's walls on 29 May 1453 CE after a 53-day siege.",
    "quotes": [
     "significantly outnumbered Constantinople's defenders",
     "made Constantinople the new Ottoman capital",
@@ -949,11 +994,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/topic/Armada-Spanish-naval-fleet",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with Britannica",
+     "url": "https://www.rmg.co.uk/stories/royal-history/elizabeth-i-spanish-armada",
+     "quote": "Bad storms completed the Spanish defeat: many of their fleeing Spanish ships were wrecked off the coasts of Scotland and Ireland. Less than half the fleet made it back to Spain."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "",
+   "note": "Third source (ATH-GEM-05): Reports that severe storms wrecked many fleeing Spanish ships off Scotland and Ireland and that less than half of the fleet made it back to Spain.",
    "quotes": [
     "Its purpose was to reinstate Catholicism in England",
     "Faster and more manoeuvrable than the larger Spanish galleons",
@@ -997,11 +1047,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/event/Peace-of-Westphalia",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with Britannica",
+     "url": "https://plato.stanford.edu/archives/spr2017/entries/sovereignty/",
+     "quote": "Again, not all scholars agree that Westphalia deserves its 'founding moment' status."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "Negotiated from 1644 in Münster and Osnabrück; treaties signed in January and October 1648.",
+   "note": "Negotiated from 1644 in Münster and Osnabrück; treaties signed in January and October 1648. Third source (ATH-GEM-05): Explains that while Westphalia is often tied to the sovereign states system, not all scholars agree it deserves founding-moment status and many argue the Westphalian myth should be discarded.",
    "quotes": [
     "killed between 4.5 and 8 million people",
     "Westphalian sovereignty",
@@ -1283,11 +1338,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/event/First-Opium-War",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with both sources",
+     "url": "https://history.state.gov/milestones/1830-1860/china-1",
+     "quote": "Ironically, the Qing Government had fully supported the clauses on extraterritoriality and most-favored nation status in the first treaties in order to keep the foreigners in line."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "",
+   "note": "Third source (ATH-GEM-05): Confirms the 1842 Treaty of Nanjing ended the First Opium War and opened five treaty ports, while treating extraterritoriality as part of the early unequal treaties alongside the 1844 Treaty of Wangxia.",
    "quotes": [
     "Chinese enforcement of their ban on the opium trade",
     "Treaty of Nanking on 29 August 1842",
@@ -1331,11 +1391,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/event/Great-Famine-Irish-history",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with the first source",
+     "url": "https://www.encyclopedia.com/social-sciences/encyclopedias-almanacs-transcripts-and-maps/famine-ireland",
+     "quote": "The proximate cause of the Great Irish Famine (1846–1852) was the fungus Phythophtera infestans (potato blight), which reached Ireland in the fall of 1845."
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
    "check": "sourced",
-   "note": "Britannica dates the Great Famine to 1845–1849; some historians extend the period through 1852.",
+   "note": "Britannica dates the Great Famine to 1845–1849; some historians extend the period through 1852. Third source (ATH-GEM-05): Dates the Great Irish Famine through 1852 (blight arriving fall 1845, high workhouse mortality persisting into 1850-1851) and estimates about one million deaths.",
    "quotes": [
     "The proximate cause of the famine was the infection of potato crops by blight",
     "excess death impact of 775,000 to 1.5 million",
@@ -1901,6 +1966,16 @@
      "cite": "the dating (Gemini ATH-GEM-06)",
      "url": "https://www.britannica.com/event/stock-market-crash-of-1929",
      "quote": null
+    },
+    {
+     "cite": "a third source (Gemini ATH-GEM-05): agrees with Britannica",
+     "url": "https://www.encyclopedia.com/economics/encyclopedias-almanacs-transcripts-and-maps/stock-market-crash-1929",
+     "quote": "However, the Wall Street crash did not cause the Great Depression. It was an early and violent reaction to changing economic circumstances."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://hoover.archives.gov/exhibits/great-depression",
+     "quote": null
     }
    ],
    "by": "Grok (10 Nov chronicle pack); dates and places Gemini ATH-GEM-06",
@@ -1913,13 +1988,25 @@
      "text": "The stock market crashes and the Great Depression follows: American car production falls by about three quarters between 1929 and 1932."
     }
    ],
-   "note": "",
+   "note": "Third source (ATH-GEM-05): States the 1929 Wall Street crash did not cause the Great Depression but was an early violent reaction to changing economic conditions, with optimism briefly returning in early 1930.",
    "quotes": [
     "much of the profit had been invested in speculation",
     "more investors facing margin calls",
     "cascade into the worldwide Great Depression"
    ],
-   "order": 34
+   "order": 34,
+   "family": [
+    "P-betty",
+    "P-buster",
+    "P-caroline",
+    "P-charlesp",
+    "P-della",
+    "P-ggm",
+    "P-grace",
+    "P-joseph",
+    "P-josephp",
+    "P-joy"
+   ]
   },
   {
    "id": "kin-1940-06-15",
@@ -2670,10 +2757,27 @@
      "cite": "Library of Virginia, \"County and City Formations: Nansemond through Nottoway\"",
      "url": "https://old.lva.virginia.gov/WHATWEHAVE/local/county_formation/locality_listingN.htm",
      "quote": "New Norfolk County (Extinct) 1636 Elizabeth City County."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://encyclopediavirginia.org/entries/tobacco-in-colonial-virginia/",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-13, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Soil depletion around Jamestown and the 1632 plant-limit statute pushed planters to seek fresh riverfront land: \"the wasteful practice of growing three or four crops of tobacco on the same field began to deplete the soil in and around Jamestown.\"",
+    "event": "English settlers expanded south of the James and York rivers into Lower Norfolk County (formed 1637 from New Norfolk County) using land grants tied to transatlantic passage: \"the headright system, in which planters paid to transport people across the Atlantic in exchange for fifty acres of land.\"",
+    "consequence": "Tobacco became the foundation of Tidewater society and trade, giving rise to permanent port settlements: \"Tobacco formed the basis of the colony's economy: it was used to purchase the indentured servants and enslaved laborers to cultivate it, to pay local taxes and tithes, and to buy manufactured goods from England.\""
+   },
+   "order": 40,
+   "family": [
+    "P-akeeling",
+    "P-athorowgood",
+    "P-johnm-sr",
+    "P-tkeeling"
+   ]
   },
   {
    "id": "his-virginia-1643-bicameral",
@@ -2793,10 +2897,28 @@
      "cite": "National Park Service, \"A Short History of Jamestown\"",
      "url": "https://www.nps.gov/jame/learn/historyculture/a-short-history-of-jamestown.htm",
      "quote": "In September, Bacon and his followers set fire to Jamestown, destroying 16 to 18 houses, the church and the statehouse."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://encyclopediavirginia.org/entries/bacons-rebellion-in-memory/",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-13, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Economic strain and frontier clashes fueled resentment against Governor William Berkeley's rule: \"an uprising against Governor William Berkeley's rule in colonial Virginia driven by an interplay of forces, including high taxes, falling tobacco prices, and escalating Anglo-Native conflicts along the western frontier.\"",
+    "event": "Nathaniel Bacon rallied disaffected planters, poor whites, and enslaved Africans in unauthorized frontier raids and civil war against loyalists: \"widespread destruction throughout the colony, including the burning of the capital of Jamestown by Bacon's forces.\"",
+    "consequence": "After Bacon died in October 1676 and loyalists suppressed the revolt in 1677, Virginia's ruling class tightened its grip: \"a crisis of social, economic, and political arrangements in colonial Virginia that ultimately allowed a white planter–enslaver elite to consolidate power.\""
+   },
+   "order": 42,
+   "family": [
+    "P-aestes",
+    "P-eward",
+    "P-joelm",
+    "P-johnm",
+    "P-progers"
+   ]
   },
   {
    "id": "his-virginia-1680-norfolktown",
@@ -2855,10 +2977,27 @@
      "cite": "Encyclopaedia Britannica, \"Philadelphia: History\"",
      "url": "https://www.britannica.com/place/Philadelphia/History",
      "quote": "The king made the grant, signed on March 4, 1681, and proclaimed it a few weeks later, on April 2, partly to settle a debt owed to Penn’s father, Adm. Sir William Penn, upon his death and also to complete the settlement of the Middle Atlantic region with Englishmen."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.britannica.com/topic/proprietary-colony",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-13, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Persecution of Quakers in England prompted Society of Friends leaders to seek an American sanctuary: \"Between 1650 and 1660 George Fox and a few other prominent members of the Society of Friends had begun to urge the establishment of a colony in America to serve as a refuge for Quakers who were suffering persecution under the Clarendon Code.\"",
+    "event": "King Charles II granted a vast proprietary charter to William Penn to settle a royal debt: \"in 1681 Charles II signed a charter giving any unoccupied regions to Penn in payment of a debt owed by the king to Penn's father, Adm. Sir William Penn.\"",
+    "consequence": "Pennsylvania's tolerant charter drew rapid European settlement that later seeded backcountry migrations south into Virginia and North Carolina: \"Pennsylvania had begun with about 500 settlers in 1681 and had attracted at least 250,000 people by 1760.\""
+   },
+   "order": 43,
+   "family": [
+    "P-aestes",
+    "P-johnm",
+    "P-maryborn",
+    "P-testes"
+   ]
   },
   {
    "id": "his-pennsylvania-1682-frame",
@@ -3791,10 +3930,30 @@
      "cite": "Detroit Historical Society, Encyclopedia of Detroit: Ford Highland Park Plant",
      "url": "https://www.detroithistorical.org/learn/online-research/encyclopedia-of-detroit/ford-highland-park-plant",
      "quote": "Two significant historical events occurred in the Highland Park Plant: in 1913 Ford began using a moving assembly line to first assemble automobiles, and in 1914, Ford began paying a five dollar a day wage for an eight-hour work day."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.thehenryford.org/collections/explore/sets/detail/henry-ford-5-day",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-11, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Ford's 1913 moving assembly line made factory work repetitive and exhausting, driving catastrophic worker attrition: \"Ford workers disliked the new assembly line methods so much that by late 1913, labor turnover was 380 percent.\"",
+    "event": "On January 5, 1914, Henry Ford shocked the industrial world by more than doubling daily pay and shortening the shift: \"The company's announcement to pay five dollars for an eight-hour day compared to the previous rate of $2.34 for a nine-hour day made many workers willing to submit to the relentless discipline of the line in return for such high wages.\"",
+    "consequence": "High wages stabilized the workforce and drew Lithuanian, Maltese, and Southern migrant families into Metro Detroit's auto plants: \"Ford's turnover problem disappeared. In addition, Ford workers could buy the cars they produced, benefitting the company.\""
+   },
+   "order": 56,
+   "family": [
+    "P-ada",
+    "P-buster",
+    "P-chester",
+    "P-della",
+    "P-joseph",
+    "P-josephp",
+    "P-joy"
+   ]
   },
   {
    "id": "his-detroit-1914-dodgemain",
@@ -4339,10 +4498,35 @@
      "cite": "Detroit Historical Society, Encyclopedia of Detroit: Cobo, Albert",
      "url": "https://www.detroithistorical.org/learn/online-research/encyclopedia-of-detroit/cobo-albert",
      "quote": "Cobo was mayor at the city’s population peak of 1.8 million people in 1950."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.census.gov/library/stories/2022/03/1950-census-records-window-to-history.html",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-11, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "World War II factory mobilization ended Depression unemployment and sparked a nationwide surge in marriages and births after 1945: \"In 1950, the nation was just four years into the postwar baby boom (the jump in births between 1946 and 1964)\".",
+    "event": "In April 1950 federal enumerators recorded households across peak-population Midwest industrial cities—including the Pavia, Rimsha, and Sanders families in Detroit: \"A number of large industrial cities in the Northeast and Midwest hit their peak decennial populations in 1950 and would experience population declines in subsequent decades in both relative and absolute terms.\"",
+    "consequence": "The 1950 Census captured American urban neighborhoods on the eve of mass suburbanization and Sunbelt migration: \"The 1950 Census might have been the last census your grandparents filled out before moving from the city to the suburbs.\""
+   },
+   "order": 58,
+   "family": [
+    "P-bettyf",
+    "P-buster",
+    "P-caroline",
+    "P-charles-sr",
+    "P-charlesp",
+    "P-della",
+    "P-francis",
+    "P-ggm",
+    "P-glenda",
+    "P-grace",
+    "P-josephp",
+    "P-joy"
+   ]
   },
   {
    "id": "his-michigan-1957-mackinacbridge",
@@ -4991,10 +5175,29 @@
      "cite": "Veterans Affairs Canada, \"British Home Children\"",
      "url": "https://www.veterans.gc.ca/en/remembrance/people-and-stories/british-home-children",
      "quote": "Between 1869 and 1948, over 100,000 children arrived in Canada from Great Britain as part of the British Child Emigration Movement."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://thecanadianencyclopedia.ca/en/article/children-lost-and-found-feature",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-15, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Urban poverty in industrial Britain and demand for farm and domestic labor in Canada led philanthropic societies like Barnardo's to organize juvenile emigration schemes: \"Over 100,000 “home children” were sent from the U.K. to Canada to work as labourers, from 1869 through to the 1940s.\"",
+    "event": "More than a hundred thousand British children were shipped across the Atlantic and placed on Canadian farms, including Ontario districts: \"More than 100000 boys and girls immigrated to Canada from the United Kingdom between the 1860s and the 1940s.\"",
+    "consequence": "Widespread isolation and tragic abuses eventually forced Canada to restrict unaccompanied child entry in 1925, though descendants now form a major share of North American families: \"In 1925, as a result of three suicides by “home children,” the Canadian government stopped allowing the entry of unaccompanied minors under the age of 14.\""
+   },
+   "order": 54,
+   "family": [
+    "P-ada",
+    "P-anderson",
+    "P-chester",
+    "P-emaline",
+    "P-jessec",
+    "P-juliaw"
+   ]
   },
   {
    "id": "his-england-1870-barnardohome",
@@ -5478,10 +5681,27 @@
      "cite": "Thomas G. Chase, The Story of Lithuania, Ch. 22 (University of Chicago)",
      "url": "https://penelope.uchicago.edu/Thayer/E/Gazetteer/Places/Europe/Lithuania/_Topics/history/_Texts/CHASOL/22*.html",
      "quote": "on February 19, 1861, the Manifesto, abolishing serfdom under private landlords ⁠ 1 throughout the Russian Empire, was issued."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.britannica.com/event/Emancipation-Manifesto",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-09, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Imperial reformers sought to modernize the Russian economy and defuse rural unrest after decades of feudal stagnation: \"Emancipation had been intended to cure Russia's most basic social weakness, the backwardness and want into which serfdom cast the nation's peasantry.\"",
+    "event": "Tsar Alexander II issued the Emancipation Manifesto on March 3, 1861, freeing serfs across the empire including Lithuanian provinces: \"The serfs of Russia were not given their personal freedom and their own allotments of land until Alexander II's Edict of Emancipation of 1861.\"",
+    "consequence": "Heavy 49-year redemption debts and rapid population growth left many peasant families impoverished and drove mass emigration to America: \"most remained poor and land-hungry, crushed by huge redemption payments.\""
+   },
+   "order": 52,
+   "family": [
+    "P-eva-v",
+    "P-kostantina",
+    "P-michael-m",
+    "P-rozys"
+   ]
   },
   {
    "id": "his-lithuania-1863-samogitia-uprising",
@@ -7424,10 +7644,30 @@
      "cite": "Encyclopaedia Britannica, \"Regulators of North Carolina\"",
      "url": "https://www.britannica.com/topic/Regulators-of-North-Carolina",
      "quote": "Royal Governor William Tryon responded with military force, culminating in the Battle of Alamance in 1771, where the Regulators were defeated."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.ncanchor.org/anchor/regulators",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-12, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Backcountry farmers in Piedmont North Carolina organized to resist corrupt local officials and heavy taxation: \"Farmers protested against high taxes, unfair fees, and dishonest public officials in the 1760s.\"",
+    "event": "Governor William Tryon marched royal militia into the Piedmont and routed the poorly armed Regulator force on May 16, 1771: \"The colonial militia fired on them and started the Battle of Alamance. At the Battle of Alamance, the Regulators were no match for the colonial militia.\"",
+    "consequence": "Though crushed militarily with seven prisoners hanged, the uprising exposed deep frontier grievances that fed the coming Revolution: \"It showed that backcountry farmers could challenge the royal government. It also showed that their needs and demands were serious and should not be ignored.\""
+   },
+   "order": 46,
+   "family": [
+    "P-eastone",
+    "P-eknox",
+    "P-johnb",
+    "P-jpulliam",
+    "P-nathaniel",
+    "P-peggy",
+    "P-tdavis"
+   ]
   },
   {
    "id": "his-tennessee-1772-watauga",
@@ -7608,10 +7848,31 @@
      "cite": "Encyclopaedia Britannica, \"Battle of Kings Mountain\"",
      "url": "https://www.britannica.com/event/Battle-of-Kings-Mountain",
      "quote": "The Battle of Kings Mountain, fought on October 7, 1780, was an American victory over a Loyalist detachment in South Carolina during the British campaign in the South."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.nps.gov/teachers/classrooms/tactics-in-the-battle-of-kings-mountain.htm",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-12, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "After Britain captured Charleston in May 1780, Loyalist forces threatened the Carolina backcountry, dividing frontier communities: \"The battle was the first major patriot victory to occur after the British invasion of Charleston, SC in May 1780.\"",
+    "event": "Frontier Patriot riflemen surrounded and defeated Loyalist militia atop Kings Mountain in an all-American battle: \"The American militia that fought here mainly used rifles; the Loyalist troops had mostly muskets.\"",
+    "consequence": "The decisive victory shattered British momentum in the Southern Theater, prompting Thomas Jefferson to call it \"The turn of the tide of success.\""
+   },
+   "order": 47,
+   "family": [
+    "P-benjamin",
+    "P-eastone",
+    "P-johnb",
+    "P-josiah",
+    "P-jpulliam",
+    "P-nathaniel",
+    "P-rbryant",
+    "P-susannap"
+   ]
   },
   {
    "id": "his-tennessee-1784-franklin",
@@ -7794,10 +8055,31 @@
      "cite": "Encyclopaedia Britannica, \"Tennessee: History\"",
      "url": "https://www.britannica.com/place/Tennessee/History",
      "quote": "In 1796 Tennessee became a state, the first admitted from territorial status, with Knoxville as its first capital, John Sevier as its first governor, and Gen."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://tennesseeencyclopedia.net/entries/southwest-territory/",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-12, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Rapid settlement of the Southwest Territory pushed frontier leaders to seek equal standing in the Union despite partisan Senate resistance: \"There the Federalists, who rightly expected the new state would vote against their candidate in the upcoming presidential election, delayed admission until the last day of the session, June 1, 1796.\"",
+    "event": "Congress passed the admission act after House-Senate compromise, converting the Southwest Territory into a state: \"Tennessee had become the sixteenth state of the Union and the first state to be developed from a federal territory.\"",
+    "consequence": "Tennessee's admission created the constitutional precedent for western territories to achieve statehood: \"They had tested and established a method by which those in succeeding westward migrations would be able to achieve full citizenship and enjoy the blessings of representative government.\""
+   },
+   "order": 48,
+   "family": [
+    "P-benjamin",
+    "P-josiah",
+    "P-lilly",
+    "P-marypj",
+    "P-nathan",
+    "P-rbryant",
+    "P-susannap",
+    "P-tdavisjr"
+   ]
   },
   {
    "id": "his-tennessee-1811-newmadrid",
@@ -7854,10 +8136,30 @@
      "cite": "Encyclopaedia Britannica, \"Creek War\"",
      "url": "https://www.britannica.com/event/Creek-War",
      "quote": "On March 27, 1814, at the Battle of Horseshoe Bend (Tohopeka, Ala.), Jackson’s superior numbers (3,000 to 1,000) and armaments (including cannon) demolished the Creek defenses, slaughtering more than 800 warriors and imprisoning 500 women and children."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.nps.gov/articles/000/the-battle-of-horseshoe-bend-collision-of-cultures-teaching-with-historic-places.htm",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-12, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Escalating conflict between Red Stick Creek warriors resisting settler encroachment and U.S. frontier forces triggered the Creek War of 1813–1814: \"Many had been part of a series of costly battles during the past year, all fought in an attempt to regain the autonomy the Indians had held before the arrival of European Americans.\"",
+    "event": "Tennessee militia and allied Native fighters under Andrew Jackson surrounded and broke the Red Stick fortification on March 27, 1814: \"Surrounding the Creek were forces led by future President Andrew Jackson, then a major general of the Tennessee Militia.\"",
+    "consequence": "The decisive victory opened vast southeastern lands to white frontier settlement and propelled Jackson to national prominence: \"most of whom hoped that a victory would open native land to European American settlement.\""
+   },
+   "order": 49,
+   "family": [
+    "P-benjamin",
+    "P-jamesak",
+    "P-jamesb",
+    "P-marypj",
+    "P-nathan",
+    "P-parthenia",
+    "P-wesley"
+   ]
   },
   {
    "id": "his-tennessee-1819-hiwassee",
@@ -7886,10 +8188,30 @@
      "cite": "Encyclopaedia Britannica, \"Nancy Ward\"",
      "url": "https://www.britannica.com/biography/Nancy-Ward",
      "quote": "Concluded not long after, the 1819 Hiwassee Purchase provided for the sale of tribal lands north of the Hiwassee River, forcing Ward to leave her farm."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.nps.gov/places/joseph-mcminn-grave.htm",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-12, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Tennessee Governor Joseph McMinn and federal officials pressed the Cherokee Nation to cede territory north of the Hiwassee River: \"Joseph McMinn served as Governor of Tennessee from 1815 to 1821 and was President Andrew Jackson's ally in the effort to remove the Cherokees.\"",
+    "event": "The 1819 Hiwassee Purchase transferred Cherokee lands in southeast Tennessee to state control, immediately forming new counties: \"McMinn County, which bears his name, was formed out of the Hiwassee Purchase in 1819 as part of Cherokee land sales that McMinn was instrumental in organizing.\"",
+    "consequence": "The cession displaced historic Overhill Cherokee towns and opened Monroe and McMinn counties to settler families including the Kirklands and Bivens: \"In 1823, McMinn was made Indian Agent and was stationed at the Agency in Charleston where he died at his desk in 1824.\""
+   },
+   "order": 50,
+   "family": [
+    "P-benjamin",
+    "P-jamesak",
+    "P-jamesb",
+    "P-jmgiles",
+    "P-parthenia",
+    "P-susanna",
+    "P-wesley"
+   ]
   },
   {
    "id": "his-tennessee-1819-monroecounty",
@@ -8167,10 +8489,31 @@
      "cite": "National Park Service, \"Multi-State: Trail of Tears National Historic Trail\"",
      "url": "https://www.nps.gov/articles/trailoftears.htm",
      "quote": "The removal of the Cherokee began in 1838 under the leadership of General Winfield Scott who, with 7,000 soldiers and members of various State militias, escorted the Cherokee and other Indians west."
+    },
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.nps.gov/trte/learn/historyculture/index.htm",
+     "quote": null
     }
    ],
    "by": "Gemini (ATH-GEM-12, run 8, 25 Nov 2026)",
-   "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "chain": {
+    "cause": "Passage of the Indian Removal Act and the discovery of gold accelerated state and federal demands for remaining Cherokee territory: \"In 1830- the same year the Indian Removal Act was passed - gold was found on Cherokee lands.\"",
+    "event": "Beginning in May 1838, U.S. troops rounded up Cherokee families into stockades including Fort Cass near Charleston, Tennessee, and marched them west: \"In 1838, the United States government forcibly removed more than 16,000 Cherokee\".",
+    "consequence": "Thousands died from exposure and disease along the westward routes while remaining Cherokee lands in southeast Tennessee passed to white settlers: \"The impact of the resulting Cherokee “Trail of Tears” was devastating.\""
+   },
+   "order": 51,
+   "family": [
+    "P-hettie",
+    "P-jamesak",
+    "P-jamesb",
+    "P-jessea",
+    "P-jmgiles",
+    "P-parthenia",
+    "P-polly",
+    "P-susanna"
+   ]
   },
   {
    "id": "his-tennessee-1839-polkcounty",
@@ -10347,6 +10690,268 @@
    ],
    "by": "Gemini (ATH-GEM-14, run 8, 25 Nov 2026)",
    "check": "sourced by Gemini, second read pending (ATH-MUS-02)"
+  },
+  {
+   "id": "his-fam-1642-servitude",
+   "date": "1642",
+   "precision": "year",
+   "title": "Codification of Indentured Servitude in Colonial Virginia",
+   "text": "Virginia's General Assembly standardized multi-year contracts for incoming servants without written indentures.",
+   "regions": [
+    "american-colonies",
+    "virginia"
+   ],
+   "themes": [
+    "law",
+    "labor"
+   ],
+   "place": {
+    "place": "Jamestown, Virginia",
+    "lat": 37.21,
+    "lon": -76.78
+   },
+   "chain": {
+    "cause": "Expanding tobacco plantations created relentless demand for field workers that the headright system supplied from England: \"with the institution of the headright system in 1618, the company enticed planters and merchants to incur the cost with the promise of land.\"",
+    "event": "Virginia's General Assembly standardized multi-year contracts for incoming servants without written indentures: \"In its 1642–1643 session, the assembly passed a law mandating that any servant arriving without an indenture and who was younger than twelve years old should serve for seven years\".",
+    "consequence": "Harsh labor laws bound European servants to planters for decades until the colony shifted to chattel slavery: \"By the end of the seventeenth century, the number of new servants in Virginia had dwindled, and the colony's labor needs were largely met by enslaved Africans.\""
+   },
+   "order": 41,
+   "sources": [
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://encyclopediavirginia.org/entries/indentured-servants-in-colonial-virginia/",
+     "quote": null
+    }
+   ],
+   "by": "Gemini (ATH-GEM-07, 25 Nov 2026)",
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "note": "",
+   "family": [
+    "P-tkeeling",
+    "P-athorowgood",
+    "P-johnm-sr",
+    "P-akeeling",
+    "P-joelm",
+    "P-eward"
+   ]
+  },
+  {
+   "id": "his-fam-1730-tobacco-inspection",
+   "date": "1730",
+   "precision": "year",
+   "title": "Virginia Tobacco Inspection Act and the Rise of Norfolk Port",
+   "text": "The General Assembly required planters to bring hogsheads to public inspection warehouses before export.",
+   "regions": [
+    "american-colonies",
+    "virginia"
+   ],
+   "themes": [
+    "economy",
+    "law"
+   ],
+   "place": {
+    "place": "Norfolk, Virginia",
+    "lat": 36.85,
+    "lon": -76.29
+   },
+   "chain": {
+    "cause": "Chronic overproduction and poor-grade leaf depressed colonial earnings and prompted legislative quality controls: \"A bumper crop of Virginia tobacco—measuring more than 18 million pounds, the largest crop produced in a single year to date—causes prices to fall to a penny a pound.\"",
+    "event": "The General Assembly required planters to bring hogsheads to public inspection warehouses before export: \"Tobacco notes were issued to the owners of hogsheads that successfully passed the inspection—these notes were used as legal currency until the French and Indian War (1754–1763), when Virginia began printing money.\"",
+    "consequence": "Inspection warehouses anchored urban port growth across Tidewater Virginia, elevating Norfolk into the colony's commercial hub: \"in 1736 it received a self-governing borough charter with its own common council, mayor, and aldermen. By the mid-1770s, Norfolk, with a population of about 6,000, had become Virginia's busiest port and largest city.\""
+   },
+   "order": 44,
+   "sources": [
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://encyclopediavirginia.org/entries/tobacco-in-colonial-virginia/",
+     "quote": null
+    }
+   ],
+   "by": "Gemini (ATH-GEM-07, 25 Nov 2026)",
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "note": "",
+   "family": [
+    "P-johnm",
+    "P-maryborn",
+    "P-nbryant",
+    "P-eleanor",
+    "P-testes",
+    "P-abrogers"
+   ]
+  },
+  {
+   "id": "his-fam-1763-self-sufficiency",
+   "date": "1763",
+   "precision": "year",
+   "title": "Colonial Self-Sufficiency After the French and Indian War",
+   "text": "Settlers of mixed European stock on the interior frontier and artisans in coastal towns asserted growing political independence.",
+   "regions": [
+    "american-colonies"
+   ],
+   "themes": [
+    "economy",
+    "politics"
+   ],
+   "chain": {
+    "cause": "Wartime mobilization and rapid colonial expansion reshaped how frontier and town residents viewed imperial authority: \"after the French and Indian War the colonists had no intention of accepting a subordinate position in the empire. They were proud of the fighting record of their soldiers.\"",
+    "event": "Settlers of mixed European stock on the interior frontier and artisans in coastal towns asserted growing political independence: \"A spirit of self-sufficiency pervaded the land. It was especially strong among the settlers of mixed stock who had moved out toward the frontiers and among the artisans, mechanics, and laborers of the towns.\"",
+    "consequence": "Political alienation from Britain took root more than a decade before Lexington and Concord, as John Adams later observed: \"The Revolution was effected before the war commenced. The Revolution was in the minds and hearts of the people.\""
+   },
+   "order": 45,
+   "sources": [
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.britannica.com/topic/American-colonies/American-social-and-cultural-development",
+     "quote": null
+    }
+   ],
+   "by": "Gemini (ATH-GEM-07, 25 Nov 2026)",
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "note": "",
+   "family": [
+    "P-nbryant",
+    "P-johnb",
+    "P-rstone",
+    "P-yancy",
+    "P-jpulliam",
+    "P-eastone",
+    "P-nathaniel",
+    "P-tdavis"
+   ]
+  },
+  {
+   "id": "his-fam-1863-knoxville-campaign",
+   "date": "1863-09-03",
+   "precision": "day",
+   "title": "East Tennessee Unionism and the Knoxville Campaign",
+   "text": "General Ambrose Burnside's Army of the Ohio marched from Camp Nelson and liberated Knoxville in September 1863.",
+   "regions": [
+    "tennessee",
+    "united-states"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Knoxville, Tennessee",
+    "lat": 35.96,
+    "lon": -83.92
+   },
+   "chain": {
+    "cause": "When Tennessee seceded in June 1861, a large pro-Union majority in East Tennessee resisted Confederate rule and endured harsh occupation: \"East Tennessee contained a large population of Unionists who were loyal to the United States and had suffered under Confederate occupation since the start of the war in 1861.\"",
+    "event": "General Ambrose Burnside's Army of the Ohio marched from Camp Nelson and liberated Knoxville in September 1863: \"When Burnside and the bulk of his army entered Knoxville on September 3, they received a jubilant welcome from the city's residents.\"",
+    "consequence": "East Tennesseans celebrated Union liberation and enlisted by the thousands in Federal cavalry and infantry regiments: \"the entrance of the army into Knoxville was “a resurrection from the grave” for the civilian inhabitants\"."
+   },
+   "order": 53,
+   "sources": [
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.nps.gov/cane/knoxville-campaign.htm",
+     "quote": null
+    }
+   ],
+   "by": "Gemini (ATH-GEM-07, 25 Nov 2026)",
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "note": "",
+   "family": [
+    "P-jessea",
+    "P-polly",
+    "P-anderson",
+    "P-emaline",
+    "P-jmgiles",
+    "P-hettie",
+    "P-peterc",
+    "P-whtippens"
+   ]
+  },
+  {
+   "id": "his-fam-1912-ellis-island",
+   "date": "1912-08-23",
+   "precision": "day",
+   "title": "Peak Transatlantic Immigration Through Ellis Island",
+   "text": "Steamships from Hamburg, Liverpool, and Mediterranean ports delivered European arrivals—including Joseph Termena in August 1912—whose personal details were logged on detailed federal manifests.",
+   "regions": [
+    "new-york",
+    "united-states"
+   ],
+   "themes": [
+    "migration"
+   ],
+   "place": {
+    "place": "Ellis Island, New York",
+    "lat": 40.699,
+    "lon": -74.039
+   },
+   "chain": {
+    "cause": "Economic hardship, land hunger, and imperial restrictions across Eastern and Southern Europe drove millions to cross the Atlantic for American industrial cities: \"the years during which Ellis Island was America's primary immigrant processing center and where 12 million immigrants were processed.\"",
+    "event": "Steamships from Hamburg, Liverpool, and Mediterranean ports delivered European arrivals—including Joseph Termena in August 1912—whose personal details were logged on detailed federal manifests: \"The content of passenger lists expanded over the years in response to U.S. legal and recordkeeping requirements.\"",
+    "consequence": "Expanded manifest rules preserved permanent genealogical records of hometowns, relatives, and destinations for millions of new American families: \"By 1924, at the end of Ellis Island's peak years, manifests include at least 31 pieces of information about each alien passenger.\""
+   },
+   "order": 55,
+   "sources": [
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.nps.gov/elis/learn/historyculture/trace-ancestors.htm",
+     "quote": null
+    }
+   ],
+   "by": "Gemini (ATH-GEM-07, 25 Nov 2026)",
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "note": "",
+   "family": [
+    "P-joseph",
+    "P-della",
+    "P-michael-m",
+    "P-eva-v",
+    "P-josephp",
+    "P-grace"
+   ]
+  },
+  {
+   "id": "his-fam-1918-aef-france",
+   "date": "1918",
+   "precision": "year",
+   "title": "American Expeditionary Forces in France and the 1918 Flu",
+   "text": "Over a million American soldiers fought in decisive 1918 campaigns alongside French forces while a deadly influenza pandemic swept military camps.",
+   "regions": [
+    "france",
+    "united-states"
+   ],
+   "themes": [
+    "war",
+    "disease"
+   ],
+   "place": {
+    "place": "Brest, France",
+    "lat": 48.39,
+    "lon": -4.49
+   },
+   "chain": {
+    "cause": "U.S. entry into World War I mobilized millions of citizens and immigrants—including Joseph Termena in France—to reinforce Allied lines against Germany: \"In less than two years the United States had established new motorized and combat forces, equipped them with all types of ordnance including machine guns and tanks\".",
+    "event": "Over a million American soldiers fought in decisive 1918 campaigns alongside French forces while a deadly influenza pandemic swept military camps: \"This successful offensive was followed by the Battle of Argonne, lasting from September 27 to October 6, 1918, during which Pershing commanded more than one million American and French soldiers.\"",
+    "consequence": "Germany signed the Armistice on November 11, 1918, leaving heavy combat and pandemic losses while fast-tracking citizenship for immigrant veterans: \"The United States had sustained more than 320,000 casualties in the First World War, including over 53,000 killed in action, over 63,000 non-combat related deaths, mainly due to the influenza pandemic of 1918, and 204,000 wounded.\""
+   },
+   "order": 57,
+   "sources": [
+    {
+     "cite": "Gemini ATH-GEM-07, family eras (25 Nov 2026)",
+     "url": "https://www.loc.gov/collections/stars-and-stripes/articles-and-essays/a-world-at-war/american-expeditionary-forces/",
+     "quote": null
+    }
+   ],
+   "by": "Gemini (ATH-GEM-07, 25 Nov 2026)",
+   "check": "sourced by Gemini, second read pending (ATH-MUS-02)",
+   "note": "",
+   "family": [
+    "P-joseph",
+    "P-della",
+    "P-josephp",
+    "P-grace",
+    "P-buster",
+    "P-joy",
+    "P-jessec",
+    "P-chester"
+   ]
   }
  ]
 }

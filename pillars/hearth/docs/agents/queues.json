@@ -37,7 +37,8 @@
       "fewer items than the count",
       "a file saved anywhere but the folder named here, or under another name",
       "a blank cell without 'not stated' and the page you checked"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HEA-GEM-02",
@@ -103,7 +104,8 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a category list from a blog instead of a checklist page"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HEA-GEM-08",
@@ -135,7 +137,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "an error number with no quote",
       "a vendor marketing page as the only source for a scan method"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HEA-GEM-09",
@@ -165,7 +168,8 @@
       "a quote that is not on the page it cites (Claude opens 10 rows at random)",
       "a file saved anywhere but the folder named here, or under another name",
       "a loader name that is not in the three.js docs or examples"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HEA-GEM-10",
@@ -196,7 +200,8 @@
       "a file saved anywhere but the folder named here, or under another name",
       "a spec from a review site instead of the maker's page",
       "an app that is iPhone-only listed as Android"
-     ]
+     ],
+     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
     },
     {
      "id": "HEA-GEM-11",
@@ -1840,7 +1845,7 @@
      "title": "Hearth: building the deck in Kern County: the inspections (footing, framing, final), what each inspector checks, and how to book them",
      "due": "2026-12-08",
      "closed": "2026-11-25",
-     "review": "Done 2026-11-25 (Claude): six inspections in order, but row 5 says guards must be 42 in 'per CRC R312.1.2'; that section asks for 36 in (42 in is the commercial code). Fix in HEA-GEM-33. Score in #207."
+     "review": "Done 2026-11-25 (Claude): six inspections in order, but row 5 says guards must be 42 in 'per CRC R312.1.2'; that section asks for 36 in (42 in is the commercial code). Fix in HEA-GEM-33. Score in #207. Waits for the redo (HEA-GEM-33) before it is shown."
     },
     {
      "state": "now",
