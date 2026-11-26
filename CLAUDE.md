@@ -16,10 +16,12 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
 - **Scoring:** every outside file gets a row in `collaborators/CONTRIBUTOR_SCORES.md` and a note in Drive `Prometheus Hub/{AI folder}/FEEDBACK — {name} (every pillar)`.
 - **Log:** a 2-3 line entry in `collaborators/SHARED_LOG.md` after every change.
 - **Drive trash after every intake (owner, 2026-11-26: "you haven't asked me to trash files in a while ... I want to be totally caught up and organized"):**
-  Drive only lets Claude trash files the connector created, so the AIs' uploads pile up unless Joseph trashes them. At the end of every intake:
-  trash what the connector can; copy anything still needed (waiting files, kept inputs) into that folder's `_kept`; add the rest, folder by folder, to
-  the Drive Clean-Up artifact (claude.ai/artifact/K39FgVsaG3qG22ExN8oamB) and tell Joseph how many files are waiting. Never list a file that is not
-  merged, scored and copied into the repo or `_kept`.
+  Drive only lets Claude trash files the connector created, but every inbox folder is the connector's, and trashing a folder trashes all of
+  its files (d92). At the end of every intake, once every file in an inbox is merged and scored: copy anything still needed into its `_kept`,
+  move `_kept` out, trash the inbox, recreate it empty with the same name, move `_kept` back in, and update every link to the old folder ID
+  (pillars.json, the prompts, the queues; grep all repos). Ask Joseph before trashing (he answered "You know better than I do" on 26 Nov).
+  Single locked files in folders Claude did not create go on the Drive Clean-Up artifact (claude.ai/artifact/K39FgVsaG3qG22ExN8oamB) as
+  search-based batches. Never trash a file that is not merged, scored and copied into the repo or `_kept`.
 - **The owner's briefing (owner, 2026-11-24: "bring back the summaries. I want to click a summary in this chat that updates me and also has a task list that I can check and tell you what to do next"):** https://claude.ai/artifact/3BzojbvDq618t12qo9j7e5 ("Prometheus Briefing"). At the start of a session, read its database (`ArtifactData`: collections `tasks` and `notes`): his ticks (`done` on his tasks, `ok` = yes-do-this and `next` = first on Claude's), and his notes (mark each `read: true` once acted on). At the end of every round, republish the page with what changed (same file: copy from the artifact if the scratchpad is gone) and update the tasks (`finished: true` + `result` on Claude's that are done; new ones as needed, each with `area` (Prometheus, Kin, Titan, Midas, AI team, Life, Setup), `size` (Quick, Round, Project) and optional `pillar`). Owner, same day: it covers every project plus everything else Claude can do for him and how to spend tokens and steer ("Basically how to spend my tokens and guide you while updating me"), so keep the project cards, the pillar grid and the "Beyond the projects" section current too. Give him the link in the reply.
 - **Deploying:** GitHub Pages may not rebuild for pushes made by the Claude GitHub app (it did not on Titan); after pushing `main`, check the Pages run and, if none started, update a file through the GitHub connector.
 - **Look:** the Prometheus look shared by every pillar except Titan.
