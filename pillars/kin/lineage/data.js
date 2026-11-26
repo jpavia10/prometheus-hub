@@ -833,3 +833,30 @@ window.KIN_LINEAGE.questions.push(
     { id: "L18", date: "2026-11-24", by: "Muse", q: "", where: "the DAR ancestor database (A030698, A092129, A110255, A213360), WikiTree, and all 950 files of Gemini's Kin harvest on Drive", terms: "the four DAR patriots; Gemini's Waves 1-4", result: "found", note: "All four DAR numbers are real and attach to the named men; the descents below Bivens, Pulliam and Stone are weaker than the compiled trees say (C16, C17). The harvest holds 923 photos and scans (about 895 unique; 28 duplicate copies); several files named as primary records are index pages of books." }
   );
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026 (Claude, with the record sites Joseph opened for this session): reads made here, not reported by another AI */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  const C = (id) => L.certainty.find((c) => c.child === id);
+  const set = (id, pct, basis) => { let c = C(id); if (!c) { c = { child: id }; L.certainty.push(c); } c.pct = pct; c.basis = basis; };
+  L.sources.push(
+    { id: "S-will-nbivens", short: "Will of Nathaniel Bivens Sr., Anson County, NC, 1816 (transcription)", kind: "derivative", year: 1816,
+      url: "https://www.wikitree.com/wiki/Bivens-138",
+      cite: "Anson County, North Carolina, Will Book 2, pp. 8-9, will of Nathaniel Bivens Senr., signed 9 May 1816, proven April Court 1818; transcription by Barbara Roesch on WikiTree profile Bivens-138 (image on Ancestry, subscription; not seen here).",
+      read: "Read by Claude on 26 Nov 2026 through WikiTree's API. It gives a negro woman, Nance, to his son Abel, and divides six enslaved people (Cloe, Vilate, Zack, Hannah, Simon, George) and the rest of the estate among nine more children: William, Sarah, John, Unity, Moses, Elijah, Lyda, Stephen and Nathaniel. Executors: his sons John and Nathaniel. Witnesses: John Bennett Sr., John Bennet Jr., Wm. Bennet. It does not name Benjamin." },
+    { id: "S-census-1790-nc", short: "Heads of Families at the First Census, 1790: North Carolina (1908)", kind: "derivative", year: 1790,
+      cite: "U.S. Bureau of the Census, Heads of Families at the First Census of the United States Taken in the Year 1790: North Carolina (Washington, 1908), pp. 35-37 (Anson County, Fayette District), p. 176 (Rowan County, Salisbury District) and index p. 205; page images staged by Gemini in the Kin Drive folder.",
+      read: "Read by Claude on 26 Nov 2026 from the staged pages. The volume's own index lists Biven, John, p. 36 (Anson County) and Biven, Corbin, Leonard and Randal, p. 176 (Rowan County). No Nathaniel Biven or Bivens is indexed on the Anson pages; a garbled index line may hold a Bevin, Nathaniel elsewhere. The page OCR is too poor to read household counts." }
+  );
+  set("P-benjamin", 15, "Nathaniel's will (Anson Will Book 2, pp. 8-9, transcription read by Claude on 26 Nov) names ten children and no Benjamin, though Benjamin was then alive; only the compiled trees make him Nathaniel's son (C16)");
+  const c16 = L.conflicts.find((c) => c.id === "C16");
+  if (c16) {
+    c16.status = "resolved";
+    c16.conclusion = "Probably not: Nathaniel's 1816 will names ten children and no Benjamin";
+    c16.argument += " Claude read the will itself on 26 Nov 2026 (WikiTree's transcription, through its API): it names Abel, William, Sarah, John, Unity, Moses, Elijah, Lyda, Stephen and Nathaniel, and no Benjamin. A son alive in 1816 is rarely left out of a will that names all the others, so the compiled link is not supported. The 1790 census for Anson County indexes a John Biven, not Nathaniel. Benjamin's real father should be looked for among the other Bivens households of Anson and Rowan (Corbin, Leonard, Randal and John Biven in 1790) and in Anson and Union County deeds.";
+  }
+  const ben = P("P-benjamin"); if (ben) ben.summary += " Not named in Nathaniel Bivens's 1816 will, so his parents are not known (C16).";
+  L.log.push(
+    { id: "L19", date: "2026-11-26", by: "Claude", q: "", where: "WikiTree (API, profile Bivens-138); the 1790 census pages staged in the Kin Drive folder", terms: "Nathaniel Bivens will 1816; Biven/Bivens/Bevin in the 1790 NC index", result: "The will names ten children and no Benjamin (C16 resolved: probably not his son). 1790: John Biven in Anson, Corbin, Leonard and Randal Biven in Rowan." }
+  );
+})(window.KIN_LINEAGE);

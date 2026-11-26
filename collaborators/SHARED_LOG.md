@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] d94: Kin all-in begins; C16 settled from the will itself
+- Joseph opened 23 record sites for this session (WikiTree API, NARA, LoC, Internet Archive, Michiganology, epaveldas, the NYC marriage indexes and more; Find a Grave, DAR, HathiTrust and the Brooklyn Daily Eagle still challenge bots). Claude read Nathaniel Bivens's 1816 will (WikiTree Bivens-138 transcription of Anson Will Book 2, pp. 8-9): ten children, no Benjamin. C16 resolved (probably not his son; link 15%). New sources S-will-nbivens, S-census-1790-nc.
+- The 289 staged record pages get a ledger (pillars/kin/docs/staged-records.json) and tools/kin/records/apply.py, which marks each reviewed page in the album catalog: 5 done.
+
 ### [2026-11-26] State Board v9: frozen store records; Joseph's first send read
 - Bug: the page assigned to records the store hands out frozen (decisions, inbox, and the old task list), which threw in strict mode and left those sections on "Loading…"; after a send it also could not mark answers sent. Fixed (copy before adding fields); the test mocks now freeze records too, and the old code fails them. The list also ships inside the page for instant load.
 - Read: Kin = Focus; he withdrew the two carried-over Kin approvals (staged record pages, 26 photos). Replied on the board; nothing in Kin is approved until he picks.

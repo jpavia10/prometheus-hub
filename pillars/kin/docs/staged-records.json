@@ -1,0 +1,70 @@
+{
+ "about": "Claude's reading of the record pages Gemini staged in the Kin Drive folder (289 unplaced on 25 Nov 2026). Applied to the catalog by tools/kin/records/apply.py.",
+ "pages": [
+  {
+   "name": "Bivens_Nathaniel_Anson_NC_p0045.pdf",
+   "id": "19K-RfKcgir-DUO1TrJE8eG8yYm6SX3xW",
+   "book": "Heads of Families, 1790: North Carolina",
+   "page": "35",
+   "what": "Edenton District, Tyrrell County (end) and the start of Fayette District, Anson County",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "No Biven or Bivens on this page by the volume's own index (p. 205).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Bivens_Nathaniel_Anson_NC_p0046.pdf",
+   "id": "1QsiWhcnBqobRFCvPJWFFY6LicEMPBeTY",
+   "book": "Heads of Families, 1790: North Carolina",
+   "page": "36",
+   "what": "Fayette District, Anson County",
+   "people": [
+    "P-nathaniel"
+   ],
+   "verdict": "source",
+   "src": "S-census-1790-nc",
+   "note": "The index puts John Biven on this page: possibly Nathaniel's son John, his executor in 1816. No Nathaniel.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Bivens_Nathaniel_Anson_NC_p0047.pdf",
+   "id": "1SVf9bMGwJGROc13AzdpiOaYNXKhoU2Uk",
+   "book": "Heads of Families, 1790: North Carolina",
+   "page": "37",
+   "what": "Fayette District, Anson County (continued)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "No Biven or Bivens on this page by the index; the OCR shows none either.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Bivens_Nathaniel_Anson_NC_p0186.pdf",
+   "id": "1kM9JlbDmCBK8xf5vjUba0528ELioZRWc",
+   "book": "Heads of Families, 1790: North Carolina",
+   "page": "176",
+   "what": "Salisbury District, Rowan County",
+   "people": [
+    "P-benjamin"
+   ],
+   "verdict": "source",
+   "src": "S-census-1790-nc",
+   "note": "The index puts Corbin, Leonard and Randal Biven on this page: candidate households for Benjamin's real family (C16).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Bivens_Nathaniel_Anson_NC_p0215.pdf",
+   "id": "10YKTbhwIIeBCTPrfrSq-Cz9m7cHt8kW5",
+   "book": "Heads of Families, 1790: North Carolina",
+   "page": "205 (index)",
+   "what": "The volume's index, Bennet to Black",
+   "people": [
+    "P-nathaniel",
+    "P-benjamin"
+   ],
+   "verdict": "source",
+   "src": "S-census-1790-nc",
+   "note": "Biven, John 36; Biven, Corbin, Leonard and Randal 176; no Nathaniel Biven indexed on the Anson pages.",
+   "read": "2026-11-26"
+  }
+ ]
+}
