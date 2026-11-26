@@ -1,11 +1,11 @@
 {
- "built": "2026-11-26T05:51:14Z",
- "checked": "2026-11-26T05:51:14Z",
+ "built": "2026-11-26T05:51:32Z",
+ "checked": "2026-11-26T05:51:32Z",
  "version": 2,
  "today": "2026-11-25",
  "sources": {
   "queues": {
-   "read": 27,
+   "read": 28,
    "of": 28
   },
   "titan_loop": {
@@ -19,38 +19,38 @@
    "synced": "2026-11-25T05:37:41Z"
   },
   "titan_scores": 181,
-  "hub_scores": 210,
+  "hub_scores": 225,
   "pending_scores": 3
  },
  "totals": {
-  "todo": 62,
-  "late": 0,
+  "todo": 67,
+  "late": 2,
   "due7": 8,
   "delivered": 0,
   "queued": 9,
-  "withdrawn": 181
+  "withdrawn": 183
  },
  "per": {
   "Gemini": {
-   "todo": 47,
+   "todo": 49,
    "late": 0,
    "due7": 1,
    "delivered": 0,
    "queued": 2,
-   "done7": 231,
+   "done7": 237,
    "withdrawn": 69,
-   "items": 777,
+   "items": 807,
    "floor": 50,
    "by": {
-    "hub": 45,
+    "hub": 47,
     "titan": 1,
     "tproj": 1,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 281,
-    "avg": 8.27,
+    "n": 292,
+    "avg": 8.23,
     "last10": 8.5,
     "last": {
      "ai": "Gemini",
@@ -64,17 +64,17 @@
    }
   },
   "Grok": {
-   "todo": 0,
-   "late": 0,
+   "todo": 2,
+   "late": 2,
    "due7": 0,
    "delivered": 0,
    "queued": 0,
    "done7": 1,
-   "withdrawn": 62,
-   "items": 0,
+   "withdrawn": 63,
+   "items": 2,
    "floor": 0,
    "by": {
-    "hub": 0,
+    "hub": 2,
     "titan": 0,
     "tproj": 0,
     "board": 0
@@ -96,26 +96,26 @@
    }
   },
   "Muse": {
-   "todo": 8,
+   "todo": 9,
    "late": 0,
    "due7": 6,
    "delivered": 0,
    "queued": 5,
-   "done7": 9,
+   "done7": 11,
    "withdrawn": 44,
-   "items": 142,
+   "items": 157,
    "floor": 3,
    "by": {
-    "hub": 3,
+    "hub": 4,
     "titan": 3,
     "tproj": 2,
     "board": 0
    },
    "probation": false,
    "scores": {
-    "n": 61,
-    "avg": 8.52,
-    "last10": 9.1,
+    "n": 65,
+    "avg": 8.6,
+    "last10": 9.4,
     "last": {
      "ai": "Muse",
      "n": 209,
@@ -134,7 +134,7 @@
    "delivered": 0,
    "queued": 0,
    "done7": 0,
-   "withdrawn": 6,
+   "withdrawn": 7,
    "items": 45,
    "floor": 0,
    "by": {
@@ -399,6 +399,15 @@
     "Gemini": 6
    }
   },
+  "Midas Ledger": {
+   "todo": 5,
+   "delivered": 0,
+   "by": {
+    "Gemini": 2,
+    "Grok": 2,
+    "Muse": 1
+   }
+  },
   "Titan": {
    "todo": 9,
    "delivered": 0,
@@ -452,11 +461,6 @@
    "by": {}
   },
   "Mythos": {
-   "todo": 0,
-   "delivered": 0,
-   "by": {}
-  },
-  "Midas Ledger": {
    "todo": 0,
    "delivered": 0,
    "by": {}
@@ -18125,6 +18129,809 @@
   },
   {
    "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-12",
+   "title": "TRIAL 5: break the Midas terms parser on paper (30 cases, predict what the code returns)",
+   "status": "done",
+   "due": "2026-11-23",
+   "items": 30,
+   "closed": "2026-11-20",
+   "review": "Scored 8 (trial 5). Claude ran all 30 through build.py: 24 of 30 predictions exact; the 6 misses share one blind spot (the 'as of' date is read from the whole line, so it survives separators and labels that break the other fields). Real parser gaps found, inside what BOOK_SCHEMA.md promises: 'no deferred interest' sets deferred_interest (case 26), a non-zero promo rate beside a promo end is dropped (case 21), and three minor ones ('due 15th', 'promo' inside the due segment, 'thru' in the first promo pattern). Over-claimed: '27 of 30 real parser gaps' counts issuer wordings the book never promised to read (the book is written in the schema's own form). The issuer quotes could not be opened from Claude's machine. Gaps go to Joseph before the parser changes (protected internal).",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "TRIAL (do these first, in this order): a measured test of what this model can do; scored against answers or measurements Claude holds, not by opinion. Executing code in your head, exactly. build.py's parse_terms (line 1767) turns a card's terms bullet into purchase APR, promo APR, promo end and due day; docs/BOOK_SCHEMA.md says what it must accept. The 25 cases in test/parser_cases.json already pass. You write 30 new ones and predict, for each, what the code returns today.",
+    "steps": [
+     "Read parse_terms and every function it calls, and BOOK_SCHEMA.md.",
+     "Write 15 'real' cases: a terms wording a real US card issuer uses in its cardmember agreement or pricing page (cite the page, quote it under 300 characters), written as a book terms bullet. 'expect' is what BOOK_SCHEMA.md says the book means.",
+     "Write 15 'edge' cases aimed at the gaps: separators, case, spacing, dates, 0 vs missing, several rates on one line, words in a different order, deferred interest.",
+     "For every case, 'predict' is what build.py returns today, worked out from the code line by line (not what it should return), and 'why' names the lines.",
+     "Made-up numbers and names only. No real account data."
+    ],
+    "make": "midas_gemini_parser-trial_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/19qbU6WlR_6xCWIN8BoQFw4lCujSKzV7d)",
+    "shape": "JSON array of 30 objects in test/parser_cases.json's format plus kind, predict, why, source_url, quote",
+    "done": "30 cases, each with expect, predict and why.",
+    "checks": [
+     "Claude runs all 30 through build.py. Score: predictions that match the code exactly; expectations that match BOOK_SCHEMA.md; real parser gaps found (each is a bonus)."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-01",
+   "title": "12 debt payoff cases worked to the cent",
+   "status": "done",
+   "due": "2026-11-09",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Midas is getting a payoff planner (avalanche, snowball and Joseph's own order). Claude checks its engine against cases worked by someone else. No real balances: every case is made up.",
+    "steps": [
+     "Make 12 made-up cases: 4 avalanche, 4 snowball, 4 'custom order'. Each has 2 to 6 debts (name, balance, APR %, minimum payment) and one monthly budget at least the sum of the minimums.",
+     "Rules, exactly: each month, interest = balance x APR / 12 / 100, rounded to the cent (half up); add it to the balance; pay every minimum (or the whole balance if smaller); the rest of the budget goes to the target debt (avalanche = highest APR, snowball = lowest balance, custom = the order you list); if the target is paid off with money left, the rest goes to the next target the same month; when a debt hits 0 its minimum joins the rest from the next month.",
+     "Work every case month by month until every balance is 0.",
+     "At least 3 cases must run longer than 36 months and at least 2 must have a debt paid off in the same month another target changes."
+    ],
+    "make": "midas_gemini_payoff-cases_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "[{\"case\":1,\"method\":\"avalanche\",\"budget\":900,\"debts\":[{\"name\":\"Card A\",\"balance\":4210.55,\"apr\":24.99,\"min\":95}],\"months\":[{\"m\":1,\"interest\":{\"Card A\":87.68},\"paid\":{\"Card A\":900},\"balance\":{\"Card A\":3398.23}}],\"payoff_month\":{\"Card A\":6},\"total_interest\":312.40}] (12 objects)",
+    "done": "12 cases, every month listed, and Claude's engine gets the same balance for every debt in every month.",
+    "checks": [
+     "Claude runs all 12 cases through its own engine; a balance more than $0.01 off in any month makes that case wrong.",
+     "Claude checks the 36-month and same-month conditions."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-02",
+   "title": "20 research findings on what really helps people pay off debt, each with its DOI",
+   "status": "done",
+   "due": "2026-11-10",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph: the app must inspire him to get out of debt. Claude designs from evidence, not slogans.",
+    "steps": [
+     "Find 20 different published studies or official reports about paying down debt, motivation, small wins, framing, mental accounting, or progress feedback.",
+     "For each: full citation, DOI or official URL, the one finding in one sentence with its number (effect size, percent or dollars), and one concrete thing Midas should show because of it (a screen element, not advice).",
+     "Quote the abstract sentence the finding comes from, word for word."
+    ],
+    "make": "midas_gemini_debt-research_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "[{\"n\":1,\"citation\":\"Gal, D. & McShane, B. (2012) ...\",\"doi\":\"10....\",\"finding\":\"...\",\"quote\":\"exact sentence from the abstract\",\"midas\":\"show ...\"}] (20 objects)",
+    "done": "20 real studies, every DOI resolves to that paper, every quote is in its abstract.",
+    "checks": [
+     "Claude resolves all 20 DOIs and searches each quote in the abstract.",
+     "One invented paper or invented quote = the whole file is rejected."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-03",
+   "title": "15 money apps taken apart: 75 things that make people keep going",
+   "status": "done",
+   "due": "2026-11-11",
+   "items": 75,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Midas looked 'neon' and uninspiring. Claude wants the specific moves the best apps use.",
+    "steps": [
+     "Apps: YNAB, Monarch Money, Copilot Money, Rocket Money, Undebt.it, Debt Payoff Planner, EveryDollar, Simplifi, Empower, Lunch Money, Actual Budget, Goodbudget, Origin, PocketGuard, Tiller.",
+     "For each app, 5 specific things on its screens that make you want to keep paying down or keep checking in (example: 'debt-free date shown under the total and it moves when you add a payment').",
+     "Each row: app, the screen it is on, what it does, a URL where it can be seen (a screenshot page, help article or store listing), and how Midas could do it better."
+    ],
+    "make": "midas_gemini_app-teardown_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "[{\"app\":\"YNAB\",\"screen\":\"...\",\"move\":\"...\",\"url\":\"https://...\",\"midas\":\"...\"}] (75 objects)",
+    "done": "75 rows, 5 per app, every URL shows what the row says.",
+    "checks": [
+     "Claude opens 15 URLs at random.",
+     "Rows that only praise ('beautiful design') do not count."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-04",
+   "title": "Minimum payment formulas of 25 US card issuers, quoted from their cardholder agreements",
+   "status": "done",
+   "due": "2026-11-12",
+   "items": 25,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Midas's payoff engine (src/plan.js) keeps each minimum fixed; real minimums fall as the balance falls. The engine needs each issuer's real formula.",
+    "steps": [
+     "Take the 25 largest US card issuers (Chase, American Express, Citi, Capital One, Bank of America, Discover, Synchrony, Wells Fargo, U.S. Bank, Barclays, Goldman Sachs/Apple Card, PNC, TD Bank, Navy Federal, USAA, Truist, Credit One, Comenity/Bread, Fifth Third, Citizens, Huntington, Regions, KeyBank, BMO, First National).",
+     "From each one's own cardholder agreement or pricing page, copy the minimum payment rule: the percent of balance, what is added (interest, fees, past due), the dollar floor, and when the whole balance is due instead.",
+     "Write the rule as a formula over balance B, interest I, fees F: e.g. max(35, 0.01*B + I + F), or B when B < 35."
+    ],
+    "make": "midas_gemini_minimums_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "[{\"n\":1,\"issuer\":\"...\",\"product\":\"the card or card family the agreement covers\",\"formula\":\"max(40, 0.01*B + I + F)\",\"floor_usd\":40,\"pct_of_balance\":1,\"adds\":[\"interest\",\"fees\"],\"url\":\"https://...\",\"quote\":\"...\"}]",
+    "done": "25 issuers, each formula traceable to the quoted agreement text.",
+    "checks": [
+     "Claude opens 10 agreements at random and recomputes the formula from the quote.",
+     "Claude runs each formula on B=5000, I=80, F=0 and on B=20."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-05",
+   "title": "How 25 issuers compute interest: balance method, day count, compounding, grace",
+   "status": "done",
+   "due": "2026-11-13",
+   "items": 25,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Midas computes balance x APR / 12. Real cards compound daily on an average daily balance; the gap matters on large balances.",
+    "steps": [
+     "For the same 25 issuers as MID-GEM-04: from the agreement's 'How we calculate your balance / interest' section copy the balance method (e.g. average daily balance including new transactions), the daily periodic rate (APR/365 or /360), whether interest compounds daily, the grace period in days and the minimum interest charge."
+    ],
+    "make": "midas_gemini_interest_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "[{\"n\":1,\"issuer\":\"...\",\"method\":\"average daily balance (including new transactions)\",\"day_count\":365,\"daily_compounding\":true,\"grace_days\":25,\"min_interest_usd\":1.0,\"url\":\"https://...\",\"quote\":\"...\"}]",
+    "done": "25 rows, every field quoted or marked null with the reason in quote.",
+    "checks": [
+     "Claude opens 10 at random.",
+     "day_count must be 360 or 365; grace_days a whole number."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-06",
+   "title": "20 promo-rate products: deferred interest or true 0 %, quoted",
+   "status": "done",
+   "due": "2026-11-14",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Midas shows promo rates but does not model them; a deferred-interest promo charges all the back interest if not paid off in time.",
+    "steps": [
+     "Pick 20 products a US consumer meets: 10 store cards (Synchrony / Comenity / TD retail cards), 5 buy-now-pay-later (Affirm, Klarna, Afterpay, PayPal Pay Later, Zip), 5 balance-transfer cards.",
+     "From each product's own terms page: promo type (deferred interest or 0 % intro APR), promo length, what happens when it ends, the go-to APR, the fee."
+    ],
+    "make": "midas_gemini_promos_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "[{\"n\":1,\"product\":\"...\",\"issuer\":\"...\",\"type\":\"deferred\",\"months\":12,\"at_end\":\"interest from the purchase date on the whole amount\",\"go_to_apr\":29.99,\"fee\":\"none\",\"url\":\"https://...\",\"quote\":\"...\",\"seen\":\"2026-11-14\"}]",
+    "done": "20 products, each type quoted from its own terms.",
+    "checks": [
+     "Claude opens every URL.",
+     "type must be deferred or zero_intro, never both."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-07",
+   "title": "25 hardship programs: what each lender offers and how to ask",
+   "status": "done",
+   "due": "2026-11-15",
+   "items": 25,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The way out of debt is faster with a lower APR. Many issuers have hardship or APR-reduction programs; Joseph should know what to ask for.",
+    "steps": [
+     "For 25 lenders (the 25 issuers above; swap in Discover Personal Loans, SoFi, LendingClub, Upstart for any with no public page): the program name, what it offers (APR cut, fee waiver, fixed payment plan, months), who qualifies, the phone path or web page to ask, and what it does to the account (closed, frozen, reported).",
+     "Quote the issuer's own page; when only the CFPB or a state regulator documents it, cite that page."
+    ],
+    "make": "midas_gemini_hardship_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "[{\"n\":1,\"lender\":\"...\",\"program\":\"...\",\"offers\":\"APR lowered to 9.99 % for 12 months\",\"qualifies\":\"...\",\"how_to_ask\":\"call the number on the back of the card, ask for the hardship team\",\"account_effect\":\"card frozen during the plan\",\"url\":\"https://...\",\"quote\":\"...\"}]",
+    "done": "25 rows, every offer quoted.",
+    "checks": [
+     "Claude opens 10 at random."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-08",
+   "title": "12 daily-compounding interest cases worked to the cent",
+   "status": "done",
+   "due": "2026-11-16",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Before Midas switches to daily interest (MID-GEM-05), Claude needs cases worked by hand to test it against.",
+    "steps": [
+     "Make 12 cases with balances between 500 and 25,000, APRs between 9.99 and 29.99, three 30-day cycles each, one payment per cycle on day 20 (amount of your choice), no new purchases.",
+     "Daily periodic rate = APR / 365 / 100; interest accrues on the day's balance and is added at the end of each cycle (state whether it compounds daily or monthly; do both for cases 1-3).",
+     "Write every cycle: start balance, sum of daily balances, average daily balance, interest (rounded half up to the cent), payment, end balance."
+    ],
+    "make": "midas_gemini_dailycases_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "[{\"case\":1,\"balance\":5000.00,\"apr\":24.99,\"payment_day\":20,\"payments\":[200,200,200],\"compounding\":\"monthly\",\"cycles\":[{\"start\":5000.00,\"sum_daily\":147800.00,\"adb\":4926.67,\"interest\":101.19,\"payment\":200.00,\"end\":4901.19}]}] (days 1-19 at 5000.00, days 20-30 at 4800.00)",
+    "done": "12 cases x 3 cycles; Claude recomputes every number in Python.",
+    "checks": [
+     "A cycle off by more than 1 cent = the case fails; 2 failing cases = the file is sent back."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-09",
+   "title": "Midas Ledger: how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages",
+   "status": "done",
+   "due": "2026-11-19",
+   "items": 15,
+   "closed": "2026-11-20",
+   "review": "Done 2026-11-20: the 2040 file is the Hub Money pillar's Flex rules (pillars/money/flex.js, built 2026-11-17 with rows 7 and 15 corrected). Claude's check on 2026-11-20: the page cited for 13 rows (citi.com/credit-cards/citi-flex-plan) is not found by search and its quotes are not Citi's wording, so every row now links the Citi page that states it, row 6 ('6 to 60 months') and row 10 ('Interest Saving Balance') are corrected and four rows are marked unconfirmed. The 1940 redo repeated the same URL and quotes; it is not used. Scores in collaborators/CONTRIBUTOR_SCORES.md.",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+    "steps": [
+     "Citi's own product pages, FAQs and card agreements only; the CFPB page on payment allocation for the federal rule."
+    ],
+    "make": "midas_gemini_flex-terms_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below and nothing else",
+    "done": "15 rows exactly in the shape, every self-check line true.",
+    "checks": [
+     "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-10",
+   "title": "Midas Ledger: 25 test cases for the ledger parser",
+   "status": "done",
+   "due": "2026-11-22",
+   "items": 25,
+   "closed": "2026-11-20",
+   "review": "Done 2026-11-20: built as test/test_parser_cases.py (fixture test/parser_cases.json), run by npm run check. Claude ran all 25 cases of the 1940 file through build.py: 22 give the parser's values (7 under a field name build.py does not write: corrected in the fixture), case 18 and 24 rewritten in the schema's syntax, case 10 kept as an expected failure (the parser does not read 'apr 0% promo until DATE'; a parser change needs Joseph's OK). Score 8.",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+    "steps": [
+     "Read BOOK_SCHEMA.md and build.py.",
+     "Write 25 cases, at least two for every rule in BOOK_SCHEMA.md (ids with letter suffixes, $0 vs unknown minimums, promo vs purchase APR, Flex as installment, mortgage P&I/escrow/half-draft, net worth INCOMPLETE).",
+     "Made-up numbers only, never Joseph's real figures."
+    ],
+    "make": "midas_gemini_parser-cases_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "JSON array, one object per case",
+    "done": "25 rows exactly in the shape, every self-check line true.",
+    "checks": [
+     "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-11",
+   "title": "Midas Ledger: the function spec, written as the build plan",
+   "status": "done",
+   "due": "2026-11-30",
+   "items": 1,
+   "closed": "2026-11-21",
+   "review": "Done 2026-11-21 (Claude): the redo passes every check; a few refs point near the rule rather than at it (build.py:469-472 and BOOK_SCHEMA.md:26 for the autopay rule). Score 9/10 (#13).",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+    "steps": [
+     "Open the live page (https://jpavia10.github.io/midas-ledger/ (locked; run it locally with ?hud=1 for the made-up book, README 'Pages')) on a phone-sized browser and use every section.",
+     "Read the code (https://github.com/jpavia10/midas-ledger): every file the page loads, and pillar.json.",
+     "Write section A from what is there now, with file:line for each item; then B to H.",
+     "Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'."
+    ],
+    "make": "midas_gemini_function-spec_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not",
+    "done": "1 file exactly in the shape, every self-check line true.",
+    "checks": [
+     "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-13",
+   "title": "Midas: 60 real promo, deferred-interest and minimum-payment wordings from 20 issuers' card agreements (test corpus only)",
+   "status": "done",
+   "due": "2026-12-03",
+   "items": 60,
+   "closed": "2026-11-22",
+   "review": "Done 2026-11-22 (Claude): 60 verbatim clauses from 20 issuers' agreements (33 minimum, 19 promo, 4 deferred, 4 no-interest-if-paid). Data for parser tests only (the parser is protected). not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 10/10 (#14 in Midas).",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The terms parser is tested on 55 cases; real agreements word promotions in many more ways. A larger real corpus shows what it misses before any change is made.",
+    "steps": [
+     "From 20 different issuers' current agreements, copy 60 sentences that state a promotional APR and its end, a deferred-interest promotion, a 'no interest if paid in full' offer, or a minimum-payment formula (3 per issuer).",
+     "For each: the issuer, the agreement's date, the exact sentence (under 300 characters), and what it means in plain terms: apr, promo_apr, promo_end rule, deferred_interest yes/no, min_payment formula.",
+     "Do not run or change the parser; this is data."
+    ],
+    "make": "midas_gemini_terms-corpus_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/19qbU6WlR_6xCWIN8BoQFw4lCujSKzV7d)",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "60 sentences from 20 issuers, each from the CFPB database or the issuer.",
+    "checks": [
+     "Claude opens 10 agreements and runs all 60 through build.py's parse_terms."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-14",
+   "title": "Midas: 40 statement-line phrasings of promo and deferred-interest balances, from issuers' public sample statements",
+   "status": "done",
+   "due": "2026-12-06",
+   "items": 40,
+   "closed": "2026-11-23",
+   "review": "Scored 10/10 (#15)",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The parser reads statements; real phrasings make its tests honest (data only: the parser itself is protected).",
+    "steps": [
+     "Find 40 lines, at least 5 issuers, that show a promotional or deferred-interest balance, its end date, or the interest that would be charged.",
+     "Copy each line exactly as the sample statement prints it."
+    ],
+    "make": "midas_gemini_statement-lines_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/19qbU6WlR_6xCWIN8BoQFw4lCujSKzV7d)",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "40 lines from at least 5 issuers.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-15",
+   "title": "Midas: 30 minimum-payment and payment-due lines from issuers' sample statements",
+   "status": "todo",
+   "due": "2026-12-06",
+   "items": 30,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your 40 promo lines became test material; the other half of a statement the parser reads is the minimum payment and due date block.",
+    "steps": [
+     "Find 30 lines from at least 6 issuers that state the minimum payment, the payment due date, the late fee, or the minimum payment warning.",
+     "Copy each line exactly as printed."
+    ],
+    "make": "midas_gemini_payment-lines_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/19qbU6WlR_6xCWIN8BoQFw4lCujSKzV7d)",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "30 lines from at least 6 issuers.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GEM-16",
+   "title": "Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits",
+   "status": "todo",
+   "due": "2026-12-28",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Your tax-limits packet got every 2026 headline figure right, including California's $5,900. The book needs the whole tables to compute a year: every bracket, the capital-gains thresholds, AMT, the credits that phase out, and California's schedules for 2027 once FTB posts them.",
+    "steps": [
+     "Federal 2026 and 2027: every bracket edge for Single, Married filing jointly and Head of household; 0/15/20 % capital-gains thresholds; the 3.8 % NIIT thresholds (statutory, not indexed: say so); AMT exemption and phase-out; Child Tax Credit and its phase-out; the earned income credit table for 0-3 children.",
+     "California 2026 and 2027: every bracket edge for Single and Joint, the personal and dependent exemption credits and their phase-out, the mental health services tax threshold.",
+     "Each row from the revenue procedure or FTB page with section or table number; a 2027 California row is 'not stated' until FTB posts it, with the date you checked."
+    ],
+    "make": "midas_gemini_rate-tables-2026-2027_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/19qbU6WlR_6xCWIN8BoQFw4lCujSKzV7d)",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every federal table for both years and California's 2026 tables; California 2027 filled once FTB posts it (check again after Dec 20).",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Grok",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GRK-01",
+   "title": "Give every debt in the book its APR, minimum, due day, limit and promo end",
+   "status": "todo",
+   "due": "2026-11-09",
+   "items": 1,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The new Debt screen plans the way out: it needs, for every card and loan, the numbers the bank shows. Without them it can only show balances.",
+    "steps": [
+     "For every card and loan in the private ledger, add: apr (percent), min_payment, due_day (1-31), credit_limit (cards), promo_apr and promo_end (YYYY-MM-DD) when there is one, as_of (the statement date you read them from).",
+     "Read them from the statements and alerts in Joseph's email or the lender's site, never from memory.",
+     "Rebuild and encrypt the book with publish.sh as you do now; the plaintext never goes to Drive, Discord or GitHub."
+    ],
+    "make": "the encrypted book (index.html #vault) via publish.sh",
+    "folder": "jpavia10/midas-ledger, a branch grok/... and a pull request",
+    "shape": "docs/BOOK_SCHEMA.md section 'debts'",
+    "done": "On the Debt screen, no card or loan shows 'APR missing' or 'minimum missing'.",
+    "checks": [
+     "Joseph opens the Debt screen; the app lists every debt missing a field.",
+     "test/book.test.mjs checks the shape of every debt."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_grok.md"
+   },
+   "late": true
+  },
+  {
+   "ai": "Grok",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GRK-02",
+   "title": "A fresh book every Monday by noon PT",
+   "status": "todo",
+   "due": "2026-11-09",
+   "items": 1,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "A ledger more than a week old makes every number on the screen a guess.",
+    "steps": [
+     "Every Monday by 12:00 PT: refresh the 4 Plaid accounts, update balances, holds, stale/past-due/need-you marks, rebuild and encrypt with publish.sh.",
+     "Add one log line saying what changed (counts only, no amounts)."
+    ],
+    "make": "the encrypted book",
+    "folder": "jpavia10/midas-ledger",
+    "shape": "as now",
+    "done": "The app's 'built' stamp is never older than 7 days.",
+    "checks": [
+     "the app shows the build age; Claude checks the commit dates"
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_grok.md"
+   },
+   "late": true
+  },
+  {
+   "ai": "Grok",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GRK-04",
+   "title": "Midas Ledger: second reader on Gemini's 'the function spec, written as the build plan'",
+   "status": "withdrawn",
+   "due": "2026-11-27",
+   "items": 10,
+   "closed": "2026-11-23",
+   "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month). Claude reads the spec against the code when it builds.",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+    "steps": [
+     "Open Gemini's file and the code it describes.",
+     "Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.",
+     "Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.",
+     "List up to 10 things the pillar needs that the spec leaves out, each with why."
+    ],
+    "make": "midas_grok_function-spec-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
+    "done": "Every picked item checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_grok.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-MUS-01",
+   "title": "The words of the way out: 24 milestone lines and 12 screen lines",
+   "status": "done",
+   "due": "2026-11-10",
+   "items": 36,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "When a card hits zero or the debt-free date moves closer, Midas says so. The lines must be plain and true, never cheesy.",
+    "steps": [
+     "24 milestone lines, one per event: first payment logged; each of 5%, 10%, 25%, 33%, 50%, 66%, 75%, 90%, 100% of starting debt paid; first card paid off; each further card paid off; debt-free date moves 1 month closer; 3, 6, 12 months in a row on plan; a month over plan; a month under plan (kind, no guilt); a new debt added (no guilt, a plan).",
+     "Each at most 90 characters, no exclamation marks, no emoji, uses {amount}, {months}, {name} where a number belongs (never a made-up number).",
+     "12 screen lines: one plain sentence under each main number on Home, Debt and Flow saying what it means."
+    ],
+    "make": "midas_muse_milestones_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "two tables: event | line ; number | line",
+    "done": "36 lines, all within the limits.",
+    "checks": [
+     "Claude counts characters and placeholders."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-MUS-02",
+   "title": "Midas Ledger: second reader on Gemini's '25 test cases for the ledger parser'",
+   "status": "done",
+   "due": "2026-11-25",
+   "items": 15,
+   "closed": "2026-11-20",
+   "review": "Done 2026-11-20: both reads (1725, 1615) were exact; Claude's own run of the next version through build.py agrees with the recheck's findings (case 10's promo wording). Scores 10 and 10.",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+    "steps": [
+     "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+     "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+    ],
+    "make": "midas_muse_parser-cases-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
+    "done": "Every picked item checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-MUS-03",
+   "title": "Midas Ledger: second reader on Gemini's 'how a Citi Flex Plan and a Citi Flex Loan really work, from Citi's own pages'",
+   "status": "done",
+   "due": "2026-11-22",
+   "items": 15,
+   "closed": "2026-11-20",
+   "review": "Done 2026-11-20: 11 of 15 rules confirmed, rows 6, 7, 10 and 15 caught; the hub's Flex rows now carry these checks. One point lost: the shared Citi URL and paraphrased quotes were not flagged. Score 9.",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+    "steps": [
+     "Open Gemini's file. Pick 15 rows at random (every row if fewer).",
+     "For each, open its URL and compare every field with the page: agree, or what the page says instead.",
+     "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+    ],
+    "make": "midas_muse_flex-terms-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing",
+    "done": "Every picked item checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Muse",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-MUS-04",
+   "title": "Midas: second reader on Gemini's 60 verbatim card-agreement clauses",
+   "status": "todo",
+   "due": "2026-12-03",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The clauses become test material for the statement parser; a wrong clause would teach the tests a wrong case.",
+    "steps": [
+     "Pick 15 clauses at random (say how), covering every 'kind'.",
+     "Open each URL and check the quote is the agreement's own words, and that 'kind' and 'means' say what the clause says.",
+     "List any clause whose agreement date is not on the document."
+    ],
+    "make": "midas_muse_terms-check_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/ (https://drive.google.com/drive/folders/19qbU6WlR_6xCWIN8BoQFw4lCujSKzV7d)",
+    "shape": "markdown table: n | Gemini says | what I found | URL | agree/differ",
+    "done": "Every picked clause checked with where you looked.",
+    "checks": [
+     "Claude re-checks 3 of your differ lines."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_muse.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "ChatGPT",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-GPT-01",
+   "title": "Audit Midas v2 on the made-up book: 20 findings",
+   "status": "withdrawn",
+   "due": "2026-11-14",
+   "items": 20,
+   "closed": "",
+   "review": "Parked 2026-11-23 (Claude): Joseph relies on Gemini from now on.",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "After Claude ships the new design, a second pair of eyes on it.",
+    "steps": [
+     "Use every tab on a phone-sized screen.",
+     "20 findings: where / what is wrong / fix / severity 1-3; at least 6 about whether it makes you want to pay debt down."
+    ],
+    "make": "midas_chatgpt_audit_{YYYYMMDD-HHMM}.md",
+    "folder": "Prometheus Hub/Pillars/Midas Ledger/incoming (AI drop files)/",
+    "shape": "numbered list, 20 items",
+    "done": "20 findings Claude can reproduce.",
+    "checks": [
+     "Claude reproduces 5 at random."
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_chatgpt.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Claude",
+   "src": "hub",
+   "where": "Midas Ledger",
+   "pid": "midas",
+   "id": "MID-CLA-01",
+   "title": "Midas v2: a new design that makes the way out of debt visible",
+   "status": "done",
+   "due": "2026-11-08",
+   "items": 1,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph: 'that whole app needs a 100000 percent better design. Its embarrassing and not inspiring me to get out of debt.'",
+    "steps": [
+     "Prometheus look (cool midnight, depth, light), not neon",
+     "Home leads with the debt-free date and the distance covered",
+     "a payoff planner checked against MID-GEM-01"
+    ],
+    "make": "the app",
+    "folder": "jpavia10/midas-ledger main",
+    "shape": "live page",
+    "done": "Live on Pages, the encrypted book still opens, every test passes.",
+    "checks": [
+     "npm run check",
+     "phone + desktop screenshots"
+    ],
+    "link": "https://github.com/jpavia10/midas-ledger/blob/main/docs/agents/QUEUE_claude.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
    "src": "titan",
    "where": "Titan",
    "pid": "titan",
@@ -23894,6 +24701,141 @@
    "task": "none (owner: \"Gemini made a new intro splash i dont see that yet\")",
    "where": "Prometheus Hub",
    "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 1,
+   "date": "2026-11-20",
+   "what": "midas_gemini_flex-terms_20261116-2040.json",
+   "task": "MID-GEM-09",
+   "where": "Midas Ledger",
+   "score": 6.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 2,
+   "date": "2026-11-20",
+   "what": "midas_gemini_flex-terms_20261118-1940.json",
+   "task": "MID-GEM-09",
+   "where": "Midas Ledger",
+   "score": 6.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 3,
+   "date": "2026-11-20",
+   "what": "midas_gemini_parser-cases_20261117-1047.json",
+   "task": "MID-GEM-10",
+   "where": "Midas Ledger",
+   "score": 3.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 4,
+   "date": "2026-11-20",
+   "what": "midas_gemini_parser-cases_20261117-1735.json",
+   "task": "MID-GEM-10",
+   "where": "Midas Ledger",
+   "score": 7.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 5,
+   "date": "2026-11-20",
+   "what": "midas_gemini_parser-cases_20261118-1940.json",
+   "task": "MID-GEM-10",
+   "where": "Midas Ledger",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 6,
+   "date": "2026-11-20",
+   "what": "midas_gemini_function-spec_20261117-1735.md",
+   "task": "MID-GEM-11",
+   "where": "Midas Ledger",
+   "score": 5.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 7,
+   "date": "2026-11-20",
+   "what": "midas_gemini_function-spec_20261118-1940.md",
+   "task": "MID-GEM-11",
+   "where": "Midas Ledger",
+   "score": 5.0
+  },
+  {
+   "ai": "Muse",
+   "n": 8,
+   "date": "2026-11-20",
+   "what": "midas_muse_flex-terms-check_20261117-1040.md",
+   "task": "MID-MUS-03",
+   "where": "Midas Ledger",
+   "score": 9.0
+  },
+  {
+   "ai": "Muse",
+   "n": 9,
+   "date": "2026-11-20",
+   "what": "midas_muse_parser-cases-check_20261117-1725.md",
+   "task": "MID-MUS-02",
+   "where": "Midas Ledger",
+   "score": 10.0
+  },
+  {
+   "ai": "Muse",
+   "n": 10,
+   "date": "2026-11-20",
+   "what": "midas_muse_parser-cases-recheck_20261118-1615.md",
+   "task": "MID-MUS-02",
+   "where": "Midas Ledger",
+   "score": 10.0
+  },
+  {
+   "ai": "Muse",
+   "n": 11,
+   "date": "2026-11-20",
+   "what": "midas_muse_function-spec-check_20261118-1615.md",
+   "task": "MID-GEM-11",
+   "where": "Midas Ledger",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 12,
+   "date": "2026-11-20",
+   "what": "midas_gemini_parser-trial_20261120-0940.json (trial 5, 30 cases)",
+   "task": "MID-GEM-12",
+   "where": "Midas Ledger",
+   "score": 8.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 13,
+   "date": "2026-11-21",
+   "what": "midas_gemini_function-spec_20261120-2135.md (redo)",
+   "task": "MID-GEM-11",
+   "where": "Midas Ledger",
+   "score": 9.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 14,
+   "date": "2026-11-22",
+   "what": "midas_gemini_terms-corpus_20261121-1305.json",
+   "task": "MID-GEM-13",
+   "where": "Midas Ledger",
+   "score": 10.0
+  },
+  {
+   "ai": "Gemini",
+   "n": 15,
+   "date": "2026-11-23",
+   "what": "midas_gemini_statement-lines_20261123-1107.json",
+   "task": "MID-GEM-14",
+   "where": "Midas Ledger",
+   "score": 10.0
   }
  ],
  "pending_scores": [
@@ -23925,8 +24867,5 @@
    "note": "6 so far, 4 pending"
   }
  ],
- "warnings": [
-  "Midas Ledger: queue unreadable",
-  "Midas Ledger: score sheet unreadable"
- ]
+ "warnings": []
 }
