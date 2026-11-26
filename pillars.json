@@ -297,9 +297,9 @@
   },
   {
    "id": "selling",
-   "name": "Selling Pipeline",
-   "shortName": "Selling",
-   "what": "Items for sale, from listing to shipped.",
+   "name": "Agora",
+   "shortName": "Agora",
+   "what": "The marketplace: items for sale, from listing to shipped.",
    "repo": "",
    "home": "pillars/selling",
    "route": "pillars/selling/",
@@ -1088,7 +1088,7 @@
   },
   {
    "id": "selling",
-   "name": "Selling Pipeline",
+   "name": "Agora",
    "kind": "capability",
    "route": "pillars/selling/",
    "state": "live",

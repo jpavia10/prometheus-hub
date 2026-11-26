@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="dark">
+  <style>html,body{background:#0b0907}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Kin · The family album</title>
+  <meta name="description" content="The family album: every picture from the Kin media folder, checked by hand, linked to the people in the tree, with a show to play on the television.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0907">
+  <link rel="manifest" href="../../../manifest.webmanifest">
+  <link rel="icon" href="../../../icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../../../icons/apple-touch-icon.png">
+  <link rel="preload" href="../tree/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="album.css">
+</head>
+<body class="al">
+  <header class="al-top">
+    <a class="al-ic" href="../" aria-label="Back to Kin"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></a>
+    <p class="al-topt">Kin · the family album</p>
+    <a class="al-ic" href="../tree/" aria-label="The family tree"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"/><circle cx="5.5" cy="18" r="2.2"/><circle cx="18.5" cy="18" r="2.2"/><path d="M12 7.2v4.3M12 11.5l-5.2 4.6M12 11.5l5.2 4.6"/></svg></a>
+  </header>
+
+  <section class="al-hero" aria-label="The family album">
+    <div class="al-heroimgs" aria-hidden="true"></div>
+    <div class="al-herotext">
+      <p class="al-kick" id="al-kick">The family album</p>
+      <h1>From Peter Culberson's cavalry company <em>to Ada at ninety-six.</em></h1>
+      <p class="al-lede" id="al-lede"></p>
+      <div class="al-acts">
+        <button class="al-btn primary" id="al-play" type="button"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>Play the show</button>
+        <a class="al-btn" href="#who" id="al-whob">Who is this?</a>
+        <a class="al-btn quiet" href="#drive">Everything in Drive</a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="al-filter" aria-label="Filter the album">
+    <div class="al-chips" id="al-people" role="group" aria-label="People in the tree"></div>
+    <label class="al-search"><span class="sr">Search the album</span><input id="al-q" type="search" placeholder="Search names, places, years" autocomplete="off"></label>
+  </nav>
+
+  <nav class="al-toc" id="al-toc" aria-label="Chapters"></nav>
+  <main id="al-main"></main>
+
+  <section class="al-sec" id="who" aria-labelledby="who-h">
+    <header class="al-chh"><p class="al-chn">Help wanted</p><h2 id="who-h">Who is this?</h2>
+      <p class="al-chi">Pictures the family kept without a name, or with a name that does not fit. Thanksgiving is the day someone at the table knows. Tell Joseph, and the name goes into Kin with the person who knew it as the source.</p></header>
+    <div class="al-grid" id="al-who"></div>
+  </section>
+
+  <section class="al-sec" id="drive" aria-labelledby="drive-h">
+    <header class="al-chh"><p class="al-chn">The whole folder</p><h2 id="drive-h">Everything in Drive</h2>
+      <p class="al-chi" id="al-drivei"></p></header>
+    <div class="al-dsum" id="al-dsum"></div>
+    <div class="al-dtools">
+      <label class="al-search"><span class="sr">Search the Drive folder</span><input id="al-dq" type="search" placeholder="Search the 918 files" autocomplete="off"></label>
+      <div class="al-seg" id="al-dseg" role="group" aria-label="Group"></div>
+    </div>
+    <ol class="al-dlist" id="al-dlist"></ol>
+    <button class="al-btn quiet" id="al-dmore" type="button" hidden>Show more</button>
+    <details class="al-dropped"><summary>Set aside, and why</summary><ul id="al-dropped"></ul></details>
+  </section>
+
+  <footer class="al-foot"><span id="al-foot"></span><a href="../">Back to Kin</a></footer>
+
+  <div class="al-lb" id="al-lb" role="dialog" aria-modal="true" aria-label="Picture" hidden>
+    <div class="al-lbimg"><img alt="" id="al-lbimg"></div>
+    <div class="al-lbtext">
+      <p class="al-lbwhen" id="al-lbwhen"></p>
+      <p class="al-lbcap" id="al-lbcap"></p>
+      <div class="al-lbppl" id="al-lbppl"></div>
+      <p class="al-lbsrc" id="al-lbsrc"></p>
+    </div>
+    <button class="al-ic al-lbx" type="button" data-lb="close" aria-label="Close"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button class="al-ic al-lbp" type="button" data-lb="prev" aria-label="Previous picture"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="al-ic al-lbn" type="button" data-lb="next" aria-label="Next picture"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+
+  <div class="al-show" id="al-show" role="dialog" aria-modal="true" aria-label="The family album, as a show" hidden>
+    <div class="al-sbar"><i id="al-sprog"></i></div>
+    <div class="al-sstage" id="al-sstage"></div>
+    <div class="al-scard" id="al-scard" hidden></div>
+    <div class="al-stext" id="al-stext"><p class="al-sch" id="al-sch"></p><p class="al-swhen" id="al-swhen"></p><p class="al-scap" id="al-scap"></p></div>
+    <div class="al-sctl" id="al-sctl">
+      <button class="al-ic" type="button" data-s="prev" aria-label="Previous"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="al-ic" type="button" data-s="pause" id="al-spause" aria-label="Pause"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><rect x="6.5" y="5" width="3.6" height="14" rx="1"/><rect x="13.9" y="5" width="3.6" height="14" rx="1"/></svg></button>
+      <button class="al-ic" type="button" data-s="next" aria-label="Next"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      <span class="al-scount" id="al-scount"></span>
+      <button class="al-ic" type="button" data-s="close" aria-label="Close the show"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+  </div>
+
+  <script src="../lineage/data.js"></script>
+  <script src="../lineage/album.js"></script>
+  <script src="catalog.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

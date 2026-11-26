@@ -588,7 +588,7 @@ $(".tv-placecard").addEventListener("click", (e) => { const b = e.target.closest
 function allRecords() {
   const out = [];
   for (const s of L.sources) for (const im of s.img || []) out.push({ img: im, src: s.id, cap: s.short, year: s.year || null });
-  for (const m of L.media || []) if (!out.some((o) => o.img === m.img)) out.push({ img: m.img, src: m.src, cap: m.caption, year: (SRC[m.src] || {}).year });
+  for (const m of L.media || []) if (!out.some((o) => o.img === m.img)) out.push({ img: m.img, src: m.src, cap: m.caption, year: m.year || (SRC[m.src] || {}).year });
   return out.sort((a, b) => (a.year || 9999) - (b.year || 9999));
 }
 function records() {

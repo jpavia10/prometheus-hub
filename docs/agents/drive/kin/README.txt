@@ -8,16 +8,18 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-25 17:24 UTC · 0 open in this pillar.
+Updated 2026-11-26 00:04 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Kin right now.
 
 ## Gemini
 
-Updated 2026-11-25 17:24 UTC · 4 open in this pillar.
+Updated 2026-11-26 00:04 UTC · 5 open in this pillar.
 
 
+- KIN-GEM-45 · Kin album: the Interwoven Family blog's own caption for each of the album's 145 pictures · due 2026-12-05
+    make: kin_gemini_album-captions_{YYYYMMDD-HHMM}.json · how many: 145 · done when: Every picture in the album has a row: a caption, or "no caption on the blog".
 - KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line · due 2026-12-08
     make: kin_gemini_album-family_{YYYYMMDD-HHMM}.json · how many: 40 · done when: Every row an image of the family or its own records, each argued.
 - KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records · due 2026-12-10
@@ -29,7 +31,7 @@ Updated 2026-11-25 17:24 UTC · 4 open in this pillar.
 
 ## Muse
 
-Updated 2026-11-25 17:24 UTC · 3 open in this pillar.
+Updated 2026-11-26 00:04 UTC · 3 open in this pillar.
 
 
 - KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
@@ -41,21 +43,21 @@ Updated 2026-11-25 17:24 UTC · 3 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-25 17:24 UTC · 0 open in this pillar.
+Updated 2026-11-26 00:04 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Kin right now.
 
 ## Argon
 
-Updated 2026-11-25 17:24 UTC · 0 open in this pillar.
+Updated 2026-11-26 00:04 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Kin right now.
 
 ## Hydrogen
 
-Updated 2026-11-25 17:24 UTC · 0 open in this pillar.
+Updated 2026-11-26 00:04 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Kin right now.

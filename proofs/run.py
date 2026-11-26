@@ -515,7 +515,7 @@ with sync_playwright() as p:
         if pin: p3.mouse.click(pin[1], pin[2]); p3.wait_for_timeout(500)
         gl["card"] = p3.evaluate("document.querySelectorAll('.tv-placecard:not([hidden]) li').length")
         p3.evaluate("KIN3D.mode('records')"); p3.wait_for_timeout(700)
-        rec = p3.evaluate("() => ({ n: document.querySelectorAll('#tv-records .tv-rec').length, imgs: window.KIN_LINEAGE.sources.reduce((a, s) => a + (s.img || []).length, 0) })")
+        rec = p3.evaluate("() => ({ n: document.querySelectorAll('#tv-records .tv-rec').length, imgs: new Set(window.KIN_LINEAGE.sources.flatMap((s) => s.img || []).concat((window.KIN_LINEAGE.media || []).map((m) => m.img))).size })")
         p3.evaluate("KIN3D.mode('research')"); p3.wait_for_timeout(500)
         rs = p3.evaluate("() => ({ kpis: document.querySelectorAll('.tv-kpis div').length, cons: document.querySelectorAll('#tv-research .tv-con').length, all: window.KIN_LINEAGE.conflicts.length, own: document.querySelectorAll('#tv-research .tv-qs li.own').length, ged: !!document.querySelector('#tv-ged') })")
         p3.evaluate("KIN3D.mode('roots')"); p3.wait_for_timeout(300)
@@ -533,6 +533,31 @@ with sync_playwright() as p:
               ok3, f"{s0['nodes']} people and {s0['links']} bridges drawn ({lit} lit pixels); tap {who} -> {tap}; Joseph {jo}; viewer {vw}; 1917 {tm['named']} named, caption {tm['cap'][:80]!r}; globe {gl['s']['pins']} places, {gl['s']['glines']} journeys, {gl['labels']} labels, tap {pin and pin[0]} -> {gl['card']} events; records {rec}; research {rs}; {frames} frames; page {wide3}px; Kin page {kd}" + (f"; errors {e3[:2]}" if e3 else ""))
         c3.close()
     except Exception as e: proof("KIN-3D", "The family tree in three dimensions", False, "did not finish: " + str(e)[:200])
+    # KIN-ALBUM (2026-11-25, owner: "Comprehensively catalog and integrate all media so its ready to show off for Thanksgiving tomorrow"): the family
+    # album (pillars/kin/album/) shows every picture in its chapters at phone width, a picture opens with its people linked into the tree, the show
+    # plays full screen with chapter cards, the Drive folder is listed in full, a person's link (#P-id) filters, and the tree and Kin page carry the pictures
+    try:
+        c5 = b.new_context(viewport={"width": 384, "height": 832}); p5 = c5.new_page(); e5 = []
+        p5.on("pageerror", lambda e: e5.append(str(e)[:120]))
+        p5.goto(f"{URL}pillars/kin/album/", wait_until="load"); p5.wait_for_function("window.KIN_ALBUM && window.KIN_ALBUM.ready", timeout=15000); p5.wait_for_timeout(500)
+        a0 = p5.evaluate("() => ({ items: KIN_ALBUM.items(), cards: document.querySelectorAll('#al-main .al-card').length, chapters: document.querySelectorAll('#al-main .al-sec').length, who: document.querySelectorAll('#al-who .al-card').length, chips: document.querySelectorAll('#al-people [data-p]').length, files: (window.KIN_DRIVE || {files: []}).files.length, rows: document.querySelectorAll('#al-dlist li').length, wide: document.documentElement.scrollWidth })")
+        p5.click("#al-main .al-card"); p5.wait_for_timeout(600)
+        lb5 = p5.evaluate("() => ({ open: !document.querySelector('#al-lb').hidden, img: document.querySelector('#al-lbimg').complete && document.querySelector('#al-lbimg').naturalWidth > 100, tree: [...document.querySelectorAll('#al-lbppl a')].map((a) => a.getAttribute('href')), cap: document.querySelector('#al-lbcap').textContent.length })")
+        p5.keyboard.press("Escape"); p5.click("#al-play"); p5.wait_for_timeout(900)
+        sh5 = p5.evaluate("() => ({ open: !document.querySelector('#al-show').hidden, card: !document.querySelector('#al-scard').hidden, reel: KIN_ALBUM.reel() })")
+        p5.evaluate("KIN_ALBUM.play(2)"); p5.wait_for_timeout(2200)
+        sh5["photo"] = p5.evaluate("() => { const f = document.querySelector('.al-sslide.on .fg'); return !!(f && f.complete && f.naturalWidth > 100) && document.querySelector('#al-scap').textContent.length > 10; }")
+        p5.evaluate("KIN_ALBUM.close()"); p5.evaluate("location.hash = '#P-ada'"); p5.wait_for_timeout(500)
+        f5 = p5.evaluate("KIN_ALBUM.state()")
+        p5.goto(f"{URL}pillars/kin/?still=1", wait_until="load"); p5.wait_for_selector(".ln-door-album", timeout=15000)
+        kd5 = p5.evaluate("() => document.querySelector('.ln-door-album').getAttribute('href')")
+        c5.close()
+        ok5 = (a0["items"] >= 140 and a0["cards"] == a0["items"] and a0["chapters"] >= 8 and a0["who"] >= 5 and a0["chips"] >= 8 and a0["files"] == 918 and a0["rows"] >= 100 and a0["wide"] <= 384
+               and lb5["open"] and lb5["img"] and lb5["cap"] > 10 and all(h.startswith("../tree/#P-") for h in lb5["tree"]) and len(lb5["tree"]) >= 1
+               and sh5["open"] and sh5["card"] and sh5["reel"] >= 120 and sh5["photo"] and f5["person"] == "P-ada" and 2 <= f5["shown"] < a0["items"] and kd5 == "album/" and not e5)
+        proof("KIN-ALBUM", "The family album: every picture in its chapter at phone width, a picture opens with its people linked into the tree, the show plays with its chapter cards, the whole Drive folder is listed, a person's link filters, and the Kin page has the door",
+              ok5, f"album {a0}; viewer {lb5}; show {sh5}; #P-ada {f5}; Kin door {kd5}" + (f"; errors {e5[:2]}" if e5 else ""))
+    except Exception as e: proof("KIN-ALBUM", "The family album", False, "did not finish: " + str(e)[:200])
     # WORLD-1 (2026-11-23, owner chose "living painted header"; all painted pillars since the rollout): a pillar opens on its own painting, alive (kit/world.js):
     # the canvas is drawn, the header takes its accent from the painting, the page never scrolls sideways; Athenaeum keeps its own sky
     # (no painting behind it); arriving from the menu's dive the painting starts pushed in and settles back.

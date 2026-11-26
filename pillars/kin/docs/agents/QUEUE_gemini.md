@@ -2,11 +2,65 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-25 17:24 UTC · 4 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 00:04 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line
+## 1. KIN-GEM-45 · Kin album: the Interwoven Family blog's own caption for each of the album's 145 pictures
+
+**Due:** 2026-12-05 · **State:** now
+
+**Why:** The family album (pillars/kin/album/, d88) captions every picture from its file name or from what is printed on the print, because the blog cannot be opened from Claude's session. The blog's own words name the people Claude could not (14 pictures are marked "Who is this?").
+
+**What it unlocks:** Each album picture gets the family's full caption, and the unnamed faces get names with the blog post as the source.
+
+**Read first:**
+- https://interwovenfamily.blogspot.com/2019/06/mary-tennessee-tippens-culberson.html
+- https://interwovenfamily.blogspot.com/2019/06/ada-nellie-culberson-moss.html
+- https://interwovenfamily.blogspot.com/2019/06/eliza-owens-tippens.html
+- https://interwovenfamily.blogspot.com/2019/06/peter-culberson.html
+- the blog's pages on Ida Elizabeth Martin Culberson, John Martin, Etta Luticia Brasher, Josiah S. Martin, Thomas Edward Brasher and the obituaries of Charles Ronald, Dwight Eugene and Jack B. Culberson
+- pillars/kin/album/catalog.js (each file name, with its Drive id)
+
+**Do this:**
+1. Open each blog post in the list and every post it links to on the Culberson, Moss, Tippens, Martin and Brasher families.
+2. For every photograph in the post, copy the image's file name from its URL and the caption or the sentence beside it word for word.
+3. Match each one to the Drive file name in catalog.js (the Drive names keep the blog's file name after the series prefix); write "no match" when none fits.
+4. For the 14 pictures marked Who is this? in the album, say what the blog says, and nothing it does not.
+
+**Make:** `kin_gemini_album-captions_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `drive_file` (text): the file name in catalog.js, or "no match"
+- `blog_image` (text): the image file name in the blog post's URL
+- `caption` (text): word for word from the post
+- `names` (text): every person the caption names, as written
+- `date` (text): a date only if the post gives one
+- `source_url` (url): the blog post
+
+**Before you save, check every one of these yourself:**
+- [ ] Every caption is copied word for word from the post you opened today.
+- [ ] No name, date or relationship that the post does not state.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 145
+
+**Done when:** Every picture in the album has a row: a caption, or "no caption on the blog".
+
+**How Claude checks it:**
+- Claude matches each row to the picture and updates lineage/album.js; Muse reads 10 rows blind.
+
+**Not done (sent back) if:**
+- a caption that is not word for word on the post
+- a name guessed from a face
+- rows padded to reach the count
+
+## 2. KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -61,7 +115,7 @@ Updated 2026-11-25 17:24 UTC · 4 open · Rules for every pillar: https://github
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a map, skyline or generic town picture
 
-## 2. KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records
+## 3. KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -115,7 +169,7 @@ Updated 2026-11-25 17:24 UTC · 4 open · Rules for every pillar: https://github
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - addresses of living people, phone numbers or people-search sites
 
-## 3. KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books
+## 4. KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -167,7 +221,7 @@ Updated 2026-11-25 17:24 UTC · 4 open · Rules for every pillar: https://github
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-## 4. KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900
+## 5. KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900
 
 **Due:** 2026-12-12 · **State:** now
 

@@ -1,6 +1,6 @@
 {
- "built": "2026-11-25T17:24:01Z",
- "checked": "2026-11-25T17:24:01Z",
+ "built": "2026-11-26T00:04:52Z",
+ "checked": "2026-11-26T00:04:52Z",
  "version": 2,
  "today": "2026-11-25",
  "sources": {
@@ -23,7 +23,7 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 51,
+  "todo": 52,
   "late": 2,
   "due7": 8,
   "delivered": 0,
@@ -32,17 +32,17 @@
  },
  "per": {
   "Gemini": {
-   "todo": 34,
+   "todo": 35,
    "late": 0,
    "due7": 1,
    "delivered": 0,
    "queued": 2,
    "done7": 237,
    "withdrawn": 69,
-   "items": 467,
+   "items": 612,
    "floor": 50,
    "by": {
-    "hub": 32,
+    "hub": 33,
     "titan": 1,
     "tproj": 1,
     "board": 0
@@ -299,7 +299,7 @@
     "Gemini": 2
    }
   },
-  "Selling Pipeline": {
+  "Agora": {
    "todo": 1,
    "delivered": 0,
    "by": {
@@ -335,10 +335,10 @@
    }
   },
   "Kin": {
-   "todo": 6,
+   "todo": 7,
    "delivered": 0,
    "by": {
-    "Gemini": 4,
+    "Gemini": 5,
     "Muse": 2
    }
   },
@@ -5582,7 +5582,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-01",
    "title": "Selling Pipeline: Marketplace fees as of December 2026",
@@ -5612,7 +5612,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-02",
    "title": "Selling Pipeline: USPS Ground Advantage and Priority Mail retail rates 2026",
@@ -5642,7 +5642,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-03",
    "title": "Selling Pipeline: 20 features the best reselling and listing tools have",
@@ -5674,7 +5674,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-04",
    "title": "Selling Pipeline: marketplace fees as of today",
@@ -5705,7 +5705,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-05",
    "title": "Selling Pipeline: the function spec, written as the build plan",
@@ -5738,7 +5738,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-06",
    "title": "Selling: 2026 shipping and seller-fee tables (USPS Ground Advantage and Priority, eBay, Mercari, Facebook)",
@@ -5770,7 +5770,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-07",
    "title": "Selling: USPS retail prices after the holiday price ends (from 2027-01-18)",
@@ -5802,7 +5802,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-08",
    "title": "Selling: eBay's 2026 final value fees for coins, bullion and paper money, with the bullion exception",
@@ -5832,7 +5832,7 @@
   {
    "ai": "Gemini",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GEM-09",
    "title": "Selling: eBay's coin and bullion item specifics and photo rules, category by category",
@@ -5862,7 +5862,7 @@
   {
    "ai": "Grok",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GRK-01",
    "title": "Selling Pipeline: second reader on Gemini's 'Marketplace fees as of December 2026'",
@@ -5894,7 +5894,7 @@
   {
    "ai": "Grok",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-GRK-03",
    "title": "Selling Pipeline: second reader on Gemini's 'the function spec, written as the build plan'",
@@ -5927,7 +5927,7 @@
   {
    "ai": "Muse",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-MUS-01",
    "title": "Selling Pipeline: second reader on Gemini's 'USPS Ground Advantage and Priority Mail retail rates 2026'",
@@ -5959,7 +5959,7 @@
   {
    "ai": "Muse",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-MUS-02",
    "title": "Selling Pipeline: second reader on Gemini's 'marketplace fees as of today'",
@@ -5991,7 +5991,7 @@
   {
    "ai": "Muse",
    "src": "hub",
-   "where": "Selling Pipeline",
+   "where": "Agora",
    "pid": "selling",
    "id": "SEL-MUS-03",
    "title": "Selling: second reader on Gemini's this year's postage and marketplace fees",
@@ -14937,6 +14937,39 @@
     "done": "Every year 1885-1900 read and logged.",
     "checks": [
      "Claude reads every find at full size."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-45",
+   "title": "Kin album: the Interwoven Family blog's own caption for each of the album's 145 pictures",
+   "status": "todo",
+   "due": "2026-12-05",
+   "items": 145,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The family album (pillars/kin/album/, d88) captions every picture from its file name or from what is printed on the print, because the blog cannot be opened from Claude's session. The blog's own words name the people Claude could not (14 pictures are marked \"Who is this?\").",
+    "steps": [
+     "Open each blog post in the list and every post it links to on the Culberson, Moss, Tippens, Martin and Brasher families.",
+     "For every photograph in the post, copy the image's file name from its URL and the caption or the sentence beside it word for word.",
+     "Match each one to the Drive file name in catalog.js (the Drive names keep the blog's file name after the series prefix); write \"no match\" when none fits.",
+     "For the 14 pictures marked Who is this? in the album, say what the blog says, and nothing it does not."
+    ],
+    "make": "kin_gemini_album-captions_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every picture in the album has a row: a caption, or \"no caption on the blog\".",
+    "checks": [
+     "Claude matches each row to the picture and updates lineage/album.js; Muse reads 10 rows blind."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
    },

@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-25 17:24 UTC. 36 to do across 17 pillars.
+Updated 2026-11-26 00:04 UTC. 37 to do across 17 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -22,32 +22,33 @@ IN THIS ORDER:
 4. [Privacy · CA DROP] PRI-GEM-16 · Privacy: Galaxy S24 'Maximum restrictions' row 4, only what Samsung says it does · due 2026-12-03
 5. [Hephaestus Hearth] HEA-GEM-33 · Hearth: the six deck inspections again, each with the code's own words (guard height is 36 in) · due 2026-12-04
 6. [Continuity · Sovereign Vault] CON-GEM-12 · Continuity: Vanguard and Robinhood after a death, quoted from their own pages · due 2026-12-04
-7. [Atlas · Work & Pay] ATL-GEM-01 · Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic · due 2026-12-05
-8. [Prometheus Hub] HUB-GEM-25 · Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24) · due 2026-12-06
-9. [Midas Ledger] MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements · due 2026-12-06
-10. [Polis · Civic & Legal Watch] POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
-11. [Aegis · Insurance & Cover] AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines) · due 2026-12-06
-12. [Atlas · Work & Pay] ATL-GEM-02 · Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages · due 2026-12-07
-13. [Hephaestus Hearth] HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies · due 2026-12-08
-14. [Hephaestus Hearth] HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law · due 2026-12-08
-15. [Kin] KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line · due 2026-12-08
-16. [Aegis · Insurance & Cover] AEG-GEM-02 · Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount) · due 2026-12-08
-17. [Aegis · Insurance & Cover] AEG-GEM-04 · Aegis: the California FAIR Plan, what it covers and what it leaves out · due 2026-12-08
-18. [Atlas · Work & Pay] ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each · due 2026-12-09
-19. [Money · payoff simulator] MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53) · due 2026-12-10
-20. [Athenaeum · Idea Vault] ATH-GEM-16 · History: Kern County and the Tejon Pass, 1850-2025 (40 entries) · due 2026-12-10
-21. [Kin] KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records · due 2026-12-10
-22. [Aegis · Insurance & Cover] AEG-GEM-03 · Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each · due 2026-12-10
-23. [Aegis · Insurance & Cover] AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays · due 2026-12-10
-24. [Athenaeum · Idea Vault] ATH-GEM-17 · History: the Philippines, 1898-2024 (30 entries) · due 2026-12-12
-25. [Kin] KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books · due 2026-12-12
-26. [Kin] KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900 · due 2026-12-12
-27. [Atlas · Work & Pay] ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California) · due 2026-12-12
-28. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
-29. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
-30. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-31. [Selling Pipeline] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
-32. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
+7. [Kin] KIN-GEM-45 · Kin album: the Interwoven Family blog's own caption for each of the album's 145 pictures · due 2026-12-05
+8. [Atlas · Work & Pay] ATL-GEM-01 · Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic · due 2026-12-05
+9. [Prometheus Hub] HUB-GEM-25 · Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24) · due 2026-12-06
+10. [Midas Ledger] MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements · due 2026-12-06
+11. [Polis · Civic & Legal Watch] POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
+12. [Aegis · Insurance & Cover] AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines) · due 2026-12-06
+13. [Atlas · Work & Pay] ATL-GEM-02 · Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages · due 2026-12-07
+14. [Hephaestus Hearth] HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies · due 2026-12-08
+15. [Hephaestus Hearth] HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law · due 2026-12-08
+16. [Kin] KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line · due 2026-12-08
+17. [Aegis · Insurance & Cover] AEG-GEM-02 · Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount) · due 2026-12-08
+18. [Aegis · Insurance & Cover] AEG-GEM-04 · Aegis: the California FAIR Plan, what it covers and what it leaves out · due 2026-12-08
+19. [Atlas · Work & Pay] ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each · due 2026-12-09
+20. [Money · payoff simulator] MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53) · due 2026-12-10
+21. [Athenaeum · Idea Vault] ATH-GEM-16 · History: Kern County and the Tejon Pass, 1850-2025 (40 entries) · due 2026-12-10
+22. [Kin] KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records · due 2026-12-10
+23. [Aegis · Insurance & Cover] AEG-GEM-03 · Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each · due 2026-12-10
+24. [Aegis · Insurance & Cover] AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays · due 2026-12-10
+25. [Athenaeum · Idea Vault] ATH-GEM-17 · History: the Philippines, 1898-2024 (30 entries) · due 2026-12-12
+26. [Kin] KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books · due 2026-12-12
+27. [Kin] KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900 · due 2026-12-12
+28. [Atlas · Work & Pay] ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California) · due 2026-12-12
+29. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
+30. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
+31. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+32. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
+33. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
 
 ==================== 1. GARAGE ====================
 ## 1. GAR-GEM-18 · Garage: the Sorento's Intelligent Speed Limit Assist light (row 43) from a stable manual link
@@ -344,8 +345,61 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 7. ATLAS · WORK & PAY ====================
-## 7. ATL-GEM-01 · Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic
+==================== 7. KIN ====================
+## 7. KIN-GEM-45 · Kin album: the Interwoven Family blog's own caption for each of the album's 145 pictures
+
+**Due:** 2026-12-05 · **State:** now
+
+**What it unlocks:** Each album picture gets the family's full caption, and the unnamed faces get names with the blog post as the source.
+
+**Read first:**
+- https://interwovenfamily.blogspot.com/2019/06/mary-tennessee-tippens-culberson.html
+- https://interwovenfamily.blogspot.com/2019/06/ada-nellie-culberson-moss.html
+- https://interwovenfamily.blogspot.com/2019/06/eliza-owens-tippens.html
+- https://interwovenfamily.blogspot.com/2019/06/peter-culberson.html
+- the blog's pages on Ida Elizabeth Martin Culberson, John Martin, Etta Luticia Brasher, Josiah S. Martin, Thomas Edward Brasher and the obituaries of Charles Ronald, Dwight Eugene and Jack B. Culberson
+- pillars/kin/album/catalog.js (each file name, with its Drive id)
+
+**Do this:**
+1. Open each blog post in the list and every post it links to on the Culberson, Moss, Tippens, Martin and Brasher families.
+2. For every photograph in the post, copy the image's file name from its URL and the caption or the sentence beside it word for word.
+3. Match each one to the Drive file name in catalog.js (the Drive names keep the blog's file name after the series prefix); write "no match" when none fits.
+4. For the 14 pictures marked Who is this? in the album, say what the blog says, and nothing it does not.
+
+**Make:** `kin_gemini_album-captions_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `drive_file` (text): the file name in catalog.js, or "no match"
+- `blog_image` (text): the image file name in the blog post's URL
+- `caption` (text): word for word from the post
+- `names` (text): every person the caption names, as written
+- `date` (text): a date only if the post gives one
+- `source_url` (url): the blog post
+
+**Before you save, check every one of these yourself:**
+- [ ] Every caption is copied word for word from the post you opened today.
+- [ ] No name, date or relationship that the post does not state.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 145
+
+**Done when:** Every picture in the album has a row: a caption, or "no caption on the blog".
+
+**How Claude checks it:**
+- Claude matches each row to the picture and updates lineage/album.js; Muse reads 10 rows blind.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a caption that is not word for word on the post
+- a name guessed from a face
+- rows padded to reach the count
+
+==================== 8. ATLAS · WORK & PAY ====================
+## 8. ATL-GEM-01 · Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic
 
 **Due:** 2026-12-05 · **State:** now
 
@@ -389,8 +443,8 @@ IN THIS ORDER:
 - a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 
-==================== 8. PROMETHEUS HUB ====================
-## 8. HUB-GEM-25 · Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24)
+==================== 9. PROMETHEUS HUB ====================
+## 9. HUB-GEM-25 · Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24)
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -442,8 +496,8 @@ IN THIS ORDER:
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a problem not reproduced by its measurement
 
-==================== 9. MIDAS LEDGER ====================
-## 9. MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements
+==================== 10. MIDAS LEDGER ====================
+## 10. MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -492,8 +546,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 10. POLIS · CIVIC & LEGAL WATCH ====================
-## 10. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
+==================== 11. POLIS · CIVIC & LEGAL WATCH ====================
+## 11. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -541,8 +595,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 11. AEGIS · INSURANCE & COVER ====================
-## 11. AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines)
+==================== 12. AEGIS · INSURANCE & COVER ====================
+## 12. AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines)
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -584,8 +638,8 @@ IN THIS ORDER:
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 - a quote that is not on the page word for word
 
-==================== 12. ATLAS · WORK & PAY ====================
-## 12. ATL-GEM-02 · Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages
+==================== 13. ATLAS · WORK & PAY ====================
+## 13. ATL-GEM-02 · Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages
 
 **Due:** 2026-12-07 · **State:** now
 
@@ -628,8 +682,8 @@ IN THIS ORDER:
 - a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 
-==================== 13. HEPHAESTUS HEARTH ====================
-## 13. HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies
+==================== 14. HEPHAESTUS HEARTH ====================
+## 14. HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -677,8 +731,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 14. HEPHAESTUS HEARTH ====================
-## 14. HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law
+==================== 15. HEPHAESTUS HEARTH ====================
+## 15. HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -728,8 +782,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 15. KIN ====================
-## 15. KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line
+==================== 16. KIN ====================
+## 16. KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -782,8 +836,8 @@ IN THIS ORDER:
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a map, skyline or generic town picture
 
-==================== 16. AEGIS · INSURANCE & COVER ====================
-## 16. AEG-GEM-02 · Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount)
+==================== 17. AEGIS · INSURANCE & COVER ====================
+## 17. AEG-GEM-02 · Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -825,8 +879,8 @@ IN THIS ORDER:
 - a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 
-==================== 17. AEGIS · INSURANCE & COVER ====================
-## 17. AEG-GEM-04 · Aegis: the California FAIR Plan, what it covers and what it leaves out
+==================== 18. AEGIS · INSURANCE & COVER ====================
+## 18. AEG-GEM-04 · Aegis: the California FAIR Plan, what it covers and what it leaves out
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -873,8 +927,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 18. ATLAS · WORK & PAY ====================
-## 18. ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each
+==================== 19. ATLAS · WORK & PAY ====================
+## 19. ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each
 
 **Due:** 2026-12-09 · **State:** now
 
@@ -916,8 +970,8 @@ IN THIS ORDER:
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 - a quote that is not on the page word for word
 
-==================== 19. MONEY · PAYOFF SIMULATOR ====================
-## 19. MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53)
+==================== 20. MONEY · PAYOFF SIMULATOR ====================
+## 20. MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53)
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -964,8 +1018,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 20. ATHENAEUM · IDEA VAULT ====================
-## 20. ATH-GEM-16 · History: Kern County and the Tejon Pass, 1850-2025 (40 entries)
+==================== 21. ATHENAEUM · IDEA VAULT ====================
+## 21. ATH-GEM-16 · History: Kern County and the Tejon Pass, 1850-2025 (40 entries)
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1017,8 +1071,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 21. KIN ====================
-## 21. KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records
+==================== 22. KIN ====================
+## 22. KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1070,8 +1124,8 @@ IN THIS ORDER:
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - addresses of living people, phone numbers or people-search sites
 
-==================== 22. AEGIS · INSURANCE & COVER ====================
-## 22. AEG-GEM-03 · Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each
+==================== 23. AEGIS · INSURANCE & COVER ====================
+## 23. AEG-GEM-03 · Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1113,8 +1167,8 @@ IN THIS ORDER:
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 - a quote that is not on the page word for word
 
-==================== 23. AEGIS · INSURANCE & COVER ====================
-## 23. AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays
+==================== 24. AEGIS · INSURANCE & COVER ====================
+## 24. AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1160,8 +1214,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 24. ATHENAEUM · IDEA VAULT ====================
-## 24. ATH-GEM-17 · History: the Philippines, 1898-2024 (30 entries)
+==================== 25. ATHENAEUM · IDEA VAULT ====================
+## 25. ATH-GEM-17 · History: the Philippines, 1898-2024 (30 entries)
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -1211,8 +1265,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 25. KIN ====================
-## 25. KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books
+==================== 26. KIN ====================
+## 26. KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -1262,8 +1316,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 26. KIN ====================
-## 26. KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900
+==================== 27. KIN ====================
+## 27. KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -1313,8 +1367,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 27. ATLAS · WORK & PAY ====================
-## 27. ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California)
+==================== 28. ATLAS · WORK & PAY ====================
+## 28. ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California)
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -1363,8 +1417,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 28. LUDUS ARCADE ====================
-## 28. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
+==================== 29. LUDUS ARCADE ====================
+## 29. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
 
 **Due:** 2026-12-22 · **State:** now
 
@@ -1399,8 +1453,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 29. MIDAS LEDGER ====================
-## 29. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
+==================== 30. MIDAS LEDGER ====================
+## 30. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
 
 **Due:** 2026-12-28 · **State:** now
 
@@ -1454,8 +1508,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 30. KAIROS MERIDIAN ====================
-## 30. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 31. KAIROS MERIDIAN ====================
+## 31. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -1500,8 +1554,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 31. SELLING PIPELINE ====================
-## 31. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+==================== 32. AGORA ====================
+## 32. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 
@@ -1552,8 +1606,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 32. POLIS · CIVIC & LEGAL WATCH ====================
-## 32. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+==================== 33. POLIS · CIVIC & LEGAL WATCH ====================
+## 33. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
 
 **Due:** 2027-01-20 · **State:** now
 

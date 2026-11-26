@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25 17:24 UTC",
+ "updated": "2026-11-26 00:04 UTC",
  "pillars": [
   {
    "id": "hub",
@@ -122,7 +122,7 @@
   },
   {
    "id": "selling",
-   "name": "Selling Pipeline",
+   "name": "Agora",
    "state": "live",
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/selling/",
    "open": {
@@ -337,7 +337,7 @@
    "live": "https://jpavia10.github.io/prometheus-hub/pillars/kin/",
    "open": {
     "grok": 0,
-    "gemini": 4,
+    "gemini": 5,
     "muse": 3,
     "chatgpt": 0,
     "argon": 0,

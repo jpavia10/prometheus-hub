@@ -62,6 +62,8 @@ export const ALLOW = [
   ["pillars/continuity/small-estate.js", "California Probate Code statutory limits (CON-GEM-06, 2026-11-21): small-estate and primary-residence thresholds — public law, not account data"],
   ["pillars/games/gta6-facts.js", "GTA VI facts (2026-11-19): public store list prices quoted from the PlayStation and Xbox stores, not personal money"],
   ["pillars/records/tax-forms-2026.js", "Tax-form reference (2026-11-19): IRS and FTB thresholds quoted from the form instructions, not personal money"],
+  ["pillars/kin/album/catalog.js", "Kin media folder listing (2026-11-25): Drive file ids and the family blog's numeric photo file names, not card numbers"],
+  ["pillars/kin/lineage/album.js", "Kin family album (2026-11-25): Drive file ids, picture sizes and years, not card numbers"],
   ["pillars/odyssey/photos.js", "Odyssey trip photos (2026-11-19): the ids are camera timestamps (YYYYMMDDhhmmss), not card numbers"],
   ["pillars/polis/kern-rules.js", "Kern County ordinance reference (POL-GEM-04, 2026-11-19): statutory stop-work fines quoted from the county code, not money of Joseph's"],
   ["pillars/hearth/permits.js", "building-code reference (HEA-GEM-17): CRC R315's $1,000-of-work threshold for CO alarms"],

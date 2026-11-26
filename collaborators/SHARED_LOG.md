@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-25] d88: the family album for Thanksgiving, Agora, the work ledger
+- Kin: `pillars/kin/album/`, 145 family pictures from the Kin Drive folder, each checked by eye, in 10 chapters with a full-screen show; the people link into the tree, with faces on the medallions for six of them. Callie and Charlie Culberson join the tree from their stones. All 918 Drive files are listed with links; 11 are set aside with the reason (Gemini's logo-and-flower mislabels among them).
+- Selling is renamed Agora. `tools/forge/usage.py` sorts all 540 queued tasks by what became of them (used 137, accepted but unused 94, waiting for a second read 40).
+
 ### [2026-11-25] d82-d87: Hearth by room, Midas v4, Atlas and Aegis, Gemini's splash, run 8 filed
 - New pillars Atlas (work and pay) and Aegis (insurance) share summaries with Hearth and Midas (d84). Gemini's splash opens the hub (d85). Its town and weather-chip fixes are live in d86.
 - Run 8: 61 Gemini tasks closed with reviews (rows 202-207, 210), Muse's second reads scored 10 (208-209). 7 Muse-accepted files are in seven pillars. 265 history entries are merged into Athenaeum (315 in all). Kin: C10 proven, C6 resolved (180338), C5 re-argued. 20 new tasks: Gemini 30 open, Muse 7. Run-8 pillar files wait for HUB-MUS-06.

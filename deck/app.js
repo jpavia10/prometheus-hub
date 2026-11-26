@@ -17,7 +17,7 @@ import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 const MIDAS = "../midas-ledger/";   /* Midas Ledger: the money pillar, same origin (jpavia10.github.io), its book encrypted */
 
-export const BUILD = "d87";
+export const BUILD = "d88";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);
@@ -213,7 +213,7 @@ function openSearch() {
       if (itemTitle && net > 0) {
         items.push({
           title: `Sold: ${itemTitle} ($${net.toFixed(2)})`,
-          sub: "Log in Selling Pipeline + credit Money Bus",
+          sub: "Log in Agora + credit Money Bus",
           tone: "add", icon: "plus",
           run: () => {
             const list = nlRead("prometheus.selling.items", []);

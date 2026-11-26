@@ -298,6 +298,8 @@
     const ev = L.events.filter((e) => e.who.includes(pid)).sort((a, b) => a.date.sort.localeCompare(b.date.sort));
     const srcIds = [...new Set(ev.flatMap((e) => e.assert.map((a) => a.src)).concat((p.names || []).flatMap((n) => n.src || [])))];
     const imgs = srcIds.flatMap((s) => (M.SRC[s] && M.SRC[s].img || []).map((i) => ({ i, s })));
+    /* the family album (album.js): every picture this person is in, once each */
+    const pics = (L.media || []).filter((m) => m.album && (m.person === pid || (m.people || []).includes(pid))).filter((m, i, a) => a.findIndex((x) => x.img === m.img) === i).sort((a, b) => (a.year || 0) - (b.year || 0));
     const cons = L.conflicts.filter((c) => c.person === pid), qs = L.questions.filter((q) => q.person === pid).sort((a, b) => a.p - b.p);
     const fam = { parents: (parentsOf(M, pid) || { partners: [] }).partners, spouses: familiesOf(M, pid).flatMap((f) => f.partners.filter((q) => q !== pid)), kids: familiesOf(M, pid).flatMap((f) => f.children) };
     const rel = (ids, label) => ids.length ? `<p class="ln-rel"><span>${label}</span>${ids.map((q) => `<button type="button" class="ln-link" data-go="${q}">${esc(M.P[q] ? (M.P[q].status === "placeholder" ? M.P[q].placeholder : nm(M.P[q])) : q)}</button>`).join("")}</p>` : "";
@@ -317,6 +319,7 @@
           <details class="ln-evd"><summary>Evidence · ${e.assert.length} source${e.assert.length === 1 ? "" : "s"}${e.conflict ? ` · conflict ${e.conflict}` : ""}</summary>
             <ul>${e.assert.map((a) => `<li><button type="button" class="ln-link" data-src="${a.src}">${esc((M.SRC[a.src] || {}).short || a.src)}</button><q>${esc(a.value)}</q><span class="ln-chips">${chips(a)}</span>${a.note ? `<em>${esc(a.note)}</em>` : ""}</li>`).join("")}</ul></details></li>`).join("")}</ol>` : ""}
       ${ev.length ? journey(M, p) : ""}
+      ${pics.length ? `<h4>Pictures <a class="ln-alink" href="album/#${pid}">${pics.length} in the family album</a></h4><div class="ln-docs">${pics.map((m) => `<button type="button" class="ln-doc" data-img="${m.img}" data-src="${m.src}" aria-label="${esc(m.caption)}"><img loading="lazy" src="${DOCS}t/${m.img}.webp" alt=""><span>${esc(m.when || m.year || "")}</span></button>`).join("")}</div>` : ""}
       ${imgs.length ? `<h4>Documents</h4><div class="ln-docs">${imgs.map((d) => `<button type="button" class="ln-doc" data-img="${d.i}" data-src="${d.s}" aria-label="${esc((M.SRC[d.s] || {}).short || d.i)}"><img loading="lazy" src="${DOCS}t/${d.i}.webp" alt=""><span>${esc((M.SRC[d.s] || {}).short || "")}</span></button>`).join("")}</div>` : ""}
       ${cons.length ? `<h4>Conflicts and proofs</h4>${cons.map(conflictHtml).join("")}` : ""}
       ${qs.length ? `<h4>Open questions</h4><ul class="ln-qs">${qs.map((q) => `<li><b>${q.id}</b><span class="ln-pri p${q.p}">P${q.p}</span> ${esc(q.q)}<small>${esc(q.sources)} · ${esc(q.task === "owner" ? "for you" : q.task)}${(() => { const n = (L.log || []).filter((x) => x.q === q.id); return n.length ? ` · ${n.length} search${n.length > 1 ? "es" : ""} logged (${n.filter((x) => x.result === "found").length} found)` : ""; })()}</small></li>`).join("")}</ul>` : ""}
@@ -546,6 +549,13 @@
     const door = h("a", { class: "ln-door", href: "tree/" });
     door.innerHTML = `<img src="tree/poster.webp" alt="" loading="lazy" decoding="async"><span class="ln-door-in"><span class="kicker">In three dimensions</span><b>Walk through the family tree</b><span class="ln-door-p">${L.people.length} people across ${Math.max(...Object.values(gensFrom(model())))} generations, set in time: every life from birth to death, every record beside the person it proves, the journeys on a globe, and what is still open.</span><span class="btn">Enter the tree</span></span>`;
     tree.insertBefore(door, tree.querySelector(".ln-stage"));
+    /* the door to the family album (album/, 2026-11-25): every picture from the Kin media folder, and the show for the television */
+    if (L.album) {
+      const al = L.album, cover = (al.items.find((x) => x.id === "M-bill-mary-portrait") || al.items[0]).img;
+      const adoor = h("a", { class: "ln-door ln-door-album", href: "album/" });
+      adoor.innerHTML = `<img src="${DOCS}${cover}.webp" alt="" loading="lazy" decoding="async"><span class="ln-door-in"><span class="kicker">The family album</span><b>${al.items.length} pictures, and a show for the table</b><span class="ln-door-p">Bill and Mary Culberson, Ada and Chester Moss, Peter Culberson's cavalry company, the aunts and uncles, Joseph Termenas's convoy: every picture from the Kin folder checked by hand and linked to the person in the tree. ${al.items.filter((x) => x.who).length} are still waiting for someone to say who they are.</span><span class="btn">Open the album</span></span>`;
+      tree.insertBefore(adoor, tree.querySelector(".ln-stage"));
+    }
     const root = tree, dos = tree.querySelector("#ln-dossier");
     const pick = (pid, center) => { ui.sel = pid; drawTree(root); dossier(dos, pid); if (center) focus(root, pid); };
     /* a tap on the tree opens a small card over it (the tree stays where it is); "Full story" goes to the dossier below */

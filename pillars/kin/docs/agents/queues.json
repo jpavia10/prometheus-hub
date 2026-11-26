@@ -4626,6 +4626,86 @@
       "rows missing to reach the count, or rows padded to reach it",
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-25",
+     "id": "KIN-GEM-45",
+     "title": "Kin album: the Interwoven Family blog's own caption for each of the album's 145 pictures",
+     "due": "2026-12-05",
+     "why": "The family album (pillars/kin/album/, d88) captions every picture from its file name or from what is printed on the print, because the blog cannot be opened from Claude's session. The blog's own words name the people Claude could not (14 pictures are marked \"Who is this?\").",
+     "unlocks": "Each album picture gets the family's full caption, and the unnamed faces get names with the blog post as the source.",
+     "inputs": [
+      "https://interwovenfamily.blogspot.com/2019/06/mary-tennessee-tippens-culberson.html",
+      "https://interwovenfamily.blogspot.com/2019/06/ada-nellie-culberson-moss.html",
+      "https://interwovenfamily.blogspot.com/2019/06/eliza-owens-tippens.html",
+      "https://interwovenfamily.blogspot.com/2019/06/peter-culberson.html",
+      "the blog's pages on Ida Elizabeth Martin Culberson, John Martin, Etta Luticia Brasher, Josiah S. Martin, Thomas Edward Brasher and the obituaries of Charles Ronald, Dwight Eugene and Jack B. Culberson",
+      "pillars/kin/album/catalog.js (each file name, with its Drive id)"
+     ],
+     "steps": [
+      "Open each blog post in the list and every post it links to on the Culberson, Moss, Tippens, Martin and Brasher families.",
+      "For every photograph in the post, copy the image's file name from its URL and the caption or the sentence beside it word for word.",
+      "Match each one to the Drive file name in catalog.js (the Drive names keep the blog's file name after the series prefix); write \"no match\" when none fits.",
+      "For the 14 pictures marked Who is this? in the album, say what the blog says, and nothing it does not."
+     ],
+     "deliver": {
+      "file": "kin_gemini_album-captions_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 145,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "drive_file",
+       "type": "text",
+       "rule": "the file name in catalog.js, or \"no match\""
+      },
+      {
+       "name": "blog_image",
+       "type": "text",
+       "rule": "the image file name in the blog post's URL"
+      },
+      {
+       "name": "caption",
+       "type": "text",
+       "rule": "word for word from the post"
+      },
+      {
+       "name": "names",
+       "type": "text",
+       "rule": "every person the caption names, as written"
+      },
+      {
+       "name": "date",
+       "type": "text",
+       "rule": "a date only if the post gives one"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the blog post"
+      }
+     ],
+     "self_check": [
+      "Every caption is copied word for word from the post you opened today.",
+      "No name, date or relationship that the post does not state.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every picture in the album has a row: a caption, or \"no caption on the blog\".",
+     "checks": [
+      "Claude matches each row to the picture and updates lineage/album.js; Muse reads 10 rows blind."
+     ],
+     "rejected_if": [
+      "a caption that is not word for word on the post",
+      "a name guessed from a face",
+      "rows padded to reach the count"
+     ]
     }
    ]
   },

@@ -189,7 +189,7 @@
   const at = parts.indexOf("pillars");
   if (bar && at >= 0 && parts[at + 1] && !embedded && !bar.querySelector(".compass")) {
     const here = parts[at + 1];
-    const seats = [["kairos", "Kairos"], ["apollo", "Apollo"], ["piano", "Piano"], ["hermes", "Hermes"], ["argus", "Argus"], ["money", "Money"], ["selling", "Selling"], ["icarus", "Icarus"], ["garage", "Garage"], ["odyssey", "Odyssey"], ["bastion", "Bastion"], ["records", "Records"], ["athenaeum", "Athenaeum"], ["privacy", "Privacy"], ["hearth", "Hearth"], ["games", "Games"], ["forge", "Forge"], ["foundry", "Foundry"], ["observatory", "Observatory"], ["kin", "Kin"], ["sylade", "Sylade"], ["aether", "Aether"], ["polis", "Polis"], ["mythos", "Mythos"], ["continuity", "Continuity"], ["atlas", "Atlas"], ["aegis", "Aegis"]];
+    const seats = [["kairos", "Kairos"], ["apollo", "Apollo"], ["piano", "Piano"], ["hermes", "Hermes"], ["argus", "Argus"], ["money", "Money"], ["selling", "Agora"], ["icarus", "Icarus"], ["garage", "Garage"], ["odyssey", "Odyssey"], ["bastion", "Bastion"], ["records", "Records"], ["athenaeum", "Athenaeum"], ["privacy", "Privacy"], ["hearth", "Hearth"], ["games", "Games"], ["forge", "Forge"], ["foundry", "Foundry"], ["observatory", "Observatory"], ["kin", "Kin"], ["sylade", "Sylade"], ["aether", "Aether"], ["polis", "Polis"], ["mythos", "Mythos"], ["continuity", "Continuity"], ["atlas", "Atlas"], ["aegis", "Aegis"]];
     const idx = seats.findIndex(([id]) => id === here);
     const link = (id, name, current) => h("a", Object.assign({ href: id ? "../" + id + "/" : "../../#/" }, current ? { "aria-current": "page" } : {}), name);
     const step = (seat, dir) => {
@@ -652,7 +652,7 @@
     { name: "Garage", sub: "Maintenance, CA DMV radar & resale dossier", href: "../garage/", k: "car vehicle fuel oil maintenance" },
     { name: "Records · Paper Killer", sub: "Warranties, TK school expiry & serial vault", href: "../records/", k: "documents serial receipt expiry" },
     { name: "Bossa Piano Studio", sub: "16-step comping sequencer, BPM ladder & staff", href: "../piano/", k: "music jazz bossa chords sightread" },
-    { name: "Selling Pipeline", sub: "FB Marketplace shipping-only copy & profit ledger", href: "../selling/", k: "sales inventory shipping profit" },
+    { name: "Agora", sub: "The marketplace: FB Marketplace shipping-only copy & profit ledger", href: "../selling/", k: "sales inventory shipping profit" },
     { name: "Bastion · Mountain Prep", sub: "Big Bear storm & outage readiness", href: "../bastion/", k: "emergency battery mountain prep" },
     { name: "Athenaeum", sub: "Ideas, notes & cross-pillar handoff", href: "../athenaeum/", k: "notes writing ideas handoff" },
     { name: "Forge", sub: "3D & physical fabrication queue", href: "../forge/", k: "print 3d projects hardware" },

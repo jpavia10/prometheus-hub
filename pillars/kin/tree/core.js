@@ -186,7 +186,7 @@ export function build() {
   const media = (id) => {
     const out = [], seen = new Set();
     const push = (img, src, cap) => { if (seen.has(img)) return; seen.add(img); out.push({ img, src, cap }); };
-    for (const m of L.media || []) if (m.person === id) push(m.img, m.src, m.caption);
+    for (const m of L.media || []) if (m.person === id || (m.people || []).includes(id)) push(m.img, m.src, m.caption);
     const srcs = new Set();
     for (const e of L.events) if (e.who.includes(id)) for (const a of e.assert || []) srcs.add(a.src);
     for (const nmx of (P[id] && P[id].names) || []) for (const s of nmx.src || []) srcs.add(s);

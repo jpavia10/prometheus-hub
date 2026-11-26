@@ -9,7 +9,7 @@ export const PILLARS = [
   P("garage", "Garage", "Garage", "The car: service, fuel and paperwork.", "pillars/garage/", 200, "garage"),
   P("apollo", "Apollo Temple", "Apollo", "Health, fitness and nutrition.", "pillars/apollo/", 54, "sun"),
   P("money", "Money · payoff simulator", "Payoff", "The payoff simulator and the issuer library.", "pillars/money/", 152, "money"),
-  P("selling", "Selling Pipeline", "Selling", "Items for sale, from listing to shipped.", "pillars/selling/", 28, "tag"),
+  P("selling", "Agora", "Agora", "The marketplace: items for sale, from listing to shipped.", "pillars/selling/", 28, "tag"),
   P("records", "Records · Paper Killer", "Records", "Paper turned into findable records.", "pillars/records/", 214, "file"),
   P("icarus", "Icarus Stake", "Icarus", "High-risk trading journal. It never trades.", "pillars/icarus/", 8, "wing"),
   P("hermes", "Hermes Post", "Hermes", "Mail and messages that need an answer.", "pillars/hermes/", 222, "mail"),

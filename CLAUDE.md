@@ -72,6 +72,20 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d88 (2026-11-25): the family album, Agora, and the work ledger.** Owner: "go to the kin and level that up significantly.
+  Comprehensively catalog and integrate all media so its ready to show off for Thanksgiving tomorrow". `pillars/kin/album/` (index,
+  `album.css`, `app.js`): 145 pictures from the Kin media folder in 10 chapters, a viewer whose people link to `../tree/#P-id`, the
+  show (`#show`: full screen, chapter cards, slow pans, 8 s a picture, for the TV), "Who is this?" (14 unnamed), and every one of the
+  918 Drive files listed with a Drive link (`album/catalog.js`, state album / in-kin / dropped / unplaced). Data: `lineage/album.js`
+  (loads after data.js on the Kin page, the tree and the album) adds the photo sources, Ada's sister Callie (1904-1999) and brother
+  Charlie (1912-2001) from their stones, one media record per picture (`people` list, `year`, `when`) and faces for Bill, Mary, Ada,
+  Callie, Charlie and Peter Culberson (`docs/face-*.webp`). Tree: `T.media()` matches `m.people`; Records use `m.year`. Kin page:
+  an album door and "Pictures" in each person's dossier. Every picture was opened and checked by eye; 11 set aside with the reason
+  (logos and a flower filed as people, duplicates); captions are the family's own file names or what is printed on the print. The
+  blog (blogspot) is refused by this container, so its captions were not read: a Gemini task asks for them. Generator and manifest:
+  scratchpad only (`kinmedia/build/`); a rerun needs the Drive images, so edit `album.js` by hand for small fixes. Also: Selling is
+  now **Agora** (name only; id `selling` unchanged), and `tools/forge/usage.py` writes `docs/agents/usage.json` (every task: used,
+  waiting for a second read, accepted but unused, design input, check, open, dropped).
 - **d87 (2026-11-25): run 8 scored and filed.** 61 Gemini tasks closed with a review each (rows 202-207, 210), Muse's
   HUB-MUS-05 and KIN-MUS-02/03 scored 10 (rows 208-209). World history: 265 of Gemini's entries merged (315 now, `tools/history/build.py`;
   marked "sourced by Gemini, second read pending (ATH-MUS-02)"), and the 10 Kin seed entries got their sources (ATH-GEM-08). One title
@@ -80,7 +94,8 @@ futuristic; real data only; individual pillars are developed later, one at a tim
   (join the tree with the lineage work). Refill: 20 new tasks (Gemini 30 open, Muse 7). Titan: the run-8 sheets merged (4ba37021).
   Kin, from Muse's blind 1917-19 read (KIN-MUS-02), re-read by Claude on the scans: C6 resolved, service number 180338 (the discharge
   and the VA card agree; 1803038 was a misreading); C5 re-argued, the draft card says 5-10 in figures, not "medium". Still to check
-  from that read: Howard St 140 vs 180 (C8), the declaration date (21 or 22 Oct 1916), petition no. 4372.
+  from that read, done the same day: the petition says 140 Howard St (an open-topped 4; the typed index card says 180, and Gemini
+  found no 180 in the directories), so C8's address is 140; the declaration day is 21 or 22 Oct 1916 (unclear; Muse reads 22).
   Odyssey ODY-GEM-29 (25 more picks), 13 seen by eye so far: keep 1 (heron), 2 (kayakers), 4 and 5 (Glenda Pavia's and Buster and
   Joy Kirkland's plaques, Flat Rock), 6 (cinder cone from the air), 11-13 (Mammoth with the baby and the dogs); drop 3 (a stranger's
   house), 7, 9 (notebook page), 10 (hand sanitizer); 8 is a handwritten Kirkland family tree (to Kin's album, not Odyssey). 14-25 not
