@@ -859,8 +859,17 @@ window.KIN_LINEAGE.questions.push(
   L.sources.push(
     { id: "S-spots-1764", short: "Spotsylvania County administration bond, 7 May 1764 (Crozier's abstract)", kind: "derivative", year: 1764,
       cite: "William Armstrong Crozier, ed., Virginia County Records, vol. 1: Spotsylvania County, 1721-1800 (New York, 1905), p. 61, Will Book D administration bonds; page staged by Gemini in the Kin Drive folder.",
-      read: "Read by Claude on 26 Nov 2026: \"£1000 Elizabeth Pulliam, admx. of James Pulliam, decd., with James Rawlings and John Holloday, sec. May 7, 1764.\" A namesake: this James Pulliam was dead by 1764, while Richard Stone's son-in-law James Pulliam and his wife Elizabeth were both alive in 1795 (C17)." }
+      read: "Read by Claude on 26 Nov 2026: \"£1000 Elizabeth Pulliam, admx. of James Pulliam, decd., with James Rawlings and John Holloday, sec. May 7, 1764.\" A namesake: this James Pulliam was dead by 1764, while Richard Stone's son-in-law James Pulliam and his wife Elizabeth were both alive in 1795 (C17). The same volume (p. 368) has his heir: \"Rawlins Pulliam (heir at law of James Pulliam, decd.)\" sells 200 acres in 1782, and pp. 73, 200-237 show this James as a Spotsylvania guardian and witness, 1755-1764." },
+    { id: "S-hanover-1734", short: "Will of John Pulliam, Hanover County, Virginia, 1734/5 (Crozier's abstract)", kind: "derivative", year: 1734,
+      cite: "William Armstrong Crozier, ed., Virginia County Records, vol. 6 (1909), p. 20, Hanover County wills; page staged by Gemini in the Kin Drive folder.",
+      read: "Read by Claude on 26 Nov 2026: John Pulliam, will 4 Dec 1734, proved 6 Feb 1734[/5], names four sons William, John, James and Drewry, three daughters Agnes, Elizabeth and Sarah, and his wife Agnes, executrix. A lead only: compiled trees make this tree's James Pulliam (born 1726) a son of this John, and the age fits, but no record here links them." }
   );
+  L.sources.push(
+    { id: "S-vmhb-stone", short: "\"Stone families of Virginia\", Virginia Magazine of History and Biography, vol. 28 (1920)", kind: "derivative", year: 1920,
+      cite: "Virginia Magazine of History and Biography, vol. 28 (1920), p. 66 (a compiled note on the Stone families of Virginia; page staged by Gemini in the Kin Drive folder).",
+      read: "Read by Claude on 26 Nov 2026: \"Thomas Stone, of Brunswick Co., 'imported himself in the year 1740' ... His will is dated April 16, 1795 ... His son Richard Stone received in 1746 a grant of 400 acres from William Gooch.\" Lunenburg was formed from Brunswick in 1746, so this Richard may be this tree's Richard Stone (about 1722-1797), whose own will names a son Thomas. A compiled lead, not proof." }
+  );
+  { const rs = P("P-rstone"); if (rs) rs.summary += " A compiled note (VMHB vol. 28, p. 66) has a Richard Stone, son of Thomas Stone of Brunswick County (came 1740), granted 400 acres in 1746: a lead for his parents."; }
   const c17 = L.conflicts.find((c) => c.id === "C17");
   if (c17) c17.argument += " Claude, 26 Nov 2026: Spotsylvania County had another James Pulliam with a wife Elizabeth; he was dead by May 1764, when she gave bond as his administratrix (Crozier, vol. 1, p. 61). Richard Stone's 1795 will loans slaves to his son-in-law James Pulliam and his wife Elizabeth for their natural lives, so both were alive in 1795: that rules the Spotsylvania man out and fits this tree's James (died 1799). Compiled trees that mix the two Jameses could explain DAR's different birth year and wife's surname; DAR's file itself still needs a look by someone who can open its site.";
   L.log.push(

@@ -179,6 +179,442 @@
    "verdict": "set-aside",
    "note": "A James Pulliam witnesses a Spotsylvania deed in 1763: the namesake who died by 1764.",
    "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0056_Pulliam_Bryant.pdf",
+   "id": "1_DXCjzHWLvNKGaGT6TCZMYiDQCORZntp",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "42",
+   "what": "Wills, 1784-1786",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Benjamin Holloday's will (1785) names his daughter Elizabeth Pulliam, wife of Joseph Pulliam: a third Pulliam wife named Elizabeth. The 'Bryant' is Edmund Bryant, an unrelated executor.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0064_JohnPulliam_Pulliam.pdf",
+   "id": "1cXIe1jYl-gUqLVWTaS4SAiviNIR8FATf",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "50",
+   "what": "Wills, 1793-1794",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "David Pulliam's will (1794), Berkeley Parish: a Spotsylvania Pulliam, not this tree's Lunenburg James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0087_JamesPulliam_Pulliam.pdf",
+   "id": "18AVGtrMjVl2WZTHrAnFIlWJIoxUmFLF-",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "73",
+   "what": "Guardians' bonds, 1755-1760",
+   "people": [
+    "P-jpulliam"
+   ],
+   "verdict": "source",
+   "note": "James Pulliam, guardian to the orphans of Thomas Pulliam, 1758: the Spotsylvania namesake (dead by 1764).",
+   "read": "2026-11-26",
+   "src": "S-spots-1764"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0089_Pulliam_JohnMartin.pdf",
+   "id": "1dVE60BeTcObym1Y5evMmdhJz5NS_0lYh",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "75",
+   "what": "Guardians' bonds, 1763-1767",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Thomas Pulliam, guardian to Benjamin Pulliam (1764); a John Martin, orphan of John Martin (1764): not this tree's 17th-century John Martin.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0214_JamesPulliam_Pulliam.pdf",
+   "id": "13diIIykhBDprI8_E0BOL7yaiz1wtF7FS",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "200",
+   "what": "Deed Book E, 1755",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "James Pulliam witnesses a 1755 deed: the Spotsylvania namesake.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0222_JamesPulliam_Pulliam.pdf",
+   "id": "1tP-UJQ0r0WRkGR1JqeKqyFsFzh5nnZYv",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "208",
+   "what": "Deed Book E, 1758",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "James Pulliam witnesses a 1758 deed: the Spotsylvania namesake.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0228_JohnPulliam_Pulliam.pdf",
+   "id": "1s9xLAbxVNsVf78ROAEV5O-kGdONIcuhI",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "214",
+   "what": "Deed Book E, 1759-1760",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "John Pulliam buys 200 a. in St. George's Parish (1759): a Spotsylvania Pulliam, not this tree's Lunenburg James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0235_JohnPulliam_Pulliam.pdf",
+   "id": "1jNqNQ7H5kSnbvCBk1l-AHIPbvXNVwAhU",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "221",
+   "what": "Deed Book E, 1761",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "John Pulliam witnesses a 1761 deed: a Spotsylvania Pulliam, not this tree's Lunenburg James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0236_JamesPulliam_Pulliam.pdf",
+   "id": "1EExJQyA_edijElRFyRXPBGieGYhL_RB6",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "222",
+   "what": "Deed Book F, 1761",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "James Pulliam witnesses a 1761 deed: the Spotsylvania namesake.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0250_JohnPulliam_Pulliam.pdf",
+   "id": "1yURYb2gkKriZ0lEkJJxXXcjKueUus592",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "236",
+   "what": "Deed Book F, 1764",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "John Pulliam witnesses a 1764 deed: a Spotsylvania Pulliam, not this tree's Lunenburg James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0251_JamesPulliam_Pulliam.pdf",
+   "id": "1pn_MIMCp5j2GyXjkQjzNwBEzahgmccrz",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "237",
+   "what": "Deed Book F, 1764",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Jos. Pulliam and James Pulliam witness an Aug 1764 mortgage: a second Spotsylvania James, or the same name used again after the namesake's death. a Spotsylvania Pulliam, not this tree's Lunenburg James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0278_JohnPulliam_Pulliam.pdf",
+   "id": "1ZAfWhE3qOxkWAkMin45B7dmEQh6kF7fp",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "264",
+   "what": "Deed Book G, 1768",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "John Pulliam buys 147½ a. (1768): a Spotsylvania Pulliam, not this tree's Lunenburg James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0300_JohnPulliam_Pulliam.pdf",
+   "id": "1pzDm_g7shKBXECUacIk0mAh7_s25vRhj",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "286",
+   "what": "Deeds, 1771",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Joseph to David Pulliam; John Pulliam and Sarah his wife sell 347½ a. (1771): a Spotsylvania Pulliam, not this tree's Lunenburg James.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V1_p0382_JamesPulliam_Pulliam.pdf",
+   "id": "1aXlT036Gcn4LZ89MC9B88fnB_Fz9ZdoH",
+   "book": "Crozier, Virginia County Records, vol. 1: Spotsylvania County",
+   "page": "368",
+   "what": "Deeds, 1782",
+   "people": [
+    "P-jpulliam"
+   ],
+   "verdict": "source",
+   "note": "Rawlins Pulliam, heir at law of James Pulliam deceased, sells 200 a. (1782): the namesake's heir.",
+   "read": "2026-11-26",
+   "src": "S-spots-1764"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V6_p0030_Pulliam.pdf",
+   "id": "173woBhqLFSIpEMkGKSeO0RyZbhdYJh8s",
+   "book": "Crozier, Virginia County Records, vol. 6",
+   "page": "20",
+   "what": "Hanover County wills, 1733-1734",
+   "people": [
+    "P-jpulliam"
+   ],
+   "verdict": "source",
+   "note": "John Pulliam's will (1734/5) names a son James: a possible father for this tree's James (born 1726); a lead, not a link.",
+   "read": "2026-11-26",
+   "src": "S-hanover-1734"
+  },
+  {
+   "name": "VA_Crozier_CountyRecs_V6_p0274_Pulliam.pdf",
+   "id": "1_Rxn5_tVPurALxD4D-Gg2sNFZrl5VLvw",
+   "book": "Crozier, Virginia County Records, vol. 6",
+   "page": "256",
+   "what": "Louisa County Anderson records",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Zach. and William Pulliam witness Anderson wills: not this tree's people.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Pulliam_1790_Census_NC_p0091.pdf",
+   "id": "1u6BRYDzEb61UVBygV_PfEuEwDsom8p60",
+   "book": "Heads of Families, 1790: North Carolina",
+   "page": "81?",
+   "what": "1790 census pages",
+   "people": [
+    "P-jpulliam"
+   ],
+   "verdict": "set-aside",
+   "note": "The OCR is too garbled to read the Pulliam entries here; James Pulliam's 1790 household (Caswell, later Person County) should be read on a clean image. Not a finding that he is absent.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Pulliam_1790_Census_NC_p0277.pdf",
+   "id": "1Kss7FHB9kpe8bxEJkZkALyR1KQjbB87l",
+   "book": "Heads of Families, 1790: North Carolina",
+   "page": "267 (index)",
+   "what": "1790 census pages",
+   "people": [
+    "P-jpulliam"
+   ],
+   "verdict": "set-aside",
+   "note": "The OCR is too garbled to read the Pulliam entries here; James Pulliam's 1790 household (Caswell, later Person County) should be read on a clean image. Not a finding that he is absent.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Pulliam_1790_Census_NC_p0300.pdf",
+   "id": "1TyQHc7f3mhK4oJdMjcnFTKloQgbdFFyM",
+   "book": "Heads of Families, 1790: North Carolina",
+   "page": "290?",
+   "what": "1790 census pages",
+   "people": [
+    "P-jpulliam"
+   ],
+   "verdict": "set-aside",
+   "note": "The OCR is too garbled to read the Pulliam entries here; James Pulliam's 1790 household (Caswell, later Person County) should be read on a clean image. Not a finding that he is absent.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Lunenburg_BryantLester_p0012_Lunenburg_Bryant.pdf",
+   "id": "15iroXSLlkDu6HQLHXRIotbFAGU8qxRrX",
+   "book": "Owen, \"Bryant Lester and his Descendants\", Publications of the Southern History Association",
+   "page": "4",
+   "what": "The Lester family of Lunenburg County",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Staged because 'Bryant' is Bryant Lester's first name; not this tree's Bryants. Aside: Richard Stone's 1795 will names a son-in-law John Lester, and Bryant Lester had a son John (went to Kentucky): a possible tie to the Stone family, not pursued.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Lunenburg_BryantLester_p0013_Lunenburg_Bryant.pdf",
+   "id": "1AKetupG-v4vbk714e0JfqJL8Ok49vayv",
+   "book": "Owen, \"Bryant Lester and his Descendants\", Publications of the Southern History Association",
+   "page": "5",
+   "what": "The Lester family of Lunenburg County",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Staged because 'Bryant' is Bryant Lester's first name; not this tree's Bryants. Aside: Richard Stone's 1795 will names a son-in-law John Lester, and Bryant Lester had a son John (went to Kentucky): a possible tie to the Stone family, not pursued.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Lunenburg_BryantLester_p0014_Lunenburg_Bryant.pdf",
+   "id": "1sYh-2lYYlZc7wQSaM0ShCxDJPC79fiXx",
+   "book": "Owen, \"Bryant Lester and his Descendants\", Publications of the Southern History Association",
+   "page": "6",
+   "what": "The Lester family of Lunenburg County",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Staged because 'Bryant' is Bryant Lester's first name; not this tree's Bryants. Aside: Richard Stone's 1795 will names a son-in-law John Lester, and Bryant Lester had a son John (went to Kentucky): a possible tie to the Stone family, not pursued.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Lunenburg_BryantLester_p0016_Lunenburg_Bryant.pdf",
+   "id": "1HeG1XM83ZxHRl3qjCkBNqVVWrzw_gnDF",
+   "book": "Owen, \"Bryant Lester and his Descendants\", Publications of the Southern History Association",
+   "page": "8",
+   "what": "The Lester family of Lunenburg County",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Staged because 'Bryant' is Bryant Lester's first name; not this tree's Bryants. Aside: Richard Stone's 1795 will names a son-in-law John Lester, and Bryant Lester had a son John (went to Kentucky): a possible tie to the Stone family, not pursued.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Grayson_Nuckolls_Pioneers_p0097_Stone_Martin.pdf",
+   "id": "1TCvQ1i46r0fEi06mZ27wbpRovWrZa-Un",
+   "book": "Nuckolls, Pioneer Settlers of Grayson County, Virginia (1914)",
+   "page": "65",
+   "what": "Grayson County families (Hale, Nuckolls, Dickenson, Currin)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Later Grayson Bryants and Stones (Joseph Bryant and Sarah Hale, Lucy Stone, John Stone and Sarah Leonard); no John Bryant (d. 1800) or Rebecca Bryant. Read from Drive's text layer.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Grayson_Nuckolls_Pioneers_p0135_Bryant_Stone.pdf",
+   "id": "174qbciZujcoDJV7h0j2HMTmbNxHmenZ4",
+   "book": "Nuckolls, Pioneer Settlers of Grayson County, Virginia (1914)",
+   "page": "83",
+   "what": "Grayson County families (Hale, Nuckolls, Dickenson, Currin)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Later Grayson Bryants and Stones (Joseph Bryant and Sarah Hale, Lucy Stone, John Stone and Sarah Leonard); no John Bryant (d. 1800) or Rebecca Bryant. Read from Drive's text layer.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Grayson_Nuckolls_Pioneers_p0166_Bryant_Stone.pdf",
+   "id": "1e8zcOej8V6mvZ2SN81_XpKR952531Lud",
+   "book": "Nuckolls, Pioneer Settlers of Grayson County, Virginia (1914)",
+   "page": "102",
+   "what": "Grayson County families (Hale, Nuckolls, Dickenson, Currin)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Later Grayson Bryants and Stones (Joseph Bryant and Sarah Hale, Lucy Stone, John Stone and Sarah Leonard); no John Bryant (d. 1800) or Rebecca Bryant. Read from Drive's text layer.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Grayson_Nuckolls_Pioneers_p0206_Bryant_Martin.pdf",
+   "id": "1dRFxMafTIBnn-Re_AM0xcZ2zcD4JY_wb",
+   "book": "Nuckolls, Pioneer Settlers of Grayson County, Virginia (1914)",
+   "page": "130",
+   "what": "Grayson County families (Hale, Nuckolls, Dickenson, Currin)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Later Grayson Bryants and Stones (Joseph Bryant and Sarah Hale, Lucy Stone, John Stone and Sarah Leonard); no John Bryant (d. 1800) or Rebecca Bryant. Read from Drive's text layer.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Grayson_Nuckolls_Pioneers_p0208_Bryant_Martin.pdf",
+   "id": "1U9VqRpeSwGTA8nyXjvgh0YTuMdcihmUt",
+   "book": "Nuckolls, Pioneer Settlers of Grayson County, Virginia (1914)",
+   "page": "132",
+   "what": "Grayson County families (Hale, Nuckolls, Dickenson, Currin)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Later Grayson Bryants and Stones (Joseph Bryant and Sarah Hale, Lucy Stone, John Stone and Sarah Leonard); no John Bryant (d. 1800) or Rebecca Bryant. Read from Drive's text layer.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Grayson_Nuckolls_Pioneers_p0219_Bryant_Stone.pdf",
+   "id": "1YE5em71Nlang4cZxDgcCgsV_xSvnMuPt",
+   "book": "Nuckolls, Pioneer Settlers of Grayson County, Virginia (1914)",
+   "page": "137",
+   "what": "Grayson County families (Hale, Nuckolls, Dickenson, Currin)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Later Grayson Bryants and Stones (Joseph Bryant and Sarah Hale, Lucy Stone, John Stone and Sarah Leonard); no John Bryant (d. 1800) or Rebecca Bryant. Read from Drive's text layer.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Grayson_Nuckolls_Pioneers_p0244_Bryant_Stone.pdf",
+   "id": "185XGUsyw7pFG0qRpFfYvC3jOhNYqGF-A",
+   "book": "Nuckolls, Pioneer Settlers of Grayson County, Virginia (1914)",
+   "page": "156",
+   "what": "Grayson County families (Hale, Nuckolls, Dickenson, Currin)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Later Grayson Bryants and Stones (Joseph Bryant and Sarah Hale, Lucy Stone, John Stone and Sarah Leonard); no John Bryant (d. 1800) or Rebecca Bryant. Read from Drive's text layer.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Mag_Hist_Biog_V28_p0076_RichardStone.pdf",
+   "id": "1U0r4ZveBrPJkfgxoAat3pBfb-xRXnxsw",
+   "book": "Virginia Magazine of History and Biography, vol. 28 (1920)",
+   "page": "66",
+   "what": "Stone families of Virginia",
+   "people": [
+    "P-rstone"
+   ],
+   "verdict": "source",
+   "note": "Thomas Stone of Brunswick (came 1740) and his son Richard Stone, granted 400 acres in 1746: a lead for Richard Stone's parents.",
+   "read": "2026-11-26",
+   "src": "S-vmhb-stone"
+  },
+  {
+   "name": "VA_Mag_Hist_Biog_V28_p0091_Lunenburg.pdf",
+   "id": "1XApxUOknVmhWY56ByZcsSNeuvSy_wN-U",
+   "book": "Virginia Magazine of History and Biography, vol. 28 (1920)",
+   "page": "81",
+   "what": "Tithables by county, 1773",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "County totals only.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Mag_Hist_Biog_V28_p0092_Lunenburg.pdf",
+   "id": "1juhObWmrHFGhbMFZDBpxkvRNH7JK6iFe",
+   "book": "Virginia Magazine of History and Biography, vol. 28 (1920)",
+   "page": "82",
+   "what": "Tithables by county, 1773 (continued)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "County totals only.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Mag_Hist_Biog_V28_p0239_Lunenburg.pdf",
+   "id": "1n8WemWnNlFt6xhD2GkKGz6UAnFxwk_Ye",
+   "book": "Virginia Magazine of History and Biography, vol. 28 (1920)",
+   "page": "189",
+   "what": "Grymes genealogy",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Mentions Lunenburg only as a place; no family of this tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Mag_Hist_Biog_V28_p0328_Lunenburg.pdf",
+   "id": "1ye3ugtKlU7V2bwi_DPAhkY5W30ybwRxi",
+   "book": "Virginia Magazine of History and Biography, vol. 28 (1920)",
+   "page": "276",
+   "what": "Notes: WWI citations; Albemarle Warren deed, 1748",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A James Warren of Lunenburg; no family of this tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Mag_Hist_Biog_V28_p0211_Stith.pdf",
+   "id": "1O0C--bkOa39alq8-2HQ7cf7X7LCXwDFp",
+   "book": "Virginia Magazine of History and Biography, vol. 28 (1920)",
+   "page": "165",
+   "what": "Brunswick County wills and deeds",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Stith and Harrison entries; the Stith line is not in this tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_Mag_Hist_Biog_V28_p0212_Stith.pdf",
+   "id": "1BGgJK7LZEXA--k0oE1D5hevH58TwgWVE",
+   "book": "Virginia Magazine of History and Biography, vol. 28 (1920)",
+   "page": "166",
+   "what": "Brunswick marriage bonds",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Stith marriages, 1799-1800; the Stith line is not in this tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0104_RichardStone.pdf",
+   "id": "1NkJvETGAjxtC3A-A3WXoEHxsklFsVinN",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "98",
+   "what": "Wills, 1685-1686",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Richard King's will (1685) leaves a bequest to a boy Richard Stone at sixteen: a different man, a generation before this tree's Richard Stone.",
+   "read": "2026-11-26"
   }
  ]
 }

@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] d96: Kin staged records, 53 of 289 read
+- The Pulliam, Stone, Bryant and Lester clusters done: the Spotsylvania Pulliams are a separate family (James d. by 1764, heir Rawlins Pulliam, 1782); new leads S-hanover-1734 (John Pulliam's 1734 will names a son James) and S-vmhb-stone (Richard Stone, son of Thomas of Brunswick, grant 1746). Leads only, no links changed.
+- Most staged pages were false matches (a first name 'Bryant', place names, later Grayson families, namesakes). Ledger: 8 sources, 45 set aside.
+
 ### [2026-11-26] d95: Kin C17 sharpened; 15 of 289 staged pages read
 - Spotsylvania had a namesake James Pulliam (wife Elizabeth) dead by May 1764 (Crozier vol. 1 p. 61, new source S-spots-1764); Richard Stone's son-in-law James Pulliam and wife Elizabeth were alive in 1795, so the Spotsylvania man is ruled out. C17 stays open on DAR's "Elizabeth Allen" (DAR blocks automated visits; Claude does not get around bot checks).
 - Gemini's staging is loose: the four "Richard Stone" road-order pages only match place names (Blew Stone, Cheary Stone); the McAllister militia pages name other Pulliams; the Cavaliers page is a 1653 namesake. Ledger: 4 sources, 11 set aside.
