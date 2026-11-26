@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] State Board v9: frozen store records; Joseph's first send read
+- Bug: the page assigned to records the store hands out frozen (decisions, inbox, and the old task list), which threw in strict mode and left those sections on "Loading…"; after a send it also could not mark answers sent. Fixed (copy before adding fields); the test mocks now freeze records too, and the old code fails them. The list also ships inside the page for instant load.
+- Read: Kin = Focus; he withdrew the two carried-over Kin approvals (staged record pages, 26 photos). Replied on the board; nothing in Kin is approved until he picks.
+
 ### [2026-11-26] The State Board's work list made comprehensive
 - Joseph: "It should be comprehensive ... expandable tabs and if theres overlapping tasks just display them separately." The board (v7) now lists 234 jobs in 11 collapsible sections (the AIs and the flow, hub, Kin, Odyssey, Midas and Money, the other pillars, the 39 second reads waiting, the 55 deliveries still coming, Titan, life admin, his own), with Your queue and Start here on top, filters, search, Open all and Close all. Overlapping jobs stay separate cards (Kin has each conflict, each research question and each record request on its own).
 
