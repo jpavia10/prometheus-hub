@@ -1259,3 +1259,26 @@ window.KIN_LINEAGE.questions.push(
   if (q38) q38.q = q38.q.replace("Tania's mother:", "Tania and Michelle's mother:");
   L.log.push({ id: "L28", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message", terms: "Tania's sister", result: "found", note: "Added Michelle, Tania's sister." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, night: Joe Seconder's Facebook photo of the 2006 family Christmas (screenshots from the owner). The caption and the tag
+   list are read as a source; nobody in the picture is named from their face. Kathleen's married surname is Seconder (her tag); a Dave
+   Holgate and a Rachel Denys Holgate were with the family that Christmas, so the Holgates (Betty (Termens) Holgate's line, Barbara's
+   sister's) are close family; Rachel is the relative who shares Joseph Termenas's photographs on Ancestry. The photo is kept in the
+   owner's Drive (Kin media folder), not in this public repository. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  L.sources.push({ id: "S-fb-xmas2006", short: "2006 family Christmas photograph (posted by Joe Seconder, 2012)", kind: "original", year: 2012,
+    cite: "\"2006 Family Christmas - at Jeffrey Hinkle & Toni Sanders-Hinkle house\", photograph posted to Facebook by Joe Seconder, 20 May 2012, with 9 people tagged; screenshots sent by Joseph Pavia, 26 November 2026; a copy is in his Google Drive (Kin media folder).",
+    read: "Taken at Christmas 2006 at Jeffrey Hinkle and Toni Sanders-Hinkle's house; about 24 people. Tagged: Joseph Pavia, Jeffrey Hinkle, Toni Sanders-Hinkle, Joe Seconder, Kathleen Seconder, Jen Jen, Dave Holgate, Stacy Kay and Rachel Denys Holgate. Which face is whose is not marked." });
+  const FB = "S-fb-xmas2006";
+  const kt = P("P-kathleen");
+  if (kt) { kt.names = [{ given: "Kathleen", surname: "Seconder", type: "married", src: ["S-owner-1126e", FB], note: "her married surname, from the 2006 Christmas photograph's tags" }]; kt.summary = "Joe Seconder's wife, Kathleen Seconder (your account; her name as tagged in Joe's 2006 Christmas photograph). They have no children."; }
+  const mo = P("P-mother");
+  if (mo && !mo.names.some((n) => n.surname === "Sanders-Hinkle")) mo.names.push({ given: "Toni", surname: "Sanders-Hinkle", type: "as-used", src: [FB], note: "her name as tagged in 2006 Christmas photograph (posted 2012)" });
+  for (const id of ["P-joes", "P-jhinkle", "P-self"]) { const p = P(id); if (p && p.names[0]) { const s = p.names[0].src || (p.names[0].src = []); if (!s.includes(FB)) s.push(FB); } }
+  const bt = P("P-betty");
+  if (bt) bt.summary += " A Dave Holgate and a Rachel Denys Holgate were at the family's 2006 Christmas (Joe Seconder's photograph), and Rachel shares Joseph Termenas's photographs on Ancestry: very likely Betty's family. How they descend from her is not known yet (Q38).";
+  const q38 = L.questions.find((q) => q.id === "Q38");
+  if (q38) q38.q = "Tania and Michelle's mother: her first name, and how she belongs to your grandmother Laurie's side: Laurie's sister or half-sister, or a Holgate (Laurie's cousin, a daughter of Betty (Termens) Holgate, Barbara's sister)? Dave Holgate and Rachel Denys Holgate were at the 2006 family Christmas: who are they to you?";
+  L.log.push({ id: "L29", date: "2026-11-26", by: "Claude", q: "Q38", where: "Joe Seconder's 2006 Christmas photograph on Facebook (your screenshots)", terms: "caption and tags", result: "found", note: "Kathleen's surname is Seconder. Your mother's name as used then: Toni Sanders-Hinkle. Dave Holgate and Rachel Denys Holgate were at the family Christmas in 2006: the Holgate side is close family. The photo is in your Drive, not the public repository." });
+})(window.KIN_LINEAGE);
