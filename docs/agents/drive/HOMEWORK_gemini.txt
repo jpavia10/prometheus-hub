@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-26 22:56 UTC. 55 to do across 21 pillars.
+Updated 2026-11-26 23:14 UTC. 56 to do across 21 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -61,12 +61,13 @@ IN THIS ORDER:
 43. [Kin] KIN-GEM-52 · Kin: Joann (Joanne), Tania and Michelle's mother: Seconder or Holgate? and the Holgate line · due 2026-12-14
 44. [Kin] KIN-GEM-53 · Kin: Peter Culberson's capture, Cahaba, and the Sultana (Q40) · due 2026-12-14
 45. [Bossa Piano Studio] PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931) · due 2026-12-15
-46. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
-47. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
-48. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-49. [Kairos Meridian] KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them · due 2027-01-15
-50. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
-51. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
+46. [Kin] KIN-GEM-54 · Kin: James Pulliam's parents, Hanover and New Kent (Q41) · due 2026-12-16
+47. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
+48. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
+49. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+50. [Kairos Meridian] KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them · due 2027-01-15
+51. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
+52. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GEM-27 · Drive tidy: trash 22 old files that Claude's Drive access cannot touch
@@ -2311,8 +2312,61 @@ IN THIS ORDER:
 - rows padded to reach the count (fewer true rows beat filler)
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 46. LUDUS ARCADE ====================
-## 46. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
+==================== 46. KIN ====================
+## 46. KIN-GEM-54 · Kin: James Pulliam's parents, Hanover and New Kent (Q41)
+
+**Due:** 2026-12-16 · **State:** now
+
+**What it unlocks:** James Pulliam gets parents, or the tree says plainly that the compiled link is unproven; the Rev. William Pullein of Ripley story (rated under 35%) is settled either way.
+
+**Read first:**
+- pillars/kin/lineage/data.js (P-jpulliam; S-hanover-1734; S-newkent-pullam-1657; Q41; C17)
+- Library of Virginia land office patents and grants (online images), New Kent and Hanover, 1657-1745; The Vestry Book of St. Paul's Parish, Hanover County, 1706-1786 (C. G. Chamberlayne, ed., 1940); Lunenburg County deed and order books, 1746-1770 (FamilySearch images); Lunenburg tithables (Bell, Sunlight on the Southside, 1931)
+
+**Do this:**
+1. Read every Pulliam (Pullam, Pullum, Pulleine) patent and grant in New Kent and Hanover from 1657 to 1745 in the land office images; give book, page and the exact text.
+2. Search the St. Paul's Parish vestry book for Pulliams (processioning lists name landholders) and give each entry with year and page.
+3. Read James Pulliam's earliest Lunenburg records (tithables, deeds, militia commission) for any statement of where he came from or who his kin were.
+4. Say for each candidate father (John of Hanover, others you find) what supports and what argues against him, citing only records you opened.
+
+**Make:** `kin_gemini_pulliam-origins_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find, search, or summary (the last row)
+- `record` (text): obituary, death index, birth index, census, marriage
+- `transcription` (text): the lines naming the family, word for word
+- `identifiers` (text): which names, places and years tie it to Charles A. Sanders and his parents
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 12
+
+**Done when:** Every Pulliam patent and vestry entry before 1746 is listed with its source, and James's earliest Lunenburg records are read for his origin.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace
+
+==================== 47. LUDUS ARCADE ====================
+## 47. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
 
 **Due:** 2026-12-22 · **State:** now
 
@@ -2347,8 +2401,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 47. MIDAS LEDGER ====================
-## 47. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
+==================== 48. MIDAS LEDGER ====================
+## 48. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
 
 **Due:** 2026-12-28 · **State:** now
 
@@ -2402,8 +2456,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 48. KAIROS MERIDIAN ====================
-## 48. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 49. KAIROS MERIDIAN ====================
+## 49. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -2448,8 +2502,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 49. KAIROS MERIDIAN ====================
-## 49. KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them
+==================== 50. KAIROS MERIDIAN ====================
+## 50. KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them
 
 **Due:** 2027-01-15 · **State:** now
 
@@ -2495,8 +2549,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 50. AGORA ====================
-## 50. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+==================== 51. AGORA ====================
+## 51. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 
@@ -2547,8 +2601,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 51. POLIS · CIVIC & LEGAL WATCH ====================
-## 51. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+==================== 52. POLIS · CIVIC & LEGAL WATCH ====================
+## 52. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
 
 **Due:** 2027-01-20 · **State:** now
 

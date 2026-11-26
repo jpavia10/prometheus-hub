@@ -26,7 +26,7 @@ export const STATUS = {
   inferred: { c: "#6c7b9d", t: "Not yet known" },
   placeholder: { c: "#6c7b9d", t: "To name" },
 };
-export const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried", will: "Made a will" };
+export const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried", will: "Made a will", bonus: "State bonus" };
 export const KIND = { original: "Original", derivative: "Derivative", authored: "Authored" };
 export const INFO = { primary: "Primary", secondary: "Secondary", undetermined: "Undetermined" };
 export const EV = { direct: "Direct", indirect: "Indirect", negative: "Negative" };

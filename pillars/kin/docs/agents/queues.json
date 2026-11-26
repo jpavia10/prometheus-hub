@@ -5102,6 +5102,86 @@
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
       "a match accepted on the name alone, without age and birthplace"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "KIN-GEM-54",
+     "title": "Kin: James Pulliam's parents, Hanover and New Kent (Q41)",
+     "due": "2026-12-16",
+     "why": "James Pulliam (1726 to 1799), Lunenburg militia lieutenant and DAR patriot, is the farthest Pulliam the tree holds. John Pulliam's Hanover will (1734/5) names a son James, and William Pullam patented 1,000 acres on Black Creek in New Kent County (Hanover after 1720) on 20 January 1657 (Nugent, Cavaliers and Pioneers, vol. 1, p. 359). Neither is linked to James by a record yet. Hanover's own records were largely lost in 1865.",
+     "unlocks": "James Pulliam gets parents, or the tree says plainly that the compiled link is unproven; the Rev. William Pullein of Ripley story (rated under 35%) is settled either way.",
+     "inputs": [
+      "pillars/kin/lineage/data.js (P-jpulliam; S-hanover-1734; S-newkent-pullam-1657; Q41; C17)",
+      "Library of Virginia land office patents and grants (online images), New Kent and Hanover, 1657-1745; The Vestry Book of St. Paul's Parish, Hanover County, 1706-1786 (C. G. Chamberlayne, ed., 1940); Lunenburg County deed and order books, 1746-1770 (FamilySearch images); Lunenburg tithables (Bell, Sunlight on the Southside, 1931)"
+     ],
+     "steps": [
+      "Read every Pulliam (Pullam, Pullum, Pulleine) patent and grant in New Kent and Hanover from 1657 to 1745 in the land office images; give book, page and the exact text.",
+      "Search the St. Paul's Parish vestry book for Pulliams (processioning lists name landholders) and give each entry with year and page.",
+      "Read James Pulliam's earliest Lunenburg records (tithables, deeds, militia commission) for any statement of where he came from or who his kin were.",
+      "Say for each candidate father (John of Hanover, others you find) what supports and what argues against him, citing only records you opened."
+     ],
+     "deliver": {
+      "file": "kin_gemini_pulliam-origins_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find, search, or summary (the last row)"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "obituary, death index, birth index, census, marriage"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the lines naming the family, word for word"
+      },
+      {
+       "name": "identifiers",
+       "type": "text",
+       "rule": "which names, places and years tie it to Charles A. Sanders and his parents"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the record"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every Pulliam patent and vestry entry before 1746 is listed with its source, and James's earliest Lunenburg records are read for his origin.",
+     "checks": [
+      "Claude reads every image that opens; Muse second-reads."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "a match accepted on the name alone, without age and birthplace"
+     ]
     }
    ]
   },

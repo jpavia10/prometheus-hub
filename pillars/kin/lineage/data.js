@@ -1363,3 +1363,79 @@ window.KIN_LINEAGE.questions.push(
   ];
   L.log.push({ id: "L32", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message", terms: "Joann; Aunt Betty", result: "found", note: "Joann is living. Aunt Betty is Betty (Termens) Holgate, already in the tree; her husband Thomas Holgate added from Katherine Springer's 1997 obituary. The questions for the family are gathered in Kin under \"Ask at the table\"." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026: Joseph Termenas's Michigan World War I card (Archives of Michigan, the state's bonus cards), staged by Gemini,
+   read by Claude at full size, both sides. A third document for his service number (C6), the dates he left and came back
+   (which also correct the first reading of the taped-over line on his 1919 enlistment record), his first company, his
+   promotion date, a Detroit address of about 1920-21, and his Michigan bonus claim, approved 18 Nov 1921. */
+(function (L) {
+  const E = (id) => L.events.find((e) => e.id === id), C = (id) => L.conflicts.find((c) => c.id === id), S = (id) => L.sources.find((s) => s.id === id);
+  L.sources.push({ id: "S-mi-ww1", short: "Michigan WWI service card, 1920–21", kind: "derivative", year: 1921, img: ["mi-ww1-card"],
+    cite: "War Department, Adjutant General's Office, statement of service card, Form No. 724-1½, A.G.O. (March 12, 1920), Termenas, Joseph M., furnished to the State of Michigan for its World War I bonus; Michigan claim no. 135359, approved 18 November 1921; \"World War I Veterans Personnel Cards\" (Michigan bonus cards, 1921–1932), Archives of Michigan (Michiganology); copy in the Kin Drive folder.",
+    read: "Front: Termenas Joseph M; Army serial number typed \"180m338\"; White; residence 825 Vinewood Ave, Detroit, Michigan. Enlisted N.A., Columbus Bks, Ohio, Sept 20/17; born Russia, 24 4/12 yrs; organizations: Co E 25 Engrs to Oct 17/17, Co A 29 Engrs to disch; grades: Pvt 1/c Mch 1/19; engagements: none entered; wounds: none; served overseas Oct 31/17 to July 5/19 (the form asks for the dates of departure from and arrival in the United States); hon. disch. July 15/19 on demobilization; 0 per cent disabled. Reverse: printed conditions of use, War Department stamp, P. C. Harris, The Adjutant General; Michigan's stamp \"Claim No. 135 35 9 / Approved / Nov 18 1921\" (\"Disapproved\" struck through), initialled." });
+  const en = S("S-enlist");
+  if (en) en.read = en.read.replace("in France 10/11/17 (?) to 7/3/19 as read", "under battles: \"A.E.F. 10/31/17 – 7/5/19\" (partly under tape; first read as 10/11/17 to 7/3/19, corrected on 26 Nov 2026 against the Michigan card, which gives Oct 31/17 to July 5/19)");
+  const MI = (value, note) => ({ src: "S-mi-ww1", value, info: "secondary", ev: "direct", ...(note ? { note } : {}) });
+  const dv = E("E-devens");
+  if (dv) {
+    dv.date = { text: "24 Sep–31 Oct 1917", sort: "1917-09-24" };
+    dv.conclusion = "At Camp Devens with the 25th Engineers from 24 September 1917: in Company E until 17 October, then in Company D, which became Company A, 29th Engineers, on 20 October 1917.";
+    dv.assert.push(MI("Co E 25 Engrs to Oct 17/17; Co A 29 Engrs to disch"));
+  }
+  const sl = E("E-sail");
+  if (sl) { sl.confidence = "proven"; sl.assert.push(MI("served overseas from Oct 31/17 (departure from the United States)")); }
+  const ch = E("E-chaumont");
+  L.events.push(
+    { id: "E-pfc", type: "service", who: ["P-joseph"], date: { text: "1 Mar 1919", sort: "1919-03-01" }, place: "PL-langres",
+      conclusion: "Made private first class on 1 March 1919, in France with Company A, 29th Engineers.", confidence: "probable",
+      assert: [MI("Pvt 1/c Mch 1/19"), { src: "S-discharge", value: "Private 1st Class at discharge", info: "primary", ev: "indirect" }] },
+    { id: "E-home1919", type: "service", who: ["P-joseph"], date: { text: "5 Jul 1919", sort: "1919-07-05" },
+      conclusion: "Back in the United States on 5 July 1919, after 20 months overseas; the port is not on either record (a discharge at Camp Devens ten days later fits Boston).", confidence: "probable",
+      assert: [MI("served overseas Oct 31/17 to July 5/19"), { src: "S-enlist", value: "A.E.F. 10/31/17 – 7/5/19", info: "primary", ev: "direct", note: "partly under tape" }] },
+    { id: "E-res1921", type: "residence", who: ["P-joseph"], date: { text: "about 1920–21", sort: "1921-01-01" }, place: "PL-detroit",
+      conclusion: "Lived at 825 Vinewood Avenue, Detroit, when Michigan's bonus office made out his card (about 1920–21): back in Detroit within two years of his discharge.", confidence: "probable",
+      assert: [MI("residence 825 Vinewood Ave, Detroit, Michigan", "the address the bonus application gave")] },
+    { id: "E-bonus", type: "bonus", who: ["P-joseph"], date: { text: "18 Nov 1921", sort: "1921-11-18" }, place: "PL-detroit",
+      conclusion: "His Michigan World War bonus claim (no. 135359) was approved on 18 November 1921; the state paid $15 for each month of service, and he had served almost 22.", confidence: "proven",
+      assert: [MI("Claim No. 135 35 9, Approved Nov 18 1921"), { src: "S-enlist", value: "\"Bonus certified for Michigan State\", notarized", info: "primary", ev: "direct" }] }
+  );
+  const c6 = C("C6");
+  if (c6) c6.argument += " A third document agrees: his Michigan bonus card (1920–21) types the number as \"180m338\", the same six figures with a stray letter where a comma would fall.";
+  if (ch) ch.assert.push(MI("Co A 29 Engrs to disch", "his company to the end; the card does not mention the detached service"));
+  const jp = L.people.find((p) => p.id === "P-joseph");
+  if (jp) jp.summary = jp.summary.replace("Naturalized at Boston on 14 July 1919 and discharged at Camp Devens the next day.", "Made private first class on 1 March 1919 and back in the United States on 5 July. Naturalized at Boston on 14 July 1919 and discharged at Camp Devens the next day. Back in Detroit by 1921 (825 Vinewood Avenue), where Michigan approved his veteran's bonus on 18 November 1921.");
+  L.log.push({ id: "L33", date: "2026-11-26", by: "Claude", q: "Q18", where: "Archives of Michigan WWI bonus card (staged by Gemini in the Kin Drive folder; read at full size, both sides)", terms: "Termenas, Joseph M.", result: "found",
+    note: "Service number 180338 confirmed by a third document (C6). Overseas 31 Oct 1917 to 5 Jul 1919, which also corrected the first reading of his enlistment record's taped line (10/31/17 – 7/5/19). First company: Co. E, 25th Engineers, to 17 Oct 1917. Private first class from 1 Mar 1919. 825 Vinewood Avenue, Detroit, about 1920–21. Michigan bonus claim 135359 approved 18 Nov 1921." });
+})(window.KIN_LINEAGE);
+
+/* 26 Nov 2026 (Claude): the last 96 record pages Gemini staged are read (all 289 now have a verdict in
+   pillars/kin/docs/staged-records.json). Six add to the tree: second readings of John Martin's 1741 will and William Martin's
+   1745 will (Hathaway), a Pasquotank witness John Martin in January 1741/2, John Martin's house on Bennett's Creek in a
+   1646 Lower Norfolk patent, and a William Pullam who patented 1,000 acres in New Kent County in 1657 (a lead for James
+   Pulliam's family). The Holt, Llewellyn and Stith pages are set aside: those lines are not in this tree. Two 1950 census
+   households for Charles and Elizabeth Sanders are kept as candidates for Q30, not attached. */
+(function (L) {
+  const S = (id) => L.sources.find((s) => s.id === id), Q = (id) => L.questions.find((q) => q.id === id);
+  const add = (id, cite, read) => { const s = S(id); if (s) { s.cite += cite; s.read += read; } };
+  add("S-grimes-jmartin-1741", " Also J. R. B. Hathaway, North Carolina Historical and Genealogical Register, vol. 1, p. 62 (page staged by Gemini).",
+    " Hathaway's own abstract (no dates printed) gives the same children, \"Elliner Bryant\" among them, and calls John Morgan and Thomas Jessop his sons-in-law.");
+  add("S-bath-martins", " Hathaway, vol. 1, p. 348 (William Martin, continued).",
+    " Hathaway's reading of William Martin's 1745 will adds his wife Mary, Ann and Joseph Jones, a cousin Henry Snead, and a third witness, Henry Woodard.");
+  add("S-albemarle-martins", " Hathaway, vol. 1, p. 508 (Augustine Wright).",
+    " Hathaway dates Augustine Wright's will 27 January 1741/2 (proved April Court 1742), witnessed by John Martin and John Browne: the month John Martin's own will was proved, so this witness is most likely his son John.");
+  add("S-lnva-jmartin", " Nell Marion Nugent, Cavaliers and Pioneers, vol. 1 (1934), p. 162 (Lancaster Lovett's patent; page staged by Gemini).",
+    " Lancaster Lovett's 300 acres in Lower Norfolk County, patented 1 October 1646, begin \"at an island to the Westward of John Martin's house where Bennets Cr. divides itself into 3 branches\": John Martin had a house in the county by 1646, the year he signed as a Lynnhaven churchwarden, and Lovett's will of 1673 still bounds land \"next Martin\" (McIntosh, p. 45).");
+  L.sources.push({ id: "S-newkent-pullam-1657", short: "William Pullam's New Kent County patent, 1657 (Nugent's abstracts)", kind: "derivative", year: 1657,
+    cite: "Nell Marion Nugent, Cavaliers and Pioneers: Abstracts of Virginia Land Patents and Grants, vol. 1 (Richmond, 1934), p. 359 (Patent Book 4, p. 147: William Pullam) and p. 476 (Patent Book 5, p. 307: Peter Adams); pages staged by Gemini in the Kin Drive folder.",
+    read: "Read by Claude on 26 Nov 2026: \"WILLIAM PULLAM, 1000 acs. New Kent Co., 20 Jan. 1657 ... On S. side of York Riv. & N. W. side of Black Cr., beg. at Southermost cor. of land surveyed for Mr. Joseph Croshawe. Trans. of 20 pers\", among them \"Elliz. Pullum\". Peter Adams's 594 acres in New Kent (18 March 1662) include land \"Purchased of Wm. Pullam out of a grand pattern of 1000 acs. granted 20 Jan. 1657.\" Hanover County, where John Pulliam made his will in 1734/5 naming a son James (S-hanover-1734), was formed from New Kent in 1720. A lead for the family of this tree's James Pulliam (born 1726), not a link." });
+  if (!Q("Q41")) L.questions.push({ id: "Q41", p: 3, person: "P-jpulliam", q: "James Pulliam (1726 to 1799): who were his parents? John Pulliam's Hanover will (1734/5) names a son James, and a William Pullam patented 1,000 acres on Black Creek in New Kent County (later Hanover) in 1657. Hanover's own records were largely lost in 1865, so the trail runs through St. Paul's Parish, the Virginia land office and his own later records in Lunenburg (deeds or a militia list naming where he came from).", sources: "Virginia land patents and grants (Library of Virginia); St. Paul's Parish vestry book (Hanover); Lunenburg County deeds and order books, 1746-1770", task: "KIN-GEM-54" });
+  const q30 = Q("Q30");
+  if (q30) q30.q += " Two 1950 census households in Wayne County fit the names, neither proven: Charles L. Sanders (33, born Tennessee) and Elizabeth M. (31) in Dearborn, and Charles D. Sanders (23, born Indiana) and Elizabeth M. (21) in the city of Wayne. Your grandfather's birth year and place, or the Sanders–Flemming marriage record, would tell which, if either.";
+  const mom = (L.askTable || []).find((g) => g.who === "Mom");
+  if (mom && !mom.ask.some((a) => a.ref === "Q30")) mom.ask.splice(1, 0, { q: "Grandpa's dad: was he from Tennessee or Indiana? And Grandpa's mom, Betty Flemming: was her name Elizabeth? (Two 1950 Charles and Elizabeth Sanders couples lived in Dearborn and Wayne.)", ref: "Q30" });
+  L.log.push(
+    { id: "L34", date: "2026-11-26", by: "Claude", q: "", where: "the last 96 record pages Gemini staged in the Kin Drive folder (Hathaway's Register, Nugent's Cavaliers and Pioneers, Hening, the Journals of the House of Burgesses, Hotten, the St. Peter's Parish register, Crozier, McIntosh, the William and Mary Quarterly)", terms: "Martin, Bryant, Turner, Davis, Patterson, Holt, Llewellyn, Stith, Pulliam", result: "found",
+      note: "All 289 staged record pages now have a verdict (40 sources, 249 set aside). New in this batch: Hathaway's readings of John Martin's 1741 and William Martin's 1745 wills, a John Martin witness in Pasquotank in January 1741/2 (most likely his son), John Martin's house on Bennett's Creek in 1646, and William Pullam's 1657 New Kent patent (Q41). The Holt, Llewellyn and Stith pages belong to lines this tree does not hold. Two index pages point to Keelings in the William and Mary Quarterly (vol. 21, pp. 52, 152, 251; vol. 22, p. 122); read in the Internet Archive's text, they are later Keelings of New Kent and Hanover (George Keeling, a New Kent justice, in 1715; John Keeling of Granville County, N.C., in a 1786 deed), not Thomas Keeling's Lower Norfolk family." },
+    { id: "L35", date: "2026-11-26", by: "Claude", q: "Q30", where: "1950 census pages Gemini staged (Dearborn ED 84-92, sheet 13; city of Wayne ED 82-264, sheet 8)", terms: "Charles and Elizabeth Sanders, Wayne County", result: "candidate",
+      note: "Two couples named Charles and Elizabeth M. Sanders in Wayne County in April 1950 (Gemini's certainty 20-25%). Neither page names a Flemming; kept as candidates until your grandfather's birth year and place can test them." });
+})(window.KIN_LINEAGE);

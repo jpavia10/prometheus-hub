@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d111, every staged record page read; Joseph Termenas's Michigan WWI card
+- Joseph's Michigan bonus card (Archives of Michigan, both sides read at full size) is source S-mi-ww1: a third document for service number 180338 (C6), overseas 31 Oct 1917 to 5 Jul 1919 (which corrected the first reading of his enlistment record's taped line), first company Co. E 25th Engineers, private first class 1 Mar 1919, 825 Vinewood Ave about 1920-21, Michigan bonus claim 135359 approved 18 Nov 1921 (new events E-pfc, E-home1919, E-res1921, E-bonus; story chapter "Back in Detroit").
+- The last 96 staged record pages are read: all 289 have a verdict (40 sources, 249 set aside); new evidence for the Martins (Hathaway; John Martin's house on Bennett's Creek, 1646) and William Pullam's 1657 New Kent patent (S-newkent-pullam-1657, Q41, Gemini KIN-GEM-54).
+- Two 1950 Sanders couples kept as Q30 candidates; a table question for Mom.
+
 ### [2026-11-26] Claude: Kin d110, family stories with history links; names open a sheet instead of jumping
 - Owner: "Is there only a timeline story ... room for more and theres no historical links integration"; then "everytime I click someones name it scrolls to the top. I want the layout fixed". New lineage/stories.js: six stories (Termenas, Pavia, Kirkland and Moss, Culberson, Seconder hypothesis, the colonial lines), 39 chapters, every sentence from data.js (possible and hypothetical links said so), each chapter with its people (relation to you from kinship.js), records and album pictures (open in the viewer with their own captions), 63 outside history links (each confirmed to exist through web search, since Wikipedia is outside this session's network), the shared world-history entries for the same years and places, and the open questions. Kin tab "Family stories"; "In the family stories" on every person's page; ?story=id&ch=n deep links; the tree in three dimensions links each person to their stories.
 - New Q40 (Peter Culberson: capture, Cahaba, was he on the Sultana?) and Gemini KIN-GEM-53. Correction made before publishing: the Agamemnon was the former Kaiser Wilhelm II, a German liner, not a Hamburg America ship.

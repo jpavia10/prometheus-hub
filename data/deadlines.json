@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 22:56 UTC",
+ "updated": "2026-11-26 23:14 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -627,6 +627,17 @@
    "title": "Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931)",
    "state": "now",
    "count": 20
+  },
+  {
+   "due": "2026-12-16",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-54",
+   "title": "Kin: James Pulliam's parents, Hanover and New Kent (Q41)",
+   "state": "now",
+   "count": 12
   },
   {
    "due": "2026-12-22",

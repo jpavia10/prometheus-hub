@@ -2,7 +2,7 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-26 22:56 UTC · 10 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 23:14 UTC · 11 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -530,6 +530,60 @@ Updated 2026-11-26 22:56 UTC · 10 open · Rules for every pillar: https://githu
 **How many:** 10
 
 **Done when:** His capture, prison and parole are read from his record, and the Sultana lists are checked for him.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace
+
+## 11. KIN-GEM-54 · Kin: James Pulliam's parents, Hanover and New Kent (Q41)
+
+**Due:** 2026-12-16 · **State:** now
+
+**Why:** James Pulliam (1726 to 1799), Lunenburg militia lieutenant and DAR patriot, is the farthest Pulliam the tree holds. John Pulliam's Hanover will (1734/5) names a son James, and William Pullam patented 1,000 acres on Black Creek in New Kent County (Hanover after 1720) on 20 January 1657 (Nugent, Cavaliers and Pioneers, vol. 1, p. 359). Neither is linked to James by a record yet. Hanover's own records were largely lost in 1865.
+
+**What it unlocks:** James Pulliam gets parents, or the tree says plainly that the compiled link is unproven; the Rev. William Pullein of Ripley story (rated under 35%) is settled either way.
+
+**Read first:**
+- pillars/kin/lineage/data.js (P-jpulliam; S-hanover-1734; S-newkent-pullam-1657; Q41; C17)
+- Library of Virginia land office patents and grants (online images), New Kent and Hanover, 1657-1745; The Vestry Book of St. Paul's Parish, Hanover County, 1706-1786 (C. G. Chamberlayne, ed., 1940); Lunenburg County deed and order books, 1746-1770 (FamilySearch images); Lunenburg tithables (Bell, Sunlight on the Southside, 1931)
+
+**Do this:**
+1. Read every Pulliam (Pullam, Pullum, Pulleine) patent and grant in New Kent and Hanover from 1657 to 1745 in the land office images; give book, page and the exact text.
+2. Search the St. Paul's Parish vestry book for Pulliams (processioning lists name landholders) and give each entry with year and page.
+3. Read James Pulliam's earliest Lunenburg records (tithables, deeds, militia commission) for any statement of where he came from or who his kin were.
+4. Say for each candidate father (John of Hanover, others you find) what supports and what argues against him, citing only records you opened.
+
+**Make:** `kin_gemini_pulliam-origins_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find, search, or summary (the last row)
+- `record` (text): obituary, death index, birth index, census, marriage
+- `transcription` (text): the lines naming the family, word for word
+- `identifiers` (text): which names, places and years tie it to Charles A. Sanders and his parents
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 12
+
+**Done when:** Every Pulliam patent and vestry entry before 1746 is listed with its source, and James's earliest Lunenburg records are read for his origin.
 
 **How Claude checks it:**
 - Claude reads every image that opens; Muse second-reads.

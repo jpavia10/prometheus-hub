@@ -28,7 +28,7 @@
   const DOCS = "lineage/docs/";
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const by = (arr) => Object.fromEntries(arr.map((x) => [x.id, x]));
-  const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried", will: "Made a will" };
+  const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried", will: "Made a will", bonus: "State bonus" };
   const CONF = { proven: "Proven", probable: "Probable", possible: "Possible", family: "From the family", inferred: "Not yet known", placeholder: "To name", named: "Named by you", self: "You" };
   const KIND = { original: "Original", derivative: "Derivative", authored: "Authored" };
   const INFO = { primary: "Primary", secondary: "Secondary", undetermined: "Undetermined" };
