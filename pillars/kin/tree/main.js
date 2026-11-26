@@ -367,6 +367,7 @@ function dossier(id) {
       <button type="button" class="tv-x" data-close aria-label="Close">×</button>
     </header>
     ${p.summary ? `<p class="tv-sum">${esc(p.summary)}</p>` : ""}${p.note ? `<p class="tv-note">${esc(p.note)}</p>` : ""}
+    ${(() => { /* the family stories this person is in (lineage/stories.js): each opens Kin's Stories at their chapter */ const hits = (L.stories || []).map((s) => { const i = s.chapters.findIndex((c) => c.people.includes(id)); return i >= 0 ? `<a class="tv-story" href="../?story=${s.id}&amp;ch=${i}">${esc(s.title)}</a>` : ""; }).filter(Boolean); return hits.length ? `<p class="tv-stories"><span>Read their story</span>${hits.join("")}</p>` : ""; })()}
     ${n.ghost ? ghostHtml(n) : ""}
     ${media.length ? `<section class="tv-sec" id="tv-media"><h3>Records and pictures <small>${media.length}</small></h3><div class="tv-strip">${media.map((m, i) => `<button type="button" class="tv-doc" data-doc="${i}" aria-label="${esc(m.cap || "record")}"><img loading="lazy" src="${DOCS}t/${m.img}.webp" alt=""><span>${esc(((SRC[m.src] || {}).year || "") + "")}</span></button>`).join("")}</div></section>` : ""}
     ${names.length > 1 ? `<section class="tv-sec"><h3>Names in the records</h3><ul class="tv-names">${names.map((x) => `<li><b>${esc(`${x.given || ""} ${x.surname || ""}`.trim())}</b> <small>${esc(x.type || "")}${x.note ? " · " + esc(x.note) : ""}</small></li>`).join("")}</ul></section>` : ""}

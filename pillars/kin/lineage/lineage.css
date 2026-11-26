@@ -1,6 +1,6 @@
 /* Kin · Lineage (2026-11-24): the family tree, the dossier, the documents. Archival warmth on the Prometheus glass: parchment ink,
    a gold thread for your line, proof states as quiet colours. */
-.ln-panel { --gold: #e7c27a; --parch: #f3e7cf; --ok: #7fd1a8; --maybe: #e7c27a; --weak: #c7a0ff; --todo: #8aa0bd; }
+.ln-panel, .ln-sheet { --gold: #e7c27a; --parch: #f3e7cf; --ok: #7fd1a8; --maybe: #e7c27a; --weak: #c7a0ff; --todo: #8aa0bd; }
 .ln-stage { position: relative; margin: 6px -4px 0; border-radius: 22px; overflow: hidden; border: 1px solid var(--line-strong);
   background: radial-gradient(120% 90% at 50% 0%, rgba(231, 194, 122, .10), transparent 60%), linear-gradient(180deg, rgba(8, 10, 20, .82), rgba(5, 7, 14, .92)); }
 .ln-svg { display: block; width: 100%; height: min(62vh, 560px); touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; }
@@ -264,3 +264,61 @@
 .ln-relate { margin: 22px 0 8px; padding: 16px 16px 14px; border: 1px solid var(--line); border-radius: 16px; background: color-mix(in srgb, var(--gold) 4%, transparent); }
 .ln-relate > h4 { margin-top: 0 !important; }
 .ln-askgo { margin: 14px 0 0; }
+
+/* family stories (26 Nov 2026) */
+.st-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 14px; }
+.st-card { display: flex; flex-direction: column; text-align: left; padding: 0; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; cursor: pointer; color: var(--ink); font: inherit;
+  background: color-mix(in srgb, var(--ink) 4%, transparent); transition: transform .25s ease, border-color .25s ease; }
+.st-card:hover, .st-card:focus-visible { transform: translateY(-2px); border-color: color-mix(in srgb, var(--gold) 60%, var(--line)); }
+.st-card img, .st-noimg { display: block; width: 100%; height: 150px; object-fit: cover; object-position: 50% 30%; filter: sepia(.25) saturate(.9); }
+.st-noimg { display: grid; place-items: center; font: 300 72px/1 var(--sans); color: var(--gold); background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--gold) 18%, transparent), transparent 70%); }
+.st-cin { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px 16px; }
+.st-kick, .st-when, .st-hk { font: 600 11px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+.st-card b { font: 500 19px/1.25 var(--sans); color: var(--parch); }
+.st-lead { font-size: 14px; line-height: 1.5; color: var(--muted); }
+.st-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.st-read { max-width: 760px; margin: 0 auto; }
+.st-head { display: grid; gap: 16px; margin: 14px 0 6px; }
+.st-head img { width: 100%; max-height: 320px; object-fit: cover; object-position: 50% 30%; border-radius: 16px; filter: sepia(.2); }
+.st-title { margin: 4px 0 8px; font: 300 clamp(26px, 6vw, 40px)/1.12 var(--sans); color: var(--ink); letter-spacing: -.01em; }
+.st-head .st-lead { font-size: 16px; color: var(--ink); opacity: .86; }
+.st-rail { display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 14px; margin: 6px 0 4px; scrollbar-width: thin; position: sticky; top: 0; z-index: 2; background: linear-gradient(var(--bg, #0b0a10) 70%, transparent); }
+.st-rail button { flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; max-width: 190px; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--ink) 5%, transparent); color: var(--ink); font: inherit; cursor: pointer; text-align: left; }
+.st-rail b { font: 600 11px var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+.st-rail span { font-size: 13px; line-height: 1.3; }
+.st-ch { position: relative; padding: 22px 0 22px 22px; border-left: 2px solid color-mix(in srgb, var(--gold) 40%, transparent); scroll-margin-top: 90px; }
+.st-ch::before { content: ""; position: absolute; left: -7px; top: 27px; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 20%, transparent); }
+.st-ch h3 { margin: 4px 0 10px; font: 500 clamp(20px, 4.6vw, 26px)/1.25 var(--sans); color: var(--parch); }
+.st-text { margin: 0; font-size: 16.5px; line-height: 1.7; color: var(--ink); }
+.st-ppl { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+.st-p { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; padding: 7px 12px; border-radius: 12px; border: 1px solid var(--line); background: color-mix(in srgb, var(--ink) 5%, transparent); color: var(--ink); font: inherit; cursor: pointer; text-align: left; min-height: 44px; }
+.st-p b { font-weight: 600; font-size: 14px; }
+.st-p small { font-size: 12px; color: var(--muted); }
+.st-p:hover, .st-p:focus-visible { border-color: var(--gold); }
+.st-docs { margin-top: 12px; }
+.st-hist { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: color-mix(in srgb, var(--gold) 6%, transparent); border: 1px solid color-mix(in srgb, var(--gold) 22%, var(--line)); }
+.st-hist ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 8px; }
+.st-hist li { font-size: 14.5px; line-height: 1.45; color: var(--ink); }
+.st-hist a { color: var(--gold); text-underline-offset: 3px; font-weight: 600; }
+.st-hist li small { display: block; color: var(--muted); font-size: 12.5px; }
+.st-hist .st-ctx time { font-weight: 700; color: var(--parch); margin-right: 4px; }
+.st-hist .st-ctx a { font-weight: 500; font-size: 12.5px; }
+.st-open { margin-top: 12px; font-size: 14px; color: var(--muted); }
+.st-open summary { cursor: pointer; color: var(--gold); }
+.st-foot { margin: 22px 0 6px; text-align: center; }
+.st-in { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin: 10px 0 0; font-size: 14px; }
+.st-in > span { font: 600 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .st-card { transition: none; } }
+
+/* the person sheet (26 Nov 2026): a name opens the person over the page; the page never scrolls away */
+.ln-sheet { position: fixed; inset: 0; z-index: 80; display: flex; align-items: flex-end; justify-content: center; background: rgba(4, 3, 8, .62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.ln-sheet[hidden] { display: none; }
+.ln-sheet-in { position: relative; width: min(760px, 100%); max-height: 88vh; max-height: 88dvh; overflow-y: auto; overscroll-behavior: contain; padding: 0 18px 32px; border-radius: 22px 22px 0 0;
+  background: var(--bg, #0d0b12); border: 1px solid var(--line); border-bottom: 0; box-shadow: 0 -20px 60px rgba(0,0,0,.5); animation: ln-sheet-up .28s cubic-bezier(.2,.8,.2,1); outline: none; }
+.ln-sheet-bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 0 10px; margin-bottom: 4px;
+  background: linear-gradient(var(--bg, #0d0b12) 78%, transparent); }
+.ln-sheet-x { min-width: 44px; min-height: 44px; font-size: 22px; }
+body.ln-sheet-on { overflow: hidden; }
+@media (min-width: 900px) { .ln-sheet { align-items: center; } .ln-sheet-in { border-radius: 22px; border-bottom: 1px solid var(--line); max-height: 86vh; } }
+@keyframes ln-sheet-up { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .ln-sheet-in { animation: none; } }

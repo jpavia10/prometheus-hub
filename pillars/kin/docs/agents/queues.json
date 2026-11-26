@@ -5022,6 +5022,86 @@
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
       "a match accepted on the name alone, without age and birthplace"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "KIN-GEM-53",
+     "title": "Kin: Peter Culberson's capture, Cahaba, and the Sultana (Q40)",
+     "due": "2026-12-14",
+     "why": "Peter Culberson (1833 to 1914), Company F, 3rd Tennessee Cavalry (Union), was captured in September 1864 and held at Cahaba. Most of his regiment was taken at the Sulphur Branch trestle on 25 September 1864, and more than 260 of its men died when the Sultana blew up on 27 April 1865. Kin's new family story says whether Peter was aboard is not known.",
+     "unlocks": "The Culberson story's Sultana chapter becomes fact, either way; his service and pension files fill in his war.",
+     "inputs": [
+      "pillars/kin/lineage/data.js and stories.js (P-peterc; Q40; the Culberson story)",
+      "Fold3 / NARA compiled service records, 3rd Tennessee Cavalry (Union); the pension index card for widow Mary E. Culberson (in the album); Sultana passenger and survivor lists (Sultana Association; Chester D. Berry, Loss of the Sultana and Reminiscences of Survivors, 1892, on the Internet Archive); FamilySearch"
+     ],
+     "steps": [
+      "Read Peter Culberson's compiled service record: enlistment, capture date and place, prison, parole date and place.",
+      "Search the Sultana passenger, casualty and survivor lists for Culberson and spelling variants (Culbertson, Colberson).",
+      "Read the widow's pension file index and, if open, the file: his service as she proved it, their marriage, his death.",
+      "Transcribe every line that names him, with the URL of the image; log every empty search."
+     ],
+     "deliver": {
+      "file": "kin_gemini_culberson-sultana_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find, search, or summary (the last row)"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "obituary, death index, birth index, census, marriage"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the lines naming the family, word for word"
+      },
+      {
+       "name": "identifiers",
+       "type": "text",
+       "rule": "which names, places and years tie it to Charles A. Sanders and his parents"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the record"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "His capture, prison and parole are read from his record, and the Sultana lists are checked for him.",
+     "checks": [
+      "Claude reads every image that opens; Muse second-reads."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "a match accepted on the name alone, without age and birthplace"
+     ]
     }
    ]
   },

@@ -253,3 +253,7 @@ body:not(.ready) .tv-top, body:not(.ready) .tv-tabs, body:not(.ready) .tv-time {
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 @media (max-width: 380px) { .tv-tabs button { min-width: 64px; } .tv-title h1 { font-size: 20px; } }
 @media (min-width: 760px) { .tv-title h1 { font-size: 26px; } .tv-time { bottom: calc(var(--bot) + 76px); } }
+/* the family stories a person is in (26 Nov 2026) */
+.tv-stories { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 10px 0 2px; }
+.tv-stories > span { font: 600 11px/1.4 var(--sans, system-ui); letter-spacing: .14em; text-transform: uppercase; opacity: .7; }
+.tv-story { color: #e7c27a; text-underline-offset: 3px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center; }

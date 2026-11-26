@@ -3,7 +3,7 @@
    Pictures, fonts, sounds and models (2026-11-25, c9, the phone pass): from their own cache at once, refreshed behind for next time.
    That cache outlives builds (its name does not start "prometheus-hub-"), so a new build no longer re-downloads every painting, and on a
    phone a page no longer waits on the network for its font and its painting (the late font was reflowing the text). */
-var CACHE = "prometheus-hub-deck-d109";
+var CACHE = "prometheus-hub-deck-d110";
 var MEDIA = "prometheus-media-v1", MEDIA_RE = /\.(webp|png|jpe?g|gif|svg|woff2?|webm|m4a|mp3|glb)$/i;
 var PILLAR_IDS = [
   "kairos", "hearth", "garage", "apollo", "money", "selling", "records", "icarus", "hermes",
@@ -31,7 +31,7 @@ var SHELL = [
   "./pillars/atlas/pay.js", "./pillars/aegis/cover.js", "./pillars/athenaeum/vault.js", "./pillars/athenaeum/ideas-seed.js", "./pillars/athenaeum/history-seed.js",
   "./pillars/odyssey/odyssey-data.js", "./pillars/odyssey/basemap.js", "./pillars/odyssey/photos.js", "./pillars/odyssey/odyssey-extra.js", "./pillars/odyssey/globe.js", "./pillars/polis/kern-rules.js", "./pillars/continuity/legacy-policies.js", "./pillars/hearth/permits.js", "./pillars/argus/corpus-data.js", "./pillars/observatory/subjects-seed.js",
   "./pillars/athenaeum/js/app.js", "./pillars/athenaeum/js/sky.js", "./pillars/athenaeum/js/model.js", "./pillars/athenaeum/data/cause-event-consequence.json",
-  "./pillars/kin/lineage/data.js", "./pillars/kin/lineage/album.js", "./pillars/kin/lineage/kinship.js", "./pillars/kin/lineage/lineage.js",
+  "./pillars/kin/lineage/data.js", "./pillars/kin/lineage/album.js", "./pillars/kin/lineage/stories.js", "./pillars/kin/lineage/kinship.js", "./pillars/kin/lineage/lineage.js",
   "./pillars/kin/album/", "./pillars/kin/album/index.html", "./pillars/kin/album/album.css", "./pillars/kin/album/app.js", "./pillars/kin/album/catalog.js", "./kit/history.js", "./pillars/athenaeum/data/world-history.js", "./pillars/kin/lineage/lineage.css", "./kit/vendor/three/build/three.module.min.js",
   "./pillars/kin/tree/", "./pillars/kin/tree/index.html", "./pillars/kin/tree/tree.css", "./pillars/kin/tree/main.js", "./pillars/kin/tree/core.js", "./pillars/kin/tree/gfx.js", "./pillars/kin/tree/globe.js", "./pillars/kin/tree/poster.webp",
   "./pillars/kin/tree/fonts/cormorant-garamond-latin-500-normal.woff2", "./pillars/kin/tree/fonts/cormorant-garamond-latin-600-normal.woff2", "./pillars/kin/tree/fonts/cormorant-garamond-latin-500-italic.woff2"

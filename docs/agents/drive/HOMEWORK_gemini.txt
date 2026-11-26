@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-26 19:57 UTC. 54 to do across 21 pillars.
+Updated 2026-11-26 22:56 UTC. 55 to do across 21 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -59,13 +59,14 @@ IN THIS ORDER:
 41. [Kin] KIN-GEM-50 · Kin: Joseph Pavia's crossing from Malta and his naturalization · due 2026-12-14
 42. [Kin] KIN-GEM-51 · Kin: Charles A. Sanders's brothers and sisters (the Sanders link Joseph calls hard to crack) · due 2026-12-14
 43. [Kin] KIN-GEM-52 · Kin: Joann (Joanne), Tania and Michelle's mother: Seconder or Holgate? and the Holgate line · due 2026-12-14
-44. [Bossa Piano Studio] PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931) · due 2026-12-15
-45. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
-46. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
-47. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-48. [Kairos Meridian] KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them · due 2027-01-15
-49. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
-50. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
+44. [Kin] KIN-GEM-53 · Kin: Peter Culberson's capture, Cahaba, and the Sultana (Q40) · due 2026-12-14
+45. [Bossa Piano Studio] PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931) · due 2026-12-15
+46. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
+47. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
+48. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+49. [Kairos Meridian] KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them · due 2027-01-15
+50. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
+51. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GEM-27 · Drive tidy: trash 22 old files that Claude's Drive access cannot touch
@@ -2205,8 +2206,61 @@ IN THIS ORDER:
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a match accepted on the name alone, without age and birthplace
 
-==================== 44. BOSSA PIANO STUDIO ====================
-## 44. PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931)
+==================== 44. KIN ====================
+## 44. KIN-GEM-53 · Kin: Peter Culberson's capture, Cahaba, and the Sultana (Q40)
+
+**Due:** 2026-12-14 · **State:** now
+
+**What it unlocks:** The Culberson story's Sultana chapter becomes fact, either way; his service and pension files fill in his war.
+
+**Read first:**
+- pillars/kin/lineage/data.js and stories.js (P-peterc; Q40; the Culberson story)
+- Fold3 / NARA compiled service records, 3rd Tennessee Cavalry (Union); the pension index card for widow Mary E. Culberson (in the album); Sultana passenger and survivor lists (Sultana Association; Chester D. Berry, Loss of the Sultana and Reminiscences of Survivors, 1892, on the Internet Archive); FamilySearch
+
+**Do this:**
+1. Read Peter Culberson's compiled service record: enlistment, capture date and place, prison, parole date and place.
+2. Search the Sultana passenger, casualty and survivor lists for Culberson and spelling variants (Culbertson, Colberson).
+3. Read the widow's pension file index and, if open, the file: his service as she proved it, their marriage, his death.
+4. Transcribe every line that names him, with the URL of the image; log every empty search.
+
+**Make:** `kin_gemini_culberson-sultana_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find, search, or summary (the last row)
+- `record` (text): obituary, death index, birth index, census, marriage
+- `transcription` (text): the lines naming the family, word for word
+- `identifiers` (text): which names, places and years tie it to Charles A. Sanders and his parents
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** His capture, prison and parole are read from his record, and the Sultana lists are checked for him.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace
+
+==================== 45. BOSSA PIANO STUDIO ====================
+## 45. PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931)
 
 **Due:** 2026-12-15 · **State:** now
 
@@ -2257,8 +2311,8 @@ IN THIS ORDER:
 - rows padded to reach the count (fewer true rows beat filler)
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 45. LUDUS ARCADE ====================
-## 45. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
+==================== 46. LUDUS ARCADE ====================
+## 46. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
 
 **Due:** 2026-12-22 · **State:** now
 
@@ -2293,8 +2347,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 46. MIDAS LEDGER ====================
-## 46. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
+==================== 47. MIDAS LEDGER ====================
+## 47. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
 
 **Due:** 2026-12-28 · **State:** now
 
@@ -2348,8 +2402,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 47. KAIROS MERIDIAN ====================
-## 47. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 48. KAIROS MERIDIAN ====================
+## 48. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -2394,8 +2448,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 48. KAIROS MERIDIAN ====================
-## 48. KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them
+==================== 49. KAIROS MERIDIAN ====================
+## 49. KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them
 
 **Due:** 2027-01-15 · **State:** now
 
@@ -2441,8 +2495,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 49. AGORA ====================
-## 49. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+==================== 50. AGORA ====================
+## 50. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 
@@ -2493,8 +2547,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 50. POLIS · CIVIC & LEGAL WATCH ====================
-## 50. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+==================== 51. POLIS · CIVIC & LEGAL WATCH ====================
+## 51. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
 
 **Due:** 2027-01-20 · **State:** now
 

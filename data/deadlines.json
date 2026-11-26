@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 19:57 UTC",
+ "updated": "2026-11-26 22:56 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -603,6 +603,17 @@
    "ai_name": "Gemini",
    "id": "KIN-GEM-52",
    "title": "Kin: Joann (Joanne), Tania and Michelle's mother: Seconder or Holgate? and the Holgate line",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-12-14",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-53",
+   "title": "Kin: Peter Culberson's capture, Cahaba, and the Sultana (Q40)",
    "state": "now",
    "count": 10
   },

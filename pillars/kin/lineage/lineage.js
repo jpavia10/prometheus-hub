@@ -158,6 +158,7 @@
   }
 
   /* ------------------------------------------------------------------ the tree */
+  let openSheet = () => {}, closeSheet = () => {};
   const ui = { sel: L.root, view: { s: 1, x: 0, y: 0 }, M: null, lay: null, expand: new Set(), vroot: null };
   const depth = () => (window.innerWidth < 600 ? 2 : 3); /* the tree shows the person it is rooted on and two generations above on a phone (three on a wide screen); "↑ older" climbs, "You" comes back */
   function drawTree(root) {
@@ -350,7 +351,7 @@
       <header class="ln-dhead"><p class="ln-kick">${toYou ? `${esc(toYou)} · ` : ""}${esc(CONF[p.status] || p.status)}${p.local ? " · added on this device" : ""}</p>
         <h3>${esc(p.status === "placeholder" ? p.placeholder : nm(p))}</h3><p class="ln-dlife">${esc(life(M, p))}${p.born_est ? ` · born ${esc(p.born_est.text)}` : ""}</p>
         ${names ? `<div class="ln-names">${names}</div>` : ""}</header>
-      ${p.summary ? `<p class="ln-sum">${esc(p.summary)}</p>` : ""}${p.note ? `<p class="ln-note">${esc(p.note)}</p>` : ""}${p.note_local ? `<p class="ln-note">${esc(p.note_local)}</p>` : ""}
+      ${p.summary ? `<p class="ln-sum">${esc(p.summary)}</p>` : ""}${storyLinks(pid)}${p.note ? `<p class="ln-note">${esc(p.note)}</p>` : ""}${p.note_local ? `<p class="ln-note">${esc(p.note_local)}</p>` : ""}
       ${p.born_est ? `<p class="ln-note">Basis for the estimate: ${esc(p.born_est.basis)}.</p>` : ""}
       ${p.infer && p.infer.length ? `<h4>What can be inferred</h4><ul class="ln-infer">${p.infer.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       ${rel(fam.parents, "Parents")}${rel(sibs, "Brothers and sisters")}${rel(fam.spouses, "Spouse")}${rel(fam.kids, "Children")}
@@ -407,8 +408,8 @@
   }
 
   /* ------------------------------------------------------------------ documents: a full-screen viewer with zoom */
-  function viewer(img, srcId) {
-    const s = ui.M.SRC[srcId] || {};
+  function viewer(img, srcId, cap) {
+    const s0 = ui.M.SRC[srcId] || {}, s = cap ? Object.assign({}, s0, { short: cap.length > 90 ? cap.slice(0, 87) + "…" : cap, read: cap.length > 90 ? cap : "" }) : s0;   /* a picture from a story or the album speaks with its own caption */
     const box = h("div", { class: "ln-view", role: "dialog", "aria-modal": "true", "aria-label": s.short || img, tabindex: "-1" });
     box.innerHTML = `<div class="ln-vstage"><img src="${DOCS}${img}.webp" alt="${esc(s.short || img)}" draggable="false"></div>
       <aside class="ln-vcap"><b>${esc(s.short || "")}</b><p>${esc(s.read || "")}</p><p class="ln-cite">${esc(s.cite || "")}</p>${s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">Open the record</a>` : ""}</aside>
@@ -569,6 +570,59 @@
     const un = M.families.some((f) => f.uncertain && Object.keys(f.uncertain).length);
     tree.querySelector(".ln-legend").innerHTML = order.filter((k) => has.has(k)).map((k) => `<span class="st-${k}">${CONF[k]}</span>`).join("") + (un ? `<span class="st-unsure">Not yet settled</span>` : "");
   }
+  /* ------------------------------------------------------------------ family stories (stories.js; owner, 26 Nov 2026: "Is there only a
+     timeline story ... there's room for more and theres no historical links integration"). One story per line, in chapters: the text,
+     the people in it with what each is to you, the records and pictures (they open in the viewer), the history around it (checked
+     outside articles, then the shared world-history entries for the same years and places), and what is still open. */
+  function storiesPanel(el) {
+    const ST = L.stories || []; if (!ST.length) { el.hidden = true; return; }
+    const M = ui.M, box = el.querySelector(".st-box");
+    const K = window.KinKinship ? window.KinKinship.make(M.families.filter((f) => !f.ghost), M.people.filter((p) => !p.ghost), L.root) : null;
+    const rel = (id) => (id === L.root ? "You" : K ? K.rel(id) : "");
+    const ALB = Object.fromEntries(((L.album && L.album.items) || []).map((x) => [x.id, x]));
+    const Q = Object.fromEntries(L.questions.map((q) => [q.id, q]));
+    const sideTxt = (s) => (s.side === "mother" ? "Your mother's side" : "Your father's side");
+    const nPeople = (s) => new Set(s.chapters.flatMap((c) => c.people)).size, nLinks = (s) => s.chapters.reduce((n, c) => n + c.h.length, 0);
+    const card = (s) => `<button type="button" class="st-card" data-story="${s.id}">${s.cover ? `<img loading="lazy" decoding="async" src="${DOCS}t/${s.cover}.webp" alt="">` : `<span class="st-noimg" aria-hidden="true">${esc(s.title[0])}</span>`}<span class="st-cin"><span class="st-kick">${sideTxt(s)} · ${esc(s.span)}</span><b>${esc(s.title)}</b><span class="st-lead">${esc(s.lead)}</span><span class="st-meta">${s.chapters.length} chapters · ${nPeople(s)} people · ${nLinks(s)} history links</span></span></button>`;
+    const list = () => { box.innerHTML = `<div class="st-list">${ST.map(card).join("")}</div>`; };
+    /* the shared world history (Athenaeum's) for the chapter's years, nearest regions first, only for chapters of a lifetime or less */
+    const ctx = (c) => { const [a, b] = c.y; if (b - a > 60) return []; return (L.context || []).filter((x) => { const y = +String(x.date).slice(0, 4); return y >= a && y <= b && x.w >= 1; }).sort((p, q) => q.w - p.w || String(p.date).localeCompare(String(q.date))).slice(0, 3); };
+    const chapter = (s, c, i) => {
+      const recs = c.src.flatMap((sid) => (((M.SRC[sid] || {}).img) || []).slice(0, 2).map((img) => ({ img, sid, cap: (M.SRC[sid] || {}).short || "" })));
+      const pics = (c.album || []).map((id) => ALB[id]).filter(Boolean).map((a) => ({ img: a.img, sid: a.src, cap: a.cap }));
+      const docs = recs.concat(pics), cx = ctx(c), qs = (c.q || []).filter((q) => Q[q]);
+      const short = (s2) => (s2.length > 64 ? s2.slice(0, 61).replace(/\s+\S*$/, "") + "…" : s2);
+      return `<article class="st-ch" id="st-${s.id}-${i}"><p class="st-when">${esc(c.when)}</p><h3>${esc(c.title)}</h3><p class="st-text">${esc(c.text)}</p>
+        ${c.people.length ? `<div class="st-ppl">${c.people.filter((id) => M.P[id]).map((id) => `<button type="button" class="st-p" data-go="${id}"><b>${esc(nm(M.P[id]))}</b><small>${esc(rel(id))}</small></button>`).join("")}</div>` : ""}
+        ${docs.length ? `<div class="ln-docs st-docs">${docs.map((d) => `<button type="button" class="ln-doc" data-img="${d.img}" data-src="${d.sid || ""}" data-cap="${esc(d.cap)}" aria-label="${esc(d.cap)}"><img loading="lazy" decoding="async" src="${DOCS}t/${d.img}.webp" alt=""><span>${esc(short(d.cap))}</span></button>`).join("")}</div>` : ""}
+        ${c.h.length || cx.length ? `<div class="st-hist"><p class="st-hk">The history around it</p><ul>${c.h.map(([ti, u, n]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(ti)}<span aria-hidden="true"> ↗</span></a>${n ? `<small>${esc(n)}</small>` : ""}</li>`).join("")}${cx.map((x) => `<li class="st-ctx"><time>${esc(String(x.date).slice(0, 4))}</time> ${esc(x.text)}${/^https:\/\//.test(x.url || "") ? ` <a href="${esc(x.url)}" target="_blank" rel="noopener">source<span aria-hidden="true"> ↗</span></a>` : ""}</li>`).join("")}</ul></div>` : ""}
+        ${qs.length ? `<details class="st-open"><summary>Still open here (${qs.length})</summary><ul class="ln-qs">${qs.map((q) => `<li><b>${q}</b> ${esc(Q[q].q)}</li>`).join("")}</ul></details>` : ""}</article>`;
+    };
+    const open = (id, at) => {
+      const k = ST.findIndex((x) => x.id === id), s = ST[k]; if (!s) { list(); return; }
+      const nx = ST[(k + 1) % ST.length];
+      box.innerHTML = `<div class="st-read"><button type="button" class="btn quiet small st-back">← All stories</button>
+        <header class="st-head">${s.cover ? `<img src="${DOCS}${s.cover}.webp" alt="" decoding="async">` : ""}<div><p class="st-kick">${sideTxt(s)} · ${esc(s.span)}</p><p class="st-title">${esc(s.title)}</p><p class="st-lead">${esc(s.lead)}</p><p class="st-meta">${s.chapters.length} chapters · ${nPeople(s)} people · ${nLinks(s)} history links</p></div></header>
+        <nav class="st-rail" aria-label="Chapters">${s.chapters.map((c, i) => `<button type="button" data-ch="${i}"><b>${esc(c.when)}</b><span>${esc(c.title)}</span></button>`).join("")}</nav>
+        ${s.chapters.map((c, i) => chapter(s, c, i)).join("")}
+        <p class="st-foot"><button type="button" class="btn small" data-story="${nx.id}">Next: ${esc(nx.title)}</button></p></div>`;
+      try { localStorage.setItem("kin.story", id); } catch (_) {}
+      const tgt = at != null ? box.querySelector(`#st-${s.id}-${at}`) : box;
+      requestAnimationFrame(() => tgt && tgt.scrollIntoView({ behavior: "smooth", block: "start" }));
+    };
+    box.addEventListener("click", (e) => {
+      const sc = e.target.closest("[data-story]"); if (sc) { open(sc.dataset.story); return; }
+      if (e.target.closest(".st-back")) { list(); box.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+      const ch = e.target.closest(".st-rail [data-ch]"); if (ch) { const a = box.querySelector(`.st-read article:nth-of-type(${+ch.dataset.ch + 1})`); if (a) a.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    });
+    ui.openStory = open;
+    list();
+  }
+  /* the stories a person appears in, for their page */
+  function storyLinks(pid) {
+    const hits = (L.stories || []).map((s) => { const i = s.chapters.findIndex((c) => c.people.includes(pid)); return i >= 0 ? { s, i } : null; }).filter(Boolean);
+    return hits.length ? `<p class="st-in"><span>In the family stories</span>${hits.map(({ s, i }) => `<button type="button" class="ln-link" data-story-open="${s.id}" data-ch="${i}">${esc(s.title)}</button>`).join("")}</p>` : "";
+  }
   /* ------------------------------------------------------------------ how are we related? (Thanksgiving 2026: owner, "impress me and them")
      Any two people: what each is to the other, the common ancestor, and the line between them, every step a link into the tree; a step
      through a link not yet settled (drawn dashed in the tree) is marked so. Worked out by kinship.js from the families alone. */
@@ -647,7 +701,8 @@
     const src = panel("ln-sources", "Sources of the family history", "Every record behind the tree, with its full citation, where it is kept, a transcription and the image.", `<div id="ln-srcs"></div>`);
     const plan = panel("ln-plan", "Family research plan", "", `<div id="ln-planx"></div>`);
     const askp = panel("ln-askp", "Ask at the table", "What only the family can answer, by who to ask. Tick them off as you go (the ticks stay on this phone); tell Joseph what they say and it goes into the tree.", `<div class="ln-ask"></div>`);
-    grid.insertBefore(plan, grid.firstChild); grid.insertBefore(src, plan); grid.insertBefore(askp, src); grid.insertBefore(tree, askp);
+    const storp = panel("ln-stories", "Family stories", "Each line of the family told in chapters: the people in it and what they are to you, the records and pictures behind every chapter, and the history around it, with links out to read more.", `<div class="st-box"></div>`);
+    grid.insertBefore(plan, grid.firstChild); grid.insertBefore(src, plan); grid.insertBefore(askp, src); grid.insertBefore(storp, askp); grid.insertBefore(tree, storp);
     /* how are we related? sits right under the tree, in the same section, so nobody has to find a tab for it */
     const relp = h("section", { class: "ln-relate", id: "ln-relate", "aria-label": "How are we related?" });
     relp.innerHTML = `<h4>How are we related?</h4><p class="sub">Pick any two people. The tree works out what each is to the other and shows the line between them; tap a name to find them in the tree.</p><div id="ln-relx"></div><p class="ln-askgo"><button type="button" class="btn small" id="ln-askgo">Questions to ask at the table</button></p>`;
@@ -665,13 +720,23 @@
       tree.insertBefore(adoor, tree.querySelector(".ln-stage"));
     }
     const root = tree, dos = tree.querySelector("#ln-dossier");
+    /* the person sheet: a person's full page over the page you are on; closing it leaves you exactly where you were */
+    const sheet = h("div", { class: "ln-sheet", role: "dialog", "aria-modal": "true", "aria-label": "Person" }); sheet.hidden = true;
+    sheet.innerHTML = `<div class="ln-sheet-in" tabindex="-1"><div class="ln-sheet-bar"><button type="button" class="btn small" data-sheet="tree">Show in the tree</button><button type="button" class="btn quiet small ln-sheet-x" data-sheet="close" aria-label="Close">×</button></div><div class="ln-dossier ln-sheet-body" aria-live="polite"></div></div>`;
+    document.body.appendChild(sheet);   /* on <body>: #app carries a transform, which would pin a fixed sheet to it instead of the screen */
+    const sheetIn = sheet.querySelector(".ln-sheet-in");
+    let sheetBack = null;
+    openSheet = (pid) => { if (!ui.M.P[pid]) return; if (sheet.hidden) sheetBack = document.activeElement; ui.sheetPid = pid; ui.sel = pid; dossier(sheet.querySelector(".ln-sheet-body"), pid); sheet.hidden = false; document.body.classList.add("ln-sheet-on"); sheetIn.scrollTop = 0; sheetIn.focus({ preventScroll: true }); };
+    closeSheet = () => { if (sheet.hidden) return; sheet.hidden = true; document.body.classList.remove("ln-sheet-on"); if (sheetBack && sheetBack.focus) sheetBack.focus({ preventScroll: true }); };
+    sheet.addEventListener("click", (e) => { if (e.target === sheet) closeSheet(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
     const pick = (pid, center) => { ui.sel = pid; drawTree(root); dossier(dos, pid); if (center) focus(root, pid); };
     /* a tap on the tree opens a small card over it (the tree stays where it is); "Full story" goes to the dossier below */
     const pk = tree.querySelector(".ln-peek");
     const peek = (kick, name, line) => { pk.querySelector(".ln-kick").textContent = kick; pk.querySelector("b").textContent = name; pk.querySelector("span").textContent = line; pk.hidden = false; };
     const peekPerson = (pid) => { const M = ui.M, p = M.P[pid]; if (!p) return; const gh = p.ghost && p.status === "inferred";
       peek(CONF[p.status] || p.status, gh ? p.placeholder : nm(p), gh ? (p.infer[0] || "Not yet known") : [life(M, p), (p.summary || p.note || "").split(/(?<=\.)\s/)[0]].filter(Boolean).join(" · ")); };
-    pk.addEventListener("click", (e) => { const b = e.target.closest("[data-peek]"); if (!b) return; if (b.dataset.peek === "close") pk.hidden = true; else { pk.hidden = true; dos.scrollIntoView({ behavior: "smooth", block: "start" }); } });
+    pk.addEventListener("click", (e) => { const b = e.target.closest("[data-peek]"); if (!b) return; pk.hidden = true; if (b.dataset.peek !== "close" && ui.sel) openSheet(ui.sel); });
     const onTree = (el) => {
       if (el.dataset.up) { ui.vroot = el.dataset.up; drawTree(root); legend(tree); pk.hidden = true; first(root); toast(`${nm(ui.M.P[el.dataset.up])} and the generations above. "You" comes back.`); return; }
       if (el.dataset.x) { ui.expand.add(el.dataset.x); drawTree(root); legend(tree); toast(`${nm(ui.M.P[el.dataset.x])}'s mother and father, not yet known: tap one to name them.`); return; }
@@ -679,7 +744,10 @@
         peek("A family", f.partners.map((q) => { const P = ui.M.P[q]; return P ? (P.ghost && P.status === "inferred" ? P.placeholder : firstName(P)) : q; }).join(" & "), `${k} ${k === 1 ? "child" : "children"} known; how many more is not known yet`); return; }
       pick(el.dataset.id, false); peekPerson(el.dataset.id);
     };
-    drawTree(root); dossier(dos, ui.sel); legend(tree); relatePanel(relp.querySelector("#ln-relx")); askPanel(askp); src.querySelector("#ln-srcs").innerHTML = sourcesHtml(); plan.querySelector("#ln-planx").innerHTML = planHtml();
+    drawTree(root); dossier(dos, ui.sel); legend(tree); relatePanel(relp.querySelector("#ln-relx")); askPanel(askp); storiesPanel(storp);
+    /* a link to a story from anywhere (the tree in three dimensions, a person's page): ?story=termenas[&ch=3] */
+    const showPanel = (id) => { const tb = document.querySelector(`.pk-tabs [aria-controls="${id}"]`); if (tb) tb.click(); };
+    try { const u = new URLSearchParams(location.search), sid = u.get("story"); if (sid && ui.openStory) setTimeout(() => { showPanel("ln-stories"); ui.openStory(sid, u.get("ch") != null ? +u.get("ch") : null); }, 60); } catch (_) {} src.querySelector("#ln-srcs").innerHTML = sourcesHtml(); plan.querySelector("#ln-planx").innerHTML = planHtml();
     requestAnimationFrame(() => first(root));
     wire(root, onTree);
     /* the fan: a tap on a place opens that person, or says whose parent is missing */
@@ -698,12 +766,17 @@
     try { const v = localStorage.getItem("kin.lineage.view"); if (v === "fan") tree.querySelector('.ln-view-sw [data-v="fan"]').click(); } catch (_) {}   /* the tree opens on the family; the fan (direct ancestors only) is one tap away. Until 26 Nov 2026 a big tree opened on the fan, which hid everyone but the ancestors (owner: "heavily biased to Joseph Termens") */
     tree.querySelector(".ln-tools").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; const svg = root.querySelector("svg.ln-svg").getBoundingClientRect();
       if (b.dataset.z === "in") { zoomAt(root, 1.25, svg.width / 2, svg.height / 2); } if (b.dataset.z === "out") zoomAt(root, 0.8, svg.width / 2, svg.height / 2); if (b.dataset.z === "fit") fit(root); if (b.dataset.z === "me") { ui.vroot = null; pick(L.root, false); first(root); } });
-    document.querySelector("#app").addEventListener("click", (e) => {
-      const go = e.target.closest("[data-go]"); if (go) { pick(go.dataset.go, true); root.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
-      const im = e.target.closest(".ln-doc"); if (im) { viewer(im.dataset.img, im.dataset.src); return; }
+    const appClick = (e) => {
+      /* a name anywhere opens that person in a sheet over the page, where you are: the page never jumps (owner, 26 Nov 2026: "everytime
+         I click someone's name it scrolls to the top ... its so annoying to use"); "Show in the tree" is the one way to the tree */
+      const go = e.target.closest("[data-go]"); if (go) { openSheet(go.dataset.go); return; }
+      const st = e.target.closest("[data-sheet]"); if (st) { if (st.dataset.sheet === "tree") { const pid = ui.sheetPid; closeSheet(); const tb = document.querySelector('.pk-tabs [aria-controls="ln-tree"]'); if (tb) tb.click(); pick(pid, true); root.scrollIntoView({ behavior: "smooth", block: "start" }); } else closeSheet(); return; }
+      const so = e.target.closest("[data-story-open]"); if (so && ui.openStory) { const tb = document.querySelector('.pk-tabs [aria-controls="ln-stories"]'); if (tb) tb.click(); ui.openStory(so.dataset.storyOpen, so.dataset.ch != null ? +so.dataset.ch : null); return; }
+      const im = e.target.closest(".ln-doc"); if (im) { viewer(im.dataset.img, im.dataset.src, im.dataset.cap); return; }
       const sb = e.target.closest(".ln-link[data-src]"); if (sb) { const s = ui.M.SRC[sb.dataset.src]; if (s && s.img && s.img.length) viewer(s.img[0], s.id); else toast(s ? s.cite : ""); }
-    });
-    document.querySelector("#app").addEventListener("submit", (e) => {
+    };
+    document.querySelector("#app").addEventListener("click", appClick); sheet.addEventListener("click", appClick);   /* the sheet lives on <body> (see below), so it gets the same handling */
+    const appSubmit = (e) => {
       const f = e.target; if (!f.classList.contains("ln-namer") && !f.classList.contains("ln-add")) return; e.preventDefault();
       const fd = Object.fromEntries(new FormData(f).entries()), loc = local(), pid = f.dataset.pid;
       if (f.classList.contains("ln-namer")) { loc.names[pid] = { given: fd.given.trim(), surname: fd.surname.trim(), born: fd.born.trim(), sex: fd.sex, note: fd.note.trim() }; saveLocal(loc); toast("Saved on this device. It goes into the GEDCOM export."); pick(pid, false); return; }
@@ -714,7 +787,8 @@
       if (fd.rel === "spouse") loc.families.push({ id: "LF-" + id, partners: [pid, id], children: [] });
       if (fd.rel === "sibling") { const f0 = parentsOf(M, pid); if (f0) loc.links.push({ fam: f0.id, child: id }); else loc.families.push({ id: "LF-" + id, partners: [], children: [pid, id] }); }
       saveLocal(loc); toast(`${fd.given} added on this device.`); pick(id, true);
-    });
+    };
+    document.querySelector("#app").addEventListener("submit", appSubmit); sheet.addEventListener("submit", (e) => { appSubmit(e); if (e.defaultPrevented && ui.sheetPid) openSheet(ui.sheetPid); });
     /* your additions travel as a file: send it to family, and add theirs to yours (names, people and links merge; nothing is lost) */
     tree.querySelector("#ln-share").addEventListener("click", () => { const x = local(); PK.download(`family-tree-additions-${new Date().toISOString().slice(0, 10)}.json`, { kind: "kin-lineage-additions", version: 1, made: new Date().toISOString(), ...x }); });
     tree.querySelector("#ln-load").addEventListener("click", async () => {
