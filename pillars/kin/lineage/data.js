@@ -1131,3 +1131,31 @@ window.KIN_LINEAGE.questions.push(
   if (q38) q38.q = "Tania, your mother's cousin: is she Ilene Kennedy's daughter or Joe Seconder's? (Barbara's 8 grandchildren: Laurie's four, your mother, Jennifer, Tim and Michael, and four more among Ilene's and Joe's children.) And David Holgate: is he Tania's father, or Betty Holgate's son on Barbara's sister's side?";
   L.log.push({ id: "L23", date: "2026-11-26", by: "Claude", q: "Q39", where: "your message", terms: "your mother's brothers and sister", result: "found", note: "Added Jennifer (Charles A. Sanders and Laurie's daughter), Tim and Michael (Laurie's sons by two other fathers, not yet named). Your sisters' surname confirmed as Hinkle." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, later again (owner): "My dad's sister is Jennifer also. Married to Tim. Kids Madeline and Tyler. My moms sister
+   Jennifer has a kid named Nicholas patrick." The Burd family (from Glenda's 2022 obituary) is now confirmed by you; your mother's
+   sister Jennifer's child Nicholas Patrick is new (whether Patrick is a middle name or a surname is not said). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  const C = (id) => L.certainty.find((c) => c.child === id);
+  const set = (id, pct, basis) => { let c = C(id); if (!c) { c = { child: id }; L.certainty.push(c); } c.pct = pct; c.basis = basis; };
+  const addSrc = (id, s) => { const p = P(id); if (p && p.names[0] && !p.names[0].src.includes(s)) p.names[0].src.push(s); };
+  L.sources.push({ id: "S-owner-1126c", short: "Your account of your two aunts named Jennifer and their children (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.",
+    read: "Your father's sister is also named Jennifer; she is married to Tim, and their children are Madeline and Tyler. Your mother's sister Jennifer has a child named Nicholas Patrick." });
+  const OW = "S-owner-1126c";
+  for (const id of ["P-jennifer", "P-timburd", "P-tyler", "P-madeline"]) addSrc(id, OW);
+  const jb = P("P-jennifer"); if (jb) jb.summary = "Your aunt: your father's sister, Glenda's daughter, of Pawhuska, Oklahoma; married to Tim Burd; their children are Tyler and Madeline (Glenda's 2022 obituary and your account). Not Jennifer Sanders, your mother's sister.";
+  set("P-jennifer", 99, "Glenda's obituary and your account");
+  set("P-tyler", 99, "Glenda's obituary and your account");
+  set("P-madeline", 99, "Glenda's obituary and your account");
+  L.people.push({ id: "P-nicholas", sex: "U", status: "family", living: true,
+    names: [{ given: "Nicholas Patrick", surname: "", type: "birth", src: [OW], note: "Patrick may be a middle name or a surname: not said" }],
+    summary: "Your first cousin: your mother's sister Jennifer's child (your account). Nicholas's father is not in the tree yet." });
+  L.families.push({ id: "F-jennifers", partners: ["P-jennifers"], children: ["P-nicholas"] });
+  set("P-nicholas", 95, "your account");
+  set("P-jennifers", 95, "your account");
+  const q39 = L.questions.find((q) => q.id === "Q39");
+  if (q39) q39.q += " Also: Nicholas Patrick's father, and whether Patrick is a middle name or a surname.";
+  L.log.push({ id: "L24", date: "2026-11-26", by: "Claude", q: "Q39", where: "your message", terms: "your aunts Jennifer", result: "found", note: "Confirmed your father's sister Jennifer Burd, her husband Tim and their children Tyler and Madeline (already in from Glenda's obituary). Added Nicholas Patrick, your mother's sister Jennifer's child." });
+})(window.KIN_LINEAGE);

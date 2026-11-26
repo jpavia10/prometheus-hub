@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d101, the two aunts named Jennifer
+- Owner confirmed his father's sister Jennifer (Burd), her husband Tim and their children Tyler and Madeline (already in from Glenda's obituary; now cited to him too, certainty 99). New: Nicholas Patrick, child of his mother's sister Jennifer Sanders (F-jennifers); whether Patrick is a middle name or a surname, and the father, are added to Q39.
+
 ### [2026-11-26] Claude: Kin d100, your mother's brothers and sister; tidier tree rows
 - Owner: his mother has 2 brothers and a sister. Jennifer is also Charles A. Sanders's daughter; Tim and Michael have two other fathers (not named); his sisters are Hinkles. Added Jennifer Sanders (F-gp) and Tim and Michael (each in his own family with Laurie). Q38 and Q39 narrowed: Barbara's 8 grandchildren are Laurie's four plus four among Ilene's and Joe's.
 - Plain tree: partners are placed before siblings; a new card takes the nearest free spot on either side, never inside a couple; the child-count pills of one person's two families stack instead of overlapping.
