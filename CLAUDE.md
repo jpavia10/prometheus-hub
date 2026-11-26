@@ -15,6 +15,13 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
 - **The Forge is the one board** for all of it: it reads every pillar queue, Titan's research loop and projects, the coding agents' workboard and every score sheet.
 - **Scoring:** every outside file gets a row in `collaborators/CONTRIBUTOR_SCORES.md` and a note in Drive `Prometheus Hub/{AI folder}/FEEDBACK — {name} (every pillar)`.
 - **Log:** a 2-3 line entry in `collaborators/SHARED_LOG.md` after every change.
+- **The State Board is how Joseph guides the work (owner, 2026-11-26: "Make the state board interactive so I can guide you without
+  friction"):** claude.ai/artifact/5fSPzLKzP1jd3A7HUPRmpy. At the start of every session, before anything else, read its database with
+  ArtifactData: `answers` (his choice and note per decision id; `pillar-<id>` is focus / keep / freeze for that pillar) and `inbox` (his
+  messages). Act on them, then write back: `decisions/<id>.status` ("done") and `.reply` (one line on what you did), `inbox/<id>.status`
+  ("seen" or "done") and `.reply`, and `meta/claude.lastRead` (UTC ISO time). New questions for him go in as new `decisions` docs (group
+  "now" or "reshape", order, title, why, options [{k,label}], rec), never as chat-only asks. A comment he sends from the board wakes the
+  session that owns it.
 - **Drive trash after every intake (owner, 2026-11-26: "you haven't asked me to trash files in a while ... I want to be totally caught up and organized"):**
   Drive only lets Claude trash files the connector created, but every inbox folder is the connector's, and trashing a folder trashes all of
   its files (d92). At the end of every intake, once every file in an inbox is merged and scored: copy anything still needed into its `_kept`,

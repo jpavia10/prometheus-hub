@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] The State Board is interactive
+- Joseph answers decisions, marks each pillar focus / keep / freeze and sends messages on the board (claude.ai/artifact/5fSPzLKzP1jd3A7HUPRmpy); his answers live in its database. Claude reads them at every session start and replies on the cards.
+
 ### [2026-11-26] d93: desk and pillar folders rebuilt, last 22 files to Gemini and Muse
 - The desk and 7 pillar folders recreated (same names, README and inbox inside) to drop 28 locked leftovers; new IDs in pillars.json. HUB-GEM-27 / HUB-MUS-07: trash 22 listed files Claude's Drive access cannot touch.
 
