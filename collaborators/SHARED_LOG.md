@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] The State Board gets a work list
+- Joseph: "It's missing recommendations for things for you to work on like a task list." The board (v6) now opens with Work for Claude: 15 recommended jobs with Claude's pick on each (Do next / Approve / Later / No), sorted by his choices, and a box to add his own; stored in the board's `tasks` collection, his picks in `answers/task-<id>`.
+- Three decisions became jobs (ChatGPT briefing, town paintings, Cursor branches). His one approved job from the old briefing (the staged Kin record pages: 289 left after the album) is carried over at the top. CLAUDE.md's board rule now covers `tasks`.
+
 ### [2026-11-26] The State Board is interactive
 - Joseph answers decisions, marks each pillar focus / keep / freeze and sends messages on the board (claude.ai/artifact/5fSPzLKzP1jd3A7HUPRmpy); his answers live in its database. Claude reads them at every session start and replies on the cards.
 

@@ -21,7 +21,12 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
   messages). Act on them, then write back: `decisions/<id>.status` ("done") and `.reply` (one line on what you did), `inbox/<id>.status`
   ("seen" or "done") and `.reply`, and `meta/claude.lastRead` (UTC ISO time). New questions for him go in as new `decisions` docs (group
   "now" or "reshape", order, title, why, options [{k,label}], rec), never as chat-only asks. A comment he sends from the board wakes the
-  session that owns it.
+  session that owns it. **Work for Claude** (owner, same day: "It's missing recommendations for things for you to work on like a task
+  list"): the `tasks` collection is Claude's recommended job list (title, why, area, size Quick/Round/Project, rec next/do/later, order,
+  status "" / doing / waiting / blocked / done, reply, by claude|joseph). His pick per job is `answers/task-<id>` (next = do first,
+  do = approved, later, no); jobs he adds himself arrive with by "joseph" and choice "do". Work approved jobs in that order (next, then
+  do, by `order`); set `status` "doing" when you start and "done" with a one-line `reply` when it ships. Keep the list stocked: after each
+  round, add what you would do next as new `tasks` docs with your rec, and take finished ones off by marking them done.
 - **Drive trash after every intake (owner, 2026-11-26: "you haven't asked me to trash files in a while ... I want to be totally caught up and organized"):**
   Drive only lets Claude trash files the connector created, but every inbox folder is the connector's, and trashing a folder trashes all of
   its files (d92). At the end of every intake, once every file in an inbox is merged and scored: copy anything still needed into its `_kept`,
