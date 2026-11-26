@@ -1,6 +1,6 @@
 HOMEWORK — Muse (every pillar)
 
-Updated 2026-11-26 05:50 UTC. 14 to do across 7 pillars.
+Updated 2026-11-26 05:58 UTC. 15 to do across 7 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -18,12 +18,13 @@ EVERY TASK BELOW IS SENT BACK IF:
 IN THIS ORDER:
 1. [Kin] KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
 2. [Kin] KIN-MUS-05 · Kin: the Brooklyn marriage certificate itself (Kings, 1922, no. 4615) · due 2026-12-01
-3. [Midas Ledger] MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
-4. [Prometheus Hub] HUB-MUS-06 · One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files · due 2026-12-10
-5. [Kin] KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
-6. [Athenaeum · Idea Vault] ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15) · due 2026-12-10 · waits for its input file
-7. [Atlas · Work & Pay] ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules · due 2026-12-12 · waits for its input file
-8. [Aegis · Insurance & Cover] AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts · due 2026-12-12 · waits for its input file
+3. [Prometheus Hub] HUB-MUS-07 · Drive tidy: trash 22 old files that Claude's Drive access cannot touch · due 2026-12-03
+4. [Midas Ledger] MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses · due 2026-12-03
+5. [Prometheus Hub] HUB-MUS-06 · One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files · due 2026-12-10
+6. [Kin] KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37) · due 2026-12-06 · waits for its input file
+7. [Athenaeum · Idea Vault] ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15) · due 2026-12-10 · waits for its input file
+8. [Atlas · Work & Pay] ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules · due 2026-12-12 · waits for its input file
+9. [Aegis · Insurance & Cover] AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts · due 2026-12-12 · waits for its input file
 
 ==================== 1. KIN ====================
 ## 1. KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17)
@@ -135,8 +136,50 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 3. MIDAS LEDGER ====================
-## 3. MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses
+==================== 3. PROMETHEUS HUB ====================
+## 3. HUB-MUS-07 · Drive tidy: trash 22 old files that Claude's Drive access cannot touch
+
+**Due:** 2026-12-03 · **State:** now
+
+**What it unlocks:** A clean Drive: no stale copies in searches, less for every AI to wade through.
+
+**Read first:**
+- The list below (Drive file IDs). Open a file with https://drive.google.com/file/d/<id>/view (a Google Doc: https://docs.google.com/document/d/<id>/edit; the folder: https://drive.google.com/drive/folders/<id>).
+
+**Do this:**
+1. Trash each file on this list that your Drive access lets you trash: HANDOFF_ACTING_INTEGRATOR_NON_TITAN_20261109.md (Google Doc) in 'Prometheus Hub/Sebastian' (id 1GLrcAULROM6PbQ_g4Fv3BXB4dtmWy10jXkyxmiuLIk4); HANDOFF_ACTING_INTEGRATOR_NON_TITAN_20261109.md in 'Prometheus Hub/Sebastian' (id 1IDr9BWIIuP3URl5uUnRvEx0TFhj4MCrn); PROMPT_FOR_MUSE_EXPAND_CURRENT_UI_20261109.md in 'Prometheus Hub/Sebastian' (id 17-r-DtUrlWj-7-VVMqoI33jheYg7VAny); prometheus_repo_expansion_commit_ready_20261109.zip in 'Prometheus Hub/Sebastian' (id 1MKRotQ_6If2wQCFCf591bNNPCWl1KELk); prometheus_command_deck_repo_bundle_v3_3d.zip in 'Prometheus Hub/Sebastian' (id 1q0epZ8XqGEMWvv3DaF-tqglNR7RTzsoA); prometheus_command_deck_repo_bundle.zip in 'Prometheus Hub/Sebastian' (id 1TxxF0szz8PCVBjZDFuKKO1LNlBiBTKLl); apply_expansion_to_repos.py in 'Prometheus Hub/Sebastian' (id 1LCwa-r3cxCoWndfXwnpD60V_11dIDgPt); index_elevated_3d.html in 'Prometheus Hub/Sebastian' (id 1uWR8WmGj2L7LY4nHDLqO6J3tQXVindvy); index.html (Nov 10, the old command-deck page) in 'Prometheus Hub/Sebastian' (id 1BXita84QcZJiFRdgRnDgzoj8p6oKcsvL); MERGE_LOG_NON_TITAN_20261109.md (Google Doc) in 'Prometheus Hub/Shared' (id 1So7N2drC_pQDIRFzyhdumVrOF5IrGRsbIBYfN8bb2Io); MERGE_LOG_NON_TITAN_20261109.md in 'Prometheus Hub/Shared' (id 1jOGCYQSDBdqzPosbm4UYu0Co69E4Hc2n); prometheus_hub_build_d13_20261113.zip in 'Prometheus Hub' (id 1GcKM_h6-S-bu1t1QaPqme9XU9UyMYAhA); prometheus_hub_build_d14_20261113.zip in 'Prometheus Hub' (id 1JByM1LOJI-wnePyyQPGCSXvkgdUKUY_v); prometheus_hub_build_d15_20261113.zip in 'Prometheus Hub' (id 176NCcjTP7EIrxokRJTFwOctHEqCnVFxA); prometheus_hub_build_d16_20261113.zip in 'Prometheus Hub' (id 1rObiCFvr2BJ2XRHKM9gpmcO8GAy4advl); prometheus_hub_build_d17_20261113.zip in 'Prometheus Hub' (id 1GTQMQXE8uUKpzXKSfpXPlf8sPv90EDQo); DEEP ANALYSIS for Claude (2026-10-06).md in 'Titan Reliquary' (id 12yrj0rYhppQ7KpMT9h3vX_3jw0Fwgfbi); STORY_CHECK_grok_20261009.md in 'Titan Reliquary' (id 1bei8ltVRGNeihwQt5zYMrB8S8iFhhIBn); PHASE1_GAPS_muse_20261009.md in 'Titan Reliquary' (id 1Ik9yrnu9SVT5mtWSU67EHJjfgxW7ryK7); PHASE1_GAPS_muse_20261009.jsonl in 'Titan Reliquary' (id 1LCD3W4nFr6vZjna_O6CpbcS21P7xSClB); superseded_changes_gemini_20261024 (folder, with its 4 SUPERSEDED_PARTIAL files) in 'My Drive (top)' (id 1m4o9bPejTKuNaHAl7wFVj4nJehTRbYUf); REVIEW_ARGON_SUPREME_RUNBOOK_v3_20261013.md (Google Doc) in 'My Drive (top)' (id 1jz1Z5M8Utl23h6KwjsI_if_jRO4xKZP1fpYQX-SS5wA).
+2. Trash nothing that is not on this list, even if it looks old. Instructions — Sebastian, HOMEWORK — Muse, every README and START HERE stay.
+3. For each file, write one row: trashed, cannot (say what Drive answered), or not found.
+
+**Make:** `hub_muse_drive-tidy_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1 to 22, in the list's order
+- `title` (text): the file's name as listed
+- `result` (text): trashed, cannot, or not found
+- `note` (text): what Drive said when it refused, or 'none'
+
+**Before you save, check every one of these yourself:**
+- [ ] Only files on the list were touched.
+- [ ] 22 rows, valid JSON, named exactly as asked.
+
+**How many:** 22
+
+**Done when:** Every file on the list is trashed or reported as one you cannot trash.
+
+**How Claude checks it:**
+- Claude searches Drive for every listed file and confirms its state.
+
+**Not done (sent back) if:** (and the rules at the top)
+- any file trashed that is not on the list
+- a row saying trashed for a file that is still in Drive
+
+==================== 4. MIDAS LEDGER ====================
+## 4. MID-MUS-04 · Midas: second reader on Gemini's 60 verbatim card-agreement clauses
 
 **Due:** 2026-12-03 · **State:** now
 
@@ -173,8 +216,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - fewer rows than the count, or a row missing a field
 
-==================== 4. PROMETHEUS HUB ====================
-## 4. HUB-MUS-06 · One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files
+==================== 5. PROMETHEUS HUB ====================
+## 5. HUB-MUS-06 · One pass: second-read 2 rows in each of Gemini's 22 run-8 pillar files
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -218,8 +261,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 5. KIN ====================
-## 5. KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)
+==================== 6. KIN ====================
+## 6. KIN-MUS-06 · Kin: second read of Gemini's Bivens will and DAR transcriptions (KIN-GEM-36, 37)
 
 **Due:** 2026-12-06 · **State:** next (starts when the file it checks is in the folder)
 
@@ -271,8 +314,8 @@ IN THIS ORDER:
 - addresses of living people, phone numbers or people-search sites (Whitepages, FastBackgroundCheck): leave them out
 - searches that found nothing left out
 
-==================== 6. ATHENAEUM · IDEA VAULT ====================
-## 6. ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15)
+==================== 7. ATHENAEUM · IDEA VAULT ====================
+## 7. ATH-MUS-02 · History: second read of a fifth of each history batch (ATH-GEM-08 to 15)
 
 **Due:** 2026-12-10 · **State:** next (starts when the file it checks is in the folder)
 
@@ -316,8 +359,8 @@ IN THIS ORDER:
 - an entry already in the dataset
 - rows missing to reach the count
 
-==================== 7. ATLAS · WORK & PAY ====================
-## 7. ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules
+==================== 8. ATLAS · WORK & PAY ====================
+## 8. ATL-MUS-01 · Atlas: second reader on Gemini's California pay rules
 
 **Due:** 2026-12-12 · **State:** next (starts when the file it checks is in the folder)
 
@@ -348,8 +391,8 @@ IN THIS ORDER:
 **Not done (sent back) if:** (and the rules at the top)
 - a verdict without the page it came from
 
-==================== 8. AEGIS · INSURANCE & COVER ====================
-## 8. AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts
+==================== 9. AEGIS · INSURANCE & COVER ====================
+## 9. AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts
 
 **Due:** 2026-12-12 · **State:** next (starts when the file it checks is in the folder)
 

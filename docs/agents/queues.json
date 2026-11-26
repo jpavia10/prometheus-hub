@@ -1838,6 +1838,63 @@
             "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
             "a problem not reproduced by its measurement"
           ]
+        },
+        {
+          "state": "now",
+          "added": "2026-11-26",
+          "id": "HUB-GEM-27",
+          "title": "Drive tidy: trash 22 old files that Claude's Drive access cannot touch",
+          "due": "2026-12-03",
+          "why": "Claude cleaned about 1,550 processed files out of Drive on 26 Nov, but Drive only lets an app trash files that app created. These 22 were made by other apps (most likely you, Grok or Antigravity) between Sep 25 and Nov 14. All are finished: every one is superseded by the repositories. Joseph does not want to do it by hand.",
+          "unlocks": "A clean Drive: no stale copies in searches, less for every AI to wade through.",
+          "inputs": [
+            "The list below (Drive file IDs). Open a file with https://drive.google.com/file/d/<id>/view (a Google Doc: https://docs.google.com/document/d/<id>/edit; the folder: https://drive.google.com/drive/folders/<id>)."
+          ],
+          "steps": [
+            "Trash each file on this list that your Drive access lets you trash: HANDOFF_ACTING_INTEGRATOR_NON_TITAN_20261109.md (Google Doc) in 'Prometheus Hub/Sebastian' (id 1GLrcAULROM6PbQ_g4Fv3BXB4dtmWy10jXkyxmiuLIk4); HANDOFF_ACTING_INTEGRATOR_NON_TITAN_20261109.md in 'Prometheus Hub/Sebastian' (id 1IDr9BWIIuP3URl5uUnRvEx0TFhj4MCrn); PROMPT_FOR_MUSE_EXPAND_CURRENT_UI_20261109.md in 'Prometheus Hub/Sebastian' (id 17-r-DtUrlWj-7-VVMqoI33jheYg7VAny); prometheus_repo_expansion_commit_ready_20261109.zip in 'Prometheus Hub/Sebastian' (id 1MKRotQ_6If2wQCFCf591bNNPCWl1KELk); prometheus_command_deck_repo_bundle_v3_3d.zip in 'Prometheus Hub/Sebastian' (id 1q0epZ8XqGEMWvv3DaF-tqglNR7RTzsoA); prometheus_command_deck_repo_bundle.zip in 'Prometheus Hub/Sebastian' (id 1TxxF0szz8PCVBjZDFuKKO1LNlBiBTKLl); apply_expansion_to_repos.py in 'Prometheus Hub/Sebastian' (id 1LCwa-r3cxCoWndfXwnpD60V_11dIDgPt); index_elevated_3d.html in 'Prometheus Hub/Sebastian' (id 1uWR8WmGj2L7LY4nHDLqO6J3tQXVindvy); index.html (Nov 10, the old command-deck page) in 'Prometheus Hub/Sebastian' (id 1BXita84QcZJiFRdgRnDgzoj8p6oKcsvL); MERGE_LOG_NON_TITAN_20261109.md (Google Doc) in 'Prometheus Hub/Shared' (id 1So7N2drC_pQDIRFzyhdumVrOF5IrGRsbIBYfN8bb2Io); MERGE_LOG_NON_TITAN_20261109.md in 'Prometheus Hub/Shared' (id 1jOGCYQSDBdqzPosbm4UYu0Co69E4Hc2n); prometheus_hub_build_d13_20261113.zip in 'Prometheus Hub' (id 1GcKM_h6-S-bu1t1QaPqme9XU9UyMYAhA); prometheus_hub_build_d14_20261113.zip in 'Prometheus Hub' (id 1JByM1LOJI-wnePyyQPGCSXvkgdUKUY_v); prometheus_hub_build_d15_20261113.zip in 'Prometheus Hub' (id 176NCcjTP7EIrxokRJTFwOctHEqCnVFxA); prometheus_hub_build_d16_20261113.zip in 'Prometheus Hub' (id 1rObiCFvr2BJ2XRHKM9gpmcO8GAy4advl); prometheus_hub_build_d17_20261113.zip in 'Prometheus Hub' (id 1GTQMQXE8uUKpzXKSfpXPlf8sPv90EDQo); DEEP ANALYSIS for Claude (2026-10-06).md in 'Titan Reliquary' (id 12yrj0rYhppQ7KpMT9h3vX_3jw0Fwgfbi); STORY_CHECK_grok_20261009.md in 'Titan Reliquary' (id 1bei8ltVRGNeihwQt5zYMrB8S8iFhhIBn); PHASE1_GAPS_muse_20261009.md in 'Titan Reliquary' (id 1Ik9yrnu9SVT5mtWSU67EHJjfgxW7ryK7); PHASE1_GAPS_muse_20261009.jsonl in 'Titan Reliquary' (id 1LCD3W4nFr6vZjna_O6CpbcS21P7xSClB); superseded_changes_gemini_20261024 (folder, with its 4 SUPERSEDED_PARTIAL files) in 'My Drive (top)' (id 1m4o9bPejTKuNaHAl7wFVj4nJehTRbYUf); REVIEW_ARGON_SUPREME_RUNBOOK_v3_20261013.md (Google Doc) in 'My Drive (top)' (id 1jz1Z5M8Utl23h6KwjsI_if_jRO4xKZP1fpYQX-SS5wA).",
+            "Trash nothing that is not on this list, even if it looks old. Instructions — Sebastian, HOMEWORK — Muse, every README and START HERE stay.",
+            "For each file, write one row: trashed, cannot (say what Drive answered), or not found."
+          ],
+          "deliver": {
+            "file": "hub_gemini_drive-tidy_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row, exactly the fields below"
+          },
+          "count": 22,
+          "fields": [
+            {
+              "name": "n",
+              "type": "number",
+              "rule": "1 to 22, in the list's order"
+            },
+            {
+              "name": "title",
+              "type": "text",
+              "rule": "the file's name as listed"
+            },
+            {
+              "name": "result",
+              "type": "text",
+              "rule": "trashed, cannot, or not found"
+            },
+            {
+              "name": "note",
+              "type": "text",
+              "rule": "what Drive said when it refused, or 'none'"
+            }
+          ],
+          "self_check": [
+            "Only files on the list were touched.",
+            "22 rows, valid JSON, named exactly as asked."
+          ],
+          "done_when": "Every file on the list is trashed or reported as one you cannot trash.",
+          "checks": [
+            "Claude searches Drive for every listed file and confirms its state."
+          ],
+          "rejected_if": [
+            "any file trashed that is not on the list",
+            "a row saying trashed for a file that is still in Drive"
+          ]
         }
       ]
     },
@@ -2153,6 +2210,63 @@
             "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
             "rows missing to reach the count, or rows padded to reach it",
             "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+          ]
+        },
+        {
+          "state": "now",
+          "added": "2026-11-26",
+          "id": "HUB-MUS-07",
+          "title": "Drive tidy: trash 22 old files that Claude's Drive access cannot touch",
+          "due": "2026-12-03",
+          "why": "Claude cleaned about 1,550 processed files out of Drive on 26 Nov, but Drive only lets an app trash files that app created. These 22 were made by other apps (most likely you, Grok or Antigravity) between Sep 25 and Nov 14. All are finished: every one is superseded by the repositories. Joseph does not want to do it by hand.",
+          "unlocks": "A clean Drive: no stale copies in searches, less for every AI to wade through.",
+          "inputs": [
+            "The list below (Drive file IDs). Open a file with https://drive.google.com/file/d/<id>/view (a Google Doc: https://docs.google.com/document/d/<id>/edit; the folder: https://drive.google.com/drive/folders/<id>)."
+          ],
+          "steps": [
+            "Trash each file on this list that your Drive access lets you trash: HANDOFF_ACTING_INTEGRATOR_NON_TITAN_20261109.md (Google Doc) in 'Prometheus Hub/Sebastian' (id 1GLrcAULROM6PbQ_g4Fv3BXB4dtmWy10jXkyxmiuLIk4); HANDOFF_ACTING_INTEGRATOR_NON_TITAN_20261109.md in 'Prometheus Hub/Sebastian' (id 1IDr9BWIIuP3URl5uUnRvEx0TFhj4MCrn); PROMPT_FOR_MUSE_EXPAND_CURRENT_UI_20261109.md in 'Prometheus Hub/Sebastian' (id 17-r-DtUrlWj-7-VVMqoI33jheYg7VAny); prometheus_repo_expansion_commit_ready_20261109.zip in 'Prometheus Hub/Sebastian' (id 1MKRotQ_6If2wQCFCf591bNNPCWl1KELk); prometheus_command_deck_repo_bundle_v3_3d.zip in 'Prometheus Hub/Sebastian' (id 1q0epZ8XqGEMWvv3DaF-tqglNR7RTzsoA); prometheus_command_deck_repo_bundle.zip in 'Prometheus Hub/Sebastian' (id 1TxxF0szz8PCVBjZDFuKKO1LNlBiBTKLl); apply_expansion_to_repos.py in 'Prometheus Hub/Sebastian' (id 1LCwa-r3cxCoWndfXwnpD60V_11dIDgPt); index_elevated_3d.html in 'Prometheus Hub/Sebastian' (id 1uWR8WmGj2L7LY4nHDLqO6J3tQXVindvy); index.html (Nov 10, the old command-deck page) in 'Prometheus Hub/Sebastian' (id 1BXita84QcZJiFRdgRnDgzoj8p6oKcsvL); MERGE_LOG_NON_TITAN_20261109.md (Google Doc) in 'Prometheus Hub/Shared' (id 1So7N2drC_pQDIRFzyhdumVrOF5IrGRsbIBYfN8bb2Io); MERGE_LOG_NON_TITAN_20261109.md in 'Prometheus Hub/Shared' (id 1jOGCYQSDBdqzPosbm4UYu0Co69E4Hc2n); prometheus_hub_build_d13_20261113.zip in 'Prometheus Hub' (id 1GcKM_h6-S-bu1t1QaPqme9XU9UyMYAhA); prometheus_hub_build_d14_20261113.zip in 'Prometheus Hub' (id 1JByM1LOJI-wnePyyQPGCSXvkgdUKUY_v); prometheus_hub_build_d15_20261113.zip in 'Prometheus Hub' (id 176NCcjTP7EIrxokRJTFwOctHEqCnVFxA); prometheus_hub_build_d16_20261113.zip in 'Prometheus Hub' (id 1rObiCFvr2BJ2XRHKM9gpmcO8GAy4advl); prometheus_hub_build_d17_20261113.zip in 'Prometheus Hub' (id 1GTQMQXE8uUKpzXKSfpXPlf8sPv90EDQo); DEEP ANALYSIS for Claude (2026-10-06).md in 'Titan Reliquary' (id 12yrj0rYhppQ7KpMT9h3vX_3jw0Fwgfbi); STORY_CHECK_grok_20261009.md in 'Titan Reliquary' (id 1bei8ltVRGNeihwQt5zYMrB8S8iFhhIBn); PHASE1_GAPS_muse_20261009.md in 'Titan Reliquary' (id 1Ik9yrnu9SVT5mtWSU67EHJjfgxW7ryK7); PHASE1_GAPS_muse_20261009.jsonl in 'Titan Reliquary' (id 1LCD3W4nFr6vZjna_O6CpbcS21P7xSClB); superseded_changes_gemini_20261024 (folder, with its 4 SUPERSEDED_PARTIAL files) in 'My Drive (top)' (id 1m4o9bPejTKuNaHAl7wFVj4nJehTRbYUf); REVIEW_ARGON_SUPREME_RUNBOOK_v3_20261013.md (Google Doc) in 'My Drive (top)' (id 1jz1Z5M8Utl23h6KwjsI_if_jRO4xKZP1fpYQX-SS5wA).",
+            "Trash nothing that is not on this list, even if it looks old. Instructions — Sebastian, HOMEWORK — Muse, every README and START HERE stay.",
+            "For each file, write one row: trashed, cannot (say what Drive answered), or not found."
+          ],
+          "deliver": {
+            "file": "hub_muse_drive-tidy_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row, exactly the fields below"
+          },
+          "count": 22,
+          "fields": [
+            {
+              "name": "n",
+              "type": "number",
+              "rule": "1 to 22, in the list's order"
+            },
+            {
+              "name": "title",
+              "type": "text",
+              "rule": "the file's name as listed"
+            },
+            {
+              "name": "result",
+              "type": "text",
+              "rule": "trashed, cannot, or not found"
+            },
+            {
+              "name": "note",
+              "type": "text",
+              "rule": "what Drive said when it refused, or 'none'"
+            }
+          ],
+          "self_check": [
+            "Only files on the list were touched.",
+            "22 rows, valid JSON, named exactly as asked."
+          ],
+          "done_when": "Every file on the list is trashed or reported as one you cannot trash.",
+          "checks": [
+            "Claude searches Drive for every listed file and confirms its state."
+          ],
+          "rejected_if": [
+            "any file trashed that is not on the list",
+            "a row saying trashed for a file that is still in Drive"
           ]
         }
       ]

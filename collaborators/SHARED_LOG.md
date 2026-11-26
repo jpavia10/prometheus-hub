@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] d93: desk and pillar folders rebuilt, last 22 files to Gemini and Muse
+- The desk and 7 pillar folders recreated (same names, README and inbox inside) to drop 28 locked leftovers; new IDs in pillars.json. HUB-GEM-27 / HUB-MUS-07: trash 22 listed files Claude's Drive access cannot touch.
+
 ### [2026-11-26] d92: Drive inboxes emptied by Claude
 - 15 AI drop folders trashed with Joseph's go (about 1,500 merged files); the 12 inboxes still in use were recreated empty with the same names and `_kept` inside. New folder links: pillars.json, the Gemini and ChatGPT prompts, Midas's queue. Contributors: save into the folder by its path as before; old links point at the trash.
 

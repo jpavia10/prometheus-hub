@@ -79,6 +79,11 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d93 (2026-11-26): the desk and seven pillar folders rebuilt.** Joseph: "Im not going to do it. Just figure out a way or leave it for
+  muse or gemini". The desk and the Apollo, Argus, Hearth, Hermes, Icarus, Kairos and Midas folders held only their README, the new inbox
+  (both Claude's) and 28 locked Nov 9-10 leftovers; each was recreated with the same name, README and inbox moved in, old folder trashed.
+  New IDs in pillars.json. The last 22 locked files (Sebastian, Shared, build zips, four Titan notes, two My Drive leftovers) are
+  HUB-GEM-27 and HUB-MUS-07 (trash exactly the listed IDs, report what Drive refuses). STAGING keeps its 14 October coin photos.
 - **d92 (2026-11-26): Drive cleaned by Claude itself.** Joseph: "id rather you just ask me for permissions". Drive will not let the connector
   trash the AIs' uploads, but it does let Claude trash folders it created, and trashing a folder trashes everything in it. With Joseph's go
   ("You know better than I do"), 15 folders went to trash (about 1,500 files, all merged and scored): the 8 Prometheus inboxes and Titan's

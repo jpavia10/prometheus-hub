@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 05:50 UTC",
+ "updated": "2026-11-26 05:58 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -66,6 +66,28 @@
    "title": "Garage: the Sorento's Intelligent Speed Limit Assist light (row 43) from a stable manual link",
    "state": "now",
    "count": 1
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-27",
+   "title": "Drive tidy: trash 22 old files that Claude's Drive access cannot touch",
+   "state": "now",
+   "count": 22
+  },
+  {
+   "due": "2026-12-03",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "muse",
+   "ai_name": "Muse",
+   "id": "HUB-MUS-07",
+   "title": "Drive tidy: trash 22 old files that Claude's Drive access cannot touch",
+   "state": "now",
+   "count": 22
   },
   {
    "due": "2026-12-03",
