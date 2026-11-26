@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 05:18 UTC",
+ "updated": "2026-11-26 05:22 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -176,6 +176,17 @@
    "title": "Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24)",
    "state": "now",
    "count": 20
+  },
+  {
+   "due": "2026-12-06",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "chatgpt",
+   "ai_name": "ChatGPT",
+   "id": "HUB-GPT-02",
+   "title": "TRIAL: blind second read of 45 rows from 15 Gemini files nobody has read yet",
+   "state": "now",
+   "count": 45
   },
   {
    "due": "2026-12-06",

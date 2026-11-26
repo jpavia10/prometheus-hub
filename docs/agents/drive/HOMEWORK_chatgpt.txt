@@ -1,6 +1,6 @@
 HOMEWORK — ChatGPT (every pillar)
 
-Updated 2026-11-26 05:18 UTC. 0 to do across 0 pillars.
+Updated 2026-11-26 05:22 UTC. 1 to do across 1 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -14,3 +14,53 @@ EVERY TASK BELOW IS SENT BACK IF:
 - a file saved anywhere but the folder named here, or under another name
 
 IN THIS ORDER:
+1. [Prometheus Hub] HUB-GPT-02 · TRIAL: blind second read of 45 rows from 15 Gemini files nobody has read yet · due 2026-12-06
+
+==================== 1. PROMETHEUS HUB ====================
+## 1. HUB-GPT-02 · TRIAL: blind second read of 45 rows from 15 Gemini files nobody has read yet
+
+**Due:** 2026-12-06 · **State:** now
+
+**What it unlocks:** A score for ChatGPT as a second reader. If it scores 8 or better, ChatGPT takes over the waiting second reads (39 files today) and those files go into their pillars.
+
+**Read first:**
+- The sheet: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/review/chatgpt-trial-1.json (if your browser blocks raw links: https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/review/chatgpt-trial-1.json)
+- The rules for every task: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. For each of the 45 rows: open 'page'. Find what 'about' names on it. For every field under 'read', write what the page says, in the page's own terms.
+2. If the row has 'quote_to_find': Ctrl+F it on the page. quote_on_page is 'yes' only if every word is there in that order; 'partly' if some of it is; 'no' if not.
+3. If the page will not open, or opens something else, say exactly what happened in 'opened' and move on. Never fill a value from memory or another site.
+
+**Make:** `hub_chatgpt_second-read-trial1_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `k` (number): the row's k from the sheet
+- `task` (text): the row's task from the sheet
+- `row` (number): the row's row from the sheet
+- `opened` (text): 'yes', or what happened (404, login wall, redirected to ..., PDF too large ...)
+- `page_says` (text): one 'field: value' per field under 'read', separated by ' | ', in the page's words; 'not stated' when the page does not say
+- `quote_on_page` (text): yes, partly, no, or n/a when the row has no quote_to_find
+- `quote` (text): the sentence on the page that shows your values, copied word for word, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every value is what the page you opened today says, not what you expect it to say.
+- [ ] Every quote is copied word for word and Ctrl+F finds it on the page.
+- [ ] 45 rows, k 1 to 45, valid JSON, named exactly as asked.
+
+**How many:** 45
+
+**Done when:** 45 rows, each with what its page says or exactly why it could not be read.
+
+**How Claude checks it:**
+- Claude compares every row with Gemini's file (the copies in the desk's _kept folder in Drive) and opens 6 of your quotes.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value that is not on the page (Claude opens rows at random)
+- a quote that Ctrl+F does not find on the page it cites
+- Gemini's own words copied back instead of the page's
+- fewer than 45 rows, or rows padded to reach the count

@@ -2,8 +2,57 @@
 
 # Prometheus Hub · homework for ChatGPT
 
-Updated 2026-11-26 05:18 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/ChatGPT/HOMEWORK — ChatGPT (every pillar)'.
+Updated 2026-11-26 05:22 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/ChatGPT/HOMEWORK — ChatGPT (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for ChatGPT in Prometheus Hub right now. Check your HOMEWORK doc for the other pillars.
+## 1. HUB-GPT-02 · TRIAL: blind second read of 45 rows from 15 Gemini files nobody has read yet
+
+**Due:** 2026-12-06 · **State:** now
+
+**Why:** 15 of Gemini's run-4 and run-6 files (Nov 18-21) passed Claude's checks, but their sources are government, maker and archive pages Claude's container cannot open, and Muse's second-read slots are full. Until someone opens the pages, none of them is shown in the pillars.
+
+**What it unlocks:** A score for ChatGPT as a second reader. If it scores 8 or better, ChatGPT takes over the waiting second reads (39 files today) and those files go into their pillars.
+
+**Read first:**
+- The sheet: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/agents/review/chatgpt-trial-1.json (if your browser blocks raw links: https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/review/chatgpt-trial-1.json)
+- The rules for every task: https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md
+
+**Do this:**
+1. For each of the 45 rows: open 'page'. Find what 'about' names on it. For every field under 'read', write what the page says, in the page's own terms.
+2. If the row has 'quote_to_find': Ctrl+F it on the page. quote_on_page is 'yes' only if every word is there in that order; 'partly' if some of it is; 'no' if not.
+3. If the page will not open, or opens something else, say exactly what happened in 'opened' and move on. Never fill a value from memory or another site.
+
+**Make:** `hub_chatgpt_second-read-trial1_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `k` (number): the row's k from the sheet
+- `task` (text): the row's task from the sheet
+- `row` (number): the row's row from the sheet
+- `opened` (text): 'yes', or what happened (404, login wall, redirected to ..., PDF too large ...)
+- `page_says` (text): one 'field: value' per field under 'read', separated by ' | ', in the page's words; 'not stated' when the page does not say
+- `quote_on_page` (text): yes, partly, no, or n/a when the row has no quote_to_find
+- `quote` (text): the sentence on the page that shows your values, copied word for word, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every value is what the page you opened today says, not what you expect it to say.
+- [ ] Every quote is copied word for word and Ctrl+F finds it on the page.
+- [ ] 45 rows, k 1 to 45, valid JSON, named exactly as asked.
+
+**How many:** 45
+
+**Done when:** 45 rows, each with what its page says or exactly why it could not be read.
+
+**How Claude checks it:**
+- Claude compares every row with Gemini's file (the copies in the desk's _kept folder in Drive) and opens 6 of your quotes.
+
+**Not done (sent back) if:**
+- a value that is not on the page (Claude opens rows at random)
+- a quote that Ctrl+F does not find on the page it cites
+- Gemini's own words copied back instead of the page's
+- fewer than 45 rows, or rows padded to reach the count
+- a file saved anywhere but the folder named here, or under another name

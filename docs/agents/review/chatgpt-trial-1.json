@@ -1,0 +1,701 @@
+{
+ "about": "ChatGPT second-read trial 1 (Prometheus Hub, 2026-11-26). 45 rows from 15 Gemini files that nobody has second-read yet. For each row: open 'page', find what 'about' names, and write what the page says for each field under 'read'. Gemini's answers are not in this sheet: write what YOU read. If the row has 'quote_to_find', Ctrl+F it on the page and say whether it is there word for word.",
+ "rows": [
+  {
+   "k": 1,
+   "task": "ARG-GEM-09",
+   "file": "argus_gemini_coin-photo-rules_20261118-1940.json",
+   "row": 2,
+   "page": "https://coinimaging.com/photography.html",
+   "about": {
+    "source": "Mark Goodman Coin Photography",
+    "rule": "Apply +0.7 to +1.0 exposure compensation for most coins"
+   },
+   "read": {
+    "supports": "Does the page give this rule? Say yes, partly or no, in the page's own terms."
+   },
+   "quote_to_find": "I will generally shoot most coins between +0.7 and +1.0, a bit of overexposure."
+  },
+  {
+   "k": 2,
+   "task": "ARG-GEM-09",
+   "file": "argus_gemini_coin-photo-rules_20261118-1940.json",
+   "row": 15,
+   "page": "https://coinimaging.com/photography.html",
+   "about": {
+    "source": "Mark Goodman Coin Photography",
+    "rule": "Polish scratched slabs in one direction toward the anticipated light source"
+   },
+   "read": {
+    "supports": "Does the page give this rule? Say yes, partly or no, in the page's own terms."
+   },
+   "quote_to_find": "I alleviate this problem by polishing in one direction. If I want to light a coin from 10 and 2 o'clock, I will polish the slab from 6 to 12 o'clock (fig.9). Always polish toward the anticipated light source."
+  },
+  {
+   "k": 3,
+   "task": "ARG-GEM-09",
+   "file": "argus_gemini_coin-photo-rules_20261118-1940.json",
+   "row": 16,
+   "page": "https://www.pcgs.com/news/zen-and-the-art-of-numismatic-photography",
+   "about": {
+    "source": "PCGS",
+    "rule": "Combine a high overhead light, a side light, and a hand-manipulated reflector"
+   },
+   "read": {
+    "supports": "Does the page give this rule? Say yes, partly or no, in the page's own terms."
+   },
+   "quote_to_find": "One light is high up above my setup, another off to the side. The third source is actually a reflector I manipulate by hand."
+  },
+  {
+   "k": 4,
+   "task": "FDY-GEM-03",
+   "file": "foundry_gemini_prior-art_20261118-1940.json",
+   "row": 1,
+   "page": "https://patents.google.com/patent/US11034592B1/en",
+   "about": {
+    "patent": "US11034592B1"
+   },
+   "read": {
+    "title": "the patent's title as the page shows it",
+    "owner": "the assignee the page names (original and current if both are shown)",
+    "year": "the publication year"
+   }
+  },
+  {
+   "k": 5,
+   "task": "FDY-GEM-03",
+   "file": "foundry_gemini_prior-art_20261118-1940.json",
+   "row": 3,
+   "page": "https://patents.google.com/patent/US11143026B2/en",
+   "about": {
+    "patent": "US11143026B2"
+   },
+   "read": {
+    "title": "the patent's title as the page shows it",
+    "owner": "the assignee the page names (original and current if both are shown)",
+    "year": "the publication year"
+   }
+  },
+  {
+   "k": 6,
+   "task": "FDY-GEM-03",
+   "file": "foundry_gemini_prior-art_20261118-1940.json",
+   "row": 5,
+   "page": "https://patents.google.com/patent/US11546205B1/en",
+   "about": {
+    "patent": "US11546205B1"
+   },
+   "read": {
+    "title": "the patent's title as the page shows it",
+    "owner": "the assignee the page names (original and current if both are shown)",
+    "year": "the publication year"
+   }
+  },
+  {
+   "k": 7,
+   "task": "OBS-GEM-03",
+   "file": "observatory_gemini_sources_20261118-1940.json",
+   "row": 2,
+   "page": "https://nvd.nist.gov/",
+   "about": {
+    "source": "NIST National Vulnerability Database",
+    "feed_url": null
+   },
+   "read": {
+    "feed": "Does the feed_url open, and is it this source's feed? (yes, or what you got: 404, other site ...)",
+    "updates": "how often the page says the source updates, or 'not stated'"
+   }
+  },
+  {
+   "k": 8,
+   "task": "OBS-GEM-03",
+   "file": "observatory_gemini_sources_20261118-1940.json",
+   "row": 5,
+   "page": "https://www.ftc.gov/news-events/news/press-releases",
+   "about": {
+    "source": "FTC Press Releases",
+    "feed_url": "https://www.ftc.gov/feeds/press-release.xml"
+   },
+   "read": {
+    "feed": "Does the feed_url open, and is it this source's feed? (yes, or what you got: 404, other site ...)",
+    "updates": "how often the page says the source updates, or 'not stated'"
+   }
+  },
+  {
+   "k": 9,
+   "task": "OBS-GEM-03",
+   "file": "observatory_gemini_sources_20261118-1940.json",
+   "row": 6,
+   "page": "https://www.nature.com/nathumbehav/",
+   "about": {
+    "source": "Nature Human Behaviour",
+    "feed_url": "https://www.nature.com/nathumbehav.rss"
+   },
+   "read": {
+    "feed": "Does the feed_url open, and is it this source's feed? (yes, or what you got: 404, other site ...)",
+    "updates": "how often the page says the source updates, or 'not stated'"
+   }
+  },
+  {
+   "k": 10,
+   "task": "BAS-GEM-07",
+   "file": "bastion_gemini_shelters_20261121-1131.json",
+   "row": 4,
+   "page": "https://www.redcross.org/get-help/disaster-relief-and-recovery-services/find-an-open-shelter.html",
+   "about": {
+    "name": "American Red Cross Emergency Shelters (Event-Activated; No Standing Published Site — Kern Chapter)",
+    "town": "Frazier Park"
+   },
+   "read": {
+    "runs": "who runs it, as the page says",
+    "opens": "when it opens (the trigger or the hours), as the page says",
+    "pets": "what the page says about pets, or 'not stated'"
+   },
+   "quote_to_find": "Red Cross shelters are open to anyone in need. Pets are welcome, and all disaster assistance is provided free of charge."
+  },
+  {
+   "k": 11,
+   "task": "BAS-GEM-07",
+   "file": "bastion_gemini_shelters_20261121-1131.json",
+   "row": 10,
+   "page": "https://www.redcross.org/get-help/disaster-relief-and-recovery-services/find-an-open-shelter.html",
+   "about": {
+    "name": "No standing published emergency shelter (event-activated via American Red Cross / ReadyKern)",
+    "town": "Pine Mountain Club"
+   },
+   "read": {
+    "runs": "who runs it, as the page says",
+    "opens": "when it opens (the trigger or the hours), as the page says",
+    "pets": "what the page says about pets, or 'not stated'"
+   },
+   "quote_to_find": "If asked to evacuate, listen to local officials for information about the nearest temporary evacuation point. There, you will be provided information about emergency shelter options near you."
+  },
+  {
+   "k": 12,
+   "task": "BAS-GEM-07",
+   "file": "bastion_gemini_shelters_20261121-1131.json",
+   "row": 14,
+   "page": "https://ready.lacounty.gov/cooling-centers/",
+   "about": {
+    "name": "No published official cooling center in Gorman (checked LA County Authoritative Cooling Center List, Aug 2026; dial 211)",
+    "town": "Gorman"
+   },
+   "read": {
+    "runs": "who runs it, as the page says",
+    "opens": "when it opens (the trigger or the hours), as the page says",
+    "pets": "what the page says about pets, or 'not stated'"
+   },
+   "quote_to_find": "For information on heat safety and Cooling Centers in Los Angeles County, visit the Ready LA County Heat webpage."
+  },
+  {
+   "k": 13,
+   "task": "BAS-GEM-08",
+   "file": "bastion_gemini_weather-radio_20261121-1129.json",
+   "row": 4,
+   "page": "https://www.weather.gov/nwr/sites?site=KIH62",
+   "about": {
+    "call_sign": "KIH62"
+   },
+   "read": {
+    "frequency": "the frequency",
+    "site": "the station name and place",
+    "same": "the SAME county codes the page lists"
+   },
+   "quote_to_find": "Transmitter Details Station ID KIH62 Station Name Fresno Frequency 162.400 State California Station Location Bear Mtn., CA Operating Status NORMAL Weather Forecast Office Hanford CA"
+  },
+  {
+   "k": 14,
+   "task": "BAS-GEM-08",
+   "file": "bastion_gemini_weather-radio_20261121-1129.json",
+   "row": 5,
+   "page": "https://www.weather.gov/nwr/sites?site=KWO37",
+   "about": {
+    "call_sign": "KWO37"
+   },
+   "read": {
+    "frequency": "the frequency",
+    "site": "the station name and place",
+    "same": "the SAME county codes the page lists"
+   },
+   "quote_to_find": "Transmitter Details Station ID KWO37 Station Name Los Angeles Frequency 162.550 State California Station Location Mt. Lukens/Tujunga, CA Operating Status NORMAL Weather Forecast Office Los Angeles CA"
+  },
+  {
+   "k": 15,
+   "task": "BAS-GEM-08",
+   "file": "bastion_gemini_weather-radio_20261121-1129.json",
+   "row": 6,
+   "page": "https://www.weather.gov/nwr/sites?site=KIH34",
+   "about": {
+    "call_sign": "KIH34"
+   },
+   "read": {
+    "frequency": "the frequency",
+    "site": "the station name and place",
+    "same": "the SAME county codes the page lists"
+   },
+   "quote_to_find": "Transmitter Details Station ID KIH34 Station Name Santa Barbara Frequency 162.400 State California Station Location Broadcast Peak, CA Operating Status NORMAL Weather Forecast Office Los Angeles CA"
+  },
+  {
+   "k": 16,
+   "task": "FDY-GEM-05",
+   "file": "foundry_gemini_stage1-parts_20261121-1300.json",
+   "row": 9,
+   "page": "https://www.adafruit.com/product/5812",
+   "about": {
+    "part": "Raspberry Pi 5 - 4 GB RAM (Adafruit PID 5812)"
+   },
+   "read": {
+    "price": "the unit price the page shows today, with its currency"
+   },
+   "quote_to_find": "Featuring a 64-bit quad-core Arm Cortex-A76 processor running at 2.4GHz, Raspberry Pi 5 delivers a 2–3× increase in CPU performance relative to Raspberry Pi 4."
+  },
+  {
+   "k": 17,
+   "task": "FDY-GEM-05",
+   "file": "foundry_gemini_stage1-parts_20261121-1300.json",
+   "row": 35,
+   "page": "https://www.adafruit.com/product/4755",
+   "about": {
+    "part": "Adafruit Universal USB / DC / Solar Lithium Ion/Polymer charger - bq24074 (Adafruit PID 4755)"
+   },
+   "read": {
+    "price": "the unit price the page shows today, with its currency"
+   },
+   "quote_to_find": "The charger chip is super smart, and will reduce the current draw if the input voltage starts to dip under 4.5V, making it a perfect near-MPPT solar charger that you can use with a wide range of panels."
+  },
+  {
+   "k": 18,
+   "task": "FDY-GEM-05",
+   "file": "foundry_gemini_stage1-parts_20261121-1300.json",
+   "row": 42,
+   "page": "https://www.adafruit.com/product/3244",
+   "about": {
+    "part": "Mini 3-Layer Round Robot Chassis Kit - 2WD with DC Motors (Adafruit PID 3244)"
+   },
+   "read": {
+    "price": "the unit price the page shows today, with its currency"
+   },
+   "quote_to_find": "You get the metal plates that make up the chassis, two DC drive motors with matching wheels, and a caster ball for balance."
+  },
+  {
+   "k": 19,
+   "task": "GAM-GEM-06",
+   "file": "games_gemini_anno117-updates_20261121-1129.json",
+   "row": 13,
+   "page": "https://www.anno-union.com/updates/anno-117-pax-romana-patch-1-6/",
+   "about": {},
+   "read": {
+    "date": "the date the post was published",
+    "version": "the version number it names, or 'not stated'",
+    "platforms": "the platforms it covers"
+   },
+   "quote_to_find": "It's now possible for co-op players to change the skin of an object from one they don't own to any they own"
+  },
+  {
+   "k": 20,
+   "task": "GAM-GEM-06",
+   "file": "games_gemini_anno117-updates_20261121-1129.json",
+   "row": 19,
+   "page": "https://www.anno-union.com/updates/anno-117-pax-romana-patch-3-0-1/",
+   "about": {},
+   "read": {
+    "date": "the date the post was published",
+    "version": "the version number it names, or 'not stated'",
+    "platforms": "the platforms it covers"
+   },
+   "quote_to_find": "Fixed some frame rate drops on PlayStation 5 when viewing large settlements, which could reduce performance to single-digit frames per second."
+  },
+  {
+   "k": 21,
+   "task": "GAM-GEM-06",
+   "file": "games_gemini_anno117-updates_20261121-1129.json",
+   "row": 20,
+   "page": "https://www.anno-union.com/updates/anno-117-pax-romana-hotfix-3-0-1-1/",
+   "about": {},
+   "read": {
+    "date": "the date the post was published",
+    "version": "the version number it names, or 'not stated'",
+    "platforms": "the platforms it covers"
+   },
+   "quote_to_find": "This hotfix for the game addresses two specific issues related to ornaments. A regular patch with additional fixes is planned for early December."
+  },
+  {
+   "k": 22,
+   "task": "GAR-GEM-14",
+   "file": "garage_gemini_lights_20261121-1215.json",
+   "row": 14,
+   "page": "https://www.kiatechinfo.com/ext_If/kma_owner_portal/content_pop.aspx",
+   "about": {
+    "vehicle": "2025 Sorento Hybrid",
+    "light": "EV mode indicator (EV)",
+    "page": "5-101 (PDF p. 226)"
+   },
+   "read": {
+    "colour": "the light's colour as the manual shows or says, or 'not stated'",
+    "means": "what the manual says it means (one sentence)",
+    "do": "what the manual says to do"
+   },
+   "quote_to_find": "\"EV\" indicator ON : Vehicle is driven using the electric motor or the gasoline engine is stopped. • \"EV\" indicator OFF : Vehicle is driven using the gasoline engine."
+  },
+  {
+   "k": 23,
+   "task": "GAR-GEM-14",
+   "file": "garage_gemini_lights_20261121-1215.json",
+   "row": 24,
+   "page": "https://www.kiatechinfo.com/ext_If/kma_owner_portal/content_pop.aspx",
+   "about": {
+    "vehicle": "2025 Sorento Hybrid",
+    "light": "Liftgate Open Warning Light (if equipped)",
+    "page": "5-103 (PDF p. 228)"
+   },
+   "read": {
+    "colour": "the light's colour as the manual shows or says, or 'not stated'",
+    "means": "what the manual says it means (one sentence)",
+    "do": "what the manual says to do"
+   },
+   "quote_to_find": "This warning light appears: When the liftgate is not closed securely."
+  },
+  {
+   "k": 24,
+   "task": "GAR-GEM-14",
+   "file": "garage_gemini_lights_20261121-1215.json",
+   "row": 45,
+   "page": "https://www.kiatechinfo.com/ext_If/kma_owner_portal/content_pop.aspx",
+   "about": {
+    "vehicle": "2025 Sorento Hybrid",
+    "light": "Lane Following Assist indicator",
+    "page": "5-107 (PDF p. 232)"
+   },
+   "read": {
+    "colour": "the light's colour as the manual shows or says, or 'not stated'",
+    "means": "what the manual says it means (one sentence)",
+    "do": "what the manual says to do"
+   },
+   "quote_to_find": "If there is a problem with the function, the yellow Lane Following Assist indicator will appear."
+  },
+  {
+   "k": 25,
+   "task": "HEA-GEM-25",
+   "file": "hearth_gemini_cut-list_20261121-1300.json",
+   "row": 5,
+   "page": "https://assets.timbertech.com/content/dam/document-library/TimberTech/installation-guides/decking/TimberTech-Composite-Installation-Guide-ENG.pdf",
+   "about": {
+    "item": "Mid-span solid wood joist blocking (base)",
+    "rule": "Install solid wood blocking between each joist every 4 ft to 6 ft to prevent joist twisting and reduce gapping.",
+    "page": "Page 4 (Substructure/Preparation)"
+   },
+   "read": {
+    "supports": "Does the cited page or code section say this rule? Say yes, partly or no, and give the section's actual requirement."
+   },
+   "quote_to_find": "For best results, install solid wood blocking between each joist, placed every 4' - 6' within the structure, can help reduce movement or twisting of the joists."
+  },
+  {
+   "k": 26,
+   "task": "HEA-GEM-25",
+   "file": "hearth_gemini_cut-list_20261121-1300.json",
+   "row": 32,
+   "page": "https://www.strongtie.com/onepiecepostcaps_postcaps/bcs_cap/p/bcs",
+   "about": {
+    "item": "Post-to-beam caps for 3-ply beam on 6x6 posts (base)",
+    "rule": "All 3-ply beams must connect to 6x6 posts with an approved post cap; BCS2-3/6Z fits triple 2x beam on 6x6 post with double-shear nailing.",
+    "page": "Product Overview & Product Information Table"
+   },
+   "read": {
+    "supports": "Does the cited page or code section say this rule? Say yes, partly or no, and give the section's actual requirement."
+   },
+   "quote_to_find": "The BCS is designed to connect a multi-ply member beam to a post. The dimensions of this post cap accommodate the narrower width of multiple 2x members on top of the post."
+  },
+  {
+   "k": 27,
+   "task": "HEA-GEM-25",
+   "file": "hearth_gemini_cut-list_20261121-1300.json",
+   "row": 37,
+   "page": "https://assets.timbertech.com/content/dam/document-library/TimberTech/installation-guides/decking/TimberTech-Composite-Installation-Guide-ENG.pdf",
+   "about": {
+    "item": "TimberTech Composite/PVC top-down deck screws — comparison option (+10% waste)",
+    "rule": "Fasten TimberTech square-shouldered boards with 2 screws per joist including end joints (double joists at butt seams; 3 screws at ends recommended for Advanced PVC).",
+    "page": "Page 7 (Square Shouldered Board Installation Instructions)"
+   },
+   "read": {
+    "supports": "Does the cited page or code section say this rule? Say yes, partly or no, and give the section's actual requirement."
+   },
+   "quote_to_find": "Fasten no closer than 3/4\" from the outside edge of each board,using two screws per joist including end joints."
+  },
+  {
+   "k": 28,
+   "task": "HER-GEM-10",
+   "file": "hermes_gemini_scam-messages_20261121-1210.json",
+   "row": 7,
+   "page": "https://www.fedex.com/en-us/report-fraud.html",
+   "about": {
+    "pretends": "FedEx",
+    "channel": "email"
+   },
+   "read": {
+    "published": "the date the page was published, or 'not stated'"
+   },
+   "quote_to_find": "Unfortunately we were not able to deliver postal package you sent on December the 14 in time because the recipient's address is not correct. Please print out the invoice copy attached and collect the package at our office."
+  },
+  {
+   "k": 29,
+   "task": "HER-GEM-10",
+   "file": "hermes_gemini_scam-messages_20261121-1210.json",
+   "row": 16,
+   "page": "https://www.ssa.gov/blog/en/posts/2026-09-25.html",
+   "about": {
+    "pretends": "Social Security Administration / U.S. Government",
+    "channel": "phone"
+   },
+   "read": {
+    "published": "the date the page was published, or 'not stated'"
+   },
+   "quote_to_find": "Your money isn't safe. Move it to protect it."
+  },
+  {
+   "k": 30,
+   "task": "HER-GEM-10",
+   "file": "hermes_gemini_scam-messages_20261121-1210.json",
+   "row": 23,
+   "page": "https://ets.wyo.gov/cybersecurity/resources-campaigns/cybersecurity-awareness-month/2026-cybersecurity-awareness-month",
+   "about": {
+    "pretends": "Remote Employer / Recruiter",
+    "channel": "email"
+   },
+   "read": {
+    "published": "the date the page was published, or 'not stated'"
+   },
+   "quote_to_find": "Earn $80 an hour working 3 hours a day from home - no interview required!"
+  },
+  {
+   "k": 31,
+   "task": "ICA-GEM-11",
+   "file": "icarus_gemini_2027-macro-dates_20261121-1130.json",
+   "row": 17,
+   "page": "https://www.bls.gov/schedule/news_release/empsit.htm",
+   "about": {
+    "event": "Employment Situation",
+    "detail": "Reference Month: June 2027"
+   },
+   "read": {
+    "date": "the release or meeting date for this row's reference period (YYYY-MM-DD)",
+    "time": "the release time, or 'not stated'"
+   },
+   "quote_to_find": "June 2027 Jul. 02, 2027 08:30 AM"
+  },
+  {
+   "k": 32,
+   "task": "ICA-GEM-11",
+   "file": "icarus_gemini_2027-macro-dates_20261121-1130.json",
+   "row": 24,
+   "page": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+   "about": {
+    "event": "FOMC",
+    "detail": "Two-day meeting (Tuesday-Wednesday, September 14-15, 2027; tentative); SEP: not stated on 2027 FOMC calendar"
+   },
+   "read": {
+    "date": "the release or meeting date for this row's reference period (YYYY-MM-DD)",
+    "time": "the release time, or 'not stated'"
+   },
+   "quote_to_find": "September 14-15"
+  },
+  {
+   "k": 33,
+   "task": "ICA-GEM-11",
+   "file": "icarus_gemini_2027-macro-dates_20261121-1130.json",
+   "row": 26,
+   "page": "https://www.bls.gov/schedule/news_release/cpi.htm",
+   "about": {
+    "event": "CPI",
+    "detail": "Reference Month: September 2027"
+   },
+   "read": {
+    "date": "the release or meeting date for this row's reference period (YYYY-MM-DD)",
+    "time": "the release time, or 'not stated'"
+   },
+   "quote_to_find": "September 2027 Oct. 14, 2027 08:30 AM"
+  },
+  {
+   "k": 34,
+   "task": "PIA-GEM-07",
+   "file": "piano_gemini_recordings_20261121-1222.json",
+   "row": 2,
+   "page": "https://www.bluenote.com/spotlight/joe-hendersons-auspicious-page-one/",
+   "about": {
+    "tune": "Blue Bossa"
+   },
+   "read": {
+    "first": "the first recording the page names (artist, title, year, label if shown)"
+   },
+   "quote_to_find": "He launched as a leader in 1963 with his Blue Note debut, Page One, a remarkable quintet session featuring trumpeter Kenny Dorham, his collaborator, who contributed two originals to the six-track album"
+  },
+  {
+   "k": 35,
+   "task": "PIA-GEM-07",
+   "file": "piano_gemini_recordings_20261121-1222.json",
+   "row": 9,
+   "page": "https://www.discogs.com/release/4630697-Luiz-Bonfa-Eumir-Deodato-The-Gentle-Rain-Original-Motion-Picture-Soundtrack-Recording",
+   "about": {
+    "tune": "Gentle Rain"
+   },
+   "read": {
+    "first": "the first recording the page names (artist, title, year, label if shown)"
+   },
+   "quote_to_find": "Arranged By, Conductor – Eumir Deodato Composed By – Luiz Bonfa* Liner Notes – Burt Balaban Producer – Bobby Scott"
+  },
+  {
+   "k": 36,
+   "task": "PIA-GEM-07",
+   "file": "piano_gemini_recordings_20261121-1222.json",
+   "row": 14,
+   "page": "https://www.jobim.org/jobim/handle/2010/4775",
+   "about": {
+    "tune": "Corcovado (Quiet Nights of Quiet Stars)"
+   },
+   "read": {
+    "first": "the first recording the page names (artist, title, year, label if shown)"
+   },
+   "quote_to_find": "Outras gravações: João Gilberto (LP - O amor, o sorriso e a flor / 1960), Sylvia Telles (LP - Amor em Hi-Fi / 1960), Miles Davis / Gil Evans (LP - Quiet nighs / 1962), Cannonball Adderley / Sergio Mendes (LP - Bossa nova / 1962)"
+  },
+  {
+   "k": 37,
+   "task": "POL-GEM-08",
+   "file": "polis_gemini_board-2026_20261121-1300.json",
+   "row": 1,
+   "page": "https://www.kerncounty.com/Home/Components/News/News/4386/34810",
+   "about": {
+    "date": "2026-01-27",
+    "item": "Items No 52 – 53 PM session"
+   },
+   "read": {
+    "subject": "what the item was about",
+    "outcome": "what the Board did (approved, denied, continued ...)",
+    "vote": "the vote if the page shows it, or 'not stated'"
+   },
+   "quote_to_find": "The Board approved contributions to Taft College Foundation in the amount of $750, California State University Bakersfield Foundation in the amount of $1,500 and El Tejon Unified School District in the amount of $2,500, to support students in the community."
+  },
+  {
+   "k": 38,
+   "task": "POL-GEM-08",
+   "file": "polis_gemini_board-2026_20261121-1300.json",
+   "row": 3,
+   "page": "https://www.kerncounty.com/Home/Components/News/News/4498/34810",
+   "about": {
+    "date": "2026-04-14",
+    "item": "Items No. 42 – 47 PM session"
+   },
+   "read": {
+    "subject": "what the item was about",
+    "outcome": "what the Board did (approved, denied, continued ...)",
+    "vote": "the vote if the page shows it, or 'not stated'"
+   },
+   "quote_to_find": "and $500 each to Mountain Communities Family Resource Center; Shielding the Frontline, Kern County Inc.; American Cancer Society; Kiwanis Club of Taft;"
+  },
+  {
+   "k": 39,
+   "task": "POL-GEM-08",
+   "file": "polis_gemini_board-2026_20261121-1300.json",
+   "row": 5,
+   "page": "https://www.kerncounty.com/Home/Components/News/News/4608/34810",
+   "about": {
+    "date": "2026-06-09",
+    "item": "Item No. 34 AM session"
+   },
+   "read": {
+    "subject": "what the item was about",
+    "outcome": "what the Board did (approved, denied, continued ...)",
+    "vote": "the vote if the page shows it, or 'not stated'"
+   },
+   "quote_to_find": "The Board approved Behavioral Health and Recovery Services agreement with Clinica Sierra Vista to provide outpatient behavioral health treatment services for clients residing in Lamont, Arvin, Lebec, Delano, and Bakersfield, from July 1, 2026 through June 30, 2027."
+  },
+  {
+   "k": 40,
+   "task": "PRI-GEM-10",
+   "file": "privacy_gemini_microsoft-settings_20261121-1135.json",
+   "row": 6,
+   "page": "https://support.microsoft.com/en-us/windows/privacy/privacy-settings-for-recommendations-offers-in-windows-11",
+   "about": {
+    "setting": "Personalized offers"
+   },
+   "read": {
+    "where": "the menu path the page gives",
+    "default": "the default the page states, or 'not stated'"
+   },
+   "quote_to_find": "We do not use the content of crash dumps, speech, typing, or inking input data for personalizing offers."
+  },
+  {
+   "k": 41,
+   "task": "PRI-GEM-10",
+   "file": "privacy_gemini_microsoft-settings_20261121-1135.json",
+   "row": 11,
+   "page": "https://support.microsoft.com/en-us/windows/privacy/general-privacy-settings-in-windows",
+   "about": {
+    "setting": "Windows Defender SmartScreen"
+   },
+   "read": {
+    "where": "the menu path the page gives",
+    "default": "the default the page states, or 'not stated'"
+   },
+   "quote_to_find": "Windows Defender SmartScreen sends data to Microsoft about the websites you visit and files you download to warn you and help protect you and your device from unsafe web content or malicious software."
+  },
+  {
+   "k": 42,
+   "task": "PRI-GEM-10",
+   "file": "privacy_gemini_microsoft-settings_20261121-1135.json",
+   "row": 15,
+   "page": "https://support.microsoft.com/en-us/windows/privacy/windows-activity-history-and-your-privacy",
+   "about": {
+    "setting": "Store my activity history on this device"
+   },
+   "read": {
+    "where": "the menu path the page gives",
+    "default": "the default the page states, or 'not stated'"
+   },
+   "quote_to_find": "Activity history helps keep track of the things you do on your device, such as the apps and services you use, the files you open, and the websites you browse."
+  },
+  {
+   "k": 43,
+   "task": "PRI-GEM-11",
+   "file": "privacy_gemini_s24-hardening_20261121-1205.json",
+   "row": 9,
+   "page": "https://support.google.com/accounts/answer/54068?hl=en&co=GENIE.Platform%3DAndroid",
+   "about": {
+    "setting": "Web & App Activity (Google Account)"
+   },
+   "read": {
+    "where": "the menu path the page gives",
+    "default": "the default the page states, or 'not stated'"
+   },
+   "quote_to_find": "Web & App Activity saves your searches and activity from other Google services in your Google Account. You may get more personalized experiences"
+  },
+  {
+   "k": 44,
+   "task": "PRI-GEM-11",
+   "file": "privacy_gemini_s24-hardening_20261121-1205.json",
+   "row": 14,
+   "page": "https://support.google.com/android/answer/9431959?hl=en",
+   "about": {
+    "setting": "Camera access & Microphone access (Privacy controls)"
+   },
+   "read": {
+    "where": "the menu path the page gives",
+    "default": "the default the page states, or 'not stated'"
+   },
+   "quote_to_find": "On your device, open the Settings app. Tap Security & privacy and then Privacy and then Privacy controls. Turn off Camera access or Microphone access."
+  },
+  {
+   "k": 45,
+   "task": "PRI-GEM-11",
+   "file": "privacy_gemini_s24-hardening_20261121-1205.json",
+   "row": 40,
+   "page": "https://www.samsung.com/us/support/answer/ANS10003601/",
+   "about": {
+    "setting": "Encrypt offline location (Samsung Find)"
+   },
+   "read": {
+    "where": "the menu path the page gives",
+    "default": "the default the page states, or 'not stated'"
+   },
+   "quote_to_find": "Encrypt offline location: Encrypt the offline location of your devices. You will need to set and use a PIN to view locations."
+  }
+ ]
+}
