@@ -818,7 +818,7 @@
           "id": "KAI-GEM-15",
           "title": "Kairos: Kern County offices' 2027 holiday closures",
           "due": "2026-12-06",
-          "review": "checked 26 Nov 2026: honest negative, 2 rows (check_delivery all PASS): Kern County has not posted its 2027 holidays (the Assessor-Recorder page lists 2026 only). Scored #197 (9). The recheck is KAI-GEM-17."
+          "review": "Not wired: an honest negative, nothing to build yet. Checked 26 Nov 2026: 2 rows (check_delivery all PASS); Kern County has not posted its 2027 holidays (the Assessor-Recorder page lists 2026 only). Scored #197 (9). The recheck is KAI-GEM-17."
         },
         {
           "state": "now",

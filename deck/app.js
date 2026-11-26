@@ -17,7 +17,7 @@ import { demoDeck } from "./data/demo.js";
 import { soundOn, setSound, tick } from "./core/fx.js";
 const MIDAS = "../midas-ledger/";   /* Midas Ledger: the money pillar, same origin (jpavia10.github.io), its book encrypted */
 
-export const BUILD = "d90";
+export const BUILD = "d91";
 const params = new URLSearchParams(location.search);
 if (params.get("now")) clock.set(params.get("now"));
 for (const sl of SLICES) store.define(sl.id, sl.model.slice);

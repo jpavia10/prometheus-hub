@@ -1423,7 +1423,7 @@
           "id": "HUB-GEM-20",
           "title": "Hub: does every place in the realm painting sit under its own label?",
           "due": "2026-12-05",
-          "review": "checked 26 Nov 2026: 27 of 27 rows, exact fields (check_delivery all PASS); scored #195 (8); used for the realm label placement."
+          "review": "design input, checked 26 Nov 2026: 27 of 27 rows, exact fields (check_delivery all PASS); scored #195 (8); it set the realm label placement."
         },
         {
           "state": "done",
@@ -1498,7 +1498,7 @@
           "id": "HUB-GEM-21",
           "title": "Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)",
           "due": "2026-12-06",
-          "review": "checked 26 Nov 2026: 11 of 11 rows, exact fields (check_delivery all PASS); scored #195 (8); used for the painting crops."
+          "review": "design input, checked 26 Nov 2026: 11 of 11 rows, exact fields (check_delivery all PASS); scored #195 (8); it set the painting crops."
         },
         {
           "state": "done",

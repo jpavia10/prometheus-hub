@@ -284,7 +284,7 @@ window.ODYSSEY_DATA = {
     },
     /* Six more trips found in his photos (2026-11-23, Gemini run 6, ODY-GEM-13: every "Photos from YYYY" folder read, places from EXIF GPS
        and what the pictures show, dates and flights from his calendar and Gmail). Booking and rental codes are left out.
-       2026-11-24 (rev 2, Gemini run 7 ODY-GEM-19 to 22, checked by Claude photo by photo): the stops day by day. Two places corrected
+       2026-11-24 (rev 2, Gemini run 7 ODY-GEM-19, ODY-GEM-20, ODY-GEM-21 and ODY-GEM-22, checked by Claude photo by photo): the stops day by day. Two places corrected
        from the pictures: the Mar 6 2015 harbour is Rainbow Harbor in Long Beach (the Grand Romance riverboat and Landmark Square are in
        the frame; they came by Metro Rail), not Marina del Rey; the Sep 15 2022 yard is in Lambertville, Michigan (its GPS is 4.5 km north
        of the Ohio line), not Toledo. Family homes are placed at their town's centre, not at the house. */

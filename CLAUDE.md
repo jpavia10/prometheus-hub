@@ -72,6 +72,13 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d90-d91 (2026-11-26): the clean-up round.** Owner: "Do a clean up round ... I want to be totally caught up and organized". Drive: every
+  hub and Titan drop folder classified (all merged or kept; the files still needed were copied into a `_kept` folder per pillar, the
+  Midas encrypted book and the broker-names input included); the files only Joseph can trash are listed step by step in the Drive
+  Clean-Up artifact (claude.ai/artifact/K39FgVsaG3qG22ExN8oamB). Kin: the petition is vol. 4372, no. 18 (re-read at full size; agrees
+  with Muse's blind read KIN-MUS-02). Run 7's last six files checked (`tools/kit/check_delivery.mjs` all PASS) and closed; KAI-GEM-17
+  rechecks Kern's 2027 holidays once posted. 13 new Gemini tasks (refill 9); the Gemini prompt carries Muse's two rules (Ctrl+F quotes,
+  subject must match). Ledger: 196 used, 4 left (town plates, ODY-GEM-06, 11, 12); 39 delivered files wait for a second read.
 - **d89 (2026-11-26): the backlog wired.** The ledger (`tools/forge/usage.py`) said 94 delivered tasks were shown nowhere. Now 4 are:
   29 scored datasets from runs 4 and 6 are sourced reference panels in 18 pillars (`pillars/*/research-r6.js`, `kit/refs.js`; generator in
   the scratchpad, `backlog/wire.py`); Kin shows Gemini's 80 decided Ancestry hints and 119 scored parent links (`pillars/kin/research-r8.js`,

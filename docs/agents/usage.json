@@ -3,11 +3,11 @@
  "totals": {
   "open": 52,
   "check": 25,
-  "design": 63,
-  "dropped": 173,
-  "used": 193,
+  "design": 65,
+  "dropped": 174,
+  "used": 196,
   "waiting": 39,
-  "unused": 10
+  "unused": 4
  },
  "rows": [
   {
@@ -2796,17 +2796,6 @@
   {
    "pillar": "hermes",
    "ai": "gemini",
-   "id": "HER-GEM-14",
-   "title": "Hermes: the official fraud and customer-service phone numbers for billers 51-97",
-   "due": "2026-12-07",
-   "closed": null,
-   "state": "unused",
-   "file": "hermes_gemini_biller-phones-2",
-   "review": "checked 26 Nov 2026: 47 of 47 rows, exact fields (tools/kit/check_delivery.mjs all PASS); scored #197 (9); wired in pillars/hermes/billers.js (phone, fraud line, page per biller)."
-  },
-  {
-   "pillar": "hermes",
-   "ai": "gemini",
    "id": "HER-GEM-02",
    "title": "60 US billers: the address their bill emails come from",
    "due": "2026-11-14",
@@ -2858,6 +2847,17 @@
    "state": "used",
    "file": "hermes_gemini_biller-phones-1",
    "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+  },
+  {
+   "pillar": "hermes",
+   "ai": "gemini",
+   "id": "HER-GEM-14",
+   "title": "Hermes: the official fraud and customer-service phone numbers for billers 51-97",
+   "due": "2026-12-07",
+   "closed": null,
+   "state": "used",
+   "file": "hermes_gemini_biller-phones-2",
+   "review": "checked 26 Nov 2026: 47 of 47 rows, exact fields (tools/kit/check_delivery.mjs all PASS); scored #197 (9); wired in pillars/hermes/billers.js (phone, fraud line, page per biller)."
   },
   {
    "pillar": "hermes",
@@ -3049,6 +3049,28 @@
   {
    "pillar": "hub",
    "ai": "gemini",
+   "id": "HUB-GEM-20",
+   "title": "Hub: does every place in the realm painting sit under its own label?",
+   "due": "2026-12-05",
+   "closed": null,
+   "state": "design",
+   "file": "hub_gemini_realm-labels",
+   "review": "design input, checked 26 Nov 2026: 27 of 27 rows, exact fields (check_delivery all PASS); scored #195 (8); it set the realm label placement."
+  },
+  {
+   "pillar": "hub",
+   "ai": "gemini",
+   "id": "HUB-GEM-21",
+   "title": "Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)",
+   "due": "2026-12-06",
+   "closed": null,
+   "state": "design",
+   "file": "hub_gemini_painting-focus-2",
+   "review": "design input, checked 26 Nov 2026: 11 of 11 rows, exact fields (check_delivery all PASS); scored #195 (8); it set the painting crops."
+  },
+  {
+   "pillar": "hub",
+   "ai": "gemini",
    "id": "HUB-GEM-23",
    "title": "Hub: weather to scene: what the town shows for each weather code, by day and by night",
    "due": "2026-12-01",
@@ -3199,28 +3221,6 @@
    "state": "open",
    "file": "hub_muse_second-read-run8",
    "review": ""
-  },
-  {
-   "pillar": "hub",
-   "ai": "gemini",
-   "id": "HUB-GEM-20",
-   "title": "Hub: does every place in the realm painting sit under its own label?",
-   "due": "2026-12-05",
-   "closed": null,
-   "state": "unused",
-   "file": "hub_gemini_realm-labels",
-   "review": "checked 26 Nov 2026: 27 of 27 rows, exact fields (check_delivery all PASS); scored #195 (8); used for the realm label placement."
-  },
-  {
-   "pillar": "hub",
-   "ai": "gemini",
-   "id": "HUB-GEM-21",
-   "title": "Hub: does each pillar's painted header now frame its subject? (the 11 you marked 'no', after Claude's fix)",
-   "due": "2026-12-06",
-   "closed": null,
-   "state": "unused",
-   "file": "hub_gemini_painting-focus-2",
-   "review": "checked 26 Nov 2026: 11 of 11 rows, exact fields (check_delivery all PASS); scored #195 (8); used for the painting crops."
   },
   {
    "pillar": "hub",
@@ -3620,6 +3620,17 @@
   },
   {
    "pillar": "kairos",
+   "ai": "gemini",
+   "id": "KAI-GEM-15",
+   "title": "Kairos: Kern County offices' 2027 holiday closures",
+   "due": "2026-12-06",
+   "closed": null,
+   "state": "dropped",
+   "file": "kairos_gemini_kern-holidays-2027",
+   "review": "Not wired: an honest negative, nothing to build yet. Checked 26 Nov 2026: 2 rows (check_delivery all PASS); Kern County has not posted its 2027 holidays (the Assessor-Recorder page lists 2026 only). Scored #197 (9). The recheck is KAI-GEM-17."
+  },
+  {
+   "pillar": "kairos",
    "ai": "chatgpt",
    "id": "KAI-GPT-01",
    "title": "Kairos Meridian: phone audit: 15 findings",
@@ -3683,17 +3694,6 @@
    "state": "open",
    "file": "kairos_gemini_kern-holidays-2027",
    "review": ""
-  },
-  {
-   "pillar": "kairos",
-   "ai": "gemini",
-   "id": "KAI-GEM-15",
-   "title": "Kairos: Kern County offices' 2027 holiday closures",
-   "due": "2026-12-06",
-   "closed": null,
-   "state": "unused",
-   "file": "kairos_gemini_kern-holidays-2027",
-   "review": "checked 26 Nov 2026: honest negative, 2 rows (check_delivery all PASS): Kern County has not posted its 2027 holidays (the Assessor-Recorder page lists 2026 only). Scored #197 (9). The recheck is KAI-GEM-17."
   },
   {
    "pillar": "kairos",
@@ -4919,28 +4919,6 @@
   {
    "pillar": "odyssey",
    "ai": "gemini",
-   "id": "ODY-GEM-20",
-   "title": "Odyssey: the six new trips day by day",
-   "due": "2026-12-06",
-   "closed": null,
-   "state": "unused",
-   "file": "odyssey_gemini_new-trip-days",
-   "review": "checked 26 Nov 2026: 27 rows, exact fields (check_delivery all PASS); scored #196 (8); wired by tools/odyssey/extras.py into the six photo trips' days."
-  },
-  {
-   "pillar": "odyssey",
-   "ai": "gemini",
-   "id": "ODY-GEM-21",
-   "title": "Odyssey: the best photos of the six new trips",
-   "due": "2026-12-06",
-   "closed": null,
-   "state": "unused",
-   "file": "odyssey_gemini_new-trip-picks",
-   "review": "checked 26 Nov 2026: 32 rows, exact fields (check_delivery all PASS), no person named; scored #196 (8); picks checked by eye and wired into the six photo trips."
-  },
-  {
-   "pillar": "odyssey",
-   "ai": "gemini",
    "id": "ODY-GEM-01",
    "title": "Odyssey: An away-mode checklist for a mountain home in winter",
    "due": "2026-11-19",
@@ -5080,6 +5058,28 @@
    "state": "used",
    "file": "odyssey_gemini_new-trip-stops",
    "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+  },
+  {
+   "pillar": "odyssey",
+   "ai": "gemini",
+   "id": "ODY-GEM-20",
+   "title": "Odyssey: the six new trips day by day",
+   "due": "2026-12-06",
+   "closed": null,
+   "state": "used",
+   "file": "odyssey_gemini_new-trip-days",
+   "review": "checked 26 Nov 2026: 27 rows, exact fields (check_delivery all PASS); scored #196 (8); wired by tools/odyssey/extras.py into the six photo trips' days."
+  },
+  {
+   "pillar": "odyssey",
+   "ai": "gemini",
+   "id": "ODY-GEM-21",
+   "title": "Odyssey: the best photos of the six new trips",
+   "due": "2026-12-06",
+   "closed": null,
+   "state": "used",
+   "file": "odyssey_gemini_new-trip-picks",
+   "review": "checked 26 Nov 2026: 32 rows, exact fields (check_delivery all PASS), no person named; scored #196 (8); picks checked by eye and wired into the six photo trips."
   },
   {
    "pillar": "odyssey",
