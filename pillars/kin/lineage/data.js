@@ -1245,3 +1245,17 @@ window.KIN_LINEAGE.questions.push(
   if (q38) { q38.q = "Tania's mother: your grandmother Laurie's sister or half-sister (not Ilene). Her first name, and whether she is Barbara's daughter (then she died before 2009, as Barbara's obituary names only Laurie, Ilene and Joe) or Bob Seconder's by another marriage. And who is David Holgate?"; q38.sources = "you, your mother or grandmother Laurie; then Bob Seconder's 2003 obituary and the Waterford Seconder obituaries (Gemini KIN-GEM-52)"; q38.task = "KIN-GEM-52"; }
   L.log.push({ id: "L27", date: "2026-11-26", by: "Claude", q: "Q38", where: "the open web (obituary search: Seconder, Waterford and Pontiac, Michigan)", terms: "Seconder obituary; Robert Seconder 2003; Wilbur Seconder 2012; Tania Seconder", result: "candidate", note: "No obituary found for Robert (Bob) Seconder (2003) or Wilbur Seconder (2012). Leads not yet read (the pages are outside this session's network): Tamora \"Tammy\" J. Seconder of Waterford (8 Sep 1957 to 2 Apr 2012; The Oakland Press via Legacy.com, and Modetz Funeral Homes) and Jack L. Seconder Sr. of Waterford (28 Mar 1933 to 15 Aug 2024; Simpson-Modetz). Whether either is in Laurie's family is not known: given to Gemini (KIN-GEM-52)." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, night (owner): "Michelle is Tanias sister." Michelle joins Tania under their mother, your grandmother Laurie's sister
+   or half-sister (name still to come). */
+(function (L) {
+  const F = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-owner-1126g", short: "Your account: Michelle is Tania's sister (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.", read: "Michelle is Tania's sister." });
+  L.people.push({ id: "P-michelle", sex: "F", status: "family", living: true, names: [{ given: "Michelle", surname: "", type: "as-given", src: ["S-owner-1126g"], note: "her surname is not given" }],
+    summary: "Tania's sister, so your mother's cousin too (your account). Their mother is your grandmother Laurie's sister or half-sister, whose name has not come back yet (Q38)." });
+  const ft = F("F-tania"); if (ft && !ft.children.includes("P-michelle")) ft.children.push("P-michelle");
+  const q38 = L.questions.find((q) => q.id === "Q38");
+  if (q38) q38.q = q38.q.replace("Tania's mother:", "Tania and Michelle's mother:");
+  L.log.push({ id: "L28", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message", terms: "Tania's sister", result: "found", note: "Added Michelle, Tania's sister." });
+})(window.KIN_LINEAGE);

@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d105, Michelle (Tania's sister)
+- Owner: Michelle is Tania's sister. Added P-michelle to F-tania (under the placeholder mother on Laurie's side); Q38 now asks for Tania and Michelle's mother.
+
 ### [2026-11-26] Claude: Kin d104, Tania's mother is on Laurie's side
 - Owner: Tania's mother is on his grandmother Laurie's side; he cannot recall her name. The placeholder moved from F-sanders to F-ggm (Bob Seconder and Barbara), dashed "Laurie's sister or half-sister? (Q38)". Barbara's 2009 obituary names only three surviving children, so she is Barbara's daughter who died before 2009 or Bob's daughter by another marriage.
 - Open-web leads not readable here (legacy.com, tributearchive.com outside the network): Tamora "Tammy" J. Seconder (1957-2012, Waterford) and Jack L. Seconder Sr. (1933-2024, Waterford); logged as L27, KIN-GEM-52 rewritten for Gemini around them and Bob Seconder's 2003 obituary.
