@@ -1222,3 +1222,26 @@ window.KIN_LINEAGE.questions.push(
   if (q39) q39.q = q39.q.replace(" Also: Nicholas Patrick's father, and whether Patrick is a middle name or a surname.", "");
   L.log.push({ id: "L26", date: "2026-11-26", by: "Claude", q: "Q39", where: "your message", terms: "your aunt Jennifer, Nicholas, Joe Seconder", result: "found", note: "Added Jim Walls (Jennifer's ex-husband), Mark Johnson (her partner now) and Kathleen (Joe Seconder's wife). Nicholas's surname is Sanders." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, night (owner): "Tania is my moms cousin im just blanking on her moms name" ... her mother is on "Lauries" side.
+   So Tania's mother is your grandmother Laurie's sister or half-sister: not Ilene (you said so), and not named among Barbara's three
+   surviving children in 2009, so either a daughter of Barbara's who died before 2009, or Bob Seconder's daughter by another marriage.
+   The placeholder moves from the Sanders side to Bob and Barbara's family, drawn dashed, until the name comes back. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  const F = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-owner-1126f", short: "Your account: Tania's mother is on your grandmother Laurie's side (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.",
+    read: "Tania is your mother's cousin; you cannot recall her mother's name; her mother is on your grandmother Laurie's side." });
+  const fs = F("F-sanders");
+  if (fs) { fs.children = fs.children.filter((c) => c !== "P-tania-mom"); if (fs.uncertain) delete fs.uncertain["P-tania-mom"]; }
+  const fg = F("F-ggm");
+  if (fg) { if (!fg.children.includes("P-tania-mom")) fg.children.push("P-tania-mom"); fg.uncertain = Object.assign(fg.uncertain || {}, { "P-tania-mom": "Laurie's sister or half-sister? (Q38)" }); }
+  const tm = P("P-tania-mom");
+  if (tm) { tm.hint = "Grandma Laurie's sister?"; tm.summary = "Tania's mother: your grandmother Laurie's sister or half-sister, whose name you cannot recall yet (your account). Not Ilene. Barbara's 2009 obituary names three surviving children (Laurie, Ilene, Joe), so she is either Barbara's daughter who died before 2009, or Bob Seconder's daughter by another marriage (Q38)."; }
+  const ta = P("P-tania");
+  if (ta) { ta.summary = "Your mother's cousin (your account): her mother is your grandmother Laurie's sister or half-sister, not Ilene, whose name has not come back to you yet (Q38)."; if (ta.names[0] && !ta.names[0].src.includes("S-owner-1126f")) ta.names[0].src.push("S-owner-1126f"); }
+  const q38 = L.questions.find((q) => q.id === "Q38");
+  if (q38) { q38.q = "Tania's mother: your grandmother Laurie's sister or half-sister (not Ilene). Her first name, and whether she is Barbara's daughter (then she died before 2009, as Barbara's obituary names only Laurie, Ilene and Joe) or Bob Seconder's by another marriage. And who is David Holgate?"; q38.sources = "you, your mother or grandmother Laurie; then Bob Seconder's 2003 obituary and the Waterford Seconder obituaries (Gemini KIN-GEM-52)"; q38.task = "KIN-GEM-52"; }
+  L.log.push({ id: "L27", date: "2026-11-26", by: "Claude", q: "Q38", where: "the open web (obituary search: Seconder, Waterford and Pontiac, Michigan)", terms: "Seconder obituary; Robert Seconder 2003; Wilbur Seconder 2012; Tania Seconder", result: "candidate", note: "No obituary found for Robert (Bob) Seconder (2003) or Wilbur Seconder (2012). Leads not yet read (the pages are outside this session's network): Tamora \"Tammy\" J. Seconder of Waterford (8 Sep 1957 to 2 Apr 2012; The Oakland Press via Legacy.com, and Modetz Funeral Homes) and Jack L. Seconder Sr. of Waterford (28 Mar 1933 to 15 Aug 2024; Simpson-Modetz). Whether either is in Laurie's family is not known: given to Gemini (KIN-GEM-52)." });
+})(window.KIN_LINEAGE);
