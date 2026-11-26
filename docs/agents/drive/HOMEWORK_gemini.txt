@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-26 19:39 UTC. 54 to do across 21 pillars.
+Updated 2026-11-26 19:57 UTC. 54 to do across 21 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -58,7 +58,7 @@ IN THIS ORDER:
 40. [Athenaeum · Idea Vault] ATH-GEM-18 · History: United States immigration law, 1882-1965 (25 entries) · due 2026-12-14
 41. [Kin] KIN-GEM-50 · Kin: Joseph Pavia's crossing from Malta and his naturalization · due 2026-12-14
 42. [Kin] KIN-GEM-51 · Kin: Charles A. Sanders's brothers and sisters (the Sanders link Joseph calls hard to crack) · due 2026-12-14
-43. [Kin] KIN-GEM-52 · Kin: Tania's mother, Joseph's grandmother Laurie's sister (Seconder side), and the Holgate line · due 2026-12-14
+43. [Kin] KIN-GEM-52 · Kin: Joann (Joanne), Tania and Michelle's mother: Seconder or Holgate? and the Holgate line · due 2026-12-14
 44. [Bossa Piano Studio] PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931) · due 2026-12-15
 45. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
 46. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
@@ -2152,7 +2152,7 @@ IN THIS ORDER:
 - a match accepted on the name alone, without age and birthplace
 
 ==================== 43. KIN ====================
-## 43. KIN-GEM-52 · Kin: Tania's mother, Joseph's grandmother Laurie's sister (Seconder side), and the Holgate line
+## 43. KIN-GEM-52 · Kin: Joann (Joanne), Tania and Michelle's mother: Seconder or Holgate? and the Holgate line
 
 **Due:** 2026-12-14 · **State:** now
 
@@ -2164,9 +2164,9 @@ IN THIS ORDER:
 
 **Do this:**
 1. Read Barbara J. Feole's full 2009 obituary (GenealogyBuff Oakland no. 32, Dryer Funeral Home): any daughter who 'preceded her in death', and her 8 grandchildren if named.
-2. Find Robert H. (Bob) Seconder's 2003 obituary or death notice (Waterford; Crescent Hills Cemetery): every child and grandchild named, especially a daughter besides Laurie and a granddaughter Tania/Tanya.
+2. Find Robert H. (Bob) Seconder's 2003 obituary or death notice (Waterford; Crescent Hills Cemetery): every child named, especially a daughter Joann/Joanne, and granddaughters Tania/Tanya and Michelle.
 3. Read Tamora 'Tammy' J. Seconder's 2012 obituary and Jack L. Seconder Sr.'s 2024 obituary: their parents, children (any Tania/Tanya), brothers and sisters (any Laurie, Ilene, Joe). Say plainly whether either belongs to Laurie's family.
-4. Betty Ann (Termens) Holgate's and Thomas Holgate's obituaries: their children (is there a David Holgate?).
+4. Betty Ann (Termens) Holgate's and Thomas Holgate's obituaries: their children (a Joann/Joanne? a David/Dave?) and grandchildren (Tania, Michelle).
 5. Living people: name and the record only, no dates of birth, no towns, no addresses. Log every empty search.
 
 **Make:** `kin_gemini_holgate-tania_{YYYYMMDD-HHMM}.json`

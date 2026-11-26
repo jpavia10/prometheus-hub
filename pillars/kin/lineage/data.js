@@ -1298,3 +1298,29 @@ window.KIN_LINEAGE.questions.push(
   const il = P("P-ilene"); if (il) il.summary = il.summary.replace(" her own children, Barbara's other grandchildren, are not named yet.", " her daughter is Stacy (your account); any other children are not named yet.");
   L.log.push({ id: "L30", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message; the 2006 Christmas photograph's tags", terms: "Stacy Kay, Jen Jen", result: "found", note: "Stacy is Ilene's daughter; \"Jen Jen\" is your mother's sister Jennifer. Both were tagged at the 2006 family Christmas." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, night (owner): "Its joann I just remembered and I dont think Joanne is Nana Feoles kid." Tania and Michelle's mother
+   is Joann (also written Joanne), on your grandmother Laurie's side but, you think, not Barbara's daughter (Barbara's 2009 obituary
+   names only Laurie, Ilene and Joe, which agrees). She is drawn, as a question, under Laurie's father Bob Seconder (a half-sister of
+   Laurie from another marriage would still be "Laurie's side"); the other possibility is a Holgate, Barbara's niece (Q38). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  const F = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-owner-1126i", short: "Your account: Tania and Michelle's mother is Joann (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.", read: "Tania and Michelle's mother is Joann (Joanne); you do not think she is Nana Feole's (Barbara's) child." });
+  const OW = ["S-owner-1126i"];
+  const jo = P("P-tania-mom");
+  if (jo) {
+    jo.status = "family"; delete jo.placeholder; delete jo.hint;
+    jo.names = [{ given: "Joann", surname: "", type: "as-given", src: OW, note: "also written Joanne; her surname is not known" }];
+    jo.summary = "Joann (Joanne), Tania and Michelle's mother (your account). On your grandmother Laurie's side, but you do not think she is Nana Feole's (Barbara's) daughter, and Barbara's 2009 obituary names only Laurie, Ilene and Joe. Drawn under Laurie's father Bob Seconder as a question: Bob's daughter from another marriage (Laurie's half-sister), or a Holgate, Barbara's niece (Q38).";
+  }
+  const fg = F("F-ggm");
+  if (fg) { fg.children = fg.children.filter((c) => c !== "P-tania-mom"); if (fg.uncertain) delete fg.uncertain["P-tania-mom"]; }
+  L.families.push({ id: "F-bob-joann", partners: ["P-bob"], children: ["P-tania-mom"], uncertain: { "P-tania-mom": "Bob Seconder's daughter, or a Holgate? (Q38)" } });
+  const ta = P("P-tania"); if (ta) ta.summary = "Your mother's cousin (your account): her mother is Joann (Joanne), on your grandmother Laurie's side (Q38). Michelle is her sister.";
+  const mi = P("P-michelle"); if (mi) mi.summary = "Tania's sister, so your mother's cousin too (your account). Their mother is Joann (Joanne), on your grandmother Laurie's side (Q38).";
+  const q38 = L.questions.find((q) => q.id === "Q38");
+  if (q38) q38.q = "Joann (Joanne), Tania and Michelle's mother: how is she on your grandmother Laurie's side? Bob Seconder's daughter from another marriage (Laurie's half-sister), or a Holgate (a daughter of Betty (Termens) Holgate, Barbara's sister, so Dave Holgate's sister)? Her surname would settle it. And who are Dave Holgate and Rachel Denys Holgate to you?";
+  L.log.push({ id: "L31", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message; the open web", terms: "Joann/Joanne Holgate, Joann/Joanne Seconder, Michigan", result: "found", note: "Tania and Michelle's mother is Joann (Joanne); you do not think she is Barbara's daughter. Moved from Bob and Barbara's family to Bob Seconder alone, as a question (his daughter, or a Holgate). No Michigan Joann Holgate or Joann Seconder found on the open web." });
+})(window.KIN_LINEAGE);

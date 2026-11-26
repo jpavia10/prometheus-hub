@@ -4946,9 +4946,9 @@
      "state": "now",
      "added": "2026-11-26",
      "id": "KIN-GEM-52",
-     "title": "Kin: Tania's mother, Joseph's grandmother Laurie's sister (Seconder side), and the Holgate line",
+     "title": "Kin: Joann (Joanne), Tania and Michelle's mother: Seconder or Holgate? and the Holgate line",
      "due": "2026-12-14",
-     "why": "Joseph, 26 Nov: his mother's cousin Tania's mother is on his grandmother Laurie (Seconder) Jordan's side; he cannot recall her name. She is not Ilene Kennedy, and Barbara Feole's 2009 obituary names only three surviving children (Laurie, Ilene, Joseph), so she is Barbara's daughter who died before 2009 or Bob (Robert H.) Seconder's daughter by another marriage. Claude's open-web search (L27) found two Waterford Seconder obituaries it could not open: Tamora 'Tammy' J. Seconder (1957-2012, The Oakland Press / Modetz) and Jack L. Seconder Sr. (1933-2024, Simpson-Modetz). He also asked about a David Holgate (Betty (Termens) Holgate, Barbara's sister, married Thomas Holgate).",
+     "why": "Joseph, 26 Nov: his mother's cousin Tania's mother is on his grandmother Laurie (Seconder) Jordan's side; her name is Joann (Joanne), and he does not think she is Barbara Feole's daughter. She is not Ilene Kennedy, and Barbara Feole's 2009 obituary names only three surviving children (Laurie, Ilene, Joseph), so she is Barbara's daughter who died before 2009 or Bob (Robert H.) Seconder's daughter by another marriage. Claude's open-web search (L27) found two Waterford Seconder obituaries it could not open: Tamora 'Tammy' J. Seconder (1957-2012, The Oakland Press / Modetz) and Jack L. Seconder Sr. (1933-2024, Simpson-Modetz). He also asked about a David Holgate (Betty (Termens) Holgate, Barbara's sister, married Thomas Holgate).",
      "unlocks": "Tania's mother named and placed; Bob Seconder's family (H9) tested; Betty Holgate's family in the tree.",
      "inputs": [
       "pillars/kin/lineage/data.js (P-tania, P-tania-mom, P-gp, P-bob, P-ggm, P-betty; Q38, H9; log L27)",
@@ -4956,9 +4956,9 @@
      ],
      "steps": [
       "Read Barbara J. Feole's full 2009 obituary (GenealogyBuff Oakland no. 32, Dryer Funeral Home): any daughter who 'preceded her in death', and her 8 grandchildren if named.",
-      "Find Robert H. (Bob) Seconder's 2003 obituary or death notice (Waterford; Crescent Hills Cemetery): every child and grandchild named, especially a daughter besides Laurie and a granddaughter Tania/Tanya.",
+      "Find Robert H. (Bob) Seconder's 2003 obituary or death notice (Waterford; Crescent Hills Cemetery): every child named, especially a daughter Joann/Joanne, and granddaughters Tania/Tanya and Michelle.",
       "Read Tamora 'Tammy' J. Seconder's 2012 obituary and Jack L. Seconder Sr.'s 2024 obituary: their parents, children (any Tania/Tanya), brothers and sisters (any Laurie, Ilene, Joe). Say plainly whether either belongs to Laurie's family.",
-      "Betty Ann (Termens) Holgate's and Thomas Holgate's obituaries: their children (is there a David Holgate?).",
+      "Betty Ann (Termens) Holgate's and Thomas Holgate's obituaries: their children (a Joann/Joanne? a David/Dave?) and grandchildren (Tania, Michelle).",
       "Living people: name and the record only, no dates of birth, no towns, no addresses. Log every empty search."
      ],
      "deliver": {

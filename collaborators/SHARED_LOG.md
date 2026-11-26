@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d108, Joann (Tania and Michelle's mother)
+- Owner: Tania and Michelle's mother is Joann (Joanne); he does not think she is Nana Feole's (Barbara's) child, which agrees with Barbara's 2009 obituary (three children). The placeholder is now Joann, moved from F-ggm to F-bob-joann (Bob Seconder alone), dashed "Bob Seconder's daughter, or a Holgate? (Q38)". Open-web search for a Michigan Joann Holgate or Seconder found nothing (L31). KIN-GEM-52 updated to look for her in Bob Seconder's and the Holgates' obituaries.
+
 ### [2026-11-26] Claude: Kin d107, Stacy (Ilene's daughter), "Jen Jen"; siblings placed before cousins
 - Owner: Stacy (tagged "Stacy Kay" in the 2006 Christmas photograph) is Ilene's daughter; "Jen Jen" is his mother's sister Jennifer. Added P-stacy under F-ilene; "Jen Jen" as Jennifer's as-used name.
 - lineage.js: people are placed in rank order, re-ranked after each placement: spouses of placed people, then brothers and sisters of placed people (half ones for a child with one known parent), then children and parents; one helper (placedSibs) serves both the order and the placement. The parents' row now reads Jennifer, Jim, Mark, Tim, Michael, Tania, Michelle, Stacy at phone and desktop width; no overlaps, no page errors.

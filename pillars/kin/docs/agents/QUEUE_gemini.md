@@ -2,7 +2,7 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-26 19:39 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 19:57 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -434,11 +434,11 @@ Updated 2026-11-26 19:39 UTC · 9 open · Rules for every pillar: https://github
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a match accepted on the name alone, without age and birthplace
 
-## 9. KIN-GEM-52 · Kin: Tania's mother, Joseph's grandmother Laurie's sister (Seconder side), and the Holgate line
+## 9. KIN-GEM-52 · Kin: Joann (Joanne), Tania and Michelle's mother: Seconder or Holgate? and the Holgate line
 
 **Due:** 2026-12-14 · **State:** now
 
-**Why:** Joseph, 26 Nov: his mother's cousin Tania's mother is on his grandmother Laurie (Seconder) Jordan's side; he cannot recall her name. She is not Ilene Kennedy, and Barbara Feole's 2009 obituary names only three surviving children (Laurie, Ilene, Joseph), so she is Barbara's daughter who died before 2009 or Bob (Robert H.) Seconder's daughter by another marriage. Claude's open-web search (L27) found two Waterford Seconder obituaries it could not open: Tamora 'Tammy' J. Seconder (1957-2012, The Oakland Press / Modetz) and Jack L. Seconder Sr. (1933-2024, Simpson-Modetz). He also asked about a David Holgate (Betty (Termens) Holgate, Barbara's sister, married Thomas Holgate).
+**Why:** Joseph, 26 Nov: his mother's cousin Tania's mother is on his grandmother Laurie (Seconder) Jordan's side; her name is Joann (Joanne), and he does not think she is Barbara Feole's daughter. She is not Ilene Kennedy, and Barbara Feole's 2009 obituary names only three surviving children (Laurie, Ilene, Joseph), so she is Barbara's daughter who died before 2009 or Bob (Robert H.) Seconder's daughter by another marriage. Claude's open-web search (L27) found two Waterford Seconder obituaries it could not open: Tamora 'Tammy' J. Seconder (1957-2012, The Oakland Press / Modetz) and Jack L. Seconder Sr. (1933-2024, Simpson-Modetz). He also asked about a David Holgate (Betty (Termens) Holgate, Barbara's sister, married Thomas Holgate).
 
 **What it unlocks:** Tania's mother named and placed; Bob Seconder's family (H9) tested; Betty Holgate's family in the tree.
 
@@ -448,9 +448,9 @@ Updated 2026-11-26 19:39 UTC · 9 open · Rules for every pillar: https://github
 
 **Do this:**
 1. Read Barbara J. Feole's full 2009 obituary (GenealogyBuff Oakland no. 32, Dryer Funeral Home): any daughter who 'preceded her in death', and her 8 grandchildren if named.
-2. Find Robert H. (Bob) Seconder's 2003 obituary or death notice (Waterford; Crescent Hills Cemetery): every child and grandchild named, especially a daughter besides Laurie and a granddaughter Tania/Tanya.
+2. Find Robert H. (Bob) Seconder's 2003 obituary or death notice (Waterford; Crescent Hills Cemetery): every child named, especially a daughter Joann/Joanne, and granddaughters Tania/Tanya and Michelle.
 3. Read Tamora 'Tammy' J. Seconder's 2012 obituary and Jack L. Seconder Sr.'s 2024 obituary: their parents, children (any Tania/Tanya), brothers and sisters (any Laurie, Ilene, Joe). Say plainly whether either belongs to Laurie's family.
-4. Betty Ann (Termens) Holgate's and Thomas Holgate's obituaries: their children (is there a David Holgate?).
+4. Betty Ann (Termens) Holgate's and Thomas Holgate's obituaries: their children (a Joann/Joanne? a David/Dave?) and grandchildren (Tania, Michelle).
 5. Living people: name and the record only, no dates of birth, no towns, no addresses. Log every empty search.
 
 **Make:** `kin_gemini_holgate-tania_{YYYYMMDD-HHMM}.json`

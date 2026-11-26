@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-26 19:39 UTC · 0 open in this pillar.
+Updated 2026-11-26 19:57 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Kin right now.
 
 ## Gemini
 
-Updated 2026-11-26 19:39 UTC · 9 open in this pillar.
+Updated 2026-11-26 19:57 UTC · 9 open in this pillar.
 
 
 - KIN-GEM-45 · Kin album: the Interwoven Family blog's own caption for each of the album's 145 pictures · due 2026-12-05
@@ -34,12 +34,12 @@ Updated 2026-11-26 19:39 UTC · 9 open in this pillar.
     make: kin_gemini_pavia-crossing_{YYYYMMDD-HHMM}.json · how many: 10 · done when: A crossing found and argued, or every search logged.
 - KIN-GEM-51 · Kin: Charles A. Sanders's brothers and sisters (the Sanders link Joseph calls hard to crack) · due 2026-12-14
     make: kin_gemini_sanders-siblings_{YYYYMMDD-HHMM}.json · how many: 10 · done when: His parents' family is found and argued from records, or every search is logged.
-- KIN-GEM-52 · Kin: Tania's mother, Joseph's grandmother Laurie's sister (Seconder side), and the Holgate line · due 2026-12-14
+- KIN-GEM-52 · Kin: Joann (Joanne), Tania and Michelle's mother: Seconder or Holgate? and the Holgate line · due 2026-12-14
     make: kin_gemini_holgate-tania_{YYYYMMDD-HHMM}.json · how many: 10 · done when: Tania's mother named and placed from a record (or ruled to be on another line), Betty Holgate's children listed, or every search logged.
 
 ## Muse
 
-Updated 2026-11-26 19:39 UTC · 3 open in this pillar.
+Updated 2026-11-26 19:57 UTC · 3 open in this pillar.
 
 
 - KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
@@ -51,21 +51,21 @@ Updated 2026-11-26 19:39 UTC · 3 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-26 19:39 UTC · 0 open in this pillar.
+Updated 2026-11-26 19:57 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Kin right now.
 
 ## Argon
 
-Updated 2026-11-26 19:39 UTC · 0 open in this pillar.
+Updated 2026-11-26 19:57 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Kin right now.
 
 ## Hydrogen
 
-Updated 2026-11-26 19:39 UTC · 0 open in this pillar.
+Updated 2026-11-26 19:57 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Kin right now.
