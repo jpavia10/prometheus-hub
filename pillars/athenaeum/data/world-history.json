@@ -1,7 +1,7 @@
 {
  "schema": "prometheus.history/1",
  "about": "The one world-history dataset in Prometheus (owner, 2026-11-24: Athenaeum's world history, refined and expanded, used by every pillar; denser for recent centuries). Every entry: a date and its precision, a title and one-paragraph text, the regions and themes it touches, a place, its sources with the page's own words, who found it and whether it is checked. Edit this file, then run tools/history/build.py: it checks every entry and writes world-history.js (any page) and cause-event-consequence.json (Athenaeum's chronicle).",
- "asOf": "2026-11-25",
+ "asOf": "2026-11-26",
  "chronicle_pack": {
   "pack": "ATHENAEUM-GROK-cause-event-consequence",
   "asOf": "2026-11-10",
@@ -10952,6 +10952,70 @@
     "P-jessec",
     "P-chester"
    ]
+  },
+  {
+   "id": "his-michigan-1921-ww1-bonus",
+   "date": "1921",
+   "end": "1932",
+   "precision": "year",
+   "title": "Michigan pays its World War veterans a bonus",
+   "text": "In 1921 the Michigan legislature voted its World War I veterans and nurses $15 for every month of service, paid for with a $30 million loan; veterans applied with their service details, the War Department sent the state a summary card for each, and the last payments were made in 1932.",
+   "regions": [
+    "michigan",
+    "united-states"
+   ],
+   "themes": [
+    "war",
+    "economy"
+   ],
+   "place": {
+    "place": "Lansing, Michigan",
+    "lat": 42.7335,
+    "lon": -84.5555
+   },
+   "sources": [
+    {
+     "cite": "Archives of Michigan, Michiganology, \"Over There: A Family History Mystery Solution\"",
+     "url": "https://michiganology.org/stories/over-there-a-family-history-mystery-solution",
+     "quote": "In 1921, the Michigan legislature passed a bill that provided for a payment of $15.00 per month of service to the state’s World War I veterans and nurses. The state took out a $30 million loan to finance the bonus payments, and all payments were made by the end of 1932."
+    }
+   ],
+   "by": "Claude (26 Nov 2026)",
+   "check": "sourced"
+  },
+  {
+   "id": "his-tennessee-1865-cahaba-flood",
+   "date": "1865-03",
+   "end": null,
+   "precision": "month",
+   "title": "Flood empties Cahaba prison toward Vicksburg",
+   "text": "In March 1865 the Alabama River rose over the Confederate prison stockade at Cahaba (Castle Morgan), near Selma, where Union men taken at Athens and the Sulphur Branch trestle the September before were held, East Tennessee cavalrymen among them. The prisoners were paroled and sent to the camp near Vicksburg, and in April many of them boarded the Sultana.",
+   "regions": [
+    "tennessee",
+    "united-states"
+   ],
+   "themes": [
+    "war"
+   ],
+   "place": {
+    "place": "Cahaba, Alabama",
+    "lat": 32.32,
+    "lon": -87.1
+   },
+   "sources": [
+    {
+     "cite": "Chester D. Berry, Loss of the Sultana and Reminiscences of Survivors (1892), p. 39 (Otto Bardon, 102nd Ohio)",
+     "url": "https://archive.org/details/lossofsultanarem00berr",
+     "quote": "We were sent to Cahaba, Ala., where we were held as prisoners until the latter part of March, 1865, when we were taken out on account of the high water, the Alabama river having risen so high that we were waist deep in water for five days. The rebels sent us to Vicksburg, where we remained in parole camp."
+    },
+    {
+     "cite": "Berry, pp. 164-165 (Robert N. Hamilton, Company F, 3rd Tennessee Cavalry)",
+     "url": "https://archive.org/details/lossofsultanarem00berr",
+     "quote": "I was a private in Company F of the 3rd Regiment of Tennessee Cavalry, and was captured at Athens, Ala., on the the 24th of September, 1864, and confined in Cahaba Prison, Ala., and released from there about the 12th of March, 1865."
+    }
+   ],
+   "by": "Claude (26 Nov 2026)",
+   "check": "sourced"
   }
  ]
 }

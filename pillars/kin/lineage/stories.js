@@ -10,15 +10,15 @@
   const W = (t) => "https://en.wikipedia.org/wiki/" + t;
   L.stories = [
     {
-      id: "termenas", title: "Joseph Termenas: from Samogitia to the Ford furnaces", side: "mother", span: "1893 to 1935",
+      id: "termenas", regions: ["lithuania", "russian-empire", "michigan", "detroit", "massachusetts", "new-york", "france"], title: "Joseph Termenas: from Samogitia to the Ford furnaces", side: "mother", span: "1893 to 1935",
       lead: "Your mother's mother's mother, Barbara, was the daughter of a Lithuanian who crossed the Atlantic twice in five years: once to find work, once in the American army. His papers survive better than almost anyone's in the tree.",
       cover: "draft-1917", hero: "P-joseph",
       chapters: [
-        { y: [1893, 1911], when: "1893", title: "Born under the Tsar",
+        { y: [1893, 1911], when: "1893", title: "Born under the Tsar", regions: ["lithuania", "russian-empire"],
           text: "Juozapas, later Joseph, Termenas was born on 16 May 1893 in Lithuania, then part of the Russian Empire, most likely at or near Telšiai in Samogitia. His parents appear only in an index to his 1922 marriage, as Rozys Termens and Kostantina Giadraet: leads to read on the record itself, not yet facts (C15). He grew up in the last years of the Tsar's ban on Lithuanian books in the Latin alphabet, lifted only in 1904, when Samogitia was the heart of the book-smuggling that kept the language in print, and when young Lithuanian men were leaving for America by the tens of thousands.",
           people: ["P-joseph", "P-rozys", "P-kostantina"], src: [], q: ["Q11"],
           h: [["Telšiai", W("Tel%C5%A1iai"), "the town he most likely came from"], ["Samogitia", W("Samogitia"), "his home region in north-western Lithuania"], ["Lithuanian book smugglers", W("Book_smuggler"), "how the banned books were carried in, 1864 to 1904"], ["Lithuanian National Revival", W("Lithuanian_independence_movement"), "the movement around him as he grew up"]] },
-        { y: [1912, 1912], when: "August 1912", title: "Hamburg to New York",
+        { y: [1912, 1912], when: "August 1912", title: "Hamburg to New York", regions: ["lithuania", "russian-empire", "germany", "new-york"],
           text: "At nineteen he left from Hamburg, about 13 August 1912, and landed at New York on 23 August 1912, by his naturalization petition. Which ship is not settled: the petition seems to read \"Columbia\", and a manifest of the President Lincoln is a candidate still being checked. Hamburg was the great emigrant port of the time, and its Hamburg America Line carried millions out of eastern Europe.",
           people: ["P-joseph"], src: ["S-pet", "S-manifest-pl"], q: ["Q1"],
           h: [["Hamburg America Line", W("Hamburg_America_Line"), "the Hamburg emigrant line"], ["Ellis Island", W("Ellis_Island"), "where steerage passengers landed in 1912"], ["Lithuanian Americans", W("Lithuanian_Americans"), "the community he joined"]] },
@@ -26,11 +26,11 @@
           text: "By 1916 he was in Detroit, where on 21 October he declared his intention to become a citizen. On 5 June 1917, the first draft registration day after America entered the war, he registered on Cardoni Avenue: a motion-picture operator, out of work.",
           people: ["P-joseph"], src: ["S-draft"], q: ["Q3", "Q15"],
           h: [["Ford Motor Company", W("Ford_Motor_Company"), "Detroit's great employer then and for the rest of his life"]] },
-        { y: [1917, 1917], when: "Autumn 1917", title: "Into the Army, and back across the sea",
+        { y: [1917, 1917], when: "Autumn 1917", title: "Into the Army, and back across the sea", regions: ["massachusetts", "new-york", "france"],
           text: "He enlisted at Columbus Barracks, Ohio, on 20 September 1917 and went to Camp Devens, Massachusetts, to the 25th Engineers: Company E at first, then, from 17 October, Company D, which became Company A of the 29th Engineers on 20 October. On 31 October his company sailed from Hoboken on the USS Agamemnon, the former German liner Kaiser Wilhelm II, seized in New York that April. Five years after he left Europe as an emigrant, he crossed back on a captured German ship in an American uniform. They landed at Brest on 12 November 1917.",
           people: ["P-joseph"], src: ["S-enlist", "S-muster", "S-mi-ww1"], album: ["M-convoy-1917"], q: ["Q18"],
           h: [["SS Kaiser Wilhelm II, later USS Agamemnon", W("SS_Kaiser_Wilhelm_II"), "the troopship"], ["Fort Devens (Camp Devens)", W("Fort_Devens"), "where his company formed"], ["American Expeditionary Forces", W("American_Expeditionary_Forces"), "the army he served in"]] },
-        { y: [1917, 1919], when: "1917 to 1919", title: "Maps for the AEF: Langres and Chaumont",
+        { y: [1917, 1919], when: "1917 to 1919", title: "Maps for the AEF: Langres and Chaumont", regions: ["france"],
           text: "From 3 December 1917 he served at Langres with the company that built and ran the American Expeditionary Forces' base map-printing plant; an electrician by trade, in a company whose first job was the plant's power and wiring. He was made private first class on 1 March 1919. From 27 April 1919 he was on detached service at General Headquarters at Chaumont, General Pershing's headquarters.",
           people: ["P-joseph"], src: ["S-muster", "S-mi-ww1"], q: ["Q18"],
           h: [["Langres", W("Langres"), "the hilltop town of the map plant"], ["John J. Pershing", W("John_J._Pershing"), "who chose Chaumont for the AEF's General Headquarters"], ["Services of Supply, AEF", W("Services_of_Supply,_American_Expeditionary_Forces"), "the supply and engineering side of the army"]] },
@@ -60,15 +60,15 @@
       ]
     },
     {
-      id: "pavia", title: "The Pavias: from Malta to the Rouge", side: "father", span: "1897 to 2018",
+      id: "pavia", regions: ["malta", "michigan", "detroit"], title: "The Pavias: from Malta to the Rouge", side: "father", span: "1897 to 2018",
       lead: "Your father's father's parents were both born in Malta, an island of the British Empire, and married in Detroit, where thousands of Maltese came for the car plants after the First World War.",
       cover: "census-1950-pavia", hero: "P-josephp",
       chapters: [
-        { y: [1870, 1925], when: "1897 to 1910", title: "Two Maltese families",
+        { y: [1870, 1925], when: "1897 to 1910", title: "Two Maltese families", regions: ["malta"],
           text: "Joseph Paul Pavia was born in Malta on 12 February 1897 by his own 1942 draft card (the Michigan death index, a later source, says 2 December 1897). His 1926 marriage record names his parents, Paul Pavia and Caroline. Lucretia Calleja, later Grace, was born in Malta about 1908 to 1910 (8 March 1910 on her naturalization card), the daughter of Costantino Calleja and Carmela Cassar (their dates, 1871 to 1952 and 1872 to 1933, come from other members' trees). Malta was then a British Crown colony.",
           people: ["P-josephp", "P-paulp", "P-carolinep", "P-grace", "P-costantino", "P-carmela"], src: [], q: ["Q33", "Q26"],
           h: [["Crown Colony of Malta", W("Crown_Colony_of_Malta"), "Malta under British rule, 1813 to 1964"], ["Emigration from Malta", W("Emigration_from_Malta"), "why so many Maltese left"]] },
-        { y: [1919, 1926], when: "1920s", title: "To Detroit",
+        { y: [1919, 1926], when: "1920s", title: "To Detroit", regions: ["malta", "detroit"],
           text: "After the First World War, Detroit became the main destination for Maltese emigrants, drawn by the auto plants; it still has the largest Maltese community in the United States. Joseph was there by 1926. When and on which ship he and Lucretia came is still to find: their naturalization papers will say (Gemini is searching, KIN-GEM-50).",
           people: ["P-josephp", "P-grace"], src: [], q: ["Q33"],
           h: [["Maltese Americans", W("Maltese_Americans"), "Detroit's Maltese community"], ["Ethnic groups in Metro Detroit", W("Ethnic_groups_in_Metro_Detroit"), "the city they joined"]] },
@@ -94,7 +94,7 @@
       ]
     },
     {
-      id: "kirkland", title: "The Kirklands and the Mosses: from the Tennessee hills to Detroit", side: "father", span: "about 1780 to 2022",
+      id: "kirkland", regions: ["tennessee", "cherokee-nation", "north-carolina", "michigan", "detroit"], title: "The Kirklands and the Mosses: from the Tennessee hills to Detroit", side: "father", span: "about 1780 to 2022",
       lead: "Your grandmother Glenda was born in the hills of east Tennessee, where her father's people had farmed since the 1820s. Her parents brought the family north to Michigan after the war, like hundreds of thousands of Appalachian families.",
       cover: "fam-chester-ada-1950s", hero: "P-buster",
       chapters: [
@@ -102,14 +102,14 @@
           text: "The earliest Kirklands here come from compiled trees, so they are possible, not proven. Nathan Kirkland, born in North Carolina about 1751 to 1765, was in Rutherford County, North Carolina in 1810 and in Monroe County, Tennessee by 1824. His son James Altonia Kirkland (1781 to 1869) came from Macon County, North Carolina about 1830; he lies at Butler Cemetery in Polk County under a modern marker. They settled on land the Cherokee had given up only a few years before, and in 1838 the Cherokee who remained in these valleys were driven west on the Trail of Tears. The maiden name of James's wife, Susanna Boston (1786 to 1881), is supported by two Eastern Cherokee Applications (586 and 8597), the claims filed from 1906 for the Guion Miller Roll, and by William H. Linn's 1908 testimony.",
           people: ["P-nathan", "P-lilly", "P-jamesak", "P-susanna"], src: ["S-stone-jamesak", "S-butler-stones"], q: [],
           h: [["Monroe County, Tennessee", W("Monroe_County,_Tennessee"), "where the family settled"], ["Trail of Tears", W("Trail_of_Tears"), "the removal of 1838"], ["Guion Miller Roll", W("Guion_Miller_Roll"), "the Eastern Cherokee claims, 1906 to 1911"]] },
-        { y: [1823, 1936], when: "1823 to 1936", title: "Monroe County generations",
+        { y: [1823, 1936], when: "1823 to 1936", title: "Monroe County generations", regions: ["tennessee", "cherokee-nation"],
           text: "Jesse Alden Kirkland (1823 to 1895) married Mary Elizabeth \"Polly\" Bivins (1829 to 1920) on 30 January 1850; both lie in Monroe County. Their son Anderson Carson Kirkland (born 1855 or 1858: C11) married Emaline Giles in 1876 and was buried at Citico Baptist Church, Vonore, in 1936. Emaline's father, James Madison Giles (1827 to 1903), was a lieutenant on both sides of the Civil War: the 3rd Tennessee Infantry of the Confederacy, then the 3rd Tennessee Mounted Infantry of the Union. All of this is from compiled trees.",
           people: ["P-jessea", "P-polly", "P-anderson", "P-emaline", "P-jmgiles", "P-hettie"], src: [], q: [], h: [] },
-        { y: [1880, 1913], when: "1880 to 1913", title: "Jesse Columbus and Julia",
+        { y: [1880, 1913], when: "1880 to 1913", title: "Jesse Columbus and Julia", regions: ["tennessee"],
           text: "Jesse Columbus Kirkland, born about 1880 in Monroe County, and Julia Ann Williams (about 1882 to 1967) were Buster's parents: Buster named them on his Social Security application. Buster Madison Kirkland was born in McMinn County on 9 May 1913. A 1950 photograph shows Jesse Columbus's sons, among them Buster's brothers Robert Adgar, Jesse Reed and Luther Alden.",
           people: ["P-jessec", "P-juliaw", "P-buster", "P-robertk", "P-reedk", "P-lutherk"], src: [], q: [],
           h: [["McMinn County, Tennessee", W("McMinn_County,_Tennessee"), "Buster's birthplace"]] },
-        { y: [1890, 1935], when: "1890 to 1935", title: "The Mosses of Delano",
+        { y: [1890, 1935], when: "1890 to 1935", title: "The Mosses of Delano", regions: ["tennessee"],
           text: "Chester Ray Moss was born in Delano, Polk County, on 3 July 1890 and married Ada Nellie Culberson, Peter Culberson's granddaughter (her family's story is its own). Their daughter Joy Chloey Moss was born in Delano on 9 February 1913; her sisters were Frittie and Haroldene.",
           people: ["P-chester", "P-ada", "P-joy", "P-frittie", "P-haroldene"], src: [], album: ["M-chester-ada-1950s", "M-patty-school"], q: [],
           h: [["Polk County, Tennessee", W("Polk_County,_Tennessee"), "Delano's county"]] },
@@ -124,7 +124,7 @@
       ]
     },
     {
-      id: "culberson", title: "Peter Culberson's war, and the family that kept the pictures", side: "father", span: "1833 to 2001",
+      id: "culberson", regions: ["tennessee"], title: "Peter Culberson's war, and the family that kept the pictures", side: "father", span: "1833 to 2001",
       lead: "Your 4× great-grandfather Peter Culberson rode for the Union, was taken prisoner, and came home. His great-grandchildren kept the family's photographs, and they fill most of the album.",
       cover: "fam-peter-family-postcard", hero: "P-peterc",
       chapters: [
@@ -133,13 +133,13 @@
           people: ["P-peterc", "P-selena"], src: [], q: [],
           h: [["3rd Tennessee Cavalry Regiment (Union)", W("3rd_Tennessee_Cavalry_Regiment_(Union)"), "his regiment"], ["McMinn County, Tennessee", W("McMinn_County,_Tennessee"), "his home county"]] },
         { y: [1864, 1864], when: "September 1864", title: "Captured",
-          text: "In late September 1864 Forrest's cavalry raided north Alabama to cut Sherman's supply line. A detachment of the regiment fought at Athens on 23 and 24 September, and on the 25th most of it was captured at the fort guarding the Sulphur Branch trestle. Peter's record has him captured with his company and held at Cahaba, the Confederate prison near Selma.",
-          people: ["P-peterc"], src: [], album: ["M-peter-pension-cards"], q: ["Q40"],
+          text: "In late September 1864 Forrest's cavalry raided north Alabama to cut Sherman's supply line. A detachment of the regiment fought at Athens on 23 and 24 September, and on the 25th most of it was captured at the fort guarding the Sulphur Branch trestle. Peter's record has him captured with his company and held at Cahaba, the Confederate prison near Selma. A man of his own company told it in 1892: \"I was a private in Company F of the 3rd Regiment of Tennessee Cavalry, and was captured at Athens, Ala., on the 24th of September, 1864, and confined in Cahaba Prison, Ala., and released from there about the 12th of March, 1865\" (Robert N. Hamilton, in Berry's book). That March the Alabama River flooded the stockade; an Ohio soldier taken at Athens the same day remembered the prisoners \"waist deep in water for five days\" before they were moved out toward Vicksburg (Otto Bardon).",
+          people: ["P-peterc"], src: ["S-berry-1892"], album: ["M-peter-pension-cards"], q: ["Q40"],
           h: [["Battle of Sulphur Creek Trestle", W("Battle_of_Sulphur_Creek_Trestle"), "where most of the regiment was taken"], ["Forrest's Cavalry Corps", W("Forrest's_Cavalry_Corps"), "the raiders"], ["Cahaba Prison", W("Cahaba_Prison"), "where he was held"]] },
         { y: [1865, 1865], when: "April 1865", title: "The Sultana",
-          text: "The Cahaba men were paroled in April 1865 and sent up the Mississippi. On 27 April the overloaded steamboat Sultana blew up above Memphis, the worst maritime disaster in American history; more than 260 men of the 3rd Tennessee Cavalry died. Whether Peter was aboard is not known. He came home: he was in McMinn County in 1870 and 1880.",
-          people: ["P-peterc"], src: [], q: ["Q40"],
-          h: [["Sultana (steamboat)", W("Sultana_(steamboat)"), "27 April 1865"]] },
+          text: "The Cahaba men were paroled in April 1865 and sent up the Mississippi. On 27 April the overloaded steamboat Sultana blew up above Memphis, the worst maritime disaster in American history; more than 260 men of the 3rd Tennessee Cavalry died. Peter is in none of the three lists in Chester Berry's Loss of the Sultana (1892): not on the official list of exchanged prisoners aboard, which names about 300 men of his regiment and some 30 of his own Company F, not among the men known to have been aboard but left off it, and not among the survivors living in 1892. So he was most likely not on the boat (many Cahaba men went north on other steamers); his service record will say where and when he was paroled. He came home: he was in McMinn County in 1870 and 1880.",
+          people: ["P-peterc"], src: ["S-berry-1892"], q: ["Q40"],
+          h: [["Sultana (steamboat)", W("Sultana_(steamboat)"), "27 April 1865"], ["Loss of the Sultana and Reminiscences of Survivors (1892)", "https://archive.org/details/lossofsultanarem00berr", "Chester Berry's book, with the lists, on the Internet Archive"]] },
         { y: [1865, 1914], when: "1865 to 1914", title: "Home to McMinn County",
           text: "About 1907 the family posed for a real-photo postcard, now in the Tennessee State Library (TeVA HAMI059), with Peter seated at right. His stone at Cochran Cemetery is cut \"Co. F 3 Tenn. Cav.\", and his widow Mary E. Culberson drew his pension.",
           people: ["P-peterc"], src: ["S-teva-hami059"], album: ["M-peter-family-postcard", "M-peter-headstone"], q: [], h: [] },
@@ -152,7 +152,7 @@
       ]
     },
     {
-      id: "seconder", title: "The Seconders: a Home Child's grandson?", side: "mother", span: "1892 to today",
+      id: "seconder", regions: ["michigan", "detroit", "canada", "ontario", "england"], title: "The Seconders: a Home Child's grandson?", side: "mother", span: "1892 to today",
       lead: "Your grandmother Laurie was born a Seconder. Where her father Bob came from is a hypothesis for now, but a striking one: a boy sent from England to Canada at twelve by Dr. Barnardo's homes.",
       cover: null, hero: "P-bob",
       chapters: [
@@ -172,7 +172,7 @@
       ]
     },
     {
-      id: "colonial", title: "Before the Revolution: the Virginia and Carolina roots", side: "father", span: "1628 to 1830",
+      id: "colonial", regions: ["virginia", "north-carolina", "american-colonies", "pennsylvania", "england"], title: "Before the Revolution: the Virginia and Carolina roots", side: "father", span: "1628 to 1830",
       lead: "Behind the Kirklands stand families that reach back to the first years of English Virginia. Almost all of it comes from compiled trees and lineage-society papers, so read every chapter as possible, not proven; the conflicts are marked where the records disagree.",
       cover: "will-richard-stone-1795", hero: "P-johnm-sr",
       chapters: [
@@ -180,7 +180,7 @@
           text: "Thomas Keeling came to Virginia on the Hopewell in 1628 and sat as burgess for Elizabeth City in 1632 to 1633; Anne Thorowgood came on the John and Dorothy in 1634. John Martin arrived on the Margaret about 1633 to 1634, was a churchwarden of Lynnhaven parish in 1645, burgess in 1651 to 1652 and a justice of Lower Norfolk County, and married the Keelings' daughter Anne. These are your 11× and 12× great-grandparents, if the compiled links hold.",
           people: ["P-tkeeling", "P-athorowgood", "P-johnm-sr", "P-akeeling"], src: [], q: [],
           h: [["House of Burgesses", W("House_of_Burgesses"), "Virginia's assembly, where both sat"], ["Lower Norfolk County, Virginia", W("Lower_Norfolk_County,_Virginia"), "their county, 1637 to 1691"], ["History of Virginia Beach", W("History_of_Virginia_Beach"), "Lynnhaven and the Thoroughgoods"]] },
-        { y: [1662, 1716], when: "1662 to 1716", title: "Bath, North Carolina",
+        { y: [1662, 1716], when: "1662 to 1716", title: "Bath, North Carolina", regions: ["north-carolina", "american-colonies"],
           text: "Their son Joel Martin moved south to Bath County, North Carolina. His will, dated 24 October 1715 and proved 3 July 1716, gives his son John land on Matchapungo Creek and his son William land in Newport Sound, and names four daughters, but no wife. He made it as the Tuscarora War, which began with attacks around Bath in 1711, came to an end. The older trees call his wife Elizabeth Ward or Alderson; Alderson is ruled out and Ward is unproven (C14).",
           people: ["P-joelm", "P-eward"], src: [], q: ["Q37"],
           h: [["Bath, North Carolina", W("Bath,_North_Carolina"), "the colony's first town"], ["Tuscarora War", W("Tuscarora_War"), "1711 to 1715"]] },

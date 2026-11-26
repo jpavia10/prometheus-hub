@@ -19,7 +19,7 @@
     for (const p of L.people) { const ys = (String(p.summary || "").match(/\b(1[5-9]\d\d|20[0-2]\d)\b/g) || []).map(Number); if (ys.length) for (const r of H.regionsOf([p.summary])) { mark(r, Math.min(...ys)); mark(r, Math.max(...ys)); } }
     const regs = H.regionsOf(Object.values(PLN).concat(L.people.map((p) => p.summary || ""))), own = (r) => regs.includes(r) && r !== "united-states" && r !== "american-colonies";
     const near = (x) => x.w < 2 || (x.e.regions || []).some((r) => { if (!own(r)) return false; const w = when[r], y = H.year(x.e.date); return !w || (y >= w[0] - 40 && y <= w[1] + 50); });
-    L.context = H.forRegions(regs, 1600, 2100).filter(near).map((x) => ({ date: String(x.e.date), text: x.text, title: x.e.title, w: x.w, id: x.e.id,
+    L.context = H.forRegions(regs, 1600, 2100).filter(near).map((x) => ({ date: String(x.e.date), text: x.text, title: x.e.title, w: x.w, id: x.e.id, regions: x.e.regions || [],
       url: ((x.e.sources || []).find((s) => s.url) || {}).url || "", unsourced: !/^(sourced|checked)/.test(x.e.check || "") }));
     L.contextRegions = regs; L.contextWhen = when;
   } else L.context = [];
@@ -586,11 +586,21 @@
     const card = (s) => `<button type="button" class="st-card" data-story="${s.id}">${s.cover ? `<img loading="lazy" decoding="async" src="${DOCS}t/${s.cover}.webp" alt="">` : `<span class="st-noimg" aria-hidden="true">${esc(s.title[0])}</span>`}<span class="st-cin"><span class="st-kick">${sideTxt(s)} · ${esc(s.span)}</span><b>${esc(s.title)}</b><span class="st-lead">${esc(s.lead)}</span><span class="st-meta">${s.chapters.length} chapters · ${nPeople(s)} people · ${nLinks(s)} history links</span></span></button>`;
     const list = () => { box.innerHTML = `<div class="st-list">${ST.map(card).join("")}</div>`; };
     /* the shared world history (Athenaeum's) for the chapter's years, nearest regions first, only for chapters of a lifetime or less */
-    const ctx = (c) => { const [a, b] = c.y; if (b - a > 60) return []; return (L.context || []).filter((x) => { const y = +String(x.date).slice(0, 4); return y >= a && y <= b && x.w >= 1; }).sort((p, q) => q.w - p.w || String(p.date).localeCompare(String(q.date))).slice(0, 3); };
+    /* a story names its own regions (stories.js): its chapters draw the events of those places first, then the country's, never another
+       line's (Joseph Termenas's Detroit years get Michigan's 1921 bonus, not Malta's dockyards) */
+    const WIDE = new Set(["united-states", "world", "europe", "american-colonies"]);
+    const ctx = (s, c, used) => { const [a, b] = c.y; if (b - a > 60) return []; const own = new Set(c.regions || s.regions || []), fam = new Set(L.contextRegions || []);
+      const mine = (x) => (x.regions || []).some((r) => own.has(r));
+      /* how much an event belongs to this story: its places in the story count for it, places of another family line against it */
+      const fit = (x) => (x.regions || []).reduce((n, r) => n + (own.has(r) ? 1 : !WIDE.has(r) && fam.has(r) ? -1.5 : 0), 0);
+      const out = (L.context || []).filter((x) => { const y = +String(x.date).slice(0, 4); return y >= a && y <= b && x.w >= 1 && !(used && used.has(x.id)) && (!own.size || mine(x) || x.w === 1); })
+        .sort((p, q) => (Math.min(fit(q), 1) - Math.min(fit(p), 1)) || q.w - p.w || String(p.date).localeCompare(String(q.date))).slice(0, 3);
+      if (used) for (const x of out) used.add(x.id);   /* one story never shows the same event twice */
+      return out.sort((p, q) => String(p.date).localeCompare(String(q.date))); };
     const chapter = (s, c, i) => {
       const recs = c.src.flatMap((sid) => (((M.SRC[sid] || {}).img) || []).slice(0, 2).map((img) => ({ img, sid, cap: (M.SRC[sid] || {}).short || "" })));
       const pics = (c.album || []).map((id) => ALB[id]).filter(Boolean).map((a) => ({ img: a.img, sid: a.src, cap: a.cap }));
-      const docs = recs.concat(pics), cx = ctx(c), qs = (c.q || []).filter((q) => Q[q]);
+      const docs = recs.concat(pics), cx = ctx(s, c, s._used), qs = (c.q || []).filter((q) => Q[q]);
       const short = (s2) => (s2.length > 64 ? s2.slice(0, 61).replace(/\s+\S*$/, "") + "…" : s2);
       return `<article class="st-ch" id="st-${s.id}-${i}"><p class="st-when">${esc(c.when)}</p><h3>${esc(c.title)}</h3><p class="st-text">${esc(c.text)}</p>
         ${c.people.length ? `<div class="st-ppl">${c.people.filter((id) => M.P[id]).map((id) => `<button type="button" class="st-p" data-go="${id}"><b>${esc(nm(M.P[id]))}</b><small>${esc(rel(id))}</small></button>`).join("")}</div>` : ""}
@@ -604,7 +614,7 @@
       box.innerHTML = `<div class="st-read"><button type="button" class="btn quiet small st-back">← All stories</button>
         <header class="st-head">${s.cover ? `<img src="${DOCS}${s.cover}.webp" alt="" decoding="async">` : ""}<div><p class="st-kick">${sideTxt(s)} · ${esc(s.span)}</p><p class="st-title">${esc(s.title)}</p><p class="st-lead">${esc(s.lead)}</p><p class="st-meta">${s.chapters.length} chapters · ${nPeople(s)} people · ${nLinks(s)} history links</p></div></header>
         <nav class="st-rail" aria-label="Chapters">${s.chapters.map((c, i) => `<button type="button" data-ch="${i}"><b>${esc(c.when)}</b><span>${esc(c.title)}</span></button>`).join("")}</nav>
-        ${s.chapters.map((c, i) => chapter(s, c, i)).join("")}
+        ${(s._used = new Set(), s.chapters.map((c, i) => chapter(s, c, i)).join(""))}
         <p class="st-foot"><button type="button" class="btn small" data-story="${nx.id}">Next: ${esc(nx.title)}</button></p></div>`;
       try { localStorage.setItem("kin.story", id); } catch (_) {}
       const tgt = at != null ? box.querySelector(`#st-${s.id}-${at}`) : box;

@@ -1439,3 +1439,18 @@ window.KIN_LINEAGE.questions.push(
     { id: "L35", date: "2026-11-26", by: "Claude", q: "Q30", where: "1950 census pages Gemini staged (Dearborn ED 84-92, sheet 13; city of Wayne ED 82-264, sheet 8)", terms: "Charles and Elizabeth Sanders, Wayne County", result: "candidate",
       note: "Two couples named Charles and Elizabeth M. Sanders in Wayne County in April 1950 (Gemini's certainty 20-25%). Neither page names a Flemming; kept as candidates until your grandfather's birth year and place can test them." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026 (Claude): Q40. Chester Berry's Loss of the Sultana (1892), read in full in the Internet Archive's text: Peter
+   Culberson is in none of its three lists. Most likely he was not aboard; his compiled service record is still the proof. */
+(function (L) {
+  L.sources.push({ id: "S-berry-1892", short: "Chester D. Berry, Loss of the Sultana and Reminiscences of Survivors (1892)", kind: "derivative", year: 1892,
+    url: "https://archive.org/details/lossofsultanarem00berr",
+    cite: "Chester D. Berry, Loss of the Sultana and Reminiscences of Survivors (Lansing, Mich., 1892), pp. 383-418 (\"Official List of Exchanged Prisoners on the Boat\"), 418-419 (\"Persons Known to have been on Board but Not Reported in the Official List\") and 420 ff. (\"Name, Company, Regiment, and Present Postoffice ... of those Living\"); read from the Internet Archive's full text.",
+    read: "Read by Claude on 26 Nov 2026: no Culberson (or Culbertson, Colberson or any near spelling) in any of the three lists. The official list names about 300 men of the 3rd Tennessee Cavalry, some 30 of them in Company F (Peter's company), from Sgt. F. J. Allen to N. G. Williams; the not-reported list adds four more of Company F (John and R. N. Hamilton, Wiley J. Hodges, Cpl. H. C. Jones); the 1892 list of the living has 51 men of the regiment. Negative evidence from an incomplete official list, but it points to Peter not being aboard." });
+  const q = L.questions.find((x) => x.id === "Q40");
+  if (q) q.q = "Peter Culberson's capture and parole: his compiled service record and pension file give the date and place he was taken (Athens or the Sulphur Branch trestle, September 1864), how long he was at Cahaba, and when and how he went north. He is not in any of the Sultana lists in Berry's 1892 book (L36), so he was most likely not aboard; the service record would settle it.";
+  const pc = L.people.find((p) => p.id === "P-peterc");
+  if (pc && !pc.summary.includes("Sultana")) pc.summary = pc.summary.replace("prisoner at Cahaba;", "prisoner at Cahaba (not on any of the Sultana lists in Berry's 1892 book, so most likely not aboard);");
+  L.log.push({ id: "L36", date: "2026-11-26", by: "Claude", q: "Q40", where: "Chester D. Berry, Loss of the Sultana (1892), Internet Archive full text", terms: "Culberson and variants; company F, 3d Tennessee cavalry", result: "not found",
+    note: "Peter is not on the official list of exchanged prisoners aboard (about 300 of the 3rd Tennessee Cavalry, some 30 of Company F), not among those known aboard but left off it, and not among the survivors living in 1892. Most likely he was not on the Sultana." });
+})(window.KIN_LINEAGE);

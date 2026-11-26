@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d113, Peter Culberson and the Sultana; each story's history now matches its own places
+- Q40: Chester Berry's Loss of the Sultana (1892), read whole in the Internet Archive's text (source S-berry-1892): Peter Culberson is in none of its three lists (official list of exchanged prisoners aboard: about 300 of the 3rd Tennessee Cavalry, some 30 of Company F; men aboard but left off it; survivors living in 1892), so he was most likely not aboard. His Company F comrade Robert N. Hamilton's account (captured at Athens 24 Sep 1864, Cahaba, released about 12 Mar 1865) and Otto Bardon's of the flooded stockade go into the Culberson story; log L36.
+- World history (Athenaeum's dataset, tools/history/build.py --check passes): two sourced entries, Michigan's 1921 World War bonus (Michiganology quote) and the March 1865 Cahaba flood (Berry quotes). Kin stories now carry their regions (and moving chapters their own), each chapter's "history around it" ranks events by how much they belong to that line and never repeats one within a story: Joseph Termenas's 1920-21 chapter shows Lithuania's Constituent Seimas, the Zeligowski seizure of Vilnius and Michigan's bonus, not Malta's dockyards.
+- Not reachable from the session (left alone): NYC Municipal Archives vital records, Chronicling America, NCpedia, Encyclopedia of Alabama, Wikipedia; HathiTrust and Find a Grave refuse automated access.
+
 ### [2026-11-26] Claude: Kin d112, a person's sheet keeps your place when you tap a relative
 - Owner again: "everytime I click someones name it scrolls to the top". The page already held still (d110); the sheets did not: both the Kin sheet (lineage.js) and the 3D tree's sheet (tree/main.js) jumped to the top of the new person. Now a relative tapped inside a sheet opens with the same block (the family rows; in the 3D tree the same section) exactly where it was on screen, the 3D tree's sheet stays full height, and a strip at the top names whose page it is once the header has scrolled away. Checked at Pixel 7 size: family rows held at 300 px through Joseph to Betty and back; page scroll unchanged; no errors.
 
