@@ -615,6 +615,549 @@
    "verdict": "set-aside",
    "note": "Richard King's will (1685) leaves a bequest to a boy Richard Stone at sixteen: a different man, a generation before this tree's Richard Stone.",
    "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0237_JoelMartin_ThomasDavis.pdf",
+   "id": "11fExlA5tBVtWOLLpKTsPV7cN0zVzfpbH",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "225",
+   "what": "Wills, Lucas to Lufman",
+   "people": [
+    "P-joelm",
+    "P-eward"
+   ],
+   "verdict": "source",
+   "src": "S-bath-martins",
+   "note": "Mary Lucas, Beaufort, 1761: daughter Ann Alderson, grandsons James Alderson, Joel Martin and Charles Ardison (Hathaway: Odeon) Martin. A later generation's Martin-Alderson tie (C14). The Thomas Davis on the page is a Currituck executor of 1728, not this tree's.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0316_JoelMartin.pdf",
+   "id": "1NFFEfnJrXKKwIEWhEQJXTi83Y3KGayIt",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "304",
+   "what": "Wills, Pugh to Purser",
+   "people": [
+    "P-joelm",
+    "P-eward"
+   ],
+   "verdict": "source",
+   "src": "S-bath-martins",
+   "note": "David Purkens, Bath County, 1733: witnesses Simon Alderson, Joel Martin, James Pirkins. Joel Martin (P-joelm) died in 1716, so this is a younger Joel beside Simon Alderson (C14).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0362_JoelMartin.pdf",
+   "id": "1_c84y6jUhapTC4CorYCo-FBUKuhzjbSN",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "350",
+   "what": "Wills, Snellin to Snoad",
+   "people": [
+    "P-joelm"
+   ],
+   "verdict": "source",
+   "src": "S-bath-martins",
+   "note": "William Snoad, Beaufort, 1746/7, witnessed by Joel, Ann and Sarah Martin; John Snoad (1743) calls William Martin his brother-in-law. The younger Beaufort Martins.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0660_JoelMartin.pdf",
+   "id": "1-FVr0BC3AtX0BkQ6q-JrQMICVBpawGb_",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "648",
+   "what": "Appendix: list of wills by name",
+   "people": [
+    "P-joelm"
+   ],
+   "verdict": "set-aside",
+   "note": "A name list only (\"Martin, Joel\"). The will itself is abstracted on p. 239, read from the Internet Archive's full text (S-grimes-joel-1715).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0059_JoelMartin_Bryant.pdf",
+   "id": "1qxCF4ZqJapo-7dNMZSYanWKZSaPRNZLZ",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "47",
+   "what": "Wills, Bridgers to Bright",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "William Bridgers, Johnston County, 1751: Joel Martin and Lucrece legatees, witness James Bryant. A Johnston County namesake; nothing on this tree's Martins or Bryants.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V1_p0175_JoelMartin_Bryant.pdf",
+   "id": "1GYeWw2Lrtx6czfNvUrSxVaJM_uPA8m6S",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 1",
+   "page": "171",
+   "what": "Wills, Bridgers and Bell",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "The same Bridgers will of 1751 (Johnston County), Hathaway's reading. A namesake.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V1_p0344_JoelMartin_Carteret.pdf",
+   "id": "1ee08cVRs-vahRZHb_98Gm8gEGvgu8bWP",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 1",
+   "page": "338",
+   "what": "Wills, Lennon to Lord",
+   "people": [
+    "P-joelm",
+    "P-eward"
+   ],
+   "verdict": "source",
+   "src": "S-bath-martins",
+   "note": "Hathaway's reading of Mary Lucas's 1761 will: daughter Ann Aldersen, grandsons James Aldersen, Joel Martin, Charles Odeon Martin, granddaughters Frances, Sarah, Ann, Mary and Susannah Martin.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V1_p0370_JoelMartin_Carteret.pdf",
+   "id": "1NLPYbfOri46OtpKqRckr3oj8orL1aJnW",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 1",
+   "page": "364",
+   "what": "Wills, Pritchard to Plater",
+   "people": [
+    "P-joelm",
+    "P-eward"
+   ],
+   "verdict": "source",
+   "src": "S-bath-martins",
+   "note": "Hathaway's reading of David Purkins's 1733 will: Thos. Worsley and Simon Alderson trustees; witnesses Simon Aborton [Alderson], Joel Martin, James Purkins.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V2_p0102_Martin_Ward.pdf",
+   "id": "1i1oqLPhHre2hbOxfNO9qEnpa2j10g3_v",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 2",
+   "page": "118",
+   "what": "Norfolk marriage bonds, 1790s",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Late-1700s Norfolk marriages; \"Martin\" and \"Ward\" are a witness's first name and \"niece and ward\". Nothing on this family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V3_p0162_Martin_Ward.pdf",
+   "id": "1Ee82kP9ACCwTm1APdXbliikvffws3ky1",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 3",
+   "page": "132",
+   "what": "Norfolk County property owners, 1860",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "1860 tax list. Not this family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0045_Martin_Ward.pdf",
+   "id": "1LpiVgbiRGzhGtgjxaiKZ_qFqigLHB8q8",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "39",
+   "what": "Wills, Lovett and Olivant, 1673",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Lancaster Lovett's 1673 will bounds land \"next Martin\" at Lynnhaven: a Martin neighbour, no name. Not evidence for Joel.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0035_ElizabethWard_Ward.pdf",
+   "id": "1LNOXkho9u_Tisuwuzh62a-BmTtl0qQlk",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "29",
+   "what": "Wills, 1669",
+   "people": [
+    "P-eward"
+   ],
+   "verdict": "source",
+   "src": "S-mcintosh-eward-1668",
+   "note": "Edward Ward, dated 3 Jan 1668, proved 1 Apr 1669: wife Elizabeth, eldest daughter Frances, youngest daughter Elizabeth Ward, son Edward. A candidate family for \"Elizabeth Ward\" (C14); a lead, not proof.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0019_Ward.pdf",
+   "id": "12fDibQUyVLbBZEk5Q0mgAOkjDEqUeCoM",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "13",
+   "what": "Wills, 1654",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Thomas Ward, 1654: an unnamed daughter, Henry Holmes his father-in-law. Too early and no names; noted only as another Lower Norfolk Ward.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0115_Ward.pdf",
+   "id": "1woUI94RHDmVqVCgOR888EaiZDEd595iL",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "109",
+   "what": "Wills, 1686-1687",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "John Brooks (1686) leaves a heifer to a Thomas Ward. Nothing on Elizabeth.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0212_Ward.pdf",
+   "id": "1i4Rd2KD8XyyPi7IBYgsAAZuGRYqMJGS1",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "205-206",
+   "what": "List of wills (index)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Index page: Ward, Edward p. 29 and Ward, Thomas p. 13 (both read).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0011_Martin.pdf",
+   "id": "1GZCv0g3NCCcGq2HkoNg0-4_UkPVXFF4P",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "5",
+   "what": "Wills, 1649-1650",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "\"Martin\" only as a witness's name on Anne Hayes's will (1650).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0024_JohnMartin_Martin.pdf",
+   "id": "1V4j5qBvpds3JiAANrkeLvz2vwjGEn14R",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "18",
+   "what": "Wills, 1655",
+   "people": [
+    "P-johnm-sr"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "John Martin proves a will on 8 Dec 1655: the Lower Norfolk John Martin the trees make Joel's father.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0026_JohnMartin_Martin.pdf",
+   "id": "16mz--lemGeAN2ynbsdmOvkQJgB-AwhIK",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "20",
+   "what": "Wills, 1655-1656",
+   "people": [
+    "P-johnm-sr"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "John Martin proves Thomas Nedham's will on 8 Dec 1655.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0077_Martin.pdf",
+   "id": "1Z-CRX-yz8IQea-bYcYbFJ5CNWfCt7Gqf",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "71",
+   "what": "Wills, 1677-1679",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Martin Joyce's will: Martin is his first name.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0131_Martin.pdf",
+   "id": "1yyqbp4-c_PM_g8sBmzcuokDRR6g50WOa",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "125",
+   "what": "Wills, 1688",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Martin Cornick, a witness: Martin is a first name.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0135_Martin.pdf",
+   "id": "13WqZsgQBoJXaNnWgs0rv2ZqYs0KjzQED",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "129",
+   "what": "Wills, 1689-1690",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Jonathan Martin's will (1690) names a son Jonathan: another Lower Norfolk Martin, no link to Joel.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_McIntosh_Wills_p0211_Martin_Rogers.pdf",
+   "id": "1A8IL8FphPGReLPmUfRxDspYCZJJ3ymL_",
+   "book": "McIntosh, Abstract of Norfolk County Wills",
+   "page": "205",
+   "what": "List of wills (index)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Index page. Its only Martin is Johnathan (p. 129). It lists Keeling wills (Adam p. 86, Elizabeth p. 33, Thorowgood p. 67), not staged: worth reading for Anne Keeling.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V2_p0014_Martin.pdf",
+   "id": "1024tR9duaG9EuMkpLxYNNQK_ieU8YiL7",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 2",
+   "page": "",
+   "what": "Norfolk County property owners, 1860",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "1860 tax list (a Martin Galligher). Not this family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V2_p0020_JohnMartin_Martin.pdf",
+   "id": "1cp_dN2jf11NftW43dZldslk5h7ISJmio",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 2",
+   "page": "12",
+   "what": "The Church in Lower Norfolk County, 1645",
+   "people": [
+    "P-johnm-sr"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "Edward Hall and John Martin, churchwardens of Lynnhaven parish, February 1645[/6].",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V2_p0021_JohnMartin_Martin.pdf",
+   "id": "1IeN-e4Y_6viTkGnbw8NhDF8nBH0VNobI",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 2",
+   "page": "13",
+   "what": "The Church in Lower Norfolk County, 1646-1647",
+   "people": [
+    "P-johnm-sr"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "The same presentment signed \"Edw Hall his mke, John Martin\", 16 Feb 1645[/6].",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V2_p0112_JohnMartin_Martin.pdf",
+   "id": "1n92-DSUpZF2ZqhB5qoR8WX39NzKfA-m-",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 2",
+   "page": "128",
+   "what": "The Church in Lower Norfolk County, 1652",
+   "people": [
+    "P-johnm-sr",
+    "P-tkeeling"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "An inventory appraised by \"Leift Keelinge\", Owen Hayes and John Martin, January 1652[/3]: John Martin working beside a Lieutenant Keeling.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V3_p0127_JohnMartin_Martin.pdf",
+   "id": "1V5wLBqPpZJtbs1u0Nx4d46ile4ZUbRfL",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 3",
+   "page": "103",
+   "what": "The Church in Lower Norfolk County, 1660",
+   "people": [
+    "P-johnm-sr"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "\"Mr John Martin\" among the justices at the court of 16 Apr 1660.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V3_p0129_JohnMartin_Martin.pdf",
+   "id": "1lQDyv0j278M8Zp-HhYwoFcwREiwPLNAL",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 3",
+   "page": "105",
+   "what": "The Church in Lower Norfolk County, 1661",
+   "people": [
+    "P-johnm-sr"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "\"Mr John Martin\" a commissioner at the court of 15 Aug 1661.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V3_p0170_JohnMartin_Martin.pdf",
+   "id": "1BISM9GelAgT4cLA3aoYOa3eJrWIy5oi3",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 3",
+   "page": "140",
+   "what": "The Church in Lower Norfolk County, 1662",
+   "people": [
+    "P-johnm-sr"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "\"Mr John Martin\" a commissioner on 16 Jun 1662.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V3_p0171_JohnMartin_Martin.pdf",
+   "id": "1NsQfovwaYrk0ZokPqJxu5271oUq5Sp7t",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 3",
+   "page": "141",
+   "what": "The Church in Lower Norfolk County, 1662",
+   "people": [
+    "P-johnm-sr"
+   ],
+   "verdict": "source",
+   "src": "S-lnva-jmartin",
+   "note": "\"Mr John Martin\" a justice on 29 Dec 1662. The rest of the page is the Thelaball family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V3_p0078_Martin_Turner.pdf",
+   "id": "1dVfvki2oxf510rEn5_quK1TtCUydvw9i",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 3",
+   "page": "62",
+   "what": "Norfolk marriages and 1860s property list",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A Calvin Turner marriage and a 19th-century tax list. Not this family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "VA_LowerNorfolk_Antiquary_V2_p0075_Turner_Rogers.pdf",
+   "id": "1TqXmkpoPoz6wcQ1xqqSVZjXFARe1uA9S",
+   "book": "Lower Norfolk County Virginia Antiquary, vol. 2",
+   "page": "97",
+   "what": "Norfolk County property owners, 1860",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "1860 tax list (Susanna Turner, Ann Rogers). Not the Turner or Rogers of this tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V2_p0099_ElizabethWard.pdf",
+   "id": "1F_EjhcPEwrzcOD9h29oiMTogGdnSZ8PU",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 2",
+   "page": "95",
+   "what": "Chowan marriage bonds, 1840s",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Elizabeth Wards marrying in the 1840s. Not Joel Martin's wife.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V2_p0369_ElizabethWard.pdf",
+   "id": "1qJYqa4_PC0fICMLggp5eMtgzVyQN9yW_",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 2",
+   "page": "361",
+   "what": "Bertie County wills, 1770s-1790s",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Bertie Ward wills of 1776-1796 with daughters named Elizabeth. A century too late.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V2_p0380_ElizabethWard.pdf",
+   "id": "1dxvu0KMuCviVEToLcJV96Yz2LmlM9J7i",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 2",
+   "page": "372",
+   "what": "Bertie marriage bonds, 1797-1798",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Elizabeth Ward marries John Hardy, 1798. A century too late.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V2_p0586_ElizabethWard.pdf",
+   "id": "177AywcJZAzBpvodGqqlzh5sDAmB2hboG",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 2",
+   "page": "576",
+   "what": "Loyalists and Tories, 1777-1780",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "An Elizabeth Ward's deposition in Tyrrell County, 1777. Not this family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0020_JohnMartin.pdf",
+   "id": "1jhaFE_aBRxeQdcV8TYECn8186nqqffRh",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "8",
+   "what": "Wills, Anderson to Anelyn",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A John Martin witnesses in Rowan County (1756); \"Jo. Martin\" is Governor Josiah Martin proving wills in the 1770s. Namesakes.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0139_JohnMartin.pdf",
+   "id": "1bGRvXagpnVVaM6HcwEgi5wTAWndKVXa5",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "127",
+   "what": "Wills, Fouree to Freeman",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "John Martin Franck of Craven (1744) and the governor's probates. Namesakes.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0208_JohnMartin_ThomasDavis.pdf",
+   "id": "1evGK1miwopXCcMBirnW_KAcIJ_vqncGh",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "196",
+   "what": "Wills, Jones",
+   "people": [
+    "P-johnm"
+   ],
+   "verdict": "source",
+   "src": "S-bath-martins",
+   "note": "Sarah Jones, Bath County, May 1722, witnessed by Francis Delamare, John Martin and Thomas Davis: a John Martin still in Bath County in 1722, where Joel left his son John land (C18). The Thomas Davis is not this tree's (Chester County, Pennsylvania).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_1660_1760_p0252_JohnMartin.pdf",
+   "id": "1kdsBIYBrydkU69uJX6rONbFwrxT8YDW2",
+   "book": "Grimes, Abstract of North Carolina Wills (1910)",
+   "page": "240",
+   "what": "Wills, Martin to Mason",
+   "people": [
+    "P-johnm",
+    "P-joelm"
+   ],
+   "verdict": "source",
+   "src": "S-bath-martins",
+   "note": "William Martin, Beaufort, 23 Aug 1745: sons John, Joel, William, Joseph; daughters Ann and Elizabeth; a cousin John Martin; witnesses John and Mary Alderson. The Bath Martins who kept the name Joel (C14, C18).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V1_p0145_Bryant_Carteret.pdf",
+   "id": "1Wgbxj6pbitP_VK5y-RMqtZP00ODdXKsY",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 1",
+   "page": "143",
+   "what": "Albemarle court minutes, 1674-1707",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A Richard Bryant made road overseer about 1706. Not Nicholas Bryant's family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V1_p0229_Bryant_Carteret.pdf",
+   "id": "1Rtez7IMqeDmQ49TtHLtp7m1kfEO-hljJ",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 1",
+   "page": "225",
+   "what": "Wills, Harvey to Harrell",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Thomas Harvey (1748) names a \"cousin Sarah Alderson of Beaufort\" (Simon's daughter) and John Harrell Jr. a son Bryant. No Bryant family here.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Hathaway_Register_V1_p0386_Bryant_Carteret.pdf",
+   "id": "1IcMbsI5gHYFsAWBp6bJwBlvoeMsTJAun",
+   "book": "Hathaway, North Carolina Historical and Genealogical Register, vol. 1",
+   "page": "379-380",
+   "what": "Wills, Regan to Snead",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A garbled Tyrrell will with grandsons Bryant (1743-1744), and Henry Snead of Beaufort (1752). Not Nicholas Bryant.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_Inventories_p0024_Bryant_Carteret.pdf",
+   "id": "1rNkht3O682WL6hnCGnwFhAkNYQR_bb5L",
+   "book": "Grimes, North Carolina Wills and Inventories (1912)",
+   "page": "22",
+   "what": "Will of David Bailey, Carteret, 1746",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "David Bailey of Core Sound names his son-in-law Simon Bryant. Another Carteret Bryant; nothing on Nicholas or Eleanor.",
+   "read": "2026-11-26"
   }
  ]
 }

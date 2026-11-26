@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d97, Joel Martin's will and the Martin line (C14 narrowed, new C18)
+- Read 44 more staged pages (the Joel Martin, Elizabeth Ward, John Martin and Carteret Bryant groups) and the whole Grimes 1910 abstract from the Internet Archive. Joel Martin's will (Bath, 1715/16, Grimes p. 239) names no wife. Simon Alderson's 1740 will still calls his daughter Elizabeth Alderson, so C14 is now "not Alderson; Ward unproven". The one lead is Edward Ward's 1668 Lower Norfolk will (daughter Elizabeth).
+- John Martin of Pasquotank's 1741 will names his daughter Elener Bryant (Eleanor 65 -> 80). His link to Joel is doubtful: Joel's son John got land in Bath County, and the Pasquotank John was a Quaker with no Joel or William among his sons. New C18 and Q37; P-johnm 55 -> 20. Ledger: 97 reviewed (25 sources), 192 left.
+
 ### [2026-11-26] d96: Kin staged records, 53 of 289 read
 - The Pulliam, Stone, Bryant and Lester clusters done: the Spotsylvania Pulliams are a separate family (James d. by 1764, heir Rawlins Pulliam, 1782); new leads S-hanover-1734 (John Pulliam's 1734 will names a son James) and S-vmhb-stone (Richard Stone, son of Thomas of Brunswick, grant 1746). Leads only, no links changed.
 - Most staged pages were false matches (a first name 'Bryant', place names, later Grayson families, namesakes). Ledger: 8 sources, 45 set aside.
