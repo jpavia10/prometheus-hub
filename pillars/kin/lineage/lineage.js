@@ -44,7 +44,7 @@
       if (n) { o.names = [{ given: n.given || "", surname: n.surname || "", type: "birth", local: true }].concat(o.names.filter((x) => x.given || x.surname)); if (n.sex) o.sex = n.sex; if (n.born) o.born_local = n.born; if (n.note) o.note_local = n.note; if (o.status === "placeholder" && (n.given || n.surname)) o.status = "named"; }
       return o;
     }).concat(loc.people.map((p) => Object.assign({ local: true, status: "named" }, p)));
-    const families = L.families.map((f) => ({ id: f.id, partners: f.partners.slice(), children: f.children.slice(), events: (f.events || []).slice(), uncertain: f.uncertain || {}, ended: !!f.ended })).concat(loc.families.map((f) => Object.assign({ local: true, events: [] }, f)));
+    const families = L.families.map((f) => ({ id: f.id, partners: f.partners.slice(), children: f.children.slice(), events: (f.events || []).slice(), uncertain: f.uncertain || {}, ended: !!f.ended, unmarried: !!f.unmarried })).concat(loc.families.map((f) => Object.assign({ local: true, events: [] }, f)));
     return { people, P: by(people), families, F: by(families), E: by(L.events), PL: by(L.places), SRC: by(L.sources), C: by(L.conflicts) };
   }
   const nm = (p) => { const n = (p.names || []).find((x) => x.given || x.surname); return n ? `${n.given || ""} ${n.surname || ""}`.trim() : (p.placeholder || "Unnamed"); };
@@ -100,11 +100,21 @@
     /* partners first, so a wife or husband stands next to the one they married before brothers and sisters take the places beside */
     const wed = (p) => (familiesOf(M, p.id).some((g) => g.partners.some((q) => q !== p.id && pos[q])) ? 0 : 1);
     while (left.length && guard++ < 20) {
-      left.sort((a, b) => wed(a) - wed(b));
-      for (const p of left) {
+      /* re-ranked after every placement: a husband or wife whose partner was placed a moment ago goes next, before the partner's
+         brothers and sisters take the places beside them (owner, 2026-11-26: Kathleen beside Joe, Jim and Mark beside Jennifer) */
+      const todo = left.slice();
+      while (todo.length) {
+        let bi = 0; for (let i = 1; i < todo.length && wed(todo[bi]); i++) if (!wed(todo[i])) bi = i;
+        const p = todo.splice(bi, 1)[0];
         if (pos[p.id]) continue;
         const f = parentsOf(M, p.id);
-        const sib = f && f.children.find((c) => pos[c]);
+        /* a brother or sister to stand beside, one who is not on your own line first, the latest of them, so a family's children stay
+           together; half brothers and sisters too (same mother or same father) for a child with one known parent (owner, 2026-11-26:
+           your mother's brothers Tim and Michael have other fathers, not named) */
+        const full = f ? f.children.filter((c) => c !== p.id && pos[c]) : [], couple = f && f.partners.filter((q) => pos[q]).length > 1;
+        /* half brothers and sisters only for a child with one known parent: a couple's children stand under the couple */
+        const sibs = full.length || couple || !f ? full : M.families.filter((g) => g.partners.some((q) => f.partners.includes(q))).flatMap((g) => g.children).filter((c) => c !== p.id && pos[c]);
+        const sib = sibs.filter((c) => !anc.has(c)).pop() || sibs[0];
         const sp = familiesOf(M, p.id).map((g) => g.partners.find((q) => q !== p.id && pos[q])).find(Boolean);
         const kid = familiesOf(M, p.id).map((g) => g.children.find((c) => pos[c])).find(Boolean);
         /* a child of someone already placed goes in the row below them, under the couple (owner, 2026-11-26: the tree showed only

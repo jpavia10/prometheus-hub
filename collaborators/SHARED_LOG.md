@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d103, Jennifer Sanders's marriages, Joe's wife; tree keeps couples and half-siblings together
+- Owner: his mother's sister Jennifer married Jim Walls (divorced) and is now with Mark Johnson; Nicholas is a Sanders; Joe Seconder married Kathleen. Added P-jimwalls (F-walls, ended), P-markj (F-mjohnson, new `unmarried` flag: "partner"), P-kathleen (F-joes).
+- kinship.js: in-laws carry the side ("Your aunt's husband (your father's side)" vs "(your mother's side)"); `unmarried` families say partner. lineage.js: partners re-ranked after every placement (spouses beside spouses, not after the in-laws' siblings); a child with one known parent stands beside half-siblings (Tim, Michael beside Jennifer).
+
 ### [2026-11-26] Claude: Kin d102, Tania re-placed; Gemini on the Sanders and Holgate lines
 - Owner: Patrick is Nicholas's middle name and his father is not known; Joe Seconder has no children; Tania is not Ilene's; his grandfather Charles A. Sanders has brothers and sisters but does not talk about them. Tania now hangs from a placeholder mother drawn dashed under Charles Sanders and Betty Flemming ("Charles's sister? (Q38)"); F-ilene removed.
 - Open-web obituary searches (Holgate, Novi; Sanders and Flemming; Toni Hinkle) found nothing (L25). New Gemini homework: KIN-GEM-51 (Charles A. Sanders's brothers and sisters from his parents' records) and KIN-GEM-52 (Betty and Thomas Holgate's children, David Holgate, and Tania). Queue pages re-rendered; Forge rebuilt.

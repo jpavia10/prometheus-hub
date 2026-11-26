@@ -1193,3 +1193,32 @@ window.KIN_LINEAGE.questions.push(
   if (q39) { q39.q = "Your grandfather Charles A. Sanders's brothers and sisters: he has some, you think, but he does not talk about them. The way in is his parents' records (Charles Sanders and Betty Flemming): their obituaries name their children. Also the fathers of your uncles Tim and Michael, with their surnames."; q39.sources = "obituaries, death and birth indexes, the 1950 census (Gemini KIN-GEM-51); your mother"; q39.task = "KIN-GEM-51"; }
   L.log.push({ id: "L25", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message; the open web (obituary searches for Thomas and Betty Holgate, David Holgate, Betty (Flemming) Sanders, and Sanders obituaries naming Toni Hinkle)", terms: "Holgate, Novi; Sanders and Flemming/Fleming, Michigan; Toni Hinkle", result: "not found", note: "No obituary on the open web names Betty or Thomas Holgate's children, or Charles Sanders and Betty Flemming's. Tania moved out of Ilene's family to a placeholder mother on the Sanders side (a question, drawn dashed). Gemini has the record search: KIN-GEM-51 (Sanders brothers and sisters) and KIN-GEM-52 (the Holgate line and Tania)." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, night (owner): "Jennifer married jim walls then divorced then now is with Mark Johnson this is my moms sister.
+   Nicholas is Sanders btw. Joe married Kathleen." Jennifer Sanders: married Jim Walls (ended), now with Mark Johnson ("is with":
+   recorded as partners, not as married). Nicholas's surname is Sanders; his father is still not known. Joe Seconder's wife Kathleen. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  L.sources.push({ id: "S-owner-1126e", short: "Your account: your aunt Jennifer's marriages, Nicholas's surname, Joe Seconder's wife (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.",
+    read: "Your mother's sister Jennifer married Jim Walls, then divorced; she is now with Mark Johnson. Nicholas's surname is Sanders. Joe Seconder married Kathleen." });
+  const OW = ["S-owner-1126e"];
+  const add = (p) => L.people.push(Object.assign({ status: "family", living: true }, p));
+  add({ id: "P-jimwalls", sex: "M", names: [{ given: "Jim", surname: "Walls", type: "birth", src: OW }], summary: "Your aunt Jennifer's ex-husband: your mother's sister married him and they divorced (your account)." });
+  add({ id: "P-markj", sex: "M", names: [{ given: "Mark", surname: "Johnson", type: "birth", src: OW }], summary: "Your aunt Jennifer's partner now (your account: \"now is with Mark Johnson\")." });
+  add({ id: "P-kathleen", sex: "F", names: [{ given: "Kathleen", surname: "", type: "as-given", src: OW, note: "her surname is not given" }], summary: "Joe Seconder's wife (your account). They have no children." });
+  L.families.push(
+    { id: "F-walls", partners: ["P-jennifers", "P-jimwalls"], children: [], ended: true },
+    { id: "F-mjohnson", partners: ["P-jennifers", "P-markj"], children: [], unmarried: true },
+    { id: "F-joes", partners: ["P-joes", "P-kathleen"], children: [] }
+  );
+  const nk = P("P-nicholas");
+  if (nk) { nk.names = [{ given: "Nicholas Patrick", surname: "Sanders", type: "birth", src: ["S-owner-1126c", "S-owner-1126d"].concat(OW), note: "Patrick is his middle name" }];
+    nk.summary = "Your first cousin: your mother's sister Jennifer's son, Nicholas Patrick Sanders (your account). His father is not known."; }
+  const js = P("P-jennifers");
+  if (js) { js.summary = "Your mother's sister: Charles A. Sanders and Laurie's daughter. Married Jim Walls and divorced; now with Mark Johnson. Her son is Nicholas Patrick Sanders (your account). Not Jennifer Burd, your father's sister."; js.names[0].src = js.names[0].src.concat(OW); }
+  const jo = P("P-joes"); if (jo) jo.summary = jo.summary.replace(" He has no children (your account).", " Married to Kathleen; they have no children (your account).");
+  const q39 = L.questions.find((q) => q.id === "Q39");
+  if (q39) q39.q = q39.q.replace(" Also: Nicholas Patrick's father, and whether Patrick is a middle name or a surname.", "");
+  L.log.push({ id: "L26", date: "2026-11-26", by: "Claude", q: "Q39", where: "your message", terms: "your aunt Jennifer, Nicholas, Joe Seconder", result: "found", note: "Added Jim Walls (Jennifer's ex-husband), Mark Johnson (her partner now) and Kathleen (Joe Seconder's wife). Nicholas's surname is Sanders." });
+})(window.KIN_LINEAGE);

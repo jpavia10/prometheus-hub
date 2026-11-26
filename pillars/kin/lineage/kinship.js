@@ -3,7 +3,7 @@
    daughter, his sisters, his mother's ex-husband or his great-grandmother's other children. Blood relatives are named by the
    nearest ancestor shared with you (how far up from you, how far down to them): parent, child, sister or half-sister, aunt,
    niece, great-aunt, first cousin once removed. Anyone else is named through the relative they married ("Your mother's
-   ex-husband"); a family marked `ended` makes the partner an ex. window.KinKinship.make(families, people, root) -> { rel, blood }. */
+   ex-husband"); a family marked `ended` makes the partner an ex, and one marked `unmarried` a partner rather than a husband or wife. window.KinKinship.make(families, people, root) -> { rel, blood }. */
 (function () {
   "use strict";
   const great = (k) => (k <= 0 ? "" : k === 1 ? "great-" : k === 2 ? "great-great-" : `${k}× great-`);
@@ -57,10 +57,10 @@
         if (!f.partners.includes(id)) continue;
         for (const q of f.partners) {
           if (q === id || !P[q]) continue;
-          const ex = f.ended ? "ex-" : "", w = sx(id, "husband", "wife", "partner");
+          const ex = f.ended ? "ex-" : "", w = f.unmarried ? "partner" : sx(id, "husband", "wife", "partner");
           if (q === root) return (RL[key] = `Your ${ex}${w}`);
           const qb = blood(q);
-          if (qb) return (RL[key] = `${qb.text}'s ${ex}${w}`);
+          if (qb) return (RL[key] = `${qb.text}'s ${ex}${w}` + (withSide && qb.side ? ` (${qb.side})` : "")); /* which aunt: your father's sister's husband or your mother's sister's */
         }
       }
       /* a child of your partner: a stepchild */
