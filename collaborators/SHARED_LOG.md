@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] The State Board's work list made comprehensive
+- Joseph: "It should be comprehensive ... expandable tabs and if theres overlapping tasks just display them separately." The board (v7) now lists 234 jobs in 11 collapsible sections (the AIs and the flow, hub, Kin, Odyssey, Midas and Money, the other pillars, the 39 second reads waiting, the 55 deliveries still coming, Titan, life admin, his own), with Your queue and Start here on top, filters, search, Open all and Close all. Overlapping jobs stay separate cards (Kin has each conflict, each research question and each record request on its own).
+
 ### [2026-11-26] The State Board gets a work list
 - Joseph: "It's missing recommendations for things for you to work on like a task list." The board (v6) now opens with Work for Claude: 15 recommended jobs with Claude's pick on each (Do next / Approve / Later / No), sorted by his choices, and a box to add his own; stored in the board's `tasks` collection, his picks in `answers/task-<id>`.
 - Three decisions became jobs (ChatGPT briefing, town paintings, Cursor branches). His one approved job from the old briefing (the staged Kin record pages: 289 left after the album) is carried over at the top. CLAUDE.md's board rule now covers `tasks`.

@@ -22,8 +22,12 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
   ("seen" or "done") and `.reply`, and `meta/claude.lastRead` (UTC ISO time). New questions for him go in as new `decisions` docs (group
   "now" or "reshape", order, title, why, options [{k,label}], rec), never as chat-only asks. A comment he sends from the board wakes the
   session that owns it. **Work for Claude** (owner, same day: "It's missing recommendations for things for you to work on like a task
-  list"): the `tasks` collection is Claude's recommended job list (title, why, area, size Quick/Round/Project, rec next/do/later, order,
-  status "" / doing / waiting / blocked / done, reply, by claude|joseph). His pick per job is `answers/task-<id>` (next = do first,
+  list"; then: "It should be comprehensive ... expandable tabs and if theres overlapping tasks just display them separately"): the `tasks`
+  collection is everything Claude could work on, one doc per job, never merged (title, why, group = its section: system, hub, kin, odyssey,
+  midas, pillars, checks, coming, titan, life, yours; pillar, size Quick/Round/Project, rec next/do/later, kind ready/waiting/needs/blocked/idea
+  with `wait` naming what it waits on, order, status "" / doing / blocked / done, reply, by claude|joseph). The page shows Your queue and
+  Start here (rec next, undecided) above the sections; the generator is in the session scratchpad, so after each round add, split or close
+  jobs with ArtifactData directly. His pick per job is `answers/task-<id>` (next = do first,
   do = approved, later, no); jobs he adds himself arrive with by "joseph" and choice "do". Work approved jobs in that order (next, then
   do, by `order`); set `status` "doing" when you start and "done" with a one-line `reply` when it ships. Keep the list stocked: after each
   round, add what you would do next as new `tasks` docs with your rec, and take finished ones off by marking them done.
