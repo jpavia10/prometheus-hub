@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d99, the whole family, not just Joseph Termenas (owner request)
+- Owner: the tree tab was "heavily biased to Joseph Termens", and relationships were missing. The plain tree now opens on him, and both views now place anyone's children (they placed only ancestors, siblings and spouses). New lineage/kinship.js names everyone from the families: "Your sister (your mother's daughter)", "Your mother's ex-husband", "Your first cousin, once removed (your mother's side)".
+- Added the people he named (Jeffrey Hinkle; sisters Jessica and Samantha; Irene; daughter Violet; Q22 answered). From obituaries Gemini quoted: Barbara's other children Ilene Kennedy and Joe Seconder, Tim, Tyler and Madeline Burd, and James Kirkland's four children. Tania is placed with Ilene but unconfirmed (Q38); Charles A. Sanders's siblings are Q39. Living people get names only.
+- 38 more people now have dated, placed events from facts the tree already held, so the Places map shows the Malta, Tennessee, Carolina, Virginia, Pennsylvania and Alabama lines. Record pages: 193 reviewed, 96 left.
+
 ### [2026-11-26] Claude: Kin d98, Pasquotank Quaker Martins (C18 "probably not"), Peter Culberson's regiment, 66 more pages
 - Grimes 1910 shows Martins among the Albemarle Quakers from 1706: a John Martin witness in 1706, a grown Nathaniel Martin by 1719. That is before Joel Martin's 1715 will gave his son John land in Bath County, so the Pasquotank John (Eleanor Bryant's father) is probably not Joel's son. C18 is now "probably not" and P-johnm is down to 15.
 - The Tennessee Adjutant General's 1866 report (whole book from the Internet Archive) lists Peter Culberson as a private in Company F, 3rd Tennessee Cavalry. It has no James M. Giles; Gemini's "Giles" page was a first-name match. The Davis (28) and Anson (10) pages are background or namesakes. McAllister has no Thomas Davis in Montgomery County. Ledger: 163 reviewed (29 sources), 126 left.

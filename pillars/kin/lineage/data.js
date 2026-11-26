@@ -963,3 +963,143 @@ window.KIN_LINEAGE.questions.push(
     { id: "L21", date: "2026-11-26", by: "Claude", q: "", where: "Grimes 1910 (whole book); Hathaway's Register vols. 1-2 and Grimes's Wills and Inventories (1912), whole books; the Tennessee Adjutant General's report (1866), Berry's Sultana (1892), Hawes's Cahaba (1888), Humes (1888), Temple (1899) and McAllister's Virginia Militia (1913), all on the Internet Archive; 66 staged pages", terms: "Martin (Pasquotank); Culberson; Giles; Tippens; Thomas Davis; Bivens", result: "Martins among the Pasquotank Quakers from 1706 (C18 now \"probably not\"). Peter Culberson is a private in Company F, 3rd Tennessee Cavalry (Union) in the 1866 report; no James M. Giles or Tippens there. No Thomas Davis in Montgomery County, Virginia, in McAllister (his militia service rests on DAR). The Anson and Davis pages Gemini staged are background or namesakes." }
   );
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, the whole family (owner, 2026-11-26: "it seems heavily biased to Joseph termens. Isn't the map supposed to feature
+   other people? Also there are relationships not shown"): the people he named, Barbara's other children from her obituary, the
+   cousins Glenda's and James Kirkland's obituaries name, and the places the tree already knew for everyone else, as dated events so
+   they reach the map. Living people get names and how they are related only: no dates, no towns, no map points. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  const fam = (id) => L.families.find((f) => f.id === id);
+  L.sources.push(
+    { id: "S-owner-1126", short: "Your account of your own family (26 Nov 2026)", kind: "authored", year: 2026,
+      cite: "Joseph Pavia, message to Claude, 26 November 2026.",
+      read: "Your mother's ex-husband is Jeffrey Hinkle, the father of your two sisters Jessica Elizabeth and Samantha Grace. Your daughter is Violet Joy; your ex-wife is Irene Alyssa Marie. Your mother has a cousin named Tania, whose mother was not in the tree; you asked whether David Holgate was. You think all your grandparents had brothers and sisters." },
+    { id: "S-feole-obit", short: "Barbara J. Feole's and Melvin Feole's obituaries (2009)", kind: "derivative", year: 2009,
+      url: "https://www.genealogybuff.com/mi/oakland/webbbs_config.pl/noframes/read/32",
+      cite: "Dryer Funeral Home, Holly, Michigan, obituaries of Barbara J. Feole (died 22 January 2009) and Melvin Feole (died 28 April 2009), transcribed on GenealogyBuff, Oakland County, Michigan, nos. 32 and 8 (posted 7 May 2010).",
+      read: "Quoted by Gemini (forensic audit for Claude, 24 Nov 2026); Claude has not re-read the pages (the site is outside this session's network). Barbara: \"Barbara J. Feole, age 75 of Holly died Thurs. Jan. 22, 2009 ... Mrs. Feole was born in Detroit on March 24, 1933 the daughter of Joseph and Della Termans. Surviving are 3 children Laurie Jordan of Holly, Ilene Kennedy of Port Hope and Joseph Seconder of GA; 8 grand children and several great-grand children.\" Melvin: \"Melvin Feole, age 69 of Holly died Tues. April 28, 2009 ... Burial will be in Lakeside Cemetery, Holly ... born on Jan. 31, 1940 ... preceded in death by his wife Barbara Feole on Jan. 22, 2009. Surviving are his son Melvin Feole Jr.; 3 step-children, Laurie Jordan of Holly, Ilene Kennedy of Port Hope, and Joseph Seconder of GA.\"" },
+    { id: "S-jkirkland-obit", short: "James Madison Kirkland's obituary (2021)", kind: "original", year: 2021,
+      url: "https://bellevilleareaindependent.com/wp-content/uploads/10-14-21.pdf",
+      cite: "\"James Madison Kirkland,\" obituary, Belleville Area Independent (Belleville, Michigan), 14 October 2021, p. 8.",
+      read: "Quoted by Gemini (forensic audit, 24 Nov 2026); not yet re-read by Claude: \"JAMES MADISON KIRKLAND (August 2, 1936 - August 1, 2020) ... James was born on August 1, 1936 in Tennessee, the eldest son of Buster and Joy (Moss) Kirkland ... He is survived by his 4 children Laurel Kirkland, Clinton (Paula) Kirkland, Alan (Chola) Kirkland and Leslie (Daniel) Hoffman; grandson James (Megan) Kirkland; his brother Stephen (Ann) Kirkland and sister Glenda (Frank) Pavia.\" The header and the text disagree on his birth day." }
+  );
+  const add = (id, sex, given, surname, summary, src, x) => L.people.push(Object.assign({ id, sex, status: "family", living: true, names: [{ given, surname, type: "birth", src }], summary }, x || {}));
+  const OW = ["S-owner-1126"], GO = ["S-glenda-obit"], FO = ["S-feole-obit"], JK = ["S-jkirkland-obit"];
+  add("P-jhinkle", "M", "Jeffrey", "Hinkle", "Your mother's ex-husband; the father of your sisters Jessica and Samantha.", OW);
+  add("P-jessica", "F", "Jessica Elizabeth", "Hinkle", "Your sister: the daughter of your mother and Jeffrey Hinkle.", OW, { note: "Her surname is taken from her father's; tell Kin if it is different." });
+  add("P-samantha", "F", "Samantha Grace", "Hinkle", "Your sister: the daughter of your mother and Jeffrey Hinkle.", OW, { note: "Her surname is taken from her father's; tell Kin if it is different." });
+  add("P-irene", "F", "Irene Alyssa Marie", "", "Your ex-wife; Violet's mother. Glenda's 2022 obituary lists you as \"Joseph (Irene) Pavia Jr.\"", OW, { names: [{ given: "Irene Alyssa Marie", surname: "", type: "birth", src: OW }, { given: "Irene", surname: "Pavia", type: "married", src: GO }] });
+  add("P-violet", "F", "Violet Joy", "Pavia", "Your daughter. Glenda's 2022 obituary names her among the family as Violet Joy Pavia.", OW.concat(GO));
+  add("P-rachel", "F", "Rachel", "Pavia", "Your father's wife (Glenda's 2022 obituary: \"Joseph (Rachel) Pavia of Monroe\").", GO, { status: "probable", names: [{ given: "Rachel", surname: "Pavia", type: "married", src: GO }] });
+  add("P-timburd", "M", "Tim", "Burd", "Your aunt Jennifer's husband (Glenda's 2022 obituary).", GO, { status: "probable" });
+  add("P-tyler", "U", "Tyler", "Burd", "Your first cousin: Glenda's grandchild, Jennifer and Tim Burd's child (her 2022 obituary).", GO, { status: "probable" });
+  add("P-madeline", "U", "Madeline", "Burd", "Your first cousin: Glenda's grandchild, Jennifer and Tim Burd's child (her 2022 obituary).", GO, { status: "probable" });
+  add("P-ilene", "F", "Ilene", "Kennedy", "Barbara's child, your grandmother Laurie's sister: one of the three children Barbara's 2009 obituary names. Kennedy is her married name.", FO, { status: "probable", names: [{ given: "Ilene", surname: "Kennedy", type: "married", src: FO }] });
+  add("P-joes", "M", "Joseph", "Seconder", "Joe Seconder, your grandmother Laurie's brother: named in Barbara's 2009 obituary, and the great-uncle whose research on Joseph Termenas seeded this tree.", FO.concat(["S-joeseconder"]), { status: "probable" });
+  add("P-tania", "F", "Tania", "", "Your mother's cousin (your account). Which of Barbara's children is her parent is not yet known: she is placed with Ilene until you say (Q38).", OW, { status: "family" });
+  for (const [id, given, sur, spouse] of [["P-laurelk", "Laurel", "Kirkland", ""], ["P-clintonk", "Clinton", "Kirkland", "Paula"], ["P-alank", "Alan", "Kirkland", "Chola"], ["P-leslieh", "Leslie", "Hoffman", "Daniel"]])
+    add(id, "U", given, sur, `James Kirkland's child, your father's first cousin${spouse ? ` (married to ${spouse})` : ""}: named in James's 2021 obituary.`, JK, { status: "probable" });
+  const jk = P("P-jamesk"); if (jk) { jk.summary = "Glenda's brother, the eldest son of Buster and Joy: born 1 August 1936 in Tennessee (the obituary's header says 2 August), died 1 August 2020. His obituary names four children (Laurel, Clinton, Alan and Leslie) and a grandson James."; jk.names[0].src.push("S-jkirkland-obit"); }
+  const ggm = P("P-ggm"); if (ggm) ggm.summary += " Her 2009 obituary names three children, Laurie Jordan, Ilene Kennedy and Joseph Seconder, and counts 8 grandchildren and several great-grandchildren.";
+  const me = P("P-self"); if (me) { me.names.push({ given: "Joseph", surname: "Pavia Jr.", type: "record", src: GO, note: "Glenda's 2022 obituary: \"Joseph (Irene) Pavia Jr.\"" }); me.summary = "You. Your daughter is Violet Joy; your sisters Jessica and Samantha are your mother's daughters with Jeffrey Hinkle."; }
+  /* the spouses the records already named */
+  L.people.push(
+    { id: "P-donald", sex: "M", status: "probable", names: [{ given: "Donald T.", surname: "Dembeck", type: "birth", src: ["S-pavia-obits"] }], summary: "Caroline Pavia's husband, 1928 to 2018." },
+    { id: "P-christine", sex: "F", status: "probable", names: [{ given: "Christine", surname: "Pianowski", type: "birth", src: ["S-pavia-obits"] }], summary: "Charles P. Pavia's wife." }
+  );
+  L.families.push(
+    { id: "F-hinkle", partners: ["P-mother", "P-jhinkle"], children: ["P-jessica", "P-samantha"], ended: true },
+    { id: "F-self", partners: ["P-self", "P-irene"], children: ["P-violet"], ended: true },
+    { id: "F-father2", partners: ["P-father", "P-rachel"], children: [] },
+    { id: "F-burd", partners: ["P-jennifer", "P-timburd"], children: ["P-tyler", "P-madeline"] },
+    { id: "F-ilene", partners: ["P-ilene"], children: ["P-tania"], uncertain: { "P-tania": "Ilene's daughter? (Q38)" } },
+    { id: "F-jamesk", partners: ["P-jamesk"], children: ["P-laurelk", "P-clintonk", "P-alank", "P-leslieh"] },
+    { id: "F-dembeck", partners: ["P-caroline", "P-donald"], children: [] },
+    { id: "F-charlesp", partners: ["P-charlesp", "P-christine"], children: [] }
+  );
+  const fg = fam("F-ggm"); if (fg) { fg.children.push("P-ilene", "P-joes"); fg.uncertain = Object.assign(fg.uncertain || {}, { "P-ilene": "Bob Seconder's daughter too? Barbara's obituary names only her" }); }
+
+  /* the places the tree already knew, as events, so that everyone reaches the map (each event cites the person's own source) */
+  L.places.push(
+    { id: "PL-sc", name: "South Carolina", hist: "South Carolina", now: "South Carolina", lat: 34.0, lon: -81.0, approx: "the state" },
+    { id: "PL-macon-nc", name: "Macon County, North Carolina", hist: "Macon County, North Carolina", now: "Macon County, North Carolina", lat: 35.15, lon: -83.42 },
+    { id: "PL-rutherford-nc", name: "Rutherford County, North Carolina", hist: "Rutherford County, North Carolina", now: "Rutherford County, North Carolina", lat: 35.4, lon: -81.92 },
+    { id: "PL-haywood-nc", name: "Haywood County, North Carolina", hist: "Haywood County, North Carolina", now: "Haywood County, North Carolina", lat: 35.56, lon: -82.98 },
+    { id: "PL-person-nc", name: "Person County, North Carolina", hist: "Person County, North Carolina", now: "Person County, North Carolina", lat: 36.39, lon: -78.97 },
+    { id: "PL-anson-nc", name: "Anson County, North Carolina", hist: "Anson County, North Carolina", now: "Anson County, North Carolina", lat: 34.97, lon: -80.1 },
+    { id: "PL-grayson-va", name: "Grayson County, Virginia", hist: "Grayson County, Virginia", now: "Grayson County, Virginia", lat: 36.66, lon: -81.22 },
+    { id: "PL-carteret-nc", name: "Carteret County, North Carolina", hist: "Carteret County (Core Sound), North Carolina", now: "Carteret County, North Carolina", lat: 34.86, lon: -76.53 },
+    { id: "PL-pasquotank-nc", name: "Pasquotank County, North Carolina", hist: "Pasquotank Precinct, Albemarle County, North Carolina", now: "Pasquotank County, North Carolina", lat: 36.3, lon: -76.25 },
+    { id: "PL-bath-nc", name: "Bath, North Carolina", hist: "Bath County, North Carolina", now: "Beaufort County, North Carolina", lat: 35.48, lon: -76.81 },
+    { id: "PL-lowernorfolk", name: "Lower Norfolk County, Virginia", hist: "Lynnhaven parish, Lower Norfolk County, Virginia", now: "Virginia Beach, Virginia", lat: 36.88, lon: -76.07 },
+    { id: "PL-elizcity-va", name: "Elizabeth City, Virginia", hist: "Elizabeth City, Virginia Colony", now: "Hampton, Virginia", lat: 37.03, lon: -76.35 },
+    { id: "PL-chester-pa", name: "Chester County, Pennsylvania", hist: "Chester County, Pennsylvania", now: "Chester County, Pennsylvania", lat: 39.97, lon: -75.75 },
+    { id: "PL-guilford-nc", name: "Guilford County, North Carolina", hist: "Guilford County (Regulator country), North Carolina", now: "Guilford County, North Carolina", lat: 36.08, lon: -79.79 },
+    { id: "PL-canecreek", name: "Cane Creek, North Carolina", hist: "Cane Creek Monthly Meeting (Quaker), Orange County, North Carolina", now: "Snow Camp, Alamance County, North Carolina", lat: 35.9, lon: -79.43 },
+    { id: "PL-montgomery-va", name: "Montgomery County, Virginia", hist: "Montgomery County, Virginia", now: "Montgomery County, Virginia", lat: 37.17, lon: -80.39 },
+    { id: "PL-spotsylvania", name: "Spotsylvania County, Virginia", hist: "Spotsylvania County, Virginia", now: "Spotsylvania County, Virginia", lat: 38.2, lon: -77.66 },
+    { id: "PL-kent", name: "Kent, England", hist: "Kent, England", now: "Kent, England", lat: 51.25, lon: 0.75, approx: "the county" },
+    { id: "PL-cahaba", name: "Cahaba, Alabama", hist: "Cahaba Federal Prison (Castle Morgan), Cahaba, Alabama", now: "Old Cahawba, Alabama", lat: 32.32, lon: -87.1 },
+    { id: "PL-clinton-twp", name: "Clinton Township, Michigan", hist: "Resurrection Cemetery, Clinton Township, Macomb County, Michigan", now: "Clinton Township, Michigan", lat: 42.59, lon: -82.92 },
+    { id: "PL-allenpark", name: "Allen Park, Michigan", hist: "Allen Park, Wayne County, Michigan", now: "Allen Park, Michigan", lat: 42.26, lon: -83.21 }
+  );
+  const CONF = { proven: "proven", probable: "probable", possible: "possible", family: "probable" };
+  const ev = (who, type, text, sort, place, conclusion, value) => {
+    const p = P(who); if (!p) return; const src = (p.names[0].src || [])[0]; if (!src) return;
+    L.events.push({ id: `E-k-${who.slice(2)}-${type}-${sort.slice(0, 4)}`, type, who: [who], date: { text, sort }, place, conclusion, confidence: CONF[p.status] || "possible",
+      assert: [{ src, value: value || conclusion, info: "secondary", ev: "direct", note: "from the person's own summary in this tree, placed on 26 Nov 2026" }] });
+  };
+  ev("P-jessec", "birth", "about 1880", "1880-01-01", "PL-monroetn", "Born about 1880 in Monroe County, Tennessee (compiled trees).");
+  ev("P-emaline", "birth", "1856", "1856-01-01", "PL-loudon", "Born in 1856 in Loudon, Tennessee (compiled trees).");
+  ev("P-jessea", "death", "1895", "1895-01-01", "PL-monroetn", "Died in 1895 in Monroe County, Tennessee; buried at Ballplay Ebenezer Cemetery (compiled trees).");
+  ev("P-polly", "death", "1920", "1920-01-01", "PL-monroetn", "Died in 1920 in Monroe County, Tennessee (compiled trees).");
+  ev("P-jmgiles", "birth", "1827", "1827-01-01", "PL-sc", "Born in 1827 in South Carolina (compiled trees).");
+  ev("P-jmgiles", "death", "1903", "1903-01-01", "PL-monroetn", "Died in 1903 in Monroe County, Tennessee; buried at Ball Play Cemetery.");
+  ev("P-jamesak", "residence", "until about 1830", "1825-01-01", "PL-macon-nc", "Lived in Macon County, North Carolina before moving to Monroe County, Tennessee about 1830 (compiled trees).");
+  ev("P-jamesak", "death", "1869", "1869-01-01", "PL-polk", "Died in 1869 in Polk County, Tennessee (compiled trees).");
+  ev("P-jamesb", "marriage", "17 Mar 1825", "1825-03-17", "PL-haywood-nc", "Married Parthenia Turner on 17 March 1825 in Haywood County, North Carolina (compiled trees).");
+  ev("P-jamesb", "death", "1873", "1873-01-01", "PL-monroetn", "Died in 1873 in Monroe County, Tennessee; buried at Antioch Baptist Church (compiled trees).");
+  ev("P-parthenia", "birth", "1807", "1807-01-01", "PL-person-nc", "Born in 1807 in Person County, North Carolina (compiled trees).");
+  ev("P-parthenia", "death", "1877", "1877-01-01", "PL-monroetn", "Died in 1877 in Monroe County, Tennessee (compiled trees).");
+  ev("P-nathan", "residence", "1810", "1810-01-01", "PL-rutherford-nc", "In Rutherford County, North Carolina in 1810 (compiled trees).");
+  ev("P-nathan", "residence", "by 1824", "1824-01-01", "PL-monroetn", "In Monroe County, Tennessee by 1824 (compiled trees).");
+  ev("P-benjamin", "death", "about 1860", "1860-01-01", "PL-monroetn", "Died about 1860 in Monroe County, Tennessee (compiled trees).");
+  ev("P-nathaniel", "will", "9 May 1816", "1816-05-09", "PL-anson-nc", "Signed his will on 9 May 1816 in Anson County, North Carolina; it was proved by April 1818.");
+  ev("P-wesley", "death", "1855", "1855-01-01", "PL-monroetn", "Died in 1855 in Monroe County, Tennessee (compiled trees).");
+  ev("P-tdavis", "birth", "1734", "1734-01-01", "PL-chester-pa", "Born in 1734 in Chester County, Pennsylvania (compiled trees).");
+  ev("P-tdavis", "residence", "about 1768-1771", "1770-01-01", "PL-guilford-nc", "A Regulator in Guilford County, North Carolina (compiled trees and DAR).");
+  ev("P-tdavis", "service", "the Revolution", "1780-01-01", "PL-montgomery-va", "Served in the Montgomery County, Virginia militia (DAR A030698; not found in McAllister's 1913 lists).");
+  ev("P-tdavisjr", "residence", "in his lifetime (1760-1826)", "1790-01-01", "PL-canecreek", "Of the Cane Creek Quaker meeting, North Carolina (compiled trees and Quaker minutes).");
+  ev("P-charlesdav", "death", "1801", "1801-01-01", "PL-chester-pa", "Died in 1801 in Chester County, Pennsylvania (compiled).");
+  ev("P-johnb", "will", "1800", "1800-01-01", "PL-grayson-va", "His 1800 will, in Grayson County, Virginia, names his granddaughter Rebecca (compiled).");
+  ev("P-nbryant", "will", "1766", "1766-01-01", "PL-carteret-nc", "His will was probated in Carteret County, North Carolina in 1766 (compiled; WikiTree cites 18 April 1766).");
+  ev("P-johnm", "will", "25 Dec 1741", "1741-12-25", "PL-pasquotank-nc", "His will, dated 25 December 1741 in Pasquotank County, names his daughter Elener Bryant.", "Grimes 1910, p. 239");
+  ev("P-joelm", "will", "24 Oct 1715", "1715-10-24", "PL-bath-nc", "His will, dated 24 October 1715 in Bath County, proved 3 July 1716.", "Grimes 1910, p. 239");
+  ev("P-johnm-sr", "residence", "1645-1662", "1655-01-01", "PL-lowernorfolk", "A churchwarden of Lynnhaven parish (1645) and a justice of Lower Norfolk County (1660-1662) (records; the link to this tree is compiled).");
+  ev("P-tkeeling", "residence", "1632-1633", "1632-01-01", "PL-elizcity-va", "Burgess for Elizabeth City, Virginia in 1632-33 (compiled).");
+  ev("P-abrogers", "residence", "1714-1762", "1740-01-01", "PL-spotsylvania", "Of Spotsylvania County, Virginia (one compiled tree).");
+  ev("P-aestes", "birth", "1647", "1647-01-01", "PL-kent", "Born in 1647 in Kent, England; came to Virginia about 1674 (compiled).");
+  ev("P-peterc", "service", "24 Sep 1864 to 1865", "1864-09-24", "PL-cahaba", "Company F, 3rd Tennessee Cavalry (Union); captured with his company in September 1864 and held at Cahaba, Alabama.", "the 1866 Tennessee Adjutant General's report lists him in Company F");
+  ev("P-peterc", "residence", "1870 and 1880", "1870-06-01", "PL-mcminn", "In McMinn County, Tennessee in 1870 and 1880 (compiled censuses).");
+  ev("P-whtippens", "marriage", "19 Sep 1867", "1867-09-19", "PL-mcminn", "Married Eliza Owens on 19 September 1867 in McMinn County, Tennessee (compiled).");
+  ev("P-caroline", "burial", "after 31 Dec 2014", "2015-01-01", "PL-clinton-twp", "Died on 31 December 2014; buried at Resurrection Cemetery, Clinton Township.");
+  ev("P-charlesp", "death", "16 Apr 2009", "2009-04-16", "PL-allenpark", "Died on 16 April 2009 in Allen Park, Michigan.");
+  ev("P-costantino", "birth", "1871", "1871-01-01", "PL-malta", "Born in 1871 in Malta (his dates from other members' trees).");
+  ev("P-carmela", "birth", "1872", "1872-01-01", "PL-malta", "Born in 1872 in Malta (her dates from other members' trees).");
+  ev("P-paulp", "residence", "1926", "1926-09-04", "PL-malta", "Of Malta, as named on his son's 1926 marriage record.");
+  ev("P-carolinep", "residence", "1926", "1926-09-04", "PL-malta", "Of Malta, as named on her son's 1926 marriage record.");
+  { const m = P("P-mel"); if (m) { m.names[0].src.push("S-feole-obit"); m.summary += " Born 31 January 1940, died 28 April 2009 in Holly; buried at Lakeside Cemetery, Holly (his obituary)."; } }
+  L.events.push({ id: "E-k-mel-death-2009", type: "death", who: ["P-mel"], date: { text: "28 Apr 2009", sort: "2009-04-28" }, place: "PL-holly", conclusion: "Died in Holly, Michigan on 28 April 2009, three months after Barbara; buried at Lakeside Cemetery, Holly.", confidence: "probable",
+    assert: [{ src: "S-feole-obit", value: "Melvin Feole, age 69 of Holly died Tues. April 28, 2009 ... preceded in death by his wife Barbara Feole on Jan. 22, 2009", info: "primary", ev: "direct", note: "quoted by Gemini" }] });
+
+  /* questions: Q22 is answered; what is still to ask */
+  const q22 = L.questions.findIndex((q) => q.id === "Q22"); if (q22 >= 0) L.questions.splice(q22, 1);
+  L.questions.push(
+    { id: "Q38", p: 1, person: "P-tania", q: "Tania, your mother's cousin: who are her parents? Barbara's three children were Laurie (your grandmother), Ilene Kennedy and Joe Seconder, so Tania is most likely Ilene's or Joe's daughter. And David Holgate: is he Tania's father, or Betty Holgate's son (Barbara's sister's side)?", sources: "you, your mother or Joe Seconder", task: "owner" },
+    { id: "Q39", p: 2, person: "P-charles", q: "Your grandfather Charles A. Sanders's brothers and sisters, and your mother's own cousins on both sides: Barbara's obituary counts 8 grandchildren, and the tree knows two (your mother, and Tania if she is one).", sources: "you and your mother", task: "owner" }
+  );
+  L.log.push({ id: "L22", date: "2026-11-26", by: "Claude", q: "Q22", where: "your message; Gemini's forensic audit (Barbara Feole's, Melvin Feole's and James Kirkland's obituaries, as quoted); Glenda's obituary", terms: "the whole family", result: "found", note: "Q22 answered: you are Joseph (Irene) Pavia Jr. and Violet is your daughter. Added Jeffrey Hinkle and your sisters Jessica and Samantha; Irene and Violet; Barbara's other children Ilene Kennedy and Joe Seconder; Tania (parent to confirm, Q38); your aunt Jennifer's husband Tim and children Tyler and Madeline Burd; James Kirkland's four children; Rachel, Donald Dembeck and Christine Pianowski. Placed events for 38 more people so they reach the map." });
+})(window.KIN_LINEAGE);
+/* your own card: the four lines, not one (owner, 2026-11-26) */
+(function (L) { const me = L.people.find((p) => p.id === "P-self"); if (me) me.note = "Your four grandparents' lines: Pavia (Malta, then Detroit), Kirkland (Tennessee back to colonial North Carolina and Virginia), Sanders (Michigan), and Seconder and Termenas (England, Ontario and Lithuania)."; })(window.KIN_LINEAGE);

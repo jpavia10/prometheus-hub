@@ -81,6 +81,7 @@ export function build() {
     cur = nx;
   }
   const side = (id) => { let n = ahn[id]; if (!n || n === 1) return "self"; while (n > 3) n >>= 1; return n === 2 ? "pat" : "mat"; };
+  const sideVia = (id) => { let cur = id; for (let i = 0; i < 12 && cur; i++) { if (gen[cur] != null) return side(cur); const q = pos[cur]; cur = q && q.rel ? q.rel.of : null; } return "self"; };
 
   /* years, then estimates for everyone without one: from children first, then from parents */
   const Y = {};
@@ -101,6 +102,7 @@ export function build() {
   for (const p of M.people) {
     const y = Y[p.id];
     if (!y.by) y.by = NOW - 40, y.bq = "estimate";
+    if (y.by > NOW - 1) y.by = NOW - 3, y.bq = "estimate";
     if (p.living || p.id === L.root) { y.dy = NOW; y.dq = "living"; }
     else if (!y.dy) { y.dy = Math.min(NOW, y.by + 72); y.dq = "estimate"; }
     y.dy = Math.max(y.dy, y.by + 1);
@@ -133,6 +135,16 @@ export function build() {
       }
       const sp = spouses(p.id).find((s) => pos[s]);
       if (sp) { const s = pos[sp], g = Math.max(1, gen[sp] || 1); pos[p.id] = { th: s.th + 0.22 / g, r: s.r + 1.8, span: 0, rel: { kind: "spouse", of: sp } }; continue; }
+      /* a child of someone already placed (owner, 2026-11-26: his daughter, his half-sisters, his great-grandmother's other
+         children and theirs): one step inside the parent, the children fanned out beside each other */
+      const par = parents(p.id).find((q) => pos[q]);
+      if (par) {
+        const s = pos[par], k = children(par).filter((c) => c !== p.id && pos[c] && pos[c].rel && pos[c].rel.kind === "child").length;
+        const off = (k % 2 ? -1 : 1) * Math.ceil(k / 2) * (s.r > 1 ? 0.5 / s.r : 0.9);
+        pos[p.id] = s.r > 1 ? { th: s.th + 0.12 / Math.max(1, s.r / RS) + off, r: Math.max(1.4, s.r - 1.6), span: 0, rel: { kind: "child", of: par } }
+          : { th: Math.PI / 2 + Math.PI + off, r: 1.8, span: 0, rel: { kind: "child", of: par } }; /* your own children: just in front of you */
+        continue;
+      }
       const kid = children(p.id).find((c) => pos[c]);
       if (kid) { const s = pos[kid]; pos[p.id] = { th: s.th + 0.15, r: s.r + RS, span: 0, rel: { kind: "parent", of: kid } }; }
     }
@@ -143,7 +155,7 @@ export function build() {
     const q = pos[p.id]; if (!q) continue;
     const y = Y[p.id], g = gen[p.id];
     const n = {
-      id: p.id, p, gen: g != null ? g : null, ahn: ahn[p.id] || null, side: g != null ? side(p.id) : (q.rel ? side(q.rel.of) : "self"),
+      id: p.id, p, gen: g != null ? g : null, ahn: ahn[p.id] || null, side: g != null ? side(p.id) : sideVia(p.id),
       th: q.th, r: q.r, x: q.r * Math.cos(q.th), z: q.r * Math.sin(q.th), y: yOf(y.by), by: y.by, dy: y.dy, bq: y.bq, dq: y.dq,
       ghost: !!p.ghost, status: p.id === L.root ? "self" : p.status || "possible", rel: q.rel || null, ancestor: g != null,
     };
@@ -161,6 +173,7 @@ export function build() {
 
   /* who they are to you */
   const great = (k) => (k <= 0 ? "" : k <= 2 ? "great-".repeat(k) : `${k}× great-`);
+  const KIN = window.KinKinship ? window.KinKinship.make(M.families, P, L.root) : null;
   const rel = (id) => {
     const n = byId[id]; if (!n) return "";
     const p = n.p, f = p.sex === "F";
@@ -172,6 +185,7 @@ export function build() {
       if (g === 2) return (f ? "Your grandmother" : "Your grandfather") + ", " + sd;
       return `Your ${great(g - 2)}${f ? "grandmother" : "grandfather"}, ${sd}`;
     }
+    if (KIN) { const r = KIN.rel(id); if (r) return r; }
     if (n.rel && n.rel.kind === "sibling") {
       const a = byId[n.rel.of], g = a ? a.gen : 0;
       if (g === 0) return f ? "Your sister" : "Your brother";

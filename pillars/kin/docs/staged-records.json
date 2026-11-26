@@ -1896,6 +1896,353 @@
    "verdict": "set-aside",
    "note": "A soil survey title page. Nothing on anyone in the tree.",
    "read": "2026-11-26"
+  },
+  {
+   "name": "02_Michigan_Ancestral_067_Joseph_M_Termenas_WWI_Veterans_Personnel_Card.pdf",
+   "id": "16TakqtnVkq3mqlw59ArrFbb45fBwUGJq",
+   "book": "Archives of Michigan (Michiganology), WWI Veterans Personnel Cards",
+   "page": "",
+   "what": "Statement of service card (Form 724-1 1/2, A.G.O., 12 Mar 1920)",
+   "people": [
+    "P-joseph"
+   ],
+   "verdict": "source",
+   "src": "S-mi-ww1",
+   "note": "Joseph's Michigan service card: enlisted N.A. Columbus Barracks, Ohio, 20 Sept 1917; born Russia, 24 4/12 years; Co. E, 25th Engineers to 17 Oct 1917, then Co. A, 29th Engineers; Pvt. 1st class 1 Mar 1919; honorably discharged 15 July 1919 on demobilization, 0% disabled. The name and address lines are unreadable in the text layer.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "00_Michiganology_162_Michiganology_Pavia_WWI_Veterans_Personnel_Card__Long__Robert_J___Archiv.pdf",
+   "id": "1v4El438myUphA09276aT1fIYK2yYnav7",
+   "book": "Archives of Michigan (Michiganology), WWI Veterans Personnel Cards",
+   "page": "",
+   "what": "Card for Robert J. Long",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A search hit for \"Pavia\" in the card's scrambled reverse side. Robert J. Long is not in the tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "00_Michiganology_163_Michiganology_Pavia_WWI_Veterans_Personnel_Card__Barbieri__Joseph___Arch.pdf",
+   "id": "1Zu4hvgKDRNu9LjMUPHLaq7oecAYCyrPa",
+   "book": "Archives of Michigan (Michiganology), WWI Veterans Personnel Cards",
+   "page": "",
+   "what": "Card for Joseph Barbieri, Detroit",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Joseph Barbieri, born in Pavia, Italy (the city), inducted at Detroit in 1918. A place-name match: not Joseph Pavia of Malta.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "00_Michiganology_174_Michiganology_Diedo_RR1440___Archives_of_Michigan_Digital_Collections.pdf",
+   "id": "16V-xc51YqchrKYD2xSZcdb8h-L86SxbR",
+   "book": "Archives of Michigan (Michiganology)",
+   "page": "",
+   "what": "Institute for Fisheries Research report 1440 (1955)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A trout-hatchery report. Nothing on the family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "02_Michigan_Detroit_105_Pontiac___a_drama_of_old_Detroit__1763__IA_pontiacdramaofol00whi.pdf",
+   "id": "1_TZTx3ZSxMGradZHqyNQ3kwzeXzoCMLW",
+   "book": "Pontiac: a drama of old Detroit, 1763 (Internet Archive)",
+   "page": "",
+   "what": "A play",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A 19th-century play about Detroit in 1763. Nothing on the family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "04_Hartshorne_OK_134_2010_Census_Urban_Cluster_Reference_Map_for_Hartshorne__Oklahoma.pdf",
+   "id": "1JfSqI3yPWFPDQqYofXaxxjQi7PUxVx4B",
+   "book": "U.S. Census Bureau (2010)",
+   "page": "",
+   "what": "Urban cluster map, Hartshorne, Oklahoma",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A modern map of Hartshorne, where Katherine Springer (born a Matukaitis?) was born in 1907. Background only.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "04_Hartshorne_OK_140_Coal_development_planning_-_decisions_on_the_management_of_U.S._.pdf",
+   "id": "1SESYcRS9uO-BJNL1C3ihYfgu6g6Jsqlw",
+   "book": "U.S. government report on coal development",
+   "page": "",
+   "what": "Coal development planning",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Background on the Oklahoma coal field around Hartshorne. No names.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "05_Ontario_HomeChildren_145_A_visit_to_Canada_and_the_United_States_in_connection_with_the_m.pdf",
+   "id": "1RBQwmYEwqtsrUDCto8Mmyr1RH-9vC3JV",
+   "book": "A visit to Canada and the United States (Internet Archive)",
+   "page": "",
+   "what": "A report on child emigration",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Background on child emigration to Canada, for Arthur Seconder's 1892 crossing (H9). It names no one in the tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NARA_1950_Census_Detroit_ED85-1999_Sheet9_Joseph_Grace_Pavia.jpg",
+   "id": "1cDijjwmwyoYbC81nevTkT2Ufa0xbGCSM",
+   "book": "1950 U.S. census (National Archives)",
+   "page": "ED 85-1999, sheet 9",
+   "what": "Detroit, Michigan",
+   "people": [
+    "P-josephp",
+    "P-grace",
+    "P-francis"
+   ],
+   "verdict": "source",
+   "src": "S-census-1950-pavia",
+   "note": "Joseph and Grace Pavia's household, read by Claude from the image on 24-25 Nov (C13).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NARA_1950_Census_Detroit_ED85-997_Sheet19_EXCLUDED_Joseph_Erminia_Pavia.jpg",
+   "id": "1cTvmprt5JmieGUJb0iV_csgFY565ce2d",
+   "book": "1950 U.S. census (National Archives)",
+   "page": "ED 85-997, sheet 19",
+   "what": "Detroit, Michigan",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Joseph A. and Erminia Pavia, the other Maltese household, ruled out side by side (L12). Kept for the record.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Joseph Termena - Discharge Paper (1919).pdf",
+   "id": "1EJpx_ljScV6NKHccJDCtzqBsB2wwsRXb",
+   "book": "U.S. Army, Honorable Discharge (family copy)",
+   "page": "",
+   "what": "15 July 1919",
+   "people": [
+    "P-joseph"
+   ],
+   "verdict": "source",
+   "src": "S-discharge",
+   "note": "Read at full size when the tree was built (service number re-read 25 Nov).",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Joseph Termena - Enlistment Record (1919).pdf",
+   "id": "1YhtWxKW4CI3z9HihV40TKJ6oMYPtF997",
+   "book": "U.S. Army, Enlistment Record (family copy)",
+   "page": "",
+   "what": "reverse of the discharge",
+   "people": [
+    "P-joseph"
+   ],
+   "verdict": "source",
+   "src": "S-enlist",
+   "note": "Read at full size when the tree was built.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "Joseph Termena - Naturalization Certificate (1919).pdf",
+   "id": "1g1UYF2XJu-ILJpxhG-onveW79g4eRwEy",
+   "book": "U.S. Naturalization Service (family copy)",
+   "page": "",
+   "what": "Certificate no. 1229058, 14 July 1919",
+   "people": [
+    "P-joseph"
+   ],
+   "verdict": "source",
+   "src": "S-nat-cert",
+   "note": "Read at full size when the tree was built.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0019_Carteret.pdf",
+   "id": "1jw7yLTvs9jwEi0Ftwrn6E-r8_bui9_3D",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "1",
+   "what": "Journal of the Hillsborough convention, 1788",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Members by county (Thomas Alderson for Beaufort; Carteret's members). No one in the tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0033_Carteret.pdf",
+   "id": "12zIFsY-mjJcFMYk6mUr8PwbyjaiVrYVG",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "",
+   "what": "Convention journal, 1788",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Members taking seats and the rules. No one in the tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0067_Carteret.pdf",
+   "id": "16Bjg--ZMPMpsjYIOXk9_pIneytQ93Rdn",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "25",
+   "what": "Convention vote, 1788",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A division list (Wm. Sheppard of Carteret, a Devotion Davis). No one in the tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0173_Bryant_JohnMartin.pdf",
+   "id": "1FOukHniurt58r9P1MzZOzxY9dCebZKsS",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "78",
+   "what": "Revolutionary pensioners, M to N",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "\"Bryant\" is a first name (Medley, Bryant); Martins are other men. Not this tree's.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0517_Bryant.pdf",
+   "id": "1qOrj8dLIRWj7bvTw8J3jJ4Is_QGlYkPe",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "248",
+   "what": "Pasquotank Precinct quit rents",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A William Bryant and a Simon Bryant hold land in Pasquotank Precinct, with Baylys and Davises (scan badly garbled). A lead for the Core Sound Bryants' ties to Pasquotank (C18), not a link to Nicholas.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0839_Regulators.pdf",
+   "id": "11pM0epE58WRbzc1-icayIr1JsXr9B0P2",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "409",
+   "what": "Pitt Regiment against the Regulators, 1770-1771",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Col. John Simpson's letters and receipts. No one in the tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0841_Regulators.pdf",
+   "id": "10krsmKC3KeqNUFFE6KBsFZBtHrZ8o-5Z",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "410",
+   "what": "Pitt Regiment; Orange sheriff's interrogatories, 1770",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Sheriff John Butler of Orange on the Regulators. No Davis.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0843_Regulators.pdf",
+   "id": "1oB6OWOoSv6bDHuADXJvH6fJIWM1ReWRt",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "411",
+   "what": "Regulator interrogatories, 1770",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "The same Anson and Cumberland page staged under Anson. No one in the tree.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0963_Regulators.pdf",
+   "id": "1jFwUea3Glac9CdwvQhA3UnWybLJzsbEK",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "471",
+   "what": "Accounts for the 1771 campaign",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Craven claims for horses and wagons. No Davis.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_StateRecords_V22_Colonial_p0983_Regulators.pdf",
+   "id": "1E_qi0oUn55gzcg3pETFL0wmJE0LD4BbE",
+   "book": "Clark, State Records of North Carolina, vol. 22",
+   "page": "481",
+   "what": "Accounts for the 1771 campaign",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "A wounded government soldier's pension (Beaufort). No Davis.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_Inventories_p0097_Bryant.pdf",
+   "id": "1N4GHA4Va7K3awnpMuYRGzLJ6PZKnT2fW",
+   "book": "Grimes, North Carolina Wills and Inventories (1912)",
+   "page": "95",
+   "what": "Will of John Bryant, Edgecombe, 1734",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "An Edgecombe Bryant (sons William and Arthur). Not Nicholas Bryant's family.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_Inventories_p0099_Bryant.pdf",
+   "id": "1c1j71jpYYX0Zp8vMt7ukul236wY2nuKA",
+   "book": "Grimes, North Carolina Wills and Inventories (1912)",
+   "page": "96-97",
+   "what": "Wills of John Bryant (end) and Simon Bryan of Bertie, 1751",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Bertie and Edgecombe Bryans. Not this tree's.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_Inventories_p0134_Bryant.pdf",
+   "id": "1sq1IAaWlkQDkp5uyc33eaL4SY4iit7KX",
+   "book": "Grimes, North Carolina Wills and Inventories (1912)",
+   "page": "132",
+   "what": "Will of John Cotton, Bertie, 1728",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Capt. Thomas Bryant a witness in Bertie. A namesake.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_Inventories_p0199_JohnMartin_Martin.pdf",
+   "id": "1Uy_VDVoYB7PRD-8c1Eup5eKUGXYzSVNd",
+   "book": "Grimes, North Carolina Wills and Inventories (1912)",
+   "page": "197",
+   "what": "Will of John Martin Franck, Craven, 1744",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "John Martin Franck, a Craven German settler: \"Martin\" is his middle name. Not this tree's.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_Inventories_p0201_JohnMartin_Martin.pdf",
+   "id": "1NN80WsxyISM_tzJoxtKesTirPbcZ3CvB",
+   "book": "Grimes, North Carolina Wills and Inventories (1912)",
+   "page": "199",
+   "what": "Will of John Martin Franck (continued)",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "The rest of Franck's will (children Worsley and Harrold). Not this tree's.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_Inventories_p0202_JohnMartin_Martin.pdf",
+   "id": "1iGIH_RGCaf4iFplcCTFpLoKc6hoEdX05",
+   "book": "Grimes, North Carolina Wills and Inventories (1912)",
+   "page": "200",
+   "what": "End of Franck's will; Thomas Fry of Bath",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "Not this tree's.",
+   "read": "2026-11-26"
+  },
+  {
+   "name": "NC_Grimes_Wills_Inventories_p0554_Carteret_Martin.pdf",
+   "id": "1Q3ex91_MDOfJV8Z4ITXkwO-Q79U5Yph6",
+   "book": "Grimes, North Carolina Wills and Inventories (1912)",
+   "page": "552",
+   "what": "Inventory of Jacob Shepard, Carteret, 1773",
+   "people": [],
+   "verdict": "set-aside",
+   "note": "\"Jo. Martin\" is Governor Josiah Martin taking the oath. Not this tree's.",
+   "read": "2026-11-26"
   }
  ]
 }

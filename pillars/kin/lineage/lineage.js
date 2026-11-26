@@ -44,7 +44,7 @@
       if (n) { o.names = [{ given: n.given || "", surname: n.surname || "", type: "birth", local: true }].concat(o.names.filter((x) => x.given || x.surname)); if (n.sex) o.sex = n.sex; if (n.born) o.born_local = n.born; if (n.note) o.note_local = n.note; if (o.status === "placeholder" && (n.given || n.surname)) o.status = "named"; }
       return o;
     }).concat(loc.people.map((p) => Object.assign({ local: true, status: "named" }, p)));
-    const families = L.families.map((f) => ({ id: f.id, partners: f.partners.slice(), children: f.children.slice(), events: (f.events || []).slice(), uncertain: f.uncertain || {} })).concat(loc.families.map((f) => Object.assign({ local: true, events: [] }, f)));
+    const families = L.families.map((f) => ({ id: f.id, partners: f.partners.slice(), children: f.children.slice(), events: (f.events || []).slice(), uncertain: f.uncertain || {}, ended: !!f.ended })).concat(loc.families.map((f) => Object.assign({ local: true, events: [] }, f)));
     return { people, P: by(people), families, F: by(families), E: by(L.events), PL: by(L.places), SRC: by(L.sources), C: by(L.conflicts) };
   }
   const nm = (p) => { const n = (p.names || []).find((x) => x.given || x.surname); return n ? `${n.given || ""} ${n.surname || ""}`.trim() : (p.placeholder || "Unnamed"); };
@@ -103,26 +103,32 @@
         const sib = f && f.children.find((c) => pos[c]);
         const sp = familiesOf(M, p.id).map((g) => g.partners.find((q) => q !== p.id && pos[q])).find(Boolean);
         const kid = familiesOf(M, p.id).map((g) => g.children.find((c) => pos[c])).find(Boolean);
-        const anchor = sib || sp || (kid ? null : null), gen = sib ? pos[sib].gen : sp ? pos[sp].gen : kid ? pos[kid].gen + 1 : null;
+        /* a child of someone already placed goes in the row below them, under the couple (owner, 2026-11-26: the tree showed only
+           ancestors, not his daughter, his sisters or his great-grandmother's other children and their children) */
+        const pp = !sib && !sp && f ? f.partners.filter((q) => pos[q]) : [], pmid = pp.length ? pp.reduce((s, q) => s + pos[q].x, 0) / pp.length : null;
+        const anchor = sib || sp || null, gen = sib ? pos[sib].gen : sp ? pos[sp].gen : pmid != null ? pos[pp[0]].gen - 1 : kid ? pos[kid].gen + 1 : null;
         if (gen == null) continue;
         const row = Object.values(pos).filter((q) => q.gen === gen).map((q) => q.x);
-        const near = anchor ? pos[anchor].x : pos[kid].x;
+        const near = anchor ? pos[anchor].x : pmid != null ? pmid : pos[kid].x;
         /* a sibling or spouse goes on the side away from the anchor's partner, never between a couple */
         const aid = anchor || kid, mate = aid && familiesOf(M, aid).flatMap((g) => g.partners).find((q) => q !== aid && q !== p.id && pos[q]);
-        const dir = mate && pos[mate].x > near ? -1 : 1; let x = near + dir * (W + GX); while (row.some((r) => Math.abs(r - x) < W + GX - 1)) x += dir * (W + GX);
+        /* never inside a couple: the span between two partners in the same row counts as taken */
+        const spans = M.families.map((g) => g.partners.filter((q) => pos[q] && pos[q].gen === gen).map((q) => pos[q].x)).filter((xs) => xs.length > 1).map((xs) => [Math.min(...xs), Math.max(...xs)]);
+        const busy = (x) => row.some((r) => Math.abs(r - x) < W + GX - 1) || spans.some(([lo, hi]) => x > lo - 1 && x < hi + 1);
+        const dir = mate && pos[mate].x > near ? -1 : 1; let x = pmid != null && !anchor ? near : near + dir * (W + GX); while (busy(x)) x += dir * (W + GX);
         pos[p.id] = { x, gen };
       }
       left = M.people.filter(placeable);
     }
-    const gens = Object.values(pos).map((q) => q.gen), top = Math.max(...gens);
+    const gens = Object.values(pos).map((q) => q.gen), top = Math.max(...gens), bottom = Math.min(0, ...gens);
     for (const k in pos) pos[k].y = (top - pos[k].gen) * (H + GY) + H / 2;
     const xs = Object.values(pos).map((q) => q.x);
     const older = Object.keys(pos).filter((pid) => win[pid] === D && parentsOf(M, pid) && parentsOf(M, pid).partners.some((q) => M.P[q]));
-    return { pos, minX: Math.min(...xs) - W / 2, maxX: Math.max(...xs) + W / 2, height: (top + 1) * (H + GY) - GY, vroot, older };
+    return { pos, minX: Math.min(...xs) - W / 2, maxX: Math.max(...xs) + W / 2, height: (top - bottom + 1) * (H + GY) - GY, vroot, older };
   }
 
   /* ------------------------------------------------------------------ the tree */
-  const ui = { sel: "P-joseph", view: { s: 1, x: 0, y: 0 }, M: null, lay: null, expand: new Set(), vroot: null };
+  const ui = { sel: L.root, view: { s: 1, x: 0, y: 0 }, M: null, lay: null, expand: new Set(), vroot: null };
   const depth = () => (window.innerWidth < 600 ? 2 : 3); /* the tree shows the person it is rooted on and two generations above on a phone (three on a wide screen); "↑ older" climbs, "You" comes back */
   function drawTree(root) {
     const M = ui.M = model(), lay = ui.lay = layout(M), lit = ui.lit = line(M);
@@ -174,6 +180,8 @@
     const GEN = ["You", "Parents", "Grandparents", "Great-grandparents"], topGen = Math.max(...Object.values(lay.pos).map((q) => q.gen));
     const stubGen = new Set((M.stubs || []).map((id) => lay.pos[id] && lay.pos[id].gen));
     const g0 = gensFrom(M)[lay.vroot] || 0, upGen = new Set((lay.older || []).map((id) => lay.pos[id].gen));
+    const lowGen = Math.min(0, ...Object.values(lay.pos).map((q) => q.gen)), DOWN = ["Children", "Grandchildren", "Great-grandchildren"];
+    for (let gi = lowGen; gi < 0; gi++) { const gy = (topGen - gi) * (H + GY) - 12, tx = add("text", { x: lay.minX, y: gy, class: "ln-genl" }); tx.textContent = (DOWN[-gi - 1] || `${-gi - 2}× great-grandchildren`).toUpperCase(); }
     for (let gi = 0; gi <= topGen; gi++) { const ag = g0 + gi, gy = (topGen - gi) * (H + GY) - (stubGen.has(gi) || upGen.has(gi) ? 34 : 12), tx = add("text", { x: lay.minX, y: gy, class: "ln-genl" }); tx.textContent = (GEN[ag] || `${ag - 2}× great-grandparents`).toUpperCase(); }
     const vb = { x: lay.minX - 30, y: -50, w: lay.maxX - lay.minX + 60, h: lay.height + 80 };
     svg.dataset.vb = JSON.stringify(vb);
@@ -301,17 +309,19 @@
     /* the family album (album.js): every picture this person is in, once each */
     const pics = (L.media || []).filter((m) => m.album && (m.person === pid || (m.people || []).includes(pid))).filter((m, i, a) => a.findIndex((x) => x.img === m.img) === i).sort((a, b) => (a.year || 0) - (b.year || 0));
     const cons = L.conflicts.filter((c) => c.person === pid), qs = L.questions.filter((q) => q.person === pid).sort((a, b) => a.p - b.p);
+    const K = window.KinKinship ? window.KinKinship.make(M.families, M.P, L.root) : null, toYou = pid === L.root ? "" : K ? K.rel(pid) : "";
+    const sibs = (() => { const own = parentsOf(M, pid); return own ? M.families.filter((f) => f.partners.some((q) => own.partners.includes(q))).flatMap((f) => f.children).filter((c, i, a) => c !== pid && a.indexOf(c) === i) : []; })();
     const fam = { parents: (parentsOf(M, pid) || { partners: [] }).partners, spouses: familiesOf(M, pid).flatMap((f) => f.partners.filter((q) => q !== pid)), kids: familiesOf(M, pid).flatMap((f) => f.children) };
     const rel = (ids, label) => ids.length ? `<p class="ln-rel"><span>${label}</span>${ids.map((q) => `<button type="button" class="ln-link" data-go="${q}">${esc(M.P[q] ? (M.P[q].status === "placeholder" ? M.P[q].placeholder : nm(M.P[q])) : q)}</button>`).join("")}</p>` : "";
     const names = (p.names || []).filter((n) => n.given || n.surname).map((n) => `<span class="ln-name-chip" title="${esc(n.note || "")}">${esc(`${n.given} ${n.surname}`.trim())}<small>${esc(n.type)}</small></span>`).join("");
     el.innerHTML = `
-      <header class="ln-dhead"><p class="ln-kick">${esc(CONF[p.status] || p.status)}${p.local ? " · added on this device" : ""}</p>
+      <header class="ln-dhead"><p class="ln-kick">${toYou ? `${esc(toYou)} · ` : ""}${esc(CONF[p.status] || p.status)}${p.local ? " · added on this device" : ""}</p>
         <h3>${esc(p.status === "placeholder" ? p.placeholder : nm(p))}</h3><p class="ln-dlife">${esc(life(M, p))}${p.born_est ? ` · born ${esc(p.born_est.text)}` : ""}</p>
         ${names ? `<div class="ln-names">${names}</div>` : ""}</header>
       ${p.summary ? `<p class="ln-sum">${esc(p.summary)}</p>` : ""}${p.note ? `<p class="ln-note">${esc(p.note)}</p>` : ""}${p.note_local ? `<p class="ln-note">${esc(p.note_local)}</p>` : ""}
       ${p.born_est ? `<p class="ln-note">Basis for the estimate: ${esc(p.born_est.basis)}.</p>` : ""}
       ${p.infer && p.infer.length ? `<h4>What can be inferred</h4><ul class="ln-infer">${p.infer.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
-      ${rel(fam.parents, "Parents")}${rel(fam.spouses, "Spouse")}${rel(fam.kids, "Children")}
+      ${rel(fam.parents, "Parents")}${rel(sibs, "Brothers and sisters")}${rel(fam.spouses, "Spouse")}${rel(fam.kids, "Children")}
       ${namer(p)}
       ${ev.length ? `<h4>Life in the records</h4><ol class="ln-tl">${ev.map((e) => `
         <li class="ln-ev c-${e.confidence}"><div class="ln-evh"><time>${esc(e.date.text)}</time><b>${esc(TYPE[e.type] || e.type)}</b><span class="ln-conf">${esc(CONF[e.confidence] || e.confidence)}</span></div>
