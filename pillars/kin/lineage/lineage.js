@@ -722,11 +722,33 @@
     const root = tree, dos = tree.querySelector("#ln-dossier");
     /* the person sheet: a person's full page over the page you are on; closing it leaves you exactly where you were */
     const sheet = h("div", { class: "ln-sheet", role: "dialog", "aria-modal": "true", "aria-label": "Person" }); sheet.hidden = true;
-    sheet.innerHTML = `<div class="ln-sheet-in" tabindex="-1"><div class="ln-sheet-bar"><button type="button" class="btn small" data-sheet="tree">Show in the tree</button><button type="button" class="btn quiet small ln-sheet-x" data-sheet="close" aria-label="Close">×</button></div><div class="ln-dossier ln-sheet-body" aria-live="polite"></div></div>`;
+    sheet.innerHTML = `<div class="ln-sheet-in" tabindex="-1"><div class="ln-sheet-bar"><p class="ln-sheet-who" aria-hidden="true"><b></b><small></small></p><button type="button" class="btn small" data-sheet="tree">In the tree</button><button type="button" class="btn quiet small ln-sheet-x" data-sheet="close" aria-label="Close">×</button></div><div class="ln-dossier ln-sheet-body" aria-live="polite"></div></div>`;
     document.body.appendChild(sheet);   /* on <body>: #app carries a transform, which would pin a fixed sheet to it instead of the screen */
     const sheetIn = sheet.querySelector(".ln-sheet-in");
     let sheetBack = null;
-    openSheet = (pid) => { if (!ui.M.P[pid]) return; if (sheet.hidden) sheetBack = document.activeElement; ui.sheetPid = pid; ui.sel = pid; dossier(sheet.querySelector(".ln-sheet-body"), pid); sheet.hidden = false; document.body.classList.add("ln-sheet-on"); sheetIn.scrollTop = 0; sheetIn.focus({ preventScroll: true }); };
+    const sheetBody = sheet.querySelector(".ln-sheet-body"), sheetWho = sheet.querySelector(".ln-sheet-who");
+    const relTop = (el) => el.getBoundingClientRect().top - sheetIn.getBoundingClientRect().top;
+    /* Going from one person to a relative inside the sheet keeps your place (owner, 26 Nov: "everytime I click someones name it
+       scrolls to the top"): the family rows you tapped in stay where they were on screen, now showing the new person's family,
+       and the strip at the top says whose page it is. Opening from the page (not from inside the sheet) starts at the top. */
+    openSheet = (pid, from) => {
+      if (!ui.M.P[pid]) return;
+      const inside = from && !sheet.hidden && sheet.contains(from), oldRow = inside && from.closest(".ln-rel") ? sheetBody.querySelector(".ln-rel") : null;
+      const keep = oldRow ? relTop(oldRow) : null;
+      if (sheet.hidden) sheetBack = document.activeElement;
+      ui.sheetPid = pid; ui.sel = pid; dossier(sheetBody, pid);
+      const P = ui.M.P[pid], K = window.KinKinship ? window.KinKinship.make(ui.M.families, ui.M.P, L.root) : null;
+      sheetWho.querySelector("b").textContent = pid === L.root ? "You" : P.status === "placeholder" ? P.placeholder : nm(P);
+      sheetWho.querySelector("small").textContent = pid === L.root || !K ? "" : K.rel(pid, { side: false }) || "";
+      sheet.hidden = false; document.body.classList.add("ln-sheet-on");
+      const newRow = keep != null ? sheetBody.querySelector(".ln-rel") : null;
+      sheetIn.scrollTop = 0;
+      if (newRow) sheetIn.scrollTop = Math.max(0, relTop(newRow) - keep);
+      sheet.classList.toggle("ln-scrolled", sheetIn.scrollTop > 70);
+      if (inside) { sheetBody.classList.remove("ln-swap"); void sheetBody.offsetWidth; sheetBody.classList.add("ln-swap"); }
+      sheetIn.focus({ preventScroll: true });
+    };
+    sheetIn.addEventListener("scroll", () => sheet.classList.toggle("ln-scrolled", sheetIn.scrollTop > 70), { passive: true });
     closeSheet = () => { if (sheet.hidden) return; sheet.hidden = true; document.body.classList.remove("ln-sheet-on"); if (sheetBack && sheetBack.focus) sheetBack.focus({ preventScroll: true }); };
     sheet.addEventListener("click", (e) => { if (e.target === sheet) closeSheet(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !sheet.hidden) closeSheet(); });
@@ -769,7 +791,7 @@
     const appClick = (e) => {
       /* a name anywhere opens that person in a sheet over the page, where you are: the page never jumps (owner, 26 Nov 2026: "everytime
          I click someone's name it scrolls to the top ... its so annoying to use"); "Show in the tree" is the one way to the tree */
-      const go = e.target.closest("[data-go]"); if (go) { openSheet(go.dataset.go); return; }
+      const go = e.target.closest("[data-go]"); if (go) { openSheet(go.dataset.go, go); return; }
       const st = e.target.closest("[data-sheet]"); if (st) { if (st.dataset.sheet === "tree") { const pid = ui.sheetPid; closeSheet(); const tb = document.querySelector('.pk-tabs [aria-controls="ln-tree"]'); if (tb) tb.click(); pick(pid, true); root.scrollIntoView({ behavior: "smooth", block: "start" }); } else closeSheet(); return; }
       const so = e.target.closest("[data-story-open]"); if (so && ui.openStory) { const tb = document.querySelector('.pk-tabs [aria-controls="ln-stories"]'); if (tb) tb.click(); ui.openStory(so.dataset.storyOpen, so.dataset.ch != null ? +so.dataset.ch : null); return; }
       const im = e.target.closest(".ln-doc"); if (im) { viewer(im.dataset.img, im.dataset.src, im.dataset.cap); return; }

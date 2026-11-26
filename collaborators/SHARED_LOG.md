@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] Claude: Kin d112, a person's sheet keeps your place when you tap a relative
+- Owner again: "everytime I click someones name it scrolls to the top". The page already held still (d110); the sheets did not: both the Kin sheet (lineage.js) and the 3D tree's sheet (tree/main.js) jumped to the top of the new person. Now a relative tapped inside a sheet opens with the same block (the family rows; in the 3D tree the same section) exactly where it was on screen, the 3D tree's sheet stays full height, and a strip at the top names whose page it is once the header has scrolled away. Checked at Pixel 7 size: family rows held at 300 px through Joseph to Betty and back; page scroll unchanged; no errors.
+
 ### [2026-11-26] Claude: Kin d111, every staged record page read; Joseph Termenas's Michigan WWI card
 - Joseph's Michigan bonus card (Archives of Michigan, both sides read at full size) is source S-mi-ww1: a third document for service number 180338 (C6), overseas 31 Oct 1917 to 5 Jul 1919 (which corrected the first reading of his enlistment record's taped line), first company Co. E 25th Engineers, private first class 1 Mar 1919, 825 Vinewood Ave about 1920-21, Michigan bonus claim 135359 approved 18 Nov 1921 (new events E-pfc, E-home1919, E-res1921, E-bonus; story chapter "Back in Detroit").
 - The last 96 staged record pages are read: all 289 have a verdict (40 sources, 249 set aside); new evidence for the Martins (Hathaway; John Martin's house on Bennett's Creek, 1646) and William Pullam's 1657 New Kent patent (S-newkent-pullam-1657, Q41, Gemini KIN-GEM-54).

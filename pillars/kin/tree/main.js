@@ -360,6 +360,7 @@ function dossier(id) {
   const via = [...pathTo(T, id)].filter((x) => x !== id && T.unsure(x) && T.parents(x).some((q) => pathTo(T, id).has(q)));
   const relNote = via.length ? `<p class="tv-relnote">Through ${esc(via.map((x) => firstName(T.byId[x].p)).join(" and "))}, a link not yet settled: ${esc(Object.values((T.M.families.find((f) => f.children.includes(via[0])) || {}).uncertain || {})[0] || "not yet settled")}</p>` : "";
   sin.innerHTML = `
+    <div class="tv-now" aria-hidden="true"><p><b>${esc(n.id === L.root ? "You" : known(p) ? nm(p) : p.placeholder)}</b><small>${esc(n.id === L.root ? "" : T.rel(id))}</small></p></div>
     <header class="tv-dh">
       <div class="tv-face s-${n.status}${n.ghost ? " ghost" : ""}">${face ? `<img src="${DOCS + face}.webp" alt="">` : `<span>${esc(n.id === L.root ? "You" : initials(p))}</span>`}</div>
       <div><p class="tv-rel">${esc(T.rel(id))}</p><h2>${esc(n.id === L.root ? nm(p) || "You" : known(p) ? nm(p) : p.placeholder)}</h2>
@@ -383,8 +384,9 @@ function dossier(id) {
   sheet.hidden = false; sheet.dataset.who = id; document.body.classList.add("has-sheet");
   requestAnimationFrame(() => sheet.classList.add("on"));
   sheet.classList.toggle("full", !phone());
-  sin.scrollTop = 0;
+  sin.scrollTop = 0; sheet.classList.remove("scrolled");
 }
+sin.addEventListener("scroll", () => sheet.classList.toggle("scrolled", sin.scrollTop > 90), { passive: true });
 function lifeLine(n) {
   if (n.id === L.root) return "The centre of the tree.";
   if (!known(n.p)) return "No record names this person yet.";
@@ -404,7 +406,17 @@ function closeDossier() { sheet.classList.remove("on"); document.body.classList.
 function openDossierAt(sec) { if (!state.sel) return; sheet.classList.add("full"); const el = $("#tv-" + sec, sheet); if (el) el.scrollIntoView({ behavior: RM ? "auto" : "smooth", block: "start" }); }
 sheet.addEventListener("click", (e) => {
   const b = e.target.closest("[data-go],[data-doc],[data-close],[data-places]"); if (!b) return;
-  if (b.dataset.go) { setMode("roots"); select(b.dataset.go); }
+  if (b.dataset.go) {
+    /* a relative tapped inside the sheet: the sheet stays open as it was and the same section (Family, Life, ...) stays where it
+       was on screen, now for the new person (owner, 26 Nov: "everytime I click someones name it scrolls to the top") */
+    const sec = b.closest(".tv-sec"), h = sec && sec.querySelector("h3"), wasFull = sheet.classList.contains("full");
+    const key = h ? h.textContent.trim().split(/\s+/)[0] : "", off = sec ? sec.getBoundingClientRect().top - sin.getBoundingClientRect().top : 0;
+    setMode("roots"); select(b.dataset.go);
+    if (wasFull) sheet.classList.add("full");
+    const sec2 = key && [...sin.querySelectorAll(".tv-sec")].find((x) => ((x.querySelector("h3") || {}).textContent || "").trim().startsWith(key));
+    if (sec2) sin.scrollTop = Math.max(0, sec2.getBoundingClientRect().top - sin.getBoundingClientRect().top - off);
+    sheet.classList.toggle("scrolled", sin.scrollTop > 90);
+  }
   else if (b.dataset.doc != null) openViewer(T.media(state.sel), +b.dataset.doc);
   else if (b.hasAttribute("data-close")) deselect();
   else if (b.hasAttribute("data-places")) setMode("places");

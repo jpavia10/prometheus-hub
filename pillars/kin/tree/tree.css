@@ -108,6 +108,14 @@ body[data-mode="records"] .tv-cap, body[data-mode="research"] .tv-cap { display:
 .tv-grip::after { content: ""; position: absolute; left: 50%; top: 10px; width: 44px; height: 5px; margin-left: -22px; border-radius: 3px; background: rgba(255, 255, 255, .28); }
 .tv-sheet-in { flex: 1; overflow: auto; padding: 0 18px calc(var(--bot) + 90px); overscroll-behavior: contain; touch-action: pan-y; }
 .tv-sheet:not(.full) .tv-sheet-in { overflow: hidden; }
+/* whose page this is, pinned at the top once the header has scrolled away (takes no room of its own) */
+.tv-now { position: sticky; top: 0; height: 0; z-index: 3; }
+.tv-now p { position: absolute; left: -18px; right: -18px; top: 0; margin: 0; padding: 9px 18px 10px; display: grid; line-height: 1.2;
+  background: #070b17; border-bottom: 1px solid var(--line-2); box-shadow: 0 8px 18px rgba(3, 5, 11, .6); opacity: 0; transform: translateY(-6px); transition: opacity .2s, transform .2s; pointer-events: none; }
+.tv-now b { font: 600 16px/1.2 var(--serif); color: var(--ivory); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tv-now small { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tv-sheet.scrolled .tv-now p { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .tv-now p { transition: none; } }
 @media (min-width: 760px) {
   .tv-sheet { left: auto; top: 0; width: 440px; height: 100%; border-radius: 0; border-top: 0; border-left: 1px solid var(--line-2); transform: translateX(100%); }
   .tv-sheet.on, .tv-sheet.on.full { transform: translateX(0); }
