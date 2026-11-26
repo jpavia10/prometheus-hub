@@ -49,11 +49,11 @@ HARD RULES (a file that breaks one is rejected whole):
 - No API keys, passwords or account numbers in any file, and no home street address (it was erased from the repository's history on 2026-11-20).
 
 FOLDERS (save straight into these Drive folders):
-- Prometheus Hub incoming: https://drive.google.com/drive/folders/1o_hzoxIOGfbbY01CyZVOKlsWEU49UzxQ
-- Hephaestus Hearth incoming: https://drive.google.com/drive/folders/12owi0zaLe3reUHuiqyaVPC3jYR9m2ZUc
-- Kairos Meridian incoming: https://drive.google.com/drive/folders/19ZRlXGcHh_qiC69Q5PaMIhUR5FNzKSsI
-- Midas Ledger incoming (MID-GEM-14, the statement lines): https://drive.google.com/drive/folders/1q09aDb__i_eY6kUiETakIsyZ6XEv3stD
-- Titan change files (every Titan answer goes here): https://drive.google.com/drive/folders/1rR_K0HSBKoAU-C4xHQ2OeFbR_oDS5QRM
+- Prometheus Hub incoming: https://drive.google.com/drive/folders/1rh_YZLRKI921MUMyPt70cZoRcNv-Abgr
+- Hephaestus Hearth incoming: https://drive.google.com/drive/folders/1jDjgtmgKD0zOQn95Typvxb4377AjQw_2
+- Kairos Meridian incoming: https://drive.google.com/drive/folders/17C9JUskZWajvGZlBl6dQGK05eOJcHl3e
+- Midas Ledger incoming (MID-GEM-14, the statement lines): https://drive.google.com/drive/folders/19qbU6WlR_6xCWIN8BoQFw4lCujSKzV7d
+- Titan change files (every Titan answer goes here): https://drive.google.com/drive/folders/1NHtSQ7nNokabPa-5KrYp66Of7RcdNg8B
 - Titan homework sheets (read your sheets here; do not save here): https://drive.google.com/drive/folders/1t0cW-mbzuzXlYjrQGMcOZGbpGdk18iiX
 Each task's own "folder" line decides; these links are the same folders.
 

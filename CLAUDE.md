@@ -77,6 +77,13 @@ futuristic; real data only; individual pillars are developed later, one at a tim
 - **d12 (2026-11-14):** the core shows "Since you were here" from `PB.events` (publish an event from any pillar action worth seeing;
   add its words to `SAY` in `deck/core/reach.js`); System has "Back up everything" (`backupAll` / `previewRestore` / `restoreAll`).
   Sylade is `pillars/sylade/`; the old desk files are gone.
+- **d92 (2026-11-26): Drive cleaned by Claude itself.** Joseph: "id rather you just ask me for permissions". Drive will not let the connector
+  trash the AIs' uploads, but it does let Claude trash folders it created, and trashing a folder trashes everything in it. With Joseph's go
+  ("You know better than I do"), 15 folders went to trash (about 1,500 files, all merged and scored): the 8 Prometheus inboxes and Titan's
+  collection-incoming, art-requests, sound-incoming and reviews-incoming were recreated empty with the same names (`_kept` moved back into
+  each); design-incoming, `_raw_capture/_DUPLICATES`, music-requests and motion-lab-incoming were not. New folder IDs are in pillars.json,
+  both prompts, Midas's queue and the Argus corpus; the 5 Grok files the app cites were copied into `_kept` first. Joseph keeps only the
+  single files Drive locks inside folders Claude did not create (about 45, listed in the Drive Clean-Up artifact). Recoverable for 30 days.
 - **d90-d91 (2026-11-26): the clean-up round.** Owner: "Do a clean up round ... I want to be totally caught up and organized". Drive: every
   hub and Titan drop folder classified (all merged or kept; the files still needed were copied into a `_kept` folder per pillar, the
   Midas encrypted book and the broker-names input included); the files only Joseph can trash are listed step by step in the Drive

@@ -36,7 +36,7 @@ of 45 objects, k 1 to 45, each with exactly these fields:
   k (number, from the sheet), task (text, from the sheet), row (number, from the sheet),
   opened ("yes" or what happened), page_says ("field: value | field: value" for the fields under "read"),
   quote_on_page ("yes", "partly", "no", or "n/a" when the row has no quote_to_find), quote (word for word, at most 300 characters).
-Save it to this Google Drive folder if you can: https://drive.google.com/drive/folders/1o_hzoxIOGfbbY01CyZVOKlsWEU49UzxQ
+Save it to this Google Drive folder if you can: https://drive.google.com/drive/folders/1rh_YZLRKI921MUMyPt70cZoRcNv-Abgr
 If you cannot save to Drive, give the file as a download and say so in one line.
 
 After the file: a short report with how many rows you could open, which you could not and why, and any row where you think the

@@ -97,20 +97,20 @@
   "sha256": "d2e5089ebc9ef087b4735442cab92ce7251d5c4f7b1b6d6b7b0bac84442ce5e1",
   "readback": {
     "method": "downloaded the file back from Drive after upload; bytes identical to local; JSON re-parsed",
-    "drive_file_id": "1g9OEor85nuW_qJtOPtPjMdS3_QmEjLKF",
-    "drive_link": "https://drive.google.com/file/d/1g9OEor85nuW_qJtOPtPjMdS3_QmEjLKF/view?usp=drivesdk",
+    "drive_file_id": "1umkhShej3xm6MEOpUOV_ngwUu32wm4kn",
+    "drive_link": "https://drive.google.com/file/d/1umkhShej3xm6MEOpUOV_ngwUu32wm4kn/view?usp=drivesdk",
     "sha256_matches": true
   },
   "extras_in_same_drop": [
     {
       "file": "APOLLO-GROK-foods-shipped-audit_20261110-1711.json",
-      "drive_file_id": "1DNGdX54fKfaMDCiAhBT7SmQK5qFoZNGh",
+      "drive_file_id": "1RCtWuiojPGvFE4CpfkEQXigFNWAC1FQS",
       "rows": 300,
       "unique_n": 300
     },
     {
       "file": "APOLLO-GROK-coverage-memo_20261110-1711.md",
-      "drive_file_id": "1LQEnszKBdkQAqsgMGacTffSNvxP43bec"
+      "drive_file_id": "1ei4kxlb-yiDAihJtmHsLUr47hoqJNZZk"
     }
   ]
 }

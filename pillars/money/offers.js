@@ -1,6 +1,6 @@
 /* Balance-transfer + hardship landscape (Grok, WS-GARAGE, as of 2026-11-10): public advertised terms re-read from
    issuer-owned pages/PDFs for the 25 issuers in issuers.js, diffed against the 2026-11-08 MID-GEM-06/07 round.
-   Reference only, no personal data. Drive source: GARAGE-GROK-bt-hardship_20261110-1706.json (1L5tEsdmnmm3Bgnj3IL1I7NcUbNQEKfH8). */
+   Reference only, no personal data. Drive source: GARAGE-GROK-bt-hardship_20261110-1706.json (1KDMHg0qXIKQgaXSZBDXNcRYK-aforn9l). */
 window.MONEY_OFFERS = {
  "dataset": "GARAGE-GROK-bt-hardship",
  "pillar": "money (Midas Ledger)",

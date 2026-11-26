@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-26] d92: Drive inboxes emptied by Claude
+- 15 AI drop folders trashed with Joseph's go (about 1,500 merged files); the 12 inboxes still in use were recreated empty with the same names and `_kept` inside. New folder links: pillars.json, the Gemini and ChatGPT prompts, Midas's queue. Contributors: save into the folder by its path as before; old links point at the trash.
+
 ### [2026-11-26] d90-d91: clean-up round, catch-up, refill
 - Drive drop folders sorted: nothing unprocessed lost, the still-needed files copied into `_kept` folders; Joseph's trash list is the Drive Clean-Up artifact. Kin petition citation corrected to vol. 4372, no. 18. Run 7 fully checked and closed.
 - 13 new Gemini tasks (Kin, Garage, Aegis, Odyssey, Monetary, Athenaeum, Agora, Hub, Hearth, Icarus, Aether, Pianoforte) plus KAI-GEM-17; Gemini's prompt adds Muse's two quote rules. 39 delivered files wait for a second read (Muse, or ChatGPT if Joseph adds it).

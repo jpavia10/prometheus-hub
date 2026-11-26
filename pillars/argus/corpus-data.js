@@ -69,7 +69,7 @@ window.ARGUS_CORPUS = {
     naming: "NOID_{Country}_{year}_{Denomination}_{obv|rev}.jpeg",
     examples: ["NOID_Italy_1979_50Lire_obv.jpg", "NOID_Bahamas_1984_25Cents_obv.jpg", "NOID_Mexico_1989_500Pesos_obv.jpg"],
     staging: { label: "STAGING — drop coin photos here (Drive)", id: "1_g6H2V9GZ0TkXISVASNtxSeQ25bJbEqH" },
-    drop: { label: "collection-incoming — AI change files (Drive)", id: "1rR_K0HSBKoAU-C4xHQ2OeFbR_oDS5QRM" },
+    drop: { label: "collection-incoming — AI change files (Drive)", id: "1NHtSQ7nNokabPa-5KrYp66Of7RcdNg8B" },
     flow: [
       "A coin arrives as a chat photo — that photo is the working original; a resend is never asked for.",
       "It is staged in the Drive STAGING folder under its NOID name (obverse and reverse).",
