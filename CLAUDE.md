@@ -26,8 +26,9 @@ The desk: every pillar opens from here. Part of Prometheus (`jpavia10/prometheus
   collection is everything Claude could work on, one doc per job, never merged (title, why, group = its section: system, hub, kin, odyssey,
   midas, pillars, checks, coming, titan, life, yours; pillar, size Quick/Round/Project, rec next/do/later, kind ready/waiting/needs/blocked/idea
   with `wait` naming what it waits on, order, status "" / doing / blocked / done, reply, by claude|joseph). The page shows Your queue and
-  Start here (rec next, undecided) above the sections; the generator is in the session scratchpad, so after each round add, split or close
-  jobs with ArtifactData directly. His pick per job is `answers/task-<id>` (next = do first,
+  Start here (rec next, undecided) above the sections; the page also carries a copy of the list so it shows at once (owner, same day: "This shouldnt take time to load"), and
+  the store's answer replaces it when it arrives. After each round add, split or close jobs with ArtifactData; after big changes
+  republish the page so its built-in copy matches. His pick per job is `answers/task-<id>` (next = do first,
   do = approved, later, no); jobs he adds himself arrive with by "joseph" and choice "do". Work approved jobs in that order (next, then
   do, by `order`); set `status` "doing" when you start and "done" with a one-line `reply` when it ships. Keep the list stocked: after each
   round, add what you would do next as new `tasks` docs with your rec, and take finished ones off by marking them done.
