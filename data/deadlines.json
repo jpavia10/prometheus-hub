@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 05:58 UTC",
+ "updated": "2026-11-26 19:14 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -581,6 +581,28 @@
    "ai_name": "Gemini",
    "id": "KIN-GEM-50",
    "title": "Kin: Joseph Pavia's crossing from Malta and his naturalization",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-12-14",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-51",
+   "title": "Kin: Charles A. Sanders's brothers and sisters (the Sanders link Joseph calls hard to crack)",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-12-14",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-52",
+   "title": "Kin: the Holgate line, and where Tania fits (your mother's cousin)",
    "state": "now",
    "count": 10
   },

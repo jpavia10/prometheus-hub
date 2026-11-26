@@ -2,7 +2,7 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-26 05:58 UTC · 7 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 19:14 UTC · 9 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -367,6 +367,114 @@ Updated 2026-11-26 05:58 UTC · 7 open · Rules for every pillar: https://github
 **How many:** 10
 
 **Done when:** A crossing found and argued, or every search logged.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace
+
+## 8. KIN-GEM-51 · Kin: Charles A. Sanders's brothers and sisters (the Sanders link Joseph calls hard to crack)
+
+**Due:** 2026-12-14 · **State:** now
+
+**Why:** Joseph, 26 Nov: his grandfather Charles A. Sanders (born about 1953, Michigan, living) has brothers and sisters but does not talk about them. His parents are known only as Charles Sanders and Betty Flemming from a baby-book page. Your 24 Nov sweep found two 1950 candidate households (Dearborn, ED 84-92; Wayne, ED 82-264) and no Michigan marriage to 1952.
+
+**What it unlocks:** Your mother's father's side gets its family: his parents' records and his brothers and sisters, the hardest gap in the tree.
+
+**Read first:**
+- pillars/kin/lineage/data.js (P-charles, P-charles-sr, P-bettyf; Q30, Q39; the 1950 candidates in pillars/kin/research-r8.js rows 2-3)
+- Ancestry (Joseph's Pavia Family Tree 192482486, signed in as before); FamilySearch; Find a Grave; Legacy.com and Michigan funeral-home obituaries; Michiganology; the 1960s Michigan birth indexes where open
+
+**Do this:**
+1. Find the death record or obituary of Charles Sanders (Charles A.'s father) and of Betty (Flemming/Fleming) Sanders: an obituary naming 'son Charles (Laurie)' or grandchildren 'Toni' and 'Jennifer' is the proof. Try Betty, Elizabeth, Betty Jane, Betty Lou; Flemming and Fleming; Sanders and Saunders.
+2. Follow both 1950 candidate households forward: children born 1950-1965 to that couple (birth indexes, later obituaries naming the parents).
+3. List every child found with the record that names their parents. Living people: name and the record only, no dates of birth, no towns, no addresses.
+4. Log every search that found nothing, with spellings and years.
+
+**Make:** `kin_gemini_sanders-siblings_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find, search, or summary (the last row)
+- `record` (text): obituary, death index, birth index, census, marriage
+- `transcription` (text): the lines naming the family, word for word
+- `identifiers` (text): which names, places and years tie it to Charles A. Sanders and his parents
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** His parents' family is found and argued from records, or every search is logged.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace
+
+## 9. KIN-GEM-52 · Kin: the Holgate line, and where Tania fits (your mother's cousin)
+
+**Due:** 2026-12-14 · **State:** now
+
+**Why:** Joseph, 26 Nov: his mother's cousin Tania is not the child of Ilene Kennedy or Joe Seconder (Joe has no children), and he asked about a David Holgate. Betty (Termens) Holgate, Barbara Feole's sister, married Thomas Holgate (of Novi in 1997, Katherine Springer's obituary); the descendant researcher 'Rachel Denys - Holgate' shares Joseph Termenas's photos on Ancestry.
+
+**What it unlocks:** Betty Holgate's family in the tree, and Tania placed: a Holgate, a Sanders cousin, or another line.
+
+**Read first:**
+- pillars/kin/lineage/data.js (P-betty, P-tania; Q38)
+- Ancestry (Rachel Denys - Holgate's public tree, Betty Ann Termens's profile); FamilySearch; Find a Grave; Legacy.com and Oakland/Wayne County funeral-home obituaries
+
+**Do this:**
+1. Find Betty Ann (Termens) Holgate's and Thomas Holgate's death records and obituaries: their children and grandchildren by name.
+2. Is there a David Holgate among their children? Is there a Tania among their children or grandchildren, or married to a Holgate?
+3. If not on the Holgate side, note any Tania in the Sanders obituaries from KIN-GEM-51.
+4. Living people: name and the record only, no dates of birth, no towns, no addresses. Log every empty search.
+
+**Make:** `kin_gemini_holgate-tania_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find, search, or summary (the last row)
+- `record` (text): obituary, death index, birth index, census, marriage
+- `transcription` (text): the lines naming the family, word for word
+- `identifiers` (text): which names, places and years tie it to Charles A. Sanders and his parents
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** Betty Holgate's children listed from records and Tania placed or ruled out, or every search logged.
 
 **How Claude checks it:**
 - Claude reads every image that opens; Muse second-reads.

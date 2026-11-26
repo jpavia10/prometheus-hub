@@ -1159,3 +1159,37 @@ window.KIN_LINEAGE.questions.push(
   if (q39) q39.q += " Also: Nicholas Patrick's father, and whether Patrick is a middle name or a surname.";
   L.log.push({ id: "L24", date: "2026-11-26", by: "Claude", q: "Q39", where: "your message", terms: "your aunts Jennifer", result: "found", note: "Confirmed your father's sister Jennifer Burd, her husband Tim and their children Tyler and Madeline (already in from Glenda's obituary). Added Nicholas Patrick, your mother's sister Jennifer's child." });
 })(window.KIN_LINEAGE);
+
+/* 26 Nov 2026, evening (owner): "Patrick is middle and we dont know who his father is. Joe has no kids and Tania isnt Ilene's kid
+   either. My grandpa has siblings i think but he doesnt share so thats gonna be the hard link to crack." Tania leaves Ilene's family.
+   Barbara's side is now closed to her (Ilene's and Joe's children are not hers to be), so the likeliest place is your grandfather's
+   side, which the tree does not have yet: a cousin of your mother whose mother is not in the tree fits a daughter of one of Charles
+   A. Sanders's sisters. She hangs from a placeholder mother, drawn dashed as a question, until you or the records say (Q38;
+   Gemini KIN-GEM-51 and KIN-GEM-52). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  const F = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-owner-1126d", short: "Your account: Nicholas's middle name, Joe Seconder, Tania, your grandfather's family (26 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 26 November 2026.",
+    read: "Patrick is Nicholas's middle name; his father is not known. Joe Seconder has no children. Tania is not Ilene's child. Your grandfather Charles A. Sanders has brothers and sisters, you think, but he does not talk about them." });
+  const OW = ["S-owner-1126d"];
+  const nk = P("P-nicholas");
+  if (nk) { nk.sex = "M"; nk.names = [{ given: "Nicholas Patrick", surname: "", type: "birth", src: ["S-owner-1126c"].concat(OW), note: "Patrick is his middle name; his surname is not given" }];
+    nk.summary = "Your first cousin: your mother's sister Jennifer's son (your account). His father is not known."; }
+  const jo = P("P-joes"); if (jo) { jo.summary += " He has no children (your account)."; if (jo.names[0] && !jo.names[0].src.includes(OW[0])) jo.names[0].src.push(OW[0]); }
+  const il = P("P-ilene"); if (il) il.summary += " Tania is not her daughter (your account); her own children, Barbara's other grandchildren, are not named yet.";
+  /* Tania out of Ilene's family */
+  const fi = L.families.findIndex((f) => f.id === "F-ilene"); if (fi >= 0) L.families.splice(fi, 1);
+  L.people.push({ id: "P-tania-mom", sex: "F", status: "placeholder", placeholder: "Tania's mother", hint: "Grandpa Charles's sister?", living: true, names: [],
+    summary: "Tania's mother, not in the tree yet (your account). Not Ilene, not Joe's (he has no children). If Tania is your mother's first cousin on her father's side, her mother is one of your grandfather Charles A. Sanders's sisters, whom he does not talk about (Q38)." });
+  const fs = F("F-sanders");
+  if (fs) { fs.children.push("P-tania-mom"); fs.uncertain = Object.assign(fs.uncertain || {}, { "P-tania-mom": "Charles's sister? (Q38)" }); }
+  L.families.push({ id: "F-tania", partners: ["P-tania-mom"], children: ["P-tania"] });
+  const ta = P("P-tania");
+  if (ta) { ta.summary = "Your mother's cousin (your account). Not Ilene's daughter and not Joe's; her mother is not in the tree. Drawn under a placeholder mother on your grandfather Charles A. Sanders's side, as a question, until you or the records say (Q38)."; if (ta.names[0] && !ta.names[0].src.includes(OW[0])) ta.names[0].src.push(OW[0]); }
+  const q38 = L.questions.find((q) => q.id === "Q38");
+  if (q38) { q38.q = "Tania, your mother's cousin: is her mother one of your grandfather Charles A. Sanders's sisters? (She is not Ilene's daughter and Joe has no children.) And who is David Holgate: Betty Holgate's son (your great-grandmother Barbara's sister's side), Tania's father, or someone else?"; q38.sources = "you or your mother; then obituaries (Gemini KIN-GEM-51, KIN-GEM-52)"; }
+  const q39 = L.questions.find((q) => q.id === "Q39");
+  if (q39) { q39.q = "Your grandfather Charles A. Sanders's brothers and sisters: he has some, you think, but he does not talk about them. The way in is his parents' records (Charles Sanders and Betty Flemming): their obituaries name their children. Also the fathers of your uncles Tim and Michael, with their surnames."; q39.sources = "obituaries, death and birth indexes, the 1950 census (Gemini KIN-GEM-51); your mother"; q39.task = "KIN-GEM-51"; }
+  L.log.push({ id: "L25", date: "2026-11-26", by: "Claude", q: "Q38", where: "your message; the open web (obituary searches for Thomas and Betty Holgate, David Holgate, Betty (Flemming) Sanders, and Sanders obituaries naming Toni Hinkle)", terms: "Holgate, Novi; Sanders and Flemming/Fleming, Michigan; Toni Hinkle", result: "not found", note: "No obituary on the open web names Betty or Thomas Holgate's children, or Charles Sanders and Betty Flemming's. Tania moved out of Ilene's family to a placeholder mother on the Sanders side (a question, drawn dashed). Gemini has the record search: KIN-GEM-51 (Sanders brothers and sisters) and KIN-GEM-52 (the Holgate line and Tania)." });
+})(window.KIN_LINEAGE);

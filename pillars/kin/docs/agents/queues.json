@@ -4861,6 +4861,166 @@
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
       "a match accepted on the name alone, without age and birthplace"
      ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "KIN-GEM-51",
+     "title": "Kin: Charles A. Sanders's brothers and sisters (the Sanders link Joseph calls hard to crack)",
+     "due": "2026-12-14",
+     "why": "Joseph, 26 Nov: his grandfather Charles A. Sanders (born about 1953, Michigan, living) has brothers and sisters but does not talk about them. His parents are known only as Charles Sanders and Betty Flemming from a baby-book page. Your 24 Nov sweep found two 1950 candidate households (Dearborn, ED 84-92; Wayne, ED 82-264) and no Michigan marriage to 1952.",
+     "unlocks": "Your mother's father's side gets its family: his parents' records and his brothers and sisters, the hardest gap in the tree.",
+     "inputs": [
+      "pillars/kin/lineage/data.js (P-charles, P-charles-sr, P-bettyf; Q30, Q39; the 1950 candidates in pillars/kin/research-r8.js rows 2-3)",
+      "Ancestry (Joseph's Pavia Family Tree 192482486, signed in as before); FamilySearch; Find a Grave; Legacy.com and Michigan funeral-home obituaries; Michiganology; the 1960s Michigan birth indexes where open"
+     ],
+     "steps": [
+      "Find the death record or obituary of Charles Sanders (Charles A.'s father) and of Betty (Flemming/Fleming) Sanders: an obituary naming 'son Charles (Laurie)' or grandchildren 'Toni' and 'Jennifer' is the proof. Try Betty, Elizabeth, Betty Jane, Betty Lou; Flemming and Fleming; Sanders and Saunders.",
+      "Follow both 1950 candidate households forward: children born 1950-1965 to that couple (birth indexes, later obituaries naming the parents).",
+      "List every child found with the record that names their parents. Living people: name and the record only, no dates of birth, no towns, no addresses.",
+      "Log every search that found nothing, with spellings and years."
+     ],
+     "deliver": {
+      "file": "kin_gemini_sanders-siblings_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find, search, or summary (the last row)"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "obituary, death index, birth index, census, marriage"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the lines naming the family, word for word"
+      },
+      {
+       "name": "identifiers",
+       "type": "text",
+       "rule": "which names, places and years tie it to Charles A. Sanders and his parents"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the record"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "His parents' family is found and argued from records, or every search is logged.",
+     "checks": [
+      "Claude reads every image that opens; Muse second-reads."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "a match accepted on the name alone, without age and birthplace"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "KIN-GEM-52",
+     "title": "Kin: the Holgate line, and where Tania fits (your mother's cousin)",
+     "due": "2026-12-14",
+     "why": "Joseph, 26 Nov: his mother's cousin Tania is not the child of Ilene Kennedy or Joe Seconder (Joe has no children), and he asked about a David Holgate. Betty (Termens) Holgate, Barbara Feole's sister, married Thomas Holgate (of Novi in 1997, Katherine Springer's obituary); the descendant researcher 'Rachel Denys - Holgate' shares Joseph Termenas's photos on Ancestry.",
+     "unlocks": "Betty Holgate's family in the tree, and Tania placed: a Holgate, a Sanders cousin, or another line.",
+     "inputs": [
+      "pillars/kin/lineage/data.js (P-betty, P-tania; Q38)",
+      "Ancestry (Rachel Denys - Holgate's public tree, Betty Ann Termens's profile); FamilySearch; Find a Grave; Legacy.com and Oakland/Wayne County funeral-home obituaries"
+     ],
+     "steps": [
+      "Find Betty Ann (Termens) Holgate's and Thomas Holgate's death records and obituaries: their children and grandchildren by name.",
+      "Is there a David Holgate among their children? Is there a Tania among their children or grandchildren, or married to a Holgate?",
+      "If not on the Holgate side, note any Tania in the Sanders obituaries from KIN-GEM-51.",
+      "Living people: name and the record only, no dates of birth, no towns, no addresses. Log every empty search."
+     ],
+     "deliver": {
+      "file": "kin_gemini_holgate-tania_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find, search, or summary (the last row)"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "obituary, death index, birth index, census, marriage"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the lines naming the family, word for word"
+      },
+      {
+       "name": "identifiers",
+       "type": "text",
+       "rule": "which names, places and years tie it to Charles A. Sanders and his parents"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the record"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Betty Holgate's children listed from records and Tania placed or ruled out, or every search logged.",
+     "checks": [
+      "Claude reads every image that opens; Muse second-reads."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "a match accepted on the name alone, without age and birthplace"
+     ]
     }
    ]
   },

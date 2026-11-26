@@ -1,6 +1,6 @@
 {
- "built": "2026-11-26T12:42:38Z",
- "checked": "2026-11-26T16:22:45Z",
+ "built": "2026-11-26T19:11:49Z",
+ "checked": "2026-11-26T19:11:49Z",
  "version": 2,
  "today": "2026-11-26",
  "sources": {
@@ -23,7 +23,7 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 69,
+  "todo": 71,
   "late": 2,
   "due7": 15,
   "delivered": 0,
@@ -32,17 +32,17 @@
  },
  "per": {
   "Gemini": {
-   "todo": 50,
+   "todo": 52,
    "late": 0,
    "due7": 6,
    "delivered": 0,
    "queued": 2,
    "done7": 220,
    "withdrawn": 69,
-   "items": 829,
+   "items": 849,
    "floor": 50,
    "by": {
-    "hub": 48,
+    "hub": 50,
     "titan": 1,
     "tproj": 1,
     "board": 0
@@ -357,10 +357,10 @@
    }
   },
   "Kin": {
-   "todo": 9,
+   "todo": 11,
    "delivered": 0,
    "by": {
-    "Gemini": 7,
+    "Gemini": 9,
     "Muse": 2
    }
   },
@@ -15448,6 +15448,72 @@
     "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below",
     "done": "A crossing found and argued, or every search logged.",
+    "checks": [
+     "Claude reads every image that opens; Muse second-reads."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-51",
+   "title": "Kin: Charles A. Sanders's brothers and sisters (the Sanders link Joseph calls hard to crack)",
+   "status": "todo",
+   "due": "2026-12-14",
+   "items": 10,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph, 26 Nov: his grandfather Charles A. Sanders (born about 1953, Michigan, living) has brothers and sisters but does not talk about them. His parents are known only as Charles Sanders and Betty Flemming from a baby-book page. Your 24 Nov sweep found two 1950 candidate households (Dearborn, ED 84-92; Wayne, ED 82-264) and no Michigan marriage to 1952.",
+    "steps": [
+     "Find the death record or obituary of Charles Sanders (Charles A.'s father) and of Betty (Flemming/Fleming) Sanders: an obituary naming 'son Charles (Laurie)' or grandchildren 'Toni' and 'Jennifer' is the proof. Try Betty, Elizabeth, Betty Jane, Betty Lou; Flemming and Fleming; Sanders and Saunders.",
+     "Follow both 1950 candidate households forward: children born 1950-1965 to that couple (birth indexes, later obituaries naming the parents).",
+     "List every child found with the record that names their parents. Living people: name and the record only, no dates of birth, no towns, no addresses.",
+     "Log every search that found nothing, with spellings and years."
+    ],
+    "make": "kin_gemini_sanders-siblings_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "His parents' family is found and argued from records, or every search is logged.",
+    "checks": [
+     "Claude reads every image that opens; Muse second-reads."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-52",
+   "title": "Kin: the Holgate line, and where Tania fits (your mother's cousin)",
+   "status": "todo",
+   "due": "2026-12-14",
+   "items": 10,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Joseph, 26 Nov: his mother's cousin Tania is not the child of Ilene Kennedy or Joe Seconder (Joe has no children), and he asked about a David Holgate. Betty (Termens) Holgate, Barbara Feole's sister, married Thomas Holgate (of Novi in 1997, Katherine Springer's obituary); the descendant researcher 'Rachel Denys - Holgate' shares Joseph Termenas's photos on Ancestry.",
+    "steps": [
+     "Find Betty Ann (Termens) Holgate's and Thomas Holgate's death records and obituaries: their children and grandchildren by name.",
+     "Is there a David Holgate among their children? Is there a Tania among their children or grandchildren, or married to a Holgate?",
+     "If not on the Holgate side, note any Tania in the Sanders obituaries from KIN-GEM-51.",
+     "Living people: name and the record only, no dates of birth, no towns, no addresses. Log every empty search."
+    ],
+    "make": "kin_gemini_holgate-tania_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Betty Holgate's children listed from records and Tania placed or ruled out, or every search logged.",
     "checks": [
      "Claude reads every image that opens; Muse second-reads."
     ],
