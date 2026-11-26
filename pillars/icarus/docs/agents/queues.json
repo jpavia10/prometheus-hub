@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "pillar": "icarus",
  "agents": [
   {
@@ -772,6 +772,77 @@
      "due": "2026-12-08",
      "closed": "2026-11-25",
      "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "ICA-GEM-16",
+     "title": "Icarus: Series I savings bonds from 1 November 2026, the rate and the rules",
+     "due": "2026-12-06",
+     "why": "TreasuryDirect set the I bond composite rate for November 2026 to April 2027 on 1 November. Icarus compares safe yields and has no I bond row.",
+     "unlocks": "Icarus can show the I bond next to Treasury bills and high-yield savings.",
+     "inputs": [
+      "https://www.treasurydirect.gov/savings-bonds/i-bonds/"
+     ],
+     "steps": [
+      "The composite rate, fixed rate and inflation rate from 1 November 2026, the purchase limit, the one-year lockup, the three-month penalty before five years, how the rate resets, and the tax treatment.",
+      "One row per fact."
+     ],
+     "deliver": {
+      "file": "icarus_gemini_i-bonds_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "fact",
+       "type": "text",
+       "rule": "rate, limit, lockup, penalty, reset, tax"
+      },
+      {
+       "name": "value",
+       "type": "text",
+       "rule": "as printed"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "10 rows from TreasuryDirect.",
+     "checks": [
+      "Claude checks the three rates."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

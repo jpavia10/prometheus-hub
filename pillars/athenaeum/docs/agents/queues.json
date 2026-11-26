@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "pillar": "athenaeum",
  "agents": [
   {
@@ -1437,6 +1437,95 @@
       "a quote that is not word for word on the page as served today",
       "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
       "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "ATH-GEM-18",
+     "title": "History: United States immigration law, 1882-1965 (25 entries)",
+     "due": "2026-12-14",
+     "why": "Kin's two crossings sit inside this history: Joseph Termenas arrived in 1912, before the literacy test (1917) and the quotas (1921, 1924); Joseph Pavia came from Malta under the quota years. The world history has the family's events but not the laws they crossed under.",
+     "unlocks": "Kin's arrival stories and Athenaeum's chronicle can say which law each crossing fell under.",
+     "inputs": [
+      "https://history.state.gov (Milestones)",
+      "https://www.uscis.gov/about-us/our-history",
+      "https://www.archives.gov",
+      "Library of Congress"
+     ],
+     "steps": [
+      "25 dated entries from the Chinese Exclusion Act (1882) to the Immigration and Nationality Act of 1965: each law, what it changed, who it hit.",
+      "Same entry shape as your history files (id, date, precision, title, text, regions, themes, place, sources with quotes), with a chain (cause, event, consequence) where the source gives one."
+     ],
+     "deliver": {
+      "file": "athenaeum_gemini_history-immigration_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 25,
+     "fields": [
+      {
+       "name": "id",
+       "type": "text",
+       "rule": "his-imm-YYYY-word"
+      },
+      {
+       "name": "date",
+       "type": "text",
+       "rule": "YYYY or YYYY-MM-DD"
+      },
+      {
+       "name": "precision",
+       "type": "text",
+       "rule": "day/month/year"
+      },
+      {
+       "name": "title",
+       "type": "text",
+       "rule": "short"
+      },
+      {
+       "name": "text",
+       "type": "text",
+       "rule": "one paragraph"
+      },
+      {
+       "name": "regions",
+       "type": "list",
+       "rule": "usa and others"
+      },
+      {
+       "name": "themes",
+       "type": "list",
+       "rule": "law, migration ..."
+      },
+      {
+       "name": "sources",
+       "type": "list",
+       "rule": "url + quote each"
+      },
+      {
+       "name": "chain",
+       "type": "object or null",
+       "rule": "cause, event, consequence"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "25 entries, every date quoted.",
+     "checks": [
+      "Claude reads every title and date; Muse second-reads 5."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
      ]
     }

@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "pillar": "aether",
  "agents": [
   {
@@ -1343,6 +1343,87 @@
      "due": "2026-12-08",
      "closed": "2026-11-25",
      "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "AET-GEM-20",
+     "title": "Aether: NOAA's winter outlook for the Kern mountains, December 2026 to February 2027",
+     "due": "2026-12-06",
+     "why": "Aether has Frazier Park's climate normals (AET-GEM-08). NOAA's Climate Prediction Center issues monthly and three-month outlooks for temperature and precipitation, and the ENSO state that drives them.",
+     "unlocks": "Aether shows this winter against normal: warmer or colder, wetter or drier, and why.",
+     "inputs": [
+      "https://www.cpc.ncep.noaa.gov (monthly and seasonal outlooks, ENSO diagnostic discussion)"
+     ],
+     "steps": [
+      "For December, January, February and the DJF season: the temperature and precipitation outlook category and probability for the Tejon Pass area, the ENSO state and its forecast, and the issue date of each product.",
+      "Quote the outlook text where the map is the only source of a number, and give the map's own legend value."
+     ],
+     "deliver": {
+      "file": "aether_gemini_winter-outlook_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "period",
+       "type": "text",
+       "rule": "Dec, Jan, Feb, DJF, ENSO"
+      },
+      {
+       "name": "temperature",
+       "type": "text",
+       "rule": "category and probability"
+      },
+      {
+       "name": "precipitation",
+       "type": "text",
+       "rule": "category and probability"
+      },
+      {
+       "name": "issued",
+       "type": "date",
+       "rule": "product issue date"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every period with its issue date.",
+     "checks": [
+      "Claude checks the ENSO state and one map reading."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

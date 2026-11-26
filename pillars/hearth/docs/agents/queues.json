@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "pillar": "hearth",
  "agents": [
   {
@@ -2075,6 +2075,96 @@
       "a quote that is not word for word on the page as served today",
       "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
       "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "HEA-GEM-36",
+     "title": "Hearth: energy rebates and programs a Kern County home can use in 2027",
+     "due": "2026-12-14",
+     "why": "Hearth tracks the house by room and the renovation's costs. Heat pumps, insulation, panels and water heaters each have state, utility or federal programs, and several federal credits ended after 2025; only programs open now are useful.",
+     "unlocks": "Each renovation item in Hearth shows the programs that still pay toward it.",
+     "inputs": [
+      "https://www.energy.ca.gov",
+      "https://switchison.org / TECH Clean California",
+      "https://www.sce.com rebates",
+      "https://www.socalgas.com rebates",
+      "https://www.irs.gov (credit status)"
+     ],
+     "steps": [
+      "Every program open to a homeowner in Kern County for heating, cooling, water heating, insulation, windows, solar or panels: who runs it, what it pays, the conditions, and whether it is open as of today.",
+      "Write \"ended\" with its end date for any program that closed, quoting the page."
+     ],
+     "deliver": {
+      "file": "hearth_gemini_rebates-2027_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "program",
+       "type": "text",
+       "rule": "its name"
+      },
+      {
+       "name": "runs_it",
+       "type": "text",
+       "rule": "agency or utility"
+      },
+      {
+       "name": "pays",
+       "type": "text",
+       "rule": "amount as printed"
+      },
+      {
+       "name": "conditions",
+       "type": "text",
+       "rule": "who qualifies"
+      },
+      {
+       "name": "status",
+       "type": "text",
+       "rule": "open, waitlist or ended (date)"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "20 programs, each with its status quoted.",
+     "checks": [
+      "Claude checks 5 rows, including any federal credit's end date."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
      ]
     }

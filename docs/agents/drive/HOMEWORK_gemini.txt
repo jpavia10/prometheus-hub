@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-26 01:17 UTC. 37 to do across 17 pillars.
+Updated 2026-11-26 05:06 UTC. 51 to do across 21 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -26,29 +26,43 @@ IN THIS ORDER:
 8. [Atlas · Work & Pay] ATL-GEM-01 · Atlas: the Federal Reserve bank holidays 2026 to 2030, as observed (55 rows) to check the payday arithmetic · due 2026-12-05
 9. [Prometheus Hub] HUB-GEM-25 · Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24) · due 2026-12-06
 10. [Midas Ledger] MID-GEM-15 · Midas: 30 minimum-payment and payment-due lines from issuers' sample statements · due 2026-12-06
-11. [Polis · Civic & Legal Watch] POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
-12. [Aegis · Insurance & Cover] AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines) · due 2026-12-06
-13. [Atlas · Work & Pay] ATL-GEM-02 · Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages · due 2026-12-07
-14. [Hephaestus Hearth] HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies · due 2026-12-08
-15. [Hephaestus Hearth] HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law · due 2026-12-08
-16. [Kin] KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line · due 2026-12-08
-17. [Aegis · Insurance & Cover] AEG-GEM-02 · Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount) · due 2026-12-08
-18. [Aegis · Insurance & Cover] AEG-GEM-04 · Aegis: the California FAIR Plan, what it covers and what it leaves out · due 2026-12-08
-19. [Atlas · Work & Pay] ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each · due 2026-12-09
-20. [Money · payoff simulator] MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53) · due 2026-12-10
-21. [Athenaeum · Idea Vault] ATH-GEM-16 · History: Kern County and the Tejon Pass, 1850-2025 (40 entries) · due 2026-12-10
-22. [Kin] KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records · due 2026-12-10
-23. [Aegis · Insurance & Cover] AEG-GEM-03 · Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each · due 2026-12-10
-24. [Aegis · Insurance & Cover] AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays · due 2026-12-10
-25. [Athenaeum · Idea Vault] ATH-GEM-17 · History: the Philippines, 1898-2024 (30 entries) · due 2026-12-12
-26. [Kin] KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books · due 2026-12-12
-27. [Kin] KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900 · due 2026-12-12
-28. [Atlas · Work & Pay] ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California) · due 2026-12-12
-29. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
-30. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
-31. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-32. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
-33. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
+11. [Icarus Stake] ICA-GEM-16 · Icarus: Series I savings bonds from 1 November 2026, the rate and the rules · due 2026-12-06
+12. [Aether · Atmospheric & Field Lab] AET-GEM-20 · Aether: NOAA's winter outlook for the Kern mountains, December 2026 to February 2027 · due 2026-12-06
+13. [Polis · Civic & Legal Watch] POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters · due 2026-12-06
+14. [Aegis · Insurance & Cover] AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines) · due 2026-12-06
+15. [Atlas · Work & Pay] ATL-GEM-02 · Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages · due 2026-12-07
+16. [Prometheus Hub] HUB-GEM-26 · Hub: the Kin family album and its show, measured on a phone and a TV · due 2026-12-08
+17. [Hephaestus Hearth] HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies · due 2026-12-08
+18. [Hephaestus Hearth] HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law · due 2026-12-08
+19. [Garage] GAR-GEM-19 · Garage: cold weather and winter storage for both vehicles, from the owner's manuals · due 2026-12-08
+20. [Kin] KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line · due 2026-12-08
+21. [Aegis · Insurance & Cover] AEG-GEM-02 · Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount) · due 2026-12-08
+22. [Aegis · Insurance & Cover] AEG-GEM-04 · Aegis: the California FAIR Plan, what it covers and what it leaves out · due 2026-12-08
+23. [Atlas · Work & Pay] ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each · due 2026-12-09
+24. [Money · payoff simulator] MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53) · due 2026-12-10
+25. [Athenaeum · Idea Vault] ATH-GEM-16 · History: Kern County and the Tejon Pass, 1850-2025 (40 entries) · due 2026-12-10
+26. [Kin] KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records · due 2026-12-10
+27. [Aegis · Insurance & Cover] AEG-GEM-03 · Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each · due 2026-12-10
+28. [Aegis · Insurance & Cover] AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays · due 2026-12-10
+29. [Aegis · Insurance & Cover] AEG-GEM-06 · Aegis: after a car accident in California, the driver's own duties and the deadlines · due 2026-12-10
+30. [Money · payoff simulator] MON-GEM-11 · Money: California consumer debt rules a payoff plan needs (limits, collectors, medical debt) · due 2026-12-12
+31. [Agora] SEL-GEM-10 · Agora: when a California seller needs a seller's permit, and who collects the tax on marketplaces · due 2026-12-12
+32. [Athenaeum · Idea Vault] ATH-GEM-17 · History: the Philippines, 1898-2024 (30 entries) · due 2026-12-12
+33. [Odyssey · Trips & Away Mode] ODY-GEM-31 · Odyssey: entering Europe and the UK on a US passport from 2027 (EES, ETIAS, UK ETA) · due 2026-12-12
+34. [Kin] KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books · due 2026-12-12
+35. [Kin] KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900 · due 2026-12-12
+36. [Kin] KIN-GEM-48 · Kin: Joseph Termena's Michigan World War I bonus file (1921) · due 2026-12-12
+37. [Atlas · Work & Pay] ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California) · due 2026-12-12
+38. [Hephaestus Hearth] HEA-GEM-36 · Hearth: energy rebates and programs a Kern County home can use in 2027 · due 2026-12-14
+39. [Athenaeum · Idea Vault] ATH-GEM-18 · History: United States immigration law, 1882-1965 (25 entries) · due 2026-12-14
+40. [Kin] KIN-GEM-50 · Kin: Joseph Pavia's crossing from Malta and his naturalization · due 2026-12-14
+41. [Bossa Piano Studio] PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931) · due 2026-12-15
+42. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
+43. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
+44. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+45. [Kairos Meridian] KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them · due 2027-01-15
+46. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
+47. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
 
 ==================== 1. GARAGE ====================
 ## 1. GAR-GEM-18 · Garage: the Sorento's Intelligent Speed Limit Assist light (row 43) from a stable manual link
@@ -546,8 +560,106 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 11. POLIS · CIVIC & LEGAL WATCH ====================
-## 11. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
+==================== 11. ICARUS STAKE ====================
+## 11. ICA-GEM-16 · Icarus: Series I savings bonds from 1 November 2026, the rate and the rules
+
+**Due:** 2026-12-06 · **State:** now
+
+**What it unlocks:** Icarus can show the I bond next to Treasury bills and high-yield savings.
+
+**Read first:**
+- https://www.treasurydirect.gov/savings-bonds/i-bonds/
+
+**Do this:**
+1. The composite rate, fixed rate and inflation rate from 1 November 2026, the purchase limit, the one-year lockup, the three-month penalty before five years, how the rate resets, and the tax treatment.
+2. One row per fact.
+
+**Make:** `icarus_gemini_i-bonds_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `fact` (text): rate, limit, lockup, penalty, reset, tax
+- `value` (text): as printed
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** 10 rows from TreasuryDirect.
+
+**How Claude checks it:**
+- Claude checks the three rates.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 12. AETHER · ATMOSPHERIC & FIELD LAB ====================
+## 12. AET-GEM-20 · Aether: NOAA's winter outlook for the Kern mountains, December 2026 to February 2027
+
+**Due:** 2026-12-06 · **State:** now
+
+**What it unlocks:** Aether shows this winter against normal: warmer or colder, wetter or drier, and why.
+
+**Read first:**
+- https://www.cpc.ncep.noaa.gov (monthly and seasonal outlooks, ENSO diagnostic discussion)
+
+**Do this:**
+1. For December, January, February and the DJF season: the temperature and precipitation outlook category and probability for the Tejon Pass area, the ENSO state and its forecast, and the issue date of each product.
+2. Quote the outlook text where the map is the only source of a number, and give the map's own legend value.
+
+**Make:** `aether_gemini_winter-outlook_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `period` (text): Dec, Jan, Feb, DJF, ENSO
+- `temperature` (text): category and probability
+- `precipitation` (text): category and probability
+- `issued` (date): product issue date
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** Every period with its issue date.
+
+**How Claude checks it:**
+- Claude checks the ENSO state and one map reading.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 13. POLIS · CIVIC & LEGAL WATCH ====================
+## 13. POL-GEM-10 · Polis: every 2027 election date and deadline for Kern County voters
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -595,8 +707,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 12. AEGIS · INSURANCE & COVER ====================
-## 12. AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines)
+==================== 14. AEGIS · INSURANCE & COVER ====================
+## 14. AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines)
 
 **Due:** 2026-12-06 · **State:** now
 
@@ -638,8 +750,8 @@ IN THIS ORDER:
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 - a quote that is not on the page word for word
 
-==================== 13. ATLAS · WORK & PAY ====================
-## 13. ATL-GEM-02 · Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages
+==================== 15. ATLAS · WORK & PAY ====================
+## 15. ATL-GEM-02 · Atlas: the 2026 and 2027 payroll numbers for a California employee (wage bases, rates, plan limits) with their official pages
 
 **Due:** 2026-12-07 · **State:** now
 
@@ -682,8 +794,60 @@ IN THIS ORDER:
 - a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 
-==================== 14. HEPHAESTUS HEARTH ====================
-## 14. HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies
+==================== 16. PROMETHEUS HUB ====================
+## 16. HUB-GEM-26 · Hub: the Kin family album and its show, measured on a phone and a TV
+
+**Due:** 2026-12-08 · **State:** now
+
+**What it unlocks:** A fix list for the album, measured, before the next family gathering.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/album/
+- the show: Play the show on that page
+
+**Do this:**
+1. Open it at 384x832, 412x915 and 1920x1080 in Chromium.
+2. Measure: text contrast below 4.5:1, anything wider than the screen, tap targets under 44 px, captions cut off, images that fail to load, the show's timing and controls (pause, next, close) with a keyboard and a remote's arrow keys, console errors.
+3. One row per problem with the selector, the measured value and a suggested fix.
+
+**Make:** `hub_gemini_album-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `size` (text): 384x832, 412x915 or 1920x1080
+- `where` (text): the selector or screen
+- `problem` (text): what is wrong, measured
+- `value` (text): the measured number
+- `fix` (text): suggested change
+- `severity` (text): P0/P1/P2
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 15
+
+**Done when:** Every size measured; every row reproducible.
+
+**How Claude checks it:**
+- Claude reproduces every P0 and P1.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a problem not reproduced by its measurement
+
+==================== 17. HEPHAESTUS HEARTH ====================
+## 17. HEA-GEM-34 · Hearth: how long home components last (appliances, roof, water heater, HVAC), from the studies
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -731,8 +895,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 15. HEPHAESTUS HEARTH ====================
-## 15. HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law
+==================== 18. HEPHAESTUS HEARTH ====================
+## 18. HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -782,8 +946,59 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 16. KIN ====================
-## 16. KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line
+==================== 19. GARAGE ====================
+## 19. GAR-GEM-19 · Garage: cold weather and winter storage for both vehicles, from the owner's manuals
+
+**Due:** 2026-12-08 · **State:** now
+
+**What it unlocks:** Garage shows a winter card for each vehicle on cold nights (Aether already knows the low).
+
+**Read first:**
+- 2025 Kia Sorento Hybrid owner's manual (owners.kia.com)
+- 2023 Yamaha MT-07 owner's manual (yamaha-motor.com)
+
+**Do this:**
+1. Every cold-weather and storage instruction in each manual: battery care, fluids, tyres, fuel, warm-up, storage longer than a month, what not to do.
+2. Give the manual page for each row.
+
+**Make:** `garage_gemini_winter_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `vehicle` (text): sorento or mt07
+- `topic` (text): battery, fluid, tyre, fuel, storage
+- `instruction` (text): what the manual says to do
+- `page` (text): manual page
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 20
+
+**Done when:** Every cold-weather instruction in both manuals.
+
+**How Claude checks it:**
+- Claude checks 5 rows against the manuals.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 20. KIN ====================
+## 20. KIN-GEM-41 · Kin, the albums again: the family's own pictures for Pavia, Sanders and the Termenas line
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -836,8 +1051,8 @@ IN THIS ORDER:
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a map, skyline or generic town picture
 
-==================== 17. AEGIS · INSURANCE & COVER ====================
-## 17. AEG-GEM-02 · Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount)
+==================== 21. AEGIS · INSURANCE & COVER ====================
+## 21. AEG-GEM-02 · Aegis: California auto insurance requirements in force for 2026 (the minimum limits after SB 1107, proof of insurance, the good driver discount)
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -879,8 +1094,8 @@ IN THIS ORDER:
 - a source that is a blog, forum, law-firm marketing page or AI summary where an official page exists
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 
-==================== 18. AEGIS · INSURANCE & COVER ====================
-## 18. AEG-GEM-04 · Aegis: the California FAIR Plan, what it covers and what it leaves out
+==================== 22. AEGIS · INSURANCE & COVER ====================
+## 22. AEG-GEM-04 · Aegis: the California FAIR Plan, what it covers and what it leaves out
 
 **Due:** 2026-12-08 · **State:** now
 
@@ -927,8 +1142,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 19. ATLAS · WORK & PAY ====================
-## 19. ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each
+==================== 23. ATLAS · WORK & PAY ====================
+## 23. ATL-GEM-03 · Atlas: California pay rules that touch a paycheck and time off (Labor Code), with the statute for each
 
 **Due:** 2026-12-09 · **State:** now
 
@@ -970,8 +1185,8 @@ IN THIS ORDER:
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 - a quote that is not on the page word for word
 
-==================== 20. MONEY · PAYOFF SIMULATOR ====================
-## 20. MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53)
+==================== 24. MONEY · PAYOFF SIMULATOR ====================
+## 24. MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53)
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1018,8 +1233,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 21. ATHENAEUM · IDEA VAULT ====================
-## 21. ATH-GEM-16 · History: Kern County and the Tejon Pass, 1850-2025 (40 entries)
+==================== 25. ATHENAEUM · IDEA VAULT ====================
+## 25. ATH-GEM-16 · History: Kern County and the Tejon Pass, 1850-2025 (40 entries)
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1071,8 +1286,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 22. KIN ====================
-## 22. KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records
+==================== 26. KIN ====================
+## 26. KIN-GEM-42 · Kin: the Sanders candidates (A and B in 1950), settled with records
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1124,8 +1339,8 @@ IN THIS ORDER:
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - addresses of living people, phone numbers or people-search sites
 
-==================== 23. AEGIS · INSURANCE & COVER ====================
-## 23. AEG-GEM-03 · Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each
+==================== 27. AEGIS · INSURANCE & COVER ====================
+## 27. AEG-GEM-03 · Aegis: what California and federal law say about warranties and service contracts (Song-Beverly, Magnuson-Moss), with the section for each
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1167,8 +1382,8 @@ IN THIS ORDER:
 - a value for a year that has not been published yet presented as if it had (write "not published as of {date}" instead)
 - a quote that is not on the page word for word
 
-==================== 24. AEGIS · INSURANCE & COVER ====================
-## 24. AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays
+==================== 28. AEGIS · INSURANCE & COVER ====================
+## 28. AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays
 
 **Due:** 2026-12-10 · **State:** now
 
@@ -1214,8 +1429,164 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 25. ATHENAEUM · IDEA VAULT ====================
-## 25. ATH-GEM-17 · History: the Philippines, 1898-2024 (30 entries)
+==================== 29. AEGIS · INSURANCE & COVER ====================
+## 29. AEG-GEM-06 · Aegis: after a car accident in California, the driver's own duties and the deadlines
+
+**Due:** 2026-12-10 · **State:** now
+
+**What it unlocks:** Aegis gets an 'after a crash' card: what to do today, this week, this month.
+
+**Read first:**
+- https://www.dmv.ca.gov (SR-1)
+- California Vehicle Code 16000, 20001-20008
+- https://www.insurance.ca.gov (auto claims)
+- 10 CCR 2695.5 and 2695.7
+
+**Do this:**
+1. Every duty and deadline: at the scene, within 10 days, the insurer's acknowledgment and decision deadlines, and what the driver can do if the insurer misses them.
+2. One row per rule with its code section.
+
+**Make:** `aegis_gemini_after-crash_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `when` (text): at the scene / 10 days / 15 days / 40 days ...
+- `rule` (text): what must be done and by whom
+- `section` (text): the code section
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 15
+
+**Done when:** 15 rows, each quoted from its code or agency page.
+
+**How Claude checks it:**
+- Claude checks the SR-1 threshold and two insurer deadlines.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 30. MONEY · PAYOFF SIMULATOR ====================
+## 30. MON-GEM-11 · Money: California consumer debt rules a payoff plan needs (limits, collectors, medical debt)
+
+**Due:** 2026-12-12 · **State:** now
+
+**What it unlocks:** Midas can mark which debts a collector may still sue on and which cannot be reported.
+
+**Read first:**
+- California Code of Civil Procedure 337
+- Civil Code 1788 et seq. (Rosenthal Act)
+- https://dfpi.ca.gov (Debt Collection Licensing Act)
+- SB 1061 (2024) on leginfo.legislature.ca.gov
+- https://www.consumerfinance.gov
+
+**Do this:**
+1. One row per rule: what it says, who it protects, the time limit or threshold, and its section.
+2. Quote the statute or the regulator's page.
+
+**Make:** `money_gemini_ca-debt-rules_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `rule` (text): what it says
+- `applies_to` (text): which debts
+- `limit` (text): the time limit or threshold, or none
+- `section` (text): the code section
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 15
+
+**Done when:** 15 rules, each quoted.
+
+**How Claude checks it:**
+- Claude reads the sections for the four-year limit and SB 1061.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 31. AGORA ====================
+## 31. SEL-GEM-10 · Agora: when a California seller needs a seller's permit, and who collects the tax on marketplaces
+
+**Due:** 2026-12-12 · **State:** now
+
+**What it unlocks:** Agora can tell, per platform, whether Joseph owes anything to the CDTFA.
+
+**Read first:**
+- https://www.cdtfa.ca.gov (Publication 109 and the marketplace facilitator pages)
+- Revenue and Taxation Code 6012-6018, 6040-6049.5
+
+**Do this:**
+1. The CDTFA's own rules for occasional sales, the seller's permit threshold, used personal property, and the marketplace facilitator act: which platforms collect, what the seller still owes.
+2. One row per rule with its section or publication.
+
+**Make:** `selling_gemini_ca-sales-tax_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `rule` (text): what it says
+- `applies_to` (text): which sales or platforms
+- `section` (text): code section or publication
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 12
+
+**Done when:** 12 rules from the CDTFA's own pages.
+
+**How Claude checks it:**
+- Claude checks the occasional-sale rule and the facilitator rule.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 32. ATHENAEUM · IDEA VAULT ====================
+## 32. ATH-GEM-17 · History: the Philippines, 1898-2024 (30 entries)
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -1265,8 +1636,59 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 26. KIN ====================
-## 26. KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books
+==================== 33. ODYSSEY · TRIPS & AWAY MODE ====================
+## 33. ODY-GEM-31 · Odyssey: entering Europe and the UK on a US passport from 2027 (EES, ETIAS, UK ETA)
+
+**Due:** 2026-12-12 · **State:** now
+
+**What it unlocks:** Odyssey's trip checklist knows what a US citizen needs before flying to Europe or the UK.
+
+**Read first:**
+- https://travel-europe.europa.eu (EES and ETIAS)
+- https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta
+- https://travel.state.gov country pages
+
+**Do this:**
+1. For EES, ETIAS and the UK ETA: who needs it, when it starts or started, the fee, how long it is valid, how far ahead to apply, the official application site.
+2. If a start date is not set, write "not published as of {date}".
+
+**Make:** `odyssey_gemini_europe-entry_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `scheme` (text): EES, ETIAS or UK ETA
+- `fact` (text): who, when, fee, validity, lead time, where to apply
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 15
+
+**Done when:** 15 rows from the EU's, UK's and State Department's own pages.
+
+**How Claude checks it:**
+- Claude checks the fees and start dates.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- an application site that is not the official one
+
+==================== 34. KIN ====================
+## 34. KIN-GEM-43 · Kin, Malta: the Pavia and Calleja baptisms and marriages in the parish books
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -1316,8 +1738,8 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 27. KIN ====================
-## 27. KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900
+==================== 35. KIN ====================
+## 35. KIN-GEM-44 · Kin, Lithuania: Termenas births in the Tryškiai and Telšiai metrical books, 1885-1900
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -1367,8 +1789,59 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 28. ATLAS · WORK & PAY ====================
-## 28. ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California)
+==================== 36. KIN ====================
+## 36. KIN-GEM-48 · Kin: Joseph Termena's Michigan World War I bonus file (1921)
+
+**Due:** 2026-12-12 · **State:** now
+
+**What it unlocks:** A second copy of his service data, read independently of the taped discharge, settles the lines the tape hides.
+
+**Read first:**
+- Michigan State Archives / Michiganology: Michigan Veterans' bonus applications (WWI)
+- FamilySearch catalog: Michigan, World War I veterans' bonus
+- pillars/kin/lineage/data.js (P-joseph, conflict C5 height and the service record)
+
+**Do this:**
+1. Search the Michigan WWI bonus records for Joseph Termena / Termenas / Terminas, 1919-1923.
+2. If found: transcribe every field of the application word for word, and give the image link.
+3. If not found: log each index and series searched with the spellings tried.
+
+**Make:** `kin_gemini_michigan-bonus_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find or search
+- `record` (text): what it is
+- `transcription` (text): word for word
+- `source_url` (url): the image or index page
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 8
+
+**Done when:** The application transcribed, or every search logged.
+
+**How Claude checks it:**
+- Claude reads any image that opens at full size; Muse second-reads.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 37. ATLAS · WORK & PAY ====================
+## 37. ATL-GEM-04 · Atlas: an employee's 2027 tax calendar (federal and California)
 
 **Due:** 2026-12-12 · **State:** now
 
@@ -1417,8 +1890,223 @@ IN THIS ORDER:
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 
-==================== 29. LUDUS ARCADE ====================
-## 29. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
+==================== 38. HEPHAESTUS HEARTH ====================
+## 38. HEA-GEM-36 · Hearth: energy rebates and programs a Kern County home can use in 2027
+
+**Due:** 2026-12-14 · **State:** now
+
+**What it unlocks:** Each renovation item in Hearth shows the programs that still pay toward it.
+
+**Read first:**
+- https://www.energy.ca.gov
+- https://switchison.org / TECH Clean California
+- https://www.sce.com rebates
+- https://www.socalgas.com rebates
+- https://www.irs.gov (credit status)
+
+**Do this:**
+1. Every program open to a homeowner in Kern County for heating, cooling, water heating, insulation, windows, solar or panels: who runs it, what it pays, the conditions, and whether it is open as of today.
+2. Write "ended" with its end date for any program that closed, quoting the page.
+
+**Make:** `hearth_gemini_rebates-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `program` (text): its name
+- `runs_it` (text): agency or utility
+- `pays` (text): amount as printed
+- `conditions` (text): who qualifies
+- `status` (text): open, waitlist or ended (date)
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 20
+
+**Done when:** 20 programs, each with its status quoted.
+
+**How Claude checks it:**
+- Claude checks 5 rows, including any federal credit's end date.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 39. ATHENAEUM · IDEA VAULT ====================
+## 39. ATH-GEM-18 · History: United States immigration law, 1882-1965 (25 entries)
+
+**Due:** 2026-12-14 · **State:** now
+
+**What it unlocks:** Kin's arrival stories and Athenaeum's chronicle can say which law each crossing fell under.
+
+**Read first:**
+- https://history.state.gov (Milestones)
+- https://www.uscis.gov/about-us/our-history
+- https://www.archives.gov
+- Library of Congress
+
+**Do this:**
+1. 25 dated entries from the Chinese Exclusion Act (1882) to the Immigration and Nationality Act of 1965: each law, what it changed, who it hit.
+2. Same entry shape as your history files (id, date, precision, title, text, regions, themes, place, sources with quotes), with a chain (cause, event, consequence) where the source gives one.
+
+**Make:** `athenaeum_gemini_history-immigration_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-imm-YYYY-word
+- `date` (text): YYYY or YYYY-MM-DD
+- `precision` (text): day/month/year
+- `title` (text): short
+- `text` (text): one paragraph
+- `regions` (list): usa and others
+- `themes` (list): law, migration ...
+- `sources` (list): url + quote each
+- `chain` (object or null): cause, event, consequence
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 25
+
+**Done when:** 25 entries, every date quoted.
+
+**How Claude checks it:**
+- Claude reads every title and date; Muse second-reads 5.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 40. KIN ====================
+## 40. KIN-GEM-50 · Kin: Joseph Pavia's crossing from Malta and his naturalization
+
+**Due:** 2026-12-14 · **State:** now
+
+**What it unlocks:** The Pavia line gets its crossing: ship, date, last residence in Malta, who he joined in America.
+
+**Read first:**
+- pillars/kin/lineage/data.js (Joseph Pavia and Lucrezia Calleja's P- ids)
+- Statue of Liberty-Ellis Island Foundation passenger search
+- FamilySearch: New York and Detroit border crossings; Michigan naturalization indexes
+- NARA catalog
+
+**Do this:**
+1. Search arrivals 1912-1930 for Giuseppe / Joseph Pavia born about 1897 in Malta (New York, Boston, Detroit and Canadian border crossings).
+2. Search the Michigan and federal naturalization indexes for his declaration and petition.
+3. Transcribe every match; log every search that found nothing, with spellings and years.
+
+**Make:** `kin_gemini_pavia-crossing_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find or search
+- `record` (text): manifest, border crossing, declaration, petition
+- `transcription` (text): his line word for word
+- `identifiers` (text): age, birthplace, residence, relative named
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** A crossing found and argued, or every search logged.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace
+
+==================== 41. BOSSA PIANO STUDIO ====================
+## 41. PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931)
+
+**Due:** 2026-12-15 · **State:** now
+
+**What it unlocks:** Piano can add the 1931 standards as playable pieces from New Year's Day.
+
+**Read first:**
+- https://web.law.duke.edu/cspd/publicdomainday/
+- the Copyright Office's catalog of copyright entries for 1931 (archive.org)
+- the Library of Congress
+
+**Do this:**
+1. The songs published in 1931 that a jazz or bossa pianist would play, with composer, lyricist and first publication. If the 2027 list is not published yet, say so and give the 1931 songs from the 1931 catalog of copyright entries.
+2. Note any song whose sound recording or later arrangement is still protected.
+
+**Make:** `piano_gemini_pd-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `song` (text): title
+- `composer` (text): and lyricist
+- `published` (text): first publication, 1931
+- `note` (text): what stays protected
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 20
+
+**Done when:** 20 songs, each with its 1931 publication sourced.
+
+**How Claude checks it:**
+- Claude checks 5 against the 1931 catalog.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+==================== 42. LUDUS ARCADE ====================
+## 42. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
 
 **Due:** 2026-12-22 · **State:** now
 
@@ -1453,8 +2141,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 30. MIDAS LEDGER ====================
-## 30. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
+==================== 43. MIDAS LEDGER ====================
+## 43. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
 
 **Due:** 2026-12-28 · **State:** now
 
@@ -1508,8 +2196,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 31. KAIROS MERIDIAN ====================
-## 31. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 44. KAIROS MERIDIAN ====================
+## 44. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -1554,8 +2242,55 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 32. AGORA ====================
-## 32. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+==================== 45. KAIROS MERIDIAN ====================
+## 45. KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them
+
+**Due:** 2027-01-15 · **State:** now
+
+**What it unlocks:** Kairos marks the days Kern's offices are closed.
+
+**Read first:**
+- The Kern County Assessor-Recorder holiday schedules page (kerncounty.com/government/departments/assessor-recorder/contact-about/assessor-recorder-holiday-schedules) and its 2027 PDFs
+- Kern County Human Resources' 'County Holidays' PDF, or the Board of Supervisors' 2027 holiday resolution
+
+**Do this:**
+1. Open the pages above. If a 2027 schedule is posted, one row per 2027 closure date with its name, quoting the PDF line.
+2. If it is still not posted, deliver one row with date null that names every page you opened and quotes what each says now.
+
+**Make:** `kairos_gemini_kern-holidays-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): 1, 2, 3 ...
+- `date` (date): YYYY-MM-DD
+- `name` (text): 
+- `url` (url): the page you opened, on the official site
+- `quote` (text): copied word for word from that page, 300 characters at most
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).
+- [ ] Every quote is copied word for word from that page or PDF page and is there now.
+- [ ] Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.
+- [ ] No row is a copy of another with the names changed.
+- [ ] The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked.
+
+**Done when:** Every 2027 closure from Kern's own 2027 schedule, or the pages that show it is still not posted.
+
+**How Claude checks it:**
+- Claude opens 12 rows at random against their pages and redoes every 'math' field.
+
+**Not done (sent back) if:** (and the rules at the top)
+- fewer rows than the count, or a row missing a field
+- a URL that does not open, is a home page or a search page, or does not say what the row claims
+- a quote that is not on the page it cites (Claude opens rows at random)
+- arithmetic that does not add up when Claude redoes it
+- a guess written as a fact (write 'not stated' and name the page you checked)
+
+==================== 46. AGORA ====================
+## 46. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 
@@ -1606,8 +2341,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 33. POLIS · CIVIC & LEGAL WATCH ====================
-## 33. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+==================== 47. POLIS · CIVIC & LEGAL WATCH ====================
+## 47. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
 
 **Due:** 2027-01-20 · **State:** now
 

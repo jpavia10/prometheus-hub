@@ -2,40 +2,40 @@
 
 # Homework board: every pillar, every AI
 
-Updated 2026-11-26 01:17 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
+Updated 2026-11-26 05:06 UTC. Open tasks (now + next). Titan counts its homework sheets + projects.
 
 | Pillar | State | Grok | Gemini | Muse | ChatGPT | Argon | Hydrogen | Claude |
 |---|---|---|---|---|---|---|---|---|
-| Prometheus Hub | live | — | 1 | 1 | — | — | — | — |
-| Kairos Meridian | live | — | 1 | — | — | — | — | — |
+| Prometheus Hub | live | — | 2 | 1 | — | — | — | — |
+| Kairos Meridian | live | — | 2 | — | — | — | — | — |
 | Midas Ledger | live | 2 | 2 | 1 | — | — | — | — |
 | Titan Reliquary | live | — | 4 | 6 | — | — | — | — |
-| Hephaestus Hearth | live | — | 3 | — | — | — | — | — |
-| Garage | live | — | 1 | — | — | — | — | — |
+| Hephaestus Hearth | live | — | 4 | — | — | — | — | — |
+| Garage | live | — | 2 | — | — | — | — | — |
 | Apollo Temple | live | — | — | — | — | — | — | — |
-| Money · payoff simulator | live | — | 2 | — | — | — | — | — |
-| Agora | live | — | 1 | — | — | — | — | — |
+| Money · payoff simulator | live | — | 3 | — | — | — | — | — |
+| Agora | live | — | 2 | — | — | — | — | — |
 | Records · Paper Killer | live | — | — | — | — | — | — | — |
-| Icarus Stake | live | — | — | — | — | — | — | — |
+| Icarus Stake | live | — | 1 | — | — | — | — | — |
 | Hermes Post | live | — | — | — | — | — | — | — |
-| Bossa Piano Studio | live | — | — | — | — | — | — | — |
+| Bossa Piano Studio | live | — | 1 | — | — | — | — | — |
 | Bastion · Mountain Prep | live | — | 1 | — | — | — | — | — |
-| Athenaeum · Idea Vault | live | — | 2 | 1 | — | — | — | — |
-| Odyssey · Trips & Away Mode | live | — | — | — | — | — | — | — |
+| Athenaeum · Idea Vault | live | — | 3 | 1 | — | — | — | — |
+| Odyssey · Trips & Away Mode | live | — | 1 | — | — | — | — | — |
 | Privacy · CA DROP | live | — | 1 | — | — | — | — | — |
 | Argus Album | live | — | — | — | — | — | — | — |
 | Ludus Arcade | live | — | 1 | — | — | — | — | — |
 | Forge | live | — | — | — | — | — | — | — |
 | Foundry | live | — | — | — | — | — | — | — |
 | Observatory | live | — | — | — | — | — | — | — |
-| Kin | live | — | 5 | 3 | — | — | — | — |
+| Kin | live | — | 7 | 3 | — | — | — | — |
 | Sylade · Presence | live | — | — | — | — | — | — | — |
-| Aether · Atmospheric & Field Lab | live | — | — | — | — | — | — | — |
+| Aether · Atmospheric & Field Lab | live | — | 1 | — | — | — | — | — |
 | Polis · Civic & Legal Watch | live | — | 2 | — | — | — | — | — |
 | Mythos · Creative & Lore Studio | live | — | — | — | — | — | — | — |
 | Continuity · Sovereign Vault | live | — | 1 | — | — | — | — | — |
 | Atlas · Work & Pay | live | — | 4 | 1 | — | — | — | — |
-| Aegis · Insurance & Cover | live | — | 5 | 1 | — | — | — | — |
+| Aegis · Insurance & Cover | live | — | 6 | 1 | — | — | — | — |
 | Fleet Command | paused | — | — | — | — | — | — | — |
 
 Each AI's full list, every pillar on one page: Drive 'Prometheus Hub/{AI folder}/HOMEWORK — {Name} (every pillar)' (text in docs/agents/drive/HOMEWORK_{ai}.txt).

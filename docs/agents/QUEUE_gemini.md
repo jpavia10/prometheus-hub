@@ -2,7 +2,7 @@
 
 # Prometheus Hub · homework for Gemini
 
-Updated 2026-11-26 01:17 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 05:06 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -57,5 +57,58 @@ Updated 2026-11-26 01:17 UTC · 1 open · Rules for every pillar: https://github
 - a quote that is not word for word on the page as served today
 - a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
 - rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a problem not reproduced by its measurement
+
+## 2. HUB-GEM-26 · Hub: the Kin family album and its show, measured on a phone and a TV
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** The family album (Kin > Open the album) shipped in d88 for Thanksgiving: a grid, a viewer and a full-screen show for the television. It has not been measured the way you measured the town (HUB-GEM-24).
+
+**What it unlocks:** A fix list for the album, measured, before the next family gathering.
+
+**Read first:**
+- https://jpavia10.github.io/prometheus-hub/pillars/kin/album/
+- the show: Play the show on that page
+
+**Do this:**
+1. Open it at 384x832, 412x915 and 1920x1080 in Chromium.
+2. Measure: text contrast below 4.5:1, anything wider than the screen, tap targets under 44 px, captions cut off, images that fail to load, the show's timing and controls (pause, next, close) with a keyboard and a remote's arrow keys, console errors.
+3. One row per problem with the selector, the measured value and a suggested fix.
+
+**Make:** `hub_gemini_album-audit_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `size` (text): 384x832, 412x915 or 1920x1080
+- `where` (text): the selector or screen
+- `problem` (text): what is wrong, measured
+- `value` (text): the measured number
+- `fix` (text): suggested change
+- `severity` (text): P0/P1/P2
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 15
+
+**Done when:** Every size measured; every row reproducible.
+
+**How Claude checks it:**
+- Claude reproduces every P0 and P1.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a problem not reproduced by its measurement

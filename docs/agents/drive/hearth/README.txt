@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Hephaestus Hearth right now.
 
 ## Gemini
 
-Updated 2026-11-26 01:17 UTC · 3 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 4 open in this pillar.
 
 
 - HEA-GEM-33 · Hearth: the six deck inspections again, each with the code's own words (guard height is 36 in) · due 2026-12-04
@@ -24,31 +24,33 @@ Updated 2026-11-26 01:17 UTC · 3 open in this pillar.
     make: hearth_gemini_life-expectancy_{YYYYMMDD-HHMM}.json · how many: 40 · done when: 40 rows.
 - HEA-GEM-35 · Hearth: smoke and carbon monoxide alarms room by room under California law · due 2026-12-08
     make: hearth_gemini_alarms_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 rows.
+- HEA-GEM-36 · Hearth: energy rebates and programs a Kern County home can use in 2027 · due 2026-12-14
+    make: hearth_gemini_rebates-2027_{YYYYMMDD-HHMM}.json · how many: 20 · done when: 20 programs, each with its status quoted.
 
 ## Muse
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Hephaestus Hearth right now.
 
 ## ChatGPT
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Hephaestus Hearth right now.
 
 ## Argon
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Hephaestus Hearth right now.
 
 ## Hydrogen
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Hephaestus Hearth right now.

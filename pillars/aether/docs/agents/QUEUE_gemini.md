@@ -2,8 +2,57 @@
 
 # Aether · Atmospheric & Field Lab · homework for Gemini
 
-Updated 2026-11-26 01:17 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 05:06 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Gemini in Aether · Atmospheric & Field Lab right now. Check your HOMEWORK doc for the other pillars.
+## 1. AET-GEM-20 · Aether: NOAA's winter outlook for the Kern mountains, December 2026 to February 2027
+
+**Due:** 2026-12-06 · **State:** now
+
+**Why:** Aether has Frazier Park's climate normals (AET-GEM-08). NOAA's Climate Prediction Center issues monthly and three-month outlooks for temperature and precipitation, and the ENSO state that drives them.
+
+**What it unlocks:** Aether shows this winter against normal: warmer or colder, wetter or drier, and why.
+
+**Read first:**
+- https://www.cpc.ncep.noaa.gov (monthly and seasonal outlooks, ENSO diagnostic discussion)
+
+**Do this:**
+1. For December, January, February and the DJF season: the temperature and precipitation outlook category and probability for the Tejon Pass area, the ENSO state and its forecast, and the issue date of each product.
+2. Quote the outlook text where the map is the only source of a number, and give the map's own legend value.
+
+**Make:** `aether_gemini_winter-outlook_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `period` (text): Dec, Jan, Feb, DJF, ENSO
+- `temperature` (text): category and probability
+- `precipitation` (text): category and probability
+- `issued` (date): product issue date
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** Every period with its issue date.
+
+**How Claude checks it:**
+- Claude checks the ENSO state and one map reading.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Aegis · Insurance & Cover right now.
 
 ## Gemini
 
-Updated 2026-11-26 01:17 UTC · 5 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 6 open in this pillar.
 
 
 - AEG-GEM-01 · Aegis: California homeowners insurance as the Department of Insurance explains it (coverages A to F, replacement cost, extended replacement, the FAIR Plan, the home inventory, claim deadlines) · due 2026-12-06
@@ -28,10 +28,12 @@ Updated 2026-11-26 01:17 UTC · 5 open in this pillar.
     make: aegis_gemini_warranty-law_{YYYYMMDD-HHMM}.json · how many: 12 · done when: At least 12 rows, both laws.
 - AEG-GEM-05 · Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays · due 2026-12-10
     make: aegis_gemini_earthquake_{YYYYMMDD-HHMM}.json · how many: 15 · done when: 15 rows, each quoted.
+- AEG-GEM-06 · Aegis: after a car accident in California, the driver's own duties and the deadlines · due 2026-12-10
+    make: aegis_gemini_after-crash_{YYYYMMDD-HHMM}.json · how many: 15 · done when: 15 rows, each quoted from its code or agency page.
 
 ## Muse
 
-Updated 2026-11-26 01:17 UTC · 1 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 1 open in this pillar.
 
 
 - AEG-MUS-01 · Aegis: second reader on Gemini's California homeowners insurance facts · due 2026-12-12 · waits for its input file
@@ -39,21 +41,21 @@ Updated 2026-11-26 01:17 UTC · 1 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Aegis · Insurance & Cover right now.
 
 ## Argon
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Aegis · Insurance & Cover right now.
 
 ## Hydrogen
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Aegis · Insurance & Cover right now.

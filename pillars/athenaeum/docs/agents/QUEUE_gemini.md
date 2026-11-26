@@ -2,7 +2,7 @@
 
 # Athenaeum · Idea Vault · homework for Gemini
 
-Updated 2026-11-26 01:17 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 05:06 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -110,4 +110,59 @@ Updated 2026-11-26 01:17 UTC · 2 open · Rules for every pillar: https://github
 - a quote that is not word for word on the page as served today
 - a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
 - rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 3. ATH-GEM-18 · History: United States immigration law, 1882-1965 (25 entries)
+
+**Due:** 2026-12-14 · **State:** now
+
+**Why:** Kin's two crossings sit inside this history: Joseph Termenas arrived in 1912, before the literacy test (1917) and the quotas (1921, 1924); Joseph Pavia came from Malta under the quota years. The world history has the family's events but not the laws they crossed under.
+
+**What it unlocks:** Kin's arrival stories and Athenaeum's chronicle can say which law each crossing fell under.
+
+**Read first:**
+- https://history.state.gov (Milestones)
+- https://www.uscis.gov/about-us/our-history
+- https://www.archives.gov
+- Library of Congress
+
+**Do this:**
+1. 25 dated entries from the Chinese Exclusion Act (1882) to the Immigration and Nationality Act of 1965: each law, what it changed, who it hit.
+2. Same entry shape as your history files (id, date, precision, title, text, regions, themes, place, sources with quotes), with a chain (cause, event, consequence) where the source gives one.
+
+**Make:** `athenaeum_gemini_history-immigration_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `id` (text): his-imm-YYYY-word
+- `date` (text): YYYY or YYYY-MM-DD
+- `precision` (text): day/month/year
+- `title` (text): short
+- `text` (text): one paragraph
+- `regions` (list): usa and others
+- `themes` (list): law, migration ...
+- `sources` (list): url + quote each
+- `chain` (object or null): cause, event, consequence
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 25
+
+**Done when:** 25 entries, every date quoted.
+
+**How Claude checks it:**
+- Claude reads every title and date; Muse second-reads 5.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
 - a value for a period not published yet presented as if it were (write "not published as of {date}")

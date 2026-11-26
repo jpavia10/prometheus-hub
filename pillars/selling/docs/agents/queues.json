@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "pillar": "selling",
  "agents": [
   {
@@ -646,6 +646,83 @@
      "due": "2026-12-08",
      "closed": "2026-11-25",
      "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "SEL-GEM-10",
+     "title": "Agora: when a California seller needs a seller's permit, and who collects the tax on marketplaces",
+     "due": "2026-12-12",
+     "why": "Agora lists things for sale on eBay, Facebook Marketplace and elsewhere. California's CDTFA decides when occasional sales need a seller's permit, and the marketplace facilitator law makes most platforms collect the sales tax themselves.",
+     "unlocks": "Agora can tell, per platform, whether Joseph owes anything to the CDTFA.",
+     "inputs": [
+      "https://www.cdtfa.ca.gov (Publication 109 and the marketplace facilitator pages)",
+      "Revenue and Taxation Code 6012-6018, 6040-6049.5"
+     ],
+     "steps": [
+      "The CDTFA's own rules for occasional sales, the seller's permit threshold, used personal property, and the marketplace facilitator act: which platforms collect, what the seller still owes.",
+      "One row per rule with its section or publication."
+     ],
+     "deliver": {
+      "file": "selling_gemini_ca-sales-tax_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "what it says"
+      },
+      {
+       "name": "applies_to",
+       "type": "text",
+       "rule": "which sales or platforms"
+      },
+      {
+       "name": "section",
+       "type": "text",
+       "rule": "code section or publication"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "12 rules from the CDTFA's own pages.",
+     "checks": [
+      "Claude checks the occasional-sale rule and the facilitator rule."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

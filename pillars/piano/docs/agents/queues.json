@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-19",
+ "updated": "2026-11-26",
  "pillar": "piano",
  "agents": [
   {
@@ -581,6 +581,89 @@
      "due": "2026-12-03",
      "closed": "2026-11-23",
      "review": "Scored 10/10 (#135)"
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "PIA-GEM-09",
+     "title": "Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931)",
+     "due": "2026-12-15",
+     "why": "On 1 January 2027, works published in 1931 enter the US public domain. Piano and Mythos can then use their melodies and lyrics freely; Duke's Center for the Study of the Public Domain publishes the list each year.",
+     "unlocks": "Piano can add the 1931 standards as playable pieces from New Year's Day.",
+     "inputs": [
+      "https://web.law.duke.edu/cspd/publicdomainday/",
+      "the Copyright Office's catalog of copyright entries for 1931 (archive.org)",
+      "the Library of Congress"
+     ],
+     "steps": [
+      "The songs published in 1931 that a jazz or bossa pianist would play, with composer, lyricist and first publication. If the 2027 list is not published yet, say so and give the 1931 songs from the 1931 catalog of copyright entries.",
+      "Note any song whose sound recording or later arrangement is still protected."
+     ],
+     "deliver": {
+      "file": "piano_gemini_pd-2027_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "song",
+       "type": "text",
+       "rule": "title"
+      },
+      {
+       "name": "composer",
+       "type": "text",
+       "rule": "and lyricist"
+      },
+      {
+       "name": "published",
+       "type": "text",
+       "rule": "first publication, 1931"
+      },
+      {
+       "name": "note",
+       "type": "text",
+       "rule": "what stays protected"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "20 songs, each with its 1931 publication sourced.",
+     "checks": [
+      "Claude checks 5 against the 1931 catalog."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
     }
    ]
   },

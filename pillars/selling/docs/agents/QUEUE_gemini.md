@@ -2,11 +2,62 @@
 
 # Agora · homework for Gemini
 
-Updated 2026-11-26 01:17 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 05:06 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-## 1. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+## 1. SEL-GEM-10 · Agora: when a California seller needs a seller's permit, and who collects the tax on marketplaces
+
+**Due:** 2026-12-12 · **State:** now
+
+**Why:** Agora lists things for sale on eBay, Facebook Marketplace and elsewhere. California's CDTFA decides when occasional sales need a seller's permit, and the marketplace facilitator law makes most platforms collect the sales tax themselves.
+
+**What it unlocks:** Agora can tell, per platform, whether Joseph owes anything to the CDTFA.
+
+**Read first:**
+- https://www.cdtfa.ca.gov (Publication 109 and the marketplace facilitator pages)
+- Revenue and Taxation Code 6012-6018, 6040-6049.5
+
+**Do this:**
+1. The CDTFA's own rules for occasional sales, the seller's permit threshold, used personal property, and the marketplace facilitator act: which platforms collect, what the seller still owes.
+2. One row per rule with its section or publication.
+
+**Make:** `selling_gemini_ca-sales-tax_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `rule` (text): what it says
+- `applies_to` (text): which sales or platforms
+- `section` (text): code section or publication
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 12
+
+**Done when:** 12 rules from the CDTFA's own pages.
+
+**How Claude checks it:**
+- Claude checks the occasional-sale rule and the facilitator rule.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 2. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 

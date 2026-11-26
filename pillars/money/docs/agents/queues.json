@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "pillar": "money",
  "agents": [
   {
@@ -675,6 +675,91 @@
       "a quote that is not word for word on the page as served today",
       "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
       "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "MON-GEM-11",
+     "title": "Money: California consumer debt rules a payoff plan needs (limits, collectors, medical debt)",
+     "due": "2026-12-12",
+     "why": "Midas plans the way out of debt. California rules change what an old or medical debt can do: the four-year statute of limitations on written contracts, the Rosenthal Act's collector rules, the Debt Collection Licensing Act, time-barred debt disclosures, and medical debt kept off credit reports (SB 1061).",
+     "unlocks": "Midas can mark which debts a collector may still sue on and which cannot be reported.",
+     "inputs": [
+      "California Code of Civil Procedure 337",
+      "Civil Code 1788 et seq. (Rosenthal Act)",
+      "https://dfpi.ca.gov (Debt Collection Licensing Act)",
+      "SB 1061 (2024) on leginfo.legislature.ca.gov",
+      "https://www.consumerfinance.gov"
+     ],
+     "steps": [
+      "One row per rule: what it says, who it protects, the time limit or threshold, and its section.",
+      "Quote the statute or the regulator's page."
+     ],
+     "deliver": {
+      "file": "money_gemini_ca-debt-rules_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 15,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "rule",
+       "type": "text",
+       "rule": "what it says"
+      },
+      {
+       "name": "applies_to",
+       "type": "text",
+       "rule": "which debts"
+      },
+      {
+       "name": "limit",
+       "type": "text",
+       "rule": "the time limit or threshold, or none"
+      },
+      {
+       "name": "section",
+       "type": "text",
+       "rule": "the code section"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "15 rules, each quoted.",
+     "checks": [
+      "Claude reads the sections for the four-year limit and SB 1061."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
      ]
     }

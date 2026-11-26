@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "pillar": "kin",
  "agents": [
   {
@@ -4705,6 +4705,161 @@
       "a caption that is not word for word on the post",
       "a name guessed from a face",
       "rows padded to reach the count"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "KIN-GEM-48",
+     "title": "Kin: Joseph Termena's Michigan World War I bonus file (1921)",
+     "due": "2026-12-12",
+     "why": "Muse's blind read of the discharge (KIN-MUS-02) found a 1921 Victory Medal and Michigan bonus notarization on the back. Michigan paid a bonus to its WWI veterans from 1921, and the application repeats the service record: dates, units, home address, sometimes next of kin.",
+     "unlocks": "A second copy of his service data, read independently of the taped discharge, settles the lines the tape hides.",
+     "inputs": [
+      "Michigan State Archives / Michiganology: Michigan Veterans' bonus applications (WWI)",
+      "FamilySearch catalog: Michigan, World War I veterans' bonus",
+      "pillars/kin/lineage/data.js (P-joseph, conflict C5 height and the service record)"
+     ],
+     "steps": [
+      "Search the Michigan WWI bonus records for Joseph Termena / Termenas / Terminas, 1919-1923.",
+      "If found: transcribe every field of the application word for word, and give the image link.",
+      "If not found: log each index and series searched with the spellings tried."
+     ],
+     "deliver": {
+      "file": "kin_gemini_michigan-bonus_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 8,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find or search"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "what it is"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "word for word"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the image or index page"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "The application transcribed, or every search logged.",
+     "checks": [
+      "Claude reads any image that opens at full size; Muse second-reads."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "KIN-GEM-50",
+     "title": "Kin: Joseph Pavia's crossing from Malta and his naturalization",
+     "due": "2026-12-14",
+     "why": "The 1950 census has Joseph Pavia (52) and Grace M. (40) both born in Malta; the tree has no arrival or naturalization for him yet. The Malta parish search (KIN-GEM-43) works the other end.",
+     "unlocks": "The Pavia line gets its crossing: ship, date, last residence in Malta, who he joined in America.",
+     "inputs": [
+      "pillars/kin/lineage/data.js (Joseph Pavia and Lucrezia Calleja's P- ids)",
+      "Statue of Liberty-Ellis Island Foundation passenger search",
+      "FamilySearch: New York and Detroit border crossings; Michigan naturalization indexes",
+      "NARA catalog"
+     ],
+     "steps": [
+      "Search arrivals 1912-1930 for Giuseppe / Joseph Pavia born about 1897 in Malta (New York, Boston, Detroit and Canadian border crossings).",
+      "Search the Michigan and federal naturalization indexes for his declaration and petition.",
+      "Transcribe every match; log every search that found nothing, with spellings and years."
+     ],
+     "deliver": {
+      "file": "kin_gemini_pavia-crossing_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 10,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find or search"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "manifest, border crossing, declaration, petition"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "his line word for word"
+      },
+      {
+       "name": "identifiers",
+       "type": "text",
+       "rule": "age, birthplace, residence, relative named"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the record"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "A crossing found and argued, or every search logged.",
+     "checks": [
+      "Claude reads every image that opens; Muse second-reads."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "a match accepted on the name alone, without age and birthplace"
      ]
     }
    ]

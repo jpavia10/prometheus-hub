@@ -2,7 +2,7 @@
 
 # Garage · homework for Gemini
 
-Updated 2026-11-26 01:17 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 05:06 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -53,4 +53,56 @@ Updated 2026-11-26 01:17 UTC · 1 open · Rules for every pillar: https://github
 - a quote that is not word for word on the page as served today
 - a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
 - rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 2. GAR-GEM-19 · Garage: cold weather and winter storage for both vehicles, from the owner's manuals
+
+**Due:** 2026-12-08 · **State:** now
+
+**Why:** Frazier Park sits near 4,600 ft and freezes most winter nights. The Sorento Hybrid's 12-volt and hybrid batteries and the MT-07's battery and fuel each have their own cold-weather rules in the manuals.
+
+**What it unlocks:** Garage shows a winter card for each vehicle on cold nights (Aether already knows the low).
+
+**Read first:**
+- 2025 Kia Sorento Hybrid owner's manual (owners.kia.com)
+- 2023 Yamaha MT-07 owner's manual (yamaha-motor.com)
+
+**Do this:**
+1. Every cold-weather and storage instruction in each manual: battery care, fluids, tyres, fuel, warm-up, storage longer than a month, what not to do.
+2. Give the manual page for each row.
+
+**Make:** `garage_gemini_winter_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `vehicle` (text): sorento or mt07
+- `topic` (text): battery, fluid, tyre, fuel, storage
+- `instruction` (text): what the manual says to do
+- `page` (text): manual page
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 20
+
+**Done when:** Every cold-weather instruction in both manuals.
+
+**How Claude checks it:**
+- Claude checks 5 rows against the manuals.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
 - a value for a period not published yet presented as if it were (write "not published as of {date}")

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 01:17 UTC",
+ "updated": "2026-11-26 05:06 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -157,6 +157,17 @@
   },
   {
    "due": "2026-12-06",
+   "pillar": "aether",
+   "pillar_name": "Aether · Atmospheric & Field Lab",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AET-GEM-20",
+   "title": "Aether: NOAA's winter outlook for the Kern mountains, December 2026 to February 2027",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-12-06",
    "pillar": "hub",
    "pillar_name": "Prometheus Hub",
    "ai": "gemini",
@@ -165,6 +176,17 @@
    "title": "Hub: Hearth, Midas, Atlas and Aegis on a phone, measured (like HUB-GEM-24)",
    "state": "now",
    "count": 20
+  },
+  {
+   "due": "2026-12-06",
+   "pillar": "icarus",
+   "pillar_name": "Icarus Stake",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ICA-GEM-16",
+   "title": "Icarus: Series I savings bonds from 1 November 2026, the rate and the rules",
+   "state": "now",
+   "count": 10
   },
   {
    "due": "2026-12-06",
@@ -234,6 +256,17 @@
   },
   {
    "due": "2026-12-08",
+   "pillar": "garage",
+   "pillar_name": "Garage",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "GAR-GEM-19",
+   "title": "Garage: cold weather and winter storage for both vehicles, from the owner's manuals",
+   "state": "now",
+   "count": 20
+  },
+  {
+   "due": "2026-12-08",
    "pillar": "hearth",
    "pillar_name": "Hephaestus Hearth",
    "ai": "gemini",
@@ -253,6 +286,17 @@
    "title": "Hearth: smoke and carbon monoxide alarms room by room under California law",
    "state": "now",
    "count": 12
+  },
+  {
+   "due": "2026-12-08",
+   "pillar": "hub",
+   "pillar_name": "Prometheus Hub",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HUB-GEM-26",
+   "title": "Hub: the Kin family album and its show, measured on a phone and a TV",
+   "state": "now",
+   "count": 15
   },
   {
    "due": "2026-12-08",
@@ -295,6 +339,17 @@
    "ai_name": "Gemini",
    "id": "AEG-GEM-05",
    "title": "Aegis: California earthquake insurance (CEA): coverages, deductibles, what it pays",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-12-10",
+   "pillar": "aegis",
+   "pillar_name": "Aegis · Insurance & Cover",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "AEG-GEM-06",
+   "title": "Aegis: after a car accident in California, the driver's own duties and the deadlines",
    "state": "now",
    "count": 15
   },
@@ -420,6 +475,94 @@
    "count": 16
   },
   {
+   "due": "2026-12-12",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-48",
+   "title": "Kin: Joseph Termena's Michigan World War I bonus file (1921)",
+   "state": "now",
+   "count": 8
+  },
+  {
+   "due": "2026-12-12",
+   "pillar": "money",
+   "pillar_name": "Money · payoff simulator",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "MON-GEM-11",
+   "title": "Money: California consumer debt rules a payoff plan needs (limits, collectors, medical debt)",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-12-12",
+   "pillar": "odyssey",
+   "pillar_name": "Odyssey · Trips & Away Mode",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ODY-GEM-31",
+   "title": "Odyssey: entering Europe and the UK on a US passport from 2027 (EES, ETIAS, UK ETA)",
+   "state": "now",
+   "count": 15
+  },
+  {
+   "due": "2026-12-12",
+   "pillar": "selling",
+   "pillar_name": "Agora",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "SEL-GEM-10",
+   "title": "Agora: when a California seller needs a seller's permit, and who collects the tax on marketplaces",
+   "state": "now",
+   "count": 12
+  },
+  {
+   "due": "2026-12-14",
+   "pillar": "athenaeum",
+   "pillar_name": "Athenaeum · Idea Vault",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "ATH-GEM-18",
+   "title": "History: United States immigration law, 1882-1965 (25 entries)",
+   "state": "now",
+   "count": 25
+  },
+  {
+   "due": "2026-12-14",
+   "pillar": "hearth",
+   "pillar_name": "Hephaestus Hearth",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "HEA-GEM-36",
+   "title": "Hearth: energy rebates and programs a Kern County home can use in 2027",
+   "state": "now",
+   "count": 20
+  },
+  {
+   "due": "2026-12-14",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-50",
+   "title": "Kin: Joseph Pavia's crossing from Malta and his naturalization",
+   "state": "now",
+   "count": 10
+  },
+  {
+   "due": "2026-12-15",
+   "pillar": "piano",
+   "pillar_name": "Bossa Piano Studio",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "PIA-GEM-09",
+   "title": "Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931)",
+   "state": "now",
+   "count": 20
+  },
+  {
    "due": "2026-12-22",
    "pillar": "games",
    "pillar_name": "Ludus Arcade",
@@ -449,6 +592,17 @@
    "ai_name": "Gemini",
    "id": "KAI-GEM-14",
    "title": "Kairos: California's final 2027 state holidays (CalHR), when published",
+   "state": "now",
+   "count": 0
+  },
+  {
+   "due": "2027-01-15",
+   "pillar": "kairos",
+   "pillar_name": "Kairos Meridian",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KAI-GEM-17",
+   "title": "Kairos: Kern County offices' 2027 holiday closures, once Kern posts them",
    "state": "now",
    "count": 0
   },

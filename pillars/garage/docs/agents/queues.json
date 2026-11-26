@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "pillar": "garage",
  "agents": [
   {
@@ -1306,6 +1306,88 @@
       "a quote that is not word for word on the page as served today",
       "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
       "rows missing to reach the count, or rows padded to reach it",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-26",
+     "id": "GAR-GEM-19",
+     "title": "Garage: cold weather and winter storage for both vehicles, from the owner's manuals",
+     "due": "2026-12-08",
+     "why": "Frazier Park sits near 4,600 ft and freezes most winter nights. The Sorento Hybrid's 12-volt and hybrid batteries and the MT-07's battery and fuel each have their own cold-weather rules in the manuals.",
+     "unlocks": "Garage shows a winter card for each vehicle on cold nights (Aether already knows the low).",
+     "inputs": [
+      "2025 Kia Sorento Hybrid owner's manual (owners.kia.com)",
+      "2023 Yamaha MT-07 owner's manual (yamaha-motor.com)"
+     ],
+     "steps": [
+      "Every cold-weather and storage instruction in each manual: battery care, fluids, tyres, fuel, warm-up, storage longer than a month, what not to do.",
+      "Give the manual page for each row."
+     ],
+     "deliver": {
+      "file": "garage_gemini_winter_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 20,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "vehicle",
+       "type": "text",
+       "rule": "sorento or mt07"
+      },
+      {
+       "name": "topic",
+       "type": "text",
+       "rule": "battery, fluid, tyre, fuel, storage"
+      },
+      {
+       "name": "instruction",
+       "type": "text",
+       "rule": "what the manual says to do"
+      },
+      {
+       "name": "page",
+       "type": "text",
+       "rule": "manual page"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the page that shows the value"
+      },
+      {
+       "name": "quote",
+       "type": "text",
+       "rule": "under 300 characters, word for word"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "the day you read it, YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every cold-weather instruction in both manuals.",
+     "checks": [
+      "Claude checks 5 rows against the manuals."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")"
      ]
     }

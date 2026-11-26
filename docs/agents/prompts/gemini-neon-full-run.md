@@ -42,6 +42,8 @@ WHAT RUN 4 TAUGHT (keep the first, fix the rest):
 HARD RULES (a file that breaks one is rejected whole):
 - Every URL is a page you opened today on the official source the task names (maker, agency, store, standard). Never a blog, forum, wiki, reseller or AI summary, unless the task allows it.
 - Every quote is copied word for word from that page and is on it now. If a page does not state something, write "not stated" and name the pages you checked. Never estimate, round or fill a gap from memory.
+- A quote is a quote only if Ctrl+F finds it on the cited page. Put quotation marks only around words the page carries (Muse's second read, 25 Nov: 3 of 39 rows quoted sentences their pages do not have).
+- A row's subject must match the page's subject. The right numbers under the wrong name void the row (25 Nov: FNBO GreenSelect's terms filed as the Greenlight card).
 - Exact file name (with the real {YYYYMMDD-HHMM} stamp, US Pacific time), exact folder, exact fields and count. Valid JSON. One file per task.
 - Blind reads stay blind. Checks never copy the value you were given: send back what the source says.
 - No API keys, passwords or account numbers in any file, and no home street address (it was erased from the repository's history on 2026-11-20).

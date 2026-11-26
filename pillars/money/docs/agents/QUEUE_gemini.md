@@ -2,7 +2,7 @@
 
 # Money · payoff simulator · homework for Gemini
 
-Updated 2026-11-26 01:17 UTC · 2 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 05:06 UTC · 3 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -104,4 +104,59 @@ Updated 2026-11-26 01:17 UTC · 2 open · Rules for every pillar: https://github
 - a quote that is not word for word on the page as served today
 - a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
 - rows missing to reach the count, or rows padded to reach it
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 3. MON-GEM-11 · Money: California consumer debt rules a payoff plan needs (limits, collectors, medical debt)
+
+**Due:** 2026-12-12 · **State:** now
+
+**Why:** Midas plans the way out of debt. California rules change what an old or medical debt can do: the four-year statute of limitations on written contracts, the Rosenthal Act's collector rules, the Debt Collection Licensing Act, time-barred debt disclosures, and medical debt kept off credit reports (SB 1061).
+
+**What it unlocks:** Midas can mark which debts a collector may still sue on and which cannot be reported.
+
+**Read first:**
+- California Code of Civil Procedure 337
+- Civil Code 1788 et seq. (Rosenthal Act)
+- https://dfpi.ca.gov (Debt Collection Licensing Act)
+- SB 1061 (2024) on leginfo.legislature.ca.gov
+- https://www.consumerfinance.gov
+
+**Do this:**
+1. One row per rule: what it says, who it protects, the time limit or threshold, and its section.
+2. Quote the statute or the regulator's page.
+
+**Make:** `money_gemini_ca-debt-rules_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `rule` (text): what it says
+- `applies_to` (text): which debts
+- `limit` (text): the time limit or threshold, or none
+- `section` (text): the code section
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 15
+
+**Done when:** 15 rules, each quoted.
+
+**How Claude checks it:**
+- Claude reads the sections for the four-year limit and SB 1061.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
 - a value for a period not published yet presented as if it were (write "not published as of {date}")

@@ -1,6 +1,6 @@
 {
- "built": "2026-11-26T01:17:09Z",
- "checked": "2026-11-26T01:17:09Z",
+ "built": "2026-11-26T05:06:39Z",
+ "checked": "2026-11-26T05:06:39Z",
  "version": 2,
  "today": "2026-11-25",
  "sources": {
@@ -23,7 +23,7 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 52,
+  "todo": 66,
   "late": 2,
   "due7": 8,
   "delivered": 0,
@@ -32,17 +32,17 @@
  },
  "per": {
   "Gemini": {
-   "todo": 35,
+   "todo": 49,
    "late": 0,
    "due7": 1,
    "delivered": 0,
    "queued": 2,
    "done7": 237,
    "withdrawn": 69,
-   "items": 612,
+   "items": 807,
    "floor": 50,
    "by": {
-    "hub": 33,
+    "hub": 47,
     "titan": 1,
     "tproj": 1,
     "board": 0
@@ -264,42 +264,56 @@
  },
  "places": {
   "Prometheus Hub": {
-   "todo": 2,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 1,
+    "Gemini": 2,
     "Muse": 1
    }
   },
   "Kairos Meridian": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
-  "Hephaestus Hearth": {
-   "todo": 3,
-   "delivered": 0,
-   "by": {
-    "Gemini": 3
-   }
-  },
-  "Garage": {
-   "todo": 1,
-   "delivered": 0,
-   "by": {
-    "Gemini": 1
-   }
-  },
-  "Money": {
    "todo": 2,
    "delivered": 0,
    "by": {
     "Gemini": 2
    }
   },
+  "Hephaestus Hearth": {
+   "todo": 4,
+   "delivered": 0,
+   "by": {
+    "Gemini": 4
+   }
+  },
+  "Garage": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 2
+   }
+  },
+  "Money": {
+   "todo": 3,
+   "delivered": 0,
+   "by": {
+    "Gemini": 3
+   }
+  },
   "Agora": {
+   "todo": 2,
+   "delivered": 0,
+   "by": {
+    "Gemini": 2
+   }
+  },
+  "Icarus Stake": {
+   "todo": 1,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1
+   }
+  },
+  "Bossa Piano Studio": {
    "todo": 1,
    "delivered": 0,
    "by": {
@@ -314,10 +328,17 @@
    }
   },
   "Athenaeum": {
-   "todo": 2,
+   "todo": 3,
    "delivered": 0,
    "by": {
-    "Gemini": 2
+    "Gemini": 3
+   }
+  },
+  "Odyssey": {
+   "todo": 1,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1
    }
   },
   "Privacy": {
@@ -335,11 +356,18 @@
    }
   },
   "Kin": {
-   "todo": 7,
+   "todo": 9,
    "delivered": 0,
    "by": {
-    "Gemini": 5,
+    "Gemini": 7,
     "Muse": 2
+   }
+  },
+  "Aether": {
+   "todo": 1,
+   "delivered": 0,
+   "by": {
+    "Gemini": 1
    }
   },
   "Polis": {
@@ -364,10 +392,10 @@
    }
   },
   "Aegis": {
-   "todo": 5,
+   "todo": 6,
    "delivered": 0,
    "by": {
-    "Gemini": 5
+    "Gemini": 6
    }
   },
   "Midas Ledger": {
@@ -406,22 +434,7 @@
    "delivered": 0,
    "by": {}
   },
-  "Icarus Stake": {
-   "todo": 0,
-   "delivered": 0,
-   "by": {}
-  },
   "Hermes Post": {
-   "todo": 0,
-   "delivered": 0,
-   "by": {}
-  },
-  "Bossa Piano Studio": {
-   "todo": 0,
-   "delivered": 0,
-   "by": {}
-  },
-  "Odyssey": {
    "todo": 0,
    "delivered": 0,
    "by": {}
@@ -442,11 +455,6 @@
    "by": {}
   },
   "Observatory": {
-   "todo": 0,
-   "delivered": 0,
-   "by": {}
-  },
-  "Aether": {
    "todo": 0,
    "delivered": 0,
    "by": {}
@@ -1225,7 +1233,7 @@
    "due": "2026-12-05",
    "items": 27,
    "closed": "",
-   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
+   "review": "checked 26 Nov 2026: 27 of 27 rows, exact fields (check_delivery all PASS); scored #195 (8); used for the realm label placement.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1256,7 +1264,7 @@
    "due": "2026-12-06",
    "items": 11,
    "closed": "",
-   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
+   "review": "checked 26 Nov 2026: 11 of 11 rows, exact fields (check_delivery all PASS); scored #195 (8); used for the painting crops.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -1392,6 +1400,38 @@
     "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below",
     "done": "Every pillar measured at both sizes.",
+    "checks": [
+     "Claude reproduces every P0 and P1."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Prometheus Hub",
+   "pid": "hub",
+   "id": "HUB-GEM-26",
+   "title": "Hub: the Kin family album and its show, measured on a phone and a TV",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The family album (Kin > Open the album) shipped in d88 for Thanksgiving: a grid, a viewer and a full-screen show for the television. It has not been measured the way you measured the town (HUB-GEM-24).",
+    "steps": [
+     "Open it at 384x832, 412x915 and 1920x1080 in Chromium.",
+     "Measure: text contrast below 4.5:1, anything wider than the screen, tap targets under 44 px, captions cut off, images that fail to load, the show's timing and controls (pause, next, close) with a keyboard and a remote's arrow keys, console errors.",
+     "One row per problem with the selector, the measured value and a suggested fix."
+    ],
+    "make": "hub_gemini_album-audit_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every size measured; every row reproducible.",
     "checks": [
      "Claude reproduces every P0 and P1."
     ],
@@ -2110,7 +2150,7 @@
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
+   "review": "checked 26 Nov 2026: honest negative, 2 rows (check_delivery all PASS): Kern County has not posted its 2027 holidays (the Assessor-Recorder page lists 2026 only). Scored #197 (9). The recheck is KAI-GEM-17.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -2122,6 +2162,37 @@
     "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below",
     "done": "Every 2027 closure, or the page that says it is not published yet.",
+    "checks": [
+     "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kairos/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kairos Meridian",
+   "pid": "kairos",
+   "id": "KAI-GEM-17",
+   "title": "Kairos: Kern County offices' 2027 holiday closures, once Kern posts them",
+   "status": "todo",
+   "due": "2027-01-15",
+   "items": 0,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "KAI-GEM-15 found nothing yet (23 Nov 2026: only the 2026 Recorder schedule is up). County offices close on days the state calendar does not show.",
+    "steps": [
+     "Open the pages above. If a 2027 schedule is posted, one row per 2027 closure date with its name, quoting the PDF line.",
+     "If it is still not posted, deliver one row with date null that names every page you opened and quotes what each says now."
+    ],
+    "make": "kairos_gemini_kern-holidays-2027_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Kairos Meridian/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every 2027 closure from Kern's own 2027 schedule, or the pages that show it is still not posted.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
     ],
@@ -3338,6 +3409,37 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Hephaestus Hearth",
+   "pid": "hearth",
+   "id": "HEA-GEM-36",
+   "title": "Hearth: energy rebates and programs a Kern County home can use in 2027",
+   "status": "todo",
+   "due": "2026-12-14",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Hearth tracks the house by room and the renovation's costs. Heat pumps, insulation, panels and water heaters each have state, utility or federal programs, and several federal credits ended after 2025; only programs open now are useful.",
+    "steps": [
+     "Every program open to a homeowner in Kern County for heating, cooling, water heating, insulation, windows, solar or panels: who runs it, what it pays, the conditions, and whether it is open as of today.",
+     "Write \"ended\" with its end date for any program that closed, quoting the page."
+    ],
+    "make": "hearth_gemini_rebates-2027_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "20 programs, each with its status quoted.",
+    "checks": [
+     "Claude checks 5 rows, including any federal credit's end date."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/hearth/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Hephaestus Hearth",
@@ -4181,6 +4283,37 @@
     "done": "Row 43 opens and matches.",
     "checks": [
      "Muse re-reads it."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Garage",
+   "pid": "garage",
+   "id": "GAR-GEM-19",
+   "title": "Garage: cold weather and winter storage for both vehicles, from the owner's manuals",
+   "status": "todo",
+   "due": "2026-12-08",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Frazier Park sits near 4,600 ft and freezes most winter nights. The Sorento Hybrid's 12-volt and hybrid batteries and the MT-07's battery and fuel each have their own cold-weather rules in the manuals.",
+    "steps": [
+     "Every cold-weather and storage instruction in each manual: battery care, fluids, tyres, fuel, warm-up, storage longer than a month, what not to do.",
+     "Give the manual page for each row."
+    ],
+    "make": "garage_gemini_winter_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every cold-weather instruction in both manuals.",
+    "checks": [
+     "Claude checks 5 rows against the manuals."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/garage/docs/agents/QUEUE_gemini.md"
    },
@@ -5420,6 +5553,37 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Money",
+   "pid": "money",
+   "id": "MON-GEM-11",
+   "title": "Money: California consumer debt rules a payoff plan needs (limits, collectors, medical debt)",
+   "status": "todo",
+   "due": "2026-12-12",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Midas plans the way out of debt. California rules change what an old or medical debt can do: the four-year statute of limitations on written contracts, the Rosenthal Act's collector rules, the Debt Collection Licensing Act, time-barred debt disclosures, and medical debt kept off credit reports (SB 1061).",
+    "steps": [
+     "One row per rule: what it says, who it protects, the time limit or threshold, and its section.",
+     "Quote the statute or the regulator's page."
+    ],
+    "make": "money_gemini_ca-debt-rules_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "15 rules, each quoted.",
+    "checks": [
+     "Claude reads the sections for the four-year limit and SB 1061."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/money/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Money",
@@ -5854,6 +6018,37 @@
     "done": "Every category.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/selling/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Agora",
+   "pid": "selling",
+   "id": "SEL-GEM-10",
+   "title": "Agora: when a California seller needs a seller's permit, and who collects the tax on marketplaces",
+   "status": "todo",
+   "due": "2026-12-12",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Agora lists things for sale on eBay, Facebook Marketplace and elsewhere. California's CDTFA decides when occasional sales need a seller's permit, and the marketplace facilitator law makes most platforms collect the sales tax themselves.",
+    "steps": [
+     "The CDTFA's own rules for occasional sales, the seller's permit threshold, used personal property, and the marketplace facilitator act: which platforms collect, what the seller still owes.",
+     "One row per rule with its section or publication."
+    ],
+    "make": "selling_gemini_ca-sales-tax_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "12 rules from the CDTFA's own pages.",
+    "checks": [
+     "Claude checks the occasional-sale rule and the facilitator rule."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/selling/docs/agents/QUEUE_gemini.md"
    },
@@ -7025,6 +7220,37 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Icarus Stake",
+   "pid": "icarus",
+   "id": "ICA-GEM-16",
+   "title": "Icarus: Series I savings bonds from 1 November 2026, the rate and the rules",
+   "status": "todo",
+   "due": "2026-12-06",
+   "items": 10,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "TreasuryDirect set the I bond composite rate for November 2026 to April 2027 on 1 November. Icarus compares safe yields and has no I bond row.",
+    "steps": [
+     "The composite rate, fixed rate and inflation rate from 1 November 2026, the purchase limit, the one-year lockup, the three-month penalty before five years, how the rate resets, and the tax treatment.",
+     "One row per fact."
+    ],
+    "make": "icarus_gemini_i-bonds_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "10 rows from TreasuryDirect.",
+    "checks": [
+     "Claude checks the three rates."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/icarus/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Icarus Stake",
@@ -7607,7 +7833,7 @@
    "due": "2026-12-07",
    "items": 47,
    "closed": "",
-   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
+   "review": "checked 26 Nov 2026: 47 of 47 rows, exact fields (tools/kit/check_delivery.mjs all PASS); scored #197 (9); wired in pillars/hermes/billers.js (phone, fraud line, page per biller).",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -8065,6 +8291,37 @@
     "done": "All 24 tunes answered: a key with its page, or 'not stated' with the pages checked.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/piano/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Bossa Piano Studio",
+   "pid": "piano",
+   "id": "PIA-GEM-09",
+   "title": "Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931)",
+   "status": "todo",
+   "due": "2026-12-15",
+   "items": 20,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "On 1 January 2027, works published in 1931 enter the US public domain. Piano and Mythos can then use their melodies and lyrics freely; Duke's Center for the Study of the Public Domain publishes the list each year.",
+    "steps": [
+     "The songs published in 1931 that a jazz or bossa pianist would play, with composer, lyricist and first publication. If the 2027 list is not published yet, say so and give the 1931 songs from the 1931 catalog of copyright entries.",
+     "Note any song whose sound recording or later arrangement is still protected."
+    ],
+    "make": "piano_gemini_pd-2027_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "20 songs, each with its 1931 publication sourced.",
+    "checks": [
+     "Claude checks 5 against the 1931 catalog."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/piano/docs/agents/QUEUE_gemini.md"
    },
@@ -9428,6 +9685,37 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Athenaeum",
+   "pid": "athenaeum",
+   "id": "ATH-GEM-18",
+   "title": "History: United States immigration law, 1882-1965 (25 entries)",
+   "status": "todo",
+   "due": "2026-12-14",
+   "items": 25,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Kin's two crossings sit inside this history: Joseph Termenas arrived in 1912, before the literacy test (1917) and the quotas (1921, 1924); Joseph Pavia came from Malta under the quota years. The world history has the family's events but not the laws they crossed under.",
+    "steps": [
+     "25 dated entries from the Chinese Exclusion Act (1882) to the Immigration and Nationality Act of 1965: each law, what it changed, who it hit.",
+     "Same entry shape as your history files (id, date, precision, title, text, regions, themes, place, sources with quotes), with a chain (cause, event, consequence) where the source gives one."
+    ],
+    "make": "athenaeum_gemini_history-immigration_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "25 entries, every date quoted.",
+    "checks": [
+     "Claude reads every title and date; Muse second-reads 5."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/athenaeum/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Athenaeum",
@@ -10163,7 +10451,7 @@
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
+   "review": "checked 26 Nov 2026: 27 rows, exact fields (check_delivery all PASS); scored #196 (8); wired by tools/odyssey/extras.py into the six photo trips' days.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10193,7 +10481,7 @@
    "due": "2026-12-06",
    "items": 0,
    "closed": "",
-   "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)",
+   "review": "checked 26 Nov 2026: 32 rows, exact fields (check_delivery all PASS), no person named; scored #196 (8); picks checked by eye and wired into the six photo trips.",
    "reopened": "",
    "delivered": null,
    "detail": {
@@ -10488,6 +10776,37 @@
     "done": "All 10 codes answered.",
     "checks": [
      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Odyssey",
+   "pid": "odyssey",
+   "id": "ODY-GEM-31",
+   "title": "Odyssey: entering Europe and the UK on a US passport from 2027 (EES, ETIAS, UK ETA)",
+   "status": "todo",
+   "due": "2026-12-12",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The 2015 Eurotrip is in Odyssey; a next trip to Europe now needs the EU's Entry/Exit System (live since October 2025), the ETIAS travel authorisation (due to start in the last quarter of 2026) and the UK's ETA.",
+    "steps": [
+     "For EES, ETIAS and the UK ETA: who needs it, when it starts or started, the fee, how long it is valid, how far ahead to apply, the official application site.",
+     "If a start date is not set, write \"not published as of {date}\"."
+    ],
+    "make": "odyssey_gemini_europe-entry_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "15 rows from the EU's, UK's and State Department's own pages.",
+    "checks": [
+     "Claude checks the fees and start dates."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/odyssey/docs/agents/QUEUE_gemini.md"
    },
@@ -14976,6 +15295,70 @@
    "late": false
   },
   {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-48",
+   "title": "Kin: Joseph Termena's Michigan World War I bonus file (1921)",
+   "status": "todo",
+   "due": "2026-12-12",
+   "items": 8,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Muse's blind read of the discharge (KIN-MUS-02) found a 1921 Victory Medal and Michigan bonus notarization on the back. Michigan paid a bonus to its WWI veterans from 1921, and the application repeats the service record: dates, units, home address, sometimes next of kin.",
+    "steps": [
+     "Search the Michigan WWI bonus records for Joseph Termena / Termenas / Terminas, 1919-1923.",
+     "If found: transcribe every field of the application word for word, and give the image link.",
+     "If not found: log each index and series searched with the spellings tried."
+    ],
+    "make": "kin_gemini_michigan-bonus_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "The application transcribed, or every search logged.",
+    "checks": [
+     "Claude reads any image that opens at full size; Muse second-reads."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-50",
+   "title": "Kin: Joseph Pavia's crossing from Malta and his naturalization",
+   "status": "todo",
+   "due": "2026-12-14",
+   "items": 10,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The 1950 census has Joseph Pavia (52) and Grace M. (40) both born in Malta; the tree has no arrival or naturalization for him yet. The Malta parish search (KIN-GEM-43) works the other end.",
+    "steps": [
+     "Search arrivals 1912-1930 for Giuseppe / Joseph Pavia born about 1897 in Malta (New York, Boston, Detroit and Canadian border crossings).",
+     "Search the Michigan and federal naturalization indexes for his declaration and petition.",
+     "Transcribe every match; log every search that found nothing, with spellings and years."
+    ],
+    "make": "kin_gemini_pavia-crossing_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "A crossing found and argued, or every search logged.",
+    "checks": [
+     "Claude reads every image that opens; Muse second-reads."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
    "ai": "Grok",
    "src": "hub",
    "where": "Kin",
@@ -15791,6 +16174,37 @@
     "done": "Every alert type listed.",
     "checks": [
      "Claude opens every source URL in ten rows at random and checks the value against the page."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Aether",
+   "pid": "aether",
+   "id": "AET-GEM-20",
+   "title": "Aether: NOAA's winter outlook for the Kern mountains, December 2026 to February 2027",
+   "status": "todo",
+   "due": "2026-12-06",
+   "items": 10,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Aether has Frazier Park's climate normals (AET-GEM-08). NOAA's Climate Prediction Center issues monthly and three-month outlooks for temperature and precipitation, and the ENSO state that drives them.",
+    "steps": [
+     "For December, January, February and the DJF season: the temperature and precipitation outlook category and probability for the Tejon Pass area, the ENSO state and its forecast, and the issue date of each product.",
+     "Quote the outlook text where the map is the only source of a number, and give the map's own legend value."
+    ],
+    "make": "aether_gemini_winter-outlook_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every period with its issue date.",
+    "checks": [
+     "Claude checks the ENSO state and one map reading."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aether/docs/agents/QUEUE_gemini.md"
    },
@@ -17612,6 +18026,37 @@
     "done": "15 rows, each quoted.",
     "checks": [
      "Muse second-reads 3 rows."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aegis/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Aegis",
+   "pid": "aegis",
+   "id": "AEG-GEM-06",
+   "title": "Aegis: after a car accident in California, the driver's own duties and the deadlines",
+   "status": "todo",
+   "due": "2026-12-10",
+   "items": 15,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "Aegis has the auto insurance minimums (AEG-GEM-02) but not what a driver must do after a crash: the SR-1 report to the DMV within 10 days when someone is hurt or damage tops a thousand dollars, the police report, the exchange of information, the claim deadlines the insurer must meet.",
+    "steps": [
+     "Every duty and deadline: at the scene, within 10 days, the insurer's acknowledgment and decision deadlines, and what the driver can do if the insurer misses them.",
+     "One row per rule with its code section."
+    ],
+    "make": "aegis_gemini_after-crash_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "15 rows, each quoted from its code or agency page.",
+    "checks": [
+     "Claude checks the SR-1 threshold and two insurer deadlines."
     ],
     "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/aegis/docs/agents/QUEUE_gemini.md"
    },

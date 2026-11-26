@@ -2,8 +2,59 @@
 
 # Bossa Piano Studio · homework for Gemini
 
-Updated 2026-11-26 01:17 UTC · 0 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 05:06 UTC · 1 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
-No homework for Gemini in Bossa Piano Studio right now. Check your HOMEWORK doc for the other pillars.
+## 1. PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931)
+
+**Due:** 2026-12-15 · **State:** now
+
+**Why:** On 1 January 2027, works published in 1931 enter the US public domain. Piano and Mythos can then use their melodies and lyrics freely; Duke's Center for the Study of the Public Domain publishes the list each year.
+
+**What it unlocks:** Piano can add the 1931 standards as playable pieces from New Year's Day.
+
+**Read first:**
+- https://web.law.duke.edu/cspd/publicdomainday/
+- the Copyright Office's catalog of copyright entries for 1931 (archive.org)
+- the Library of Congress
+
+**Do this:**
+1. The songs published in 1931 that a jazz or bossa pianist would play, with composer, lyricist and first publication. If the 2027 list is not published yet, say so and give the 1931 songs from the 1931 catalog of copyright entries.
+2. Note any song whose sound recording or later arrangement is still protected.
+
+**Make:** `piano_gemini_pd-2027_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `song` (text): title
+- `composer` (text): and lyricist
+- `published` (text): first publication, 1931
+- `note` (text): what stays protected
+- `source_url` (url): the page that shows the value
+- `quote` (text): under 300 characters, word for word
+- `checked` (date): the day you read it, YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 20
+
+**Done when:** 20 songs, each with its 1931 publication sourced.
+
+**How Claude checks it:**
+- Claude checks 5 against the 1931 catalog.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")

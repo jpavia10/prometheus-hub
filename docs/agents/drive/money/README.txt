@@ -8,45 +8,47 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Money · payoff simulator right now.
 
 ## Gemini
 
-Updated 2026-11-26 01:17 UTC · 2 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 3 open in this pillar.
 
 
 - MON-GEM-09 · Money: fix the two issuer-pricing rows Muse could not match (Discover it APR, the FNBO card) · due 2026-12-03
     make: money_gemini_issuer-pricing-fix_{YYYYMMDD-HHMM}.json · how many: 2 · done when: Both rows source-matched.
 - MON-GEM-10 · Money: how a card payment is applied (CARD Act, Regulation Z 1026.53) · due 2026-12-10
     make: money_gemini_payment-allocation_{YYYYMMDD-HHMM}.json · how many: 12 · done when: 12 rows.
+- MON-GEM-11 · Money: California consumer debt rules a payoff plan needs (limits, collectors, medical debt) · due 2026-12-12
+    make: money_gemini_ca-debt-rules_{YYYYMMDD-HHMM}.json · how many: 15 · done when: 15 rules, each quoted.
 
 ## Muse
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Money · payoff simulator right now.
 
 ## ChatGPT
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Money · payoff simulator right now.
 
 ## Argon
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Money · payoff simulator right now.
 
 ## Hydrogen
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Money · payoff simulator right now.

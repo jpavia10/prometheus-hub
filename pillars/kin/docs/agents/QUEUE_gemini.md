@@ -2,7 +2,7 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-26 01:17 UTC · 5 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-26 05:06 UTC · 7 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -272,3 +272,110 @@ Updated 2026-11-26 01:17 UTC · 5 open · Rules for every pillar: https://github
 - a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
 - rows missing to reach the count, or rows padded to reach it
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 6. KIN-GEM-48 · Kin: Joseph Termena's Michigan World War I bonus file (1921)
+
+**Due:** 2026-12-12 · **State:** now
+
+**Why:** Muse's blind read of the discharge (KIN-MUS-02) found a 1921 Victory Medal and Michigan bonus notarization on the back. Michigan paid a bonus to its WWI veterans from 1921, and the application repeats the service record: dates, units, home address, sometimes next of kin.
+
+**What it unlocks:** A second copy of his service data, read independently of the taped discharge, settles the lines the tape hides.
+
+**Read first:**
+- Michigan State Archives / Michiganology: Michigan Veterans' bonus applications (WWI)
+- FamilySearch catalog: Michigan, World War I veterans' bonus
+- pillars/kin/lineage/data.js (P-joseph, conflict C5 height and the service record)
+
+**Do this:**
+1. Search the Michigan WWI bonus records for Joseph Termena / Termenas / Terminas, 1919-1923.
+2. If found: transcribe every field of the application word for word, and give the image link.
+3. If not found: log each index and series searched with the spellings tried.
+
+**Make:** `kin_gemini_michigan-bonus_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find or search
+- `record` (text): what it is
+- `transcription` (text): word for word
+- `source_url` (url): the image or index page
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 8
+
+**Done when:** The application transcribed, or every search logged.
+
+**How Claude checks it:**
+- Claude reads any image that opens at full size; Muse second-reads.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+
+## 7. KIN-GEM-50 · Kin: Joseph Pavia's crossing from Malta and his naturalization
+
+**Due:** 2026-12-14 · **State:** now
+
+**Why:** The 1950 census has Joseph Pavia (52) and Grace M. (40) both born in Malta; the tree has no arrival or naturalization for him yet. The Malta parish search (KIN-GEM-43) works the other end.
+
+**What it unlocks:** The Pavia line gets its crossing: ship, date, last residence in Malta, who he joined in America.
+
+**Read first:**
+- pillars/kin/lineage/data.js (Joseph Pavia and Lucrezia Calleja's P- ids)
+- Statue of Liberty-Ellis Island Foundation passenger search
+- FamilySearch: New York and Detroit border crossings; Michigan naturalization indexes
+- NARA catalog
+
+**Do this:**
+1. Search arrivals 1912-1930 for Giuseppe / Joseph Pavia born about 1897 in Malta (New York, Boston, Detroit and Canadian border crossings).
+2. Search the Michigan and federal naturalization indexes for his declaration and petition.
+3. Transcribe every match; log every search that found nothing, with spellings and years.
+
+**Make:** `kin_gemini_pavia-crossing_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find or search
+- `record` (text): manifest, border crossing, declaration, petition
+- `transcription` (text): his line word for word
+- `identifiers` (text): age, birthplace, residence, relative named
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 10
+
+**Done when:** A crossing found and argued, or every search logged.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace

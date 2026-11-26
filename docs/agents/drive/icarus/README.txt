@@ -8,42 +8,43 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Icarus Stake right now.
 
 ## Gemini
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 1 open in this pillar.
 
 
-No homework for Gemini in Icarus Stake right now.
+- ICA-GEM-16 · Icarus: Series I savings bonds from 1 November 2026, the rate and the rules · due 2026-12-06
+    make: icarus_gemini_i-bonds_{YYYYMMDD-HHMM}.json · how many: 10 · done when: 10 rows from TreasuryDirect.
 
 ## Muse
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Muse in Icarus Stake right now.
 
 ## ChatGPT
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Icarus Stake right now.
 
 ## Argon
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Icarus Stake right now.
 
 ## Hydrogen
 
-Updated 2026-11-26 01:17 UTC · 0 open in this pillar.
+Updated 2026-11-26 05:06 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Icarus Stake right now.

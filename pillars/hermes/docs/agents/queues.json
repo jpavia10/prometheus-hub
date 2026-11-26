@@ -1,1052 +1,1052 @@
 {
- "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-25",
- "pillar": "hermes",
- "agents": [
-  {
-   "id": "gemini",
-   "name": "Gemini",
-   "tasks": [
+  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
+  "updated": "2026-11-25",
+  "pillar": "hermes",
+  "agents": [
     {
-     "id": "HER-GEM-01",
-     "title": "Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))",
-     "state": "done",
-     "due": "2026-11-12",
-     "why": "Hermes Post is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
-     "inputs": [
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json",
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
-     ],
-     "steps": [
-      "Write the spec for Hermes Post: mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade).",
-      "At least 6 data sources with their real API names and documentation URLs (open each one); say plainly when something has no public API.",
-      "Four first screens, each listing every number on it and where it comes from.",
-      "Five 'done when' checks that can be tested on a phone.",
-      "No message text ever goes into the repo or Drive docs; only counts and labels on the page."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_spec_{YYYYMMDD-HHMM}.md",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)"
-     },
-     "count": 6,
-     "done_when": "All 6 headings, at least 6 sources with working docs URLs, 4 screens, 5 testable checks.",
-     "checks": [
-      "Claude opens every docs URL.",
-      "Claude checks each 'done when' can be tested without asking Joseph."
-     ],
-     "rejected_if": [
-      "a row copied from another row with the names changed",
-      "a source URL that does not open or does not say what the row claims",
-      "fewer items than the count",
-      "a file saved anywhere but the folder named here, or under another name",
-      "an API that does not exist or a docs URL for something else",
-      "a screen that lists a number with no source"
-     ]
+      "id": "gemini",
+      "name": "Gemini",
+      "tasks": [
+        {
+          "id": "HER-GEM-01",
+          "title": "Hermes Post: the spec sheet (mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade))",
+          "state": "done",
+          "due": "2026-11-12",
+          "why": "Hermes Post is a seat on the desk with no page yet. Joseph wants each pillar developed on its own; the first step is a spec Claude can build from.",
+          "inputs": [
+            "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars.json",
+            "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+          ],
+          "steps": [
+            "Write the spec for Hermes Post: mail and messages: what came in, what needs an answer, what is a bill (Gmail for Joseph and for Sylade).",
+            "At least 6 data sources with their real API names and documentation URLs (open each one); say plainly when something has no public API.",
+            "Four first screens, each listing every number on it and where it comes from.",
+            "Five 'done when' checks that can be tested on a phone.",
+            "No message text ever goes into the repo or Drive docs; only counts and labels on the page."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_spec_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "one markdown file with these 6 headings, in this order: 1 Purpose (one sentence) | 2 Data sources (a table: source | what it gives | how to get it (API name) | docs URL | sign-in type | cost | limits) | 3 First four screens (for each: its name, every number and list on it, where each comes from) | 4 Version 1 done when (5 checks Claude can test) | 5 Privacy (what never leaves the device) | 6 What Joseph must do once (accounts, keys, apps)"
+          },
+          "count": 6,
+          "done_when": "All 6 headings, at least 6 sources with working docs URLs, 4 screens, 5 testable checks.",
+          "checks": [
+            "Claude opens every docs URL.",
+            "Claude checks each 'done when' can be tested without asking Joseph."
+          ],
+          "rejected_if": [
+            "a row copied from another row with the names changed",
+            "a source URL that does not open or does not say what the row claims",
+            "fewer items than the count",
+            "a file saved anywhere but the folder named here, or under another name",
+            "an API that does not exist or a docs URL for something else",
+            "a screen that lists a number with no source"
+          ]
+        },
+        {
+          "id": "HER-GEM-02",
+          "title": "60 US billers: the address their bill emails come from",
+          "state": "done",
+          "due": "2026-11-14",
+          "why": "Hermes sorts bills from the rest; knowing each biller's sending domain (from its own help page) makes the rule exact.",
+          "inputs": [],
+          "steps": [
+            "60 billers (power, gas, water, internet, mobile, streaming, car and home insurance, the 25 card issuers in MID-GEM-04, student loans, car loans).",
+            "From each company's own help or security page ('our emails come from ...'): the sending domains, the usual subject words for a bill, the help URL and the quote."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_billers_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "[{\"n\":1,\"biller\":\"...\",\"kind\":\"internet\",\"domains\":[\"email.example-isp.com\"],\"subject_words\":[\"your bill is ready\"],\"url\":\"https://...\",\"quote\":\"...\"}]"
+          },
+          "count": 60,
+          "done_when": "60 billers, every domain quoted from the company's own page.",
+          "checks": [
+            "Claude opens 15 at random."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a domain guessed from a company name",
+            "anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)"
+          ]
+        },
+        {
+          "id": "HER-GEM-03",
+          "title": "Every Gmail search operator, with syntax and one example each",
+          "state": "done",
+          "due": "2026-11-12",
+          "why": "Hermes rules are written as Gmail searches.",
+          "inputs": [],
+          "steps": [
+            "Open https://support.google.com/mail/answer/7190 and copy every operator on it (there are about 40), exactly as written, with what it does and one example of your own."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_operators_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "[{\"n\":1,\"operator\":\"from:\",\"does\":\"messages from a sender\",\"example\":\"from:bills@example.com\",\"url\":\"https://support.google.com/mail/answer/7190\",\"quote\":\"...\"}]"
+          },
+          "count": 40,
+          "done_when": "Every operator on the page (Claude counts the page).",
+          "checks": [
+            "Claude compares the list with the page; a missing operator or an invented one fails the file."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name",
+            "an operator that is not on that page"
+          ]
+        },
+        {
+          "id": "HER-GEM-04",
+          "title": "30 phishing tells from FTC, CISA and Google, quoted",
+          "state": "done",
+          "due": "2026-11-15",
+          "why": "Hermes should flag a fake bill before Joseph pays it.",
+          "inputs": [],
+          "steps": [
+            "30 tells (sender domain lookalike, urgent payment threat, gift-card ask, reply-to differs, link text differs from link target, ...), each from consumer.ftc.gov, cisa.gov or support.google.com.",
+            "For each: the tell, a test Hermes can run on a message (headers or body), the URL and the quote."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_phishing_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "[{\"n\":1,\"tell\":\"the reply-to address differs from the sender\",\"test\":\"header Reply-To domain != From domain\",\"url\":\"https://consumer.ftc.gov/...\",\"quote\":\"...\"}]"
+          },
+          "count": 30,
+          "done_when": "30 tells, each with a test written over headers or body.",
+          "checks": [
+            "Claude opens 10 at random.",
+            "A test that is only 'looks suspicious' does not count."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name"
+          ],
+          "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
+        },
+        {
+          "id": "HER-GEM-05",
+          "title": "Triage test set: 80 made-up emails, 20 per lane",
+          "state": "done",
+          "due": "2026-11-16",
+          "why": "Claude tests Hermes's sorting on mail that is not Joseph's.",
+          "inputs": [],
+          "steps": [
+            "Write 80 made-up emails: 20 'needs an answer', 20 'bill due in 7 days', 20 'waiting on others', 20 'read later'. Include 10 hard ones per lane (a bill that looks like news, a question buried in a newsletter, a reminder that is only an ad).",
+            "Every sender uses an example.com, example.org or example.net address; no real person, no real company address.",
+            "For each: from, subject, date (2026-11), the first 3 lines of the body, the lane, and one sentence why."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_testmail_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "[{\"n\":1,\"from\":\"billing@power.example.com\",\"subject\":\"...\",\"date\":\"2026-11-03\",\"body\":\"...\",\"lane\":\"bill due in 7 days\",\"hard\":false,\"why\":\"...\"}]"
+          },
+          "count": 80,
+          "done_when": "80 emails, 20 per lane, 40 marked hard.",
+          "checks": [
+            "Claude counts lanes and checks every address is example.com/.org/.net."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a real address or a real person's name",
+            "anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)"
+          ],
+          "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
+        },
+        {
+          "id": "HER-GEM-06",
+          "title": "Hermes Post: Billing rules of 40 California utilities, insurers and lenders",
+          "state": "withdrawn",
+          "due": "2026-11-19",
+          "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
+          "inputs": [
+            "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
+            "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+          ],
+          "steps": [
+            "SoCalGas, Southern California Edison, the Frazier Park and Lebec water and trash providers, the big auto and home insurers, the big card issuers.",
+            "From each company's own billing or terms page."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_bill-rules_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "JSON array of objects, one per row: {\"n\",\"company\",\"service\",\"bill cycle\",\"due-day rule\",\"grace days\",\"late fee\",\"autopay page URL\",\"quote\"}"
+          },
+          "count": 40,
+          "done_when": "40 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+          "checks": [
+            "Claude opens 10 rows at random."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a real private person's name, address or phone number",
+            "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+          ],
+          "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+        },
+        {
+          "id": "HER-GEM-07",
+          "title": "Hermes Post: 60 new phishing and scam lures seen in 2026",
+          "state": "withdrawn",
+          "due": "2026-11-21",
+          "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
+          "inputs": [
+            "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
+            "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+          ],
+          "steps": [
+            "Toll-road texts, USPS redelivery, DMV, bank fraud alerts, package and job scams; only lures an official source describes."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_lures-3_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "JSON array of objects, one per row in the shape of phishing-lures.js: {\"n\",\"channel (sms/email/call)\",\"pretend to be\",\"the hook\",\"tell-tale sign\",\"source (FTC, FBI IC3, the company)\",\"url\"}"
+          },
+          "count": 60,
+          "done_when": "60 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+          "checks": [
+            "Claude opens 10 rows at random."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a real private person's name, address or phone number",
+            "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+          ],
+          "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+        },
+        {
+          "id": "HER-GEM-08",
+          "title": "Hermes Post: 20 features the best mail triage and bill-reminder apps have",
+          "state": "withdrawn",
+          "due": "2026-11-28",
+          "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
+          "inputs": [
+            "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
+            "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
+          ],
+          "steps": [
+            "Look at mail triage and bill-reminder apps (SaneBox, Superhuman, Prism-style bill trackers).",
+            "Only features the app's own page, help centre or store listing shows; no guesses.",
+            "Sort by how much the feature would help a person using this pillar every day."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_features_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "JSON array of objects, one per row: {\"n\",\"feature\",\"which app has it (name)\",\"what it does for the user in one sentence\",\"how it would work here\",\"url of the app page that shows it\"}"
+          },
+          "count": 20,
+          "done_when": "20 rows (or the whole document) in the shape, every source opening and saying what the row says.",
+          "checks": [
+            "Claude opens 10 rows at random."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a real private person's name, address or phone number",
+            "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
+          ],
+          "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+        },
+        {
+          "id": "HER-GEM-09",
+          "title": "Hermes Post: the function spec, written as the build plan",
+          "state": "done",
+          "due": "2026-11-30",
+          "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
+          "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Hermes Post from, step by step.",
+          "inputs": [
+            "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
+            "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hermes",
+            "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)"
+          ],
+          "steps": [
+            "Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/hermes/) on a phone-sized browser and use every section.",
+            "Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hermes): every file the page loads, and pillar.json.",
+            "Write section A from what is there now, with file:line for each item; then B to H.",
+            "Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_function-spec_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not"
+          },
+          "count": 1,
+          "fields": [
+            {
+              "name": "A What it does today",
+              "type": "list",
+              "rule": "every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)"
+            },
+            {
+              "name": "B What Joseph needs it to do",
+              "type": "8+ user stories",
+              "rule": "'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life"
+            },
+            {
+              "name": "C Data",
+              "type": "table",
+              "rule": "record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar"
+            },
+            {
+              "name": "D Screens",
+              "type": "per screen",
+              "rule": "purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state"
+            },
+            {
+              "name": "E Rules and edge cases",
+              "type": "10+",
+              "rule": "dates and time zones, missing data, offline, two devices, a value of 0 vs unknown"
+            },
+            {
+              "name": "F Acceptance tests",
+              "type": "12+",
+              "rule": "Given / When / Then, each checkable in a phone browser in under two minutes"
+            },
+            {
+              "name": "G Order of work",
+              "type": "numbered steps",
+              "rule": "each step small enough for one build, with what Joseph can use after it"
+            },
+            {
+              "name": "H Must not",
+              "type": "list",
+              "rule": "the charter's protections that apply, no server or account, no made-up numbers"
+            }
+          ],
+          "example": "F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.",
+          "self_check": [
+            "Every item in A has a file:line that exists.",
+            "B has 8+ stories and none invents a personal fact.",
+            "C names every field with type and example.",
+            "F has 12+ tests, each with one Given, one When, one Then.",
+            "G steps are in an order that can ship one by one.",
+            "All eight headings, in order.",
+            "Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random)."
+          ],
+          "done_when": "1 file exactly in the shape, every self-check line true.",
+          "checks": [
+            "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a guess written as a fact (say 'not found' instead)",
+            "anything about Joseph's own accounts, balances, mail or records beyond what the task names",
+            "a file:line past the end of its file, or pointing at code that does something else",
+            "a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data"
+          ],
+          "reopened": "2026-11-20",
+          "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#63).",
+          "closed": "2026-11-21"
+        },
+        {
+          "state": "done",
+          "added": "2026-11-21",
+          "why": "Hermes's local phishing classifier learns from lures; it needs current, real wording from official warnings, not invented examples.",
+          "unlocks": "Hermes's classifier and its lure gallery get 40 dated, official examples, tagged by type.",
+          "inputs": [
+            "consumer.ftc.gov alerts, ic3.gov public service announcements, and the official scam-warning pages of the companies imitated (USPS, IRS, Amazon, PayPal, banks, toll agencies)"
+          ],
+          "steps": [
+            "Collect 40 scam messages published in 2025-2026 where the official page quotes the text or shows it (SMS, email, phone script).",
+            "For each: the channel, who it pretends to be, the exact quoted wording (under 300 characters), the tell the page points out, and the publishing date.",
+            "Spread them: at least 8 toll/package texts, 6 bank or payment, 6 government (IRS, SSA, DMV), 6 job or task scams, 6 account-lock or password, 8 other."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_scam-messages_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row, exactly the fields below"
+          },
+          "count": 40,
+          "fields": [
+            {
+              "name": "n",
+              "type": "integer",
+              "rule": "row"
+            },
+            {
+              "name": "channel",
+              "type": "text",
+              "rule": "sms / email / phone / social"
+            },
+            {
+              "name": "pretends",
+              "type": "text",
+              "rule": "who it imitates"
+            },
+            {
+              "name": "type",
+              "type": "text",
+              "rule": "toll / package / bank / government / job / account / other"
+            },
+            {
+              "name": "tell",
+              "type": "text",
+              "rule": "what the page says gives it away"
+            },
+            {
+              "name": "published",
+              "type": "date",
+              "rule": "YYYY-MM-DD"
+            },
+            {
+              "name": "url",
+              "type": "URL",
+              "rule": "the official warning page"
+            },
+            {
+              "name": "quote",
+              "type": "text",
+              "rule": "the scam message as quoted, under 300 characters"
+            }
+          ],
+          "self_check": [
+            "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+            "Every quote is copied word for word from that page or PDF page and is there now.",
+            "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+            "No row is a copy of another with the names changed.",
+            "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+          ],
+          "done_when": "40 messages, each quoted from an official warning.",
+          "checks": [
+            "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field",
+            "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens rows at random)",
+            "arithmetic that does not add up when Claude redoes it",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a guess written as a fact (write 'not stated' and name the page you checked)"
+          ],
+          "id": "HER-GEM-10",
+          "title": "Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated",
+          "due": "2026-12-01",
+          "closed": "2026-11-22",
+          "review": "Done 2026-11-22 (Claude): 40 verbatim lures from official warning pages, tagged by type. Lost a point: 21 'published' cells say 'not stated' (the field takes a date). not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 9/10 (#106)."
+        },
+        {
+          "state": "done",
+          "added": "2026-11-22",
+          "why": "Hermes dates every lure; 21 of run 4's have no date.",
+          "unlocks": "The lure gallery is ordered by date.",
+          "inputs": [
+            "Gemini's file hermes_gemini_scam-messages_20261121-1210.json (the 21 rows with published 'not stated')",
+            "Each page's own date line, its 'last updated' line, or the Internet Archive's first capture (web.archive.org) as a last resort"
+          ],
+          "steps": [
+            "For each of the 21, look for the page's own date.",
+            "If the page has none, give the Internet Archive's first capture date and say so.",
+            "Never guess a year."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_scam-dates_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row, exactly the fields below"
+          },
+          "count": 21,
+          "fields": [
+            {
+              "name": "n",
+              "type": "number",
+              "rule": "1, 2, 3 ..."
+            },
+            {
+              "name": "lure_n",
+              "type": "number",
+              "rule": "the n in Gemini's file"
+            },
+            {
+              "name": "published",
+              "type": "date",
+              "rule": "YYYY-MM-DD"
+            },
+            {
+              "name": "how",
+              "type": "text",
+              "rule": "page date, page updated, or first archive capture"
+            },
+            {
+              "name": "url",
+              "type": "url",
+              "rule": "the page you opened, on the official site"
+            },
+            {
+              "name": "quote",
+              "type": "text",
+              "rule": "copied word for word from that page, 300 characters at most"
+            }
+          ],
+          "self_check": [
+            "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+            "Every quote is copied word for word from that page or PDF page and is there now.",
+            "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+            "No row is a copy of another with the names changed.",
+            "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+          ],
+          "done_when": "All 21 rows dated, each saying how.",
+          "checks": [
+            "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field",
+            "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens rows at random)",
+            "arithmetic that does not add up when Claude redoes it",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a guess written as a fact (write 'not stated' and name the page you checked)"
+          ],
+          "id": "HER-GEM-11",
+          "title": "Hermes: the publication date of the 21 lures still 'not stated'",
+          "due": "2026-12-04",
+          "closed": "2026-11-23",
+          "review": "Scored 10/10 (#147)"
+        },
+        {
+          "state": "done",
+          "added": "2026-11-22",
+          "why": "After 'this is a scam' comes 'where do I report it'.",
+          "unlocks": "Each lure type in Hermes shows its official reporting channel.",
+          "inputs": [
+            "reportfraud.ftc.gov, ic3.gov, the carriers' 7726 pages, uspis.gov, the CA Attorney General's complaint page, each big bank's report-phishing page"
+          ],
+          "steps": [
+            "For each lure type in Hermes (toll, package, bank, government, job, account, other), give every official channel that takes reports.",
+            "Say what to send (the text, a screenshot, the headers) as the page says."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_report-channels_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row, exactly the fields below"
+          },
+          "count": 0,
+          "fields": [
+            {
+              "name": "n",
+              "type": "number",
+              "rule": "1, 2, 3 ..."
+            },
+            {
+              "name": "type",
+              "type": "text",
+              "rule": "one of Hermes's lure types"
+            },
+            {
+              "name": "channel",
+              "type": "text",
+              "rule": "who takes the report"
+            },
+            {
+              "name": "how",
+              "type": "text",
+              "rule": "forward to 7726, web form, email, phone"
+            },
+            {
+              "name": "send",
+              "type": "text",
+              "rule": "what the page says to include"
+            },
+            {
+              "name": "url",
+              "type": "url",
+              "rule": "the page you opened, on the official site"
+            },
+            {
+              "name": "quote",
+              "type": "text",
+              "rule": "copied word for word from that page, 300 characters at most"
+            }
+          ],
+          "self_check": [
+            "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+            "Every quote is copied word for word from that page or PDF page and is there now.",
+            "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+            "No row is a copy of another with the names changed.",
+            "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+          ],
+          "done_when": "Every lure type has at least one official channel.",
+          "checks": [
+            "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field",
+            "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens rows at random)",
+            "arithmetic that does not add up when Claude redoes it",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a guess written as a fact (write 'not stated' and name the page you checked)"
+          ],
+          "id": "HER-GEM-12",
+          "title": "Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)",
+          "due": "2026-12-05",
+          "closed": "2026-11-23",
+          "review": "Scored 10/10 (#148)"
+        },
+        {
+          "state": "done",
+          "added": "2026-11-23",
+          "why": "Hermes already knows each biller's real email domains; a scam text or call is checked the same way against the number the company itself publishes.",
+          "unlocks": "Hermes can say 'this number is (or is not) the one Chase prints' for any message or call.",
+          "inputs": [
+            "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (window.BILLERS: 97 billers, entries 1-50 in file order)"
+          ],
+          "steps": [
+            "For each biller: the customer-service number and the fraud or 'report suspicious activity' number, from the company's own contact or security page (never a directory site).",
+            "Note if the company says it never calls or texts to ask for a code or password, and quote it."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_biller-phones-1_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row, exactly the fields below"
+          },
+          "count": 50,
+          "fields": [
+            {
+              "name": "n",
+              "type": "number",
+              "rule": "1, 2, 3 ..."
+            },
+            {
+              "name": "biller",
+              "type": "text",
+              "rule": "as in billers.js"
+            },
+            {
+              "name": "service_phone",
+              "type": "text",
+              "rule": "as printed"
+            },
+            {
+              "name": "fraud_phone",
+              "type": "text",
+              "rule": "as printed, or 'not stated'"
+            },
+            {
+              "name": "never_asks",
+              "type": "text",
+              "rule": "the company's own words, or 'not stated'"
+            },
+            {
+              "name": "url",
+              "type": "url",
+              "rule": "the page you opened, on the official site"
+            },
+            {
+              "name": "quote",
+              "type": "text",
+              "rule": "copied word for word from that page, 300 characters at most"
+            }
+          ],
+          "self_check": [
+            "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+            "Every quote is copied word for word from that page or PDF page and is there now.",
+            "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+            "No row is a copy of another with the names changed.",
+            "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+          ],
+          "done_when": "Billers 1-50.",
+          "checks": [
+            "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field",
+            "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens rows at random)",
+            "arithmetic that does not add up when Claude redoes it",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a guess written as a fact (write 'not stated' and name the page you checked)"
+          ],
+          "id": "HER-GEM-13",
+          "title": "Hermes: the official fraud and customer-service phone numbers for billers 1-50",
+          "due": "2026-12-06",
+          "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
+        },
+        {
+          "state": "done",
+          "added": "2026-11-23",
+          "why": "The second half of the biller phone list.",
+          "unlocks": "Every biller in Hermes has its real numbers.",
+          "inputs": [
+            "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (entries 51-97 in file order)"
+          ],
+          "steps": [
+            "As in part 1."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_biller-phones-2_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row, exactly the fields below"
+          },
+          "count": 47,
+          "fields": [
+            {
+              "name": "n",
+              "type": "number",
+              "rule": "1, 2, 3 ..."
+            },
+            {
+              "name": "biller",
+              "type": "text",
+              "rule": ""
+            },
+            {
+              "name": "service_phone",
+              "type": "text",
+              "rule": ""
+            },
+            {
+              "name": "fraud_phone",
+              "type": "text",
+              "rule": "or 'not stated'"
+            },
+            {
+              "name": "never_asks",
+              "type": "text",
+              "rule": "or 'not stated'"
+            },
+            {
+              "name": "url",
+              "type": "url",
+              "rule": "the page you opened, on the official site"
+            },
+            {
+              "name": "quote",
+              "type": "text",
+              "rule": "copied word for word from that page, 300 characters at most"
+            }
+          ],
+          "self_check": [
+            "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
+            "Every quote is copied word for word from that page or PDF page and is there now.",
+            "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
+            "No row is a copy of another with the names changed.",
+            "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
+          ],
+          "done_when": "Billers 51-97.",
+          "checks": [
+            "Claude opens 12 rows at random against their pages and redoes every 'math' field."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field",
+            "a URL that does not open, is a home page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens rows at random)",
+            "arithmetic that does not add up when Claude redoes it",
+            "a file saved anywhere but the folder named here, or under another name",
+            "a guess written as a fact (write 'not stated' and name the page you checked)"
+          ],
+          "id": "HER-GEM-14",
+          "title": "Hermes: the official fraud and customer-service phone numbers for billers 51-97",
+          "due": "2026-12-07",
+          "review": "checked 26 Nov 2026: 47 of 47 rows, exact fields (tools/kit/check_delivery.mjs all PASS); scored #197 (9); wired in pillars/hermes/billers.js (phone, fraud line, page per biller)."
+        },
+        {
+          "state": "done",
+          "added": "2026-11-24",
+          "why": "The phone numbers are in; a lure is easiest to spot by the sender.",
+          "unlocks": "Hermes flags messages from anywhere else.",
+          "inputs": [
+            "https://jpavia10.github.io/prometheus-hub/pillars/hermes/"
+          ],
+          "steps": [
+            "For each biller: the email domains and SMS short codes it sends from, from its own security page."
+          ],
+          "deliver": {
+            "file": "hermes_gemini_senders_{YYYYMMDD-HHMM}.json",
+            "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
+            "shape": "JSON array, one object per row, exactly the fields below"
+          },
+          "count": 0,
+          "fields": [
+            {
+              "name": "n",
+              "type": "number",
+              "rule": "1, 2, 3 ..."
+            },
+            {
+              "name": "biller",
+              "type": "text",
+              "rule": "name"
+            },
+            {
+              "name": "domains",
+              "type": "text",
+              "rule": "list"
+            },
+            {
+              "name": "short_codes",
+              "type": "text",
+              "rule": "list"
+            },
+            {
+              "name": "source_url",
+              "type": "url",
+              "rule": "the official page that shows the value"
+            },
+            {
+              "name": "checked",
+              "type": "date",
+              "rule": "the day you read it, YYYY-MM-DD"
+            }
+          ],
+          "done_when": "Every biller.",
+          "checks": [
+            "Claude opens every source URL in ten rows at random and checks the value against the page."
+          ],
+          "rejected_if": [
+            "a value without a source URL that shows it",
+            "rows missing to reach the count",
+            "a source that is a blog, forum or AI summary where an official page exists"
+          ],
+          "id": "HER-GEM-15",
+          "title": "Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14",
+          "due": "2026-12-08",
+          "closed": "2026-11-25",
+          "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+        }
+      ]
     },
     {
-     "id": "HER-GEM-02",
-     "title": "60 US billers: the address their bill emails come from",
-     "state": "done",
-     "due": "2026-11-14",
-     "why": "Hermes sorts bills from the rest; knowing each biller's sending domain (from its own help page) makes the rule exact.",
-     "inputs": [],
-     "steps": [
-      "60 billers (power, gas, water, internet, mobile, streaming, car and home insurance, the 25 card issuers in MID-GEM-04, student loans, car loans).",
-      "From each company's own help or security page ('our emails come from ...'): the sending domains, the usual subject words for a bill, the help URL and the quote."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_billers_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "[{\"n\":1,\"biller\":\"...\",\"kind\":\"internet\",\"domains\":[\"email.example-isp.com\"],\"subject_words\":[\"your bill is ready\"],\"url\":\"https://...\",\"quote\":\"...\"}]"
-     },
-     "count": 60,
-     "done_when": "60 billers, every domain quoted from the company's own page.",
-     "checks": [
-      "Claude opens 15 at random."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a domain guessed from a company name",
-      "anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)"
-     ]
+      "id": "grok",
+      "name": "Grok",
+      "tasks": [
+        {
+          "id": "HER-GRK-01",
+          "title": "Hermes Post: second reader on Gemini's spec",
+          "state": "done",
+          "due": "2026-11-14",
+          "why": "Every source in a spec gets a second reader before Claude builds on it.",
+          "inputs": [
+            "Gemini's file hermes_gemini_spec_*.md in the incoming folder (once it is there)"
+          ],
+          "steps": [
+            "Open every data source's docs URL; for each write: source, Gemini's claim (sign-in, cost, limits), what the page says, agree/differ.",
+            "Add up to 5 sources Gemini missed, same columns."
+          ],
+          "deliver": {
+            "file": "hermes_grok_spec-check_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "table: source | gemini says | page says | url | agree/differ"
+          },
+          "count": 6,
+          "done_when": "Every source in Gemini's spec checked.",
+          "checks": [
+            "Claude spot-checks 3 'differ' lines."
+          ],
+          "rejected_if": [
+            "a row copied from another row with the names changed",
+            "a source URL that does not open or does not say what the row claims",
+            "fewer items than the count",
+            "a file saved anywhere but the folder named here, or under another name"
+          ],
+          "review": "Reviewed by Claude 2026-11-16: 9 sources plus 1 missed, table shape right, saved where asked; kept in pillars/hermes/research/. Spot-check of the 'differ' lines (Gmail messages.get cost, JMAP RFC 8620) pending: those hosts are blocked from the build session."
+        },
+        {
+          "id": "HER-GRK-02",
+          "title": "Hermes Post: second reader on Gemini's 'Billing rules of 40 California utilities, insurers and lenders'",
+          "state": "withdrawn",
+          "due": "2026-11-22",
+          "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+          "inputs": [
+            "Gemini's file hermes_gemini_bill-rules_*.json in the folder below (once it is there)"
+          ],
+          "steps": [
+            "Open 15 rows at random (or every row if fewer) and the source each cites.",
+            "For each: what Gemini says, what the page says, agree/differ.",
+            "Add up to 5 rows Gemini missed, same shape."
+          ],
+          "deliver": {
+            "file": "hermes_grok_bill-rules-check_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "table: row | gemini says | page says | url | agree/differ"
+          },
+          "count": 15,
+          "done_when": "15 rows checked with the page each opened.",
+          "checks": [
+            "Claude spot-checks 3 'differ' lines."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name"
+          ],
+          "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+        },
+        {
+          "id": "HER-GRK-03",
+          "title": "Hermes Post: second reader on Gemini's 'the function spec, written as the build plan'",
+          "state": "withdrawn",
+          "due": "2026-11-27",
+          "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
+          "unlocks": "Claude builds from the file only after this check.",
+          "inputs": [
+            "Gemini's file to check (HER-GEM-09): hermes_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+            "Gemini's file hermes_gemini_function-spec_*.md in the folder below (HER-GEM-09)"
+          ],
+          "steps": [
+            "Open Gemini's file and the code it describes.",
+            "Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.",
+            "Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.",
+            "List up to 10 things the pillar needs that the spec leaves out, each with why."
+          ],
+          "deliver": {
+            "file": "hermes_grok_function-spec-check_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+          },
+          "fields": [
+            {
+              "name": "agree/differ",
+              "type": "agree or differ",
+              "rule": "differ needs what you found and where"
+            }
+          ],
+          "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
+          "self_check": [
+            "Every differ line says where you looked.",
+            "You did not change Gemini's file."
+          ],
+          "count": 10,
+          "done_when": "Every picked item checked with where you looked.",
+          "checks": [
+            "Claude re-checks 3 of your differ lines."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name"
+          ],
+          "input_file": "hermes_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
+          "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)",
+          "closed": "2026-11-23",
+          "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar."
+        }
+      ]
     },
     {
-     "id": "HER-GEM-03",
-     "title": "Every Gmail search operator, with syntax and one example each",
-     "state": "done",
-     "due": "2026-11-12",
-     "why": "Hermes rules are written as Gmail searches.",
-     "inputs": [],
-     "steps": [
-      "Open https://support.google.com/mail/answer/7190 and copy every operator on it (there are about 40), exactly as written, with what it does and one example of your own."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_operators_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "[{\"n\":1,\"operator\":\"from:\",\"does\":\"messages from a sender\",\"example\":\"from:bills@example.com\",\"url\":\"https://support.google.com/mail/answer/7190\",\"quote\":\"...\"}]"
-     },
-     "count": 40,
-     "done_when": "Every operator on the page (Claude counts the page).",
-     "checks": [
-      "Claude compares the list with the page; a missing operator or an invented one fails the file."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name",
-      "an operator that is not on that page"
-     ]
+      "id": "muse",
+      "name": "Muse",
+      "tasks": [
+        {
+          "id": "HER-MUS-01",
+          "title": "Hermes Post: second reader on Gemini's '60 new phishing and scam lures seen in 2026'",
+          "state": "withdrawn",
+          "due": "2026-11-24",
+          "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
+          "inputs": [
+            "Gemini's file hermes_gemini_lures-3_*.json in the folder below (once it is there)"
+          ],
+          "steps": [
+            "Open 15 rows at random (or every row if fewer) and the source each cites.",
+            "For each: what Gemini says, what the page says, agree/differ.",
+            "Add up to 5 rows Gemini missed, same shape."
+          ],
+          "deliver": {
+            "file": "hermes_muse_lures-3-check_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "table: row | gemini says | page says | url | agree/differ"
+          },
+          "count": 15,
+          "done_when": "15 rows checked with the page each opened.",
+          "checks": [
+            "Claude spot-checks 3 'differ' lines."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field of the shape",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name"
+          ],
+          "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
+        },
+        {
+          "id": "HER-MUS-02",
+          "title": "Hermes: second reader on Gemini's the 40 dated official scam messages",
+          "state": "withdrawn",
+          "added": "2026-11-22",
+          "due": "2026-12-01",
+          "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
+          "unlocks": "Claude builds from the file only after this check.",
+          "inputs": [
+            "Gemini's file hermes_gemini_scam-messages_20261121-*.json (HER-GEM-10: the 40 dated official scam messages)"
+          ],
+          "steps": [
+            "Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.",
+            "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
+            "Check that each quote is the lure's own words as the page prints them, not the agency's description of it.",
+            "Add up to 5 rows Gemini missed, in Gemini's exact shape."
+          ],
+          "deliver": {
+            "file": "hermes_muse_scam-messages-check_{YYYYMMDD-HHMM}.md",
+            "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
+            "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
+          },
+          "fields": [
+            {
+              "name": "agree/differ",
+              "type": "agree or differ",
+              "rule": "differ needs what you found and where"
+            }
+          ],
+          "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
+          "self_check": [
+            "Every differ line says where you looked.",
+            "You did not change Gemini's file."
+          ],
+          "count": 12,
+          "done_when": "Every picked item checked with where you looked.",
+          "checks": [
+            "Claude re-checks 3 of your differ lines."
+          ],
+          "rejected_if": [
+            "fewer rows than the count, or a row missing a field",
+            "a row copied from another row with the names changed",
+            "a URL that does not open, is a front page or a search page, or does not say what the row claims",
+            "a quote that is not on the page it cites (Claude opens 10 rows at random)",
+            "a file saved anywhere but the folder named here, or under another name"
+          ],
+          "closed": "2026-11-23",
+          "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check."
+        }
+      ]
     },
     {
-     "id": "HER-GEM-04",
-     "title": "30 phishing tells from FTC, CISA and Google, quoted",
-     "state": "done",
-     "due": "2026-11-15",
-     "why": "Hermes should flag a fake bill before Joseph pays it.",
-     "inputs": [],
-     "steps": [
-      "30 tells (sender domain lookalike, urgent payment threat, gift-card ask, reply-to differs, link text differs from link target, ...), each from consumer.ftc.gov, cisa.gov or support.google.com.",
-      "For each: the tell, a test Hermes can run on a message (headers or body), the URL and the quote."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_phishing_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "[{\"n\":1,\"tell\":\"the reply-to address differs from the sender\",\"test\":\"header Reply-To domain != From domain\",\"url\":\"https://consumer.ftc.gov/...\",\"quote\":\"...\"}]"
-     },
-     "count": 30,
-     "done_when": "30 tells, each with a test written over headers or body.",
-     "checks": [
-      "Claude opens 10 at random.",
-      "A test that is only 'looks suspicious' does not count."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name"
-     ],
-     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
-    },
-    {
-     "id": "HER-GEM-05",
-     "title": "Triage test set: 80 made-up emails, 20 per lane",
-     "state": "done",
-     "due": "2026-11-16",
-     "why": "Claude tests Hermes's sorting on mail that is not Joseph's.",
-     "inputs": [],
-     "steps": [
-      "Write 80 made-up emails: 20 'needs an answer', 20 'bill due in 7 days', 20 'waiting on others', 20 'read later'. Include 10 hard ones per lane (a bill that looks like news, a question buried in a newsletter, a reminder that is only an ad).",
-      "Every sender uses an example.com, example.org or example.net address; no real person, no real company address.",
-      "For each: from, subject, date (2026-11), the first 3 lines of the body, the lane, and one sentence why."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_testmail_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "[{\"n\":1,\"from\":\"billing@power.example.com\",\"subject\":\"...\",\"date\":\"2026-11-03\",\"body\":\"...\",\"lane\":\"bill due in 7 days\",\"hard\":false,\"why\":\"...\"}]"
-     },
-     "count": 80,
-     "done_when": "80 emails, 20 per lane, 40 marked hard.",
-     "checks": [
-      "Claude counts lanes and checks every address is example.com/.org/.net."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a real address or a real person's name",
-      "anything about Joseph's own accounts, balances, mail, messages or trades (public facts only)"
-     ],
-     "review": "Desk and seat era (5-9 Nov), delivered before the Forge kept files: no copy remains in Drive or the repository, and it is not shown as data. Kept as design input for the seat pillars (Claude, 26 Nov 2026)."
-    },
-    {
-     "id": "HER-GEM-06",
-     "title": "Hermes Post: Billing rules of 40 California utilities, insurers and lenders",
-     "state": "withdrawn",
-     "due": "2026-11-19",
-     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
-     "inputs": [
-      "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
-     ],
-     "steps": [
-      "SoCalGas, Southern California Edison, the Frazier Park and Lebec water and trash providers, the big auto and home insurers, the big card issuers.",
-      "From each company's own billing or terms page."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_bill-rules_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "JSON array of objects, one per row: {\"n\",\"company\",\"service\",\"bill cycle\",\"due-day rule\",\"grace days\",\"late fee\",\"autopay page URL\",\"quote\"}"
-     },
-     "count": 40,
-     "done_when": "40 rows (or the whole document) in the shape, every source opening and saying what the row says.",
-     "checks": [
-      "Claude opens 10 rows at random."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a real private person's name, address or phone number",
-      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ],
-     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
-    },
-    {
-     "id": "HER-GEM-07",
-     "title": "Hermes Post: 60 new phishing and scam lures seen in 2026",
-     "state": "withdrawn",
-     "due": "2026-11-21",
-     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
-     "inputs": [
-      "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
-     ],
-     "steps": [
-      "Toll-road texts, USPS redelivery, DMV, bank fraud alerts, package and job scams; only lures an official source describes."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_lures-3_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "JSON array of objects, one per row in the shape of phishing-lures.js: {\"n\",\"channel (sms/email/call)\",\"pretend to be\",\"the hook\",\"tell-tale sign\",\"source (FTC, FBI IC3, the company)\",\"url\"}"
-     },
-     "count": 60,
-     "done_when": "60 rows (or the whole document) in the shape, every source opening and saying what the row says.",
-     "checks": [
-      "Claude opens 10 rows at random."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a real private person's name, address or phone number",
-      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ],
-     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
-    },
-    {
-     "id": "HER-GEM-08",
-     "title": "Hermes Post: 20 features the best mail triage and bill-reminder apps have",
-     "state": "withdrawn",
-     "due": "2026-11-28",
-     "why": "Owner, 2026-11-16: every pillar loaded with homework so it stops opening empty; this is public data Hermes Post uses.",
-     "inputs": [
-      "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/AI_START_HERE.md"
-     ],
-     "steps": [
-      "Look at mail triage and bill-reminder apps (SaneBox, Superhuman, Prism-style bill trackers).",
-      "Only features the app's own page, help centre or store listing shows; no guesses.",
-      "Sort by how much the feature would help a person using this pillar every day."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_features_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "JSON array of objects, one per row: {\"n\",\"feature\",\"which app has it (name)\",\"what it does for the user in one sentence\",\"how it would work here\",\"url of the app page that shows it\"}"
-     },
-     "count": 20,
-     "done_when": "20 rows (or the whole document) in the shape, every source opening and saying what the row says.",
-     "checks": [
-      "Claude opens 10 rows at random."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a real private person's name, address or phone number",
-      "anything about Joseph's own accounts, balances, mail, messages or records (public facts only)"
-     ],
-     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
-    },
-    {
-     "id": "HER-GEM-09",
-     "title": "Hermes Post: the function spec, written as the build plan",
-     "state": "done",
-     "due": "2026-11-30",
-     "why": "Owner, 2026-11-16: homework that is legit (it changes what the pillar can do) and detailed enough that it cannot be done wrong.",
-     "unlocks": "Joseph goes pillar by pillar, function before form; this file is the plan Claude builds Hermes Post from, step by step.",
-     "inputs": [
-      "https://jpavia10.github.io/prometheus-hub/pillars/hermes/",
-      "https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hermes",
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/docs/CHARTER.md (section 16: protections)"
-     ],
-     "steps": [
-      "Open the live page (https://jpavia10.github.io/prometheus-hub/pillars/hermes/) on a phone-sized browser and use every section.",
-      "Read the code (https://github.com/jpavia10/prometheus-hub/tree/main/pillars/hermes): every file the page loads, and pillar.json.",
-      "Write section A from what is there now, with file:line for each item; then B to H.",
-      "Write for Claude to build from: exact, testable, nothing vague like 'improve the UX'."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_function-spec_{YYYYMMDD-HHMM}.md",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "one markdown file with exactly these headings, in this order: A What it does today | B What Joseph needs it to do | C Data | D Screens | E Rules and edge cases | F Acceptance tests | G Order of work | H Must not"
-     },
-     "count": 1,
-     "fields": [
-      {
-       "name": "A What it does today",
-       "type": "list",
-       "rule": "every section, control and number on the live page, each with the file and line in the code that makes it (e.g. app.js:142)"
-      },
-      {
-       "name": "B What Joseph needs it to do",
-       "type": "8+ user stories",
-       "rule": "'As Joseph, when ..., I want ..., so that ...'; from the pillar's mission and its own data; never invent facts about his life"
-      },
-      {
-       "name": "C Data",
-       "type": "table",
-       "rule": "record | field | type | unit | required | example | storage key (prometheus.<pillar>.<name>) | read by which other pillar"
-      },
-      {
-       "name": "D Screens",
-       "type": "per screen",
-       "rule": "purpose; every element top to bottom; every number with its formula and source field; the empty state text; the error state"
-      },
-      {
-       "name": "E Rules and edge cases",
-       "type": "10+",
-       "rule": "dates and time zones, missing data, offline, two devices, a value of 0 vs unknown"
-      },
-      {
-       "name": "F Acceptance tests",
-       "type": "12+",
-       "rule": "Given / When / Then, each checkable in a phone browser in under two minutes"
-      },
-      {
-       "name": "G Order of work",
-       "type": "numbered steps",
-       "rule": "each step small enough for one build, with what Joseph can use after it"
-      },
-      {
-       "name": "H Must not",
-       "type": "list",
-       "rule": "the charter's protections that apply, no server or account, no made-up numbers"
-      }
-     ],
-     "example": "F7. Given an oil change logged at 12,000 mi and a 6,000 mi interval, when the odometer is set to 17,500 mi, then the service card shows 'due in 500 mi' in amber.",
-     "self_check": [
-      "Every item in A has a file:line that exists.",
-      "B has 8+ stories and none invents a personal fact.",
-      "C names every field with type and example.",
-      "F has 12+ tests, each with one Given, one When, one Then.",
-      "G steps are in an order that can ship one by one.",
-      "All eight headings, in order.",
-      "Every file:line in A is the line that does what the item says, in the code as it is on the day you write (Claude opens 10 at random)."
-     ],
-     "done_when": "1 file exactly in the shape, every self-check line true.",
-     "checks": [
-      "Claude opens 10 rows (or 10 claims) at random and compares them with their source."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a guess written as a fact (say 'not found' instead)",
-      "anything about Joseph's own accounts, balances, mail or records beyond what the task names",
-      "a file:line past the end of its file, or pointing at code that does something else",
-      "a personal detail (address, names, devices, accounts) that is not in the pillar's own code or data"
-     ],
-     "reopened": "2026-11-20",
-     "review": "Done 2026-11-21 (Claude): Same as Icarus: inline tests failed the checker of the day while the report said pass. Score 9/10 (#63).",
-     "closed": "2026-11-21"
-    },
-    {
-     "state": "done",
-     "added": "2026-11-21",
-     "why": "Hermes's local phishing classifier learns from lures; it needs current, real wording from official warnings, not invented examples.",
-     "unlocks": "Hermes's classifier and its lure gallery get 40 dated, official examples, tagged by type.",
-     "inputs": [
-      "consumer.ftc.gov alerts, ic3.gov public service announcements, and the official scam-warning pages of the companies imitated (USPS, IRS, Amazon, PayPal, banks, toll agencies)"
-     ],
-     "steps": [
-      "Collect 40 scam messages published in 2025-2026 where the official page quotes the text or shows it (SMS, email, phone script).",
-      "For each: the channel, who it pretends to be, the exact quoted wording (under 300 characters), the tell the page points out, and the publishing date.",
-      "Spread them: at least 8 toll/package texts, 6 bank or payment, 6 government (IRS, SSA, DMV), 6 job or task scams, 6 account-lock or password, 8 other."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_scam-messages_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "JSON array, one object per row, exactly the fields below"
-     },
-     "count": 40,
-     "fields": [
-      {
-       "name": "n",
-       "type": "integer",
-       "rule": "row"
-      },
-      {
-       "name": "channel",
-       "type": "text",
-       "rule": "sms / email / phone / social"
-      },
-      {
-       "name": "pretends",
-       "type": "text",
-       "rule": "who it imitates"
-      },
-      {
-       "name": "type",
-       "type": "text",
-       "rule": "toll / package / bank / government / job / account / other"
-      },
-      {
-       "name": "tell",
-       "type": "text",
-       "rule": "what the page says gives it away"
-      },
-      {
-       "name": "published",
-       "type": "date",
-       "rule": "YYYY-MM-DD"
-      },
-      {
-       "name": "url",
-       "type": "URL",
-       "rule": "the official warning page"
-      },
-      {
-       "name": "quote",
-       "type": "text",
-       "rule": "the scam message as quoted, under 300 characters"
-      }
-     ],
-     "self_check": [
-      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
-      "Every quote is copied word for word from that page or PDF page and is there now.",
-      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
-      "No row is a copy of another with the names changed.",
-      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
-     ],
-     "done_when": "40 messages, each quoted from an official warning.",
-     "checks": [
-      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field",
-      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens rows at random)",
-      "arithmetic that does not add up when Claude redoes it",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a guess written as a fact (write 'not stated' and name the page you checked)"
-     ],
-     "id": "HER-GEM-10",
-     "title": "Hermes: 40 real scam messages from the FTC, FBI IC3 and the companies being impersonated",
-     "due": "2026-12-01",
-     "closed": "2026-11-22",
-     "review": "Done 2026-11-22 (Claude): 40 verbatim lures from official warning pages, tagged by type. Lost a point: 21 'published' cells say 'not stated' (the field takes a date). not second-read yet (its pages are blocked from Claude's container); Muse checks it before it is built on. Score 9/10 (#106)."
-    },
-    {
-     "state": "done",
-     "added": "2026-11-22",
-     "why": "Hermes dates every lure; 21 of run 4's have no date.",
-     "unlocks": "The lure gallery is ordered by date.",
-     "inputs": [
-      "Gemini's file hermes_gemini_scam-messages_20261121-1210.json (the 21 rows with published 'not stated')",
-      "Each page's own date line, its 'last updated' line, or the Internet Archive's first capture (web.archive.org) as a last resort"
-     ],
-     "steps": [
-      "For each of the 21, look for the page's own date.",
-      "If the page has none, give the Internet Archive's first capture date and say so.",
-      "Never guess a year."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_scam-dates_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "JSON array, one object per row, exactly the fields below"
-     },
-     "count": 21,
-     "fields": [
-      {
-       "name": "n",
-       "type": "number",
-       "rule": "1, 2, 3 ..."
-      },
-      {
-       "name": "lure_n",
-       "type": "number",
-       "rule": "the n in Gemini's file"
-      },
-      {
-       "name": "published",
-       "type": "date",
-       "rule": "YYYY-MM-DD"
-      },
-      {
-       "name": "how",
-       "type": "text",
-       "rule": "page date, page updated, or first archive capture"
-      },
-      {
-       "name": "url",
-       "type": "url",
-       "rule": "the page you opened, on the official site"
-      },
-      {
-       "name": "quote",
-       "type": "text",
-       "rule": "copied word for word from that page, 300 characters at most"
-      }
-     ],
-     "self_check": [
-      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
-      "Every quote is copied word for word from that page or PDF page and is there now.",
-      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
-      "No row is a copy of another with the names changed.",
-      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
-     ],
-     "done_when": "All 21 rows dated, each saying how.",
-     "checks": [
-      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field",
-      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens rows at random)",
-      "arithmetic that does not add up when Claude redoes it",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a guess written as a fact (write 'not stated' and name the page you checked)"
-     ],
-     "id": "HER-GEM-11",
-     "title": "Hermes: the publication date of the 21 lures still 'not stated'",
-     "due": "2026-12-04",
-     "closed": "2026-11-23",
-     "review": "Scored 10/10 (#147)"
-    },
-    {
-     "state": "done",
-     "added": "2026-11-22",
-     "why": "After 'this is a scam' comes 'where do I report it'.",
-     "unlocks": "Each lure type in Hermes shows its official reporting channel.",
-     "inputs": [
-      "reportfraud.ftc.gov, ic3.gov, the carriers' 7726 pages, uspis.gov, the CA Attorney General's complaint page, each big bank's report-phishing page"
-     ],
-     "steps": [
-      "For each lure type in Hermes (toll, package, bank, government, job, account, other), give every official channel that takes reports.",
-      "Say what to send (the text, a screenshot, the headers) as the page says."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_report-channels_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "JSON array, one object per row, exactly the fields below"
-     },
-     "count": 0,
-     "fields": [
-      {
-       "name": "n",
-       "type": "number",
-       "rule": "1, 2, 3 ..."
-      },
-      {
-       "name": "type",
-       "type": "text",
-       "rule": "one of Hermes's lure types"
-      },
-      {
-       "name": "channel",
-       "type": "text",
-       "rule": "who takes the report"
-      },
-      {
-       "name": "how",
-       "type": "text",
-       "rule": "forward to 7726, web form, email, phone"
-      },
-      {
-       "name": "send",
-       "type": "text",
-       "rule": "what the page says to include"
-      },
-      {
-       "name": "url",
-       "type": "url",
-       "rule": "the page you opened, on the official site"
-      },
-      {
-       "name": "quote",
-       "type": "text",
-       "rule": "copied word for word from that page, 300 characters at most"
-      }
-     ],
-     "self_check": [
-      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
-      "Every quote is copied word for word from that page or PDF page and is there now.",
-      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
-      "No row is a copy of another with the names changed.",
-      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
-     ],
-     "done_when": "Every lure type has at least one official channel.",
-     "checks": [
-      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field",
-      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens rows at random)",
-      "arithmetic that does not add up when Claude redoes it",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a guess written as a fact (write 'not stated' and name the page you checked)"
-     ],
-     "id": "HER-GEM-12",
-     "title": "Hermes: where to report each kind of lure (FTC, IC3, 7726, USPS, the bank, the state)",
-     "due": "2026-12-05",
-     "closed": "2026-11-23",
-     "review": "Scored 10/10 (#148)"
-    },
-    {
-     "state": "done",
-     "added": "2026-11-23",
-     "why": "Hermes already knows each biller's real email domains; a scam text or call is checked the same way against the number the company itself publishes.",
-     "unlocks": "Hermes can say 'this number is (or is not) the one Chase prints' for any message or call.",
-     "inputs": [
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (window.BILLERS: 97 billers, entries 1-50 in file order)"
-     ],
-     "steps": [
-      "For each biller: the customer-service number and the fraud or 'report suspicious activity' number, from the company's own contact or security page (never a directory site).",
-      "Note if the company says it never calls or texts to ask for a code or password, and quote it."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_biller-phones-1_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "JSON array, one object per row, exactly the fields below"
-     },
-     "count": 50,
-     "fields": [
-      {
-       "name": "n",
-       "type": "number",
-       "rule": "1, 2, 3 ..."
-      },
-      {
-       "name": "biller",
-       "type": "text",
-       "rule": "as in billers.js"
-      },
-      {
-       "name": "service_phone",
-       "type": "text",
-       "rule": "as printed"
-      },
-      {
-       "name": "fraud_phone",
-       "type": "text",
-       "rule": "as printed, or 'not stated'"
-      },
-      {
-       "name": "never_asks",
-       "type": "text",
-       "rule": "the company's own words, or 'not stated'"
-      },
-      {
-       "name": "url",
-       "type": "url",
-       "rule": "the page you opened, on the official site"
-      },
-      {
-       "name": "quote",
-       "type": "text",
-       "rule": "copied word for word from that page, 300 characters at most"
-      }
-     ],
-     "self_check": [
-      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
-      "Every quote is copied word for word from that page or PDF page and is there now.",
-      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
-      "No row is a copy of another with the names changed.",
-      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
-     ],
-     "done_when": "Billers 1-50.",
-     "checks": [
-      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field",
-      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens rows at random)",
-      "arithmetic that does not add up when Claude redoes it",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a guess written as a fact (write 'not stated' and name the page you checked)"
-     ],
-     "id": "HER-GEM-13",
-     "title": "Hermes: the official fraud and customer-service phone numbers for billers 1-50",
-     "due": "2026-12-06",
-     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
-    },
-    {
-     "state": "done",
-     "added": "2026-11-23",
-     "why": "The second half of the biller phone list.",
-     "unlocks": "Every biller in Hermes has its real numbers.",
-     "inputs": [
-      "https://raw.githubusercontent.com/jpavia10/prometheus-hub/main/pillars/hermes/billers.js (entries 51-97 in file order)"
-     ],
-     "steps": [
-      "As in part 1."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_biller-phones-2_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "JSON array, one object per row, exactly the fields below"
-     },
-     "count": 47,
-     "fields": [
-      {
-       "name": "n",
-       "type": "number",
-       "rule": "1, 2, 3 ..."
-      },
-      {
-       "name": "biller",
-       "type": "text",
-       "rule": ""
-      },
-      {
-       "name": "service_phone",
-       "type": "text",
-       "rule": ""
-      },
-      {
-       "name": "fraud_phone",
-       "type": "text",
-       "rule": "or 'not stated'"
-      },
-      {
-       "name": "never_asks",
-       "type": "text",
-       "rule": "or 'not stated'"
-      },
-      {
-       "name": "url",
-       "type": "url",
-       "rule": "the page you opened, on the official site"
-      },
-      {
-       "name": "quote",
-       "type": "text",
-       "rule": "copied word for word from that page, 300 characters at most"
-      }
-     ],
-     "self_check": [
-      "Every row has a URL you opened yourself today, on the maker's, agency's or store's own site (never a blog, forum, wiki, reseller, or AI summary).",
-      "Every quote is copied word for word from that page or PDF page and is there now.",
-      "Every number has its unit in its own field; anything worked out shows its arithmetic in the field that says 'math'.",
-      "No row is a copy of another with the names changed.",
-      "The file is valid JSON (or exactly the Markdown asked for) and is named exactly as asked."
-     ],
-     "done_when": "Billers 51-97.",
-     "checks": [
-      "Claude opens 12 rows at random against their pages and redoes every 'math' field."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field",
-      "a URL that does not open, is a home page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens rows at random)",
-      "arithmetic that does not add up when Claude redoes it",
-      "a file saved anywhere but the folder named here, or under another name",
-      "a guess written as a fact (write 'not stated' and name the page you checked)"
-     ],
-     "id": "HER-GEM-14",
-     "title": "Hermes: the official fraud and customer-service phone numbers for billers 51-97",
-     "due": "2026-12-07",
-     "review": "delivered in Gemini's run 7 (23-24 Nov 2026, DONE marker); Claude's file check happens when it is wired (collaborators/SHARED_LOG.md)"
-    },
-    {
-     "state": "done",
-     "added": "2026-11-24",
-     "why": "The phone numbers are in; a lure is easiest to spot by the sender.",
-     "unlocks": "Hermes flags messages from anywhere else.",
-     "inputs": [
-      "https://jpavia10.github.io/prometheus-hub/pillars/hermes/"
-     ],
-     "steps": [
-      "For each biller: the email domains and SMS short codes it sends from, from its own security page."
-     ],
-     "deliver": {
-      "file": "hermes_gemini_senders_{YYYYMMDD-HHMM}.json",
-      "folder": "Prometheus Hub/Pillars/Prometheus Hub/incoming (AI drop files)/",
-      "shape": "JSON array, one object per row, exactly the fields below"
-     },
-     "count": 0,
-     "fields": [
-      {
-       "name": "n",
-       "type": "number",
-       "rule": "1, 2, 3 ..."
-      },
-      {
-       "name": "biller",
-       "type": "text",
-       "rule": "name"
-      },
-      {
-       "name": "domains",
-       "type": "text",
-       "rule": "list"
-      },
-      {
-       "name": "short_codes",
-       "type": "text",
-       "rule": "list"
-      },
-      {
-       "name": "source_url",
-       "type": "url",
-       "rule": "the official page that shows the value"
-      },
-      {
-       "name": "checked",
-       "type": "date",
-       "rule": "the day you read it, YYYY-MM-DD"
-      }
-     ],
-     "done_when": "Every biller.",
-     "checks": [
-      "Claude opens every source URL in ten rows at random and checks the value against the page."
-     ],
-     "rejected_if": [
-      "a value without a source URL that shows it",
-      "rows missing to reach the count",
-      "a source that is a blog, forum or AI summary where an official page exists"
-     ],
-     "id": "HER-GEM-15",
-     "title": "Hermes: the official sending domains and short codes of every biller in HER-GEM-13/14",
-     "due": "2026-12-08",
-     "closed": "2026-11-25",
-     "review": "Done 2026-11-25 (Claude): delivered at its count with the exact fields (checker exit 0). Its sources cannot be opened from Claude's container, so Muse second-reads a sample (HUB-MUS-06) before it is built on. Score in #207."
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "tasks": []
     }
-   ]
-  },
-  {
-   "id": "grok",
-   "name": "Grok",
-   "tasks": [
-    {
-     "id": "HER-GRK-01",
-     "title": "Hermes Post: second reader on Gemini's spec",
-     "state": "done",
-     "due": "2026-11-14",
-     "why": "Every source in a spec gets a second reader before Claude builds on it.",
-     "inputs": [
-      "Gemini's file hermes_gemini_spec_*.md in the incoming folder (once it is there)"
-     ],
-     "steps": [
-      "Open every data source's docs URL; for each write: source, Gemini's claim (sign-in, cost, limits), what the page says, agree/differ.",
-      "Add up to 5 sources Gemini missed, same columns."
-     ],
-     "deliver": {
-      "file": "hermes_grok_spec-check_{YYYYMMDD-HHMM}.md",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "table: source | gemini says | page says | url | agree/differ"
-     },
-     "count": 6,
-     "done_when": "Every source in Gemini's spec checked.",
-     "checks": [
-      "Claude spot-checks 3 'differ' lines."
-     ],
-     "rejected_if": [
-      "a row copied from another row with the names changed",
-      "a source URL that does not open or does not say what the row claims",
-      "fewer items than the count",
-      "a file saved anywhere but the folder named here, or under another name"
-     ],
-     "review": "Reviewed by Claude 2026-11-16: 9 sources plus 1 missed, table shape right, saved where asked; kept in pillars/hermes/research/. Spot-check of the 'differ' lines (Gmail messages.get cost, JMAP RFC 8620) pending: those hosts are blocked from the build session."
-    },
-    {
-     "id": "HER-GRK-02",
-     "title": "Hermes Post: second reader on Gemini's 'Billing rules of 40 California utilities, insurers and lenders'",
-     "state": "withdrawn",
-     "due": "2026-11-22",
-     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
-     "inputs": [
-      "Gemini's file hermes_gemini_bill-rules_*.json in the folder below (once it is there)"
-     ],
-     "steps": [
-      "Open 15 rows at random (or every row if fewer) and the source each cites.",
-      "For each: what Gemini says, what the page says, agree/differ.",
-      "Add up to 5 rows Gemini missed, same shape."
-     ],
-     "deliver": {
-      "file": "hermes_grok_bill-rules-check_{YYYYMMDD-HHMM}.md",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "table: row | gemini says | page says | url | agree/differ"
-     },
-     "count": 15,
-     "done_when": "15 rows checked with the page each opened.",
-     "checks": [
-      "Claude spot-checks 3 'differ' lines."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name"
-     ],
-     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
-    },
-    {
-     "id": "HER-GRK-03",
-     "title": "Hermes Post: second reader on Gemini's 'the function spec, written as the build plan'",
-     "state": "withdrawn",
-     "due": "2026-11-27",
-     "why": "Nothing Gemini delivers is built on until a second reader has checked it.",
-     "unlocks": "Claude builds from the file only after this check.",
-     "inputs": [
-      "Gemini's file to check (HER-GEM-09): hermes_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-      "Gemini's file hermes_gemini_function-spec_*.md in the folder below (HER-GEM-09)"
-     ],
-     "steps": [
-      "Open Gemini's file and the code it describes.",
-      "Pick 10 items from its section A at random and open each file:line: does the code do what it says? Write true/false and what the code actually does.",
-      "Pick 5 acceptance tests from section F: could you check each on a phone in under two minutes? If not, say what is missing.",
-      "List up to 10 things the pillar needs that the spec leaves out, each with why."
-     ],
-     "deliver": {
-      "file": "hermes_grok_function-spec-check_{YYYYMMDD-HHMM}.md",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
-     },
-     "fields": [
-      {
-       "name": "agree/differ",
-       "type": "agree or differ",
-       "rule": "differ needs what you found and where"
-      }
-     ],
-     "example": "| A3 | 'Save button writes prometheus.garage.fuel' | app.js:212 writes prometheus.garage.fuelLog | app.js:212 | differ |",
-     "self_check": [
-      "Every differ line says where you looked.",
-      "You did not change Gemini's file."
-     ],
-     "count": 10,
-     "done_when": "Every picked item checked with where you looked.",
-     "checks": [
-      "Claude re-checks 3 of your differ lines."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name"
-     ],
-     "input_file": "hermes_gemini_function-spec_20261116-2040.md in the pillar's incoming folder (delivered; integration is the builder's next step)",
-     "started": "2026-11-19: its input was delivered on 2026-11-16 (the task had stayed 'next' by mistake)",
-     "closed": "2026-11-23",
-     "review": "Withdrawn 2026-11-23 (Claude): Grok is being phased out (Joseph cancels it in about a month), so it gets no more work. The spec was scored by Claude; Claude reads it against the code when it builds that pillar."
-    }
-   ]
-  },
-  {
-   "id": "muse",
-   "name": "Muse",
-   "tasks": [
-    {
-     "id": "HER-MUS-01",
-     "title": "Hermes Post: second reader on Gemini's '60 new phishing and scam lures seen in 2026'",
-     "state": "withdrawn",
-     "due": "2026-11-24",
-     "why": "Every Gemini dataset gets a second reader before Claude builds on it.",
-     "inputs": [
-      "Gemini's file hermes_gemini_lures-3_*.json in the folder below (once it is there)"
-     ],
-     "steps": [
-      "Open 15 rows at random (or every row if fewer) and the source each cites.",
-      "For each: what Gemini says, what the page says, agree/differ.",
-      "Add up to 5 rows Gemini missed, same shape."
-     ],
-     "deliver": {
-      "file": "hermes_muse_lures-3-check_{YYYYMMDD-HHMM}.md",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "table: row | gemini says | page says | url | agree/differ"
-     },
-     "count": 15,
-     "done_when": "15 rows checked with the page each opened.",
-     "checks": [
-      "Claude spot-checks 3 'differ' lines."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field of the shape",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name"
-     ],
-     "review": "Withdrawn 2026-11-16: not legit enough (owner: 'legit not busywork'); replaced by detailed tasks."
-    },
-    {
-     "id": "HER-MUS-02",
-     "title": "Hermes: second reader on Gemini's the 40 dated official scam messages",
-     "state": "withdrawn",
-     "added": "2026-11-22",
-     "due": "2026-12-01",
-     "why": "Nothing Gemini delivers is built on until a second reader has checked it; Claude's container cannot open these pages.",
-     "unlocks": "Claude builds from the file only after this check.",
-     "inputs": [
-      "Gemini's file hermes_gemini_scam-messages_20261121-*.json (HER-GEM-10: the 40 dated official scam messages)"
-     ],
-     "steps": [
-      "Open Gemini's file. Pick 12 rows at random (every row if fewer), and say how you picked them.",
-      "For each, open its URL and compare every field with the page: agree, or what the page says instead (with the line).",
-      "Check that each quote is the lure's own words as the page prints them, not the agency's description of it.",
-      "Add up to 5 rows Gemini missed, in Gemini's exact shape."
-     ],
-     "deliver": {
-      "file": "hermes_muse_scam-messages-check_{YYYYMMDD-HHMM}.md",
-      "folder": "Prometheus Hub/Pillars/Hermes Post/incoming (AI drop files)/",
-      "shape": "markdown table: item | Gemini says | what I found | URL or file:line | agree/differ, then the list of what is missing"
-     },
-     "fields": [
-      {
-       "name": "agree/differ",
-       "type": "agree or differ",
-       "rule": "differ needs what you found and where"
-      }
-     ],
-     "example": "| 7 | 'WXL89 162.550 MHz, Shirley Peak' | the NOAA station page says 162.550 MHz, Shirley Peak, NORMAL | https://www.weather.gov/nwr/sites?site=WXL89 | agree |",
-     "self_check": [
-      "Every differ line says where you looked.",
-      "You did not change Gemini's file."
-     ],
-     "count": 12,
-     "done_when": "Every picked item checked with where you looked.",
-     "checks": [
-      "Claude re-checks 3 of your differ lines."
-     ],
-     "rejected_if": [
-      "fewer rows than the count, or a row missing a field",
-      "a row copied from another row with the names changed",
-      "a URL that does not open, is a front page or a search page, or does not say what the row claims",
-      "a quote that is not on the page it cites (Claude opens 10 rows at random)",
-      "a file saved anywhere but the folder named here, or under another name"
-     ],
-     "closed": "2026-11-23",
-     "review": "Withdrawn 2026-11-23 (Claude): Joseph keeps Muse to a modest load. The files that matter most are in HUB-MUS-05 (one pass, 3 rows each); this one stays with Claude's own check."
-    }
-   ]
-  },
-  {
-   "id": "chatgpt",
-   "name": "ChatGPT",
-   "tasks": []
-  }
- ]
+  ]
 }
