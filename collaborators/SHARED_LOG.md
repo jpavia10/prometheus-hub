@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-27] Claude: Kin d116, Grandma Laurie's answers
+- Q38 settled: Joanne is Aunt Betty Holgate's daughter (Tania and Michelle are Betty's granddaughters); Kathy (died recently), David Holgate with Rachel, Ryan and Sara added (David's link to Betty asked in Q43); Robert Seconder; Barbara Josephine Termens's birth confirmed; Della born 1905-06 by Laurie against 21 in the 1922 index (Q44).
+- Tim John Atkins (father David Wayne Atkins, wife Brittany), Michael James Jordan (father Gerald "Jerry" Lynn Jordan, later married to Patricia "Patty"); Laurie and Charles married in Oakland County in 1973. Exact birth dates of the living are in a private note in the owner's Drive Kin folder, not in the repo.
+- kinship.js: "Wife of your first cousin, twice removed" instead of a broken possessive; "Stepmother of your uncle Michael".
+
 ### [2026-11-27] Claude: Kin d115, Jeffrey Hinkle's family; your sisters' relatives get a name
 - Owner: Jeffrey Anthony Hinkle's parents Stanley Joseph and Jeanette Elizabeth Hinkle and their five children (Patrick "Patty", Jennifer, Cynthia "Cindy", Jeffrey and his twin Joseph Stanley). No obituary found for either parent (27 Nov), so no dates (L38).
 - kinship.js: someone related to you only through a half-sister or your child is now named through them ("Grandfather of your sisters Jessica and Samantha"); every person in the tree has a label, and no existing label changed.

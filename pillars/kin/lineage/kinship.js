@@ -61,7 +61,8 @@
           const ex = f.ended ? "ex-" : "", w = f.unmarried ? "partner" : sx(id, "husband", "wife", "partner");
           if (q === root) return (RL[key] = `Your ${ex}${w}`);
           const qb = blood(q);
-          if (qb) return (RL[key] = `${qb.text}'s ${ex}${w}` + (withSide && qb.side ? ` (${qb.side})` : "")); /* which aunt: your father's sister's husband or your mother's sister's */
+          /* "Your aunt's husband", but "Wife of your first cousin, twice removed" where a possessive would read badly */
+          if (qb) return (RL[key] = (qb.text.includes(",") ? `${(ex + w)[0].toUpperCase()}${(ex + w).slice(1)} of ${qb.text.replace(/^Your /, "your ")}` : `${qb.text}'s ${ex}${w}`) + (withSide && qb.side ? ` (${qb.side})` : "")); /* which aunt: your father's sister's husband or your mother's sister's */
         }
       }
       /* a child of your partner: a stepchild */
@@ -82,6 +83,18 @@
         const [what, role] = best.split("|"), xs = by[best], first = (x) => { const n = (P[x].names || []).find((y) => y.given); return n ? n.given.split(" ")[0] : x; };
         const names = xs.length > 1 ? xs.slice(0, -1).map(first).join(", ") + " and " + first(xs[xs.length - 1]) : first(xs[0]);
         return (RL[key] = `${what[0].toUpperCase()}${what.slice(1)} of your ${role}${xs.length > 1 ? "s" : ""} ${names}`);
+      }
+      /* the later wife or husband of a relative's parent: "Stepmother of your uncle Michael" */
+      for (const f of families) {
+        if (!f.partners.includes(id)) continue;
+        for (const q of f.partners) {
+          if (q === id) continue;
+          for (const g of families) if (g.partners.includes(q) && !g.partners.includes(id)) for (const c of g.children || []) {
+            const cb = blood(c); if (!cb || c === root || cb.text.includes(",")) continue;
+            const n = (P[c].names || []).find((y) => y.given), who = n ? " " + n.given.split(" ")[0] : "";
+            return (RL[key] = `${sx(id, "Stepfather", "Stepmother", "Step-parent")} of ${cb.text.replace(/^Your /, "your ")}${who}` + (withSide && cb.side ? ` (${cb.side})` : ""));
+          }
+        }
       }
       return (RL[key] = "");
     }

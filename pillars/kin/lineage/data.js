@@ -1549,3 +1549,106 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L38", date: "2026-11-27", by: "Claude", q: "", where: "your message; the open web (obituary search)", terms: "Stanley Joseph Hinkle; Jeanette Elizabeth Hinkle", result: "added from your account",
     note: "Jeffrey Hinkle's parents and his four brothers and sisters added, twins noted. No obituary for either parent was found on 27 Nov 2026, so there are no dates; they are Jessica's and Samantha's family, not your blood relatives." });
 })(window.KIN_LINEAGE);
+
+/* 27 Nov 2026, Grandma Laurie's answers (relayed by the owner). Betty and Barbara are sisters. Joanne (with an e) is Betty
+   Holgate's daughter, so Q38 is settled: Tania and Michelle descend from Aunt Betty, not from Bob Seconder. Betty's other child,
+   Kathy, died recently. David Holgate's wife is Rachel; their children are Ryan and Sara. Laurie's father was Robert ("the H
+   unknown"). Barbara was Barbara Josephine Termens, born 24 March 1933 as the records say; Della was born in 1905 or 1906.
+   Laurie met Grandpa Charles's mother Betty's parents in Georgia (names not remembered). Tim's father is David Wayne Atkins (Tim
+   John Atkins; married Brittany); Michael James Jordan's father is Gerald "Jerry" Lynn Jordan, who later married Patricia
+   ("Patty"). Laurie married Charles in Oakland County in 1973; the family lived in Mississippi for about a year, where Tim was
+   born. The living's exact birth dates are kept in a private note in the owner's Drive (Kin folder), not here. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id), Fm = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-laurie-1127", short: "Grandma Laurie's answers (Thanksgiving 2026, through you)", kind: "authored", year: 2026,
+    cite: "Laurie (Seconder) Jordan, answers at Thanksgiving, relayed by Joseph Pavia in a message to Claude, 27 November 2026.",
+    read: "Betty and Barbara are sisters. Joanne (with an e) is Betty's daughter; Betty's other child is Kathy, who recently passed away. Bob was Robert (the H not known). Barbara Josephine Termens, birth date correct (24 March 1933). Della was born 1905 or 1906. Rachel Holgate is David's wife; their children are Ryan and Sara. Betty's parents (Grandpa Charles's mother) unknown, but Laurie met them in Georgia. Tim's father is David Wayne Atkins; Tim's surname is Atkins, his middle name John; he married Brittany (spelling not sure). Michael James Jordan's father is Gerald \"Jerry\" Lynn Jordan, who remarried Patricia (\"Patty\"). Laurie married Charles in Oakland County in 1973. When Toni was about five they lived in Mississippi for about a year; Tim was born there." });
+  const S1 = ["S-laurie-1127"];
+  const nm = (given, surname, type, note) => Object.assign({ given, surname, type, src: S1 }, note ? { note } : {});
+  const add = (arr, x) => { if (!arr.includes(x)) arr.push(x); };
+
+  /* Aunt Betty's family: Joanne moves from Bob Seconder to Betty and Thomas Holgate; Kathy; David's family */
+  const fb = Fm("F-bob-joann"); if (fb) fb.children = fb.children.filter((c) => c !== "P-tania-mom");
+  L.families.splice(L.families.findIndex((f) => f.id === "F-bob-joann"), fb && !fb.children.length ? 1 : 0);
+  const fh = Fm("F-holgate");
+  const jo = P("P-tania-mom");
+  if (jo) {
+    jo.names = [nm("Joanne", "Holgate", "birth", "spelled with an e (Laurie); her surname at birth as Betty and Thomas Holgate's daughter; her married surname is not known yet")]
+      .concat(jo.names.map((n) => Object.assign({}, n, { type: "as-given", note: "how you first wrote it" })));
+    jo.summary = "Joanne, Aunt Betty Holgate's daughter (Grandma Laurie, 27 Nov 2026), so your grandmother Laurie's first cousin. Her daughters are Tania and Michelle. Her sister was Kathy, who died recently. Her married surname is still to be asked.";
+  }
+  L.people.push(
+    { id: "P-kathyh", sex: "F", status: "family", names: [nm("Kathy", "Holgate", "birth", "her surname at birth; a married name is not known")],
+      summary: "Aunt Betty Holgate's other daughter, Joanne's sister; she died recently (Grandma Laurie, 27 Nov 2026). Her obituary, when found, should name Betty, Thomas, Joanne and her own family (Q43)." },
+    { id: "P-davidh", sex: "M", status: "family", names: [nm("David", "Holgate", "birth"), Object.assign(nm("Dave", "Holgate", "as-used"), { src: ["S-fb-xmas2006"] })],
+      summary: "Dave Holgate, at the 2006 family Christmas. His wife is Rachel; their children are Ryan and Sara (Grandma Laurie). How he descends from Aunt Betty is not settled: Laurie named Joanne and Kathy as Betty's children, so he may be a grandson, or Thomas Holgate's son (Q43). Drawn under Betty and Thomas as a question." },
+    { id: "P-rachelh", sex: "F", status: "family", names: [Object.assign(nm("Rachel Denys", "Holgate", "married", "her married name; at the 2006 family Christmas and sharing Joseph Termenas's photographs on Ancestry"), { src: ["S-laurie-1127", "S-fb-xmas2006"] })],
+      summary: "David Holgate's wife (Grandma Laurie), the mother of Ryan and Sara. She shares Joseph Termenas's photographs on Ancestry." },
+    { id: "P-ryanh", sex: "M", status: "family", names: [nm("Ryan", "Holgate", "birth")], summary: "David and Rachel Holgate's son (Grandma Laurie)." },
+    { id: "P-sarah", sex: "F", status: "family", names: [nm("Sara", "Holgate", "birth")], summary: "David and Rachel Holgate's daughter (Grandma Laurie)." });
+  if (fh) { add(fh.children, "P-tania-mom"); add(fh.children, "P-kathyh"); add(fh.children, "P-davidh");
+    fh.uncertain = Object.assign(fh.uncertain || {}, { "P-davidh": "Betty's son, grandson, or Thomas's son? Laurie named only Joanne and Kathy as Betty's children (Q43)" }); }
+  L.families.push({ id: "F-davidh", partners: ["P-davidh", "P-rachelh"], children: ["P-ryanh", "P-sarah"] });
+  const ft = Fm("F-termenas"); if (ft && ft.uncertain) delete ft.uncertain["P-betty"];
+  const bt = P("P-betty");
+  if (bt) { bt.names.unshift(nm("Betty", "Termens", "birth", "Barbara's sister, so born a Termens (Grandma Laurie)"));
+    bt.summary = "Aunt Betty: Betty (Termens) Holgate, Nana Feole's (Barbara's) sister (Grandma Laurie confirms it), a daughter of Joseph and Della Termens, so your great-grandmother's sister. Married Thomas Holgate; of Novi in 1997 (Katherine M. Springer's obituary names both sisters as her nieces). Her daughters are Joanne (Tania and Michelle's mother) and Kathy, who died recently; David Holgate, whose wife is Rachel, is family too, his link still to be asked."; }
+  const th = P("P-thomash"); if (th) { delete th.living; th.summary = "Aunt Betty's husband: \"Betty (Thomas) Holgate of Novi\" in Katherine M. Springer's 1997 obituary. Their daughters are Joanne and Kathy (Grandma Laurie)."; }
+
+  /* Laurie's parents and grandparents */
+  const bob = P("P-bob");
+  if (bob) { bob.names.unshift(nm("Robert", "Seconder", "birth", "Laurie: Robert, yes; the middle initial H (in the hypothesis H9) she does not know"));
+    bob.summary = "Laurie's father, Robert (Bob) Seconder (Grandma Laurie): Barbara's first husband. Whether he is the Robert H. Seconder of 1931 to 2003 in hypothesis H9 is still open; Laurie confirms the Robert but not the H."; }
+  const gm = P("P-ggm");
+  if (gm) { const b = gm.names.find((n) => n.given === "Barbara Josephine" && n.surname === "Termens"); if (b) { b.src = b.src.concat(S1); b.note = "her name at birth: Grandma Laurie confirms it (27 Nov 2026), as does an Ancestry member's tree"; } }
+  const eb = L.events.find((e) => e.id === "E-birth-ggm");
+  if (eb) { eb.assert.push({ src: "S-laurie-1127", value: "Barbara Josephine Termens; the birth date 24 March 1933 is correct (her daughter Laurie)", info: "secondary", ev: "direct" }); eb.confidence = "proven"; }
+  const de = P("P-della");
+  if (de) de.summary += " Grandma Laurie remembers her born in 1905 or 1906, which agrees with her age in the 1950 census (45, born in Oklahoma); the 1922 marriage index gives her age as 21, which would put her birth about 1901: she may have given an older age to marry (Q44).";
+
+  /* Laurie's sons' fathers; Laurie and Charles */
+  const tm = P("P-timm");
+  if (tm) { tm.names = [nm("Tim John", "Atkins", "birth", "Tim, middle name John (Laurie); Tim may be short for Timothy")];
+    tm.summary = "Your mother's brother: Tim Atkins, Laurie's son with David Wayne Atkins, born in Mississippi while the family lived there for about a year (Grandma Laurie). Married Brittany. Not Tim Burd."; }
+  const mi = P("P-michael");
+  if (mi) { mi.names = [nm("Michael James", "Jordan", "birth")];
+    mi.summary = "Your mother's brother: Michael James Jordan, Laurie's son with Gerald \"Jerry\" Lynn Jordan (Grandma Laurie)."; }
+  L.people.push(
+    { id: "P-datkins", sex: "M", status: "family", names: [nm("David Wayne", "Atkins", "birth")], summary: "Tim's father (Grandma Laurie): Laurie's partner after Charles A. Sanders. Whether they married is still to be asked." },
+    { id: "P-jerryj", sex: "M", status: "family", names: [nm("Gerald Lynn", "Jordan", "birth"), nm("Jerry", "Jordan", "as-used")], summary: "Michael's father, Gerald \"Jerry\" Lynn Jordan (Grandma Laurie): Laurie's husband, whose surname she took, and later husband of Patricia (\"Patty\")." },
+    { id: "P-pattyj", sex: "F", status: "family", names: [nm("Patricia", "Jordan", "married", "her married name; her own surname is not known"), nm("Patty", "Jordan", "as-used")], summary: "Jerry Jordan's later wife (Grandma Laurie)." },
+    { id: "P-brittany", sex: "F", status: "family", names: [nm("Brittany", "Atkins", "married", "the spelling of Brittany is not sure (Laurie)")], summary: "Tim Atkins's wife (Grandma Laurie)." });
+  const fT = Fm("F-gp-tim"); if (fT) { add(fT.partners, "P-datkins"); fT.ended = true; }
+  const fM = Fm("F-gp-michael"); if (fM) { add(fM.partners, "P-jerryj"); fM.ended = true; }
+  L.families.push({ id: "F-jerry-patty", partners: ["P-jerryj", "P-pattyj"], children: [] }, { id: "F-tim", partners: ["P-timm", "P-brittany"], children: [] });
+  L.events.push({ id: "E-marr-gp", type: "marriage", who: ["P-charles", "P-gp"], date: { text: "1973", sort: "1973" },
+    conclusion: "Laurie Seconder married Charles A. Sanders in Oakland County, Michigan, in 1973 (Grandma Laurie). The marriage record is the way into Charles's parents (Q30, Q42).", confidence: "family",
+    assert: [{ src: "S-laurie-1127", value: "married Charles in Oakland County in 1973", info: "primary", ev: "direct" }] });
+  const fg = Fm("F-gp"); if (fg) { fg.events = (fg.events || []).concat("E-marr-gp"); fg.ended = true; }
+  const gp = P("P-gp");
+  if (gp) gp.summary = "Your mother's mother: born Laurie G. Seconder, the daughter of Robert (Bob) Seconder and Barbara Termens; later Laurie Jordan. Married Charles A. Sanders in Oakland County in 1973: your mother Toni and Jennifer. Then Tim Atkins (with David Wayne Atkins), born while the family lived in Mississippi for about a year, and Michael Jordan (with Gerald \"Jerry\" Lynn Jordan). Her brother Joe Seconder compiled the Termens research that seeded this tree.";
+
+  /* Grandpa Charles's mother's parents: Laurie met them in Georgia */
+  const bm = P("P-bettymom"); if (bm) bm.summary += " Grandma Laurie met Betty's parents in Georgia, though she does not remember their names (27 Nov 2026): Betty's mother was still there in Laurie's time.";
+  const q42 = Q("Q42"); if (q42) q42.q += " Laurie met Betty's parents in Georgia, so they lived there in the 1970s; the 1973 Oakland County marriage of Charles and Laurie should give Charles's birthplace and perhaps his parents.";
+
+  /* questions: Q38 settled; what is left */
+  const q38 = Q("Q38");
+  if (q38) q38.q = "Settled by Grandma Laurie (27 Nov 2026): Joanne is Aunt Betty Holgate's daughter, so Tania and Michelle are Betty's granddaughters. Still open: Joanne's married surname and Tania and Michelle's father.";
+  const q19 = Q("Q19"); if (q19) q19.q = "Barbara Josephine Termens, born 24 March 1933: confirmed by Laurie. Still to ask: where exactly she was born, and the years of her marriages to Bob Seconder and Mel Feole.";
+  L.questions.push(
+    { id: "Q43", p: 2, person: "P-kathyh", q: "Kathy Holgate, Aunt Betty's daughter, died recently: her married name and her obituary (it will name Betty and Thomas, Joanne, and her own children), and how David Holgate (Rachel's husband, father of Ryan and Sara) descends from Betty: son, grandson, or Thomas's son?", sources: "recent Michigan obituaries (funeral homes, Legacy); Grandma Laurie; Joe Seconder" },
+    { id: "Q44", p: 3, person: "P-della", q: "Della's real birth year: Laurie says 1905 or 1906 and the 1950 census says 45 (born Oklahoma), but the 1922 marriage index makes her 21. Her death record, Social Security record or the 1930 and 1940 censuses decide it; if she was 16 or 17 in 1922, the Brooklyn certificate may show a parent's consent.", sources: "1930 and 1940 censuses (Detroit); her death record and grave; the 1922 Brooklyn certificate (Q5)" });
+  /* the table: Laurie's own list, renewed */
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) lt.ask = [
+    { q: "Joanne's married name, and Tania and Michelle's dad?", ref: "Q38" },
+    { q: "Kathy: her married name, when and where she died, and her children?", ref: "Q43" },
+    { q: "David Holgate: is he Aunt Betty's son, Kathy's or Joanne's son, or Thomas Holgate's son from before?", ref: "Q43" },
+    { q: "Your dad Robert: where was he born, who were his parents, and did he have brothers and sisters? Were Tammy and Jack Seconder his children with a later wife?", ref: "H9" },
+    { q: "Della: where was she from (Oklahoma?), when did she die and where is she buried? Was Katherine Springer her sister?", ref: "Q44" },
+    { q: "Betty Coggins's parents in Georgia: which town, and do you remember anything about them (a farm, a church, Clyde)?", ref: "Q42" },
+    { q: "You and David Atkins: were you married? Where in Mississippi did you live, and where is David from?", ref: "Q39" }];
+  L.log.push({ id: "L39", date: "2026-11-27", by: "Claude", q: "Q38", where: "Grandma Laurie's answers, through you", terms: "Holgates, Seconder, Termens, Atkins, Jordan", result: "found",
+    note: "Joanne is Aunt Betty Holgate's daughter (Q38 settled); Kathy, David, Rachel, Ryan and Sara Holgate added; Robert Seconder; Barbara Josephine Termens's birth confirmed; Della born 1905-06 by Laurie (Q44 on her 1922 age); Tim John Atkins and his father David Wayne Atkins, Michael James Jordan and his father Gerald Lynn Jordan, Patty and Brittany; Laurie and Charles married in Oakland County in 1973. Exact birth dates of the living are kept in your private Kin note in Drive, not on the site." });
+})(window.KIN_LINEAGE);

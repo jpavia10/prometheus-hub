@@ -164,11 +164,11 @@
           text: "In the same reading, Arthur married Bertha Loleta Lawson (1889 to 1985), whose people go back to Richard Mullinex and Lydia Ann Nelson of Esquesing Township, Halton County, Ontario; their son Wilbur Guy Seconder (1906 to 1988) was the father of Robert H. Seconder (1931 to 2003), buried at Crescent Hills Cemetery, Waterford, Michigan. The surname is rare (14 in the Social Security Death Index) and the places fit. Laurie's birth record, or Grandma Laurie herself, will say.",
           people: ["P-bob"], src: [], q: ["Q28", "Q38"], h: [] },
         { y: [1950, 2009], when: "1950s to 2009", title: "Bob and Barbara",
-          text: "Bob Seconder married Barbara Termens, Joseph Termenas's daughter. Their children were Laurie, your grandmother, Ilene and Joe. Barbara later married Mel Feole and lived in Holly; they died within three months of each other in 2009. Joe Seconder put together the Termenas research that started this tree.",
-          people: ["P-bob", "P-ggm", "P-gp", "P-ilene", "P-joes", "P-mel"], src: ["S-feole-obit"], q: ["Q19", "Q25"], h: [] },
+          text: "Robert (Bob) Seconder married Barbara Josephine Termens, Joseph Termenas's daughter, born in 1933. Their children were Laurie, your grandmother, Ilene and Joe. Barbara's sister Betty married Thomas Holgate; their daughters were Joanne, the mother of Tania and Michelle, and Kathy, and David Holgate, Rachel's husband, is of their family too. Barbara later married Mel Feole and lived in Holly; they died within three months of each other in 2009. Joe Seconder put together the Termenas research that started this tree.",
+          people: ["P-bob", "P-ggm", "P-gp", "P-ilene", "P-joes", "P-mel", "P-betty", "P-thomash", "P-tania-mom", "P-kathyh", "P-davidh"], src: ["S-feole-obit", "S-laurie-1127"], q: ["Q19", "Q25", "Q43"], h: [] },
         { y: [1970, 2026], when: "and then", title: "Laurie's family",
-          text: "Laurie married Charles A. Sanders; their daughters are Toni, your mother, and Jennifer. Laurie's sons Tim and Michael have other fathers. Toni's children are you and your sisters Jessica and Samantha; your daughter is Violet.",
-          people: ["P-gp", "P-charles", "P-mother", "P-jennifers", "P-timm", "P-michael", "P-self", "P-jessica", "P-samantha", "P-violet"], src: [], q: ["Q39"], h: [] }
+          text: "Laurie married Charles A. Sanders in Oakland County in 1973; their daughters are Toni, your mother, and Jennifer. For about a year the family lived in Mississippi, where Tim was born: Tim Atkins, whose father is David Wayne Atkins. Michael's father is Gerald \"Jerry\" Lynn Jordan, whose surname Laurie took. Toni's children are you and your sisters Jessica and Samantha; your daughter is Violet.",
+          people: ["P-gp", "P-charles", "P-mother", "P-jennifers", "P-timm", "P-datkins", "P-michael", "P-jerryj", "P-self", "P-jessica", "P-samantha", "P-violet"], src: [], q: ["Q39"], h: [] }
       ]
     },
     {
