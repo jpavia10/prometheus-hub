@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-27] Claude: Kin d117, Joanne married Christopher Werwega
+- Owner: Joanne (Holgate) married Christopher Werwega; drawn as her husband only, since whether he is Tania and Michelle's father is not said (Q38, asked at the table). No public record found for the name (L40).
+
 ### [2026-11-27] Claude: Kin d116, Grandma Laurie's answers
 - Q38 settled: Joanne is Aunt Betty Holgate's daughter (Tania and Michelle are Betty's granddaughters); Kathy (died recently), David Holgate with Rachel, Ryan and Sara added (David's link to Betty asked in Q43); Robert Seconder; Barbara Josephine Termens's birth confirmed; Della born 1905-06 by Laurie against 21 in the 1922 index (Q44).
 - Tim John Atkins (father David Wayne Atkins, wife Brittany), Michael James Jordan (father Gerald "Jerry" Lynn Jordan, later married to Patricia "Patty"); Laurie and Charles married in Oakland County in 1973. Exact birth dates of the living are in a private note in the owner's Drive Kin folder, not in the repo.

@@ -1652,3 +1652,26 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L39", date: "2026-11-27", by: "Claude", q: "Q38", where: "Grandma Laurie's answers, through you", terms: "Holgates, Seconder, Termens, Atkins, Jordan", result: "found",
     note: "Joanne is Aunt Betty Holgate's daughter (Q38 settled); Kathy, David, Rachel, Ryan and Sara Holgate added; Robert Seconder; Barbara Josephine Termens's birth confirmed; Della born 1905-06 by Laurie (Q44 on her 1922 age); Tim John Atkins and his father David Wayne Atkins, Michael James Jordan and his father Gerald Lynn Jordan, Patty and Brittany; Laurie and Charles married in Oakland County in 1973. Exact birth dates of the living are kept in your private Kin note in Drive, not on the site." });
 })(window.KIN_LINEAGE);
+
+/* 27 Nov 2026 (owner): "Joanne married Christopher Werwega." Her married surname; whether he is Tania and Michelle's father is
+   not said, so he is drawn as her husband only and the question stays open (Q38). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id);
+  L.sources.push({ id: "S-owner-1127c", short: "Your message: Joanne's husband (27 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 27 November 2026.", read: "Joanne married Christopher Werwega." });
+  const jo = P("P-tania-mom");
+  if (jo) {
+    jo.names.splice(1, 0, { given: "Joanne", surname: "Werwega", type: "married", src: ["S-owner-1127c"] });
+    jo.summary = jo.summary.replace(" Her married surname is still to be asked.", " She married Christopher Werwega (your account); whether he is Tania and Michelle's father is still to be asked.");
+  }
+  L.people.push({ id: "P-cwerwega", sex: "M", status: "family", names: [{ given: "Christopher", surname: "Werwega", type: "birth", src: ["S-owner-1127c"] }],
+    summary: "Joanne (Holgate) Werwega's husband (your account). Whether he is Tania and Michelle's father is not known yet (Q38)." });
+  L.families.push({ id: "F-joanne-chris", partners: ["P-tania-mom", "P-cwerwega"], children: [] });
+  const q38 = Q("Q38"); if (q38) q38.q = q38.q.replace("Still open: Joanne's married surname and Tania and Michelle's father.", "Joanne married Christopher Werwega (your account). Still open: is he Tania and Michelle's father, and what surnames do Tania and Michelle use?");
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) { const a = lt.ask.find((x) => x.ref === "Q38"); if (a) a.q = "Joanne married Christopher Werwega: is he Tania and Michelle's dad, and what last names do the girls use?"; }
+  const ta = (L.askTable || []).find((g) => g.who === "Tania");
+  if (ta) ta.ask = [{ q: "Your dad: is he Christopher Werwega? And your and Michelle's last names.", ref: "Q38" }, { q: "Your Aunt Kathy: her married name, when she passed, and her children.", ref: "Q43" }, { q: "David Holgate: how is he related to your grandma Betty?", ref: "Q43" }];
+  L.log.push({ id: "L40", date: "2026-11-27", by: "Claude", q: "Q38", where: "your message; the open web", terms: "Werwega (Joanne, Chris, Christopher); Werwega with Holgate", result: "added from your account",
+    note: "Joanne's husband Christopher Werwega added; no obituary or public record naming a Werwega with the Holgates was found. Whether he is Tania and Michelle's father is asked at the table." });
+})(window.KIN_LINEAGE);
