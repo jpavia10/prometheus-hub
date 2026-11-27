@@ -46,7 +46,7 @@
       if (n) { o.names = [{ given: n.given || "", surname: n.surname || "", type: "birth", local: true }].concat(o.names.filter((x) => x.given || x.surname)); if (n.sex) o.sex = n.sex; if (n.born) o.born_local = n.born; if (n.note) o.note_local = n.note; if (o.status === "placeholder" && (n.given || n.surname)) o.status = "named"; }
       return o;
     }).concat(loc.people.map((p) => Object.assign({ local: true, status: "named" }, p)));
-    const families = L.families.map((f) => ({ id: f.id, partners: f.partners.slice(), children: f.children.slice(), events: (f.events || []).slice(), uncertain: f.uncertain || {}, ended: !!f.ended, unmarried: !!f.unmarried })).concat(loc.families.map((f) => Object.assign({ local: true, events: [] }, f)));
+    const families = L.families.map((f) => ({ id: f.id, partners: f.partners.slice(), children: f.children.slice(), events: (f.events || []).slice(), uncertain: f.uncertain || {}, ended: !!f.ended, unmarried: !!f.unmarried, adopted: (f.adopted || []).slice() })).concat(loc.families.map((f) => Object.assign({ local: true, events: [] }, f)));
     return { people, P: by(people), families, F: by(families), E: by(L.events), PL: by(L.places), SRC: by(L.sources), C: by(L.conflicts) };
   }
   const nm = (p) => { const n = (p.names || []).find((x) => x.given || x.surname); return n ? `${n.given || ""} ${n.surname || ""}`.trim() : (p.placeholder || "Unnamed"); };
