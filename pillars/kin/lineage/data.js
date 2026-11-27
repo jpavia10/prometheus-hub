@@ -1806,3 +1806,14 @@ window.KIN_LINEAGE.questions.push(
   if (lt) { const a = lt.ask.find((x) => /Sandy Weaver/.test(x.q)); if (a) a.q = "Donald Seconder: is he Uncle Junior's son, or another brother of your dad's? And Aunt Sandy (Weaver): her husband and children?"; }
   L.log.push({ id: "L42", date: "2026-11-27", by: "Claude", q: "Q45", where: "your message", terms: "Sandy Weaver", result: "found", note: "Sandy Weaver is Wilbur Seconder Sr.'s only daughter, as Gladys Seconder's memorial has her: drawn as Robert's sister, no longer as a question." });
 })(window.KIN_LINEAGE);
+
+/* 27 Nov 2026 (owner): "Robert's sister Sandy is adopted." Drawn as Wilbur and Dorothy's adopted daughter; kinship through
+   an adoption is named so ("by adoption"). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Fm = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-owner-1127e", short: "Your message: Sandy was adopted (27 Nov 2026)", kind: "authored", year: 2026, cite: "Joseph Pavia, message to Claude, 27 November 2026.", read: "Robert's sister Sandy is adopted." });
+  const f = Fm("F-seconder-wd"); if (f) f.adopted = (f.adopted || []).concat("P-sandyw");
+  const sw = P("P-sandyw");
+  if (sw) sw.summary = "Robert's sister, adopted: Wilbur Seconder Sr.'s only daughter (your family, 27 Nov 2026), named as Sandy Weaver among his children in his second wife Gladys's 2007 memorial. Weaver is her married name; she is your grandmother Laurie's aunt by adoption.";
+  L.log.push({ id: "L43", date: "2026-11-27", by: "Claude", q: "Q45", where: "your message", terms: "Sandy Weaver", result: "found", note: "Sandy was adopted by Wilbur and Dorothy Seconder: the tree names her kin \"by adoption\"." });
+})(window.KIN_LINEAGE);

@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-27] Claude: Kin d120, adoption
+- Owner: Robert's sister Sandy (Weaver) was adopted. Families can now list `adopted` children, and kinship.js names kin reached through an adoption "by adoption" ("Your great-great-aunt (your mother's side, by adoption)"); no other label changed (L43).
+
 ### [2026-11-27] Claude: Kin d119, Sandy Weaver
 - Owner: Sandy Weaver is Wilbur Seconder Sr.'s only daughter (as Gladys Seconder's memorial has it); drawn as Robert's sister, no longer a question (L42).
 

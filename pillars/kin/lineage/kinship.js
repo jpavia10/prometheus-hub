@@ -20,7 +20,14 @@
       while (cur.length) { const nx = []; for (const x of cur) for (const q of parents(x)) if (d[q] == null) { d[q] = d[x] + 1; nx.push(q); } cur = nx; }
       return d;
     };
-    const R = ups(root);
+    /* ancestors reached through an adoption (a family's `adopted` list): kin through them is "by adoption" */
+    const viaAdopt = (id) => {
+      const s = new Set(), seen = new Set([id]); let cur = [[id, false]];
+      while (cur.length) { const nx = []; for (const [x, f] of cur) { const fam = pf[x]; if (!fam) continue; const ad = f || (fam.adopted || []).includes(x);
+        for (const q of fam.partners) if (P[q] && !seen.has(q)) { seen.add(q); if (ad) s.add(q); nx.push([q, ad]); } } cur = nx; }
+      return s;
+    };
+    const R = ups(root), RA = viaAdopt(root);
     /* which of your parents an ancestor is reached through: "your father's side" or "your mother's side" */
     const sideOf = {};
     for (const p of parents(root)) { const u = ups(p); for (const a in u) if (!sideOf[a]) sideOf[a] = P[p].sex === "F" ? "your mother's side" : "your father's side"; }
@@ -43,7 +50,7 @@
       } else if (g === 1) t = `Your ${great(d - 2)}${sx(id, "nephew", "niece", "nephew or niece")}`;
       else if (d === 1) t = `Your ${great(g - 2)}${sx(id, "uncle", "aunt", "aunt or uncle")}`;
       else { const k = Math.min(g, d) - 1, r = Math.abs(g - d); t = `Your ${ORD[k] || k + "th"} cousin${r ? `, ${TIMES[r] || r + " times"} removed` : ""}`; }
-      return (BL[id] = { g, d, via: b.via, text: t, side: g >= 2 ? sideOf[b.via] || "" : "" });
+      return (BL[id] = { g, d, via: b.via, text: t, side: g >= 2 ? sideOf[b.via] || "" : "", adopt: RA.has(b.via) || viaAdopt(id).has(b.via) });
     }
     const RL = {}, sub = {};
     let near = null;
@@ -52,7 +59,7 @@
       const key = id + (withSide ? "+" : "-");
       if (RL[key] != null) return RL[key];
       const b = blood(id);
-      if (b) return (RL[key] = withSide && b.side ? `${b.text} (${b.side})` : b.text);
+      if (b) { const note = [withSide ? b.side : "", b.adopt ? "by adoption" : ""].filter(Boolean).join(", "); return (RL[key] = note ? `${b.text} (${note})` : b.text); }
       /* by marriage: the partner of someone who is family */
       for (const f of families) {
         if (!f.partners.includes(id)) continue;
