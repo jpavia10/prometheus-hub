@@ -1,6 +1,6 @@
 {
  "about": "Homework for this pillar, one list per AI (Claude writes it; tools/kit/render.py in jpavia10/prometheus-hub turns it into docs/agents/QUEUE_{ai}.md and the Drive docs). Every task says exactly what to read, what to make, how many, where to save it, how Claude checks it and what makes it not done. A task is done only when the file passes the checks, never because it was sent.",
- "updated": "2026-11-26",
+ "updated": "2026-11-27",
  "pillar": "kin",
  "agents": [
   {
@@ -5181,6 +5181,88 @@
       "rows padded to reach the count (fewer true rows beat filler)",
       "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
       "a match accepted on the name alone, without age and birthplace"
+     ]
+    },
+    {
+     "state": "now",
+     "added": "2026-11-27",
+     "id": "KIN-GEM-55",
+     "title": "Kin: Betty (Coggins) Flemming, Grandpa Charles's mother: Georgia and Detroit (Q42, Q30)",
+     "due": "2026-12-17",
+     "why": "The owner's family account (27 Nov 2026): Charles A. Sanders, his grandfather, was raised in Buford, Georgia, then mostly on West Grand Boulevard in Detroit by Henry Ford Hospital. His mother Betty is Betty Flemming in the baby book (a married name) and born a Coggins, he thinks; her mother's second husband was named Clyde; a Randy Coggins may have been her brother. Betty's four children (Rick, Charles, a younger son called Juny, and Sharon, mother of Angie) had different fathers; Charles's was Charles Sanders. No record of Betty is in the tree yet.",
+     "unlocks": "Betty gets a birth, parents and marriages from records; the Sanders marriage is placed (Georgia or Michigan), which tests the two 1950 Wayne County Charles and Elizabeth Sanders candidates (Q30); Rick, Juny and Sharon get surnames from her obituary.",
+     "inputs": [
+      "pillars/kin/lineage/data.js (P-bettyf, P-charles-sr, P-rick, P-juny, P-sharon, P-randy, P-clyde; S-owner-1127; Q30, Q39, Q42; H11; L35 for the 1950 candidates)",
+      "Georgia county marriage records (Gwinnett, Hall and Forsyth counties; FamilySearch images and the Georgia Archives' Virtual Vault), the 1940 and 1950 censuses for Gwinnett and Hall counties, Georgia death index, Michigan marriage and death records 1950-2020, newspaper and funeral-home obituaries (Betty Flemming, Betty Fleming, Betty Sanders, Betty Coggins), the Forsyth County News and Gwinnett Daily News archives"
+     ],
+     "steps": [
+      "Search for a Betty or Elizabeth Coggins born about 1920-1940 in Gwinnett, Hall or Forsyth County, Georgia: census households (1940, 1950) with her parents, and any record of her mother's later marriage to a man named Clyde.",
+      "Search Georgia and Michigan marriage records for Betty or Elizabeth Coggins with a Sanders (Charles), and for a Betty Sanders or Coggins with a Flemming or Fleming.",
+      "Search obituaries for Betty Flemming or Fleming (also Sanders or Coggins) that name children Rick (Richard), Charles, a Junior and Sharon, or a granddaughter Angie; and for a Randy Coggins naming a sister Betty.",
+      "For each find, say which names, places and years tie it to this family and which argue against it; give no living person's address, phone or birth date.",
+      "For the shared history (Athenaeum entries his-georgia-1912-forsyth-expulsion and his-georgia-1987-forsyth-marches, written from search summaries): open the New Georgia Encyclopedia's \"Race and Reckoning in Forsyth County, 1912-2020\" and the Atlanta History Center's \"Forsyth 1912\" timeline and give, word for word, their lines on the 1,098 Black residents and 58 landowners of 1912, the expulsion that autumn, the county's population in 1920, and the marches of 17 and 24 January 1987 (record: history)."
+     ],
+     "deliver": {
+      "file": "kin_gemini_betty-coggins_{YYYYMMDD-HHMM}.json",
+      "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+      "shape": "JSON array, one object per row, exactly the fields below"
+     },
+     "count": 12,
+     "fields": [
+      {
+       "name": "n",
+       "type": "number",
+       "rule": "row"
+      },
+      {
+       "name": "kind",
+       "type": "text",
+       "rule": "find, search, or summary (the last row)"
+      },
+      {
+       "name": "record",
+       "type": "text",
+       "rule": "obituary, death index, birth index, census, marriage, history"
+      },
+      {
+       "name": "transcription",
+       "type": "text",
+       "rule": "the lines naming the family, word for word"
+      },
+      {
+       "name": "identifiers",
+       "type": "text",
+       "rule": "which names, places and years tie it to Charles A. Sanders and his parents"
+      },
+      {
+       "name": "source_url",
+       "type": "url",
+       "rule": "the record"
+      },
+      {
+       "name": "checked",
+       "type": "date",
+       "rule": "YYYY-MM-DD"
+      }
+     ],
+     "self_check": [
+      "Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.",
+      "Every quote is found with Ctrl+F on that page, word for word.",
+      "The file is valid JSON and is named exactly as asked."
+     ],
+     "done_when": "Every search above is reported as found or not found with the index or site searched, and every find gives the record's own words and URL.",
+     "checks": [
+      "Claude reads every image that opens; Muse second-reads."
+     ],
+     "rejected_if": [
+      "a value without a source URL that shows it",
+      "a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)",
+      "a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)",
+      "a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists",
+      "rows padded to reach the count (fewer true rows beat filler)",
+      "a value for a period not published yet presented as if it were (write \"not published as of {date}\")",
+      "a match accepted on the name alone, without age and birthplace",
+      "any address, phone number or birth date of a living person"
      ]
     }
    ]

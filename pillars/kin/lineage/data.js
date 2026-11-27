@@ -1454,3 +1454,64 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L36", date: "2026-11-26", by: "Claude", q: "Q40", where: "Chester D. Berry, Loss of the Sultana (1892), Internet Archive full text", terms: "Culberson and variants; company F, 3d Tennessee cavalry", result: "not found",
     note: "Peter is not on the official list of exchanged prisoners aboard (about 300 of the 3rd Tennessee Cavalry, some 30 of Company F), not among those known aboard but left off it, and not among the survivors living in 1892. Most likely he was not on the Sultana." });
 })(window.KIN_LINEAGE);
+
+/* 27 Nov 2026, Thanksgiving night (owner, eleven messages): Grandpa Charles's own family. His older brother Rick, younger
+   brother Juny and one sister, Sharon (her daughter is Angie); Rick, Charles and Juny each had a different father, and Juny
+   and Sharon may share one. Grandpa was raised in Buford, Georgia, and for the most part in Detroit, on West Grand Boulevard by
+   Henry Ford Hospital. His mother Betty was a Flemming by marriage and, the owner thinks, a Coggins by birth; her mother's second
+   husband was Clyde, and a Randy Coggins may have been her brother. All of it is the family's word: no dates or towns are given
+   for the living, and every link that is a guess is drawn as one (the family's "uncertain" notes). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id), Fm = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-owner-1127", short: "Your account of Grandpa Charles's family (27 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, eleven messages to Claude, 27 November 2026 (Thanksgiving night, with the family).",
+    read: "Charles, your grandfather, has an older brother Rick and a younger brother Juny, and one sister, Sharon, whose daughter is Angie. Rick, Charles and Juny had different fathers; Juny and Sharon may have had the same one. He was raised in Buford, Georgia, and for the most part on West Grand Boulevard in Detroit, by Henry Ford Hospital. Betty's mother's second husband was named Clyde. Flemming is Betty's married name; Coggins was her maiden name, you think. Possibly a Randy Coggins, who might have been Betty's brother. Cumming, Georgia had no Black residents when he was there." });
+  const S1 = ["S-owner-1127"];
+  L.people.push(
+    { id: "P-rick", sex: "M", status: "family", names: [{ given: "Rick", surname: "", type: "as-given", src: S1, note: "his surname is not known yet" }],
+      summary: "Grandpa Charles's older brother (your account). His father was not Charles's: Betty's children had different fathers. His full name and surname are still to be asked (Q39)." },
+    { id: "P-juny", sex: "M", status: "family", names: [{ given: "Juny", surname: "", type: "as-given", src: S1, note: "a family name for him (Junior?); his given name and surname are not known yet" }],
+      summary: "Grandpa Charles's younger brother (your account). A different father from Charles's and Rick's; he and Sharon may have had the same one." },
+    { id: "P-sharon", sex: "F", status: "family", names: [{ given: "Sharon", surname: "", type: "as-given", src: S1, note: "her surname is not known yet" }],
+      summary: "Grandpa Charles's only sister (your account); her daughter is Angie. She may have had the same father as Juny. Because Grandpa had one sister, Joann (Tania's mother) is not his sister: Tania belongs on Grandma Laurie's side, as Q38 already has it." },
+    { id: "P-angie", sex: "F", status: "family", names: [{ given: "Angie", surname: "", type: "as-given", src: S1, note: "her surname is not known yet" }],
+      summary: "Sharon's daughter (your account), so your mother's first cousin on Grandpa Charles's side." },
+    { id: "P-bettymom", sex: "F", status: "placeholder", placeholder: "Betty's mother", hint: "married second a man named Clyde", names: [],
+      summary: "Grandpa Charles's grandmother on his mother's side. Her name is not known yet; the family remembers that her second husband was named Clyde (your account), so Coggins was most likely her first husband's surname, Betty's father's." },
+    { id: "P-clyde", sex: "M", status: "family", names: [{ given: "Clyde", surname: "", type: "as-given", src: S1, note: "his surname is not known yet" }],
+      summary: "Betty's mother's second husband (your account): Grandpa Charles's step-grandfather." },
+    { id: "P-randy", sex: "M", status: "family", names: [{ given: "Randy", surname: "Coggins", type: "as-given", src: S1, note: "remembered with a \"possibly\"" }],
+      summary: "Possibly Betty's brother (your account: \"Randy might have been Betty's brother\"), which would make him Grandpa Charles's uncle. Kept as a guess until a record or a relative confirms him." });
+  L.families.push(
+    { id: "F-betty-rick", partners: ["P-bettyf"], children: ["P-rick"] },
+    { id: "F-betty-juny", partners: ["P-bettyf"], children: ["P-juny", "P-sharon"], uncertain: { "P-sharon": "Sharon may have had the same father as Juny, or her own (your account)" } },
+    { id: "F-sharon", partners: ["P-sharon"], children: ["P-angie"] },
+    { id: "F-coggins", partners: ["P-bettymom"], children: ["P-bettyf", "P-randy"], uncertain: { "P-randy": "Randy Coggins might have been Betty's brother (your account)" } },
+    { id: "F-bettymom-clyde", partners: ["P-bettymom", "P-clyde"], children: [] });
+  const bf = P("P-bettyf");
+  if (bf) {
+    bf.names = [{ given: "Betty", surname: "Coggins", type: "birth", src: S1, note: "her maiden name, as you remember it (\"I think\")" },
+      { given: "Betty", surname: "Flemming", type: "married", src: ["S-babybook", "S-owner-1127"], note: "the name in your baby book: a married name (your account)" }];
+    bf.summary = "Grandpa Charles's mother: Betty Flemming in your baby book, a married name; born a Coggins, you think. Her children Rick, Charles (by Charles Sanders), Juny and Sharon had different fathers, though Juny and Sharon may share one. Her mother married a second time, to a man named Clyde, and a Randy Coggins may have been her brother. Grandpa grew up first in Buford, Georgia, so her own family is most likely from north Georgia; her marriages and her parents are Q30 and Q42.";
+  }
+  const ch = P("P-charles");
+  if (ch) ch.summary = "Your mother's father. Raised in Buford, Georgia, and for the most part in Detroit, on West Grand Boulevard by Henry Ford Hospital (your account, 27 Nov 2026). He has an older brother, Rick, a younger brother, Juny, and one sister, Sharon (her daughter is Angie); the three brothers had different fathers. He remembers Cumming, Georgia, the next county seat over, having no Black residents at all when he was there: the family story \"Grandpa Charles: Buford to West Grand Boulevard\" tells why.";
+  const cs = P("P-charles-sr");
+  if (cs) cs.summary = "Charles A. Sanders's father, from your baby book's family tree: Betty's husband and the father of Charles alone among her children (your account, 27 Nov 2026). Whether he was from Tennessee or Indiana, and where he and Betty married (Georgia or Michigan), is Q30.";
+  L.hypotheses.push({ id: "H11", text: "Flemming, Betty's name in your baby book, was the surname of her last husband, most likely Juny's father (and Sharon's, if they share one): Juny, the youngest boy, would then have been born a Flemming.", test: "Q42" });
+  const q39 = Q("Q39");
+  if (q39) q39.q = "Grandpa Charles's brothers Rick and Juny and his sister Sharon (Angie's mother) are now in the tree from your account (27 Nov 2026). Still open: their full names and surnames (each had a different father), whether Juny is short for Junior, and the fathers of your uncles Tim and Michael, with their surnames.";
+  const q30 = Q("Q30");
+  if (q30) q30.q += " New (27 Nov 2026): Grandpa was raised in Buford, Georgia, before Detroit, and Betty was born a Coggins, you think, so the Sanders–Coggins marriage and Grandpa's birth may be in Georgia (Gwinnett, Hall or Forsyth County) rather than Michigan.";
+  if (!Q("Q42")) L.questions.push({ id: "Q42", p: 2, person: "P-bettyf", q: "Betty (Coggins) Flemming: her birth and parents (her mother's second husband was named Clyde), her marriages (to Rick's father, to Charles Sanders, and to a Mr. Flemming?), whether Randy Coggins was her brother, and when she moved from Buford, Georgia, to Detroit. Her obituary or death record would name all four children.", sources: "Georgia marriage records (Gwinnett, Hall and Forsyth counties); 1950 census, Gwinnett County, Georgia; Michigan marriages and deaths; obituaries (Betty Flemming or Fleming); you and your mother", task: "KIN-GEM-55" });
+  const mom = (L.askTable || []).find((g) => g.who === "Mom");
+  if (mom) {
+    const i = mom.ask.findIndex((a) => a.ref === "Q39");
+    const nq = { q: "Grandpa's brothers Rick and Juny and his sister Sharon: their last names, and is Juny short for Junior? Angie's last name?", ref: "Q39" };
+    if (i >= 0) mom.ask[i] = nq; else mom.ask.unshift(nq);
+    mom.ask.push({ q: "Grandma Betty: was she born a Coggins? Her mother's name, Clyde's last name, and was Randy Coggins her brother?", ref: "Q42" },
+      { q: "When did Grandpa's family leave Buford, Georgia, for Detroit, and why (work at Ford or the hospital)? Who did they know there?", ref: "Q42" });
+  }
+  L.log.push({ id: "L37", date: "2026-11-27", by: "Claude", q: "Q39", where: "your messages (Thanksgiving night)", terms: "Grandpa Charles's brothers and sister; Betty's family", result: "found",
+    note: "Added Rick, Juny, Sharon and Angie, Betty's mother (to name) and her second husband Clyde, and Randy Coggins as a possible brother of Betty; Betty's names are now Coggins (birth, you think) and Flemming (married). Q42 and Gemini's task KIN-GEM-55 look for her records in Georgia and Michigan. Grandpa having one sister settles that Joann is not his sister." });
+})(window.KIN_LINEAGE);

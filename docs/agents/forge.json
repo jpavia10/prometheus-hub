@@ -1,6 +1,6 @@
 {
- "built": "2026-11-26T23:14:16Z",
- "checked": "2026-11-26T23:14:16Z",
+ "built": "2026-11-27T05:02:35Z",
+ "checked": "2026-11-27T05:02:35Z",
  "version": 2,
  "today": "2026-11-26",
  "sources": {
@@ -23,7 +23,7 @@
   "pending_scores": 3
  },
  "totals": {
-  "todo": 73,
+  "todo": 74,
   "late": 2,
   "due7": 15,
   "delivered": 0,
@@ -32,17 +32,17 @@
  },
  "per": {
   "Gemini": {
-   "todo": 54,
+   "todo": 55,
    "late": 0,
    "due7": 6,
    "delivered": 0,
    "queued": 2,
    "done7": 220,
    "withdrawn": 69,
-   "items": 871,
+   "items": 883,
    "floor": 50,
    "by": {
-    "hub": 52,
+    "hub": 53,
     "titan": 1,
     "tproj": 1,
     "board": 0
@@ -357,10 +357,10 @@
    }
   },
   "Kin": {
-   "todo": 13,
+   "todo": 14,
    "delivered": 0,
    "by": {
-    "Gemini": 11,
+    "Gemini": 12,
     "Muse": 2
    }
   },
@@ -15581,6 +15581,40 @@
     "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
     "shape": "JSON array, one object per row, exactly the fields below",
     "done": "Every Pulliam patent and vestry entry before 1746 is listed with its source, and James's earliest Lunenburg records are read for his origin.",
+    "checks": [
+     "Claude reads every image that opens; Muse second-reads."
+    ],
+    "link": "https://github.com/jpavia10/prometheus-hub/blob/main/pillars/kin/docs/agents/QUEUE_gemini.md"
+   },
+   "late": false
+  },
+  {
+   "ai": "Gemini",
+   "src": "hub",
+   "where": "Kin",
+   "pid": "kin",
+   "id": "KIN-GEM-55",
+   "title": "Kin: Betty (Coggins) Flemming, Grandpa Charles's mother: Georgia and Detroit (Q42, Q30)",
+   "status": "todo",
+   "due": "2026-12-17",
+   "items": 12,
+   "closed": "",
+   "review": "",
+   "reopened": "",
+   "delivered": null,
+   "detail": {
+    "why": "The owner's family account (27 Nov 2026): Charles A. Sanders, his grandfather, was raised in Buford, Georgia, then mostly on West Grand Boulevard in Detroit by Henry Ford Hospital. His mother Betty is Betty Flemming in the baby book (a married name) and born a Coggins, he thinks; her mother's second husband was named Clyde; a Randy Coggins may have been her brother. Betty's four children (Rick, Charles, a younger son called Juny, and Sharon, mother of Angie) had different fathers; Charles's was Charles Sanders. No record of Betty is in the tree yet.",
+    "steps": [
+     "Search for a Betty or Elizabeth Coggins born about 1920-1940 in Gwinnett, Hall or Forsyth County, Georgia: census households (1940, 1950) with her parents, and any record of her mother's later marriage to a man named Clyde.",
+     "Search Georgia and Michigan marriage records for Betty or Elizabeth Coggins with a Sanders (Charles), and for a Betty Sanders or Coggins with a Flemming or Fleming.",
+     "Search obituaries for Betty Flemming or Fleming (also Sanders or Coggins) that name children Rick (Richard), Charles, a Junior and Sharon, or a granddaughter Angie; and for a Randy Coggins naming a sister Betty.",
+     "For each find, say which names, places and years tie it to this family and which argue against it; give no living person's address, phone or birth date.",
+     "For the shared history (Athenaeum entries his-georgia-1912-forsyth-expulsion and his-georgia-1987-forsyth-marches, written from search summaries): open the New Georgia Encyclopedia's \"Race and Reckoning in Forsyth County, 1912-2020\" and the Atlanta History Center's \"Forsyth 1912\" timeline and give, word for word, their lines on the 1,098 Black residents and 58 landowners of 1912, the expulsion that autumn, the county's population in 1920, and the marches of 17 and 24 January 1987 (record: history)."
+    ],
+    "make": "kin_gemini_betty-coggins_{YYYYMMDD-HHMM}.json",
+    "folder": "Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/",
+    "shape": "JSON array, one object per row, exactly the fields below",
+    "done": "Every search above is reported as found or not found with the index or site searched, and every find gives the record's own words and URL.",
     "checks": [
      "Claude reads every image that opens; Muse second-reads."
     ],

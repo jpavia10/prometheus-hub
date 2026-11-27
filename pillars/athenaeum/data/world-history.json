@@ -11016,6 +11016,69 @@
    ],
    "by": "Claude (26 Nov 2026)",
    "check": "sourced"
+  },
+  {
+   "id": "his-georgia-1912-forsyth-expulsion",
+   "date": "1912-09",
+   "end": "1912-12",
+   "precision": "month",
+   "title": "Night riders drive Black families out of Forsyth County, Georgia",
+   "text": "In September 1912, after a white woman in Forsyth County reported an assault and a white teenager, Mae Crow, was killed, Black men were blamed: one was lynched on the square in Cumming and two were hanged after a one-day trial. Night riders then burned churches, shot into homes and posted notices ordering Black residents to leave. The county had 1,098 Black residents that year, 58 of them landowners; by the end of the year nearly all had fled, losing or selling their land for little, and the 1920 census found the county almost entirely white, as it stayed for decades.",
+   "regions": [
+    "georgia",
+    "united-states"
+   ],
+   "themes": [
+    "society",
+    "law",
+    "migration"
+   ],
+   "place": {
+    "place": "Cumming, Georgia",
+    "lat": 34.2073,
+    "lon": -84.1402
+   },
+   "sources": [
+    {
+     "cite": "New Georgia Encyclopedia, \"Race and Reckoning in Forsyth County, 1912-2020\" (exhibition)",
+     "url": "https://www.georgiaencyclopedia.org/exhibition/race-and-reckoning-in-forsyth-county-1912-2020/"
+    },
+    {
+     "cite": "Atlanta History Center, \"Forsyth 1912: A Timeline of the Forced Exile of Black Residents From Forsyth County\"",
+     "url": "https://www.atlantahistorycenter.com/blog/forsyth-1912-a-timeline-of-the-forced-exile-of-black-residents-from-forsyth-county/"
+    }
+   ],
+   "by": "Claude (27 Nov 2026, for Kin)",
+   "check": "sourced from search summaries of these pages (the session could not open them, 27 Nov 2026); verbatim quotes wanted (KIN-GEM-55)"
+  },
+  {
+   "id": "his-georgia-1987-forsyth-marches",
+   "date": "1987-01-17",
+   "end": "1987-01-24",
+   "precision": "day",
+   "title": "Civil-rights marches in Forsyth County",
+   "text": "On 17 January 1987 a small civil-rights march to Cumming, the first in Forsyth County since the 1912 expulsion, was attacked by a crowd of counter-protesters throwing rocks and bottles; a week later some 20,000 people marched there, one of the largest civil-rights demonstrations since the 1960s.",
+   "regions": [
+    "georgia",
+    "united-states"
+   ],
+   "themes": [
+    "society",
+    "politics"
+   ],
+   "place": {
+    "place": "Cumming, Georgia",
+    "lat": 34.2073,
+    "lon": -84.1402
+   },
+   "sources": [
+    {
+     "cite": "New Georgia Encyclopedia, \"Race and Reckoning in Forsyth County, 1912-2020\" (exhibition)",
+     "url": "https://www.georgiaencyclopedia.org/exhibition/race-and-reckoning-in-forsyth-county-1912-2020/"
+    }
+   ],
+   "by": "Claude (27 Nov 2026, for Kin)",
+   "check": "sourced from search summaries of these pages (the session could not open them, 27 Nov 2026); verbatim quotes wanted (KIN-GEM-55)"
   }
  ]
 }

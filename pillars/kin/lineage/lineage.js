@@ -26,6 +26,8 @@
   const { h, toast, store } = PK;
   const S = store("kin");
   const DOCS = "lineage/docs/";
+  /* a face for everyone the album has one for (album.js, data.js): shown on the tree cards, the person's page and the photo wall */
+  const FACE = {}; for (const m of L.media || []) if (m.face && m.person && !FACE[m.person]) FACE[m.person] = m.face;
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const by = (arr) => Object.fromEntries(arr.map((x) => [x.id, x]));
   const TYPE = { birth: "Born", emigration: "Left Europe", immigration: "Arrived", declaration: "Declared intention", draft: "Draft registration", enlistment: "Enlisted", service: "Service", naturalization: "Naturalized", discharge: "Discharged", residence: "Lived", marriage: "Married", occupation: "Worked", death: "Died", burial: "Buried", will: "Made a will", bonus: "State bonus" };
@@ -166,6 +168,7 @@
     const NS = "http://www.w3.org/2000/svg";
     const svg = root.querySelector("svg.ln-svg"), g = svg.querySelector("g.ln-world");
     g.innerHTML = "";
+    if (!svg.querySelector("#ln-faceclip")) svg.insertAdjacentHTML("afterbegin", `<defs><clipPath id="ln-faceclip" clipPathUnits="objectBoundingBox"><circle cx=".5" cy=".5" r=".5"/></clipPath></defs>`);
     const add = (tag, at, parent) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); (parent || g).appendChild(e); return e; };
     /* family connectors: partners joined by a bar, a stem down to the children */
     const pills = [], pillBox = [];
@@ -205,7 +208,12 @@
       const k = add("g", { class: `ln-node st-${p.status}` + (p.ghost ? " ghost" : "") + (lit.has(p.id) ? " lit" : "") + (ui.sel === p.id ? " sel" : ""), transform: `translate(${q.x - W / 2} ${q.y - H / 2})`, tabindex: "0", role: "button", "data-id": p.id, "aria-label": `${nm(p)} ${life(M, p)}` });
       add("rect", { width: W, height: H, rx: 14, class: "ln-card" }, k);
       add("rect", { width: 5, height: H - 24, x: 0, y: 12, rx: 2.5, class: "ln-tab" }, k);
-      const t1 = add("text", { x: 16, y: 27, class: "ln-name" }, k); t1.textContent = trunc(p.status === "placeholder" || (p.ghost && p.status === "inferred") ? p.placeholder : nm(p), 21);
+      const fc = FACE[p.id];
+      if (fc) { /* their face, in a ring at the card's right */
+        add("circle", { cx: W - 27, cy: H / 2, r: 21, class: "ln-facering" }, k);
+        add("image", { href: `${DOCS}t/${fc}.webp`, x: W - 46, y: H / 2 - 19, width: 38, height: 38, "clip-path": "url(#ln-faceclip)", preserveAspectRatio: "xMidYMid slice" }, k);
+      }
+      const t1 = add("text", { x: 16, y: 27, class: "ln-name" }, k); t1.textContent = trunc(p.status === "placeholder" || (p.ghost && p.status === "inferred") ? p.placeholder : nm(p), fc ? 15 : 21);
       const t2 = add("text", { x: 16, y: 47, class: "ln-life" }, k); t2.textContent = p.status === "placeholder" || (p.ghost && p.status === "inferred") ? (p.hint || "tap to name") : life(M, p) || " ";
       const t3 = add("text", { x: 16, y: 64, class: "ln-badge" }, k); t3.textContent = (CONF[p.status] || p.status).toUpperCase();
     }
@@ -246,9 +254,12 @@
     if (Math.min(r.width / vb.w, ah / vb.h) >= 0.6) return fit(root);
     const P = ui.lay.pos, v = ui.lay.vroot, f = parentsOf(ui.M, v), ps = f ? f.partners.filter((q) => P[q]) : [];
     if (!P[v]) return fit(root);
-    const xs = [P[v].x, ...ps.map((q) => P[q].x)], x0 = Math.min(...xs) - W / 2 - 12, x1 = Math.max(...xs) + W / 2 + 12;
-    const sc = Math.max(0.5, Math.min(0.72, r.width / (x1 - x0)));
-    ui.view = { s: sc, x: r.width / 2 - ((x0 + x1) / 2) * sc, y: top + ah - (P[v].y + H / 2 + 14) * sc }; animate(root);
+    /* frame the parents, the person and their children (Violet under you), centred in the space between the buttons and the legend */
+    const kids = familiesOf(ui.M, v).flatMap((f) => f.children).filter((c) => P[c]);
+    const xs = [P[v].x, ...ps.map((q) => P[q].x), ...kids.map((c) => P[c].x)], x0 = Math.min(...xs) - W / 2 - 12, x1 = Math.max(...xs) + W / 2 + 12;
+    const ys = [P[v].y, ...ps.map((q) => P[q].y), ...kids.map((c) => P[c].y)], y0 = Math.min(...ys) - H / 2 - 34, y1 = Math.max(...ys) + H / 2 + 30;
+    const sc = Math.max(0.45, Math.min(0.72, r.width / (x1 - x0), ah / (y1 - y0)));
+    ui.view = { s: sc, x: r.width / 2 - ((x0 + x1) / 2) * sc, y: top + Math.max(0, (ah - (y1 - y0) * sc) / 2) - y0 * sc }; animate(root);
   }
   function animate(root) { const g = root.querySelector("g.ln-world"); g.classList.add("glide"); apply(root); clearTimeout(ui.t); ui.t = setTimeout(() => g.classList.remove("glide"), 420); }
   function zoomAt(root, k, cx, cy) {
@@ -346,11 +357,14 @@
     const sibs = (() => { const own = parentsOf(M, pid); return own ? M.families.filter((f) => f.partners.some((q) => own.partners.includes(q))).flatMap((f) => f.children).filter((c, i, a) => c !== pid && a.indexOf(c) === i) : []; })();
     const fam = { parents: (parentsOf(M, pid) || { partners: [] }).partners, spouses: familiesOf(M, pid).flatMap((f) => f.partners.filter((q) => q !== pid)), kids: familiesOf(M, pid).flatMap((f) => f.children) };
     const rel = (ids, label) => ids.length ? `<p class="ln-rel"><span>${label}</span>${ids.map((q) => `<button type="button" class="ln-link" data-go="${q}">${esc(M.P[q] ? (M.P[q].status === "placeholder" ? M.P[q].placeholder : nm(M.P[q])) : q)}</button>`).join("")}</p>` : "";
-    const names = (p.names || []).filter((n) => n.given || n.surname).map((n) => `<span class="ln-name-chip" title="${esc(n.note || "")}">${esc(`${n.given} ${n.surname}`.trim())}<small>${esc(n.type)}</small></span>`).join("");
+    /* one birth name that only repeats the heading says nothing: the chips show when there is more than one name, or a note */
+    const nl = (p.names || []).filter((n) => n.given || n.surname), plain = nl.length === 1 && !nl[0].note && (nl[0].type || "birth") === "birth";
+    const names = (plain ? [] : nl).map((n) => `<span class="ln-name-chip" title="${esc(n.note || "")}">${esc(`${n.given} ${n.surname}`.trim())}<small>${esc(n.type)}</small></span>`).join("");
     el.innerHTML = `
-      <header class="ln-dhead"><p class="ln-kick">${toYou ? `${esc(toYou)} · ` : ""}${esc(CONF[p.status] || p.status)}${p.local ? " · added on this device" : ""}</p>
-        <h3>${esc(p.status === "placeholder" ? p.placeholder : nm(p))}</h3><p class="ln-dlife">${esc(life(M, p))}${p.born_est ? ` · born ${esc(p.born_est.text)}` : ""}</p>
+      <header class="ln-dhead${FACE[pid] ? " has-face" : ""}">${FACE[pid] ? `<img class="ln-dface" src="${DOCS}${FACE[pid]}.webp" alt="" decoding="async">` : ""}<div><p class="ln-kick">${toYou ? `${esc(toYou)} · ` : ""}${esc(CONF[p.status] || p.status)}${p.local ? " · added on this device" : ""}</p>
+        <h3>${esc(p.status === "placeholder" ? p.placeholder : nm(p))}</h3><p class="ln-dlife">${esc(life(M, p))}${p.born_est ? ` · born ${esc(p.born_est.text)}` : ""}</p></div>
         ${names ? `<div class="ln-names">${names}</div>` : ""}</header>
+      ${pics.length ? `<div class="ln-strip" role="list" aria-label="Pictures of ${esc(firstName(p))}">${pics.map((m) => `<button type="button" role="listitem" class="ln-doc ln-shot" data-img="${m.img}" data-src="${m.src}" data-cap="${esc(m.caption)}" aria-label="${esc(m.caption)}"><img loading="lazy" decoding="async" src="${DOCS}t/${m.img}.webp" alt=""><span>${esc(m.when || m.year || "")}</span></button>`).join("")}<a class="ln-strip-more" href="album/#${pid}">${pics.length > 1 ? `All ${pics.length} in the album` : "In the album"} ›</a></div>` : ""}
       ${p.summary ? `<p class="ln-sum">${esc(p.summary)}</p>` : ""}${storyLinks(pid)}${p.note ? `<p class="ln-note">${esc(p.note)}</p>` : ""}${p.note_local ? `<p class="ln-note">${esc(p.note_local)}</p>` : ""}
       ${p.born_est ? `<p class="ln-note">Basis for the estimate: ${esc(p.born_est.basis)}.</p>` : ""}
       ${p.infer && p.infer.length ? `<h4>What can be inferred</h4><ul class="ln-infer">${p.infer.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
@@ -362,11 +376,10 @@
           <details class="ln-evd"><summary>Evidence · ${e.assert.length} source${e.assert.length === 1 ? "" : "s"}${e.conflict ? ` · conflict ${e.conflict}` : ""}</summary>
             <ul>${e.assert.map((a) => `<li><button type="button" class="ln-link" data-src="${a.src}">${esc((M.SRC[a.src] || {}).short || a.src)}</button><q>${esc(a.value)}</q><span class="ln-chips">${chips(a)}</span>${a.note ? `<em>${esc(a.note)}</em>` : ""}</li>`).join("")}</ul></details></li>`).join("")}</ol>` : ""}
       ${ev.length ? journey(M, p) : ""}
-      ${pics.length ? `<h4>Pictures <a class="ln-alink" href="album/#${pid}">${pics.length} in the family album</a></h4><div class="ln-docs">${pics.map((m) => `<button type="button" class="ln-doc" data-img="${m.img}" data-src="${m.src}" aria-label="${esc(m.caption)}"><img loading="lazy" src="${DOCS}t/${m.img}.webp" alt=""><span>${esc(m.when || m.year || "")}</span></button>`).join("")}</div>` : ""}
       ${imgs.length ? `<h4>Documents</h4><div class="ln-docs">${imgs.map((d) => `<button type="button" class="ln-doc" data-img="${d.i}" data-src="${d.s}" aria-label="${esc((M.SRC[d.s] || {}).short || d.i)}"><img loading="lazy" src="${DOCS}t/${d.i}.webp" alt=""><span>${esc((M.SRC[d.s] || {}).short || "")}</span></button>`).join("")}</div>` : ""}
       ${cons.length ? `<h4>Conflicts and proofs</h4>${cons.map(conflictHtml).join("")}` : ""}
       ${qs.length ? `<h4>Open questions</h4><ul class="ln-qs">${qs.map((q) => `<li><b>${q.id}</b><span class="ln-pri p${q.p}">P${q.p}</span> ${esc(q.q)}<small>${esc(q.sources)} · ${esc(q.task === "owner" ? "for you" : q.task)}${(() => { const n = (L.log || []).filter((x) => x.q === q.id); return n.length ? ` · ${n.length} search${n.length > 1 ? "es" : ""} logged (${n.filter((x) => x.result === "found").length} found)` : ""; })()}</small></li>`).join("")}</ul>` : ""}
-      ${addForm(p)}`;
+      <details class="ln-addd"><summary>Add a relative of ${esc(firstName(p))}</summary>${addForm(p)}</details>`;
   }
   /* a family: who is in it, what is known about its children and what is not */
   function famDossier(el, fid) {
@@ -589,7 +602,7 @@
     /* a story names its own regions (stories.js): its chapters draw the events of those places first, then the country's, never another
        line's (Joseph Termenas's Detroit years get Michigan's 1921 bonus, not Malta's dockyards) */
     const WIDE = new Set(["united-states", "world", "europe", "american-colonies"]);
-    const ctx = (s, c, used) => { const [a, b] = c.y; if (b - a > 60) return []; const own = new Set(c.regions || s.regions || []), fam = new Set(L.contextRegions || []);
+    const ctx = (s, c, used) => { const [a, b] = c.y; if (used) for (const id of c.told || []) used.add(id); /* told in the chapter itself */ if (b - a > 60) return []; const own = new Set(c.regions || s.regions || []), fam = new Set(L.contextRegions || []);
       const mine = (x) => (x.regions || []).some((r) => own.has(r));
       /* how much an event belongs to this story: its places in the story count for it, places of another family line against it */
       const fit = (x) => (x.regions || []).reduce((n, r) => n + (own.has(r) ? 1 : !WIDE.has(r) && fam.has(r) ? -1.5 : 0), 0);
@@ -808,6 +821,30 @@
       const sb = e.target.closest(".ln-link[data-src]"); if (sb) { const s = ui.M.SRC[sb.dataset.src]; if (s && s.img && s.img.length) viewer(s.img[0], s.id); else toast(s ? s.cite : ""); }
     };
     document.querySelector("#app").addEventListener("click", appClick); sheet.addEventListener("click", appClick);   /* the sheet lives on <body> (see below), so it gets the same handling */
+    /* the photo wall (owner, 26 Nov: "Make the layout better and incorporate more media"): the family's own faces and pictures, first
+       thing under the title. A face opens the person; a picture or record opens full size with its caption. */
+    (function wall() {
+      const hero = document.querySelector(".shell .hero"); if (!hero || document.querySelector(".kin-wall")) return;
+      const MM = model(), K = window.KinKinship ? window.KinKinship.make(MM.families, MM.P, L.root) : null, med = Object.fromEntries((L.media || []).map((m) => [m.id, m]));
+      const order = ["P-glenda", "P-chester", "P-ada", "P-billc", "P-marytt", "P-peterc", "P-charliec", "P-callie", "P-caroline"];
+      const faces = order.concat(Object.keys(FACE).filter((id) => !order.includes(id))).filter((id) => FACE[id] && MM.P[id]);
+      const shots = ["M-bill-culberson-family-1902", "M-peter-family-postcard", "M-etta-ruby-elizabeth", "M-convoy-1917", "M-bill-mary-portrait", "M-culberson-boys", "M-chester-ada-1950s",
+        "M-five-generations-1959", "M-charlie-and-aunt-callie", "M-ada-charlie-callie-1988", "M-charlie-elizabeth-studio", "M-caroline-dembeck", "M-glenda"]
+        .map((id) => med[id]).filter(Boolean).map((m) => { const a = ((L.album && L.album.items) || []).find((x) => x.img === m.img) || { w: 3, h: 4 };
+          return { img: m.img, src: m.src, cap: m.caption, when: m.when || String(m.year || (m.id === "M-glenda" ? "about 2022" : "")), y: m.year || +String(m.when || "").replace(/\D/g, "").slice(0, 4) || 2022, rec: false, w: a.w, h: a.h }; });
+      for (const [img, sid, w, h] of [["draft-1917", "S-draft", 2000, 1014], ["discharge-1919", "S-discharge", 1535, 2000], ["mi-ww1-card", "S-mi-ww1", 1400, 930], ["census-1950-pavia", "S-census-1950-pavia", 2000, 2346]]) {
+        const S0 = L.sources.find((x) => x.id === sid); if (S0) shots.push({ img, src: sid, cap: S0.short, when: String(S0.year || ""), y: S0.year || 1950, rec: true, w, h });
+      }
+      shots.sort((a, b) => a.y - b.y);
+      const n = (L.album && L.album.items || []).length, sec = document.createElement("section");
+      sec.className = "kin-wall"; sec.setAttribute("aria-label", "The family in pictures");
+      sec.innerHTML = `<div class="kw-head"><p class="kw-kick">The family in pictures</p><a class="kw-all" href="album/">All ${n} in the album ›</a></div>
+        <div class="kw-faces" role="list">${faces.map((id) => `<button type="button" role="listitem" class="kw-face" data-go="${id}"><img src="${DOCS}t/${FACE[id]}.webp" alt="" decoding="async"><b>${esc(firstName(MM.P[id]))}</b><small>${esc(K ? (K.rel(id, { side: false }) || "").replace(/^Your /, "") : "")}</small></button>`).join("")}</div>
+        <div class="kw-strip" role="list">${shots.map((x, i) => `<button type="button" role="listitem" class="ln-doc kw-shot${x.rec ? " rec" : ""}" data-img="${x.img}" data-src="${x.src}" data-cap="${esc(x.cap)}" aria-label="${esc(x.cap)}"><img src="${DOCS}t/${x.img}.webp" width="${Math.round(180 * x.w / x.h)}" height="180" alt="" decoding="async"${i > 3 ? ' loading="lazy"' : ""}><span>${x.rec ? "<i>Record</i> " : ""}${esc(x.when)}</span></button>`).join("")}</div>
+        <div class="kw-acts"><a class="btn small" href="album/#show">Play the show</a><a class="btn quiet small" href="tree/">Walk the tree in 3D</a><button type="button" class="btn quiet small" data-kw="stories">Read the family stories</button></div>`;
+      hero.after(sec);
+      sec.addEventListener("click", (e) => { const t = e.target.closest("[data-kw]"); if (t) { const tb = document.querySelector('.pk-tabs [aria-controls="ln-stories"]'); if (tb) { tb.click(); document.querySelector("#ln-stories").scrollIntoView({ behavior: "smooth", block: "start" }); } return; } appClick(e); });
+    })();
     const appSubmit = (e) => {
       const f = e.target; if (!f.classList.contains("ln-namer") && !f.classList.contains("ln-add")) return; e.preventDefault();
       const fd = Object.fromEntries(new FormData(f).entries()), loc = local(), pid = f.dataset.pid;

@@ -172,6 +172,25 @@
       ]
     },
     {
+      id: "sanders", regions: ["georgia", "detroit", "michigan"], title: "Grandpa Charles: Buford to West Grand Boulevard", side: "mother", span: "1912 to today",
+      lead: "Your mother's father grew up in two places a long way apart: Buford, in the hills north of Atlanta, and then, for the most part, Detroit's West Grand Boulevard by Henry Ford Hospital. His mother Betty raised four children by different fathers. This is the family's own account from Thanksgiving 2026; the records are still to be found, and no dates are given for the living.",
+      cover: null, hero: "P-charles",
+      chapters: [
+        { y: [1912, 1920], when: "1912, before his time", title: "Why Cumming had no Black families", regions: ["georgia"], told: ["his-georgia-1912-forsyth-expulsion"],
+          text: "Grandpa remembers Cumming, Georgia, the seat of Forsyth County, the next county over from Buford, having no Black residents at all when he was there. That was the work of 1912. In September of that year a white woman reported an assault and a white girl, Mae Crow, was killed; Black men were blamed, one was lynched on the square in Cumming and two more were hanged after a hurried trial. Night riders then burned churches, fired into homes and posted notices ordering Black families out. The county had 1,098 Black residents that year, 58 of them landowners; by the end of the year nearly all were gone, much of their land lost or sold for little, and Forsyth stayed almost entirely white for most of the century. In January 1987 civil-rights marchers came to Cumming and were met by a crowd throwing rocks; the next weekend some 20,000 people marched there.",
+          people: ["P-charles"], src: ["S-owner-1127"], q: [],
+          h: [["Race and Reckoning in Forsyth County, 1912 to 2020", "https://www.georgiaencyclopedia.org/exhibition/race-and-reckoning-in-forsyth-county-1912-2020/", "the New Georgia Encyclopedia's exhibition"], ["Forsyth 1912: a timeline of the forced exile", "https://www.atlantahistorycenter.com/blog/forsyth-1912-a-timeline-of-the-forced-exile-of-black-residents-from-forsyth-county/", "Atlanta History Center"], ["Cumming, Georgia", W("Cumming,_Georgia"), "the county seat he remembers"]] },
+        { y: [1940, 1960], when: "his boyhood", title: "Betty's children, and Buford", regions: ["georgia"],
+          text: "Betty, Grandpa's mother, was born a Coggins, the family thinks, and is Betty Flemming in your baby book, a married name. Her mother married a second time, to a man named Clyde, and a Randy Coggins may have been her brother. Betty had four children: Rick, the eldest; Charles, your grandfather, whose father was Charles Sanders; Juny, the youngest boy; and Sharon, her only daughter, whose own daughter is Angie. The three boys each had a different father; Juny and Sharon may have shared one, perhaps Mr. Flemming (a guess, H11). Grandpa's earliest years were in Buford, a railroad and tannery town on the line between Gwinnett and Hall counties. Who Betty's parents were, and where she married, is the next search (Q42).",
+          people: ["P-bettyf", "P-charles-sr", "P-charles", "P-rick", "P-juny", "P-sharon", "P-angie", "P-bettymom", "P-clyde", "P-randy"], src: ["S-owner-1127", "S-babybook"], q: ["Q42", "Q30", "Q39"],
+          h: [["Buford, Georgia", W("Buford,_Georgia"), "where he was first raised"], ["Gwinnett County, Georgia", W("Gwinnett_County,_Georgia"), "the county around Buford"]] },
+        { y: [1915, 1967], when: "his Detroit years", title: "West Grand Boulevard", regions: ["detroit", "michigan"],
+          text: "For most of his growing up Grandpa lived on West Grand Boulevard by Henry Ford Hospital, the hospital Henry Ford opened on the boulevard in 1915. A few blocks along the boulevard, at 2648 West Grand, Berry Gordy set up Motown's Hitsville U.S.A. in 1959, and the boulevard ran through the heart of the city that the 1967 uprising shook. Like many families from the South, Betty's brought the children north to Detroit; when and why they moved is one of the questions for the table.",
+          people: ["P-charles", "P-bettyf"], src: ["S-owner-1127"], q: ["Q42"],
+          h: [["Henry Ford Hospital", W("Henry_Ford_Hospital"), "the hospital on the boulevard"], ["Hitsville U.S.A.", W("Hitsville_U.S.A."), "Motown, a few blocks down"]] }
+      ]
+    },
+    {
       id: "colonial", regions: ["virginia", "north-carolina", "american-colonies", "pennsylvania", "england"], title: "Before the Revolution: the Virginia and Carolina roots", side: "father", span: "1628 to 1830",
       lead: "Behind the Kirklands stand families that reach back to the first years of English Virginia. Almost all of it comes from compiled trees and lineage-society papers, so read every chapter as possible, not proven; the conflicts are marked where the records disagree.",
       cover: "will-richard-stone-1795", hero: "P-johnm-sr",

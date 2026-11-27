@@ -1,7 +1,7 @@
 {
  "asOf": "2026-11-26",
- "total": 323,
- "sourced": 323,
+ "total": 325,
+ "sourced": 325,
  "by_century": {
   "-1200s": 1,
   "-700s": 1,
@@ -21,11 +21,11 @@
   "1600s": 43,
   "1700s": 52,
   "1800s": 94,
-  "1900s": 110,
+  "1900s": 112,
   "2000s": 4
  },
  "by_region": {
-  "united-states": 103,
+  "united-states": 105,
   "england": 64,
   "world": 59,
   "lithuania": 49,
@@ -47,9 +47,9 @@
   "poland": 10,
   "china": 9,
   "africa": 9,
+  "georgia": 9,
   "ontario": 9,
   "middle-east": 8,
-  "georgia": 7,
   "scotland": 5,
   "caribbean": 5,
   "mesoamerica": 4,

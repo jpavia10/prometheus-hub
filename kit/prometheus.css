@@ -265,7 +265,7 @@ body.pk-v2 .pk-hero .lede.open { display: block; }
 @supports (animation-timeline: scroll()) { body.pk-v2 .shell > .pk-hero { animation: pk-rise .65s cubic-bezier(.2, .8, .2, 1) both, pk-away linear both; animation-timeline: auto, scroll(root block); animation-range: normal, 20px 300px; } }
 
 /* one tab rail for every pillar */
-body.pk-v2 .tabs { position: sticky; top: calc(var(--pk-bar) + env(safe-area-inset-top, 0px)); z-index: 5; display: flex; flex-wrap: nowrap; gap: 2px; overflow-x: auto; scrollbar-width: none; padding: 4px; margin: 6px 0 16px; border-radius: 999px; background: rgba(10, 14, 26, .78); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid var(--line-strong); box-shadow: 0 14px 30px -18px #000; }
+body.pk-v2 .tabs { position: sticky; top: calc(var(--pk-bar) + env(safe-area-inset-top, 0px)); z-index: 5; display: flex; flex-wrap: nowrap; gap: 2px; overflow-x: auto; scrollbar-width: none; padding: 4px; margin: 6px 0 16px; border-radius: 999px; background: rgba(10, 14, 26, .92); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid var(--line-strong); box-shadow: 0 14px 30px -18px #000; }
 body.pk-v2 .tabs::-webkit-scrollbar { display: none; }
 body.pk-v2 .tab { position: relative; z-index: 1; flex: 1 0 auto; min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: none; box-shadow: none; font: 500 13px var(--sans); letter-spacing: .04em; white-space: nowrap; color: var(--muted); overflow: hidden; transition: color .25s; cursor: pointer; }
 body.pk-v2 .tab[aria-selected="true"] { color: #05070f; background: none; box-shadow: none; }

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 23:14 UTC",
+ "updated": "2026-11-27 05:02 UTC",
  "tasks": [
   {
    "due": "2026-11-09",
@@ -636,6 +636,17 @@
    "ai_name": "Gemini",
    "id": "KIN-GEM-54",
    "title": "Kin: James Pulliam's parents, Hanover and New Kent (Q41)",
+   "state": "now",
+   "count": 12
+  },
+  {
+   "due": "2026-12-17",
+   "pillar": "kin",
+   "pillar_name": "Kin",
+   "ai": "gemini",
+   "ai_name": "Gemini",
+   "id": "KIN-GEM-55",
+   "title": "Kin: Betty (Coggins) Flemming, Grandpa Charles's mother: Georgia and Detroit (Q42, Q30)",
    "state": "now",
    "count": 12
   },

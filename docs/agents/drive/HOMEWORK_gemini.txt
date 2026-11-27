@@ -1,6 +1,6 @@
 HOMEWORK — Gemini (every pillar)
 
-Updated 2026-11-26 23:14 UTC. 56 to do across 21 pillars.
+Updated 2026-11-27 05:02 UTC. 57 to do across 21 pillars.
 
 When Joseph asks 'do you have homework?', this page is the answer. Read it top to bottom and start on number 1 without asking. When one is done, start the next. Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md (read it once per session). Save every file in the pillar's Drive folder 'incoming (AI drop files)' under the exact name given; never in the chat, never for Joseph to copy.
 
@@ -62,12 +62,13 @@ IN THIS ORDER:
 44. [Kin] KIN-GEM-53 · Kin: Peter Culberson's capture, Cahaba, and the Sultana (Q40) · due 2026-12-14
 45. [Bossa Piano Studio] PIA-GEM-09 · Piano: the songs that enter the US public domain on 1 January 2027 (works of 1931) · due 2026-12-15
 46. [Kin] KIN-GEM-54 · Kin: James Pulliam's parents, Hanover and New Kent (Q41) · due 2026-12-16
-47. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
-48. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
-49. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
-50. [Kairos Meridian] KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them · due 2027-01-15
-51. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
-52. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
+47. [Kin] KIN-GEM-55 · Kin: Betty (Coggins) Flemming, Grandpa Charles's mother: Georgia and Detroit (Q42, Q30) · due 2026-12-17
+48. [Ludus Arcade] GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15 · due 2026-12-22
+49. [Midas Ledger] MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits · due 2026-12-28
+50. [Kairos Meridian] KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published · due 2026-12-31
+51. [Kairos Meridian] KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them · due 2027-01-15
+52. [Agora] SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18) · due 2027-01-20
+53. [Polis · Civic & Legal Watch] POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities · due 2027-01-20
 
 ==================== 1. PROMETHEUS HUB ====================
 ## 1. HUB-GEM-27 · Drive tidy: trash 22 old files that Claude's Drive access cannot touch
@@ -2365,8 +2366,63 @@ IN THIS ORDER:
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a match accepted on the name alone, without age and birthplace
 
-==================== 47. LUDUS ARCADE ====================
-## 47. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
+==================== 47. KIN ====================
+## 47. KIN-GEM-55 · Kin: Betty (Coggins) Flemming, Grandpa Charles's mother: Georgia and Detroit (Q42, Q30)
+
+**Due:** 2026-12-17 · **State:** now
+
+**What it unlocks:** Betty gets a birth, parents and marriages from records; the Sanders marriage is placed (Georgia or Michigan), which tests the two 1950 Wayne County Charles and Elizabeth Sanders candidates (Q30); Rick, Juny and Sharon get surnames from her obituary.
+
+**Read first:**
+- pillars/kin/lineage/data.js (P-bettyf, P-charles-sr, P-rick, P-juny, P-sharon, P-randy, P-clyde; S-owner-1127; Q30, Q39, Q42; H11; L35 for the 1950 candidates)
+- Georgia county marriage records (Gwinnett, Hall and Forsyth counties; FamilySearch images and the Georgia Archives' Virtual Vault), the 1940 and 1950 censuses for Gwinnett and Hall counties, Georgia death index, Michigan marriage and death records 1950-2020, newspaper and funeral-home obituaries (Betty Flemming, Betty Fleming, Betty Sanders, Betty Coggins), the Forsyth County News and Gwinnett Daily News archives
+
+**Do this:**
+1. Search for a Betty or Elizabeth Coggins born about 1920-1940 in Gwinnett, Hall or Forsyth County, Georgia: census households (1940, 1950) with her parents, and any record of her mother's later marriage to a man named Clyde.
+2. Search Georgia and Michigan marriage records for Betty or Elizabeth Coggins with a Sanders (Charles), and for a Betty Sanders or Coggins with a Flemming or Fleming.
+3. Search obituaries for Betty Flemming or Fleming (also Sanders or Coggins) that name children Rick (Richard), Charles, a Junior and Sharon, or a granddaughter Angie; and for a Randy Coggins naming a sister Betty.
+4. For each find, say which names, places and years tie it to this family and which argue against it; give no living person's address, phone or birth date.
+5. For the shared history (Athenaeum entries his-georgia-1912-forsyth-expulsion and his-georgia-1987-forsyth-marches, written from search summaries): open the New Georgia Encyclopedia's "Race and Reckoning in Forsyth County, 1912-2020" and the Atlanta History Center's "Forsyth 1912" timeline and give, word for word, their lines on the 1,098 Black residents and 58 landowners of 1912, the expulsion that autumn, the county's population in 1920, and the marches of 17 and 24 January 1987 (record: history).
+
+**Make:** `kin_gemini_betty-coggins_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find, search, or summary (the last row)
+- `record` (text): obituary, death index, birth index, census, marriage, history
+- `transcription` (text): the lines naming the family, word for word
+- `identifiers` (text): which names, places and years tie it to Charles A. Sanders and his parents
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 12
+
+**Done when:** Every search above is reported as found or not found with the index or site searched, and every find gives the record's own words and URL.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:** (and the rules at the top)
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace
+- any address, phone number or birth date of a living person
+
+==================== 48. LUDUS ARCADE ====================
+## 48. GAM-GEM-09 · Games: GTA VI updates and fixes from Dec 16 to Jan 15
 
 **Due:** 2026-12-22 · **State:** now
 
@@ -2401,8 +2457,8 @@ IN THIS ORDER:
 - rows missing to reach the count
 - a source that is a blog, forum or AI summary where an official page exists
 
-==================== 48. MIDAS LEDGER ====================
-## 48. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
+==================== 49. MIDAS LEDGER ====================
+## 49. MID-GEM-16 · Midas: the full 2026 and 2027 federal and California rate tables, not just the headline limits
 
 **Due:** 2026-12-28 · **State:** now
 
@@ -2456,8 +2512,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 49. KAIROS MERIDIAN ====================
-## 49. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
+==================== 50. KAIROS MERIDIAN ====================
+## 50. KAI-GEM-14 · Kairos: California's final 2027 state holidays (CalHR), when published
 
 **Due:** 2026-12-31 · **State:** now
 
@@ -2502,8 +2558,8 @@ IN THIS ORDER:
 - a quote that is not on the page it cites (Claude opens rows at random)
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 50. KAIROS MERIDIAN ====================
-## 50. KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them
+==================== 51. KAIROS MERIDIAN ====================
+## 51. KAI-GEM-17 · Kairos: Kern County offices' 2027 holiday closures, once Kern posts them
 
 **Due:** 2027-01-15 · **State:** now
 
@@ -2549,8 +2605,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 51. AGORA ====================
-## 51. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
+==================== 52. AGORA ====================
+## 52. SEL-GEM-07 · Selling: USPS retail prices after the holiday price ends (from 2027-01-18)
 
 **Due:** 2027-01-20 · **State:** now
 
@@ -2601,8 +2657,8 @@ IN THIS ORDER:
 - arithmetic that does not add up when Claude redoes it
 - a guess written as a fact (write 'not stated' and name the page you checked)
 
-==================== 52. POLIS · CIVIC & LEGAL WATCH ====================
-## 52. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
+==================== 53. POLIS · CIVIC & LEGAL WATCH ====================
+## 53. POL-GEM-11 · Polis: Kern County Board of Supervisors items from Dec 2026 to Jan 2027 that touch the mountain communities
 
 **Due:** 2027-01-20 · **State:** now
 

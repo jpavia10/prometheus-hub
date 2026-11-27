@@ -25,7 +25,7 @@ window.KIN_DRIVE = { listed: "2026-11-25", groups: [{"id": "family", "title": "F
     ["1919-11-27_Termenas-Joseph-M_Darbininkas-Nr137-Page3.pdf", "1SwloxrsKA8h1hSsn0KsMSAH5BGvtrmmL", "family", "pdf", 6095332, ""],
     ["1920_Kirkland-Mary-Elizabeth-Bivins_Headstone_Antioch-Cemetery-TN.jpg", "13mjzo2CH7Q61X2BKmziBQzhUctcw7MWW", "family", "jpg", 126235, "album"],
     ["1929_Bivens-Phillip-Marion_Headstone_Antioch-Cemetery-TN.jpg", "10H-ihjsytBGQOKHutVQbWKSDNAshxTus", "family", "jpg", 121014, "album"],
-    ["1930s_Culberson-William-L-and-Mary-Tennessee-Tippens_InterwovenFamily.jpg", "1Ij7jDcm9Bihv16pYt3y_inZ88nH26UWZ", "family", "jpg", 48039, "album"],
+    ["1930s_Culberson-William-L-and-Mary-Tennessee-Tippens_InterwovenFamily.jpg", "1Ij7jDcm9Bihv16pYt3y_inZ88nH26UWZ", "family", "jpg", 48039, "dropped"],
     ["1950s_Moss-Chester-Ray-and-Ada-Culberson_Photo1_InterwovenFamily.jpg", "1bPeklEFKPpcKbcy27CfRcQoCOicGFbd2", "family", "jpg", 34161, "album"],
     ["1950s_Moss-Joy-Chloey-and-Haroldean_Group_InterwovenFamily.jpg", "1jiG3wxKaxcgNsdC3yIsMPgUSmNqMT7dR", "family", "jpg", 17276, "album"],
     ["1955_Culberson-William-and-Mary-Tombstone_InterwovenFamily.jpg", "1ToRAK3nRKm4kCzeG6loQmY9yYfn6i-Cy", "family", "jpg", 125029, "album"],

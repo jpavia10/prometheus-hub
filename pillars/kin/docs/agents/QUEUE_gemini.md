@@ -2,7 +2,7 @@
 
 # Kin · homework for Gemini
 
-Updated 2026-11-26 23:14 UTC · 11 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
+Updated 2026-11-27 05:02 UTC · 12 open · Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_START_HERE.md. Your homework in every pillar on one page: Drive doc 'Prometheus Hub/Gemini/HOMEWORK — Gemini (every pillar)'.
 
 **WHEN A TASK IS DONE (this is what makes the Forge show it as done): open the ONE file forge-completions.json (Drive folder Sebastian, https://drive.google.com/file/d/1QEaQylVPtfbAczGDBkt4GAwIVGyY372W/view) and EDIT THAT FILE: add one entry to its "done" list, {"key": "<task id>", "by": "<your name>", "what": "<file name> in <folder>", "ts": "<now, UTC, ISO 8601>"}, set "updated", save. Never upload a new file named forge-completions.json: a second copy is invisible to the Forge until the twice-daily fold; the original reaches it at the next automatic sync (a few times a day).**
 
@@ -596,3 +596,59 @@ Updated 2026-11-26 23:14 UTC · 11 open · Rules for every pillar: https://githu
 - rows padded to reach the count (fewer true rows beat filler)
 - a value for a period not published yet presented as if it were (write "not published as of {date}")
 - a match accepted on the name alone, without age and birthplace
+
+## 12. KIN-GEM-55 · Kin: Betty (Coggins) Flemming, Grandpa Charles's mother: Georgia and Detroit (Q42, Q30)
+
+**Due:** 2026-12-17 · **State:** now
+
+**Why:** The owner's family account (27 Nov 2026): Charles A. Sanders, his grandfather, was raised in Buford, Georgia, then mostly on West Grand Boulevard in Detroit by Henry Ford Hospital. His mother Betty is Betty Flemming in the baby book (a married name) and born a Coggins, he thinks; her mother's second husband was named Clyde; a Randy Coggins may have been her brother. Betty's four children (Rick, Charles, a younger son called Juny, and Sharon, mother of Angie) had different fathers; Charles's was Charles Sanders. No record of Betty is in the tree yet.
+
+**What it unlocks:** Betty gets a birth, parents and marriages from records; the Sanders marriage is placed (Georgia or Michigan), which tests the two 1950 Wayne County Charles and Elizabeth Sanders candidates (Q30); Rick, Juny and Sharon get surnames from her obituary.
+
+**Read first:**
+- pillars/kin/lineage/data.js (P-bettyf, P-charles-sr, P-rick, P-juny, P-sharon, P-randy, P-clyde; S-owner-1127; Q30, Q39, Q42; H11; L35 for the 1950 candidates)
+- Georgia county marriage records (Gwinnett, Hall and Forsyth counties; FamilySearch images and the Georgia Archives' Virtual Vault), the 1940 and 1950 censuses for Gwinnett and Hall counties, Georgia death index, Michigan marriage and death records 1950-2020, newspaper and funeral-home obituaries (Betty Flemming, Betty Fleming, Betty Sanders, Betty Coggins), the Forsyth County News and Gwinnett Daily News archives
+
+**Do this:**
+1. Search for a Betty or Elizabeth Coggins born about 1920-1940 in Gwinnett, Hall or Forsyth County, Georgia: census households (1940, 1950) with her parents, and any record of her mother's later marriage to a man named Clyde.
+2. Search Georgia and Michigan marriage records for Betty or Elizabeth Coggins with a Sanders (Charles), and for a Betty Sanders or Coggins with a Flemming or Fleming.
+3. Search obituaries for Betty Flemming or Fleming (also Sanders or Coggins) that name children Rick (Richard), Charles, a Junior and Sharon, or a granddaughter Angie; and for a Randy Coggins naming a sister Betty.
+4. For each find, say which names, places and years tie it to this family and which argue against it; give no living person's address, phone or birth date.
+5. For the shared history (Athenaeum entries his-georgia-1912-forsyth-expulsion and his-georgia-1987-forsyth-marches, written from search summaries): open the New Georgia Encyclopedia's "Race and Reckoning in Forsyth County, 1912-2020" and the Atlanta History Center's "Forsyth 1912" timeline and give, word for word, their lines on the 1,098 Black residents and 58 landowners of 1912, the expulsion that autumn, the county's population in 1920, and the marches of 17 and 24 January 1987 (record: history).
+
+**Make:** `kin_gemini_betty-coggins_{YYYYMMDD-HHMM}.json`
+
+**Save in:** Prometheus Hub/Pillars/Prometheus Hub (the desk)/incoming (AI drop files)/
+
+**Shape:** `JSON array, one object per row, exactly the fields below`
+
+**Every field, exactly:**
+- `n` (number): row
+- `kind` (text): find, search, or summary (the last row)
+- `record` (text): obituary, death index, birth index, census, marriage, history
+- `transcription` (text): the lines naming the family, word for word
+- `identifiers` (text): which names, places and years tie it to Charles A. Sanders and his parents
+- `source_url` (url): the record
+- `checked` (date): YYYY-MM-DD
+
+**Before you save, check every one of these yourself:**
+- [ ] Every row has a URL you opened yourself today, on the agency's, maker's or archive's own site.
+- [ ] Every quote is found with Ctrl+F on that page, word for word.
+- [ ] The file is valid JSON and is named exactly as asked.
+
+**How many:** 12
+
+**Done when:** Every search above is reported as found or not found with the index or site searched, and every find gives the record's own words and URL.
+
+**How Claude checks it:**
+- Claude reads every image that opens; Muse second-reads.
+
+**Not done (sent back) if:**
+- a value without a source URL that shows it
+- a quote you cannot find with Ctrl+F on the cited page as served today (Muse, 25 Nov: quotation marks only around words the page carries)
+- a row whose subject differs from the page's subject, even when the numbers are right (Muse, 25 Nov: the right card's terms under another card's name void the row)
+- a source that is a blog, forum, law-firm marketing page, reseller or AI summary where an official page exists
+- rows padded to reach the count (fewer true rows beat filler)
+- a value for a period not published yet presented as if it were (write "not published as of {date}")
+- a match accepted on the name alone, without age and birthplace
+- any address, phone number or birth date of a living person

@@ -6,6 +6,9 @@
     label: "The next fourteen days: who has the kids, and what is dated",
     data() { if (!window.KIN) return null; const D = KIN.data(), add = (n) => { const x = new Date(D.today + "T12:00:00"); x.setDate(x.getDate() + n); return PK.day(x); };
       const days = Array.from({ length: 14 }, (_, n) => { const d = add(n); return { d, who: KIN.whoHas(d, D.sch), marks: [...D.items.filter((i) => i.date === d).map((i) => i.kind), ...D.school.filter((s) => s.due === d).map(() => "school"), ...D.trips.filter((t) => t.start <= d && (t.end || t.start) >= d).map(() => "trip")] }; });
+      /* nothing set and nothing dated: the ring would only say "No pattern yet", so it stays out of the way (26 Nov layout pass) */
+      const has = days.some((d) => d.who || d.marks.length), sec = document.querySelector(".pk-stage");
+      if (sec && sec.hidden === has) { sec.hidden = !has; if (has) requestAnimationFrame(() => window.dispatchEvent(new Event("resize"))); }
       let change = null; for (let n = 1; n < 14; n++) if (days[n].who && days[n].who !== days[0].who) { change = n; break; }
       return { D, days, change, kids: D.people.filter((p) => p.role === "kid") }; },
     readouts(X) { const now = X.days[0].who, withYou = X.days.filter((d) => d.who === "you").length, dated = X.days.reduce((s, d) => s + d.marks.length, 0);

@@ -8,14 +8,14 @@ Rules for every pillar: https://github.com/jpavia10/prometheus-hub/blob/main/AI_
 
 ## Grok
 
-Updated 2026-11-26 23:14 UTC · 0 open in this pillar.
+Updated 2026-11-27 05:02 UTC · 0 open in this pillar.
 
 
 No homework for Grok in Kin right now.
 
 ## Gemini
 
-Updated 2026-11-26 23:14 UTC · 11 open in this pillar.
+Updated 2026-11-27 05:02 UTC · 12 open in this pillar.
 
 
 - KIN-GEM-45 · Kin album: the Interwoven Family blog's own caption for each of the album's 145 pictures · due 2026-12-05
@@ -40,10 +40,12 @@ Updated 2026-11-26 23:14 UTC · 11 open in this pillar.
     make: kin_gemini_culberson-sultana_{YYYYMMDD-HHMM}.json · how many: 10 · done when: His capture, prison and parole are read from his record, and the Sultana lists are checked for him.
 - KIN-GEM-54 · Kin: James Pulliam's parents, Hanover and New Kent (Q41) · due 2026-12-16
     make: kin_gemini_pulliam-origins_{YYYYMMDD-HHMM}.json · how many: 12 · done when: Every Pulliam patent and vestry entry before 1746 is listed with its source, and James's earliest Lunenburg records are read for his origin.
+- KIN-GEM-55 · Kin: Betty (Coggins) Flemming, Grandpa Charles's mother: Georgia and Detroit (Q42, Q30) · due 2026-12-17
+    make: kin_gemini_betty-coggins_{YYYYMMDD-HHMM}.json · how many: 12 · done when: Every search above is reported as found or not found with the index or site searched, and every find gives the record's own words and URL.
 
 ## Muse
 
-Updated 2026-11-26 23:14 UTC · 3 open in this pillar.
+Updated 2026-11-27 05:02 UTC · 3 open in this pillar.
 
 
 - KIN-MUS-04 · Kin: re-read your audit against the tree itself (C15, C16, C17) · due 2026-12-01
@@ -55,21 +57,21 @@ Updated 2026-11-26 23:14 UTC · 3 open in this pillar.
 
 ## ChatGPT
 
-Updated 2026-11-26 23:14 UTC · 0 open in this pillar.
+Updated 2026-11-27 05:02 UTC · 0 open in this pillar.
 
 
 No homework for ChatGPT in Kin right now.
 
 ## Argon
 
-Updated 2026-11-26 23:14 UTC · 0 open in this pillar.
+Updated 2026-11-27 05:02 UTC · 0 open in this pillar.
 
 
 No homework for Argon in Kin right now.
 
 ## Hydrogen
 
-Updated 2026-11-26 23:14 UTC · 0 open in this pillar.
+Updated 2026-11-27 05:02 UTC · 0 open in this pillar.
 
 
 No homework for Hydrogen in Kin right now.
