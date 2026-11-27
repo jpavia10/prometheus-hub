@@ -2,6 +2,12 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-27] Claude: Kin d118, Grandma Laurie's second round; the Seconders and Della's family
+- Holgates: David is Betty and Thomas's son; Darlene (died of cancer) is Ryan and Sara's mother, Rachel their stepmother; Kathy died about 23 Sep 2026; Betty in Dec 2008 (vs Barbara 22 Jan 2009 by her obituary: noted).
+- Della from Oklahoma with her sister Katie (Katherine Springer, buried Plymouth; settles H8/H10); three husbands, the third Anthony Rimsha (Ford of Canada), one divorced (Q46); perhaps buried on Ford Road, Dearborn.
+- Seconders: Robert born Pontiac 1930 to Wilbur and Dorothy; Wilbur remarried Gladys; brothers Bruce and Junior (Wilbur Jr., m. Trudy: Michael, Gary, Donald); Tammy and Jack a brother's children (Q45). Found Gladys M. Seconder's memorial (Find a Grave 17542437, search summary only) naming Wilbur Seconder Sr. at Crescent Hills, Waterford: H9 now about 85%.
+- Laurie married David Atkins (Pascagoula, Mississippi) and Jerry Jordan (1979, Oakland County); Barbara married Mel about 1979. Stories updated (Della and her girls; the Seconder hypothesis chapter).
+
 ### [2026-11-27] Claude: Kin d117, Joanne married Christopher Werwega
 - Owner: Joanne (Holgate) married Christopher Werwega; drawn as her husband only, since whether he is Tania and Michelle's father is not said (Q38, asked at the table). No public record found for the name (L40).
 

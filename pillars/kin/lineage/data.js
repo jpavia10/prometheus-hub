@@ -1675,3 +1675,120 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L40", date: "2026-11-27", by: "Claude", q: "Q38", where: "your message; the open web", terms: "Werwega (Joanne, Chris, Christopher); Werwega with Holgate", result: "added from your account",
     note: "Joanne's husband Christopher Werwega added; no obituary or public record naming a Werwega with the Holgates was found. Whether he is Tania and Michelle's father is asked at the table." });
 })(window.KIN_LINEAGE);
+
+/* 27 Nov 2026, Grandma Laurie's second round (through the owner), and one find. The Holgates: David is Joanne's brother (so
+   Betty and Thomas's son); Ryan and Sara's mother was Darlene, who died of cancer, and Rachel is their stepmother; Kathy died
+   about 23 September 2026; Aunt Betty in December 2008; Betty and Thomas are probably buried in a Detroit suburb, perhaps in
+   the same cemetery as Della, on Ford Road in Dearborn. Katherine ("Katie") Springer, Della's sister, is buried in Plymouth;
+   the girls grew up in Oklahoma and played with Native American children. Della had three husbands: Anthony Rimsha, who worked
+   for Ford in Canada, was the third; she divorced one, who was abusive. The Seconders: Robert was born in Pontiac in 1930 to
+   Wilbur and Dorothy; Dorothy died of cancer and Wilbur married Gladys; Robert's brothers were Bruce and Wilbur ("Junior"), who
+   married Trudy (she died of a heart attack): their sons Michael, Gary and Donald; Tammy and Jack were a brother's children.
+   Robert and Barbara parted while the children were young; Barbara married Mel about 1979. Laurie was married to David Atkins,
+   lived in Pascagoula, Mississippi, and married Jerry Jordan in Oakland County in 1979. The find: a memorial for Gladys M.
+   Seconder (1921 to 2007) at Crescent Hills Cemetery, Waterford, names her husband Wilbur Seconder Sr. and his children Wilbur
+   Jr., Donald and Sandy Weaver, which supports H9 (Robert H. Seconder is buried in the same cemetery). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id), Fm = (id) => L.families.find((f) => f.id === id), H = (id) => L.hypotheses.find((h) => h.id === id);
+  const add = (arr, x) => { if (!arr.includes(x)) arr.push(x); };
+  L.sources.push(
+    { id: "S-laurie-1127b", short: "Grandma Laurie's answers, second round (Thanksgiving 2026, through you)", kind: "authored", year: 2026,
+      cite: "Laurie (Seconder) Jordan, answers at Thanksgiving, relayed by Joseph Pavia in a message to Claude, 27 November 2026.",
+      read: "David H. is Joanne's sibling. Rachel is Sara and Ryan's stepmother; their mother Darlene died of cancer. Kathy died this year, maybe 23 September 2026. Aunt Betty died December 2008, some months before Barbara. Thomas and Betty are probably buried in a Detroit suburb, possibly the same cemetery as Della, on Ford Road in Dearborn. Aunt Katherine Springer (Katie) is buried in Plymouth cemetery. Robert was born in 1930 in Pontiac; his parents were Dorothy and Wilbur Seconder; Dorothy died of cancer and he remarried, to Gladys. Tammy and Jack were Robert's brother's children. Robert's brothers were Bruce and Wilbur (Junior); Junior married Aunt Trudy, who died of a heart attack; they had three children, Michael, Gary and Donald. Robert and Barbara split during the children's childhood; Barbara married Mel about 1979. Della was from Oklahoma; she and her sister Katherine Springer used to play with Native American children. Anthony Rimsha was Della's third husband; she divorced the first, who was abusive. Grandpa Rimsha worked at Ford in Canada. Laurie was married to David Atkins and lived in Pascagoula, Mississippi. She married Jerry Jordan in 1979 in Oakland County." },
+    { id: "S-fag-gladys", short: "Gladys M. Seconder's memorial, Crescent Hills Cemetery, Waterford (Find a Grave 17542437)", kind: "derivative", year: 2007,
+      url: "https://www.findagrave.com/memorial/17542437",
+      cite: "Find a Grave memorial 17542437, Gladys M. Crotser Suzor Seconder (19 Oct 1921 to 14 Jan 2007), Crescent Hills Cemetery, Waterford, Oakland County, Michigan.",
+      read: "From a web search's summary of the memorial on 27 Nov 2026 (Find a Grave refuses automated reading, so the page itself is not yet read): married to Wilbur Seconder, Sr.; three stepchildren, Wilbur Seconder, Jr., Donald Seconder and Sandy Weaver; she taught sewing and quilting at the Singer store in Pontiac." });
+  const S2 = ["S-laurie-1127b"];
+  const nm = (given, surname, type, note, src) => Object.assign({ given, surname, type, src: src || S2 }, note ? { note } : {});
+
+  /* the Holgates */
+  const fh = Fm("F-holgate"); if (fh && fh.uncertain) delete fh.uncertain["P-davidh"];
+  const dv = P("P-davidh"); if (dv) dv.summary = "Dave Holgate, Aunt Betty and Thomas Holgate's son, Joanne's and Kathy's brother (Grandma Laurie). His first wife Darlene, the mother of Ryan and Sara, died of cancer; his wife Rachel is their stepmother. He was at the family's 2006 Christmas.";
+  L.people.push({ id: "P-darlene", sex: "F", status: "family", names: [nm("Darlene", "Holgate", "married", "her married name; her own surname is not known yet")],
+    summary: "David Holgate's first wife, the mother of Ryan and Sara; she died of cancer (Grandma Laurie)." });
+  const fd = Fm("F-davidh"); if (fd) fd.children = [];
+  L.families.push({ id: "F-david-darlene", partners: ["P-davidh", "P-darlene"], children: ["P-ryanh", "P-sarah"] });
+  const rh = P("P-rachelh"); if (rh) rh.summary = "David Holgate's wife (Grandma Laurie): Ryan and Sara's stepmother, after their mother Darlene died. She shares Joseph Termenas's photographs on Ancestry.";
+  for (const [id, t] of [["P-ryanh", "son"], ["P-sarah", "daughter"]]) { const x = P(id); if (x) x.summary = `David Holgate and Darlene's ${t}; Darlene died of cancer and Rachel is their stepmother (Grandma Laurie).`; }
+  const kh = P("P-kathyh"); if (kh) kh.summary = "Aunt Betty and Thomas Holgate's daughter, Joanne's and David's sister; she died this year, about 23 September 2026 (Grandma Laurie). Her married name is the way to her obituary, which should name her parents, her brother and sister and her own family (Q43).";
+  L.events.push(
+    { id: "E-death-kathyh", type: "death", who: ["P-kathyh"], date: { text: "about 23 Sep 2026", sort: "2026-09-23" }, conclusion: "Died this year, about 23 September 2026 (Grandma Laurie, \"maybe\").", confidence: "family",
+      assert: [{ src: "S-laurie-1127b", value: "passed away this year, maybe 23 September 2026", info: "secondary", ev: "direct" }] },
+    { id: "E-death-betty", type: "death", who: ["P-betty"], date: { text: "Dec 2008", sort: "2008-12" }, conclusion: "Died in December 2008, a little before her sister Barbara (Grandma Laurie). Barbara died on 22 January 2009 by her obituary, about a month later; the family remembers a gap of about four months and Barbara's death in March, which may be Mel's (28 April 2009).", confidence: "family",
+      assert: [{ src: "S-laurie-1127b", value: "died December 2008, about four months before Barbara", info: "secondary", ev: "direct" }] });
+  const bt = P("P-betty"); if (bt) bt.summary = "Aunt Betty: Betty (Termens) Holgate, Nana Feole's (Barbara's) sister, a daughter of Joseph and Della Termens, so your great-grandmother's sister. Married Thomas Holgate; of Novi in 1997. Their children: Joanne (Tania and Michelle's mother), Kathy (died 2026) and David. She died in December 2008; she and Thomas are probably buried in a Detroit suburb, perhaps with Della on Ford Road in Dearborn (Grandma Laurie).";
+
+  /* Della, Katie and Anthony Rimsha */
+  const fm = Fm("F-malkitus");
+  L.people.push(
+    { id: "P-katies", sex: "F", status: "probable", names: [nm("Katherine M.", "Springer", "married", "her name in her 1997 obituary", ["S-springer-obit"]), nm("Katie", "Springer", "as-used", "what the family called her")],
+      summary: "Aunt Katie: Katherine M. Springer (1907 to 1997), Della's sister (Grandma Laurie; this settles H8 and H10's question of whose sister she was). Born in Hartshorne, Oklahoma, by Gemini's reading (H10); as girls in Oklahoma she and Della played with Native American children. She is buried in Plymouth, Michigan (Grandma Laurie). Her 1997 obituary names Barbara and Betty as her nieces." },
+    { id: "P-arimsha", sex: "M", status: "family", names: [nm("Anthony", "Rimsha", "birth")],
+      summary: "Della's third husband (Grandma Laurie), \"Grandpa Rimsha\" to Laurie: he worked for Ford in Canada. In 1950 Della was Della E. Rimsha, in Detroit with Barbara." });
+  if (fm) add(fm.children, "P-katies");
+  L.families.push({ id: "F-della-rimsha", partners: ["P-della", "P-arimsha"], children: [] });
+  const de = P("P-della");
+  if (de) de.summary += " She came from Oklahoma, where she and her sister Katie (Katherine Springer) played with Native American children. She married three times: Joseph Termens; Anthony Rimsha, her third husband, who worked for Ford in Canada; and a husband she divorced, who was abusive (which marriage that was is still to be asked, Q46). The family thinks she is buried in a cemetery on Ford Road in Dearborn (Grandma Laurie).";
+  for (const id of ["H8", "H10"]) { const h = H(id); if (h) h.text += " Grandma Laurie (27 Nov 2026): Katherine (Katie) Springer was Della's sister; they grew up in Oklahoma."; }
+  const q44 = Q("Q44"); if (q44) q44.q += " Della had three husbands (Laurie): if Joseph was not her first, a marriage before April 1922 would fit the older age in the index better; the Brooklyn certificate says how many times the bride had married before.";
+
+  /* the Seconders */
+  L.people.push(
+    { id: "P-wilbursr", sex: "M", status: "family", names: [nm("Wilbur", "Seconder", "birth", "Wilbur Seconder Sr. in his second wife Gladys's memorial; Wilbur Guy Seconder (1906 to 1988) in Gemini's reading (H9)")],
+      summary: "Robert (Bob) Seconder's father (Grandma Laurie), so Laurie's grandfather. After his wife Dorothy died of cancer he married Gladys (Gladys M. Seconder, buried at Crescent Hills Cemetery in Waterford, whose memorial names him Wilbur Seconder Sr.). His children: Robert, Bruce and Wilbur Jr. (\"Junior\"), and by Gladys's memorial also Donald and Sandy Weaver (Q45). Gemini traces him to Arthur George Seconder, a Dr. Barnardo's boy sent to Canada (H9)." },
+    { id: "P-dorothys", sex: "F", status: "family", names: [nm("Dorothy", "Seconder", "married", "her married name; her maiden name is not known yet")],
+      summary: "Robert (Bob) Seconder's mother, Laurie's grandmother; she died of cancer, and Wilbur remarried (Grandma Laurie)." },
+    { id: "P-gladyss", sex: "F", status: "probable", names: [nm("Gladys M.", "Crotser", "birth", "", ["S-fag-gladys"]), nm("Gladys M.", "Suzor", "married", "an earlier married name", ["S-fag-gladys"]), Object.assign(nm("Gladys M.", "Seconder", "married"), { src: ["S-fag-gladys", "S-laurie-1127b"] })],
+      summary: "Wilbur Seconder Sr.'s second wife, after Dorothy (Grandma Laurie): Gladys M. (Crotser, Suzor) Seconder, 19 October 1921 to 14 January 2007, buried at Crescent Hills Cemetery, Waterford; she taught sewing and quilting at the Singer store in Pontiac (her memorial)." },
+    { id: "P-bruces", sex: "M", status: "family", names: [nm("Bruce", "Seconder", "birth")], summary: "Robert's brother (Grandma Laurie): your grandmother Laurie's uncle. Tammy and Jack were the children of one of Robert's brothers, most likely Bruce's (Q45)." },
+    { id: "P-juniors", sex: "M", status: "family", names: [nm("Wilbur", "Seconder", "birth", "Wilbur Jr., called Junior"), nm("Junior", "Seconder", "as-used")], summary: "Uncle Junior, Robert's brother (Grandma Laurie), named Wilbur Seconder Jr. in his stepmother Gladys's memorial. He married Aunt Trudy; their sons were Michael, Gary and Donald." },
+    { id: "P-trudys", sex: "F", status: "family", names: [nm("Trudy", "Seconder", "married", "her married name; her own surname is not known yet")], summary: "Aunt Trudy, Uncle Junior's wife (Grandma Laurie); she died of a heart attack. Their sons: Michael, Gary and Donald." },
+    { id: "P-mseconder", sex: "M", status: "family", names: [nm("Michael", "Seconder", "birth")], summary: "Uncle Junior and Aunt Trudy's son (Grandma Laurie): Laurie's first cousin." },
+    { id: "P-gseconder", sex: "M", status: "family", names: [nm("Gary", "Seconder", "birth")], summary: "Uncle Junior and Aunt Trudy's son (Grandma Laurie): Laurie's first cousin." },
+    { id: "P-dseconder", sex: "M", status: "family", names: [nm("Donald", "Seconder", "birth")], summary: "Uncle Junior and Aunt Trudy's son (Grandma Laurie). Gladys Seconder's 2007 memorial lists a Donald Seconder among Wilbur Sr.'s own children: whether that is this Donald or another (a brother of Robert's) is Q45." },
+    { id: "P-sandyw", sex: "F", status: "possible", names: [nm("Sandy", "Weaver", "married", "her married name, from Gladys Seconder's memorial", ["S-fag-gladys"])], summary: "Named as a stepchild in Gladys Seconder's 2007 memorial, so a child of Wilbur Seconder Sr.: Robert's sister, if the memorial is right. Laurie did not mention her (Q45)." },
+    { id: "P-tammys", sex: "F", status: "family", names: [nm("Tammy", "Seconder", "birth", "perhaps the Tamora J. \"Tammy\" Seconder of Waterford, 1957 to 2012, whose obituary was found but not yet read (L27)")], summary: "A daughter of one of Robert's brothers (Grandma Laurie), most likely Bruce's (Q45)." },
+    { id: "P-jacks", sex: "M", status: "family", names: [nm("Jack", "Seconder", "birth", "not the Jack L. Seconder Sr. of Waterford (1933 to 2024), who is too old to be Robert's nephew; perhaps his son, or another Jack")], summary: "A son of one of Robert's brothers (Grandma Laurie), most likely Bruce's (Q45)." });
+  L.families.push(
+    { id: "F-seconder-wd", partners: ["P-wilbursr", "P-dorothys"], children: ["P-bob", "P-bruces", "P-juniors", "P-sandyw"], uncertain: { "P-sandyw": "a stepchild of Gladys in her memorial, so Wilbur Sr.'s child, but Laurie did not name her (Q45)" } },
+    { id: "F-seconder-wg", partners: ["P-wilbursr", "P-gladyss"], children: [] },
+    { id: "F-seconder-jt", partners: ["P-juniors", "P-trudys"], children: ["P-mseconder", "P-gseconder", "P-dseconder"], uncertain: { "P-dseconder": "or is Donald Robert's brother, as Gladys's memorial has it? (Q45)" } },
+    { id: "F-seconder-b", partners: ["P-bruces"], children: ["P-tammys", "P-jacks"], uncertain: { "P-tammys": "Robert's brother's child (Laurie): Bruce's, most likely", "P-jacks": "Robert's brother's child (Laurie): Bruce's, most likely" } });
+  L.events.push(
+    { id: "E-birth-gladys", type: "birth", who: ["P-gladyss"], date: { text: "19 Oct 1921", sort: "1921-10-19" }, conclusion: "Born 19 October 1921 (her memorial).", confidence: "probable", assert: [{ src: "S-fag-gladys", value: "19 Oct 1921", info: "secondary", ev: "direct" }] },
+    { id: "E-death-gladys", type: "death", who: ["P-gladyss"], date: { text: "14 Jan 2007", sort: "2007-01-14" }, conclusion: "Died 14 January 2007; buried at Crescent Hills Cemetery, Waterford, Michigan (her memorial).", confidence: "probable", assert: [{ src: "S-fag-gladys", value: "14 Jan 2007, Crescent Hills Cemetery", info: "secondary", ev: "direct" }] });
+  const bob = P("P-bob");
+  if (bob) bob.summary = "Laurie's father, Robert (Bob) Seconder (Grandma Laurie): born in Pontiac in 1930 to Wilbur and Dorothy Seconder; brothers Bruce and Wilbur (\"Junior\"). Barbara's first husband; they parted while their children were young. Most likely the Robert H. Seconder (1931 to 2003) buried at Crescent Hills Cemetery in Waterford (H9), the same cemetery as his stepmother Gladys; Laurie remembers 1930.";
+  L.events.push({ id: "E-birth-bob", type: "birth", who: ["P-bob"], date: { text: "1930", sort: "1930" }, conclusion: "Born in 1930 in Pontiac, Michigan, to Wilbur and Dorothy Seconder (Grandma Laurie). H9's Robert H. Seconder was born in 1931.", confidence: "family",
+    assert: [{ src: "S-laurie-1127b", value: "born 1930, Pontiac", info: "secondary", ev: "direct" }] });
+  const h9 = H("H9"); if (h9) h9.text += " Grandma Laurie (27 Nov 2026) fits it: Robert was born in Pontiac in 1930 to Wilbur and Dorothy; Wilbur remarried Gladys, and Gladys M. Seconder's memorial (Crescent Hills Cemetery, Waterford, where Robert H. lies) names her husband Wilbur Seconder Sr. Claude now about 85%.";
+  const fg = Fm("F-ggm"); if (fg) { fg.ended = true; if (fg.uncertain) delete fg.uncertain["P-ilene"]; }
+  L.events.push({ id: "E-marr-feole", type: "marriage", who: ["P-ggm", "P-mel"], date: { text: "about 1979", sort: "1979" }, conclusion: "Barbara married Mel Feole about 1979 (Grandma Laurie).", confidence: "family", assert: [{ src: "S-laurie-1127b", value: "Mel married about 1979", info: "secondary", ev: "direct" }] });
+  const ff = Fm("F-feole"); if (ff) ff.events = (ff.events || []).concat("E-marr-feole");
+
+  /* Laurie */
+  L.events.push({ id: "E-marr-gp-jj", type: "marriage", who: ["P-gp", "P-jerryj"], date: { text: "1979", sort: "1979" }, conclusion: "Laurie married Gerald \"Jerry\" Jordan in Oakland County, Michigan, in 1979 (Grandma Laurie).", confidence: "family", assert: [{ src: "S-laurie-1127b", value: "married Jerry Jordan in 1979, Oakland County", info: "primary", ev: "direct" }] });
+  const fM = Fm("F-gp-michael"); if (fM) fM.events = (fM.events || []).concat("E-marr-gp-jj");
+  const gp = P("P-gp"); if (gp) gp.summary = gp.summary.replace("Then Tim Atkins (with David Wayne Atkins), born while the family lived in Mississippi for about a year,", "Then she married David Wayne Atkins and lived in Pascagoula, Mississippi, where Tim Atkins was born; and in 1979, in Oakland County, she married Gerald \"Jerry\" Lynn Jordan, father of Michael").replace(" and Michael Jordan (with Gerald \"Jerry\" Lynn Jordan).", ".");
+  const da = P("P-datkins"); if (da) da.summary = "Tim's father, David Wayne Atkins: Laurie's husband after Charles A. Sanders; they lived in Pascagoula, Mississippi, where Tim was born (Grandma Laurie).";
+  const tm = P("P-timm"); if (tm) tm.summary = tm.summary.replace("born in Mississippi while the family lived there for about a year", "born in Pascagoula, Mississippi, while the family lived there for about a year");
+
+  /* questions */
+  const q43 = Q("Q43"); if (q43) q43.q = "Kathy Holgate, Aunt Betty's daughter, died about 23 September 2026: her married name and her obituary, which will name Betty and Thomas, Joanne and David, and her own family. (David is settled: Betty and Thomas's son.)";
+  L.questions.push(
+    { id: "Q45", p: 2, person: "P-wilbursr", q: "Wilbur Seconder Sr.'s children: Laurie names Robert, Bruce and Junior (Wilbur Jr.); Gladys Seconder's 2007 memorial names Wilbur Jr., Donald and Sandy Weaver. Is Donald Robert's brother or Junior's son (Laurie: Junior's sons were Michael, Gary and Donald)? Who is Sandy Weaver? Were Tammy and Jack Bruce's children (Tamora J. Seconder, 1957 to 2012, is a lead; Jack L. Seconder Sr., 1933 to 2024, is too old to be a nephew)?", sources: "Gladys M. Seconder's memorial; Wilbur Seconder's obituary (1988?); Tammy's 2012 obituary; Grandma Laurie" },
+    { id: "Q46", p: 2, person: "P-della", q: "Della's three marriages: who was the husband she divorced (Laurie: he was abusive), and did that marriage come before Joseph (1922) or between Joseph's death (1935) and Anthony Rimsha? When did she marry Anthony Rimsha, and when and where did they die? The family thinks she is buried on Ford Road in Dearborn: which cemetery?", sources: "1930 and 1940 censuses; Wayne County marriage and divorce records; her death record; cemetery records on Ford Road, Dearborn; Grandma Laurie" });
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) lt.ask = [
+    { q: "Della's husband she divorced: his name, and was he before Grandpa Joseph or after? When did she marry Anthony Rimsha?", ref: "Q46" },
+    { q: "Which cemetery on Ford Road is Della in? Is Grandpa Joseph Termenas there too?", ref: "Q46" },
+    { q: "Donald Seconder: is he Uncle Junior's son, or another brother of your dad's? And who is Sandy Weaver?", ref: "Q45" },
+    { q: "Tammy and Jack: were they Uncle Bruce's kids?", ref: "Q45" },
+    { q: "Kathy's married name (so we can find her obituary)?", ref: "Q43" },
+    { q: "Joanne married Christopher Werwega: is he Tania and Michelle's dad?", ref: "Q38" },
+    { q: "Grandma Dorothy and Aunt Trudy: their maiden names?", ref: "Q45" },
+    { q: "Betty Coggins's parents in Georgia: which town, and anything you remember about them?", ref: "Q42" }];
+  L.log.push({ id: "L41", date: "2026-11-27", by: "Claude", q: "Q45", where: "Grandma Laurie's second round, through you; the open web (searches for Wilbur, Betty Holgate and Kathy Holgate)", terms: "Seconder (Wilbur, Dorothy, Gladys, Bruce, Junior); Holgate obituaries 2008 and 2026", result: "found",
+    note: "Laurie's answers entered (Holgates, Della's marriages and burial, Katie Springer, the Seconders, Laurie's marriages). Found: Gladys M. Seconder's memorial (Find a Grave 17542437; from the search summary only, the page refuses automated reading) naming her husband Wilbur Seconder Sr. and his children Wilbur Jr., Donald and Sandy Weaver, buried at Crescent Hills, Waterford, like H9's Robert H. Not found: obituaries for Betty Holgate (December 2008) and Kathy (September 2026); Kathy's married name is needed." });
+})(window.KIN_LINEAGE);
