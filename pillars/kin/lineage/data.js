@@ -1817,3 +1817,24 @@ window.KIN_LINEAGE.questions.push(
   if (sw) sw.summary = "Robert's sister, adopted: Wilbur Seconder Sr.'s only daughter (your family, 27 Nov 2026), named as Sandy Weaver among his children in his second wife Gladys's 2007 memorial. Weaver is her married name; she is your grandmother Laurie's aunt by adoption.";
   L.log.push({ id: "L43", date: "2026-11-27", by: "Claude", q: "Q45", where: "your message", terms: "Sandy Weaver", result: "found", note: "Sandy was adopted by Wilbur and Dorothy Seconder: the tree names her kin \"by adoption\"." });
 })(window.KIN_LINEAGE);
+
+/* 27 Nov 2026 (owner): "Jack was Sandy's first husband, last name Walters." Weaver is a later married name. Whether the "Jack"
+   once named among Robert's brother's children (P-jacks) was really Jack Walters is asked (Q45). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id);
+  L.sources.push({ id: "S-owner-1127f", short: "Your message: Sandy's first husband (27 Nov 2026)", kind: "authored", year: 2026, cite: "Joseph Pavia, message to Claude, 27 November 2026.", read: "Jack was Sandy's first husband; last name Walters." });
+  const S = ["S-owner-1127f"];
+  const sw = P("P-sandyw");
+  if (sw) {
+    sw.names = [{ given: "Sandy", surname: "Seconder", type: "birth", src: ["S-owner-1127e"], note: "her name in her adoptive family" },
+      { given: "Sandy", surname: "Walters", type: "married", src: S, note: "her first marriage, to Jack Walters" }].concat(sw.names);
+    sw.summary = "Robert's sister, adopted: Wilbur Seconder Sr.'s only daughter (your family, 27 Nov 2026). Her first husband was Jack Walters; Weaver, her name in her stepmother Gladys's 2007 memorial, is a later married name. She is your grandmother Laurie's aunt by adoption.";
+  }
+  L.people.push({ id: "P-jwalters", sex: "M", status: "family", names: [{ given: "Jack", surname: "Walters", type: "birth", src: S }], summary: "Sandy (Seconder) Weaver's first husband (your account)." });
+  L.families.push({ id: "F-sandy-jack", partners: ["P-sandyw", "P-jwalters"], children: [], ended: true });
+  const js = P("P-jacks"); if (js) js.summary += " Laurie's \"Jack\" may instead have been Jack Walters, Sandy's first husband (Q45).";
+  const q = Q("Q45"); if (q) q.q += " And the \"Jack\" among Robert's brother's children: a nephew named Jack, or was it Jack Walters, Sandy's first husband?";
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) { const a = lt.ask.find((x) => /Tammy and Jack/.test(x.q)); if (a) a.q = "Tammy: was she Uncle Bruce's daughter? And was there a nephew Jack, or was that Jack Walters, Aunt Sandy's first husband?"; }
+  L.log.push({ id: "L44", date: "2026-11-27", by: "Claude", q: "Q45", where: "your message", terms: "Jack Walters", result: "found", note: "Jack Walters, Sandy's first husband, added; Weaver is a later married name. Whether Laurie's nephew Jack is a different person is asked." });
+})(window.KIN_LINEAGE);
