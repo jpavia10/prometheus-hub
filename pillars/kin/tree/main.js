@@ -98,9 +98,12 @@ function makeWorld() {
   stats();
 }
 
+/* an estimated year is never shown for someone who is, or may well be, living (no dates for the living) */
+const mayLive = (n) => n.bq === "estimate" && (n.p.living || (n.by > NOW - 95 && !L.events.some((e) => e.who.includes(n.id) && (e.type === "death" || e.type === "burial"))));
 function lifeText(n) {
   if (n.id === L.root) return "";
   if (!known(n.p)) return "not yet known";
+  if (mayLive(n)) return n.p.living ? "living" : "";
   const b = n.bq === "estimate" ? `c. ${Math.round(n.by / 5) * 5}` : n.bq === "tree" ? `${n.by}` : `${n.by}`;
   const d = n.dq === "living" ? "" : n.dq === "estimate" ? "?" : `${n.dy}`;
   return n.p.living ? `born ${b}` : `${b}–${d}`;
@@ -391,6 +394,7 @@ function lifeLine(n) {
   if (n.id === L.root) return "The centre of the tree.";
   if (!known(n.p)) return "No record names this person yet.";
   const birth = L.events.find((e) => e.who.includes(n.id) && e.type === "birth"), death = L.events.find((e) => e.who.includes(n.id) && e.type === "death");
+  if (!birth && mayLive(n)) return n.p.living ? "Living: no dates are shown for the living." : "No dates known yet.";
   const b = birth ? `${birth.date.text}${birth.place && PLC[birth.place] ? ", " + PLC[birth.place].name : ""}` : n.bq === "tree" ? `${n.by} (compiled trees)` : `about ${n.by} (estimate)`;
   const d = n.p.living ? "" : death ? ` – ${death.date.text}${death.place && PLC[death.place] ? ", " + PLC[death.place].name : ""}` : n.dq === "tree" ? ` – ${n.dy}` : "";
   return b + d;

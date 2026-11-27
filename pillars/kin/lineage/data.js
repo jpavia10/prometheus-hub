@@ -1515,3 +1515,37 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L37", date: "2026-11-27", by: "Claude", q: "Q39", where: "your messages (Thanksgiving night)", terms: "Grandpa Charles's brothers and sister; Betty's family", result: "found",
     note: "Added Rick, Juny, Sharon and Angie, Betty's mother (to name) and her second husband Clyde, and Randy Coggins as a possible brother of Betty; Betty's names are now Coggins (birth, you think) and Flemming (married). Q42 and Gemini's task KIN-GEM-55 look for her records in Georgia and Michigan. Grandpa having one sister settles that Joann is not his sister." });
 })(window.KIN_LINEAGE);
+
+/* 27 Nov 2026 (owner): Jeffrey Hinkle's own family. His parents are Stanley Joseph Hinkle and Jeanette Elizabeth Hinkle, and
+   they had five children: Patrick ("Patty"), Jennifer, Cynthia ("Cindy"), Jeffrey Anthony and his twin brother Joseph Stanley.
+   They are your sisters Jessica's and Samantha's grandparents, aunts and uncles; not your blood relatives. The family's word
+   only: an obituary search for both parents (27 Nov) found nothing, and no dates or towns are given. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id);
+  L.sources.push({ id: "S-owner-1127b", short: "Your account of Jeffrey Hinkle's family (27 Nov 2026)", kind: "authored", year: 2026,
+    cite: "Joseph Pavia, message to Claude, 27 November 2026.",
+    read: "Jeffrey Anthony Hinkle's dad is Stanley Joseph Hinkle and his mom is Jeanette Elizabeth Hinkle. They have 5 kids: Patrick aka Patty, Jennifer, Cynthia aka Cindy, and Jeff's twin brother Joseph Stanley." });
+  const S1 = ["S-owner-1127b"];
+  const nm = (given, surname, type, note) => Object.assign({ given, surname, type, src: S1 }, note ? { note } : {});
+  L.people.push(
+    { id: "P-stanleyh", sex: "M", status: "family", names: [nm("Stanley Joseph", "Hinkle", "birth")],
+      summary: "Jeffrey Hinkle's father, so your sisters Jessica's and Samantha's grandfather (your account). Five children: Patrick, Jennifer, Cynthia, and the twins Jeffrey and Joseph Stanley, who carries his names the other way round." },
+    { id: "P-jeanetteh", sex: "F", status: "family", names: [nm("Jeanette Elizabeth", "Hinkle", "married", "her name by marriage; her maiden name is not known yet")],
+      summary: "Jeffrey Hinkle's mother, so Jessica's and Samantha's grandmother (your account). Your sister Jessica Elizabeth shares her middle name." },
+    { id: "P-pattyh", sex: "M", status: "family", names: [nm("Patrick", "Hinkle", "birth"), nm("Patty", "Hinkle", "as-used", "what the family calls him")],
+      summary: "Jeffrey Hinkle's brother (your account): Jessica's and Samantha's uncle." },
+    { id: "P-jenniferh", sex: "F", status: "family", names: [nm("Jennifer", "Hinkle", "birth", "her surname by birth; a married name is not known")],
+      summary: "Jeffrey Hinkle's sister (your account): Jessica's and Samantha's aunt. (Not your aunt Jennifer Sanders, nor your father's sister Jennifer Burd.)" },
+    { id: "P-cindyh", sex: "F", status: "family", names: [nm("Cynthia", "Hinkle", "birth", "her surname by birth; a married name is not known"), nm("Cindy", "Hinkle", "as-used", "what the family calls her")],
+      summary: "Jeffrey Hinkle's sister (your account): Jessica's and Samantha's aunt." },
+    { id: "P-josephsh", sex: "M", status: "family", names: [nm("Joseph Stanley", "Hinkle", "birth")],
+      summary: "Jeffrey Hinkle's twin brother (your account), named for their father Stanley Joseph the other way round: Jessica's and Samantha's uncle." });
+  L.families.push({ id: "F-hinkle-sr", partners: ["P-stanleyh", "P-jeanetteh"], children: ["P-pattyh", "P-jenniferh", "P-cindyh", "P-jhinkle", "P-josephsh"] });
+  const jh = P("P-jhinkle");
+  if (jh) {
+    jh.names = [nm("Jeffrey Anthony", "Hinkle", "birth")].concat(jh.names.map((n) => Object.assign({}, n, { type: n.type === "birth" ? "as-used" : n.type })));
+    jh.summary = "Your mother's ex-husband; the father of your sisters Jessica and Samantha. The son of Stanley Joseph and Jeanette Elizabeth Hinkle, one of five children, with a twin brother, Joseph Stanley (your account, 27 Nov 2026).";
+  }
+  L.log.push({ id: "L38", date: "2026-11-27", by: "Claude", q: "", where: "your message; the open web (obituary search)", terms: "Stanley Joseph Hinkle; Jeanette Elizabeth Hinkle", result: "added from your account",
+    note: "Jeffrey Hinkle's parents and his four brothers and sisters added, twins noted. No obituary for either parent was found on 27 Nov 2026, so there are no dates; they are Jessica's and Samantha's family, not your blood relatives." });
+})(window.KIN_LINEAGE);

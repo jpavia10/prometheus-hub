@@ -45,7 +45,8 @@
       else { const k = Math.min(g, d) - 1, r = Math.abs(g - d); t = `Your ${ORD[k] || k + "th"} cousin${r ? `, ${TIMES[r] || r + " times"} removed` : ""}`; }
       return (BL[id] = { g, d, via: b.via, text: t, side: g >= 2 ? sideOf[b.via] || "" : "" });
     }
-    const RL = {};
+    const RL = {}, sub = {};
+    let near = null;
     function rel(id, opts) {
       const withSide = !opts || opts.side !== false;
       const key = id + (withSide ? "+" : "-");
@@ -66,6 +67,22 @@
       /* a child of your partner: a stepchild */
       const pr = parents(id);
       for (const f of families) if (f.partners.includes(root)) for (const q of f.partners) if (q !== root && pr.includes(q)) return (RL[key] = `Your ${sx(id, "stepson", "stepdaughter", "stepchild")}`);
+      /* family of your half-sister or your child on their other side (owner, 27 Nov: Jeffrey Hinkle's parents and siblings):
+         named through them, "Grandfather of your sisters Jessica and Samantha" */
+      if (!near) { near = []; for (const x in P) { const b = blood(x); if (b && ((b.g === 1 && b.d === 1) || (b.g === 0 && b.d === 1))) near.push(x); } }
+      const by = {};
+      for (const x of near) {
+        if (!sub[x]) sub[x] = make(families, P, x);
+        const t = sub[x].blood(id); if (!t || t.g + t.d === 0) continue;
+        const role = blood(x).g === 1 ? sx(x, "brother", "sister", "sibling") : sx(x, "son", "daughter", "child"), k = t.text.replace(/^Your /, "") + "|" + role;
+        (by[k] = by[k] || []).push(x);
+      }
+      const best = Object.keys(by).sort((a, b) => by[b].length - by[a].length)[0];
+      if (best) {
+        const [what, role] = best.split("|"), xs = by[best], first = (x) => { const n = (P[x].names || []).find((y) => y.given); return n ? n.given.split(" ")[0] : x; };
+        const names = xs.length > 1 ? xs.slice(0, -1).map(first).join(", ") + " and " + first(xs[xs.length - 1]) : first(xs[0]);
+        return (RL[key] = `${what[0].toUpperCase()}${what.slice(1)} of your ${role}${xs.length > 1 ? "s" : ""} ${names}`);
+      }
       return (RL[key] = "");
     }
     return { rel, blood, parents };

@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-27] Claude: Kin d115, Jeffrey Hinkle's family; your sisters' relatives get a name
+- Owner: Jeffrey Anthony Hinkle's parents Stanley Joseph and Jeanette Elizabeth Hinkle and their five children (Patrick "Patty", Jennifer, Cynthia "Cindy", Jeffrey and his twin Joseph Stanley). No obituary found for either parent (27 Nov), so no dates (L38).
+- kinship.js: someone related to you only through a half-sister or your child is now named through them ("Grandfather of your sisters Jessica and Samantha"); every person in the tree has a label, and no existing label changed.
+- 3D tree: an estimated birth year is no longer shown for anyone living or possibly living (no record of death, estimate within 95 years).
+
 ### [2026-11-27] Claude: Kin d114, photo-led layout and Grandpa Charles's family
 - Layout (owner: "Make the layout better and incorporate more media"): a photo wall under the title (9 family faces that open each person, 17 pictures and records by year, Play the show / 3D tree / stories); faces on tree cards; a portrait and a picture strip at the top of each person's page; the add-a-relative form folded away; a lone name chip that repeats the heading hidden; the empty fortnight ring hidden until a schedule is set; the sticky tab bar more opaque (kit). One duplicate photo removed (Bill and Mary's 1930s portrait was saved twice; 144 pictures now).
 - Family (owner, 27 Nov, eleven messages): Grandpa Charles's brothers Rick and Juny, sister Sharon and her daughter Angie; Betty born a Coggins (Flemming by marriage), her mother's second husband Clyde, a possible brother Randy Coggins; Grandpa raised in Buford, Georgia, then West Grand Boulevard by Henry Ford Hospital. New story "Grandpa Charles: Buford to West Grand Boulevard" with the 1912 Forsyth County expulsion (two new world-history entries, from search summaries: the pages are blocked here), Q42, H11, L37, and Gemini task KIN-GEM-55 for Betty's records and verbatim quotes.
