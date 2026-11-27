@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-27] Claude: Kin d119, Sandy Weaver
+- Owner: Sandy Weaver is Wilbur Seconder Sr.'s only daughter (as Gladys Seconder's memorial has it); drawn as Robert's sister, no longer a question (L42).
+
 ### [2026-11-27] Claude: Kin d118, Grandma Laurie's second round; the Seconders and Della's family
 - Holgates: David is Betty and Thomas's son; Darlene (died of cancer) is Ryan and Sara's mother, Rachel their stepmother; Kathy died about 23 Sep 2026; Betty in Dec 2008 (vs Barbara 22 Jan 2009 by her obituary: noted).
 - Della from Oklahoma with her sister Katie (Katherine Springer, buried Plymouth; settles H8/H10); three husbands, the third Anthony Rimsha (Ford of Canada), one divorced (Q46); perhaps buried on Ford Road, Dearborn.
