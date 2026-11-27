@@ -1,8 +1,8 @@
 {
- "built": "2026-11-27T05:02:35Z",
- "checked": "2026-11-27T05:02:35Z",
+ "built": "2026-11-27T17:26:47Z",
+ "checked": "2026-11-27T17:26:47Z",
  "version": 2,
- "today": "2026-11-26",
+ "today": "2026-11-27",
  "sources": {
   "queues": {
    "read": 28,
@@ -25,7 +25,7 @@
  "totals": {
   "todo": 74,
   "late": 2,
-  "due7": 15,
+  "due7": 17,
   "delivered": 0,
   "queued": 9,
   "withdrawn": 183
@@ -34,10 +34,10 @@
   "Gemini": {
    "todo": 55,
    "late": 0,
-   "due7": 6,
+   "due7": 8,
    "delivered": 0,
    "queued": 2,
-   "done7": 220,
+   "done7": 199,
    "withdrawn": 69,
    "items": 883,
    "floor": 50,
@@ -101,7 +101,7 @@
    "due7": 8,
    "delivered": 0,
    "queued": 5,
-   "done7": 9,
+   "done7": 6,
    "withdrawn": 44,
    "items": 179,
    "floor": 3,
