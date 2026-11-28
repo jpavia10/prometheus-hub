@@ -1884,3 +1884,96 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L45", date: "2026-11-28", by: "Claude", q: "Q46", where: "Grandma Laurie's third round, through you", terms: "Della, Rimsha, Springer, Monte Vista", result: "found",
     note: "Della's second husband came after 1935 (name unknown; the 1940 census should show it); Anthony Rimsha married her in the 1940s and died about 1991-92; Della died about 1995 and lies with Betty and Tom on Ford Road in Dearborn, apart from Joseph (Mt. Olivet); she lived for many years in Windsor. Kenneth Springer, Katie's husband. The Monte Vista house in Detroit until the 1967 riots, then Walled Lake." });
 })(window.KIN_LINEAGE);
+
+/* 28 Nov 2026, Grandma Laurie's fourth round (through the owner). Kathy Holgate married a Drobot. Christopher Werwega is Tania
+   and Michelle's father. Uncle Junior's sons, in order: Donald (the eldest; Gladys's memorial was wrong to list him as Wilbur
+   Sr.'s son), Gary, Michael. Uncle Bruce's wife was Aunt Trudy (Gertrude), and their children Kathy, Douglas (who has died) and
+   Jeffrey, the third; Laurie earlier put Trudy with Junior, so Junior's wife is now open. "Tammy and Jack" she no longer
+   remembers: removed. Jack Walters was Sandy's second husband. Sandy's children: Tina, who drowned in a pool at 13; Melissa
+   ("Missy") Seconder; and a son. Wilbur Sr.'s mother was Bertha Faulkner (H9's Bertha Loleta Lawson). Robert never remarried;
+   he died about 2005, was cremated and lies in his mother Dorothy's grave in Waterford. Laurie's middle name is Gail; Ilene's
+   is Ann. Betty Coggins's parents lived in Buford; Laurie says "Coggins doesn't sound right", though she may not know. Health
+   details she gave are in the owner's private Drive note, not here. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id), Fm = (id) => L.families.find((f) => f.id === id), H = (id) => L.hypotheses.find((h) => h.id === id);
+  L.sources.push({ id: "S-laurie-1128b", short: "Grandma Laurie's answers, fourth round (28 Nov 2026, through you)", kind: "authored", year: 2026,
+    cite: "Laurie (Seconder) Jordan, answers relayed by Joseph Pavia in a message to Claude, 28 November 2026.",
+    read: "Kathy's married name: Drobot. Christopher Werwega is Tania and Michelle's dad. Donald is Uncle Junior's son, the oldest; Gary the second son; Michael the third. Kathy and Jeffrey were Uncle Bruce's children, and Douglas (who has died); Jeffrey was the third. Jack Walters was Sandy's second husband. Tammy and Jack she cannot remember now. Sandy's children: Tina, who died at 13, drowned in a pool; Melissa (Missy) Seconder; and a son. Uncle Bruce's wife was Aunt Trudy, named Gertrude. Wilbur Seconder Sr.'s mother was Bertha Faulkner. Robert did not remarry; he died about 2005, was cremated, and is buried in his mother Dorothy's grave in Waterford. Laurie's middle name is Gail; Ilene's is Ann. Betty Coggins's parents: Buford; Laurie says Coggins doesn't sound right, but she probably would not know." });
+  const S4 = ["S-laurie-1128b"];
+  const nm = (given, surname, type, note) => Object.assign({ given, surname, type, src: S4 }, note ? { note } : {});
+  const add = (arr, x) => { if (!arr.includes(x)) arr.push(x); };
+
+  /* Holgates */
+  const kh = P("P-kathyh"); if (kh) { kh.names.push(nm("Kathy", "Drobot", "married")); kh.summary = kh.summary.replace("Her married name is the way to her obituary,", "Her married name was Drobot (Laurie): the way to her obituary,"); }
+  const ft = Fm("F-tania"), fc = Fm("F-joanne-chris");
+  if (ft && fc) { for (const c of ft.children) add(fc.children, c); L.families.splice(L.families.indexOf(ft), 1); }
+  const cw = P("P-cwerwega"); if (cw) cw.summary = "Joanne (Holgate) Werwega's husband, and Tania and Michelle's father (Grandma Laurie, 28 Nov 2026).";
+  const q38 = Q("Q38"); if (q38) q38.q = "Settled: Joanne is Aunt Betty Holgate's daughter and married Christopher Werwega, Tania and Michelle's father (Grandma Laurie).";
+
+  /* Seconders: Tammy and Jack out; Bruce and Trudy's children in; Junior's sons in order */
+  for (const id of ["P-tammys", "P-jacks"]) { const i = L.people.findIndex((p) => p.id === id); if (i >= 0) L.people.splice(i, 1); }
+  const fb = Fm("F-seconder-b");
+  const fj = Fm("F-seconder-jt");
+  if (fj) { fj.partners = fj.partners.filter((x) => x !== "P-trudys"); fj.children = ["P-dseconder", "P-gseconder", "P-mseconder"]; fj.uncertain = {}; }
+  L.people.push(
+    { id: "P-kathys", sex: "F", status: "family", names: [nm("Kathy", "Seconder", "birth")], summary: "Uncle Bruce and Aunt Trudy's daughter (Grandma Laurie): Laurie's first cousin. Not Kathy Holgate (Drobot), Aunt Betty's daughter." },
+    { id: "P-douglass", sex: "M", status: "family", names: [nm("Douglas", "Seconder", "birth")], summary: "Uncle Bruce and Aunt Trudy's son, Laurie's first cousin; he has died (Grandma Laurie)." },
+    { id: "P-jeffreys", sex: "M", status: "family", names: [nm("Jeffrey", "Seconder", "birth")], summary: "Uncle Bruce and Aunt Trudy's third child (Grandma Laurie): Laurie's first cousin." });
+  if (fb) { fb.partners = ["P-bruces", "P-trudys"]; fb.children = ["P-kathys", "P-douglass", "P-jeffreys"]; fb.uncertain = {}; }
+  const tr = P("P-trudys");
+  if (tr) { tr.names = [nm("Gertrude", "Seconder", "married", "her married name; her own surname is not known yet"), nm("Trudy", "Seconder", "as-used")];
+    tr.summary = "Aunt Trudy (Gertrude), Uncle Bruce's wife (Grandma Laurie, 28 Nov); she died of a heart attack. Their children: Kathy, Douglas and Jeffrey. (On 27 Nov Laurie put Trudy with Uncle Junior; her later answer puts her with Bruce, and Junior's wife is now the open question, Q45.)"; }
+  const br = P("P-bruces"); if (br) br.summary = "Robert's brother, Uncle Bruce (Grandma Laurie): your grandmother Laurie's uncle. His wife was Aunt Trudy (Gertrude); their children Kathy, Douglas and Jeffrey.";
+  const ju = P("P-juniors"); if (ju) ju.summary = "Uncle Junior, Robert's brother (Grandma Laurie), named Wilbur Seconder Jr. in his stepmother Gladys's memorial. His sons, eldest first: Donald, Gary and Michael. His wife's name is still to be asked (Q45).";
+  const order = { "P-dseconder": "eldest", "P-gseconder": "second", "P-mseconder": "third" };
+  for (const [id, o] of Object.entries(order)) { const x = P(id); if (x) x.summary = `Uncle Junior's ${o} son (Grandma Laurie): Laurie's first cousin.` + (id === "P-dseconder" ? " Gladys Seconder's 2007 memorial lists him among Wilbur Sr.'s stepchildren, but he was his grandson." : ""); }
+
+  /* Sandy: second husband Jack Walters; her children */
+  const sw = P("P-sandyw");
+  if (sw) { const n = sw.names.find((x) => x.surname === "Walters"); if (n) { n.note = "her second marriage, to Jack Walters"; n.src = n.src.concat(S4); }
+    sw.summary = "Robert's sister, adopted: Wilbur Seconder Sr.'s only daughter. Her second husband was Jack Walters; Weaver, her name in her stepmother Gladys's 2007 memorial, is another married name. Her children: Tina, who drowned in a pool at 13; Melissa (\"Missy\") Seconder; and a son (Grandma Laurie). She is your grandmother Laurie's aunt by adoption."; }
+  const fsj = Fm("F-sandy-jack"); if (fsj) delete fsj.ended;
+  const jw = P("P-jwalters"); if (jw) jw.summary = "Sandy (Seconder) Weaver's second husband (Grandma Laurie).";
+  L.people.push(
+    { id: "P-tinas", sex: "F", status: "family", names: [nm("Tina", "", "as-given", "her surname is not known yet")], summary: "Aunt Sandy's daughter; she drowned in a pool at 13 (Grandma Laurie)." },
+    { id: "P-missys", sex: "F", status: "family", names: [nm("Melissa", "Seconder", "as-given"), nm("Missy", "Seconder", "as-used")], summary: "Aunt Sandy's daughter, Melissa (\"Missy\") Seconder (Grandma Laurie)." },
+    { id: "P-sandyson", sex: "M", status: "placeholder", placeholder: "Sandy's son", hint: "name to ask", names: [], summary: "Aunt Sandy's son (Grandma Laurie); his name is still to be asked." });
+  L.families.push({ id: "F-sandy-kids", partners: ["P-sandyw"], children: ["P-tinas", "P-missys", "P-sandyson"] });
+  L.events.push({ id: "E-death-tinas", type: "death", who: ["P-tinas"], date: { text: "at 13", sort: "" }, conclusion: "Drowned in a pool at the age of 13 (Grandma Laurie).", confidence: "family", assert: [{ src: "S-laurie-1128b", value: "died at 13, drowned in pool", info: "secondary", ev: "direct" }] });
+
+  /* Wilbur Sr.'s mother; Robert's death and grave */
+  L.people.push({ id: "P-berthas", sex: "F", status: "family", names: [nm("Bertha", "Faulkner", "as-given", "as Laurie knew her; Gemini's reading (H9) has Bertha Loleta Lawson (1889 to 1985), wife of Arthur George Seconder: Faulkner may be her name by a later marriage")],
+    summary: "Wilbur Seconder Sr.'s mother (Grandma Laurie), so Robert's grandmother. H9 names Wilbur's mother Bertha Loleta Lawson (1889 to 1985), wife of the Barnardo boy Arthur George Seconder: the same first name, a different surname (Q47)." });
+  L.families.push({ id: "F-bertha", partners: ["P-berthas"], children: ["P-wilbursr"] });
+  L.events.push(
+    { id: "E-death-bob", type: "death", who: ["P-bob"], date: { text: "about 2005 (H9's record: 2003)", sort: "2004" }, conclusion: "Died about 2005 (Grandma Laurie; H9's Robert H. Seconder died in 2003); cremated and buried in his mother Dorothy's grave in Waterford. He never remarried.", confidence: "family", assert: [{ src: "S-laurie-1128b", value: "about 2005; cremated; buried in Dorothy's grave in Waterford", info: "secondary", ev: "direct" }] },
+    { id: "E-burial-bob", type: "burial", who: ["P-bob", "P-dorothys"], date: { text: "after his death", sort: "2004" }, conclusion: "Robert's ashes lie in his mother Dorothy's grave in Waterford (Grandma Laurie): Crescent Hills Cemetery, where H9 places Robert H. Seconder and where Gladys Seconder is buried.", confidence: "family", assert: [{ src: "S-laurie-1128b", value: "buried with Dorothy in Waterford", info: "secondary", ev: "direct" }] });
+  const bob = P("P-bob"); if (bob) bob.summary = bob.summary.replace("Most likely the Robert H. Seconder (1931 to 2003) buried at Crescent Hills Cemetery in Waterford (H9), the same cemetery as his stepmother Gladys; Laurie remembers 1930.", "He never remarried; he died about 2005 (H9's record says 2003), was cremated and lies in his mother Dorothy's grave in Waterford (Laurie): almost certainly the Robert H. Seconder of Crescent Hills Cemetery in H9.");
+  const dor = P("P-dorothys"); if (dor) dor.summary += " Her grave is in Waterford; her son Robert's ashes are buried in it.";
+  const h9 = H("H9"); if (h9) h9.text += " Laurie again (28 Nov): Wilbur Sr.'s mother was Bertha (she knew her as Bertha Faulkner; H9 has Bertha Loleta Lawson), and Robert lies in his mother's grave in Waterford. Claude now about 90%.";
+
+  /* Laurie and Ilene's middle names */
+  const gp = P("P-gp"); if (gp) { const n = gp.names.find((x) => x.type === "birth"); if (n) { n.given = "Laurie Gail"; n.src = n.src.concat(S4); } }
+  const il = P("P-ilene"); if (il) il.names.unshift(nm("Ilene Ann", "Seconder", "birth"));
+
+  /* Betty Coggins: Buford, and Laurie's doubt */
+  const bf = P("P-bettyf"); if (bf) bf.summary += " Grandma Laurie (28 Nov): Betty's parents lived in Buford; she says \"Coggins doesn't sound right\", though she may not have known.";
+  const bm = P("P-bettymom"); if (bm) bm.summary += " They lived in Buford (Laurie).";
+  const q42 = Q("Q42"); if (q42) q42.q += " Laurie (28 Nov): Betty's parents lived in Buford, and she doubts the name Coggins.";
+
+  /* questions */
+  const q45 = Q("Q45");
+  if (q45) q45.q = "The Seconders, mostly settled by Laurie: Wilbur Sr. and Dorothy's children were Robert, Bruce, Wilbur Jr. (Junior) and Sandy, adopted. Junior's sons: Donald, Gary, Michael. Bruce and Trudy (Gertrude)'s: Kathy, Douglas, Jeffrey. Still open: Junior's wife (Laurie first named Trudy, then put Trudy with Bruce), Sandy's son's name and her first husband (Weaver?), and Dorothy's and Trudy's maiden names.";
+  L.questions.push({ id: "Q47", p: 2, person: "P-berthas", q: "Wilbur Seconder Sr.'s mother Bertha: Laurie knew her as Bertha Faulkner; H9 has Bertha Loleta Lawson (1889 to 1985), wife of Arthur George Seconder. Did she marry a Faulkner after Arthur? Her death record or obituary (1985?) gives her last name and her children.", sources: "Michigan death index; Oakland County obituaries; Grandma Laurie; Joe Seconder" });
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) lt.ask = [
+    { q: "Uncle Junior's wife: what was her name? (Earlier you said Aunt Trudy married Junior; then that Trudy was Uncle Bruce's wife.)", ref: "Q45" },
+    { q: "Aunt Sandy's son: his name? And was Weaver her first husband?", ref: "Q45" },
+    { q: "Great-grandma Bertha (Faulkner): did she marry a Mr. Faulkner after Wilbur Sr.'s father? Was his name Arthur Seconder?", ref: "Q47" },
+    { q: "Della's second husband, the one she divorced: anything you remember?", ref: "Q46" },
+    { q: "Which cemetery on Ford Road are Della, Aunt Betty and Tom in?", ref: "Q46" },
+    { q: "Grandma Dorothy's and Aunt Trudy's maiden names?", ref: "Q45" },
+    { q: "Betty's parents in Buford: their first names? And if not Coggins, what might Betty's maiden name have been?", ref: "Q42" }];
+  L.log.push({ id: "L46", date: "2026-11-28", by: "Claude", q: "Q45", where: "Grandma Laurie's fourth round, through you; the open web (Kathy Drobot; Bertha Faulkner Seconder)", terms: "Drobot; Werwega; Seconder (Junior, Bruce, Trudy, Sandy, Bertha); Robert's grave", result: "found",
+    note: "Kathy Holgate married a Drobot (no obituary found yet). Christopher Werwega is Tania and Michelle's father. Junior's sons Donald, Gary, Michael; Bruce and Trudy (Gertrude)'s children Kathy, Douglas, Jeffrey; Tammy and Jack removed (Laurie cannot place them). Jack Walters, Sandy's second husband; Sandy's children Tina (drowned at 13), Melissa and a son. Bertha (Faulkner), Wilbur Sr.'s mother (Q47). Robert died about 2005 and lies in his mother's grave in Waterford (H9 about 90%). Laurie Gail, Ilene Ann. Two health details kept in the private Drive note." });
+})(window.KIN_LINEAGE);

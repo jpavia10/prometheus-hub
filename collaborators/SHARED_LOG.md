@@ -2,6 +2,11 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-28] Claude: Kin d124, Grandma Laurie's fourth round (Seconders settled, Werwega, Drobot)
+- Christopher Werwega is Tania and Michelle's father (Q38 closed); Kathy Holgate married a Drobot. Junior's sons Donald, Gary, Michael; Bruce and Trudy (Gertrude)'s children Kathy, Douglas, Jeffrey (Junior's wife now open); Tammy and Jack removed (Laurie cannot place them).
+- Jack Walters is Sandy's second husband; Sandy's children Tina (drowned at 13), Melissa "Missy" and a son (placeholder). Bertha (Faulkner), Wilbur Sr.'s mother (Q47, vs H9's Bertha Lawson). Robert never remarried, died about 2005, ashes in his mother Dorothy's grave in Waterford (H9 ~90%). Laurie Gail, Ilene Ann. Betty's parents in Buford; Laurie doubts "Coggins".
+- Two health details of relatives kept in the owner's private Drive note, not in the repo (L46).
+
 ### [2026-11-28] Claude: Kin d123, Grandma Laurie's third round (Della, Monte Vista)
 - Della's divorced husband came after 1935 (name unknown; Q46 points to the 1940 census); Anthony Rimsha married her in the 1940s, died about 1991-92; Della died about 1995, buried with Betty and Tom Holgate on Ford Road in Dearborn, apart from Joseph (Mt. Olivet); many years in Windsor. Kenneth Springer, Katie's husband.
 - The Monte Vista house in Detroit (Barbara, her girls, Betty and Della) until the 1967 riots, then Walled Lake: in Della's story chapter with history links; Henry Ford Hospital now ties Grandpa Charles's boulevard to Joseph Termenas's death there (L45).
