@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-28] Claude: Kin d123, Grandma Laurie's third round (Della, Monte Vista)
+- Della's divorced husband came after 1935 (name unknown; Q46 points to the 1940 census); Anthony Rimsha married her in the 1940s, died about 1991-92; Della died about 1995, buried with Betty and Tom Holgate on Ford Road in Dearborn, apart from Joseph (Mt. Olivet); many years in Windsor. Kenneth Springer, Katie's husband.
+- The Monte Vista house in Detroit (Barbara, her girls, Betty and Della) until the 1967 riots, then Walled Lake: in Della's story chapter with history links; Henry Ford Hospital now ties Grandpa Charles's boulevard to Joseph Termenas's death there (L45).
+
 ### [2026-11-27] Claude: Kin d122, Jack Walters
 - Owner: Jack Walters was Sandy (Seconder) Weaver's first husband; Weaver is a later married name. Whether Laurie's nephew "Jack" is someone else is asked (Q45, L44).
 

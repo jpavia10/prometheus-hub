@@ -1838,3 +1838,49 @@ window.KIN_LINEAGE.questions.push(
   if (lt) { const a = lt.ask.find((x) => /Tammy and Jack/.test(x.q)); if (a) a.q = "Tammy: was she Uncle Bruce's daughter? And was there a nephew Jack, or was that Jack Walters, Aunt Sandy's first husband?"; }
   L.log.push({ id: "L44", date: "2026-11-27", by: "Claude", q: "Q45", where: "your message", terms: "Jack Walters", result: "found", note: "Jack Walters, Sandy's first husband, added; Weaver is a later married name. Whether Laurie's nephew Jack is a different person is asked." });
 })(window.KIN_LINEAGE);
+
+/* 28 Nov 2026, Grandma Laurie's third round (through the owner). Della's divorced husband came after Joseph's death (1935); his
+   name is not known. She married Anthony Rimsha when Barbara was a teenager ("maybe 1940"); Anthony died about 1991-92 and
+   Della about 1995; Della lived in Windsor, Ontario, for many years ("like 50"). Joseph is not buried with Della (he is at Mt.
+   Olivet, by his 1935 records); Della, Aunt Betty and Tom Holgate are buried together, on Ford Road in Dearborn. Katie's husband
+   was Kenneth Springer. The house on Monte Vista in Detroit, a small yellow brick house: Barbara lived there, and after Laurie
+   and Ilene were born they lived there again for about ten years with Aunt Betty and Della, until the 1967 riots, when they
+   moved to Walled Lake. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id), Fm = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-laurie-1128", short: "Grandma Laurie's answers, third round (28 Nov 2026, through you)", kind: "authored", year: 2026,
+    cite: "Laurie (Seconder) Jordan, answers relayed by Joseph Pavia in a message to Claude, 28 November 2026.",
+    read: "Della's divorced husband came after Joseph died; his name is unknown. Della married (Anthony Rimsha) when Barbara was a teenager, maybe 1940. Della died around 1995; Anthony around 1991 or 1992. Termenas is not buried with Della. Katie's husband was Kenneth Springer. Della is buried with Aunt Betty and Tom. Monte Vista in Detroit: a small yellow brick house Barbara lived in; when she had Laurie and Ilene they lived there again for about ten years with Aunt Betty and Della; then the Detroit riots hit and they moved to Walled Lake. At some point Della lived in Windsor, Canada, for about 50 years." });
+  const S3 = ["S-laurie-1128"];
+  const ev = (id, type, who, text, sort, conclusion, value) => L.events.push({ id, type, who, date: { text, sort }, conclusion, confidence: "family", assert: [{ src: "S-laurie-1128", value, info: "secondary", ev: "direct" }] });
+  ev("E-marr-rimsha", "marriage", ["P-della", "P-arimsha"], "1940s (Laurie: maybe 1940)", "1945", "Della married Anthony Rimsha when Barbara was a teenager (Grandma Laurie: \"maybe 1940\"); by April 1950 she was Della E. Rimsha in the census.", "married when Barbara was a teenager, maybe 1940");
+  ev("E-death-arimsha", "death", ["P-arimsha"], "about 1991-92", "1991", "Died about 1991 or 1992 (Grandma Laurie).", "around 1992 or 1991");
+  ev("E-death-della", "death", ["P-della"], "about 1995", "1995", "Died about 1995 (Grandma Laurie); buried with her daughter Betty and Betty's husband Tom Holgate, in a cemetery on Ford Road in Dearborn, not with Joseph, who lies at Mt. Olivet in Detroit.", "died around 1995; buried with Betty and Tom");
+  ev("E-res-montevista", "residence", ["P-ggm", "P-della", "P-betty"], "about 1957 to 1967", "1957", "The house on Monte Vista in Detroit, a small yellow brick house: Barbara had lived there, and after Laurie and Ilene were born the family lived there again for about ten years, Barbara and her girls with Aunt Betty and Della, until the 1967 riots, when they moved to Walled Lake (Grandma Laurie).", "Monte Vista, about ten years, until the Detroit riots; then Walled Lake");
+  const fr = Fm("F-della-rimsha"); if (fr) fr.events = (fr.events || []).concat("E-marr-rimsha");
+  const de = P("P-della");
+  if (de) de.summary += " Laurie, again (28 Nov): the husband she divorced came after Joseph's death, and his name is not remembered; she married Anthony Rimsha when Barbara was a teenager; she lived for many years in Windsor, Ontario (\"like 50\"), and died about 1995. She is buried with Betty and Tom Holgate on Ford Road in Dearborn; Joseph lies apart, at Mt. Olivet.";
+  const ar = P("P-arimsha"); if (ar) ar.summary = "Della's third husband (Grandma Laurie), \"Grandpa Rimsha\" to Laurie: he worked for Ford in Canada, and Della lived in Windsor, Ontario, for many years. They married when Barbara was a teenager (in 1950 Della was Della E. Rimsha, in Detroit with Barbara). He died in 1991 or 1992, as Laurie remembers it.";
+  const bt = P("P-betty"); if (bt) bt.summary = bt.summary.replace("she and Thomas are probably buried in a Detroit suburb, perhaps with Della on Ford Road in Dearborn (Grandma Laurie).", "she and Tom are buried with her mother Della, on Ford Road in Dearborn (Grandma Laurie). She lived with Della, Barbara and Barbara's girls in the house on Monte Vista in Detroit until 1967.");
+  const th = P("P-thomash"); if (th) th.summary += " Buried with Betty and her mother Della, on Ford Road in Dearborn (Grandma Laurie).";
+  L.people.push({ id: "P-kspringer", sex: "M", status: "family", names: [{ given: "Kenneth", surname: "Springer", type: "birth", src: S3 }], summary: "Aunt Katie's husband (Grandma Laurie): Katherine M. Springer, Della's sister." });
+  L.families.push({ id: "F-springer", partners: ["P-katies", "P-kspringer"], children: [] });
+  const gm = P("P-ggm"); if (gm) gm.summary += " The family lived in a small yellow brick house on Monte Vista in Detroit, with Aunt Betty and Della, until the 1967 riots, then moved to Walled Lake (Grandma Laurie).";
+  const q46 = Q("Q46");
+  if (q46) q46.q = "Della's marriages: Joseph Termens (1922 to his death in 1935); a husband after 1935 whom she divorced (Laurie: he was abusive; his name is not remembered); and Anthony Rimsha, married when Barbara was a teenager (Laurie: maybe 1940), who worked for Ford in Canada and died about 1991-92. The 1940 census, under whatever surname Della then used, with Barbara (about 7) and Betty, would name the second husband; so would a Wayne County marriage and divorce between 1935 and 1950. Della died about 1995 and is buried on Ford Road in Dearborn with Betty and Tom Holgate: which cemetery?";
+  const q44 = Q("Q44"); if (q44) q44.q = q44.q.replace(" Della had three husbands (Laurie): if Joseph was not her first, a marriage before April 1922 would fit the older age in the index better; the Brooklyn certificate says how many times the bride had married before.", " (Joseph was her first husband, Laurie says, so the 1922 age is not explained by an earlier marriage.)");
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) lt.ask = [
+    { q: "Della's second husband, the one she divorced: anything you remember (first name, where they lived)?", ref: "Q46" },
+    { q: "Which cemetery on Ford Road are Della, Aunt Betty and Tom in?", ref: "Q46" },
+    { q: "Kathy's married name (so we can find her obituary)?", ref: "Q43" },
+    { q: "Joanne and Christopher Werwega: is he Tania and Michelle's dad?", ref: "Q38" },
+    { q: "Donald: Uncle Junior's son, or another brother of your dad's? Tammy: Uncle Bruce's daughter? And was there a nephew Jack, or was it Jack Walters?", ref: "Q45" },
+    { q: "Aunt Sandy's second husband, Mr. Weaver: his first name, and her children?", ref: "Q45" },
+    { q: "The maiden names of Grandma Dorothy, Aunt Trudy and Uncle Bruce's wife?", ref: "Q45" },
+    { q: "Your dad Robert: did he remarry? Did he pass in 2003, and is he at Crescent Hills in Waterford?", ref: "H9" },
+    { q: "What does the G in Laurie G. stand for?", ref: "Q28" },
+    { q: "Betty Coggins's parents in Georgia: the town, their names, and Clyde's last name?", ref: "Q42" }];
+  L.log.push({ id: "L45", date: "2026-11-28", by: "Claude", q: "Q46", where: "Grandma Laurie's third round, through you", terms: "Della, Rimsha, Springer, Monte Vista", result: "found",
+    note: "Della's second husband came after 1935 (name unknown; the 1940 census should show it); Anthony Rimsha married her in the 1940s and died about 1991-92; Della died about 1995 and lies with Betty and Tom on Ford Road in Dearborn, apart from Joseph (Mt. Olivet); she lived for many years in Windsor. Kenneth Springer, Katie's husband. The Monte Vista house in Detroit until the 1967 riots, then Walled Lake." });
+})(window.KIN_LINEAGE);
