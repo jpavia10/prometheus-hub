@@ -2087,3 +2087,34 @@ window.KIN_LINEAGE.questions.push(
   if (lt) { const a = lt.ask.find((x) => /Aunt Sandy's son/.test(x.q)); if (a) a.q = "Aunt Sandy's son: his name, and has he died? And was Weaver her first husband?"; }
   L.log.push({ id: "L50", date: "2026-11-28", by: "Claude", q: "Q45", where: "your message", terms: "Rick", result: "corrected", note: "Richard (Rick) is Kathy Seconder's son, not Aunt Sandy's: moved. Sandy's son is a placeholder again." });
 })(window.KIN_LINEAGE);
+
+/* 28 Nov 2026, your mother's answers (through you). Sharon, Grandpa Charles's sister, has died. Della in Windsor: her roses in the
+   back yard, a good cook, her three o'clock highball and her soaps. Aunt Betty: bright pink lipstick, a pink bedroom; she lived in
+   Redford, Michigan, where David grew up. The Monte Vista house was before your mother's birth; the family liked to host parties
+   and reunions. Pascagoula: fishing, the pier, jellyfish, a fire-ant mound two feet tall, getting up early to drive Tim's dad to
+   work, the smell of the paper mill. Rick's mother is Kathy Seconder. Aunt Sandy's son: maybe Jeff; living? */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Fm = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-mom-1128", short: "Your mother's answers (28 Nov 2026, through you)", kind: "authored", year: 2026,
+    cite: "Toni (Sanders) Hinkle, answers relayed by Joseph Pavia in a message to Claude, 28 November 2026.",
+    read: "Sharon died. Della lived in Windsor; loved her roses in the back yard; a good cook; liked her 3 pm highball and watching soaps. Aunt Betty always wore bright pink lipstick and had a pink bedroom. Monte Vista was before her birth; they liked to host and have parties or reunions. Aunt Betty lived in Redford, Michigan; that is where David grew up. Pascagoula: going fishing and going down the pier, careful not to step on jellyfish; falling in a large pile of fire ants two feet tall; waking up early to take Tim's dad to work and smelling the paper mill. Rick's mother: Kathy Seconder. Aunt Sandy's son: maybe Jeff; alive?" });
+  const S = ["S-mom-1128"];
+  const sh = P("P-sharon"); if (sh) { delete sh.living; sh.summary += " She has died (your mother, 28 Nov 2026)."; }
+  const de = P("P-della"); if (de) de.summary += " Your mother remembers her in Windsor: her roses in the back yard, a good cook, her three o'clock highball and her soaps.";
+  const bt = P("P-betty"); if (bt) bt.summary += " Your mother remembers her bright pink lipstick and her pink bedroom; she and Tom lived in Redford, Michigan, where David grew up. The family loved to host parties and reunions.";
+  const dv = P("P-davidh"); if (dv) dv.summary += " He grew up in Redford, Michigan (your mother).";
+  const rk = P("P-ricks"); if (rk) { rk.names.forEach((n) => { n.src = n.src.concat(S); }); rk.summary = rk.summary.replace(" (If you meant Kathy Holgate, Aunt Betty's daughter, say so and he moves.)", " Your mother confirms his mother is Kathy Seconder."); }
+  const os = P("P-sandyson");
+  if (os) { os.status = "family"; os.names = [{ given: "Jeff", surname: "", type: "as-given", src: S, note: "your mother thinks so (\"maybe Jeff\"); not Jeffrey, Uncle Bruce's son" }]; delete os.placeholder; delete os.hint;
+    os.summary = "Aunt Sandy's son, maybe named Jeff (your mother, who is not sure whether he is living). Not Jeffrey Seconder, Uncle Bruce's son."; }
+  const fs = Fm("F-sandy-kids"); if (fs) fs.uncertain = Object.assign(fs.uncertain || {}, { "P-sandyson": "his name may be Jeff (your mother, not sure)" });
+  const mom = (L.askTable || []).find((g) => g.who === "Mom");
+  if (mom) mom.ask = [
+    { q: "Grandpa's brothers Rick and Juny: their last names, and is Juny short for Junior? Angie's last name?", ref: "Q39" },
+    { q: "Grandma Betty: her maiden name (Laurie doubts Coggins), Mr. Flemming, and her parents in Buford?", ref: "Q42" },
+    { q: "Charles Sanders Sr.: where was he from, and when and where did he die?", ref: "Q30" },
+    { q: "When and where did Sharon die?", ref: "Q39" },
+    { q: "Aunt Sandy's son: is his name Jeff, and is he living?", ref: "Q45" }];
+  L.log.push({ id: "L51", date: "2026-11-28", by: "Claude", q: "Q39", where: "your mother's answers, through you", terms: "Sharon; Della; Aunt Betty; Pascagoula; Rick; Sandy's son", result: "found",
+    note: "Sharon has died. Memories of Della in Windsor and of Aunt Betty (Redford, where David grew up); the family's parties and reunions; your mother's year in Pascagoula. Rick's mother is Kathy Seconder (confirmed). Aunt Sandy's son may be Jeff." });
+})(window.KIN_LINEAGE);

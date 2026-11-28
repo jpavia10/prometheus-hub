@@ -2,6 +2,10 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-28] Claude: Kin d129, your mother's memories
+- Mom: Sharon (Grandpa Charles's sister) has died; Della in Windsor (roses, cooking, her 3 o'clock highball and soaps); Aunt Betty's pink lipstick and pink bedroom, in Redford, where David grew up; the family's parties and reunions; Rick's mother is Kathy Seconder; Aunt Sandy's son may be Jeff.
+- New Seconder chapter "A year in Pascagoula" (fishing, the pier, jellyfish, fire ants, the paper mill); Della's chapter carries the Windsor memories; Mom's ask list renewed (L51).
+
 ### [2026-11-28] Claude: Kin d127-d128, Aunt Sandy's son; Rick is Kathy Seconder's son (corrected, L50)
 - Owner: Sandy's youngest son is Richard (Rick); her other son has died (placeholder, name to ask) (L49).
 
