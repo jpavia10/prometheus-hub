@@ -2071,3 +2071,19 @@ window.KIN_LINEAGE.questions.push(
   if (lt) { const a = lt.ask.find((x) => /Aunt Sandy's son/.test(x.q)); if (a) a.q = "Aunt Sandy's son who died: his name? Rick's last name? And was Weaver her first husband?"; }
   L.log.push({ id: "L49", date: "2026-11-28", by: "Claude", q: "Q45", where: "your message", terms: "Sandy's sons", result: "found", note: "Aunt Sandy's youngest son Richard (Rick) added; her other son has died (name to ask)." });
 })(window.KIN_LINEAGE);
+
+/* 28 Nov 2026 (owner): "Nvm, Rick is Kathy's son." Richard (Rick) moves from Aunt Sandy to Kathy Seconder (Uncle Bruce's
+   daughter, mother of Andrea), the Kathy just being talked about; asked to confirm, as Kathy Holgate (Drobot) is a Kathy too. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Fm = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-owner-1128f", short: "Your message: Rick is Kathy's son (28 Nov 2026)", kind: "authored", year: 2026, cite: "Joseph Pavia, message to Claude, 28 November 2026.", read: "Never mind: Rick is Kathy's son." });
+  const fs = Fm("F-sandy-kids"); if (fs) fs.children = fs.children.filter((c) => c !== "P-ricks");
+  const fk = Fm("F-kathys"); if (fk && !fk.children.includes("P-ricks")) fk.children.push("P-ricks");
+  const rk = P("P-ricks"); if (rk) { rk.names.forEach((n) => { n.src = ["S-owner-1128f"]; }); rk.summary = "Kathy Seconder's son, Richard (\"Rick\"), Andrea's brother (your family, 28 Nov 2026): Uncle Bruce's grandson. (If you meant Kathy Holgate, Aunt Betty's daughter, say so and he moves.)"; }
+  const os = P("P-sandyson"); if (os) { os.placeholder = "Sandy's son"; os.hint = "name to ask"; os.summary = "Aunt Sandy's son (Grandma Laurie). Your message of 28 November said a son of hers had died; whether that is this son is still to be asked."; }
+  const sw = P("P-sandyw"); if (sw) sw.summary = sw.summary.replace("a son who has died; and Richard (\"Rick\"), the youngest (Grandma Laurie and your family).", "and a son (Grandma Laurie).");
+  const ks = P("P-kathys"); if (ks) ks.summary = ks.summary.replace("Her daughter is Andrea.", "Her children: Andrea and Richard (\"Rick\").");
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) { const a = lt.ask.find((x) => /Aunt Sandy's son/.test(x.q)); if (a) a.q = "Aunt Sandy's son: his name, and has he died? And was Weaver her first husband?"; }
+  L.log.push({ id: "L50", date: "2026-11-28", by: "Claude", q: "Q45", where: "your message", terms: "Rick", result: "corrected", note: "Richard (Rick) is Kathy Seconder's son, not Aunt Sandy's: moved. Sandy's son is a placeholder again." });
+})(window.KIN_LINEAGE);

@@ -2,7 +2,7 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
-### [2026-11-28] Claude: Kin d127, Aunt Sandy's sons
+### [2026-11-28] Claude: Kin d127-d128, Aunt Sandy's son; Rick is Kathy Seconder's son (corrected, L50)
 - Owner: Sandy's youngest son is Richard (Rick); her other son has died (placeholder, name to ask) (L49).
 
 ### [2026-11-28] Claude: Kin d126, Uncle Bruce's wives; Andrea
