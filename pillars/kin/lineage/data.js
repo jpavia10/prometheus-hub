@@ -2026,3 +2026,32 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L47", date: "2026-11-28", by: "Claude", q: "Q45", where: "Grandma Laurie's fifth round, through you", terms: "Gertrude (Trudy); Della's second marriage; Bertha Faulkner", result: "found",
     note: "Trudy (Gertrude) was Uncle Junior's wife after all; Bruce's wife is open. Della's second marriage lasted under a year. Bertha married a Mr. Faulkner and died in the 1970s or 80s at about 90, matching H9's Bertha Loleta Lawson (1889 to 1985); H9's Arthur George Seconder drawn as Wilbur's possible father." });
 })(window.KIN_LINEAGE);
+
+/* 28 Nov 2026, Grandma Laurie's sixth round (through the owner). Uncle Bruce's first wife was Margaret; she later married a
+   Decaussin and has died. Bruce remarried Candace ("Candy") Sesak. Kathy is Bruce's daughter and Jeffrey his son; Kathy's
+   daughter is Andrea. Read as: Margaret, the first wife, is the children's mother (most likely; asked). */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id), Fm = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-laurie-1128d", short: "Grandma Laurie's answers, sixth round (28 Nov 2026, through you)", kind: "authored", year: 2026,
+    cite: "Laurie (Seconder) Jordan, answers relayed by Joseph Pavia in a message to Claude, 28 November 2026.",
+    read: "Margaret remarried, to Decaussin. Uncle Bruce's first wife died and he remarried, to Candace (Candy) Sesak. Kathy is Uncle Bruce's daughter; Jeffrey is his son. Kathy had a daughter named Andrea." });
+  const S6 = ["S-laurie-1128d"];
+  const nm = (given, surname, type, note) => Object.assign({ given, surname, type, src: S6 }, note ? { note } : {});
+  L.people.push(
+    { id: "P-margarets", sex: "F", status: "family", names: [nm("Margaret", "Seconder", "married", "her name as Uncle Bruce's wife; her own surname is not known yet"), nm("Margaret", "Decaussin", "married", "her later marriage")],
+      summary: "Uncle Bruce's first wife (Grandma Laurie), most likely the mother of Kathy, Douglas and Jeffrey. She later married a Decaussin, and she has died." },
+    { id: "P-candys", sex: "F", status: "family", names: [nm("Candace", "Sesak", "as-given", "the surname Laurie gave; whether it is her maiden or another married name is not known"), nm("Candy", "Sesak", "as-used")],
+      summary: "Uncle Bruce's second wife, Candace (\"Candy\") Sesak (Grandma Laurie)." },
+    { id: "P-andreas", sex: "F", status: "family", names: [nm("Andrea", "", "as-given", "her surname is not known yet")], summary: "Kathy Seconder's daughter (Grandma Laurie): Uncle Bruce's granddaughter." });
+  const fb = Fm("F-seconder-b"); if (fb) fb.partners = ["P-bruces", "P-margarets"];
+  L.families.push({ id: "F-bruce-candy", partners: ["P-bruces", "P-candys"], children: [] }, { id: "F-kathys", partners: ["P-kathys"], children: ["P-andreas"] });
+  const br = P("P-bruces"); if (br) br.summary = "Robert's brother, Uncle Bruce (Grandma Laurie): your grandmother Laurie's uncle. His first wife Margaret (later Decaussin) has died; he then married Candace (\"Candy\") Sesak. His children: Kathy (her daughter is Andrea), Douglas and Jeffrey.";
+  for (const id of ["P-kathys", "P-douglass", "P-jeffreys"]) { const x = P(id); if (x) x.summary = x.summary.replace("Uncle Bruce's", "Uncle Bruce and Margaret's"); }
+  const ks = P("P-kathys"); if (ks) ks.summary += " Her daughter is Andrea.";
+  const q45 = Q("Q45"); if (q45) q45.q = q45.q.replace("Still open: Uncle Bruce's wife,", "Uncle Bruce married Margaret (later Decaussin), then Candace (Candy) Sesak. Still open: whether Margaret is the mother of all three of Bruce's children,");
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) lt.ask = lt.ask.filter((a) => !/Uncle Bruce's wife/.test(a.q));
+  if (lt) lt.ask.unshift({ q: "Aunt Margaret (later Decaussin): was she the mother of Kathy, Douglas and Jeffrey? Her maiden name?", ref: "Q45" });
+  L.log.push({ id: "L48", date: "2026-11-28", by: "Claude", q: "Q45", where: "Grandma Laurie's sixth round, through you", terms: "Margaret Decaussin; Candace Sesak; Andrea", result: "found",
+    note: "Uncle Bruce's first wife Margaret (later Decaussin, now dead) and second wife Candace (Candy) Sesak added; Kathy Seconder's daughter Andrea added. Margaret drawn as the mother of Bruce's three children, to be confirmed." });
+})(window.KIN_LINEAGE);

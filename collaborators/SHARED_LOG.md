@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-28] Claude: Kin d126, Uncle Bruce's wives; Andrea
+- Laurie: Uncle Bruce's first wife Margaret (later Decaussin; has died), then Candace "Candy" Sesak; Kathy Seconder's daughter Andrea. Margaret drawn as the mother of Bruce's three children, to confirm (L48).
+
 ### [2026-11-28] Claude: Kin d125, Trudy back with Junior; Bertha and Arthur
 - Laurie: Uncle Junior's wife was Gertrude (Trudy); Uncle Bruce's wife is now the open name. Della's second marriage lasted under a year. Bertha married a Mr. Faulkner and died at about 90 in the 1970s or 80s, matching H9's Bertha Loleta Lawson (1889-1985); H9's Arthur George Seconder drawn as Wilbur's possible father, Mr. Faulkner as a placeholder (L47).
 
