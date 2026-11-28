@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-28] Claude: Kin d125, Trudy back with Junior; Bertha and Arthur
+- Laurie: Uncle Junior's wife was Gertrude (Trudy); Uncle Bruce's wife is now the open name. Della's second marriage lasted under a year. Bertha married a Mr. Faulkner and died at about 90 in the 1970s or 80s, matching H9's Bertha Loleta Lawson (1889-1985); H9's Arthur George Seconder drawn as Wilbur's possible father, Mr. Faulkner as a placeholder (L47).
+
 ### [2026-11-28] Claude: Kin d124, Grandma Laurie's fourth round (Seconders settled, Werwega, Drobot)
 - Christopher Werwega is Tania and Michelle's father (Q38 closed); Kathy Holgate married a Drobot. Junior's sons Donald, Gary, Michael; Bruce and Trudy (Gertrude)'s children Kathy, Douglas, Jeffrey (Junior's wife now open); Tammy and Jack removed (Laurie cannot place them).
 - Jack Walters is Sandy's second husband; Sandy's children Tina (drowned at 13), Melissa "Missy" and a son (placeholder). Bertha (Faulkner), Wilbur Sr.'s mother (Q47, vs H9's Bertha Lawson). Robert never remarried, died about 2005, ashes in his mother Dorothy's grave in Waterford (H9 ~90%). Laurie Gail, Ilene Ann. Betty's parents in Buford; Laurie doubts "Coggins".

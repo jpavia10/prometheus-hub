@@ -1977,3 +1977,52 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L46", date: "2026-11-28", by: "Claude", q: "Q45", where: "Grandma Laurie's fourth round, through you; the open web (Kathy Drobot; Bertha Faulkner Seconder)", terms: "Drobot; Werwega; Seconder (Junior, Bruce, Trudy, Sandy, Bertha); Robert's grave", result: "found",
     note: "Kathy Holgate married a Drobot (no obituary found yet). Christopher Werwega is Tania and Michelle's father. Junior's sons Donald, Gary, Michael; Bruce and Trudy (Gertrude)'s children Kathy, Douglas, Jeffrey; Tammy and Jack removed (Laurie cannot place them). Jack Walters, Sandy's second husband; Sandy's children Tina (drowned at 13), Melissa and a son. Bertha (Faulkner), Wilbur Sr.'s mother (Q47). Robert died about 2005 and lies in his mother's grave in Waterford (H9 about 90%). Laurie Gail, Ilene Ann. Two health details kept in the private Drive note." });
 })(window.KIN_LINEAGE);
+
+/* 28 Nov 2026, Grandma Laurie's fifth round (through the owner). Uncle Junior's wife was Gertrude (Trudy), who died of a heart
+   attack: back with Junior, as Laurie first said; Uncle Bruce's wife is the open name now. Della's second marriage lasted less
+   than a year (he drank). Bertha married a Mr. Faulkner ("early 1900s") and died in the 1970s or 80s at about 90, which fits
+   H9's Bertha Loleta Lawson (1889 to 1985). H9's Arthur George Seconder is drawn, as "possible", as Wilbur Sr.'s father. */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id), Fm = (id) => L.families.find((f) => f.id === id), H = (id) => L.hypotheses.find((h) => h.id === id);
+  L.sources.push({ id: "S-laurie-1128c", short: "Grandma Laurie's answers, fifth round (28 Nov 2026, through you)", kind: "authored", year: 2026,
+    cite: "Laurie (Seconder) Jordan, answers relayed by Joseph Pavia in a message to Claude, 28 November 2026.",
+    read: "Uncle Junior's wife was Gertrude, who died of a heart attack. Della's second husband: less than a year; he was an alcoholic. Yes, Bertha married Mr. Faulkner, in the early 1900s. Bertha died in the 1970s or 80s, at about 90 years old." });
+  const S5 = ["S-laurie-1128c"];
+  const fj = Fm("F-seconder-jt"), fb = Fm("F-seconder-b");
+  if (fj && !fj.partners.includes("P-trudys")) fj.partners.push("P-trudys");
+  if (fb) fb.partners = fb.partners.filter((x) => x !== "P-trudys");
+  const tr = P("P-trudys");
+  if (tr) { tr.names.forEach((n) => { n.src = n.src.concat(S5); });
+    tr.summary = "Aunt Trudy (Gertrude), Uncle Junior's wife; she died of a heart attack (Grandma Laurie). Their sons, eldest first: Donald, Gary and Michael. Her maiden name is still to be asked."; }
+  const ju = P("P-juniors"); if (ju) ju.summary = "Uncle Junior, Robert's brother (Grandma Laurie), named Wilbur Seconder Jr. in his stepmother Gladys's memorial. His wife was Aunt Trudy (Gertrude); their sons, eldest first: Donald, Gary and Michael.";
+  const br = P("P-bruces"); if (br) br.summary = "Robert's brother, Uncle Bruce (Grandma Laurie): your grandmother Laurie's uncle. His children: Kathy, Douglas and Jeffrey. His wife's name is still to be asked.";
+  for (const id of ["P-kathys", "P-douglass", "P-jeffreys"]) { const x = P(id); if (x) x.summary = x.summary.replace("Uncle Bruce and Aunt Trudy's", "Uncle Bruce's"); }
+  for (const id of ["P-dseconder", "P-gseconder", "P-mseconder"]) { const x = P(id); if (x) x.summary = x.summary.replace("Uncle Junior's", "Uncle Junior and Aunt Trudy's"); }
+
+  const de = P("P-della"); if (de) de.summary += " That second marriage lasted less than a year; Laurie remembers that he drank.";
+  const q46 = Q("Q46"); if (q46) q46.q = q46.q.replace("a husband after 1935 whom she divorced (Laurie: he was abusive; his name is not remembered)", "a husband after 1935 whom she divorced within a year (Laurie: he drank and was abusive; his name is not remembered)");
+
+  /* Bertha, Mr. Faulkner, and H9's Arthur */
+  const be = P("P-berthas");
+  if (be) { be.names.push({ given: "Bertha Loleta", surname: "Lawson", type: "birth", src: [], note: "her birth name in Gemini's reading (H9), not yet seen in a record here" }); be.names[0].src = be.names[0].src.concat(["S-laurie-1128c"]);
+    be.summary = "Wilbur Seconder Sr.'s mother, Robert's grandmother. Laurie knew her as Bertha Faulkner: she married a Mr. Faulkner (Laurie: \"early 1900s\") and died in the 1970s or 80s at about 90. That fits Gemini's Bertha Loleta Lawson (1889 to 1985) of H9, wife of Arthur George Seconder, the Barnardo boy, so Faulkner was most likely her second husband (Q47)."; }
+  L.people.push(
+    { id: "P-mrfaulkner", sex: "M", status: "placeholder", placeholder: "Mr. Faulkner", hint: "Bertha's later husband", names: [], summary: "Bertha's husband Mr. Faulkner (Grandma Laurie); his first name is not known yet." },
+    { id: "P-arthurs", sex: "M", status: "possible", names: [{ given: "Arthur George", surname: "Seconder", type: "birth", src: ["S-barnardo-1892"], note: "from Gemini's reading (H9); his tie to Wilbur is not yet from a record seen here" }],
+      summary: "Wilbur Seconder Sr.'s father in Gemini's reading (H9): Arthur George Seconder, born about 1884 in England, one of 303 children in a Dr. Barnardo's party that sailed for Canada on the Carthaginian in March 1892, later in Ontario and Michigan, husband of Bertha Loleta Lawson. Drawn as possible until a record ties him to Wilbur; Grandma Laurie's memory of Bertha supports it." });
+  const fbe = Fm("F-bertha"); if (fbe && !fbe.partners.includes("P-arthurs")) fbe.partners.unshift("P-arthurs");
+  L.families.push({ id: "F-bertha-faulkner", partners: ["P-berthas", "P-mrfaulkner"], children: [] });
+  const h9 = H("H9"); if (h9) h9.text += " Laurie (28 Nov): Bertha married a Mr. Faulkner and died in the 1970s or 80s at about 90, matching Bertha Loleta Lawson (1889 to 1985).";
+  const q47 = Q("Q47"); if (q47) q47.q = "Bertha: Laurie says she married a Mr. Faulkner (\"early 1900s\") and died in the 1970s or 80s at about 90, which fits H9's Bertha Loleta Lawson (1889 to 1985), wife of Arthur George Seconder. Her death record or obituary (about 1985) would give her full name, both husbands and her children; Mr. Faulkner's first name is still wanted.";
+  const q45 = Q("Q45"); if (q45) q45.q = q45.q.replace("Still open: Junior's wife (Laurie first named Trudy, then put Trudy with Bruce),", "Junior's wife was Aunt Trudy (Gertrude). Still open: Uncle Bruce's wife,").replace(" Junior's sons: Donald, Gary, Michael. Bruce and Trudy (Gertrude)'s: Kathy, Douglas, Jeffrey.", " Junior and Trudy (Gertrude)'s sons: Donald, Gary, Michael. Bruce's children: Kathy, Douglas, Jeffrey.");
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) lt.ask = [
+    { q: "Uncle Bruce's wife: what was her name?", ref: "Q45" },
+    { q: "Aunt Sandy's son: his name? And was Weaver her first husband?", ref: "Q45" },
+    { q: "Great-grandma Bertha: Mr. Faulkner's first name? And was Wilbur Sr.'s father Arthur Seconder, who came from England through Canada as a boy?", ref: "Q47" },
+    { q: "Which cemetery on Ford Road are Della, Aunt Betty and Tom in?", ref: "Q46" },
+    { q: "Grandma Dorothy's and Aunt Trudy's maiden names?", ref: "Q45" },
+    { q: "Betty's parents in Buford: their first names? And if not Coggins, what might Betty's maiden name have been?", ref: "Q42" }];
+  L.log.push({ id: "L47", date: "2026-11-28", by: "Claude", q: "Q45", where: "Grandma Laurie's fifth round, through you", terms: "Gertrude (Trudy); Della's second marriage; Bertha Faulkner", result: "found",
+    note: "Trudy (Gertrude) was Uncle Junior's wife after all; Bruce's wife is open. Della's second marriage lasted under a year. Bertha married a Mr. Faulkner and died in the 1970s or 80s at about 90, matching H9's Bertha Loleta Lawson (1889 to 1985); H9's Arthur George Seconder drawn as Wilbur's possible father." });
+})(window.KIN_LINEAGE);
