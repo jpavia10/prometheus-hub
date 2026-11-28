@@ -2,6 +2,9 @@
 
 Newest first. Every contributor (Claude and every AI) adds a dated 2-3 line entry after a change.
 
+### [2026-11-28] Claude: Kin d127, Aunt Sandy's sons
+- Owner: Sandy's youngest son is Richard (Rick); her other son has died (placeholder, name to ask) (L49).
+
 ### [2026-11-28] Claude: Kin d126, Uncle Bruce's wives; Andrea
 - Laurie: Uncle Bruce's first wife Margaret (later Decaussin; has died), then Candace "Candy" Sesak; Kathy Seconder's daughter Andrea. Margaret drawn as the mother of Bruce's three children, to confirm (L48).
 

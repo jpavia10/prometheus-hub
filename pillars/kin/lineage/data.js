@@ -2055,3 +2055,19 @@ window.KIN_LINEAGE.questions.push(
   L.log.push({ id: "L48", date: "2026-11-28", by: "Claude", q: "Q45", where: "Grandma Laurie's sixth round, through you", terms: "Margaret Decaussin; Candace Sesak; Andrea", result: "found",
     note: "Uncle Bruce's first wife Margaret (later Decaussin, now dead) and second wife Candace (Candy) Sesak added; Kathy Seconder's daughter Andrea added. Margaret drawn as the mother of Bruce's three children, to be confirmed." });
 })(window.KIN_LINEAGE);
+
+/* 28 Nov 2026 (owner): "Aunt Sandy's youngest son is Richard, aka Rick, and her other son died." */
+(function (L) {
+  const P = (id) => L.people.find((p) => p.id === id), Q = (id) => L.questions.find((q) => q.id === id), Fm = (id) => L.families.find((f) => f.id === id);
+  L.sources.push({ id: "S-owner-1128e", short: "Your message: Aunt Sandy's sons (28 Nov 2026)", kind: "authored", year: 2026, cite: "Joseph Pavia, message to Claude, 28 November 2026.", read: "Aunt Sandy's youngest son is Richard, aka Rick, and her other son died." });
+  const S = ["S-owner-1128e"];
+  const os = P("P-sandyson"); if (os) { os.placeholder = "Sandy's other son"; os.hint = "has died; name to ask"; os.summary = "Aunt Sandy's other son, who has died (your family); his name is still to be asked."; }
+  L.people.push({ id: "P-ricks", sex: "M", status: "family", names: [{ given: "Richard", surname: "", type: "as-given", src: S, note: "his surname is not known yet" }, { given: "Rick", surname: "", type: "as-used", src: S }],
+    summary: "Aunt Sandy's youngest son, Richard (\"Rick\") (your family)." });
+  const f = Fm("F-sandy-kids"); if (f) f.children.push("P-ricks");
+  const sw = P("P-sandyw"); if (sw) sw.summary = sw.summary.replace("Melissa (\"Missy\") Seconder; and a son (Grandma Laurie).", "Melissa (\"Missy\") Seconder; a son who has died; and Richard (\"Rick\"), the youngest (Grandma Laurie and your family).");
+  const q = Q("Q45"); if (q) q.q = q.q.replace("Sandy's son's name", "the name of Sandy's son who died (her youngest is Richard, Rick)");
+  const lt = (L.askTable || []).find((g) => g.who === "Grandma Laurie");
+  if (lt) { const a = lt.ask.find((x) => /Aunt Sandy's son/.test(x.q)); if (a) a.q = "Aunt Sandy's son who died: his name? Rick's last name? And was Weaver her first husband?"; }
+  L.log.push({ id: "L49", date: "2026-11-28", by: "Claude", q: "Q45", where: "your message", terms: "Sandy's sons", result: "found", note: "Aunt Sandy's youngest son Richard (Rick) added; her other son has died (name to ask)." });
+})(window.KIN_LINEAGE);
